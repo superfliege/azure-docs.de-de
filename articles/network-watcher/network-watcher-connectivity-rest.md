@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot connections with Azure Network Watcher - Azure REST API | Microsoft Docs
-description: Learn how to use the connection troubleshoot capability of Azure Network Watcher using the Azure REST API.
+title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure-REST-API | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der Azure-REST-API die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -20,42 +20,42 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57843592"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Troubleshoot connections with Azure Network Watcher using the Azure REST API
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure-REST-API
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [Azure CLI](network-watcher-connectivity-cli.md)
-> - [Azure REST API](network-watcher-connectivity-rest.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-connectivity-cli.md)
+> - [Azure-REST-API](network-watcher-connectivity-rest.md)
 
-Learn how to use connection troubleshoot to verify whether a direct TCP connection from a virtual machine to a given endpoint can be established.
+Hier erfahren Sie, wie Sie mit der Problembehandlung für Verbindungen überprüfen können, ob von einem virtuellen Computer eine direkte TCP-Verbindung mit einem bestimmten Endpunkt hergestellt werden kann.
 
-## <a name="before-you-begin"></a>Before you begin
+## <a name="before-you-begin"></a>Voraussetzungen
 
-This article assumes you have the following resources:
+In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
 
-* An instance of Network Watcher in the region you want to troubleshoot a connection.
-* Virtual machines to troubleshoot connections with.
+* Eine Instanz von Network Watcher in der Region, in der Sie die Problembehandlung für eine Verbindung ausführen möchten
+* Virtuelle Computer zum Ausführen der Problembehandlung für Verbindungen
 
 > [!IMPORTANT]
-> Connection troubleshoot requires that the VM you troubleshoot from has the `AzureNetworkWatcherExtension` VM extension installed. For installing the extension on a Windows VM visit [Azure Network Watcher Agent virtual machine extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) and for Linux VM visit [Azure Network Watcher Agent virtual machine extension for Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). The extension is not required on the destination endpoint.
+> Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
 
-## <a name="log-in-with-armclient"></a>Log in with ARMClient
+## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 
-Log in to armclient with your Azure credentials.
+Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei ARMClient an.
 
 ```PowerShell
 armclient login
 ```
 
-## <a name="retrieve-a-virtual-machine"></a>Retrieve a virtual machine
+## <a name="retrieve-a-virtual-machine"></a>Abrufen eines virtuellen Computers
 
-Run the following script to return a virtual machine. This information is needed for running connectivity. 
+Führen Sie das folgende Skript aus, um einen virtuellen Computer zurückzugeben. Diese Informationen werden für die Ausführung der Konnektivität benötigt. 
 
-The following code needs values for the following variables:
+Der folgende Code benötigt Werte für die folgenden Variablen:
 
-- **subscriptionId** - The subscription ID to use.
-- **resourceGroupName** - The name of a resource group that contains virtual machines.
+- **subscriptionId** – die zu verwendende Abonnement-ID.
+- **resourceGroupName:** der Name einer Ressourcengruppe, die virtuelle Computer enthält.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -64,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-From the following output, the ID of the virtual machine is used in the following example:
+Im folgenden Beispiel wird die ID des virtuellen Computers aus der folgenden Ausgabe verwendet:
 
 ```json
 ...
@@ -79,11 +79,11 @@ From the following output, the ID of the virtual machine is used in the followin
 }
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Check connectivity to a virtual machine
+## <a name="check-connectivity-to-a-virtual-machine"></a>Überprüfen der Konnektivität zu einem virtuellen Computer
 
-This example checks connectivity to a destination virtual machine over port 80.
+In diesem Beispiel wird die Konnektivität zu einem virtuellen Zielcomputer über Port 80 überprüft.
 
-### <a name="example"></a>Example
+### <a name="example"></a>Beispiel
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -108,11 +108,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Since this operation is long running, the URI for the result is returned in the response header as shown in the following response:
+Da dieser Vorgang eine lange Ausführungsdauer hat, werden der URI für das Ergebnis im Antwortheader wie in der folgenden Antwort zurückgegeben:
 
-**Important Values**
+**Wichtige Werte**
 
-* **Location** - This property contains the URI where the results are when the operation is complete
+* **Location**: Diese Eigenschaft enthält den URI, unter dem sich die Ergebnisse befinden, wenn der Vorgang abgeschlossen ist.
 
 ```
 HTTP/1.1 202 Accepted
@@ -131,9 +131,9 @@ Date: Fri, 02 Jun 2017 20:21:16 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>response
 
-The following response is from the previous example.  In this response, the `ConnectionStatus` is **Unreachable**. You can see that all the probes sent failed. The connectivity failed at the virtual appliance due to a user-configured `NetworkSecurityRule` named **UserRule_Port80**, configured to block incoming traffic on port 80. This information can be used to research connection issues.
+Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus` **Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
 
 ```json
 {
@@ -195,11 +195,11 @@ The following response is from the previous example.  In this response, the `Con
 }
 ```
 
-## <a name="validate-routing-issues"></a>Validate routing issues
+## <a name="validate-routing-issues"></a>Überprüfen von Routingproblemen
 
-The example checks connectivity between a virtual machine and a remote endpoint.
+In diesem Beispiel wird die Konnektivität zwischen einem virtuellen Computer und einem Remoteendpunkt überprüft.
 
-### <a name="example"></a>Example
+### <a name="example"></a>Beispiel
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -224,11 +224,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Since this operation is long running, the URI for the result is returned in the response header as shown in the following response:
+Da dieser Vorgang eine lange Ausführungsdauer hat, werden der URI für das Ergebnis im Antwortheader wie in der folgenden Antwort zurückgegeben:
 
-**Important Values**
+**Wichtige Werte**
 
-* **Location** - This property contains the URI where the results are when the operation is complete
+* **Location**: Diese Eigenschaft enthält den URI, unter dem sich die Ergebnisse befinden, wenn der Vorgang abgeschlossen ist.
 
 ```
 HTTP/1.1 202 Accepted
@@ -247,9 +247,9 @@ Date: Fri, 02 Jun 2017 20:26:05 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>response
 
-In the following example, the `connectionStatus` is shown as **Unreachable**. In the `hops` details, you can see under `issues` that the traffic was blocked due to a `UserDefinedRoute`.
+Im folgenden Beispiel wird der `connectionStatus` als **Nicht erreichbar** angezeigt. In den `hops`-Details können Sie unter `issues` sehen, dass der Datenverkehr aufgrund einer `UserDefinedRoute` blockiert war.
 
 ```json
 {
@@ -291,11 +291,11 @@ In the following example, the `connectionStatus` is shown as **Unreachable**. In
 }
 ```
 
-## <a name="check-website-latency"></a>Check website latency
+## <a name="check-website-latency"></a>Überprüfen der Websitelatenz
 
-The following example checks the connectivity to a website.
+Im folgenden Beispiel wird die Konnektivität zu einer Website überprüft.
 
-### <a name="example"></a>Example
+### <a name="example"></a>Beispiel
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -320,11 +320,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Since this operation is long running, the URI for the result is returned in the response header as shown in the following response:
+Da dieser Vorgang eine lange Ausführungsdauer hat, werden der URI für das Ergebnis im Antwortheader wie in der folgenden Antwort zurückgegeben:
 
-**Important Values**
+**Wichtige Werte**
 
-* **Location** - This property contains the URI where the results are when the operation is complete
+* **Location**: Diese Eigenschaft enthält den URI, unter dem sich die Ergebnisse befinden, wenn der Vorgang abgeschlossen ist.
 
 ```
 HTTP/1.1 202 Accepted
@@ -343,9 +343,9 @@ Date: Fri, 02 Jun 2017 20:31:00 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>response
 
-In the following response, you can see the `connectionStatus` shows as **Reachable**. When a connection is successful, latency values are provided.
+In der folgenden Antwort wird der `connectionStatus` als **Erreichbar** angezeigt. Wenn eine Verbindung erfolgreich ist, werden Latenzwerte bereitgestellt.
 
 ```json
 {
@@ -378,11 +378,11 @@ In the following response, you can see the `connectionStatus` shows as **Reachab
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Check connectivity to a storage endpoint
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Überprüfen der Konnektivität zu einem Speicherendpunkt
 
-The following example checks the connectivity from a virtual machine to a blog storage account.
+Im folgenden Beispiel wird die Konnektivität von einem virtuellen Computer mit einem Blobspeicherkonto überprüft.
 
-### <a name="example"></a>Example
+### <a name="example"></a>Beispiel
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -407,11 +407,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Since this operation is long running, the URI for the result is returned in the response header as shown in the following response:
+Da dieser Vorgang eine lange Ausführungsdauer hat, werden der URI für das Ergebnis im Antwortheader wie in der folgenden Antwort zurückgegeben:
 
-**Important Values**
+**Wichtige Werte**
 
-* **Location** - This property contains the URI where the results are when the operation is complete
+* **Location**: Diese Eigenschaft enthält den URI, unter dem sich die Ergebnisse befinden, wenn der Vorgang abgeschlossen ist.
 
 ```
 HTTP/1.1 202 Accepted
@@ -430,9 +430,9 @@ Date: Fri, 02 Jun 2017 20:05:03 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>response
 
-The following example is the response from running the previous API call. As the check is successful, the `connectionStatus` property shows as **Reachable**.  You are provided the details regarding the number of hops required to reach the storage blob and latency.
+Im folgenden Beispiel sehen Sie die Antwort auf die Ausführung des vorherigen API-Aufrufs. Da die Überprüfung erfolgreich ist, wird die Eigenschaft `connectionStatus` als **Erreichbar** angezeigt.  Die Details in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
 
 ```json
 {
@@ -465,11 +465,11 @@ The following example is the response from running the previous API call. As the
 }
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-Learn how to automate packet captures with Virtual machine alerts by viewing [Create an alert triggered packet capture](network-watcher-alert-triggered-packet-capture.md).
+Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
 
-Find if certain traffic is allowed in or out of your VM by visiting [Check IP flow verify](diagnose-vm-network-traffic-filtering-problem.md).
+Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](diagnose-vm-network-traffic-filtering-problem.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Includedatei
+description: Includedatei
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -16,17 +16,17 @@ ms.lasthandoff: 03/19/2019
 ms.locfileid: "58125138"
 ---
 > [!NOTE]
-> These examples do not apply to S2S/ExpressRoute coexist configurations.
-> For more information about working with gateways in a coexist configuration, see [Configure coexisting connections.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
+> Diese Beispiele gelten nicht für die gemeinsame Verwendung von S2S und ExpressRoute.
+> Weitere Informationen zur Verwendung von Gateways in einer Konfiguration für die gemeinsame Verwendung finden Sie unter [Konfigurieren von parallel bestehenden Verbindungen](../articles/expressroute/expressroute-howto-coexist-classic.md#gw).
 
-## <a name="add-a-gateway"></a>Add a gateway
+## <a name="add-a-gateway"></a>Hinzufügen eines Gateways
 
-When you add a gateway to a virtual network using the classic resource model, you modify the network configuration file directly before creating the gateway. The values in the examples below must be present in the file to create a gateway. If your virtual network previously had a gateway associated to it, some of these values will already be present. Modify the file to reflect the values below.
+Wenn Sie ein Gateway zu einem virtuellen Netzwerk mit dem klassischen Ressourcenmodell hinzufügen, ändern Sie die Netzwerkkonfigurationsdatei direkt vor der Erstellung des Gateways. Zum Erstellen eines Gateways müssen in der Datei die in den nachfolgenden Beispielen gezeigten Werte vorhanden sein. Wenn Ihrem virtuellen Netzwerk zuvor ein Gateway zugeordnet war, sind einige dieser Werte bereits vorhanden. Ändern Sie die Datei, um die untenstehenden Werte zu nutzen.
 
-### <a name="download-the-network-configuration-file"></a>Download the network configuration file
+### <a name="download-the-network-configuration-file"></a>Herunterladen der Netzwerkkonfigurationsdatei
 
-1. Download the network configuration file using the steps in [network configuration file](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) article. Open the file using a text editor.
-2. Add a local network site to the file. You can use any valid address prefix. You can add any valid IP address for the VPN gateway. The address values in this section are not used for ExpressRoute operations, but are required for file validation. In the example, "branch1" is the name of the site. You may use a different name, but be sure to use the same value in the Gateway section of the file.
+1. Laden Sie die Netzwerkkonfigurationsdatei herunter, wie im Artikel [Netzwerkkonfigurationsdatei](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) beschrieben steht. Öffnen Sie die Datei in einem Text-Editor.
+2. Fügen Sie einen lokalen Netzwerkstandort zur Datei hinzu. Sie können ein beliebiges gültiges Adresspräfix verwenden. Für das VPN-Gateway können Sie jede gültige IP-Adresse angeben. Die Adresswerte in diesem Abschnitt werden zwar nicht für ExpressRoute-Vorgänge verwendet, sind aber für die Dateivalidierung erforderlich. Im Beispiel steht „branch1“ für den Namen des Standorts. Sie können auch einen anderen Namen verwenden, sollten aber darauf achten, denselben Wert im Abschnitt „Gateway“ in der Datei zu benutzen.
 
    ```
    <VirtualNetworkConfiguration>
@@ -39,11 +39,11 @@ When you add a gateway to a virtual network using the classic resource model, yo
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
    ```
-3. Navigate to the VirtualNetworkSites and modify the fields.
+3. Navigieren Sie zu VirtualNetworkSites, und ändern Sie die Eingaben in den Feldern.
 
-   * Verify that the Gateway Subnet exists for your virtual network. If it does not, you can add one at this time. The name must be "GatewaySubnet".
-   * Verify the  Gateway section of the file exists. If it doesn't, add it. This is required to associate the virtual network with the local network site (which represents the network to which you are connecting).
-   * Verify that the connection type = Dedicated. This is required for ExpressRoute connections.
+   * Stellen Sie sicher, dass das Gatewaysubnetz für Ihr virtuelles Netzwerk vorhanden ist. Sollte dies nicht der Fall sein, können Sie nun ein Gatewaysubnetz hinzufügen. Der Name muss „GatewaySubnet“ sein.
+   * Stellen Sie sicher, dass der Abschnitt „Gateway“ in der Datei vorhanden ist. Fügen Sie ihn anderenfalls hinzu. Dies ist erforderlich, um das virtuelle Netzwerk dem Standort des lokalen Netzwerks zuzuordnen (der das Netzwerk darstellt, mit dem Sie sich verbinden).
+   * Vergewissern Sie sich, dass der Verbindungstyp auf „Dediziert“ eingestellt ist. Dies ist für ExpressRoute-Verbindungen erforderlich.
 
    ```
    </LocalNetworkSites>
@@ -72,30 +72,30 @@ When you add a gateway to a virtual network using the classic resource model, yo
    </VirtualNetworkConfiguration>
    </NetworkConfiguration>
    ```
-4. Save the file and upload it to Azure.
+4. Speichern Sie die Datei, und laden Sie sie in Azure hoch.
 
-### <a name="create-the-gateway"></a>Create the gateway
+### <a name="create-the-gateway"></a>Erstellen des Gateways
 
-Use the command below to create a gateway. Substitute any values for your own.
+Verwenden Sie den folgenden Befehl, um ein Gateway zu erstellen. Ersetzen Sie die vorhandenen durch Ihre eigenen Werte.
 
 ```powershell
 New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -GatewaySKU  Standard
 ```
 
-## <a name="verify-the-gateway-was-created"></a>Verify the gateway was created
+## <a name="verify-the-gateway-was-created"></a>Erstellung des Gateways überprüfen
 
-Use the command below to verify that the gateway has been created. This command also retrieves the gateway ID, which you need for other operations.
+Verwenden Sie den folgenden Befehl, um zu überprüfen, ob das Gateway erstellt wurde. Mit diesem Befehl wird auch die Gateway-ID abgerufen, die Sie für andere Vorgänge benötigen.
 
 ```powershell
 Get-AzureVNetGateway
 ```
 
-## <a name="resize-a-gateway"></a>Resize a gateway
+## <a name="resize-a-gateway"></a>Ändern der Größe eines Gateways
 
-There are a number of [Gateway SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md). You can use the following command to change the Gateway SKU at any time.
+Es gibt eine Reihe von [Gateway-SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Sie können jederzeit den folgenden Befehl verwenden, um die Gateway-SKU zu ändern.
 
 > [!IMPORTANT]
-> This command doesn't work for UltraPerformance gateway. To change your gateway to an UltraPerformance gateway, first remove the existing ExpressRoute gateway, and then create a new UltraPerformance gateway. To downgrade your gateway from an UltraPerformance gateway, first remove the UltraPerformance gateway, and then create a new gateway.
+> Dieser Befehl kann nicht für das UltraPerformance-Gateway verwendet werden. Wenn Sie das Gateway in ein UltraPerformance-Gateway ändern möchten, entfernen Sie zunächst das vorhandene ExpressRoute-Gateway, und erstellen Sie anschließend ein neues UltraPerformance-Gateway. Wenn Sie das Gateway von einem UltraPerformance-Gateway herabstufen möchten, entfernen Sie zunächst das UltraPerformance-Gateway, und erstellen Sie anschließend ein neues Gateway.
 >
 >
 
@@ -103,9 +103,9 @@ There are a number of [Gateway SKUs](../articles/expressroute/expressroute-about
 Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-## <a name="remove-a-gateway"></a>Remove a gateway
+## <a name="remove-a-gateway"></a>Entfernen eines Gateways
 
-Use the command below to remove a gateway
+Verwenden Sie den folgenden Befehl, um ein Gateway zu entfernen.
 
 ```powershell
 Remove-AzureVnetGateway -GatewayId <Gateway ID>

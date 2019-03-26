@@ -1,7 +1,7 @@
 ---
-title: Geography V2 prebuilt entity
+title: Vordefinierte GeographyV2-Entität
 titleSuffix: Azure Cognitive Services
-description: This article contains geographyV2 prebuilt entity information in Language Understanding (LUIS).
+description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten geographyV2-Entität in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,23 +18,23 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 02/27/2019
 ms.locfileid: "56961605"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 prebuilt entity for a LUIS app
-The prebuilt geographyV2 entity detects places. Because this entity is already trained, you do not need to add example utterances containing GeographyV2 to the application intents. GeographyV2 entity is supported in English [culture](luis-reference-prebuilt-entities.md).
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte GeographyV2-Entität für eine LUIS-App
+Die vordefinierte geographyV2-Entität erkennt Orte. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit geographyV2 hinzufügen. Die geographyV2-Entität wird in der [Kultur](luis-reference-prebuilt-entities.md) Englisch unterstützt.
 
-## <a name="subtypes"></a>Subtypes
-The geographical locations have subtypes:
+## <a name="subtypes"></a>Untertypen
+Die geografischen Standorte weisen Untertypen auf:
 
-|Subtype|Purpose|
+|Subtype|Zweck|
 |--|--|
-|`poi`|point of interest|
-|`city`|name of city|
-|`countryRegion`|name of country or region|
-|`continent`|name of continent|
-|`state`|name of state or province|
+|`poi`|Point of Interest|
+|`city`|Name der Stadt|
+|`countryRegion`|Name des Lands oder der Region|
+|`continent`|Name des Kontinents|
+|`state`|Name des Bundeslands oder Kantons|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>Resolution for GeographyV2 entity
-The following example shows the resolution of the **builtin.geographyV2** entity.
+## <a name="resolution-for-geographyv2-entity"></a>Auflösung für die geographyV2-Entität
+Im folgenden Beispiel wird die Auflösung der Entität **builtin.geographyV2** veranschaulicht.
 
 ```json
 {
@@ -90,6 +90,6 @@ The following example shows the resolution of the **builtin.geographyV2** entity
 } 
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-Learn about the [email](luis-reference-prebuilt-email.md), [number](luis-reference-prebuilt-number.md), and [ordinal](luis-reference-prebuilt-ordinal.md) entities. 
+Erfahren Sie mehr über die Entitäten [email](luis-reference-prebuilt-email.md), [number](luis-reference-prebuilt-number.md) und [ordinal](luis-reference-prebuilt-ordinal.md). 

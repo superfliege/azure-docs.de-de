@@ -1,8 +1,8 @@
 ---
-title: Configure Azure Media Clipper keyboard settings | Microsoft Docs
-description: Steps for setting up configurable keyboard shortcuts for Azure Media Clipper
+title: Konfigurieren von Azure Media Clipper-Tastatureinstellungen | Microsoft-Dokumentation
+description: Schritte für die Einrichtung konfigurierbarer Tastenkombinationen für Azure Media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
+keywords: Clip;Schneiden;Subclip;Codierung;Medien
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -16,11 +16,11 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57992789"
 ---
-# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Configure Azure Media Clipper keyboard shortcuts 
+# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurieren von Azure Media Clipper-Tastenkombinationen 
 
-Azure Media Clipper supports customizing the default keyboard shortcuts by providing an optional `keymap` JSON parameter.
+Azure Media Clipper unterstützt die Anpassung von Tastenkombinationen über den optionalen JSON-Parameter `keymap`.
 
-The following sample JSON illustrates the default keyboard shortcuts. You can customize these settings by changing the key fields and passing in the parameter when initializing the Clipper.
+Das folgende JSON-Beispiel veranschaulicht die standardmäßigen Tastenkombinationen. Sie können diese Einstellungen anpassen, indem Sie die Schlüsselfelder ändern und den Parameter beim Initialisieren von Media Clipper übergeben.
 
 ```json
 {

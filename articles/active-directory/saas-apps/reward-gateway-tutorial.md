@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Reward Gateway | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Reward Gateway.
+title: 'Tutorial: Azure Active Directory-Integration mit Reward Gateway | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Reward Gateway konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,98 +22,98 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57840663"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Azure Active Directory integration with Reward Gateway
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Azure Active Directory-Integration mit Reward Gateway
 
-In this tutorial, you learn how to integrate Reward Gateway with Azure Active Directory (Azure AD).
+In diesem Tutorial erfahren Sie, wie Sie Reward Gateway in Azure Active Directory (Azure AD) integrieren.
 
-Integrating Reward Gateway with Azure AD provides you with the following benefits:
+Die Integration von Reward Gateway in Azure AD bietet die folgenden Vorteile:
 
-- You can control in Azure AD who has access to Reward Gateway
-- You can enable your users to automatically get signed-on to Reward Gateway (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure portal
+- Sie können in Azure AD steuern, wer auf Reward Gateway Zugriff hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Reward Gateway anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Voraussetzungen
 
-To configure Azure AD integration with Reward Gateway, you need the following items:
+Um die Azure AD-Integration mit Reward Gateway konfigurieren zu können, benötigen Sie Folgendes:
 
-- An Azure AD subscription
-- A Reward Gateway single sign-on enabled subscription
+- Ein Azure AD-Abonnement
+- Ein Reward Gateway-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-To test the steps in this tutorial, you should follow these recommendations:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Do not use your production environment, unless it is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Adding Reward Gateway from the gallery
-1. Configuring and testing Azure AD single sign-on
+1. Hinzufügen von Reward Gateway aus dem Katalog
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Adding Reward Gateway from the gallery
-To configure the integration of Reward Gateway into Azure AD, you need to add Reward Gateway from the gallery to your list of managed SaaS apps.
+## <a name="adding-reward-gateway-from-the-gallery"></a>Hinzufügen von Reward Gateway aus dem Katalog
+Zum Konfigurieren der Integration von Reward Gateway in Azure AD müssen Sie Reward Gateway aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**To add Reward Gateway from the gallery, perform the following steps:**
+**Um Reward Gateway aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-1. Navigate to **Enterprise applications**. Then go to **All applications**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Applications][2]
+    ![ANWENDUNGEN][2]
     
-1. To add new application, click **New application** button on the top of dialog.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Applications][3]
+    ![ANWENDUNGEN][3]
 
-1. In the search box, type **Reward Gateway**.
+1. Geben Sie im Suchfeld den Suchbegriff **Reward Gateway** ein.
 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/tutorial_rewardgateway_search.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/reward-gateway-tutorial/tutorial_rewardgateway_search.png)
 
-1. In the results panel, select **Reward Gateway**, and then click **Add** button to add the application.
+1. Wählen Sie im Ergebnisbereich die Option **Reward Gateway** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/tutorial_rewardgateway_addfromgallery.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/reward-gateway-tutorial/tutorial_rewardgateway_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with Reward Gateway based on a test user called "Britta Simon".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Reward Gateway mithilfe eines Testbenutzers namens Britta Simon.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Reward Gateway is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Reward Gateway needs to be established.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Reward Gateway als Gegenpart für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Reward Gateway muss eine Linkbeziehung eingerichtet werden.
 
-In Reward Gateway, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.
+Weisen Sie in Reward Gateway den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
-To configure and test Azure AD single sign-on with Reward Gateway, you need to complete the following building blocks:
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Reward Gateway müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-1. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-1. **[Creating a Reward Gateway test user](#creating-a-reward-gateway-test-user)** - to have a counterpart of Britta Simon in Reward Gateway that is linked to the Azure AD representation of user.
-1. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Reward Gateway-Testbenutzers](#creating-a-reward-gateway-test-user)**, um eine Entsprechung von Britta Simon in Reward Gateway zu erhalten, die mit der Darstellung dieses Benutzers in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Reward Gateway application.
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden für Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Reward Gateway-Anwendung.
 
-**To configure Azure AD single sign-on with Reward Gateway, perform the following steps:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Reward Gateway die folgenden Schritte aus:**
 
-1. In the Azure portal, on the **Reward Gateway** application integration page, click **Single sign-on**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Reward Gateway** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-1. On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_samlbase.png)
+    ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_rewardgateway_samlbase.png)
 
-1. On the **Reward Gateway Domain and URLs** section, perform the following steps:
+1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Reward Gateway** aus:
 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_url.png)
+    ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_rewardgateway_url.png)
 
-    a. In the **Identifier** textbox, type a URL using the following pattern:
+    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
 
     | |
     |--|
@@ -122,7 +122,7 @@ In this section, you enable Azure AD single sign-on in the Azure portal and conf
     | `https://<companyname>.rewardgateway.co.nz/` |
     | `https://<companyname>.rewardgateway.com.au/` |
 
-    b. In the **Reply URL** textbox, type a URL using the following pattern:
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:
     
     | |
     |--|
@@ -132,97 +132,97 @@ In this section, you enable Azure AD single sign-on in the Azure portal and conf
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > These values are not real. Update these values with the actual Identifier and Reply URL. To get these values start setting up an Integration on the Reward Manager Portal. Details can be found on https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Richten Sie zum Abrufen dieser Werte eine Integration im Reward Manager-Portal ein. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication.
  
-1. On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_certificate.png) 
+    ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_rewardgateway_certificate.png) 
 
-1. Click **Save** button.
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. To configure single sign-on on **Reward Gateway** side, start setting up an Integration on the Reward Manager Portal. Use the downloaded metadata to obtain your Signing Certificate and upload that during the configuration. Details can be found on https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+1. Wenn Sie einmaliges Anmelden in **Reward Gateway** konfigurieren möchten, richten Sie zunächst eine Integration im Reward Manager-Portal ein. Verwenden Sie die heruntergeladenen Metadaten, um Ihr Signaturzertifikat zu erhalten und es während der Konfiguration hochzuladen. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication.
 
 > [!TIP]
-> You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!  After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom. You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Create Azure AD User][100]
+![Azure AD-Benutzer erstellen][100]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_01.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/reward-gateway-tutorial/create_aaduser_01.png) 
 
-1. To display the list of users, go to **Users and groups** and click **All users**.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_02.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/reward-gateway-tutorial/create_aaduser_02.png) 
 
-1. To open the **User** dialog, click **Add** on the top of the dialog.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/reward-gateway-tutorial/create_aaduser_03.png) 
 
-1. On the **User** dialog page, perform the following steps:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_04.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/reward-gateway-tutorial/create_aaduser_04.png) 
 
-    a. In the **Name** textbox, type **BrittaSimon**.
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    b. In the **User name** textbox, type the **email address** of BrittaSimon.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
-    c. Select **Show Password** and write down the value of the **Password**.
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Click **Create**.
+    d. Klicken Sie auf **Create**.
  
-### <a name="creating-a-reward-gateway-test-user"></a>Creating a Reward Gateway test user
+### <a name="creating-a-reward-gateway-test-user"></a>Erstellen eines Reward Gateway-Testbenutzers
 
-In this section, you create a user called Britta Simon in Reward Gateway. Work with Reward Gateway [support team](mailto:clientsupport@rewardgateway.com) to add the users in the Reward Gateway platform.
+In diesem Abschnitt erstellen Sie in Reward Gateway einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam](mailto:clientsupport@rewardgateway.com) von Reward Gateway, um die Benutzer auf der Reward Gateway-Plattform hinzufügen zu lassen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Reward Gateway.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Reward Gateway gewähren.
 
-![Assign User][200] 
+![Benutzer zuweisen][200] 
 
-**To assign Britta Simon to Reward Gateway, perform the following steps:**
+**Um Britta Simon zu Reward Gateway zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-    ![Assign User][201] 
+    ![Benutzer zuweisen][201] 
 
-1. In the applications list, select **Reward Gateway**.
+1. Wählen Sie in der Anwendungsliste **Reward Gateway**aus.
 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_app.png) 
+    ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_rewardgateway_app.png) 
 
-1. In the menu on the left, click **Users and groups**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Assign User][202] 
+    ![Benutzer zuweisen][202] 
 
-1. Click **Add** button. Then select **Users and groups** on **Add Assignment** dialog.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Assign User][203]
+    ![Benutzer zuweisen][203]
 
-1. On **Users and groups** dialog, select **Britta Simon** in the Users list.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-1. Click **Select** button on **Users and groups** dialog.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-1. Click **Assign** button on **Add Assignment** dialog.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-When you click the Reward Gateway tile in the Access Panel, you should get automatically signed-on to your Reward Gateway application.
+Wenn Sie im Zugriffsbereich auf die Kachel „Reward Gateway“ klicken, sollten Sie automatisch bei Ihrer Reward Gateway-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Additional resources
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Optimize Azure CDN for the type of content delivery
-description: Optimize Azure CDN for the type of content delivery
+title: Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
+description: Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -21,111 +21,111 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 02/26/2019
 ms.locfileid: "56870889"
 ---
-# <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimize Azure CDN for the type of content delivery
+# <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
 
-When you deliver content to a large global audience, it's critical to ensure the optimized delivery of your content. [Azure Content Delivery Network (CDN)](cdn-overview.md) can optimize the delivery experience based on the type of content you have. The content can be a website, a live stream, a video, or a large file for download. When you create a CDN endpoint, you specify a scenario in the **Optimized for** option. Your choice determines which optimization is applied to the content delivered from the CDN endpoint.
+Wenn Sie Inhalte an eine große globale Zielgruppe übermitteln, muss die Übermittlung optimiert werden. Das [Azure Content Delivery Network (CDN)](cdn-overview.md) kann die Übermittlung basierend auf der Art der zu übermittelnden Inhalte optimieren. Bei dem Inhalt kann es sich um eine Website, einen Livestream, ein Video oder eine große Downloaddatei handeln. Beim Erstellen eines CDN-Endpunkts geben Sie in der Option **Optimiert für** ein Szenario an. Ihre Auswahl bestimmt, welche Optimierung auf die Inhalte angewendet wird, die von dem CDN-Endpunkt übermittelt werden.
 
-Optimization choices are designed to use best-practice behaviors to improve content delivery performance and better origin offload. Your scenario choices affect performance by modifying configurations for partial caching, object chunking, and the origin failure retry policy. 
+Die Optimierungsoptionen basieren auf bewährten Maßnahmen zur Verbesserung der Übermittlungsleistung und zur Entlastung des Ursprungsservers. Die gewählten Szenariooptionen passen die Konfigurationen für teilweises Zwischenspeichern, Objektblockerstellung und die Wiederholungsrichtlinie für Ursprungsfehler an und beeinflussen dadurch die Leistung. 
 
-This article provides an overview of various optimization features and when you should use them. For more information on features and limitations, see the respective articles on each individual optimization type.
-
-> [!NOTE]
-> When you create a CDN endpoint, the **Optimized for** options can vary based on the type of profile the endpoint is created in. Azure CDN providers apply enhancement in different ways, depending on the scenario. 
-
-## <a name="provider-options"></a>Provider options
-
-**Azure CDN Standard from Microsoft** profiles supports the following optimizations:
-
-* [General web delivery](#general-web-delivery). This optimization is also used for media streaming and large file download.
-
-
-**Azure CDN Standard from Verizon** and **Azure CDN Premium from Verizon** profiles support the following optimizations:
-
-* [General web delivery](#general-web-delivery). This optimization is also used for media streaming and large file download.
-
-* [Dynamic site acceleration](#dynamic-site-acceleration) 
-
-
-**Azure CDN Standard from Akamai** profiles support the following optimizations:
-
-* [General web delivery](#general-web-delivery) 
-
-* [General media streaming](#general-media-streaming)
-
-* [Video-on-demand media streaming](#video-on-demand-media-streaming)
-
-* [Large file download](#large-file-download)
-
-* [Dynamic site acceleration](#dynamic-site-acceleration) 
-
-Microsoft recommends that you test performance variations between different providers to select the optimal provider for your delivery.
-
-## <a name="select-and-configure-optimization-types"></a>Select and configure optimization types
-
-When you create a CDN endpoint, select an optimization type that best matches the scenario and type of content that you want the endpoint to deliver. **General web delivery** is the default selection. For existing **Azure CDN Standard from Akamai** endpoints only, you can update the optimization option at any time. This change doesn't interrupt delivery from Azure CDN. 
-
-1. In an **Azure CDN Standard from Akamai** profile, select an endpoint.
-
-    ![Endpoint selection](./media/cdn-optimization-overview/01_Akamai.png)
-
-2. Under SETTINGS, select **Optimization**. Then, select a type from the **Optimized for** drop-down list.
-
-    ![Optimization and type selection](./media/cdn-optimization-overview/02_Select.png)
-
-## <a name="optimization-for-specific-scenarios"></a>Optimization for specific scenarios
-
-You can optimize the CDN endpoint for one of these scenarios. 
-
-### <a name="general-web-delivery"></a>General web delivery
-
-General web delivery is the most common optimization option. It's designed for general web content optimization, such as webpages and web applications. This optimization also can be used for file and video downloads.
-
-A typical website contains static and dynamic content. Static content includes images, JavaScript libraries, and style sheets that can be cached and delivered to different users. Dynamic content is personalized for an individual user, such as news items that are tailored to a user profile. Dynamic content, such as shopping cart contents, isn't cached because it's unique to each user. General web delivery can optimize your entire website. 
+Dieser Artikel enthält eine Übersicht über verschiedene Optimierungsfeatures sowie Informationen zu deren Verwendung. Weitere Informationen zu Features und Einschränkungen finden Sie in den entsprechenden Artikeln zum jeweiligen Optimierungstyp.
 
 > [!NOTE]
-> If you are using an **Azure CDN Standard from Akamai** profile, select this optimization type if your average file size is smaller than 10 MB. Otherwise, if your average file size is larger than 10 MB, select **Large file download** from the **Optimized for** drop-down list.
+> Bei der Erstellung eines CDN-Endpunkts können die Optionen von **Optimiert für** basierend auf dem Typ des Profils, in dem der Endpunkt erstellt wird, variieren. Azure CDN-Anbieter wenden Verbesserungen je nach Szenario auf unterschiedliche Weise an. 
 
-### <a name="general-media-streaming"></a>General media streaming
+## <a name="provider-options"></a>Anbieteroptionen
 
-If you need to use the endpoint for live streaming and video-on-demand streaming, select the general media streaming optimization type.
+Profile für **Azure CDN Standard von Microsoft** unterstützen die folgenden Optimierungen:
 
-Media streaming is time-sensitive, because packets that arrive late on the client, such as frequent buffering of video content, can cause a degraded viewing experience. Media streaming optimization reduces the latency of media content delivery and provides a smooth streaming experience for users. 
+* [Allgemeine Webbereitstellung](#general-web-delivery). Diese Optimierung wird auch für Medienstreaming und den Download großer Datei verwendet.
 
-This scenario is common for Azure media service customers. When you use Azure media services, you get a single streaming endpoint that can be used for both live and on-demand streaming. With this scenario, customers don't need to switch to another endpoint when they change from live to on-demand streaming. General media streaming optimization supports this type of scenario.
 
-For **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, and **Azure CDN Premium from Verizon**, use the general web delivery optimization type to deliver general streaming media content.
+Profile für **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** unterstützen die folgenden Optimierungen:
 
-For more information about media streaming optimization, see [Media streaming optimization](cdn-media-streaming-optimization.md).
+* [Allgemeine Webbereitstellung](#general-web-delivery). Diese Optimierung wird auch für Medienstreaming und den Download großer Datei verwendet.
 
-### <a name="video-on-demand-media-streaming"></a>Video-on-demand media streaming
+* [Beschleunigung dynamischer Websites](#dynamic-site-acceleration) 
 
-Video-on-demand media streaming optimization improves video-on-demand streaming content. If you use an endpoint for video-on-demand streaming, use this option.
 
-For **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, and **Azure CDN Premium from Verizon** profiles, use the general web delivery optimization type to deliver video-on-demand streaming media content.
+Profile für **Azure CDN Standard von Akamai** unterstützen die folgenden Optimierungen:
 
-For more information about media streaming optimization, see [Media streaming optimization](cdn-media-streaming-optimization.md).
+* [Allgemeine Webbereitstellung](#general-web-delivery) 
+
+* [Allgemeines Medienstreaming](#general-media-streaming)
+
+* [Video on Demand-Medienstreaming](#video-on-demand-media-streaming)
+
+* [Download großer Dateien](#large-file-download)
+
+* [Beschleunigung dynamischer Websites](#dynamic-site-acceleration) 
+
+Microsoft empfiehlt, die Leistungsunterschiede zwischen verschiedenen Anbietern zu testen, um den optimalen Anbieter für die Übermittlung zu finden.
+
+## <a name="select-and-configure-optimization-types"></a>Auswählen und Konfigurieren von Optimierungstypen
+
+Wählen Sie beim Erstellen eines CDN-Endpunkts einen Optimierungstyp aus, der am besten zu Ihrem Szenario und zur Art der Inhalte passt, die Sie über den Endpunkt übermittelt möchten. Standardmäßig ist **Allgemeine Webbereitstellung** ausgewählt. Nur für vorhandene Endpunkte vom Typ **Azure CDN Standard von Akamai** können Sie die Optimierungsoption jederzeit aktualisieren. Die Übermittlung über Azure CDN wird durch diese Änderung nicht beeinträchtigt. 
+
+1. Wählen Sie in einem Profil für **Azure CDN Standard von Akamai** einen Endpunkt aus.
+
+    ![Endpunktauswahl](./media/cdn-optimization-overview/01_Akamai.png)
+
+2. Wählen Sie unter „EINSTELLUNGEN“ die Option **Optimierung** aus. Wählen Sie anschließend in der Dropdownliste **Optimiert für** einen Typ aus.
+
+    ![Auswählen von Optimierung und Typ](./media/cdn-optimization-overview/02_Select.png)
+
+## <a name="optimization-for-specific-scenarios"></a>Optimierung für bestimmte Szenarien
+
+Der CDN-Endpunkt kann für eines der folgenden Szenarien optimiert werden: 
+
+### <a name="general-web-delivery"></a>Allgemeine Webbereitstellung
+
+Allgemeine Webbereitstellung ist die am häufigsten verwendete Optimierungsoption. Sie wird für die Optimierung allgemeiner Webinhalte wie Webseiten und Webanwendungen verwendet. Die Optimierung eignet sich aber auch für Datei- und Videodownloads.
+
+Eine typische Website enthält sowohl statische als auch dynamische Inhalte. Statische Inhalte sind unter anderem Bilder, JavaScript-Bibliotheken und Stylesheets, die zwischengespeichert und an verschiedene Benutzer übermittelt werden können. Dynamische Inhalte werden für den jeweiligen Benutzer personalisiert. Hierzu zählen beispielsweise speziell auf ein Benutzerprofil zugeschnittene Nachrichten. Dynamische Inhalte, z. B. Warenkorbinhalte, werden nicht zwischengespeichert, da es sich hierbei um benutzerspezifische Inhalte handelt. Die allgemeine Webbereitstellung kann Ihre gesamte Website optimieren. 
 
 > [!NOTE]
-> If the CDN endpoint primarily serves video-on-demand content, use this optimization type. The major difference between this optimization type and the general media streaming optimization type is the connection retry time-out. The time-out is much shorter to work with live streaming scenarios.
+> Wählen Sie bei Verwendung eines Profils für **Azure CDN Standard von Akamai** diesen Optimierungstyp aus, wenn ihre Dateien im Schnitt kleiner als 10 MB sind. Wenn sie im Schnitt größer als 10 MB sind, wählen Sie stattdessen in der Dropdownliste **Optimiert für** die Option **Download großer Dateien** aus.
+
+### <a name="general-media-streaming"></a>Allgemeines Medienstreaming
+
+Wenn Sie den Endpunkt für Livestreaming und Video on Demand-Streaming verwenden müssen, wählen Sie den Optimierungstyp „Allgemeines Medienstreaming“ aus.
+
+Medienstreaming ist ein zeitkritischer Prozess, da das verspätete Eintreffen von Paketen beim Client, z. B. häufiges Puffern von Videoinhalten, eine Beeinträchtigung der Wiedergabe zur Folge haben kann. Die Medienstreaming-Optimierung verringert die Wartezeit bei der Übermittlung von Medieninhalten und bietet dem Benutzer reibungsloses Streaming. 
+
+Hierbei handelt es sich um ein gängiges Szenario für Azure Media Services-Kunden. Wenn Sie Azure Media Services verwenden, erhalten Sie einen einzigen Streamingendpunkt, der für Live- und On-Demand-Streaming verwendet werden kann. Dadurch müssen Kunden keinen anderen Endpunkt verwenden, wenn sie von Livestreaming zu On-Demand-Streaming wechseln. Dieses Szenario wird von der Optimierungsoption „Allgemeines Medienstreaming“ unterstützt.
+
+Verwenden Sie für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um allgemeine Streamingmedieninhalte zu übermitteln.
+
+Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung über das Azure Content Delivery Network](cdn-media-streaming-optimization.md).
+
+### <a name="video-on-demand-media-streaming"></a>Video on Demand-Medienstreaming
+
+Die Optimierung „Video on Demand-Medienstreaming“ verbessert das Streamen von Video on Demand-Inhalten. Wählen Sie diese Option, wenn Sie einen Endpunkt für Video on Demand-Streaming verwenden.
+
+Verwenden Sie bei Profilen für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um Inhalte von Video on Demand-Streamingmedien zu übermitteln.
+
+Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung über das Azure Content Delivery Network](cdn-media-streaming-optimization.md).
+
+> [!NOTE]
+> Verwenden Sie diesen Optimierungstyp, wenn der CDN-Endpunkt in erster Linie Video on Demand-Inhalte bereitstellt. Der Hauptunterschied zwischen diesem Optimierungstyp und dem Optimierungstyp „Allgemeines Medienstreaming“ ist das Timeout für wiederholte Verbindungsversuche. Für Livestreamingszenarien wird ein erheblich kürzeres Timeout verwendet.
 >
 
-### <a name="large-file-download"></a>Large file download
+### <a name="large-file-download"></a>Download großer Dateien
 
-For **Azure CDN Standard from Akamai** profiles, large file downloads are optimized for content larger than 10 MB. If your average file size is smaller than 10 MB, use general web delivery. If your average files sizes are consistently larger than 10 MB, it might be more efficient to create a separate endpoint for large files. For example, firmware or software updates typically are large files. To deliver files larger than 1.8 GB, the large file download optimization is required.
+Bei Verwendung von Profilen für **Azure CDN Standard von Akamai** ist der Download großer Dateien für Inhalte mit einer Größe von mehr als 10 MB optimiert. Wenn Ihre Dateien im Schnitt kleiner als 10 MB sind, verwenden Sie die Optimierung „Allgemeine Webbereitstellung“. Wenn Ihre Dateien durchweg größer als 10 MB sind, ist es unter Umständen effizienter, einen separaten Endpunkt für große Dateien zu erstellen. Firmware- oder Softwareupdates sind beispielsweise in der Regel große Dateien. Für die Bereitstellung von Dateien, die größer als 1,8 GB sind, ist die Optimierung für den Download großer Dateien erforderlich.
 
-For **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, and **Azure CDN Premium from Verizon** profiles, use the general web delivery optimization type to deliver large file download content. There is no limitation on file download size.
+Verwenden Sie bei Profilen für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** den Optimierungstyp „Allgemeine Webbereitstellung“, um Inhalte umfangreicher Dateidownloads zu übermitteln. Es gibt keine Einschränkung hinsichtlich der Dateidownloadgröße.
 
-For more information about large file optimization, see [Large file optimization](cdn-large-file-optimization.md).
+Weitere Informationen zur Optimierung für große Dateien finden Sie unter [Optimierung großer Dateidownloads über das Azure Content Delivery Network](cdn-large-file-optimization.md).
 
-### <a name="dynamic-site-acceleration"></a>Dynamic site acceleration
+### <a name="dynamic-site-acceleration"></a>Beschleunigung dynamischer Websites
 
- Dynamic site acceleration (DSA) is available for **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon**, and **Azure CDN Premium from Verizon** profiles. This optimization involves an additional fee to use; for more information, see [Content Delivery Network pricing](https://azure.microsoft.com/pricing/details/cdn/).
+ Die Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) steht bei Profilen für **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** zur Verfügung. Die Verwendung dieser Optimierung ist mit zusätzlichen Kosten verbunden. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
 
-DSA includes various techniques that benefit the latency and performance of dynamic content. Techniques include route and network optimization, TCP optimization, and more. 
+DSA umfasst verschiedene Maßnahmen zur Verbesserung der Wartezeit und der Leistung dynamischer Inhalte. Hierzu zählen unter anderem Routen- und Netzwerkoptimierungen sowie TCP-Optimierungen. 
 
-You can use this optimization to accelerate a web app that includes numerous responses that aren't cacheable. Examples are search results, checkout transactions, or real-time data. You can continue to use core Azure CDN caching capabilities for static data. 
+Mit dieser Optimierung können Sie eine Web-App mit zahlreichen nicht zwischenspeicherbaren Antworten beschleunigen. Beispiele hierfür wären etwa Suchergebnisse, Auftragsabschlusstransaktionen oder Echtzeitdaten. Für statische Daten können Sie weiterhin die grundlegenden Azure CDN-Cachefunktionen verwenden. 
 
-For more information about dynamic site acceleration, see [Dynamic site acceleration](cdn-dynamic-site-acceleration.md).
+Weitere Informationen zur Beschleunigung dynamischer Websites finden Sie unter [Beschleunigung dynamischer Websites durch Azure CDN](cdn-dynamic-site-acceleration.md).
 
 
 

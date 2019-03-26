@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub device-to-cloud options | Microsoft Docs
-description: Developer guide - guidance on when to use device-to-cloud messages, reported properties, or file upload for cloud-to-device communications.
+title: Azure IoT Hub – D2C-Optionen (Gerät-zu-Cloud) | Microsoft Docs
+description: Entwicklerhandbuch – Leitfaden, der angibt, wann D2C-Nachrichten, gemeldete Eigenschaften oder Dateiupload für die C2D-Kommunikation verwendet werden sollen.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -15,31 +15,31 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2019
 ms.locfileid: "57007980"
 ---
-# <a name="device-to-cloud-communications-guidance"></a>Device-to-cloud communications guidance
+# <a name="device-to-cloud-communications-guidance"></a>Leitfaden zur D2C-Kommunikation
 
-When sending information from the device app to the solution back end, IoT Hub exposes three options:
+Beim Senden von Informationen von der Geräte-App an das Lösungs-Back-End stehen in IoT Hub drei Optionen zur Verfügung:
 
-* [Device-to-cloud messages](iot-hub-devguide-messages-d2c.md) for time series telemetry and alerts.
+* [Gerät-zu-Cloud-Nachrichten](iot-hub-devguide-messages-d2c.md) für Time Series-Telemetrie und Warnungen.
 
-* [Device twin's reported properties](iot-hub-devguide-device-twins.md) for reporting device state information such as available capabilities, conditions, or the state of long-running workflows. For example, configuration and software updates.
+* [Gemeldete Eigenschaften des Gerätezwillings](iot-hub-devguide-device-twins.md) für die Meldung von Gerätestatusinformationen, z.B. verfügbare Funktionen, Bedingungen oder Status von Workflows mit langer Laufzeit. z.B. Konfigurations- und Softwareupdates.
 
-* [File uploads](iot-hub-devguide-file-upload.md) for media files and large telemetry batches uploaded by intermittently connected devices or compressed to save bandwidth.
+* [Dateiuploads](iot-hub-devguide-file-upload.md) für Mediendateien und große Telemetriebatches, die von zeitweise verbundenen Geräten hochgeladen oder komprimiert werden, um Bandbreite zu sparen.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Here is a detailed comparison of the various device-to-cloud communication options.
+Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die D2C-Kommunikation.
 
-|  | Device-to-cloud messages | Device twin's reported properties | File uploads |
+|  | D2C-Nachrichten | Gemeldete Eigenschaften des Gerätezwillings | Dateiuploads |
 | ---- | ------- | ---------- | ---- |
-| Scenario | Telemetry time series and alerts. For example, 256-KB sensor data batches sent every 5 minutes. | Available capabilities and conditions. For example, the current device connectivity mode such as cellular or WiFi. Synchronizing long-running workflows, such as configuration and software updates. | Media files. Large (typically compressed) telemetry batches. |
-| Storage and retrieval | Temporarily stored by IoT Hub, up to 7 days. Only sequential reading. | Stored by IoT Hub in the device twin. Retrievable using the [IoT Hub query language](iot-hub-devguide-query-language.md). | Stored in user-provided Azure Storage account. |
-| Size | Up to 256-KB messages. | Maximum reported properties size is 8 KB. | Maximum file size supported by Azure Blob Storage. |
-| Frequency | High. For more information, see [IoT Hub limits](iot-hub-devguide-quotas-throttling.md). | Medium. For more information, see [IoT Hub limits](iot-hub-devguide-quotas-throttling.md). | Low. For more information, see [IoT Hub limits](iot-hub-devguide-quotas-throttling.md). |
-| Protocol | Available on all protocols. | Available using MQTT or AMQP. | Available when using any protocol, but requires HTTPS on the device. |
+| Szenario | Telemetrie-Zeitreihen und -Warnungen, Beispiel: Sendung von 256-KB-Sensordatenbatches alle 5 Minuten | Verfügbare Funktionen und Bedingungen, z.B. der aktuelle Gerätekonnektivitätsmodus wie Mobilfunk oder WLAN. Synchronisierung von Workflows mit langer Laufzeit, z.B. Konfiguration und Softwareupdates. | Mediendateien. Große (normalerweise komprimierte) Telemetriebatches. |
+| Speichern und Abrufen | Temporäre Speicherung durch IoT Hub, bis zu 7 Tage. Nur sequenzielles Lesen. | Von IoT Hub im Gerätezwilling gespeichert. Abrufbar mithilfe der [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md). | Speicherung im vom Benutzer bereitgestellten Azure Storage-Konto. |
+| Größe | Nachrichten bis zu 256 KB | Die Maximalgröße gemeldeter Eigenschaften beträgt 8 KB. | Maximale von Azure Blob Storage unterstützte Dateigröße. |
+| Frequency | Hoch. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). | Mittel. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). | Niedrig. Weitere Informationen finden Sie unter [IoT Hub-Grenzwerte](iot-hub-devguide-quotas-throttling.md). |
+| Protokoll | Mit allen Protokollen verfügbar. | Mit MQTT oder AMQP verfügbar. | Mit jedem Protokoll verfügbar, auf dem Gerät ist jedoch HTTPS erforderlich. |
 
-An application may need to send information both as a telemetry time series or alert and make it available in the device twin. In this scenario, you can choose one of the following options:
+Eine Anwendung muss möglicherweise Informationen sowohl als Telemetriezeitreihen als auch als Warnung senden und diese außerdem im Gerätezwilling zur Verfügung stellen. In diesem Szenario können Sie eine der folgenden Optionen auswählen:
 
-* The device app sends a device-to-cloud message and reports a property change.
-* The solution back end can store the information in the device twin's tags when it receives the message.
+* Die Geräte-App sendet eine D2C-Nachricht und meldet eine Eigenschaftsänderung.
+* Das Lösungs-Back-End speichert die Informationen beim Empfang der Nachricht in den Tags des Gerätezwillings.
 
-Since device-to-cloud messages enable a much higher throughput than device twin updates, it is sometimes desirable to avoid updating the device twin for every device-to-cloud message.
+Da D2C-Nachrichten einen viel höheren Durchsatz zulassen als Gerätezwillingsupdates, ist es in einigen Fällen ratsam, das Gerätezwillingsupdate nicht für jede D2C-Nachricht durchzuführen.

@@ -11,15 +11,15 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 02/23/2019
 ms.locfileid: "56740938"
 ---
-Fluentd is an open-source data collector for unified logging. The `Fluentd` settings manage the container's connection to a [Fluentd](https://www.fluentd.org) server. The container includes a Fluentd logging provider, which allows your container to write logs and, optionally, metric data to a Fluentd server.
+Fluentd ist ein Open-Source-Datensammler für die einheitliche Protokollierung. Die `Fluentd`-Einstellungen verwalten die Verbindung des Containers mit einem [Fluentd](https://www.fluentd.org)-Server. Der Container enthält einen Fluentd-Protokollanbieter, der es Ihrem Container ermöglicht, Protokolldaten (und optional auch Metrikdaten) auf einen Fluentd-Server zu schreiben.
 
-The following table describes the configuration settings supported under the `Fluentd` section.
+In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die unter dem Abschnitt `Fluentd` unterstützt werden.
 
-| Name | Data type | Description |
+| NAME | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
-| `Host` | String | The IP address or DNS host name of the Fluentd server. |
-| `Port` | Integer | The port of the Fluentd server.<br/> The default value is 24224. |
-| `HeartbeatMs` | Integer | The heartbeat interval, in milliseconds. If no event traffic has been sent before this interval expires, a heartbeat is sent to the Fluentd server. The default value is 60000 milliseconds (1 minute). |
-| `SendBufferSize` | Integer | The network buffer space, in bytes, allocated for send operations. The default value is 32768 bytes (32 kilobytes). |
-| `TlsConnectionEstablishmentTimeoutMs` | Integer | The timeout, in milliseconds, to establish a SSL/TLS connection with the Fluentd server. The default value is 10000 milliseconds (10 seconds).<br/> If `UseTLS` is set to false, this value is ignored. |
-| `UseTLS` | Boolean | Indicates whether the container should use SSL/TLS for communicating with the Fluentd server. The default value is false. |
+| `Host` | Zeichenfolge | Die IP-Adresse oder der DNS-Hostname des Fluentd-Servers. |
+| `Port` | Ganze Zahl  | Der Port des Fluentd-Servers.<br/> Standardwert: 24224 |
+| `HeartbeatMs` | Ganze Zahl  | Das Heartbeatintervall in Millisekunden. Wurde bis zum Ablauf dieses Intervalls kein Ereignisdatenverkehr gesendet, wird ein Heartbeat an den Fluentd-Server gesendet. Standardwert: 60.000 Millisekunden (eine Minute) |
+| `SendBufferSize` | Ganze Zahl  | Der für Sendevorgänge zugeordnete Netzwerkpufferspeicher (in Byte). Standardwert: 32.768 Byte (32 KB) |
+| `TlsConnectionEstablishmentTimeoutMs` | Ganze Zahl  | Das Timeout (in Millisekunden) für die Herstellung einer SSL/TLS-Verbindung mit dem Fluentd-Server. Der Standardwert beträgt 10.000 Millisekunden (zehn Sekunden).<br/> Wenn `UseTLS` auf FALSE festgelegt ist, wird dieser Wert ignoriert. |
+| `UseTLS` | Boolescher Wert | Gibt an, ob der Container für die Kommunikation mit dem Fluentd-Server SSL/TLS verwenden soll. Der Standardwert ist „false“. |

@@ -1,7 +1,7 @@
 ---
-title: Connect to other services while moderating content - Content Moderator
+title: Herstellen der Verbindung mit anderen Diensten beim Moderieren von Inhalt – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Learn how to access other APIs for your Content Moderator workflows by using connectors.
+description: Erfahren Sie, wie Sie mithilfe von Connectors auf andere APIs für Ihre Content Moderator-Workflows zugreifen können.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -17,44 +17,44 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58116553"
 ---
-# <a name="connect-to-other-cognitive-services"></a>Connect to other cognitive services
+# <a name="connect-to-other-cognitive-services"></a>Herstellen der Verbindung mit anderen Cognitive Services
 
-Azure Content Moderator workflows can use other APIs, in addition to Content Moderator APIs. You access other APIs by using a connector in Content Moderator. The connector provides a link to the other APIs.
+Azure Content Moderator-Workflows können neben Content Moderator-APIs andere APIs verwenden. Mithilfe eines Connectors in Content Moderator greifen Sie auf andere APIs zu. Der Connector stellt einen Link zu den anderen APIs bereit.
 
-Content Moderator includes these default connectors:
+Content Moderator umfasst die folgenden Standardconnectors:
 
-* Emotion API
-* Face API
-* PhotoDNA Cloud Service
+* Emotionen-API
+* Gesichtserkennungs-API
+* PhotoDNA-Clouddienst
 
-![Content Moderator available connectors](images/connectors-1.png)
+![Für Content Moderator verfügbare Connectors](images/connectors-1.png)
 
-## <a name="verify-your-credentials"></a>Verify your credentials 
+## <a name="verify-your-credentials"></a>Überprüfen Ihrer Anmeldeinformationen 
 
-Before you define a workflow, ensure that you have valid credentials for the connector API that you want to use:
+Vergewissern Sie sich vor dem Definieren eines Workflows, dass Sie über gültige Anmeldeinformationen für die gewünschte Connector-API verfügen:
 
-1. On the Review tool Dashboard, select **Settings** > **Connectors**.
+1. Wählen Sie im Prüfungstool „Dashboard“ **Einstellungen** > **Connectors** aus.
 
-   ![Content Moderator select Connectors](images/connectors-2.png)
+   ![Auswahl von „Connectors“ in Content Moderator](images/connectors-2.png)
 
-2. Select the **Edit** symbol next to the connector that you want to verify credentials for.
+2. Klicken Sie auf das **Bearbeitungssymbol** neben dem Connector, für den Sie Anmeldeinformationen überprüfen möchten.
 
-   ![Content Moderator select the Edit symbol](images/connectors-3.png)
+   ![Auswahl des Bearbeitungssymbols in Content Moderator](images/connectors-3.png)
 
-3. The subscription key appears. If you make any edits, select **Save** when you are finished.
+3. Der Abonnementschlüssel wird angezeigt. Wenn Sie Änderungen vornehmen, klicken Sie danach auf **Speichern**.
 
-   ![Content Moderator Edit Connectors page](images/connectors-4-1.png)
+   ![Seite „Connectors bearbeiten“ in Content Moderator](images/connectors-4-1.png)
  
-## <a name="add-a-connector"></a>Add a connector
+## <a name="add-a-connector"></a>Hinzufügen eines Connectors
 
-1. Before you add a connector, you need a subscription key. On the Review tool Dashboard, select **Settings** > **Credentials**. Select and copy the value that's in the **Ocp-Admin-Subscription-Key** box.
+1. Bevor Sie einen Connector hinzufügen, benötigen Sie einen Abonnementschlüssel. Wählen Sie im Prüfungstool „Dashboard“ **Einstellungen** > **Anmeldeinformationen** aus. Markieren Sie den Wert im Feld **Ocp-Admin-Subscription-Key**, und kopieren Sie ihn.
 
-2. Select **Connectors**. Select one of the available connectors that are displayed on the Review tool Dashboard. Then, select **Connect**. 
+2. Wählen Sie **Connectors** aus. Wählen Sie einen der verfügbaren Connectors aus, die im Prüfungstool „Dashboard“ angezeigt werden. Wählen Sie dann **Verbinden** aus. 
 
-   ![Content Moderator Add Connector page](images/connectors-5.png)
+   ![Seite „Connector hinzufügen“ in Content Moderator](images/connectors-5.png)
 
-3. In the **Ocp-Admin-Subscription-Key** box, paste the key that you copied. Then, select **Save**.
+3. Fügen Sie in das Feld **Ocp-Admin-Subscription-Key** den Schlüssel ein, den Sie kopiert haben. Wählen Sie anschließend **Speichern** aus.
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-* Learn how to use connectors to [define custom workflows](workflows.md).
+* Erfahren Sie über das [Definieren von benutzerdefinierten Workflows](workflows.md) mithilfe von Connectors.

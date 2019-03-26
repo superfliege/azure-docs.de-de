@@ -1,6 +1,6 @@
 ---
-title: Mount or unmount an Azure NetApp Files volume for Windows or Linux virtual machines | Microsoft Docs
-description: Describes how to mount or unmount a volume for virtual machines or Linux virtual machines.
+title: Einbinden oder Aufheben der Einbindung eines Azure NetApp Files-Volumes auf virtuellen Windows- oder Linux-Computern | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie ein Volume auf virtuellen (Linux-)Computern eingebunden oder die Einbindung aufgehoben wird.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -21,10 +21,10 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57771904"
 ---
-# <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Mount or unmount a volume for Windows or Linux virtual machines 
+# <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern 
 
-You can mount or unmount a volume for Windows or Linux virtual machines as necessary.  The mount instructions for Linux virtual machines are available on Azure NetApp Files.  
+Volumes für virtuelle Windows- oder Linux-Computer lassen sich nach Bedarf einbinden. Dies kann jederzeit wieder rückgängig gemacht werden.  Die Einbindungsanweisungen für virtuelle Linux-Computer stehen in Azure NetApp Files zur Verfügung.  
 
-1. Click the **Volumes** blade, and then select the volume for which you want to mount NFS exports. 
-2. Click **Mount instructions** from the selected volume, and then follow the instructions. 
+1. Klicken Sie auf das Blatt **Volumes**, und wählen Sie das Volume aus, für das Sie NFS-Exporte einbinden möchten. 
+2. Klicken Sie für das ausgewählte Volume auf **Einbindungsanweisungen**, und führen Sie die Schritte aus. 
 

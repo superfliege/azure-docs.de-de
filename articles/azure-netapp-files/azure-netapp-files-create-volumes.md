@@ -1,6 +1,6 @@
 ---
-title: Create a volume for Azure NetApp Files | Microsoft Docs
-description: Describes how to create a volume for Azure NetApp Files.
+title: Erstellen eines Volumes für Azure NetApp Files | Microsoft-Dokumentation
+description: Beschreibt die Vorgehensweise zum Erstellen eines Volumes für Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -21,59 +21,59 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57770265"
 ---
-# <a name="create-a-volume-for-azure-netapp-files"></a>Create a volume for Azure NetApp Files
+# <a name="create-a-volume-for-azure-netapp-files"></a>Erstellen eines Volumes für Azure NetApp Files
 
-A volume's capacity consumption counts against its pool's provisioned capacity.  You can create multiple volumes in a capacity pool, but the volumes' total capacity consumption must not exceed the pool size. 
+Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.  In einem Kapazitätspool können mehrere Volumes erstellt werden, der gesamte Kapazitätsverbrauch der Volumes darf jedoch die Poolgröße nicht übersteigen. 
 
-## <a name="before-you-begin"></a>Before you begin 
-You must have already set up a capacity pool.   
-[Set up a capacity pool](azure-netapp-files-set-up-capacity-pool.md)   
-A subnet must be delegated to Azure NetApp Files.  
-[Delegate a subnet to Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+## <a name="before-you-begin"></a>Voraussetzungen 
+Sie müssen bereits einen Kapazitätspool eingerichtet haben.   
+[Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)   
+Ein Subnetz muss an Azure NetApp Files delegiert werden.  
+[Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 
-## <a name="steps"></a>Steps 
-1.  Click the **Volumes** blade from the Manage Capacity Pools blade. 
-2.  Click **+ Add volume** to create a volume.  
-    The New Volume window appears.
+## <a name="steps"></a>Schritte 
+1.  Klicken Sie auf dem Blatt „Manage Capacity Pools“ (Kapazitätspools verwalten) auf das Blatt **Volumes**. 
+2.  Klicken Sie auf **+ Volume hinzufügen**, um ein Volume zu erstellen.  
+    Das Fenster „Neues Volume“ wird angezeigt.
 
-3.  In the New Volume window, click **Create** and provide information for the following fields:   
+3.  Klicken Sie im Fenster „Neues Volume“ auf **Erstellen**, und geben Sie Informationen für die folgenden Felder an:   
     * **Name**      
-        Specify the name for the volume that you are creating.   
+        Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
-        The name must be unique within a resource group. It must be at least three characters long.  It can use any alphanumeric characters.
+        Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen lang sein.  Er darf beliebige alphanumerische Zeichen enthalten.
 
-    * **File path**  
-        Specify the file path that will be used to create the export path for the new volume. The export path is used to mount and access the volume.   
+    * **Dateipfad**  
+        Geben Sie den Dateipfad zum Erstellen des Exportpfads für das neue Volume an. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
      
-        The file path name can contain letters, numbers, and hyphens ("-") only. It must be between 16 and 40 characters in length.  
+        Der Dateipfadname darf nur Buchstaben, Zahlen und Bindestriche („-“) enthalten. Er muss 16 bis 40 Zeichen umfassen.  
 
-    * **Quota**  
-        Specify the amount of logical storage that is allocated to the volume.  
+    * **Kontingent**  
+        Geben Sie die Menge an logischem Speicherplatz an, die dem Volume zugewiesen wird.  
 
-        The **Available quota** field shows the amount of unused space in the chosen capacity pool that you can use towards creating a new volume. The size of the new volume must not exceed the available quota.  
+        Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.  
 
-    * **Virtual network**  
-        Specify the Azure virtual network (Vnet) from which you want to access the volume.  
+    * **Virtuelles Netzwerk**  
+        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
 
-        The Vnet you specify must have a subnet delegated to Azure NetApp Files. The Azure NetApp Files service can be accessed only from the same Vnet or from a Vnet that is in the same region as the volume through Vnet peering. You can also access the volume from  your on-premise network through Express Route.   
+        Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Auf den Azure NetApp Files-Dienst kann nur vom gleichen VNET aus oder per VNET-Peering von einem VNET aus zugegriffen werden, das sich in der gleichen Region befindet wie das Volume. Sie können auch über ExpressRoute von Ihrem lokalen Netzwerk aus auf das Volume zugreifen.   
 
-    * **Subnet**  
-        Specify the subnet that you want to use for the volume.  
-        The subnet you specify must be delegated to Azure NetApp Files. 
+    * **Subnetz**  
+        Geben Sie das Subnetz an, das Sie für das Volume verwenden möchten.  
+        Das von Ihnen angegebene Subnetz muss an Azure NetApp Files delegiert werden. 
         
-        If you have not delegated a subnet, you can click **Create new** on the Create a Volume page. Then in the Create Subnet page, specify the subnet information, and select **Microsoft.NetApp/volumes** to delegate the subnet for Azure NetApp Files. Note that in each Vnet, only one subnet can be delegated to Azure NetApp Files.   
+        Wenn Sie kein Subnetz delegiert haben, klicken Sie auf der Seite „Volume erstellen“ auf **Neu erstellen**. Geben Sie dann auf der Seite „Subnetz erstellen“ die Subnetzinformationen an, und wählen Sie **Microsoft.NetApp/volumes** aus, um das Subnetz für Azure NetApp Files zu delegieren. Beachten Sie, dass in jedem VNET nur ein Subnetz an Azure NetApp Files delegiert werden kann.   
  
-        ![New volume](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Neues Volume](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
-        ![Create subnet](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+        ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
 
-4.  Click **OK**. 
+4.  Klicken Sie auf **OK**. 
  
-A volume inherits subscription, resource group, location attributes from its capacity pool. To monitor the volume deployment status, you can use the Notifications tab.
+Ein Volume erbt Abonnement-, Ressourcengruppen- und Standortattribute aus dem Kapazitätspool. Den Volumebereitstellungsstatus können Sie auf der Benachrichtigungsregisterkarte überwachen.
 
-## <a name="next-steps"></a>Next steps  
-* [Configure export policy for a volume (optional)](azure-netapp-files-configure-export-policy.md)
-* [Learn about virtual network integration for Azure services](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+## <a name="next-steps"></a>Nächste Schritte  
+* [Konfigurieren der Exportrichtlinie für ein Volume (optional)](azure-netapp-files-configure-export-policy.md)
+* [Erfahren Sie mehr über die Integration virtueller Netzwerke für Azure-Dienste](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 

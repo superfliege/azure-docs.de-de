@@ -1,7 +1,7 @@
 ---
-title: Correct misspelled words
+title: Korrigieren falsch geschriebener Wörter
 titleSuffix: Azure
-description: Correct misspelled words in utterances by adding Bing Spell Check API V7 to LUIS endpoint queries.
+description: Korrigieren Sie falsch geschriebene Wörter in Äußerungen, indem Sie LUIS-Endpunktabfragen die Bing-Rechtschreibprüfungs-API V7 hinzufügen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,63 +18,63 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2019
 ms.locfileid: "57341788"
 ---
-# <a name="correct-misspelled-words-with-bing-spell-check"></a>Correct misspelled words with Bing Spell Check
+# <a name="correct-misspelled-words-with-bing-spell-check"></a>Korrigieren falsch geschriebener Wörter mit der Bing-Rechtschreibprüfung
 
-You can integrate your LUIS app with [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) to correct misspelled words in utterances before LUIS predicts the score and entities of the utterance. 
+Sie können die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) in Ihrer LUIS-App integrieren, um falsch geschriebene Wörter in Äußerungen zu korrigieren, bevor LUIS diese bewertet und die Entitäten der Äußerung vorhersagt. 
 
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Create first key for Bing Spell Check V7
-Your [first Bing Spell Check API v7 key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) is free. 
+## <a name="create-first-key-for-bing-spell-check-v7"></a>Erstellen des ersten Schlüssels für die Bing-Rechtschreibprüfungs-API V7
+Ihr [erster Schlüssel für die Bing-Rechtschreibprüfungs-API v7](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ist kostenlos. 
 
-![Create free key](./media/luis-tutorial-bing-spellcheck/free-key.png)
+![Erstellen eines kostenlosen Schlüssels](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
 <a name"create-subscription-key"></a>
-## <a name="create-endpoint-key"></a>Create Endpoint key
-If your free key expired, create an endpoint key.
+## <a name="create-endpoint-key"></a>Erstellen eines Endpunktschlüssels
+Wenn Ihr kostenloser Schlüssel abgelaufen ist, erstellen Sie einen Endpunktschlüssel.
 
-1. Log in to the [Azure portal](https://portal.azure.com). 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
 
-2. Select **Create a resource** in the top left corner.
+2. Wählen Sie in der linken oberen Ecke **Ressource erstellen** aus.
 
-3. In the search box, enter `Bing Spell Check API V7`.
+3. Geben Sie im Suchfeld `Bing Spell Check API V7`ein.
 
-    ![Search for Bing Spell Check API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
+    ![Suchen der Bing-Rechtschreibprüfungs-API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
-4. Select the service. 
+4. Wählen Sie den Dienst aus. 
 
-5. An information panel appears to the right containing information including the Legal Notice. Select **Create** to begin the subscription creation process. 
+5. Auf der rechten Seite wird ein Informationsbereich angezeigt, der Informationen sowie die rechtlichen Hinweise enthält. Wählen Sie **Erstellen** aus, um mit der Abonnementerstellung zu beginnen. 
 
-6. In the next panel, enter your service settings. Wait for service creation process to finish.
+6. Geben Sie im nächsten Bereich Ihre Diensteinstellungen an. Warten Sie, bis die Diensterstellung abgeschlossen wurde.
 
-    ![Enter service settings](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
+    ![Eingeben von Diensteinstellungen](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. Select **All resources** under the **Favorites** title on the left side navigation.
+7. Wählen Sie auf der linken Navigationsleiste **Alle Ressourcen** unter der Überschrift **Favoriten** aus.
 
-8. Select the new service. Its type is **Cognitive Services** and the location is **global**. 
+8. Wählen Sie den neuen Dienst aus. Der Typ ist **Cognitive Services**, und der Standort ist **global**. 
 
-9. In the main panel, select **Keys** to see your new keys.
+9. Wählen Sie im Hauptbereich **Schlüssel** aus, um Ihre neuen Schlüssel anzuzeigen.
 
-    ![Grab keys](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
+    ![Abrufen von Schlüsseln](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. Copy the first key. You only need one of the two keys. 
+10. Kopieren Sie den ersten Schlüssel. Sie benötigen nur einen der beiden Schlüssel. 
 
-## <a name="using-the-key-in-luis-test-panel"></a>Using the key in LUIS test panel
-There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
+## <a name="using-the-key-in-luis-test-panel"></a>Verwenden des Schlüssels im LUIS-Testbereich
+Es gibt zwei Bereiche in LUIS, in denen Sie den Schlüssel verwenden. Die erste ist der [Testbereich](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Der Schlüssel wird nicht in LUIS gespeichert, sondern ist stattdessen eine Sitzungsvariable. Sie müssen den Schlüssel jedes Mal festlegen, wenn Sie im Testbereich den Dienst Bing-Rechtschreibprüfungs-API V7 auf eine Äußerung anwenden möchten. [Anweisungen](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) zum Festlegen des Schlüssels finden Sie im Testbereich.
 
-## <a name="adding-the-key-to-the-endpoint-url"></a>Adding the key to the endpoint URL
-The endpoint query needs the key passed in the query string parameters for each query you want to apply spelling correction. You may have a chatbot that calls LUIS or you may call the LUIS endpoint API directly. Regardless of how the endpoint is called, each and every call must include the required information for spelling corrections to work properly.
+## <a name="adding-the-key-to-the-endpoint-url"></a>Hinzufügen des Schlüssels zur Endpunkt-URL
+Sie müssen der Endpunktabfrage den Schlüssel in den Parametern der Abfragezeichenfolgen für jede Abfrage übergeben, auf die Sie die Rechtschreibprüfung anwenden möchten. Ihr Chatbot könnte beispielsweise LUIS aufrufen, oder Sie rufen die LUIS-Endpunkt-API direkt auf. Unabhängig davon, wie der Endpunkt aufgerufen wird, muss jeder Aufruf die erforderlichen Informationen enthalten, damit die Rechtschreibkorrektur ordnungsgemäßen funktioniert.
 
-The endpoint URL has several values that need to be passed correctly. The Bing Spell Check API v7 key is just another one of these. You must set the **spellCheck** parameter to true and you must set the value of **bing-spell-check-subscription-key** to the key value:
+Die Endpunkt-URL enthält mehrere Werte, die ordnungsgemäß übergeben werden müssen. Der Schlüssel für die Bing-Rechtschreibprüfungs-API v7 ist nur einer davon. Sie müssen den **spellCheck**-Parameter auf TRUE und den Wert von **bing-spell-check-subscription-key** auf den Schlüsselwert festlegen:
 
 `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
 
-## <a name="send-misspelled-utterance-to-luis"></a>Send misspelled utterance to LUIS
-1. In a web browser, copy the preceding string and replace the `region`, `appId`, `luisKey`, and `bingKey` with your own values. Make sure to use the endpoint region, if it is different from your publishing [region](luis-reference-regions.md).
+## <a name="send-misspelled-utterance-to-luis"></a>Übermitteln falsch geschriebener Äußerungen an LUIS
+1. Kopieren Sie in einem Webbrowser die vorhergehende Zeichenfolge, und ersetzen Sie `region`, `appId`, `luisKey` und `bingKey` durch Ihre eigenen Werte. Sie müssen unbedingt die Endpunktregion verwenden, wenn diese sich von der [Veröffentlichungsregion](luis-reference-regions.md) unterscheidet.
 
-2. Add a misspelled utterance such as "How far is the mountainn?". In English, `mountain`, with one `n`, is the correct spelling. 
+2. Fügen Sie eine falsch geschriebene Äußerung wie z.B. „How far is the mountainn?“ hinzu. Im Englischen ist `mountain` mit einem `n` die richtige Schreibweise. 
 
-3. Select enter to send the query to LUIS.
+3. Drücken Sie die EINGABETASTE, um die Abfrage an LUIS zu senden.
 
-4. LUIS responds with a JSON result for `How far is the mountain?`. If Bing Spell Check API v7 detects a misspelling, the `query` field in the LUIS app's JSON response contains the original query, and the `alteredQuery` field contains the corrected query sent to LUIS.
+4. LUIS antwortet mit einem JSON-Ergebnis für `How far is the mountain?`. Wenn die Bing-Rechtschreibprüfungs-API v7 einen Rechtschreibfehler erkennt, enthält das Feld `query` in der JSON-Antwort der LUIS-App die ursprüngliche Abfrage und das Feld `alteredQuery` die korrigierte, an LUIS gesendete Abfrage.
 
 ```json
 {
@@ -88,11 +88,11 @@ The endpoint URL has several values that need to be passed correctly. The Bing S
 }
 ```
 
-## <a name="ignore-spelling-mistakes"></a>Ignore spelling mistakes
-If you don't want to use the Bing Spell Check API v7 service, you can label utterances that have spelling mistakes so that LUIS can learn proper spelling as well as typos. This option requires more labeling effort than using a spell checker.
+## <a name="ignore-spelling-mistakes"></a>Ignorieren von Rechtschreibfehlern
+Wenn Sie den Dienst Bing-Rechtschreibprüfungs-API V7 nicht verwenden möchten, können Sie Äußerungen mit Rechtschreibfehlern kennzeichnen, damit LUIS die richtige Schreibweise sowie Tippfehler erlernen kann. Diese Option erfordert einen höheren Aufwand für die Bezeichnung als die Verwendung einer Rechtschreibprüfung.
 
-## <a name="publishing-page"></a>Publishing page
-The [publishing](luis-how-to-publish-app.md) page has an **Enable Bing spell checker** checkbox. This is a convenience to create the key and understand how the endpoint URL changes. You still have to use the correct endpoint parameters in order to have spelling corrected for each utterance. 
+## <a name="publishing-page"></a>Seite „Veröffentlichen“
+Die Seite [Veröffentlichen](luis-how-to-publish-app.md) enthält das Kontrollkästchen **Enable Bing spell checker** (Bing-Rechtschreibprüfung aktivieren). Dieses vereinfacht das Erstellen des Schlüssels und hilft zu verstehen, wie sich die Endpunkt-URL ändert. Sie müssen trotzdem die richtigen Endpunktparameter verwenden, damit die Rechtschreibung für jede Äußerung korrigiert wird. 
 
 > [!div class="nextstepaction"]
-> [Learn more about example utterances](luis-how-to-add-example-utterances.md)
+> [Weitere Informationen zu Beispieläußerungen](luis-how-to-add-example-utterances.md)

@@ -1,6 +1,6 @@
 ---
-title: Virtual machine size flexibility -Azure Reserved VM Instances | Microsoft Docs
-description: Learn what size series a reservation discount applies to when you by a reserved VM instance.
+title: Flexibilität bei der VM-Größe – Azure Reserved VM Instances | Microsoft-Dokumentation
+description: Es wird beschrieben, für welche Größenserie ein Reservierungsrabatt gilt, wenn Sie eine reservierte VM-Instanz erwerben.
 services: virtual-machines-windows
 documentationcenter: ''
 author: yashar

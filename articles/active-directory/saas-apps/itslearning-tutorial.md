@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with itslearning | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and itslearning.
+title: 'Tutorial: Azure Active Directory-Integration mit itslearning | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und itslearning konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,199 +22,199 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57900759"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Tutorial: Azure Active Directory integration with itslearning
+# <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Tutorial: Azure Active Directory-Integration von itslearning
 
-In this tutorial, you learn how to integrate itslearning with Azure Active Directory (Azure AD).
+In diesem Tutorial erfahren Sie, wie Sie itslearning in Azure Active Directory (Azure AD) integrieren.
 
-Integrating itslearning with Azure AD provides you with the following benefits:
+Die Integration von itslearning in Azure AD bietet folgende Vorteile:
 
-- You can control in Azure AD who has access to itslearning
-- You can enable your users to automatically get signed-on to itslearning (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure portal
+- Sie können in Azure AD steuern, wer Zugriff auf itslearning hat.
+- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei itslearning anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Voraussetzungen
 
-To configure Azure AD integration with itslearning, you need the following items:
+Um die Azure AD-Integration mit itslearning konfigurieren zu können, benötigen Sie Folgendes:
 
-- An Azure AD subscription
-- An itslearning single sign-on enabled subscription
+- Ein Azure AD-Abonnement
+- Ein itslearning-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-To test the steps in this tutorial, you should follow these recommendations:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Do not use your production environment, unless it is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Adding itslearning from the gallery
-1. Configuring and testing Azure AD single sign-on
+1. Hinzufügen von itslearning über den Katalog
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-itslearning-from-the-gallery"></a>Adding itslearning from the gallery
-To configure the integration of itslearning into Azure AD, you need to add itslearning from the gallery to your list of managed SaaS apps.
+## <a name="adding-itslearning-from-the-gallery"></a>Hinzufügen von itslearning über den Katalog
+Zum Konfigurieren der Integration von itslearning in Azure AD müssen Sie itslearning aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**To add itslearning from the gallery, perform the following steps:**
+**Um itslearning aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-1. Navigate to **Enterprise applications**. Then go to **All applications**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Applications][2]
+    ![ANWENDUNGEN][2]
     
-1. To add new application, click **New application** button on the top of dialog.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Applications][3]
+    ![ANWENDUNGEN][3]
 
-1. In the search box, type **itslearning**.
+1. Geben Sie im Suchfeld als Suchbegriff **itslearning** ein.
 
-    ![Creating an Azure AD test user](./media/itslearning-tutorial/tutorial_itslearning_search.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/itslearning-tutorial/tutorial_itslearning_search.png)
 
-1. In the results panel, select **itslearning**, and then click **Add** button to add the application.
+1. Wählen Sie im Ergebnisbereich die Option **itslearning** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Creating an Azure AD test user](./media/itslearning-tutorial/tutorial_itslearning_addfromgallery.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/itslearning-tutorial/tutorial_itslearning_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with itslearning based on a test user called "Britta Simon".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+Dieser Abschnitt veranschaulicht anhand einer Testbenutzerin namens Britta Simon, wie das einmalige Anmelden von Azure AD in itslearning konfiguriert und getestet wird.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in itslearning is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in itslearning needs to be established.
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in itslearning als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in itslearning muss eine Linkbeziehung eingerichtet werden.
 
-In itslearning, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.
+Weisen Sie in itslearning den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
-To configure and test Azure AD single sign-on with itslearning, you need to complete the following building blocks:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei itslearning müssen Sie die folgenden Schritte ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-1. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-1. **[Creating an itslearning test user](#creating-an-itslearning-test-user)** - to have a counterpart of Britta Simon in itslearning that is linked to the Azure AD representation of user.
-1. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines itslearning-Testbenutzers](#creating-an-itslearning-test-user)**, um ein Pendant von Britta Simon in itslearning zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your itslearning application.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer itslearning-Anwendung.
 
-**To configure Azure AD single sign-on with itslearning, perform the following steps:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei itslearning die folgenden Schritte aus:**
 
-1. In the Azure portal, on the **itslearning** application integration page, click **Single sign-on**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **itslearning** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-1. On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/itslearning-tutorial/tutorial_itslearning_samlbase.png)
+    ![Configure single sign-on](./media/itslearning-tutorial/tutorial_itslearning_samlbase.png)
 
-1. On the **itslearning Domain and URLs** section, perform the following steps:
+1. Führen Sie im Abschnitt **Domäne und URLs für itslearning** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/itslearning-tutorial/tutorial_itslearning_url.png)
+    ![Configure single sign-on](./media/itslearning-tutorial/tutorial_itslearning_url.png)
 
-    a. In the **Sign-on URL** textbox, type a URL as:
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein:
     
     | |
     |--| 
     | `https://www.itslearning.com/index.aspx`|
     | `https://us1.itslearning.com/index.aspx`|
 
-    b. In the **Identifier** textbox, type a URL as: `urn:mace:saml2v2.no:services:com.itslearning`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL wie Folgende ein: `urn:mace:saml2v2.no:services:com.itslearning`
 
-1. On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/itslearning-tutorial/tutorial_itslearning_certificate.png) 
+    ![Configure single sign-on](./media/itslearning-tutorial/tutorial_itslearning_certificate.png) 
 
-1. Click **Save** button.
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/itslearning-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/itslearning-tutorial/tutorial_general_400.png)
 
-1. To configure single sign-on on **itslearning** side, you need to send the downloaded **Metadata XML** to [itslearning support team](mailto:support@itslearning.com). They set this setting to have the SAML SSO connection set properly on both sides.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **itslearning** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [itslearning-Supportteam](mailto:support@itslearning.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!  After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom. You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Create Azure AD User][100]
+![Azure AD-Benutzer erstellen][100]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
-    ![Creating an Azure AD test user](./media/itslearning-tutorial/create_aaduser_01.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/itslearning-tutorial/create_aaduser_01.png) 
 
-1. To display the list of users, go to **Users and groups** and click **All users**.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
-    ![Creating an Azure AD test user](./media/itslearning-tutorial/create_aaduser_02.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/itslearning-tutorial/create_aaduser_02.png) 
 
-1. To open the **User** dialog, click **Add** on the top of the dialog.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
-    ![Creating an Azure AD test user](./media/itslearning-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/itslearning-tutorial/create_aaduser_03.png) 
 
-1. On the **User** dialog page, perform the following steps:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
-    ![Creating an Azure AD test user](./media/itslearning-tutorial/create_aaduser_04.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/itslearning-tutorial/create_aaduser_04.png) 
 
-    a. In the **Name** textbox, type **BrittaSimon**.
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    b. In the **User name** textbox, type the **email address** of BrittaSimon.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
-    c. Select **Show Password** and write down the value of the **Password**.
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Click **Create**.
+    d. Klicken Sie auf **Create**.
  
-### <a name="creating-an-itslearning-test-user"></a>Creating an itslearning test user
+### <a name="creating-an-itslearning-test-user"></a>Erstellen eines itslearning-Testbenutzers
 
-In this section, you create a user called Britta Simon in itslearning. Work with [itslearning Client support team](mailto:support@itslearning.com) to add the users in the itslearning platform. Users must be created and activated before you use single sign-on.
+In diesem Abschnitt erstellen Sie in itslearning eine Benutzerin mit dem Namen Britta Simon. Wenden Sie sich an das  [Clientsupportteam von itslearning](mailto:support@itslearning.com), um die Benutzer der itslearning-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to itslearning.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf itslearning gewähren.
 
-![Assign User][200] 
+![Benutzer zuweisen][200] 
 
-**To assign Britta Simon to itslearning, perform the following steps:**
+**Um Britta Simon zu itslearning zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-    ![Assign User][201] 
+    ![Benutzer zuweisen][201] 
 
-1. In the applications list, select **itslearning**.
+1. Wählen Sie in der Anwendungsliste **itslearning** aus.
 
-    ![Configure Single Sign-On](./media/itslearning-tutorial/tutorial_itslearning_app.png) 
+    ![Configure single sign-on](./media/itslearning-tutorial/tutorial_itslearning_app.png) 
 
-1. In the menu on the left, click **Users and groups**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Assign User][202] 
+    ![Benutzer zuweisen][202] 
 
-1. Click **Add** button. Then select **Users and groups** on **Add Assignment** dialog.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Assign User][203]
+    ![Benutzer zuweisen][203]
 
-1. On **Users and groups** dialog, select **Britta Simon** in the Users list.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-1. Click **Select** button on **Users and groups** dialog.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-1. Click **Assign** button on **Add Assignment** dialog.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-When you click the itslearning tile in the Access Panel, you should get login page of itslearning application. Click **Log in with Windows Azure ACS1** for successful login into the application.
+Wenn Sie im Zugriffsbereich auf die Kachel „itslearning“ klicken, sollte die Anmeldeseite der itslearning-Anwendung angezeigt werden. Klicken Sie auf **Log in with Windows Azure ACS1**, um sich erfolgreich bei der Anwendung anzumelden.
 
-  ![Login](./media/itslearning-tutorial/login.png)
+  ![Anmeldung](./media/itslearning-tutorial/login.png)
 
-For more information about the Access Panel, see [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Additional resources
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

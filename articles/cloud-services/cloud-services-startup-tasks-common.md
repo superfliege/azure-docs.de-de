@@ -1,6 +1,6 @@
 ---
-title: Common startup tasks for Cloud Services | Microsoft Docs
-description: Provides some examples of common startup tasks you may want to perform in your cloud services web role or worker role.
+title: Häufige Starttasks für Clouddienste | Microsoft-Dokumentation
+description: Enthält einige Beispiele für häufige Starttasks, die Sie vielleicht in der Web- oder Workerrolle des Clouddiensts ausführen möchten.
 services: cloud-services
 documentationcenter: ''
 author: jpconnock
@@ -21,17 +21,17 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58181825"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>Common Cloud Service startup tasks
-This article provides some examples of common startup tasks you may want to perform in your cloud service. You can use startup tasks to perform operations before a role starts. Operations that you might want to perform include installing a component, registering COM components, setting registry keys, or starting a long running process. 
+# <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
+Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Starttasks können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
 
-See [this article](cloud-services-startup-tasks.md) to understand how startup tasks work, and specifically how to create the entries that define a startup task.
+In [diesem Artikel](cloud-services-startup-tasks.md) erfahren Sie etwas über die Funktionsweise von Starttasks und insbesondere darüber, wie die Einträge zum Definieren einer Starttask erstellt werden.
 
 > [!NOTE]
-> Startup tasks are not applicable to Virtual Machines, only to Cloud Service Web and Worker roles.
+> Starttasks gelten nicht für virtuelle Computer, sondern nur für Web- und Workerrollen von Clouddiensten.
 > 
 
-## <a name="define-environment-variables-before-a-role-starts"></a>Define environment variables before a role starts
-If you need environment variables defined for a specific task, use the [Environment] element inside the [Task] element.
+## <a name="define-environment-variables-before-a-role-starts"></a>Definieren von Umgebungsvariablen vor dem Starten einer Rolle
+Wenn Sie Umgebungsvariablen für einen bestimmten Task benötigen, können Sie das [Umgebung]-Element innerhalb des [Aufgabe]-Elements verwenden.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -48,7 +48,7 @@ If you need environment variables defined for a specific task, use the [Environm
 </ServiceDefinition>
 ```
 
-Variables can also use a [valid Azure XPath value](cloud-services-role-config-xpath.md) to reference something about the deployment. Instead of using the `value` attribute, define a [RoleInstanceValue] child element.
+Variablen können auch einen [gültigen Azure XPath-Wert](cloud-services-role-config-xpath.md) verwenden, um auf etwas für die Bereitstellung zu verweisen. Anstatt das `value` -Attribut zu verwenden, definieren Sie ein untergeordnetes [RoleInstanceValue] -Element.
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -57,23 +57,23 @@ Variables can also use a [valid Azure XPath value](cloud-services-role-config-xp
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>Configure IIS startup with AppCmd.exe
-The [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) command-line tool can be used to manage IIS settings at startup on Azure. *AppCmd.exe* provides convenient, command-line access to configuration settings for use in startup tasks on Azure. Using *AppCmd.exe*, Website settings can be added, modified, or removed for applications and sites.
+## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurieren des IIS-Startvorgangs mit "AppCmd.exe"
+Das Befehlszeilentool [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) kann zum Verwalten von IIS-Einstellungen beim Start von Azure verwendet werden. *AppCmd.exe* bietet einen praktischen Zugriff über die Befehlszeile auf Konfigurationseinstellungen in den Azure-Starttasks. Mit *AppCmd.exe*können Einstellungen von Websites für Anwendungen und Websites hinzugefügt, geändert oder entfernt werden.
 
-However, there are a few things to watch out for in the use of *AppCmd.exe* as a startup task:
+Es gibt jedoch einige Dinge, die bei der Verwendung von *AppCmd.exe* als Starttask zu beachten sind:
 
-* Startup tasks can be run more than once between reboots. For instance, when a role recycles.
-* If a *AppCmd.exe* action is performed more than once, it may generate an error. For example, attempting to add a section to *Web.config* twice could generate an error.
-* Startup tasks fail if they return a non-zero exit code or **errorlevel**. For example, when *AppCmd.exe* generates an error.
+* Starttasks können zwischen Neustarts mehrmals ausgeführt werden. Beispielsweise beim Neustart einer Rolle.
+* Wenn eine *AppCmd.exe*-Aktion mehr als einmal ausgeführt wird, generiert sie möglicherweise einen Fehler. Beispielsweise könnte beim Versuch, *Web.config* zweimal einen Abschnitt hinzuzufügen, ein Fehler generiert werden.
+* Starttasks schlagen fehl, wenn sie einen von Null abweichenden Exitcode oder **errorlevel** zurückgeben. Dies kann z.B. passieren, wenn *AppCmd.exe* einen Fehler erzeugt.
 
-It is a good practice to check the **errorlevel** after calling *AppCmd.exe*, which is easy to do if you wrap the call to *AppCmd.exe* with a *.cmd* file. If you detect a known **errorlevel** response, you can ignore it, or pass it back.
+Es empfiehlt sich, nach dem Aufruf von *AppCmd.exe* den **errorlevel** zu prüfen, was einfach ist, wenn Sie den Aufruf von *AppCmd.exe* in eine *CMD*-Datei einbetten. Wenn Sie eine bekannte **errorlevel** -Antwort erkennen, können Sie diese ignorieren oder zurückgeben.
 
-The errorlevel returned by *AppCmd.exe* are listed in the winerror.h file, and can also be seen on [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx).
+Die von *AppCmd.exe* zurückgegebenen errorlevel-Werte sind in der Datei „Winerror.h“ aufgeführt und können auch auf [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx)nachgelesen werden.
 
-### <a name="example-of-managing-the-error-level"></a>Example of managing the error level
-This example adds a compression section and a compression entry for JSON to the *Web.config* file, with error handling and logging.
+### <a name="example-of-managing-the-error-level"></a>Beispiel für die Verwaltung von Fehlerstufen
+In diesem Beispiel wird ein Komprimierungsabschnitt und ein Komprimierungseintrag für JSON mit Fehlerbehandlung und-Protokollierung in der Datei *Web.config* hinzugefügt.
 
-The relevant sections of the [ServiceDefinition.csdef] file are shown here, which include setting the [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) attribute to `elevated` to give *AppCmd.exe* sufficient permissions to change the settings in the *Web.config* file:
+Die relevanten Abschnitte der Datei [ServiceDefinition.csdef] werden hier gezeigt, insbesondere das Festlegen des [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task)-Attributs auf `elevated`, um *AppCmd.exe* ausreichende Berechtigungen zum Ändern der Einstellungen in der Datei *Web.config* zu gewähren:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -86,7 +86,7 @@ The relevant sections of the [ServiceDefinition.csdef] file are shown here, whic
 </ServiceDefinition>
 ```
 
-The *Startup.cmd* batch file uses *AppCmd.exe* to add a compression section and a compression entry for JSON to the *Web.config* file. The expected **errorlevel** of 183 is set to zero using the VERIFY.EXE command-line program. Unexpected errorlevels are logged to StartupErrorLog.txt.
+Die Batchdatei *Startup.cmd* verwendet *AppCmd.exe*, um in der Datei *Web.config* einen Komprimierungsabschnitt und einen Komprimierungseintrag für JSON hinzuzufügen. Der erwartete **errorlevel**-Wert 183 wird mithilfe des Befehlszeilenprogramms VERIFY.EXE auf Null (0) festgelegt. Unerwartete Errorlevel werden in "StartupErrorLog.txt" protokolliert.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -124,14 +124,14 @@ ECHO An error occurred during startup. ERRORLEVEL = %ERRORLEVEL% >> "%TEMP%\Star
 EXIT %ERRORLEVEL%
 ```
 
-## <a name="add-firewall-rules"></a>Add firewall rules
-In Azure, there are effectively two firewalls. The first firewall controls connections between the virtual machine and the outside world. This firewall is controlled by the [EndPoints] element in the [ServiceDefinition.csdef] file.
+## <a name="add-firewall-rules"></a>Hinzufügen von Firewallregeln
+In Azure sind tatsächlich zwei Firewalls vorhanden. Die erste Firewall kontrolliert Verbindungen zwischen dem virtuellen Computer und der Außenwelt. Diese Firewall wird durch das [EndPoints]-Element in der Datei [ServiceDefinition.csdef] gesteuert.
 
-The second firewall controls connections between the virtual machine and the processes within that virtual machine. This firewall can be controlled by the `netsh advfirewall firewall` command-line tool.
+Die zweite Firewall kontrolliert Verbindungen zwischen einem virtuellen Computer und den Prozessen innerhalb dieses virtuellen Computers. Diese Firewall kann durch das Befehlszeilentool `netsh advfirewall firewall` gesteuert werden.
 
-Azure creates firewall rules for the processes started within your roles. For example, when you start a service or program, Azure automatically creates the necessary firewall rules to allow that service to communicate with the Internet. However, if you create a service that is started by a process outside your role (like a COM+ service or a Windows Scheduled Task), you need to manually create a firewall rule to allow access to that service. These firewall rules can be created by using a startup task.
+Azure erstellt Firewallregeln für die in den Rollen gestarteten Prozesse. Wenn Sie beispielsweise einen Dienst oder ein Programm starten, erstellt Azure automatisch die erforderlichen Firewallregeln, die diesem Dienst das Kommunizieren mit dem Internet ermöglichen. Wenn Sie einen Dienst erstellen, der durch einen Prozess außerhalb Ihrer Rolle gestartet wird (z.B. einen COM+-Dienst oder einen geplanten Windows-Task), müssen Sie manuell eine Firewallregel für den Zugriff auf diesen Dienst erstellen. Diese Firewallregeln können unter Verwendung einer Starttask erstellt werden.
 
-A startup task that creates a firewall rule must have an [executionContext][Task] of **elevated**. Add the following startup task to the [ServiceDefinition.csdef] file.
+Ein Starttask, der eine Firewallregel erstellt, muss einen [executionContext][aufgabe] mit der Einstellung **elevated** zurückgeben. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -144,7 +144,7 @@ A startup task that creates a firewall rule must have an [executionContext][Task
 </ServiceDefinition>
 ```
 
-To add the firewall rule, you must use the appropriate `netsh advfirewall firewall` commands in your startup batch file. In this example, the startup task requires security and encryption for TCP port 80.
+Um die Firewallregel hinzuzufügen, müssen Sie die entsprechenden `netsh advfirewall firewall` -Befehle in der Startbatchdatei verwenden. In diesem Beispiel erfordert der Starttask Sicherheit und Verschlüsselung für TCP-Port 80.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -156,12 +156,12 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="block-a-specific-ip-address"></a>Block a specific IP address
-You can restrict an Azure web role access to a set of specified IP addresses by modifying your IIS **web.config** file. You also need to use a command file which unlocks the **ipSecurity** section of the **ApplicationHost.config** file.
+## <a name="block-a-specific-ip-address"></a>Blockieren bestimmter IP-Adressen
+Sie können den Zugriff einer Azure-Webrolle auf einen Satz angegebener IP-Adressen beschränken, indem Sie Ihre **web.config**-IIS-Datei ändern. Sie müssen auch eine Befehlsdatei verwenden, die den Abschnitt **ipSecurity** der Datei **ApplicationHost.config** entsperrt.
 
-To do unlock the **ipSecurity** section of the **ApplicationHost.config** file, create a command file that runs at role start. Create a folder at the root level of your web role called **startup** and, within this folder, create a batch file called **startup.cmd**. Add this file to your Visual Studio project and set the properties to **Copy Always** to ensure that it is included in your package.
+Um den Abschnitt **ipSecurity** der Datei **ApplicationHost.config** zu entsperren, erstellen Sie eine Befehlsdatei, die beim Starten der Rolle ausgeführt wird. Erstellen Sie einen Ordner mit dem Namen **startup** auf der Stammebene der Webrolle, und erstellen Sie in diesem Ordner die Batchdatei **startup.cmd**. Fügen Sie diese Rolle zu Ihrem Visual Studio-Projekt hinzu, und legen Sie die Eigenschaften auf **Immer kopieren** fest, um sicherzustellen, dass sie in Ihrem Paket enthalten ist.
 
-Add the following startup task to the [ServiceDefinition.csdef] file.
+Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -174,7 +174,7 @@ Add the following startup task to the [ServiceDefinition.csdef] file.
 </ServiceDefinition>
 ```
 
-Add this command to the **startup.cmd** file:
+Fügen Sie diesen Befehl in der Datei **startup.cmd** hinzu:
 
 ```cmd
 @echo off
@@ -184,11 +184,11 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-This task causes the **startup.cmd** batch file to be run every time the web role is initialized, ensuring that the required **ipSecurity** section is unlocked.
+Dadurch wird die Batchdatei **startup.cmd** bei jeder Initialisierung der Webrolle ausgeführt, sodass der erforderliche **ipSecurity**-Abschnitt entsperrt wird.
 
-Finally, modify the [system.webServer section](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) your web role’s **web.config** file to add a list of IP addresses that are granted access, as shown in the following example:
+Ändern Sie abschließend den Abschnitt [system.webServer](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) in der Datei **web.config** Ihrer Webrolle, um eine Liste der IP-Adressen hinzuzufügen, denen Zugriff gewährt wird, wie im folgenden Beispiel gezeigt:
 
-This sample config **allows** all IPs to access the server except the two defined
+Diese Beispielkonfiguration **erlaubt** allen IP-Adressen Zugriff auf den Server, mit Ausnahme der beiden definierten.
 
 ```xml
 <system.webServer>
@@ -203,7 +203,7 @@ This sample config **allows** all IPs to access the server except the two define
 </system.webServer>
 ```
 
-This sample config **denies** all IPs from accessing the server except for the two defined.
+Diese Beispielkonfiguration **verweigert** allen IP-Adressen den Zugriff auf den Server, mit Ausnahme der beiden definierten.
 
 ```xml
 <system.webServer>
@@ -218,10 +218,10 @@ This sample config **denies** all IPs from accessing the server except for the t
 </system.webServer>
 ```
 
-## <a name="create-a-powershell-startup-task"></a>Create a PowerShell startup task
-Windows PowerShell scripts cannot be called directly from the [ServiceDefinition.csdef] file, but they can be invoked from within a startup batch file.
+## <a name="create-a-powershell-startup-task"></a>Erstellen eines PowerShell-Starttasks
+Windows PowerShell-Skripts können nicht direkt aus der Datei [ServiceDefinition.csdef] aufgerufen werden, aber sie können aus einer Startbatchdatei aus aufgerufen werden.
 
-PowerShell (by default) does not run unsigned scripts. Unless you sign your script, you need to configure PowerShell to run unsigned scripts. To run unsigned scripts, the **ExecutionPolicy** must be set to **Unrestricted**. The **ExecutionPolicy** setting that you use is based on the version of Windows PowerShell.
+PowerShell führt standardmäßig keine nicht signierten Skripts aus. Wenn Sie die Skripts nicht signieren, müssen Sie PowerShell zum Ausführen von nicht signierten Skripts konfigurieren. Zum Ausführen von nicht signierten Skripts muss die **ExecutionPolicy** auf **Uneingeschränkt** festgelegt werden. Die verwendete **ExecutionPolicy** -Einstellung basiert auf der Version von Windows PowerShell.
 
 ```cmd
 REM   Run an unsigned PowerShell script and log the output
@@ -231,7 +231,7 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-If you're using a Guest OS that is runs PowerShell 2.0 or 1.0 you can force version 2 to run, and if unavailable, use version 1.
+Wenn Sie ein Gastbetriebssystem mit PowerShell 2.0 oder 1.0 verwenden, können Sie die Ausführung von Version 2 erzwingen und bei Nichtverfügbarkeit Version 1 verwenden.
 
 ```cmd
 REM   Attempt to set the execution policy by using PowerShell version 2.0 syntax.
@@ -247,14 +247,14 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="create-files-in-local-storage-from-a-startup-task"></a>Create files in local storage from a startup task
-You can use a local storage resource to store files created by your startup task that is accessed later by your application.
+## <a name="create-files-in-local-storage-from-a-startup-task"></a>Erstellen von Dateien im lokalen Speicher über einen Starttask
+Sie können eine lokale Speicherressource zum Speichern von Dateien verwenden, die durch den Starttask erstellt werden und auf die später von der Anwendung zugegriffen wird.
 
-To create the local storage resource, add a [LocalResources] section to the [ServiceDefinition.csdef] file and then add the [LocalStorage] child element. Give the local storage resource a unique name and an appropriate size for your startup task.
+Zum Erstellen der lokalen Speicherressource fügen Sie in der Datei [ServiceDefinition.csdef] einen [LocalResources]-Abschnitt und dann das untergeordnete [LocalStorage]-Element hinzu. Geben Sie der lokalen Speicherressource einen eindeutigen Namen und eine für den Starttask angemessene Größe.
 
-To use a local storage resource in your startup task, you need to create an environment variable to reference the local storage resource location. Then the startup task and the application are able to read and write files to the local storage resource.
+Um eine lokale Speicherressource im Starttask zu verwenden, müssen Sie eine Umgebungsvariable erstellen, um auf den Speicherort der lokalen Ressource zu verweisen. Dann können der Starttask und die Anwendung Schreib- und Lesevorgänge in Dateien in der lokalen Speicherressource ausführen.
 
-The relevant sections of the **ServiceDefinition.csdef** file are shown here:
+Die relevanten Abschnitte in der Datei **ServiceDefinition.csdef** werden hier gezeigt:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -278,7 +278,7 @@ The relevant sections of the **ServiceDefinition.csdef** file are shown here:
 </ServiceDefinition>
 ```
 
-As an example, this **Startup.cmd** batch file uses the **PathToStartupStorage** environment variable to create the file **MyTest.txt** on the local storage location.
+Beispielsweise verwendet diese **Startup.cmd**-Batchdatei die Umgebungsvariable **PathToStartupStorage** zum Erstellen der Datei **MyTest.txt** am lokalen Speicherort.
 
 ```cmd
 REM   Create a simple text file.
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-You can access local storage folder from the Azure SDK by using the [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) method.
+Sie können mithilfe der [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx)-Methode aus dem Azure SDK auf den lokalen Speicherordner zugreifen.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -301,12 +301,12 @@ string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.
 string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStoragePath, "MyTestFile.txt"));
 ```
 
-## <a name="run-in-the-emulator-or-cloud"></a>Run in the emulator or cloud
-You can have your startup task perform different steps when it is operating in the cloud compared to when it is in the compute emulator. For example, you may want to use a fresh copy of your SQL data only when running in the emulator. Or you may want to do some performance optimizations for the cloud that you don't need to do when running in the emulator.
+## <a name="run-in-the-emulator-or-cloud"></a>Ausführen im Emulator oder in der Cloud
+Sie können mit dem Starttask andere Schritte ausführen, wenn er in der Cloud ausgeführt wird, als wenn er im Serveremulator ausgeführt wird. Beispiel: Sie möchten eine neue Kopie der SQL-Daten nur bei Ausführung im Emulator verwenden. Oder Sie benötigen eine bestimmte Leistungsoptimierung für die Cloud, die bei Ausführung im Emulator nicht benötigt wird.
 
-This ability to perform different actions on the compute emulator and the cloud can be accomplished by creating an environment variable in the [ServiceDefinition.csdef] file. You then test that environment variable for a value in your startup task.
+Diese Möglichkeit, unterschiedliche Aktionen im Serveremulator und in der Cloud auszuführen, kann durch Erstellen einer Umgebungsvariablen in der Datei [ServiceDefinition.csdef] im Starttask erzielt werden. Dann testen Sie diese Umgebungsvariable auf einen Wert in Ihrem Starttask.
 
-To create the environment variable, add the [Variable]/[RoleInstanceValue] element and create an XPath value of `/RoleEnvironment/Deployment/@emulated`. The value of the **%ComputeEmulatorRunning%** environment variable is `true` when running on the compute emulator, and `false` when running on the cloud.
+Zum Erstellen der Umgebungsvariablen fügen Sie das [Variable]/[RoleInstanceValue]-Element hinzu und legen als XPath-Wert `/RoleEnvironment/Deployment/@emulated` fest. Der Wert der Umgebungsvariable **%ComputeEmulatorRunning%** ist bei Ausführung im Serveremulator `true` und bei Ausführung in der Cloud `false`.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -328,7 +328,7 @@ To create the environment variable, add the [Variable]/[RoleInstanceValue] eleme
 </ServiceDefinition>
 ```
 
-The task can now check the **%ComputeEmulatorRunning%** environment variable to perform different actions based on whether the role is running in the cloud or the emulator. Here is a .cmd shell script that checks for that environment variable.
+Jetzt kann der Task die Umgebungsvariable **%ComputeEmulatorRunning%** zur Ausführung unterschiedlicher Aktionen nutzen, je nachdem, ob die Rolle in der Cloud oder im Emulator ausgeführt wird. Dies ist ein CMD-Shell-Skript, das diese Umgebungsvariable überprüft.
 
 ```cmd
 REM   Check if this task is running on the compute emulator.
@@ -341,10 +341,10 @@ IF "%ComputeEmulatorRunning%" == "true" (
 ```
 
 
-## <a name="detect-that-your-task-has-already-run"></a>Detect that your task has already run
-The role may recycle without a reboot causing your startup tasks to run again. There is no flag to indicate that a task has already run on the hosting VM. You may have some tasks where it doesn't matter that they run multiple times. However, you may run into a situation where you need to prevent a task from running more than once.
+## <a name="detect-that-your-task-has-already-run"></a>Ermitteln, ob der Task bereits ausgeführt wurde
+Die Rolle kann zyklisch ausgeführt werden, ohne einen Neustart zu bewirken, wodurch die Starttasks erneut ausgeführt werden. Es gibt kein Flag, das anzeigt, ob ein Task bereits auf dem virtuellen Computer ausgeführt wurde, der als Host fungiert. Bei einigen Tasks spielt es sicher keine Rolle, ob sie mehrere Male ausgeführt werden. Jedoch können Situationen eintreten, in denen die mehrmalige Ausführung eines Tasks verhindert werden muss.
 
-The simplest way to detect that a task has already run is to create a file in the **%TEMP%** folder when the task is successful and look for it at the start of the task. Here is a sample cmd shell script that does that for you.
+Die einfachste Methode, um zu erkennen, dass ein Task bereits ausgeführt wurde, ist das Erstellen einer Datei im **%TEMP%** -Ordner, wenn der Task erfolgreich ist, um dann zu Beginn des Tasks zu prüfen, ob die Datei bereits angelegt wurde. Dies ist ein Beispiel CMD-Shell-Skript, das dieses Verfahren umsetzt.
 
 ```cmd
 REM   If Task1_Success.txt exists, then Application 1 is already installed.
@@ -379,19 +379,19 @@ REM   Exit normally.
 EXIT /B 0
 ```
 
-## <a name="task-best-practices"></a>Task best practices
-Here are some best practices you should follow when configuring task for your web or worker role.
+## <a name="task-best-practices"></a>Bewährte Methoden für Tasks
+Hier sind einige bewährten Methoden, die Sie beim Konfigurieren eines Tasks für Ihre Web- oder Workerrolle befolgen sollten.
 
-### <a name="always-log-startup-activities"></a>Always log startup activities
-Visual Studio does not provide a debugger to step through batch files, so it's good to get as much data on the operation of batch files as possible. Logging the output of batch files, both **stdout** and **stderr**, can give you important information when trying to debug and fix batch files. To log both **stdout** and **stderr** to the StartupLog.txt file in the directory pointed to by the **%TEMP%** environment variable, add the text `>>  "%TEMP%\\StartupLog.txt" 2>&1` to the end of specific lines you want to log. For example, to execute setup.exe in the **%PathToApp1Install%** directory:
+### <a name="always-log-startup-activities"></a>Protokollieren Sie stets alle Startaktivitäten
+Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%**-Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%**-Verzeichnis aus:
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-To simplify your xml, you can create a wrapper *cmd* file that calls all of your startup tasks along with logging and ensures each child-task shares the same environment variables.
+Zum Vereinfachen des XML-Codes können Sie eine *CMD*-Wrapperdatei erstellen, die alle Starttasks sowie die Protokollierung aufruft und sicherstellt, dass jeder untergeordnete Task die gleichen Umgebungsvariablen verwendet.
 
-You may find it annoying though to use `>> "%TEMP%\StartupLog.txt" 2>&1` on the end of each startup task. You can enforce task logging by creating a wrapper that handles logging for you. This wrapper calls the real batch file you want to run. Any output from the target batch file will be redirected to the *Startuplog.txt* file.
+Möglicherweise finden Sie es dennoch lästig, am Ende jedes Starttasks `>> "%TEMP%\StartupLog.txt" 2>&1` zu verwenden. Sie können die Taskprotokollierung erzwingen, indem Sie einen Wrapper erstellen, der die Protokollierung für Sie verarbeitet. Dieser Wrapper ruft die echte Batchdatei auf, die Sie ausführen möchten. Jede Ausgabe der Zielbatchdatei wird an die Datei *Startuplog.txt* umgeleitet.
 
-The following example shows how to redirect all output from a startup batch file. In this example, the ServerDefinition.csdef file creates a startup task that calls *logwrap.cmd*. *logwrap.cmd* calls *Startup2.cmd*, redirecting all output to **%TEMP%\\StartupLog.txt**.
+Das folgende Beispiel zeigt, wie die gesamte Ausgabe einer Startbatchdatei umgeleitet wird. In diesem Beispiel erstellt die Datei ServerDefinition.csdef einen Starttask, der *logwrap.cmd* aufruft. *logwrap.cmd* ruft *Startup2.cmd* auf, wodurch die gesamte Ausgabe an **%TEMP%\\StartupLog.txt** umgeleitet wird.
 
 ServiceDefinition.cmd:
 
@@ -453,7 +453,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-Sample output in the **StartupLog.txt** file:
+Beispielausgabe in der Datei **StartupLog.txt**:
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -465,56 +465,56 @@ Sample output in the **StartupLog.txt** file:
 ```
 
 > [!TIP]
-> The **StartupLog.txt** file is located in the *C:\Resources\temp\\{role identifier}\RoleTemp* folder.
+> Die Datei **StartupLog.txt** befindet sich im Ordner *C:\Resources\temp\\{Rollenbezeichner}\RoleTemp*.
 > 
 > 
 
-### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Set executionContext appropriately for startup tasks
-Set privileges appropriately for the startup task. Sometimes startup tasks must run with elevated privileges even though the role runs with normal privileges.
+### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Legen Sie einen geeigneten ExecutionContext für die Starttasks fest
+Legen Sie geeignete Berechtigungen für den Starttask fest. Manchmal müssen Starttasks mit erhöhten Rechten ausgeführt werden, selbst wenn die Rolle mit normalen Berechtigungen ausgeführt wird.
 
-The [executionContext][Task] attribute sets the privilege level of the startup task. Using `executionContext="limited"` means the startup task has the same privilege level as the role. Using `executionContext="elevated"` means the startup task has administrator privileges, which allows the startup task to perform administrator tasks without giving administrator privileges to your role.
+Das Befehlszeilentool [executionContext][aufgabe] -Attribut legt die Berechtigungsstufe des Starttasks fest. Der Wert `executionContext="limited"` bedeutet, dass der Starttask die gleiche Berechtigungsstufe wie die Rolle aufweist. Der Wert `executionContext="elevated"` bedeutet, dass der Starttask über Administratorrechte verfügt, wodurch der Starttask Administratoraufgaben ausführen kann, ohne dass Sie der Rolle Administratorrechte zuweisen müssen.
 
-An example of a startup task that requires elevated privileges is a startup task that uses **AppCmd.exe** to configure IIS. **AppCmd.exe** requires `executionContext="elevated"`.
+Ein Beispiel für einen Starttask, der erhöhte Rechte erfordert, ist ein Starttask, der **AppCmd.exe** zum Konfigurieren von IIS verwendet. **AppCmd.exe** erfordert `executionContext="elevated"`.
 
-### <a name="use-the-appropriate-tasktype"></a>Use the appropriate taskType
-The [taskType][Task] attribute determines the way the startup task is executed. There are three values: **simple**, **background**, and **foreground**. The background and foreground tasks are started asynchronously, and then the simple tasks are executed synchronously one at a time.
+### <a name="use-the-appropriate-tasktype"></a>Verwenden Sie einen geeigneten taskType
+Das [taskType][aufgabe]-Attribut bestimmt, wie der Starttask ausgeführt wird. Es gibt drei Werte: **simple**, **background** und **foreground**. Die background- und foreground-Tasks werden asynchron gestartet. Die simple-Tasks werden dann synchron jeweils nacheinander ausgeführt.
 
-With **simple** startup tasks, you can set the order in which the tasks run by the order in which the tasks are listed in the ServiceDefinition.csdef file. If a **simple** task ends with a non-zero exit code, then the startup procedure stops and the role does not start.
+Bei **simple**-Starttasks lässt sich die Reihenfolge, in der die Tasks abgearbeitet werden, durch die Reihenfolge der Tasks in der Datei ServiceDefinition.csdef festlegen. Wenn ein **simple**-Task mit einem von Null abweichenden Exitcode beendet wird, dann wird die Startprozedur beendet, und die Rolle wird nicht gestartet.
 
-The difference between **background** startup tasks and **foreground** startup tasks is that **foreground** tasks keep the role running until the **foreground** task ends. This also means that if the **foreground** task hangs or crashes, the role will not recycle until the **foreground** task is forced closed. For this reason, **background** tasks are recommended for asynchronous startup tasks unless you need that feature of the **foreground** task.
+Der Unterschied zwischen **background**-Starttasks und **foreground**-Starttasks ist, dass bei **foreground**-Tasks die Rolle ausgeführt wird, bis der **foreground**-Task beendet wurde. Dies bedeutet auch, dass bei einem Aufhängen oder Abstürzen des **foreground**-Tasks die Rolle solange nicht erneut ausgeführt werden kann, bis der **foreground**-Task zwangsweise beendet wird. Aus diesem Grund werden für asynchrone Starttasks **background**-Tasks empfohlen, sofern nicht speziell diese Funktion des **foreground**-Tasks benötigt wird.
 
-### <a name="end-batch-files-with-exit-b-0"></a>End batch files with EXIT /B 0
-The role will only start if the **errorlevel** from each of your simple startup task is zero. Not all programs set the **errorlevel** (exit code) correctly, so the batch file should end with an `EXIT /B 0` if everything ran correctly.
+### <a name="end-batch-files-with-exit-b-0"></a>Beenden Sie Batchdateien mit "EXIT /B 0"
+Die Rolle wird nur gestartet, wenn die **errorlevel** -Werte aller simple-Starttasks Null (0) sind. Nicht alle Programme legen den **errorlevel**-Wert (Exitcode) richtig fest, daher sollte die Batchdatei mit einem `EXIT /B 0` enden, wenn alles ordnungsgemäß ausgeführt wurde.
 
-A missing `EXIT /B 0` at the end of a startup batch file is a common cause of roles that do not start.
+Ein Fehlen von `EXIT /B 0` am Ende einer Startbatchdatei ist eine häufige Ursache, wenn Rollen nicht gestartet werden.
 
 > [!NOTE]
-> I've noticed that nested batch files sometimes hang when using the `/B` parameter. You may want to make sure that this hang problem does not happen if another batch file calls your current batch file, like if you use the [log wrapper](#always-log-startup-activities). You can omit the `/B` parameter in this case.
+> Ich habe festgestellt, dass geschachtelte Batchdateien bei Verwendung des `/B`-Parameters manchmal hängenbleiben. Sie müssen sicherstellen, dass dieses Problem nicht auftritt, wenn eine andere Batchdatei die aktuelle Batchdatei aufruft, beispielsweise bei Verwendung des [Protokollwrappers](#always-log-startup-activities). In diesem Fall können Sie den `/B`-Parameter weglassen.
 > 
 > 
 
-### <a name="expect-startup-tasks-to-run-more-than-once"></a>Expect startup tasks to run more than once
-Not all role recycles include a reboot, but all role recycles include running all startup tasks. This means that startup tasks must be able to run multiple times between reboots without any problems. This is discussed in the [preceding section](#detect-that-your-task-has-already-run).
+### <a name="expect-startup-tasks-to-run-more-than-once"></a>Gehen Sie von einer mehrfachen Ausführung der Starttasks aus
+Nicht jede zyklische Ausführung einer Rolle bewirkt einen Neustart, aber bei jeder zyklischen Ausführungen einer Rolle werden alle Starttasks ausgeführt. Dies bedeutet, dass Starttasks mehrmals ohne Probleme zwischen Neustarts ausgeführt werden müssen. Dies wurde im [vorigen Abschnitt](#detect-that-your-task-has-already-run) erläutert.
 
-### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Use local storage to store files that must be accessed in the role
-If you want to copy or create a file during your startup task that is then accessible to your role, then that file must be placed in local storage. See the [preceding section](#create-files-in-local-storage-from-a-startup-task).
+### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Verwenden Sie lokalen Speicher für Dateien, auf die von der Rolle aus zugegriffen werden soll
+Wenn während des Starttasks Dateien kopiert oder erstellt werden sollen, auf die dann von Ihrer Rolle aus zugegriffen werden muss, müssen diese Dateien im lokalen Speicher abgelegt werden. Siehe den [vorigen Abschnitt](#create-files-in-local-storage-from-a-startup-task).
 
-## <a name="next-steps"></a>Next steps
-Review the cloud [service model and package](cloud-services-model-and-package.md)
+## <a name="next-steps"></a>Nächste Schritte
+Lesen Sie [Clouddienstmodell und -paket](cloud-services-model-and-package.md)
 
-Learn more about how [Tasks](cloud-services-startup-tasks.md) work.
+Erfahren Sie mehr über die Funktionsweise von [Tasks](cloud-services-startup-tasks.md) .
 
-[Create and deploy](cloud-services-how-to-create-deploy-portal.md) your cloud service package.
+[Erstellen und Bereitstellen](cloud-services-how-to-create-deploy-portal.md) Ihres Clouddienstpakets durch.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Aufgabe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Umgebung]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Endpoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

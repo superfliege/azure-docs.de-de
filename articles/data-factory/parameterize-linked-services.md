@@ -1,6 +1,6 @@
 ---
-title: Parameterize linked services in Azure Data Factory | Microsoft Docs
-description: Learn how to parameterize linked services in Azure Data Factory and pass dynamic values at run time.
+title: Parametrisieren von verknüpften Diensten in Azure Data Factory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie in Azure Data Factory verknüpfte Dienste parametrisieren und dynamische Werte zur Laufzeit übergeben.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -18,23 +18,23 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/07/2019
 ms.locfileid: "57574626"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parameterize linked services in Azure Data Factory
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
 
-You can now parameterize a linked service and pass dynamic values at run time. For example, if you want to connect to different databases on the same Azure SQL Database server, you can now parameterize the database name in the linked service definition. This prevents you from having to create a linked service for each database on the Azure SQL database server. You can parameterize other properties in the linked service definition as well - for example, *User name.*
+Sie können jetzt einen verknüpften Dienst parametrisieren und dynamische Werte zur Laufzeit übergeben. Wenn Sie beispielsweise eine Verbindung mit verschiedenen Datenbanken auf demselben Azure SQL-Datenbankserver herstellen möchten, können Sie nun den Datenbanknamen in der verknüpften Dienstdefinition parametrisieren. Dadurch wird verhindert, dass Sie für jede Datenbank auf dem Azure SQL-Datenbankserver einen verknüpften Dienst erstellen müssen. Sie können auch andere Eigenschaften in der Definition des verknüpften Diensts parametrisieren, z.B. den *Benutzernamen*.
 
-You can use the Data Factory UI in the Azure Portal or a programming interface to parameterize linked services.
+Sie können mithilfe der Data Factory-Benutzeroberfläche im Azure-Portal oder einer Programmierschnittstelle verknüpfte Dienste parametrisieren.
 
 > [!TIP]
-> We recommend not to parameterize passwords or secrets. Store all connection strings in Azure Key Vault instead, and parameterize the *Secret Name*.
+> Es wird empfohlen, Kennwörter oder Geheimnisse nicht zu parametrisieren. Speichern Sie stattdessen alle Verbindungszeichenfolgen in Azure Key Vault, und parametrisieren Sie den *geheimen Namen*.
 
-For a seven-minute introduction and demonstration of this feature, watch the following video:
+Das folgende Video enthält eine siebenminütige Einführung und Demonstration dieses Features:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Supported data stores
+## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
-At this time, linked service parameterization is supported in the Data Factory UI in the Azure portal for the following data stores. For all other data stores, you can parameterize the linked service by selecting the **Code** icon on the **Connections** tab and using the JSON editor.
-- Azure SQL Database
+Zurzeit wird die Parametrisierung verknüpfter Dienste in der Data Factory-Benutzeroberfläche im Azure-Portal für die folgenden Datenspeicher unterstützt. Für alle anderen Datenspeicher können Sie den verknüpften Dienst parametrisieren, indem Sie auf der Registerkarte **Verbindungen** das Symbol **Code** auswählen und den JSON-Editor verwenden.
+- Azure SQL-Datenbank
 - Azure SQL Data Warehouse
 - SQL Server
 - Oracle
@@ -43,11 +43,11 @@ At this time, linked service parameterization is supported in the Data Factory U
 - MySQL
 - Azure Database for MySQL
 
-## <a name="data-factory-ui"></a>Data Factory UI
+## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
-![Add dynamic content to the Linked Service definition](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Hinzufügen dynamischen Inhalts zur Definition des verknüpften Diensts](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
-![Create a new parameter](media/parameterize-linked-services/parameterize-linked-services-image2.png)
+![Erstellen eines neuen Parameters](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 
 ## <a name="json"></a>JSON
 

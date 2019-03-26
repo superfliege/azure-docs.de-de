@@ -1,6 +1,6 @@
 ---
-title: Reset your password using security info - Azure Active Directory | Microsoft Docs
-description: How to reset your own password if you forget it, using your security info and two-step verification.
+title: Zurücksetzen von Kennwörtern mit Sicherheitsinformationen – Azure Active Directory | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe Ihrer Sicherheitsinformationen und der zweistufigen Überprüfung Ihr Kennwort zurücksetzen, falls Sie es vergessen haben.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,154 +19,154 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58106476"
 ---
-# <a name="reset-your-work-or-school-password"></a>Reset your work or school password
+# <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
 
-If you forgot your password, never got one from your company support, or have been locked out of your account, you can use your security info and your mobile device to reset your password.
+Wenn Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformationen und Ihr mobiles Gerät verwenden, um Ihr Kennwort zurückzusetzen.
 
 >[!NOTE]
->If you know your password and just want to change it, you can go to the [Change your password](#how-to-change-your-password) steps in this article.<br><br>
->If you're trying to get back into a personal account like Xbox, hotmail.com, or outlook.com, try the suggestions in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+>Wenn Sie Ihr Kennwort kennen und es ändern möchten, führen Sie die Schritte unter [Ändern des Kennworts](#how-to-change-your-password) in diesem Artikel aus.<br><br>
+>Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-Konto, hotmail.com oder outlook.com) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
 
-## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>How to reset or unlock your password for a work or school account
+## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto
 
-If you can't access your Azure Active Directory (Azure AD) account, it could be because either:
+Wenn Sie nicht auf Ihr Azure Active Directory-Konto (Azure AD) zugreifen können, kann dies mehrere Gründe haben:
 
-- Your password isn't working and you want to reset it, or
+- Ihr Kennwort funktioniert nicht, und Sie möchten es zurücksetzen.
 
-- You know your password, but your account is locked out and you need to unlock it.
+- Sie kennen Ihr Kennwort, Ihr Konto ist jedoch gesperrt, und Sie müssen es entsperren.
 
-### <a name="to-reset-your-password-and-get-back-into-your-account"></a>To reset your password and get back into your account
+### <a name="to-reset-your-password-and-get-back-into-your-account"></a>Zurücksetzen Ihres Kennworts und erneutes Aktivieren des Kontos
 
-1. In the **Enter password** screen, select **Forgot my password**.
+1. Wählen Sie auf dem Bildschirm **Kennwort eingeben** die Option **Kennwort vergessen** aus.
 
-2. In the **Get back into your account** screen, type your work or school **User ID** (for example, your email address), prove you aren't a robot by entering the characters you see on the screen, and then select **Next**.
+2. Geben Sie auf dem Bildschirm **Konto wieder aktivieren** die **Benutzer-ID** Ihres Geschäfts-, Schul- oder Unikontos ein, beweisen Sie, dass Sie kein Roboter sind, indem Sie die auf dem Bildschirm angezeigten Zeichen eingeben, und klicken Sie anschließend auf **Weiter**.
 
-   ![Get back into your account screen](media/security-info/security-info-back-into-acct.png)
+   ![Bildschirm „Konto wieder aktivieren“](media/security-info/security-info-back-into-acct.png)
 
    >[!NOTE]
-   >If your administrator hasn't turned on the ability for you to reset your own password, you'll see a **Contact your administrator** link instead of the **Get back into your account** screen. This link lets you contact your administrator about resetting your password, through either email or a web portal.
+   >Wenn Ihr Administrator es Ihnen nicht ermöglicht hat, Ihr Kennwort selbst zurückzusetzen, wird anstelle des Bildschirms **Konto wieder aktivieren** ein der **Wenden Sie sich an Ihren Administrator** angezeigt. Über diesen Link können Sie sich mit Ihrem Administrator in Verbindung setzen, um Ihr Kennwort per E-Mail oder in einem Webportal zurücksetzen zu lassen.
 
-3. Choose one of the following methods to verify your identity and change your password. Depending on how your administrator has set up your organization, you might need to go through this process a second time, adding info for a second verification step.
+3. Wählen Sie eine der folgenden Methoden aus, um Ihre Identität zu verifizieren und Ihr Kennwort zu ändern. Je nachdem, wie Ihr Administrator dieses Verfahren für Ihre Organisation eingerichtet hat, müssen Sie diesen Prozess möglicherweise ein zweites Mal durchlaufen und dabei Informationen zu einem zweiten Überprüfungsschritt hinzufügen.
 
-    ![Get back into your account, verification step #1](media/security-info/security-info-back-into-acct2.png)
+    ![Konto wieder aktivieren, Überprüfungsschritt 1](media/security-info/security-info-back-into-acct2.png)
 
     >[!NOTE]
-    >Depending on how your administrator has set up your organization, some of these verification options might not be available. You must have previously set up your mobile device for verification using at least one of these methods.<br><br>Additionally, your new password might need to meet certain strength requirements. Strong passwords typically have 8 to 16 characters, including upper and lowercase characters, at least one number, and at least one special character.
+    >Je nachdem, wie Ihr Administrator dieses Verfahren für Ihre Organisation eingerichtet hat, stehen einige dieser Überprüfungsoptionen möglicherweise nicht zur Verfügung. Sie müssen zuvor Ihr Mobilgerät so eingerichtet haben, dass es mit mindestens einer dieser Methoden zur Überprüfung verwendet werden kann.<br><br>Darüber hinaus muss Ihr Kennwort möglicherweise bestimmte Anforderungen an die Kennwortsicherheit erfüllen. Sichere Kennwörter bestehen in der Regel aus 8 bis 16 Zeichen und umfassen Groß- und Kleinbuchstaben, mindestens eine Ziffer und mindestens ein Sonderzeichen.
 
-- **Reset your password using an email address.** Sends an email to the email address you previously set up in two-step verification or security info. If your administrator has turned on the security info experience, you can find more info about setting up an email address in the [Set up security info to use email (preview)](security-info-setup-email.md) article. If you're not yet using security info, you can find more info about setting up an email address in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article. 
+- **Kennwort unter Verwendung einer E-Mail-Adresse zurücksetzen**. Hierbei wird eine E-Mail an die E-Mail-Adresse gesendet, die Sie zuvor in der zweistufigen Überprüfung oder in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung einer E-Mail-Adresse (Vorschau)](security-info-setup-email.md) weitere Informationen zum Einrichten einer E-Mail-Adresse. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten einer E-Mail-Adresse im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md). 
 
-    1. Select **Email my alternate email**, and then select **Email**.
+    1. Wählen Sie **E-Mail an meine alternative E-Mail-Adresse senden** und dann **E-Mail-Adresse** aus.
 
-    2. Type the verification code from the email into the box, and then select **Next**.
+    2. Geben Sie den Prüfcode aus der E-Mail in das Feld ein, und wählen Sie dann **Weiter**.
     
-    3. Type and confirm your new password, and then select **Finish**.
+    3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Reset your password using a text message.** Sends a text message to the phone number you previously set up in security info. If your administrator has turned on the security info experience, you can find more info about setting up text messaging in the [Set up security info to use text messaging (preview)](security-info-setup-text-msg.md) article. If you're not yet using security info, you can find more info about setting up text messaging in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
+- **Kennwort unter Verwendung einer SMS zurücksetzen**. Hierbei wird eine SMS an die Telefonnummer gesendet, die Sie zuvor in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md) weitere Informationen zum Einrichten der Benachrichtigung per SMS. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten der Benachrichtigung per SMS im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
-    1. Select **Text my mobile phone**, type your phone number, and then select **Text**.
+    1. Wählen Sie **Textnachricht an mein Mobiltelefon senden** aus, geben Sie Ihre Telefonnummer ein, und wählen Sie dann **SMS** aus.
 
-    2. Type the verification code from the text message into the box, and then select **Next**.
+    2. Geben Sie den Prüfcode aus der SMS in das Feld ein, und wählen Sie dann **Weiter**.
 
-    3. Type and confirm your new password, and then select **Finish**.
+    3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Reset your password using a phone number.** Sends a text message to the phone number you previously set up in security info. If your administrator has turned on the security info experience, you can find more info about setting up a phone number in the [Set up security info to use a phone call (preview)](security-info-setup-phone-number.md) article. If you're not yet using security info, you can find more info about setting up a phone number in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
+- **Kennwort unter Verwendung einer Telefonnummer zurücksetzen**. Hierbei erfolgt ein Anruf an die Telefonnummer, die Sie zuvor in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md) weitere Informationen zum Einrichten einer Telefonnummer. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten einer Telefonnummer im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
-    1. Select **Call my mobile phone**, type your phone number, and then select **Call**.
+    1. Wählen Sie **Mein Mobiltelefon anrufen** aus, geben Sie Ihre Telefonnummer ein, und wählen Sie dann **Anruf** aus.
 
-    2. Answer the phone call and follow the instructions to verify your identity, and then select **Next**.
+    2. Nehmen Sie den Anruf an, und befolgen Sie die Anweisungen zur Überprüfung Ihrer Identität, und wählen Sie dann **Weiter**.
 
-    3. Type and confirm your new password, and then select **Finish**.
+    3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Reset your password using security questions.** Shows you the list of security questions you set up in security info. If your administrator has turned on the security info experience, you can find more info about setting up your security questions in the [Set up security info to use pre-defined security questions (preview)](security-info-setup-questions.md) article. If you're not yet using security info, you can find more info about setting up security questions in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
+- **Kennwort unter Verwendung von Sicherheitsfragen zurücksetzen**. Hierbei wird Ihnen eine Liste von Sicherheitsfragen angezeigt, die Sie in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung von Sicherheitsfragen (Vorschau)](security-info-setup-questions.md) weitere Informationen zum Einrichten von Sicherheitsfragen. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten Sicherheitsfragen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
-    1. Select **Answer my security questions**, answer the questions, and then select **Next**.
+    1. Wählen Sie **Meine Sicherheitsfragen beantworten** aus, beantworten Sie die Fragen, und wählen Sie dann **Weiter**.
 
-    2. Type and confirm your new password, and then select **Finish**.
+    2. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Reset your password using a notification from your authenticator app.** Sends an approval notification to the authenticator app. If your administrator has turned on the security info experience, you can find more info about setting up an authenticator app to send a notification in the [Set up security info to use an authentication app (preview)](security-info-setup-auth-app.md) article. If you're not yet using security info, you can find more info about setting up an authenticator app to send a notification in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
+- **Kennwort unter Verwendung einer Benachrichtigung von Ihrer Authenticator-App zurücksetzen**. Hier wird eine Genehmigungsbenachrichtigung an die Authenticator-App gesendet. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung einer Authentifizierungs-App (Vorschau)](security-info-setup-auth-app.md) weitere Informationen dazu, wie Sie eine Authenticator-App für das Senden einer Benachrichtigung einrichten. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere dazu, wie Sie eine Authenticator-App für das Senden einer Benachrichtigung einrichten, im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
-    1. Select **Approve a notification on my authenticator app**, and then select **Send Notification**.
+    1. Wählen Sie **Benachrichtigung in meiner Authenticator-App genehmigen** und dann **Benachrichtigung senden** aus.
 
-    2. Approve the sign-in from your authenticator app.
+    2. Genehmigen Sie die Anmeldung in Ihrer Authenticator-App.
 
-    3. Type and confirm your new password, and then select **Finish**.
+    3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Reset your password using a code from your authenticator app.** Accepts a random code provided by your authentication app. If your administrator has turned on the security info experience, you can find more info about setting up an authenticator app to provide a code in the [Set up security info to use an authentication app (preview)](security-info-setup-auth-app.md) article. If you're not yet using security info, you can find more info about setting up an authenticator app to provide a code in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
+- **Kennwort unter Verwendung eines Codes von Ihrer Authenticator-App zurücksetzen**. Hierbei wird ein zufällig erzeugter Code akzeptiert, der von Ihrer Authentifizierungs-App bereitgestellt wird. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung einer Authentifizierungs-App (Vorschau)](security-info-setup-auth-app.md) weitere Informationen dazu, wie Sie eine Authenticator-App für die Bereitstellung eines Codes einrichten. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen dazu, wie Sie eine Authenticator-App für die Bereitstellung eines Codes einrichten, im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
-  1. Select **Enter a code from my authenticator app**, and then select **Send Notification**.
+  1. Wählen Sie **Code von meiner Authenticator-App eingeben** und dann **Benachrichtigung senden** aus.
 
-  2. Open your authenticator app, type the verification code for your account into the box, and then select **Next**.
+  2. Öffnen Sie Ihre Authenticator-App, geben Sie den Prüfcode für Ihr Konto in das Feld ein, und wählen Sie dann **Weiter**.
 
-  3. Type and confirm your new password, and then select **Finish**.
+  3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-  4. After you get the message saying that your password has been reset, you can sign in to your account using your new password.
+  4. Nachdem Sie die Meldung erhalten haben, dass Ihr Kennwort zurückgesetzt wurde, können Sie sich mit Ihrem neuen Kennwort bei Ihrem Konto anmelden.
         
-     If you still can't access your account, you should contact your organization's administrator for more help.
+     Sollten Sie weiterhin nicht auf Ihr Konto zugreifen können, wenden Sie sich an den Administrator Ihrer Organisation, um weitere Hilfe zu erhalten.
 
-After resetting your password, you might get a confirmation email that comes from an account like, "Microsoft on behalf of \<*your_organization*>." If you get a similar email, but you didn't recently reset your password, you must contact your organization's administrator immediately.
+Nach dem Zurücksetzen des Kennworts erhalten Sie möglicherweise Sie eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<*Ihre Organisation*>“. Wenn Sie eine solche E-Mail erhalten, aber nicht kurz zuvor Ihr Kennwort zurückgesetzt haben, müssen Sie sofort den Administrator Ihrer Organisation kontaktieren.
 
-## <a name="how-to-change-your-password"></a>How to change your password
+## <a name="how-to-change-your-password"></a>Ändern des Kennworts
 
-If you just want to change your password, you can do it through the Office 365 portal, the Azure Access Panel, or the Windows 10 sign-in page.
+Wenn Sie Ihr Kennwort nur ändern möchten, können Sie dies im Office 365-Portal, dem Azure-Zugriffsbereich oder auf der Windows 10-Anmeldeseite tun.
 
-### <a name="to-change-your-password-using-the-office-365-portal"></a>To change your password using the Office 365 portal
+### <a name="to-change-your-password-using-the-office-365-portal"></a>Ändern des Kennworts über das Office 365-Portal
 
-Use this method if you typically access your apps through the Office portal:
+Verwenden Sie die folgende Methode, wenn Sie für gewöhnlich über das Office-Portal auf Ihre Apps zugreifen:
 
-1. Sign in to your [Office 365 account](https://portal.office.com), using your existing password.
+1. Melden Sie sich mit Ihrem vorhandenen Kennwort bei Ihrem [Office 365-Konto](https://portal.office.com) an.
 
-2. Select your profile on the upper-right side, and then select **View account**.
+2. Wählen Sie rechts oben Ihr Profil und dann **Konto anzeigen** aus.
 
-3. Select **Security & privacy** > **Password**.
+3. Wählen Sie **Sicherheit und Datenschutz** > **Kennwort** aus.
 
-4. Type your old password, create and confirm your new password, and then select **Submit**.
+4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und wählen Sie anschließend **Absenden** aus.
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>To change your password from the Azure Access Panel
+### <a name="to-change-your-password-from-the-azure-access-panel"></a>Ändern des Kennworts über den Azure-Zugriffsbereich
 
-Use this method if you typically access your apps from the Azure Access Panel (MyApps):
+Verwenden Sie die folgende Methode, wenn Sie für gewöhnlich über den Azure-Zugriffsbereich (MyApps) auf Ihre Apps zugreifen:
 
-1. Sign in to the [Azure Access Panel](https://myapps.microsoft.com/), using your existing password.
+1. Melden Sie sich mit Ihrem vorhandenen Kennwort beim [Azure-Zugriffsbereich](https://myapps.microsoft.com/) an.
 
-2. Select your profile on the upper-right side, and then select **Profile**.
+2. Wählen Sie rechts oben Ihr Profil und dann **Profil** aus.
 
-3. Select **Change password**.
+3. Wählen Sie **Kennwort ändern** aus.
 
-4. Type your old password, create and confirm your new password, and then select **Submit**.
+4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und wählen Sie anschließend **Absenden** aus.
 
-### <a name="to-change-your-password-at-windows-sign-in"></a>To change your password at Windows sign-in
+### <a name="to-change-your-password-at-windows-sign-in"></a>Ändern eines Kennworts bei der Windows-Anmeldung
 
-If your administrator turned on the functionality, you can see a link to **Reset password** on your Windows 7, Windows 8, Windows 8.1, or Windows 10 sign-in screen.
+Wenn Ihr Administrator diese Funktion aktiviert hat, sehen Sie auf dem Anmeldebildschirm von Windows 7, Windows 8, Windows 8.1 oder Windows 10 einen Link **Kennwort zurücksetzen**.
 
-1. Select the **Reset password** link to start the password reset process without having to use the normal web-based experience.
+1. Öffnen Sie den Link **Kennwort zurücksetzen**, um den Prozess der Kennwortzurücksetzung zu starten, ohne die normale webbasierte Oberfläche verwenden zu müssen.
 
-2. Confirm your user ID and select **Next**.
+2. Bestätigen Sie Ihre Benutzer-ID, und wählen Sie **Weiter** aus.
 
-3. Select and confirm a contact method for verification. If necessary, choose a second verification option that's different from your previous one, filling in the necessary info.
+3. Wählen Sie eine Kontaktmethode für die Überprüfung aus, und bestätigen Sie diese. Wählen Sie ggf. eine zweite Überprüfungsoption, die sich von der bisherigen unterscheidet, und geben Sie die erforderlichen Informationen an.
 
-4. On the **Create a new password** page, type and confirm your new password, and then select **Next**.
+4. Geben Sie auf der Seite **Neues Kennwort erstellen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und wählen Sie anschließend **Weiter** aus.
 
-    Strong passwords typically have 8 to 16 characters, including upper and lowercase characters, at least one number, and at least one special character.
+    Sichere Kennwörter bestehen in der Regel aus 8 bis 16 Zeichen und umfassen Groß- und Kleinbuchstaben, mindestens eine Ziffer und mindestens ein Sonderzeichen.
 
-5. After you get the message saying that your password has been reset, you can select **Finish**.
+5. Nachdem Sie die Meldung erhalten haben, dass Ihr Kennwort zurückgesetzt wurde, können Sie **Fertig stellen** auswählen.
 
-    If you still can't access your account, you should contact your organization's administrator for more help.
+    Sollten Sie weiterhin nicht auf Ihr Konto zugreifen können, wenden Sie sich an den Administrator Ihrer Organisation, um weitere Hilfe zu erhalten.
 
-## <a name="common-problems-and-their-solutions"></a>Common problems and their solutions
+## <a name="common-problems-and-their-solutions"></a>häufige Probleme und Lösungen
 
-Here are some common error cases and their solutions:
+Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 
-|Problem|Description|Solution|
+|Problem|BESCHREIBUNG|Lösung|
 | --- | --- | --- |
-|When I try to change my password, I get an error. |Your password has a word, phrase, or pattern that makes your password easily guessable.| Try again using a stronger password.|
-|After I enter my User ID, I go to a page that says, "Please contact your administrator."|Microsoft has determined that your user account password is managed by your administrator in an on-premises environment. As a result, you can't reset your password from the "Can't access your account" link. |Contact your administrator for more help.|
-|After I enter my User ID, I get an error that says, "Your account is not enabled for password reset."|Your administrator hasn't set up your account so you can reset your own password.|Your administrator hasn't turned on password reset for your organization from the "Can't access your account" link, or hasn't licensed you to use the feature.<br><br> To reset your password, you must select the "contact an administrator link" to send an email to your company's administrator, and let them know you want to reset your password.|
-|After I enter my User ID, I get an error that says, "We couldn't verify your account."|The sign-in process was unable to verify your account info.|There are two reasons you could be seeing this message.<br><br>1. Your administrator turned on password reset for your organization, but you haven't registered to use the service. To register for password reset, see one of the following articles, based on your verification method: [Set up security info to use an authenticator app (preview)](security-info-setup-auth-app.md), [Set up security info to use a phone call (preview)](security-info-setup-phone-number.md), [Set up security info to use text messaging (preview)](security-info-setup-text-msg.md), [Set up security info to use email (preview)](security-info-setup-email.md), or [Set up security info to use security questions (preview)](security-info-setup-questions.md).<br><br>2. Your administrator hasn't turned on password reset for your organization. In this situation, you must select the "contact an administrator link" to send an email to your administrator, asking to reset your password.|
+|Beim Versuch, mein Kennwort zu ändern, tritt ein Fehler auf. |Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten.| Verwenden Sie ein sichereres Kennwort, und versuchen Sie es noch mal.|
+|Nachdem ich meine Benutzer-ID eingegeben habe, gelange ich auf eine Seite, die mich auffordert, mich an den Administrator zu wenden.|Microsoft hat festgestellt, dass das Kennwort Ihres Benutzerkontos von Ihrem Administrator in einer lokalen Umgebung verwaltet wird. Sie können Ihr Kennwort daher nicht über den Link „Zugriff auf Ihr Konto nicht möglich“ zurücksetzen. |Wenden Sie sich an den Administrator, um Hilfe zu erhalten.|
+|Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“.|Ihr Administrator hat Ihr Konto nicht so eingerichtet, dass Sie Ihr Kennwort selbst zurücksetzen können.|Ihr Administrator hat die Kennwortzurücksetzung über den Link „Zugriff auf Ihr Konto nicht möglich“ für Ihre Organisation nicht aktiviert oder Ihnen die Nutzung dieser Funktion nicht gestattet.<br><br> Öffnen Sie zum Zurücksetzen Ihres Kennworts den Link zur Kontaktaufnahme mit einem Administrator, und teilen Sie dem Administrator Ihres Unternehmens in einer E-Mail mit, dass Sie Ihr Kennwort zurücksetzen möchten.|
+|Nachdem ich meine Benutzer-ID eingegeben habe, erhalte ich eine Fehlermeldung, dass mein Konto nicht überprüft werden konnte.|Während des Anmeldevorgangs konnten Ihre Kontoinformationen nicht überprüft werden.|Es gibt zwei Gründe dafür, dass diese Meldung angezeigt wird.<br><br>1. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation aktiviert, Sie haben sich jedoch noch nicht für die Nutzung des Diensts registriert. In einem der folgenden Artikel finden Sie die für Sie geeigneten Informationen zum Registrieren für die Kennwortzurücksetzung (je nach verwendeter Überprüfungsmethode): [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](security-info-setup-auth-app.md), [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md), [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md), [Einrichten der Sicherheitsinformationen zur Verwendung einer E-Mail-Adresse (Vorschau)](security-info-setup-email.md) oder [Einrichten der Sicherheitsinformationen zur Verwendung von Sicherheitsfragen (Vorschau)](security-info-setup-questions.md).<br><br>2. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation nicht aktiviert. In diesem Fall müssen Sie den Link zur Kontaktaufnahme mit einem Administrator öffnen, um eine E-Mail an Ihren Administrator zu senden und darum zu bitten, dass Ihr Kennwort zurückgesetzt wird.|
 
-## <a name="next-steps"></a>Next steps
-- Learn about security info in the [Security info (preview) overview](user-help-security-info-overview.md) article.
+## <a name="next-steps"></a>Nächste Schritte
+- Unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md) erfahren Sie mehr über die Sicherheitsinformationen.
 
-- Learn about two-step verification in the [Two-step verification overview](user-help-two-step-verification-overview.md) article. 
+- Informationen zur zweistufigen Überprüfung finden Sie im Artikel [Übersicht über die zweistufige Überprüfung](user-help-two-step-verification-overview.md). 
 
-- Reset your password if you've lost or forgotten it, from the [Password reset portal](https://passwordreset.microsoftonline.com/)
+- Setzen Sie Ihr Kennwort im [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) zurück, falls Sie es verloren oder vergessen haben.
 
-- Get troubleshooting tips and help for sign-in problems in the [Can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+- Informieren Sie sich im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) über Tipps zur Behandlung von Anmeldeproblemen.

@@ -1,6 +1,6 @@
 ---
-title: Audit logs samples and definitions in Azure Active Directory B2C | Microsoft Docs
-description: Guide and samples on accessing the Azure AD B2C Audit logs.
+title: Beispiele und Definitionen für Überwachungsprotokolle in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Leitfaden und Beispiele für den Zugriff auf die Azure AD B2C-Überwachungsprotokolle
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -17,65 +17,65 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58003598"
 ---
-# <a name="accessing-azure-ad-b2c-audit-logs"></a>Accessing Azure AD B2C audit logs
+# <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
-Azure Active Directory B2C (Azure AD B2C) emits audit logs containing activity information about B2C resources, issued tokens, and administrator access. This article provides a brief overview of the information available through audit logs and instructions on how to access this data for your Azure AD B2C tenant.
+Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die Aktivitätsinformationen über B2C-Ressourcen, ausgestellte Token und Administratorzugriff enthalten. Dieser Artikel bietet eine kurze Übersicht über die Informationen, die durch Überwachungsprotokolle verfügbar sind, sowie Anweisungen für den Zugriff auf diese Daten für Ihren Active Directory B2C-Mandanten.
 
 > [!IMPORTANT]
-> Audit logs are only retained for seven days. Plan to download and store your logs using one of the methods shown below if you require a longer retention period.
+> Überwachungsprotokolle werden nur für sieben Tage aufbewahrt. Planen Sie den Download und die Speicherung Ihrer Protokolle mit einer der unten aufgeführten Methoden, wenn eine längere Aufbewahrungsdauer erforderlich ist.
 
-## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Overview of activities available in the B2C category of audit logs
-The **B2C** category in audit logs contains the following types of activities:
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Übersicht der verfügbaren Aktivitäten in der B2C-Kategorie von Überwachungsprotokollen
+Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivitätstypen:
 
-|Activity type |Description  |
+|Aktivitätstyp |BESCHREIBUNG  |
 |---------|---------|
-|Authorization |Activities concerning the authorization of a user to access B2C resources (for example, an administrator accessing a list of B2C policies)         |
-|Directory |Activities related to directory attributes retrieved when an administrator signs in using the Azure Portal |
-|Application | CRUD operations on B2C applications |
-|Key |CRUD operations on keys stored in B2C key container |
-|Resource |CRUD operations on B2C resources (for example, policies and identity providers)
-|Authentication |Validation of user credentials and token issuance|
+|Autorisierung |Aktivitäten, die die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen betreffen (z.B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
+|Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
+|Anwendung | CRUD-Vorgänge für B2C-Anwendungen |
+|Schlüssel |CRUD-Vorgänge für im B2C-Schlüsselcontainer gespeicherte Schlüssel |
+|Ressource |CRUD-Vorgänge für B2C-Ressourcen (z.B. Richtlinien und Identitätsanbieter)
+|Authentication |Überprüfung der Anmeldeinformationen des Benutzers und Tokenausstellung|
 
 > [!NOTE]
-> For user object CRUD activities, refer to the **Core Directory** category.
+> Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
 
-## <a name="example-activity"></a>Example activity
-The example below shows the data captured when a user signs in with an external identity provider: ![Audit Logs - Example](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+## <a name="example-activity"></a>Beispielaktivität
+Das folgende Beispiel zeigt die erfassten Daten, wenn sich ein Benutzer bei einem externen Identitätsanbieter anmeldet: ![Überwachungsprotokolle – Beispiel](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Accessing audit logs through the Azure Portal
-1. Go to the [Azure portal](https://portal.azure.com). Make sure you are in your B2C directory.
-2. Click on **Azure Active Directory** in the favorites bar on the left
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>Zugriff auf Überwachungsprotokolle über das Azure-Portal
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Stellen Sie sicher, dass Sie sich in Ihrem B2C-Verzeichnis befinden.
+2. Klicken Sie links in der Favoritenleiste auf **Azure Active Directory**.
     
-    ![Audit Logs - AAD button](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+    ![Überwachungsprotokolle – AAD-Schaltfläche](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
-1. Under **Activity**, click on **Audit Logs**
+1. Klicken Sie unter **Aktivität** auf **Überwachungsprotokolle**.
 
-    ![Audit Logs - Logs section](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+    ![Überwachungsprotokolle – Abschnitt „Protokolle“](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
-2. In the **Category** dropbox, select **B2C**
-3. Click on **Apply**
+2. Wählen Sie im Dropdownfeld **Kategorie** die Option **B2C**.
+3. Klicken Sie auf **Anwenden**.
 
-    ![Audit Logs - Category](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![Überwachungsprotokolle – Kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
-You will see a list of activities logged over the last seven days.
-- Use the **Activity Resource Type** dropdown to filter by the activity types outlined above
-- Use the **Date Range** dropdown to filter the date range of the activities shown
-- If you click on a specific row in the list, a contextual box on the right will show you additional attributes associated with the activity
-- Click on **Download** to download the activities as a csv file
+Sie sehen eine Liste der Aktivitäten, die in den letzten sieben Tagen protokolliert wurden.
+- Verwenden der Dropdownliste **Aktivitätsressourcentyp** zum Filtern nach den oben beschriebenen Aktivitätstypen.
+- Verwenden Sie die Dropdownliste **Datumsbereich**, um den Datumsbereich der angezeigten Aktivitäten zu filtern.
+- Wenn Sie auf eine bestimmte Zeile in der Liste klicken, zeigt Ihnen ein Kontextfeld auf der rechten Seite zusätzliche Attribute, die mit der Aktivität verbunden sind.
+- Klicken Sie auf **Herunterladen**, um die Aktivitäten als CSV-Datei herunterzuladen.
 
-## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Accessing audit logs through the Azure AD reporting API
-Audit logs are published to the same pipeline as other activities for Azure Active Directory, so they can be accessed through the [Azure Active Directory reporting API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).
+## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Zugriff auf Überwachungsprotokolle über die Azure AD-Berichterstellungs-API
+Überwachungsprotokolle werden in der gleichen Pipeline wie andere Aktivitäten für Azure Active Directory veröffentlicht, sodass auf sie über die [Azure Active Directory-Berichterstellungs-API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference) zugegriffen werden kann.
 
-### <a name="prerequisites"></a>Prerequisites
-To authenticate to the Azure AD reporting API you first need to register an application. Make sure to follow the steps in [Prerequisites to access the Azure AD reporting APIs](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
+### <a name="prerequisites"></a>Voraussetzungen
+Um den Azure AD-Berichterstellungs-API zu authentifizieren, müssen Sie zunächst eine Anwendung registrieren. Führen Sie in jedem Fall die Schritte unter [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/) aus.
 
-### <a name="accessing-the-api"></a>Accessing the API
-To download the Azure AD B2C audit logs via the API, you'll want to filter the logs to the **B2C** category. To filter by category, use the query string parameter when calling the Azure AD reporting API endpoint, as shown below:
+### <a name="accessing-the-api"></a>Zugriff auf die API
+Um die Active Directory B2C-Überwachungsprotokolle über die API herunterzuladen, müssen Sie die Protokolle nach der Kategorie **B2C** filtern. Verwenden Sie zum Filtern nach Kategorie den Abfragezeichenfolgen-Parameter, wenn Sie den Azure AD-Berichterstellungs-API-Endpunkt aufrufen, wie unten gezeigt:
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
 
-### <a name="powershell-script"></a>PowerShell script
-The following script provides an example of using PowerShell to query the Azure AD reporting API and store the results as a JSON file:
+### <a name="powershell-script"></a>PowerShell-Skript
+Das folgende Skript bietet ein Beispiel für die Verwendung von PowerShell zur Abfrage der Azure AD-Berichterstellungs-API und zum Speichern der Ergebnisse als JSON-Datei:
 
 ```powershell
 # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)

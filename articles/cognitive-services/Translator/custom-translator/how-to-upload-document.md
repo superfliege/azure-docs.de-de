@@ -1,7 +1,7 @@
 ---
-title: How to upload a document - Custom Translator
+title: 'Hochladen eines Dokuments: Custom Translator'
 titleSuffix: Azure Cognitive Services
-description: Using the document upload feature you can upload parallel document for your trainings. Parallel documents are pairs of documents where one is the translation of the other. One document in the pair contains sentences in the source language and the other document contains these sentences translated into the target language.
+description: Mithilfe des Dokumentuploadfeatures können Sie parallele Dokumente zu Trainingszwecken hochladen. Parallele Dokumente sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
@@ -16,75 +16,75 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57766945"
 ---
-# <a name="upload-a-document"></a>Upload a document
+# <a name="upload-a-document"></a>Hochladen eines Dokuments
 
-In [Custom Translator](https://portal.customtranslator.azure.ai), you can upload parallel documents to train your translation models. [Parallel documents](what-are-parallel-documents.md) are pairs of documents where one is a translation of the other. One document in the pair contains sentences in the source language and the other document contains these sentences translated into the target language.
+In [Custom Translator](https://portal.customtranslator.azure.ai) können Sie parallele Dokumente hochladen, um Ihre Übersetzungsmodelle zu trainieren. [Parallele Dokumente](what-are-parallel-documents.md) sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
 
-Before uploading your documents, review the [document formats and naming convention guidance](document-formats-naming-convention.md) to make sure your file format is supported in Custom Translator.
+Bevor Sie Ihre Dokumente hochladen, lesen Sie den [Leitfaden für Dokumentformate und Namenskonventionen](document-formats-naming-convention.md), um sicherzustellen, dass Ihr Dateiformat in Custom Translator unterstützt wird.
 
-## <a name="how-to-upload-document"></a>How to upload document?
+## <a name="how-to-upload-document"></a>Hochladen eines Dokuments
 
-From [Custom Translator](https://portal.customtranslator.azure.ai) portal, click on “Documents” tab to go to documents page.
+Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.ai) auf die Registerkarte „Dokumente“, um zur Dokumentenseite zu gelangen.
 
-![Document upload link](media/how-to/how-to-upload-1.png)
-
-
-1.  Click on the Upload files button on the documents page.
-
-    ![Upload document page](media/how-to/how-to-upload-2.png)
-
-2.  On the dialog fill in the following information:
-
-    a.  Document type:
-
-    -  Training: These document(s) will be used for training set.
-    -  Tuning: These document(s) will be used for tuning set.
-    -  Testing: These document(s) will be used for testing set.
-    -  Phrase Dictionary: These document(s) will be used for phrase  dictionary.
-    -  Sentence Dictionary: These document(s) will be used for sentence  dictionary
-
-    b.  Language pair
-
-    c.  Override document if exists: Select this check box if you want to overwrite any existing documents with the same name.
-
-    d.  Fill in the relevant section for either parallel data or combo data.
-
-    -  Parallel data:
-        -  Source file: Select source language file from your local computer.
-        -  Target file: Select target language file from your local computer.
-        -  Document name: Used only if you're uploading parallel files.
-
-    - Combo data:
-        -  Combo File: Select the combo file from your local computer. Your combo file has both of your source and target language sentences. [Naming convention](document-formats-naming-convention.md) is important for combo files.
-
-    e.  Click Upload
-
-    ![Upload document dialog](media/how-to/how-to-upload-dialog.png)
-
-3.  At this point, we're processing your documents and attempting to extract sentences. You can click “View upload Progress” to check the status of your documents as they process.
-
-    ![Upload document processing dialog](media/how-to/how-to-upload-processing-dialog.png)
-
-4.  This page will display the status, and any errors for each file within your upload. You can view past upload status at any time by clicking on the “Upload history” tab.
-
-    ![Upload document history dialog](media/how-to/how-to-upload-document-history.png)
+![Link zum Hochladen von Dokumenten](media/how-to/how-to-upload-1.png)
 
 
-## <a name="view-upload-history"></a>View upload history
+1.  Klicken Sie auf der Dokumentenseite auf die Schaltfläche „Dateien hochladen“.
 
-In upload history page you can view history of all document uploads details like document type, language pair, upload status etc.
+    ![Seite für Dokumentuploads](media/how-to/how-to-upload-2.png)
 
-1. From the [Custom Translator](https://portal.customtranslator.azure.ai) portal,  click Upload History tab to view history.
+2.  Geben Sie die folgenden Informationen in das Dialogfeld ein:
 
-    ![Upload history tab](media/how-to/how-to-upload-history-1.png)
+    a.  Dokumenttyp:
 
-2. This page shows the status of all of your past uploads. It displays uploads from most recent to least recent. For each upload, it shows the document name, upload status, the upload date, the number of files uploaded, type of file uploaded, and the language pair of the file.
+    -  Training: Diese Dokumente werden für den Trainingssatz verwendet.
+    -  Optimierung: Diese Dokumente werden für den Optimierungssatz verwendet.
+    -  Test: Diese Dokumente werden für den Testsatz verwendet.
+    -  Ausdruckswörterbuch: Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
+    -  Satzwörterbuch: Diese Dokumente werden für das Satzwörterbuch verwendet.
 
-    ![Upload history page](media/how-to/how-to-document-history-2.png)
+    b.  Language pair (Sprachpaar)
 
-3. Click on any upload history record. In upload history details page, you can view the files uploaded as part of the upload, uploaded status of the file, language of the file and error message (if there is any error in upload).
+    c.  Override document if exists (Dokument überschreiben, falls vorhanden): Aktivieren Sie dieses Kontrollkästchen, wenn bereits vorhandene Dokumente gleichen Namens überschrieben werden sollen.
 
-## <a name="next-steps"></a>Next steps
+    d.  Füllen Sie den relevanten Abschnitt für parallele Daten oder für Kombinationsdaten aus.
 
-- Use the [document details page](how-to-view-document-details.md) to review list of extracted sentences.
-- [How to train a model](how-to-train-model.md).
+    -  Parallele Daten:
+        -  Quelldatei: Wählen Sie die Quellsprachdatei auf Ihrem lokalen Computer aus.
+        -  Zieldatei: Wählen Sie die Zielsprachdatei auf Ihrem lokalen Computer aus.
+        -  Dokumentname: Nur beim Hochladen paralleler Dateien relevant.
+
+    - Kombinationsdaten:
+        -  Kombinationsdatei: Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
+
+    e.  Klicken Sie auf „Hochladen“.
+
+    ![Dialogfeld für Dokumentuploads](media/how-to/how-to-upload-dialog.png)
+
+3.  Ihre Dokumente werden verarbeitet, und es wird versucht, Sätze zu extrahieren. Sie können auf „View upload progress“ (Uploadstatus anzeigen) klicken, um den Verarbeitungsstatus Ihrer Dokumente zu überprüfen.
+
+    ![Verarbeitungsdialogfeld für Dokumentuploads](media/how-to/how-to-upload-processing-dialog.png)
+
+4.  Auf dieser Seite werden der Status sowie alle ggf. auftretenden Fehler für die einzelnen Dateien des Uploads angezeigt. Auf der Registerkarte „Upload history“ (Uploadverlauf) können Sie jederzeit einen älteren Uploadstatus anzeigen.
+
+    ![Verlaufsdialogfeld für Dokumentuploads](media/how-to/how-to-upload-document-history.png)
+
+
+## <a name="view-upload-history"></a>Anzeigen des Uploadverlaufs
+
+Auf der Seite mit dem Uploadverlauf können Sie Verlaufsdetails aller Dokumentuploads wie Dokumenttyp, Sprachpaar, Uploadstatus und Ähnliches anzeigen.
+
+1. Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.ai) auf die Registerkarte „Upload History“ (Uploadverlauf), um den Verlauf anzuzeigen.
+
+    ![Registerkarte mit dem Uploadverlauf](media/how-to/how-to-upload-history-1.png)
+
+2. Auf dieser Seite wird der Status aller bisherigen Uploads angezeigt. Die Uploads sind absteigend nach Aktualität sortiert. Für jeden Upload werden Dokumentname, Uploadstatus, Uploaddatum, Anzahl der hochgeladenen Dateien, Art der hochgeladenen Dateien und Sprachpaar der Datei angezeigt.
+
+    ![Seite mit dem Uploadverlauf](media/how-to/how-to-document-history-2.png)
+
+3. Klicken Sie auf einen beliebigen Datensatz des Uploadverlaufs. Auf der Detailseite des Uploadverlaufs können Sie die hochgeladenen Dateien, den Uploadstatus der Datei, die Sprache der Datei und ggf. die Fehlermeldung anzeigen (sofern bei dem Upload ein Fehler aufgetreten ist).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Verwenden Sie die [Dokumentdetailseite](how-to-view-document-details.md), um die Liste mit den extrahierten Sätzen zu überprüfen.
+- [Trainieren eines Modells](how-to-train-model.md)

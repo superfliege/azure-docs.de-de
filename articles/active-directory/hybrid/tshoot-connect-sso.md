@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Connect: Troubleshoot Seamless Single Sign-On | Microsoft Docs'
-description: This topic describes how to troubleshoot Azure Active Directory Seamless Single Sign-On
+title: 'Azure Active Directory Connect: Problembehandlung beim nahtlosen einmaligen Anmelden | Microsoft-Dokumentation'
+description: In diesem Thema wird beschrieben, wie Sie Probleme beim nahtlosen einmaligen Anmelden in Azure Active Directory behandeln können.
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
@@ -20,78 +20,78 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58095896"
 ---
-# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Troubleshoot Azure Active Directory Seamless Single Sign-On
+# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
-This article helps you find troubleshooting information about common problems regarding Azure Active Directory (Azure AD) Seamless Single Sign-On (Seamless SSO).
+In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten Problemen beim nahtlosen einmaligen Anmelden (nahtloses SSO) in Azure Active Directory (Azure AD).
 
-## <a name="known-issues"></a>Known issues
+## <a name="known-issues"></a>Bekannte Probleme
 
-- In a few cases, enabling Seamless SSO can take up to 30 minutes.
-- If you disable and re-enable Seamless SSO on your tenant, users will not get the single sign-on experience till their cached Kerberos tickets, typically valid for 10 hours, have expired.
-- Microsoft Edge browser support is not available.
-- If Seamless SSO succeeds, the user does not have the opportunity to select **Keep me signed in**. Due to this behavior, [SharePoint and OneDrive mapping scenarios](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) don't work.
-- Office 365 Win32 clients (Outlook, Word, Excel, and others) with versions 16.0.8730.xxxx and above are supported using a non-interactive flow. Other versions are not supported; on those versions, users will enter their usernames, but not passwords, to sign-in. For OneDrive, you will have to activate the [OneDrive silent config feature](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) for a silent sign-on experience.
-- Seamless SSO doesn't work in private browsing mode on Firefox.
-- Seamless SSO doesn't work in Internet Explorer when Enhanced Protected mode is turned on.
-- Seamless SSO doesn't work on mobile browsers on iOS and Android.
-- If a user is part of too many groups in Active Directory, the user's Kerberos ticket will likely be too large to process, and this will cause Seamless SSO to fail. Azure AD HTTPS requests can have headers with a maximum size of 50 KB; Kerberos tickets need to be smaller than that limit to accommodate other Azure AD artifacts (typically, 2 - 5 KB) such as cookies. Our recommendation is to reduce user's group memberships and try again.
-- If you're synchronizing 30 or more Active Directory forests, you can't enable Seamless SSO through Azure AD Connect. As a workaround, you can [manually enable](#manual-reset-of-the-feature) the feature on your tenant.
-- Adding the Azure AD service URL (https://autologon.microsoftazuread-sso.com) to the Trusted sites zone instead of the Local intranet zone *blocks users from signing in*.
-- Seamless SSO uses the **RC4_HMAC_MD5** encryption type for Kerberos. Disabling the use of the **RC4_HMAC_MD5** encryption type in your Active Directory settings will break Seamless SSO. In your Group Policy Management Editor tool ensure that the policy value for **RC4_HMAC_MD5** under **Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> Security Options -> "Network Security: Configure encryption types allowed for Kerberos"** is **enabled**. In addition, Seamless SSO can't use other encryption types, so ensure that they are **disabled**.
+- Die Aktivierung der nahtlosen einmaligen Anmeldung kann in seltenen Fällen bis zu 30 Minuten dauern.
+- Wenn Sie die nahtlose einmalige Anmeldung für Ihren Mandanten deaktivieren und dann erneut aktivieren, steht die Benutzeroberfläche zum einmaligen Anmelden Benutzern erst wieder zur Verfügung, nachdem ihre zwischengespeicherten Kerberos-Tickets, die im Normalfall 10 Stunden gültig sind, abgelaufen sind.
+- Der Microsoft Edge-Browser wird nicht unterstützt.
+- Wenn nahtloses einmaliges Anmelden erfolgreich ausgeführt wurde, hat der Benutzer nicht die Möglichkeit, die Option **Angemeldet bleiben** auszuwählen. Aufgrund dieses Verhaltens funktionieren [Zuordnungsszenarien für SharePoint und OneDrive](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nicht.
+- Office 365 Win32-Clients (Outlook, Word, Excel etc.) mit Versionen ab 16.0.8730.xxxx werden mit einem nicht interaktiven Fluss unterstützt. Andere Versionen werden nicht unterstützt. In diesen Versionen geben die Benutzer zur Anmeldung ihren Benutzernamen, aber kein Kennwort ein. Bei OneDrive müssen Sie das [OneDrive-Feature zur automatischen Konfiguration](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) aktivieren, um von einer automatischen Anmeldung profitieren zu können.
+- Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
+- Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
+- Das nahtlose einmalige Anmelden funktioniert nicht in mobilen Browsern unter iOS und Android.
+- Wenn ein Benutzer in Active Directory einer zu großen Zahl von Gruppen angehört, ist das Kerberos-Ticket des Benutzers wahrscheinlich zu groß für die Verarbeitung. Dies führt dazu, dass das nahtlose einmalige Anmelden nicht erfolgreich ist. Azure AD-HTTPS-Anforderungen können Header mit einer maximalen Größe von 50 KB enthalten. Kerberos-Tickets müssen unter diesem Grenzwert liegen, um andere Azure AD-Artefakte (in der Regel 2-5 KB), z.B. Cookies, aufnehmen zu können. Wir empfehlen Ihnen, die Gruppenmitgliedschaften des Benutzers zu reduzieren und es erneut zu versuchen.
+- Wenn Sie 30 oder mehr Active Directory-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-the-feature).
+- Wenn Sie die Dienst-URL von Azure AD (https://autologon.microsoftazuread-sso.com)) nicht der Zone „Lokales Intranet“ hinzufügen, sondern der Zone „Vertrauenswürdige Sites“, *können sich Benutzer nicht anmelden*.
+- Nahtloses einmaliges Anmelden verwendet den Verschlüsselungstyp **RC4_HMAC_MD5** für Kerberos. Wenn die Verwendung des Verschlüsselungstyps **RC4_HMAC_MD5** in Ihren Active Directory-Einstellungen deaktiviert wird, tritt bei nahtlosem SSO ein Fehler auf. Stellen Sie im Gruppenrichtlinienverwaltungs-Editor sicher, dass der Richtlinienwert für **RC4_HMAC_MD5** unter **Computerkonfiguration > Windows-Einstellungen > Sicherheitseinstellungen > Lokale Richtlinien > Sicherheitsoptionen > „Netzwerksicherheit: Für Kerberos zulässige Verschlüsselungstypen konfigurieren“** **aktiviert** ist. Darüber hinaus kann nahtloses einmaliges Anmelden keine anderen Verschlüsselungstypen verwenden. Stellen Sie daher sicher, dass diese **deaktiviert** sind.
 
-## <a name="check-status-of-feature"></a>Check status of feature
+## <a name="check-status-of-feature"></a>Überprüfen des Status des Features
 
-Ensure that the Seamless SSO feature is still **Enabled** on your tenant. You can check the status by going to the **Azure AD Connect** pane in the [Azure Active Directory admin center](https://aad.portal.azure.com/).
+Stellen Sie sicher, dass das nahtlose einmalige Anmelden für Ihren Mandanten noch **Aktiviert** ist. Um den Status zu überprüfen, können Sie zum Bereich **Azure AD Connect** im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) navigieren.
 
-![Azure Active Directory admin center: Azure AD Connect pane](./media/tshoot-connect-sso/sso10.png)
+![Azure Active Directory Admin Center: Bereich „Azure AD Connect“](./media/tshoot-connect-sso/sso10.png)
 
-Click through to see all the AD forests that have been enabled for Seamless SSO.
+Klicken Sie, um alle AD-Gesamtstrukturen anzuzeigen, die für nahtloses SSO aktiviert wurden.
 
-![Azure Active Directory admin center: Seamless SSO pane](./media/tshoot-connect-sso/sso13.png)
+![Azure Active Directory Admin Center: Bereich für nahtloses einmaliges Anmelden](./media/tshoot-connect-sso/sso13.png)
 
-## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Sign-in failure reasons in the Azure Active Directory admin center (needs a Premium license)
+## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center (Premium-Lizenz erforderlich)
 
-If your tenant has an Azure AD Premium license associated with it, you can also look at the [sign-in activity report](../reports-monitoring/concept-sign-ins.md) in the [Azure Active Directory admin center](https://aad.portal.azure.com/).
+Wenn Ihrem Mandanten eine Azure AD Premium-Lizenz zugeordnet ist, können Sie sich im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) auch den [Bericht zu den Anmeldeaktivitäten](../reports-monitoring/concept-sign-ins.md) ansehen.
 
-![Azure Active Directory admin center: Sign-ins report](./media/tshoot-connect-sso/sso9.png)
+![Azure Active Directory Admin Center: Bericht zu Anmeldeaktivitäten](./media/tshoot-connect-sso/sso9.png)
 
-Browse to **Azure Active Directory** > **Sign-ins** in the [Azure Active Directory admin center](https://aad.portal.azure.com/), and then select a specific user's sign-in activity. Look for the **SIGN-IN ERROR CODE** field. Map the value of that field to a failure reason and resolution by using the following table:
+Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) zu **Azure Active Directory** > **Anmeldungen**, und klicken Sie auf die Anmeldeaktivität eines bestimmten Benutzers. Suchen Sie nach dem Feld **Code des Anmeldefehlers**. Ordnen Sie den Wert in diesem Feld mithilfe der folgenden Tabelle einer Ursache und einer Lösung zu:
 
-|Sign-in error code|Sign-in failure reason|Resolution
+|Anmeldefehler|Grund des Anmeldefehlers|Lösung
 | --- | --- | ---
-| 81001 | User's Kerberos ticket is too large. | Reduce the user's group memberships and try again.
-| 81002 | Unable to validate the user's Kerberos ticket. | See the [troubleshooting checklist](#troubleshooting-checklist).
-| 81003 | Unable to validate the user's Kerberos ticket. | See the [troubleshooting checklist](#troubleshooting-checklist).
-| 81004 | Kerberos authentication attempt failed. | See the [troubleshooting checklist](#troubleshooting-checklist).
-| 81008 | Unable to validate the user's Kerberos ticket. | See the [troubleshooting checklist](#troubleshooting-checklist).
-| 81009 | Unable to validate the user's Kerberos ticket. | See the [troubleshooting checklist](#troubleshooting-checklist).
-| 81010 | Seamless SSO failed because the user's Kerberos ticket has expired or is invalid. | The user needs to sign in from a domain-joined device inside your corporate network.
-| 81011 | Unable to find the user object based on the information in the user's Kerberos ticket. | Use Azure AD Connect to synchronize the user's information into Azure AD.
-| 81012 | The user trying to sign in to Azure AD is different from the user that is signed in to the device. | The user needs to sign in from a different device.
-| 81013 | Unable to find the user object based on the information in the user's Kerberos ticket. |Use Azure AD Connect to synchronize the user's information into Azure AD. 
+| 81001 | Das Kerberos-Ticket des Benutzers ist zu groß. | Reduzieren Sie die Gruppenmitgliedschaften des Benutzers, und versuchen Sie es erneut.
+| 81002 | Das Kerberos-Ticket des Benutzers kann nicht überprüft werden. | Informationen hierzu finden Sie in der [Checkliste zur Problembehandlung](#troubleshooting-checklist).
+| 81003 | Das Kerberos-Ticket des Benutzers kann nicht überprüft werden. | Informationen hierzu finden Sie in der [Checkliste zur Problembehandlung](#troubleshooting-checklist).
+| 81004 | Fehler beim Versuch, die Kerberos-Authentifizierung durchzuführen. | Informationen hierzu finden Sie in der [Checkliste zur Problembehandlung](#troubleshooting-checklist).
+| 81008 | Das Kerberos-Ticket des Benutzers kann nicht überprüft werden. | Informationen hierzu finden Sie in der [Checkliste zur Problembehandlung](#troubleshooting-checklist).
+| 81009 | Das Kerberos-Ticket des Benutzers kann nicht überprüft werden. | Informationen hierzu finden Sie in der [Checkliste zur Problembehandlung](#troubleshooting-checklist).
+| 81010 | Fehler beim nahtlosen einmaligen Anmelden, da das Kerberos-Ticket des Benutzers abgelaufen oder ungültig ist. | Der Benutzer muss sich über ein in eine Domäne eingebundenes Gerät in Ihrem Unternehmensnetzwerk anmelden.
+| 81011 | Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden. | Verwenden Sie Azure AD Connect, um Benutzerinformationen in Azure AD zu synchronisieren.
+| 81012 | Der Benutzer, der versucht, sich bei Azure AD anzumelden, unterscheidet sich von dem Benutzer, der beim Gerät angemeldet ist. | Der Benutzer muss sich über ein anderes Gerät anmelden.
+| 81013 | Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden. |Verwenden Sie Azure AD Connect, um Benutzerinformationen in Azure AD zu synchronisieren. 
 
-## <a name="troubleshooting-checklist"></a>Troubleshooting checklist
+## <a name="troubleshooting-checklist"></a>Checkliste zur Problembehandlung
 
-Use the following checklist to troubleshoot Seamless SSO problems:
+Verwenden Sie die folgende Checkliste zur Behebung von Problemen in Bezug auf die nahtlose einmalige Anmeldung:
 
-- Ensure that the Seamless SSO feature is enabled in Azure AD Connect. If you can't enable the feature (for example, due to a blocked port), ensure that you have all the [prerequisites](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) in place.
-- If you have enabled both [Azure AD Join](../active-directory-azureadjoin-overview.md) and Seamless SSO on your tenant, ensure that the issue is not with Azure AD Join. SSO from Azure AD Join takes precedence over Seamless SSO if the device is both registered with Azure AD and domain-joined. With SSO from Azure AD Join the user sees a sign-in tile that says "Connected to Windows".
-- Ensure that the Azure AD URL (https://autologon.microsoftazuread-sso.com) is part of the user's Intranet zone settings.
-- Ensure that the corporate device is joined to the Active Directory domain. The device _doesn't_ need to be [Azure AD Joined](../active-directory-azureadjoin-overview.md) for Seamless SSO to work.
-- Ensure that the user is logged on to the device through an Active Directory domain account.
-- Ensure that the user's account is from an Active Directory forest where Seamless SSO has been set up.
-- Ensure that the device is connected to the corporate network.
-- Ensure that the device's time is synchronized with the time in both Active Directory and the domain controllers, and that they are within five minutes of each other.
-- Ensure that the `AZUREADSSOACC` computer account is present and enabled in each AD forest that you want Seamless SSO enabled. If the computer account has been deleted or is missing, you can use [PowerShell cmdlets](#manual-reset-of-the-feature) to re-create them.
-- List the existing Kerberos tickets on the device by using the `klist` command from a command prompt. Ensure that the tickets issued for the `AZUREADSSOACC` computer account are present. Users' Kerberos tickets are typically valid for 10 hours. You might have different settings in Active Directory.
-- If you disabled and re-enabled Seamless SSO on your tenant, users will not get the single sign-on experience till their cached Kerberos tickets have expired.
-- Purge existing Kerberos tickets from the device by using the `klist purge` command, and try again.
-- To determine if there are JavaScript-related problems, review the console logs of the browser (under **Developer Tools**).
-- Review the [domain controller logs](#domain-controller-logs).
+- Überprüfen Sie, ob die Funktion zum nahtlosen einmaligen Anmelden in Azure AD Connect aktiviert ist. Wenn Sie die Funktion (z.B. aufgrund eines blockierten Ports) nicht aktivieren können, vergewissern Sie sich, dass alle [Voraussetzungen](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) erfüllt sind.
+- Wenn Sie für Ihren Mandanten sowohl [Azure AD Join](../active-directory-azureadjoin-overview.md) als auch nahtlose einmalige Anmeldung aktiviert haben, vergewissern Sie sich, dass das Problem nicht bei Azure AD Join liegt. Einmaliges Anmelden von Azure AD Join hat Vorrang vor der nahtlosen einmaligen Anmeldung, wenn das Gerät sowohl bei Azure AD registriert als auch Mitglied einer Domäne ist. Bei einmaligem Anmelden von Azure AD Join wird dem Benutzer eine Anmeldekachel mit dem Text „Mit Windows verbunden“ angezeigt.
+- Stellen Sie sicher, dass die Azure AD-URL (https://autologon.microsoftazuread-sso.com) Teil der Zoneneinstellung „Intranet“ des Benutzers ist.
+- Stellen Sie sicher, dass das Unternehmensgerät mit der Active Directory-Domäne verknüpft ist. Das Gerät muss _nicht_ [In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein, damit das nahtlose einmalige Anmelden funktioniert.
+- Stellen Sie sicher, dass der Benutzer über ein Active Directory-Domänenkonto beim Gerät angemeldet ist.
+- Stellen Sie sicher, dass das Benutzerkonto aus einer Active Directory-Gesamtstruktur stammt, in der nahtloses einmaliges Anmelden eingerichtet wurde.
+- Stellen Sie sicher, dass das Gerät mit dem Unternehmensnetzwerk verbunden ist.
+- Stellen Sie sicher, dass die Uhrzeit des Geräts mit der Uhrzeit von Active Directory und den Domänencontrollern synchronisiert ist und diese nicht mehr als fünf Minuten voneinander abweichen.
+- Stellen Sie sicher, dass das Computerkonto `AZUREADSSOACC` in jeder AD-Gesamtstruktur, die SSO-fähig sein soll, vorhanden und aktiviert ist. Wenn das Computerkonto gelöscht wurde oder nicht vorhanden ist, können Sie [PowerShell-Cmdlets](#manual-reset-of-the-feature) verwenden, um es erneut zu erstellen.
+- Listen Sie vorhandene Kerberos-Tickets auf dem Gerät mit dem Befehl `klist` über eine Eingabeaufforderung auf. Stellen Sie sicher, dass die für das Computerkonto `AZUREADSSOACC` ausgestellten Tickets vorhanden sind. Die Kerberos-Tickets von Benutzern sind normalerweise 10 Stunden gültig. Sie haben in Active Directory unter Umständen andere Einstellungen festgelegt.
+- Wenn Sie die nahtlose einmalige Anmeldung für Ihren Mandanten deaktiviert und dann erneut aktiviert haben, steht die Benutzeroberfläche zum einmaligen Anmelden Benutzern erst wieder zur Verfügung, nachdem ihre zwischengespeicherten Kerberos-Tickets abgelaufen sind.
+- Löschen Sie vorhandene Kerberos-Tickets auf dem Gerät mit dem Befehl `klist purge`, und wiederholen Sie den Vorgang.
+- Überprüfen Sie die Konsolenprotokolle des Browsers (unter **Entwicklertools**), um zu ermitteln, ob Probleme vorliegen, die sich auf JavaScript beziehen.
+- Sehen Sie sich außerdem die [Domänencontrollerprotokolle](#domain-controller-logs) an.
 
-### <a name="domain-controller-logs"></a>Domain controller logs
+### <a name="domain-controller-logs"></a>Domänencontrollerprotokolle
 
-If you enable success auditing on your domain controller, then every time a user signs in through Seamless SSO, a security entry is recorded in the event log. You can find these security events by using the following query. (Look for event **4769** associated with the computer account **AzureADSSOAcc$**.)
+Wenn die erfolgreiche Überwachung auf Ihrem Domänencontroller aktiviert ist, wird bei jeder nahtlosen einmaligen Anmeldung durch einen Benutzer ein Sicherheitseintrag im Ereignisprotokoll erfasst. Sie können diese Sicherheitsereignisse mithilfe der folgenden Abfrage abrufen. (Suchen Sie nach Ereignis **4769** in Verbindung mit dem Computerkonto **AzureADSSOAcc$**.)
 
 ```
     <QueryList>
@@ -101,40 +101,40 @@ If you enable success auditing on your domain controller, then every time a user
     </QueryList>
 ```
 
-## <a name="manual-reset-of-the-feature"></a>Manual reset of the feature
+## <a name="manual-reset-of-the-feature"></a>Manuelle Zurücksetzung des Features
 
-If troubleshooting didn't help, you can manually reset the feature on your tenant. Follow these steps on the on-premises server where you're running Azure AD Connect.
+Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Mandanten manuell zurücksetzen. Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Step 1: Import the Seamless SSO PowerShell module
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Schritt 1: Importieren Sie das PowerShell-Modul „Nahtlose SSO“
 
-1. First, download, and install [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-2. Browse to the `%programfiles%\Microsoft Azure Active Directory Connect` folder.
-3. Import the Seamless SSO PowerShell module by using this command: `Import-Module .\AzureADSSO.psd1`.
+1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
+3. Importieren Sie das PowerShell-Modul für nahtloses SSO mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Step 2: Get the list of Active Directory forests on which Seamless SSO has been enabled
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Schritt 2: Rufen Sie die Liste der Active Directory-Gesamtstrukturen ab, für die nahtloses einmaliges Anmelden aktiviert wurde.
 
-1. Run PowerShell as an administrator. In PowerShell, call `New-AzureADSSOAuthenticationContext`. When prompted, enter your tenant's global administrator credentials.
-2. Call `Get-AzureADSSOStatus`. This command provides you with the list of Active Directory forests (look at the "Domains" list) on which this feature has been enabled.
+1. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Geben Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten an, wenn Sie dazu aufgefordert werden.
+2. Rufen Sie `Get-AzureADSSOStatus` auf. Dadurch erhalten Sie die Liste der Active Directory-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Step 3: Disable Seamless SSO for each Active Directory forest where you've set up the feature
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Schritt 3: Deaktivieren Sie nahtloses SSO für jede Active Directory-Gesamtstruktur, in der Sie die Funktion eingerichtet haben.
 
-1. Call `$creds = Get-Credential`. When prompted, enter the domain administrator credentials for the intended Active Directory forest.
-
-   > [!NOTE]
-   > We use the Domain Administrator's username, provided in the User Principal Names (UPN) (johndoe@contoso.com) format or the domain qualified sam-account name (contoso\johndoe or contoso.com\johndoe) format, to find the intended AD forest. If you use domain qualified sam-account name, we use the domain portion of the username to [locate the Domain Controller of the Domain Administrator using DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). If you use UPN instead, we [translate it to a domain qualified sam-account name](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) before locating the appropriate Domain Controller.
-
-2. Call `Disable-AzureADSSOForest -OnPremCredentials $creds`. This command removes the `AZUREADSSOACC` computer account from the on-premises domain controller for this specific Active Directory forest.
-3. Repeat the preceding steps for each Active Directory forest where you’ve set up the feature.
-
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Step 4: Enable Seamless SSO for each Active Directory forest
-
-1. Call `Enable-AzureADSSOForest`. When prompted, enter the domain administrator credentials for the intended Active Directory forest.
+1. Rufen Sie `$creds = Get-Credential` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene Active Directory-Gesamtstruktur ein.
 
    > [!NOTE]
-   > We use the Domain Administrator's username, provided in the User Principal Names (UPN) (johndoe@contoso.com) format or the domain qualified sam-account name (contoso\johndoe or contoso.com\johndoe) format, to find the intended AD forest. If you use domain qualified sam-account name, we use the domain portion of the username to [locate the Domain Controller of the Domain Administrator using DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). If you use UPN instead, we [translate it to a domain qualified sam-account name](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) before locating the appropriate Domain Controller.
+   > Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
 
-2. Repeat the preceding step for each Active Directory forest where you want to set up the feature.
+2. Rufen Sie `Disable-AzureADSSOForest -OnPremCredentials $creds` auf. Mit diesem Befehl wird das Computerkonto `AZUREADSSOACC` vom lokalen Domänencontroller für diese spezifische Active Directory-Gesamtstruktur entfernt.
+3. Wiederholen Sie die vorhergehenden Schritte für Active Directory-Gesamtstruktur, in der Sie die Funktion eingerichtet haben.
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>Step 5. Enable the feature on your tenant
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Schritt 4: Aktivieren Sie nahtloses SSO für jede Active Directory-Gesamtstruktur.
 
-To turn on the feature on your tenant, call `Enable-AzureADSSO -Enable $true`.
+1. Rufen Sie `Enable-AzureADSSOForest` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene Active Directory-Gesamtstruktur ein.
+
+   > [!NOTE]
+   > Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
+
+2. Wiederholen Sie die vorhergehenden Schritte für Active Directory-Gesamtstruktur, in der Sie die Funktion einrichten möchten.
+
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>Schritt 5: Aktivieren Sie das Feature für Ihren Mandanten.
+
+Zum Aktivieren des Features für Ihren Mandanten rufen Sie `Enable-AzureADSSO -Enable $true` auf.

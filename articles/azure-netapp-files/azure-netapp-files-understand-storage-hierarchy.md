@@ -1,6 +1,6 @@
 ---
-title: Understand the storage hierarchy of Azure NetApp Files | Microsoft Docs
-description: Describes the storage hierarchy, including Azure NetApp Files accounts, capacity pools, and volumes.
+title: Grundlegendes zur Speicherhierarchie von Azure NetApp Files | Microsoft-Dokumentation
+description: Enthält Informationen zur Speicherhierarchie (einschließlich Azure NetApp Files-Konten, Kapazitätspools und Volumes).
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -21,43 +21,43 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57775848"
 ---
-# <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Understand the storage hierarchy of Azure NetApp Files
+# <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Grundlegendes zur Speicherhierarchie von Azure NetApp Files
 
-Before creating a volume in Azure NetApp Files, you must purchase and set up a pool for provisioned capacity.  To set up a capacity pool, you must have a NetApp account. Understanding the storage hierarchy helps you set up and manage your Azure NetApp Files resources.
+Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst einen Pool für bereitgestellte Kapazität erwerben und einrichten.  Um einen Kapazitätspool einrichten zu können, benötigen Sie ein NetApp-Konto. Die Informationen zur Speicherhierarchie sind beim Einrichten und Verwalten Ihrer Azure NetApp Files-Ressourcen hilfreich.
 
-## <a name="azure_netapp_files_account"></a>NetApp accounts
+## <a name="azure_netapp_files_account"></a>NetApp-Konten
 
-- A NetApp account serves as an administrative grouping of the constituent capacity pools.  
-- A NetApp account is not the same as your general Azure storage account. 
-- A NetApp account is regional in scope.   
-- You can have multiple NetApp accounts in a region, but each NetApp account is tied to only a single region.
+- Ein NetApp-Konto fungiert als administrative Gruppierung der einzelnen Kapazitätspools.  
+- Ein NetApp-Konto ist nicht dasselbe wie Ihr allgemeines Azure-Speicherkonto. 
+- Ein NetApp-Konto deckt einen regionalen Bereich ab.   
+- Sie können über mehrere NetApp-Konten in einer Region verfügen, jedes NetApp-Konto ist aber an eine einzelne Region gebunden.
 
-## <a name="capacity_pools"></a>Capacity pools
+## <a name="capacity_pools"></a>Kapazitätspools
 
-- A capacity pool is measured by its provisioned capacity.  
-- The capacity is provisioned by the fixed SKUs that you purchased (for example, a 4-TiB capacity).
-- The minimum size for a single capacity pool is 4 TiB, and the maximum size is 500 TiB. 
-- A capacity pool can have only one service level.  
-  Currently, only the Premium service level is available.
-- Each capacity pool can belong to only one NetApp account. However, you can have multiple capacity pools within a NetApp account.  
-- A capacity pool cannot be moved across NetApp accounts.   
-  For example, in the [Conceptual diagram of storage hierarchy](#conceptual_diagram_of_storage_hierarchy) below, Capacity Pool 1 cannot be moved from US East NetApp account to US West 2 NetApp account.  
+- Ein Kapazitätspool wird anhand der bereitgestellten Kapazität gemessen.  
+- Die Kapazität wird durch die festen SKUs bereitgestellt, die Sie erworben haben (beispielsweise eine Kapazität von 4 TiB).
+- Die Mindestgröße für einen einzelnen Kapazitätspool beträgt 4 TiB, die Maximalgröße 500 TiB. 
+- Ein Kapazitätspool kann lediglich einen einzelnen Servicelevel aufweisen.  
+  Aktuell steht nur das Servicelevel „Premium“ zur Verfügung.
+- Jeder einzelne Kapazitätspool kann nur zu einem einzelnen NetApp-Konto gehören. Innerhalb eines NetApp-Kontos können jedoch mehrere Kapazitätspools vorhanden sein.  
+- Ein Kapazitätspool kann nicht zwischen NetApp-Konten verschoben werden.   
+  Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten kann beispielsweise der Kapazitätspool 1 nicht aus dem NetApp-Konto für „USA, Osten“ in das NetApp-Konto für „USA, Westen 2“ verschoben werden.  
 
 ## <a name="volumes"></a>Volumes
 
-- A volume is measured by logical capacity consumption and is scalable. The minimum size for a single volume is 100 GiB, and the maximum size is 92 TiB.
-- A volume's capacity consumption counts against its pool's provisioned capacity.
--   You can have a maximum of 100 volumes per Azure subscription per region. 
-- Each volume belongs to only one pool, but a pool can contain multiple volumes. 
-- Within the same NetApp account, you can move a volume across pools.    
-  For example, in the [Conceptual diagram of storage hierarchy](#conceptual_diagram_of_storage_hierarchy) below, you can move the volumes from Capacity Pool 1 to Capacity Pool 2.
+- Ein Volume wird anhand des logischen Kapazitätsverbrauchs gemessen und ist skalierbar. Die Mindestgröße für ein einzelnes Volume beträgt 100 GiB, die Maximalgröße 92 TiB.
+- Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.
+-   Sie können maximal 100 Volumes pro Azure-Abonnement und Region einrichten. 
+- Jedes Volume gehört zu einem einzelnen Pool, ein Pool kann jedoch mehrere Volumes enthalten. 
+- Ein Volume kann innerhalb des gleichen NetApp-Kontos zwischen Pools verschoben werden.    
+  Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten können beispielsweise die Volumes aus dem Kapazitätspool 1 in den Kapazitätspool 2 verschoben werden.
 
-## <a name="conceptual_diagram_of_storage_hierarchy"></a>Conceptual diagram of storage hierarchy 
-The following example shows the relationships of the Azure subscription, NetApp accounts, capacity pools,  and volumes.   
+## <a name="conceptual_diagram_of_storage_hierarchy"></a>Konzeptdiagramm der Speicherhierarchie 
+Das folgende Beispiel zeigt die Beziehungen zwischen Azure-Abonnement, NetApp-Konten, Kapazitätspools und Volumes.   
 
-![Conceptual diagram of storage hierarchy](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
+![Konzeptdiagramm der Speicherhierarchie](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Resource limits for Azure NetApp Files](azure-netapp-files-resource-limits.md)
-- [Register for Azure NetApp Files](azure-netapp-files-register.md)
+- [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
+- [Registrieren für Azure NetApp Files](azure-netapp-files-register.md)

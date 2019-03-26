@@ -1,6 +1,6 @@
 ---
-title: Clean up SSISDB logs with Azure Elastic Database Jobs | Microsoft Docs
-description: This article describes how to clean up SSISDB logs by using Azure Elastic Database jobs to trigger the stored procedure that exists for this purpose
+title: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie SSISDB-Protokolle über Aufträge für die elastische Azure-Datenbank bereinigen, um die gespeicherte Prozedur auszulösen, die für diesen Zweck vorhanden ist.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -19,23 +19,23 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57430916"
 ---
-# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Clean up SSISDB logs with Azure Elastic Database Jobs
+# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank
 
-This article describes how to use Azure Elastic Database Jobs to trigger the stored procedure that cleans up logs for the SQL Server Integration Services catalog database, `SSISDB`.
+In diesem Artikel wird beschrieben, wie Sie Aufträge für elastische Azure-Datenbanken verwenden, um die gespeicherte Prozedur auszulösen, mit der Protokolle für die SQL Server Integration Services-Katalogdatenbank (`SSISDB`) bereinigt werden.
 
-Elastic Database Jobs is an Azure service that makes it easy to automate and run jobs against a database or a group of databases. You can schedule, run, and monitor these jobs by using the Azure portal, Transact-SQL, PowerShell, or REST APIs. Use the Elastic Database Job to trigger the stored procedure for log cleanup one time or on a schedule. You can choose the schedule interval based on SSISDB resource usage to avoid heavy database load.
+„Aufträge für die elastische Datenbank“ ist ein Azure-Dienst, der Ihnen das Automatisieren und Ausführen von Aufträgen für eine Datenbank oder eine Gruppe von Datenbanken vereinfacht. Sie können diese Aufträge planen, ausführen und überwachen, indem Sie das Azure-Portal, Transact-SQL, PowerShell oder REST-APIs verwenden. Verwenden Sie einen Auftrag für die elastische Datenbank, um die gespeicherte Prozedur für die einmalige oder auf einem Zeitplan basierende Bereinigung von Protokollen auszulösen. Sie können das Zeitplanintervall basierend auf der SSISDB-Ressourcenverwendung auswählen, um eine hohe Datenbanklast zu vermeiden.
 
-For more info, see [Manage groups of databases with Elastic Database Jobs](../sql-database/elastic-jobs-overview.md).
+Weitere Informationen finden Sie unter [Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank](../sql-database/elastic-jobs-overview.md).
 
-The following sections describe how to trigger the stored procedure `[internal].[cleanup_server_retention_window_exclusive]`, which removes SSISDB logs that are outside the retention window set by the administrator.
+In den folgenden Abschnitten wird beschrieben, wie Sie die gespeicherte Prozedur `[internal].[cleanup_server_retention_window_exclusive]` auslösen. Hiermit werden SSISDB-Protokolle entfernt, die außerhalb des vom Administrator festgelegten Aufbewahrungsfensters liegen.
 
-## <a name="clean-up-logs-with-power-shell"></a>Clean up logs with Power Shell
+## <a name="clean-up-logs-with-power-shell"></a>Bereinigen von Protokollen mit PowerShell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-The following sample PowerShell scripts create a new Elastic Job to trigger the stored procedure for SSISDB log cleanup. For more info, see [Create an Elastic Job agent using PowerShell](../sql-database/elastic-jobs-powershell.md).
+Mit den folgenden PowerShell-Beispielskripts wird ein neuer elastischer Auftrag erstellt, um die gespeicherte Prozedur für die SSISDB-Protokollbereinigung auszulösen. Weitere Informationen finden Sie unter [Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell](../sql-database/elastic-jobs-powershell.md).
 
-### <a name="create-parameters"></a>Create parameters
+### <a name="create-parameters"></a>Erstellen von Parametern
 
 ``` powershell
 # Parameters needed to create the Job Database
@@ -65,7 +65,7 @@ $IntervalCount = $(Read-Host "Please enter the detailed interval value in the gi
 $StartTime = (Get-Date)
 ```
 
-### <a name="trigger-the-cleanup-stored-procedure"></a>Trigger the cleanup stored procedure
+### <a name="trigger-the-cleanup-stored-procedure"></a>Auslösen der gespeicherten Prozedur für die Bereinigung
 
 ```powershell
 # Install the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -157,13 +157,13 @@ Write-Output "Start the execution schedule of the stored procedure for SSISDB lo
 $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $IntervalCount -StartTime $StartTime -Enable
 ```
 
-## <a name="clean-up-logs-with-transact-sql"></a>Clean up logs with Transact-SQL
+## <a name="clean-up-logs-with-transact-sql"></a>Bereinigen von Protokollen mit Transact-SQL
 
-The following sample Transact-SQL scripts create a new Elastic Job to trigger the stored procedure for SSISDB log cleanup. For more info, see [Use Transact-SQL (T-SQL) to create and manage Elastic Database Jobs](../sql-database/elastic-jobs-tsql.md).
+Mit den folgenden Transact-SQL-Beispielskripts wird ein neuer elastischer Auftrag erstellt, um die gespeicherte Prozedur für die SSISDB-Protokollbereinigung auszulösen. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)](../sql-database/elastic-jobs-tsql.md).
 
-1. Create or identify an empty S0 or higher Azure SQL Database to be the SSISDBCleanup Job Database. Then create an Elastic Job Agent in the [Azure portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
+1. Erstellen bzw. ermitteln Sie eine leere Azure SQL-Datenbank (S0 oder höher) als SSISDBCleanup-Auftragsdatenbank. Erstellen Sie anschließend im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent) einen Agent für elastische Aufträge.
 
-2. In the Job Database, create a credential for the SSISDB log cleanup job. This credential is used to connect to your SSISDB database to clean up the logs.
+2. Erstellen Sie in der Auftragsdatenbank Anmeldeinformationen für den Auftrag zur Bereinigung von SSISDB-Protokollen. Diese Anmeldeinformationen werden verwendet, um eine Verbindung mit Ihrer SSISDB-Datenbank zur Bereinigung der Protokolle herzustellen.
 
     ```sql
     -- Connect to the job database specified when creating the job agent
@@ -174,7 +174,7 @@ The following sample Transact-SQL scripts create a new Elastic Job to trigger th
     CREATE DATABASE SCOPED CREDENTIAL SSISDBLogCleanupCred WITH IDENTITY = 'SSISDBLogCleanupUser', SECRET = '<EnterStrongPasswordHere>'; 
     ```
 
-3. Define the target group that includes the SSISDB database for which you want to run the cleanup stored procedure.
+3. Definieren Sie die Zielgruppe, die die SSISDB-Datenbank enthält, für die Sie die gespeicherte Prozedur für die Bereinigung ausführen möchten.
 
     ```sql
     -- Connect to the job database 
@@ -191,7 +191,7 @@ The following sample Transact-SQL scripts create a new Elastic Job to trigger th
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Grant appropriate permissions for the SSISDB database. The SSISDB catalog must have proper permissions for the stored procedure to run SSISDB log cleanup successfully. For detailed guidance, see [Manage logins](../sql-database/sql-database-manage-logins.md).
+4. Erstellen Sie entsprechende Berechtigungen für die SSISDB-Datenbank. Der SSISDB-Katalog muss über geeignete Berechtigungen für die gespeicherte Prozedur verfügen, damit die Bereinigung der SSISDB-Protokolle erfolgreich ist. Eine ausführliche Anleitung finden Sie unter [Verwalten von Anmeldungen](../sql-database/sql-database-manage-logins.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 
@@ -201,7 +201,7 @@ The following sample Transact-SQL scripts create a new Elastic Job to trigger th
     CREATE USER SSISDBLogCleanupUser FROM LOGIN SSISDBLogCleanupUser;
     GRANT EXECUTE ON internal.cleanup_server_retention_window_exclusive TO SSISDBLogCleanupUser
     ```
-5. Create the job and add a job step to trigger the execution of the stored procedure for SSISDB log cleanup.
+5. Erstellen Sie den Auftrag, und fügen Sie einen Auftragsschritt hinzu, um die Ausführung der gespeicherten Prozedur für die Bereinigung von SSISDB-Protokollen auszulösen.
 
     ```sql
     --Connect to the job database 
@@ -214,9 +214,9 @@ The following sample Transact-SQL scripts create a new Elastic Job to trigger th
     @credential_name='SSISDBLogCleanupCred',
     @target_group_name='SSISDBTargetGroup'
     ```
-6. Before you continue, make sure the retention window has been set appropriately. SSISDB logs outside the window are deleted and can't be recovered.
+6. Stellen Sie vor dem Fortfahren sicher, dass das Aufbewahrungszeitfenster richtig festgelegt wurde. SSISDB-Protokolle, die außerhalb des Zeitfensters liegen, werden gelöscht und können nicht wiederhergestellt werden.
 
-   Then you can run the job immediately to begin SSISDB log cleanup.
+   Anschließend können Sie den Auftrag sofort ausführen, um mit dem Bereinigen der SSISDB-Protokolle zu beginnen.
 
     ```sql
     --Connect to the job database 
@@ -228,7 +228,7 @@ The following sample Transact-SQL scripts create a new Elastic Job to trigger th
     select @je
     select * from jobs.job_executions where job_execution_id = @je
     ```
-7. Optionally, schedule job executions to remove SSISDB logs outside the retention window on a schedule. Use a similar statement to update the job parameters.
+7. Optional können Sie Auftragsausführungen so planen, dass außerhalb des Aufbewahrungszeitfensters liegende SSISDB-Protokolle nach einem Zeitplan entfernt werden. Verwenden Sie eine ähnliche Anweisung, um die Auftragsparameter zu aktualisieren.
 
     ```sql
     --Connect to the job database 
@@ -241,15 +241,15 @@ The following sample Transact-SQL scripts create a new Elastic Job to trigger th
     @schedule_end_time='<EnterProperEndTimeForSchedule>'
     ```
 
-## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Monitor the cleanup job in the Azure portal
+## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Überwachen des Bereinigungsauftrags im Azure-Portal
 
-You can monitor the execution of the cleanup job in the Azure portal. For each execution, you see the status, start time, and end time of the job.
+Sie können die Ausführung des Bereinigungsauftrags im Azure-Portal überwachen. Für jede Ausführung werden der Status, die Startzeit und die Endzeit des Auftrags angezeigt.
 
-![Monitor the cleanup job in the Azure portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+![Überwachen des Bereinigungsauftrags im Azure-Portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
 
-## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Monitor the cleanup job with Transact-SQL
+## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Überwachen des Bereinigungsauftrags mit Transact-SQL
 
-You can also use Transact-SQL to view the execution history of the cleanup job.
+Sie können Transact-SQL auch verwenden, um den Ausführungsverlauf des Bereinigungsauftrags anzuzeigen.
 
 ```sql
 --Connect to the job database 
@@ -262,10 +262,10 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-For management and monitoring tasks related to the Azure-SSIS Integration Runtime, see the following articles. The Azure-SSIS IR is the runtime engine for SSIS packages stored in SSISDB in Azure SQL Database.
+Informationen zu Verwaltungs- und Überwachungsaufgaben in Bezug auf die Azure-SSIS Integration Runtime finden Sie in den folgenden Artikeln. Die Azure-SSIS IR ist die Laufzeit-Engine für SSIS-Pakete, die in Azure SQL-Datenbank in der SSISDB gespeichert sind.
 
--   [Reconfigure the Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md)
+-   [Neukonfigurieren der Azure-SSIS-Integration Runtime](manage-azure-ssis-integration-runtime.md)
 
--   [Monitor the Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+-   [Überwachen einer Integrationslaufzeit in Azure Data Factory](monitor-integration-runtime.md#azure-ssis-integration-runtime).

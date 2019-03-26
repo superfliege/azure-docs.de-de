@@ -1,7 +1,7 @@
 ---
-title: Iterative app design
+title: Iteratives App-Design
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: LUIS learns best in an iterative cycle of model changes, utterance examples, publishing, and gathering data from endpoint queries.
+description: LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,35 +18,35 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2019
 ms.locfileid: "57337480"
 ---
-# <a name="authoring-cycle-for-your-luis-app"></a>Authoring cycle for your LUIS app
-LUIS learns best in an iterative cycle of model changes, utterance examples, publishing, and gathering data from endpoint queries. 
+# <a name="authoring-cycle-for-your-luis-app"></a>Erstellungszyklus für Ihre LUIS-App
+LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
 
-![Authoring cycle](./media/luis-concept-app-iteration/iteration.png)
+![Erstellungszyklus](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-model"></a>Building a LUIS model
-The model's purpose is to figure out what the user is asking for (the intention or intent) and what parts of the question provide details (entities) that help determine the answer. 
+## <a name="building-a-luis-model"></a>Erstellen eines LUIS-Modells
+Mithilfe des Modells soll ermittelt werden, was der Benutzer fragt (Absicht) und welche Teile der Frage Details (Entitäten) bereitstellen, mit deren Hilfe die Antwort bestimmt werden kann. 
 
-The model needs to be specific to the app domain in order to determine words and phrases that are relevant as well as typical word ordering. 
+Das Modell muss spezifisch für die App-Domäne sein, um Wörter und Ausdrücke zu ermitteln, die relevant sind und in einer typischen Reihenfolge vorliegen. 
 
-The model includes intent, entities. 
+Das Modell enthält die Absicht und Entitäten. 
 
-## <a name="add-training-examples"></a>Add training examples
-LUIS needs example utterances in the intents. The examples need enough variation of word choice and word order to be able to determine which intent the utterance is meant for. Each example utterance needs to have any required data labeled as entities. 
+## <a name="add-training-examples"></a>Hinzufügen von Trainingsbeispielen
+LUIS benötigt Beispieläußerungen in Absichten. Für die Beispiele sind ausreichend viele Variationen bei der Wortauswahl und Wortreihenfolge erforderlich, um die Absicht der Äußerung zu bestimmen. Bei sämtlichen Beispieläußerung müssen alle erforderlichen Daten als Entitäten bezeichnet sein. 
 
-You instruct LUIS to ignore utterances that are not relevant to your app's domain by assigning the utterance to the **None** intent. Any words or phrases you do not need pulled out of an utterance do not need to be labeled. There is no label for words or phrases to ignore. 
+Sie weisen LUIS an, Äußerungen zu ignorieren, die für Ihre App-Domäne nicht relevant sind, indem Sie die Äußerung der Absicht **None** zuweisen. Alle Wörter oder Ausdrücke, die nicht aus einer Äußerung gepullt werden sollen, müssen nicht bezeichnet werden. Es sind keine Bezeichnungen für Wörter oder Ausdrücke erforderlich, die ignoriert werden sollen. 
 
-## <a name="train-and-publish-the-app"></a>Train and publish the app
-Once you have 10 to 15 different utterances in each intent, with the required entities labeled, train and publish. From the publish success notification, use the link to get your endpoints. Make sure to create your app and publish your app so that it is available in the [endpoint regions](luis-reference-regions.md) you need. 
+## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
+Wenn Sie zu jeder Absicht 10 bis 15 verschiedene Äußerungen haben und die erforderlichen Entitäten mit Bezeichnungen versehen sind, können Sie trainieren und veröffentlichen. Verwenden Sie den Link aus der Veröffentlichungsbenachrichtigung, um zu Ihren Endpunkten zu gelangen. Stellen Sie sicher, dass Ihre App erstellt und veröffentlicht wurde, damit sie in den [Endpunktregionen](luis-reference-regions.md) verfügbar ist. 
 
-## <a name="https-endpoint-testing"></a>HTTPS endpoint testing
-You can test your LUIS app from the HTTPS endpoint. Testing from the endpoint allows LUIS to choose any utterances with low-confidence for review.  
+## <a name="https-endpoint-testing"></a>HTTPS-Tests an Endpunkten
+Sie können Ihre LUIS-App von dem HTTPS-Endpunkt aus testen. Durch Tests vom Endpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur Überprüfung auswählen.  
 
-## <a name="recycle"></a>Recycle
-When you are done with a cycle of authoring, you can begin again. Start with reviewing endpoint utterances LUIS marked with low-confidence. Check these utterances for both intent and entity. Once you review utterances, the review list should be empty.  
+## <a name="recycle"></a>Recyceln
+Wenn Sie einen Erstellungszyklus abgeschlossen haben, können Sie erneut beginnen. Starten Sie mit dem Überprüfen der Endpunktäußerungen, die LUIS mit niedrigen Zuverlässigkeitswerten gekennzeichnet hat. Überprüfen Sie diese Äußerungen auf Absichten und Entitäten. Nach dem Überprüfen der Äußerungen sollte die Prüfliste leer sein.  
 
-## <a name="batch-testing"></a>Batch testing
-Batch testing is a way to see how many example utterances are scored by LUIS. The examples should be new to LUIS and should be correctly labeled with intent and entities you want LUIS to find. The test results indicate how well LUIS would perform on that set of utterances. 
+## <a name="batch-testing"></a>Testen in Batches
+Durch das Testen in Batches können Sie sehen, wie viele Beispieläußerungen von LUIS bewertet werden. Die Beispiele sollten für LUIS neu sein, und sie sollten richtig mit den Absichten und Entitäten bezeichnet sein, die LUIS finden soll. Die Testergebnisse zeigen an, wie gut LUIS diese Gruppe von Äußerungen auswertet. 
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-Learn concepts about [collaboration](luis-concept-collaborator.md).
+Informieren Sie sich über die Konzepte der [Zusammenarbeit](luis-concept-collaborator.md).

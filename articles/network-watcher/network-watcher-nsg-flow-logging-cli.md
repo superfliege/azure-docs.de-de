@@ -1,6 +1,6 @@
 ---
-title: Manage Network Security Group Flow logs with Azure Network Watcher - Azure CLI | Microsoft Docs
-description: This page explains how to manage Network Security Group Flow logs in Azure Network Watcher with Azure CLI
+title: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Azure Network Watcher – Azure CLI | Microsoft-Dokumentation
+description: Auf dieser Seite wird erläutert, wie Datenflussprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher mit der Azure CLI verwaltet werden.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -21,29 +21,29 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57904983"
 ---
-# <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Configuring Network Security Group Flow logs with Azure CLI
+# <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit der Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
-> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
+> - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
-Network Security Group flow logs are a feature of Network Watcher that allows you to view information about ingress and egress IP traffic through a Network Security Group. These flow logs are written in json format and show outbound and inbound flows on a per rule basis, the NIC the flow applies to, 5-tuple information about the flow (Source/Destination IP, Source/Destination Port, Protocol), and if the traffic was allowed or denied.
+Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
-To perform the steps in this article, you need to [install the Azure command-line interface for Mac, Linux, and Windows (CLI)](/cli/azure/install-azure-cli).
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (CLI) installieren](/cli/azure/install-azure-cli).
 
-## <a name="register-insights-provider"></a>Register Insights provider
+## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
-In order for flow logging to work successfully, the **Microsoft.Insights** provider must be registered. If you are not sure if the **Microsoft.Insights** provider is registered, run the following script.
+Der Anbieter **Microsoft.Insights** muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter **Microsoft.Insights** registriert ist, führen Sie folgendes Skript aus.
 
 ```azurecli
 az provider register --namespace Microsoft.Insights
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Enable Network Security Group Flow logs
+## <a name="enable-network-security-group-flow-logs"></a>Aktivieren von Flowprotokollen für Netzwerksicherheitsgruppen
 
-The command to enable flow logs is shown in the following example:
+Der Befehl zum Aktivieren von Flowprotokollen wird im folgenden Beispiel gezeigt:
 
 ```azurecli
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
@@ -51,32 +51,32 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName  --format JSON --log-version 2
 ```
 
-The storage account that you specify cannot have network rules configured for it that restrict network access to only Microsoft services or specific virtual networks. The storage account can be in the same, or a different Azure subscription, than the NSG that you enable the flow log for. If you use different subscriptions, they must both be associated to the same Azure Active Directory tenant. The account you use for each subscription must have the [necessary permissions](required-rbac-permissions.md). 
+Für das von Ihnen angegebene Speicherkonto dürfen keine Netzwerkregeln konfiguriert sein, die den Netzwerkzugriff nur auf Microsoft-Dienste oder bestimmte virtuelle Netzwerke beschränken. Das Speicherkonto kann sich im gleichen Azure-Abonnement wie die NSG, für die Sie das Datenflussprotokoll aktivieren, befinden oder in einem anderen Azure-Abonnement. Wenn Sie unterschiedliche Abonnements verwenden, müssen beide demselben Azure Active Directory-Mandanten zugeordnet sein. Die für die beiden Abonnements verwendeten Konten müssen über die [erforderlichen Berechtigungen](required-rbac-permissions.md) verfügen. 
 
-If the storage account is in a different resource group, or subscription, than the network security group, specify the full ID of the storage account, rather than its name. For example, if the storage account is in a resource group named *RG-Storage*, rather than specifying *storageAccountName* in the previous command, you'd specify */subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName*.
+Wenn sich das Speicherkonto in einer anderen Ressourcengruppe oder einem anderen Abonnement als die Netzwerksicherheitsgruppe befindet, geben Sie statt des Namens die vollständige ID des Speicherkontos an. Wenn sich beispielsweise das Speicherkonto in einer Ressourcengruppe namens *RG-Storage* befindet, würden Sie anstelle von *storageAccountName* im vorherigen Befehl die ID */subscriptions/{Abonnement-ID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName* angeben.
 
-## <a name="disable-network-security-group-flow-logs"></a>Disable Network Security Group Flow logs
+## <a name="disable-network-security-group-flow-logs"></a>Deaktivieren von Flowprotokollen für Netzwerksicherheitsgruppen
 
-Use the following example to disable flow logs:
+Verwenden Sie das folgende Beispiel, um Flowprotokolle zu deaktivieren:
 
 ```azurecli
 az network watcher flow-log configure --resource-group resourceGroupName --enabled false --nsg nsgName
 ```
 
-## <a name="download-a-flow-log"></a>Download a Flow log
+## <a name="download-a-flow-log"></a>Herunterladen eines Flowprotokolls
 
-The storage location of a flow log is defined at creation. A convenient tool to access these flow logs saved to a storage account is Microsoft Azure Storage Explorer, which can be downloaded here:  https://storageexplorer.com/
+Bei der Erstellung wird der Speicherort eines Flowprotokolls definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Flussprotokolle ist der Microsoft Azure Storage-Explorer, der hier heruntergeladen werden kann: https://storageexplorer.com/
 
-If a storage account is specified, flow log files are saved to a storage account at the following location:
+Wenn ein Speicherkonto angegeben wird, werden die Dateien der Flowprotokolle in einem Speicherkonto am folgenden Speicherort gespeichert:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-For information about the structure of the log visit [Network Security Group Flow log Overview](network-watcher-nsg-flow-logging-overview.md)
+Informationen zur Struktur des Protokolls finden Sie unter [Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md) (Einführung in die Flowprotokollierung für Netzwerksicherheitsgruppen).
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>Nächste Schritte
 
-Learn how to [Visualize your NSG flow logs with PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Erfahren Sie, wie Sie [Ihre NSG-Flowprotokolle mit Power BI visualisieren](network-watcher-visualize-nsg-flow-logs-power-bi.md).
 
-Learn how to [Visualize your NSG flow logs with open source tools](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Erfahren Sie, wie Sie [Ihre NSG-Flowprotokolle mit Open Source-Tools visualisieren](network-watcher-visualize-nsg-flow-logs-open-source-tools.md).

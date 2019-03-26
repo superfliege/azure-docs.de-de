@@ -1,6 +1,6 @@
 ---
-title: Explore data in Hive tables with Hive queries - Team Data Science Process
-description: Use sample Hive scripts that are used to explore data in Hive tables in an HDInsight Hadoop cluster.
+title: Durchsuchen von Daten in Hive-Tabellen mithilfe von Hive-Abfragen – Team Data Science-Prozess | Microsoft-Dokumentation
+description: Verwenden Sie Hive-Beispielskripts, die zum Durchsuchen von Daten in Hive-Tabellen in einem HDInsight Hadoop-Cluster verwendet werden.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -18,30 +18,30 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57880091"
 ---
-# <a name="explore-data-in-hive-tables-with-hive-queries"></a>Explore data in Hive tables with Hive queries
+# <a name="explore-data-in-hive-tables-with-hive-queries"></a>Durchsuchen von Daten in Hive-Tabellen mithilfe von Hive-Abfragen
 
-This article provides sample Hive scripts that are used to explore data in Hive tables in an HDInsight Hadoop cluster.
+Dieser Artikel enthält Hive-Beispielskripts, die zum Durchsuchen von Daten in Hive-Tabellen in einem HDInsight Hadoop-Cluster verwendet werden.
 
-This task is a step in the [Team Data Science Process](overview.md).
+Dieser Task ist ein Schritt im [Team Data Science-Prozess](overview.md).
 
-## <a name="prerequisites"></a>Prerequisites
-This article assumes that you have:
+## <a name="prerequisites"></a>Voraussetzungen
+In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Created an Azure storage account. If you need instructions, see [Create an Azure Storage account](../../storage/common/storage-quickstart-create-account.md)
-* Provisioned a customized Hadoop cluster with the HDInsight service. If you need instructions, see [Customize Azure HDInsight Hadoop Clusters for Advanced Analytics](customize-hadoop-cluster.md).
-* The data has been uploaded to Hive tables in Azure HDInsight Hadoop clusters. If it has not, follow the instructions in [Create and load data to Hive tables](move-hive-tables.md) to upload data to Hive tables first.
-* Enabled remote access to the cluster. If you need instructions, see [Access the Head Node of Hadoop Cluster](customize-hadoop-cluster.md).
-* If you need instructions on how to submit Hive queries, see [How to Submit Hive Queries](move-hive-tables.md#submit)
+* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-quickstart-create-account.md).
+* Sie haben einen angepassten Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt. Anweisungen hierzu finden Sie unter [Anpassen von Azure HDInsight Hadoop-Clustern für die erweiterte Analyse](customize-hadoop-cluster.md).
+* Sie haben die Daten in Hive-Tabellen auf Azure HDInsight Hadoop-Clustern hochgeladen. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
+* Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](customize-hadoop-cluster.md).
+* Informationen zum Übermitteln von Hive-Abfragen finden Sie unter [Übermitteln von Hive-Abfragen](move-hive-tables.md#submit)
 
-## <a name="example-hive-query-scripts-for-data-exploration"></a>Example Hive query scripts for data exploration
-1. Get the count of observations per partition  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Get the count of observations per day  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
-3. Get the levels in a categorical column  
+## <a name="example-hive-query-scripts-for-data-exploration"></a>Hive-Beispielabfrageskripts für das Durchsuchen von Daten
+1. Abrufen der Anzahl der Vorkommen pro Partition `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Abrufen der Anzahl der Vorkommen pro Tag `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+3. Abrufen der Ebenen in einer Kategoriespalte:  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Get the number of levels in combination of two categorical columns  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
-5. Get the distribution for numerical columns  
+4. Abrufen der Anzahl von Ebenen in Kombination zweier kategorischer Spalten `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+5. Abrufen der Verteilung der numerischen Spalten:  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
-6. Extract records from joining two tables
+6. Extrahieren von Datensätzen durch Zusammenführen von zwei Tabellen:
    
         SELECT
             a.<common_columnname1> as <new_name1>,
@@ -68,6 +68,6 @@ This article assumes that you have:
             ) b
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
-## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Additional query scripts for taxi trip data scenarios
-Examples of queries that are specific to [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/) scenarios are also provided in [GitHub repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). These queries already have data schema specified and are ready to be submitted to run.
+## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Zusätzliche Abfrageskripts für Szenarios mit Taxi-Verkehrsdaten
+Beispiele für Abfragen speziell für Szenarien mit den [NYC Taxi Trip-Daten](https://chriswhong.com/open-data/foil_nyc_taxi/) stehen auch im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) zur Verfügung. Für diese Abfragen ist bereits ein Datenschema angegeben, sodass sie bereit für die Übermittlung zur Ausführung sind.
 

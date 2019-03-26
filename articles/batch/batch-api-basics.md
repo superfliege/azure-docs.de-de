@@ -1,6 +1,6 @@
 ---
-title: Overview for developers - Azure Batch | Microsoft Docs
-description: Learn the features of the Batch service and its APIs from a development standpoint.
+title: Übersicht für Entwickler – Azure Batch | Microsoft-Dokumentation
+description: Lernen Sie die Features des Batch-Diensts und seiner APIs aus der Sicht eines Entwicklers kennen.
 services: batch
 documentationcenter: .net
 author: laurenhughes
@@ -22,493 +22,493 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57761870"
 ---
-# <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Develop large-scale parallel compute solutions with Batch
+# <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
-In this overview of the core components of the Azure Batch service, we discuss the primary service features and resources that Batch developers can use to build large-scale parallel compute solutions.
+In dieser Übersicht über die Hauptkomponenten des Azure Batch-Diensts werden die wichtigsten Dienstfunktionen und Ressourcen beschrieben, die Batch-Entwickler zum Erstellen paralleler Computelösungen in größerem Umfang verwenden können.
 
-Whether you're developing a distributed computational application or service that issues direct [REST API][batch_rest_api] calls or you're using one of the [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), you'll use many of the resources and features discussed in this article.
+Sie werden viele der in diesem Artikel beschriebenen Ressourcen und Features nutzen. Dies gilt unabhängig davon, ob Sie eine verteilte Computeanwendung oder einen Computedienst mit direkter Ausgabe von [REST-API][batch_rest_api]-Aufrufen entwickeln oder eines der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development) verwenden.
 
 > [!TIP]
-> For a higher-level introduction to the Batch service, see [Basics of Azure Batch](batch-technical-overview.md). Also see the latest [Batch service updates](https://azure.microsoft.com/updates/?product=batch).
+> Eine allgemeiner gehaltene Einführung in den Batch-Dienst finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
 >
 >
 
-## <a name="batch-service-workflow"></a>Batch service workflow
-The following high-level workflow is typical of nearly all applications and services that use the Batch service for processing parallel workloads:
+## <a name="batch-service-workflow"></a>Workflow des Batch-Diensts
+Der folgende allgemeine Workflow ist typisch für fast alle Anwendungen und Dienste, die den Batch-Dienst für die Verarbeitung von parallelen Workloads verwenden:
 
-1. Upload the **data files** that you want to process to an [Azure Storage][azure_storage] account. Batch includes built-in support for accessing Azure Blob storage, and your tasks can download these files to [compute nodes](#compute-node) when the tasks are run.
-2. Upload the **application files** that your tasks will run. These files can be binaries or scripts and their dependencies, and are executed by the tasks in your jobs. Your tasks can download these files from your Storage account, or you can use the [application packages](#application-packages) feature of Batch for application management and deployment.
-3. Create a [pool](#pool) of compute nodes. When you create a pool, you specify the number of compute nodes for the pool, their size, and the operating system. When each task in your job runs, it's assigned to execute on one of the nodes in your pool.
-4. Create a [job](#job). A job manages a collection of tasks. You associate each job to a specific pool where that job's tasks will run.
-5. Add [tasks](#task) to the job. Each task runs the application or script that you uploaded to process the data files it downloads from your Storage account. As each task completes, it can upload its output to Azure Storage.
-6. Monitor job progress and retrieve the task output from Azure Storage.
+1. Laden Sie die **Datendateien**, die verarbeitet werden sollen, in ein [Azure-Speicherkonto][azure_storage] hoch. Batch verfügt über integrierte Unterstützung für den Zugriff auf Azure Blob Storage, und Ihre Tasks können diese Dateien auf [Computeknoten](#compute-node) herunterladen, wenn die Tasks ausgeführt werden.
+2. Laden Sie die **Anwendungsdateien** hoch, die von Ihren Tasks ausgeführt werden sollen. Bei diesen Dateien kann es sich um Binärdateien oder Skripts und ihre Abhängigkeiten handeln, und sie werden von den Tasks in Ihren Aufträgen ausgeführt. Diese Dateien können von Ihren Tasks aus Ihrem Storage-Konto heruntergeladen werden. Alternativ können Sie das Batch-Feature [Anwendungspakete](#application-packages) für die Anwendungsverwaltung und -bereitstellung verwenden.
+3. Erstellen Sie einen [Pool](#pool) mit Computeknoten. Beim Erstellen eines Pools geben Sie die Anzahl von Computeknoten für den Pool, deren Größe und das Betriebssystem an. Wenn die einzelnen Tasks des Auftrags ausgeführt werden, erfolgt die Zuweisung zur Ausführung auf einem der Knoten im Pool.
+4. Erstellen Sie einen [Auftrag](#job). Ein Auftrag verwaltet eine Sammlung von Tasks. Jeder Auftrag wird einem bestimmten Pool zugeordnet, in dem die Tasks des Auftrags ausgeführt werden.
+5. Fügen Sie dem Auftrag [Aufgaben](#task) hinzu. Jeder Task führt die hochgeladene Anwendung bzw. das Skript aus, um die Datendateien zu verarbeiten, die aus Ihrem Speicherkonto heruntergeladen werden. Nachdem ein Task abgeschlossen ist, kann die Ausgabe jeweils in Azure Storage hochgeladen werden.
+6. Überwachen Sie den Auftragsstatus, und rufen Sie die Taskausgabe aus Azure Storage ab.
 
-The following sections discuss these and the other resources of Batch that enable your distributed computational scenario.
+In den folgenden Abschnitten werden diese und andere Ressourcen von Batch besprochen, die Ihr verteiltes Computingszenario ermöglichen.
 
 > [!NOTE]
-> You need a [Batch account](#account) to use the Batch service. Most Batch solutions also use an associated [Azure Storage][azure_storage] account for file storage and retrieval. 
+> Zur Verwendung des Batch-Diensts wird ein [Batch-Konto](#account) benötigt. Die meisten Batch-Lösungen verwenden außerdem ein zugeordnetes [Azure-Speicherkonto][azure_storage] zum Speichern und Abrufen von Dateien. 
 >
 >
 
-## <a name="batch-service-resources"></a>Batch service resources
-Some of the following resources--accounts, compute nodes, pools, jobs, and tasks--are required by all solutions that use the Batch service. Others, like job schedules and application packages, are helpful, but optional, features.
+## <a name="batch-service-resources"></a>Ressourcen für den Batch-Dienst
+Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tasks – sind für alle Lösungen erforderlich, die den Batch-Dienst nutzen. Andere Features (wie etwa Auftragszeitpläne und Anwendungspakete) sind zwar hilfreich, aber optional.
 
-* [Account](#account)
-* [Compute node](#compute-node)
+* [Konto](#account)
+* [Computeknoten](#compute-node)
 * [Pool](#pool)
 * [Job](#job)
-  * [Job schedules](#scheduled-jobs)
-* [Task](#task)
-  * [Start task](#start-task)
-  * [Job manager task](#job-manager-task)
-  * [Job preparation and release tasks](#job-preparation-and-release-tasks)
-  * Multi-instance task (MPI)
-  * [Task dependencies](#task-dependencies)
-* [Application packages](#application-packages)
+  * [Auftragszeitpläne](#scheduled-jobs)
+* [Aufgabe](#task)
+  * [Startaufgabe](#start-task)
+  * [Auftrags-Manager-Aufgabe](#job-manager-task)
+  * [Tasks zur Auftragsvorbereitung und -freigabe](#job-preparation-and-release-tasks)
+  * Aufgabe mit mehreren Instanzen (MPI)
+  * [Abhängigkeiten von Aufgaben](#task-dependencies)
+* [Anwendungspakete](#application-packages)
 
-## <a name="account"></a>Account
-A Batch account is a uniquely identified entity within the Batch service. All processing is associated with a Batch account.
+## <a name="account"></a>Konto
+Ein Batch-Konto ist eine eindeutig identifizierte Entität innerhalb des Batch-Diensts. Die gesamte Verarbeitung ist einem Batch-Konto zugeordnet.
 
-You can create an Azure Batch account using the [Azure portal](batch-account-create-portal.md) or programmatically, such as with the [Batch Management .NET library](batch-management-dotnet.md). When creating the account, you can associate an Azure storage account for storing job-related input and output data or applications.
+Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-portal.md) oder programmgesteuert (beispielsweise mit der [Batch Management .NET-Bibliothek ](batch-management-dotnet.md)) erstellen. Bei der Kontoerstellung können Sie ein Azure-Speicherkonto zur Speicherung auftragsbezogener Eingabe- und Ausgabedaten oder Anwendungen zuordnen.
 
-You can run multiple Batch workloads in a single Batch account, or distribute your workloads among Batch accounts that are in the same subscription, but in different Azure regions.
+Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Workloads auf Batch-Konten in demselben Abonnement, aber verschiedenen Azure-Regionen aufteilen.
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-## <a name="azure-storage-account"></a>Azure Storage account
+## <a name="azure-storage-account"></a>Azure-Speicherkonto
 
-Most Batch solutions use Azure Storage for storing resource files and output files. For example, your Batch tasks (including standard tasks, start tasks, job preparation tasks, and job release tasks) typically specify resource files that reside in a storage account.
+Die meisten Batch-Lösungen verwenden Azure Storage zum Speichern von Ressourcen- und Ausgabedateien. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) werden beispielsweise in der Regel Ressourcendateien angegeben, die sich in einem Speicherkonto befinden.
 
-Batch supports the following types of Azure Storage accounts:
+Batch unterstützt die folgenden Arten von Azure Storage-Konten:
 
-* General-purpose v2 (GPv2) accounts 
-* General-purpose v1 (GPv1) accounts
-* Blob storage accounts (currently supported for pools in the Virtual Machine configuration)
+* Konten vom Typ „General Purpose v2“ (GPv2) 
+* Konten vom Typ „General Purpose v1“ (GPv1)
+* BLOB-Speicherkonten (derzeit für Pools, in der VM-Konfiguration unterstützt)
 
-For more information about storage accounts, see [Azure storage account overview](../storage/common/storage-account-overview.md).
+Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../storage/common/storage-account-overview.md).
 
-You can associate a storage account with your Batch account when you create the Batch account, or later. Consider your cost and performance requirements when choosing a storage account. For example, the GPv2 and blob storage account options support greater [capacity and scalability limits](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) compared with GPv1. (Contact Azure Support to request an increase in a storage limit.) These account options can improve the performance of Batch solutions that contain a large number of parallel tasks that read from or write to the storage account.
+Sie können ein Speicherkonto mit Ihrem Batch-Konto verknüpfen – entweder im Zuge der Batch-Kontoerstellung oder zu einem späteren Zeitpunkt. Berücksichtigen Sie bei der Wahl eines Speicherkontos Ihre Kosten- und Leistungsanforderungen. Die Optionen für GPv2 und Blobspeicherkonto unterstützen beispielsweise höhere [Kapazitäts- und Skalierbarkeitsgrenzwerte](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) als GPv1. (Über den Azure-Support kann eine Erhöhung des Speicherlimits angefordert werden.) Diese Kontooptionen können die Leistung von Batch-Lösungen mit einer großen Anzahl paralleler Aufgaben verbessern, die aus dem Speicherkonto lesen oder in das Speicherkonto schreiben.
 
-## <a name="compute-node"></a>Compute node
-A compute node is an Azure virtual machine (VM) or cloud service VM that is dedicated to processing a portion of your application's workload. The size of a node determines the number of CPU cores, memory capacity, and local file system size that is allocated to the node. You can create pools of Windows or Linux nodes by using Azure Cloud Services, images from the [Azure Virtual Machines Marketplace][vm_marketplace], or custom images that you prepare. See the following [Pool](#pool) section for more information on these options.
+## <a name="compute-node"></a>Computeknoten
+Ein Serverknoten ist ein virtueller Azure-Computer (VM) oder ein virtueller Clouddienstcomputer, der für die Verarbeitung eines Teils der Anwendungsworkload fest zugeordnet ist. Die Größe eines Knotens bestimmt die Anzahl von CPU-Kernen, die Speicherkapazität und die lokale Dateisystemgröße, die dem Knoten zugeordnet werden. Pools mit Windows- oder Linux-Knoten können mithilfe von Azure Cloud Services, auf der Grundlage von Images aus dem [Azure Virtual Machines Marketplace][vm_marketplace] oder auf der Grundlage eigener benutzerdefinierter Images erstellt werden. Weitere Informationen zu diesen Optionen finden Sie weiter unten im Abschnitt [Pool](#pool) .
 
-Nodes can run any executable or script that is supported by the operating system environment of the node. This includes \*.exe, \*.cmd, \*.bat and PowerShell scripts for Windows--and binaries, shell, and Python scripts for Linux.
+Knoten können beliebige ausführbare Dateien oder Skripts ausführen, die von der Betriebssystemumgebung des Knotens unterstützt werden. Hierzu zählen etwa \*EXE-, \*CMD-, \*BAT- und PowerShell-Skripts für Windows und Binärdateien sowie Shell- und Python-Skripts für Linux.
 
-All compute nodes in Batch also include:
+Alle Computeknoten in Batch enthalten außerdem Folgendes:
 
-* A standard [folder structure](#files-and-directories) and associated [environment variables](#environment-settings-for-tasks) that are available for reference by tasks.
-* **Firewall** settings that are configured to control access.
-* [Remote access](#connecting-to-compute-nodes) to both Windows (Remote Desktop Protocol (RDP)) and Linux (Secure Shell (SSH)) nodes.
+* Eine standardmäßige [Ordnerstruktur](#files-and-directories) und die dazugehörigen [Umgebungsvariablen](#environment-settings-for-tasks), die zur Referenzierung durch Tasks verfügbar sind.
+* **Firewalleinstellungeneinstellungen** .
+* [Remotezugriff](#connecting-to-compute-nodes) auf Windows-Knoten (Remotedesktopprotokoll, RDP) und Linux-Knoten (Secure Shell, SSH).
 
 ## <a name="pool"></a>Pool
-A pool is a collection of nodes that your application runs on. The pool can be created manually by you, or automatically by the Batch service when you specify the work to be done. You can create and manage a pool that meets the resource requirements of your application. A pool can be used only by the Batch account in which it was created. A Batch account can have more than one pool.
+Ein Pool besteht aus einer Sammlung von Knoten, auf denen Ihre Anwendung ausgeführt wird. Der Pool kann manuell von Ihnen oder automatisch vom Batch-Dienst erstellt werden, wenn Sie die zu erledigende Arbeit angeben. Sie können einen Pool erstellen und verwalten, der die Ressourcenanforderungen Ihrer Anwendung erfüllt. Ein Pool kann nur von dem Batch-Konto verwendet werden, unter dem er erstellt wurde. Ein Batch-Konto kann über mehrere Pools verfügen.
 
-Azure Batch pools build on top of the core Azure compute platform. They provide large-scale allocation, application installation, data distribution, health monitoring, and flexible adjustment of the number of compute nodes within a pool ([scaling](#scaling-compute-resources)).
+Azure Batch-Pools basieren auf der Azure-Computeplattform. Sie bieten Funktionen für umfangreiche Zuordnungen, für die Anwendungsinstallation, die Datenverteilung und die Systemüberwachung sowie für die flexible Anpassung der Computeknotenanzahl innerhalb eines Pools ([Skalierung](#scaling-compute-resources)).
 
-Every node that is added to a pool is assigned a unique name and IP address. When a node is removed from a pool, any changes that are made to the operating system or files are lost, and its name and IP address are released for future use. When a node leaves a pool, its lifetime is over.
+Jedem Knoten, der einem Pool hinzugefügt wird, werden ein eindeutiger Name und eine IP-Adresse zugewiesen. Beim Entfernen eines Knotens aus einem Pool gehen alle Änderungen am Betriebssystem oder an den Dateien verloren, und sein Name und die IP-Adresse werden zur späteren Verwendung freigegeben. Wenn ein Knoten einen Pool verlässt, endet seine Lebensdauer.
 
-When you create a pool, you can specify the following attributes:
+Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben:
 
-- Compute node operating system and version
-- Compute node type and target number of nodes
-- Size of the compute nodes
-- Scaling policy
-- Task scheduling policy
-- Communication status for compute nodes
-- Start tasks for compute nodes
-- Application packages
-- Network configuration
+- Betriebssystem und Version von Serverknoten
+- Art des Serverknotens und vorgegebene Anzahl von Knoten
+- Größe der Serverknoten
+- Skalierungsrichtlinie
+- Richtlinie zur Taskplanung
+- Kommunikationsstatus von Serverknoten
+- Starttasks für Serverknoten
+- Anwendungspakete
+- Netzwerkkonfiguration
 
-Each of these settings is described in more detail in the following sections.
+Alle diese Einstellungen werden in den folgenden Abschnitten ausführlicher beschrieben.
 
 > [!IMPORTANT]
-> Batch accounts have a default quota that limits the number of cores in a Batch account. The number of cores corresponds to the number of compute nodes. You can find the default quotas and instructions on how to [increase a quota](batch-quota-limit.md#increase-a-quota) in [Quotas and limits for the Azure Batch service](batch-quota-limit.md). If your pool is not achieving its target number of nodes, the core quota might be the reason.
+> Batch-Konten verfügen über ein Standardkontingent, das die Anzahl von Kernen in einem Batch-Konto begrenzt. Die Anzahl der Kerne entspricht der Anzahl von Serverknoten. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn der Pool die Zielanzahl der Knoten nicht erreicht, könnte das Kontingent für die Kerne die Ursache sein.
 >
 
 
-### <a name="compute-node-operating-system-and-version"></a>Compute node operating system and version
+### <a name="compute-node-operating-system-and-version"></a>Betriebssystem und Version von Serverknoten
 
-When you create a Batch pool, you can specify the Azure virtual machine configuration and the type of operating system you want to run on each compute node in the pool. The two types of configurations available in Batch are:
+Wenn Sie einen Batch-Pool erstellen, können Sie die Konfiguration für virtuelle Azure-Computer und den Typ des Betriebssystems, das auf jedem Serverknoten im Pool ausgeführt werden soll, angeben. Die folgenden zwei Arten von Konfigurationen stehen in Batch zur Verfügung:
 
-- The **Virtual Machine Configuration**, which specifies that the pool is comprised of Azure virtual machines. These VMs may be created from either Linux or Windows images. 
+- Die **Konfiguration „Virtueller Computer“** gibt an, dass der Pool aus virtuellen Azure-Computern besteht. Diese virtuellen Computer können aus Linux- oder Windows-Images erstellt werden. 
 
-    When you create a pool based on the Virtual Machine Configuration, you must specify not only the size of the nodes and the source of the images used to create them, but also the **virtual machine image reference** and the Batch **node agent SKU** to be installed on the nodes. For more information about specifying these pool properties, see [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md). You can optionally attach one or more empty data disks to pool VMs created from Marketplace images, or include data disks in custom images used to create the VMs.
+    Beim Erstellen eines Pools auf Basis der Konfiguration „Virtueller Computer“ müssen Sie nicht nur die Knotengröße und die Quelle der Images für deren Erstellen angeben, sondern auch die **VM-Imagereferenz** und die **Knoten-Agent-SKU** von Batch, die auf den Knoten installiert werden soll. Weitere Informationen zum Angeben dieser Pooleigenschaften finden Sie unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md). Sie können optional leere Datenträger an virtuelle Poolcomputer anfügen, die auf der Grundlage von Marketplace-Images erstellt wurden, oder Datenträger in benutzerdefinierte Images einschließen, die zum Erstellen der virtuellen Computer verwendet werden.
 
-- The **Cloud Services Configuration**, which specifies that the pool is comprised of Azure Cloud Services nodes. Cloud Services provide Windows compute nodes *only*.
+- Die **Konfiguration „Cloud Services“** gibt an, dass der Pool aus Azure Cloud Services-Knoten besteht. Bei „Cloud Services“ werden *ausschließlich* Windows-Serverknoten bereitgestellt.
 
-    Available operating systems for Cloud Services Configuration pools are listed in the [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md). When you create a pool that contains Cloud Services nodes, you need to specify the node size and its *OS Family*. Cloud Services are deployed to Azure more quickly than virtual machines running Windows. If you want pools of Windows compute nodes, you may find that Cloud Services provide a performance benefit in terms of deployment time.
+    Verfügbare Betriebssysteme für Pools vom Typ „Clouddienstkonfiguration“ sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md)aufgeführt. Beim Erstellen eines Pools, der Cloud Services-Knoten enthält, müssen Sie die Knotengröße und die *Betriebssystemfamilie* angeben. Clouddienste werden in Azure schneller bereitgestellt als virtuelle Computer mit Windows. Wenn Sie Pools von Windows-Serverknoten benötigen, werden Sie möglicherweise feststellen, dass die Konfiguration „Cloud Services“ im Hinblick auf die Bereitstellungszeit einen Leistungsvorteil bietet.
 
-    * The *OS Family* also determines which versions of .NET are installed with the OS.
-    * As with worker roles within Cloud Services, you can specify an *OS Version* (for more information on worker roles, see the [Cloud Services overview](../cloud-services/cloud-services-choose-me.md)).
-    * As with worker roles, we recommend that you specify `*` for the *OS Version* so that the nodes are automatically upgraded, and there is no work required to cater to newly released versions. The primary use case for selecting a specific OS version is to ensure application compatibility, which allows backward compatibility testing to be performed before allowing the version to be updated. After validation, the *OS Version* for the pool can be updated and the new OS image can be installed--any running tasks are interrupted and requeued.
+    * Die *Betriebssystemfamilie* bestimmt auch, welche Versionen von .NET mit dem Betriebssystem installiert werden.
+    * Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. (Weitere Informationen zu Workerrollen finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).)
+    * Und genau wie bei Workerrollen empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `*`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung kann die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Dabei werden alle ausgeführten Tasks unterbrochen und wieder der Warteschlange hinzugefügt.
 
-When you create a pool, you need to select the appropriate **nodeAgentSkuId**, depending on the OS of the base image of your VHD. You can get a mapping of available node agent SKU ID's to their OS Image references by calling the [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) operation.
+Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisimages Ihrer VHD die entsprechende **nodeAgentSkuId** auswählen. Eine Zuordnung der verfügbaren Knoten-Agent-SKU-IDs zu ihren Betriebssystemimages erhalten Sie durch den Aufruf des Vorgangs unter [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) (Auflisten der unterstützten Knoten-Agent-SKUs).
 
 
-#### <a name="custom-images-for-virtual-machine-pools"></a>Custom images for Virtual Machine pools
+#### <a name="custom-images-for-virtual-machine-pools"></a>Benutzerdefinierte Images für Pools virtueller Computer
 
-To use a custom image, you'll need to prepare the image by generalizing it. For information about preparing custom Linux images from Azure VMs, see [How to create an image of a virtual machine or VHD](../virtual-machines/linux/capture-image.md). For information about preparing custom Windows images from Azure VMs, see [Create a managed image of a generalized VM in Azure](../virtual-machines/windows/capture-image-resource.md). 
+Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunächst generalisieren. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von Azure-VMs finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/capture-image.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md). 
 
-For detailed requirements and steps, see [Use a custom image to create a pool of virtual machines](batch-custom-images.md).
+Ausführliche Informationen zu den Anforderungen und Schritten finden Sie unter [Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
-#### <a name="container-support-in-virtual-machine-pools"></a>Container support in Virtual Machine pools
+#### <a name="container-support-in-virtual-machine-pools"></a>Containerunterstützung in VM-Pools
 
-When creating a Virtual Machine Configuration pool using the Batch APIs, you can set up the pool to run tasks in Docker containers. Currently, you must create the pool using an image that supports Docker containers. Use the Windows Server 2016 Datacenter with Containers image from the Azure Marketplace, or supply a custom VM image that includes Docker Community Edition or Enterprise Edition and any required drivers. The pool settings must include a [container configuration](/rest/api/batchservice/pool/add) that copies container images to the VMs when the pool is created. Tasks that run on the pool can then reference the container images and container run options.
+Wenn Sie mithilfe der Batch-APIs einen VM-Konfigurationspool erstellen, können Sie den Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. Derzeit müssen Sie den Pool unter Verwendung eines Images erstellen, das Docker-Container unterstützt. Verwenden Sie das Image „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace, oder stellen Sie ein benutzerdefiniertes VM-Image mit Docker Community Edition oder Enterprise Edition und allen erforderlichen Treibern bereit. Die Pooleinstellungen müssen eine [Containerkonfiguration](/rest/api/batchservice/pool/add) enthalten, die bei der Poolerstellung Containerimages auf die virtuellen Computer kopiert. Für den Pool ausgeführte Aufgaben können dann auf die Containerimages und auf die Containerausführungsoptionen verweisen.
 
-For more information, see [Run Docker container applications on Azure Batch](batch-docker-container-workloads.md).
+Weitere Informationen finden Sie unter [Ausführen von Docker-Containeranwendungen in Azure Batch](batch-docker-container-workloads.md).
 
-## <a name="compute-node-type-and-target-number-of-nodes"></a>Compute node type and target number of nodes
+## <a name="compute-node-type-and-target-number-of-nodes"></a>Art des Serverknotens und vorgegebene Anzahl von Knoten
 
-When you create a pool, you can specify which types of compute nodes you want and the target number for each. The two types of compute nodes are:
+Wenn Sie einen Pool erstellen, können Sie die gewünschte Art von Serverknoten und jeweils die vorgegebene Anzahl von Knoten angeben. Es gibt zwei Arten von Serverknoten:
 
-- **Dedicated compute nodes.** Dedicated compute nodes are reserved for your workloads. They are more expensive than low-priority nodes, but they are guaranteed to never be preempted.
+- **Dedizierte Serverknoten.** Dedizierte Serverknoten sind für Ihre Workloads reserviert. Sie sind teurer als Knoten mit niedriger Priorität, aber sie werden garantiert nie zurückgestellt.
 
-- **Low-priority compute nodes.** Low-priority nodes take advantage of surplus capacity in Azure to run your Batch workloads. Low-priority nodes are less expensive per hour than dedicated nodes, and enable workloads requiring a lot of compute power. For more information, see [Use low-priority VMs with Batch](batch-low-pri-vms.md).
+- **Serverknoten mit niedriger Priorität.** Knoten mit niedriger Priorität nutzen überschüssige Kapazität in Azure, um Batch-Workloads auszuführen. Knoten mit niedriger Priorität sind pro Stunde kostengünstiger als dedizierte Knoten und erlauben Workloads, die eine umfangreiche Rechenleistung erfordern. Weitere Informationen finden Sie unter [Use low-priority VMs with Batch (Verwenden von VMs mit niedriger Priorität mit Batch)](batch-low-pri-vms.md).
 
-    Low-priority compute nodes may be preempted when Azure has insufficient surplus capacity. If a node is preempted while running tasks, the tasks are requeued and run again once a compute node becomes available again. Low-priority nodes are a good option for workloads where the job completion time is flexible and the work is distributed across many nodes. Before you decide to use low-priority nodes for your scenario, make sure that any work lost due to preemption will be minimal and easy to recreate.
+    Serverknoten mit niedriger Priorität können zurückgestellt werden, wenn Azure nicht über genügend überschüssige Kapazität verfügt. Wenn ein Knoten beim Ausführen von Aufgaben zurückgestellt wird, werden die Aufgaben in eine Warteschlange gestellt und erneut ausgeführt, wenn wieder ein Serverknoten verfügbar ist. Knoten mit niedriger Priorität eignen sich gut für Workloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele Knoten verteilt wird. Bevor Sie sich entscheiden, Knoten mit niedriger Priorität für Ihr Szenario zu verwenden, sollten Sie sich vergewissern, dass sämtliche Arbeit, die aufgrund einer vorzeitigen Entfernung verloren geht, gering und einfach zu wiederholen ist.
 
     
-You can have both low-priority and dedicated compute nodes in the same pool. Each type of node &mdash; low-priority and dedicated &mdash; has its own target setting, for which you can specify the desired number of nodes. 
+Sie können sowohl Serverknoten mit niedriger Priorität als auch dedizierte Serverknoten im selben Pool verwenden. Jede Art von Knoten &mdash; mit niedriger Priorität und dediziert &mdash; verfügt über eine eigene Zieleinstellung, für die Sie die gewünschte Anzahl von Knoten angeben können. 
     
-The number of compute nodes is referred to as a *target* because, in some situations, your pool might not reach the desired number of nodes. For example, a pool might not achieve the target if it reaches the [core quota](batch-quota-limit.md) for your Batch account first. Or, the pool might not achieve the target if you have applied an auto-scaling formula to the pool that limits the maximum number of nodes.
+Die Anzahl der Serverknoten wird als *Ziel* bezeichnet, da Ihr Pool in einigen Fällen unter Umständen nicht die gewünschte Anzahl von Knoten erreicht. Ein Pool kann das Ziel zum Beispiel nicht erreichen, wenn er zuvor das [Kernkontingent](batch-quota-limit.md) Ihres Batch-Kontos erreicht. Der Pool kann das Ziel auch nicht erreichen, wenn Sie eine Formel für automatische Skalierung auf den Pool angewendet haben, die die maximale Anzahl von Knoten beschränkt.
 
-For pricing information for both low-priority and dedicated compute nodes, see [Batch Pricing](https://azure.microsoft.com/pricing/details/batch/).
+Informationen zu den Preisen für beide Arten von Serverknoten finden Sie unter [Batch – Preise](https://azure.microsoft.com/pricing/details/batch/).
 
-### <a name="size-of-the-compute-nodes"></a>Size of the compute nodes
+### <a name="size-of-the-compute-nodes"></a>Größe der Serverknoten
 
-When you create an Azure Batch pool, you can choose from among almost all the VM families and sizes available in Azure. Azure offers a range of VM sizes for different workloads, including specialized [HPC](../virtual-machines/linux/sizes-hpc.md) or [GPU-enabled](../virtual-machines/linux/sizes-gpu.md) VM sizes. 
+Wenn Sie einen Azure Batch-Pool erstellen, können Sie aus fast allen in Azure verfügbaren VM-Familien und -Größen wählen. Azure bietet verschiedene VM-Größen für unterschiedliche Workloads, u.a. spezialisierte [HPC-](../virtual-machines/linux/sizes-hpc.md)- oder [GPU-fähige](../virtual-machines/linux/sizes-gpu.md) VM-Größen. 
 
-For more information, see [Choose a VM size for compute nodes in an Azure Batch pool](batch-pool-vm-sizes.md).
+Weitere Informationen finden Sie unter [Choose a VM size for compute nodes in an Azure Batch pool](batch-pool-vm-sizes.md) (Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool).
 
-### <a name="scaling-policy"></a>Scaling policy
+### <a name="scaling-policy"></a>Skalierungsrichtlinie
 
-For dynamic workloads, you can write and apply an [auto-scaling formula](#scaling-compute-resources) to a pool. The Batch service periodically evaluates your formula and adjusts the number of nodes within the pool based on various pool, job, and task parameters that you can specify.
+Für dynamische Workloads können Sie eine [Formel für automatische Skalierung](#scaling-compute-resources) schreiben und auf einen Pool anwenden. Der Batch-Dienst wertet die Formel regelmäßig aus und passt die Anzahl von Knoten innerhalb des Pools auf der Grundlage verschiedener Parameter an, die Sie für Pools, Aufträge und Tasks angeben können.
 
-### <a name="task-scheduling-policy"></a>Task scheduling policy
+### <a name="task-scheduling-policy"></a>Richtlinie zur Taskplanung
 
-The [max tasks per node](batch-parallel-node-tasks.md) configuration option determines the maximum number of tasks that can be run in parallel on each compute node within the pool.
+Die Konfiguration der [maximalen Tasks pro Knoten](batch-parallel-node-tasks.md) bestimmt die maximale Anzahl von Tasks, die parallel auf den einzelnen Computeknoten im Pool ausgeführt werden können.
 
-The default configuration specifies that one task at a time runs on a node, but there are scenarios where it is beneficial to have two or more tasks executed on a node simultaneously. See the [example scenario](batch-parallel-node-tasks.md#example-scenario) in the [concurrent node tasks](batch-parallel-node-tasks.md) article to see how you can benefit from multiple tasks per node.
+In der Standardkonfiguration wird auf einem Knoten immer nur ein einziger Task ausgeführt. Es sind aber auch Szenarien denkbar, in denen die gleichzeitige Ausführung von zwei oder mehr Tasks auf einem Knoten von Vorteil ist. Das [Beispielszenario](batch-parallel-node-tasks.md#example-scenario) im Artikel zu [parallelen Knotenaufgaben](batch-parallel-node-tasks.md) veranschaulicht, wie Sie von mehreren Tasks pro Knoten profitieren können.
 
-You can also specify a *fill type* which determines whether Batch spreads the tasks evenly across all nodes in a pool, or packs each node with the maximum number of tasks before assigning tasks to another node.
+Sie können auch einen *Fülltyp* angeben. Dieser legt fest, ob Batch die Tasks gleichmäßig auf alle Knoten eines Pools verteilt oder jeden Knoten mit der maximalen Anzahl von Tasks auffüllt, bevor Tasks einem weiteren Knoten zugewiesen werden.
 
-### <a name="communication-status-for-compute-nodes"></a>Communication status for compute nodes
+### <a name="communication-status-for-compute-nodes"></a>Kommunikationsstatus von Serverknoten
 
-In most scenarios, tasks operate independently and do not need to communicate with one another. However, there are some applications in which tasks must communicate, like [MPI scenarios](batch-mpi.md).
+In den meisten Szenarien werden Tasks unabhängig voneinander ausgeführt und müssen nicht miteinander kommunizieren. Es gibt aber einige Anwendungen, bei denen Tasks kommunizieren müssen, z.B. [MPI-Szenarien](batch-mpi.md).
 
-You can configure a pool to allow **internode communication**, so that nodes within a pool can communicate at runtime. When internode communication is enabled, nodes in Cloud Services Configuration pools can communicate with each other on ports greater than 1100, and Virtual Machine Configuration pools do not restrict traffic on any port.
+Sie können einen Pool zum Zulassen der **Kommunikation zwischen Knoten** konfigurieren, sodass Knoten in einem Pool zur Laufzeit miteinander kommunizieren können. Wenn die Kommunikation zwischen Knoten aktiviert ist, können Knoten in Pools vom Typ „Clouddienstkonfiguration“ miteinander über Ports kommunizieren, die über 1100 liegen. In Pools vom Typ „Konfiguration des virtuellen Computers“ bestehen keine Portbeschränkungen für Datenverkehr.
 
-Note that enabling internode communication also impacts the placement of the nodes within clusters and might limit the maximum number of nodes in a pool because of deployment restrictions. If your application does not require communication between nodes, the Batch service can allocate a potentially large number of nodes to the pool from many different clusters and datacenters to enable increased parallel processing power.
+Beachten Sie, dass sich die Aktivierung der Kommunikation zwischen Knoten auch auf die Anordnung der Knoten in Clustern auswirkt. Aufgrund von Bereitstellungsbeschränkungen wird unter Umständen die maximale Anzahl von Knoten in einem Pool begrenzt. Wenn für Ihre Anwendung keine Kommunikation zwischen Knoten erforderlich ist, kann der Batch-Dienst potenziell eine große Anzahl von Knoten in vielen verschiedenen Clustern und Datencentern für den Pool reservieren, um mehr Leistung für die parallele Verarbeitung bereitzustellen.
 
-### <a name="start-tasks-for-compute-nodes"></a>Start tasks for compute nodes
+### <a name="start-tasks-for-compute-nodes"></a>Starttasks für Serverknoten
 
-The optional *start task* executes on each node as that node joins the pool, and each time a node is restarted or reimaged. The start task is especially useful for preparing compute nodes for the execution of tasks, like installing the applications that your tasks run on the compute nodes.
+Der optionale *Starttask* wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart oder Reimaging eines Knotens. Der Starttask eignet sich besonders gut zum Vorbereiten von Computeknoten für die Ausführung von Tasks, z.B. das Installieren der Anwendungen, die von den Tasks auf den Computeknoten ausgeführt werden.
 
-### <a name="application-packages"></a>Application packages
+### <a name="application-packages"></a>Anwendungspakete
 
-You can specify [application packages](#application-packages) to deploy to the compute nodes in the pool. Application packages provide simplified deployment and versioning of the applications that your tasks run. Application packages that you specify for a pool are installed on every node that joins that pool, and every time a node is rebooted or reimaged.
+Sie können [Anwendungspakete](#application-packages) für die Bereitstellung auf den Computeknoten im Pool festlegen. Anwendungspakete bieten eine vereinfachte Bereitstellung und Versionsverwaltung der Anwendungen, die von Ihren Tasks ausgeführt werden. Die Anwendungspakete, die Sie für einen Pool angeben, werden auf jedem Knoten installiert, der dem Pool hinzugefügt wird, sowie wenn der Knoten neu gestartet oder ein Reimaging durchgeführt wird.
 
 > [!NOTE]
-> Application packages are supported on all Batch pools created after 5 July 2017. They are supported on Batch pools created between 10 March 2016 and 5 July 2017 only if the pool was created using a Cloud Service configuration. Batch pools created prior to 10 March 2016 do not support application packages. For more information about using application packages to deploy your applications to your Batch nodes, see [Deploy applications to compute nodes with Batch application packages](batch-application-packages.md).
+> Anwendungspakete werden für alle Batch-Pools unterstützt, die nach dem 5. Juli 2017 erstellt wurden. Für Batch-Pools, die zwischen dem 10. März 2016 und dem 5. Juli 2017 erstellt wurden, werden sie nur unterstützt, wenn der Pool mit einer Clouddienstkonfiguration erstellt wurde. Batch-Pools, die vor dem 10. März 2016 erstellt wurden, unterstützen keine Anwendungspakete. Weitere Informationen zum Bereitstellen von Anwendungen für Batch-Knoten mithilfe von Anwendungspaketen finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
 >
 >
 
-### <a name="network-configuration"></a>Network configuration
+### <a name="network-configuration"></a>Netzwerkkonfiguration
 
-You can specify the subnet of an Azure [virtual network (VNet)](../virtual-network/virtual-networks-overview.md) in which the pool's compute nodes should be created. See the Pool network configuration section for more information.
+Sie können das Subnetz eines [virtuellen Azure-Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md), in dem die Serverknoten des Pools erstellt werden sollen, festlegen. Weitere Informationen finden Sie im Abschnitt „Konfiguration von Poolnetzwerken“.
 
 
-## <a name="job"></a>Job
-A job is a collection of tasks. It manages how computation is performed by its tasks on the compute nodes in a pool.
+## <a name="job"></a>Auftrag
+Ein Auftrag ist eine Sammlung von Aufgaben. Er verwaltet, wie die Berechnung der Tasks auf Computeknoten in einem Pool durchgeführt wird.
 
-* The job specifies the **pool** in which the work is to be run. You can create a new pool for each job, or use one pool for many jobs. You can create a pool for each job that is associated with a job schedule, or for all jobs that are associated with a job schedule.
-* You can specify an optional **job priority**. When a job is submitted with a higher priority than jobs that are currently in progress, the tasks for the higher-priority job are inserted into the queue ahead of tasks for the lower-priority jobs. Tasks in lower-priority jobs that are already running are not preempted.
-* You can use job **constraints** to specify certain limits for your jobs:
+* Der Auftrag gibt den **Pool** an, in dem der Task ausgeführt werden soll. Sie können einen neuen Pool für jeden Auftrag erstellen oder einen Pool für viele Aufträge verwenden. Sie können einen Pool für jeden Auftrag erstellen, der einem Auftragszeitplan zugeordnet ist, oder für alle dem Auftragszeitplan zugeordneten Aufträge gemeinsam.
+* Sie können eine optionale **Auftragspriorität**angeben. Wenn ein Auftrag übermittelt wird, der eine höhere Priorität besitzt als bereits in Bearbeitung befindliche Aufträge, werden die Tasks des Auftrags mit der höheren Priorität vor den Tasks der Aufträge mit niedrigerer Priorität in die Warteschlange eingefügt. Tasks in Aufträgen mit niedrigerer Priorität, die bereits ausgeführt werden, werden nicht zeitlich nach hinten verschoben.
+* Mithilfe von **Einschränkungen** für Aufträge können Sie bestimmte Grenzwerte für Ihre Aufträge angeben:
 
-    You can set a **maximum wallclock time**, so that if a job runs for longer than the maximum wallclock time that is specified, the job and all of its tasks are terminated.
+    Sie können eine **Gesamtbetrachtungszeit** festlegen. Wenn ein Auftrag länger ausgeführt wird, werden der Auftrag und alle seine Tasks beendet.
 
-    Batch can detect and then retry failed tasks. You can specify the **maximum number of task retries** as a constraint, including whether a task is *always* or *never* retried. Retrying a task means that the task is requeued to be run again.
-* Your client application can add tasks to a job, or you can specify a [job manager task](#job-manager-task). A job manager task contains the information that is necessary to create the required tasks for a job, with the job manager task being run on one of the compute nodes in the pool. The job manager task is handled specifically by Batch--it is queued as soon as the job is created, and is restarted if it fails. A job manager task is *required* for jobs that are created by a [job schedule](#scheduled-jobs) because it is the only way to define the tasks before the job is instantiated.
-* By default, jobs remain in the active state when all tasks within the job are complete. You can change this behavior so that the job is automatically terminated when all tasks in the job are complete. Set the job's **onAllTasksComplete** property ([OnAllTasksComplete][net_onalltaskscomplete] in Batch .NET) to *terminatejob* to automatically terminate the job when all of its tasks are in the completed state.
+    Batch kann fehlgeschlagene Tasks erkennen und dann erneut versuchen, sie auszuführen. Sie können die **maximale Anzahl von Taskwiederholungen** als Einschränkung angeben. Hierzu gehört auch, ob ein Task *immer* oder *niemals* wiederholt werden soll. Bei der Wiederholung eines Tasks wird dieser nochmals der Warteschlange hinzugefügt und erneut ausgeführt.
+* Ihre Clientanwendung kann einem Auftrag Tasks hinzufügen. Alternativ können Sie einen [Auftrags-Manager-Task](#job-manager-task) angeben. Ein Auftrags-Manager-Task enthält die Informationen, die zum Erstellen der erforderlichen Tasks für einen Auftrag benötigt werden, wobei der Auftrags-Manager-Task auf einem der Computeknoten innerhalb des Pools ausgeführt wird. Der Auftrags-Manager-Task wird von Batch speziell behandelt: Er wird sofort nach der Auftragserstellung der Warteschlange hinzugefügt und erneut gestartet, falls er nicht erfolgreich ausgeführt werden konnte. Ein Auftrags-Manager-Task ist für durch einen [Auftragszeitplan](#scheduled-jobs) erstellte Aufträge *obligatorisch*, da sich Tasks nur so vor der Auftragsinstanziierung definieren lassen.
+* Standardmäßig bleiben Aufträge im aktiven Zustand, wenn alle Tasks innerhalb des Auftrags abgeschlossen sind. Sie können dieses Verhalten ändern, sodass der Auftrag automatisch beendet wird, wenn alle Aufgaben im Auftrag abgeschlossen sind. Legen Sie die Eigenschaft **onAllTasksComplete** des Auftrags ([OnAllTasksComplete][net_onalltaskscomplete] in Batch.NET) auf *terminatejob* fest, damit der Auftrag automatisch beendet wird, wenn alle Tasks abgeschlossen sind.
 
-    Note that the Batch service considers a job with *no* tasks to have all of its tasks completed. Therefore, this option is most commonly used with a [job manager task](#job-manager-task). If you want to use automatic job termination without a job manager, you should initially set a new job's **onAllTasksComplete** property to *noaction*, then set it to *terminatejob* only after you've finished adding tasks to the job.
+    Beachten Sie, dass ein Auftrag *ohne* Tasks vom Batch-Dienst als Auftrag angesehen wird, bei dem alle Tasks abgeschlossen sind. Diese Option wird daher mit einer [Auftrags-Manager-Aufgabe](#job-manager-task)am häufigsten verwendet. Wenn Sie die automatische Autragsbeendigung ohne einen Auftrags-Manager verwenden möchten, müssen Sie zunächst die Eigenschaft **onAllTasksComplete** des Auftrags auf *noaction* festlegen und erst nachdem Sie Tasks zum Auftrag hinzugefügt haben, auf *terminatejob*.
 
-### <a name="job-priority"></a>Job priority
-You can assign a priority to jobs that you create in Batch. The Batch service uses the priority value of the job to determine the order of job scheduling within an account (this is not to be confused with a [scheduled job](#scheduled-jobs)). The priority values range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest. To update the priority of a job, call the [Update the properties of a job][rest_update_job] operation (Batch REST), or modify the [CloudJob.Priority][net_cloudjob_priority] property (Batch .NET).
+### <a name="job-priority"></a>Auftragspriorität
+Aufträgen, die Sie in Batch erstellen, können Sie eine Priorität zuweisen. Der Batch-Dienst verwendet den Prioritätswert des Auftrags, um die Reihenfolge der Auftragszeitplanung in einem Konto zu bestimmen (dies darf nicht mit einem [geplanten Auftrag](#scheduled-jobs)verwechselt werden). Die Prioritätswerte reichen von -1000 bis 1000, wobei -1000 die niedrigste und 1000 die höchste Priorität darstellt. Rufen Sie zum Aktualisieren der Priorität eines Auftrags den Vorgang [Eigenschaften eines Auftrags aktualisieren][rest_update_job] (Batch REST) auf, oder ändern Sie die Eigenschaft [CloudJob.Priority][net_cloudjob_priority] (Batch .NET).
 
-Within the same account, higher-priority jobs have scheduling precedence over lower-priority jobs. A job with a higher-priority value in one account does not have scheduling precedence over another job with a lower-priority value in a different account.
+Innerhalb eines Kontos haben Aufträge mit höherer Priorität bei der Planung Vorrang vor Aufträgen mit niedrigerer Priorität. Ein Auftrag mit einem höheren Prioritätswert hat bei der Planung keinen Vorrang vor einem anderen Auftrag mit einem niedrigeren Prioritätswert, wenn sich dieser in einem anderen Konto befindet.
 
-Job scheduling across pools is independent. Between different pools, it is not guaranteed that a higher-priority job is scheduled first if its associated pool is short of idle nodes. In the same pool, jobs with the same priority level have an equal chance of being scheduled.
+Die Auftragsplanung erfolgt über Pools hinweg unabhängig. Poolübergreifend wird nicht sichergestellt, dass ein Auftrag mit einer höheren Priorität zuerst geplant wird, wenn der ihm zugeordnete Pool nicht über ausreichend Knoten verfügt, die sich im Leerlauf befinden. Innerhalb eines Pools verfügen Aufträge mit gleicher Prioritätsstufe über eine identische Planungswahrscheinlichkeit.
 
-### <a name="scheduled-jobs"></a>Scheduled jobs
-[Job schedules][rest_job_schedules] enable you to create recurring jobs within the Batch service. A job schedule specifies when to run jobs and includes the specifications for the jobs to be run. You can specify the duration of the schedule--how long and when the schedule is in effect--and how frequently jobs are created during the scheduled period.
+### <a name="scheduled-jobs"></a>Geplante Aufträge
+Mit [Auftragszeitplänen][rest_job_schedules] können Sie wiederkehrende Aufträge im Batch-Dienst erstellen. Ein Auftragszeitplan gibt an, wann Aufträge ausgeführt werden, und enthält die Spezifikationen für die auszuführenden Aufträge. Sie können die Dauer des Zeitplans festlegen (also wann und für wie lange der Zeitplan in Kraft sein soll) und angeben, wie oft während des geplanten Zeitraums Aufträge erstellt werden sollen.
 
-## <a name="task"></a>Task
-A task is a unit of computation that is associated with a job. It runs on a node. Tasks are assigned to a node for execution, or are queued until a node becomes free. Put simply, a task runs one or more programs or scripts on a compute node to perform the work you need done.
+## <a name="task"></a>Aufgabe
+Ein Task ist eine Berechnungseinheit, die einem Auftrag zugeordnet ist. Er wird auf einem Knoten ausgeführt. Tasks werden einem Knoten zur Ausführung zugewiesen oder der Warteschlange hinzugefügt, bis ein Knoten verfügbar wird. Einfach ausgedrückt: Ein Task führt mindestens ein Programm oder Skript auf einem Computeknoten aus, um die erforderlichen Arbeitsschritte zu erledigen.
 
-When you create a task, you can specify:
+Beim Erstellen eines Tasks können Sie Folgendes angeben:
 
-* The **command line** for the task. This is the command line that runs your application or script on the compute node.
+* Die **Befehlszeile** für den Task. Dies ist die Befehlszeile, mit der die Anwendung oder das Skript auf dem Computeknoten ausgeführt wird.
 
-    It is important to note that the command line does not actually run under a shell. Therefore, it cannot natively take advantage of shell features like [environment variable](#environment-settings-for-tasks) expansion (this includes the `PATH`). To take advantage of such features, you must invoke the shell in the command line--for example, by launching `cmd.exe` on Windows nodes or `/bin/sh` on Linux:
+    Beachten Sie, dass die Befehlszeile nicht wirklich unter einer Shell ausgeführt wird. Aus diesem Grund kann sie nicht einfach Shell-Features wie die Erweiterung von[ Umgebungsvariablen](#environment-settings-for-tasks) nutzen. (Dies gilt auch für `PATH`.) Um solche Features nutzen zu können, müssen Sie die Shell über die Befehlszeile aufrufen – beispielsweise durch Starten von `cmd.exe` (Windows-Knoten) oder von `/bin/sh` (Linux):
 
     `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
-    If your tasks need to run an application or script that is not in the node's `PATH` or reference environment variables, invoke the shell explicitly in the task command line.
-* **Resource files** that contain the data to be processed. These files are automatically copied to the node from Blob storage in an Azure Storage account before the task's command line is executed. For more information, see the sections [Start task](#start-task) and [Files and directories](#files-and-directories).
-* The **environment variables** that are required by your application. For more information, see the [Environment settings for tasks](#environment-settings-for-tasks) section.
-* The **constraints** under which the task should execute. For example, constraints include the maximum time that the task is allowed to run, the maximum number of times a failed task should be retried, and the maximum time that files in the task's working directory are retained.
-* **Application packages** to deploy to the compute node on which the task is scheduled to run. [Application packages](#application-packages) provide simplified deployment and versioning of the applications that your tasks run. Task-level application packages are especially useful in shared-pool environments, where different jobs are run on one pool, and the pool is not deleted when a job is completed. If your job has fewer tasks than nodes in the pool, task application packages can minimize data transfer since your application is deployed only to the nodes that run tasks.
-* A **container image** reference in Docker Hub or a private registry and additional settings to create a Docker container in which the task runs on the node. You only specify this information if the pool is set up with a container configuration.
+    Wenn Ihre Tasks eine Anwendung oder ein Skript ausführen müssen, die bzw. das sich nicht unter dem `PATH` oder in den Referenzumgebungsvariablen des Knotens befindet, können Sie die Shell explizit in der Taskbefehlszeile aufrufen.
+* **Ressourcendateien** , die die zu verarbeitenden Daten enthalten. Diese Dateien werden automatisch aus Blob Storage in einem Azure-Speicherkonto auf den Knoten kopiert, bevor die Befehlszeile des Tasks ausgeführt wird. Weitere Informationen finden Sie in den Abschnitten [Starttask](#start-task) und [Dateien und Verzeichnisse](#files-and-directories).
+* Die von Ihrer Anwendung benötigten **Umgebungsvariablen** . Weitere Informationen finden Sie im Abschnitt [Umgebungseinstellungen für Tasks](#environment-settings-for-tasks) .
+* Die **Einschränkungen** , mit denen der Task ausgeführt werden soll. Beispielsweise enthalten Einschränkungen die maximale Ausführungsdauer des Tasks, die maximale Anzahl von Wiederholungen für einen nicht erfolgreichen Task und die maximal zulässige Beibehaltungsdauer für Dateien im Arbeitsverzeichnis des Tasks.
+* **Anwendungspakete** für die Bereitstellung auf dem Computeknoten, auf dem der Task ausgeführt werden soll. [Anwendungspakete](#application-packages) bieten eine vereinfachte Bereitstellung und Versionsverwaltung der Anwendungen, die von Ihren Tasks ausgeführt werden. Anwendungspakete auf Task-Ebene sind insbesondere in Umgebungen mit gemeinsam genutzten Pools praktisch, bei denen verschiedene Aufträge in einem Pool ausgeführt werden und der Pool nach Abschluss des Auftrags nicht gelöscht wird. Wenn Ihr Auftrag über weniger Tasks als Knoten im Pool verfügt, können Task-Anwendungspakete die Datenübertragung minimieren, da Ihre Anwendung nur auf den Knoten bereitgestellt wird, die Tasks ausführen.
+* Ein Verweis auf ein **Containerimage** in Docker Hub oder eine private Registrierung und zusätzliche Einstellungen zum Erstellen eines Docker-Containers, in dem die Aufgabe für den Knoten ausgeführt wird. Diese Informationen werden nur angegeben, wenn der Pool mit einer Containerkonfiguration eingerichtet ist.
 
 > [!NOTE]
-> The maximum lifetime of a task, from when it is added to the job to when it completes, is 180 days. Completed tasks persist for 7 days; data for tasks not completed within the maximum lifetime is not accessible.
+> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt 180 Tage. Abgeschlossene Tasks bleiben sieben Tage lang erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
-In addition to tasks you define to perform computation on a node, the following special tasks are also provided by the Batch service:
+Zusätzlich zu Tasks, die Sie zur Berechnung auf einem Knoten definieren, werden vom Batch-Dienst die folgenden speziellen Tasks bereitgestellt:
 
-* [Start task](#start-task)
-* [Job manager task](#job-manager-task)
-* [Job preparation and release tasks](#job-preparation-and-release-tasks)
-* Multi-instance tasks (MPI)
-* [Task dependencies](#task-dependencies)
+* [Startaufgabe](#start-task)
+* [Auftrags-Manager-Aufgabe](#job-manager-task)
+* [Tasks zur Auftragsvorbereitung und -freigabe](#job-preparation-and-release-tasks)
+* Aufgaben mit mehreren Instanzen (MPI)
+* [Abhängigkeiten von Aufgaben](#task-dependencies)
 
-### <a name="start-task"></a>Start task
-By associating a **start task** with a pool, you can prepare the operating environment of its nodes. For example, you can perform actions such as installing the applications that your tasks run, or starting background processes. The start task runs every time a node starts, for as long as it remains in the pool--including when the node is first added to the pool and when it is restarted or reimaged.
+### <a name="start-task"></a>Startaufgabe
+Durch Verknüpfen eines **Starttasks** mit einem Pool können Sie die Betriebssystemumgebung der dazugehörigen Knoten vorbereiten. So können Sie beispielsweise Aktionen wie das Installieren der Anwendungen, die von Ihren Tasks ausgeführt werden, oder das Starten von Hintergrundprozessen durchführen. Der Starttask wird jedes Mal ausgeführt, wenn ein Knoten gestartet wird. Dies gilt, solange sich der Knoten im Pool befindet, und zwar auch beim ersten Hinzufügen des Knotens zum Pool und bei einem Neustart oder Reimaging.
 
-A primary benefit of the start task is that it can contain all the information necessary to configure a compute node and install the applications required for task execution. Therefore, increasing the number of nodes in a pool is as simple as specifying the new target node count. The start task provides the Batch service the information needed to configure the new nodes and get them ready for accepting tasks.
+Ein wesentlicher Vorteil von Starttasks besteht darin, dass sie alle Informationen enthalten können, die zum Konfigurieren eines Computeknotens und zum Installieren der für die Taskausführung benötigten Anwendungen erforderlich sind. Das Erhöhen der Anzahl von Knoten in einem Pool ist daher so einfach wie das Angeben der neuen Zielknotenanzahl. Der Starttask stellt dem Batch-Dienst die Informationen zur Verfügung, die erforderlich sind, um die neuen Knoten zu konfigurieren und zur Annahme von Tasks vorzubereiten.
 
-As with any Azure Batch task, you can specify a list of **resource files** in [Azure Storage][azure_storage], in addition to a **command line** to be executed. The Batch service first copies the resource files to the node from Azure Storage, and then runs the command line. For a pool start task, the file list typically contains the task application and its dependencies.
+Wie bei jedem anderen Azure Batch-Task kann zusätzlich zu einer auszuführenden **Befehlszeile** eine Liste mit **Ressourcendateien** in [Azure Storage][azure_storage] angegeben werden. Der Batch-Dienst kopiert zunächst die Ressourcendateien aus Azure Storage auf den Knoten und führt dann die Befehlszeile aus. Bei einem poolbezogenen Starttask enthält die Dateiliste üblicherweise die Taskanwendung und die damit verbundenen Abhängigkeiten.
 
-However, the start task could also include reference data to be used by all tasks that are running on the compute node. For example, a start task's command line could perform a `robocopy` operation to copy application files (which were specified as resource files and downloaded to the node) from the start task's [working directory](#files-and-directories) to the [shared folder](#files-and-directories), and then run an MSI or `setup.exe`.
+Der Starttask kann aber auch Referenzdaten für alle Tasks enthalten, die auf dem Computeknoten ausgeführt werden. Die Befehlszeile eines Starttasks kann etwa einen `robocopy`-Vorgang ausführen, um Anwendungsdateien (die als Ressourcendateien angegeben und auf den Knoten heruntergeladen wurden) aus dem [Arbeitsverzeichnis](#files-and-directories) des Starttasks in den [freigegebenen Ordner](#files-and-directories) zu kopieren, und anschließend eine MSI-Datei oder `setup.exe` ausführen.
 
-It is typically desirable for the Batch service to wait for the start task to complete before considering the node ready to be assigned tasks, but you can configure this.
+In der Regel empfiehlt es sich, dass der Batch-Dienst auf den Abschluss des Starttasks wartet und erst dann davon ausgeht, dass der Knoten nun für die Taskzuweisung bereit ist. Dieses Verhalten ist jedoch konfigurierbar.
 
-If a start task fails on a compute node, then the state of the node is updated to reflect the failure, and the node is not assigned any tasks. A start task can fail if there is an issue copying its resource files from storage, or if the process executed by its command line returns a nonzero exit code.
+Kann ein Starttask für einen Computeknoten nicht erfolgreich ausgeführt werden, wird der Status des Knotens entsprechend aktualisiert, und dem Knoten werden keine Tasks zugewiesen. Ein Starttask wird nicht erfolgreich durchgeführt, wenn ein Problem beim Kopieren der Ressourcendateien aus dem Speicher auftritt oder wenn der Prozess, der von der Befehlszeile ausgeführt wird, einen Exitcode ungleich NULL zurückgibt.
 
-If you add or update the start task for an existing pool, you must reboot its compute nodes for the start task to be applied to the nodes.
+Wenn Sie den Starttask einem vorhandenen Pool hinzufügen oder ihn für diesen aktualisieren, müssen Sie dessen Computeknoten für den Starttask, der auf die Knoten angewendet wird, neu starten.
 
 >[!NOTE]
-> Batch limits the total size of a start task, which includes resource files and environment variables. If you need to reduce the size of a start task, you can use one of two approaches:
+> Batch beschränkt die Gesamtgröße eines Starttasks (einschließlich Ressourcendateien und Umgebungsvariablen). Wenn Sie die Größe eines Starttasks verringern möchten, haben Sie zwei Möglichkeiten:
 >
-> 1. You can use application packages to distribute applications or data across each node in your Batch pool. For more information about application packages, see [Deploy applications to compute nodes with Batch application packages](batch-application-packages.md).
-> 2. You can manually create a zipped archive containing your applications files. Upload your zipped archive to Azure Storage as a blob. Specify the zipped archive as a resource file for your start task. Before you run the command line for your start task, unzip the archive from the command line. 
+> 1. Sie können Anwendungspakete zum Verteilen von Anwendungen oder Daten auf jedem Knoten in Ihrem Batch-Pool verwenden. Weitere Informationen zu Anwendungspaketen finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
+> 2. Sie können manuell ein ZIP-Archiv erstellen, das Ihre Anwendungsdateien enthält. Laden Sie Ihr ZIP-Archiv als Blob in Azure Storage hoch. Geben Sie das ZIP-Archiv als Ressourcendatei für Ihre Startaufgabe an. Entpacken Sie das Archiv über die Befehlszeile, bevor Sie die Befehlszeile für Ihre Startaufgabe ausführen. 
 >
->    To unzip the archive, you can use the archiving tool of your choice. You will need to include the tool that you use to unzip the archive as a resource file for the start task.
+>    Zum Extrahieren des Archivs können Sie ein Archivierungstool Ihrer Wahl verwenden. Sie müssen das zum Entpacken des Archivs verwendete Tool als Ressourcendatei für die Startaufgabe angeben.
 >
 >
 
-### <a name="job-manager-task"></a>Job manager task
-You typically use a **job manager task** to control and/or monitor job execution--for example, to create and submit the tasks for a job, determine additional tasks to run, and determine when work is complete. However, a job manager task is not restricted to these activities. It is a fully fledged task that can perform any actions that are required for the job. For example, a job manager task might download a file that is specified as a parameter, analyze the contents of that file, and submit additional tasks based on those contents.
+### <a name="job-manager-task"></a>Auftrags-Manager-Aufgabe
+Ein **Auftrags-Manager-Task** dient in der Regel zum Steuern und Überwachen der Auftragsausführung – also etwa zum Erstellen und Übermitteln der Tasks für einen Auftrag, zum Bestimmen zusätzlich auszuführender Tasks oder zum Bestimmen, wann die Arbeit abgeschlossen ist. Ein Auftrags-Manager-Task ist jedoch nicht auf diese Aktivitäten beschränkt. Vielmehr handelt es sich um einen vollwertigen Task, der jegliche für den Auftrag erforderliche Aktionen ausführen kann. So kann ein Auftrags-Manager-Task beispielsweise eine als Parameter angegebene Datei herunterladen, den Inhalt der Datei analysieren und basierend auf diesem Inhalt zusätzliche Tasks übermitteln.
 
-A job manager task is started before all other tasks. It provides the following features:
+Eine Auftrags-Manager-Aufgabe wird vor allen anderen Aufgaben gestartet. Er zeichnet sich durch Folgendes aus:
 
-* It is automatically submitted as a task by the Batch service when the job is created.
-* It is scheduled to execute before the other tasks in a job.
-* Its associated node is the last to be removed from a pool when the pool is being downsized.
-* Its termination can be tied to the termination of all tasks in the job.
-* A job manager task is given the highest priority when it needs to be restarted. If an idle node is not available, the Batch service might terminate one of the other running tasks in the pool to make room for the job manager task to run.
-* A job manager task in one job does not have priority over the tasks of other jobs. Across jobs, only job-level priorities are observed.
+* Er wird automatisch vom Batch-Dienst als Task übermittelt, wenn der Auftrag erstellt wird.
+* Seine Ausführung wird so geplant, dass er vor den anderen Tasks in einem Auftrag ausgeführt wird.
+* Der zugeordnete Knoten wird als letzter aus einem Pool entfernt, wenn der Pool verkleinert wird.
+* Die Beendigung kann an die Beendigung aller Aufgaben im Auftrag gebunden sein.
+* Ein neu zu startender Auftrags-Manager-Task hat höchste Priorität. Wenn kein Knoten im Leerlauf verfügbar ist, kann der Batch-Dienst einen der anderen ausgeführten Tasks im Pool beenden, um Platz für die Ausführung des Auftrags-Manager-Tasks zu schaffen.
+* Ein Auftrags-Manager-Task in einem Auftrag besitzt keine höhere Priorität als die Tasks in anderen Aufträgen. Auftragsübergreifend werden nur Prioritäten auf Auftragsebene beachtet.
 
-### <a name="job-preparation-and-release-tasks"></a>Job preparation and release tasks
-Batch provides job preparation tasks for pre-job execution setup. Job release tasks are for post-job maintenance or cleanup.
+### <a name="job-preparation-and-release-tasks"></a>Tasks zur Auftragsvorbereitung und -freigabe
+Batch stellt Tasks zur Auftragsvorbereitung für die Einrichtung vor der Auftragsausführung bereit. Tasks zur Auftragsfreigabe dienen zur Wartung oder Bereinigung nach der Auftragsausführung.
 
-* **Job preparation task**: A job preparation task runs on all compute nodes that are scheduled to run tasks, before any of the other job tasks are executed. You can use a job preparation task to copy data that is shared by all tasks, but is unique to the job, for example.
-* **Job release task**: When a job has completed, a job release task runs on each node in the pool that executed at least one task. You can use a job release task to delete data that is copied by the job preparation task, or to compress and upload diagnostic log data, for example.
+* **Task zur Auftragsvorbereitung**: Wird vor der Ausführung der anderen Tasks eines Auftrags auf allen Computeknoten ausgeführt, für die eine Taskausführung geplant ist. Mithilfe eines Tasks zur Auftragsvorbereitung können Sie beispielsweise auftragsspezifische Daten kopieren, die von allen Tasks gemeinsam genutzt werden.
+* **Task zur Auftragsfreigabe**: Wird nach Abschluss eines Auftrags auf jedem Knoten im Pool ausgeführt, auf dem mindestens ein Task ausgeführt wurde. Mit einem Task zur Auftragsfreigabe können Sie Daten löschen, die vom Task zur Auftragsvorbereitung kopiert wurden, oder Diagnoseprotokolldaten komprimieren und hochladen.
 
-Both job preparation and release tasks allow you to specify a command line to run when the task is invoked. They offer features like file download, elevated execution, custom environment variables, maximum execution duration, retry count, and file retention time.
+Sowohl für Tasks zur Auftragsvorbereitung als auch für Tasks zur Auftragsfreigabe können Sie eine Befehlszeile angeben, die ausgeführt werden soll, wenn der Task aufgerufen wird. Sie ermöglichen beispielsweise das Herunterladen von Dateien, das Ausführen mit erhöhten Rechten, die Verwendung benutzerdefinierter Umgebungsvariablen sowie das Angeben der maximalen Ausführungsdauer, der Anzahl von Wiederholungsversuchen und der Dateiaufbewahrungsdauer.
 
-For more information on job preparation and release tasks, see [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md).
+Weitere Informationen zu Auftragsvorbereitungs- und -freigabetasks finden Sie unter [Ausführen von Auftragsvorbereitungs- und Auftragsabschlusstasks auf Azure Batch-Computeknoten](batch-job-prep-release.md).
 
-### <a name="multi-instance-task"></a>Multi-instance task
-A [multi-instance task](batch-mpi.md) is a task that is configured to run on more than one compute node simultaneously. With multi-instance tasks, you can enable high-performance computing scenarios that require a group of compute nodes that are allocated together to process a single workload (like Message Passing Interface (MPI)).
+### <a name="multi-instance-task"></a>Task mit mehreren Instanzen
+Ein [Task mit mehreren Instanzen](batch-mpi.md) ist ein Task, der für die gleichzeitige Ausführung auf mehreren Computeknoten konfiguriert ist. Tasks mit mehreren Instanzen ermöglichen Computeszenarien mit hohem Leistungsbedarf, in denen eine einzelne Workload von einer gemeinsam zugeordneten Gruppe von Computeknoten verarbeitet werden muss – etwa bei MPI (Message Passing Interface).
 
-For a detailed discussion on running MPI jobs in Batch by using the Batch .NET library, check out [Use multi-instance tasks to run Message Passing Interface (MPI) applications in Azure Batch](batch-mpi.md).
+Ausführliche Informationen zum Ausführen von MPI-Aufträgen in Batch mithilfe der Batch .NET-Bibliothek finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](batch-mpi.md).
 
-### <a name="task-dependencies"></a>Task dependencies
-[Task dependencies](batch-task-dependencies.md), as the name implies, allow you to specify that a task depends on the completion of other tasks before its execution. This feature provides support for situations in which a "downstream" task consumes the output of an "upstream" task--or when an upstream task performs some initialization that is required by a downstream task. To use this feature, you must first enable task dependencies on your Batch job. Then, for each task that depends on another (or many others), you specify the tasks which that task depends on.
+### <a name="task-dependencies"></a>Abhängigkeiten von Aufgaben
+Mithilfe von [Abhängigkeiten von Aufgaben](batch-task-dependencies.md) können Sie – wie der Name schon vermuten lässt – angeben, dass die Ausführung einer Aufgabe vom Abschluss einer anderen Aufgaben abhängig ist. Dieses Feature ist hilfreich, wenn ein Downstreamtask die Ausgabe eines Upstreamtasks nutzt oder ein Upstreamtask eine erforderliche Initialisierung für einen Downstreamtask vornimmt. Um dieses Feature verwenden zu können, müssen Sie zuerst Aufgabenabhängigkeiten für den Batchauftrag aktivieren. Geben Sie dann für jede Aufgabe, die von einer (oder mehreren) anderen abhängt, die übergeordneten Aufgaben an.
 
-With task dependencies, you can configure scenarios like the following:
+Mit Abhängigkeiten von Aufgaben können Sie beispielsweise folgende Szenarien konfigurieren:
 
-* *taskB* depends on *taskA* (*taskB* will not begin execution until *taskA* has completed).
-* *taskC* depends on both *taskA* and *taskB*.
-* *taskD* depends on a range of tasks, such as tasks *1* through *10*, before it executes.
+* *TaskB* hängt von *TaskA* ab. (*TaskB* kann erst ausgeführt werden, wenn *TaskA* abgeschlossen ist.)
+* *TaskC* hängt sowohl von *TaskA* als auch von *TaskB* ab.
+* Die Ausführung von *TaskD* hängt von mehreren Tasks (beispielsweise von den Tasks *1* bis *10*) ab.
 
-Check out [Task dependencies in Azure Batch](batch-task-dependencies.md) and the [TaskDependencies][github_sample_taskdeps] code sample in the [azure-batch-samples][github_samples] GitHub repository for more in-depth details on this feature.
+Weitere ausführliche Informationen zu diesem Feature finden Sie unter [Taskabhängigkeiten in Azure Batch](batch-task-dependencies.md) und im Codebeispiel [TaskDependencies][github_sample_taskdeps] im GitHub-Repository [azure-batch-samples][github_samples].
 
-## <a name="environment-settings-for-tasks"></a>Environment settings for tasks
-Each task executed by the Batch service has access to environment variables that it sets on compute nodes. This includes environment variables defined by the Batch service ([service-defined][msdn_env_vars]) and custom environment variables that you can define for your tasks. The applications and scripts your tasks execute have access to these environment variables during execution.
+## <a name="environment-settings-for-tasks"></a>Umgebungseinstellungen für Tasks
+Jeder Task, der vom Batch-Dienst ausgeführt wird, hat Zugriff auf die Umgebungsvariablen, die für Computeknoten festgelegt werden. Dies gilt auch für Umgebungsvariablen, die vom Batch-Dienst definiert werden ([dienstdefiniert][msdn_env_vars]), und für benutzerdefinierte Umgebungsvariablen, die Sie für Ihre Tasks definieren können. Die Anwendungen und Skripts, die von Ihren Tasks ausgeführt werden, haben während der Ausführung Zugriff auf diese Umgebungsvariablen.
 
-You can set custom environment variables at the task or job level by populating the *environment settings* property for these entities. For example, see the [Add a task to a job][rest_add_task] operation (Batch REST API), or the [CloudTask.EnvironmentSettings][net_cloudtask_env] and [CloudJob.CommonEnvironmentSettings][net_job_env] properties in Batch .NET.
+Sie können benutzerdefinierte Umgebungsvariablen auf Task- oder Auftragsebene festlegen, indem Sie die Eigenschaft *Umgebungseinstellungen* für diese Entitäten auffüllen. Informieren Sie sich beispielsweise über den Vorgang [Hinzufügen einer Aufgabe zu einem Auftrag][rest_add_task] (Batch REST-API) oder über die Eigenschaften [CloudTask.EnvironmentSettings][net_cloudtask_env] und [CloudJob.CommonEnvironmentSettings][net_job_env] in Batch .NET.
 
-Your client application or service can obtain a task's environment variables, both service-defined and custom, by using the [Get information about a task][rest_get_task_info] operation (Batch REST) or by accessing the [CloudTask.EnvironmentSettings][net_cloudtask_env] property (Batch .NET). Processes executing on a compute node can access these and other environment variables on the node, for example, by using the familiar `%VARIABLE_NAME%` (Windows) or `$VARIABLE_NAME` (Linux) syntax.
+Die Clientanwendung bzw. der Dienst kann die Umgebungsvariablen eines Tasks abrufen – sowohl dienstdefiniert als auch benutzerdefiniert –, indem der Vorgang [Abrufen von Informationen zu einer Aufgabe][rest_get_task_info] (Batch REST) verwendet oder auf die Eigenschaft [CloudTask.EnvironmentSettings][net_cloudtask_env] (Batch .NET) zugegriffen wird. Prozesse, die auf einem Computeknoten ausgeführt werden, können auf diese und andere Umgebungsvariablen auf dem Knoten zugreifen – beispielsweise mit der vertrauten `%VARIABLE_NAME%`-Syntax (Windows) oder mit der `$VARIABLE_NAME`-Syntax (Linux).
 
-You can find a full list of all service-defined environment variables in [Compute node environment variables][msdn_env_vars].
+Eine vollständige Liste mit allen vom Dienst definierten Umgebungsvariablen finden Sie unter [Compute node environment variables][msdn_env_vars] (Computeknoten-Umgebungsvariablen).
 
-## <a name="files-and-directories"></a>Files and directories
-Each task has a *working directory* under which it creates zero or more files and directories. This working directory can be used for storing the program that is run by the task, the data that it processes, and the output of the processing it performs. All files and directories of a task are owned by the task user.
+## <a name="files-and-directories"></a>Dateien und Verzeichnisse
+Jeder Task verfügt über ein *Arbeitsverzeichnis* , unter dem null oder mehr Dateien und Verzeichnisse erstellt werden. Dieses Arbeitsverzeichnis kann für das Speichern des von einem Task ausgeführten Programms, der dabei verarbeiteten Daten und der Ausgabe der Verarbeitung verwendet werden. Alle Dateien und Verzeichnisse eines Tasks befinden sich im Besitz des Taskbenutzers.
 
-The Batch service exposes a portion of the file system on a node as the *root directory*. Tasks can access the root directory by referencing the `AZ_BATCH_NODE_ROOT_DIR` environment variable. For more information about using environment variables, see [Environment settings for tasks](#environment-settings-for-tasks).
+Der Batch-Dienst stellt einen Teil des Dateisystems auf einem Knoten als *Stammverzeichnis*bereit. Tasks können auf das Stammverzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_ROOT_DIR` verweisen. Weitere Informationen zur Verwendung von Umgebungsvariablen finden Sie unter [Umgebungseinstellungen für Tasks](#environment-settings-for-tasks).
 
-The root directory contains the following directory structure:
+Das Stammverzeichnis enthält die folgenden Verzeichnisstruktur:
 
-![Compute node directory structure][1]
+![Computeknoten-Verzeichnisstruktur][1]
 
-* **shared**: This directory provides read/write access to *all* tasks that run on a node. Any task that runs on the node can create, read, update, and delete files in this directory. Tasks can access this directory by referencing the `AZ_BATCH_NODE_SHARED_DIR` environment variable.
-* **startup**: This directory is used by a start task as its working directory. All of the files that are downloaded to the node by the start task are stored here. The start task can create, read, update, and delete files under this directory. Tasks can access this directory by referencing the `AZ_BATCH_NODE_STARTUP_DIR` environment variable.
-* **Tasks**: A directory is created for each task that runs on the node. It is accessed by referencing the `AZ_BATCH_TASK_DIR` environment variable.
+* **shared**: Dieses Verzeichnis bietet Lese-/Schreibzugriff auf *alle* Tasks, die auf einem Knoten ausgeführt werden. Mit jedem Task, der auf dem Knoten ausgeführt wird, können Dateien in diesem Verzeichnis erstellt, gelesen, aktualisiert und gelöscht werden. Tasks können auf dieses Verzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_SHARED_DIR` verweisen.
+* **startup**: Dieses Verzeichnis wird von einem Starttask als Arbeitsverzeichnis verwendet. Alle Dateien, die vom Starttask auf den Knoten heruntergeladen werden, werden hier gespeichert. Der Starttask kann Dateien unter diesem Verzeichnis erstellen, lesen, aktualisieren und löschen. Tasks können auf dieses Verzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_STARTUP_DIR` verweisen.
+* **Tasks**: Für jeden Task, der auf dem Knoten ausgeführt wird, wird ein Verzeichnis erstellt. Der Zugriff erfolgt durch einen Verweis auf die Umgebungsvariable `AZ_BATCH_TASK_DIR` .
 
-    Within each task directory, the Batch service creates a working directory (`wd`) whose unique path is specified by the `AZ_BATCH_TASK_WORKING_DIR` environment variable. This directory provides read/write access to the task. The task can create, read, update, and delete files under this directory. This directory is retained based on the *RetentionTime* constraint that is specified for the task.
+    Innerhalb jedes Taskverzeichnisses erstellt der Batch-Dienst ein Arbeitsverzeichnis (`wd`), dessen eindeutiger Pfad durch die `AZ_BATCH_TASK_WORKING_DIR`-Umgebungsvariable angegeben wird. Dieses Verzeichnis bietet Lese-/Schreibzugriff auf den Task. Die Aufgabe kann Dateien unter diesem Verzeichnis erstellen, lesen, aktualisieren und löschen. Dieses Verzeichnis wird auf der Grundlage der für den Vorgang angegebenen Einschränkung *RetentionTime* beibehalten.
 
-    `stdout.txt` and `stderr.txt`: These files are written to the task folder during the execution of the task.
+    `stdout.txt` und `stderr.txt`: Diese Dateien werden während der Ausführung des Tasks in den Taskordner geschrieben.
 
 > [!IMPORTANT]
-> When a node is removed from the pool, *all* of the files that are stored on the node are removed.
+> Wenn ein Knoten aus einem Pool entfernt wird, werden *alle* auf dem Knoten gespeicherten Dateien entfernt.
 >
 >
 
-## <a name="application-packages"></a>Application packages
-The [application packages](batch-application-packages.md) feature provides easy management and deployment of applications to the compute nodes in your pools. You can upload and manage multiple versions of the applications run by your tasks, including their binaries and support files. Then you can automatically deploy one or more of these applications to the compute nodes in your pool.
+## <a name="application-packages"></a>Anwendungspakete
+Das Feature [Anwendungspakete](batch-application-packages.md) ermöglicht eine einfache Verwaltung und Bereitstellung von Anwendungen für die in Ihren Pools benötigten Computeknoten. Sie können mehrere Versionen der von Ihren Tasks ausgeführten Anwendungen hochladen und verwalten (einschließlich Binärdaten und Unterstützungsdateien). Anschließend können Sie dann eine oder mehrere dieser Anwendungen für die Computeknoten in Ihrem Pool bereitstellen.
 
-You can specify application packages at the pool and task level. When you specify pool application packages, the application is deployed to every node in the pool. When you specify task application packages, the application is deployed only to nodes that are scheduled to run at least one of the job's tasks, just before the task's command line is run.
+Sie können die Anwendungspakete auf Pool- und Task-Ebene angeben. Wenn Sie Pool-Anwendungspakete angeben, wird die Anwendung für jeden Knoten im Pool bereitgestellt. Wenn Sie Task-Anwendungspakete angeben, wird die Anwendung nur für Knoten bereitgestellt, die mindestens einen Task des Auftrags ausführen, bevor die Befehlszeilen des Tasks ausgeführt werden.
 
-Batch handles the details of working with Azure Storage to store your application packages and deploy them to compute nodes, so both your code and management overhead can be simplified.
+Batch kümmert sich um die Details für die Arbeit mit Azure Storage, um Anwendungspakete zu speichern und für Serverknoten bereitzustellen, damit sowohl Ihr Code als auch der Verwaltungsaufwand vereinfacht wird.
 
-To find out more about the application package feature, check out [Deploy applications to compute nodes with Batch application packages](batch-application-packages.md).
+Weitere Informationen zum Anwendungspaketfeature finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
 
 > [!NOTE]
-> If you add pool application packages to an *existing* pool, you must reboot its compute nodes for the application packages to be deployed to the nodes.
+> Wenn Sie die Pool-Anwendungspakete zu einem *vorhandenen* Pool hinzufügen, müssen sie dessen Computeknoten für die Anwendungspakete, die auf den Knoten bereitgestellt werden, neu starten.
 >
 >
 
-## <a name="pool-and-compute-node-lifetime"></a>Pool and compute node lifetime
-When you design your Azure Batch solution, you have to make a design decision about how and when pools are created, and how long compute nodes within those pools are kept available.
+## <a name="pool-and-compute-node-lifetime"></a>Gültigkeitsdauer für Pools und Computeknoten
+Beim Entwerfen Ihrer Azure Batch-Lösung müssen Sie entscheiden, wie und wann Pools erstellt werden und wie lange Computeknoten innerhalb dieser Pools verfügbar bleiben sollen.
 
-On one end of the spectrum, you can create a pool for each job that you submit, and delete the pool as soon as its tasks finish execution. This maximizes utilization because the nodes are only allocated when needed, and shut down as soon as they're idle. While this means that the job must wait for the nodes to be allocated, it's important to note that tasks are scheduled for execution as soon as nodes are individually available, allocated, and the start task has completed. Batch does *not* wait until all nodes within a pool are available before assigning tasks to the nodes. This ensures maximum utilization of all available nodes.
+An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen, den Sie senden, und den Pool dann löschen, sobald die Ausführung seiner Tasks abgeschlossen ist. Auf diese Weise wird die Effektivität der Nutzung erhöht, da die Knoten nur bei Bedarf zugeordnet und sofort heruntergefahren werden, wenn sie sich im Leerlauf befinden. Dies bedeutet, dass der Auftrag bis zur Zuteilung der Knoten warten muss. Dabei ist aber wichtig zu erwähnen, dass für die Tasks die Ausführung geplant wird, sobald die Knoten einzeln verfügbar sind, zugeteilt wurden und der Starttask abgeschlossen ist. Batch wartet mit dem Zuweisen von Tasks zu den Knoten *nicht*, bis alle Knoten in einem Pool verfügbar sind. Dadurch ist eine maximale Auslastung aller verfügbaren Knoten gewährleistet.
 
-At the other end of the spectrum, if having jobs start immediately is the highest priority, you can create a pool ahead of time and make its nodes available before jobs are submitted. In this scenario, tasks can start immediately, but nodes might sit idle while waiting for them to be assigned.
+Falls dagegen der sofortige Start von Aufträgen höchste Priorität hat, können Sie bereits vorab einen Pool erstellen und die zugehörigen Knoten vor der Auftragsübermittlung verfügbar machen. Dieses Szenario ermöglicht zwar den sofortigen Start von Tasks, führt aber unter Umständen auch dazu, dass sich Knoten im Leerlauf befinden, während sie auf die Zuteilung warten.
 
-A combined approach is typically used for handling a variable, but ongoing, load. You can have a pool that multiple jobs are submitted to, but can scale the number of nodes up or down according to the job load (see [Scaling compute resources](#scaling-compute-resources) in the following section). You can do this reactively, based on current load, or proactively, if load can be predicted.
+Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel ein kombinierter Ansatz verwendet. Sie können über einen Pool verfügen, an den mehrere Aufträge übermittelt werden, und die Anzahl von Knoten mittels Skalierung flexibel an die jeweilige Auslastung anpassen. (Weitere Informationen finden Sie im nächsten Abschnitt unter [Skalieren von Computeressourcen](#scaling-compute-resources).) Dies kann reaktiv auf der Grundlage der aktuellen Auslastung oder proaktiv erfolgen, sofern die Auslastung vorausgesagt werden kann.
 
-## <a name="virtual-network-vnet-and-firewall-configuration"></a>Virtual network (VNet) and firewall configuration 
+## <a name="virtual-network-vnet-and-firewall-configuration"></a>Virtuelles Netzwerk (VNET) und Firewallkonfiguration 
 
-When you provision a pool of compute nodes in Batch, you can associate the pool with a subnet of an Azure [virtual network (VNet)](../virtual-network/virtual-networks-overview.md). To use an Azure VNet, the Batch client API must use Azure Active Directory (AD) authentication. Azure Batch support for Azure AD is documented in [Authenticate Batch service solutions with Active Directory](batch-aad-auth.md).  
+Wenn Sie in Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Zur Verwendung eines Azure VNETs muss die Batch-Client-API die Azure Active Directory-Authentifizierung verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.  
 
-### <a name="vnet-requirements"></a>VNet requirements
+### <a name="vnet-requirements"></a>VNET-Anforderungen
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-For more information about setting up a Batch pool in a VNet, see [Create a pool of virtual machines with your virtual network](batch-virtual-network.md).
+Weitere Informationen zum Einrichten eines Batch-Pools in einem VNet finden Sie unter [Create an Azure Batch pool in a virtual network](batch-virtual-network.md) (Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk).
 
-## <a name="scaling-compute-resources"></a>Scaling compute resources
-With [automatic scaling](batch-automatic-scaling.md), you can have the Batch service dynamically adjust the number of compute nodes in a pool according to the current workload and resource usage of your compute scenario. This allows you to lower the overall cost of running your application by using only the resources you need, and releasing those you don't need.
+## <a name="scaling-compute-resources"></a>Skalieren von Computeressourcen
+Mit der [automatischen Skalierung](batch-automatic-scaling.md)kann der Batch-Dienst die Anzahl von Computeknoten in einem Pool dynamisch an die aktuelle Workload und die Ressourcenverwendung Ihres Computeszenarios anpassen. So können Sie die Gesamtkosten für die Ausführung Ihrer Anwendung senken, indem Sie nur die erforderlichen Ressourcen verwenden und nicht benötigte Ressourcen freigeben.
 
-You enable automatic scaling by writing an [automatic scaling formula](batch-automatic-scaling.md#automatic-scaling-formulas) and associating that formula with a pool. The Batch service uses the formula to determine the target number of nodes in the pool for the next scaling interval (an interval that you can configure). You can specify the automatic scaling settings for a pool when you create it, or enable scaling on a pool later. You can also update the scaling settings on a scaling-enabled pool.
+Sie aktivieren die automatische Skalierung, indem Sie eine [Formel für die automatische Skalierung](batch-automatic-scaling.md#automatic-scaling-formulas) erstellen und diese Formel einem Pool zuordnen. Der Batch-Dienst verwendet die Formel, um die vorgegebene Anzahl von Knoten im Pool für das nächste Skalierungsintervall (welches Sie konfigurieren können) zu bestimmen. Sie können für einen Pool die Einstellungen für die automatische Skalierung angeben, wenn Sie diesen erstellen, oder Sie können die Skalierung für einen Pool später aktivieren. Außerdem können Sie die Skalierungseinstellungen für einen Pool aktualisieren, für den die Skalierung aktiviert ist.
 
-As an example, perhaps a job requires that you submit a very large number of tasks to be executed. You can assign a scaling formula to the pool that adjusts the number of nodes in the pool based on the current number of queued tasks and the completion rate of the tasks in the job. The Batch service periodically evaluates the formula and resizes the pool, based on workload and your other formula settings. The service adds nodes as needed when there are a large number of queued tasks, and removes nodes when there are no queued or running tasks.
+Beispielsweise kann es für einen Auftrag erforderlich sein, eine sehr große Anzahl von Tasks zu übermitteln, die ausgeführt werden sollen. Sie können dem Pool eine Skalierungsformel zuweisen, die die Anzahl von Knoten im Pool auf der Grundlage der aktuellen Anzahl von Tasks in der Warteschlange sowie der Abschlussrate der Tasks im Auftrag anpasst. Der Batch-Dienst wertet die Formel in regelmäßigen Abständen aus und ändert die Größe des Pools auf Grundlage von Workload und anderen Formeleinstellungen. Der Dienst fügt bei Bedarf Knoten hinzu, wenn eine große Anzahl von Tasks in der Warteschlange vorhanden ist und entfernt Knoten, wenn keine Tasks in der Warteschlange sind oder ausgeführt werden.
 
-A scaling formula can be based on the following metrics:
+Eine Skalierungsformel kann auf den folgenden Metriken basieren:
 
-* **Time metrics** are based on statistics collected every five minutes in the specified number of hours.
-* **Resource metrics** are based on CPU usage, bandwidth usage, memory usage, and number of nodes.
-* **Task metrics** are based on task state, such as *Active* (queued), *Running*, or *Completed*.
+* **Zeitmetriken** : Basieren auf Statistiken, die alle fünf Minuten für die angegebene Anzahl von Stunden erfasst werden.
+* **Ressourcenmetriken** : Basieren auf CPU-Auslastung, Bandbreitenauslastung, Speicherauslastung und Knotenanzahl.
+* **Taskmetriken**: Basieren auf dem Taskstatus – beispielsweise *Aktiv* (in der Warteschlange), *Wird ausgeführt* oder *Abgeschlossen*.
 
-When automatic scaling decreases the number of compute nodes in a pool, you must consider how to handle tasks that are running at the time of the decrease operation. To accommodate this, Batch provides a *node deallocation option* that you can include in your formulas. For example, you can specify that running tasks are stopped immediately and then requeued for execution on another node, or allowed to finish before the node is removed from the pool.
+Wenn die Anzahl von Computeknoten in einem Pool durch die automatische Skalierung verringert wird, müssen Sie sich überlegen, wie Sie Tasks behandeln, die zum Zeitpunkt des Verringerungsvorgangs ausgeführt werden. Hierfür verfügt Batch über eine *Option zum Aufheben der Knotenzuordnung* , die Sie in Ihre Formeln einfügen können. Sie können beispielsweise angeben, dass ausgeführte Tasks sofort beendet und dann für die Ausführung auf einem anderen Knoten erneut in die Warteschlange eingereiht werden oder dass die Fertigstellung abgewartet werden soll, bevor der Knoten aus dem Pool entfernt wird.
 
-For more information about automatically scaling an application, see [Automatically scale compute nodes in an Azure Batch pool](batch-automatic-scaling.md).
+Weitere Informationen zur automatischen Skalierung einer Anwendung finden Sie unter [Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool](batch-automatic-scaling.md).
 
 > [!TIP]
-> To maximize compute resource utilization, set the target number of nodes to zero at the end of a job, but allow running tasks to finish.
+> Legen Sie die vorgegebene Anzahl von Knoten am Ende eines Auftrags auf Null fest, und lassen Sie das Abschließen ausgeführter Tasks zu, um die Auslastung von Computeressourcen zu maximieren.
 >
 >
 
-## <a name="security-with-certificates"></a>Security with certificates
-You typically need to use certificates when you encrypt or decrypt sensitive information for tasks, like the key for an [Azure Storage account][azure_storage]. To support this, you can install certificates on nodes. Encrypted secrets are passed to tasks via command-line parameters or embedded in one of the task resources, and the installed certificates can be used to decrypt them.
+## <a name="security-with-certificates"></a>Sicherheit mit Zertifikaten
+Zertifikate müssen in der Regel beim Ver- und Entschlüsseln vertraulicher Informationen für Tasks verwendet werden. Ein Beispiel wäre etwa der Schlüssel für ein [Azure-Speicherkonto][azure_storage]. Hierzu können Sie Zertifikate auf Knoten installieren. Verschlüsselte geheime Schlüssel werden über Befehlszeilenparameter an Tasks übergeben oder in einer der Taskressourcen eingebettet. Zum Entschlüsseln können dann installierte Zertifikate verwendet werden.
 
-You use the [Add certificate][rest_add_cert] operation (Batch REST) or [CertificateOperations.CreateCertificate][net_create_cert] method (Batch .NET) to add a certificate to a Batch account. You can then associate the certificate with a new or existing pool. When a certificate is associated with a pool, the Batch service installs the certificate on each node in the pool. The Batch service installs the appropriate certificates when the node starts up, before launching any tasks (including the start task and job manager task).
+Zum Hinzufügen eines Zertifikats zu einem Batch-Konto können Sie den Vorgang [Hinzufügen eines Zertifikats zu einem Konto][rest_add_cert] (Batch REST) oder die Methode [CertificateOperations.CreateCertificate][net_create_cert] (Batch .NET) verwenden. Sie können das Zertifikat dann einem neuen oder vorhandenen Pool zuordnen. Wenn ein Zertifikat einem Pool zugeordnet ist, installiert der Batch-Dienst das Zertifikat auf jedem Knoten im Pool. Der Batch-Dienst installiert die entsprechenden Zertifikate beim Start des Knotens, bevor Tasks gestartet werden (einschließlich Starttask und Auftrags-Manager-Task).
 
-If you add certificates to an *existing* pool, you must reboot its compute nodes for the certificates to be applied to the nodes.
+Wenn Sie Zertifikate zu einem *vorhandenen* Pool hinzufügen, müssen sie dessen Computeknoten für die Zertifikate, die auf die Knoten angewandt werden, neu starten.
 
-## <a name="error-handling"></a>Error handling
-You might find it necessary to handle both task and application failures within your Batch solution.
+## <a name="error-handling"></a>Fehlerbehandlung
+Es kann vorkommen, dass Sie in Ihrer Batch-Lösung sowohl Task- als auch Anwendungsfehler behandeln müssen.
 
-### <a name="task-failure-handling"></a>Task failure handling
-Task failures fall into these categories:
+### <a name="task-failure-handling"></a>Behandeln von Taskfehlern
+Bei Taskfehlern wird zwischen folgenden Kategorien unterschieden:
 
-* **Pre-processing failures**
+* **Fehler bei der Vorverarbeitung**
 
-    If a task fails to start, a pre-processing error is set for the task.  
+    Falls ein Task nicht gestartet werden kann, wird für den Task ein Fehler bei der Vorverarbeitung festgelegt.  
 
-    Pre-processing errors can occur if the task's resource files have moved, the Storage account is no longer available, or another issue was encountered that prevented the successful copying of files to the node.
+    Fehler bei der Vorverarbeitung können auftreten, wenn die Ressourcendateien des Tasks verschoben wurden, das Speicherkonto nicht mehr zur Verfügung steht oder ein anderes Problem aufgetreten ist, das ein erfolgreiches Kopieren von Dateien auf den Knoten verhindert hat.
 
-* **File upload failures**
+* **Fehler beim Hochladen von Dateien**
 
-    If uploading files that are specified for a task fails for any reason, a file upload error is set for the task.
+    Falls für einen Task angegebene Dateien nicht hochgeladen werden können, wird für den Task ein Fehler beim Hochladen von Dateien festgelegt.
 
-    File upload errors can occur if the SAS supplied for accessing Azure Storage is invalid or does not provide write permissions, if the storage account is no longer available, or if another issue was encountered that prevented the successful copying of files from the node.    
+    Fehler beim Hochladen von Dateien können auftreten, wenn die für den Zugriff auf Azure Storage angegebene SAS ungültig ist oder keine Schreibberechtigungen umfasst, das Speicherkonto nicht mehr zur Verfügung steht oder ein anderes Problem aufgetreten ist, das ein erfolgreiches Kopieren von Dateien des Knotens verhindert hat.    
 
-* **Application failures**
+* **Anwendungsfehler**
 
-    The process that is specified by the task's command line can also fail. The process is deemed to have failed when a nonzero exit code is returned by the process that is executed by the task (see *Task exit codes* in the next section).
+    Ein Fehler kann auch beim in der Befehlszeile des Tasks angegebenen Prozess auftreten. Der Prozess gilt als nicht erfolgreich, wenn der Exitcode, der vom durch den Task ausgeführten Prozess zurückgegeben wird, ungleich Null ist (siehe *Exitcodes für Tasks* im nächsten Abschnitt).
 
-    For application failures, you can configure Batch to automatically retry the task up to a specified number of times.
+    Batch kann so konfiguriert werden, dass der Task im Falle eines Anwendungsfehlers automatisch mit einer bestimmten Häufigkeit wiederholt wird.
 
-* **Constraint failures**
+* **Einschränkungsfehler**
 
-    You can set a constraint that specifies the maximum execution duration for a job or task, the *maxWallClockTime*. This can be useful for terminating tasks that fail to progress.
+    Mit der Einschränkung *maxWallClockTime*können Sie die maximale Ausführungsdauer für einen Auftrag oder Task angeben. Dies kann nützlich sein für das Beenden von Tasks, bei denen kein Fortschritt stattfindet.
 
-    When the maximum amount of time has been exceeded, the task is marked as *completed*, but the exit code is set to `0xC000013A` and the *schedulingError* field is marked as `{ category:"ServerError", code="TaskEnded"}`.
+    Wenn die maximal zulässige Zeitspanne überschritten wurde, wird der Task als *abgeschlossen* gekennzeichnet. Als Exitcode wird jedoch `0xC000013A` zurückgegeben, und das Feld *schedulingError* wird als `{ category:"ServerError", code="TaskEnded"}` markiert.
 
-### <a name="debugging-application-failures"></a>Debugging application failures
-* `stderr` and `stdout`
+### <a name="debugging-application-failures"></a>Debuggen von Anwendungsfehlern
+* `stderr` und `stdout`
 
-    During execution, an application might produce diagnostic output that you can use to troubleshoot issues. As mentioned in the earlier section [Files and directories](#files-and-directories), the Batch service writes standard output and standard error output to `stdout.txt` and `stderr.txt` files in the task directory on the compute node. You can use the Azure portal or one of the Batch SDKs to download these files. For example, you can retrieve these and other files for troubleshooting purposes by using [ComputeNode.GetNodeFile][net_getfile_node] and [CloudTask.GetNodeFile][net_getfile_task] in the Batch .NET library.
+    Während der Ausführung generiert eine Anwendung unter Umständen eine Diagnoseausgabe für die Problembehandlung. Wie bereits unter [Dateien und Verzeichnisse](#files-and-directories) erwähnt, schreibt der Batch-Dienst eine Standardausgabe und eine Standardfehlerausgabe in die Dateien `stdout.txt` und `stderr.txt` im Taskverzeichnis auf dem Computeknoten. Diese Dateien können Sie über das Azure-Portal oder über ein Batch SDK herunterladen. So können Sie diese und andere Dateien beispielsweise mithilfe von [ComputeNode.GetNodeFile][net_getfile_node] und [CloudTask.GetNodeFile][net_getfile_task] in der .NET-Bibliothek von Batch zu Problembehandlungszwecken abrufen.
 
-* **Task exit codes**
+* **Exitcodes für Tasks**
 
-    As mentioned earlier, a task is marked as failed by the Batch service if the process that is executed by the task returns a nonzero exit code. When a task executes a process, Batch populates the task's exit code property with the *return code of the process*. It is important to note that a task's exit code is **not** determined by the Batch service. A task's exit code is determined by the process itself or the operating system on which the process executed.
+    Wie bereits erwähnt, wird ein Task vom Batch-Dienst als nicht erfolgreich gekennzeichnet, wenn der vom Task ausgeführte Prozess einen Exitcode ungleich Null zurückgibt. Wenn ein Task einen Prozess ausführt, füllt Batch die Exitcode-Eigenschaft des Tasks mit dem *Rückgabecode des Prozesses*auf. Wichtig ist hierbei, dass der Exitcode eines Tasks **nicht** vom Batch-Dienst bestimmt wird. Der Exitcode eines Tasks wird vom Prozess selbst bestimmt oder von dem Betriebssystem, unter dem der Prozess ausgeführt wird.
 
-### <a name="accounting-for-task-failures-or-interruptions"></a>Accounting for task failures or interruptions
-Tasks might occasionally fail or be interrupted. The task application itself might fail, the node on which the task is running might be rebooted, or the node might be removed from the pool during a resize operation if the pool's deallocation policy is set to remove nodes immediately without waiting for tasks to finish. In all cases, the task can be automatically requeued by Batch for execution on another node.
+### <a name="accounting-for-task-failures-or-interruptions"></a>Erläuterung zu Taskfehlern oder Unterbrechungen
+Tasks werden gelegentlich nicht erfolgreich ausgeführt oder unterbrochen. Unter Umständen tritt in der Taskanwendung selbst ein Fehler auf, oder der Knoten, auf dem der Task ausgeführt wird, wird neu gestartet. Außerdem kann der Knoten während einer Änderung der Poolgröße ggf. entfernt werden, wenn die Richtlinie für die Aufhebung der Zuordnung des Knotens so konfiguriert ist, dass der Knoten sofort entfernt wird, ohne auf den Abschluss des Tasks zu warten. In diesen Fällen kann der Task von Batch automatisch wieder der Warteschlange hinzugefügt und auf einem anderen Knoten ausgeführt werden.
 
-It is also possible for an intermittent issue to cause a task to hang or take too long to execute. You can set the maximum execution interval for a task. If the maximum execution interval is exceeded, the Batch service interrupts the task application.
+Außerdem können zeitweilig Probleme auftreten, die dazu führen, dass eine Aufgabe nicht mehr reagiert oder zu lange dauert. Sie können das maximale Ausführungsintervall für einen Task festlegen. Wenn das maximale Ausführungsintervall überschritten wird, unterbricht der Batch-Dienst die Taskanwendung.
 
-### <a name="connecting-to-compute-nodes"></a>Connecting to compute nodes
-You can perform additional debugging and troubleshooting by signing in to a compute node remotely. You can use the Azure portal to download a Remote Desktop Protocol (RDP) file for Windows nodes and obtain Secure Shell (SSH) connection information for Linux nodes. You can also do this by using the Batch APIs--for example, with [Batch .NET][net_rdpfile] or [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+### <a name="connecting-to-compute-nodes"></a>Herstellen einer Verbindung mit Computeknoten
+Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem Sie sich per Remotezugriff an einem Computeknoten anmelden. Sie können das Azure-Portal verwenden, um eine RDP-Datei (Remotedesktopprotokoll) für Windows-Knoten herunterzuladen und Secure Shell (SSH)-Verbindungsinformationen für Linux-Knoten abzurufen. Hierfür können Sie auch die Batch-APIs verwenden – beispielsweise mit [Batch .NET][net_rdpfile] oder [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
-> To connect to a node via RDP or SSH, you must first create a user on the node. To do this, you can use the Azure portal, [add a user account to a node][rest_create_user] by using the Batch REST API, call the [ComputeNode.CreateComputeNodeUser][net_create_user] method in Batch .NET, or call the [add_user][py_add_user] method in the Batch Python module.
+> Um über RDP oder SSH eine Verbindung mit einem Knoten herzustellen, müssen Sie zuerst einen Benutzer auf dem Knoten erstellen. Zu diesem Zweck können Sie das Azure-Portal verwenden, über die Batch REST-API [einem Knoten ein Benutzerkonto hinzufügen][rest_create_user], die Methode [ComputeNode.CreateComputeNodeUser][net_create_user] in Batch .NET aufrufen oder die Methode [add_user][py_add_user] im Batch Python-Modul aufrufen.
 >
 >
 
-If you need to restrict or disable RDP or SSH access to compute nodes, see [Configure or disable remote access to compute nodes in an Azure Batch pool](pool-endpoint-configuration.md).
+Wenn Sie den RDP- oder SSH-Zugriff auf Computeknoten beschränken müssen, helfen Ihnen die Informationen unter [Configure or disable remote access to compute nodes in an Azure Batch pool](pool-endpoint-configuration.md) (Konfigurieren oder Deaktivieren des Remotezugriffs auf Computeknoten in einem Azure Batch-Pool) weiter.
 
-### <a name="troubleshooting-problematic-compute-nodes"></a>Troubleshooting problematic compute nodes
-In situations where some of your tasks are failing, your Batch client application or service can examine the metadata of the failed tasks to identify a misbehaving node. Each node in a pool is given a unique ID, and the node on which a task runs is included in the task metadata. After you've identified a problem node, you can take several actions with it:
+### <a name="troubleshooting-problematic-compute-nodes"></a>Problembehandlung bei problematischen Computeknoten
+Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung oder der Dienst die Metadaten der fehlgeschlagenen Tasks prüfen, um einen fehlerhaften Knoten zu finden. Jeder Knoten in einem Pool erhält eine eindeutige ID, und der Knoten, auf dem ein Task ausgeführt wird, ist in den Metadaten des Tasks angegeben. Nachdem Sie einen „Problemknoten“ identifiziert haben, können Sie dafür verschiedene Aktionen durchführen:
 
-* **Reboot the node** ([REST][rest_reboot] | [.NET][net_reboot])
+* **Neustarten des Knotens** ([REST][rest_reboot] | [.NET][net_reboot])
 
-    Restarting the node can sometimes clear up latent issues like stuck or crashed processes. Note that if your pool uses a start task or your job uses a job preparation task, they are executed when the node restarts.
-* **Reimage the node** ([REST][rest_reimage] | [.NET][net_reimage])
+    Durch einen Neustart des Knotens können latente Probleme wie etwa hängende oder abgestürzte Prozesse behoben werden. Wenn Ihr Pool ein Starttask oder der Auftrag ein Auftragsvorbereitungstask nutzt, werden diese Tasks beim Neustart des Knotens ausgeführt.
+* **Reimaging des Knotens** ([REST][rest_reimage] | [.NET][net_reimage])
 
-    This reinstalls the operating system on the node. As with rebooting a node, start tasks and job preparation tasks are rerun after the node has been reimaged.
-* **Remove the node from the pool** ([REST][rest_remove] | [.NET][net_remove])
+    Dadurch wird das Betriebssystem auf dem Knoten neu installiert. Wie beim Neustart eines Knotens werden Start- und Auftragsvorbereitungstasks nach dem Reimaging des Knotens erneut ausgeführt.
+* **Entfernen des Knotens aus dem Pool** ([REST][rest_remove] | [.NET][net_remove])
 
-    Sometimes it is necessary to completely remove the node from the pool.
-* **Disable task scheduling on the node** ([REST][rest_offline] | [.NET][net_offline])
+    Manchmal ist es erforderlich, den Knoten aus dem Pool vollständig zu entfernen.
+* **Deaktivieren der Taskplanung auf dem Knoten** ([REST][rest_offline] | [.NET][net_offline])
 
-    This effectively takes the node offline so that no further tasks are assigned to it, but allows the node to remain running and in the pool. This enables you to perform further investigation into the cause of the failures without losing the failed task's data, and without the node causing additional task failures. For example, you can disable task scheduling on the node, then [sign in remotely](#connecting-to-compute-nodes) to examine the node's event logs or perform other troubleshooting. After you've finished your investigation, you can then bring the node back online by enabling task scheduling ([REST][rest_online] | [.NET][net_online]), or perform one of the other actions discussed earlier.
+    Dadurch wird der Knoten offline geschaltet, sodass ihm keine weiteren Tasks mehr zugewiesen werden. Er wird aber weiterhin ausgeführt und verbleibt im Pool. So können Sie die Fehlerursache weiter untersuchen, ohne dass die Daten der fehlgeschlagenen Tasks verloren gehen und durch den Knoten weitere Fehler auftreten. So können Sie beispielsweise die Taskplanung auf dem Knoten deaktivieren und sich [per Remotezugriff anmelden](#connecting-to-compute-nodes), um die Ereignisprotokolle des Knotens zu prüfen oder andere Schritte zur Problembehandlung auszuführen. Nach Abschluss der Prüfung können Sie den Knoten wieder online schalten, indem Sie die Taskplanung ([REST][rest_online] | [.NET][net_online]) aktivieren oder eine andere der oben genannten Aktionen durchführen.
 
 > [!IMPORTANT]
-> With each action that is described in this section--reboot, reimage, remove, and disable task scheduling--you are able to specify how tasks currently running on the node are handled when you perform the action. For example, when you disable task scheduling on a node by using the Batch .NET client library, you can specify a [DisableComputeNodeSchedulingOption][net_offline_option] enum value to specify whether to **Terminate** running tasks, **Requeue** them for scheduling on other nodes, or allow running tasks to complete before performing the action (**TaskCompletion**).
+> Bei jeder der in diesem Abschnitt beschriebenen Aktionen (Neustart, Reimaging und Deaktivieren der Taskplanung) können Sie festlegen, wie mit auf dem Knoten ausgeführten Tasks verfahren werden soll, wenn Sie die Aktion durchführen. Wenn Sie also etwa auf einem Knoten mit der Batch .NET-Clientbibliothek die Taskplanung deaktivieren, können Sie durch das Festlegen des Enumerationswerts [DisableComputeNodeSchedulingOption][net_offline_option] angeben, ob ausgeführte Tasks **beendet**, für die Planung auf anderen Knoten **wieder in eine Warteschlange eingereiht** oder vor dem Ausführen der Aktion abgeschlossen werden sollen (**TaskCompletion**).
 >
 >
 
-## <a name="next-steps"></a>Next steps
-* Learn about the [Batch APIs and tools](batch-apis-tools.md) available for building Batch solutions.
-* Learn the basics of developing a Batch-enabled application using the [Batch .NET client library](quick-run-dotnet.md) or [Python](quick-run-python.md). These quickstarts guide you through a sample application that uses the Batch service to execute a workload on multiple compute nodes, and includes using Azure Storage for workload file staging and retrieval.
-* Download and install [Batch Explorer][batch_labs] for use while you develop your Batch solutions. Use Batch Explorer to help create, debug, and monitor Azure Batch applications. 
-* See community resources including [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), the [Batch Community repo](https://github.com/Azure/Batch), and the [Azure Batch forum][batch_forum] on MSDN. 
+## <a name="next-steps"></a>Nächste Schritte
+* Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
+* Informieren Sie sich über die Grundlagen der Entwicklung einer Batch-fähigen Anwendung mit der [Batch-.NET-Clientbibliothek](quick-run-dotnet.md) oder mit [Python](quick-run-python.md). In diesen Schnellstarts werden Sie durch eine Beispielanwendung geführt, die den Batch-Dienst zum Ausführen einer Workload auf mehreren Computeknoten verwendet und Azure Storage zum Bereitstellen und Abrufen von Workloaddateien nutzt.
+* Laden Sie für die Entwicklung von Batch-Lösungen [Batch Explorer][batch_labs] herunter, und installieren Sie es. Mit Batch Explorer können Sie Azure Batch-Anwendungen erstellen, debuggen und überwachen. 
+* Sehen Sie sich die Communityressourcen an, z.B. [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), das [Batch-Community-Repository](https://github.com/Azure/Batch) und das [Azure Batch-Forum][batch_forum] auf der MSDN-Website. 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

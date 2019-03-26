@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell pricing | Microsoft Docs
-description: Overview of pricing of Azure Cloud Shell
+title: Preise für Azure Cloud Shell | Microsoft-Dokumentation
+description: Übersicht über die Preise für Azure Cloud Shell
 services: ''
 documentationcenter: ''
 author: maertendMSFT
@@ -21,13 +21,13 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/02/2019
 ms.locfileid: "57244977"
 ---
-# <a name="pricing"></a>Pricing
-Bash in Cloud Shell and PowerShell in Cloud Shell are subject to information below.
+# <a name="pricing"></a>Preise
+Die folgenden Informationen gelten für Bash in Azure Cloud Shell und für PowerShell in Azure Cloud Shell.
 
-## <a name="compute-cost"></a>Compute Cost
-Azure Cloud Shell runs on a machine provided for free by Azure, but requires an Azure file share to use. 
+## <a name="compute-cost"></a>Computekosten
+Azure Cloud Shell wird auf einem kostenlos von Azure bereitgestellten Computer ausgeführt, erfordert aber die Verwendung einer Azure-Dateifreigabe. 
 
-## <a name="storage-cost"></a>Storage Cost
-Cloud Shell requires a new or existing Azure Files share to be mounted to persist files across sessions. Storage incurs regular costs.
+## <a name="storage-cost"></a>Speicherkosten
+Cloud Shell erfordert die Einbindung einer neuen oder vorhandenen Azure Files-Freigabe, damit Dateien sitzungsübergreifend erhalten bleiben. Bei der Speicherung fallen laufende Kosten an.
 
-Check [here for details on Azure Files costs](https://azure.microsoft.com/pricing/details/storage/files/). 
+Klicken Sie [hier, um Informationen zu den Kosten für Azure Files zu erhalten](https://azure.microsoft.com/pricing/details/storage/files/). 
