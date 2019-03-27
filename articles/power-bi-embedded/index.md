@@ -1,6 +1,6 @@
 ---
-title: Dokumentation für Power BI Embedded – Tutorials, API-Referenz | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Power BI-Datenvisualisierungen und interaktive Berichte in Apps einbetten. Tutorials, API-Referenzen und anderes Dokumentationsmaterial.
+title: 'Dokumentation für Power BI Embedded – Tutorials, API-Referenz | Microsoft-Dokumentation'
+description: 'Hier erfahren Sie, wie Sie Power BI-Datenvisualisierungen und interaktive Berichte in Apps einbetten. Tutorials, API-Referenzen und anderes Dokumentationsmaterial.'
 services: power-bi-embedded
 author: markingmyname
 ms.author: maghan
@@ -9,13 +9,8 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: 051b7d725a121b3160e8a572c5fab91e8289f44b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678235"
 ---
+
 # <a name="power-bi-embedded-documentation"></a>Dokumentation zu Power BI Embedded
 
 Hier erfahren Sie, wie Sie Anwendungen mithilfe von Power BI Embedded Datenvisualisierungen und interaktive Berichte hinzufügen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Power BI-Berichte und -Dashboards nahtlos in Apps einbetten.
@@ -105,7 +100,7 @@ Hier erfahren Sie, wie Sie Anwendungen mithilfe von Power BI Embedded Datenvisua
                 <div class="card">
                     <div class="cardText">
                         <h3>PowerShell</h3>
-                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/?view=azurermps-6.5.0#power_bi_embedded_capacity">PowerShell</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/#power_bi_embedded_capacity">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -116,7 +111,7 @@ Hier erfahren Sie, wie Sie Anwendungen mithilfe von Power BI Embedded Datenvisua
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Sprachen</h3>
+                        <h3>Languages</h3>
                         <p><a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.powerbiembedded?view=azure-dotnet">.NET</a></p>
                         <p><a href="https://www.nuget.org/packages/Microsoft.PowerBI.Api/">.NET SDK-Download</a></p>
                         <p><a href="https://microsoft.github.io/PowerBI-JavaScript/">JavaScript</a></p>
