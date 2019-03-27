@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 62675df9f440df77d1098d5c89bd6810349fb3af
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118083"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Tutorial: Kopieren von Daten in eine Azure Data Box über SMB
 
@@ -41,7 +41,8 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Je nach ausgewähltem Speicherkonto erstellt Data Box bis zu:
 - Drei Freigaben für jedes verknüpfte Speicherkonto für GPv1 und GPv2
-- Eine Freigabe für ein Premium- oder BLOB-Speicherkonto
+- Eine Freigabe für Storage Premium. 
+- Eine Freigabe für ein Blobspeicherkonto. 
 
 Unter Blockblob- und Seitenblobfreigaben sind Entitäten der ersten Ebene Container, und Entitäten der zweiten Ebene sind Blobs. Unter Freigaben für Azure Files sind Entitäten erster Ebene Freigaben. Entitäten zweiter Ebene sind Dateien.
 
@@ -195,8 +196,8 @@ Das folgende Beispiel zeigt die Ausgabe des Robocopy-Befehls zum Kopieren von Da
 Verwenden Sie zum Optimieren der Leistung die folgenden Robocopy-Parameter beim Kopieren der Daten.
 
 |    Plattform    |    Überwiegend kleine Dateien < 512 KB                           |    Überwiegend mittelgroße Dateien 512 KB – 1 MB                      |    Überwiegend große Dateien > 1 MB                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 Robocopy-Sitzungen <br> 16 Threads pro Sitzung    |    3 Robocopy-Sitzungen <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen <br> 24 Threads pro Sitzung    |  |
+|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+|    Data Box         |    2 Robocopy-Sitzungen <br> 16 Threads pro Sitzung    |    3 Robocopy-Sitzungen <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen <br> 24 Threads pro Sitzung    |
 
 
 Weitere Informationen zum Robocopy-Befehl finden Sie unter [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy und einige Beispiele).

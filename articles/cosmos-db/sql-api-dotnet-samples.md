@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: sngun
-ms.openlocfilehash: 5d80c0a8464a9672859a3fbd305bbd4ab322b092
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c777aba4c12acef18c1e53833e19b24839f13fb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037088"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993363"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-Beispiele für die SQL-API
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Außerdem benötigen Sie das [Microsoft.Azure.DocumentDB-NuGet-Paket](https://ww
 > 
 
 ## <a name="database-examples"></a>Datenbankbeispiele
-Die Methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) des Beispiels für das DatabaseManagement-Projekt veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
+Die Methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) des Beispiels für das DatabaseManagement-Projekt veranschaulicht, wie Sie die folgenden Aufgaben durchführen. Um mehr über die Azure Cosmos-Datenbanken zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie die Konzeptartikel [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -59,7 +59,7 @@ Die Methode [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/b
 | [Löschen einer Datenbank](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L118) |[DocumentClient.DeleteDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedatabaseasync.aspx) |
 
 ## <a name="collection-examples"></a>Sammlungsbeispiele
-Die Methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) des CollectionManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
+Die Methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) des CollectionManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen. Um mehr über die Azure Cosmos-Sammlungen zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie die Konzeptartikel [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -71,7 +71,7 @@ Die Methode [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet
 | [Löschen einer Sammlung](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L175) |[DocumentClient.DeleteDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync.aspx) |
 
 ## <a name="document-examples"></a>Dokumentbeispiele
-Die Methode [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) des DocumentManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
+Die Methode [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) des DocumentManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen. Um mehr über die Azure Cosmos-Dokumenten zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie die Konzeptartikel [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -87,13 +87,12 @@ Die Methode [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/
 | [Lesen eines Dokuments, nur wenn das Dokument geändert wurde](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L442-L470) |[DocumentClient.AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx)<br>[Documents.Client.AccessConditionType](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accessconditiontype.aspx) |
 
 ## <a name="indexing-examples"></a>Indizierungsbeispiele
-Die Methode [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) des IndexManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
+Die Methode [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) des IndexManagement-Beispielprojekts veranschaulicht, wie Sie die folgenden Aufgaben durchführen. Um mehr über die Indizierung in Azure Cosmos DB zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie die Konzeptartikel [Indizierungsrichtlinien](index-policy.md), [Indizierungstypen](index-types.md) und [Indizierungspfade](index-paths.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |
 | [Ausschließen eines Dokuments aus dem Index](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) |[IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx) |
 | [Verwenden der manuellen Indizierung (anstatt automatisch)](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L171-L209) |[IndexingPolicy.Automatic](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.automatic.aspx) |
-| [Verwenden der verzögerten Indizierung (anstatt konsistent)](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L221-L238) |[IndexingMode.Lazy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.indexingmode.aspx#P:Microsoft.Azure.Documents.IndexingPolicy.IndexingMode) |
 | [Ausschließen von angegebenen Dokumentpfaden aus dem Index](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L248-L297) |[IndexingPolicy.ExcludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.excludedpaths.aspx) |
 | [Erzwingen eines Bereichsscanvorgangs auf einem Pfad mit Hashindizierung](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L305-L340) |[FeedOptions.EnableScanInQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx) |
 | [Verwenden von Bereichsindizes in Zeichenfolgen](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L342-L405) |[IndexingPolicy.IncludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.includedpaths.aspx)<br>[RangeIndex](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.rangeindex.aspx) |
@@ -102,7 +101,8 @@ Die Methode [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob
 Weitere Informationen zur Indizierung finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](index-policy.md).
 
 ## <a name="geospatial-examples"></a>Geodatenbeispiele
-Die Geodaten-Beispieldatei [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen.  
+Die Geodaten-Beispieldatei [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen.  Um mehr über die GeoJSON- und Geodaten zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie die Konzeptartikel [Gewusst wie: Verwenden von Geodaten und GeoJSON-Standortdaten](geospatial.md). 
+
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -116,7 +116,7 @@ Die Geodaten-Beispieldatei [azure-documentdb-dotnet/samples/code-samples/Geospat
 Weitere Informationen zum Verwenden von Geodaten finden Sie unter [Arbeiten mit Geodaten in Azure Cosmos DB](geospatial.md).  
 
 ## <a name="query-examples"></a>Abfragebeispiele
-Die Abfragedokumentdatei [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben jeweils mit der SQL-Abfragegrammatik, dem LINQ-Anbieter mit Abfrage und mit Lambda durchführen.
+Die Abfragedokumentdatei [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben jeweils mit der SQL-Abfragegrammatik, dem LINQ-Anbieter mit Abfrage und mit Lambda durchführen. Um mehr über die SQL-Abfrage-Referenz in Azure Cosmos DB zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie den Konzeptartikel [SQL-Abfragebeispiele](how-to-sql-query.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -138,7 +138,8 @@ Die Abfragedokumentdatei [azure-documentdb-dotnet/samples/code-samples/Queries/P
 Weitere Informationen zum Schreiben von Abfragen finden Sie unter [SQL-Abfragen für Azure Cosmos DB-DocumentDB-API](how-to-sql-query.md).
 
 ## <a name="change-feed-examples"></a>Beispiel für einen Änderungsfeed 
-Das ChangeFeed-Beispiel [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen. 
+Das ChangeFeed-Beispiel [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen. Um mehr über Änderungsfeeds in Azure Cosmos DB zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie die Konzeptartikel [Optionen zum Lesen von Änderungsfeeds](read-change-feed.md) und [Ändern des Feedprozessors](change-feed-processor.md). 
+
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -148,7 +149,7 @@ Das ChangeFeed-Beispiel [azure-documentdb-dotnet/samples/code-samples/ChangeFeed
 Das Beispiel für den Änderungsfeedprozessor  [Change Feed Migration Tool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) (Änderungsfeed-Migrationstool) veranschaulicht, wie Sie die Prozessorbibliothek für Änderungsfeeds zum Replizieren von Daten in einer anderen Cosmos DB-Sammlung verwenden.   
 
 ## <a name="server-side-programming-examples"></a>Serverseitige Programmierbeispiele
-Die Datei [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) für die serverseitige Programmierung veranschaulicht, wie Sie die folgenden Aufgaben durchführen.
+Die Datei [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) für die serverseitige Programmierung veranschaulicht, wie Sie die folgenden Aufgaben durchführen. Um mehr über die serverseitige Programmierung in Azure Cosmos DB zu erfahren, bevor Sie die folgenden Beispiele ausführen, lesen Sie den Konzeptartikel [Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen](stored-procedures-triggers-udfs.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |

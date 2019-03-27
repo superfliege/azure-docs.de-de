@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994953"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Erste Schritte mit dem Knowledge Exploration Service
 
@@ -64,7 +64,7 @@ Weitere Informationen zur Schemadefinition finden Sie unter [Schemaformat](Schem
 
 ## <a name="generate-data"></a>Generieren von Daten
 
-Die Datendatei beschreibt die Liste der zu indizierenden Veröffentlichungen, wobei jede Zeile die Attributwerte eines Dokuments im [JSON-Format](http://json.org/) angibt.  Das folgende Beispiel ist eine einzelne, zur besseren Lesbarkeit formatierte Zeile aus der Datendatei *Academic.data*:
+Die Datendatei beschreibt die Liste der zu indizierenden Veröffentlichungen, wobei jede Zeile die Attributwerte eines Dokuments im [JSON-Format](https://json.org/) angibt.  Das folgende Beispiel ist eine einzelne, zur besseren Lesbarkeit formatierte Zeile aus der Datendatei *Academic.data*:
 
 ```
 ...
@@ -207,7 +207,7 @@ Sobald Sie über eine XML-Grammatikspezifikation verfügen, können Sie sie mith
 
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>Hosten von Grammatik und Index in einem Webdienst
 
-Für die schnelle Prototyperstellung können Sie mithilfe von [`kes.exe host_service`](CommandLine.md#host_service-command) Grammatik und Index auf dem lokalen Computer in einem Webdienst hosten. Anschließend können Sie zum Überprüfen von Datenrichtigkeit und Grammatikentwurf über [Web-APIs](WebAPI.md) auf den Dienst zugreifen. In diesem Beispiel hosten Sie die Grammatikdatei *Academic.grammar* und die Indexdatei *Academic.index* auf http://localhost:8000/. Verwenden Sie den folgenden Befehl:
+Für die schnelle Prototyperstellung können Sie mithilfe von [`kes.exe host_service`](CommandLine.md#host_service-command) Grammatik und Index auf dem lokalen Computer in einem Webdienst hosten. Anschließend können Sie zum Überprüfen von Datenrichtigkeit und Grammatikentwurf über [Web-APIs](WebAPI.md) auf den Dienst zugreifen. In diesem Beispiel hosten Sie die Grammatikdatei *Academic.grammar* und die Indexdatei *Academic.index* auf `http://localhost:8000/`. Verwenden Sie den folgenden Befehl:
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 

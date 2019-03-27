@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 2/5/2019
-ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 3/14/2019
+ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994339"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Tutorial: Erfassen von Daten in Azure Data Explorer ohne jeglichen Code
 
@@ -38,29 +38,44 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Azure Monitor-Datenanbieter: Diagnose- und Aktivitätsprotokolle
 
-Hier können Sie die Daten anzeigen, die von den Diagnose- und Aktivitätsprotokollen von Azure Monitor bereitgestellt werden, und sich damit vertraut machen. Basierend auf diesen Datenschemas erstellen wir eine Erfassungspipeline.
+Unten können Sie die Daten anzeigen, die von den Diagnose- und Aktivitätsprotokollen von Azure Monitor bereitgestellt werden, und sich damit vertraut machen. Basierend auf diesen Datenschemas erstellen wir eine Erfassungspipeline. Beachten Sie, dass jedes Ereignis in einem Protokoll ein Array von Datensätzen enthält. Dieses Array von Datensätzen wird später im Tutorial aufgeteilt.
 
 ### <a name="diagnostic-logs-example"></a>Beispiel für Diagnoseprotokolle
 
-Bei Azure-Diagnoseprotokollen handelt es sich um Metriken, die von einem Azure-Dienst ausgegeben werden und Daten zum Betrieb dieses Diensts liefern. Daten werden mit einem Aggregationsintervall von einer Minute aggregiert. Jedes Ereignis in einem Diagnoseprotokoll enthält einen Datensatz. Hier ist ein Beispiel für ein Azure Data Explorer-Metrikereignisschema zur Abfragedauer angegeben:
+Bei Azure-Diagnoseprotokollen handelt es sich um Metriken, die von einem Azure-Dienst ausgegeben werden und Daten zum Betrieb dieses Diensts liefern. Daten werden mit einem Aggregationsintervall von einer Minute aggregiert. Hier ist ein Beispiel für ein Azure Data Explorer-Metrikereignisschema zur Abfragedauer angegeben:
 
 ```json
 {
-    "count": 14,
-    "total": 0,
-    "minimum": 0,
-    "maximum": 0,
-    "average": 0,
-    "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
-    "time": "2018-12-20T17:00:00.0000000Z",
-    "metricName": "QueryDuration",
-    "timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    },
+    {
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    }
+    ]
 }
 ```
 
 ### <a name="activity-logs-example"></a>Beispiel für Aktivitätsprotokoll
 
-Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die eine Sammlung mit Datensätzen enthalten. Die Protokolle liefern Erkenntnisse zu den Vorgängen, die für Ressourcen Ihres Abonnements durchgeführt wurden. Im Gegensatz zu Diagnoseprotokollen verfügt jedes Ereignis eines Aktivitätsprotokolls über ein Array mit Datensätzen. Zu einem späteren Zeitpunkt des Tutorials müssen wir dieses Array aufteilen. Hier ist ein Beispiel für ein Aktivitätsprotokollereignis zur Überprüfung des Zugriffs angegeben:
+Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die einen Einblick in die Vorgänge geben, die mit Ressourcen in Ihrem Abonnement ausgeführt werden. Hier ist ein Beispiel für ein Aktivitätsprotokollereignis zur Überprüfung des Zugriffs angegeben:
 
 ```json
 {
@@ -129,6 +144,8 @@ Wählen Sie in Azure Data Explorer für *TestDatabase* die Option **Abfrage**, u
 
 ### <a name="create-the-target-tables"></a>Erstellen der Zieltabellen
 
+Die Struktur der Azure Monitor-Protokolle ist nicht tabellarisch. Sie bearbeiten die Daten und erweitern jedes Ereignis auf einen oder mehrere Datensätze. Die Rohdaten werden in eine Zwischentabelle namens *ActivityLogsRawRecords* für Aktivitätsprotokolle und *DiagnosticLogsRawRecords* für Diagnoseprotokolle aufgenommen. Die Daten werden nun bearbeitet und erweitert. Mithilfe einer Updaterichtlinie werden die erweiterten Daten dann in die Tabelle *ActivityLogsRecords* für Aktivitätsprotokolle und *DiagnosticLogsRecords* für Diagnoseprotokolle aufgenommen. Das bedeutet, dass Sie zwei separate Tabellen für das Erfassen von Aktivitätsprotokollen und zwei separate Tabellen für das Erfassen von Diagnoseprotokollen erstellen müssen.
+
 Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabellen in der Azure Data Explorer-Datenbank zu erstellen.
 
 #### <a name="the-diagnostic-logs-table"></a>Tabelle für Diagnoseprotokolle
@@ -143,9 +160,13 @@ Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabelle
 
     ![Abfrage ausführen](media/ingest-data-no-code/run-query.png)
 
-#### <a name="the-activity-logs-tables"></a>Tabellen für Aktivitätsprotokolle
+1. Erstellen Sie die Zwischendatentabelle *DiagnosticLogsRawRecords* in der *TestDatabase*-Datenbank für die Datenbearbeitung mit der folgenden Abfrage. Wählen Sie **Ausführen**, um die Tabelle zu erstellen.
 
-Da die Struktur von Aktivitätsprotokollen nicht tabellarisch ist, müssen Sie die Daten bearbeiten und jedes Ereignis auf mindestens einen Datensatz erweitern. Die Rohdaten werden in einer Zwischentabelle mit dem Namen *ActivityLogsRawRecords* erfasst. Die Daten werden nun bearbeitet und erweitert. Die erweiterten Daten werden anschließend mit einer Updaterichtlinie in der Tabelle *ActivityLogsRecords* erfasst. Dies bedeutet, dass Sie zwei separate Tabellen für das Erfassen von Aktivitätsprotokollen erstellen müssen.
+    ```kusto
+    .create table DiagnosticLogsRawRecords (Records:dynamic)
+    ```
+
+#### <a name="the-activity-logs-tables"></a>Tabellen für Aktivitätsprotokolle
 
 1. Erstellen Sie eine Tabelle mit dem Namen *ActivityLogsRecords* in der Datenbank *TestDatabase*, um Aktivitätsprotokoll-Datensätze zu erhalten. Führen Sie zum Erstellen der Tabelle die folgende Azure Data Explorer-Abfrage aus:
 
@@ -174,7 +195,7 @@ Da die Struktur von Aktivitätsprotokollen nicht tabellarisch ist, müssen Sie d
 Verwenden Sie die folgende Abfrage, um die Daten der Diagnoseprotokolle der Tabelle zuzuordnen:
 
 ```kusto
-.create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
+.create table DiagnosticLogsRawRecords ingestion json mapping 'DiagnosticLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
 #### <a name="table-mapping-for-activity-logs"></a>Tabellenzuordnung für Aktivitätsprotokolle
@@ -185,9 +206,11 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-the-update-policy-for-activity-logs-data"></a>Erstellen der Updaterichtlinie für die Daten der Aktivitätsprotokolle
+### <a name="create-the-update-policy-for-log-data"></a>Erstellen der Updaterichtlinie für Protokolldaten
 
-1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Datensatzsammlung so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Verwenden Sie den Operator [`mvexpand`](/azure/kusto/query/mvexpandoperator):
+#### <a name="activity-log-data-update-policy"></a>Updaterichtlinie für Aktivitätsprotokolldaten
+
+1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Sammlung an Aktivitätsprotokolldatensätzen so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Verwenden Sie den Operator [`mvexpand`](/azure/kusto/query/mvexpandoperator):
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -212,6 +235,32 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    ```
+
+#### <a name="diagnostic-log-data-update-policy"></a>Updaterichtlinie für Diagnoseprotokolldaten
+
+1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Sammlung an Diagnoseprotokolldatensätzen so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Verwenden Sie den Operator [`mvexpand`](/azure/kusto/query/mvexpandoperator):
+     ```kusto
+    .create function DiagnosticLogRecordsExpand() {
+        DiagnosticLogsRawRecords
+        | mvexpand events = Records
+        | project
+            Timestamp = todatetime(events["time"]),
+            ResourceId = tostring(events["resourceId"]),
+            MetricName = tostring(events["metricName"]),
+            Count = toint(events["count"]),
+            Total = todouble(events["total"]),
+            Minimum = todouble(events["minimum"]),
+            Maximum = todouble(events["maximum"]),
+            Average = todouble(events["average"]),
+            TimeGrain = tostring(events["timeGrain"])
+    }
+    ```
+
+2. Fügen Sie die [Updaterichtlinie](/azure/kusto/concepts/updatepolicy) der Zieltabelle hinzu. Mit dieser Richtlinie wird die Abfrage automatisch für alle neu erfassten Daten in der Zwischentabelle *DiagnosticLogsRawRecords* ausgeführt, und die Ergebnisse werden in der Tabelle *DiagnosticLogsRecords* erfasst:
+
+    ```kusto
+    .alter table DiagnosticLogsRecords policy update @'[{"Source": "DiagnosticLogsRawRecords", "Query": "DiagnosticLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Erstellen eines Azure Event Hubs-Namespace
@@ -252,12 +301,12 @@ Wählen Sie eine Ressource aus, für die Metriken exportiert werden sollen. Mehr
     ![Diagnoseeinstellungen](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. Der Bereich **Diagnoseeinstellungen** wird geöffnet. Führen Sie die folgenden Schritte aus:
-    1. Geben Sie den Diagnoseprotokolldaten den Namen *ADXExportedData*.
-    1. Aktivieren Sie unter **METRIC** das Kontrollkästchen **AllMetrics** (optional).
-    1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**.
-    1. Wählen Sie **Konfigurieren**aus.
+   1. Geben Sie den Diagnoseprotokolldaten den Namen *ADXExportedData*.
+   1. Aktivieren Sie unter **METRIC** das Kontrollkästchen **AllMetrics** (optional).
+   1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**.
+   1. Wählen Sie **Konfigurieren**aus.
 
-    ![Bereich „Diagnoseeinstellungen“](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![Bereich „Diagnoseeinstellungen“](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. Konfigurieren Sie im Bereich **Event Hub auswählen**, wie Daten aus Diagnoseprotokollen auf den von Ihnen erstellten Event Hub exportiert werden sollen:
     1. Wählen Sie in der Liste **Event Hub-Namespace auswählen** die Option *AzureMonitoringData*.
@@ -330,7 +379,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnose- und Aktivitätsprotoko
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | **Tabelle** | *DiagnosticLogsRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Tabelle** | *DiagnosticLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
     | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
     | **Spaltenzuordnung** | *DiagnosticLogsRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *DiagnosticLogsRecords* zugeordnet werden.|
     | | |
@@ -400,6 +449,7 @@ ActivityLogsRecords
 ```
 
 Abfrageergebnisse:
+
 |   |   |
 | --- | --- |
 |   |  avg(DurationMs) |

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 3/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 288a6e1b1d88fcef6fbd5554ba811acc1dab776e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633723"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994253"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -54,7 +54,7 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 
 Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
 
-1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** > **Hinzufügen**.
 3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **Test-FW-RG** ein.
 4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
@@ -110,7 +110,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 5. Wählen Sie unter **Eingangsports auswählen** die Option **RDP (3389)** aus.
 
 6. Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Weiter: Datenträger**.
-7. Übernehmen Sie die Datenträger-Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
+7. Übernehmen Sie die Standardwerte für die Datenträger, und klicken Sie auf **Weiter: Netzwerk** aus.
 8. Stellen Sie sicher, dass als virtuelles Netzwerk **Test-FW-VN** und als Subnetz **Jump-SN** ausgewählt ist.
 9. Klicken Sie unter **Öffentliche IP** auf **Neu erstellen**.
 10. Geben Sie als Namen für die öffentliche IP-Adresse **Srv-Jump-PIP** ein, und klicken Sie auf **OK**.
@@ -143,7 +143,7 @@ Stellen Sie die Firewall im VNET bereit.
    |Abonnement     |\<Ihr Abonnement\>|
    |Ressourcengruppe     |**Vorhandene verwenden**: Test-FW-RG |
    |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
-   |Virtuelles Netzwerk auswählen     |**Vorhandenes verwenden**: Test-FW-VN|
+   |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: Test-FW-VN|
    |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 
 5. Klicken Sie auf **Überprüfen + erstellen**.
@@ -235,12 +235,12 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer **Srv-Jump** her, und öffnen Sie dort eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**.
 
-3. Navigieren Sie in Internet Explorer zu http://msn.com.
+3. Navigieren Sie in Internet Explorer zu https://msn.com.
 4. Klicken Sie in den Sicherheitswarnungen auf **OK** > **Schließen**.
 
    Daraufhin sollte die MSN-Startseite angezeigt werden.
 
-5. Navigieren Sie zu http://www.msn.com.
+5. Navigieren Sie zu https://www.msn.com.
 
    Sie sollten durch die Firewall blockiert werden.
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a9e5b00ad84a57f49303f2e6f9389b4791fd0f60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58166945"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
 
@@ -91,7 +91,7 @@ Darüber hinaus benötigen Sie eine _Dienstverbindungszeichenfolge_, damit die B
 **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 Notieren Sie sich die Dienstverbindungszeichenfolge, die wie folgt aussieht:
@@ -115,6 +115,13 @@ Die Geräte-SDK-Beispielanwendung kann auf einem physischen Android-Gerät oder 
     ```
 
 3. Klicken Sie in Android Studio auf **File** > **Sync Project with Gradle Files** (Datei > Projekt mit Gradle-Dateien synchronisieren). Vergewissern Sie sich, dass der Buildvorgang abgeschlossen wurde.
+
+   > [!NOTE]
+   > Wenn bei der Synchronisierung des Projekts ein Fehler auftritt, kann einer der folgenden Gründe infrage kommen:
+   >
+   > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Befolgen Sie [diese Anweisungen](https://developer.android.com/studio/releases/gradle-plugin), um die richtigen Versionen des Plug-Ins und von Gradle für Ihre Installation zu installieren und auf sie zu verweisen.
+   > * Der Lizenzvertrag für das Android SDK wurde nicht signiert. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu signieren, und laden Sie das SDK herunter.
+
 
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).
 
@@ -163,6 +170,13 @@ Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt
     ```
 
 3. Klicken Sie in Android Studio auf **File** > **Sync Project with Gradle Files** (Datei > Projekt mit Gradle-Dateien synchronisieren). Vergewissern Sie sich, dass der Buildvorgang abgeschlossen wurde.
+
+   > [!NOTE]
+   > Wenn bei der Synchronisierung des Projekts ein Fehler auftritt, kann einer der folgenden Gründe infrage kommen:
+   >
+   > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Befolgen Sie [diese Anweisungen](https://developer.android.com/studio/releases/gradle-plugin), um die richtigen Versionen des Plug-Ins und von Gradle für Ihre Installation zu installieren und auf sie zu verweisen.
+   > * Der Lizenzvertrag für das Android SDK wurde nicht signiert. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu signieren, und laden Sie das SDK herunter.
+
 
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem separaten physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).
 

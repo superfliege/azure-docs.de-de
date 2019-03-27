@@ -10,19 +10,17 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/27/2018
+ms.date: 03/05/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9f548fbb9611b6d4b16efe5c4d26db73d85c9654
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c9cdac53e43d57feb0d2dc5a8a7153dc05be8a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882296"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170631"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
 
@@ -59,6 +57,13 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
+
+    Wenn Sie das Azure PowerShell-Az-Modul installiert haben, benötigen Sie zwei zusätzliche Schalter:
+
+    ```powershell
+    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease -AllowClobber -Force
+    ```
+
 * [Microsoft Azure Storage-Explorer.](https://azure.microsoft.com/features/storage-explorer/) Azure Storage-Explorer ist zwar nicht zwingend erforderlich, macht aber vieles einfacher.
 
 ## <a name="understand-the-scenario"></a>Das Szenario
@@ -204,9 +209,6 @@ Der folgende Screenshot zeigt Teile der Diensttopologie, Dienste und Diensteinhe
 - **dependsOn:** Alle Diensttopologieressourcen hängen von der Artefaktquellressource ab.
 - **artifacts** verweist auf die Vorlagenartefakte.  Hier werden relative Pfade verwendet. Der vollständige Pfad ist eine Verkettung aus „artifactSourceSASLocation“ (in der Artefaktquelle definiert), „artifactRoot“ (in der Artefaktquelle definiert) und „templateArtifactSourceRelativePath“ (oder „parametersArtifactSourceRelativePath“).
 
-> [!NOTE]
-> Die Diensteinheitennamen dürfen maximal 31 Zeichen lang sein. 
-
 ### <a name="topology-parameters-file"></a>Topologieparameterdatei
 
 Sie erstellen eine Parameterdatei, die mit der Topologievorlage verwendet wird.
@@ -276,7 +278,7 @@ Sie erstellen eine Parameterdatei, die mit der Rolloutvorlage verwendet wird.
 2. Füllen Sie die Parameterwerte aus:
 
     - **namePrefix**: Geben Sie eine Zeichenfolge mit vier bis fünf Zeichen ein. Dieses Präfix dient zur Erstellung eindeutiger Azure-Ressourcennamen.
-    - **azureResourceLocation**: Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in USA, Mitte oder **USA, Osten 2** erstellt werden.
+    - **azureResourceLocation**: Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
     - **artifactSourceSASLocation**: Geben Sie den SAS-URI des Stammverzeichnisses (Blobcontainer) ein, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
     - **binaryArtifactRoot**: Verwenden Sie in diesem Tutorial **binaries/1.0.0.0**, es sei denn, Sie möchten die Ordnerstruktur der Artefakte ändern.
     - **managedIdentityID**: Geben Sie die benutzerseitig zugewiesene verwaltete Identität ein. Weitere Informationen finden Sie unter [Erstellen der benutzerseitig zugewiesenen verwalteten Identität](#create-the-user-assigned-managed-identity). Die Syntax ist:
@@ -294,13 +296,13 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 1. Führen Sie das Skript aus, um die Diensttopologie bereitzustellen.
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
     
     # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
     
     # Create the service topology
     New-AzureRmResourceGroupDeployment `
@@ -317,7 +319,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 3. <a id="deploy-the-rollout-template"></a>Bereitstellen der Rolloutvorlage:
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     # Create the rollout
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
@@ -327,19 +329,60 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 4. Überprüfen Sie den Rolloutstatus mithilfe des folgenden PowerShell-Skripts:
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
-        -Name $rolloutName
+        -Name $rolloutName `
+        -Verbose
     ```
 
-    Die PowerShell-Cmdlets für den Bereitstellungs-Manager müssen installiert sein, um dieses Cmdlet ausführen zu können. Siehe „Voraussetzungen“.
+    Die PowerShell-Cmdlets für den Bereitstellungs-Manager müssen installiert sein, um dieses Cmdlet ausführen zu können. Siehe „Voraussetzungen“. Der -Verbose-Schalter kann verwendet werden, um die gesamte Ausgabe anzuzeigen.
 
     Das folgende Beispiel zeigt den Ausführungsstatus:
     
     ```
+    VERBOSE: 
+    
+    Status: Succeeded
+    ArtifactSourceId: /subscriptions/<AzureSubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout
+    BuildVersion: 1.0.0.0
+    
+    Operation Info:
+        Retry Attempt: 0
+        Skip Succeeded: False
+        Start Time: 03/05/2019 15:26:13
+        End Time: 03/05/2019 15:31:26
+        Total Duration: 00:05:12
+    
+    Service: adm0925ServiceEUS
+        TargetLocation: EastUS
+        TargetSubscriptionId: <AzureSubscriptionID>
+    
+        ServiceUnit: adm0925ServiceEUSStorage
+            TargetResourceGroup: adm0925ServiceEUSrg
+    
+            Step: Deploy
+                Status: Succeeded
+                StepGroup: stepGroup3
+                Operation Info:
+                    DeploymentName: 2F535084871E43E7A7A4CE7B45BE06510adm0925ServiceEUSStorage
+                    CorrelationId: 0b6f030d-7348-48ae-a578-bcd6bcafe78d
+                    Start Time: 03/05/2019 15:26:32
+                    End Time: 03/05/2019 15:27:41
+                    Total Duration: 00:01:08
+                Resource Operations:
+    
+                    Resource Operation 1:
+                    Name: txq6iwnyq5xle
+                    Type: Microsoft.Storage/storageAccounts
+                    ProvisioningState: Succeeded
+                    StatusCode: OK
+                    OperationId: 64A6E6EFEF1F7755
+
+    ...
+
     ResourceGroupName       : adm0925rg
     BuildVersion            : 1.0.0.0
     ArtifactSourceId        : /subscriptions/<SubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout

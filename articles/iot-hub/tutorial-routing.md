@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cc3f7c72acc0723c522b595ea106f72947e9d014
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 87d0339de117330bf6d586cd653b0d4d16a8cbca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087702"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub
 
@@ -144,7 +144,7 @@ echo "Service Bus namespace = " $sbNameSpace
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
-    
+
 # The Service Bus queue name must be globally unique, so add a random number to the end.
 sbQueueName=ContosoSBQueue$RANDOM
 echo "Service Bus queue name = " $sbQueueName
@@ -276,7 +276,7 @@ Sie leiten Nachrichten an verschiedene Ressourcen weiter, abhängig von Eigensch
 
 Richten Sie jetzt die Weiterleitung für das Speicherkonto ein. Wechseln Sie zum Bereich „Nachrichtenrouting“, und fügen Sie eine Route hinzu. Definieren Sie beim Hinzufügen der Route einen neuen Endpunkt für die Route. Nach der Einrichtung werden Nachrichten, deren **level**-Eigenschaft auf **storage** festgelegt wurde, automatisch in ein Speicherkonto geschrieben. 
 
-Die Daten werden im Avro-Format in den Blobspeicher geschrieben.
+Die Daten werden standardmäßig im Avro-Format in den Blobspeicher geschrieben.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressourcengruppen**, und wählen Sie dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. 
 
@@ -301,8 +301,9 @@ Die Daten werden im Avro-Format in den Blobspeicher geschrieben.
    > 
    > Bei Verwendung des Standardformats für Blobdateinamen sieht der Blobname beispielsweise wie folgt aus, wenn der Hubname „ContosoTestHub“ lautet und als Datum bzw. Uhrzeit „30. Oktober 2018 um 10:56 Uhr“ verwendet wird: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > Die Blobs werden im Avro-Format geschrieben.
-   >
+   > Die Blobs werden standardmäßig im Avro-Format geschrieben. Sie können wahlweise Dateien im JSON-Format schreiben. Die Funktion zum Codieren im JSON-Format ist in allen Regionen in der Vorschauphase, in denen IoT Hub verfügbar ist – mit Ausnahme von „USA, Osten“ und „Europa, Westen“. Siehe [Azure Blob Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+   > 
+   > Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover-preview) in Zusammenhang mit IoT Hub ändern. Informationen zur Aufzählung der Listen von Blobs finden Sie unter [Azure Blob Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
 8. Klicken Sie auf **Erstellen**, um den Speicherendpunkt zu erstellen und der Route hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**.
 
@@ -311,15 +312,15 @@ Die Daten werden im Avro-Format in den Blobspeicher geschrieben.
    **Name**: Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **StorageRoute** verwendet.
 
    **Endpunkt**: Zeigt den Endpunkt an, den Sie gerade eingerichtet haben. 
-   
+
    **Datenquelle**: Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
 
    **Route aktivieren**: Achten Sie darauf, dass diese Option aktiviert ist.
-   
+
    **Routingabfrage**: Geben Sie `level="storage"` als Abfragezeichenfolge ein. 
 
    ![Screenshot zum Erstellen einer Routingabfrage für das Speicherkonto](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
-   
+
    Klicken Sie auf **Speichern**. Wenn der Speichervorgang abgeschlossen ist, werden Sie wieder zum Bereich „Nachrichtenrouting“ geleitet, in dem Sie Ihre neue Routingabfrage für die Speicherung anzeigen können. Schließen Sie den Bereich „Routen“. Daraufhin werden Sie wieder zur Seite der Ressourcengruppe geleitet.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Weiterleitung in eine Service Bus-Warteschlange 
@@ -337,14 +338,14 @@ Richten Sie jetzt die Weiterleitung für die Service Bus-Warteschlange ein. Wech
 4. Füllen Sie die Felder aus:
 
    **Endpunktname**: Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **CriticalQueue** verwendet.
-   
+
    **Service Bus-Namespace**: Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden. Wählen Sie den Service Bus-Namespace aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **ContosoSBNamespace** verwendet.
 
    **Service Bus-Warteschlange**: Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden und die Service Bus-Warteschlange auszuwählen. In diesem Tutorial wird **contososbqueue** verwendet.
 
 5. Klicken Sie auf **Erstellen**, um den Endpunkt für die Service Bus-Warteschlange hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**. 
 
-6.  Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an die Service Bus-Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
+6. Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an die Service Bus-Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
 
    **Name**: Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **SBQueueRoute** verwendet. 
 
@@ -401,7 +402,7 @@ Die Service Bus-Warteschlange sollte zum Empfangen von als kritisch eingestuften
    ![Screenshot: Einrichten der Verbindung für die Service Bus-Warteschlange](./media/tutorial-routing/logic-app-define-connection.png)
 
    Klicken Sie auf den Service Bus-Namespace. In diesem Tutorial wird **ContosoSBNamespace** verwendet. Wenn Sie den Namespace auswählen, fragt das Portal den Service Bus-Namespace ab, um die Schlüssel zu erhalten. Wählen Sie **RootManageSharedAccessKey** aus, und klicken Sie auf **Erstellen**. 
-   
+
    ![Screenshot: Abschließen der Verbindungseinrichtung](./media/tutorial-routing/logic-app-finish-connection.png)
 
 6. Wählen Sie im nächsten Bildschirm aus der Dropdownliste den Namen der Warteschlange (in diesem Tutorial wird **contososbqueue** verwendet). Für die restlichen Felder können Sie die Standardwerte verwenden. 
@@ -442,9 +443,9 @@ Um die Daten in einer Power BI-Visualisierung anzuzeigen, richten Sie zuerst ein
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Hinzufügen einer Eingabe zum Stream Analytics-Auftrag
 
-4. Klicken Sie unter **Auftragstopologie** auf **Eingaben**.
+1. Klicken Sie unter **Auftragstopologie** auf **Eingaben**.
 
-5. Klicken Sie im Bereich **Eingaben** auf **Datenstromeingabe hinzufügen**, und wählen Sie „IoT Hub“ aus. Füllen Sie im daraufhin angezeigten Bildschirm die folgenden Felder aus:
+1. Klicken Sie im Bereich **Eingaben** auf **Datenstromeingabe hinzufügen**, und wählen Sie „IoT Hub“ aus. Füllen Sie im daraufhin angezeigten Bildschirm die folgenden Felder aus:
 
    **Eingabealias**: In diesem Tutorial wird **contosoinputs** verwendet.
 
@@ -457,12 +458,12 @@ Um die Daten in einer Power BI-Visualisierung anzuzeigen, richten Sie zuerst ein
    **Name der SAS-Richtlinie**: Wählen Sie **iothubowner** aus. Das Portal füllt den Schlüssel für die Richtlinie für den gemeinsamen Zugriff für Sie aus.
 
    **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie zuvor erstellt haben. In diesem Tutorial wird **contosoconsumers** verwendet.
-   
+
    Übernehmen Sie in den restlichen Feldern die Standardwerte. 
 
    ![Screenshot: Einrichten der Eingaben für den Stream Analytics-Auftrag](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-6. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Hinzufügen einer Ausgabe zum Stream Analytics-Auftrag
 
@@ -631,4 +632,4 @@ In diesem Tutorial haben Sie erfahren, wie Sie die Nachrichtenweiterleitung verw
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Status eines IoT-Geräts verwalten. 
 
 > [!div class="nextstepaction"]
-[Tutorial: Set up and use metrics and diagnostic logs with an IoT hub](tutorial-use-metrics-and-diags.md) (Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub)
+> [Tutorial: Set up and use metrics and diagnostic logs with an IoT hub](tutorial-use-metrics-and-diags.md) (Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub)

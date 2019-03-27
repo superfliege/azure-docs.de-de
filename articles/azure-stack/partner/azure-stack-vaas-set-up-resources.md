@@ -10,44 +10,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 55c9120547472bb9a9a74533fe532d346844e89c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593233"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081762"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Tutorial: Einrichten von Ressourcen für Validation-as-a-Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Sie müssen eine Lösung erstellen. Eine VaaS-Lösung (Validation-as-a-Service) stellt eine Azure Stack-Lösung mit einer bestimmten Hardwareliste dar. Mithilfe der Lösung überprüfen Sie, ob Ihre Hardware die Ausführung von Azure Stack unterstützt. Führen Sie die Schritte in diesem Tutorial aus, um die Verwendung des Diensts mit Ihrer Lösung vorzubereiten.
+Validation-as-a-Service (VaaS) ist ein Azure-Dienst, mit dem Azure Stack-Lösungen auf dem Markt validiert und unterstützt werden. Lesen Sie diesen Artikel, bevor Sie mit dem Dienst Ihre Lösung validieren.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Einrichten der Azure Active Directory-Instanz (Azure AD), um die Verwendung von VaaS vorzubereiten
+> * Vorbereitung auf die Verwendung von VaaS durch Einrichten Ihrer Azure Active Directory-Instanz (AD).
 > * Erstellen Sie ein Speicherkonto.
 
 ## <a name="configure-an-azure-ad-tenant"></a>Konfigurieren eines Azure AD-Mandanten
 
-Für die Authentifizierung und Registrierung bei VaaS ist ein Azure AD-Mandant erforderlich. Die Funktionen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) des Mandanten werden vom Partner verwendet, um die zur Verwendung von VaaS berechtigten Benutzer in der Partnerorganisation zu verwalten.
-
-Registrieren Sie das Azure AD-Mandantenverzeichnis der Organisation (und nicht das für Azure Stack verwendete Azure AD-Mandantenverzeichnis), und definieren Sie eine Richtlinie für die Verwaltung der darin enthaltenen Benutzerkonten. Weitere Informationen finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](https://docs.microsoft.com/azure/active-directory/active-directory-administer).
+Ein Azure AD-Mandant wird dazu verwendet, eine Organisation zu registrieren und Benutzer bei VaaS zu authentifizieren. Der Partner verwendet die Funktionen zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) des Mandanten, um die zur Verwendung von VaaS berechtigten Benutzer in der Partnerorganisation zu verwalten. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis).
 
 ### <a name="create-a-tenant"></a>Erstellen eines Mandanten
 
-Erstellen Sie zur Verwendung mit VaaS einen speziellen Mandanten mit einem aussagekräftigen Namen wie `ContosoVaaS@onmicrosoft.com`.
+Erstellen Sie einen Mandanten, mit dem Ihre Organisation auf VaaS-Dienste zugreift. Verwenden Sie einen aussagekräftigen Namen, z.B. `ContosoVaaS@onmicrosoft.com`.
 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen Azure AD-Mandanten, oder verwenden Sie einen vorhandenen Mandanten. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
 2. Fügen Sie Mitglieder Ihrer Organisation zum Mandanten hinzu. Diese Benutzer sind für das Anzeigen oder Planen von Tests mithilfe des Diensts verantwortlich. Nach Abschluss der Registrierung legen Sie die Zugriffsebene der Benutzer fest.
- 
+
     Weisen Sie den Benutzern in Ihrem Mandanten eine der folgenden Rollen zu, um die Ausführung von Aktionen in VaaS für sie zu autorisieren:
 
     | Rollenname | BESCHREIBUNG |
@@ -58,13 +56,13 @@ Erstellen Sie zur Verwendung mit VaaS einen speziellen Mandanten mit einem aussa
 
     So weisen Sie Rollen in der Anwendung **Azure Stack Validation Service** (Azure Stack-Validierungsdienst) zu:
 
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-    2. Wählen Sie im Abschnitt **Identität** die Optionen **Alle Dienste** > **Azure Active Directory** aus.
-    3. Klicken Sie auf **Unternehmensanwendungen** > **Azure Stack Validation Service** (Azure Stack-Validierungsdienst).
-    4. Wählen Sie **Benutzer und Gruppen**. Auf dem Blatt **Azure Stack Validation Service– Users and group** (Azure Stack-Validierungsdienst – Benutzer und Gruppe) sind die zur Verwendung der Anwendung berechtigten Benutzer aufgeführt.
-    5. Wählen Sie **+ Benutzer hinzufügen**, um einen Benutzer aus Ihrem Mandanten hinzuzufügen und eine Rolle zuzuweisen.
-   
-    Wenn Sie VaaS-Ressourcen und Aktionen in verschiedenen Gruppen innerhalb einer Organisation isolieren möchten, können Sie mehrere Azure AD-Mandantenverzeichnisse erstellen.
+   1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+   2. Wählen Sie im Abschnitt **Identität** die Optionen **Alle Dienste** > **Azure Active Directory** aus.
+   3. Klicken Sie auf **Unternehmensanwendungen** > **Azure Stack Validation Service** (Azure Stack-Validierungsdienst).
+   4. Wählen Sie **Benutzer und Gruppen**. Auf dem Blatt **Azure Stack Validation Service– Users and group** (Azure Stack-Validierungsdienst – Benutzer und Gruppe) sind die zur Verwendung der Anwendung berechtigten Benutzer aufgeführt.
+   5. Wählen Sie **+ Benutzer hinzufügen**, um einen Benutzer aus Ihrem Mandanten hinzuzufügen und eine Rolle zuzuweisen.
+
+      Wenn Sie VaaS-Ressourcen und Aktionen in verschiedenen Gruppen innerhalb einer Organisation isolieren möchten, können Sie mehrere Azure AD-Mandantenverzeichnisse erstellen.
 
 ### <a name="register-your-tenant"></a>Registrieren Ihres Mandanten
 
@@ -102,10 +100,7 @@ Das Azure Storage-Konto wird in der öffentlichen Azure-Cloud und nicht in Ihrer
 
 3. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie einen Namen für die neue Ressourcengruppe ein.
 
-4. Geben Sie einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss folgende Eigenschaften aufweisen:
-    - Er muss in Azure eindeutig sein.
-    - Er muss zwischen 3 und 24 Zeichen lang sein.
-    - Er darf nur Ziffern und Kleinbuchstaben enthalten.
+4. Informieren Sie sich über die [Benennungskonventionen](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#storage) für Azure Storage-Konten. Geben Sie einen Namen für Ihr Speicherkonto ein.
 
 5. Wählen Sie die Region **USA, Westen** für Ihr Speicherkonto aus.
 
@@ -119,7 +114,7 @@ Das Azure Storage-Konto wird in der öffentlichen Azure-Cloud und nicht in Ihrer
     - Das Feld **Replikation** ist standardmäßig auf **Lokal redundanter Speicher (LRS)** festgelegt.
     - Das Feld **Zugriffsebene** ist standardmäßig auf **Heiß** festgelegt.
 
-7. Klicken Sie auf **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
+7. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

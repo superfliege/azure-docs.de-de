@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
-ms.openlocfilehash: 138df4aa0a0e23bd97bca960573cc0971b66b869
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3f19c442d0f5806147ee05b3f0d2d32740a8ecdd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041406"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121739"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC-Tutorial: Entwicklung von Webanwendungen mit Azure Cosmos DB
 
@@ -64,7 +64,7 @@ Im Folgenden wird erläutert, wie eine neue ASP.NET MVC-Anwendung von Grund auf 
 
 2. Erweitern Sie im Bereich **Projekttypen** die Einträge **Vorlagen**, **Visual C#** und **Web**, und wählen Sie dann **ASP.NET-Webanwendung** aus.
 
-      ![Screenshot des Dialogfelds "Neues Projekt", bei dem der Projekttyp der ASP.NET-Webanwendung hervorgehoben ist](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
+      ![Screenshot des Dialogfelds „Neues Projekt“, bei dem der Projekttyp der ASP.NET-Webanwendung hervorgehoben ist](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
 
 3. Geben Sie im Feld **Name** den Namen des Projekts ein. In diesem Lernprogramm wird der Name "Todo" (Aufgabe) verwendet. Wenn Sie einen anderen Namen verwenden, müssen Sie immer dann, wenn im Lernprogramm der Todo-Namespace genannt wird, die bereitgestellten Codebeispiele auf den von Ihnen verwendeten Namen für Ihre Anwendung ändern. 
 4. Klicken Sie auf **Durchsuchen**, um zu dem Ordner zu navigieren, in dem Sie das Projekt erstellen möchten, und klicken Sie dann auf **OK**.
@@ -86,7 +86,7 @@ Da nun ein Großteil des für diese Lösung benötigten ASP.NET MVC-Frameworks s
 
 1. Das Azure Cosmos DB .NET SDK wird als NuGet-Paket verteilt. Verwenden Sie zum Abrufen des NuGet-Pakets in Visual Studio den NuGet-Paket-Manager in Visual Studio, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt klicken und dann auf **NuGet-Pakete verwalten** klicken.
    
-    ![Screenshot der Kontextmenüoptionen für das Webanwendungsprojekt im Projektmappen-Explorer mit Hervorhebung von „NuGet-Pakete verwalten“](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
+    ![Screenshot der Kontextmenüoptionen für das Webanwendungsprojekt im Projektmappen-Explorer, bei dem „NuGet-Pakete verwalten“ hervorgehoben ist.](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
     Das Dialogfeld **NuGet-Pakete verwalten** wird geöffnet.
 2. Geben Sie im NuGet-Feld **Durchsuchen** den Suchbegriff ***Azure DocumentDB*** ein. (Der Paketname wurde nicht für Azure Cosmos DB aktualisiert.)
@@ -155,14 +155,14 @@ Das **M** ist damit abgedeckt, und nun wird das **C** (eine Controllerklasse) in
     Das Dialogfeld **Gerüst hinzufügen** wird angezeigt.
 2. Wählen Sie **MVC 5-Controller – Leer** aus, und klicken Sie dann auf **Hinzufügen**.
    
-    ![Screenshot des Dialogfelds "Gerüst hinzufügen", bei dem die Option "MVC 5-Controller - Leer" hervorgehoben ist](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+    ![Screenshot des Dialogfelds „Gerüst hinzufügen“, bei dem die Option „MVC 5-Controller – Leer“ hervorgehoben ist](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
 3. Geben Sie dem neuen Controller den Namen **ItemController.**
    
-    ![Screenshot des Dialogfelds "Controller hinzufügen"](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
+    ![Screenshot des Dialogfelds „Controller hinzufügen“](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
    
     Nachdem die Datei erstellt wurde, sollte die Visual Studio-Projektmappe ungefähr wie folgt aussehen, und die neue Datei "ItemController.cs" sollte im **Projektmappen-Explorer**angezeigt werden. Die neue Item.cs-Datei, die zuvor erstellt wurde, wird ebenfalls angezeigt.
    
-    ![Screenshot der Visual Studio-Projektmappe - Projektmappen-Explorer, in dem die neue ItemController.cs-Datei und die Item.cs-Datei hervorgehoben sind](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
+    ![Screenshot der Visual Studio-Projektmappe – Projektmappen-Explorer, in dem die neue ItemController.cs-Datei und die Item.cs-Datei hervorgehoben sind](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
    
     Sie können ItemController.cs schließen, darauf kommen wir zu einem späteren Zeitpunkt zurück. 
 
@@ -176,7 +176,7 @@ Nun wird das **V** in MVC erstellt, die Ansichten (Views):
 #### <a name="AddItemIndexView"></a>Hinzufügen einer Elementindexansicht
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf den leeren Ordner **Item**, der zuvor beim Hinzufügen des **ItemController**-Elements von Visual Studio erstellt wurde, und klicken Sie auf **Hinzufügen** und dann auf **Ansicht**.
    
-    ![Screenshot des Projektmappen-Explorers, in dem der von Visual Studio erstellte Ordner "Element" gezeigt wird und die Befehle "Hinzufügen" > "Ansicht" hervorgehoben sind](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
+    ![Screenshot des Projektmappen-Explorers, in dem der von Visual Studio erstellte Ordner „Element“ gezeigt wird und die Befehle „Hinzufügen“ > „Ansicht“ hervorgehoben sind](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
 2. Gehen Sie im Dialogfeld **Ansicht hinzufügen** folgendermaßen vor:
    
    * Geben Sie im Feld **Ansichtsname** den Namen ***Index*** ein.
@@ -184,7 +184,7 @@ Nun wird das **V** in MVC erstellt, die Ansichten (Views):
    * Wählen Sie im Feld **Modellklasse** die Option ***Item (todo.Models)*** aus.
    * Geben Sie im Feld für die Layoutseite ***~/Views/Shared/_Layout.cshtml*** ein.
      
-   ![Screenshot des Dialogfelds "Ansicht hinzufügen"](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
+   ![Screenshot des Dialogfelds „Ansicht hinzufügen“](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
 3. Wenn alle Werte festgelegt sind, klicken Sie auf **Hinzufügen** , und Visual Studio erstellt eine neue Vorlagenansicht. Wenn dies abgeschlossen ist, wird die erstellte CSHTML-Datei geöffnet. Diese Datei kann in Visual Studio geschlossen werden, da wir erst später darauf zurückkommen.
 
 #### <a name="AddNewIndexView"></a>Hinzufügen einer neuen Elementansicht
@@ -369,7 +369,7 @@ Wenn Sie jetzt die Anwendung ausführen, wird Ihr **ItemController** aufgerufen.
 
 Wenn Sie dieses Projekt jetzt erstellen und ausführen, sollte ein Ergebnis ähnlich dem folgenden angezeigt werden.    
 
-![Screenshot der in diesem Datenbanklernprogramm erstellten Aufgabenliste-Webanwendung](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
+![Screenshot der in diesem Datenbanktutorial erstellten Aufgabenliste-Webanwendung](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
 
 ### <a name="_Toc395637771"></a>Hinzufügen von Elementen
 Als Nächstes werden einige Elemente zur Datenbank hinzugefügt, damit mehr als eine leere Tabelle angezeigt wird.
@@ -496,21 +496,21 @@ Um die Anwendung lokal zu testen, führen Sie die folgenden Schritte aus:
 
 1. Drücken Sie in Visual Studio F5 , um die Anwendung im Debugmodus zu erstellen. Die Anwendung sollte erstellt, und ein Browser mit der zuvor angezeigten leeren Rasterseite sollte geöffnet werden:
    
-    ![Screenshot der in diesem Datenbanklernprogramm erstellten Aufgabenliste-Webanwendung](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+    ![Screenshot der in diesem Datenbanktutorial erstellten Aufgabenliste-Webanwendung](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
    
      
 2. Klicken Sie auf den Link **Neu erstellen**, und fügen Sie Werte in die Felder **Name** und **Beschreibung** ein. Lassen Sie das Kontrollkästchen **Abgeschlossen** deaktiviert, da das neue hinzugefügte **Element** sonst den Status „Abgeschlossen“ hat und nicht in der Anfangsliste erscheint.
    
-    ![Screenshot der Ansicht "Erstellen"](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
+    ![Screenshot der Ansicht „Erstellen“](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
 3. Klicken Sie auf **Erstellen**. Sie werden zur Ansicht **Index** zurückgeleitet, und Ihr **Element** wird in der Liste angezeigt.
    
-    ![Screenshot der Ansicht "Index"](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
+    ![Screenshot der Ansicht „Index“](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
    
     Sie können weitere **Elemente** zu Ihrer "Todo"-Liste hinzufügen.
     
 4. Wenn Sie auf **Bearbeiten** neben einem **Element** in der Liste klicken, werden Sie zur Ansicht **Edit** weitergeleitet, in der Sie beliebige Eigenschaften Ihres Objekts aktualisieren können, einschließlich der Markierung als **Abgeschlossen**. Wenn Sie das Flag **Abgeschlossen** markieren und auf **Speichern** klicken, wird das **Element** aus der Liste der nicht abgeschlossenen Aufgaben entfernt.
    
-    ![Screenshot der Ansicht "Index" mit dem Feld "Abgeschlossen" aktiviert](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
+    ![Screenshot der Ansicht „Index“ mit aktiviertem Feld „Abgeschlossen“](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. Nachdem Sie die App getestet haben, drücken Sie STRG+F5, um das Debuggen der App zu beenden. Jetzt können Sie Ihre App bereitstellen.
 
 ## <a name="_Toc395637774"></a>Schritt 7: Bereitstellen der Anwendung in Azure App Service 
@@ -518,7 +518,7 @@ Nachdem die vollständige Anwendung korrekt mit Azure Cosmos DB zusammenarbeitet
 
 1. Zum Veröffentlichen der Anwendung müssen Sie lediglich im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt klicken und **Veröffentlichen** wählen.
    
-    ![Screenshot der Option "Veröffentlichen" im Projektmappen-Explorer](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
+    ![Screenshot der Option „Veröffentlichen“ im Projektmappen-Explorer](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
 
 2. Klicken Sie im Dialogfeld **Veröffentlichen** auf **Microsoft Azure App Service**, und wählen Sie dann **Neu erstellen** aus, um ein App Service-Profil zu erstellen, oder klicken Sie auf **Vorhandenes auswählen**, um ein vorhandenes Profil zu verwenden.
 
@@ -541,7 +541,6 @@ Glückwunsch! Sie haben soeben Ihre erste ASP.NET MVC-Webanwendung unter Verwend
 
 Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, können Sie sich die APIs in der [Azure Cosmos DB .NET-Bibliothek](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) ansehen. Sie können auch gerne eigene Beiträge zur Azure Cosmos DB .NET-Bibliothek auf [GitHub][GitHub] schreiben. 
 
-[\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
 [Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254

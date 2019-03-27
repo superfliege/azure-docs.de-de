@@ -1,20 +1,20 @@
 ---
 title: Einrichten einer Cloud für den Azure IoT Hub Device Provisioning-Dienst im Portal | Microsoft-Dokumentation
 description: Automatische IoT Hub-Gerätebereitstellung im Azure-Portal
-author: sethmanheim
-ms.author: sethm
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 971b00f54d59782d5aa7ca752fc06e490d372760
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170733"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 
@@ -83,7 +83,7 @@ Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub z
 
     * **Abonnement:** Stellen Sie sicher, dass das Abonnement mit der IoT Hub-Instanz ausgewählt ist. Sie können eine Verknüpfung mit einer IoT Hub-Instanz erstellen, die in einem anderen Abonnement enthalten ist.
 
-    * **IoT Hub:** Wählen Sie den Namen der IoT Hub-Instanz aus, die Sie mit dieser Device Provisioning Service-Instanz verknüpfen möchten.
+    * **IoT Hub**: Wählen Sie den Namen der IoT Hub-Instanz aus, die Sie mit dieser Device Provisioning-Dienst-Instanz verknüpfen möchten.
 
     * **Zugriffsrichtlinie:** Wählen Sie **iothubowner** als Anmeldeinformationen zum Erstellen der Verknüpfung mit der IoT Hub-Instanz aus.
 
@@ -95,9 +95,9 @@ Die Zuordnungsrichtlinie ist eine Einstellung des IoT Hub Device Provisioning-Di
 
 1. **Niedrigste Latenz**: Geräte werden basierend auf dem Hub mit der geringsten Latenz auf dem Gerät für eine IoT Hub-Instanz bereitgestellt.
 
-2. **Gleichmäßig gewichtete Verteilung** (Standard): Bei verknüpften IoT Hubs ist die Wahrscheinlichkeit gleich hoch, dass ihnen Geräte bereitgestellt werden. Dies ist die Standardeinstellung. Wenn Sie nur für eine IoT Hub-Instanz Geräte bereitstellen, können Sie diese Einstellung beibehalten. 
+2. **Gleichmäßig gewichtete Verteilung** (Standard): Bei verknüpften IoT Hubs ist die Wahrscheinlichkeit gleich hoch, dass Geräte für sie bereitgestellt werden. Dies ist die Standardeinstellung. Wenn Sie nur für eine IoT Hub-Instanz Geräte bereitstellen, können Sie diese Einstellung beibehalten. 
 
-3. **Statische Konfiguration über die Registrierungsliste**: Die Angabe der gewünschten IoT Hub-Instanz in der Registrierungsliste hat gegenüber der Zuordnungsrichtlinie auf Ebene des Device Provisioning-Diensts Vorrang.
+3. **Statische Konfiguration per Registrierungsliste**: Die Angabe der gewünschten IoT Hub-Instanz in der Registrierungsliste hat gegenüber der Zuordnungsrichtlinie auf Ebene des Device Provisioning-Diensts Vorrang.
 
 Klicken Sie zum Festlegen der Zuordnungsrichtlinie auf der Seite „Device Provisioning-Dienst“ auf **Zuordnungsrichtlinie verwalten**. Stellen Sie sicher, dass die Zuordnungsrichtlinie auf **Gleichmäßig gewichtete Verteilung** (Standard) festgelegt ist. Wenn Sie Änderungen vornehmen, klicken Sie danach auf **Speichern**.
 

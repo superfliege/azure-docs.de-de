@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ebc9b83c3aa135c90f18ff982621e862cb01d72
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890745"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -60,7 +60,7 @@ Ausführungsverläufe heißen jetzt **Experimente**. Sie können die Experimente
 
 Das Arbeitsbereich-Dashboard im Portal wird nur in den Browsern Microsoft Edge, Chrome und Firefox unterstützt:
 
-[![Onlineportal](./media/overview-what-happened-to-workbench/image001.png)] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![Online-Portal](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 Beginnen Sie, Ihre Modelle mithilfe des neuen CLIs und SDKs zu trainieren und ihre Ausführungsverläufe mit diesen nachzuverfolgen. Wie das geht, können Sie mit dem [Tutorial: Trainieren von Modellen mit Azure Machine Learning Service](tutorial-train-models-with-aml.md) lernen.
 
@@ -68,7 +68,7 @@ Beginnen Sie, Ihre Modelle mithilfe des neuen CLIs und SDKs zu trainieren und ih
 
 Die vorhandenen Datenvorbereitungsdateien können nicht in die neueste Version portiert werden, da wir nicht mehr über die Machine Learning Workbench verfügen. Sie können jedoch weiterhin ein Dataset von beliebiger Größe für die Modellierung vorbereiten.   
 
-Für Datasets jeglicher Größe können Sie das [Azure Machine Learning Data Prep SDK](http://aka.ms/data-prep-sdk) verwenden, um Ihre Daten vor der Modellierung schnell vorzubereiten, indem Sie Python-Code schreiben. 
+Für Datasets jeglicher Größe können Sie das [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) verwenden, um Ihre Daten vor der Modellierung schnell vorzubereiten, indem Sie Python-Code schreiben. 
 
 Weitere Informationen zur Verwendung des Azure Machine Learning Data Prep SDK finden Sie in [diesem Tutorial](tutorial-data-prep.md).
 
@@ -84,7 +84,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 Informationen zum Einstieg in [Python mit dem Haupt-SDK](quickstart-create-workspace-with-python.md) oder zur Verwendung des [Azure-Portals](quickstart-get-started.md).
 
 ## <a name="what-about-my-registered-models-and-images"></a>Was geschieht mit meinen registrierten Modellen und Images?
- 
+
 Die Modelle, die Sie in Ihrer alten Modellregistrierung registriert haben, müssen zu Ihrem neuen Arbeitsbereich migriert werden, wenn Sie sie weiterhin verwenden möchten. Um Ihre Modelle zu migrieren, laden Sie die Modelle herunter, und registrieren Sie sie erneut in Ihrem neuen Arbeitsbereich. 
 
 Die Images, die Sie in Ihrer alten Imageregistrierung erstellt haben, müssen im neuen Arbeitsbereich neu erstellt werden, um weiterhin verwendet werden zu können. Sie können diese Images neu erstellen, indem Sie Vorgehensweisen in den Abschnitten zum [Konfigurieren und Erstellen eines Images](how-to-deploy-and-where.md#configureimage) befolgen. 
@@ -109,7 +109,7 @@ Wenn Sie das neue Python SDK in der neuesten Version verwenden, können Sie mit 
 
 In dieser aktuellen Version wurde die Erweiterung in Azure Machine Learning für Visual Studio Code umbenannt sowie erweitert und verbessert, um die zuvor genannten neuen Features zu unterstützen.
 
-[![Azure Machine Learning für Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[![Azure Machine Learning für Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Was ist über Domänenpakete zu sagen?
 

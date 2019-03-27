@@ -5,20 +5,20 @@ author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: devops
+ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901422"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
@@ -35,7 +35,7 @@ für eine [Bereitstellungsgruppe](https://docs.microsoft.com/azure/devops/pipeli
 > * Konfigurieren von Jenkins für die Azure DevOps Services-Integration
 > * Erstellen eines Jenkins-Dienstendpunkts
 > * Erstellen einer Bereitstellungsgruppe für die virtuellen Azure-Computer
-> * Erstellen einer Azure Pipelines-Releasepipeline
+> * Erstellen einer Azure Pipelines-Releasepipeline.
 > * Ausführen manueller und durch CI ausgelöster Bereitstellungen
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -60,7 +60,7 @@ Für dieses Tutorial empfiehlt sich [diese über GitHub verfügbare Beispiel-App
 Erstellen Sie einen Fork dieser App, und notieren Sie den Speicherort (URL) zur Verwendung in nachfolgenden Schritten in diesem Tutorial. Weitere Informationen finden Sie unter [Fork a repo](https://help.github.com/articles/fork-a-repo/) (Forken eines Repositorys).    
 
 > [!NOTE]
-> Die App wurde über [Yeoman](http://yeoman.io/learning/index.html) erstellt. Sie verwendet Express, Bower und Grunt. Darüber hinaus verfügt sie über einige npm-Pakete als Abhängigkeiten.
+> Die App wurde über [Yeoman](https://yeoman.io/learning/index.html) erstellt. Sie verwendet Express, Bower und Grunt. Darüber hinaus verfügt sie über einige npm-Pakete als Abhängigkeiten.
 > Die Beispiel-App enthält zudem ein Skript, über das Nginx eingerichtet und die App bereitgestellt wird. Es wird auf den virtuellen Computern ausgeführt. Das Skript führt folgende Aktionen aus:
 > 1. Es installiert Node, Nginx und PM2.
 > 2. Es konfiguriert Nginx und PM2.
@@ -141,7 +141,7 @@ Sie benötigen eine [Bereitstellungsgruppe](https://www.visualstudio.com/docs/bu
 8. Nach der Installation werden Sie aufgefordert, Bereitstellungsgruppenmarkierungen anzugeben. Übernehmen Sie die Standardeinstellungen.
 9. Suchen Sie den neu registrierten virtuellen Computer in Azure DevOps Services unter **Bereitstellungsgruppen** (in **Ziele**).
 
-## <a name="create-a-azure-pipelines-release-pipeline"></a>Erstellen einer Azure Pipelines-Releasepipeline
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Erstellen einer Azure Pipelines-Releasepipeline
 
 Eine Releasepipeline gibt den Prozess an, der in Azure Pipelines zum Bereitstellen der App verwendet wird. In diesem Beispiel führen Sie ein Shellskript aus.
 

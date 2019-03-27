@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 28c2d65e1b1858b653775b4b298c9ab3e1d31e6e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d8256f96a79969103b17047c4ebb55fb140eb0bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121110"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Erstellen einer Shopsuche mit Azure Maps
 
 In diesem Tutorial wird der Prozess für die Erstellung einer einfachen Shopsuche mit Azure Maps beschrieben. Shopsuchen werden häufig verwendet. Ein Großteil der Konzepte, die für diesen Anwendungstyp genutzt werden, gilt auch für viele andere Arten von Anwendungen. Die Bereitstellung einer Shopsuche für Kunden ist für die meisten Unternehmen unerlässlich, die Produkte direkt an Verbraucher verkaufen. In diesem Tutorial lernen Sie Folgendes:
     
 > [!div class="checklist"]
-* Erstellen einer neuen Webseite mit der Kartensteuerelement-API von Azure
-* Laden von benutzerdefinierten Daten aus einer Datei und Anzeigen auf einer Karte
-* Verwenden des Suchdiensts von Azure Maps zum Ermitteln einer Adresse oder Eingeben einer Abfrage
-* Abrufen des Standorts eines Benutzers im Browser und Anzeigen auf der Karte
-* Kombinieren von mehreren Ebenen zum Erstellen von benutzerdefinierten Symbolen auf der Karte  
-* Anordnen von Datenpunkten in Clustern  
-* Hinzufügen von Zoomsteuerelementen zur Karte
+> * Erstellen einer neuen Webseite mit der Kartensteuerelement-API von Azure
+> * Laden von benutzerdefinierten Daten aus einer Datei und Anzeigen auf einer Karte
+> * Verwenden des Suchdiensts von Azure Maps zum Ermitteln einer Adresse oder Eingeben einer Abfrage
+> * Abrufen des Standorts eines Benutzers im Browser und Anzeigen auf der Karte
+> * Kombinieren von mehreren Ebenen zum Erstellen von benutzerdefinierten Symbolen auf der Karte  
+> * Anordnen von Datenpunkten in Clustern  
+> * Hinzufügen von Zoomsteuerelementen zur Karte
 
 <a id="Intro"></a>
 
@@ -42,12 +42,16 @@ Für die Schritte in diesem Tutorial müssen Sie zuerst [Ihr Azure Maps-Konto er
 Bevor Sie in den Code einsteigen, ist es ratsam, mit einem Entwurf zu beginnen. Ihre Shopsuche kann so einfach oder komplex sein, wie Sie möchten. In diesem Tutorial erstellen wir eine einfache Shopsuche. Wir geben Ihnen im Laufe des Tutorials einige Tipps, damit Sie bei Bedarf einige Funktionen erweitern können. Wir erstellen eine Shopsuche für ein fiktives Unternehmen mit dem Namen Contoso Coffee. Die folgende Abbildung enthält ein Drahtmodell des allgemeinen Layouts für die Shopsuche, die wir in diesem Tutorial erstellen:
 
 <br/>
-<center>![Drahtmodell einer Shopsuche für die Coffee-Shops von Contoso Coffee](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+<center>
+
+![Drahtmodell einer Shopsuche für die Coffee-Shops von Contoso Coffee](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Zur Steigerung der Nützlichkeit dieser Shopsuche fügen wir ein dynamisches Layout ein, das angepasst wird, wenn die Bildschirmbreite eines Benutzers unter 700 Pixel liegt. Ein dynamisches Layout vereinfacht die Nutzung der Shopsuche auf einem kleinen Bildschirm, z.B. bei einem mobilen Gerät. Hier ist ein Drahtmodell eines Layouts für kleine Bildschirme dargestellt:  
 
 <br/>
-<center>![Drahtmodell der Contoso Coffee-Shopsuche auf einem mobilen Gerät](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+<center>
+
+![Drahtmodell der Contoso Coffee-Shopsuche auf einem mobilen Gerät](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Mit den Drahtmodellen wird eine relativ einfache Anwendung veranschaulicht. Die Anwendung enthält ein Suchfeld, eine Liste mit Shops in der Nähe, eine Karte mit Markern (Symbolen) und ein Popupfenster, in dem zusätzliche Informationen angezeigt werden, wenn der Benutzer einen Marker auswählt. Hier werden die Features der Shopsuche aus diesem Tutorial ausführlicher beschrieben:
 
@@ -70,7 +74,9 @@ Mit den Drahtmodellen wird eine relativ einfache Anwendung veranschaulicht. Die 
 Bevor wir eine Anwendung für die Shopsuche entwickeln, müssen wir ein Dataset mit den Shops erstellen, die auf der Karte angezeigt werden sollen. In diesem Tutorial verwenden wir ein Dataset für einen fiktiven Coffee-Shop mit dem Namen Contoso Coffee. Das Dataset für diese einfache Shopsuche wird in einer Excel-Arbeitsmappe verwaltet. Das Dataset enthält 10.213 Coffee-Shop-Standorte von Contoso Coffee in neun Ländern: USA, Kanada, Vereinigtes Königreich, Frankreich, Deutschland, Italien, Niederlande, Dänemark und Spanien. In diesem Screenshot ist dargestellt, wie die Daten aussehen:
 
 <br/>
-<center>![Screenshot: Daten für die Shopsuche in einer Excel-Arbeitsmappe](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+<center>
+
+![Screenshot: Daten für die Shopsuche in einer Excel-Arbeitsmappe](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
 Sie können die [Excel-Arbeitsmappe herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
@@ -90,12 +96,16 @@ Ein anderer Ansatz besteht darin, dieses Dataset in eine Textflatfile zu konvert
 Speichern Sie die Arbeitsmappe als Datei mit Tabstopp-Trennzeichen, um sie in eine Textflatfile zu konvertieren. Die einzelnen Spalten sind durch ein Tabstoppzeichen getrennt, damit sie in unserem Code leicht analysiert werden können. Sie können auch das CSV-Format mit Kommas als Trennzeichen verwenden, aber für diese Option ist ein höherer Anteil an Logik für die Analyse erforderlich. Jedes Feld, das über ein Komma verfügt, wird mit Fragezeichen umschlossen. Wählen Sie **Speichern unter**, um diese Daten als Datei mit Tabstopps als Trennzeichen nach Excel zu exportieren. Wählen Sie in der Dropdownliste **Dateityp** die Option **Text (durch Tabstopps getrennt) (*.txt)**. Geben Sie der Datei den Namen *ContosoCoffee.txt*. 
 
 <br/>
-<center>![Screenshot: Dialogfeld „Dateityp“](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+<center>
+
+![Screenshot: Dialogfeld „Dateityp“](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wie in der folgenden Abbildung:
 
 <br/>
-<center>![Screenshot: Editor-Datei mit einem Dataset mit Tabstopps als Trennzeichen](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+<center>
+
+![Screenshot: Editor-Datei mit einem Dataset mit Tabstopps als Trennzeichen](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>Einrichten des Projekts
@@ -103,7 +113,9 @@ Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wi
 Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html*, *index.css* und *index.js*. Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data*, und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images*. In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker in der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
 
 <br/>
-<center>![Screenshot: Projektordner für die einfache Shopsuche](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+<center>
+
+![Screenshot: Projektordner für die einfache Shopsuche](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
 ## <a name="create-the-user-interface"></a>Erstellen der Benutzeroberfläche
 
@@ -395,12 +407,12 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
 
 1. Fügen Sie der Datei *index.js* Code hinzu. Mit dem folgenden Code wird Folgendes durchgeführt: Die Karte wird initialisiert, es wird ein [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, der den Abschluss des Seitenladevorgangs abwartet, es werden Ereignisse zum Überwachen des Kartenladevorgangs eingerichtet, und die Grundlage für die Suchschaltfläche und die Schaltfläche zum Anzeigen des eigenen Standorts wird geschaffen. 
 
-  Wenn der Benutzer die Suchschaltfläche wählt oder nach dem Eingeben eines Standorts im Suchfeld die EINGABETASTE drückt, wird für die Abfrage des Benutzers eine Fuzzysuche initiiert. Übergeben Sie ein Array mit ISO 2-Länderwerten an die Option `countrySet`, um die Suchergebnisse für diese Länder zu begrenzen. Durch das Begrenzen der zu suchenden Länder kann die Genauigkeit der zurückgegebenen Ergebnisse erhöht werden. 
+   Wenn der Benutzer die Suchschaltfläche wählt oder nach dem Eingeben eines Standorts im Suchfeld die EINGABETASTE drückt, wird für die Abfrage des Benutzers eine Fuzzysuche initiiert. Übergeben Sie ein Array mit ISO 2-Länderwerten an die Option `countrySet`, um die Suchergebnisse für diese Länder zu begrenzen. Durch das Begrenzen der zu suchenden Länder kann die Genauigkeit der zurückgegebenen Ergebnisse erhöht werden. 
   
-  Verwenden Sie nach Abschluss der Suche das erste Ergebnis, und legen Sie die Kartenkamera auf diesen Bereich fest. Wenn der Benutzer die Schaltfläche zum Anzeigen des eigenen Standorts wählt, sollte die in den Browser integrierte HTML5 Geolocation API verwendet werden, um den Standort des Benutzers abzurufen und ihn als Mittelpunkt der Karte festzulegen.  
+   Verwenden Sie nach Abschluss der Suche das erste Ergebnis, und legen Sie die Kartenkamera auf diesen Bereich fest. Wenn der Benutzer die Schaltfläche zum Anzeigen des eigenen Standorts wählt, sollte die in den Browser integrierte HTML5 Geolocation API verwendet werden, um den Standort des Benutzers abzurufen und ihn als Mittelpunkt der Karte festzulegen.  
 
-  > [!Tip]
-  > Beim Verwenden von Popupfenstern ist es am besten, eine einzelne `Popup`-Instanz zu erstellen und diese wiederzuverwenden, indem Inhalt und Position aktualisiert werden. Für jede `Popup`-Instanz, die Sie Ihrem Code hinzufügen, werden der Seite mehrere DOM-Elemente hinzugefügt. Je mehr DOM-Elemente sich auf einer Seite befinden, desto mehr Elemente muss der Browser nachverfolgen. Wenn zu viele Elemente vorhanden sind, kann es sein, dass der Browser langsam wird.
+   > [!Tip]
+   > Beim Verwenden von Popupfenstern ist es am besten, eine einzelne `Popup`-Instanz zu erstellen und diese wiederzuverwenden, indem Inhalt und Position aktualisiert werden. Für jede `Popup`-Instanz, die Sie Ihrem Code hinzufügen, werden der Seite mehrere DOM-Elemente hinzugefügt. Je mehr DOM-Elemente sich auf einer Seite befinden, desto mehr Elemente muss der Browser nachverfolgen. Wenn zu viele Elemente vorhanden sind, kann es sein, dass der Browser langsam wird.
 
     ```Javascript
     function initialize() { 
@@ -542,7 +554,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
 
 1. Nachdem Sie das Dataset in den Ereignislistener `load` der Karte geladen haben, definieren Sie eine Gruppe mit Ebenen zum Rendern der Daten. Eine Blasenebene wird verwendet, um gruppierte Datenpunkte zu rendern. Eine Symbolebene wird zum Rendern der Anzahl von Punkten in jedem Cluster oberhalb der Blasenebene verwendet. Über eine zweite Symbolebene wird ein benutzerdefiniertes Symbol für einzelne Standorte auf der Karte gerendert. 
 
-  Fügen Sie die Ereignisse `mouseover` und `mouseout` der Blasen- und Symbolebene hinzu, damit sich der Mauszeiger ändert, wenn der Benutzer die Maus in der Karte auf einen Cluster oder ein Symbol bewegt. Fügen Sie der Clusterblasenebene das Ereignis `click` hinzu. Mit diesem `click`-Ereignis wird die Karte um zwei Zoomfaktoren vergrößert und ein Cluster in der Karte zentriert, wenn der Benutzer den Cluster auswählt. Fügen Sie der Symbolebene ein `click`-Ereignis hinzu. Mit diesem `click`-Ereignis wird ein Popupfenster angezeigt, in dem die Details zu einem Coffee-Shop eingeblendet werden, wenn ein Benutzer ein Symbol für einen Standort wählt. Fügen Sie der Karte ein Ereignis hinzu, um zu überwachen, wann die Verschiebung der Karte abgeschlossen ist. Aktualisieren Sie die Elemente im Listenbereich, wenn dieses Ereignis ausgelöst wird.  
+   Fügen Sie die Ereignisse `mouseover` und `mouseout` der Blasen- und Symbolebene hinzu, damit sich der Mauszeiger ändert, wenn der Benutzer die Maus in der Karte auf einen Cluster oder ein Symbol bewegt. Fügen Sie der Clusterblasenebene das Ereignis `click` hinzu. Mit diesem `click`-Ereignis wird die Karte um zwei Zoomfaktoren vergrößert und ein Cluster in der Karte zentriert, wenn der Benutzer den Cluster auswählt. Fügen Sie der Symbolebene ein `click`-Ereignis hinzu. Mit diesem `click`-Ereignis wird ein Popupfenster angezeigt, in dem die Details zu einem Coffee-Shop eingeblendet werden, wenn ein Benutzer ein Symbol für einen Standort wählt. Fügen Sie der Karte ein Ereignis hinzu, um zu überwachen, wann die Verschiebung der Karte abgeschlossen ist. Aktualisieren Sie die Elemente im Listenbereich, wenn dieses Ereignis ausgelöst wird.  
 
     ```Javascript
     //Create a bubble layer to render clustered data points. 
@@ -916,30 +928,36 @@ Sie verfügen jetzt über eine voll funktionsfähige Shopsuche. Öffnen Sie in e
 Bei der ersten Verwendung der Schaltfläche zum Anzeigen des eigenen Standorts durch einen Benutzer wird im Browser eine Sicherheitswarnung angezeigt und um die Zustimmung für den Zugriff auf den Standort des Benutzers gebeten. Wenn der Benutzer der Freigabe seines Standorts zustimmt, wird der Bereich mit dem Benutzerstandort in der Karte vergrößert, und die in der Nähe befindlichen Coffee-Shops werden angezeigt. 
 
 <br/>
-<center>![Screenshot: Anforderung des Zugriffs auf den Benutzerstandort im Browser](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+<center>
+
+![Screenshot: Anforderung des Zugriffs auf den Benutzerstandort im Browser](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Wenn Sie einen Bereich stark genug vergrößern, der Coffee-Shop-Standorte enthält, werden die Cluster in einzelne Standorte aufgeteilt. Wählen Sie eines der Symbole in der Karte aus, oder wählen Sie ein Element in der Seitenleiste aus, um ein Popupfenster anzuzeigen, in dem Informationen zum Standort angezeigt werden.
 
 <br/>
-<center>![Screenshot: Fertige Shopsuche](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+<center>
+
+![Screenshot: Fertige Shopsuche](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Wenn Sie die Größe des Browserfensters auf eine Breite von weniger als 700 Pixel verkleinern oder die Anwendung auf einem mobilen Gerät öffnen, ändert sich die Anzeige in ein Layout, das für kleinere Bildschirme besser geeignet ist. 
 
 <br/>
-<center>![Screenshot: Version der Shopsuche für kleinere Bildschirme](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+<center>
+
+![Screenshot: Version der Shopsuche für kleinere Bildschirme](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial wurde beschrieben, wie Sie mit Azure Maps eine einfache Shopsuche erstellen. Die in diesem Tutorial erstellte Shopsuche verfügt unter Umständen bereits über alle Funktionen, die Sie benötigen. Sie können der Shopsuche aber Features hinzufügen oder erweiterte Features verwenden, um eine benutzerdefinierte Benutzeroberfläche zu erzielen: 
 
 > [!div class="checklist"]
-* Aktivieren Sie im Suchfeld [Vorschläge während der Eingabe](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI).  
-* Fügen Sie [Unterstützung für mehrere Sprachen](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization) hinzu. 
-* Ermöglichen Sie für Benutzer das [Filtern von Standorten anhand einer Route](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-* Fügen Sie die Option zum [Festlegen von Filtern](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property) hinzu. 
-* Fügen Sie Unterstützung für das Angeben eines Anfangssuchwerts hinzu, indem Sie eine Abfragezeichenfolge verwenden. Wenn Sie diese Option in Ihre Shopsuche einfügen, können Benutzer Lesezeichen für Suchen festlegen und Suchvorgänge teilen. Außerdem ist dies eine einfache Methode, mit der Sie Suchen von einer anderen Seite an diese Seite übergeben können.  
-* Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html) bereit. 
-* Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
+> * Aktivieren Sie im Suchfeld [Vorschläge während der Eingabe](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI).  
+> * Fügen Sie [Unterstützung für mehrere Sprachen](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization) hinzu. 
+> * Ermöglichen Sie für Benutzer das [Filtern von Standorten anhand einer Route](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+> * Fügen Sie die Option zum [Festlegen von Filtern](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property) hinzu. 
+> * Fügen Sie Unterstützung für das Angeben eines Anfangssuchwerts hinzu, indem Sie eine Abfragezeichenfolge verwenden. Wenn Sie diese Option in Ihre Shopsuche einfügen, können Benutzer Lesezeichen für Suchen festlegen und Suchvorgänge teilen. Außerdem ist dies eine einfache Methode, mit der Sie Suchen von einer anderen Seite an diese Seite übergeben können.  
+> * Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html) bereit. 
+> * Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 Das Codebeispiel für dieses Tutorial finden Sie hier:
 

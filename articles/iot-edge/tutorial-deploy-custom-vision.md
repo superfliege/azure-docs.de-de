@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075827"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087158"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -22,13 +22,18 @@ Azure IoT Edge kann Workloads aus der Cloud an den Edge-Bereich verlagern und so
 
 So kann mit Custom Vision auf einem IoT Edge-Gerät beispielsweise ermittelt werden, ob das Verkehrsaufkommen auf einer Autobahn höher ist als normal oder ob in einem Parkhaus noch Parkplätze in einer Reihe frei sind. Diese Erkenntnisse können an einen anderen Dienst weitergegeben werden, um Aktionen auszuführen. 
 
-
 In diesem Tutorial lernen Sie Folgendes: 
 
 > [!div class="checklist"]
+>
 > * Erstellen einer Bildklassifizierung mit Custom Vision
 > * Entwickeln eines IoT Edge-Moduls, das den Custom Vision-Webserver auf Ihrem Gerät abfragt
 > * Senden der Ergebnisse der Bildklassifizierung an IoT Hub
+
+<center>
+
+![Architekturdiagramm des Tutorials: Staging und Bereitstellung der Klassifizierung](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +48,7 @@ Cloudressourcen:
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) mit Standardtarif in Azure. 
 * Eine Containerregistrierung. In diesem Tutorial wird [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) verwendet. 
-    * Sie müssen über die Anmeldeinformationen für das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) Ihrer Containerregistrierung verfügen.
+* Sie müssen über die Anmeldeinformationen für das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) Ihrer Containerregistrierung verfügen.
 
 Entwicklungsressourcen:
 

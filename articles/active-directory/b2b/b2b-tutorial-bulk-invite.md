@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 183a6ddf3fd47be552ba13ce42c1f6e29fca4410
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994615"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit
 
@@ -119,7 +119,7 @@ Um zu überprüfen, ob die eingeladenen Benutzer Azure AD hinzugefügt wurden, f
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-Die von Ihnen eingeladenen Benutzer sollten mit einem Benutzerprinzipalnamen (UPN) im Format *E-Mail-Adresse*#EXT#@*Domäne* angezeigt werden. Z.B. *lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com*, wobei „contoso.onmicrosoft.com“ der Organisation entspricht, für die Sie die Einladungen gesendet haben.
+Die von Ihnen eingeladenen Benutzer sollten mit einem Benutzerprinzipalnamen (UPN) im Format *E-Mail-Adresse*#EXT#\@*Domäne* angezeigt werden. Beispiel: *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, wobei „contoso.onmicrosoft.com“ der Organisation entspricht, für die Sie die Einladungen gesendet haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

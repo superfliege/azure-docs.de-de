@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7c4a73c86245067a07dc253041c43ae6c17f7172
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096978"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Artikel wird beschrieben, wie Sie auf ein Classroom-Lab zugreifen, eine Verbindung mit der VM im Lab herstellen und die VM beenden können. 
@@ -46,10 +46,10 @@ Nachdem Sie sich bei den Labs registriert haben, können Sie alle Classroom-Labs
 
 1. Wählen Sie **Starten** auf der Kachel aus, um den virtuellen Computer zu starten (sofern noch nicht geschehen). 
 2. Klicken Sie auf der Kachel des virtuellen Computers des Labs, auf den Sie zugreifen möchten, auf **Verbinden**. 
-3. Speichern Sie die RDP-Datei (für eine Windows-VM) auf der Festplatte, und öffnen Sie sie. 
-4. Verwenden Sie den **Benutzernamen** und das **Kennwort**, den bzw. das Sie von Ihrer Lehrkraft erhalten haben, um sich beim Computer anzumelden. 
-
-## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Beenden des virtuellen Computers in einem Classroom-Lab
+3. Führen Sie einen der folgenden Schritte aus: 
+   1. Speichern Sie für **Windows**-VMs die **RDP**-Datei auf der Festplatte. Öffnen Sie die RDP-Datei, um eine Verbindung mit dem virtuellen Computer herzustellen. Verwenden Sie den **Benutzernamen** und das **Kennwort**, den bzw. das Sie von Ihrer Lehrkraft erhalten haben, um sich beim Computer anzumelden. 
+   3. Kopieren und speichern Sie für **Linux**-VMs die SSH-Verbindungszeichenfolge im Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen** . Verwenden Sie diese Verbindungszeichenfolge aus einem SSH-Terminal (z.B. [Putty](https://www.putty.org/)) zum Herstellen der Verbindung mit dem virtuellen Computer.
+      ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Beenden des virtuellen Computers in einem Classroom-Lab
 
 Klicken Sie auf der Kachel auf **Beenden**, um die VM zu beenden. Nach Beenden der VM wird die Schaltfläche **Starten** auf der Kachel aktiviert. 
 

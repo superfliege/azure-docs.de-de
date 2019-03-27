@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: 9d2fe2c18452537f734a8bf176130e1ad68d40e1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e1d845d1d90a3a70590778013504fea7c0aec85c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097660"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen und Automatisieren von Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -61,7 +61,7 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
 
 1. Starten Sie Visual Studio, und melden Sie sich mit Ihrem Azure-Konto an.
 
-2. Wählen Sie im Menü **Datei** die Option **Neu** > **Projekt**. (Tastenkombination: STRG+UMSCHALT+N)
+2. Wählen Sie im Menü **Datei** die Option **Neu** > **Projekt**. (Tastatur: STRG+UMSCHALT+N)
 
    ![Menü „Datei“, Option „Neu“ > „Projekt“](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
@@ -83,11 +83,13 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
 
 Führen Sie nach der Erstellung Ihres Azure-Ressourcengruppenobjekts die Erstellung und den Buildvorgang für Ihre Logik-App durch, indem Sie mit der Vorlage **Leere Logik-App** beginnen.
 
-1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für die Datei **LogicApp.json**. Wählen Sie die Option **Open With Logic App Designer** (Mit Logik-App-Designer öffnen) aus. (Tastenkombination: STRG+L)
+1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für die Datei **LogicApp.json**. 
+   Wählen Sie **Öffnen mit Logik-App-Designer** aus. (Tastatur: STRG+L)
 
    ![Öffnen der Datei „LogicApp.json“ mit dem Logik-App-Designer](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
-2. Wählen Sie unter **Abonnement** das gewünschte Azure-Abonnement aus. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen...**, um eine neue Azure-Ressourcengruppe zu erstellen. 
+2. Wählen Sie unter **Abonnement** das gewünschte Azure-Abonnement aus. 
+   Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen...**, um eine neue Azure-Ressourcengruppe zu erstellen. 
 
    ![Auswählen von Azure-Abonnement, Ressourcengruppe und Ressourcenstandort](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -101,7 +103,8 @@ Führen Sie nach der Erstellung Ihres Azure-Ressourcengruppenobjekts die Erstell
    | **Location** | MyLogicApp-RG2 <br> (USA, Westen) | Anderer Standort, falls Sie nicht den Ressourcengruppenstandort verwenden möchten |
    ||||
 
-3. Der Logik-App-Designer wird geöffnet, und es wird eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern angezeigt. Scrollen Sie nach unten, bis der Bereich unter dem Video und den Triggern angezeigt wird. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
+3. Der Logik-App-Designer wird geöffnet, und es wird eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern angezeigt. 
+   Scrollen Sie nach unten, bis der Bereich unter dem Video und den Triggern angezeigt wird. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
 
    ![Auswählen von „Leere Logik-App“](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -109,7 +112,7 @@ Führen Sie nach der Erstellung Ihres Azure-Ressourcengruppenobjekts die Erstell
 
 Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, der bei einem neuen RSS-Feedelement ausgelöst wird. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn bestimmte Kriterien erfüllt sind. Bei jeder Auslösung des Triggers erstellt die Logic Apps-Engine eine Logik-App-Instanz zur Ausführung Ihres Workflows.
 
-1. Geben Sie im Logik-App-Designer im Suchfeld „rss“ ein. Wählen Sie diesen Trigger: **Beim Veröffentlichen eines Feedelements**
+1. Geben Sie im Logik-App-Designer im Suchfeld „rss“ ein. Wählen Sie den folgenden Trigger aus: **Beim Veröffentlichen eines Feedelements**
 
    ![Erstellen Ihrer Logik-App durch das Hinzufügen eines Triggers und von Aktionen](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -123,7 +126,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    ![Fertiggestellte Logik-App](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app.png)
 
-3. Speichern Sie die Visual Studio-Projektmappe, um Ihre Logik-App zu speichern. (Tastenkombination: STRG+S)
+3. Speichern Sie die Visual Studio-Projektmappe, um Ihre Logik-App zu speichern. (Tastatur: STRG+S)
 
 Bevor Sie Ihre Logik-App testen können, müssen Sie sie in Azure bereitstellen.
 

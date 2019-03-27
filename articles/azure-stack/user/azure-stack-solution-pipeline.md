@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: deaf7defe5aca4f53df073b19e471a52bd7b8a5d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9c7e6640bdb17e9f996545c2c3315c0c1ade42d1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878743"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902211"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Tutorial: Bereitstellen von Apps in Azure und Azure Stack
 
@@ -78,17 +78,17 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits über Grundkenntniss
 ### <a name="azure-stack-requirements"></a>Anforderungen für Azure Stack
 
 * Verwenden Sie ein integriertes Azure Stack-System, oder stellen Sie das Azure Stack Development Kit (ASDK) bereit. So stellen Sie das ASDK bereit
-    * Das Tutorial [Installieren des Azure Stack Development Kits (ASDK)](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) enthält ausführliche Informationen zur Bereitstellung.
-    * Mit dem PowerShell-Skript [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) lassen sich die Schritte nach der ASDK-Bereitstellung automatisieren.
+  * Das Tutorial [Installieren des Azure Stack Development Kits (ASDK)](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) enthält ausführliche Informationen zur Bereitstellung.
+  * Mit dem PowerShell-Skript [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) lassen sich die Schritte nach der ASDK-Bereitstellung automatisieren.
 
     > [!Note]
     > Der ASDK-Installationsvorgang dauert etwa sieben Stunden. Berücksichtigen Sie dies bei Ihrer Planung.
 
- * Stellen Sie PaaS-Dienste als [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) für Azure Stack bereit.
- * Erstellen Sie [Pläne/Angebote](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) in Azure Stack.
- * Erstellen Sie ein [Mandantenabonnement](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) in Azure Stack.
- * Erstellen Sie eine Web-App im Mandantenabonnement. Notieren Sie sich die URL der neuen Web-App zur späteren Verwendung.
- * Stellen Sie einen virtuellen Windows Server 2012-Computer im Mandantenabonnement bereit. Sie verwenden diesen Server als Buildserver und für die Ausführung von Azure DevOps Services.
+  * Stellen Sie PaaS-Dienste als [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) für Azure Stack bereit.
+  * Erstellen Sie [Pläne/Angebote](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) in Azure Stack.
+  * Erstellen Sie ein [Mandantenabonnement](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) in Azure Stack.
+  * Erstellen Sie eine Web-App im Mandantenabonnement. Notieren Sie sich die URL der neuen Web-App zur späteren Verwendung.
+  * Stellen Sie einen virtuellen Windows Server 2012-Computer im Mandantenabonnement bereit. Sie verwenden diesen Server als Buildserver und für die Ausführung von Azure DevOps Services.
 * Stellen Sie ein Windows Server 2016-Image mit .NET 3.5 für einen virtuellen Computer bereit. Dieser virtuelle Computer wird in Ihrer Azure Stack-Instanz als privater Build-Agent erstellt.
 
 ### <a name="developer-tool-requirements"></a>Anforderung an Entwicklertools
@@ -97,8 +97,8 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits über Grundkenntniss
 * [Installieren Sie Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio), und [melden Sie sich an Azure DevOps Services an](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Stellen Sie eine Verbindung mit Ihrem Projekt her, und [klonen Sie es lokal](https://www.visualstudio.com/docs/git/gitquickstart).
 
- > [!Note]
- > Für die Ausführung von Windows Server und SQL Server benötigen Sie eine Azure Stack-Umgebung mit den passenden syndizierten Images. Darüber hinaus muss App Service bereitgestellt sein.
+  > [!Note]
+  > Für die Ausführung von Windows Server und SQL Server benötigen Sie eine Azure Stack-Umgebung mit den passenden syndizierten Images. Darüber hinaus muss App Service bereitgestellt sein.
 
 ## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>Vorbereiten des privaten Azure Pipelines-Agents für die Azure DevOps Services-Integration
 

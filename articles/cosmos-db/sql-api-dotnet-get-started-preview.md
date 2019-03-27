@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 2e0dc5c69a6cc875f4e673a494387db79c1dd1fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078634"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Erstellen einer .NET-Konsolen-App zum Verwalten von Daten in einem Azure Cosmos DB-SQL-API-Konto (Vorschau von Version 3 des SDK)
 
@@ -68,7 +68,7 @@ Wir erstellen nun ein Azure Cosmos DB-Konto. Wenn Sie bereits über ein Konto ve
 1. Klicken Sie auf der Registerkarte **NuGet** auf **Durchsuchen**, und geben Sie in das Suchfeld **Microsoft.Azure.Cosmos** ein. Aktivieren Sie unbedingt *Vorabversion einbeziehen*, um die Vorschauversion zu finden.
 1. Suchen Sie in den Ergebnissen nach **Microsoft.Azure.Cosmos**, und klicken Sie auf **Installieren**.
    Die Paket-ID für die SQL-API-Clientbibliothek von Azure Cosmos DB lautet [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
-   ![Screenshot des NuGet-Menüs zum Suchen nach dem Azure Cosmos DB-Client-SDK](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![Screenshot: NuGet-Menü zum Suchen nach dem Azure Cosmos DB-Client-SDK](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
     Wenn Sie eine Meldung im Zusammenhang mit der Überprüfung von Änderungen an der Projektmappe erhalten, klicken Sie auf **OK**. Wenn Sie eine Meldung im Zusammenhang mit der Akzeptierung der Lizenz erhalten, klicken Sie auf **Ich stimme zu**.
 
@@ -321,7 +321,7 @@ Ein Container kann mit der Funktion [**CreateContainerIfNotExistsAsync**](https:
         await this.CreateContainer();
     }
     ```
-Drücken Sie **F5**, um die Anwendung auszuführen.
+   Drücken Sie **F5**, um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich einen Azure Cosmos DB-Container erstellt.  
 
@@ -599,7 +599,7 @@ Sie aktualisieren nun ein Element in Azure Cosmos DB.
         await this.ReplaceFamilyItem();
     }
     ```
-Drücken Sie **F5**, um die Anwendung auszuführen.
+   Drücken Sie **F5**, um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich ein Azure Cosmos DB-Element ersetzt.
 

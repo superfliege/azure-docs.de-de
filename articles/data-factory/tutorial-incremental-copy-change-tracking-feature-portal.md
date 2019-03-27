@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 70159b975fd38c918f0b21a384b76666957f058b
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: a5a364c2065a7f4b9607eb4b078456324f261ce8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121875"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -144,7 +144,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) befolgen.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps) befolgen.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
@@ -257,7 +260,7 @@ In diesem Schritt erstellen Sie ein Dataset, das für die Daten steht, die aus d
 
     1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService**.
     2. Geben Sie für den Teil **folder** von **filePath** die Zeichenfolge **adftutorial/incchgtracking** ein.
-    3. Geben Sie für den Teil **file** von **filePath** die Zeichenfolge **@CONCAT('Incremental-', pipeline().RunId, '.txt')** ein.  
+    3. Geben Sie für den Teil **file** von **filePath** die Zeichenfolge **\@CONCAT('Incremental-', pipeline().RunId, '.txt')** ein.  
 
        ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -369,29 +372,29 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
     ![Lookup-Aktivität – Name](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. Wechseln Sie im **Eigenschaftenfenster** zu **Einstellungen**, und führen Sie die folgenden Schritte aus:
 
-    1. Wählen Sie im Feld **Source Dataset** (Quelldataset) die Option **SourceDataset**.
-    2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
-    3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein: 
+   1. Wählen Sie im Feld **Source Dataset** (Quelldataset) die Option **SourceDataset**.
+   2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
+   3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein: 
 
-        ```sql
-        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
-        ```
+       ```sql
+       SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
+       ```
 
-    ![Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Datenfluss**, und ziehen Sie die **Copy**-Aktivität in die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **IncrementalCopyActivity** fest. Mit dieser Aktivität werden die Daten, die zwischen der letzten Version und der aktuellen Version der Änderungsnachverfolgung angefallen sind, in den Zieldatenspeicher kopiert. 
 
     ![Copy-Aktivität – Name](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**, und führen Sie die folgenden Schritte aus:
 
-    1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
-    2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
-    3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein: 
+   1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
+   2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
+   3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein: 
 
-        ```sql
-        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
-        ```
+       ```sql
+       select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
+       ```
     
-    ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
 9. Wechseln Sie zur Registerkarte **Senke**, und wählen Sie im Feld **Sink Dataset** (Senkendataset) die Option **SinkDataset**. 
 
     ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
@@ -422,9 +425,9 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
 15. Klicken Sie in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf **>>** klicken. 
 
     ![Schaltfläche „Überprüfen“](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird. 
+16. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird. 
 
-        ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Ausführen der inkrementellen Kopierpipeline
 1. Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 

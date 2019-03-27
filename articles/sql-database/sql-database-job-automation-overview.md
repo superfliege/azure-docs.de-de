@@ -3,7 +3,6 @@ title: Azure SQL-Auftragsautomatisierung | Microsoft-Dokumentation
 description: Verwenden der Auftragsautomatisierung, um T-SQL-Skripts (Transact-SQL) für einzelne oder mehrere Azure-SQL-Datenbanken auszuführen
 services: sql-database
 ms.service: sql-database
-ms.subservice: database-features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,18 +11,20 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457206"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901966"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 
 Azure SQL-Datenbank ermöglicht die Erstellung und Planung von Aufträgen, die in regelmäßigen Abständen für einzelne oder mehrere Datenbanken ausgeführt werden können, um T-SQL-Abfragen und Wartungsaufgaben auszuführen. Jeder Auftrag protokolliert den Ausführungsstatus und wiederholt die Vorgänge im Falle eines Fehlers automatisch.
 Sie können die Zieldatenbank oder Gruppen von Azure SQL-Datenbanken sowie Zeitpläne für die Auftragsausführung definieren.
 Ein Auftrag nimmt Ihnen die Anmeldung bei der Zieldatenbank ab. Zudem können Sie Transact-SQL-Skripts zur Ausführung für eine Gruppe von Azure SQL-Datenbanken definieren, verwalten und speichern.
+
+## <a name="when-to-use-automated-jobs"></a>Verwendung der automatisierten Aufträge
 
 Die Auftragsautomatisierung kann in verschiedenen Szenarien hilfreich sein:
 
@@ -36,8 +37,10 @@ Die Auftragsautomatisierung kann in verschiedenen Szenarien hilfreich sein:
   - Aggregation von Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzelnen Zieltabelle.
   - Ausführung von Abfragen zur Datenverarbeitung mit längerer Laufzeit für eine große Anzahl von Datenbanken, z.B. bei der Sammlung von Kundentelemetrie. Die Ergebnisse werden zur weiteren Analyse in einer einzelnen Zieltabelle gesammelt.
 - Datenverschiebungen
- - Erstellung von Aufträgen, die Änderungen an Ihren Datenbanken in anderen Datenbanken replizieren oder Aktualisierungen aus Remotedatenbanken erfassen und die Änderungen auf die Datenbank anwenden.
- - Erstellung von Aufträgen, die Daten mithilfe von SQL Server Integration Services (SSIS) aus Ihren oder in Ihre Datenbanken laden.
+  - Erstellung von Aufträgen, die Änderungen an Ihren Datenbanken in anderen Datenbanken replizieren oder Aktualisierungen aus Remotedatenbanken erfassen und die Änderungen auf die Datenbank anwenden.
+  - Erstellung von Aufträgen, die Daten mithilfe von SQL Server Integration Services (SSIS) aus Ihren oder in Ihre Datenbanken laden.
+
+## <a name="overview"></a>Übersicht
 
 In Azure SQL-Datenbank stehen folgende Auftragsplanungstechnologien zur Verfügung:
 
@@ -158,9 +161,9 @@ Einige der in SQL Server verfügbaren SQL-Agent-Features werden in verwalteten I
 - SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.
 - Das Aktivieren/Deaktivieren des Agents wird derzeit in verwalteten Instanzen nicht unterstützt. Der SQL-Agent wird kontinuierlich ausgeführt.
 - Benachrichtigungen werden teilweise unterstützt.
- - Der Pager wird nicht unterstützt.
- - NetSend wird nicht unterstützt.
- - Warnungen werden noch nicht unterstützt.
+  - Der Pager wird nicht unterstützt.
+  - NetSend wird nicht unterstützt.
+  - Warnungen werden noch nicht unterstützt.
 - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
 

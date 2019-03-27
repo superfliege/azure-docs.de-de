@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 287a82292994a629bde8255321c7f603fdf00b67
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099966"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Node.js und der REST-API der Bing-News-Suche
 
@@ -71,7 +71,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
         });
         ```
 
-    3. Wird ein Flag vom Typ **end** angezeigt wird, können der JSON-Code und Header angezeigt werden.
+    3. Wenn ein Flag vom Typ **end** angezeigt wird, können der JSON-Code und Header angezeigt werden.
 
         ```javascript
         response.on('end', function () {
@@ -184,4 +184,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-[Erstellen einer Single-Page-Web-App](tutorial-bing-news-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App](tutorial-bing-news-search-single-page-app.md)

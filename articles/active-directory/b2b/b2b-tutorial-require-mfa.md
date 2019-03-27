@@ -9,14 +9,15 @@ ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f6718c13534e7f43b183400a1ccf25c3f8d1e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669003"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293991"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer
 
@@ -24,7 +25,7 @@ Bei der Zusammenarbeit mit externen B2B-Gastbenutzern wird empfohlen, Ihre Apps 
 
 Beispiel:
 
-![B2B-App, die MFA erfordert](media/tutorial-mfa/aad-b2b-mfa-example.png)
+![Diagramm: Gastbenutzer meldet sich bei Apps eines Unternehmens an](media/tutorial-mfa/aad-b2b-mfa-example.png)
 
 1.  Ein Administrator oder Mitarbeiter von Unternehmen A lädt einen Gastbenutzer ein, eine Cloud oder lokale Anwendung zu verwenden, die so konfiguriert ist, dass sie MFA für den Zugriff erfordert.
 2.  Der Gastbenutzer meldet sich mit seinem Geschäfts-, Schul- oder Unikonto bzw. mit seiner Identität bei einem sozialen Netzwerk an. 
@@ -56,11 +57,11 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 3.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 4.  Klicken Sie auf **Neuer Gastbenutzer**.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-user-3.png)
+    ![Screenshot: Auswahl der Option „Neuer Gastbenutzer“](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
 5.  Geben Sie unter **Benutzername** die E-Mail-Adresse des externen Benutzers ein. Geben Sie optional eine Begrüßungsnachricht ein. 
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-user-4.png)
+    ![Screenshot: Eingabe der Einladungsnachricht für Gastbenutzer](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
 6.  Klicken Sie auf **Einladen**. Die Einladung wird daraufhin automatisch an den Gastbenutzer gesendet. Daraufhin wird die Meldung **Benutzer erfolgreich eingeladen.** angezeigt. 
 7.  Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch als Gast hinzugefügt.
@@ -79,26 +80,26 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 6.  Wählen Sie im Abschnitt **Zuweisungen** **Benutzer und Gruppen** aus.
 7.  Wählen Sie auf der Seite **Benutzer und Gruppen** **Benutzer und Gruppen auswählen** und dann **Sämtliche Gastbenutzer (Vorschau)** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-policy-6.png)
+    ![Screenshot: Auswahl aller Gastbenutzer](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9.  Wählen Sie **Fertig**aus.
 10. Wählen Sie auf der Seite **Neu** im Abschnitt **Zuweisungen** die Option **Cloud-Apps** aus.
 11. Wählen Sie auf der Seite **Cloud-Apps** **Apps auswählen** und dann **Auswählen** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-policy-10.png)
+    ![Screenshot: Seite „Cloud-Apps“ und Option „Auswählen“](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
 12. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure-Verwaltung** und dann **Auswählen** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![Screenshot: ausgewählte Microsoft Azure-Verwaltungs-App](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. Wählen Sie auf der Seite **Cloud-Apps** **Fertig** aus.
 14. Wählen Sie auf der Seite **Neu** im Abschnitt **Zugriffskontrollen** die Option **Gewähren** aus.
 15. Wählen Sie auf der Seite **Gewähren** die Option **Zugriff gewähren** aus, aktivieren Sie das Kontrollkästchen **Mehrstufige Authentifizierung erforderlich**, und wählen Sie dann **Auswählen** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-policy-13.png)
+    ![Screenshot: Option „Mehrstufige Authentifizierung erforderlich“](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
 16. Wählen Sie unter **Richtlinie aktivieren** die Option **An** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-policy-14.png)
+    ![Screenshot: Option „Richtlinie aktivieren“ auf „Ein“ festgelegt](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
 17. Klicken Sie auf **Erstellen**.
 
@@ -106,27 +107,27 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 
 1.  Wählen Sie auf der Seite **Bedingter Zugriff – Richtlinien** **What If** aus. 
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![Screenshot: Auswahl der Option „What If“](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  Wählen Sie **Benutzer**, Ihren Testgastbenutzer und dann **Auswählen** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
+    ![Screenshot: ausgewählter Gastbenutzer](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
 3.  Wählen Sie **Cloud-Apps** aus.
 4.  Wählen Sie auf der Seite **Cloud-Apps** die Option **Apps auswählen** aus, und klicken Sie dann auf **Auswählen**. Wählen Sie in der Anwendungsliste **Microsoft Azure-Verwaltung** aus, und klicken Sie dann auf **Auswählen**. 
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
+    ![Screenshot: ausgewählte Microsoft Azure-Verwaltungs-App](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
 5.  Wählen Sie auf der Seite **Cloud-Apps** **Fertig** aus.
 6.  Wählen Sie **What If** aus, und überprüfen Sie, ob Ihre neue Richtlinie auf der Registerkarte **Anzuwendende Richtlinien** unter **Auswertungsergebnisse** angezeigt wird.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
+    ![Screenshot: Auswahl der Option „What If“](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
 ## <a name="test-your-conditional-access-policy"></a>Testen der Richtlinie für bedingten Zugriff
 1.  Melden Sie sich mit Ihrem Testbenutzernamen und dem dazugehörigen Kennwort im [Azure-Portal](https://portal.azure.com/) an.
 2.  Sie sollten eine Anforderung für zusätzliche Authentifizierungsmethoden sehen. Beachten Sie, dass es einige Zeit dauern kann, bis die Richtlinie wirksam wird.
 
-    ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/mfa-required.png)
+    ![Screenshot: Nachricht „Weitere Informationen erforderlich“](media/tutorial-mfa/mfa-required.png)
  
 3.  Melden Sie sich ab.
 
@@ -139,5 +140,6 @@ Löschen Sie den Testbenutzer und die Testrichtlinie für bedingten Zugriff, wen
 5.  Wählen Sie im linken Bereich **Azure Active Directory** aus.
 6.  Wählen Sie unter **Sicherheit** **Bedingter Zugriff** aus.
 7.  Wählen Sie in der Liste **Richtlinienname** das Kontextmenü (...) für Ihre Testrichtlinie und dann **Löschen** aus. Klicken Sie auf **Ja**, um zu bestätigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie eine Richtlinie für bedingten Zugriff erstellt, die voraussetzt, dass Gastbenutzer beim Anmelden in einer Ihrer Cloud-Apps MFA verwenden. Weitere Informationen zum Hinzufügen von Gastbenutzern für die Zusammenarbeit finden Sie unter [Hinzufügen von Benutzern für die Azure Active Directory B2B-Zusammenarbeit im Azure-Portal](add-users-administrator.md).

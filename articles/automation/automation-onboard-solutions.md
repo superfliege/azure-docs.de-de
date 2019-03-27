@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 5cf09753645d8238232e064af2ba1a301a2a7217
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41920284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082193"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
 
@@ -81,7 +81,7 @@ Nachdem die Lösungen aktiviert wurden, können Sie eine Azure-VM hinzufügen, d
    ![Aktivieren der Updatelösung für die VM](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Wenn Sie den Abschluss der Installation einer anderen Lösung nicht abwarten, erhalten Sie beim Aktivieren der nächsten Lösung eine Meldung wie die folgende: *Eine andere Lösung wird zurzeit auf diesem oder einem anderen virtuellen Computer installiert. Nach Abschluss dieser Installation wird die Schaltfläche „Aktivieren“ aktiviert, und Sie können die Installation der Lösung auf diesem virtuellen Computer anfordern.*
+> Wenn Sie nicht auf den Abschluss der anderen Lösung warten, erhalten Sie beim Aktivieren der nächsten Lösung eine Nachricht folgenden Inhalts: *Eine andere Lösung wird zurzeit auf diesem oder einem anderen virtuellen Computer installiert. Nach Abschluss dieser Installation wird die Schaltfläche „Aktivieren“ aktiviert, und Sie können die Installation der Lösung auf diesem virtuellen Computer anfordern.*
 
 ## <a name="install-and-update-modules"></a>Installieren und Aktualisieren von Modulen
 
@@ -105,7 +105,7 @@ Wählen Sie auf der Seite **Module** die Option **Katalog durchsuchen** aus, um 
 1. Klicken Sie auf **Katalog durchsuchen**.
 1. Suchen Sie nach **Update und Änderungsnachverfolgung**, klicken Sie auf das Runbook, und wählen Sie auf der Seite **Quelle anzeigen** die Option **Importieren** aus. Klicken Sie auf **OK**, um das Runbook in das Automation-Konto zu importieren.
 
-  ![Importieren des Runbooks für die Integration](media/automation-onboard-solutions/import-from-gallery.png)
+   ![Importieren des Runbooks für die Integration](media/automation-onboard-solutions/import-from-gallery.png)
 
 1. Klicken Sie auf der Seite **Runbook** auf **Bearbeiten**, und wählen Sie **Veröffentlichen** aus. Klicken Sie im Dialogfeld **Runbook veröffentlichen** auf **Ja**, um das Runbook zu veröffentlichen.
 

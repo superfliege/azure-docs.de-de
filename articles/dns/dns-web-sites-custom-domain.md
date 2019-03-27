@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 2/19/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9ed0c8763835add485d6c60a43f4e4113ecde12e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 43df80e060ff698537f7fd65075006e6dfffe6c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117148"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Tutorial: Erstellen von DNS-Einträgen in einer benutzerdefinierten Domäne für eine Web-App 
 
-Sie können Azure DNS konfigurieren, um eine benutzerdefinierte Domäne für Ihre Web-Apps zu hosten. Sie können beispielsweise eine Azure-Web-App erstellen und Ihre Benutzer entweder über vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) „www.contoso.com“ oder „contoso.com“ darauf zugreifen lassen.
+Sie können Azure DNS konfigurieren, um eine benutzerdefinierte Domäne für Ihre Web-Apps zu hosten. Sie können beispielsweise eine Azure-Web-App erstellen und Ihre Benutzer entweder über den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) „www\.contoso.com“ oder „contoso.com“ darauf zugreifen lassen.
 
 > [!NOTE]
 > In diesem Tutorial wird „contoso.com“ als Beispiel verwendet. Ersetzen Sie Ihren eigenen Domänennamen durch „contoso.com“.
@@ -47,12 +47,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Erstellen Sie eine App Service-App](../app-service/app-service-web-get-started-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
+* Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
+* [Erstellen Sie eine App Service-App](../app-service/app-service-web-get-started-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
 
-- Erstellen Sie in Azure DNS eine DNS-Zone, und delegieren Sie die Zone in Ihrer Registrierungsstelle an Azure DNS.
+* Erstellen Sie in Azure DNS eine DNS-Zone, und delegieren Sie die Zone in Ihrer Registrierungsstelle an Azure DNS.
 
    1. Befolgen Sie zum Erstellen einer DNS-Zone die Anweisungen unter [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone.md).
-   2. Befolgen Sie zum Delegieren Ihrer Zone an Azure DNS die Schritte unter [Delegieren von DNS-Zonen mit Azure DNS](dns-domain-delegation.md).
+   2. Befolgen Sie zum Delegieren Ihrer Zone an Azure DNS die Schritte unter [Delegieren von DNS-Zonen mit Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Nach dem Erstellen einer Zone und ihrer Delegierung an Azure DNS können Sie Einträge für Ihre benutzerdefinierte Domäne erstellen.
 
@@ -72,7 +73,7 @@ Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IPv4-Adresse der 
 
 ### <a name="create-the-a-record"></a>Erstellen des A-Eintrags
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
@@ -82,7 +83,10 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 
 App Services nutzt diesen Eintrag nur zur Konfigurationszeit, um zu bestätigen, dass sich die benutzerdefinierte Domäne in Ihrem Besitz befindet. Sie können diesen TXT-Eintrag löschen, nachdem Ihre benutzerdefinierte Domäne überprüft und in App Service konfiguriert wurde.
 
-```powershell
+> [!NOTE]
+> Wenn Sie den Domänennamen überprüfen, aber nicht Produktionsdatenverkehr an die Web-App weiterleiten möchten, müssen Sie nur den TXT-Eintrag für den Überprüfungsschritt angeben.  Die Überprüfung erfordert keinen A- oder CNAME-Eintrag zusätzlich zum TXT-Eintrag.
+
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
  -Name "@" -RecordType "txt" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
@@ -96,7 +100,7 @@ Wenn Ihre Domäne bereits von Azure DNS verwaltet wird (siehe [DNS-Domänendeleg
 
 ### <a name="create-the-record"></a>Erstellen des Eintrags
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
@@ -158,7 +162,7 @@ contoso.com text =
 
 Nun können Sie die benutzerdefinierten Hostnamen zur Web-App hinzufügen:
 
-```powershell
+```azurepowershell
 set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `

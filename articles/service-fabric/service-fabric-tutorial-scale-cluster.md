@@ -1,6 +1,6 @@
 ---
 title: Skalieren eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
-description: Dieses Tutorial enthält Informationen zum schnellen Skalieren eines Service Fabric-Clusters in Azure.
+description: Dieses Tutorial enthält Informationen zum Skalieren eines Service Fabric-Clusters in Azure.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,30 +12,31 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/01/2018
+ms.date: 03/19/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 975b4558c0501423211553c1c2e330bced2c74a6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 315e3c05e23d68edb701e705fd1ed02a840a8936
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674145"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226809"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
-Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie Ihren vorhandenen Cluster horizontal hoch- und herunterskalieren. In diesem Tutorial erfahren Sie, wie Sie Ihren Cluster skalieren und gegebenenfalls zurückgebliebene Ressourcen bereinigen.
+Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie Ihren vorhandenen Cluster horizontal hoch- und herunterskalieren. In diesem Tutorial erfahren Sie, wie Sie Ihren Cluster skalieren und gegebenenfalls zurückgebliebene Ressourcen bereinigen.  Weitere Informationen zum Skalieren eines Clusters, der in Azure ausgeführt wird, finden Sie unter [Skalieren von Service Fabric-Clustern](service-fabric-cluster-scaling.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Lesen der Anzahl von Clusterknoten
-> * Hinzufügen von Clusterknoten (horizontales Hochskalieren)
-> * Entfernen von Clusterknoten (horizontales Herunterskalieren)
+> * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
+> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure mithilfe einer Vorlage
+> * [Überwachen eines Clusters](service-fabric-tutorial-monitor-cluster.md)
 > * Horizontales Herunter- oder Hochskalieren eines Clusters
 > * [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
 > * [Löschen eines Clusters](service-fabric-tutorial-delete-cluster.md)
@@ -47,207 +48,824 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) oder [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
-* Einrichten einer Windows-Entwicklungsumgebung Installieren Sie [Visual Studio 2017](https://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+## <a name="important-considerations-and-guidelines"></a>Wichtige Aspekte und Richtlinien
 
-Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
+Workloads von Anwendungen ändern sich im Laufe der Zeit. Benötigen Ihre vorhandenen Dienste mehr (oder weniger) Ressourcen?  [Fügen Sie Knoten hinzu, oder entfernen Sie sie](#add-nodes-to-or-remove-nodes-from-a-node-type) von einem Knotentyp, um die Clusterressourcen zu erhöhen oder zu verringern.
+
+Möchten Sie Ihrem Cluster mehr als 100 Knoten hinzufügen?  Ein/e einzelne/r Service Fabric-Knotentyp/-Skalierungsgruppe kann nicht mehr als 100 Knoten/VMs enthalten.  Zum Skalieren eines Clusters auf über 100 Knoten [fügen Sie zusätzliche Knotentypen hinzu](#add-nodes-to-or-remove-nodes-from-a-node-type).
+
+Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen?  Typische Anwendungen umfassen einen Front-End-Gatewaydienst, der Eingaben von einem Client empfängt, und einen oder mehrere Back-End-Dienste, die mit den Front-End-Diensten kommunizieren. In diesem Fall empfehlen wir Ihnen, dem Cluster [mindestens zwei Knotentypen hinzuzufügen](#add-nodes-to-or-remove-nodes-from-a-node-type).  
+
+Haben Ihre Dienste unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Ihre Anwendung umfasst beispielsweise einen Front-End-Dienst und einen Back-End-Dienst. Der Front-End-Dienst kann auf kleineren virtuellen Computern (VM-Größen wie D2) platziert werden, die über geöffnete Ports für das Internet verfügen. Der rechenintensive Back-End-Dienst hingegen muss auf größeren virtuellen Computern (mit VM-Größen wie D4, D6, D15) platziert werden, die nicht vom Internet aus zugänglich sind. In diesem Fall empfehlen wir Ihnen, Ihrem Cluster [zwei oder mehr Knotentypen hinzuzufügen](#add-nodes-to-or-remove-nodes-from-a-node-type). Dadurch können für die Knotentypen unterschiedliche Eigenschaften (z.B. Internetkonnektivität oder VM-Größe) festgelegt werden. Außerdem kann die Anzahl von VMs individuell skaliert werden.
+
+Beachten Sie beim Skalieren eines Azure-Clusters die folgenden Richtlinien:
+
+* Ein/e einzelne/r Service Fabric-Knotentyp/-Skalierungsgruppe kann nicht mehr als 100 Knoten/VMs enthalten.  Zum Skalieren eines Clusters auf über 100 Knoten fügen Sie zusätzliche Knotentypen hinzu.
+* Primäre Knotentypen mit Ausführung von Produktionsworkloads sollten über eine [Dauerhaftigkeitsstufe][durability] von „Gold“ oder „Silber“ und immer über mindestens fünf Knoten verfügen.
+* Andere (nicht primäre) Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen.
+* Andere (nicht primäre) Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
+* Jeder Knotentyp mit der [Dauerhaftigkeitsstufe][durability] „Gold“ oder „Silber“ sollte immer über mindestens fünf Knoten verfügen.
+* Beim horizontalen Herunterskalieren (Entfernen von Knoten) eines primären Knotentyps sollten Sie nie die Anzahl der Instanzen auf einen niedrigeren Wert verringern, als für die [Zuverlässigkeitsstufe][ reliability] erforderlich ist.
+
+Weitere Informationen finden Sie unter [Anleitung zu Clusterkapazitäten](service-fabric-cluster-capacity.md).
+
+## <a name="export-the-template-for-the-resource-group"></a>Exportieren der Vorlage für die Ressourcengruppe
+
+Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) und dem erfolgreichen Einrichten der Ressourcengruppe exportieren Sie die Resource Manager-Vorlage für die Ressourcengruppe. Durch das Exportieren der Vorlage können Sie zukünftige Bereitstellungen des Clusters und seiner Ressourcen automatisieren, da die Vorlage die gesamte Infrastruktur enthält.  Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals](/azure/azure-resource-manager/manage-resource-groups-portal).
+
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu der Ressourcengruppe, die den Cluster enthält (**sfclustertutorialgroup**, wenn Sie dieses Tutorial durcharbeiten). 
+
+2. Wählen Sie im linken Bereich **Bereitstellungen** aus, oder klicken Sie auf den Link unter **Bereitstellungen**. 
+
+3. Wählen Sie die neueste erfolgreiche Bereitstellung aus der Liste aus.
+
+4. Wählen Sie im linken Bereich **Vorlage** und dann **Herunterladen** aus, um die Vorlage als ZIP-Datei zu exportieren.  Speichern Sie die Vorlage und die Parameter auf Ihrem lokalen Computer.
+
+## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Hinzufügen von Knoten zu oder Entfernen von Knoten von einem Knotentyp
+
+Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die Anzahl der Knoten im Cluster. Beim horizontalen Herunter- und Hochskalieren fügen Sie der Skalierungsgruppe mehr VM-Instanzen hinzu. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.
+
+### <a name="update-the-template"></a>Aktualisieren der Vorlage
+
+[Exportieren Sie eine Vorlagen- und Parameterdatei](#export-the-template-for-the-resource-group) aus der Ressourcengruppe für die jüngste Bereitstellung.  Öffnen Sie die Datei *parameters.json*.  Wenn Sie den Cluster mithilfe der [Beispielvorlage][template] aus diesem Tutorial bereitgestellt haben, enthält der Cluster drei Knotentypen und drei Parameter, die die Anzahl der Knoten für jeden Knotentyp festlegen: *nt0InstanceCount*, *nt1InstanceCount* und *nt2InstanceCount*.  Der Parameter *nt1InstanceCount* legt beispielsweise die Anzahl der Instanzen für den zweiten Knotentyp und die Anzahl der VMs in der zugeordneten VM-Skalierungsgruppe fest.
+
+Indem Sie also den Wert von *nt1InstanceCount* aktualisieren, ändern Sie die Anzahl der Knoten im zweiten Knotentyp.  Denken Sie daran, dass Sie einen Knotentyp nicht auf mehr als 100 Knoten horizontal hochskalieren können.  Andere (nicht primäre) Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen. Andere (nicht primäre) Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
+
+Wenn Sie einen Knotentyp der [Zuverlässigkeitsstufe][durability] „Bronze“ horizontal herunterskalieren (Knoten von ihm entfernen), müssen Sie [den Zustand dieser Knoten manuell entfernen](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Für die Dauerhaftigkeitsstufen „Silber“ und „Gold“ werden diese Schritte automatisch von der Plattform ausgeführt.
+
+### <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
+Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
 
 ```powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
+New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+```
+Oder führen Sie den folgenden Azure-CLI-Befehl aus:
+```azure-cli
+az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-```azurecli
-az login
-az account set --subscription <guid>
+## <a name="add-a-node-type-to-the-cluster"></a>Hinzufügen eines Knotentyps zum Cluster
+
+Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, der in Azure ausgeführt wird, wird als [separate VM-Skalierungsgruppe](service-fabric-cluster-nodetypes.md) eingerichtet. Jeder Knotentyp kann dann separat verwaltet werden. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden. Sie können die Betriebssystem-SKU, die auf jedem Clusterknoten ausgeführt wird, auch unabhängig voneinander ändern. Beachten Sie aber, dass Sie im Beispielcluster Windows und Linux nicht gemischt ausführen können. Ein/e einzelne/r Knotentyp/-Skalierungsgruppe kann nicht mehr als 100 Knoten enthalten.  Sie können einen Cluster horizontal auf mehr als 100 Knoten skalieren, indem Sie zusätzliche Knotentypen/Skalierungsgruppen hinzufügen. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.
+
+### <a name="update-the-template"></a>Aktualisieren der Vorlage
+
+[Exportieren Sie eine Vorlagen- und Parameterdatei](#export-the-template-for-the-resource-group) aus der Ressourcengruppe für die jüngste Bereitstellung.  Öffnen Sie die Datei *parameters.json*.  Wenn Sie den Cluster mithilfe der [Beispielvorlage][template] aus diesem Tutorial bereitgestellt haben, enthält der Cluster drei Knotentypen.  In diesem Abschnitt fügen Sie einen vierten Knotentyp hinzu, indem Sie eine Resource Manager-Vorlage aktualisieren und bereitstellen. 
+
+Zusätzlich zu dem neuen Knotentyp fügen Sie außerdem die zugeordnete VM-Skalierungsgruppe (die in einem separaten Subnetz des virtuellen Netzwerks ausgeführt wird) und die Netzwerksicherheitsgruppe hinzu.  Sie können auch neue oder vorhandene öffentliche IP-Adressen und Azure Load Balancer-Ressourcen für die neue Skalierungsgruppe hinzuzufügen.  Der neue Knotentyp verfügt über eine [Dauerhaftigkeitsstufe][durability] von „Silber“ und die Größe „Standard_D2_V2“.
+
+Fügen Sie in der Datei *template.json* die folgenden neuen Parameter hinzu:
+```json
+"nt3InstanceCount": {
+    "defaultValue": 5,
+    "type": "Int",
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType3Size": {
+    "defaultValue": "Standard_D2_V2",
+    "type": "String"
+},
 ```
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+Fügen Sie in der Datei *template.json* die folgenden neuen Variablen hinzu:
+```json
+"lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
+"lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
+"lbPoolID3": "[concat(variables('lbID3'),'/backendAddressPools/LoadBalancerBEAddressPool')]",
+"lbProbeID3": "[concat(variables('lbID3'),'/probes/FabricGatewayProbe')]",
+"lbHttpProbeID3": "[concat(variables('lbID3'),'/probes/FabricHttpGatewayProbe')]",
+"lbNatPoolID3": "[concat(variables('lbID3'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]",
+"vmNodeType3Name": "[toLower(concat('NT4', variables('vmName')))]",
+"vmStorageAccountName3": "[toLower(concat(uniqueString(resourceGroup().id), '1', '3' ))]",
+"nt3applicationStartPort": "20000",
+"nt3applicationEndPort": "30000",
+"nt3ephemeralStartPort": "49152",
+"nt3ephemeralEndPort": "65534",
+"nt3fabricTcpGatewayPort": "19000",
+"nt3fabricHttpGatewayPort": "19080",
+"nt3reverseProxyEndpointPort": "19081",
+"subnet3Name": "Subnet-3",
+"subnet3Prefix": "10.0.3.0/24",
+"subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
+```
 
-Für diesen Teil des Tutorials müssen Sie eine Verbindung mit dem Service Fabric-Cluster sowie mit der VM-Skalierungsgruppe herstellen, die als Host für den Cluster fungiert. Bei der VM-Skalierungsgruppe handelt es sich um die Azure-Ressource, die Service Fabric in Azure hostet.
+Fügen Sie in der Datei *template.json* der virtuellen Netzwerkressource ein neues Subnetz hinzu:
+```json
+{
+    "type": "Microsoft.Network/virtualNetworks",
+    "name": "[variables('virtualNetworkName')]",
+    "apiVersion": "2018-08-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "addressSpace": {
+            "addressPrefixes": [
+                "[variables('addressPrefix')]"
+            ]
+        },
+        "subnets": [
+            ...
+            {
+                "name": "[variables('subnet3Name')]",
+                "properties": {
+                    "addressPrefix": "[variables('subnet3Prefix')]",
+                    "networkSecurityGroup": {
+                        "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg', variables('subnet3Name')))]"
+                    }
+                }
+            }
+        ]
+    },
+    "dependsOn": [
+        ...
+        "[concat('Microsoft.Network/networkSecurityGroups/', concat('nsg', variables('subnet3Name')))]"
+    ]
+},
+```
 
-Wenn Sie eine Verbindung mit einem Cluster herstellen, können Sie Informationen aus dem Cluster abfragen. Über den Cluster können Sie ermitteln, welche Knoten dem Cluster bekannt sind. Für die Verbindungsherstellung mit dem Cluster wird im folgenden Code das Zertifikat verwendet, das im ersten Teil dieser Reihe erstellt wurde. Legen Sie die Variablen `$endpoint` und `$thumbprint` auf Ihre Werte fest.
+Fügen Sie in der Datei *template.json* eine neue öffentliche IP-Adresse und Lastenausgleichsressourcen hinzu:
+```json
+{
+    "type": "Microsoft.Network/publicIPAddresses",
+    "name": "[concat(variables('lbIPName'),'-',variables('vmNodeType3Name'))]",
+    "apiVersion": "2018-08-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "dnsSettings": {
+            "domainNameLabel": "[concat(variables('dnsName'),'-','nt4')]"
+        },
+        "publicIPAllocationMethod": "Dynamic"
+    }
+},
+        {
+    "type": "Microsoft.Network/loadBalancers",
+    "name": "[concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name'))]",
+    "apiVersion": "2018-08-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "frontendIPConfigurations": [
+            {
+                "name": "LoadBalancerIPConfig",
+                "properties": {
+                    "publicIPAddress": {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(variables('lbIPName'),'-',variables('vmNodeType3Name')))]"
+                    }
+                }
+            }
+        ],
+        "backendAddressPools": [
+            {
+                "name": "LoadBalancerBEAddressPool",
+                "properties": {}
+            }
+        ],
+        "loadBalancingRules": [
+            {
+                "name": "LBRule",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[variables('nt3fabricTcpGatewayPort')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[variables('nt3fabricTcpGatewayPort')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[variables('lbProbeID3')]"
+                    },
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "LBHttpRule",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[variables('nt3fabricHttpGatewayPort')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[variables('nt3fabricHttpGatewayPort')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[variables('lbHttpProbeID3')]"
+                    },
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortLBRule1",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[parameters('loadBalancedAppPort1')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[parameters('loadBalancedAppPort1')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[concat(variables('lbID3'),'/probes/AppPortProbe1')]"
+                    },
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortLBRule2",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[parameters('loadBalancedAppPort2')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[parameters('loadBalancedAppPort2')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[concat(variables('lbID3'),'/probes/AppPortProbe2')]"
+                    },
+                    "protocol": "tcp"
+                }
+            }
+        ],
+        "probes": [
+            {
+                "name": "FabricGatewayProbe",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[variables('nt3fabricTcpGatewayPort')]",
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "FabricHttpGatewayProbe",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[variables('nt3fabricHttpGatewayPort')]",
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortProbe1",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[parameters('loadBalancedAppPort1')]",
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortProbe2",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[parameters('loadBalancedAppPort2')]",
+                    "protocol": "tcp"
+                }
+            }
+        ],
+        "inboundNatPools": [
+            {
+                "name": "LoadBalancerBEAddressNatPool",
+                "properties": {
+                    "backendPort": "3389",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPortRangeEnd": "4500",
+                    "frontendPortRangeStart": "3389",
+                    "protocol": "tcp"
+                }
+            }
+        ]
+    },
+    "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType3Name')))]"
+    ]
+},
+```
+
+Fügen Sie in der Datei *template.json* eine neue Netzwerksicherheitsgruppe und VM-Skalierungsgruppenressourcen hinzu.  Die „NodeTypeRef“-Eigenschaft innerhalb der Service Fabric-Erweiterungseigenschaften der VM-Skalierungsgruppe ordnet den angegebenen Knotentyp der Skalierungsgruppe zu.
+
+```json
+{
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "name": "[concat('nsg', variables('subnet3Name'))]",
+    "apiVersion": "2018-08-01",
+    "location": "[resourceGroup().location]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "securityRules": [
+            {
+                "name": "allowSvcFabSMB",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "445",
+                    "direction": "Inbound",
+                    "priority": 3950,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
+                }
+            },
+            {
+                "name": "allowSvcFabCluser",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "1025-1027",
+                    "direction": "Inbound",
+                    "priority": 3920,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow ports within vnet that are used by the fabric to talk between nodes"
+                }
+            },
+            {
+                "name": "allowSvcFabEphemeral",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[concat(variables('nt3ephemeralStartPort'), '-', variables('nt3ephemeralEndPort'))]",
+                    "direction": "Inbound",
+                    "priority": 3930,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow fabric ephemeral ports within the vnet"
+                }
+            },
+            {
+                "name": "allowSvcFabPortal",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[variables('nt3fabricHttpGatewayPort')]",
+                    "direction": "Inbound",
+                    "priority": 3900,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow port used to access the fabric cluster web portal"
+                }
+            },
+            {
+                "name": "allowSvcFabClient",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[variables('nt3fabricTcpGatewayPort')]",
+                    "direction": "Inbound",
+                    "priority": 3910,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow port used by the fabric client (includes powershell)"
+                }
+            },
+            {
+                "name": "allowSvcFabApplication",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[concat(variables('nt3applicationStartPort'), '-', variables('nt3applicationEndPort'))]",
+                    "direction": "Inbound",
+                    "priority": 3940,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow fabric application ports within the vnet"
+                }
+            },
+            {
+                "name": "blockAll",
+                "properties": {
+                    "access": "Deny",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "*",
+                    "direction": "Inbound",
+                    "priority": 4095,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "block all traffic except what we've explicitly allowed"
+                }
+            },
+            {
+                "name": "allowVNetRDP",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "3389",
+                    "direction": "Inbound",
+                    "priority": 3960,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow RDP within the net"
+                }
+            },
+            {
+                "name": "allowSvcFabReverseProxy",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[variables('nt3reverseProxyEndpointPort')]",
+                    "direction": "Inbound",
+                    "priority": 3980,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow port used to access the fabric cluster using reverse proxy"
+                }
+            },
+            {
+                "name": "allowAppPort1",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[parameters('loadBalancedAppPort1')]",
+                    "direction": "Inbound",
+                    "priority": 2001,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow public application port 1"
+                }
+            },
+            {
+                "name": "allowAppPort2",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[parameters('loadBalancedAppPort2')]",
+                    "direction": "Inbound",
+                    "priority": 2002,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow public application port 2"
+                }
+            }
+        ]
+    }
+},
+{
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "sku": {
+        "name": "[parameters('vmNodeType3Size')]",
+        "capacity": "[parameters('nt3InstanceCount')]",
+        "tier": "Standard"
+    },
+    "name": "[variables('vmNodeType3Name')]",
+    "apiVersion": "2018-10-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+            "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+            "extensionProfile": {
+                "extensions": [
+                    {
+                        "name": "[concat(variables('vmNodeType3Name'),'OMS')]",
+                        "properties": {
+                            "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                            "type": "MicrosoftMonitoringAgent",
+                            "typeHandlerVersion": "1.0",
+                            "autoUpgradeMinorVersion": true,
+                            "settings": {
+                                "workspaceId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')), '2015-11-01-preview').customerId]"
+                            },
+                            "protectedSettings": {
+                                "workspaceKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')),'2015-11-01-preview').primarySharedKey]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType3Name')]",
+                        "properties": {
+                            "type": "ServiceFabricNode",
+                            "autoUpgradeMinorVersion": true,
+                            "protectedSettings": {
+                                "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                                "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                            },
+                            "publisher": "Microsoft.Azure.ServiceFabric",
+                            "settings": {
+                                "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                                "nodeTypeRef": "[variables('vmNodeType3Name')]",
+                                "dataPath": "D:\\SvcFab",
+                                "durabilityLevel": "Silver",
+                                "enableParallelJobs": true,
+                                "nicPrefixOverride": "[variables('subnet3Prefix')]",
+                                "certificate": {
+                                    "thumbprint": "[parameters('certificateThumbprint')]",
+                                    "x509StoreName": "[parameters('certificateStoreValue')]"
+                                }
+                            },
+                            "typeHandlerVersion": "1.0"
+                        }
+                    },
+                    {
+                        "name": "[concat('VMDiagnosticsVmExt','_vmNodeType3Name')]",
+                        "properties": {
+                            "type": "IaaSDiagnostics",
+                            "autoUpgradeMinorVersion": true,
+                            "protectedSettings": {
+                                "storageAccountName": "[variables('applicationDiagnosticsStorageAccountName')]",
+                                "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')),'2015-05-01-preview').key1]",
+                                "storageAccountEndPoint": "https://core.windows.net/"
+                            },
+                            "publisher": "Microsoft.Azure.Diagnostics",
+                            "settings": {
+                                "WadCfg": {
+                                    "DiagnosticMonitorConfiguration": {
+                                        "overallQuotaInMB": "50000",
+                                        "EtwProviders": {
+                                            "EtwEventSourceProviderConfiguration": [
+                                                {
+                                                    "provider": "Microsoft-ServiceFabric-Actors",
+                                                    "scheduledTransferKeywordFilter": "1",
+                                                    "scheduledTransferPeriod": "PT5M",
+                                                    "DefaultEvents": {
+                                                        "eventDestination": "ServiceFabricReliableActorEventTable"
+                                                    }
+                                                },
+                                                {
+                                                    "provider": "Microsoft-ServiceFabric-Services",
+                                                    "scheduledTransferPeriod": "PT5M",
+                                                    "DefaultEvents": {
+                                                        "eventDestination": "ServiceFabricReliableServiceEventTable"
+                                                    }
+                                                }
+                                            ],
+                                            "EtwManifestProviderConfiguration": [
+                                                {
+                                                    "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                                                    "scheduledTransferLogLevelFilter": "Information",
+                                                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                                                    "scheduledTransferPeriod": "PT5M",
+                                                    "DefaultEvents": {
+                                                        "eventDestination": "ServiceFabricSystemEventTable"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "StorageAccount": "[variables('applicationDiagnosticsStorageAccountName')]"
+                            },
+                            "typeHandlerVersion": "1.5"
+                        }
+                    },
+                    {
+                        "name": "[concat('VMIaaSAntimalware','_vmNodeType3Name')]",
+                        "properties": {
+                            "publisher": "Microsoft.Azure.Security",
+                            "type": "IaaSAntimalware",
+                            "typeHandlerVersion": "1.5",
+                            "settings": {
+                                "AntimalwareEnabled": "true",
+                                "Exclusions": {
+                                    "Paths": "D:\\SvcFab;D:\\SvcFab\\Log;C:\\Program Files\\Microsoft Service Fabric",
+                                    "Processes": "Fabric.exe;FabricHost.exe;FabricInstallerService.exe;FabricSetup.exe;FabricDeployer.exe;ImageBuilder.exe;FabricGateway.exe;FabricDCA.exe;FabricFAS.exe;FabricUOS.exe;FabricRM.exe;FileStoreService.exe"
+                                },
+                                "RealtimeProtectionEnabled": "true",
+                                "ScheduledScanSettings": {
+                                    "isEnabled": "true",
+                                    "scanType": "Quick",
+                                    "day": "7",
+                                    "time": "120"
+                                }
+                            },
+                            "protectedSettings": null
+                        }
+                    }
+                ]
+            },
+            "networkProfile": {
+                "networkInterfaceConfigurations": [
+                    {
+                        "name": "[concat(variables('nicName'), '-2')]",
+                        "properties": {
+                            "ipConfigurations": [
+                                {
+                                    "name": "[concat(variables('nicName'),'-',2)]",
+                                    "properties": {
+                                        "loadBalancerBackendAddressPools": [
+                                            {
+                                                "id": "[variables('lbPoolID3')]"
+                                            }
+                                        ],
+                                        "loadBalancerInboundNatPools": [
+                                            {
+                                                "id": "[variables('lbNatPoolID3')]"
+                                            }
+                                        ],
+                                        "subnet": {
+                                            "id": "[variables('subnet3Ref')]"
+                                        }
+                                    }
+                                }
+                            ],
+                            "primary": true
+                        }
+                    }
+                ]
+            },
+            "osProfile": {
+                "adminPassword": "[parameters('adminPassword')]",
+                "adminUsername": "[parameters('adminUsername')]",
+                "computernamePrefix": "[variables('vmNodeType3Name')]",
+                "secrets": [
+                    {
+                        "sourceVault": {
+                            "id": "[parameters('sourceVaultValue')]"
+                        },
+                        "vaultCertificates": [
+                            {
+                                "certificateStore": "[parameters('certificateStoreValue')]",
+                                "certificateUrl": "[parameters('certificateUrlValue')]"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "[parameters('vmImagePublisher')]",
+                    "offer": "[parameters('vmImageOffer')]",
+                    "sku": "[parameters('vmImageSku')]",
+                    "version": "[parameters('vmImageVersion')]"
+                },
+                "osDisk": {
+                    "caching": "ReadOnly",
+                    "createOption": "FromImage",
+                    "managedDisk": {
+                        "storageAccountType": "[parameters('storageAccountType')]"
+                    }
+                }
+            }
+        }
+    },
+    "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+    ]
+},
+```
+
+Aktualisieren Sie in der Datei *template.json* die Clusterressource, und fügen Sie einen neuen Knotentyp hinzu:
+```json
+{
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "apiVersion": "2018-02-01",
+    "location": "[parameters('clusterLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "nodeTypes": [
+            ...
+            {
+                "name": "[variables('vmNodeType3Name')]",
+                "applicationPorts": {
+                    "endPort": "[variables('nt3applicationEndPort')]",
+                    "startPort": "[variables('nt3applicationStartPort')]"
+                },
+                "clientConnectionEndpointPort": "[variables('nt3fabricTcpGatewayPort')]",
+                "durabilityLevel": "Silver",
+                "ephemeralPorts": {
+                    "endPort": "[variables('nt3ephemeralEndPort')]",
+                    "startPort": "[variables('nt3ephemeralStartPort')]"
+                },
+                "httpGatewayEndpointPort": "[variables('nt3fabricHttpGatewayPort')]",
+                "isPrimary": false,
+                "reverseProxyEndpointPort": "[variables('nt3reverseProxyEndpointPort')]",
+                "vmInstanceCount": "[parameters('nt3InstanceCount')]"
+            }
+        ],    
+    }
+}                
+```
+
+Fügen Sie in der Datei *parameters.json* die folgenden neuen Parameter und Werte hinzu:
+```json
+"nt3InstanceCount": {
+    "Value": 5    
+},
+"vmNodeType3Size": {
+    "Value": "Standard_D2_V2"
+},
+```
+
+### <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
+Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
 
 ```powershell
-$endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
-$thumbprint = "63EB5BA4BC2A3BADC42CA6F93D6F45E5AD98A1E4"
+New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+```
+Oder führen Sie den folgenden Azure-CLI-Befehl aus:
+```azure-cli
+az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+```
 
-Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
+## <a name="remove-a-node-type-from-the-cluster"></a>Entfernen eines Knotentyps aus dem Cluster
+Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einen Knotentyp (VM-Skalierungsgruppe) und alle seine Knoten entfernen. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster. Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
+
+> [!WARNING]
+> Es wird nicht empfohlen, regelmäßig Remove-AzureRmServiceFabricNodeType zum Entfernen eines Knotentyps aus einem Produktionscluster zu verwenden. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
+
+Führen Sie das Cmdlet [Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) aus, um den Knotentyp zu entfernen.  Der Knotentyp muss die [Dauerhaftigkeitsstufe][durability] „Silber“ oder „Gold“ haben. Das Cmdlet löscht die dem Knotentyp zugeordnete Skalierungsgruppe, was einige Zeit in Anspruch nimmt.  Führen Sie dann das Cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) auf jedem der zu entfernenden Knoten aus, wodurch der Knotenzustand gelöscht und die Knoten aus dem Cluster entfernt werden. Wenn auf den Knoten Dienste vorhanden sind, werden die Dienste zuerst auf einen anderen Knoten verschoben. Wenn der Cluster-Manager keinen Knoten für das Replikat bzw. den Dienst finden kann, wird der Vorgang verzögert/blockiert.
+
+```powershell
+$groupname = "sfclustertutorialgroup"
+$nodetype = "nt4vm"
+$clustername = "mysfcluster123"
+
+Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+
+Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint $thumbprint `
-          -FindType FindByThumbprint -FindValue $thumbprint `
+          -X509Credential -ServerCertThumbprint <thumbprint> `
+          -FindType FindByThumbprint -FindValue <thumbprint> `
           -StoreLocation CurrentUser -StoreName My
 
-Get-ServiceFabricClusterHealth
-```
+$nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
 
-```azurecli
-sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
---pem ./aztestcluster201709151446.pem --no-verify
-```
-
-Nach dem Herstellen der Verbindung können Sie mithilfe eines Befehls den Status der einzelnen Knoten im Cluster abrufen. Verwenden Sie für **PowerShell** den Befehl `Get-ServiceFabricClusterHealth` und für **sfctl** den Befehl `sfctl cluster select`.
-
-## <a name="scale-out"></a>Horizontales Skalieren
-
-Beim horizontalen Hochskalieren werden der Skalierungsgruppe mehr VM-Instanzen hinzugefügt. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Der folgende Code ruft eine Skalierungsgruppe anhand ihres Namens ab und erhöht die **Kapazität** der Skalierungsgruppe um 1:
-
-```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
-$scaleset.Sku.Capacity += 1
-
-Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
-```
-
-Der folgende Code legt die Kapazität auf 6 fest:
-
-```azurecli
-# Get the name of the node with
-az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
-
-# Use the name to scale
-az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
-```
-
-## <a name="scale-in"></a>Horizontales Herunterskalieren
-
-Horizontales Herunterskalieren ist mit horizontalem Hochskalieren vergleichbar. In diesem Fall wird jedoch ein niedrigerer Wert für **Kapazität** verwendet. Beim horizontalen Herunterskalieren einer Skalierungsgruppe werden VM-Instanzen aus der Skalierungsgruppe entfernt. Service Fabric erkennt üblicherweise nicht, was passiert ist, und geht davon aus, dass ein Knoten verloren gegangen ist. Daraufhin meldet Service Fabric einen fehlerhaften Zustand für den Cluster. Zur Vermeidung dieses Fehlerzustands müssen Sie Service Fabric auf den erwarteten Wegfall des Knotens vorbereiten.
-
-### <a name="remove-the-service-fabric-node"></a>Entfernen des Service Fabric-Knotens
-
-> [!NOTE]
-> Dieser Teil ist nur für die Dauerhaftigkeitsstufe *Bronze* relevant. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster][durability].
-
-Der zuletzt erstellte Knoten sollte zuerst entfernt werden, damit die Knoten des Clusters über die Upgrade- und Fehlerdomänen gleichmäßig verteilt bleiben und die gleichmäßige Nutzung sichergestellt ist. Anders ausgedrückt: Die Knoten sollten in der umgekehrten Reihenfolge ihrer Erstellung entfernt werden. Der zuletzt erstellte Knoten verfügt über den höchsten `virtual machine scale set InstanceId`-Eigenschaftswert. In den unten angegebenen Codebeispielen wird der zuletzt erstellte Knoten zurückgegeben.
-
-```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
-```
-
-```azurecli
-sfctl node list --query "sort_by(items[*], &name)[-1]"
-```
-
-Der Service Fabric-Cluster muss wissen, dass dieser Knoten entfernt wird. Hierzu sind drei Schritte erforderlich:
-
-1. Deaktivieren Sie den Knoten, sodass es sich dabei nicht mehr um ein Replikat für Daten handelt.  
-PowerShell: `Disable-ServiceFabricNode`  
-sfctl: `sfctl node disable`
-
-2. Beenden Sie den Knoten, damit die Service Fabric-Laufzeit richtig heruntergefahren wird und Ihre App eine Beendigungsanforderung erhält.  
-PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfctl: `sfctl node transition --node-transition-type Stop`
-
-2. Entfernen Sie den Knoten aus dem Cluster.  
-PowerShell: `Remove-ServiceFabricNodeState`  
-sfctl: `sfctl node remove-state`
-
-Nachdem diese drei Schritte für den Knoten ausgeführt wurden, kann er aus der Skalierungsgruppe entfernt werden. Bei Verwendung einer anderen Dauerhaftigkeitsstufe als [Bronze][durability] werden diese Schritte automatisch ausgeführt, wenn die Skalierungsgruppeninstanz entfernt wird.
-
-Der folgende Codeblock ruft den zuletzt erstellten Knoten ab und deaktiviert, beendet und entfernt ihn aus dem Cluster.
-
-```powershell
-#### After you've connected.....
-# Get the node that was created last
-$node = Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
-
-# Node details for the disable/stop process
-$nodename = $node.NodeName
-$nodeid = $node.NodeInstanceId
-
-$loopTimeout = 10
-
-# Run disable logic
-Disable-ServiceFabricNode -NodeName $nodename -Intent RemoveNode -TimeoutSec 300 -Force
-
-$state = Get-ServiceFabricNode | Where-Object NodeName -eq $nodename | Select-Object -ExpandProperty NodeStatus
-
-while (($state -ne [System.Fabric.Query.NodeStatus]::Disabled) -and ($loopTimeout -ne 0))
+Foreach($node in $nodes)
 {
-    Start-Sleep 5
-    $loopTimeout -= 1
-    $state = Get-ServiceFabricNode | Where-Object NodeName -eq $nodename | Select-Object -ExpandProperty NodeStatus
-    Write-Host "Checking state... $state found"
-}
-
-# Exit if the node was unable to be disabled
-if ($state -ne [System.Fabric.Query.NodeStatus]::Disabled)
-{
-    Write-Error "Disable failed with state $state"
-}
-else
-{
-    # Stop node
-    $stopid = New-Guid
-    Start-ServiceFabricNodeTransition -Stop -OperationId $stopid -NodeName $nodename -NodeInstanceId $nodeid -StopDurationInSeconds 300
-
-    $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
-    $loopTimeout = 10
-
-    # Watch the transaction
-    while (($state -eq [System.Fabric.TestCommandProgressState]::Running) -and ($loopTimeout -ne 0))
-    {
-        Start-Sleep 5
-        $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
-        Write-Host "Checking state... $state found"
-    }
-
-    if ($state -ne [System.Fabric.TestCommandProgressState]::Completed)
-    {
-        Write-Error "Stop transaction failed with $state"
-    }
-    else
-    {
-        # Remove the node from the cluster
-        Remove-ServiceFabricNodeState -NodeName $nodename -TimeoutSec 300 -Force
-    }
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -TimeoutSec 300 -Force 
 }
 ```
 
-Unten im **sfctl**-Code wird der folgende Befehl verwendet, um den Wert **node-name** des zuletzt erstellten Knotens abzurufen: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
+## <a name="increase-node-resources"></a>Erhöhen von Knotenressourcen 
+Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  
 
-```azurecli
-# Inform the node that it is going to be removed
-sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
+> [!WARNING]
+> Wir empfehlen Ihnen, die VM-SKU einer Skalierungsgruppe bzw. eines Knotentyps nur dann zu ändern, wenn sie mit der Dauerhaftigkeitsstufe „Silber“ oder höher ausgeführt wird. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten.
 
-# Stop the node using a random guid as our operation id
-sfctl node transition --node-instance-id 131541348482680775 --node-name _nt1vm_5 --node-transition-type Stop --operation-id c17bb4c5-9f6c-4eef-950f-3d03e1fef6fc --stop-duration-in-seconds 14400 -t 300
+> [!WARNING]
+> Wir empfehlen Ihnen, die VM-SKU des primären Knotentyps nicht zu ändern, wobei es sich um einen gefährlichen Vorgang handelt, der auch nicht unterstützt wird.  Wenn Sie eine höhere Clusterkapazität benötigen, können Sie mehr VM-Instanzen oder zusätzliche Knotentypen hinzufügen.  Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen.  Sollte dies nicht möglich sein, können Sie [die VM-SKU des primären Knotentyps ändern](service-fabric-scale-up-node-type.md).
 
-# Remove the node from the cluster
-sfctl node remove-state --node-name _nt1vm_5
-```
+### <a name="update-the-template"></a>Aktualisieren der Vorlage
 
-> [!TIP]
-> Verwenden Sie die folgenden **sfctl**-Abfragen, um den Status der einzelnen Schritte zu überprüfen:
->
-> **Überprüfen des Deaktivierungsstatus**
-> `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
->
-> **Überprüfen des Beendigungsstatus**
-> `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
->
+[Exportieren Sie eine Vorlagen- und Parameterdatei](#export-the-template-for-the-resource-group) aus der Ressourcengruppe für die jüngste Bereitstellung.  Öffnen Sie die Datei *parameters.json*.  Wenn Sie den Cluster mithilfe der [Beispielvorlage][template] aus diesem Tutorial bereitgestellt haben, enthält der Cluster drei Knotentypen.  
 
-### <a name="scale-in-the-scale-set"></a>Horizontales Herunterskalieren der Skalierungsgruppe
+Die Größe der VMs im zweiten Knotentyp wird im Parameter *vmNodeType1Size* festgelegt.  Ändern Sie den Wert des Parameters *vmNodeType1Size* von „Standard_D2_V2“ in [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), wodurch die Ressourcen jeder VM-Instanz verdoppelt werden.
 
-Nachdem der Service Fabric-Knoten aus dem Cluster entfernt wurde, kann die VM-Skalierungsgruppe horizontal herunterskaliert werden. Im folgenden Beispiel wird die Kapazität der Skalierungsgruppe um 1 verringert:
+Die VM-SKU für alle drei Knotentypen wird im Parameter *vmImageSku* festgelegt.  Auch hier sollten Sie mit Vorsicht an das Ändern der VM-SKU eines Knotentyps herangehen, und es wird für den primären Knotentyp auch nicht empfohlen.
+
+### <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
+Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
-$scaleset.Sku.Capacity -= 1
-
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
-
-Der folgende Code legt die Kapazität auf 5 fest:
-
-```azurecli
-# Get the name of the node with
-az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
-
-# Use the name to scale
-az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
+Oder führen Sie den folgenden Azure-CLI-Befehl aus:
+```azure-cli
+az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -255,12 +873,15 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Lesen der Anzahl von Clusterknoten
-> * Hinzufügen von Clusterknoten (horizontales Hochskalieren)
-> * Entfernen von Clusterknoten (horizontales Herunterskalieren)
+> * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
+> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
 > [!div class="nextstepaction"]
 > [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

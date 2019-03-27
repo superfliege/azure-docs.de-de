@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616188"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097422"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -31,7 +31,7 @@ Mit Azure Backup können Sie Ihre Windows Server-Instanzen vor Beschädigungen, 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -88,11 +88,11 @@ Der Microsoft Azure Recovery Services-Agents (MARS) erstellt eine Zuordnung zwis
 
 1. Suchen Sie die heruntergeladene Datei **MARSagentinstaller.exe**, und doppelklicken Sie darauf.
 2. Der **Setup-Assistent für den Microsoft Azure Recovery Services-Agent** wird angezeigt. Geben Sie im Assistenten die folgenden Informationen an, wenn Sie dazu aufgefordert werden, und klicken Sie auf **Registrieren**.
-    - Speicherort für den Installations- und Cacheordner
-    - Proxyserverinformationen (wenn Sie einen Proxyserver verwenden, um eine Internetverbindung herzustellen)
-    - Informationen zum Benutzernamen und zum Kennwort (wenn Sie einen authentifizierten Proxy verwenden)
+   - Speicherort für den Installations- und Cacheordner
+   - Proxyserverinformationen (wenn Sie einen Proxyserver verwenden, um eine Internetverbindung herzustellen)
+   - Informationen zum Benutzernamen und zum Kennwort (wenn Sie einen authentifizierten Proxy verwenden)
 
-    ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
+     ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
 
 3. Klicken Sie am Ende des Assistenten auf **Mit Registrierung fortfahren**, und geben Sie die Datei mit den **Tresoranmeldeinformationen** an, die Sie im vorherigen Verfahren heruntergeladen haben.
  

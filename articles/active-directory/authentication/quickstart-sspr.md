@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6cd463a728d8362221aaf7789258d7815566b23
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eabc30b28ec6c32295c5eeff0f19b31fba622056
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095618"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Schnellstart: Self-Service-Kennwortzurücksetzung
 
@@ -42,11 +42,11 @@ In dieser Schnellstartanleitung wird Schritt für Schritt die Konfiguration der 
 3. Wählen Sie auf der Seite **Authentifizierungsmethoden** Folgendes aus:
    * Anzahl von erforderlichen Methoden zum Zurücksetzen: **1**
    * Für Benutzer verfügbare Methoden:
-      * **Mobiltelefon**
-      * **Bürotelefon**
+      * **E-Mail**
+      * **Code in der mobilen App (Vorschauversion)**
    * Klicken Sie auf **Speichern**.
 
-    ![Authentifizierung][Authentication]
+     ![Authentifizierung][Authentication]
 
 4. Wählen Sie auf der Seite **Registrierung** Folgendes aus:
    * Erzwingen der Registrierung für Benutzer bei der Anmeldung: **Ja**

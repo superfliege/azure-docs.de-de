@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/01/2018
+ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: be7bf4596989cf8dfd154e0a366f93650546224b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c3ea877e3271dcb5bea527d661e12827eb64fa0c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997424"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer gestaffelten Lösung für die Datenanalyse mit Azure und Azure Stack 
 
@@ -54,7 +54,7 @@ Es sind einige Vorbereitungsschritte erforderlich, um diese Lösung zu erstellen
 
 -   Ein Azure-Abonnement. (Erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).)
 
--   Laden Sie den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) herunter, und installieren Sie ihn.
+-   Laden Sie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) herunter, und installieren Sie ihn.
 
 -   Sie müssen Ihre eigenen Daten angeben, die von den Funktionen verarbeitet werden. Daten müssen generiert werden und für den Upload in den Azure Stack-Speicherblobcontainer verfügbar sein.
 
@@ -110,7 +110,7 @@ Das Speicherkonto und der Blobcontainer enthalten alle Originaldaten, die von lo
 
 6.  Wählen Sie auf dem Kontoblatt unter der Überschrift **BLOB-DIENST** die Option **Container**.
 
-7.  Wählen Sie oben auf dem Blatt die Option **+ Container** und dann **Container**.
+7.  Wählen Sie oben auf dem Blatt **+ Container** und dann **Container** aus.
 
     ![Alt text](media/azure-stack-solution-staged-data-analytics/image2.png)
 
@@ -175,25 +175,25 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Erstellen einer Funktion, die durch Blob Storage ausgelöst wird
 
-1.  Erweitern Sie die Funktions-App, und wählen Sie die Schaltfläche **+** neben **Functions**.
+1. Erweitern Sie die Funktions-App, und wählen Sie die Schaltfläche **+** neben **Functions**.
 
-2.  Geben Sie im Suchfeld `blob` ein, und wählen Sie dann die gewünschte Sprache für die Vorlage **Blobtrigger** aus.
+2. Geben Sie im Suchfeld `blob` ein, und wählen Sie dann die gewünschte Sprache für die Vorlage **Blobtrigger** aus.
 
-  ![Wählen Sie die Blob Storage-Triggervorlage aus.](media/azure-stack-solution-staged-data-analytics/image10.png)
+   ![Wählen Sie die Blob Storage-Triggervorlage aus.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
-3.  Verwenden Sie die Einstellungen wie in der Tabelle unten angegeben:
+3. Verwenden Sie die Einstellungen wie in der Tabelle unten angegeben:
 
-    | Einstellung | Empfohlener Wert | BESCHREIBUNG |
-    | ------- | ------- | ------- |
-    | NAME | Eindeutig in Ihrer Funktionen-App | Der Name dieser durch Blobs ausgelösten Funktion. |
-    | path | \<Pfad aus dem obigen Speicherort> | Der Speicherort in Blob Storage, der überwacht wird. Der Dateiname des Blobs wird in der Bindung als name-Parameter übergeben. |
-    | Speicherkontoverbindung | Funktions-App-Verbindung | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktions-App verwendet wird, oder eine neue erstellen. |
+   | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+   | ------- | ------- | ------- |
+   | NAME | Eindeutig in Ihrer Funktionen-App | Der Name dieser durch Blobs ausgelösten Funktion. |
+   | path | \<Pfad aus dem obigen Speicherort> | Der Speicherort in Blob Storage, der überwacht wird. Der Dateiname des Blobs wird in der Bindung als name-Parameter übergeben. |
+   | Speicherkontoverbindung | Funktions-App-Verbindung | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktions-App verwendet wird, oder eine neue erstellen. |
 
-    **Beispiel:**
+   **Beispiel:**
 
-    ![Erstellen Sie die Funktion, die durch Blob Storage ausgelöst wird.](media/azure-stack-solution-staged-data-analytics/image11.png)
+   ![Erstellen Sie die Funktion, die durch Blob Storage ausgelöst wird.](media/azure-stack-solution-staged-data-analytics/image11.png)
 
-4.  Wählen Sie **Erstellen** aus, um die Funktion zu erstellen.
+4. Wählen Sie **Erstellen** aus, um die Funktion zu erstellen.
 
 ### <a name="test-the-function"></a>Testen der Funktion
 
@@ -253,21 +253,21 @@ Nutzen Sie die oben beschriebenen Schritte und Einstellungen, um ein anderes Spe
 
 ## <a name="test-the-queue-triggered-function"></a>Testen der Funktion mit Auslösung per Warteschlange
 
-1.  Navigieren Sie im Azure Stack-Portal zur Funktion. Erweitern Sie unten auf der Seite die Option **Protokolle**, und stellen Sie sicher, dass das Protokollstreaming nicht angehalten ist.
+1. Navigieren Sie im Azure Stack-Portal zur Funktion. Erweitern Sie unten auf der Seite die Option **Protokolle**, und stellen Sie sicher, dass das Protokollstreaming nicht angehalten ist.
 
-2.  Öffnen Sie Storage-Explorer, und stellen Sie eine Verbindung mit dem Speicherkonto her, das Sie am Anfang dieses Abschnitts erstellt haben.
+2. Öffnen Sie Storage-Explorer, und stellen Sie eine Verbindung mit dem Speicherkonto her, das Sie am Anfang dieses Abschnitts erstellt haben.
 
-3.  Erweitern Sie das Speicherkonto, die Option **Blobcontainer** und dann das zuvor erstellte Blob. Wählen Sie **Hochladen** und dann **Dateien hochladen**.
+3. Erweitern Sie das Speicherkonto, die Option **Blobcontainer** und dann das zuvor erstellte Blob. Wählen Sie **Hochladen** und dann **Dateien hochladen**.
 
-    ![Laden Sie eine Datei in den Blob-Container hoch.](media/azure-stack-solution-staged-data-analytics/image12.png)
+   ![Laden Sie eine Datei in den Blob-Container hoch.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
-4.  Wählen Sie im Dialogfeld „Dateien hochladen“ das Feld „Dateien“. Navigieren Sie zu einer Datei auf einem lokalen Computer, z.B. zu einer Bilddatei, und wählen Sie sie aus. Wählen Sie **Öffnen** und dann **Hochladen**.
+4. Wählen Sie im Dialogfeld „Dateien hochladen“ das Feld „Dateien“. Navigieren Sie zu einer Datei auf einem lokalen Computer, z.B. zu einer Bilddatei, und wählen Sie sie aus. Wählen Sie **Öffnen** und dann **Hochladen**.
 
-5.  Navigieren Sie zurück zu den Funktionsprotokollen, und überprüfen Sie, ob das Blob gelesen wurde.
+5. Navigieren Sie zurück zu den Funktionsprotokollen, und überprüfen Sie, ob das Blob gelesen wurde.
 
-  **Beispiel:**
+   **Beispiel:**
 
-    ![Zeigen Sie die Meldung in den Protokollen an.](media/azure-stack-solution-staged-data-analytics/image13.png)
+   ![Zeigen Sie die Meldung in den Protokollen an.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Sichere Speicherung und sicherer Zugriff auf konforme Daten
 

@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa36ab67957dcba7b5282e219706e442be9dc97
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a77d502182da8128624bfb5fc0481f2f8786ec37
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674479"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293633"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Was ist der Gastzugriff in Azure Active Directory-B2B?
 
@@ -34,7 +35,7 @@ Mit Azure AD-B2B verwendet der Partner seine eigene Identitätsverwaltungslösun
 - Sie müssen keine externen Konten oder Kennwörter verwalten. 
 - Sie müssen keine Konten synchronisieren oder Kontolebenszyklen verwalten.  
 
-![Mitglied hinzufügen](media/what-is-b2b/add-member.png)
+![Screenshot: Seite „Mitglieder hinzufügen“](media/what-is-b2b/add-member.png)
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Einladen von Gastbenutzern mit einem einfachen Prozess zum Senden und Einlösen von Einladungen
 Gastbenutzer können sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anmelden. Falls der Gastbenutzer über kein Microsoft- oder Azure AD-Konto verfügt, wird zum Zeitpunkt der Einlösung ein Konto für ihn erstellt. 
@@ -42,7 +43,7 @@ Gastbenutzer können sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit i
 - Senden Sie einen direkten Link zu einer Anwendung oder eine Einladung an den eigenen Zugriffsbereich des Gastbenutzers. 
 - Gastbenutzer können die Einladung in wenigen Schritten einlösen, um sich anzumelden.
 
-![Zugriffsbereich](media/what-is-b2b/consentscreen.png)
+![Screenshot: Seite „Berechtigungen überprüfen“](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Verwenden von Richtlinien zum sicheren Freigeben von Anwendungen und Diensten
 Sie können Autorisierungsrichtlinien verwenden, um Ihre Unternehmensinhalte zu schützen. Richtlinien für bedingten Zugriff (beispielsweise Multi-Factor Authentication) können erzwungen werden:
@@ -50,7 +51,7 @@ Sie können Autorisierungsrichtlinien verwenden, um Ihre Unternehmensinhalte zu 
 - Auf Anwendungsebene
 - Für bestimmte Gastbenutzer, um Anwendungen und Daten des Unternehmens zu schützen
 
-![Gastbenutzer hinzufügen](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![Screenshot: Option „Bedingter Zugriff“](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Einfaches Hinzufügen von Gastbenutzern im Azure AD-Portal
@@ -60,7 +61,7 @@ Als Administrator können Sie im Azure-Portal problemlos Gastbenutzer zu Ihrer O
 - Der Gastbenutzer erhält sofort eine anpassbare Einladung, mit der er sich in seinem Zugangsbereich anmelden kann.
 - Gastbenutzer im Verzeichnis können Anwendungen oder Gruppen zugeordnet werden.  
 
-![Gastbenutzer hinzufügen](media/what-is-b2b/adding-b2b-users-admin.png)
+![Screenshot: Seite zur Eingabe einer Einladung an einen neuen Gastbenutzer](media/what-is-b2b/adding-b2b-users-admin.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Anwendungs- und Gruppenbesitzer können ihre eigenen Gastbenutzer verwalten
 
@@ -68,7 +69,7 @@ Sie können die Gastbenutzerverwaltung an Anwendungsbesitzer delegieren, sodass 
  - Administratoren richten die Self-Service-Anwendungs- und Gruppenverwaltung ein.
  - Benutzer, die keine Administratoren sind, verwenden ihren [Zugriffsbereich](https://myapps.microsoft.com), um Gastbenutzer zu Anwendungen oder Gruppen hinzuzufügen.
 
-![Gastbenutzer hinzufügen](media/what-is-b2b/access-panel-manage-app.png)
+![Screenshot: Zugriffsbereich für einen Gastbenutzer](media/what-is-b2b/access-panel-manage-app.png)
 
 ## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Mit APIs und einem Beispielcode können Sie einfach Anwendungen erstellen, die integriert werden sollen
 
@@ -76,7 +77,7 @@ Integrieren Sie Ihre externen Partner entsprechend den Anforderungen Ihrer Organ
 - Mithilfe der [Einladungs-APIs der B2B-Zusammenarbeit](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) können Sie Ihre Onboardingprozesse anpassen und unter anderem Self-Service-Registrierungsportale erstellen. 
 - Verwenden Sie den von uns bereitgestellten Beispielcode für ein Self-Service-Portal auf [GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
-![Registrierungsportal](media/what-is-b2b/sign-up-portal.png)
+![Screenshot: Beispiel für Anmeldeportal](media/what-is-b2b/sign-up-portal.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Freigeben für Sitzungen und Geräte mit Azure Spatial Anchors und einem Azure Cosmos DB-Back-End | Microsoft-Dokumentation'
-description: In diesem Tutorial wird beschrieben, wie Sie Azure Spatial Anchors-Bezeichner zwischen Geräten in Unity mit einem Back-End-Dienst und Azure Cosmos DB freigeben.
+description: In diesem Tutorial wird beschrieben, wie Sie Azure Spatial Anchors-Bezeichner zwischen Android/iOS-Geräten in Unity mit einem Back-End-Dienst und Azure Cosmos DB freigeben.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,36 +8,36 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0cd42fc37727099ed95a1c6fc2d427b7862412e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753455"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286396"
 ---
 # <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Tutorial: Freigeben für Sitzungen und Geräte mit Azure Spatial Anchors und einem Azure Cosmos DB-Back-End
 
 In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) für folgende Zwecke nutzen:
 
-1. Erstellen von Ankern („Anchors“) in einer Sitzung und anschließendes Wiederfinden in einer anderen Sitzung auf demselben oder einem anderen Gerät, beispielsweise an einem anderen Tag
-2. Erstellen von Ankern, die von mehreren Geräten gleichzeitig an demselben Ort gefunden werden können
+- Erstellen von Ankern („Anchors“) in einer Sitzung und anschließendes Wiederfinden in einer anderen Sitzung auf demselben oder einem anderen Gerät. Die zweite Sitzung könnte z.B. an einem anderen Tag stattfinden.
+- Erstellen von Ankern, die von mehreren Geräten an demselben Ort und gleichzeitig gefunden werden können.
 
-![Persistenz](./media/persistence.gif)
+![GIF zur Veranschaulichung der Objektpersistenz](./media/persistence.gif)
 
-[Azure Spatial Anchors](../overview.md) ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. Nach Abschluss des Vorgangs verfügen Sie über eine App, die auf zwei oder mehr Geräten bereitgestellt werden kann. Für Azure Spatial Anchors, die von einer Instanz erstellt werden, werden die Bezeichner über Cosmos DB mit anderen Ankern gemeinsam verwendet.
+[Azure Spatial Anchors](../overview.md) ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. Nach Abschluss des Vorgangs verfügen Sie über eine App, die auf zwei oder mehr Geräten bereitgestellt werden kann. Für Spatial Anchors, die von einer Instanz erstellt werden, werden die Bezeichner über Azure Cosmos DB mit anderen Ankern gemeinsam verwendet.
 
 Sie lernen Folgendes:
 
 > [!div class="checklist"]
-> * Bereitstellen einer ASP.NET Core-Web-App in Azure, die zum Freigeben von Ankern verwendet werden kann (Speicherung in Cosmos DB)
-> * Konfigurieren der AzureSpatialAnchorsLocalSharedDemo-Szene im Unity-Beispiel aus den Schnellstartanleitungen, um die Sharing Anchors-Web-App zu nutzen
-> * Bereitstellen und Ausführen auf einem oder mehreren Geräten
+> * Bereitstellen einer ASP.NET Core-Web-App in Azure, die zum Freigeben von Ankern verwendet werden kann (Speicherung in Azure Cosmos DB).
+> * Konfigurieren der AzureSpatialAnchorsLocalSharedDemo-Szene im Unity-Beispiel aus den Azure-Schnellstartanleitungen, um die Sharing Anchors-Web-App zu nutzen.
+> * Bereitstellen und Ausführen einer App auf einem oder mehreren Geräten.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und Azure Cosmos DB, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Azure Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen. Darüber hinaus verfügt die in diesem Tutorial verwendete ASP.NET Core-Web-App über eine Abhängigkeit vom .NET Core 2.2 SDK. Dies funktioniert gut für reguläre Azure-Web-Apps (für Windows), aber derzeit nicht für Azure-Web-Apps für Linux.
+Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und Azure Cosmos DB, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen. Darüber hinaus setzt die in diesem Tutorial verwendete ASP.NET Core-Web-App .NET Core 2.2 SDK voraus. Es lässt sich problemlos auf Web-Apps für Windows ausführen, aber derzeit nicht auf Web-Apps für Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -45,21 +45,25 @@ Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und Azure Co
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Notieren Sie sich den Inhalt von `Connection String`, da Sie ihn später noch benötigen.
+Kopieren Sie den `Connection String`, da Sie ihn benötigen.
 
-## <a name="deploy-your-sharing-anchors-service"></a>Bereitstellen Ihres Diensts für die Freigabe von Ankern (Sharing Anchors)
+## <a name="open-the-sample-project-in-unity"></a>Öffnen des Beispielprojekts in Unity
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+## <a name="deploy-the-sharing-anchors-service"></a>Bereitstellen des Diensts für die Freigabe von Ankern (Sharing Anchors)
 
 Öffnen Sie Visual Studio und dann das Projekt im Ordner `Sharing\SharingServiceSample`.
 
-### <a name="configure-the-service-so-that-it-uses-your-cosmos-db"></a>Konfigurieren des Diensts für die Verwendung von Cosmos DB
+### <a name="configure-the-service-to-use-your-azure-cosmos-db-database"></a>Konfigurieren des Diensts zur Verwendung Ihrer Azure Cosmos DB-Datenbankinstanz
 
-Öffnen Sie im **Projektmappen-Explorer** die Datei `SharingService\Startup.cs`.
+Öffnen Sie `SharingService\Startup.cs` im **Projektmappen-Explorer**.
 
-Suchen Sie oben in der Datei nach der Zeile `#define INMEMORY_DEMO`, und kommentieren Sie sie aus. Speichern Sie die Datei.
+Suchen Sie oben in der Datei nach `#define INMEMORY_DEMO`, und kommentieren Sie diese Zeile aus. Speichern Sie die Datei .
 
-Öffnen Sie im **Projektmappen-Explorer** die Datei `SharingService\appsettings.json`.
+Öffnen Sie `SharingService\appsettings.json` im **Projektmappen-Explorer**.
 
-Suchen Sie nach der `StorageConnectionString`-Eigenschaft, und legen Sie den Wert auf den `Connection String`-Text fest, den Sie sich im Schritt [Erstellen eines Datenbankkontos](#create-a-database-account) notiert haben. Speichern Sie die Datei.
+Suchen Sie nach der `StorageConnectionString`-Eigenschaft, und legen Sie den Wert auf den `Connection String`-Text fest, den Sie im Schritt [Erstellen eines Datenbankkontos](#create-a-database-account) kopiert haben. Speichern Sie die Datei .
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 

@@ -1,71 +1,58 @@
 ---
-title: Hochladen von Daten in den Code mithilfe von .NET SDK – Azure Search
+title: Laden von Daten in einem Azure Search-Index in C# (.NET SDK) – Azure Search
 description: Erfahren Sie, wie Sie mit C#-Beispielcode und dem .NET SDK Daten in einen durchsuchbaren Volltextindex in Azure Search hochladen.
-author: brjohnstmsft
-manager: jlembicz
-ms.author: brjohnst
+author: heidisteen
+manager: cgronlun
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/13/2017
-ms.custom: seodec2018
-ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 03/20/2019
+ms.openlocfilehash: d2d54d1425bbb67a3f5ba1b6081a9f74ff87f4d6
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634897"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286906"
 ---
-# <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Hochladen von Daten in Azure Search mit dem .NET SDK
-> [!div class="op_single_selector"]
-> * [Übersicht](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
-> 
-> 
+# <a name="quickstart-2---load-data-to-an-azure-search-index-using-c"></a>Schnellstart: 2 – Laden von Daten in einen Azure Search-Index mit C#
 
-In diesem Artikel erfahren Sie, wie Sie das [Azure Search .NET SDK](https://aka.ms/search-sdk) zum Importieren von Daten in einen Azure Search-Index verwenden.
+In diesem Artikel wird beschrieben, wie Sie mit C# und dem [.NET SDK](https://aka.ms/search-sdk) Daten in einen [Azure Search-Index](search-what-is-an-index.md) importieren. Um Dokumente in Ihren Index zu pushen, müssen folgende Aufgaben ausgeführt werden:
 
-[Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen. Dieser Artikel setzt auch voraus, dass Sie bereits wie unter [Erstellen eines Azure Search-Index mit dem .NET SDK](search-create-index-dotnet.md#CreateSearchServiceClient) beschrieben ein `SearchServiceClient`-Objekt erstellt haben.
+> [!div class="checklist"]
+> * Erstellen Sie ein [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet)-Objekt, um eine Verbindung mit dem Suchindex herzustellen.
+> * Erstellen Sie ein [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)-Objekt mit den Dokumenten, die hinzugefügt, geändert oder gelöscht werden sollen.
+> * Rufen Sie die `Documents.Index`-Methode auf dem `SearchIndexClient` auf, um Dokumente zu einem Index hochzuladen.
 
-> [!NOTE]
-> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](https://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+## <a name="prerequisites"></a>Voraussetzungen
 
-Gehen Sie wie folgt vor, um Dokumente mit dem .NET SDK in Ihren Index zu übertragen:
+[Erstellen eines Azure Search-Indexes](search-create-index-dotnet.md) und eines `SearchServiceClient`-Objekts, wie in [Erstellen eines Clients](search-create-index-dotnet.md#CreateSearchServiceClient) gezeigt.
 
-1. Erstellen Sie ein `SearchIndexClient` -Objekt, um eine Verbindung mit dem Suchindex herzustellen.
-2. Erstellen Sie ein `IndexBatch`-Element mit den Dokumenten, die hinzugefügt, geändert oder gelöscht werden sollen.
-3. Rufen Sie die `Documents.Index`-Methode des `SearchIndexClient`-Elements auf, um das `IndexBatch`-Element an den Suchindex zu senden.
 
-## <a name="create-an-instance-of-the-searchindexclient-class"></a>Erstellen einer Instanz der SearchIndexClient-Klasse
-Um Daten mit dem Azure Search .NET SDK in den Index zu importieren, müssen Sie eine Instanz der `SearchIndexClient`-Klasse erstellen. Sie können diese Instanz selbst erstellen. Es ist aber einfacher, wenn Sie bereits über eine `SearchServiceClient`-Instanz zum Aufrufen der `Indexes.GetClient`-Methode verfügen. Hier ist beispielsweise angegeben, wie Sie ein `SearchIndexClient`-Element für den Index mit dem Namen „hotels“ über ein `SearchServiceClient`-Element mit dem Namen `serviceClient` erhalten:
+## <a name="create-a-client"></a>Erstellen eines Clients
+Zum Importieren von Daten benötigen Sie eine Instanz der `SearchIndexClient`-Klasse. Es gibt verschiedene Ansätze zum Erstellen dieser Klasse, einschließlich der Verwendung der bereits erstellten `SearchServiceClient`-Instanz. 
+
+Wie das folgende Beispiel veranschaulicht, können Sie die `SearchServiceClient`-Instanz verwenden und ihre `Indexes.GetClient`-Methode aufrufen. Dieser Codeausschnitt ruft einen `SearchIndexClient` für den Index mit dem Namen „hotels“ von einem `SearchServiceClient` mit dem Namen `serviceClient` ab.
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-> [!NOTE]
-> In einer typischen Suchanwendung erfolgen Verwaltung und Füllung des Index getrennt von Suchabfragen. `Indexes.GetClient` eignet sich zum Auffüllen eines Indexes, da Sie keine weiteren `SearchCredentials` bereitstellen müssen. Vielmehr wird der Admin-Schlüssel, den Sie zum Erstellen des Objekts `SearchServiceClient` verwendet haben, auf das neue `SearchIndexClient`-Objekt übertragen. In dem Teil der Anwendung, in dem Abfragen ausgeführt werden, sollte das Objekt `SearchIndexClient` hingegen direkt erstellt werden, damit anstelle des Admin-Schlüssels ein Abfrageschlüssel übergeben werden kann. Dies entspricht dem [Prinzip der geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) und trägt dazu bei, die Anwendung sicherer zu machen. Weitere Informationen zu Administrator- und Abfrageschlüsseln finden Sie in der [Referenz zur Azure Search REST-API](https://docs.microsoft.com/rest/api/searchservice/).
-> 
-> 
-
 `SearchIndexClient` verfügt über eine `Documents`-Eigenschaft. Mit dieser Eigenschaft werden alle Methoden bereitgestellt, die Sie benötigen, um Dokumente im Index hinzuzufügen, zu ändern, zu löschen oder abzufragen.
 
-## <a name="decide-which-indexing-action-to-use"></a>Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
-Zum Importieren von Daten mit dem .NET SDK müssen Sie Ihre Daten in einem `IndexBatch`-Objekt verpacken. Ein `IndexBatch`-Element kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll (Hochladen, Zusammenführen, Löschen usw.). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
+> [!NOTE]
+> In einer typischen Suchanwendung werden Abfragen und Indizieren separat behandelt. Während `Indexes.GetClient` praktisch ist, da Sie Objekte wie `SearchCredentials` wiederverwenden können, umfasst ein stabilerer Ansatz das direkte Erstellen des `SearchIndexClient`, damit Sie einen Abfrageschlüssel statt eines Administratorschlüssels übergeben können. Diese Praxis entspricht dem [Prinzip der geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) und trägt dazu bei, die Anwendung sicherer zu machen. In der nächsten Übung erstellen Sie einen `SearchIndexClient`. Weitere Informationen zu Schlüsseln finden Sie unter [Erstellen und Verwalten von API-Schlüsseln für einen Azure Search-Dienst](search-security-api-keys.md).
+> 
+> 
 
-| Aktion | BESCHREIBUNG | Erforderliche Felder für jedes Dokument | Notizen |
-| --- | --- | --- | --- |
-| `Upload` |Eine `Upload` -Aktion entspricht „upsert“, wobei neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. |Schlüssel und alle anderen zu definierenden Felder |Wenn ein bestehendes Dokument aktualisiert/ersetzt wird, werden alle in der Anforderung nicht festgelegten Felder auf `null`festgelegt. Dies tritt auch auf, wenn das Feld zuvor auf einen Wert festgelegt wurde, der nicht Null ist. |
-| `Merge` |Aktualisiert ein bestehendes Dokument mit den angegebenen Feldern. Wenn das Dokument im Index nicht vorhanden ist, schlägt die Zusammenführung fehl. |Schlüssel und alle anderen zu definierenden Felder |Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Dies beinhaltet auch Felder vom Typ `DataType.Collection(DataType.String)`. Wenn das Dokument beispielsweise das Feld `tags` mit dem Wert `["budget"]` enthält und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für `tags` durchführen, hat das Feld `tags` am Ende den Wert `["economy", "pool"]`. Der Wert lautet nicht `["budget", "economy", "pool"]`. |
-| `MergeOrUpload` |Diese Aktion verhält sich wie `Merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `Upload` mit einem neuen Dokument. |Schlüssel und alle anderen zu definierenden Felder |- |
-| `Delete` |Hiermit wird das angegebene Dokument aus dem Index gelöscht. |Nur Schlüssel |Mit Ausnahme des Schlüsselfelds werden alle angegebenen Felder ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `Merge` , und setzen Sie das Feld ausdrücklich auf Null. |
+<a name="construct-indexbatch"></a>
 
-Sie können angeben, welche Aktion Sie verwenden möchten, indem Sie verschiedene statische Methoden der Klassen `IndexBatch` und `IndexAction` verwenden. Dies wird im nächsten Abschnitt gezeigt.
+## <a name="construct-indexbatch"></a>Erstellen des IndexBatch-Elements
 
-## <a name="construct-your-indexbatch"></a>Erstellen des IndexBatch-Elements
-Nachdem Sie nun wissen, welche Aktionen für die Dokumente durchgeführt werden, können Sie das `IndexBatch`-Element erstellen. Im folgenden Beispiel wird veranschaulicht, wie Sie einen Batch mit einigen anderen Aktionen erstellen. Beachten Sie, dass im Beispiel eine benutzerdefinierte Klasse mit dem Namen `Hotel` verwendet wird, die einem Dokument im Index „hotels“ zugeordnet ist.
+Zum Importieren von Daten mit dem .NET SDK verpacken Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatch`-Element kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll (Hochladen, Zusammenführen, Löschen und mergeOrUpload). Weitere Informationen zu Indizierungen finden Sie unter [Indizierungsaktionen: Hochladen, Zusammenführen, MergeOrUpload, Löschen](search-what-is-data-import.md#indexing-actions).
+
+Nachdem Sie nun wissen, welche Aktionen für die Dokumente durchgeführt werden, können Sie das `IndexBatch`-Element erstellen. Im folgenden Beispiel wird veranschaulicht, wie Sie einen Batch mit einigen anderen Aktionen erstellen. Im Beispiel wird eine benutzerdefinierte Klasse mit dem Namen `Hotel` verwendet, die einem Dokument im Index „hotels“ zugeordnet ist.
 
 ```csharp
 var actions =
@@ -127,7 +114,7 @@ Beachten Sie außerdem, dass in einer Indizierungsanforderung nur bis zu 1.000 
 > 
 > 
 
-## <a name="import-data-to-the-index"></a>Importieren von Daten in den Index
+## <a name="call-documentsindex"></a>Aufrufen von „Documents.Index“
 Nachdem Sie nun über ein initialisiertes `IndexBatch`-Objekt verfügen, können Sie es an den Index senden, indem Sie `Documents.Index` für das `SearchIndexClient`-Objekt aufrufen. Das folgende Beispiel zeigt, wie Sie `Index`aufrufen, sowie einige zusätzliche Schritte, die Sie ausführen müssen:
 
 ```csharp
@@ -153,84 +140,11 @@ Beachten Sie das Element `try`/`catch`, von dem der Aufruf der `Index`-Methode u
 
 Schließlich wird der Code im obigen Beispiel um zwei Sekunden verzögert. Da die Indizierung in Ihrem Azure Search-Dienst asynchron erfolgt, muss die Beispielanwendung einen Augenblick warten, damit sichergestellt ist, dass die Dokumente für Suchen zur Verfügung stehen. Verzögerungen wie diese sind in der Regel nur in Demos, Tests und Beispielanwendungen erforderlich.
 
-<a name="HotelClass"></a>
+Weitere Informationen zur Verarbeitung von Dokumenten finden Sie unter [Behandeln von Dokumenten durch das .NET SDK](search-howto-dotnet-sdk.md#how-dotnet-handles-documents).
 
-### <a name="how-the-net-sdk-handles-documents"></a>Behandeln von Dokumenten durch das .NET-SDK
-Vielleicht fragen Sie sich, wie das Azure Search-.NET-SDK Instanzen einer benutzerdefinierten Klasse wie `Hotel` in einen Index hochladen kann. Zur Beantwortung dieser Frage sehen wir uns die `Hotel` -Klasse an, die dem unter [Erstellen eines Azure Search-Index mit dem .NET SDK](search-create-index-dotnet.md#DefineIndex)definierten Indexschema entspricht:
-
-```csharp
-[SerializePropertyNamesAsCamelCase]
-public partial class Hotel
-{
-    [Key]
-    [IsFilterable]
-    public string HotelId { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
-
-    [IsSearchable]
-    public string Description { get; set; }
-
-    [IsSearchable]
-    [Analyzer(AnalyzerName.AsString.FrLucene)]
-    [JsonProperty("description_fr")]
-    public string DescriptionFr { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable]
-    public string HotelName { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-    public string Category { get; set; }
-
-    [IsSearchable, IsFilterable, IsFacetable]
-    public string[] Tags { get; set; }
-
-    [IsFilterable, IsFacetable]
-    public bool? ParkingIncluded { get; set; }
-
-    [IsFilterable, IsFacetable]
-    public bool? SmokingAllowed { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public DateTimeOffset? LastRenovationDate { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public int? Rating { get; set; }
-
-    [IsFilterable, IsSortable]
-    public GeographyPoint Location { get; set; }
-
-    // ToString() method omitted for brevity...
-}
-```
-
-Als Erstes ist zu beachten, dass jede öffentliche Eigenschaft von `Hotel` einem Feld in der Indexdefinition entspricht, aber mit einem bedeutsamen Unterschied: Die Namen der einzelnen Felder beginnen mit einem Kleinbuchstaben („Camel-Case-Schreibweise“), während die Namen der öffentlichen Eigenschaften von `Hotel` mit einem Großbuchstaben beginnen („Pascal-Schreibweise“). Dies ist ein typisches Szenario für .NET-Anwendungen, die Datenbindungen durchführen, wenn das Zielschema außerhalb der Kontrolle des Anwendungsentwicklers liegt. Anstatt nun die Namenskonventionen von .NET mit Eigenschaftsnamen in camel-Schreibweise zu verletzen, können Sie das SDK mit dem Attribut `[SerializePropertyNamesAsCamelCase]` anweisen, Eigenschaftsnamen automatisch der camel-Schreibweise zuzuordnen.
-
-> [!NOTE]
-> Das Azure Search .NET SDK verwendet die [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) -Bibliothek, um die Objekte Ihres benutzerdefinierten Modells nach JSON zu serialisieren und aus JSON zu deserialisieren. Sie können diese Serialisierung bei Bedarf anpassen. Ausführlichere Informationen finden Sie unter [Benutzerdefinierte Serialisierung mit JSON.NET](search-howto-dotnet-sdk.md#JsonDotNet). Ein Beispiel hierfür ist die Verwendung des Attributs `[JsonProperty]` für die `DescriptionFr`-Eigenschaft im obigen Beispielcode.
-> 
-> 
-
-Ebenso bemerkenswert an der Klasse `Hotel` sind die Datentypen der öffentlichen Eigenschaften. Die .NET-Typen dieser Eigenschaften stimmen mit den entsprechenden Feldtypen in der Indexdefinition überein. Die Zeichenfolgeeigenschaft `Category` passt zum Beispiel zum Feld `category`, das den Typ `DataType.String` hat. Ähnliche Zuordnungen bestehen auch zwischen `bool?` und `DataType.Boolean`, `DateTimeOffset?` und `DataType.DateTimeOffset` usw. Die jeweiligen Regeln für die Zuordnung eines Typs sind in der [Referenz zum Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get) unter der `Documents.Get`-Methode dokumentiert.
-
-Diese Möglichkeit, eigene Klassen als Dokumente zu verwenden, funktioniert in beide Richtungen. Denn Sie können das SDK auch wie im [nächsten Artikel](search-query-dotnet.md) gezeigt beim Abrufen von Suchergebnissen anweisen, diese automatisch in einen Typ Ihrer Wahl zu deserialisieren.
-
-> [!NOTE]
-> Das Azure Search-.NET-SDK unterstützt durch die Klasse `Document`, einer Schlüssel-/Wertzuordnung von Feldnamen zu Feldwerten, auch dynamisch typisierte Dokumente. Diese Art der Typisierung eignet sich für Szenarien, in denen Sie bei der Entwicklung noch nicht wissen, wie das Indexschema aussehen soll, oder in denen eine Bindung an bestimmte Modellklassen unpassend ist. Alle Methoden des SDK, die Dokumente verarbeiten, verfügen über Überladungen, welche die Klasse `Document` verwenden, wie auch stark typisierte Überladungen, die einen generischen Typparameter verwenden. Nur letztere Art von Überladung wird im Beispielcode dieses Artikels verwendet.
-> 
-> 
-
-**Argumente für die Verwendung von Nullable-Datentypen**
-
-Beim Entwerfen eigener Modellklassen für die Zuordnung zum Azure Search-Index wird empfohlen, Eigenschaften von Werttypen, z. B. `bool` und `int`, als Eigenschaften zu deklarieren, die NULL-Werte zulassen (z. B. `bool?` anstelle von `bool`). Wenn Sie eine Eigenschaft verwenden, die keine NULL-Werte zulässt, müssen Sie **garantieren**, dass keine Dokumente im Index einen NULL-Wert für das entsprechende Feld enthalten. Weder das SDK noch der Azure Search-Dienst helfen Ihnen, dies durchzusetzen.
-
-Dies ist nicht nur von hypothetischer Bedeutung: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `DataType.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition besitzen alle Dokumente einen NULL-Wert für das neue Feld (da in Azure Search alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
-
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
-
-Aus diesem Grund empfehlen wir als bewährte Methode, in Ihren Modellklassen Typen zu verwenden, die NULL-Werte zulassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen in Azure Search](search-query-overview.md) .
+Nach dem Auffüllen des Azure Search-Indexes werden im nächsten Schritt Abfragen für die Suche nach Dokumenten ausgeführt. 
 
+> [!div class="nextstepaction"]
+> [Abfragen eines Azure Search-Indexes in C#](search-query-dotnet.md)

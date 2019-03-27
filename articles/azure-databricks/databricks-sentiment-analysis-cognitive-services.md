@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.openlocfilehash: 6509db136524d90db11b83acb701bda71c541060
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882619"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080538"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Tutorial: Standpunktanalyse für Streamingdaten mit Azure Databricks
 
@@ -40,6 +40,10 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Durchführen der Standpunktanalyse für Tweets
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+> [!Note]
+> Dieses Tutorial kann nicht mit dem **kostenlosen Azure-Testabonnement** absolviert werden.
+> Navigieren Sie vor dem Erstellen des Clusters zu Ihrem Profil, und legen Sie für Ihr Abonnement die **nutzungsbasierte Bezahlung** fest, um für die Erstellung des Azure Databricks-Clusters ein kostenloses Konto zu verwenden. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -97,11 +101,11 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
-    * Geben Sie einen Namen für den Cluster ein.
-    * Erstellen Sie für diesen Artikel einen Cluster mit der Laufzeit **4.0 (Beta)**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+   * Geben Sie einen Namen für den Cluster ein.
+   * Erstellen Sie für diesen Artikel einen Cluster mit der Laufzeit **4.0 (Beta)**.
+   * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
-    Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
+     Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
 ## <a name="create-a-twitter-application"></a>Erstellen einer Twitter-Anwendung
 
@@ -125,16 +129,16 @@ Speichern Sie die Werte, die Sie für die Twitter-Anwendung abgerufen haben. Die
 
 In diesem Tutorial verwenden Sie die Twitter-APIs, um Tweets an Event Hubs zu senden. Außerdem verwenden Sie den [Apache Spark-Event Hubs-Connector](https://github.com/Azure/azure-event-hubs-spark), um Daten in Azure Event Hubs zu lesen und zu schreiben. Fügen Sie diese APIs als Bibliotheken in Azure Databricks hinzu, und ordnen Sie sie dann Ihrem Spark-Cluster zu, um sie als Teil Ihres Clusters zu nutzen. In der folgenden Anleitung wird veranschaulicht, wie Sie die Bibliothek in Ihrem Arbeitsbereich dem Ordner **Freigegeben** hinzufügen.
 
-1.  Klicken Sie im Azure Databricks-Arbeitsbereich auf **Arbeitsbereich** und anschließend mit der rechten Maustaste auf **Freigegeben**. Klicken Sie im Kontextmenü auf **Erstellen** > **Bibliothek**.
+1. Klicken Sie im Azure Databricks-Arbeitsbereich auf **Arbeitsbereich** und anschließend mit der rechten Maustaste auf **Freigegeben**. Klicken Sie im Kontextmenü auf **Erstellen** > **Bibliothek**.
 
-    ![Dialogfeld „Bibliothek hinzufügen“](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "Dialogfeld „Bibliothek hinzufügen“")
+   ![Dialogfeld „Bibliothek hinzufügen“](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "Dialogfeld „Bibliothek hinzufügen“")
 
 2. Wählen Sie auf der Seite „Neue Bibliothek“ unter **Quelle** die Option **Maven Coordinate** (Maven-Koordinate) aus. Geben Sie unter **Koordinate** die Koordinate für das Paket ein, das Sie hinzufügen möchten. Im Anschluss finden Sie die Maven-Koordinaten für die Bibliotheken, die in diesem Tutorial verwendet werden:
 
-    * Spark-Event Hubs-Connector: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
-    * Twitter-API: `org.twitter4j:twitter4j-core:4.0.6`
+   * Spark-Event Hubs-Connector: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
+   * Twitter-API: `org.twitter4j:twitter4j-core:4.0.6`
 
-    ![Angeben von Maven-Koordinaten](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Angeben von Maven-Koordinaten")
+     ![Angeben von Maven-Koordinaten](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Angeben von Maven-Koordinaten")
 
 3. Klicken Sie auf **Bibliothek erstellen**.
 
@@ -164,13 +168,13 @@ In diesem Tutorial verwenden Sie die [Microsoft Cognitive Services-Textanalyse-A
 
     ![Erstellen eines Cognitive Services-Kontos](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Erstellen eines Cognitive Services-Kontos")
 
-    - Geben Sie einen Namen für das Cognitive Services-Konto ein.
-    - Wählen Sie das Azure-Abonnement aus, unter dem das Konto erstellt wird.
-    - Wählen Sie einen Azure-Standort aus.
-    - Wählen Sie einen Tarif für den Dienst aus. Weitere Informationen zu den Preisen von Cognitive Services finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    - Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene auswählen möchten.
+   - Geben Sie einen Namen für das Cognitive Services-Konto ein.
+   - Wählen Sie das Azure-Abonnement aus, unter dem das Konto erstellt wird.
+   - Wählen Sie einen Azure-Standort aus.
+   - Wählen Sie einen Tarif für den Dienst aus. Weitere Informationen zu den Preisen von Cognitive Services finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
+   - Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene auswählen möchten.
 
-    Klicken Sie auf **Erstellen**.
+     Klicken Sie auf **Erstellen**.
 
 5. Wählen Sie nach der Erstellung des Kontos auf der Registerkarte **Übersicht** die Option **Zugriffsschlüssel anzeigen** aus.
 

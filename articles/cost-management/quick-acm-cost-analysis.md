@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 55407ec1846a0fe2eb037756dc2e97d8b05e7330
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997307"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -51,7 +51,7 @@ Weitere Informationen zum Zuweisen des Zugriffs auf Cost Management-Daten finden
 
 ## <a name="review-costs-in-cost-analysis"></a>Überprüfen von Kosten mithilfe der Kostenanalyse
 
-Um Ihre Kosten mithilfe der Kostenanalyse zu überprüfen, navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** &gt; **Kostenanalyse**. Wählen Sie **Bereich: _Name des Bereichs_** und einen Bereich aus, und klicken Sie anschließend auf **Auswählen**.
+Um Ihre Kosten in der Kostenanalyse zu überprüfen, öffnen Sie den gewünschten Bereich im Azure-Portal und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, wählen Sie ein Abonnement aus der Liste aus, und wählen Sie dann **Kostenanalyse** im Menü. Verwenden Sie **Bereich**, um in einen anderen Bereich der Kostenanalyse zu wechseln. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 Der von Ihnen ausgewählte Bereich wird in der gesamten Kostenverwaltung verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Wenn Sie Bereiche verwenden, wählen Sie diese nicht mehrfach aus. Wählen Sie stattdessen einen größeren Bereich aus, in dem andere zusammengefasst werden, und filtern Sie diesen dann nach Ihren Wünschen. Hiermit sollten Sie sich unbedingt vertraut machen, da einige Personen keinen Zugriff auf einen übergeordneten Bereich haben sollten, unter dem untergeordnete Bereiche zusammengefasst sind.
 

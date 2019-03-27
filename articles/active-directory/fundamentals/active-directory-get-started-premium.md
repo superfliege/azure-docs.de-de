@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c70c6187672c47a9f6dc09e1ccb8e6eadeff6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187678"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287059"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registrieren für Azure Active Directory Premium-Editionen
 Sie können Azure Active Directory (Azure AD) Premium-Editionen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen müssen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren.
@@ -65,17 +65,17 @@ Wenn Sie sich mit einem neuen Azure AD-Lizenzplan registriert haben, müssen Sie
 ### <a name="to-activate-your-license-plan"></a>Aktivieren des Lizenzplans
 - Öffnen Sie die Bestätigungs-E-Mail, die Sie von Microsoft nach Ihrer Registrierung erhalten haben, und klicken Sie dann entweder auf **Anmelden** oder **Registrieren**.
    
-    ![Anmelden](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![Bestätigungs-E-Mail mit Links zum Anmelden und Registrieren](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **Anmelden**: Klicken Sie auf diesen Link, wenn Sie bereits über einen Mandanten verfügen, und melden Sie sich dann bei Ihrem vorhandenen Administratorkonto an. Sie müssen ein globaler Administrator auf dem Mandanten sein, auf dem die Lizenzen aktiviert werden.
 
     - **Registrieren**: Klicken Sie auf diesen Link, wenn Sie die Seite **Kontoprofil erstellen** öffnen und einen neuen Azure AD-Mandanten für Ihren Lizenzplan erstellen möchten.
 
-        ![Kontoprofil erstellen](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![Seite „Kontoprofil erstellen“ mit Beispielinformationen](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 Wenn Sie fertig sind, sehen Sie ein Bestätigungsdialogfeld, in dem Ihnen für die Aktivierung des Lizenzplans für Ihren Mandanten gedankt wird.
 
-![Bestätigung](media/active-directory-get-started-premium/MOLSThankYou.png)
+![Bestätigungsdialogfeld](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Aktivieren des Azure AD-Zugriffs
 Wenn Sie neue Azure AD Premium-Lizenzen zu einem vorhandenen Abonnement hinzufügen, sollte Ihr Azure AD-Zugriff bereits aktiviert sein. Andernfalls müssen Sie den Azure AD-Zugriff aktivieren, nachdem Sie die **Begrüßungs-E-Mail** erhalten haben.  
@@ -89,11 +89,11 @@ Nachdem Ihre erworbenen Lizenzen in Ihrem Verzeichnis bereitgestellt wurden, erh
 
 1. Öffnen Sie die **Willkommens-E-Mail**, und klicken Sie dann auf **Anmelden**.
    
-    ![Begrüßungs-E-Mail](media/active-directory-get-started-premium/AADEmail.png)
+    ![Begrüßungs-E-Mail mit hervorgehobenem Link zum Anmelden](media/active-directory-get-started-premium/AADEmail.png)
 
 2. Nach der erfolgreichen Anmeldung durchlaufen Sie eine zweistufige Überprüfung mithilfe eines Mobilgeräts.
    
-    ![Mobile Verifizierung](media/active-directory-get-started-premium/SignUppage.png)
+    ![Seite „Zweistufige Überprüfung“ mit mobiler Verifizierung](media/active-directory-get-started-premium/SignUppage.png)
 
 Der Aktivierungsvorgang dauert in der Regel nur wenige Minuten. Danach können Sie Ihren Azure AD-Mandanten verwenden. 
 

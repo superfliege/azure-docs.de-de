@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110306"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -36,6 +36,8 @@ Dies ist das dritte Tutorial in einer Reihe. In diesem Tutorial wird davon ausge
 
 Bevor Sie beginnen, empfiehlt sich eine Überprüfung der [VMware](vmware-azure-architecture.md)- oder [Hyper-V](hyper-v-azure-architecture.md)-Architektur für die Notfallwiederherstellung.
 
+> [!TIP]
+> Suchen Sie eine Möglichkeit, VMware-VMs ohne Agent zu Azure zu migrieren? [Klicken Sie hier](https://aka.ms/migrateVMs-signup).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,7 +56,6 @@ Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
    ![Neuer Tresor](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
 Der neue Tresor wird dem **Dashboard** unter **Alle Ressourcen** und der Hauptseite **Recovery Services-Tresore** hinzugefügt.
-
 
 
 ## <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
@@ -112,10 +113,10 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 5. Überprüfen Sie, ob die Azure-VM wie erwartet in Azure angezeigt wird.
 6. Klicken Sie in **Replizierte Elemente** mit der rechten Maustaste auf die VM > **Migration abschließen**. Die folgenden Schritte werden ausgeführt:
 
-    - Der Migrationsvorgang wird abgeschlossen, die Replikation für den virtuellen AWS-Computer wird beendet, und die Site Recovery-Abrechnung für den virtuellen Computer wird eingestellt.
-    - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht.
+   - Der Migrationsvorgang wird abgeschlossen, die Replikation für den virtuellen AWS-Computer wird beendet, und die Site Recovery-Abrechnung für den virtuellen Computer wird eingestellt.
+   - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht.
 
-    ![Abschließen der Migration](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Abschließen der Migration](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]
