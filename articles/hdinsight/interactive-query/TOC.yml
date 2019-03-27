@@ -139,21 +139,6 @@ items:
       - name: Veröffentlichen von HDInsight-Apps im Azure Marketplace
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Installieren der veröffentlichten App – Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Installieren der veröffentlichten App – Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Installieren der veröffentlichten App – Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Installieren der veröffentlichten App – H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Installieren der veröffentlichten App – Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Schützen
     items:
     - name: Verwenden von SSH mit HDInsight
@@ -287,9 +272,6 @@ items:
       - name: 'Apache Hive-Einstellungen: Beheben von Fehlern vom Typ „Nicht genügend Arbeitsspeicher“'
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Debuggen von Apache TEZ-Aufträgen mithilfe von Apache Ambari-Ansichten
-        href: ../hdinsight-debug-ambari-tez-view.md
-        maintainContext: true
       - name: Optimieren von Apache Hive-Abfragen
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
@@ -383,9 +365,9 @@ items:
   - name: Windows-Tools für HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c948dfdffe08512b8ac6e69e1ef6175c8a4a03ce
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4ff59bd9aeb59ad3dd835edaff3d1e5048f2e58e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361029"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444123"
