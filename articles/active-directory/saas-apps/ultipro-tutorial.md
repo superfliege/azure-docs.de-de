@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: afc0f2b9-2eac-47ec-af04-65ed0fb0ca5a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1152ff23db9c53ef36db537acdd75acb19223b2a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 77d2312c5a20aa6b90586d47ee120593e807295e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873184"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Tutorial: Azure Active Directory-Integration mit UltiPro
 
@@ -106,6 +106,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UltiPro d
     ![SSO-Informationen zur Domäne und zu den URLs für UltiPro](common/sp-identifier-reply.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+
     | |
     |--|
     | `https://<companyname>.ultipro.com/`|
@@ -113,6 +114,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UltiPro d
     | ` https://<companyname>.ultipro.ca`|
     
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+
     | |
     |--|
     | `https://<companyname>.ultipro.com/adfs/services/trust`|
@@ -120,6 +122,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UltiPro d
     | `https://<companyname>.ultipro.ca/adfs/services/trust`|
     
     c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:
+    
     | |
     |--|
     | `https://<companyname>.ultipro.com/<instancename>`|
@@ -165,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

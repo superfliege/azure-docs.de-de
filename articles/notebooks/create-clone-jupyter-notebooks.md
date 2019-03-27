@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b99197f44961bdfa23050e9481e290e6c3d24845
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844057"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759084"
 ---
 # <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
 
@@ -49,7 +49,7 @@ Die für Sie auf dem Dashboard möglichen Aktionen hängen davon ab, ob Sie mit 
 
 Wenn Sie den Befehl **Freigabe** verwenden und die Registerkarte **Einbetten** auswählen, können Sie entweder HTML-Code oder Markdown kopieren, der ein Badge „Notebook starten“ erstellt:
 
-![Badge „Notebook starten“ ](https://notebooks.azure.com/launch.png)
+![Badge „Notebook starten“](https://notebooks.azure.com/launch.png)
 
 Wenn Sie nicht über ein Azure Notebooks-Projekt verfügen, können Sie einen Link erstellen, der Klone unter Verwendung der folgenden Vorlagen direkt von GitHub erstellt – setzen Sie die passenden Namen für Benutzername und Repository ein:
 
@@ -67,10 +67,26 @@ Wenn Sie den Befehl **+ Neues Projekt** verwenden, zeigt Azure Notebooks ein Pop
 
 | Feld | BESCHREIBUNG |
 | --- | --- |
-| Projektname | Ein Anzeigename für Ihr Projekt, den Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise „NY Notebook-Projekt“. |
-| Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird. Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen und ist auf 30 Zeichen beschränkt. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, wie etwa in „mein-notebook-projekt“ (ggf. gekürzt, um die Längenbeschränkung einzuhalten). |
+| Projektname | Ein Anzeigename für Ihr Projekt, den Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise „Mein Notebook-Projekt“. |
+| Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird (das Format lautet `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen, ist auf 30 Zeichen beschränkt und darf keine [reservierte Projekt-ID](#reserved-project-ids) sein. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, wie etwa in „mein-notebook-projekt“ (ggf. gekürzt, um die Längenbeschränkung einzuhalten). |
 | Öffentlich | Wenn diese Option festgelegt ist, kann jeder, der über den Link verfügt, auf das Projekt zugreifen. Deaktivieren Sie diese Option, wenn Sie ein privates Projekt erstellen. |
 | Projekt mit einer Infodatei initialisieren | Wenn diese Option festgelegt ist, wird eine standardmäßige Datei *README.md* im Projekt erstellt. Die Datei *README.md* ist der Ort, an dem Sie ggf. Dokumentation zu Ihrem Projekt bereitstellen. |
+
+### <a name="reserved-project-ids"></a>Reservierte Projekt-IDs
+
+Die folgenden reservierten Wörter können nicht allein als Projekt-IDs verwendet werden. Sie können jedoch als Teil längerer Projekt-IDs verwendet werden.
+
+| | | | | | |
+| --- | --- | --- | --- | --- | --- |
+| about | account | administration | api | blog | classroom |
+| Inhalt | Dashboard | explore | faq | help | html |
+| home | Import | Bibliothek | management | Neu | notebook |
+| notebooks | pdf | preview | Preise | Profil | search |
+| status | support | test | | | |
+
+Wenn Sie versuchen, eines dieser Wörter als Projekt-ID zu verwenden, wird in den Popups **Neues Projekt erstellen** und **Projekteinstellungen** „Bibliotheks-ID ist ein reservierter Bezeichner“ angezeigt.
+
+Da eine Projekt-ID auch Teil der URL eines Projekts ist, kann Werbeblockersoftware die Verwendung bestimmter Schlüsselwörter, wie beispielsweise „advert“ blockieren. Verwenden Sie in solchen Fällen ein anderes Wort in der Projekt-ID.
 
 ## <a name="import-a-project-from-github"></a>Importieren eines Projekts von GitHub
 
@@ -81,7 +97,7 @@ Sie können problemlos ein vollständiges öffentliches GitHub-Repository als Pr
 | GitHub-Repository | Der Name des Quellrepositorys auf github.com. Um beispielsweise die Jupyter-Notebooks für Azure Cognitive Services unter [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) zu klonen, geben Sie „Microsoft/cognitive-services-notebooks“ ein.  |
 | Clone recursively (Rekursiv klonen) | GitHub-Repositorys können mehrere untergeordnete Repositorys enthalten. Legen Sie diese Option fest, wenn Sie das übergeordnete Repository und alle seine untergeordneten Repositorys klonen möchten. Da ein Repository über viele untergeordnete Repositorys verfügen kann, lassen Sie diese Option im Normalfall deaktiviert, es sei denn, Sie wissen, dass Sie sie brauchen. |
 | Projektname | Ein Anzeigename für Ihr Projekt, den Azure Notebooks zu Anzeigezwecken verwendet. |
-| Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird. Diese ID darf nur Buchstaben, Zahlen und Bindestriche enthalten. |
+| Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird (das Format lautet `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen, ist auf 30 Zeichen beschränkt und darf keine [reservierte Projekt-ID](#reserved-project-ids) sein. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, wie etwa in „mein-notebook-projekt“ (ggf. gekürzt, um die Längenbeschränkung einzuhalten). |
 | Öffentlich | Wenn diese Option festgelegt ist, kann jeder, der über den Link verfügt, auf das Projekt zugreifen. Deaktivieren Sie diese Option, wenn Sie ein privates Projekt erstellen. |
 
 Beim Importieren eines Repositorys von GitHub wird auch dessen Verlauf importiert. Sie können Git-Standardbefehle im Terminal verwenden, um neue Änderungen zu committen, Änderungen per Pull von GitHub zu übertragen usw.

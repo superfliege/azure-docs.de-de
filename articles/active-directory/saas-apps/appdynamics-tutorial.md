@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79424ff3fe3bce006932c19dba8cf5fc4bce4f2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878624"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Tutorial: Azure Active Directory-Integration mit AppDynamics
 
@@ -130,29 +130,29 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in AppDynami
 
 ### <a name="configure-appdynamics-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für AppDynamics
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der AppDynamics-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der AppDynamics-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**, und klicken Sie dann auf **Verwaltung**.
+1. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**, und klicken Sie dann auf **Verwaltung**.
 
     ![Verwaltung](./media/appdynamics-tutorial/ic790216.png "Verwaltung")
 
-9. Klicken Sie auf die Registerkarte **Authentication Provider** .
+1. Klicken Sie auf die Registerkarte **Authentication Provider** .
 
     ![Authentifizierungsanbieter](./media/appdynamics-tutorial/ic790224.png "Authentifizierungsanbieter")
 
-10. Führen Sie im Abschnitt **Authentication Provider** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Authentication Provider** die folgenden Schritte aus:
 
-    ![SAML-Konfiguration](./media/appdynamics-tutorial/ic790225.png "SAML-Konfiguration")
+   ![SAML-Konfiguration](./media/appdynamics-tutorial/ic790225.png "SAML-Konfiguration")
 
-    a. Wählen Sie als **Authentication Provider** (Authentifizierungsanbieter) die Option **SAML** aus.
+   a. Wählen Sie als **Authentication Provider** (Authentifizierungsanbieter) die Option **SAML** aus.
 
-    b. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+   b. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie in das Textfeld **Logout URL** (Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+   c. Fügen Sie in das Textfeld **Logout URL** (Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat** ein.
+   d. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat** ein.
 
-    e. Klicken Sie auf **Speichern**.
+   e. Klicken Sie auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -172,7 +172,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a510fcce6b004e8384ce888ad421802bc144e73f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: aa0d7828534c96d9bda85e80fb297c848cec6845
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Tutorial: Azure Active Directory-Integration mit Meta Networks Connector
 
@@ -176,19 +176,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 2. Klicken Sie auf **Verwaltung** und dann auf **Einstellungen**.
     
-    ![Konfigurieren des einmaligen Anmeldens](./media/metanetworksconnector-tutorial/configure3.png)
+    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. Stellen Sie sicher, dass **Log Internet Traffic** (Internetdatenverkehr protokollieren) und **Force VPN MFA** (VPN-MFA erzwingen) deaktiviert sind.
     
-    ![Konfigurieren des einmaligen Anmeldens](./media/metanetworksconnector-tutorial/configure1.png)
+    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. Klicken Sie auf **Verwaltung** und dann auf **SAML**.
     
-    ![Konfigurieren des einmaligen Anmeldens](./media/metanetworksconnector-tutorial/configure4.png)
+    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. Führen Sie auf der Registerkarte **DETAILS** die folgenden Schritte aus:
     
-    ![Konfigurieren des einmaligen Anmeldens](./media/metanetworksconnector-tutorial/configure2.png)
+    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. Kopieren Sie den Wert für **SSO-URL**, und fügen Sie ihn im Abschnitt **Domäne und URLs für Meta Networks Connector** ins Textfeld **Anmelde-URL** ein.
     
@@ -200,7 +200,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 6. Führen Sie auf der Registerkarte **ALLGEMEIN** die folgenden Schritte aus:
 
-    ![Konfigurieren des einmaligen Anmeldens](./media/metanetworksconnector-tutorial/configure5.png)
+    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in **URL für einmaliges Anmelden des Identitätsanbieters** ein.
 
@@ -228,7 +228,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

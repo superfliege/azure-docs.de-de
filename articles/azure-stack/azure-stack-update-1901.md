@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416512"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226860"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack-Update 1901
 
@@ -34,7 +34,14 @@ Dieser Artikel beschreibt den Inhalt des Updatepakets 1901. Das Update enthält
 
 ## <a name="build-reference"></a>Buildreferenz
 
-Die Buildnummer des Azure Stack-Updates 1901 ist **1.1901.0.95**.
+Nach dem 26. Februar 2019 ist die Buildnummer des Azure Stack-Updates 1901 **1.1901.0.95.XX.X** oder **1.1901.0.99**. Hinweis:
+
+> [!IMPORTANT]  
+> Microsoft hat ein Problem festgestellt, das Kunden betreffen kann, die von 1811 (1.1811.0.101) auf 1901 aktualisieren, und hat zur Behebung des Problems ein aktualisiertes Paket für das Update 1901 veröffentlicht: Build 1.1901.0.99 (aktualisiert von 1.1901.0.95). Für Kunden, die bereits auf 1.1901.0.95 aktualisiert haben, ist keine weitere Aktion erforderlich.
+>
+> Kunden mit Verbindung, die derzeit 1811 verwenden, sehen das neue Paket für 1901 (1.1901.0.99) automatisch im Administratorportal und sollten es installieren, sobald sie dazu bereit sind. Kunden ohne Verbindung können das neue Paket für 1901 wie [hier beschrieben](azure-stack-apply-updates.md) herunterladen und importieren.
+>
+> Kunden mit einer Version des Updates 1901 sind nicht betroffen, wenn sie das nächste vollständige Paket oder Hotfixpaket installieren.
 
 ## <a name="hotfixes"></a>Hotfixes
 
@@ -51,18 +58,20 @@ Azure Stack-Hotfixes gelten nur für integrierte Azure Stack-Systeme. Versuchen 
 
 - **1809**: [KB 4481548 – Azure Stack Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: Es ist kein aktueller Hotfix verfügbar.
-- **1901**: Es ist kein aktueller Hotfix verfügbar.
+- **1901**: [KB 4481548 – Azure Stack-Hotfix 1.1901.2.103](https://support.microsoft.com/help/4494720)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!IMPORTANT]
-- Installieren Sie den [neuesten Azure Stack-Hotfix](#azure-stack-hotfixes) für 1811 (falls vorhanden), bevor Sie auf 1901 aktualisieren.
+> - Installieren Sie den [neuesten Azure Stack-Hotfix](#azure-stack-hotfixes) für 1811 (falls vorhanden), bevor Sie auf 1901 aktualisieren.
 
 - Bevor Sie mit der Installation dieses Updates beginnen, führen Sie [Test-AzureStack](azure-stack-diagnostic-test.md) mit den folgenden Parametern aus, um den Status von Azure Stack zu überprüfen und alle gefundenen operativen Probleme (einschließlich aller Warnungen und Fehler) zu beheben. Überprüfen Sie auch aktive Warnungen, und führen Sie die Behebung für Einträge durch, für die eine Aktion erforderlich ist:
 
     ```PowerShell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
+
+- Wenn Azure Stack von System Center Operations Manager (SCOM) verwaltet wird, müssen Sie das Management Pack für Microsoft Azure Stack auf Version 1.0.3.11 aktualisieren, bevor Sie das Update 1901 anwenden.
 
 ## <a name="new-features"></a>Neue Funktionen
 
@@ -80,7 +89,7 @@ Dieses Update enthält die folgenden neuen Funktionen und Verbesserungen für Az
    * **AzureRm.Storage**  
          Das AzureRm-Rollupmodul enthält nun die bereits veröffentlichte Version 5.0.4, welche **api-version 2017-10-01** unterstützt.  
    * **AzureRm.Compute**  
-         Zusätzliche einfache Parametersätze in `New-AzureRMVM` und `NewAzureRMVMSS` hinzugefügt, Parameter `-ImageName` unterstützt Angabe von Benutzerimages.  
+         Zusätzliche einfache Parametersätze in `New-AzureRmVM` und `New-AzureRmVmss` hinzugefügt, Parameter `-Image` unterstützt Angabe von Benutzerimages.  
    * **AzureRm.Insights**  
          Das AzureRm-Rollupmodul enthält nun die bereits veröffentlichte Version 5.1.5, welche **api-version 2018-01-01** für Metriken und Ressourcentypen für Metrikdefinitionen unterstützt.
 
@@ -106,7 +115,8 @@ Die Referenz für die aktualisierten Module finden Sie in der [Referenz zum Azur
 <!-- 16523695 – IS, ASDK -->
 - Ein Problem wurde behoben, bei dem nach der Aktualisierung der DNS-Einstellungen von **Azure Stack-DNS** zu **Benutzerdefiniertes DNS** die Instanzen nicht mit der neuen Einstellung aktualisiert wurden.
 
-- <!-- 3235634 – IS, ASDK --> Ein Problem wurde behoben, bei dem bei der Bereitstellung von virtuellen Computern mit Größen, die das Suffix **v2** enthalten – z. B. **Standard_A2_v2** –, das Suffix mit klein geschriebenem „v“ angegeben werden musste: **Standard_A2_v2**. Wie in globalen Azure-Umgebungen können Sie nun **Standard_A2_V2** (groß geschriebenes „V“) verwenden.
+- <!-- 3235634 – IS, ASDK -->
+  Ein Problem wurde behoben, bei dem bei der Bereitstellung von VMs mit Größen, die das Suffix **v2** enthalten (z. B. **Standard_A2_v2**), das Suffix mit klein geschriebenem „v“ angegeben werden musste: **Standard_A2_v2**. Wie in globalen Azure-Umgebungen können Sie nun **Standard_A2_V2** (groß geschriebenes „V“) verwenden.
 
 <!-- 2869209 – IS, ASDK --> 
 - Ein Problem wurde behoben, bei dem bei Verwendung des Cmdlets [Add-AzsPlatformImage](/powershell/module/azs.compute.admin/add-azsplatformimage) der Parameter **-OsUri** als Speicherkonto-URI zum Hochladen des Datenträgers verwendet werden musste. Sie können jetzt auch den lokalen Pfad zum Datenträger verwenden.
@@ -172,33 +182,6 @@ Die Referenz für die aktualisierten Module finden Sie in der [Referenz zum Azur
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
    ```
 
-- Derzeit gibt es Erweiterungen in Azure Stack, die erfolgreich bereitgestellt werden, ohne dass die Erweiterungen explizit über die Marketplace-Syndikation heruntergeladen werden müssen. Die folgenden Versionen dieser Erweiterungen werden entfernt. Azure Stack-Bediener müssen diese Erweiterungen jetzt explizit aus dem Azure Stack-Marketplace syndizieren:
-
-   | Type                     | Version        |
-   |--------------------------|----------------|
-   | DSC                      | 2.19.0.0       |
-   | IaaSAntimalware          | 1.4.0.0        |
-   | BGInfo                   | 2.1            |
-   | VMAccessAgent            | 2.0            |
-   | CustomScriptExtension    | 1.8            |
-   | MicrosoftMonitoringAgent | 1.0.10900.0    |
-   | IaaSDiagnostics          | 1.10.1.1       |
-   | VMAccessForLinux         | 1.4.0.0        |
-   | CustomScriptForLinux     | 1.5.2.0        |
-   | DockerExtension          | 1.1.1606092330 |
-   | JsonADDomainExtension    | 1.3            |
-   | OSPatchingForLinux       | 2.3.0.1        |
-   | WebRole                  | 4.3000.14.0    |
-
-   Es wird empfohlen, dass Azure Stack-Benutzer bei der Bereitstellung von Erweiterungen `autoUpgradeMinorVersion` auf **true** festlegen. Beispiel: 
-
-   ```json
-   "type": "Extension",
-           "publisher": "ExtensionPublisher",
-           "typeHandlerVersion": "1.2",
-           "autoUpgradeMinorVersion": "true"
-   ```
-
 - Es gibt eine neue Überlegung für die genaue Planung von Azure Stack-Kapazität. Mit dem Update 1901 gibt es jetzt ein Limit für die Gesamtzahl virtueller Computer, die erstellt werden können.  Dieses Limit soll temporär sein, um Lösungsinstabilitäten zu vermeiden. Die Ursache des Stabilitätsproblems bei einer höheren Anzahl von VMs wird behandelt, aber es steht noch kein genauer Zeitplan für die Korrektur fest. Mit dem Update 1901 gibt es jetzt ein Limit pro Server von 60 VMs bei einem Gesamtlösungslimit von 700.  Beispielsweise wäre ein Azure Stack-VM-Limit bei 8 Servern 480 (8 * 60).  Bei einer Azure Stack-Lösung mit 12 bis 16 Servern wäre das Limit 700. Dieses Limit wurde unter Berücksichtigung aller Überlegungen hinsichtlich der Computekapazität eingerichtet, z. B. der Resilienzreserve und des CPU-Verhältnisses virtuell zu physisch, die ein Operator bei dem Stamp erhalten möchte. Weitere Informationen finden Sie in der neuen Version von Capacity Planner.  
 Falls das VM-Skalierungslimit erreicht wurde, würden die folgenden Fehlercodes als Ergebnis zurückgegeben: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded. 
  
@@ -245,7 +228,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 - Wenn Sie [Test-AzureStack](azure-stack-diagnostic-test.md) ausführen, wird eine Warnmeldung des Baseboard-Verwaltungscontrollers (BMC) angezeigt. Sie können diese Warnung problemlos ignorieren.
 
-- <!-- 2468613 - IS --> Während der Installation dieses Updates werden möglicherweise Warnungen mit dem Titel `Error – Template for FaultType UserAccounts.New is missing.` angezeigt. Sie können diese Warnungen gefahrlos ignorieren. Die Warnungen werden automatisch geschlossen, nachdem die Installation dieses Updates abgeschlossen wurde.
+- <!-- 2468613 - IS --> Während der Installation dieses Updates werden möglicherweise Warnungen mit dem Titel `Error – Template for FaultType UserAccounts.New is missing.` angezeigt. Diese Warnungen können ignoriert werden. Die Warnungen werden automatisch geschlossen, nachdem die Installation dieses Updates abgeschlossen wurde.
 
 ## <a name="post-update-steps"></a>Schritte nach dem Update
 
@@ -309,9 +292,9 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 <!-- 3632798 - IS, ASDK -->
 - Wenn Sie im Portal eine eingehende Sicherheitsregel hinzufügen und als Quelle **Diensttag** auswählen, werden mehrere Optionen in der Liste **Quelltag** angezeigt, die für Azure Stack nicht verfügbar sind. Die einzigen Optionen, die in Azure Stack gültig sind, lauten folgendermaßen:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     Die anderen Optionen werden nicht als Quelltags in Azure Stack unterstützt. Auf ähnliche Weise wird, wenn Sie eine ausgehende Sicherheitsregel hinzufügen und als Ziel **Diensttag** auswählen, dieselbe Liste von Optionen für **Quelltag** angezeigt. Die einzigen gültigen Optionen sind dieselben wie für **Quelltag**, wie in der vorherigen Liste beschrieben.
 

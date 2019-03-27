@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429229"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004637"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal
 
@@ -85,7 +85,7 @@ Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzw
     | Richtung         | Ausgehend                                                                                          |
     | Lokale IP-Adresse  | 10.0.0.4                                                                                          |
     | Lokaler Port      | 60000                                                                                                |
-    | Remote-IP-Adresse | 13.107.21.200 (eine der Adressen für www.bing.com)                                             |
+    | Remote-IP-Adresse | 13.107.21.200: Eine der Adressen für <www.bing.com>                                             |
     | Remoteport       | 80                                                                                                |
 
     ![IP-Datenflussüberprüfung](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)

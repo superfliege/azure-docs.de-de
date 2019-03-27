@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: ef3dcba51ffda83b4b6643b3490e8929e5d42b4d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896244"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET Core-App
 
@@ -38,7 +38,7 @@ Sie können einen beliebigen Code-Editor nutzen, um die Schritte dieser Schnells
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [.NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) oder höher
+* [.NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) oder höher.
 * Für den StackExchange.Redis-Client ist [.NET Framework 4 oder höher](https://www.microsoft.com/net/download/dotnet-framework-runtime) erforderlich
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches

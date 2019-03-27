@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 17d80d07f9b272b0dcb7449404d5d6626e72ce65
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692849"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842944"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung per Azure Virtual WAN (Vorschauversion)
 
@@ -37,11 +37,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>Registrieren dieses Features
 
-Bevor Sie Virtual WAN konfigurieren können, müssen Sie Ihr Abonnement zunächst für die Vorschauversion registrieren. Andernfalls können Sie Virtual WAN im Portal nicht verwenden. Senden Sie für die Registrierung eine E-Mail mit Ihrer Abonnement-ID an **azurevirtualwan@microsoft.com**. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde.
+Bevor Sie Virtual WAN konfigurieren können, müssen Sie Ihr Abonnement zunächst für die Vorschauversion registrieren. Andernfalls können Sie Virtual WAN im Portal nicht verwenden. Senden Sie eine E-Mail mit Ihrer Abonnement-ID an **azurevirtualwan\@microsoft.com**, um sich zu registrieren. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde.
 
 **Hinweise zur Vorschauversion:**
 
@@ -69,15 +71,15 @@ Navigieren Sie in einem Browser zum [Azure-Portal (Vorschauversion)](https://aka
 ## <a name="hub"></a>4. Suchen und Zuordnen einer Verbindung mit dem Hub
 
 1. Wählen Sie Ihr vWAN und unter **Virtual WAN Architecture** (Virtual WAN-Architektur) dann die Option **ExpressRoute-Leitungen**.
-2. Klicken Sie für Ihr Abonnement bzw. Ihre Abonnements auf **Select ExpressRoute circuit** (ExpressRoute-Leitung auswählen), wenn sich die ExpressRoute-Leitung unter demselben Abonnement wie Ihr vWAN befindet. 
-3. Wählen Sie über das Pulldownmenü die ExpressRoute-Leitung, die Sie dem Hub zuordnen möchten.
-4. Falls sich die ExpressRoute-Leitung nicht unter demselben Abonnement befindet oder Sie einen [Autorisierungsschlüssel und eine Peer-ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) erhalten haben, wählen Sie die Option **Find a circuit redeeming an authorization key** (Leitung durch Einlösen eines Autorisierungsschlüssels finden).
-5. Geben Sie die folgenden Details ein:
-* **Autorisierungsschlüssel**: Wird wie oben beschrieben vom Leitungsbesitzer generiert.
-* **Peerleitungs-URI**: Der Leitungs-URI, der vom Leitungsbesitzer bereitgestellt wird und als eindeutiger Bezeichner für die Leitung verwendet wird.
-* **Routinggewichtung** - [Routinggewichtung](../expressroute/expressroute-optimize-routing.md) ermöglicht Ihnen die Bevorzugung bestimmter Pfade, wenn mehrere Leitungen unterschiedlicher Peeringstandorte mit demselben Hub verbunden sind.
-6. Klicken Sie auf **Find circuit** (Leitung suchen), und wählen Sie die Leitung aus, falls sie gefunden wird.
-7. Wählen Sie über die Dropdownliste mindestens einen Hub aus, und klicken Sie auf **Speichern**.
+1. Klicken Sie für Ihr Abonnement bzw. Ihre Abonnements auf **Select ExpressRoute circuit** (ExpressRoute-Leitung auswählen), wenn sich die ExpressRoute-Leitung unter demselben Abonnement wie Ihr vWAN befindet. 
+1. Wählen Sie über das Pulldownmenü die ExpressRoute-Leitung, die Sie dem Hub zuordnen möchten.
+1. Falls sich die ExpressRoute-Leitung nicht unter demselben Abonnement befindet oder Sie einen [Autorisierungsschlüssel und eine Peer-ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) erhalten haben, wählen Sie die Option **Find a circuit redeeming an authorization key** (Leitung durch Einlösen eines Autorisierungsschlüssels finden).
+1. Geben Sie die folgenden Details ein:
+1. **Autorisierungsschlüssel**: Wird wie oben beschrieben vom Leitungsbesitzer generiert.
+1. **Peerleitungs-URI**: Der Leitungs-URI, der vom Leitungsbesitzer bereitgestellt wird und als eindeutiger Bezeichner für die Leitung verwendet wird.
+1. **Routinggewichtung** - [Routinggewichtung](../expressroute/expressroute-optimize-routing.md) ermöglicht Ihnen die Bevorzugung bestimmter Pfade, wenn mehrere Leitungen unterschiedlicher Peeringstandorte mit demselben Hub verbunden sind.
+1. Klicken Sie auf **Find circuit** (Leitung suchen), und wählen Sie die Leitung aus, falls sie gefunden wird.
+1. Wählen Sie über die Dropdownliste mindestens einen Hub aus, und klicken Sie auf **Speichern**.
 
 ## <a name="vnet"></a>5. Verbinden Ihres VNET mit einem Hub
 
@@ -110,10 +112,10 @@ Erstellen Sie eine Verbindung, um die Kommunikation zwischen einer Azure-VM und 
 
 ## <a name="cleanup"></a>9. Bereinigen von Ressourcen
 
-Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
+Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

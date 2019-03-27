@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af11c7c347481921f04e63276e946e679b03cdd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876210"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration mit Adobe Sign
 
@@ -128,7 +128,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Adobe Si
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Adobe Sign
 
-7. Wenden Sie sich vor der Konfiguration an das [Adobe Sign-Supportteam](https://helpx.adobe.com/in/contact/support.html), um Ihre Domäne in Adobe Sign auf die Whitelist setzen zu lassen. So fügen Sie die Domäne hinzu:
+1. Wenden Sie sich vor der Konfiguration an das [Adobe Sign-Supportteam](https://helpx.adobe.com/in/contact/support.html), um Ihre Domäne in Adobe Sign auf die Whitelist setzen zu lassen. So fügen Sie die Domäne hinzu:
 
     a. Das [Adobe Sign-Supportteam](https://helpx.adobe.com/in/contact/support.html) sendet Ihnen ein zufällig generiertes Token. Für Ihre Domäne sieht das Token wie folgt aus: **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
@@ -147,33 +147,33 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Adobe Si
     * Fügen Sie einen TXT-Eintrag mit dem vollständigen Tokenwert hinzu, den Adobe bereitgestellt hat.
     * Speichern Sie die Änderungen.
 
-8. Melden Sie sich in einem anderen Webbrowserfenster auf der Adobe Sign-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster auf der Adobe Sign-Unternehmenswebsite als Administrator an.
 
-9. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  >  **SAML Settings** (SAML-Einstellungen) auf.
+1. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  >  **SAML Settings** (SAML-Einstellungen) auf.
    
     ![Screenshot von Adobe Sign-SAML-Einstellungsseite](./media/adobe-echosign-tutorial/ic789520.png "Account") (Konto)
 
-10. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
   
-    ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789521.png "SAML Settings")
+   ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789521.png "SAML Settings")
    
-    ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789522.png "SAML Settings")
+   ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789522.png "SAML Settings")
 
-    a. Wählen Sie als **SAML Mode** (SAML-Modus) **SAML Mandatory** (SAML erforderlich) aus.
+   a. Wählen Sie als **SAML Mode** (SAML-Modus) **SAML Mandatory** (SAML erforderlich) aus.
    
-    b. Aktivieren Sie **Allow Echosign Account Administrators to log in using their Echosign Credentials** (EchoSign-Kontoadministratoren dürfen sich mit ihren EchoSign-Anmeldeinformationen anmelden).
+   b. Aktivieren Sie **Allow Echosign Account Administrators to log in using their Echosign Credentials** (EchoSign-Kontoadministratoren dürfen sich mit ihren EchoSign-Anmeldeinformationen anmelden).
    
-    c. Wählen Sie unter **User Creation** (Benutzererstellung) **Automatically add users authenticated through SAML** (SAML-authentifizierte Benutzer automatisch hinzufügen) aus.
+   c. Wählen Sie unter **User Creation** (Benutzererstellung) **Automatically add users authenticated through SAML** (SAML-authentifizierte Benutzer automatisch hinzufügen) aus.
 
-    d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Idp Entity ID** (IdP-Entitäts-ID) ein.
+   d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Idp Entity ID** (IdP-Entitäts-ID) ein.
     
-    e. Fügen Sie in das Textfeld **Idp Login URL** (IdP-Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
+   e. Fügen Sie in das Textfeld **Idp Login URL** (IdP-Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
    
-    f. Fügen Sie in das Textfeld **Idp Logout URL** (IdP-Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+   f. Fügen Sie in das Textfeld **Idp Logout URL** (IdP-Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    g. Öffnen Sie die heruntergeladene **Zertifikat (Base64)**-Datei im Editor. Kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn in das Textfeld **IdP Certificate** (IdP-Zertifikat) ein.
+   g. Öffnen Sie die heruntergeladene **Zertifikat (Base64)**-Datei im Editor. Kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn in das Textfeld **IdP Certificate** (IdP-Zertifikat) ein.
 
-    h. Klicken Sie auf **Save changes** (Änderungen speichern).
+   h. Klicken Sie auf **Save changes** (Änderungen speichern).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -193,7 +193,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

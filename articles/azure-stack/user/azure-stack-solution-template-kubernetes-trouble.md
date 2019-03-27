@@ -5,22 +5,21 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: mabrigg
+ms.author: mabvrigg
+ms.date: 03/20/2019
 ms.reviewer: waltero
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752295"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293786"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack
 
@@ -67,8 +66,8 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 
     Das Skript führt folgende Aufgaben aus:
     - Installiert etcd, Docker und Kubernetes-Ressourcen wie Kubelet. etcd ist ein verteilter Schlüsselwertspeicher, der eine Möglichkeit zum Speichern von Daten in einem Cluster aus Computern bereitstellt. Docker unterstützt reine Virtualisierungen auf Betriebssystemebene, die als Container bezeichnet werden. Kubelet ist der Knoten-Agent, der auf jedem Kubernetes-Knoten ausgeführt wird.
-    - Richtet den etcd-Dienst ein.
-    - Richtet den Kubelet-Dienst ein.
+    - Richtet den **etcd**-Dienst ein.
+    - Richtet den **Kubelet**-Dienst ein.
     - Startet Kubelet. Diese Aufgabe umfasst die folgenden Schritte:
         1. Starten des API-Diensts.
         2. Starten des Controllerdiensts.
@@ -78,8 +77,8 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 7. Laden Sie die benutzerdefinierte Skripterweiterung herunter, und führen Sie sie aus.
 
 7. Führen Sie das Agent-Skript aus. Das benutzerdefinierte Agent-Skript führt folgende Aufgaben aus:
-    - Installiert etcd.
-    - Richtet den Kubelet-Dienst ein.
+    - Installiert **etcd**.
+    - Richtet den **Kubelet**-Dienst ein.
     - Tritt dem Kubernetes-Cluster bei.
 
 ## <a name="steps-for-troubleshooting"></a>Schritte zur Problembehandlung
@@ -87,7 +86,7 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 Sie können Protokolle auf den virtuellen Computern erfassen, die Ihren Kubernetes-Cluster unterstützen. Sie können auch das Bereitstellungsprotokoll überprüfen. Möglicherweise müssen Sie sich auch an Ihren Azure Stack-Administrator wenden, um die von Ihnen verwendete Version von Azure Stack zu überprüfen und Protokolle von Azure Stack im Zusammenhang mit Ihrer Bereitstellung abzurufen.
 
 1. Überprüfen Sie den [Bereitstellungsstatus](#review-deployment-status) und das [Abrufen der Protokolle](#get-logs-from-a-vm) vom Masterknoten in Ihrem Kubernetes-Cluster.
-2. Stellen Sie sicher, dass Sie die neueste Version von Azure Stack verwenden. Wenn Sie sich nicht sicher sind, welche Version Sie verwenden sind, wenden Sie sich an den Azure Stack-Administrator. Für das Marketplace-Element Kubernetes-Cluster 0.3.0 ist Azure Stack Version 1808 oder höher erforderlich.
+2. Stellen Sie sicher, dass Sie die neueste Version von Azure Stack verwenden. Wenn Sie sich nicht sicher sind, welche Version Sie verwenden sind, wenden Sie sich an den Azure Stack-Administrator.
 3.  Überprüfen Sie Ihre VM-Erstellungsdateien. Es können die folgenden Probleme auftreten:  
     - Der öffentliche Schlüssel ist möglicherweise ungültig. Überprüfen Sie den Schlüssel, den Sie erstellt haben.  
     - Die Erstellung des virtuellen Computers kann einen internen Fehler oder einen Erstellungsfehler ausgelöst haben. Fehler können durch eine Reihe von Faktoren verursacht werden, einschließlich Kapazitätseinschränkungen für Ihr Azure Stack-Abonnement.
@@ -120,60 +119,52 @@ Sie können den Bereitstellungsstatus überprüfen, wenn Sie Ihren Kubernetes-Cl
 
     Jedes Element weist ein grünes oder rotes Statussymbol auf.
 
-## <a name="get-logs-from-a-vm"></a>Abrufen von Protokollen von einem virtuellen Computer
+## <a name="review-deployment-logs"></a>Überprüfen der Bereitstellungsprotokolle
 
-Sie müssen eine Verbindung mit der Master-VM für Ihren Cluster herstellen, eine Bash-Eingabeaufforderung öffnen und ein Skript ausführen, um die Protokolle zu generieren. Den Master mit dem Namen `k8s-master-<sequence-of-numbers>` finden Sie in Ihrer Clusterressourcengruppe. 
+Falls die im Azure Stack-Portal verfügbaren Informationen nicht ausreichen, um einen Bereitstellungsfehler zu beheben, besteht der nächste Schritt darin, die Clusterprotokolldateien zu überprüfen. Um die Bereitstellungsprotokolle manuell abzurufen, müssen Sie in der Regel eine Verbindung mit einer der Master-VMs des Clusters herstellen. Eine einfachere alternative Methode ist das Herunterladen und Ausführen des folgenden [Bash-Skripts](https://aka.ms/AzsK8sLogCollectorScript), das vom Azure Stack-Team bereitgestellt wurde. Das Skript stellt eine Verbindung mit der Bereitstellungs-VM (Deployment VM, DVM) und den VMs im Cluster her, sammelt relevante System- und Clusterprotokolldateien und lädt diese wieder auf Ihre Arbeitsstation herunter.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen eine Bash-Eingabeaufforderung auf dem Computer, den Sie zur Verwaltung von Azure Stack verwenden. Verwenden Sie Bash zum Ausführen der Skripts, die auf die Protokolle zugreifen. Auf einem Windows-Computer können Sie die mit Git installierte Bash-Eingabeaufforderung verwenden. Die neueste Version von Git finden Sie unter [Git-Downloads](https://git-scm.com/downloads).
+Sie benötigen eine Bash-Eingabeaufforderung auf dem Computer, den Sie zur Verwaltung von Azure Stack verwenden. Auf einem Windows-Computer können Sie [Git für Windows](https://git-scm.com/downloads) installieren, um eine Bash-Eingabeaufforderung zu erhalten. Suchen Sie nach der Installation im Startmenü nach _Git Bash_.
 
-### <a name="get-logs"></a>Abrufen von Protokollen
+### <a name="retrieving-the-logs"></a>Abrufen der Protokolle
 
-Führen Sie zum Abrufen der Protokolle die folgenden Schritte aus:
+Gehen Sie wie folgt vor, um die Clusterprotokolldateien zu sammeln und herunterzuladen:
 
-1. Öffnen Sie eine Bash-Eingabeaufforderung. Wenn Sie Git auf einem Windows-Computer verwenden, können Sie eine Bash-Eingabeaufforderung aus dem folgenden Pfad öffnen: `c:\programfiles\git\bin\bash.exe`.
-2. Führen Sie die folgenden Bash-Befehle aus:
+1. Öffnen Sie eine Bash-Eingabeaufforderung. Öffnen Sie auf einem Windows-Computer _Git Bash_, oder führen Sie den folgenden Befehl aus: `C:\Program Files\Git\git-bash.exe`
+
+2. Laden Sie das Protokollsammlerskript herunter, indem Sie an der Bash-Eingabeaufforderung den folgenden Befehl ausführen:
 
     ```Bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
     curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/master/diagnosis/getkuberneteslogs.sh
-    sudo chmod 744 getkuberneteslogs.sh
+    chmod 744 getkuberneteslogs.sh
     ```
 
-    > [!Note]  
-    > Unter Windows müssen Sie `sudo` nicht ausführen. Sie können stattdessen `chmod 744 getkuberneteslogs.sh` verwenden.
+3. Suchen Sie nach den erforderlichen Informationen für das Skript, und führen Sie das Skript aus:
 
-3. Führen Sie in der gleichen Sitzung den folgenden Befehl aus, wobei die Parameter entsprechend Ihrer Umgebung angepasst werden müssen.
-
-    ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmdhost 192.168.102.37
-    ```
-
-4. Überprüfen Sie die Parameter, und legen Sie die Werte basierend auf Ihrer Umgebung fest.
     | Parameter           | BESCHREIBUNG                                                                                                      | Beispiel                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i, --identity-file | Die Datei mit dem privaten RSA-Schlüssel zum Herstellen einer Verbindung mit der Kubernetes-Master-VM. Der Schlüssel muss mit `-----BEGIN RSA PRIVATE KEY-----` beginnen. | C:\data\privatekey.pem                                                        |
-    | -h, --host          | Die öffentliche IP-Adresse oder der vollqualifizierte Domänenname (FQDN) der Master-VM des Kubernetes-Clusters. Der Name des virtuellen Computers beginnt mit `k8s-master-`.                       | IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
-    | -u, --user          | Der Benutzername der Master-VM des Kubernetes-Clusters. Dieser Name wird festgelegt, wenn Sie das Marketplace-Element konfigurieren.                                                                    | azureuser                                                                     |
-    | -d, --vmdhost       | Die öffentliche IP-Adresse oder der FQDN der DVM. Der Name des virtuellen Computers beginnt mit `vmd-`.                                                       | IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | Die öffentliche IP-Adresse oder der vollqualifizierte Domänenname (FQDN) der DVM. Der Name der VM beginnt mit `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -h, --help  | Informationen zur Verwendung des Befehls anzeigen. | |
+    | -i, --identity-file | Die Datei mit dem privaten RSA-Schlüssel, die beim Erstellen des Kubernetes-Clusters an das Marketplace-Element übergeben wird. Diese Datei ist erforderlich, um eine Remoteverbindung mit den Kubernetes-Knoten herzustellen. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -m, --master-host   | Die öffentliche IP-Adresse oder der vollqualifizierte Domänenname (FQDN) eines Kubernetes-Masterknotens. Der Name der VM beginnt mit `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -u, --user          | Der Benutzername, der beim Erstellen des Kubernetes-Clusters an das Marketplace-Element übergeben wird. Der Benutzername ist erforderlich, um eine Remoteverbindung mit den Kubernetes-Knoten herzustellen. | azureuser (Standardwert) |
 
-   Wenn Sie Ihre Parameterwerte hinzufügen, könnte es wie im folgenden Code aussehen:
+
+   Wenn Sie Ihre Parameterwerte hinzufügen, könnte der Befehl wie folgt aussehen:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\secretsecret.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-    Bei einer erfolgreiche Ausführung werden die Protokolle erstellt.
+4. Nach ein paar Minuten gibt das Skript die gesammelten Protokolle in ein Verzeichnis namens `KubernetesLogs_{{time-stamp}}` aus. Dort finden Sie ein Verzeichnis für jede VM, die dem Cluster angehört.
 
-    ![Generierte Protokolle](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
+    Das Protokollsammlerskript sucht in den Protokolldateien auch nach Fehlern. Wenn es ein bekanntes Problem findet, fügt es der Ausgabe Schritte zur Problembehandlung hinzu. Stellen Sie sicher, dass Sie die aktuelle Version des Skripts ausführen, um die Wahrscheinlichkeit zu erhöhen, dass bekannte Probleme gefunden werden.
 
-
-4. Rufen Sie die Protokolle in den vom Befehl erstellten Ordnern ab. Der Befehl erstellt neue Ordner und versieht sie mit Zeitstempeln.
-    - KubernetesLogs*JJJJ-MM-TT-XX-XX-XX-XXX*
-        - Dvmlogs
-        - Acsengine-kubernetes-dvm.log
+> [!Note]  
+> In diesem GitHub-[Repository](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) finden Sie weitere Details zum Protokollsammlerskript.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

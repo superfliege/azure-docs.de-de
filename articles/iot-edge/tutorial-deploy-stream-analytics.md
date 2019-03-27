@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0096a7a57cb4a404f5c8e36d8b69eac2c20c1fab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 31330c3d2b10e6245db775da4039fd1948539df4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106014"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
@@ -33,6 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Bereitstellen des Azure Stream Analytics-Auftrags auf einem IoT Edge-Gerät über das Azure-Portal.
 
 <center>
+
 ![Architekturdiagramm des Tutorials: Staging und Bereitstellung des ASA-Auftrags](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
@@ -130,7 +131,7 @@ Mithilfe der drei Elemente – Eingabe, Ausgabe und Abfrage – wird in diesem A
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="configure-iot-edge-settings"></a>Konfigurieren von IoT Edge-Einstellungen
 
@@ -144,7 +145,7 @@ Um Ihren Stream Analytics-Auftrag auf die Bereitstellung als IoT Edge-Gerät vor
 
 1. Klicken Sie für das Feld **Container** auf **Neu erstellen**, und geben Sie einen Namen für den Speichercontainer an. 
 
-1. Wählen Sie **Speichern**aus. 
+1. Wählen Sie **Speichern** aus. 
 
 ## <a name="deploy-the-job"></a>Bereitstellen des Auftrags
 
@@ -169,7 +170,7 @@ In diesem Tutorial stellen Sie zwei Module bereit. Das erste ist **tempSensor**,
 
    1. Klicken Sie auf **Hinzufügen** und anschließend auf **Azure Stream Analytics-Modul**.
    1. Wählen Sie das Abonnement und den erstellten Azure Stream Analytics Edge-Auftrag aus. 
-   1. Wählen Sie **Speichern**aus.
+   1. Wählen Sie **Speichern** aus.
 
 1. Nachdem IhreStream Analytics-Auftrag im von Ihnen erstellten Speichercontainer veröffentlicht ist, klicken Sie auf den Modulnamen, um zu sehen, wie ein Stream Analytics-Modul strukturiert ist. 
 
@@ -215,9 +216,9 @@ Wechseln Sie nun zu Ihrem IoT Edge-Gerät, um sich über die Interaktion zwische
    ```cmd/sh
    iotedge list  
    ```
-<!--
+   <!--
    ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
--->
+   -->
 1. Zeigen Sie alle Systemprotokolle und Metrikdaten an. Verwenden Sie den Namen des Stream Analytics-Moduls:
 
    ```cmd/sh

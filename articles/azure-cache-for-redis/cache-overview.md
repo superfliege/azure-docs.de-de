@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236548"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433806"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Was ist Azure Cache for Redis?
 
@@ -57,7 +57,7 @@ Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere 
 
 Nach der Erstellung können Sie Ihren Cache auf einen höheren Tarif skalieren. Die Herunterskalierung auf einen niedrigeren Tarif wird nicht unterstützt. Ausführliche Anweisungen zur Skalierung finden Sie unter [How to Scale Azure Cache for Redis](cache-how-to-scale.md) (Skalieren von Azure Cache for Redis) und [How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation) (Automatisieren eines Skalierungsvorgangs).
 
-### <a name="feature-comparision"></a>Vergleich der Features
+### <a name="feature-comparison"></a>Funktionsvergleich
 
 Auf der Seite [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/) finden Sie einen detaillierten Vergleich der einzelnen Tarife. In der folgenden Tabelle werden einige der unterstützten Features nach Tarif aufgeführt:
 

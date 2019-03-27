@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 58117bce8de667c9750b2e0c19992b99716945cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124200"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
@@ -42,7 +42,7 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 
 - Mit diesem Release unterstützen integrierte Azure Stack-Systeme Konfigurationen mit 4 bis 16 Knoten. Sie können den [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) verwenden, um Unterstützung bei der Planung der Azure Stack-Kapazität und -Konfiguration zu erhalten.
 
-- <!--  2712869   | IS  ASDK --> **Azure Stack-Syslog-Client (Allgemeine Verfügbarkeit)**: Dieser Client ermöglicht die Weiterleitung von Überwachungen, Warnungen und Sicherheitsprotokollen der Azure Stack-Infrastruktur an einen Syslog-Server oder an SIEM-Software (Security Information and Event Management) außerhalb von Azure Stack. Der Syslog-Client unterstützt jetzt die Angabe des Ports, an dem der Syslog-Server lauscht.
+- <!--  2712869   | IS  ASDK -->  **Azure Stack-Syslog-Client (Allgemeine Verfügbarkeit)**: Dieser Client ermöglicht die Weiterleitung von Überwachungen, Warnungen und Sicherheitsprotokollen der Azure Stack-Infrastruktur an einen Syslog-Server oder an SIEM-Software (Security Information and Event Management) außerhalb von Azure Stack. Der Syslog-Client unterstützt jetzt die Angabe des Ports, an dem der Syslog-Server lauscht.
 
    Mit diesem Release ist der Syslog-Client allgemein verfügbar und kann in Produktionsumgebungen verwendet werden.
 
@@ -63,21 +63,21 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 - Die folgenden Probleme mit verwalteten Datenträgern wurden in Version 1809 und im [Azure Stack-Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/) für Version 1808 behoben: 
 
    <!--  2966665 – IS, ASDK --> 
-   - Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern von Premiumgröße (DS, DSv2, Fs, Fs_V2) schlug mit der folgenden Fehlermeldung fehl:  *Fehler beim Aktualisieren von Datenträgern für den virtuellen Computer ‚vmName‘: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp ‚Premium_LRS‘ für die VM-Größe ‘Standard_DS/Ds_V2/FS/Fs_v2) nicht unterstützt wird*. 
+  - Das Anfügen von SSD-Datenträgern an virtuelle Computer mit verwalteten Datenträgern von Premiumgröße (DS, DSv2, Fs, Fs_V2) schlug mit der folgenden Fehlermeldung fehl:  *Fehler beim Aktualisieren von Datenträgern für den virtuellen Computer ‚vmName‘: Der angeforderte Vorgang kann nicht ausgeführt werden, weil der Speicherkontotyp ‚Premium_LRS‘ für die VM-Größe ‘Standard_DS/Ds_V2/FS/Fs_v2) nicht unterstützt wird*. 
    
-   - Das Erstellen eines virtuellen Computers mit verwalteten Datenträgern mithilfe von **createOption**: **Attach** schlägt mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status ‚Fehler‘. Zusätzliche Information: "Interner Ausführungsfehler".*
-   ErrorCode: InternalExecutionError ErrorMessage: Interner Ausführungsfehler.
+  - Das Erstellen eines virtuellen Computers mit verwalteten Datenträgern mithilfe von **createOption**: **Attach** schlägt mit der folgenden Fehlermeldung fehl: *Fehler beim Vorgang mit langer Ausführungszeit mit dem Status ‚Fehler‘. Zusätzliche Information: "Interner Ausführungsfehler".*
+    ErrorCode: InternalExecutionError ErrorMessage: Interner Ausführungsfehler.
    
-   Dieses Problem wurde jetzt behoben.
+    Dieses Problem wurde jetzt behoben.
 
-- <!-- 2702741 -  IS, ASDK --> Ein Problem mit öffentlichen IP-Adressen, die mithilfe der dynamischen Zuordnungsmethode bereitgestellt wurden und nach der Ausgabe eines Befehls zum Beenden und Aufheben der Zuordnung nicht unbedingt beibehalten werden, wurde behoben. Sie werden jetzt beibehalten.
+- <!-- 2702741 -  IS, ASDK --> Es wurde ein Problem behoben, bei dem mit der dynamischen Zuordnungsmethode bereitgestellte öffentliche IP-Adressen nach der Ausgabe eines Befehls zum Beenden und Aufheben der Zuordnung nicht unbedingt beibehalten wurden. Sie werden jetzt beibehalten.
 
-- <!-- 3078022 - IS, ASDK --> Wenn eine VM vor Version 1808 beendet und ihre Zuordnung aufgehoben wurde, konnte sie nach dem Update auf 1808 nicht neu zugeordnet werden.  Dieses Problem wurde in Version 1809 behoben. Instanzen, die sich in diesem Zustand befanden und nicht gestartet werden konnten, können in Version 1809 mit dieser Lösung gestartet werden. Die Lösung verhindert außerdem, dass dieses Problem erneut auftritt.
+- <!-- 3078022 - IS, ASDK --> Wenn eine VM vor Version 1808 beendet (Zuordnung aufgehoben) wurde, konnte sie nach dem Update 1808 nicht neu zugeordnet werden.  Dieses Problem wurde in Version 1809 behoben. Instanzen, die sich in diesem Zustand befanden und nicht gestartet werden konnten, können in Version 1809 mit dieser Lösung gestartet werden. Die Lösung verhindert außerdem, dass dieses Problem erneut auftritt.
 
 ### <a name="changes"></a>Änderungen
 
 <!-- 2635202 - IS, ASDK -->
-- Der Infrastruktursicherungsdienst wird aus dem [öffentlichen Infrastrukturnetzwerk](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) in das [öffentliche VIP-Netzwerk](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network) verschoben. Kunden müssen sicherstellen, dass der Dienst aus dem öffentlichen VIP-Netzwerk auf den Sicherungsspeicherort zugreifen kann.  
+- Der Infrastruktursicherungsdienst wird aus dem [öffentlichen Infrastrukturnetzwerk](https://docs.microsoft.com/azure/azure-stack/azure-stack-network) in das [öffentliche VIP-Netzwerk](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network) verschoben. Kunden müssen sicherstellen, dass der Dienst aus dem öffentlichen VIP-Netzwerk auf den Sicherungsspeicherort zugreifen kann.  
 
 > [!IMPORTANT]  
 > Sollten Sie über eine Firewall verfügen, die aus dem öffentlichen VIP-Netzwerk keine Verbindungen mit dem Dateiserver zulässt, führt diese Änderung dazu, dass bei Infrastruktursicherungen der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) auftritt. Hierbei handelt es sich um einen Breaking Change ohne sinnvolle Problemumgehung. Aufgrund von Kundenfeedback wird die Änderung von Microsoft per Hotfix zurückgesetzt. Weitere Informationen zu verfügbaren Hotfixes für 1809 finden Sie im [Abschnitt mit den Schritten nach dem Updatevorgang](#post-update-steps). Wenden Sie den bereitgestellten Hotfix nach dem Update auf 1809 nur an, wenn das öffentliche VIP-Netzwerk aufgrund Ihrer Netzwerkrichtlinien nicht auf Infrastrukturressourcen zugreifen kann. In 1811 wird diese Änderung auf alle Systeme angewendet. Wenn Sie den Hotfix in 1809 angewendet haben, ist keine weitere Aktion erforderlich.  
@@ -147,7 +147,9 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ``` 
+  ```
+
+- Wenn Azure Stack von System Center Operations Manager (SCOM) verwaltet wird, müssen Sie das Management Pack für Microsoft Azure Stack auf Version 1.0.3.11 aktualisieren, bevor Sie das Update 1809 anwenden.
 
 ### <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess
 
@@ -295,10 +297,10 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 <!-- TBD - IS ASDK --> 
 - Nach dem Anwenden des Updates 1809 können beim Bereitstellen von virtuellen Computern mit Managed Disks die folgenden Probleme auftreten:
 
-   - Wenn das Abonnement vor dem Update 1808 erstellt wurde, schlägt die Bereitstellung eines virtuellen Computers mit Managed Disks möglicherweise mit einer internen Fehlermeldung fehl. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
-      1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
-      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob die Rolle **Azure Stack – DiskRP-Client** aufgeführt wird.
-   2. Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, schlägt die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, möglicherweise mit einer internen Fehlermeldung fehl. Zum Beheben des Fehlers führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
+  - Wenn das Abonnement vor dem Update 1808 erstellt wurde, schlägt die Bereitstellung eines virtuellen Computers mit Managed Disks möglicherweise mit einer internen Fehlermeldung fehl. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
+     1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Klicken Sie auf **Ressourcenanbieter**, klicken Sie dann auf **Microsoft.Compute**, und klicken Sie anschließend auf **Erneut registrieren**.
+     2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob die Rolle **Azure Stack – DiskRP-Client** aufgeführt wird.
+  - Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, schlägt die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, möglicherweise mit einer internen Fehlermeldung fehl. Zum Beheben des Fehlers führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
 
 - Ein virtueller Ubuntu 18.04-Computer, der mit aktivierter SSH-Autorisierung erstellt wurde, lässt nicht zu, dass Sie die SSH-Schlüssel für die Anmeldung verwenden. Um dieses Problem zu umgehen, verwenden Sie VM-Zugriff für die Linux-Erweiterung, um SSH-Schlüssel nach der Bereitstellung zu implementieren, oder verwenden Sie kennwortbasierte Authentifizierung.
 

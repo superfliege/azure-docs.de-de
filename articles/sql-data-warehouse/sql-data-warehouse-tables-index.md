@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190038"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indizieren von Tabellen in SQL Data Warehouse
 Empfehlungen und Beispiele für die Indizierung von Tabellen in Azure SQL Data Warehouse
@@ -45,12 +45,12 @@ Es gibt einige Szenarien, in denen der gruppierte Columnstore keine gute Option 
 
 - Columnstore-Tabellen weisen keine Unterstützung für „varchar(max)“, „nvarchar(max)“ und „varbinary(max)“ auf. Erwägen Sie stattdessen die Verwendung von Heap oder gruppiertem Index.
 - Unter Umständen sind Columnstore-Tabellen für vorübergehende Daten weniger effizient. Erwägen Sie die Verwendung von Heap und ggf. temporären Tabellen.
-- Kleine Tabellen mit weniger als 100 Millionen Zeilen. Erwägen Sie die Verwendung von Heaptabellen.
+- Kleine Tabellen mit weniger als 60 Millionen Zeilen. Erwägen Sie die Verwendung von Heaptabellen.
 
 ## <a name="heap-tables"></a>Heaptabellen
 Wenn Sie Daten vorübergehend in SQL Data Warehouse anordnen, werden Sie wahrscheinlich merken, dass der Gesamtprozess durch die Nutzung einer Heaptabelle beschleunigt wird. Dies liegt daran, dass Ladevorgänge für Heaps schneller als das Indizieren von Tabellen sind und der nachfolgende Lesevorgang in einigen Fällen aus dem Cache erfolgen kann.  Wenn Sie Daten nur laden, um sie vor dem Ausführen weiterer Transformationen bereitzustellen, ist das Laden der Tabelle in eine Heaptabelle deutlich schneller als das Laden der Daten in eine gruppierte Columnstore-Tabelle. Beim Laden von Daten in eine [temporäre Tabelle](sql-data-warehouse-tables-temporary.md) wird der Ladevorgang außerdem schneller als beim Laden einer Tabelle in einen dauerhaften Speicher durchgeführt.  
 
-Für kleine Nachschlagetabellen mit weniger als 100 Millionen Zeilen ist häufig die Nutzung von Heaptabellen sinnvoll.  Für gruppierte Columnstore-Tabellen wird die optimale Komprimierung erst erreicht, wenn mehr als 100 Millionen Zeilen vorhanden sind.
+Für kleine Nachschlagetabellen mit weniger als 60 Millionen Zeilen ist häufig die Nutzung von Heaptabellen sinnvoll.  Für gruppierte Columnstore-Tabellen wird die optimale Komprimierung erst erreicht, wenn mehr als 60 Millionen Zeilen vorhanden sind.
 
 Geben Sie zum Erstellen einer Heaptabelle in der WITH-Klausel einfach HEAP an:
 
@@ -79,7 +79,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Um einer Tabelle einen nicht gruppierten Index hinzuzufügen, verwenden Sie einfach die folgende Syntax:
+Um einer Tabelle einen nicht gruppierten Index hinzuzufügen, verwenden Sie die folgende Syntax:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -182,7 +182,7 @@ Wenn Sie Tabellen mit schlechter Segmentqualität identifiziert haben, sollten S
 Diese Faktoren können dazu führen, dass ein Columnstore-Index über deutlich weniger als die optimalen 1 Million Zeilen pro Zeilengruppe verfügt. Sie können auch verursachen, dass Zeilen in die Deltazeilengruppe anstatt in eine komprimierte Zeilengruppe aufgenommen werden. 
 
 ### <a name="memory-pressure-when-index-was-built"></a>Hohe Speicherauslastung bei der Erstellung des Index
-Die Anzahl von Zeilen pro komprimierter Zeilengruppe hängt direkt mit der Breite der Zeile und der Speichermenge zusammen, die zum Verarbeiten der Zeilengruppe verfügbar ist.  Wenn Zeilen bei hohem Arbeitsspeicherdruck in Columnstore-Tabellen geschrieben werden, kann die Qualität von Columnstore-Segmenten leiden.  Die bewährte Methode besteht deshalb darin, der Sitzung, in der in Ihre Columnstore-Indextabellen geschrieben wird, Zugriff auf so viel Arbeitsspeicher wie möglich gewährt wird.  Da ein Kompromiss zwischen Arbeitsspeicher und Parallelität eingegangen werden muss, richtet sich die Empfehlung zur richtigen Speicherbelegung nach den folgenden Aspekten: den Daten in jeder Zeile der Tabelle, den Data Warehouse-Einheiten, die Ihrem System zugeordnet sind, und der Anzahl von Parallelitätsslots, die Sie für eine Sitzung vergeben können, von der Daten in Ihre Tabelle geschrieben werden.  Als bewährte Methode empfehlen wir zu Beginn die Verwendung von „xlargerc“ wenn Sie DW300 oder weniger verwenden, „largerc“, wenn Sie DW400 bis DW600 verwenden, und „mediumrc“, wenn Sie DW1000 oder mehr verwenden.
+Die Anzahl von Zeilen pro komprimierter Zeilengruppe hängt direkt mit der Breite der Zeile und der Speichermenge zusammen, die zum Verarbeiten der Zeilengruppe verfügbar ist.  Wenn Zeilen bei hohem Arbeitsspeicherdruck in Columnstore-Tabellen geschrieben werden, kann die Qualität von Columnstore-Segmenten leiden.  Die bewährte Methode besteht deshalb darin, der Sitzung, in der in Ihre Columnstore-Indextabellen geschrieben wird, Zugriff auf so viel Arbeitsspeicher wie möglich gewährt wird.  Da ein Kompromiss zwischen Arbeitsspeicher und Parallelität eingegangen werden muss, richtet sich die Empfehlung zur richtigen Speicherbelegung nach den folgenden Aspekten: den Daten in jeder Zeile der Tabelle, den Data Warehouse-Einheiten, die Ihrem System zugeordnet sind, und der Anzahl von Parallelitätsslots, die Sie für eine Sitzung vergeben können, von der Daten in Ihre Tabelle geschrieben werden.
 
 ### <a name="high-volume-of-dml-operations"></a>Hohes Volumen von DML-Vorgängen
 Ein hohes Volumen von DML-Vorgängen, mit denen Zeilen aktualisiert und gelöscht werden, sorgen für Ineffizienz im Columnstore. Dies gilt insbesondere, wenn der Großteil der Zeilen in einer Zeilengruppe geändert wird.
@@ -205,7 +205,7 @@ Führen Sie nach dem Laden der Tabellen mit einigen Daten die unten angegebenen 
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Neuerstellen von Indizes zur Verbesserung der Segmentqualität
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Schritt 1: Identifizieren oder Erstellen eines Benutzers, der die richtige Ressourcenklasse verwendet
-Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen.  Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum. Die Ressourcenklasse des Datenbankbesitzer-Benutzers kann nicht geändert werden. Wenn Sie im System noch keinen Benutzer erstellt haben, müssen Sie dies also zuerst durchführen. Als Ressourcenklasse empfehlen wir mindestens die Verwendung von „xlargerc“ wenn Sie DW300 oder niedriger verwenden, „largerc“, wenn Sie DW400 bis DW600 verwenden, und „mediumrc“, wenn Sie DW1000 oder höher verwenden.
+Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen.  Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum. 
 
 Unten ist ein Beispiel dafür angegeben, wie Sie einem Benutzer mehr Arbeitsspeicher zuordnen, indem Sie seine Ressourcenklasse erhöhen. Informationen zur Verwendung von Ressourcenklassen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
 
@@ -216,7 +216,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Schritt 2: Neuerstellen von gruppierten Columnstore-Indizes mit einem Benutzer mit einer höheren Ressourcenklasse
 Melden Sie sich als der Benutzer aus Schritt 1 an (z.B. LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus. Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird. Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
 
-Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS](sql-data-warehouse-develop-ctas.md) in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Bei großen Datenmengen ist CTAS in der Regel schneller als [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Bei kleineren Datenmengen ist ALTER INDEX einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich. Weitere Details zur Neuerstellung von Indizes per CTAS finden Sie unten im Abschnitt **Neuerstellen von Indizes per CTAS und Partitionswechsel** .
+Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS](sql-data-warehouse-develop-ctas.md) in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Bei großen Datenmengen ist CTAS in der Regel schneller als [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Bei kleineren Datenmengen ist ALTER INDEX einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich. 
 
 ```sql
 -- Rebuild the entire clustered index
@@ -263,25 +263,8 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
--- Step 2: Create a SWITCH out table
-CREATE TABLE dbo.FactInternetSales_20000101
-    WITH    (   DISTRIBUTION = HASH(ProductKey)
-            ,   CLUSTERED COLUMNSTORE INDEX
-            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                                (20000101
-                                )
-                            )
-            )
-AS
-SELECT *
-FROM    [dbo].[FactInternetSales]
-WHERE   1=2 -- Note this table will be empty
-
--- Step 3: Switch OUT the data 
-ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales_20000101] PARTITION 2;
-
--- Step 4: Switch IN the rebuilt data
-ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
+-- Step 2: Switch IN the rebuilt data with TRUNCATE_TARGET option
+ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
 Weitere Informationen zum Neuerstellen von Partitionen mittels CTAS finden Sie unter [Verwendung von Partitionen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
