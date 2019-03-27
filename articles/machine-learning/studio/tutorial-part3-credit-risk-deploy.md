@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823789"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839016"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio
 
@@ -72,12 +72,11 @@ Folgende Module müssen gelöscht werden:
 
 Wählen Sie jedes Modul aus, und drücken Sie die ENTF-Taste, oder klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Delete** aus. 
 
-![SVM-Modell entfernt](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
-
+![Markierung, welche Module gelöscht werden sollen, um das Support Vector Machine-Modell (Stützvektormethode) zu entfernen](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
 
 Unser Modell sollte jetzt etwa wie folgt aussehen:
 
-![SVM-Modell entfernt](./media/tutorial-part3-credit-risk-deploy/publish3.png)
+![Resultierendes Experiment, wenn das Support Vector Machine-Modell gelöscht wurde](./media/tutorial-part3-credit-risk-deploy/publish3.png)
 
 Jetzt sind wir bereit, dieses Modells mit dem Modul [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] bereitzustellen.
 

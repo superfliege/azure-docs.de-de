@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c7759b9f0787b7926b3642b8b912ec5391347adf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 84025953e74cb2ace358aa041f55dc1498d22f2f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079059"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal
 
 Hier erfahren Sie, wie Sie mit dem Azure-Portal eine Resource Manager-Vorlage erstellen und diese dann über das Portal bearbeiten und bereitstellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md).
+
+![Diagramm: Schnellstart, Resource Manager-Vorlage über Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Nach Abschluss des Tutorials stellen Sie ein Azure Storage-Konto bereit. Andere Azure-Ressourcen werden nach dem gleichen Verfahren bereitgestellt.
 
@@ -32,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Das Erstellen einer Resource Manager-Vorlage von Grund auf ist keine einfache Aufgabe, insbesondere dann, wenn Sie noch nicht mit der Azure-Bereitstellung und dem JSON-Format vertraut sind. Über das Azure-Portal können Sie eine Ressource konfigurieren, z.B. ein Azure Storage-Konto. Vor dem Bereitstellen der Ressource können Sie Ihre Konfiguration in eine Resource Manager-Vorlage exportieren. Die Vorlage kann gespeichert und später wiederverwendet werden.
 
-Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Arbeitsvorlagen zu generieren, wenn sie versuchen, Azure-Ressourcen bereitzustellen, mit denen sie nicht vertraut sind.
+Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Vorlagen zu generieren, wenn sie Azure-Ressourcen bereitstellen möchten, mit denen sie nicht vertraut sind. Weitere Informationen zum Exportieren von Vorlagen über das Portal finden Sie unter [Exportieren von Ressourcengruppen in Vorlagen](./manage-resource-groups-portal.md#export-resource-groups-to-templates). Als andere Möglichkeit kann über [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) eine funktionierende Vorlage gesucht werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Ressource erstellen** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
@@ -40,8 +42,10 @@ Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Arbeitsvorlagen z
     ![Erstellen eines Azure-Speicherkontos über das Azure-Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. Geben Sie Folgendes ein:
 
-    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie den gewünschten Namen für die Ressourcengruppennamen ein. Auf dem Screenshot lautet der Name der Ressourcengruppe *mystorage1016rg*. Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Eine Ressourcengruppe vereinfacht das Verwalten von Azure-Ressourcen.
-    - **Name**: Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein. Auf dem Screenshot lautet der Name *mystorage1016*.
+    |NAME|Wert|
+    |----|----|
+    |**Ressourcengruppe**|Wählen Sie **Neu erstellen** aus, und geben Sie den gewünschten Namen für die Ressourcengruppennamen ein. Auf dem Screenshot lautet der Name der Ressourcengruppe *mystorage1016rg*. Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Eine Ressourcengruppe vereinfacht das Verwalten von Azure-Ressourcen. |
+    |**Name**|Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein. Der Speicherkontoname muss in Azure eindeutig sein und darf nur Kleinbuchstaben und Ziffern enthalten. Der Name muss zwischen 3 und 24 Zeichen umfassen. Wenn die Fehlermeldung „Der Speicherkontoname ‚mystorage1016‘ wird bereits verwendet“ angezeigt wird, versuchen Sie es mit  **&lt;Ihr Name>storage&lt;Aktuelles Datum im Format MMTT>**, z. B. **johndolestorage1016**. Weitere Informationen finden Sie unter [Benennungsregeln und -einschränkungen](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
 
     Für die restlichen Eigenschaften können Sie die Standardwerte verwenden.
 
@@ -50,7 +54,7 @@ Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Arbeitsvorlagen z
     > [!NOTE]
     > Bei manchen der exportierten Vorlagen sind vor der Bereitstellung noch einige Änderungen erforderlich.
 
-4. Wählen Sie am unteren Bildschirmrand **Überprüfen + erstellen** aus.
+4. Wählen Sie am unteren Bildschirmrand **Überprüfen + erstellen** aus. Wählen Sie im nächsten Schritt nicht **Erstellen** aus.
 5. Wählen Sie am unteren Bildschirmrand **Download a template for automation** (Herunterladen einer Vorlage für die Automatisierung) aus. Das Portal zeigt die generierte Vorlage:
 
     ![Generieren einer Vorlage über das Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
@@ -59,13 +63,14 @@ Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Arbeitsvorlagen z
 
     Sechs Parameter wurden definiert. Einer davon heißt **storageAccountName**. Der zweite hervorgehobene Teil im vorherigen Screenshot veranschaulicht, wie in der Vorlage auf diesen Parameter zu verweisen ist. Im nächsten Abschnitt bearbeiten Sie die Vorlage, um einen generierten Name für das Speicherkonto zu verwenden.
 
-    In der Vorlage ist eine Azure-Ressource definiert. Der Typ ist [Microsoft.Storage/storageAccounts]. Sehen Sie sich die Definition der Ressource und die Ressourcenstruktur an.
-6. Wählen Sie **Herunterladen** aus. Speichern Sie **template.json** aus dem heruntergeladenen Paket auf Ihrem Computer. Im nächsten Abschnitt verwenden Sie ein Bereitstellungstool für Vorlagen, um die Vorlage zu bearbeiten.
-7. Wählen Sie die Registerkarte **Parameter**, um die von Ihnen angegebenen Werte für die Parameter anzuzeigen. Notieren Sie diese Werte, da Sie diese im nächsten Abschnitt benötigen, wenn Sie die Vorlage bereitstellen.
+    In der Vorlage ist eine Azure-Ressource definiert. Der Typ ist `Microsoft.Storage/storageAccounts`. Sehen Sie sich die Definition der Ressource und die Definitionsstruktur an.
+6. Wählen Sie am oberen Bildschirmrand die Option **Herunterladen** aus. 
+7. Öffnen Sie die heruntergeladene ZIP-Datei, und speichern Sie **template.json** auf Ihrem Computer. Im nächsten Abschnitt verwenden Sie ein Bereitstellungstool für Vorlagen, um die Vorlage zu bearbeiten.
+8. Wählen Sie die Registerkarte **Parameter**, um die von Ihnen angegebenen Werte für die Parameter anzuzeigen. Notieren Sie diese Werte, da Sie diese im nächsten Abschnitt benötigen, wenn Sie die Vorlage bereitstellen.
 
     ![Generieren einer Vorlage über das Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    Mit der Kombination aus Vorlagen- und Parameterdatei können Sie eine Ressource erstellen. In diesem Tutorial erstellen Sie ein Azure-Speicherkonto.
+    Mit der Kombination aus Vorlagendatei und Parameterdatei können Sie eine Ressource erstellen. In diesem Tutorial erstellen Sie ein Azure Storage-Konto.
 
 ## <a name="edit-and-deploy-the-template"></a>Bearbeiten und Bereitstellen der Vorlage
 
@@ -81,79 +86,82 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
 4. Klicken Sie auf **Erstellen**.
 5. Wählen Sie **Eigene Vorlage im Editor erstellen**.
 6. Wählen Sie **Datei laden**, und befolgen Sie dann die Anweisungen zum Laden der Datei „template.json“, die Sie im vorherigen Abschnitt heruntergeladen haben.
-7. Fügen Sie wie im folgenden Screenshot dargestellt eine Variable hinzu:
+7. Nehmen Sie die folgenden drei Änderungen an der Vorlage vor:
 
-    ```json
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-    ```
     ![Azure-Ressourcen-Manager-Vorlagen](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    Zwei Vorlagenfunktionen werden hier verwendet: `concat()` und `uniqueString()`.
+   - Entfernen Sie den Parameter **storageAccountName** wie im vorherigen Screenshot gezeigt.
+   - Fügen Sie eine Variable mit der Bezeichnung **storageAccountName** wie im vorherigen Screenshot gezeigt hinzu:
 
-8. Entfernen Sie den im vorherigen Screenshot hervorgehobenen Parameter **storageAccountName**.
-9. Aktualisieren Sie das Element „name“ der Ressource **Microsoft.Storage/storageAccounts**, um anstelle des Parameters die neu definierte Variable zu verwenden:
+       ```json
+       "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+       ```
 
-    ```json
-    "name": "[variables('storageAccountName')]",
-    ```
+       Zwei Vorlagenfunktionen werden hier verwendet: `concat()` und `uniqueString()`.
+   - Aktualisieren Sie das Element „name“ der Ressource **Microsoft.Storage/storageAccounts**, um anstelle des Parameters die neu definierte Variable zu verwenden:
 
-    Die endgültige Vorlage sollte wie folgt aussehen:
+       ```json
+       "name": "[variables('storageAccountName')]",
+       ```
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "location": {
-                "type": "string"
-            },
-            "accountType": {
-                "type": "string"
-            },
-            "kind": {
-                "type": "string"
-            },
-            "accessTier": {
-                "type": "string"
-            },
-            "supportsHttpsTrafficOnly": {
-                "type": "bool"
-            }
-        },
-        "variables": {
-            "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-        },
-        "resources": [
-            {
-                "name": "[variables('storageAccountName')]",
-                "type": "Microsoft.Storage/storageAccounts",
-                "apiVersion": "2018-07-01",
-                "location": "[parameters('location')]",
-                "properties": {
-                    "accessTier": "[parameters('accessTier')]",
-                    "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
-                },
-                "dependsOn": [],
-                "sku": {
-                    "name": "[parameters('accountType')]"
-                },
-                "kind": "[parameters('kind')]"
-            }
-        ],
-        "outputs": {}
-    }
-    ```
-7. Wählen Sie **Speichern** aus.
-8. Geben Sie die folgenden Werte ein:
+     Die endgültige Vorlage sollte wie folgt aussehen:
 
-    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie Ihrer Ressourcengruppe einen eindeutigen Namen.
-    - **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus. Beispiel: **USA, Mitte**. 
-    - **Standort**: Wählen Sie einen Standort für das Speicherkonto aus. Beispiel: **USA, Mitte**.
-    - **Kontotyp**: Geben Sie für diese Schnellstartanleitung **Standard_LRS** ein.
-    - **Variante**: Geben Sie für diese Schnellstartanleitung **StorageV2** ein.
-    - **Zugriffsebene**: Geben Sie für diese Schnellstartanleitung **Heiße Ebene** ein.
-    - **Https Traffic Only Enabled** (Nur HTTPS-Datenverkehr aktiviert):  Wählen Sie für diese Schnellstartanleitung die Option **true** aus.
-    - **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
+     ```json
+     {
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion": "1.0.0.0",
+       "parameters": {
+           "location": {
+               "type": "string"
+           },
+           "accountType": {
+               "type": "string"
+           },
+           "kind": {
+               "type": "string"
+           },
+           "accessTier": {
+               "type": "string"
+           },
+           "supportsHttpsTrafficOnly": {
+               "type": "bool"
+           }
+       },
+       "variables": {
+           "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+       },
+       "resources": [
+           {
+               "name": "[variables('storageAccountName')]",
+               "type": "Microsoft.Storage/storageAccounts",
+               "apiVersion": "2018-07-01",
+               "location": "[parameters('location')]",
+               "properties": {
+                   "accessTier": "[parameters('accessTier')]",
+                   "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
+               },
+               "dependsOn": [],
+               "sku": {
+                   "name": "[parameters('accountType')]"
+               },
+               "kind": "[parameters('kind')]"
+           }
+       ],
+       "outputs": {}
+     }
+     ```
+8. Wählen Sie **Speichern** aus.
+9. Geben Sie die folgenden Werte ein:
+
+    |NAME|Wert|
+    |----|----|
+    |**Ressourcengruppe**|Wählen Sie den im letzten Abschnitt erstellten Ressourcengruppenname aus. |
+    |**Location**|Wählen Sie einen Standort für das Speicherkonto aus. Beispiel: **USA, Mitte**. |
+    |**Kontotyp**|Geben Sie für diese Schnellstartanleitung **Standard_LRS** ein. |
+    |**Kind**|Geben Sie für diese Schnellstartanleitung **StorageV2** ein. |
+    |**Zugriffsebene**|Geben Sie für diese Schnellstartanleitung **Heiße Ebene** ein. |
+    |**Https Traffic Only Enabled** (Nur HTTPS-Datenverkehr aktiviert)| Wählen Sie für diese Schnellstartanleitung die Option **true** aus. |
+    |**Ich stimme den oben genannten Geschäftsbedingungen zu**|(auswählen)|
 
     Hier sehen Sie einen Screenshot einer Beispielbereitstellung:
 

@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 33169448b5b1e4496f42d157cb77134b90804fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958268"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433177"
 ---
 # <a name="what-is-azure-data-explorer"></a>Was ist der Azure-Daten-Explorer?
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Hiermit können Sie die vielen Datenströme moderner Software verarbeiten, um die Daten zu sammeln, zu speichern und zu analysieren. Azure-Daten-Explorer ist ideal zum Analysieren von großen Mengen unterschiedlicher Daten aus beliebigen Datenquellen geeignet, z.B. Websites, Anwendungen, IoT-Geräte und mehr. Diese Daten werden für die Diagnose, Überwachung, Berichterstellung, Machine Learning und weitere Analysefunktionen verwendet. Azure-Daten-Explorer ermöglicht das einfache Erfassen dieser Daten, und Sie können komplexe Ad-hoc-Abfragen der Daten innerhalb von Sekunden ausführen.
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Hiermit können Sie die vielen Datenströme moderner Software verarbeiten, um die Daten zu sammeln, zu speichern und zu analysieren. Azure-Daten-Explorer ist ideal zum Analysieren von großen Mengen unterschiedlicher Daten aus beliebigen Datenquellen geeignet, z.B. Websites, Anwendungen, IoT-Geräte und mehr. Diese Daten werden für die Diagnose, Überwachung, Berichterstellung, Machine Learning und weitere Analysefunktionen verwendet. Azure Data Explorer ermöglicht das einfache Erfassen dieser Daten, und Sie können komplexe Ad-hoc-Abfragen der Daten innerhalb von Sekunden ausführen.
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Weshalb ist der Azure-Daten-Explorer so einzigartig?
 
@@ -53,7 +53,7 @@ Die Arbeit im Azure-Daten-Explorer folgt im Allgemeinen diesem Muster:
 
 ## <a name="query-experience"></a>Abfrageverhalten
 
-Eine Abfrage in Azure-Daten-Explorer ist eine schreibgeschützte Anforderung, Daten zu verarbeiten und die Ergebnisse dieser Daten zurückzugeben; die Daten und Metadaten werden dabei nicht geändert. Sie können Ihre Abfragen laufend optimieren, bis Sie die Analyse abgeschlossen haben. Azure-Daten-Explorer erleichtert diesen Vorgang durch seine äußerst schnellen Ad-hoc-Abfragen.
+Eine Abfrage in Azure-Daten-Explorer ist eine schreibgeschützte Anforderung, Daten zu verarbeiten und die Ergebnisse dieser Daten zurückzugeben; die Daten und Metadaten werden dabei nicht geändert. Sie können Ihre Abfragen laufend optimieren, bis Sie die Analyse abgeschlossen haben. Azure Data Explorer erleichtert diesen Vorgang durch seine äußerst schnellen Ad-hoc-Abfragen.
 
 Azure-Daten-Explorer eignet sich gleichermaßen gut für die Verarbeitung großer Mengen strukturierter, halbstrukturierter (geschachtelte JSON-Typen) und unstrukturierter Daten (Freitext). Er ermöglicht das Suchen nach bestimmten Textbegriffen, das Auffinden konkreter Ereignisse und das Durchführen metrischer Berechnungen für strukturierte Daten. Azure-Daten-Explorer schlägt eine Brücke zwischen Protokollen mit unstrukturiertem Text und strukturierten Zahlen und Dimensionen, indem Werte zur Laufzeit aus Freitextfeldern extrahiert werden. Das Durchsuchen der Daten wird durch eine Kombination aus schneller Textindizierung, ColumnStore- und Zeitreihenvorgängen erleichtert.
 

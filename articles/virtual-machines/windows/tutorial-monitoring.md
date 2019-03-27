@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cf39639c6b9e20337412b7b071f6d6840904ba6c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 32e92cb8cd6cd5d16ea8d38d178bb440420e6784
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738214"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546363"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
@@ -154,7 +154,7 @@ Der Bildschirm **Updateverwaltung** wird geöffnet. Konfigurieren Sie den gewün
 
 ![Aktivieren der Updateverwaltungslösung](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen. Nachdem die Lösung aktiviert wurde, werden Informationen zu fehlenden Updates auf dem virtuellen Computer an Log Analytics übermittelt. Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
+Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen. Nachdem die Lösung aktiviert wurde, werden Informationen zu fehlenden Updates auf dem virtuellen Computer an Azure Monitor-Protokolle übermittelt. Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
 
 ### <a name="view-update-assessment"></a>Anzeigen der Updatebewertung
 
@@ -282,7 +282,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
 
 Nach wenigen Minuten sollte der neue virtuelle Computer im Log Analytics-Arbeitsbereich angezeigt werden.
 
-![Blatt „Log Analytics“](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Blatt des Log Analytics-Arbeitsbereichs](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

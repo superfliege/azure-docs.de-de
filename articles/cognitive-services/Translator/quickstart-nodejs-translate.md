@@ -10,19 +10,18 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e89593e33dd7330ce64c46c826c9d0437c4c27d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 08dca771050f1b62cd85208a4b8f3d39340fb97d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834289"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit Node.js
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Node.js und der Textübersetzungs-REST-API eine Textzeichenfolge vom Englischen ins Italienische und Deutsche übersetzen.
 
 Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +32,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
-Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Projekt. Kopieren Sie anschließend den folgenden Codeausschnitt in Ihr Projekt in eine Datei namens `translate-text.js`.
+Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Projekt, oder erstellen Sie einen neuen Ordner mit der Datei `translate-text.js` auf dem Desktop. Kopieren Sie dann den folgenden Codeausschnitt in Ihr Projekt bzw. Ihre Datei:
 
 ```javascript
 const request = require('request');

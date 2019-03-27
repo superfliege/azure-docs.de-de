@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5d6a7d77b442383817179fadc5878f02dfe86628
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089521"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -145,7 +145,7 @@ Wählen Sie **Überprüfen**.
 
 Die Seite **Hostnamen hinzufügen** wird angezeigt. 
 
-Stellen Sie sicher, dass **Typ des Hostnamenseintrags** auf **CNAME (www.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
+Stellen Sie sicher, dass der **Typ des Hostnamenseintrags** auf **CNAME (www\.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
 
 Wählen Sie **Hostnamen hinzufügen**.
 
@@ -282,7 +282,7 @@ Geben Sie einen vollqualifizierten Domänennamen ein, der zur Platzhalterdomäne
 
 Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
 
-Stellen Sie sicher, dass **Typ des Hostnamenseintrags** auf **CNAME (www.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
+Stellen Sie sicher, dass der **Typ des Hostnamenseintrags** auf **CNAME-Eintrag (www\.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
 
 Wählen Sie **Hostnamen hinzufügen**.
 

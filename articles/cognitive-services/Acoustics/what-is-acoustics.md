@@ -1,7 +1,7 @@
 ---
-title: 'Was ist „Projekt: Akustik“?'
+title: Übersicht über Projekt Akustik
 titlesuffix: Azure Cognitive Services
-description: 'Das Unity-Plug-In für „Projekt: Akustik“ bietet Okklusion, Nachhall und Verräumlichung für Projekte, die auf VR und herkömmliche Bildschirme ausgerichtet sind.'
+description: Projekt Akustik ist eine Akustik-Engine für interaktive 3D-Erfahrungen, in der auf Wellen basierende Physiksimulationen mit Baking mit interaktiven Entwurfssteuerelementen integriert sind.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,56 +10,48 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 8305eca478854eeff29268a86e4e49b697261ca2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3d99ea5767c7b2e62f7228440201b4a9b6593b02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136599"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
-Das Unity-Plug-In für „Projekt: Akustik“ bietet Okklusion, Nachhall und Verräumlichung für Projekte, die auf VR und herkömmliche Bildschirme ausgerichtet sind. Es bietet eine Möglichkeit zum Entwickeln von Spielakustik, bei der die Absichten des Entwicklers über eine physikbasierte Wellensimulation gelagert werden.
+Projekt Akustik ist eine Wellenakustik-Engine für interaktive 3D-Erfahrungen. Sie modelliert Welleneffekte wie Beugung, Portale und Hall in komplexen Szenen ohne manuelle Zonenmarkierung. Außerdem schließt sie eine Integration von Spiele-Engines und Audiomiddleware ein. Die Philosophie hinter Projekt Akustik ist vergleichbar mit einer statischen Beleuchtung: Das Baking einer detaillierten Physik wird offline ausgeführt, um eine physische Baseline bereitzustellen, und die künstlerischen Ziele werden mithilfe einer einfachen Runtime mit ausdrucksstarken Entwurfssteuerelementen erreicht.
 
-## <a name="why-use-acoustics-in-virtual-environments"></a>Was spricht für die Verwendung von Akustik in virtuellen Umgebungen?
-Menschen finden sich anhand von audiovisuellen Signalen in ihrer Umgebung zurecht. In virtuellen Welten ermöglicht das Kombinieren von räumlichem Klang mit Akustik ein tieferes Eintauchen der Benutzer. Das hier beschriebene Akustiktool analysiert virtuelle Welten, um eine realistische Akustiksimulation zu erstellen, und unterstützt einen Entwurfsprozess im Anschluss an die Simulation. Die Analyse beinhaltet sowohl die Geometrie als auch die Materialien für jede Oberfläche der Welt. Die Simulation umfasst Parameter wie die Eingangsrichtung (Portalisierung), Hallstärke, Abklingzeiten sowie Okklusions- und Obstruktionseffekte.
+![Entwurfsansicht](media/gears-with-voxels.jpg)
 
-## <a name="how-does-this-approach-to-acoustics-work"></a>Wie funktioniert dieser Akustikansatz?
-Das System basiert auf einer Offlineberechnung der virtuellen Welt, die eine komplexere Simulation als bei der Ausführung der Analyse zur Laufzeit ermöglicht. Die Offlineberechnung erzeugt eine Nachschlagetabelle von Akustikparametern. Ein Designer gibt Regeln an, die zur Laufzeit auf die Parameter angewendet werden. Durch Optimierung dieser Regeln können hyperrealistische Effekte für eine hohe emotionale Intensität oder hyporealistische Szenen für Klänge erzielt werden, die sich mehr im Hintergrund befinden.
+## <a name="using-wave-physics-for-interactive-acoustics"></a>Verwenden von Wellenphysik für interaktive Akustik
+Auf Strahlen basierende Akustikmethoden können eine Überprüfung auf Verdeckung mit einer einzelnen Quelle-zu-Zuhörer-Strahlenausdehnung überprüfen oder den Hall durch Abschätzen des Volumens der lokalen Szene mit wenigen Strahlen erzeugen. Diese Techniken sind jedoch nicht immer zuverlässig, da ein Kieselstein für eine ebenso starke Verdeckung sorgt wie ein großer Felsblock. Mit Strahlen lässt sich die Krümmung von Tönen um Objekte herum – ein als Beugung bezeichnetes Phänomen – nicht abbilden. Die Simulation in Projekt Akustik erfasst diese Effekte mithilfe einer auf Wellen basierenden Simulation. Das Ergebnis ist besser vorhersagbar und zuverlässiger.
 
-## <a name="design-process-comparison"></a>Vergleich des Entwurfsprozesses
-Das Plug-In für „Projekt: Akustik“ unterstützt einen neuen Entwurfsprozess für Akustik in Unity-Szenen. Um diesen neuen Entwurfsprozess zu erläutern, vergleichen wir ihn mit einer der heutzutage gebräuchlichen Herangehensweisen an Akustik.
+Die zentrale Innovation von Projekt Akustik besteht darin, akustische Simulation mit herkömmlichen Konzepten des Sounddesigns zu verbinden. Die Simulationsergebnisse werden in herkömmliche Audio-DSP-Parameter für Verdeckung, Portale und Hall übersetzt. Der Designer nutzt Steuerelemente für diesen Übersetzungsvorgang. Weitere Informationen zu den Kerntechnologien hinter Projekt Akustik finden Sie auf der [Forschungsprojektseite](https://www.microsoft.com/en-us/research/project/project-triton/).
 
-### <a name="typical-approach-to-acoustics-today"></a>Typische derzeitige Herangehensweise an Akustik
-Bei einem typischen heutigen Akustikansatz wird die Lautstärke des Halls gezeichnet:
+![Entwurfsansicht](media/wave-simulation.gif)
 
-![Entwurfsansicht](media/reverbZonesAltSPace2.png)
+## <a name="setup"></a>Einrichtung
+Die [Unity-Integration von Projekt Akustik](unity-integration.md) unterstützt Drag & Drop und enthält ein Unity-Audio-Engine-Plug-In. Erweitern Sie die Audioquellen-Steuerelemente von Unity, indem Sie eine Komponente für Projekt Akustik-C#-Steuerelemente an jedes Audioobjekt anfügen.
 
-Dann werden die Parameter für die einzelnen Zonen optimiert:
+Die [Unreal-Integration von Projekt Akustik](unreal-integration.md) enthält Editor- und Spiel-Plug-Ins für Unreal sowie ein Wwise-Mixer-Plug-In. Eine benutzerdefinierte Audiokomponente erweitert die vertrauten Wwise-Funktionen in Unreal um Liveakustik-Entwurfssteuerelemente. Die Entwurfssteuerelemente sind außerdem in Wwise im Mixer-Plug-In verfügbar.
 
-![Entwurfsansicht](media/TooManyReverbParameters.png)
+## <a name="workflow"></a>Workflow
+* **Vorabbaking:** Beginnen Sie mit der Einrichtung des Baking, indem Sie auswählen, welche Geometrie auf Akustik reagieren soll, z. B. durch Ignorieren von Lichtschächten. Bearbeiten Sie dann automatische Materialzuweisungen, und wählen Sie Navigationsbereiche aus, um das Zuhörersampling zu steuern. Es findet keine manuelle Markierung für Hall-/Portal-/Raumzonen statt.
+* **Baking:** In einem lokal ausgeführten Analyseschritt werden die Umwandlung in Voxel und andere geometrische Analysen entsprechend der Auswahl oben in der Szene umgesetzt. Die Ergebnisse werden im Editor visualisiert, um die Szeneneinrichtung zu überprüfen. Bei der Bakingübermittlung werden die Voxeldaten an Azure gesendet, und Sie erhalten eine Akustikspielressource.
+* **Runtime:** Laden Sie die Ressource in Ihren Level, dann können Sie sich die Akustik im Level anhören. Entwerfen Sie die Akustik live im Editor mit abgestuften Steuerelementen für jede Quelle. Die Steuerelemente können auch über Levelskripts gesteuert werden.
 
-Zum Schluss wird Raytracing-Logik hinzugefügt, um in der gesamten Szene die richtige Okklusions- und Obstruktionsfilterung zu erzielen, sowie Pfadsuchlogik für Portalisierung. Dieser Code kann Laufzeitkosten hinzufügen. Außerdem liegen Probleme mit der Gleichmäßigkeit an Ecken sowie Grenzfälle bei unregelmäßig geformten Szenen vor.
-
-### <a name="an-alternative-approach-with-physics-based-design"></a>Ein alternativer Ansatz mit physikbasiertem Entwurf
-Mit dem Ansatz des Unity-Plug-ins für „Projekt: Akustik“ stellen Sie Form und Materialien einer statischen Szene bereit. Da die Szene voxelisiert ist und der Prozess kein Raytracing verwendet, müssen Sie kein vereinfachtes oder dichtes Akustiknetz bereitstellen. Ebenso ist es nicht erforderlich, die Szene mit der Lautstärke des Halls zu markieren. Das Plug-In lädt die Szene in die Cloud hoch, wo sie physikbasierte Wellensimulation verwendet. Das Ergebnis wird als Nachschlagetabelle in Ihr Projekt integriert und kann für Ästhetik- oder Gaming-Effekte angepasst werden.
-
-![Entwurfsansicht](media/GearsWithVoxels.jpg)
-
-## <a name="requirements"></a>Requirements (Anforderungen)
-* Unity 2018.2+ für Akustikintegrationen und Unity 5.2+ für Sounddesign- und bereitstellung
-* Unity Editor für Windows (64-Bit)
-* Azure Batch-Abonnement für Akustikintegrationen
-* Unity-Skriptlaufzeit muss auf „.NET 4.x Equivalent“ festgelegt sein.
-
-## <a name="platform-support"></a>Plattformunterstützung
-* Windows Desktop (x86 und AMD64)
-* Windows UWP (x86, AMD64 und ARM)
-* Android (x86 und ARM64)
+## <a name="platforms"></a>Plattformen
+Die Projekt Akustik-Runtime-Plug-Ins können derzeit auf den folgenden Plattformen bereitgestellt werden:
+* Windows
+* Android
+* Xbox One
 
 ## <a name="download"></a>Download
-Wenn Sie an der Evaluierung des Akustik-Plug-Ins interessiert sind, registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u), um die Designer-Vorschauversion nutzen zu können.
+* [Plug-Ins und Beispiele für Projekt Akustik](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+  * Um Binärdateien und Support für die Xbox zu erhalten, kontaktieren Sie uns über das nachstehende Registrierungsformular.
+* [Projekt Akustik-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [Melden Sie sich an, um aktuelle Informationen zu Projekt Akustik zu erhalten.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum [Entwurfsprozess](design-process.md)
-* Erste Schritte mit der [Integration von Akustik in Ihr Unity-Projekt](getting-started.md)
+* Probieren Sie einen [Projekt Akustik-Schnellstart für Unity](unity-quickstart.md) oder [Unreal](unreal-quickstart.md) aus.
+* Erkunden Sie die [Sounddesignphilosophie von Projekt Akustik](design-process.md).
 

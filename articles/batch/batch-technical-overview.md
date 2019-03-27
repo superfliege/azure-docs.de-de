@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35621278"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730950"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -30,7 +30,7 @@ Entwickler können Batch als Plattformdienst verwenden, um SaaS-Anwendungen oder
 
 Es fallen keine zusätzlichen Gebühren für die Nutzung von Batch an. Sie zahlen nur für die genutzten zugrunde liegenden Ressourcen, z.B. virtuelle Computer, Speicher und Netzwerk.
 
-Ein Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [HPC, Batch, and Big Compute solutions using Azure VMs](../virtual-machines/linux/high-performance-computing.md) (HPC-, Batch- und Big Compute-Lösungen mit Azure-VMs).
+Einen Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [High Performance Computing (HPC) on Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) (High Performance Computing (HPC) in Azure).
 
 ## <a name="run-parallel-workloads"></a>Ausführen von parallelen Workloads
 Batch funktioniert gut mit intrinsisch parallelen Workloads (auch als „hochgradig parallel“ bezeichnet). Bei intrinsisch parallelen Workloads können die Anwendungen unabhängig voneinander ausgeführt werden, und jede Instanz erledigt einen Teil der Arbeit. Wenn die Anwendungen ausgeführt werden, greifen sie ggf. auf einige gemeinsame Daten zu, aber sie kommunizieren nicht mit anderen Instanzen der Anwendung. Intrinsisch parallele Workloads können daher in großem Umfang ausgeführt werden. Dies richtet sich nach der Menge von Computeressourcen, die für die gleichzeitige Ausführung von Anwendungen verfügbar sind.

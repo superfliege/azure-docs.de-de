@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2bba5d54c2b6298c2dd8059d47e5975ad3f176c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264759"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453756"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Service Fabric mithilfe von Azure DevOps Projects
 
@@ -39,7 +39,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 * Ein Azure-Abonnement. Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabricc"></a>Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Projects
+## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Projects
 
 Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Projects Azure-Ressourcen wie ein Service Fabric-Cluster im Azure-Abonnement Ihrer Wahl erstellt.
 

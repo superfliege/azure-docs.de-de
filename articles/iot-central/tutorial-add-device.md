@@ -3,18 +3,18 @@ title: Hinzufügen eines echten Geräts zu einer Azure IoT Central-Anwendung | M
 description: Fügen Sie Ihrer Azure IoT Central-Anwendung als Bediener ein echtes Gerät hinzu.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731528"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770900"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung
 
@@ -52,21 +52,19 @@ Um Ihrer Anwendung ein echtes Gerät hinzuzufügen, verwenden Sie die Gerätevor
 
    Der **Device Explorer** zeigt die Gerätevorlage **Connected Air Conditioner** und das simulierte Gerät an, das automatisch erstellt wurde, als der Ersteller die Gerätevorlage erstellt hat.
 
-2. Klicken Sie auf **Neu** und anschließend auf **Real** (Echt), um damit zu beginnen, eine Verbindung mit einer echten verbundenen Klimaanlage herzustellen:
+2. Wählen Sie **+** und anschließend **Real** (Echt) aus, um damit zu beginnen, eine Verbindung mit einer echten verbundenen Klimaanlage herzustellen:
 
    ![Beginnen mit dem Herstellen einer Verbindung mit einer echten verbundenen Klimaanlage](media/tutorial-add-device/newreal.png)
 
-3. Geben Sie die Geräte-ID (**muss in Kleinbuchstaben angegeben werden**) ein, oder verwenden Sie die vorgeschlagene Geräte-ID. Sie können auch einen Namen für Ihr neues Gerät eingeben und auf **Erstellen** klicken.  
+3. Geben Sie die Geräte-ID (in Kleinbuchstaben ) ein, oder verwenden Sie die vorgeschlagene Geräte-ID. Sie können auch einen Namen für Ihr neues Gerät eingeben und auf **Erstellen** klicken.
 
    ![Umbenennen des Geräts](media/tutorial-add-device/rename.png)
-
-
 
 ## <a name="configure-a-real-device"></a>Konfigurieren eines echten Geräts
 
 Das echte Gerät wird auf der Grundlage der Gerätevorlage **Connected Air Conditioner** erstellt. Sie können Ihr Gerät mithilfe von **Einstellungen** konfigurieren und Eigenschaftswerte zur Erfassung von Geräteinformationen festlegen.
 
-1. Auf der Seite **Einstellungen** sehen Sie, dass die Einstellung **Set Temperature** (Sollwerttemperatur) den Status **no update** (Keine Aktualisierung) besitzt. Dieser Zustand ändert sich erst, wenn das echte Gerät eine Verbindung mit der Anwendung herstellt und bestätigt, dass auf die Einstellung reagiert wurde. 
+1. Auf der Seite **Einstellungen** sehen Sie, dass die Einstellung **Set Temperature** (Sollwerttemperatur) den Status **no update** (Keine Aktualisierung) besitzt. Dieser Zustand ändert sich erst, wenn das echte Gerät eine Verbindung mit der Anwendung herstellt und bestätigt, dass auf die Einstellung reagiert wurde.
 
     ![Einstellungen mit Synchronisierungsangabe](media/tutorial-add-device/settingssyncing.png)
 
@@ -76,7 +74,7 @@ Das echte Gerät wird auf der Grundlage der Gerätevorlage **Connected Air Condi
 
 3. Sie können die Seiten **Measurements** (Messungen), **Regeln** und **Dashboard** für Ihr echtes Gerät anzeigen.
 
-## <a name="generate-connection-string-for-real-device-from-application"></a>Generieren der Verbindungszeichenfolge für das echte Gerät über die Anwendung
+## <a name="generate-connection-string"></a>Generieren der Verbindungszeichenfolge
 
 Ein Geräteentwickler muss die *Verbindungszeichenfolge* für Ihr echtes Gerät in den Code einbetten, der auf dem Gerät ausgeführt wird. Die Verbindungszeichenfolge ermöglicht es dem Gerät, eine sichere Verbindung mit Ihrer Azure IoT Central-Anwendung herzustellen. Die Verbindungszeichenfolge wird in den nächsten Schritten im Rahmen der Vorbereitung des in Node.js geschriebenen Clientcodes generiert. Die Node.js-Anwendung stellt die echte verbundene Klimaanlage dar. 
 
@@ -90,7 +88,6 @@ Der Beispielcode in diesem Artikel ist in [Node.js](https://nodejs.org/) geschri
 * Reagieren auf einen Bediener, der die Einstellung **Set Temperature** (Sollwerttemperatur) verwendet
 * Behandeln des Echo-Befehls aus Ihrer Azure IoT Central-Anwendung
 
-
 Die Anleitungsartikel unter [Nächste Schritte](#next-steps) enthalten weitere vollständige Beispiele und veranschaulichen die Verwendung anderer Programmiersprachen. Weitere Informationen zur Verbindungsherstellung zwischen Geräten und Azure IoT Central finden Sie im Artikel [Device connectivity in Azure IoT Central](concepts-connectivity.md) (Gerätekonnektivität in Azure IoT Central).
 
 Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodejs.org/) vorbereiten:
@@ -102,18 +99,12 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 1. Navigieren Sie in der Befehlszeilenumgebung zum erstellten Ordner `connectedairconditioner`.
 
 1. Installieren Sie den DPS-Schlüsselgenerator mithilfe des folgenden Befehls:
-    
+
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
    Erfahren Sie mehr über das [Befehlszeilentool](https://www.npmjs.com/package/dps-keygen).
-
-1. Laden Sie das Tool „dps_cstr“ von [GitHub](https://github.com/Azure/dps-keygen/archive/master.zip) herunter, und entzippen Sie es (Windows).
-
-)
-
-    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Die Verbindungszeichenfolge für eine Geräteinstanz in Ihrer Anwendung wird auf der Grundlage von Geräteinformationen generiert, die von IoT Central bereitgestellt werden.
 
@@ -121,56 +112,56 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 
    ![Geräteseite mit Link zum Anzeigen der Verbindungsinformationen](media/tutorial-add-device/connectionlink.png)
 
-
 1. Kopieren Sie auf der Geräteverbindungsseite die Bereichs-ID, die Geräte-ID und den Primärschlüssel, fügen Sie die Werte in einen Text-Editor ein, und speichern Sie sie. Die Werte werden im nächsten Schritt benötigt.
 
-   ![Verbindungsdetails](media/tutorial-add-device/device-connect.PNG)
+   ![Verbindungsdetails](media/tutorial-add-device/device-connect.png)
 
 1. Kehren Sie zur Befehlszeilenumgebung zurück, und führen Sie Folgendes aus, um Ihre Verbindungszeichenfolge zu generieren:
 
-   ```cmd/sh
-   dps_cstr <scope_id> <device_id> <Primary Key>
-   ```
-   
+    ```cmd/sh
+    dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+    ```
+
    Kopieren Sie die Ausgabe, und speichern Sie sie in einer neuen Datei (Beispiel: connection.txt).
 
 1. Führen Sie zum Initialisieren Ihres Node.js-Projekts den folgenden Befehl aus, und behalten Sie dabei alle Standardwerte bei:
 
-   ```cmd/sh
+    ```cmd/sh
     npm init
-   ```
+      ```
 
 1. Führen Sie zum Installieren der erforderlichen Pakete den folgenden Befehl aus:
 
-   ```cmd/sh
-   npm install azure-iot-device azure-iot-device-mqtt --save
-   ```
+    ```cmd/sh
+    npm install azure-iot-device azure-iot-device-mqtt --save
+    ```
 
 1. Erstellen Sie im Ordner `connectedairconditioner` mit einem Text-Editor eine Datei namens **ConnectedAirConditioner.js**.
 
 1. Fügen Sie am Anfang der Datei **ConnectedAirConditioner.js** die folgenden `require`-Anweisungen hinzu:
 
-   ```javascript
-   'use strict';
+    ```javascript
+    'use strict';
 
-   var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
-   var Message = require('azure-iot-device').Message;
-   var ConnectionString = require('azure-iot-device').ConnectionString;
-   ```
+    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var Message = require('azure-iot-device').Message;
+    var ConnectionString = require('azure-iot-device').ConnectionString;
+    ```
 
 1. Fügen Sie der Datei folgende Variablendeklarationen hinzu:
 
-   ```javascript
-   var connectionString = '{your device connection string}';
-   var targetTemperature = 0;
-   var client = clientFromConnectionString(connectionString);
-   ```
-   > [!NOTE]
-   > Der Platzhalter `{your device connection string}` wird in einem späteren Schritt aktualisiert. 
+    ```javascript
+    var connectionString = '{your device connection string}';
+    var targetTemperature = 0;
+    var client = clientFromConnectionString(connectionString);
+    ```
+
+    > [!NOTE]
+    > Der Platzhalter `{your device connection string}` wird in einem späteren Schritt aktualisiert.
 
 1. Speichern Sie die bisherigen Änderungen, lassen Sie die Datei aber noch geöffnet.
 
-## <a name="understand-how-client-code-maps-to-the-application"></a>Nachvollziehen der Zuordnung zwischen Clientcode und Anwendung
+## <a name="review-client-code"></a>Überprüfen des Clientcodes
 
 Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine Anwendung erstellt, die eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellt. In diesem Abschnitt fügen Sie den Code für Folgendes hinzu:
 
@@ -180,84 +171,82 @@ Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine A
 * Empfangen von Einstellungen von Ihrer Azure IoT Central-Anwendung
 * Behandeln des Echo-Befehls aus Ihrer Azure IoT Central-Anwendung
 
-
 1. Fügen Sie der Datei **ConnectedAirConditioner.js** den folgenden Code hinzu, um temperaturbezogene Telemetriedaten an Ihre Azure IoT Central-Anwendung zu senden:
 
-   ```javascript
-   // Send device telemetry.
-   function sendTelemetry() {
-     var temperature = targetTemperature + (Math.random() * 15);
-     var data = JSON.stringify({ temperature: temperature });
-     var message = new Message(data);
-     client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
-       (err ? `; error: ${err.toString()}` : '') +
-       (res ? `; status: ${res.constructor.name}` : '')));
-   }
-   ```
+    ```javascript
+    // Send device telemetry.
+    function sendTelemetry() {
+      var temperature = targetTemperature + (Math.random() * 15);
+      var data = JSON.stringify({ temperature: temperature });
+      var message = new Message(data);
+      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+        (err ? `; error: ${err.toString()}` : '') +
+        (res ? `; status: ${res.constructor.name}` : '')));
+    }
+    ```
 
-   Der im JSON-Format gesendete Name des Felds muss dem Namen des Felds entsprechen, den Sie in Ihrer Gerätevorlage für die temperaturbezogenen Telemetriedaten angegeben haben. In diesem Beispiel lautet der Name des Felds **temperature**.
-
+    Der im JSON-Format gesendete Name des Felds muss dem Namen des Felds entsprechen, den Sie in Ihrer Gerätevorlage für die temperaturbezogenen Telemetriedaten angegeben haben. In diesem Beispiel lautet der Name des Felds **temperature**.
 
 1. Fügen Sie zum Senden von Geräteeigenschaften wie **firmwareVersion** und **serialNumber** die folgende Definition hinzu:
 
-   ```javascript
-   // Send device properties
-   function sendDeviceProperties(twin) {
-     var properties = {
-       firmwareVersion: "9.75",
-       serialNumber: "10001"
-     };
-     twin.properties.reported.update(properties, (errorMessage) => 
-       console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
-   }
-   ```
+    ```javascript
+    // Send device properties
+    function sendDeviceProperties(twin) {
+      var properties = {
+        firmwareVersion: "9.75",
+        serialNumber: "10001"
+      };
+      twin.properties.reported.update(properties, (errorMessage) => 
+      console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
+    }
+    ```
 
 1. Fügen Sie die folgende Definition hinzu, um die Einstellungen zu definieren, die Ihr Gerät unterstützt (beispielsweise **setTemperature**):
 
-   ```javascript
-   // Add any settings your device supports
-   // mapped to a function that is called when the setting is changed.
-   var settings = {
-     'setTemperature': (newValue, callback) => {
-       // Simulate the temperature setting taking two steps.
-       setTimeout(() => {
-         targetTemperature = targetTemperature + (newValue - targetTemperature) / 2;
-         callback(targetTemperature, 'pending');
-         setTimeout(() => {
-           targetTemperature = newValue;
-           callback(targetTemperature, 'completed');
-         }, 5000);
-       }, 5000);
-     }
-   };
-   ```
+    ```javascript
+    // Add any settings your device supports
+    // mapped to a function that is called when the setting is changed.
+    var settings = {
+      'setTemperature': (newValue, callback) => {
+        // Simulate the temperature setting taking two steps.
+        setTimeout(() => {
+          targetTemperature = targetTemperature + (newValue - targetTemperature) / 2;
+          callback(targetTemperature, 'pending');
+          setTimeout(() => {
+            targetTemperature = newValue;
+            callback(targetTemperature, 'completed');
+          }, 5000);
+        }, 5000);
+      }
+    };
+    ```
 
 1. Fügen Sie für die Behandlung der von Azure IoT Central gesendeten Einstellungen die folgende Funktion hinzu, die den geeigneten Gerätecode sucht und ausführt:
 
-   ```javascript
-   // Handle settings changes that come from Azure IoT Central via the device twin.
-   function handleSettings(twin) {
-     twin.on('properties.desired', function (desiredChange) {
-       for (let setting in desiredChange) {
-         if (settings[setting]) {
-           console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-           settings[setting](desiredChange[setting].value, (newValue, status, message) => {
-             var patch = {
-               [setting]: {
-                 value: newValue,
-                 status: status,
-                 desiredVersion: desiredChange.$version,
-                 message: message
-               }
-             }
-             twin.properties.reported.update(patch, (err) => console.log(`Sent setting update for ${setting}; ` +
-               (err ? `error: ${err.toString()}` : `status: success`)));
-           });
-         }
-       }
-     });
-   }
-   ```
+    ```javascript
+    // Handle settings changes that come from Azure IoT Central via the device twin.
+    function handleSettings(twin) {
+      twin.on('properties.desired', function (desiredChange) {
+        for (let setting in desiredChange) {
+          if (settings[setting]) {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
+            settings[setting](desiredChange[setting].value, (newValue, status, message) => {
+              var patch = {
+                [setting]: {
+                  value: newValue,
+                  status: status,
+                  desiredVersion: desiredChange.$version,
+                  message: message
+                }
+              }
+              twin.properties.reported.update(patch, (err) => console.log(`Sent setting update for ${setting}; ` +
+                (err ? `error: ${err.toString()}` : `status: success`)));
+            });
+          }
+        }
+      });
+    }
+    ```
 
     Diese Funktion bewirkt Folgendes:
 
@@ -267,57 +256,57 @@ Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine A
 
 1. Fügen Sie die folgende Definition hinzu, um auf einen Befehl aus Ihrer Azure IoT Central-Anwendung (beispielsweise **Echo**) zu reagieren:
 
-   ```javascript
-   // Respond to the echo command
-   function onCommandEcho(request, response) {
-     // Display console info
-     console.log(' * Echo command received');
-     // Respond
-     response.send(10, 'Success', function (errorMessage) {});
-   }
-   ```
+    ```javascript
+    // Respond to the echo command
+    function onCommandEcho(request, response) {
+      // Display console info
+      console.log(' * Echo command received');
+      // Respond
+      response.send(10, 'Success', function (errorMessage) {});
+    }
+    ```
 
 1. Fügen Sie den folgenden Code hinzu, um die Verbindungsherstellung mit Azure IoT Central abzuschließen und die Funktionen im Clientcode einzubinden:
 
-   ```javascript
-   // Handle device connection to Azure IoT Central.
-   var connectCallback = (err) => {
-     if (err) {
-       console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
-     } else {
-       console.log('Device successfully connected to Azure IoT Central');
-       // Send telemetry measurements to Azure IoT Central every 1 second.
-       setInterval(sendTelemetry, 1000);
-       // Setup device command callbacks
-       client.onDeviceMethod('echo', onCommandEcho);
-       // Get device twin from Azure IoT Central.
-       client.getTwin((err, twin) => {
-         if (err) {
-           console.log(`Error getting device twin: ${err.toString()}`);
-         } else {
-           // Send device properties once on device start up
-           sendDeviceProperties(twin);
-           // Apply device settings and handle changes to device settings.
-           handleSettings(twin);
-         }
-       });
-     }
-   };
+    ```javascript
+    // Handle device connection to Azure IoT Central.
+    var connectCallback = (err) => {
+      if (err) {
+        console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
+      } else {
+        console.log('Device successfully connected to Azure IoT Central');
+        // Send telemetry measurements to Azure IoT Central every 1 second.
+        setInterval(sendTelemetry, 1000);
+        // Setup device command callbacks
+        client.onDeviceMethod('echo', onCommandEcho);
+        // Get device twin from Azure IoT Central.
+        client.getTwin((err, twin) => {
+          if (err) {
+            console.log(`Error getting device twin: ${err.toString()}`);
+          } else {
+            // Send device properties once on device start up
+            sendDeviceProperties(twin);
+            // Apply device settings and handle changes to device settings.
+            handleSettings(twin);
+          }
+        });
+      }
+    };
 
-   client.open(connectCallback);
-   ```
+    client.open(connectCallback);
+    ```
 
 1. Speichern Sie die bisherigen Änderungen, lassen Sie die Datei aber noch geöffnet.
 
-## <a name="configure-client-code-for-the-real-device"></a>Konfigurieren des Clientcodes für das echte Gerät
+## <a name="configure-client-code"></a>Konfigurieren des Clientcodes
 
 <!-- Add the connection string to the sample code, build, and run --> Um den Clientcode für die Verbindungsherstellung mit Ihrer Azure IoT Central-Anwendung zu konfigurieren, müssen Sie die Verbindungszeichenfolge für Ihr echtes Gerät hinzufügen, die Sie sich zuvor in diesem Tutorial notiert haben.
 
 1. Suchen Sie in der Datei **ConnectedAirConditioner.js** nach folgender Codezeile:
 
-   ```javascript
-   var connectionString = '{your device connection string}';
-   ```
+    ```javascript
+    var connectionString = '{your device connection string}';
+    ```
 
 1. Ersetzen Sie `{your device connection string}` durch die Verbindungszeichenfolge Ihres echten Geräts. Die Verbindungszeichenfolge haben Sie zuvor in einem Text-Editor gespeichert.
 
@@ -325,12 +314,12 @@ Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine A
 
 1. Geben Sie zum Ausführen des Beispiels den folgenden Befehl in der Befehlszeilenumgebung ein:
 
-   ```cmd/sh
-   node ConnectedAirConditioner.js
-   ```
+    ```cmd/sh
+    node ConnectedAirConditioner.js
+    ```
 
-   > [!NOTE]
-   > Achten Sie beim Ausführen dieses Befehls darauf, dass Sie sich im Ordner `connectedairconditioner` befinden.
+    > [!NOTE]
+    > Achten Sie beim Ausführen dieses Befehls darauf, dass Sie sich im Ordner `connectedairconditioner` befinden.
 
 1. Die Anwendung zeigt eine Ausgabe in der Konsole an:
 
@@ -372,7 +361,7 @@ Bediener:
 
 * [Verwalten von Geräten](howto-manage-devices.md)
 * [Verwenden von Gerätegruppen](howto-use-device-sets.md)
-* [Erstellen benutzerdefinierter Analysen](howto-create-analytics.md)
+* [Erstellen benutzerdefinierter Analysen](howto-use-device-sets.md)
 
 Geräteentwickler:
 

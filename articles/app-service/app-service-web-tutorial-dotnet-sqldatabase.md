@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ffa6e44a4be8813b74dc707f161bd5c17f72f350
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b472927f435cb86787c4580920250cb33438a07b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720049"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992259"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
-Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Tutorial wird veranschaulicht, wie Sie eine datengesteuerte ASP.NET-App in App Service bereitstellen und dafür eine Verbindung mit [Azure SQL-Datenbank](../sql-database/sql-database-technical-overview.md) herstellen. Am Ende dieses Lernprogramms verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist.
+Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Tutorial wird veranschaulicht, wie Sie eine datengesteuerte ASP.NET-App in App Service bereitstellen und dafür eine Verbindung mit [Azure SQL-Datenbank](../sql-database/sql-database-technical-overview.md) herstellen. Nach Abschluss verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist.
 
 ![Veröffentlichte ASP.NET-Anwendung in Azure App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 

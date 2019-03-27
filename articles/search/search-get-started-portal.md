@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270333"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137826"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen
 
@@ -34,13 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie unter Ihrem aktuellen Abonnement nach einem vorhandenen Dienst.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Öffnen Sie das Service-Dashboard des Azure-Suchdiensts. Falls Sie die Dienstkachel nicht an Ihr Dashboard angeheftet haben, finden Sie Ihren Dienst wie folgt:
-
-   * Klicken Sie auf der Navigationsleiste im linken Navigationsbereich auf **Alle Dienste**.
-   * Geben Sie in das Suchfeld den Suchbegriff *Suche* ein, um eine Liste mit suchbezogenen Diensten für Ihr Abonnement zu erhalten. Klicken Sie auf **Suchdienste**. Ihr Dienst sollte in der Liste angezeigt werden.
+[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie unter Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ### <a name="check-for-space"></a>Überprüfen des Speicherplatzes
 

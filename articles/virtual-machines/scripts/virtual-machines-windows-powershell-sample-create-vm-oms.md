@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Log Analytics | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Log Analytics
+title: 'Azure PowerShell-Skriptbeispiel: Azure Monitor-Protokolle | Microsoft-Dokumentation'
+description: 'Azure PowerShell-Skriptbeispiel: Azure Monitor-Protokolle'
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 615ba2286fc8c3e920e10a4909ed336ec6a30f9d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 11ae92770f712f2e809824d9caf5981f435b25a9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001731"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541518"
 ---
-# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Erstellen einer per Log Analytics überwachten VM mit PowerShell 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Erstellen eines virtuellen Azure Monitor-Computers mit PowerShell 
 
 Mit diesem Skript wird ein virtueller Azure-Computer erstellt, der Log Analytics-Agent installiert und das System in einem Log Analytics-Arbeitsbereich registriert. Nach Ausführung des Skripts wird der virtuelle Computer in Azure Monitor angezeigt. Außerdem müssen Sie die Log Analytics-Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel aktualisieren.
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456927"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226214"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)
 
@@ -148,13 +148,13 @@ Nachdem der Azure AD-Serverprinzipal (Anmeldung) erstellt und mit Berechtigunge
 
 1. Stellen Sie über SQL Server Management Studio unter Verwendung des Azure AD-Serverprinzipals (Anmeldung) eine Verbindung mit der verwalteten Instanz her. Geben Sie den Hostnamen Ihrer verwalteten Instanz ein. Wenn Sie sich mit einem Azure AD-Konto anmelden, stehen für die Authentifizierung in SSMS drei Optionen zur Auswahl:
 
-    - Active Directory: universell mit MFA-Unterstützung
-    - Active Directory-Kennwortauthentifizierung
-    - Integrierte Active Directory-Authentifizierung </br>
+   - Active Directory: universell mit MFA-Unterstützung
+   - Active Directory-Kennwortauthentifizierung
+   - Integrierte Active Directory-Authentifizierung </br>
 
-    ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
-    Weitere Informationen finden Sie im folgenden Artikel: [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](sql-database-ssms-mfa-authentication.md)
+     Weitere Informationen finden Sie im folgenden Artikel: [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](sql-database-ssms-mfa-authentication.md)
 
 1. Wählen Sie **Active Directory: universell mit MFA-Unterstützung** aus. Daraufhin wird ein Anmeldefenster mit Multi-Factor Authentication (MFA) angezeigt. Melden Sie sich mit Ihrem Azure AD-Kennwort an.
 
@@ -207,10 +207,10 @@ Nachdem der Azure AD-Serverprinzipal (Anmeldung) erstellt und mit Berechtigunge
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie für die neue Verbindung **Neue Abfrage** aus.
 1. Führen Sie den folgenden Befehl aus, um die Serverberechtigungen für den neu erstellten Azure AD-Serverprinzipal (Anmeldung) zu überprüfen:
 
-    ```sql
-    SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-    GO
-    ```
+      ```sql
+      SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+      GO
+      ```
 
 > [!NOTE]
 > Azure AD-Gastbenutzer werden für Anmeldungen für die verwaltete Instanz nur unterstützt, wenn sie als Teil einer Azure AD-Gruppe hinzugefügt werden. Bei einem Azure AD-Gastbenutzer handelt es sich um ein Konto, das aus einer anderen Azure AD-Instanz in die Azure AD-Instanz eingeladen wird, der die verwaltete Instanz angehört. So kann beispielweise joe@contoso.com (Azure AD-Konto) oder steve@outlook.com (MSA-Konto) einer Gruppe in der Azure AD-Instanz „aadsqlmi“ hinzugefügt werden. Nachdem die Benutzer einer Gruppe hinzugefügt wurden, kann für die Gruppe unter Verwendung der Syntax von **CREATE LOGIN** eine Anmeldung in der **Masterdatenbank** der verwalteten Instanz erstellt werden. Gastbenutzer, die dieser Gruppe angehören, können ihre aktuellen Anmeldungen (beispielsweise joe@contoso.com oder steve@outlook.com) verwenden, um eine Verbindung mit der verwalteten Instanz herzustellen.
@@ -360,7 +360,7 @@ Die verwaltete Instanz unterstützt das Annehmen der Identität von Azure AD-Ser
     GO
     ```
 
-1. Verwenden Sie den folgenden Befehl, um sich zu vergewissern, dass es sich bei dem Benutzer, dessen Identität Sie beim Ausführen der gespeicherten Prozedur annehmen, um **bob@aadsqlmi.net** handelt:
+1. Verwenden Sie den folgenden Befehl, um sich zu vergewissern, dass es sich bei dem Benutzer, dessen Identität Sie beim Ausführen der gespeicherten Prozedur annehmen, um**bob\@aadsqlmi.net** handelt:
 
     ```sql
     Exec dbo.usp_Demo

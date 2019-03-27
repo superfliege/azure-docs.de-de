@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65f8e023e087c3ca49e0d53f5760fbcd9a5f4d9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869206"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Tutorial: Azure Active Directory-Integration mit iProva
 
@@ -221,7 +221,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Brit
 
     a. Geben Sie im Feld **Name** einen Namen ein (etwa **BrittaSimon**).
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: *yourname@yourcompanydomain.extension*. 
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: *IhrName\@ihreunternehmensdomäne.erweiterung* ein. 
     Ein Beispiel ist BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
@@ -266,14 +266,14 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 5. Wählen Sie **Hinzufügen**.
 
-6. Geben Sie im Feld **Benutzername** Folgendes ein: *brittasimon@yourcompanydomain.extension*. 
+6. Geben Sie im Feld **Benutzername** Folgendes ein: *brittasimon\@ihreunternehmensdomäne.erweiterung*. 
     Ein Beispiel ist BrittaSimon@contoso.com.
 
 7. Geben Sie im Feld **Vollständiger Name** einen vollständigen Namen ein (etwa **BrittaSimon**).
 
 8. Wählen Sie die Option **Kein Kennwort (einmaliges Anmelden verwenden)** aus.
 
-9. Geben Sie im Feld **E-Mail-Adresse** Folgendes ein: *yourname@yourcompanydomain.extension*. 
+9. Geben Sie im Feld **E-Mail-Adresse** Folgendes ein: *IhrName\@ihreunternehmensdomäne.erweiterung* ein. 
    Ein Beispiel ist BrittaSimon@contoso.com.
 
 10. Scrollen Sie zum Seitenende, und wählen Sie **Fertig stellen** aus.

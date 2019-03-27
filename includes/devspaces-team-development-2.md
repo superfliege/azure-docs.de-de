@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 7dddf7e48913aea9d84e0f8b66c2c9d29449ee6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825344"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195598"
 ---
 ### <a name="run-the-service"></a>Ausführen des Diensts
 
@@ -81,7 +81,7 @@ Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Es wurde Folgende
 > * Produktives Entwickeln und Testen Ihres Codes in einer Teamumgebung
 > * Einrichten einer Baseline der Funktionen mithilfe von Dev Spaces, um isolierte Änderungen im Kontext einer größeren Microserviceanwendung mühelos zu testen
 
-Nachdem Sie sich mit Azure Dev Spaces vertraut gemacht haben, können Sie [Ihren Entwicklungsbereich für Teammitglieder freigeben](../articles/dev-spaces/how-to/share-dev-spaces.md) und ihnen zeigen, wie dies die Zusammenarbeit vereinfacht.
+Nachdem Sie sich mit Azure Dev Spaces vertraut gemacht haben, können Sie [Ihren Entwicklungsbereich für Teammitglieder freigeben](../articles/dev-spaces/how-to/share-dev-spaces.md) und mit der Zusammenarbeit beginnen.
 
 ## <a name="clean-up"></a>Bereinigen
 Um eine Azure Dev Spaces-Instanz in einem Cluster vollständig zu löschen, einschließlich aller Entwicklungsbereiche und der darin ausgeführten Dienste, können Sie den Befehl `az aks remove-dev-spaces` verwenden. Beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann. Sie können dem Cluster die Unterstützung für Azure Dev Spaces wieder hinzufügen, aber dies entspricht einem kompletten Neubeginn. Ihre alten Dienste und Bereiche werden nicht wiederhergestellt.

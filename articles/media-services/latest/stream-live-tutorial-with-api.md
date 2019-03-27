@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338596"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863762"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Tutorial: Livestreaming mit Media Services v3 unter Verwendung von .NET
 
@@ -33,7 +33,7 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 > [!div class="checklist"]
 > * Herunterladen der in diesem Thema beschriebenen Beispiel-App
 > * Untersuchen des Codes für Livestreaming
-> * Ansehen des Ereignisses mit [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) unter http://ampdemo.azureedge.net
+> * Ansehen des Ereignisses mit [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) unter https://ampdemo.azureedge.net
 > * Bereinigen von Ressourcen
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -81,9 +81,9 @@ Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie e
 
 ### <a name="create-a-live-event"></a>Erstellen eines Liveereignisses
 
-In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Wenn Sie ein Live Encoding-fähiges Liveereignis erstellen möchten, legen Sie „LiveEventEncodingType“ auf **Standard** fest. 
-
-Beim Erstellen des Liveereignisses können Sie unter anderem auch folgende Punkte angeben:
+In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Weitere Informationen zu den verfügbaren Typen von Liveereignissen finden Sie unter [Liveereignisse und Liveausgaben](live-events-outputs-concept.md#live-event-types). 
+ 
+Beim Erstellen des Liveereignisses können Sie folgende Punkte angeben:
 
 * Media Services-Speicherort 
 * Streamingprotokoll für das Liveereignis (momentan unterstützte Protokolle: RTMP und Smooth Streaming).<br/>Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, können Sie für jedes Streamingprotokoll ein separates Liveereignis erstellen.  
@@ -166,7 +166,7 @@ Der folgende Code zeigt, wie Sie alle Liveereignisse aus Ihrem Konto löschen:
 
 ## <a name="watch-the-event"></a>Ansehen des Ereignisses
 
-Kopieren Sie zum Ansehen des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes in „Erstellen eines Streaminglocators“ erhalten haben, und verwenden Sie einen Player Ihrer Wahl. Sie können den [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) verwenden, um Ihren Datenstrom unter http://ampdemo.azureedge.net zu testen. 
+Kopieren Sie zum Ansehen des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes in „Erstellen eines Streaminglocators“ erhalten haben, und verwenden Sie einen Player Ihrer Wahl. Sie können den [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) verwenden, um Ihren Datenstrom unter https://ampdemo.azureedge.net zu testen. 
 
 Das Liveereignis konvertiert Ereignisse automatisch in On-Demand-Inhalt, wenn es beendet wird. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde. Medienobjekte können nicht gelöscht werden, wenn sie von Ereignissen verwendet werden. Zuerst muss das betreffende Ereignis gelöscht werden. 
 

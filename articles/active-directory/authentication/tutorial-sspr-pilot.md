@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe472a45d99f966c851934ea44a346326cb4201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175148"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215590"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Tutorial: Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe
 
@@ -42,8 +42,8 @@ Alle Tests der Self-Service-Kennwortzurücksetzung müssen mit Konten ohne Admin
       * Stellen Sie sicher, dass die Benutzer in der von Ihnen ausgewählten Gruppe eine entsprechende Lizenz besitzen.
    * Klicken Sie unten auf der Seite auf **Speichern**.
 1. Auf der Seite **Authentifizierungsmethoden**
-   * Legen Sie die Option **Anzahl von Methoden, die zurückgesetzt werden müssen** auf **2** fest.
-   * Legen Sie fest, welche **für Benutzer verfügbare Methoden** Ihre Organisation zulassen möchte. Aktivieren Sie in diesem Tutorial die Kontrollkästchen für **E-Mail**, **Mobiltelefon** und **Bürotelefon**.
+   * Legen Sie die Option **Anzahl von Methoden, die zurückgesetzt werden müssen** auf **1** fest.
+   * Legen Sie fest, welche **für Benutzer verfügbare Methoden** Ihre Organisation zulassen möchte. Aktivieren Sie in diesem Tutorial die Kontrollkästchen für **E-Mail** und **Code in der mobilen App (Vorschau)**.
    * Klicken Sie unten auf der Seite auf **Speichern**.
 1. Auf der Seite **Registrierung**
    * Wählen Sie für **Registrierung von Benutzern bei der Anmeldung verlangen** die Option **Ja** aus.

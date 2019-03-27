@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106643"
 ---
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Tutorial: Entpacken, Verbinden und Entsperren des Azure Data Box-Datenträgers
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Tutorial: Entpacken, Verbinden und Entsperren von Azure Data Box Disk
 
 In diesem Tutorial wird beschrieben, wie Sie Ihren Azure Data Box-Datenträger entpacken, verbinden und entsperren.
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben [Tutorial: Bestellen eines Azure Data Box-Datenträgers (Vorschau)](data-box-disk-deploy-ordered.md) durchgearbeitet.
+1. Sie haben die Schritte unter [Tutorial: Bestellen von Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 2. Sie haben Ihre Datenträger erhalten, und der Auftragsstatus im Portal wurde aktualisiert und in **Übermittelt** geändert.
 3. Sie verfügen über einen Clientcomputer, auf dem Sie das Tool zum Entsperren von Data Box Disk installieren können. Ihr Client-Computer muss folgende Voraussetzungen erfüllen:
     - Es muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) ausgeführt werden.
@@ -70,7 +70,7 @@ Je nachdem, ob Sie mit einem Windows- oder Linux-Client verbunden sind, untersch
 Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und zu entsperren.
      
 1. Navigieren Sie im Azure-Portal zu **Allgemein > Gerätedetails**. 
-2. Laden Sie das entsprechende Data Box Disk-Toolset für den Windows-Client herunter. Dieses Toolset enthält drei Tools: Tool zum Entsperren von Data Box-Datenträgern, Data Box Disk-Überprüfungstool und Data Box Disk-Tool zum Aufteilen/Kopieren. 
+2. Laden Sie das entsprechende Data Box Disk-Toolset für den Windows-Client herunter. Dieses Toolset enthält drei Tools: Data Box Disk-Tool zum Entsperren, Data Box Disk-Überprüfungstool und Data Box Disk-Tool zum Aufteilen/Kopieren. 
 
     In diesem Verfahren verwenden Sie nur das Tool zum Entsperren von Data Box-Datenträgern. Die anderen beiden Tools werden später verwendet.
 
@@ -170,39 +170,39 @@ Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und 
     
  
 5. Geben Sie `y` ein, um die Installation fortzusetzen. Das Skript installiert folgende Pakete: 
-    - **epel-release**: Repository, das die folgenden drei Pakete enthält. 
-    - **„dislocker“ und „fuse-dislocker“**: Dieses Dienstprogramm dient zur Entschlüsselung von BitLocker-verschlüsselten Datenträgern. 
-    - **ntfs-3g**: Dieses Paket dient zur Bereitstellung von NTFS-Volumes. 
+   - **epel-release**: Repository, das die folgenden drei Pakete enthält. 
+   - **„dislocker“ und „fuse-dislocker“**: Dieses Dienstprogramm dient zur Entschlüsselung von BitLocker-verschlüsselten Datenträgern. 
+   - **ntfs-3g**: Dieses Paket dient zur Bereitstellung von NTFS-Volumes. 
  
-    Sobald die Pakete erfolgreich installiert wurden, wird im Terminal eine entsprechende Benachrichtigung angezeigt.     
-    ```
-    Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
-    ruby-libs.x86 64 0:1.8.7.374-5.el6 
-    Complete! 
-    Loaded plugins: fastestmirror, refresh-packagekit, security 
-    Setting up Remove Process 
-    Resolving Dependencies 
-    --> Running transaction check 
-    ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
-    Dependencies Resolved 
-    Package        Architecture        Version        Repository        Size 
-    Removing:  epel-release        noarch         6-8        @extras        22 k 
-    Transaction Summary                                 
-    Remove        1 Package(s) 
-    Installed size: 22 k 
-    Downloading Packages: 
-    Running rpmcheckdebug 
-    Running Transaction Test 
-    Transaction Test Succeeded 
-    Running Transaction 
-    Erasing : epel-release-6-8.noarch 
-    Verifying : epel-release-6-8.noarch 
-    Removed: 
-    epel-release.noarch 0:6-8 
-    Complete! 
-    Dislocker is installed by the script. 
-    OpenSSL is already installed.
-    ```
+     Sobald die Pakete erfolgreich installiert wurden, wird im Terminal eine entsprechende Benachrichtigung angezeigt.     
+     ```
+     Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
+     ruby-libs.x86 64 0:1.8.7.374-5.el6 
+     Complete! 
+     Loaded plugins: fastestmirror, refresh-packagekit, security 
+     Setting up Remove Process 
+     Resolving Dependencies 
+     --> Running transaction check 
+     ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
+     Dependencies Resolved 
+     Package        Architecture        Version        Repository        Size 
+     Removing:  epel-release        noarch         6-8        @extras        22 k 
+     Transaction Summary                                 
+     Remove        1 Package(s) 
+     Installed size: 22 k 
+     Downloading Packages: 
+     Running rpmcheckdebug 
+     Running Transaction Test 
+     Transaction Test Succeeded 
+     Running Transaction 
+     Erasing : epel-release-6-8.noarch 
+     Verifying : epel-release-6-8.noarch 
+     Removed: 
+     epel-release.noarch 0:6-8 
+     Complete! 
+     Dislocker is installed by the script. 
+     OpenSSL is already installed.
+     ```
 
 6. Führen Sie das Tool zum Entsperren von Data Box Disk aus. Geben Sie den Hauptschlüssel aus dem Azure-Portal ein, den Sie in [Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels](#Connect-to-disks-and-get-the-passkey) abgerufen haben. Geben Sie optional eine Liste mit BitLocker verschlüsselten Volumes an, die entsperrt werden sollen. Die Hauptschlüssel und die Volumeliste müssen in einfachen Anführungszeichen angegeben werden. 
 

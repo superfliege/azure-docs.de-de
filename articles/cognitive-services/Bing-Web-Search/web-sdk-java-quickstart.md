@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 420a0769af85d050f2786b65eb929a24d8b9da5d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863779"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Schnellstart: Verwenden des Bing-Websuche-SDK für Java
 
@@ -28,15 +28,16 @@ Möchten Sie den Code sofort sehen? Die [Beispiele zum Bing-Websuche-SDK für Ja
 Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
 * [JDK 7 oder 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) oder ein anderes Buildautomatisierungstool
 * Abonnementschlüssel
 
-## <a name="create-a-project-and-configure-your-pom-file"></a>Erstellen eines Projekts und Konfigurieren Ihrer POM-Datei
+## <a name="create-a-project-and-set-up-your-pom-file"></a>Erstellen eines Projekts und Einrichten Ihrer POM-Datei
 
-Erstellen Sie mit Maven oder einem anderen Buildautomatisierungstool ein neues Java-Projekt. Wenn Sie Maven verwenden, fügen Sie Ihrer POM-Datei die folgenden Zeilen hinzu. Ersetzen Sie alle Instanzen von `mainClass` durch Ihre Anwendung.
+Erstellen Sie mit Maven oder einem anderen Buildautomatisierungstool ein neues Java-Projekt. Wenn Sie Maven verwenden, fügen Sie Ihrer [POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)-Datei (Projektobjektmodell) die folgenden Zeilen hinzu. Ersetzen Sie alle Instanzen von `mainClass` durch Ihre Anwendung.
 
 ```xml
 <build>
@@ -180,7 +181,7 @@ Als Nächstes fügen Sie Code zum Analysieren der Antwort und Ausgeben der Ergeb
 ```java
 /*
 * WebPages
-* If the search response contains web pages, the first result's name
+* If the search response has web pages, the first result's name
 * and url are printed.
 */
 if (webData != null && webData.webPages() != null && webData.webPages().value() != null &&
@@ -200,7 +201,7 @@ if (webData != null && webData.webPages() != null && webData.webPages().value() 
 }
 /*
  * Images
- * If the search response contains images, the first result's name
+ * If the search response has images, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.images() != null && webData.images().value() != null &&
@@ -220,7 +221,7 @@ if (webData != null && webData.images() != null && webData.images().value() != n
 }
 /*
  * News
- * If the search response contains news articles, the first result's name
+ * If the search response has news articles, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.news() != null && webData.news().value() != null &&
@@ -240,7 +241,7 @@ if (webData != null && webData.news() != null && webData.news().value() != null 
 
 /*
  * Videos
- * If the search response contains videos, the first result's name
+ * If the search response has videos, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.videos() != null && webData.videos().value() != null &&

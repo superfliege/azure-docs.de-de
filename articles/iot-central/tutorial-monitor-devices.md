@@ -3,18 +3,18 @@ title: Überwachen Ihrer Geräte in Azure IoT Central | Microsoft-Dokumentation
 description: Als Bediener können Sie mit der Azure IoT Central-Anwendung Ihre Geräte überwachen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 941fbffaa7a0129de30d6fdf14d3d0559429309f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 561477d8bf3a64397e9964499339c368dec5470d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200240"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760471"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Tutorial: Überwachen Ihrer Geräte mithilfe von Azure IoT Central
 
@@ -41,7 +41,7 @@ Azure IoT Central sendet Benachrichtigungen für Geräte in Form von E-Mails. De
 
 Öffnen Sie die E-Mail, die Sie am Ende des Tutorials [Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central](tutorial-configure-rules.md) erhalten haben. Klicken Sie in der E-Mail auf **Click here to open your device** (Klicken Sie hier, um Ihr Gerät öffnen):
 
-![Regeln im Anwendungs-Generator](media/tutorial-monitor-devices/email.png)
+![Benachrichtigungs-E-Mail mit Warnung](media/tutorial-monitor-devices/email.png)
 
 Die Seite **Gerät** für das simulierte Gerät **Connected Air Conditioner-1**, das Sie in den vorherigen Tutorials erstellt haben, wird in Ihrem Browser geöffnet:
 
@@ -55,13 +55,13 @@ Klicken Sie auf die Ansicht **Dashboard**, um Informationen zum Gerät anzuzeige
 
 ![Gerätedashboard](media/tutorial-monitor-devices/initial_screen.png)
 
-Das Diagramm auf dem Dashboard zeigt einen Plot der Gerätetemperatur. Auf der Kachel **Set target temperature** (Festgelegte Zieltemperatur) wird zudem die aktuelle Zieltemperatur für das Gerät angezeigt. Sie entscheiden, dass die Zieltemperatur zu hoch ist.
+Das Diagramm auf dem Dashboard zeigt einen Plot der Gerätetemperatur. Auf der Kachel **Geräteeigenschaften** wird zudem die aktuelle Zieltemperatur für das Gerät angezeigt. Sie entscheiden, dass die Zieltemperatur zu hoch ist.
 
 ## <a name="remediate-an-issue"></a>Beheben eines Problems
 
 Verwenden Sie zum Ändern der Zieltemperatur des Geräts die Seite **Einstellungen**:
 
-1. Klicken Sie auf **Einstellungen**. Legen Sie den Wert für **Set Temperature** (Sollwerttemperatur) auf „75“ fest. Klicken Sie auf **Aktualisieren**, um die neue Zieltemperatur an das Gerät zu senden. Wenn das Gerät die Einstellungsänderung bestätigt, ändert sich der Status des Einstellungswerts in **Synchronisiert**:
+1. Klicken Sie auf **Einstellungen**. Legen Sie den Wert für **Set Temperature** (Sollwerttemperatur) auf „75“ fest. Klicken Sie auf **Aktualisieren**, um die neue Zieltemperatur an das Gerät zu senden. Wenn das Gerät die Einstellungsänderung bestätigt, ändert sich der Status der Einstellung in **Synchronisiert**:
 
     ![Aktualisieren der Einstellungen](media/tutorial-monitor-devices/change_settings.png)
 

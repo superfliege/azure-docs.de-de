@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 847eddc78f8abc938e68e6fe383a773dadeaf779
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557834"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438770"
 ---
 # <a name="azure-time-series-insights-preview-overview"></a>Übersicht über Azure Time Series Insights Preview
 
-Azure Time Series Insights Preview ist ein Dienstangebot für eine End-to-End-Plattform (Platform-as-a-Service). Sie wird zum Erfassen, Verarbeiten, Speichern und Abfragen stark kontextualisierter, zeitreihenoptimierter Daten im IoT-Maßstab verwendet. Time Series Insights ist ideal für Ad-hoc-Datenuntersuchungen und Betriebsanalysen geeignet. Bei Time Series Insights handelt es sich um ein speziell erweiterbares und angepasstes Dienstangebot, das für die weit reichenden Anforderungen von IoT-Bereitstellungen in der Industrie konzipiert ist.
+Azure Time Series Insights Preview ist ein Dienstangebot für eine End-to-End-Plattform (Platform-as-a-Service). Es wird zum Erfassen, Verarbeiten, Speichern und Abfragen stark kontextualisierter, zeitreihenoptimierter Daten im IoT-Maßstab verwendet. Time Series Insights ist ideal für Ad-hoc-Datenuntersuchungen und Betriebsanalysen geeignet. Bei Time Series Insights handelt es sich um ein speziell erweiterbares und angepasstes Dienstangebot, das für die weit reichenden Anforderungen von IoT-Bereitstellungen in der Industrie konzipiert ist.
 
 ## <a name="video"></a>Video
 
@@ -52,7 +52,7 @@ Die derzeitige IoT-Landschaft ist vielfältig. Zu den Kunden zählen Fertigung, 
 
 Time Series Insights ist ein umfassendes Dienstangebot für eine End-to-End-Plattform (Platform-as-a-Service), das die Untersuchung von IoT-Daten und die Gewinnung von betriebsbezogenen Erkenntnissen ermöglicht. Mit Time Series Insights wird ein vollständig verwalteter Clouddienst zum Analysieren von IoT-Zeitreihendaten bereitgestellt.
 
-Sie können Rohdaten in einem schemafreien In-Memory-Speicher speichern. Dann können Sie interaktive Ad-hoc-Abfragen über eine verteilte Abfrage-Engine und die API ausführen. Machen Sie die Erfahrung, Milliarden von Ereignissen in Sekunden zu visualisieren. Erfahren Sie mehr über die [Funktionen für die Untersuchung von Daten](./time-series-insights-overview.md).
+Sie können Rohdaten in einem schemafreien In-Memory-Speicher speichern. Dann können Sie interaktive Ad-hoc-Abfragen über eine Engine und API für verteilte Abfragen ausführen. Machen Sie die Erfahrung, Milliarden von Ereignissen in Sekunden zu visualisieren. Erfahren Sie mehr über die [Funktionen für die Untersuchung von Daten](./time-series-insights-overview.md).
 
 Time Series Insights bietet Ihnen auch Funktionen zur Gewinnung von betriebsbezogenen Erkenntnissen, die sich derzeit in der Vorschauphase befinden. Zusammen mit den Funktionen für die interaktive Datenuntersuchung und betriebsbezogene Intelligence-Daten können Sie Time Series Insights zum Ableiten eines höheren Nutzens aus Daten verwenden, die über IoT-Ressourcen erfasst wurden. Die Vorschau unterstützt:
 

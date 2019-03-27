@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a0e34ad8847ed3740af72b4c27dfbc0090cf3dfa
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 42528038b5744f001422620031a1e5300bb4146d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752558"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898260"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Spatial Anchors in C++/WinRT und DirectX
 
@@ -32,9 +32,9 @@ Sie lernen Folgendes:
 
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
-- Einen Windows-Computer mit Installation von <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> mit der Workload **Entwicklung für die universelle Windows-Plattform** und der Komponente **Windows 10 SDK (10.0.17763.0 oder höher)**.
+- Einen Windows-Computer mit Installation von <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> mit der Workload **Entwicklung für die universelle Windows-Plattform** und der Komponente **Windows 10 SDK (10.0.17763.0 oder höher)** und <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
 - Die [C++/WinRT-Visual Studio-Erweiterung (VSIX)](https://aka.ms/cppwinrt/vsix) für Visual Studio sollte über den [Visual Studio Marketplace](https://marketplace.visualstudio.com/) installiert werden.
-- Ein HoloLens-Gerät mit aktiviertem [Entwicklermodus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio). Für diesen Artikel wird ein HoloLens-Gerät mit dem [Windows 10-Update von Oktober 2018](https://blogs.windows.com/windowsexperience/2018/10/02/find-out-whats-new-in-windows-and-office-in-october/) (auch als RS5 bezeichnet) benötigt. Öffnen Sie zum Aktualisieren auf das neueste HoloLens-Release die App **Einstellungen**, navigieren Sie zu **Update und Sicherheit**, und wählen Sie anschließend die Schaltfläche **Nach Updates suchen**.
+- Ein HoloLens-Gerät mit aktiviertem [Entwicklermodus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio). Für diesen Artikel wird ein HoloLens-Gerät mit dem [Windows 10-Update von Oktober 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (auch als RS5 bezeichnet) benötigt. Öffnen Sie zum Aktualisieren auf das neueste HoloLens-Release die App **Einstellungen**, navigieren Sie zu **Update und Sicherheit**, und wählen Sie anschließend die Schaltfläche **Nach Updates suchen**.
 - Für Ihre App muss im AppX-Manifest die Funktion **spatialPerception** festgelegt werden.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -47,7 +47,7 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurieren des Kontobezeichners und -schlüssels
 
-Der nächste Schritt umfasst die Verwendung des zuvor aufgezeichneten Kontobezeichners und Kontoschlüssels beim Einrichten der Spatial Anchors-Ressource zum Konfigurieren der App.
+Im nächsten Schritt wird die App zur Verwendung des Kontobezeichners und Kontoschlüssels konfiguriert. Diese haben Sie beim [Einrichten der Spatial Anchors-Ressource](#create-a-spatial-anchors-resource) in einen Text-Editor kopiert.
 
 Öffnen Sie `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 

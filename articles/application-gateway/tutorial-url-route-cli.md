@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68532ec4ae7e6d6b496ece8d08755555f756a60e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413450"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006480"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Tutorial: Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure CLI
+# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Tutorial: Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure-Befehlszeilenschnittstelle
 
 Als IT-Administrator, der Webdatenverkehr verwaltet, möchten Sie Ihren Kunden oder Benutzern dabei helfen, schnellstmöglich die Informationen zu erhalten, die sie benötigen. Zur Verbesserung der Benutzerfreundlichkeit können Sie unter anderem verschiedene Arten von Webdatenverkehr an verschiedene Serverressourcen weiterleiten. In diesem Tutorial erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle verwenden, um Application Gateway-Routing für verschiedene Arten von Datenverkehr aus Ihrer Anwendung einzurichten und zu konfigurieren. Der Datenverkehr wird dann auf der Grundlage der URL an verschiedene Serverpools weitergeleitet.
 
@@ -96,7 +96,7 @@ az network application-gateway create \
  Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
 
-|Feature  |Beschreibung  |
+|Feature  |BESCHREIBUNG  |
 |---------|---------|
 |appGatewayBackendPool     |Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.|
 |appGatewayBackendHttpSettings     |Gibt an, dass zur Kommunikation der Port 80 und ein HTTP-Protokoll verwendet werden.|
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Verwenden Sie „az network public-ip show“, um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm* oder *http://40.121.222.19:8080/video/test.htm*.
+Verwenden Sie „az network public-ip show“, um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm` oder `http://40.121.222.19:8080/video/test.htm`.
 
 ```azurecli-interactive
 az network public-ip show \

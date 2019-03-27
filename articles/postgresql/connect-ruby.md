@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 6748f168624a20e17491a2f84b63b966ce5ad4c6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/12/2019
+ms.openlocfilehash: cdb53685e744401f9d2d229a5deaffa72502e26b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539285"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730207"
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Verwenden von Ruby zum Herstellen einer Verbindung und Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer [Ruby](https://www.ruby-lang.org)-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.
@@ -23,36 +23,9 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 - [Erstellen einer Datenbank – Portal](quickstart-create-server-database-portal.md)
 - [Erstellen einer Datenbank – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-## <a name="install-ruby"></a>Installieren von Ruby
-Installieren Sie Ruby auf Ihrem eigenen Computer. 
-
-### <a name="windows"></a>Windows
-- Laden Sie die aktuelle Version von [Ruby](https://rubyinstaller.org/downloads/) herunter, und installieren Sie sie.
-- Aktivieren Sie auf dem Abschlussbildschirm des MSI-Installers das Kontrollkästchen „Run 'ridk install' to install MSYS2 and development toolchain“ („ridk install“ ausführen, um MSYS2 und die Entwicklungstoolkette zu installieren). Klicken Sie anschließend auf **Finish** (Fertig stellen), um den nächsten Installer zu starten.
-- Der RubyInstaller2-Installer für Windows wird gestartet. Geben Sie „2“ ein, um das MSYS2-Repositoryupdate zu installieren. Schließen Sie das Befehlsfenster, nachdem der Vorgang abgeschlossen wurde und die Installationseingabeaufforderung wieder angezeigt wird.
-- Starten Sie über das Menü „Start“ eine neue Eingabeaufforderung (cmd).
-- Testen Sie die Ruby-Installation per `ruby -v`, um die installierte Version anzuzeigen.
-- Testen Sie die Gem-Installation per `gem -v`, um die installierte Version anzuzeigen.
-- Erstellen Sie das PostgreSQL-Modul für Ruby, indem Sie Gem mit dem Befehl `gem install pg` ausführen.
-
-### <a name="macos"></a>macOS
-- Installieren Sie Ruby per Homebrew, indem Sie den Befehl `brew install ruby` ausführen. Weitere Installationsoptionen finden Sie in der [Installationsdokumentation](https://www.ruby-lang.org/en/documentation/installation/#homebrew) zu Ruby.
-- Testen Sie die Ruby-Installation per `ruby -v`, um die installierte Version anzuzeigen.
-- Testen Sie die Gem-Installation per `gem -v`, um die installierte Version anzuzeigen.
-- Erstellen Sie das PostgreSQL-Modul für Ruby, indem Sie Gem mit dem Befehl `gem install pg` ausführen.
-
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Installieren Sie Ruby, indem Sie den Befehl `sudo apt-get install ruby-full` ausführen. Weitere Installationsoptionen finden Sie in der [Installationsdokumentation](https://www.ruby-lang.org/en/documentation/installation/) zu Ruby.
-- Testen Sie die Ruby-Installation per `ruby -v`, um die installierte Version anzuzeigen.
-- Installieren Sie die neuesten Updates für Gem, indem Sie den Befehl `sudo gem update --system` ausführen.
-- Testen Sie die Gem-Installation per `gem -v`, um die installierte Version anzuzeigen.
-- Installieren Sie gcc, make und andere Buildtools, indem Sie den Befehl `sudo apt-get install build-essential` ausführen.
-- Installieren Sie die PostgreSQL-Bibliotheken, indem Sie den Befehl `sudo apt-get install libpq-dev` ausführen.
-- Erstellen Sie das Ruby-pg-Modul mithilfe von Gem, indem Sie den Befehl `sudo gem install pg` ausführen.
-
-## <a name="run-ruby-code"></a>Ausführen von Ruby-Code 
-- Speichern Sie den Code in einer Textdatei mit Dateierweiterung .rb, und speichern Sie die Datei in einem Projektordner wie z.B. `C:\rubypostgres\read.rb` oder `/home/username/rubypostgres/read.rb`.
-- Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie mit `cd rubypostgres` in Ihren Projektordner, und geben Sie dann den Befehl `ruby read.rb` ein, um die Anwendung auszuführen.
+Darüber hinaus muss Folgendes installiert sein:
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
+- Ruby pg, das PostgreSQL-Modul für Ruby
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure-Datenbank für PostgreSQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
@@ -63,12 +36,17 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
  ![Azure Database for PostgreSQL-Servername](./media/connect-ruby/1-connection-string.png)
 
+> [!NOTE]
+> Das Symbol `@` beim Azure-Postgres-Benutzernamen wurde in allen Verbindungszeichenfolgen als URL mit `%40` codiert. 
+
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine **CREATE TABLE**-SQL-Anweisung gefolgt von **INSERT INTO**-SQL-Anweisungen zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
 Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `user` und `password` durch Ihre eigenen Werte. 
+
+
 ```ruby
 require 'pg'
 
@@ -76,7 +54,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -119,7 +97,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -153,7 +131,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -187,7 +165,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 1dcd17854adacc853215f4c5a9982862d3e488c4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: db2d9fcf3dbb168061805906dae6ecc3a03e3301
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738571"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884403"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API für die Transliteration von Text mit Node.js
 
@@ -32,7 +32,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
-Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Projekt. Kopieren Sie anschließend den folgenden Codeausschnitt in Ihr Projekt in eine Datei namens `transliterate-text.js`.
+Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Projekt, oder erstellen Sie einen neuen Ordner mit der Datei `translate-text.js` auf dem Desktop. Kopieren Sie dann den folgenden Codeausschnitt in Ihr Projekt bzw. Ihre Datei:
 
 ```javascript
 const request = require('request');
@@ -126,7 +126,7 @@ node transliterate-text.js
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

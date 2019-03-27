@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3cb8f52677991997a0176a9f8d408e2fd6d2d8d9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: de920a9addf9d2053a3c101c6b1f9a2c1a2feb27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974270"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106745"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Schnellstart: Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI
 
@@ -25,11 +25,11 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese Schnellstartanleitung benötigen Sie Folgendes:
+Für diesen Schnellstart benötigen Sie Folgendes:
 
-* Ein Organisations-E-Mail-Konto, das Azure Active Directory angehört, um eine Verbindung mit dem [Hilfecluster für Azure Data Explorer](https://dataexplorer.azure.com/clusters/help/databases/samples) herstellen zu können.
+* Ein Organisations-E-Mail-Konto, das Azure Active Directory angehört, um eine Verbindung mit dem [Azure Data Explorer-Hilfecluster](https://dataexplorer.azure.com/clusters/help/databases/samples) herstellen zu können.
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (Wählen Sie **KOSTENLOS HERUNTERLADEN** aus.)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (wählen Sie **KOSTENLOS HERUNTERLADEN** aus)
 
 ## <a name="get-data-from-azure-data-explorer"></a>Abrufen von Daten aus Azure Data Explorer
 
@@ -53,7 +53,7 @@ Sie stellen zunächst eine Verbindung mit dem Azure Data Explorer-Hilfecluster h
     |---|---|---|
     | Cluster | *https://help.kusto.windows.net* | Die URL für den Hilfecluster. Für andere Cluster hat die URL das Format *https://\<Clustername\>.\<Region\>.kusto.windows.net*. |
     | Datenbank | Nicht ausfüllen | Eine Datenbank, die in dem Cluster gehostet wird, mit dem Sie eine Verbindung herstellen. Wird in einem späteren Schritt ausgewählt. |
-    | Tabellenname | Nicht ausfüllen | Eine der Tabellen in der Datenbank oder eine Abfrage wie „StormEvents | take 1000“. Wird in einem späteren Schritt ausgewählt. |
+    | Tabellenname | Nicht ausfüllen | Eine der Tabellen in der Datenbank oder eine Abfrage wie <code>StormEvents \| take 1000</code> Wird in einem späteren Schritt ausgewählt. |
     | Erweiterte Optionen | Nicht ausfüllen | Optionen für Ihre Abfragen (etwa die Größe des Resultsets). |
     | Datenkonnektivitätsmodus | *DirectQuery* | Bestimmt, ob Power BI die Daten importiert oder direkt eine Verbindung mit der Datenquelle herstellt. Für diesen Connector sind beide Optionen geeignet. |
     | | | |
@@ -76,7 +76,7 @@ Sie stellen zunächst eine Verbindung mit dem Azure Data Explorer-Hilfecluster h
 
     ![Beibehalten der ersten Zeilen](media/power-bi-connector/keep-top-rows.png)
 
-1. Wählen Sie auf der Registerkarte **Start** die Option **Schließen und übernehmen** aus.
+1. Klicken Sie auf der Registerkarte **Start** auf **Schließen und übernehmen**.
 
     ![Schließen und übernehmen](media/power-bi-connector/close-apply.png)
 
@@ -86,9 +86,9 @@ Sie stellen zunächst eine Verbindung mit dem Azure Data Explorer-Hilfecluster h
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie den Bericht, den Sie für diese Schnellstartanleitung erstellt haben, nicht mehr benötigen, löschen Sie die Power BI Desktop-Datei (PBIX-Datei).
+Wenn Sie den Bericht, den Sie für diesen Schnellstart erstellt haben, nicht mehr benötigen, löschen Sie die Power BI Desktop-Datei (PBIX-Datei).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Quickstart: Visualize data using the Azure Data Explorer connector for Power BI](power-bi-imported-query.md) (Schnellstart: Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI)
+> [Schnellstart: Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI](power-bi-imported-query.md)

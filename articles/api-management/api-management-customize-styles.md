@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3c79e7bd68e7c96b57ea66951c080b7d952ee8c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441756"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762720"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassen des Stils der Seiten im Entwicklerportal
 
@@ -40,8 +40,8 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
-+ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +57,11 @@ In diesem Tutorial lernen Sie Folgendes:
     Alle Elemente, die über **Stile** angepasst werden können, werden auf der Seite angezeigt.
 5. Geben Sie im Feld **Change variable values to customize developer portal appearance:** (Variablenwerte ändern, um die Darstellung des Entwicklerportals anzupassen) die Variable „headings-color“ ein.
 
-    Das Element **@headings-color** wird auf der Seite angezeigt. Diese Variable legt die Farbe des Texts fest.
+    Das Element **\@headings-color** wird auf der Seite angezeigt. Diese Variable legt die Farbe des Texts fest.
 
     ![Anpassen des Stils](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klicken Sie auf das Feld für die Variable **@headings-color**. 
+6. Klicken Sie auf das Feld für die Variable **\@headings-color**. 
     
     Die Dropdownliste für die Farbauswahl wird geöffnet.
 7. Wählen Sie in der Dropdownliste für die Farbauswahl eine neue Farbe aus.

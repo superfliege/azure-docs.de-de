@@ -12,12 +12,12 @@ ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
 ms.lastreviewed: 02/04/2019
-ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a1902ae2bf663c432876a0f73e2bb17616023b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006913"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Bereitstellen eines Ethereum-Blockchainnetzwerks in Azure Stack
 
@@ -39,7 +39,7 @@ Laden Sie die aktuellen Komponenten vom [Marketplace](../azure-stack-download-az
 - Custom Script for Linux 2.0
 - CustomScript-Erweiterung für Windows
 
-Weitere Informationen zu Blockchainszenarien finden Sie unter [Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“](../../blockchain/templates/ethereum-deployment.md).
+Weitere Informationen zu Blockchainszenarien finden Sie unter [Projektmappenvorlage für „Ethereum-PoA-Konsortium“](../../blockchain/templates/ethereum-poa-deployment.md).
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 

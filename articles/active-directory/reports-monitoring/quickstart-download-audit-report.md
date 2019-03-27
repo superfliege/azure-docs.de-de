@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d702810ae7de03a14e50f56c2b8e819c31f3ea9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e7a45e85b35ab48f95ecff07043484b322f237a8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192709"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538050"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Schnellstart: Herunterladen eines Überwachungsberichts über das Azure-Portal
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Überwachungsprotokolle der letzten 24 Stunden für Ihren Mandanten herunterladen. Sie können bis zu 5000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach Aktualität sortiert, und standardmäßig erhalten Sie die neuesten 5.000 Datensätze. 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine CSV-Datei mit den Überwachungsprotokollen der letzten 24 Stunden für Ihren Mandanten herunterladen. Sie können bis zu 250.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach Aktualität sortiert, und standardmäßig erhalten Sie die neuesten 250.000 Datensätze. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +41,7 @@ Erforderlich:
 2. Wählen Sie im linken Navigationsbereich die Option **Azure Active Directory** aus, und klicken Sie auf die Schaltfläche **Verzeichnis wechseln**, um Ihr Active Directory-Verzeichnis auszuwählen.
 3. Wählen Sie im Dashboard **Azure Active Directory** und dann **Überwachungsprotokolle** aus. 
 4. Wählen Sie in der Dropdownliste **Datumsbereich** den Eintrag **Letzte 24 Stunden** aus, und klicken Sie auf **Anwenden**, um die Überwachungsprotokolle für die letzten 24 Stunden anzuzeigen. 
-5. Wählen Sie die Schaltfläche **Herunterladen** aus, um eine CSV-Datei mit den gefilterten Datensätzen herunterzuladen. 
+5. Wählen Sie die Schaltfläche **Herunterladen** und als Dateiformat **CSV** aus. Geben Sie einen Dateinamen an, um eine CSV-Datei mit den gefilterten Datensätzen herunterzuladen. 
 
 ![Berichterstellung](./media/quickstart-download-audit-report/download-audit-logs.png)
 

@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a952eb679810f36008425ae5daacc4261db50c77
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999612"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779775"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
 
-Sie können Azure DNS verwenden, um Ihre DNS-Domäne zu hosten und die DNS-Einträge zu verwalten. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten. 
+Sie können Azure DNS verwenden, um Ihre DNS-Domäne zu hosten und die DNS-Einträge zu verwalten. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
 Nehmen wir an, Sie erwerben die Domäne „contoso.net“ von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen „contoso.net“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.net“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
 
@@ -31,6 +31,12 @@ In diesem Tutorial lernen Sie Folgendes:
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
+
+Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.net“. Verwenden Sie aber Ihren eigenen Domänennamen.
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 

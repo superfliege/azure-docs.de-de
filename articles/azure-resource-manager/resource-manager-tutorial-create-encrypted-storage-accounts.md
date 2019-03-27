@@ -10,22 +10,24 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/06/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 68199083369018cab1c9f83dd6781653a8cae37c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849294"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Tutorial: Nutzen der Azure Resource Manager-Vorlagenreferenz
 
 Hier erfahren Sie, wie Sie die Vorlagenschemainformationen ermitteln und anhand der Informationen Azure Resource Manager-Vorlagen erstellen.
 
 In diesem Tutorial verwenden Sie eine Basisvorlage aus Azure-Schnellstartvorlagen. Anhand der Vorlagenreferenzdokumentation passen Sie die Vorlage an, um ein verschlüsseltes Speicherkonto zu erstellen.
+
+![Resource Manager: Vorlagenreferenz, Bereitstellen eines verschlüsselten Speicherkontos](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -76,9 +78,9 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="find-the-template-reference"></a>Suchen der Vorlagenreferenz
 
-1. Navigieren Sie zu [Azure-Vorlagen](https://docs.microsoft.com/azure/templates/).
-2. Geben Sie in **Filtern nach Titel** **Speicherkonten** ein.
-3. Wählen Sie **Referenz/Vorlagenreferenz/Speicher/<Version>/Speicherkonten** wie im folgenden Screenshot gezeigt aus:
+1. Navigieren Sie zu [Azure-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/).
+2. Geben Sie **Speicherkonten** im Feld **Filtern nach Titel** ein.
+3. Wählen Sie **Referenz/Vorlagenreferenz/Speicher/&lt;Version>/Speicherkonten** wie im folgenden Screenshot gezeigt aus:
 
     ![Resource Manager: Vorlagenreferenz -> Speicherkonto](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 

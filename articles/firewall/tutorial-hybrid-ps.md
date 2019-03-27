@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 1/30/2019
+ms.date: 3/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 973d5c5c3822eaddce2bc77d06d01930606994c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815743"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182573"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
 
@@ -25,7 +25,7 @@ In diesem Tutorial erstellen Sie drei virtuelle Netzwerke:
 
 - **VNet-Hub**: In diesem virtuellen Netzwerk befindet sich die Firewall.
 - **VNet-Spoke**: Das virtuelle Spoke-Netzwerk stellt die Workload in Azure dar.
-- **VNet-Onprem**: Das lokale virtuelle Netzwerk stellt ein lokales Netzwerk dar. In einer tatsächlichen Bereitstellung kann die Verbindung dafür entweder über eine VPN- oder eine Route-Verbindung hergestellt werden. Der Einfachheit halber wird in diesem Tutorial eine VPN-Gatewayverbindung genutzt, und ein virtuelles Netzwerk in Azure wird als lokales Netzwerk verwendet.
+- **VNet-Onprem**: Das lokale virtuelle Netzwerk stellt ein lokales Netzwerk dar. Bei einer tatsächlichen Bereitstellung kann die Verbindung dafür entweder mit einer VPN- oder einer ExpressRoute-Verbindung hergestellt werden. Der Einfachheit halber wird in diesem Tutorial eine VPN-Gatewayverbindung genutzt, und ein virtuelles Netzwerk in Azure wird als lokales Netzwerk verwendet.
 
 ![Firewall in einem Hybridnetzwerk](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -51,13 +51,16 @@ Es gibt drei wichtige Anforderungen, die erfüllt sein müssen, damit dieses Sze
 
 - Eine benutzerdefinierte Route (User Defined Route, UDR) im Spoke-Subnetz, das auf die Azure Firewall-IP-Adresse als Standardgateway verweist. Die BGP-Routenverteilung muss für diese Routentabelle auf **Deaktiviert** festgelegt werden.
 - Eine UDR im Hub-Gatewaysubnetz muss auf die Firewall-IP-Adresse als nächsten Hop auf dem Weg zu den Spoke-Netzwerken verweisen.
-- Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
+
+   Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
 - Stellen Sie sicher, dass **AllowGatewayTransit** für das Peering von VNet-Hub mit VNet-Spoke und **UseRemoteGateways** für das Peering von VNet-Spoke mit VNet-Hub festgelegt ist.
 
-Informationen zur Erstellung dieser Routen finden Sie in diesem Tutorial im Abschnitt „Erstellen von Routen“.
+Informationen zur Erstellung dieser Routen finden Sie in diesem Tutorial im Abschnitt [Erstellen von Routen](#create-the-routes).
 
 >[!NOTE]
->Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Sie die Tunnelerzwingung für Verbindungen mit dem lokalen Netzwerk über ExpressRoute oder Application Gateway aktiviert haben, müssen Sie UDR 0.0.0.0/0 mit dem **NextHopType**-Wert **Internet** konfigurieren und diesen dem **AzureFirewallSubnet** zuweisen.
+>Azure Firewall muss über eine direkte Internetverbindung verfügen. Standardmäßig sollte AzureFirewallSubnet die benutzerdefinierte Route 0.0.0.0/0 nur zulassen, wenn der Wert **NextHopType** auf **Internet** festgelegt ist.
+>
+>Wenn Sie die Tunnelerzwingung für Verbindungen mit dem lokalen Netzwerk über ExpressRoute oder Application Gateway aktiviert haben, müssen Sie explizit eine benutzerdefinierte Route für 0.0.0.0/0 konfigurieren, für die der Wert NextHopType auf **Internet** festgelegt ist, und diese dem AzureFirewallSubnet zuweisen. Wenn Ihre Organisation die Tunnelerzwingung für Azure Firewall-Datenverkehr benötigt, wenden Sie sich an den Support, damit wir Ihr Abonnement auf die Whitelist setzen und damit sicherstellen können, dass die erforderliche Internetverbindung über die Firewall aufrechterhalten wird.
 
 >[!NOTE]
 >Der Datenverkehr zwischen per direktem Peering verbundenen VNETs wird direkt weitergeleitet, auch wenn eine UDR auf Azure Firewall als Standardgateway verweist. Um in diesem Szenario Subnetz-zu-Subnetz-Datenverkehr an die Firewall zu senden, muss eine UDR explizit das Zielsubnetzwerk-Präfix in beiden Subnetzen enthalten.

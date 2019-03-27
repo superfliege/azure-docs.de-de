@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0fbc55c73f6d745d39873236df389f121dc9c7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880919"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Tutorial: Azure Active Directory-Integration mit Asana
 
@@ -159,7 +159,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -204,7 +204,7 @@ In diesem Abschnitt erstellen Sie in Asana einen Benutzer namens Britta Simon.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Geben Sie die E-Mail-Adresse des Benutzers wie **britta.simon@contoso.com** in das Textfeld ein, und wählen **Invite** (Einladen) aus.
+2. Geben Sie die E-Mail-Adresse des Benutzers (etwa **britta.simon\@contoso.com**) in das Textfeld ein, und wählen **Invite** (Einladen) aus.
 
 3. Klicken Sie auf **Send Invite**(Einladung senden). Eine E-Mail wird an das E-Mail-Konto des neuen Benutzers gesendet. Der Benutzer muss das Konto erstellen und bestätigen.
 
@@ -222,4 +222,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Asana“ klicken, sollten Sie auto
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [Konfigurieren der Benutzerbereitstellung](asana-provisioning-tutorial.md)
+- [Konfigurieren der Benutzerbereitstellung](asana-provisioning-tutorial.md)

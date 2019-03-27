@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 848f319836e492e486bfdcb3c9080860144a7e68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3424137b36e4e277a8914ab04cdf7097660930e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860753"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Schnellstart: Verwenden des Bing-Websuche-SDK für C#
 
@@ -32,7 +32,7 @@ Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellst
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [C# für Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [NuGet-Paket-Manager](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.Net Core SDK](https://www.microsoft.com/net/download)
+* [.NET Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>Erstellen eines Projekts und Installieren der Abhängigkeiten
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Erstellen des Projektgerüstbaus
 
-Wenn Sie Ihr neues Konsolenprojekt erstellt haben, sollten ein Namespace und eine Klasse für Ihre Anwendung erstellt worden sein. Ihr Programm sollte wie folgt aussehen:
+Wenn Sie Ihr neues Konsolenprojekt erstellt haben, sollten ein Namespace und eine Klasse für Ihre Anwendung erstellt worden sein. Ihr Programm sollte wie das folgende Beispiel aussehen:
 
 ```csharp
 namespace WebSearchSDK
@@ -101,7 +101,7 @@ public static void WebResults(WebSearchAPI client)
 
 ## <a name="handle-the-response"></a>Verarbeiten der Antwort
 
-Als Nächstes fügen Sie Code zum Analysieren der Antwort und Ausgeben der Ergebnisse hinzu. Der `name` und die `url` für die erste Webseite, das erste Bild, den ersten Nachrichtenartikel und das erste Video werden ausgegeben, wenn sie im Antwortobjekt vorhanden sind.
+Als Nächstes fügen Sie Code zum Analysieren der Antwort und Ausgeben der Ergebnisse hinzu. Der `Name` und die `Url` für die erste Webseite, das erste Bild, den ersten Nachrichtenartikel und das erste Video werden ausgegeben, wenn sie im Antwortobjekt vorhanden sind.
 
 ```csharp
 if (webData?.WebPages?.Value?.Count > 0)
@@ -234,9 +234,10 @@ Nachdem Sie Ihren ersten Aufruf der Bing-Websuche-API durchgeführt haben, sehen
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Einschränken der von Bing zurückgegebenen Anzahl von Ergebnissen
 
-In diesem Beispiel wird mit den Parametern `count` und `offset` die Anzahl von Ergebnissen eingeschränkt, die für „Best restaurants in Seattle“ zurückgegeben werden. Der `name` und die `URL` für das erste Ergebnis werden ausgegeben.
+In diesem Beispiel wird mit den Parametern `count` und `offset` die Anzahl von Ergebnissen eingeschränkt, die für „Best restaurants in Seattle“ zurückgegeben werden. Der `Name` und die `Url` für das erste Ergebnis werden ausgegeben.
 
 1. Fügen Sie Ihrem Konsolenprojekt den folgenden Code hinzu:
+
     ```csharp
     public static void WebResultsWithCountAndOffset(WebSearchAPI client)
     {
@@ -271,7 +272,9 @@ In diesem Beispiel wird mit den Parametern `count` und `offset` die Anzahl von E
         }
     }
     ```
+
 2. Fügen Sie `WebResultsWithCountAndOffset` zu `main` hinzu:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -285,13 +288,15 @@ In diesem Beispiel wird mit den Parametern `count` und `offset` die Anzahl von E
         Console.ReadKey();
     }
     ```
+
 3. Führen Sie die Anwendung aus.
 
 ### <a name="filter-for-news"></a>Filtern nach Nachrichtenartikeln
 
-In diesem Beispiel wird der `response_filter`-Parameter zum Filtern der Suchergebnisse verwendet. Die zurückgegebenen Suchergebnisse sind auf Nachrichtenartikel für „Microsoft“ beschränkt. Der `name` und die `URL` für das erste Ergebnis werden ausgegeben.
+In diesem Beispiel wird der `response_filter`-Parameter zum Filtern der Suchergebnisse verwendet. Die zurückgegebenen Suchergebnisse sind auf Nachrichtenartikel für „Microsoft“ beschränkt. Der `Name` und die `Url` für das erste Ergebnis werden ausgegeben.
 
 1. Fügen Sie Ihrem Konsolenprojekt den folgenden Code hinzu:
+
     ```csharp
     public static void WebSearchWithResponseFilter(WebSearchAPI client)
     {
@@ -328,7 +333,9 @@ In diesem Beispiel wird der `response_filter`-Parameter zum Filtern der Sucherge
         }
     }
     ```
+
 2. Fügen Sie `WebResultsWithCountAndOffset` zu `main` hinzu:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -344,13 +351,15 @@ In diesem Beispiel wird der `response_filter`-Parameter zum Filtern der Sucherge
         Console.ReadKey();
     }
     ```
+
 3. Führen Sie die Anwendung aus.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Verwenden der Filter für sichere Suche, Antwortanzahl und Höherstufen
 
-In diesem Beispiel werden die Parameter `answer_count`, `promote` und `safe_search` zum Filtern der Suchergebnisse für „Music Videos“ verwendet. Der `name` und die `URL` für das erste Ergebnis werden angezeigt.
+In diesem Beispiel werden die Parameter `answer_count`, `promote` und `safe_search` zum Filtern der Suchergebnisse für „Music Videos“ verwendet. Der `Name` und die `ContentUrl` für das erste Ergebnis werden angezeigt.
 
 1. Fügen Sie Ihrem Konsolenprojekt den folgenden Code hinzu:
+
     ```csharp
     public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
     {
@@ -386,7 +395,9 @@ In diesem Beispiel werden die Parameter `answer_count`, `promote` und `safe_sear
         }
     }
     ```
+
 2. Fügen Sie `WebResultsWithCountAndOffset` zu `main` hinzu:
+
     ```csharp
     static void Main(string[] args)
     {
@@ -404,6 +415,7 @@ In diesem Beispiel werden die Parameter `answer_count`, `promote` und `safe_sear
         Console.ReadKey();
     }
     ```
+
 3. Führen Sie die Anwendung aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

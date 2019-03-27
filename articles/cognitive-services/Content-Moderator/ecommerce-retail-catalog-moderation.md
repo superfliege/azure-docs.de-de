@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 41437933f715af092dea563b0b1be4794c71925c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863158"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855953"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
 
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-review-team"></a>Erstellen eines Prüfungsteams
 
-Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) sowie zum Erstellen eines Prüfungsteams finden Sie unter [Schnellstart: Erste Schritte mit Content Moderator](quick-start.md). Notieren Sie sich auf der Seite **Anmeldeinformationen** die **Team-ID**.
+Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) sowie zum Erstellen eines Prüfungsteams finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Notieren Sie sich auf der Seite **Anmeldeinformationen** die **Team-ID**.
 
 ## <a name="create-custom-moderation-tags"></a>Erstellen benutzerdefinierter Moderationstags
 

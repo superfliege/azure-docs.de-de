@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: fc56fe3a5bdfa0f5e1ef4bc309932cb7f57cf27d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978092"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530959"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager 
 
@@ -39,7 +39,7 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Ve
 
 ## <a name="create-the-network-infrastructure"></a>Erstellen der Netzwerkinfrastruktur
 Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver darin zu platzieren.
-1. Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Klicken Sie links oben im Portal auf **Ressource erstellen**. Geben Sie *Ressourcengruppe* in das Suchfeld ein, und erstellen Sie eine Ressourcengruppe namens **RG-DNS-Alias-TM**.
 3. Wählen Sie **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 4. Erstellen Sie ein virtuelles Netzwerk namens **VNet-Servers**. Platzieren Sie es in der Ressourcengruppe **RG-DNS-Alias-TM**, und nennen Sie das Subnetz **SN-Web**.
@@ -60,7 +60,7 @@ Für die Verwendung der öffentlichen IP-Adressen mit Traffic Manager ist eine D
 1. Wählen Sie in der Ressourcengruppe **RG-DNS-Alias-TM** die öffentliche IP-Adresse **Web-01-ip** aus.
 2. Wählen Sie unter **Einstellungen** die Option **Konfiguration**.
 3. Geben Sie im Textfeld „DNS-Namensbezeichnung“ die Zeichenfolge **web01pip** ein.
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
 Wiederholen Sie dieses Verfahren für die öffentliche IP-Adresse **Web-02-ip**, und verwenden Sie dabei **web02pip** als DNS-Namensbezeichnung.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673750"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900827"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Tutorial: Sprachübersetzungsanwendung in C#
 
@@ -40,7 +40,7 @@ Die Visual Studio-Projektmappe erstellt auch ein Installationsprogramm für die 
 
 Sie benötigen auch einen Abonnementschlüssel für den Sprachübersetzungsdienst. Diesen können Sie über das Dashboard von Microsoft Azure abrufen. Im Rahmen des verfügbaren kostenlosen Tarifs können Sie pro Monat bis zu zehn Stunden gesprochene Sprache kostenlos übersetzen lassen. Dieser Tarif ist für das vorliegende Tutorial ausreichend.
 
-Die [JSON.Net-Bibliothek](https://www.newtonsoft.com/json) (von Newtonsoft) ist ebenfalls erforderlich. Diese Assembly wird von NuGet automatisch installiert, wenn in den Visual Studio-Optionen beide Kontrollkästchen für die Paketwiederherstellung aktiviert sind.
+Die [JSON.NET-Bibliothek](https://www.newtonsoft.com/json) (von Newtonsoft) ist ebenfalls erforderlich. Diese Assembly wird von NuGet automatisch installiert, wenn in den Visual Studio-Optionen beide Kontrollkästchen für die Paketwiederherstellung aktiviert sind.
 
 ## <a name="trying-the-translation-app"></a>Ausprobieren der Übersetzungs-App
 

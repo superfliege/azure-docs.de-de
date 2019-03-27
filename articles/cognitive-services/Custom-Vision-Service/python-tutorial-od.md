@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 691e95c666edf290dcfd79a6007e7b29d168a605
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 48bd10a19254540d970a1cb5ebd19b63a1975df0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881192"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727024"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Python
 
@@ -70,7 +70,7 @@ project = trainer.create_project("My Detection Project", domain_id=obj_detection
 
 ### <a name="create-tags-in-the-project"></a>Erstellen von Tags im Projekt
 
-Um Ihrem Projekt Klassifizierungstags hinzuzufügen, fügen Sie den folgenden Code am Ende der Datei *sample.py* hinzu:
+Um Ihrem Projekt Objekttags hinzuzufügen, fügen Sie den folgenden Code am Ende der Datei *sample.py* hinzu:
 
 ```Python
 # Make two tags in the new project

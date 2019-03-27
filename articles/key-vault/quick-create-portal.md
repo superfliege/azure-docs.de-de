@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 03/14/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0902e3fb64a73a095b457306aa561c13519e4066
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117101"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000616"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-vault"></a>Erstellen eines Tresors
 
@@ -43,7 +43,6 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
     - **Abonnement**: Wählen Sie ein Abonnement aus.
     - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
     - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.
-    - Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
     - Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.
 6. Klicken Sie nach der Angabe der obigen Informationen auf **Erstellen**.
 
@@ -70,7 +69,11 @@ Ein Geheimnis kann dem Tresor mit einigen wenigen Zusatzschritten hinzugefügt w
 
 Nachdem Sie die Meldung erhalten haben, dass das Geheimnis erfolgreich erstellt wurde, können Sie in der Liste auf das Geheimnis klicken. Daraufhin werden einige der Eigenschaften angezeigt. Wenn Sie auf die aktuelle Version klicken, sehen Sie den Wert, den Sie im vorherigen Schritt angegeben haben.
 
-![Geheimniseigenschaften](./media/quick-create-portal/version.png)
+![Geheimniseigenschaften](./media/quick-create-portal/current-version-hidden.png)
+
+Wenn Sie im rechten Bereich auf die Schaltfläche „Geheimniswert anzeigen“ klicken, wird der ausgeblendete Wert angezeigt. 
+
+![Angezeigter geheimer Wert](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

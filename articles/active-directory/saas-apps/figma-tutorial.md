@@ -7,20 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8569cae1-87dd-4c40-9bbb-527ac80d6a96
-ms.service: Azure-Active-Directory
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfdd76e171ed237e3e87c98f6596634784faea1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d58da4781a7c5c93d897e0efd7cf3d5aee612d78
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865313"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Tutorial: Azure Active Directory-Integration mit Figma
 
@@ -32,14 +32,16 @@ Die Integration von Figma in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Konfigurieren der Azure AD-Integration mit Figma benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Figma-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Figma Organization Plan
+
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. Neukunden und aktive Abonnenten von Figma Professional Team können sich an Figma wenden, um ein Upgrade ihres Abonnements auf den [Figma Organization Plan](https://www.figma.com/pricing/) durchzuführen.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -107,20 +109,20 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Figma d
 
     ![SSO-Informationen zur Domäne und zu den URLs für Figma](common/idp-intiated.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.figma.com/saml/<TENANT ID>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://www.figma.com/saml/<TENANT ID>/consume`
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Figma](common/metadata-upload-additional-signon.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Figma-Client](mailto:support@figma.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Sie erhalten die `TENANT ID` in Schritt 11 des Figma-Artikels [Konfigurieren des Azure Active Directory-SAML-SSO-Prozesses](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
-6. Die Figma-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol „Bearbeiten“, um die Attribute hinzuzufügen.
+6. Die Figma-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld  **User Attributes** (Benutzerattribute) zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -157,10 +159,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Figma d
 8. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
-
+  
 ### <a name="configure-figma-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Figma
 
-Zum Konfigurieren des einmaligen Anmeldens auf Figma-Seite füllen Sie dieses Formular aus: [https://goo.gl/forms/XkRB1z5ed4eVUzXn2](https://goo.gl/forms/XkRB1z5ed4eVUzXn2). Es akzeptiert Ihre **App-Verbundmetadaten-URL** aus Schritt 8.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von Figma befolgen Sie den Figma-Artikel [Konfigurieren des Azure Active Directory-SAML-SSO-Prozesses](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -180,7 +182,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -230,3 +232,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Figma“ klicken, sollten Sie auto
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

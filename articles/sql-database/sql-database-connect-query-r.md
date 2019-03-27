@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 02/12/2019
-ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864948"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Schnellstart: Verwenden von Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
@@ -27,10 +27,14 @@ Nutzen Sie die Möglichkeiten der Sprache R für erweiterte Analysen und maschin
 
 Machine Learning Services umfasst eine Basisdistribution von R zusammen mit R-Paketen für Unternehmen von Microsoft. Die R-Funktionen und -Algorithmen von Microsoft sind auf Skalierbarkeit und Anwendbarkeit ausgelegt. Sie ermöglichen Predictive Analytics, statistische Modellierung, Datenvisualisierungen und leistungsstarke Algorithmen für maschinelles Lernen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-> [!NOTE]
-> Machine Learning Services (mit R) in Azure SQL-Datenbank befindet sich derzeit in der öffentlichen Vorschau. [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
+> [!IMPORTANT]
+> Machine Learning Services (mit R) in Azure SQL-Datenbank befindet sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -154,7 +158,7 @@ Wir sehen uns hier jetzt nur die Standardvariablen für die Ein- und Ausgabe von
 
     ![Ausgabe des R-Skripts, mit dem Daten aus einer Tabelle zurückgegeben werden](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
-3. Wir ändern jetzt den Namen der Eingabe- bzw. Ausgabevariablen. Im obigen Skript werden die Standardnamen der Ein- und Ausgabevariablen verwendet: _InputDataSet_ und _OutputDataSet_. Zum Definieren der Eingabedaten, die _InputDatSet_ zugeordnet sind, verwenden Sie die Variable *@input_data_1*.
+3. Wir ändern jetzt den Namen der Eingabe- bzw. Ausgabevariablen. Im obigen Skript werden die Standardnamen der Ein- und Ausgabevariablen verwendet: _InputDataSet_ und _OutputDataSet_. Zum Definieren der Eingabedaten, die _InputDatSet_ zugeordnet sind, verwenden Sie die Variable *\@input_data_1*.
 
     In diesem Skript wurden die Namen der Aus- und Eingabevariablen für die gespeicherte Prozedur in *SQL_out* und *SQL_in* geändert:
 
@@ -170,7 +174,7 @@ Wir sehen uns hier jetzt nur die Standardvariablen für die Ein- und Ausgabe von
 
     Beachten Sie, dass für R die Groß-/Kleinschreibung beachtet wird. Die Schreibweise der Ein- und Ausgabevariablen in `@input_data_1_name` und `@output_data_1_name` muss also mit der Schreibweise im R-Code in `@script` übereinstimmen. 
 
-    Darüber hinaus ist die Reihenfolge der Parameter wichtig. Sie müssen zuerst die erforderlichen Parameter *@input_data_1* und *@output_data_1* angeben, um die optionalen Parameter *@input_data_1_name* und *@output_data_1_name* verwenden zu können.
+    Darüber hinaus ist die Reihenfolge der Parameter wichtig. Sie müssen zunächst die erforderlichen Parameter *\@input_data_1* und *\@output_data_1* angeben, um die optionalen Parameter *\@ input_data_1_name* und *\@output_data_1_name* verwenden zu können.
 
     Nur ein Eingabedataset kann als Parameter übergeben werden, und Sie können nur ein Dataset zurückgeben. Sie können aber andere Datasets in Ihrem R-Code aufrufen und zusätzlich zum Dataset Ausgaben anderer Typen zurückgeben. Außerdem können Sie auch allen Parametern das Schlüsselwort OUTPUT hinzufügen, damit es zusammen mit den Ergebnissen zurückgegeben wird. 
 
@@ -271,34 +275,34 @@ Sie können ein Modell mit R trainieren und das Modell in Ihrer SQL-Datenbank in
 
     Die Anforderungen eines linearen Modells sind einfach:
 
-    - Definieren Sie eine Formel, mit der die Beziehung zwischen der abhängigen Variablen `speed` und der unabhängigen Variablen `distance` beschrieben wird.
+   - Definieren Sie eine Formel, mit der die Beziehung zwischen der abhängigen Variablen `speed` und der unabhängigen Variablen `distance` beschrieben wird.
 
-    - Stellen Sie die Eingabedaten für die Verwendung beim Trainieren des Modells bereit.
+   - Stellen Sie die Eingabedaten für die Verwendung beim Trainieren des Modells bereit.
 
-    > [!TIP]
-    > Falls Sie eine Auffrischung zu linearen Modellen benötigen, empfehlen wir Ihnen das folgende Tutorial, in dem das Anpassen eines Modells mit rxLinMod beschrieben wird: [Fitting Linear Models](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) (Anpassen von linearen Modellen).
+     > [!TIP]
+     > Falls Sie eine Auffrischung zu linearen Modellen benötigen, empfehlen wir Ihnen das folgende Tutorial, in dem das Anpassen eines Modells mit rxLinMod beschrieben wird: [Fitting Linear Models](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) (Anpassen von linearen Modellen).
 
-    Zum Erstellen des Modells definieren Sie die Formel in Ihrem R-Code und übergeben die Daten als Eingabeparameter.
+     Zum Erstellen des Modells definieren Sie die Formel in Ihrem R-Code und übergeben die Daten als Eingabeparameter.
 
-    ```sql
-    DROP PROCEDURE IF EXISTS generate_linear_model;
-    GO
-    CREATE PROCEDURE generate_linear_model
-    AS
-    BEGIN
-        EXEC sp_execute_external_script
-        @language = N'R'
-        , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
-            trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
-        , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
-        , @input_data_1_name = N'CarsData'
-        , @output_data_1_name = N'trained_model'
-        WITH RESULT SETS ((model VARBINARY(max)));
-    END;
-    GO
-    ```
+     ```sql
+     DROP PROCEDURE IF EXISTS generate_linear_model;
+     GO
+     CREATE PROCEDURE generate_linear_model
+     AS
+     BEGIN
+       EXEC sp_execute_external_script
+       @language = N'R'
+       , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
+           trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
+       , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
+       , @input_data_1_name = N'CarsData'
+       , @output_data_1_name = N'trained_model'
+       WITH RESULT SETS ((model VARBINARY(max)));
+     END;
+     GO
+     ```
 
-    Das erste Argument für rxLinMod ist der Parameter *formula*, mit dem der Anhalteweg in Abhängigkeit der Geschwindigkeit definiert wird. Die Eingabedaten werden in der Variablen `CarsData` gespeichert, die mit der SQL-Abfrage aufgefüllt wird. Wenn Sie Ihren Eingabedaten nicht einen spezifischen Namen zuweisen, lautet der Standardvariablenname _InputDataSet_.
+     Das erste Argument für rxLinMod ist der Parameter *formula*, mit dem der Anhalteweg in Abhängigkeit der Geschwindigkeit definiert wird. Die Eingabedaten werden in der Variablen `CarsData` gespeichert, die mit der SQL-Abfrage aufgefüllt wird. Wenn Sie Ihren Eingabedaten nicht einen spezifischen Namen zuweisen, lautet der Standardvariablenname _InputDataSet_.
 
 2. Erstellen Sie als Nächstes eine Tabelle, in der Sie das Modell speichern, damit Sie es erneut trainieren oder für die Vorhersage verwenden können. Die Ausgabe eines R-Pakets, mit dem ein Modell erstellt wird, ist normalerweise ein **binäres Objekt**. Aus diesem Grund muss in der Tabelle eine Spalte vom Typ **VARBINARY(max)** enthalten sein.
 
@@ -397,23 +401,23 @@ Verwenden Sie das Modell, das Sie im vorherigen Abschnitt erstellt haben, um Vor
 
     Mit dem obigen Skript werden die folgenden Schritte ausgeführt:
 
-    + Verwenden Sie eine SELECT-Anweisung, um ein einzelnes Modell aus der Tabelle abzurufen, und übergeben Sie es als Eingabeparameter.
+   + Verwenden Sie eine SELECT-Anweisung, um ein einzelnes Modell aus der Tabelle abzurufen, und übergeben Sie es als Eingabeparameter.
 
-    + Rufen Sie nach dem Abruf des Modells aus der Tabelle die Funktion `unserialize` für das Modell auf.
+   + Rufen Sie nach dem Abruf des Modells aus der Tabelle die Funktion `unserialize` für das Modell auf.
 
-        > [!TIP] 
-        > Sehen Sie sich auch die neuen [Serialisierungsfunktionen](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) von RevoScaleR an, für die die Bewertung in Echtzeit unterstützt wird.
-    + Wenden Sie die Funktion `rxPredict` mit den passenden Argumenten auf das Modell an, und geben Sie die neuen Eingabedaten an.
+       > [!TIP] 
+       > Sehen Sie sich auch die neuen [Serialisierungsfunktionen](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) von RevoScaleR an, für die die Bewertung in Echtzeit unterstützt wird.
+   + Wenden Sie die Funktion `rxPredict` mit den passenden Argumenten auf das Modell an, und geben Sie die neuen Eingabedaten an.
 
-    + Im Beispiel wird die Funktion `str` während der Testphase hinzugefügt, um das Schema der Daten zu überprüfen, die von R zurückgegeben werden. Sie können die Anweisung dann später entfernen.
+   + Im Beispiel wird die Funktion `str` während der Testphase hinzugefügt, um das Schema der Daten zu überprüfen, die von R zurückgegeben werden. Sie können die Anweisung dann später entfernen.
 
-    + Die im R-Skript genutzten Spaltennamen werden nicht unbedingt an die Ausgabe der gespeicherten Prozedur übergeben. Hier haben wir die WITH RESULTS-Klausel verwendet, um einige neue Spaltennamen zu definieren.
+   + Die im R-Skript genutzten Spaltennamen werden nicht unbedingt an die Ausgabe der gespeicherten Prozedur übergeben. Hier haben wir die WITH RESULTS-Klausel verwendet, um einige neue Spaltennamen zu definieren.
 
-    **Ergebnisse**
+     **Ergebnisse**
 
-    ![Resultset für die Vorhersage des Anhaltewegs](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+     ![Resultset für die Vorhersage des Anhaltewegs](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
-    Es ist auch möglich, [PREDICT in Transact-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) zu verwenden, um einen vorhergesagten Wert oder eine Bewertung basierend auf einem gespeicherten Modell zu generieren.
+     Es ist auch möglich, [PREDICT in Transact-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) zu verwenden, um einen vorhergesagten Wert oder eine Bewertung basierend auf einem gespeicherten Modell zu generieren.
 
 <a name="add-package"></a>
 

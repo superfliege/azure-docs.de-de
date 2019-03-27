@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen einer ASP.NET-App mit Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects'
+title: 'Tutorial: Bereitstellen einer ASP.NET-App und von Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects'
 description: DevOps Projects erleichtert die ersten Schritte mit Azure. Mit DevOps Projects können Sie Ihre ASP.NET-App sowie Azure SQL-Datenbank-Code in wenigen Schritten bereitstellen.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 32f33e4ac66ad456b5ff8807d6a1b5ea5f541fed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845221"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET-App mit Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET-App und von Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects
 
 Azure DevOps Projects bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
@@ -122,8 +122,8 @@ Mit DevOps Projects werden die erforderlichen Schritte zum Bereitstellen über I
     
 1. Wählen Sie auf der linken Seite **Variablen** aus. 
 
-  > [!NOTE]
-  > Führen Sie den folgenden Schritt nur aus, wenn Sie das SQL Server-Kennwort geändert haben. Es gibt eine Kennwortvariable.
+   > [!NOTE]
+   > Führen Sie den folgenden Schritt nur aus, wenn Sie das SQL Server-Kennwort geändert haben. Es gibt eine Kennwortvariable.
   
 1. Wählen Sie neben dem Feld **Wert** das Schlosssymbol aus, geben Sie das neue Kennwort ein, und wählen Sie dann **Speichern** aus.
 
@@ -136,13 +136,13 @@ Mit DevOps Projects werden die erforderlichen Schritte zum Bereitstellen über I
 1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.
 
 1. Wählen Sie neben einem Release die Auslassungspunkte (...) und anschließend **Öffnen** aus.  
-    Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitselemente und Tests.
+     Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitselemente und Tests.
 
 1. Wählen Sie **Commits** aus.  
-    In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. Vergleichen Sie Releases, um die Commitunterschiede zwischen den einzelnen Bereitstellungen anzuzeigen.
+     In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. Vergleichen Sie Releases, um die Commitunterschiede zwischen den einzelnen Bereitstellungen anzuzeigen.
 
 1. Wählen Sie **Protokolle** aus.  
-    Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess. Sie können während und nach Bereitstellungen angezeigt werden.
+     Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess. Sie können während und nach Bereitstellungen angezeigt werden.
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Committen von Änderungen in Azure Repos und automatisches Bereitstellen dieser Änderungen in Azure 
 
@@ -170,7 +170,7 @@ Zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen Sie die e
    
 1. Wählen Sie **Serverfirewall festlegen** und anschließend **Client-IP-Adresse hinzufügen** aus. 
 
-1. Wählen Sie **Speichern**aus.  
+1. Wählen Sie **Speichern** aus.  
     Ihre Client-IP-Adresse hat nun Zugriff auf die Azure SQL Server-Ressource.
 
 1. Navigieren Sie zurück zum Bereich **SQL-Datenbank**. 
@@ -182,10 +182,10 @@ Zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen Sie die e
 
     Danach können Sie optional Clienttools wie SQL Server Management Studio oder Visual Studio verwenden, um eine Verbindung mit SQL Server und der Azure SQL-Datenbank herzustellen. Verwenden Sie zum Herstellen der Verbindung die Eigenschaft **Servername**.
 
-    Wenn Sie den Datenbank-Benutzernamen bei der Erstkonfiguration des Projekts in DevOps Projects nicht geändert haben, ist Ihr Benutzername der lokale Teil Ihrer E-Mail-Adresse. Wenn Ihre E-Mail-Adresse beispielsweise *johndoe@microsoft.com* lautet, ist *johndoe* Ihr Benutzername.
+    Wenn Sie den Datenbank-Benutzernamen bei der Erstkonfiguration des Projekts in DevOps Projects nicht geändert haben, ist Ihr Benutzername der lokale Teil Ihrer E-Mail-Adresse. Wenn Ihre E-Mail-Adresse beispielsweise *johndoe\@microsoft.com* lautet, ist *johndoe* Ihr Benutzername.
 
- > [!NOTE]
- > Wenn Sie Ihr Kennwort für die SQL-Anmeldung ändern, müssen Sie das Kennwort in der Variablen der Releasepipeline ändern. Eine entsprechende Anleitung finden Sie im Abschnitt „Überprüfen der CD-Pipeline“.
+   > [!NOTE]
+   > Wenn Sie Ihr Kennwort für die SQL-Anmeldung ändern, müssen Sie das Kennwort in der Variablen der Releasepipeline ändern. Eine entsprechende Anleitung finden Sie im Abschnitt „Überprüfen der CD-Pipeline“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

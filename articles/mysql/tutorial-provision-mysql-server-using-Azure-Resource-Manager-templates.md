@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: bb7a48b08fde07380276d33393225c3f5220b93f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5d5398f4da7563c6f53c17d0305f54c4360f1c65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880698"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076852"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Tutorial: Bereitstellen eines Azure Database for MySQL-Servers mithilfe von Azure Resource Manager-Vorlagen
 
@@ -87,8 +87,8 @@ In dieser Anforderung müssen die folgenden Werte angepasst werden:
 +   `storageProfile/geoRedundantBackup`: Geben Sie je nach Anforderungen an die georedundante Notfallwiederherstellung „Enabled“ oder “Disabled“ an.
 +   `sku/tier`: Geben Sie den Tarif „Basic“, „GeneralPurpose (Allgemein)“ oder „MemoryOptimized (Speicheroptimiert)“ für die Bereitstellung an.
 +   `sku/capacity`: Geben Sie die Kapazität des virtuellen Kerns an. Folgende Werte sind möglich: 2, 4, 8, 16, 32 oder 64.
-+   `sku/family`: Geben Sie Gen4 oder Gen5 als ausgewählte Hardwaregeneration für die Serverbereitstellung an.
-+   `sku/name`: Geben Sie „TierPrefix_family_capacity“ an, zum Beispiel „B_Gen4_1“, „GP_Gen5_16“ oder MO_Gen5_32. In der Dokumentation zu den [Tarifen](./concepts-pricing-tiers.md) finden Sie Informationen zu den gültigen Werten pro Region und Tarif.
++   `sku/family`: Geben Sie Gen5 als ausgewählte Hardwaregeneration für die Serverbereitstellung an.
++   `sku/name`: Geben Sie „TierPrefix_family_capacity“ an, z. B. „B_Gen5_1“, „GP_Gen5_16“ oder „MO_Gen5_32“. In der Dokumentation zu den [Tarifen](./concepts-pricing-tiers.md) finden Sie Informationen zu den gültigen Werten pro Region und Tarif.
 +   `resources/properties/virtualNetworkSubnetId`: Geben Sie die Azure-ID des Subnetzes im VNet an, in das der Azure MySQL-Server platziert werden soll. 
 +   `tags(optional)`: Geben Sie optionale Tags als Schlüsselwertpaare an, die zum Kategorisieren der Ressourcen für die Abrechnung usw. verwendet werden sollen.
 
@@ -127,8 +127,8 @@ Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich die Werte für **fullyQ
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -207,5 +207,5 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Laden von Beispieldaten
 > * Abfragen von Daten
 > * Aktualisieren von Daten
-
+> 
 > [Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL](./howto-connection-string.md)

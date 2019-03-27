@@ -2,18 +2,18 @@
 title: Vorbereiten von Azure für die Notfallwiederherstellung von lokalen Computern mit Azure Site Recovery | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure für die Notfallwiederherstellung von lokalen Computern mit Azure Site Recovery vorbereiten.
 services: site-recovery
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: raynew
+ms.date: 03/03/2019
+ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5168fc28952631f00c2415d6bc171a130dc85dfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838560"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
 
@@ -28,7 +28,6 @@ In diesem Artikel wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie 
 
 > [!div class="checklist"]
 > * Überprüfen, ob Ihr Azure-Konto über Replikationsberechtigungen verfügt
-> * Erstellen eines Azure-Speicherkontos Images von replizierten Computern werden in diesem Konto gespeichert.
 > * Erstellen Sie einen Recovery Services-Tresor. Ein Tresor enthält Metadaten und Konfigurationsinformationen für virtuelle Computer und andere Replikationskomponenten.
 > * Richten Sie ein Azure-Netzwerk ein. Wenn die Azure-VMs nach einem Failover erstellt werden, werden sie mit diesem Azure-Netzwerk verbunden.
 
@@ -36,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="verify-account-permissions"></a>Überprüfen von Kontoberechtigungen
 
@@ -44,27 +43,11 @@ Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind Sie der Adminis
 
 - Erstellen einer VM in der ausgewählten Ressourcengruppe
 - Erstellen einer VM im ausgewählten virtuellen Netzwerk
-- Schreiben in das ausgewählte Speicherkonto
+- Schreiben ins Speicherkonto
+- Schreiben auf verwaltete Datenträger
 
 Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirkender von virtuellen Computern“ zugewiesen werden. Zum Verwalten von Site Recovery-Vorgängen in einem Tresor muss Ihrem Konto außerdem die integrierte Rolle „Site Recovery-Mitwirkender“ zugewiesen werden.
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
-
-Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen. Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden. In diesem Tutorial verwenden wir „Europa, Westen“.
-
-1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) **Ressource erstellen** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
-2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein. Verwenden Sie für diese Tutorials **contosovmsacct1910171607**. Der ausgewählte Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
-3. Wählen Sie unter **Bereitstellungsmodell** die Option **Resource Manager**.
-4. Wählen Sie unter **Kontoart** die Option **Speicher (universell v1)** aus. Wählen Sie keinen Blobspeicher aus.
-5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**. Wir lassen die Option **Sichere Übertragung erforderlich** **deaktiviert**.
-6. Wählen Sie unter **Leistung** die Option **Standard** und unter **Zugriffsebene** die Standardoption **Heiße Ebene** aus.
-7. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
-8. Geben Sie unter **Ressourcengruppe** eine neue Ressourcengruppe ein. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Für diese Tutorials verwenden wir **ContosoRG**.
-9. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. 
-
-   ![Speicherkonto erstellen](media/tutorial-prepare-azure/create-storageacct.png)
-
-9. Wählen Sie **Erstellen**, um das Speicherkonto zu erstellen.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -81,7 +64,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 
 ## <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
-Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden sie mit diesem Netzwerk verknüpft.
+Wenn die Azure-VMs nach einem Failover aus verwalteten Datenträgern erstellt werden, werden sie mit diesem Netzwerk verknüpft.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
 2. Wir behalten **Resource Manager** als Auswahl für das Bereitstellungsmodell bei.
@@ -100,8 +83,7 @@ Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden 
 ## <a name="useful-links"></a>Nützliche Links
 
 - [Informationen zu](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure-Netzwerken.
-- [Informationen zu](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts) Azure-Speichertypen.
-- [Informationen zu ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) Speicherredundanz und [sicherer Übertragung](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für Speicher.
+- [Informationen zu verwalteten Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
 
 
 

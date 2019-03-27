@@ -10,16 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: 298279fd67b312b6a7ab3a9939444c344407127f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 55704ed6236872c4f225775559e54370757a26a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007133"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Tutorial: Ausführen des TensorFlow-Modells in Python
 
 Nachdem Sie Ihr [TensorFlow-Modell](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) aus Custom Vision Service exportiert haben, hilft Ihnen dieser Schnellstart dabei, das Modell lokal zu verwenden, um Bilder zu klassifizieren.
+
+> [!NOTE]
+> Dieses Tutorial betrifft nur Modelle, die aus Bildklassifizierungsprojekten exportiert wurden.
 
 ## <a name="install-required-components"></a>Installieren der erforderlichen Komponenten
 
@@ -50,8 +53,12 @@ import os
 graph_def = tf.GraphDef()
 labels = []
 
+# These are set to the default names from exported models, update as needed.
+filename = "model.pb"
+labels_filename = "labels.txt"
+
 # Import the TF graph
-with tf.gfile.FastGFile(filename, 'rb') as f:
+with tf.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -176,8 +183,13 @@ output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
 with tf.Session() as sess:
-    prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-    predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+    try:
+        prob_tensor = sess.graph.get_tensor_by_name(output_layer)
+        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+    except KeyError:
+        print ("Couldn't find classification output layer: " + output_layer + ".")
+        print ("Verify this a model exported from an Object Detection project.")
+        exit(-1)
 ```
 
 ## <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
@@ -192,7 +204,7 @@ Die Ergebnisse der Ausführung des Bildtensors über das Modell muss dann wieder
 
     # Or you can print out all of the results mapping labels to probabilities.
     label_index = 0
-    for p in predictions[0]:
+    for p in predictions:
         truncated_probablity = np.float64(np.round(p,8))
         print (labels[label_index], truncated_probablity)
         label_index += 1

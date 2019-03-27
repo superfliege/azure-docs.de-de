@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868186"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106898"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung
 
@@ -32,35 +32,53 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie haben die Schritte unter [Tutorial: Entpacken, Verbinden und Entsperren des Azure Data Box-Datenträgers](data-box-disk-deploy-set-up.md) ausgeführt.
 - Ihre Datenträger sind entsperrt und mit einem Clientcomputer verbunden.
 - Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) ausgeführt werden.
-- Stellen Sie sicher, dass der gewünschte Speichertyp für Ihre Daten den [unterstützten Datentypen](data-box-disk-system-requirements.md#supported-storage-types) entspricht.
+- Stellen Sie sicher, dass der gewünschte Speichertyp für Ihre Daten den [unterstützten Datentypen](data-box-disk-system-requirements.md#supported-storage-types-for-upload) entspricht.
+- Informationen zu Grenzwerten für verwaltete Datenträger finden Sie unter [Größenbeschränkungen für das Azure-Objekt](data-box-disk-limits.md#azure-object-size-limits).
 
 
 ## <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
 
+Beachten Sie Folgendes, bevor Sie die Daten auf die Datenträger kopieren:
+
+- Sie sind dafür verantwortlich, die Daten in Ordner zu kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in den Ordner für Blockblobs. Falls das Datenformat nicht mit dem entsprechenden Ordner (Speichertyp) übereinstimmt, tritt für den Datenupload in Azure während eines späteren Schritts ein Fehler auf.
+- Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box-Datenträger](data-box-disk-limits.md) beschrieben sind.
+- Falls vom Data Box-Datenträger hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb des Data Box-Datenträgers hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
+
+Wenn Sie verwaltete Datenträger in der Bestellung angegeben haben, beachten Sie die folgenden zusätzlichen Punkte:
+
+- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg und in der gesamten Data Box Disk-Instanz eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen aufweisen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist. Wenn VHDs denselben Namen haben, wird nur eine VHD in einen verwalteten Datenträger mit diesem Namen konvertiert. Die anderen VHDs werden als Seitenblobs in das Stagingspeicherkonto hochgeladen.
+- Kopieren Sie die VHDs immer in einen der vorab erstellten Ordner. Wenn Sie die VHDs an einen Ort außerhalb dieser Ordner oder in einen selbst erstellten Ordner kopieren, werden sie nicht als verwaltete Datenträger, sondern als Seitenblobs in das Azure Storage-Konto hochgeladen.
+- Zur Erstellung von verwalteten Datenträgern können nur feste VHDs hochgeladen werden. Dynamische VHDs, differenzierende VHDs oder VHDX-Dateien werden nicht unterstützt.
+
+
 Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Daten von Ihrem Computer auf den Data Box-Datenträger zu kopieren.
 
-1. Zeigen Sie den Inhalt des entsperrten Laufwerks an.
+1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. Die Liste der vorab erstellten Ordner und Unterordner im Laufwerk unterscheidet sich je nach den bei der Data Box Disk-Bestellung ausgewählten Optionen.
 
-    ![Anzeigen des Laufwerkinhalts](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
+    |Ausgewähltes Speicherziel  |Speicherkontotyp|Typ des Stagingspeicherkontos |Ordner und Unterordner  |
+    |---------|---------|---------|------------------|
+    |Speicherkonto     |GPv1 oder GPv2                 | Nicht verfügbar | BlockBlob <br> PageBlob <br> AzureFile        |
+    |Speicherkonto     |Blob Storage-Konto         | Nicht verfügbar | BlockBlob        |
+    |Verwaltete Datenträger     |Nicht verfügbar | GPv1 oder GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
+    |Speicherkonto <br> Verwaltete Datenträger     |GPv1 oder GPv2 | GPv1 oder GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Speicherkonto <br> Verwaltete Datenträger    |Blob Storage-Konto | GPv1 oder GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+
+    Nachfolgend ist ein Beispielscreenshot einer Bestellung abgebildet, bei der ein GPv2-Speicherkonto angegeben wurde:
+
+    ![Inhalt des Laufwerks](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. Kopieren Sie die zu importierenden Daten als Blockblobs in den Ordner „BlockBlob“. Kopieren Sie entsprechend Daten, z.B. von VHD/VHDX, in den Ordner „PageBlob“. 
+2. Kopieren Sie die als Blockblobs zu importierenden Daten in den Ordner *BlockBlob*. Kopieren Sie entsprechend Daten z. B. von VHD/VHDX-Dateien in den Ordner *PageBlob* und Daten in den Ordner *AzureFile*.
 
     Im Azure-Speicherkonto wird für jeden Unterordner der Ordner „BlockBlob“ und „PageBlob“ ein Container erstellt. Alle Dateien in den Ordnern „BlockBlob“ und „PageBlob“ werden in den Standardcontainer `$root` unter dem Azure Storage-Konto kopiert. Alle Dateien im Container `$root` werden immer als Blockblobs hochgeladen.
 
+   Kopieren Sie Dateien in einen Ordner innerhalb des Ordners *AzureFile*. Durch einen Unterordner innerhalb des Ordners *AzureFile* wird eine Dateifreigabe erstellt. Bei direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen.
+
     Falls im Stammverzeichnis Dateien und Ordner vorhanden sind, müssen Sie diese in einen anderen Ordner verschieben, bevor Sie mit dem Kopieren von Daten beginnen.
 
-    Befolgen Sie die Anforderungen an die Azure-Benennungsanforderungen für Namen von Containern und Blobs.
+    > [!IMPORTANT]
+    > Für alle Container, Blobs und Dateinamen sollten die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) eingehalten werden. Wenn diese Regeln nicht befolgt werden, tritt beim Datenupload in Azure ein Fehler auf.
 
-    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Azure-Namenskonventionen für Namen von Containern und Blobs
-    |Entität   |Konventionen  |
-    |---------|---------|
-    |Containernamen für Blockblob und Seitenblob     |Müssen mit einem Buchstaben oder einer Zahl beginnen und dürfen nur Kleinbuchstaben, Zahlen und Bindestriche (-) enthalten. Vor und nach jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer stehen. Aufeinanderfolgende Bindestriche sind in Namen nicht zulässig. <br>Es muss sich um einen gültigen DNS-Namen mit einer Länge von 3 bis 63 Zeichen handeln.          |
-    |Blobnamen für Blockblobs und Seitenblobs    |Für Blobnamen wird die Groß-/Kleinschreibung beachtet, und sie können eine beliebige Kombination von Zeichen enthalten. <br>Ein Blobname muss zwischen 1 und 1.024 Zeichen lang sein.<br>Reservierte URL-Zeichen müssen korrekt mit Escapezeichen versehen sein.<br>Die Anzahl von Pfadsegmenten, aus denen der Blobname besteht, darf 254 nicht überschreiten. Ein Pfadsegment ist die Zeichenfolge zwischen aufeinanderfolgenden Trennzeichen (z.B. der Schrägstrich (/)), die für den Namen eines virtuellen Verzeichnisses steht.         |
-
-    > [!IMPORTANT] 
-    > Für alle Container und Blobs sollten die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions) eingehalten werden. Wenn diese Regeln nicht befolgt werden, tritt beim Datenupload in Azure ein Fehler auf.
-
-3. Stellen Sie beim Kopieren von Dateien sicher, dass Dateien für Blockblobs eine Größe von ca. 4,7 TiB und für Seitenblobs eine Größe von ca. 8 TiB nicht überschreiten. 
+3. Stellen Sie beim Kopieren von Dateien sicher, dass Dateien für Blockblobs eine Größe von ca. 4,7 TiB, für Seitenblobs eine Größe von ca. 8 TiB und für Azure Files eine Größe von ca. 1 TiB nicht überschreiten. 
 4. Sie können zum Kopieren der Daten für den Datei-Explorer Drag & Drop verwenden. Außerdem können Sie jedes SMB-kompatible Dateikopiertool, z.B. Robocopy, verwenden, um die Daten zu kopieren. Mehrere Kopieraufträge können mit dem folgenden Robocopy-Befehl initiiert werden:
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -80,7 +98,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     |/FFT                | Setzt FAT-Dateizeitangaben voraus (Zwei-Sekunden-Genauigkeit).        |
     |/Log:<Log File>     | Schreibt die Statusausgabe in die Protokolldatei (vorhandene Protokolldatei wird überschrieben).         |
 
-    Mehrere Datenträger können parallel genutzt werden, wobei auf jedem Datenträger mehrere Aufträge ausgeführt werden. 
+    Mehrere Datenträger können parallel genutzt werden, wobei auf jedem Datenträger mehrere Aufträge ausgeführt werden.
 
 6. Überprüfen Sie den Kopierstatus, während sich der Auftrag in Bearbeitung befindet. Das folgende Beispiel enthält die Ausgabe des Robocopy-Befehls zum Kopieren von Dateien auf den Data Box-Datenträger.
 
@@ -151,8 +169,8 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     Verwenden Sie zum Optimieren der Leistung die folgenden Robocopy-Parameter beim Kopieren der Daten.
 
     |    Plattform    |    Überwiegend kleine Dateien < 512 KB                           |    Überwiegend mittelgroße Dateien 512 KB – 1 MB                      |    Überwiegend große Dateien > 1 MB                             |   
-    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-    |    Data Box Disk        |    4 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |  |
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+    |    Data Box Disk        |    4 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |    2 Robocopy-Sitzungen* <br> 16 Threads pro Sitzung    |
     
     **Jede Robocopy-Sitzung kann maximal 7.000 Verzeichnisse und 150 Millionen Dateien aufweisen.*
     
@@ -163,17 +181,13 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
 
 6. Öffnen Sie den Zielordner, um die kopierten Dateien anzuzeigen und zu überprüfen. Laden Sie die Protokolldateien herunter, falls während des Kopierprozesses Fehler auftreten, um die Problembehandlung durchzuführen. Die Protokolldateien befinden sich an den Speicherorten, die für den Robocopy-Befehl angegeben wurden.
  
-> [!IMPORTANT]
-> - Sie sind dafür verantwortlich, die Daten in Ordner zu kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in den Ordner für Blockblobs. Falls das Datenformat nicht mit dem entsprechenden Ordner (Speichertyp) übereinstimmt, tritt für den Datenupload in Azure während eines späteren Schritts ein Fehler auf.
-> -  Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box-Datenträger](data-box-disk-limits.md) beschrieben sind.
-> - Falls vom Data Box-Datenträger hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb des Data Box-Datenträgers hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
-
 ### <a name="split-and-copy-data-to-disks"></a>Aufteilen und Kopieren von Daten auf Datenträger
 
 Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger verwenden und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss. Das Data Box-Tool zum Aufteilen/Kopieren unterstützt Sie beim Aufteilen und Kopieren der Daten auf einem Windows-Computer.
 
 >[!IMPORTANT]
 > Mit dem Data Box-Tool zum Aufteilen/Kopieren werden Ihre Daten auch überprüft. Wenn Sie das Data Box-Tool zum Aufteilen/Kopieren zum Kopieren von Daten verwenden, können Sie den [Überprüfungsschritt](#validate-data) überspringen.
+> Das Tool zum Aufteilen/Kopieren wird für verwaltete Datenträger nicht unterstützt.
 
 1. Vergewissern Sie sich auf Ihrem Windows-Computer, dass Sie das Data Box-Tool zum Aufteilen/Kopieren heruntergeladen und in einem lokalen Ordner extrahiert haben. Dieses Tool wurde zusammen mit dem Data Box Disk-Toolset für Windows heruntergeladen.
 2. Öffnen Sie den Datei-Explorer. Notieren Sie sich das Datenquelllaufwerk und die Laufwerkbuchstaben für Data Box Disk. 
@@ -195,10 +209,10 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
  
 5. Ändern Sie die Datei `SampleConfig.json`.
  
-    - Geben Sie einen Auftragsnamen an. Dadurch wird in der Data Box Disk-Ressource ein Ordner erstellt, der letztendlich als Container in dem Azure-Speicherkonto fungiert, das den Datenträgern zugeordnet ist. Der Auftragsname muss den Benennungskonventionen für Azure-Container entsprechen. 
-    - Geben Sie einen Quellpfad an, und beachten Sie das Pfadformat in der Datei `SampleConfigFile.json`. 
-    - Geben Sie die Laufwerkbuchstaben für die Zieldatenträger ein. Die Daten werden aus dem Quellpfad abgerufen und auf mehrere Datenträger kopiert.
-    - Geben Sie einen Pfad für die Protokolldateien an. Standardmäßig wird als Ziel das aktuelle Verzeichnis verwendet, in dem sich auch die `.exe`-Datei befindet.
+   - Geben Sie einen Auftragsnamen an. Dadurch wird in der Data Box Disk-Ressource ein Ordner erstellt, der letztendlich als Container in dem Azure-Speicherkonto fungiert, das den Datenträgern zugeordnet ist. Der Auftragsname muss den Benennungskonventionen für Azure-Container entsprechen. 
+   - Geben Sie einen Quellpfad an, und beachten Sie das Pfadformat in der Datei `SampleConfigFile.json`. 
+   - Geben Sie die Laufwerkbuchstaben für die Zieldatenträger ein. Die Daten werden aus dem Quellpfad abgerufen und auf mehrere Datenträger kopiert.
+   - Geben Sie einen Pfad für die Protokolldateien an. Standardmäßig wird als Ziel das aktuelle Verzeichnis verwendet, in dem sich auch die `.exe`-Datei befindet.
 
      ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 

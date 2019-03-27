@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 017d693f0d71692abfb432216ca0645dee80d7df
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f8def13360bba2f82d5adf315503dc7d655f490d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA
 
@@ -195,7 +195,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -248,8 +248,8 @@ Wenn Sie manuell einen Benutzer erstellen müssen, führen Sie die folgenden Sch
 
 4. Fügen Sie den Wert für **External Identity** (Externe ID) (in diesem Fall BrittaSimon) hinzu, oder wählen Sie **Any** (Beliebig). Wählen Sie dann **OK**aus.
 
-    >[!Note]
-    >Wenn das Kontrollkästchen **Any** (Beliebig) nicht aktiviert ist, muss der Benutzername in HANA exakt dem Namen des Benutzers im Benutzerprinzipalnamen vor dem Domänensuffix entsprechen. (Beispiel: BrittaSimon@contoso.com wird in HANA zu „BrittaSimon“.)
+   > [!Note]
+   > Wenn das Kontrollkästchen **Any** (Beliebig) nicht aktiviert ist, muss der Benutzername in HANA exakt dem Namen des Benutzers im Benutzerprinzipalnamen vor dem Domänensuffix entsprechen. (Beispiel: BrittaSimon@contoso.com wird in HANA zu „BrittaSimon“.)
 
 5. Weisen Sie dem Benutzer zu Testzwecken alle **XS**-Rollen zu.
 

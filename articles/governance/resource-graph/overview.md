@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b5062dd4edf43fbb348a6de57f534096a8c922de
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267953"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193567"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -52,7 +52,7 @@ Abfragen an Ressource Graph werden gedrosselt, um für alle Kunden die beste Erf
 
 ## <a name="running-your-first-query"></a>Ausführen Ihrer ersten Abfrage
 
-Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell. Die Abfrage ist für beide Sprachen gleich strukturiert. Informationen zum Aktivieren von Resource Graph in [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension) und [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
+Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell und das Azure SDK für .NET. Die Abfrage ist für alle Sprachen gleich strukturiert. Informationen zum Aktivieren von Resource Graph in [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension) und [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

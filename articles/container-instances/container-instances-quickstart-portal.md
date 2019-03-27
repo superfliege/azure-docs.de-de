@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Ausführen einer Anwendung in Azure Container Instances – Portal'
-description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals eine Docker-Containeranwendung zur Ausführung in einem isolierten Container in Azure Container Instances bereit.
+title: 'Schnellstart: Bereitstellen von Docker-Containern in Azure Container Instances – Portal'
+description: In diesem Schnellstart verwenden Sie das Azure-Portal, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41313a8b140886247b830db7ca9b34a22257de96
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566092"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729145"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Schnellstart: Ausführen einer Containeranwendung in Azure Container Instances im Azure-Portal
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe des Azure-Portals
 
-Führen Sie mithilfe von Azure Container Instances Docker-Container schnell und einfach in Azure aus. Sie müssen keine virtuellen Computer bereitstellen und keine vollständige Containerorchestrierungsplattform wie Kubernetes verwenden. In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals einen Container in Azure und machen seine Anwendung mit einem vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Nachdem Sie einige Einstellungen konfiguriert und den Container bereitgestellt haben, können Sie zur ausgeführten Anwendung navigieren:
+Führen Sie mithilfe von Azure Container Instances serverlose Docker-Container schnell und einfach in Azure aus. Sie stellen eine Anwendung bedarfsgesteuert in einer Containerinstanz bereit, wenn Sie keine vollständige Containerorchestrierungsplattform wie Azure Kubernetes Service benötigen.
+
+In diesem Schnellstart stellen Sie mithilfe des Azure-Portals einen isolierten Docker-Container bereit und machen seine Anwendung über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Nachdem Sie einige Einstellungen konfiguriert und den Container bereitgestellt haben, können Sie zur ausgeführten Anwendung navigieren:
 
 ![In Azure Container Instances bereitgestellte App im Browser][aci-portal-07]
 
@@ -41,9 +43,9 @@ Geben Sie die folgenden Werte in die Textfelder **Containername**, **Containerim
 
 ![Konfigurieren grundlegender Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-03]
 
-Behalten Sie für diesen Schnellstart die Standardeinstellung **Öffentlich** bei, um das Image `microsoft/aci-helloworld` aus der öffentlichen Docker Hub-Registrierung bereitzustellen. Dieses Image verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient.
+Behalten Sie für diesen Schnellstart die Standardeinstellung **Öffentlich** bei, um das öffentliche Image `microsoft/aci-helloworld` bereitzustellen. Dieses Image verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient.
 
-Geben Sie unter **Konfiguration** eine **DNS-Namensbezeichnung** für Ihren Container an. Der Name muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ihr Container ist öffentlich unter `<dns-name-label>.<region>.azurecontainer.io` erreichbar.
+Geben Sie unter **Konfiguration** eine **DNS-Namensbezeichnung** für Ihren Container an. Der Name muss in der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ihr Container ist öffentlich unter `<dns-name-label>.<region>.azurecontainer.io` erreichbar. Falls die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt wird, sollten Sie eine andere DNS-Namensbezeichnung verwenden.
 
 Übernehmen Sie für die anderen Einstellungen unter **Konfiguration** die Standardwerte, und klicken Sie anschließend zum Überprüfen der Konfiguration auf **OK**.
 

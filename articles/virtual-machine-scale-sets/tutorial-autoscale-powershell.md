@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 83c3db81b2836fca15c8cac1e9665a73a89ba06d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5a87563e54e0d932acefc5bd5808ac49b3cbf30a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005235"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -188,7 +188,7 @@ IpAddress
 52.168.121.216
 ```
 
-Erstellen Sie eine Remoteverbindung mit Ihrer ersten VM-Instanz. Geben Sie Ihre eigene öffentliche IP-Adresse und Portnummer der erforderlichen VM-Instanz an, wie in den vorherigen Befehlen zu sehen. Geben Sie bei entsprechender Aufforderung die Anmeldeinformationen ein, die Sie beim Erstellen der Skalierungsgruppe verwendet haben (in den Beispielbefehlen standardmäßig *azureuser* und *P@ssw0rd!*). Führen Sie diesen Schritt bei Verwendung von Azure Cloud Shell an einer lokalen PowerShell-Eingabeaufforderung oder über einen Remotedesktopclient aus. Im folgenden Beispiel wird eine Verbindung mit der VM-Instanz *0* hergestellt:
+Erstellen Sie eine Remoteverbindung mit Ihrer ersten VM-Instanz. Geben Sie Ihre eigene öffentliche IP-Adresse und Portnummer der erforderlichen VM-Instanz an, wie in den vorherigen Befehlen zu sehen. Geben Sie bei entsprechender Aufforderung die Anmeldeinformationen ein, die Sie beim Erstellen der Skalierungsgruppe verwendet haben (in den Beispielbefehlen standardmäßig *azureuser* und *P\@ssw0rd!*). Führen Sie diesen Schritt bei Verwendung von Azure Cloud Shell an einer lokalen PowerShell-Eingabeaufforderung oder über einen Remotedesktopclient aus. Im folgenden Beispiel wird eine Verbindung mit der VM-Instanz *0* hergestellt:
 
 ```powershell
 mstsc /v 52.168.121.216:50001

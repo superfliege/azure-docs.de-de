@@ -5,15 +5,15 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411389"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226231"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer Point-to-Site-Verbindung per Azure Virtual WAN (Vorschauversion)
 
@@ -38,11 +38,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>Registrieren dieses Features
 
-Klicken Sie auf **Ausprobieren**, um dieses Feature mit Azure Cloud Shell auf einfache Weise zu registrieren. Wenn Sie PowerShell lieber lokal ausführen möchten, stellen Sie sicher, dass Sie die aktuelle Version verwenden, und melden Sie sich mit den Befehlen **Connect-AzureRmAccount** und **Select-AzureRmSubscription** an.
+Klicken Sie auf **Ausprobieren**, um dieses Feature mit Azure Cloud Shell auf einfache Weise zu registrieren. Wenn Sie PowerShell lieber lokal ausführen möchten, stellen Sie sicher, dass Sie die aktuelle Version verwenden, und melden Sie sich mit den Befehlen **Connect-AzAccount** und **Select-AzSubscription** an.
 
 >[!NOTE]
 >Wenn Sie dieses Feature nicht registrieren, können Sie es nicht verwenden, und es wird im Portal auch nicht angezeigt.
@@ -52,25 +54,25 @@ Klicken Sie auf **Ausprobieren**, um dieses Feature mit Azure Cloud Shell auf ei
 Nach dem Klicken auf **Ausprobieren** zum Öffnen von Azure Cloud Shell können Sie die folgenden Befehle kopieren und einfügen:
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
  
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
-Registrieren Sie das Abonnement unter dem Microsoft.Network-Namespace neu, nachdem das Feature als registriert angezeigt wird.
+Registrieren Sie das Abonnement unter dem Microsoft.Network-Namespace, nachdem das Feature als registriert angezeigt wird.
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="vnet"></a>1. Erstellen eines virtuellen Netzwerks
@@ -101,13 +103,13 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 4. Klicken Sie oben auf der Seite auf **+ Point-to-Site-Konfiguration hinzufügen**, um die Seite **Neue Point-to-Site-Konfiguration erstellen** zu öffnen.
 5. Füllen Sie auf der Seite **Neue Point-to-Site-Konfiguration erstellen** die folgenden Felder aus:
 
-  *  **Konfigurationsname**: Dies ist der Name, unter dem Sie auf Ihre Konfiguration verweisen möchten.
-  *  **Tunneltyp**: Das Protokoll, das für den Tunnel verwendet wird.
-  *  **Adresspool**: Dies ist der IP-Adressenpool, aus dem Clients IDs zugewiesen werden.
-  *  **Name des Stammzertifikats**: Ein beschreibender Name für das Zertifikat.
-  *  **Root Certificate Data** (Daten des Stammzertifikats): X.509-Zertifikatdaten mit Base64-Codierung.
+   *  **Konfigurationsname**: Dies ist der Name, unter dem Sie auf Ihre Konfiguration verweisen möchten.
+   *  **Tunneltyp**: Das Protokoll, das für den Tunnel verwendet wird.
+   *  **Adresspool**: Dies ist der IP-Adressenpool, aus dem Clients IDs zugewiesen werden.
+   *  **Name des Stammzertifikats**: Ein beschreibender Name für das Zertifikat.
+   *  **Root Certificate Data** (Daten des Stammzertifikats): X.509-Zertifikatdaten mit Base64-Codierung.
 
-5. Klicken Sie auf **Erstellen**, um die Konfiguration zu erstellen.
+6. Klicken Sie auf **Erstellen**, um die Konfiguration zu erstellen.
 
 ## <a name="hub"></a>5. Bearbeiten der Hub-Zuweisung
 
@@ -115,15 +117,16 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 2. Wählen Sie den Hub aus, dem Sie die Point-to-Site-Konfiguration zuweisen möchten.
 3. Klicken Sie auf **„...“**, und wählen Sie **Virtuellen Hub bearbeiten**.
 4. Aktivieren Sie **Point-to-Site-Gateway einschließen**.
-5. Wählen Sie **Gatewayskalierungseinheiten** und die **Point-to-Site-Konfiguration** sowie einen **Adresspool** für die Clients aus.
-6. Klicken Sie auf **Confirm** (Bestätigen). 
-7. Dieser Vorgang kann bis zu 30 Minuten dauern.
+5. Wählen Sie die **Gatewayskalierungseinheiten** in der Dropdownliste aus.
+6. Wählen Sie die erstellte **Punkt-zu-Standort-Konfiguration** in der Dropdownliste aus.
+7. Konfigurieren Sie den **Adresspool** für die Clients.
+8. Klicken Sie auf **Confirm** (Bestätigen). Dieser Vorgang kann bis zu 30 Minuten dauern.
 
 ## <a name="vnet"></a>6. Verbinden Ihres VNET mit einem Hub
 
 In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und einem VNET. Wiederholen Sie diese Schritte für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
 
-1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Virtual network connection** (VNET-Verbindung).
+1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Virtuelle Netzwerkverbindungen**.
 2. Klicken Sie auf der Seite für die VNET-Verbindung auf **+Add connection** (+Verbindung hinzufügen).
 3. Füllen Sie auf der Seite **Add connection** (Verbindung hinzufügen) die folgenden Felder aus:
 
@@ -131,6 +134,7 @@ In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und ein
     * **Hubs**: Wählen Sie den Hub aus, den Sie dieser Verbindung zuordnen möchten.
     * **Abonnement**: Überprüfen Sie das Abonnement.
     * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, das Sie mit diesem Hub verbinden möchten. Für das virtuelle Netzwerk kann nicht bereits ein Gateway für virtuelle Netzwerke vorhanden sein.
+4. Klicken Sie zum Hinzufügen der Verbindung auf **OK**.
 
 ## <a name="device"></a>7. Herunterladen des VPN-Profils
 
@@ -149,7 +153,7 @@ Verwenden Sie das heruntergeladene Profil, um die Clients für den Remotezugriff
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Laden Sie den OpenVPN-Client von der offiziellen Website herunter, und installieren Sie ihn.
-2.  Laden Sie das VPN-Profil für das Gateway herunter. Dies kann auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder über „New-AzureRmVpnClientConfiguration“ in PowerShell erfolgen.
+2.  Laden Sie das VPN-Profil für das Gateway herunter. Dies kann auf der Registerkarte „Punkt-zu-Standort-Konfiguration“ im Azure-Portal oder über „New-AzVpnClientConfiguration“ in PowerShell erfolgen.
 3.  Entzippen Sie das Profil. Öffnen Sie dann im Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
 4.  Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den Base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Hier erfahren Sie, wie Sie ein Zertifikat exportieren, um den codierten öffentlichen Schlüssel zu erhalten.
 5.  Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Hier ist angegeben, wie Sie den privaten Schlüssel extrahieren.
@@ -168,7 +172,7 @@ Verwenden Sie das heruntergeladene Profil, um die Clients für den Remotezugriff
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Laden Sie einen OpenVPN-Client herunter, z.B. Tunnelblick von https://tunnelblick.net/downloads.html, und installieren Sie ihn. 
-2.  Laden Sie das VPN-Profil für das Gateway herunter. Dies kann auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder über „New-AzureRmVpnClientConfiguration“ in PowerShell erfolgen.
+2.  Laden Sie das VPN-Profil für das Gateway herunter. Dies kann auf der Registerkarte „Punkt-zu-Standort-Konfiguration“ im Azure-Portal oder über New-AzVpnClientConfiguration in PowerShell erfolgen.
 3.  Entzippen Sie das Profil. Öffnen Sie dann im Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
 4.  Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den Base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Hier erfahren Sie, wie Sie ein Zertifikat exportieren, um den codierten öffentlichen Schlüssel zu erhalten.
 5.  Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Hier ist angegeben, wie Sie den privaten Schlüssel extrahieren.
@@ -201,10 +205,10 @@ Erstellen Sie eine Verbindung, um die Kommunikation zwischen einer Azure-VM und 
 
 ## <a name="cleanup"></a>12. Bereinigen von Ressourcen
 
-Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
+Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
