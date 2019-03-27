@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 566523b1ca461d6a8a0ffaf8830481e5dc3ce26f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: ffd5f4baf3bbd2b7f0fe90272f896e438a30a35f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770366"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079229"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>Schnellstart: SSH/RDP über IoT Hub-Gerätestreams unter Verwendung von C#-Proxyanwendungen (Vorschauversion)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT Hub unterstützt derzeit Gerätestreams als [Previewfunktion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Über [IoT Hub-Gerätestreams](./iot-hub-device-streams-overview.md) können Dienst- und Geräteanwendungen sicher und firewallfreundlich kommunizieren. In dieser Schnellstartanleitung werden zwei C#-Programme verwendet, die es ermöglichen, Anwendungsdatenverkehr von Clients/Servern (etwa SSH und RDP) über einen per IoT Hub eingerichteten Gerätestream zu senden. Eine entsprechende Übersicht finden Sie [hier](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
@@ -48,6 +50,11 @@ Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyprogramme 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Die Vorschau der Gerätestreams wird derzeit nur für IoT Hubs unterstützt, die in folgenden Regionen erstellt werden:
+
+  - **USA (Mitte)**
+  - **USA, Mitte (EUAP)**
 
 Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in C# geschrieben. Sie benötigen auf Ihrem Entwicklungscomputer das .NET Core SDK 2.1.0 oder höher.
 
@@ -100,7 +107,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     Notieren Sie sich den zurückgegebenen Wert, der in etwa wie folgt aussieht:
