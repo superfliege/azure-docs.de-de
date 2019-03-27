@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 898fb12c4e38804cca71be6ef08b078f92633e32
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240152"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769371"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Überprüfen von Azure Stack-PKI-Zertifikaten
 
@@ -75,7 +75,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
     ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     
     $destination = 'c:\certificates'
     
@@ -83,7 +83,11 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
     ```
     
     > [!Note]  
-    > Wenn Sie AD FS als Identitätssystem verwenden, sind AD FS und Graph erforderlich.
+    > Wenn Sie AD FS als Identitätssystem verwenden, sind AD FS und Graph erforderlich. Beispiel: 
+    >
+    > ```PowerShell  
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
+    > ```
     
      - Platzieren Sie Ihre Zertifikate in den entsprechenden Verzeichnissen aus dem vorherigen Schritt. Beispiel:   
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
@@ -250,17 +254,17 @@ Gehen Sie folgendermaßen vor, um die Azure Stack-PKI-Zertifikate für Platform-
 
 | Verzeichnis | Zertifikat |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\< region>\< externalFQDN> |
-| ACSQueue  |  wildcard_queue\< region>\< externalFQDN> |
-| ACSTable  |  wildcard_table\< region>\< externalFQDN> |
-| Administratorerweiterungshost  |  wildcard_adminhosting\< region>\< externalFQDN> |
-| Verwaltungsportal  |  adminportal\< region>\< externalFQDN> |
-| ARM Admin  |  adminmanagement\< region>\< externalFQDN> |
-| ARM Public  |  management\< region>\< externalFQDN> |
-| KeyVault  |  wildcard_vault\< region>\< externalFQDN> |
-| KeyVaultInternal  |  wildcard_adminvault\< region>\< externalFQDN> |
-| Öffentlicher Erweiterungshost  |  wildcard_hosting\< region>\< externalFQDN> |
-| Öffentliches Portal  |  portal\< region>_\< externalFQDN> |
+| acsBlob | wildcard_blob_\<Region>_\<externer FQDN> |
+| ACSQueue  |  wildcard_queue_\<Region>_\<externer FQDN> |
+| ACSTable  |  wildcard_table_\<Region>_\<externer FQDN> |
+| Administratorerweiterungshost  |  wildcard_adminhosting_\<Region>_\<externer FQDN> |
+| Verwaltungsportal  |  adminportal_\<Region>_\<externer FQDN> |
+| ARM Admin  |  adminmanagement_\<Region>_\<externer FQDN> |
+| ARM Public  |  management_\<Region>_\<externer FQDN> |
+| KeyVault  |  wildcard_vault_\<Region>_\<externer FQDN> |
+| KeyVaultInternal  |  wildcard_adminvault_\<Region>_\<externer FQDN> |
+| Öffentlicher Erweiterungshost  |  wildcard_hosting_\<Region>_\<externer FQDN> |
+| Öffentliches Portal  |  portal_\<Region>_\<externer FQDN> |
 
 ## <a name="using-validated-certificates"></a>Verwenden überprüfter Zertifikate
 

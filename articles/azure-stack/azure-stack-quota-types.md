@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7872ed2c9d6f094907ae4d11adef6bc7a99be8e4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877944"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782886"
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -44,7 +44,7 @@ ms.locfileid: "56877944"
 
 | **Element** | **Standardwert** | **Beschreibung** |
 | --- | --- | --- |
-| Maximale Kapazität (GB) |2048 |Die Gesamtspeicherkapazität, die von einem Abonnement an diesem Speicherort genutzt werden kann |
+| Maximale Kapazität (GB) |2048 |Die Gesamtspeicherkapazität (einschließlich Blobs und aller dazugehörigen Momentaufnahmen, Tabellen und Warteschlangen), die von einem Abonnement an diesem Speicherort genutzt werden kann. |
 | Gesamte Anzahl von Speicherkonten |20 |Die maximale Anzahl von Speicherkonten, die ein Abonnement an diesem Speicherort erstellen kann |
 
 > [!NOTE]  

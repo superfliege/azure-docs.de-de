@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure Stack-Speicherkonten | Microsoft-Dokumentation
-description: Informationen zum Suchen, Verwalten, Wiederherstellen und Freigeben von Azure Stack-Speicherkonten
+description: Informationen zum Suchen, Verwalten, Wiederherstellen und Freigeben von Azure Stack-Speicherkonten
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,30 +10,31 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
-ms.date: 01/18/2019
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895058"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226398"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
+# <a name="manage-azure-stack-storage-accounts"></a>Verwalten von Azure Stack-Speicherkonten
 
-Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
+Hier erfahren Sie, wie Sie Azure Stack-Speicherkonten verwalten. Sie können Speicherkonten suchen und wiederherstellen sowie Speicherkapazität abhängig von Ihren geschäftlichen Anforderungen freigeben.
 
 ## <a name="find-a-storage-account"></a>Suchen eines Speicherkontos
+
 Die Liste der Speicherkonten in der Region kann in Azure Stack folgendermaßen angezeigt werden:
 
 1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
 
-2. Wählen Sie **Alle Dienste** > **Speicherkonten**.
+2. Wählen Sie **Alle Dienste** > **Speicher** > **Speicherkonten** aus.
 
-   ![](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Azure Stack-Speicherkonten](media/azure-stack-manage-storage-accounts/image4.png)
 
 Standardmäßig werden die ersten 10 Konten angezeigt. Sie können weitere abrufen, indem Sie unten auf der Seite auf den Link **Weitere laden** klicken.
 
@@ -45,17 +46,18 @@ Wenn Sie an einem bestimmten Speicherkonto interessiert sind, können Sie nur **
 **So filtern Sie Konten:**
 
 1. Klicken Sie oben im Bereich auf **Filter**.
-2. Im Bereich „Filter“ können Sie einen **Kontonamen**, eine \*\*„Abonnement-ID“ oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
-3. Wählen Sie **Update** aus. Die Liste sollte entsprechend aktualisiert werden.
+2. Im Filterbereich können Sie Werte für **Kontoname**, **Abonnement-ID** oder **Status** angeben, um die angezeigte Speicherkontoliste einzugrenzen. Nutzen Sie die Optionen je nach Bedarf.
+3. Der Filter wird automatisch auf die Liste angewendet, während Sie tippen.  .
    
-    ![](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Filtern von Azure Stack-Speicherkonten](media/azure-stack-manage-storage-accounts/image5.png)
+
 4. Klicken Sie zum Zurücksetzen des Filters auf **Filter**, deaktivieren Sie die getroffene Auswahl, und aktualisieren Sie die Liste.
 
 Mit dem Suchfeld (oben im Bereich mit der Speicherkontenliste) können Sie den ausgewählten Text in der Liste mit den Konten hervorheben. Sie können diese Funktion nutzen, wenn der vollständige Name oder die ID nicht ohne Weiteres verfügbar ist.
 
 Hier können Sie Freitext verwenden, um das gewünschte Konto zu finden.
 
-![](media/azure-stack-manage-storage-accounts/image6.png)
+![Suchen nach Azure Stack-Speicherkonten](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Überprüfen der Kontodetails
 Wenn Sie die gewünschten Konten gefunden haben, können Sie auf ein Konto klicken, um bestimmte Details anzuzeigen. Ein neuer Bereich mit Kontodetails wird geöffnet, darunter der Typ des Kontos, die Erstellungszeit, der Standort usw.
@@ -97,9 +99,8 @@ Die Einstellung für den Aufbewahrungszeitraum ermöglicht einem Cloudbetreiber 
 
 1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
 2. Wählen Sie **Alle Dienste** > **Regionsverwaltung** unter **Verwaltung** aus.
-3. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
-4. Klicken Sie oben auf **Einstellungen**, um den Bereich mit den Einstellungen zu öffnen.
-5. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
+3. Wählen Sie **Ressourcenanbieter** > **Speicher** > **Einstellungen** aus. Der Pfad lautet: „Startseite“ > „*Region* – Ressourcenanbieter“ > „Speicher“.
+4. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
 
    Legen Sie die Anzahl von Tagen fest, und speichern Sie sie.
    

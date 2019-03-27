@@ -1,26 +1,26 @@
 ---
 title: Vorbereiten auf den Erweiterungshost für Azure Stack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Vorbereitungen für den Erweiterungshost treffen, der automatisch über ein zukünftiges Azure Stack-Updatepaket aktiviert wird.
+description: Hier erfahren Sie, wie Sie Vorbereitungen für den Erweiterungshost treffen, der über ein zukünftiges Azure Stack-Updatepaket automatisch aktiviert wird.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 02/07/2019
+ms.date: 03/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: b0d3b3e4901fbcece13c201938be8bccb1bb9c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962365"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731921"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Vorbereiten auf den Erweiterungshost für Azure Stack
 
-Der Erweiterungshost sichert Azure Stack, indem die Anzahl der erforderlichen TCP/IP-Ports verringert wird. In diesem Artikel wird das Vorbereiten von Azure Stack für den Erweiterungshost, der über ein Azure Stack-Updatepaket nach dem Update 1808 automatisch aktiviert wird, beschrieben. Dieser Artikel gilt für die Updates 1808, 1809 und 1811 von Azure Stack.
+Der Erweiterungshost sichert Azure Stack, indem die Anzahl der erforderlichen TCP/IP-Ports verringert wird. In diesem Artikel erfahren Sie, wie Sie Azure Stack für den Erweiterungshost vorbereiten, der nach dem Update 1808 automatisch über ein Azure Stack-Updatepaket aktiviert wird. Dieser Artikel gilt für die Updates 1808, 1809 und 1811 von Azure Stack.
 
 ## <a name="certificate-requirements"></a>Zertifikatanforderungen
 
@@ -66,15 +66,14 @@ Das Tool Azure Stack Readiness Checker bietet die Möglichkeit, eine Zertifikats
     > [!Note]  
     > Wenn Sie die Bereitstellung mit Azure Active Directory-Verbunddiensten (AD FS) durchführen, müssen dem Skript unter **$directories** die folgenden Verzeichnisse hinzugefügt werden: `ADFS`, `Graph`.
 
-4. Führen Sie die folgenden Cmdlets aus, um die Überprüfung der Zertifikate zu starten:
+4. Platzieren Sie die Zertifikate, die Sie derzeit in Azure Stack verwenden, in den entsprechenden Verzeichnissen. Legen Sie also beispielsweise das **ARM-Administratorzertifikat** im Ordner `Arm Admin` ab. Platzieren Sie anschließend die neu erstellten Hostingzertifikate in den Verzeichnissen `Admin extension host` und `Public extension host`.
+5. Führen Sie das folgende Cmdlet aus, um die Überprüfung der Zertifikate zu starten:
 
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
-
-5. Platzieren Sie Ihre Zertifikate in den entsprechenden Verzeichnissen.
 
 6. Überprüfen Sie die Ausgabe und ob alle Tests für alle Zertifikate erfolgreich waren.
 
@@ -141,7 +140,7 @@ Im Artikel [Integration des Azure Stack-Datencenters – Veröffentlichen von En
 
 ### <a name="publish-new-endpoints"></a>Veröffentlichen neuer Endpunkte
 
-Es gibt zwei neue Endpunkte, die über die Firewall hinweg veröffentlicht werden müssen. Die zugeordneten IPs aus dem öffentlichen VIP-Pool können mit dem folgenden Code abgerufen werden. Dieser muss über den [privilegierten Endpunkt](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) Ihrer Azure Stack-Umgebung ausgeführt werden.
+Es gibt zwei neue Endpunkte, die über die Firewall hinweg veröffentlicht werden müssen. Die zugeordneten IP-Adressen aus dem öffentlichen VIP-Pool können mit dem folgenden Code abgerufen werden. Dieser muss über den [privilegierten Endpunkt](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) Ihrer Azure Stack-Umgebung ausgeführt werden.
 
 ```PowerShell
 # Create a PEP Session

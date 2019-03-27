@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: 9f835382cbfe56c1601267ae994a94b56c0c3692
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429552"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727041"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Häufig gestellte Fragen zur Azure Stack-Nutzungs-API
 
@@ -197,15 +197,15 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Einheit:** GB\*Monat      
 **Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“ 
 
-**ID der Verbrauchseinheit**: 75d4b707-1027-4403-9986-6ec7c05579c8  
+**ID der Verbrauchseinheit**: 108fa95b-be0d-4cd9-96e8-5b0d59505df1  
 **Name der Verbrauchseinheit**: ActualStandardSnapshotSize   
 **Einheit:** GB\*Monat   
 **Hinweise**: Die tatsächliche Größe auf dem Datenträger der verwalteten Standardmomentaufnahme.  
 
-**ID der Verbrauchseinheit**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**ID der Verbrauchseinheit**: 578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
 **Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
 **Einheit:** GB\*Monat   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“   
+**Hinweise**: Die tatsächliche Größe der Momentaufnahme des verwalteten Premium-Datenträgers auf dem Datenträger.   
 
 **ID der Verbrauchseinheit**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Name der Verbrauchseinheit**: S4   
@@ -285,7 +285,11 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **ID der Verbrauchseinheit**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
 **Einheit:** Byte\*Stunden   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“ (veraltet) 
+**Hinweise**: Die tatsächliche Größe der Momentaufnahme des verwalteten Premium-Datenträgers auf dem Datenträger (veraltet) 
+
+**ID der Verbrauchseinheit**: 75d4b707-1027-4403-9986-6ec7c05579c8 **Name der Verbrauchseinheit**: ActualStandardSnapshotSize **Einheit**: GB\*Monat **Hinweise**: Die tatsächliche Größe auf dem Datenträger der verwalteten Standardmomentaufnahme (veraltet)  
+
+**ID der Verbrauchseinheit**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e **Name der Verbrauchseinheit**: ActualPremiumSnapshotSize **Einheit**: GB\*Monat **Hinweise**: Die tatsächliche Größe der Momentaufnahme des verwalteten Premium-Datenträgers auf dem Datenträger (veraltet)  
 
 ### <a name="sql-rp"></a>Sql RP
   
@@ -407,6 +411,10 @@ Aktuell können Sie nur nach *gemeldeter Zeit* abfragen.
 | 400/Bad Request |*SubscriptionIdMissingInRequest* |Die Abonnement-ID des Aufrufers fehlt. |
 | 400/Bad Request |*InvalidAggregationGranularity* |Es wurde eine unzulässige Aggregationsgranularität angefordert. Zulässige Werte sind täglich und stündlich. |
 | 503 |*ServiceUnavailable* |Ein wiederholbarer Fehler ist aufgetreten, da der Dienst ausgelastet ist oder der Aufruf gedrosselt wird. |
+
+## <a name="what-is-the-policy-for-charging-for-vms"></a>Welche Gebührenrichtlinie gilt für virtuelle Computer?
+
+Aktive und beendete virtuelle Computer generieren Nutzungsdaten. Um die Generierung von Nutzungsdaten zu beenden, ist genau wie bei Azure eine Aufhebung der Zuordnung erforderlich. Sollte das Portal nicht verfügbar sein und der Computeressourcenanbieter weiterhin ausgeführt werden, werden weiter Nutzungsdaten ausgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Kundenabrechnung und verbrauchsbasierte Kostenzuteilung in Azure Stack](azure-stack-billing-and-chargeback.md)

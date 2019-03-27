@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893680"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258750"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Verwalten von Key Vault in Azure Stack mithilfe von PowerShell
 
@@ -33,7 +33,7 @@ Sie können Key Vault in Azure Stack mithilfe von PowerShell verwalten. Erfahren
 * Autorisieren von Benutzern bzw. Anwendungen zum Aufrufen von Vorgängen im Tresor.
 
 >[!NOTE]
->Die in diesem Artikel beschriebenen Key Vault-PowerShell-Cmdlets stehen im Azure PowerShell SDK zur Verfügung.
+>Die in diesem Artikel beschriebenen Key Vault-PowerShell-Cmdlets stehen im Azure PowerShell SDK zur Verfügung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -92,7 +92,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 ![Neuer Schlüsseltresor](media/azure-stack-key-vault-manage-powershell/image4.png)
 
-Die Ausgabe dieses Befehls zeigt die Eigenschaften des von Ihnen erstellten Schlüsseltresors. Wenn eine Anwendung auf diesen Tresor zugreift, muss sie dazu die Eigenschaft **Vault URI** verwenden, in diesem Beispiel „https://vault01.vault.local.azurestack.external“.
+Die Ausgabe dieses Befehls zeigt die Eigenschaften des von Ihnen erstellten Schlüsseltresors. Wenn eine Anwendung auf diesen Tresor zugreift, muss sie dazu die Eigenschaft **Tresor-URI** verwenden (in diesem Beispiel: https:\//vault01.vault.local.azurestack.external).
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Bereitstellung von Active Directory-Verbunddienste (AD FS)
 
@@ -127,8 +127,8 @@ Mit dem Parameter **Destination** wird angegeben, dass es sich um einen software
 
 Sie können nun mithilfe des dazugehörigen URIs auf den erstellten Schlüssel verweisen. Wenn Sie einen Schlüssel mit einem Namen erstellen oder importieren, der dem Namen eines bereits vorhandenen Schlüssels entspricht, wird der ursprüngliche Schlüssel mit den Werten des neuen Schlüssels aktualisiert. Über den versionsspezifischen URI des Schlüssels können Sie auf die vorherige Version des Schlüssels zugreifen. Beispiel: 
 
-* Mit https://vault10.vault.local.azurestack.external:443/keys/key01 können Sie immer die aktuelle Version abrufen.
-* Mit https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a rufen Sie diese spezifische Version ab.
+* Mit „https:\//vault10.vault.local.azurestack.external:443/keys/key01“ erhalten Sie immer die aktuelle Version.
+* Mit „https:\//vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a“ erhalten Sie diese spezifische Version.
 
 ### <a name="get-a-key"></a>Abrufen eines Schlüssels
 

@@ -102,7 +102,7 @@ items:
         href: search-dotnet-mgmt-sdk-migration.md
     - name: Upgraden der REST-API
       href: search-api-migration.md
-  - name: Entwerfen von Indizes
+  - name: Erstellen von Indizes
     items:
     - name: Erstellen eines einfachen Index
       href: search-what-is-an-index.md
@@ -120,9 +120,7 @@ items:
       items:
       - name: Erstellen einer Vorschlagsfunktion
         href: index-add-suggesters.md
-      - name: Beispiel für die Vorschlagssuche
-        href: search-autosuggest-example.md
-      - name: Beispiel für AutoVervollständigen
+      - name: Beispiele (Vorschläge, AutoVervollständigen)
         href: search-autocomplete-tutorial.md
     - name: Synonyme
       items:
@@ -172,7 +170,7 @@ items:
         href: search-indexer-field-mappings.md
       - name: Behandeln allgemeiner Probleme
         href: search-indexer-troubleshooting.md
-  - name: Um KI erweiterte Indizierung (Kognitive Suche)
+  - name: AI-Indizierung (Kognitive Suche)
     items:
     - name: Anfügen einer Cognitive Services-Ressource
       href: cognitive-search-attach-cognitive-services.md
@@ -202,9 +200,9 @@ items:
       href: query-simple-syntax.md
     - name: Vollständige Lucene-Abfragesyntax
       href: query-lucene-syntax.md
-    - name: Beispiele für Abfragen (einfache Syntax)
+    - name: Beispiele (einfache Syntax)
       href: search-query-simple-examples.md
-    - name: Beispiele für Abfragen (vollständige Lucene-Syntax)
+    - name: Beispiele (vollständige Lucene-Syntax)
       href: search-query-lucene-examples.md
   - name: Verarbeiten von Ergebnissen
     items:
@@ -309,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: a126d909d90e70324a0f6038ddd89e4a619d0721
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 74d4c29b7a4c70116531ef242929571eee3e4d90
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437746"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500492"

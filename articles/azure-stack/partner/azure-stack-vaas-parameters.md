@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/19/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59adaed427eb0d791e18438826aff4f6477e831a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f66f57799e1e6b6d0e27624e3dc08b4de5d09cac
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247271"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766198"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack
 
@@ -42,6 +42,7 @@ Umgebungsparameter beschreiben die Azure Stack-Umgebung, die getestet wird. Dies
 
 1. Melden Sie sich bei der DVM oder einem anderen Computer mit Zugriff auf die Azure Stack-Umgebung an.
 2. Führen Sie die folgenden Befehle in einem PowerShell-Fenster mit erhöhten Rechten aus:
+
     ```PowerShell  
     $CloudAdminUser = "<cloud admin username>"
     $CloudAdminPassword = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
@@ -62,7 +63,7 @@ Parameter    | BESCHREIBUNG
 -------------|-----------------
 Mandantenadministratorbenutzer                            | Azure Active Directory-Mandantenadministrator, der vom Dienstadministrator im AAD-Verzeichnis bereitgestellt wurde. Dieser Benutzer führt auf Mandantenebene Aktionen wie das Bereitstellen von Vorlagen zum Einrichten von Ressourcen (VMs, Speicherkonten usw.) und Ausführen von Workloads aus. Weitere Informationen zum Bereitstellen von Mandantenkonten finden Sie unter [Hinzufügen eines neuen Azure Stack-Mandanten](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-new-user-aad).
 Dienstadministratorbenutzer             | Der Azure Active Directory-Administrator des Mandanten des AAD-Verzeichnisses, der während der Azure Stack-Bereitstellung angegeben wird. Suchen Sie in der ECE-Konfigurationsdatei nach `AADTenant`, und wählen Sie den Wert im `UniqueName`-Element aus.
-Cloudadministratorbenutzer               | Azure Stack-Domänenadministratorkonto (z.B. `contoso\cloudadmin`). Suchen Sie in der ECE-Konfigurationsdatei nach `User Role="CloudAdmin"`, und wählen Sie den Wert im `UserName`-Element aus.
+Cloudadministratorbenutzer               | Azure Stack-Domänenadministratorkonto (beispielsweise `contoso\cloudadmin`). Suchen Sie in der ECE-Konfigurationsdatei nach `User Role="CloudAdmin"`, und wählen Sie den Wert im `UserName`-Element aus.
 Diagnoseverbindungszeichenfolge          | Eine SAS-URL zu einem Azure Storage-Konto, in das während der Testausführung Diagnoseprotokolle kopiert werden. Anweisungen zum Generieren der SAS-URL finden Sie unter [Generieren der Diagnose-Verbindungszeichenfolge](#generate-the-diagnostics-connection-string). |
 
 > [!IMPORTANT]

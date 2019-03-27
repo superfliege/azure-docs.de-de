@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 759ea6b8e4981b3ea198077cabf9df7966d6e883
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 3/19/2018
+ms.openlocfilehash: de57ebbf0c0c4e8a18c955200d1692ea4ae9afae
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242959"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295010"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Schutz von in Azure Stack bereitgestellten virtuellen Computern
 
 Verwenden Sie diesen Artikel als Leitfaden für die Entwicklung eines Plans zum Schützen von virtuellen Computern (VMs), die Ihre Benutzer unter Azure Stack bereitstellen.
 
-Zum Schutz vor Datenverlusten und ungeplanten Ausfallzeiten müssen Sie einen Sicherungs- oder Notfallwiederherstellungsplan für Benutzeranwendungen und die dazugehörigen Daten implementieren. Dieser Plan ist ggf. für jede Anwendung eindeutig, folgt aber einem Framework, der im Zuge einer weitreichenden Geschäftskontinuitäts- und Notfallwiederherstellungsstrategie Ihrer Organisation entwickelt wurde. Eine guter Einstieg ist der Artikel [Entwerfen robuster Anwendungen für Azure](https://docs.microsoft.com/azure/architecture/resiliency), der allgemeine Muster und Methoden in Bezug auf die Anwendungsverfügbarkeit und -resilienz enthält.
-
->[!IMPORTANT]
-> Testen Sie Ihre Pläne für die Sicherungs- und Notfallwiederherstellung regelmäßig. Hiermit soll Folgendes sichergestellt werden:
-> * Eignung der Pläne
-> * Unveränderte Erfüllung der ursprünglichen Ziele der Pläne
+Zum Schutz vor Datenverlusten und ungeplanten Ausfallzeiten müssen Sie einen Sicherungs- oder Notfallwiederherstellungsplan für Benutzeranwendungen und die dazugehörigen Daten implementieren. Dieser Plan ist ggf. für jede Anwendung eindeutig, folgt aber einem Framework, der im Zuge einer weitreichenden Geschäftskontinuitäts- und Notfallwiederherstellungsstrategie Ihrer Organisation entwickelt wurde. Ein guter Ausgangspunkt ist [Azure Stack: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp) (Azure Stack: Überlegungen zu Business Continuity & Disaster Recovery).
 
 ## <a name="azure-stack-infrastructure-recovery"></a>Wiederherstellung der Azure Stack-Infrastruktur
 
@@ -47,6 +42,9 @@ Wenn die Azure Stack-Cloud längere Zeit offline oder dauerhaft nicht wiederhers
 * Weiterführung der Bearbeitung von Benutzeranforderungen durch Anwendungen
 
 Der Betreiber der Azure Stack-Cloud ist für die Erstellung eines Wiederherstellungsplans für die zugrunde liegende Azure Stack-Infrastruktur und die Dienste zuständig. Weitere Informationen finden Sie im Artikel [Wiederherstellen nach schwerwiegendem Datenverlust](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+
+## <a name="considerations-for-iaas-vms"></a>Überlegungen zu virtuellen IaaS-Computern
+Das auf dem virtuellen IaaS-Computer installierte Betriebssystem hat Auswirkungen darauf, welche Produkte Sie zum Schutz der enthaltenen Daten verwenden können. Bei Windows-basierten IaaS-VMs können Sie Produkte von Microsoft sowie Partnerprodukte verwenden, um Daten zu schützen. Für Linux-basierte IaaS-Computer stehen dagegen nur Partnerprodukte zur Verfügung. [Dieses Datenblatt](https://aka.ms/azurestackbcdrpartners) enthält alle Business Continuity & Disaster Recovery-Partner mit geprüften Produkten für Azure Stack.
 
 ## <a name="sourcetarget-combinations"></a>Quelle/Ziel-Kombinationen
 

@@ -16,12 +16,12 @@ ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 09/28/2018
-ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: eef9e45d71dd5a8c29112f74deaf8342dc0d1406
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246363"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101498"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Java in Azure Stack
 
@@ -62,11 +62,11 @@ Hinweis: Sie können alle Optionen in derselben Anwendung kombinieren.
 
 Führen Sie die folgenden Schritte aus, um das Java-SDK zu installieren:
 
-1.  Befolgen Sie die offizielle Anleitung zur Installation von Git. Anweisungen hierzu finden Sie unter [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Erste Schritte: Installieren von Git).
+1. Befolgen Sie die offizielle Anleitung zur Installation von Git. Anweisungen hierzu finden Sie unter [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Erste Schritte: Installieren von Git).
 
-2.  Befolgen Sie die offizielle Anleitung zur Installation des [Java SDK](http://zulu.org/download/) und von [Maven](https://maven.apache.org/). Die richtige Version ist Version 8 des Java Developer Kit. Die richtige Apache Maven ist Version 3.0 oder höher. Damit Sie den Schnellstart durchführen können, muss die Umgebungsvariable „JAVA_HOME“ auf den Installationsspeicherort des Java Development Kit festgelegt sein. Weitere Informationen finden Sie unter [Erstellen der ersten Funktion mit Java und Maven](../../azure-functions/functions-create-first-java-maven.md).
+2. Befolgen Sie die offizielle Anleitung zur Installation des [Java SDK](https://zulu.org/download/) und von [Maven](https://maven.apache.org/). Die richtige Version ist Version 8 des Java Developer Kit. Die richtige Apache Maven ist Version 3.0 oder höher. Damit Sie den Schnellstart durchführen können, muss die Umgebungsvariable „JAVA_HOME“ auf den Installationsspeicherort des Java Development Kit festgelegt sein. Weitere Informationen finden Sie unter [Erstellen der ersten Funktion mit Java und Maven](../../azure-functions/functions-create-first-java-maven.md).
 
-3.  Zum Installieren der richtigen Abhängigkeitspakete öffnen Sie die Datei „Pom.xml“ in Ihrer Java-Anwendung. Fügen Sie eine Abhängigkeit wie im folgenden Code gezeigt hinzu:
+3. Zum Installieren der richtigen Abhängigkeitspakete öffnen Sie die Datei „Pom.xml“ in Ihrer Java-Anwendung. Fügen Sie eine Abhängigkeit wie im folgenden Code gezeigt hinzu:
 
    ```xml  
    <dependency>
@@ -76,17 +76,17 @@ Führen Sie die folgenden Schritte aus, um das Java-SDK zu installieren:
    </dependency>
    ```
 
-4.  Welche Pakete installiert werden müssen, hängt von der Profilversion ab, die Sie verwenden möchten. Die Paketnamen für die Profilversionen sind:
+4. Welche Pakete installiert werden müssen, hängt von der Profilversion ab, die Sie verwenden möchten. Die Paketnamen für die Profilversionen sind:
     
    - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**
    - **com.microsoft.azure**
-      - **Neueste**
+     - **Neueste**
 
-5.  Erstellen Sie ein Abonnement, wenn keins verfügbar ist, und speichern Sie die Abonnement-ID zur späteren Verwendung. Eine Anleitung zum Erstellen eines Abonnements finden Sie unter [Erstellen von Abonnements für Angebote in Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
+5. Erstellen Sie ein Abonnement, wenn keins verfügbar ist, und speichern Sie die Abonnement-ID zur späteren Verwendung. Eine Anleitung zum Erstellen eines Abonnements finden Sie unter [Erstellen von Abonnements für Angebote in Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
 
-6.  Erstellen Sie einen Dienstprinzipals ein, und speichern Sie die Client-ID und den geheimen Clientschlüssel. Eine Anleitung zum Erstellen eines Dienstprinzipals für Azure Stack finden Sie unter [Bereitstellen des Anwendungszugriffs auf Azure Stack](../azure-stack-create-service-principals.md). Hinweis: Die Client-ID wird beim Erstellen eines Dienstprinzipals auch als „Anwendungs-ID“ bezeichnet.
+6. Erstellen Sie einen Dienstprinzipals ein, und speichern Sie die Client-ID und den geheimen Clientschlüssel. Eine Anleitung zum Erstellen eines Dienstprinzipals für Azure Stack finden Sie unter [Bereitstellen des Anwendungszugriffs auf Azure Stack](../azure-stack-create-service-principals.md). Hinweis: Die Client-ID wird beim Erstellen eines Dienstprinzipals auch als „Anwendungs-ID“ bezeichnet.
 
-7.  Stellen Sie sicher, dass Ihr Dienstprinzipal über die Rolle „Mitwirkender“ bzw. „Besitzer“ für Ihr Abonnement verfügt. Eine Anleitung zum Zuweisen einer Rolle zum Dienstprinzipal finden Sie unter [Bereitstellen des Anwendungszugriffs auf Azure Stack](../azure-stack-create-service-principals.md).
+7. Stellen Sie sicher, dass Ihr Dienstprinzipal über die Rolle „Mitwirkender“ bzw. „Besitzer“ für Ihr Abonnement verfügt. Eine Anleitung zum Zuweisen einer Rolle zum Dienstprinzipal finden Sie unter [Bereitstellen des Anwendungszugriffs auf Azure Stack](../azure-stack-create-service-principals.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,7 +98,7 @@ Zur Verwendung des Azure Java-SDK mit Azure Stack müssen Sie die folgenden Wert
 | Client-ID                 | AZURE_CLIENT_ID             | Die Anwendungs-ID des Dienstprinzipals, die beim Erstellen des Dienstprinzipals im vorherigen Abschnitt dieses Dokuments gespeichert wurde.                                                                                              |
 | Abonnement-ID           | AZURE_SUBSCRIPTION_ID      | Mit der [<span class="underline">Abonnement-ID</span>](../azure-stack-plan-offer-quota-overview.md#subscriptions) greifen Sie in Azure Stack auf Angebote zu.                |
 | Geheimer Clientschlüssel             | AZURE_CLIENT_SECRET        | Die Geheimnisanwendung des Dienstprinzipals, die bei der Erstellung des Dienstprinzipals gespeichert wurde.                                                                                                                                   |
-| Resource Manager-Endpunkt | ARM_ENDPOINT              | Siehe [<span class="underline">Azure Stack-Resource Manager-Endpunkt</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Resource Manager-Endpunkt | ARM_ENDPOINT              | Siehe [<span class="underline">den Azure Stack-Resource Manager-Endpunkt</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Standort                  | RESOURCE_LOCATION    | Lokal für Azure Stack                                                                                                                                                                                                |
 
 Folgen Sie den Anweisungen [hier](../azure-stack-csp-ref-operations.md), um die Mandanten-ID für Ihre Azure Stack-Instanz zu suchen. Zum Festlegen Ihrer Umgebungsvariablen führen Sie folgende Schritte aus:
@@ -119,7 +119,23 @@ In Unix-basierten Systemen können Sie den folgenden Befehl verwenden:
 Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
-### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack-Resource Manager-Endpunkt
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Einstufen des Zertifizierungsstellen-Stammzertifikats für Azure Stack als vertrauenswürdig
+
+Bei Verwendung des ASDK müssen Sie das Zertifizierungsstellen-Stammzertifikat auf Ihrem Remotecomputer als vertrauenswürdig einstufen. Für die integrierten Systeme ist dies nicht erforderlich.
+
+#### <a name="windows"></a>Windows
+
+1. Exportieren des selbstsignierten Azure Stack-Zertifikats auf Ihren Desktop
+
+1. Wechseln Sie in einer Befehlsshell zum Verzeichnis „%JAVA_HOME%\bin“.
+
+1. Führen Sie den folgenden Befehl aus:
+
+```shell
+      .\keytool.exe -importcert -noprompt -file <location of the exported certificate here> -alias root -keystore %JAVA_HOME%\lib\security\cacerts -trustcacerts -storepass changeit
+```
+
+### <a name="the-azure-stack-resource-manager-endpoint"></a>Der Azure Stack-Resource Manager-Endpunkt
 
 Microsoft Azure Resource Manager ist ein Verwaltungsframework, mit dem Administratoren Azure-Ressourcen bereitstellen, verwalten und überwachen können. Azure Resource Manager kann diese Aufgaben als Gruppe – anstatt einzeln – in einem gemeinsamen Vorgang verarbeiten.
 
@@ -162,10 +178,10 @@ Der folgende Code authentifiziert den Dienstprinzipal in Azure Stack. Erstellt a
 
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
-                    .withDefaultSubscriptionId(subscriptionId);
+                    .withDefaultSubscriptionID(subscriptionID);
 Azure azureStack = Azure.configure()
                     .withLogLevel(com.microsoft.rest.LogLevel.BASIC)
-                    .authenticate(credentials, credentials.defaultSubscriptionId());
+                    .authenticate(credentials, credentials.defaultSubscriptionID());
 ```
 
 Dies ermöglicht Ihnen die Verwendung der API-Profilabhängigkeiten zum erfolgreichen Bereitstellen Ihrer Anwendung in Azure Stack.
@@ -181,8 +197,8 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
                     put("resourceManagerEndpointUrl", armEndpoint);
                     put("galleryEndpointUrl", settings.get("galleryEndpoint"));
                     put("activeDirectoryEndpointUrl", settings.get("login_endpoint"));
-                    put("activeDirectoryResourceId", settings.get("audience"));
-                    put("activeDirectoryGraphResourceId", settings.get("graphEndpoint"));
+                    put("activeDirectoryResourceID", settings.get("audience"));
+                    put("activeDirectoryGraphResourceID", settings.get("graphEndpoint"));
                     put("storageEndpointSuffix", armEndpoint.substring(armEndpoint.indexOf('.')));
                     put("keyVaultDnsSuffix", ".vault" + armEndpoint.substring(armEndpoint.indexOf('.')));
                 }
@@ -226,33 +242,33 @@ Sie können die folgenden GitHub-Beispiele als Referenzen zum Erstellen von Lös
 
 ### <a name="sample-unit-test-project"></a>Beispiel für Komponententestprojekt 
 
-1.  Klonen Sie das Repository mit dem folgenden Befehl:
+1. Klonen Sie das Repository mit dem folgenden Befehl:
     
-    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
+   `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
-2.  Erstellen Sie einen Azure-Dienstprinzipal, und weisen Sie eine Rolle zu, um auf das Abonnement zuzugreifen. Eine Anleitung zur Erstellung eines Dienstprinzipals finden Sie unter [Bereitstellen des Anwendungszugriffs auf Azure Stack](../azure-stack-create-service-principals.md).
+2. Erstellen Sie einen Azure-Dienstprinzipal, und weisen Sie eine Rolle zu, um auf das Abonnement zuzugreifen. Eine Anleitung zur Erstellung eines Dienstprinzipals finden Sie unter [Bereitstellen des Anwendungszugriffs auf Azure Stack](../azure-stack-create-service-principals.md).
 
-3.  Rufen Sie die folgenden erforderlichen Umgebungsvariablenwerte ab:
+3. Rufen Sie die folgenden erforderlichen Umgebungsvariablenwerte ab:
     
-    -  AZURE_TENANT_ID
-    -  AZURE_CLIENT_ID
-    -  AZURE_CLIENT_SECRET
-    -  AZURE_SUBSCRIPTION_ID
-    -  ARM_ENDPOINT
-    -  RESOURCE_LOCATION
+   -  AZURE_TENANT_ID
+   -  AZURE_CLIENT_ID
+   -  AZURE_CLIENT_SECRET
+   -  AZURE_SUBSCRIPTION_ID
+   -  ARM_ENDPOINT
+   -  RESOURCE_LOCATION
 
-4.  Legen Sie die folgenden Umgebungsvariablen fest, und verwenden Sie dabei die Informationen, die Sie aus dem mithilfe der Eingabeaufforderung erstellten Dienstprinzipal abgerufen haben:
+4. Legen Sie die folgenden Umgebungsvariablen fest, und verwenden Sie dabei die Informationen, die Sie aus dem mithilfe der Eingabeaufforderung erstellten Dienstprinzipal abgerufen haben:
     
-    - export AZURE_TENANT_ID={Ihre Mandanten-ID}
-    - export AZURE_CLIENT_ID={Ihre Client-ID}
-    - export AZURE_CLIENT_SECRET={Ihr geheimer Clientschlüssel}
-    - export AZURE_SUBSCRIPTION_ID={Ihre Abonnement-ID}
-    - export ARM_ENDPOINT={Ihre Azure Stack-Resource Manager-URL}
-    - export RESOURCE_LOCATION={Speicherort von Azure Stack}
+   - export AZURE_TENANT_ID={Ihre Mandanten-ID}
+   - export AZURE_CLIENT_ID={Ihre Client-ID}
+   - export AZURE_CLIENT_SECRET={Ihr geheimer Clientschlüssel}
+   - export AZURE_SUBSCRIPTION_ID={Ihre Abonnement-ID}
+   - export ARM_ENDPOINT={Ihre Azure Stack-Resource Manager-URL}
+   - export RESOURCE_LOCATION={Speicherort von Azure Stack}
 
    Verwenden Sie unter Windows **set** anstelle von **export**.
 
-5.  Verwenden Sie den `getactivedirectorysettings`-Code zum Abrufen des ARM-Metadaten-Endpunkts und den HTTP-Client zum Festzulegen der Endpunktinformationen.
+5. Verwenden Sie den `getactivedirectorysettings`-Code zum Abrufen des ARM-Metadaten-Endpunkts und den HTTP-Client zum Festzulegen der Endpunktinformationen.
 
    ```java
    public static HashMap<String, String> getActiveDirectorySettings(String armEndpoint) {
@@ -274,7 +290,7 @@ Sie können die folgenden GitHub-Beispiele als Referenzen zum Erstellen von Lös
    HttpResponse response = httpClient.execute(getRequest);
    ```
 
-6.  Fügen Sie in der Datei „pom.xml“ die folgende Abhängigkeit hinzu, um das Profil „2018-03-01-hybrid“ für Azure Stack zu verwenden. Diese Abhängigkeit installieren die Module, die diesem Profil zugeordnet sind, für die Ressourcenanbieter Compute, Netzwerk, Speicher, KeyVault und App Services.
+6. Fügen Sie in der Datei „pom.xml“ die folgende Abhängigkeit hinzu, um das Profil „2018-03-01-hybrid“ für Azure Stack zu verwenden. Diese Abhängigkeit installieren die Module, die diesem Profil zugeordnet sind, für die Ressourcenanbieter Compute, Netzwerk, Speicher, KeyVault und App Services.
       
    ```xml
    <dependency>
@@ -284,7 +300,7 @@ Sie können die folgenden GitHub-Beispiele als Referenzen zum Erstellen von Lös
    </dependency>
    ```
 
-8.  Geben Sie an der Eingabeaufforderung, die zum Festlegen der Umgebungsvariablen geöffnet wurde, die folgende Zeile ein:
+8. Geben Sie an der Eingabeaufforderung, die zum Festlegen der Umgebungsvariablen geöffnet wurde, die folgende Zeile ein:
     
    ```shell
    mvn clean compile exec:java

@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 02/22/2010
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 0ac20ee9f6197a8322bb741020aee813c690847e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 839fa7fe8374f1f85b019178d4c3fe53f7137372
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445882"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729643"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service in Azure Stack: Hinzufügen von weiterer Infrastruktur oder von Workerrollen
 
@@ -37,11 +37,6 @@ Standardmäßig unterstützt App Service in Azure Stack kostenlose und gemeinsam
 Wenn Sie sich nicht sicher sind, welche Elemente mit der App Service-Standardversion bei der Azure Stack-Installation bereitgestellt wurden, helfen Ihnen die zusätzlichen Informationen unter [Übersicht über App Service in Azure Stack](azure-stack-app-service-overview.md) weiter.
 
 Azure App Service in Azure Stack stellt alle Rollen mithilfe von VM-Skalierungsgruppen bereit und nutzt somit die Skalierungsfunktionen dieser Workload. Aus diesem Grund erfolgt die gesamte Skalierung der Workerebenen über den App Service-Administrator.
-
-> [!IMPORTANT]
-> Derzeit ist es nicht möglich, VM-Skalierungsgruppen im Portal wie in den Azure Stack-Versionshinweisen angegeben zu skalieren. Verwenden Sie für das horizontale Hochskalieren deshalb das PowerShell-Beispiel.
->
->
 
 ## <a name="add-additional-workers-with-powershell"></a>Hinzufügen von zusätzlichen Workern mit PowerShell
 
@@ -80,7 +75,7 @@ Azure App Service in Azure Stack stellt alle Rollen mithilfe von VM-Skalierungsg
 
 3. Überwachen Sie den Status der neuen Rolleninstanzen in der App Service-Verwaltung. Klicken Sie in der Liste auf den Rollentyp, um den Status einer einzelnen Rolleninstanz zu überprüfen.
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App Service-Ressourcenanbieters
+## <a name="add-additional-workers-using-the-administration-portal"></a>Hinzufügen zusätzlicher Worker über das Verwaltungsportal
 
 1. Melden Sie sich am Azure Stack-Verwaltungsportal als Dienstadministrator an.
 

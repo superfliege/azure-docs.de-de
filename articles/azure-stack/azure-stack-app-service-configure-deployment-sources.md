@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von Bereitstellungsquellen für App Services in Azure Stack | Microsoft-Dokumentation
-description: Informationen dazu, wie ein Dienstadministrator Bereitstellungsquellen (Git, GitHub, BitBucket, Dropbox und OneDrive) für App Service in Azure Stack konfiguriert.
+description: Informationen dazu, wie ein Dienstadministrator Bereitstellungsquellen (Git, GitHub, BitBucket, Dropbox und OneDrive) für App Services in Azure Stack konfiguriert.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: f2101c685ff7b3820f826da1d2e1d52b687d26c6
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 776648fd5bab2dd4ef51ff4c26936f38d9987e94
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446630"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769811"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurieren von Bereitstellungsquellen
 
@@ -104,7 +104,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 ![OneDrive-Anwendung: Webplattform hinzufügen][12]
 8. Fügen Sie **Microsoft Graph-Berechtigungen** - **Delegierte Berechtigungen** hinzu.
     - **Files.ReadWrite.AppFolder**
-    - **User.Read**  
+    - **User. Read**  
       ![OneDrive-Anwendung: Graph-Berechtigungen][13]
 9. Klicken Sie auf **Speichern**.
 10.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster am Azure Stack-Verwaltungsportal (https://adminportal.local.azurestack.external)) als Dienstadministrator an.

@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: How to
-ms.date: 11/26/2018
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: cb26aae743d267866a8a7d1de76a319a0a681a08
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3fb5c3deeddb6f3ee381ca45df76feebf3405b21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252063"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766566"
 ---
 # <a name="scheduling-a-test"></a>Planen eines Tests
 
@@ -53,7 +53,7 @@ Melden Sie sich beim Portal an, wählen Sie eine Lösung aus, oder erstellen Sie
 
 ![Alternativer Text](media/vaas_test_pass_parameters.png)
 
-Definieren Sie den Workflow für Ihre Lösung. Der Workflow enthält die Ablaufschritte zum Testen Ihrer Lösung.
+Geben Sie Parameter an, die für alle Tests innerhalb des Workflows gelten.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 2. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
@@ -63,18 +63,19 @@ Definieren Sie den Workflow für Ihre Lösung. Der Workflow enthält die Ablaufs
 
 ## <a name="select-tests-to-run"></a>Auswählen von auszuführenden Tests
 
-Wählen Sie die Tests aus, die Sie in Ihrem Workflow ausführen möchten.
+Die ausgewählten Tests werden geplant, sobald der Workflow erstellt wurde.
 
 1. Wählen Sie die Tests aus, die Sie in Ihrem Workflow ausführen möchten.
 
     Wenn Sie die allgemeinen Parameter (d.h. die im vorherigen Abschnitt angegebenen Parameter) für einen Test außer Kraft setzen möchten, wählen Sie den Link **Bearbeiten** aus, um neue Werte anzugeben.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
 1. Wählen Sie **Weiter** aus, um den Workflow zu überprüfen.
 
 ## <a name="review-and-submit"></a>Überprüfen und Annehmen
 
-Überprüfen, erstellen und planen Sie den Workflow.
+Schließen Sie die Workflowerstellung ab.
 
 1. Sehen Sie sich die angezeigten Informationen an.
 

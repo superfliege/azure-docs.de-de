@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 4fb636a91389309b44f2308efec1a6c257c41078
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b43fb3ff158a7df609d7a828192815db6b15963b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850059"
 ---
 # <a name="validate-azure-identity"></a>Überprüfen der Azure-Identität 
 Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um zu überprüfen, ob Ihre Azure Active Directory-Instanz (Azure AD) mit Azure Stack verwendet werden kann. Überprüfen Sie Ihre Azure-Identitätslösung, bevor Sie mit einer Azure Stack-Bereitstellung beginnen.  
@@ -56,7 +56,7 @@ Die folgenden Voraussetzungen müssen erfüllt werden:
 
    > `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-2. Führen Sie in der PowerShell-Eingabeaufforderung Folgendes aus, um *$serviceAdminCredential* als Dienstadministrator für Ihren Azure AD-Mandanten festzulegen.  Ersetzen Sie *serviceadmin@contoso.onmicrosoft.com* durch Ihr Konto und Ihren Mandanten. 
+2. Führen Sie in der PowerShell-Eingabeaufforderung Folgendes aus, um *$serviceAdminCredential* als Dienstadministrator für Ihren Azure AD-Mandanten festzulegen.  Ersetzen Sie *serviceadmin\@contoso.onmicrosoft.com* durch Ihr Konto und Ihren Mandanten. 
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. Führen Sie in der PowerShell-Eingabeaufforderung Folgendes aus, um die Überprüfung Ihrer Azure AD-Instanz zu starten: 

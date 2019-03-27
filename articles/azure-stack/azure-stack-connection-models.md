@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: f58d4e4f8b0e095fe64489fb42f78ef82c5af359
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182016"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407815"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Verbindungsmodell von in Azure Stack integrierten Systemen
 Wenn Sie daran interessiert sind, ein in Azure Stack integriertes System zu kaufen, sollten Sie einige der [wichtigsten Aspekte bei der Rechenzentrumsintegration](azure-stack-datacenter-integration.md) hinsichtlich der Azure Stack-Bereitstellung verstehen, um zu bestimmen, wie das System in Ihr Rechenzentrum passt. Darüber hinaus müssen Sie sich überlegen, wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren möchten. Dieser Artikel bietet einen Überblick über diese wichtigen Entscheidungen, so z.B. zur Azure-Verbindung, zum Identitätsspeicher und Abrechnungsmodell.
@@ -38,12 +38,14 @@ Sie können Azure Stack entweder bei vorhandener Verbindung mit dem Internet (un
 
 
 |Optionen|Mit Azure verbunden|Nicht mit Azure verbunden|
-|-----|-----|-----|
+|-----|:-----:|:-----:|
 |Azure AD|![Unterstützt](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Unterstützt](media/azure-stack-connection-models/check.png)|![Unterstützt](media/azure-stack-connection-models/check.png)|
 |Nutzungsbasierte Abrechnung|![Unterstützt](media/azure-stack-connection-models/check.png)| |
 |Kapazitätsbasierte Abrechnung|![Unterstützt](media/azure-stack-connection-models/check.png)|![Unterstützt](media/azure-stack-connection-models/check.png)|
-|Updatepakete direkt in Azure Stack herunterladen|![Unterstützt](media/azure-stack-connection-models/check.png)|  |
+|Lizenzierung| Enterprise Agreement oder Cloud Solution Provider | Enterprise Agreement |
+|Patch und Update|Das Updatepaket kann direkt aus dem Internet in Azure Stack heruntergeladen werden. |  Erforderlich<br><br>Erfordert auch Wechselmedien<br> und ein separates verbundenes Gerät |
+| Registrierung | Automatisiert | Erforderlich<br><br>Erfordert auch Wechselmedien<br> und ein separates verbundenes Gerät |
 
 Nachdem Sie sich für das Azure-Verbindungsmodell entschieden haben, das für die Bereitstellung von Azure Stack verwendet werden soll, müssen zusätzliche, verbindungsabhängige Entscheidungen für den Identitätsspeicher und die Abrechnungsmethode getroffen werden. 
 

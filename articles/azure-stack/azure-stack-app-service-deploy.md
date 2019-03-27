@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 60767c3c61b0d386e4ac9b0a93d16ad161c59949
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d66254cdad596e3b10482b2c937326162e2e075d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445933"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886829"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "56445933"
 Stellen Sie App Service anhand der Informationen in diesem Artikel in Azure Stack bereit.
 
 > [!IMPORTANT]  
-> Wenden Sie Update 1809 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.4 bereit.
+> Wenden Sie das Update 1901 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) bereit, bevor Sie Azure App Service 1.5 bereitstellen.
 
 Sie können Ihren Benutzern ermöglichen, Web- und API-Anwendungen zu erstellen. Damit Benutzer diese Anwendungen erstellen können, ist Folgendes erforderlich:
 
@@ -38,19 +38,19 @@ Sie können Ihren Benutzern ermöglichen, Web- und API-Anwendungen zu erstellen.
  - Nach dem Installieren des App Service-Ressourcenanbieters können Sie ihn in Ihren Angeboten und Plänen einfügen. Benutzer können ihn dann abonnieren, um den Dienst abzurufen und mit dem Erstellen von Anwendungen zu beginnen.
 
 > [!IMPORTANT]  
-> Stellen Sie vor dem Ausführen des Installationsprogramms für den Ressourcenanbieter sicher, dass die Anweisungen unter [Vor den ersten Schritten](azure-stack-app-service-before-you-get-started.md) befolgt wurden.
+> Vergewissern Sie sich vor dem Ausführen des Installationsprogramms für den Ressourcenanbieter, dass Sie die [Vorbereitungsschritte](azure-stack-app-service-before-you-get-started.md) ausgeführt haben, und informieren Sie sich anhand der [Versionshinweise](azure-stack-app-service-release-notes-update-five.md) für das Release 1.5 über neue Funktionen, Fehlerbehebungen und bekannte Probleme, die ggf. für Ihre Bereitstellung relevant sind.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Ausführen des Installationsprogramms für den App Service-Ressourcenanbieter
 
 Die Installation des App Service-Ressourcenanbieters dauert mindestens eine Stunde. Die erforderliche Zeit hängt davon ab, wie viele Rolleninstanzen bereitgestellt werden. Während der Bereitstellung werden mit dem Installationsprogram folgende Tasks ausgeführt:
 
- - Es erstellt im angegebenen Azure Stack-Speicherkonto einen Blobcontainer.
- - Es erstellt eine DNS-Zone und DNS-Einträge für App Service.
- - Es registriert den App Service-Ressourcenanbieter.
- - Es registriert die App Service-Katalogelemente.
+- Es erstellt im angegebenen Azure Stack-Speicherkonto einen Blobcontainer.
+- Es erstellt eine DNS-Zone und DNS-Einträge für App Service.
+- Es registriert den App Service-Ressourcenanbieter.
+- Es registriert die App Service-Katalogelemente.
 
- > [!IMPORTANT]
- > Überprüfen Sie vor der Bereitstellung des Ressourcenanbieters die Anmerkungen zu dieser Version auf Informationen zu neuen Funktionen, Fehlerbehebungen und bekannten Problemen, die sich auf die Bereitstellung auswirken können.
+  > [!IMPORTANT]
+  > Überprüfen Sie vor der Bereitstellung des Ressourcenanbieters die Anmerkungen zu dieser Version auf Informationen zu neuen Funktionen, Fehlerbehebungen und bekannten Problemen, die sich auf die Bereitstellung auswirken können.
 
 Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgenden Schritte aus:
 
@@ -74,8 +74,8 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     a. Wählen Sie neben **Azure Stack-Abonnements** die Option **Verbinden** aus.
 
-     - Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Wählen Sie **Anmelden** aus.
-     - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und wählen Sie dann **Anmelden** aus.
+   - Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Wählen Sie **Anmelden** aus.
+   - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und wählen Sie dann **Anmelden** aus.
 
    b. Wählen Sie in **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
 
@@ -99,7 +99,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
    ![App Service-Installationsprogramm][4]
 
-8. Geben Sie die Informationen für die Dateifreigabe ein, und wählen Sie dann **Weiter** aus. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse Ihres Dateiservers enthalten. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.
+8. Geben Sie die Informationen für die Dateifreigabe ein, und wählen Sie dann **Weiter** aus. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse Ihres Dateiservers enthalten. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.  Wenn Sie einen Dateiserver verwenden, der einer Domäne angehört, müssen Sie den vollständigen Benutzernamen einschließlich der Domäne angeben (also beispielsweise „<Dateiserverdomäne>\FileShareOwner“).
 
    >[!NOTE]
    >Das Installationsprogramm versucht, die Konnektivität mit der Dateifreigabe zu testen, bevor der Vorgang fortgesetzt wird. Wenn Sie die Bereitstellung aber in einem vorhandenen virtuellen Netzwerk durchführen, können bei diesem Konnektivitätstest ggf. Fehler auftreten. Es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten. Wenn die Dateifreigabeinformationen richtig sind, fahren Sie mit der Bereitstellung fort.
@@ -132,22 +132,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Installationsprogramm][10]
 
-11. Geben Sie die SQL Server-Informationen für die Serverinstanz ein, auf der die Datenbanken des App Service-Ressourcenanbieters gehostet werden sollen, und wählen Sie dann **Weiter** aus. Das Installationsprogramm überprüft die SQL-Verbindungseigenschaften.
-
-    > [!NOTE]
-    > Das Installationsprogramm versucht, die Konnektivität mit SQL Server zu testen, bevor es fortgesetzt wird. Wenn Sie die Bereitstellung aber in einem vorhandenen virtuellen Netzwerk durchführen, können bei diesem Konnektivitätstest ggf. Fehler auftreten. Es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten. Wenn die SQL Server-Informationen korrekt sind, fahren Sie mit der Bereitstellung fort.
-    >
-    > Ab Azure Stack 1.3 überprüft das Installationsprogramm für Azure App Service, ob die Datenbankeigenständigkeit für SQL Server auf SQL Server-Ebene aktiviert ist.  Wenn dies nicht der Fall ist, werden Sie mit der folgenden Ausnahme aufgefordert:
-    > ```sql
-    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
-    >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
-    >    GO
-    >    ***********************************************************
-    > ```
-    > Weitere Informationen finden Sie in den [Versionshinweisen für Azure App Service in Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md).
+11. Geben Sie die SQL Server-Informationen für die Serverinstanz ein, auf der die Datenbanken des App Service-Ressourcenanbieters gehostet werden sollen, und wählen Sie dann **Weiter** aus. Das Installationsprogramm überprüft die SQL-Verbindungseigenschaften.<br><br>Das App Service-Installationsprogramm versucht zunächst, die Konnektivität mit SQL Server zu testen. Wenn Sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchführen, ist dieser Konnektivitätstest ggf. nicht erfolgreich. Es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten. Wenn die SQL Server-Informationen korrekt sind, fahren Sie mit der Bereitstellung fort.
 
     ![App Service-Installationsprogramm][11]
 
@@ -199,6 +184,11 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Installationsprogramm][17]
 
+## <a name="post-deployment-steps"></a>Schritte nach der Bereitstellung
+
+> [!IMPORTANT]  
+> Wenn Sie den App Service-Ressourcenanbieter mit einer SQL Always On-Instanz bereitgestellt haben, MÜSSEN Sie [die Datenbanken „appservice_hosting“ und „appservice_metering“ einer Verfügbarkeitsgruppe hinzufügen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) und die Datenbanken synchronisieren, damit es im Falle eines Datenbankfailovers nicht zu Dienstausfällen kommt.
+
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Überprüfen der Installation von App Service in Azure Stack
 
 1. Navigieren Sie im Azure Stack-Verwaltungsportal zu **Verwaltung – App Service**.
@@ -207,7 +197,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Verwaltung](media/azure-stack-app-service-deploy/image12.png)
 
-    Wenn Sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchführen und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver verwenden, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen. Diese Regel ermöglicht SMB-Datenverkehr zwischen dem Workersubnetz und dem Dateiserver.  Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
+    Wenn Sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchführen und für die Verbindung mit Ihrem Dateiserver eine interne IP-Adresse verwenden, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen. Diese Regel ermöglicht SMB-Datenverkehr zwischen dem Workersubnetz und dem Dateiserver.  Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
 
     - Quelle: Beliebig
     - Quellportbereich: *
@@ -253,7 +243,7 @@ Führen Sie die folgenden Schritte aus, um eine Test-Web-App zu erstellen:
 
 1. Wählen Sie im Azure Stack-Mandantenportal das Pluszeichen (**+**) aus, wechseln Sie zum Azure Marketplace, stellen Sie eine Django-Website bereit, und warten Sie dann, bis die Bereitstellung abgeschlossen ist. Die Django-Webplattform verwendet eine dateisystembasierte Datenbank. Sie erfordert keine zusätzlichen Ressourcenanbieter wie SQL oder MySQL.
 
-2. Wenn Sie auch einen MySQL-Ressourcenanbieter bereitgestellt haben, können Sie über den Marketplace eine WordPress-Website bereitstellen. Wenn Sie zur Angabe der Datenbankparameter aufgefordert werden, geben Sie den Benutzernamen im Format *User1@Server1* ein. Sie können einen Benutzer- und Servernamen Ihrer Wahl eingeben.
+2. Wenn Sie auch einen MySQL-Ressourcenanbieter bereitgestellt haben, können Sie über den Marketplace eine WordPress-Website bereitstellen. Wenn Sie zur Angabe der Datenbankparameter aufgefordert werden, geben Sie den Benutzernamen im Format *Benutzer1\@Server1* ein. Sie können einen Benutzer- und Servernamen Ihrer Wahl eingeben.
 
 3. Wenn Sie auch einen SQL Server-Ressourcenanbieter bereitgestellt haben, können Sie über den Marketplace eine DNN-Website bereitstellen. Wenn Sie zur Angabe der Datenbankparameter aufgefordert werden, wählen Sie auf dem SQL Server-Computer, der mit Ihrem Ressourcenanbieter verbunden ist, eine Datenbank aus.
 

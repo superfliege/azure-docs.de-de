@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 9288ffa406b0e5765b35fa9b23aa13dee5754e9a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165827"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 1
 
@@ -58,7 +58,7 @@ Update 1 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 - Updates für **App Service-Mandanten, Admin, Functions-Portale und Kudu-Tools**. Mit Azure Stack-Portal-SDK-Version konsistent.
 
 - **Updates für folgende Anwendungsframeworks und Tools**:
-    - Unterstützung für **.Net Core 2.0** wurde hinzugefügt.
+    - Unterstützung für **.NET Core 2.0** hinzugefügt
     - Hinzugefügte **Node.JS**-Versionen:
         - 6.11.2
         - 6.11.5

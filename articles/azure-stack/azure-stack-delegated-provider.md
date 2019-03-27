@@ -15,12 +15,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: a075fdceaf57625280ef73499d868d5c3724426c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1211edde43d802a4c48cbd936473b1a6f83af705
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236480"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342087"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegieren von Angeboten in Azure Stack
 
@@ -78,7 +78,7 @@ Für diese exemplarische Vorgehensweise benötigen Sie zusätzlich zu Ihrem Azur
 | Benutzer |Benutzer |
 
  > [!NOTE]
-   > Im Falle eines CSP-Handelspartners ist es zum Erstellen dieses delegierte Anbieters erforderlich, dass sich diese Benutzer im Mandantenverzeichnis (des Benutzer-AAD) befinden. Der Azure Stack-Betreiber muss [zuerst ein Onboarding](https://docs.microsoft.com/azure/azure-stack/azure-stack-enable-multitenancy) dieses Mandanten-AAD durchführen und dann die Nutzung und Abrechnung gemäß [diesen Schritten](https://docs.microsoft.com/azure/azure-stack/azure-stack-csp-howto-register-tenants) konfigurieren.
+ > Im Falle eines CSP-Handelspartners müssen sich diese Benutzer zum Erstellen des delegierten Anbieters im Mandantenverzeichnis (Benutzer-AAD) befinden. Der Azure Stack-Bediener muss [zuerst ein Onboarding](azure-stack-enable-multitenancy.md) dieses Mandanten-AAD durchführen und dann die Nutzung und Abrechnung wie [hier](azure-stack-csp-howto-register-tenants.md) beschrieben konfigurieren.
 
 ### <a name="identify-the-delegated-provider"></a>Identifizieren des delegierten Anbieters
 

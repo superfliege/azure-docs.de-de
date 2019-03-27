@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 280a811e943c2e81a96875e3c8ba8efdb86fbf2a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 773e600577b35019b8a3619c7eec3e93b77a4382
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085795"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Aktivieren der Sicherung für Azure Stack mit PowerShell
 
@@ -51,9 +51,11 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
 | $sharepath      | Geben Sie den Pfad zu dem **Sicherungsspeicherort** ein. Für den Pfad zu einer auf einem separaten Gerät gehosteten Dateifreigabe müssen Sie eine UNC-Zeichenfolge (Universal Naming Convention) verwenden. Eine UNC-Zeichenfolge gibt den Speicherort von Ressourcen (z.B. freigegebene Dateien oder Geräte) an. Zur Sicherstellung der Verfügbarkeit der Sicherungsdaten sollte sich das Gerät an einem gesonderten Speicherort befinden. |
 | $frequencyInHours | Die Häufigkeit in Stunden bestimmt, wie oft Sicherungen erstellt werden. Der Standardwert ist 12. Scheduler unterstützt maximal 12 und mindestens 4.|
 | $retentionPeriodInDays | Die Vermerkdauer in Tagen bestimmt, wie viele Tage Sicherungen am externen Speicherort beibehalten werden. Der Standardwert ist 7. Scheduler unterstützt maximal 14 und mindestens 2. Nach Ablauf ihrer Vermerkdauer werden Sicherungen automatisch aus dem externen Speicherort gelöscht.|
-| $encryptioncertpath | Der Verschlüsselungszertifikatpfad gibt den Dateipfad zu der CER-Datei mit dem öffentlichen Schlüssel an, die für die Datenverschlüsselung verwendet wird. |
+| $encryptioncertpath | Gilt ab 1901.  Der Parameter ist ab der Azure Stack-Modulversion 1.7 verfügbar. Der Verschlüsselungszertifikatpfad gibt den Dateipfad zu der CER-Datei mit dem öffentlichen Schlüssel an, die für die Datenverschlüsselung verwendet wird. |
+| $encryptionkey | Gilt bis zum Build 1811. Der Parameter ist bis zur Azure Stack-Modulversion 1.6 verfügbar. Der für die Datenverschlüsselung verwendete Verschlüsselungsschlüssel. Verwenden Sie das Cmdlet [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64), um einen neuen Verschlüsselungsschlüssel zu erstellen. |
 |     |     |
 
+### <a name="enable-backup-on-1901-and-beyond-using-certificate"></a>Aktivieren der Sicherung unter Verwendung eines Zertifikats (ab 1901)
 ```powershell
     # Example username:
     $username = "domain\backupadmin"
@@ -80,6 +82,25 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
     # Set the backup settings with the name, password, share, and CER certificate file.
     Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
+### <a name="enable-backup-on-1811-or-earlier-using-certificate"></a>Aktivieren der Sicherung unter Verwendung eines Zertifikats (bis 1811)
+```powershell
+    # Example username:
+    $username = "domain\backupadmin"
+ 
+    # Example share path:
+    $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+
+    $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+
+    # Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
+
+    $key = New-AzsEncryptionKeyBase64
+    $Securekey = ConvertTo-SecureString -String ($key) -AsPlainText -Force
+
+    # Set the backup settings with the name, password, share, and CER certificate file.
+    Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $Securekey
+```
+
    
 ##  <a name="confirm-backup-settings"></a>Überprüfen der Sicherungseinstellungen
 
@@ -119,7 +140,7 @@ Das Ergebnis sollte der folgenden Beispielausgabe ähneln:
     BackupRetentionPeriodInDays : 5
    ```
 
-###<a name="azure-stack-powershell"></a>Azure Stack PowerShell 
+### <a name="azure-stack-powershell"></a>Azure Stack PowerShell 
 Das PowerShell-Cmdlet zum Konfigurieren der Infrastruktursicherung ist „Set-AzsBackupConfiguration“. In früheren Versionen war dies das Cmdlet „Set-AzsBackupShare“. Dieses Cmdlet erfordert die Bereitstellung eines Zertifikats. Wenn die Infrastruktursicherung mit einem Verschlüsselungsschlüssel konfiguriert ist, können Sie weder den Verschlüsselungsschlüssel aktualisieren noch die Eigenschaft anzeigen. Sie müssen die Version 1.6. der Administrator-PowerShell verwenden. 
 
 Wenn die Infrastruktursicherung vor der Aktualisierung auf 1901 konfiguriert wurde, können Sie die Version 1.6 der Administrator-PowerShell verwenden, um den Verschlüsselungsschlüssel festzulegen und anzuzeigen. Version 1.6 lässt nicht zu, dass Sie vom Verschlüsselungsschlüssel auf eine Zertifikatdatei aktualisieren.

@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9fc53fd2539a39de4f01758704765392cc7e98a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 665f8ac9a8b0738ed23649673c548bc6b1774d2d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246965"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259957"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Übersicht über die Identität für Azure Stack
 
@@ -60,12 +60,12 @@ Die Erstellung und Verwaltung von Benutzern und Gruppen hängt von der Identitä
 
 In Azure Stack gilt für Benutzerkonten Folgendes:
 
-- Sie werden im Format *username@domain* erstellt. AD FS ordnet Benutzerkonten zwar einer Active Directory-Instanz zu, aber für AD FS wird die Verwendung des Formats *\\\<Domäne>\\\<Alias>* nicht unterstützt.
+- Sie werden im Format *Benutzername\@Domäne* erstellt. AD FS ordnet Benutzerkonten zwar einer Active Directory-Instanz zu, aber für AD FS wird die Verwendung des Formats *\\\<Domäne>\\\<Alias>* nicht unterstützt.
 - Sie können für die Verwendung der mehrstufigen Authentifizierung konfiguriert werden.
 - Sie sind auf das Verzeichnis beschränkt, für das sie zuerst registriert werden. Dies ist das Organisationsverzeichnis.
 - Sie können aus Ihren lokalen Verzeichnissen importiert werden. Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
 
-Beim Anmelden am Mandantenportal Ihrer Organisation verwenden Sie die URL *https://portal.local.azurestack.external*. Wenn Sie sich am Azure Stack-Portal nicht über die Domäne anmelden, die zum Registrieren für Azure Stack verwendet wurde, sondern über andere Domänen, muss der Domänenname für die Registrierung bei Azure Stack an die Portal-URL angefügt werden. Wenn beispielsweise Azure Stack mit „fabrikam.onmicrosoft.com“ registriert wurde und das Benutzerkonto für die Anmeldung admin@contoso.com ist, lautet die URL für die Anmeldung am Benutzerportal wie folgt: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Für die Anmeldung beim Mandantenportal Ihrer Organisation verwenden Sie die URL *https:\//portal.local.azurestack.external*. Wenn Sie sich am Azure Stack-Portal nicht über die Domäne anmelden, die zum Registrieren für Azure Stack verwendet wurde, sondern über andere Domänen, muss der Domänenname für die Registrierung bei Azure Stack an die Portal-URL angefügt werden. Wenn also beispielsweise Azure Stack mit „fabrikam.onmicrosoft.com“ registriert wurde und für die Anmeldung das Benutzerkonto admin@contoso.com verwendet wird, lautet die URL für die Anmeldung beim Benutzerportal wie folgt: https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="guest-users"></a>Gastbenutzer
 
@@ -73,7 +73,7 @@ Gastbenutzer sind Benutzerkonten anderer Verzeichnismandanten, denen Zugriff auf
 
 Zum Einladen von Gastbenutzern können Cloudbetreiber und -benutzer die [Azure AD B2B-Zusammenarbeit](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) verwenden. Eingeladene Benutzer erhalten Zugriff auf Dokumente, Ressourcen und Anwendungen aus Ihrem Verzeichnis, und Sie behalten die Kontrolle über Ihre eigenen Ressourcen und Daten. 
 
-Als Gastbenutzer können Sie sich am Verzeichnismandanten einer anderen Organisation anmelden. Hierzu hängen Sie den Verzeichnisnamen der Organisation an die Portal-URL an. Wenn Sie beispielsweise zur Organisation Contoso gehören und sich am Fabrikam-Verzeichnis anmelden möchten, verwenden Sie https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Als Gastbenutzer können Sie sich am Verzeichnismandanten einer anderen Organisation anmelden. Hierzu hängen Sie den Verzeichnisnamen der Organisation an die Portal-URL an. Wenn Sie also beispielsweise der Organisation Contoso angehören und sich beim Fabrikam-Verzeichnis anmelden möchten, verwenden Sie „https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com“.
 
 ### <a name="applications"></a>ANWENDUNGEN
 
@@ -156,10 +156,10 @@ Für Anwendungen und Benutzer wird die Architektur von Azure Stack anhand von vi
 
 Sie müssen über die folgenden Informationen verfügen, um die Authentifizierung mit dem Identitätsanbieter durchzuführen und ein JSON Web Token zu erhalten:
 
-1. **URL für das Identitätssystem (Autorität):** Die URL, unter der Ihr Identitätsanbieter erreichbar ist. Beispiel: *https://login.windows.net*
+1. **URL für das Identitätssystem (Autorität):** Die URL, unter der Ihr Identitätsanbieter erreichbar ist. Beispiel: *https:\//login.windows.net*.
 2. **App-ID-URI für Azure Resource Manager:** Der eindeutige Bezeichner für Azure Resource Manager, der bei Ihrem Identitätsanbieter registriert ist. Außerdem ist er für jede Azure Stack-Installation eindeutig.
 3. **Anmeldeinformationen**: Die Anmeldeinformationen, die Sie zum Authentifizieren beim Identitätsanbieter verwenden
-4. **URL für Azure Resource Manager:** Die URL gibt den Speicherort des Azure Resource Manager-Diensts an. Beispiel: *https://management.azure.com* oder *https://management.local.azurestack.external*.
+4. **URL für Azure Resource Manager:** Die URL gibt den Speicherort des Azure Resource Manager-Diensts an. Beispiel: *https:\//management.azure.com* oder *https:\//management.local.azurestack.external*.
 
 Wenn ein Prinzipal (Client, Anwendung oder Benutzer) eine Authentifizierungsanforderung zum Zugreifen auf eine Ressource sendet, muss diese Folgendes enthalten:
 

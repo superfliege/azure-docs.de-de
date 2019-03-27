@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 6825524667c473496b62cecbce54f6e249742bae
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977710"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536479"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack-Wartungsrichtlinie
 
@@ -52,10 +52,11 @@ Microsoft veröffentlicht Softwareupdatepakete in der Regel monatlich. Allerding
 Die Dokumentation zur Planung und Verwaltung von Updates sowie zur Ermittlung Ihrer aktuellen Version finden Sie unter [Übersicht zum Verwalten von Updates in Azure Stack](azure-stack-updates.md).
 
 Informationen zu einem bestimmten Update und darüber, wie sie es herunterladen, finden Sie in den Versionshinweisen zu diesem Update:
+
+- [Azure Stack-Update 1902](azure-stack-update-1902.md)
 - [Azure Stack-Update 1901](azure-stack-update-1901.md)
 - [Azure Stack-Update 1811](azure-stack-update-1811.md)
 - [Azure Stack-Update 1809](azure-stack-update-1809.md)
-- [Azure Stack-Update 1808](azure-stack-update-1808.md)
 
 ## <a name="hotfixes"></a>Hotfixes
 

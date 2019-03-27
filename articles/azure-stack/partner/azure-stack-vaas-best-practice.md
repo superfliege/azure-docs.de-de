@@ -1,6 +1,6 @@
 ---
 title: Bewährte Methoden für die Azure Stack-Validierung | Microsoft-Dokumentation
-description: Dieser Artikel enthält bewährte Methoden für Validation-as-a-Service.
+description: In diesem Artikel werden bewährte Methoden für Validation-as-a-Service behandelt.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fa0912d120760ddba3b3d21f718e214e9d7c26b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 30b7a5327a709fb35c3c3360f4bb0246e9a5f75f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238923"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771224"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>Bewährte Methoden für Validation-as-a-Service
 
@@ -46,7 +46,7 @@ Verwenden Sie dieselbe VaaS-Lösung, wenn Sie Workflows für dieselbe Hardware-S
 
 ### <a name="naming-convention-for-vaas-workflows"></a>Benennungskonvention für VaaS-Workflows
 
-Verwenden Sie eine konsistente Benennungskonvention für alle VaaS Workflowdurchläufe. Beispielsweise kann ein Workflowname wie folgt aus den Buildeigenschaften konstruiert werden:
+Verwenden Sie eine konsistente Benennungskonvention für alle VaaS Workflowdurchläufe. Ein Workflowname kann beispielsweise wie folgt auf der Grundlage der Buildeigenschaften konstruiert werden:
 
 |Buildnummer (Hauptnummer) | Datum | Lösungsgröße | Workflowname
 |---|---|---| ---|

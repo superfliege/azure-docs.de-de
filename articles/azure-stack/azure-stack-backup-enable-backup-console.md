@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1585eb460cc5f8ae437ee59a596dc7a854a108e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 98f793b7d94cd554d426a0eec30d8bb4553d3d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995729"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105402"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal
 Aktivieren Sie den Infrastructure Backup-Dienst über das Verwaltungsportal, sodass Azure Stack Infrastruktursicherungen generieren kann. Mit diesen Sicherungen kann der Hardwarepartner bei einem [schwerwiegenden Fehler](./azure-stack-backup-recover-data.md) Ihre Umgebung mittels einer Cloudwiederherstellung wiederherstellen. Die Cloudwiederherstellung soll sicherstellen, dass die Anbieter und Benutzer sich nach Abschluss der Wiederherstellung wieder im Portal anmelden können. Auf diese Weise können Benutzer ihre Abonnements wiederherstellen, einschließlich RBAC-Berechtigungen (Role-Based Access Control) und -Rollen, ursprünglichen Plänen, Angeboten und zuvor definierten Compute-, Speicher-, Netzwerkkontingenten und Key Vault-Geheimnissen.
@@ -67,12 +67,15 @@ Administratoren und Benutzer sind für die Sicherung und Wiederherstellung von I
             -FilePath c:\certs\AzSIBCCert.cer 
     ```
 
-    > [!Note]  
-    > **1901 und höher**: Azure Stack akzeptiert ein Zertifikat zum Verschlüsseln von Infrastruktursicherungsdaten. Stellen Sie sicher, dass das Zertifikat mit dem öffentlichen und privaten Schlüssel an einem sicheren Ort gespeichert wird. Aus Gründen der Sicherheit wird nicht empfohlen, das Zertifikat mit den öffentlichen und privaten Schlüsseln zum Konfigurieren von Sicherungseinstellungen zu verwenden. Weitere Informationen zum Verwalten des Lebenszyklus dieses Zertifikats finden Sie unter [Bewährte Methoden für den Infrastructure Backup-Dienst](azure-stack-backup-best-practices.md).
+   > [!Note]
+   > **1901 und höher**: Azure Stack akzeptiert ein Zertifikat zum Verschlüsseln von Infrastruktursicherungsdaten. Stellen Sie sicher, dass das Zertifikat mit dem öffentlichen und privaten Schlüssel an einem sicheren Ort gespeichert wird. Aus Gründen der Sicherheit wird nicht empfohlen, das Zertifikat mit den öffentlichen und privaten Schlüsseln zum Konfigurieren von Sicherungseinstellungen zu verwenden. Weitere Informationen zum Verwalten des Lebenszyklus dieses Zertifikats finden Sie unter [Bewährte Methoden für den Infrastructure Backup-Dienst](azure-stack-backup-best-practices.md).
+   > 
+   > **Bis 1811:** Azure Stack akzeptiert einen symmetrischen Schlüssel für die Verschlüsselung von Infrastruktursicherungsdaten. Verwenden Sie das [Cmdlet „New-AzsEncryptionKey64“ zum Erstellen eines Schlüssels](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). Nach dem Upgrade von 1811 auf 1901 wird der Verschlüsselungsschlüssel in den Sicherungseinstellungen gespeichert. Es empfiehlt sich, die Sicherungseinstellungen zu aktualisieren und ein Zertifikat zu verwenden. Die Verschlüsselungsschlüsselunterstützung ist nun veraltet. Sie haben mindestens drei Releases Zeit, um die Einstellungen zu aktualisieren und ein Zertifikat zu verwenden. 
 
 10. Wählen Sie **OK** aus, um die Backup Controller-Einstellungen zu speichern.
 
 ![Azure Stack – Backup Controller-Einstellungen](media/azure-stack-backup/backup-controller-settings-certificate.png)
+
 
 ## <a name="start-backup"></a>Sicherung starten
 Zum Starten einer Sicherung klicken Sie auf **Jetzt sichern**, um eine bedarfsgesteuerte Sicherung zu starten. Eine bedarfsgesteuerte Sicherung ändert die Zeit für die nächste geplante Sicherung nicht. Nachdem die Aufgabe abgeschlossen ist, können Sie die Einstellungen in der **Zusammenfassung** bestätigen:
@@ -115,7 +118,7 @@ Neue Sicherungen beginnen mit der Verwendung des öffentlichen Schlüssels in de
 ![Azure Stack: Zertifikatfingerabdruck anzeigen](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### <a name="backwards-compatibility-mode"></a>Abwärtskompatibilitätsmodus
-Wenn Sie die Sicherung vor der Aktualisierung auf 1901 konfiguriert haben, werden die Einstellungen ohne Änderungen im Verhalten übernommen. In diesem Fall wird der Verschlüsselungsschlüssel aus Gründen der Abwärtskompatibilität unterstützt. Sie haben die Möglichkeit, den Verschlüsselungsschlüssel zu aktualisieren oder zur Verwendung eines Zertifikats zu wechseln. Sie haben drei Releases Zeit, um die Aktualisierung des Verschlüsselungsschlüssels fortzusetzen. Nutzen Sie diesen Zeitraum, um zu einem Zertifikat überzugehen. 
+Wenn Sie die Sicherung vor der Aktualisierung auf 1901 konfiguriert haben, werden die Einstellungen ohne Änderungen im Verhalten übernommen. In diesem Fall wird der Verschlüsselungsschlüssel aus Gründen der Abwärtskompatibilität unterstützt. Sie haben die Möglichkeit, den Verschlüsselungsschlüssel zu aktualisieren oder zur Verwendung eines Zertifikats zu wechseln. Sie haben mindestens drei Releases Zeit, um die Aktualisierung des Verschlüsselungsschlüssels fortzusetzen. Nutzen Sie diesen Zeitraum, um zu einem Zertifikat überzugehen. Verwenden Sie zum Erstellen eines neuen Verschlüsselungsschlüssels das [Cmdlet „New-AzsEncryptionKeyBase64“](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
 ![Azure Stack: Verwenden des Verschlüsselungsschlüssels im Abwärtskompatibilitätsmodus](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

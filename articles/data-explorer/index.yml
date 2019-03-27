@@ -1,22 +1,31 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e4bd3de3dee3219619c0146eb0e455cd9b25c59e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 34de58f7a3f9307714ccc4594d9ac92523c55f69
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840961"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482216"
 documentType: LandingData
 title: Azure-Daten-Explorer – Dokumentation
 metadata:
   title: 'Azure Data Explorer-Dokumentation: Schnellstarts, Tutorials und Sprach-/API-Referenzen'
   description: Azure-Daten-Explorer ist eine Log Analytics-Cloudplattform, die für Ad-hoc-Datenabfragen im Big Data-Bereich optimiert ist.
-  author: mgblythe
-  ms.author: mblythe
+  author: orspod
+  ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 03/24/2019
 abstract:
-  description: <p>Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Hiermit können Sie die vielen Datenströme moderner Software verarbeiten, um die Daten zu sammeln, zu speichern und zu analysieren. Azure-Daten-Explorer ist ideal zum Analysieren von großen Mengen unterschiedlicher Daten aus beliebigen Datenquellen geeignet, z.B. Websites, Anwendungen, IoT-Geräte und mehr.</p><p>In unseren Schnellstarts, Tutorials und Referenzinhalten wird beschrieben, wie Sie Azure-Daten-Explorer nutzen.</p>
+  description: <p>Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst für Echtzeitanalysen großer Datenmengen, die von Anwendungen, Websites, IoT-Geräten usw. gestreamt werden. Mithilfe von Azure Data Explorer können Sie verschiedene Daten sammeln, speichern und analysieren, um Produkte zu verbessern, die Benutzerfreundlichkeit zu optimieren, Geräte zu überwachen und Vorgänge zu beschleunigen.</p><p>In unseren Schnellstarts, Tutorials und Referenzinhalten wird beschrieben, wie Sie Azure-Daten-Explorer nutzen.</p>
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Was ist der Azure-Daten-Explorer? (19:47)
+    href: https://youtu.be/D_AJk2lAepw
+    width: 250
 sections:
 - title: Fünfminütige Schnellstarts
   items:

@@ -6,29 +6,19 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/23/19
+ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 5f34991dca4dbb4275033c764981c44492b9920e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456995"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257805"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
-Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
-
-Die folgende Tabelle zeigt die Unterschiede zwischen den Auswahlmöglichkeiten für den Identitätsanbieter:
-
-||Verbindung mit dem Internet getrennt|Verbindung mit dem Internet vorhanden|
-|---------|---------|---------|
-|Abrechnung|Muss „Capacity“ sein<br> Nur Enterprise Agreement (EA)|„Capacity“ oder nutzungsbasiert<br>EA oder Cloud Solution Provider (CSP)|
-|Identity|Muss AD FS sein|Azure AD oder AD FS|
-|Marketplace |Unterstützt<br>BYOL Lizenzierung|Unterstützt<br>BYOL Lizenzierung|
-|Registrierung|Erforderlich, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Automatisiert|
-|Patch und Update|Erforderlich, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Updatepaket kann direkt aus dem Internet<br> in Azure Stack heruntergeladen werden.|
+Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. In einem verbundenen Szenario können Sie zwischen Azure AD und AD FS wählen. In einem nicht verbundenen Szenario wird nur AD FS unterstützt.
 
 > [!IMPORTANT]
 > Sie können den Identitätsanbieter nicht wechseln, ohne die gesamte Azure Stack-Lösung erneut bereitzustellen.
@@ -43,7 +33,7 @@ Authentifizierung ist ein Teil der Identität. Damit rollenbasierte Zugriffssteu
 
 Die vorhandenen AD FS sind der Konto-Sicherheitstokendienst (STS), der Ansprüche an Azure Stack AD FS (den Ressourcen-STS) sendet. In Azure Stack erstellt die Automatisierung die Anspruchsanbieter-Vertrauensstellung mit dem Metadatenendpunkt für die vorhandenen AD FS.
 
-Für die vorhandenen AD FS muss eine Vertrauensstellung der vertrauenden Seite konfiguriert werden. Dieser Schritt erfolgt nicht durch die Automatisierung und muss vom Operator konfiguriert werden. Der Azure Stack-Metadatenendpunkt wird in der Datei „AzureStackStampDeploymentInfo.JSON“ oder über den privilegierten Endpunkt durch Ausführen des Befehls `Get-AzureStackInfo` dokumentiert.
+Für die vorhandenen AD FS muss eine Vertrauensstellung der vertrauenden Seite konfiguriert werden. Dieser Schritt erfolgt nicht durch die Automatisierung und muss vom Operator konfiguriert werden. Der Azure Stack-VIP-Endpunkt für AD FS kann mithilfe des Musters `https://adfs.<Region>.<ExternalFQDN>/` erstellt werden.
 
 Die Vertrauensstellungskonfiguration der vertrauenden Seite erfordert außerdem, dass die Regeln für die Anspruchstransformation konfiguriert werden, die von Microsoft bereitgestellt werden.
 
@@ -132,7 +122,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 |Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomAdfsName|Der Name der Anspruchsanbieter-Vertrauensstellung.<br>Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Verbundmetadatenlink|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAD<br>FSFederationMetadataEndpointUri|Verbundmetadatenlink| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Auslösen der Automatisierung zum Konfigurieren der Anspruchsanbieter-Vertrauensstellung in Azure Stack

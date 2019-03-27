@@ -1,31 +1,38 @@
 items:
-- name: Dokumentation zur Anpassung des Azure-Portals
+- name: Dokumentation zum Azure-Portal
   href: index.yml
-- name: Azure-Dashboards
+- name: Übersicht
+  items:
+  - name: Informationen zum Azure-Portal
+    href: azure-portal-overview.md
+  - name: Unterstützte Browser und Geräte
+    href: azure-portal-supported-browsers-devices.md
+- name: Konzepte
   items:
   - name: Erstellen und Freigeben von Azure-Dashboards
     href: azure-portal-dashboards.md
-  - name: Verwenden einer benutzerdefinierten Markdown-Kachel
-    href: azure-portal-markdown-tile.md
   - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
     href: azure-portal-dashboard-share-access.md
-  - name: Struktur von Azure-Dashboards
-    href: azure-portal-dashboards-structure.md
   - name: Programmgesteuertes Erstellen von Azure-Dashboards
     href: azure-portal-dashboards-create-programmatically.md
-- name: Einstellungen
+- name: Anleitungen
+  items:
+  - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
+    href: azure-portal-change-theme-high-contrast.md
+  - name: Verwenden einer benutzerdefinierten Markdown-Kachel
+    href: azure-portal-markdown-tile.md
+  - name: Exportieren oder Löschen von Benutzereinstellungen
+    href: azure-portal-export-delete-settings.md
+- name: Verweis
   items:
   - name: Tastenkombinationen
     href: azure-portal-keyboard-shortcuts.md
-  - name: Unterstützte Browser und Geräte
-    href: ../azure-preview-portal-supported-browsers-devices.md
-  - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
-    href: azure-portal-change-theme-high-contrast.md
-  - name: Exportieren oder Löschen von Benutzereinstellungen
-    href: azure-portal-export-delete-settings.md
-  expanded: true
+  - name: Struktur von Azure-Dashboards
+    href: azure-portal-dashboards-structure.md
 - name: Ressourcen
   items:
+  - name: Anleitungsvideos für das Azure-Portal
+    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/updates/
   - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
@@ -36,11 +43,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Videos
+  - name: Azure-Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 7fee5a433470309384931e6ea43817288aecf7a8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 43a009582b565f10261c0cc6cc24507c3ef6e44e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902770"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443875"

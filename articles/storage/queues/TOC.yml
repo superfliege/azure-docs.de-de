@@ -105,16 +105,22 @@ items:
       items:
       - name: Portal
         href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: CLI oder PowerShell
+        href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Verwalten von Zugriffsrechten mit RBAC
+      items:
+      - name: Portal
+        href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Befehlszeilenschnittstelle (CLI)
+        href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: PowerShell
+        href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Authentifizierung über Azure AD
       items:
-      - name: Verwalten von Zugriffsrechten mit RBAC
-        href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
       - name: Authentifizieren über eine Anwendung
         href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
       - name: Authentifizieren mit verwalteten Dienstidentitäten
         href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Verwenden einer Azure AD-Identität mit CLI oder PowerShell
-        href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Autorisieren mit einem gemeinsam verwendeten Schlüssel
       items:
       - name: Konfigurieren von Verbindungszeichenfolgen
@@ -272,9 +278,9 @@ items:
       href: https://github.com/Azure/azure-storage-ios
   - name: Complianceangebote
     href: ../common/storage-compliance-offerings.md
-ms.openlocfilehash: 9cb34df34ae2f8e5a110b83488db614818f3e3b2
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: 70fc5b2b14aaad98a1d412a8b5a56763b4652d7d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319481"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446295"

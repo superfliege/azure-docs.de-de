@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244962"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871042"
 ---
 # <a name="region-management-in-azure-stack"></a>Regionsverwaltung in Azure Stack
 
@@ -39,7 +39,7 @@ Azure Stack verfügt über einige Funktionen der Regionsverwaltung, die in der K
 
 Wenn Sie auf der Kachel **Regionsverwaltung** auf eine Region klicken, können Sie auf folgende Informationen zugreifen:
 
-[ ![Beschreibung der Bereiche auf dem Blatt „Regionsverwaltung“](media/azure-stack-region-management/regionssm.png "Blatt „Regionsverwaltung“") ](media/azure-stack-region-management/regions.png#lightbox)
+[![Beschreibung der Bereiche auf dem Blatt „Regionsverwaltung“](media/azure-stack-region-management/regionssm.png "Blatt „Regionsverwaltung“")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **Das Ressourcenmenü**. Hier können Sie auf spezifische Infrastrukturverwaltungsbereiche zugreifen und Benutzerressourcen anzeigen und verwalten. Zu solchen Ressourcen zählen etwa Speicherkonten und virtuelle Netzwerke.
 

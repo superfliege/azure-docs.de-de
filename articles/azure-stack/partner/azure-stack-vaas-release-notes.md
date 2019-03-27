@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 96325d7c21ccf7d93deaafbad974009004030157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247815"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091986"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Versionshinweise zu Validation-as-a-Service
 
@@ -28,14 +28,13 @@ ms.locfileid: "55247815"
 Dieser Artikel enthält die Versionshinweise zu Validation-as-a-Service in Azure Stack.
 
 ## <a name="version-405"></a>Version 4.0.5
+
 17. Januar 2019
 
--  Festplattenidentifikationstest aktualisiert, um Inkonsistenzen im Speicherpool zu beheben. Version: 5.1.14.0 -> 5.1.15.0
--  Monatliche Aktualisierungsüberprüfung für Azure Stack aktualisiert, um Inkonsistenzen bei der Software- und Inhaltsvalidierung zu beheben. Version: 5.1.14.0 -> 5.1.15.0
--  Überprüfung für OEM-Erweiterungspaket aktualisiert, um die notwendigen Prüfungen *vor* dem Aktualisierungsschritt von Azure Stack durchzuführen. Version: 5.1.14.0 -> 5.1.15.0
--  Interne Fehlerkorrekturen
-
-
+- Festplattenidentifikationstest aktualisiert, um Inkonsistenzen im Speicherpool zu beheben. Version: 5.1.14.0 -> 5.1.15.0
+- Monatliche Aktualisierungsüberprüfung für Azure Stack aktualisiert, um Inkonsistenzen bei der Software- und Inhaltsvalidierung zu beheben. Version: 5.1.14.0 -> 5.1.17.0
+- Überprüfung für OEM-Erweiterungspaket aktualisiert, um die notwendigen Prüfungen vor dem Azure Stack-Aktualisierungsschritt durchzuführen. Version: 5.1.14.0 -> 5.1.16.0
+- Interne Fehlerkorrekturen
 
 ## <a name="version-402"></a>Version 4.0.2
 
@@ -43,10 +42,10 @@ Dieser Artikel enthält die Versionshinweise zu Validation-as-a-Service in Azure
 
 Wenn Sie den Workflow für die monatliche Updateüberprüfung für Azure Stack ausführe, und die Version für Ihr OEM-Updatepaket nicht 1810 oder höher ist, erhalten Sie einen Fehler, sobald Sie zum Schritt für das OEM-Update gelangen. Dies ist ein Fehler. Eine Korrektur wird derzeit entwickelt. Die Schritte zur Behebung sehen wie folgt aus:
 
-1.  Führen Sie das OEM-Update wie gewohnt aus.
-2.  Führen Sie nach der erfolgreichen Anwendung des Pakets „Test-AzureStack“ aus, und speichern Sie die Ausgabe.
-3.  Brechen Sie den Test ab.
-4.  Senden Sie die gespeicherte Ausgabe an VaaSHelp@microsoft.com, um erfolgreiche Ergebnisse für die Ausführung zu erhalten.
+1. Führen Sie das OEM-Update wie gewohnt aus.
+2. Führen Sie nach der erfolgreichen Anwendung des Pakets „Test-AzureStack“ aus, und speichern Sie die Ausgabe.
+3. Brechen Sie den Test ab.
+4. Senden Sie die gespeicherte Ausgabe an VaaSHelp@microsoft.com, um erfolgreiche Ergebnisse für die Ausführung zu erhalten.
 
 ## <a name="version-402"></a>Version 4.0.2
 
@@ -77,7 +76,7 @@ Wenn Sie den Workflow für die monatliche Updateüberprüfung für Azure Stack a
 
 - Voraussetzungen für VaaS und VHD-Updates
 
-    `Install-VaaSPrerequisites` erfordert nun Cloudadministrator-Anmeldeinformationen aufgrund eines Problems bei der Lösungsvalidierung. Die Dokumentation unter [Herunterladen und Installieren des Agents](azure-stack-vaas-local-agent.md#download-and-install-the-agent) wurde folgendermaßen aktualisiert:
+    `Install-VaaSPrerequisites` erfordert nun Cloudadministrator-Anmeldeinformationen aufgrund eines Problems bei der Paketvalidierung. Die Dokumentation unter [Herunterladen und Installieren des Agents](azure-stack-vaas-local-agent.md#download-and-install-the-agent) wurde folgendermaßen aktualisiert:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -104,11 +103,11 @@ Wenn Sie den Workflow für die monatliche Updateüberprüfung für Azure Stack a
 
   - Benachrichtigungen bei der Paketsignierung
 
-    Wenn ein OEM-Anpassungspaket im Rahmen des Workflows „Lösungsvalidierung“ gesendet wird, wird das Paketformat überprüft, um sicherzustellen, dass es die veröffentlichte Spezifikation erfüllt. Wenn das Paket sie nicht erfüllt, tritt bei der Ausführung ein Fehler auf. E-Mail-Benachrichtigungen werden an die E-Mail-Adresse des registrierten Azure Active Directory-Kontakts für den Mandanten gesendet.
+    Wenn ein OEM-Anpassungspaket im Rahmen des Workflows „Paketvalidierung“ gesendet wird, wird das Paketformat überprüft, um sicherzustellen, dass es die veröffentlichte Spezifikation erfüllt. Wenn das Paket sie nicht erfüllt, tritt bei der Ausführung ein Fehler auf. E-Mail-Benachrichtigungen werden an die E-Mail-Adresse des registrierten Azure Active Directory-Kontakts für den Mandanten gesendet.
 
   - Testkategorie „Interaktiv“
 
-    Die Testkategorie **Interaktiv** wurde hinzugefügt. Mit diesen Tests können Partner interaktive und nicht automatisierte Azure Stack-Szenarien testen.
+    Die Testkategorie **Interaktiv** wurde hinzugefügt. Mit diesen Tests werden interaktive, nicht automatisierte Azure Stack-Szenarien durchgespielt.
 
   - Interaktive Featureüberprüfung
 

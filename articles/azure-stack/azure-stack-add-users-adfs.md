@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/21/2019
 ms.author: patricka
 ms.reviewer: unknown
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 7ecffacee03650adc709a055ba942ef182da5fb8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: 1b47739200c79317273ea0c788f21a7ee4a3b818
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239979"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648505"
 ---
 # <a name="add-azure-stack-users-in-ad-fs"></a>Hinzufügen von Azure Stack-Benutzern in AD FS
 Sie können das Snap-In **Active Directory-Benutzer und -Computer** zum Hinzufügen weiterer Benutzer zu einer Azure Stack-Umgebung verwenden und dabei AD FS als Identitätsanbieter nutzen.
@@ -29,12 +29,13 @@ Sie können das Snap-In **Active Directory-Benutzer und -Computer** zum Hinzufü
 > [!TIP]
 > In diesem Beispiel wird das standardmäßige ASDK-Active Directory „azurestack.local“ verwendet. 
 
-1.  Melden Sie sich bei einem Computer mit einem Konto an, das Zugriff auf die Windows-Verwaltungstools bietet, und öffnen Sie eine neue Microsoft Management Console (MMC).
-2.  Klicken Sie auf **Datei > Snap-Ins hinzufügen bzw. entfernen**.
-3.  Klicken Sie auf **Active Directory-Benutzer und -Computer** > **AzureStack.local** > **Benutzer**.
-4.  Klicken Sie auf **Aktion** > **Neu** > **Benutzer**.
-5.  Geben Sie im Fenster „Neues Objekt – Benutzer“ ein Kennwort ein, und bestätigen Sie es.
-6.  Klicken Sie auf **Weiter**, um die Eingabe von Werten abzuschließen, und dann auf „Fertig stellen“, um den Benutzer zu erstellen.
+1. Melden Sie sich bei einem Computer mit einem Konto an, das Zugriff auf die Windows-Verwaltungstools bietet, und öffnen Sie eine neue Microsoft Management Console (MMC).
+2. Wählen Sie **Datei > Snap-Ins hinzufügen bzw. entfernen** aus.
+3. Klicken Sie auf **Active Directory-Benutzer und -Computer** > **AzureStack.local** > **Benutzer**.
+4. Wählen Sie **Aktion** > **Neu** > **Benutzer** aus.
+5. Geben Sie unter „Neues Objekt – Benutzer“ Detailinformationen für den Benutzer an. Klicken Sie auf **Weiter**.
+6. Geben Sie ein Kennwort an, und bestätigen Sie es.
+7. Wählen Sie **Weiter** aus, um die Eingabe der Werte abzuschließen. Wählen Sie **Fertig stellen** aus, um den Benutzer zu erstellen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

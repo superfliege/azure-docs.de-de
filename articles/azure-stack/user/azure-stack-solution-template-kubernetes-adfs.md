@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7e11da971e86b605e3e17b07ebcdab97eef5b957
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122942"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Bereitstellen von Kubernetes in Azure Stack mithilfe von Active Directory-Verbunddienste
 
@@ -55,105 +55,105 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
 
 1. Ihr Azure Stack-Administrator stellt Ihnen ein Zertifikat und die Informationen für den Dienstprinzipal bereit.
 
-    - Die Dienstprinzipalinformationen sollten wie folgt aussehen:
+   - Die Dienstprinzipalinformationen sollten wie folgt aussehen:
 
-    ```Text  
-        ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
-        ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
-        Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
-        ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
-        PSComputerName        : azs-ercs01
-        RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
-    ```
+     ```Text  
+       ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
+       ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+       Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+       ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+       PSComputerName        : azs-ercs01
+       RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
+     ```
 
-    - Ihr Zertifikat ist eine Datei mit der Erweiterung `.pfx`. Sie speichern Ihr Zertifikat als Geheimnis in einem Schlüsseltresor.
+   - Ihr Zertifikat ist eine Datei mit der Erweiterung `.pfx`. Sie speichern Ihr Zertifikat als Geheimnis in einem Schlüsseltresor.
 
 2. Weisen Sie dem neuen Dienstprinzipal eine Rolle als Mitwirkender für Ihr Abonnement zu. Eine Anleitung hierzu finden Sie unter [Zuweisen einer Rolle](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 3. Erstellen Sie einen Schlüsseltresor zum Speichern des Zertifikats für die Bereitstellung. Verwenden Sie die folgenden PowerShell-Skripts anstelle des Portals.
 
-    - Sie benötigen die folgenden Informationen:
+   - Sie benötigen die folgenden Informationen:
 
-        | Wert | BESCHREIBUNG |
-        | ---   | ---         |
-        | Azure Resource Manager Endpoint | Microsoft Azure Resource Manager ist ein Verwaltungsframework, mit dem Administratoren Azure-Ressourcen bereitstellen, verwalten und überwachen können. Azure Resource Manager kann diese Aufgaben als Gruppe – anstatt einzeln – in einem gemeinsamen Vorgang verarbeiten.<br>Der Endpunkt im Azure Stack Development Kit (ASDK) lautet: `https://management.local.azurestack.external/`.<br>Der Endpunkt in integrierten Systemen lautet: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`. |
-        | Ihre Abonnement-ID | Mit der [Abonnement-ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) greifen Sie in Azure Stack auf Angebote zu. |
-        | Ihr Benutzername | Verwenden Sie nur Ihren Benutzernamen statt Ihres Domänen- und Benutzernamens, z. B. `username` anstelle von `azurestack\username`. |
-        | Der Name der Ressourcengruppe  | Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein. |
-        | KeyVault-Name | Der Name des Tresors.<br> RegEx-Muster: `^[a-zA-Z0-9-]{3,24}$` |
-        | Ressourcengruppenstandort | Der Standort der Ressourcengruppe. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen. |
+       | Wert | BESCHREIBUNG |
+       | ---   | ---         |
+       | Azure Resource Manager Endpoint | Microsoft Azure Resource Manager ist ein Verwaltungsframework, mit dem Administratoren Azure-Ressourcen bereitstellen, verwalten und überwachen können. Azure Resource Manager kann diese Aufgaben als Gruppe – anstatt einzeln – in einem gemeinsamen Vorgang verarbeiten.<br>Der Endpunkt im Azure Stack Development Kit (ASDK) lautet: `https://management.local.azurestack.external/`.<br>Der Endpunkt in integrierten Systemen lautet: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`. |
+       | Ihre Abonnement-ID | Mit der [Abonnement-ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) greifen Sie in Azure Stack auf Angebote zu. |
+       | Ihr Benutzername | Verwenden Sie nur Ihren Benutzernamen statt Ihres Domänen- und Benutzernamens, z. B. `username` anstelle von `azurestack\username`. |
+       | Der Name der Ressourcengruppe  | Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein. |
+       | KeyVault-Name | Der Name des Tresors.<br> RegEx-Muster: `^[a-zA-Z0-9-]{3,24}$` |
+       | Ressourcengruppenstandort | Der Standort der Ressourcengruppe. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen. |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
+   - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
-    ```PowerShell  
-        $armEndpoint="<Azure Resource Manager Endpoint>"
-        $subscriptionId="<Your Subscription ID>"
-        $username="<your user name >"
-        $resource_group_name = "<the resource group name >"
-        $key_vault_name = "<keyvault name>"
-        $resource_group_location="<resource group location>"
+     ```PowerShell  
+       $armEndpoint="<Azure Resource Manager Endpoint>"
+       $subscriptionId="<Your Subscription ID>"
+       $username="<your user name >"
+       $resource_group_name = "<the resource group name >"
+       $key_vault_name = "<keyvault name>"
+       $resource_group_location="<resource group location>"
         
-        # Login Azure Stack Environment
-        Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
-        $mycreds = Get-Credential
-        Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
+       # Login Azure Stack Environment
+       Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
+       $mycreds = Get-Credential
+       Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
         
-        # Create new Resource group and key vault
-        New-AzureRmResourceGroup -Name $resource_group_name -Location $resource_group_location -Force
+       # Create new Resource group and key vault
+       New-AzureRmResourceGroup -Name $resource_group_name -Location $resource_group_location -Force
         
-        # Note, Do not omit -EnabledForTemplateDeployment flag
-        New-AzureRmKeyVault -VaultName $key_vault_name -ResourceGroupName $resource_group_name -Location $resource_group_location -EnabledForTemplateDeployment
+       # Note, Do not omit -EnabledForTemplateDeployment flag
+       New-AzureRmKeyVault -VaultName $key_vault_name -ResourceGroupName $resource_group_name -Location $resource_group_location -EnabledForTemplateDeployment
         
-        # Obtain the security identifier(SID) of the active directory user
-        $adUser = Get-ADUser -Filter "Name -eq '$username'" -Credential $mycreds
-        $objectSID = $adUser.SID.Value
-        # Set the key vault access policy
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
-    ```
+       # Obtain the security identifier(SID) of the active directory user
+       $adUser = Get-ADUser -Filter "Name -eq '$username'" -Credential $mycreds
+       $objectSID = $adUser.SID.Value
+       # Set the key vault access policy
+       Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
+     ```
 
 4. Laden Sie Ihr Zertifikat in den Schlüsseltresor hoch.
 
-    - Sie benötigen die folgenden Informationen:
+   - Sie benötigen die folgenden Informationen:
 
-        | Wert | BESCHREIBUNG |
-        | ---   | ---         |
-        | Zertifikatpfad | Der FQDN oder der Dateipfad zum Zertifikat. |
-        | Zertifikatkennwort | Das Kennwort für das Zertifikat. |
-        | Geheimnisname | Der Geheimnisname, mit dem auf das im Tresor gespeicherte Zertifikat verwiesen wird. |
-        | Name des Schlüsseltresors | Der Namen des im vorherigen Schritt erstellten Schlüsseltresors. |
-        | Azure Resource Manager Endpoint | Der Endpunkt im Azure Stack Development Kit (ASDK) lautet: `https://management.local.azurestack.external/`.<br>Der Endpunkt in integrierten Systemen lautet: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`. |
-        | Ihre Abonnement-ID | Mit der [Abonnement-ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) greifen Sie in Azure Stack auf Angebote zu. |
+       | Wert | BESCHREIBUNG |
+       | ---   | ---         |
+       | Zertifikatpfad | Der FQDN oder der Dateipfad zum Zertifikat. |
+       | Zertifikatkennwort | Das Kennwort für das Zertifikat. |
+       | Geheimnisname | Der Geheimnisname, mit dem auf das im Tresor gespeicherte Zertifikat verwiesen wird. |
+       | Name des Schlüsseltresors | Der Namen des im vorherigen Schritt erstellten Schlüsseltresors. |
+       | Azure Resource Manager Endpoint | Der Endpunkt im Azure Stack Development Kit (ASDK) lautet: `https://management.local.azurestack.external/`.<br>Der Endpunkt in integrierten Systemen lautet: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`. |
+       | Ihre Abonnement-ID | Mit der [Abonnement-ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) greifen Sie in Azure Stack auf Angebote zu. |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
+   - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
-    ```PowerShell  
+     ```PowerShell  
         
-    # upload the pfx to key vault
-    $tempPFXFilePath = "<certificate path>"
-    $password = "<certificate password>"
-    $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<key vault name>"
-    $armEndpoint="<Azure Resource Manager Endpoint>"
-    $subscriptionId="<Your Subscription ID>"
-    # Login Azure Stack Environment
-    Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
-    $mycreds = Get-Credential
-    Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
+     # upload the pfx to key vault
+     $tempPFXFilePath = "<certificate path>"
+     $password = "<certificate password>"
+     $keyVaultSecretName = "<secret name>"
+     $keyVaultName = "<key vault name>"
+     $armEndpoint="<Azure Resource Manager Endpoint>"
+     $subscriptionId="<Your Subscription ID>"
+     # Login Azure Stack Environment
+     Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
+     $mycreds = Get-Credential
+     Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
     
-    $certContentInBytes = [io.file]::ReadAllBytes($tempPFXFilePath)
-    $pfxAsBase64EncodedString = [System.Convert]::ToBase64String($certContentInBytes)
-    $jsonObject = @"
-    {
-    "data": "$pfxAsBase64EncodedString",
-    "dataType" :"pfx",
-    "password": "$password"
-    }
-    "@
-    $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
-    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
-    $keyVaultSecret = Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret 
-    ```
+     $certContentInBytes = [io.file]::ReadAllBytes($tempPFXFilePath)
+     $pfxAsBase64EncodedString = [System.Convert]::ToBase64String($certContentInBytes)
+     $jsonObject = @"
+     {
+     "data": "$pfxAsBase64EncodedString",
+     "dataType" :"pfx",
+     "password": "$password"
+     }
+     "@
+     $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+     $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+     $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
+     $keyVaultSecret = Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret 
+     ```
 
 ## <a name="deploy-kubernetes"></a>Bereitstellen von Kubernetes
 
@@ -226,3 +226,5 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Herstellen einer Clusterverbindung](azure-stack-solution-template-kubernetes-deploy.md#connect-to-your-cluster)
+
+[Aktivieren des Kubernetes-Dashboards](azure-stack-solution-template-kubernetes-dashboard.md)

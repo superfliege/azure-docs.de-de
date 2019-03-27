@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 67022b1d00c8982d7b6e6eff77ffb648bfc557ec
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119002"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Für Azure Stack unterstützte Gastbetriebssysteme
 
@@ -32,7 +32,7 @@ ms.locfileid: "56301280"
 Azure Stack unterstützt die Windows-Gastbetriebssysteme aus der folgenden Tabelle:
 
 | Betriebssystem | BESCHREIBUNG | Im Marketplace verfügbar |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Windows Server, Version 1709 | 64 Bit | Core mit Containern |
 | Windows Server 2016 | 64 Bit |  Datacenter, Datacenter Core, Datacenter mit Containern |
 | Windows Server 2012 R2 | 64 Bit |  Datacenter |
@@ -53,12 +53,12 @@ Datacenter-Editionen stehen im Marketplace zum Download zur Verfügung. Kunden k
 Die im Marketplace verfügbaren Linux-Distributionen enthalten den erforderlichen Windows Azure-Linux-Agent (WALA). Wenn Sie in Azure Stack Ihr eigenes Image verwenden möchten, beachten Sie die Richtlinien unter [Hinzufügen von Linux-Images zu Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Benutzerdefinierte Images müssen mit der neuesten öffentlichen WALA-Version oder mit Version 2.2.20 erstellt werden. Versionen vor 2.2.20 und zwischen 2.2.20 und 2.2.2.35 (exklusive) funktionieren in Azure Stack möglicherweise nicht ordnungsgemäß. 
+> Benutzerdefinierte Images müssen mit der neuesten öffentlichen WALA-Version oder mit Version 2.2.20 erstellt werden. Versionen vor 2.2.20 und zwischen 2.2.20 und 2.2.2.36 funktionieren in Azure Stack möglicherweise nicht ordnungsgemäß. 
 >
 > [cloud-init](https://cloud-init.io/) wird derzeit für Azure Stack nicht unterstützt.
 
 | Distribution | BESCHREIBUNG | Herausgeber | Marketplace |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | 6.9 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
 | 7.4 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
 | ClearLinux | 64 Bit | ClearLinux.org | Ja |

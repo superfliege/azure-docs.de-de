@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 026e37534169fda8dbbf5a568f72046bc6ff55f7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 28b8971b61ff09346b2a2f89cd5ea8ae04e44079
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252046"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819359"
 ---
 # <a name="use-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
@@ -40,6 +40,10 @@ Ihr Azure Stack-Operator (ein Dienstanbieter oder ein Administrator in Ihrer Org
 Das Dashboard enthält eine Reihe von Standardkacheln. Wählen Sie **Dashboard bearbeiten** aus, um das Standarddashboard anzupassen, oder wählen Sie **Neues Dashboard** aus, um ein benutzerdefiniertes Dashboard zu erstellen. Sie können ein Dashboard einfach durch Hinzufügen oder Entfernen von Kacheln anpassen. Wählen Sie beispielsweise zum Hinzufügen einer Kachel „Compute“ die Option **+Ressource erstellen** aus. Klicken Sie mit der rechten Maustaste auf **Compute**, und wählen Sie dann **An Dashboard anheften** aus.
 
 ![Bildschirmaufnahme des Azure Stack-Benutzerportals](media/azure-stack-use-portal/userportal.png)
+
+So stellen Sie die ursprünglichen Dashboardeinstellungen wieder her:
+1.  Wählen Sie **Dashboard bearbeiten** aus. 
+2.  Klicken Sie mit der rechten Maustaste, und wählen Sie **Standardzustand wiederherstellen** aus.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Erstellen von Abonnements und Durchsuchen verfügbarer Ressourcen
 

@@ -7,16 +7,16 @@ manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 3f1c84961f2ad6bd15612917d33982ec96824257
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d7b2c0a39d6d7287b3f956d824239a40e373ea36
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252267"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594762"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Bereitstellen von VM-Skalierungsgruppen in Azure Stack
 
@@ -27,6 +27,7 @@ VM-Skalierungsgruppen sind eine Azure Stack-Computeressource. Verwenden Sie sie 
 Dieser Artikel beschreibt, wie Skalierungsgruppen im Azure Stack-Marketplace verfügbar gemacht werden. Wenn Sie dieses Verfahren abgeschlossen haben, können Ihre Benutzer VM-Skalierungsgruppen zu ihren Abonnements hinzufügen.
 
 VM-Skalierungsgruppen in Azure Stack ähneln VM-Skalierungsgruppen in Azure. Weitere Informationen finden Sie in den folgenden Videos:
+
 * [Mark Russinovich spricht über Azure-Skalierungsgruppen](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
@@ -34,15 +35,15 @@ In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Marketplace**: Registrieren Sie Azure Stack global für Azure, um Marketplace-Elemente verfügbar zu machen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
-- **Betriebssystemimage**: Bevor eine VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) erstellt werden kann, müssen Sie die VM-Images für die Verwendung in der VMSS aus [Azure Stack-Marketplace](azure-stack-download-azure-marketplace-item.md) herunterladen. Die Images müssen bereits vorhanden sein, bevor ein Benutzer eine neue VMSS erstellen kann. 
+* **Marketplace**: Registrieren Sie Azure Stack global für Azure, um Marketplace-Elemente verfügbar zu machen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
+* **Betriebssystemimage**: Bevor eine VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) erstellt werden kann, müssen Sie die VM-Images für die Verwendung in der VMSS aus [Azure Stack-Marketplace](azure-stack-download-azure-marketplace-item.md) herunterladen. Die Images müssen bereits vorhanden sein, bevor ein Benutzer eine neue VMSS erstellen kann.
 
-## <a name="use-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals 
+## <a name="use-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
 >[!IMPORTANT]  
 > Die Informationen in diesem Abschnitt gelten bei Verwendung von Azure Stack Version 1808 oder höher. Wenn Ihre Version 1807 oder niedriger ist, lesen Sie [Hinzufügen der VM-Skalierungsgruppe (vor 1808)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
 
-1. Melden Sie sich beim Azure Stack-Portal an. Navigieren Sie dann zu **Alle Dienste** und **VM-Skalierungsgruppen**, und wählen Sie unter **COMPUTE** die Option **VM-Skalierungsgruppen** aus. 
+1. Melden Sie sich beim Azure Stack-Portal an. Navigieren Sie dann zu **Alle Dienste** und **VM-Skalierungsgruppen**, und wählen Sie unter **COMPUTE** die Option **VM-Skalierungsgruppen** aus.
    ![Auswählen von VM-Skalierungsgruppen](media/azure-stack-compute-add-scalesets/all-services.png)
 
 2. Wählen Sie ***VM-Skalierungsgruppen erstellen*** aus.
@@ -51,7 +52,7 @@ In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung
 3. Geben Sie Werte in die leeren Felder ein, und wählen Sie aus den Dropdownlisten das **Betriebssystem-Datenträgerimage**,das **Abonnement**, und die **Instanzgröße** aus. Wählen Sie **Ja** für **Verwaltete Datenträger verwenden** aus. Klicken Sie dann auf **Erstellen**.
     ![Konfigurieren und Erstellen](media/azure-stack-compute-add-scalesets/create.png)
 
-4. Klicken Sie zum Anzeigen Ihrer neuen VM-Skalierungsgruppe auf **Alle Ressourcen**, suchen Sie nach dem Namen der VM-Skalierungsgruppe, und klicken Sie in den Suchergebnissen auf ihren Namen. 
+4. Klicken Sie zum Anzeigen Ihrer neuen VM-Skalierungsgruppe auf **Alle Ressourcen**, suchen Sie nach dem Namen der VM-Skalierungsgruppe, und klicken Sie in den Suchergebnissen auf ihren Namen.
    ![Anzeigen der Skalierungsgruppe](media/azure-stack-compute-add-scalesets/search.png)
 
 ## <a name="add-the-virtual-machine-scale-set-prior-to-version-1808"></a>Hinzufügen der VM-Skalierungsgruppe (vor Version 1808)
@@ -73,7 +74,7 @@ Nach der Erstellung einer VM-Skalierungsgruppe können Benutzer Images in der Sk
 
 1. In der Bereitstellungsvorlage der VM-Skalierungsgruppe ist **latest** für **version** angegeben:  
 
-   Wenn im Abschnitt `imageReference` der Vorlage für eine Skalierungsgruppe `version` auf **latest** festgelegt ist, nutzen Vorgänge zum zentralen Hochskalieren für die Skalierungsgruppe die neueste verfügbare Version des Images für die Skalierungsgruppeninstanzen. Nach Abschluss eines Vorgangs zum zentralen Hochskalieren können Sie ältere VM-Skalierungsgruppeninstanzen löschen. Die Werte für `publisher`, `offer` und `sku` bleiben unverändert. 
+   Wenn im Abschnitt `imageReference` der Vorlage für eine Skalierungsgruppe `version` auf **latest** festgelegt ist, nutzen Vorgänge zum zentralen Hochskalieren für die Skalierungsgruppe die neueste verfügbare Version des Images für die Skalierungsgruppeninstanzen. Nach Abschluss eines Vorgangs zum zentralen Hochskalieren können Sie ältere VM-Skalierungsgruppeninstanzen löschen. Die Werte für `publisher`, `offer` und `sku` bleiben unverändert.
 
    Das folgende JSON-Beispiel gibt `latest` an:  
 
@@ -88,12 +89,12 @@ Nach der Erstellung einer VM-Skalierungsgruppe können Benutzer Images in der Sk
 
    Bevor beim zentralen Hochskalieren ein neues Image verwendet werden kann, müssen Sie dieses Image herunterladen:  
 
-   - Wenn das Image im Marketplace neuer ist als das Image in der Skalierungsgruppe, laden Sie das neue Image herunter, das das ältere Image ersetzt. Nachdem der Benutzer das Image ersetzt hat, kann er mit dem zentralen Hochskalieren fortfahren. 
+   * Wenn das Image im Marketplace neuer ist als das Image in der Skalierungsgruppe, laden Sie das neue Image herunter, das das ältere Image ersetzt. Nachdem der Benutzer das Image ersetzt hat, kann er mit dem zentralen Hochskalieren fortfahren.
 
-   - Wenn die Imageversion im Marketplace der Imageversion in der Skalierungsgruppe entspricht, löschen Sie das in der Skalierungsgruppe verwendete Image, und laden Sie das neue Image herunter. In der Zeit zwischen dem Entfernen des ursprünglichen Images und dem Herunterladen des neuen Images können Sie nicht zentral hochskalieren. 
-      
-     Bei diesem Vorgang müssen Images neu syndiziert werden, die das in Version 1803 eingeführte platzsparende Dateiformat verwenden. 
- 
+   * Wenn die Imageversion im Marketplace der Imageversion in der Skalierungsgruppe entspricht, löschen Sie das in der Skalierungsgruppe verwendete Image, und laden Sie das neue Image herunter. In der Zeit zwischen dem Entfernen des ursprünglichen Images und dem Herunterladen des neuen Images können Sie nicht zentral hochskalieren.
+
+     Bei diesem Vorgang müssen Images neu syndiziert werden, die das in der Version 1803 eingeführte platzsparende Dateiformat verwenden.
+
 2. In der Bereitstellungsvorlage der VM-Skalierungsgruppe ist **nicht** „latest“ für **version**, sondern eine Versionsnummer angegeben:  
 
     Wenn Sie ein Image einer neueren Version herunterladen (sodass sich die verfügbare Version ändert), kann die Skalierungsgruppe nicht zentral hochskaliert werden. Dies ist beabsichtigt, da die in der Skalierungsgruppenvorlage angegebene Imageversion verfügbar sein muss.  
@@ -107,19 +108,20 @@ Sie können die Größe einer *VM-Skalierungsgruppe* skalieren, um sie zu vergr�
 1. Wählen Sie im Portal Ihre Skalierungsgruppe aus, und wählen Sie dann **Skalierung** aus.
 
 2. Verwenden Sie den Schieberegler, um die neue Ebene der Skalierung für diese VM-Skalierungsgruppe festzulegen, und klicken Sie dann auf **Speichern**.
-     ![Skalieren der Skalierungsgruppe](media/azure-stack-compute-add-scalesets/scale.png)
+
+     ![Skalieren der Gruppe](media/azure-stack-compute-add-scalesets/scale.png)
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>Entfernen einer VM-Skalierungsgruppe
 
 Führen Sie zum Entfernen eines Katalogelements einer VM-Skalierungsgruppe den folgenden PowerShell-Befehl aus:
 
-```PowerShell  
+```powershell  
 Remove-AzsGalleryItem
 ```
 
 > [!NOTE]
-> Das Katalogelement wird unter Umständen nicht sofort entfernt. Möglicherweise müssen Sie das Portal mehrmals aktualisieren, bevor das Element aus dem Marketplace angezeigt wird.
+> Das Katalogelement wird unter Umständen nicht sofort entfernt. Möglicherweise müssen Sie das Portal mehrmals aktualisieren, bevor zu sehen ist, dass das Element aus dem Marketplace entfernt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Herunterladen von Marketplace-Elementen von Azure in Azure Stack](azure-stack-download-azure-marketplace-item.md)
+* [Herunterladen von Marketplace-Elementen von Azure in Azure Stack](azure-stack-download-azure-marketplace-item.md)

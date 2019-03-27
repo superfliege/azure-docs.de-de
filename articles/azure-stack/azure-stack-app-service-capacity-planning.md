@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
-ms.author: jeffgilb
+ms.date: 03/13/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 20b79b3c2581db94627746f52ed6837aa80b6be5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: 06bafbcf3e668ba17b1245b9352e942e02569997
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447737"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852364"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack
 
@@ -52,7 +52,7 @@ Der Azure App Service-Controller verbraucht in der Regel nur wenig CPU-, Arbeits
 
 **Empfohlene Mindestanzahl**: Zwei Instanzen von A1 Standard
 
-Das Front-End leitet Anforderungen abhängig von der Verfügbarkeit der Webworker an Webworker weiter. Für Hochverfügbarkeit sollten Sie über mehr als ein Front-End verfügen, auch mehr als zwei Front-Ends sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
+Das Front-End leitet Anforderungen abhängig von der Webworkerverfügbarkeit an Webworker weiter. Für Hochverfügbarkeit sollten Sie über mehr als ein Front-End verfügen, auch mehr als zwei Front-Ends sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
 
 ## <a name="management-role"></a>Verwaltungsrolle
 
@@ -93,9 +93,17 @@ Beachten Sie bei der Entscheidung über die Anzahl der zu verwendenden freigegeb
 
    Weitere Informationen zum Hinzufügen weiterer Workerinstanzen finden Sie unter [Hinzufügen weiterer Workerrollen](azure-stack-app-service-add-worker-roles.md).
 
+### <a name="additional-considerations-for-dedicated-workers-during-upgrade-and-maintenance"></a>Weitere Überlegungen im Zusammenhang mit dedizierten Workern bei Upgrades und Wartungsmaßnahmen
+
+Bei Upgrades und Wartungsmaßnahmen für Worker führt Azure App Service in Azure Stack die Wartung nacheinander für jeweils 20 Prozent der einzelnen Workertarife durch.  Cloudadministratoren müssen daher darauf achten, dass pro Workertarif immer ein Poolanteil von 20 Prozent verfügbar ist, um Dienstausfälle bei Upgrades und Wartungsmaßnahmen zu vermeiden.  Wenn in einem Workertarif also beispielsweise zehn Worker vorhanden sind, stellen Sie sicher, dass zwei Worker für Upgrades und Wartungsmaßnahmen verfügbar sind. Sollten alle zehn Worker zugeordnet werden, müssen Sie den Workertarif zentral hochskalieren, um einen Pool mit verfügbaren Workern bereitzustellen. Während Upgrades und Wartungsmaßnahmen verschiebt Azure App Service Workloads in verfügbare Worker, um zu gewährleisten, dass die Workloads weiter ausgeführt werden. Sollten während eines Upgrades jedoch keine verfügbaren Worker vorhanden sein, wird die Ausführung der Mandantenworkloads möglicherweise unterbrochen.  Bei freigegebenen Workern müssen Kunden keine zusätzlichen Worker bereitstellen, da Mandantenanwendungen innerhalb der verfügbaren Worker automatisch zugeordnet werden. Hochverfügbarkeit ist in diesem Tarif jedoch erst ab zwei Workern möglich.
+
+Cloudadministratoren können ihre Workertarifzuordnung in der App Service-Verwaltung des Azure Stack-Verwaltungsportals überwachen.  Navigieren Sie zu App Service, und wählen Sie im linken Bereich die Option „Workertarife“ aus.  Die Tabelle mit den Workertarifen enthält den Namen des Workertarifs sowie Größe, verwendetes Image, Anzahl verfügbarer (nicht zugeordneter) Worker, Gesamtanzahl von Workern im jeweiligen Tarif und den allgemeinen Zustand des Workertarifs.
+
+![App Service-Verwaltung: Workertarife][1]
+
 ## <a name="file-server-role"></a>Dateiserverrolle
 
-Für die Rolle „Dateiserver“ können Sie einen eigenständigen Dateiserver für Entwicklung und Tests verwenden, z.B. können Sie bei der Bereitstellung von Azure App Service auf dem Azure Stack Development Kit (ASDK) die folgende Vorlage verwenden: https://aka.ms/appsvconmasdkfstemplate. Für Produktionszwecke sollten Sie einen vorkonfigurierten Windows-Dateiserver oder einen vorkonfigurierten Nicht-Windows-Dateiserver verwenden.
+Für die Dateiserverrolle kann ein eigenständiger Dateiserver zu Entwicklungs- und Testzwecken verwendet werden. So können Sie beispielsweise bei der Bereitstellung von Azure App Service für das Azure Stack Development Kit (ASDK) [diese Vorlage](https://aka.ms/appsvconmasdkfstemplate) verwenden.  Für Produktionszwecke sollten Sie einen vorkonfigurierten Windows-Dateiserver oder einen vorkonfigurierten Nicht-Windows-Dateiserver verwenden.
 
 In Produktionsumgebungen verursacht die Dateiserverrolle hohe Datenträger-E/A-Lasten. Da sie alle Inhalts- und Anwendungsdateien für Benutzerwebsites enthält, sollten Sie eine der folgenden Ressourcen für diese Rolle vorkonfigurieren:
 
@@ -112,3 +120,6 @@ Weitere Informationen finden Sie unter [Bereitstellen eines Dateiservers](azure-
 Weitere Informationen finden Sie im folgenden Artikel:
 
 [Vor den ersten Schritten mit App Service in Azure Stack](azure-stack-app-service-before-you-get-started.md)
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

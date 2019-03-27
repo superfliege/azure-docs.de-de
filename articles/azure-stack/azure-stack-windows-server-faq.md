@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249679"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649899"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Häufig gestellte Fragen zum Azure Stack-Marketplace für Windows Server
 
@@ -38,7 +38,7 @@ Falls Virtual Machine Scale Sets auf eine bestimmte Version verweist, sollten Si
 
 Microsoft bietet zwei Versionen von Windows Server-Images über den Azure Stack-Marketplace an:
 
-- **Nutzungsbasierte Bezahlung**: Diese Images führen die Windows-Verbrauchseinheiten zum vollen Preis aus. 
+- **Nutzungsbasierte Bezahlung**: Diese Images führen die Windows-Verbrauchseinheiten zum vollen Preis aus.
    Zielgruppe: Enterprise Agreement-Kunden (EA), die das *Nutzungsabrechnungsmodell* verwenden, sowie CSPs, die nicht die SPLA-Lizenzierung verwenden möchten.
 - **BYOL (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz)**: Diese Images führen grundlegende Verbrauchseinheiten aus.
    Zielgruppe: EA-Kunden mit einer Windows Server-Lizenz, und CSPs, die die SPLA-Lizenzierung verwenden.
@@ -74,20 +74,20 @@ Um einen virtuellen Windows Server-Computer in Azure Stack zu aktivieren, müsse
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>Wie kann ich sicherstellen, dass mein virtueller Computer aktiviert ist?
 
-Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten aus: 
+Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten aus:
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 Wenn er richtig aktiviert ist, wird dies klar und deutlich mit dem Hostnamen in der `slmgr`-Ausgabe angezeigt. Verlassen Sie sich nicht auf Wasserzeichen in der Anzeige, da sie möglicherweise nicht auf dem neuesten Stand sind oder von einem anderen hinter Ihrem geschalteten virtuellen Computer angezeigt werden.
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>Meine VM ist nicht für die Verwendung von AVMA konfiguriert. Wie kann ich dies beheben?
 
-Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten aus: 
+Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten aus:
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
 Die für das Image zu verwendenden Schlüssel werden im Artikel [Automatische Aktivierung virtueller Computer](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) aufgeführt.

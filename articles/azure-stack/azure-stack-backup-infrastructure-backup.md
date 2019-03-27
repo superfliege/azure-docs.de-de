@@ -5,7 +5,7 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-mss.service: azure-stack
+ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,26 +13,26 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 77493782802eeb29313b57d11442535f1734c12e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097384"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285920"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Sicherung und Datenwiederherstellung für Azure Stack mit dem Dienst für die Infrastruktursicherung
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Sie können Konfigurations- und Dienstdaten mithilfe des Diensts für die Infrastruktursicherung sichern und wiederherstellen. Jede Azure Stack-Installation enthält eine Instanz des Diensts. Sie können die vom Dienst erstellten Sicherungen für die erneute Bereitstellung der Azure Stack-Cloud verwenden, um Identitäts-, Sicherheits- und Azure Resource Manager-Daten wiederherzustellen.
+Sie können Konfigurations- und Dienstdaten mithilfe des Diensts für die Infrastruktursicherung sichern und wiederherstellen. Jede Azure Stack-Installation enthält eine Instanz des Diensts. Sie können die vom Dienst erstellten Sicherungen für die erneute Bereitstellung der Azure Stack-Cloud verwenden, um Identitäts-, Sicherheits- und Azure Resource Manager-Daten wiederherzustellen. 
 
 Sie können die Sicherung aktivieren, wenn Sie bereit sind, Ihre Cloud in der Produktion einzusetzen. Aktivieren Sie die Sicherung nicht, wenn Sie planen, für einen längeren Zeitraum Tests und Überprüfungen durchzuführen.
 
 Stellen Sie vor der Aktivierung des Sicherungsdiensts sicher, dass die [Voraussetzungen erfüllt sind](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Der Dienst für die Infrastruktursicherung deckt keine Benutzerdaten und Anwendungen ab. <!-- See the following articles for instructions on backing up and restore [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), and [MySQL](https://aka.ms/azure-stack-mysql) resource providers and associated user data. -->
+> Der Dienst für die Infrastruktursicherung deckt keine Benutzerdaten und Anwendungen ab. Weitere Informationen zum Schutz von IaaS-VM-basierten Anwendungen finden Sie unter [Schutz von in Azure Stack bereitgestellten virtuellen Computern](user/azure-stack-manage-vm-protect.md). Umfassende Informationen zum Schützen von Anwendungen in Azure Stack finden Sie im Whitepaper [Azure Stack: Considerations for business continuity and disaster recovery](http://aka.ms/azurestackbcdrconsiderationswp) (Azure Stack: Überlegungen zu Business Continuity & Disaster Recovery).
 
 ## <a name="the-infrastructure-backup-service"></a>Dienst für die Infrastruktursicherung
 

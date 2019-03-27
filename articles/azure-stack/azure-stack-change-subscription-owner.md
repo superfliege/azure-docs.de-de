@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
-ms.openlocfilehash: de5c20cf2113bcd6ce902a05d4613376145a4da3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 1d9dd7d19c196679ead9b552bcf296b4acd4ca68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649406"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842888"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Ändern des Besitzers für ein Azure Stack-Benutzerabonnement
 
@@ -49,7 +49,7 @@ Ersetzen Sie vor der Skriptausführung die folgenden Werte im Skript:
 - **$ArmEndpoint**: Der Resource Manager-Endpunkt für Ihre Umgebung
 - **$TenantId**: Ihre Mandanten-ID
 - **$SubscriptionId**: Ihre Abonnement-ID.
-- **$OwnerUpn**: Ein Konto wie z. B. **user@example.com**, das als neuer Abrechnungsbesitzer hinzufügt wird
+- **$OwnerUpn**: Ein Konto (beispielsweise **Benutzer\@example.com**), das als neuer Abrechnungsbesitzer hinzufügt wird
 
 ```powershell
 # Set up Azure Stack admin environment

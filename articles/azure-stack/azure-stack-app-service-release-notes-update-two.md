@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 0fa938b02b24bd79017bede5346b882e6587bd5d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766923"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848897"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 2
 
@@ -56,7 +56,7 @@ Update 2 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 - Updates für den Kerndienst zur Verbesserung der Zuverlässigkeit und der Fehlermeldungen, die eine einfachere Diagnose von häufigen Problemen ermöglichen.
 
 - **Updates für folgende Anwendungsframeworks und Tools**:
-  - .NET Framework 4.7.1 wurde hinzugefügt
+  - .NET Framework 4.7.1 wurde hinzugefügt.
   - Hinzugefügte **Node.JS**-Versionen:
     - NodeJS 6.12.3
     - NodeJS 8.9.4
@@ -64,7 +64,7 @@ Update 2 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
     - NodeJS 8.11.1
   - Hinzugefügte **NPM**-Versionen:
     - 5.6.0
-  - Aktualisierte die .NET Core-Komponenten, sodass diese mit Azure App Service in einer öffentlichen Cloud konsistent sind.
+  - .NET Core-Komponenten wurden aktualisiert, um mit Azure App Service in einer öffentlichen Cloud konsistent zu sein.
   - Aktualisierte Kudu
 
 - Feature für den automatischen Austausch von Bereitstellungsslots aktiviert – [Konfigurieren des automatischen Austauschs](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
@@ -84,15 +84,15 @@ Update 2 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 - Worker können den Dateiserver nicht erreichen, wenn der App Service in einem bestehenden virtuellen Netzwerk bereitgestellt wird und der Dateiserver nur im privaten Netzwerk verfügbar ist.
 
 Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver entschieden haben, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen, die den SMB-Verkehr zwischen dem Workersubnetz und dem Dateiserver ermöglicht. Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
- * Quelle: Beliebig
- * Quellportbereich: *
- * Ziel: IP-Adressen
- * IP-Zieladressbereich: Bereich der IPs für Ihren Dateiserver
- * Zielportbereich: 445
- * Protokoll: TCP
- * Aktion: ZULASSEN
- * Priorität: 700
- * Name: Outbound_Allow_SMB445
+* Quelle: Beliebig
+* Quellportbereich: *
+* Ziel: IP-Adressen
+* IP-Zieladressbereich: Bereich der IPs für Ihren Dateiserver
+* Zielportbereich: 445
+* Protokoll: TCP
+* Aktion: ZULASSEN
+* Priorität: 700
+* Name: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Bekannte Probleme von Cloudadministratoren, die Azure App Service in Azure Stack betreiben
 
