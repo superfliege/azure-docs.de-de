@@ -20,7 +20,7 @@ metadata:
   ms.author: jmartens
   ROBOTS: NOINDEX
 abstract:
-  description: <div class="NOTE"><p>Hinweis</p><p><strong>Azure Batch AI wird eingestellt.</strong> Die Unterstützung für diesen Dienst wird nach und nach eingestellt. Die Funktionen von Azure Batch AI sind nun als verwaltetes Computeziel in Azure Machine Learning Service verfügbar. Weitere Informationen finden Sie unter <a href="overview-what-happened-batch-ai" data-linktype="relative-path">Was passiert mit Batch AI?</a>.</p></div>
+  description: <div class="NOTE"><p>Hinweis</p><p><strong>Azure Batch AI wird eingestellt.</strong> Die Unterstützung für diesen Dienst wird nach und nach eingestellt. Die Funktionen von Azure Batch AI sind nun als verwaltetes Computeziel in Azure Machine Learning Service verfügbar. Weitere Informationen finden Sie unter <a href="overview-what-happened-batch-ai" data-linktype="relative-path">Was passiert mit Batch AI?</a></p></div>
 sections:
 - title: Fünfminütige Schnellstarts
   items:
