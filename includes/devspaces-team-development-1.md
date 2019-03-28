@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 1f6e0a8fd2cc14877b98bc12b0d2c8632edbbbb9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 40c1be20df845b975c023616e38cbb932c985735
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664391"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439533"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Teamentwicklung mit Azure Dev Spaces
 
@@ -70,9 +70,11 @@ Als Erstes müssen wir eine Baseline unserer Dienste bereitstellen. Diese Bereit
 >
 > ![CI/CD-Beispieldiagramm](../articles/dev-spaces/media/common/ci-cd-complex.png)
 
-Ihre Baseline sollte nun ausgeführt werden. Führen Sie den Befehl `azds list-up` aus, um eine Ausgabe wie die folgende zu erhalten:
+Ihre Baseline sollte nun ausgeführt werden. Führen Sie den Befehl `azds list-up --all` aus, um eine Ausgabe wie die folgende zu erhalten:
 
 ```
+$ azds list-up --all
+
 Name                          DevSpace  Type     Updated  Status
 ----------------------------  --------  -------  -------  -------
 mywebapi                      dev       Service  3m ago   Running
@@ -90,7 +92,7 @@ Wenn Sie Ihre eigene Version von _mywebapi_ in einem anderen Bereich als _dev_ a
 azds space select --name scott
 ```
 
-Wählen Sie bei entsprechender Aufforderung _dev_ als übergeordneten Entwicklungsbereich**** aus. Dadurch wird unser neuer Bereich (_dev/scott_) vom Bereich _dev_ abgeleitet. Wir werden gleich sehen, wie uns dies beim Testen behilflich ist.
+Wählen Sie bei entsprechender Aufforderung _dev_ als **übergeordneten Entwicklungsbereich** aus. Dadurch wird unser neuer Bereich (_dev/scott_) vom Bereich _dev_ abgeleitet. Wir werden gleich sehen, wie uns dies beim Testen behilflich ist.
 
 Für den neuen Bereich haben wir aufgrund unseres eingangs angenommenen Beispielszenarios den Namen _scott_ verwendet, damit die Kollegen wissen, wer damit arbeitet. Der Name kann jedoch frei gewählt werden und natürlich auch andere Informationen vermitteln. Beispiele wären etwa _sprint4_ und _demo_. _dev_ fungiert in jedem Fall als Baseline für alle Entwickler, die an einem Teil dieser Anwendung arbeiten:
 
