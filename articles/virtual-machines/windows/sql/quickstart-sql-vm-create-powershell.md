@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 24dfc9602f7329b4ea56db2257f29f5711510d22
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 43a5f3be9b176cf25e643d6a5231669922300b98
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977795"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485933"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwendung von Azure PowerShell
 
@@ -44,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Öffnen Sie PowerShell, und führen Sie den Befehl **Connect-AzAccount** aus, um den Zugriff auf Ihr Azure-Konto einzurichten.
 
-   ```PowerShell
+   ```powershell
    Connect-AzAccount
    ```
 
@@ -54,19 +54,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Definieren Sie eine Variable mit einem eindeutigen Ressourcengruppennamen. Dieser Name wird der Einfachheit halber bei den übrigen Befehlen in dieser Schnellstartanleitung als Grundlage für andere Ressourcennamen verwendet.
 
-   ```PowerShell
+   ```powershell
    $ResourceGroupName = "sqlvm1"
    ```
 
 1. Definieren Sie einen Standort einer Azure-Zielregion für alle VM-Ressourcen.
 
-   ```PowerShell
+   ```powershell
    $Location = "East US"
    ```
 
 1. Erstellen Sie die Ressourcengruppe.
 
-   ```PowerShell
+   ```powershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Location
    ```
 
@@ -93,7 +93,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Erstellen Sie eine Netzwerksicherheitsgruppe. Konfigurieren Sie Regeln, um Remotedesktop- und SQL Server-Verbindungen zuzulassen.
 
-   ```PowerShell
+   ```powershell
    # Rule to allow remote desktop (RDP)
    $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
@@ -113,7 +113,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Erstellen Sie die Netzwerkschnittstelle.
 
-   ```PowerShell
+   ```powershell
    $InterfaceName = $ResourceGroupName + "int"
    $Interface = New-AzNetworkInterface -Name $InterfaceName `
       -ResourceGroupName $ResourceGroupName -Location $Location `
@@ -134,7 +134,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Erstellen Sie ein VM-Konfigurationsobjekt, und erstellen Sie dann den virtuellen Computer. Der folgende Befehl erstellt einen virtuellen Computer mit SQL Server 2017 Developer Edition unter Windows Server 2016:
 
-   ```PowerShell
+   ```powershell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
    $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
@@ -153,7 +153,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie die [Erweiterung für SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md) installieren. Führen Sie nach der Erstellung des virtuellen Computers den folgenden Befehl aus, um den Agent auf dem neuen virtuellen Computer zu installieren:
 
-   ```PowerShell
+   ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
@@ -161,7 +161,7 @@ Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie 
 
 1. Rufen Sie mithilfe des folgenden Befehls die öffentliche IP-Adresse für den neuen virtuellen Computer ab:
 
-   ```PowerShell
+   ```powershell
    Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
@@ -185,7 +185,7 @@ Sie sind nun lokal mit SQL Server verbunden. Falls Sie eine Remoteverbindung her
 
 Wenn der virtuelle Computer nicht kontinuierlich ausgeführt werden muss, können Sie ihn beenden, wenn er nicht verwendet wird, um unnötige Kosten zu vermeiden. Mit dem folgenden Befehl wird der virtuelle Computer beendet, bleibt aber für eine spätere Verwendung verfügbar.
 
-```PowerShell
+```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 

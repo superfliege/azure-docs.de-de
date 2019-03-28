@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: afe71953e9917ccf274742124d59cb790f15521b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445218"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways mit PowerShell
 
@@ -118,7 +118,7 @@ Nachdem die Erstellung des Gateways abgeschlossen ist, können Sie eine Verbindu
 
 ## <a name="view-the-gateway-public-ip-address"></a>Anzeigen der öffentlichen IP-Adresse des Gateways
 
-Wenn Ihnen der Name der öffentlichen IP-Adresse bekannt ist, können Sie die öffentliche IP-Adresse, die dem Gateway zugewiesen ist, mit [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azurermps-6.8.1) anzeigen.
+Wenn Ihnen der Name der öffentlichen IP-Adresse bekannt ist, können Sie die öffentliche IP-Adresse, die dem Gateway zugewiesen ist, mit [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) anzeigen.
 
 Falls Ihre Sitzung abgelaufen ist, kopieren Sie die allgemeinen Netzwerkparameter vom Anfang dieses Tutorials in die neue Sitzung, und fahren Sie anschließend fort.
 
