@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: edaa0cdcd98ce529ccbf9bf6aafaacf57a3ea383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540010"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337526"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -24,9 +24,9 @@ Die Sequenznummer ist eine Zeichenfolgendarstellung einer Hexadezimalzahl. Sie k
 
 * Ein aktives Azure-Konto. Wenn Sie noch nicht über eines verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/pricing/free-trial/).
 
-* Ein aktives Azure Cosmos DB-SQL-API-Konto. Wenn Sie noch keines erstellt haben, finden Sie unter [Erstellen eines Datenbankkontos](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) eine exemplarische Vorgehensweise.
+* Ein aktives Azure Cosmos DB-SQL-API-Konto. Wenn Sie noch keines erstellt haben, finden Sie unter [Erstellen eines Datenbankkontos](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-an-account) eine exemplarische Vorgehensweise.
 
-* Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection).
+* Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-database-and-a-collection).
 
 * Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md) eine exemplarische Vorgehensweise. 
 
@@ -350,5 +350,3 @@ Wenn Sie ein Azure Cosmos DB-Konto aus dem Azure-Portal entfernen möchten, klic
 * [Ausprobieren des Tutorials zu IoT Hub-Ereignissen](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * Erfahren Sie mehr über die Möglichkeiten mit [Event Grid](../event-grid/overview.md).
-
-

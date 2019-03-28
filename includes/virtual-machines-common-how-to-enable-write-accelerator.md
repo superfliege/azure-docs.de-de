@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/22/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 44533bc6ed0656be387fa76c0e975046ad7f79ab
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741113"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494780"
 ---
 # <a name="enable-write-accelerator"></a>Aktivieren der Schreibbeschleunigung
 
@@ -96,7 +96,7 @@ Setzen Sie den Parameter auf „$true“ oder „$false“, um die Unterstützun
 
 Im Folgenden sehen Sie einige Beispielbefehle:
 
-```PowerShell
+```powershell
 New-AzVMConfig | Set-AzVMOsDisk | Add-AzVMDataDisk -Name "datadisk1" | Add-AzVMDataDisk -Name "logdisk1" -WriteAccelerator | New-AzVM
 
 Get-AzVM | Update-AzVM -OsDiskWriteAccelerator $true
@@ -114,7 +114,7 @@ Sie können das folgende Skript verwenden, um Ihrer VM einen neuen Datenträger 
 
 Ersetzen Sie `myVM`, `myWAVMs`, `log001`, die Größe des Datenträgers und die LUN-ID des Datenträgers durch Werte, die für Ihre Bereitstellung geeignet sind.
 
-```PowerShell
+```powershell
 # Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -137,7 +137,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 Sie können dieses Skript verwenden, um die Schreibbeschleunigung auf einem vorhandenen Datenträger zu aktivieren. Ersetzen Sie `myVM`, `myWAVMs`, und `test-log001` durch Werte, die für Ihre Bereitstellung geeignet sind. Das Skript fügt die Schreibbeschleunigung zu einem vorhandenen Datenträger hinzu, wenn der Wert für **$newstatus** auf „$true“ festgelegt ist. Mit dem Wert „$false“ wird die Schreibbeschleunigung auf einem Datenträger deaktiviert.
 
-```PowerShell
+```powershell
 #Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group

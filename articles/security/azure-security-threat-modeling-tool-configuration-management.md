@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863592"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498382"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitskonzept: Konfigurationsverwaltung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Übersicht über das ASP.NET-Debugging](https://msdn2.microsoft.com/library/ms227556.aspx), [Übersicht über die ASP.NET-Ablaufverfolgung](https://msdn2.microsoft.com/library/bb386420.aspx), [Vorgehensweise: Aktivieren der Ablaufverfolgung für eine ASP.NET-Anwendung](https://msdn2.microsoft.com/library/0x5wc973.aspx), [Vorgehensweise: Aktivieren des Debuggens von ASP.NET-Anwendungen](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Referenzen**              | [Übersicht über das ASP.NET-Debugging](https://msdn.microsoft.com/library/ms227556.aspx), [Übersicht über die ASP.NET-Ablaufverfolgung](https://msdn.microsoft.com/library/bb386420.aspx), [Vorgehensweise: Aktivieren der Ablaufverfolgung für eine ASP.NET-Anwendung](https://msdn.microsoft.com/library/0x5wc973.aspx), [Vorgehensweise: Aktivieren des Debuggens von ASP.NET-Anwendungen](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Schritte** | Wenn die Ablaufverfolgung für die Seite aktiviert ist, erhält jeder Browser, der die Seite anfordert, auch die Ablaufverfolgungsinformationen, die Daten zum internen Serverzustand und zum Workflow enthalten. Diese Informationen sind möglicherweise sicherheitsrelevant. Wenn das Debuggen für die Seite aktiviert ist, führen Fehler auf dem Server dazu, dass der Browser die vollständigen Daten der Stapelüberwachung erhält. Diese Daten enthalten möglicherweise sicherheitsrelevante Informationen zum Workflow des Servers. |
 
 ## <a id="js-trusted"></a>Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.

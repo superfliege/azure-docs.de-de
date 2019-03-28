@@ -1,21 +1,19 @@
 ---
 title: Erstellen eines neuen Berichts aus einem Dataset in Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
 description: Berichte zu Power BI-Arbeitsbereichssammlungen können nun aus einem Dataset in Ihrer eigenen Anwendung erstellt werden.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 9b3a91399ddcae687a982527c02d23d31eec4289
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 92f75a15374738d02972adc012b3a28918d7825d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891483"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518812"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Erstellen eines neuen Berichts aus einem Dataset in Power BI-Arbeitsbereichssammlungen
 

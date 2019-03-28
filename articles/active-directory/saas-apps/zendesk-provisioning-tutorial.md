@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71e9a3f614048185d9444011da3c47b88931d0c5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097990"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499946"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zendesk für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 *   Ein Benutzerkonto in Zendesk mit Administratorberechtigungen 
 
 > [!NOTE]
-> Die Integration der Azure AD-Bereitstellung beruht auf der [Zendesk-REST-API](https://developer.zendesk.com/rest_api/docs/core/introduction), die Zendesk-Teams mit dem Enterprise-Plan oder einem höheren Plan zur Verfügung steht.
+> Die Integration der Azure AD-Bereitstellung beruht auf der [Zendesk-REST-API](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources), die Zendesk-Teams mit dem Enterprise-Plan oder einem höheren Plan zur Verfügung steht.
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Hinzufügen von Zendesk aus dem Katalog
 Bevor Sie Zendesk für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Zendesk aus dem Azure AD-Anwendungskatalog zu Ihrer Liste verwalteter SaaS-Anwendungen hinzufügen.

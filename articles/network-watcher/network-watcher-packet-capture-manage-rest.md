@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 48688c58115a002508f9df0b242ea3e2d2d94719
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855434"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480701"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-REST-API
 
@@ -50,7 +50,7 @@ Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Netwo
 
 ## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 
-```PowerShell
+```powershell
 armclient login
 ```
 

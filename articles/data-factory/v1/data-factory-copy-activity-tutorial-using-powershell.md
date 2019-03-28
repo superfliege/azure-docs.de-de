@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7031e003ad05d647ccfaebf9239f26ef0af00a7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13f67bfe0902a528d16b6a967f9d4ac189100406
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110714"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482402"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Tutorial: Erstellen einer Data Factory-Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell
 > [!div class="op_single_selector"]
@@ -82,31 +82,31 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
 
     Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```   
    
     Führen Sie den folgenden Befehl aus, um alle Abonnements für dieses Konto anzuzeigen:
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 
     Führen Sie den folgenden Befehl aus, um das gewünschte Abonnement auszuwählen: Ersetzen Sie **&lt;NameOfAzureSubscription**&gt; durch den Namen Ihres Azure-Abonnements:
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 1. Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** , indem Sie den folgenden Befehl ausführen:
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
     Bei einigen Schritten dieses Lernprogramms wird davon ausgegangen, dass Sie die Ressourcengruppe namens **ADFTutorialResourceGroup**verwenden. Bei Verwendung einer anderen Ressourcengruppe müssen Sie diese anstelle der Ressourcengruppe ADFTutorialResourceGroup verwenden.
 1. Führen Sie das Cmdlet **New-AzDataFactory** aus, um eine Data Factory namens **ADFTutorialDataFactoryPSH** zu erstellen:  
 
-    ```PowerShell
+    ```powershell
     $df=New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
     Dieser Name wird möglicherweise bereits verwendet. Verwenden Sie daher einen eindeutigen Namen für die Data Factory, indem Sie ein Präfix oder Suffix (z.B. ADFTutorialDataFactoryPSH05152017) hinzufügen, und führen Sie den Befehl dann erneut aus.  
@@ -124,13 +124,13 @@ Beachten Sie folgende Punkte:
 
   * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren:
 
-    ```PowerShell
+    ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
     Führen Sie den folgenden Befehl aus, um sicherzustellen, dass der Data Factory-Anbieter registriert wurde:
 
-    ```PowerShell
+    ```powershell
     Get-AzResourceProvider
     ```
   * Melden Sie sich unter Verwendung Ihres Azure-Abonnements beim [Azure-Portal](https://portal.azure.com) an. Navigieren Sie zu einem Data Factory-Blatt, oder erstellen Sie über das Azure-Portal eine Data Factory. Mit dieser Aktion wird der Anbieter automatisch für Sie registriert.
@@ -166,7 +166,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
 1. Wechseln Sie in **Azure PowerShell** zum Ordner **ADFGetStartedPSH**.
 1. Führen Sie das Cmdlet **New-AzDataFactoryLinkedService** aus, um den verknüpften Dienst zu erstellen: **AzureStorageLinkedService**. Für dieses Cmdlet und die anderen Data Factory-Cmdlets, die Sie in diesem Tutorial verwenden, ist das Übergeben von Werten für die Parameter **ResourceGroupName** und **DataFactoryName** erforderlich. Alternativ können Sie das vom Cmdlet „New-AzDataFactory“ zurückgegebene DataFactory-Objekt ohne Eingabe von ResourceGroupName und DataFactoryName bei jeder Ausführung eines Cmdlets übergeben. 
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
     Hier ist die Beispielausgabe:
@@ -181,7 +181,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
 
     Eine andere Möglichkeit zum Erstellen dieses verknüpften Diensts besteht darin, den Namen der Ressourcengruppe und der Data Factory anstelle des DataFactory-Objekts anzugeben.  
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
@@ -206,7 +206,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit Ihrer Data Factory
     ```
 1. Führen Sie den folgenden Befehl aus, um einen verknüpften Dienst zu erstellen:
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
@@ -290,7 +290,7 @@ In diesem Schritt erstellen Sie ein Dataset namens „InputDataset“, das auf e
     Weitere Informationen zu diesen JSON-Eigenschaften finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md#dataset-properties).
 1. Führen Sie den folgenden Befehl zum Erstellen des Data Factory-Datensatzes aus.
 
-    ```PowerShell  
+    ```powershell  
     New-AzDataFactoryDataset $df -File .\InputDataset.json
     ```
     Hier ist die Beispielausgabe:
@@ -353,7 +353,7 @@ In diesem Teilschritt erstellen Sie ein Ausgabedataset namens **OutputDataset**.
     Weitere Informationen zu diesen JSON-Eigenschaften finden Sie im Artikel [Azure SQL-Connector](data-factory-azure-sql-connector.md#dataset-properties).
 1. Führen Sie den folgenden Befehl aus, um das Data Factory-Dataset zu erstellen:
 
-    ```PowerShell   
+    ```powershell   
     New-AzDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
@@ -438,7 +438,7 @@ Derzeit steuert das Ausgabedataset den Zeitplan. In diesem Tutorial wird ein Aus
      Beschreibungen der JSON-Eigenschaften in einer Pipelinedefinition finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Beschreibungen der JSON-Eigenschaften in der Definition einer Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). Beschreibungen der JSON-Eigenschaften, die von BlobSource unterstützt werden, finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md). Beschreibungen der JSON-Eigenschaften, die von SqlSink unterstützt werden, finden Sie im Artikel [Azure SQL-Datenbankconnector](data-factory-azure-sql-connector.md).
 1. Führen Sie den folgenden Befehl aus, um die Data Factory-Tabelle zu erstellen:
 
-    ```PowerShell   
+    ```powershell   
     New-AzDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
@@ -459,12 +459,12 @@ In diesem Schritt verwenden Sie Azure PowerShell zur Überwachung der Aktivität
 
 1. Ersetzen Sie &lt;DataFactoryName&gt; durch den Namen Ihrer Data Factory, führen Sie **Get-AzDataFactory** aus, und weisen Sie der Ausgabe eine $df-Variable zu.
 
-    ```PowerShell  
+    ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
     Beispiel: 
-    ```PowerShell
+    ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
@@ -483,7 +483,7 @@ In diesem Schritt verwenden Sie Azure PowerShell zur Überwachung der Aktivität
     ```
 1. Führen Sie **Get-AzDataFactorySlice** aus, um Details zu allen Slices von **OutputDataset** zu erhalten. Dies ist das Ausgabedataset der Pipeline.  
 
-    ```PowerShell   
+    ```powershell   
     Get-AzDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
@@ -527,7 +527,7 @@ In diesem Schritt verwenden Sie Azure PowerShell zur Überwachung der Aktivität
     ```
 1. Führen Sie **Get-AzDataFactoryRun** aus, um die Details der Aktivitätsausführungen für einen **bestimmten** Slice abzurufen. Kopieren Sie den Datums-/Zeitwert aus der Ausgabe des vorherigen Befehls, um den Wert für den Parameter „StartDateTime“ anzugeben. 
 
-    ```PowerShell  
+    ```powershell  
     Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 

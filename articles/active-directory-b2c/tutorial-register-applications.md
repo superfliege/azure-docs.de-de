@@ -4,19 +4,20 @@ description: Erfahren Sie, wie Sie eine Webanwendungen in Azure Active Directory
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: davidmu
-ms.openlocfilehash: 1f9a4f2f0ac44c8815e33957b49b4215c998eae3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.subservice: B2C
+ms.openlocfilehash: f79ecd96b15ff4ff96a3bb93061f0c9d7598191f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754165"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338155"
 ---
-# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Anwendung in Azure Active Directory B2C
+# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren Sie eine Anwendung in Azure Active Directory B2C
 
 Bevor Ihre [Anwendungen](active-directory-b2c-apps.md) mit Azure Active Directory (Azure AD) B2C interagieren können, müssen sie in einem von Ihnen verwalteten Mandanten registriert werden. In diesem Tutorial erfahren Sie, wie Sie eine Webanwendung mithilfe des Azure-Portals registrieren.
 

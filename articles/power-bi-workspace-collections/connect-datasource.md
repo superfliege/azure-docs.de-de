@@ -1,21 +1,19 @@
 ---
 title: Verbinden mit einer Datenquelle in Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Power BI-Arbeitsbereichssammlungen eine Verbindung zu Datenquellen herstellen können.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: c67369edec2f3c84ada14e6c2a3a3ab8056b3e0c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 143213b148518fdf936974152d5d9196c42febd8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57870094"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521498"
 ---
 # <a name="connect-to-a-data-source"></a>Herstellen einer Verbindung mit einer Datenquelle
 
@@ -43,7 +41,7 @@ Mit Power BI-Arbeitsbereichssammlungen können Sie DirectQuery mit Clouddatenque
 
 **Import**
 
-Sie können den Import unter Verwendung aller in Power BI Desktop verfügbaren Datenquellen durchführen. Es ist jedoch **nicht** möglich, diese Daten in Power BI-Arbeitsbereichssammlungen zu aktualisieren. Stattdessen müssen Sie Änderungen an der PBIX-Datei in die Power BI-Arbeitsbereichssammlungen hochladen. Dies liegt daran, dass kein Gateway verfügbar ist. 
+Sie können den Import unter Verwendung aller in Power BI Desktop verfügbaren Datenquellen durchführen. Es ist jedoch **nicht** möglich, diese Daten in Power BI-Arbeitsbereichssammlungen zu aktualisieren. Stattdessen müssen Sie Änderungen an der PBIX-Datei in die Power BI-Arbeitsbereichssammlungen hochladen. Dies liegt daran, dass kein Gateway verfügbar ist.
 
 ## <a name="benefits-of-using-directquery"></a>Vorteile der Verwendung von DirectQuery
 
@@ -73,4 +71,3 @@ Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abf
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
 Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)
-

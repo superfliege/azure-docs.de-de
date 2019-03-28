@@ -3,7 +3,7 @@ title: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddom
 description: Hier erfahren Sie, wie Sie die Azure Active Directory-Hybrideinbindung für Verbunddomänen konfigurieren.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: markvi
+ms.date: 03/20/2019
+ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f9045246366d8595dd47b1e1be50e966859759b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d737be389666590d32e9f1b887db57dacce543e2
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163907"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517181"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -230,7 +230,7 @@ Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Ger
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](hybrid-azuread-join-managed-domains.md)
-> [Manuelles Konfigurieren der Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-manual-steps.md)
+> [Manuelles Konfigurieren der Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-manual.md)
 
 
 

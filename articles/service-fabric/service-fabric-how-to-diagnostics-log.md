@@ -3,7 +3,7 @@ title: Generieren von Protokollereignissen aus einer .NET Service Fabric-App in 
 description: Erfahren Sie, wie Sie der auf einem Azure-Cluster oder eigenständigen Cluster gehosteten .NET Service Fabric-Anwendung Protokollierung hinzufügen.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
-ms.author: ryanwi
-ms.openlocfilehash: 0e5cfa42eba5a2110ebf8879c771f2fef048ae03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: srrengar
+ms.openlocfilehash: 04eb3a0f46cbf02f1e8e3aca687f5d425792ed76
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835712"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499759"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Hinzufügen von Protokollierung zur Service Fabric-Anwendung
 

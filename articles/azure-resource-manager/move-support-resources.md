@@ -4,14 +4,14 @@ description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 2/13/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: f82c3adc0049c7386206fb4be10d3e634627a25a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236888"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438467"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Auch wenn ein Ressourcentyp den Verschiebevorgang unterstützt, kann dies bestimmten Bedingungen unterliegen, die das Verschieben der Ressource verhindern. Ausführliche Informationen über Bedingungen, die sich auf Verschiebevorgänge auswirken, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
@@ -422,7 +422,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
-| labaccounts | Ja | Ja |
+| labaccounts | Nein  | Nein  |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |

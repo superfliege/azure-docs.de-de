@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9b82b1e17a62aa9b3d606b0b16295acf04eb85
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901541"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418753"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -65,17 +65,17 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
      
      | **Parameter** | **Wert** |
      |:--- |:--- |
-     | NAME |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Type |Zeichenfolge |
-     | Wert |{„Verzweigung“:\<*Name Ihrer Verzweigung*>, „Runbook-Ordnertyp“:\<*Runbook-Ordnerpfad*>, „Anbietertyp“:\<*hat einen Wert 1 für GitHub*>, „Verzeichnis“:\<*Name Ihres Repositorys*>, „Benutzername“:\<*Ihr GitHub-Benutzername*>} |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
+     | `Type`  |Zeichenfolge |
+     | `Value` |{„Verzweigung“:\<*Name Ihrer Verzweigung*>, „Runbook-Ordnertyp“:\<*Runbook-Ordnerpfad*>, „Anbietertyp“:\<*hat einen Wert 1 für GitHub*>, „Verzeichnis“:\<*Name Ihres Repositorys*>, „Benutzername“:\<*Ihr GitHub-Benutzername*>} |
 
      * Die Variable **Microsoft.Azure.Automation.SourceControl.OauthToken**enthält den sicher verschlüsselten Wert Ihres OAuth-Tokens.  
 
      |**Parameter**            |**Wert** |
      |:---|:---|
-     | NAME  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-     | Type | Unbekannte (Verschlüsselt) |
-     | Wert | <*Verschlüsseltes OAuthToken*> |  
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+     | `Type`  | Unbekannte (Verschlüsselt) |
+     | `Value` | <*Verschlüsseltes OAuthToken*> |  
 
      ![Variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 

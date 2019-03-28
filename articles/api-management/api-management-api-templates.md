@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970891"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486367"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-Vorlagen in Azure API Management
 
@@ -90,7 +90,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 |Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|apis|Sammlung von [API summary](api-management-template-data-model-reference.md#APISummary)-Entitäten.|Die für den aktuellen Benutzer sichtbaren APIs.|  
+|`apis`|Sammlung von [API summary](api-management-template-data-model-reference.md#APISummary)-Entitäten.|Die für den aktuellen Benutzer sichtbaren APIs.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   
@@ -345,15 +345,15 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 |Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|apiId|Zeichenfolge|Die ID der aktuellen API.|  
-|apiName|Zeichenfolge|Der Name der API.|  
-|apiDescription|Zeichenfolge|Eine Beschreibung der API.|  
-|api|Entität [API summary](api-management-template-data-model-reference.md#APISummary).|Die aktuelle API.|  
-|operation|[Vorgang](api-management-template-data-model-reference.md#Operation)|Der aktuell angezeigte Vorgang.|  
-|sampleUrl|Zeichenfolge|Die URL für den aktuellen Vorgang.|  
-|operationMenu|[Vorgangsmenü](api-management-template-data-model-reference.md#Menu)|Ein Menü mit Vorgängen für diese API.|  
-|consoleUrl|URI|Der URI für die Schaltfläche **Ausprobieren**.|  
-|Beispiele|Sammlung von [Code sample](api-management-template-data-model-reference.md#Sample)-Entitäten.|Die Codebeispiele für den aktuellen Vorgang.|  
+|`apiId`|Zeichenfolge|Die ID der aktuellen API.|  
+|`apiName`|Zeichenfolge|Der Name der API.|  
+|`apiDescription`|Zeichenfolge|Eine Beschreibung der API.|  
+|`api`|Entität [API summary](api-management-template-data-model-reference.md#APISummary).|Die aktuelle API.|  
+|`operation`|[Vorgang](api-management-template-data-model-reference.md#Operation)|Der aktuell angezeigte Vorgang.|  
+|`sampleUrl`|Zeichenfolge|Die URL für den aktuellen Vorgang.|  
+|`operationMenu`|[Vorgangsmenü](api-management-template-data-model-reference.md#Menu)|Ein Menü mit Vorgängen für diese API.|  
+|`consoleUrl`|URI|Der URI für die Schaltfläche **Ausprobieren**.|  
+|`samples`|Sammlung von [Code sample](api-management-template-data-model-reference.md#Sample)-Entitäten.|Die Codebeispiele für den aktuellen Vorgang.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   

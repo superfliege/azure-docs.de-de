@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 715b0f9c5a5a68bb1fc42ed4206ca81ad85b844f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4ebd53db9622c5a40f67cba04aa35cbfbaa78c8d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450684"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446102"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Die Vorlage, die verwendet wird, ist unter den [Azure Service Fabric-Vorlagenbei
 Mit dem folgenden Befehl können entweder Windows- oder Linux-Cluster erstellt werden. Geben Sie das Betriebssystem entsprechend an. Die PowerShell-/CLI-Befehle geben außerdem das Zertifikat im angegebenen *CertificateOutputFolder*-Ordner zurück. Stellen Sie daher sicher, dass der Zertifikatordner bereits erstellt ist. Der Befehl akzeptiert auch andere Parameter wie VM-SKU.
 
 > [!NOTE]
-> Der folgende PowerShell-Befehl funktioniert nur mit einer höheren Azure Resource Manager PowerShell-Version als 6.1. Um die aktuelle Version von Azure Resource Manager PowerShell zu überprüfen, führen Sie den PowerShell-Befehl „Get-Module AzureRM“-aus. Folgen Sie [diesem Link](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0), um ein Upgrade für Ihre Azure Resource Manager PowerShell-Version durchzuführen. 
+> Der folgende PowerShell-Befehl funktioniert nur mit einer höheren Azure Resource Manager PowerShell-Version als 6.1. Um die aktuelle Version von Azure Resource Manager PowerShell zu überprüfen, führen Sie den PowerShell-Befehl „Get-Module AzureRM“-aus. Folgen Sie [diesem Link](/powershell/azure/azurerm/install-azurerm-ps), um ein Upgrade für Ihre Azure Resource Manager PowerShell-Version durchzuführen. 
 >
 >
 

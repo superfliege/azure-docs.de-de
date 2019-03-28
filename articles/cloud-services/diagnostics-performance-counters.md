@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 7713b449d5e5291ce1dd6c9b814ebefd07bc53a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737670"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485398"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
 
@@ -29,7 +29,7 @@ Leistungsindikatoren ermöglichen es Ihnen, die Leistung Ihrer Anwendungen und H
 
 Ein Leistungsindikator setzt sich aus zwei Teilen zusammen: dem Namen des Satzes (auch Kategorie genannt) und mindestens einem Indikator. Sie können mithilfe von PowerShell eine Liste der verfügbaren Leistungsindikatoren abrufen:
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
 
 CounterSetName                                  Paths
@@ -56,7 +56,7 @@ Die Eigenschaft `CounterSetName` repräsentiert einen Satz (oder eine Kategorie)
 
 Um alle Indikatoren eines Satzes abzurufen, verwenden Sie den Wert `CounterSetName` und erweitern die Sammlung `Paths`. Jedes Pfadelement ist ein Indikator, den Sie abfragen können. Um beispielsweise die verfügbaren Indikatoren für den Satz `Processor` abzurufen, erweitern Sie die `Paths`-Sammlung:
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
 
 \Processor(*)\% Processor Time

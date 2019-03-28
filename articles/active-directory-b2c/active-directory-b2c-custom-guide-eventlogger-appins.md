@@ -10,14 +10,16 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5bc9e44cc1f1759231d405e64fab097d73d48486
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160525"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403815"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Bei Verwendung von Azure Active Directory (Azure AD) B2C zusammen mit Azure Application Insights können Sie detaillierte und angepasste Ereignisprotokolle für Ihre User Journeys abrufen. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -25,9 +27,6 @@ Bei Verwendung von Azure Active Directory (Azure AD) B2C zusammen mit Azure Appl
 * Beheben von Problemen mit eigenen Richtlinien in der Entwicklung oder in der Produktion.
 * Messen der Leistung.
 * Erstellen von Benachrichtigungen von Application Insights.
-
-> [!NOTE]
-> Dieses Feature befindet sich in der Vorschauphase.
 
 ## <a name="how-it-works"></a>So funktioniert's
 

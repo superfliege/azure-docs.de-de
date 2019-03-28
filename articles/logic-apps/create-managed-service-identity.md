@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807268"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337578"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
 
@@ -152,7 +152,7 @@ Nach dem Einrichten Ihrer Logik-App mit einer vom System zugewiesenen verwaltete
 
 1. Geben Sie die erforderlichen Details für diese Aktion an, z.B. die **Methode** für die Anforderung und den **URI**-Speicherort für die aufzurufende Ressource.
 
-   Nehmen wir beispielsweise an, Sie verwenden Azure Active Directory-Authentifizierung (Azure AD) mit [einem der Azure-Dienste, die Azure AD unterstützen](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   Nehmen wir beispielsweise an, Sie verwenden Azure Active Directory-Authentifizierung (Azure AD) mit [einem der Azure-Dienste, die Azure AD unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    Geben Sie im Feld **URI** die Endpunkt-URL für den Azure-Dienst ein. 
    Wenn Sie Azure Resource Manager verwenden, geben Sie diesen Wert für die Eigenschaft **URI** ein:
 
@@ -167,7 +167,7 @@ Nach dem Einrichten Ihrer Logik-App mit einer vom System zugewiesenen verwaltete
    > [!IMPORTANT]
    > 
    > In der Eigenschaft **Zielgruppe** muss der Ressourcen-ID-Wert genau dem entsprechen, was Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche. 
-   > Sie finden diese Ressourcen-ID-Werte in dieser [Tabelle mit Beschreibungen von Azure-Diensten, die Azure AD unterstützen](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   > Sie finden diese Ressourcen-ID-Werte in dieser [Tabelle mit Beschreibungen von Azure-Diensten, die Azure AD unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    > Wenn Sie z.B. die Azure Resource Manager-Ressourcen-ID verwenden, stellen Sie sicher, dass der URI einen nachgestellten Schrägstrich hat.
 
 1. Fahren Sie damit fort, die Logik-App wie gewünscht zu erstellen.

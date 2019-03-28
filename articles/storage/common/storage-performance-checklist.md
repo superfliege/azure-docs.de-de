@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012334"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445999"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -98,7 +98,7 @@ Zum Redaktionszeitpunkt betrugen die Bandbreitenziele in den USA für georedunda
 Wenn Sie sich dem Limit der Speicherkonten nähern, die Sie in einer bestimmten Abonnement-Region-Kombination haben können, bewerten Sie Ihre Anwendung und die Nutzung von Speicherkonten und prüfen Sie, ob eine dieser Bedingungen zutrifft.
 
 * Verwenden von Speicherkonten als nicht verwaltete Datenträger und Hinzufügen dieser Datenträger zu Ihren virtuellen Computern. In diesem Szenario empfehlen wir die Verwendung von [verwalteten Datenträgern](../../virtual-machines/windows/managed-disks-overview.md), da sie die Skalierbarkeit der Speicherdatenträger für Sie übernehmen, ohne dass Sie individuelle Speicherkonten erstellen und verwalten müssen.
-* Verwenden eines Speicherkonto auf Kundenbasis zum Zwecke der Datenisolierung. In diesem Szenario empfehlen wir, Speichercontainer für jeden Kunden und nicht für ein komplettes Speicherkonto zu verwenden. Azure Storage ermöglicht es Ihnen nun, die rollenbasierte Zugriffskontrolle pro [Containerbasis](storage-auth-aad-rbac.md) festzulegen.
+* Verwenden eines Speicherkonto auf Kundenbasis zum Zwecke der Datenisolierung. In diesem Szenario empfehlen wir, Speichercontainer für jeden Kunden und nicht für ein komplettes Speicherkonto zu verwenden. Azure Storage ermöglicht es Ihnen nun, die rollenbasierte Zugriffskontrolle pro [Containerbasis](storage-auth-aad-rbac-portal.md) festzulegen.
 * Verwendung mehrerer Speicherkonten als Shard für eine bessere Skalierbarkeit von ingress/egress/iops/capacity. In diesem Szenario empfehlen wir Ihnen, wenn möglich, die [erhöhten Grenzwerte](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) der Standard-Speicherkonten zu nutzen, um die Anzahl der für Ihren Workload erforderlichen Speicherkonten zu reduzieren.
 
 Wenn sich Ihre Anwendung den Skalierbarkeitszielen für ein Speicherkonto nähert, sollten Sie eine der folgenden Vorgehensweisen wählen:  

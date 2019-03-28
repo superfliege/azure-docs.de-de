@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 997babef5860488232f0b530c90b44aba6608ac5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007468"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401553"
 ---
 # <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>Informationen zu JavaScript und Seitenvertragsversionen in einem Benutzerflow
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure Active Directory B2C stellt eine Reihe von gepackten Inhalten bereit, die HTML, CSS und JavaScript für die Benutzeroberflächenelemente in Ihren Benutzerflows enthalten. Wenn Sie beabsichtigen, clientseitigen [JavaScript](javascript-samples.md)-Code in Ihren Benutzerflows zu aktivieren, möchten Sie sichergehen, dass die Elemente, auf denen der JavaScript-Code basiert, unveränderlich sind. Andernfalls könnten Änderungen zu einem unerwarteten Verhalten auf Ihren Benutzerflowseiten führen. Um diese Probleme zu vermeiden, können Sie die Verwendung eines Seitenvertrags für einen Benutzerflow erzwingen und eine Seitenvertragsversion angeben. Dadurch wird sichergestellt, dass alle Inhaltsdefinitionen, auf denen Ihr JavaScript-Code basiert, unveränderlich sind. Auch wenn Sie nicht beabsichtigen, JavaScript für einen Benutzerflow zu aktivieren, können Sie eine Seitenvertragsversion für Ihre Benutzerflowseiten angeben.
 

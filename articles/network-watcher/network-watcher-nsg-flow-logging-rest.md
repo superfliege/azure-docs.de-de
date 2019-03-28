@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: eadff8e2db6e5b8ea19b041614e0d1f3908da8a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4569ea0ff43993c4605c55c529dbcb951ef502ca
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876883"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485016"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
@@ -54,7 +54,7 @@ In diesem Szenario führen Sie Folgendes durch:
 
 Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei ARMClient an.
 
-```PowerShell
+```powershell
 armclient login
 ```
 

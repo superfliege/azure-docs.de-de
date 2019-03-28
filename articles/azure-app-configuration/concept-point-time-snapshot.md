@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: e833146d05f0c35449915c1d1293873258a7b7eb
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6238f96c9e8df0431e42caa5e5846af3fc60e681
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226775"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484014"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-Time-Momentaufnahme
 
@@ -27,7 +27,7 @@ Azure App Configuration dokumentiert die genauen Zeiten, zu denen ein neues Schl
 
 Wenn Sie Schlüssel-Wert-Paare aus der Vergangenheit abrufen möchten, geben Sie im HTTP-Header eines REST-API-Aufrufs einen Zeitpunkt für die Erstellung einer Momentaufnahme der Schlüssel-Wert-Paare an. Beispiel: 
 
-        GET /revisions HTTP/1.1
+        GET /kv HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
 
 Der von App Configuration gespeicherte Änderungsverlauf umfasst derzeit sieben Tage.

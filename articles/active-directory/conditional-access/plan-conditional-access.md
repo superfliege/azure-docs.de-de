@@ -2,7 +2,7 @@
 title: Planen von Richtlinien für bedingten Zugriff in Azure Active Directory | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie Richtlinien für bedingten Zugriff für Azure Active Directory planen.
 services: active-directory
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 tags: azuread
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/25/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d43c7943eedcfdf839303a6a55d7727a8483441
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e4832055bffa72732991cb766ce88cc48c07530e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175811"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518710"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory
 

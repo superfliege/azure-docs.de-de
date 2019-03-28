@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 34076b790a91b1c0e9d8bee224423aab0db7c8f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891806"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369937"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
@@ -34,7 +34,7 @@ Für diese Elemente in Ihrer Logik-App können Sie den Zugriff schützen:
 Wenn Ihre Logik-App einen auf HTTP-Anforderungen basierenden Trigger verwendet, z.B. einen der Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff einschränken, sodass nur autorisierte Clients die Logik-App starten können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Secure Sockets Layer-Protokoll (SSL) verschlüsselt und gesichert. Hier finden Sie verschiedene Möglichkeiten, wie Sie den Zugriff auf diesen Triggertyp absichern können:
 
 * [Generieren von Shared Access Signatures](#sas)
-* [Beschränken eingehender IP-Adressen](#restrict-incoming-IP)
+* [Beschränken eingehender IP-Adressen](#restrict-incoming-ip-addresses)
 * [Hinzufügen von Azure Active Directory, OAuth oder anderen Sicherheitsfeatures](#add-authentication)
 
 <a name="sas"></a>

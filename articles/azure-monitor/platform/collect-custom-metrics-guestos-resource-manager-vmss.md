@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 64fb3acf9b134b7188d316633bc663d7dd9b14b8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760221"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481322"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -242,12 +242,12 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
 1. Rufen Sie Ihre Liste der Abonnements mit `Get-AzSubscription` ab.
 1. Legen Sie das Abonnement fest, das Sie erstellen, oder aktualisieren Sie den virtuellen Computer: 
 
-   ```PowerShell
+   ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
 1. Erstellen Sie eine neue Ressourcengruppe für die bereitzustellende VM. Führen Sie den folgenden Befehl aus: 
 
-   ```PowerShell
+   ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
@@ -259,7 +259,7 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
    > [!NOTE]  
    > Wenn Sie eine bestehende Skalierungsgruppe aktualisieren möchten, fügen Sie an das Ende des folgenden Befehls **-Mode Incremental** an. 
  
-   ```PowerShell
+   ```powershell
    New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 

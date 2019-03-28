@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 081adc9421a97f7cafcf7fba946ce0b901a00a0c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104837"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439429"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Anmeldung über einseitige Apps mit dem impliziten OAuth 2.0-Fluss
 
@@ -27,7 +27,7 @@ Viele moderne Apps besitzen ein Single-Page-App-Front-End, das in erster Linie i
 
 Zum Unterstützen dieser Anwendungen verwendet Azure Active Directory B2C (Azure AD B2C) den impliziten OAuth 2.0-Fluss. Der implizite OAuth 2.0-Fluss zum Gewähren einer Autorisierung wird in [Abschnitt 4.2 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Beim impliziten Ablauf empfängt die App Token direkt vom Azure AD-Autorisierungsendpunkt (Azure Active Directory), ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung erfolgt ohne zusätzliche Seitenumleitungen vollständig im JavaScript-Client.
 
-Azure AD B2C erweitert den impliziten OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Azure AD B2C führt den [Richtlinienparameter](active-directory-b2c-reference-policies.md) ein. Mit dem Richtlinienparameter können Sie OAuth 2.0 zum Hinzufügen von Richtlinien zu Ihrer App verwenden, z. B. für Benutzerflows für die Registrierung, Anmeldung und Profilverwaltung. In diesem Artikel wird Ihnen gezeigt, wie Sie den impliziten Fluss und Azure AD für die Implementierung dieser verschiedenen Oberflächen in Ihren einseitigen Anwendungen verwenden. Nützliche Hinweise für den Einstieg finden Sie auch in unseren Beispielen für [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) und [Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi).
+Azure AD B2C erweitert den impliziten OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Azure AD B2C führt den [Richtlinienparameter](active-directory-b2c-reference-policies.md) ein. Mit dem Richtlinienparameter können Sie OAuth 2.0 zum Hinzufügen von Richtlinien zu Ihrer App verwenden, z. B. für Benutzerflows für die Registrierung, Anmeldung und Profilverwaltung. In diesem Artikel wird Ihnen gezeigt, wie Sie den impliziten Fluss und Azure AD für die Implementierung dieser verschiedenen Oberflächen in Ihren einseitigen Anwendungen verwenden.
 
 In den HTTP-Beispielanforderungen in diesem Artikel wird das Azure AD B2C-Beispielverzeichnis **fabrikamb2c.onmicrosoft.com** verwendet. Außerdem verwenden wir unsere eigene Beispielanwendung und beispielhafte Benutzerflows. Sie können selbst Anforderungen mit diesen Werten testen oder eigene Werte verwenden.
 Erfahren Sie, wie Sie [eigene Azure AD B2C-Verzeichnisse, -Anwendungen und -Benutzerflows erstellen](#use-your-own-azure-ad-b2c-tenant).
@@ -275,9 +275,4 @@ Führen Sie die folgenden drei Schritte aus, um diese Anforderungen selbst zu te
 1. [Erstellen eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md) Verwenden Sie den Namen Ihres Mandanten in den Anforderungen.
 2. [Erstellen einer Anwendung](active-directory-b2c-app-registration.md) zum Abrufen einer Anwendungs-ID und eines `redirect_uri`-Werts. Fügen Ihrer App eine Web-App oder Web-API hinzu. Optional können Sie einen geheimen Anwendungsschlüssel erstellen.
 3. [Erstellen Sie Ihre Benutzerflows](active-directory-b2c-reference-policies.md), um Ihre Benutzerflownamen abzurufen.
-
-## <a name="samples"></a>Beispiele
-
-* [Erstellen einer einseitigen App mithilfe von Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
-* [Erstellen einer einseitigen App mithilfe von .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 

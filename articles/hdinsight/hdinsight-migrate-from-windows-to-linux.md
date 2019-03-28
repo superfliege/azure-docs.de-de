@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ec40c587ea4c609b1f8201e9860eb0e98e06ec62
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743645"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448185"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
 
@@ -24,6 +24,8 @@ Auch wenn Windows-basiertes HDInsight eine einfache Möglichkeit zur Verwendung 
 
 > [!NOTE]  
 > HDInsight-Cluster verwenden Ubuntu LTS-Versionen (Long-Term Support) als Betriebssystem für die Knoten im Cluster. Informationen zur Version von Ubuntu, die für HDInsight verfügbar ist, sowie weitere Informationen zu Versionen von Komponenten finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="migration-tasks"></a>Migrationsaufgaben
 
@@ -63,7 +65,7 @@ Kopieren Sie anhand folgender Schritte Daten aus dem Produktionscluster in das T
 
     ```powershell
     $clusterName="Your existing HDInsight cluster name"
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
     write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
@@ -93,7 +95,7 @@ Kopieren Sie anhand folgender Schritte Daten aus dem Produktionscluster in das T
 
 #### <a name="direct-copy-between-blobs-in-azure-storage"></a>Direktes Kopieren zwischen BLOBs in Azure Storage
 
-Alternativ können Sie das Azure PowerShell-Cmdlet `Start-AzureStorageBlobCopy` verwenden, um Blobs zwischen Speicherkonten außerhalb von HDInsight zu kopieren. Weitere Informationen finden Sie im Abschnitt „Verwalten von Azure-Blobs“ im Artikel „Verwenden von Azure PowerShell mit Azure Storage“.
+Alternativ können Sie das Azure PowerShell-Cmdlet `Start-AzStorageBlobCopy` verwenden, um Blobs zwischen Speicherkonten außerhalb von HDInsight zu kopieren. Weitere Informationen finden Sie im Abschnitt „Verwalten von Azure-Blobs“ im Artikel „Verwenden von Azure PowerShell mit Azure Storage“.
 
 ## <a name="client-side-technologies"></a>Clientseitige Technologien
 
@@ -236,7 +238,7 @@ Wenn C#-Anwendungen in Ihrem Workflow verwendet werden, überprüfen Sie diese A
 
 Auf Linux-basierten Clustern ist `/hbase-unsecure`der übergeordnete ZNode für HBase. Legen Sie dies in der Konfiguration für alle Java-Clientanwendungen fest, die native HBase-Java-API verwenden.
 
-Einen Beispielclient, der diesen Wert festlegt, finden Sie unter [Erstellen einer Java-basierten Apache HBase-Anwendung](hdinsight-hbase-build-java-maven.md).
+Einen Beispielclient, der diesen Wert festlegt, finden Sie unter [Erstellen einer Java-basierten Apache HBase-Anwendung](hbase/apache-hbase-build-java-maven-linux.md).
 
 ## <a name="spark"></a>Spark
 

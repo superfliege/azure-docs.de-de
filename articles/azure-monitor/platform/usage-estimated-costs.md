@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 1ae35c30e0379ed7a0f1fac16c279651e3bcd8fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315876"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480540"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Überwachen der Nutzung und der geschätzten Kosten
 
@@ -138,7 +138,7 @@ isGrandFatherableSubscription optedInDate
 
 Führen Sie zum Migrieren dieses Abonnements zum neuen Preismodell Folgendes aus:
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -149,7 +149,7 @@ Invoke-AzResourceAction `
 
 Führen Sie Folgendes erneut aus, um zu überprüfen, ob die Änderung erfolgreich war:
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -170,7 +170,7 @@ optInDate enthält nun einen Zeitstempel, der angibt, wann dieses Abonnement das
 
 Wenn Sie das alte Preismodell wiederherstellen müssen, führen Sie Folgendes aus:
 
-```PowerShell
+```powershell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -183,7 +183,7 @@ Wenn Sie dann das vorherige Skript, das ``-Action listmigrationdate`` enthält, 
 
 Wenn Sie über mehrere Abonnements verfügen, die Sie migrieren möchten und die unter demselben Mandanten gehostet werden, können Sie Ihre eigene Variante mit Hilfe von Teilen der folgenden Skripts erstellen:
 
-```PowerShell
+```powershell
 #Query tenant and create an array comprised of all of your tenants subscription ids
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
@@ -192,7 +192,7 @@ $Subscriptions = $Tenant.Id
 
 Um zu überprüfen, ob alle Abonnements in Ihrem Mandanten für das neue Preismodell berechtigt sind, können Sie Folgendes ausführen:
 
-```PowerShell
+```powershell
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
@@ -206,7 +206,7 @@ Invoke-AzResourceAction `
 
 Das Skript kann weiter durch Erstellen eines Skripts verfeinert werden, das drei Arrays generiert. Ein Array besteht aus allen Abonnement-IDs, für die ```isGrandFatherableSubscription``` auf TRUE festgelegt ist und optedInDate zurzeit keinen Wert aufweist. Ein zweites Array besteht aus allen Abonnements, für die zurzeit das neue Preismodell verwendet wird. Ein drittes Array wird nur mit Abonnement-IDs in Ihrem Mandanten aufgefüllt, die für das neue Preismodell nicht geeignet sind:
 
-```PowerShell
+```powershell
 [System.Collections.ArrayList]$Eligible= @{}
 [System.Collections.ArrayList]$NewPricingEnabled = @{}
 [System.Collections.ArrayList]$NotEligible = @{}
@@ -242,7 +242,7 @@ $Result= Invoke-AzResourceAction `
 
 Da Sie Ihre Abonnements nun auf die drei Arrays aufgeteilt haben, sollten Sie die Ergebnisse sorgfältig überprüfen. Möglicherweise möchten Sie eine Sicherungskopie der Inhalte des Arrays erstellen, damit Sie die Änderungen auf einfache Weise rückgängig machen können, wenn dies in der Zukunft erforderlich sein sollte. Wenn Sie sich entschieden haben, dass Sie alle geeigneten Abonnements, die zurzeit das alte Preismodell verwenden, in das neue Preismodell konvertieren möchten, können Sie die diese Aufgabe nun folgendermaßen erledigen:
 
-```PowerShell
+```powershell
 Foreach ($id in $Eligible)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"

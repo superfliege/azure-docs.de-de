@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e24ed3921872a4c754967841634ebab23b972e59
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 276ddf0a70fa450451cd3ddc78c7610c4ab1edc1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55735961"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494648"
 ---
 Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknamen, über die die SQL Server-Verfügbarkeitsgruppe lauscht. Gehen Sie wie folgt vor, um den Verfügbarkeitsgruppenlistener zu erstellen:
 
@@ -86,27 +86,27 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
 1. <a name="setparam"></a>Legen Sie die Clusterparameter in PowerShell fest.
 
-  a. Kopieren Sie das folgende PowerShell-Skript in eine Ihrer SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.
+   a. Kopieren Sie das folgende PowerShell-Skript in eine Ihrer SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.
 
-  - `$ListenerILBIP` ist die IP-Adresse, die Sie im Azure Load Balancer für den Verfügbarkeitsgruppenlistener angelegt haben.
+   - `$ListenerILBIP` ist die IP-Adresse, die Sie im Azure Load Balancer für den Verfügbarkeitsgruppenlistener angelegt haben.
     
-  - `$ListenerProbePort` ist der Port, den Sie im Azure Load Balancer für den Verfügbarkeitsgruppenlistener konfiguriert haben.
+   - `$ListenerProbePort` ist der Port, den Sie im Azure Load Balancer für den Verfügbarkeitsgruppenlistener konfiguriert haben.
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<IPResourceName>" # the IP Address resource name
-  $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ListenerProbePort = <nnnnn>
+   ```powershell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<IPResourceName>" # the IP Address resource name
+   $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ListenerProbePort = <nnnnn>
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
 
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
+   b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
 
-  > [!NOTE]
-  > Falls sich Ihre SQL Server-Instanzen in unterschiedlichen Regionen befinden, muss das PowerShell-Skript zweimal ausgeführt werden. Verwenden Sie beim ersten Mal die Elemente `$ListenerILBIP` und `$ListenerProbePort` der ersten Region. Verwenden Sie beim zweiten Mal die Elemente `$ListenerILBIP` und `$ListenerProbePort` der zweiten Region. Der Name des Clusternetzwerks und der Cluster-IP-Ressourcenname sind auch in jeder Region unterschiedlich.
+   > [!NOTE]
+   > Falls sich Ihre SQL Server-Instanzen in unterschiedlichen Regionen befinden, muss das PowerShell-Skript zweimal ausgeführt werden. Verwenden Sie beim ersten Mal die Elemente `$ListenerILBIP` und `$ListenerProbePort` der ersten Region. Verwenden Sie beim zweiten Mal die Elemente `$ListenerILBIP` und `$ListenerProbePort` der zweiten Region. Der Name des Clusternetzwerks und der Cluster-IP-Ressourcenname sind auch in jeder Region unterschiedlich.
 
 1. Schalten Sie die Clusterrolle der Verfügbarkeitsgruppe online. Klicken Sie im **Failovercluster-Manager** unter **Rollen** mit der rechten Maustaste auf die Rolle, und klicken Sie dann auf **Rolle starten**.
 
@@ -120,24 +120,24 @@ Wiederholen Sie bei Bedarf die oben aufgeführten Schritte, um die Clusterparame
 
 1. <a name="setwsfcparam"></a>Legen Sie die Clusterparameter in PowerShell fest.
   
-  a. Kopieren Sie das folgende PowerShell-Skript in eine Ihrer SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.
+   a. Kopieren Sie das folgende PowerShell-Skript in eine Ihrer SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.
 
-  - `$ClusterCoreIP` ist die IP-Adresse, die Sie im Azure Load Balancer für die WSFC-Hauptclusterressource angelegt haben. Sie unterscheidet sich von der IP-Adresse des Verfügbarkeitsgruppenlisteners.
+   - `$ClusterCoreIP` ist die IP-Adresse, die Sie im Azure Load Balancer für die WSFC-Hauptclusterressource angelegt haben. Sie unterscheidet sich von der IP-Adresse des Verfügbarkeitsgruppenlisteners.
 
-  - `$ClusterProbePort` ist der Port, den Sie im Azure Load Balancer für den WSFC-Integritätstest konfiguriert haben. Er unterscheidet sich vom Test des Verfügbarkeitsgruppenlisteners.
+   - `$ClusterProbePort` ist der Port, den Sie im Azure Load Balancer für den WSFC-Integritätstest konfiguriert haben. Er unterscheidet sich vom Test des Verfügbarkeitsgruppenlisteners.
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
-  $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
+   ```powershell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+   $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
   
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
+   b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
 
 >[!WARNING]
 >Der Port für den Integritätstest des Verfügbarkeitsgruppenlisteners muss sich vom Port für den Integritätstest der IP-Adresse des Hauptclusters unterscheiden. In diesen Beispielen ist der Listenerport 59999 und IP-Adresse des Hauptclusters 58888. Für beide Ports ist eine eingehende Firewallregel erforderlich.

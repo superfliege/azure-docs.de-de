@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 518bc40bb83267872c8fe05197ec227d30a7aea3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a77295ccf4dbd564b1c04f1a5d097cfe408797e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084210"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442730"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -106,13 +106,13 @@ Bei diesem Ansatz werden die Vorteile von Features genutzt, die nur im Premium-T
 So exportieren Sie aus der Quellinstanz und importieren Sie in die Zielinstanz:
 
 1. Erstellen Sie im Premium-Tarif eine neue Azure Cache for Redis-Instanz in der Zielregion. Verwenden Sie dieselbe Größe wie für die Azure Cache for Redis-Quellinstanz.
-1. [Exportieren Sie Daten aus dem Quellcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Export-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.4.0).
+1. [Exportieren Sie Daten aus dem Quellcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Export-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/export-azurermrediscache).
 
    > [!NOTE]
    > Das Azure Storage-Exportkonto muss sich in derselben Region wie die Cacheinstanz befinden.
 
 1. Kopieren Sie die exportierten Blobs in ein Speicherkonto in der Zielregion (z. B. mit AzCopy).
-1. [Importieren Sie Daten in den Zielcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Import-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.4.0).
+1. [Importieren Sie Daten in den Zielcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Import-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/import-azurermrediscache).
 1. Konfigurieren Sie Ihre Anwendung so, dass sie die Azure Cache for Redis-Zielinstanz verwendet.
 
 ### <a name="option-4-write-data-to-two-azure-cache-for-redis-instances-read-from-one-instance"></a>Option 4: Schreiben von Daten in zwei Azure Cache for Redis-Instanzen, Lesen aus einer Instanz
