@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105708"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Schnellstart: Ausführen einer Videosuche mit dem Bing-Videosuche-SDK für Java
 
@@ -41,7 +41,7 @@ Installieren Sie die Abhängigkeit für das Bing-Videosuche-SDK mithilfe von Mav
   </dependencies> 
 ```
 
-## <a name="create-and-initalize-a-project"></a>Erstellen und Initialisieren eines Projekts
+## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
 
 Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
@@ -61,7 +61,7 @@ Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neue
 
 ## <a name="create-a-search-client"></a>Erstellen eines Suchclients
 
-2. Implementieren Sie den `VideoSearchAPIImpl`-Client, der Ihren API-Endpunkt und eine Instanz der `ServiceClientCredentials`-Klasse erfordert.
+1. Implementieren Sie den `VideoSearchAPIImpl`-Client, der Ihren API-Endpunkt und eine Instanz der `ServiceClientCredentials`-Klasse erfordert.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -115,7 +115,7 @@ Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neue
         //...
         ```
 
-## <a name="send-a-search-request-and-recieve-the-response"></a>Senden einer Suchanforderung und Empfangen der Antwort 
+## <a name="send-a-search-request-and-receive-the-response"></a>Senden einer Suchanforderung und Empfangen der Antwort 
 
 1. Erstellen Sie eine Funktion namens `VideoSearch()`, die Ihren Abonnementschlüssel als Zeichenfolge akzeptiert. Instanziieren Sie den zuvor erstellten Suchclient.
     

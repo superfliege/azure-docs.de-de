@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3b778caed10981923d424745d820bfe10c1ce553
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903605"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519713"
 documentType: LandingData
 title: Dokumentation zu Azure Media Services
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Azure Media Services (AMS) ist eine cloudbasierte Plattform zum Erstellen von Lösungen mit HD-Videocodierung und Videostreaming in Sendequalität, mit denen Sie Ihre Zuschauer auf den beliebtesten Geräten erreichen. AMS v3 ermöglicht Ihnen auch das Extrahieren der Erkenntnisse aus Ihren Video- und Audiodateien mit Video Indexer über Voreinstellungen des AMS v3-Analysetools. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt.<br/> Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">Vergleichsdokument</a>.
+  description: Azure Media Services ist eine cloudbasierte Plattform zum Erstellen von Lösungen mit HD-Videocodierung und Videostreaming in Sendequalität, mit denen Sie Ihre Zuschauer auf den beliebtesten Geräten erreichen. Media Services v3 ermöglicht Ihnen auch das Extrahieren der Erkenntnisse aus Ihren Video- und Audiodateien mit Video Indexer über Voreinstellungen des Media Services v3-Analysetools. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt.
 sections:
 - items:
   - type: list
@@ -40,7 +40,7 @@ sections:
         src: media/index/AMSIcons-media_analytics.svg
       title: Video Indexer
     - href: /azure/media-services/previous/
-      html: <p>Hier erfahren Sie, wie Sie mit Media Services v2 Verschlüsselung und On-Demand-Streaming nutzen und Livevideos übertragen.</p>
+      html: <p>Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Sehen Sie sich die aktuelle Version (Media Services v3) an.</p>
       image:
         src: media/index/AMSIcons-media_servicesV2.svg
       title: Azure Media Services v2 (Vorgängerversion)
@@ -49,51 +49,3 @@ sections:
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: CDN
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Hier erfahren Sie, wie Sie Media Services v3 zum Codieren und Streamen verwenden:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: Streamen von Dateien
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-  - type: paragraph
-    text: Erfahren Sie, wie Erkenntnisse aus Ihren Videos mit Video Indexer extrahieren.
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Erkenntnisse extrahieren
-      href: ../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: 'Hier erfahren Sie, wie Sie mit Media Services v3 On-Demand-Dateistreaming oder Livebroadcasts nutzen und Ihre Videos analysieren:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: Hochladen, Codieren und Streamen von Videos
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-live.svg
-      text: Livebroadcasts
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Analysieren von Videos
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-  - type: paragraph
-    text: 'Erfahren Sie, wie Erkenntnisse aus Ihren Videos mit der Video Indexer-API extrahieren:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Erkenntnisse extrahieren
-      href: ../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json

@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7397546d4dc576a8488f605e20a0bfe15a01d7c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311170"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860556"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service
 
@@ -29,13 +28,12 @@ Erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 > [!div class="checklist"]
 > * Einrichten Ihrer Entwicklungsumgebung.
 > * Zugreifen auf und Untersuchen von Daten.
-> * Lokales Trainieren einer einfachen logistischen Regression mithilfe der populären scikit-learn-Bibliothek für maschinelles Lernen. 
-> * Trainieren mehrerer Modelle in einem Remotecluster.
+> * Trainieren Sie ein einfaches logistisches Regressionsmodell für einen Remotecluster.
 > * Überprüfen der Trainingsergebnisse und Registrieren des besten Modells.
 
 In [Teil 2 dieses Tutorials](tutorial-deploy-models-with-aml.md) erfahren Sie, wie Sie ein Modell auswählen und bereitstellen. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
 >[!NOTE]
 > Der Code in diesem Artikel wurde mit Version 1.0.8 des Azure Machine Learning SDK getestet.

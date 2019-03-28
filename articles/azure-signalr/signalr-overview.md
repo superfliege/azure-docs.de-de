@@ -1,19 +1,19 @@
 ---
-title: Was ist Azure SignalR?
-description: Enthält eine Übersicht über den Azure SignalR Service.
+title: Was ist Azure SignalR Service?
+description: Enthält eine Übersicht über Azure SignalR Service.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 09/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e66326c6c4d93a92c579255cb00b6614ecc03b8c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 198eb0ff6c9f8de311cc2d39ba8fb7c8b6ed3a11
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255175"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552083"
 ---
-# <a name="what-is-azure-signalr-service"></a>Was ist der Azure SignalR Service?
+# <a name="what-is-azure-signalr-service"></a>Was ist Azure SignalR Service?
 
 Der Azure SignalR-Dienst vereinfacht den Vorgang des Hinzufügens von Echtzeitwebfunktionen zu Anwendungen über HTTP. Diese Echtzeitfunktionalität ermöglicht es dem Dienst, Inhaltsaktualisierungen an verbundene Clients zu senden, z.B. an eine Single-Page-Web- oder mobile Anwendung. Das Ergebnis ist, dass Clients aktualisiert werden, ohne dass der Server abgefragt werden muss oder neue HTTP-Anforderungen für Updates gesendet werden müssen.
 
@@ -36,6 +36,6 @@ Darüber hinaus stellt SignalR ein Programmiermodell für Echtzeitanwendungen zu
 
 Zurzeit gibt es drei Möglichkeiten, den Azure SignalR-Dienst zu nutzen:
 
-- **[ Skalieren einer ASP.NET Core SignalR-App](signalr-overview-scale-aspnet-core.md)**: Integrieren Sie den Azure SignalR-Dienst in eine ASP.NET Core SignalR-Anwendung, um durch horizontale Hochskalierung Hunderttausende von Verbindungen zu ermöglichen.
-- **[Erstellen von serverlosen Echtzeitanwendungen](signalr-overview-azure-functions.md)**: Verwenden Sie die Integration von Azure Functions in den Azure SignalR-Dienst, um serverlose Echtzeitanwendungen in Sprachen wie JavaScript, C# und Java zu erstellen.
+- **[ Skalieren einer ASP.NET Core SignalR-App](signalr-concept-scale-aspnet-core.md)**: Integrieren Sie den Azure SignalR-Dienst in eine ASP.NET Core SignalR-Anwendung, um durch horizontale Hochskalierung Hunderttausende von Verbindungen zu ermöglichen.
+- **[Erstellen von serverlosen Echtzeitanwendungen](signalr-concept-azure-functions.md)**: Verwenden Sie die Integration von Azure Functions in den Azure SignalR-Dienst, um serverlose Echtzeitanwendungen in Sprachen wie JavaScript, C# und Java zu erstellen.
 - **[Senden von Nachrichten vom Server an Clients über die REST API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)**: Der Azure SignalR-Dienst bietet eine REST-API, um es Anwendungen zu ermöglichen, Nachrichten an mit dem SignalR-Dienst verbundene Clients in allen REST-fähigen Programmiersprachen zu senden.

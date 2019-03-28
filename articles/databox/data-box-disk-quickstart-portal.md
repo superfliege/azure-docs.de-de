@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 3b158e0743a811f0d8f478c15b64c2b8b99a748a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155999"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546924"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box Disk über das Azure-Portal
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie den Azure Data Box-Datenträger über das Azure-Portal bereitstellen. In den Schritten erfahren Sie, wie Sie schnell einen Auftrag erstellen, Datenträger erhalten, diese auspacken und anschließen und Daten auf die Datenträger kopieren, damit diese in Azure hochgeladen werden können. 
+In dieser Schnellstartanleitung wird beschrieben, wie Sie den Azure Data Box-Datenträger über das Azure-Portal bereitstellen. In den Schritten erfahren Sie, wie Sie schnell einen Auftrag erstellen, Datenträger erhalten, diese auspacken und anschließen und Daten auf die Datenträger kopieren, damit diese in Azure hochgeladen werden können.
 
 Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nachverfolgung finden Sie unter [Tutorial: Bestellen von Azure Data Box Disk](data-box-disk-deploy-ordered.md). 
 
@@ -32,7 +32,7 @@ Vorbereitungen
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter [http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs) beim Azure-Portal an.
+Melden Sie sich unter [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs) beim Azure-Portal an.
 
 ## <a name="order"></a>Reihenfolge
 
@@ -41,9 +41,9 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 1. Erstellen Sie im Azure-Portal eine neue Azure Data Box-Ressource. 
 2. Wählen Sie ein Abonnement aus, das für diesen Dienst aktiviert ist, und wählen Sie als Übertragungstyp **Import** aus. Geben Sie unter **Quellland/-region** an, wo sich die Daten befinden, und legen Sie die **Azure-Zielregion** für die Datenübertragung fest.
 3. Wählen Sie **Data Box-Datenträger** aus. Die maximale Kapazität der Lösung beträgt 35 TB, aber Sie können auch mehrere Aufträge für Datenträger erstellen, um weitere Datenträger anzufordern und höhere Datenmengen abzudecken.  
-4. Geben Sie die Auftragsdetails und Versandinformationen ein. Wenn der Dienst in Ihrer Region verfügbar ist, können Sie E-Mail-Adressen für Benachrichtigungen angeben, die Zusammenfassung prüfen und anschließend den Auftrag erstellen. 
+4. Geben Sie die Auftragsdetails und Versandinformationen ein. Wenn der Dienst in Ihrer Region verfügbar ist, können Sie E-Mail-Adressen für Benachrichtigungen angeben, die Zusammenfassung prüfen und anschließend den Auftrag erstellen.
 
-Nachdem der Auftrag erstellt wurde, werden die Datenträger für den Versand vorbereitet. 
+Nachdem der Auftrag erstellt wurde, werden die Datenträger für den Versand vorbereitet.
 
 ## <a name="unpack"></a>Auspacken
 
@@ -52,7 +52,7 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 Die Data Box-Datenträger werden per UPS Express-Paket verschickt. Öffnen Sie das Paket, und vergewissern Sie sich, dass darin Folgendes enthalten ist:
 
 - 1 bis 5 USB-Datenträger in Luftpolsterfolie
-- Ein Verbindungskabel pro Datenträger 
+- Ein Verbindungskabel pro Datenträger
 - Versandetikett für die Rücksendung
 
 ## <a name="connect-and-unlock"></a>Anschließen und Entsperren
@@ -69,18 +69,20 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 
 ## <a name="copy-data-and-validate"></a>Kopieren von Daten und Durchführen der Validierung
 
-Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, hängt von Ihrer Datengröße ab. 
+Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, hängt von Ihrer Datengröße ab.
 
-1. Das Laufwerk enthält die Ordner *PageBlob*, *BlockBlob* und *DataBoxDiskImport*. Kopieren Sie die zu importierenden Daten per Drag & Drop als Blockblobs in den Ordner *BlockBlob*. Ziehen Sie Daten, z.B. von VHD/VHDX, entsprechend per Drag & Drop in den Ordner *PageBlob*.
+1. Das Laufwerk enthält die Ordner *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk* und *DataBoxDiskImport*. Kopieren Sie die zu importierenden Daten per Drag & Drop als Blockblobs in den Ordner *BlockBlob*. Ziehen Sie auf VHDs/VHDXs gespeicherte Daten per Drag & Drop in den Ordner *PageBlob* und geeignete Daten in den Ordner *AzureFile*. Kopieren Sie die VHDs, die Sie als verwaltete Datenträger hochladen möchten, in einen Ordner unter *ManagedDisk*.
 
-    Im Azure-Speicherkonto wird für jeden Unterordner der Ordner *BlockBlob* und *PageBlob* ein Container erstellt. Alle Dateien in den Ordnern *BlockBlob* und *PageBlob* werden in den Standardcontainer `$root` unter dem Azure Storage-Konto kopiert.
+    Im Azure-Speicherkonto wird für jeden Unterordner der Ordner *BlockBlob* und *PageBlob* ein Container erstellt. Für einen Unterordner in *AzureFile* wird eine Dateifreigabe erstellt.
 
-    > [!NOTE] 
-    > - Für alle Container und Blobs sollten die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions) eingehalten werden. Wenn diese Regeln nicht befolgt werden, tritt beim Datenupload in Azure ein Fehler auf.
-    > - Stellen Sie sicher, dass Dateien für Blockblobs eine Größe von ca. 4,75 TiB und für Seitenblobs eine Größe von ca. 8 TiB nicht überschreiten.
+    Alle Dateien in den Ordnern *BlockBlob* und *PageBlob* werden in den Standardcontainer `$root` unter dem Azure Storage-Konto kopiert. Kopieren Sie Dateien in einen Ordner innerhalb von *AzureFile*. Für alle direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und sie werden als Blockblobs hochgeladen.
 
-2. (Optional) Nach Abschluss des Kopiervorgangs ist es ratsam, die im Ordner *DataBoxDiskImport* enthaltene Datei `DataBoxDiskValidation.cmd` auszuführen, um Prüfsummen für die Validierung zu generieren. Je nach Datengröße kann dieser Schritt relativ lange dauern. 
-3. Trennen Sie die Kabelverbindung des Laufwerks mit dem Computer. 
+    > [!NOTE]
+    > - Für alle Container, Blobs und Dateien sollten die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) eingehalten werden. Wenn diese Regeln nicht befolgt werden, tritt beim Datenupload in Azure ein Fehler auf.
+    > - Stellen Sie sicher, dass Dateien für Blockblobs eine Größe von ca. 4,75 TiB, für Seitenblobs eine Größe von ca. 8 TiB und für Azure Files eine Größe von ca. 1 TiB nicht überschreiten.
+
+2. **(Optional, aber empfohlen)** Nach Abschluss des Kopiervorgangs wird dringend empfohlen, zumindest `DataBoxDiskValidation.cmd` im Ordner *DataBoxDiskImport* auszuführen und Option 1 auszuwählen, um die Dateien zu überprüfen. Wenn es die Zeit zulässt, wird darüber hinaus empfohlen, Option 2 zu verwenden, um auch die Prüfsummen zur Überprüfung zu generieren. (Abhängig von der Datengröße kann dieser Vorgang eine Weile dauern.) Diese Schritte minimieren die Wahrscheinlichkeit von Fehlern beim Hochladen der Daten in Azure.
+3. Sie müssen das Laufwerk sicher entfernen.
 
 ## <a name="ship-to-azure"></a>Senden an Azure
 
@@ -95,8 +97,8 @@ Der Data Box-Dienst sendet eine E-Mail-Benachrichtigung und aktualisiert den Auf
 
 Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, hängt von Ihrer Datengröße ab.
 
-1. Wenn der Data Box-Datenträger mit dem Netzwerk des Azure-Rechenzentrums verbunden wird, beginnt der Upload der Daten in Azure automatisch. 
-2. Sie werden vom Azure Data Box-Dienst über das Azure-Portal benachrichtigt, dass der Kopiervorgang für die Daten abgeschlossen ist. 
+1. Wenn der Data Box-Datenträger mit dem Netzwerk des Azure-Rechenzentrums verbunden wird, beginnt der Upload der Daten in Azure automatisch.
+2. Sie werden vom Azure Data Box-Dienst über das Azure-Portal benachrichtigt, dass der Kopiervorgang für die Daten abgeschlossen ist.
     
     1. Prüfen Sie die Fehlerprotokolle auf Fehler, und ergreifen Sie ggf. entsprechende Maßnahmen.
     2. Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen.
@@ -107,17 +109,17 @@ Dieser Schritt dauert zwei bis drei Minuten.
 
 Sie können den Data Box-Auftrag stornieren und dann löschen, um die Bereinigung durchzuführen.
 
-- Im Azure-Portal können Sie den Data Box-Auftrag stornieren, bevor er verarbeitet wurde. Nachdem der Auftrag verarbeitet wurde, kann er nicht mehr storniert werden. Der Auftrag wird abgearbeitet, bis er den Status „Abgeschlossen“ erreicht hat. 
+- Im Azure-Portal können Sie den Data Box-Auftrag stornieren, bevor er verarbeitet wurde. Nachdem der Auftrag verarbeitet wurde, kann er nicht mehr storniert werden. Der Auftrag wird abgearbeitet, bis er den Status „Abgeschlossen“ erreicht hat.
 
     Navigieren Sie zum Stornieren des Auftrags zu **Übersicht**, und klicken Sie in der Befehlsleiste auf **Stornieren**.  
 
-- Sie können einen Auftrag löschen, wenn im Azure-Portal dafür der Status **Abgeschlossen** oder **Abgebrochen** angezeigt wird. 
+- Sie können einen Auftrag löschen, wenn im Azure-Portal dafür der Status **Abgeschlossen** oder **Abgebrochen** angezeigt wird.
 
     Navigieren Sie zum Löschen des Auftrags zu **Übersicht**, und klicken dann in der Befehlsleiste auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen Azure Data Box-Datenträger bereitgestellt, über den Ihre Daten in Azure importiert werden. Fahren Sie mit dem folgenden Tutorial fort, um sich weiter über die Verwaltung von Azure Data Box-Datenträgern zu informieren: 
+In dieser Schnellstartanleitung haben Sie einen Azure Data Box-Datenträger bereitgestellt, über den Ihre Daten in Azure importiert werden. Fahren Sie mit dem folgenden Tutorial fort, um sich weiter über die Verwaltung von Azure Data Box-Datenträgern zu informieren:
 
 > [!div class="nextstepaction"]
 > [Use the Azure portal to administer Data Box Disk](data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Data Box-Datenträgers)

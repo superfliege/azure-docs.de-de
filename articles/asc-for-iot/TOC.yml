@@ -1,0 +1,75 @@
+items:
+- name: Dokumentation zu ASC für IoT (Vorschauversion)
+  href: index.yml
+- name: Übersicht
+  href: overview.md
+  items:
+  - name: Lösungsarchitektur
+    href: architecture.md
+  - name: Sicherheits-Agents
+    href: security-agent-architecture.md
+  - name: Dienstvoraussetzungen
+    href: service-prerequisites.md
+  - name: Erste Schritte mit ASC für IoT
+    href: getting-started.md
+- name: Schnellstarts
+  items:
+  - name: Aktivieren von ASC für IoT in IoT Hub
+    href: quickstart-onboard-iot-hub.md
+  - name: Konfigurieren Ihrer Lösung
+    href: quickstart-configure-your-solution.md
+  - name: Erstellen eines Modulzwillings für ASC für IoT
+    href: quickstart-create-security-twin.md
+  - name: Erstellen benutzerdefinierter Sicherheitswarnungen
+    href: quickstart-create-custom-alerts.md
+  expanded: true
+- name: Lernprogramme
+  items:
+  - name: Bereitstellen von Sicherheits-Agents
+    items:
+    - name: Bereitstellen eines C#-basierten Sicherheits-Agents auf einem Windows-Gerät
+      href: tutorial-deploy-windows-cs.md
+    - name: Bereitstellen eines C#-basierten Sicherheits-Agents auf einem Linux-Gerät
+      href: tutorial-deploy-linux-cs.md
+    - name: Bereitstellen eines C-basierten Sicherheits-Agents auf einem Linux-Gerät
+      href: tutorial-deploy-linux-c.md
+  - name: Untersuchen eines Geräts
+    href: tutorial-investigate-device.md
+  - name: Senden von eigenen Sicherheitsmeldungen
+    href: tutorial-send-security-messages.md
+- name: Konzepte
+  items:
+  - name: Welchen Agent sollte ich bereitstellen?
+    href: select-deploy-agent.md
+  - name: Konfigurieren von Sicherheits-Agents
+    href: concept-agent-configuration.md
+  - name: Authentifizierung von Sicherheits-Agents
+    href: concept-security-agent-authentication-methods.md
+  - name: Sicherheitsmodul
+    href: concept-security-module.md
+  - name: Sicherheitswarnungen
+    href: concept-security-alerts.md
+  - name: Sicherheitsempfehlungen
+    href: concept-recommendations.md
+- name: Anleitungen
+  items:
+  - name: Zugreifen auf Sicherheitsrohdaten
+    href: how-to-security-data-access.md
+  - name: Ändern eines Modulzwillings für Sicherheit
+    href: how-to-modify-security-module-twin.md
+- name: Ressourcen
+  items:
+  - name: Häufig gestellte Fragen
+    href: resources-frequently-asked-questions.md
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/?category=security-identity
+  - name: Azure-Blog zu Sicherheit, Datenschutz und Compliance
+    href: http://blogs.msdn.com/b/azuresecurity/
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 6789b87deb5c502df3541a10e9a8e4eece21a351
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541317"

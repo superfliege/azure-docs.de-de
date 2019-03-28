@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267749"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004814"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Schnellstart: Erstellen eines Chatraums per SignalR Service
 
@@ -267,6 +267,6 @@ Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gel�
 In dieser Schnellstartanleitung haben Sie eine neue Azure SignalR Service-Ressource erstellt und mit einer ASP.NET Core-Web-App genutzt, um Inhaltsupdates per Pushvorgang in Echtzeit auf mehrere verbundene Clients zu übertragen. Weitere Informationen zur Verwendung des Azure SignalR Service finden Sie im nächsten Tutorial, in dem es um die Authentifizierung geht.
 
 > [!div class="nextstepaction"]
-> [Azure SignalR Service-Authentifizierung](./signalr-authenticate-oauth.md)
+> [Azure SignalR Service-Authentifizierung](./signalr-concept-authenticate-oauth.md)
 
 

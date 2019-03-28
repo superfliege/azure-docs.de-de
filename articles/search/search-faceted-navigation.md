@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861042"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541212"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
@@ -34,7 +34,7 @@ Bei Ihrer Anwendungsentwicklung entfällt ein Großteil der Arbeit auf die Erste
 ## <a name="sample-code-and-demo"></a>Beispielcode und Demo
 In diesem Artikel wird ein Stellenportal als Beispiel verwendet. Das Beispiel wird als eine ASP.NET MVC-Anwendung implementiert.
 
--   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+-   Die Arbeitsdemo können Sie online unter [Azure Search-Demo „Job Portal“](http://azjobsdemo.azurewebsites.net/) anzeigen und testen.
 
 -   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
@@ -364,7 +364,7 @@ In Azure Search stehen zwei räumliche Funktionen zur Verfügung: **geo.distance
 * Die **geo.distance**-Funktion gibt die Entfernung in Kilometern zwischen zwei Punkten zurück. Ein Punkt ist ein Feld, der andere ist eine Konstante, die als Teil des Filters übergeben wird. 
 * Die **geo.intersects**-Funktion gibt „true“ zurück, wenn sich ein bestimmter Punkt innerhalb eines bestimmten Polygons befindet. Der Punkt ist ein Feld, und das Polygon ist als Konstantenliste mit Koordinaten angegeben, die als Teil des Filters übergeben wird.
 
-Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](query-odata-filter-orderby-syntax.md).
 
 <a name="tryitout"></a>
 

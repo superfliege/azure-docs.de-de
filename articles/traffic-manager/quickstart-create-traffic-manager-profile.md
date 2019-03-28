@@ -2,7 +2,7 @@
 title: 'Schnellstart: Erstellen eines Traffic Manager-Profils für Hochverfügbarkeit von Anwendungen mithilfe des Azure-Portals'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um hoch verfügbare Webanwendungen zu entwickeln.
 services: traffic-manager
-dauthor: kumudd
+author: KumudD
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: f24bcebb04c3cb17b5e0420695504541c54e88f3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2cd8830f4b2b7c972ba8972e686be984bb96fd04
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198218"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760663"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, mit dem die Hochverfügbarkeit für Ihre Webanwendung sichergestellt wird.
 
@@ -100,7 +100,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 
     | Einstellung | Wert |
     | ------- | ------|
-    | Typ | Wählen Sie **Azure-Endpunkt**. |
+    | Type | Wählen Sie **Azure-Endpunkt**. |
     | NAME | Geben Sie *myPrimaryEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **USA, Osten**. |
@@ -113,7 +113,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 
     | Einstellung | Wert |
     | ------- | ------|
-    | Typ | Wählen Sie **Azure-Endpunkt**. |
+    | Type | Wählen Sie **Azure-Endpunkt**. |
     | NAME | Geben Sie *myFailoverEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **Europa, Westen**. |

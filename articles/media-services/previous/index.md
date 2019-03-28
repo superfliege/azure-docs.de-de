@@ -18,6 +18,8 @@ ms.author: carolz
 
 Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) Videos in Broadcastqualität streamen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
 
+**HINWEIS:** Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+
 <ul class="panelContent cardsFTitle">
      <li>
         <a href="/azure/media-services/media-services-overview">

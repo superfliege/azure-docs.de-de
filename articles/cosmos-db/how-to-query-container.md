@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2ea228a1db204170f947b5fe71f1865a4620b0f4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328332"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549033"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
 
@@ -32,7 +32,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (`DeviceId`) und wird an alle Partitionen verteilt, wo sie für den Partitionsindex ausgeführt wird. Legen Sie zum partitionsübergreifenden Ausführen einer Abfrage `EnableCrossPartitionQuery` auf „true“ (bzw. `x-ms-documentdb-query-enablecrosspartition` in der REST-API) fest.
 
-Die Eigenschaft „EnablecrossPartitionQuery“ akzeptiert einen booleschen Wert. Wenn die Eigenschaft auf „true“ festgelegt ist und die Abfrage über keinen Partitionsschlüssel verfügt, verteilt Azure Cosmos DB die Abfrage auf die Partitionen. Für die Verteilung werden einzelne Abfragen an alle Partitionen gerichtet. Zum Lesen der Abfrageergebnisse müssen die Clientanwendungen die Ergebnisse aus „FeedResponse“ auf die Eigenschaft „ContinuationToken“ überprüfen. Um alle Ergebnisse zu lesen, durchlaufen Sie die Daten so lange, bis „ContinuationToken“ NULL ist. 
+Die Eigenschaft „EnableCrossPartitionQuery“ akzeptiert einen booleschen Wert. Wenn die Eigenschaft auf „true“ festgelegt ist und die Abfrage über keinen Partitionsschlüssel verfügt, verteilt Azure Cosmos DB die Abfrage auf die Partitionen. Für die Verteilung werden einzelne Abfragen an alle Partitionen gerichtet. Zum Lesen der Abfrageergebnisse müssen die Clientanwendungen die Ergebnisse aus „FeedResponse“ auf die Eigenschaft „ContinuationToken“ überprüfen. Um alle Ergebnisse zu lesen, durchlaufen Sie die Daten so lange, bis „ContinuationToken“ NULL ist. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

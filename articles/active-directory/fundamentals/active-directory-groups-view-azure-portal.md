@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Anzeigen der Gruppen und Mitglieder Ihrer Organisation – Azure Active Directory | Microsoft-Dokumentation'
+title: 'Schnellstart: Anzeigen der Gruppen und Mitglieder – Azure Active Directory | Microsoft-Dokumentation'
 description: Enthält eine Anleitung dazu, wie Sie nach den Gruppen Ihrer Organisation und den zugewiesenen Mitgliedern suchen und diese anzeigen können.
 services: active-directory
 author: eross-msft
@@ -10,15 +10,15 @@ ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ee02944e32a11a3749d6730b9263254fa9bda
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183274"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881009"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -61,7 +61,7 @@ Erstellen Sie einen neuen Benutzer mit dem Namen _Alain Charon_. Ein Benutzer mu
 
     - **Name:** Geben Sie _Alain Charon_ ein.
 
-    - **Benutzername:** Geben Sie *alain@contoso.com* ein.
+    - **Benutzername:** Geben Sie *alain\@contoso.com* ein.
 
 3. Kopieren Sie das automatisch generierte Kennwort im Feld **Kennwort**, und wählen Sie dann **Erstellen** aus.
 

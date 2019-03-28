@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/19/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5bc8a408ce247ad2980983c3eb32807074af599f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 62e35a361f2fcf9d6f484b699084a78f66121957
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820823"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310096"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group"></a>Tutorial: Azure-Ressourcen in eine andere Ressourcengruppe verschieben
 
 Erfahren Sie, wie Sie Azure-Ressourcen aus einer Ressourcengruppe in eine andere Ressourcengruppe verschieben. Sie können auch Azure-Ressourcen aus einem Azure-Abonnement in ein anderes Azure-Abonnement verschieben. In diesem Tutorial verwenden Sie eine Resource Manager-Vorlage, um zwei Ressourcengruppen und ein Speicherkonto bereitzustellen. Danach verschieben Sie das Speicherkonto aus einer Ressourcengruppe in die andere.
+
+![Diagramm: Verschieben von Ressourcen in Azure Resource Manager](./media/resource-manager-tutorial-move-resources/resource-manager-template-move-resources.png)
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 

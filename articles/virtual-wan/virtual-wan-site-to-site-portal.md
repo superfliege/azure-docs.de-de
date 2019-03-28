@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: c99d3df23e0ba9733e8762fe8fc22a4c69d3bcfb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236855"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075167"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -40,7 +40,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="vnet"></a>1. Erstellen eines virtuellen Netzwerks
 
@@ -60,12 +64,12 @@ Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen.
 2. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Standort erstellen).
 3. Füllen Sie auf der Seite **Create site** (Standort erstellen) die folgenden Felder aus:
 
-  * **Name**: Dies ist der Name, den Sie Ihrer lokalen Site geben möchten.
-  * **Öffentliche IP-Adresse**: Dies ist die öffentliche IP-Adresse des VPN-Geräts, das sich in Ihrer lokalen Site befindet.
-  * **Privater Adressraum**: Dies ist der IP-Adressraum Ihrer lokalen Site. Der Datenverkehr, der für diesen Adressraum bestimmt ist, wird an Ihre lokale Site geleitet.
-  * **Abonnement**: Überprüfen Sie das Abonnement.
-  * **Ressourcengruppe**: Die Ressourcengruppe, die Sie verwenden möchten.
-  * **Standort**.
+   * **Name**: Dies ist der Name, den Sie Ihrer lokalen Site geben möchten.
+   * **Öffentliche IP-Adresse**: Dies ist die öffentliche IP-Adresse des VPN-Geräts, das sich in Ihrer lokalen Site befindet.
+   * **Privater Adressraum**: Dies ist der IP-Adressraum Ihrer lokalen Site. Der Datenverkehr, der für diesen Adressraum bestimmt ist, wird an Ihre lokale Site geleitet.
+   * **Abonnement**: Überprüfen Sie das Abonnement.
+   * **Ressourcengruppe**: Die Ressourcengruppe, die Sie verwenden möchten.
+   * **Standort**.
 4. Klicken Sie auf **Show advanced** (Erweiterte anzeigen), um die zusätzlichen Einstellungen anzuzeigen. Sie können **BGP** wählen, um BGP zu aktivieren. Diese Funktionalität wird dann für alle Verbindungen aktiviert, die für diese Site in Azure erstellt werden. Sie können auch unter **Geräteinformationen** (optionale Felder) eingeben. Das Azure-Team kann Ihre Umgebung so besser verstehen und in Zukunft weitere Optimierungsmöglichkeiten hinzufügen oder Sie bei der Problembehandlung unterstützen.
 5. Klicken Sie auf **Confirm** (Bestätigen).
 6. Nach dem Klicken auf **Confirm** (Bestätigen) können Sie den Status auf der Seite „VPN sites“ (VPN-Standorte) anzeigen. Für den Standort ändert sich der Status von **Wird bereitgestellt** in **Bereitgestellt**.
@@ -267,10 +271,10 @@ Erstellen Sie eine Verbindung, um die Kommunikation zwischen einer Azure-VM und 
 
 ## <a name="cleanup"></a>11. Bereinigen von Ressourcen
 
-Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
+Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
