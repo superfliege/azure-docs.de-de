@@ -6,30 +6,30 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 12/27/2018
+ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8fea062e2c72410b13fa70cc5cad22b7e677086b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211847"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855281"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer        
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
-Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Notfallwiederherstellung für einen virtuellen Azure-Computer einrichten, indem Sie ihn in einer anderen Azure-Region replizieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> In diesem Artikel wird für einen neuen Benutzer die Azure Site Recovery-Benutzeroberfläche mit den Standardoptionen und dem geringen Anpassungsaufwand beschrieben. Wenn Sie mehr zu den unterschiedlichen Einstellungen erfahren möchten, die angepasst werden können, hilft Ihnen das [Tutorial zur Aktivierung der Replikation für virtuelle Azure-Computer](azure-to-azure-tutorial-enable-replication.md) weiter.
+> Dieser Artikel ist als kurze exemplarische Vorgehensweise für neue Benutzer konzipiert. Dabei wird die einfachste Vorgehensweise mit Standardoptionen und minimaler Anpassung verwendet.  Eine umfassendere exemplarische Vorgehensweise finden Sie in [diesem Tutorial](azure-to-azure-tutorial-enable-replication.md).
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Aktivieren der Replikation für die Azure-VM
 
@@ -54,8 +54,8 @@ Nach Abschluss des Replikationsauftrags können Sie den Replikationsstatus über
 
 Die Replikation der VM in der primären Region wird beendet, wenn Sie die Replikation der VM deaktivieren:
 
-- Die Quellreplikationseinstellungen werden automatisch bereinigt. Beachten Sie, dass die im Rahmen der Replikation installierte Site Recovery-Erweiterung nicht entfernt wird und manuell gelöscht werden muss. 
-- Die Site Recovery-Abrechnung für die VM wird auch beendet.
+- Die Quellreplikationseinstellungen werden automatisch bereinigt. Die Site Recovery-Erweiterung, die im Rahmen der Replikation auf dem virtuellen Computer installiert wird, wird dabei nicht entfernt und muss manuell entfernt werden. 
+- Die Site Recovery-Abrechnung für den virtuellen Computer wird beendet.
 
 Beenden Sie die Replikation wie folgt:
 
@@ -66,7 +66,7 @@ Beenden Sie die Replikation wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie eine einzelne VM in eine sekundäre Region repliziert. Sie können jetzt weitere Optionen erkunden und versuchen, eine Gruppe von virtuellen Azure-Computern mit einem Wiederherstellungsplan zu replizieren.
+In diesem Schnellstart haben Sie eine einzelne VM in eine sekundäre Region repliziert. Versuchen Sie als Nächstes, mehrere virtuelle Computer unter Verwendung eines Wiederherstellungsplans zu replizieren.
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Notfallwiederherstellung für Azure-VMs](azure-to-azure-tutorial-enable-replication.md)

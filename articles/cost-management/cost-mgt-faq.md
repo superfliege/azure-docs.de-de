@@ -96,7 +96,7 @@ Es wird empfohlen, mindestens zwei Cloudyn-Administratorkonten zu erstellen, fal
 
 Wenn Sie sich nicht beim Cloudyn-Portal anmelden können, sollten Sie sicherstellen, dass Sie die richtige URL für die Anmeldung bei Cloudyn verwenden. Verwenden Sie [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Vermeiden Sie die Verwendung der direkten Cloudyn-URL „https://app.cloudyn.com“.
+Vermeiden Sie die Verwendung der direkten Cloudyn-URL https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Wie aktiviere ich deaktivierte Konten mit Azure-Anmeldeinformationen?
 

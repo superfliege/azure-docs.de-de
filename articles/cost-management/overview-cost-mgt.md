@@ -5,25 +5,25 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
+ms.date: 03/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 69f91949347eadcffb3c0d3ff833a40b5e483e24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768656"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003171"
 ---
-# <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
+# <a name="what-is-azure-cost-management"></a>Was ist Azure Cost Management?
 
-Die Kostenverwaltung ist der Prozess, bei dem Sie die Kosten Ihrer Geschäftstätigkeit effektiv planen und steuern. Kostenverwaltungsaufgaben werden im Allgemeinen durch die Finanz-, Management- und App-Teams ausgeführt. Azure Cost Management unterstützt Organisationen bei der Planung unter Berücksichtigung von Kosten. Zudem können damit Kosten effektiv analysiert werden, und es können Maßnahmen zum Optimieren der Cloudausgaben ergriffen werden. Wenn Sie sich weiter über den Kostenverwaltungsansatz von Organisationen informieren möchten, sehen Sie den Artikel [Azure Cost Management – bewährte Methoden](cost-mgt-best-practices.md) ein.
+Die Kostenverwaltung ist der Prozess, bei dem Sie die Kosten Ihrer Geschäftstätigkeit effektiv planen und steuern. Kostenverwaltungsaufgaben werden im Allgemeinen durch die Finanz-, Management- und App-Teams ausgeführt. Azure Cost Management unterstützt Organisationen bei der Planung unter Berücksichtigung von Kosten. Zudem können damit Kosten effektiv analysiert und Maßnahmen zum Optimieren der Cloudausgaben ergriffen werden. Wenn Sie sich weiter über den Kostenverwaltungsansatz von Organisationen informieren möchten, sehen Sie den Artikel [Azure Cost Management – bewährte Methoden](cost-mgt-best-practices.md) ein.
 
 Die Abrechnung steht zwar in enger Beziehung zur Kostenverwaltung, ist jedoch nicht identisch mit dieser. Bei der Abrechnung werden Kunden Waren oder Dienstleistungen in Rechnungen gestellt, zudem werden Geschäftsbeziehungen verwaltet.  Für Abrechnungsaufgaben sind in der Regel die Beschaffungs- und Finanzteams zuständig.
 
-Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erweiterten Analysen. Berichte in Cost Management zeigen Azure-Kosten und -Nutzung, reservierte Instanzen sowie Nutzung des Azure-Hybridvorteils. Die Berichte liefern eine Übersicht Ihrer internen und externen Kosten für die Nutzung sowie Azure Marketplace-Gebühren. Andere Gebühren wie Reservierungskäufe, Support und Steuern werden in den Berichten noch nicht ausgewiesen. Anhand der Berichte verstehen Sie Ihre Ausgaben und Ihre Ressourcennutzung, und Sie können außergewöhnliche Ausgaben ermitteln. Vorhersageanalysen sind ebenfalls verfügbar. Cost Management zeigt anhand von Azure-Verwaltungsgruppen, Budgets und Empfehlungen deutlich die Struktur Ihrer Ausgaben sowie Möglichkeiten der Kostensenkung auf.
+Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erweiterten Analysen. Berichte in Cost Management zeigen die nutzungsbasierten Kosten von Azure-Diensten und Marketplace-Angeboten von Drittanbietern an. Kosten basieren auf vereinbarten Preisen und berücksichtigen die Reservierung und Rabatte für den Azure-Hybridvorteil. Die Berichte liefern eine Übersicht Ihrer internen und externen Kosten für die Nutzung sowie Azure Marketplace-Gebühren. Andere Gebühren wie Reservierungskäufe, Support und Steuern werden in den Berichten noch nicht ausgewiesen. Anhand der Berichte verstehen Sie Ihre Ausgaben und Ihre Ressourcennutzung, und Sie können außergewöhnliche Ausgaben ermitteln. Vorhersageanalysen sind ebenfalls verfügbar. Cost Management zeigt anhand von Azure-Verwaltungsgruppen, Budgets und Empfehlungen deutlich die Struktur Ihrer Ausgaben sowie Möglichkeiten der Kostensenkung auf.
 
 Über das Azure-Portal oder mithilfe diverser APIs können Sie Exportvorgänge automatisieren, um Kostendaten in externe Systeme und Prozesse zu integrieren. Automatisierter Abrechnungsdatenexport und geplante Berichte sind ebenfalls verfügbar.
 
@@ -41,7 +41,7 @@ Wenn Sie Kostenverwaltungsdaten mithilfe externer Systeme abrufen und prüfen, k
 
 ## <a name="consider-cloudyn"></a>Verwendung von Cloudyn erwägen
 
-[Cloudyn](overview.md) ist ein Azure-Dienst in Verbindung mit Cost Management. Mit Cloudyn können Sie die Cloudnutzung sowie die Ausgaben für Ihre Azure-Ressourcen nachverfolgen. Auch andere Cloudanbieter werden unterstützt, einschließlich von AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Derzeit bietet Cost Management keine Unterstützung rückblickender/verbrauchsbasierter Kostenzuteilung oder anderer Clouddienstanbieter. Cloudyn hingegen ist eine Option, die eine solche Unterstützung _bietet_. Derzeit unterstützt Cost Management ausschließlich Azure EA-Konten. Zwar werden keine individuellen Konten, Konten mit nutzungsbasierter Bezahlung oder Microsoft Cloud-Dienstanbieter-Konten unterstützt, bei Cloudyn ist dies jedoch der Fall. Wenn Sie über ein solches Konto verfügen, können Sie Ihre Kosten mithilfe von Cloudyn verwalten.
+[Cloudyn](overview.md) ist ein Azure-Dienst in Verbindung mit Cost Management. Mit Cloudyn können Sie die Cloudnutzung sowie die Ausgaben für Ihre Azure-Ressourcen nachverfolgen. Auch andere Cloudanbieter werden unterstützt, einschließlich von AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Derzeit bietet Cost Management keine Unterstützung rückblickender/verbrauchsbasierter Kostenzuteilung oder anderer Clouddienstanbieter. Cloudyn hingegen ist eine Option, die eine solche Unterstützung _bietet_. Cost Management unterstützt derzeit keine Konten von Microsoft-Clouddienstanbietern, Cloudyn hingegen schon. Wenn Sie CSP-Konten haben oder die rückblickende/verbrauchsbasierte Kostenzuteilung verwenden möchten, können Sie Cloudyn zum Verwalten Ihrer Kosten nutzen.
 
 ## <a name="additional-azure-tools"></a>Zusätzliche Azure-Tools
 

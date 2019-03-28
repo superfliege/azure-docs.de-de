@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 262f7f49987dba8340ba4a1f0e6e505b9858e1e5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1930ef761b4be9d8085fd6e1785e78146c6b5547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863872"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109161"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit dem Bing-News-Suche-SDK für Node.js
 
@@ -52,7 +52,7 @@ So richten Sie eine Konsolenanwendung mit dem SDK für die Bing-News-Suche ein:
 
 ## <a name="send-a-search-query"></a>Senden einer Suchabfrage
 
-3. Verwenden Sie den Client zur Suche mit einem Abfrageausdruck, in diesem Fall „Winter Olympics“:
+1. Verwenden Sie den Client zur Suche mit einem Abfrageausdruck, in diesem Fall „Winter Olympics“:
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {
@@ -72,4 +72,4 @@ Der Code gibt `result.value` Elemente an der Konsole aus, ohne Text zu analysier
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-[Erstellen einer Single-Page-Web-App](tutorial-bing-news-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App](tutorial-bing-news-search-single-page-app.md)

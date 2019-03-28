@@ -4,15 +4,15 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 317e843f1fcc2fc85ffbc590d48e9bdf4aa934c1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999975"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -30,15 +30,17 @@ Azure Migrate bietet Folgendes:
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 - Es können nur lokale virtuelle VMware-Computer (Virtual Machines, VMs) für die Migration zu virtuellen Azure-Computern bewertet werden. Die virtuellen VMware-Computer müssen mit vCenter Server (Version 5.5, 6.0, 6.5 oder 6.7) verwaltet werden.
-- Wenn Sie virtuelle Hyper-Computer und physische Server bewerten möchten, verwenden Sie den [Azure Site Recovery-Bereitstellungsplaner](https://aka.ms/asr-dp-hyperv-doc) für Hyper-V und unsere [Partnertools](https://azure.microsoft.com/migration/partners/) für physische Computer.
+- Die Hyper-V-Unterstützung befindet sich derzeit in der Vorschauphase mit Produktionsunterstützung. Bei Interesse können Sie sich [hier](https://aka.ms/migratefuture) registrieren und sie ausprobieren.
+- Für physische Server können Sie unsere [Partnertools](https://azure.microsoft.com/migration/partners/) verwenden.
 - Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
 - Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md) Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 -  Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Aber dies schränkt nicht Ihre Möglichkeit zum Erstellen von Bewertungen anderer Azure-Standorte als Ziel ein.
+
     **Geografie** | **Speicherort**
     --- | ---
     Azure Government | US Government, Virginia
-    Asien | Asien, Südosten
+    Asien | „Asien, Südosten“ und „Asien, Osten“
     Europa | „Europa, Norden“ oder „Europa, Westen“
     USA | „USA, Osten“ oder „USA, Westen-Mitte“
 
@@ -72,27 +74,27 @@ Bewertungseinstellungen können je nach Bedarf angepasst werden. Die Bewertungse
 
 ## <a name="how-does-azure-migrate-work"></a>Wie funktioniert Azure Migrate?
 
-1.  Sie erstellen ein Azure Migrate-Projekt.
-2.  Für Azure Migrate wird eine lokale VM genutzt, die als „Collectorappliance“ bezeichnet wird, um Informationen zu Ihren lokalen Computern zu ermitteln. Für die Erstellung der Appliance laden Sie die Setupdatei im OVA-Format (Open Virtualization Appliance) herunter und importieren sie als virtuellen Computer auf Ihrem lokalen vCenter Server-Computer.
+1. Sie erstellen ein Azure Migrate-Projekt.
+2. Für Azure Migrate wird eine lokale VM genutzt, die als „Collectorappliance“ bezeichnet wird, um Informationen zu Ihren lokalen Computern zu ermitteln. Für die Erstellung der Appliance laden Sie die Setupdatei im OVA-Format (Open Virtualization Appliance) herunter und importieren sie als virtuellen Computer auf Ihrem lokalen vCenter Server-Computer.
 3. Sie stellen über vCenter Server eine Verbindung mit dem virtuellen Computer her und geben während der Verbindungsherstellung ein neues Kennwort ein.
 4. Sie führen den Collector auf dem virtuellen Computer aus, um die Ermittlung zu initiieren.
 5. Der Collector erfasst VM-Metadaten mit den VMware PowerCLI-Cmdlets. Die Ermittlung erfolgt ohne Agent, und auf VMware-Hosts oder VMs wird nichts installiert. Die gesammelten Metadaten enthalten VM-Informationen (Kerne, Arbeitsspeicher, Datenträger, Datenträgergrößen und Netzwerkadapter). Außerdem werden Leistungsdaten für VMs gesammelt, z.B. CPU- und Arbeitsspeicherauslastung, Datenträger-IOPS, Datenträgerdurchsatz (MBit/s) und Netzwerkausgabe (MBit/s).
-5.  Die Metadaten werden per Pushvorgang in das Azure Migrate-Projekt übertragen. Sie können sie im Azure-Portal anzeigen.
-6.  Zur Durchführung der Bewertung fassen Sie die ermittelten virtuellen Computer in Gruppen zusammen. Beispielsweise können Sie virtuelle Computer gruppieren, auf denen die gleiche Anwendung ausgeführt wird. Für eine präzisere Gruppierung können Sie mithilfe der Abhängigkeitsvisualisierung Abhängigkeiten eines bestimmten Computers anzeigen oder aber Abhängigkeiten für alle Computer in einer Gruppe anzeigen und die Gruppe weiter eingrenzen.
-7.  Nachdem eine Gruppe definiert wurde, erstellen Sie eine Bewertung für sie.
-8.  Nach Abschluss der Bewertung können Sie das Ergebnis im Portal anzeigen oder im Excel-Format herunterladen.
+5. Die Metadaten werden per Pushvorgang in das Azure Migrate-Projekt übertragen. Sie können sie im Azure-Portal anzeigen.
+6. Zur Durchführung der Bewertung fassen Sie die ermittelten virtuellen Computer in Gruppen zusammen. Beispielsweise können Sie virtuelle Computer gruppieren, auf denen die gleiche Anwendung ausgeführt wird. Für eine präzisere Gruppierung können Sie mithilfe der Abhängigkeitsvisualisierung Abhängigkeiten eines bestimmten Computers anzeigen oder aber Abhängigkeiten für alle Computer in einer Gruppe anzeigen und die Gruppe weiter eingrenzen.
+7. Nachdem eine Gruppe definiert wurde, erstellen Sie eine Bewertung für sie.
+8. Nach Abschluss der Bewertung können Sie das Ergebnis im Portal anzeigen oder im Excel-Format herunterladen.
 
-  ![Azure Migrate-Architektur](./media/migration-planner-overview/overview-1.png)
+   ![Azure Migrate-Architektur](./media/migration-planner-overview/overview-1.png)
 
 ## <a name="what-are-the-port-requirements"></a>Wie lauten die Portanforderungen?
 
 In der Tabelle sind die Ports zusammengefasst, die für die Azure Migrate-Kommunikation erforderlich sind.
 
-Komponente | Kommuniziert mit |  Details
---- | --- |---
-Collector  | Azure Migrate-Dienst | Der Collector stellt über den SSL-Port 443 eine Verbindung mit dem Dienst her.
-Collector | vCenter Server | Standardmäßig stellt der Collector eine Verbindung mit vCenter Server über Port 443 her. Wenn der Server an einem anderen Port lauscht, konfigurieren Sie ihn auf dem virtuellen Collectorcomputer als ausgehenden Port.
-Lokale VM | Log Analytics-Arbeitsbereich | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) nutzt TCP-Port 443, um eine Verbindung mit Log Analytics herzustellen. Sie benötigen diesen Port nur, wenn Sie die Visualisierung von Abhängigkeiten verwenden, für die der MMA-Agent erforderlich ist.
+| Komponente | Kommuniziert mit |  Details |
+| --- | --- |--- |
+|Collector  | Azure Migrate-Dienst | Der Collector stellt über den SSL-Port 443 eine Verbindung mit dem Dienst her.|
+|Collector | vCenter Server | Standardmäßig stellt der Collector eine Verbindung mit vCenter Server über Port 443 her. Wenn der Server an einem anderen Port lauscht, konfigurieren Sie ihn auf dem virtuellen Collectorcomputer als ausgehenden Port.|
+|Lokale VM | Log Analytics-Arbeitsbereich | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) verwendet den TCP-Port 443, um eine Verbindung mit Azure Monitor-Protokollen herzustellen. Sie benötigen diesen Port nur, wenn Sie die Visualisierung von Abhängigkeiten verwenden, für die der MMA-Agent erforderlich ist.|
 
 
 ## <a name="what-happens-after-assessment"></a>Was passiert nach der Bewertung?

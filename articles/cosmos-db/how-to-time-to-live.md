@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: a9f6676f1b2fdf812ec87595083ba6317a11873c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb5997c2ae8f93068b0ad2a77b5109f6c79b9b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003519"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
@@ -72,6 +72,20 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
+### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+
+```javascript
+const containerDefinition = {
+          id: "sample container1",
+        };
+
+async function createcontainerWithTTL(db: Database, containerDefinition: ContainerDefinition, collId: any, defaultTtl: number) {
+      containerDefinition.id = collId;
+      containerDefinition.defaultTtl = defaultTtl;
+      await db.containers.create(containerDefinition);
+}
+```
+
 ## <a name="set-time-to-live-on-an-item"></a>Festlegen der Gültigkeitsdauer für ein Element
 
 Zusätzlich zu einer Standardgültigkeitsdauer für einen Container können Sie auch eine Gültigkeitsdauer für ein Element festlegen. Wenn Sie eine Gültigkeitsdauer auf der Elementebene festlegen, setzt diese die Standardgültigkeitsdauer des Elements in diesem Container außer Kraft.
@@ -81,6 +95,37 @@ Zusätzlich zu einer Standardgültigkeitsdauer für einen Container können Sie 
 * Wenn das Element über kein Feld für die Gültigkeitsdauer verfügt, gilt automatisch die für den Container festgelegte Gültigkeitsdauer.
 
 * Wird die Gültigkeitsdauer auf der Containerebene deaktiviert, wird das elementspezifische Feld für die Gültigkeitsdauer ignoriert, bis die Gültigkeitsdauer für den Container wieder aktiviert wird.
+
+### <a id="portal-set-ttl-item"></a>Azure-Portal
+
+Gehen Sie wie folgt vor, um die Gültigkeitsdauer für ein Element zu aktivieren:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+2. Erstellen Sie ein neues Azure Cosmos-Konto, oder wählen Sie ein bereits vorhandenes Konto aus.
+
+3. Öffnen Sie den Bereich **Daten-Explorer**.
+
+4. Wählen Sie einen vorhandenen Container aus, erweitern Sie ihn, und ändern Sie die folgenden Werte:
+
+   * Öffnen Sie das Fenster **Scale & Settings** (Skalierung und Einstellungen).
+   * Suchen Sie unter **Einstellung** nach **Gültigkeitsdauer**.
+   * Wählen Sie **Ein (Standard)** oder **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest. 
+   * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+
+5. Navigieren Sie anschließend zu dem Element, für das Sie die Gültigkeitsdauer festlegen möchten, fügen Sie die Eigenschaft `ttl` hinzu, und wählen Sie **Aktualisieren** aus. 
+
+   ```json
+   {
+    "id": "1",
+    "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
+    "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
+    "_etag": "\"0d00b23f-0000-0000-0000-5c7712e80000\"",
+    "_attachments": "attachments/",
+    "ttl": 10,
+    "_ts": 1551307496
+   }
+   ```
 
 ### <a id="dotnet-set-ttl-item"></a>.NET SDK
 
@@ -94,7 +139,7 @@ public class SalesOrder
     public string CustomerId { get; set; }
     // used to set expiration policy
     [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
-    public int? TimeToLive { get; set; }
+    public int? ttl { get; set; }
 
     //...
 }
@@ -103,9 +148,21 @@ SalesOrder salesOrder = new SalesOrder
 {
     Id = "SO05",
     CustomerId = "CO18009186470",
-    TimeToLive = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
+    ttl = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
 };
 ```
+
+### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+
+```javascript
+const itemDefinition = {
+          id: "doc",
+          name: "sample Item",
+          key: "value", 
+          ttl: 2
+        };
+```
+
 
 ## <a name="reset-time-to-live"></a>Zurücksetzen der Gültigkeitsdauer
 
@@ -121,7 +178,7 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = 60 * 30 * 30; // update time to live
+readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
@@ -139,14 +196,14 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = null; // inherit the default TTL of the collection
+readDocument.ttl = null; // inherit the default TTL of the collection
 
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
 ## <a name="disable-time-to-live"></a>Deaktivieren der Gültigkeitsdauer
 
-Wenn Sie die Gültigkeitsdauer für einen Container deaktivieren und verhindern möchten, dass der Hintergrundprozess nach abgelaufenen Elementen sucht, muss die Eigenschaft `DefaultTimeToLive` für den Container gelöscht werden. Das Löschen dieser Eigenschaft ist nicht das Gleiche wie das Festlegen der Eigenschaft auf „-1“. Wenn Sie die Eigenschaft auf „-1“ festlegen, laufen neue Elemente, die dem Container hinzugefügt werden, nicht ab, und der Wert kann für bestimmte Elemente im Container außer Kraft gesetzt werden. Wenn Sie die Eigenschaft für die Gültigkeitsdauer aus dem Container entfernen, laufen die Elemente auch dann ab, wenn der vorherige Standardwert für die Gültigkeitsdauer für sie explizit außer Kraft gesetzt wurde.
+Wenn Sie die Gültigkeitsdauer für einen Container deaktivieren und verhindern möchten, dass der Hintergrundprozess nach abgelaufenen Elementen sucht, muss die Eigenschaft `DefaultTimeToLive` für den Container gelöscht werden. Das Löschen dieser Eigenschaft ist nicht das Gleiche wie das Festlegen der Eigenschaft auf „-1“. Wenn Sie die Eigenschaft auf „-1“ festlegen, laufen neue Elemente, die dem Container hinzugefügt werden, nicht ab, und der Wert kann für bestimmte Elemente im Container außer Kraft gesetzt werden. Wenn Sie die Eigenschaft für die Gültigkeitsdauer aus dem Container entfernen, laufen die Elemente auch dann nicht ab, wenn der vorherige Standardwert für die Gültigkeitsdauer für sie explizit außer Kraft gesetzt wurde.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

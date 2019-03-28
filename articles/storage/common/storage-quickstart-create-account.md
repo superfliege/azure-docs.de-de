@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5266ca3f50a2d8163dbab95109cb967fb5a63ed8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebe23c606d95baa6c79c668fc929177c8bc37e44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474580"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862946"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -55,6 +55,10 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die Schritte in di
 
 Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
+# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+
+None (Keine):
+
 ---
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
@@ -80,6 +84,10 @@ Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anme
 ```cli
 az login
 ```
+
+# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+
+–
 
 ---
 
@@ -170,6 +178,33 @@ Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ m
 |Georedundanter Speicher (GRS)     |Standard_GRS         |
 |Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
 
+# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+
+Sie können entweder Azure PowerShell oder die Azure CLI verwenden, um eine Resource Manager-Vorlage zum Erstellen eines Speicherkontos bereitzustellen. Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Wählen Sie zum Ausführen der Skripts **Testen Sie es.** aus, um Azure Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf die Shell, und wählen Sie **Einfügen** aus.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the location (i.e. centralus):" &&
+read location &&
+az group create --name $resourceGroupName --location "$location" &&
+az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+Informationen zum Erstellen von Vorlagen finden Sie hier:
+
+- [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/)
+- [Vorlagenreferenz für Speicherkonten](/azure/templates/microsoft.storage/allversions)
+- [Weitere Beispiele für Speicherkontovorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
+
 ---
 
 Weitere Informationen zu verfügbaren Replikationsoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
@@ -202,6 +237,21 @@ Verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete), um
 az group delete --name storage-quickstart-resource-group
 ```
 
+# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+
+Verwenden Sie Azure PowerShell oder die Azure CLI, um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen:
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -222,5 +272,10 @@ In diesem Schnellstart haben Sie ein allgemeines v2-Standardspeicherkonto erstel
 
 > [!div class="nextstepaction"]
 > [Arbeiten mit Blobs unter Verwendung der Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
+
+# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+
+> [!div class="nextstepaction"]
+> [Arbeiten mit Blobs unter Verwendung des Azure-Portals](../blobs/storage-quickstart-blobs-portal.md)
 
 ---

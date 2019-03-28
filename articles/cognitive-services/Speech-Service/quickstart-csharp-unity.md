@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878012"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872563"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für Unity (Beta)
 
@@ -82,14 +82,14 @@ Die Benutzeroberfläche sollte dann in etwa wie folgt aussehen:
 
 1. Doppelklicken Sie auf das Skript, um es zu bearbeiten.
 
-  > [!NOTE]
-  > Unter **Edit** > **Preferences** (Bearbeiten > Voreinstellungen) können Sie konfigurieren, welcher Code-Editor gestartet werden soll. Weitere Informationen finden Sie im [Unity-Benutzerhandbuch](https://docs.unity3d.com/Manual/Preferences.html).
+   > [!NOTE]
+   > Unter **Edit** > **Preferences** (Bearbeiten > Voreinstellungen) können Sie konfigurieren, welcher Code-Editor gestartet werden soll. Weitere Informationen finden Sie im [Unity-Benutzerhandbuch](https://docs.unity3d.com/Manual/Preferences.html).
 
 1. Ersetzen Sie den gesamten Code durch Folgendes:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Suchen Sie nach der Zeichenfolge `YourSubscriptionKey`, und ersetzen Sie sie durch Ihren Abonnementschlüssel für den Speech-Dienst.
+1. Suchen Sie nach der Zeichenfolge `YourSubscriptionKey`, und ersetzen Sie sie durch Ihren Abonnementschlüssel für die Speech-Dienste.
 
 1. Suchen Sie nach der Zeichenfolge `YourServiceRegion`, und ersetzen Sie sie durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist. Bei Verwendung der kostenlosen Testversion ist die Region beispielsweise `westus`.
 
@@ -97,19 +97,19 @@ Die Benutzeroberfläche sollte dann in etwa wie folgt aussehen:
 
 1. Als Nächstes muss das Skript im Unity-Editor einem Ihrer Spielobjekte als Komponente hinzugefügt werden.
 
-  * Klicken Sie im Hierarchiefenster auf das Objekt **Canvas**. Daraufhin werden dessen Einstellungen im [Inspektorfenster](https://docs.unity3d.com/Manual/UsingTheInspector.html) (standardmäßig auf der rechten Seite) geöffnet.
-  * Klicken Sie im Inspektorfenster auf die Schaltfläche **Add Component** (Komponente hinzufügen). Suchen Sie nach dem zuvor erstellten Skript „HelloWorld“, und fügen Sie es hinzu.
-  * Die Hello World-Komponente besitzt zwei nicht initialisierte Eigenschaften: **Output Text** (Ausgabetext) und **Start Reco Button** (Schaltfläche zum Starten der Aufnahme). Diese entsprechen öffentlichen Eigenschaften der Klasse `HelloWorld`.
-    Klicken Sie zum Verknüpfen dieser Eigenschaften auf die Objektauswahl (kleines Kreissymbol rechts neben der Eigenschaft), und wählen Sie die zuvor erstellten Text- und Schaltflächenobjekte aus.
+   * Klicken Sie im Hierarchiefenster auf das Objekt **Canvas**. Daraufhin werden die Einstellungen im [Inspektorfenster](https://docs.unity3d.com/Manual/UsingTheInspector.html) (standardmäßig auf der rechten Seite) geöffnet.
+   * Klicken Sie im Inspektorfenster auf die Schaltfläche **Add Component** (Komponente hinzufügen). Suchen Sie nach dem zuvor erstellten Skript „HelloWorld“, und fügen Sie es hinzu.
+   * Die Hello World-Komponente besitzt zwei nicht initialisierte Eigenschaften: **Output Text** (Ausgabetext) und **Start Reco Button** (Schaltfläche zum Starten der Aufnahme). Diese entsprechen öffentlichen Eigenschaften der Klasse `HelloWorld`.
+     Klicken Sie zum Verknüpfen dieser Eigenschaften auf die Objektauswahl (kleines Kreissymbol rechts neben der Eigenschaft), und wählen Sie die zuvor erstellten Text- und Schaltflächenobjekte aus.
 
-    > [!NOTE]
-    > Die Schaltfläche verfügt auch über ein geschachteltes Textobjekt. Achten Sie darauf, dass Sie nicht versehentlich dieses Objekt für die Textausgabe auswählen (oder benennen Sie im Inspektorfenster eines der Textobjekte über das Feld „Name“ um, um sie nicht zu verwechseln).
+     > [!NOTE]
+     > Die Schaltfläche verfügt auch über ein geschachteltes Textobjekt. Achten Sie darauf, dass Sie nicht versehentlich dieses Objekt für die Textausgabe auswählen (oder benennen Sie im Inspektorfenster eines der Textobjekte über das Feld „Name“ um, um sie nicht zu verwechseln).
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Ausführen der Anwendung im Unity-Editor
 
 * Klicken Sie auf der Symbolleiste des Unity-Editors (unterhalb der Menüleiste) auf die Schaltfläche **Play** (Spielen).
 
-* Klicken Sie nach dem Start der App auf die Schaltfläche, und sprechen Sie einen englischen Ausdruck oder Satz in das Mikrofon Ihres Computers. Ihre Spracheingabe wird an den Spracherkennungsdienst übermittelt und in Text transkribiert, der im Fenster angezeigt wird.
+* Klicken Sie nach dem Start der App auf die Schaltfläche, und sprechen Sie einen englischen Ausdruck oder Satz in das Mikrofon Ihres Computers. Ihre Spracheingabe wird an die Speech-Dienste übermittelt, in Text transkribiert und im Fenster angezeigt.
 
   [![Screenshot der ausgeführten Schnellstart-App im Unity-Spielefenster](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 

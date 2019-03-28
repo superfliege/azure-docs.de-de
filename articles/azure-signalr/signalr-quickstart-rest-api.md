@@ -3,16 +3,15 @@ title: 'Schnellstart: REST-API des Azure SignalR-Diensts'
 description: Ein Schnellstart für die Verwendung der REST-API des Azure SignalR-Diensts.
 author: sffamily
 ms.service: signalr
-ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1443508985c7c7fef313a7eea3f622e7759a71ef
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540095"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530789"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Schnellstart: Senden von Nachrichten in Echtzeit aus einer Konsolen-App
 
@@ -176,3 +175,10 @@ Version | API-HTTP-Methode | Anfrage-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe der REST-API eine Echtzeitnachricht von SignalR Service an Clients übertragen. Im nächsten Artikel erfahren Sie mehr über die Entwicklung und Bereitstellung von Azure-Funktionen mit SignalR Service-Bindung auf der Grundlage der REST-API.
+
+> [!div class="nextstepaction"]
+> [Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von C#](signalr-quickstart-azure-functions-csharp.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453051"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432106"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -42,12 +42,11 @@ Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkenn
 |**[Generieren einer Miniaturansicht](concept-generating-thumbnails.md)**|Analysieren Sie den Inhalt eines Bilds, um eine geeignete Miniaturansicht für das Bild zu generieren. Die Maschinelles Sehen-API generiert zunächst eine hochwertige Miniaturansicht und analysiert dann die Objekte im Bild, um den *relevanten Bereich* zu bestimmen. Anschließend wird das Bild auf den relevanten Bereich zugeschnitten. Das Seitenverhältnis der generierten Miniaturansicht kann sich bei Bedarf vom Seitenverhältnis des ursprünglichen Bilds unterscheiden.|
 |**[Abrufen des relevanten Bereichs](concept-generating-thumbnails.md#area-of-interest)**|Analysieren Sie den Inhalt eines Bilds, um die Koordinaten des *relevanten Bereichs* zurückzugeben. Hierbei handelt es sich um die gleiche Funktion, die auch zum Generieren einer Miniaturansicht verwendet wird. Anstatt das Bild zuzuschneiden, gibt die Maschinelles Sehen-API jedoch die Koordinaten des Begrenzungsrahmens des Bereichs zurück, sodass die aufrufende Anwendung das ursprüngliche Bild nach Bedarf ändern kann.|
 
-
 ## <a name="extract-text-from-images"></a>Extrahieren von Text aus Bildern
 
-Mit maschinellem Sehen können Sie [Text unter Verwendung von optischer Zeichenerkennung (Optical Character Recognition, OCR) aus einem Bild in eine computerlesbare Zeichenfolge extrahieren](concept-extracting-text-ocr.md). Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
+Mit maschinellem Sehen können Sie Text aus einem Bild unter Verwendung von [optischer Zeichenerkennung (Optical Character Recognition, OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) in eine computerlesbare Zeichenfolge extrahieren. Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
 
-Sie können auch [gedruckten und handschriftlichen Text in einem Bild erkennen](concept-recognizing-text.md). Maschinelles Sehen kann sowohl gedruckten als auch handschriftlichen Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen. Hierzu zählen beispielsweise Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die Erkennung gedruckter und handschriftlicher Texte befindet sich derzeit in der Vorschauphase und wird nur für Englisch unterstützt. 
+Sie können auch die [Read-API](concept-recognizing-text.md#read-api) verwenden, um sowohl gedruckten als auch handschriftlichen Text aus Bildern und textlastigen Dokumenten zu extrahieren. Die Read-API verwendet aktualisierte Modelle und kann für verschiedene Objekte mit unterschiedlichen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Momentan befindet sich die Read-API in der Vorschauphase und unterstützt nur die englische Sprache.
 
 ## <a name="moderate-content-in-images"></a>Moderieren von Bildinhalten
 

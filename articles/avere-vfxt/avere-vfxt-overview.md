@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: b0b835dde4b98619238eaac9449432aaa9acffd3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670486"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989318"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Was ist Avere vFXT für Azure? 
 
@@ -19,8 +19,8 @@ Avere vFXT für Azure ist eine Dateisystem-Zwischenspeicherungslösung für date
 
 Avere vFXT unterstützt folgende gängige IT-Szenarien: 
 
-* Hybrid Cloud-Architektur: Avere vFXT für Azure kann mit einem Hardwarespeichersystem kombiniert werden, um von den Vorteilen des Cloud Computings zu profitieren, ohne Dateien verschieben zu müssen. 
-* Cloudbursting: Avere vFXT für Azure kann Sie dabei unterstützen, Daten für ein einzelnes Projekt in die Cloud zu verschieben oder eine dauerhafte Lift & Shift-Migration des gesamten Workflows durchzuführen. 
+* Hybrid Cloud-Architektur: Avere vFXT für Azure kann mit einem Hardwarespeichersystem kombiniert werden, um von den Vorteilen des Cloud Computings zu profitieren, ohne Dateien verschieben zu müssen. 
+* Cloudbursting: Avere vFXT für Azure kann Sie dabei unterstützen, Daten für ein einzelnes Projekt in die Cloud zu verschieben oder eine dauerhafte Lift & Shift-Migration des gesamten Workflows durchzuführen. 
 
 ![Diagramm mit Details des vFXT Avere-Systems in einem Azure-Abonnement, das mit Blobspeicher und einem lokalen Datencenter verbunden ist](media/avere-vfxt-hybrid.png)
 
@@ -67,7 +67,7 @@ Avere vFXT verwendet folgende Azure-Ressourcen:
 
 |Azure-Komponente|   |
 |----------|-----------|
-|Virtuelle Computer|Mindestens drei (D16s_v3 oder E32s_v3)|
+|Virtuelle Computer|Mindestens drei E32s_v3|
 |SSD Premium-Speicher|200 GB Speicherplatz für das Betriebssystem plus 1 bis 4 TB Cachespeicherplatz pro Knoten |
 |Speicherkonto (optional) |V2|
 |Back-End-Datenspeicher (optional) | Ein leerer LRS-Blobcontainer |

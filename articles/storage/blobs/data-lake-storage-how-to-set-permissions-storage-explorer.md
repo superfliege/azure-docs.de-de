@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867051"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546303"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2
 
@@ -33,7 +33,7 @@ Um den Prozess bestmöglich abbilden zu können, müssen Sie den [Schnellstart f
 
 ## <a name="managing-access"></a>Verwalten des Zugriffs
 
-Sie können Berechtigungen im Stammverzeichnis Ihres Dateisystems festlegen. Klicken Sie dazu mit der rechten Maustaste auf Ihr Dateisystem und wählen Sie **Berechtigungen verwalten**, um das Dialogfeld **Berechtigung verwalten** aufzurufen.
+Sie können Berechtigungen im Stammverzeichnis Ihres Dateisystems festlegen. Hierzu müssen Sie mit Ihrem individuellen Konto mit entsprechenden Rechten beim Azure Storage-Explorer angemeldet sein (anstatt über eine Verbindungszeichenfolge). Klicken Sie mit der rechten Maustaste auf Ihr Dateisystem, und wählen Sie **Berechtigungen verwalten** aus, um das Dialogfeld **Berechtigung verwalten** zu öffnen.
 
 ![Microsoft Azure Storage-Explorer – Verzeichniszugriff verwalten](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

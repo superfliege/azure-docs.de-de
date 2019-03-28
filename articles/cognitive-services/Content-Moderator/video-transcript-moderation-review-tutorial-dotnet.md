@@ -3,69 +3,62 @@ title: 'Tutorial: Moderieren von Videos und Transkripts in .NET – Content Mode
 titlesuffix: Azure Cognitive Services
 description: In diesem ausführlichen Tutorial erfahren Sie, wie Sie eine vollständige Lösung für die Video- und Transkriptmoderation mit computergestützter Moderation und Erstellung von Überprüfungen mit menschlicher Beteiligung entwickeln.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: e3578c08b78894c2f9a858e97c7cbe2d260731c5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 03/11/2019
+ms.author: pafarley
+ms.openlocfilehash: 504f79186eb69fb6e6c23c1a0cd9dfd7584bb128
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878747"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904336"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
 
-Mit den Video-APIs von Content Moderator können Sie Videos moderieren und im Tool für die Prüfung durch Menschen Videoüberprüfungen erstellen. 
+In diesem Tutorial erfahren Sie, wie Sie eine vollständige Lösung für die Video- und Transkriptmoderation mit computergestützter Moderation und Erstellung von Überprüfungen mit menschlicher Beteiligung entwickeln.
 
-In diesem ausführlichen Tutorial erfahren Sie, wie Sie eine vollständige Lösung für die Video- und Transkriptmoderation mit computergestützter Moderation und Erstellung von Überprüfungen mit menschlicher Beteiligung entwickeln.
+Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-Laden Sie für dieses Tutorial die [C#-Konsolenanwendung](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) herunter. In der Konsolenanwendung werden das SDK und die zugehörigen Pakete genutzt, um die folgenden Aufgaben durchzuführen:
-
-- Komprimieren der Eingabevideos zur schnelleren Verarbeitung
-- Moderieren des Videos, um Shots und Frames mit Erkenntnissen zu erhalten
-- Verwenden der Framezeitstempel zum Erstellen von Miniaturansichten (Bilder)
-- Übermitteln von Zeitstempeln und Miniaturansichten zum Erstellen von Videoüberprüfungen
-- Konvertieren der Videosprache in Text (Transkript) mit der Media Indexer-API
-- Moderieren des Transkripts mit dem Dienst für die Textmoderation
-- Hinzufügen des moderierten Transkripts zur Videoüberprüfung
-
-## <a name="sample-program-outputs"></a>Beispiele für die Ausgabe des Programms
-
-Bevor wir fortfahren, sehen wir uns die folgenden Beispielausgaben des Programms an:
-
-- [Konsolenausgabe](#program-output)
-- [Videoüberprüfung](#video-review-default-view)
-- [Transkriptansicht](#video-review-transcript-view)
+> [!div class="checklist"]
+> - Komprimieren der Eingabevideos zur schnelleren Verarbeitung
+> - Moderieren des Videos, um Shots und Frames mit Erkenntnissen zu erhalten
+> - Verwenden der Framezeitstempel zum Erstellen von Miniaturansichten (Bilder)
+> - Übermitteln von Zeitstempeln und Miniaturansichten zum Erstellen von Videoüberprüfungen
+> - Konvertieren der Videosprache in Text (Transkript) mit der Media Indexer-API
+> - Moderieren des Transkripts mit dem Dienst für die Textmoderation
+> - Hinzufügen des moderierten Transkripts zur Videoüberprüfung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Registrieren Sie sich für die Website mit dem [Content Moderator-Überprüfungstool](https://contentmoderator.cognitive.microsoft.com/), und [erstellen Sie benutzerdefinierte Tags](Review-Tool-User-Guide/tags.md), die von der C#-Konsolenanwendung über den Code zugewiesen werden. Im folgenden Screenshot sind die benutzerdefinierten Tags dargestellt.
+- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und erstellen Sie benutzerdefinierte Tags. Weitere Informationen zu diesem Schritt finden Sie bei Bedarf unter [Erstellen und Verwenden von Moderationstags](Review-Tool-User-Guide/tags.md).
 
-  ![Benutzerdefinierte Tags für Videomoderation](images/video-tutorial-custom-tags.png)
+    ![Screenshot: Benutzerdefinierte Tags für die Videomoderation](images/video-tutorial-custom-tags.png)
+- Um die Beispielanwendung ausführen zu können, benötigen Sie ein Azure-Konto, eine Azure Media Services-Ressource, eine Azure Content Moderator-Ressource sowie Azure Active Directory-Anmeldeinformationen. Wie Sie diese Komponenten erhalten, erfahren Sie im [Leitfaden für die Videomoderations-API](video-moderation-api.md).
+- Laden Sie die App [VideoReviewConsoleApp](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) aus GitHub herunter.
 
-1. Zum Ausführen der Beispielanwendung benötigen Sie ein Azure-Konto und ein Azure Media Services-Konto. Außerdem benötigen Sie Zugriff auf die private Vorschau von Content Moderator. Abschließend benötigen Sie noch die Anmeldeinformationen für die Azure Active Directory-Authentifizierung. Weitere Informationen zum Beziehen dieser Informationen finden Sie in der [Schnellstartanleitung zur Videomoderations-API](video-moderation-api.md).
+## <a name="enter-credentials"></a>Eingeben von Anmeldeinformationen
 
-1. Bearbeiten Sie die Datei `App.config`, und fügen Sie den Active Directory-Mandantennamen, Dienstendpunkte und Abonnementschlüssel hinzu, die mit `#####` gekennzeichnet sind. Sie benötigen die folgenden Informationen:
+Bearbeiten Sie die Datei `App.config`, und fügen Sie den Active Directory-Mandantennamen, Dienstendpunkte und Abonnementschlüssel (mit `#####` gekennzeichnet) hinzu. Sie benötigen die folgenden Informationen:
 
-|Schlüssel|BESCHREIBUNG|
-|-|-|
-|`AzureMediaServiceRestApiEndpoint`|Endpunkt für die AMS-API (Azure Media Services)|
-|`ClientSecret`|Abonnementschlüssel für Azure Media Services|
-|`ClientId`|Client-ID für Azure Media Services|
-|`AzureAdTenantName`|Active Directory-Mandantenname für Ihre Organisation|
-|`ContentModeratorReviewApiSubscriptionKey`|Abonnementschlüssel für die Content Moderator-Überprüfungs-API|
-|`ContentModeratorApiEndpoint`|Endpunkt für die Content Moderator-API|
-|`ContentModeratorTeamId`|Content Moderator-Team-ID|
+    |Schlüssel|BESCHREIBUNG|
+    |-|-|
+    |`AzureMediaServiceRestApiEndpoint`|Endpunkt für die AMS-API (Azure Media Services)|
+    |`ClientSecret`|Abonnementschlüssel für Azure Media Services|
+    |`ClientId`|Client-ID für Azure Media Services|
+    |`AzureAdTenantName`|Active Directory-Mandantenname für Ihre Organisation|
+    |`ContentModeratorReviewApiSubscriptionKey`|Abonnementschlüssel für die Content Moderator-Überprüfungs-API|
+    |`ContentModeratorApiEndpoint`|Endpunkt für die Content Moderator-API|
+    |`ContentModeratorTeamId`|Content Moderator-Team-ID|
 
-## <a name="getting-started"></a>Erste Schritte
+## <a name="examine-the-main-code"></a>Untersuchen des Hauptcodes
 
 Die `Program`-Klasse in `Program.cs` ist der Haupteinstiegspunkt in die Anwendung für die Videomoderation.
 
-### <a name="methods-of-class-program"></a>Methoden der Program-Klasse
+### <a name="methods-of-program-class"></a>Methoden der Program-Klasse
 
 |Methode|BESCHREIBUNG|
 |-|-|
@@ -79,44 +72,7 @@ Die `Program`-Klasse in `Program.cs` ist der Haupteinstiegspunkt in die Anwendun
 
 Mit `Main()` beginnt die Ausführung. Dies ist also der Ausgangspunkt für das Verständnis des Prozesses für die Videomoderation.
 
-    static void Main(string[] args)
-    {
-        if (args.Length == 0)
-        {
-            string videoPath = string.Empty;
-            GetUserInputs(out videoPath);
-            Initialize();
-            AmsConfigurations.logFilePath = Path.Combine(Path.GetDirectoryName(videoPath), "log.txt");
-            try
-            {
-                ProcessVideo(videoPath).Wait();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        else
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(args[0]);
-            if (args.Length == 2)
-                bool.TryParse(args[1], out generateVtt);
-            Initialize();
-            AmsConfigurations.logFilePath = Path.Combine(args[0], "log.txt");
-            var files = directoryInfo.GetFiles("*.mp4", SearchOption.AllDirectories);
-            foreach (var file in files)
-            {
-                try
-                {
-                    ProcessVideo(file.FullName).Wait();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-        }
-    }
+[!code-csharp[Main](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=20-24,42-52,54-74)]
 
 `Main()` verarbeitet die folgenden Befehlszeilenargumente:
 
@@ -143,51 +99,7 @@ Auf diese Klassen wird in den folgenden Abschnitten dieses Tutorials näher eing
 
 Abschließend werden die Videodateien einzeln nacheinander verarbeitet, indem jeweils `ProcessVideo()` aufgerufen wird.
 
-    private static async Task ProcessVideo(string videoPath)
-    {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("\nVideo compression process started...");
-
-        var compressedVideoPath = amsComponent.CompressVideo(videoPath);
-        if (string.IsNullOrWhiteSpace(compressedVideoPath))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Video Compression failed.");
-        }
-
-        Console.WriteLine("\nVideo compression process completed...");
-
-        UploadVideoStreamRequest uploadVideoStreamRequest = CreateVideoStreamingRequest(compressedVideoPath);
-        UploadAssetResult uploadResult = new UploadAssetResult();
-
-        if (generateVtt)
-        {
-            uploadResult.GenerateVTT = generateVtt;
-        }
-        Console.WriteLine("\nVideo moderation process started...");
-
-        if (!videoModerator.CreateAzureMediaServicesJobToModerateVideo(uploadVideoStreamRequest, uploadResult))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Video Review process failed.");
-        }
-
-        Console.WriteLine("\nVideo moderation process completed...");
-        Console.WriteLine("\nVideo review process started...");
-        string reviewId = await videoReviewApi.CreateVideoReviewInContentModerator(uploadResult);
-        Console.WriteLine("\nVideo review successfully completed...");
-        sw.Stop();
-        Console.WriteLine("\nTotal Elapsed Time: {0}", sw.Elapsed);
-        using (var stw = new StreamWriter(AmsConfigurations.logFilePath, true))
-        {
-            stw.WriteLine("Video File Name: " + Path.GetFileName(videoPath));
-            stw.WriteLine($"ReviewId: {reviewId}");
-            stw.WriteLine("Total Elapsed Time: {0}", sw.Elapsed);
-        }
-    }
-
+[!code-csharp[ProcessVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=76-118)]
 
 Die `ProcessVideo()`-Methode ist relativ einfach. Sie führt die folgenden Vorgänge in dieser Reihenfolge durch:
 
@@ -198,7 +110,7 @@ Die `ProcessVideo()`-Methode ist relativ einfach. Sie führt die folgenden Vorg�
 
 In den folgenden Abschnitten werden einige individuelle Prozesse, die von `ProcessVideo()` aufgerufen werden, ausführlicher behandelt. 
 
-## <a name="compressing-the-video"></a>Komprimieren des Videos
+## <a name="compress-the-video"></a>Komprimieren des Videos
 
 Zur Reduzierung des Netzwerkdatenverkehrs konvertiert die Anwendung Videodateien in das Format „H.264 (MPEG-4 AVC)“ und skaliert sie auf eine maximale Breite von 640 Pixel. Die Verwendung des H.264-Codecs wird aufgrund seiner hohen Effizienz (Komprimierungsrate) empfohlen. Die Komprimierung wird mit dem kostenlosen Befehlszeilentool `ffmpeg` durchgeführt, das im Ordner `Lib` der Visual Studio-Lösung enthalten ist. Die Eingabedateien können ein beliebiges Format haben, das von `ffmpeg` unterstützt wird, z.B. die gängigsten Videodateiformate und -codecs.
 
@@ -207,35 +119,7 @@ Zur Reduzierung des Netzwerkdatenverkehrs konvertiert die Anwendung Videodateien
 
 Der Code, mit dem eine einzelne Videodatei komprimiert wird, ist die `AmsComponent`-Klasse in `AMSComponent.cs`. Die für diese Funktionalität zuständige Methode ist `CompressVideo()` (hier dargestellt).
 
-    public string CompressVideo(string videoPath)
-    {
-        string ffmpegBlobUrl;
-        if (!ValidatePreRequisites())
-        {
-            Console.WriteLine("Configurations check failed. Please cross check the configurations!");
-            throw new Exception();
-        }
-
-        if (File.Exists(_configObj.FfmpegExecutablePath))
-        {
-            ffmpegBlobUrl = this._configObj.FfmpegExecutablePath;
-        }
-        else
-        {
-            Console.WriteLine("ffmpeg.exe is missing. Please check the Lib folder");
-            throw new Exception();
-        }
-
-        string videoFilePathCom = videoPath.Split('.')[0] + "_c.mp4";
-        ProcessStartInfo processStartInfo = new ProcessStartInfo();
-        processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-        processStartInfo.FileName = ffmpegBlobUrl;
-        processStartInfo.Arguments = "-i \"" + videoPath + "\" -vcodec libx264 -n -crf 32 -preset veryfast -vf scale=640:-1 -c:a aac -aq 1 -ac 2 -threads 0 \"" + videoFilePathCom + "\"";
-        var process = Process.Start(processStartInfo);
-        process.WaitForExit();
-        process.Close();
-        return videoFilePathCom;
-    }
+[!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
 Mit diesem Code werden die folgenden Schritte ausgeführt:
 
@@ -251,41 +135,15 @@ Mit diesem Code werden die folgenden Schritte ausgeführt:
 
 Die Methode gibt den Dateinamen der komprimierten Ausgabedatei zurück.
 
-## <a name="uploading-and-moderating-the-video"></a>Hochladen und Moderieren des Videos
+## <a name="upload-and-moderate-the-video"></a>Hochladen und Moderieren des Videos
 
 Das Video muss in Azure Media Services gespeichert werden, bevor es vom Content Moderation-Dienst verarbeitet werden kann. Die `Program`-Klasse in `Program.cs` verfügt über eine kleine `CreateVideoStreamingRequest()`-Methode, mit der ein Objekt zurückgegeben wird, das für die Streaminganforderung zum Hochladen des Videos steht.
 
-    private static UploadVideoStreamRequest CreateVideoStreamingRequest(string compressedVideoFilePath)
-    {
-        return
-            new UploadVideoStreamRequest
-            {
-                VideoStream = File.ReadAllBytes(compressedVideoFilePath),
-                VideoName = Path.GetFileName(compressedVideoFilePath),
-                EncodingRequest = new EncodingRequest()
-                {
-                    EncodingBitrate = AmsEncoding.AdaptiveStreaming
-                },
-                VideoFilePath = compressedVideoFilePath
-            };
-    }
+[!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
 Das sich ergebende `UploadVideoStreamRequest`-Objekt ist unter `UploadVideoStreamRequest.cs` (und dem übergeordneten `UploadVideoRequest`-Element in `UploadVideoRequest.cs`) definiert. Diese Klassen werden hier nicht angezeigt. Sie sind kurz und haben nur den Zweck, die komprimierten Videodaten und die zugehörigen Informationen zu enthalten. Eine andere Nur-Daten-Klasse, nämlich `UploadAssetResult` (`UploadAssetResult.cs`), wird für die Ergebnisse des Uploadprozesses verwendet. Jetzt sind diese Zeilen in `ProcessVideo()` verständlich:
 
-    UploadVideoStreamRequest uploadVideoStreamRequest = CreateVideoStreamingRequest(compressedVideoPath);
-    UploadAssetResult uploadResult = new UploadAssetResult();
-
-    if (generateVtt)
-    {
-        uploadResult.GenerateVTT = generateVtt;
-    }
-    Console.WriteLine("\nVideo moderation process started...");
-
-    if (!videoModerator.CreateAzureMediaServicesJobToModerateVideo(uploadVideoStreamRequest, uploadResult))
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Video Review process failed.");
-    }
+[!code-csharp[ProcessVideoSnippet](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=91-104)]
 
 Mit diesen Zeilen werden die folgenden Aufgaben durchgeführt:
 
@@ -293,68 +151,11 @@ Mit diesen Zeilen werden die folgenden Aufgaben durchgeführt:
 - Festlegen des `GenerateVTT`-Flags der Anforderung, wenn der Benutzer ein Texttranskript angefordert hat
 - Aufrufen von `CreateAzureMediaServicesJobToModerateVideo()` zum Durchführen des Uploads und Empfangen des Ergebnisses
 
-## <a name="deep-dive-into-video-moderation"></a>Ausführliche Betrachtung der Videomoderation
+## <a name="examine-video-moderation-code"></a>Untersuchen des Videomoderationscodes
 
 Die `CreateAzureMediaServicesJobToModerateVideo()`-Methode befindet sich in der Datei `VideoModerator.cs`, die den Großteil des Codes für die Interaktion mit Azure Media Services enthält. Der Quellcode der Methode ist im folgenden Auszug dargestellt.
 
-    public bool CreateAzureMediaServicesJobToModerateVideo(UploadVideoStreamRequest uploadVideoRequest, UploadAssetResult uploadResult)
-    {
-        asset = CreateAsset(uploadVideoRequest);
-        uploadResult.VideoName = uploadVideoRequest.VideoName;
-        // Encoding the asset , Moderating the asset, Generating transcript in parallel
-        IAsset encodedAsset = null;
-        //Creates the job for the tasks.
-        IJob job = this._mediaContext.Jobs.Create("AMS Review Job");
-
-        //Adding encoding task to job.
-        ConfigureEncodeAssetTask(uploadVideoRequest.EncodingRequest, job);
-
-        ConfigureContentModerationTask(job);
-
-        //adding transcript task to job.
-        if (uploadResult.GenerateVTT)
-        {
-            ConfigureTranscriptTask(job);
-        }
-
-        Stopwatch timer = new Stopwatch();
-        timer.Start();
-        //submit and execute job.
-        job.Submit();
-        job.GetExecutionProgressTask(new CancellationTokenSource().Token).Wait();
-        timer.Stop();
-        using (var sw = new StreamWriter(AmsConfigurations.logFilePath, true))
-        {
-            sw.WriteLine("AMS Job Elapsed Time: {0}", timer.Elapsed);
-        }
-
-        if (job.State == JobState.Error)
-        {
-            throw new Exception("Video moderation has failed due to AMS Job error.");
-        }
-
-        UploadAssetResult result = uploadResult;
-        encodedAsset = job.OutputMediaAssets[0];
-        result.ModeratedJson = GetCmDetail(job.OutputMediaAssets[1]);
-        // Check for valid Moderated JSON
-        var jsonModerateObject = JsonConvert.DeserializeObject<VideoModerationResult>(result.ModeratedJson);
-
-        if (jsonModerateObject == null)
-        {
-            return false;
-        }
-        if (uploadResult.GenerateVTT)
-        {
-            GenerateTranscript(job.OutputMediaAssets.Last());
-        }
-
-        uploadResult.StreamingUrlDetails = PublishAsset(encodedAsset);
-        string downloadUrl = GenerateDownloadUrl(asset, uploadVideoRequest.VideoName);
-        uploadResult.StreamingUrlDetails.DownloadUri = downloadUrl;
-        uploadResult.VideoName = uploadVideoRequest.VideoName;
-        uploadResult.VideoFilePath = uploadVideoRequest.VideoFilePath;
-        return true;
-    }
+[!code-csharp[CreateAzureMediaServicesJobToModerateVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoModerator.cs?range=230-283)]
 
 Mit diesem Code werden die folgenden Aufgaben durchgeführt:
 
@@ -363,101 +164,72 @@ Mit diesem Code werden die folgenden Aufgaben durchgeführt:
 - Übermitteln des Auftrags, Hochladen der Datei und Starten der Verarbeitung
 - Abrufen der Moderationsergebnisse, des Texttranskripts (falls angefordert) und anderer Informationen
 
-## <a name="sample-video-moderation-response"></a>Antwort der Beispielvideomoderation
+## <a name="sample-video-moderation-output"></a>Beispielausgabe der Videomoderation
 
 Das Ergebnis des Auftrags für die Videomoderation (siehe [Schnellstart zur Videomoderation](video-moderation-api.md)) ist eine JSON-Datenstruktur mit den Moderationsergebnissen. Diese Ergebnisse umfassen eine Aufschlüsselung der Fragmente (Shots) des Videos, die jeweils Ereignisse (Clips) mit Keyframes enthalten, die zur Überprüfung gekennzeichnet wurden. Jeder Keyframe wird anhand der Wahrscheinlichkeit bewertet, dass er nur für Erwachsene geeignete bzw. anzügliche Inhalte aufweist. Im folgenden Beispiel ist eine JSON-Antwort dargestellt:
 
+```json
+{
+    "version": 2,
+    "timescale": 90000,
+    "offset": 0,
+    "framerate": 50,
+    "width": 1280,
+    "height": 720,
+    "totalDuration": 18696321,
+    "fragments": [
     {
-        "version": 2,
-        "timescale": 90000,
-        "offset": 0,
-        "framerate": 50,
-        "width": 1280,
-        "height": 720,
-        "totalDuration": 18696321,
-        "fragments": [
+        "start": 0,
+        "duration": 18000
+    },
+    {
+        "start": 18000,
+        "duration": 3600,
+        "interval": 3600,
+        "events": [
+        [
         {
-            "start": 0,
-            "duration": 18000
-        },
+            "reviewRecommended": false,
+            "adultScore": 0.00001,
+            "racyScore": 0.03077,
+            "index": 5,
+            "timestamp": 18000,
+            "shotIndex": 0
+        }
+        ]
+    ]
+    },
+    {
+        "start": 18386372,
+        "duration": 119149,
+        "interval": 119149,
+        "events": [
+        [
         {
-            "start": 18000,
-            "duration": 3600,
-            "interval": 3600,
-            "events": [
-            [
-            {
-                "reviewRecommended": false,
-                "adultScore": 0.00001,
-                "racyScore": 0.03077,
-                "index": 5,
-                "timestamp": 18000,
-                "shotIndex": 0
-            }
-            ]
-        ]
-        },
-        {
-            "start": 18386372,
-            "duration": 119149,
-            "interval": 119149,
-            "events": [
-            [
-            {
-                "reviewRecommended": true,
-                "adultScore": 0.00000,
-                "racyScore": 0.91902,
-                "index": 5085,
-                "timestamp": 18386372,
-                "shotIndex": 62
-            }
-        ]
-        ]
+            "reviewRecommended": true,
+            "adultScore": 0.00000,
+            "racyScore": 0.91902,
+            "index": 5085,
+            "timestamp": 18386372,
+            "shotIndex": 62
         }
     ]
+    ]
     }
+]
+}
+```
 
 Eine Transkription der Audiodaten aus dem Video wird auch produziert, wenn das `GenerateVTT`-Flag festgelegt wird.
 
 > [!NOTE]
 > Die Konsolenanwendung nutzt die [Azure Media Indexer-API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2), um aus dem Audiotitel des hochgeladenen Videos Transkripts zu generieren. Die Ergebnisse werden im WebVTT-Format bereitgestellt. Weitere Informationen zu diesem Format finden Sie unter [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Webvideo-Texttitelformat).
 
-
-## <a name="creating-the-human-in-the-loop-review"></a>Erstellen der Überprüfung mit menschlicher Beteiligung
+## <a name="create-a-the-human-in-the-loop-review"></a>Erstellen einer Überprüfung mit menschlicher Beteiligung
 
 Der Moderationsprozess gibt eine Liste mit Keyframes aus dem Video zurück – zusammen mit einem Transkript der Audiotitel. Der nächste Schritt ist das Erstellen einer Überprüfung im Content Moderator-Prüfungstool für menschliche Moderatoren. Wenn Sie zurück zur `ProcessVideo()`-Methode in `Program.cs` navigieren, sehen Sie den Aufruf der `CreateVideoReviewInContentModerator()`-Methode. Diese Methode befindet sich in der `videoReviewApi`-Klasse, die in `VideoReviewAPI.cs` enthalten ist. Sie ist hier dargestellt.
 
-    public async Task<string> CreateVideoReviewInContentModerator(UploadAssetResult uploadAssetResult)
-    {
-    
-        string reviewId = string.Empty;
-        List<ProcessedFrameDetails> frameEntityList = framegenerator.CreateVideoFrames(uploadAssetResult);
-        string path = uploadAssetResult.GenerateVTT == true ? this._amsConfig.FfmpegFramesOutputPath + Path.GetFileNameWithoutExtension (uploadAssetResult.VideoName) + "_aud_SpReco.vtt" : "";
-        TranscriptScreenTextResult screenTextResult = new TranscriptScreenTextResult();
-        
-    if (File.Exists(path))
-        {
-            screenTextResult = await GenerateTextScreenProfanity(reviewId, path, frameEntityList);
-            uploadAssetResult.Category1TextScore = screenTextResult.Category1Score;
-            uploadAssetResult.Category2TextScore = screenTextResult.Category2Score;
-            uploadAssetResult.Category3TextScore = screenTextResult.Category3Score;
-            uploadAssetResult.Category1TextTag = screenTextResult.Category1Tag;
-            uploadAssetResult.Category2TextTag = screenTextResult.Category2Tag;
-            uploadAssetResult.Category3TextTag = screenTextResult.Category3Tag;
-        }
-        
-        var reviewVideoRequestJson = CreateReviewRequestObject(uploadAssetResult, frameEntityList);
-        if (string.IsNullOrWhiteSpace(reviewVideoRequestJson))
-        {
-            throw new Exception("Video review process failed in CreateVideoReviewInContentModerator");
-        }
-        
-        reviewId = JsonConvert.DeserializeObject<List<string>>(ExecuteCreateReviewApi(reviewVideoRequestJson).Result).FirstOrDefault();
-        frameEntityList = framegenerator.GenerateFrameImages(frameEntityList, uploadAssetResult, reviewId);
-        await CreateAndPublishReviewInContentModerator(uploadAssetResult, frameEntityList, reviewId, path, screenTextResult);
-        return reviewId;
-    
-    }
+[!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
 Mit `CreateVideoReviewInContentModerator()` werden mehrere andere Methoden aufgerufen, um die folgenden Aufgaben durchzuführen:
 
@@ -470,13 +242,11 @@ Mit `CreateVideoReviewInContentModerator()` werden mehrere andere Methoden aufge
 |Scannen des Texttranskripts, falls verfügbar, zum Ermitteln von Audiodaten, die nur für Erwachsene geeignet bzw. anzüglich sind|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
 |Vorbereiten und Übermitteln einer Videoüberprüfungsanforderung zur Prüfung durch einen Menschen|`CreateReviewRequestObject()`<br> `ExecuteCreateReviewApi()`<br>`CreateAndPublishReviewInContentModerator()`|`VideoReviewAPI.cs`|
 
-## <a name="video-review-default-view"></a>Videoüberprüfung – Standardansicht
-
 Im folgenden Screenshot sind die Ergebnisse der obigen Schritte dargestellt.
 
 ![Videoüberprüfung – Standardansicht](images/video-tutorial-default-view.PNG)
 
-## <a name="transcript-generation"></a>Transkriptgenerierung
+## <a name="process-the-transcript"></a>Verarbeiten des Transkripts
 
 Bisher ging es im Code dieses Tutorials vor allem um den visuellen Inhalt. Die Überprüfung des Sprachinhalts ist ein separater und optionaler Prozess, für den wie erwähnt ein aus den Audiodaten generiertes Transkript verwendet wird. Jetzt ist der Zeitpunkt gekommen, einen Blick darauf zu werfen, wie Texttranskripte erstellt und im Überprüfungsprozess verwendet werden. Die Aufgabe zur Generierung des Transkripts obliegt dem [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content)-Dienst.
 
@@ -494,16 +264,7 @@ Die Anwendung führt die folgenden Aufgaben durch:
 
 Wir beginnen gleich mit der Übermittlung des Transkriptionsauftrags. Mit `CreateAzureMediaServicesJobToModerateVideo()` (bereits beschrieben) wird `ConfigureTranscriptTask()` aufgerufen.
 
-    private void ConfigureTranscriptTask(IJob job)
-    {
-        string mediaProcessorName = _amsConfigurations.MediaIndexer2MediaProcessor;
-        IMediaProcessor processor = _mediaContext.MediaProcessors.GetLatestMediaProcessorByName(mediaProcessorName);
-
-        string configuration = File.ReadAllText(_amsConfigurations.MediaIndexerConfigurationJson);
-        ITask task = job.Tasks.AddNew("AudioIndexing Task", processor, configuration, TaskOptions.None);
-        task.InputAssets.Add(asset);
-        task.OutputAssets.AddNew("AudioIndexing Output Asset", AssetCreationOptions.None);
-    }
+[!code-csharp[ConfigureTranscriptTask](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoModerator.cs?range=295-304)]
 
 Die Konfiguration für die Transkriptaufgabe wird aus der Datei `MediaIndexerConfig.json` im Ordner `Lib` der Lösung gelesen. AMS-Medienobjekte werden für die Konfigurationsdatei und für die Ausgabe des Transkriptionsprozesses erstellt. Bei Ausführung des AMS-Auftrags wird mit dieser Aufgabe ein Texttranskript aus dem Audiotitel der Videodatei erstellt.
 
@@ -514,32 +275,13 @@ Die Konfiguration für die Transkriptaufgabe wird aus der Datei `MediaIndexerCon
 
 Das Transkript wird als AMS-Medienobjekt veröffentlicht. Zum Scannen des Transkripts auf unzulässigen Inhalt lädt die Anwendung das Medienobjekt aus Azure Media Services herunter. `CreateAzureMediaServicesJobToModerateVideo()` ruft `GenerateTranscript()` auf (hier gezeigt), um die Datei abzurufen.
 
-    public bool GenerateTranscript(IAsset asset)
-    {
-        try
-        {
-            var outputFolder = this._amsConfigurations.FfmpegFramesOutputPath;
-            IAsset outputAsset = asset;
-            IAccessPolicy policy = null;
-            ILocator locator = null;
-            policy = _mediaContext.AccessPolicies.Create("My 30 days readonly policy", TimeSpan.FromDays(360), AccessPermissions.Read);
-            locator = _mediaContext.Locators.CreateLocator(LocatorType.Sas, outputAsset, policy, DateTime.UtcNow.AddMinutes(-5));
-            DownloadAssetToLocal(outputAsset, outputFolder);
-            locator.Delete();
-            return true;
-        }
-        catch
-        {   //TODO:  Logging
-            Console.WriteLine("Exception occurred while generating index for video.");
-            throw;
-        }
-    }
+[!code-csharp[GenerateTranscript](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoModerator.cs?range=351-370)]
 
 Nach dem erforderlichen AMS-Setup wird der eigentliche Download durchgeführt, indem die generische Funktion `DownloadAssetToLocal()` aufgerufen wird, mit der ein AMS-Medienobjekt in eine lokale Datei kopiert wird.
 
-## <a name="transcript-moderation"></a>Transkriptmoderation
+## <a name="moderate-the-transcript"></a>Moderieren des Transkripts
 
-Das Transkript ist nun verfügbar und wird gescannt und für die Überprüfung verwendet. Für die Erstellung der Überprüfung ist das `CreateVideoReviewInContentModerator()`-Element zuständig, mit dem `GenerateTextScreenProfanity()` für die Durchführung des Auftrags aufgerufen wird. Mit dieser Methode wird wiederum das `TextScreen()`-Element aufgerufen, das den Großteil der Funktionalität enthält. 
+Das Transkript ist nun verfügbar und wird gescannt und für die Überprüfung verwendet. Für die Erstellung der Überprüfung ist das `CreateVideoReviewInContentModerator()`-Element zuständig, mit dem `GenerateTextScreenProfanity()` für die Durchführung des Auftrags aufgerufen wird. Mit dieser Methode wird wiederum das `TextScreen()`-Element aufgerufen, das den Großteil der Funktionalität enthält.
 
 `TextScreen()` führt die folgenden Aufgaben durch:
 
@@ -553,177 +295,26 @@ Wir sehen uns diese Aufgaben nun genauer an:
 
 Initialisieren Sie zuerst alle Variablen und Sammlungen.
 
-    private async Task<TranscriptScreenTextResult> TextScreen(string filepath, List<ProcessedFrameDetails> frameEntityList)
-    {
-        List<TranscriptProfanity> profanityList = new List<TranscriptProfanity>();
-        string responseContent = string.Empty;
-        HttpResponseMessage response;
-        bool category1Tag = false;
-        bool category2Tag = false;
-        bool category3Tag = false;
-        double category1Score = 0;
-        double category2Score = 0;
-        double category3Score = 0;
-        List<string> vttLines = File.ReadAllLines(filepath).Where(line => !line.Contains("NOTE Confidence:") && line.Length > 0).ToList();
-        StringBuilder sb = new StringBuilder();
-        List<CaptionScreentextResult> csrList = new List<CaptionScreentextResult>();
-        CaptionScreentextResult captionScreentextResult = new CaptionScreentextResult() { Captions = new List<string>() };
-
-        // Code from the next sections in the tutorial
-    
+[!code-csharp[TextScreen](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=515-527)]
 
 ### <a name="parse-the-transcript-for-captions"></a>Analysieren des Transkripts auf Untertitel
 
 Analysieren Sie als Nächstes das Transkript im VTT-Format auf Untertitel und Zeitstempel. Im Prüfungstool werden diese Untertitel im Fenster für die Videoüberprüfung auf der Registerkarte „Transkript“ angezeigt. Die Zeitstempel werden verwendet, um die Untertitel mit den entsprechenden Videoframes zu synchronisieren.
 
-        // Code from the previous section(s) in the tutorial
-
-        //
-        // Parse the transcript
-        //
-        foreach (var line in vttLines.Skip(1))
-        {
-                if (line.Contains("-->"))
-                {
-                    if (sb.Length > 0)
-                    {
-                        captionScreentextResult.Captions.Add(sb.ToString());
-                        sb.Clear();
-                    }
-                    if (captionScreentextResult.Captions.Count > 0)
-                    {
-                        csrList.Add(captionScreentextResult);
-                        captionScreentextResult = new CaptionScreentextResult() { Captions = new List<string>() };
-                    }
-                    string[] times = line.Split(new string[] { "-->" }, StringSplitOptions.RemoveEmptyEntries);
-                    string startTimeString = times[0].Trim();
-                    string endTimeString = times[1].Trim();
-                    int startTime = (int)TimeSpan.ParseExact(startTimeString, @"hh\:mm\:ss\.fff", CultureInfo.InvariantCulture).TotalMilliseconds;
-                    int endTime = (int)TimeSpan.ParseExact(endTimeString, @"hh\:mm\:ss\.fff", CultureInfo.InvariantCulture).TotalMilliseconds;
-                    captionScreentextResult.StartTime = startTime;
-                    captionScreentextResult.EndTime = endTime;
-                }
-                else
-                {
-                    sb.Append(line);
-                }
-                if (sb.Length + line.Length > 1024)
-                {
-                    captionScreentextResult.Captions.Add(sb.ToString());
-                    sb.Clear();
-                }
-            }
-            if (sb.Length > 0)
-            {
-                captionScreentextResult.Captions.Add(sb.ToString());
-            }
-            if (captionScreentextResult.Captions.Count > 0)
-            {
-                csrList.Add(captionScreentextResult);
-            }
-
-            // Code from the following section in the quickstart
+[!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 
 ### <a name="moderate-captions-with-the-text-moderation-service"></a>Moderieren von Untertiteln mit dem Dienst für die Textmoderation
 
 Als Nächstes untersuchen wir die analysierten Textuntertitel mit der Text-API von Content Moderator.
 
 > [!NOTE]
-> Für Ihren Content Moderator-Dienstschlüssel gilt ein Ratenlimit vom Typ „Anforderungen pro Sekunde“ (Requests Per Second, RPS). Wenn Sie das Limit überschreiten, löst das SDK eine Ausnahme mit dem Fehlercode 429 aus. 
+> Für Ihren Content Moderator-Dienstschlüssel gilt ein Ratenlimit vom Typ „Anforderungen pro Sekunde“ (Requests Per Second, RPS). Wenn Sie das Limit überschreiten, löst das SDK eine Ausnahme mit dem Fehlercode 429 aus.
 >
-> Ein Schlüssel des Free-Tarifs verfügt über ein RPS-Ratenlimit.
+> Bei einem Schlüssel des Free-Tarifs ist die Anforderungsrate auf eine einzelne Anforderung pro Sekunde beschränkt.
 
-    //
-    // Moderate the captions or cues
-    //
-    int waitTime = 1000;
-    foreach (var csr in csrList)
-    {
-                bool captionAdultTextTag = false;
-                bool captionRacyTextTag = false;
-                bool captionOffensiveTextTag = false;
-                bool retry = true;
+[!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
-                foreach (var caption in csr.Captions)
-                {
-                    while (retry)
-                    {
-                        try
-                        {
-                            System.Threading.Thread.Sleep(waitTime);
-                            var lang = await CMClient.TextModeration.DetectLanguageAsync("text/plain", caption);
-                            var oRes = await CMClient.TextModeration.ScreenTextWithHttpMessagesAsync(lang.DetectedLanguageProperty, "text/plain", caption, null, null, null, true);
-                            response = oRes.Response;
-                            responseContent = await response.Content.ReadAsStringAsync();
-                            retry = false;
-                        }
-                        catch (Exception e)
-                        {
-                            if (e.Message.Contains("429"))
-                            {
-                                Console.WriteLine($"Moderation API call failed. Message: {e.Message}");
-                                waitTime = (int)(waitTime * 1.5);
-                                Console.WriteLine($"wait time: {waitTime}");
-                            }
-                            else
-                            {
-                                retry = false;
-                                Console.WriteLine($"Moderation API call failed. Message: {e.Message}");
-                            }
-                        }
-                    }
-                    var jsonTextScreen = JsonConvert.DeserializeObject<TextScreen>(responseContent);
-                    if (jsonTextScreen != null)
-                    {
-                        TranscriptProfanity transcriptProfanity = new TranscriptProfanity();
-                        transcriptProfanity.TimeStamp = "";
-                        List<Terms> transcriptTerm = new List<Terms>();
-                        if (jsonTextScreen.Terms != null)
-                        {
-                            foreach (var term in jsonTextScreen.Terms)
-                            {
-                                var profanityobject = new Terms
-                                {
-                                    Term = term.Term,
-                                    Index = term.Index
-                                };
-                                transcriptTerm.Add(profanityobject);
-                            }
-                            transcriptProfanity.Terms = transcriptTerm;
-                            profanityList.Add(transcriptProfanity);
-                        }
-                        if (jsonTextScreen.Classification.Category1.Score > _amsConfig.Category1TextThreshold) captionAdultTextTag = true;
-                        if (jsonTextScreen.Classification.Category2.Score > _amsConfig.Category2TextThreshold) captionRacyTextTag = true;
-                        if (jsonTextScreen.Classification.Category3.Score > _amsConfig.Category3TextThreshold) captionOffensiveTextTag = true;
-                        if (jsonTextScreen.Classification.Category1.Score > _amsConfig.Category1TextThreshold) category1Tag = true;
-                        if (jsonTextScreen.Classification.Category2.Score > _amsConfig.Category2TextThreshold) category2Tag = true;
-                        if (jsonTextScreen.Classification.Category3.Score > _amsConfig.Category3TextThreshold) category3Tag = true;
-                        category1Score = jsonTextScreen.Classification.Category1.Score > category1Score ? jsonTextScreen.Classification.Category1.Score : category1Score;
-                        category2Score = jsonTextScreen.Classification.Category2.Score > category2Score ? jsonTextScreen.Classification.Category2.Score : category2Score;
-                        category3Score = jsonTextScreen.Classification.Category3.Score > category3Score ? jsonTextScreen.Classification.Category3.Score : category3Score;
-                    }
-                    foreach (var frame in frameEntityList.Where(x => x.TimeStamp >= csr.StartTime && x.TimeStamp <= csr.EndTime))
-                    {
-                        frame.IsAdultTextContent = captionAdultTextTag;
-                        frame.IsRacyTextContent = captionRacyTextTag;
-                        frame.IsOffensiveTextContent = captionOffensiveTextTag;
-                    }
-                }
-            }
-            TranscriptScreenTextResult screenTextResult = new TranscriptScreenTextResult()
-            {
-                TranscriptProfanity = profanityList,
-                Category1Tag = category1Tag,
-                Category2Tag = category2Tag,
-                Category3Tag = category3Tag,
-                Category1Score = category1Score,
-                Category2Score = category2Score,
-                Category3Score = category3Score
-            };
-            return screenTextResult;
-    }
-
-### <a name="breaking-down-the-text-moderation-step"></a>Aufschlüsseln des Textmoderationsschritts
+### <a name="text-moderation-breakdown"></a>Aufschlüsselung der Textmoderation
 
 Da `TextScreen()` eine etwas umfangreichere Methode ist, schlüsseln wir sie hier auf.
 
@@ -736,8 +327,6 @@ Da `TextScreen()` eine etwas umfangreichere Methode ist, schlüsseln wir sie hie
 1. Nachdem die Ergebnisse des Diensts für die Textmoderation empfangen wurden, werden sie von der Methode analysiert, um zu ermitteln, ob sie die Schwellenwerte für die Zuverlässigkeit erfüllen. Diese Werte liegen in `App.config` unter `OffensiveTextThreshold`, `RacyTextThreshold` und `AdultTextThreshold` vor. Abschließend werden auch die unzulässigen Begriffe gespeichert. Alle Frames innerhalb des Zeitbereichs eines „Cues“ werden gekennzeichnet, um anzugeben, dass sie anstößigen, anzüglichen bzw. nur für Erwachsene geeigneten Text enthalten.
 
 1. `TextScreen()` gibt eine `TranscriptScreenTextResult`-Instanz zurück, die das Ergebnis der Textmoderation für das gesamte Video enthält. Dieses Objekt enthält Flags und Bewertungen für die unterschiedlichen Arten von unzulässigem Inhalt sowie eine Liste mit allen unzulässigen Begriffen. Der Aufrufer `CreateVideoReviewInContentModerator()` ruft `UploadScreenTextResult()` auf, um diese Informationen an die Überprüfung anzufügen, damit sie für menschliche Prüfer verfügbar sind.
- 
-## <a name="video-review-transcript-view"></a>Videoüberprüfung – Transkriptansicht
 
 Der folgende Screenshot enthält das Ergebnis der Schritte für die Transkriptgenerierung und der Moderation.
 
@@ -747,26 +336,30 @@ Der folgende Screenshot enthält das Ergebnis der Schritte für die Transkriptge
 
 In der folgenden Befehlszeilenausgabe des Programms sind die unterschiedlichen Aufgaben und ihre Durchführung zu sehen. Darüber hinaus sind das Moderationsergebnis (im JSON-Format) und das Sprachtranskript in demselben Verzeichnis wie die ursprünglichen Videodateien verfügbar.
 
-    Microsoft.ContentModerator.AMSComponentClient
-    Enter the fully qualified local path for Uploading the video :
-    "Your File Name.MP4"
-    Generate Video Transcript? [y/n] : y
-    
-    Video compression process started...
-    Video compression process completed...
-    
-    Video moderation process started...
-    Video moderation process completed...
-    
-    Video review process started...
-    Video Frames Creation inprogress...
-    Frames(83) created successfully.
-    Review Created Successfully and the review Id 201801va8ec2108d6e043229ba7a9e6373edec5
-    Video review successfully completed...
-    
-    Total Elapsed Time: 00:05:56.8420355
+```console
+Microsoft.ContentModerator.AMSComponentClient
+Enter the fully qualified local path for Uploading the video :
+"Your File Name.MP4"
+Generate Video Transcript? [y/n] : y
 
+Video compression process started...
+Video compression process completed...
+
+Video moderation process started...
+Video moderation process completed...
+
+Video review process started...
+Video Frames Creation inprogress...
+Frames(83) created successfully.
+Review Created Successfully and the review Id 201801va8ec2108d6e043229ba7a9e6373edec5
+Video review successfully completed...
+
+Total Elapsed Time: 00:05:56.8420355
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Laden Sie die Visual Studio-Lösung herunter](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp). Laden Sie außerdem die Beispieldateien und erforderlichen Bibliotheken für dieses Tutorial herunter, und beginnen Sie mit der Integration.
+In diesem Tutorial haben Sie eine Anwendung eingerichtet, die Videoinhalte (einschließlich Transkriptinhalte) moderiert und im Prüfungstool Überprüfungen erstellt. Machen Sie sich als Nächstes mit den Details der Videomoderation vertraut.
+
+> [!div class="nextstepaction"]
+> [Videomoderation](./video-moderation-human-review.md)

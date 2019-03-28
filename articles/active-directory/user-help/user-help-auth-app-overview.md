@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8585557672c7db15e07be6a5e663ba1811e07694
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 4b47b0c5af98198d829c4658877acae2edff5455
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001189"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wozu dient die Microsoft Authenticator-App?
 
@@ -28,18 +28,21 @@ Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Si
 
 Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfolgen:
 
-- Lassen Sie sich nach der Anmeldung mit Ihrem Benutzernamen und Kennwort zu einer zweiten Überprüfungsmethode auffordern.
+- Zur Reaktion auf eine Authentifizierungsaufforderung, nachdem Sie sich mit Ihrem Benutzernamen und Kennwort angemeldet haben
 
-- Stellen Sie die Anmeldung ohne Kennwort bereit, indem der Benutzername und das mobile Gerät mit Fingerabdruck, Gesichtserkennung oder einer PIN verwendet wird.
+- Zur Anmeldung ohne Kennwort unter Verwendung Ihres Benutzernamens, der Authenticator-App und Ihres mobilen Geräts mit Fingerabdruck, Gesichtserkennung oder PIN
 
->[!Important]
->Die Microsoft Authenticator-App funktioniert mit jeder App, für die die zweistufige Überprüfung verwendet wird, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
+- Als Codegenerator für andere Konten, die Authentifikator-Apps unterstützen
 
->Ihre Organisation erfordert möglicherweise die Verwendung einer Authentifikator-App zum Anmelden und für den Zugriff auf Ihre Organisationsdaten und -dokumente. Ihr Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst tatsächlich als Überprüfungsmethode eingerichtet, nachdem Sie den Registrierungsprozess abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-overview.md).
-
->Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429). Erhalten Sie weitere Informationen zur Meldung [Dieses Microsoft-Konto ist nicht vorhanden.](https://support.microsoft.com/help/13811), wenn Sie sich bei Ihrem Microsoft-Konto anmelden.
+> [!Important]
+> Die Microsoft Authenticator-App funktioniert mit jedem Konto, für das die zweistufige Überprüfung verwendet wird, und die Standards für zeitbasierte Einmalkennwörter (Time-based One-time Passwords, TOTPs) unterstützt.
+> 
+> Ihre Organisation erfordert möglicherweise die Verwendung einer Authentifikator-App zum Anmelden und für den Zugriff auf Ihre Organisationsdaten und -dokumente. Ihr Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst tatsächlich als Überprüfungsmethode eingerichtet, nachdem Sie den Registrierungsprozess abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md).
+> 
+> Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429). Erhalten Sie weitere Informationen zur Meldung [Dieses Microsoft-Konto ist nicht vorhanden.](https://support.microsoft.com/help/13811), wenn Sie sich bei Ihrem Microsoft-Konto anmelden.
 
 ## <a name="terminology"></a>Begriff
+
 |Begriff|BESCHREIBUNG|
 |----|-----------|
 |Zweistufige Überprüfung |Bei dieser Überprüfung benötigen Sie in der Regel nur zwei Angaben zur Überprüfung, etwa ein Kennwort und eine PIN. Die Microsoft Authenticator-App unterstützt sowohl die standardmäßige zweistufige Überprüfung als auch die Anmeldung ohne Kennwort.|

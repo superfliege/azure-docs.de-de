@@ -8,28 +8,31 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
+ms.openlocfilehash: 625556986c5034303e83cc23b4ba06b1638115d1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804643"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448423"
 ---
-# <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Schnellstart: Erfassen von Azure-Blobs in Azure Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen
+# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Schnellstart: Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer bietet eine kontinuierliche Erfassung (Laden von Daten) aus Blobs, die in Blobcontainer geschrieben werden. Hierzu wird ein [Azure Event Grid](/azure/event-grid/overview)-Abonnement für Bloberstellungsereignisse festgelegt, und diese Ereignisse werden über einen Event Hub an Kusto weitergeleitet. Für diese Schnellstartanleitung benötigen Sie ein Speicherkonto mit einem Event Grid-Abonnement, das seine Benachrichtigungen an Event Hub sendet. Anschließend können Sie eine Event Grid-Datenverbindung erstellen und den Datenfluss im gesamten System betrachten.
+Azure Data Explorer ist ein schneller und skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Er bietet eine kontinuierliche Erfassung (Laden von Daten) aus Blobs, die in Blobcontainer geschrieben werden. 
+
+In dieser Schnellstartanleitung wird beschrieben, wie Sie ein [Azure Event Grid](/azure/event-grid/overview)-Abonnement festlegen und Ereignisse per Event Hub an Azure Data Explorer leiten. Zunächst benötigen Sie ein Speicherkonto mit einem Event Grid-Abonnement, das Benachrichtigungen an Azure Event Hubs sendet. Anschließend erstellen Sie eine Event Grid-Datenverbindung und zeigen den Datenfluss im gesamten System an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Sollten Sie über kein Azure-Abonnement verfügen, erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/).
-1. [Ein Cluster und eine Datenbank](create-cluster-database-portal.md)
-1. [Ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
-1. [Ein Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* Ein Azure-Abonnement. Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/).
+* [Ein Cluster und eine Datenbank](create-cluster-database-portal.md).
+* [Ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+* [Einen Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Erstellen eines Event Grid-Abonnements in Ihrem Speicherkonto
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto.
-1. Klicken Sie auf die Registerkarte **Ereignisse** und anschließend auf **Ereignisabonnement**.
+1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto.
+1. Wählen Sie **Ereignisse** > **Ereignisabonnement**.
 
     ![Anwendungslink „Abfrage“](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -41,20 +44,20 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
     | Ereignisschema | *Event Grid-Schema* | Das gewünschte Schema für die Event Grid-Instanz. |
     | Thementyp | *Speicherkonto* | Die Art des Event Grid-Themas. |
     | Themenressource | *gridteststorage* | Der Name Ihres Speicherkontos. |
-    | Alle Ereignistypen abonnieren | *Deaktiviert* | Keine Benachrichtigungen für alle Ereignisse. |
+    | Alle Ereignistypen abonnieren | *Löschen* | Keine Benachrichtigungen für alle Ereignisse. |
     | Definierte Ereignistypen | *Blob erstellt* | Gibt an, bei welchen spezifischen Ereignissen eine Benachrichtigung erfolgen soll. |
     | Endpunkttyp | *Event Hubs* | Die Art des Endpunkts, an den Sie die Ereignisse senden. |
     | Endpunkt | *test-hub* | Der von Ihnen erstellte Event Hub. |
     | | |
 
 1. Wählen Sie die Registerkarte **Zusätzliche Features** aus, wenn Sie Dateien aus einem bestimmten Container nachverfolgen möchten. Legen Sie die Filter für die Benachrichtigungen wie folgt fest:
-    * Das Feld **Betreff beginnt mit** ist das *literale* Präfix des Blobcontainers. (Da das Muster *startswith* verwendet wird, kann es mehrere Container umfassen.) Platzhalter sind nicht zulässig.
+    * Das Feld **Betreff beginnt mit** ist das *Literalpräfix* des Blobcontainers. Da das angewendete Muster *startswith* ist, kann es mehrere Container umfassen. Platzhalter sind nicht zulässig.
      Das Feld *muss* wie folgt festgelegt werden: *`/blobServices/default/containers/`*[Containerpräfix]
     * Das Feld **Betreff endet auf** ist das *literale* Suffix des Blobs. Platzhalter sind nicht zulässig.
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Erstellen einer Zieltabelle im Azure-Daten-Explorer
 
-Erstellen Sie in Azure Data Explorer eine Tabelle, an die Event Hubs Daten senden kann. Erstellen Sie die Tabelle in dem Cluster und der Datenbank, den bzw. die Sie unter **Voraussetzungen** vorbereitet haben.
+Erstellen Sie in Azure Data Explorer eine Tabelle, an die Event Hubs Daten senden kann. Erstellen Sie die Tabelle in dem Cluster und der Datenbank, den bzw. die Sie unter „Voraussetzungen“ vorbereitet haben.
 
 1. Wählen Sie im Azure-Portal unter Ihrem Cluster die Option **Abfrage** aus.
 
@@ -80,17 +83,17 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
 
 1. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** aus, um zu überprüfen, ob die Bereitstellung des Event Hubs erfolgreich verlaufen ist.
 
-1. Wählen Sie unter dem von Ihnen erstellten Cluster zuerst **Datenbanken** und dann **TestDatabase** aus.
+1. Wählen Sie unter dem von Ihnen erstellten Cluster **Datenbanken** > **TestDatabase**.
 
     ![Testdatenbank auswählen](media/ingest-data-event-grid/select-test-database.png)
 
-1. Wählen Sie **Datenerfassung** und dann **Datenverbindung hinzufügen** aus.
+1. Wählen Sie **Datenerfassung** > **Datenverbindung hinzufügen**.
 
     ![Datenerfassung](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1. Wählen Sie als Verbindungstyp Folgendes aus: **Blobspeicher**.
+1.  Wählen Sie den Verbindungstyp aus: **Blobspeicher**.
 
-1. Füllen Sie das Formular mit den folgenden Informationen aus, und klicken Sie anschließend auf **Erstellen**:
+1. Füllen Sie das Formular mit den folgenden Informationen aus, und wählen Sie **Erstellen**.
 
     ![Event Hub-Verbindung](media/ingest-data-event-grid/create-event-grid-data-connection.png)
 
@@ -98,12 +101,12 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Name der Datenverbindung | *test-hub-connection* | Der Name der Verbindung, die Sie im Azure-Daten-Explorer erstellen möchten.|
+    | Name der Datenverbindung | *test-hub-connection* | Der Name der Verbindung, die Sie im Azure Data Explorer erstellen möchten.|
     | Speicherkontoabonnement | Ihre Abonnement-ID | Die Abonnement-ID, unter der sich Ihr Speicherkonto befindet.|
     | Speicherkonto | *gridteststorage* | Der Name des zuvor erstellten Speicherkontos.|
     | Event Grid | *test-grid-connection* | Der Name der erstellten Event Grid-Instanz. |
-    | Event Hub-Name | *test-hub* | Der von Ihnen erstellte Event Hub. Dieser Wert wird automatisch ausgefüllt, wenn Sie eine Event Grid-Instanz auswählen. |
-    | Consumergruppe | *test-group* | Die Consumergruppe, die in dem von Ihnen erstellten Event Hub definiert ist. |
+    | Event Hub-Name | *test-hub* | Der von Ihnen erstellte Event Hub. Dieses Feld wird automatisch ausgefüllt, wenn Sie eine Event Grid-Instanz auswählen. |
+    | Consumergruppe | *test-group* | Die Consumergruppe, die im von Ihnen erstellten Event Hub definiert ist. |
     | | |
 
     Zieltabelle:
@@ -119,9 +122,9 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
 
 Nachdem nun eine Verbindung zwischen Azure Data Explorer und dem Speicherkonto besteht, können Sie Beispieldaten erstellen und in den Blobspeicher hochladen.
 
-Wir verwenden ein kleines Shellskript, das einige grundlegenden Azure CLI-Befehle für die Interaktion mit Azure Storage-Ressourcen aufruft. Das Skript erstellt zuerst einen neuen Container in Ihrem Speicherkonto und lädt dann eine vorhandene Datei (als Blob) in diesen Container hoch. Danach listet es alle Blobs im Container auf. Das Skript kann per [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) direkt im Portal ausgeführt werden.
+Wir verwenden ein kleines Shellskript, das einige grundlegenden Azure CLI-Befehle für die Interaktion mit Azure Storage-Ressourcen aufruft. Mit diesem Skript wird ein neuer Container in Ihrem Speicherkonto erstellt, eine vorhandene Datei wird in den Container hochgeladen (als Blob), und anschließend werden die Blobs im Container aufgeführt. Das Skript kann per [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) direkt im Portal ausgeführt werden.
 
-Speichern Sie die folgenden Daten in einer Datei, und verwenden Sie sie zusammen mit dem weiter unten angegebenen Skript:
+Speichern Sie die Daten in einer Datei, und laden Sie sie mit diesem Skript hoch:
 
 ```Json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
@@ -154,7 +157,7 @@ Speichern Sie die folgenden Daten in einer Datei, und verwenden Sie sie zusammen
 ## <a name="review-the-data-flow"></a>Überprüfen des Datenflusses
 
 > [!NOTE]
-> ADX verfügt über eine Aggregationsrichtlinie (Batchingrichtlinie) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist.
+> Azure Data Explorer verfügt über eine Aggregationsrichtlinie (Batching) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist.
 Die Richtlinie ist standardmäßig auf fünf Minuten festgelegt.
 Sie kann bei Bedarf zu einem späteren Zeitpunkt geändert werden. In dieser Schnellstartanleitung ist mit einer Wartezeit von wenigen Minuten zu rechnen.
 
@@ -191,7 +194,7 @@ Wenn Sie Ihre Event Grid-Instanz nicht mehr benötigen, bereinigen Sie **test-hu
 
 1. Wählen Sie unter **test-resource-group** die Option **Ressourcengruppe löschen** aus.
 
-1. Geben Sie im neuen Fenster den Namen der zu löschenden Ressourcengruppe (*test-hub-rg*) ein, und wählen Sie dann **Löschen** aus.
+1. Geben Sie im neuen Fenster den Namen der zu löschenden Ressourcengruppe (*test-hub-rg*) ein, und wählen Sie anschließend **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

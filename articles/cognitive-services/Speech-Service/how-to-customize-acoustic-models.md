@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erstellen eines Akustikmodells mit dem Speech Service'
 titlesuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie mit dem Speech-Dienst in Azure Cognitive Services ein Akustikmodell erstellen.
+description: Hier erfahren Sie, wie Sie mithilfe der Speech-Dienste in Azure ein Akustikmodell erstellen.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: b644d1d227b5dbd69af38cc32defffb8152b0cde
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2a111558fa3f515b797745dc51e32f625bbd91f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878118"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844023"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Tutorial: Erstellen eines benutzerdefinierten Akustikmodells
 
@@ -33,9 +33,9 @@ Sollten Sie über kein Azure Cognitive Services-Konto verfügen, können Sie ein
 
 Vergewissern Sie sich auf der Seite [Cognitive Services Subscriptions](https://cris.ai/Subscriptions) (Cognitive Services-Abonnements), dass Ihr Cognitive Services-Konto mit einem Abonnement verbunden ist.
 
-Durch Klicken auf **Verbindung mit vorhandenem Abonnement herstellen** können Sie eine Verbindung mit einem Speech-Dienstabonnement herstellen, das im Azure-Portal erstellt wurde.
+Durch Klicken auf **Verbindung mit vorhandenem Abonnement herstellen** können Sie eine Verbindung mit einem Abonnement für die Speech-Dienste herstellen, das im Azure-Portal erstellt wurde.
 
-Informationen zum Erstellen eines Speech-Dienstabonnements über das Azure-Portal finden Sie unter [Kostenloses Testen des Speech-Diensts](get-started.md).
+Wie Sie ein Abonnement für die Speech-Dienste über das Azure-Portal erstellen, erfahren Sie unter [Kostenloses Testen der Speech-Dienste](get-started.md).
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
@@ -69,7 +69,7 @@ Ein Akustikdataset zur Anpassung des Akustikmodells besteht aus zwei Teilen: (1)
 | Samplingrate | 8.000 Hertz (Hz) oder 16.000 Hz |
 | Kanäle | 1 (Mono) |
 | Beispielformat | PCM, 16-Bit-Ganzzahl |
-| Dateidauer | 0,1 Sekunden < Dauer < 12 Sekunden | 
+| Dateidauer | 0,1 Sekunden < Dauer < 12 Sekunden |
 | Ruhe | > 0,1 Sekunden |
 | Archivformat | .zip |
 | Maximale Archivgröße | 2 GB |
@@ -96,19 +96,19 @@ Die Transkriptionen für sämtliche WAV-Dateien sollten in einer einzelnen Textd
 
 Der Text der Transkriptionen wird normalisiert, damit diese vom System verarbeitet werden können. Einige wichtige Normalisierungen müssen jedoch noch _vor_ dem Hochladen der Daten für den Custom Speech Service durch den Benutzer vorgenommen werden. Informationen dazu, welche Sprache bei der Vorbereitung Ihrer Transkripte verwendet werden muss, finden Sie unter [Transkriptionsrichtlinien zur Verwendung des Speech-Diensts](prepare-transcription.md).
 
-Führen Sie die Schritte in den nächsten Abschnitten über das [Portal des Speech-Diensts](https://cris.ai) aus.
+Führen Sie die Schritte in den nächsten Abschnitten über das [Portal der Speech-Dienste](https://cris.ai) aus.
 
 ## <a name="import-the-acoustic-dataset"></a>Importieren des Akustikdatasets
 
 Die vorbereiteten Audiodateien und Transkriptionen können in das Webportal des Diensts importiert werden.
 
-Vergewissern Sie sich hierbei zunächst, dass Sie beim [Portal des Speech-Portals](https://cris.ai) angemeldet sind. Wählen Sie anschließend auf dem Menüband in der Dropdownliste **Custom Speech** die Option **Adaptation Data** (Anpassungsdaten) aus. Wenn Sie zum ersten Mal Daten in Custom Speech Service hochladen, wird eine leere Tabelle namens **Datasets** angezeigt. 
+Vergewissern Sie sich hierbei zunächst, dass Sie beim [Portal der Speech-Dienste](https://cris.ai) angemeldet sind. Wählen Sie anschließend auf dem Menüband in der Dropdownliste **Custom Speech** die Option **Adaptation Data** (Anpassungsdaten) aus. Wenn Sie zum ersten Mal Daten in Custom Speech Service hochladen, wird eine leere Tabelle namens **Datasets** angezeigt.
 
 Klicken Sie in der Zeile **Acoustic Datasets** (Akustikdatasets) auf die Schaltfläche **Importieren**. Daraufhin wird eine Seite zum Hochladen eines neuen Datasets angezeigt.
 
 ![Seite zum Importieren von Akustikdaten](media/stt/speech-acoustic-datasets-import.png)
 
-Geben Sie in den Feldern **Name** und **Beschreibung** die entsprechenden Informationen ein. Aussagekräftige Beschreibungen sind hilfreich, um den Überblick über die verschiedenen hochgeladenen Datasets zu behalten. 
+Geben Sie in den Feldern **Name** und **Beschreibung** die entsprechenden Informationen ein. Aussagekräftige Beschreibungen sind hilfreich, um den Überblick über die verschiedenen hochgeladenen Datasets zu behalten.
 
 Klicken Sie in den Feldern **Transcriptions file (.txt)** (Transkriptionsdatei (.txt)) und **Audiodateien (.zip)** auf **Durchsuchen**, und wählen Sie Ihre Transkriptionsdatei im Nur-Text-Format bzw. das ZIP-Archiv mit den WAV-Dateien aus. Klicken Sie nach Abschluss der Vorbereitungen auf **Importieren**, um Ihre Daten hochzuladen. Daraufhin werden Ihre Daten hochgeladen. Bei umfangreicheren Datasets kann der Importvorgang mehrere Minuten dauern.
 
@@ -126,11 +126,11 @@ Wenn Sie den Namen oder die Beschreibung des Datasets ändern möchten, können 
 
 Wenn der Status Ihres Akustikdatasets *Complete* (Abgeschlossen) lautet, können Sie das Dataset zur Erstellung eines benutzerdefinierten Akustikmodells verwenden. Wählen Sie hierzu in der Dropdownliste **Custom Speech** die Option **Acoustic Models** (Akustikmodelle) aus. In einer Tabelle namens **Ihre Modelle** werden alle Ihre benutzerdefinierten Akustikmodelle aufgeführt. Bei der ersten Verwendung ist diese Tabelle leer. Im Tabellentitel wird das aktuelle Gebietsschema angezeigt. Akustikmodelle können derzeit nur für Englisch (USA) erstellt werden.
 
-Klicken Sie zum Erstellen eines neuen Modells unter dem Tabellentitel auf den Link **Neu erstellen**. Geben Sie wie zuvor einen Namen und eine Beschreibung ein, um dieses Modell identifizieren zu können. Im Feld **Beschreibung** kann beispielsweise erfasst werden, welches Startmodell und Akustikdataset für die Erstellung des Modells verwendet wurden. 
+Klicken Sie zum Erstellen eines neuen Modells unter dem Tabellentitel auf den Link **Neu erstellen**. Geben Sie wie zuvor einen Namen und eine Beschreibung ein, um dieses Modell identifizieren zu können. Im Feld **Beschreibung** kann beispielsweise erfasst werden, welches Startmodell und Akustikdataset für die Erstellung des Modells verwendet wurden.
 
 Wählen Sie als Nächstes in der Dropdownliste **Base Acoustic Model** (Basisakustikmodell) ein Basismodell aus. Das Basismodell bildet den Ausgangspunkt für Ihre Anpassung. Sie können zwischen zwei Basisakustikmodellen wählen:
-* Das **Microsoft-Akustikmodell für Suche und Diktat** eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. 
-* Das **Microsoft-Konversationsmodell** eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. 
+* Das **Microsoft-Akustikmodell für Suche und Diktat** eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text.
+* Das **Microsoft-Konversationsmodell** eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet.
 
 Die Wartezeit für die Teilergebnisse in Konversationsmodellen ist höher als bei Modellen für Suche und Diktat.
 
@@ -153,6 +153,6 @@ In der Tabelle mit den Akustikmodellen wird ein neuer Eintrag angezeigt, der die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/)
+- [Abrufen Ihres Speech Services-Testabonnements](https://azure.microsoft.com/try/cognitive-services/)
 - [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
 - [Git-Beispieldaten](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

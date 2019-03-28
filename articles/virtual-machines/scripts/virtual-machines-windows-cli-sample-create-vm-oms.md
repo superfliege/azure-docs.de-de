@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Beispiel – Erstellen einer Azure-VM mit Ausführung der Log Analytics-Überwachung | Microsoft-Dokumentation
-description: 'Azure CLI-Beispiel: Erstellen einer Azure-VM mit Ausführung einer Windows Server 2016-VM und der Log Analytics-Überwachung.'
+title: 'Azure CLI-Beispiel: Erstellen eines virtuellen Azure-Computers mit Azure Monitor | Microsoft-Dokumentation'
+description: 'Azure CLI-Beispiel: Erstellen eines virtuellen Azure-Computers mit Windows Server 2016 und Azure Monitor.'
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 06e853534dc811ba5b37b192a9da75e88eedd778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668312"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543320"
 ---
-# <a name="monitor-a-vm-with-log-analytics"></a>Überwachen einer VM mit Log Analytics
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Überwachen eines virtuellen Computers mit Azure Monitor-Protokollen
 
-Mit diesem Skript wird ein virtueller Azure-Computer erstellt, der Log Analytics-Agent installiert und das System mit einem Log Analytics-Arbeitsbereich registriert. Nach Ausführung des Skripts wird der virtuelle Computer in der Azure-Überwachung angezeigt.
+Mit diesem Skript wird ein virtueller Azure-Computer erstellt, der Log Analytics-Agent installiert und das System in einem Log Analytics-Arbeitsbereich registriert. Nach Ausführung des Skripts wird der virtuelle Computer in der Azure-Überwachung angezeigt.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

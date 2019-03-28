@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004580"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893270"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
 
@@ -77,11 +77,11 @@ So richten Sie eine Firewallregel auf Serverebene ein:
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Serverfirewall festlegen** aus. Die Seite **Firewalleinstellungen** für den Datenbankserver wird geöffnet.
 
-    1. Wählen Sie in der Symbolleiste die Option **Client-IP-Adresse hinzufügen** aus, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Die Regel kann den Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen. Wählen Sie **Speichern** aus.
+   1. Wählen Sie in der Symbolleiste die Option **Client-IP-Adresse hinzufügen** aus, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Die Regel kann den Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen. Wählen Sie **Speichern** aus.
 
-    ![Festlegen der Serverfirewallregel](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+      ![Festlegen der Serverfirewallregel](./media/sql-database-security-tutorial/server-firewall-rule2.png)
 
-    1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
+   1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
 
 Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit der angegebenen IP-Adresse oder dem angegebenen IP-Adressbereich herstellen.
 
@@ -90,7 +90,7 @@ Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit
 
 ### <a name="setup-database-firewall-rules"></a>Einrichten von Firewallregeln für eine Datenbank
 
-Firewallregeln auf Datenbankebene gelten nur für einzelne Datenbanken. Diese Regeln sind portabel und bleiben bei einem Serverfailover für die Datenbank erhalten. Firewallregeln auf Datenbankebene können nur mithilfe von T-SQL-Anweisungen (Transact-SQL) konfiguriert werden, und es muss bereits eine Firewallregel auf Serverebene konfiguriert worden sein.
+Firewallregeln auf Datenbankebene gelten nur für einzelne Datenbanken. Die Datenbank behält diese Regeln bei einem Serverfailover bei. Firewallregeln auf Datenbankebene können nur mithilfe von T-SQL-Anweisungen (Transact-SQL) konfiguriert werden, und es muss bereits eine Firewallregel auf Serverebene konfiguriert worden sein.
 
 So richten Sie eine Firewallregel auf Datenbankebene ein:
 
@@ -142,7 +142,7 @@ Informationen zum Konfigurieren von Azure AD finden Sie hier:
 
 - [Was ist eine Hybrididentität?](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Windows Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)
+- [Windows Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)
 - [Verwalten Ihres Azure AD-Verzeichnisses](../active-directory/fundamentals/active-directory-administer.md)
 - [Übersicht über Azure PowerShell](/powershell/azure/overview?view=azureadps-2.0)
 - [Erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/hybrid/reference-connect-ports.md)
@@ -248,11 +248,11 @@ So aktivieren Sie Advanced Data Security:
 
 1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Advanced Data Security** aus.
 
-    1. Wählen Sie unter **Advanced Data Security** die Option **EIN** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
+   1. Wählen Sie unter **Advanced Data Security** die Option **EIN** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
 
-    ![Navigationsbereich](./media/sql-database-security-tutorial/threat-settings.png)
+      ![Navigationsbereich](./media/sql-database-security-tutorial/threat-settings.png)
 
-    Sie können auch E-Mail-Adressen für den Empfang von Sicherheitswarnungen sowie Speicherdetails und Bedrohungserkennungstypen konfigurieren.
+      Sie können auch E-Mail-Adressen für den Empfang von Sicherheitswarnungen sowie Speicherdetails und Bedrohungserkennungstypen konfigurieren.
 
 1. Kehren Sie zur Seite **SQL-Datenbanken** Ihrer Datenbank zurück, und wählen Sie im Abschnitt **Sicherheit** die Option **Advanced Data Security** aus. Hier finden Sie verschiedene Sicherheitsindikatoren für die Datenbank.
 
@@ -264,7 +264,7 @@ Wenn anomale Aktivitäten erkannt werden, erhalten Sie eine E-Mail mit Ereignisi
 
 ### <a name="auditing"></a>Überwachung
 
-Das Überwachungsfeature verfolgt Datenbankereignisse nach und schreibt Ereignisse in ein Überwachungsprotokoll (entweder in Azure-Speicher, in Log Analytics oder in einem Event Hub). Die Überwachung hilft Ihnen dabei, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität nachzuvollziehen und Einblicke in Abweichungen und Anomalien zu erhalten, die Hinweise auf potenzielle Sicherheitsverstöße darstellen können.
+Das Überwachungsfeature verfolgt Datenbankereignisse nach und schreibt Ereignisse in ein Überwachungsprotokoll (entweder in Azure-Speicher, in Azure Monitor-Protokollen oder in einem Event Hub). Die Überwachung hilft Ihnen dabei, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität nachzuvollziehen und Einblicke in Abweichungen und Anomalien zu erhalten, die Hinweise auf potenzielle Sicherheitsverstöße darstellen können.
 
 So aktivieren Sie die Überwachung:
 
@@ -274,25 +274,25 @@ So aktivieren Sie die Überwachung:
 
 1. Legen Sie unter **Überwachung** die folgenden Einstellungswerte fest:
 
-    1. Legen Sie **Überwachung** auf **EIN** fest.
+   1. Legen Sie **Überwachung** auf **EIN** fest.
 
-    1. Wählen Sie unter **Ziel für Überwachungsprotokoll** eine der folgenden Optionen aus:
+   1. Wählen Sie unter **Ziel für Überwachungsprotokoll** eine der folgenden Optionen aus:
 
-        - **Speicher:** Ein Azure-Speicherkonto, in dem Ereignisprotokolle gespeichert werden, die dann als *XEL-Dateien* heruntergeladen werden können.
+       - **Speicher:** Ein Azure-Speicherkonto, in dem Ereignisprotokolle gespeichert werden, die dann als *XEL-Dateien* heruntergeladen werden können.
 
-           > [!TIP]
-           > Verwenden Sie zur optimalen Nutzung von Überwachungsberichtvorlagen das gleiche Speicherkonto für alle überwachten Datenbanken.
+          > [!TIP]
+          > Verwenden Sie zur optimalen Nutzung von Überwachungsberichtvorlagen das gleiche Speicherkonto für alle überwachten Datenbanken.
 
-        - **Log Analytics:** Speichert automatisch Ereignisse, die dann abgefragt und näher analysiert werden können.
+       - **Log Analytics:** Speichert automatisch Ereignisse, die dann abgefragt und näher analysiert werden können.
 
-            > [!NOTE]
-            > Für erweiterte Features wie Analysen, benutzerdefinierte Warnungsregeln und Excel- oder Power BI-Berichte ist ein **Log Analytics-Arbeitsbereich** erforderlich. Ohne Arbeitsbereich ist nur der Abfrage-Editor verfügbar.
+           > [!NOTE]
+           > Für erweiterte Features wie Analysen, benutzerdefinierte Warnungsregeln und Excel- oder Power BI-Berichte ist ein **Log Analytics-Arbeitsbereich** erforderlich. Ohne Arbeitsbereich ist nur der Abfrage-Editor verfügbar.
 
-        - **Event Hub:** Ermöglicht das Weiterleiten von Ereignissen für die Verwendung in anderen Anwendungen.
+       - **Event Hub:** Ermöglicht das Weiterleiten von Ereignissen für die Verwendung in anderen Anwendungen.
 
-    1. Wählen Sie **Speichern** aus.
+   1. Wählen Sie **Speichern** aus.
 
-    ![Überwachungseinstellungen](./media/sql-database-security-tutorial/audit-settings.png)
+      ![Überwachungseinstellungen](./media/sql-database-security-tutorial/audit-settings.png)
 
 1. Nun können Sie **Überwachungsprotokolle anzeigen** auswählen, um Datenbankereignisdaten anzuzeigen.
 
@@ -334,7 +334,7 @@ So aktivieren oder überprüfen Sie die Verschlüsselung:
     ![Transparent Data Encryption](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Stellen Sie zum Anzeigen des Verschlüsselungsstatus über [SSMS](./sql-database-connect-query-ssms.md) eine Verbindung mit der Datenbank her, und fragen Sie die Spalte `encryption_state` der Sicht [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) ab. Der Zustand `3` gibt an, dass die Datenbank verschlüsselt ist.
+> Stellen Sie zum Anzeigen des Verschlüsselungsstatus über [SSMS](./sql-database-connect-query-ssms.md) eine Verbindung mit der Datenbank her, und fragen Sie die Spalte `encryption_state` der Sicht [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) ab. Der Zustand `3` gibt an, dass die Datenbank verschlüsselt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

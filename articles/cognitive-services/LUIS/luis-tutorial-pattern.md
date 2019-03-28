@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3fe549a63f0fb4662ba5beb2e28f1ca72fcc1ee4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55855882"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193737"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen
 
@@ -221,22 +221,7 @@ Damit ein Muster mit einer Äußerung übereinstimmt, müssen die Entitäten inn
 
 **Muster ermöglichen Ihnen, weniger Beispieläußerungen bereitzustellen. Doch wenn die Entitäten nicht erkannt werden, stimmt das Muster nicht überein.**
 
-In diesem Tutorial fügen Sie zwei neue Absichten hinzu: `OrgChart-Manager` und `OrgChart-Reports`. 
-
-|Absicht|Äußerung|
-|--|--|
-|OrgChart-Manager|Who does Jill Jones report to?|
-|OrgChart-Reports|Who reports to Jill Jones?|
-
-Sobald LUIS eine Vorhersage an die Clientanwendung zurückgibt, kann der Name der Absicht als Funktionsname in der Clientanwendung und die Entität „Employee“ als Parameter für diese Funktion verwendet werden.
-
-```javascript
-OrgChartManager(employee){
-    ///
-}
-```
-
-Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-entity.md) zeigt, wie Mitarbeiter erstellt werden.
+## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Hinzufügen der Muster für die Absicht „OrgChart-Manager“
 
 1. Wählen Sie oben im Menü **Erstellen** aus.
 
@@ -259,7 +244,7 @@ Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-enti
 
     [![Screenshot der Eingabe von Vorlagenäußerungen für eine Absicht](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Wählen Sie die Absicht **OrgChart-Reports** aus, und geben Sie dann die folgende Vorlagenäußerung ein:
+4. Wählen Sie auf der Seite „Muster“ die Absicht **OrgChart-Reports** aus, und geben Sie dann die folgenden Vorlagenäußerungen ein:
 
     |Vorlagenäußerungen|
     |:--|
@@ -272,11 +257,13 @@ Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-enti
 
 ## <a name="query-endpoint-when-patterns-are-used"></a>Abfragen des Endpunkts mit Mustern
 
+Nachdem die Muster der App nun hinzugefügt wurden, können Sie die App auf dem Vorhersagelaufzeit-Endpunkt trainieren, veröffentlichen und abfragen.
+
 1. Trainieren Sie die App und veröffentlichen Sie sie erneut.
 
-2. Wechseln Sie in den Browserregisterkarten wieder zur Endpunkt-URL-Registerkarte.
+1. Wechseln Sie in den Browserregisterkarten wieder zur Endpunkt-URL-Registerkarte.
 
-3. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` als Äußerung ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
+1. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` als Äußerung ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
     ```json
     {
@@ -366,7 +353,7 @@ Die Vorhersage der Absicht hat nun einen deutlich höheren Wert.
 
 ## <a name="working-with-optional-text-and-prebuilt-entities"></a>Arbeiten mit optionalem Text und vordefinierten Entitäten
 
-Die vorherigen Mustervorlagenäußerungen in diesem Tutorial enthielten einige Beispiele für optionalen Text wie die possesive Verwendung des Buchstabens s, `'s`, und die Verwendung des Fragezeichens, `?`. Angenommen, die Endpunktäußerungen zeigen, dass Manager und Personalverantwortliche nach historischen Daten sowie geplanten Mitarbeiterumzügen innerhalb des Unternehmens zu einem späteren Zeitpunkt suchen.
+Die vorherigen Mustervorlagenäußerungen in diesem Tutorial enthielten einige Beispiele für optionalen Text wie die possesive Verwendung des Buchstabens s, `'s`, und die Verwendung des Fragezeichens, `?`. Angenommen, Sie müssen im Text der Äußerung die Angabe eines aktuellen und zukünftigen Datums abdecken.
 
 Beispieläußerungen sind:
 
@@ -379,23 +366,22 @@ Beispieläußerungen sind:
 
 Jedes dieser Beispiele verwendet ein Verb, `was`, `is`, `will be`, sowie ein Datum, `March 3`, `now` und `in a month`, das LUIS korrekt voraussagen muss. Beachten Sie, dass die letzten beiden Beispiele fast den gleichen Text verwenden, mit Ausnahme von `in` und `on`.
 
-Beispielhafte Vorlagenäußerungen:
+Beispielvorlagenäußerungen, die diese optionalen Informationen ermöglichen: 
+
 |Absicht|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
 |:--|:--|
 |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
 
 Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dieser optionale Text zur Vorlagenäußerung hinzugefügt und bis zu einer zweiten Ebene, `[[]]`, verschachtelt werden und Entitäten oder Text enthalten.
 
-**Frage: Warum konnten die letzten beiden Beispieläußerungen nicht zu einer Vorlagenäußerung zusammengefasst werden?** Diese Mustervorlage unterstützt nicht die ODER-Syntax. Um sowohl die `in`- als auch die `on`-Version zu erfassen, müssen diese jeweils separate Vorlagenäußerungen sein.
 
 **Frage: Warum ist der Buchstabe `w` am Anfang jeder Vorlagenäußerung jeweils ein Kleinbuchstabe? Sollten dies nicht optional Groß- oder Kleinbuchstaben sein?** Die von der Clientanwendung an den Abfrageendpunkt übermittelte Äußerung wird in Kleinbuchstaben konvertiert. Die Vorlagenäußerung kann in Groß- oder Kleinbuchstaben geschrieben sein, bei der Endpunktäußerung besteht diese Möglichkeit ebenfalls. Der Vergleich erfolgt immer nach der Konvertierung in Kleinbuchstaben.
 
 **Frage: Warum ist die vordefinierte Zahl nicht Teil der Vorlagenäußerung, wenn der 3. März sowohl als Zahl `3` als auch als Datum `March 3` vorhergesagt wird?** Die Vorlagenäußerung verwendet kontextuell ein Datum, entweder wörtlich wie in `March 3` oder abstrahiert wie `in a month`. Ein Datum kann eine Zahl enthalten, aber eine Zahl muss nicht unbedingt als Datum angesehen werden. Verwenden Sie immer die Entität, die den Typ am besten repräsentiert, den Sie in den JSON-Vorhersageergebnissen zurückgeben möchten.  
 
-**Frage: Wie ist es bei schlecht formulierten Äußerungen, z.B. `Who will {Employee}['s] manager be on March 3?`** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus.
+**Frage: Wie ist es bei schlecht formulierten Äußerungen, z.B. `Who will {Employee}['s] manager be on March 3?`** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus. Sie können [Gruppen und den OR-Operator](#use-the-or-operator-and-groups) mit den Verbzeitformen verwenden, um diese Äußerungen zu kombinieren. 
 
 **Beachten Sie: Entitäten werden zuerst gefunden, dann wird das Muster verglichen.**
 
@@ -403,11 +389,9 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 
 1. Wählen Sie auf der LUIS-Website die Option **Erstellen** im oberen Menü und anschließend **Muster** im linken Menü. 
 
-2. Suchen Sie die vorhandene Vorlagenäußerung `Who is {Employee}['s] manager[?]`, und wählen Sie die Auslassungspunkte (***...*** ) auf der rechten Seite. 
+1. Suchen Sie nach der vorhandenen Vorlagenäußerung `Who is {Employee}['s] manager[?]`, und wählen Sie rechts die Auslassungspunkte (***...***). Wählen Sie dann im Popupmenü die Option **Bearbeiten**. 
 
-3. Wählen Sie im Popupmenü **Bearbeiten** aus. 
-
-4. Ändern Sie die Vorlagenäußerung in: `who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+1. Ändern Sie die Vorlagenäußerung in: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ## <a name="add-new-pattern-template-utterances"></a>Hinzufügen von neuen Mustervorlagenäußerungen
 
@@ -416,7 +400,6 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
     |Absicht|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
     |--|--|
     |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
@@ -426,7 +409,7 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 
 4. Geben Sie mehrere Testäußerungen ein, um zu überprüfen, ob dieses Muster abgeglichen wird und die Absichtsbewertung hoch genug ist. 
 
-    Nachdem Sie die erste Äußerung eingegeben haben, wählen Sie in den Ergebnissen **Untersuchen**, damit alle Vorhersageergebnisse angezeigt werden.
+    Nachdem Sie die erste Äußerung eingegeben haben, wählen Sie in den Ergebnissen **Untersuchen**, damit alle Vorhersageergebnisse angezeigt werden. Jede Äußerung sollte über die Absicht **OrgChart-Manager** verfügen und die Werte für die Entitäten von „Employee“ und „datetimeV2“ extrahieren.
 
     |Äußerung|
     |--|
@@ -438,6 +421,51 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
     |Who will be Jill Jones manager in a month?|
 
 Alle diese Äußerungen beinhalten Entitäten, daher entsprechen sie dem gleichen Muster und haben einen hohen Vorhersagewert.
+
+## <a name="use-the-or-operator-and-groups"></a>Verwenden des OR-Operators und von Gruppen
+
+Einige der obigen Vorlagenäußerungen sind sich sehr ähnlich. Nutzen Sie die Syntax **group** `()` und **OR** `|`, um die Anzahl von Vorlagenäußerungen zu reduzieren. 
+
+Die beiden folgenden Muster können zu einem Muster kombiniert werden, indem die Syntax „group“ `()` und OR `|` verwendet wird.
+
+|Absicht|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
+|--|--|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+Die neue Vorlagenäußerung lautet dann: 
+
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
+
+Hier wird **group** für die erforderlichen Verbzeitformen und die optionale Angabe `in` bzw. `on` mit einem **OR**-Pipezeichen dazwischen verwendet. 
+
+1. Wählen Sie auf der Seite **Muster** den Filter **OrgChart-Manager** aus. Grenzen Sie die Liste ein, indem Sie nach `manager` suchen. 
+
+    ![Durchsuchen von „OrgChart-Manager“-Absichtsmustern nach dem Begriff „Manager“](./media/luis-tutorial-pattern/search-patterns.png)
+
+1. Behalten Sie eine Version der Vorlagenäußerung bei (zur Bearbeitung im nächsten Schritt), und löschen Sie die anderen Varianten. 
+
+1. Ändern Sie die Vorlagenäußerung in: 
+
+    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+
+1. Trainieren Sie die App.
+
+1. Verwenden Sie den Testbereich, um Versionen der Äußerung zu testen:
+
+    |Äußerungen für die Eingabe im Testbereich|
+    |--|
+    |`Who is Jill Jones manager this month`|
+    |`Who is Jill Jones manager on July 5th`|
+    |`Who was Jill Jones manager last month`|
+    |`Who was Jill Jones manager on July 5th`|    
+    |`Who will be Jill Jones manager in a month`|
+    |`Who will be Jill Jones manager on July 5th`|
+
+
+## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Verwenden von Anfangs- und Endankern für Äußerungen
+
+Die Mustersyntax verfügt über Anfangs- und Endankersyntax für Äußerungen in Form eines Caretzeichens (`^`). Die Anfangs- und Endanker für Äußerungen können zusammen für sehr spezifische und ggf. wörtliche Äußerungen oder einzeln für Absichten verwendet werden. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

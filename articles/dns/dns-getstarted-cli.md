@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 12/4/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: e61975d81fd5920feb5fd47845c67d0aa5293ae6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093421"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines Azure DNS-Eintrags mithilfe der Azure CLI
 
@@ -38,20 +38,20 @@ az group create --name MyResourceGroup --location "East US"
 
 Eine DNS-Zone wird mit dem `az network dns zone create` -Befehl erstellt. Hilfe zu diesem Befehl erhalten Sie mit `az network dns zone create -h`.
 
-Im folgenden Beispiel wird in der Ressourcengruppe namens *MyResourceGroup* eine DNS-Zone namens *contoso.com* erstellt. Verwenden Sie das Beispiel, um eine DNS-Zone zu erstellen, und ersetzen Sie dabei die Werte durch Ihre eigenen.
+Im folgenden Beispiel wird in der Ressourcengruppe *MyResourceGroup* eine DNS-Zone namens *contoso.xyz* erstellt. Verwenden Sie das Beispiel, um eine DNS-Zone zu erstellen, und ersetzen Sie dabei die Werte durch Ihre eigenen.
 
 ```azurecli
-az network dns zone create -g MyResourceGroup -n contoso.com
+az network dns zone create -g MyResourceGroup -n contoso.xyz
 ```
 
 ## <a name="create-a-dns-record"></a>Erstellen eines DNS-Eintrags
 
 Verwenden Sie zum Erstellen eines DNS-Eintrags den Befehl `az network dns record-set [record type] add-record`. Hilfe zu A-Einträgen finden Sie unter `azure network dns record-set A add-record -h`.
 
-Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen „www“ unter der DNS-Zone „contoso.com“ in der Ressourcengruppe „MyResourceGroup“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp lautet „A“ mit der IP-Adresse „1.2.3.4“ und einer Standardgültigkeitsdauer (TTL) von 3.600 Sekunden (1 Stunde).
+Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen „www“ in der DNS-Zone „contoso.xyz“ in der Ressourcengruppe „MyResourceGroup“ erstellt. Der vollqualifizierte Name des Eintragssatzes lautet „www.contoso.xyz“. Der Eintragstyp lautet „A“ mit der IP-Adresse „10.10.10.10“ und einer Standardgültigkeitsdauer (TTL) von 3.600 Sekunden (eine Stunde).
 
 ```azurecli
-az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
+az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
 ```
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
@@ -59,41 +59,43 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 Listen Sie die DNS-Einträge in Ihrer Zone mit diesem Befehl auf:
 
 ```azurecli
-az network dns record-set list -g MyResourceGroup -z contoso.com
+az network dns record-set list -g MyResourceGroup -z contoso.xyz
 ```
 
-## <a name="update-name-servers"></a>Aktualisieren der Namenserver
+## <a name="test-the-name-resolution"></a>Testen der Namensauflösung
 
-Wenn Sie sicher sind, dass Ihre DNS-Zone und die Einträge richtig eingerichtet wurden, müssen Sie den Namen Ihrer Domäne für die Verwendung der Azure DNS-Namenserver konfigurieren. So können andere Benutzer im Internet Ihre DNS-Einträge finden.
+Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namensauflösung mit dem Tool *nslookup* testen. 
 
-Die Namenserver für Ihre Zone werden durch den Befehl `az network dns zone show` angegeben. Um die Namen der Namenserver anzuzeigen, verwenden Sie eine JSON-Ausgabe, wie im folgenden Beispiel gezeigt.
+**Testen Sie die DNS-Namensauflösung wie folgt:**
 
-```azurecli
-az network dns zone show -g MyResourceGroup -n contoso.com -o json
+1. Führen Sie das folgende Cmdlet aus, um die Liste mit den Namenservern für Ihre Zone abzurufen:
 
-{
-  "etag": "00000003-0000-0000-b40d-0996b97ed101",
-  "id": "/subscriptions/a385a691-bd93-41b0-8084-8213ebc5bff7/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com",
-  "location": "global",
-  "maxNumberOfRecordSets": 5000,
-  "name": "contoso.com",
-  "nameServers": [
-    "ns1-01.azure-dns.com.",
-    "ns2-01.azure-dns.net.",
-    "ns3-01.azure-dns.org.",
-    "ns4-01.azure-dns.info."
-  ],
-  "numberOfRecordSets": 3,
-  "resourceGroup": "myresourcegroup",
-  "tags": {},
-  "type": "Microsoft.Network/dnszones"
-}
-```
+   ```azurecli
+   az network dns record-set ns show --resource-group MyResourceGroup --zone-name contoso.xyz --name @
+   ```
 
-Diese Namenserver müssen in der Domänennamen-Registrierungsstelle konfiguriert werden (das ist die Stelle, bei der Sie den Domänennamen erworben haben). Die Registrierungsstelle bietet eine Option an, um die Namenserver für die Domäne einzurichten. Weitere Informationen finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
+1. Kopieren Sie einen der Namen der Namenserver aus der Ausgabe des vorherigen Schritts.
+
+1. Öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
+
+   ```
+   nslookup www.contoso.xyz <name server name>
+   ```
+
+   Beispiel: 
+
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+
+   Es sollte ein Bildschirm angezeigt werden, der in etwa wie folgt aussieht:
+
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+
+Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
 
 ## <a name="delete-all-resources"></a>Löschen aller Ressourcen
- 
+
 Wenn sie nicht mehr benötigt werden, können Sie alle in diesem Schnellstart erstellten Ressourcen löschen, indem Sie die Ressourcengruppe löschen:
 
 ```azurecli

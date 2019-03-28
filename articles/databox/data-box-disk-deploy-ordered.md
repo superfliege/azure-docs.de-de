@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/27/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156170"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404891"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Tutorial: Bestellen von Azure Data Box Disk
 
@@ -80,11 +80,25 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
     |NAME|Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen.<br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. |
     |Ressourcengruppe| Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. |
     |Azure-Zielregion| Wählen Sie eine Region für Ihr Speicherkonto aus.<br> Zurzeit werden Speicherkonten in allen Regionen in den USA sowie in West- und Nordeuropa, Kanada und Australien unterstützt. |
-    |Speicherkonten|Wählen Sie basierend auf der angegebenen Azure-Region aus der gefilterten Liste ein vorhandenes Speicherkonto aus. <br>Sie können auch ein neues universelles v1- oder v2-Konto erstellen. |
     |Geschätzte Datengröße in TB| Geben Sie einen geschätzten Wert in TB ein. <br>Basierend auf der Größe der Daten sendet Microsoft Ihnen eine geeignete Anzahl von SSDs mit jeweils 8 TB (7 TB nutzbare Kapazität) zu. <br>Die maximal nutzbare Kapazität von 5 Datenträgern beträgt bis zu 35 TB. |
     |Hauptschlüssel für Datenträger| Geben Sie den Hauptschlüssel für Datenträger an, wenn Sie **Benutzerdefinierten Schlüssel anstelle eines von Azure generierten Hauptschlüssels verwenden** aktivieren. <br> Geben Sie einen alphanumerischen Schlüssel mit 12 bis 32 Zeichen ein, der mindestens ein numerisches Zeichen und ein Sonderzeichen enthält. Zulässige Sonderzeichen: `@?_+`. <br> Sie können diese Option überspringen und den von Azure generierten Hauptschlüssel verwenden, um Ihre Datenträger zu entsperren.|
+    |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region ein Speicherkonto aus der gefilterten Liste aus. Data Box kann mit bis zu zehn Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br>Sie können keine Speicherkonten verwenden, für die Regeln konfiguriert sind. Die Speicherkonten müssen den **Zugriff von allen Netzwerken** im Abschnitt mit Firewalls und virtuellen Netzwerken zulassen.|
 
-13. Klicken Sie auf **Weiter**. 
+    Wenn Sie als Speicherziel ein Speicherkonto verwenden, wird Folgendes angezeigt:
+
+    ![Data Box Disk-Auftrag für ein Speicherkonto](media/data-box-disk-deploy-ordered/order-storage-account.png)
+
+    Wenn Sie Data Box Disk verwenden, um auf der Grundlage lokaler VHDs verwaltete Datenträger zu erstellen, sind außerdem folgende Informationen erforderlich:
+
+    |Einstellung  |Wert  |
+    |---------|---------|
+    |Ressourcengruppe     | Erstellen Sie eine neue Ressourcengruppe, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Verwenden Sie nur dann eine bereits vorhandene Ressourcengruppe, wenn diese vom Data Box-Dienst für den Data Box Disk-Auftrag für einen verwalteten Datenträger erstellt wurde. <br> Es wird nur eine einzelne Ressourcengruppe unterstützt.|
+
+    ![Data Box Disk-Auftrag für verwalteten Datenträger](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+
+    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs in das Stagingspeicherkonto hoch, konvertiert sie in verwaltete Datenträger und verschiebt sie in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure).
+
+13. Klicken Sie auf **Weiter**.
 
     ![Angeben der Bestelldetails](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
@@ -102,7 +116,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
  
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 
-Nachdem Sie die Bestellung aufgegeben haben, können Sie ihren Status im Azure-Portal nachverfolgen. Navigieren Sie zu Ihrer Bestellung, und navigieren Sie dann zu **Übersicht**, um den Status anzuzeigen. Das Portal zeigt den Auftrag im Zustand **Bestellt** an. 
+Nachdem Sie die Bestellung aufgegeben haben, können Sie ihren Status im Azure-Portal nachverfolgen. Navigieren Sie zu Ihrer Bestellung, und navigieren Sie dann zu **Übersicht**, um den Status anzuzeigen. Das Portal zeigt den Auftrag im Zustand **Bestellt** an.
 
 ![Status „Bestellt“ des Data Box-Datenträgers](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -118,9 +132,9 @@ Microsoft bereitet dann Ihre Datenträger vor und versendet sie über einen regi
 
 ## <a name="cancel-the-order"></a>Stornieren der Bestellung
 
-Um die Bestellung zu stornieren, navigieren Sie im Azure-Portal zu **Übersicht**, und klicken Sie dann auf der Befehlsleiste auf **Stornieren**. 
+Um die Bestellung zu stornieren, navigieren Sie im Azure-Portal zu **Übersicht**, und klicken Sie dann auf der Befehlsleiste auf **Stornieren**.
 
-Sie können die Bestellung nur stornieren, wenn die Datenträger bestellt sind und die Bestellung für den Versand verarbeitet wird. Sobald die Bestellung verarbeitet wurde, können Sie sie nicht mehr stornieren. 
+Sie können die Bestellung nur stornieren, wenn die Datenträger bestellt sind und die Bestellung für den Versand verarbeitet wird. Sobald die Bestellung verarbeitet wurde, können Sie sie nicht mehr stornieren.
 
 ![Auftrag stornieren](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
@@ -140,5 +154,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihren Data B
 
 > [!div class="nextstepaction"]
 > [Einrichten des Azure Data Box-Datenträgers](./data-box-disk-deploy-set-up.md)
-
-

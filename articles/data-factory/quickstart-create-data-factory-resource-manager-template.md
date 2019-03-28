@@ -3,21 +3,20 @@ title: Erstellen einer Azure Data Factory mit einer Resource Manager-Vorlage | M
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mithilfe einer Azure Resource Manager-Vorlage.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: c3a9864a901d44d0c84c6946c55e5dc2c700cbac
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 1d4eb3d2978be98d81b42dd66a75b21563c23a1a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447598"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576649"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory-Instanz mit einer Azure Resource Manager-Vorlage
 
@@ -34,7 +33,9 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure R
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) befolgen.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps) befolgen.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
@@ -51,7 +52,7 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
 ```json
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "parameters": {
         "dataFactoryName": {
             "type": "string",
@@ -328,7 +329,7 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
 Führen Sie in PowerShell den folgenden Befehl aus, um die Data Factory-Entitäten mit der Resource Manager-Vorlage bereitzustellen, die Sie weiter oben erstellt haben.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
 ```
 
 Ihnen wird daraufhin eine Ausgabe angezeigt, die in etwa wie im folgenden Beispiel aussieht:
@@ -368,9 +369,9 @@ Die Vorlage stellt die folgenden Data Factory-Entitäten bereit:
 - Pipeline mit Kopieraktivität
 - Trigger zum Auslösen der Pipeline
 
-Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglichkeit zum Starten des Triggers ist die Verwendung des PowerShell-Cmdlets **Start-AzureRmDataFactoryV2Trigger**. Das folgende Verfahren enthält die ausführlichen Schritte:
+Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglichkeit zum Starten des Triggers ist die Verwendung des PowerShell-Cmdlets **Start-AzDataFactoryV2Trigger**. Das folgende Verfahren enthält die ausführlichen Schritte:
 
-1. Erstellen Sie im PowerShell-Fenster eine Variable für den Namen der Ressourcengruppe. Kopieren Sie den folgenden Befehl in das PowerShell-Fenster, und drücken Sie die EINGABETASTE. Wenn Sie einen anderen Ressourcengruppennamen für den Befehl „New-AzureRmResourceGroupDeployment“ angegeben haben, können Sie den Wert hier aktualisieren.
+1. Erstellen Sie im PowerShell-Fenster eine Variable für den Namen der Ressourcengruppe. Kopieren Sie den folgenden Befehl in das PowerShell-Fenster, und drücken Sie die EINGABETASTE. Wenn Sie einen anderen Ressourcengruppennamen für den Befehl „New-AzResourceGroupDeployment“ angegeben haben, aktualisieren Sie den Wert hier.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -388,7 +389,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
 4. Rufen Sie den **Status des Triggers** ab, indem Sie den folgenden PowerShell-Befehl ausführen, nachdem Sie den Namen Ihrer Data Factory und des Triggers angegeben haben:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
     Hier ist die Beispielausgabe:
@@ -405,7 +406,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
 5. **Starten Sie den Trigger**. Der Trigger führt die Pipeline, die in der Vorlage definiert ist, zur vollen Stunde aus. Wenn Sie diesen Befehl um 14:25 Uhr ausgeführt haben, führt der Trigger die Pipeline also zum ersten Mal um 15:00 Uhr aus. Anschließend wird die Pipeline jede Stunde bis zum Endzeitpunkt ausgeführt, den Sie für den Trigger angegeben haben.
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Hier ist die Beispielausgabe:
@@ -416,10 +417,10 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Vergewissern Sie sich, dass der Trigger gestartet wurde, indem Sie den Befehl „Get-AzureRmDataFactoryV2Trigger“ erneut ausführen.
+6. Vergewissern Sie sich, dass der Trigger gestartet wurde, indem Sie den Befehl „Get-AzDataFactoryV2Trigger“ erneut ausführen.
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Hier ist die Beispielausgabe:
@@ -466,7 +467,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
 8. Beenden Sie den Trigger, nachdem eine erfolgreiche oder nicht erfolgreiche Ausführung angezeigt wird. Der Trigger führt die Pipeline einmal pro Stunde aus. Die Pipeline kopiert für jede Ausführung dieselbe Datei aus dem Eingabeordner in den Ausgabeordner. Führen Sie den folgenden Befehl im PowerShell-Fenster aus, um den Trigger zu beenden.
     
     ```powershell
-    Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
@@ -604,7 +605,7 @@ In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus einem Azure-Blob
 
 #### <a name="trigger"></a>Trigger
 
-In diesem Abschnitt definieren Sie einen Trigger, der die Pipeline einmal pro Stunde ausführt. Der bereitgestellte Trigger befindet sich im Status „Beendet“. Starten Sie den Trigger mit dem **Start-AzureRmDataFactoryV2Trigger**-Cmdlet. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).
+In diesem Abschnitt definieren Sie einen Trigger, der die Pipeline einmal pro Stunde ausführt. Der bereitgestellte Trigger befindet sich im Status „Beendet“. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).
 
 ```json
 {
@@ -647,11 +648,11 @@ In diesem Tutorial haben Sie eine Vorlage zum Definieren von Data Factory-Entit�
 Beispiel:
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
 
 Der erste Befehl verwendet eine Parameterdatei für die Entwicklungsumgebung, der zweite eine Parameterdatei für die Testumgebung und der dritte eine Parameterdatei für die Produktion.

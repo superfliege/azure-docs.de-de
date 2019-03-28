@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 08/14/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847982"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Was ist die Bing-Websuche-API?
 
-Die Bing-Websuche-API ist ein RESTful-Dienst, der umgehend Antworten auf Benutzerabfragen liefert. Suchergebnisse lassen sich einfach konfigurieren und können unter anderem Webseiten, Bilder, Videos, Nachrichten und Übersetzungen enthalten. Ergebnisse werden im JSON-Format sowie auf der Grundlage der Suchrelevanz und Ihrer Bing-Websuche-Abonnements zurückgegeben.
+Die Bing-Websuche-API ist ein RESTful-Dienst, der umgehend Antworten auf Benutzerabfragen liefert. Suchergebnisse lassen sich einfach konfigurieren und können unter anderem Webseiten, Bilder, Videos, Nachrichten und Übersetzungen enthalten. Die Ergebnisse werden von der Bing-Websuche im JSON-Format auf der Grundlage der Suchrelevanz und Ihrer Bing-Websuche-Abonnements zurückgegeben.
 
 Diese API eignet sich perfekt für Anwendungen, die Zugriff auf alle Inhalte benötigen, die für die Suchabfrage eines Benutzers relevant sind. Wenn Sie eine Anwendung erstellen, die nur Ergebnisse eines bestimmten Typs erfordert, empfiehlt sich unter Umständen die Verwendung der [Bing-Bildersuche-API](../Bing-Image-Search/overview.md), der [Bing-Videosuche-API](../Bing-Video-Search/search-the-web.md) oder der [Bing News-Suche-API](../Bing-News-Search/search-the-web.md). Eine vollständige Liste der Bing-Suche-APIs finden Sie unter [Cognitive Services-APIs](https://docs.microsoft.com/azure/cognitive-services).
 
@@ -28,7 +28,7 @@ Neugierig geworden? Sehen Sie sich unsere [Demo der Bing-Websuche-API](https://a
 
 ## <a name="features"></a>Features  
 
-Neben umgehenden Antworten liefert die Bing-Websuche noch weitere Features und Funktionen, mit denen Sie Suchergebnisse für Ihre Benutzer anpassen können.
+Die Bing-Websuche bietet nicht nur Zugang zu sofortigen Antworten. Sie bietet auch Features und Funktionen, mit denen Sie Suchergebnisse für Ihre Benutzer anpassen können.
 
 | Feature | BESCHREIBUNG |
 |---------|-------------|
@@ -40,7 +40,7 @@ Neben umgehenden Antworten liefert die Bing-Websuche noch weitere Features und F
 
 ## <a name="workflow"></a>Workflow
 
-Die Bing-Websuche-API kann problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON-Antworten analysieren kann. Auf den Dienst kann über die [REST-API](quickstarts/python.md) oder unter Verwendung der [Bing-Websuche-SDKs](web-sdk-python-quickstart.md) zugegriffen werden.  
+Die Bing-Websuche-API kann problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON-Antworten analysieren kann. Auf den Dienst kann über die [REST-API](quickstarts/python.md) oder unter Verwendung der [Bing-Websuche-SDKs](web-sdk-python-quickstart.md) zugegriffen werden.
 
 1. Erstellen Sie ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) erstellen.  
 2. Senden Sie eine [Anforderung an die Bing-Websuche-API](quickstarts/python.md).

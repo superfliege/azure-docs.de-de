@@ -15,21 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c1a8b18062f61be9eb020beefd3ad741c41b55f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652701"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444258"
 ---
-# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Tutorial: Debuggen einer in einem lokalen Service Fabric-Cluster bereitgestellten Java-Anwendung
+# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Tutorial: Debuggen einer in einem lokalen Service Fabric-Cluster bereitgestellten Java-Anwendung
 
 Dieses Tutorial ist der zweite Teil einer Reihe. Hier erfahren Sie, wie Sie mithilfe von Eclipse einen Remotedebugger für die Service Fabric-Anwendung anfügen. Außerdem erfahren Sie, wie Sie Protokolle von den ausgeführten Anwendungen an einen geeigneten Speicherort für den Entwickler umleiten.
-
-Im zweiten Teil der Reihe lernen Sie Folgendes:
-> [!div class="checklist"]
-> * Debuggen einer Java-Anwendung mithilfe von Eclipse
-> * Umleiten von Protokollen an einen konfigurierbaren Speicherort
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -38,6 +33,13 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Bereitstellen der Anwendung in einem Azure-Cluster](service-fabric-tutorial-java-deploy-azure.md)
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-java-elk.md)
 > * [Richten Sie CI/CD ein.](service-fabric-tutorial-java-jenkins.md)
+
+
+Im zweiten Teil der Reihe lernen Sie Folgendes:
+> [!div class="checklist"]
+> * Debuggen einer Java-Anwendung mithilfe von Eclipse
+> * Umleiten von Protokollen an einen konfigurierbaren Speicherort
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -89,13 +91,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. Klicken Sie in der Eclipse-IDE auf **Run > Debug Configurations > Remote Java Application** (Ausführen > Debugkonfigurationen > Java-Remoteanwendung), klicken Sie auf die erstellte Konfiguration **Voting**, und klicken Sie anschließend auf **Debug** (Debuggen).
 
-11. Navigieren Sie in Ihrem Webbrowser zu **localhost: 8080**, um den Breakpoint zu erreichen, und wechseln Sie in Eclipse in die **Debugging-Perspektive**.
+11. Navigieren Sie in Ihrem Webbrowser zu **localhost:8080**. Dadurch wird automatisch der Breakpoint erreicht, und Eclipse wechselt in die **Debugging-Perspektive**.
+
+Sie können nun die gleichen Schritte ausführen, um eine beliebige Service Fabric-Anwendung in Eclipse zu debuggen.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Umleiten von Anwendungsprotokollen an einen benutzerdefinierten Speicherort
 
 Die folgenden Schritte zeigen, wie Sie die Anwendungsprotokolle aus dem Standardspeicherort */var/log/syslog* an einen benutzerdefinierten Speicherort umleiten.
 
-1. Derzeit unterstützen Anwendungen, die in Service Fabric-Linux-Clustern ausgeführt werden, die Erfassung einer einzelnen Protokolldatei. Die Protokolle gehen daher immer an */tmp/mysfapp0.0.log*. Erstellen Sie unter *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* eine Datei namens „logging.properties“, und fügen Sie ihr folgenden Inhalt hinzu:
+1. Derzeit unterstützen Anwendungen, die in Service Fabric-Linux-Clustern ausgeführt werden, nur die Erfassung einer einzelnen Protokolldatei. Wenn Sie eine Anwendung so konfigurieren möchten, dass die Protokolle immer unter */tmp/mysfapp0.0.log* gespeichert werden, erstellen Sie unter *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* eine Datei namens „logging.properties“, und fügen Sie ihr folgenden Inhalt hinzu:
 
     ```
     handlers = java.util.logging.FileHandler
@@ -103,7 +107,8 @@ Die folgenden Schritte zeigen, wie Sie die Anwendungsprotokolle aus dem Standard
     java.util.logging.FileHandler.level = ALL
     java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 
-    # This value specifies your custom location. You will have to ensure this path has read and write access by the process running the SF Application
+    # This value specifies your custom location.
+    # You will have to ensure this path has read and write access by the process running the SF Application
     java.util.logging.FileHandler.pattern = /tmp/mysfapp0.0.log
     ```
 
@@ -113,7 +118,7 @@ Die folgenden Schritte zeigen, wie Sie die Anwendungsprotokolle aus dem Standard
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    Das folgende Beispiel zeigt eine Beispielausführung:
+    Das folgende Beispiel zeigt eine Beispielausführung mit angefügtem Debugger. Sie ähnelt der Ausführung im vorherigen Abschnitt.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

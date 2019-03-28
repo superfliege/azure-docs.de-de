@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860556"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361590"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service
 
@@ -65,9 +65,11 @@ Führen Sie nach den folgenden Schritten das Notebook **tutorials/img-classifica
 
 ### <a name="server"></a>Verwenden Ihres eigenen Jupyter Notebook-Servers
 
-Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen.  Führen Sie nach Ausführung der Schritte das Notebook **tutorials/img-classification-part1-training.ipynb** aus.
+Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen. 
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+ Führen Sie nach Ausführung der Schritte das Notebook **tutorials/img-classification-part1-training.ipynb** aus.
 
 ## <a name="start"></a>Einrichten Ihrer Entwicklungsumgebung
 

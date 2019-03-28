@@ -4,162 +4,169 @@ description: Informationen zur Konfiguration des einmaligen Anmeldens zwischen A
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/26/2017
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50bf623046094509170b5b5efc091013499b51b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f6b9c85fa3462486a32cf55b10cb06bb84b0072
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169835"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Tutorial: Azure Active Directory-Integration mit MOVEit Transfer – Azure AD-Integration
 
 In diesem Tutorial erfahren Sie, wie Sie MOVEit Transfer – Azure AD-Integration mit Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von MOVEit Transfer – Azure AD-Integration in Azure AD bietet folgende Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf MOVEit Transfer – Azure AD-Integration haben soll.
-- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei MOVEit Transfer – Azure AD-Integration anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf MOVEit Transfer – Azure AD-Integration haben soll.
+* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihrem Azure AD-Konto automatisch bei MOVEit Transfer – Azure AD-Integration angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit MOVEit Transfer – Azure AD-Integration konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein SSO-fähiges Abonnement von MOVEit Transfer – Azure AD-Integration
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* MOVEit Transfer – Azure AD-Integration-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von MOVEit Transfer – Azure AD-Integration aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* MOVEit Transfer – Azure AD-Integration unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 ## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>Hinzufügen von MOVEit Transfer – Azure AD-Integration aus dem Katalog
+
 Zum Konfigurieren der Integration von MOVEit Transfer – Azure AD-Integration in Azure AD müssen Sie MOVEit Transfer – Azure AD-Integration über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um MOVEit Transfer – Azure AD-Integration über den Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfenster **MOVEit Transfer – Azure AD-Integration** ein, wählen Sie **MOVEit Transfer – Azure AD-Integration** vom Ergebnisbereich aus, und klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![MOVEit Transfer – Azure AD-Integration in der Liste der Ergebnisse](./media/moveittransfer-tutorial/tutorial_moveittransfer_addfromgallery.png)
+4. Geben Sie im Suchfenster **MOVEit Transfer – Azure AD-Integration** ein, wählen Sie **MOVEit Transfer – Azure AD-Integration** vom Ergebnisbereich aus, und klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+     ![MOVEit Transfer – Azure AD-Integration in der Liste der Ergebnisse](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei MOVEit Transfer – Azure AD-Integration basierend auf einem Testbenutzer mit dem Namen Britta Simon.
-
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in MOVEit Transfer – Azure AD-Integration als Gegenpart zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in MOVEit Transfer – Azure AD-Integration muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in MOVEit Transfer – Azure AD-Integration den Wert des **Benutzernamens** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei MOVEit Transfer – Azure AD-Integration basierend auf einer Testbenutzerin mit dem Namen **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in MOVEit Transfer – Azure AD-Integration eine Linkbeziehung eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit MOVEit Transfer – Azure AD-Integration müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Testbenutzers für MOVEit Transfer – Azure AD-Integration](#create-a-moveit-transfer---azure-ad-integration-test-user)**, um in MOVEit Transfer – Azure AD-Integration einen Gegenpart von Britta Simon zu erhalten, der mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Konfigurieren des einmaligen Anmeldens für MOVEit Transfer – Azure AD-Integration](#configure-moveit-transfer---azure-ad-integration-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Testbenutzers für MOVEit Transfer – Azure AD-Integration](#create-moveit-transfer---azure-ad-integration-test-user)**, um in MOVEit Transfer – Azure AD-Integration eine Entsprechung von Britta Simon zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren es in Ihrer MOVEit Transfer – Azure AD-Integrationsanwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit MOVEit Transfer – Azure AD-Integration zu konfigurieren:**
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit MOVEit Transfer – Azure AD-Integration zu konfigurieren:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **MOVEit Transfer – Azure AD-Integration** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **MOVEit Transfer – Azure AD-Integration** die Option **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/moveittransfer-tutorial/tutorial_moveittransfer_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie die folgenden Schritte auf der **Domäne und den URLs von MOVEit Transfer – Azure AD-Integration** aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/moveittransfer-tutorial/tutorial_moveittransfer_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://contoso.com`.
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://contoso.com/<tenatid>`
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
-     
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Sie können sich später im Abschnitt **Service Provider Metadata URL (Metadaten-URL des Dienstanbieters)** auf diese Werte beziehen oder sich an [das Clientsupportteam von MOVEit Transfer – Azure AD-Integration](https://community.ipswitch.com/s/support) wenden, um diese Werte zu erhalten.
+    a. Klicken Sie auf **Metadatendatei hochladen**.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    ![Metadatendatei hochladen](common/upload-metadata.png)
 
-    ![Downloadlink für das Zertifikat](./media/moveittransfer-tutorial/tutorial_moveittransfer_certificate.png) 
+    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    ![Metadatendatei auswählen](common/browse-upload-metadata.png)
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/moveittransfer-tutorial/tutorial_general_400.png)
-    
+    c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte unter **Bezeichner** und **Antwort-URL** im Abschnitt **Grundlegende SAML-Konfiguration** automatisch eingefügt:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für MOVEit Transfer – Azure AD-Integration](common/sp-identifier-reply.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://contoso.com`
+
+    > [!NOTE]
+    > Der Wert der **Anmelde-URL** entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von MOVEit Transfer – Azure AD-Integration](https://community.ipswitch.com/s/support), um den Wert zu erhalten. Sie können die **Dienstanbieter-Metadatendatei** über die **Metadaten-URL des Dienstanbieters** herunterladen. Dies ist weiter unten im Abschnitt **Konfigurieren des einmaligen Anmeldens für MOVEit Transfer – Azure AD-Integration** beschrieben. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
+
+6. Kopieren Sie im Abschnitt **MOVEit Transfer – Azure AD-Integration einrichten** je nach Bedarf die entsprechenden URLs.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-moveit-transfer---azure-ad-integration-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für MOVEit Transfer – Azure AD-Integration
+
 1. Melden Sie sich bei Ihrem MOVEit Transfer-Mandanten als Administrator an.
 
-1. Klicken Sie im linken Navigationsbereich auf **Einstellungen**.
+2. Klicken Sie im linken Navigationsbereich auf **Einstellungen**.
 
     ![Abschnitt „Einstellungen“ auf App-Seite](./media/moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
-1. Klicken Sie auf den Link **Einmaliges Anmelden** (unter **Sicherheitsrichtlinien > Benutzerauthentifizierung**).
+3. Klicken Sie auf den Link **Einmaliges Anmelden** (unter **Sicherheitsrichtlinien > Benutzerauthentifizierung**).
 
     ![App-seitige Sicherheitsrichtlinien](./media/moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
-1. Klicken Sie auf den Metadaten-URL-Link, um das Metadatendokument herunterzuladen.
+4. Klicken Sie auf den Metadaten-URL-Link, um das Metadatendokument herunterzuladen.
 
     ![Metadaten-URL des Dienstanbieters](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-    * Überprüfen Sie, ob **entityID** mit dem **Bezeichner** im Abschnitt **Domäne und URLs für MOVEit Transfer – Azure AD-Integration** übereinstimmt.
-    * Überprüfen Sie, ob die Standort-URL **AssertionConsumerService** mit der **Antwort-URL** im Abschnitt **Domäne und URLs für MOVEit Transfer – Azure AD-Integration** übereinstimmt.
+   * Stellen Sie sicher, dass der Wert von **entityID** mit dem Wert von **Bezeichner** im Abschnitt **Grundlegende SAML-Konfiguration** übereinstimmt.
+   * Stellen Sie sicher, dass die **AssertionConsumerService**-Speicherort-URL mit der **ANTWORT-URL** im Abschnitt **Grundlegende SAML-Konfiguration** übereinstimmt.
     
-    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
-1. Klicken Sie auf die Schaltfläche **Add Identity Provider** (Identitätsanbieter hinzufügen), um einen neuen Verbundidentitätsanbieter hinzuzufügen.
+5. Klicken Sie auf die Schaltfläche **Add Identity Provider** (Identitätsanbieter hinzufügen), um einen neuen Verbundidentitätsanbieter hinzuzufügen.
 
     ![Identitätsanbieter hinzufügen](./media/moveittransfer-tutorial/tutorial_moveittransfer_003.png)
 
-1. Klicken Sie auf **Durchsuchen...**, um die Metadatendatei auszuwählen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Add Identity Provider** (Identitätsanbieter hinzufügen), um die heruntergeladene Datei hochzuladen.
+6. Klicken Sie auf **Durchsuchen...**, um die Metadatendatei auszuwählen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Add Identity Provider** (Identitätsanbieter hinzufügen), um die heruntergeladene Datei hochzuladen.
 
     ![SAML-Identitätsanbieter](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-1. Wählen Sie auf der Seite **Edit Federated Identity Provider Settings...** (Einstellungen für Verbundidentitätsanbieter bearbeiten...) unter **Aktiviert** die Option **Ja** aus, und klicken Sie anschließend auf **Speichern**.
+7. Wählen Sie auf der Seite **Edit Federated Identity Provider Settings...** (Einstellungen für Verbundidentitätsanbieter bearbeiten...) unter **Aktiviert** die Option **Ja** aus, und klicken Sie anschließend auf **Speichern**.
 
     ![Einstellungen für den Verbundidentitätsanbieter](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
-1. Führen Sie auf der Seite **Edit Federated Identity Provider User Settings** (Benutzereinstellungen für Verbundidentitätsanbieter) die folgenden Aktionen aus:
+8. Führen Sie auf der Seite **Edit Federated Identity Provider User Settings** (Benutzereinstellungen für Verbundidentitätsanbieter) die folgenden Aktionen aus:
     
     ![Bearbeiten der Einstellungen für den Verbundidentitätsanbieter](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
@@ -173,101 +180,75 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     
     e. Klicken Sie auf die Schaltfläche **Save** .
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/moveittransfer-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/moveittransfer-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/moveittransfer-tutorial/create_aaduser_03.png)
-
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/moveittransfer-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-a-moveit-transfer---azure-ad-integration-test-user"></a>Erstellen eines Testbenutzers für MOVEit Transfer – Azure AD-Integration
+
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf MOVEit Transfer – Azure AD-Integration gewähren.
+
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **MOVEit Transfer – Azure AD-Integration**.
+
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
+2. Wählen Sie in der Anwendungsliste die Option **MOVEit Transfer – Azure AD-Integration** aus.
+
+    ![Die Verknüpfung für MOVEit Transfer – Azure AD-Integration in der Liste der Anwendungen](common/all-applications.png)
+
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-moveit-transfer---azure-ad-integration-test-user"></a>Erstellen eines Testbenutzers für MOVEit Transfer – Azure AD-Integration
 
 In diesem Abschnitt wird in MOVEit Transfer – Azure AD-Integration ein Benutzer namens Britta Simon erstellt. MOVEit Transfer – Azure AD-Integration unterstützt die von Ihnen aktivierte Just-in-Time-Bereitstellung. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist noch kein Benutzer vorhanden, wird beim Aufrufen von MOVEit Transfer – Azure AD-Integration ein neuer Benutzer erstellt.
 
 >[!NOTE]
 >Setzen Sie sich mit dem [Supportteam von MOVEit Transfer– Azure AD-Integrations-Client](https://community.ipswitch.com/s/support) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf MOVEit Transfer – Azure AD-Integration gewähren.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-![Zuweisen der Benutzerrolle][200] 
-
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu MOVEit Transfer – Azure AD-Integration durchzuführen:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
-
-1. Wählen Sie in der Anwendungsliste die Option **MOVEit Transfer – Azure AD-Integration** aus.
-
-    ![Die Verknüpfung für MOVEit Transfer – Azure AD-Integration in der Liste der Anwendungen](./media/moveittransfer-tutorial/tutorial_moveittransfer_app.png)  
-
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
-
-    ![Link „Benutzer und Gruppen“][202]
-
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“][203]
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
-
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
-
-Wenn Sie im Zugriffsbereich auf die Kachel „MOVEit Transfer – Azure AD-Integration“ klicken, sollten Sie automatisch bei Ihrer MOVEit Transfer – Azure AD-Integration-Anwendung angemeldet werden. 
+Wenn Sie im Zugriffsbereich auf die Kachel „MOVEit Transfer – Azure AD-Integration“ klicken, sollten Sie automatisch an der MOVEit Transfer – Azure AD-Integration-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/moveittransfer-tutorial/tutorial_general_01.png
-[2]: ./media/moveittransfer-tutorial/tutorial_general_02.png
-[3]: ./media/moveittransfer-tutorial/tutorial_general_03.png
-[4]: ./media/moveittransfer-tutorial/tutorial_general_04.png
-
-[100]: ./media/moveittransfer-tutorial/tutorial_general_100.png
-
-[200]: ./media/moveittransfer-tutorial/tutorial_general_200.png
-[201]: ./media/moveittransfer-tutorial/tutorial_general_201.png
-[202]: ./media/moveittransfer-tutorial/tutorial_general_202.png
-[203]: ./media/moveittransfer-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

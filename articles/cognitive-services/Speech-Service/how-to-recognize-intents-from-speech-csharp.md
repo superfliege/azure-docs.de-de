@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855723"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#
 
@@ -45,9 +45,9 @@ Vergewissern Sie sich, dass Sie über Folgendes verfügen, bevor Sie mit diesem 
 
 ## <a name="luis-and-speech"></a>LUIS und Spracherkennung
 
-LUIS ist in Speech Service integriert, um Absichten aus Sprache zu erkennen. Ein Speech Service-Abonnement ist nicht erforderlich, nur LUIS.
+LUIS ist in die Speech-Dienste integriert, um Absichten anhand von Sprache zu erkennen. Ein Abonnement der Speech-Dienste ist nicht erforderlich. Sie benötigen lediglich LUIS.
 
-LUIS verwendet zwei Arten von Schlüsseln: 
+LUIS verwendet zwei Arten von Schlüsseln:
 
 |Schlüsseltyp|Zweck|
 |--------|-------|
@@ -56,7 +56,7 @@ LUIS verwendet zwei Arten von Schlüsseln:
 
 Der Endpunktschlüssel ist der LUIS-Schlüssel, der für dieses Tutorial erforderlich ist. Dieses Tutorial verwendet die LUIS-Beispiel-App für Hausautomatisierung, die Sie erstellen können, indem Sie die Anleitungen unter [Verwenden der vordefinierten App für Hausautomatisierung](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) befolgen. Wenn Sie selbst eine LUIS-App erstellt haben, können Sie diese stattdessen verwenden.
 
-Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Dieser Schlüssel aktiviert die Speech Service-Integration nicht und funktioniert nicht mit diesem Tutorial. Sie müssen eine LUIS-Ressource im Azure-Dashboard erstellen und diese der LUIS-App zuweisen. Sie können den Tarif für ein kostenloses Abonnement für dieses Tutorial verwenden. 
+Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Speech-Dienste-Integration möglich, und er ist für dieses Tutorial nicht geeignet. Sie müssen eine LUIS-Ressource im Azure-Dashboard erstellen und diese der LUIS-App zuweisen. Sie können den Tarif für ein kostenloses Abonnement für dieses Tutorial verwenden.
 
 Nachdem Sie die LUIS-Ressource im Azure-Dashboard erstellt haben, melden Sie sich am [LUIS-Portal](https://www.luis.ai/home) an, wählen Sie Ihre Anwendung auf der Seite „Eigene Anwendungen“ aus, und wechseln Sie dann auf die Seite „Verwalten“ der App. Klicken Sie schließlich in der Randleiste auf **Schlüssel und Endpunkte**.
 
@@ -123,7 +123,7 @@ Die folgenden Abschnitte enthalten eine Erläuterung des Codes.
 Der erste Schritt beim Erkennen von Absichten in Sprache besteht darin, eine Sprachkonfiguration aus Ihrem LUIS-Endpunktschlüssel und der -Region zu erstellen. Sprachkonfigurationen können verwendet werden, um Erkennungen für die verschiedenen Funktionen des Speech SDK zu erstellen. Die Sprachkonfiguration bietet mehrere Möglichkeiten, das Abonnement anzugeben, das Sie verwenden möchten. Hier verwenden wir `FromSubscription`. Diese Angabe nimmt den Abonnementschlüssel und die Region an.
 
 > [!NOTE]
-> Verwenden Sie den Schlüssel und die Region Ihres LUIS-Abonnements, nicht die eines Speech-Abonnements.
+> Verwenden Sie den Schlüssel und die Region Ihres LUIS-Abonnements (nicht den Schlüssel und die Region eines Speech-Dienste-Abonnements).
 
 Als nächstes erstellen Sie eine Absichtserkennung mit `new IntentRecognizer(config)`. Da die Konfiguration bereits weiß, welches Abonnement verwendet werden soll, entfällt die erneute Angabe von Abonnementschlüssel und Endpunkt beim Erstellen der Erkennung.
 
@@ -174,7 +174,7 @@ Der folgende Code zeigt zwei weitere Möglichkeiten der Absichtserkennung mit de
 
 Die andere Möglichkeit ist das Lesen der Audiodaten aus einer WAV-Datei, die die zu verarbeitende Spracheingabe enthalten. Dazu wird eine Audiokonfiguration erstellt, die beim Erstellen der Absichtserkennung verwendet werden kann. Die Datei muss einen Kanal (Mono) mit einer Samplingrate von 16 kHz enthalten.
 
-Um diese Features auszuprobieren, ersetzen Sie den Textkörper der `RecognizeIntentAsync()`-Methode durch den folgenden Code. 
+Um diese Features auszuprobieren, ersetzen Sie den Textkörper der `RecognizeIntentAsync()`-Methode durch den folgenden Code.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

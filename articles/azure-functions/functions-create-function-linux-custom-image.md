@@ -1,28 +1,28 @@
 ---
-title: Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau) | Microsoft Docs
+title: Erstellen von Azure-Funktionen unter Linux mit einem benutzerdefinierten Image
 description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem benutzerdefinierten Linux-Image ausgeführt werden.
 services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 2c80f988583571f3394a29747a6f452951cea878
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 976bab529dc77621ce92dff0d2ae665777023a01
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978033"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337573"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
+# <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
-Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Diese Funktion ist derzeit als Vorschauversion verfügbar und erfordert [die Functions 2.0-Runtime](functions-versions.md).
+Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Für diese Funktion wird die [Functions-Runtime 2.x](functions-versions.md) benötigt.
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Funktionen als benutzerdefiniertes Docker-Image in Azure bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte App Service-Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird.
+In diesem Tutorial erfahren Sie, wie Sie Ihre Funktionen als benutzerdefiniertes Docker-Image in Azure bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte App Service-Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base). [Python-Unterstützung](functions-reference-python.md) befindet sich derzeit in der Vorschauphase.
 
 Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer Funktion in einem benutzerdefinierten Linux-Image unter Verwendung von Azure Functions Core Tools. Sie veröffentlichen dieses Image in einer Funktions-App in Azure, die über die Azure-Befehlszeilenschnittstelle erstellt wurde.
 
@@ -36,6 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines Linux-App Service-Plans.
 > * Bereitstellen einer Funktions-App über Docker Hub.
 > * Hinzufügen von Anwendungseinstellungen für die Funktions-App.
+> * Aktivieren von Continuous Deployment
 
 Die folgenden Schritte werden für Mac-, Windows- oder Linux-Computer unterstützt.  
 
@@ -67,6 +68,8 @@ Wählen Sie bei entsprechender Aufforderung eine der folgenden Worker-Runtimespr
 * `dotnet`: Erstellt ein .NET-Klassenbibliotheksprojekt (.csproj).
 * `node`: Erstellt ein JavaScript-Projekt.
 * `python`: Erstellt ein Python-Projekt.
+
+[!INCLUDE functions-python-preview-note]
 
 Wenn der Befehl ausgeführt wird, sehen Sie etwa folgende Ausgabe:
 
@@ -101,7 +104,7 @@ COPY . /home/site/wwwroot
 ```
 
 > [!NOTE]
-> Wenn Sie ein Image in einer privaten Containerregistrierung hosten, sollten Sie die Verbindungseinstellungen mithilfe der **ENV**-Variablen in der Dockerfile zur Funktions-App hinzufügen. Da in diesem Lernprogramm nicht sichergestellt werden kann, dass Sie einen privaten Registrierungsschlüssel verwenden, werden die Verbindungseinstellungen aus Sicherheitsgründen [nach der Bereitstellung mit Azure CLI hinzugefügt](#configure-the-function-app).
+> Die vollständige Liste mit den unterstützten Basisimages für Azure Functions finden Sie auf der [Seite mit Azure Functions-Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 ### <a name="run-the-build-command"></a>Führen Sie den Befehl `build` aus.
 Führen Sie im Stammordner den Befehl [docker build`v1.0.0` aus, und geben Sie einen Namen (](https://docs.docker.com/engine/reference/commandline/build/)) und ein Tag (`mydockerimage`) an. Ersetzen Sie `<docker-id>` durch Ihre Docker Hub-Konto-ID. Dieser Befehl erstellt das Docker-Image für den Container.
@@ -223,20 +226,20 @@ Nach Erstellung der Funktionen-App zeigt die Azure-CLI Informationen wie im folg
 }
 ```
 
-Der Parameter _deployment-container-image-name_ gibt das in Docker Hub gehostete Image an, das zum Erstellen der Funktions-App verwendet werden soll.
+Der Parameter _deployment-container-image-name_ gibt das in Docker Hub gehostete Image an, das zum Erstellen der Funktions-App verwendet werden soll. Verwenden Sie den Befehl [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show), um Informationen zum für die Bereitstellung verwendeten Image anzuzeigen. Verwenden Sie den Befehl [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set), um ein anderes Image für die Bereitstellung zu verwenden.
 
 ## <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
 
 Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Standardspeicherkonto. Beim Veröffentlichen des benutzerdefinierten Images in einem privaten Containerkonto müssen Sie diese Anwendungseinstellungen als Umgebungsvariablen in der Dockerfile-Datei festlegen, indem Sie die [ENV-Anweisung](https://docs.docker.com/engine/reference/builder/#env) oder etwas Ähnliches verwenden.
 
-In diesem Fall ist `<storage_account>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzu.
+In diesem Fall ist `<storage_name>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzu.
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_account> \
+storageConnectionString=$(az storage account show-connection-string \
+--resource-group myResourceGroup --name <storage_name> \
 --query connectionString --output tsv)
 
-az functionapp config appsettings set --name <function_app> \
+az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
 --settings AzureWebJobsDashboard=$storageConnectionString \
 AzureWebJobsStorage=$storageConnectionString
@@ -252,6 +255,24 @@ AzureWebJobsStorage=$storageConnectionString
 Sie können jetzt Ihre Funktionen unter Linux in Azure testen.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-continuous-deployment"></a>Aktivieren von Continuous Deployment
+
+Die Verwendung von Containern hat unter anderem den Vorteil, dass Updates automatisch bereitgestellt werden können, wenn Container in der Registrierung aktualisiert werden. Verwenden Sie den Befehl [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config), um Continuous Deployment zu aktivieren.
+
+```azurecli-interactive
+az functionapp deployment container config --enable-cd \
+--query CI_CD_URL --output tsv \
+--name <app_name> --resource-group myResourceGroup
+```
+
+Nach Aktivierung von Continuous Deployment gibt dieser Befehl die Webhook-URL der Bereitstellung zurück. Diese URL kann auch mithilfe des Befehls [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) zurückgegeben werden. 
+
+Kopieren Sie die Bereitstellungs-URL, navigieren Sie zu Ihrem DockerHub-Repository, wählen Sie die Registerkarte **Webhooks** aus, geben Sie unter **Webhookname** einen Namen für den Webhook ein, fügen Sie unter **Webhook-URL** Ihre URL ein, und wählen Sie anschließend das Pluszeichen (**+**) aus.
+
+![Hinzufügen des Webhooks in Ihrem DockerHub-Repository](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+Nachdem Sie den Webhook festgelegt haben, lädt die Funktions-App nach jeder Aktualisierung des verknüpften Images in DockerHub das neueste Image herunter und installiert es.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

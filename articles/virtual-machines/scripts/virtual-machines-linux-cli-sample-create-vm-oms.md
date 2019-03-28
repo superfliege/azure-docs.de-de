@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit Azure-Überwachung | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit Azure-Überwachung
+title: 'Azure CLI-Skriptbeispiel: Erstellen eines virtuellen Linux-Computers mit Azure Monitor | Microsoft-Dokumentation'
+description: 'Azure CLI-Skriptbeispiel: Erstellen eines virtuellen Linux-Computers mit Azure Monitor'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 70eb7ef93d4802f30bb1343c442c414cda48464b
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6aed5f40d689fc84c82f37760e78fc7c3fe94dd1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732786"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535620"
 ---
-# <a name="monitor-a-vm-with-azure-monitoring"></a>Überwachen einer VM mit Azure-Überwachung
+# <a name="monitor-a-vm-with-azure-monitor"></a>Überwachen eines virtuellen Computers mit Azure Monitor
 
 Mit diesem Skript wird ein virtueller Azure-Computer erstellt, der Log Analytics-Agent installiert und das System in einem Log Analytics-Arbeitsbereich registriert. Nach Ausführung des Skripts wird der virtuelle Computer in der Konsole angezeigt.
 
@@ -51,7 +51,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der NSG. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. In diesem Fall wird die Log Analytics-Agent-Erweiterung verwendet, um den Log Analytics-Agent zu installieren und die VM in einem Log Analytics-Arbeitsbereich zu registrieren. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. In diesem Fall wird die Azure Monitor-Agent-Erweiterung verwendet, um den Log Analytics-Agent zu installieren und den virtuellen Computer in einem Log Analytics-Arbeitsbereich zu registrieren. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

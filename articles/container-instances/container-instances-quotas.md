@@ -5,53 +5,24 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 02/15/2019
+ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: c676989b4b882f2b1887a1b6a5091b60027f61d0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c01243a33094a93da1b05ea3b58324b0f3cb2bf9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328403"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539716"
 ---
-# <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kontingente und Regionsverfügbarkeit für Azure Container Instances
+# <a name="quotas-and-limits-for-azure-container-instances"></a>Kontingente und Limits für Azure Container Instances
 
-Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standardlimits und Kontingente. Die folgenden Abschnitte enthalten Informationen zu den Standardressourcenlimits für mehrere Azure Container Instances-Ressourcen sowie zur Verfügbarkeit des Diensts in Azure-Regionen.
+Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standardlimits und Kontingente. In diesem Artikel werden die Standardkontingente und Limits für Azure Container Instances erläutert.
+
+Informationen zur Verfügbarkeit der Features und Ressourcen von Azure Container Instances in Azure-Regionen finden Sie unter [Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen](container-instances-region-availability.md).
 
 ## <a name="service-quotas-and-limits"></a>Dienstkontingente und Limits
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-## <a name="feature-availability"></a>Verfügbarkeit von Funktionen
-
-Azure Container Instances kann sowohl Windows- als auch Linux-Container mit der gleichen API planen. Die folgenden Features stehen derzeit allerdings nur in Linux-Containergruppen zur Verfügung. Windows-Unterstützung ist geplant.
-
-* Mehrere Container pro Containergruppe
-* Einbindung von Volumes (Azure Files, emptyDir, GitRepo, geheimes Volume)
-* Virtuelles Netzwerk (Vorschauversion)
-* GPU-Ressourcen (Vorschauversion)
-
-## <a name="region-availability"></a>Regionale Verfügbarkeit
-
-Azure Container Instances ist für die einzelnen Containergruppen in den folgenden Regionen mit den angegebenen CPU- und Arbeitsspeicherlimits verfügbar. Die Werte sind zum Zeitpunkt der Veröffentlichung aktuell. Verwenden Sie die API zum [Auflisten von Funktionen](/rest/api/container-instances/listcapabilities/listcapabilities), um aktuelle Informationen abzurufen. 
-
-Verfügbarkeit und Ressourceneinschränkungen können abweichen, wenn Azure Container Instances mit einem [virtuellen Netzwerk](container-instances-vnet.md) (Vorschauversion) oder mit [GPU-Ressourcen](container-instances-gpu.md) (Vorschauversion) verwendet wird.
-
-| Standort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
-| -------- | -- | :---: | :-----------: |
-| „Kanada, Mitte“, „USA, Mitte“, „USA, Osten 2“, „USA, Süden-Mitte“ | Linux | 4 | 16 |
-| „USA, Osten“, „Europa, Norden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ | Linux | 4 | 14 |
-| Japan, Osten | Linux | 2 | 8 |
-| „Australien, Osten“, „Asien, Südosten“ | Linux | 2 | 7 |
-| „Indien, Mitte“, Asien, Osten“, „USA, Norden-Mitte“, „Indien, Süden“ | Linux | 2 | 3,5 |
-| „USA, Osten“, „Europa, Westen“, „USA, Westen“ | Windows | 4 | 14 |
-| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Indien, Süden“, „Asien, Südosten“, „USA, Westen 2“ | Windows | 2 | 3,5 |
-
-Containerinstanzen, die innerhalb dieser Ressourcenlimits erstellt werden, unterliegen der Verfügbarkeit in der Bereitstellungsregion. Wenn eine Region stark ausgelastet ist, kann bei der Bereitstellung von Instanzen ein Fehler auftreten. Um einen solchen Fehler bei der Bereitstellung zu beheben, versuchen Sie, Instanzen mit niedrigeren CPU- und Arbeitsspeichereinstellungen bereitzustellen, oder führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
-
-Teilen Sie dem Team auf [aka.ms/aci/feedback](https://aka.ms/aci/feedback) mit, wenn zusätzliche Regionen und eine Erhöhung der CPU-/Arbeitsspeichergrenzwerte erforderlich sind.
-
-Weitere Informationen zur Problembehandlung bei der Bereitstellung von Containerinstanzen finden Sie unter [Beheben von Bereitstellungsproblemen für Azure Container Instances](container-instances-troubleshooting.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

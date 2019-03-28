@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: a77c208c208ef7e0df170733dbe89963fc5cb846
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727178"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863167"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 
@@ -28,7 +28,7 @@ Um die Tests zu vereinfachen, stellen Sie eine [vorgefertigte Web-App](https://g
 
 1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 Notieren Sie diese URL. Sie benötigen sie später noch.
@@ -54,10 +54,10 @@ Erstellen Sie zunächst zwei Event Grid-Themen. Diese Themen dienen als Ihr prim
 
 1. Wählen Sie im Menü „Event Grid-Themen“ die Option **+ HINZUFÜGEN** aus, um Ihr primäres Thema zu erstellen.
 
-    * Geben Sie einen logischen Namen für das Thema an, und fügen Sie „-primär“ als Suffix hinzu, um die Nachverfolgung zu erleichtern.
-    * Die Region dieses Themas ist Ihre primäre Region.
+   * Geben Sie einen logischen Namen für das Thema an, und fügen Sie „-primär“ als Suffix hinzu, um die Nachverfolgung zu erleichtern.
+   * Die Region dieses Themas ist Ihre primäre Region.
 
-    ![Dialogfeld zum Erstellen des primären Event Grid-Themas](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Dialogfeld zum Erstellen des primären Event Grid-Themas](./media/custom-disaster-recovery/create-primary-topic.png)
 
 1. Navigieren Sie nach der Erstellung des Themas zu diesem Thema, und kopieren Sie den **Themenendpunkt**. Sie benötigen den URI später.
 
@@ -69,11 +69,11 @@ Erstellen Sie zunächst zwei Event Grid-Themen. Diese Themen dienen als Ihr prim
 
 1. Klicken Sie auf dem Blatt „Thema“ auf **+ Ereignisabonnement**, um ein Abonnement zu erstellen, das das Thema mit der in den Voraussetzungen für das Tutorial erstellten Ereignisempfänger-Website verbindet.
 
-    * Geben Sie einen logischen Namen für das Ereignisabonnement an, und fügen Sie „-primär“ als Suffix hinzu, um die Nachverfolgung zu erleichtern.
-    * Wählen Sie den Endpunkttyp „Webhook“ aus.
-    * Legen Sie den Endpunkt auf die Ereignis-URL Ihres Ereignisempfängers fest. Die URL sollte in etwa wie folgt aussehen: `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Geben Sie einen logischen Namen für das Ereignisabonnement an, und fügen Sie „-primär“ als Suffix hinzu, um die Nachverfolgung zu erleichtern.
+   * Wählen Sie den Endpunkttyp „Webhook“ aus.
+   * Legen Sie den Endpunkt auf die Ereignis-URL Ihres Ereignisempfängers fest. Die URL sollte in etwa wie folgt aussehen: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-    ![Primäres Event Grid-Ereignisabonnement](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Primäres Event Grid-Ereignisabonnement](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Wiederholen Sie die obigen Schritte zum Erstellen des sekundären Themas und Abonnements. Ersetzen Sie dabei das Suffix „-primär“ durch „-sekundär“, um die Nachverfolgung zu erleichtern. Denken Sie daran, für dieses Abonnement eine andere Azure-Region auszuwählen. Sie können eine beliebige Region auswählen, es wird jedoch empfohlen, [Azure-Regionspaare](../best-practices-availability-paired-regions.md) zu verwenden. Durch das Platzieren des sekundären Themas und Abonnements in einer anderen Region wird sichergestellt, dass Ihre neuen Ereignisse auch bei einem Ausfall der primären Region weitergeleitet werden.
 

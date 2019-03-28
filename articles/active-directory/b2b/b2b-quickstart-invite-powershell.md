@@ -9,13 +9,14 @@ ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854448"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen von Gastbenutzern mit PowerShell
 
@@ -73,7 +74,7 @@ Geben Sie bei Aufforderung Ihre Anmeldeinformationen ein.
 
 ## <a name="send-an-invitation"></a>Senden einer Einladung
 
-1. Um eine Einladung an Ihr Test-E-Mail-Konto zu senden, führen Sie den folgenden PowerShell-Befehl aus (ersetzen Sie **Sanda** und **sanda@fabrikam.com** durch den Namen Ihres Test-E-Mail-Kontos und Ihre E-Mail-Adresse): 
+1. Um eine Einladung an Ihr Test-E-Mail-Konto zu senden, führen Sie den folgenden PowerShell-Befehl aus, und ersetzen Sie dabei **Sanda** und **sanda\@fabrikam.com** durch den Namen Ihres Test-E-Mail-Kontos und Ihre E-Mail-Adresse: 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -89,7 +90,7 @@ Geben Sie bei Aufforderung Ihre Anmeldeinformationen ein.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Überprüfen Sie, ob der von Ihnen eingeladene Benutzer mit einem Benutzerprinzipalnamen (UPN) im Format *E-Mail-Adresse*#EXT#@*Domäne* in der Ausgabe angezeigt wird. Z.B. *sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com*, wobei „contoso.onmicrosoft.com“ der Organisation entspricht, für die Sie die Einladung gesendet haben.
+3. Überprüfen Sie, ob der von Ihnen eingeladene Benutzer mit einem Benutzerprinzipalnamen (UPN) im Format *E-Mail-Adresse*#EXT#\@*Domäne* in der Ausgabe angezeigt wird. Beispiel: *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, wobei „contoso.onmicrosoft.com“ der Organisation entspricht, für die Sie die Einladungen gesendet haben.
 
    ![PowerShell-Ausgabe: Gastbenutzer wurde hinzugefügt](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 9c168598d3237f7fd6dcc0e1c6414750e59c287b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 82836c7686d9b0f376268ef7919a188a8f78944e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973835"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548778"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Verwenden von Azure Virtual Network-Funktionen für Container
 
@@ -53,16 +53,16 @@ Damit Pods auf das Internet zugreifen können, werden mit dem Plug-In *iptables*
 
 ## <a name="limits"></a>Einschränkungen
 
-Das Plug-In unterstützt bis zu 250 Pods pro virtuellem Computer und bis zu 16.000 Pods in einem virtuellen Netzwerk. Für [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#kubernetes-service-limits) gelten andere Einschränkungen.
+Das Plug-In unterstützt bis zu 250 Pods pro virtuellem Computer und bis zu 16.000 Pods in einem virtuellen Netzwerk. Für [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) gelten andere Einschränkungen.
 
 ## <a name="using-the-plug-in"></a>Verwenden des Plug-Ins
 
 Das Plug-In kann auf folgende Weisen verwendet werden, um grundlegende Verbindungen mit dem virtuellen Netzwerk für Pods oder Docker-Container bereitzustellen:
 
 - **Azure Kubernetes Service:** Das Plug-In ist in Azure Kubernetes Service (AKS) integriert und kann durch Auswählen der Option *Erweiterte Funktionen für Netzwerkbetrieb und Skalierung* verwendet werden. Über „Erweiterte Funktionen für Netzwerkbetrieb und Skalierung“ können Sie einen Kubernetes-Cluster auf einem vorhandenen oder einem neuen virtuellen Netzwerk bereitstellen. Weitere Informationen zu den erweiterten Funktionen für Netzwerkbetrieb und Skalierung und den Schritten für die Einrichtung finden Sie unter [Netzwerkkonfiguration in AKS](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- **ACS-Engine:** Die ACS-Engine ist ein Tool, das eine Azure Resource Manager-Vorlage zum Bereitstellen eines Kubernetes-Clusters in Azure generiert. Ausführliche Anleitungen finden Sie unter [Bereitstellen des Plug-Ins für AKS-Engine-Kubernetes-Cluster](deploy-container-networking.md#deploy-plug-in-for-acs-engine-kubernetes-cluster).
-- **Erstellen Ihres eigenen Kubernetes-Clusters in Azure:** Das Plug-In kann verwendet werden, um grundlegende Netzwerkfunktionen für Pods in Kubernetes-Clustern, die Sie selbst ohne AKS oder mit Tools wie ACS-Engine bereitstellen, einzurichten. In diesem Fall wird das Plug-In installiert und auf allen virtuellen Computern in einem Cluster aktiviert. Ausführliche Anweisungen finden Sie unter [Bereitstellen des Plug-Ins für einen eigenen Kubernetes-Cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
-- **Verbindung mit dem virtuellen Netzwerk für Docker-Container in Azure:** Das Plug-In kann in den Fällen verwendet werden, in denen Sie keinen Kubernetes-Cluster, sondern stattdessen Docker-Container mit Verbindung mit dem virtuellen Netzwerk auf virtuellen Computern erstellen möchten. Ausführliche Anleitungen finden Sie unter [Bereitstellen des Plug-Ins für Docker-Container](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
+- **ACS-Engine:** Die AKS-Engine (Azure Container Service, Azure Kubernetes Service) ist ein Tool, das eine Azure Resource Manager-Vorlage zum Bereitstellen eines Kubernetes-Clusters in Azure generiert. Ausführliche Anleitungen finden Sie unter [Bereitstellen des Plug-Ins für AKS-Engine-Kubernetes-Cluster](deploy-container-networking.md#deploy-plug-in-for-acs-engine-kubernetes-cluster).
+- **Erstellen Ihres eigenen Kubernetes-Clusters in Azure:** Das Plug-In kann verwendet werden, um grundlegende Netzwerkfunktionen für Pods in Kubernetes-Clustern einzurichten, die Sie selbst ohne AKS oder mit Tools wie ACS-Engine bereitstellen. In diesem Fall wird das Plug-In installiert und auf allen virtuellen Computern in einem Cluster aktiviert. Ausführliche Anweisungen finden Sie unter [Bereitstellen des Plug-Ins für einen eigenen Kubernetes-Cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+- **Verbindung mit dem virtuellen Netzwerk für Docker-Container in Azure:** Das Plug-In kann in Fällen verwendet werden, in denen Sie keinen Kubernetes-Cluster, sondern stattdessen Docker-Container mit Verbindung mit dem virtuellen Netzwerk auf virtuellen Computern erstellen möchten. Ausführliche Anleitungen finden Sie unter [Bereitstellen des Plug-Ins für Docker-Container](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
