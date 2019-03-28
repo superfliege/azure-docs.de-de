@@ -6,18 +6,21 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: b0c09c5b425beef6badff7fb6ec298f96591abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990537"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339311"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
 Azure Cosmos DB bietet eine in die Sprache integrierte transaktionale Ausführung von JavaScript, mit der Sie **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) schreiben können. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie die gespeicherten Prozeduren, Trigger und UDFs in der JavaScript-Sprache definieren. Sie können Ihre Logik in JavaScript schreiben und in der Datenbank-Engine ausführen. Sie können Trigger, gespeicherte Prozeduren und UDFs im [Azure-Portal](https://portal.azure.com/), mithilfe der [in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md) und mit den [SQL-API-Client-SDKs von Cosmos DB](sql-api-dotnet-samples.md) erstellen und ausführen. 
 
 Um eine gespeicherte Prozedur, einen Trigger und einer benutzerdefinierte Funktion aufzurufen, müssen Sie das entsprechende Element registrieren. Weitere Informationen finden Sie unter [Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
+
+> [!NOTE]
+> Wenn Sie eine gespeicherte Prozedur in partitionierten Containern ausführen, muss in den Anforderungsoptionen ein Partitionsschlüsselwert angegeben werden. Gespeicherte Prozeduren gelten immer für einen bestimmten Partitionsschlüssel. Elemente, die einen anderen Partitionsschlüsselwert aufweisen, sind in der gespeicherten Prozedur nicht sichtbar. Dies gilt auch für Trigger.
 
 ## <a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
 

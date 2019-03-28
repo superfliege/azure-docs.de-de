@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 6cbc6e351147ed5b4c31463b5cf319417f34da34
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456774"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350469"
 ---
 # <a name="what-is-azure-custom-vision"></a>Was ist Azure Custom Vision?
 
@@ -25,17 +25,18 @@ Azure Custom Vision ist ein Cognitive Services-Dienst, der Ihnen das Erstellen, 
 
 Der Custom Vision-Dienst verwendet einen Machine Learning-Algorithmus, um Bezeichnungen auf Bilder anzuwenden. Entwickler müssen Gruppen von Bildern übermitteln, auf denen die betreffenden Merkmale vorhanden bzw. nicht vorhanden sind. Die Bezeichnungen wenden Sie selbst beim Übermitteln auf die Bilder an. Der Algorithmus wird dann mit diesen Daten trainiert und berechnet seine eigene Genauigkeit, indem er Tests anhand dieser Bilder durchführt. Nachdem der Algorithmus trainiert wurde, können Sie ihn testen, erneut trainieren und schließlich gemäß den Anforderungen Ihrer App zum Klassifizieren neuer Bilder verwenden. Darüber hinaus kann das Modell exportiert und offline verwendet werden.
 
-## <a name="classification-and-object-detection"></a>Klassifizierung und Objekterkennung
+### <a name="classification-and-object-detection"></a>Klassifizierung und Objekterkennung
 
 Custom Vision bietet zwei Features: Die **Bildklassifizierung** wendet eine oder mehrere Bezeichnungen auf ein Bild an. Die **Objekterkennung** funktioniert ähnlich, gibt aber auch die Koordinaten zurück, an denen sich die angewendeten Bezeichnungen im Bild befinden.
 
-## <a name="optimization"></a>Optimierung
+### <a name="optimization"></a>Optimierung
 
 Der Custom Vision-Dienst ist zur schnellen Erkennung wichtiger Unterschiede zwischen Bildern optimiert. Dies ermöglicht es Ihnen, mit einer kleinen Datenmenge mit der Prototyperstellung für Ihr Modell zu beginnen. 50 Bilder pro Bezeichnung sind im Allgemeinen ein guter Ausgangspunkt. Das bedeutet jedoch auch, dass der Dienst geringfügige Bildunterschiede (etwa kleinere Risse oder Dellen in Qualitätssicherungsszenarien) nicht optimal erkennen kann.
 
 Darüber hinaus stehen verschiedene Varianten des Custom Vision-Algorithmus zur Verfügung, die jeweils für Bilder mit bestimmtem Material optimiert sind, z. B. für Wahrzeichen oder Einzelhandelsartikel. Weitere Informationen finden Sie unter [Erstellen einer Klassifizierung](getting-started-build-a-classifier.md).
 
 ## <a name="what-it-includes"></a>Lieferumfang
+
 Der Custom Vision-Dienst ist als Gruppe nativer SDKs sowie über eine webbasierte Oberfläche auf der [Custom Vision-Startseite](https://customvision.ai/) verfügbar. Beide Schnittstellen können einzeln oder zusammen zum Erstellen, Testen und Trainieren eines Modells verwendet werden.
 
 ![Custom Vision-Startseite in einem Chrome-Browserfenster](media/browser-home.png)

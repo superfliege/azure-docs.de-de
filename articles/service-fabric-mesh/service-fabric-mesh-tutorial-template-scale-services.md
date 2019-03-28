@@ -3,7 +3,7 @@ title: 'Tutorial: Skalieren einer in Azure Service Fabric Mesh ausgeführten App
 description: In diesem Tutorial erfahren Sie, wie die Dienste in einer Anwendung skaliert werden, die in Service Fabric Mesh ausgeführt wird.
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 70620b5ec57f6bf4403ac959c4c69026ae80b887
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261399"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337764"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Tutorial: Skalieren einer in Service Fabric Mesh ausgeführten Anwendung
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: 7f123187ea869931b0701fd9d68372deb0b272e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879070"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351863"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Tutorial: Verwenden eines ONNX-Modells von Custom Vision mit Windows ML (Vorschauversion)
 
@@ -51,7 +51,7 @@ Die Beispielanwendung finden Sie unter [https://github.com/Azure-Samples/cogniti
 
 1. Verwenden Sie die Taste `F5`, um die Anwendung in Visual Studio zu starten. Unter Umständen werden Sie aufgefordert, den Entwicklermodus zu aktivieren. Weitere Informationen finden Sie im Dokument [Aktivieren Ihres Geräts für die Entwicklung](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
 
-2. Wenn die Anwendung startet, verwenden Sie die Schaltfläche, um ein Bild zur Bewertung auszuwählen.
+1. Wenn die Anwendung startet, verwenden Sie die Schaltfläche, um ein Bild zur Bewertung auszuwählen.
 
 ## <a name="use-your-own-model"></a>Verwenden eines eigenen Modells
 
@@ -65,8 +65,8 @@ Führen Sie die folgenden Schritte aus, um Ihr eigenes Modell zu verwenden:
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste in den Ordner „Ressourcen“, und wählen Sie __Vorhandenes Element hinzufügen__ aus. Wählen Sie die ONNX-Datei aus.
 
-1. Wählen Sie im Projektmappen-Explorer die ONNX-Datei im Ordner „Ressourcen“ aus. Ändern Sie die folgenden Eigenschaften für die Datei: 
-    
+1. Wählen Sie im Projektmappen-Explorer die ONNX-Datei im Ordner „Ressourcen“ aus. Ändern Sie die folgenden Eigenschaften für die Datei:
+
     * __Buildvorgang__ -> __Inhalt__
     * __In Ausgabeverzeichnis kopieren__ -> __Kopieren, wenn neuer__
 

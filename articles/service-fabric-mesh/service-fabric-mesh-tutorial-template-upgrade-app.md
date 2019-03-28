@@ -3,7 +3,7 @@ title: 'Tutorial: Aktualisieren einer in Azure Service Fabric Mesh ausgeführten
 description: In diesem Tutorial erfahren Sie, wie Sie eine in Service Fabric Mesh ausgeführte Service Fabric-Anwendung aktualisieren.
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d27cc555a8cf96a07818e83b342cf145d9e98a96
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265906"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337628"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Tutorial: Aktualisieren einer in Service Fabric Mesh ausgeführten Service Fabric-Anwendung
 
-This tutorial is part three of a series. Hier erfahren Sie, wie Sie eine Service Fabric-Anwendung aktualisieren, die [zuvor in Service Fabric Mesh bereitgestellt wurde](service-fabric-mesh-tutorial-template-deploy-app.md), indem Sie die Anzahl der zugeordneten CPU-Ressourcen erhöhen.  Wenn Sie fertig sind, besitzen Sie einen Web-Front-End-Dienst, der mit einer höheren Anzahl von CPU-Ressourcen ausgeführt wird.
+Dieses Tutorial ist der dritte Teil einer Reihe. Hier erfahren Sie, wie Sie eine Service Fabric-Anwendung aktualisieren, die [zuvor in Service Fabric Mesh bereitgestellt wurde](service-fabric-mesh-tutorial-template-deploy-app.md), indem Sie die Anzahl der zugeordneten CPU-Ressourcen erhöhen.  Wenn Sie fertig sind, besitzen Sie einen Web-Front-End-Dienst, der mit einer höheren Anzahl von CPU-Ressourcen ausgeführt wird.
 
 Im dritten Teil der Serie lernen Sie Folgendes:
 
