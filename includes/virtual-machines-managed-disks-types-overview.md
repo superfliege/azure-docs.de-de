@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f36ce51a9f385933cbc21e27280828b0ff0e43e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016685"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395560"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -27,9 +27,9 @@ Die folgende Tabelle enthält eine Gegenüberstellung von SSD Ultra- (Vorschau),
 |---------|---------|---------|---------|---------|
 |Datenträgertyp   |SSD   |SSD   |SSD   |Festplattenlaufwerk   |
 |Szenario   |E/A-intensive Workloads wie SAP HANA, führende Datenbanken (z.B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
-|Datenträgergröße   |65.536 Gibibyte (GiB) (Vorschau)   |4.095 GiB (allgemein verfügbar), 32.767 GiB (Vorschau)    |4.095 GiB (allgemein verfügbar), 32.767 GiB (Vorschau)   |4.095 GiB (allgemein verfügbar), 32.767 GiB (Vorschau)   |
-|Max. Durchsatz   |2.000 MiB/s (Vorschau)   |250 MiB/s (allgemein verfügbar), 750 MiB/s (Vorschau)   |60 MiB/s (allgemein verfügbar), 500 MiB/s (Vorschau)   |60 MiB/s (allgemein verfügbar), 500 MiB/s (Vorschau)   |
-|Max. IOPS   |160.000 (Vorschau)   |7.500 (allgemein verfügbar), 20.000 (Vorschau)   |500 (allgemein verfügbar), 2.000 (Vorschau)   |500 (allgemein verfügbar), 2.000 (Vorschau)   |
+|Datenträgergröße   |65.536 Gibibyte (GiB) (Vorschau)   |32767 GiB    |32767 GiB   |32767 GiB   |
+|Max. Durchsatz   |2.000 MiB/s (Vorschau)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Max. IOPS   |160.000 (Vorschau)   |20.000   |6.000   |2.000   |
 
 ## <a name="ultra-ssd-preview"></a>SSD Ultra (Vorschau)
 

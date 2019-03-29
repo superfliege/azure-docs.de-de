@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: crdun
-ms.openlocfilehash: e0eeee05ebad2e8148752f988bbbc2f6a0d7c296
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592693"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445907"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Hinzufügen der Authentifizierung zu Ihrer iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-In diesem Lernprogramm fügen Sie dem [iOS-Schnellstartlernprogramm] mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Lernprogramm baut auf dem [iOS-Schnellstartlernprogramm] auf, das Sie zuerst abschließen müssen.
+In diesem Lernprogramm fügen Sie dem [iOS-Schnellstartprojekt] mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Lernprogramm baut auf dem [iOS-Schnellstartprojekt] auf, das Sie zuerst abschließen müssen.
 
 ## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -110,7 +110,7 @@ Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird aus
     }
     ```
 
-   Fügen Sie diesen Code direkt vor der Zeile `#pragma mark - Core Data stack` hinzu.  Ersetzen Sie _Appname_ durch den urlScheme-Wert, den Sie in Schritt 1 verwendet haben.
+   Fügen Sie diesen Code direkt vor der Zeile `#pragma mark - Core Data stack` hinzu.  Ersetzen Sie _appname_ durch den in Schritt 1 verwendeten urlScheme-Wert.
 
 5. Öffnen Sie die Datei `AppName-Info.plist` (ersetzen Sie „AppName“ mit dem Namen Ihrer App), und fügen Sie den folgenden Code hinzu:
 
@@ -188,7 +188,7 @@ Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird aus
     }
     ```
 
-    Ersetzen Sie _Appname_ durch den urlScheme-Wert, den Sie in Schritt 1 verwendet haben.
+    Ersetzen Sie _appname_ durch den in Schritt 1 verwendeten urlScheme-Wert.
 
 4. Öffnen Sie die Datei `AppName-Info.plist` (ersetzen Sie „AppName“ mit dem Namen Ihrer App), und fügen Sie den folgenden Code hinzu:
 
@@ -212,12 +212,12 @@ Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird aus
 
 5. Klicken Sie auf *Ausführen*, um die App zu starten, und melden Sie sich an. Nach der Anmeldung sollten Sie die Todo-Liste anzeigen und Änderungen vornehmen können.
 
-Die App Service-Authentifizierung verwendet Inter-App Communication von Apple.  Weitere Informationen zu diesem Thema finden Sie in der [Apple-Dokumentation][2].
-<!-- URLs. -->
+Die App Service-Authentifizierung verwendet Inter-App Communication von Apple.  Weitere Informationen zu diesem Thema finden Sie in der [Apple-Dokumentation][2]
+<!-- URLs. -->.
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
 [Azure-Portal]: https://portal.azure.com
 
-[iOS-Schnellstartlernprogramm]: app-service-mobile-ios-get-started.md
+[iOS-Schnellstartprojekt]: app-service-mobile-ios-get-started.md
 

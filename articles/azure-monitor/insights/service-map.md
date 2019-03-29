@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731095"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485151"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -374,50 +374,50 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
-| ResourceName_s | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
-| ComputerName_s | Der vollqualifizierte Domänenname des Computers |
-| Ipv4Addresses_s | Eine Liste der IPv4-Adressen des Servers |
-| Ipv6Addresses_s | Eine Liste der IPv6-Adressen des Servers |
-| DnsNames_s | Ein Array von DNS-Namen |
-| OperatingSystemFamily_s | Windows oder Linux |
-| OperatingSystemFullName_s | Der vollständige Name des Betriebssystems  |
-| Bitness_s | Die Bitanzahl des Computers (32-Bit oder 64-Bit)  |
-| PhysicalMemory_d | Der physischer Speicher in MB |
-| Cpus_d | Die Anzahl der CPUs |
-| CpuSpeed_d | Die CPU-Geschwindigkeit in MHz|
-| VirtualizationState_s | *unknown*, *physical*, *virtual*, *hypervisor* |
-| VirtualMachineType_s | *hyperv*, *vmware* usw. |
-| VirtualMachineNativeMachineId_g | Die VM-ID, die vom entsprechenden Hypervisor zugewiesen wurde |
-| VirtualMachineName_s | Der Name der VM |
-| BootTime_t | Die Startzeit |
+| `Type` | *ServiceMapComputer_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
+| `ResourceName_s` | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
+| `ComputerName_s` | Der vollqualifizierte Domänenname des Computers |
+| `Ipv4Addresses_s` | Eine Liste der IPv4-Adressen des Servers |
+| `Ipv6Addresses_s` | Eine Liste der IPv6-Adressen des Servers |
+| `DnsNames_s` | Ein Array von DNS-Namen |
+| `OperatingSystemFamily_s` | Windows oder Linux |
+| `OperatingSystemFullName_s` | Der vollständige Name des Betriebssystems  |
+| `Bitness_s` | Die Bitanzahl des Computers (32-Bit oder 64-Bit)  |
+| `PhysicalMemory_d` | Der physischer Speicher in MB |
+| `Cpus_d` | Die Anzahl der CPUs |
+| `CpuSpeed_d` | Die CPU-Geschwindigkeit in MHz|
+| `VirtualizationState_s` | *unknown*, *physical*, *virtual*, *hypervisor* |
+| `VirtualMachineType_s` | *hyperv*, *vmware* usw. |
+| `VirtualMachineNativeMachineId_g` | Die VM-ID, die vom entsprechenden Hypervisor zugewiesen wurde |
+| `VirtualMachineName_s` | Der Name der VM |
+| `BootTime_t` | Die Startzeit |
 
 ### <a name="servicemapprocesscl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
 Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
-| ResourceName_s | Der eindeutige Bezeichner für den Prozess auf dem Computer, auf dem er ausgeführt wird|
-| MachineResourceName_s | Der Ressourcenname des Computers |
-| ExecutableName_s | Der Name der ausführbaren Prozessdatei |
-| StartTime_t | Die Startzeit des Prozesspools |
-| FirstPid_d | Die erste PID im Prozesspool |
-| Description_s | Die Beschreibung des Prozesses |
-| CompanyName_s | Der Name des Unternehmens |
-| InternalName_s | Der interne Name |
-| ProductName_s | Der Name des Produkts |
-| ProductVersion_s | Die Produktversion |
-| FileVersion_s | Die Dateiversion |
-| CommandLine_s | Die Befehlszeile |
-| ExecutablePath _s | Der Pfad zur ausführbaren Datei |
-| WorkingDirectory_s | Das Arbeitsverzeichnis |
-| UserName | Das Konto, unter dem der Prozess ausgeführt wird |
-| UserDomain | Die Domäne, unter der der Prozess ausgeführt wird |
+| `Type | *ServiceMapProcess_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
+| `ResourceName_s` | Der eindeutige Bezeichner für den Prozess auf dem Computer, auf dem er ausgeführt wird|
+| `MachineResourceName_s` | Der Ressourcenname des Computers |
+| `ExecutableName_s` | Der Name der ausführbaren Prozessdatei |
+| `StartTime_t` | Die Startzeit des Prozesspools |
+| `FirstPid_d` | Die erste PID im Prozesspool |
+| `Description_s` | Die Beschreibung des Prozesses |
+| `CompanyName_s` | Der Name des Unternehmens |
+| `InternalName_s` | Der interne Name |
+| `ProductName_s` | Der Name des Produkts |
+| `ProductVersion_s` | Die Produktversion |
+| `FileVersion_s` | Die Dateiversion |
+| `CommandLine_s` | Die Befehlszeile |
+| `ExecutablePath _s` | Der Pfad zur ausführbaren Datei |
+| `WorkingDirectory_s` | Das Arbeitsverzeichnis |
+| `UserName` | Das Konto, unter dem der Prozess ausgeführt wird |
+| `UserDomain` | Die Domäne, unter der der Prozess ausgeführt wird |
 
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 
