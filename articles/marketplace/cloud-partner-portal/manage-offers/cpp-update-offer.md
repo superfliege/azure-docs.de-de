@@ -33,7 +33,7 @@ Es gibt verschiedene Arten von Aktualisierungen, die Sie auf Ihr Angebot anwende
 
 Das Portal verfügt auch über Features, die Ihnen bei der Verwaltung von Änderungen helfen, wie z. B. die Möglichkeit, Features zu vergleichen und einen Featureverlauf für ein Angebot anzuzeigen.  Nachdem Sie ein Angebot oder eine SKU geändert haben, muss es oder sie erneut veröffentlicht werden, bevor die Änderungen freigeschaltet werden.  In diesem Artikel werden die verschiedenen Aspekte zur Aktualisierung Ihres Marketplace-Angebots beleuchtet.
 
-## <a name="unpermitted-changes-to-an-offersku"></a>Nicht zugelassene Änderungen an Angeboten/-SKUs
+## <a name="unpermitted-changes-to-an-offersku"></a>Nicht zugelassene Änderungen an Angeboten/SKUs
 
 Einige Attribute von Angeboten oder SKUs können nicht geändert werden, nachdem das Angebot bzw. die SKU im Marketplace freigeschaltet wurde.  Die entsprechenden Felder sind auf der Registerkarte **Editor** des Portals deaktiviert, z. B.:  
 
@@ -76,7 +76,7 @@ Für AppSource-Angebote:
 
 1. Wählen Sie die Registerkarte **Storefrontdetails** aus.
 1. Klicken Sie neben der Bezeichnung **Unterstützte Länder/Regionen** auf **Unterstützte Länder/Regionen**. 
-1. Fügen Sie im Dialogfeld mit den unterstützten Länder/Regionen die Regionen für dieses Angebot hinzu, oder entfernen Sie sie.
+1. Fügen Sie im Dialogfeld mit den unterstützten Ländern/Regionen die Regionen für dieses Angebot hinzu, oder entfernen Sie sie.
 
 Für beide Marketplaces:
 

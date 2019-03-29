@@ -42,7 +42,7 @@ Auf der Markdown-Kachel können Sie eine beliebige Kombination von Nur-Text, Mar
 
 * JavaScript: `<script>`-Tags und JavaScript-Inline-Auswertungen werden entfernt.
 * iFrames: `<iframe>`-Tags werden entfernt.
-* style: `<style>`-Tags werden entfernt. Inlineformatvorlagenattribute in HTML-Elementen werden offiziell nicht unterstützt. Möglicherweise können Sie einige Inline-Formatvorlagenelemente verwenden, wenn diese jedoch das Layout des Portals beeinträchtigen, können sie jederzeit nicht mehr funktionieren. Die Markdown-Kachel ist für allgemeine statische Inhalte vorgesehen, für die die Standardformatvorlagen des Portals verwendet werden.
+* style: `<style>`-Tags werden entfernt. Attribute von Inlineformatvorlagen in HTML-Elementen werden offiziell nicht unterstützt. Möglicherweise können Sie einige Inlineelemente von Formatvorlagen verwenden, wenn diese jedoch das Layout des Portals beeinträchtigen, können sie jederzeit nicht mehr funktionieren. Die Markdown-Kachel ist für allgemeine statische Inhalte vorgesehen, für die die Standardformatvorlagen des Portals verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
