@@ -1,0 +1,96 @@
+items:
+- name: Azure Deutschland-Dokumentation
+  href: index.md
+- name: Übersicht
+  items:
+  - name: Was ist Azure Deutschland?
+    href: germany-welcome.md
+  - name: Das Microsoft Datentreuhänderprinzip
+    href: germany-overview-data-trustee.md
+- name: Erste Schritte
+  items:
+  - name: Entwicklerhandbuch
+    href: germany-developer-guide.md
+  - name: Anmelden beim Azure Deutschland-Portal
+    href: germany-get-started-connect-with-portal.md
+  - name: Herstellen einer Verbindung mithilfe von Azure PowerShell
+    href: germany-get-started-connect-with-ps.md
+  - name: Herstellen einer Verbindung mithilfe der Befehlszeilenschnittstelle
+    href: germany-get-started-connect-with-cli.md
+  - name: Einrichten von Visual Studio für Azure Deutschland
+    href: germany-get-started-connect-with-vs.md
+  - name: Bereitstellen einer Web-App
+    href: germany-howto-deploy-webandmobile.md
+  - name: Verfügbare Dienste
+    href: germany-services.md
+- name: Anleitung
+  items:
+  - name: Verwalten
+    items:
+    - name: Abonnement
+      href: germany-manage-subscriptions.md
+  - name: Migrieren
+    href: germany-migration-main.md
+    items:
+    - name: Compute
+      href: germany-migration-compute.md
+    - name: Netzwerk
+      href: germany-migration-networking.md
+    - name: Storage
+      href: germany-migration-storage.md
+    - name: Web
+      href: germany-migration-web.md
+    - name: Datenbanken
+      href: germany-migration-databases.md
+    - name: Analytics
+      href: germany-migration-analytics.md
+    - name: Internet der Dinge
+      href: germany-migration-iot.md
+    - name: Integration
+      href: germany-migration-integration.md
+    - name: Identity
+      href: germany-migration-identity.md
+    - name: Sicherheit
+      href: germany-migration-security.md
+    - name: Verwaltungstools
+      href: germany-migration-management-tools.md
+    - name: Medien
+      href: germany-migration-media.md
+- name: Verweis
+  items:
+  - name: Bilder
+    href: germany-image-gallery.md
+  - name: Dienste
+    items:
+    - name: Compute
+      href: germany-services-compute.md
+    - name: Storage
+      href: germany-services-storage.md
+    - name: Datenbank
+      href: germany-services-database.md
+    - name: Netzwerk
+      href: germany-services-networking.md
+    - name: Sicherheit und Identität
+      href: germany-services-securityandidentity.md
+    - name: Web und mobil
+      href: germany-services-webandmobile.md
+    - name: Internet der Dinge (IoT, Internet of Things)
+      href: germany-services-iot.md
+- name: Ressourcen
+  items:
+  - name: Azure Deutschland-Website
+    href: https://azure.microsoft.com/overview/clouds/germany/
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Blog
+    href: https://blogs.msdn.microsoft.com/azuregermany/
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/
+  - name: Testversion
+    href: https://azure.microsoft.com/free/germany
+ms.openlocfilehash: 548c2024c33a0f3deaeed838eef1eb2227dfa2fc
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340599"
