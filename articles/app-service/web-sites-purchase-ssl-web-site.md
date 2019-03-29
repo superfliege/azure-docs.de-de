@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie ein App Service-Zertifikat erwerben und es an
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: cfowler
+manager: jpconnoc
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446748"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216576"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
@@ -54,7 +54,7 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 | Abonnement | Das Rechenzentrum, in dem die Web-App gehostet wird. |
 | Ressourcengruppe | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
 | Zertifikat-SKU | Bestimmt den Typ des zu erstellenden Zertifikats, ganz gleich, ob es sich um ein Standardzertifikat oder ein [Platzhalterzertifikat](https://wikipedia.org/wiki/Wildcard_certificate) handelt. |
-| Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. |
+| Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. Die Zertifikate werden von GoDaddy abgerufen. |
 
 ## <a name="store-in-azure-key-vault"></a>Speichern in Azure Key Vault
 
@@ -121,28 +121,35 @@ Konfigurieren Sie mithilfe der folgende Tabelle die Bindung im Dialogfeld **SSL-
 
 Rufen Sie Ihre App über `HTTPS://<domain_name>` auf (anstelle von `HTTP://<domain_name>`), um zu überprüfen, ob das Zertifikat richtig konfiguriert wurde.
 
-## <a name="rekey-and-sync-certificate"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
+## <a name="rekey-certificate"></a>Neue Schlüssel für Zertifikat erstellen
 
-Wenn Sie einen Schlüssel für das Zertifikat neu erstellen müssen, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Neuen Schlüssel erstellen und synchronisieren**.
+Wenn Sie vermuten, das der private Schlüssel Ihres Zertifikats gefährdet ist, können Sie neue Schlüssel für das Zertifikat erstellen. Wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Neuen Schlüssel erstellen und synchronisieren**.
 
-Klicken Sie auf die Schaltfläche **Erneute Schlüsselerstellung**, um den Prozess zu starten. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen.
+Klicken Sie auf **Erneute Schlüsselerstellung**, um den Prozess zu starten. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen.
 
 ![Bild von erneuter Schlüsselerstellung für SSL einfügen](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierungsstelle ein neues Zertifikat ausgestellt.
 
+Wenn der Vorgang zur erneuten Schlüsselerstellung abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
+
+> [!NOTE]
+> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat innerhalb von 48 Stunden.
+
 ## <a name="renew-certificate"></a>Verlängern des Zertifikats
 
-Um zu einem beliebigen Zeitpunkt die automatische Verlängerung Ihres Zertifikats zu aktivieren, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**. 
+Um zu einem beliebigen Zeitpunkt die automatische Verlängerung Ihres Zertifikats zu aktivieren, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**.
 
 Klicken Sie nacheinander auf **Ein** und **Speichern**. Zertifikate können vor Ablauf automatisch um 60 Tage verlängert werden, wenn Sie die automatische Verlängerung aktiviert haben.
 
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+![Zertifikat automatisch verlängern](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
 Um das Zertifikat stattdessen manuell zu verlängern, klicken Sie auf **Manuelle Verlängerung**. Sie können anfordern, dass Ihr Zertifikat vor Ablauf manuell um 60 Tage verlängert wird.
 
+Wenn der Verlängerungsvorgang abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
+
 > [!NOTE]
-> Das verlängerte Zertifikat ist nicht automatisch an Ihre App gebunden, unabhängig davon, ob es manuell oder automatisch verlängert wurde. Informationen dazu, wie Sie es an Ihre App binden, finden Sie unter [Erneuern von Zertifikaten](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat innerhalb von 48 Stunden.
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

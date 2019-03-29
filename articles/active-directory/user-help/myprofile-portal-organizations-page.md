@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a8c4d4fe5476d00677c08bef9668066c4ec4f3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458297"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339741"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Verwalten von Organisationen im Portal „Mein Profil“ (Vorschauversion)
 Sie können Ihre Organisationen im Portal **Mein Profil** auf der Seite **Organisationen** verwalten.
@@ -35,7 +35,7 @@ Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
 
 2. Wählen Sie im linken Navigationsbereich **Organisationen** aus, oder wählen Sie im Block **Organisationen** den Link **Organisationen verwalten** aus.
 
-    ![Seite „Mein Profil“ mit hervorgehobenen Links für Organisationen](media/myprofile-portal/myprofile-portal-organizations-links.png)
+    ![Seite „Mein Profil“ mit hervorgehobenen Links für Organisationen](media/myprofile-portal/myprofile-portal-organizations.png)
 
 3. Überprüfen Sie die Informationen für Ihre **Eigene Organisation**. 
 
@@ -57,4 +57,4 @@ Mit Ausnahme Ihrer eigenen Organisation können Sie jederzeit alle Organisatione
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Nachdem Sie Ihre letzte Anmeldeaktivität angezeigt haben, können Sie wahlweise Ihre [Sicherheitsinformationen](user-help-security-info-overview.md), die [letzte Anmeldeaktivität](myprofile-portal-recent-activity-page.md) oder verbundene [Geräte](myprofile-portal-devices-page.md) anzeigen oder verwalten bzw. anzeigen, wie Ihre Organisation [Ihre Daten verwendet](myprofile-portal-privacy-page.md).
+- Nachdem Sie Ihre Organisationen angezeigt haben, können Sie wahlweise Ihre [Sicherheitsinformationen](user-help-security-info-overview.md) und verbundene [Geräte](myprofile-portal-devices-page.md) anzeigen oder verwalten oder aber anzeigen, wie Ihre Organisation [Ihre Daten verwendet](myprofile-portal-privacy-page.md).

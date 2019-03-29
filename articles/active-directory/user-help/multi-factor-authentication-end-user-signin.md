@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-Anmeldung mit zweistufiger Überprüfung | Microsoft-Dokumentation
+title: Azure MFA-Anmeldung mit zweistufiger Überprüfung – Azure Active Directory | Microsoft-Dokumentation
 description: Auf dieser Seite finden Sie eine Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind.
 keywords: Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon
 services: active-directory
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
+ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840873"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Der Anmeldevorgang mit Azure Multi-Factor Authentication
 > [!NOTE]
@@ -32,7 +33,7 @@ Ihr Anmeldevorgang hängt davon ab, was Sie als zweiten Faktor wählen: einen Te
 | --- |
 | [Mit einem Telefonanruf an mein Mobil- oder Bürotelefon](#signing-in-with-a-phone-call) |
 | [Mit einer Textnachricht an mein Mobiltelefon](#signing-in-with-a-text-message)
-| Mit Benachrichtigungen aus der Microsoft Authenticator-App |
+| [Mit Benachrichtigungen aus der Microsoft Authenticator-App](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
 | Mit Bestätigungscodes aus der Microsoft Authenticator-App |
 | [Mit einer alternativen Methode, da ich meine bevorzugte Methode derzeit nicht verwenden kann](#signing-in-with-an-alternate-method) |
 
@@ -57,7 +58,7 @@ Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für zwe
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 2. Microsoft sendet eine Benachrichtigung an die Microsoft Authenticator-App auf Ihrem Gerät.
 
-  ![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. Öffnen Sie die Benachrichtigung auf Ihrem Telefon, und wählen den Schlüssel **Überprüfen** aus. Wenn Ihr Unternehmen eine PIN anfordert, geben Sie sie hier ein.
 4. Sie sollten jetzt angemeldet sein.
@@ -69,7 +70,7 @@ Wenn Sie die Microsoft Authenticator-App zum Abrufen von Prüfcodes verwenden, w
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 2. Sie werden von Microsoft dazu aufgefordert, einen Bestätigungscode einzugeben.
 
-  ![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
 
@@ -80,12 +81,11 @@ Mitunter verfügen Sie nicht über das Telefon oder Gerät, das Sie als Ihre bev
 2. Wählen Sie **Andere Überprüfungsoption verwenden** aus. Es werden verschiedene Überprüfungsoptionen abhängig davon angezeigt, wie viele Sie eingerichtet haben.
 3. Wählen Sie eine alternative Methode aus, und melden Sie sich an.
 
-  ![Anwenden einer alternativen Methode](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![Anwenden einer alternativen Methode](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+- Wenn Sie Probleme bei der Anmeldung mit der zweistufigen Überprüfung haben, finden Sie unter [Probleme mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md) weitere Informationen.
 
-Wenn Sie Probleme bei der Anmeldung mit der zweistufigen Überprüfung haben, finden Sie unter [Probleme mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md) weitere Informationen.
+- Lesen Sie den Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
 
-Lesen Sie den Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
-
-In [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können.
+- In [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können.

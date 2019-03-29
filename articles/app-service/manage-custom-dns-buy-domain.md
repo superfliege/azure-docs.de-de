@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d47c560515a13efa8346974e828f14f9a15f0e4a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121535"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -102,7 +102,7 @@ Klicken Sie auf der Seite **Benutzerdefinierte Domänen** auf **Domäne erwerben
 ### <a name="configure-the-domain-purchase"></a>Konfigurieren des Domänenkaufs
 
 Tippen Sie den Domänennamen auf der Seite **App Service Domain** (App Service-Domäne) in das Suchfeld **Search for domain** (Domäne suchen) ein und drücken Sie `Enter`. Die vorgeschlagenen verfügbaren Domänen werden direkt unter dem Textfeld angezeigt. Klicken Sie mindestens eine Domäne an, die Sie kaufen möchten.
-   
+
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
@@ -111,22 +111,22 @@ Tippen Sie den Domänennamen auf der Seite **App Service Domain** (App Service-D
 >
 
 Klicken Sie auf **Kontaktinformationen**, und füllen Sie das Formular mit den Kontaktinformationen für die Domäne aus. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite „App Service-Domäne“ zurückzukehren.
-   
-Es ist wichtig, dass Sie alle erforderlichen Felder so genau wie möglich ausfüllen. Fehlerhafte Daten in den Kontaktinformationen können dazu führen, dass der Domänenkauf fehlschlägt. 
+
+Es ist wichtig, dass Sie alle erforderlichen Felder so genau wie möglich ausfüllen. Fehlerhafte Daten in den Kontaktinformationen können dazu führen, dass der Domänenkauf fehlschlägt.
 
 Wählen Sie als nächstes die gewünschten Optionen für Ihre Domäne aus. Die folgende Tabelle enthält einige Erläuterungen:
 
 | Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |-|-|-|
 |Datenschutz | Aktivieren | Abonnieren Sie „Datenschutz“. Diese Option ist _kostenlos_ im Kaufpreis enthalten. Manche Domänen der obersten Ebene werden von Registrierungsstellen verwaltet, die den Datenschutz nicht unterstützen. Sie sind auf der Seite **Datenschutz** aufgeführt. |
-| Zuweisen von Standardhostnamen | **www** und **@** | Wählen Sie bei Bedarf die gewünschten Hostnamenbindungen. Wenn der Vorgang des Domänenkaufs abgeschlossen ist, kann auf Ihre App über die ausgewählten Hostnamen zugegriffen werden. Wenn Ihre App sich hinter dem [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) befindet, wird Ihnen die Option nicht angezeigt, durch die die Stammdomäne (@) zugewiesen werden kann, da der Traffic Manager keine A-Datensätze unterstützt. Sie können Änderungen an den Zuweisungen der Hostnamen vornehmen, nachdem der Domänenkauf abgeschlossen ist. |
+| Zuweisen von Standardhostnamen | **www** und **\@** | Wählen Sie bei Bedarf die gewünschten Hostnamenbindungen. Wenn der Vorgang des Domänenkaufs abgeschlossen ist, kann auf Ihre App über die ausgewählten Hostnamen zugegriffen werden. Wenn Ihre App sich hinter dem [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) befindet, wird Ihnen die Option nicht angezeigt, durch die die Stammdomäne (@) zugewiesen werden kann, da der Traffic Manager keine A-Datensätze unterstützt. Sie können Änderungen an den Zuweisungen der Hostnamen vornehmen, nachdem der Domänenkauf abgeschlossen ist. |
 
 ### <a name="accept-terms-and-purchase"></a>Akzeptieren der Bedingungen und Erwerben
 
 Klicken Sie auf **Legal Terms** (Rechtliche Bedingungen), um die Bedingungen und die Gebühren anzuzeigen, und klicken Sie dann auf **Buy** (Kaufen).
 
 > [!NOTE]
-> App Service-Domänen verwenden Azure DNS, um Domänen zu hosten. Zusätzlich zu den Gebühren für die Domänenregistrierung fallen Nutzungsgebühren für Azure DNS an. Informationen finden Sie unter [Azure DNS Pricing (Azure DNS-Preisübersicht)](https://azure.microsoft.com/pricing/details/dns/).
+> App Service-Domänen verwenden GoDaddy zur Domänenregistrierung und Azure DNS zum Hosten der Domänen. Zusätzlich zu den Gebühren für die Domänenregistrierung fallen Nutzungsgebühren für Azure DNS an. Informationen finden Sie unter [Azure DNS Pricing (Azure DNS-Preisübersicht)](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
@@ -146,7 +146,7 @@ Auf der Seite **Benutzerdefinierte Domänen** werden Ihnen die ausgewählten Hos
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-Um den Hostnamen zu testen, navigieren Sie zu den aufgelisteten Hostnamen im Browser. Versuchen Sie wie im Beispiel im obigen Screenshot, zu den Seiten _kontoso.net_ und _www.kontoso.net_ zu navigieren.
+Um den Hostnamen zu testen, navigieren Sie zu den aufgelisteten Hostnamen im Browser. Versuchen Sie wie im Beispiel im vorstehenden Screenshot, zu den Seiten _kontoso.net_ und _www\.kontoso.net_ zu navigieren.
 
 ## <a name="assign-hostnames-to-app"></a>Zuweisen von Hostnamen zur App
 
@@ -177,7 +177,7 @@ Wählen Sie **Hostnamen hinzufügen**.
 Tippen Sie im Dialogfeld**Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel: 
 
 - kontoso.net
-- www.kontoso.net
+- www\.kontoso.net
 - abc.kontoso.net
 
 Klicken Sie anschließend auf **Validate** (Überprüfen). Der Datensatztyp für Ihren Hostnamen wird automatisch für Sie ausgewählt.

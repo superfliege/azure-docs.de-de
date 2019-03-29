@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414743"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877869"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -26,15 +26,17 @@ Beim Hochladen von Videos mit der Video Indexer-API haben Sie die folgenden Opti
 
 In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Videos ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) verwenden, um Ihre Videos über eine URL hochzuladen und zu indizieren. Das Codebeispiel in diesem Artikel schließt den auskommentierten Code ein, der zeigt, wie Sie das Bytearray hochladen. <br/>Außerdem werden in diesem Artikel einige Parameter beschrieben, die Sie für die API festlegen können, um den Prozess und die Ausgabe der API zu ändern.
 
-Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden](connect-to-azure.md) ist. Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
 
 ## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
 
 - Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
-- Die Uploadgröße mit der URL-Option ist auf 25 GB begrenzt.
+- Die Uploadgröße mit der URL-Option ist auf 30 GB begrenzt.
+- In den meisten Browsern ist die URL-Länge auf 2.000 Zeichen begrenzt.
 - Die Uploadgröße mit der Bytearray-Option ist auf 2 GB begrenzt.
 - Die Bytearray-Option umfasst ein Timeout nach 30 Minuten.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
+- Bei der Indizierung von Media Services-Medienobjekten gibt es die gleiche Begrenzung wie bei der Indizierung aus einer URL.
 
 > [!Tip]
 > Es wird empfohlen, .NET Framework-Version 4.6.2 oder höher zu verwenden, da für frühere .NET Frameworks nicht standardmäßig TLS 1.2 genutzt wird.
@@ -62,16 +64,16 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
         |state|Videozustand|  
     - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Im Video identifizierte Person:
-    - Eigenschaften
+  - Eigenschaften
     
-        |NAME|BESCHREIBUNG|
-        |---|---|
-        |id| Die Video-ID|
-        |faceId|Die Gesichts-ID, die im Videoindex angezeigt wird|
-        |knownPersonId|Die Personen-ID, die innerhalb eines Gesichtsmodells eindeutig ist|
-        |personName|Der Name der Person|
+      |NAME|BESCHREIBUNG|
+      |---|---|
+      |id| Die Video-ID|
+      |faceId|Die Gesichts-ID, die im Videoindex angezeigt wird|
+      |knownPersonId|Die Personen-ID, die innerhalb eines Gesichtsmodells eindeutig ist|
+      |personName|Der Name der Person|
         
-     - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Notizen
 

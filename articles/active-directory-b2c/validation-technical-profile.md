@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3172354752e2c6a1a7368b297e3cc6e763cd2fcb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900572"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ReferenceId | JA | Ein Bezeichner eines technischen Profils, das bereits in der Richtlinie oder der übergeordneten Richtlinie definiert ist. |
+| ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtlinie oder der übergeordneten Richtlinie definiert ist. |
 |ContinueOnError|Nein | Zeigt an, ob die Validierung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst. Mögliche Werte: `true` oder `false` (Standard, die Verarbeitung weiterer Validierungsprofile wird beendet und ein Fehler zurückgegeben). |
 |ContinueOnSuccess | Nein  | Zeigt an, ob die Validierung jeglicher nachfolgender Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil erfolgreich ist. Mögliche Werte: `true` oder `false`. Der Standardwert ist `true`, was bedeutet, dass die Verarbeitung weiterer Validierungsprofile fortgesetzt wird. |
 
@@ -65,8 +65,8 @@ Das **Precondition**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Type | JA | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
-| ExecuteActionsIf | JA | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |
+| Type | Ja | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
+| ExecuteActionsIf | Ja | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |
 
 Das **Precondition**-Element enthält die folgenden Elemente:
 

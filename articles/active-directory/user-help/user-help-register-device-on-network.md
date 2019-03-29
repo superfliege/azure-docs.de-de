@@ -1,5 +1,5 @@
 ---
-title: Registrieren Ihres persönlichen Geräts in Ihrem Organisationsnetzwerk – Azure Active Directory | Microsoft-Dokumentation
+title: Registrieren von persönlichen Geräten in einem Organisationsnetzwerk – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihr persönliches Gerät im Netzwerk Ihrer Organisation registrieren, sodass Sie auf die geschützten Ressourcen Ihrer Organisation zugreifen können.
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cae464531dee86f7a4c9ec2396b90787825ec2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172296"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439739"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation
 Registrieren Sie Ihr persönliches Gerät (in der Regel ein Smartphone oder Tablet) im Netzwerk Ihrer Organisation. Nachdem Ihr Gerät registriert wurde, können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen.

@@ -9,19 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/27/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 52e7fdf6de25300d4f78ee9822aca4ad83f646e9
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408424"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243618"
 ---
 # <a name="encoding-with-media-services"></a>Codierung mit Media Services
 
-Azure Media Services ermöglicht das Codieren Ihrer hochwertigen digitalen Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. In diesem Thema erhalten Sie Anleitungen zum Codieren Ihrer Inhalte mit Media Services v3.
+Azure Media Services ermöglicht das Codieren Ihrer hochwertigen digitalen Mediendateien in MP4-Dateien mit adaptiven Bitraten, sodass Ihre Inhalte mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. Durch einen erfolgreichen Media Services-Codierungsauftrag wird ein Ausgabemedienobjekt mit einer Gruppe von MP4-Dateien mit adaptiven Bitraten und Streaming-Konfigurationsdateien erstellt. Die Konfigurationsdateien enthalten ISM-, ISMC-, MPI- und andere Dateien, die Sie nicht ändern sollten. Sobald der Codierungsauftrag abgeschlossen ist, können Sie von [dynamischer Paketerstellung](dynamic-packaging-overview.md) profitieren und mit dem Streaming beginnen.
+
+Um Videos im Ausgabemedienobjekt für die Wiedergabe durch Kunden verfügbar zu machen, müssen Sie einen **Streaminglocator** und Streaming-URLs erstellen. Basierend auf dem im Manifest angegebenen Format, empfangen Ihre Kunden dann den Stream im ausgewählten Protokoll.
+
+Das nachstehende Diagramm zeigt das On-Demand-Streaming mit dem Workflow zur dynamischen Paketerstellung.
+
+![Dynamische Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+
+In diesem Thema erhalten Sie Anleitungen zum Codieren Ihrer Inhalte mit Media Services v3.
+
+## <a name="transforms-and-jobs"></a>Transformationen und Aufträge
 
 Um mit Media Services v3 codieren zu können, müssen Sie eine [Transformation](https://docs.microsoft.com/rest/api/media/transforms) und einen [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) erstellen. Eine Transformation definiert die Anweisung für die Codierungseinstellungen und -ausgaben, der Auftrag ist eine Instanz der Anweisung. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
 
@@ -60,9 +70,11 @@ Media Services unterstützt die vollständige Anpassung aller Werte in Voreinste
 
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 
-Derzeit müssen Kunden zum Festlegen von RUs das Azure-Portal oder APIs von Media Services v2 verwenden (wie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md) beschrieben). 
+Informationen zum Skalieren der Medienverarbeitung finden Sie unter [Skalieren mit CLI](media-reserved-units-cli-how-to.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Transformationen und Aufträge](transforms-jobs-concept.md)
+* [Codieren aus einer HTTPS-URL mithilfe von integrierten Voreinstellungen](job-input-from-http-how-to.md)
+* [Codieren einer lokalen Datei mithilfe von integrierten Voreinstellungen](job-input-from-local-file-how-to.md)
+* [Entwickeln einer benutzerdefinierten Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen](customize-encoder-presets-how-to.md)
 * [Hochladen, Codieren und Streamen mit Media Services](stream-files-tutorial-with-api.md)

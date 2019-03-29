@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877325"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Erstellen des Dynamics 365 for Operations-Angebots über das Cloudpartnerportal
 
@@ -31,7 +31,7 @@ Bevor ein Angebot im Auftrag eines Herausgeberkontos veröffentlicht werden kann
 
 Wenn alle Voraussetzungen erfüllt sind, können Sie mit der Erstellung Ihres Angebots für Dynamics 365 for Operations beginnen.
 
-1. Melden Sie sich beim [Cloudpartnerportal](http://cloudpartner.azure.com/) an.
+1. Melden Sie sich beim [Cloudpartnerportal](https://cloudpartner.azure.com/) an.
 2. Klicken Sie in der Navigationsleiste links auf \"+ Neues Angebot\", und wählen Sie \"Dynamics 365 for Operations\" aus.
 3. Eine neue \"Editor\"-Ansicht für Angebote wird geöffnet, und Sie können nun mit der Erstellung beginnen.
 4. Die \"Formulare\", die ausgefüllt werden müssen, werden in der \"Editor\"-Ansicht auf der linken Seite angezeigt. Jedes \"Formular\" besteht aus einer Reihe von Feldern, die ausgefüllt werden müssen. Erforderliche Felder sind mit einem roten Sternchen gekennzeichnet (\*).
@@ -51,7 +51,7 @@ Das Formular für die Angebotseinstellungen ist ein grundlegendes Formular, in d
 
 Dies ist ein eindeutiger Bezeichner für das Angebot innerhalb eines Herausgeberprofils. Diese ID wird in den Produkt-URLs angezeigt. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Bindestrich enden und darf höchstens 50 Zeichen umfassen. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
 
-Beispiel: Wenn der Herausgeber „Contoso“ ein Angebot mit der Angebots-ID *sample-dynamics365 for operations* erstellt, wird es in AppSource als \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics 365 for operations*?tab=Overview\" angezeigt.
+Wenn z. B. der Herausgeber „Contoso“ ein Angebot mit der Angebots-ID *sample-dynamics365 for operations* veröffentlicht, wird diese in AppSource als `https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics365 for operations*?tab=Overview\` angezeigt.
 
 ### <a name="publisher-id"></a>Herausgeber-ID
 
@@ -138,7 +138,7 @@ Die Support-URL wird im Portal nur für Ihre Benutzer angezeigt.
 
 ### <a name="leads-management"></a>Leadsverwaltung
 
-Wählen Sie ein CRM-System aus, in dem Ihr Lead gespeichert wird. Wählen Sie hier \"Azure-Tabelle\" aus, wenn Sie eines der folgenden CRM-Systeme verwenden: Salesforce, Marketo, Microsoft Dynamics CRM. Das hier von Ihnen ausgewählte CRM-System ist der Ort, an den wir Details zu den Endbenutzern schreiben, die Ihre App in AppSource testen (Leads). In Abhängigkeit von dem von Ihnen ausgewählten CRM-System klicken Sie unten auf die entsprechende URL, um Informationen darüber zu erhalten, wie Sie den nächsten Satz von Feldern ausfüllen können.
+Wählen Sie ein CRM-System aus, in dem Ihr Lead gespeichert wird. Wählen Sie hier \"Azure-Tabelle\" aus, wenn Sie eines der folgenden CRM-Systeme haben: Salesforce, Marketo, Microsoft Dynamics CRM. Das hier von Ihnen ausgewählte CRM-System ist der Ort, an den wir Details zu den Endbenutzern schreiben, die Ihre App in AppSource testen (Leads). In Abhängigkeit von dem von Ihnen ausgewählten CRM-System klicken Sie unten auf die entsprechende URL, um Informationen darüber zu erhalten, wie Sie den nächsten Satz von Feldern ausfüllen können.
 
 ![Details zur Leadverwaltung](./media/publish_d365_new_offer/leads.png)
 

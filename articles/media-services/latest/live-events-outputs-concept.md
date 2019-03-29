@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189358"
 ---
 # <a name="live-events-and-live-outputs"></a>Liveereignisse und Liveausgaben
 
@@ -42,7 +42,7 @@ Für ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) is
 
 ### <a name="pass-through"></a>Pass-Through
 
-![Pass-Through](./media/live-streaming/pass-through.png)
+![Pass-Through](./media/live-streaming/pass-through.svg)
 
 Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie sich auf Ihren lokalen Liveencoder, um einen Videostream mit mehreren Bitraten zu erzeugen und als Beitragsfeed an das Liveereignis zu senden (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Bearbeitung weiter. Ein LiveEvent vom Typ „Pass-Through“ ist für Liveereignisse mit langer Laufzeit oder für ein lineares 24x365-Livestreaming optimiert. Geben Sie beim Erstellen dieses Liveereignistyps „None“ (LiveEventEncodingType.None) an.
 
@@ -56,11 +56,16 @@ Ein .NET-Codebeispiel finden Sie in [MediaV3LiveApp](https://github.com/Azure-Sa
 
 ### <a name="live-encoding"></a>Live Encoding  
 
-![Livecodierung](./media/live-streaming/live-encoding.png)
+![Livecodierung](./media/live-streaming/live-encoding.svg)
 
 Wenn Sie die Livecodierung mit Media Services verwenden, konfigurieren Sie Ihren lokalen Liveencoder so, dass er ein Video mit einer einzelnen Bitrate als Beitragsfeed an das Liveereignis sendet (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis codiert diesen eingehenden Stream mit einer einzelnen Bitrate in einen [Videostream mit mehreren Bitraten](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) und stellt ihn über Protokolle wie MPEG-DASH, HLS und Smooth Streaming für Wiedergabegeräte zur Verfügung. Geben Sie beim Erstellen dieses Liveereignistyps den Codierungstyp **Standard** (LiveEventEncodingType.Standard) an.
 
 Sie können den Beitragsfeed mit einer Auflösung von bis zu 1080p und einer Bildrate von 30 Bildern/Sekunde senden, mit den H.264/AVC- oder H.265/HEVC-Videocodecs und dem AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2). Weitere Informationen finden Sie im Artikel [Vergleich von Liveereignistypen](live-event-types-comparison.md).
+
+Bei Verwendung der Livecodierung (Einstellung **Standard** für Liveereignis) wird mit der Codierungsvoreinstellung definiert, wie der eingehende Datenstrom in mehrere Bitraten oder Ebenen codiert wird. Weitere Informationen finden Sie auf der Seite mit den [Systemvoreinstellungen](live-event-types-comparison.md#system-presets).
+
+> [!NOTE]
+> Derzeit lautet der einzige zulässige Voreinstellungswert für den Standardtyp von Liveereignissen *Default720p*. Wenden Sie sich an amshelp@microsoft.com, falls Sie eine benutzerdefinierte Voreinstellung für die Livecodierung verwenden müssen. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind.
 
 ## <a name="live-event-creation-options"></a>Erstellungsoptionen für Liveereignisse
 
@@ -145,5 +150,4 @@ Weitere Informationen finden Sie unter [Verwenden eines Cloud-DVR](live-event-cl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Streamen von Liveveranstaltungen](live-streaming-overview.md)
-- [Tutorial zu Livestreaming](stream-live-tutorial-with-api.md)
+[Tutorial zu Livestreaming](stream-live-tutorial-with-api.md)

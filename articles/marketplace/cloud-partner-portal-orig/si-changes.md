@@ -12,24 +12,36 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 3/3/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ec3784a91f8aeb7f0fedd13c9ab86a844832a578
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7df96d53b02e80283f263901dc7e26ed4edb947d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806035"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342376"
 ---
-<a name="seller-insights-release-notes"></a>Verkäufer-Insights – Anmerkungen zu dieser Version 
-===============================
-(Veröffentlichungsdatum: 28. Juli 2018)
+# <a name="seller-insights-release-notes"></a>Verkäufer-Insights – Anmerkungen zu dieser Version 
+
+(Veröffentlichungsdatum: 1. März 2019)
 
 Dieser Artikel enthält Informationen zu Änderungen am Feature für Verkäufer-Insights im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights).
 
+## <a name="release-highlights-for-march-1-2019"></a>Highlights der Version für 1. März 2019
 
-<a name="release-highlights"></a>Highlights der Version
-------------------
+* *Kundentrend* wurde zu „Zusammenfassung“ hinzugefügt.
+* *Top 5-Kunden* unter „Zusammenfassung“ zeigt alle Azure-Abonnements eines Kunden.
+* *Normalisierter Nutzungstrend und Trend bei aktiven Aufträgen* unter „Zusammenfassung“ wurde unter *Monatliche Aufträge auf einen Blick* verschoben.
+* *Auszahlung „Abstimmungsbericht“* wurde aktualisiert.
+* *Top 5-Kunden* unter „Auszahlung“ zeigt alle Azure-Abonnements eines Kunden.
+* *Nutzungsbericht* wurde mit „Kunden-ID“ aktualisiert.
+* *Kundenbesitz* unter „Aufträge und Nutzung“ zeigt alle Azure-Abonnements eines Kunden.
+
+
+(Veröffentlichungsdatum: 28. Juli 2018)
+
+## <a name="release-highlights-for-july-28-2018"></a>Highlights der Version für 28. Juli 2018
+
 
 -   *Geschätzte Preise* bieten einen Überblick über die Kundengebühren mit Auswirkungen auf die Wechselkurse.
 -   *Vorhergesagte Auszahlungen* bieten einen vorgezogenen Überblick über potenzielle Auszahlungen.
@@ -37,8 +49,7 @@ Dieser Artikel enthält Informationen zu Änderungen am Feature für Verkäufer-
 -   *Nutzung nach täglicher Struktur* bietet mehr Granularität und bessere Einblicke in die Nutzung der Kunden.
 
 
-<a name="changes-to-data-structure-and-taxonomy"></a>Änderungen an Datenstruktur und Taxonomie
---------------------------------------
+### <a name="changes-to-data-structure-and-taxonomy"></a>Änderungen an Datenstruktur und Taxonomie
 
 Die folgende Tabelle listet die Metriken auf, die mit dieser Version hinzugefügt oder wesentlich geändert wurden. 
 

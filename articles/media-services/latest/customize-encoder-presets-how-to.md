@@ -1,6 +1,6 @@
 ---
-title: Codieren der benutzerdefinierten Transformation mit Media Services, Version 3 – Azure | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie mit Azure Media Services v3 eine benutzerdefinierte Transformation codiert wird.
+title: Codieren der benutzerdefinierten Transformation mit Media Services v3 .NET – Azure | Microsoft-Dokumentation
+description: In diesem Thema wird gezeigt, wie mit Azure Media Services v3 eine benutzerdefinierte Transformation mithilfe von .NET codiert wird.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,21 +10,29 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/08/2018
+ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: c62d9132cdd7eb2ebcbecc3c417ad30d368a278a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 848da2996b71b137c6112225c9bef7e93b457c7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837234"
 ---
-# <a name="how-to-encode-with-a-custom-transform"></a>Codieren einer benutzerdefinierten Transformation
+# <a name="how-to-encode-with-a-custom-transform-by-using-net"></a>Codieren einer benutzerdefinierten Transformation mithilfe von .NET
 
-Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen basierend auf in der Branche bewährten Vorgehensweisen schnell einsteigen, wie im Tutorial [Hochladen, Codieren und Streamen von Videos mit APIs](stream-files-tutorial-with-api.md) gezeigt, oder Sie können eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln. 
+Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen, basierend auf in der Branche bewährten Vorgehensweisen, schnell einsteigen, wie im Tutorial [Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md) gezeigt. Sie können auch eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln.
 
-> [!Note]
-> In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies ist anders als bei den Voreinstellungen von REST v2 Media Encoder Standard. Beispielsweise würde die Bitrate in V2 mit 128, in V3 jedoch mit 128.000 angegeben.
+## <a name="considerations"></a>Überlegungen
+
+Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Überlegungen:
+
+* Alle Werte für Höhe und Breite in AVC-Inhalt müssen ein Vielfaches von 4 sein.
+* In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen bei unseren v2-APIs. Dort wurden Kilobits pro Sekunde (KBit/s) als Einheit verwendet. Wenn beispielsweise die Bitrate in v2 als 128 (Kilobits/Sekunde) angegeben wurde, würde sie in v3 auf 128.000 (Bits/Sekunde) festgelegt.
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+[Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) <br/>Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -38,9 +46,13 @@ Das benutzerdefinierte voreingestellte Beispiel befindet sich im Ordner [EncodeC
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Erstellen einer Transformation mit einer benutzerdefinierten Voreinstellung 
 
-Beim Erstellen einer neuen [Transformation](https://docs.microsoft.com/rest/api/media/transforms) müssen Sie angeben, was als Ausgabe generiert werden soll. Der erforderliche Parameter ist ein **TransformOutput**-Objekt, wie im folgenden Code gezeigt. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt die schrittweisen Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. Das folgende **TransformOutput**-Objekt erstellt benutzerdefinierte Codec- und Layerausgabeeinstellungen.
+Beim Erstellen einer neuen [Transformation](https://docs.microsoft.com/rest/api/media/transforms) müssen Sie angeben, was als Ausgabe generiert werden soll. Der erforderliche Parameter ist ein [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput)-Objekt, wie im folgenden Code gezeigt. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt die schrittweisen Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. Das folgende **TransformOutput**-Objekt erstellt benutzerdefinierte Codec- und Layerausgabeeinstellungen.
 
-Beim Erstellen einer [Transformation](https://docs.microsoft.com/rest/api/media/transforms) sollten Sie zunächst mit der **Get**-Methode überprüfen, ob eine solche bereits vorhanden ist. Der folgende Code zeigt dies.  In Media Services v3 geben **Get**-Methoden für Entitäten **NULL** zurück, wenn die Entität nicht vorhanden ist (eine Überprüfung des Namens ohne Unterscheidung zwischen Groß-/Kleinschreibung).
+Beim Erstellen einer [Transformation](https://docs.microsoft.com/rest/api/media/transforms) sollten Sie zunächst mit der **Get**-Methode überprüfen, ob eine solche bereits vorhanden ist. Der folgende Code zeigt dies. In Media Services v3 geben **Get**-Methoden für Entitäten **NULL** zurück, wenn die Entität nicht vorhanden ist (eine Überprüfung des Namens ohne Unterscheidung zwischen Groß-/Kleinschreibung).
+
+### <a name="example"></a>Beispiel
+
+Im folgenden Beispiel wird ein Satz von Ausgaben definiert, der bei Verwendung dieser Transformation generiert werden soll. Zuerst fügen wir eine AacAudio-Ebene für die Audiocodierung und zwei H264Video-Ebenen für die Videocodierung hinzu. In den Videoebenen weisen wir Bezeichnungen zu, damit sie in den Ausgabedateinamen verwendet werden können. Als Nächstes soll die Ausgabe auch Miniaturansichten enthalten. Im Beispiel unten geben wir Bilder im PNG-Format, die mit 50% der Auflösung vom Videoeingang generiert wurden, und mit drei Zeitstempeln an – {25%, 50%, 75} der Länge des Videoeingangs. Schließlich geben wir das Format für die Ausgabedateien an – eine für Video+Audio und eine andere für die Miniaturansichten. Weil wir mehrere H264-Ebenen haben, müssen wir Makros verwenden, die eindeutige Namen pro Ebene generieren. Wir können entweder eine `{Label}` oder eine `{Bitrate}` verwenden; im Beispiel wird erstere verwendet.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 56d0b8ced4a0eed3c2bf215ed0e5fc77c343f7fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968372"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728640"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -32,6 +32,8 @@ Diese Anleitung zeigt die Authentifizierung von Anforderungen von Azure Resource
 > Der Vorgang zum Sichern und Wiederherstellen einer API Management-Dienstinstanz für die Notfallwiederherstellung kann auch zum Replizieren von API Management-Dienstinstanzen für Szenarios wie z. B. das Staging verwendet werden.
 >
 > Jede Sicherung läuft nach 30 Tagen ab. Wenn Sie versuchen, eine Sicherung nach dem Ablaufzeitraum von 30 Tagen wiederherzustellen, erhalten Sie die Fehlermeldung `Cannot restore: backup expired`.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -207,7 +209,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle *Backup-AzureRmApiManagement* bzw. *Restore-AzureRmApiManagement* ausgeführt werden.
+> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle *Backup-AzApiManagement* bzw. *Restore-AzApiManagement* ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

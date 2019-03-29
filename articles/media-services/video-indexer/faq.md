@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892658"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -100,7 +100,7 @@ Auf Ihre Video- oder Audioinhalte mit der Datenschutzeinstellung „Öffentlich�
 
 ### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Welchen Zugriff hat Microsoft auf meine Video- und Audiodateien, die von Video Indexer indiziert und/oder gespeichert wurden, sowie auf die extrahierten Metadaten und Erkenntnisse?
 
-Den [Azure Online Services-Nutzungsbedingungen](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) entsprechend sind Sie Eigentümer Ihrer Inhalte, und Microsoft greift nur gemäß den OST und der Microsoft-Datenschutzerklärung auf Ihre Inhalte sowie auf die von Video Indexer daraus extrahierten Metadaten und Erkenntnisse zu.
+Den [Azure Online Services-Nutzungsbedingungen](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) entsprechend sind Sie Eigentümer Ihrer Inhalte, und Microsoft greift nur gemäß den OST und der Microsoft-Datenschutzerklärung auf Ihre Inhalte sowie auf die von Video Indexer daraus extrahierten Metadaten und Erkenntnisse zu.
 
 ### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Stehen die benutzerdefinierten Modelle, die ich in meinem Video Indexer-Konto erstelle, für andere Konten zur Verfügung?
 
@@ -158,6 +158,10 @@ Zugriffstoken laufen nach einer Stunde ab. Daher müssen Sie einmal pro Stunde e
 
 Für Video Indexer gilt ein einfaches nutzungsbasiertes Bezahlungsmodell, das auf der Dauer des eingegebenen Inhalts beruht, den Sie indizieren. Zusätzliche Gebühren können für Codierung, Streaming, Speicher, Netzwerknutzung und reservierte Einheiten für Medien anfallen. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/).
 
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Wann wird mir die Nutzung von Video Indexer in Rechnung gestellt?
+
+Beim Senden eines Videos, das indiziert werden soll, definiert der Benutzer die gewünschte Indizierung als Videoanalyse, als Audioanalyse oder beides. Dadurch wird bestimmt, welche SKUs in Rechnung gestellt werden. Wenn während der Verarbeitung ein schwerwiegender Fehler auftritt, wird als Antwort darauf ein Fehlercode zurückgegeben. In solch einem Fall erfolgt keine Abrechnung.  Ein schwerwiegender Fehler kann durch einen Fehler in unserem Code oder durch einen kritischen Fehler in einer internen Abhängigkeit des Diensts verursacht werden. Fehler wie falsche Identifizierung oder Erkenntnisextraktion gelten nicht als schwerwiegend, und es wird eine Antwort zurückgegeben. In jedem Fall, in dem eine gültige Antwort (ohne Fehlercode) zurückgegeben wird, erfolgt eine Abrechnung.
+ 
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Bietet Video Indexer eine kostenlose Testversion an?
 
 Ja, Video Indexer stellt eine kostenlose Testversion bereit, die einen vollständigen Dienst sowie Zugriff auf alle API-Funktionen umfasst. Das Kontingent für Benutzer der webbasierten Oberfläche beträgt 600 Minuten, das für API-Benutzer beträgt 2.400 Minuten. 

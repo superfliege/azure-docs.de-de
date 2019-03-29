@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001169"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749918"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -47,8 +47,7 @@ Die folgende Tabelle beschreibt die Unterschiede zwischen *fortlaufenden* und *a
 | Werden in allen Instanzen ausgeführt, in denen die Web-App ausgeführt wird. Sie können den WebJob wahlweise auf eine einzelne Instanz beschränken. |Werden in einer einzelnen Instanz ausgeführt, die Azure zum Lastenausgleich auswählt.|
 | Unterstützen Remotedebuggen. | Bieten keine Unterstützung für Remotedebuggen.|
 
-> [!NOTE]
-> Nach 20 Minuten Inaktivität kann bei einer Web-App ein Timeout auftreten. Der Zeitgeber wird nur durch Anforderungen an die eigentliche Web-App zurückgesetzt. Das Anzeigen der Konfiguration der App im Azure-Portal oder das Senden von Anforderungen an die Website mit erweiterten Tools (https://<app_name>.scm.azurewebsites.net) führt nicht zum Zurücksetzen des Zeitgebers. Wenn Ihre App fortlaufende oder geplante WebJobs ausführt, aktivieren Sie **Always On**, um sicherzustellen, dass die WebJobs zuverlässig ausgeführt werden. Dieses Feature steht nur in den [Tarifen](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) „Basic“, „Standard“ und „Premium“ zur Verfügung.
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ## <a name="acceptablefiles"></a>Unterstützte Dateitypen für Skripts oder Programme
 
@@ -181,10 +180,9 @@ Sie können einen [CRON-Ausdruck](../azure-functions/functions-bindings-timer.md
 {
     "schedule": "0 */15 * * * *"
 }
-``` 
+```
 
-> [!NOTE]
-> Wenn Sie einen WebJob aus Visual Studio bereitstellen, wählen Sie für die Eigenschaften der Datei `settings.job` die Option **Kopieren, wenn neuer** aus.
+Weitere Informationen finden Sie unter [Planen eines ausgelösten WebJobs](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
 
 ## <a name="ViewJobHistory"></a> Anzeigen des Auftragsverlaufs
 

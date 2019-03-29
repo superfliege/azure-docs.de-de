@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9530d35bbaf608ae25e2a753685ee90e9e13501
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181421"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823296"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -42,7 +42,7 @@ Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungss
 ## <a name="add-slot"></a>Hinzufügen eines Slots
 Die App muss im Tarif **Standard**, **Premium** oder **I*** ausgeführt werden, um mehrere Bereitstellungsslots aktivieren zu können.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) die Seite [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
 
 2. Wählen Sie im linken Navigationsbereich die Option **Bereitstellungsslots (Vorschau)** aus, und klicken Sie anschließend auf **Slot hinzufügen**.
    
@@ -205,7 +205,9 @@ Bei Verwendung des Features [Automatisch tauschen](#Auto-Swap) müssen für eini
         </applicationInitialization>
     </system.webServer>
 
-Sie können das Aufwärmverhalten ferner mit einer oder mehrerer der folgenden [App-Einstellungen](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md) anpassen:
+Weitere Informationen zum Anpassen des `applicationInitialization`-Elements finden Sie unter [Häufigste Bereitstellungsfehler beim Slotaustausch und Vorgehensweise zu deren Behebung](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+
+Sie können das Aufwärmverhalten ferner mit einer oder mehrerer der folgenden [App-Einstellungen](web-sites-configure.md) anpassen:
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Der Pfad zum Senden eines Pings zum Aufwärmen Ihrer Website. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. Beispiel: `/statuscheck`. Standardwert: `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Wenn der zurückgegebene Statuscode nicht in der Liste enthalten ist, werden die Aufwärm- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.

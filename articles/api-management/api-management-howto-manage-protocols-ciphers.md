@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: a55d16a35b5eec1af2b24d02e158905493615999
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 91b6cd64a42319b2a5307919c2efe6bc8e5dcd64
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441111"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983199"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Verwalten von Protokollen und Verschlüsselungen in Azure API Management
 
@@ -39,11 +39,9 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 ## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>Verwalten von TLS-Protokollen und 3DES-Verschlüsselungen
 
 1. Navigieren Sie im Azure-Portal zu Ihrer **API Management-Instanz**.
-2. Wählen Sie im Menü die Option **SSL** aus.  
-    ![Verwalten von Protokollen und Verschlüsselungen in API Management – Menü](./media/api-management-howto-manage-protocols-ciphers/api-management-menu.png)
+2. Wählen Sie im Menü **Protokolleinstellungen** aus.  
 3. Aktivieren bzw. deaktivieren Sie die gewünschten Protokolle oder Verschlüsselungen.
 4. Klicken Sie auf **Speichern**. Die Änderungen werden innerhalb einer Stunde angewendet.  
-    ![Verwalten von Protokollen und Verschlüsselungen in API Management – Speichern](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers-save.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

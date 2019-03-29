@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a130113c7e6052befdc61927589c1151a062bdb9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: ea9e4ae21ecc6538b33aed1566c10ddcd22b86c7
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456094"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341033"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten
-Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformationen** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
+Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
 Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto zur Einrichtung der Sicherheitsinformationen aufgefordert werden, finden Sie weitere Informationen im Artikel [Einrichten Ihrer Sicherheitsinformationen über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md).
 
@@ -39,11 +39,11 @@ Je nach den Einstellungen Ihrer Organisation können Sie SMS-Nachrichten als ein
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
 
-    ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile.png)
+    ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
-2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformationen** oder den entsprechenden Link im Block **Sicherheitsinformationen** aus, und klicken Sie dann auf der Seite **Sicherheitsinformationen** auf **Methode hinzufügen**.
+2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **Telefon** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -75,14 +75,14 @@ Wenn Sie SMS-Nachrichten nicht mehr als Methode für Sicherheitsinformationen ve
 
     ![Link zum Löschen der Methoden für Telefonanrufe und SMS aus den Sicherheitsinformationen](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. Klicken Sie im Bestätigungsfeld auf **Ja**, um die **Telefonnummer** zu löschen. Nachdem die Telefonnummer gelöscht wurde, wird sie aus den Sicherheitsinformationen entfernt und auf der Seite **Sicherheitsinformationen** nicht mehr angezeigt. Wenn **Telefon** Ihre Standardmethode war, wird der Standardwert in eine andere verfügbare Methode geändert.
+2. Klicken Sie im Bestätigungsfeld auf **Ja**, um die **Telefonnummer** zu löschen. Nachdem die Telefonnummer gelöscht wurde, wird sie aus den Sicherheitsinformationen entfernt und auf der Seite **Sicherheitsinformation** nicht mehr angezeigt. Wenn **Telefon** Ihre Standardmethode war, wird der Standardwert in eine andere verfügbare Methode geändert.
 
 ## <a name="change-your-default-security-info-method"></a>Ändern der Standardmethode für Sicherheitsinformationen
 Wenn Sie SMS-Nachrichten als Standardmethode für das Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto mit zweistufiger Überprüfung oder für das Anfordern von Kennwortzurücksetzungen verwenden möchten, können Sie diese Option auf der Seite **Sicherheitsinformationen** einrichten.
 
 ### <a name="to-change-your-default-security-info-method"></a>So ändern Sie die Standardmethode für Sicherheitsinformationen
 
-1. Wählen Sie auf der Seite **Sicherheitsinformationen** den Link **Ändern** neben **Standardmäßige Anmeldemethode** aus.
+1. Wählen Sie auf der Seite **Sicherheitsinformation** den Link **Ändern** neben **Standardmäßige Anmeldemethode** aus.
 
     ![Link zum Ändern der Standardanmeldemethode](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 

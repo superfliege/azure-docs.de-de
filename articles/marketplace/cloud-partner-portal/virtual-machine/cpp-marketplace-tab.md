@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b68f7004366dcb502ffc8332cf8266a434c7ecfb
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995647"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Registerkarte „Marketplace“ für VMs
 
-Auf der Registerkarte **Marketplace** auf der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden Informationen zu Marketing, Vertrieb und rechtlichen Fragen und Vereinbarungen bereitstellen und die über den Marketplace generierten Leads verwalten. Dieses lange Formular ist in vier Abschnitte unterteilt: **Übersicht**, **Marketingartefakte**, **Leadverwaltung** und **Rechtliche Hinweise**. 
+Auf der Registerkarte **Marketplace** auf der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden Informationen zu Marketing, Vertrieb und rechtlichen Fragen und Vereinbarungen bereitstellen und die über den Marketplace generierten Leads verwalten. Dieses lange Formular ist in vier Abschnitte unterteilt: **Übersicht**, **Marketingartefakte**, **Leadverwaltung** und **Rechtlich**. 
 
 ## <a name="overview-section"></a>Abschnitt „Übersicht“
 In diesem Abschnitt geben Sie allgemeine Informationen zu Ihrem Azure Marketplace-Angebot ein.  Mit einem an den Feldnamen angefügten Sternchen (*) wird angegeben, dass eine Eingabe erforderlich ist.
@@ -38,6 +38,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben.
 | **Zusammenfassung**               | Eine kurze Beschreibung des Zwecks oder der Funktion der Lösung.  Die maximale Länge beträgt 100 Zeichen. |
 | **Long Summary** (Lange Zusammenfassung)          | Eine Beschreibung des Zwecks oder der Funktion der Lösung.  Die maximale Länge beträgt 256 Zeichen. |
 | **Beschreibung**           | Eine Beschreibung der Lösung.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt. |
+| **Microsoft CSP-Handelspartner-Kanal** | Die Nutzung des Cloud Solution Provider (CSP)-Partnerkanals ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle. |
 | **Marketing Identifier** (Marketingbezeichner)  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion) | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
 | **Nützliche Links**          | Hinzufügen von URLs zu Dokumenten, Versionshinweisen, häufig gestellten Fragen usw. |
@@ -63,7 +64,7 @@ Dieser zweite Abschnitt ist in drei Unterabschnitte unterteilt: **Logos**, **Scr
 | **Name**                  | Name oder Titel <!-- TODO - max char length? none specified in UI -->                               |
 | **Image**                 | Bildschirmaufnahme, 533x324 Pixel                                         |
 | *Videos*  |  |
-| **Name**                  | Name oder Titel <!-- TODO - max char length? -->                              |
+| **Name**                  | Name oder Titel  <!-- TODO - max char length? -->                              |
 | **Link**                  | Video-URL, unter YouTube oder Vimeo gehostet                                        |
 | **Miniaturansicht**             | Bitmap 533x324                                                               |
 |  |  |
@@ -71,7 +72,7 @@ Dieser zweite Abschnitt ist in drei Unterabschnitte unterteilt: **Logos**, **Scr
 
 ### <a name="logo-guidelines"></a>Richtlinien für Logos
 
-<!-- TD: It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- TD: It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 Alle in das Cloud-Partnerportal hochgeladenen Logos müssen folgende Richtlinien erfüllen:

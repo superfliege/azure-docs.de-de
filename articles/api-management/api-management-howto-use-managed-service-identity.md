@@ -1,6 +1,6 @@
 ---
-title: Verwenden der verwalteten Azure-Dienstidentität in Azure API Management | Microsoft-Dokumentation
-description: Informationen zur Verwendung der verwalteten Azure-Dienstidentität in API Management
+title: Verwenden von verwalteten Identitäten in Azure API Management | Microsoft-Dokumentation
+description: Informationen, wie verwaltete Identitäten in API Management verwendet werden
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -11,27 +11,27 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730746"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310555"
 ---
-# <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Verwenden der verwalteten Azure-Dienstidentität in Azure API Management
+# <a name="use-managed-identities-in-azure-api-management"></a>Verwenden von verwalteten Identitäten in Azure API Management
 
-In diesem Artikel erfahren Sie, wie Sie eine verwaltete Dienstidentität für eine API Management-Dienstinstanz erstellen und auf andere Ressourcen zugreifen. Mithilfe einer von Azure Active Directory (Azure AD) generierten verwalteten Dienstidentität kann Ihre API Management-Instanz einfach und sicher auf andere mit Azure AD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die verwaltete Dienstidentität von Azure verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Azure-Dienstidentität finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/msi-overview.md).
+In diesem Artikel erfahren Sie, wie Sie eine verwaltete Identität für eine API Management-Dienstinstanz erstellen und auf andere Ressourcen zugreifen. Mithilfe einer von Azure Active Directory (Azure AD) generierten verwalteten Identität kann Ihre API Management-Instanz einfach und sicher auf andere mit Azure AD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von Azure verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="create-a-managed-service-identity-for-an-api-management-instance"></a>Erstellen einer verwalteten Dienstidentität für eine API Management-Instanz
+## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Erstellen einer verwalteten Identität für eine API Management-Instanz
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Um eine verwaltete Dienstidentität im Portal einzurichten, erstellen Sie zunächst wie gewohnt eine API Management-Instanz und aktivieren dann das Feature.
+Um eine verwaltete Identität im Portal einzurichten, erstellen Sie zunächst wie gewohnt eine API Management-Instanz und aktivieren dann das Feature.
 
 1. Erstellen Sie wie gewohnt eine API Management-Instanz im Portal. Navigieren Sie im Portal zu dieser App.
-2. Wählen Sie **Verwaltete Dienstidentität**.
+2. Wählen Sie **Verwaltete Dienstidentitäten** aus.
 3. Legen Sie „Bei Azure Active Directory registrieren“ auf „Ein“ fest. Klicken Sie auf Speichern.
 
 ![Aktivieren der MSI](./media/api-management-msi/enable-msi.png)
@@ -80,7 +80,7 @@ Eine vollständige Azure Resource Manager-Vorlage kann beispielsweise wie folgt 
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>Verwenden der verwalteten Dienstidentität für den Zugriff auf andere Ressourcen
 
 > [!NOTE]
-> Derzeit kann die verwaltete Dienstidentität für das Abrufen von Zertifikaten von Azure Key Vault für benutzerdefinierte API Management-Domänennamen verwendet werden. Weitere Szenarien werden in Kürze unterstützt.
+> Derzeit können verwaltete Identitäten für das Abrufen von Zertifikaten von Azure Key Vault für benutzerdefinierte API Management-Domänennamen verwendet werden. Weitere Szenarien werden in Kürze unterstützt.
 >
 >
 
@@ -110,7 +110,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 Das folgende Beispiel zeigt eine Azure Resource Manager-Vorlage mit den folgenden Schritten:
 
-1. Erstellen einer API Management-Instanz mit einer verwalteten Dienstidentität
+1. Erstellen einer API Management-Instanz mit einer verwalteten Identität
 2. Aktualisieren der Zugriffsrichtlinien einer Azure Key Vault-Instanz und Gestatten des Abrufs von Geheimnissen aus diesem Key Vault durch die API Management-Instanz
 3. Aktualisieren der API Management-Instanz durch Festlegen eines benutzerdefinierten Domänennamens über ein Zertifikats aus der Key Vault-Instanz
 
@@ -166,7 +166,7 @@ Das folgende Beispiel zeigt eine Azure Resource Manager-Vorlage mit den folgende
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate."
+                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },
@@ -238,7 +238,7 @@ Das folgende Beispiel zeigt eine Azure Resource Manager-Vorlage mit den folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur verwalteten Azure-Dienstidentität:
+Erfahren Sie mehr über verwaltete Identitäten für Azure-Ressourcen:
 
-* [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/msi-overview.md)
+* [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure-Ressourcen-Manager-Vorlagen](https://github.com/Azure/azure-quickstart-templates)

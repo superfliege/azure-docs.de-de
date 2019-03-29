@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: f613995dbdd787d0a031cb2c24d67c682b2d7cec
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079791"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens 
 
@@ -42,22 +42,26 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Festlegen eines benutzerdefinierten Domänennamens über das Azure-Portal
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer APIM-Instanz.
-2. Klicken Sie auf **Benutzerdefinierte Domänen und SSL**.
+1. Klicken Sie auf **Benutzerdefinierte Domänen und SSL**.
     
     Es stehen mehrere Endpunkte zur Verfügung, denen Sie einen benutzerdefinierten Domänennamen zuweisen können. Derzeit sind folgende Endpunkte verfügbar: 
-    + **Proxy** (Standardwert: `<apim-service-name>.azure-api.net`) 
-    + **Portal** (Standardwert: `<apim-service-name>.portal.azure-api.net`)     
-    + **Verwaltung** (Standardwert: `<apim-service-name>.management.azure-api.net`) 
-    + **SCM** (Standardwert: `<apim-service-name>.scm.azure-api.net`).
+   + **Proxy** (Standardwert: `<apim-service-name>.azure-api.net`) 
+   + **Portal** (Standardwert: `<apim-service-name>.portal.azure-api.net`)     
+   + **Verwaltung** (Standardwert: `<apim-service-name>.management.azure-api.net`) 
+   + **SCM** (Standardwert: `<apim-service-name>.scm.azure-api.net`).
 
-    >[!NOTE]
-    > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Proxy** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals). Die Endpunkte **Verwaltung** und **SCM** werden intern von APIM-Kunden verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird.
-3. Wählen Sie den Endpunkt aus, den Sie aktualisieren möchten. 
-4. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert**.
+     >[!NOTE]
+     > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Proxy** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals). Die Endpunkte **Verwaltung** und **SCM** werden intern von APIM-Kunden verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird.
 
-    + Geben Sie unter **Benutzerdefinierter Domänenname** den gewünschten Namen an. Beispiel: `api.contoso.com`. <br/>Platzhalterdomänennamen wie etwa „*.domain.com“ werden ebenfalls unterstützt.
-    + Geben Sie unter **Zertifikat** eine gültige .PFX-Datei an, die Sie hochladen möchten. 
-    + Falls das Zertifikat über ein Kennwort verfügt, geben Sie dieses in das Feld **Kennwort** ein.
+1. Wählen Sie den Endpunkt aus, den Sie aktualisieren möchten. 
+1. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert**.
+
+   + Geben Sie unter **Benutzerdefinierter Domänenname** den gewünschten Namen an. Beispiel: `api.contoso.com`. Platzhalterdomänennamen wie etwa „*.domain.com“ werden ebenfalls unterstützt.
+   + Wählen Sie unter **Zertifikat** ein Zertifikat aus „Key Vault“ aus. Wenn das Zertifikat mit einem Kennwort geschützt ist, können Sie auch eine gültige PFX-Datei hochladen und deren **Kennwort** angeben.
+
+     > [!TIP]
+     > Sollten Sie das benutzerdefinierte SSL-Domänenzertifikat mit Azure Key Vault verwalten, stellen Sie sicher, dass das Zertifikat [als ein *Zertifikat*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate) und nicht als ein *Geheimnis* in Key Vault eingefügt wird. Wenn für das Zertifikat „autorotate“ (automatisches Rotieren) festgelegt wurde, übernimmt API Management automatisch die neueste Version.
+
 1. Klicken Sie auf „Übernehmen“.
 
     >[!NOTE]

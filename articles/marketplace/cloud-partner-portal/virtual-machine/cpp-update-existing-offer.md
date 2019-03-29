@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: b48910b74d90072a360bad504e2b826402dceea5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639066"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852473"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace
 
@@ -35,6 +35,8 @@ Es kann eine Reihe von Gründen dafür geben, dass Sie Ihr Angebot aktualisieren
 
 Um Ihnen bei diesen Änderungen zu helfen, bietet das Portal die Features **Vergleichen** und **Verlauf**.  
 
+>[!Note]
+>Die Nutzung des Cloud Solution Provider (CSP)-Partnerkanals ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Nicht zugelassene Änderungen an VM-Angeboten oder -SKUs
 
@@ -63,7 +65,7 @@ Es ist üblich, dass ein VM-Image regelmäßig mit Sicherheitspatches, zusätzli
 
 4.  Klicken Sie unter **Datenträgerversion** auf **+Neue Datenträgerversion**, um ein neues VM-Image hinzuzufügen.
 
-5.  Geben Sie die **Datenträgerversion** der neuen VM-Images an. Die Datenträgerversion muss dem Format der [semantischen Version](http://semver.org/) entsprechen. Versionen sollten im Format „X.Y.Z“ angegeben werden. „X“, „Y“ und „Z“ sind dabei ganze Zahlen. Überprüfen Sie, ob die neue Version, die Sie bereitstellen möchten, höher ist als alle vorherigen Versionen. Andernfalls wird die neue Version nach dem erneuten Veröffentlichen weder im Portal noch im Azure Marketplace angezeigt.
+5.  Geben Sie die **Datenträgerversion** der neuen VM-Images an. Die Datenträgerversion muss dem Format der [semantischen Version](https://semver.org/) entsprechen. Versionen sollten im Format „X.Y.Z“ angegeben werden. „X“, „Y“ und „Z“ sind dabei ganze Zahlen. Überprüfen Sie, ob die neue Version, die Sie bereitstellen möchten, höher ist als alle vorherigen Versionen. Andernfalls wird die neue Version nach dem erneuten Veröffentlichen weder im Portal noch im Azure Marketplace angezeigt.
 
 6.  Geben Sie als **URL der Betriebssystem-VHD** den [Shared Access Signature-URI](./cpp-get-sas-uri.md) (SAS-URI) ein, der für die Betriebssystem-VHD erstellt wurde. 
 
@@ -147,19 +149,19 @@ Bestandskunden, für die bereits in dem Zyklus abgerechnet wurde, in dem eine Pr
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
 ### <a name="simplified-currency-pricing"></a>Vereinfachte Währungspreise
 
-Ab 1. September 2018 steht im Portal ein neuer Abschnitt namens **Vereinfachte Währungspreise** zur Verfügung. Microsoft optimiert das Azure Marketplace-Geschäft dadurch, dass besser prognostizierbare Preise und Auflistungen von Ihren Kunden auf der ganzen Welt ermöglicht werden. Zu dieser Optimierung gehört auch, dass weniger Währungen verwendet werden, in denen Microsoft Ihren Kunden Rechnungen stellt.
+Ab dem 1. September 2018 steht im Portal ein neuer Abschnitt mit dem Namen **Vereinfachte Währungspreise** zur Verfügung. Microsoft optimiert das Azure Marketplace-Geschäft dadurch, dass besser prognostizierbare Preise und Auflistungen von Ihren Kunden auf der ganzen Welt ermöglicht werden. Zu dieser Optimierung gehört auch, dass weniger Währungen verwendet werden, in denen Microsoft Ihren Kunden Rechnungen stellt.
 
-Für den neuen Abschnitt werden die Preise in diesen neuen Währungen gestaltet. Sobald alle Kunden zu diesen neuen Abrechnungswährungen migriert wurden, wird der ursprüngliche Preisabschnitt entfernt, und es wird nur noch der Abschnitt mit den vereinfachten Währungspreisen vorhanden sein.
+Für den neuen Abschnitt werden die Preise in diesen neuen Währungen gestaltet. Sobald alle Kunden zu diesen neuen Abrechnungswährungen migriert wurden, wird der ursprüngliche Preisabschnitt entfernt, und es wird nur noch der Abschnitt mit den vereinfachten Währungspreisen vorhanden sein.
 
 Sie haben bis zum 1. November 2018 Zeit, neue Preise für die Regionen festzulegen, für die sich die Abrechnungswährung ändert. Für Regionen, für die sich die Abrechnungswährung nicht ändert, können Sie die Preise nicht erhöhen.
 
 > [!NOTE] 
-> Wenn Sie APIs verwenden, um Ihr Angebot zu veröffentlichen, wird in der JSON-Angebotsdatei möglicherweise ein neuer Abschnitt angezeigt. Dieser wird mit `virtualMachinePricingV2` oder `monthlyPricingV2` kommentiert, je nach dem Typ des Angebots. 
+> Wenn Sie APIs verwenden, um Ihr Angebot zu veröffentlichen, wird in der JSON-Angebotsdatei möglicherweise ein neuer Abschnitt angezeigt. Dieser wird mit `virtualMachinePricingV2` oder `monthlyPricingV2` kommentiert, je nach dem Typ des Angebots. 
 
 Wenn Sie Fragen zu dieser Änderung haben, wenden Sie sich an den [Azure Marketplace-Support](../../support-azure-marketplace.md).
 
 
-## <a name="compare-feature"></a>Vergleichen-Feature
+## <a name="compare-feature"></a>Vergleichen-Funktion
 
 Wenn Sie Änderungen an einem bereits veröffentlichten Angebot vorgenommen haben, können Sie das **Vergleichen**-Feature verwenden, um die vorgenommenen Änderungen zu prüfen. So verwenden Sie dieses Feature:
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 7d877f467f06768c31679752d9deff1ca19d0003
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904453"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882874"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -34,8 +34,8 @@ App Service bietet Diagnosefunktionen zum Protokollieren von Informationen sowoh
 ### <a name="web-server-diagnostics"></a>Webserverdiagnose
 Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
-* **Detaillierte Fehlerprotokollierung** - Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
-* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist hilfreich, wenn Sie die Leistung der Website verbessern oder einen bestimmten HTTP-Fehler isolieren möchten.
+* **Detaillierte Fehlerprotokollierung** – Detaillierte Informationen für jede Anforderung, die zum HTTP-Statuscode 400 oder höher führt. Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat. Für jeden Fehler im Dateisystem der App wird eine einzige HTML-Datei generiert, und bis zu 50 Fehler (Dateien) werden beibehalten. Wenn die Anzahl der HTML-Dateien 50 überschreitet, werden die 26 ältesten Dateien automatisch gelöscht.
+* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist hilfreich, wenn Sie die Leistung der Website verbessern oder einen bestimmten HTTP-Fehler isolieren möchten. Für jeden Fehler im Dateisystem der App wird ein einziger Ordner generiert. Die Beibehaltungsrichtlinien für Dateien sind mit denen der vorstehenden detaillierten Fehlerprotokollierung identisch.
 * **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Dies ist hilfreich, wenn Sie allgemeine Websitemetriken ermitteln möchten, z.B. die Anzahl der verarbeiteten Anforderungen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse.
 
 ### <a name="application-diagnostics"></a>Anwendungsdiagnose
@@ -213,6 +213,10 @@ In einem Blob gespeicherte Daten sehen in etwa wie im folgenden Beispiel aus:
 Die Verfolgungsprotokolle für fehlerhafte Anforderungen werden in XML-Dateien mit dem Namen **fr######.xml** gespeichert. Um das Anzeigen der protokollierten Informationen zu erleichtern, wird ein XSL-Stylesheet namens **freb.xsl** im selben Verzeichnis wie die XML-Dateien bereitgestellt. Wenn Sie eine der XML-Dateien in Internet Explorer öffnen, wird das XSL-Stylesheet in Internet Explorer verwendet, um eine formatierte Ansicht mit den Ablaufverfolgungsinformationen ähnlich wie im folgenden Beispiel anzuzeigen:
 
 ![Anzeige fehlgeschlagener Anforderungen im Browser](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+
+> [!NOTE]
+> Eine einfache Möglichkeit zum Anzeigen der formatierten Protokolle für fehlgeschlagene Anforderungen besteht darin, im Portal zur Seite Ihrer App zu navigieren. Wählen Sie im linken Menü **Diagnose und Problembehandlung** aus, und suchen Sie nach **Ablaufverfolgungsprotokolle für Anforderungsfehler**. Klicken Sie dann auf das Symbol, um die gewünschte Ablaufverfolgung zu durchsuchen und anzuzeigen.
+>
 
 ### <a name="detailed-error-logs"></a>Detaillierte Fehlerprotokolle
 Detaillierte Fehlerprotokolle sind HTML-Dokumente, die ausführlichere Informationen zu aufgetretenen HTTP-Fehlern bereitstellen. Da es sich um einfache HTML-Dokumente handelt, können sie in einem Webbrowser angezeigt werden.
