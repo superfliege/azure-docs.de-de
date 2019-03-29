@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181621"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurieren von Nutzungseinstellungen und Richtlinien
 In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
@@ -38,9 +38,22 @@ Wenn Sie **Zugriff beschränken** aktiviert haben, fügen Sie der Liste Benutzer
 
     ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="send-registration-link-to-students"></a>Senden eines Registrierungslinks an Teilnehmer
-Das folgende Verfahren enthält Schritte zum Senden eines Registrierungslinks an Benutzer. Wenn die **Zugriffsbeschränkung** für das Lab aktiviert ist, können sich nur Benutzer in der Liste der Benutzer über den Registrierungslink beim Lab registrieren. 
+## <a name="share-registration-link-with-students"></a>Teilen eines Registrierungslinks mit Kursteilnehmern
+Um den Registrierungslink an Kursteilnehmer zu senden, verwenden Sie eine der folgenden Methoden. Die erste Methode zeigt, wie Sie E-Mails mit dem Registrierungslink und einer optionalen Nachricht an Kursteilnehmer senden können. Die zweite Methode zeigt, wie Sie den Registrierungslink erhalten, den Sie mit anderen auf beliebige Weise teilen können. 
 
+Wenn die **Zugriffsbeschränkung** für das Lab aktiviert ist, können sich nur Benutzer in der Liste der Benutzer über den Registrierungslink beim Lab registrieren. Diese Option ist standardmäßig aktiviert. 
+
+### <a name="send-email-to-users"></a>E-Mail an Benutzer senden
+1. Wechseln Sie zur Ansicht **Benutzer**, falls Sie sich noch nicht auf der Seite befinden. 
+2. Wählen Sie bestimmte oder alle Benutzer in der Liste aus. Aktivieren Sie zum Auswählen bestimmter Benutzer die entsprechenden Kontrollkästchen in der ersten Spalte der Liste. Aktivieren Sie zum Auswählen aller Benutzer das Kontrollkästchen vor dem Titel der ersten Spalte (**Name**), oder aktivieren Sie alle Kontrollkästchen für alle Benutzer in der Liste.
+3. Wählen Sie auf der Symbolleiste die Option **Einladung senden** aus. Sie können mit dem Mauszeiger auch auf den Namen eines Kursteilnehmers in der Liste zeigen und auf das E-Mail-Symbol klicken. 
+
+    ![Senden eines Registrierungslinks per E-Mail](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Führen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die folgenden Schritte aus: 
+    1. Geben Sie eine **optionale Nachricht** ein, die an die Kursteilnehmer gesendet werden soll. Die E-Mail enthält automatisch den Registrierungslink. 
+    2. Wählen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die Option **Senden** aus. 
+
+## <a name="get-registration-link"></a>Abrufen des Registrierungslinks
 1. Wählen Sie im linken Menü die Option **Benutzer** aus, um zur Ansicht **Benutzer** zu wechseln. 
 2. Wählen Sie die Kachel **Get registration link** (Registrierungslink abrufen) aus.
 
@@ -49,11 +62,7 @@ Das folgende Verfahren enthält Schritte zum Senden eines Registrierungslinks an
 
     ![Registrierungslink für Teilnehmer](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. Wählen Sie im Dialogfeld **Benutzerregistrierung** die Option **Schließen**. 
-4. Teilen Sie den Registrierungslink mit einem Schüler bzw. Studenten, damit diese Person sich für die Klasse registrieren kann. Wenn Sie die Einstellung **Zugriff beschränken** aktiviert und der Liste Benutzer hinzugefügt haben, führen Sie die folgenden Schritte aus:
-    1. Wählen Sie in der Liste die **E-Mail-Adresse** des Benutzers aus. 
-    2. Sie sehen ein Fenster Ihres Standard-E-Mail-Programms, in dem das Adressfeld **An** ausgefüllt ist. 
-    3. Fügen Sie die **Registrierungs-URL** ein, die Sie zuvor kopiert haben. 
-    4. Senden Sie die **E-Mail**. 
+4. Teilen Sie den **Registrierungslink** mit einem Kursteilnehmer, damit diese Person sich für die Klasse registrieren kann. 
 
 ## <a name="view-users-registered-with-the-lab"></a>Anzeigen der beim Lab registrierten Benutzer
 
@@ -67,7 +76,7 @@ Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen:
 1. Klicken Sie im linken Menü auf **Benutzer**.
 2. Wählen Sie auf der Symbolleiste die Option **Quota per user: unlimited** (Kontingent pro Benutzer: unbegrenzt) aus. 
 3. Wählen Sie auf der Seite **Kontingent pro Benutzer** eine der folgenden Optionen aus: 
-    1. **Ohne**. Benutzer können ihre virtuellen Computer nur während der geplanten Zeit, oder wenn der Lab-Besitzer virtuelle Computer für sie einschaltet, verwenden.
+    1. **Keine**. Benutzer können ihre virtuellen Computer nur während der geplanten Zeit, oder wenn der Lab-Besitzer virtuelle Computer für sie einschaltet, verwenden.
     2. **Unbegrenzt (Standard)**. Benutzer können ihre virtuellen Computer ohne zeitliche Einschränkung verwenden.
     3. **Anzahl von Stunden pro Benutzer angeben**. Benutzer können ihre virtuellen Computer zusätzlich zur geplanten Zeit für die festgelegte Anzahl von Stunden (siehe unten) nutzen. Wenn Sie diese Option auswählen, geben Sie die **Anzahl der Stunden** in das Textfeld ein. 
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 32e705c5c338d9bd7c16514b2dc2ab081a9caf6a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115554"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245241"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
-Azure enthält integrierte Funktionen zur erweiterten Bedrohungserkennung über Dienste wie Azure Active Directory (Azure AD), Azure Log Analytics und Azure Security Center. Diese Auflistung von Sicherheitsdiensten und -funktionen bietet eine einfache und schnelle Möglichkeit zu verstehen, was innerhalb Ihrer Azure-Bereitstellungen abläuft.
+Azure enthält integrierte Funktionen zur erweiterten Bedrohungserkennung über Dienste wie Azure Active Directory (Azure AD), Azure Monitor-Protokolle und Azure Security Center. Diese Auflistung von Sicherheitsdiensten und -funktionen bietet eine einfache und schnelle Möglichkeit zu verstehen, was innerhalb Ihrer Azure-Bereitstellungen abläuft.
 
 Azure bietet eine Vielzahl von Optionen zum Konfigurieren und Anpassen der Sicherheit, um den Anforderungen Ihrer App-Bereitstellungen zu entsprechen. In diesem Artikel wird beschrieben, wie Sie diese Anforderungen erfüllen.
 
@@ -75,17 +75,17 @@ PIM ermöglicht Folgendes:
 
 -   Aktivieren von Benachrichtigungen zum Zugriff auf eine privilegierte Rolle.
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert. Da Log Analytics als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Neue Sicherheitsfeatures werden automatisch bereitgestellt, sodass Sie Kosten für die laufende Wartung und für Upgrades sparen.
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert. Da Azure Monitor als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Neue Sicherheitsfeatures werden automatisch bereitgestellt, sodass Sie Kosten für die laufende Wartung und für Upgrades sparen.
 
-Zusätzlich zur Bereitstellung wertvoller Dienste kann Log Analytics in System Center-Komponenten wie [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) integriert werden, um Ihre bestehenden Investitionen für die Sicherheitsverwaltung auf die Cloud zu erweitern. Durch die Kombination von System Center und Log Analytics können Sie vollständig vom Hybrid-Management profitieren.
+Zusätzlich zur Bereitstellung wertvoller Dienste kann Azure Monitor in System Center-Komponenten wie [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) integriert werden, um Ihre bestehenden Investitionen für die Sicherheitsverwaltung auf die Cloud zu erweitern. Durch die Kombination von System Center und Azure Monitor-Protokollen können Sie vollständig vom Hybrid-Management profitieren.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Ganzheitlicher Ansatz für den Sicherheits- und Konformitätsstatus
 
-Das [Log Analytics-Dashboard für Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) bietet dank integrierter Suchabfragen für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard „Sicherheit und Überwachung“ ist die Startseite für sämtliche Sicherheitsaspekte in Log Analytics. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Sie können auch alle Ereignisse der letzten 24 Stunden, 7 Tage oder für einen anderen benutzerdefinierten Zeitraum anzeigen.
+Das [Log Analytics-Dashboard für Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) bietet dank integrierter Suchabfragen für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard „Sicherheit und Überwachung“ ist die Startseite für sämtliche Sicherheitsaspekte in Azure Monitor-Protokolle. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Sie können auch alle Ereignisse der letzten 24 Stunden, 7 Tage oder für einen anderen benutzerdefinierten Zeitraum anzeigen.
 
-Log Analytics hilft Ihnen dabei, den Gesamtsicherheitsstatus einer beliebigen Umgebung schnell und einfach im Kontext von IT-Vorgängen zu erfassen. Hierzu zählen unter anderem die Bewertung von Softwareupdates, Antischadsoftwarebewertungen und Konfigurationsgrundwerte. Die Sicherheitsprotokolldaten sind leicht zugänglich, um die Überwachungsprozesse für Sicherheit und Konformität zu optimieren.
+Azure Monitor-Protokolle helfen Ihnen dabei, den Gesamtsicherheitsstatus einer beliebigen Umgebung schnell und einfach im Kontext von IT-Vorgängen zu erfassen. Hierzu zählen unter anderem die Bewertung von Softwareupdates, Antischadsoftwarebewertungen und Konfigurationsgrundwerte. Die Sicherheitsprotokolldaten sind leicht zugänglich, um die Überwachungsprozesse für Sicherheit und Konformität zu optimieren.
 
 ![Das Log Analytics-Dashboard „Sicherheit und Überwachung“](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -102,25 +102,25 @@ Das Log Analytics-Dashboard „Sicherheit und Überwachung“ ist in vier Hauptk
 -   **Allgemeine Sicherheitsabfragen:** Diese Option liefert eine Liste mit den gängigsten Sicherheitsabfragen, die Sie zum Überwachen der Umgebung verwenden können. Wenn Sie eine Abfrage auswählen, wird der Suchbereich geöffnet, und die Ergebnisse der Abfrage werden angezeigt.
 
 ### <a name="insight-and-analytics"></a>Insight und Analytics
-Im Mittelpunkt von [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) steht das Repository, das von Azure gehostet wird.
+Im Mittelpunkt von [Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) steht das Repository, das von Azure gehostet wird.
 
 ![Diagramm zu Insight und Analytics](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Sie sammeln Daten von verbundenen Quellen im Repository, indem Sie Datenquellen konfigurieren und Ihrem Abonnement Lösungen hinzufügen.
 
-![Das Log Analytics-Dashboard ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Das Dashboard von Azure Monitor](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Für Datenquellen und Lösungen werden jeweils separate Datensatztypen mit eigenen Eigenschaften erstellt, aber Sie können sie mit Abfragen für das Repository trotzdem zusammen analysieren. Sie können die gleichen Tools und Methoden verwenden, um mit den unterschiedlichsten Daten zu arbeiten, die über verschiedene Quellen erfasst werden.
 
 
-Der größte Teil der Interaktion mit Log Analytics erfolgt über das Azure-Portal, das in jedem Browser verwendet werden kann und Ihnen Zugriff auf Konfigurationseinstellungen und verschiedene Tools bietet, mit denen Sie die gesammelten Daten analysieren und entsprechend reagieren können. Im Portal können Sie Folgendes nutzen:
+Der größte Teil der Interaktion mit Azure Monitor-Protokollen erfolgt über das Azure-Portal, das in jedem Browser verwendet werden kann und Ihnen Zugriff auf Konfigurationseinstellungen und verschiedene Tools bietet, mit denen Sie die gesammelten Daten analysieren und entsprechend reagieren können. Im Portal können Sie Folgendes nutzen:
 * [Protokollsuchen](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches), mit denen Sie Abfragen zum Analysieren von gesammelten Daten erstellen.
 * [Dashboards](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), die Sie mit grafischen Ansichten Ihrer wertvollsten Suchen anpassen können.
 * [Lösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), mit denen zusätzliche Funktionen und Analysetools bereitgestellt werden.
 
 ![Analysetools](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-Lösungen fügen Log Analytics weitere Funktionalität hinzu. Sie werden primär in der Cloud ausgeführt und ermöglichen die Analyse von Daten, die im Log Analytics-Repository gesammelt wurden. Lösungen definieren ggf. auch neue Datensatztypen, die gesammelt und mit Protokollsuchvorgängen oder über eine zusätzliche Benutzeroberfläche analysiert werden können, die von der Lösung auf dem Log Analytics-Dashboard bereitgestellt wird.
+Lösungen fügen Azure Monitor-Protokolle weitere Funktionalität hinzu. Sie werden primär in der Cloud ausgeführt und ermöglichen die Analyse von Daten, die im Log Analytics-Repository gesammelt wurden. Lösungen definieren ggf. auch neue Datensatztypen, die gesammelt und mit Protokollsuchvorgängen oder über eine zusätzliche Benutzeroberfläche analysiert werden können, die von der Lösung auf dem Log Analytics-Dashboard bereitgestellt wird.
 
 Das Dashboard „Sicherheit und Überwachung“ ist ein Beispiel für diese Arten von Lösungen.
 
