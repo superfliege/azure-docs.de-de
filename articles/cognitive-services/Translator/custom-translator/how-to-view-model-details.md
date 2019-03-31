@@ -5,22 +5,22 @@ description: Die Registerkarte „Modelle“ zeigt unter jedem Projekt Details z
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: d82d41a254164c635f4488db63766b39d922f002
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 13f3d88ad69d2acc64b9a6469415eceaf22fa491
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219108"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764387"
 ---
 # <a name="view-model-details"></a>Anzeigen der Modelldetails
 
 Die Registerkarte „Modelle“ unter „Projekt“ zeigt alle Modelle in diesem Projekt an. Alle für dieses Projekt trainierten Modelle sind in dieser Registerkarte aufgelistet.
 
-Für jedes Modell im Projekt werden folgende Modelldetails angezeigt.
+Für jedes Modell im Projekt werden folgende Details angezeigt.
 
 1.  Model Name (Modellname): Der Modellname eines bestimmten Modells.
 

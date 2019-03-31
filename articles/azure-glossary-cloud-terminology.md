@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600300"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823857"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -29,7 +29,7 @@ Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie 
 * [Microsoft Azure und Amazon Web Services:](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) Definitionen von Azure-Diensten und AWS-Entsprechungen.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [Cloud Computing-Terminologie:](https://azure.microsoft.com/overview/cloud-computing-dictionary/) Allgemeine branchenübliche Cloudbegriffe.
 
-## <a name="account"></a>Konto
+## <a name="account"></a>account
 Ein Konto für den Zugriff auf ein Azure-Abonnement und dessen Verwaltung. Es wird häufig als Azure-Konto bezeichnet, kann aber ein vorhandenes Geschäfts-, Schul- oder Unikonto, ein persönliches Microsoft-Konto oder ein Office 365-Benutzername und -Kennwort sein. Sie können auch ein Konto für die Verwaltung eines Azure-Abonnements erstellen, wenn Sie sich für die [kostenlose Testversion](https://azure.microsoft.com) registrieren.  
 Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto](billing/billing-use-existing-office-365-account-azure-subscription.md) sowie unter [Konten, die für die Anmeldung verwendet werden können](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -147,7 +147,7 @@ Eine Ressource, die Verhalten oder Features implementiert, die entweder andere P
 Weitere Informationen finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) sowie unter [Informationen zu Erweiterungen und Features für virtuelle Computer (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="vnet"></a>Virtuelles Netzwerk
-Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und von allen anderen Azure-Mandanten isoliert ist. Mit einem [Azure-VPN-Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) können Sie Verbindungen zwischen virtuellen Netzwerken und [zwischen einem virtuellen und einem lokalen Netzwerk](vpn-gateway/vpn-gateway-plan-design.md) herstellen. Sie haben uneingeschränkte Kontrolle über die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen innerhalb eines virtuellen Netzwerks.  
+Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und von allen anderen Azure-Mandanten isoliert ist. Mit einem [Azure-VPN-Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) können Sie Verbindungen zwischen virtuellen Netzwerken und zwischen einem virtuellen und einem lokalen Netzwerk herstellen. Sie haben uneingeschränkte Kontrolle über die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen innerhalb eines virtuellen Netzwerks.  
 Weitere Informationen finden Sie unter [Virtuelle Netzwerke im Überblick](virtual-network/virtual-networks-overview.md).  
 
 ## <a name="web-app"></a>Web-App

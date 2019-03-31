@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881060"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver über das Azure-Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -129,15 +129,15 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
     ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Klicken Sie in der Befehlsleiste auf **Konfigurieren**. Daraufhin öffnet sich das Blatt **Konfigurieren**. Gehen Sie auf dem Blatt **Konfigurieren** wie folgt vor:
    
-    1. Der Dateiservername wird automatisch aufgefüllt.
+   1. Der Dateiservername wird automatisch aufgefüllt.
     
-    2. Stellen Sie sicher, dass die Cloudspeicherverschlüsselung auf **Aktiviert** festgelegt ist. Dadurch werden alle in die Cloud gesendeten Daten verschlüsselt. 
+   2. Stellen Sie sicher, dass die Cloudspeicherverschlüsselung auf **Aktiviert** festgelegt ist. Dadurch werden alle in die Cloud gesendeten Daten verschlüsselt. 
     
-    3. Für die Verschlüsselung wird ein 256-Bit-AES-Schlüssel zusammen mit dem benutzerdefinierten Schlüssel verwendet. Geben Sie einen Schlüssel mit 32 Zeichen an, und geben Sie den Schlüssel anschließend zur Bestätigung erneut ein. Hinterlegen Sie den Schlüssel in einer App zur Schlüsselverwaltung für zukünftige Verwendungen.
+   3. Für die Verschlüsselung wird ein 256-Bit-AES-Schlüssel zusammen mit dem benutzerdefinierten Schlüssel verwendet. Geben Sie einen Schlüssel mit 32 Zeichen an, und geben Sie den Schlüssel anschließend zur Bestätigung erneut ein. Hinterlegen Sie den Schlüssel in einer App zur Schlüsselverwaltung für zukünftige Verwendungen.
     
-    4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**, um anzugeben, welche Anmeldeinformationen des Speicherkontos mit Ihrem Gerät verwendet werden sollen. Klicken Sie auf **Neue hinzufügen**, wenn noch keine Anmeldeinformationen des Speicherkontos konfiguriert wurden. **Stellen Sie sicher, dass das von Ihnen verwendete Speicherkonto Blockblobs unterstützt. Seitenblobs werden nicht unterstützt.** Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+   4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**, um anzugeben, welche Anmeldeinformationen des Speicherkontos mit Ihrem Gerät verwendet werden sollen. Klicken Sie auf **Neue hinzufügen**, wenn noch keine Anmeldeinformationen des Speicherkontos konfiguriert wurden. **Stellen Sie sicher, dass das von Ihnen verwendete Speicherkonto Blockblobs unterstützt. Seitenblobs werden nicht unterstützt.** Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-    ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Konfigurieren eines Dateiservers](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. Gehen Sie auf dem Blatt **Anmeldeinformationen des Speicherkontos hinzufügen** wie folgt vor: 
 
     1. Wählen Sie das aktuelle Abonnement aus, wenn für das Speicherkonto das gleiche Abonnement wie für den Dienst gilt. Geben Sie „Other“ (Anderes) ein, wenn das Speicherkonto nicht zum Dienstabonnement gehört. 
@@ -175,26 +175,26 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Geben Sie die folgenden Freigabeeinstellungen an:
 
-    1. Geben Sie einen eindeutigen Namen für die Freigabe an. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
+   1. Geben Sie einen eindeutigen Namen für die Freigabe an. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
     
-    2. Geben Sie eine optionale **Beschreibung** für die Freigabe an. Die Beschreibung ist für die Identifizierung der Freigabenbesitzer hilfreich.
+   2. Geben Sie eine optionale **Beschreibung** für die Freigabe an. Die Beschreibung ist für die Identifizierung der Freigabenbesitzer hilfreich.
     
-    3. Geben Sie einen **Typ** für die Freigabe an. Der Typ kann **Mehrstufig** oder **Lokal** lauten. „Mehrstufig“ ist die Standardeinstellung. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokal** für die Freigabe aus. Wählen Sie für alle anderen Daten **Mehrstufig** für die Freigabe aus.
-    Eine lokale Freigabe wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf der Freigabe lokal auf dem Gerät verbleiben und nicht in die Cloud übergehen. Eine mehrstufige Freigabe dagegen wird mit schlanker Speicherzuweisung bereitgestellt. Wenn Sie eine mehrstufige Freigabe erstellen, werden 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen.
+   3. Geben Sie einen **Typ** für die Freigabe an. Der Typ kann **Mehrstufig** oder **Lokal** lauten. „Mehrstufig“ ist die Standardeinstellung. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokal** für die Freigabe aus. Wählen Sie für alle anderen Daten **Mehrstufig** für die Freigabe aus.
+      Eine lokale Freigabe wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf der Freigabe lokal auf dem Gerät verbleiben und nicht in die Cloud übergehen. Eine mehrstufige Freigabe dagegen wird mit schlanker Speicherzuweisung bereitgestellt. Wenn Sie eine mehrstufige Freigabe erstellen, werden 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen.
    
-    4. Weisen Sie die Berechtigungen im Feld **Set default full permissions to**  (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format *john@contoso.com* ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
+   4. Weisen Sie die Berechtigungen im Feld **Set default full permissions to**  (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format *john\@contoso.com* ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
    
-    5. Klicken Sie auf **Hinzufügen**, um die Freigabe zu erstellen. 
+   5. Klicken Sie auf **Hinzufügen**, um die Freigabe zu erstellen. 
     
-        ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
-        Sie werden benachrichtigt, wenn die Freigabe erstellt wird.
+       Sie werden benachrichtigt, wenn die Freigabe erstellt wird.
    
-        ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-    Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird das Blatt **Freigaben** aktualisiert und zeigt die neue Freigabe. Standardmäßig ist die Überwachung und die Sicherung für die Freigabe aktiviert.
+      Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird das Blatt **Freigaben** aktualisiert und zeigt die neue Freigabe. Standardmäßig ist die Überwachung und die Sicherung für die Freigabe aktiviert.
    
-    ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>Schritt 4: Herstellen einer Verbindung mit der Freigabe
 Als Nächstes müssen Sie eine Verbindung mit einer oder mehreren Freigaben herstellen, die Sie im vorherigen Schritt erstellt haben. Führen Sie diese Schritte auf dem Windows Server-Host aus, der mit Ihrem StorSimple Virtual Array verbunden ist.

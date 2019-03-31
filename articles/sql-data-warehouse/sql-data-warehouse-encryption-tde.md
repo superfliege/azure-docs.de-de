@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: security
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ca5ac013716db9712063e8efc0e2116570008a9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: be31547e8f4063a1b1fe225420fb6c06d9a1588b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840578"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Erste Schritte mit Transparent Data Encryption (TDE) in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "55455608"
 > 
 > 
 
-## <a name="required-permssions"></a>Erforderliche Berechtigungen
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
 Sie müssen Administrator oder ein Mitglied der Rolle „dbmanager“ sein, um Transparent Data Encryption (TDE) zu aktivieren.
 
 ## <a name="enabling-encryption"></a>Aktivieren der Verschlüsselung
@@ -57,7 +57,7 @@ Die Verschlüsselung kann mit folgenden DMVs überprüft werden:
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx
+[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
 [sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->

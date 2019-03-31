@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417634"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216933"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer einzelnen und in einem Pool zusammengefassten Datenbanken in Azure SQL-Datenbank
 
@@ -261,9 +261,9 @@ Sie können die dynamische Verwaltungssicht [sys.dm_db_resource_stats](/sql/rela
 
 ![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL-Analyse (Vorschau) in Log Analytics
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-Analyse (Vorschau) in Azure Monitor-Protokollen
 
-Mit [Azure Log Analytics](../azure-monitor/insights/azure-sql.md) können Sie wichtige Azure SQL-Leistungsmetriken erfassen und visualisieren. Dabei werden bis zu 150.000 SQL-Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich unterstützt. Sie können darüber Benachrichtigungen überwachen und erhalten. Sie können Metriken für SQL-Datenbank und Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und nutzen, um auf allen Ebenen eines Anwendungsstapels Probleme zu ermitteln.
+Mit [Azure Monitor-Protokollen](../azure-monitor/insights/azure-sql.md) können Sie wichtige Azure SQL-Leistungsmetriken erfassen und visualisieren. Dabei werden bis zu 150.000 SQL-Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich unterstützt. Sie können darüber Benachrichtigungen überwachen und erhalten. Sie können Metriken für SQL-Datenbank und Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und nutzen, um auf allen Ebenen eines Anwendungsstapels Probleme zu ermitteln.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Es fallen Probleme mit der Leistung auf: Wie unterscheiden sich die Methoden zur Problembehandlung bei SQL-Datenbank von den Methoden bei SQL Server?
 

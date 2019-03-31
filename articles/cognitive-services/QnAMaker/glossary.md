@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c280f6ef99678b77edcb251ead685be88265f825
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb3b262f3bde0599cb6dea009d0fbbeafb1c529a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871012"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649440"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>Glossar für QnA Maker-Wissensdatenbank und -Dienst
 
@@ -42,4 +42,4 @@ Eine Benutzerabfrage ist die Frage, die der Endbenutzer oder Tester an die Wisse
 Hierbei handelt es sich um die Antwort, die aus der Wissensdatenbank basierend auf der bestmöglichen Übereinstimmung für eine bestimmte Benutzerabfrage abgerufen wird.
 
 ## <a name="confidence-score"></a>Zuverlässigkeitsbewertung
-Die Zuverlässigkeitsbewertung der Antwort ist ein numerischer Wert zwischen 0 und 100. Dabei gibt 100 an, dass eine genaue Übereinstimmung zwischen Benutzerabfrage und einer Frage in der Wissensdatenbank vorliegt, die bereitgestellte Antwort richtig ist und es sich um eine geeignete Antwort für eine bestimmte Benutzerabfrage handelt. Antworten weisen in der Regel eine Rangfolge basierend auf der Zuverlässigkeitsbewertung auf, wobei die Antwort mit der höchsten Zuverlässigkeitsbewertung als Standardantwort verwendet wird.
+Die Zuverlässigkeitsbewertung der Antwort ist ein numerischer Wert zwischen 0 und 100. Dabei gibt 100 an, dass eine genaue Übereinstimmung zwischen Benutzerabfrage und einer Frage in der Wissensdatenbank vorliegt, die bereitgestellte Antwort richtig ist und es sich um eine geeignete Antwort für eine bestimmte Benutzerabfrage handelt. Antworten weisen in der Regel eine Rangfolge basierend auf der Zuverlässigkeitsbewertung auf, wobei die Antwort mit der höchsten Zuverlässigkeitsbewertung als [Standardantwort](concepts/confidence-score.md#change-default-answer) verwendet wird.

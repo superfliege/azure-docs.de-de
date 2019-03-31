@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7419baf99e4c508806361b408968dbf851a7f76c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ece396a85a817df51f650fd1c513085efa3dedf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842123"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -139,7 +139,7 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 Ermitteln Sie vor dem Konfigurieren der Sicherheitsrichtlinien zunächst anhand der [Sicherheitsempfehlungen](https://docs.microsoft.com/azure/security-center/security-center-recommendations), ob diese Richtlinien für Ihre verschiedenen Abonnements und Ressourcengruppen geeignet sind. Es ist auch wichtig zu verstehen, welche Aktionen aufgrund der Sicherheitsempfehlungen ausgeführt werden sollten und wer in Ihrer Organisation für die Überwachung neuer Empfehlungen und die Durchführung der erforderlichen Schritte verantwortlich ist.
 
 ## <a name="data-collection-and-storage"></a>Datensammlung und -speicherung
-Azure Security Center verwendet den Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Computern zu sammeln. Dieser Agent wird auch vom Log Analytics-Dienst verwendet. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
+Azure Security Center verwendet Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Computern zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
 
 ### <a name="agent"></a>Agent
 
@@ -227,7 +227,7 @@ Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Plan
 ![Verdächtige Aktivitäten](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
-> Zu diesem Zweck können Sie den [Computer Security Incident Handling Guide](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) des NIST (National Institute of Standards and Technology) verwenden.
+> Zu diesem Zweck können Sie den [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) des NIST (National Institute of Standards and Technology) verwenden.
 >
 
 Sie können Security Center-Warnungen in den folgenden Phasen verwenden:

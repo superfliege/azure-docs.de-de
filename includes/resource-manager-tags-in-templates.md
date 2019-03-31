@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e483ecfcbddfcf5aa7f8a41c1ee75136c86b656
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 104bd13a0cf97a8605670adde479c2a2eeb29c15
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440157"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57786327"
 ---
 Um eine Ressource während der Bereitstellung mit einem Tag zu versehen, fügen Sie der Ressource, die Sie bereitstellen, das `tags`-Element hinzu. Geben Sie den Namen und den Wert des Tags an.
 
@@ -39,6 +39,8 @@ Das folgende Beispiel zeigt ein Speicherkonto mit zwei Tags (`Dept` und `Environ
     ]
 }
 ```
+
+Verwenden Sie zum Festlegen eines Tags für einen datetime-Wert die [utcNow-Funktion](../articles/azure-resource-manager/resource-group-template-functions-string.md#utcnow).
 
 ### <a name="apply-an-object-to-the-tag-element"></a>Anwenden eines Objekts auf das Tagelement
 Sie können einen Objektparameter definieren, der mehrere Tags speichert, und dieses Objekt auf das Tagelement anwenden. Jede Eigenschaft in dem Objekt wird zu einem separaten Tag für die Ressource. Das folgende Beispiel enthält einen Parameter namens `tagValues`, der auf das Tagelement angewendet wird.

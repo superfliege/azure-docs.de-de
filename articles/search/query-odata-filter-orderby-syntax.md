@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c6dbd95cfd17f5ce49245fcadea299c5a0dfd582
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087396"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>OData-Ausdruckssyntax für Filter und Sortierklauseln in Azure Search
 
@@ -36,81 +36,81 @@ Ein **$filter**-Ausdruck kann eigenständig als vollständig ausgedrückte Abfra
 
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11  
-    {  
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"  
-    }  
+POST /indexes/hotels/docs/search?api-version=2017-11-11
+    {
+      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
+    }
 ```
 
 Ein weiterer häufiger Anwendungsfall ist die Kombination von Filtern mit Faceting. Dabei reduziert der Filter die Oberfläche der Abfrage auf Grundlage einer benutzergesteuerten Facettennavigationsauswahl:
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11  
-    {  
-      "search": "test",  
-      "facets": [ "tags", "baseRate,values:80|150|220" ],  
-      "filter": "rating eq 3 and category eq 'Motel'"  
-    }  
+POST /indexes/hotels/docs/search?api-version=2017-11-11
+    {
+      "search": "test",
+      "facets": [ "tags", "baseRate,values:80|150|220" ],
+      "filter": "rating eq 3 and category eq 'Motel'"
+    }
 ```
 
 ### <a name="filter-operators"></a>Filteroperatoren  
 
--   Logische Operatoren (AND, OR, NOT).  
+- Logische Operatoren (AND, OR, NOT).  
 
--   Vergleichsausdrücke (`eq, ne, gt, lt, ge, le`). Bei Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.  
+- Vergleichsausdrücke (`eq, ne, gt, lt, ge, le`). Bei Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.  
 
--   Konstanten der unterstützten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typen (EDM) (eine Liste der unterstützten Typen finden Sie unter [Supported data types &#40;Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) (Unterstützte Datentypen für Azure Search)). Konstanten von Sammlungstypen werden nicht unterstützt.  
+- Konstanten der unterstützten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typen (EDM) (eine Liste der unterstützten Typen finden Sie unter [Supported data types &#40;Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) (Unterstützte Datentypen für Azure Search)). Konstanten von Sammlungstypen werden nicht unterstützt.  
 
--   Verweise auf Feldnamen. In Filterausdrücken können nur Felder vom Typ `filterable` verwendet werden.  
+- Verweise auf Feldnamen. In Filterausdrücken können nur Felder vom Typ `filterable` verwendet werden.  
 
--   `any` ohne Parameter. Damit wird überprüft, ob ein Feld vom Typ `Collection(Edm.String)` Elemente enthält.  
+- `any` ohne Parameter. Damit wird überprüft, ob ein Feld vom Typ `Collection(Edm.String)` Elemente enthält.  
 
--   `any` und `all` mit begrenzter Unterstützung für Lambdaausdrücke. 
+- `any` und `all` mit begrenzter Unterstützung für Lambdaausdrücke. 
     
-    -   `any/all` werden für Felder vom Typ `Collection(Edm.String)` unterstützt. 
+  -   `any/all` werden für Felder vom Typ `Collection(Edm.String)` unterstützt. 
     
-    -   `any` kann nur mit einfachen Gleichheitsausdrücken oder mit einer `search.in`-Funktion verwendet werden. Einfache Ausdrücke bestehen aus einem Vergleich zwischen einem einzelnen Feld und einem Literalwert, z. B. `Title eq 'Magna Carta'`.
+  -   `any` kann nur mit einfachen Gleichheitsausdrücken oder mit einer `search.in`-Funktion verwendet werden. Einfache Ausdrücke bestehen aus einem Vergleich zwischen einem einzelnen Feld und einem Literalwert, z. B. `Title eq 'Magna Carta'`.
     
-    -   `all` kann nur mit einfachen Ungleichheitsausdrücken oder mit einer `not search.in`-Funktion verwendet werden.   
+  -   `all` kann nur mit einfachen Ungleichheitsausdrücken oder mit einer `not search.in`-Funktion verwendet werden.   
 
--   Geofunktionen `geo.distance` und `geo.intersects`. Die Funktion `geo.distance` gibt die Entfernung zwischen zwei Punkten in Kilometern zurück, wobei es sich bei einem Punkt um ein Feld und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird. Die Funktion `geo.intersects` gibt TRUE zurück, wenn ein bestimmter Punkt innerhalb eines angegebenen Polygons liegt. Der Punkt ist hierbei ein Feld, und das Polygon wird als Konstante als Teil des Filters übergeben.  
+- Geofunktionen `geo.distance` und `geo.intersects`. Die Funktion `geo.distance` gibt die Entfernung zwischen zwei Punkten in Kilometern zurück, wobei es sich bei einem Punkt um ein Feld und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird. Die Funktion `geo.intersects` gibt TRUE zurück, wenn ein bestimmter Punkt innerhalb eines angegebenen Polygons liegt. Der Punkt ist hierbei ein Feld, und das Polygon wird als Konstante als Teil des Filters übergeben.  
 
-    Das Polygon ist eine zweidimensionale Fläche und wird als eine Reihe von Punkten gespeichert, die einen Begrenzungsring definieren (siehe unten stehendes Beispiel). Das Polygon muss geschlossen sein, d. h. der erste und der letzte Punkt müssen identisch sein. [Punkte in einem Polygon müssen entgegen dem Uhrzeigersinn angegeben werden](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+  Das Polygon ist eine zweidimensionale Fläche und wird als eine Reihe von Punkten gespeichert, die einen Begrenzungsring definieren (siehe unten stehendes Beispiel). Das Polygon muss geschlossen sein, d. h. der erste und der letzte Punkt müssen identisch sein. [Punkte in einem Polygon müssen entgegen dem Uhrzeigersinn angegeben werden](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-    `geo.distance` gibt in Azure Search die Entfernung in Kilometern zurück. Bei anderen Diensten, die OData-Geovorgänge unterstützen, werden dagegen meist Entfernungen in Metern zurückgegeben.  
+  `geo.distance` gibt in Azure Search die Entfernung in Kilometern zurück. Bei anderen Diensten, die OData-Geovorgänge unterstützen, werden dagegen meist Entfernungen in Metern zurückgegeben.  
 
-    > [!NOTE]  
-    >  Wenn Sie „geo.distance“ in einem Filter verwenden, müssen Sie die von der Funktion zurückgegebene Entfernung mithilfe von `lt`, `le`, `gt` oder `ge` mit einer Konstante vergleichen. Die Operatoren `eq` und `ne` werden beim Vergleichen von Entfernungen nicht unterstützt. Eine korrekte Syntax für „geo.distance“ sieht beispielsweise wie folgt aus: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
+  > [!NOTE]  
+  >  Wenn Sie „geo.distance“ in einem Filter verwenden, müssen Sie die von der Funktion zurückgegebene Entfernung mithilfe von `lt`, `le`, `gt` oder `ge` mit einer Konstante vergleichen. Die Operatoren `eq` und `ne` werden beim Vergleichen von Entfernungen nicht unterstützt. Eine korrekte Syntax für „geo.distance“ sieht beispielsweise wie folgt aus: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
 
--   Die Funktion `search.in` testet, ob ein bestimmtes Zeichenfolgenfeld einem der Werte in einer angegebenen Liste entspricht. Sie kann auch in Any- oder All-Ausdrücken verwendet werden, um einen einzelnen Wert eines Zeichenfolgensammlungsfelds mit einer Liste von Werten zu vergleichen. Die Gleichheit zwischen dem Feld und den einzelnen Werten in der Liste wird wie beim `eq`-Operator unter Berücksichtigung der Groß-/Kleinschreibung ermittelt. Ein Ausdruck wie `search.in(myfield, 'a, b, c')` entspricht daher `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, allerdings bietet `search.in` eine deutlich bessere Leistung. 
+- Die Funktion `search.in` testet, ob ein bestimmtes Zeichenfolgenfeld einem der Werte in einer angegebenen Liste entspricht. Sie kann auch in Any- oder All-Ausdrücken verwendet werden, um einen einzelnen Wert eines Zeichenfolgensammlungsfelds mit einer Liste von Werten zu vergleichen. Die Gleichheit zwischen dem Feld und den einzelnen Werten in der Liste wird wie beim `eq`-Operator unter Berücksichtigung der Groß-/Kleinschreibung ermittelt. Ein Ausdruck wie `search.in(myfield, 'a, b, c')` entspricht daher `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, allerdings bietet `search.in` eine deutlich bessere Leistung. 
 
-    Der erste Parameter für die Funktion `search.in` ist der Verweis auf ein Zeichenfolgenfeld (oder eine Bereichsvariable für ein Zeichenfolgensammlungsfeld, sofern `search.in` innerhalb eines `any`- oder `all`- Ausdrucks verwendet wird). Der zweite Parameter ist eine Zeichenfolge, die die Liste der Werte enthält (getrennt durch Leerzeichen oder Kommas). Wenn Sie andere Trennzeichen als Leerzeichen und Kommas verwenden müssen, weil Ihre Werte diese Zeichen enthalten, können Sie einen optionalen dritten Parameter für `search.in` angeben. 
+  Der erste Parameter für die Funktion `search.in` ist der Verweis auf ein Zeichenfolgenfeld (oder eine Bereichsvariable für ein Zeichenfolgensammlungsfeld, sofern `search.in` innerhalb eines `any`- oder `all`- Ausdrucks verwendet wird). Der zweite Parameter ist eine Zeichenfolge, die die Liste der Werte enthält (getrennt durch Leerzeichen oder Kommas). Wenn Sie andere Trennzeichen als Leerzeichen und Kommas verwenden müssen, weil Ihre Werte diese Zeichen enthalten, können Sie einen optionalen dritten Parameter für `search.in` angeben. 
 
-    Dieser dritte Parameter ist eine Zeichenfolge, bei der jedes Zeichen oder jede Teilmenge der Zeichenfolge als Trennzeichen behandelt wird, wenn die Liste der Werte im zweiten Parameter analysiert wird.
+  Dieser dritte Parameter ist eine Zeichenfolge, bei der jedes Zeichen oder jede Teilmenge der Zeichenfolge als Trennzeichen behandelt wird, wenn die Liste der Werte im zweiten Parameter analysiert wird.
 
-    > [!NOTE]   
-    >  In manchen Szenarien muss ein Feld mit einer großen Anzahl von Konstantenwerten verglichen werden. Beispielsweise kann es bei der Implementierung von Sicherheitseinschränkungen mit Filtern erforderlich sein, das Dokument-ID-Feld mit einer Liste von IDs zu vergleichen, auf die dem anfordernden Benutzer Lesezugriff gewährt wird. In solchen Szenarien empfehlen wir ausdrücklich, die Funktion `search.in` anstelle einer komplizierten Disjunktion von Gleichheitsausdrücken zu nutzen. Verwenden Sie beispielsweise `search.in(Id, '123, 456, ...')` anstelle von `Id eq 123 or Id eq 456 or ....`. 
+  > [!NOTE]   
+  > In manchen Szenarien muss ein Feld mit einer großen Anzahl von Konstantenwerten verglichen werden. Beispielsweise kann es bei der Implementierung von Sicherheitseinschränkungen mit Filtern erforderlich sein, das Dokument-ID-Feld mit einer Liste von IDs zu vergleichen, auf die dem anfordernden Benutzer Lesezugriff gewährt wird. In solchen Szenarien empfehlen wir ausdrücklich, die Funktion `search.in` anstelle einer komplizierten Disjunktion von Gleichheitsausdrücken zu nutzen. Verwenden Sie beispielsweise `search.in(Id, '123, 456, ...')` anstelle von `Id eq 123 or Id eq 456 or ....`. 
+  >
+  > Bei der Verwendung von `search.in` ist eine Antwortzeit von unter einer Sekunde zu erwarten, wenn der zweite Parameter eine Liste von Hunderten oder Tausenden von Werten enthält. Für die Anzahl von Elementen, die Sie an `search.in` übergeben können, gibt es keinen expliziten Grenzwert. Sie müssen jedoch nach wie vor die maximale Anforderungsgröße einhalten. Die Wartezeit nimmt jedoch mit zunehmender Anzahl von Werten zu.
 
->  Bei der Verwendung von `search.in` ist eine Antwortzeit von unter einer Sekunde zu erwarten, wenn der zweite Parameter eine Liste von Hunderten oder Tausenden von Werten enthält. Für die Anzahl von Elementen, die Sie an `search.in` übergeben können, gibt es keinen expliziten Grenzwert. Sie müssen jedoch nach wie vor die maximale Anforderungsgröße einhalten. Die Wartezeit nimmt jedoch mit zunehmender Anzahl von Werten zu.
+- Die Funktion `search.ismatch` wertet die Suchabfrage als Teil eines Filterausdrucks aus. Die mit der Suchabfrage übereinstimmenden Dokumente werden im Resultset zurückgegeben. Die folgenden Überladungen dieser Funktion sind verfügbar:
+  - `search.ismatch(search)`
+  - `search.ismatch(search, searchFields)`
+  - `search.ismatch(search, searchFields, queryType, searchMode)`
 
--   Die Funktion `search.ismatch` wertet die Suchabfrage als Teil eines Filterausdrucks aus. Die mit der Suchabfrage übereinstimmenden Dokumente werden im Resultset zurückgegeben. Die folgenden Überladungen dieser Funktion sind verfügbar:
-    - `search.ismatch(search)`
-    - `search.ismatch(search, searchFields)`
-    - `search.ismatch(search, searchFields, queryType, searchMode)`
-
-    Hierbei gilt: 
+  Hierbei gilt: 
   
-    - `search`: Die Suchabfrage (in der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax). 
-    - `queryType`: „simple“ oder „full“. Der Standardwert ist „simple“. Gibt an, welche Abfragesprache im `search`-Parameter verwendet wurde.
-    - `searchFields`: Durch Trennzeichen getrennte Liste von durchsuchbaren Feldern, in denen gesucht werden soll. Standardmäßig werden alle durchsuchbaren Felder im Index durchsucht.    
-    - `searchMode`: „any“ oder „all“. Der Standardwert ist „any“. Gibt an, ob für beliebige oder alle der Suchbegriffe Übereinstimmungen gefunden werden müssen, damit das Dokument in den Ergebnissen zurückgegeben wird.
+  - `search`: Die Suchabfrage (in der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax). 
+  - `queryType`: „simple“ oder „full“. Der Standardwert ist „simple“. Gibt an, welche Abfragesprache im `search`-Parameter verwendet wurde.
+  - `searchFields`: Durch Trennzeichen getrennte Liste von durchsuchbaren Feldern, in denen gesucht werden soll. Standardmäßig werden alle durchsuchbaren Felder im Index durchsucht.    
+  - `searchMode`: „any“ oder „all“. Der Standardwert ist „any“. Gibt an, ob für beliebige oder alle der Suchbegriffe Übereinstimmungen gefunden werden müssen, damit das Dokument in den Ergebnissen zurückgegeben wird.
 
-    Alle der oben aufgeführten Parameter sind gleichwertig mit den entsprechenden [Suchanforderungsparametern](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+  Alle der oben aufgeführten Parameter sind gleichwertig mit den entsprechenden [Suchanforderungsparametern](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
--   Die Funktion `search.ismatchscoring` gibt ebenso wie die Funktion `search.ismatch` TRUE für Dokumente zurück, die mit der als Parameter übergebenen Suchabfrage übereinstimmen. Der Unterschied zwischen den beiden Funktionen besteht darin, dass die Relevanzbewertung der Dokumente, die mit der Abfrage `search.ismatchscoring` übereinstimmen, in die Gesamtbewertung des Dokuments einfließt, während sich die Dokumentbewertung im Fall von `search.ismatch` nicht ändert. Die folgenden Überladungen dieser Funktion sind verfügbar (mit den gleichen Parametern wie bei `search.ismatch`):
-    - `search.ismatchscoring(search)`
-    - `search.ismatchscoring(search, searchFields)`
-    - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
+- Die Funktion `search.ismatchscoring` gibt ebenso wie die Funktion `search.ismatch` TRUE für Dokumente zurück, die mit der als Parameter übergebenen Suchabfrage übereinstimmen. Der Unterschied zwischen den beiden Funktionen besteht darin, dass die Relevanzbewertung der Dokumente, die mit der Abfrage `search.ismatchscoring` übereinstimmen, in die Gesamtbewertung des Dokuments einfließt, während sich die Dokumentbewertung im Fall von `search.ismatch` nicht ändert. Die folgenden Überladungen dieser Funktion sind verfügbar (mit den gleichen Parametern wie bei `search.ismatch`):
+  - `search.ismatchscoring(search)`
+  - `search.ismatchscoring(search, searchFields)`
+  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
   Die Funktionen `search.ismatch` und `search.ismatchscoring` sind vollständig orthogonal zueinander und zur restlichen Filteralgebra. Dies bedeutet, dass beide Funktionen im selben Filterausdruck verwendet werden können. 
 
@@ -130,99 +130,106 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
  Suche nach allen Hotels mit einem Basistarif unter 100 $ mit einer Bewertung von mindestens 4:  
 
-```  
-$filter=baseRate lt 100.0 and rating ge 4  
-```  
+```
+$filter=baseRate lt 100.0 and rating ge 4
+```
 
  Suche nach allen Hotels außer „Roach Motel“, die seit 2010 renoviert wurden:  
 
-```  
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z  
-```  
+```
+$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
  Suche nach allen Hotels mit einem Basistarif unter 200 $, die seit 2012 renoviert wurden und einen datetime-Literalwert mit Zeitzoneninformationen für Pacific Normalzeit aufweisen:  
 
-```  
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00  
-```  
+```
+$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+```
 
  Suche nach allen Hotels, bei denen die Parkgebühren im Preis enthalten sind und Rauchen nicht erlaubt ist:  
 
-```  
-$filter=parkingIncluded and not smokingAllowed  
-```  
+```
+$filter=parkingIncluded and not smokingAllowed
+```
 
  \- ODER -  
 
-```  
-$filter=parkingIncluded eq true and smokingAllowed eq false  
-```  
+```
+$filter=parkingIncluded eq true and smokingAllowed eq false
+```
 
  Suche nach allen Hotels, die der Kategorie „Luxury“ angehören oder bei denen die Parkgebühren im Preis enthalten sind, mit einer Bewertung von 5:  
 
-```  
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5  
-```  
+```
+$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
+```
 
  Suche nach allen Hotels mit dem Tag „wifi“ (wobei für jedes Hotel Tags in einem Feld „Collection(EDM.String)“ gespeichert sind):  
 
-```  
-$filter=tags/any(t: t eq 'wifi')  
-```  
+```
+$filter=tags/any(t: t eq 'wifi')
+```
 
  Suche nach allen Hotels ohne das Tag „motel“:  
 
-```  
-$filter=tags/all(t: t ne 'motel')  
-```  
+```
+$filter=tags/all(t: t ne 'motel')
+```
 
  Suche nach allen Hotels mit beliebigen Tags:  
 
-```  
-$filter=tags/any()  
-```  
+```
+$filter=tags/any()
+```
+
+Suchen Sie alle Hotels, die keine Tags aufweisen:  
+
+```
+$filter=not tags/any()
+```
+
 
  Suche nach allen Hotels in einem Umkreis von 10 Kilometern von einem angegebenen Referenzpunkt (wobei „location“ ein Feld vom Typ „Edm.geographypoint“ ist):  
 
-```  
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10  
-```  
+```
+$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
  Suche nach allen Hotels in einem bestimmten Anzeigebereich, der als Polygon definiert ist (wobei „location“ ein Feld vom Typ „Edm.geographypoint“ ist). Beachten Sie, dass das Polygon geschlossen ist (der erste und der letzte Punkt müssen identisch sein), und [die Punkte müssen entgegen dem Uhrzeigersinn aufgelistet sein](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-```  
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')  
-```  
+```
+$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
  Suche nach allen Hotels, bei denen das Feld „description“ keinen Wert enthält oder explizit auf NULL festgelegt ist:  
 
-```  
-$filter=description eq null  
-```  
+```
+$filter=description eq null
+```
 
 Suche nach allen Hotels, deren Namen „Roach motel“ oder „Budget hotel“ entspricht:  
 
-```  
-$filter=search.in(name, 'Roach motel,Budget hotel', ',') 
+```
+$filter=search.in(name, 'Roach motel,Budget hotel', ',')
 ```
 
 Suche nach allen Hotels, deren Namen „Roach motel“ oder „Budget hotel“ entspricht (getrennt durch „|“):  
 
-```  
-$filter=search.in(name, 'Roach motel|Budget hotel', '|') 
+```
+$filter=search.in(name, 'Roach motel|Budget hotel', '|')
 ```
 
 Suche nach allen Hotels mit dem Tag „wifi“ oder „pool“:  
 
-```  
-$filter=tags/any(t: search.in(t, 'wifi, pool'))  
+```
+$filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
 Suche nach allen Hotels ohne das Tag „motel“ oder „cabin“:  
 
-```  
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))  
-```  
+```
+$filter=tags/all(t: not search.in(t, 'motel, cabin'))
+```
 
 Suche nach Dokumenten mit dem Wort „waterfront“. Diese Filterabfrage ist identisch mit einer [Suchanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents) mit `search=waterfront`.
 
