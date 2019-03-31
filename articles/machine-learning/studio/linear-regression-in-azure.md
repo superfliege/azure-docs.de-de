@@ -1,21 +1,21 @@
 ---
-title: Migrieren von Analysen aus Excel zu Azure Machine Learning Studio
+title: Migrieren von Analysen aus Excel
 titleSuffix: Azure Machine Learning Studio
 description: Ein Vergleich von Modellen zur linearen Regression in Excel und in Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864829"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrieren von Analysen aus Excel zu Azure Machine Learning Studio
 
@@ -102,14 +102,14 @@ Unsere Lösung bestand darin, das Machine Learning-Regressionsmodell in Form ein
 
 Der Abschnitt *Web Services-Dashboard* enthält eine Excel-Arbeitsmappe als Download. Die Arbeitsmappe ist bereits vorformatiert und enthält die Webdienst-API und die Schema-Informationen. Die Arbeitsmappe wird durch Klicken auf *Download Excel Workbook* (Excel-Arbeitsmappe herunterladen) geöffnet, und Sie können sie auf Ihrem lokalen Computer speichern. 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![Herunterladen der Excel-Arbeitsmappe aus dem Web Services-Dashboard](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 Kopieren Sie bei geöffnetem Arbeitsblatt Ihre vordefinierten Parameter in den blauen Parameterabschnitt, wie unten gezeigt. Sobald die Parameter eingegeben werden, ruft Excel den Machine Learning-Webdienst auf, und die prognostizierten Werte werden im grünen Abschnitt „Predicted Values“ (Prognostizierte Werte) angezeigt. Das Arbeitsblatt erstellt anhand Ihres trainierten Modells fortlaufend Prognosen für alle unter Parameter eingegebenen Zeilenelemente. Weitere Informationen zum Verwenden dieser Funktion finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts aus Excel](consuming-from-excel.md). 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
+![Vorlage: Herstellen einer Verbindung mit dem bereitgestellten Webdienst durch eine Excel-Arbeitsmappe](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimieren und weitere Untersuchungen
-Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Machine Learning zu optimieren. Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, und konnten dadurch eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen. Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für das Modell erspart. 
+Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Machine Learning zu optimieren. Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, und konnten dadurch eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen. Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für die Modellierung erspart. 
 
 Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayes][bayesian-linear-regression] oder [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können. 
 
@@ -132,13 +132,9 @@ Die Möglichkeit, die Vorhersageanalysen für Prognosen aus Studio auch in Excel
 ## <a name="resources"></a>Ressourcen
 Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression: 
 
-* Regression in Excel. Sie haben noch nie versucht, eine Regression in Excel durchzuführen? Dieses Tutorial vereinfacht sie: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Regression in Excel. Sie haben noch nie versucht, eine Regression in Excel durchzuführen? Dieses Tutorial vereinfacht sie: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Ordinary Least Squares Linear Regression: Unzulänglichkeiten, Probleme und Fallstricke. Einführung und Erläuterung der Regression: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
-
-[1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
-[2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
-
+* Ordinary Least Squares Linear Regression: Unzulänglichkeiten, Probleme und Fallstricke. Einführung und Erläuterung der Regression: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

@@ -1,21 +1,21 @@
 ---
 title: Informationen zu ExpressRoute Direct – Azure | Microsoft-Dokumentation
-description: Diese Seite enthält eine Übersicht über ExpressRoute Direct (Vorschau).
+description: Diese Seite enthält eine Übersicht über ExpressRoute Direct
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100736"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881599"
 ---
-# <a name="about-expressroute-direct-preview"></a>Informationen zu ExpressRoute Direct (Vorschau)
+# <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
 ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
 
@@ -25,14 +25,9 @@ ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 * Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z. B. Bankwesen, Behörden und Einzelhandel
 * Präzise Steuerung der Leitungsverteilung basierend auf Unternehmensbereichen
 
-> [!IMPORTANT]
-> ExpressRoute Direkt ist derzeit in der Vorschauphase.
->
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="onboard-to-expressroute-direct"></a>Onboarding für ExpressRoute Direct
 
-## <a name="enroll-in-the-preview"></a>Registrieren in der Vorschau
-
-Bevor Sie ExpressRoute Direct nutzen, müssen Sie Ihr Abonnement für die Vorschauversion registrieren. Senden Sie dafür eine E-Mail mit Ihrer Abonnement-ID an <ExpressRouteDirect@microsoft.com>. Geben Sie in der E-Mail die folgenden Aspekte an:
+Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Senden Sie dafür eine E-Mail mit Ihrer Abonnement-ID an <ExpressRouteDirect@microsoft.com>. Geben Sie in der E-Mail die folgenden Aspekte an:
 
 * Szenarien, für die Sie **ExpressRoute Direct** nutzen können
 * Bevorzugte Standorte: Unter [Partner und Peeringstandorte](expressroute-locations-providers.md) finden Sie eine vollständige Liste aller Standorte.
@@ -70,11 +65,11 @@ ExpressRoute Direct unterstützt die VLAN-Kennzeichnungen QinQ und Dot1Q.
 
 ## <a name="workflow"></a>Workflow
 
-[ ![Workflow](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![workflow](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct bietet die gleiche erstklassige SLA mit redundanten Aktiv/Aktiv-Verbindungen in das globale Microsoft-Netzwerk. Die ExpressRoute-Infrastruktur ist redundant. Konnektivität mit dem globalen Microsoft-Netzwerk ist redundant und vielfältig und kann entsprechend den Kundenanforderungen skaliert werden. In der Vorschauphase gibt es keine SLA, und die Lösung sollte nur für nicht produktionsbezogene Workloads in Betracht gezogen werden.
+ExpressRoute Direct bietet die gleiche erstklassige SLA mit redundanten Aktiv/Aktiv-Verbindungen in das globale Microsoft-Netzwerk. Die ExpressRoute-Infrastruktur ist redundant. Konnektivität mit dem globalen Microsoft-Netzwerk ist redundant und vielfältig und kann entsprechend den Kundenanforderungen skaliert werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

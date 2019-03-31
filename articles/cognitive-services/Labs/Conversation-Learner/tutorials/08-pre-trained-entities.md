@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58163785"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Hinzufügen vortrainierter Entitäten
 In diesem Tutorial erfahren Sie, wie Sie Ihrem Conversation Learner-Modell vortrainierte Entitäten hinzufügen.
@@ -35,50 +35,49 @@ Vortrainierte Entitäten erkennen häufig verwendete Entitätstypen wie Nummern,
 
 ## <a name="steps"></a>Schritte
 
+Beginnen Sie auf der Homepage in der Webbenutzeroberfläche.
+
 ### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neues Modell“.
-2. Geben Sie im Feld „Name“ die Zeichenfolge „PretrainedEntities“ ein, und drücken Sie die EINGABETASTE.
-3. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Wählen Sie **Neues Modell** aus.
+2. Geben Sie **PretrainedEntities** als **Namen** ein.
+3. Klicken Sie auf **Erstellen**.
 
 ### <a name="entity-creation"></a>Erstellung von Entitäten
 
-1. Klicken Sie im linken Bereich auf „Entitäten“ und dann auf die Schaltfläche „Neue Entität“.
-2. Wählen Sie als Entitätstyp die Option „Pre-Trained/datetimeV2“ aus.
-3. Aktivieren Sie das Kontrollkästchen „Mehrwertig“.
-    - Mehrwertige Entitäten kumulieren Werte in der Entität.
-    - Negierbare Eigenschaften sind bei vortrainierten Entitäten deaktiviert.
-4. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Klicken Sie im linken Bereich auf **Entitäten** und dann auf **Neue Entität**.
+2. Wählen Sie **Pre-Trained/datetimeV2** als **Entitätstyp** aus.
+3. Aktivieren Sie **Mehrwertig**, um zu ermöglichen, dass die Entität einen oder mehrere Werte kumuliert. Beachten Sie, dass vortrainierte Entitäten nicht negiert werden können.
+4. Klicken Sie auf **Erstellen**.
 
-![](../media/tutorial7_entities_a.PNG)
+![](../media/T08_entity_create.png)
 
-### <a name="create-the-first-action"></a>Erstellen der ersten Aktion
+1. Klicken Sie im linken Bereich auf **Aktionen** und dann auf **Neue Aktion**.
+2. Geben Sie im Feld **Bot's response...** (Antwort des Bots) die Zeichenfolge **The date is $builtin-datetimev2** (Das Datum lautet $builtin-datetimev2) ein.
+3. Klicken Sie auf **Erstellen**.
 
-1. Klicken Sie im linken Bereich auf „Aktionen“ und anschließend auf die Schaltfläche „Neue Aktion“.
-2. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) die Zeichenfolge „The date is $builtin-datetimev2“ (Das Datum lautet $builtin-datetimev2) ein.
-3. Klicken Sie auf die Schaltfläche „Erstellen“.
-
-![](../media/tutorial7_actions_a.PNG)
+![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>Erstellen der zweiten Aktion
 
-1. Klicken Sie im linken Bereich auf „Aktionen“ und anschließend auf die Schaltfläche „Neue Aktion“.
-2. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) den Satz „What's the date?“ (Wie lautet das Datum?) ein.
-    - Vortrainierte Entitäten können keine erforderlichen Entitäten sein, da sie standardmäßig für alle Benutzeräußerungen erkannt werden.
-3. Geben Sie im Feld „Disqualifying Entities“ (Disqualifizierende Entitäten) die Zeichenfolge „builtin-datetimev2“ ein.
-4. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Klicken Sie im linken Bereich auf **Aktionen** und dann auf **Neue Aktion**.
+2. Geben Sie **What's the date?** (Wie lautet das Datum?) als **Bot‘s Response...** (Antwort des Bots) ein. Vortrainierte Entitäten können keine **erforderlichen Entitäten** sein, da sie standardmäßig für alle Äußerungen erkannt werden.
+3. Geben Sie **builtin-datetimev2** als **Disqualifying Entities** (Disqualifizierende Entitäten) ein.
+4. Klicken Sie auf **Erstellen**.
 
-![](../media/tutorial7_actions2_a.PNG)
+![](../media/T08_action_create_2.png)
 
 ### <a name="train-the-model"></a>Trainieren des Modells
 
-1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf die Schaltfläche „New Train Dialog“ (Neuer Trainingsdialog).
-2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „hello“ (Hallo) ein.
-3. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
-4. Wählen Sie die Antwort „What's the date?“ (Wie lautet das Datum?) aus.
-5. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „today“ (heute) ein.
-    - Die Äußerung „today“ (heute) wird von vortrainierten Modellen in LUIS automatisch erkannt.
+1. Wählen Sie im linken Bereich **Train Dialogs** (Trainingsdialogfelder) aus, und klicken Sie dann auf **New Train Dialog** (Neues Trainingsdialogfeld).
+2. Geben Sie im linken Chatbereich **hello** (Hallo) als Äußerung des Benutzers ein.
+3. Wählen Sie **Score Actions** (Aktionen bewerten) aus.
+4. Wählen Sie **What's the date?** (Wie lautet das Datum) aus der Aktionsliste aus.
+5. Geben Sie im linken Chatbereich **today** (heute) als Äußerung des Benutzers ein.
+    - Die Äußerung **today** (heute) wird von vortrainierten Modellen in LUIS automatisch erkannt.
     - Wenn Sie auf Werte vortrainierter Entitäten zeigen, werden zusätzliche, von LUIS bereitgestellte Daten angezeigt.
+
+![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

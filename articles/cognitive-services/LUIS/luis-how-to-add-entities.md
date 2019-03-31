@@ -1,7 +1,7 @@
 ---
 title: Hinzufügen von Entitäten
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Hinzufügen von Entitäten (Schlüsseldaten in Ihrer Anwendungsdomäne) in Language Understanding-Apps (LUIS).
+description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106932"
 ---
 # <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
-Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Äußerung kann viele Entitäten oder auch überhaupt keine enthalten. Eine Entität stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). Entitäten beschreiben Informationen mit Bezug zur Absicht. Manchmal sind sie auch für die Ausführung der Aufgabe Ihrer App wichtig. 
-
-Sie können Entitäten vor dem Erstellen von Absichten oder in einem separaten Vorgang erstellen.
+Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Entität stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). Entitäten beschreiben Informationen mit Bezug zur Absicht. Manchmal sind sie auch für die Ausführung der Aufgabe Ihrer App wichtig. Sie können Entitäten erstellen, wenn Sie einer Absicht eine Äußerung hinzufügen, oder auch getrennt vom Hinzufügen einer Äußerung zu einer Absicht (vor oder nach dem Hinzufügen).
 
 Sie können Entitäten in Ihrer LUIS-App über die **Entitätenlisten** auf der Seite **Entitäten** hinzufügen, bearbeiten oder löschen. LUIS verfügt über zwei Haupttypen von Entitäten: [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und Ihre eigenen [benutzerdefinierten Entitäten](luis-concept-entity-types.md#types-of-entities).
 
-Nachdem eine Entität erstellt wurde, kann sie auf der Seite mit den Details zur **Absicht** in der Beispieläußerung einer Absicht markiert werden. 
+Sobald eine maschinell erlernte Entität erstellt wurde, müssen Sie diese Entität in der gesamten Beispieläußerung aller Absichten, in denen sie sich befindet, markieren.
 
-## <a name="add-prebuilt-entity"></a>Hinzufügen einer vordefinierten Entität
+<a name="add-prebuilt-entity"></a>
+
+## <a name="add-a-prebuilt-entity-to-your-app"></a>Hinzufügen einer vordefinierten Entität zu Ihrer App
 
 Einer Anwendung hinzugefügte allgemeine vordefinierte Entitäten sind *number* und *datetimeV2*. 
 
@@ -40,7 +40,9 @@ Einer Anwendung hinzugefügte allgemeine vordefinierte Entitäten sind *number* 
 
     ![Screenshot des Dialogfelds „Vordefinierte Entität hinzufügen“](./media/add-entities/list-of-prebuilt-entities.png)
 
-## <a name="add-simple-entities"></a>Hinzufügen einfacher Entitäten
+<a name="add-simple-entities"></a>
+
+## <a name="add-simple-entities-for-single-concepts"></a>Hinzufügen einfacher Entitäten für einzelne Konzepte
 
 Eine einfache Entität beschreibt ein einzelnes Konzept. Verwenden Sie das folgende Verfahren zum Erstellen einer Entität, mit der die Namen von Unternehmensabteilungen extrahiert werden, z.B. *Personalwesen* oder *Operativer Betrieb*.   
 
@@ -52,7 +54,9 @@ Eine einfache Entität beschreibt ein einzelnes Konzept. Verwenden Sie das folge
 
     Normalerweise wird eine [Ausdrucksliste](luis-concept-feature.md) verwendet, um das Signal einer einfachen Entität zu verstärken.
 
-## <a name="add-regular-expression-entities"></a>Hinzufügen von Entitäten des Typs „Regulärer Ausdruck“
+<a name="add-regular-expression-entities"></a>
+
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Hinzufügen von Entitäten mit regulären Ausdrücken für hochgradig strukturierte Konzepte
 
 Eine Entität des Typs „Regulärer Ausdruck“ dient zum Abrufen von Daten aus der Äußerung basierend auf einem regulären Ausdruck, den Sie bereitstellen. 
 
@@ -60,7 +64,7 @@ Eine Entität des Typs „Regulärer Ausdruck“ dient zum Abrufen von Daten aus
 
 1. Geben Sie im Popupdialogfeld `Human resources form name` in das Feld **Entitätsname** ein, wählen Sie **Regulärer Ausdruck** in der Liste **Entitätstyp** aus, geben Sie den regulären Ausdruck `hrf-[0-9]{6}` ein, und wählen Sie dann **Fertig** aus. 
 
-    Dieser reguläre Ausdruck (Literal) enthält die Zeichen `hrf-` und dann sechs Ziffern, um eine Formularnummer für ein Formular aus dem Personalwesen zu bilden.
+    Dieser reguläre Ausdruck stimmt mit dem Literal `hrf-` überein und enthält dann sechs Ziffern, um eine Formularnummer für ein Formular aus dem Personalwesen darzustellen.
 
 ## <a name="add-hierarchical-entities"></a>Hinzufügen hierarchischer Entitäten
 
@@ -85,7 +89,9 @@ Um hierarchische Entitäten hinzuzufügen, führen Sie die folgenden Schritte au
 
     Navigieren Sie nach dem Erstellen dieser Entität zu allen Absichten mit Beispieläußerungen, die die Entität enthalten. Wählen Sie den Text in der Beispieläußerung aus, und kennzeichnen Sie ihn als Entität. 
 
-## <a name="add-composite-entities"></a>Hinzufügen einer zusammengesetzten Entität
+<a name="add-composite-entities"></a>
+
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Hinzufügen von zusammengesetzten Entitäten zum Gruppieren in einer Beziehung von über- und untergeordneten Elementen
 
 Sie können Beziehungen zwischen Entitäten unterschiedlichen Typs durch das Erstellen einer zusammengesetzten Entität definieren. Im folgenden Beispiel enthält die Entität einen regulären Ausdruck und eine vordefinierte Entität mit einem Namen.  
 
@@ -107,7 +113,9 @@ In der Äußerung `Send hrf-123456 to John Smith` wird die Zeichenfolge `hrf-123
 
 1. Wählen Sie **Fertig**aus.
 
-## <a name="add-patternany-entities"></a>Hinzufügen der „Pattern.any“-Entitäten
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Hinzufügen von Pattern.any-Entitäten zum Erfassen von Freiformentitäten
 
 [Pattern.Any](luis-concept-entity-types.md)-Entitäten sind nur in [Mustern](luis-how-to-model-intent-pattern.md) gültig, nicht in Absichten. Mit diesem Entitätstyp kann LUIS das Ende von Entitäten unterschiedlicher Länge und Wortwahl finden. Da diese Entität in einem Muster verwendet wird, weiß LUIS, wo sich das Ende der Entität in der Äußerungsvorlage befindet.
 
@@ -123,7 +131,9 @@ In der Äußerung `Where is Request relocation from employee new to the company 
 
     Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](luis-concept-patterns.md#explicit-lists), um dieses Problem zu beheben. 
 
-## <a name="add-a-role-to-pattern-based-entity"></a>Hinzufügen einer Rolle zur musterbasierten Entität
+<a name="add-a-role-to-pattern-based-entity"></a>
+
+## <a name="add-a-role-to-distinguish-different-contexts"></a>Hinzufügen einer Rolle zum Unterscheiden verschiedener Kontexte
 
 Eine Rolle ist ein benannter Untertyp einer Entität, basierend auf dem Kontext. Dies ist vergleichbar mit einer [hierarchischen](#add-hierarchical-entities) Entität, aber Rollen werden nur in [Mustern](luis-how-to-model-intent-pattern.md) verwendet. 
 
@@ -141,7 +151,9 @@ Die Syntax für eine Rolle ist **{Entitätsname:Rollenname}**, wobei auf den Ent
 
     ![Screenshot vom Hinzufügen der Rolle „Origin“ zur Entität „Location“](./media/add-entities/roles-enter-role-name-text.png)
 
-## <a name="add-list-entities"></a>Hinzufügen von Listenentitäten
+<a name="add-list-entities"></a>
+
+## <a name="add-list-entities-for-exact-matches"></a>Hinzufügen von Listenentitäten für genaue Übereinstimmungen
 
 Listenentitäten stellen eine feste, abgeschlossene Gruppe mit verwandten Wörtern dar. 
 
@@ -184,12 +196,15 @@ Für eine Personal-App können Sie eine Liste mit allen Abteilungen und den Syno
     ]  
     ```
 
+<a name="change-entity-type"></a>
 
-## <a name="change-entity-type"></a>Ändern des Entitätstyps
+## <a name="do-not-change-entity-type"></a>Der Entitätstyp kann nicht geändert werden
 
 LUIS erlaubt Ihnen nicht, den Entitätstyps zu ändern, da die Anwendung nicht weiß, was zum Erstellen der Entität hinzugefügt oder entfernt werden muss. Um den Typ zu ändern, sollten Sie besser eine neue Entität des richtigen Typs mit einem etwas anderen Namen erstellen. Sobald die Entität erstellt ist, entfernen Sie in jeder Äußerung den alten bezeichnenden Entitätsnamen, und fügen Sie den neuen Entitätsnamen hinzu. Sobald alle Äußerungen ihre neuen Bezeichnungen erhalten haben, löschen Sie die alte Entität. 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Erstellen eines Musters aus einer Äußerung
+<a name="create-a-pattern-from-an-utterance"></a>
+
+## <a name="create-a-pattern-from-an-example-utterance"></a>Erstellen eines Musters aus einer Beispieläußerung
 
 Weitere Informationen finden Sie unter [Hinzufügen eines Musters aus einer vorhandenen Äußerung auf der Seite der Absicht oder der Entität](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 

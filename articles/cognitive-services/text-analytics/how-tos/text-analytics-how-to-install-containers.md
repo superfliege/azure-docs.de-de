@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977099"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294143"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen eines Containers für die Textanalyse benötigen Sie Folgendes:
+Zum Ausführen eines Containers für die Textanalyse benötigen Sie den Hostcomputer und Containerumgebungen.
 
 ## <a name="preparation"></a>Vorbereitung
 
@@ -46,11 +46,14 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 
 In der folgenden Tabelle werden die Mindestanforderungen und Empfehlungen für CPU-Kerne (mindestens 2,6 GHz) und Arbeitsspeicher in Gigabyte (GB) angegeben, die für jeden Container für die Textanalyse zugewiesen werden müssen.
 
-| Container | Minimum | Empfohlen |
-|-----------|---------|-------------|
-|Schlüsselwortextraktion | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |
-|Spracherkennung | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |
-|Standpunktanalyse | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |
+| Container | Minimum | Empfohlen | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Schlüsselwortextraktion | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |15, 30|
+|Spracherkennung | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |15, 30|
+|Standpunktanalyse | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |15, 30|
+
+* Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* TPS: Transaktionen pro Sekunde
 
 Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
@@ -125,7 +128,7 @@ ApiKey={BILLING_KEY}
 Dieser Befehl:
 
 * Führt einen Schlüsselbegriffserkennungs-Container auf der Grundlage des Containerimages aus.
-* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu.
+* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu
 * Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
 
@@ -134,11 +137,13 @@ Es sind noch weitere [Beispiele](../text-analytics-resource-container-config.md#
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
+[!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-Verwenden Sie für Container-APIs den Host https://localhost:5000.
+Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 

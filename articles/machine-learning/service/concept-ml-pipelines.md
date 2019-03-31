@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 11/07/2018
+ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: a8ead1fedc8c21152b1ef095dbaebe605776b6e3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243867"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213669"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Erstellen von Machine Learning-Pipelines mit dem Azure Machine Learning Service
 
@@ -34,17 +34,27 @@ Das folgende Diagramm zeigt eine Beispielpipeline:
 
 ![Machine Learning-Pipelines im Azure Machine Learning Service](./media/concept-ml-pipelines/pipelines.png)
 
+### <a name="which-azure-pipeline-technology-should-i-use"></a>Welche Azure-Pipelinetechnologie sollte ich verwenden?
+
+Die Azure-Cloud bietet mehrere andere Pipelines, die jeweils einem anderen Zweck dienen. Die folgende Tabelle listet die verschiedenen Pipelines und ihren Verwendungszweck auf:
+
+| Pipeline | Funktionsbeschreibung | Kanonische Pipe |
+| ---- | ---- | ---- |
+| Azure Machine Learning-Pipelines | Definiert wiederverwendbare Machine Learning-Workflows, die als Vorlage für Ihre Machine Learning-Szenarien verwendet werden können. | Daten -> Modell |
+| [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Gruppieren Datenverschiebungs-, Transformations- und Steuerungsaktivitäten, die für das Ausführen einer Aufgabe erforderlich sind.  | Daten -> Daten |
+| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Continuous Integration und Delivery Ihrer Anwendung auf jeder Plattform und in jeder Cloud  | Code -> App/Dienst |
+
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Erstellen von Pipelines mit Azure Machine Learning
 
 Mit dem [Azure Machine Learning SDK für Python](#the-python-sdk-for-pipelines) können Sie Machine Learning-Pipelines erstellen sowie einzelne Pipelineausführungen übermitteln und nachverfolgen.
 
 Mit Pipelines können Sie Ihren Workflow durch Einfachheit, Geschwindigkeit, Portabilität und Wiederverwendung optimieren. Beim Erstellen von Pipelines mit Azure Machine Learning können Sie sich auf Ihre Fachkenntnisse (Machine Learning) und nicht auf die Infrastruktur konzentrieren.
 
-Da verschiedene Schritte verwendet werden, können Sie nur die Schritte erneut ausführen, die Sie zum Optimieren und Testen Ihres Workflows benötigen. Ein Schritt ist eine Computeeinheit in der Pipeline. Wie im vorhergehenden Diagramm dargestellt, kann das Vorbereiten der Daten viele Schritte umfassen. Dazu zählen unter anderem Normalisierung, Transformation, Überprüfung und Featurebereitstellung. Datenquellen und Zwischendaten werden in der gesamten Pipeline wiederverwendet, um Rechenzeit und Ressourcen zu sparen. 
+Da verschiedene Schritte verwendet werden, können Sie nur die Schritte erneut ausführen, die Sie zum Optimieren und Testen Ihres Workflows benötigen. Ein Schritt ist eine Computeeinheit in der Pipeline. Wie im vorhergehenden Diagramm dargestellt, kann das Vorbereiten der Daten viele Schritte umfassen. Zu diesen Schritten zählen unter anderem Normalisierung, Transformation, Überprüfung und Featurebereitstellung. Datenquellen und Zwischendaten werden in der gesamten Pipeline wiederverwendet, um Rechenzeit und Ressourcen zu sparen. 
 
 Nachdem die Pipeline entworfen wurde, wird ihr Trainingsprozess in der Regel weiter optimiert. Wenn Sie eine Pipeline erneut ausführen, springt die Ausführung zu den Schritten, die wiederholt werden müssen, z.B. zu einem aktualisierten Trainingsskript, und überspringt, was sich nicht geändert hat. Das gleiche gilt für unveränderte Skripts, die zum Ausführen des Schritts verwendet werden. 
 
-Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie Microsoft Cognitive Toolkit oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert zwischen den verschiedenen [Computezielen](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten problemlos für die nachgelagerten Computeziele freigegeben werden können. 
+Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie PyTorch oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert zwischen den verschiedenen [Computezielen](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten problemlos für die nachgelagerten Computeziele freigegeben werden können. 
 
 Sie können [die Metriken für Ihre Pipelineexperimente direkt im Azure-Portal verfolgen](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments). 
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234287"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295452"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -30,6 +30,8 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 
 > [!NOTE]
 > Diese Informationen sind vorläufig und können sich ändern. Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](active-directory-develop-help-support.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
+>
+> Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.  
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
@@ -68,7 +70,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS50032 | WeakRsaKey: Gibt den fehlerhaften Benutzerversuch an, einen schwachen RSA-Schlüssel zu verwenden. |
 | AADSTS50033 | RetryableError: Gibt einen vorübergehenden Fehler an, der nicht im Zusammenhang mit den Datenbankvorgängen steht. |
 | AADSTS50034 | UserAccountNotFound: Zum Anmelden bei dieser Anwendung muss das Konto dem Verzeichnis hinzugefügt werden. |
-| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt: Der Salt-Wert, der für das Generieren eines paarweisen Bezeichners erforderlich ist, fehlt im Prinzipal. Wenden Sie sich an den Administrator des Mandanten. |
+| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt: Der Salt-Wert, der für das Generieren eines paarweisen Bezeichners erforderlich ist, fehlt im Prinzip. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | SubjectMismatchesIssuer: Der Antragsteller stimmt nicht mit dem Ausstelleranspruch in der Clientassertion überein. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50049 | NoSuchInstanceForDiscovery: Unbekannte oder ungültige Instanz. |
@@ -140,7 +142,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. |
 | AADSTS65004 | UserDeclinedConsent: Der Benutzer hat seine Zustimmung für den Zugriff auf die App abgelehnt. Bitten Sie den Benutzer, die Anmeldung zu wiederholen und die Zustimmung für die App zu erteilen.|
-| AADSTS65005 | MisconfiguredApplication: Die für die App erforderliche Liste für den Ressourcenzugriff enthält keine Apps, die von der Ressource ermittelt werden können, die Client-App hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die App SAML unterstützt, haben Sie die App ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list) |
+| AADSTS65005 | MisconfiguredApplication: Die für die App erforderliche Liste für den Ressourcenzugriff enthält keine Apps, die von der Ressource ermittelt werden können, die Client-App hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die App SAML unterstützt, haben Sie die App ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant: Fehler bei der Authentifizierung. Das Aktualisierungstoken ist ungültig. Der Fehler kann aus den folgenden Gründen auftreten:<ul><li>Der Bindungsheader des Tokens ist leer.</li><li>Der Tokenbindungshash stimmt nicht überein.</li></ul> |
 | AADSTS70001 | UnauthorizedClient: Die Anwendung ist deaktiviert. |
@@ -255,6 +257,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource: Die Ressource ist nicht dafür konfiguriert, Nur-Gerätetoken zu akzeptieren. |
 | AADSTS240001 | BulkAADJTokenUnauthorized: Der Benutzer ist nicht zum Registrieren von Geräten in Azure AD autorisiert. |
 | AADSTS240002 | RequiredClaimIsMissing: Das id_token kann nicht zur Gewährung von `urn:ietf:params:oauth:grant-type:jwt-bearer` verwendet werden.|
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy: Der Mandantenadministrator hat eine Sicherheitsrichtlinie konfiguriert, die diese Anforderung blockiert. Überprüfen Sie die Sicherheitsrichtlinien, die auf Mandantenebene definiert sind, um festzustellen, ob Ihre Anforderung den Richtlinienanforderungen entspricht. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest: Die Anwendung wurde nicht im Verzeichnis/Mandanten gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie den Bezeichnerwert für die Anwendung falsch konfiguriert oder die Authentifizierungsanforderung an den falschen Mandanten gesendet. |
 | AADSTS700020 | InteractionRequired: Die Zugriffsgewährung erfordert eine Interaktion. |
 | AADSTS700022 | InvalidMultipleResourcesScope: Der angegebene Wert für den Eingabeparameterbereich ist nicht gültig, weil er mehr als eine Ressource enthält. |

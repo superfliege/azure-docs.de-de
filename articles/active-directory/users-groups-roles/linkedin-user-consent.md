@@ -1,5 +1,5 @@
 ---
-title: LinkedIn-Integration der Datenfreigabe und Einwilligung – Azure Active Directory | Microsoft-Dokumentation
+title: Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen – Azure Active Directory | Microsoft-Dokumentation
 description: Es wird beschrieben, wie bei der LinkedIn-Integration Daten über Microsoft-Apps in Azure Active Directory freigegeben werden.
 services: active-directory
 author: curtand
@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e96c7da9ac53927ed48003370f40f5861f48d3d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204769"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200445"
 ---
-# <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn-Integration: Datenfreigabe und Einwilligung
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen
 
-Als Azure Active Directory-Administrator (Azure AD) können Sie Benutzern in Ihrer Organisation die Einwilligung ermöglichen, ihr Microsoft-Geschäfts-, -Schul- oder -Unikonto mit ihrem LinkedIn-Konto zu verbinden. Wenn Benutzer ihre Konten verbinden, sind die Informationen und Highlights von LinkedIn in einigen Microsoft-Apps und Diensten verfügbar. Benutzer können ebenfalls damit rechnen, dass ihre Netzwerkerfahrung bei LinkedIn verbessert und mit Informationen von Microsoft angereichert wird.
+Sie können Benutzern in Ihrer Azure Active Directory-Organisation (Azure AD) die Einwilligung ermöglichen, ihr Microsoft-Geschäfts-, -Schul- oder -Unikonto mit ihrem LinkedIn-Konto zu verbinden. Wenn Benutzer ihre Konten verbinden, sind die Informationen und Highlights von LinkedIn in einigen Microsoft-Apps und Diensten verfügbar. Benutzer können ebenfalls damit rechnen, dass ihre Netzwerkerfahrung bei LinkedIn verbessert und mit Informationen von Microsoft angereichert wird.
 
 Um LinkedIn-Informationen in Microsoft-Apps und -Diensten anzuzeigen, müssen Benutzer einwilligen, ihre eigenen Microsoft- und LinkedIn-Konten zu verbinden. Benutzer werden aufgefordert, ihre Konten zu verbinden, wenn sie zum ersten Mal auf einer Profilkarte in Outlook, OneDrive oder SharePoint Online klicken, um LinkedIn-Informationen von jemandem anzuzeigen. LinkedIn-Kontoverbindungen werden für Ihre Benutzer erst dann vollständig aktiviert, wenn sie ihre Einwilligung zu der Erfahrung und dem Verbinden Ihrer Konten gegeben haben.
 
@@ -32,13 +32,13 @@ Um LinkedIn-Informationen in Microsoft-Apps und -Diensten anzuzeigen, müssen Be
 
 Zugriff auf LinkedIn-Informationen in Microsoft-Apps und -Diensten erleichtert es Ihren Benutzern, sich zu vernetzen, zu engagieren und professionelle Beziehungen mit Kollegen, Kunden und Partnern innerhalb und außerhalb Ihrer Organisation aufzubauen. Neue Benutzer gewöhnen sich schneller ein, indem sie sich mit Kollegen verbinden, mehr über sie erfahren und einfacher auf weitere Informationen zugreifen können. Hier ist ein Beispiel dafür, wie LinkedIn-Informationen auf der Profilkarte in Microsoft-Apps angezeigt werden:
 
-![Aktivieren der LinkedIn-Integration](./media/linkedin-user-consent/display-example.png)
+![Aktivieren der LinkedIn-Integration in Ihrer Organisation](./media/linkedin-user-consent/display-example.png)
 
 ## <a name="enable-and-announce-linkedin-integration"></a>Aktivieren und das Ankündigen der LinkedIn-Integration
 
 Sie müssen Azure Active Directory-Administrator sein, um die Einstellung für Ihre Organisation zu verwalten. Sie können sie für alle Benutzer oder nur für eine bestimmte Gruppe von Benutzern aktivieren.
 
-1. Führen Sie die Schritte unter [LinkedIn-Integration](linkedin-integration.md) aus, um die Integration zu aktivieren bzw. zu deaktivieren.
+1. Um die Integration zu aktivieren bzw. zu deaktivieren, führen Sie die Schritte unter [Einwilligen in die LinkedIn-Integration für Ihre Azure AD Organisation](linkedin-integration.md) aus.
 2. Wenn Sie die LinkedIn-Integration in Ihrer Organisation ankündigen, verweisen Sie Ihre Benutzer auf die häufig gestellten Fragen (FAQ) zu [LinkedIn-Informationen in Microsoft-Apps und -Diensten](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Der Artikel enthält Informationen dazu, wo LinkedIn-Informationen angezeigt werden, wie man Konten verbindet und mehr.
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Benutzereinwilligung zum Datenzugriff in Microsoft und LinkedIn

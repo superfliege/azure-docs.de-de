@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d1c2a35a6ad246eea593990c485181aa776594
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175092"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214751"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -59,7 +59,7 @@ In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur K
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 
-Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als Authentifizierungsmethode auswählen. Manchmal werden diese Optionen als Gates bezeichnet. Es wird dringend empfohlen, **mindestens zwei Authentifizierungsmethoden** auszuwählen, damit Ihre Benutzer ausweichen können, falls sie auf eine Methode nicht zugreifen können.
+Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als Authentifizierungsmethode auswählen. Manchmal werden diese Optionen als Gates bezeichnet. Es wird dringend empfohlen, **mindestens zwei Authentifizierungsmethoden** auszuwählen, damit Ihre Benutzer ausweichen können, falls sie auf eine Methode nicht zugreifen können. Weitere Informationen zu den unten aufgeführten Methoden finden Sie im Artikel [Was sind Authentifizierungsmethoden?](concept-authentication-methods.md)
 
 * Benachrichtigung in der mobilen App (Vorschauversion)
 * Code in der mobilen App (Vorschauversion)
@@ -69,6 +69,9 @@ Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als 
 * Sicherheitsfragen
 
 Benutzer können ihr Kennwort nur zurücksetzen, wenn für sie Daten in den Authentifizierungsmethoden vorliegen, die der Administrator aktiviert hat.
+
+> [!IMPORTANT]
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 > [!WARNING]
 > Konten, denen Azure-Administratorrollen zugewiesen wurden, müssen Methoden nutzen, die im Abschnitt [Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern](concept-sspr-policy.md#administrator-reset-policy-differences) definiert sind.

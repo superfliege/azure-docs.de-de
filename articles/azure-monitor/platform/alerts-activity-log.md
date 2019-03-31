@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: c88fe7051519440056fe85e7ff9172ae0239bd41
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090813"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -27,13 +27,13 @@ Diese Warnungen gelten für Azure-Ressourcen und können mit einer Azure Resourc
 ## <a name="azure-portal"></a>Azure-Portal
 
 > [!NOTE]
-
+> 
 >  Stellen Sie beim Erstellen der Warnungsregeln Folgendes sicher:
-
+> 
 > - Das Abonnement im Bereich unterscheidet sich nicht von dem Abonnement, unter dem die Warnung erstellt wird.
-- Folgende Kriterien müssen verwendet werden: Ebene/Status/Aufrufer/Ressourcengruppe/Ressourcen-ID/Ressourcentyp/Ereigniskategorie, unter der die Warnung konfiguriert wird.
-- Der JSON-Code der Warnungskonfiguration enthält keine „anyOf“-Bedingung oder geschachtelten Bedingungen (nur ein „allOf“-Element ohne weitere „allOf“/„anyOf“-Elemente ist zulässig).
-- Wenn die Kategorie „Administration“ lautet. Sie müssen mindestens eine der oben genannten Kriterien in der Warnung angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
+> - Folgende Kriterien müssen verwendet werden: Ebene/Status/Aufrufer/Ressourcengruppe/Ressourcen-ID/Ressourcentyp/Ereigniskategorie, unter der die Warnung konfiguriert wird.
+> - Der JSON-Code der Warnungskonfiguration enthält keine „anyOf“-Bedingung oder geschachtelten Bedingungen (nur ein „allOf“-Element ohne weitere „allOf“/„anyOf“-Elemente ist zulässig).
+> - Wenn die Kategorie „Administration“ lautet. Sie müssen mindestens eine der oben genannten Kriterien in der Warnung angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
 
 ### <a name="create-with-azure-portal"></a>Erstellen mit dem Azure-Portal
 
@@ -50,35 +50,36 @@ Gehen Sie dazu wie folgt vor:
 
 3. Geben Sie unter **Warnungsbedingung definieren** die folgenden Informationen an, und klicken Sie auf **Fertig**.
 
-    - **Warnungsziel:** Verwenden Sie zum Anzeigen und Auswählen des Ziels für die neue Warnung die Option **Nach Abonnement filtern** / **Nach Ressourcentyp filtern**, und wählen Sie die Ressource oder Ressourcengruppe aus der angegebenen Liste aus.
+   - **Warnungsziel:** Verwenden Sie zum Anzeigen und Auswählen des Ziels für die neue Warnung die Option **Nach Abonnement filtern** / **Nach Ressourcentyp filtern**, und wählen Sie die Ressource oder Ressourcengruppe aus der angegebenen Liste aus.
 
-    > [!NOTE]
+     > [!NOTE]
+     > 
+     > Sie können eine Ressource, eine Ressourcengruppe oder ein gesamtes Abonnement für das Aktivitätsprotokollsignal auswählen.
 
-    > Sie können eine Ressource, eine Ressourcengruppe oder ein gesamtes Abonnement für das Aktivitätsprotokollsignal auswählen.
+     **Beispielansicht für Warnungsziel**
+     ![Ziel auswählen](media/alerts-activity-log/select-target.png)
 
-    **Beispielansicht für Warnungsziel** ![Ziel auswählen](media/alerts-activity-log/select-target.png)
+   - Klicken Sie unter **Zielkriterien** auf **Kriterien hinzufügen**. Daraufhin werden alle verfügbaren Signale für das Ziel angezeigt, einschließlich der Signale aus verschiedenen Kategorien von **Aktivitätsprotokoll**, wobei der Kategoriename an den Namen für den **Monitordienst** angehängt wird.
 
-    - Klicken Sie unter **Zielkriterien** auf **Kriterien hinzufügen**. Daraufhin werden alle verfügbaren Signale für das Ziel angezeigt, einschließlich der Signale aus verschiedenen Kategorien von **Aktivitätsprotokoll**, wobei der Kategoriename an den Namen für den **Monitordienst** angehängt wird.
+   - Wählen Sie das Signal aus der Liste der verschiedenen möglichen Operationen für den Typ **Aktivitätsprotokoll** aus.
 
-    - Wählen Sie das Signal aus der Liste der verschiedenen möglichen Operationen für den Typ **Aktivitätsprotokoll** aus.
+     Sie können die Zeitachse für den Protokollverlauf und die entsprechende Warnungslogik für dieses Zielsignal auswählen:
 
-    Sie können die Zeitachse für den Protokollverlauf und die entsprechende Warnungslogik für dieses Zielsignal auswählen:
+     **Anzeige „Kriterien hinzufügen“**
 
-    **Anzeige „Kriterien hinzufügen“**
+     ![Kriterien hinzufügen](media/alerts-activity-log/add-criteria.png)
 
-    ![Kriterien hinzufügen](media/alerts-activity-log/add-criteria.png)
+     **Verlaufszeit**: Die für den ausgewählten Vorgang verfügbaren Ereignisse können über die letzten 6/12/24 Stunden oder über die letzte Woche aufgezeichnet werden.
 
-    **Verlaufszeit**: Die für den ausgewählten Vorgang verfügbaren Ereignisse können über die letzten 6/12/24 Stunden oder über die letzte Woche aufgezeichnet werden.
-
-    **Warnungslogik**:
+     **Warnungslogik**:
 
      - **Ereignisstufe**: Der Schweregrad des Ereignisses. _Ausführlich_, _Information_, _Warnung_, _Fehler_ oder _Kritisch_.
      - **Status:** Der Status des Ereignisses. _Gestartet_, _Fehlgeschlagen_ oder _Erfolgreich_.
      - **Ereignis initiiert von:** Auch als Aufrufer bekannt; die E-Mail-Adresse oder der Azure Active Directory-Bezeichner des Benutzers, der den Vorgang durchgeführt hat.
 
-        Beispielsignaldiagramm mit angewandter Warnungslogik:
+       Beispielsignaldiagramm mit angewandter Warnungslogik:
 
-        ![ ausgewählten Kriterien](media/alerts-activity-log/criteria-selected.png)
+       ![ ausgewählten Kriterien](media/alerts-activity-log/criteria-selected.png)
 
 4. Geben Sie unter **define alert rules details** (Informationen zu Warnungsregeln definieren) die folgenden Details an:
 
@@ -115,15 +116,15 @@ Alternativ ist eine einfache Analogie zum Verständnis der Bedingungen, unter de
 
     Sie können die verfügbaren Filter _Abonnement_, _Ressourcengruppe_, _Ressource_, _Signaltyp_ oder _Status_ verwenden, um die Aktivitätsregel zu ermitteln, die Sie bearbeiten möchten.
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > Sie können nur **Beschreibung**, **Zielkriterien** und **Aktionsgruppen** bearbeiten.
 
-    > Sie können nur **Beschreibung**, **Zielkriterien** und **Aktionsgruppen** bearbeiten.
+3. Wählen Sie die Regel aus, und doppelklicken Sie darauf, um die Regeloptionen zu bearbeiten. Nehmen Sie die erforderlichen Änderungen vor, und klicken Sie dann auf **Speichern**.
 
-3.  Wählen Sie die Regel aus, und doppelklicken Sie darauf, um die Regeloptionen zu bearbeiten. Nehmen Sie die erforderlichen Änderungen vor, und klicken Sie dann auf **Speichern**.
+   ![ Verwalten von Warnungsregeln](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
-    ![ Verwalten von Warnungsregeln](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4.  Sie können eine Regel deaktivieren, aktivieren oder löschen. Wählen Sie oben im Fenster die entsprechende Option, nachdem Sie die Regel wie in Schritt 2 beschrieben ausgewählt haben.
+4. Sie können eine Regel deaktivieren, aktivieren oder löschen. Wählen Sie oben im Fenster die entsprechende Option, nachdem Sie die Regel wie in Schritt 2 beschrieben ausgewählt haben.
 
 
 ## <a name="azure-resource-template"></a>Azure-Ressourcenvorlage
@@ -204,13 +205,26 @@ Die Json-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z. B.
 
 ## <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="deploy-resource-manager-template-with-powershell"></a>Bereitstellen einer Resource Manager-Vorlage mit PowerShell
+Um PowerShell zum Bereitstellen der Beispielressourcenvorlage zu verwenden, die in einem früheren [Resourcenvorlagenabschnitt](#resource-manager-template, gezeigt wurde, verwenden Sie den folgenden Befehl:
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
+```
+
+Dabei enthält die Datei „sampleActivityLogAlert.parameters.json“ die Werte für die Parameter, die für die Erstellung der Warnungsregeln erforderlich sind.
+
+### <a name="use-activity-log-powershell-cmdlets"></a>Verwenden von PowerShell-Aktivitätsprotokoll-Cmdlets
+
 In Aktivitätsprotokollwarnungen stehen folgende dedizierte PowerShell-Cmdlets zur Verfügung:
 
-- [Set-AzureRmActivityLogAlert:](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert) Erstellen einer neuen oder Aktualisieren einer vorhandenen Ressource für Aktivitätsprotokoll-Warnungsregeln
-- [Get-AzureRmActivityLogAlert:](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert) Abrufen einer oder mehrerer Ressourcen für Aktivitätsprotokoll-Warnungsregeln
-- [Remove-AzureRmActivityLogAlert:](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert) Löschen einer Ressource für Aktivitätsprotokoll-Warnungsregeln mit Benutzerbestätigung
-- [Enable-AzureRmActivityLogAlert:](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert) Aktivieren einer vorhandenen Ressource für Aktivitätsprotokoll-Warnungsregeln
-- [Disable-AzureRmActivityLogAlert:](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert) Deaktivieren einer vorhandenen Ressource für Aktivitätsprotokoll-Warnungsregeln
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0): Erstellt eine neue oder aktualisiert eine vorhandene Aktivitätsprotokollwarnung.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0): Ruft mindestens eine Aktivitätsprotokoll-Warnungsressource ab.
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0): Aktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0): Deaktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0): Entfernt eine Aktivitätsprotokollwarnung.
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 

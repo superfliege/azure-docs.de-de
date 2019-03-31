@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0bcc49df6540b73b8feb5bb1ec4312e680572797
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617808"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243328"
 ---
 # <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Knoten in Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie mit dem Open Source [KUbernetes REboot D
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.49 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss die Version 2.0.59 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Grundlegendes zum AKS-Knotenupdate
 
@@ -78,15 +78,15 @@ Sie können den Status der Knoten mit dem Befehl [kubectl get nodes][kubectl-get
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
-aks-nodepool1-79590246-2   Ready,SchedulingDisabled   agent     1h        v1.9.11
+aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Nachdem das Update abgeschlossen wurde, können Sie den Status der Knoten mit dem Befehl [kubectl get nodes][kubectl-get-nodes] mit dem Parameter `--output wide` anzeigen. Durch diese zusätzliche Ausgabe können Sie einen Unterschied bei *KERNEL-VERSION* der zugrunde liegende Knoten erkennen, wie in der folgenden Beispielausgabe gezeigt. *aks-nodepool1-79590246-2* wurde in einem früheren Schritt aktualisiert und zeigt die Kernelversion *4.15.0-1025-azure* an. Der Knoten *aks-nodepool1-79590246-1*, der noch nicht aktualisiert wurde, zeigt die Kernelversion *4.15.0-1023-azure* an.
+Nachdem das Update abgeschlossen wurde, können Sie den Status der Knoten mit dem Befehl [kubectl get nodes][kubectl-get-nodes] mit dem Parameter `--output wide` anzeigen. Durch diese zusätzliche Ausgabe können Sie einen Unterschied bei *KERNEL-VERSION* der zugrunde liegende Knoten erkennen, wie in der folgenden Beispielausgabe gezeigt. *aks-nodepool1-28993262-0* wurde in einem früheren Schritt aktualisiert und zeigt die Kernelversion *4.15.0-1039-azure* an. Der Knoten *aks-nodepool1-28993262-1*, der noch nicht aktualisiert wurde, zeigt die Kernelversion *4.15.0-1037-azure* an.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.11   10.240.0.6    <none>        Ubuntu 16.04.5 LTS   4.15.0-1023-azure   docker://1.13.1
-aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.11   10.240.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1025-azure   docker://1.13.1
+aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS   4.15.0-1039-azure   docker://3.0.4
+aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

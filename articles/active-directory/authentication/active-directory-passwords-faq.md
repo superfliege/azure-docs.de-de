@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6194ed8ffa5732c9f187679e934aad306293d46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878192"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -46,7 +46,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Kann ich im Namen meiner Benutzer Daten zur Kennwortzurücksetzung definieren?**
 
-  > **A:** Ja, Sie können dies mit Azure AD Connect, PowerShell, dem [Azure-Portal](https://portal.azure.com) oder dem Office 365 Admin Center durchführen. Weitere Informationen finden Sie unter [Von der Azure AD Self-Service-Kennwortzurücksetzung verwendete Daten](howto-sspr-authenticationdata.md).
+  > **A:** Ja, Sie können dies mit Azure AD Connect, PowerShell, dem [Azure-Portal](https://portal.azure.com) oder dem [Microsoft 365 Admin Center](https://admin.microsoft.com) durchführen. Weitere Informationen finden Sie unter [Von der Azure AD Self-Service-Kennwortzurücksetzung verwendete Daten](howto-sspr-authenticationdata.md).
   >
   >
 * **F:  Kann ich Daten für Sicherheitsfragen vom lokalen Standort aus synchronisieren?**
@@ -98,12 +98,10 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * **F:  Wie lange muss ich warten, bis eine E-Mail, eine SMS oder ein Anruf von der Kennwortzurücksetzung eintrifft?**
 
   > **A:** E-Mails, SMS-Nachrichten und Anrufe sollten in weniger als einer Minute eingehen. Im Normalfall dauert es zwischen 5 und 20 Sekunden.
-    >Wenn Sie in diesem Zeitraum die Benachrichtigung nicht erhalten:
-        > * Überprüfen Sie Ihren Ordner mit Junk-E-Mails.
-        > * Überprüfen Sie, ob es sich bei der kontaktierten Nummer oder E-Mail-Adresse um die erwartete Nummer bzw. E-Mail-Adresse handelt.
-        > * Überprüfen Sie, ob die Authentifizierungsdaten im Verzeichnis korrekt formatiert sind, z. B. „+1 4255551234“ oder „*user@contoso.com*“. 
-  >
-  >
+  > Wenn Sie in diesem Zeitraum die Benachrichtigung nicht erhalten:
+  > * Überprüfen Sie Ihren Ordner mit Junk-E-Mails.
+  > * Überprüfen Sie, ob es sich bei der kontaktierten Nummer oder E-Mail-Adresse um die erwartete Nummer bzw. E-Mail-Adresse handelt.
+  > * Überprüfen Sie, ob die Authentifizierungsdaten im Verzeichnis richtig formatiert sind, z.B. „+1 4255551234“ oder *user\@contoso.com*. 
 * **F:  Welche Sprachen werden von der Kennwortzurücksetzung unterstützt?**
 
   > **A:** Die Benutzeroberfläche der Kennwortzurücksetzung, die SMS-Nachrichten und die Sprachanrufe wurden in dieselben Sprachen lokalisiert, die in Office 365 unterstützt werden.

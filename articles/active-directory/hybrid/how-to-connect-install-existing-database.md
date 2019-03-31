@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191349"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286090"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Daten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. Bei der Installation von Azure AD Connect wurde bisher immer eine neue Datenbank mit dem Namen ADSync erstellt. Ab Azure AD Connect Version 1.1.613.0 können Sie Azure AD Connect optional mit einem Verweis auf eine vorhandene ADSync-Datenbank installieren.
@@ -59,37 +59,37 @@ Bevor Sie fortfahren, beachten Sie die folgenden wichtigen Hinweise:
 1.  Laden Sie den Azure AD Connect-Installer (AzureADConnect.MSI) auf den Windows-Server herunter. Doppelklicken Sie auf den Azure AD Connect-Installer, um die Installation von Azure AD Connect zu starten.
 2.  Sobald die MSI-Installation abgeschlossen ist, wird der Azure AD Connect-Assistent mit dem Setup im Express-Modus gestartet. Schließen Sie den Bildschirm durch Klicken auf das Symbol „Beenden“.
 ![Willkommen](./media/how-to-connect-install-existing-database/db1.png)
-3.  Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner <drive>\Programme\Microsoft Azure AD Connect. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
+3.  Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner „C:\Programme\Microsoft Azure Active Directory Connect“. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
 
 > [!NOTE]
-> Verwenden Sie den Schalter **/UseExistingDatabase** nur, wenn die Datenbank bereits Daten aus einer früheren Installation von Azure AD Connect enthält. Dies kann beispielsweise der Fall sein, wenn Sie aus einer lokalen Datenbank zu einer vollständigen SQL Server-Datenbank wechseln oder wenn der Azure AD Connect-Server neu erstellt wurde und Sie eine SQL-Sicherung der ADSync-Datenbank aus einer früheren Installation von Azure AD Connect wiederhergestellt haben. Wenn Sie eine leere Datenbank erstellt haben und diese für die Installation verwenden, überspringen Sie diesen Schritt.
+> Verwenden Sie den Schalter **/UseExistingDatabase** nur, wenn die Datenbank bereits Daten aus einer früheren Installation von Azure AD Connect enthält. Dies kann beispielsweise der Fall sein, wenn Sie aus einer lokalen Datenbank zu einer vollständigen SQL Server-Datenbank wechseln oder wenn der Azure AD Connect-Server neu erstellt wurde und Sie eine SQL-Sicherung der ADSync-Datenbank aus einer früheren Installation von Azure AD Connect wiederhergestellt haben. Wenn die Datenbank leer ist (also keine Daten aus einer früheren Azure AD Connect-Installation enthält), überspringen Sie diesen Schritt.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
-4.  Sie werden mit dem Bildschirm „Willkommen bei Azure AD Connect“ begrüßt. Wenn Sie den Lizenzbedingungen und dem Datenschutzhinweis zugestimmt haben, klicken Sie auf **Fortfahren**.
-![Willkommen](./media/how-to-connect-install-existing-database/db3.png)
-5.  Auf dem Bildschirm **Erforderliche Komponenten installieren** ist die Option **Vorhandenen SQL Server-Computer verwenden** aktiviert. Geben Sie den Namen der SQL-Server-Instanz an, auf der die ADSync-Datenbank gehostet wird. Wenn die zum Hosten der ADSync-Datenbank verwendete SQL Engine-Instanz nicht die Standardinstanz auf dem SQL Server-Computer ist, müssen Sie den Namen der SQL Engine-Instanz angeben. Darüber hinaus müssen Sie, wenn das SQL-Durchsuchen nicht aktiviert ist, auch die Portnummer der SQL Engine-Instanz angeben. Beispiel:          
-![Willkommen](./media/how-to-connect-install-existing-database/db4.png)           
+1. Sie werden mit dem Bildschirm „Willkommen bei Azure AD Connect“ begrüßt. Wenn Sie den Lizenzbedingungen und dem Datenschutzhinweis zugestimmt haben, klicken Sie auf **Fortfahren**.
+   ![Willkommen](./media/how-to-connect-install-existing-database/db3.png)
+1. Auf dem Bildschirm **Erforderliche Komponenten installieren** ist die Option **Vorhandenen SQL Server-Computer verwenden** aktiviert. Geben Sie den Namen der SQL-Server-Instanz an, auf der die ADSync-Datenbank gehostet wird. Wenn die zum Hosten der ADSync-Datenbank verwendete SQL Engine-Instanz nicht die Standardinstanz auf dem SQL Server-Computer ist, müssen Sie den Namen der SQL Engine-Instanz angeben. Darüber hinaus müssen Sie, wenn das SQL-Durchsuchen nicht aktiviert ist, auch die Portnummer der SQL Engine-Instanz angeben. Beispiel:          
+   ![Willkommen](./media/how-to-connect-install-existing-database/db4.png)           
 
-6.  Auf dem Bildschirm **Mit Azure AD verbinden** müssen Sie die Anmeldeinformationen als globaler Administrator Ihres Azure AD-Verzeichnisses angeben. Sie sollten ein Konto in der standardmäßigen Domäne „onmicrosoft.com“ verwenden. Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet.
-![Herstellen einer Verbindung](./media/how-to-connect-install-existing-database/db5.png)
+1. Auf dem Bildschirm **Mit Azure AD verbinden** müssen Sie die Anmeldeinformationen als globaler Administrator Ihres Azure AD-Verzeichnisses angeben. Sie sollten ein Konto in der standardmäßigen Domäne „onmicrosoft.com“ verwenden. Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet.
+   ![Herstellen einer Verbindung](./media/how-to-connect-install-existing-database/db5.png)
  
-7.  Auf dem Bildschirm **Verzeichnisse verbinden** wird die für die Verzeichnissynchronisierung konfigurierte vorhandene AD-Gesamtstruktur mit einem roten Kreuzsymbol aufgelistet. Zum Synchronisieren der Änderungen von einer lokalen AD-Gesamtstruktur ist ein AD DS-Konto erforderlich. Der Azure AD Connect-Assistent kann nicht die Anmeldeinformationen des in der ADSync-Datenbank gespeicherten AD DS-Kontos abrufen, da die Anmeldeinformationen verschlüsselt sind und nur von der vorherigen Azure AD Connect-Serverinstanz entschlüsselt werden können. Klicken Sie auf **Anmeldeinformationen ändern**, um das AD DS-Konto für die AD-Gesamtstruktur anzugeben.
-![Verzeichnisse](./media/how-to-connect-install-existing-database/db6.png)
- 
- 
-8.  Im Popupdialogfeld können Sie entweder (i) eine Enterprise-Administratoranmeldeinfo eingeben und Azure AD Connect das AD DS-Konto für Sie erstellen lassen, oder (ii) das AD DS-Konto selbst erstellen und Azure AD Connect die Anmeldeinformationen angeben. Nachdem Sie eine Option ausgewählt und die erforderlichen Anmeldeinformationen angeben haben, klicken Sie auf **OK**, um das Popupdialogfeld zu schließen.
-![Willkommen](./media/how-to-connect-install-existing-database/db7.png)
+1. Auf dem Bildschirm **Verzeichnisse verbinden** wird die für die Verzeichnissynchronisierung konfigurierte vorhandene AD-Gesamtstruktur mit einem roten Kreuzsymbol aufgelistet. Zum Synchronisieren der Änderungen von einer lokalen AD-Gesamtstruktur ist ein AD DS-Konto erforderlich. Der Azure AD Connect-Assistent kann nicht die Anmeldeinformationen des in der ADSync-Datenbank gespeicherten AD DS-Kontos abrufen, da die Anmeldeinformationen verschlüsselt sind und nur von der vorherigen Azure AD Connect-Serverinstanz entschlüsselt werden können. Klicken Sie auf **Anmeldeinformationen ändern**, um das AD DS-Konto für die AD-Gesamtstruktur anzugeben.
+   ![Verzeichnisse](./media/how-to-connect-install-existing-database/db6.png)
  
  
-9.  Sobald die Anmeldeinformationen bereitgestellt sind, wird das rote Kreuzsymbol durch ein grünes Häkchensymbol ersetzt. Klicken Sie auf **Weiter**.
-![Willkommen](./media/how-to-connect-install-existing-database/db8.png)
+1. Im Popupdialogfeld können Sie entweder (i) eine Enterprise-Administratoranmeldeinfo eingeben und Azure AD Connect das AD DS-Konto für Sie erstellen lassen, oder (ii) das AD DS-Konto selbst erstellen und Azure AD Connect die Anmeldeinformationen angeben. Nachdem Sie eine Option ausgewählt und die erforderlichen Anmeldeinformationen angeben haben, klicken Sie auf **OK**, um das Popupdialogfeld zu schließen.
+   ![Willkommen](./media/how-to-connect-install-existing-database/db7.png)
  
  
-10. Klicken Sie auf dem Bildschirm **Bereit zur Konfiguration** auf **Installieren**.
-![Willkommen](./media/how-to-connect-install-existing-database/db9.png)
+1. Sobald die Anmeldeinformationen bereitgestellt sind, wird das rote Kreuzsymbol durch ein grünes Häkchensymbol ersetzt. Klicken Sie auf **Weiter**.
+   ![Willkommen](./media/how-to-connect-install-existing-database/db8.png)
  
  
-11. Nachdem die Installation abgeschlossen ist, wird die Azure AD Connect-Serverinstanz automatisch für den Stagingmodus aktiviert. Sie sollten die Serverkonfiguration und ausstehenden Exporte vor dem Deaktivieren des Stagingmodus auf unerwartete Änderungen überprüfen. 
+1. Klicken Sie auf dem Bildschirm **Bereit zur Konfiguration** auf **Installieren**.
+   ![Willkommen](./media/how-to-connect-install-existing-database/db9.png)
+ 
+ 
+1. Nachdem die Installation abgeschlossen ist, wird die Azure AD Connect-Serverinstanz automatisch für den Stagingmodus aktiviert. Sie sollten die Serverkonfiguration und ausstehenden Exporte vor dem Deaktivieren des Stagingmodus auf unerwartete Änderungen überprüfen. 
 
 ## <a name="post-installation-tasks"></a>Aufgaben nach der Installation
 Bei der Wiederherstellung einer Datenbanksicherung, die mit einer Version von Azure AD Connect vor 1.2.65.0 erstellt wurde, wählt der Stagingserver automatisch die Anmeldemethode **Nicht konfigurieren**. Während die Einstellungen für die Kennworthashsynchronisierung und die Kennwortrückschreibung wiederhergestellt werden, müssen Sie die Anmeldemethode anschließend so ändern, dass sie mit den anderen für Ihren aktiven Synchronisationsserver geltenden Richtlinien übereinstimmt.  Wenn diese Schritte nicht ausgeführt werden, kann es vorkommen, dass sich Benutzer nicht anmelden können, wenn dieser Server aktiv wird.  
@@ -102,6 +102,7 @@ Anhand der folgenden Tabelle können Sie überprüfen, ob zusätzliche Schritte 
 |Verbund mit AD FS|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte AD FS-Richtlinie.  Wenn Sie Azure AD Connect verwenden, um Ihre AD FS-Farm zu verwalten, können Sie optional die Anmeldemethode für den AD FS-Verbund ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.   Wenn auf dem aktiven Synchronisationsserver Geräteoptionen aktiviert sind, konfigurieren Sie diese Optionen auf diesem Server, indem Sie die Aufgabe „Geräteoptionen konfigurieren“ ausführen.|
 |Pass-Through-Authentifizierung und einmaliges Anmelden beim Desktop|Aktualisieren Sie die Anmeldemethode, um die Konfiguration auf Ihrem aktiven Synchronisationsserver anzupassen.  Wenn diese nicht erfolgt, bevor der Server zum primären Server hochgestuft wird, wird die Pass-Through-Authentifizierung zusammen mit der nahtlosen einmaligen Anmeldung deaktiviert und Ihr Mandant wird möglicherweise gesperrt, wenn Sie keine Option zur Kennworthashsynchronisierung als Sicherungsanmeldung haben. Beachten Sie auch, dass, wenn Sie die Pass-Through-Authentifizierung im Stagingmodus aktivieren, ein neuer Authentifizierungs-Agent installiert, registriert und als hochverfügbarer Agent ausgeführt wird, der Anmeldeanforderungen akzeptiert.|
 |Verbund mit PingFederate|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte PingFederate-Richtlinie.  Sie können optional die Anmeldemethode für die PingFederate-Vorbereitung ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.  Dieser Schritt kann verschoben werden, bis Sie zusätzliche Domänen mit PingFederate verbinden müssen.|
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Nachdem Sie Azure AD Connect installiert haben, können Sie [die Installation überprüfen und Lizenzen zuweisen](how-to-connect-post-installation.md).

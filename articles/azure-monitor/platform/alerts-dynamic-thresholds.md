@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097808"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008904"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor (Public Preview)
 
@@ -79,7 +79,11 @@ Wahrscheinlich nicht. Dynamische Schwellenwerte eignen sich besser für die Erke
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Wie viele Daten werden für die Vorschau und die anschließende Berechnung der Schwellenwerte verwendet?
 
-Die im Diagramm angezeigten Schwellenwerte werden vor dem Erstellen einer Warnungsregel für die Metrik auf der Grundlage der Verlaufsdaten der letzten 10 Tage berechnet. Nach der Erstellung der Warnungsregel erfassen die dynamischen Schwellenwerte zusätzliche verfügbare Verlaufsdaten und berücksichtigen neue Daten, um die Präzision der Schwellenwerte zu verbessern.
+Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel für die Metrik erstellt wird, werden basierend auf genügend historischen Daten berechnet, um Stunden- oder tägliche saisonale Muster (10 Tage) zu berechnen. Wenn Sie auf „Wöchentliches Muster anzeigen“ klicken, werden genügend historische Daten erfasst, um die wöchentlichen saisonalen Muster (28 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten historischen Daten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten.
+
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Wie viele Daten sind zum Auslösen einer Warnung erforderlich?
+
+Dynamische Schwellenwerte erfordern mindestens das Datenvolumen von drei Tagen, um genaue Schwellenwerte zu gewährleisten, bevor Warnungsmeldungen ausgelöst werden.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Bewährte Methoden für dynamische Schwellenwerte
 

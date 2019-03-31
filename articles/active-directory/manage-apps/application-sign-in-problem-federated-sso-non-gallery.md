@@ -16,26 +16,23 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6908951452e135fd87e3214d285042f72e00403
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7cb0139227012be610977df3240f74a03f53be7e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169631"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009054"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
-Um das Problem zu beheben, müssen Sie die Anwendungskonfiguration in Azure AD wie folgt überprüfen:
+Um die unten aufgeführten Probleme bei der Anmeldung zu beheben, wird empfohlen, diese Vorschläge zu befolgen, um eine bessere Diagnose zu erhalten und die Lösungsschritte zu automatisieren:
 
--   Sie haben die Konfigurationsschritte für die Azure AD-Kataloganwendung ausgeführt.
-
--   Die in AAD konfigurierte ID und Antwort-URL entsprechen den erwarteten Werten in der Anwendung.
-
--   Sie haben der Anwendung Benutzer zugewiesen.
+- Installieren Sie die [Browsererweiterung „Meine Apps“ für sichere Anmeldung](access-panel-extension-problem-installing.md), um Azure Active Directory (Azure AD) dabei zu unterstützen, eine bessere Diagnose und Lösung bereitzustellen, wenn Sie die Testumgebung im Azure Portal nutzen.
+- Reproduzieren Sie den Fehler mithilfe der Testfunktionen auf der App-Konfigurationsseite im Azure-Portal. Weitere Informationen zum [Debuggen von SAML-basierten Anwendungen für einmaliges Anmelden](../develop/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Die Anwendung wurde im Verzeichnis nicht gefunden.
 
-*Fehler AADSTS70001: Die Anwendung mit dem Bezeichner „https://contoso.com“ wurde im Verzeichnis nicht gefunden*.
+*Fehler AADSTS70001: Die Anwendung mit dem Bezeichner „`https://contoso.com`“ wurde im Verzeichnis nicht gefunden*.
 
 **Mögliche Ursache**
 
@@ -43,31 +40,29 @@ Das in der SAML-Anforderung aus der Anwendung an Azure AD gesendete Aussteller-A
 
 **Lösung**
 
-Stellen Sie sicher, dass das Aussteller-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichner übereinstimmt:
+Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung „Meine Apps“ für sichere Anmeldung verwenden, müssen Sie diese Schritte nicht manuell ausführen.
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
    * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-8.  <span id="_Hlk477190042" class="anchor"></span>Wechseln Sie zum Abschnitt **Domäne und URLs**. Stellen Sie sicher, dass der Wert im Textfeld „Bezeichner“ mit dem in der Fehlermeldung angezeigten ID-Wert übereinstimmt.
-
-Nachdem Sie den ID-Wert in Azure AD aktualisiert haben und er mit dem von der Anwendung in der SAML-Anforderung gesendeten Wert übereinstimmt, sollten Sie in der Lage sein, sich bei der Anwendung anzumelden.
+8. Nachdem die Anwendung geladen wurde, öffnen Sie **Grundlegende SAML-Konfiguration**. Stellen Sie sicher, dass der Wert im Textfeld „Bezeichner“ mit dem in der Fehlermeldung angezeigten Bezeichnerwert übereinstimmt.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Die Antwortadresse stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein. 
 
-*Fehler AADSTS50011: Die Antwortadresse „https://contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein*. 
+*Fehler AADSTS50011: Die Antwortadresse `https://contoso.com` stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein*. 
 
 **Mögliche Ursache** 
 
@@ -75,33 +70,31 @@ Der AssertionConsumerServiceURL-Wert in der SAML-Anforderung stimmt nicht mit de
 
 **Lösung** 
 
-Stellen Sie sicher, dass der AssertionConsumerServiceURL-Wert in der SAML-Anforderung mit dem in Azure AD konfigurierten Wert für die Antwort-URL übereinstimmt. 
+Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung „Meine Apps“ für sichere Anmeldung verwenden, müssen Sie diese Schritte nicht manuell ausführen.
  
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an. 
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an. 
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken. 
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken. 
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus. 
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus. 
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**. 
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**. 
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen. 
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen. 
 
-  * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und       legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und       legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
   
-6.  Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-8.  Wechseln Sie zum Abschnitt **Domäne und URLs**. Vergewissern Sie sich, dass der Wert im Textfeld für die Antwort-URL dem AssertionConsumerServiceURL-Wert in der SAML-Anforderung entspricht, oder aktualisieren Sie ihn entsprechend.
-
-  * Wird das Textfeld für die Antwort-URL nicht angezeigt, aktivieren Sie das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen**. 
-
+8. Nachdem die Anwendung geladen wurde, öffnen Sie **Grundlegende SAML-Konfiguration**. Vergewissern Sie sich, dass der Wert im Textfeld für die Antwort-URL dem `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung entspricht, oder aktualisieren Sie ihn entsprechend.    
+    
 Nachdem Sie den Wert der Antwort-URL in Azure AD aktualisiert haben und er mit dem von der Anwendung in der SAML-Anforderung gesendeten Wert übereinstimmt, sollten Sie sich bei der Anwendung anmelden können.
 
 ## <a name="user-not-assigned-a-role"></a>Benutzer wurde keine Rolle zugewiesen
 
-*Fehler AADSTS50105: Der angemeldete Benutzer „brian@contoso.com“ ist keiner Rolle für die Anwendung zugewiesen*.
+*Fehler AADSTS50105: Der angemeldete Benutzer „`brian\@contoso.com`“ ist keiner Rolle für die Anwendung zugewiesen*.
 
 **Mögliche Ursache**
 
@@ -109,27 +102,27 @@ Dem Benutzer wurde kein Zugriff auf die Anwendung in Azure AD erteilt.
 
 **Lösung**
 
-Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
+Um einer Anwendung mindestens einen Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung „Meine Apps“ für sichere Anmeldung verwenden, müssen Sie diese Schritte nicht manuell ausführen.
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
-  * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie aus der Liste die Anwendung aus, der Sie einen Benutzer zuweisen möchten.
+6. Wählen Sie aus der Liste die Anwendung aus, der Sie einen Benutzer zuweisen möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Benutzer und Gruppen**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Benutzer und Gruppen**.
 
-8.  Klicken Sie oberhalb der Liste **Benutzer und Gruppen** auf die Schaltfläche **Hinzufügen**, um den Bereich **Zuweisung hinzufügen** zu öffnen.
+8. Klicken Sie oberhalb der Liste **Benutzer und Gruppen** auf die Schaltfläche **Hinzufügen**, um den Bereich **Zuweisung hinzufügen** zu öffnen.
 
-9.  Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Benutzer und Gruppen**.
+9. Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Benutzer und Gruppen**.
 
 10. Geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** den **vollständigen Namen** oder die **E-Mail-Adresse** des gewünschten Benutzers ein.
 
@@ -167,39 +160,35 @@ Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete S
 
     -   [Anforderungen des SAML-Protokolls für einmaliges Anmelden bei Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-Der Hersteller sollte bestätigen, dass er die SAML-Implementierung in Azure AD für einmaliges Anmelden unterstützt.
+Der Anwendungshersteller sollte bestätigen, dass er die SAML-Implementierung in Azure AD für einmaliges Anmelden unterstützt.
 
-## <a name="no-resource-in-requiredresourceaccess-list"></a>Keine Ressource in der Liste requiredResourceAccess
+## <a name="misconfigured-application"></a>Falsch konfigurierte Anwendung
 
-*Fehler AADSTS65005: Die Clientanwendung hat Zugriff auf die Ressource „00000002-0000-0000-c000-000000000000“ angefordert. Bei dieser Anforderung ist ein Fehler aufgetreten, da der Client diese Ressource nicht in der Liste requiredResourceAccess angegeben hat.*
+*Fehler AADSTS650056: Falsch konfigurierte Anwendung. Dies kann einen der folgenden Gründe haben: Für den Client werden in der Anwendungsregistrierung des Clients in den angeforderten Berechtigungen keine Berechtigungen für „AAD Graph“ aufgeführt. Oder der Administrator hat im Mandanten nicht zugestimmt. Sie sollten auch den Anwendungsbezeichner in der Anforderung überprüfen, um sicherzustellen, dass er mit dem konfigurierten Clientanwendungsbezeichner übereinstimmt. Wenden Sie sich an Ihren Administrator, um die Konfiguration zu korrigieren oder im Auftrag des Mandanten zuzustimmen.*
 
 **Mögliche Ursache**
 
-Das Anwendungsobjekt ist beschädigt.
+Das in der SAML-Anforderung von der Anwendung an Azure AD gesendete `Issuer`-Attribut entspricht nicht dem für die Anwendung in Azure AD konfigurierten Bezeichnerwert.
 
 **Lösung**
 
-Um das Problem zu beheben, entfernen Sie die Anwendung aus dem Verzeichnis. Fügen Sie dann die Anwendung erneut hinzu, konfigurieren Sie sie, und führen Sie die folgenden Schritte aus:
+Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung „Meine Apps“ für sichere Anmeldung verwenden, müssen Sie diese Schritte nicht manuell ausführen:
 
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+1.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite **Alle Dienste** auswählen.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+1.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+1.  Wählen Sie im linken Azure Active Directory-Navigationsmenü **Unternehmensanwendungen** aus.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+1.  Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
 
-  * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+    Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+1.  Wählen Sie die Anwendung aus, die Sie für das einmalige Anmelden konfigurieren möchten.
 
-7.  Klicken Sie links oben im Bereich **Übersicht** der Anwendung auf **Löschen**.
-
-8.  Aktualisieren Sie Azure AD, und fügen Sie die Anwendung aus dem Azure AD-Katalog hinzu. Konfigurieren Sie anschließend die Anwendung erneut.
-
-Nach dem erneuten Konfigurieren der Anwendung sollten Sie in der Lage sein, sich bei der Anwendung anzumelden.
+1.  Nachdem die Anwendung geladen wurde, öffnen Sie **Grundlegende SAML-Konfiguration**. Stellen Sie sicher, dass der Wert im Textfeld „Bezeichner“ mit dem in der Fehlermeldung angezeigten Bezeichnerwert übereinstimmt.
 
 ## <a name="certificate-or-key-not-configured"></a>Zertifikat oder Schlüssel nicht konfiguriert
 
@@ -213,29 +202,71 @@ Das Anwendungsobjekt ist beschädigt, und Azure AD erkennt das für die Anwendun
 
 Um das Zertifikat zu löschen und ein neues zu erstellen, führen Sie die folgenden Schritte aus:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
-  * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-8.  Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
+8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-9.  Wählen Sie „Ablaufdatum“ aus. Klicken Sie dann auf **Speichern**.
+9. Wählen Sie „Ablaufdatum“ aus. Klicken Sie dann auf **Speichern**.
 
 10. Aktivieren Sie **Neues Zertifikat aktivieren**, um das aktive Zertifikat außer Kraft zu setzen. Klicken Sie oben im Bereich auf **Speichern**, und akzeptieren Sie die Aktivierung des Rolloverzertifikats.
 
 11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Entfernen**, um das **nicht verwendete** Zertifikat zu entfernen.
+
+## <a name="saml-request-not-present-in-the-request"></a>SAML-Anforderung nicht in der Anforderung vorhanden
+
+*Fehler AADSTS750054: „SAMLRequest“ oder „SAMLResponse“ muss als Abfragezeichenfolgenparameter in der HTTP-Anforderung für die SAML-Umleitungsbindung vorhanden sein.*
+
+**Mögliche Ursache**
+
+Azure AD konnte die SAML-Anforderung in den URL-Parametern in der HTTP-Anforderung nicht identifizieren. Dies kann vorkommen, wenn die Anwendung keine HTTP-Umleitungsbindung beim Senden der SAML-Anforderung an Azure AD verwendet.
+
+**Lösung**
+
+Die Anwendung muss die SAML-Anforderung codiert im Adressheader unter Verwendung der HTTP-Umleitungsbindung senden. Weitere Informationen zur Implementierung finden Sie im Abschnitt zur HTTP-Umleitungsbindung in den [SAML-Protokollspezifikationen](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+
+## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure AD sendet das Token an einen falschen Endpunkt
+
+**Mögliche Ursache**
+
+Wenn die Anmeldeanforderung während des einmaligen Anmeldens keine explizite Antwort-URL (Assertionsverbraucherdienst-URL) enthält, wählt Azure AD eine der konfigurierten Antwort-URLs für diese Anwendung. Auch wenn für die Anwendung eine explizite Antwort-URL konfiguriert wurde, wird der Benutzer möglicherweise an https://127.0.0.1:444 weitergeleitet. 
+
+Wenn die Anwendung als Nicht-Katalog-App hinzugefügt wurde, hat Azure Active Directory die Antwort-URL als Standardwert erstellt. Dieses Verhalten wurde geändert, und Azure Active Directory fügt die URL nicht mehr standardmäßig hinzu. 
+
+**Lösung**
+
+Löschen Sie nicht verwendete Antwort-URLs, die für die Anwendung konfiguriert sind.
+
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite **Alle Dienste** auswählen.
+
+3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+
+4.  Wählen Sie im linken Azure Active Directory-Navigationsmenü **Unternehmensanwendungen** aus.
+
+5.  Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
+
+    Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+
+6.  Wählen Sie die Anwendung aus, die Sie für das einmalige Anmelden konfigurieren möchten.
+
+7.  Nachdem die Anwendung geladen wurde, öffnen Sie **Grundlegende SAML-Konfiguration**. Löschen Sie in **Antwort-URL (Assertionsverbraucherdienst-URL)** nicht verwendete oder standardmäßige Antwort-URLs, die vom System erstellt werden. Beispiel: `https://127.0.0.1:444/applications/default.aspx`.
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problem beim Anpassen der SAML-Ansprüche, die an eine Anwendung gesendet werden
 

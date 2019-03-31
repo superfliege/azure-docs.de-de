@@ -5,29 +5,29 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068183"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337990"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
 Containerbasierte Anwendungen müssen häufig auf Daten in einem externen Datenvolume zugreifen und diese dauerhaft speichern. Wenn ein einzelner Pod Zugriff auf Speicher benötigt, können Sie Azure-Datenträger verwenden, um ein natives Volume für die Anwendungsnutzung bereitzustellen. In diesem Artikel wird das manuelle Erstellen eines Azure-Datenträgers und das Anfügen dieses Datenträgers an einen Pod in AKS veranschaulicht.
 
 > [!NOTE]
-> Ein Azure-Datenträger kann nur für jeweils einen Pod gleichzeitig bereitgestellt werden. Wenn Sie ein persistentes Volume für mehrere Pods freigeben möchten, verwenden Sie [Azure Files][azure-files-volume].
+> Ein Azure-Datenträger kann nur für jeweils einen Pod gleichzeitig bereitgestellt werden. Wenn Sie ein persistentes Volume für mehrere Pods freigeben müssen, verwenden Sie [Azure Files][azure-files-volume].
 
-Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Kubernetes-Volumes][kubernetes-volumes].
+Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen für Anwendungen in AKS][concepts-storage].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Außerdem muss die Version 2.0.59 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Erstellen eines Azure-Datenträgers
 
@@ -35,7 +35,7 @@ Wenn Sie einen Azure-Datenträger für die Verwendung mit AKS erstellen, können
 
 In diesem Artikel erstellen Sie den Datenträger in der Ressourcengruppe „Knoten“. Rufen Sie zunächst den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -52,7 +52,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis zu 8 TiB für S60- oder P60-Datenträger. Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
+> Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
 
 Die ID der Datenträgerressource wird angezeigt, sobald der Befehl erfolgreich abgeschlossen wurde, wie in der folgenden Beispielausgabe gezeigt. Diese Datenträger-ID wird verwendet, um den Datenträger im nächsten Schritt bereitzustellen.
 
@@ -126,6 +126,8 @@ Events:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Entsprechenden bewährte Methoden finden Sie unter [Bewährte Methoden für die Speicherung und Sicherungen in AKS][operator-best-practices-storage].
+
 Weitere Informationen zur Interaktion von AKS-Clustern mit Azure-Datenträgern finden Sie unter [Kubernetes-Plug-In für Azure-Datenträger][kubernetes-disks].
 
 <!-- LINKS - external -->
@@ -143,3 +145,5 @@ Weitere Informationen zur Interaktion von AKS-Clustern mit Azure-Datenträgern f
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-files-volume]: azure-files-volume.md
+[operator-best-practices-storage]: operator-best-practices-storage.md
+[concepts-storage]: concepts-storage.md

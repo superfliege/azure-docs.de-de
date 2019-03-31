@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54fa8d09d930069191fb48e0ab015d436496b725
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166401"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227030"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ Diese schrittweise Anleitung beschreibt die Planung der Bereitstellung von Azure
 
 > [!TIP]
 > In diesem Dokument sind einige Elemente folgendermaßen gekennzeichnet:
->
+> 
 > :heavy_check_mark: **Microsoft-Empfehlung**
->
+> 
 > Hierbei handelt es sich um allgemeine Empfehlungen, die nur umgesetzt werden sollten, wenn sie Ihren individuellen Unternehmensanforderungen entsprechen.
 
 ## <a name="step-1-learn-about-pim"></a>Schritt 1: Informationen zu PIM
@@ -179,13 +179,13 @@ Das Priorisieren des Schutzes von Azure AD-Rollen mit der höchsten Anzahl von B
 
 1. Globaler Administrator
 1. Sicherheitsadministrator
-1. Benutzerkontoadministrator
+1. Benutzeradministrator
 1. Exchange-Administrator
 1. SharePoint-Administrator
-1. Intune-Dienstadministrator
-1. Sicherheit lesen
+1. Intune-Administrator
+1. Benutzer mit Leseberechtigung für Sicherheitsfunktionen
 1. Dienstadministrator
-1. Abrechnungsadministrator
+1. Rechnungsadministrator
 1. Skype for Business-Administrator
 
 > [!TIP]
@@ -259,13 +259,13 @@ In der folgenden Tabelle sind die einzelnen Einstellungen beschrieben.
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Rolle | Name der Rolle, für die Sie die Einstellungen definieren. |
-| Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/>:heavy_check_mark: **Microsoft-Empfehlung**: Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |
+| Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |
 | Benachrichtigung | Ist diese Einstellung auf „true“ festgelegt, erhalten globale Administratoren, Administratoren für privilegierte Rollen und Sicherheitsadministratoren in der Organisation eine E-Mail-Benachrichtigung, wenn ein berechtigter Benutzer die Rolle aktiviert.<br/><br/>**Hinweis:** Einige Organisationen haben keine E-Mail-Adressen mit ihren Administratorkonten verknüpft. Um diese E-Mail-Benachrichtigungen zu erhalten müssen Sie eine alternative E-Mail-Adresse festlegen, damit Administratoren diese E-Mails erhalten. |
-| Vorfallsticket | Gibt an, ob der berechtigte Benutzer beim Aktivieren seiner Rolle eine Vorfallsticketnummer erfassen muss. Mit dieser Einstellung kann eine Organisation jede Aktivierung anhand einer internen Vorfallnummer identifizieren, um unerwünschte Aktivierungen zu verringern.<br/><br/>:heavy_check_mark: **Microsoft-Empfehlung**: Nutzen Sie Vorfallsticketnummern, um PIM mit Ihrem internen System zu verknüpfen. Dies ist insbesondere nützlich für genehmigende Personen, die Kontext für die Aktivierung benötigen. |
-| Genehmigung anfordern | Gibt an, ob der berechtigte Benutzer eine Genehmigung zum Aktivieren der Rolle einholen muss.<br/><br/>:heavy_check_mark: **Microsoft-Empfehlung**: Richten Sie die Genehmigung für Rollen mit der höchsten Berechtigung ein. Basierend auf den Nutzungsmustern aller PIM-Kunden sind globaler Administrator, Benutzeradministrator, Exchange-Administrator, Sicherheitsadministrator und Kennwortadministrator die am häufigsten verwendeten Rollen mit eingerichteter Genehmigung. |
-| Genehmigende Person | Wenn zum Aktivieren der berechtigten Rolle eine Genehmigung erforderlich ist, listen Sie die Personen auf, von denen die Anforderung genehmigt werden muss. PIM legt standardmäßig alle Benutzer als genehmigende Person fest, die Administrator für privilegierte Rollen sind, unabhängig davon, ob es sich um eine permanente oder berechtigte Zuweisung handelt.<br/><br/>**Hinweis:** Wenn ein Benutzer sowohl für eine Azure AD-Rolle berechtigt als auch eine genehmigende Person der Rolle ist, kann er sich nicht selbst genehmigen.<br/><br/>:heavy_check_mark: **Microsoft-Empfehlung**: Wählen Sie als genehmigende Personen jene aus, die am besten über eine bestimmte Rolle und deren häufige Benutzer Bescheid wissen, anstatt eines globalen Administrators. |
+| Vorfallsticket | Gibt an, ob der berechtigte Benutzer beim Aktivieren seiner Rolle eine Vorfallsticketnummer erfassen muss. Mit dieser Einstellung kann eine Organisation jede Aktivierung anhand einer internen Vorfallnummer identifizieren, um unerwünschte Aktivierungen zu verringern.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Nutzen Sie Vorfallsticketnummern, um PIM mit Ihrem internen System zu verknüpfen. Dies ist insbesondere nützlich für genehmigende Personen, die Kontext für die Aktivierung benötigen. |
+| Genehmigung anfordern | Gibt an, ob der berechtigte Benutzer eine Genehmigung zum Aktivieren der Rolle einholen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Richten Sie die Genehmigung für Rollen mit der höchsten Berechtigung ein. Basierend auf den Nutzungsmustern aller PIM-Kunden sind globaler Administrator, Benutzeradministrator, Exchange-Administrator, Sicherheitsadministrator und Kennwortadministrator die am häufigsten verwendeten Rollen mit eingerichteter Genehmigung. |
+| Genehmigende Person | Wenn zum Aktivieren der berechtigten Rolle eine Genehmigung erforderlich ist, listen Sie die Personen auf, von denen die Anforderung genehmigt werden muss. PIM legt standardmäßig alle Benutzer als genehmigende Person fest, die Administrator für privilegierte Rollen sind, unabhängig davon, ob es sich um eine permanente oder berechtigte Zuweisung handelt.<br/><br/>**Hinweis:** Wenn ein Benutzer sowohl für eine Azure AD-Rolle berechtigt als auch eine genehmigende Person der Rolle ist, kann er sich nicht selbst genehmigen.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Wählen Sie als genehmigende Personen jene aus, die am besten über eine bestimmte Rolle und deren häufige Benutzer Bescheid wissen, anstatt eines globalen Administrators. |
 | Aktivierungsdauer | Die Zeitspanne, in der ein Benutzer in der Rolle aktiviert ist, bevor sie abläuft. |
-| Permanenter Administrator | Liste der Benutzer, die ein permanenter Administrator für die Rolle sein werden (d. h. sie nie aktivieren müssen).<br/><br/>:heavy_check_mark: **Microsoft-Empfehlung**: Legen Sie keine ständigen Administratoren für Rollen fest, mit Ausnahme von globalen Administratoren. Mehr dazu erfahren Sie in diesem Plan in den Abschnitten dazu, wer berechtigte und wer dauerhaft aktive Rollenzuweisungen erhalten sollte. |
+| Permanenter Administrator | Liste der Benutzer, die ein permanenter Administrator für die Rolle sein werden (d. h. sie nie aktivieren müssen).<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Legen Sie keine ständigen Administratoren für Rollen fest, mit Ausnahme von globalen Administratoren. Mehr dazu erfahren Sie in diesem Plan in den Abschnitten dazu, wer berechtigte und wer dauerhaft aktive Rollenzuweisungen erhalten sollte. |
 | Aktiver Administrator | Für Azure-Ressourcen ist „Aktiver Administrator“ die Liste der Benutzer, die zur Verwendung der Rolle nie eine Aktivierung durchführen müssen. Dies wird nicht als permanenter Administrator wie bei Azure AD-Rollen bezeichnet, da Sie eine Ablaufzeit festlegen können, nach der ein Benutzer diese Rolle verliert. |
 | Ablauf der Aktivierung | Eine aktive Rollenzuweisung für Azure-Ressourcenrollen läuft nach diesem konfigurierten Zeitraum ab. Sie können zwischen 15 Tagen, 1 Monat, 3 Monaten, 6 Monaten, 1 Jahr und dauerhafter Aktivität wählen. |
 | Ablauf der Berechtigung | Eine berechtigte Rollenzuweisung für Azure-Ressourcenrollen läuft nach diesem konfigurierten Zeitraum ab. Sie können zwischen 15 Tagen, 1 Monat, 3 Monaten, 6 Monaten, 1 Jahr und dauerhafter Berechtigung wählen. |

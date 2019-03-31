@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines Azure Active Directory B2B-Zusammenarbeitsbenutzers zu einer Rolle | Microsoft-Dokumentation
+title: Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle – Azure Active Directory | Microsoft-Dokumentation
 description: Hinzufügen eines Gastbenutzers zu einer Rolle in Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -9,14 +9,15 @@ ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df328228dea53f338c0b2c54422e6b343f96e43e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5ffebd117d1ea69a81395c1517b6f75505b83ac0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172232"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294636"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten
 
@@ -24,15 +25,15 @@ Die Benutzer der Azure Active Directory (Azure AD) B2B-Zusammenarbeit werden dem
 
 ## <a name="default-role"></a>Standardrolle
 
-![Standardrolle](./media/add-guest-to-role/default-role.png)
+![Screenshot mit der Standardverzeichnisrolle](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>Globale Administratorrolle
 
-![Globale Administratorrolle](./media/add-guest-to-role/global-admin-role.png)
+![Screenshot mit der globalen Administratorrolle](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>Administratorrolle mit eingeschränkten Berechtigungen
 
-![Administratorrolle mit eingeschränkten Berechtigungen](./media/add-guest-to-role/limited-admin-role.png)
+![Screenshot mit der eingeschränkten Administratorrolle](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

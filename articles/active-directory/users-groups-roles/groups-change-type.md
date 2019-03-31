@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf73708be8a8bc597b70d0cb50fc337efa72906
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211681"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199600"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Ändern der statischen Gruppenmitgliedschaft in „Dynamisch“ in Azure Active Directory
 
@@ -33,7 +33,7 @@ Sie können die Mitgliedschaft einer Gruppe in Azure Active Directory (Azure AD)
 
 ## <a name="change-the-membership-type-for-a-group"></a>Ändern des Typs der Mitgliedschaft für eine Gruppe
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzerkontoadministrator in Ihrem Mandanten konfiguriert ist.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzeradministrator in Ihrem Mandanten konfiguriert ist.
 2. Wählen Sie **Gruppen** aus.
 3. Öffnen Sie in der Liste **Alle Gruppen** die Gruppe, die Sie ändern möchten.
 4. Wählen Sie **Eigenschaften** aus.
@@ -47,14 +47,13 @@ Die folgenden Schritte sind ein Beispiel für die Änderung der Mitgliedschaft e
   
 2. Wählen Sie **Dynamische Abfrage hinzufügen** aus, und geben Sie dann die Regel an.
   
-   ![Regel eingeben](./media/groups-change-type/enter-rule.png)
+   ![Eingeben der Regel für die dynamische Gruppe](./media/groups-change-type/enter-rule.png)
   
 3. Wählen Sie nach dem Erstellen der Regel unten auf der Seite **Abfrage hinzufügen** aus.
 4. Wählen Sie für die Gruppe **Speichern** auf der Seite **Eigenschaften** aus, um die Änderungen zu speichern. Der **Mitgliedschaftstyp** der Gruppe wird sofort in der Gruppenliste aktualisiert.
 
 > [!TIP]
 > Wenn die eingegebene Mitgliedschaftsregel falsch war, kann dies zu Fehlern bei der Gruppenkonvertierung führen. Oben rechts im Portal wird eine Benachrichtigung angezeigt, die erläutert, warum die Regel nicht vom System angenommen werden konnte. Lesen Sie sie sorgfältig, um zu erfahren, wie die Regel angepasst werden kann, damit sie gültig ist. Beispiele für die Regelsyntax und eine vollständige Liste mit den unterstützten Eigenschaften, Operatoren und Werten für eine Mitgliedschaftsregel finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](groups-dynamic-membership.md).
-
 
 ## <a name="change-membership-type-for-a-group-powershell"></a>Ändern des Typs der Mitgliedschaft für eine Gruppe (PowerShell)
 
@@ -63,7 +62,7 @@ Die folgenden Schritte sind ein Beispiel für die Änderung der Mitgliedschaft e
 
 Hier folgt ein Beispiel für Funktionen, die die Verwaltung der Mitgliedschaft für eine vorhandene Gruppe wechseln. In diesem Beispiel wird darauf geachtet, dass die GroupTypes-Eigenschaft ordnungsgemäß geändert wird und alle Werte erhalten bleiben, die dort vorhanden sind und keine Beziehung zur dynamischen Mitgliedschaft aufweisen.
 
-```
+```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
 $dynamicGroupTypeString = "DynamicMembership"
 
@@ -107,13 +106,13 @@ function ConvertStaticGroupToDynamic
 ```
 So erstellen Sie eine statische Gruppe
 
-```
+```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
 So erstellen Sie eine dynamische Gruppe
 
-```
+```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 

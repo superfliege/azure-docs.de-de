@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e2c3cfd509c9b0b77d0db00add31b58a07ce6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206547"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287025"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Beseitigen falscher Kennwörter in Ihrer Organisation
-
-|     |
-| --- |
-| Azure AD-Kennwortschutz und die benutzerdefinierte Liste der gesperrten Kennwörter sind in der öffentlichen Vorschau befindliche Features von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 Branchenführer schärfen Ihnen ein, dasselbe Kennwort nicht mehrmals zu verwenden, ein Kennwort komplex zu gestalten und nicht einfach Kennwörter wie „Kennwort123“ zu verwenden. Wie können Organisationen gewährleisten, dass ihre Benutzer Anleitungen folgen? Wie können sie sicherstellen, dass Benutzer keine gebräuchlichen Kennwörter verwenden, oder Kennwörter, die bekanntermaßen in neueste Datenschutzverstöße verwickelt sind?
 
@@ -31,7 +26,7 @@ Branchenführer schärfen Ihnen ein, dasselbe Kennwort nicht mehrmals zu verwend
 
 Bei Microsoft arbeiten wir ununterbrochen daran, den Cyberkriminellen immer einen Schritt voraus zu sein. Aus diesem Grund sucht das Azure AD Identity Protection-Team ständig nach häufig verwendeten und gefährdeten Kennwörtern. Dann werden Kennwörter, die als zu häufig verwendet eingestuft werden, durch Eintrag in die Liste global gesperrter Kennwörter blockiert. Weil Cyberkriminelle in ihren Angriffen ähnliche Strategien verwenden, veröffentlicht Microsoft die Inhalte dieser Liste nicht. Diese anfälligen Kennwörter werden blockiert, bevor sie für die Kunden von Microsoft ein echtes Risiko darstellen. Weitere Informationen zur derzeitigen Arbeit in Bezug auf Sicherheitsmaßnahmen finden Sie im [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Vorschau: Benutzerdefinierte Liste gesperrter Kennwörter
+## <a name="custom-banned-password-list"></a>Benutzerdefinierte Liste gesperrter Kennwörter
 
 Manche Organisationen möchten möglicherweise in puncto Sicherheit noch einen Schritt weiter gehen, indem sie die Liste global gesperrter Kennwörter mit ihren eigenen Anpassungen in der von Microsoft als benutzerdefinierte Liste gesperrter Kennwörter bezeichneten Liste ergänzen. Enterprisekunden wie Contoso könnten dann wählen, Varianten ihres Markennamens, unternehmensspezifische Begriffe oder andere Elemente zu blockieren.
 
@@ -41,7 +36,7 @@ Die benutzerdefinierte Liste gesperrter Kennwörter sowie die Möglichkeit, eine
 
 ## <a name="on-premises-hybrid-scenarios"></a>Lokale Hybridszenarien
 
-Schützen von ausschließlichen Cloudkonten ist hilfreich, aber viele Organisationen behalten Hybridszenarien einschließlich des lokalen Windows Server Active Directory bei. Es ist möglich, Azure AD-Kennwortschutz für Windows Server Active Directory-Agents (Vorschau) lokal zu installieren, um die Liste gesperrter Kennwörter auf Ihre bestehende Infrastruktur auszudehnen. Zurzeit müssen Benutzer und Administratoren, die Kennwörter lokal ändern, festlegen oder zurücksetzen, die gleiche Kennwortrichtlinie einhalten wie ausschließliche Cloudbenutzer.
+Schützen von ausschließlichen Cloudkonten ist hilfreich, aber viele Organisationen behalten Hybridszenarien einschließlich des lokalen Windows Server Active Directory bei. Es ist möglich, Azure AD-Kennwortschutz für Windows Server Active Directory-Agents lokal zu installieren, um die Liste gesperrter Kennwörter auf Ihre vorhandene Infrastruktur auszudehnen. Zurzeit müssen Benutzer und Administratoren, die Kennwörter lokal ändern, festlegen oder zurücksetzen, die gleiche Kennwortrichtlinie einhalten wie ausschließliche Cloudbenutzer.
 
 ## <a name="how-are-passwords-evaluated"></a>Auswerten von Kennwörtern
 
@@ -60,7 +55,7 @@ Die Normalisierung besteht aus zwei Teilen.  Zunächst werden alle Großbuchstab
 | '0'  | 'o' |
 | '1'  | 'l' |
 | '$'  | 's' |
-| '@'  | 'a' |
+| '\@'  | 'a' |
 
 Beispiel: Nehmen wir an, dass das Kennwort „blank“ gesperrt ist und ein Benutzer versucht, sein Kennwort in „Bl@nK“ zu ändern. Obwohl „Bl@nk“ nicht ausdrücklich verboten ist, wandelt der Normalisierungsprozess dieses Kennwort in „blank“ um, was ein gesperrtes Kennwort ist.
 
@@ -96,7 +91,7 @@ Beispiel: ein Benutzer ändert sein Kennwort in „C0ntos0Blank12“.
 
 Nach der Normalisierung würde dieses Kennwort „contosoblank12“ lauten. Der Abgleichsprozess ermittelt, dass dieses Kennwort zwei gesperrte Kennwörter enthält: „contoso“ und „blank“. Dieses Kennwort erhält anschließend eine Bewertung:
 
-[contoso] + [blank] = [1] + [2] = 4 Punkte. Da das Kennwort weniger als fünf Punkte erhält, wird es abgelehnt.
+[contoso] + [blank] + [1] + [2] = 4 Punkte. Da das Kennwort weniger als fünf Punkte erhält, wird es abgelehnt.
 
 Beispiel: ein Benutzer ändert sein Kennwort in „ContoS0Bl@nkf9“.
 

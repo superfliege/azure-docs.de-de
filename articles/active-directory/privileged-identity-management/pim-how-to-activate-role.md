@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0023ac374ef70593d0ab2d9589c99d0f37e19ff8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7fc0a22f4300a06b5c827973ffb2436d0b8cfb36
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189598"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542742"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Aktivieren von Azure AD-Verzeichnisrollen in PIM
 
@@ -71,25 +71,15 @@ Wenn Sie eine Azure AD-Verzeichnisrolle übernehmen müssen, können Sie in PIM 
 
 1. Klicken Sie auf **Aktivieren**.
 
-    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle sofort verwenden möchten, führen Sie die Schritte im nächsten Abschnitt aus.
+    Wenn die Rolle nicht genehmigungspflichtig ist, wird ein Bereich **Aktivierungsstatus** angezeigt, der den Status der Aktivierung angibt.
+
+    ![Aktivierungsstatus](./media/pim-how-to-activate-role/activation-status.png)
+
+    Nachdem alle Phasen abgeschlossen wurden, klicken Sie auf den Link **Abmelden**, um sich vom Azure-Portal abzumelden. Wenn Sie sich erneut am Portal anmelden, können Sie die Rolle nun verwenden.
 
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
     ![Benachrichtigung über ausstehende Anforderung](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
-
-Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie in den folgenden Schritten beschrieben.
-
-1. Öffnen Sie Azure AD Privileged Identity Management.
-
-1. Klicken Sie auf die Seite **Anwendungszugriff**.
-
-    ![PIM-Anwendungszugriff](./media/pim-how-to-activate-role/pim-application-access.png)
-
-1. Klicken Sie auf den Link **Azure Active Directory**, um das Portal auf der Seite **Alle Benutzer** erneut zu öffnen.
-
-    Wenn Sie auf diesen Link klicken, wird Ihr aktuelles Token ungültig. Gleichzeitig wird erzwungen, dass das Azure-Portal ein neues Token abruft, das Ihre aktualisierten Berechtigungen enthält.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -139,7 +129,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
 
-Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie weiter oben unter [Verwenden einer Rolle sofort nach der Aktivierung](#use-a-role-immediately-after-activation) beschrieben.
+Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Sobald die Aktivierung abgeschlossen ist, melden Sie sich vom Azure-Portal ab und dann erneut an, um die neu aktivierte Rolle zu nutzen.
 
 Weitere Schritte zur Problembehandlung finden Sie unter [Behandeln von Problemen mit erhöhten Berechtigungen](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
 

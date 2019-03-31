@@ -1,5 +1,5 @@
 ---
-title: Gruppenbenennungsrichtlinie (Vorschau) – Office 365-Gruppen – Azure Active Directory | Microsoft-Dokumentation
+title: Durchsetzen einer Gruppenbenennungsrichtlinie – Office 365-Gruppen – Azure Active Directory | Microsoft-Dokumentation
 description: Einrichten einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
 services: active-directory
 documentationcenter: ''
@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ca7f457f74202735d3abdf7faaed4ee66745f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bce8a9e4018f24022fcc45733d64ce47d07ba771
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898770"
 ---
-# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
+# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
 Um einheitliche Benennungskonventionen für Office 365-Gruppen zu erzwingen, die von Ihren Benutzern erstellt oder bearbeitet werden, richten Sie eine Gruppenbenennungsrichtlinie für Ihre Mandanten in Azure Active Directory (Azure AD) ein. Beispielsweise können Sie mithilfe der Benennungsrichtlinie die Funktion einer Gruppe, die Mitgliedschaft, die geografische Region oder den Ersteller der Gruppe kommunizieren. Sie können mit der Benennungsrichtlinie auch die Kategorisierung von Gruppen im Adressbuch unterstützen. Es ist auch möglich, die Richtlinie zu verwenden, um bestimmte Wörter in Gruppennamen und Aliasen zu verhindern.
 
 > [!IMPORTANT]
-> Die Nutzung der Vorschau der Benennungsrichtlinie für Office 365-Gruppen erfordert Azure Active Directory Premium P1-Lizenzen oder Azure AD Basic EDU-Lizenzen für jeden eindeutigen Benutzer, der Mitglied einer oder mehrerer Office 365-Gruppen ist.
+> Die Nutzung der Benennungsrichtlinie für Office 365-Gruppen erfordert Azure Active Directory Premium P1-Lizenzen oder Azure AD Basic EDU-Lizenzen für jeden eindeutigen Benutzer, der Mitglied mindestens einer Office 365-Gruppe ist.
 
 Die Benennungsrichtlinie wird bei der Erstellung oder Bearbeitung von Gruppen aller Workloads (z.B. Outlook, Microsoft Teams, SharePoint, Exchange oder Planner) angewendet. Sie wird sowohl auf Gruppennamen als auch auf Gruppenaliase angewendet. Wenn Sie Ihre Benennungsrichtlinie in Azure AD einrichten und bereits über eine Benennungsrichtlinie für Exchange-Gruppen verfügen, wird die Azure AD-Benennungsrichtlinie angewendet.
 
@@ -72,7 +72,7 @@ Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenwor
 - Globaler Administrator
 - Partnersupport der Ebene 1
 - Partnersupport der Ebene 2
-- Benutzerkontoadministrator
+- Benutzeradministrator
 - Verzeichnis schreiben
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Installieren von PowerShell-Cmdlets für das Konfigurieren einer Benennungsrichtlinie
@@ -82,15 +82,15 @@ Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory-P
 1. Führen Sie die Windows PowerShell-App als Administrator aus.
 2. Deinstallieren Sie alle vorherigen Versionen von AzureADPreview.
   
-  ```
-  Uninstall-Module AzureADPreview
-  ```
+   ```
+   Uninstall-Module AzureADPreview
+   ```
 3. Installieren Sie die neueste Version von AzureADPreview.
   
-  ```
-  Install-Module AzureADPreview
-  ```
-Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informiert werden, geben Sie **Y** ein. Es dauert möglicherweise einige Minuten, bis das neue Modul installiert wird.
+   ```
+   Install-Module AzureADPreview
+   ```
+   Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informiert werden, geben Sie **Y** ein. Es dauert möglicherweise einige Minuten, bis das neue Modul installiert wird.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurieren der Benennungsrichtlinien für Gruppen für einen Mandanten mit Azure AD PowerShell
 
@@ -98,11 +98,11 @@ Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informie
 
 2. Führen Sie die folgenden Befehle aus, um die Ausführung der Cmdlets vorzubereiten.
   
-  ```
-  Import-Module AzureADPreview
-  Connect-AzureAD
-  ```
-  Geben Sie auf dem angezeigten Bildschirm **Bei Ihrem Konto anmelden** Ihr Administratorkonto und das zugehörige Kennwort ein, um eine Verbindung mit dem Dienst herzustellen, und wählen Sie **Anmelden** aus.
+   ```
+   Import-Module AzureADPreview
+   Connect-AzureAD
+   ```
+   Geben Sie auf dem angezeigten Bildschirm **Bei Ihrem Konto anmelden** Ihr Administratorkonto und das zugehörige Kennwort ein, um eine Verbindung mit dem Dienst herzustellen, und wählen Sie **Anmelden** aus.
 
 3. Um Gruppeneinstellungen für diesen Mandanten zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](groups-settings-cmdlets.md) aus.
 
@@ -110,35 +110,35 @@ Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informie
 
 1. Rufen Sie die aktuelle Benennungsrichtlinie ab, um die derzeitigen Einstellungen anzuzeigen.
   
-  ```
-  $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-  ```
+   ```
+   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+   ```
   
 2. Zeigen Sie die aktuellen Gruppeneinstellungen an.
   
-  ```
-  $Setting.Values
-  ```
+   ```
+   $Setting.Values
+   ```
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Festlegen von Benennungsrichtlinie und benutzerdefinierten blockierten Wörtern
 
 1. Legen Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell fest. Für die ordnungsgemäße Funktion des Features muss [GroupName] in der Einstellung enthalten sein.
   
-  ```
-  $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-  ```
+   ```
+   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
+   ```
   
 2. Legen Sie benutzerdefinierte blockierte Wörter fest, deren Verwendung Sie einschränken möchten. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre eigenen benutzerdefinierten Wörter hinzufügen können.
   
-  ```
-  $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-  ```
+   ```
+   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
+   ```
   
 3. Speichern Sie die Einstellungen wie im folgenden Beispiel, damit die neue Richtlinie angewendet wird.
   
-  ```
-  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ```
+   ```
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   ```
   
 Das ist alles. Sie haben Ihre Benennungsrichtlinie festgelegt und eigene blockierte Wörter hinzugefügt.
 
@@ -173,21 +173,21 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 1. Leeren Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell.
   
-  ```
-  $Setting["PrefixSuffixNamingRequirement"] =""
-  ```
+   ```
+   $Setting["PrefixSuffixNamingRequirement"] =""
+   ```
   
 2. Leeren Sie die benutzerdefinierten blockierten Wörter. 
   
-  ```
-  $Setting["CustomBlockedWordsList"]=""
-  ```
+   ```
+   $Setting["CustomBlockedWordsList"]=""
+   ```
   
 3. Speichern Sie die Einstellungen.
   
-  ```
-  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ```
+   ```
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   ```
 
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Benennungsrichtlinien in Office 365-Apps
@@ -218,7 +218,7 @@ StaffHub  | StaffHub-Teams unterliegen nicht der Benennungsrichtlinie, die zugru
 Exchange PowerShell | Exchange PowerShell-Cmdlets sind mit der Benennungsrichtlinie konform. Benutzer erhalten entsprechende Fehlermeldungen mit Vorschlägen für Präfixe und Suffixe und den benutzerdefinierten blockierten Wörtern, wenn sie die Benennungsrichtlinie beim Gruppennamen oder -alias (mailNickname) nicht einhalten.
 Azure Active Directory PowerShell-Cmdlets | Azure Active Directory PowerShell-Cmdlets sind mit der Benennungsrichtlinie konform. Benutzer erhalten entsprechende Fehlermeldungen mit Vorschlägen für Präfixe und Suffixe und den benutzerdefinierten blockierten Wörtern, wenn sie die Benennungsrichtlinie bei Gruppennamen oder -aliasen nicht einhalten.
 Exchange Admin Center | Exchange Admin Center ist mit der Benennungsrichtlinie konform. Benutzer erhalten entsprechende Fehlermeldungen mit Vorschlägen für Präfixe und Suffixe und den benutzerdefinierten blockierten Wörtern, wenn sie die Benennungsrichtlinie bei Gruppennamen oder -aliasen nicht einhalten.
-Office 365 Admin Center | Office 365 Admin Center ist mit der Benennungsrichtlinie konform. Wenn Benutzer Gruppennamen erstellen oder bearbeiten, wird die Benennungsrichtlinie automatisch angewendet, und die Benutzer erhalten entsprechende Fehler, wenn sie benutzerdefinierte blockierte Wörter eingeben. Office 365 Admin Center zeigt bisher noch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Gruppennamens an, und es werden auch keine Fehler bei benutzerdefinierten blockierten Wörtern zurückgeben, wenn Benutzer den Gruppennamen eingeben.
+Microsoft 365 Admin Center | Microsoft 365 Admin Center ist mit der Benennungsrichtlinie konform. Wenn Benutzer Gruppennamen erstellen oder bearbeiten, wird die Benennungsrichtlinie automatisch angewendet, und die Benutzer erhalten entsprechende Fehler, wenn sie benutzerdefinierte blockierte Wörter eingeben. Microsoft 365 Admin Center zeigt bisher noch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Gruppennamens an, und es werden auch keine Fehler bei benutzerdefinierten blockierten Wörtern zurückgeben, wenn Benutzer den Gruppennamen eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure AD-Gruppen.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a37a811c7944334571b4043d8ba937ffadc1e71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Tutorial: Azure Active Directory-Integration mit Work.com
 
@@ -262,9 +262,9 @@ Damit sich Azure Active Directory-Benutzer anmelden können, müssen sie in Work
     
     c. Geben Sie im Textfeld **Alias** den **Namen** des Benutzers ein, z.B. **BrittaS**.
     
-    d. Geben Sie im Textfeld **Email** die **E-Mail-Adresse** des Benutzers ein, z.B. **Brittasimon@contoso.com**.
+    d. Geben Sie im Textfeld **Email** die **E-Mail-Adresse** des Benutzers **Brittasimon\@contoso.com** ein.
     
-    e. Geben Sie im Textfeld **User Name** den Benutzernamen des Benutzers ein, z.B. **Brittasimon@contoso.com**.
+    e. Geben Sie im Textfeld **User Name** den Benutzernamen des Benutzers ein, z.B. **Brittasimon\@contoso.com**.
     
     f. Geben Sie im Textfeld **Nick Name** den **Spitznamen** der Benutzerin **Simon** ein.
     

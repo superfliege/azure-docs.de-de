@@ -1,24 +1,24 @@
 ---
-title: Einrichten von Azure-Konten für Project Acoustics
+title: Einrichten eines Azure Batch-Kontos für das Projekt Akustik
 titlesuffix: Azure Cognitive Services
-description: Befolgen Sie diese Anleitung zum Einrichten von Azure Batch- und Storage-Konten, die für die Verwendung mit Acoustics erforderlich sind.
+description: In dieser Vorgehensweise wird beschrieben, wie ein Azure Batch-Konto für die Verwendung mit Projekt Akustik Unity- und Unreal-Engineintegrationen eingerichtet wird.
 services: cognitive-services
 author: ashtat
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8735c0c5d05f2ee4bd17dc41fc90d1f5aa5128a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3b761630124ef7f72269fe0712bf22647968d59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137027"
 ---
-# <a name="create-an-azure-batch-account"></a>Erstellen eines Azure Batch-Kontos
-Befolgen Sie diese Anleitung zum Einrichten von Azure Batch- und Storage-Konten, die für die Verwendung mit Acoustics erforderlich sind. Informationen zum Unity-Plug-In, das im Rahmen von Project Acoustics entwickelt wurde, finden Sie unter [Was ist Acoustics](what-is-acoustics.md). Informationen dazu, wie Acoustics in das Unity-Projekt eingebunden wird, finden Sie unter [Erste Schritte](getting-started.md).  
+# <a name="project-acoustics-azure-batch-account-setup"></a>Einrichten eines Azure Batch-Kontos für das Projekt Akustik
+In dieser Vorgehensweise wird beschrieben, wie ein Azure Batch-Konto für die Verwendung mit Projekt Akustik Unity- und Unreal-Engineintegrationen eingerichtet wird.
 
 ## <a name="get-an-azure-subscription"></a>Erhalten eines Azure-Abonnements
 Zum Einrichten von Batch- und Storage-Konten ist ein [Azure-Abonnement](https://azure.microsoft.com/free/) erforderlich. Wenn Sie sich zum ersten Mal anmelden, stellt Azure einige zeitlich begrenzte kostenlose Ressourcen und ein Guthaben in Höhe von 200 USD bereit.
@@ -28,40 +28,40 @@ Befolgen Sie als Nächstes [diese Anweisungen](https://docs.microsoft.com/azure/
 
 Wählen Sie für Batch- und Storage-Konten Standardoptionen aus:
   
-  ![Neues Batch-Konto](media/NewBatchAccountCreate.png)
+  ![Neues Batch-Konto](media/new-batch-account-create.png)
 
-  ![Neues Storage-Konto](media/BatchStorageAccountCreate.png)
+  ![Neues Storage-Konto](media/batch-storage-account-create.png)
 
 Das Bereitstellen der Konten durch Azure dauert einige Minuten. Halten Sie nach einer Benachrichtigung zum Abschluss in der oberen rechten Ecke des Portals Ausschau.
   
-  ![Bereitgestellte Konten](media/BatchAccountsDeployNotification.png)
+  ![Bereitgestellte Konten](media/batch-accounts-deploy-notification.png)
 
 Ihre Konten sollten nun in Ihrem Dashboard angezeigt werden.
   
-  ![Dashboard des Portals](media/AzurePortalDashboard.png)
+  ![Dashboard des Portals](media/azure-portal-dashboard.png)
 
 ## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Einrichten der Benutzeroberfläche für den Acoustics-Bake-Vorgang mit Azure-Anmeldeinformationen
 Klicken Sie im Dashboard auf den Link für das Batch-Konto und anschließend auf der Seite „Batch-Konto“ auf den Link **Keys** (Schlüssel), um auf Ihre Anmeldeinformationen zuzugreifen.
   
-  ![Link für Batch-Schlüssel](media/BatchAccessKeys.png)
+  ![Link für Batch-Schlüssel](media/batch-access-keys.png)
 
-  ![Anmeldeinformationen für Batch-Konto](media/BatchKeysInfo.png)
+  ![Anmeldeinformationen für Batch-Konto](media/batch-keys-info.png)
 
 Klicken Sie auf der Seite auf den Link **Storage-Konto**, um auf die Anmeldeinformationen Ihres Azure Storage-Kontos zuzugreifen.
   
-  ![Anmeldeinformationen des Speicherkontos](media/StorageKeysInfo.png)
+  ![Anmeldeinformationen des Speicherkontos](media/storage-keys-info.png)
 
-Geben Sie diese Anmeldeinformationen auf der Registerkarte „Bake“ (Bake-Vorgang) ein wie in der [exemplarischen Vorgehensweise für Baking-UI](bake-ui-walkthrough.md) beschrieben.
+Geben Sie diese Anmeldeinformationen in das [Unity Bake-Plug-In](unity-baking.md) oder das [Unreal Bake-Plug-In](unreal-baking.md) ein.
 
 ## <a name="node-types-and-region-support"></a>Knotentypen und Unterstützung für Regionen
-Für Project Acoustics sind Compute-optimierte Azure VM-Knoten der F- und H-Serie erforderlich, die möglicherweise nicht in allen Azure-Regionen unterstützt werden. Überprüfen Sie [diese Tabelle](https://azure.microsoft.com/global-infrastructure/services), um sicherzustellen, dass Sie den richtigen Ort für Ihr Batch-Konto auswählen. Derzeit werden VMs der H-Serie in den Regionen „USA, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Norden“, „Europa, Westen“ und „Japan, Westen“ unterstützt.
+Für Projekt Akustik sind für Compute optimierte Azure VM-Knoten der Fsv2- und H-Serie erforderlich, die möglicherweise nicht in allen Azure-Regionen unterstützt werden. Überprüfen Sie [diese Tabelle](https://azure.microsoft.com/global-infrastructure/services), um sicherzustellen, dass Sie den richtigen Ort für Ihr Batch-Konto auswählen.
+![Azure Virtual Machines nach Region](media/azure-regions.png) 
 
 ## <a name="upgrading-your-quota"></a>Upgraden des Kontingents
-Azure Batch-Konten werden beim Erstellen des Kontos mit einem Limit von 20 Compute-Kernen bereitgestellt. Sie sollten dieses Limit erhöhen. Dadurch werden die Zeiten für den Bake-Vorgang verkürzt, da Sie die Acoustics-Workload auf mehreren Knoten (bis zur Anzahl von Testpunkten in Ihrer Szene) gleichzeitig verarbeiten können. Sie können eine Kontingenterhöhung anfordern, indem Sie auf Ihrer Azure Batch-Portalseite auf den Link **Kontingent** und anschließend auf **Kontingenterhöhung anfordern** klicken:
+Azure Batch-Konten werden beim Erstellen des Kontos mit einem Limit von 20 Compute-Kernen bereitgestellt. Sie sollten dieses Limit ggf. erhöhen. Dadurch werden die Zeiten für den Bake-Vorgang verkürzt, da Sie die Akustik-Workload auf mehreren Knoten (bis zur Anzahl von Testpunkten in Ihrer Szene) gleichzeitig verarbeiten können. Sie können eine Kontingenterhöhung anfordern, indem Sie auf Ihrer Azure Batch-Portalseite auf den Link **Kontingent** und anschließend auf **Kontingenterhöhung anfordern** klicken:
 
-![Erhöhen des Azure-Kontingente](media/azurequotas.png)
+![Erhöhen des Azure-Kontingente](media/azure-quotas.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erste Schritte mit der [Integration von Akustik in das Unity-Projekt](getting-started.md)
-* Untersuchen der [Beispielszene](sample-walkthrough.md)
+* Integrieren des Projekt Akustik-Plug-Ins in Ihr [Unity](unity-integration.md)- oder [Unreal](unreal-integration.md)-Projekt
 

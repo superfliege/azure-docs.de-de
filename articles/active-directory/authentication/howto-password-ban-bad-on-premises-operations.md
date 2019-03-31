@@ -1,6 +1,6 @@
 ---
-title: Azure AD-Kennwortschutz (Vorschauversion) – Vorgänge und Berichterstellung
-description: Azure AD-Kennwortschutz (Vorschauversion) – Vorgänge und Berichterstellung nach der Bereitstellung
+title: 'Azure AD-Kennwortschutz: Vorgänge und Berichterstellung'
+description: 'Azure AD-Kennwortschutz: Vorgänge und Berichterstellung nach der Bereitstellung'
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175241"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285801"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Vorschau: Verfahren des Azure AD-Kennwortschutzes
-
-|     |
-| --- |
-| Der Azure AD-Kennwortschutz ist eine öffentliche Vorschaufunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+# <a name="azure-ad-password-protection-operational-procedures"></a>Verfahren des Azure AD-Kennwortschutzes
 
 Nachdem Sie die [Installation des Azure AD-Kennwortschutzes](howto-password-ban-bad-on-premises-deploy.md) vor Ort abgeschlossen haben, müssen einige Elemente im Azure-Portal konfiguriert werden.
 
@@ -33,7 +28,7 @@ Befolgen Sie die Anweisungen im Artikel [Konfigurieren der Liste benutzerdefinie
 
 ## <a name="enable-password-protection"></a>Aktivieren des Kennwortschutzes
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und dann zu **Kennwortschutz (Vorschau)**.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und dann zu **Kennwortschutz**.
 1. Legen Sie **Kennwortschutz für Windows Server Active Directory aktivieren** auf **Ja** fest.
 1. Wie im [Bereitstellungshandbuch](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy) bereits erwähnt, wird empfohlen, den **Modus** zunächst auf **Überwachung** festzulegen.
    * Wenn Sie mit dem Feature vertraut sind, können Sie zum **Modus** **Erzwingen** wechseln.

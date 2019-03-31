@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75d0e962169529ab8d17aeeeed8aab26e7b7e994
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Tutorial: Azure Active Directory-Integration mit Wdesk
 
@@ -219,7 +219,7 @@ Damit sich Azure AD-Benutzer bei Wdesk anmelden können, müssen sie in Wdesk be
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser1.png)  
 
-1. Geben Sie im Textfeld **User** (Benutzer) den Benutzernamen des Benutzers (z.B. **brittasimon@contoso.com**) ein, und klicken Sie dann auf **Continue** (Weiter).
+1. Geben Sie im Textfeld **User** (Benutzer) den Benutzernamen des Benutzers (z.B. **brittasimon\@contoso.com**) ein, und klicken Sie dann auf **Continue** (Weiter).
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser3.png)
 
@@ -227,7 +227,7 @@ Damit sich Azure AD-Benutzer bei Wdesk anmelden können, müssen sie in Wdesk be
   
     ![Erstellen eines Azure AD-Testbenutzers](./media/wdesk-tutorial/createuser4.png)
  
-    a. Geben Sie im Textfeld **E-mail** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
+    a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon\@contoso.com**.
 
     b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein, z.B. **Britta**.
 

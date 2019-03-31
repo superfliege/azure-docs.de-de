@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07d9d6eaf0426512e93574d733e7daee1cab1ddb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183512"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002037"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivieren von Azure-Ressourcenrollen in PIM
 
@@ -36,9 +36,13 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in PIM übe
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Informationen dazu, wie Sie die PIM-Kachel zu Ihrem Dashboard hinzufügen, finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
 
-1. Klicken Sie auf **Meine Rollen**, um eine Liste der Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
+1. Klicken Sie auf **Meine Rollen**.
 
     ![Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen: Liste „Meine Rollen“](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+
+1. Klicken Sie auf **Azure-Ressourcenrollen**, um eine Liste der Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
+
+   ![Azure-Ressourcenrollen](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. Wechseln Sie in der Liste **Azure-Ressourcenrollen** zur Rolle, die Sie aktivieren möchten.
 
@@ -68,7 +72,7 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in PIM übe
 
 1. Klicken Sie auf **Aktivieren**.
 
-    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle sofort verwenden möchten, führen Sie die Schritte im nächsten Abschnitt aus.
+    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle verwenden möchten, führen Sie die im nächsten Abschnitt beschriebenen Schritte aus.
 
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
@@ -76,17 +80,19 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in PIM übe
 
 ## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
 
-Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie in den folgenden Schritten beschrieben.
+Im Falle einer Verzögerung nach der Aktivierung führen Sie diese Schritte nach der Aktivierung aus, um Ihre Azure-Ressourcenrollen sofort zu nutzen.
 
 1. Öffnen Sie Azure AD Privileged Identity Management.
 
-1. Klicken Sie auf die Seite **Anwendungszugriff**.
+1. Klicken Sie auf **Meine Rollen**, um eine Liste der Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
 
-    ![PIM-Anwendungszugriff – Screenshot](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+1. Klicken Sie auf **Azure-Ressourcenrollen**.
 
-1. Klicken Sie auf den Link **Azure-Ressourcen**, um das Portal erneut auf der Seite **Alle Ressourcen** zu öffnen.
+1. Klicken Sie auf die Registerkarte **Aktive Rollen**.
 
-    Wenn Sie auf diesen Link klicken, wird Ihr aktuelles Token ungültig. Gleichzeitig wird erzwungen, dass das Azure-Portal ein neues Token abruft, das Ihre aktualisierten Berechtigungen enthält.
+1. Sobald die Rolle aktiv ist, melden Sie sich vom Portal ab und dann erneut an.
+
+    Die Rolle sollte jetzt zur Verwendung zur Verfügung stehen.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -118,7 +124,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
 
-Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie weiter oben unter [Verwenden einer Rolle sofort nach der Aktivierung](#use-a-role-immediately-after-activation) beschrieben.
+Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Sobald die Aktivierung abgeschlossen ist, melden Sie sich vom Azure-Portal ab und dann erneut an, um die neu aktivierte Rolle zu nutzen.
 
 Weitere Schritte zur Problembehandlung finden Sie unter [Behandeln von Problemen mit erhöhten Berechtigungen](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
 

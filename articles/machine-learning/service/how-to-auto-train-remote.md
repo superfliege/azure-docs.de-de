@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95c495bf3a8ad7b82c42d4071899d045cb49f27b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4784ca08366d833d02372393e0e12f0fefe8c5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112448"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
 
@@ -80,8 +80,8 @@ Sie können auch eine vorhandene Linux-DSVM als Computeziel anfügen. Dieses Bei
 
 > [!NOTE]
 >
-> Der folgende Code verwendet die `RemoteCompute`-Zielklasse, um eine vorhandene VM als Computeziel anzufügen.
-> Die `DsvmCompute`-Klasse gilt in zukünftigen Releases als veraltet und wird durch dieses Entwurfsmuster ersetzt.
+> Der folgende Code verwendet die [RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py)-Zielklasse, um eine vorhandene VM als Computeziel anzufügen.
+> Die [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py)-Klasse gilt in zukünftigen Releases als veraltet und wird durch dieses Entwurfsmuster ersetzt.
 
 Führen Sie den folgenden Code aus, um das Computeziel aus einer vorhandenen Linux-DSVM zu erstellen.
 
@@ -107,7 +107,7 @@ Gewähren Sie der Remoteressource Zugriff auf Ihre Trainingsdaten. Bei automatis
 
 Zum Gewähren von Zugriff ist Folgendes erforderlich:
 + Erstellen Sie die Datei „get_data.py“, die eine `get_data()`-Funktion enthält. 
-* Speichern Sie diese Datei in einem Verzeichnis, auf das als absoluter Pfad zugegriffen werden kann. 
++ Speichern Sie diese Datei in einem Verzeichnis, auf das als absoluter Pfad zugegriffen werden kann. 
 
 Sie können Code zum Lesen von Daten aus einem Blobspeicher oder einem lokalen Datenträger in der Datei „get_data.py“ kapseln. Im folgenden Codebeispiel stammen die Daten aus dem sklearn-Paket.
 

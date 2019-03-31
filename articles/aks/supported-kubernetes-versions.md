@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 02/15/2019
 ms.author: saudas
-ms.openlocfilehash: 37a9712749a1575f81086d28ad461a665bef36d9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313448"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403208"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Wenn AKS zum Beispiel heute *1.12.x* einführt, werden auch *1.11.a* + *1.11.b*,
 
 Wenn eine neue Nebenversion eingeführt wird, werden die älteste Nebenversion und die unterstützten Patchreleases deaktiviert. 15 Tage vor der Veröffentlichung der neuen Nebenversion und der bevorstehenden Außerbetriebnahme der Version gibt es eine Ankündigung über die [Azure-Updatekanäle][azure-update-channel]. Im Beispiel oben wird *1.12.x* veröffentlicht, und die Versionen *1.8.g* + *1.8.h* werden deaktiviert.
 
-Wenn Sie einen AKS-Cluster im Portal oder mit der Azure CLI bereitstellen, wird der Cluster immer auf die Nebenversion n-1 und den neuesten Patch festgelegt. Wenn AKS zum Beispiel *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c* + *1.10d* und *1.9.e* + *1.9f* unterstützt, ist die Standardversion des neuen Clusters *1.10.b*.
+Wenn Sie einen AKS-Cluster im Portal oder mit der Azure CLI bereitstellen, wird der Cluster immer auf die Nebenversion n-1 und den neuesten Patch festgelegt. Wenn AKS zum Beispiel *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c* + *1.10d* und *1.9.e* + *1.9f* unterstützt, ist die Standardversion des neuen Clusters *1.11.b*.
 
 ## <a name="list-currently-supported-versions"></a>Auflisten der derzeit unterstützten Versionen
 

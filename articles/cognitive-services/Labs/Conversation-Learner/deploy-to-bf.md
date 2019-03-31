@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 56dab93087249082330c0f685e5457bc2585664c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237930"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994644"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Bereitstellen eines Unterhaltungslernmodul-Bots
 
@@ -45,7 +45,7 @@ Nachfolgend wird beschrieben, wie Sie die Modell-ID abrufen:
     npm run ui
     ```
 
-2. Öffnen Sie den Browser, und navigieren Sie zu http://localhost:5050. 
+2. Öffnen Sie den Browser, und navigieren Sie zu `http://localhost:5050`. 
 
 3. Klicken Sie auf das Unterhaltungslernmodell, dessen ID Sie abrufen möchten.
 
@@ -109,20 +109,20 @@ Im Folgenden finden Sie Schrittanleitungen zum Bereitstellen eines Unterhaltungs
 
 3. Bearbeiten Sie im Azure-Portal die Web-App-Bot-Ressource, die Sie eben erstellt haben.
 
-    1. Klicken Sie auf der linken Seite auf das Navigationselement „Anwendungseinstellungen“.
-    1. Scrollen Sie nach unten zum Abschnitt „App-Einstellungen“.
-    2. Fügen Sie die folgenden Einstellungen hinzu:
+   1. Klicken Sie auf der linken Seite auf das Navigationselement „Anwendungseinstellungen“.
+   1. Scrollen Sie nach unten zum Abschnitt „App-Einstellungen“.
+   2. Fügen Sie die folgenden Einstellungen hinzu:
 
-        Umgebungsvariable | value
-        --- | --- 
-        CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
-        CONVERSATION_LEARNER_MODEL_ID      | Die über die Benutzeroberfläche des Unterhaltungslernmoduls unter den „Einstellungen“ für das Modell abgerufene ID (GUID)
-        LUIS_AUTHORING_KEY               | LUIS-Erstellungsschlüssel für dieses Modell
-        LUIS_SUBSCRIPTION_KEY            | Nicht erforderlich, aber empfohlen für veröffentlichte Bots, um die Verwendung Ihres Kontingents für die Erstellung zu vermeiden.
+       Umgebungsvariable | value
+       --- | --- 
+       CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
+       CONVERSATION_LEARNER_MODEL_ID      | Die über die Benutzeroberfläche des Unterhaltungslernmoduls unter den „Einstellungen“ für das Modell abgerufene ID (GUID)
+       LUIS_AUTHORING_KEY               | LUIS-Erstellungsschlüssel für dieses Modell
+       LUIS_SUBSCRIPTION_KEY            | Nicht erforderlich, aber empfohlen für veröffentlichte Bots, um die Verwendung Ihres Kontingents für die Erstellung zu vermeiden.
     
-    4. Klicken Sie am oberen Rand der Seite auf „Speichern“.
-    5. Öffnen Sie auf der linken Seite das Navigationselement „Build“.
-    6. Klicken Sie auf „Continuous Deployment konfigurieren“. 
-    7. Klicken Sie unter „Bereitstellungen“ auf das Symbol „Setup“.
-    8. Klicken Sie auf „Erforderliche Einstellungen“.
-    9. Wählen Sie die Quelle aus, in der Ihr Botcode verfügbar ist, und konfigurieren Sie die Quelle.
+   4. Klicken Sie am oberen Rand der Seite auf „Speichern“.
+   5. Öffnen Sie auf der linken Seite das Navigationselement „Build“.
+   6. Klicken Sie auf „Continuous Deployment konfigurieren“. 
+   7. Klicken Sie unter „Bereitstellungen“ auf das Symbol „Setup“.
+   8. Klicken Sie auf „Erforderliche Einstellungen“.
+   9. Wählen Sie die Quelle aus, in der Ihr Botcode verfügbar ist, und konfigurieren Sie die Quelle.

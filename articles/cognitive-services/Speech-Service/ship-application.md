@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445116"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962025"
 ---
 # <a name="ship-an-application"></a>Ausliefern einer Anwendung
 
@@ -42,8 +42,10 @@ Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die An
 | NAME | Funktion
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK, erforderlich für die native und verwaltete Bereitstellung
-| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | Erforderlich für die verwaltete Bereitstellung
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Erforderlich für die verwaltete Bereitstellung
+
+>[!NOTE]
+> Ab Release 1.3.0 ist die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
 
 ## <a name="linux"></a>Linux
 

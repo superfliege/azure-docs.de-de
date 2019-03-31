@@ -11,21 +11,31 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856089"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>Sprach-SDK 1.3.1: Aktualisierung von Februar 2019
+
+Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. Es betrifft nicht die JavaScript-Version des SDK.
+
+**Fehlerbehebung**
+
+* Korrigiert einen Speicherverlust bei der Verwendung von Mikrofoneingabe. Streambasierte oder Dateieingaben sind nicht betroffen.
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: Version von Februar 2019
 
 **Neue Features**
 
-* Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst gestreamt werden. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Option noch nicht verfügbar.
+* Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Option noch nicht verfügbar.
 * Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt für Issues im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](quickstart-csharp-unity.md).
+* Die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) ist nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
+
 
 **Beispiele**
 
@@ -54,6 +64,7 @@ Die folgenden neuen Inhalte stehen in unserem [Beispielrepository](https://aka.m
   * Anfangsunterstützung und Implementierung für Phrasenhinweise.
   * Rückgabe der Eigenschaftensammlung mit Dienst-JSON für die Erkennung.
 * Windows-DLLs enthalten jetzt eine Versionsressource.
+* Wenn Sie eine `FromEndpoint`-Erkennung erstellen, können Sie der Endpunkt-URL direkt Parameter hinzufügen. Mithilfe von `FromEndpoint` können Sie die Erkennung nicht über die Standardkonfigurationseigenschaften konfigurieren.
 
 **Fehlerbehebungen**
 
@@ -78,7 +89,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 **Neue Features**
 
 * Python
-  * Die Betaversion der Python-Unterstützung (ab 3.5) ist mit diesem Release verfügbar. Weitere Informationen finden Sie [hier](quickstart-python.md).
+  * Die Betaversion der Python-Unterstützung (ab 3.5) ist mit diesem Release verfügbar. Weitere Informationen finden Sie hier (quickstart-python.md).
 * JavaScript
   * Das Speech SDK für JavaScript wird jetzt als Open-Source-Code bereitgestellt. Der Quellcode steht auf [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)zur Verfügung.
   * Node.js wird jetzt unterstützt. Weitere Informationen finden Sie [hier](quickstart-js-node.md).
@@ -102,7 +113,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 * In einigen Fällen sind Ausnahmen verloren gegangen.
 * Behebung des Arbeitsspeicherverlusts in Übersetzungsereignisargumenten
 * Sperrproblem bei der Verbindungswiederherstellung in langen Sitzungen behoben
-* Problem behoben, dass dazu führen konnte, dass das Endergebnis für fehlerhafte Übersetzungen verpasst wird
+* Problem behoben, dass dazu führen konnte, dass das Endergebnis für fehlerhafte Übersetzungen verpasst wird.
 * C#: Wenn im Hauptthread nicht auf einen asynchronen Vorgang gewartet wurde, konnte es vorkommen, dass die Erkennung vor Abschluss der asynchronen Aufgabe entfernt wird.
 * Java: Problem behoben, das zum Absturz des virtuellen Java-Computers geführt hat
 * Objective-C: Enumerationszuordnung korrigiert (anstelle von „RecognizingIntent“ wurde „RecognizedIntent“ zurückgegeben)
@@ -111,7 +122,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 
 **Beispiele**
 
-* Mehrere Beispiele aktualisiert und korrigiert (unter anderem die Ausgabestimmen für die Übersetzung)
+* Mehrere Beispiele aktualisiert und korrigiert (z.B. die Ausgabestimmen für die Übersetzung).
 * Node.js-Beispiele zum [Beispielrepository](https://aka.ms/csspeech/samples) hinzugefügt
 
 ## <a name="speech-sdk-110"></a>Speech SDK 1.1.0

@@ -1,6 +1,6 @@
 ---
-title: Referenzleitfaden zu den Ansicht-Designer-Teilen in Azure Log Analytics | Microsoft-Dokumentation
-description: Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen in Ihrem Log Analytics-Arbeitsbereich anzeigen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
+title: Referenzleitfaden zu den Ansicht-Designer-Komponenten in Azure Monitor | Microsoft-Dokumentation
+description: Mit dem Ansicht-Designer in Azure Monitor können Sie benutzerdefinierte Ansichten erstellen, die im Azure-Portal angezeigt werden und verschiedene Visualisierungen für Daten im Log Analytics-Arbeitsbereich enthalten. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 53323e70884e61b4643f7950a1a6333f08dbbb6f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193874"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889901"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
-Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungskomponenten in Azure Monitor
+Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
@@ -33,9 +33,9 @@ Die verfügbaren Ansicht-Designer-Kacheltypen werden in der folgenden Tabelle be
 
 | Ansichtstyp | BESCHREIBUNG |
 |:--- |:--- |
-| [Liste der Abfragen](#list-of-queries-part) |Zeigt eine Liste der Protokollsuchabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. |
-| [Zahl und Liste](#number-and-list-part) |Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
-| [Zwei Zahlen und Liste](#two-numbers-and-list-part) |Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Liste der Abfragen](#list-of-queries-part) |Zeigt eine Liste der Protokollabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. |
+| [Zahl und Liste](#number-and-list-part) |Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Zwei Zahlen und Liste](#two-numbers-and-list-part) |Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus separaten Protokollabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
 | [Ringdiagramm und Liste](#donut-and-list-part) |Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar. |
 | [Zwei Zeitachsen und Liste](#two-timelines-and-list-part) |Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
 | [Informationen](#information-part) |Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt mindestens ein Element mit einer statischen Kachel und Text. |
@@ -46,7 +46,7 @@ Die verfügbaren Ansicht-Designer-Kacheltypen werden in der folgenden Tabelle be
 Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausführlich.
 
 ## <a name="list-of-queries-part"></a>Komponente mit der Liste der Abfragen
-Das Teil mit der Liste der Abfragen zeigt eine Liste der Protokollsuchabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können **+ Abfrage** wählen, um zusätzliche Abfragen hinzuzufügen.
+Die Komponente für die Liste der Abfragen zeigt eine Liste der Protokollabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können **+ Abfrage** wählen, um zusätzliche Abfragen hinzuzufügen.
 
 ![Ansicht der Liste der Abfragen](media/view-designer-parts/view-list-queries.png)
 
@@ -62,7 +62,7 @@ Das Teil mit der Liste der Abfragen zeigt eine Liste der Protokollsuchabfragen a
 | Anzeigename | Der beschreibende Name, der angezeigt wird. |
 
 ## <a name="number-and-list-part"></a>Teil mit Zahl und Liste
-Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
+Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht der Liste der Abfragen](media/view-designer-parts/view-number-list.png)
 
@@ -91,7 +91,7 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus ei
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="two-numbers-and-list-part"></a>Teil mit zwei Zahlen und Liste
-Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
+Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus separaten Protokollabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht mit zwei Zahlen und Liste](media/view-designer-parts/view-two-numbers-list.png)
 
@@ -322,14 +322,14 @@ Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Text
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
 ### <a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
-Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage im [Portal für die Protokollsuche](../../azure-monitor/log-query/portals.md) geöffnet oder eine andere Ansicht gestartet.
+Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage in [Log Analytics](../../azure-monitor/log-query/portals.md) geöffnet oder eine andere Ansicht gestartet.
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 
 | Einstellung           | BESCHREIBUNG |
 |:--|:--|
-| Protokollsuche (Automatisch) | Protokollsuche, die durchgeführt wird, wenn Sie ein Headerelement auswählen.  Dies ist die gleiche Protokollsuche, auf der das Element basiert.
-| Protokollsuche        | Die Protokollsuche, die durchgeführt wird, wenn Sie in einer Liste einen Eintrag auswählen.  Geben Sie die Abfrage im Feld **Navigationsabfrage** ein.   Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.  Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt. |
+| Protokollsuche (Automatisch) | Protokollabfrage, die durchgeführt wird, wenn Sie ein Headerelement auswählen.  Dies ist die gleiche Protokollabfrage, auf der das Element basiert.
+| Protokollsuche        | Die Protokollabfrage, die durchgeführt wird, wenn Sie in einer Liste einen Eintrag auswählen.  Geben Sie die Abfrage im Feld **Navigationsabfrage** ein.   Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.  Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt. |
 | Sicht              | Die zu öffnende Ansicht, wenn Sie ein Headerelement oder einen Eintrag einer Liste auswählen.  Wählen Sie den Namen einer Ansicht Ihres Arbeitsbereichs im Feld **Ansichtsname** aus. |
 
 
@@ -361,4 +361,4 @@ In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 | Farbe |Die Farbe, die den Schwellenwert angibt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.
+* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.

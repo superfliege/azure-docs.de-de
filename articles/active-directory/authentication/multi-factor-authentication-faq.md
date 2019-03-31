@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c94c564434df0e9c48facedba1d2232f9510662e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cc7b935833a6b212bb008be86b26c613d8817133
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182607"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -87,7 +87,7 @@ Weitere Informationen zu Ihren Möglichkeiten finden Sie unter [Beziehen von Azu
 
 In einigen Fällen schon.
 
-Multi-Factor Authentication für Azure-Administratoren stellt einen Teil der Azure MFA-Features für den Zugriff auf Microsoft-Onlinedienste wie das Azure- und das Office 365-Verwaltungsportal kostenlos zur Verfügung. Dieses Angebot gilt nur für globale Administratoren in Azure Active Directory-Instanzen, die nicht über die Vollversion von Azure MFA (über eine MFA-Lizenz, ein Paket oder einen eigenständigen nutzungsbasierten Anbieter) verfügen. Wenn Ihre Administratoren die kostenlose Version verwenden und Sie dann eine Vollversion von Azure MFA erwerben, werden alle Administratoren automatisch in die kostenpflichtige Version übernommen.
+Multi-Factor Authentication für Azure-Administratoren stellt einen Teil der Azure MFA-Features für den Zugriff auf Microsoft-Onlinedienste wie das [Azure-Portal](https://portal.azure.com) und das [Office 365 Admin Center](https://admin.microsoft.com) kostenlos zur Verfügung. Dieses Angebot gilt nur für globale Administratoren in Azure Active Directory-Instanzen, die nicht über die Vollversion von Azure MFA (über eine MFA-Lizenz, ein Paket oder einen eigenständigen nutzungsbasierten Anbieter) verfügen. Wenn Ihre Administratoren die kostenlose Version verwenden und Sie dann eine Vollversion von Azure MFA erwerben, werden alle Administratoren automatisch in die kostenpflichtige Version übernommen.
 
 Multi-Factor Authentication für Office 365-Benutzer stellt einen Teil der Azure MFA-Features für den Zugriff auf Office 365-Dienste wie Exchange Online und SharePoint Online kostenlos zur Verfügung. Dieses Angebot gilt für Benutzer, denen eine Office 365-Lizenz zugewiesen ist, wenn die entsprechende Azure Active Directory-Instanz nicht über die Vollversion von Azure MFA (über eine MFA-Lizenz, ein Paket oder einen eigenständigen nutzungsbasierten Anbieter) verfügt.
 

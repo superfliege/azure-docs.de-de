@@ -1,21 +1,21 @@
 ---
-title: Erstellen mehrerer Modelle mit einem Studio-Experiment
+title: Erstellen mehrerer Endpunkte für ein Modell
 titleSuffix: Azure Machine Learning Studio
 description: Verwenden Sie PowerShell, um mehrere Machine Learning-Modelle und Webdienst-Endpunkte mit demselben Algorithmus, aber verschiedenen Trainingsdatasets, zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a191a7adc2c43337b663fc44a8ef40df9d8ffef4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455057"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848916"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Erstellen mehrerer Studio-Modelle und Webdienst-Endpunkte in einem Experiment mit PowerShell
 
@@ -27,7 +27,7 @@ Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Vers
 
 Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning Studio aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwendig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
 
-Glücklicherweise können Sie hierfür die [Azure Machine Learning Studio-API für das erneute Trainieren](retrain-models-programmatically.md) verwenden und die Aufgabe mit [Azure Machine Learning Studio PowerShell](powershell-module.md) automatisieren.
+Glücklicherweise können Sie hierfür die [Azure Machine Learning Studio-API für das erneute Trainieren](/azure/machine-learning/studio/retrain-machine-learning-model) verwenden und die Aufgabe mit [Azure Machine Learning Studio PowerShell](powershell-module.md) automatisieren.
 
 > [!NOTE]
 > Damit das Beispiel schneller ausgeführt wird, reduzieren Sie die Standortanzahl von 1.000 auf 10. Es gelten aber dieselben Prinzipien und Verfahren wie für 1.000 Standorte. Möchten Sie das Trainieren aber mit 1.000 Datasets vornehmen, sollten Sie die folgenden PowerShell-Skripts gleichzeitig ausführen. Die Erklärung hierzu würde den Rahmen dieses Artikels sprengen, aber im Internet finden Sie Beispiele für das PowerShell-Multithreading.  
@@ -35,7 +35,7 @@ Glücklicherweise können Sie hierfür die [Azure Machine Learning Studio-API f�
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Einrichten des Trainingsexperiments
-Verwenden Sie das Beispiel [Training Experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1), das sich im [Cortana Intelligence-Katalog](http://gallery.azure.ai) befindet. Öffnen Sie dieses Experiment im [Azure Machine Learning Studio](https://studio.azureml.net) -Arbeitsbereich.
+Verwenden Sie das Beispiel [Training Experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1), das sich im [Cortana Intelligence-Katalog](https://gallery.azure.ai) befindet. Öffnen Sie dieses Experiment im [Azure Machine Learning Studio](https://studio.azureml.net) -Arbeitsbereich.
 
 > [!NOTE]
 > Damit Sie dieses Beispiel nachvollziehen können, empfiehlt es sich, anstelle eines kostenlosen Arbeitsbereichs einen Standardarbeitsbereich zu verwenden. Sie erstellen einen Endpunkt pro Kunde, also insgesamt zehn Endpunkte, und dadurch ist ein Standardarbeitsbereich erforderlich, da ein kostenloser Arbeitsbereich auf drei Endpunkte beschränkt ist. Falls Ihnen nur ein kostenloser Arbeitsbereich zur Verfügung steht, ändern Sie einfach die Skripts, sodass nur drei Standorte berücksichtigt werden.
@@ -44,7 +44,7 @@ Verwenden Sie das Beispiel [Training Experiment](https://gallery.azure.ai/Experi
 
 Im Experiment wird ein **Import Data** -Modul zum Importieren des Trainingsdatasets *customer001.csv* aus einem Azure-Speicherkonto verwendet. Angenommen, Sie haben Trainingsdatasets für alle Standorte der Fahrradvermietung erfasst und diese in demselben Blobspeicher in den Dateien *rentalloc001.csv* bis *rentalloc10.csv* gespeichert.
 
-![image](./media/create-models-and-endpoints-with-powershell/reader-module.png)
+![Lesermodul importiert Daten aus einem Azure-Blob](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
 Beachten Sie, dass dem Modul **Train Model** das Modul **Web Service Output** hinzugefügt wurde.
 Wenn dieses Experiment als Webdienst bereitgestellt wird, gibt der Endpunkt, der dieser Ausgabe zugeordnet ist, das trainierte Modell als ILEARNER-Datei zurück.
@@ -52,7 +52,7 @@ Wenn dieses Experiment als Webdienst bereitgestellt wird, gibt der Endpunkt, der
 Beachten Sie auch, dass Sie einen Webdienstparameter einrichten, der die URL definiert, die vom **Import Data**-Modul verwendet wird. Dies ermöglicht Ihnen die Verwendung des Parameters zum Angeben individueller Trainingsdatasets, um das Modell für jeden Standort zu trainieren.
 Es gibt weitere Möglichkeiten, wie Sie dies umsetzen könnten. Sie können eine SQL-Abfrage mit einem Webdienstparameter verwenden, um Daten aus einer SQL Azure-Datenbank abzurufen. Oder Sie können das **Web Service Input**-Modul verwenden, um das Dataset an den Webdienst zu übergeben.
 
-![image](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
+![Ein trainiertes Modellmodul mit Ausgabe an ein Webdienstausgabemodul](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
 Wir führen dieses Trainingsexperiment jetzt aus, indem wir den Standardwert *rental001.csv* als Trainingsdataset verwenden. Wenn Sie die Ausgabe des Auswertungsmoduls (**Evaluate**) anzeigen, indem Sie auf die Ausgabe klicken und **Visualisieren** auswählen, sehen Sie, dass eine ordentliche Leistung von „*AUC* = 0,91“ angezeigt wird. Sie sind jetzt so weit, dass Sie aus diesem Trainingsexperiment einen Webdienst bereitstellen können.
 
@@ -89,7 +89,7 @@ Führen Sie anschließend den folgenden PowerShell-Befehl aus:
 
 Sie haben jetzt zehn Endpunkte erstellt, die alle dasselbe trainierte Modell enthalten, das mit *customer001.csv* trainiert wurde. Sie können die Endpunkte im Azure-Portal anzeigen.
 
-![image](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
+![Anzeigen der Liste der trainierten Modelle im Portal](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Aktualisieren der Endpunkte zur Verwendung separater Trainingsdatasets mit PowerShell
 Der nächste Schritt besteht darin, die Endpunkte mit Modellen zu aktualisieren, die basierend auf den individuellen Daten der einzelnen Kunden eindeutig trainiert wurden. Zuerst müssen Sie diese Modelle aber über den Webdienst **Bike Rental Training** erzeugen. Wir kehren zum Webdienst **Bike Rental Training** zurück. Sie müssen seinen BES-Endpunkt zehnmal mit zehn verschiedenen Trainingsdatasets aufrufen, um zehn verschiedene Modelle zu erzeugen. Hierfür verwenden Sie das PowerShell-Cmdlet **InovkeAmlWebServiceBESEndpoint**.

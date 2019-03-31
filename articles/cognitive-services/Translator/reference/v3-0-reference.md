@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 767021772fc86013cd8192216eb03840f1160807
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878696"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194961"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -51,7 +51,7 @@ Um zu erzwingen, dass die Anforderung von einem bestimmten Rechenzentrum bearbei
 
 ## <a name="authentication"></a>Authentication
 
-Abonnieren Sie die Textübersetzungs-API oder [Cognitive Services-All-in-One](https://azure.microsoft.com/pricing/details/cognitive-services/) in Microsoft Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
+Abonnieren Sie die Textübersetzungs-API oder [Cognitive Services-Multi-Service](https://azure.microsoft.com/pricing/details/cognitive-services/) in Microsoft Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
 
 Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Diese Tabelle beschreibt, wie jeder verwendet wird:
 
@@ -59,7 +59,7 @@ Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Dies
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
 |Autorisierung|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Verwendung mit dem All-In-One-Abonnement von Cognitive Services, wenn Sie Ihren geheimen All-In-One-Schlüssel übergeben*.<br/>Der Wert ist die Region des All-in-One-Abonnements. Dieser Wert ist optional, wenn kein All-in-One-Abonnement verwendet wird.|
+|Ocp-Apim-Subscription-Region|*Verwendung mit dem Multi-Service-Abonnement von Cognitive Services, wenn Sie einen geheimen Multi-Service-Schlüssel übergeben.*<br/>Der Wert ist die Region des Multi-Service-Abonnements. Dieser Wert ist optional, wenn kein Multi-Service-Abonnement verwendet wird.|
 
 ###  <a name="secret-key"></a>Geheimer Schlüssel
 Die erste Option ist die Authentifizierung mithilfe des Headers `Ocp-Apim-Subscription-Key`. Fügen Sie einfach den `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-Header zur Ihrer Anforderung hinzu.
@@ -89,21 +89,22 @@ Authorization: Bearer <Base64-access_token>
 
 Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wiederverwendet werden, wenn die Translator-APIs mehrfach aufgerufen werden. Wenn Ihr Programm aber über längere Zeit Anforderungen an die Translator-API sendet, muss das Programm regelmäßig (z.B. alle acht Minuten) ein neues Zugriffstoken anfordern.
 
-### <a name="all-in-one-subscription"></a>All-in-One-Abonnement
+### <a name="multi-service-subscription"></a>Abonnement für mehrere Dienste
 
-Die letzte Authentifizierungsoption ist die Nutzung des All-in-One-Abonnements von Cognitive Services. Auf diese Weise können Sie einen einzigen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren. 
+Die letzte Authentifizierungsoption ist die Verwendung des Multi-Service-Abonnements von Cognitive Services. Auf diese Weise können Sie einen einzigen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren. 
 
-Wenn Sie einen geheimen All-in-One-Schlüssel verwenden, müssen Sie Ihrer Anforderung zwei Authentifizierungsheader hinzufügen. Der erste übergibt den geheimen Schlüssel, der zweite gibt die Region an, die Ihrem Abonnement zugeordnet ist. 
-* `Ocp-Api-Subscription-Key`
+Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie Ihrer Anforderung zwei Authentifizierungsheader hinzufügen. Der erste übergibt den geheimen Schlüssel, der zweite gibt die Region an, die Ihrem Abonnement zugeordnet ist. 
+* `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
+
+Die Region ist für das Abonnement der Multi-Service-Text-API erforderlich. Die von Ihnen ausgewählte Region ist die einzige Region, die Sie für die Textübersetzung verwenden können, wenn Sie den Multi-Service-Abonnementschlüssel verwenden, und muss sich um die gleiche Region handeln, die Sie bei der Registrierung für Ihr Multi-Service-Abonnement über das Azure-Portal ausgewählt haben.
+
+Diese Regionen sind verfügbar: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus` und `westus2`.
 
 Wenn Sie den geheimen Schlüssel in der Abfragezeichenfolge mit dem Parameter `Subscription-Key` übergeben, dann müssen Sie die Region mit dem Abfrageparameter `Subscription-Region` angeben.
 
 Wenn Sie ein Bearertoken verwenden, müssen Sie das Token vom Regionsendpunkt `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` beziehen.
 
-Diese Regionen sind verfügbar: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus` und `westus2`.
-
-Die Region ist für das Abonnement der All-in-One-Text-API erforderlich.
 
 ## <a name="errors"></a>Errors
 

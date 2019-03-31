@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272285"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439637"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Abrufen von ARP-Tabellen im klassischen Bereitstellungsmodell
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Der folgende Abschnitt bietet Informationen zum Anzeigen der ARP-Tabellen, die v
 Stellen Sie sicher, dass Folgendes vorliegt, bevor Sie fortfahren:
 
 * Eine gültige ExpressRoute-Verbindung, die mit mindestens einem Peering konfiguriert ist. Die Verbindung muss vom Konnektivitätsanbieter vollständig konfiguriert werden. Von Ihnen (oder Ihrem Konnektivitätsanbieter) muss mindestens eines der Peerings (Azure privat, Azure öffentlich und Microsoft) für diese Verbindung konfiguriert werden.
-* IP-Adressbereiche für die Konfiguration der Peerings (Azure privat, Azure öffentlich und Microsoft). Überprüfen Sie die Beispielzuweisungen von IP-Adressen auf der Seite [ExpressRoute-Routinganforderungen](expressroute-routing.md) , um zu verstehen, wie IP-Adressen auf Ihrer Seite und auf ExpressRoute-Seite zugeordnet werden. Auf der Seite [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung](expressroute-howto-routing-classic.md)erhalten Sie Informationen zur Konfiguration des Peerings.
+* IP-Adressbereiche für die Konfiguration der Peerings (Azure privat, Azure öffentlich und Microsoft). Überprüfen Sie die Beispielzuweisungen von IP-Adressen auf der Seite [ExpressRoute-Routinganforderungen](expressroute-routing.md), um zu verstehen, wie IP-Adressen auf Ihrer Seite und auf der ExpressRoute-Seite zugeordnet werden. Auf der Seite [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung](expressroute-howto-routing-classic.md)erhalten Sie Informationen zur Konfiguration des Peerings.
 * Informationen von Ihrem Netzwerkteam/Konnektivitätsanbieter zu den MAC-Adressen der Schnittstellen, die mit diesen IP-Adressen verwendet werden.
 * Das neueste PowerShell-Modul für Azure (mindestens Version 1.50).
 

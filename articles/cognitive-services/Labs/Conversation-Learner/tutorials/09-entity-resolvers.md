@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e6a671470a87f4509e466bcdfe7845b7bf7ec8dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cca78e2536a922165f40bbcbabcae005021aa70b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167846"
 ---
 # <a name="entity-resolvers"></a>Entitäts-Resolver
 
@@ -37,39 +37,44 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-a-new-model"></a>Erstellen eines neuen Modells
+Beginnen Sie auf der Homepage in der Webbenutzeroberfläche.
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf die Schaltfläche „Neues Modell“.
-2. Geben Sie im Feld „Name“ die Zeichenfolge „Entitäts-Resolver“ ein, und drücken Sie die EINGABETASTE, oder klicken Sie auf die Schaltfläche „Erstellen“.
+### <a name="create-the-model"></a>Erstellen des Modells
+
+1. Wählen Sie **Neues Modell** aus.
+2. Geben Sie **Entity Resolvers** (Entitäts-Resolver) als **Namen** ein.
+3. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-a-pair-of-entities"></a>Erstellen eines Paars von Entitäten
 
-1. Klicken Sie im linken Bereich auf „Entitäten“ und dann auf die Schaltfläche „Neue Entität“.
-2. Geben Sie im Feld „Entitätsname“ den Text „Abreise“ ein.
-3. Wählen Sie in der Dropdownliste „Resolvertyp“ die Option „datetimeV2“ aus.
-4. Klicken Sie auf die Schaltfläche „Erstellen“.
-5. Klicken Sie auf die Schaltfläche „OK“, nachdem Sie die Informationen im Popup gelesen haben.
-6. Erstellen Sie mit den gleichen Schritten eine weitere Entität mit dem Namen „Rückreise“, die auch den Resolvertyp „datetimeV2“ aufweist.
+1. Klicken Sie im linken Bereich auf **Entitäten** und dann auf **Neue Entität**.
+2. Geben Sie **departure** (Abreise) als **Entitätsnamen** ein.
+3. Wählen Sie **datetimeV2** als **Resolver Type** (Resolvertyp) aus.
+4. Klicken Sie auf **Erstellen**. Schließen Sie das Popupfenster mit Informationen, indem Sie auf **OK** klicken.
+5. Wiederholen Sie die Schritte 1 bis 4, um eine zweite Entität namens **return** (Rückkehr) mit dem Resolvertyp **datetimeV2** zu erstellen.
+
+![](../media/T09_entities.png)
 
 ### <a name="create-a-pair-of-actions"></a>Erstellen eines Paars von Aktionen
 
-1. Klicken Sie im linken Bereich auf „Aktionen“ und anschließend auf die Schaltfläche „Neue Aktion“.
-2. Geben Sie im Feld „Antwort des Bots“ den Text „Sie reisen am $departure ab und kehren am $return zurück“ ein.
+1. Klicken Sie im linken Bereich auf **Aktionen** und dann auf **Neue Aktion**.
+2. Geben Sie im Feld **Bot's Response...** (Antwort des Bots) den Text **You are leaving on $departure and returning on $return** (Sie reisen am $departure ab und kehren am $return zurück) ein.
     - WICHITG: Bei der Eingabe von „$[entityName]“ müssen Sie die EINGABETASTE drücken oder in der Dropdownliste auf die Entität klicken. Andernfalls erkennt Conversation Learner die Eingabe als Text anstelle einer Entität.
-    - Beachten Sie, dass das Feld „Erforderliche Entitäten“ diese Entitäten ebenfalls erhält, und sie können nicht entfernt werden. Dies verhindert, dass diese Aktion verfügbar wird, bevor beide erforderlichen Entitäten vorhanden sind.
-3. Klicken Sie auf die Schaltfläche „Erstellen“.
-4. Klicken Sie erneut auf die Schaltfläche „Neue Aktion“, um eine zweite Aktion zu erstellen.
-5. Geben Sie im Feld „Antwort des Bots“ den Text „Wann möchten Sie reisen?“ ein.
-6. Geben Sie im Feld „Disqualifizierende Entitäten“ den Text „Abreise“ und „Rückreise“ ein.
-    - Dadurch wird der Bot angewiesen, diese Aktion NICHT durchzuführen, wenn eine dieser Entitäten einen Wert enthält.
-7. Klicken Sie auf die Schaltfläche „Erstellen“.
+    - Beachten Sie, dass das Feld **Required Entities** (Erforderliche Entitäten) diese Entitäten ebenfalls abruft, und sie können nicht entfernt werden. Dies verhindert, dass diese Aktion verfügbar wird, bevor beide erforderlichen Entitäten vorhanden sind.
+3. Klicken Sie auf **Erstellen**.
+4. Wählen Sie **New Action** (Neue Aktion) aus, um eine zweite Aktion zu erstellen.
+5. Geben Sie im Feld **Bot's Response...** (Antwort des Bots) den Text **When are you planning to travel?** (Wann möchten Sie reisen?) ein.
+6. Geben Sie **departure** (Abreise) und **return** (Rückkehr) als **Disqualifying Entities** (Disqualifizierende Entitäten) ein. Dadurch wird der Bot angewiesen, diese Aktion NICHT durchzuführen, wenn eine dieser Entitäten einen Wert enthält.
+7. Klicken Sie auf **Erstellen**.
 
+![](../media/T09_actions.png)
 
 ### <a name="training"></a>Training
 
-1. Sehen Sie sich den Fortschritt von „Training: [Status]“ auf der Seite oben links an, und warten Sie, bis das Training abgeschlossen ist.
+1. Warten Sie bei der Angabe **Training: [Status]** in der oberen linken Ecke auf den Status **Completed** (Abgeschlossen).
     - Wenn dies zu lange dauert, können Sie auf den Link „Aktualisieren“ klicken.
     - Der Trainingsstatus „Abgeschlossen“, ist erforderlich, damit die Entitäts-Resolver funktionieren, wenn wir das Modell trainieren.
+
 2. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf die Schaltfläche „New Train Dialog“ (Neuer Trainingsdialog).
 3. Geben Sie die erste Benutzeräußerung „Flug buchen“ ein. 
 4. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
@@ -83,6 +88,8 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
     - Zeigen Sie mit der Maus auf jedes Datum. Sie sehen, dass die Entitäten Datumsobjekte sind, die im Gegensatz zu „Sonntag“ oder „morgen“ das tatsächliche Kalenderdatum genau erfassen.
 10. Wählen Sie die Botantwort „Sie reisen am ... ab“ aus.
 11. Klicken Sie auf die Schaltfläche „Speichern“.
+
+![](../media/T09_training.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

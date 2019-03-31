@@ -9,43 +9,29 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/01/2019
 ms.author: diberry
-ms.openlocfilehash: 3fd05e2dd5b55dd590af24f0757229bead041b6d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859112"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781696"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Verwenden von Abonnementschlüsseln mit Ihrer LUIS-App
 
-Für Ihre ersten 1000 kostenlosen Endpunktabfragen müssen Sie keine Abonnementschlüssel erstellen. Sobald diese Endpunktabfragen aufgebraucht sind, erstellen Sie eine Azure-Ressource im [Azure-Portal](http://portal.azure.com) und weisen diese dann einer LUIS-App im [LUIS-Portal](https://www.luis.ai) zu.
+Für Ihre ersten 1000 kostenlosen Endpunktabfragen müssen Sie keine Abonnementschlüssel erstellen. Sobald diese Endpunktabfragen aufgebraucht sind, erstellen Sie eine Azure-Ressource im [Azure-Portal](https://portal.azure.com) und weisen diese dann einer LUIS-App im [LUIS-Portal](https://www.luis.ai) zu.
 
 Wenn Sie einen Fehler vom Typ _Kontingent aufgebraucht_ in Form eines HTTP 403- oder 429-Fehlers erhalten, müssen Sie einen Schlüssel erstellen und Ihrer App zuweisen. 
 
 Verwenden Sie den Free-Tarif (F0) ausschließlich für Tests und Prototypen. Verwenden Sie für Produktionssysteme einen [bezahlten](https://aka.ms/luis-price-tier) Tarif. Verwenden Sie den [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) nicht für Endpunktabfragen in der Produktion.
 
 <a name="create-luis-service"></a>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>Erstellen eines Language Understanding-Endpunktschlüssels im Azure-Portal
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Erstellen der Vorhersageendpunkt-Runtimeressource im Azure-Portal
 
-Mit diesem Verfahren wird eine **Language Understanding**-Ressource erstellt. Wenn Sie möchten, dass eine Ressource für die gesamte Cognitive Services-Dienstfamilie verwendet werden kann, erstellen Sie den All-In-One-Schlüssel **[Cognitive Service](../cognitive-services-apis-create-account.md)** anstelle der Language Understanding-Ressource. 
-
-Dieser Schlüssel darf nur für Endpunkt-Vorhersageabfragen verwendet werden. Verwenden Sie diesen Schlüssel nicht für Änderungen am Modell oder der App. 
-
-1. Melden Sie sich am **[Azure-Portal](https://ms.portal.azure.com/)** an. 
-1. Wählen Sie im linken oberen Bereich das grüne Zeichen **+** aus, und suchen Sie im Marketplace nach `Language Understanding`. Wählen Sie dann **Language Understanding** aus, und führen Sie das **Erstellungsverfahren** durch, um ein LUIS-Abonnementkonto zu erstellen. 
-
-    ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
-
-1. Konfigurieren Sie das Abonnement mit Einstellungen, z.B. dem Kontonamen, Tarifen usw. 
-
-    ![Azure-API-Auswahl](./media/luis-azure-subscription/azure-api-choice.png) 
-
-1. Sobald die Language Understanding-Ressource erstellt ist, werden die generierten Zugriffsschlüssel unter **Ressourcenverwaltung->Schlüssel** angezeigt. Im nächsten Abschnitt wird gezeigt, wie Sie diese neue Ressource mit einer LUIS-App im LUIS-Portal verbinden. Sie benötigen den Namen der LUIS-Ressource aus Schritt 3.
-
-    ![Azure-Schlüssel](./media/luis-azure-subscription/azure-keys.png)
+Erfahren Sie mehr im Schnellstart [Erstellen einer App](get-started-portal-build-app.md).
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -63,23 +49,7 @@ Dieser Schlüssel darf nur für Endpunkt-Vorhersageabfragen verwendet werden. Ve
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Zuweisen des Ressourcenschlüssels an die LUIS-App im LUIS-Portal
 
-1. Melden Sie sich beim LUIS-Portal an, und wählen Sie eine App, welcher der neue Schlüssel zugewiesen werden soll. Wählen Sie dann im Menü rechts oben die Option **Verwalten** und dann **Schlüssel und Endpunkte** aus.
-
-    [ ![Seite „Schlüssel und Endpunkte“](./media/luis-manage-keys/keys-and-endpoints.png) ](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
-
-1. Um LUIS hinzuzufügen, wählen Sie **Ressource hinzufügen +** aus.
-
-    ![Zuweisen einer Ressource zu Ihrer App](./media/luis-manage-keys/assign-key.png)
-
-1. Wählen Sie im Dialogfeld, das mit der E-Mail-Adresse verknüpft ist, die Sie zur Anmeldung bei der LUIS-Website verwenden, einen Mandanten aus.  
-
-1. Wählen Sie den **Abonnementnamen** aus, der der Azure-Ressource zugeordnet ist, die Sie hinzufügen möchten.
-
-1. Wählen Sie den **LUIS-Ressourcennamen** aus. 
-
-1. Wählen Sie **Ressource zuweisen** aus. 
-
-1. Suchen Sie die neue Zeile in der Tabelle, und kopieren Sie die Endpunkt-URL. Sie ist ordnungsgemäß aufgebaut, um mithilfe einer HTTP GET-Anforderung an den LUIS-Endpunkt eine Vorhersage abzurufen. 
+Erfahren Sie mehr im Schnellstart [Bereitstellung](get-started-portal-deploy-app.md).
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>

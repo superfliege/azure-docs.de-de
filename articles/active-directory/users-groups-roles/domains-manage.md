@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201845"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -33,7 +33,7 @@ Wenn Ihr Verzeichnis erstellt wird, ist der anfängliche Domänenname (beispiels
 2. Wählen Sie **Azure Active Directory**.
 3. Wählen Sie **Benutzerdefinierte Domänennamen**.
   
-   ![Öffnen der Benutzerverwaltung](./media/domains-manage/add-custom-domain.png)
+   ![Öffnen der Benutzerverwaltungsseite](./media/domains-manage/add-custom-domain.png)
 4. Wählen Sie den Namen der Domäne aus, die als primäre Domäne festgelegt werden soll.
 5. Wählen Sie den Befehl **Als primär festlegen**. Bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
   
@@ -90,7 +90,7 @@ In folgenden Fällen wird ein Fehler zurückgegeben:
 **F: Warum tritt beim Löschen einer Domäne eine Fehlermeldung auf, die besagt, dass ich über von Exchange verwaltete Gruppen mit diesem Domänennamen verfüge?** <br>
 **A:** Heute werden bestimmte Gruppen wie E-Mail-aktivierte Sicherheitsgruppen und verteilte Listen von Exchange bereitgestellt und müssen im [Exchange Admin Center (EAC)](https://outlook.office365.com/ecp/) manuell gelöscht werden. Möglicherweise sind noch Proxyadressen vorhanden, die den benutzerdefinierten Domänennamen verwenden und manuell auf einen anderen Domänennamen aktualisiert werden müssen. 
 
-**F: Ich bin als „admin@contoso.com“ angemeldet, kann aber den Domänennamen „contoso.com“ nicht löschen?**<br>
+**F: Ich bin als „admin\@contoso.com “ angemeldet, kann aber den Domänennamen „contoso.com“ nicht löschen?**<br>
 **A:** Sie können im Namen Ihres Benutzerkontos nicht auf den benutzerdefinierten Domänennamen verweisen, den Sie löschen möchten. Stellen Sie sicher, dass das Konto des globalen Administrators den anfänglichen Domänennamen (.onmicrosoft.com) verwendet, z.B. „admin@contoso.onmicrosoft.com“. Verwenden Sie für die Anmeldung ein anderes globales Administratorkonto wie z.B. „admin@contoso.onmicrosoft.com“ oder einen anderen benutzerdefinierten Domänenamen wie „fabrikam.com“, bei dem das Konto „admin@fabrikam.com“ lautet.
 
 **F: Ich habe auf die Schaltfläche „Domäne löschen“ geklickt. Jetzt wird der Status `In Progress` für den Löschvorgang angezeigt. Wie lange dauert es? Was passiert, wenn der Vorgang nicht erfolgreich ausgeführt wird?**<br>

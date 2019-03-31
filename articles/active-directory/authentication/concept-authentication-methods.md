@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 02/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d57e3d647acfe9400d7b575f5635e2ab5254352
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162219"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999488"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -149,6 +149,8 @@ Die Microsoft Authenticator-App und andere Drittanbieter-Apps können als Softwa
 > Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung, **um ein Höchstmaß an Sicherheit zu gewährleisten**.
 >
 
+Benutzer verfügen möglicherweise über eine Kombination von bis zu 5 OATH-Hardware-Token oder Authenticator-Anwendungen wie z.B. die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
+
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH-Hardwaretoken (Öffentliche Vorschau)
 
 OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Beachten Sie, dass geheime Schlüssel auf 128 Zeichen beschränkt sind, was möglicherweise nicht mit allen Token kompatibel ist.
@@ -196,6 +198,9 @@ Eine SMS mit einem Prüfcode wird an die Mobiltelefonnummer gesendet. Geben Sie 
 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
+> [!IMPORTANT]
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+
 ## <a name="office-phone"></a>Bürotelefon
 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
@@ -203,6 +208,9 @@ Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefon
 Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
 
 Das Attribut „Bürotelefon“ wird von Ihrem Administrator verwaltet.
+
+> [!IMPORTANT]
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 > [!NOTE]
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
@@ -229,6 +237,6 @@ Wenn für Ihr Unternehmen ein SSO-Verbund mit Azure AD konfiguriert ist und Sie 
 
 [Aktivieren von Azure Multi-Factor Authentication für Ihre Organisation](howto-mfa-getstarted.md)
 
-Lesen Sie außerdem, wie Sie die [zusammengeführte Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD aktivieren](concept-registration-mfa-sspr-converged.md).
+[Aktivieren der kombinierten Registrierung in Ihrem Mandanten](howto-registration-mfa-sspr-combined.md)
 
 [Dokumentation zur Konfiguration der Methode für die Authentifizierung von Endbenutzern](https://aka.ms/securityinfoguide)

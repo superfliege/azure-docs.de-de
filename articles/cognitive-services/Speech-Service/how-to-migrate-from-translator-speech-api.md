@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: de9727df9255fb880403e0409055b73db240e882
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 35f970e81d27511bd35610bc2988a5ea4832906b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868111"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898634"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst
 
 Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-API von Microsoft zum [Spracherkennungsdienst](index.yml) zu migrieren. Diese Anleitung beschreibt die Unterschiede zwischen der Sprachübersetzungs-API von Microsoft und dem Spracherkennungsdienst und schlägt Strategien für die Migration Ihrer Anwendungen vor.
 
 > [!NOTE]
-> Ihr Abonnementschlüssel für die Sprachübersetzungs-API wird nicht vom Spracherkennungsdienst akzeptiert. Sie müssen ein neues Abonnement für den Spracherkennungsdienst starten.
+> Ihr Abonnementschlüssel für die Sprachübersetzungs-API wird nicht vom Spracherkennungsdienst akzeptiert. Sie müssen ein neues Spracherkennungsdienst-Abonnement erstellen.
 
 ## <a name="comparison-of-features"></a>Vergleich der Features
 
-| Feature                                           | Sprachübersetzungs-API                                  | Spracherkennungsdienst | Details                                                                                                                                                                                                                                                                            |
+| Feature                                           | Sprachübersetzungs-API                                  | Sprachdienste | Details                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Übersetzung in Text                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Übersetzung in Sprache                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Globaler Endpunkt                                   | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Spracherkennungsdienst bietet derzeit keinen globalen Endpunkt. Ein globaler Endpunkt kann den Datenverkehr automatisch zum nächstgelegenen regionalen Endpunkt leiten, wodurch die Latenz in Ihrer Anwendung verringert wird.                                                    |
+| Globaler Endpunkt                                   | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Die Spracherkennungsdienste bieten keinen globalen Endpunkt. Ein globaler Endpunkt kann den Datenverkehr automatisch zum nächstgelegenen regionalen Endpunkt leiten, wodurch die Latenz in Ihrer Anwendung verringert wird.                                                    |
 | Regionale Endpunkte                                | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Verbindungszeitlimit                             | 90 Minuten                                               | Mit SDK unbegrenzt 10 Minuten mit einer WebSockets-Verbindung.                                                                                                                                                                                                                                                                                   |
 | Authentifizierungsschlüssel im Header                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -51,7 +51,7 @@ Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-AP
 
 Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung verwenden, die die Sprachübersetzungs-API verwenden, sollten Sie diese aktualisieren, um den Spracherkennungsdienst zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Spracherkennungsdienst](index.yml). Berücksichtigen Sie bei der Migration Folgendes:
 
-* Spracherkennungsdienst bietet derzeit keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen.
+* Die Spracherkennungsdienste bieten keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen.
 
 * Wenn Ihre Anwendung langlebige Verbindungen verwendet und die verfügbaren SDKs nicht nutzen kann, können Sie eine WebSockets-Verbindung verwenden. Steuern Sie das Zeitlimit von 10 Minuten, indem Sie die Verbindung zum jeweils richtigen Zeitpunkt wiederherstellen.
 
@@ -67,4 +67,4 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Worum handelt es sich beim Speech-Dienst?](overview.md)
-* [Spracherkennungsdienst und SDK: Dokumentation](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Dokumentation zum Spracherkennungsdienst und zum Spracherkennungsdienst-SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd05913a982d88a1e4fe4ff72bca0387e280e230
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f80cff113264868517f5348cfbbd7eaad7fbc751
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211630"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838390"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
 Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und **ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
@@ -40,7 +40,7 @@ Beim Versuch, ein neues Objekt mit einem UPN- oder ProxyAddress-Wert bereitzuste
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Verhalten mit Resilienz bei doppelten Attributen
 Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Diese temporären Werte weisen folgendes Format auf:  
-***<OriginalPrefix>+&lt;4-stellige Zahl&gt;@<InitialTenantDomain>.onmicrosoft.com***  
+„***<OriginalPrefix>+<4stelligeZahl>\@<InitialTenantDomain>.onmicrosoft.com***“.  
 Ist das Attribut nicht erforderlich (etwa im Falle von **ProxyAddress**), wird das Konfliktattribut einfach von Azure Active Directory unter Quarantäne gestellt, und die Objekterstellung oder -aktualisierung wird fortgesetzt.
 
 Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden aber nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.
@@ -66,7 +66,7 @@ Durch Herunterladen der neuesten Version des PowerShell-Moduls von Azure Active 
 > Die Funktion für Resilienz bei doppelten Attributen kann vor der Aktivierung für den Mandanten nicht mehr proaktiv mithilfe des Cmdlets „Set-MsolDirSyncFeature“ aktiviert werden. Damit Sie die Funktion testen können, müssen Sie einen neuen Azure Active Directory-Mandanten erstellen.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Ermitteln von Objekten mit DirSyncProvisioningErrors
-Objekte mit Fehlern aufgrund von Konflikten mit doppelten Eigenschaften können derzeit auf zwei Arten ermittelt werden: über Azure Active Directory PowerShell und über das Office 365-Verwaltungsportal. Es ist geplant, dieses Feature im Laufe der Zeit um weitere Portale zu erweitern.
+Objekte mit Fehlern aufgrund von Konflikten mit doppelten Eigenschaften können derzeit auf zwei Arten ermittelt werden: über Azure Active Directory PowerShell und über das [Microsoft 365 Admin Center](https://admin.microsoft.com). Es ist geplant, dieses Feature im Laufe der Zeit um weitere Portale zu erweitern.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 Für die PowerShell-Cmdlets in diesem Thema gilt Folgendes:
@@ -118,12 +118,12 @@ Verwenden Sie für eine allgemeine Zeichenfolgensuche das Flag **-SearchString**
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="office-365-admin-portal"></a>Office 365-Verwaltungsportal
-Sie können Fehler bei der Verzeichnissynchronisierung im Office 365 Admin Center anzeigen. Der Bericht im Office 365-Portal enthält nur Objekte vom Typ **User** , für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten des Typs **Gruppen** und **Kontakte**.
+## <a name="microsoft-365-admin-center"></a>Microsoft 365 Admin Center
+Sie können Fehler bei der Verzeichnissynchronisierung im Microsoft 365 Admin Center anzeigen. Der Bericht im Microsoft 365 Admin Center enthält nur Objekte vom Typ **User**, für die diese Fehler vorliegen. Er enthält keine Informationen zu Konflikten zwischen Objekten des Typs **Gruppen** und **Kontakte**.
 
 ![Aktive Benutzer](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktive Benutzer")
 
-Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung in Office 365 Admin Center finden Sie unter [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Eine Anleitung zum Anzeigen von Fehlern bei der Verzeichnissynchronisierung im Microsoft 365 Admin Center finden Sie unter [Ermitteln von Fehlern der Verzeichnissynchronisierung in Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Fehlerbericht für die Identitätssynchronisierung
 Wenn dieses neue Verhalten bei einem Objekt mit einem Konflikt aufgrund eines doppelten Attributs angewendet wird, enthält die standardmäßige Fehlerberichts-E-Mail für die Identitätssynchronisierung, die an den Kontakt für technische Benachrichtigungen des Mandanten gesendet wird, eine entsprechende Benachrichtigung. Bei diesem Verhalten gibt es jedoch eine wichtige Änderung. In der Vergangenheit wurden Informationen zu einem Konflikt aufgrund eines doppelten Attributs in jeden nachfolgenden Fehlerbericht einbezogen, bis der Konflikt behoben wurde. Bei Verwendung des neuen Verhaltens erscheint die Fehlerbenachrichtigung für einen bestimmten Konflikt lediglich einmal (zu dem Zeitpunkt, zu dem das in Konflikt stehende Attribut isoliert wird).
@@ -144,9 +144,9 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 1. Bei Objekten mit einer bestimmten Attributkonfiguration treten immer wieder Exportfehler auf, obwohl doppelte Attribute eigentlich isoliert werden sollten.  
    Beispiel: 
    
-    a. In Active Directory wird ein neuer Benutzer mit dem UPN-Wert **Joe@contoso.com** und dem ProxyAddress-Wert **smtp:Joe@contoso.com** erstellt
+    a. Der neue Benutzer wird in Active Directory mit dem UPN **Joe\@contoso.com** und dem ProxyAddress-Wert **smtp:Joe\@contoso.com** erstellt.
    
-    b. Die Eigenschaften dieses Objekts stehen mit einer vorhandenen Gruppe mit dem ProxyAddress-Wert **SMTP:Joe@contoso.com**in Konflikt.
+    b. Die Eigenschaften dieses Objekts stehen mit einer vorhandenen Gruppe mit dem ProxyAddress-Wert **SMTP:Joe\@contoso.com** in Konflikt.
    
     c. Beim Exportieren werden die in Konflikt stehenden Attribute nicht isoliert. Stattdessen wird ein Fehler vom Typ **ProxyAddress-Konflikt** ausgegeben. Der Vorgang wird wie vor der Aktivierung des Resilienzfeatures in jedem nachfolgenden Synchronisierungszyklus wiederholt.
 2. Wenn zwei Gruppen lokal mit der gleichen SMTP-Adresse erstellt werden, kann eine davon beim ersten Versuch nicht erfolgreich bereitgestellt werden, und es tritt ein Standardfehler für doppelte Werte vom Typ **ProxyAddress** auf. Der doppelte Wert wird beim nächsten Synchronisierungszyklus aber richtig isoliert.
@@ -156,13 +156,13 @@ Keines dieser bekannten Probleme führt zu Datenverlusten oder Dienstbeeinträch
 1. Die ausführliche Fehlermeldung für zwei Objekte in einem UPN-Konfliktsatz ist identisch. Sie gibt an, dass bei beiden der UPN-Wert geändert/isoliert wurde, obwohl sich eigentlich nur die Daten eines der Objekte geändert haben.
 2. Die ausführliche Fehlermeldung für einen UPN-Konflikt enthält den falschen displayName-Wert für einen Benutzer, dessen UPN geändert/isoliert wurde. Beispiel: 
    
-    a. Zunächst wird **Benutzer A** mit **UPN = User@contoso.com** synchronisiert.
+    a. Zunächst wird **Benutzer A** mit **UPN = User\@contoso.com** synchronisiert.
    
-    b. Anschließend wird versucht, **Benutzer B** mit **UPN = User@contoso.com** zu synchronisieren.
+    b. Anschließend wird versucht, **Benutzer B** mit **UPN = User\@contoso.com** zu synchronisieren.
    
-    c. Der UPN-Wert von **Benutzer B** wird in **User1234@contoso.onmicrosoft.com** geändert, und **User@contoso.com** wird **DirSyncProvisioningErrors** hinzugefügt.
+    c. Der UPN von **Benutzer B** wird in **User1234\@contoso.onmicrosoft.com** geändert, und **User\@contoso.com** wird **DirSyncProvisioningErrors**  hinzugefügt.
    
-    d. Die Fehlermeldung für **Benutzer B** sollte angeben, dass **Benutzer A** bereits den UPN-Wert **User@contoso.com** besitzt, aber den displayName-Wert von **Benutzer B** anzeigt.
+    d. Die Fehlermeldung für **Benutzer B** sollte angeben, dass **Benutzer A** bereits den UPN-Wert **User\@contoso.com** besitzt, aber den displayName-Wert von **Benutzer B** anzeigt.
 
 **Fehlerbericht für die Identitätssynchronisierung**:
 

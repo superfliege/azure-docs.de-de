@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines benutzerdefinierten Spracherkennungsendpunkts mit Custom Speech Service in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen benutzerdefinierten Endpunkt für die Spracherkennung mit dem Custom Speech Service in Cognitive Services erstellen.
+title: Erstellen eines benutzerdefinierten Spracherkennungsendpunkts mit Speech Services in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen benutzerdefinierten Endpunkt für die Spracherkennung mit Azure Speech Services erstellen.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,19 +9,19 @@ ms.subservice: custom-speech
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
-ms.openlocfilehash: 63d2c15c14340b0d7407b0144a8b8c75a2634e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1f7a84d187ba6279caad4926d54bfc56254152af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220243"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862997"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Erstellen eines benutzerdefinierten Spracherkennungsendpunkts
 
-Nachdem Sie benutzerdefinierte Akustik- oder Sprachmodelle erstellt haben, können Sie diese einem benutzerdefinierten Endpunkt für die Spracherkennung bereitstellen. 
+Nachdem Sie benutzerdefinierte Akustik- oder Sprachmodelle erstellt haben, können Sie diese einem benutzerdefinierten Endpunkt für die Spracherkennung bereitstellen.
 
 ## <a name="create-an-endpoint"></a>Erstellen eines Endpunkts
-Wählen Sie zum Erstellen eines neuen benutzerdefinierten Endpunkts aus dem Menü **Custom Speech** am oberen Rand der Seite die Option **Endpunkte** aus. Durch diese Aktion gelangen Sie zur Seite **Endpunkte**, die eine Tabelle der aktuellen benutzerdefinierten Endpunkte enthält. Wenn Sie noch keine Endpunkte erstellt haben, ist die Tabelle leer. Das aktuelle Gebietsschema ist im Tabellentitel angegeben. 
+Wählen Sie zum Erstellen eines neuen benutzerdefinierten Endpunkts aus dem Menü **Custom Speech** am oberen Rand der Seite die Option **Endpunkte** aus. Durch diese Aktion gelangen Sie zur Seite **Endpunkte**, die eine Tabelle der aktuellen benutzerdefinierten Endpunkte enthält. Wenn Sie noch keine Endpunkte erstellt haben, ist die Tabelle leer. Das aktuelle Gebietsschema ist im Tabellentitel angegeben.
 
 Wenn Sie eine Bereitstellung für eine andere Sprache erstellen möchten, müssen Sie auf **Gebietsschema ändern** klicken. Weitere Informationen zu unterstützten Sprachen.
 
@@ -44,6 +44,6 @@ Wenn die Bereitstellung bereit ist, wird der Name des Endpunkts zu einem Link. D
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Tutorials finden Sie auf den folgenden Seiten:
-- [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/)
+- [Abrufen Ihres Speech Services-Testabonnements](https://azure.microsoft.com/try/cognitive-services/)
 - [Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

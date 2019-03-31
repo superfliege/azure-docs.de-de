@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53eb0c4ad5c0a21f46985062ef8202a87dc0d5e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Tutorial: Integration von Infinite Campus in Azure Active Directory
 
@@ -49,7 +49,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
-- Sie müssen mindestens ein Azure Active Directory-Administrator sein, um die Konfiguration durchzuführen.
+- Sie müssen mindestens ein Azure Active Directory-Administrator sein und die Campus Product-Sicherheitsrolle „Student Information System (SIS)“ ausüben, um die Konfiguration abzuschließen.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -112,7 +112,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](common/editconfigure.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Schritte 4.a bis 4.d aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen, und fahren Sie dann mit Schritt 11.c fort. Wenn Sie keine Dienstanbieter-Metadatendatei haben, fahren Sie mit Schritt 5 fort.
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Schritte 4.a bis 4.d aus, wenn Sie eine **Dienstanbieter-Metadatendatei** aus Infinite Campus exportiert haben, und fahren Sie dann mit Schritt 11.c fort. Wenn Sie keine Dienstanbieter-Metadatendatei haben, fahren Sie mit Schritt 5 fort.
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
@@ -168,13 +168,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Wählen Sie **Enable SAML Single Sign On** (Einmaliges Anmelden per SAML aktivieren) aus.
     
-    b. Wählen Sie im Bereich **Select an option to retrieve Identity Provider (IDP) server data** (Option zum Abrufen von IDP-Dienstanbieterdaten auswählen) die Option **Metadata URL** (Metadaten-URL), fügen Sie die **Verbundmetadaten-URL der App** in das Feld ein, und klicken Sie auf **Sync** (Synchronisieren).
+    b. Bearbeiten Sie den **Optional Attribute Name** (Optionalen Attributnamen), damit er **name** enthält.
+    
+    c. Wählen Sie im Bereich **Select an option to retrieve Identity Provider (IDP) server data** (Option zum Abrufen von IDP-Dienstanbieterdaten auswählen) die Option **Metadata URL** (Metadaten-URL), fügen Sie die **Verbundmetadaten-URL der App** (aus Schritt 6 oben) in das Feld ein, und klicken Sie auf **Sync** (Synchronisieren).
 
-    c. Klicken Sie auf den Link **Service Provider Metadata** (Metadaten des Dienstanbieters), um die Datei mit den **Metadaten des Dienstanbieters** auf Ihrem Computer zu speichern. Laden Sie die Datei im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** hoch, damit die Werte **Bezeichner** und **Antwort-URL** automatisch eingefügt werden (Schritt 4: Upload und automatisches Einfügen von Werten, Schritt 5: Manuelle Eingabe).
+    d. Klicken Sie auf den Link **Service Provider Metadata** (Metadaten des Dienstanbieters), um die Datei mit den **Metadaten des Dienstanbieters** auf Ihrem Computer zu speichern. Laden Sie die Datei im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** hoch, damit die Werte **Bezeichner** und **Antwort-URL** automatisch eingefügt werden (Schritt 4: Upload und automatisches Einfügen von Werten, Schritt 5: Manuelle Eingabe).
 
-    d. Nach dem Klicken auf **Sync** (Synchronisieren) werden die Werte auf der Seite **SSO Service Provider Configuration** (SSO-Dienstanbieterkonfiguration) automatisch aufgefüllt.
+    e. Nach dem Klicken auf **Sync** (Synchronisieren) werden die Werte auf der Seite **SSO Service Provider Configuration** (SSO-Dienstanbieterkonfiguration) automatisch aufgefüllt.
 
-    e. Klicken Sie auf **Speichern**.
+    f. Klicken Sie auf **Speichern**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -194,14 +196,14 @@ Das Ziel dieses Abschnitts ist das Erstellen eines _einzelnen_ Testbenutzers nam
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Erstellen**.
 
-### <a name="creating-a-infinite-campus-test-user"></a>Erstellen eines Infinite Campus-Testbenutzers
+### <a name="creating-an-infinite-campus-test-user"></a>Erstellen eines Infinite Campus-Testbenutzers
 
 Infinite Campus besitzt eine demografiezentrierte Architektur. Wenden Sie sich an das [Supportteam von Infinite Campus](mailto:sales@infinitecampus.com), um die Benutzer zur Infinite Campus-Plattform hinzuzufügen.
 

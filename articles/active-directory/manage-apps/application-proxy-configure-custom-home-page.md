@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc6b9ad5227bc5bffd1f44f664351843896aec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109779"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys
 
@@ -30,10 +30,10 @@ In diesem Artikel wird erläutert, wie Sie Apps so konfigurieren, dass sie Benut
 Benutzer, die Ihre Apps starten, werden standardmäßig zur Stammdomänen-URL der veröffentlichten App weitergeleitet. Die Zielseite wird in der Regel als URL der Startseite festgelegt. Definieren Sie mithilfe des Azure AD PowerShell-Moduls benutzerdefinierte Homepage-URLs, wenn die App-Benutzer zu einer bestimmten Seite innerhalb der App gelangen sollen. 
 
 Das folgende Beispiel veranschaulicht, warum es für ein Unternehmen sinnvoll sein kann, eine benutzerdefinierte Startseite festzulegen:
-- In Ihrem Unternehmensnetzwerk navigieren Benutzer zu *https://ExpenseApp/login/login.aspx*, um sich anzumelden und auf Ihre App zuzugreifen.
-- Da Sie auf oberster Ebene der Ordnerstruktur über andere Ressourcen wie Images verfügen, auf die der Anwendungsproxy zugreifen muss, veröffentlichen Sie die App mit *https://ExpenseApp* als interner URL.
-- Die externe Standard-URL ist *https://ExpenseApp-contoso.msappproxy.net*. Hierüber gelangen die Benutzer jedoch nicht auf die Anmeldeseite.  
-- Legen Sie *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* als URL der Startseite fest. 
+- In Ihrem Unternehmensnetzwerk navigieren Benutzer zu `https://ExpenseApp/login/login.aspx`, um sich anzumelden und auf Ihre App zuzugreifen.
+- Da Sie auf oberster Ebene der Ordnerstruktur über andere Ressourcen wie Images verfügen, auf die der Anwendungsproxy zugreifen muss, veröffentlichen Sie die App mit `https://ExpenseApp` als interner URL.
+- Die externe Standard-URL ist `https://ExpenseApp-contoso.msappproxy.net`. Hierüber gelangen die Benutzer jedoch nicht auf die Anmeldeseite.  
+- Legen Sie `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` als URL der Startseite fest. 
 
 >[!NOTE]
 >Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps im [Azure AD-Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md) und im [Office 365-Startfeld](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher) angezeigt.
@@ -113,7 +113,7 @@ Erstellen Sie die URL der Startseite, und aktualisieren Sie die Anwendung mit di
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
- Nach dem Überprüfen der App können Sie die Startseite jetzt wie folgt aktualisieren:
+   Nach dem Überprüfen der App können Sie die Startseite jetzt wie folgt aktualisieren:
 
 2. Erstellen Sie ein leeres Anwendungsobjekt, um die gewünschten Änderungen zu speichern. Diese Variable enthält die Werte, die Sie aktualisieren möchten. In diesem Schritt wird nichts erstellt.
 

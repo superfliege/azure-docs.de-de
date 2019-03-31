@@ -1,31 +1,28 @@
 ---
-title: Verwalten von Machine Learning Studio-Webdiensten mit API Management
+title: Verwalten von Webdiensten mithilfe von API Management
 titleSuffix: Azure Machine Learning Studio
 description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten. Verwalten Sie Ihre REST-API-Endpunkte, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 915b972774fb418a454d8a3acd2a61f25af7a6aa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852882"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Verwalten von Azure Machine Learning Studio-Webdiensten mit API Management
 ## <a name="overview"></a>Übersicht
 Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer Azure Machine Learning Studio-Webdienste mit API Management.
 
 ## <a name="what-is-azure-api-management"></a>Was ist Azure API Management?
-Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Klicken Sie [hier](https://azure.microsoft.com/services/api-management/), um Informationen zu Azure API Management zu erhalten. Klicken Sie [hier](../../api-management/api-management-get-started.md), um eine Anleitung zum Einstieg in Azure API Management zu erhalten. In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
-
-## <a name="what-is-azureml"></a>Was ist Azure ML?
-Azure ML ist ein Azure-Dienst für Machine Learning, mit dem Sie erweiterte Analyselösungen ganz einfach entwickeln, bereitstellen und freigeben können. Klicken Sie [hier](https://azure.microsoft.com/services/machine-learning/) , um Informationen zu Azure ML zu erhalten.
+Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Klicken Sie [hier](https://azure.microsoft.com/services/api-management/), um Informationen zu Azure API Management zu erhalten. Klicken Sie [hier](/azure/api-management/import-and-publish), um eine Anleitung zum Einstieg in Azure API Management zu erhalten. In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
@@ -185,11 +182,11 @@ Benennen Sie es um in: **SimpleFeatureHashingExperiment**. Erweitern Sie **Saved
 
 Erweitern Sie **Data Transformation** und **Manipulation**, und ziehen Sie **Select Columns in Dataset** in Ihr Experiment. Verbinden Sie **Book Reviews from Amazon** mit **Select Columns in Dataset**.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Verbinden des Moduls für das Book Reviews-Dataset mit einem Project Columns-Modul](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Klicken Sie auf **Select Columns in Dataset**. Klicken Sie dann auf **Launch column selector**, und wählen Sie **Col2** aus. Klicken Sie auf das Häkchen, um diese Änderungen zu übernehmen.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Auswählen von Spalten mithilfe von Spaltennamen](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Erweitern Sie **Text Analytics**, und ziehen Sie **Feature Hashing** in das Experiment. Verbinden Sie **Select Columns in Dataset** mit **Feature Hashing**.
 

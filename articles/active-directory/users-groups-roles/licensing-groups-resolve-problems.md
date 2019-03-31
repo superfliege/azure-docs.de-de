@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207499"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201533"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -33,21 +33,21 @@ Bei Verwendung der gruppenbasierten Lizenzierung können die gleichen Fehler auf
 ## <a name="how-to-find-license-assignment-errors"></a>Vorgehensweise: Fehlersuche bei der Lizenzzuweisung
 **So suchen Sie nach Fehlern bei der Lizenzzuweisung**
 
-   1. Um in einer bestimmten Gruppe nach Benutzern mit einem Fehlerzustand zu suchen, öffnen Sie den Bereich für die Gruppe. Falls Benutzer mit einem Fehlerzustand vorhanden sind, wird unter **Lizenzen** eine Benachrichtigung angezeigt.
+1. Um in einer bestimmten Gruppe nach Benutzern mit einem Fehlerzustand zu suchen, öffnen Sie den Bereich für die Gruppe. Falls Benutzer mit einem Fehlerzustand vorhanden sind, wird unter **Lizenzen** eine Benachrichtigung angezeigt.
 
-   ![Fehlerbenachrichtigung in einer Gruppe](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![Gruppen- und Fehlerbenachrichtigungsnachricht](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-   2. Wählen Sie die Benachrichtigung aus, um eine Liste mit allen betroffenen Benutzern zu öffnen. Sie können jeden Benutzer einzeln auswählen, um weitere Details anzuzeigen.
+2. Wählen Sie die Benachrichtigung aus, um eine Liste mit allen betroffenen Benutzern zu öffnen. Sie können jeden Benutzer einzeln auswählen, um weitere Details anzuzeigen.
 
-   ![Liste der Benutzer im Fehlerzustand in einer Gruppe](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![Liste der Benutzer im Gruppenlizenzierungs-Fehlerzustand](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-   3. Um nach allen Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem Blatt **Azure Active Directory** erst auf **Lizenzen** und dann auf **Übersicht**. Sollte für Gruppen eine Aktion erforderlich sein, wird ein Informationsfeld angezeigt.
+3. Um nach allen Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem Blatt **Azure Active Directory** erst auf **Lizenzen** und dann auf **Übersicht**. Sollte für Gruppen eine Aktion erforderlich sein, wird ein Informationsfeld angezeigt.
 
-   ![Übersicht: Information zu Gruppen im Fehlerzustand](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![Übersicht und Informationen zu Gruppen im Fehlerzustand](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-   4. Klicken Sie auf das Feld, um eine Liste aller Gruppen mit Fehlern anzuzeigen. Klicken Sie bei Bedarf auf die einzelnen Gruppen, um weitere Details anzuzeigen.
+4. Klicken Sie auf das Feld, um eine Liste aller Gruppen mit Fehlern anzuzeigen. Klicken Sie bei Bedarf auf die einzelnen Gruppen, um weitere Details anzuzeigen.
 
-   ![Übersicht: Liste der Gruppen mit Fehlern](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![Übersicht und Liste der Gruppen mit Fehlern](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 
 In den folgenden Abschnitten werden die einzelnen potenziellen Probleme sowie die dazugehörigen Lösungsmöglichkeiten beschrieben.
@@ -104,9 +104,9 @@ Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihre
 
 > [!TIP]
 > Um zu ermitteln, ob eine doppelte Proxyadresse vorhanden ist, führen Sie das folgende PowerShell-Cmdlet für Exchange Online aus:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
+> ```
+> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> ```
 > Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](https://technet.microsoft.com/library/jj984289.aspx). Weitere Informationen finden Sie im Artikel zum Thema [Auffüllen des proxyAddresses-Attributs in Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer behoben haben, erzwingen Sie die Lizenzverarbeitung für diese Gruppe, um sicherzustellen, dass die Lizenzen nun zugewiesen werden können.

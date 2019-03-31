@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 41e7f0ea8616b25eac43ecff7802e0f9e1c08050
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900589"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 In diesem Artikel wird veranschaulicht, wie Sie mit dem Azure-Portal einen neuen virtuellen Windows Server-Computer bereitstellen. Anschließend erfahren Sie, wie Sie den virtuellen Computer in eine verwaltete Domäne von Azure Active Directory Domain Services (Azure AD DS) einbinden.
@@ -107,7 +107,7 @@ Um den virtuellen Windows Server-Computer in die mit Azure AD DS verwalteten Dom
 
 7. Sie können Anmeldeinformationen auf eine der folgenden Arten eingeben:
 
-   * **UPN-Format** (empfohlen): Geben Sie das Benutzerprinzipalnamen-Suffix für das Benutzerkonto an, wie in Azure AD konfiguriert. In diesem Beispiel ist *bob@domainservicespreview.onmicrosoft.com* das UPN-Suffix des Benutzers *bob*.
+   * **UPN-Format** (empfohlen): Geben Sie das Benutzerprinzipalnamen-Suffix für das Benutzerkonto an, wie in Azure AD konfiguriert. Das UPN-Suffix des Benutzers *bob* in diesem Beispiel lautet *bob\@domainservicespreview.onmicrosoft.com*.
 
    * **SAMAccountName-Format**: Sie können den Kontonamen im Format „SAMAccountName“ angeben. Der Benutzer *bob* würde in diesem Beispiel *CONTOSO100\bob* eingeben.
 
@@ -146,7 +146,7 @@ Probieren Sie es mit den folgenden Schritten zur Problembehandlung, wenn Problem
 
 * Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben](active-directory-ds-getting-started-password-sync.md).
 
-* Vergewissern Sie sich, dass Sie den UPN des Benutzers bei der Anmeldung exakt so verwenden, wie er in Azure AD konfiguriert ist (z.B. *bob@domainservicespreview.onmicrosoft.com*).
+* Vergewissern Sie sich, dass Sie den UPN des Benutzers bei der Anmeldung genau so verwenden, wie er in Azure AD konfiguriert ist (z.B. *bob\@domainservicespreview.onmicrosoft.com*).
 
 * Warten Sie so lange, bis die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden für die ersten Schritte angegeben wird.
 

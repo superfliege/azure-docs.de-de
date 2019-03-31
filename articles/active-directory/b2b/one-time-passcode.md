@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185144"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294824"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)
 
@@ -35,11 +36,11 @@ Dieses Feature ist derzeit als Vorschauversion verfügbar (siehe [Abonnieren der
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Benutzeroberfläche für Gastbenutzer mit Einmalkennung
 Bei der Authentifizierung mit Einmalkennung kann der Gastbenutzer seine Einladung über einen direkten Link oder mithilfe der Einladungs-E-Mail einlösen. In beiden Fällen gibt eine Nachricht im Browser an, dass ein Code an die E-Mail-Adresse des Gastbenutzers gesendet wird. Der Gastbenutzer klickt auf **Code senden**:
  
-   ![Zugriffsbereiche App verwalten](media/one-time-passcode/otp-send-code.png)
+   ![Screenshot mit der Schaltfläche „Code senden“](media/one-time-passcode/otp-send-code.png)
  
 Eine Kennung wird an die E-Mail-Adresse des Benutzers gesendet. Der Benutzer ruft die Kennung aus der E-Mail ab und gibt sie im Browserfenster ein:
  
-   ![Zugriffsbereiche App verwalten](media/one-time-passcode/otp-enter-code.png)
+   ![Screenshot mit der Schaltfläche „Code eingeben“](media/one-time-passcode/otp-enter-code.png)
  
 Der Gastbenutzer wird jetzt authentifiziert und kann entweder die freigegebene Ressource anzeigen oder seinen Anmeldevorgang fortsetzen. 
 
@@ -57,7 +58,7 @@ Zum Zeitpunkt der Einladung gibt es keinen Hinweis darauf, dass der eingeladene 
 
 Sie können die Gastbenutzer anzeigen, die sich im Azure-Portal mit Einmalkennungen authentifizieren. Wechseln Sie zu diesem Zweck zu **Azure Active Directory** > **Organisationsbeziehungen** > **Benutzer aus anderen Organisationen**.
 
-![Anzeigen von Benutzern mit Einmalkennung im Azure-Portal, bei denen die Quelle „Einmalkennung“ (OTP) lautet](media/one-time-passcode/otp-users.png)
+![Screenshot mit einem Benutzer mit Einmalkennung mit dem Quellwert „OTP“](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > Wenn ein Benutzer eine Einmalkennung einlöst und später ein MSA, ein Azure AD-Konto oder ein anderes Verbundkonto erhält, wird er weiterhin mit einer Einmalkennung authentifiziert. Wenn Sie seine Authentifizierungsmethode aktualisieren möchten, können Sie sein Gastbenutzerkonto löschen und ihn erneut einladen.

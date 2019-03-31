@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 7aa0e11ed47219829830369d17b300270d3fbffb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100683"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259413"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Bereitstellen eines Modells als Webdienst auf einem FPGA mit Azure Machine Learning Service
 
@@ -28,7 +28,7 @@ Sie können ein Modell als Webdienst in [Field Programmable Gate Array (FPGAs)](
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
 - Ein Azure Machine Learning Service-Arbeitsbereich und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
  
@@ -46,12 +46,8 @@ Sie können ein Modell als Webdienst in [Field Programmable Gate Array (FPGAs)](
     pip install "tensorflow==1.10"
     ```
 
-### <a name="get-the-notebook"></a>Abrufen des Notebooks
-
-Dieses Tutorial steht Ihnen auch als Jupyter Notebook zur Verfügung. Befolgen Sie den Code hier oder führen Sie das [Schnellstart-Notebook](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb) aus.
-
 ## <a name="create-and-deploy-your-model"></a>Erstellen und Bereitstellen Ihres Modells
-Erstellen Sie eine Pipeline, um das Image vorzuverarbeiten, statten Sie es mit ResNet 50 auf einem FPGA mit Features aus, und führen Sie diese über einen anhand eines ImageNet-Datasets trainierten Klassifizierer aus.
+Erstellen Sie eine Pipeline, um das Eingabebild vorzuverarbeiten, erklären Sie es mit ResNet 50 auf einem FPGA als Feature, und führen Sie die Features dann über einen anhand eines ImageNet-Datasets trainierten Klassifizierer aus.
 
 Befolgen Sie die Anweisungen für folgende Punkte:
 

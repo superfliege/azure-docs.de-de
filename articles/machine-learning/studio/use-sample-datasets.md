@@ -5,30 +5,29 @@ description: Enthält Beschreibungen der Datasets, die in Beispielmodellen von M
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244333"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880992"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
 
-Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure AI-Katalog](http://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
+Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning Studio ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure AI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
 
 Einige dieser Datasets sind in Azure Blob Storage verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
 
 Die restlichen dieser Beispieldatasets sind in Ihrem Arbeitsbereich unter **Saved Datasets** verfügbar. Sie finden dies in der Modulpalette links vom Experimentbereich in Machine Learning Studio.
 Sie können alle diese DataSets für Ihre eigenen Experimente verwenden, indem Sie sie auf Ihren Experimentcanvas ziehen.
 
-
-
+## <a name="datasets"></a>Datasets
 
 <table>
 
@@ -44,7 +43,7 @@ Eine Teilmenge der Volkszählungsdatenbank von 1994, die arbeitende Erwachsene (
 <p></p>
 <b>Verwendung:</b> Klassifizierung von Personen mithilfe von demografischen Daten für die Vorhersage, ob eine Person mehr als 50.000 pro Jahr verdient.
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -65,7 +64,7 @@ Der Risikobewertung ist anfänglich mit dem Fahrzeugpreis verknüpft. Sie wird d
 <p></p>
 <b>Verwendung:</b> Vorhersage der Risikoeinstufung nach Merkmalen unter Verwendung der Regression oder multivariaten Klassifizierung. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Schlimmer, J.C. (1987). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> Schlimmer, J.C. (1987). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -96,9 +95,9 @@ Die Spenderdaten beinhalten die Anzahl der Monate seit der letzten Spende, die H
 <p></p>
 <b>Verwendung:</b> Vorhersage mittels Klassifizierung, ob der Spender im März 2007 Blut gespendet hat, wobei „1“ einen Spender im Zielzeitraum und „0“ eine Person angibt, die nicht gespendet hat. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Yeh, I.C., (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Zugrunde liegende Untersuchungen:</b> Yeh, I.C., (2008). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
-Yeh, I-Cheng, Yang, King-Jang und Ting, Tao-Ming, „Knowledge discovery on RFM model using Bernoulli sequence“, Expert Systems with Applications, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Yeh, I-Cheng, Yang, King-Jang und Ting, Tao-Ming, „Knowledge discovery on RFM model using Bernoulli sequence“, Expert Systems with Applications, 2008, <a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
@@ -109,7 +108,7 @@ Eines von drei krebsbezogenen DataSets, das vom Onkologieinstitut bereitgestellt
 <p></p>
 <b>Verwendung:</b> Klassifizierung des Krebstyps auf Basis von neun Attributen, von denen einige linear, andere kategorisch sind. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Wohlberg, W.H., Street, W.N. und Mangasarian, O.L. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> Wohlberg, W.H., Street, W.N. und Mangasarian, O.L. (1995). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -162,13 +161,13 @@ Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäude
 <p></p>
 <b>Verwendung:</b> Regression oder Klassifizierung zur Vorhersage der Energieeffizienzbewertung, die die Grundlage für eine von zwei Realwertantworten darstellt. Für die Multiklassen-Klassifizierung wird die Antwortvariable auf die nächste ganze Zahl gerundet. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Xifara, A. und Tsanas, A. (2012). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> Xifara, A. und Tsanas, A. (2012). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
   <td>Flugverspätungsdaten</td>
   <td>
-Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).
+Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).
 <p></p>
 Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:
 <ul>
@@ -187,7 +186,7 @@ Datensätze zu Ankunft und Abflug von Flügen innerhalb der USA von Oktober 2011
 <p></p>
 <b>Verwendung:</b> Vorhersage von Verspätungen im Flugverkehr. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> (US-Verkehrsministerium).
+<b>Zugrunde liegende Untersuchungen:</b> <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> (US-Verkehrsministerium).
   </td>
 </tr>
 
@@ -198,7 +197,7 @@ Enthält Wetterdaten, etwa Temperatur und Luftfeuchtigkeit sowie die Windgeschwi
 <p></p>
 <b>Verwendung:</b> Eine schwierige Regressionsaufgabe zur Vorhersage der bei Waldbränden verbrannten Fläche. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Cortez, P. und Morais, A. (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Zugrunde liegende Untersuchungen:</b> Cortez, P. und Morais, A. (2008). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 [Cortez and Morais, 2007] P. Cortez und A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In: J. Neves, M. F. Santos und J. Machado Eds., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 – Portuguese Conference on Artificial Intelligence, Dezember, Guimarães, Portugal, Seiten 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Verfügbar unter: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
   </td>
@@ -207,7 +206,7 @@ Enthält Wetterdaten, etwa Temperatur und Luftfeuchtigkeit sowie die Windgeschwi
 <tr>
   <td>Deutsche Kreditkarte UCI-Dataset</td>
   <td>
-Das DataSet „UCI Statlog“ (deutsche Kreditkarte) (<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog+German+Credit+Data</a>), das die Datei „german.data“ verwendet.
+Das DataSet „UCI Statlog“ (deutsche Kreditkarte) (<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog+German+Credit+Data</a>), das die Datei „german.data“ verwendet.
 <p></p>
 Dieses DataSet klassifiziert Personen anhand verschiedener Attribute in hohes und niedriges Kreditrisiko. Jedes Beispiel stellt eine Person dar. Insgesamt existieren 20 numerische und kategorische Merkmale sowie eine binäre Beschriftung (der Wert für das Kreditrisiko). Hohe Kreditrisiken tragen die Beschriftung = 2, während geringe Kreditrisiken die Beschriftung = 1 tragen. Die Belastung für die falsche Klassifizierung eines Beispiels mit geringem Risiko beträgt 1, während die Belastung für die falsche Klassifizierung eines Beispiels mit hohem Risiko 5 beträgt.
   </td>
@@ -227,7 +226,7 @@ Dies ist wahrscheinlich die bekannteste Datenbank, die in der Literatur zur Must
 <p></p>
 <b>Verwendung:</b> Vorhersage der Schwertlilienart aus diesen Einstufungen.  
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Fisher, R.A. (1988). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> Fisher, R.A. (1988). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -246,7 +245,7 @@ Die Daten geben den Kraftstoffverbrauch für verschiedene Fahrzeuge in Meilen pr
 <p></p>
 <b>Verwendung:</b> Vorhersage der Kraftstoffeinsparung auf Basis von drei mehrwertigen Attributen und fünf kontinuierlichen Attributen. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -256,7 +255,7 @@ Eine Teilmenge der Daten der Datenbank des National Institute of Diabetes and Di
 <p></p>
 <b>Verwendung:</b> Vorhersage einer Diabeteserkrankung für den Patienten (binäre Klassifikation). 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Sigillito, V. (1990). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Zugrunde liegende Untersuchungen:</b> Sigillito, V. (1990). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -266,7 +265,7 @@ Eine Sammlung von Metadaten zu Kunden, einschließlich Demografie und Präferenz
 <p></p>
 <b>Verwendung:</b> Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
   </td>
 </tr>
 
@@ -277,7 +276,7 @@ Eine Sammlung von Metadaten zu Restaurants und ihren Merkmalen wie Speisetyp, St
 <p></p>
 <b>Verwendung:</b> Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
   </td>
 </tr>
 
@@ -288,7 +287,7 @@ Enthält von Benutzern abgegebene Bewertungen für Restaurants auf einer Skala v
 <p></p>
 <b>Verwendung:</b> Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
   </td>
 </tr>
 
@@ -301,7 +300,7 @@ Dieses Dataset enthält eine Reihe von Datensätzen aus Stahlvergütungsversuche
 <p></p>
 Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Organisationen definiert wurde. Sie suchen nach einer bestimmten „Sorte“ (die Klassenvariable) und möchten die erforderlichen Werte verstehen. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Zugrunde liegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 Ein nützliches Handbuch zu den Stahlsorten finden Sie hier: <a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -322,13 +321,13 @@ Die Daten wurden vorverarbeitet, um ein gestrecktes Bündel zu erstellen, bei de
 <p></p>
 Beachten Sie außerdem, dass die Anzahl der Hintergrundereignisse (h für hadronische Schauer) zu niedrig angesetzt ist. In realen Messungen stellt die h- oder Rauschen-Klasse die Mehrzahl der Ereignisse dar. 
 <p></p>
-<b>Zugrunde liegende Untersuchungen:</b> Bock, R.K. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information </td>
+<b>Zugrunde liegende Untersuchungen:</b> Bock, R.K. (1995). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information </td>
 </tr>
 
 <tr>
   <td>Wetter-Dataset</td>
   <td>
-Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="http://az754797.vo.msecnd.net/data/WeatherDataset.csv">zusammengeführte Daten von 201304 bis 201310</a>).
+Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">zusammengeführte Daten von 201304 bis 201310</a>).
 <p></p>
 Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:
 <ul>
@@ -343,7 +342,7 @@ Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für d
 <tr>
   <td>Wikipedia SP 500 Dataset</td>
   <td>
-Die Daten stammen aus Wikipedia (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.
+Die Daten stammen aus Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.
 <p></p>
 Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:
 <ul>
@@ -382,7 +381,7 @@ Merkmale von Schulungsbeispielen im Reuters-Nachrichtendataset RCV1 V2. Das Data
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-Dataset von KDD Cup 1999 Knowledge Discovery and Data Mining Tools Competition (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
+Dataset von KDD Cup 1999 Knowledge Discovery and Data Mining Tools Competition (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
 <p></p>
 Das Dataset wurde heruntergeladen und in Azure Blob Storage abgelegt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>). Es enthält Trainings- und Testdatasets. Das Trainingsdataset enthält ca. 126.000 Zeilen und 43 Spalten, inklusive der Bezeichnungen. Drei Spalten sind Teil der Bezeichnungsinformationen, und 40 Spalten, die aus numerischen und Zeichenfolgen-/Kategoriefeatures bestehen, sind zum Trainieren des Modells verfügbar. Die Testdaten enthalten ca. 22.500 Testbeispiele, die die gleichen 43 Spalten wie die Schulungsdaten enthalten.
   </td>
@@ -398,7 +397,7 @@ Themenzuweisungen für Nachrichtenartikel im Reuters-Nachrichtendataset RCV1-V2 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
+Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Das Dataset wurde in Azure Blob Storage heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche Dataset umfasst 8,9 Millionen Datensätze. Dieses Dataset wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
   </td>
@@ -406,6 +405,10 @@ Das Dataset wurde in Azure Blob Storage heruntergeladen und gespeichert (<a href
 
 </table>
 
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Schnellstart Ihrer Experimente anhand von Beispielen](sample-experiments.md)
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

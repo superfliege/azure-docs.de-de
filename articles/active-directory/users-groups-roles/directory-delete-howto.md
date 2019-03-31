@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3f42ccb50496ed53ea9a68b60301f9feccccb16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 833c2e460ae306a7673e580aaa304be93c3cd044
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199731"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Löschen eines Azure Active Directory-Mandanten
 
@@ -36,50 +36,53 @@ Sie können einen Mandanten in Azure AD erst löschen, nachdem er mehrere Prüfu
 
 ## <a name="delete-an-azure-ad-tenant"></a>Löschen eines Azure AD-Mandanten
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das globale Administratorberechtigungen für den Mandanten hat.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das über globale Administratorberechtigungen für den Mandanten verfügt.
 
 2. Wählen Sie **Azure Active Directory**.
 
-3. Wechseln Sie zu dem Mandanten, den Sie löschen möchten.
+3. Wechseln Sie zu der Organisation, die Sie löschen möchten.
   
-  ![Schaltfläche „Verzeichnis löschen“](./media/directory-delete-howto/delete-directory-command.png)
+   ![Bestätigen der Organisation vor dem Löschen](./media/directory-delete-howto/delete-directory-command.png)
 
 4. Klicken Sie auf **Verzeichnis löschen**.
   
-  ![Schaltfläche „Verzeichnis löschen“](./media/directory-delete-howto/delete-directory-list.png)
+   ![Auswählen des Befehls zum Löschen der Organisation](./media/directory-delete-howto/delete-directory-list.png)
 
 5. Wenn Ihr Mandant eine oder mehrere Prüfungen nicht bestanden hat, erhalten Sie einen Link zu weiteren Informationen, wie die Prüfung bestanden werden kann. Sobald Sie alle Prüfungen bestanden haben, klicken Sie auf **Löschen**, um den Vorgang abzuschließen.
 
 ## <a name="i-have-an-expired-subscription-but-i-cant-delete-the-tenant"></a>Ich habe ein abgelaufenes Abonnement, kann aber den Mandanten nicht löschen
 
-Wenn Sie Ihren Azure Active Directory-Mandanten konfiguriert haben, haben Sie möglicherweise auch lizenzbasierte Abonnements für Ihr Unternehmen wie Azure Active Directory Premium P2, Office 365 Business Premium oder Enterprise Mobility + Security E5 aktiviert. Diese Abonnements blockieren das Löschen von Verzeichnissen, bis sie vollständig gelöscht sind, um versehentlichen Datenverlust zu vermeiden. Die Abonnements müssen den Zustand **Bereitstellung aufgehoben** haben, um das Löschen des Mandanten zu ermöglichen. Ein Abonnement im Zustand **Abgelaufen** oder **Gekündigt** wechselt in den Zustand **Deaktiviert**. Die letzte Stufe ist der Zustand **Bereitstellung aufgehoben**. 
+Wenn Sie Ihren Azure AD-Mandanten konfiguriert haben, haben Sie möglicherweise auch lizenzbasierte Abonnements für Ihr Unternehmen wie Azure AD Premium P2, Office 365 Business Premium oder Enterprise Mobility + Security E5 aktiviert. Diese Abonnements blockieren das Löschen von Verzeichnissen, bis sie vollständig gelöscht sind, um versehentlichen Datenverlust zu vermeiden. Die Abonnements müssen den Zustand **Bereitstellung aufgehoben** haben, um das Löschen des Mandanten zu ermöglichen. Ein Abonnement im Zustand **Abgelaufen** oder **Gekündigt** wechselt in den Zustand **Deaktiviert**. Die letzte Stufe ist der Zustand **Bereitstellung aufgehoben**. 
 
 Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
 Abonnementzustand | Daten | Zugriff auf Daten
 ----- | ----- | -----
-Aktiv (30 Tage für die Testversion)  | Daten für alle zugänglich    | <li>Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<li>Administratoren haben normalen Zugriff auf das Office 365 Admin Center und -Ressourcen 
-Abgelaufen (30 Tage)   | Daten für alle zugänglich    | <li>Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<li>Administratoren haben normalen Zugriff auf das Office 365 Admin Center und -Ressourcen
-Deaktiviert (30 Tage) | Daten nur für Administrator zugänglich  | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Office 365 Admin Center zugreifen, aber keine Lizenzen zuweisen oder Benutzer aktualisieren
-Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden automatisch gelöscht, wenn keine anderen Dienste verwendet werden) | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Office 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten
+Aktiv (30 Tage für die Testversion)  | Daten für alle zugänglich    | <li>Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<li>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen 
+Abgelaufen (30 Tage)   | Daten für alle zugänglich    | <li>Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<li>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
+Deaktiviert (30 Tage) | Daten nur für Administrator zugänglich  | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Microsoft 365 Admin Center zugreifen, aber keine Lizenzen zuweisen oder Benutzer aktualisieren
+Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden automatisch gelöscht, wenn keine anderen Dienste verwendet werden) | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Microsoft 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten 
 
-Sie können ein Abonnement in den Zustand **Bereitstellung aufgehoben** versetzen, um es innerhalb von 3 Tagen im Admin Center von Microsoft Store für Unternehmen zu löschen. Diese Funktion wird in Kürze im Office 365 Admin Center verfügbar sein.
+## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Löschen eines Abonnements im Microsoft 365 Admin Center
 
-1. Melden Sie sich beim [Admin Center von Microsoft Store für Unternehmen](https://businessstore.microsoft.com/manage/) mit einem Konto mit Rechten eines globalen Administrators im Mandanten an. Wenn Sie versuchen, den Mandanten „Contoso“ zu löschen, der die anfängliche Domäne contoso.onmicrosoft.com hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
+Sie können ein Abonnement im Microsoft 365 Admin Center in den Zustand **Bereitstellung aufgehoben** versetzen, damit es innerhalb von 3 gelöscht wird.
 
-2. Wechseln Sie zur Registerkarte **Verwalten**, wählen Sie **Produkte und Dienste**, dann das Abonnement, das Sie kündigen möchten, und **Löschen** aus.
+1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) mit einem Konto mit Rechten eines globalen Administrators im Mandanten an. Wenn Sie versuchen, den Mandanten „Contoso“ zu löschen, der die anfängliche Domäne contoso.onmicrosoft.com hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
+
+2. Wechseln Sie zur Registerkarte **Abrechnung**, wählen Sie **Produkte und Dienste** und dann das Abonnement aus, das Sie kündigen möchten. Nachdem Sie auf **Kündigen** geklickt haben, aktualisieren Sie die Seite.
   
-  ![Link „Löschen“ zum Löschen des Abonnements](./media/directory-delete-howto/delete-command.png)
+   ![Link „Löschen“ zum Löschen des Abonnements](./media/directory-delete-howto/delete-command.png)
   
-3. Wählen Sie **Abonnement löschen** aus, um die Geschäftsbedingungen zu akzeptieren und das Abonnement zu löschen. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Sie können das Abonnement innerhalb der nächsten drei Tage reaktivieren, sollten Sie Ihre Meinung ändern.
+3. Klicken Sie auf **Löschen**, um das Abonnement zu löschen, und akzeptieren Sie die Geschäftsbedingungen. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Sie können das Abonnement innerhalb der dreitägigen Frist reaktivieren, sollten Sie Ihre Meinung ändern.
   
-  ![Geschäftsbedingungen](./media/directory-delete-howto/delete-terms.png)
+   ![Lesen Sie sich die Geschäftsbedingungen sorgfältig durch.](./media/directory-delete-howto/delete-terms.png)
 
 4. Nachdem sich der Abonnementzustand geändert hat, wird das Abonnement zum Löschen gekennzeichnet. Das Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben**.
 
 5. Sobald Sie ein Abonnement für Ihren Mandanten gelöscht haben und 72 Stunden verstrichen sind, können Sie sich wieder im Azure AD Admin Center anmelden. Dort sollten keine Aktionen erforderlich sein und keine Abonnements das Löschen Ihres Mandanten blockieren. Sie sollten Ihren Azure AD-Mandanten nun erfolgreich löschen können.
   
-  ![Bildschirm mit bestandener Abonnementprüfung bei Löschung](./media/directory-delete-howto/delete-checks-passed.png)
+   ![Bildschirm mit bestandener Abonnementprüfung bei Löschung](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)

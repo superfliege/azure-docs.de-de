@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1509f40b88e3dc9c51bd00ed379c5b0130230a99
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1c69705131cfea4e5ace9b5b9e829b3fdfa87e4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178837"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991647"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Referenz für Risikoereignisse in Azure Active Directory Identity Protection
 
@@ -83,6 +83,7 @@ Bei dieser Art von Risikoereignis werden Anmeldungen von IP-Adressen identifizie
 **Erkennungstyp**: Echtzeit  
 **Alter Name**: Anmeldungen von unbekannten Standorten
 
-Diese Art von Risikoereignis berücksichtigt die bisherigen Anmeldeeigenschaften (z. B. Gerät, Standort, Netzwerk), um Anmeldungen mit unbekannten Eigenschaften zu ermitteln. Das System speichert Eigenschaften der vorherigen Standorte, die von einem Benutzer verwendet wurden, und betrachtet diese als „bekannt“. Das Risikoereignis wird ausgelöst, wenn die Anmeldung mit Eigenschaften erfolgt, die in der Liste der bekannten Eigenschaften nicht enthalten sind. Das System benötigt einen anfänglichen Lernzeitraum von 30 Tagen, in dem Neuerkennungen nicht gekennzeichnet werden.
+Dieser Risikoereignistyp berücksichtigt die bisherige Anmeldehistorie (IP-Adresse, Breitengrad/Längengrad und ASN), um nach anomalen Anmeldungen zu suchen. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Das Risikoereignis wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der vertrauten Standorte noch nicht enthalten ist. Neu erstellte Benutzer befinden sich für einen bestimmten Zeitraum im „Lernmodus“, in dem ungewohnte Anmeldeeigenschaften-Risikoereignisse deaktiviert werden, während unsere Algorithmen das Verhalten des Benutzers lernen. Die Dauer des Lernmodus ist dynamisch und hängt davon ab, wie lange es dauert, bis der Algorithmus genügend Informationen über die Anmeldemuster des Benutzers gesammelt hat. Die Mindestdauer beträgt fünf Tage. Ein Benutzer kann nach einer langen Zeit der Inaktivität erneut in den Lernmodus wechseln. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. 
+
 Diese Erkennung wird auch für die Standardauthentifizierung (bzw. ältere Protokolle) ausgeführt. Da diese Protokolle nicht über moderne Eigenschaften (z. B. Client-ID) verfügen, reichen die Telemetriedaten nicht aus, um falsch positive Ergebnisse zu reduzieren. Wir empfehlen unseren Kunden, auf eine moderne Authentifizierung umzusteigen.
 

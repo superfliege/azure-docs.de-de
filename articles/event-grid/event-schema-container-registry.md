@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/13/2019
+ms.date: 03/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462843"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084326"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-Ereignisschema für Container Registry
 
@@ -21,12 +21,14 @@ In diesem Artikel werden die Eigenschaften und das Schema für Container Registr
 
 ## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
-Blob Storage gibt die folgenden Ereignistypen aus:
+Azure Container Registry gibt die folgenden Ereignistypen aus:
 
 | Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | Wird ausgelöst, wenn mithilfe von Push ein Image übertragen wird. |
 | Microsoft.ContainerRegistry.ImageDeleted | Wird ausgelöst, wenn ein Image gelöscht wird. |
+| Microsoft.ContainerRegistry.ChartPushed | Wird ausgelöst, wenn ein Helm-Diagramm gepusht wird. |
+| Microsoft.ContainerRegistry.ChartDeleted | Wird ausgelöst, wenn ein Helm-Diagramm gelöscht wird. |
 
 ## <a name="example-event"></a>Beispielereignis
 
@@ -93,6 +95,62 @@ Das Schema für ein Imagelöschungsereignis sieht ähnlich wie im folgenden Beis
 }]
 ```
 
+Das Schema für ein Ereignis „Diagramm gepusht“ ähnelt dem Schema für ein Ereignis „Image gepusht“, umfasst aber kein Anforderungsobjekt:
+
+```json
+[{
+  "id": "ea3a9c28-5b17-40f6-a500-3f02b6829277",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartPushed",
+  "eventTime": "2019-03-12T22:16:31.5164086Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:16:31.0087496+00:00",
+    "action":"chart_push",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+Das Schema für ein Ereignis „Diagramm gelöscht“ ähnelt dem Schema für ein Ereignis „Image gelöscht“, umfasst aber kein Anforderungsobjekt:
+
+```json
+[{
+  "id": "39136b3a-1a7e-416f-a09e-5c85d5402fca",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartDeleted",
+  "eventTime": "019-03-12T22:42:08.7034064Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:42:08.3783775+00:00",
+    "action":"chart_delete",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
 ## <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
@@ -128,6 +186,8 @@ Das Zielobjekt weist die folgenden Eigenschaften auf:
 | length | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe). |
 | repository | Zeichenfolge | Der Name des Repositorys. |
 | tag | Zeichenfolge | Der Tagname. |
+| name | Zeichenfolge | Der Diagrammname. |
+| Version | Zeichenfolge | Die Diagrammversion. |
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 

@@ -1,26 +1,26 @@
 ---
 title: Veröffentlichen einer Wissensdatenbank
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: Die Veröffentlichung Ihrer Wissensdatenbank ist der letzte Schritt, um Ihre Wissensdatenbank als Endpunkt für die Beantwortung von Fragen zur Verfügung zu stellen. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die QnA-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben.
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: Die Veröffentlichung Ihrer Wissensdatenbank mit dem QnA Maker-API-Dienst ist der letzte Schritt, um Ihre Wissensdatenbank als Endpunkt für die Beantwortung von Fragen zur Verfügung zu stellen. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die QnA-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 585e5f8f955a405b08bef42588ab5caff71c7bba
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c65654e7d6b2e66a07116ea9555ed316ace88912
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091952"
 ---
-# <a name="publish-a-knowledge-base-using-the-qna-maker-portal"></a>Veröffentlichen einer Wissensdatenbank über das QnA Maker-Portal
+# <a name="publish-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Veröffentlichen einer Wissensdatenbank über das QnA Maker-API-Dienstportal
 
-Die Veröffentlichung Ihrer Wissensdatenbank ist der letzte Schritt, um Ihre Wissensdatenbank als Endpunkt für die Beantwortung von Fragen für eine Clientanwendung zur Verfügung zu stellen. 
+Die Veröffentlichung Ihrer Wissensdatenbank mit dem QnA Maker-API-Dienst ist der letzte Schritt, um Ihre Wissensdatenbank als Endpunkt für die Beantwortung von Fragen zur Verfügung zu stellen. 
 
 Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben.
 

@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: e164e02f3e7458e0c8d4fdf8d2a88cf4ab8a17b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51f057a1dd0da866a50a0219574c70c3c805882e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000010"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Upgradeleitfaden für die Vorschlagssuche-API
 
-In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-Vorschlagssuche-API angegeben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
+In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-Vorschlagssuche-API angegeben. Verwenden Sie diesen Leitfaden, um Ihre Anwendung für die Verwendung von Version 7 zu aktualisieren.
 
 ## <a name="breaking-changes"></a>Wichtige Änderungen
 
 ### <a name="endpoints"></a>Endpunkte
 
-- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https://api.cognitive.microsoft.com/bing/\*\*v7.0\*\*/Suggestions.
+- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/Suggestions.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fehlerantwortobjekte und Fehlercodes
 

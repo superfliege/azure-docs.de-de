@@ -1,7 +1,7 @@
 ---
 title: Migration von API-Version 1 zu API-Version 2
 titleSuffix: Azure Cognitive Services
-description: Die Endpunkt- und Erstellungs-APIs der Version 1 sind veraltet. In dieser Anleitung erfahren Sie, wie Sie zu den Endpunkt- und Erstellungs-APIs der Version 2 migrieren.
+description: Die Endpunkt- und Erstellungs-APIs der Version 1 von Language Understanding sind veraltet. In dieser Anleitung erfahren Sie, wie Sie zu den Endpunkt- und Erstellungs-APIs der Version 2 migrieren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087923"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
 Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
 
 ## <a name="new-azure-regions"></a>Neue Azure-Regionen
-LUIS stellt neue [Regionen](https://aka.ms/LUIS-regions) für die LUIS-APIs bereit. LUIS bietet eine eigene Website für Regionsgruppen. Die Anwendung muss in derselben Region erstellt werden, die Sie abfragen möchten. Regionen werden von Anwendungen nicht automatisch migriert. Sie exportieren die App aus einer Region und importieren sie dann in eine andere, damit sie in einer neuen Region verfügbar ist.
+LUIS stellt neue [Regionen](https://aka.ms/LUIS-regions) für die LUIS-APIs bereit. LUIS bietet ein eigenes Portal für Regionsgruppen. Die Anwendung muss in derselben Region erstellt werden, die Sie abfragen möchten. Regionen werden von Anwendungen nicht automatisch migriert. Sie exportieren die App aus einer Region und importieren sie dann in eine andere, damit sie in einer neuen Region verfügbar ist.
 
 ## <a name="authoring-route-changes"></a>Erstellen von Routenänderungen
 Die Route der Erstellungs-API wurde von der Route **prog** zur Route **api** geändert.
@@ -35,7 +35,7 @@ Die Route der Erstellungs-API wurde von der Route **prog** zur Route **api** ge�
 
 
 ## <a name="endpoint-route-changes"></a>Endpunkt-Routenänderungen
-Die Endpunkt-API weist neue QueryString-Parameter sowie eine andere Antwort auf. Wenn das verbose-Flag auf TRUE festgelegt ist, werden alle Absichten unabhängig von ihrer Bewertung, zusätzlich zur höchstbewerteten Absicht topScoringIntent in einem Array mit dem Namen „intents“ zurückgegeben.
+Die Endpunkt-API weist neue Abfragezeichenfolgen-Parameter sowie eine andere Antwort auf. Wenn das verbose-Flag auf TRUE festgelegt ist, werden alle Absichten unabhängig von ihrer Bewertung, zusätzlich zur höchstbewerteten Absicht topScoringIntent in einem Array mit dem Namen „intents“ zurückgegeben.
 
 | Version | GET-Route |
 |--|--|
