@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: c2f2a6e5f2dd551cfb300d333081874fef2f405c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fecc3b411211ceb8aa6db5a0e0c0c6b07f19a63f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421946"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442460"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Senden von E-Mails mit SendGrid aus Java in einer Azure-Bereitstellung
 Das folgende Beispiel zeigt, wie Sie mit SendGrid E-Mails von einer in Azure gehosteten Webseite senden können. Die Anwendung fragt den Benutzer nach Werten für die E-Mail, wie im folgenden Screenshot gezeigt.
@@ -204,7 +204,7 @@ Der folgende Code wird aufgerufen wenn der Benutzer das Formular in emailform.js
     </body>
     </html>
 
-emailform.jsp sendet die E-Mail und gibt ein Ergebnis an den Benutzer aus, wie im folgenden Screenshot gezeigt:
+„emailform.jsp“ sendet die E-Mail und gibt ein Ergebnis an den Benutzer aus, wie im folgenden Screenshot gezeigt:
 
 ![Ergebnis des E-Mail-Versands][emailresult]
 

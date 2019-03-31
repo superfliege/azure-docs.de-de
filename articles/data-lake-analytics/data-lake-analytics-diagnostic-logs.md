@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045480"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959126"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
 
@@ -41,7 +41,7 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
      * Wählen Sie **An einen Event Hub streamen**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wählen Sie diese Option, wenn Sie eine nachgelagerte Verarbeitungspipeline einsetzen, die eingehende Protokolle in Echtzeit analysiert. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-     * Wählen Sie __An Log Analytics senden__, um die Daten an den Log Analytics-Dienst zu senden. Verwenden Sie diese Option, wenn Sie Log Analytics zum Erfassen und Analysieren von Protokollen verwenden möchten.
+     * Wählen Sie __An Log Analytics senden__ aus, um die Daten an den Azure Monitor-Dienst zu senden. Verwenden Sie diese Option, wenn Sie Azure Monitor-Protokolle zum Erfassen und Analysieren von Protokollen verwenden möchten.
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.  Ein Anforderungsprotokoll erfasst jede API-Anforderung. Ein Überwachungsprotokoll zeichnet alle Vorgänge auf, die von dieser API-Anforderung ausgelöst werden.
 
    * Geben Sie für __In einem Speicherkonto archivieren__ an, wie viele Tage lang die Daten beibehalten werden sollen.
@@ -125,7 +125,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
 
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID |Zeichenfolge |Die ID der Ressource, für die der Vorgang erfolgt ist |
@@ -139,7 +139,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
 
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | HttpMethod |Zeichenfolge |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
 | path |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
@@ -177,7 +177,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
 
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID |Zeichenfolge |Die ID der Ressource, für die der Vorgang erfolgt ist |
@@ -195,7 +195,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
 
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | JobId |Zeichenfolge |Die ID, die dem Auftrag zugewiesen ist. |
 | JobName |Zeichenfolge |Der Name, der für den Auftrag angegeben wurde. |

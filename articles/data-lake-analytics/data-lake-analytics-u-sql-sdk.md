@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238793"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089963"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
@@ -32,11 +32,11 @@ Für das Data Lake-U-SQL-SDK sind die folgenden Komponenten erforderlich:
 - [Microsoft .NET Framework 4.6 oder höher](https://www.microsoft.com/download/details.aspx?id=17851).
 - Microsoft Visual C++ 14 und Windows SDK 10.0.10240.0 oder höher (in diesem Artikel als „CppSDK“ bezeichnet). Es gibt zwei Möglichkeiten, „CppSDK“ zu erhalten:
 
-    - Installieren Sie [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Im Ordner „Program Files“ befindet sich der Ordner „\Windows Kits\10“, z.B. „C:\Program Files (x86) \Windows Kits\10“. Zudem finden Sie die Windows 10 SDK-Version unter „\Windows Kits\10\Lib“. Wenn dieser Ordner nicht angezeigt wird, installieren Sie Visual Studio, und wählen Sie während der Installation das Windows 10 SDK aus. Wenn es mit Visual Studio installiert wurde, findet der lokale U-SQL-Compiler es automatisch.
+  - Installieren Sie [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Im Ordner „Program Files“ befindet sich der Ordner „\Windows Kits\10“, z.B. „C:\Program Files (x86) \Windows Kits\10“. Zudem finden Sie die Windows 10 SDK-Version unter „\Windows Kits\10\Lib“. Wenn dieser Ordner nicht angezeigt wird, installieren Sie Visual Studio, und wählen Sie während der Installation das Windows 10 SDK aus. Wenn es mit Visual Studio installiert wurde, findet der lokale U-SQL-Compiler es automatisch.
 
     ![Windows 10 SDK für lokale Testläufe der Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Installieren Sie [Data Lake-Tools für Visual Studio](https://aka.ms/adltoolsvs). Die vorkonfigurierten Visual C++- und Windows SDK-Dateien finden Sie unter „C:\Programme (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK“. In diesem Fall findet das lokale U-SQL-Compilerskript diese erforderlichen Komponenten nicht automatisch. Sie müssen für das Skripts den CppSDK-Pfad angeben. Sie können die Dateien an einen anderen Speicherort kopieren oder ohne Änderungen verwenden.
+  - Installieren Sie [Data Lake-Tools für Visual Studio](https://aka.ms/adltoolsvs). Die vorkonfigurierten Visual C++- und Windows SDK-Dateien finden Sie unter „C:\Programme (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK“. In diesem Fall findet das lokale U-SQL-Compilerskript diese erforderlichen Komponenten nicht automatisch. Sie müssen für das Skripts den CppSDK-Pfad angeben. Sie können die Dateien an einen anderen Speicherort kopieren oder ohne Änderungen verwenden.
 
 ## <a name="understand-basic-concepts"></a>Grundlegende Konzepte
 
@@ -332,7 +332,7 @@ Im folgenden finden Sie Beispielcode für den Test des U-SQL-Skripts. Für das T
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|Parameter|Typ|BESCHREIBUNG|
+|Parameter|Type|BESCHREIBUNG|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|für ausgehende Nachrichten, für die Verwendung von „Console“ auf NULL festgelegt|
 
@@ -375,11 +375,11 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 ## <a name="faq-about-common-issue"></a>Häufig gestellte Fragen zu häufigen Problemen
 
 ### <a name="error-1"></a>Fehler 1:
-E_CSC_SYSTEM_INTERNAL: Internal error! Could not load file or assembly 'ScopeEngineManaged.dll' or one of its dependencies (Datei oder Assembly 'ScopeEngineManaged.dll' oder eine der Abhängigkeiten konnten nicht geladen werden). Das angegebene Modul wurde nicht gefunden.
+E_CSC_SYSTEM_INTERNAL: Interner Fehler. Could not load file or assembly 'ScopeEngineManaged.dll' or one of its dependencies (Datei oder Assembly 'ScopeEngineManaged.dll' oder eine der Abhängigkeiten konnten nicht geladen werden). Das angegebene Modul wurde nicht gefunden.
 
 Überprüfen Sie die folgenden Punkte:
 
-- Stellen Sie sicher, dass Sie über eine x64-Umgebung verfügen. Die Buildzielplattform und die Testumgebung sollten auf x64 eingestellt sein, siehe **Schritt 1: Erstellen eines C#-Komponententestprojekts und Konfiguration**.
+- Stellen Sie sicher, dass Sie über eine x64-Umgebung verfügen. Die Buildzielplattform und die Testumgebung sollten auf x64 eingestellt sein, siehe **Schritt 1:  Erstellen eines C#-Komponententestprojekts und Konfiguration**.
 - Stellen Sie sicher, dass Sie alle Abhängigkeitsdateien aus NugetPackage\build\runtime\ in das Arbeitsverzeichnis des Projekts kopiert haben.
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821506"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876941"
 ---
 # <a name="outbound-connections-classic"></a>Ausgehende Verbindungen (klassisch)
 
@@ -41,7 +41,7 @@ Azure bietet drei verschiedene Methoden, um ausgehende Konnektivität für klass
 | --- | --- | --- | --- | --- | --- |
 | [1. VM mit einer öffentlichen IP-Adresse auf Instanzebene](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | Azure verwendet die öffentliche IP-Adresse, die dem virtuellen Computer zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. | Nein  | Ja |
 | [2. Öffentlicher Endpunkt mit Lastenausgleich](#publiclbendpoint) | SNAT mit Portmaskierung (PAT) für den öffentlichen Endpunkt | TCP, UDP | Azure gibt die öffentliche IP-Adresse eines öffentlichen Endpunkts für mehrere private Endpunkte frei. Azure verwendet die kurzlebigen Ports des öffentlichen Endpunkts für die PAT. | Ja | Ja |
-| [3. Eigenständige VM ](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist für die SNAT automatisch eine öffentliche IP-Adresse zu, gibt diese öffentliche IP-Adresse für die gesamte Bereitstellung frei und verwendet die kurzlebigen Ports dieser öffentlichen Endpunkt-IP-Adresse für die PAT. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. | Ja | Ja |
+| [3. Eigenständige VM](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist für die SNAT automatisch eine öffentliche IP-Adresse zu, gibt diese öffentliche IP-Adresse für die gesamte Bereitstellung frei und verwendet die kurzlebigen Ports dieser öffentlichen Endpunkt-IP-Adresse für die PAT. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. | Ja | Ja |
 
 Dies ist eine Teilmenge der Funktion für ausgehende Verbindungen, die für Resource Manager-Bereitstellungen in Azure verfügbar ist.  
 

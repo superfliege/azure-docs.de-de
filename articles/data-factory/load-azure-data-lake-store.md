@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d9bce32e87984193938099b96a358cc4495fd0c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249076"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119730"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 
@@ -27,9 +27,9 @@ Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegra
 Azure Data Factory bietet die folgenden Vorteile beim Laden von Daten in Data Lake Storage Gen1:
 
 * **Mühelose Einrichtung**: Intuitiver Assistent mit 5 Schritten. Keine Skripterstellung erforderlich.
-* **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher. Eine ausführliche Liste finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Unterstützung für umfangreiche Datenspeicher**:  Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher. Eine ausführliche Liste finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 * **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen. Globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
-* **Hohe Leistung**: Bis zu 1 GB/s Datenladegeschwindigkeit in Data Lake Storage Gen1. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
+* **Hohe Leistung**:  Bis zu 1 GB/s Datenladegeschwindigkeit in Data Lake Storage Gen1. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
 
 In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data Factory zum _Laden von Daten aus Amazon S3 in Data Lake Storage Gen1_ verwenden. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen.
 
@@ -38,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Data Lake Storage Gen1-Konto: Wenn Sie nicht über ein Data Lake Storage Gen1-Konto verfügen, lesen Sie die Anweisungen unter [Erstellen eines Data Lake Storage Gen1-Kontos](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
 * Amazon S3: Dieser Artikel zeigt, wie Daten aus Amazon S3 kopiert werden. Sie können andere Datenspeicher verwenden, indem Sie ähnliche Schritte ausführen.
 
@@ -54,7 +54,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
     * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen \"LoadADLSG1Demo\" ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
     * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-    * **Version:** Wählen Sie **V2** aus.
+    * **Version**: Wählen Sie **V2** aus.
     * **Standort**: Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. Diese Datenspeicher umfassen Azure Data Lake Storage Gen1, Azure Storage, Azure SQL-Datenbank usw.
 
 3. Klicken Sie auf **Erstellen**.
@@ -85,7 +85,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
    2. Geben Sie den Wert für den **geheimen Zugriffsschlüssel** an.
    3. Wählen Sie **Fertig stellen** aus.
    
-     ![Angeben des Amazon S3-Kontos](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![Angeben des Amazon S3-Kontos](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. Es wird eine neue Verbindung angezeigt. Klicken Sie auf **Weiter**.
    

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f65b9904b15815c997c1608940109ad296ee6007
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891255"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -26,6 +26,8 @@ ms.locfileid: "55822866"
 
 
 Dieser Artikel enthält JSON-Schemas und -Beispiele für das Definieren von Azure Data Factory-Entitäten (Pipeline, Aktivität, Dataset und verknüpfter Dienst).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="pipeline"></a>Pipeline
 Die grobe Struktur einer Pipelinedefinition lautet wie folgt:
@@ -50,7 +52,7 @@ In der folgenden Tabelle werden die Eigenschaften in der Pipeline-JSON-Definitio
 | name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität oder die Pipeline konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | Beschreibung |Beschreibung des Verwendungszwecks der Aktivität oder der Pipeline | Nein  |
 | Aktivitäten | Enthält eine Liste mit Aktivitäten. | Ja |
-| Start |Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel:  2014-10-14T16:32:41. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00**-05:00`. Entspricht 6 Uhr EST.<br/><br/>Die Eigenschaften "start" und "end" geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. |Nein <br/><br/>Wenn Sie einen Wert für die Endeigenschaft angeben, müssen Sie auch einen Wert für die Starteigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein. Sie müssen beide Werte angeben, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Set-AzureRmDataFactoryPipelineActivePeriod-Cmdlet verwenden. |
+| Start |Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel:  2014-10-14T16:32:41. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00**-05:00`. Entspricht 6 Uhr EST.<br/><br/>Die Eigenschaften "start" und "end" geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. |Nein <br/><br/>Wenn Sie einen Wert für die Endeigenschaft angeben, müssen Sie auch einen Wert für die Starteigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein. Sie müssen beide Werte angeben, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Cmdlet „Set-AzDataFactoryPipelineActivePeriod“ verwenden. |
 | end |Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel:  2014-10-14T17:32:41 <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00**-05:00`. Entspricht 6 Uhr EST.<br/><br/>Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie „9999-09-09“ als Wert für die Endeigenschaft an. |Nein  <br/><br/>Wenn Sie einen Wert für die Starteigenschaft angeben, müssen Sie auch einen Wert für die Endeigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **Start** -Eigenschaft. |
 | isPaused |Bei der Einstellung „true“ wird die Pipeline nicht ausgeführt. Standardwert = false. Sie können diese Eigenschaft zum Aktivieren oder Deaktivieren verwenden. |Nein  |
 | pipelineMode |Die Methode zum Planen von Ausführungen für die Pipeline. Zulässige Werte sind: „scheduled“ (Standard) und „onetime“.<br/><br/>„scheduled“ bedeutet, dass die Pipeline in einem bestimmten Zeitintervall gemäß ihrem aktiven Zeitraum (Start- und Endzeit) ausgeführt wird. „onetime“ bedeutet, dass die Pipeline nur einmal ausgeführt wird. Pipelines mit einmaliger Ausführung können derzeit nach der Erstellung nicht geändert oder aktualisiert werden. Informationen zur Einstellung der einmaligen Ausführung finden Sie unter [Pipeline mit einmaliger Ausführung](data-factory-create-pipelines.md#onetime-pipeline) . |Nein  |
@@ -2458,7 +2460,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein  |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
 
-Sie können Anmeldeinformationen mithilfe des **New-AzureRmDataFactoryEncryptValue**-Cmdlets verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
+Sie können Anmeldeinformationen mithilfe des **New-AzDataFactoryEncryptValue**-Cmdlets verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
 
 ```json
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -3319,10 +3321,11 @@ Sie können ein lokales Dateisystem mithilfe eines verknüpften Diensts vom Typ 
 | host |Gibt den Stammpfad des Ordners an, den Sie kopieren möchten. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“. |Ja |
 | userid |Geben Sie die ID des Benutzers an, der auf dem Server zugreifen darf. |Nein (wenn Sie "encryptedCredential" auswählen) |
 | password |Geben Sie das Kennwort für das Benutzerkonto (userid) an. |Nein (wenn Sie "encryptedCredential" auswählen) |
-| encryptedCredential |Geben Sie die verschlüsselten Anmeldeinformationen an. Diese können Sie durch Ausführen des Cmdlets „New-AzureRmDataFactoryEncryptValue“ abrufen. |Nein (wenn Sie "userid" und "password" unverschlüsselt angeben) |
+| encryptedCredential |Geben Sie die verschlüsselten Anmeldeinformationen an. Diese können Sie durch Ausführen des Cmdlets „New-AzDataFactoryEncryptValue“ abrufen. |Nein (wenn Sie "userid" und "password" unverschlüsselt angeben) |
 | gatewayName |Gibt den Name des Gateways an, das der Data Factory-Dienst zum Verbinden mit dem lokalen Dateiserver verwenden soll. |Ja |
 
 #### <a name="sample-folder-path-definitions"></a>Beispieldefinitionen für Ordnerpfad
+
 | Szenario | Host in der Definition des verknüpften Diensts | folderPath in der Datasetdefinition |
 | --- | --- | --- |
 | Lokaler Ordner auf dem Datenverwaltungsgateway-Computer:  <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
@@ -3494,6 +3497,7 @@ Legen Sie beim Kopieren von Daten in ein Dateisystem den **Senkentyp** der Kopie
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | copyBehavior |Definiert das Verhalten beim Kopieren, wenn die Quelle "BlobSource" oder "FileSystem" ist. |**PreserveHierarchy:** Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/>**FlattenHierarchy:** Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/>**MergeFiles:** Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. |Nein  |
+
 auto-
 
 #### <a name="example"></a>Beispiel
@@ -3732,7 +3736,7 @@ Legen Sie zum Definieren eines verknüpften HDFS-Diensts den **Typ** des verknü
 | userName |Der Benutzername für die Windows-Authentifizierung. |Ja (für die Windows-Authentifizierung) |
 | password |Das Kennwort für die Windows-Authentifizierung. |Ja (für die Windows-Authentifizierung) |
 | gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem HDFS verwenden soll. |Ja |
-| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) für den Zugriff. |Nein  |
+| encryptedCredential |[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue)-Ausgabe der Zugriffsanmeldeinformationen. |Nein  |
 
 #### <a name="example-using-anonymous-authentication"></a>Beispiel: Verwenden der anonymen Authentifizierung
 
@@ -3861,7 +3865,7 @@ Weitere Informationen finden Sie im Artikel über den HDFS-Connector.
 Legen Sie zum Definieren eines verknüpften SFTP-Diensts den **Typ** des verknüpften Diensts auf **Sftp** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | host | Name oder IP-Adresse des SFTP-Servers. |Ja |
 | port |Port, an dem der SFTP-Server lauscht. Der Standardwert lautet: 21 |Nein  |
 | authenticationType |Angeben des Authentifizierungstyps. Zulässige Werte: **Basic**, **SshPublicKey**. <br><br> Weitere Eigenschaften bzw. JSON-Beispiele finden Sie in den Abschnitten „Verwenden von Standardauthentifizierung“ und [Verwenden von Authentifizierung mit öffentlichem SSH-Schlüssel](#using-ssh-public-key-authentication). |Ja |
@@ -3875,7 +3879,7 @@ Legen Sie zum Definieren eines verknüpften SFTP-Diensts den **Typ** des verknü
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `Basic` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username | Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
 
@@ -3924,7 +3928,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `SshPublicKey` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username |Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die das Gateway zugreifen kann. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. <br><br> Betrifft nur das Kopieren von Daten von einem lokalen SFTP-Server. |
 | privateKeyContent | Eine serialisierte Zeichenfolge mit dem Inhalt des privaten Schlüssels. Der Kopier-Assistent kann die private Schlüsseldatei lesen und den privaten Schlüsselinhalt automatisch extrahieren. Wenn Sie andere Tools/SDKs verwenden, nutzen Sie stattdessen die privateKeyPath-Eigenschaft. | Geben Sie entweder den `privateKeyPath` oder den `privateKeyContent` an. |
@@ -4281,7 +4285,7 @@ Legen Sie zum Definieren eines verknüpften OData-Diensts den **Typ** des verkn�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
             "username": "username",
             "password": "password"
@@ -4298,7 +4302,7 @@ Legen Sie zum Definieren eines verknüpften OData-Diensts den **Typ** des verkn�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }
@@ -4462,7 +4466,7 @@ Legen Sie zum Definieren eines verknüpften ODBC-Diensts den **Typ** des verknü
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>Beispiel: Verwenden der Standardauthentifizierung mit verschlüsselten Anmeldeinformationen
-Sie können die Anmeldeinformationen mithilfe des Cmdlets [New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) (Version 1.0 von Azure PowerShell) oder [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Version 0.9 von Azure PowerShell oder früher) verschlüsseln.
+Sie können die Anmeldeinformationen mithilfe des Cmdlets [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) verschlüsseln.
 
 ```json
 {
@@ -5062,7 +5066,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein  |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
 
-Sie können Anmeldeinformationen mithilfe des **New-AzureRmDataFactoryEncryptValue**-Cmdlets verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
+Sie können Anmeldeinformationen mithilfe des **New-AzDataFactoryEncryptValue**-Cmdlets verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

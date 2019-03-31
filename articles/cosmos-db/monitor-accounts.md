@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 9c307bbbef7b9eecc980dc6013c317f1ee231a0c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034300"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448237"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Überwachen von Leistungs- und Speichermetriken in Azure Cosmos DB
 

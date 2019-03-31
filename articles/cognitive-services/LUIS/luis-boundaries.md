@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: df69cb5cc2e369a5e1f372d49a821616bf624db9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237551"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897511"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs. 
@@ -27,7 +27,7 @@ Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Mo
 Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie eine [LUIS-Dispatch](luis-concept-enterprise.md#dispatch-tool-and-model)-App oder einen [LUIS-Container](luis-container-howto.md) verwenden. 
 
 |Bereich|Begrenzung|
-|--|:--|--|
+|--|:--|
 | [App-Name][luis-get-started-create-app] | * Standardzeichenlimit |
 | [Batchtests][batch-testing]| 10 Datasets, 1.000 Äußerungen pro Dataset|
 | Explizite Listen | 50 pro Anwendung|
@@ -41,7 +41,7 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 | [RegEx-Entitäten](./luis-concept-entity-types.md)|20 Entitäten<br>max. 500 Zeichen pro RegEx-Entitätsmuster|
 | [Rollen](luis-concept-roles.md)|300 Rollen pro Anwendung. 10 Rollen pro Entität|
 | [Äußerung][utterances] | 500 Zeichen|
-| [Äußerungen][utterances] | 15.000 pro Anwendung|
+| [Äußerungen][utterances] | 15.000 pro Anwendung – es gibt keine Beschränkung für die Anzahl von Äußerungen pro Absicht|
 | [Versionen](luis-concept-version.md)| Keine Begrenzung |
 | [Versionsname][luis-how-to-manage-versions] | 10 Zeichen, ausschließlich alphanumerische Zeichen und Punkt (.) |
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: d148b43750b4e57ff650f8e96bfda1fb5c57dd4b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 433824c4e375cf1ce7d7a6fe16730044628ccab1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657330"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405571"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -76,6 +76,7 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 >Zum Auflisten von Ordnern ab dem Stamm müssen Sie die Berechtigung, die dem Dienstprinzipal gewährt wird, **auf der Stammebene mit der Berechtigung „Ausführen“** festlegen. Dies gilt, wenn Sie:
 >- Das **Tool zum Kopieren von Daten** verwenden, um eine Kopierpipeline zu erstellen
 >- Die **Data Factory-Benutzeroberfläche** verwenden, um die Verbindung zu testen und während der Erstellung in Ordnern zu navigieren
+>Wenn Sie Bedenken haben, Berechtigungen auf Stammebene zu vergeben, können Sie die Testverbindung und den Eingabepfad manuell während der Erstellung überspringen. Kopieraktivitäten funktionieren weiterhin, solange dem Dienstprinzipal die erforderlichen Berechtigungen für die zu kopierenden Dateien gewährt werden.
 
 Folgende Eigenschaften werden unterstützt:
 
@@ -113,22 +114,23 @@ Folgende Eigenschaften werden unterstützt:
 
 ### <a name="managed-identity"></a> So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung
 
-Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals können Sie diese Dienstidentität direkt für die Data Lake Storage-Authentifizierung verwenden. Sie erlaubt dieser bestimmten Factory den Zugriff auf Data Lake Storage sowie das Kopieren von Daten nach oder aus Data Lake Storage.
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals können Sie diese verwaltete Identität direkt für die Data Lake Storage-Authentifizierung verwenden. Sie erlaubt dieser bestimmten Factory den Zugriff auf Data Lake Storage sowie das Kopieren von Daten nach oder aus Data Lake Storage.
 
 So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung:
 
-1. [Rufen Sie die Data Factory-Dienstidentität ab](data-factory-service-identity.md#retrieve-service-identity), indem Sie den Wert von „Dienstidentitätsanwendungs-ID“ kopieren, der zusammen mit der Factory generiert wurde.
-2. Gewähren Sie der Dienstidentität auf dieselbe Weise wie beim Dienstprinzipal Zugriff auf Data Lake Storage, und beachten Sie dabei die folgenden Hinweise.
+1. [Rufen Sie die verwalteten Data Factory-Identitätsinformationen ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von „Dienstidentitätsanwendungs-ID“ kopieren, der zusammen mit der Factory generiert wurde.
+2. Gewähren Sie der verwalteten Identität auf dieselbe Weise wie beim Dienstprinzipal Zugriff auf Data Lake Storage, und beachten Sie dabei die folgenden Hinweise.
 
 >[!IMPORTANT]
-> Stellen Sie sicher, dass Sie der Data Factory-Dienstidentität die richtige Berechtigung in Data Lake Storage gewähren:
+> Stellen Sie sicher, dass Sie der verwalteten Data Factory-Identität die richtige Berechtigung in Data Lake Storage gewähren:
 >- **Als Quelle**: Erteilen Sie zum Auflisten und Kopieren der Dateien in Ordnern und Unterordnern unter **Daten-Explorer** > **Zugriff** mindestens die Berechtigung zum **Lesen und Ausführen**. Zum Kopieren einer einzelnen Datei können Sie auch die Berechtigung **Lesen** gewähren. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen. Es gelten keine Anforderungen für die Zugriffssteuerung (Identity & Access Management, IAM) auf Kontoebene.
 >- **Als Senke**: Erteilen Sie zum Erstellen von untergeordneten Elementen im Ordner unter **Daten-Explorer** > **Zugriff** mindestens die Berechtigung zum **Schreiben und Ausführen**. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen. Wenn Sie Azure Integration Runtime zum Kopieren verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in IAM mindestens die Rolle **Leser**, um Data Factory die Erkennung der Region für Data Lake Storage zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) mit dem Speicherort von Data Lake Storage. Ordnen Sie sie wie im folgenden Beispiel gezeigt im verknüpften Data Lake Storage-Dienst zu.
 
 >[!NOTE]
->Zum Auflisten von Ordnern ab dem Stamm müssen Sie die Berechtigung, die dem Dienstprinzipal gewährt wird, **auf der Stammebene mit der Berechtigung „Ausführen“** festlegen. Dies gilt, wenn Sie:
+>Zum Auflisten von Ordnern ab dem Stamm müssen Sie die Berechtigung, die der verwalteten Identität gewährt wird, **auf der Stammebene mit der Berechtigung „Ausführen“** festlegen. Dies gilt, wenn Sie:
 >- Das **Tool zum Kopieren von Daten** verwenden, um eine Kopierpipeline zu erstellen
 >- Die **Data Factory-Benutzeroberfläche** verwenden, um die Verbindung zu testen und während der Erstellung in Ordnern zu navigieren
+>Wenn Sie Bedenken haben, Berechtigungen auf Stammebene zu vergeben, können Sie die Testverbindung und den Eingabepfad manuell während der Erstellung überspringen. Kopieraktivitäten funktionieren weiterhin, solange der verwalteten Identität die erforderlichen Berechtigungen für die zu kopierenden Dateien gewährt werden.
 
 In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Storage-Informationen im verknüpften Dienst keine Eigenschaften angeben.
 
@@ -161,6 +163,8 @@ Legen Sie zum Kopieren von Daten nach und aus Azure Data Lake Storage die `type`
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureDataLakeStoreFile** |Ja |
 | folderPath | Pfad zum Ordner in Data Lake Storage. Wenn keine Angabe vorhanden ist, wird auf das Stammverzeichnis verwiesen. <br/><br/>Platzhalterfilter werden unterstützt. Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: Stammordner/Unterordner/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Nein  |
 | fileName | **Name oder Platzhalterfilter** für die Dateien unter dem angegebenen Wert für „folderPath“. Wenn Sie für diese Eigenschaft keinen Wert angeben, verweist das Dataset auf alle Dateien im Ordner. <br/><br/>Für Filter sind folgende Platzhalter zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben sind, generiert die Kopieraktivität den Dateinamen automatisch mit dem folgenden Muster: „*Data.[GUID der Aktivitätsausführungs-ID].[GUID bei Verwendung von „FlattenHierarchy“].[Format, sofern konfiguriert].[Komprimierung, sofern konfiguriert]*“. Beispiel: „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz“. Wenn Sie Daten aus einer Quelle im Tabellenformat kopieren und dabei anstelle einer Abfrage den Tabellennamen verwenden, lautet das Namensmuster „*[Tabellenname].[ Format].[Komprimierung, sofern konfiguriert]*“. Beispiel: „MyTable.csv“. |Nein  |
+| modifiedDatetimeStart | Dateifilterung basierend auf dem Attribut: Letzte Änderung. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein  |
+| modifiedDatetimeEnd | Dateifilterung basierend auf dem Attribut: Letzte Änderung. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein  |
 | format | Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**.<br/>Folgende Ebenen werden unterstützt: **Optimal** und **Fastest**. |Nein  |
 
@@ -181,7 +185,9 @@ Legen Sie zum Kopieren von Daten nach und aus Azure Data Lake Storage die `type`
         },
         "typeProperties": {
             "folderPath": "datalake/myfolder/",
-            "fileName": "myfile.csv.gz",
+            "fileName": "*",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
                 "type": "TextFormat",
                 "columnDelimiter": ",",

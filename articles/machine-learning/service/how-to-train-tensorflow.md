@@ -1,7 +1,7 @@
 ---
-title: Trainieren von Modellen mit TensorFlow
+title: Trainieren von Modellen mit TensorFlow und Keras
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem TensorFlow-Estimator TensorFlow-Modelle auf einem Knoten oder verteilt trainieren.
+description: Erfahren Sie, wie Sie mit den TensorFlow- und Keras-Estimatoren TensorFlow- und Keras-Modelle auf einem Knoten oder verteilt trainieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c76a94695114888ca8946106528fe179ff81c811
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244724"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338551"
 ---
-# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Trainieren von TensorFlow-Modellen mit Azure Machine Learning Service
+# <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trainieren von TensorFlow- und Keras-Modellen mit Azure Machine Learning Service
 
-Azure Machine Learning stellt für das DNN-Training (Deep Neural Networks) mit TensorFlow eine spezielle `TensorFlow`-Klasse des `Estimator`s bereit. Mit dem `TensorFlow`-Estimator aus dem Azure SDK (nicht zu verwechseln mit der Klasse [`tf.estimator.Estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator)) können Sie TensorFlow-Trainingsjobs sowohl für die Ausführung auf einem Knoten als auch für die verteilte Ausführung auf Azure-Computezielen auf einfache Weise übermitteln.
+Azure Machine Learning stellt für das DNN-Training (Deep Neural Networks) mit TensorFlow eine spezielle `TensorFlow`-Klasse des `Estimator`s bereit. Mit dem [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)-Estimator aus dem Azure SDK (nicht zu verwechseln mit der Klasse [`tf.estimator.Estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator)) können Sie TensorFlow-Trainingsjobs sowohl für die Ausführung auf einem Knoten als auch für die verteilte Ausführung auf Azure-Computezielen auf einfache Weise übermitteln.
 
 ## <a name="single-node-training"></a>Training auf einem einzelnen Knoten
 Das Trainieren mithilfe des `TensorFlow`-Estimators funktioniert in etwa so wie mit dem [Basis-`Estimator`](how-to-train-ml-models.md). Lesen Sie daher zuerst diesen Artikel, und machen Sie sich mit den dort vorgestellten Konzepten vertraut.
@@ -39,7 +39,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
                     script_params=script_params,
                     compute_target=compute_target,
                     entry_script='train.py',
-                    conda_packages=['scikit-learn'],
+                    conda_packages=['scikit-learn'], # in case you need scikit-learn in train.py
                     use_gpu=True)
 ```
 
@@ -60,6 +60,21 @@ Da Sie den TensorFlow-Estimator verwenden, enthält der Container, der für das 
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="keras-support"></a>Unterstützung für Keras
+[Keras](https://keras.io/) ist eine beliebte High-Level-DNN Python-API, die TensorFlow, CNTK oder Theano als Back-Ends unterstützt. Wenn Sie TensorFlow als Back-End verwenden, können Sie den TensFlow-Estimator ganz einfach verwenden, um ein Keras-Modell zu trainieren. Hier ist ein Beispiel für einen TensorFlow-Estimator mit hinzugefügten Keras:
+
+```Python
+from azureml.train.dnn import TensorFlow
+
+keras_est = TensorFlow(source_directory='./my-keras-proj',
+                       script_params=script_params,
+                       compute_target=compute_target,
+                       entry_script='keras_train.py',
+                       pip_packages=['keras'], # just add keras through pip
+                       use_gpu=True)
+```
+Der oben stehende Konstruktor des TensorFlow-Estimators weist den Azure Machine Learning Service an, Keras über pip in die Ausführungsumgebung zu installieren. Und `keras_train.py` kann dann die Keras-API importieren, um ein Keras-Modell zu trainieren. Ein vollständiges Beispiel finden Sie in [diesem Jupyter-Notizbuch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
 
 ## <a name="distributed-training"></a>Verteiltes Training
 Mit dem TensorFlow-Estimator können Sie Modelle in unterschiedlichen Größenordnungen trainieren und dabei das Training auf mehrere CPU- und GPU-Cluster Ihrer Azure-VMs aufteilen. Das verteilte TensorFlow-Training lässt sich leicht mit wenigen API-Aufrufen ausführen. Azure Machine Learning verwaltet dabei intern die Infrastruktur und die Orchestrierung, die zur Ausführung dieser Workloads erforderlich sind.
@@ -96,7 +111,7 @@ Parameter | BESCHREIBUNG | Standard
 
 Im obigen Beispiel wird verteiltes Training mit zwei Workern, also einem Worker pro Knoten, ausgeführt.
 
-Horovod und alle zugehörigen Abhängigkeiten werden automatisch installiert. Sie können das entsprechende Modul daher einfach wie folgt in das Trainingsskript `train.py` importieren:
+Horovod und alle zugehörigen Abhängigkeiten werden automatisch installiert. Sie können das entsprechende Modul daher wie folgt in das Trainingsskript `train.py` importieren:
 
 ```Python
 import tensorflow as tf
@@ -173,8 +188,7 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Beispiele
 
-Informationen zu Notebooks für verteiltes Deep Learning finden Sie unter:
-* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
+[Hier finden Sie verschiedene Notizbücher für verteiltes Deep Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896210"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
@@ -26,14 +26,14 @@ Derzeit unterstützen mit Ausnahme von benutzerdefinierten Aktivitäten alle Akt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Diese Funktion basiert auf der Data Factory-Dienstidentität. Informationen zur Funktionsweise finden Sie unter [Data factory service identity](data-factory-service-identity.md) (Data Factory-Dienstidentität). Stellen Sie sicher, dass Ihrer Data Factory eine Dienstidentität zugeordnet ist.
+Diese Funktion basiert auf der verwalteten Data Factory-Identität. Informationen zur Funktionsweise finden Sie unter [Verwaltete Data Factory-Identität](data-factory-service-identity.md). Stellen Sie sicher, dass Ihrer Data Factory eine verwaltete Identität zugeordnet ist.
 
 ## <a name="steps"></a>Schritte
 
 Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte Anmeldeinformationen zu verweisen:
 
-1. **Rufen Sie die Data Factory-Dienstidentität** ab, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde. Bei Verwendung der ADF-Erstellungsbenutzeroberfläche wird die Dienstidentitäts-ID im Erstellungsfenster des verknüpften Azure Key Vault-Diensts angezeigt. Sie können sie auch vom Azure-Portal aus abrufen, siehe [Abrufen der Dienstidentität](data-factory-service-identity.md#retrieve-service-identity).
-2. **Gewähren Sie der Dienstidentität Zugriff auf Ihren Azure Key Vault-Tresor.** Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffsrichtlinien“ -> „Neue hinzufügen“ nach dieser Dienstidentitätsanwendungs-ID, um ihr in der Dropdownliste „Berechtigungen für Geheimnis“ die **Abrufberechtigung** zu erteilen. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
+1. **Rufen Sie die verwaltete Data Factory-Identität ab**, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde. Bei Verwendung der ADF-Erstellungsbenutzeroberfläche wird die Anwendungs-ID der verwalteten Identität im Erstellungsfenster des verknüpften Azure Key Vault-Diensts angezeigt. Sie können sie auch vom Azure-Portal aus abrufen, siehe [Abrufen der verwalteten Data Factory-Identität](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Gewähren Sie der verwalteten Identität Zugriff auf Ihren Azure Key Vault**. Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffsrichtlinien“ -> „Neue hinzufügen“ nach dieser Anwendungs-ID der verwalteten Identität, um ihr in der Dropdownliste „Berechtigungen für Geheimnis“ die **Abrufberechtigung** zu erteilen. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
 3. **Erstellen Sie einen verknüpften Dienst, der auf Ihren Azure Key Vault-Tresor verweist.** Siehe [Mit Azure Key Vault verknüpfter Dienst](#azure-key-vault-linked-service).
 4. **Erstellen Sie einen mit einem Datenspeicher verknüpften Dienst, in dem Sie auf das entsprechende Geheimnis verweisen, das im Schlüsseltresor gespeichert ist.** Informationen finden Sie unter [Verweisen auf ein im Schlüsseltresor gespeichertes Geheimnis](#reference-secret-stored-in-key-vault).
 
@@ -84,6 +84,9 @@ Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verk
 **Verwendung der Erstellungsbenutzeroberfläche:**
 
 Wählen Sie beim Erstellen der Verbindung mit Ihrem Datenspeicher/Computedienst **Azure Key Vault** für Geheimnisfelder aus. Wählen Sie den bereitgestellten verknüpften Azure Key Vault-Dienst aus, und geben Sie den **Geheimnisnamen** an. Optional können Sie auch eine Geheimnisversion bereitstellen. 
+
+>[!TIP]
+>Für Connectors, die eine Verbindungszeichenfolge in verknüpften Diensten wie SQL Server, BLOB-Speicher usw. verwenden, können Sie entweder nur das Geheimnisfeld speichern, z. B. das Kennwort in AKV, oder die gesamte Verbindungszeichenfolge in AKV speichern. Sie finden beide Optionen in der Benutzeroberfläche.
 
 ![AKV-Geheimnis konfigurieren](media/store-credentials-in-key-vault/configure-akv-secret.png)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840187"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimieren der Abfragekosten in Azure Cosmos DB
 
@@ -59,7 +59,7 @@ In einigen Fällen sehen Sie möglicherweise eine Sequenz von 200 und 429 Antwor
 
 ## <a name="metrics-for-troubleshooting"></a>Metriken zur Problembehandlung
 
-Die von den Abfragen verbrauchte Leistung und der Durchsatz hängen hauptsächlich vom Funktionsrumpf der benutzerdefinierten Funktionen (UDFs) ab. Wie lange die Ausführung der Abfrage in der benutzerdefinierten Funktion (UDF) dauert und wie viel Anforderungseinheiten verbraucht werden, können Sie am einfachsten herausfinden, indem Sie die Abfragemetriken aktivieren. Wenn Sie das .Net-SDK verwenden, finden Sie hier einige Beispiele für Abfragemetriken, die vom SDK zurückgegeben werden:
+Die von den Abfragen verbrauchte Leistung und der Durchsatz hängen hauptsächlich vom Funktionsrumpf der benutzerdefinierten Funktionen (UDFs) ab. Wie lange die Ausführung der Abfrage in der benutzerdefinierten Funktion (UDF) dauert und wie viel Anforderungseinheiten verbraucht werden, können Sie am einfachsten herausfinden, indem Sie die Abfragemetriken aktivieren. Wenn Sie das .NET-SDK verwenden, finden Sie hier einige Beispiele für Abfragemetriken, die vom SDK zurückgegeben werden:
 
 ```bash
 Retrieved Document Count                 :               1              

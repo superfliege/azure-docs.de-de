@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 65b111d74121b6a679883d480b9e1f19d41e334e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905136"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Sichere Installation und Bedienung Ihrer Azure Data Box
 ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)
@@ -78,8 +78,8 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 * Stellen Sie eine geeignete Stromquelle mit elektrischem Überlastschutz bereit, um die folgenden Leistungsvorgaben zu erfüllen:
 
     - Spannung: 100 V bis 240 V Wechselstrom
-    - Strom: max. 6 A
-    - Frequenz: 50 Hz bis 60 Hz
+    - Strom:  max. 6 A
+    - Häufigkeit: 50 bis 60 Hz
 
 ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**VORSICHT:**
 
@@ -101,10 +101,10 @@ Für dieses Gerät gilt Folgendes:
 - Eingestuft als IT-Gerät und entwickelt für den Betrieb in einer typischen Rechenzentrumsumgebung. Die Eignung dieses Produkts für andere Umgebungen kann weitere Prüfungen erfordern.
 - Entwickelt für den Einsatz mit NRTL-gelisteten (UL, CSA, ETL usw.) und mit IEC/EN 60950-1 oder IEC/EN 62368-1 konformen IT-Geräten (mit CE-Zeichen).
 - Entwickelt für den Betrieb in der folgenden Umgebung. 
-    - Betriebstemperatur: 10° C bis 35° C
+    - Betriebstemperatur:  10° C bis 35° C
     - Lagertemperatur: -20° C bis 50° C
-    - Relative Luftfeuchtigkeit: 15 % bis 85 % (nicht kondensierend) 
-    - Betriebshöhe: Getestet für 0 bis 2000 Meter
+    - Relative Luftfeuchtigkeit:  15 % bis 85 % (nicht kondensierend) 
+    - Betriebshöhe:  Getestet für 0 bis 2000 Meter
 
 Die Leistungsdaten der Stromversorgung entnehmen Sie dem mit dem Gerät gelieferten Typenschild. 
 
@@ -118,7 +118,7 @@ Die Leistungsdaten der Stromversorgung entnehmen Sie dem mit dem Gerät geliefer
 
 Dieses Gerät wurde getestet und entspricht den Grenzwerten für ein Digitalgerät der Klasse A gemäß Teil 15 der FCC-Vorschriften. Diese Grenzwerte dienen dazu, einen angemessenen Schutz vor schädlichen Störungen zu bieten, wenn das Gerät in einer gewerblichen Umgebung betrieben wird. Dieses Gerät erzeugt und nutzt Hochfrequenzenergie und kann diese ausstrahlen. Wenn es nicht gemäß Bedienungsanleitung installiert und eingesetzt wird, kann es zu schädlichen Störungen der Hochfrequenzkommunikation kommen. Der Betrieb dieses Geräts in einem Wohngebiet kann zu schädlichen Störungen führen. In einem solchen Fall ist der Benutzer verpflichtet, die Störungen auf eigene Kosten zu beseitigen.
 
-Dieses Gerät entspricht Teil 15 der Lizenzbestimmungen von FCC Rules and Industry Canada – ausgenommen RSS-Standard(s). Der Betrieb unterliegt den beiden folgenden Bedingungen: 1.) Dieses Gerät darf keine schädlichen Störungen verursachen. 2.) Dieses Gerät muss alle empfangenen Störungen akzeptieren, einschließlich Störungen, die einen unerwünschten Betrieb des Geräts verursachen können.
+Dieses Gerät entspricht Teil 15 der Lizenzbestimmungen von FCC Rules and Industry Canada – ausgenommen RSS-Standard(s). Der Betrieb unterliegt den beiden folgenden Bedingungen:  1.) Dieses Gerät darf keine schädlichen Störungen verursachen. 2.) Dieses Gerät muss alle empfangenen Störungen akzeptieren, einschließlich Störungen, die einen unerwünschten Betrieb des Geräts verursachen können.
 
 ![Kanada](./media/data-box-safety/canada.png)
 
@@ -142,7 +142,7 @@ Dies ist ein Produkt der Klasse A. In einem Privathaushalt kann dieses Produkt F
 
 ![Symbol „Entsorgung von Altbatterien“](./media/data-box-safety/battery_disposal_icon.png)
 
-Dieses Symbol auf dem Produkt oder seinen Batterien oder seiner Verpackung bedeutet, dass dieses Produkt und alle darin enthaltenen Batterien nicht über den Hausmüll entsorgt werden dürfen. Stattdessen liegt es in Ihrer Verantwortung, diese an einer geeigneten Sammelstelle für das Recycling von Batterien und Elektro- und Elektronikgeräten abzugeben. Diese getrennte Sammlung und Verwertung trägt dazu bei, natürliche Ressourcen zu schonen und mögliche negative Folgen für die menschliche Gesundheit und die Umwelt zu vermeiden, die sich aus dem möglichen Vorhandensein gefährlicher Stoffe in Batterien und Elektro- und Elektronikgeräten ergeben können, die durch unsachgemäße Entsorgung verursacht werden könnten. Weitere Informationen dazu, wo Sie Ihre Batterien und Ihren Elektro- und Elektronikschrott entsorgen können, erhalten Sie bei Ihrer Stadtverwaltung, Ihrem Hausmüllentsorger oder dem Geschäft, in dem Sie dieses Produkt gekauft haben. Kontaktieren Sie *erecycle@microsoft.com*, um weitere Informationen über die Entsorgung von Elektro- und Elektronikgeräten zu erhalten.
+Dieses Symbol auf dem Produkt oder seinen Batterien oder seiner Verpackung bedeutet, dass dieses Produkt und alle darin enthaltenen Batterien nicht über den Hausmüll entsorgt werden dürfen. Stattdessen liegt es in Ihrer Verantwortung, diese an einer geeigneten Sammelstelle für das Recycling von Batterien und Elektro- und Elektronikgeräten abzugeben. Diese getrennte Sammlung und Verwertung trägt dazu bei, natürliche Ressourcen zu schonen und mögliche negative Folgen für die menschliche Gesundheit und die Umwelt zu vermeiden, die sich aus dem möglichen Vorhandensein gefährlicher Stoffe in Batterien und Elektro- und Elektronikgeräten ergeben können, die durch unsachgemäße Entsorgung verursacht werden könnten. Weitere Informationen dazu, wo Sie Ihre Batterien und Ihren Elektro- und Elektronikschrott entsorgen können, erhalten Sie bei Ihrer Stadtverwaltung, Ihrem Hausmüllentsorger oder dem Geschäft, in dem Sie dieses Produkt gekauft haben. Kontaktieren Sie *erecycle\@microsoft.com*, um weitere Informationen über die Entsorgung von Elektro- und Elektronikgeräten zu erhalten.
 
 Dieses Produkt enthält Knopfzellenbatterien.
 

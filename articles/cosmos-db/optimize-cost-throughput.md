@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e4d4d15ebb8200f16be8953e955b2e793be03c3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733120"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452184"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -159,7 +159,7 @@ Die folgenden Schritte sollen Ihnen dabei helfen, Ihre Lösungen beim Einsatz vo
 
 2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](online-backup-and-restore.md). 
 
-3. Als weitere Möglichkeit zum Abrufen von Vorgängen und deren Kosten in Anforderungseinheiten können Sie Log Analytics aktivieren, eine Analyse, die Vorgänge/Dauer und die Anforderungsgebühr detailliert aufschlüsselt. Azure Cosmos DB gibt die Anforderungsgebühren für jeden Vorgang an. Daher kann jede Vorgangsgebühr separat von der Antwort gespeichert und anschließend für eine Analyse verwendet werden. 
+3. Als weitere Möglichkeit zum Abrufen von Vorgängen und deren Kosten in Anforderungseinheiten können Sie Azure Monitor-Protokolle aktivieren, eine Analyse, die Vorgänge/Dauer und die Anforderungsgebühr detailliert aufschlüsselt. Azure Cosmos DB gibt die Anforderungsgebühren für jeden Vorgang an. Daher kann jede Vorgangsgebühr separat von der Antwort gespeichert und anschließend für eine Analyse verwendet werden. 
 
 4. Sie können den bereitgestellten Durchsatz nach Bedarf elastisch hoch- und herunterskalieren, um Ihre Workloadanforderungen zu erfüllen. 
 

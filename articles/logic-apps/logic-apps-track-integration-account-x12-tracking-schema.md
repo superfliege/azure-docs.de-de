@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.openlocfilehash: cfd195f2f812c8b2e09058d325d0dbb6f7a60d59
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125600"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195182"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Erstellen von Schemas für die Nachverfolgung von X12-Nachrichten in Integrationskonten für Azure Logic Apps
 
@@ -365,4 +365,4 @@ Informationen zu B2B-Protokollnachverfolgungsschemas finden Sie unter:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über das [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md).
-* Informieren Sie sich über das [Nachverfolgen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Informieren Sie sich über das [Nachverfolgen von B2B-Nachrichten in Azure Monitor-Protokollen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).

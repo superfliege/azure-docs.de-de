@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: e6d16c31b8975036202fe77906e2d729391b5c59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038074"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983590"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
@@ -215,6 +215,8 @@ Im Abschnitt zu Abfrageausführungsmetriken wird erläutert, wie die Serverausf�
 
 ### <a name="indexing-policy"></a>Indizierungsrichtlinie
 Informationen zu Indizierungspfade, -arten und -modi sowie ihren Auswirkungen auf die Abfrageausführung finden Sie unter [Konfigurieren der Indizierungsrichtlinie](index-policy.md). Standardmäßig verwendet die Indizierungsrichtlinie Hashindizierung für Zeichenfolgen, was für Gleichheitsabfragen, jedoch nicht für Bereichsabfragen/Order by-Abfragen effizient ist. Wenn Sie Bereichsabfragen für Zeichenfolgen benötigen, wird empfohlen, den Bereichsindextyp für alle Zeichenfolgen anzugeben. 
+
+Standardmäßig wendet die Azure Cosmos DB die automatische Indizierung auf alle Daten an. Für Szenarios mit Hochleistungseinfügen sollten Sie erwägen, Pfade auszuschließen, weil dies die RU-Kosten für jeden Einfügevorgang verringert. 
 
 ## <a name="query-execution-metrics"></a>Abfrageausführungsmetriken
 Sie können ausführliche Metriken zur Abfrageausführung erhalten, indem Sie den optionalen `x-ms-documentdb-populatequerymetrics`-Header (`FeedOptions.PopulateQueryMetrics` im .NET SDK) übergeben. Der zurückgegebene Wert in `x-ms-documentdb-query-metrics` hat folgende Schlüssel/Wert-Paare, die für die erweiterte Problembehandlung bei der Ausführung einer Abfrage vorgesehen sind. 

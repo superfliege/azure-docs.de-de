@@ -7,25 +7,25 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 38a01b4f81b76ba90a5fda4909d0e65e6307057e
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408713"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569024"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapping Data Flow – Quelltransformation
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Die Quelltransformation konfiguriert eine Datenquelle, die Sie verwenden möchten, um Daten in Ihre Data Flow-Instanz zu übertragen. Sie können mehr als eine Quelltenransformation in einer einzigen Data Flow-Instanz haben. Beginnen Sie immer mit dem Entwerfen Ihrer Data Flows mit einer Quelle.
+Die Quelltransformation konfiguriert eine Datenquelle, die Sie verwenden möchten, um Daten in Ihre Data Flow-Instanz zu übertragen. Sie können mehr als eine Quelltenransformation in einer einzigen Data Flow-Instanz haben. Beginnen Sie immer mit dem Entwerfen Ihrer Data Flows mit einer Quellentransformation.
 
 > [!NOTE]
-> Jeder Data Flow erfordert mindestens eine Quelltransformation. Fügen Sie so viele zusätzliche Quellen hinzu, wie Sie benötigen, um Ihre Datentransformationen abzuschließen. Sie können diese Quellen zusammen mit einer Join- oder Union-Transformation verwenden.
+> Jeder Data Flow erfordert mindestens eine Quelltransformation. Fügen Sie so viele zusätzliche Quellen hinzu, wie Sie benötigen, um Ihre Datentransformationen abzuschließen. Sie können diese Quellen zusammen mit einer Join- oder Union-Transformation verwenden. Beim Debuggen des Datenflusses in Debugsitzungen werden Daten mithilfe der Sampling-Einstellung oder der Debugquellenlimits aus der Quelle gelesen. Es werden jedenfalls erst Daten in eine Senke geschrieben, wenn Sie Ihren Datenfluss aus einer Pipeline-Datenflussaktivität heraus ausführen. 
 
 ![Optionen für die Quelltransformation](media/data-flow/source.png "Quelle")
 
-Jede Data Flow-Quelltransformation muss genau einem Data Factory-Dataset zugeordnet werden, der die Form und Position Ihrer Daten definiert, in die geschrieben oder aus denen gelesen werden soll. Sie können Platzhalter und Dateilisten in Ihrer Quelle verwenden, um mit mehr als einer Datei gleichzeitig zu arbeiten.
+Jede Datenfluss-Quelltransformation muss genau einem Data Factory-Dataset zugeordnet sein. Das Dataset definiert die Form und Position Ihrer Daten, in die geschrieben oder aus denen gelesen werden soll. Sie können Platzhalter und Dateilisten in Ihrer Quelle verwenden, um mit mehr als einer Datei gleichzeitig zu arbeiten, wenn Dateiquellen verwendet werden.
 
 ## <a name="data-flow-staging-areas"></a>Data Flow-Stagingbereich
 
@@ -43,7 +43,7 @@ Wählen Sie „Schemaabweichung zulassen“, wenn sich die Quellspalten häufig 
 Wenn die eingehende Version der Quelldaten nicht mit dem definierten Schema übereinstimmt, schlägt die Ausführung des Datenflusses fehl.
 
 ### <a name="sampling"></a>Stichproben
-Verwenden Sie Stichproben, um die Anzahl der Zeilen aus der Quelle zu beschränken.  Dies ist nützlich, wenn Sie nur eine Auswahl Ihrer Quelldaten für Test- und Debuggingzwecke benötigen.
+Verwenden Sie Stichproben, um die Anzahl der Zeilen aus der Quelle zu beschränken.  Dies ist hilfreich beim Testen oder der Stichprobenentnahme von Daten aus Ihrer Quelle zu Debugzwecken.
 
 ## <a name="define-schema"></a>Schema definieren
 
@@ -53,7 +53,7 @@ Für Quelldateitypen, die nicht stark typisiert sind (d.h. Flatfile-Dateien im G
 
 ![Quelltransformation](media/data-flow/source003.png "Datentypen")
 
-Für stark typisierte Quellen können Sie die Datentypen in einer darauffolgenden Select-Transformation ändern. 
+Für stark typisierte Quellen können Sie die Datentypen in einer nachfolgenden Auswahltransformation ändern. 
 
 ### <a name="optimize"></a>Optimierung
 

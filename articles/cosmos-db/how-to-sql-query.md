@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013895"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>SQL-Abfragebeispiele für Azure Cosmos DB
 
@@ -160,7 +160,7 @@ Es folgen einige Aspekte der Cosmos DB-Abfragesprache, die anhand der Beispiele,
 
 * Die strukturierte Abfragesprache arbeitet mit schemalosen Daten. Daher muss das Typsystem dynamisch gebunden werden. Der gleiche Ausdruck kann unterschiedliche Typen in unterschiedlichen Elementen ergeben. Das Ergebnis einer Abfrage ist ein gültiger JSON-Wert, aber nicht garantiert innerhalb eines festen Schemas.  
 
-* Azure Cosmos DB unterstützt nur strikte JSON-Elemente. Typsystem und Ausdrücke sind also auf JSON-Typen beschränkt. Weitere Informationen finden Sie unter [JSON-Spezifikation](http://www.json.org/) .  
+* Azure Cosmos DB unterstützt nur strikte JSON-Elemente. Typsystem und Ausdrücke sind also auf JSON-Typen beschränkt. Weitere Informationen finden Sie unter [JSON-Spezifikation](https://www.json.org/) .  
 
 * Ein Cosmos DB-Container ist eine schemalose Sammlung von JSON-Elementen. Die Beziehungen in Datenentitäten innerhalb und zwischen Elementen in einem Container werden implizit nach Eigenständigkeit erfasst, nicht nach Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieser Aspekt ist angesichts der elementinternen Verknüpfungen relevant, die später in diesem Artikel erläutert werden.
 
@@ -2113,9 +2113,9 @@ Das zweite Beispiel zeigt eine komplexere Abfrage, die mehrere Ergebnisse der Ve
 
 Wenn die Abfrageergebnisse nicht auf eine einzelne Ergebnisseite passen, gibt die REST-API ein Fortsetzungstoken im `x-ms-continuation-token` -Antwortheader zurück. Clients können einzelne Ergebnisseiten abfragen, indem sie den Header in nachfolgenden Abfragen angeben. Die Anzahl der Ergebnisse pro Seite kann über den `x-ms-max-item-count` -number-Header gesteuert werden. Wenn die angegebene Abfrage eine Aggregatfunktion wie `COUNT` hat, gibt die Abfrageseite möglicherweise einen teilweise aggregierten Wert über die Seite mit Ergebnissen zurück. Die Clients müssen eine Aggregation auf zweiter Ebene über diese Ergebnisse ausführen, um die Endergebnisse zu erzeugen, z.B. die Summe über die auf den einzelnen Seiten zurückgegebenen Anzahlen, um die Gesamtanzahl zurückzugeben.
 
-Für die Verwaltung der Datenkonsistenzrichtlinie für Abfragen verwenden Sie den `x-ms-consistency-level` -Header, wie in allen REST-API-Anfragen. Für die Sitzungskonsistenz muss außerdem der letzte `x-ms-session-token` -Cookie-Header in der Abfrageanforderung wiederholt werden. Die Indizierungsrichtlinie des abgefragten Containers kann auch die Konsistenz der Abfrageergebnisse beeinflussen. Mit den Standardeinstellungen für Indizierungsrichtlinien stimmt der Index eines Containers immer mit dem aktuellen Elementinhalt überein, und die Abfrageergebnisse geben die Daten mit der gewünschten Konsistenz zurück. Wenn eine verzögerte Indexierungsrichtlinie verwendet wird, kann es passieren, dass veraltete Ergebnisse zurückgegeben werden. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB][consistency-levels].
+Für die Verwaltung der Datenkonsistenzrichtlinie für Abfragen verwenden Sie den `x-ms-consistency-level` -Header, wie in allen REST-API-Anfragen. Für die Sitzungskonsistenz muss außerdem der letzte `x-ms-session-token` -Cookie-Header in der Abfrageanforderung wiederholt werden. Die Indizierungsrichtlinie des abgefragten Containers kann auch die Konsistenz der Abfrageergebnisse beeinflussen. Mit den Standardeinstellungen für Indizierungsrichtlinien stimmt der Index eines Containers immer mit dem aktuellen Elementinhalt überein, und die Abfrageergebnisse geben die Daten mit der gewünschten Konsistenz zurück. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB][consistency-levels].
 
-Wenn die konfigurierte Indizierungsrichtlinie des Containers die angegebene Abfrage nicht unterstützen kann, gibt der Azure Cosmos DB-Server den Fehler 400 (unzulässige Anforderung) zurück. Diese Fehlermeldung wird beispielsweise bei Bereichsabfragen für Pfade zurückgegeben, die für Hashsuchvorgänge (Gleichheitssuchvorgänge) konfiguriert sind, oder für Pfade, die ausdrücklich von der Indexierung ausgeschlossen wurden. Mit dem `x-ms-documentdb-query-enable-scan`-Header kann angegeben werden, dass eine Abfrage einen Scan durchführen darf, wenn kein Index verfügbar ist.
+Wenn die konfigurierte Indizierungsrichtlinie des Containers die angegebene Abfrage nicht unterstützen kann, gibt der Azure Cosmos DB-Server den Fehler 400 (unzulässige Anforderung) zurück. Diese Fehlermeldung wird bei Abfragen mit Pfaden zurückgegeben, die ausdrücklich von der Indizierung ausgeschlossen sind. Mit dem `x-ms-documentdb-query-enable-scan`-Header kann angegeben werden, dass eine Abfrage einen Scan durchführen darf, wenn kein Index verfügbar ist.
 
 Sie können ausführliche Metriken zur Abfrageausführung abrufen, indem Sie den `x-ms-documentdb-populatequerymetrics`-Header auf `True` festlegen. Weitere Informationen finden Sie unter [SQL-Abfragemetriken für Azure Cosmos DB](sql-api-query-metrics.md).
 

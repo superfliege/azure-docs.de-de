@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850042"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
-In dieser exemplarischen Vorgehensweise wird das Verwenden des Team Data Science-Prozesses in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) gezeigt, der zum Speichern, Untersuchen, Entwickeln von Features und Downsampling von Beispieldaten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets genutzt wird. Mithilfe von Azure Machine Learning wird ein binäres Klassifizierungsmodell für diese Daten erstellt. Zudem erfahren Sie, wie eines dieser Modelle als Webdienst veröffentlicht wird.
+In dieser exemplarischen Vorgehensweise wird das Verwenden des Team Data Science-Prozesses in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) gezeigt, der zum Speichern, Untersuchen, Entwickeln von Features und Downsampling von Beispieldaten aus einem der öffentlich zugänglichen [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets genutzt wird. Mithilfe von Azure Machine Learning wird ein binäres Klassifizierungsmodell für diese Daten erstellt. Zudem erfahren Sie, wie eines dieser Modelle als Webdienst veröffentlicht wird.
 
 Die in dieser exemplarischen Vorgehensweise vorgestellten Aufgaben können auch mit einem IPython-Notizbuch umgesetzt werden. Benutzer, die diesem Ansatz folgen möchten, sollten das Thema [Criteo walkthrough using a Hive ODBC connection](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) (in englischer Sprache) beachten.
 
 ## <a name="dataset"></a>Beschreibung des Criteo-DataSets
-Bei den Criteo-Daten handelt es sich um ein Klickvorhersage-DataSet mit etwa 370 GB an gzip-komprimierten TSV-Dateien (unkomprimiert ca. 1,3 TB), das aus über 4,3 Milliarden Datensätzen besteht. Es beruht auf den Klickdaten für 24 Tage, die von [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) bereitgestellt werden. Für Datenanalysten stehen zudem unkomprimierte Daten für Experimente zur Verfügung.
+Bei den Criteo-Daten handelt es sich um ein Klickvorhersage-DataSet mit etwa 370 GB an gzip-komprimierten TSV-Dateien (unkomprimiert ca. 1,3 TB), das aus über 4,3 Milliarden Datensätzen besteht. Es beruht auf den Klickdaten für 24 Tage, die von [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) bereitgestellt werden. Für Datenanalysten stehen zudem unkomprimierte Daten für Experimente zur Verfügung.
 
 Alle Datensätze im DataSet enthalten je 40 Spalten:
 
@@ -68,7 +68,7 @@ Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen
 3. [Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs:](../studio/create-workspace.md) Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
 
 ## <a name="getdata"></a>Abrufen und Verwenden von Daten aus einer öffentlichen Quelle
-Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) -DataSet zuzugreifen, klicken Sie auf den Link, akzeptieren Sie die Nutzungsbedingungen, und geben Sie einen Namen an. Hier sehen Sie eine Momentaufnahme:
+Um auf das [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) -DataSet zuzugreifen, klicken Sie auf den Link, akzeptieren Sie die Nutzungsbedingungen, und geben Sie einen Namen an. Hier sehen Sie eine Momentaufnahme:
 
 ![Criteo-Bestimmungen akzeptieren](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
@@ -306,7 +306,7 @@ Dies ergibt:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Beachten Sie, dass „Col15“ über 19 Millionen eindeutige Werte verfügt! Mit systemeigenen Techniken wie z. B. „one-hot-encoding“ können derartige Mengen an Kategorievariablen nicht sinnvoll codiert werden. Die leistungsfähige, zuverlässige Technik [Lernen durch Anzahl](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) erläutert und veranschaulicht den effizienten Umgang mit diesem Problem.
+Beachten Sie, dass „Col15“ über 19 Millionen eindeutige Werte verfügt! Mit systemeigenen Techniken wie z. B. „one-hot-encoding“ können derartige Mengen an Kategorievariablen nicht sinnvoll codiert werden. Die leistungsfähige, zuverlässige Technik [Lernen durch Anzahl](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) erläutert und veranschaulicht den effizienten Umgang mit diesem Problem.
 
 Prüfen Sie zum Schluss die Anzahl von eindeutigen Werten für einige weitere Kategoriespalten. Die Inhalte von [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) lauten:
 
@@ -405,10 +405,10 @@ Hiermit können Sie die komprimierten Trainings- und Testdatasets nun zum Erstel
 Bevor Sie in Azure Machine Learning fortfahren, müssen Sie eine letzte wichtige Komponente in Bezug auf die Zahlentabelle beachten. In den nächsten Unterabschnitt wird die Zahlentabelle ausführlich erläutert.
 
 ## <a name="count"></a> Eine kurze Erläuterung der Zahlentabelle
-Wie Sie gesehen haben, sind mehrere Kategorievariablen äußerst umfangreich. In dieser exemplarischen Vorgehensweise wird die leistungsfähige Technik [Lernen durch Anzahl](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) vorgestellt, mit der diese Variablen effizient und stabil codiert werden. Weitere Informationen zu dieser Technik finden Sie über den angegebenen Link.
+Wie Sie gesehen haben, sind mehrere Kategorievariablen äußerst umfangreich. In dieser exemplarischen Vorgehensweise wird die leistungsfähige Technik [Lernen durch Anzahl](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) vorgestellt, mit der diese Variablen effizient und stabil codiert werden. Weitere Informationen zu dieser Technik finden Sie über den angegebenen Link.
 
 [!NOTE]
->Der Schwerpunkt dieser exemplarischen Vorgehensweise liegt auf der Verwendung von Zahlentabellen zum Erstellen kompakter Darstellungen umfangreicher Kategoriefunktionen. Dies ist nicht die einzige Möglichkeit, Kategoriefunktionen zu codieren. Interessierte Benutzer können sich über anderen Verfahren wie [One-hot-encoding](http://en.wikipedia.org/wiki/One-hot) und [Feature hashing](http://en.wikipedia.org/wiki/Feature_hashing) (beide Artikel in englischer Sprache) informieren.
+>Der Schwerpunkt dieser exemplarischen Vorgehensweise liegt auf der Verwendung von Zahlentabellen zum Erstellen kompakter Darstellungen umfangreicher Kategoriefunktionen. Dies ist nicht die einzige Möglichkeit, Kategoriefunktionen zu codieren. Interessierte Benutzer können sich über anderen Verfahren wie [One-hot-encoding](https://en.wikipedia.org/wiki/One-hot) und [Feature hashing](https://en.wikipedia.org/wiki/Feature_hashing) (beide Artikel in englischer Sprache) informieren.
 >
 
 Verwenden Sie zum Erstellen von Zahlentabellen aus den Zahlendaten die Daten im Ordner „raw/count“. Im Abschnitt „Modellierung“ erfahren Sie, wie diese Zahlentabellen für Kategoriefunktionen neu erstellt oder vorgefertigte Zahlentabellen für Untersuchungen eingesetzt werden. Im folgenden bedeutet „vordefinierte Zahlentabellen“, dass die bereitgestellten Zahlentabellen verwendet werden. Im nächsten Abschnitt finden Sie ausführliche Anweisungen für den Zugriff auf diese Tabellen.
@@ -417,7 +417,7 @@ Verwenden Sie zum Erstellen von Zahlentabellen aus den Zahlendaten die Daten im 
 Beim Erstellen von Modellen in Azure Machine Learning führen wir diese Schritte aus:
 
 1. [Abrufen der Daten aus Hive-Tabellen in Azure Machine Learning](#step1)
-2. [Erstellen des Experiments: Bereinigen der Daten und Ausstatten mit Funktionen mithilfe von Zahlentabellen](#step2)
+2. [Erstellen des Experiments: Bereinigen der Daten und Erstellen einer Funktion mit Zahlentabellen](#step2)
 3. [Erstellen, Trainieren und Bewerten des Modells](#step3)
 4. [Bewerten des Modells](#step4)
 5. [Veröffentlichen des Modells als Webdienst](#step5)

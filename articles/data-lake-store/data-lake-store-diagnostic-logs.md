@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a0bb320abb31b38461102e0e9a062ea0c2af51fb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966074"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959577"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Storage Gen1
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Azure Data Lake Storage Gen1-Konto aktivieren und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -46,7 +46,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
         
         * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md).
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Monitor-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit Azure Monitor-Protokollen gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md).
      
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.
@@ -113,7 +113,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
     }
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID |Zeichenfolge |Die ID der Ressource, auf der der Vorgang stattfand. |
@@ -126,7 +126,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 | Eigenschaften |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | HttpMethod |Zeichenfolge |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
 | path |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
@@ -160,7 +160,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
     }
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID |Zeichenfolge |Die ID der Ressource, auf der der Vorgang stattfand. |
@@ -173,12 +173,12 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | Eigenschaften |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | StreamName |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 ## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
-Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Log Analytics (Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
+Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Monitor-Protokolle (Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit der Azure Monitor-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
 
 ```
 search *

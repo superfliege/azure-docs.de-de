@@ -3,20 +3,20 @@ title: Erstellen einer selbstgehosteten Integration Runtime in Azure Data Factor
 description: Es wird beschrieben, wie Sie in Azure Data Factory eine selbstgehostete Integration Runtime erstellen, mit der Data Factorys das Zugreifen auf Datenspeicher in einem privaten Netzwerk ermöglicht wird.
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
+author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+manager: craigg
+ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838798"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -25,11 +25,13 @@ Mit einer selbstgehosteten Integration Runtime können Kopieraktivitäten zwisch
 
 In diesem Dokument wird beschrieben, wie Sie die selbstgehostete IR erstellen und konfigurieren können.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>Allgemeine Schritte zum Installieren der selbstgehosteten IR
 1. Erstellen Sie eine selbstgehostete Integration Runtime. Sie können die Azure Data Factory-Benutzeroberfläche für diese Aufgabe verwenden. Hier ist ein PowerShell-Beispiel angegeben:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
   
 2. [Laden](https://www.microsoft.com/download/details.aspx?id=39717) Sie die selbstgehostete Integration Runtime herunter, und installieren Sie sie auf dem lokalen Computer.
@@ -37,7 +39,7 @@ In diesem Dokument wird beschrieben, wie Sie die selbstgehostete IR erstellen un
 3. Rufen Sie den Authentifizierungsschlüssel ab, und registrieren Sie die selbstgehostete Integration Runtime mit dem Schlüssel. Hier ist ein PowerShell-Beispiel angegeben:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Einrichten der selbstgehosteten Integration Runtime auf dem virtuellen Azure-Computer mithilfe einer Azure Resource Manager-Vorlage (Automatisierung)
@@ -59,7 +61,7 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Aspekte der Nutzung einer selbstgehosteten IR
 
 - Eine einzelne selbstgehostete Integrationslaufzeit kann für mehrere lokale Datenquellen verwendet werden. Eine einzelne selbstgehostete Integration Runtime kann gemeinsam mit einer anderen Data Factory innerhalb des gleichen Azure Active Directory-Mandanten genutzt werden. Weitere Informationen finden Sie unter [Freigeben der selbstgehosteten Integration Runtime (IR) für mehrere Data Factorys](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Sie können auf einem Computer nur eine Instanz der selbstgehosteten Integration Runtime installieren. Wenn Sie über zwei Data Factorys verfügen, die auf lokale Datenquellen zugreifen müssen, ist es erforderlich, dass Sie auf zwei lokalen Computern jeweils eine selbstgehostete Integration Runtime installieren. Anders ausgedrückt: Eine selbstgehostete Integration Runtime wird an eine bestimmte Data Factory gebunden.
+- Sie können auf einem Computer nur eine Instanz der selbstgehosteten Integration Runtime installieren. Wenn Sie über zwei Data Factorys verfügen, die auf lokale Datenquellen zugreifen müssen, ist es erforderlich, dass Sie auf zwei lokalen Computern jeweils eine selbstgehostete Integration Runtime installieren, jede aus beiden Data Factorys, oder dass Sie die [Funktion für selbstgehostete IR-Freigabe](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories) verwenden, um eine selbstgehostete Integration Runtime mit einer anderen Data Factory zu teilen.  
 - Die selbstgehostete Integration Runtime muss sich nicht auf demselben Computer wie die Datenquelle befinden. Wenn sich die selbstgehostete Integration Runtime näher an der Datenquelle befindet, dauert es weniger lange, bis die selbstgehostete Integration Runtime eine Verbindung mit der Datenquelle hergestellt hat. Es wird empfohlen, die selbstgehostete Integrationslaufzeit auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. Wenn sich die selbstgehostete Integration Runtime und die Datenquelle auf unterschiedlichen Computern befinden, steht die selbstgehostete Integration Runtime mit der Datenquelle nicht im Wettbewerb um Ressourcen.
 - Sie können über mehrere selbstgehostete Integration Runtimes auf verschiedenen Computern verfügen, die eine Verbindung mit der gleichen lokalen Datenquelle herstellen. Beispielsweise können Sie über zwei selbstgehostete Integration Runtimes verfügen, die zwei Data Factorys mit Daten versorgen, wobei aber dieselbe lokale Datenquelle für beide Data Factorys registriert ist.
 - Falls Sie auf Ihrem Computer bereits ein Gateway installiert haben, das für ein Power BI-Szenario verwendet wird, installieren Sie auf einem anderen Computer eine separate selbstgehostete Integration Runtime für die Azure Data Factory.
@@ -96,7 +98,7 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
 9. Rufen Sie den Authentifizierungsschlüssel über Azure PowerShell ab. Hier ist ein PowerShell-Beispiel zum Abrufen des Authentifizierungsschlüssels:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. Führen Sie im Konfigurations-Manager für Microsoft Integration Runtime, der auf Ihrem Computer ausgeführt wird, auf der Seite **Integrationslaufzeit (selbstgehostet) registrieren** die folgenden Schritte aus:
 
@@ -112,7 +114,7 @@ Eine selbstgehostete Integration Runtime kann mehreren lokalen Computern zugeord
 * Höhere Verfügbarkeit der selbstgehosteten Integration Runtime, damit es sich nicht mehr um die einzige Fehlerquelle (Single Point of Failure) in Ihrer Big Data-Lösung oder Clouddatenintegration mit Azure Data Factory handelt. Auf diese Weise wird die Kontinuität mit bis zu vier Knoten sichergestellt.
 * Verbesserung in Bezug auf die Leistung und den Durchsatz während der Datenverschiebung zwischen lokalen und Clouddatenspeichern. Informieren Sie sich über [Leistungsvergleiche](copy-activity-performance.md).
 
-Sie können durch Installation der Software für die selbstgehostete Integration Runtime aus dem [Downloadcenter](https://www.microsoft.com/download/details.aspx?id=39717) mehrere Knoten zuordnen. Registrieren Sie sie dann mit einem der vom **New-AzureRmDataFactoryV2IntegrationRuntimeKey**-Cmdlet abgerufenen Authentifizierungsschlüssel, wie im [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben.
+Sie können durch Installation der Software für die selbstgehostete Integration Runtime aus dem [Downloadcenter](https://www.microsoft.com/download/details.aspx?id=39717) mehrere Knoten zuordnen. Registrieren Sie sie dann mit einem der vom **New-AzDataFactoryV2IntegrationRuntimeKey**-Cmdlet abgerufenen Authentifizierungsschlüssel, wie im [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben.
 
 > [!NOTE]
 > Für die Zuordnung zu den einzelnen Knoten müssen Sie nicht jeweils eine neue selbstgehostete Integration Runtime erstellen. Sie können die selbstgehostete Integration Runtime auf einem anderen Computer installieren und mit dem gleichen Authentifizierungsschlüssel registrieren. 
@@ -143,7 +145,7 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 - Zertifikate, die CNG-Schlüssel verwenden, werden nicht unterstützt.  
 
 > [!NOTE]
-> Dieses Zertifikat wird zum Verschlüsseln von Ports auf dem selbstgehosteten IR-Knoten verwendet, die für die **Knoten-zu-Knoten-Kommunikation** (für die Statussynchronisierung) verwendet werden, und bei der **Verwendung des PowerShell-Cmdlets für die Anmeldeinformationseinstellung des verknüpften Diensts** im lokalen Netzwerk. Es wird empfohlen, dieses Zertifikat zu verwenden, wenn Ihre private Netzwerkumgebung nicht sicher ist oder Sie auch die Kommunikation zwischen Knoten in Ihrem privaten Netzwerk sichern möchten. Das Verschieben von Daten während der Übertragung von der selbstgehosteten IR in andere Datenspeicher erfolgt immer über einen verschlüsselten Kanal, unabhängig von der Verwendung dieses Zertifikats. 
+> Dieses Zertifikat wird zum Verschlüsseln von Ports auf dem selbstgehosteten IR-Knoten verwendet, die für die **Knoten-zu-Knoten-Kommunikation** (für die Statussynchronisierung, die die Synchronisierung der Anmeldeinformationen verknüpfter Dienste über Knoten hinweg umfasst) verwendet werden, und bei der **Verwendung des PowerShell-Cmdlets für die Anmeldeinformationseinstellung des verknüpften Diensts** im lokalen Netzwerk. Es wird empfohlen, dieses Zertifikat zu verwenden, wenn Ihre private Netzwerkumgebung nicht sicher ist oder Sie auch die Kommunikation zwischen Knoten in Ihrem privaten Netzwerk sichern möchten. Das Verschieben von Daten während der Übertragung von der selbstgehosteten IR in andere Datenspeicher erfolgt immer über einen verschlüsselten Kanal, unabhängig von der Verwendung dieses Zertifikats. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Freigeben der selbstgehosteten Integration Runtime für mehrere Data Factorys
 
@@ -197,8 +199,6 @@ Das folgende Video enthält eine zwölfminütige Einführung und Demonstration d
 * Die Data Factory, in der eine verknüpfte IR erstellt werden soll, muss eine [MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) haben. Standardmäßig wird für die im Azure-Portal oder mit PowerShell-Cmdlets erstellten Data Factorys implizit eine MSI erstellt. Aber wenn eine Data Factory mit einer Azure Resorce Manager-Vorlage oder dem SDK erstellt wird, muss die Eigenschaft **Identity** explizit festgelegt werden, um sicherzustellen, dass Azure Resource Manager eine Data Factory mit einer MSI erstellt. 
 
 * Version 1.1.0 oder höher des Azure Data Factory .NET SDK unterstützt dieses Feature.
-
-* Version 6.6.0 oder höher von Azure PowerShell unterstützt dieses Feature (AzureRM.DataFactoryV2, 0.5.7 oder höher).
 
 * Zum Gewähren von Berechtigungen muss der Benutzer über die Rolle „Besitzer“ oder die geerbte Rolle „Besitzer“ in der Data Factory verfügen, in der die freigegebene IR vorhanden ist.
 
@@ -343,7 +343,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > Die Anwendung für die Anmeldeinformationsverwaltung steht noch nicht für die Verschlüsselung von Anmeldeinformationen in Azure Data Factory V2 zur Verfügung.  
 
-Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integration Runtime nicht öffnen, sollten Sie andere Verfahren als die Anwendung „Anmeldeinformationen festlegen“ nutzen, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential**-PowerShell-Cmdlet verwenden.
+Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integration Runtime nicht öffnen, sollten Sie andere Verfahren als die Anwendung „Anmeldeinformationen festlegen“ nutzen, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das **New-AzDataFactoryV2LinkedServiceEncryptCredential**-PowerShell-Cmdlet verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

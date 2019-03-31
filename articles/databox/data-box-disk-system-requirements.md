@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747321"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407628"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Systemanforderungen für Azure Data Box Disk
 
@@ -52,7 +52,7 @@ Für den Linux-Client installiert das Data Box-Datenträgertoolset die folgende 
 
 ## <a name="supported-connection"></a>Unterstützte Verbindung
 
-Der Clientcomputer, auf dem sich die Daten befinden, muss über einen USB 3.0-Anschluss (oder höher) verfügen. Die Datenträger werden mit dem bereitgestellten Kabel an diesen Client angeschlossen. 
+Der Clientcomputer, auf dem sich die Daten befinden, muss über einen USB 3.0-Anschluss (oder höher) verfügen. Die Datenträger werden mit dem bereitgestellten Kabel an diesen Client angeschlossen.
 
 ## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
 
@@ -62,19 +62,22 @@ Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für den Dat
 | --- | --- |
 | Klassisch | Standard |
 | Allgemeiner Zweck  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
+| Blob-Speicherkonto | |
 
 >[!NOTE]
 > Azure Data Lake Storage Gen 2-Konten werden nicht unterstützt.
 
 
-## <a name="supported-storage-types"></a>Unterstützte Speichertypen
+## <a name="supported-storage-types-for-upload"></a>Unterstützte Speichertypen für den Upload
 
-Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für den Data Box-Datenträger.
+Im Folgenden finden Sie eine Liste der Speichertypen, die für den Upload in Azure mithilfe von Data Box Disk unterstützt werden.
 
 | **Dateiformat** | **Hinweise** |
 | --- | --- |
 | Azure-Blockblob | |
 | Azure-Seitenblob  | |
+| Azure Files  | |
+| Managed Disks | |
 
 
 ## <a name="next-step"></a>Nächster Schritt

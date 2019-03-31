@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4da387abe24318a29472c11dffa7aac67192408c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297422"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959611"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Sicherheit in Azure Data Lake Storage Gen1
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Storage Gen1 ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Storage Gen1 beschrieben, z.B. die folgenden Aspekte:
 
-* Authentifizierung
+* Authentication
 * Autorisierung
 * Netzwerkisolation
 * Datenschutz
@@ -62,7 +62,7 @@ Beachten Sie Folgendes: Obwohl Rollen für die Kontoverwaltung zugewiesen werden
 Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen zu Data Lake Storage Gen1-Konten](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts).
 
 ### <a name="using-acls-for-operations-on-file-systems"></a>Verwenden von ACLs für Vorgänge in Dateisystemen
-Data Lake Storage Gen1 ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In Data Lake Storage Gen1 können ACLs für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Data Lake Storage Gen1](data-lake-store-access-control.md).
+Data Lake Storage Gen1 ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In Data Lake Storage Gen1 können ACLs für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
 
 Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie zugewiesene Berechtigungen angeben möchten, weil bei zugewiesenen Berechtigungen eine Beschränkung auf maximal 28 Einträge besteht. Weitere Informationen dazu, wie Sie in Data Lake Storage Gen1 gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Data Lake Storage Gen1-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
@@ -98,7 +98,7 @@ Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie p
 Weitere Informationen zur Verwendung von Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md).
 
 ### <a name="diagnostics-logs"></a>Diagnoseprotokolle
-Sie können die Überwachung des Datenzugriffs und die Diagnoseprotokollierung im Azure-Portal aktivieren und die Protokolle an ein Azure Blob Storage-Konto, einen Event Hub oder Log Analytics senden.
+Sie können die Überwachung des Datenzugriffs und die Diagnoseprotokollierung im Azure-Portal aktivieren und die Protokolle an ein Azure Blob Storage-Konto, einen Event Hub oder Azure Monitor-Protokolle senden.
 
 ![Diagnoseprotokolle](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnoseprotokolle")
 

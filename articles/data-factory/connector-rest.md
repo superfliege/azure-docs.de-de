@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 372275740b7d4fd757e97a3966e4e87c9d2de940
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105388"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864897"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem REST-Endpunkt mithilfe von Azure Data Factory
 
@@ -55,10 +55,10 @@ Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | JA |
-| URL | Die Basis-URL des REST-Diensts. | JA |
+| type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
+| URL | Die Basis-URL des REST-Diensts. | Ja |
 | enableServerCertificateValidation | Hiermit wird festgelegt, ob das serverseitige SSL-Zertifikat beim Herstellen einer Verbindung mit dem Endpunkt überprüft werden soll. | Nein <br /> (der Standardwert ist **TRUE**) |
-| authenticationType | Typ der Authentifizierung für die Verbindung mit dem REST-Dienst. Zulässige Werte: **Anonymous**, **Basic**, **AadServicePrincipal** und **ManagedServiceIdentity**. Weitere Informationen zu anderen Eigenschaften und Beispiele finden Sie weiter unten in den jeweiligen Abschnitten. | JA |
+| authenticationType | Typ der Authentifizierung für die Verbindung mit dem REST-Dienst. Zulässige Werte: **Anonymous**, **Basic**, **AadServicePrincipal** und **ManagedServiceIdentity**. Weitere Informationen zu anderen Eigenschaften und Beispiele finden Sie weiter unten in den jeweiligen Abschnitten. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, verwendet diese Eigenschaft die standardmäßige Azure Integration Runtime. |Nein  |
 
 ### <a name="use-basic-authentication"></a>Verwenden der Standardauthentifizierung
@@ -67,8 +67,8 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic** fest. Geben Sie z
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| userName | Der Benutzername, der für den Zugriff auf den REST-Endpunkt verwendet werden soll. | JA |
-| password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | JA |
+| userName | Der Benutzername, der für den Zugriff auf den REST-Endpunkt verwendet werden soll. | Ja |
+| password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
 
 **Beispiel**
 
@@ -100,10 +100,10 @@ Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fes
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | JA |
-| servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
-| Mandant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | JA |
-| aadResourceId | Geben Sie die Azure AD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| JA |
+| servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| Mandant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Ja |
+| aadResourceId | Geben Sie die Azure AD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 
 **Beispiel**
 
@@ -137,7 +137,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| aadResourceId | Geben Sie die Azure AD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| JA |
+| aadResourceId | Geben Sie die Azure AD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 
 **Beispiel**
 
@@ -169,7 +169,7 @@ Zum Kopieren von Daten aus REST werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft des Datasets muss auf **RestResource** festgelegt sein. | JA |
+| type | Die **type**-Eigenschaft des Datasets muss auf **RestResource** festgelegt sein. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. | Nein  |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein  |
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein  |
@@ -232,7 +232,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RestSource** festgelegt werden. | JA |
+| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RestSource** festgelegt werden. | Ja |
 | httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**.  | Nein  |
 | requestInterval | Die Wartezeit vor dem Senden der Anforderung für die nächste Seite. Der Standardwert lautet **00:00:01** |  Nein  |
 
@@ -274,8 +274,8 @@ In der Regel beschränken REST-APIs ihre Antwortnutzlastgröße auf einen angeme
 
 Dieser generische REST-Connector unterstützt die folgenden Paginierungsmuster: 
 
-* Absolute URL der nächsten Anforderung = Eigenschaftswert im aktuellen Antworttext
-* Absolute URL der nächsten Anforderung = Headerwert in aktuellen Antwortheadern
+* Absolute oder relative URL der nächsten Anforderung = Eigenschaftswert im aktuellen Antworttext
+* Absolute oder relative URL der nächsten Anforderung = Headerwert in aktuellen Antwortheadern
 * Abfrageparameter der nächsten Anforderung = Eigenschaftswert im aktuellen Antworttext
 * Abfrageparameter der nächsten Anforderung = Headerwert in aktuellen Antwortheadern
 * Header der nächsten Anforderung = Eigenschaftswert im aktuellen Antworttext
@@ -287,7 +287,7 @@ In Paginierungsregeln **unterstützte Schlüssel**:
 
 | Schlüssel | BESCHREIBUNG |
 |:--- |:--- |
-| AbsoluteUrl | Gibt die URL für die nächste Anforderung an. |
+| AbsoluteUrl | Gibt die URL für die nächste Anforderung an. Sie kann **eine absolute oder eine relative URL sein**. |
 | QueryParameters.*request_query_parameter* ODER QueryParameters['request_query_parameter'] | „request_query_parameter“ wird vom Benutzer definiert und verweist auf einen Abfrageparameternamen in der nächsten HTTP-Anforderungs-URL. |
 | Headers.*request_header* ODER Headers['request_header'] | „request_header“ wird vom Benutzer definiert und verweist auf einen Headernamen in der nächsten HTTP-Anforderung. |
 

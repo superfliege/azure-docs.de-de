@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 7639e4b4c02ace067887cd678f773a745ef08640
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8fcd85a42deab2ea5f7d8587b276eca106f6dd97
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279649"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553501"
 ---
-**Nicht verwaltete Standard-VM-Datenträger: Grenzwerte pro Datenträger**
+**Nicht verwaltete Standard-VM-Datenträger:  Grenzwerte pro Datenträger**
 
-| VM-Ebene | VM der Basic-Ebene | VM der Standard-Ebene |
+| VM-Tarif | Virtueller Computer – Basic-Tarif | Virtueller Computer – Standard-Tarif |
 | --- | --- | --- |
-| Datenträgergröße |4095 GB |4095 GB |
+| Datenträgergröße |4.095 GB |4.095 GB |
 | Maximal 8 KB IOPS pro persistentem Laufwerk |300 |500 |
-| Maximale Anzahl von Festplatten mit maximaler IOPS-Anzahl |66 |40 |
+| Maximale Anzahl von Datenträgern, die die maximalen IOPS ausführen |66 |40 |
 

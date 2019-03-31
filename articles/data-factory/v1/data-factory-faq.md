@@ -13,16 +13,18 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9d26ced30f718f06d6d0ba9eb7c2a78682305ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024041"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102365"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Bei Verwendung der aktuellen Version des Data Factory-Diensts finden Sie weitere Informationen unter [frequently asked question - Data Factory](../frequently-asked-questions.md) (Häufig gestellte Fragen: Data Factory).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 ### <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
@@ -76,7 +78,7 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Wie unterscheidet sich Azure Data Factory von SQL Server Integration Services (SSIS)? 
-Siehe die Präsentation [Azure Data Factory vs. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) (in englischer Sprache) von einem unserer MVPs (Most Valued Professionals): Reza Rad. Einige der kürzlich in Data Factory vorgenommenen Änderungen werden möglicherweise in der Präsentation nicht aufgeführt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Diese Aktualisierungen werden irgendwann im Laufe dieses Jahres in den Vergleich der Datenintegrationstechnologien von Microsoft aufgenommen.   
+Siehe die Präsentation [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) (in englischer Sprache) von einem unserer MVPs (Most Valued Professionals): Reza Rad. Einige der kürzlich in Data Factory vorgenommenen Änderungen werden möglicherweise in der Präsentation nicht aufgeführt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Azure Data Factory werden fortlaufend weitere Funktionen hinzugefügt. Diese Aktualisierungen werden irgendwann im Laufe dieses Jahres in den Vergleich der Datenintegrationstechnologien von Microsoft aufgenommen.   
 
 ## <a name="activities---faq"></a>Aktivitäten – Häufig gestellte Fragen
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Welche verschiedenen Arten von Aktivitäten können in einer Data Factory-Pipeline verwendet werden?
@@ -171,12 +173,12 @@ Sie können einen Slice auf eine der folgenden Arten erneut ausführen:
 
 * Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#perform-batch-actions) .   
 * Klicken Sie im Azure-Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.
-* Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slice auf **Waiting** festgelegt ist.   
+* Führen Sie das Cmdlet **Set-AzDataFactorySliceStatus** aus, wobei der Status des Slice auf **Waiting** festgelegt ist.   
 
     ```PowerShell
-    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-Unter [Set-AzureRmDataFactorySliceStatus][set-azure-datafactory-slice-status] finden Sie ausführliche Informationen zum Cmdlet.
+  Unter [Set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] finden Sie ausführliche Informationen zum Cmdlet.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Wie lange hat die Verarbeitung eines Slices gedauert?
 Verwenden Sie den Aktivitätsfenster-Explorer in der App „Überwachen und Verwalten“, um zu erfahren, wie lange es gedauert hat, einen Datenslice zu verarbeiten. Weitere Informationen finden Sie unter [Aktivitätsfenster-Explorer](data-factory-monitor-manage-app.md#activity-window-explorer) .
@@ -191,7 +193,7 @@ Sie können auch wie folgt im Azure-Portal vorgehen:
 6. Daraufhin sollte das Feld **Dauer** mit einem Wert angezeigt werden. Dieser Wert ist die Verarbeitungszeit des Slices.   
 
 ### <a name="how-to-stop-a-running-slice"></a>Wie wird ein ausgeführter Slice beendet?
-Wenn Sie die Ausführung der Pipeline beenden müssen, können Sie das Cmdlet [Suspend-AzureRmDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) verwenden. Derzeit werden laufende Sliceausführungen bei Anhalten der Pipeline nicht beendet. Sobald die laufenden Ausführungen abgeschlossen sind, wird kein zusätzlicher Slice ausgewählt.
+Wenn Sie die Ausführung der Pipeline beenden müssen, können Sie das Cmdlet [Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) verwenden. Derzeit werden laufende Sliceausführungen bei Anhalten der Pipeline nicht beendet. Sobald die laufenden Ausführungen abgeschlossen sind, wird kein zusätzlicher Slice ausgewählt.
 
 Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige Möglichkeit das Löschen und erneute Erstellen der Pipeline. Wenn Sie die Pipeline löschen, müssen Sie keine Tabellen und verknüpften Dienste löschen, die von der Pipeline verwendet werden.
 
@@ -199,11 +201,11 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: /powershell/module/azurerm.datafactories/
-[azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: /powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
+[adf-powershell-reference]: /powershell/module/az.datafactory/
+[azure-portal]: https://portal.azure.com
+[set-azure-datafactory-slice-status]: /powershell/module/az.datafactory/set-Azdatafactoryslicestatus
 
-[adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
-[hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
-[hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
+[adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
+[hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
+[hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
+[hdinsight-alternate-storage-2]: https://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx

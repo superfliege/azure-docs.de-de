@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b5b56e39e1b9830d5b998ace2a384d6878cd510
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6ed968b1613a96a2f4ab449c7b52488e066a38ab
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041814"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991817"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
@@ -20,11 +20,18 @@ Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ih
 
 ## <a name="automatic-and-online-backups"></a>Automatische Onlinesicherungen
 
-Azure Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicherungen Ihrer Daten überaus redundant und gegen regionale Katastrophen geschützt sind. Die automatisierten Sicherungen werden derzeit alle vier Stunden ausgeführt, und es werden zu jeder Zeit immer die beiden neuesten Sicherungen gespeichert. Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, sollten Sie sich innerhalb von acht Stunden an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, damit das Azure Cosmos DB-Team Sie beim Wiederherstellen der Daten aus den Sicherungen unterstützen kann.
+Azure Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicherungen Ihrer Daten überaus redundant und gegen regionale Katastrophen geschützt sind. Die folgenden Schritte zeigen, wie Azure Cosmos DB eine Datensicherung ausführt:
 
-Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne Ihren bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen bzw. die Leistung oder Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
+* Azure Cosmos DB erstellt alle 4 Stunden automatisch eine Sicherung Ihrer Datenbank, und es werden immer nur die neuesten 2 Sicherungen gespeichert. Aber wenn der Container bzw. die Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen des angegebenen Containers bzw. der Datenbank 30 Tage lang auf.
 
-Azure Cosmos DB speichert automatische Sicherungen in Azure Blob Storage, während sich die eigentlichen Daten lokal in Azure Cosmos DB befinden. Um niedrige Latenz zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in Azure Blob Storage in der Region gespeichert, in der sich auch die aktuelle Schreibregion Ihres Cosmos DB-Datenbankkontos befindet (bzw. bei einer Multimaster-Konfiguration in einer der Schreibregionen). Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme der Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Die Region, in die die Sicherung repliziert wird, richtet sich nach Ihrer Quellregion und dem Regionspaar, das der Quellregion zugeordnet ist. Weitere Informationen finden Sie im Artikel mit der [Liste der georedundanten Azure-Regionspaare](../best-practices-availability-paired-regions.md). Sie können auf diese Sicherung nicht direkt zugreifen. Azure Cosmos DB verwendet diese Sicherung nur, wenn die Wiederherstellung einer Sicherung initiiert wird.
+* Azure Cosmos DB speichert diese Sicherungen in Azure Blob-Speicher, während sich die eigentlichen Daten lokal in Azure Cosmos DB befinden.
+
+*  Um niedrige Latenz zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in Azure Blob Storage in der Region gespeichert, in der sich auch die aktuelle Schreibregion Ihres Azure Cosmos-Datenbankkontos befindet (bzw. bei einer Multimaster-Konfiguration in einer der Schreibregionen). Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme der Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Die Region, in die die Sicherung repliziert wird, richtet sich nach Ihrer Quellregion und dem Regionspaar, das der Quellregion zugeordnet ist. Weitere Informationen finden Sie im Artikel mit der [Liste der georedundanten Azure-Regionspaare](../best-practices-availability-paired-regions.md). Sie können auf diese Sicherung nicht direkt zugreifen. Azure Cosmos DB verwendet diese Sicherung nur, wenn die Wiederherstellung einer Sicherung initiiert wird.
+
+* Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne Ihren bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen bzw. die Leistung oder Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
+
+* Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, sollten Sie sich innerhalb von 8 Stunden an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, damit das Azure Cosmos DB-Team Sie beim Wiederherstellen der Daten aus den Sicherungen unterstützen kann.
+
 Die folgende Abbildung zeigt, wie ein Azure Cosmos DB-Container (mit allen drei primären physischen Partitionen in „USA, Westen“) in einem Azure Blob Storage-Remotekonto in „USA, Westen“ gesichert und anschließend nach „USA, Osten“ repliziert wird:
 
 ![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)

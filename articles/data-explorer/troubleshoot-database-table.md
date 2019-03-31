@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0bd9f5ed00193aa9f872287b6afaf9e2b28c24dc
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215088"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188338"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Problembehandlung: Fehler beim Erstellen oder Löschen einer Datenbank oder Tabelle im Azure-Daten-Explorer
 
@@ -37,7 +37,7 @@ Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. 
 
     Informationen zu Berechtigungen finden Sie unter [Verwalten von Datenbankberechtigungen](manage-database-permissions.md).
 
-1. Stellen Sie sicher, dass keine Tabelle mit demselben Namen vorhanden ist. Ist bereits eine vorhanden, haben Sie folgende Möglichkeiten: Erstellen Sie eine Tabelle mit einem anderen Namen, benennen Sie die vorhandene Tabelle um (erfordert die Rolle *table admin* (Tabellenadministrator)), oder löschen Sie die vorhandene Tabelle (erfordert die Rolle *database admin* (Datenbankadministrator)). Verwenden Sie die folgenden Befehle:
+1. Stellen Sie sicher, dass keine Tabelle mit demselben Namen vorhanden ist. Wenn sie vorhanden ist, können Sie: Eine Tabelle mit einem anderen Namen erstellen, die vorhandene Tabelle umbenennen (erfordert die Rolle *table admin* (Tabellenadministrator)) oder die vorhandene Tabelle löschen (erfordert die Rolle *database admin* (Datenbankadministrator)). Verwenden Sie die folgenden Befehle:
 
     ```Kusto
     .drop table <TableName>
@@ -53,7 +53,7 @@ Informationen zu Berechtigungen finden Sie unter [Verwalten von Datenbankberecht
 
 ## <a name="general-guidance"></a>Allgemeine Hinweise
 
-1. Sehen Sie sich das [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/>) an. Suchen Sie nach dem Status des Azure-Daten-Explorers in der Region, in der Sie eine Datenbank oder Tabelle verwenden möchten.
+1. Sehen Sie sich das [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/) an. Suchen Sie nach dem Status des Azure-Daten-Explorers in der Region, in der Sie eine Datenbank oder Tabelle verwenden möchten.
 
     Wenn der Status nicht **Gut** lautet (grünes Häkchen), wiederholen Sie den Vorgang, wenn sich der Status verbessert hat.
 

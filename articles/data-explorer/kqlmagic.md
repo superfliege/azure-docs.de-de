@@ -8,17 +8,17 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 83c4ae7ff942579d55a5855c24a28809f60fdc62
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0e1eedf497ea5fd4a8a9551996102a8aa72847fc
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382467"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961566"
 ---
 # <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>Analysieren von Daten mithilfe von Jupyter Notebook und Kqlmagic
 
 Jupyter Notebook ist eine Open Source-Webanwendung, mit der Sie Dokumente erstellen und freigeben können, die Livecode, Gleichungen, Visualisierungen und beschreibenden Text enthalten. Die Nutzung umfasst Folgendes: Bereinigung und Transformation von Daten, numerische Simulation, statistische Modellierung, Datenvisualisierung und Machine Learning.
-[Jupyter Notebook](https://jupyter.org/) unterstützt Magic-Befehle, die die Funktionen des Kernels mit zusätzlichen Befehlen erweitern. Kqlmagic ist ein Befehl, der die Funktionen des Python-Kernels in Jupyter Notebook erweitert, damit Sie Abfragen in der Kusto-Sprache nativ ausführen können. Sie können Python und die Kusto-Abfragesprache mühelos zum Abfragen und Visualisieren von Daten mithilfe der umfassenden Bibliothek „Plot.ly“ kombinieren, die mit `render`-Befehlen integriert ist. Zum Ausführen von Abfragen werden Datenquellen unterstützt. Zu diesen Datenquellen gehören Azure Data Explorer, ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Protokoll- und Telemetriedaten, sowie Log Analytics und Application Insights. Kqlmagic funktioniert auch mit Azure Notebooks, Jupyter Lab und der Jupyter-Erweiterung von Visual Studio Code.
+[Jupyter Notebook](https://jupyter.org/) unterstützt Magic-Befehle, die die Funktionen des Kernels mit zusätzlichen Befehlen erweitern. Kqlmagic ist ein Befehl, der die Funktionen des Python-Kernels in Jupyter Notebook erweitert, damit Sie Abfragen in der Kusto-Sprache nativ ausführen können. Sie können Python und die Kusto-Abfragesprache mühelos zum Abfragen und Visualisieren von Daten mithilfe der umfassenden Bibliothek „Plot.ly“ kombinieren, die mit `render`-Befehlen integriert ist. Zum Ausführen von Abfragen werden Datenquellen unterstützt. Zu diesen Datenquellen gehören Azure Data Explorer, ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Protokoll- und Telemetriedaten, sowie Azure Monitor-Protokolle und Application Insights. Kqlmagic funktioniert auch mit Azure Notebooks, Jupyter Lab und der Jupyter-Erweiterung von Visual Studio Code.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -171,6 +171,6 @@ In vielen Analyseszenarios sollten Sie, wiederverwendbare Notebooks erstellen, d
 Führen Sie den help-Befehl aus, um die folgenden Beispiel-Notebooks kennenzulernen, die alle unterstützten Features enthalten:
 - [Get started with Kqlmagic for Azure Data Explorer](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) (Erste Schritte mit Kqlmagic für Azure Data Explorer) 
 - [Get started with Kqlmagic for Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) (Erste Schritte mit Kqlmagic für Application Insights) 
-- [Get started with Kqlmagic for Log Analytics](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) (Erste Schritte mit Kqlmagic für Log Analytics) 
+- [Get started with Kqlmagic for Azure Monitor logs](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) (Erste Schritte mit Kqlmagic für Azure Monitor-Protokolle) 
 - [Parametrize your Kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) (Parametrisieren von Kqlmagic-Abfragen mit Python) 
 - [Choose colors palette for your Kqlmagic query chart result](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb) (Auswählen der Farbpalette für das Kqlmagic-Abfragediagrammergebnis)
