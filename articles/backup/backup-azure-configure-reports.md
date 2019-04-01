@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: 945d8690ccb61916455ba4137f59c67c9a3d9f76
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dbfe33d062c4609ba29adbaa2d9956687115cb5a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237687"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440997"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 Dieser Artikel erläutert die Schritte zum Konfigurieren von Berichten für Azure Backup mit dem Recovery Services-Tresor. Außerdem erfahren Sie, wie Sie mit Power BI auf Berichte zugreifen. Nachdem Sie diese Schritte abgeschlossen haben, können Sie direkt Power BI aufrufen, um Berichte anzuzeigen, anzupassen und zu erstellen.
@@ -29,7 +29,7 @@ Laden Sie die aktuelle App (Version 1.8) herunter, um dieses Problem zu vermeide
 - Azure Backup-Berichte werden für die Sicherung von Azure-VMs und Dateien/Ordnern in der Cloud mit dem Azure Recovery Services-Agent unterstützt.
 - Berichte für Azure SQL-Datenbank, Azure-Dateifreigaben, Data Protection Manager und Azure Backup Server werden aktuell nicht unterstützt.
 - Sie können die Berichte für verschiedene Tresore und Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto konfiguriert ist. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
-- Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. Sie können Berichte in Power BI auch ad hoc aktualisieren. In diesem Fall werden die neuesten Daten im Kundenspeicherkonto zum Rendern von Berichten verwendet.
+- Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. Sie können auch in Power BI eine Ad-hoc-Aktualisierung der Berichte ausführen. In diesem Fall werden die neuesten Daten im Kundenspeicherkonto zum Rendern von Berichten verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.

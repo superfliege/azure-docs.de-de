@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101650"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842487"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -183,8 +183,28 @@ Um zu ermitteln, ob Sie der Kontoadministrator sind, navigieren Sie [im Azure-Po
 
 Falls Sie nicht der Kontoadministrator sind, wurde Ihnen wahrscheinlich von einer anderen Person über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Active Directory](../role-based-access-control/role-assignments-portal.md) eingeschränkter Zugriff gewährt. Um Abonnements verwalten und Abrechnungsinformationen ändern zu können, müssen Sie [den Kontoadministrator ermitteln](billing-subscription-transfer.md#whoisaa). Bitten Sie den Kontoadministrator, die Aufgaben für Sie auszuführen oder [das Abonnement auf Sie zu übertragen](billing-subscription-transfer.md).
 
-Falls der Kontoadministrator Ihre Organisation verlassen hat und Sie die Abrechnung verwalten müssen, [wenden Sie sich an uns](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Falls der Kontoadministrator Ihre Organisation verlassen hat und Sie die Abrechnung verwalten müssen, [wenden Sie sich an uns](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Anfordern einer SLA-Gutschrift für einen Dienstvorfall
+
+In der Vereinbarung zum Servicelevel (SLA) ist die garantierte Verfügbarkeit und Konnektivität beschrieben, die Microsoft zusichert. Ein Dienstvorfall wird gemeldet, wenn bei Azure-Diensten ein Problem auftritt, das sich auf die Betriebszeit oder Konnektivität auswirkt. Dies wird häufig als „Ausfall“ bezeichnet. Wenn wir die Servicelevel für jeden Dienst nicht wie in der SLA beschrieben erreichen und einhalten, haben Sie möglicherweise Anspruch auf eine Gutschrift über einen Teil Ihrer monatlichen Dienstgebühren.
+
+Gehen Sie wie folgt vor, um eine Gutschrift anzufordern:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie über mehrere Konten verfügen, stellen Sie sicher, dass Sie das Konto verwenden, das von der Azure-Downtime betroffen war. Dadurch kann der Support die erforderlichen Hintergrundinformationen automatisch erfassen und den Fall schneller lösen.
+2. Erstellen Sie eine neue Supportanfrage.
+3. Wählen Sie unter **Problemtyp** die Option **Abrechnung** aus.
+4. Wählen Sie unter **Problemtyp** die Option **Anforderung zur Rückerstattung** aus.
+5. Fügen Sie Details hinzu, um anzugeben, dass Sie um eine SLA-Gutschrift bitten, geben Sie das Datum, die Uhrzeit und die Zeitzone sowie die betroffenen Dienste (VMs, Websites usw.) an.
+6. Überprüfen Sie Ihre Kontaktdetails, und wählen Sie die Schaltfläche **Erstellen** aus, um Ihre Anforderung zu senden.
+
+Die SLA-Schwellenwerte variieren je nach Dienst. Beispielsweise gilt für den SQL-Webtarif eine SLA von 99,9 %, für VMs gilt eine SLA von 99,95 %, und für den SQL-Standardtarif gilt eine SLA von 99,99 %.
+
+Bei einigen Diensten gibt es Voraussetzungen für die Anwendung der SLA. Bei Microsoft Azure Virtual Machines müssen beispielsweise mindestens zwei Instanzen in derselben Verfügbarkeitsgruppe bereitgestellt sein.
+
+Weitere Informationen finden Sie in der Dokumentation zu [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/en-us/support/legal/sla/) und in der [DLV-Übersicht für Azure-Dienste](https://azure.microsoft.com/en-us/support/legal/sla/summary/).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

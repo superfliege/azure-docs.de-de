@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: bb13e507e7992f4cd4d767a7a18850739b8dccf2
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270197"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306900"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -48,20 +48,17 @@ DPM auf einem virtuellen Azure-Computer | System Center 2012 R2 mit DPM 2012 R2 
 DPM auf einem physischen Server | System Center 2012 SP1 oder höher, System Center 2012 R2.
 DPM auf einem virtuellen Hyper-V-Computer | System Center 2012 SP1 oder höher, System Center 2012 R2.
 DPM auf einem virtuellen VMware-Computer | System Center 2012 R2 mit Updaterollup 5 oder höher.
-Komponenten | Auf dem DPM-Server muss Azure PowerShell und .Net Framework 4.5 installiert sein.
+Komponenten | Auf dem DPM-Server müssen die Komponenten Windows PowerShell und .NET Framework 4.5 installiert sein.
 Unterstützte Apps | [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix), was DPM sichern kann.
 Unterstützte Dateitypen | Diese Dateitypen können mit Azure Backup gesichert werden: Verschlüsselt (nur vollständige Sicherungen), komprimiert (inkrementelle Sicherungen unterstützt), platzsparend (inkrementelle Sicherungen unterstützt), komprimiert und platzsparend (als platzsparend behandelt).
 Nicht unterstützte Dateitypen | Server auf Dateisystemen, bei denen die Groß-/Kleinschreibung beachtet werden muss, feste Links (übersprungen), Analysepunkte (übersprungen), verschlüsselt und komprimiert (übersprungen), verschlüsselt und platzsparend (übersprungen), komprimierter Stream, Analysestream.
-Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen.  Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
+Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen. Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
 Tresorspeicher | Es gibt keine Beschränkung der Datenmenge, die Sie in einem Azure Backup-Tresor sichern, aber die Größe einer Datenquelle (beispielsweise ein virtueller Computer oder eine Datenbank) darf 54.400 GB nicht überschreiten.
 Azure Backup-Agent | Wenn DPM in System Center 2012 SP1 ausgeführt wird, installieren Sie mindestens Updaterollup 2 für DPM SP1. Dies ist für die Installation des Agents erforderlich.<br/><br/> In diesem Artikel wird beschrieben, wie Sie die neueste Version des Azure Backup-Agents, auch als MARS-Agent (Microsoft Azure Recovery Service) bezeichnet, bereitstellen. Wenn Sie eine frühere Version bereitgestellt haben, aktualisieren Sie sie auf die neueste Version, um sicherzustellen, dass die Sicherung wie erwartet funktioniert.
 
-
 Vor dem Beginn benötigen Sie ein Azure-Konto mit aktiviertem Azure Backup-Feature. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Erfahren Sie mehr über [Preisgestaltung von Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
-
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
-
 
 ## <a name="modify-storage-settings"></a>Anpassen von Speichereinstellungen
 
@@ -82,7 +79,6 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
     ![Liste der Sicherungstresore](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
-
 ## <a name="download-vault-credentials"></a>Herunterladen der Tresoranmeldedaten
 
 Sie verwenden Anmeldeinformationen beim Registrieren des DPM-Servers im Tresor.
@@ -98,7 +94,7 @@ Um die Anmeldeinformationen abzurufen, laden Sie die Datei mit Tresoranmeldeinfo
 
 - Die Tresoranmeldeinformationen werden nur während des Registrierungsworkflows verwendet.
 - Sie müssen sicherstellen, dass die Datei mit den Tresoranmeldeinformationen sicher aufbewahrt und nicht kompromittiert wird.
-    -  Wenn die Anmeldeinformationen verloren gehen, können die Anmeldeinformationen des Tresors zum Registrieren anderer Computer als Tresor verwendet werden.
+    - Wenn die Anmeldeinformationen verloren gehen, können die Anmeldeinformationen des Tresors zum Registrieren anderer Computer als Tresor verwendet werden.
     - Die Sicherungsdaten sind jedoch durch eine Passphrase verschlüsselt, die dem Kunden gehört. Daher sind vorhandene Sicherungsdaten nicht gefährdet.
 - Stellen Sie sicher, dass die Datei an einem Ort gespeichert wird, auf den vom DPM-Server aus zugegriffen werden kann. Wenn sie in einer Dateifreigabe/einem SMB gespeichert sind, überprüfen Sie die Zugriffsberechtigungen.
 - Tresoranmeldeinformationen laufen nach 48 Stunden ab. Sie können so oft wie erforderlich neue Tresoranmeldeinformationen herunterladen. Allerdings kann nur die neueste Datei mit Tresoranmeldeinformationen während des Registrierungsworkflows verwendet werden.
@@ -138,8 +134,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 7. Der Azure Backup-Agent installiert .NET Framework 4.5 und Windows PowerShell (falls noch nicht geschehen), um die Installation abzuschließen.
 8. Nachdem der Agent installiert ist, **schließen** Sie das Fenster.
 
-   ![Close (Schließen)](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
-
+    ![Close (Schließen)](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>Registrieren des DPM-Servers im Tresor
 
@@ -175,8 +170,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
     > Die Verschlüsselungspassphrase befindet sich in Ihrem Besitz, und Microsoft kann nicht auf sie zugreifen.
     > Wenn die Passphrase verloren geht oder vergessen wird, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein.
 
-13. Klicken Sie auf **Registrieren**, um den DPM-Server im Tresor zu registrieren.  
-
+13. Klicken Sie auf **Registrieren**, um den DPM-Server im Tresor zu registrieren.
 
 Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen.
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c38b28a247feb94efd5f4b73e690d30aac9ed73a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900237"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008592"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -138,3 +138,25 @@ Die Verknüpfung zwischen der Partner-ID und dem Konto erfolgt für jeden Kunden
 **Können andere Partner oder Kunden die Verknüpfung mit der Partner-ID bearbeiten oder entfernen?**
 
 Die Verknüpfung wird auf Benutzerkontoebene zugeordnet. Nur Sie können die Verknüpfung mit der Partner-ID bearbeiten oder entfernen. Weder der Kunde noch andere Partner können die Verknüpfung mit der Partner-ID ändern. 
+
+
+**Welche MPN-ID muss ich verwenden, wenn mein Unternehmen über mehrere MPN-IDs verfügt?**
+
+Sie können jede gültige MPN-ID außer der MPN-ID der virtuellen Organisation (MPN V-Org ID) verwenden. Die meisten Partner verwenden die MPN-ID für die geografische Region, in der sich der Kunde befindet oder die Dienste bereitgestellt werden.
+
+**Wo finde ich die beeinflusste Umsatzberichterstattung für die verknüpfte Partner-ID?**
+
+Sie finden die beeinflusste Umsatzberichterstattung unter [Dashboard „My Insights“](https://partner.microsoft.com/membership/reports/myinsights). Sie müssen „Partner Admin Link“ als Partnerzuordnungstyp auswählen.
+
+**Warum wird mein Kunde in den Berichten nicht angezeigt?**
+
+Der Kunde wird aus folgenden Gründen in den Berichten nicht angezeigt:
+
+1. Das verknüpfte Benutzerkonto verfügt nicht über [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) auf ein Azure-Kundenabonnement oder eine entsprechende Ressource.
+
+2. Das Azure-Abonnement, für das der Benutzer über [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) verfügt, wird nicht verwendet.
+
+**Funktioniert das Verknüpfen der Partner-ID mit Azure Stack?**
+
+Ja, Sie können Ihre Partner-ID mit Azure Stack verknüpfen.
+

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 621d071f98701ff3a949f4172fef1d13819d7192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852861"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Hinzufügen von Speicher zu Azure Backup Server
 
@@ -100,13 +100,13 @@ Das Aktualisieren von Schutzgruppen zur Verwendung von Modern Backup Storage ist
 
 1. Wählen Sie in der Backup Server-Administratorkonsole **Schutz** aus. Klicken Sie in der Liste **Schutzgruppenmitglied** mit der rechten Maustaste auf das Mitglied, und wählen Sie dann **Schutz des Mitglieds beenden** aus.
 
-  ![Schutz des Mitglieds beenden](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Schutz des Mitglieds beenden](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. Überprüfen Sie im Dialogfeld **Aus Gruppe entfernen** den belegten Speicherplatz und den verfügbaren freien Speicherplatz für den Speicherpool. Die Standardeinstellung ist das Belassen der Wiederherstellungspunkte auf dem Datenträger und sie gemäß der zugehörigen Beibehaltungsrichtlinie ablaufen zu lassen. Klicken Sie auf **OK**.
 
-  Wenn der belegte Speicherplatz sofort an den Pool mit freiem Speicherplatz zurückgegeben werden soll, aktivieren Sie das Kontrollkästchen **Replikat auf Datenträger löschen**, um die Sicherungsdaten (und Wiederherstellungspunkte) zu löschen, die zu diesem Mitglied gehören.
+   Wenn der belegte Speicherplatz sofort an den Pool mit freiem Speicherplatz zurückgegeben werden soll, aktivieren Sie das Kontrollkästchen **Replikat auf Datenträger löschen**, um die Sicherungsdaten (und Wiederherstellungspunkte) zu löschen, die zu diesem Mitglied gehören.
 
-  ![Dialogfeld „Aus Gruppe entfernen“](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Dialogfeld „Aus Gruppe entfernen“](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Erstellen Sie eine Schutzgruppe, die Modern Backup Storage verwendet. Fügen Sie die ungeschützten Datenquellen hinzu.
 
@@ -118,7 +118,7 @@ So fügen Sie Datenspeicher hinzu
 
 1. Wählen Sie in der Verwaltungskonsole **Verwaltung** > **Datenspeicher** > **Hinzufügen** aus.
 
-    ![Dialogfeld „Datenspeicher hinzufügen“](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Dialogfeld „Datenspeicher hinzufügen“](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 4. Wählen Sie im Dialogfeld **Datenspeicher hinzufügen** den Befehl **Datenträger hinzufügen** aus.
 

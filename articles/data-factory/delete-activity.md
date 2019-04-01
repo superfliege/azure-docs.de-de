@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 407bb2e39e92390576da9c23868f5af9c444bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/25/2019
+ms.openlocfilehash: 64829cad24d7f436b8539659dc1f0c6ef6ed4da4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341532"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404771"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Delete-Aktivität in Azure Data Factory
 
@@ -37,21 +37,20 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
 
 -   Stellen Sie sicher, dass Sie keine Dateien löschen, die zur gleichen Zeit geschrieben werden. 
 
--   Verwenden Sie beim Löschen von Dateien oder Ordnern aus einem lokalen System unbedingt mindestens Version 3.13 der selbstgehosteten Integration Runtime.
+-   Verwenden Sie beim Löschen von Dateien oder Ordnern aus einem lokalen System unbedingt mindestens Version 3.14 der selbstgehosteten Integration Runtime.
 
 ## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
-### <a name="azure-data-stores"></a>Azure-Datenspeicher
-
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2 (Vorschauversion)](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>Dateisystem-Datenspeicher
 
 -   [Dateisystem](connector-file-system.md)
 -   [FTP](connector-ftp.md)
--   [HDFS](connector-hdfs.md)
+-   [SFTP](connector-sftp.md)
+-   [Amazon S3](connector-amazon-simple-storage-service.md)
 
 ## <a name="syntax"></a>Syntax
 
@@ -61,7 +60,7 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
     "type": "Delete",
     "typeProperties": {
         "dataset": {
-            "referenceName": "<dataset name to be deleted>",
+            "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
         "recursive": true/false,
@@ -87,7 +86,7 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig zum Löschen von Ordnern oder Dateien mit einem Speicher hergestellt werden können   |   Nein. Der Standardwert lautet `1`. |
 | enablelogging | Gibt an, ob die Namen der gelöschten Ordner oder Dateien aufgezeichnet werden müssen. Bei „true“ müssen Sie zusätzlich ein Speicherkonto zum Speichern der Protokolldatei angeben, damit Sie anhand der Protokolldatei das Verhalten der Delete-Aktivität nachverfolgen können. | Nein  |
 | logStorageSettings | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Eine Gruppe von Speichereigenschaften, mit denen Sie angeben können, wo die Protokolldatei mit den Namen der Ordner oder Dateien gespeichert werden soll, die mit der Delete-Aktivität gelöschten wurden. | Nein  |
-| linkedServiceName | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Der verknüpfte [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)- oder [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties)-Dienst zum Speichern der Protokolldatei, die die Namen der durch die Delete-Aktivität gelöschten Ordner oder Dateien enthält | Nein  |
+| linkedServiceName | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Der verknüpfte [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)-, [Azure Data Lake Store Gen1](connector-azure-data-lake-store.md#linked-service-properties)- oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)-Dienst zum Speichern der Protokolldatei, die die Namen der durch die Delete-Aktivität gelöschten Ordner oder Dateien enthält. | Nein  |
 | path | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Der Pfad zum Speichern der Protokolldatei in Ihrem Speicherkonto. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein  |
 
 ## <a name="monitoring"></a>Überwachung
@@ -100,13 +99,15 @@ Es gibt zwei Stellen, an denen Sie die Ergebnisse der Delete-Aktivität anzeigen
 
 ```json
 { 
-  "isWildcardUsed": false, 
-  "wildcard": null,
-  "type": "AzureBlobStorage",
+  "datasetName": "AmazonS3",
+  "type": "AmazonS3Object",
+  "prefix": "test",
+  "bucketName": "adf",
   "recursive": true,
-  "maxConcurrentConnections": 10,
-  "filesDeleted": 1,
-  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07/5c698705-a6e2-40bf-911e-e0a927de3f07.json",
+  "isWildcardUsed": false,
+  "maxConcurrentConnections": 2,  
+  "filesDeleted": 4,
+  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07",
   "effectiveIntegrationRuntime": "MyAzureIR (West Central US)",
   "executionDuration": 650
 }
@@ -114,22 +115,12 @@ Es gibt zwei Stellen, an denen Sie die Ergebnisse der Delete-Aktivität anzeigen
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Beispielprotokolldatei der Delete-Aktivität
 
-```json
-{
-  "customerInput": {
-    "type": "AzureBlob",
-    "fileName": "",
-    "folderPath": "folder/filename_to_be_deleted",
-    "recursive": false,
-    "enableFileFilter": false
-  },
-  "deletedFileList": [
-    "folder/filename_to_be_deleted"
-  ],
-  "deletedFolderList": null,
-  "error":"the reason why files are failed to be deleted"
-}
-```
+| NAME | Category (Kategorie) | Status | Error |
+|:--- |:--- |:--- |:--- |
+| test1/yyy.json | Datei | Deleted |  |
+| test2/hello789.txt | Datei | Deleted |  |
+| test2/test3/hello000.txt | Datei | Deleted |  |
+| test2/test3/zzz.json | Datei | Deleted |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Beispiele zur Verwendung der Delete-Aktivität
 
@@ -322,7 +313,7 @@ Sie können eine Pipeline erstellen, um die alten oder abgelaufenen Dateien mith
         },
         "type": "AzureBlob",
         "typeProperties": {
-            "fileName": "",
+            "fileName": "*",
             "folderPath": "mycontainer",
             "modifiedDatetimeEnd": "2018-01-01T00:00:00.000Z"
         }
@@ -572,12 +563,14 @@ Von der Copy-Aktivität verwendetes Dataset für das Datenziel:
     }
 }
 ```
+## <a name="known-limitation"></a>Bekannte Einschränkung
+
+-   Die Delete-Aktivität unterstützt das Löschen von Ordnerliste, die durch Platzhalterzeichen beschrieben werden, nicht.
+
+-   Stellen Sie bei Verwendung des Dateiattributfilters: „modifiedDatetimeStart“ und „modifiedDatetimeEnd“ zum Auswählen von zu löschenden Dateien sicher, dass „FileName“: „*“ im Dataset festgelegt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Kopieren von Dateien in Azure Data Factory finden Sie in den folgenden Artikeln:
-
--   [Kopieraktivität in Azure Data Factory](copy-activity-overview.md)
+Weitere Informationen zum Verschieben von Dateien in Azure Data Factory.
 
 -   [Tool zum Kopieren von Daten in Azure Data Factory](copy-data-tool.md)
-- 

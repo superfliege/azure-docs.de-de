@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: df89f8fd4dd5c7690d858009e250a474f702f1a8
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098133"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
 
@@ -22,7 +22,7 @@ Mit der Verschlüsselung in Azure Data Lake Storage Gen1 können Sie Ihre Daten 
 Data Lake Storage Gen1 unterstützt die Verschlüsselung von ruhenden Daten und Daten im Übergang. Für ruhende Daten unterstützt Data Lake Storage Gen1 die standardmäßig aktivierte, transparente Verschlüsselung. Das bedeutet Folgendes:
 
 * **Standardmäßig aktiviert**: Beim Erstellen eines neuen Data Lake Storage Gen1-Kontos wird die Verschlüsselung standardmäßig aktiviert. In Data Lake Storage Gen1 gespeicherte Daten werden daraufhin immer verschlüsselt, bevor sie auf persistenten Medien gespeichert werden. Das gilt für alle Daten und kann nach der Kontoerstellung nicht mehr geändert werden.
-* **Transparent**: Daten werden von Data Lake Storage Gen1 vor der persistenten Speicherung automatisch verschlüsselt und vor dem Abrufen entschlüsselt. Die Verschlüsselung wird auf der Data Lake Storage Gen1-Ebene von einem Administrator konfiguriert und verwaltet. Die Datenzugriffs-APIs werden nicht geändert. Folglich sind auch keine verschlüsselungsbedingten Änderungen in Anwendungen und Diensten erforderlich, die mit Data Lake Storage Gen1 interagieren.
+* **Transparent**:  Daten werden von Data Lake Storage Gen1 vor der persistenten Speicherung automatisch verschlüsselt und vor dem Abrufen entschlüsselt. Die Verschlüsselung wird auf der Data Lake Storage Gen1-Ebene von einem Administrator konfiguriert und verwaltet. Die Datenzugriffs-APIs werden nicht geändert. Folglich sind auch keine verschlüsselungsbedingten Änderungen in Anwendungen und Diensten erforderlich, die mit Data Lake Storage Gen1 interagieren.
 
 Daten im Übergang (auch als „Daten in Bewegung“ bezeichnet) werden in Data Lake Storage Gen1 ebenfalls immer verschlüsselt. Zusätzlich zur Verschlüsselung von Daten vor dem Speichern auf persistenten Medien werden Daten auch während der Übertragung immer über HTTPS geschützt. Für die Data Lake Storage Gen1-REST-Schnittstellen wird ausschließlich das HTTPS-Protokoll unterstützt. Die folgende Abbildung zeigt, wie Daten in Data Lake Storage Gen1 verschlüsselt werden:
 
@@ -57,7 +57,7 @@ Im Anschluss folgt eine kurze Gegenüberstellung der Funktionen, die in den beid
 |Wie werden die Daten gespeichert?|Immer verschlüsselt (vor dem Speichern)|Immer verschlüsselt (vor dem Speichern)|
 |Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Key Vault|Key Vault|
 |Werden Verschlüsselungsschlüssel unverschlüsselt außerhalb von Key Vault gespeichert? |Nein |Nein |
-|Kann der MEK aus Key Vault abgerufen werden?|Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|
+|Kann der MEK aus Key Vault abgerufen werden?| Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.| Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|
 |Wer ist der Eigentümer der Key Vault-Instanz und des MEK?|Der Data Lake Storage Gen1-Dienst|Sie sind Eigentümer der Key Vault-Instanz, die zu Ihrem Azure-Abonnement gehört. Der MEK in Key Vault kann per Software oder Hardware verwaltet werden.|
 |Können Sie den Zugriff auf den MEK für den Data Lake Storage Gen1-Dienst sperren?|Nein |Ja. Sie können die Zugriffssteuerungslisten in Key Vault verwalten und Zugriffssteuerungseinträge für die Dienstidentität für den Data Lake Storage Gen1-Dienst entfernen.|
 |Können Sie den MEK endgültig löschen?|Nein |Ja. Wenn Sie den MEK aus Key Vault löschen, können die Daten im Data Lake Storage Gen1-Konto von niemandem mehr entschlüsselt werden (auch nicht vom Data Lake Storage Gen1-Dienst). <br><br> Wenn Sie den MEK vor dem Löschen aus Key Vault explizit gesichert haben, ist eine Wiederherstellung des MEK und der Daten möglich. Wenn Sie den MEK allerdings vor dem Löschen aus Key Vault nicht gesichert haben, können die Daten im Data Lake Storage Gen1-Konto anschließend nicht mehr entschlüsselt werden.|
@@ -74,7 +74,7 @@ Beachten Sie beim Auswählen des Modus für die Masterverschlüsselungsschlüsse
 
 Im Rahmen der Datenverschlüsselung gibt es drei Arten von Schlüsseln. In der folgenden Tabelle erhalten Sie einen Überblick:
 
-| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Typ       | Notizen                                                                                                   |
+| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Type       | Notizen                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Masterverschlüsselungsschlüssel | MEK          | Ein Data Lake Storage Gen1-Konto | Key Vault                              | Asymmetrisch | Kann von Data Lake Storage Gen1 oder von Ihnen verwaltet werden.                                                              |
 | Datenverschlüsselungsschlüssel   | DEK          | Ein Data Lake Storage Gen1-Konto | Persistenter Speicher (vom Data Lake Storage Gen1-Dienst verwaltet) | Symmetrisch  | Der DEK wird vom MEK verschlüsselt. Der verschlüsselte DEK ist das, was auf einem persistenten Medium gespeichert wird. |
@@ -120,17 +120,17 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
 
     ![Screenshot von Key Vault](./media/data-lake-store-encryption/keyvault.png)
 
-3.  Wählen Sie den Schlüssel aus, der Ihrem Data Lake Storage Gen1-Konto zugeordnet ist, und erstellen Sie eine neue Version dieses Schlüssels. Data Lake Storage Gen1 unterstützt zurzeit nur die Schlüsselrotation zu einer neuen Version eines Schlüssels. Die Rotation zu einem anderen Schlüssel wird nicht unterstützt.
+3. Wählen Sie den Schlüssel aus, der Ihrem Data Lake Storage Gen1-Konto zugeordnet ist, und erstellen Sie eine neue Version dieses Schlüssels. Data Lake Storage Gen1 unterstützt zurzeit nur die Schlüsselrotation zu einer neuen Version eines Schlüssels. Die Rotation zu einem anderen Schlüssel wird nicht unterstützt.
 
    ![Screenshot des Fensters „Schlüssel“, „Neue Version“ hervorgehoben](./media/data-lake-store-encryption/keynewversion.png)
 
-4.  Navigieren Sie zum Data Lake Storage Gen1-Konto, und wählen Sie **Verschlüsselung** aus.
+4. Navigieren Sie zum Data Lake Storage Gen1-Konto, und wählen Sie **Verschlüsselung** aus.
 
-    ![Screenshot des Fensters des Data Lake Storage Gen1-Speicherkontos, Option „Verschlüsselung“ hervorgehoben](./media/data-lake-store-encryption/select-encryption.png)
+   ![Screenshot des Fensters des Data Lake Storage Gen1-Speicherkontos, Option „Verschlüsselung“ hervorgehoben](./media/data-lake-store-encryption/select-encryption.png)
 
-5.  Sie werden darüber benachrichtigt, dass eine neue Version des Schlüssels verfügbar ist. Klicken Sie auf **Schlüssel rotieren**, um den Schlüssel auf die neue Version zu aktualisieren.
+5. Sie werden darüber benachrichtigt, dass eine neue Version des Schlüssels verfügbar ist. Klicken Sie auf **Schlüssel rotieren**, um den Schlüssel auf die neue Version zu aktualisieren.
 
-    ![Screenshot des Data Lake Storage Gen1-Fensters mit der Benachrichtigung, Option „Schlüssel rotieren“ hervorgehoben](./media/data-lake-store-encryption/rotatekey.png)
+   ![Screenshot des Data Lake Storage Gen1-Fensters mit der Benachrichtigung, Option „Schlüssel rotieren“ hervorgehoben](./media/data-lake-store-encryption/rotatekey.png)
 
 Der Vorgang dauert in der Regel weniger als zwei Minuten, und bei der Schlüsselrotation sind keine Ausfallzeiten zu erwarten. Nach Abschluss des Vorgangs wird die neue Version des Schlüssels verwendet.
 
