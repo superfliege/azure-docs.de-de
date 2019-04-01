@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c7a863c017bbd7440704f024ee362c3a0d252891
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 076c57f5415a4f6f19252fb5a3546e5e9a8a23f4
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824805"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417784"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Verwalten von Azure-Ressourcen mithilfe der Azure CLI
 
@@ -25,7 +25,7 @@ Erfahren Sie, wie Sie mit der Azure CLI und [Azure Resource Manager](resource-gr
 Andere Artikel zum Verwalten von Ressourcen:
 
 - [Verwalten von Azure-Ressourcen über das Azure-Portal](./manage-resources-portal.md)
-- [Verwalten von Azure-Ressourcen mithilfe der Azure CLI](./manage-resources-cli.md)
+- [Verwalten von Azure-Ressourcen mithilfe von Azure PowerShell](./manage-resources-powershell.md)
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Bereitstellen von Ressourcen in einer vorhandenen Ressourcengruppe
 
@@ -101,7 +101,7 @@ Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue 
 
 ## <a name="lock-resources"></a>Sperren von Ressourcen
 
-Das Sperren verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern, z.B. ein Azure-Abonnement, eine Ressourcengruppe oder eine Ressource. 
+Das Sperren verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern, z. B. ein Azure-Abonnement, eine Ressourcengruppe oder eine Ressource. 
 
 Das folgende Skript sperrt ein Speicherkonto, damit das Konto nicht gelöscht werden kann.
 
@@ -140,13 +140,13 @@ Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Res
 
 Das Markieren hilft Ihnen, Ihre Ressourcengruppe und Ressourcen logisch zu organisieren. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](./resource-group-using-tags.md#azure-cli).
 
-## <a name="manage-access-to-resources"></a>Verwalten des Zugriffs auf Ressourcen
+## <a name="manage-access-to-resources"></a>Zugriff auf Ressourcen verwalten
 
 Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung](../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) verwaltet. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und der Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](./resource-group-overview.md).
+- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](./resource-group-overview.md).
 - Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
 - Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](/azure/azure-resource-manager/).
 - Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Vorlagenreferenzdokumentation](/azure/templates/).

@@ -3,7 +3,7 @@ title: Azure PowerShell-Skriptbeispiel – Hinzufügen einer Netzwerksicherheits
 description: Azure PowerShell-Skriptbeispiel– fügt eine Netzwerksicherheitsgruppen-Regel zum Zulassen von eingehendem Datenverkehr an einem bestimmten Port hinzu
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/28/2017
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: fd3c648ee63c45bef305658832a4d31dfdb213be
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: fead6aa19775eab6cc3a1014e9f52b30cfa2cefa
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25987191"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498314"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>Einzufügen einer eingehenden Netzwerksicherheitsgruppen-Regel
 
 Dieses Beispielskript erstellt eine Netzwerksicherheitsgruppen-Regel zum Zulassen von eingehendem Datenverkehr an Port 8081.  Das Skript ruft die Ressource `Microsoft.Network/networkSecurityGroups` ab, in der sich der Cluster befindet, erstellt eine neue Netzwerksicherheits-Konfigurationsregel und aktualisiert die Netzwerksicherheitsgruppe. Passen Sie die Parameter nach Bedarf an.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure PowerShell-Handbuch](/powershell/azure/overview). 
 
@@ -36,12 +38,12 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure Po
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Ruft die Ressource `Microsoft.Network/networkSecurityGroups` ab |
-|[Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)| Ruft die Netzwerksicherheitsgruppe anhand des Namens ab|
-|[Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig)| Fügt einer Netzwerksicherheitsgruppe eine Netzwerksicherheits-Konfigurationsregel hinzu |
-|[Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)| Legt den Zielstatus für eine Netzwerksicherheitsgruppe fest|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ruft die Ressource `Microsoft.Network/networkSecurityGroups` ab |
+|[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| Ruft die Netzwerksicherheitsgruppe anhand des Namens ab|
+|[Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Fügt einer Netzwerksicherheitsgruppe eine Netzwerksicherheits-Konfigurationsregel hinzu |
+|[Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)| Legt den Zielstatus für eine Netzwerksicherheitsgruppe fest|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

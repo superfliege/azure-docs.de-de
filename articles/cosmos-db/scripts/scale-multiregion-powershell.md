@@ -9,16 +9,18 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/10/2017
 ms.reviewer: sngun
-ms.openlocfilehash: 832f22e969fbec51390792105df51a6af2a71851
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 02628401bed6e65784bf7ddc4a7082f617640cf9
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037887"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496143"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>Replizieren eines Azure Cosmos DB-Datenbankkontos in mehreren Regionen und Konfigurieren der Failoverprioritäten mithilfe von PowerShell
 
 Dieses Beispiel repliziert alle Arten von Azure Cosmos DB-Datenbankkonten in mehreren Regionen und konfiguriert die Failoverprioritäten mithilfe von PowerShell. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -31,7 +33,7 @@ Dieses Beispiel repliziert alle Arten von Azure Cosmos DB-Datenbankkonten in meh
 Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
@@ -40,10 +42,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
-| [Set-AzureRMResource](https://docs.microsoft.com/powershell/module/azurerm.resources/set-azurermresource?view=azurermps-3.8.0) | Ändert das Datenbankkonto. |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Ändert das Datenbankkonto. |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

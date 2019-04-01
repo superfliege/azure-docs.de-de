@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0310a74986f86e072e3ee0fa81df36a03d2e5117
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 10ba16fc06a4678c7bd70cbb7e6797b8d9be8ff4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409940"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485118"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-Cmdlets und REST-APIs für SQL Data Warehouse
 Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden.  Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren.  Einige gute REST-Beispiele finden Sie im Artikel [Verwalten der Skalierbarkeit mit REST][Manage scalability with REST].
@@ -26,7 +26,7 @@ Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure
 1. Öffnen Sie Windows PowerShell.
 2. Zum Anmelden bei Azure Resource Manager und Auswählen Ihres Abonnements führen Sie bei der PowerShell-Eingabeaufforderung die folgenden Befehle aus:
    
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     Get-AzSubscription
     Select-AzSubscription -SubscriptionName "MySubscription"

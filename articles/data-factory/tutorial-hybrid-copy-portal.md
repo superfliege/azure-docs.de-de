@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: ab13b0db843e5a2652ed1dd61a0e5ab5f7541244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2dc2418354cb1083c02516fbcdea710a74152ad
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120260"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445425"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie die Benutzeroberfläche (User Interface, UI) von Azure Data Factory, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
@@ -120,10 +120,11 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-Benutzeroberfläche, um eine Pipeline in der Data Factory zu erstellen. 
 
-1. Öffnen Sie **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-1. Klicken Sie im linken Menü auf **Neu** > **Daten + Analysen** > **Data Factory**.
+1. Öffnen Sie **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus:
    
-   ![Erstellen einer neuen Data Factory](./media/tutorial-hybrid-copy-portal/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
    
      ![Seite „Neue Data Factory“](./media/tutorial-hybrid-copy-portal/new-azure-data-factory.png)

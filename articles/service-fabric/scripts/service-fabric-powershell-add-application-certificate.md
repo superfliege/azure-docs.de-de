@@ -3,7 +3,7 @@ title: Skriptbeispiel von Azure PowerShell – Hinzufügen eines Anwendungszerti
 description: Skriptbeispiel von Azure PowerShell – Hinzufügen eines Anwendungszertifikats zu einem Cluster
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,20 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: be097f88f774df9e4a6429af444c6c742737f4c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d5e1540a347bb14e7479bc445afa98e220b5475a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598709"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497060"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Fügen Sie ein Anwendungszertifikat zu einem Service Fabric-Cluster hinzu
 
 In diesem Beispielskript wird ein selbst signiertes Zertifikat im angegebenen Azure Key Vault erstellt, und es wird auf allen Knoten des Service Fabric-Clusters installiert. Das Zertifikat wird außerdem in einen lokalen Ordner heruntergeladen. Der Name des heruntergeladenen Zertifikats ist identisch mit dem Namen des Zertifikats im Schlüsseltresor. Passen Sie die Parameter nach Bedarf an.
 
-Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -34,11 +36,11 @@ Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitung im [Azure Po
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript benutzt die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
+Das Skript verwendet die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|
-| [Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | Fügen Sie den VM-Skalierungsgruppen, die den Cluster bilden, ein neues Anwendungszertifikat hinzu.  |
+| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | Fügen Sie den VM-Skalierungsgruppen, die den Cluster bilden, ein neues Anwendungszertifikat hinzu.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

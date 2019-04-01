@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009657"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315826"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
 
@@ -324,7 +324,7 @@ In [MongoDB](https://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen
     nodejs server.js
     ```
 
-2. Öffnen Sie in einem Webbrowser die Adresse, die Sie für den virtuellen Computer aufgezeichnet haben. Beispiel: *http://13.72.77.9:3300* Eine Seite ähnlich der folgenden sollte angezeigt werden:
+2. Öffnen Sie in einem Webbrowser die Adresse, die Sie für den virtuellen Computer aufgezeichnet haben. Beispiel: *http:\//13.72.77.9:3300*. Eine Seite ähnlich der folgenden sollte angezeigt werden:
 
     ![Buchdatensatz](media/tutorial-mean/meanstack-init.png)
 

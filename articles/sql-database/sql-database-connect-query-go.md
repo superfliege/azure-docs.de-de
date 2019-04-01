@@ -12,12 +12,12 @@ ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 597a870f98d8218d86fa601fe83d524f3a370f05
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236514"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447866"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Golang
 
@@ -33,10 +33,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
   |:--- |:--- |:---|
   | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
   |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
-  |Laden von Daten|Laden von Adventure Works per Schnellstart|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 

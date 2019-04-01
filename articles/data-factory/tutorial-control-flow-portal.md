@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2a8983ae5306ec2ada7b4b537c2f17425b8717d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099541"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449364"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -127,9 +127,10 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus:
    
-   ![Neu -> Data Factory](./media/tutorial-control-flow-portal/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-control-flow-portal/new-azure-data-factory.png)

@@ -9,16 +9,18 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 08/08/2018
 ms.reviewer: sngun
-ms.openlocfilehash: bc8a9c5d19bcb94e476dca704351baa43d2800e0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4f4ad89f32c8ddcb2c3d9fb7f21bf274cc3586ef
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040709"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496444"
 ---
 # <a name="azure-cosmos-db-create-a-table-api-account-using-powershell"></a>Azure Cosmos DB: Erstellen eines Tabellen-API-Kontos mithilfe von PowerShell
 
 Mit diesem PowerShell-Beispielskript erstellen Sie ein Tabellen-API-Konto für Azure Cosmos DB. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -31,7 +33,7 @@ Mit diesem PowerShell-Beispielskript erstellen Sie ein Tabellen-API-Konto für A
 Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
@@ -40,9 +42,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

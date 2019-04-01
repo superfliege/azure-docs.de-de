@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: b9e9c0b141987f8af563944c8eee216b8218846c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352885"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447234"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 
@@ -150,9 +150,10 @@ END
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus: 
    
-   ![Neu -> Data Factory](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFIncCopyTutorialDF** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-incremental-copy-portal/new-azure-data-factory.png)
@@ -305,9 +306,9 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **usp_write_watermark**. 
     2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein: 
 
-        | NAME | Typ | Wert | 
+        | NAME | Type | Wert | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Zeichenfolge | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
