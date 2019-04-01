@@ -15,16 +15,33 @@ ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840901"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
 ## <a name="general-installation"></a>Allgemeine Installation
+
+**F: Wie kann ich meine Azure AD Connect-Server härten, um die Angriffsfläche für Sicherheitsangriffs zu verringern?**
+
+Microsoft empfiehlt die Härtung des Azure AD Connect-Servers, um die Angriffsfläche für Sicherheitsangriffe für diese wichtige Komponente der IT-Umgebungen zu verringern.  Wenn Sie die unten genannten Empfehlungen befolgen, verringern Sie die Sicherheitsrisiken für Ihre Organisation.
+
+* Bereitstellen von Azure AD Connect auf einem mit der Domäne verbundenen Server und Einschränken des administrativen Zugriffs auf Domänenadministratoren oder andere streng kontrollierte Sicherheitsgruppen
+
+Weitere Informationen finden Sie unter: 
+
+* [Sichern von Administratorgruppen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [Sichern von integrierten Administratorkonten](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [Verbesserung der Sicherheit und vorbeugenden Wartung durch Verringern von Angriffsoberflächen](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Verringern der Active Directory-Angriffsfläche](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+
 **F: Funktioniert die Installation, wenn für den globalen Administrator für Azure Active Directory (Azure AD) die zweistufige Authentifizierung aktiviert ist?**  
 Seit Builds vom Februar 2016 wird dieses Szenario unterstützt.
 

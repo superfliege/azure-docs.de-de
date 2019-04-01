@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103071"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225364"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -93,7 +93,7 @@ Er besitzt keinen Zugriff auf die Patientenakten.
 
 -   Umfang: ResourceGroup
 
- ### <a name="data-scientist"></a>Data Scientist
+### <a name="data-scientist"></a>Data Scientist
 
 
 Der Data Scientist betreibt die Azure Machine Learning Studio-Instanz. Er kann Daten importieren, exportieren, verwalten und Berichte ausführen. Der Data Scientist besitzt Zugriff auf Patientendaten, verfügt aber nicht über Administratorrechte.
@@ -272,7 +272,7 @@ Beim Ausführen des Demoskripts: .\\HealthcareDemo.ps1 mit dem Schalter **BulkPa
 
 **2. Key Vault** wird für ein Geheimnis angefordert, das dem angeforderten Token zugeordnet ist.
 
-**3. Azure-Rollen überprüfen die Anforderung und autorisieren die Zugriffsanforderung auf den Key Vault.
+**3. Azure-Rollen** überprüfen die Anforderung und autorisieren die Zugriffsanforderung auf den Key Vault.
 
 **4. Key Vault** gibt das Geheimnis zurück, in diesem Fall die SQL-DB-Verbindungszeichenfolge.
 
@@ -359,10 +359,10 @@ Die Lösung unterstützt Azure Event Grid, einen einzelnen Dienst für die Verwa
 - [Application Insights](/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Die Anwendung erkennt Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
 
 ### <a name="azure-alerts"></a>Azure-Warnungen
-- Warnungen bieten eine Methode zur Überwachung von Azure-Diensten und ermöglichen es Ihnen, Bedingungen für Daten zu konfigurieren. Warnungen bieten auch Benachrichtigungen, wenn eine Warnungsbedingung mit den Überwachungsdaten übereinstimmt.
+- [Warnungen](/azure/azure-monitor/platform/alerts-metric) bieten eine Methode zur Überwachung von Azure-Diensten und ermöglichen es Ihnen, Bedingungen für Daten zu konfigurieren. Warnungen bieten auch Benachrichtigungen, wenn eine Warnungsbedingung mit den Überwachungsdaten übereinstimmt.
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) ist eine Sammlung von Verwaltungsdiensten.
+### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
+[Azure Monitor-Protokolle](/azure/operations-management-suite/operations-management-suite-overview) ist eine Sammlung von Verwaltungsdiensten.
 
 -   Arbeitsbereich ist für Security Center aktiviert
 

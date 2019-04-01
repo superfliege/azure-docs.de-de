@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d91366ee0fec2930484f7aaa7468e6d1d62f233
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002182"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
 Standardmäßig verwenden AKS-Cluster [kubenet][kubenet], und ein virtuelles Netzwerk und Subnetz werden für Sie erstellt. Mit *kubenet* erhalten Knoten eine IP-Adresse aus einem Subnetz des virtuellen Netzwerks. Die Netzwerkadressübersetzung (NAT) wird dann auf den Knoten konfiguriert, und die Pods erhalten eine IP-Adresse, die hinter der Knoten-IP „versteckt“ ist. Dieser Ansatz reduziert die Anzahl der IP-Adressen, die Sie in Ihrem Netzwerkadressraum für die Verwendung von Pods reservieren müssen.
 
-Mit [Azure Container Networking Interface (CNI)][cni-networking] erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über ein Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
+Mit [Azure Container Networking Interface (CNI)][cni-networking] erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
 
 Dieser Artikel veranschaulicht die Verwendung von *Azure CNI*-Netzwerken zum Erstellen und Verwenden eines virtuellen Netzwerksubnetzes für einen AKS-Cluster. Weitere Informationen zu Netzwerkoptionen und -überlegungen finden Sie unter [Netzwerkkonzepte für Kubernetes und AKS][aks-network-concepts].
 
@@ -143,7 +143,7 @@ Die folgenden Fragen und Antworten gelten für die **Azure CLI**-Netzwerkkonfigu
 
 * *Kann ich Netzwerkrichtlinien pro Pod konfigurieren?*
 
-   Nein. Netzwerkrichtlinien pro Pod werden derzeit nicht unterstützt.
+  Die Kubernetes-Netzwerkrichtlinie ist derzeit in AKS als Previewfunktion verfügbar. Informationen zu den ersten Schritten finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service][network-policy].
 
 * *Ist die maximale Anzahl von Pods, die auf einem Knoten bereitgestellt werden können, konfigurierbar?*
 
@@ -201,3 +201,4 @@ Für per AKS Engine erstellte Kubernetes-Cluster werden sowohl [kubenet][kubenet
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
+[network-policy]: use-network-policies.md

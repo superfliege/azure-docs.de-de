@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: dab0a6a5eee8893f28a221b44d57afe255841fa0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329744"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543728"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow: Ausdrucks-Generator
 
@@ -51,7 +51,7 @@ Fügen Sie Ihren Ausdrücken unter Verwendung der einzeiligen und mehrzeiligen K
 
 ## <a name="regular-expressions"></a>Reguläre Ausdrücke
 
-Die Ausdruckssprache von Azure Data Factory-Datenfluss ([die vollständige Referenzdokumentation finden Sie hier)](http://aka.ms/dataflowexpressions) ermöglicht das Verwenden von Funktionen, die eine Syntax für reguläre Ausdrücke enthalten. Wenn Sie Funktionen mit regulären Ausdrücken verwenden, versucht der Ausdrucks-Generator, den umgekehrten Schrägstrich (\) als Escapezeichensequenz zu interpretieren. Wenn Sie in Ihrem regulären Ausdruck umgekehrte Schrägstriche verwenden, schließen Sie entweder den gesamten regulären Ausdruck (RegEx) in Ticks (` `) ein, oder verwenden Sie einen doppelten umgekehrten Schrägstrich.
+Die Ausdruckssprache von Azure Data Factory-Datenfluss ([die vollständige Referenzdokumentation finden Sie hier)](https://aka.ms/dataflowexpressions) ermöglicht das Verwenden von Funktionen, die eine Syntax für reguläre Ausdrücke enthalten. Wenn Sie Funktionen mit regulären Ausdrücken verwenden, versucht der Ausdrucks-Generator, den umgekehrten Schrägstrich (\) als Escapezeichensequenz zu interpretieren. Wenn Sie in Ihrem regulären Ausdruck umgekehrte Schrägstriche verwenden, schließen Sie entweder den gesamten regulären Ausdruck (RegEx) in Ticks (` `) ein, oder verwenden Sie einen doppelten umgekehrten Schrägstrich.
 
 Beispiel für die Verwendung von Ticks
 
@@ -70,3 +70,12 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 Verwenden Sie bei Ausdrucksfunktionen, die Arrays zurückgeben, eckige Klammern [], um bestimmte Indizes innerhalb dieses Rückgabearrayobjekts anzugeben. Das Array ist einzelbasiert.
 
 ![Ausdrucks-Generator-Array](media/data-flow/expb2.png "Ausdrucksdatenvorschau")
+
+## <a name="handling-names-with-special-characters"></a>Verarbeiten von Namen mit Sonderzeichen
+
+Wenn Sie Spaltennamen besitzen, die Sonderzeichen oder Leerzeichen enthalten, setzen Sie die Namen in geschweiften Klammern.
+* ```{[dbo].this_is my complex name$$$}```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Mit dem Erstellen von Datentransformationsausdrücken beginnen](data-flow-expression-functions.md)

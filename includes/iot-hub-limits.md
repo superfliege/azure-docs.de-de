@@ -1,17 +1,17 @@
 ---
-author: dominicbetts
+author: robinsh
+ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: e6dbfe225b6957406b7143d5db4a28cb50f13e7b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 20553db8c79c960aabda5aba708d315517462126
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55480370"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57805171"
 ---
-In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen (S1, S2, S3, F1) zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
+In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Ressource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
@@ -19,25 +19,25 @@ In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen 
 | Maximale Anzahl der Einheiten |200 |200 |10 |1 |
 
 > [!NOTE]
-> Wenden Sie sich an den Microsoft Support, wenn Sie voraussichtlich mehr als 200 Einheiten mit einem Hub im Tarif S1 oder S2 oder zehn Einheiten mit einem Hub im Tarif S3 verwenden.
+> Wenden Sie sich an den Microsoft-Support, wenn Sie voraussichtlich mehr als 200 Einheiten mit einem Hub im Tarif S1 oder S2 oder zehn Einheiten mit einem Hub im Tarif S3 verwenden.
 > 
 > 
 
-Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
+Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 
 | Ressource | Begrenzung |
 | --- | --- |
 | Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |50 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement |1 |
 | Maximale Anzahl von Zeichen in einer Geräte-ID | 128 |
-| Maximale Anzahl von Geräte-Identitäten,<br/>  die bei einem einzelnen Aufruf zurückgegeben wird |1000 |
+| Maximale Anzahl von Geräte-Identitäten,<br/>  die bei einem einzelnen Aufruf zurückgegeben wird |1.000 |
 | Maximale Beibehaltungsdauer von IoT Hub-Nachrichten für D2C-Nachrichten |7 Tage |
 | Maximale Größe einer Nachricht von einem Gerät an die Cloud |256 KB |
 | Maximale Größe eines Batches, das vom Gerät an die Cloud gesendet wird |AMQP und HTTP: 256 KB für den gesamten Batch <br/>MQTT: 256 KB für jede Nachricht |
 | Maximale Anzahl von Nachrichten im Batch, das vom Gerät an die Cloud gesendet wird |500 |
 | Maximale Größe einer Nachricht von der Cloud an das Gerät |64 KB |
 | Maximale Gültigkeitsdauer von Nachrichten von der Cloud an das Gerät |2 Tage |
-| Maximale Übermittlungsanzahl von Nachrichten von der <br/>  Cloud an das Gerät |100 |
+| Maximale Übermittlungsanzahl von Nachrichten von der <br/> Cloud an das Gerät |100 |
 | Maximale Übermittlungsanzahl von Feedbacknachrichten <br/>  als Reaktion auf eine Nachricht von der Cloud an das Gerät |100 |
 | Maximale Gültigkeitsdauer von Feedbacknachrichten <br/>  als Reaktion auf eine Nachricht von der Cloud an das Gerät |2 Tage |
 | Maximale Größe des Gerätezwillings <br/> (Tags, gemeldete Eigenschaften und gewünschte Eigenschaften) | 8 KB |
@@ -46,32 +46,32 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 | Maximale Größe der Nutzlast der direkten Methode | 128 KB |
 | Maximale Aufbewahrungsdauer des Auftragsverlaufs | 30 Tage |
 | Maximale Anzahl gleichzeitiger Aufträge | 10 (S3), 5 (S2), 1 (S1) |
-| Maximale Anzahl zusätzlicher Endpunkte | 10 (S1, S2, S3) |
-| Maximale Anzahl von Regeln für die Nachrichtenweiterleitung | 100 (S1, S2, S3) |
+| Maximale Anzahl zusätzlicher Endpunkte | 10 (S1, S2 und S3) |
+| Maximale Anzahl von Regeln für die Nachrichtenweiterleitung | 100 (S1, S2 und S3) |
 | Maximale Anzahl der gleichzeitig verbundenen Gerätestreams | 50 (nur für S1, S2, S3 und F1) |
 | Maximale Gerätestream-Datenübertragung | 300 MB pro Tag (nur für S1, S2, S3 und F1) |
 
 
 > [!NOTE]
-> Wenden Sie sich an den Microsoft Support, wenn Sie mehr als 50 kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
+> Wenden Sie sich an den Microsoft-Support, wenn Sie mehr als 50 kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
 
 
 > [!NOTE]
 > Zurzeit können höchstens 1.000.000 Geräte mit einem einzelnen IoT Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/support/options/).
 
-Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
+IoT Hub drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden.
 
 | Drosselung | Wert pro Hub |
 | --- | --- |
-| Identitätsregistrierungsvorgänge <br/> (erstellen, abrufen, auflisten, aktualisieren, löschen), <br/>  einzelne Import-/Exportvorgänge oder Massenimport/-export |83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3) <br/> 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
+| Identitätsregistrierungsvorgänge <br/> (Erstellen, Abrufen, Auflisten, Aktualisieren und Löschen), <br/>  einzelne Import-/Exportvorgänge oder Massenimport/-export |83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3). <br/> 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
 | Geräteverbindungen |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
 | Senden von Nachrichten von Geräten an die Cloud |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
-| C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
-| C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2) |
-| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/>  10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
-| Direkte Methoden | 24 MB/s/Texteinheit (S3), 480 KB/s/Einheit (S2), 160 KB/s/Einheit (S1)<br/> Basierend auf einer Größe von 8 KB pro Verbrauchseinheit für die Drosselung. |
-| Gerätezwilling-Lesevorgänge | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
-| Gerätezwillingsaktualisierungen | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
-| Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S2), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1) |
-| Durchsatz für Vorgänge vom Typ „Aufträge pro Gerät“ | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
-| Initiierungsrate für Gerätestream | 5 neue Streams/Sek. (nur für S1, S2, S3 und F1) |
+| C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). |
+| C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2). |
+| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/>  10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Direkte Methoden | 24 MB/s/Texteinheit (S3), 480 KB/s/Einheit (S2), 160 KB/s/Einheit (S1).<br/> Basierend auf einer Größe von 8 KB pro Verbrauchseinheit für die Drosselung. |
+| Gerätezwilling-Lesevorgänge | 500/Sekunde/Einheit (für S3), maximal 100/Sekunde oder 10/Sekunde/Einheit (für S2), 100/Sekunde/Einheit (für S1) |
+| Gerätezwillingsaktualisierungen | 250/Sekunde/Einheit (für S3), maximal 50/Sekunde oder 5/Sekunde/Einheit (für S2), 50/Sekunde/Einheit (für S1) |
+| Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten und Löschen) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S2), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1). |
+| Durchsatz für Vorgänge vom Typ „Aufträge pro Gerät“ | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1). |
+| Initiierungsrate für Gerätestream | 5 neue Streams/Sek. (nur für S1, S2, S3 und F1). |

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a5876a3f77eb0764edc5ce833f4b74284dda66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211715"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852953"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade von DirSync
 Azure AD Connect ist der Nachfolger von DirSync. Dieses Thema beschreibt die Möglichkeiten, die Sie beim Upgrade von DirSync haben. Die Schritte funktionieren nicht für ein Upgrade von einer anderen Version von Azure AD Connect oder von Azure AD Sync.
@@ -41,7 +41,7 @@ Wenn Sie kein Upgrade von DirSync durchführen, hilft Ihnen die Dokumentation zu
 Je nach Ihrer aktuellen DirSync-Bereitstellung gibt es unterschiedliche Optionen für das Upgrade. Wenn die erwartete Upgradezeit weniger als drei Stunden beträgt, lautet die Empfehlung, ein direktes Upgrade durchzuführen. Wenn die erwartete Upgradezeit mehr als drei Stunden beträgt, empfehlen wir Ihnen die Durchführung einer parallelen Bereitstellung auf einem anderen Server. Die Schätzung lautet, dass das Upgrade länger als drei Stunden dauert, wenn Sie über mehr als 50.000 Objekte verfügen.
 
 | Szenario |
-| --- | --- |
+| --- |
 | [Direktes Upgrade](#in-place-upgrade) |
 | [Parallele Bereitstellung](#parallel-deployment) |
 
@@ -71,7 +71,7 @@ Die folgende Änderung kann im Rahmen des Upgrades nicht aktualisiert werden. Be
 
 ![Upgrade gesperrt](./media/how-to-dirsync-upgrade-get-started/analysisblocked.png)
 
-In diesen Fällen wird empfohlen, einen neuen Azure AD Connect-Server im [Stagingmodus](how-to-connect-sync-operations.md#staging-mode) zu installieren und die alte DirSync- und die neue Azure AD Connect-Konfiguration zu überprüfen. Wenden Sie alle Änderungen mithilfe der benutzerdefinierten Konfiguration erneut an, wie unter [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](how-to-connect-sync-whatis.md) beschrieben.
+In diesen Fällen wird empfohlen, einen neuen Azure AD Connect-Server im [Stagingmodus](how-to-connect-sync-staging-server.md) zu installieren und die alte DirSync- und die neue Azure AD Connect-Konfiguration zu überprüfen. Wenden Sie alle Änderungen mithilfe der benutzerdefinierten Konfiguration erneut an, wie unter [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](how-to-connect-sync-whatis.md) beschrieben.
 
 Die Kennwörter, die von DirSync für die Dienstkonten verwendet werden, können nicht abgerufen werden und werden nicht migriert. Diese Kennwörter werden während des Upgrades zurückgesetzt.
 
@@ -161,12 +161,12 @@ Bei der Installation von Azure AD Connect auf einem neuen Server wird davon ausg
      Auf diesem Bildschirm werden die folgenden Optionen angezeigt:   
      ![Geben Sie Ihre Azure AD-Anmeldeinformationen ein.](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. Klicken Sie auf **Weiter**.
-8. Lassen Sie auf der Seite **Bereit zur Konfiguration** das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** aktiviert. Der Server befindet sich nun im [Stagingmodus](how-to-connect-sync-operations.md#staging-mode), und Änderungen werden nicht nach Azure AD exportiert.
+8. Lassen Sie auf der Seite **Bereit zur Konfiguration** das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** aktiviert. Der Server befindet sich nun im [Stagingmodus](how-to-connect-sync-staging-server.md), und Änderungen werden nicht nach Azure AD exportiert.
 9. Klicken Sie auf **Installieren**.
 10. Melden Sie sich nach Abschluss der Installation von Windows ab und anschließend wieder an, ehe Sie den Synchronisierungsdienst-Manager oder Synchronisierungsregel-Editor verwenden oder andere Änderungen an der Konfiguration vornehmen.
 
 > [!NOTE]
-> Die Synchronisierung zwischen Windows Server Active Directory und Azure Active Directory wird gestartet, es werden aber keine Änderungen zu Azure AD exportiert. Nur ein Synchronisierungstool kann jeweils aktiv Änderungen exportieren. Dies wird als [Stagingmodus](how-to-connect-sync-operations.md#staging-mode) bezeichnet.
+> Die Synchronisierung zwischen Windows Server Active Directory und Azure Active Directory wird gestartet, es werden aber keine Änderungen zu Azure AD exportiert. Nur ein Synchronisierungstool kann jeweils aktiv Änderungen exportieren. Dies wird als [Stagingmodus](how-to-connect-sync-staging-server.md) bezeichnet.
 
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Überprüfen, ob Azure AD Connect bereit für den Beginn der Synchronisierung ist
 Um sicherzustellen, dass Azure AD Connect bereit für die Übernahme von DirSync ist, müssen Sie im Startmenü in der Gruppe **Azure AD Connect** die Option **Synchronization Service Manager** öffnen.
@@ -182,7 +182,7 @@ Wechseln Sie in der Anwendung zur Registerkarte **Vorgänge** . Überprüfen Sie
 
 Sehen Sie sich die Ergebnisse dieser Vorgänge an, und stellen Sie sicher, dass keine Fehler vorhanden sind.
 
-Wenn Sie prüfen möchten, welche Änderungen zu Azure AD exportiert werden, können Sie sich die Informationen zum Überprüfen der Konfiguration unter [Stagingmodus](how-to-connect-sync-operations.md#staging-mode) durchlesen. Nehmen Sie die erforderlichen Konfigurationsänderungen vor, bis nichts Unerwartetes mehr angezeigt wird.
+Wenn Sie prüfen möchten, welche Änderungen zu Azure AD exportiert werden, können Sie sich die Informationen zum Überprüfen der Konfiguration unter [Stagingmodus](how-to-connect-sync-staging-server.md) durchlesen. Nehmen Sie die erforderlichen Konfigurationsänderungen vor, bis nichts Unerwartetes mehr angezeigt wird.
 
 Sie können von DirSync zu Azure AD zu wechseln, wenn Sie diese Schritte ausgeführt haben und mit dem Ergebnis zufrieden sind.
 

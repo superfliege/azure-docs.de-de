@@ -3,22 +3,35 @@ title: Erstellen von virtuellen Knoten mit dem Portal in Azure Kubernetes Servic
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um einen Azure Kubernetes Service-Cluster (AKS) zu erstellen, der virtuelle Knoten zum Ausführen von Pods verwendet.
 services: container-service
 author: iainfoulds
+ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: a47910083083787000b749a0b5b3256df5e702c8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1a1764b9e2bea65f423a27c5437edc4b7672a86f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164441"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vorschau: Erstellen und Konfigurieren eines Azure Kubernetes Services-Clusters (AKS) zur Verwendung von virtuellen Knoten im Azure-Portal
 
 Um Anwendungsworkloads in einem AKS-Cluster (Azure Kubernetes Service) schnell bereitzustellen, können Sie virtuelle Knoten verwenden. Mit virtuellen Knoten lassen sich Pods schnell bereitstellen, und Sie zahlen für die Ausführungsdauer nur auf Sekundenbasis. In einem Skalierungsszenario müssen Sie nicht warten, bis die Autoskalierung des Kubernetes-Clusters VM-Computeknoten bereitstellt, um die zusätzlichen Pods auszuführen. Dieser Artikel zeigt, wie Sie die virtuellen Netzwerkressourcen und einen AKS-Cluster mit aktivierten virtuellen Knoten erstellen und konfigurieren.
 
 > [!IMPORTANT]
-> Virtuelle Knoten für AKS befinden sich derzeit in der **Vorschau**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern in unserer Community bereitgestellt,  jedoch nicht vom technischen Support von Azure unterstützt. Wenn Sie einen Cluster erstellen oder diese Features bereits vorhandenen Clustern hinzufügen, wird dieser Cluster erst dann unterstützt, wenn das Feature nicht mehr in der Vorschauphase ist und die allgemeine Verfügbarkeit erreicht ist.
+>
+> Wenn Sie Probleme mit Preview-Funktionen haben, öffnen Sie [ein Problemticket im GitHub-Repository von AKS ][aks-github] mit dem Namen der Preview-Funktion im Fehlertitel.
+
+## <a name="preview-limitations"></a>Einschränkungen der Vorschau
+
+In der Vorschauphase dieses Features werden Bereitstellungen in den folgenden Regionen unterstützt:
+
+* Australien, Osten (australiaeast)
+* USA, Osten (eastus)
+* USA, Westen-Mitte (westcentralus)
+* Europa, Westen (westeurope)
+* USA, Westen (westus)
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -127,7 +140,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 Dem Pod wird von dem Subnetz des virtuellen Azure-Netzwerks, das für die Verwendung mit virtuellen Knoten delegiert wurde, eine interne IP-Adresse zugewiesen.
 
 > [!NOTE]
-> Wenn Sie Images verwenden, die in der Azure Container Registry gespeichert sind, konfigurieren und verwenden Sie [ein Kubernetes-Geheimnis][acr-aks-secrets]. Eine aktuelle Einschränkung der Vorschau der virtuellen Knoten ist, dass Sie die integrierte Authentifizierung des Azure AD-Dienstprinzipals nicht verwenden können. Wenn Sie kein Geheimnis verwenden, können auf virtuellen Knoten gespeicherte Pods nicht starten und melden den Fehler `HTTP response status code 400 error code "InaccessibleImage"`.
+> Wenn Sie Images verwenden, die in der Azure Container Registry gespeichert sind, konfigurieren und verwenden Sie [ein Kubernetes-Geheimnis][acr-aks-secrets]. Eine aktuelle Einschränkung der Vorschau für virtuelle Knoten ist, dass Sie die integrierte Authentifizierung des Azure AD-Dienstprinzipals nicht verwenden können. Wenn Sie kein Geheimnis verwenden, können auf virtuellen Knoten geplante Pods nicht starten und melden den Fehler `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>Testen des Pods des virtuellen Knotens
 
@@ -179,12 +192,12 @@ Virtuelle Knoten sind eine Komponente einer Skalierungslösung in AKS. Weitere I
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
-

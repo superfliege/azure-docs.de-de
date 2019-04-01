@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: a489d1a282c924ec1df658a0244745b225f7123e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bf010e33a5ef77fcfde2506bfef9760a09667a9d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251264"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867251"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -41,13 +41,13 @@ Automatisiertes maschinelles Lernen ist der Vorgang, bei dem Trainingsdaten mit 
 
 1. Konfigurieren Sie das [Computeziel](how-to-set-up-training-targets.md), das zum Trainieren des Modells verwendet wird.
 
-1. Konfigurieren Sie das automatisierte maschinelle Lernen. Diese Konfiguration steuert die verwendeten Parameter, während Azure Machine Learning verschiedene Modelle durchläuft, sowie Hyperparametereinstellungen und anhand welcher Metriken das beste Modell ermittelt wird. 
+1. Konfigurieren Sie das automatisierte maschinelle Lernen. Diese Konfiguration steuert die verwendeten Parameter, während Azure Machine Learning verschiedene Modelle durchläuft, sowie Hyperparametereinstellungen und anhand welcher Metriken das beste Modell ermittelt wird.
 
 1. Übermitteln Sie eine Trainingsausführung.
 
 Während des Trainings erstellt der Azure Machine Learning-Dienst eine Reihe von Pipelines, die unterschiedliche Algorithmen und Parametern ausprobieren. Der Vorgang wird beendet, sobald die von Ihnen festgelegte Grenze für Iterationen bzw. der Zielwert für die von Ihnen festgelegte Metrik erreicht ist.
 
-[ ![Automatisiertes maschinelles Lernen](./media/how-to-automated-ml/automated-machine-learning.png) ](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
+[![Automatisiertes maschinelles Lernen](./media/how-to-automated-ml/automated-machine-learning.png)](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
 
 Sie können die protokollierten Ausführungsinformationen prüfen, die während der Ausführung erfasste Metriken enthalten. Bei der Trainingsausführung wird auch ein serialisiertes Python-Objekt (`.pkl`-Datei) generiert, das die Vorabverarbeitung des Modells und der Daten enthält.
 
@@ -58,9 +58,13 @@ Eine häufige Falle des automatisierten maschinellen Lernens ist die Unfähigkei
 1. Kenntnis der Machine Learning-Pipeline und aller damit verbundenen Schritte, einschließlich Datenvorverarbeitung/Featurisierung und Hyperparameterwerte.
 1. Verständnis des Zusammenhangs zwischen Eingangsvariablen (auch als „Features“ bezeichnet) und der Modellausgabe.  Wenn Sie sowohl das Ausmaß als auch die Richtung der Auswirkungen der einzelnen Features auf den vorhergesagten Wert kennen, können Sie das Modell besser verstehen und erklären. Dies wird als „Featurgewichtung“ bezeichnet.
 
-Sie können bedarfsgesteuert globale Featuregewichtung nach dem Training für die Pipeline Ihrer Wahl oder für alle Pipelines im Rahmen eines automatisierten ML-Trainings aktivieren.  Dies ist ein Vorschaufeature. Wir bemühen uns, weiterhin umfangreiche Informationen bereitzustellen, um Ihnen zu helfen, Ihre ML-Modelle besser zu verstehen.  
+Sie können bedarfsgesteuert globale Featuregewichtung nach dem Training für die Pipeline Ihrer Wahl oder für alle Pipelines im Rahmen eines automatisierten Machine Learning-Trainings aktivieren. In stark regulierten Branchen wie dem Gesundheitswesen und dem Bankwesen ist dies entscheidend, um Vorschriften und bewährte Methoden einzuhalten.  Zur Veranschaulichung finden Sie hier einige Szenarien aus der Praxis:
 
-Verwenden Sie dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) zum Experimentieren mit Modellerklärungen in Azure Machine Learning.
+1. Ein produzierendes Unternehmen, das maschinelles Lernen einsetzt, um zukünftige Instrumentenausfälle vorherzusagen, damit es proaktiv Wartungsarbeiten durchführen kann. Wenn Sie nun wissen, dass ein Instrument kurz vor einem Ausfall steht, was dann die wahrscheinlichste Ursache dafür? Damit können Sie so schnell wie möglich eine vorbeugende Wartung durchführen.
+1. Ein Finanzinstitut, das maschinelles Lernen für die Verarbeitung von um Kredit- oder Kreditkartenanwendungen verwendet. Wie wissen Sie, ob das Modell das Richtige tut? Und wenn ein Kunde nach mehr Details fragt, warum sein Antrag abgelehnt wurde, was können Sie ihm antworten?
+1. Ein Onlinehändler oder ein unabhängiger Softwareanbieter, der maschinelles Lernen einsetzt, um Kundenabwanderungen vorherzusagen. Was sind die Hauptursachen für Kundenabwanderungen, und wie können Sie verhindern, dass Kunden abwandern?
+
+Dies ist eine Previewfunktion. Wir bemühen uns, weiterhin umfangreiche Informationen bereitzustellen, um Ihnen zu helfen, Ihre Machine Learning-Modelle besser zu verstehen. Verwenden Sie dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) zum Experimentieren mit Modellerklärungen in Azure Machine Learning.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

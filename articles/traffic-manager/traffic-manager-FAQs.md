@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009929"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -59,14 +59,7 @@ Mit der leistungsorientierten Methode wird der Datenverkehr an den nächstgelege
 Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md) erläutert, auf der DNS-Ebene. Nach Abschluss des DNS-Lookups stellen Clients eine direkte Verbindung mit dem Dienstendpunkt her (nicht über Traffic Manager). Daher kann für diese Verbindung ein beliebiges Anwendungsprotokoll verwendet werden. Bei Auswahl von TCP als Überwachungsprotokoll kann die Endpunkt-Systemüberwachung durch Traffic Manager ohne Anwendungsprotokolle erfolgen. Wenn Sie wünschen, dass die Integrität mithilfe eines Anwendungsprotokolls überprüft wird, muss der Endpunkt entweder auf HTTP oder HTTPS GET-Anforderungen reagieren können.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Kann ich Traffic Manager mit einem reinen Domänennamen verwenden?
-
- Nein. Die DNS-Standards lassen keine Koexistenz von CNAME-Einträgen und anderen DNS-Einträgen mit demselben Namen zu. Die Spitze (oder der Stamm) einer DNS-Zone enthält immer zwei bereits vorhandene DNS-Einträge: den SOA-Eintrag und den autoritativen NS-Eintrag. Das bedeutet, dass im Zonenspitze kein CNAME-Eintrag erstellt werden kann, ohne gegen die DNS-Standards zu verstoßen.
-
-Traffic Manager benötigt einen DNS-CNAME-Eintrag zum Zuordnen des Vanity-DNS-Namens. Angenommen, Sie ordnen `www.contoso.com` dem DNS-Namen `contoso.trafficmanager.net` des Traffic Manager-Profils zu. Darüber hinaus gibt das Traffic Manager-Profil selbst einen zweiten DNS-CNAME-Eintrag zurück, um anzugeben, mit welchem Endpunkt der Client eine Verbindung herstellen soll.
-
-Um dieses Problem zu umgehen, wird empfohlen, eine HTTP-Umleitung zu verwenden, um Datenverkehr von einem reinen Domänennamen an eine andere URL umzuleiten, die Traffic Manager verwenden kann. So kann beispielsweise die reine Domäne „contoso.com“ Benutzer an den CNAME „www.contoso.com“ weiterleiten, der auf den DNS-Namen von Traffic Manager verweist.
-
-Die uneingeschränkte Unterstützung von Naked-Domänen in Traffic Manager ist Teil unseres Feature-Backlogs. Sie können die Unterstützung für diese Funktionsanforderung registrieren, indem Sie [auf unserer Community-Feedbackwebsite dafür abstimmen](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
+Ja. Um zu erfahren, wie Sie einen Aliaseintrag für Ihre Apex-Domänennamen erstellen, um auf ein Azure Traffic Manager-Profil zu verweisen, finden Sie unter [Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Berücksichtigt Traffic Manager beim Verarbeiten von DNS-Abfragen die Clientsubnetzadresse? 
 Ja. Zusätzlich zur empfangenen IP-Quelladresse der DNS-Abfrage (normalerweise die IP-Adresse des DNS-Resolvers) berücksichtigt Traffic Manager beim Durchführen von Suchvorgängen für geografische, leistungsbezogene und Subnetzroutingmethoden auch die Clientsubnetzadresse, sofern sie vom Resolver, der die Anforderung im Namen des Endbenutzers durchführt, in die Abfrage eingebunden wird.  
@@ -347,6 +340,7 @@ Nein, In Traffic Manager ist es nicht zulässig, Endpunktadressierungstypen inne
 Wenn eine Abfrage für ein Profil empfangen wird, sucht Traffic Manager zunächst den Endpunkt, der nach der angegebenen Routingmethode und dem Integritätsstatus der Endpunkte zurückgegeben werden muss. Anschließend wird der in der eingehenden Abfrage angeforderte Eintragstyp und der dem Endpunkt zugeordneten Eintragstyp betrachtet, bevor eine Antwort basierend auf der folgenden Tabelle zurückgegeben wird.
 
 Für Profile mit einer beliebigen Routingmethode außer „MultiValue“:
+
 |Eingehende Abfrageanforderung|    Endpunkttyp|  Bereitgestellte Antwort|
 |--|--|--|
 |BELIEBIG |  A/AAAA/CNAME |  Zielendpunkt| 
@@ -357,6 +351,7 @@ Für Profile mit einer beliebigen Routingmethode außer „MultiValue“:
 |CNAME |    CNAME | Zielendpunkt|
 |CNAME  |A/AAAA | NODATA |
 |
+
 Für Profile mit der Routingmethode „MultiValue“:
 
 |Eingehende Abfrageanforderung|    Endpunkttyp | Bereitgestellte Antwort|
@@ -454,7 +449,7 @@ Das übergeordnete Profil führt die Integritätsprüfung nicht direkt am unterg
 
 Die folgende Tabelle beschreibt das Verhalten von Traffic Manager-Integritätsprüfungen für einen geschachtelten Endpunkt.
 
-| Überwachungsstatus von untergeordneten Profilen | Überwachungsstatus von übergeordneten Endpunkten | Hinweise |
+| Überwachungsstatus von untergeordneten Profilen | Überwachungsstatus von übergeordneten Endpunkten | Notizen |
 | --- | --- | --- |
 | Deaktiviert. Das untergeordnete Profil wurde deaktiviert. |Beendet |Der Status des übergeordneten Endpunkts ist "Beendet", nicht "Deaktiviert". Der Status "Deaktiviert" zeigt lediglich an, dass Sie den Endpunkt im übergeordneten Profil deaktiviert haben. |
 | Heruntergestuft. Der Status mindestens eines Endpunkts wurde heruntergestuft. |Online: Die Anzahl von Onlineendpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints.<BR>CheckingEndpoint: Die Anzahl von Online- plus CheckingEndpoint-Endpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints.<BR>Heruntergestuft: andere Fälle. |Der Datenverkehr wird an einen Endpunkt mit dem Status „CheckingEndpoint“ weitergeleitet. Wenn MinChildEndpoints zu hoch festgelegt wurde, wird der Endpunkt immer heruntergestuft. |

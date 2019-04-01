@@ -1,5 +1,5 @@
 ---
-title: VMware-Überwachungslösung in Log Analytics | Microsoft Docs
+title: VMware-Überwachungslösung in Azure Monitor | Microsoft-Dokumentation
 description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen.
 services: log-analytics
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9f5bdc3686e35f09b461bd5c2df695218b48ede3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ece6c7048100a8204bfc067d9d57854b1d83c9b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993366"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074912"
 ---
-# <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
+# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
 ![VMware-Symbol](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
 > Die VMware-Überwachungslösung ist veraltet.  Kunden, die die Lösung bereits installiert haben, können sie weiterhin nutzen. VMware-Überwachung kann jedoch nicht zu neuen Arbeitsbereichen hinzugefügt werden.
 
-Die VMware-Überwachungslösung in Log Analytics ist eine Lösung, die Ihnen dabei hilft, eine Methode für die zentralisierte Protokollierung und Überwachung für große VMware-Protokolle zu erstellen. Dieser Artikel beschreibt, wie Sie mithilfe der Lösung an einem Ort Probleme mit ESXi-Hosts beheben und die Hosts erfassen und verwalten. Mit der Lösung können Sie detaillierte Daten für alle ESXi-Hosts an einem einzigen Ort anzeigen. Sie sehen die wichtigsten Ereigniszahlen, Statusangaben und Trends der VM- und ESXi-Hosts, die über ESXi-Hostprotokolle bereitgestellt werden. Sie können Probleme behandeln, indem Sie zentralisierte ESXi-Hostprotokolle anzeigen und durchsuchen. Zudem können Sie Warnungen auf der Grundlage von Protokollsuchabfragen erstellen.
+Die VMware-Überwachungslösung in Azure Monitor ist eine Lösung, die Ihnen dabei hilft, eine Methode für die zentralisierte Protokollierung und Überwachung für große VMware-Protokolle zu erstellen. Dieser Artikel beschreibt, wie Sie mithilfe der Lösung an einem Ort Probleme mit ESXi-Hosts beheben und die Hosts erfassen und verwalten. Mit der Lösung können Sie detaillierte Daten für alle ESXi-Hosts an einem einzigen Ort anzeigen. Sie sehen die wichtigsten Ereigniszahlen, Statusangaben und Trends der VM- und ESXi-Hosts, die über ESXi-Hostprotokolle bereitgestellt werden. Sie können Probleme behandeln, indem Sie zentralisierte ESXi-Hostprotokolle anzeigen und durchsuchen. Zudem können Sie Warnungen auf der Grundlage von Protokollsuchabfragen erstellen.
 
-Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten auf einen virtuellen Zielcomputer zu übertragen, auf dem sich der Log Analytics-Agent befindet. Die Lösung schreibt allerdings keine Dateien in das Syslog auf dem virtuellen Zielcomputer. Der Log Analytics-Agent öffnet Port 1514 und lauscht dort. Sobald Daten empfangen werden, überträgt der Log Analytics-Agent diese Daten an Log Analytics.
+Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten auf einen virtuellen Zielcomputer zu übertragen, auf dem sich der Log Analytics-Agent befindet. Die Lösung schreibt allerdings keine Dateien in das Syslog auf dem virtuellen Zielcomputer. Der Log Analytics-Agent öffnet Port 1514 und lauscht dort. Sobald Daten empfangen werden, überträgt der Log Analytics-Agent diese Daten an Azure Monitor.
 
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
@@ -71,7 +71,7 @@ Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESX
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Führen Sie im Azure-Portal eine Protokollsuche nach `VMware_CL` aus. Wenn Log Analytics die syslog-Daten sammelt, bleibt das syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
+1. Führen Sie im Azure-Portal eine Protokollabfrage für `VMware_CL` aus. Wenn Azure Monitor die syslog-Daten sammelt, bleibt das syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
 
     ![type](./media/vmware/type.png)  
 
@@ -129,7 +129,7 @@ In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
 
 Klicken Sie auf ein Blatt, um den Log Analytics-Suchbereich zu öffnen, der detaillierte Informationen für das Blatt enthält.
 
-Hier können Sie die Suchabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Einzelheiten zum Erstellen von Protokollsuchen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-query/log-query-overview.md).
+Hier können Sie die Protokollabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Informationen zum Erstellen von Protokollabfragen finden Sie unter [Suchen von Daten mithilfe von Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
@@ -151,14 +151,14 @@ Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möch
 
 ![Details](./media/vmware/createvm.png)
 
-#### <a name="common-search-queries"></a>Allgemeine Suchabfragen
+#### <a name="common-log-queries"></a>Allgemeine Protokollabfragen
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.
 
 ![Abfragen](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Speichern von Abfragen
-Das Speichern von Suchabfragen ist ein Standardfeature in Log Analytics und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../learn/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
+Das Speichern von Protokollabfragen ist ein Standardfeature in Azure Monitor und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../learn/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
 
 ![Docker-Dashboardansicht](./media/vmware/dockerdashboardview.png)
 
@@ -195,13 +195,13 @@ Dafür kann es mehrere Gründe geben:
   1. Log Analytics lauscht am Port 1514. Überprüfen Sie mit dem folgenden Befehl, ob der Port offen ist: `netstat -a | grep 1514`
   1. Port `1514/tcp` sollte offen sein. Wenn dies nicht der Fall ist, stellen Sie sicher dass der OMS-Agent ordnungsgemäß installiert ist. Wenn keine Portinformationen angezeigt werden, ist der Syslog-Port auf dem virtuellen Computer nicht offen.
 
-    a. Überprüfen Sie mit dem Befehl `ps -ef | grep oms`, ob der Log Analytics-Agent ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den Prozess, indem Sie diesen Befehl ausführen: ` sudo /opt/microsoft/omsagent/bin/service_control start`
+     a. Überprüfen Sie mit dem Befehl `ps -ef | grep oms`, ob der Log Analytics-Agent ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den Prozess, indem Sie diesen Befehl ausführen: ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
-    b. Öffnen Sie die Datei `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` .
+     b. Öffnen Sie die Datei `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` .
 
-    c. Überprüfen Sie mit einem Befehl ähnlich dem folgenden, ob die Benutzer- und Gruppeneinstellung richtig und gültig ist: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Überprüfen Sie mit einem Befehl ähnlich dem folgenden, ob die Benutzer- und Gruppeneinstellung richtig und gültig ist: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-    d. Wenn die Datei nicht vorhanden oder die Benutzer- und Gruppeneinstellung nicht richtig ist, beheben Sie das Problem durch [Vorbereiten eines Linux-Servers](#prepare-a-linux-server).
+     d. Wenn die Datei nicht vorhanden oder die Benutzer- und Gruppeneinstellung nicht richtig ist, beheben Sie das Problem durch [Vorbereiten eines Linux-Servers](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.

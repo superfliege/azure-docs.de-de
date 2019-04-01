@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340109"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897621"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -257,13 +257,13 @@ In diesem Schritt erstellen Sie eine uneingeschränkte oder eingeschränkte Sich
     ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_03.png "Sicherheitsgruppe erstellen")
 2. Führen Sie die Aufgabe **Sicherheitsgruppe erstellen** aus. 
 
-  * In Workday gibt es zwei Typen von Sicherheitsgruppen:
-    * **Uneingeschränkt:** Alle Mitglieder der Sicherheitsgruppe können auf alle Dateninstanzen zugreifen, die durch die Sicherheitsgruppe gesichert sind.
-    * **Eingeschränkt:** Alle Mitglieder der Sicherheitsgruppe haben kontextbezogene Zugriff auf eine Teilmenge der Dateninstanzen (Zeilen), auf die die Sicherheitsgruppe zugreifen kann.
-  * Bitte wenden Sie sich an Ihren Workday-Integrationspartner, um den geeigneten Sicherheitsgruppentyp für die Integration auszuwählen.
-  * Sobald Sie den Gruppentyp kennen, wählen Sie **Integrationssystem-Sicherheitsgruppe (Uneingeschränkt)** oder **Integrationssystem-Sicherheitsgruppe (Eingeschränkt)** aus der Dropdownliste **Typ der Mandantensicherheitsgruppe**.
+   * In Workday gibt es zwei Typen von Sicherheitsgruppen:
+     * **Uneingeschränkt:** Alle Mitglieder der Sicherheitsgruppe können auf alle Dateninstanzen zugreifen, die durch die Sicherheitsgruppe gesichert sind.
+     * **Eingeschränkt:** Alle Mitglieder der Sicherheitsgruppe haben kontextbezogene Zugriff auf eine Teilmenge der Dateninstanzen (Zeilen), auf die die Sicherheitsgruppe zugreifen kann.
+   * Bitte wenden Sie sich an Ihren Workday-Integrationspartner, um den geeigneten Sicherheitsgruppentyp für die Integration auszuwählen.
+   * Sobald Sie den Gruppentyp kennen, wählen Sie **Integrationssystem-Sicherheitsgruppe (Uneingeschränkt)** oder **Integrationssystem-Sicherheitsgruppe (Eingeschränkt)** aus der Dropdownliste **Typ der Mandantensicherheitsgruppe**.
 
-    ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png "Sicherheitsgruppe erstellen")
+     ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png "Sicherheitsgruppe erstellen")
 
 3. Nach dem Erstellen der Sicherheitsgruppe wird eine Seite angezeigt, auf der Sie der Sicherheitsgruppe Mitglieder zuweisen können. Fügen Sie den im vorherigen Schritt erstellten neuen Benutzer des Integrationssystems zu dieser Sicherheitsgruppe hinzu. Wenn Sie die Sicherheitsgruppe *eingeschränkt* verwenden, müssen Sie auch den entsprechenden Organisationsbereich auswählen.
 
@@ -286,11 +286,11 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    * *Worker Data: Current Staffing Information* (Mitarbeiterdaten: aktuelle Personalinformationen)
    * *Worker Data: Business Title on Worker Profile* (Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil)
 
-    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_07.png "Domänensicherheitsrichtlinien")  
+     ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_07.png "Domänensicherheitsrichtlinien")  
 
-    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
+     ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
 
-    Klicken Sie auf **OK**.
+     Klicken Sie auf **OK**.
 
 3. Wählen Sie im angezeigten Bericht die Auslassungspunkte (...) neben **External Account Provisioning** (Externe Kontobereitstellung) aus, und klicken Sie auf die Menüoption **Domain -> Edit Security Policy Permissions** (Domäne > Berechtigungen für Sicherheitsrichtlinie bearbeiten).
 
@@ -428,7 +428,7 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Dies sollte ungefähr wie folgt aussehen: **username@tenant_name**
+   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Es sollte etwa so aussehen: **benutzername\@mandantenname**
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
@@ -438,8 +438,8 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
 
    * **Active Directory-Container:** Geben Sie den DN des Containers an, in dem der Agent Benutzerkonten standardmäßig erstellen soll.
         Beispiel: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
-> [!NOTE]
-> Diese Einstellung wird nur für die Benutzerkontoerstellung verwendet, wenn das Attribut *parentDistinguishedName* nicht in den Attributzuordnungen konfiguriert ist. Diese Einstellung wird nicht zum Suchen von Benutzern oder für Updatevorgänge verwendet. Der Suchvorgang schließt die gesamte Domänenteilstruktur ein.
+     > [!NOTE]
+     > Diese Einstellung wird nur für die Benutzerkontoerstellung verwendet, wenn das Attribut *parentDistinguishedName* nicht in den Attributzuordnungen konfiguriert ist. Diese Einstellung wird nicht zum Suchen von Benutzern oder für Updatevorgänge verwendet. Der Suchvorgang schließt die gesamte Domänenteilstruktur ein.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
@@ -477,11 +477,11 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 > [!TIP]
 > Wenn Sie die Bereitstellungs-App zum ersten Mal konfigurieren, müssen Sie Ihre Attributzuordnungen und Ausdrücke testen und überprüfen, um sicherzustellen, dass sie damit das gewünschte Ergebnis erzielen. Microsoft empfiehlt, die Bereichsfilter unter **Quellobjektbereich** zu verwenden, um Ihre Zuordnungen mit einigen Testbenutzern von Workday zu testen. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
 
-3. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Active Directory angewendet werden. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
+1. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Active Directory angewendet werden. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
-4. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
+1. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
 
-5. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen**, um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
+1. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen**, um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
 
       * **Zuordnungstyp**
 
@@ -508,7 +508,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
          * **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
-6. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
+1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
    ![Azure-Portal](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -524,8 +524,8 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ja** | Wird nur bei der Erstellung geschrieben |
 | **PreferredNameData**    |  cn    |   |   Wird nur bei der Erstellung geschrieben |
-| **SelectUniqueValue( Join("@", Join(".",  \[FirstName\], \[LastName\]), "contoso.com"), Join("@", Join(".",  Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("@", Join(".",  Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Wird nur bei der Erstellung geschrieben 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Wird nur bei der Erstellung geschrieben |
+| **SelectUniqueValue( Join("\@", Join(".", \[FirstName\], \[LastName\]), "contoso.com"), Join("\@", Join(".", Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("\@", Join(".", Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Wird nur bei der Erstellung geschrieben 
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Wird nur bei der Erstellung geschrieben |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Erstellen und aktualisieren |
 | **Vorname**   | givenName       |     |    Erstellen und aktualisieren |
 | **Nachname**   |   sn   |     |  Erstellen und aktualisieren |
@@ -677,7 +677,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Dies sollte ungefähr wie folgt aussehen: *username@contoso4*
+   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Sollte etwa so aussehen: *benutzername\@contoso4*
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
@@ -858,7 +858,7 @@ Sie können auch überprüfen, ob alle erforderlichen Ports geöffnet sind, inde
 Stellen Sie Folgendes sicher, damit Ihnen das Tool die richtigen Ergebnisse liefert:
 
 * Öffnen Sie das Tool auf einem Server, auf dem Sie den Bereitstellungs-Agent installiert haben, in einem Browser.
-* Stellen Sie sicher, dass alle Proxys oder Firewalls, die für den Bereitstellungs-Agent relevant sind, auch auf diese Seite angewendet werden. Wechseln Sie dazu in Internet Explorer zu **Einstellungen -> Internetoptionen -> Verbindungen -> LAN-Einstellungen**. Auf dieser Seite wird das Feld „Proxyserver für das LAN verwenden“ angezeigt. Aktivieren Sie dieses Kontrollkästchen, und fügen Sie die Proxyadresse in das Feld „Adresse“ ein.
+* Stellen Sie sicher, dass alle Proxys oder Firewalls, die für den Bereitstellungs-Agent relevant sind, auch auf diese Seite angewendet werden. Navigieren Sie dazu in Internet Explorer zu **Einstellungen > Internetoptionen > Verbindungen > LAN-Einstellungen**. Auf dieser Seite wird das Feld „Proxyserver für das LAN verwenden“ angezeigt. Aktivieren Sie dieses Kontrollkästchen, und fügen Sie die Proxyadresse in das Feld „Adresse“ ein.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Kann ein Bereitstellungs-Agent für die Bereitstellung mehrerer AD-Domänen konfiguriert werden?
 
@@ -1064,7 +1064,7 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Problembehandlung
 
 Wenn ein neuer Mitarbeiter in Workday erkannt wird (z.B. mit der Mitarbeiter-ID *21023*), versucht der Azure AD-Bereitstellungsdienst, ein neues AD-Benutzerkonto für den Mitarbeiter zu erstellen und erstellt dabei 4 Datensätze für das Überwachungsprotokoll, wie unten beschrieben:
 
-  [ ![Erstellungsvorgänge für Überwachungsprotokolle](media/workday-inbound-tutorial/wd_audit_logs_02.png) ](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![Erstellungsvorgänge für Überwachungsprotokolle](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite **Aktivitätsdetails** geöffnet. Das wird auf der Seite **Aktivitätsdetails** für jeden Protokolldatensatztyp angezeigt.
 
@@ -1132,7 +1132,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
 
 Das Manager-Attribut ist ein Verweisattribut in Active Directory. Der Bereitstellungsdienst legt das Manager-Attribut nicht als Teil des Erstellungsvorgangs des Benutzers fest. Das Manager-Attribut wird stattdessen als Teil des *Aktualisierungsvorgangs* nach der AD-Kontoerstellung für den Benutzer festgelegt. Um das obige Beispiel zu erweitern, nehmen wir an, dass ein neuer Mitarbeiter mit der Mitarbeiter-ID „21451“ in Workday aktiviert ist und der Manager des neuen Mitarbeiters (*21023*) bereits ein AD-Konto hat. In diesem Szenario werden bei der Suche im Überwachungsprotokolle für Benutzer 21451 5 Einträge ausgegeben.
 
-  [ ![Manager-Update](media/workday-inbound-tutorial/wd_audit_logs_03.png) ](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![Manager-Update](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 Die ersten 4 Datensätze sind wie diejenigen, die wir im Rahmen des Benutzererstellungsvorgangs untersucht haben. Der 5. Datensatz ist der Export, der dem Update des Manager-Attributs zugeordnet ist. Der Protokolldatensatz zeigt das Ergebnis der Aktualisierung des AD-Kontenmanagers an, die mit dem Attribut *objectGuid* des Managers durchgeführt wird.
 
@@ -1226,7 +1226,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 7. Legen Sie **Operation** auf **Get_Workers** fest.
 
-8.  Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format name@tenant aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
+8.  Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

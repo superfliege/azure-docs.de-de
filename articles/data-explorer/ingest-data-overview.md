@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 2/18/2019
-ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: c4db658db3d32905368390826e5531ca31525486
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133126"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -53,7 +53,7 @@ Azure Data Explorer unterstützt derzeit Folgendes:
 
 ### <a name="ingestion-using-integration-services"></a>Erfassung mit Integrationsdiensten
 
-* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
+* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem mithilfe [unterstützter Datenspeicher und -formate](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Programmgesteuerte Erfassung
 

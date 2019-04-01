@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbde6eda2bd532b1a26a58e4ca82c9b5fab4e6c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188595"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531112"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 
@@ -145,7 +145,7 @@ grant_type=authorization_code
 | client_id |required |Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im Azure-Portal. Die Anwendungs-ID wird in den Einstellungen der App-Registrierung angezeigt. |
 | grant_type |required |Muss der `authorization_code` für den Autorisierungscodefluss sein. |
 | code |required |Der `authorization_code` , den Sie im vorherigen Abschnitt abgerufen haben. |
-| redirect_uri |required |Der `redirect_uri`-Wert, den Sie zum Abrufen von `authorization_code` verwendet haben. |
+| redirect_uri |required | Ein `redirect_uri` für die Clientanwendung registriert. |
 | client_secret |Erforderlich für Web-Apps. Für öffentliche Clients nicht zulässig. |Das Anwendungsgeheimnis, das Sie für Ihre App im Azure-Portal unter **Schlüssel** erstellt haben. Er darf nicht in einer nativen App (öffentlicher Client) verwendet werden, da Clientgeheimnisse nicht zuverlässig auf Geräten gespeichert werden können. Er ist für Web-Apps und Web-APIs (alle vertraulichen Clients) erforderlich, die `client_secret` sicher auf dem Server speichern können. Der geheime Clientschlüssel (client_secret) sollte vor dem Senden URL-codiert werden. |
 | resource | empfohlen |Der App-ID-URI der Ziel-Web-API (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory** und auf **App-Registrierungen**. Öffnen Sie anschließend die Seite **Einstellungen**, und klicken Sie auf **Eigenschaften**. Es kann sich auch um eine externe Ressource wie `https://graph.microsoft.com` handeln. Dieser Parameter muss in einer der Autorisierungs- oder Tokenanforderungen vorhanden sein, um sicherzustellen, dass weniger Authentifizierungsanforderungen diesen in die Autorisierungsanforderung platzieren und so die Zustimmung des Benutzers empfangen wird. Wenn dieser in der Autorisierungs- und Tokenanforderung enthalten ist, müssen die Ressourcenparameter übereinstimmen. | 
 | code_verifier | optional | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636).   |

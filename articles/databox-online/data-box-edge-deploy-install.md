@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093768"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400007"
 ---
-# <a name="tutorial-install-azure-data-box-edge-preview"></a>Tutorial: Installieren von Azure Data Box Edge (Vorschauversion)
+# <a name="tutorial-install-azure-data-box-edge"></a>Tutorial: Installieren von Azure Data Box Edge
 
 In diesem Tutorial erfahren Sie, wie Sie ein physisches Data Box Edge-Gerät installieren. Die Installation umfasst das Auspacken, die Rackmontage und die Verkabelung des Geräts. 
 
@@ -28,9 +28,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Auspacken des Geräts
 > * Montieren des Geräts in einem Rack
 > * Verkabeln des Geräts
-
-> [!IMPORTANT]
-> Die Data Box Edge-Lösung befindet sich in der Vorschauphase. Lesen Sie die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -75,38 +72,90 @@ Dieses Gerät wird in einem einzelnen Karton ausgeliefert. Führen Sie die folge
 3. Packen Sie den Karton aus. Stellen Sie nach dem Auspacken des Kartons sicher, dass Folgendes vorhanden ist:
     - Ein Edgegerät (einzelnes Gehäuse)
     - Zwei Netzkabel
-    - Ein ohne Werkzeug montierbares Kit für die Rackmontage (einschließlich zwei Seitenschienen und Montagematerial)
+    - Eine Schienenbaugruppe
+    - Ein Booklet mit Informationen zu Sicherheit, Umwelt und rechtlichen Aspekten
 
 Sollten Sie nicht alle oben aufgeführten Teile erhalten haben, wenden Sie sich an den Data Box Edge-Support. Im nächsten Schritt wird das Gerät in ein Rack eingebaut.
 
 
 ## <a name="rack-the-device"></a>Montieren des Geräts in einem Rack
 
-Das Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. Gehen Sie wie folgt vor, um Ihr Gerät in einem standardmäßigen 19-Zoll-Rack mit Ständern an der Vorder- und Rückseite zu montieren.
+Das Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. Gehen Sie wie folgt vor, um Ihr Gerät in einem 19-Zoll-Standardrack zu montieren.
 
 > [!IMPORTANT]
 > Data Box Edge-Geräte müssen für den ordnungsgemäßen Betrieb in ein Rack eingebaut werden.
 
 
-1. Ziehen Sie an der vorderen Entriegelung der Schienenbaugruppe, um die innere Schiene zu lösen. Lösen Sie die Arretierung, und schieben Sie die mittlere Schiene nach innen, um die Schiene einzufahren.  
-    Die innere und äußere Schiene sollten nun getrennt sein.
+### <a name="prerequisites"></a>Voraussetzungen
 
-    ![Installieren der Schienen für die Rackmontage](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
+- Machen Sie sich anhand des Booklets mit Informationen zu Sicherheit, Umwelt und rechtlichen Aspekten zunächst mit den Sicherheitsanweisungen vertraut. Dieses Booklet liegt dem Gerät bei.
+- Installieren Sie die Schienen möglichst weit unten im Rack am dafür vorgesehenen Ort.
+- Für die Schienenmontage mit Werkzeug benötigen Sie acht Schrauben: #10-32, #12-24, #M5 oder #M6. Der Durchmesser des Schraubenkopfs muss weniger als 10 mm (0,4") betragen.
 
-2. Installieren Sie nun die äußeren Schienen an den vertikalen Blechwinkeln des Rackschranks. Die Gleitschienen sind jeweils mit **Front** (Vorne) gekennzeichnet. Diese Seite muss an der Vorderseite des Gehäuses befestigt werden.    
-   1. Suchen Sie die Fixierungsstifte, die sich vorne und hinten an der Schienenbaugruppe befinden. Fahren Sie die Schiene so weit aus, dass sie zwischen die Rackständer passt. Befestigen Sie zuerst die äußere Schiene an der Rückseite des Racks. Positionieren Sie die hintere Befestigungsklammer auf der Innenseite der hinteren Befestigungslöcher des Racks.   
+### <a name="identify-the-rail-kit-contents"></a>Überprüfen des Inhalts des Schienensatzes
 
-   2. Halten Sie den Auslöser an der hinteren Klammer gedrückt, um die Metallhaken auszufahren. Richten Sie die hintere Klammer aus, führen Sie sie in die Befestigungslöcher ein, und lassen Sie anschließend den Auslöser los.
+Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
+1. Zwei Gleitschienen vom Typ „A7 Dell ReadyRails II“
+2. Zwei Klettbänder
 
-   3. Richten Sie die vordere Klammer an den Befestigungslöchern aus.
+![Überprüfen des Inhalts des Schienensatzes](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
-   4. Die vordere Klammer sollte nun am Rack befestigt sein. Bei Bedarf können die Schienen mit Schrauben vom Typ „M5 X 10L“ an den Ständern befestigt werden. 
+### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Installieren und Entfernen der Schienen ohne Werkzeug (Racks mit Vierkant- oder Rundlöchern)
 
-      ![Installieren der Schienen für die Rackmontage](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+1. Positionieren Sie das mit **FRONT** beschriftete Ende der linken und rechten Schiene an der Innenseite, und richten Sie es jeweils an den vorderseitigen Löchern der vertikalen Rackflansche aus.
+2. Richten Sie die Endstücke jeweils an den unteren und oberen Löchern der gewünschten Position im Rack aus.
+3. Schieben Sie das hintere Ende der Schiene in Richtung des vertikalen Rackflanschs, bis es einrastet. Wiederholen Sie die gleiche Prozedur, um das vordere Endstück am vertikalen Rackflansch anzubringen.
+4. Wenn Sie die Schienen entfernen möchten, betätigen Sie jeweils die Entriegelung in der Mitte des Endstücks, und entnehmen Sie die Schiene.
 
-3. Wenn Sie die innere Schiene am Gehäuse befestigen, müssen die Schlüssellochöffnungen der inneren Schiene an den Fixierstiften an der Gehäuseseite ausgerichtet werden. Stellen Sie sicher, dass die Köpfe der Fixierstifte des Gehäuses durch die Schlüssellochöffnungen der inneren Schiene ragen. Ziehen Sie die Schiene in Richtung Gehäusefront, bis die Schiene hörbar einrastet. Wiederholen Sie den Vorgang mit der anderen inneren Schiene. Schieben Sie das Gehäuse mit der inneren Schiene in den Schlitten, um die Rackmontage abzuschließen.
+![Installieren und Entfernen der Schienen ohne Werkzeug](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
-    ![Installieren der Schienen für die Rackmontage](./media/data-box-edge-deploy-install/rack-mount-rail-3.png)
+### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Installieren und Entfernen der Schienen mit Werkzeug (Racks mit Gewindelöchern)
+
+1. Entfernen Sie die Stifte an der vorderen und hinteren Befestigungsklammer mithilfe eines Schlitzschraubendrehers.
+2. Ziehen und drehen Sie die Schienenarretierungen, um sie von den Befestigungsklammern zu entfernen.
+3. Befestigen Sie die linke und die rechte Schiene mit jeweils zwei Schrauben an den vorderen vertikalen Rackflanschen.
+4. Schieben Sie die linke und die rechte hintere Klammer von hinten gegen die hinteren vertikalen Rackflansche, und befestigen Sie sie ebenfalls mit jeweils zwei Schrauben.
+
+![Installieren und Entfernen der Schienen mit Werkzeug](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+
+### <a name="install-the-system-in-a-rack"></a>Installieren des Systems in einem Rack
+
+1. Ziehen Sie die inneren Gleitschienen aus dem Rack, bis sie einrasten.
+2. Platzieren Sie den hintere Schienenabstandhalter auf beiden Seiten des Systems von oben in den hinteren J-förmigen Schlitzen der Schienen. Drehen Sie das System nach unten, bis alle Schienenabstandhalter in den J-förmigen Schlitzen platziert sind.
+3. Drücken Sie das System nach innen, bis die Arretierhebel einrasten.
+4. Drücken Sie auf den Schienenentriegelungsmechanismus an beiden Schienen, und schieben Sie das System in das Rack.
+
+![Installieren des Systems in einem Rack](./media/data-box-edge-deploy-install/installing-system-rack.png)
+
+### <a name="remove-the-system-from-the-rack"></a>Entfernen des Systems aus dem Rack
+
+1. Suchen Sie nach den Arretierhebeln an der Seite der inneren Schienen.
+2. Entriegeln Sie den Mechanismus, indem Sie die Hebel jeweils nach oben in die geöffnete Position drehen.
+3. Halten Sie beide Seiten des Systems gut fest, und ziehen Sie das System nach vorn, bis sich die Schienenabstandhalter an der Vorderseite der J-förmigen Schlitze befinden. Heben Sie das System nach oben aus dem Rack heraus, und legen Sie es auf einer ebenen Fläche ab.
+
+![Entfernen des Systems aus dem Rack](./media/data-box-edge-deploy-install/removing-system-rack.png)
+
+### <a name="engage-and-release-the-slam-latch"></a>Verwenden des Schnappmechanismus (Einrasten und Entriegeln)
+
+HINWEIS:  Bei Systemen ohne Schnappmechanismus muss das System wie in Schritt 3 beschrieben mit Schrauben befestigt werden.
+
+1. Suchen Sie an der Vorderseite auf beiden Seiten des Systems nach dem Schnappmechanismus.
+2. Der Mechanismus rastet automatisch ein, wenn das System in das Rack geschoben wird. Zur Entriegelung müssen die beiden Riegel nach oben gezogen werden.
+3. Falls Sie das Rack transportieren möchten, während sich das System darin befindet, oder es in einer instabilen Umgebung verwenden möchten, können Sie die unter den beiden Riegeln befindlichen Befestigungsschrauben mit einem passenden Kreuzschlitzschraubendreher (#2) anziehen.
+
+![Verwenden des Schnappmechanismus (Einrasten und Lösen)](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+
+### <a name="route-the-cables"></a>Verlegen der Kabel
+
+> [!NOTE]
+>  Falls Sie den optionalen Kabelführungsarm (Cable Management Arm, CMA) nicht mitbestellt haben, verwenden Sie die beiden Klettbänder des Schienensatzes, um die Kabel auf der Rückseite des Systems zu verlegen.
+
+1. Suchen Sie an der Innenseite der beiden Rackflansche nach den äußeren CMA-Klammern.
+2. Fassen Sie die Kabel lose zu seinem Bündel zusammen, und achten Sie dabei darauf, dass sie sich außer Reichweite der Systembefestigungen auf der linken und rechten Seite befinden.
+3. Führen Sie die Klettbänder durch die Schlitze für die Werkzeugmontage (an der Außenseite der CMA-Klammern auf beiden Seiten des Systems), um die Kabelbündel zu befestigen.
+
+
+![Verlegen der Kabel](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>Verkabeln des Geräts
 
@@ -121,13 +170,26 @@ Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 - Zugang zu zwei PDUs (Power Distribution Units) (empfohlen)
 
 > [!NOTE]
-> - Wenn Sie nur eine einzelne Datennetzwerkschnittstelle anschließen, sollten Sie eine 25-GbE-Netzwerkschnittstelle wie „PORT 3“, „PORT 4“, „PORT 5“ oder „PORT 6“ verwenden, um Daten an Azure zu senden. 
+> - Wenn Sie nur eine einzelne Datennetzwerkschnittstelle nutzen, sollten Sie eine 25/10-GbE-Netzwerkschnittstelle wie „PORT 3“, „PORT 4“, „PORT 5“ oder „PORT 6“ verwenden, um Daten an Azure zu senden. 
 > - Aus Leistungsgründen und für die Verarbeitung großer Datenmengen empfiehlt es sich, alle Datenports zu verwenden.
-> - Das Edgegerät sollte mit dem Datencenternetzwerk verbunden sein, um Daten von Datenquellservern erfassen zu können. 
+> - Das Edgegerät sollte mit dem Datencenternetzwerk verbunden sein, um Daten von Datenquellservern erfassen zu können.
 
-Ihr Edgegerät verfügt über acht NVMe-SSDs. Am vorderen Bedienfeld befinden sich außerdem Status-LEDs und Netzschalter. An der Rückseite des Geräts befinden sich redundante Netzteile (Power Supply Units, PSUs). Ihr Gerät verfügt über sechs Netzwerkschnittstellen: zwei mit 1 GBit/s und vier mit 25 GBit/s. Ihr Gerät ist mit einem Baseboard-Verwaltungscontroller (Baseboard Management Controller, BMC) ausgestattet. Machen Sie sich mit den verschiedenen Anschlüssen an der Geräterückseite vertraut.
+Ihr Edgegerät verfügt über acht NVMe-SSDs. Am vorderen Bedienfeld befinden sich außerdem Status-LEDs und Netzschalter. An der Rückseite des Geräts befinden sich redundante Netzteile (Power Supply Units, PSUs). Ihr Gerät verfügt über sechs Netzwerkschnittstellen:
+
+- Zwei Schnittstellen mit jeweils 1 GBit/s
+- Vier Schnittstellen mit jeweils 25 GBit/s, die auch als Schnittstellen mit 10 GBit/s fungieren können
+- Ein Baseboard-Verwaltungscontroller (Baseboard Management Controller, BMC) 
+
+Machen Sie sich mit den verschiedenen Anschlüssen an der Geräterückseite vertraut.
  
   ![Rückseite eines verkabelten Geräts](./media/data-box-edge-deploy-install/backplane-cabled.png)
+
+Das Gerät verfügt über zwei Netzwerkkarten für die sechs Ports: 
+
+ - QLogic FastLinQ 41264
+ - QLogic FastLinQ 41262
+
+Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkkarten finden Sie in der [Interoperabilitätsmatrix für die Cavium FastlinQ 41000-Reihe](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
  
 Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwerk anzuschließen:
 
@@ -137,8 +199,7 @@ Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwer
 
 3. Verbinden Sie die 1-GbE-Netzwerkschnittstelle „PORT 1“ mit dem Computer, der zum Konfigurieren des physischen Geräts verwendet wird. „PORT 1“ ist die dedizierte Verwaltungsschnittstelle.
 
-4. Verbinden Sie mindestens einen der Ports 2, 3, 4, 5 oder 6 mit dem Datencenternetzwerk/Internet. Wenn Sie sich für „PORT 2“ entscheiden, verwenden Sie das RJ45-Netzwerkkabel. Verwenden Sie für die 25-GbE-Netzwerkschnittstellen die SFP+-Kupferkabel.  
-
+4. Verbinden Sie mindestens einen der Ports 2, 3, 4, 5 oder 6 mit dem Datencenternetzwerk/Internet. Wenn Sie sich für „PORT 2“ entscheiden, verwenden Sie das RJ45-Netzwerkkabel. Verwenden Sie für die 10/25-GbE-Netzwerkschnittstellen die SFP+-Kupferkabel.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

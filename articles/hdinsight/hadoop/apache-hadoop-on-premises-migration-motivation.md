@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000429"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890078"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -54,7 +54,7 @@ Azure HDInsight ist eine Clouddistribution der Hadoop-Komponenten von  [Hortonw
 
 - **Erweiterbarkeit mit benutzerdefinierten Tools oder Anwendungen von Drittanbietern**: HDInsight-Cluster können mit installierten Komponenten erweitert und auch mithilfe von [One-Click](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) -Bereitstellungen aus dem Azure Marketplace in die anderen Big Data-Lösungen integriert werden.
 
-- **Einfache Verwaltung, Administration und Überwachung**: Dank  [Azure Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md) -Integration bietet Azure HDInsight eine zentrale Oberfläche für die Überwachung Ihrer gesamten Cluster.
+- **Einfache Verwaltung, Administration und Überwachung**: Dank der Integration von  [Azure Monitor-Protokollen](../hdinsight-hadoop-oms-log-analytics-tutorial.md)  bietet Azure HDInsight eine zentrale Oberfläche für die Überwachung Ihrer gesamten Cluster.
 
 - **Integration in andere Azure-Dienste**: HDInsight kann problemlos in andere beliebte Azure-Dienste wie den folgenden integriert werden:
 
@@ -103,7 +103,7 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Masterknotenkonfiguration|m/y, CPU, Datenträger usw.|
 |Datenknotenkonfiguration|m/y, CPU, Datenträger usw.|
 |Edgeknotenkonfiguration|m/y, CPU, Datenträger usw.|
-|HDFS-Verschlüsselung?|JA|
+|HDFS-Verschlüsselung?|Ja|
 |Hochverfügbarkeit|HDFS-Hochverfügbarkeit, Metastore-Hochverfügbarkeit|
 |Notfallwiederherstellung/Sicherung|Cluster sichern?|  
 |Systeme, die vom Cluster abhängig sind|SQL Server, Teradata, Power BI, MongoDB|
@@ -169,8 +169,8 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |---|---|---|
 |**Frage**|**Beispiel**|**Antwort**|
 | Bevorzugte Region|USA, Osten||
-|VNet bevorzugt?|JA||
-|Hochverfügbarkeit/Notfallwiederherstellung erforderlich?|JA||
+|VNet bevorzugt?|Ja||
+|Hochverfügbarkeit/Notfallwiederherstellung erforderlich?|Ja||
 |Integration in andere Clouddienste?|ADF, CosmosDB||
 |**Thema**:   **Datenverschiebung**  |||
 |Einstellung für ersten Ladevorgang|DistCp, Data Box, ADF, WANDisco||
@@ -179,25 +179,25 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |**Thema**:   **Überwachung und Warnung** |||
 |Azure-Überwachung und -Warnungen oder Integration einer Drittanbieter-Überwachungslösung|Azure-Überwachung und -Warnungen||
 |**Thema**:   **Sicherheitspräferenzen** |||
-|Private und geschützte Datenpipeline?|JA||
-|In die Domäne eingebundener Cluster (ESP)?|     JA||
-|Synchronisierung von lokalem AD mit Cloud?|     JA||
+|Private und geschützte Datenpipeline?|Ja||
+|In die Domäne eingebundener Cluster (ESP)?|     Ja||
+|Synchronisierung von lokalem AD mit Cloud?|     Ja||
 | Nein. zu synchronisierender AD-Benutzer?|          100||
-|Dürfen Kennwörter in Cloud synchronisiert werden?|    JA||
-|Nur Cloudbenutzer?|                 JA||
+|Dürfen Kennwörter in Cloud synchronisiert werden?|    Ja||
+|Nur Cloudbenutzer?|                 Ja||
 |MFA erforderlich?|                       Nein || 
-|Anforderungen an die Datenautorisierung?|  JA||
-|Rollenbasierte Zugriffssteuerung?|        JA||
-|Überwachung erforderlich?|                  JA||
-|Datenverschlüsselung ruhender Daten?|          JA||
-|Datenverschlüsselung während der Übertragung?|       JA||
+|Anforderungen an die Datenautorisierung?|  Ja||
+|Rollenbasierte Zugriffssteuerung?|        Ja||
+|Überwachung erforderlich?|                  Ja||
+|Datenverschlüsselung ruhender Daten?|          Ja||
+|Datenverschlüsselung während der Übertragung?|       Ja||
 |**Thema**:   **Präferenzen für Umgestaltung der Architektur** |||
 |Einzelner Cluster oder bestimmte Clustertypen|Bestimmte Clustertypen||
 |Am gleichen Ort vorhandener Speicher oder Remotespeicher?|Remotespeicher||
 |Kleinere Clustergröße, da Daten remote gespeichert werden?|Kleinere Clustergröße||
 |Verwendung mehrerer kleinerer Cluster anstelle eines einzelnen großen Clusters?|Verwendung mehrerer kleinerer Cluster||
-|Verwendung eines Remote-Metastore?|JA||
-|Freigeben von Metastores zwischen verschiedenen Clustern?|JA||
+|Verwendung eines Remote-Metastore?|Ja||
+|Freigeben von Metastores zwischen verschiedenen Clustern?|Ja||
 |Dekonstruieren von Workloads?|Ersetzen von Hive-Aufträgen durch Spark-Aufträge||
 |Verwendung von ADF zur Datenorchestrierung?|Nein ||
 |HDInsight oder Hortonworks Data Platform in IaaS?|HDInsight||

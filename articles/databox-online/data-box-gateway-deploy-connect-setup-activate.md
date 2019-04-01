@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 887c1d554cd5bd2b935178a77a2de19e687ca3f2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 26b560434e6305689781b8c39c7cf814af9bf8aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112295"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway (Vorschauversion) 
 
@@ -43,7 +43,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 * Sie haben ein virtuelles Gerät bereitgestellt und eine damit verbundene URL abgerufen, wie unter [Bereitstellen eines Data Box Gateways in Hyper-V](data-box-gateway-deploy-provision-hyperv.md) bzw. [Bereitstellen eines Data Box Gateways in VMware](data-box-gateway-deploy-provision-vmware.md) beschrieben.
 * Sie haben den Aktivierungsschlüssel vom Data Box Gateway-Dienst erhalten, den Sie zur Verwaltung von Data Box Gateway-Geräten erstellt haben. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
 
-<!--* If this is the second or subsequent virtual device that you are registering with an existing StorSimple Device Manager service, you should have the service data encryption key. This key was generated when the first device was successfully registered with this service. If you have lost this key, see [Get the service data encryption key](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) for your Data Box Gateway.-->
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche 
 
@@ -53,15 +52,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    
    Verwenden Sie die Verbindungs-URL aus dem vorherigen Tutorial. Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website aufgetreten ist. Klicken Sie auf **Mit dieser Webseite fortfahren**. (Diese Schritte können je nach Browser unterschiedlich sein.)
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+    ![Verbindungsfehler](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
 2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts an. Das Standardkennwort lautet *Password1*. 
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
+    ![Anmelden bei der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
 3. Sie werden aufgefordert, das Geräteadministratorkennwort zu ändern. Geben Sie ein neues Kennwort mit 8 bis 16 Zeichen ein. Das Kennwort muss drei der folgenden Elemente enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
 
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
+    ![Ändern des Geräteadministratorkennworts](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
 Sie befinden sich jetzt im **Dashboard** Ihres Geräts.
 
@@ -69,28 +68,28 @@ Sie befinden sich jetzt im **Dashboard** Ihres Geräts.
  
 1. Im Dashboard können Sie zu den verschiedenen Einstellungen wechseln, die zum Konfigurieren und Registrieren des virtuellen Geräts beim Data Box Gateway-Dienst erforderlich sind. Die **Netzwerkeinstellungen**, **Webproxyeinstellungen** und **Uhrzeiteinstellungen** sind optional. Die einzigen erforderlichen Einstellungen sind **Gerätename** und **Cloudeinstellungen**.
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+    ![Seite „Dashboard“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
 2. Geben Sie auf der Seite **Gerätename** einen Anzeigenamen für Ihr Gerät an. Der Anzeigename kann 1 bis 15 Zeichen lang sein und Buchstaben, Zahlen und Bindestriche enthalten.
 
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
+    ![Seite „Gerätename“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
 3. (Optional) Konfigurieren Sie Ihre **Netzwerkeinstellungen**. Es werden eine oder mehrere Netzwerkschnittstellen angezeigt, je nachdem, wie viele Sie in dem zugrunde liegenden virtuellen Computer konfiguriert haben. Die Seite **Netzwerkeinstellungen** für ein virtuelles Gerät mit aktivierter Netzwerkschnittstelle ist nachstehend abgebildet.
     
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
+    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
     Wenn Sie Netzwerkeinstellungen konfigurieren, berücksichtigen Sie Folgendes:
 
-    - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. Daher werden IP-Adresse, Subnetz, Gateway und DNS automatisch zugewiesen.
-    - Wenn DHCP nicht aktiviert ist, weisen Sie bei Bedarf statische IP-Adressen zu.
-    - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
+   - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. Daher werden IP-Adresse, Subnetz, Gateway und DNS automatisch zugewiesen.
+   - Wenn DHCP nicht aktiviert ist, weisen Sie bei Bedarf statische IP-Adressen zu.
+   - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
 
-    >[!NOTE] 
-    > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät beim Dienst registriert hat, und ändern Sie dann. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
+     >[!NOTE] 
+     > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät beim Dienst registriert hat, und ändern Sie dann. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
 
 4. Optional: Konfigurieren Sie Ihren Webproxyserver. Die Webproxykonfiguration ist optional. Achten Sie jedoch bei Verwendung eines Webproxys darauf, dass dieser nur hier konfiguriert werden kann.
    
-   ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
+   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
    Auf der Seite **Webproxy** :
    
@@ -101,7 +100,7 @@ Sie befinden sich jetzt im **Dashboard** Ihres Geräts.
 
 5. Optional: Konfigurieren Sie die Zeiteinstellungen für Ihr Gerät, z. B. die Zeitzone und die primären und sekundären NTP-Server. NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
     
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
+    ![Seite „Zeiteinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
     Auf der Seite **Uhrzeiteinstellungen** :
     
@@ -116,10 +115,17 @@ Sie befinden sich jetzt im **Dashboard** Ihres Geräts.
 
     2. Klicken Sie auf **Aktivieren**. 
        
-         ![](./media/data-box-gateway-deploy-connect-setup-activate/image10.png)
+         ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Sie müssen ggf. eine Minute warten, bis das Gerät erfolgreich aktiviert wurde. Nach der Aktivierung wird die Seite mit der Angabe aktualisiert, dass das Gerät erfolgreich aktiviert wurde.
+    3. Zunächst wird das Gerät aktiviert. Dann wird das Gerät nach kritischen Updates durchsucht, und die Updates, falls verfügbar, werden automatisch angewendet. Es wird eine entsprechende Benachrichtigung angezeigt. 
 
+        Das Dialogfeld enthält außerdem einen Wiederherstellungsschlüssel, den Sie kopieren und an einem sicheren Ort speichern sollten. Dieser Schlüssel wird verwendet, um Ihre Daten wiederherzustellen, falls das Gerät nicht starten kann.
+
+        ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)    
+
+    4. Möglicherweise müssen Sie einige Minuten warten, nachdem das Update erfolgreich abgeschlossen wurde. Die Seite wird mit der Angabe aktualisiert, dass das Gerät erfolgreich aktiviert wurde.
+
+        ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche aktualisiert](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

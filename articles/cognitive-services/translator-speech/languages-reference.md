@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
-ms.date: 05/18/18
+ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 12f989137c3aea57bdcde0d50315ad157898cd28
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862750"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435761"
 ---
 # <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Languages
 
@@ -27,7 +28,7 @@ Codebeispiele, die die Verwendung der API zum Abrufen der verfügbaren Sprachen 
 
 ## <a name="implementation-notes"></a>Hinweise zur Implementierung
 
-### <a name="get-languages"></a>GET /languages 
+### <a name="get-languages"></a>GET /languages
 
 Eine umfangreiche Auswahl an Sprachen ist zum Transkribieren von Sprache, Übersetzen der transkribierten Sprache und Erzeugen synthetisierter Sprache der Übersetzung verfügbar.
 
@@ -64,7 +65,7 @@ Der Wert, der mit jeder Eigenschaft bereitgestellt wird, lautet wie folgt.
 Der Wert, der der Spracherkennungseigenschaft (`speech`) zugeordnet ist, entspricht einem Wörterbuch von Paaren (Schlüssel und Wert). Jeder Schlüssel bestimmt eine Sprache, die für die Spracherkennung unterstützt wird. Der Schlüssel ist der Bezeichner, den der Client an die API übergibt. Der Wert, der dem Schlüssel zugeordnet ist, ist ein Objekt mit den folgenden Eigenschaften:
 
 * `name`: Anzeigename der Sprache.
-* `language`: Sprachtag der zugeordneten geschriebenen Sprache. Informationen finden Sie unten unter „Textübersetzung“.
+* `language`: Sprachtag der zugeordneten geschriebenen Sprache. Informationen finden Sie unten unter „Texttransaktion“.
 Im folgenden Code wird ein Beispiel veranschaulicht:
 
 ```
@@ -125,7 +126,7 @@ Für alle Sprachen, die in der Textübersetzung unterstützt werden, gibt der Di
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 Das Objekt, das die unterstützten Sprachen beschreibt.
 
-ModelExample-Wert: 
+ModelExample-Wert:
 
 Languages {speech (object, optional), text (object, optional), tts (object, optional)}
 
@@ -143,7 +144,7 @@ X-RequestId|Ein Wert, der vom Server generiert wird, um die Anforderung zu ident
 |scope  |Unterstützte Sprachen oder Stimmen, die an den Client zurückgegeben werden. Dieser Parameter wird als eine durch Trennzeichen getrennte Liste von Schlüsselwörtern angegeben. Die folgenden Schlüsselwörter sind verfügbar:<ul><li>`speech`: Gibt die zum Transkribieren der gesprochenen Sprache unterstützten Sprachen an.</li><li>`tts`: Gibt die für die Sprachsynthese unterstützten Stimmen an.</li><li>`text`: Gibt die zum Übersetzen des Texts unterstützten Sprachen an.</li></ul>Wenn kein Wert angegeben ist, wird der Wert `scope` standardmäßig auf `text` festgelegt.|query|Zeichenfolge|
 |X-ClientTraceId    |Eine vom Client generierte GUID zur Ablaufverfolgung einer Anforderung. Zur Erleichterung der Problembehandlung sollten Clients mit jeder Anforderung einen neuen Wert angeben und protokollieren.|Header|Zeichenfolge|
 |Accept-Language    |Einige der Felder in der Antwort sind Namen von Sprachen oder Regionen. Verwenden Sie diesen Parameter, um die Sprache zu definieren, in der die Namen zurückgegeben werden. Die Sprache wird durch die Bereitstellung eines wohlgeformten BCP 47-Sprachtags angegeben. Wählen Sie ein Tag aus der Liste der Sprachbezeichner aus, die mit dem `text`-Bereich zurückgegeben wurden. Bei nicht unterstützten Sprachen werden die Namen in Englisch angegeben.<br/>Verwenden Sie z.B. den Wert `fr` zum Anfordern von Namen in Französisch, oder verwenden Sie den Wert `zh-Hant` zum Anfordern von Namen in Chinesisch (traditionell).|Header|Zeichenfolge|
-    
+
 ### <a name="response-messages"></a>Antwortnachrichten
 
 |HTTP-Statuscode|Grund|

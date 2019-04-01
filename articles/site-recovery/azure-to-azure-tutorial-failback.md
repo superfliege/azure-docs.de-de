@@ -1,20 +1,20 @@
 ---
-title: Ausführen eines Failbacks von in einer sekundären Azure-Region replizierten virtuellen Azure IaaS-Computern zur Notfallwiederherstellung mit dem Azure Site Recovery-Dienst
+title: Ausführen eines Failbacks von in einer sekundären Azure-Region replizierten virtuellen Azure-Computern zur Notfallwiederherstellung mit dem Azure Site Recovery-Dienst
 description: Es wird beschrieben, wie Sie mit dem Azure Site Recovery-Dienst ein Failback für Azure-VMs durchführen.
 services: site-recovery
-author: sideeksh
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/07/2019
-ms.author: sideeksh
+ms.date: 03/18/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d8721f313907f0e0519dca52f5565853f1c44110
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8ce05e644ad556542314b17151b808586734824
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089698"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315316"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Failback für Azure-VMs zwischen Azure-Regionen
 
@@ -24,51 +24,47 @@ In diesem Tutorial wird beschrieben, wie Sie das Failback für eine einzelne Azu
 
 > [!div class="checklist"]
 > 
-> * Ausführen des Failbacks der sekundären VM
-> * Erneutes Schützen der primären VM zurück zur sekundären Region
+> * Ausführen eines Failbacks für den virtuellen Azure-Computer in der sekundären Region
+> * Erneutes Schützen des primären virtuellen Azure-Computers in der sekundären Region
 > 
 > [!NOTE]
 > 
-> In diesem Tutorial werden für Benutzer die Schritte beschrieben, mit denen mit möglichst geringem Anpassungsaufwand ein Failover in eine Zielregion und zurück ausgeführt wird. Falls Sie mehr zu den verschiedenen Aspekten von Failovern erfahren möchten, z. B. zu Netzwerküberlegungen, Automatisierung oder Problembehandlung, helfen Ihnen die Gewusst wie-Dokumente für Azure-VMs weiter.
+> In diesem Tutorial erfahren Sie, wie Sie mit minimalem Anpassungsaufwand für einige virtuelle Computer ein Failover auf eine Zielregion sowie ein Failback auf die Quellregion ausführen. Ausführlichere Anweisungen finden Sie in den Anleitungsartikeln für virtuelle Azure-Computer.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="before-you-start"></a>Vorbereitung
 
-> * Stellen Sie sicher, dass sich die VM im Status „Commit für Failover ausgeführt“ befindet, dass die primäre Region verfügbar ist und dass Sie neue Ressourcen darin erstellen und darauf zugreifen können.
+> * Vergewissern Sie sich, dass sich der virtuelle Computer im Zustand **Commit für Failover ausgeführt** befindet.
+> * Vergewissern Sie sich außerdem, dass die primäre Region verfügbar ist und dass Sie darin neue Ressourcen erstellen und darauf zugreifen können.
 > * Stellen Sie sicher, dass die Option für das erneute Schützen aktiviert ist.
 
 ## <a name="fail-back-to-the-primary-region"></a>Ausführen eines Failbacks auf die primäre Region
 
-Wenn die VMs wieder geschützt sind, können Sie jederzeit ein Failback in die primäre Region durchführen, wenn Sie dies wünschen.
+Nachdem virtuelle Computer erneut geschützt wurden, können Sie bei Bedarf ein Failback auf die primäre Region ausführen.
 
-1. Navigieren Sie zu Ihrem Recovery Services-Tresor. Klicken Sie auf „Replizierte Elemente“, und wählen Sie die VM aus, die erneut geschützt wurde.
+1. Klicken Sie auf **Replizierte Elemente**, und wählen Sie den virtuellen Computer aus, der erneut geschützt wurde.
 
-2. Folgendes sollte angezeigt werden. Beachten Sie, dass dies dem Blatt für das Testfailover und dem Failover aus der primären Region ähnelt.
-![Failback in primäre Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![Ausführen eines Failbacks auf die primäre Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
-3. Klicken Sie auf „Testfailover“, um ein Testfailover zurück in Ihre primäre Region durchzuführen. Wählen Sie den Wiederherstellungspunkt und das virtuelle Netzwerk für das Testfailover aus, und wählen Sie dann „OK“. Sie können den in der primären Region erstellten virtuellen Testcomputer anzeigen und darauf zugreifen und ihn untersuchen.
+3. Klicken Sie auf **Testfailover**, um ein Testfailover auf die primäre Region auszuführen.
+4. Wählen Sie den Wiederherstellungspunkt und das virtuelle Netzwerk für das Testfailover aus, und wählen Sie anschließend **OK** aus. Sie können den virtuellen Computer überprüfen, der zu Testzwecken in der primären Region erstellt wurde.
+5. Klicken Sie nach erfolgreicher Ausführung des Testfailovers auf **Testfailover bereinigen**, um die Ressourcen zu bereinigen, die in der Quellregion für das Testfailover erstellt wurden.
+6. Wählen Sie unter **Replizierte Elemente** den virtuellen Computer aus, und klicken Sie auf **Failover**.
+7. Wählen Sie unter **Failover** einen Wiederherstellungspunkt für das Failover aus.
+    - **Neuester (Standardeinstellung)**: Bei dieser Option werden alle Daten in Site Recovery verarbeitet, und sie bietet den niedrigsten RPO-Wert (Recovery Point Objective).
+    - **Letzte Verarbeitung**: Bei dieser Option wird für den virtuellen Computer der Zustand des letzten Wiederherstellungspunkts wiederhergestellt, der von Site Recovery verarbeitet wurde.
+    - **Benutzerdefiniert**: Bei dieser Option wird ein Failover auf einen bestimmten Wiederherstellungspunkt ausgeführt. Diese Option eignet sich für ein Testfailover.
 
-4. Nachdem das Testfailover wie gewünscht durchgeführt wurde, können Sie auf „Testfailover bereinigen“ klicken, um Ressourcen zu bereinigen, die in der Quellregion für das Testfailover erstellt wurden.
+8. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, Quell-VMs herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Hinweis: Site Recovery bereinigt die Quelle nach dem Failover nicht.
+9. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
+10. Überprüfen Sie den virtuellen Computer nach Abschluss des Failovers, indem Sie sich bei ihm anmelden. Der Wiederherstellungspunkt kann bei Bedarf geändert werden.
+11. Klicken Sie nach der Überprüfung des Failovers auf **Commit**. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht. Die Option „Wiederherstellungspunkt ändern“ ist nicht mehr verfügbar.
+12. Für den virtuellen Computer wird angezeigt, dass ein Failover und ein Failback ausgeführt wurden.
 
-5. Wählen Sie unter „Replizierte Elemente“ die VM, für die ein Failover ausgeführt werden soll, und dann „Failover“ aus.
-
-6. Wählen Sie unter „Failover“ einen Wiederherstellungspunkt für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-    1. Neuester (Standardeinstellung): Mit dieser Option werden alle Daten in Site Recovery verarbeitet, und sie verfügt über den niedrigsten RPO-Wert (Recovery Point Objective).
-    2. Letzte Verarbeitung: Mit dieser Option wird für den virtuellen Computer der Zustand des letzten Wiederherstellungspunkts wiederhergestellt, der von Site Recovery verarbeitet wurde.
-    3. Benutzerdefiniert: Verwenden Sie diese Option für ein Failover auf einen bestimmten Wiederherstellungspunkt. Diese Option eignet sich für ein Testfailover.
-
-7. Klicken Sie auf „Der Computer wird vor Beginn des Failovers heruntergefahren“, wenn Site Recovery versuchen soll, virtuelle Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Hinweis: Bei einer Sitewiederherstellung wird die Quelle nach dem Failover nicht bereinigt.
-
-8. Der Fortschritt des Failovers wird auf der Seite „Aufträge“ angezeigt.
-
-9. Überprüfen Sie den virtuellen Computer nach Abschluss des Failovers, indem Sie sich am Computer anmelden. Falls Sie einen anderen Wiederherstellungspunkt für den virtuellen Computer verwenden möchten, können Sie die Option „Wiederherstellungspunkt ändern“ wählen.
-
-10. Nachdem Sie mit dem virtuellen Computer, für den das Failover durchgeführt wurde, zufrieden sind, können Sie für das Failover die Option „Commit“ wählen. Dadurch werden alle mit dem Dienst verfügbaren Wiederherstellungspunkte gelöscht. Die Option „Wiederherstellungspunkt ändern“ ist nicht mehr verfügbar.
-
-![VM in primärer und sekundärer Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
-
-Im vorhergehenden Screenshot wurde für den virtuellen Computer „ContosoWin2016“ ein Failover von der Region „USA, Mitte“ zur Region „USA, Osten“ und ein Failback von „USA, Osten“ zu „USA, Mitte“ ausgeführt.
-
-Die virtuellen Computer für die Notfallwiederherstellung verbleiben im heruntergefahrenen Zustand mit aufgehobener Zuordnung. Dieses Verhalten ist beabsichtigt, da Azure Site Recovery die Informationen des virtuellen Computers speichert. Dies kann später beim Failover von der primären Region zur sekundären Region nützlich sein. Da für virtuelle Computer mit aufgehobener Zuordnung keine Gebühren anfallen, empfiehlt es sich, sie beizubehalten.
+    ![VM in primärer und sekundärer Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Weitere Informationen zum Workflow für den erneuten Schutz und dazu, was während des erneuten Schutzes passiert, finden Sie unter [Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+> Die virtuellen Computer für die Notfallwiederherstellung bleiben im heruntergefahrenen Zustand mit aufgehobener Zuordnung. Dies ist so beabsichtigt, da Site Recovery die VM-Informationen speichert, was später ggf. bei einem Failover von der primären auf die sekundäre Region hilfreich ist. Da für die virtuellen Computer mit aufgehobener Zuordnung keine Gebühren anfallen, empfiehlt es sich, sie beizubehalten.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [erneuten Schutz](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).

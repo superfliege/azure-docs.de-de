@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 79648e30e832a056016b8842fdc39e27e206c9ee
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: e85e006a54fcb4bb677932b3e1ff9fa79352dba9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57897800"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519832"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Verwalten von Freigaben auf Ihrer Azure Data Box Edge-Ressource über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Freigaben auf Ihrer Azure Data Box Edge-Ressource verwalten. Azure Data Box Edge kann über das Azure-Portal oder über die lokale Webbenutzeroberfläche verwaltet werden. Verwenden Sie das Azure-Portal, um Freigaben hinzuzufügen, zu löschen oder zu aktualisieren oder um Speicherschlüssel für das Speicherkonto zu synchronisieren, das den Freigaben zugeordnet ist.
-
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
-
 
 ## <a name="about-shares"></a>Informationen zu Freigaben
 
@@ -67,8 +63,10 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
         ![Hinzufügen einer NFS-Freigabe](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Klicken Sie auf **Erstellen**, um die Freigabe zu erstellen. Sie werden benachrichtigt, wenn die Freigabe erstellt wird. Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird das Blatt **Freigaben** aktualisiert und zeigt die neue Freigabe.
- 
+7. Verwenden Sie den lokalen Bereitstellungspunkt, um von Edgecomputingmodulen aus leicht auf die Freigaben zugreifen zu können. Wählen Sie **Freigabe mit Edgecomputing verwenden** aus, damit die Freigabe nach ihrer Erstellung automatisch bereitgestellt wird. Wenn diese Option ausgewählt ist, kann das Edgemodul Compute auch mit dem lokalen Bereitstellungspunkt verwenden.
+
+8. Klicken Sie auf **Erstellen**, um die Freigabe zu erstellen. Sie werden benachrichtigt, wenn die Freigabe erstellt wird. Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird das Blatt **Freigaben** aktualisiert und zeigt die neue Freigabe.
+
 ## <a name="add-a-local-share"></a>Hinzufügen einer lokalen Freigabe
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Data Box Edge-Ressource und anschließend zu **Gateway > Freigaben**. Wählen Sie in der Befehlsleiste die Option **+ Freigabe hinzufügen**.
@@ -93,11 +91,56 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
     Es wird eine Benachrichtigung angezeigt, dass die Freigabe erstellt wird. Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird das Blatt **Freigaben** aktualisiert und zeigt die neue Freigabe.
 
-    ![Anzeigen von Updates auf dem Blatt „Freigaben“](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![Anzeigen von Updates auf dem Blatt „Freigaben“](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     Wählen Sie die Freigabe aus, um den lokalen Bereitstellungspunkt für die Edgecomputingmodule dieser Freigabe anzuzeigen.
 
     ![Anzeigen von Details zur lokalen Freigabe](media/data-box-edge-manage-shares/add-local-share-4.png)
+
+## <a name="mount-a-share"></a>Einbinden einer Dateifreigabe
+
+Falls Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Data Box Edge-Gerät konfiguriert haben, müssen Sie die Freigabe einbinden. Gehen Sie wie folgt vor, um eine Freigabe einzubinden.
+
+
+1. Navigieren Sie im Azure-Portal zu Ihrer Data Box Edge-Ressource und anschließend zu **Gateway > Freigaben**. Wählen Sie in der Liste mit den Freigaben die Freigabe aus, die Sie einbinden möchten. Für die ausgewählte Freigabe wird in der Spalte **Für Compute verwendet** der Status **Deaktiviert** angezeigt.
+
+    ![Auswählen der Freigabe](media/data-box-edge-manage-shares/select-share-mount.png)
+
+2. Wählen Sie **Einbinden** aus.
+
+    ![Auswählen von „Einbinden“](media/data-box-edge-manage-shares/select-mount.png)
+
+3. Wählen Sie **Ja** aus, wenn Sie zur Bestätigung aufgefordert werden. Dadurch wird die Freigabe eingebunden.
+
+    ![Überprüfen der Einbindung](media/data-box-edge-manage-shares/confirm-mount.png)
+
+4. Navigieren Sie nach erfolgter Einbindung der Freigabe zur Liste mit den Freigaben. In der Spalte **Für Compute verwendet** wird der Freigabestatus **Aktiviert** angezeigt.
+
+    ![Freigabe eingebunden](media/data-box-edge-manage-shares/share-mounted.png)
+
+5. Wählen Sie die Freigabe erneut aus, um den lokalen Bereitstellungspunkt für die Freigabe anzuzeigen. Das Edgecomputingmodul verwendet diesen lokalen Bereitstellungspunkt für die Freigabe.
+
+    ![Lokaler Bereitstellungspunkt für die Freigabe](media/data-box-edge-manage-shares/share-mountpoint.png)
+
+## <a name="unmount-a-share"></a>Aufheben der Einbindung einer Freigabe
+
+Gehen Sie im Azure-Portal wie folgt vor, um die Einbindung einer Freigabe aufzuheben:
+
+1. Navigieren Sie im Azure-Portal zu Ihrer Data Box Edge-Ressource und anschließend zu **Gateway > Freigaben**.
+
+    ![Auswählen der Freigabe](media/data-box-edge-manage-shares/select-share-unmount.png)
+
+2. Wählen Sie in der Liste mit den Freigaben die Freigabe aus, deren Einbindung Sie aufheben möchten. Achten Sie dabei darauf, dass die Freigabe, deren Einbindung Sie aufheben möchten, nicht von einem anderen Modul verwendet wird. Andernfalls treten Probleme mit dem entsprechenden Modul auf. Wählen Sie **Bereitstellung aufheben** aus.
+
+    ![Auswählen von „Bereitstellung aufheben“](media/data-box-edge-manage-shares/select-unmount.png)
+
+3. Wählen Sie **Ja** aus, wenn Sie zur Bestätigung aufgefordert werden. Dadurch wird die Einbindung der Freigabe aufgehoben.
+
+    ![Überprüfen der Einbindungsaufhebung](media/data-box-edge-manage-shares/confirm-unmount.png)
+
+4. Navigieren Sie nach erfolgter Aufhebung der Einbindung der Freigabe zur Liste mit den Freigaben. In der Spalte **Für Compute verwendet** wird der Freigabestatus **Deaktiviert** angezeigt.
+
+    ![Einbindung der Freigabe aufgehoben](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Löschen einer Freigabe
 
@@ -123,7 +166,8 @@ Die Liste mit den Freigaben wird nach dem Löschen entsprechend aktualisiert.
 Mithilfe des Aktualisierungsfeatures können Sie den Inhalt einer Freigabe aktualisieren. Wenn Sie eine Freigabe aktualisieren, wird eine Suche nach allen Azure-Objekten mit Blobs und Dateien initiiert, die der Cloud seit der letzten Aktualisierung hinzugefügt wurden. Diese zusätzlichen Dateien werden dann heruntergeladen, um den Inhalt der Freigabe auf dem Gerät zu aktualisieren.
 
 > [!IMPORTANT]
-> Lokale Freigaben können nicht aktualisiert werden.
+> - Lokale Freigaben können nicht aktualisiert werden.
+> - Berechtigungen und Zugriffssteuerungslisten (ACLs) werden über einen Aktualisierungsvorgang hinaus nicht beibehalten. 
 
 Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu aktualisieren:
 

@@ -9,12 +9,12 @@ ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039842"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880074"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Java Async SDK mit Azure Cosmos DB-SQL-API-Konten
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [Java Async SDK](sql-api-sdk-async-java.md) mit Azure Cosmos DB-SQL-API-Konten.
@@ -150,6 +150,40 @@ Hierbei handelt es sich um einen serverseitigen Fehler. Er gibt an, dass Sie den
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Fehler beim Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator
 
 Das HTTPS-Zertifikat des Azure Cosmos DB-Emulators ist selbstsigniert. Importieren Sie das Emulatorzertifikat in eine Java TrustStore-Instanz, damit das SDK mit dem Emulator verwendet werden kann. Weitere Informationen finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js](local-emulator-export-ssl-certificates.md).
+
+### <a name="dependency-conflict-issues"></a>Probleme durch Abhängigkeitskonflikte
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+Die oben genannten Ausnahme legt nahe, dass bei Ihnen eine Abhängigkeit von einer älteren Version der RxJava-Bibliothek (z. B. 1.2.2) vorhanden ist. Unser SDK verwendet RxJava 1.3.8, die APIs enthält, die in früheren Version von RxJava nicht verfügbar sind. 
+
+Die Problemumgehung für solche Probleme besteht darin, zu identifizieren, in welchen anderen Abhängigkeiten RxJava-1.2.2 vorhanden ist, die transitive Abhängigkeit von RxJava-1.2.2 auszuschließen und dem CosmosDB SDK zu gestatten, die neuere Version einzubringen.
+
+Um zu identifizieren, welche Bibliothek RxJava-1.2.2 einbringt, führen Sie den folgenden Befehl neben Ihrer Projektdatei „pom.xml“ aus:
+```bash
+mvn dependency:tree
+```
+Weitere Informationen finden Sie in der [Anleitung zur Maven-Abhängigkeitsstruktur](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html).
+
+Nachdem Sie identifiziert haben, dass RxJava-1.2.2 eine transitive Abhängigkeit einer anderen Abhängigkeit Ihres Projekts ist, können Sie die Abhängigkeit von dieser Bibliothek in Ihrer pom-Datei ändern und die transitive RxJava-Abhängigkeit ausschließen:
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+Weitere Informationen finden Sie in der [Anleitung zum Ausschließen transitiver Abhängigkeiten](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
 ## <a name="enable-client-sice-logging"></a>Aktivieren von Client-SDK-Protokollierung
