@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: be285b6a51ae5a0f4239b841ce64100f1875d785
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6990bed4065183ecabb502ea90b5ddf26db563b4
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294347"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500184"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 In Azure Monitor werden Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
@@ -114,7 +114,7 @@ Die Zugriffsmodi werden in der folgenden Tabelle zusammengefasst:
 |:---|:---|:---|
 | Für wen ist das jeweilige Modell vorgesehen? | Zentraladministration. Administratoren, die die Datensammlung konfigurieren müssen, und Benutzer, die Zugriff auf eine Vielzahl von Ressourcen benötigen. Zurzeit auch erforderlich für Benutzer, die auf Protokolle für Ressourcen außerhalb von Azure zugreifen müssen. | Anwendungsteams. Administratoren von Azure-Ressourcen, die überwacht werden. |
 | Was ist für einen Benutzer erforderlich, um Protokolle anzuzeigen? | Berechtigungen für den Arbeitsbereich. Weitere Informationen finden Sie unter **Arbeitsbereichberechtigungen** in [Verwalten von Konten und Benutzern](#manage-accounts-and-users). | Lesezugriff auf die Ressource. Weitere Informationen finden Sie unter **Ressourcenberechtigungen** in [Verwalten von Konten und Benutzern](#manage-accounts-and-users). Berechtigungen können vererbt (z.B. aus der enthaltenden Ressourcengruppe) oder der Ressource direkt zugeordnet werden. Die Berechtigung für die Protokolle für die Ressource wird automatisch zugewiesen. |
-| Welchen Geltungsbereich haben Berechtigungen? | Den Arbeitsbereich. Benutzer mit Zugriff auf den Arbeitsbereich können alle Protokolle in diesem Arbeitsbereich aus Tabellen abfragen, für die sie über Berechtigungen verfügen. Siehe [Tabellenzugriffssteuerung](#table-access-control). | Die Azure-Ressource. Der Benutzer kann Protokolle für Ressourcen aus jedem Arbeitsbereich abfragen, auf die er Zugriff besitzt, aber nicht Protokolle für andere Ressourcen. |
+| Welchen Geltungsbereich haben Berechtigungen? | Den Arbeitsbereich. Benutzer mit Zugriff auf den Arbeitsbereich können alle Protokolle in diesem Arbeitsbereich aus Tabellen abfragen, für die sie über Berechtigungen verfügen. Siehe [Tabellenzugriffssteuerung](#table-level-rbac). | Die Azure-Ressource. Der Benutzer kann Protokolle für Ressourcen aus jedem Arbeitsbereich abfragen, auf die er Zugriff besitzt, aber nicht Protokolle für andere Ressourcen. |
 | Wie kann der Benutzer auf Protokolle zugreifen? | Starten Sie **Protokolle** aus dem Menü **Azure Monitor** oder über **Log Analytics-Arbeitsbereiche**. | Starten Sie **Protokolle** aus dem Menü für die Azure-Ressource. |
 
 
@@ -150,13 +150,13 @@ Sie können diese Einstellung auf der Seite **Eigenschaften** für den Arbeitsbe
 
 Verwenden Sie den folgenden Befehl, um den Zugriffssteuerungsmodus für alle Arbeitsbereiche im Abonnement zu überprüfen:
 
-```PowerShell
+```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
 ```
 
 Verwenden Sie das folgende Skript, um den Zugriffssteuerungsmodus für einen bestimmten Arbeitsbereich festzulegen:
 
-```PowerShell
+```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
 if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
@@ -168,7 +168,7 @@ Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properti
 
 Verwenden Sie das folgende Skript, um den Zugriffssteuerungsmodus für alle Arbeitsbereiche im Abonnement festzulegen:
 
-```PowerShell
+```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
 if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
@@ -273,13 +273,13 @@ Wenn Benutzer Protokolle aus einem Arbeitsbereich mit ressourcenbezogenem Zugrif
 
 Diese Berechtigung wird in der Regel von einer Rolle erteilt, die _\*/read- oder_ _\*_-Berechtigungen enthält, beispielsweise von den integrierten Rollen [Leser](../../role-based-access-control/built-in-roles.md#reader) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor). Beachten Sie, dass benutzerdefinierte Rollen, die bestimmte Aktionen umfassen, oder dedizierte integrierte Rollen diese Berechtigung ggf. nicht enthalten können.
 
-Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#defining-per-table-access-control) weiter unten, wenn Sie für verschiedene Tabellen eine unterschiedliche Zugriffssteuerung erstellen möchten.
+Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weiter unten, wenn Sie für verschiedene Tabellen eine unterschiedliche Zugriffssteuerung erstellen möchten.
 
 
 ## <a name="table-level-rbac"></a>RBAC auf Tabellenebene
 **RBAC auf Tabellenebene** ermöglicht zusätzlich zu den anderen Berechtigungen eine präzisere Steuerung von Daten in einem Log Analytics-Arbeitsbereich. Mit diesem Steuerelement können Sie bestimmte Datentypen definieren, auf die nur eine bestimmte Gruppe von Benutzern Zugriff besitzt.
 
-Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) im Arbeitsbereich entweder zu gewähren oder zu verweigern. Diese Rollen gelten für Arbeitsbereiche mit arbeitsbereichbezogenen oder ressourcenbezogenen [Zugriffssteuerungsmodi](#access-control-modes), und zwar unabhängig vom [Zugriffsmodus](#access-mode) des Benutzers.
+Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) im Arbeitsbereich entweder zu gewähren oder zu verweigern. Diese Rollen gelten für Arbeitsbereiche mit arbeitsbereichbezogenen oder ressourcenbezogenen [Zugriffssteuerungsmodi](#access-control-mode), und zwar unabhängig vom [Zugriffsmodus](#access-modes) des Benutzers.
 
 Erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) mit den folgenden Aktionen, um den Zugriff auf die Tabellenzugriffssteuerung zu definieren.
 

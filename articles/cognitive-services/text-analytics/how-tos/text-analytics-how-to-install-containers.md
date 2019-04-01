@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d6c0d04966d3a713493485d52ca4e81ba25ab743
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294143"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521481"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
@@ -40,7 +40,7 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
-[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
+[!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
@@ -145,6 +145,10 @@ Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bere
 
 Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
+
 ## <a name="stop-the-container"></a>Beenden des Containers
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
@@ -152,10 +156,6 @@ Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Wenn Sie den Container mit einer [Ausgabenbereitstellung](../text-analytics-resource-container-config.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
-
-## <a name="containers-api-documentation"></a>API-Dokumentation des Containers
-
-[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Abrechnung
 
