@@ -9,18 +9,20 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236973"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286430"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
 Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure Backup-Fehler bei der Kommunikation zwischen dem VM-Agent und der Erweiterung beheben können.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM Agent unable to communicate with Azure Backup (VM-Agent kann nicht mit Azure Backup kommunizieren).
 
@@ -54,7 +56,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 Empfohlene Maßnahme:<br>
 Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.
 > [!NOTE]
-    > Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
+> Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **Schritt 1: [Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Schritt 2: [Bereinigen der Wiederherstellungspunktsammlung](#clean_up_restore_point_collection)**<br>
@@ -100,19 +102,12 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 5: Der Backup-Dienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen.** <br>
 **Ursache 6: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB.
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB
 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
-**Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB <br>
+**Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB <br>
 
-Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Datenträgergröße von über 1.023 GB sichern, da für Ihren Tresor kein Upgrade auf die sofortige Wiederherstellung durchgeführt wird. Ein Upgrade auf die sofortige Wiederherstellung bietet Unterstützung für bis zu 4 TB. Weitere Informationen finden Sie in diesem [Artikel](backup-instant-restore-capability.md#upgrading-to-instant-restore). Nach dem Upgrade dauert es bis zu zwei Stunden, bis diese Funktion für das Abonnement zur Verfügung steht. Planen Sie ausreichend Puffer ein, bevor Sie den Vorgang wiederholen.  
-
-## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – Azure Backup unterstützt derzeit keine SSD Standard-Datenträger.
-
-**Fehlercode**: UserErrorStandardSSDNotSupported <br>
-**Fehlermeldung**: Azure Backup unterstützt zurzeit keine SSD Standard-Datenträger. <br>
-
-Azure Backup unterstützt derzeit nur SSD Standard-Datenträger für Tresore, für die ein Upgrade auf die [sofortige Wiederherstellung](backup-instant-restore-capability.md) durchgeführt wurde.
+Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Unterstützung für große Datenträger ist bald verfügbar.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.
 
@@ -126,12 +121,12 @@ Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, we
 3. Klicken Sie im Tresordashboard-Menü auf **Sicherungsaufträge**, um alle Sicherungsaufträge anzuzeigen.
 
     * Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
-        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
-        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
 4. Führen Sie den Sicherungsvorgang erneut durch.
 
-Wenn der geplante Sicherungsvorgang länger mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#restore-considerations).
+Wenn der geplante Sicherungsvorgang länger mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
@@ -166,15 +161,15 @@ Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen 
 
 1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md).
 
- > [!NOTE]
- > Wir *empfehlen dringend*, den Agent ausschließlich über ein Verteilungsrepository zu aktualisieren. Wir raten davon ab, den Agent-Code direkt von GitHub herunterzuladen und die Aktualisierung durchzuführen. Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. Eine Prüfung auf den aktuellen Agent können Sie auf der Seite für den [Windows Azure-Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) im GitHub-Repository durchführen.
+   > [!NOTE]
+   > Wir *empfehlen dringend*, den Agent ausschließlich über ein Verteilungsrepository zu aktualisieren. Wir raten davon ab, den Agent-Code direkt von GitHub herunterzuladen und die Aktualisierung durchzuführen. Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. Eine Prüfung auf den aktuellen Agent können Sie auf der Seite für den [Windows Azure-Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) im GitHub-Repository durchführen.
 
 2. Stellen Sie mit dem folgenden Befehl sicher, dass der Azure-Agent auf dem virtuellen Computer ausgeführt wird: `ps -e`
 
- Wenn der Prozess nicht ausgeführt wird, starten Sie ihn mit den folgenden Befehlen neu:
+   Wenn der Prozess nicht ausgeführt wird, starten Sie ihn mit den folgenden Befehlen neu:
 
- * Für Ubuntu: `service walinuxagent start`
- * Für andere Distributionen: `service waagent start`
+   * Für Ubuntu: `service walinuxagent start`
+   * Für andere Distributionen: `service waagent start`
 
 3. [Konfigurieren Sie den Agent für den automatischen Neustart](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Führen Sie eine neue Testsicherung aus. Beziehen Sie die folgenden Protokolle vom virtuellen Computer, falls der Fehler weiterhin auftritt:
@@ -198,7 +193,7 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 | Ursache | Lösung |
 | --- | --- |
 | Der VM-Status wird falsch gemeldet, weil der virtuelle Computer im Remotedesktopprotokoll (RDP) heruntergefahren ist. | Wenn Sie den virtuellen Computer im Remotedesktopprotokoll herunterfahren, überprüfen Sie im Portal, ob der VM-Status richtig angezeigt wird. Falls nicht, fahren Sie den virtuellen Computer im Portal mithilfe der Option **Herunterfahren** auf dem VM-Dashboard herunter. |
-| Der virtuelle Computer kann die Host- oder Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host- oder Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im **Azure-Portal** oder mithilfe von **PowerShell** konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter [Klassischer virtueller Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) und [Virtueller Resource Manager-Computer](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
+| Der virtuelle Computer kann die Host- oder Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host- oder Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im **Azure-Portal** oder mithilfe von **PowerShell** konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier erfahren Sie mehr](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) über das Einrichten einer statischen IP-Adresse mit PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
 Wenn Erweiterungen nicht geladen werden können, tritt bei der Sicherung ein Fehler auf, weil keine Momentaufnahme erstellt werden kann.
@@ -220,12 +215,12 @@ Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisi
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Navigieren Sie zur Option **Alle Ressourcen**, und wählen Sie die Wiederherstellungspunktsammlungs-Ressourcengruppe im folgenden Format aus: AzureBackupRG_`<Geo>`_`<number>`.
 3. Wählen Sie im Abschnitt **Einstellungen** die Option **Sperren** aus, um die Sperren anzuzeigen.
 4. Um die Sperre zu entfernen, wählen Sie die Auslassungspunkte aus, und klicken Sie dann auf **Löschen**.
 
-    ![Löschen der Sperre ](./media/backup-azure-arm-vms-prepare/delete-lock.png)
+    ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a>Bereinigen der Wiederherstellungspunktsammlung
 Nach dem Entfernen der Sperre müssen die Wiederherstellungspunkte bereinigt werden. Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden Methoden:<br>
@@ -233,23 +228,23 @@ Nach dem Entfernen der Sperre müssen die Wiederherstellungspunkte bereinigt wer
 * [Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung
-Nach dem Entfernen der Sperre lösen Sie eine Ad-Hoc-/manuelle Sicherung aus. Dadurch wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser Ad-hoc-/manuelle Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
+Nach dem Entfernen der Sperre lösen Sie eine Ad-hoc-/manuelle Sicherung aus. Dadurch wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser Ad-hoc-/manuelle Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
 
 > [!NOTE]
-    > Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der Ad-Hoc-/manuellen Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-azure-portal) aufgeführten Schritte verwenden.
+> Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der Ad-hoc-/manuellen Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-azure-portal) aufgeführten Schritte verwenden.
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal <br>
 
 Um die Wiederherstellungspunktsammlung, die aufgrund der Sperre der Ressourcengruppe nicht bereinigt wird, manuell zu bereinigen, führen Sie die folgenden Schritte aus:
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Menü **Hub** auf **Alle Ressourcen**, und wählen Sie die Ressourcengruppe mit dem folgenden Format AzureBackupRG_`<Geo>`_`<number>` aus, in der sich Ihr virtueller Computer befindet.
 
-    ![Löschen der Sperre ](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Klicken Sie auf die Ressourcengruppe. Das Blatt **Übersicht** wird angezeigt.
 4. Wählen Sie die Option **Ausgeblendete Typen anzeigen** aus, um alle ausgeblendeten Ressourcen anzuzeigen. Wählen Sie die Wiederherstellungspunktsammlungen mit dem folgenden Format aus: AzureBackupRG_`<VMName>`_`<number>`.
 
-    ![Löschen der Sperre ](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
 5. Klicken Sie auf **Löschen**, um die Wiederherstellungspunktsammlung zu bereinigen.
 6. Wiederholen Sie den Sicherungsvorgang erneut.

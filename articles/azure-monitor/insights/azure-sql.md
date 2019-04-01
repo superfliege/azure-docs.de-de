@@ -3,7 +3,6 @@ title: Azure SQL Analytics-Lösung in Log Analytics | Microsoft-Dokumentation
 description: Die Azure SQL-Analyse-Lösung hilft Ihnen bei der Verwaltung Ihrer Azure SQL-Datenbanken.
 services: log-analytics
 ms.service: log-analytics
-ms.subservice: performance
 ms.custom: ''
 ms.topic: conceptual
 author: danimir
@@ -11,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170223"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -67,9 +66,13 @@ Die oben abgebildete Seite enthält auch Anweisungen zum Aktivieren der Unterst�
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
-Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Die Kachel zeigt die Anzahl von Azure SQL-Datenbanken, Pools für elastische Datenbanken, verwaltete Instanzen und Datenbanken in verwalteten Instanzen an, von denen die Lösung Diagnosetelemetriedaten empfängt.
+Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Klicken Sie auf den Link „Zusammenfassung anzeigen“, um den Kachelinhalt zu laden.
 
-![Kachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile.png)
+![Zusammenfassungskachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-01.png)
+
+Nach dem Laden zeigt die Kachel die Anzahl von Azure SQL-Datenbanken, Pools für elastische Datenbanken, verwaltete Instanzen und Datenbanken in verwalteten Instanzen an, von denen die Lösung Diagnosetelemetriedaten empfängt.
+
+![Kachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-02.png)
 
 Die Lösung bietet zwei separate Ansichten: eine für die Überwachung von Azure SQL-Datenbanken und Pools für elastische Datenbanken, und eine weitere für die Überwachung der verwalteten Instanz und Datenbanken in verwalteten Instanzen.
 
@@ -111,14 +114,14 @@ In der folgenden Tabelle werden Perspektiven erläutert, die für zwei Versionen
 
 | Perspektive | BESCHREIBUNG | Unterstützung für SQL-Datenbank und Pools für elastische Datenbanken | Unterstützung für die verwaltete Instanz |
 | --- | ------- | ----- | ----- |
-| Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. | JA | JA |
-| Einblicke | Stellt einen hierarchischen Drilldown in die Leistung in Intelligent Insights bereit. | JA | JA |
-| Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. | JA | JA |
-| Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. | JA | Nein  |
-| Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. | JA | Nein  |
-| Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. |JA | JA |
-| Abfragedauer | Stellt den hierarchischen Drilldown in die Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. | JA | JA |
-| Abfragewartevorgänge | Stellt den hierarchischen Drilldown in die Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. | JA | JA |
+| Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. | Ja | Ja |
+| Einblicke | Stellt einen hierarchischen Drilldown in die Leistung in Intelligent Insights bereit. | Ja | Ja |
+| Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. | Ja | Ja |
+| Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. | Ja | Nein  |
+| Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. | Ja | Nein  |
+| Datenbankwartevorgänge | Stellt den hierarchischen Drilldown in SQL-Wartestatistiken auf Datenbankebene bereit. Enthält Zusammenfassungen der gesamten Wartezeit sowie die Wartezeit pro Wartetyp. |Ja | Ja |
+| Abfragedauer | Stellt den hierarchischen Drilldown in die Statistiken zur Abfrageausführung bereit, z.B. Abfragedauer, CPU-Auslastung, Daten-E/A-Auslastung und Protokoll-E/A-Auslastung. | Ja | Ja |
+| Abfragewartevorgänge | Stellt den hierarchischen Drilldown in die Statistiken zu Abfragewartevorgängen nach Wartekategorie bereit. | Ja | Ja |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights-Bericht
 
@@ -146,14 +149,16 @@ Für die Verwendung von Azure SQL-Analyse benötigen Benutzer mindestens die Rol
 
 ### <a name="creating-a-custom-role-in-portal"></a>Erstellen einer benutzerdefinierten Rolle im Portal
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Da einige Organisationen eine strenge Berechtigungssteuerung in Azure erzwingen, können Sie das folgende PowerShell-Skript verwenden. Es ermöglicht das Erstellen der benutzerdefinierten Rolle „SQL Analytics Monitoring Operator“ im Azure-Portal. Sie umfasst nur die mindestens erforderlichen Lese- und Schreibberechtigungen, um Azure SQL-Analyse in vollem Umfang zu nutzen.
 
 Ersetzen Sie „{SubscriptionId}“ im Skript unten durch Ihre Azure-Abonnement-ID, und führen Sie das Skript aus, während Sie mit der Rolle „Besitzer“ oder „Mitwirkender“ in Azure angemeldet sind.
 
    ```powershell
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription {SubscriptionId}
-    $role = Get-AzureRmRoleDefinition -Name Reader
+    Connect-AzAccount
+    Select-AzSubscription {SubscriptionId}
+    $role = Get-AzRoleDefinition -Name Reader
     $role.Name = "SQL Analytics Monitoring Operator"
     $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
     $role.IsCustom = $true
@@ -172,7 +177,7 @@ Ersetzen Sie „{SubscriptionId}“ im Skript unten durch Ihre Azure-Abonnement-
     $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
     $role.Actions.Add("Microsoft.Resources/deployments/write");
     $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
-    New-AzureRmRoleDefinition $role
+    New-AzRoleDefinition $role
    ```
 
 Nachdem die neue Rolle erstellt wurde, weisen Sie sie allen Benutzern zu, denen Sie benutzerdefinierte Berechtigungen zum Verwenden von Azure SQL-Analyse gewähren möchten.

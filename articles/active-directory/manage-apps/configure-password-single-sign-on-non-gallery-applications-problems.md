@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bacefaada8ab0d63bb17d22f67b91c51a789de8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172330"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857996"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
@@ -46,25 +46,25 @@ Allgemein gilt: **Falls die automatische Erfassung von Anmeldefeldern nicht funk
 
 Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort** für eine Anwendung mit der **automatischen Erfassung von Anmeldefeldern** zu konfigurieren:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
-  * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-8.  Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
+8. Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
 
-9.  Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
+9. Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
 
 10. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -76,25 +76,25 @@ Wenn Sie Anmeldefelder manuell erfassen möchten, muss die Browsererweiterung f�
 
 Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort** für eine Anwendung mit der **manuellen Erfassung von Anmeldefeldern** zu konfigurieren:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
    * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-8.  Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
+8. Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
 
-9.  Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
+9. Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
 
 10. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -174,21 +174,21 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:
 
-1.  Klicken Sie in der rechten oberen Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (Glockensymbol).
+1. Klicken Sie in der rechten oberen Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (Glockensymbol).
 
-2.  Wählen Sie eine Benachrichtigung mit einem **Fehlerstatus** aus (mit einem roten (!) neben dem Namen).
+2. Wählen Sie eine Benachrichtigung mit einem **Fehlerstatus** aus (mit einem roten (!) neben dem Namen).
 
-  >[HINWEIS] Sie können auf keine Benachrichtigungen klicken, die den Status **Erfolgreich** oder **In Bearbeitung** aufweisen.
-  >
-  >
+   >[HINWEIS] Sie können auf keine Benachrichtigungen klicken, die den Status **Erfolgreich** oder **In Bearbeitung** aufweisen.
+   >
+   >
 
-3.  Der Bereich **Benachrichtigungsdetails** wird geöffnet.
+3. Der Bereich **Benachrichtigungsdetails** wird geöffnet.
 
-4.  Diese Informationen helfen Ihnen, das Problem besser zu verstehen.
+4. Diese Informationen helfen Ihnen, das Problem besser zu verstehen.
 
-5.  Wenn Sie weitere Unterstützung benötigen, können Sie diese Informationen auch einem Supporttechniker oder der Produktgruppe mitteilen, um Hilfe bei Ihrem Problem zu erhalten.
+5. Wenn Sie weitere Unterstützung benötigen, können Sie diese Informationen auch einem Supporttechniker oder der Produktgruppe mitteilen, um Hilfe bei Ihrem Problem zu erhalten.
 
-6.  Klicken Sie auf das **Symbol** **Kopieren** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
+6. Klicken Sie auf das **Symbol** **Kopieren** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
 
@@ -226,7 +226,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
 -   **UPN:** der Benutzer, der den Vorgang durchgeführt hat
 
-    -   Beispiel: **tperkins@f128.info**
+    -   Beispiel: **tperkins\@f128.info**
 
 -   **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
 
@@ -238,13 +238,13 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
 ### <a name="detailed-notification-items"></a>Detaillierte Benachrichtigungselemente
 
--   **Anzeigename**: **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
+-   **Anzeigename:** **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
 
-    -   Beispiel*: **Anwendungsproxyeinstellungen**
+    -   Beispiel: **Anwendungsproxyeinstellungen**
 
--   **Status**: der spezifische Status der Benachrichtigung
+-   **Status:** der spezifische Status der Benachrichtigung
 
-    -   Beispiel*: **Fehler**
+    -   Beispiel: **Fehler**
 
 -   **Objekt-ID**: **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
 
@@ -252,7 +252,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
 -   **Details:** detaillierte Beschreibung des Ergebnisses des Vorgangs
 
-    -   Beispiel: **Interne URL 'https://bing.com/' ist ungültig, da sie bereits verwendet wird**
+    -   Beispiel: **Interne URL '<https://bing.com/>' ist ungültig, da sie bereits verwendet wird**
 
 -   **Fehler kopieren**: Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 

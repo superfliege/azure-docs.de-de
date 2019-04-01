@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408322"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889680"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -68,7 +68,7 @@ Es folgen einige allgemeine bewährte Methoden für den Hive-Metastore in HDInsi
 - Wenn Sie mehreren HDInsight-Clustern Zugriff auf separate Daten gewähren möchten, verwenden Sie für den Metastore auf jedem Cluster eine eigene Datenbank. Wenn Sie einen Metastore für mehrere HDInsight-Cluster freigeben, bedeutet dies, dass die Cluster dieselben Metadaten und zugrunde liegenden Benutzerdatendateien verwenden.
 - Sichern Sie Ihren benutzerdefinierten Metastore regelmäßig. Die Azure SQL-Datenbank generiert Sicherungen automatisch, der Aufbewahrungszeitraum der Sicherungen variiert jedoch. Weitere Informationen finden Sie unter [Informationen zu automatischen Sicherungen von SQL-Datenbank](../sql-database/sql-database-automated-backups.md).
 - Um eine bessere Leistung und möglichst geringe Kosten für ausgehenden Netzwerkdatenverkehr zu erzielen, sollten sich der Metastore und der HDInsight-Cluster in derselben Region befinden.
-- Überwachen Sie den Metastore in Hinsicht auf Leistung und Verfügbarkeit. Verwenden Sie dazu Überwachungstools für die Azure SQL-Datenbank, wie z. B. das Azure-Portal oder Azure Log Analytics.
+- Überwachen Sie den Metastore in Hinblick auf Leistung und Verfügbarkeit. Verwenden Sie dazu Überwachungstools für die Azure SQL-Datenbank, wie z. B. das Azure-Portal oder Azure Monitor-Protokolle.
 - Wenn eine neue, höhere Version von Azure HDInsight anhand einer vorhandenen benutzerdefinierten Metastoredatenbank erstellt wird, aktualisiert das System das Metastoreschema unwiderruflich, ohne die Datenbank aus der Sicherung wiederherzustellen.
 - Falls Sie einen Metastore für mehrere Cluster freigeben, achten Sie darauf, dass alle Cluster die gleiche HDInsight-Version haben. Verschiedene Hive-Versionen verwenden unterschiedliche Schemas der Metastoredatenbank. So können Sie beispielsweise einen Metastore nicht für Hive 1.2- und Hive 2.1-Cluster freigeben. 
 

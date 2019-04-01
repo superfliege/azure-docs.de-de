@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/16/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511971"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098092"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -42,7 +42,7 @@ Weitere Informationen finden Sie auf der [Seite mit der SLA für Azure DNS](http
 
 Eine Domäne ist ein eindeutiger Name im Domain Name System. Ein Beispiel wäre etwa „contoso.com“.
 
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispielsweise kann die Domäne „contoso.com“ mehrere DNS-Einträge enthalten. Die Einträge können „mail.contoso.com“ für einen Mailserver und „www.contoso.com“ für eine Website enthalten. Diese Einträge werden in der DNS-Zone „contoso.com“ gehostet.
+Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispielsweise kann die Domäne „contoso.com“ mehrere DNS-Einträge enthalten. Die Einträge können „mail.contoso.com“ für einen Mailserver und „www\.contoso.com“ für eine Website enthalten. Diese Einträge werden in der DNS-Zone „contoso.com“ gehostet.
 
 Ein Domänenname ist *nur ein Name*. Eine DNS-Zone ist eine Datenressource, die die DNS-Einträge für einen Domänennamen enthält. Azure DNS ermöglicht es Ihnen, eine DNS-Zone zu hosten und die DNS-Einträge für eine Domäne in Azure zu verwalten. Darüber hinaus stellt der Dienst DNS-Namenserver bereit, um DNS-Abfragen aus dem Internet zu beantworten.
 
@@ -239,7 +239,7 @@ Ja. Um die Verknüpfung eines virtuellen Registrierungsnetzwerks mit einer priva
 
 Ja. Wenn Sie ein virtuelles Registrierungs- oder Auflösungsnetzwerk löschen, ohne dafür zuerst die Verknüpfung mit einer privaten Zone zu löschen, ist Ihr Löschvorgang erfolgreich. Die Verknüpfung des virtuellen Netzwerks wird, falls vorhanden, für Ihre private Zone aber nicht automatisch aufgehoben. Sie müssen die Verknüpfung des virtuellen Netzwerks mit der privaten Zone manuell aufheben. Aus diesem Grund sollten Sie die Verknüpfung Ihres virtuellen Netzwerks mit Ihrer privaten Zone aufheben, bevor Sie es löschen.
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Funktioniert die DNS-Auflösung mithilfe des Standard-FQDN (internal.cloudapp.net) auch, wenn eine private Zone (z.B. „contoso.local“) mit einem virtuellen Netzwerk verknüpft ist?
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Funktioniert die DNS-Auflösung mithilfe des Standard-FQDN (internal.cloudapp.net) auch, wenn eine private Zone (z.B. „private.contoso.com“) mit einem virtuellen Netzwerk verknüpft ist?
 
 Ja. Für private Zonen werden die DNS-Standardauflösungen nicht ersetzt, indem die von Azure bereitgestellte Zone „internal.cloudapp.net“ genutzt wird. Dies wird als zusätzliches Feature bzw. als Erweiterung angeboten. Verwenden Sie den FQDN der Zone, für die Sie die Auflösung durchführen möchten, unabhängig davon, ob Sie die von Azure bereitgestellte Zone „internal.cloudapp.net“ oder Ihre eigene private Zone nutzen. 
 
@@ -262,7 +262,7 @@ Ja. Während der öffentlichen Vorschauphase gelten die folgenden Einschränkung
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Gibt es Kontingente oder Grenzwerte in Bezug auf Zonen oder Einträge für private Zonen?
 
-Es gibt keine Beschränkung in Bezug auf die Anzahl von Zonen, die pro Abonnement für private Zonen zulässig sind. Es gibt keine Beschränkung in Bezug auf die Anzahl von Eintragssätzen, die pro Zone für private Zonen zulässig sind. Sowohl öffentliche als auch private Zonen unterliegen den allgemeinen DNS-Grenzwerten. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#dns-limits).
+Es gibt keine Beschränkung in Bezug auf die Anzahl von Zonen, die pro Abonnement für private Zonen zulässig sind. Es gibt keine Beschränkung in Bezug auf die Anzahl von Eintragssätzen, die pro Zone für private Zonen zulässig sind. Sowohl öffentliche als auch private Zonen unterliegen den allgemeinen DNS-Grenzwerten. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#azure-dns-limits).
 
 ### <a name="is-there-portal-support-for-private-zones"></a>Besteht Portalunterstützung für private Zonen?
 

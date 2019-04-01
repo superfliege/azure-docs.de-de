@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 5d9952581049198131e30cd7d0ba0ebf6a14cc54
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 03/12/2019
+ms.openlocfilehash: c4f8144c3e941c673da3ecc9be7ac7f091583d4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864660"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -29,21 +29,25 @@ Eine Schnellstartanleitung zum Erstellen einer verwalteten Azure SQL-Datenbank-I
 
 ## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Erstellen und Verwalten verwalteter Instanzen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
 
 > [!TIP]
-> PowerShell-Beispielskripts finden Sie unter [Schnellstartskript: Erstellen einer verwalteten Azure SQL-Instanz mithilfe der PowerShell-Bibliothek](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+> PowerShell-Beispielskripts finden Sie unter [Schnellstartskript: Erstellen einer verwalteten Azure SQL-Instanz mithilfe der PowerShell-Bibliothek](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Gibt Informationen zur verwalteten Azure SQL-Instanz zurück|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Legt Eigenschaften für eine verwaltete Azure SQL-Datenbank-Instanz fest|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz|
-|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
-|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Gibt Informationen zur verwalteten Azure SQL-Instanz-Datenbank zurück|
-|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
-|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Stellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank wieder her|
+|[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz |
+|[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Gibt Informationen zur verwalteten Azure SQL-Instanz zurück|
+|[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Legt Eigenschaften für eine verwaltete Azure SQL-Datenbank-Instanz fest|
+|[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz|
+|[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
+|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Gibt Informationen zur verwalteten Azure SQL-Instanz-Datenbank zurück|
+|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
+|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Stellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank wieder her|
 
 ## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure-Befehlszeilenschnittstelle: Erstellen und Verwalten verwalteter Instanzen
 

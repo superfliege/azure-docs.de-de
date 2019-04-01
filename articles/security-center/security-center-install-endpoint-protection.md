@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1ce1faa13c541939335d188866e15c683b6ffc28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6d9c5b080c491d3a6f35f591c69d4c39989b22a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099796"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -30,15 +30,15 @@ Security Center meldet folgende Endpoint Protection-Probleme:
 - Endpoint protection not installed on non-Azure computers (Endpoint Protection auf Azure-fremden Computern nicht installiert): Auf diesen Azure-fremden Computern ist keine unterstützte Antischadsoftware installiert.
 - Endpoint Protection-Integrität:
 
-   - Signatur veraltet: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese verfügt jedoch nicht über die neuesten Antischadsoftware-Signaturen.
-   - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-partner-integration.md).
-   - Keine Berichterstattung: Von der installierten Antischadsoftware-Lösung werden keine Daten gemeldet.
-   - Unbekannt: Eine Antischadsoftware-Lösung ist installiert, aber der Status ist unbekannt, oder es wird ein unbekannter Fehler gemeldet.
+  - Signatur veraltet: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese verfügt jedoch nicht über die neuesten Antischadsoftware-Signaturen.
+  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-partner-integration.md).
+  - Keine Berichterstattung: Von der installierten Antischadsoftware-Lösung werden keine Daten gemeldet.
+  - Unbekannt: Eine Antischadsoftware-Lösung ist installiert, aber der Status ist unbekannt, oder es wird ein unbekannter Fehler gemeldet.
 
-   > [!NOTE]
-   > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-partner-integration.md#integrated-azure-security-solutions).
-   >
-   >
+    > [!NOTE]
+    > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-partner-integration.md#integrated-azure-security-solutions).
+    >
+    >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 Endpoint Protection-Probleme werden in Security Center als Empfehlung präsentiert.  Wenn Ihre Umgebung für Antischadsoftwarebedrohungen anfällig ist, wird diese Empfehlung unter **Empfehlungen** und unter **Compute** angezeigt. Zum Anzeigen des Dashboards **Endpoint protection issues** (Endpoint Protection-Probleme) muss der Compute-Workflow verwendet werden.
@@ -60,7 +60,7 @@ In diesem Beispiel verwenden wir **Compute**.  Sie erfahren, wie Sie Antischadso
    - Installed endpoint protection providers (Installierte Endpoint Protection-Anbieter): Eine Liste mit den verschiedenen Anbietern, die von Security Center ermittelt wurden.
    - Installed endpoint protection health state (Integritätszustand der installierten Endpoint Protection-Lösung): Zeigt den Integritätszustand der virtuellen und physischen Computer an, auf denen eine Endpoint Protection-Lösung installiert ist. Das Diagramm zeigt die Anzahl einwandfreier virtueller und physischer Computer und die Anzahl von Computern mit unzureichendem Schutz an.
    - Erkannte Schadsoftware: Zeigt die Anzahl virtueller und physischer Computer an, für die Security Center die Erkennung von Schadsoftware meldet.
-   - Attacked computers (Angegriffene Computer): Zeigt die Anzahl virtueller und physischer Computer an, für die Security Center Angriffe durch Schadsoftware meldet.
+   - Angegriffene Computer: Zeigt die Anzahl virtueller und physischer Computer an, für die Security Center Angriffe durch Schadsoftware meldet.
 
    Im unteren Bereich des Dashboards befindet sich eine Liste mit Endpoint Protection-Problemen und folgenden Informationen:  
 
@@ -84,13 +84,13 @@ In diesem Beispiel verwenden wir **Compute**.  Sie erfahren, wie Sie Antischadso
 
    ![Klicken auf „Endpoint protection not installed on non-Azure computers“ (Endpoint Protection auf Azure-fremden Computern nicht installiert)][4]
 
-2. Wählen Sie unter **Endpoint protection not installed on non-Azure computers** (Endpoint Protection auf Azure-fremden Computern nicht installiert) einen Arbeitsbereich aus. Eine für den Arbeitsbereich gefilterte Log Analytics-Suchabfrage wird geöffnet und zeigt eine Liste mit Computern ohne Antischadsoftware an. Klicken Sie auf einen Computer in der Liste, um weitere Informationen zu erhalten.
+2. Wählen Sie unter **Endpoint protection not installed on non-Azure computers** (Endpoint Protection auf Azure-fremden Computern nicht installiert) einen Arbeitsbereich aus. Eine für den Arbeitsbereich gefilterte Azure Monitor-Protokollsuchabfrage wird geöffnet und zeigt eine Liste mit Computern ohne Antischadsoftware an. Klicken Sie auf einen Computer in der Liste, um weitere Informationen zu erhalten.
 
-   ![Log Analytics-Suche][5]
+   ![Azure Monitor-Protokollsuche][5]
 
 Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
 
-  ![Log Analytics-Suche][6]
+  ![Azure Monitor-Protokollsuche][6]
 
 > [!NOTE]
 > Wir empfehlen, Endpoint Protection für alle virtuellen und physischen Computer bereitzustellen, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen.

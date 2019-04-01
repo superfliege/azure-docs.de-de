@@ -8,46 +8,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: d430f6252157c5d34aa236ef88f8490b4ad6a184
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0a7a16a43b208bf2d14b86cd5cb23544ec03f9a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877529"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 
 ## <a name="install-azure-powershell"></a>Installieren von Azure Powershell
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Dieser Artikel konzentriert sich auf die PowerShell-Cmdlets für Sicherungen für Azure Resource Manager (ARM) und MS Online, die Ihnen ermöglichen, einen Recovery Services-Tresor in einer Ressourcengruppe zu verwenden.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Im Oktober 2015 wurde Azure PowerShell 1.0 veröffentlicht. Diese Version war der Nachfolger der Version 0.9.8 und brachte einige bedeutende Änderungen, insbesondere beim Benennungsmuster von Cmdlets. Cmdlet-Namen der Version 1.0 haben das Muster {Verb}-AzureRm{Nomen}, während Namen der Version 0.9.8 nicht **Rm** enthalten (z.B. „New-AzureRmResourceGroup“ statt „New-AzureResourceGroup“). Wenn Sie Azure PowerShell 0.9.8 verwenden, müssen Sie zunächst den Resource Manager-Modus aktivieren, indem Sie den Befehl **Switch-AzureMode AzureResourceManager** ausführen. Dieser Befehl ist ab Version 1.0 nicht erforderlich.
-
-Wenn Sie Ihre Skripts, die für Version 0.9.8 geschrieben wurden, in einer Umgebung mit Versionen ab 1.0 verwenden möchten, sollten Sie die Skripts in einer Präproduktionsumgebung sorgfältig aktualisieren und testen, bevor Sie sie in der Produktion einsetzen, um unerwartete Auswirkungen zu vermeiden.
-
-[Laden Sie die neueste PowerShell-Version herunter](https://github.com/Azure/azure-powershell/releases) (erforderliche Mindestversion: 1.0.0)
-
-[!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
+Als Erstes [installieren Sie die neueste PowerShell-Version](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen. Ein Recovery Services-Tresor unterscheidet sich von einem Sicherungstresor.
 
-1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzureRMResourceProvider** verwenden, um den Azure Recovery Service-Anbieter für Ihr Abonnement zu registrieren.
+1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzResourceProvider** verwenden, um den Azure Recovery Service-Anbieter für Ihr Abonnement zu registrieren.
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Der Recovery Services-Tresor ist eine ARM-Ressource. Deshalb müssen Sie ihn in eine Ressourcengruppe einfügen. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Wenn Sie eine neue Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort für die Ressourcengruppe an.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "WestUS"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
-3. Verwenden Sie das Cmdlet **New-AzureRmRecoveryServicesVault** zum Erstellen des neuen Tresors. Stellen Sie sicher, dass Sie den gleichen Speicherort für den Tresor angeben, der für die Ressourcengruppe verwendet wurde.
+3. Verwenden Sie das Cmdlet **New-AzRecoveryServicesVault** zum Erstellen des neuen Tresors. Stellen Sie sicher, dass Sie den gleichen Speicherort für den Tresor angeben, der für die Ressourcengruppe verwendet wurde.
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 4. Geben Sie den Typ der zu verwendenden Speicherredundanz an – entweder [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy-lrs.md) oder [geografisch redundanter Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
 
@@ -57,17 +50,17 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Anzeigen von Tresoren in einem Abonnement
-Verwenden Sie **Get-AzureRmRecoveryServicesVault** , um die Liste mit allen Tresoren im aktuellen Abonnement anzuzeigen. Mithilfe dieses Befehls können Sie überprüfen, ob ein neuer Tresor erstellt wurde, oder feststellen, welche Tresore im Abonnement verfügbar sind.
+Verwenden Sie **Get-AzRecoveryServicesVault**, um die Liste mit allen Tresoren im aktuellen Abonnement anzuzeigen. Mithilfe dieses Befehls können Sie überprüfen, ob ein neuer Tresor erstellt wurde, oder feststellen, welche Tresore im Abonnement verfügbar sind.
 
-Führen Sie den Befehl **Get-AzureRmRecoveryServicesVault** aus, damit alle Tresore im Abonnement aufgelistet werden.
+Führen Sie den Befehl **Get-AzRecoveryServicesVault** aus, damit alle Tresore im Abonnement aufgelistet werden.
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -131,7 +124,7 @@ Laden Sie nach dem Erstellen des Recovery Services-Tresors den neuesten Agent so
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
 Führen Sie auf dem Windows-Server oder Windows-Clientcomputer das Cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) aus, um den Computer beim Tresor zu registrieren.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076433"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452656"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 
@@ -69,7 +69,7 @@ In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis e
     - **IP-Adresskonfiguration**: Geben Sie an, ob Sie öffentliche, private oder freigegebene IP-Adressen verwenden möchten. Weitere Informationen zu freigegebenen IP-Adressen finden Sie unter [Grundlegendes zu freigegebenen IP-Adressen in Azure DevTest Labs](./devtest-lab-shared-ip.md).
     - **Ablaufdatum und -zeit:** Geben Sie Ablaufdatum und -zeit für den virtuellen Computer an, damit dieser automatisch gelöscht wird. 
     - **Diesen Computer als anforderbar festlegen**: Wenn Sie einen Computer als „anforderbar“ festlegen, bedeutet dies, dass dem Computer zum Zeitpunkt der Erstellung kein Besitz zugewiesen wird. Auf der Seite des Labs können Labbenutzer den Besitz des Computers übernehmen („abrufen“).     
-    - **Number of claimable instances** (Anzahl abrufbarer Instanzen): Geben Sie an, wie viele abrufbare Instanzen erstellt werden sollen. 
+    - **Anzahl abrufbarer Instanzen**: Geben Sie an, wie viele abrufbare Instanzen erstellt werden sollen. 
 8. Wählen Sie **Senden** aus, um die Formel zu erstellen.
 
 9. Wenn die Formel erstellt wurde, wird sie in der Liste auf der Seite **Formeln** angezeigt.

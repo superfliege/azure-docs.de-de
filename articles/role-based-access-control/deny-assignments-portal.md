@@ -11,24 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005801"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal
 
-[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, müssen Sie dennoch in der Lage sein, Ablehnungszuweisungen anzuzeigen, da diese Ihre allgemeinen Berechtigungen beeinflussen können. Um Informationen zu einer Ablehnungszuweisung zu erhalten, benötigen Sie die Berechtigung `Microsoft.Authorization/denyAssignments/read`, die in den meisten [integrierten Rollen](built-in-roles.md) für Azure-Ressourcen enthalten ist.
-
-In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen anzeigen.
+[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen anzeigen.
 
 > [!NOTE]
-> Aktuell sind Ablehnungszuweisungen schreibgeschützt und können nur von Azure festgelegt werden.
+> Zu diesem Zeitpunkt können Sie nur dann Ihre eigenen Ablehnungszuweisungen hinzufügen, wenn Sie Azure Blueprints verwenden. Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folgendes verfügen:
+
+- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) enthalten ist.
 
 ## <a name="view-deny-assignments"></a>Anzeigen von Ablehnungszuweisungen
 

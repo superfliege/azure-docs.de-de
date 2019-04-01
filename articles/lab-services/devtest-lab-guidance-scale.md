@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244878"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431189"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Zentrales Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
 Vor der Implementierung von DevTest Labs auf Unternehmensebene sind mehrere wichtige Entscheidungspunkte zu berücksichtigen. Diese Entscheidungspunkte auf hoher Ebene zu verstehen, hilft Organisationen bei zukünftigen Entwurfsentscheidungen. Sie sollten jedoch eine Organisation nicht daran hindern, einen Proof of Concept zu starten. Die obersten drei Bereiche für die anfängliche Planung der Hochskalierung sind:
@@ -46,7 +46,7 @@ Wir heben als Nächstes die Vorteile der beiden Ansätze hervor.
 Häufig ist der Ansatz, nur ein Abonnement zu verwenden, in einem großen Unternehmen nicht zu bewältigen. Das Beschränken der Anzahl von Abonnements bietet jedoch die folgenden Vorteile:
 
 - Die **Prognosekosten** für das Unternehmen.  Die Budgetzuweisung ist mit einem Abonnement viel einfacher, da sich alle Ressourcen in einem einzelnen Pool befinden. Dieser Ansatz ermöglicht eine einfachere Entscheidungsfindung zur Umsetzung von Kostenkontrollmaßnahmen zu einem beliebigen Zeitpunkt während eines Abrechnungszyklus.
-- Die **Verwaltbarkeit** von VMs, Artefakten, Formeln, Netzwerkkonfigurationen, Berechtigungen, Richtlinien usw. ist einfacher, da alle Aktualisierungen nur in einem Abonnement vorgenommen werden müssen und nicht in vielen Abonnements.
+- Die **Verwaltbarkeit** von virtuellen Computern, Artefakten, Formeln, Netzwerkkonfigurationen, Berechtigungen, Richtlinien usw. ist einfacher, da alle Aktualisierungen nur in einem und nicht in vielen Abonnements vorgenommen werden müssen.
 - Der **Netzwerkaufwand** wird mit einem einzelnen Abonnement für Unternehmen, bei denen lokale Konnektivität eine Voraussetzung ist, erheblich vereinfacht. Es ist notwendig, virtuelle Netzwerke über alle Abonnements hinweg zu verbinden (Hub-Spoke-Modell), und dies erfordert bei weiteren Abonnements zusätzliche Konfiguration, Verwaltung, IP-Adressbereiche usw.
 - Die **Teamzusammenarbeit** ist einfacher, wenn alle im selben Abonnement arbeiten. Beispielsweise ist es einfacher, einen virtuellen Computer einem Kollegen zuzuweisen, Teamressourcen freizugeben usw.
 

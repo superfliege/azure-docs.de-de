@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907511b7f20311479e7b11a30f3d5719daea3f87
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301467"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853006"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -93,7 +93,8 @@ Sie sollten unbedingt sicherstellen, dass Sie ausreichend Kapazität zwischen de
 |4|16|320|1150|
 |8|32|270|1.190|
 |16|64|245|1200*|
-\* Dieser Computer hat eine benutzerdefinierte Einstellung verwendet, um einige die Standardgrenzwerte für Verbindungen über die für .NET empfohlenen Einstellungen zu erhöhen. Es wird empfohlen, vor der Kontaktaufnahme mit dem Support einen Test mit den Standardeinstellungen durchzuführen, um diesen Grenzwert für Ihren Mandanten ändern zu lassen.
+
+\* Dieser Computer hat eine benutzerdefinierte Einstellung verwendet, um einige der Standardgrenzwerte für Verbindungen über die für .NET empfohlenen Einstellungen zu erhöhen. Es wird empfohlen, vor der Kontaktaufnahme mit dem Support einen Test mit den Standardeinstellungen durchzuführen, um diesen Grenzwert für Ihren Mandanten ändern zu lassen.
  
 >[!NOTE]
 >Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417090"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081252"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -57,6 +57,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * App Service-Zertifikate – siehe [Einschränkungen von App Service Certificate](#app-service-certificate-limitations)
 * Automation – Runbooks müssen in der gleichen Ressourcengruppe wie das Automation-Konto vorhanden sein.
 * Azure Active Directory B2C
+* Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Azure Cosmos DB
 * Azure-Daten-Explorer
 * Azure Database for MariaDB
@@ -64,6 +65,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Azure Database for PostgreSQL
 * Azure DevOps – Azure DevOps-Unternehmen mit erworbenen Erweiterungen, die nicht von Microsoft stammen, müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
 * Azure Maps
+* Azure Monitor-Protokolle
 * Azure Relay
 * Azure Stack: Registrierungen
 * Batch
@@ -89,10 +91,9 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * IoT Hubs
 * Key Vault: Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht in Ressourcengruppen im gleichen Abonnement oder zwischen Abonnements verschoben werden.
 * Load Balancer: Load Balancer der SKU „Basic“ kann verschoben werden. Load Balancer der SKU „Standard“ kann nicht verschoben werden.
-* Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio-Webdienste können in eine Ressourcengruppe im gleichen Abonnement verschoben werden, aber nicht in ein anderes Abonnement. Andere Machine Learning-Ressourcen können über Abonnements hinweg verschoben werden.
-* Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
+* Verwaltete Datenträger – Verwaltete Datenträger in Verfügbarkeitszonen können nicht in ein anderes Abonnement verschoben werden.
 * Verwaltete Identität – vom Benutzer zugewiesen
 * Media Services
 * Überwachen: Stellen Sie sicher, dass das Verschieben in neue Abonnements nicht die [Abonnementkontingente](../azure-subscription-service-limits.md#monitor-limits) überschreitet.
@@ -103,7 +104,6 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
 * Recovery Services-Tresor – registrieren Sie sich für eine [Vorschauversion](#recovery-services-limitations).
-* Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
 * Service Bus
@@ -116,7 +116,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations) bei VMs mit verwalteten Datenträgern.
+* Virtual Machines – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * VM-Skalierungsgruppen – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Virtual Network – siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations)
@@ -133,6 +133,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Azure Databricks
 * Azure Firewall
 * Azure Migrate
+* Azure NetApp Files
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
 * Klassische Anwendungen
 * Container Instances
@@ -145,7 +146,6 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Lab-Dienste: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Verwaltete Anwendungen
 * Microsoft Genomics
-* NetApp
 * SAP HANA in Azure
 * Sicherheit
 * Site Recovery
@@ -166,12 +166,11 @@ In diesem Abschnitt wird erklärt, wie Sie komplizierte Szenarios beim Verschieb
 
 ### <a name="virtual-machines-limitations"></a>Einschränkungen von virtuellen Computern
 
-Ab dem 24. September 2018 können Sie verwaltete Datenträger verschieben. Das bedeutet, dass Sie virtuelle Computer mit verwalteten Datenträgern, Images und Momentaufnahmen sowie Verfügbarkeitsgruppen mit virtuellen Computern, die verwaltete Datenträger verwenden, verschieben können.
+Sie können virtuelle Computer mit verwalteten Datenträgern, Images und Momentaufnahmen sowie Verfügbarkeitsgruppen mit virtuellen Computern, die verwaltete Datenträger verwenden, verschieben. Verwaltete Datenträger in Verfügbarkeitszonen können nicht in ein anderes Abonnement verschoben werden.
 
 Folgende Szenarios werden noch nicht unterstützt:
 
 * Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
-* Verwaltete Datenträger in Verfügbarkeitszonen können nicht in ein anderes Abonnement verschoben werden.
 * Eine Virtual Machine Scale Sets-Instanz mit Load Balancer der Standard-SKU oder einer öffentlichen IP-Adresse der Standard-SKU kann nicht verschoben werden.
 * Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
 
@@ -190,6 +189,8 @@ Verwenden Sie die folgende Problemumgehung, um mit Azure Backup konfigurierte vi
 ### <a name="virtual-networks-limitations"></a>Einschränkungen von virtuellen Netzwerken
 
 Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige Ressourcen verschieben. Bei VPN-Gateways müssen Sie IP-Adressen, Gateways für virtuelle Netzwerke und alle zugehörigen Verbindungsressourcen verschieben. Gateways des lokalen Netzwerks können sich in einer anderen Ressourcengruppe befinden.
+
+Um einen virtuellen Computer mit einer Netzwerkschnittstellenkarte zu verschieben, müssen Sie alle abhängigen Ressourcen verschieben. Sie müssen das virtuelle Netzwerk für die Netzwerkschnittstellenkarte, alle anderen Netzwerkschnittstellenkarten für das virtuelle Netzwerk und die VPN-Gateways verschieben.
 
 Um ein mittels Peering verknüpftes virtuelles Netzwerk zu verschieben, müssen Sie zunächst das Peering des virtuellen Netzwerks deaktivieren. Nach der Deaktivierung können Sie das virtuelle Netzwerk verschieben. Aktivieren Sie nach der Verschiebung das Peering des virtuellen Netzwerks wieder.
 
@@ -254,58 +255,58 @@ Verwenden Sie zum Verschieben von klassischen Ressourcen in ein neues Abonnement
 
 1. Überprüfen Sie, ob das Quellabonnement an einem abonnementübergreifenden Verschiebevorgang teilnehmen kann. Gehen Sie folgendermaßen vor:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      Fügen Sie Folgendes in den Anforderungstext ein:
 
-  ```json
-  {
+   ```json
+   {
     "role": "source"
-  }
-  ```
+   }
+   ```
 
      Die Antwort für den Überprüfungsvorgang erfolgt in folgendem Format:
 
-  ```json
-  {
+   ```json
+   {
     "status": "{status}",
     "reasons": [
       "reason1",
       "reason2"
     ]
-  }
-  ```
+   }
+   ```
 
 2. Überprüfen Sie, ob das Zielabonnement an einem abonnementübergreifenden Verschiebevorgang teilnehmen kann. Gehen Sie folgendermaßen vor:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      Fügen Sie Folgendes in den Anforderungstext ein:
 
-  ```json
-  {
+   ```json
+   {
     "role": "target"
-  }
-  ```
+   }
+   ```
 
      Die Antwort liegt im gleichen Format vor wie bei der Überprüfung des Quellabonnements.
 3. Wenn beide Abonnements die Überprüfung bestehen, verschieben Sie alle klassischen Ressourcen mithilfe des folgenden Vorgangs aus einem Abonnement in ein anderes:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
+   ```
 
     Fügen Sie Folgendes in den Anforderungstext ein:
 
-  ```json
-  {
+   ```json
+   {
     "target": "/subscriptions/{target-subscription-id}"
-  }
-  ```
+   }
+   ```
 
 Dieser Vorgang kann einige Minuten dauern.
 
@@ -344,52 +345,52 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
 
 1. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md) vorhanden sein. Um zu überprüfen, ob beide Abonnements die gleiche Mandanten-ID aufweisen, verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle.
 
-  Verwenden Sie für Azure PowerShell Folgendes:
+   Verwenden Sie für Azure PowerShell Folgendes:
 
-  ```azurepowershell-interactive
-  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
-  ```
+   ```azurepowershell-interactive
+   (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+   (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
+   ```
 
-  Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
+   Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
-  ```azurecli-interactive
-  az account show --subscription <your-source-subscription> --query tenantId
-  az account show --subscription <your-destination-subscription> --query tenantId
-  ```
+   ```azurecli-interactive
+   az account show --subscription <your-source-subscription> --query tenantId
+   az account show --subscription <your-destination-subscription> --query tenantId
+   ```
 
-  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten-IDs aufeinander abzustimmen:
+   Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten-IDs aufeinander abzustimmen:
 
-  * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
-  * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
+   * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieser Fehler kann auftreten, wenn eine Ressource in ein neues Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
 
-  Verwenden Sie für PowerShell die folgenden Befehle zum Abrufen des Registrierungsstatus:
+   Verwenden Sie für PowerShell die folgenden Befehle zum Abrufen des Registrierungsstatus:
 
-  ```azurepowershell-interactive
-  Set-AzContext -Subscription <destination-subscription-name-or-id>
-  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
-  ```
+   ```azurepowershell-interactive
+   Set-AzContext -Subscription <destination-subscription-name-or-id>
+   Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+   ```
 
-  Verwenden Sie zum Registrieren eines Ressourcenanbieters Folgendes:
+   Verwenden Sie zum Registrieren eines Ressourcenanbieters Folgendes:
 
-  ```azurepowershell-interactive
-  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
-  ```
+   ```azurepowershell-interactive
+   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+   ```
 
-  Verwenden Sie für die Azure CLI die folgenden Befehle zum Abrufen des Registrierungsstatus:
+   Verwenden Sie für die Azure CLI die folgenden Befehle zum Abrufen des Registrierungsstatus:
 
-  ```azurecli-interactive
-  az account set -s <destination-subscription-name-or-id>
-  az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
-  ```
+   ```azurecli-interactive
+   az account set -s <destination-subscription-name-or-id>
+   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+   ```
 
-  Verwenden Sie zum Registrieren eines Ressourcenanbieters Folgendes:
+   Verwenden Sie zum Registrieren eines Ressourcenanbieters Folgendes:
 
-  ```azurecli-interactive
-  az provider register --namespace Microsoft.Batch
-  ```
+   ```azurecli-interactive
+   az provider register --namespace Microsoft.Batch
+   ```
 
 1. Das Konto, das die Ressourcen verschiebt, muss mindestens über folgende Berechtigungen verfügen:
 
@@ -513,7 +514,7 @@ Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressource
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](powershell-azure-resource-manager.md).
-* Informationen zu Befehlen der Azure-Befehlszeilenschnittstelle zum Verwalten Ihres Abonnements finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Resource Manager](xplat-cli-azure-resource-manager.md).
+* Informationen zu den PowerShell-Cmdlets zum Verwalten Ihrer Ressourcen finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](manage-resources-powershell.md).
+* Informationen zu den Befehlen der Azure CLI zum Verwalten Ihrer Ressourcen finden Sie unter [Verwenden der Azure CLI mit Resource Manager](manage-resources-cli.md).
 * Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](resource-group-portal.md).
 * Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).

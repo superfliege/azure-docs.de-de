@@ -8,18 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: 5ef9d61e880d3252eae2d8ef924ff39a5d2f6acf
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 639ccb2a0680793b50af52dc16c6d06505d5079b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899535"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem DPM-Server sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 
 ## <a name="setting-up-the-powershell-environment"></a>Einrichten der PowerShell-Umgebung
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 Um mit PowerShell Sicherungen von Data Protection Manager in Azure verwalten zu können, benötigen Sie eine geeignete Umgebung in PowerShell. Zu Beginn der PowerShell-Sitzung müssen Sie den folgenden Befehl ausführen, um die richtigen Module zu importieren und korrekt auf die DPM-Cmdlets verweisen zu können:
 
@@ -37,14 +36,10 @@ Sample DPM scripts: Get-DPMSampleScript
 ```
 
 ## <a name="setup-and-registration"></a>Einrichtung und Registrierung
-Vorbereitung:
 
-1. [Laden Sie die neueste PowerShell-Version herunter](https://github.com/Azure/azure-powershell/releases) (erforderliche Mindestversion: 1.0.0).
-2. Aktivieren Sie die Azure Backup-Cmdlets, indem Sie über das Cmdlet *Switch-AzureMode* in den **AzureResourceManager** -Modus wechseln:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-```
-PS C:\> Switch-AzureMode AzureResourceManager
-```
+Als Erstes [laden Sie die neueste Azure PowerShell herunter](/powershell/azure/install-az-ps).
 
 Die folgenden Installations- und Registrierungsaufgaben können mit PowerShell automatisiert werden:
 
@@ -57,20 +52,20 @@ Die folgenden Installations- und Registrierungsaufgaben können mit PowerShell a
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen. Ein Recovery Services-Tresor unterscheidet sich von einem Sicherungstresor.
 
-1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzureRMResourceProvider** verwenden, um den Azure Recovery Service-Anbieter für Ihr Abonnement zu registrieren.
+1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzResourceProvider** verwenden, um den Azure Recovery Service-Anbieter für Ihr Abonnement zu registrieren.
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Der Recovery Services-Tresor ist eine ARM-Ressource. Deshalb müssen Sie ihn in eine Ressourcengruppe einfügen. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Wenn Sie eine neue Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort für die Ressourcengruppe an.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "West US"
     ```
-3. Erstellen Sie mithilfe des Cmdlets **New-AzureRmRecoveryServicesVault** einen neuen Tresor. Stellen Sie sicher, dass Sie den gleichen Speicherort für den Tresor angeben, der für die Ressourcengruppe verwendet wurde.
+3. Verwenden Sie das Cmdlet **New-AzRecoveryServicesVault** zum Erstellen eines neuen Tresors. Stellen Sie sicher, dass Sie den gleichen Speicherort für den Tresor angeben, der für die Ressourcengruppe verwendet wurde.
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 4. Geben Sie den Typ der zu verwendenden Speicherredundanz an – entweder [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy-lrs.md) oder [geografisch redundanter Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
 
@@ -80,17 +75,17 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Anzeigen von Tresoren in einem Abonnement
-Verwenden Sie **Get-AzureRmRecoveryServicesVault** , um die Liste mit allen Tresoren im aktuellen Abonnement anzuzeigen. Mithilfe dieses Befehls können Sie überprüfen, ob ein neuer Tresor erstellt wurde, oder feststellen, welche Tresore im Abonnement verfügbar sind.
+Verwenden Sie **Get-AzRecoveryServicesVault**, um die Liste mit allen Tresoren im aktuellen Abonnement anzuzeigen. Mithilfe dieses Befehls können Sie überprüfen, ob ein neuer Tresor erstellt wurde, oder feststellen, welche Tresore im Abonnement verfügbar sind.
 
-Führen Sie den Befehl Get-AzureRmRecoveryServicesVault aus, damit alle Tresore im Abonnement aufgelistet werden.
+Führen Sie den Befehl „Get-AzRecoveryServicesVault“ aus, damit alle Tresore im Abonnement aufgelistet werden.
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -143,7 +138,7 @@ Laden Sie nach dem Erstellen des Recovery Services-Tresors den neuesten Agent so
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 PS C:\> $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
@@ -252,7 +247,7 @@ Die Liste der Server, auf denen der DPM-Agent installiert ist und vom DPM-Server
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”}
 ```
 
-Rufen Sie jetzt die Liste der Datenquellen auf ```$server``` mit dem [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605)-Cmdlet ab. In diesem Beispiel filtern wir nach Volume *D:\*, das wir für die Sicherung konfigurieren möchten. Diese Datenquelle wird der Schutzgruppe dann mithilfe des [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732)-Cmdlets hinzugefügt. Denken Sie daran, beim Hinzufügen das *änderbare* Schutzgruppenobjekt ```$MPG``` zu verwenden.
+Rufen Sie jetzt die Liste der Datenquellen auf ```$server``` mit dem [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605)-Cmdlet ab. In diesem Beispiel filtern wir nach Volume *D:\\*, das wir für die Sicherung konfigurieren möchten. Diese Datenquelle wird der Schutzgruppe dann mithilfe des [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732)-Cmdlets hinzugefügt. Denken Sie daran, beim Hinzufügen das *änderbare* Schutzgruppenobjekt ```$MPG``` zu verwenden.
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }

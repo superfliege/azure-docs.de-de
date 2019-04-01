@@ -1,24 +1,24 @@
 ---
-title: 'Schnellstartanleitung: Übermitteln eines Workflows mit einer BAM-Eingabedatei – Microsoft Genomics'
+title: Übermitteln eines Workflows mit einer BAM-Eingabedatei – Microsoft Genomics
 titleSuffix: Azure
-description: In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
+description: In diesem Artikel wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 91bc13dbf024df20ac23ca0ff83a73ed246dce28
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729503"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435081"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Übermitteln eines Workflows mit einer BAM-Eingabedatei
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn es sich bei Ihrer Eingabedatei um eine einzelne BAM-Datei handelt. In diesem Thema wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit dieser Schnellstartanleitung fortfahren. 
+In diesem Artikel erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn es sich bei Ihrer Eingabedatei um eine einzelne BAM-Datei handelt. In diesem Thema wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit diesem Artikel fortfahren. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Einrichten: Hochladen Ihrer BAM-Datei in Azure Storage
 Angenommen, Sie haben eine einzelne BAM-Datei (*reads.bam*) als **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** in Ihr Azure-Speicherkonto *myaccount* hochgeladen. Sie verfügen über die API-URL und den Zugriffsschlüssel. Als Ausgabeziel möchten Sie **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** verwenden.

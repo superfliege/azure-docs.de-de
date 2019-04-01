@@ -17,12 +17,12 @@ ms.date: 10/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecc7eb45b439140cf9d1de048a6d4a7db48c34c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15d0d537a23e21eeda3b284e7ec706cde2b443e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014076"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Ändern des Kennworts für das Azure AD Connect-Synchronisierungsdienstkonto
 Wenn Sie das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung ändern, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. 
@@ -46,7 +46,7 @@ Zweitens kann der Synchronisierungsdienst unter bestimmten Bedingungen bei Aktua
 Ihnen werden beispielsweise folgende Fehler angezeigt:
 
 - Wenn Sie im Windows-Dienststeuerungs-Manager versuchen, den Synchronisierungsdienst zu starten, und der Verschlüsselungsschlüssel nicht abgerufen werden kann, erhalten Sie die Fehlermeldung <strong>Der Microsoft Azure AD-Synchronisierungsdienst konnte auf dem lokalen Computer nicht gestartet werden. Weitere Informationen finden Sie im Systemereignisprotokoll. Setzen Sie sich mit dem Diensthersteller in Verbindung, wenn es sich um einen Nicht-Microsoft-Dienst handelt. Beziehen Sie sich auf den dienstspezifischen Fehlercode -21451857952</strong>.
-- In der Windows-Ereignisanzeige enthält das Anwendungsereignisprotokoll einen Fehler mit der **Ereignis-ID 6028** und die Fehlermeldung *„**Auf den Serververschlüsselungsschlüssel kann nicht zugegriffen werden**“*.
+- In der Windows-Ereignisanzeige enthält das Anwendungsereignisprotokoll einen Fehler mit der **Ereignis-ID 6028** und die Fehlermeldung *„Auf den Serververschlüsselungsschlüssel kann nicht zugegriffen werden“*.
 
 Um sicherzustellen, dass Sie diese Fehler nicht erhalten, führen Sie beim Ändern des Kennworts die Verfahren unter [Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung](#abandoning-the-azure-ad-connect-sync-encryption-key) aus.
  

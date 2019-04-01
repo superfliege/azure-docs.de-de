@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1f34796a98acb3ed4241edff57e506990479d1a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170193"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443265"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 und der OAuth 2.0-Gerätecodeflow
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170193"
 Azure AD unterstützt die [Gerätecodegewährung](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.  
 
 > [!Important] 
-> Zu diesem Zeitpunkt unterstützt der v2.0-Endpunkt nur den Geräteflow für Azure AD-Mandanten, jedoch nicht für persönliche Konten.  Dies bedeutet, dass Sie einem Mandantenendpunkt oder den Organisationsendpunkt verwenden müssen.  
+> Zu diesem Zeitpunkt unterstützt der v2.0-Endpunkt nur den Geräteflow für Azure AD-Mandanten, jedoch nicht für persönliche Konten.  Dies bedeutet, dass Sie einen Endpunkt als Mandant einrichten oder den Organisationsendpunkt verwenden müssen.  
 >
 > Persönliche Konten, die zu einem Azure AD-Mandanten eingeladen werden, können die Geräteflowgewährung verwenden, aber nur im Kontext des Mandanten.
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 81bd34cdbe35f3e12d5afddc929b0fac7631f4cc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113072"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244297"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security Center gefunden wurden
-Dieser Artikel enthält Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. Die Untersuchungsdaten werden in [Azure Log Analytics](../log-analytics/log-analytics-overview.md) gespeichert und im Security Center verfügbar gemacht. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder zu exportieren.
+Dieser Artikel enthält Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. Die Untersuchungsdaten werden in [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) gespeichert und im Security Center verfügbar gemacht. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder zu exportieren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -58,4 +58,4 @@ Ein Security Center-Benutzer, der die Rolle des Besitzers, Mitwirkenden oder Kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Verwalten von Benutzerdaten finden Sie unter [Manage user data in Azure Security Center (Verwalten von Benutzerdaten in Azure Security Center)](security-center-privacy.md).
-Weitere Informationen zum Löschen privater Daten in Log Analytics finden Sie unter [Exportieren und Löschen personenbezogener Daten](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Weitere Informationen zum Löschen privater Daten in Azure Monitor-Protokolle finden Sie unter [Exportieren und Löschen personenbezogener Daten](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

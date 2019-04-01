@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0ef11355d7a65bd2c9b7ddfb6c4db2ba02538062
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d0902c0e0b4c669f3918155f8416f064485abbea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270367"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874901"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -130,14 +130,12 @@ Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie v
 Oft besteht die Anforderung, Azure Monitor in andere Systeme zu integrieren und benutzerdefinierte Lösungen zu erstellen, die Ihre Überwachungsdaten nutzen. Andere Azure-Dienste arbeiten mit Azure Monitor, um diese Integration zu ermöglichen.
 
 ### <a name="event-hub"></a>Event Hub
-[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) ist eine Streamingplattform und ein Datenerfassungsdienst, der Daten mithilfe beliebiger Echtzeit-Analyseanbieter oder Batchverarbeitungs-/Speicheradapter transformieren und speichern kann. Verwenden Sie Event Hubs für das [Streamen von Protokolldaten von Azure Monitor](platform/stream-monitoring-data-event-hubs.md) zu SIEM- und Überwachungstools von Partnern.
+[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) ist eine Streamingplattform und ein Datenerfassungsdienst, der Daten mithilfe beliebiger Echtzeit-Analyseanbieter oder Batchverarbeitungs-/Speicheradapter transformieren und speichern kann. Verwenden Sie Event Hubs für das [Streamen von Azure Monitor-Daten](platform/stream-monitoring-data-event-hubs.md) zu SIEM- und Überwachungstools von Partnern.
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ### <a name="logic-apps"></a>Logic Apps
 [Logic Apps](https://azure.microsoft.com/services/logic-apps) ist ein Dienst, der Ihnen das Automatisieren von Aufgaben und Geschäftsprozessen mithilfe von Workflows ermöglicht, die sich in verschiedene Systeme und Dienste integrieren. Es sind Aktivitäten verfügbar, die Metriken und Protokolle in Azure Monitor lesen und schreiben. Dies ermöglicht Ihnen die Erstellung von Workflows, die sich in eine Vielzahl anderer Systeme integrieren lassen.
 
-![Logik-App](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>API
 Über den Zugriff auf generierte Warnungen hinaus stehen mehrere APIs zur Verfügung, um Metriken und Protokolle in Azure Monitor zu schreiben und daraus zu lesen. Warnungen können darüber hinaus konfiguriert und abgerufen werden. Dadurch stehen Ihnen praktisch unbegrenzte Möglichkeiten zum Erstellen von benutzerdefinierten Lösungen zur Verfügung, die sich in Azure Monitor integrieren lassen.

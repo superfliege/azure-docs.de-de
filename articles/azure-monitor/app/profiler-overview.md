@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859724"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498127"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilerstellung für Produktionsanwendungen in Azure mit Application Insights Profiler
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Aktivieren von Application Insights Profiler für Ihre Anwendung
@@ -30,6 +30,7 @@ Profiler funktioniert mit .NET-Anwendungen, die für die folgenden Azure-Dienste
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines und VM-Skalierungsgruppen](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**VORSCHAU** ASP.NET Core-Azure Linux-Web-Apps](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 Wenn Sie Profiler aktiviert haben, aber keine Ablaufverfolgungen angezeigt werden, lesen Sie unseren [Leitfaden zur Problembehandlung](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
@@ -74,7 +75,7 @@ Wenn **clr!ThePreStub** für eine Anforderung viel Zeit beansprucht, ist dies ei
 
 ### <a id="ngencold"></a>Laden von Code ([COLD])
 
-Falls der Methodenname **[COLD]** enthält (Beispiel: **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**), führt .NET Framework Runtime zum ersten Mal Code aus, der nicht durch die [profilgesteuerte Optimierung](https://msdn.microsoft.com/library/e7k32f4k.aspx) optimiert wurde. Während des Prozesses sollte dies für jede Methode höchstens einmal angezeigt werden.
+Falls der Methodenname **[COLD]** enthält (Beispiel: **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**), führt .NET Framework Runtime zum ersten Mal Code aus, der nicht durch die [profilgesteuerte Optimierung](/cpp/build/profile-guided-optimizations) optimiert wurde. Während des Prozesses sollte dies für jede Methode höchstens einmal angezeigt werden.
 
 Falls das Laden von Code bei einer Anforderung sehr lange dauert, ist die Anforderung die erste, die den nicht optimierten Teil der Methode ausführt. Verwenden Sie ggf. einen Vorbereitungsprozess, der diesen Teil des Codes ausführt, bevor Ihre Benutzer darauf zugreifen.
 
@@ -93,6 +94,10 @@ Methoden wie **SqlCommand.Execute** deuten darauf hin, dass der Code auf den Abs
 ### <a id="block"></a>Blockierte Zeit
 
 **BLOCKED_TIME** gibt an, dass der Code darauf wartet, dass eine andere Ressource verfügbar ist. Beispielsweise könnte er auf ein Synchronisierungsobjekt warten, darauf, dass ein Thread verfügbar ist, oder auf den Abschluss einer Anforderung.
+
+### <a name="unmanaged-async"></a>Async (nicht verwaltet)
+
+.NET Framework gibt ETW-Ereignisse aus und übergibt Aktivitäts-IDs zwischen Threads, damit asynchrone Aufrufe threadübergreifend nachverfolgt werden können. Bei nicht verwaltetem Code (nativem Code) und einigen älteren Arten von asynchronem Code fehlen diese Ereignisse und Aktivitäts-IDs, sodass der Profiler nicht feststellen kann, um welchen Thread es sich handelt und welche Funktionen auf dem Thread ausgeführt werden. Dies wird in der Aufrufliste mit „Async (nicht verwaltet)“ bezeichnet. Wenn Sie die ETW-Datei herunterladen, können Sie möglicherweise [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) verwenden, um einen besseren Einblick in die Abläufe zu erhalten.
 
 ### <a id="cpu"></a>CPU-Zeit
 

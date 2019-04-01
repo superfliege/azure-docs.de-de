@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 66fc5c92410118f4e0042738d2107b272d68f9bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456502"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240336"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse
 
 ## <a name="node-security"></a>Knotensicherheit
 
-AKS-Knoten sind virtuelle Azure-Computer, die von Ihnen verwaltet und gepflegt werden. Auf den Knoten wird eine optimierte Ubuntu-Linux-Distribution mit der Docker Container Runtime ausgeführt. Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
+AKS-Knoten sind virtuelle Azure-Computer, die von Ihnen verwaltet und gepflegt werden. Auf den Knoten wird eine optimierte Ubuntu-Linux-Distribution mit der Moby-Containerruntime ausgeführt. Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
 
 Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch vorgenommen. Sie können die Knoten manuell neu starten. Eine andere gängige Methode ist die Verwendung von [Kured][kured], einem Open-Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet][aks-daemonsets] ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
 
@@ -65,7 +65,7 @@ Für Konnektivität und Sicherheit bei lokalen Netzwerken können Sie Ihren AKS-
 
 ### <a name="azure-network-security-groups"></a>Azure-Netzwerksicherheitsgruppen
 
-Zum Filtern des Datenverkehrsflusses in virtuellen Netzwerken verwendet Azure Netzwerksicherheitsgruppen-Regeln. Diese Regeln bestimmen die Quell- und Ziel-IP-Adressbereiche, Ports und Protokolle, die für den Zugriff auf Ressourcen zugelassen oder abgelehnt werden. Standardregeln werden erstellt, um den TLS-Datenverkehr zum Kubernetes-API-Server und den SSH-Zugriff auf die Knoten zu ermöglichen. Wenn Sie Dienste mit Lastenausgleich, Portzuordnungen oder Eingangsrouten erstellen, ändert AKS automatisch die Netzwerksicherheitsgruppe, damit der Datenverkehr entsprechend fließen kann.
+Zum Filtern des Datenverkehrsflusses in virtuellen Netzwerken verwendet Azure Netzwerksicherheitsgruppen-Regeln. Diese Regeln bestimmen die Quell- und Ziel-IP-Adressbereiche, Ports und Protokolle, die für den Zugriff auf Ressourcen zugelassen oder abgelehnt werden. Standardregeln werden erstellt, um TLS-Datenverkehr zum Kubernetes-API-Server zu ermöglichen. Wenn Sie Dienste mit Lastenausgleich, Portzuordnungen oder Eingangsrouten erstellen, ändert AKS automatisch die Netzwerksicherheitsgruppe, damit der Datenverkehr entsprechend fließen kann.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes-Geheimnisse
 
@@ -76,6 +76,8 @@ Die Verwendung von Geheimnissen reduziert die vertraulichen Informationen, die i
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die ersten Schritte zum Sichern Ihrer AKS-Cluster sind unter [Aktualisieren eines AKS-Clusters][aks-upgrade-cluster] beschrieben.
+
+Entsprechenden bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 
@@ -99,3 +101,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md

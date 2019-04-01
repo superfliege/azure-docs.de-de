@@ -4,15 +4,15 @@ description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipa
 services: container-service
 author: iainfoulds
 ms.service: container-service
-ms.topic: get-started-article
-ms.date: 09/26/2018
+ms.topic: conceptual
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: b8cbeacda98aec639724f30fe3a7e94346f05ba4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: dc2e2f010de3dfe265cddbbaa6c050d081bd05dc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308753"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778551"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Dieser Artikel veranschaulicht das Erstellen und Verwenden eines Dienstprinzipal
 
 Für die Erstellung eines Azure AD-Dienstprinzipals müssen Sie dazu berechtigt sein, eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Abonnement zuzuweisen. Sollten Sie nicht über die erforderlichen Berechtigungen verfügen, können Sie ggf. Ihren Azure AD- oder Abonnementadministrator bitten, Ihnen die erforderlichen Berechtigungen zuzuweisen oder vorab einen Dienstprinzipal für die Verwendung mit dem AKS-Cluster für Sie zu erstellen.
 
-Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatisches Erstellen und Verwenden eines Dienstprinzipals
 
@@ -33,7 +33,7 @@ Beim Erstellen eines AKS-Clusters im Azure-Portal oder mithilfe des Befehls [az 
 Im folgenden Azure CLI-Beispiel wird kein Dienstprinzipal angegeben. In diesem Szenario erstellt die Azure-Befehlszeilenschnittstelle einen Dienstprinzipal für den AKS-Cluster. Für den erfolgreichen Abschluss dieses Vorgangs muss Ihr Azure-Konto über die erforderlichen Rechte zum Erstellen eines Dienstprinzipals verfügen.
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ssh-keys
+az aks create --name myAKSCluster --resource-group myResourceGroup
 ```
 
 ## <a name="manually-create-a-service-principal"></a>Manuelles Erstellen eines Dienstprinzipals
@@ -49,8 +49,8 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus: Notieren Sie sich Ihre 
 ```json
 {
   "appId": "559513bd-0c19-4c1a-87cd-851a26afd5fc",
-  "displayName": "azure-cli-2018-09-25-21-10-19",
-  "name": "http://azure-cli-2018-09-25-21-10-19",
+  "displayName": "azure-cli-2019-03-04-21-35-28",
+  "name": "http://azure-cli-2019-03-04-21-35-28",
   "password": "e763725a-5eee-40e8-a466-dc88d980f415",
   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
 }
@@ -77,9 +77,9 @@ Wenn Sie einen AKS-Cluster über das Azure-Portal bereitstellen, wählen Sie auf
 
 ## <a name="delegate-access-to-other-azure-resources"></a>Delegieren des Zugriffs auf andere Azure-Ressourcen
 
-Der Dienstprinzipal für den AKS-Cluster kann verwendet werden, um auf andere Ressourcen zuzugreifen. Wenn Sie beispielsweise über erweiterte Netzwerke eine Verbindung mit vorhandenen Netzwerken oder eine Verbindung mit Azure Container Registry (ACR) herstellen möchten, müssen Sie den Zugriff an den Dienstprinzipal delegieren.
+Der Dienstprinzipal für den AKS-Cluster kann verwendet werden, um auf andere Ressourcen zuzugreifen. Wenn Sie beispielsweise Ihren AKS-Cluster in ein bestehendes Subnetz eines virtuellen Azure-Netzwerks einbinden oder eine Verbindung mit Azure Container Registry (ACR) herstellen möchten, müssen Sie den Zugriff auf diese Ressourcen an den Dienstprinzipal delegieren.
 
-Um Berechtigungen zu delegieren, erstellen Sie mit dem Befehl [az role assignment create][az-role-assignment-create] eine Rollenzuweisung. Sie weisen die `appId` einem bestimmten Bereich zu, beispielsweise einer Ressourcengruppe oder einer virtuellen Netzwerkressource. Eine Rolle definiert dann wie im folgenden Beispiel gezeigt die Berechtigungen, die der Dienstprinzipal für diese Ressource besitzt:
+Um Berechtigungen zu delegieren, erstellen Sie mit dem Befehl [az role assignment create][az-role-assignment-create] eine Rollenzuweisung. Weisen Sie `appId` einem bestimmten Bereich zu, beispielsweise einer Ressourcengruppe oder einer virtuellen Netzwerkressource. Eine Rolle definiert dann wie im folgenden Beispiel gezeigt die Berechtigungen, die der Dienstprinzipal für diese Ressource besitzt:
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
@@ -123,6 +123,7 @@ Wenn Sie Virtual Kubelet für die Integration in AKS verwenden und Azure Contain
 Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden Kriterien.
 
 - Der Dienstprinzipal für Kubernetes ist Bestandteil der Clusterkonfiguration. Verwenden Sie diese Identität jedoch nicht zum Bereitstellen des Clusters.
+- Standardmäßig sind die Anmeldeinformationen des Dienstprinzipals ein Jahr gültig. Sie können die [Anmeldeinformationen des Dienstprinzipals jederzeit aktualisieren oder rotieren][update-credentials].
 - Jeder Dienstprinzipal ist einer Azure AD-Anwendung zugeordnet. Der Dienstprinzipal für einen Kubernetes-Cluster kann einem beliebigen gültigen Azure AD-Anwendungsnamen zugeordnet sein (z.B. *https://www.contoso.org/example*). Bei der URL für die Anwendung muss es sich nicht um einen realen Endpunkt handeln.
 - Geben Sie als **Client-ID** des Dienstprinzipals den `appId`-Wert an.
 - Auf dem virtuellen Mastercomputer und den virtuellen Knotencomputern des Kubernetes-Clusters werden die Dienstprinzipal-Anmeldeinformationen in der Datei `/etc/kubernetes/azure.json` gespeichert.
@@ -137,6 +138,8 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Active Directory-Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory][service-principal].
+
+Informationen zum Aktualisieren der Anmeldeinformationen finden Sie unter [Aktualisieren oder Rotieren der Anmeldeinformationen für einen Dienstprinzipal in Azure Kubernetes Service (AKS)][update-credentials].
 
 <!-- LINKS - internal -->
 [aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md
@@ -154,3 +157,4 @@ Weitere Informationen zu Azure Active Directory-Dienstprinzipalen finden Sie unt
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
+[update-credentials]: update-credentials.md

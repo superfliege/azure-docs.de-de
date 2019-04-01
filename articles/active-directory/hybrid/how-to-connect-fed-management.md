@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49a82e1452a4380920271f4fb4f7397208e32d78
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174451"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870940"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.

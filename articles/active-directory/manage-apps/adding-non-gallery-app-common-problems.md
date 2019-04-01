@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a07ca553aee2a6267af5a33836e85b2a12d8ae3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c53675c27276fdcf403ca5a6add5d86fc38e410a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842456"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Probleme beim Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
@@ -46,20 +46,20 @@ Wenn Sie Hilfe zu benutzerdefinierten Anwendungen benötigen, finden Sie in der 
 
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:
 
-1.  Klicken Sie in der rechten oberen Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (Glockensymbol).
+1. Klicken Sie in der rechten oberen Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (Glockensymbol).
 
-2.  Wählen Sie eine Benachrichtigung mit einem **Fehlerstatus** aus (mit einem roten (!) neben dem Namen).
+2. Wählen Sie eine Benachrichtigung mit einem **Fehlerstatus** aus (mit einem roten (!) neben dem Namen).
 
    >[!NOTE]
    >Sie können auf keine Benachrichtigungen klicken, die den Status **Erfolgreich** oder **In Bearbeitung** aufweisen.
    >
    >
 
-4.  Die Informationen unter **Benachrichtigungsdetails** helfen Ihnen, das Problem besser zu verstehen.
+4. Die Informationen unter **Benachrichtigungsdetails** helfen Ihnen, das Problem besser zu verstehen.
 
-5.  Wenn Sie weitere Unterstützung benötigen, können Sie diese Informationen auch einem Supporttechniker oder der Produktgruppe mitteilen, um Hilfe bei Ihrem Problem zu erhalten.
+5. Wenn Sie weitere Unterstützung benötigen, können Sie diese Informationen auch einem Supporttechniker oder der Produktgruppe mitteilen, um Hilfe bei Ihrem Problem zu erhalten.
 
-6.  Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
+6. Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
 
@@ -71,63 +71,63 @@ Weitere Informationen über Benachrichtigungen finden Sie in den folgenden Absch
 
 ### <a name="essential-notification-items"></a>Grundlegende Benachrichtigungselemente
 
--   **Titel:** der beschreibende Titel der Benachrichtigung
-   *  Beispiel: **Anwendungsproxyeinstellungen**
+- **Titel:** der beschreibende Titel der Benachrichtigung
+  *  Beispiel: **Anwendungsproxyeinstellungen**
 
--   **Beschreibung:** Beschreibung des Ergebnisses des Vorgangs
+- **Beschreibung:** Beschreibung des Ergebnisses des Vorgangs
 
-   *  Beispiel: **Die eingegebene interne URL wird bereits von einer anderen Anwendung verwendet**
+  *  Beispiel: **Die eingegebene interne URL wird bereits von einer anderen Anwendung verwendet**
 
--   **Benachrichtigungs-ID**: die eindeutige ID der Benachrichtigung
+- **Benachrichtigungs-ID**: die eindeutige ID der Benachrichtigung
 
-   *  Beispiel: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  *  Beispiel: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Clientanforderungs-ID**: die spezifische Anforderungs-ID, die vom Browser erstellt wurde
+- **Clientanforderungs-ID**: die spezifische Anforderungs-ID, die vom Browser erstellt wurde
 
-   *  Beispiel: **302fd775-3329-4670-a9f3-bea37004f0bc**
+  *  Beispiel: **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Zeitstempel (UTC):** der Zeitstempel beim Auftreten der Benachrichtigung in UTC
+- **Zeitstempel (UTC):** der Zeitstempel beim Auftreten der Benachrichtigung in UTC
 
-   *  Beispiel: **2017-03-23T19:50:43.7583681Z**
+  *  Beispiel: **2017-03-23T19:50:43.7583681Z**
 
--   **Interne Transaktions-ID**: die interne ID, über die wir den Fehler in unseren Systemen suchen können
+- **Interne Transaktions-ID**: die interne ID, über die wir den Fehler in unseren Systemen suchen können
 
-   *  Beispiel: **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  *  Beispiel: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN:** der Benutzer, der den Vorgang durchgeführt hat
+- **UPN:** der Benutzer, der den Vorgang durchgeführt hat
 
-   *  Beispiel: **tperkins@f128.info**
+  *  Beispiel: **tperkins\@f128.info**
 
--   **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
+- **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
 
-   *  Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  *  Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Benutzerobjekt-ID:** die eindeutige ID des Benutzers, der den Vorgang durchgeführt hat
+- **Benutzerobjekt-ID:** die eindeutige ID des Benutzers, der den Vorgang durchgeführt hat
 
- *  Beispiel: **17f84be4-51f8-483a-b533-383791227a99**
+  *  Beispiel: **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Detaillierte Benachrichtigungselemente
 
--   **Anzeigename:** **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
+- **Anzeigename:** **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
 
   *  Beispiel: **Anwendungsproxyeinstellungen**
 
--   **Status:** der spezifische Status der Benachrichtigung
+- **Status:** der spezifische Status der Benachrichtigung
 
-   *  Beispiel: **Fehler**
+  *  Beispiel: **Fehler**
 
--   **Objekt-ID**: **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
+- **Objekt-ID**: **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
 
-   *  Beispiel: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+  *  Beispiel: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Details:** detaillierte Beschreibung des Ergebnisses des Vorgangs
+- **Details:** detaillierte Beschreibung des Ergebnisses des Vorgangs
 
-   *  Beispiel: **Interne URL 'https://bing.com/' ist ungültig, da sie bereits verwendet wird**
+  *  Beispiel: **Interne URL `https://bing.com/` ist ungültig, da sie bereits verwendet wird**
 
--   **Fehler kopieren**: Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker 
--   mitzuteilen.
+- **Fehler kopieren**: Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker 
+- mitzuteilen.
 
-   *  Beispiel: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+  *  Beispiel: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
 

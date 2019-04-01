@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192641"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856259"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -64,7 +64,7 @@ Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Be
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
 2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Benutzer sperren/zulassen**.
 3. Wählen Sie **Hinzufügen** aus, um einen Benutzer zu sperren.
-4. Wählen Sie die **Replikationsgruppe** aus. Geben Sie den Benutzernamen für den gesperrten Benutzer im Format **username@domain.com** ein. Geben Sie im Feld **Grund** einen Kommentar ein.
+4. Wählen Sie die **Replikationsgruppe** aus. Geben Sie den Benutzernamen für den gesperrten Benutzer im Format **username\@domain.com** ein. Geben Sie im Feld **Grund** einen Kommentar ein.
 5. Wählen Sie **Hinzufügen** aus, um das Sperren des Benutzers abzuschließen.
 
 ### <a name="unblock-a-user"></a>Zulassen eines Benutzers
@@ -154,7 +154,7 @@ Mit dem Feature _Einmalumgehung_ kann sich ein Benutzer ein einziges Mal authent
 2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Einmalumgehung**.
 3. Wählen Sie **Hinzufügen**.
 4. Wählen Sie bei Bedarf die Replikationsgruppe für die Umgehung aus.
-5. Geben Sie den Benutzernamen im Format **username@domain.com** ein. Geben Sie die Dauer der Umgehung in Sekunden ein. Geben Sie den Grund für die Umgehung ein.
+5. Geben Sie den Benutzernamen im Format **username\@domain.com** ein. Geben Sie die Dauer der Umgehung in Sekunden ein. Geben Sie den Grund für die Umgehung ein.
 6. Wählen Sie **Hinzufügen**. Das Zeitlimit gilt sofort. Der Benutzer muss sich anmelden, bevor die Einmalumgehung abläuft.
 
 ### <a name="view-the-one-time-bypass-report"></a>Anzeigen des Berichts für die Einmalumgehung
@@ -252,7 +252,7 @@ Standardmäßig können Benutzer keine App-Kennwörter erstellen. Das Feature f�
 
 Benutzer können App-Kennwörter während ihrer ersten Registrierung erstellen. Am Ende des Registrierungsvorgangs haben Benutzer die Möglichkeit, App-Kennwörter zu erstellen.
 
-Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Die App-Kennwörter können über die Einstellungen im Azure-Portal oder im Office 365-Portal geändert werden. Weitere Informationen und detaillierte Schritte für Ihre Benutzer finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Weitere Informationen und detaillierte Schritte für Ihre Benutzer finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="trusted-ips"></a>Vertrauenswürdige IP-Adressen
 

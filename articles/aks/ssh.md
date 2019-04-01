@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: d687467e6bd64363c78f60064c6a17adbc5e0d1f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 680e087e80d3e9891e201e7cb474ccfcf7fcc70b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846127"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538798"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
@@ -20,21 +20,27 @@ Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Si
 
 In diesem Artikel wird gezeigt, wie Sie eine SSH-Verbindung mit einem AKS-Knoten über die privaten IP-Adressen erstellen.
 
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+
 ## <a name="add-your-public-ssh-key"></a>Hinzufügen Ihres öffentlichen SSH-Schlüssels
 
-Standardmäßig werden SSH-Schlüssel beim Erstellen eines AKS-Clusters generiert. Wenn Sie beim Erstellen Ihres AKS-Clusters keine eigenen SSH-Schlüssel angegeben haben, fügen Sie den AKS-Knoten Ihre öffentlichen SSH-Schlüssel hinzu. 
+Standardmäßig werden SSH-Schlüssel beim Erstellen eines AKS-Clusters generiert. Wenn Sie beim Erstellen Ihres AKS-Clusters keine eigenen SSH-Schlüssel angegeben haben, fügen Sie den AKS-Knoten Ihre öffentlichen SSH-Schlüssel hinzu.
 
 Führen Sie die folgenden Schritte aus, um einem AKS-Knoten Ihren SSH-Schlüssel hinzuzufügen:
 
 1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Geben Sie Ihre eigene Hauptressourcengruppe und den Namen Ihres AKS-Clusters an:
 
-    ```azurecli
+    ```azurecli-interactive
     az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
     ```
 
 1. Listen Sie die virtuellen Computer in der AKS-Clusterressourcengruppe mit dem Befehl [az vm list][az-vm-list] auf. Diese virtuellen Computer sind Ihre AKS-Knoten:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
     ```
 
@@ -48,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um einem AKS-Knoten Ihren SSH-Schlüssel
 
 1. Zum Hinzufügen Ihrer SSH-Schlüssel zum Knoten verwenden Sie den Befehl [az vm user update][az-vm-user-update]. Geben Sie den Ressourcengruppennamen und dann einen der AKS-Knoten an, die Sie im vorherigen Schritt abgerufen haben. Der Benutzername für die AKS-Knoten lautet standardmäßig *azureuser*. Geben Sie den Speicherort Ihres eigenen öffentlichen SSH-Schlüssels an, z.B. *~/.ssh/id_rsa.pub*, oder fügen Sie den Inhalt Ihres öffentlichen SSH-Schlüssels ein:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm user update \
       --resource-group MC_myResourceGroup_myAKSCluster_eastus \
       --name aks-nodepool1-79590246-0 \
@@ -58,11 +64,11 @@ Führen Sie die folgenden Schritte aus, um einem AKS-Knoten Ihren SSH-Schlüssel
 
 ## <a name="get-the-aks-node-address"></a>Abrufen der AKS-Knotenadresse
 
-Die AKS-Knoten werden nicht im Internet öffentlich verfügbar gemacht. Zum Herstellen einer SSH-Verbindung mit den AKS-Knoten verwenden Sie die private IP-Adresse.
+Die AKS-Knoten werden nicht im Internet öffentlich verfügbar gemacht. Zum Herstellen einer SSH-Verbindung mit den AKS-Knoten verwenden Sie die private IP-Adresse. Im nächsten Schritt erstellen Sie in Ihrem AKS-Cluster einen Hilfspod, mit dem Sie über SSH eine Verbindung mit dieser privaten IP-Adresse des Knotens herstellen können.
 
 Zeigen Sie die private IP-Adresse eines AKS-Clusterknotens mit dem Befehl [az vm list-ip-addresses][az-vm-list-ip-addresses] an. Geben Sie den Namen Ihrer eigenen AKS-Clusterressourcengruppe an, den Sie in einem vorherigen Schritt mit [az-aks-show][az-aks-show] abgerufen haben:
 
-```azurecli
+```azurecli-interactive
 az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 ```
 
@@ -154,3 +160,6 @@ Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubel
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

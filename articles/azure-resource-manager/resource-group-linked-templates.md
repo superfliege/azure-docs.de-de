@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 03/18/2019
 ms.author: tomfitz
-ms.openlocfilehash: 92e5fb782eed3344a55178d6ba74dfd6d7b8cafd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d4ecccf8787e369b9a3270eab2d01a01ce7ae0c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235905"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58174306"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -42,13 +42,13 @@ Zum Verknüpfen mit einer anderen Vorlage fügen Sie der Hauptvorlage eine **Ber
 ```json
 "resources": [
   {
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-          "mode": "Incremental",
-          <nested-template-or-external-template>
-      }
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "linkedTemplate",
+    "properties": {
+        "mode": "Incremental",
+        <nested-template-or-external-template>
+    }
   }
 ]
 ```
@@ -62,9 +62,9 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 ```json
 "resources": [
   {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
     "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "nestedTemplate",
     "properties": {
       "mode": "Incremental",
       "template": {
@@ -73,8 +73,8 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-07-01",
             "name": "[variables('storageName')]",
-            "apiVersion": "2015-06-15",
             "location": "West US",
             "properties": {
               "accountType": "Standard_LRS"
@@ -90,6 +90,13 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 > [!NOTE]
 > Für geschachtelte Vorlagen können Sie keine Parameter oder Variablen verwenden, die in der geschachtelten Vorlage definiert sind. Sie können Parameter und Variablen über die Hauptvorlage verwenden. Im vorherigen Beispiel wird mit `[variables('storageName')]` kein Wert aus der geschachtelten Vorlage abgerufen, sondern aus der Hauptvorlage. Diese Einschränkung gilt nicht für externe Vorlagen.
 >
+> Wenn zwei Ressourcen in einer geschachtelten Vorlage definiert sind und eine Ressource von der anderen abhängig ist, handelt es sich bei dem Wert der Abhängigkeit einfach um den Namen der abhängigen Ressource:
+> ```json
+> "dependsOn": [
+>   "[variables('storageAccountName')]"
+> ],
+> ```
+>
 > Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer geschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
 
 Die geschachtelten Vorlage erfordert [dieselben Eigenschaften](resource-group-authoring-templates.md) wie eine Standardvorlage.
@@ -101,20 +108,20 @@ Um eine externe Vorlage und Parameterdatei zu verknüpfen, verwenden Sie **templ
 ```json
 "resources": [
   {
-     "apiVersion": "2017-05-10",
-     "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
-     "properties": {
-       "mode": "Incremental",
-       "templateLink": {
-          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-          "contentVersion":"1.0.0.0"
-       },
-       "parametersLink": {
-          "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-          "contentVersion":"1.0.0.0"
-       }
-     }
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "linkedTemplate",
+    "properties": {
+    "mode": "Incremental",
+    "templateLink": {
+        "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion":"1.0.0.0"
+    },
+    "parametersLink": {
+        "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+        "contentVersion":"1.0.0.0"
+    }
+    }
   }
 ]
 ```
@@ -130,9 +137,9 @@ Um einen Wert von der Hauptvorlage an die verknüpfte Vorlage zu übergeben, ver
 ```json
 "resources": [
   {
-     "apiVersion": "2017-05-10",
-     "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
+     "apiVersion": "2018-05-01",
+     "name": "linkedTemplate",
      "properties": {
        "mode": "Incremental",
        "templateLink": {
@@ -203,9 +210,9 @@ Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegeb
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2017-05-10",
-            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "linkedTemplate",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -241,8 +248,8 @@ Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adr
     "resources": [
         {
             "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('publicIPAddresses_name')]",
-            "apiVersion": "2017-06-01",
             "location": "eastus",
             "properties": {
                 "publicIPAddressVersion": "IPv4",
@@ -281,8 +288,8 @@ Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der
     "resources": [
         {
             "type": "Microsoft.Network/loadBalancers",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('loadBalancers_name')]",
-            "apiVersion": "2017-06-01",
             "location": "eastus",
             "properties": {
                 "frontendIPConfigurations": [
@@ -308,9 +315,9 @@ Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der
             ]
         },
         {
-            "apiVersion": "2017-05-10",
-            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "linkedTemplate",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -347,8 +354,8 @@ Der Resource Manager verarbeitet jede Vorlage als separate Bereitstellung im Ber
     "resources": [
         {
             "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2018-11-01",
             "name": "[parameters('publicIPAddresses_name')]",
-            "apiVersion": "2017-06-01",
             "location": "southcentralus",
             "properties": {
                 "publicIPAddressVersion": "IPv4",
@@ -381,9 +388,13 @@ Die folgende Vorlage wird mit der vorherigen Vorlage verknüpft. Es werden drei 
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2017-05-10",
-            "name": "[concat('linkedTemplate', copyIndex())]",
             "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat('linkedTemplate', copyIndex())]",
+            "copy": {
+                "count": 3,
+                "name": "ip-loop"
+            },
             "properties": {
               "mode": "Incremental",
               "templateLink": {
@@ -393,10 +404,6 @@ Die folgende Vorlage wird mit der vorherigen Vorlage verknüpft. Es werden drei 
               "parameters":{
                   "publicIPAddresses_name":{"value": "[concat('myip-', copyIndex())]"}
               }
-            },
-            "copy": {
-                "count": 3,
-                "name": "ip-loop"
             }
         }
     ]
@@ -446,9 +453,9 @@ Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen m
   },
   "resources": [
     {
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
         "templateLink": {

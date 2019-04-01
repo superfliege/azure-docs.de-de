@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 73c94b79bb315c317d39ade704e2ee70a241a348
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187744"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984848"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten
 Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 
@@ -39,7 +39,7 @@ Wenn Sie auf den virtuellen Computer klicken, wird der Bereich **Eigenschaften**
 
 ![Systemeigenschaften des Computers](./media/vminsights-maps/properties-pane-01.png)
 
-Klicken Sie auf der rechten Seite des Bereichs auf das Symbol **Protokollereignisse**, um den Fokus des Bereichs umzuschalten und eine Liste der Tabellen anzuzeigen, die aus der VM gesammelte Daten an Log Analytics gesendet haben, die zum Abfragen verfügbar sind.  Durch Klicken auf einen der aufgelisteten Datensatztypen wird die Seite **Protokolle** geöffnet und zeigt die Ergebnisse für den betreffenden Typ mithilfe einer vorkonfigurierten Abfrage an, die nach der bestimmten VM gefiltert ist.  
+Klicken Sie auf der rechten Seite des Bereichs auf das Symbol **Protokollereignisse**, um den Fokus des Bereichs umzuschalten und eine Liste der Tabellen anzuzeigen, die aus der VM gesammelte Daten an Azure Monitor gesendet haben, die zum Abfragen verfügbar sind.  Durch Klicken auf einen der aufgelisteten Datensatztypen wird die Seite **Protokolle** geöffnet und zeigt die Ergebnisse für den betreffenden Typ mithilfe einer vorkonfigurierten Abfrage an, die nach der bestimmten VM gefiltert ist.  
 
 ![Protokollsuchliste im Bereich „Eigenschaften“](./media/vminsights-maps/properties-pane-logs-01.png)
 

@@ -3,22 +3,25 @@ title: Erstellen von virtuellen Knoten mit der Azure CLI in Azure Kubernetes Ser
 description: Erfahren Sie, wie Sie die Azure CLI verwenden, um einen AKS-Cluster (Azure Kubernetes Service) zu erstellen, der virtuelle Knoten zum Ausführen von Pods verwendet.
 services: container-service
 author: iainfoulds
+ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 0aff1040a9c7532ff5efe724382a074120801eb3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a04dbd42e09ad8ec352af74950b6d71425a84a9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177669"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten mithilfe der Azure CLI
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vorschau: Erstellen und Konfigurieren eines zure Kubernetes Services-Clusters (AKS) zur Verwendung von virtuellen Knoten mithilfe der Azure CLI
 
 Um Anwendungsworkloads in einem AKS-Cluster (Azure Kubernetes Service) schnell zu skalieren, können Sie virtuelle Knoten verwenden. Mit virtuellen Knoten lassen sich Pods schnell bereitstellen, und Sie zahlen für die Ausführungsdauer nur auf Sekundenbasis. Sie müssen nicht warten, bis die Autoskalierung des Kubernetes-Clusters VM-Computeknoten bereitstellt, um die zusätzlichen Pods auszuführen. Dieser Artikel zeigt, wie Sie die virtuellen Netzwerkressourcen und den AKS-Cluster erstellen und konfigurieren und dann die virtuellen Knoten aktivieren.
 
 > [!IMPORTANT]
-> Virtuelle Knoten für AKS befinden sich derzeit in der **Vorschau**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features bereits vorhandenen Clustern hinzufügen, wird dieser Cluster erst dann unterstützt, wenn das Feature nicht mehr in der Vorschauphase ist und die allgemeine Verfügbarkeit erreicht ist.
+>
+> Wenn Sie Probleme mit Preview-Funktionen haben, öffnen Sie [ein Problemticket im GitHub-Repository von AKS ][aks-github] mit dem Namen der Preview-Funktion im Fehlertitel.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -43,6 +46,16 @@ Wenn der Anbieter als *Nicht registriert* angezeigt wird, registrieren Sie den A
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
+
+## <a name="preview-limitations"></a>Einschränkungen der Vorschau
+
+In der Vorschauphase dieses Features werden Bereitstellungen in den folgenden Regionen unterstützt:
+
+* Australien, Osten (australiaeast)
+* USA, Osten (eastus)
+* USA, Westen-Mitte (westcentralus)
+* Europa, Westen (westeurope)
+* USA, Westen (westus)
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -324,6 +337,7 @@ Virtuelle Knoten sind oft eine Komponente einer Skalierungslösung in AKS. Weite
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli

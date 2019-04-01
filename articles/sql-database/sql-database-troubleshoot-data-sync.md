@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4ab26891a98418fae75c3be18f17f1d8e02d8b36
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563183"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216712"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung
 
@@ -250,7 +250,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
         -  [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Datensynchronisierungs-Agent: [Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung](sql-database-data-sync-agent.md)
 -   Bewährte Methoden: [Bewährte Methoden für die Azure SQL-Datensynchronisierung](sql-database-best-practices-data-sync.md)
--   Überwachung: [Überwachen der SQL-Datensynchronisierung mit Log Analytics](sql-database-sync-monitor-oms.md)
+-   Überwachung: [Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen](sql-database-sync-monitor-oms.md)
 -   Aktualisieren des Synchronisierungsschemas
     -   Mit Transact-SQL: [Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung](sql-database-update-sync-schema.md)
     -   Mit PowerShell: [Verwenden von PowerShell zum Aktualisieren des Synchronisierungsschemas in einer bestehenden Synchronisierungsgruppe](scripts/sql-database-sync-update-schema.md)

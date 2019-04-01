@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 7e3142e0274f2328d3e0c8a3e6f9a2e4c3d45d87
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: f1194d8385d1e7ddcb906d0c8c3a2b56648e2547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959136"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120821"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Verwalten von Lab-Konten in Azure Lab Services 
-In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labs (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
+In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
 
 ## <a name="create-a-lab-account"></a>Erstellen eines Lab-Kontos
 Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein Lab-Konto in Azure Lab Services zu erstellen. 
@@ -38,7 +38,9 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
     2. Wählen Sie das **Azure-Abonnement** aus, in dem Sie das Lab-Konto erstellen möchten.
     3. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
     4. Wählen Sie als **Standort** einen Standort oder eine Region aus, in dem bzw. der das Lab-Konto erstellt werden soll. 
-    5. Klicken Sie auf **Erstellen**. 
+    5. Wählen Sie als **Virtuelles Peernetzwerk** ein virtuelles Peernetzwerk (VNET) für das Lab-Netzwerk aus. In diesem Konto erstellte Labs sind mit dem ausgewählten VNET verbunden und haben Zugriff auf die Ressourcen im ausgewählten VNET. 
+    7. Geben Sie im Feld **Auswahl des Labstandorts** an, ob Sie es Laberstellern ermöglichen möchten, einen Standort für das Lab auszuwählen. Standardmäßig ist die Option deaktiviert. Wenn die Option deaktiviert ist, können Labersteller keinen Standort für das Lab angeben, das sie erstellen. Die Labs werden am nächstgelegenen geografischen Standort (relativ zum Labkonto) erstellt. Wenn die Option aktiviert ist, kann ein Labersteller bei der Laberstellung einen Standort auswählen.      
+    8. Klicken Sie auf **Erstellen**. 
 
         ![Fenster zum Erstellen eines Lab-Kontos](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Wählen Sie auf der Symbolleiste das **Glockensymbol** (**Benachrichtigungen**), überprüfen Sie, ob die Bereitstellung erfolgreich war, und wählen Sie dann **Zu Ressource wechseln**. 
@@ -86,6 +88,18 @@ Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Erst
     1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Enable image** (Image aktivieren). 
     2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images aktivieren** aus. 
 
+## <a name="configure-the-lab-account"></a>Konfigurieren des Lab-Kontos
+1. Wählen Sie auf der Seite **Lab-Konto** im Menü auf der linken Seite die Option **Labs-Konfiguration** aus.
+
+    ![Seite „Lab-Konfiguration“](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
+1. Wählen Sie für das **virtuelle Peernetzwerk** entweder **aktiviert** oder **deaktiviert** aus. Der Standardwert lautet **Deaktiviert**. Führen Sie die folgenden Schritte aus, um das virtuelle Peernetzwerk zu aktivieren: 
+    1. Wählen Sie **Aktiviert**.
+    2. Wählen Sie das **VNet** in der Dropdownliste aus. 
+    3. Wählen Sie auf der Symbolleiste **Speichern** aus. 
+    
+        Mit diesem Konto erstellte Labs werden mit dem ausgewählten virtuellen Netzwerk verbunden. Sie können auf die Ressourcen im ausgewählten virtuellen Netzwerk zugreifen. 
+3. Wählen Sie unter **Auswahl des Lab-Speicherorts durch Lab-Ersteller zulassen** die Option **Aktiviert**, wenn Lab-Ersteller einen Standort für das Lab auswählen dürfen. Wenn diese Option deaktiviert ist, werden die Labs automatisch am gleichen Standort erstellt, in dem das Lab-Konto vorhanden ist. 
+
 ## <a name="view-lab-accounts"></a>Anzeigen von Lab-Konten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü **Alle Ressourcen** aus. 
@@ -93,19 +107,6 @@ Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Erst
     Sie können auch nach Abonnement, Ressourcengruppe, Speicherorten und Tags filtern. 
 
     ![Alle Ressourcen -> Labkonten](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
-
-
-## <a name="delete-a-lab-account"></a>Löschen eines Lab-Kontos
-Befolgen Sie die Anleitung im vorherigen Abschnitt, um Lab-Konten in einer Liste anzuzeigen. Gehen Sie folgendermaßen vor, um ein Lab-Konto zu löschen: 
-
-1. Wählen Sie das **Lab-Konto** aus, das Sie löschen möchten. 
-2. Klicken Sie auf der Symbolleiste auf **Löschen**. 
-
-    ![Labkonten -> Schaltfläche „Löschen“](../media/how-to-manage-lab-accounts/delete-button.png)
-1. Geben Sie zur Bestätigung **Ja** ein.
-1. Klicken Sie auf **Löschen**. 
-
-    ![Labkonto löschen – Bestätigung](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 ## <a name="view-and-manage-labs-in-the-lab-account"></a>Anzeigen und Verwalten von Labs im Labkonto
 
@@ -119,6 +120,8 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um Lab-Konten in einer Liste
     4. Maximale Anzahl von Benutzern, die für das Lab zulässig ist 
     5. Status des Labs 
 
+
+
 ## <a name="delete-a-lab-in-the-lab-account"></a>Löschen eines Labs im Labkonto
 Befolgen Sie die Anleitung im vorherigen Abschnitt, um im Labkonto eine Liste mit den Labs anzuzeigen.
 
@@ -128,6 +131,20 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um im Labkonto eine Liste mi
 2. Wählen Sie in der Warnmeldung die Option **Ja**. 
 
     ![Bestätigen des Löschvorgangs](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
+
+## <a name="delete-a-lab-account"></a>Löschen eines Lab-Kontos
+Befolgen Sie die Anleitung im vorherigen Abschnitt, um Lab-Konten in einer Liste anzuzeigen. Gehen Sie folgendermaßen vor, um ein Lab-Konto zu löschen: 
+
+1. Wählen Sie das **Lab-Konto** aus, das Sie löschen möchten. 
+2. Klicken Sie auf der Symbolleiste auf **Löschen**. 
+
+    ![Labkonten -> Schaltfläche „Löschen“](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Geben Sie zur Bestätigung **Ja** ein.
+1. Klicken Sie auf **Löschen**. 
+
+    ![Labkonto löschen – Bestätigung](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Entsprechende Informationen finden Sie in den folgenden Artikeln:

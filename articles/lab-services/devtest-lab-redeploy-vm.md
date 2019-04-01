@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 273b0f1105d8b71b90a06e2627e201b97f12a754
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095394"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454254"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Erneute Bereitstellung eines virtuellen Computers in einem Lab in Azure DevTest Labs
 Wenn Sie keine Verbindung zu einem virtuellen Computer (VM) in einem Lab über eine Remotedesktopverbindung herstellen können, stellen Sie die VM erneut bereit, und versuchen Sie nochmals, eine Verbindung herzustellen. Wenn Sie eine VM erneut bereitstellen, verschiebt DevTest Labs die VM von dem Knoten, auf dem sie ausgeführt wird, auf einen neuen Knoten innerhalb der Azure-Infrastruktur. Dann wird die VM gestartet, wobei alle Konfigurationsoptionen und zugehörigen Ressourcen beibehalten werden. Mit diesem Feature sparen Sie die Zeit, die Sie sonst für die Fehlerbehebung bei Ihrer Remotedesktopverbindung oder beim Anwendungszugriff auf Windows-basierte VMs im Lab benötigen. 
@@ -31,7 +31,7 @@ Führen Sie die folgenden Schritte aus, um eine VM in einem Lab in Azure DevTest
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das Lab aus, das die erneut bereitzustellende VM enthält.  
 4. Wählen Sie im linken Bereich die Option **Meine virtuellen Computer** aus. 
-5. Wählen Sie in der Liste der VMs eine VM aus.
+5. Wählen Sie eine VM aus der Liste der VMs aus.
 6. Wählen Sie auf der VM-Seite für Ihre VM im linken Menü unter **Vorgänge** **Erneut bereitstellen** aus.
 
     ![Erneute Bereitstellung](media/devtest-lab-redeploy-vm/redeploy.png)

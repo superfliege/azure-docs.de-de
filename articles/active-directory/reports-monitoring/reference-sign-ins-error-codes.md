@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f3c50a272ef5cc0d4980cb4a623ac043d764dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f1ce786b748fedd1ec4c722b28bc11c28672c2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190907"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443401"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -129,7 +129,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
 |51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN.|
 |51004|Benutzerkonto ist nicht im Verzeichnis vorhanden.|
-|51006|Integrierte Windows-Authentifizierung ist erforderlich. Angemeldeter Benutzer nutzt ein Sitzungstoken ohne wia-Anspruch. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
+|51006|Integrierte Windows-Authentifizierung ist erforderlich. Angemeldeter Benutzer nutzt ein Sitzungstoken, dem der Anspruch der integrierten Windows-Authentifizierung fehlt. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |52004|Der Benutzer hat seine Zustimmung für den Zugriff auf LinkedIn-Ressourcen nicht gegeben. |
 |53000|Die Richtlinie für bedingten Zugriff erfordert ein konformes Gerät, und das Gerät ist nicht konform. Bitten Sie den Benutzer, das Gerät mit einem genehmigten MDM-Anbieter, z.B. Intune, zu registrieren.|
 |53001|Für die Richtlinie für bedingten Zugriff ist ein in die Domäne eingebundenes Gerät erforderlich, und das Gerät ist nicht in eine Domäne eingebunden. Bitten Sie den Benutzer, ein in die Domäne eingebundenes Gerät zu nutzen.|
@@ -138,7 +138,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |53004|Der Benutzer muss den Registrierungsprozess für die mehrstufige Authentifizierung durchführen, bevor er auf diesen Inhalt zugreifen kann. Benutzer sollten sich für die mehrstufige Authentifizierung registrieren.|
 |65001|Anwendung X ist nicht berechtigt, auf Anwendung Y zuzugreifen, oder die Berechtigung wurde widerrufen. Oder: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. Oder: Der Benutzer oder Administrator hat nicht zugestimmt, die Anwendung mit ID X zu verwenden. Senden Sie eine Autorisierungsanforderung an Ihren Mandantenadministrator, damit dieser im Namen der App Y für Ressource Z fungiert.|
 |65004|Der Benutzer hat seine Zustimmung für den Zugriff auf die App abgelehnt. Bitten Sie den Benutzer, die Anmeldung zu wiederholen und die Zustimmung für die App zu erteilen.|
-|65005|Die für die Anwendung erforderliche Liste für den Ressourcenzugriff enthält keine Anwendungen, die von der Ressource ermittelt werden können, die Clientanwendung hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die Anwendung SAML unterstützt, haben Sie die Anwendung ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
+|65005|Die für die Anwendung erforderliche Liste für den Ressourcenzugriff enthält keine Anwendungen, die von der Ressource ermittelt werden können, die Clientanwendung hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die Anwendung SAML unterstützt, haben Sie die Anwendung ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|Ungültige Erteilung aus den folgenden Gründen:<ul><li>Die angeforderte SAML 2.0-Assertion verfügt über eine ungültige Methode zur Antragstellerbestätigung.</li><li>OnBehalfOf-App-Datenfluss wird für V2 nicht unterstützt.</li><li>Das primäre Aktualisierungstoken wurde nicht mit dem Sitzungsschlüssel signiert.</li><li>Ungültiges externes Aktualisierungstoken.</li><li>Die Zugriffsberechtigung wurde für einen anderen Mandanten abgerufen.</li></ul>|
 |70001|Die Anwendung mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung mit dem Bezeichner X nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie den Bezeichnerwert für die Anwendung falsch konfiguriert oder die Authentifizierungsanforderung an den falschen Mandanten gesendet.|
 |70002|Die Anwendung hat ungültige Clientanmeldeinformationen zurückgegeben. Wenden Sie sich an den Besitzer der Anwendung.|

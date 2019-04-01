@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564a0948d09e4726800d19858b4c23924fc56973
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187337"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839167"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
 Die meisten Attribute werden in Azure AD genauso wie in Ihrem lokalen Azure Directory dargestellt. Einige Attribute werden jedoch besonders verarbeitet, weshalb sich der Attributwert in Azure AD davon unterscheiden kann, was mit Azure AD Connect synchronisiert wird.
@@ -58,7 +58,7 @@ Für einen Postfachbenutzer, ob lokal oder in Exchange Online, werden nur Werte 
 | „proxyAddresses“ lokal | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | „proxyAddresses“ in Exchange Online | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-In diesem Fall wurde **smtp:abbie.spencer@fabrikam.com** entfernt, da diese Domäne nicht bestätigt wurde. Doch Exchange hat auch **SIP:abbie.spencer@fabrikamonline.com** hinzugefügt. Fabrikam hat Lync/Skype nicht lokal genutzt, doch Azure AD und Exchange Online bereiten sich darauf vor.
+In diesem Fall wurde **smtp:abbie.spencer\@fabrikam.com** entfernt, da diese Domäne nicht bestätigt wurde. Doch Exchange hat auch **SIP:abbie.spencer\@fabrikamonline.com** hinzugefügt. Fabrikam hat Lync/Skype nicht lokal genutzt, doch Azure AD und Exchange Online bereiten sich darauf vor.
 
 Diese Logik für „proxyAddresses“ wird als **ProxyCalc** bezeichnet. „ProxyCalc“ wird bei jeder Änderung für einen Benutzer aufgerufen, wenn Folgendes gilt:
 

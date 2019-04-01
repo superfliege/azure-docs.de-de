@@ -5,21 +5,27 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: e4b5b6085dbe9a09c90e059a5db8bee5d6d7a004
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a26eab83f567a46f613e3bfda95fd99aba2b79c0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699316"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404313"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
 Zum Einschränken des Zugriffs auf Ihre Anwendungen in Azure Kubernetes Service (AKS) können Sie einen internen Lastenausgleich erstellen und verwenden. Durch einen internen Lastenausgleich können nur Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. In diesem Artikel erfahren Sie, wie Sie einen internen Lastenausgleich mit Azure Kubernetes Service (AKS) erstellen und verwenden.
 
 > [!NOTE]
-> Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Weitere Informationen finden Sie unter [Vergleich der Azure Load Balancer-SKUs][azure-lb-comparison]. AKS unterstützt derzeit die *Basic*-SKU. Wenn Sie die *Standard*-SKU verwenden möchten, können Sie die Upstream-[aks-engine][aks-engine] verwenden.
+> Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. AKS unterstützt derzeit die *Basic*-SKU. Wenn Sie die *Standard*-SKU verwenden möchten, können Sie die Upstream-[aks-engine][aks-engine] verwenden. Weitere Informationen finden Sie unter [Vergleich der Azure Load Balancer-SKUs][azure-lb-comparison].
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-internal-load-balancer"></a>Erstellen eines internen Load Balancers
 
@@ -40,9 +46,15 @@ spec:
     app: internal-app
 ```
 
-Nach der Bereitstellung mit `kubectl apply -f internal-lb.yaml` wird ein Azure-Lastenausgleich erstellt und im gleichen virtuellen Netzwerk wie der AKS-Cluster verfügbar gemacht.
+Stellen Sie den internen Lastenausgleich über den Befehl [kubectl apply]kubectl-apply] bereit, und geben Sie den Namen Ihres YAML-Manifests an:
 
-Beim Anzeigen der Dienstdetails wird die IP-Adresse des internen Lastenausgleichs in der Spalte *EXTERNAL-IP* angezeigt. Es dauert möglicherweise ein oder zwei Minuten, bis sich die IP-Adresse von *\<ausstehend\>* in eine tatsächliche interne IP-Adresse ändert, wie im folgenden Beispiel gezeigt:
+```console
+kubectl apply -f internal-lb.yaml
+```
+
+Ein Azure-Lastenausgleich wird in der Knotenressourcengruppe erstellt und mit dem gleichen virtuellen Netzwerk wie der AKS-Cluster verbunden.
+
+Beim Anzeigen der Dienstdetails wird die IP-Adresse des internen Lastenausgleichs in der Spalte *EXTERNAL-IP* angezeigt. In diesem Zusammenhang bezieht sich *External* auf die externe Schnittstelle des Load Balancers, nicht etwa darauf, dass er eine öffentliche, externe IP-Adresse erhält. Es dauert möglicherweise ein oder zwei Minuten, bis sich die IP-Adresse von *\<ausstehend\>* in eine tatsächliche interne IP-Adresse ändert, wie im folgenden Beispiel gezeigt:
 
 ```
 $ kubectl get service internal-app
@@ -71,7 +83,7 @@ spec:
     app: internal-app
 ```
 
-Bei der Anzeige der Dienstdetails entspricht die IP-Adresse in der Spalte *EXTERNAL-IP* der angegebenen IP-Adresse:
+Nach Bereitstellung und bei Anzeige der Dienstdetails entspricht die IP-Adresse in der Spalte *EXTERNAL-IP* der angegebenen IP-Adresse:
 
 ```
 $ kubectl get service internal-app
@@ -82,7 +94,7 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>Verwenden privater Netzwerke
 
-Beim Erstellen des AKS-Clusters können Sie erweiterte Netzwerkeinstellungen angeben. Dadurch können Sie den Cluster in einem vorhandenen virtuellen Azure-Netzwerk und in Subnetzen bereitstellen. In einem Szenario wird der AKS-Cluster in einem privaten Netzwerk bereitgestellt, das mit Ihrer lokalen Umgebung verbunden ist, und nur intern zugängliche Dienste werden ausgeführt. Weitere Informationen finden Sie unter [Erweiterte Netzwerkkonfiguration in AKS][advanced-networking].
+Beim Erstellen des AKS-Clusters können Sie erweiterte Netzwerkeinstellungen angeben. Dadurch können Sie den Cluster in einem vorhandenen virtuellen Azure-Netzwerk und in Subnetzen bereitstellen. In einem Szenario wird der AKS-Cluster in einem privaten Netzwerk bereitgestellt, das mit Ihrer lokalen Umgebung verbunden ist, und nur intern zugängliche Dienste werden ausgeführt. Weitere Informationen finden Sie unter „Konfigurieren eigener virtueller Subnetze mit [Kubernetes][use-kubenet] oder [Azure CNI][advanced-networking]“.
 
 Wenn Sie einen internen Lastenausgleich in einem AKS-Cluster bereitstellen möchten, der ein privates Netzwerk verwendet, sind keine Änderungen an den vorherigen Schritten erforderlich. Der Lastenausgleich wird in derselben Ressourcengruppe wie der AKS-Cluster erstellt. Dabei wird er jedoch wie im folgenden Beispiel gezeigt mit Ihrem privaten virtuellen Netzwerk und Subnetz verbunden:
 
@@ -135,3 +147,7 @@ Erfahren Sie mehr über Kubernetes-Dienste in der [Kubernetes-Dienstdokumentatio
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[use-kubenet]: configure-kubenet.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

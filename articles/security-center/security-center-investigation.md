@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107473"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Untersuchen von Vorfällen und Warnungen in Azure Security Center (Vorschauversion)
 Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center.
@@ -29,10 +29,10 @@ Mit dem Untersuchungsfeature in Security Center können Sie einen potenziellen [
 
 Durch die Verknüpfung sämtlicher Entitäten ([Sicherheitswarnungen](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), Benutzer, Computer und Vorfälle), die mit dem untersuchten Vorfall in Zusammenhang stehen, soll der Untersuchungsprozess vereinfacht werden.  Hierzu kann Security Center relevante Daten mit allen beteiligten Entitäten korrelieren und diese Korrelation in einem Livediagramm darstellen, das die Navigation durch die Objekte und die Visualisierung relevanter Informationen erleichtert.
 
+
 > [!NOTE]
-> [Benutzerdefinierte Warnungen](security-center-custom-alert.md) werden im Untersuchungsfeature von Security Center nicht unterstützt.
->
->
+> * [Benutzerdefinierte Warnungen](security-center-custom-alert.md) werden im Untersuchungsfeature von Security Center nicht unterstützt.
+> * Eine Untersuchung wird nur für Warnungen basierend auf Daten unterstützt, die von Windows-Servern gesammelt werden.
 
 
 ## <a name="how-investigation-works"></a>Funktionsweise der Untersuchung

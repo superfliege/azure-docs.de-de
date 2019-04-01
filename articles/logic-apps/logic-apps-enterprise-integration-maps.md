@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: da5b099a5574d34c3676819c930f3e89610cf4ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767434"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455801"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformieren von XML mit Zuordnungen in Azure Logic Apps mithilfe von Enterprise Integration Pack
 
@@ -39,7 +39,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen finden Sie unte
   * Für Assemblys benötigen Sie einen Azure-Blobcontainer, in den Sie Ihre Assembly hochladen können, und den Containerspeicherort. Auf diese Weise können Sie diesen Speicherort später bereitstellen, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. 
   Für diese Aufgabe benötigen Sie folgende Elemente:
 
-    | Element | BESCHREIBUNG |
+    | Item | BESCHREIBUNG |
     |------|-------------|
     | [Azure-Speicherkonto](../storage/common/storage-account-overview.md) | Unter diesem Konto erstellen Sie einen Azure-Blobcontainer für Ihre Assembly. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md). |
     | BLOB-Container | In diesen Container können Sie Ihre Assembly hochladen. Außerdem benötigen Sie den Containerspeicherort, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). |
@@ -70,7 +70,7 @@ Zum Erstellen und Hinzufügen von Zuordnungen benötigen Sie keine Logik-App. Da
 
 1. Nachdem die Seite **Assemblys** geöffnet wurde, wählen Sie **Hinzufügen** aus.
 
-   ![Auswählen von „Hinzufügen“](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 Je nach Größe Ihrer Assemblydatei führen Sie die Schritte zum Upload einer Assembly aus, die entweder [maximal 2 MB](#smaller-assembly) groß oder [größer als 2 MB (maximal 8 MB)](#larger-assembly) ist.
 Die Grenzwerte für die Anzahl von Assemblys in Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
@@ -188,7 +188,7 @@ Nachdem Sie alle Assemblys hochgeladen haben, auf die in Ihrer Zuordnung verwies
 
 1. Wählen Sie **Hinzufügen** aus, nachdem die Seite **Zuordnungen** geöffnet wurde.
 
-   ![Auswählen von „Hinzufügen“](./media/logic-apps-enterprise-integration-maps/add-map.png)  
+   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
 <a name="smaller-map"></a>
 

@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc032a15a2938333cd25d05c271187f218f9be4d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f8db5552ad81a1a47db72a5372e643a6fc167888
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206802"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091204"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -75,19 +75,19 @@ Als ersten schnellen Schritt können Sie die interne URL überprüfen und korrig
 
 So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
 
-1.  Öffnen Sie die Anwendung im Verwaltungsportal, indem Sie zu **Azure Active Directory** navigieren und dann auf **Unternehmensanwendungen** und **Alle Anwendungen** klicken. Öffnen Sie die Anwendung, und wählen Sie dann im linken Menü **Anwendungsproxy** aus.
+1. Öffnen Sie die Anwendung im Verwaltungsportal, indem Sie zu **Azure Active Directory** navigieren und dann auf **Unternehmensanwendungen** und **Alle Anwendungen** klicken. Öffnen Sie die Anwendung, und wählen Sie dann im linken Menü **Anwendungsproxy** aus.
 
-2.  Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, fahren Sie mit „Überprüfen, ob alle erforderlichen Ports in der Zulassungsliste enthalten sind“ fort.
+2. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, fahren Sie mit „Überprüfen, ob alle erforderlichen Ports in der Zulassungsliste enthalten sind“ fort.
 
-3.  Wird die falsche Connectorgruppe angezeigt, wählen Sie die richtige Gruppe über die Dropdownliste aus, und bestätigen Sie, dass keine Warnungen mehr angezeigt werden. Wird die gewünschte Connectorgruppe angezeigt, klicken Sie auf die Warnung und öffnen die Seite zur Connectorverwaltung.
+3. Wird die falsche Connectorgruppe angezeigt, wählen Sie die richtige Gruppe über die Dropdownliste aus, und bestätigen Sie, dass keine Warnungen mehr angezeigt werden. Wird die gewünschte Connectorgruppe angezeigt, klicken Sie auf die Warnung und öffnen die Seite zur Connectorverwaltung.
 
-4.  Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
+4. Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
 
-  * Verschieben Sie einen aktiven Connector in die Gruppe: Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
+   * Verschieben Sie einen aktiven Connector in die Gruppe: Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
 
-  * Herunterladen eines neuen Connectors für diese Gruppe: Auf dieser Seite finden Sie den Link zum [Herunterladen eines neuen Connectors](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Installieren Sie den Connector auf einem Computer mit direktem Zugriff auf die Back-End-Anwendung. In der Regel ist der Connector auf demselben Server wie die Anwendung installiert. Verwenden Sie den Downloadlink, um einen Connector auf den Zielcomputer herunterzuladen. Als Nächstes klicken Sie auf den Connector und verwenden die Dropdownliste „Connectorgruppe“, um sicherzustellen, dass er der richtigen Gruppe angehört.
+   * Herunterladen eines neuen Connectors für diese Gruppe: Auf dieser Seite finden Sie den Link zum [Herunterladen eines neuen Connectors](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Installieren Sie den Connector auf einem Computer mit direktem Zugriff auf die Back-End-Anwendung. In der Regel ist der Connector auf dem selben Server wie die Anwendung installiert. Verwenden Sie den Downloadlink, um einen Connector auf den Zielcomputer herunterzuladen. Als Nächstes klicken Sie auf den Connector und verwenden die Dropdownliste „Connectorgruppe“, um sicherzustellen, dass er der richtigen Gruppe angehört.
 
-  * Untersuchen eines inaktiven Connectors: Wenn ein Connector als inaktiv angezeigt wird, kann er den Dienst nicht erreichen. Dieser Fehler liegt in der Regel darin begründet, dass einige erforderliche Ports blockiert werden. Um das Problem zu beheben, fahren Sie mit dem Schritt „Überprüfen, ob alle erforderlichen Ports in der Zulassungsliste enthalten sind“ fort.
+   * Untersuchen eines inaktiven Connectors: Wenn ein Connector als inaktiv angezeigt wird, kann er den Dienst nicht erreichen. Dieser Fehler liegt in der Regel darin begründet, dass einige erforderliche Ports blockiert werden. Um das Problem zu beheben, fahren Sie mit dem Schritt „Überprüfen, ob alle erforderlichen Ports in der Zulassungsliste enthalten sind“ fort.
 
 Testen Sie nach dem Ausführen der Schritte die Anwendung erneut, um sicherzustellen, dass die Anwendung einer Gruppe funktionierender Connectors zugewiesen ist. Wenn der Fehler immer noch auftritt, fahren Sie mit dem nächsten Abschnitt fort.
 

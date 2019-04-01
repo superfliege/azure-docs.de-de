@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: a3a007bf19a28e6f361837856f83a191a761ef9b
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247413"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194776"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines Marketplace-Images zu einem Lab in Azure DevTest Labs mithilfe von PowerShell
 
 Dieses PowerShell-Beispielskript fügt einem Lab in Azure DevTest Labs ein Marketplace-Image hinzu. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -38,10 +40,10 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Dient zum Suchen nach Ressourcen basierend auf den angegebenen Parametern. |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Dient zum Abrufen von Ressourcen. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Dient zum Ändern einer Ressource. |
-| [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Dient zum Erstellen einer Ressource. |
+| Find-AzResource | Dient zum Suchen nach Ressourcen basierend auf den angegebenen Parametern. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Dient zum Abrufen von Ressourcen. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Dient zum Ändern einer Ressource. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

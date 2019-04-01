@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: e18d8ef498d566dace6280b6df4cd091fd8a5af8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46b1da1f117c7ea416b2b818518f678b1a483c75
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097398"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -38,9 +38,9 @@ Installieren Sie einen Konfigurations-/Prozessserver in Ihrer Quellumgebung, um 
 1. Melden Sie sich am Azure Deutschland-Portal an.
 1. Vergleichen Sie die Betriebssystemversionen der zu migrierenden virtuellen Computer mit der [Supportmatrix](../site-recovery/vmware-physical-secondary-support-matrix.md).
 1. Richten Sie einen neuen virtuellen Computer in Ihrer Azure Virtual Network-Quellinstanz ein, der Konfigurationsserver als fungieren soll:
-  1. Wählen Sie **DS4v3** oder höher (4 bis 8 Kerne, 16 GB Arbeitsspeicher) aus.
-  1. Fügen Sie einen zusätzlichen Datenträger an, der mindestens 1 TB verfügbaren Speicherplatz (für die VM-Images) hat.
-  1. Verwenden Sie Windows Server 2012 R2 oder höher.
+   1. Wählen Sie **DS4v3** oder höher (4 bis 8 Kerne, 16 GB Arbeitsspeicher) aus.
+   1. Fügen Sie einen zusätzlichen Datenträger an, der mindestens 1 TB verfügbaren Speicherplatz (für die VM-Images) hat.
+   1. Verwenden Sie Windows Server 2012 R2 oder höher.
 1. Stellen Sie sicher, dass die Ports 443 und 9443 für das Subnetz in beide Richtungen geöffnet sind.
 1. Melden Sie sich bei dem neuen virtuellen Computer (ConfigurationServer) an.
 1. Melden Sie sich in Ihrer Remotedesktopsitzung am Portal für Azure weltweit an, indem Sie Ihre Anmeldeinformationen für Azure weltweit verwenden.
@@ -74,8 +74,7 @@ Es wird eine ZIP-Datei heruntergeladen, die mehrere Dateien enthält. Die PowerS
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Site Recovery](https://docs.microsoft.com/azure/site-recovery/#step-by-step-tutorials) durcharbeiten.
-- Lesen Sie Informationen, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie eine Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
+- Lesen Sie Informationen, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Erfahren Sie mehr über [Physisch-zu-Azure-Notfallwiederherstellung über Site Recovery](../site-recovery/physical-azure-disaster-recovery.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
 - Erfahren Sie mehr darüber, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
@@ -180,9 +179,8 @@ Ein Migrieren von Azure Functions-Ressourcen von Azure Deutschland zu Azure welt
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](https://docs.microsoft.com/azure/azure-functions/#step-by-step-tutorials) durcharbeiten.
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie eine Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Lesen Sie die [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 - Verschaffen Sie sich einen [Überblick über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
 - Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -196,10 +194,9 @@ Um VM-Skalierungsgruppen zu Azure weltweit zu migrieren, exportieren Sie die Res
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VM-Skalierungsgruppeen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/#step-by-step-tutorials) durcharbeiten.
-- Erfahren Sie, wie Sie [eine Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md).
+- Erfahren Sie, wie Sie eine [Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
 - Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Lesen Sie eine Übersicht zu [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md).
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
 - Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -213,9 +210,8 @@ Derzeit können Apps, die Sie mit dem Web Apps-Feature von Azure App Service ers
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](https://docs.microsoft.com/azure/app-service/#step-by-step-tutorials) durcharbeiten.
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie eine Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Lesen Sie die [Übersicht über Azure App Service](../app-service/overview.md).
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
 - Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 

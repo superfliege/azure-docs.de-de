@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490378"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440471"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -26,10 +26,28 @@ Empfehlungen zur Verwaltung Ihrer Azure-Abonnements finden Sie unter [Azure-Unte
 
 Empfehlungen zur Erstellung von Vorlagen, die in allen Azure-Cloudumgebungen funktionieren, finden Sie unter [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](templates-cloud-consistency.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="template-limits"></a>Vorlagengrenzwerte
+
+Begrenzen Sie die Größe der Vorlage auf 1 MB und die jeder Parameterdatei auf 64 KB. Die 1-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. 
+
+Außerdem gelten folgenden Beschränkungen:
+
+* 256 Parameter
+* 256 Variablen
+* 800 Ressourcen (einschließlich copy-Anzahl)
+* 64 Ausgabewerte
+* 24.576 Zeichen in einem Vorlagenausdruck
+
+Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](resource-manager-objects-as-parameters.md).
+
+## <a name="resource-group"></a>Ressourcengruppe
+
+Wenn Sie Ressourcen für eine Ressourcengruppe bereitstellen, speichert die Ressourcengruppe Metadaten zu den Ressourcen. Die Metadaten werden am Standort der Ressourcengruppe gespeichert.
+
+Ist die Region der Ressourcengruppe vorübergehend nicht verfügbar, können Sie keine Ressourcen in der Ressourcengruppe aktualisieren, da die Metadaten nicht verfügbar sind. Die Ressourcen in anderen Regionen funktionieren weiterhin wie erwartet, doch können Sie diese nicht aktualisieren. Um das Risiko zu minimieren, platzieren Sie Ihre Ressourcengruppe und Ressourcen in der gleichen Region.
 
 ## <a name="parameters"></a>Parameter
-Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern](resource-manager-templates-parameters.md) hilfreich sein.
+Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern](resource-group-authoring-templates.md#parameters) hilfreich sein.
 
 ### <a name="general-recommendations-for-parameters"></a>Allgemeine Empfehlungen für Parameter
 
@@ -131,7 +149,7 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 
 ## <a name="variables"></a>Variables
 
-Die folgenden Informationen können bei der Arbeit mit [Variablen](resource-manager-templates-variables.md) hilfreich sein:
+Die folgenden Informationen können bei der Arbeit mit [Variablen](resource-group-authoring-templates.md#variables) hilfreich sein:
 
 * Verwenden Sie Variablen für Werte, die Sie mehr als einmal in einer Vorlage verwenden müssen. Wenn ein Wert nur einmal verwendet wird, erleichtert ein hartcodierter Wert das Lesen Ihrer Vorlage.
 
@@ -155,7 +173,7 @@ Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche [Abhängig
 
 * Legen Sie für eine untergeordnete Ressource eine Abhängigkeit von der übergeordneten Ressource fest.
 
-* Ressourcen, deren [condition-Element](resource-manager-templates-resources.md#condition) auf FALSE festgelegt ist, werden automatisch aus der Reihenfolge der Abhängigkeiten entfernt. Legen Sie die Abhängigkeiten so fest, als würde die Ressource immer bereitgestellt.
+* Ressourcen, deren [condition-Element](resource-group-authoring-templates.md#condition) auf FALSE festgelegt ist, werden automatisch aus der Reihenfolge der Abhängigkeiten entfernt. Legen Sie die Abhängigkeiten so fest, als würde die Ressource immer bereitgestellt.
 
 * Lassen Sie die Abhängigkeiten ohne explizites Festlegen überlappen. Beispiel: Ihr virtueller Computer hängt von einer virtuellen Netzwerkschnittstelle ab, die wiederum von einem virtuellen Netzwerk und einer öffentlichen IP-Adressen abhängt. Deshalb wird der virtuelle Computer nach allen drei Ressourcen bereitgestellt, es wird aber nicht explizit festgelegt, dass er von allen drei Ressourcen abhängig ist. Dieser Ansatz verdeutlicht die Reihenfolge der Abhängigkeiten und vereinfacht spätere Änderungen an der Vorlage.
 
@@ -163,7 +181,7 @@ Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche [Abhängig
 
 ## <a name="resources"></a>Ressourcen
 
-Die folgenden Informationen können bei der Arbeit mit [Ressourcen](resource-manager-templates-resources.md) hilfreich sein:
+Die folgenden Informationen können bei der Arbeit mit [Ressourcen](resource-group-authoring-templates.md#resources) hilfreich sein:
 
 * Geben Sie in der Vorlage **Kommentare** für jede Ressource ein, damit andere Mitwirkende den Zweck der Ressource verstehen.
    
@@ -277,7 +295,7 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](resource-man
 
 ## <a name="outputs"></a>Ausgaben
 
-Wenn Sie öffentliche IP-Adressen mithilfe einer Vorlage erstellen, sollte diese einen [Ausgabeabschnitt](resource-manager-templates-outputs.md) enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zurückgibt. Mit Ausgabewerten können Sie nach der Bereitstellung ganz einfach Details zu öffentlichen IP-Adressen und FQDNs abrufen.
+Wenn Sie öffentliche IP-Adressen mithilfe einer Vorlage erstellen, sollte diese einen [Ausgabeabschnitt](resource-group-authoring-templates.md#outputs) enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zurückgibt. Mit Ausgabewerten können Sie nach der Bereitstellung ganz einfach Details zu öffentlichen IP-Adressen und FQDNs abrufen.
 
 ```json
 "outputs": {

@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824625"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887101"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
+
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Web Application** | <ul><li>[Ausschließliches Verwenden von genehmigten symmetrischen Blockchiffren und Schlüssellängen](#cipher-length)</li><li>[Verwenden von genehmigten Blockchiffremodi und Initialisierungsvektoren für symmetrische Chiffren](#vector-ciphers)</li><li>[Verwenden von genehmigten asymmetrischen Algorithmen, Schlüssellängen und Auffüllungen](#padding)</li><li>[Verwenden von genehmigten Zufallszahlengeneratoren](#numgen)</li><li>[Vermeiden der Verwendung von symmetrischen Streamchiffren](#stream-ciphers)</li><li>[Verwenden von genehmigten MAC-, HMAC- und schlüsselgebundenen Hashalgorithmen](#mac-hash)</li><li>[Ausschließliches Verwenden von genehmigten kryptografischen Hashfunktionen](#hash-functions)</li></ul> |
@@ -96,7 +97,7 @@ ms.locfileid: "54824625"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | <p>Für Produkte dürfen nur genehmigte Algorithmen vom Typ MAC (Message Authentication Code) oder HMAC (Hash-Based Message Authentication Code) verwendet werden.</p><p>Ein Nachrichtenauthentifizierungscode (Message Authentication Code, MAC) ist ein Informationselement, das an eine Nachricht angefügt ist. Hiermit kann der Empfänger sowohl die Echtheit des Absenders als auch die Integrität der Nachricht anhand eines geheimen Schlüssels überprüfen. Die Verwendung von hashbasiertem MAC ([HMAC](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) oder [auf Blockchiffren basierendem MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) ist zulässig, sofern auch alle zugrunde liegenden Hash- oder symmetrischen Verschlüsselungsalgorithmen für die Verwendung genehmigt sind. Dies gilt derzeit für die HMAC-SHA2-Funktionen (HMAC-SHA256, HMAC-SHA384 und HMAC-SHA512) und die auf Blockchiffren basierenden MACs CMAC/OMAC1 und OMAC2 (auf AES-Basis).</p><p>Die Verwendung von HMAC-SHA1 kann aus Gründen der Plattformkompatibilität zulässig sein, aber Sie müssen eine Ausnahme von diesem Verfahren beantragen und den Prozess zur Kryptografieüberprüfung Ihrer Organisation durchlaufen. Eine Kürzung von HMACs auf weniger als 128 Bit ist nicht zulässig. Die Verwendung von Kundenmethoden zum Hashen eines Schlüssels und von Daten ist nicht genehmigt, und vor der Verwendung muss eine Prüfung durch das Crypto Board Ihrer Organisation erfolgen.</p>|
+| **Schritte** | <p>Für Produkte dürfen nur genehmigte Algorithmen vom Typ MAC (Message Authentication Code) oder HMAC (Hash-Based Message Authentication Code) verwendet werden.</p><p>Ein Nachrichtenauthentifizierungscode (Message Authentication Code, MAC) ist ein Informationselement, das an eine Nachricht angefügt ist. Hiermit kann der Empfänger sowohl die Echtheit des Absenders als auch die Integrität der Nachricht anhand eines geheimen Schlüssels überprüfen. Die Verwendung von hashbasiertem MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) oder [auf Blockchiffren basierendem MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) ist zulässig, sofern auch alle zugrunde liegenden Hash- oder symmetrischen Verschlüsselungsalgorithmen für die Verwendung genehmigt sind. Dies gilt derzeit für die HMAC-SHA2-Funktionen (HMAC-SHA256, HMAC-SHA384 und HMAC-SHA512) und die auf Blockchiffren basierenden MACs CMAC/OMAC1 und OMAC2 (auf AES-Basis).</p><p>Die Verwendung von HMAC-SHA1 kann aus Gründen der Plattformkompatibilität zulässig sein, aber Sie müssen eine Ausnahme von diesem Verfahren beantragen und den Prozess zur Kryptografieüberprüfung Ihrer Organisation durchlaufen. Eine Kürzung von HMACs auf weniger als 128 Bit ist nicht zulässig. Die Verwendung von Kundenmethoden zum Hashen eines Schlüssels und von Daten ist nicht genehmigt, und vor der Verwendung muss eine Prüfung durch das Crypto Board Ihrer Organisation erfolgen.</p>|
 
 ## <a id="hash-functions"></a>Ausschließliches Verwenden von genehmigten kryptografischen Hashfunktionen
 

@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1285a9262221dbd8e46d07e384697ddea853f9fc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163052"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193149"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -49,7 +49,7 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](htt
 |Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen ](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Weitere Informationen über die Installation von Azure AD Connect
-Sie sollten sich auch auf [betriebliche](how-to-connect-sync-operations.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-operations.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-operations.md#staging-mode) -Server einplanen.
+Sie sollten sich auch auf [betriebliche](how-to-connect-sync-operations.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-staging-server.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-staging-server.md) -Server einplanen.
 
 |Thema |Link|  
 | --- | --- |

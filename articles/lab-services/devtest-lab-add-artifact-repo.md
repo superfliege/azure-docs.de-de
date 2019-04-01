@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c7b9921d7eacb9b40e39f8e68d13357ce6bcfd78
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852490"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
 
@@ -78,18 +78,18 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 
     ![Schaltfläche zum Hinzufügen eines Repositorys](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Geben Sie auf der zweiten Seite **Repositorys** Folgendes an:
-  1. **Name**: Geben Sie einen Namen für das Repository ein.
-  2. **Git-Klon-URL**. Geben Sie die Git-HTTPS-Klon-URL ein, die Sie zuvor aus GitHub oder Azure DevOps Services kopiert haben.
-  3. **Branch**. Um zu Ihren Definitionen zu gelangen, geben Sie den Branch an.
-  4. **Persönliches Zugriffstoken**. Geben Sie das persönliche Zugriffstoken ein, das Sie zuvor aus GitHub oder Azure DevOps Services abgerufen haben.
-  5. **Ordnerpfade**. Geben Sie mindestens einen Ordnerpfad relativ zur Klon-URL an, der die Artefakt- oder Resource Manager-Vorlagendefinitionen enthält. Wenn Sie ein Unterverzeichnis angeben, müssen Sie den Schrägstrich im Ordnerpfad angeben.
+   1. **Name**: Geben Sie einen Namen für das Repository ein.
+   2. **Git-Klon-URL**. Geben Sie die Git-HTTPS-Klon-URL ein, die Sie zuvor aus GitHub oder Azure DevOps Services kopiert haben.
+   3. **Branch**. Um zu Ihren Definitionen zu gelangen, geben Sie den Branch an.
+   4. **Persönliches Zugriffstoken**. Geben Sie das persönliche Zugriffstoken ein, das Sie zuvor aus GitHub oder Azure DevOps Services abgerufen haben.
+   5. **Ordnerpfade**. Geben Sie mindestens einen Ordnerpfad relativ zur Klon-URL an, der die Artefakt- oder Resource Manager-Vorlagendefinitionen enthält. Wenn Sie ein Unterverzeichnis angeben, müssen Sie den Schrägstrich im Ordnerpfad angeben.
 
-     ![Bereich „Repositorys“](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. Wählen Sie **Speichern**aus.
+      ![Bereich „Repositorys“](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+6. Wählen Sie **Speichern** aus.
 
 ### <a name="related-blog-posts"></a>Verwandte Blogbeiträge
 * [Beheben von Problemen mit fehlerhaften Artefakten in DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Einbinden einer VM in eine vorhandene Active Directory-Domäne mithilfe einer Resource Manager-Vorlage in DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Einbinden einer VM in eine vorhandene Active Directory-Domäne mithilfe einer Resource Manager-Vorlage in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

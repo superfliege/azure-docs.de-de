@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602fba95b3cc69521fe3fe17d8c89cc332131566
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190227"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448678"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
 
@@ -231,7 +231,7 @@ Bei korrekter Einrichtung von Berechtigungen wird in Ihrem Projektverzeichnis ei
 </plist>
 ```
 
-Informieren Sie das Identity SDK über Ihre Keychain, sobald die Keychainberechtigung in jeder Ihrer Anwendungen aktiviert ist. Verwenden Sie hierzu in `ADAuthenticationSettings` die folgende Einstellung:
+Informieren Sie das Identity SDK über Ihre Keychain, sobald die Keychainberechtigung in jeder Ihrer Anwendungen aktiviert ist und Sie bereit sind, das einmalige Anmelden zu verwenden. Verwenden Sie hierzu in `ADAuthenticationSettings` die folgende Einstellung:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";

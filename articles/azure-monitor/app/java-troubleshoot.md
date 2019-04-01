@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 01/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4e9e9b76469554f5519626eed37a5b64586f5eb4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265395"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995595"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -105,18 +105,39 @@ Mithilfe der XML-Methode müssen Sie die Anwendung neu starten, nachdem Sie den 
 
 Um weitere Informationen zu API-Vorgängen zu erhalten, fügen Sie `<SDKLogger/>` unter dem Stammknoten der ApplicationInsights.xml-Konfigurationsdatei hinzu.
 
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
+
 Sie können das Protokollierungstool auch anweisen, Dateien auszugeben:
 
 ```XML
-
-    <SDKLogger type="FILE">
-      <enabled>True</enabled>
-      <UniquePrefix>JavaSDKLog</UniquePrefix>
-    </SDKLogger>
+  <SDKLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
+</SDKLogger>
 ```
 
-Die Dateien finden sich für den Tomcat-Server unter `%temp%\javasdklogs` bzw. `java.io.tmpdir`.
+### <a name="spring-boot-starter"></a>Spring Boot Starter
 
+Zum Aktivieren der SDK-Protokollierung mit Spring Boot-Apps unter Verwendung von Application Insights Spring Boot Starter fügen Sie der Datei `application.properties` Folgendes hinzu:
+
+```yaml
+azure.application-insights.logger.type=file
+azure.application-insights.logger.base-folder-path=C:/agent/AISDK
+azure.application-insights.logger.level=trace
+```
+
+### <a name="java-agent"></a>Java-Agent
+
+Zum Aktivieren der JVM-Agent-Protokollierung aktualisieren Sie die [Datei „AI-Agent.xml“](java-agent.md).
+
+```xml
+<AgentLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
+</AgentLogger>
+```
 
 ## <a name="the-azure-start-screen"></a>Der Azure-Startbildschirm
 **Ich sehe mir das [Azure-Portal](https://portal.azure.com) an. Teilt mir die Karte etwas über meine App mit?**

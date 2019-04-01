@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6017aa5172efa72bb708004e2c4aee7f9ae4acad
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 59f8b8b253fc914e5723a9c41475ec78bc3f376e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888398"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 
@@ -61,7 +61,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 >
 
 ## <a name="upload-data"></a> Hochladen der Daten auf Ihre lokale SQL Server-Instanz
-Wir verwenden das [NYC Taxi-Dataset](http://chriswhong.com/open-data/foil_nyc_taxi/) , um den Migrationsprozess zu demonstrieren. Das NYC Taxi-Dataset ist, wie in diesem Beitrag erwähnt, in Azure Blob Storage unter [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/)verfügbar. Die Daten umfassen zwei Dateien, die Datei „trip_data.csv“, die Details zu den einzelnen Fahrten enthält, und die Datei „trip_far.csv“, die Details zu den pro Fahrt bezahlten Fahrpreisen enthält. Ein Beispiel und eine Beschreibung dieser Dateien finden Sie unter [Beschreibung des NYC Taxi Trips-Datasets](sql-walkthrough.md#dataset).
+Wir verwenden das [NYC Taxi-Dataset](https://chriswhong.com/open-data/foil_nyc_taxi/) , um den Migrationsprozess zu demonstrieren. Das NYC Taxi-Dataset ist, wie in diesem Beitrag erwähnt, in Azure Blob Storage unter [NYC Taxi Data](https://www.andresmh.com/nyctaxitrips/)verfügbar. Die Daten umfassen zwei Dateien, die Datei „trip_data.csv“, die Details zu den einzelnen Fahrten enthält, und die Datei „trip_far.csv“, die Details zu den pro Fahrt bezahlten Fahrpreisen enthält. Ein Beispiel und eine Beschreibung dieser Dateien finden Sie unter [Beschreibung des NYC Taxi Trips-Datasets](sql-walkthrough.md#dataset).
 
 Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigenen Daten anpassen oder die Schritte wie beschrieben unter Verwendung des NYC Taxi-Datasets durchführen. Um das NYC Taxi-Dataset in Ihre lokale SQL Server-Datenbank hochzuladen, befolgen Sie das unter [Massenimport von Daten in eine SQL Server-Datenbank](sql-walkthrough.md#dbload) beschriebene Verfahren. Diese Anleitungen gelten für eine SQL Server-Instanz auf einem virtuellen Azure-Computer, aber das Verfahren zum Hochladen auf die lokale SQL Server-Instanz ist identisch.
 
@@ -99,7 +99,7 @@ Die JSON-basierten Definitionen in den Tabellen verwenden die folgenden Namen:
 Für diese ADF-Pipeline sind drei Tabellendefinitionen erforderlich:
 
 1. [Lokale SQL-Tabelle](#adf-table-onprem-sql)
-2. [Blob-Tabelle ](#adf-table-blob-store)
+2. [Blob-Tabelle](#adf-table-blob-store)
 3. [SQL Azure-Tabelle](#adf-table-azure-sql)
 
 > [!NOTE]

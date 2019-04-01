@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/4/2019
-ms.author: rkarlin
-ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 3/14/2019
+ms.author: monhaber
+ms.openlocfilehash: d99ef6026f3605f4081393811d840ba3fe2892ba
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343509"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226112"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -36,7 +36,7 @@ Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloa
 
 Ihre Sicherheitsrichtlinien sind die Grundlage der Sicherheitsempfehlungen, die Sie in Azure Security Center erhalten. Sie können ihre Einhaltung überwachen, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen eindämmen können. Weitere Informationen zur Ermittlung der Option, die für Sie geeignet ist, finden Sie in der Liste mit den [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md).
 
-Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sicherheitsrichtlinie in Azure Policy als integrierte Initiative unter der Kategorie Security Center dargestellt. Die integrierte Initiative wird automatisch allen in Security Center registrierten Abonnements (Tarife „Free“ oder „Standard“) zugewiesen. Die integrierte Initiative enthält nur Überwachungsrichtlinien. 
+Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sicherheitsrichtlinie in Azure Policy als integrierte Initiative unter der Kategorie Security Center dargestellt. Die integrierte Initiative wird automatisch allen in Security Center registrierten Abonnements (Tarife „Free“ oder „Standard“) zugewiesen. Die integrierte Initiative enthält nur Überwachungsrichtlinien.
 
 
 ### <a name="management-groups"></a>Verwaltungsgruppen
@@ -68,25 +68,25 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
     ![Bereich „Richtlinienverwaltung“](./media/security-center-policies/security-center-policy-mgt.png)
 
-  Auf dem Bildschirm **Richtlinienverwaltung** können Sie die Anzahl von Verwaltungsgruppen, Abonnements und Arbeitsbereichen sowie Ihre Verwaltungsgruppenstruktur anzeigen.
+   Auf dem Bildschirm **Richtlinienverwaltung** können Sie die Anzahl von Verwaltungsgruppen, Abonnements und Arbeitsbereichen sowie Ihre Verwaltungsgruppenstruktur anzeigen.
 
-  > [!NOTE]
-  > - Im Security Center-Dashboard wird unter **Abonnementabdeckung** ggf. eine höhere Anzahl von Abonnements als unter **Richtlinienverwaltung** angezeigt. Unter der „Abonnementabdeckung“ wird die Anzahl von Abonnements vom Typ „Standard“, „Free“ und „Nicht abgedeckt“ angezeigt. Für Abonnements vom Typ „Nicht abgedeckt“ ist Security Center nicht aktiviert, und sie werden unter **Richtlinienverwaltung** nicht angezeigt.
-  >
+   > [!NOTE]
+   > - Im Security Center-Dashboard wird unter **Abonnementabdeckung** ggf. eine höhere Anzahl von Abonnements als unter **Richtlinienverwaltung** angezeigt. Unter der „Abonnementabdeckung“ wird die Anzahl von Abonnements vom Typ „Standard“, „Free“ und „Nicht abgedeckt“ angezeigt. Für Abonnements vom Typ „Nicht abgedeckt“ ist Security Center nicht aktiviert, und sie werden unter **Richtlinienverwaltung** nicht angezeigt.
+   >
 
-  In den Spalten der Tabelle wird Folgendes angezeigt:
+   In den Spalten der Tabelle wird Folgendes angezeigt:
 
- - **Zuweisung der Richtlinieninitiative**: [Integrierte Richtlinien](security-center-policy-definitions.md) und Initiativen von Security Center, die einem Abonnement oder einer Verwaltungsgruppe zugewiesen sind.
- - **Abdeckung**: Identifiziert den Tarif („Free“ oder „Standard“), unter dem die Verwaltungsgruppe, das Abonnement oder der Arbeitsbereich ausgeführt werden.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
- - **Einstellungen**: Abonnements verfügen über den Link **Einstellungen bearbeiten**. Indem Sie **Einstellungen bearbeiten** wählen, können Sie Ihre [Security Center-Einstellungen](security-center-policies-overview.md) für jedes Abonnement bzw. jede Verwaltungsgruppe aktualisieren.
- - **Sicherheitsbewertung**: Die [Sicherheitsbewertung](security-center-secure-score.md) informiert Sie über den Sicherheitszustand Ihrer Workload und hilft Ihnen, Verbesserungsempfehlungen Priorität einzuräumen.
+   - **Zuweisung der Richtlinieninitiative**: [Integrierte Richtlinien](security-center-policy-definitions.md) und Initiativen von Security Center, die einem Abonnement oder einer Verwaltungsgruppe zugewiesen sind.
+   - **Abdeckung**: Identifiziert den Tarif („Free“ oder „Standard“), unter dem die Verwaltungsgruppe, das Abonnement oder der Arbeitsbereich ausgeführt werden.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
+   - **Einstellungen**: Abonnements verfügen über den Link **Einstellungen bearbeiten**. Indem Sie **Einstellungen bearbeiten** wählen, können Sie Ihre [Security Center-Einstellungen](security-center-policies-overview.md) für jedes Abonnement bzw. jede Verwaltungsgruppe aktualisieren.
+   - **Sicherheitsbewertung**: Die [Sicherheitsbewertung](security-center-secure-score.md) informiert Sie über den Sicherheitszustand Ihrer Workload und hilft Ihnen, Verbesserungsempfehlungen Priorität einzuräumen.
 
 2. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, zu dem bzw. der Sie die Richtlinien anzeigen möchten.
 
-  - Auf dem Bildschirm **Sicherheitsrichtlinie** wird die Aktion der Richtlinien widergespiegelt, die dem von Ihnen gewählten Abonnement oder der Verwaltungsgruppe zugewiesen sind.
-  - Verwenden Sie oben die angegebenen Links, um die einzelnen **Richtlinienzuweisungen** zu öffnen, die für das Abonnement bzw. die Verwaltungsgruppe gelten. Sie können die Links nutzen, um auf die Zuweisung zuzugreifen und die Richtlinie zu bearbeiten oder zu deaktivieren. Wenn Sie beispielsweise feststellen, dass eine bestimmte Zuweisung den Endpunktschutz verhindert, können Sie über den Link auf die Richtlinie zugreifen und sie bearbeiten oder deaktivieren.
-  - In der Liste mit den Richtlinien können Sie die aktive Anwendung der Richtlinie auf Ihr Abonnement oder die Verwaltungsgruppe anzeigen. Dies bedeutet Folgendes: Die Einstellungen der einzelnen Richtlinien, die für den Bereich gelten, werden berücksichtigt, und für Sie wird das kumulierte Ergebnis dazu angegeben, welche Aktion von der Richtlinie durchgeführt wird. Wenn die Richtlinie beispielsweise in einer Zuweisung deaktiviert wird, aber in einer anderen auf „AuditIfNotExist“ festgelegt ist, wird aufgrund der Kumulation „AuditIfNotExist“ angewendet. Die aktivere Auswirkung hat immer Vorrang.
-  - Für die Richtlinien können sich die folgenden Auswirkungen ergeben: Append, Audit, AuditIfNotExists, Deny, DeployIfNotExists, Disabled. Weitere Informationen zur Anwendung von Auswirkungen finden Sie unter [Grundlegendes zu Richtlinienauswirkungen](../governance/policy/concepts/effects.md).
+   - Auf dem Bildschirm **Sicherheitsrichtlinie** wird die Aktion der Richtlinien widergespiegelt, die dem von Ihnen gewählten Abonnement oder der Verwaltungsgruppe zugewiesen sind.
+   - Verwenden Sie oben die angegebenen Links, um die einzelnen **Richtlinienzuweisungen** zu öffnen, die für das Abonnement bzw. die Verwaltungsgruppe gelten. Sie können die Links nutzen, um auf die Zuweisung zuzugreifen und die Richtlinie zu bearbeiten oder zu deaktivieren. Wenn Sie beispielsweise feststellen, dass eine bestimmte Zuweisung den Endpunktschutz verhindert, können Sie über den Link auf die Richtlinie zugreifen und sie bearbeiten oder deaktivieren.
+   - In der Liste mit den Richtlinien können Sie die aktive Anwendung der Richtlinie auf Ihr Abonnement oder die Verwaltungsgruppe anzeigen. Dies bedeutet Folgendes: Die Einstellungen der einzelnen Richtlinien, die für den Bereich gelten, werden berücksichtigt, und für Sie wird das kumulierte Ergebnis dazu angegeben, welche Aktion von der Richtlinie durchgeführt wird. Wenn die Richtlinie beispielsweise in einer Zuweisung deaktiviert wird, aber in einer anderen auf „AuditIfNotExist“ festgelegt ist, wird aufgrund der Kumulation „AuditIfNotExist“ angewendet. Die aktivere Auswirkung hat immer Vorrang.
+   - Für die Richtlinien können sich die folgenden Auswirkungen ergeben: Append, Audit, AuditIfNotExists, Deny, DeployIfNotExists, Disabled. Weitere Informationen zur Anwendung von Auswirkungen finden Sie unter [Grundlegendes zu Richtlinienauswirkungen](../governance/policy/concepts/effects.md).
 
    ![Bildschirm mit Richtlinien](./media/security-center-policies/policy-screen.png)
 
@@ -99,6 +99,29 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
 Eine Anleitung zur Bearbeitung einer Sicherheitsrichtlinie in Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md).
 
 Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten. Das folgende Beispiel enthält Anweisungen zum Bearbeiten über die REST-API.
+
+
+## <a name="disable-security-policies"></a>Deaktivieren von Sicherheitsrichtlinien
+Wenn die Standardsicherheitsrichtlinie eine Empfehlung generiert, die für Ihre Umgebung nicht relevant ist, können Sie dies beenden, indem Sie die Richtliniendefinition deaktivieren, die die Empfehlung sendet.
+Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheitsempfehlungen](security-center-recommendations.md).
+
+1. Klicken Sie im Security Center im Abschnitt **Richtlinie und Konformität** auf **Sicherheitsrichtlinie**.
+
+   ![Richtlinienverwaltung](./media/tutorial-security-policy/policy-management.png)
+
+2. Klicken Sie auf das Abonnement, für das Sie die Empfehlung deaktivieren möchten.
+
+1. Klicken Sie auf die zugewiesene Richtlinie.
+
+   ![Richtlinie deaktivieren](./media/tutorial-security-policy/security-policy.png)
+
+1. Suchen Sie im Abschnitt **PARAMETER** die Richtlinie, die die zu deaktivierende Empfehlung aufruft, und wählen Sie in der Dropdownliste die Option **Deaktiviert** aus.
+
+   ![Richtlinie deaktivieren](./media/tutorial-security-policy/disable-policy.png)
+1. Klicken Sie auf **Speichern**.
+   > [!Note]
+   > Es kann bis zu 12 Stunden dauern, bis die Änderungen zum Deaktivieren der Richtlinie wirksam werden.
+
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurieren einer Sicherheitsrichtlinie über die REST-API
 
@@ -159,38 +182,38 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
 
 - Endpunktschutz (Endpoint Protection) („endpointProtectionMonitoringEffect“) 
 
- 
-      PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
-      Request Body (JSON) 
-
-      { 
-
-        "properties":{ 
-
-      "displayName":"Enable Monitoring in Azure Security Center", 
-
-      "metadata":{ 
-
-      "assignedBy":"{Name}" 
-
-      }, 
-
-      "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
-
-      "parameters":{ 
-
-      "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
-
-      "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
-
-      "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
-
-      }, 
-
-       } 
-
-      } 
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
 
 In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
 

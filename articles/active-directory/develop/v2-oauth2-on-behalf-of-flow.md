@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0b1e784d4ca92f0da0e37d4afc1efcf09282cb4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162865"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445754"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0- und Im-Auftrag-von-Ablauf von OAuth2.0
 
@@ -193,7 +193,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Erhalten der Zustimmung für die Anwendung der mittleren Ebene
 
-Abhängig von der Benutzergruppe für Ihre Anwendung können Sie verschiedene Strategien in Betracht ziehen, um sicherzustellen, dass der OBO-Fluss erfolgreich ist. In allen Fällen geht es letztlich darum, eine ordnungsgemäße Einwilligung zu gewährleisten. Wie das geschieht, hängt jedoch davon ab, welche Benutzer Ihre Anwendung unterstützt. 
+Abhängig von der Benutzergruppe für Ihre Anwendung können Sie verschiedene Strategien in Betracht ziehen, um sicherzustellen, dass der OBO-Flow erfolgreich ist. In allen Fällen geht es letztlich darum, eine ordnungsgemäße Einwilligung zu gewährleisten. Wie das geschieht, hängt jedoch davon ab, welche Benutzer Ihre Anwendung unterstützt. 
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Einwilligung für Nur Azure AD-Anwendungen
 

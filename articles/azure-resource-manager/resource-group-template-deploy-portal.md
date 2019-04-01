@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0711743d46aaac08f8572917d91e452ee919134c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220124"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816900"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
 
-In diesem Artikel wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](resource-group-portal.md).
+In diesem Artikel wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen unter Verwendung des Azure-Portals](manage-resources-portal.md).
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
@@ -105,7 +105,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 
    ![Auswählen des Speicherkontos](./media/resource-group-template-deploy-portal/add-storage-account.png)
 
-1. Der Editor fügt automatisch JSON als Ressourcentyp hinzu. Beachten Sie, dass ein Parameter zum Festlegen des Speicherkontotyps enthalten ist. Wählen Sie **Speichern**aus.
+1. Der Editor fügt automatisch JSON als Ressourcentyp hinzu. Beachten Sie, dass ein Parameter zum Festlegen des Speicherkontotyps enthalten ist. Wählen Sie **Speichern** aus.
 
    ![Anzeigen der Vorlage](./media/resource-group-template-deploy-portal/show-json.png)
 
@@ -134,7 +134,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
    ![Bereitstellen der gespeicherten Vorlage](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-* Informationen zum Beheben von Bereitstellungsfehlern finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md).
-* Informationen zum Abrufen einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
-* Informationen zum sicheren Rollout Ihres Dienst über mehrere Regionen finden Sie im Artikel zum [Bereitstellungs-Manager](deployment-manager-overview.md).
+* Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](./resource-group-audit.md).
+* Informationen zum Beheben von Bereitstellungsfehlern finden Sie unter [Anzeigen von Bereitstellungsvorgängen](./resource-manager-deployment-operations.md).
+* Informationen zum Exportieren einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+* Informationen zum sicheren Rollout Ihres Dienst über mehrere Regionen finden Sie im Artikel zum [Bereitstellungs-Manager](./deployment-manager-overview.md).

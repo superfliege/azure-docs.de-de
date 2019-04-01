@@ -5,26 +5,31 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/23/2019
+ms.date: 3/1/2019
 ms.author: victorh
-ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7f5f377f34a43dfb01ea516e023bb98f118d0dd4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816321"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247221"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
 
 Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich. Als Hostingdienst für DNS-Domänen bietet Azure DNS eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS als Vorschaufeature jetzt auch private DNS-Domänen.
 
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+
 Azure DNS bietet einen zuverlässigen, sicheren DNS-Dienst zum Verwalten und Auflösen von Domänennamen in einem virtuellen Netzwerk, ohne dass Sie eine benutzerdefinierte DNS-Lösung hinzufügen müssen. Durch die Verwendung privater DNS-Zonen können Sie anstelle der momentan verfügbaren von Azure bereitgestellten Namen Ihre eigenen benutzerdefinierten Domänennamen verwenden. Die Verwendung benutzerdefinierter Domänennamen erleichtert Ihnen die optimale Anpassung der Architektur Ihres virtuellen Netzwerks an die Anforderungen Ihres Unternehmens. Es wird eine Namensauflösung für virtuelle Computer in einem virtuellen Netzwerk und zwischen virtuellen Netzwerken bereitgestellt. Darüber hinaus können Sie Zonennamen mit einer Split-Horizon-Ansicht konfigurieren, sodass eine private und eine öffentliche DNS-Zone den Namen verwenden können.
+
+Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist. Diese werden als *virtuelle Auflösungsnetzwerke* bezeichnet. Sie können auch ein virtuelles Netzwerk angeben, für das Azure DNS Hostnameneinträge verwaltet, wenn ein virtueller Computer erstellt wird, sich seine IP-Adresse ändert oder der virtuelle Computer gelöscht wird. Dies wird als *virtuelles Registrierungsnetzwerk* bezeichnet.
 
 Wenn Sie ein virtuelles Netzwerk für die Registrierung angeben, können die DNS-Einträge für die VMs aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Azure PowerShell und Azure CLI-APIs angezeigt oder abgerufen werden. Die VM-Einträge werden tatsächlich jedoch registriert und erfolgreich aufgelöst.
 
 ![Übersicht über DNS](./media/private-dns-overview/scenario.png)
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+> [!NOTE]
+> Als bewährte Methode sollten Sie keine Domäne vom Typ „.local“ für Ihre private DNS-Zone verwenden. Nicht alle Betriebssysteme unterstützen dies.
 
 ## <a name="benefits"></a>Vorteile
 

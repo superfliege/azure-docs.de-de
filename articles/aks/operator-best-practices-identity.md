@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 478034d1c9f99f40a4827515433357c76235e9ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 201fef6b3e773daa18ae252d1d5734d8d87419b5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430525"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287127"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 
@@ -64,10 +64,10 @@ rules:
   verbs: ["*"]
 ```
 
-Eine RoleBinding wird dann erstellt, die den Azure AD-Benutzer *developer1@contoso.com* an die RoleBinding bindet, wie im folgenden Beispiel-YAML-Manifest gezeigt:
+Eine RoleBinding wird dann erstellt, die den Azure AD-Benutzer *developer1\@contoso.com* an die RoleBinding bindet, wie im folgenden YAML-Beispielmanifest gezeigt:
 
 ```yaml
-ind: RoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: finance-app-full-access-role-binding
@@ -82,7 +82,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Wenn *developer1@contoso.com* für den AKS-Cluster authentifiziert wird, verfügt er über vollständige Berechtigungen für Ressourcen im *finance-app*-Namespace. So trennen Sie logisch den Zugriff auf Ressourcen und steuern ihn. Kubernetes-RBAC sollte in Verbindung mit Azure AD-Integration verwendet werden, wie im vorherigen Abschnitt erläutert.
+Wenn *developer1\@contoso.com* für den AKS-Cluster authentifiziert wird, verfügt er über vollständige Berechtigungen für Ressourcen im *finance-app*-Namespace. So trennen Sie logisch den Zugriff auf Ressourcen und steuern ihn. Kubernetes-RBAC sollte in Verbindung mit Azure AD-Integration verwendet werden, wie im vorherigen Abschnitt erläutert.
 
 ## <a name="use-pod-identities"></a>Verwenden von Podidentitäten
 
@@ -90,7 +90,7 @@ Wenn *developer1@contoso.com* für den AKS-Cluster authentifiziert wird, verfüg
 
 Wenn Pods Zugriff auf andere Azure-Dienste wie Cosmos DB, Key Vault oder Blob Storage benötigen, benötigt der Pod Anmeldeinformationen für den Zugriff. Diese Anmeldeinformationen für den Zugriff könnten mit dem Containerimage definiert oder als Kubernetes-Geheimnis eingefügt werden, müssen aber manuell erstellt und zugewiesen werden. Häufig werden die Anmeldeinformationen Pods übergreifend wiederverwendet und nicht regelmäßig rotiert.
 
-Mit verwalteten Identitäten für Azure-Ressourcen können Sie automatisch über Azure AD Zugriff auf Dienste anfordern. Sie definieren nicht manuell Anmeldeinformationen für Pods, stattdessen fordern diese ein Zugriffstoken in Echtzeit an und können es nur für den Zugriff auf die ihnen zugewiesenen Dienste verwenden. In AKS werden zwei Komponenten vom Clusteroperator bereitgestellt, um Pods die Verwendung verwalteter Identitäten zu ermöglichen:
+Mit verwalteten Identitäten für Azure-Ressourcen (die derzeit als ein zugeordnetes AKS-Open-Source-Projekt implementiert sind) können Sie über Azure AD automatisch Zugriff auf Dienste anfordern. Sie definieren nicht manuell Anmeldeinformationen für Pods, stattdessen fordern diese ein Zugriffstoken in Echtzeit an und können es nur für den Zugriff auf die ihnen zugewiesenen Dienste verwenden. In AKS werden zwei Komponenten vom Clusteroperator bereitgestellt, um Pods die Verwendung verwalteter Identitäten zu ermöglichen:
 
 * **Der Node Management Identity-Server (NMI)** ist ein Pod, der auf jedem Knoten im AKS-Cluster als DaemonSet ausgeführt wird. Der NMI-Server überwacht Podanforderungen an Azure-Dienste.
 * **Der Managed Identity Controller (MIC)** ist ein zentraler Pod mit Berechtigungen zur Abfrage des Kubernetes-API-Servers und überprüft, ob eine Azure-Identitätszuordnung vorliegt, die einem Pod entspricht.
@@ -105,6 +105,8 @@ Im folgenden Beispiel erstellt ein Entwickler einen Pod, der eine verwaltete Ide
 1. NMI-Server und MIC werden zum Weiterleiten von Podanforderungen von Zugriffstoken für den Azure AD-Zugriff bereitgestellt.
 1. Ein Entwickler stellt einen Pod mit einer verwalteten Identität bereit, die ein Zugriffstoken über den NMI-Server anfordert.
 1. Das Token wird an den Pod zurückgegeben und für den Zugriff auf eine Azure SQL Server-Instanz verwendet.
+
+Verwaltete Pod-Identitäten sind ein Open-Source-Projekt für AKS, das vom technischen Support von Azure nicht unterstützt wird. Es wird zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Das Projekt wird nicht für die Produktion empfohlen.
 
 Wie Sie Podidentitäten verwenden, erfahren Sie unter [Azure Active Directory identities for Kubernetes applications (Azure Active Directory-Identitäten für Kubernetes-Anwendungen)][aad-pod-identity].
 

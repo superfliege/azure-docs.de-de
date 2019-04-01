@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: cfe0a4f68d77f278745b71c13beefc97cf92aa29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605924"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111666"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Azure-Blaupause für Sicherheit und Compliance: PaaS-Webanwendung für PCI-DSS
 
@@ -43,7 +43,7 @@ Für mehr Sicherheit werden alle Ressourcen in dieser Lösung als Ressourcengrup
 
 Azure SQL-Datenbank wird in der Regel über SQL Server Management Studio (SSMS) verwaltet. SSMS wird über einen lokalen Computer ausgeführt, der für den Zugriff auf Azure SQL-Datenbank über eine sichere VPN- oder ExpressRoute-Verbindung konfiguriert ist.
 
-Darüber hinaus ermöglicht Application Insights über Log Analytics die Echtzeit-Anwendungsleistungsverwaltung und entsprechende Analysen. **Microsoft empfiehlt das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und den Datenimport in das Subnetz der Referenzarchitektur.**
+Darüber hinaus ermöglicht Application Insights über Azure Monitor-Protokolle die Echtzeit-Anwendungsleistungsverwaltung und entsprechende Analysen. **Microsoft empfiehlt das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und den Datenimport in das Subnetz der Referenzarchitektur.**
 
 ![PaaS-Webanwendung für PCI-DSS – Diagramm zur Referenzarchitektur](images/pcidss-paaswa-architecture.png "PaaS-Webanwendung für PCI-DSS – Diagramm zur Referenzarchitektur")
 
@@ -118,7 +118,7 @@ Die Architektur definiert ein privates virtuelles Netzwerk mit dem Adressraum 10
 Jede der Netzwerksicherheitsgruppen verfügt über bestimmte offene Ports und Protokolle, damit die Lösung sicher und richtig ausgeführt werden kann. Darüber hinaus werden die folgenden Konfigurationen für jede Netzwerksicherheitsgruppe aktiviert:
 
 - [Diagnoseprotokolle und -ereignisse](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) werden aktiviert und in einem Speicherkonto gespeichert.
-- Log Analytics ist mit der [Diagnose der Netzwerksicherheitsgruppe](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden.
+- Azure Monitor-Protokolle ist mit der [Diagnose der Netzwerksicherheitsgruppe](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden.
 
 **Subnetze**: Jedes Subnetz ist seiner entsprechenden Netzwerksicherheitsgruppe zugeordnet.
 
@@ -193,9 +193,9 @@ Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowi
 - **Aktivitätsprotokolle**: [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
 - **Diagnoseprotokolle**: [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) umfassen sämtliche Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle. Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden.
 
-**Log Analytics**: Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) konsolidiert. Nachdem die Daten gesammelt wurden, werden sie in separaten Tabellen für die einzelnen Datentypen in Log Analytics-Arbeitsbereichen angeordnet, damit alle Daten unabhängig von der ursprünglichen Quelle zusammen analysiert werden können. Darüber hinaus ist das Azure Security Center mit Log Analytics integriert, sodass Kunden mit Log Analytics-Abfragen auf ihre Sicherheitsereignisdaten zugreifen und diese mit Daten aus anderen Diensten kombinieren können.
+**Azure Monitor-Protokolle:** Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) konsolidiert. Nachdem die Daten gesammelt wurden, werden sie in separaten Tabellen für die einzelnen Datentypen in Log Analytics-Arbeitsbereichen angeordnet, damit alle Daten unabhängig von der ursprünglichen Quelle zusammen analysiert werden können. Darüber hinaus ist das Azure Security Center in Azure Monitor-Protokolle integriert, sodass Kunden mit Kusto-Abfragen auf ihre Sicherheitsereignisdaten zugreifen und diese mit Daten aus anderen Diensten kombinieren können.
 
-Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) sind in dieser Architektur enthalten:
+In dieser Architektur sind die folgenden Azure-[Überwachungslösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) enthalten:
 -   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Die Lösung „Active Directory-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
 - [SQL-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Die Lösung „SQL-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
 - [Agent-Integritätsdiagnose](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Die Lösung „Agent-Integritätsdiagnose“ meldet die Anzahl bereitgestellter Agents sowie deren geografische Verteilung. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
@@ -228,10 +228,10 @@ Diese Azure Security and Compliance Blueprint-Automatisierung besteht aus JSON-K
 2. Überprüfen Sie „0-Setup-AdministrativeAccountAndPermission.md“, und führen Sie die angegebenen Befehle aus.
 
 3. Stellen Sie eine Testlösung mit Contoso-Beispieldaten oder eine Pilotlösung einer anfänglichen Produktionsumgebung bereit.
-  - 1A-ContosoWebStoreDemoAzureResources.ps1
-    - Dieses Skript stellt die Azure-Ressourcen für die Demonstration eines Webstores mithilfe von Contoso-Beispieldaten bereit.
-  - 1-DeployAndConfigureAzureResources.ps1
-    - Dieses Skript stellt die Azure-Ressourcen bereit, die zur Unterstützung einer Produktionsumgebung für eine vom Kunden betriebene Webanwendung erforderlich sind. Diese Umgebung sollte vom Kunden auf Basis der organisatorischen Anforderungen weiter angepasst werden.
+   - 1A-ContosoWebStoreDemoAzureResources.ps1
+     - Dieses Skript stellt die Azure-Ressourcen für die Demonstration eines Webstores mithilfe von Contoso-Beispieldaten bereit.
+   - 1-DeployAndConfigureAzureResources.ps1
+     - Dieses Skript stellt die Azure-Ressourcen bereit, die zur Unterstützung einer Produktionsumgebung für eine vom Kunden betriebene Webanwendung erforderlich sind. Diese Umgebung sollte vom Kunden auf Basis der organisatorischen Anforderungen weiter angepasst werden.
 
 ## <a name="guidance-and-recommendations"></a>Anleitungen und Empfehlungen
 

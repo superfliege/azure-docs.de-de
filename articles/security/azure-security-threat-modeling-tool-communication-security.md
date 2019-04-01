@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013184"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897298"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -68,7 +68,7 @@ ms.locfileid: "53013184"
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Verknüpfte Diensttypen: Azure und lokal |
-| **Referenzen**              |[Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [Datenverwaltungsgateway](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Referenzen**              |[Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgatewayy](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [Datenverwaltungsgateway](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Schritte** | <p>Das DMG-Tool (Data Management Gateway; Datenverwaltungsgateway) wird benötigt, um eine Verbindung mit Datenquellen herzustellen, die durch ein Unternehmensnetzwerk oder eine Firewall geschützt sind.</p><ol><li>Bei einer Sperrung des Computers wird das DMG-Tool isoliert, und es wird verhindert, dass fehlerhafte Programme den Datenquellcomputer beschädigen oder ausspionieren. (Beispiele: Die neuesten Updates müssen installiert werden, die mindestens erforderlichen Ports müssen aktiviert werden, Konten müssen kontrolliert bereitgestellt werden, Überwachung und Datenträgerverschlüsselung müssen aktiviert werden usw.)</li><li>Der Datengatewayschlüssel muss in regelmäßigen Abständen bzw. bei jeder Erneuerung des DMG-Dienstkontokennworts ausgetauscht werden.</li><li>Datenübertragungen über den Verknüpfungsdienst müssen verschlüsselt werden.</li></ol> |
 
 ## <a id="identity-https"></a>Stellen Sie sicher, dass der gesamte an Identity Server gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.
@@ -146,7 +146,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) (OWASP-Cheat Sheet zu HTTP Strict Transport Security) |
-| **Schritte** | <p>Bei HSTS (HTTP Strict Transport Security) handelt es sich um eine optionale Sicherheitserweiterung, die von einer Webanwendung mithilfe eines speziellen Antwortheaders angegeben wird. Wenn ein unterstützter Browser diesen Header empfängt, verhindert er, dass die Kommunikation über HTTP an die angegebene Domäne gesendet wird, und sendet die gesamte Kommunikation stattdessen über HTTPS. Darüber hinaus werden in Browsern auch HTTPS-Clickthrough-Aufforderungen verhindert.</p><p>Zur Implementierung von HSTS muss der folgende Antwortheader global für eine Website konfiguriert werden (entweder im Code oder in der Konfiguration): Strict-Transport-Security: max-age=300; includeSubDomains. HSTS dient zur Abwehr folgender Bedrohungen:</p><ul><li>Ein Benutzer erstellt ein Lesezeichen für http://example.com oder gibt die Adresse manuell ein und wird Opfer eines Man-in-the-Middle-Angriffs: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Eine Webanwendung, die eigentlich als reine HTTPS-Anwendung konzipiert ist, enthält unbeabsichtigt HTTP-Links oder stellt Inhalt über HTTP bereit: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Bei einem Man-in-the-Middle-Angriff wird versucht, Datenverkehr des betroffenen Benutzers mithilfe eines ungültigen Zertifikats abzufangen (in der Hoffnung, dass der Benutzer das falsche Zertifikat akzeptiert): HSTS lässt nicht zu, dass ein Benutzer die Meldung mit dem Hinweis auf ein ungültiges Zertifikat außer Kraft setzt.</li></ul>|
+| **Schritte** | <p>Bei HSTS (HTTP Strict Transport Security) handelt es sich um eine optionale Sicherheitserweiterung, die von einer Webanwendung mithilfe eines speziellen Antwortheaders angegeben wird. Wenn ein unterstützter Browser diesen Header empfängt, verhindert er, dass die Kommunikation über HTTP an die angegebene Domäne gesendet wird, und sendet die gesamte Kommunikation stattdessen über HTTPS. Darüber hinaus werden in Browsern auch HTTPS-Clickthrough-Aufforderungen verhindert.</p><p>Zur Implementierung von HSTS muss der folgende Antwortheader global für eine Website konfiguriert werden (entweder im Code oder in der Konfiguration): Strict-Transport-Security: max-age=300; includeSubDomains. HSTS dient zur Abwehr folgender Bedrohungen:</p><ul><li>Ein Benutzer erstellt ein Lesezeichen für https://example.com oder gibt die Adresse manuell ein und wird Opfer eines Man-in-the-Middle-Angriffs: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Eine Webanwendung, die eigentlich als reine HTTPS-Anwendung konzipiert ist, enthält unbeabsichtigt HTTP-Links oder stellt Inhalt über HTTP bereit: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Bei einem Man-in-the-Middle-Angriff wird versucht, Datenverkehr des betroffenen Benutzers mithilfe eines ungültigen Zertifikats abzufangen (in der Hoffnung, dass der Benutzer das falsche Zertifikat akzeptiert): HSTS lässt nicht zu, dass ein Benutzer die Meldung mit dem Hinweis auf ein ungültiges Zertifikat außer Kraft setzt.</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.
 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Enforcing SSL in a Web API Controller](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) (Erzwingen von SSL in einem Web-API-Controller) |
+| **Referenzen**              | [Enforcing SSL in a Web API Controller](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) (Erzwingen von SSL in einem Web-API-Controller) |
 | **Schritte** | Wenn eine Anwendung sowohl über eine HTTPS-Bindung als auch über eine HTTP-Bindung verfügt, können Clients weiterhin über HTTP auf die Website zugreifen. Stellen Sie daher mithilfe eines Aktionsfilters sicher, dass Anforderungen an geschützte APIs immer über HTTPS abgewickelt werden.|
 
 ### <a name="example"></a>Beispiel 

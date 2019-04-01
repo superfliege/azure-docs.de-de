@@ -1,26 +1,28 @@
 ---
-title: Log Analytics-Beispiele für Azure Firewall
-description: Log Analytics-Beispiele für Azure Firewall
+title: Azure Firewall-Protokollanalyse – Beispiele
+description: Azure Firewall-Protokollanalyse – Beispiele
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: cff31ba73730b7cf7cb27ecb132ec70806234924
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233394"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534002"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Log Analytics-Beispiele für Azure Firewall
+# <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall-Protokollanalyse – Beispiele
 
-Sie können die folgenden Log Analytics-Beispiele verwenden, um Ihre Azure Firewall-Protokolle zu analysieren. Die Beispieldatei wird im Ansicht-Designer in Log Analytics erstellt. Im Artikel zum [Ansicht-Designer in Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) finden Sie weitere Informationen zum Konzept des Ansicht-Designers.
+Sie können die folgenden Azure Monitor-Protokollbeispiele verwenden, um Ihre Azure Firewall-Protokolle zu analysieren. Die Beispieldatei wird im Ansicht-Designer in Azure Monitor erstellt. Im Artikel zum [Ansicht-Designer in Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) finden Sie weitere Informationen zum Konzept des Ansicht-Designers.
 
-## <a name="log-analytics-view"></a>Log Analytics-Ansicht
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Hier wird beschrieben, wie Sie eine Log Analytics-Beispielvisualisierung konfigurieren können. Die Beispielvisualisierung können Sie vom Repository [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) herunterladen. Am einfachsten ist es, wenn Sie mit der rechten Maustaste auf den Hyperlink auf dieser Seite klicken, *Speichern unter* auswählen und einen Namen wie z.B. **AzureFirewall.omsview** eingeben. 
+## <a name="azure-monitor-logs-view"></a>Azure Monitor-Protokollansicht
+
+Hier wird beschrieben, wie Sie eine Beispielvisualisierung für Azure Monitor-Protokolle konfigurieren können. Die Beispielvisualisierung können Sie vom Repository [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) herunterladen. Am einfachsten ist es, wenn Sie mit der rechten Maustaste auf den Hyperlink auf dieser Seite klicken, *Speichern unter* auswählen und einen Namen wie z.B. **AzureFirewall.omsview** eingeben. 
 
 Führen Sie die folgenden Schritte aus, um die Ansicht zu Ihrem Log Analytics-Arbeitsbereich hinzuzufügen:
 
@@ -98,7 +100,7 @@ RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rul
 
 ## <a name="network-rules-log-data-query"></a>Abfrage der Netzwerkregelprotokolldaten
 
-Mit der nachfolgenden Abfrage werden die Netzwerkregelprotokolldaten analysiert. In den verschiedenen Kommentarzeilen wird angegeben, wie die Abfrage erstellt wurde:
+Mit der folgenden Abfrage werden die Netzwerkregelprotokolldaten analysiert. In den verschiedenen Kommentarzeilen wird angegeben, wie die Abfrage erstellt wurde:
 
 ```Kusto
 AzureDiagnostics
@@ -147,6 +149,21 @@ AzureDiagnostics
 | extend SourcePort = tostring(SourcePortInt),TargetPort = tostring(TargetPortInt)
 | extend Action = case(Action1a == "", case(Action1b == "",Action2,Action1b), Action1a),Protocol = case(Protocol == "", Protocol2, Protocol),SourceIP = case(SourceIP == "", SourceIP2, SourceIP),TargetIP = case(TargetIP == "", TargetIP2, TargetIP),SourcePort = case(SourcePort == "", "N/A", SourcePort),TargetPort = case(TargetPort == "", "N/A", TargetPort),NatDestination = case(NatDestination == "", "N/A", NatDestination)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
+```
+
+## <a name="threat-intelligence-log-data-query"></a>Abfrage von Protokolldaten mit Threat Intelligence
+
+Mit der folgenden Abfrage werden die Threat Intelligence-Regelprotokolldaten analysiert:
+
+```Kusto
+AzureDiagnostics
+| where OperationName  == "AzureFirewallThreatIntelLog"
+| parse msg_s with Protocol " request from " SourceIP ":" SourcePortInt:int " to " TargetIP ":" TargetPortInt:int *
+| parse msg_s with * ". Action: " Action "." Message
+| parse msg_s with Protocol2 " request from " SourceIP2 " to " TargetIP2 ". Action: " Action2
+| extend SourcePort = tostring(SourcePortInt),TargetPort = tostring(TargetPortInt)
+| extend Protocol = case(Protocol == "", Protocol2, Protocol),SourceIP = case(SourceIP == "", SourceIP2, SourceIP),TargetIP = case(TargetIP == "", TargetIP2, TargetIP),SourcePort = case(SourcePort == "", "N/A", SourcePort),TargetPort = case(TargetPort == "", "N/A", TargetPort)
+| sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

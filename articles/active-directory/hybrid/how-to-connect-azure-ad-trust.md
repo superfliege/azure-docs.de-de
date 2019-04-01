@@ -18,12 +18,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a45d776ea241e04aacf39e45f7bf6d2cc58c689
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172164"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446638"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect
 
@@ -105,7 +105,7 @@ Azure AD Connect stellt sicher, dass die Azure AD-Vertrauensstellung immer mit d
 
 Azure AD Connect, Version 1.1.873.0 oder höher, erstellt eine Sicherung der Einstellungen für die Azure AD-Vertrauensstellung, wenn ein Update der Einstellungen für die Azure AD-Vertrauensstellung vorgenommen wird. Die Einstellungen für die Azure AD-Vertrauensstellung werden in **%ProgramData%\AADConnect\ADFS** gesichert. Der Dateiname hat das folgende Format: AadTrust-&lt;Datum&gt;-&lt;Zeit&gt;.txt, Beispiel: AadTrust-20180710-150216.txt
 
-![Eine Momentaufnahme einer Beispielsicherung einer Azure AD-Vertrauensstellung](./media/how-to-connect-azure-ad-trust/backup.png)
+![Screenshot der Beispielsicherung einer Azure AD-Vertrauensstellung](./media/how-to-connect-azure-ad-trust/backup.png)
 
 Sie können die Ausstellungstransformationsregeln mithilfe der folgenden empfohlenen Schritte wiederherstellen.
 

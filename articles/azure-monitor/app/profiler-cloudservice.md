@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895480"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights
 
@@ -32,6 +32,8 @@ Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert
 1. Stellen Sie sicher, dass Sie [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Dazu ist es ausreichend zu bestätigen, dass die *ServiceConfiguration.\*.cscfg*-Dateien einen `osFamily`-Wert von „5“ oder höher haben.
 
 1. Fügen Sie das [Application Insights SDK für Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) hinzu.
+
+   >**Der Profiler, der in der neuesten Version von WAD für Cloud Services enthalten ist, weist einen Fehler auf.** Zur Verwendung des Profilers mit einem Clouddienst wird nur das AI SDK bis Version 2.7.2 unterstützt. Wenn Sie eine neuere Version des AI SDK verwenden, müssen Sie zu Version 2.7.2 zurückkehren, um den Profiler zu verwenden. Wenn Sie Visual Studio für das Downgrade der App Insights SDK-Version verwenden, wird zur Laufzeit möglicherweise ein Bindungsumleitungsfehler angezeigt. Der Grund dafür ist, dass „newVersion“ in der Datei „web.config“ für „Microsoft.ApplicationInsights“ nach dem Downgrade des AI SDK auf „2.7.2.0" festgelegt sein sollte, dies aber nicht automatisch aktualisiert wird.
 
 1. Verfolgen Sie Anforderungen mit Application Insights:
 

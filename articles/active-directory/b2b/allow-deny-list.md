@@ -1,5 +1,5 @@
 ---
-title: Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen – Azure Active Directory | Microsoft-Dokumentation
+title: Zulassen oder Blockieren von Einladungen für bestimmte Organisationen – Azure Active Directory | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie ein Administrator über das Azure-Portal oder mithilfe von PowerShell eine Zugriffs- oder Verweigerungsliste zum Zulassen oder Blockieren von B2B-Benutzern von bestimmten Domänen festlegen kann.
 services: active-directory
 ms.service: active-directory
@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1921def9f09df899a884aa402c5e0f4e9fc16824
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f1121b72bf631cbcee4c8d9502fd8a439c26fbf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181319"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440113"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen
 

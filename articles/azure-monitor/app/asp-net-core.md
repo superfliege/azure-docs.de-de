@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054842"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520750"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 
@@ -88,15 +88,15 @@ Klicken Sie auf **Ansicht** > **Team Explorer** (STRG+\, STRG+M) > **Projekt** >
 
 - Eine neue Datei wird erstellt:
 
-  -  _ConnectedService.json_
+  - _ConnectedService.json_
 
     ```json
     {
-      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-      "Version": "8.12.10405.1",
-      "GettingStartedDocument": {
-        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-      }
+     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+     "Version": "8.12.10405.1",
+     "GettingStartedDocument": {
+       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+     }
     }
     ```
 
@@ -181,6 +181,10 @@ Klicken Sie auf **Ansicht** > **Team Explorer** (STRG+\, STRG+M) > **Projekt** >
       }
       ```
 
+## <a name="send-ilogger-logs-to-application-insights"></a>Senden von ILogger-Protokollen an Application Insights
+
+Application Insights unterstützt das Erfassen von Protokollen, die über ILogger gesendet werden. Zum Einrichten der Protokollierung sehen Sie sich die Codebeispiele [hier](https://docs.microsoft.com/azure/azure-monitor/app/ilogger) an.
+
 ## <a name="synthetic-transactions-with-powershell"></a>Synthetische Transaktionen mit PowerShell
 
 So automatisieren Sie Anforderungen an Ihre App mit synthetischen Transaktionen:
@@ -193,7 +197,7 @@ So automatisieren Sie Anforderungen an Ihre App mit synthetischen Transaktionen:
 
 3. Führen Sie die folgende PowerShell-Schleife aus, um 100 synthetische Transaktionen mit Ihrer Test-App zu erstellen. Ändern Sie die Portnummer nach `localhost:` gemäß der URL, die Sie im vorherigen Schritt kopiert haben. Beispiel: 
 
-   ```PowerShell
+   ```powershell
    for ($i = 0 ; $i -lt 100; $i++)
    {
     Invoke-WebRequest -uri http://localhost:50984/
@@ -405,6 +409,6 @@ Bei der Verwendung dieser Methoden besteht das Problem, dass sie nicht nur Appli
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Untersuchen Sie Benutzerabläufe](../../azure-monitor/app/usage-flows.md), um die Benutzernavigation in Ihrer App nachzuvollziehen.
-* [Konfigurieren Sie die Momentaufnahmensammlung](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications), um den Status des Quellcodes und der Variablen zu dem Zeitpunkt anzuzeigen, zu dem eine Ausnahme ausgelöst wurde.
+* [Konfigurieren Sie die Momentaufnahmensammlung](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger), um den Status des Quellcodes und der Variablen zu dem Zeitpunkt anzuzeigen, zu dem eine Ausnahme ausgelöst wurde.
 * [Verwenden Sie die API](../../azure-monitor/app/api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
 * Überprüfen Sie Ihre App mit [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) fortwährend von jedem Ort der Welt aus.

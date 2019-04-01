@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b7ad21bd3185e5e6ba4774cdc5780b0594033f14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903622"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -50,7 +50,7 @@ Dieses Diagramm stellt eine komponentenübergreifende Zeitachse mit horizontalen
 * Wählen Sie eine beliebige Zeile aus, um ihre [Details auf der rechten Seite](#details-of-the-selected-telemetry) anzuzeigen. 
 
 > [!NOTE]
-Aufrufe an andere Komponenten weisen zwei Zeilen auf : Eine Zeile stellt den ausgehenden Aufruf (Abhängigkeit) von der aufrufenden Komponente dar, die andere Zeile entspricht der eingehenden Anforderung bei der aufgerufenen Komponente. Das führende Symbol und die unterschiedliche Gestaltung der Balken für die Dauer erleichtern die Unterscheidung zwischen ihnen.
+> Aufrufe an andere Komponenten weisen zwei Zeilen auf : Eine Zeile stellt den ausgehenden Aufruf (Abhängigkeit) von der aufrufenden Komponente dar, die andere Zeile entspricht der eingehenden Anforderung bei der aufgerufenen Komponente. Das führende Symbol und die unterschiedliche Gestaltung der Balken für die Dauer erleichtern die Unterscheidung zwischen ihnen.
 
 ## <a name="all-telemetry-with-this-operation-id"></a>Die gesamte Telemetrie mit dieser Vorgangs-ID
 
@@ -74,9 +74,9 @@ Dieser reduzierbare Bereich zeigt die anderen Ergebnisse an, die den Filterkrite
 
 Der [Application Insights Profiler](../../azure-monitor/app/profiler.md) oder der [Momentaufnahmedebugger](snapshot-debugger.md) unterstützen die Diagnose von Leistungs- und Ausfallproblemen auf Codeebene. Dank dieser Benutzeroberfläche können Sie Profilerüberwachungen oder Momentaufnahmen von beliebigen Komponenten mit nur einem Klick anzeigen.
 
-Setzen Sie sich bei Problemen mit dem Profiler unter **serviceprofilerhelp@microsoft.com** mit uns in Verbindung.
+Setzen Sie sich bei Problemen mit dem Profiler unter **serviceprofilerhelp\@microsoft.com** mit uns in Verbindung.
 
-Setzen Sie sich bei Problemen mit dem Momentaufnahmedebugger unter **snapshothelp@microsoft.com** mit uns in Verbindung.
+Setzen Sie sich bei Problemen mit dem Momentaufnahmedebugger unter **snapshothelp\@microsoft.com** mit uns in Verbindung.
 
 ![Profilerintegration](media/transaction-diagnostics/profilerTraces.png)
 

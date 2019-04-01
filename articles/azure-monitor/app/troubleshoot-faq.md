@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905057"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -257,7 +257,7 @@ Die vollständige Liste der Dienste und IP-Adressen finden Sie [hier](../../azur
 
 Ermöglichen Sie Ihrem Webserver das Senden von Telemetriedaten an unsere Endpunkte. 
 
-### <a name="proxy-redirect"></a>Proxyweiterleitung
+### <a name="gateway-redirect"></a>Gateway-Umleitung
 
 Leiten Sie Datenverkehr von Ihrem Server an ein Gateway im Intranet weiter, indem Sie Endpunkte in Ihrer Konfiguration überschreiben.
 Wenn diese „Endpoint“-Eigenschaften in Ihrer Konfiguration nicht vorhanden sind, verwenden diese Klassen die in der Beispieldatei „ApplicationInsights.config“ unten gezeigten Standardwerte. 
@@ -288,7 +288,19 @@ Ihr Gateway muss Datenverkehr an die Basisadresse unseres Endpunkts weiterleiten
 
 _Beachten Sie, dass ApplicationIdProvider ab v2.6.0 verfügbar ist_
 
+### <a name="proxy-passthrough"></a>Proxy-Passthrough
 
+Ein Proxy-Passthrough kann erreicht werden, indem entweder ein Proxy auf Computerebene oder auf Anwendungsebene konfiguriert wird.
+Weitere Informationen finden Sie im Dotnet-Artikel zu [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+ 
+ Beispieldatei „Web.config“:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
  
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Kann ich auf einem Intranetserver Verfügbarkeitswebtests ausführen?

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af7c5721458e36a1efa27c9696feaa3dbf043e4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878447"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -101,7 +101,7 @@ Eine bewährte Methode bei der Problembehandlung für das Kennwortrückschreiben
 | Code | Name oder Meldung | BESCHREIBUNG |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619: „A restriction prevents the password from being changed to the current one specified.“ (BAIL: MMS(4924) 0x80230619: Eine Einschränkung verhindert, dass das Kennwort in die aktuelle Angabe geändert wird.) | Dieses Ereignis tritt auf, wenn der Dienst für das Kennwortrückschreiben versucht, ein Kennwort für Ihr lokales Verzeichnis festzulegen, das die in der Domäne geltenden Anforderungen im Hinblick auf Alter, Verlauf, Komplexität oder Filterung für Kennwörter nicht erfüllt. <br> <br> Wenn Sie ein Mindestkennwortalter festgelegt haben und das Kennwort kürzlich geändert wurde, können Sie das Kennwort erst wieder ändern, wenn es das für Ihre Domäne festgelegte Kennwortalter erreicht hat. Zu Testzwecken sollte das Mindestalter auf 0 festgelegt werden. <br> <br> Wenn Sie Anforderungen für den Kennwortverlauf festgelegt haben, müssen Sie ein Kennwort auswählen, das die letzten *n* Male nicht verwendet wurde, wobei *n* für die Einstellung des Kennwortverlaufs steht. Wenn Sie ein Kennwort auswählen, das die letzten *n* Male verwendet wurde, tritt ein Fehler auf. Zu Testzwecken sollte der Kennwortverlauf auf 0 festgelegt werden. <br> <br> Wenn Anforderungen an die Kennwortkomplexität gelten, werden diese erzwungen, wenn der Benutzer versucht, ein Kennwort zu ändern oder zurückzusetzen. <br> <br> Wenn Sie Kennwortfilter aktiviert haben und ein Benutzer versucht, ein Kennwort auszuwählen, das nicht den Filterkriterien entspricht, tritt bei der Kennwortänderung oder -zurücksetzung ein Fehler auf. |
-| 6329 | MMS(3040): admaexport.cpp(2837): Die LDAP-Kennwortrichtliniensteuerung ist auf dem Server nicht vorhanden. | Dieses Problem tritt auf, wenn die Steuerung „LDAP_SERVER_POLICY_HINTS_OID“ (1.2.840.113556.1.4.2066) auf den DCs nicht aktiviert ist. Die Steuerung muss aktiviert werden, um das Kennwortrückschreiben-Feature verwenden zu können. Hierzu müssen die DCs mindestens über Windows Server 2008 (mit dem neuesten SP) verfügen. Falls Ihre Domänencontroller mit 2008 (vor R2) betrieben werden, müssen Sie auch den [Hotfix KB2386717](https://support.microsoft.com/kb/2386717) anwenden. |
+| 6329 | MMS(3040): admaexport.cpp(2837): Die LDAP-Kennwortrichtliniensteuerung ist auf dem Server nicht vorhanden. | Dieses Problem tritt auf, wenn die Steuerung „LDAP_SERVER_POLICY_HINTS_OID“ (1.2.840.113556.1.4.2066) auf den DCs nicht aktiviert ist. Die Steuerung muss aktiviert werden, um das Kennwortrückschreiben-Feature verwenden zu können. Hierzu müssen die DCs mindestens über Windows Server 2008 R2 oder höher verfügen. |
 | HR 8023042 | Synchronization Engine returned an error hr=80230402, message=An attempt to get an object failed because there are duplicated entries with the same anchor. (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=80230402, message=Fehler beim Abrufen eines Objekts aufgrund von doppelten Einträgen mit dem gleichen Anker.) | Dieser Fehler tritt auf, wenn die gleiche Benutzer-ID in mehreren Domänen aktiviert ist. So tritt er beispielsweise auf, wenn Sie Konto- und Ressourcengesamtstrukturen synchronisieren und dabei in den einzelnen Gesamtstrukturen die gleiche Benutzer-ID vorhanden und aktiviert ist. <br> <br> Der Fehler kann auch auftreten, wenn Sie ein nicht eindeutiges Ankerattribut (etwa einen Alias oder UPN) verwenden und sich zwei Benutzer dieses Ankerattribut teilen. <br> <br> Stellen Sie zur Behebung dieses Problems sicher, dass kein Benutzer in Ihren Domänen doppelt vorhanden ist und für jeden Benutzer ein eindeutiges Ankerattribut verwendet wird. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ereignisquelle „PasswordResetService“
@@ -179,10 +179,10 @@ Weitere Informationen finden Sie im Artikel [Voraussetzungen für Azure AD Conne
 
 Führen Sie zum Beheben von Konnektivitätsproblemen oder anderen vorübergehenden Problemen mit dem Dienst einen Neustart des Azure AD Connect-Synchronisierungsdiensts durch:
 
-   1. Klicken Sie als Administrator auf dem Server, auf dem Azure AD Connect ausgeführt wird, auf **Start**.
-   1. Geben Sie **services.msc** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
-   1. Suchen Sie nach dem Eintrag **Microsoft Azure AD Sync**.
-   1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
+1. Klicken Sie als Administrator auf dem Server, auf dem Azure AD Connect ausgeführt wird, auf **Start**.
+1. Geben Sie **services.msc** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
+1. Suchen Sie nach dem Eintrag **Microsoft Azure AD Sync**.
+1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
 
    ![Neustarten des Azure AD Sync-Diensts][Service restart]
 
@@ -272,13 +272,13 @@ Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Detai
 * **Allgemeine Beschreibung des Fehlers**: Welcher Fehler liegt vor? Welches Verhalten haben Sie festgestellt? Wie können wir den Fehler reproduzieren? Geben Sie bitte so viele Details wie möglich an.
 * **Seite**: Auf welcher Seite befanden Sie sich, als der Fehler aufgetreten ist? Geben Sie möglichst die URL an, und erstellen Sie einen Screenshot der Seite.
 * **Unterstützungscode**: Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist?
-    * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode**, und senden Sie die generierte GUID an den Supportmitarbeiter.
+  * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode**, und senden Sie die generierte GUID an den Supportmitarbeiter.
 
     ![Sie finden den Supportcode am unteren Rand des Bildschirms.][Support code]
 
-    * Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, suchen Sie nach der SID und der CID, und senden Sie beide Ergebnisse an den Supportmitarbeiter.
+  * Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, suchen Sie nach der SID und der CID, und senden Sie beide Ergebnisse an den Supportmitarbeiter.
 * **Datum, Uhrzeit und Zeitzone**: Geben Sie das genaue Datum und die exakte Uhrzeit des Fehlers an (*einschließlich der Zeitzone*).
-* **Benutzer-ID**: Bei welchem Benutzer ist der Fehler aufgetreten? Beispiel: *user@contoso.com*.
+* **Benutzer-ID**: Bei welchem Benutzer ist der Fehler aufgetreten? Ein Beispiel hierfür ist *Benutzer\@contoso.com*.
     * Handelt es sich um einen Verbundbenutzer?
     * Ist dies ein Benutzer mit Pass-Through-Authentifizierung?
     * Handelt es sich um einen Benutzer mit Kennworthashsynchronisierung?

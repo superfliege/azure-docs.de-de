@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 559e74675a5d113584dca21979c20462c9cdf19c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 0c82e304d3e3d8df1206c7c05883399b74229af7
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054705"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192189"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Festlegen zulässiger VM-Größen in Azure Lab Services mithilfe von PowerShell
 
 Dieses PowerShell-Beispielskript legt zulässige Größen virtueller Computer (VMs) in Azure Lab Services fest.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Ein Lab.** Das Skript erfordert ein vorhandenes Lab. 
@@ -38,10 +40,10 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Dient zum Suchen nach Ressourcen basierend auf den angegebenen Parametern. |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Dient zum Abrufen von Ressourcen. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Dient zum Ändern einer Ressource. |
-| [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Dient zum Erstellen einer Ressource. |
+| Find-AzResource | Dient zum Suchen nach Ressourcen basierend auf den angegebenen Parametern. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Dient zum Abrufen von Ressourcen. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Dient zum Ändern einer Ressource. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,7 +4,7 @@ description: " Die Workloadmigration zu Azure IaaS ist eine gute Gelegenheit zur
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341215"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409750"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -39,7 +39,7 @@ Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich fü
 Der erste Schritt zum Schutz Ihrer virtuellen Computer ist, sicherzustellen, dass nur autorisierte Benutzer neue VMs einrichten und auf VMs zugreifen können.
 
 **Bewährte Methode**: Steuern des VM-Zugriffs.   
-**Detail**: Verwenden Sie [Azure-Richtlinien](../governance/policy/overview.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
+**Detail**: Verwenden Sie [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
 
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. [Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md) stellen einen abonnementübergreifenden Bereich bereit. Sie organisieren Abonnements in Verwaltungsgruppen (Containern) und wenden Ihre Governancebedingungen auf diese Gruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Gruppe angewendeten Bedingungen. Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.
 
@@ -128,7 +128,7 @@ Den Sicherheitsstatus Ihrer [virtuellen Windows-Computer](../security-center/sec
 
 Security Center kann aktiv nach Bedrohungen suchen, und potenzielle Bedrohungen werden in Sicherheitswarnungen angezeigt. Korrelierte Bedrohungen werden in einer zentralen Ansicht namens „Sicherheitsvorfall“ aggregiert.
 
-Security Center speichert Daten in [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Log Analytics bietet eine Abfragesprache und eine Analyseengine, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und Ressourcen gibt. Zudem werden Daten aus [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
+Security Center speichert Daten in [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md). Azure Monitor-Protokolle bietet eine Abfragesprache und eine Analyseengine, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und Ressourcen gibt. Zudem werden Daten aus [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
 
 Organisationen, die für ihre virtuellen Computer kein hohes Maß an Sicherheit erzwingen, bleiben potenzielle Vorfälle, bei denen nicht autorisierte Benutzer versuchen, die Sicherheitskontrollen zu umgehen, verborgen.
 
@@ -153,10 +153,10 @@ Folgende Methoden haben sich bei der Verwendung von Azure Disk Encryption bewäh
 **Detail**: Azure Disk Encryption generiert die Verschlüsselungsschlüssel und schreibt sie in Ihren Schlüsseltresor. Das Verwalten von Verschlüsselungsschlüsseln im Schlüsseltresor erfordert eine Azure AD-Authentifizierung. Erstellen Sie dafür eine Azure AD-Anwendung. Zu Authentifizierungszwecken können Sie entweder die auf einem geheimen Clientschlüssel basierende Authentifizierung oder die [auf einem Clientzertifikat basierende Azure AD-Authentifizierung](../active-directory/active-directory-certificate-based-authentication-get-started.md) verwenden.
 
 **Bewährte Methode**: Sorgen Sie mit einem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) für zusätzlichen Schutz für Verschlüsselungsschlüssel. Fügen Sie Ihrem Schlüsseltresor einen KEK hinzu.   
-**Detail**: Verwenden Sie das Cmdlet [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey), um im Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../key-vault/key-vault-hsm-protected-keys.md)-Dokumentation. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen. Zusätzlichen Schutz vor versehentlichem Löschen von Schlüsseln bietet das Hinterlegen einer Kopie dieses Schlüssels in einem lokalen Schlüsselverwaltungs-HSM.
+**Detail**: Verwenden Sie das Cmdlet [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey), um im Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../key-vault/key-vault-hsm-protected-keys.md)-Dokumentation. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen. Zusätzlichen Schutz vor versehentlichem Löschen von Schlüsseln bietet das Hinterlegen einer Kopie dieses Schlüssels in einem lokalen Schlüsselverwaltungs-HSM.
 
 **Bewährte Methode**: Erstellen Sie eine [Momentaufnahme](../virtual-machines/windows/snapshot-copy-managed-disk.md), und/oder sichern Sie die Datenträger, bevor diese verschlüsselt werden. Sicherungen bieten eine Wiederherstellungsoption, wenn während der Verschlüsselung ein unerwarteter Fehler auftritt.   
-**Detail**: Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach der Erstellung einer Sicherung können Sie das Cmdlet **Set-AzureRmVMDiskEncryptionExtension** verwenden, um verwaltete Datenträger durch das Angeben des Parameters *-skipVmBackup* zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie im Artikel [Azure Backup](../backup/backup-azure-vms-encryption.md).
+**Detail**: Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet **Set-AzVMDiskEncryptionExtension** verwenden, um verwaltete Datenträger durch das Angeben des Parameters *-skipVmBackup* zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie im Artikel [Azure Backup](../backup/backup-azure-vms-encryption.md).
 
 **Bewährte Methode**: Um sicherzustellen, dass die Verschlüsselungsgeheimnisse die Regionsgrenzen nicht verlassen, müssen der Schlüsseltresor und die VMs sich für Azure Disk Encryption in derselben Region befinden.   
 **Detail**: Erstellen und verwenden Sie einen Schlüsseltresor, der sich in derselben Region wie die zu verschlüsselnde VM befindet.

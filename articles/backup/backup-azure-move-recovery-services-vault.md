@@ -6,18 +6,21 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2019
+ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199243"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen (Eingeschränkte Public Preview)
 
 In diesem Artikel wird das Verschieben eines für Azure Backup konfigurierten Recovery Services-Tresor zwischen Azure-Abonnements oder in eine andere Ressourcengruppe im selben Abonnement erläutert. Sie können Azure-Portal oder PowerShell zum Verschieben eines Recovery Services-Tresors verwenden.
+
+> [!NOTE]
+> Zum Verschieben eines Recovery Services-Tresors und der zugehörigen Ressourcen in eine andere Ressourcengruppe sollten Sie zuerst [das Quellabonnement registrieren](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Voraussetzungen für das Verschieben eines Tresors
 
@@ -38,9 +41,7 @@ In diesem Artikel wird das Verschieben eines für Azure Backup konfigurierten Re
 
 > [!NOTE]
 >
-Für die Verwendung mit **Azure Site Recovery** konfigurierte Recovery Services-Tresore können noch nicht verschoben werden. Wenn Sie virtuelle (Azure IaaS, Hyper-V, VMware) oder physische Computer für die Notfallwiederherstellung mit **Azure Site Recovery** konfiguriert haben, wird der Verschiebevorgang blockiert. Die Ressourcenverschiebefunktion für den Site Recovery-Dienst ist noch nicht verfügbar.
->
->
+> Für die Verwendung mit **Azure Site Recovery** konfigurierte Recovery Services-Tresore können noch nicht verschoben werden. Wenn Sie virtuelle (Azure IaaS, Hyper-V, VMware) oder physische Computer für die Notfallwiederherstellung mit **Azure Site Recovery** konfiguriert haben, wird der Verschiebevorgang blockiert. Die Ressourcenverschiebefunktion für den Site Recovery-Dienst ist noch nicht verfügbar.
 
 ## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>Registrieren des Quellabonnements zum Verschieben Ihres Recovery Services-Tresors
 
@@ -48,26 +49,26 @@ Um das Quellabonnement für das **Verschieben** Ihres Recovery Services-Tresors 
 
 1. Anmelden bei Ihrem Azure-Konto
 
-  ```
-  Connect-AzureRmAccount
-  ```
+   ```
+   Connect-AzureRmAccount
+   ```
 
-2.  Auswählen des Abonnements, das Sie registrieren möchten
+2. Auswählen des Abonnements, das Sie registrieren möchten
 
-    ```
-    Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3.  Registrieren dieses Abonnements
+   ```
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   ```
+3. Registrieren dieses Abonnements
 
-  ```
-  Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
-  ```
+   ```
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   ```
 
 4. Führen Sie den folgenden Befehl aus:
 
-  ```
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-  ```
+   ```
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   ```
 
 Warten Sie 30 Minuten, bis das Abonnement der Whitelist hinzugefügt worden ist, bevor Sie mit der Verschiebung mittels Azure-Portal oder PowerShell beginnen.
 
@@ -78,27 +79,27 @@ So verschieben Sie einen Recovery Services-Tresor und die zugehörigen Ressource
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie in der Liste der **Recovery Services-Tresore** den Tresor aus, den Sie verschieben möchten. Wenn das Tresordashboard geöffnet wird, wird es wie in der folgenden Abbildung dargestellt angezeigt.
 
-  ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-  Wenn Sie die **Essentials**-Informationen für Ihren Tresor nicht sehen, klicken Sie auf das Dropdownsymbol. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
+   Wenn Sie die **Essentials**-Informationen für Ihren Tresor nicht sehen, klicken Sie auf das Dropdownsymbol. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
-  ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
 3. Klicken Sie im Übersichtsmenü des Tresors auf **Ändern** neben **Ressourcengruppe**, um das Blatt **Ressourcen verschieben** zu öffnen.
 
-  ![Ressourcengruppe ändern](./media/backup-azure-move-recovery-services/change-resource-group.png)
+   ![Ressourcengruppe ändern](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
 4. Auf dem Blatt **Ressourcen verschieben** für den ausgewählten Tresor sollten die optionalen verwandten Ressourcen durch Aktivieren des Kontrollkästchens verschoben werden, wie in der folgenden Abbildung dargestellt.
 
-  ![Abonnement verschieben](./media/backup-azure-move-recovery-services/move-resource.png)
+   ![Abonnement verschieben](./media/backup-azure-move-recovery-services/move-resource.png)
 
 5. Um die Zielressourcengruppe hinzuzufügen, wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressource aus, oder klicken Sie auf die Option **Neue Gruppe erstellen**.
 
-  ![Resource erstellen](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Resource erstellen](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Bestätigen Sie nach dem Hinzufügen der Ressourcengruppe mit der Option **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs und Namespacereferenzen aktualisiere**, und klicken Sie dann auf **OK**, um das Verschieben des Tresors abzuschließen.
 
-  ![Bestätigungsmeldung](./media/backup-azure-move-recovery-services/confirmation-message.png)
+   ![Bestätigungsmeldung](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
 ## <a name="use-azure-portal-to-move-a-recovery-services-vault-to-a-different-subscription"></a>Verwenden des Azure-Portals zum Verschieben eines Recovery Services-Tresors in ein anderes Abonnement
@@ -116,16 +117,16 @@ Sie können einen Recovery Services-Tresor und die zugehörigen Ressourcen in ei
 
 3. Klicken Sie im Übersichtsmenü des Tresors auf **Ändern** neben **Abonnement**, um das Blatt **Ressourcen verschieben** zu öffnen.
 
-  ![Abonnement ändern](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
+   ![Abonnement ändern](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
 4. Wählen Sie die zu verschiebenden Ressourcen aus. Hier sollten Sie die Option **Alles markieren** verwenden, um alle aufgeführten optionalen Ressourcen auszuwählen.
 
-  ![Ressource verschieben](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![Ressource verschieben](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Wählen Sie das Zielabonnement, in das der Tresor verschoben werden soll, in der Dropdownliste **Abonnement** aus.
 6. Um die Zielressourcengruppe hinzuzufügen, wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressource aus, oder klicken Sie auf die Option **Neue Gruppe erstellen**.
 
-  ![Abonnement hinzufügen](./media/backup-azure-move-recovery-services/add-subscription.png)
+   ![Abonnement hinzufügen](./media/backup-azure-move-recovery-services/add-subscription.png)
 
 7. Klicken Sie zur Bestätigung auf **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs** aktualisiere, und klicken Sie auf **OK**.
 

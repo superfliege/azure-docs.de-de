@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 18dfc6badf640afb418e661e6c464442fbb41945
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232741"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875168"
 ---
 # <a name="security-frame-session-management"></a>Sicherheitsrahmen: Sitzungsverwaltung
 | Produkt/Dienst | Artikel |
@@ -270,7 +270,7 @@ Hier ist die richtige Konfiguration dargestellt:
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [XSRF/CSRF Prevention in ASP.NET MVC and Web Pages](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) (XSRF/CSRF-Verhinderung in ASP.NET MVC und -Webseiten) |
+| **Referenzen**              | [XSRF/CSRF Prevention in ASP.NET MVC and Web Pages](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) (XSRF/CSRF-Verhinderung in ASP.NET MVC und -Webseiten) |
 | **Schritte** | Anti-CSRF und ASP.NET-MVC-Formulare: Verwenden Sie die `AntiForgeryToken`-Hilfsmethode für Ansichten. Fügen Sie `Html.AntiForgeryToken()` in das Formular ein, z.B.:|
 
 ### <a name="example"></a>Beispiel
@@ -467,7 +467,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Preventing Cross-Site Request Forgery (CSRF) Attacks in ASP.NET Web API](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) (Verhindern von Angriffen mit websiteübergreifender Anforderungsfälschung in der ASP.NET-Web-API) |
+| **Referenzen**              | [Preventing Cross-Site Request Forgery (CSRF) Attacks in ASP.NET Web API](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) (Verhindern von Angriffen mit websiteübergreifender Anforderungsfälschung in der ASP.NET-Web-API) |
 | **Schritte** | Anti-CSRF und AJAX: Das Formulartoken kann für AJAX-Anforderungen ein Problem darstellen, da eine AJAX-Anforderung unter Umständen JSON-Daten und keine HTML-Formulardaten sendet. Eine Lösung besteht darin, die Token in einem benutzerdefinierten HTTP-Header zu senden. Im folgenden Code wird Razor-Syntax zum Generieren der Token verwendet, und anschließend werden die Token einer AJAX-Anforderung hinzugefügt. |
 
 ### <a name="example"></a>Beispiel
@@ -554,7 +554,7 @@ Autorisierungsfilter, mit dem Folgendes überprüft wird:
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
 | **Attribute**              | Identitätsanbieter: ADFS, Identitätsanbieter: Azure AD |
-| **Referenzen**              | [Secure a Web API with Individual Accounts and Local Login in ASP.NET Web API 2.2](http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) (Schützen einer Web-API mit einzelnen Konten und lokaler Anmeldung in ASP.NET-Web-API 2.2) |
+| **Referenzen**              | [Secure a Web API with Individual Accounts and Local Login in ASP.NET Web API 2.2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) (Schützen einer Web-API mit einzelnen Konten und lokaler Anmeldung in ASP.NET-Web-API 2.2) |
 | **Schritte** | Wenn die Web-API mit OAuth 2.0 geschützt wird, wird im Autorisierungsheader der Anforderung ein Bearertoken erwartet und nur dann Zugriff auf die Anforderung gewährt, wenn das Token gültig ist. Im Gegensatz zur cookiebasierten Authentifizierung fügen Browser die Bearertoken nicht an Anforderungen an. Der anfordernde Client muss das Bearertoken explizit im Anforderungsheader anfügen. Daher werden Bearertoken für ASP.NET-Web-APIs, die per OAuth 2.0 geschützt sind, als Verteidigung gegen CSRF-Angriffe angesehen. Beachten Sie Folgendes: Wenn im MVC-Teil der Anwendung die Formularauthentifizierung verwendet wird (also Cookies), müssen für die MVC-Web-App Antifälschungstoken genutzt werden. |
 
 ### <a name="example"></a>Beispiel

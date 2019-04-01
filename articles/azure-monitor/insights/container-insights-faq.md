@@ -8,21 +8,21 @@ editor: tysonn
 ms.service: azure-monitor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/18/2019
+ms.date: 02/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 27a191bb62ae59aa154167a22c99d3e699f3eb5a
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 250bf6ede3a54b26b6e9c68850f8e7260020002e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418429"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960501"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für Container
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für Container. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
-## <a name="why-am-i-not-seeing-data-if-log-analytics-workspace-is-configured-with-the-free-pricing-tier"></a>Warum sehe ich keine Daten, wenn der Log Analytics-Arbeitsbereich mit dem Tarif „Free“ konfiguriert ist? 
+## <a name="i-am-unable-to-see-any-data-in-the-log-analytics-workspace-at-a-certain-time-everyday-how-do-i-resolve-this"></a>Jeden Tag zu einer bestimmten Uhrzeit werden keine Daten im Log Analytics-Arbeitsbereich angezeigt. Wie löse ich dieses Problem? 
 
-Möglicherweise haben Sie das standardmäßige Limit von 500 MB erreicht oder eine tägliche Obergrenze festgelegt, um die Menge der täglich zu sammelnden Daten zu kontrollieren. Um Ihre Datennutzung zu überprüfen und zu verwalten, lesen Sie [Protokollieren von Datennutzung und Kosten](../platform/manage-cost-storage.md). 
+Möglicherweise haben Sie das Standardlimit von 500 MB oder die tägliche Obergrenze erreicht, die zum Kontrollieren der Menge an täglich zu sammelnden Daten festgelegt wurde. Wenn der Grenzwert für den Tag erreicht ist, wird die Datensammlung beendet und erst am nächsten Tag fortgesetzt. Um Ihre Datennutzung zu überprüfen und eine Aktualisierung auf einen anderen Tarif basierend auf Ihren erwarteten Nutzungsmustern vorzunehmen, lesen Sie [Protokollieren von Datennutzung und Kosten](../platform/manage-cost-storage.md). 
 
 ## <a name="what-are-the-states-of-containers-specified-in-the-containerinventory-table"></a>Welche Zustände von Containern sind in der Tabelle „ContainerInventory“ angegeben?
 Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und ausgeführten Containern. Die Tabelle wird von einem Workflow innerhalb des Agent ausgefüllt, der den Docker nach allen Containern abfragt (ausgeführte und beendete) und diese Daten an den Log Analytics-Arbeitsbereich weiterleitet.
@@ -31,7 +31,7 @@ Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und aus
 Um den Fehler zu beheben, registrieren Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../../azure-resource-manager/resource-manager-register-provider-errors.md).
 
 ## <a name="does-azure-monitor-for-containers-include-support-for-rbac-enabled-aks-clusters"></a>Enthält Azure Monitor für Container Support für RBAC-fähige AKS-Cluster?
-RBAC-fähige AKS Cluster werden derzeit von der Lösung nicht unterstützt. Die Seite mit den Lösungsdetails zeigt möglicherweise nicht die richtigen Informationen auf den Blättern an, die Daten für diese Cluster anzeigen.
+Die Containerüberwachungslösung bietet keine Unterstützung für RBAC, doch ist dies bei Azure Monitor für Container der Fall. Die Seite mit den Lösungsdetails zeigt möglicherweise nicht die richtigen Informationen auf den Blättern an, die Daten für diese Cluster anzeigen.
 
 ## <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Wie aktiviere ich die Protokollsammlung für Container im Kube-System-Namespace über Helm?
 Die Protokollsammlung von Containern im Kube-System-Namespace ist standardmäßig deaktiviert. Die Protokollsammlung kann durch das Festlegen einer Umgebungsvariablen auf dem Omsagent aktiviert werden. Weitere Informationen finden Sie auf der GitHub-Seite [Azure Monitor für Container](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers). 
@@ -53,7 +53,7 @@ console.log(json.stringify({
       }));
 ```
 
-Diese Daten sehen im Azure Monitor für Protokolle bei der Abfrage wie folgt aus:
+Diese Daten sehen in Azure Monitor für Protokolle bei der Abfrage wie im folgenden Beispiel aus:
 
 ```
 LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
@@ -63,7 +63,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 Eine ausführliche Betrachtung des Problems finden Sie unter folgendem [Github-Link](https://github.com/moby/moby/issues/22920).
 
 ## <a name="how-do-i-resolve-azure-active-directory-errors-when-i-enable-live-logs"></a>Wie löse ich Azure Active Directory-Fehler, wenn ich die Live-Protokollen aktivieren? 
-Es wird möglicherweise der folgende Fehler angezeigt: **The reply url specified in the request does not match the reply urls configured for the application: '60b4dec7-5a69-4165-a211-12c40b5c0435'** (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Anwort-URLs: 60b4dec7-5a69-4165-a211-12c40b5c0435). Die Lösung für dieses Problem finden Sie im Artikel [Anzeigen von Containerprotokollen in Echtzeit mit Azure Monitor für Container (Vorschauversion)](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Es wird möglicherweise der folgende Fehler angezeigt: **The reply url specified in the request does not match the reply urls configured for the application: '<application ID\>'**. (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) Die Lösung für dieses Problem finden Sie im Artikel [Anzeigen von Containerprotokollen in Echtzeit mit Azure Monitor für Container](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Um in die Überwachung Ihrer AKS-Cluster einzusteigen, lesen Sie [Onboarding von Azure Monitor für Container](container-insights-onboard.md), um ein Verständnis für die Anforderungen und verfügbaren Methoden zum Aktivieren von Überwachung zu entwickeln. 

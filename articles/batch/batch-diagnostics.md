@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 368e1f6b9501c677eca1cf80d24a06c0a6533e86
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811459"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817353"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -91,7 +91,7 @@ Andere optionale Ziele für Diagnoseprotokolle:
 
 * Streamen Sie Batch-Diagnoseprotokolle an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern. 
 
-* Senden Sie Diagnoseprotokolle an [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Hier können Sie sie analysieren oder zur Analyse in Power BI oder Excel exportieren.
+* Senden Sie Diagnoseprotokolle an [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md). Hier können Sie sie analysieren oder zur Analyse in Power BI oder Excel exportieren.
 
 > [!NOTE]
 > Beim Speichern oder Verarbeiten von Diagnoseprotokolldaten mit Azure-Diensten fallen unter Umständen zusätzliche Kosten an. 
@@ -101,7 +101,7 @@ Andere optionale Ziele für Diagnoseprotokolle:
 
 1. Klicken Sie im Portal auf **Alle Dienste** > **Batch-Konten** und anschließend auf den Namen Ihres Batch-Kontos.
 2. Klicken Sie unter **Überwachung** auf **Diagnoseprotokolle** > **Diagnose aktivieren**.
-3. Geben Sie unter **Diagnoseeinstellungen** einen Namen für die Einstellung ein, und wählen Sie ein Protokollziel aus (vorhandenes Storage-Konto, Event Hub oder Log Analytics). Aktivieren Sie **ServiceLog** oder **AllMetrics** oder beide Optionen.
+3. Geben Sie unter **Diagnoseeinstellungen** einen Namen für die Einstellung ein, und wählen Sie ein Protokollziel aus (vorhandenes Storage-Konto, Event Hub oder Azure Monitor-Protokolle). Aktivieren Sie **ServiceLog** oder **AllMetrics** oder beide Optionen.
 
     Wenn Sie ein Speicherkonto auswählen, legen Sie optional eine Aufbewahrungsrichtlinie fest. Wenn Sie keine Anzahl von Tagen für die Aufbewahrung angeben, werden die Daten für die Lebensdauer des Speicherkontos aufbewahrt.
 

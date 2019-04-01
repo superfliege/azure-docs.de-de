@@ -257,7 +257,7 @@ Jede Regel wird wie folgt ausführlicher erläutert:
 >
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*Zugelassen*) Webserver-DNS-Lookup auf DNS-Server
-1. Der Webserver IIS01 benötigt einen Datenfeed von „www.data.gov“, muss jedoch die Adresse auflösen.
+1. Der Webserver IIS01 benötigt einen Datenfeed von www.data.gov, muss jedoch die Adresse auflösen.
 2. Die Netzwerkkonfiguration für das VNet listet DNS01 (10.0.2.4 im Back-End-Subnetz) als primären DNS-Server auf, IIS01 sendet die DNS-Anforderung an DNS01.
 3. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 4. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:

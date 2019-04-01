@@ -14,23 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: bfe289e29a6a2bb048d9fd42323f32ce8c12792c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8835c4534b6dab1e8dbfb3546257ae4bc3b9d7af
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110607"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588651"
 ---
-# <a name="pen-testing"></a>Penetrationstests
-Einer der Vorteile beim Einsatz von Azure für Testen und Bereitstellung von Anwendungen besteht darin, dass Sie schnell Umgebungen erstellen können.  Sie müssen sich keine Gedanken über Anforderung, Erwerb und Aufbau eigener lokaler Hardware machen.
+# <a name="penetration-testing"></a>Penetrationstests
+Einer der Vorteile beim Einsatz von Azure für Testen und Bereitstellung von Anwendungen besteht darin, dass Sie schnell Umgebungen erstellen können. Sie müssen sich keine Gedanken über Anforderung, Erwerb und Aufbau eigener lokaler Hardware machen.
 
-Das ist hervorragend – Sie müssen jedoch noch sicherstellen, dass Sie mit angemessener Sorgfalt für Sicherheit sorgen. Sie müssen u.a. einen Penetrationstest der Anwendungen durchführen, die Sie in Azure bereitstellen.
+Das ist hervorragend – Sie müssen jedoch noch sicherstellen, dass Sie mit angemessener Sorgfalt für Sicherheit sorgen. Wahrscheinlich möchten Sie einen Penetrationstest der Anwendungen durchführen, die Sie in Azure bereitstellen.
 
 Möglicherweise wissen Sie bereits, dass Microsoft einen [Penetrationstests der Azure-Umgebung](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)durchführt. Dies bringt Verbesserungen an Azure voran.
 
-Wir führen keinen Penetrationstest Ihrer Anwendung durch, aber wir verstehen, dass Sie Penetrationstests Ihrer eigenen Anwendungen durchführen möchten und müssen. Das ist eine gute Sache, denn wenn Sie die Sicherheit Ihrer Anwendungen verbessern, machen Sie das gesamte Azure-Ökosystem sicherer.
-
-Vorgehensweise
+Wir führen keinen Penetrationstest Ihrer Anwendung durch, aber wir verstehen, dass Sie Tests Ihrer eigenen Anwendungen durchführen möchten und müssen. Das ist eine gute Sache, denn wenn Sie die Sicherheit Ihrer Anwendungen verbessern, machen Sie das gesamte Azure-Ökosystem sicherer.
 
 Seit dem 15. Juni 2017 benötigt Microsoft keine Vorabgenehmigung mehr, um Penetrationstests für Azure-Ressourcen durchzuführen. Kunden, die die bevorstehenden Penetrationstests gegen Microsoft Azure formell dokumentieren möchten, werden gebeten, das Formular zur [Benachrichtigung bei Azure Service-Penetrationstests](https://portal.msrc.microsoft.com/en-us/engage/pentest) auszufüllen. Dieser Prozess bezieht sich nur auf Microsoft Azure und ist nicht auf andere Microsoft Cloud-Dienste anwendbar.
 
@@ -47,4 +45,4 @@ Ein Testtyp, den Sie nicht ausführen können, ist jegliche Form eines [Denial-o
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sind Sie bereit für Penetrationstests Ihrer in Microsoft Azure gehosteten Anwendungen? Wenn dies der Fall ist, navigieren Sie zu [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) (Einsatzregeln für Penetrationstests), und füllen Sie das Testbenachrichtigungsformular aus.
+- Wenn Sie einen bevorstehenden Penetrationstests für Ihre in Microsoft Azure gehosteten Anwendungen formell dokumentieren möchten, navigieren Sie zu [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) (Einsatzregeln für Penetrationstests), und füllen Sie das Testbenachrichtigungsformular aus.

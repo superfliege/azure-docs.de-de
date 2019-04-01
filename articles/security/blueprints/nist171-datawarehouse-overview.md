@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: ec608964190c65d8d064582920e53545b9ee62a6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404001"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242359"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Vorlage für Azure Security and Compliance: Data Warehouse gemäß NIST SP 800-171
 
@@ -51,11 +51,10 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Weitere Informationen finde
 - Azure Active Directory
 - Azure Data Catalog
 - Azure Key Vault
-- Azure Monitor
+- Azure Monitor (Protokolle)
 - Azure Security Center
 - Azure Load Balancer
 - Azure Storage
-- Azure Log Analytics
 - Azure Virtual Machines
     - (1) Bastionhost
     - (2) Active Directory-Domänencontroller
@@ -72,13 +71,13 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Weitere Informationen finde
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung beschrieben.
 
-**Azure SQL Data Warehouse:** [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) ist ein Enterprise Data Warehouse mit Massively Parallel Processing zur schnellen Ausführung komplexer Abfragen für mehrere Petabyte an Daten. Benutzer können große Datenmengen mit einfachen PolyBase-T-SQL-Abfragen in SQL Data Warehouse importieren und anschließend die Vorteile von Massively Parallel Processing für aufwendige Analysen nutzen.
+**Azure SQL Data Warehouse**: [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) ist ein Enterprise Data Warehouse mit Massively Parallel Processing zur schnellen Ausführung komplexer Abfragen für mehrere Petabyte an Daten. Benutzer können große Datenmengen mit einfachen PolyBase-T-SQL-Abfragen in SQL Data Warehouse importieren und anschließend die Vorteile von Massively Parallel Processing für aufwendige Analysen nutzen.
 
-**SQL Server Reporting Services:** [SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) erlaubt die schnelle Erstellung von Berichten mit Tabellen, Diagrammen, Karten, Maßstäben, Matrizen u.v.m. für SQL Data Warehouse.
+**SQL Server Reporting Services**: [SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) erlaubt die schnelle Erstellung von Berichten mit Tabellen, Diagrammen, Karten, Maßstäben, Matrizen u.v.m. für SQL Data Warehouse.
 
-**Azure Data Catalog:** [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) gestaltet Datenquellen einfach ermittelbar und verständlich für die Benutzer, von denen die Daten verwaltet werden. Häufig verwendete Datenquellen können registriert und markiert und nach personenbezogenen Daten durchsucht werden. Die Daten verbleiben an ihrem vorhandenen Speicherort, aber eine Kopie der Metadaten wird zu Azure Data Catalog hinzugefügt. Darin inbegriffen ist ein Verweis auf den Speicherort der Datenquelle. Die Metadaten werden indiziert, damit die einzelnen Datenquellen über die Suchfunktion mühelos ermittelt werden können. Durch die Indizierung wird dies auch für die ermittelnden Benutzer nachvollziehbar.
+**Azure Data Catalog**: [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) sorgt dafür, dass Datenquellen von den Benutzern, die die Daten verwalten, leicht ermittelt und verstanden werden können. Häufig verwendete Datenquellen können registriert und markiert und nach personenbezogenen Daten durchsucht werden. Die Daten verbleiben an ihrem vorhandenen Speicherort, aber eine Kopie der Metadaten wird zu Azure Data Catalog hinzugefügt. Darin inbegriffen ist ein Verweis auf den Speicherort der Datenquelle. Die Metadaten werden indiziert, damit die einzelnen Datenquellen über die Suchfunktion mühelos ermittelt werden können. Durch die Indizierung wird dies auch für die ermittelnden Benutzer nachvollziehbar.
 
-**Bastionhost:** Der Bastionhost ist der einzelne Zugangspunkt, über den Benutzer Zugriff auf die bereitgestellten Ressourcen in dieser Umgebung erhalten. Der Bastionhost bietet eine sichere Verbindung mit den bereitgestellten Ressourcen, indem nur Remotedatenverkehr von öffentlichen IP-Adressen auf einer Sicherheitsliste zugelassen wird. Damit Remotedesktopprotokoll-Datenverkehr zugelassen wird, muss die Quelle des Datenverkehrs in der Netzwerksicherheitsgruppe definiert sein.
+**Bastionhost**: Der Bastionhost ist der einzelne Zugangspunkt, über den Benutzer Zugriff auf die bereitgestellten Ressourcen in dieser Umgebung erhalten. Der Bastionhost bietet eine sichere Verbindung mit den bereitgestellten Ressourcen, indem nur Remotedatenverkehr von öffentlichen IP-Adressen auf einer Sicherheitsliste zugelassen wird. Damit Remotedesktopprotokoll-Datenverkehr zugelassen wird, muss die Quelle des Datenverkehrs in der Netzwerksicherheitsgruppe definiert sein.
 
 Diese Lösung erstellt eine VM als Bastionhost in der Domäne mit den folgenden Konfigurationen:
 -   [Antischadsoftware-Erweiterung](https://docs.microsoft.com/azure/security/azure-security-antimalware).
@@ -98,18 +97,18 @@ Diese Referenzarchitektur definiert ein privates virtuelles Netzwerk mit dem Adr
 
 Jede der NSGs verfügt über bestimmte offene Ports und Protokolle, damit die Lösung sicher und richtig ausgeführt werden kann. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
   - [Diagnoseprotokolle und -ereignisse](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) werden aktiviert und in einem Speicherkonto gespeichert.
-  - Log Analytics ist mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden.
+  - Azure Monitor-Protokolle ist mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden.
 
-**Subnetze:** Jedes Subnetz ist seiner entsprechenden NSG zugeordnet.
+**Subnetze**: Jedem Subnetz ist die entsprechende NSG zugeordnet.
 
 ### <a name="data-at-rest"></a>Ruhende Daten
 Die Architektur schützt ruhende Daten über mehrere Measures. Diese Measures umfassen die Überprüfung von Verschlüsselungen und Datenbanken.
 
-**Azure Storage:** Zur Erfüllung der Anforderungen an verschlüsselte ruhende Daten wird für den gesamten [Azure Storage](https://azure.microsoft.com/services/storage/) die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/storage-service-encryption) verwendet. Mit diesem Feature werden Daten geschützt, um die Zusagen und Anforderungen der Organisation im Hinblick auf Sicherheit und Konformität einzuhalten.
+**Azure Storage**: Zur Erfüllung der Anforderungen an verschlüsselte ruhende Daten wird für den gesamten [Storage](https://azure.microsoft.com/services/storage/)-Bereich die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/storage-service-encryption) verwendet. Mit diesem Feature werden Daten geschützt, um die Zusagen und Anforderungen der Organisation im Hinblick auf Sicherheit und Konformität einzuhalten.
 
-**Azure Disk Encryption:** [Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) verwendet das BitLocker-Feature von Windows, um Volumeverschlüsselung für Betriebssystem- und reguläre Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel zu erleichtern.
+**Azure Disk Encryption**: [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) verwendet die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Betriebssystemdatenträger und reguläre Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel zu erleichtern.
 
-**Azure SQL-Datenbank:** In der Azure SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
+**Azure SQL-Datenbank**: In der SQL-Datenbank-Instanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
 -   Die [Active Directory-Authentifizierung und -Autorisierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten.
 -   Die [SQL-Datenbank-Überprüfung](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) verfolgt Datenbankereignisse nach und schreibt diese in ein Überwachungsprotokoll in einem Azure Storage-Konto.
 -   Azure SQL-Datenbank wird für die Verwendung der [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) konfiguriert. Bei diesem Vorgang wird die Echtzeitverschlüsselung und -entschlüsselung der Datenbank, der zugehörigen Sicherungen und der Transaktionsprotokolldateien durchgeführt, um ruhende Informationen zu schützen. Die transparente Datenverschlüsselung gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind.
@@ -129,7 +128,7 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf D
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) erkennt potenzielle Sicherheitsrisiken, die Identitäten einer Organisation betreffen. Der Dienst konfiguriert automatische Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit den Identitäten einer Organisation. Zudem untersucht er verdächtige Vorfälle, um entsprechende Maßnahmen zu deren Behebung zu ergreifen.
 
 ### <a name="security"></a>Sicherheit
-**Geheimnisverwaltung:** Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und geheime Schlüssel zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die folgenden Funktionen von Azure Key Vault unterstützen Kunden beim Schützen von Daten:
+**Geheimnisverwaltung**: Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und geheime Schlüssel zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die folgenden Funktionen von Azure Key Vault unterstützen Kunden beim Schützen von Daten:
 - Erweiterte Zugriffsrichtlinien werden auf Bedarfsbasis konfiguriert.
 - Key Vault-Zugriffsrichtlinien werden mit minimalen erforderlichen Berechtigungen für Schlüssel und Geheimnisse definiert.
 - Alle Schlüssel und Geheimnisse in Key Vault besitzen ein Ablaufdatum.
@@ -138,11 +137,11 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf D
 - Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
 - Zulässige kryptographische Vorgänge für Schlüssel sind auf die erforderlichen Vorgänge beschränkt.
 
-**Patchverwaltung:** Windows-VMs, die mit dieser Referenzarchitektur bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung umfasst auch den Dienst [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), über den aktualisierte Bereitstellungen erstellt werden können, um VMs bei Bedarf zu patchen.
+**Patchverwaltung**: Windows-VMs, die mit dieser Referenzarchitektur bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung umfasst auch den Dienst [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), über den aktualisierte Bereitstellungen erstellt werden können, um VMs bei Bedarf zu patchen.
 
 **Schutz vor Schadsoftware**: [Microsoft-Antischadsoftware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für VMs bietet eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Kunden können Warnungen konfigurieren, die generiert werden, wenn versucht wird, bekannte Schadsoftware oder unerwünschte Software auf geschützten VMs zu installieren oder auszuführen.
 
-**Azure Security Center**: Mit [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) können Kunden Sicherheitsrichtlinien über Workloads hinweg zentral anwenden und verwalten, Bedrohungen begrenzen sowie Angriffe erkennen und darauf reagieren. Azure Security Center greift zudem auf die vorhandenen Konfigurationen der Azure-Dienste zu, um Empfehlungen für die Konfiguration und den Dienst bereitzustellen, die zur Verbesserung des Sicherheitsstatus und zum Schutz von Daten beitragen sollen.
+**Azure Security Center**: Mit [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) können Kunden Sicherheitsrichtlinien über Workloads hinweg zentral anwenden und verwalten, die Angriffsfläche verringern sowie Angriffe erkennen und darauf reagieren. Azure Security Center greift zudem auf die vorhandenen Konfigurationen der Azure-Dienste zu, um Empfehlungen für die Konfiguration und den Dienst bereitzustellen, die zur Verbesserung des Sicherheitsstatus und zum Schutz von Daten beitragen sollen.
 
 Azure Security Center verwendet verschiedene Erkennungsfunktionen, um Kunden vor potenziellen Angriffen auf deren Umgebung zu warnen. Diese Warnungen enthalten wichtige Informationen zum Auslöser der Warnung, zu den möglicherweise betroffenen Ressourcen und zur Quelle des Angriffs. In Security Center stehen verschiedene [vordefinierte Sicherheitswarnungen](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) zur Verfügung, die ausgelöst werden, wenn eine Bedrohung oder eine verdächtige Aktivität erkannt wird. Mithilfe [benutzerdefinierter Warnungsregeln](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) können Kunden neue Sicherheitswarnungen auf der Grundlage von Daten definieren, die bereits in ihrer Umgebung gesammelt werden.
 
@@ -151,27 +150,27 @@ Security Center bietet priorisierte Sicherheitswarnungen und -vorfälle. Securit
 Diese Referenzarchitektur verwendet auch die Funktion [Sicherheitsrisikobewertung](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) in Security Center. Nach der Konfiguration meldet ein Partner-Agent (z.B. Qualys) Daten zu Sicherheitsrisiken an die Verwaltungsplattform des Partners. Im Gegenzug liefert die Verwaltungsplattform des Partners Überwachungsdaten zu Sicherheitsrisiken und zur Integrität an Security Center. Kunden können anhand dieser Informationen schnell anfällige VMs identifizieren.
 
 ### <a name="business-continuity"></a>Geschäftskontinuität
-**Hochverfügbarkeit:** Serverworkloads werden in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zusammengefasst, um Hochverfügbarkeit für VMs in Azure sicherzustellen. Während einer geplanten oder ungeplanten Wartung ist mindestens eine VM verfügbar, wodurch 99,95 % des SLA von Azure erfüllt werden.
+**Hochverfügbarkeit**: Serverworkloads werden in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zusammengefasst, um Hochverfügbarkeit für VMs in Azure sicherzustellen. Während einer geplanten oder ungeplanten Wartung ist mindestens eine VM verfügbar, wodurch 99,95 % des SLA von Azure erfüllt werden.
 
-**Recovery Services-Tresor:** Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von VMs in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
+**Recovery Services-Tresor**: Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von VMs in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
 
 Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowie die Systemintegrität:
-- **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
-- **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von den einzelnen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Azure Application Gateway-Zugriffs- und -Firewallprotokolle. Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Benutzer können den Aufbewahrungszeitraum, bis zu 730 Tage, so konfigurieren, dass die spezifischen Anforderungen erfüllt werden.
+- **Aktivitätsprotokolle**: [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
+- **Diagnoseprotokolle**: [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) umfassen sämtliche Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Azure Application Gateway-Zugriffs- und -Firewallprotokolle. Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Benutzer können den Aufbewahrungszeitraum, bis zu 730 Tage, so konfigurieren, dass die spezifischen Anforderungen erfüllt werden.
 
-**Log Analytics**: Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) konsolidiert. Nach der Erfassung von Daten werden diese in separaten Tabellen für die einzelnen Datentypen in den Log Analytics-Arbeitsbereichen organisiert. Auf diese Weise können alle Daten zusammen analysiert werden, unabhängig von der zugehörigen ursprünglichen Quelle. Azure Security Center wird in Log Analytics integriert. Kunden können mithilfe von Log Analytics-Abfragen auf ihre Sicherheitsereignisdaten zugreifen und diese mit Daten von anderen Diensten kombinieren.
+**Azure Monitor-Protokolle:** Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) konsolidiert. Nach der Erfassung von Daten werden diese in separaten Tabellen für die einzelnen Datentypen in den Log Analytics-Arbeitsbereichen organisiert. Auf diese Weise können alle Daten zusammen analysiert werden, unabhängig von der zugehörigen ursprünglichen Quelle. Security Center lässt sich in Azure Monitor-Protokolle integrieren. Kunden können mithilfe von Kusto-Abfragen auf ihre Sicherheitsereignisdaten zugreifen und diese mit Daten von anderen Diensten kombinieren.
 
-Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) sind in dieser Architektur enthalten:
--   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Mit der Active Directory-Lösung für die Integritätsüberprüfung können Sie in regelmäßigen Abständen die Risiken und die Integrität Ihrer Serverumgebungen bewerten. Sie stellt eine priorisierte Liste von Empfehlungen bereit, die spezifisch für Ihre bereitgestellte Serverinfrastruktur gelten.
+In dieser Architektur sind die folgenden Azure-[Überwachungslösungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) enthalten:
+-   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Mit der Lösung für die Active Directory-Integritätsüberprüfung können Sie in regelmäßigen Abständen die Risiken und die Integrität Ihrer Serverumgebungen bewerten. Sie stellt eine priorisierte Liste von Empfehlungen bereit, die spezifisch für Ihre bereitgestellte Serverinfrastruktur gelten.
 - [SQL-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Mit der SQL-Lösung für die Integritätsüberprüfung können Sie in regelmäßigen Abständen die Risiken und die Integrität Ihrer Serverumgebungen bewerten. Die Lösung stellt für Kunden eine priorisierte Liste mit Empfehlungen bereit, die spezifisch für die bereitgestellte Serverinfrastruktur gelten.
-- [Agent-Integritätsdiagnose](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Diese Lösung meldet die Anzahl der bereitgestellten Agents sowie deren geografische Verteilung. Zudem meldet sie, wie viele Agents nicht reagieren und wie viele Agents operative Daten übermitteln.
--   [Aktivitätsprotokollanalyse:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
+- [Agent-Integritätsdiagnose](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Diese Lösung für die Agent-Integritätsdiagnose meldet die Anzahl von bereitgestellten Agents sowie deren geografische Verteilung. Zudem meldet sie, wie viele Agents nicht reagieren und wie viele Agents operative Daten übermitteln.
+-   [Aktivitätsprotokollanalyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Lösung „Aktivitätsprotokollanalyse“ hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
 
-**Azure Automation:** [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Azure SQL-Datenbank erfasst. Kunden können mithilfe der [Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking) von Azure Automation auf einfache Weise Änderungen in der Umgebung identifizieren.
+**Azure Automation**: [Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) dient zum Speichern, Ausführen und Verwalten von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Azure SQL-Datenbank erfasst. Kunden können mithilfe der [Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking) von Azure Automation auf einfache Weise Änderungen in der Umgebung identifizieren.
 
-**Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) dient zum Nachverfolgen der Leistung, zum Gewährleisten der Sicherheit und zum Identifizieren von Trends. Organisationen können diese Plattform zum Überwachen, zum Erstellen von Warnungen und zum Archivieren von Daten verwenden. Zudem können sie die API-Aufrufe in ihren Azure-Ressourcen nachverfolgen.
+**Azure Monitor**: [Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) dient zum Nachverfolgen der Leistung, zum Gewährleisten der Sicherheit und zum Identifizieren von Trends. Organisationen können diese Plattform zum Überwachen, zum Erstellen von Warnungen und zum Archivieren von Daten verwenden. Zudem können sie die API-Aufrufe in ihren Azure-Ressourcen nachverfolgen.
 
 ## <a name="threat-model"></a>Bedrohungsmodell
 

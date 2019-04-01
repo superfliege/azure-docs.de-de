@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d2ae1d1846506424aa14cca0f597c8888eb903d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341027"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649168"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern 
 
@@ -36,7 +36,7 @@ Wenn Sie eine Sperre in einem übergeordneten Bereich anwenden, erben alle Resso
 
 Im Gegensatz zur rollenbasierten Zugriffssteuerung verwenden Sie Verwaltungssperren, um eine Einschränkung für alle Benutzer und Rollen zu aktivieren. Informationen zum Festlegen von Benutzer- und Rollenberechtigungen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md).
 
-Resource Manager-Sperren gelten nur für Vorgänge auf der Verwaltungsebene (also für Vorgänge, die an `https://management.azure.com` gesendet werden). Die Ausführung ressourceneigener Funktionen wird durch die Sperren nicht begrenzt. Die Ressourcenänderungen sind eingeschränkt, die Ressourcenvorgänge jedoch nicht. So verhindert beispielsweise eine ReadOnly-Sperre für eine SQL-Datenbank-Instanz zwar, dass die Datenbank gelöscht oder angepasst wird, nicht aber das Erstellen, Aktualisieren oder Löschen von Daten in der Datenbank. Datentransaktionen sind zulässig, da diese Vorgänge nicht an `https://management.azure.com` gesendet werden.
+Resource Manager-Sperren gelten nur für Vorgänge auf der Verwaltungsebene (also für Vorgänge, die an `https://management.azure.com` gesendet werden). Die Ausführung ressourceneigener Funktionen wird durch die Sperren nicht eingeschränkt. Die Ressourcenänderungen sind eingeschränkt, die Ressourcenvorgänge jedoch nicht. So verhindert beispielsweise eine ReadOnly-Sperre für eine SQL-Datenbankinstanz zwar, dass die Datenbank gelöscht oder angepasst wird, nicht aber das Erstellen, Aktualisieren oder Löschen von Daten in der Datenbank. Datentransaktionen sind zulässig, da diese Vorgänge nicht an `https://management.azure.com` gesendet werden.
 
 Die Anwendung von **ReadOnly** kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, bei denen es sich scheinbar um Lesevorgänge handelt, zusätzliche Aktionen erfordern. Das Festlegen von **ReadOnly** für ein Speicherkonto hindert beispielsweise alle Benutzer am Auflisten der Schlüssel. Der Vorgang zum Auflisten von Schlüsseln wird über eine POST-Anforderung behandelt, da die zurückgegebenen Schlüssel für Schreibvorgänge zur Verfügung stehen. Weiteres Beispiel: Das Festlegen von **ReadOnly** für eine App Service-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
 
@@ -47,6 +47,19 @@ Zum Erstellen oder Löschen von Verwaltungssperren benötigen Sie Zugriff auf `M
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Vorlage
+
+Wenn Sie eine Sperre mithilfe einer Resource Manager-Vorlage bereitstellen, verwenden Sie je nach Umfang der Sperre unterschiedliche Werte für den Namen und den Typ.
+
+Beim Anwenden einer Sperre für eine **Ressource** verwenden Sie die folgenden Formate:
+
+* Name: `{resourceName}/Microsoft.Authorization/{lockName}`
+* Typ: `{resourceProviderNamespace}/{resourceType}/providers/locks`
+
+Beim Anwenden einer Sperre für eine **Ressourcengruppe** oder ein **Abonnement** verwenden Sie die folgenden Formate:
+
+* Name: `{lockName}`
+* Typ: `Microsoft.Authorization/locks`
+
 Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Website und eine Sperre für die Website erstellt. Der Ressourcentyp der Sperre ist der Ressourcentyp der zu sperrenden Ressource und **/providers/locks**. Der Name der Sperre wird erstellt, indem der Ressourcenname mit **/Microsoft.Authorization/** und dem Namen der Sperre verkettet wird.
 
 ```json
@@ -104,19 +117,7 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
 }
 ```
 
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name sitegroup -Location southcentralus
-New-AzResourceGroupDeployment -ResourceGroupName sitegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json -hostingPlanName plan0103
-```
-
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli
-az group create --name sitegroup --location southcentralus
-az group deployment create --resource-group sitegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json --parameters hostingPlanName=plan0103
-```
+Ein Beispiel für das Festlegen einer Sperre für eine Ressourcengruppe finden Sie unter [Erstellen und Sperren einer Ressourcengruppe](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
 Sie sperren bereitgestellte Ressourcen mit Azure PowerShell über den Befehl [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock).
@@ -206,7 +207,7 @@ Führen Sie zum Erstellen einer Sperre Folgendes durch:
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-Bei dem Bereich kann es sich um ein Abonnement, die Ressourcengruppe oder die Ressource handeln. Geben Sie für "lock-name" den jeweiligen Namen der Sperre ein. Verwenden Sie als „api-version“ die Einstellung **2015-01-01**.
+Bei dem Bereich kann es sich um ein Abonnement, die Ressourcengruppe oder die Ressource handeln. Geben Sie für "lock-name" den jeweiligen Namen der Sperre ein. Verwenden Sie als „api-version“ die Einstellung **2016-09-01**.
 
 Schließen Sie in die Anforderung ein JSON-Objekt ein, das die Eigenschaften für die Sperre angibt.
 
@@ -219,7 +220,6 @@ Schließen Sie in die Anforderung ein JSON-Objekt ein, das die Eigenschaften fü
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum logischen Organisieren von Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
-* Informationen dazu, wie Sie die Ressourcengruppe für eine Ressource ändern, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe](resource-group-move-resources.md)
 * Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../governance/policy/overview.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167149"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217740"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 
@@ -42,6 +42,9 @@ Stellen zu zuerst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 ## <a name="choose-authentication-methods"></a>Auswählen der Authentifizierungsmethoden
 
 Aktivieren Sie basierend auf den Anforderungen Ihrer Organisation mindestens eine Authentifizierungsmethode für Ihre Benutzer. Wir denken, dass die Microsoft Authenticator-App die beste Benutzererfahrung bietet, wenn sie für Benutzer aktiviert ist. Wenn Sie wissen möchten, welche Methoden verfügbar sind und wie diese festgelegt werden, lesen Sie den Artikel [Was sind Authentifizierungsmethoden](concept-authentication-methods.md).
+
+> [!IMPORTANT]
+> Ab März 2019 sind die Telefonanrufoptionen für MFA- und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 ## <a name="get-users-to-enroll"></a>Benutzer registrieren
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891102"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -57,9 +57,8 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 - API-App
 - Azure DNS
 - Key Vault
-- Azure Monitor
+- Azure Monitor (Protokolle)
 - Application Insights
-- Log Analytics
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL-Datenbank
@@ -169,11 +168,11 @@ Ausführliche Informationen zum Schützen von Azure Storage finden Sie im [Siche
 
 ### <a name="monitoring-logging-and-audit"></a>Überwachung, Protokollierung und Auditing
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist ein Dienst in Azure, mit dem Sie Daten sammeln und analysieren können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert werden.
+[Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) ist ein Dienst in Azure, mit dem Sie Daten sammeln und analysieren können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert werden.
 
-#### <a name="log-analytics-in-this-blueprint"></a>Log Analytics in dieser Vorlage
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>Azure Monitor-Protokolle in dieser Vorlage
 
 - SQL Assessment
 - Key Vault-Diagnose
@@ -220,7 +219,7 @@ Darüber hinaus hat die CSA (Cloud Security Alliance) die Cloud Control Matrix v
 
 Diese Vorlage wurde vom UK National Cyber Security Centre (NCSC) überprüft und erfüllt die NCSC 14-Cloudsicherheitsprinzipien.
 
-Die Automatisierungsvorlagen wurden vom UK Customer Success Unit Azure Cloud Solution Architect-Team und von unserem Microsoft-Partner [Ampliphae](http://www.ampliphae.com/) getestet.
+Die Automatisierungsvorlagen wurden vom UK Customer Success Unit Azure Cloud Solution Architect-Team und von unserem Microsoft-Partner [Ampliphae](https://www.ampliphae.com/) getestet.
 
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung

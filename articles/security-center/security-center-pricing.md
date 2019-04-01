@@ -3,7 +3,7 @@ title: Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Si
 description: Dieser Artikel enthält Informationen zu den Preisen für Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2018
-ms.author: rkarlin
-ms.openlocfilehash: bde2ebf2f69de1826e21435b5551e3c3412109d2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/17/2019
+ms.author: monhaber
+ms.openlocfilehash: 5f49de453f9cd694598918500a8ac0221937bdb1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201686"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
@@ -28,7 +28,7 @@ Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und er
 Security Center wird in zwei Tarifen angeboten:
 
 - Der Tarif **Free** ist für alle Azure-Abonnements automatisch aktiviert und umfasst die Sicherheitsrichtlinie, die kontinuierliche Bewertung der Sicherheit und umsetzbare Sicherheitsempfehlungen für den Schutz Ihrer Azure-Ressourcen.
-- Der Tarif **Standard** erweitert die Funktionen des Free-Tarifs auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. Er bietet eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads. Im Standard-Tarif stehen zudem erweiterte Funktionen für die Bedrohungserkennung zur Verfügung. Diese verwenden unter anderem integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen, sowie Zugriffs- und Anwendungskontrollen zur Verringerung der Angriffsfläche für Netzwerkangriffe und Schadsoftware. Sie können den Standard-Tarif kostenlos testen. Security Center Standard unterstützt Azure-Ressourcen wie VMs, App Service und SQL-Server. Wenn Sie über Azure Security Center Standard verfügen, sind Sie nicht mehr auf Support auf Basis des Ressourcentyps angewiesen. 
+- Der Tarif **Standard** erweitert die Funktionen des Free-Tarifs auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. Er bietet eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads. Im Standard-Tarif stehen zudem erweiterte Funktionen für die Bedrohungserkennung zur Verfügung. Diese verwenden unter anderem integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen, sowie Zugriffs- und Anwendungskontrollen zur Verringerung der Angriffsfläche für Netzwerkangriffe und Schadsoftware. Sie können den Standard-Tarif kostenlos testen. Security Center Standard unterstützt Azure-Ressourcen wie VMs, VM-Skalierungsgruppen, App Service, SQL-Server und Speicherkonten. Wenn Sie über Azure Security Center Standard verfügen, sind Sie nicht mehr auf Support auf Basis des Ressourcentyps angewiesen. 
 
 
 Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).

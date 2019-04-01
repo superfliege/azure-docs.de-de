@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 20f9655e1c3e7cce652802957f5eef1f333870e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456723"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176496"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Vielleicht müssen Sie diese Abkühlungswerte optimieren. Die Standardabkühlung
 
 ## <a name="cluster-autoscaler"></a>Automatische Clusterskalierung
 
-Um auf veränderte Podanforderungen zu reagieren, enthält Kubernetes eine automatische Clusterskalierung, die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
+Um auf veränderte Pod-Anforderungen zu reagieren, enthält Kubernetes eine automatische Clusterskalierung (derzeit in AKS in der Vorschau), die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
 
 ![Automatische Kubernetes-Clusterskalierung](media/concepts-scale/cluster-autoscaler.png)
 
@@ -81,7 +81,7 @@ Um Ihren AKS-Cluster schnell zu skalieren, können Sie ihn in Azure Container In
 
 ![Kubernetes-Burstskalierung in ACI](media/concepts-scale/burst-scaling.png)
 
-Mit ACI können Sie schnell Containerinstanzen ohne zusätzlichen Infrastrukturaufwand bereitstellen. Beim Herstellen der Verbindung mit AKS wird ACI eine sichere logische Erweiterung Ihres AKS-Clusters. Die Virtual Kubelet-Komponente wird in Ihrem AKS-Cluster installiert, der ACI als virtuellen Kubernetes-Knoten darstellt. Kubernetes kann dann Pods einplanen, die als ACI-Instanzen über virtuelle Knoten ausgeführt werden, nicht direkt in Ihrem AKS-Cluster als Pods auf VM-Knoten.
+Mit ACI können Sie schnell Containerinstanzen ohne zusätzlichen Infrastrukturaufwand bereitstellen. Beim Herstellen der Verbindung mit AKS wird ACI eine sichere logische Erweiterung Ihres AKS-Clusters. Die Virtual Kubelet-Komponente wird in Ihrem AKS-Cluster installiert, der ACI als virtuellen Kubernetes-Knoten darstellt. Kubernetes kann dann Pods einplanen, die als ACI-Instanzen über virtuelle Knoten ausgeführt werden, nicht direkt in Ihrem AKS-Cluster als Pods auf VM-Knoten. Virtuelle Knoten befinden sich derzeit in AKS in der Vorschau.
 
 Die Anwendung erfordert keine Änderung, um virtuelle Knoten zu verwenden. Bereitstellungen können AKS und ACI übergreifend und ohne Verzögerung skalieren, da die automatische Clusterskalierung neue Knoten im AKS-Cluster bereitstellt.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121586"
 ---
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
@@ -90,7 +90,7 @@ Sie können VNets miteinander verbinden, sodass Ressourcen, für die eine Verbin
 
 - **Peering**: Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNets desselben Azure-Standorts verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für das VNet entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zu Peerings finden Sie unter [Peering virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
- ![Peering](media/azure-network-security/azure-network-security-fig-3.png)
+  ![Peering](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **VNet-zu-VNet-Verbindung**: Hierbei können Ressourcen, für die eine Verbindung mit unterschiedlichen Azure-VNets besteht, an demselben oder verschiedenen Azure-Standorten verbunden werden. Im Gegensatz zum Peering ist die Bandbreite zwischen VNets beschränkt, da der Datenverkehr über ein Azure VPN Gateway fließen muss.
 
@@ -318,19 +318,19 @@ Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen
 
 Im folgende Abschnitt werden die aktuellen Einschränkung für die Routingtabelle und die Routen in Azure Virtual Network aufgeführt:
 
--   Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
+- Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
 
- -  **Lokale VNET-Routen:** Direkt zu den Ziel-VMs im selben virtuellen Netzwerk
+  -  **Lokale VNET-Routen:** Direkt zu den Ziel-VMs im selben virtuellen Netzwerk
 
- - **Lokale Routen:** Zum Azure-VPN-Gateway
+  - **Lokale Routen:** Zum Azure-VPN-Gateway
 
- -  **Standardroute:** Direkt zum Internet Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
+  -  **Standardroute:** Direkt zum Internet Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
 
--   Sie können mit der Veröffentlichung von benutzerdefinierten Routen eine Routingtabelle erstellen, um eine Standardroute hinzuzufügen. Anschließend verknüpfen Sie dann die Routingtabelle mit Ihrem VNET-Subnetz, um dafür die Tunnelerzwingung zu aktivieren.
+- Sie können mit der Veröffentlichung von benutzerdefinierten Routen eine Routingtabelle erstellen, um eine Standardroute hinzuzufügen. Anschließend verknüpfen Sie dann die Routingtabelle mit Ihrem VNET-Subnetz, um dafür die Tunnelerzwingung zu aktivieren.
 
--   Sie müssen einen "Standardstandort" unter den standortübergreifenden lokalen Standorten auswählen, der mit dem virtuellen Netzwerk verbunden ist.
+- Sie müssen einen "Standardstandort" unter den standortübergreifenden lokalen Standorten auswählen, der mit dem virtuellen Netzwerk verbunden ist.
 
--   Die Tunnelerzwingung muss einem VNet zugeordnet werden, das über ein VPN-Gateway für dynamisches Routing (kein statisches Gateway) verfügt.
+- Die Tunnelerzwingung muss einem VNet zugeordnet werden, das über ein VPN-Gateway für dynamisches Routing (kein statisches Gateway) verfügt.
 
 - Die ExpressRoute-Tunnelerzwingung kann über diesen Mechanismus nicht konfiguriert werden. Sie wird stattdessen durch Anfordern einer Standardroute über die ExpressRoute-BGP-Peeringsitzungen aktiviert.
 
@@ -393,7 +393,7 @@ Außerdem dient die Application Gateway-WAF als Unterstützung beim Überwachen 
 
 Das Protokoll im JSON-Format wird direkt im Speicherkonto des Kunden gespeichert. Sie verfügen über die vollständige Kontrolle über diese Protokolle und können Ihre eigenen Richtlinien für die Aufbewahrung anwenden.
 
-Darüber hinaus können Sie diese Protokolle per [Azure-Protokollintegration](https://aka.ms/AzLog) in Ihrem eigenen Analysesystem erfassen. WAF-Protokolle sind auch in [Log Analytics](../log-analytics/log-analytics-overview.md) integriert, sodass Sie Log Analytics nutzen können, um anspruchsvolle, differenzierte Abfragen auszuführen.
+Darüber hinaus können Sie diese Protokolle per [Azure-Protokollintegration](https://aka.ms/AzLog) in Ihrem eigenen Analysesystem erfassen. WAF-Protokolle sind auch in [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) integriert, sodass Sie Azure Monitor-Protokolle nutzen können, um anspruchsvolle, differenzierte Abfragen auszuführen.
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web Application Firewall (WAF)
 
@@ -507,7 +507,7 @@ Azure umfasst viele Tools zum Überwachen, Verhindern, Erkennen von und Reagiere
 
 -   Netzwerküberwachung auf Ressourcenebene
 
--   Log Analytics
+-   Azure Monitor-Protokolle
 
 ### <a name="network-watcher"></a>Network Watcher
 
@@ -597,17 +597,17 @@ Metriken sind Leistungsmessungen und -indikatoren, die über einen bestimmten Ze
 
 #### <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
-Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Speicherkonten protokolliert und dann an Event Hub oder Log Analytics gesendet. Diese Protokolle geben Einblick in die Integrität einer Ressource. Diese Protokolle können in Tools wie Power BI und Log Analytics angezeigt werden. Informationen zum Anzeigen von Diagnoseprotokollen finden Sie unter [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
+Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Speicherkonten protokolliert und dann an Event Hub oder Azure Monitor-Protokolle gesendet. Diese Protokolle geben Einblick in die Integrität einer Ressource. Diese Protokolle können in Tools wie Power BI und Azure Monitor-Protokolle angezeigt werden. Informationen zum Anzeigen von Diagnoseprotokollen finden Sie unter [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
 
 Diagnoseprotokolle sind für [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), Routen und [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) verfügbar.
 
 Network Watcher bietet eine Ansicht der Diagnoseprotokolle. Diese Ansicht enthält alle Netzwerkressourcen, die die Diagnoseprotokollierung unterstützen. In dieser Ansicht können Sie Netzwerkressourcen einfach und schnell aktivieren und deaktivieren.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
+[Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
 
-Log Analytics bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
+Azure Monitor-Protokolle bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
 
 -   Netzwerkleistungsmonitor (NPM)
 
@@ -627,7 +627,7 @@ Sie dient zur Überwachung der Konnektivität zwischen:
 -   Subnetzen, die verschiedene Ebenen einer Multi-Tier-Anwendung hosten.
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>Azure Application Gateway-Analyse in Log Analytics
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Azure Application Gateway-Analyse in Azure Monitor-Protokolle
 
 Die folgenden Protokolle werden für Anwendungsgateways unterstützt:
 
@@ -641,7 +641,7 @@ Für Anwendungsgateways werden folgende Metriken unterstützt:
 
 -   5-Minuten-Durchsatz
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Azure-Netzwerksicherheitsgruppen-Analyse in Log Analytics
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure-Netzwerksicherheitsgruppen-Analyse in Azure Monitor-Protokolle
 
 Die folgenden Protokolle werden für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) unterstützt:
 
@@ -652,7 +652,7 @@ Die folgenden Protokolle werden für [Netzwerksicherheitsgruppen](https://docs.m
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich weiter über die Sicherheit, indem Sie einige unserer weiter gehenden Sicherheitsthemen lesen:
 
--   [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [Azure Monitor-Protokolle für Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [Networking innovations that drive the cloud disruption](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/) (Netzwerkinnovationen, die die Cloudrevolution fördern)
 

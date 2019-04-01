@@ -128,29 +128,64 @@ items:
       href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
     - name: 'Remoteüberwachung: Häufig gestellte Fragen'
       href: iot-accelerators-faq-rm-v2.md
-- name: Verbundene Factory
+- name: Industrielles IoT
   items:
   - name: Übersicht
-    href: iot-accelerators-connected-factory-features.md
     items:
-    - name: Architecture
-      href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: Was ist das industrielle IoT?
+      href: overview-iot-industrial.md
+    - name: OPC-Zwilling
+      items:
+      - name: Was ist ein OPC-Zwilling?
+        href: overview-opc-twin.md
+      - name: Architektur für OPC-Zwillinge
+        href: overview-opc-twin-architecture.md
+    - name: OPC-Tresor
+      items:
+      - name: Was ist ein OPC-Tresor?
+        href: overview-opc-vault.md
+    - name: Verbundene Factory
+      items:
+      - name: 'Verbundene Factory: Übersicht'
+        href: iot-accelerators-connected-factory-features.md
+      - name: 'Verbundene Factory: Architektur'
+        href: iot-accelerators-connected-factory-sample-walkthrough.md
   - name: Schnellstarts
     items:
     - name: Testen einer Lösung für verbundene Factorys
       href: quickstart-connected-factory-deploy.md
   - name: Anleitungen
     items:
-    - name: Verwenden des Dashboards
-      href: iot-accelerators-connected-factory-dashboard.md
-    - name: Bereitstellen eines Gateways
-      href: iot-accelerators-connected-factory-gateway-deployment.md
-    - name: Verwenden von OPC Publisher
-      href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
-    - name: Konfigurieren des Solution Accelerators
-      href: iot-accelerators-connected-factory-configure.md
-    - name: Anpassen des Solution Accelerators
-      href: iot-accelerators-connected-factory-customize.md
+    - name: Verbundene Factory
+      items:
+      - name: Verwenden des Dashboards
+        href: iot-accelerators-connected-factory-dashboard.md
+      - name: Bereitstellen eines Gateways
+        href: iot-accelerators-connected-factory-gateway-deployment.md
+      - name: Verwenden von OPC Publisher
+        href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
+      - name: Konfigurieren des Solution Accelerators
+        href: iot-accelerators-connected-factory-configure.md
+      - name: Anpassen des Solution Accelerators
+        href: iot-accelerators-connected-factory-customize.md
+    - name: OPC-Zwilling
+      items:
+      - name: Bereitstellen von Diensten für OPC-Zwillinge
+        href: howto-opc-twin-deploy-existing.md
+      - name: Bereitstellen eines OPC-Zwillingsmoduls in IoT Edge
+        href: howto-opc-twin-deploy-modules.md
+      - name: Ausschließliches Bereitstellen von Abhängigkeiten für OPC-Zwillinge
+        href: howto-opc-twin-deploy-dependencies.md
+    - name: OPC-Tresor
+      items:
+      - name: Bereitstellen eines OPC-Tresors in einem vorhandenen Projekt
+        items:
+        - name: Schützen der Kommunikation zwischen OPC-Client und OPC PLC
+          href: howto-opc-vault-deploy-existing-client-plc-communication.md
+        - name: Schützen der Anwendung für OPC UA-Clients und OPC UA-Server
+          href: howto-opc-vault-deploy-existing-client-server-communication.md
+      - name: Bereitstellen eines OPC-Tresors von Grund auf
+        href: howto-opc-vault-deploy-scratch.md
   - name: Ressourcen
     items:
     - name: GitHub-Repository
@@ -257,9 +292,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Remoteüberwachung V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 5b2067facd27e94735aba63bb1c54c15e1511c64
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 02c728f7acef1bcc1436d87dd0c0d9509db8ec97
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342036"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757200"

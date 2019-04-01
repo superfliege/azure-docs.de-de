@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446092"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295639"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -58,7 +58,14 @@ Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lasten
 
 Dieses Problem kann mithilfe von Aliaseinträgen gelöst werden. Im Gegensatz zu CNAME-Einträgen können Aliaseinträge am Zonen-Apex erstellt werden, und Anwendungsbesitzer können damit Ihren Zonen-Apex-Eintrag an ein Traffic Manager-Profil mit externen Endpunkten verweisen. Anwendungsbesitzer können auf das gleiche Traffic Manager-Profil verweisen, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird.
 
-So können beispielsweise „contoso.com“ und „www.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Weitere Informationen zur Verwendung von Aliaseinträgen mit Azure Traffic Manager-Profilen finden Sie im Abschnitt „Nächste Schritte“.
+So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Weitere Informationen zur Verwendung von Aliaseinträgen mit Azure Traffic Manager-Profilen finden Sie im Abschnitt „Nächste Schritte“.
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Verweisen an der Zonenspitze auf Azure CDN-Endpunkte
+Genau wie ein Traffic Manager-Profil können Sie auch Aliasdatensätze verwenden, um an der Zonenspitze Ihrer DNS-Zone auf Azure CDN-Endpunkte zu verweisen. Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen. Anschließend können Sie auf die Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
+
+Wenn Ihre statische Website „www.contoso.com“ heißt, können Ihre Benutzer mit „contoso.com“ auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
+
+Wie zuvor beschrieben, werden CNAME-Einträge an der Zonenspitze nicht unterstützt. Daher können Sie keinen CNAME-Eintrag verwenden, um mit „contoso.com“ auf Ihren CDN-Endpunkt zu verweisen. Stattdessen können Sie einen Aliaseintrag verwenden, um direkt an der Zonenspitze auf einen CDN-Endpunkt zu verweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

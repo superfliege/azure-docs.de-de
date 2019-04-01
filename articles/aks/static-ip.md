@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: f1507bc2aebcd29feea7480761cd1b4949439583
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d2e4314948eeda0c82c004414f894dafc4d4cff6
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994486"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408682"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
@@ -24,17 +24,17 @@ In diesem Artikel wird erläutert, wie Sie eine statische öffentliche IP-Adress
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss die Version 2.0.59 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
-Zurzeit werden nur Basic-IP-SKUs unterstützt. Die Unterstützung von Standard-IPs befindet sich in der Vorbereitung.
+Derzeit wird nur die *SKU „Basic IP“* unterstützt. Unterstützung der Ressourcen-SKU *Standard IP* ist in Vorbereitung. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure][ip-sku].
 
 ## <a name="create-a-static-ip-address"></a>Erstellen einer statischen IP-Adresse
 
-Wenn Sie eine statische öffentliche IP-Adresse zur Verwendung mit AKS erstellen, sollte die Ressource der IP-Adresse im **Knoten** „Ressourcengruppe“ erstellt werden. Wenn Sie die Ressourcen trennen möchten, beachten Sie die Informationen unter [Verwenden einer statischen IP-Adresse außerhalb der Knotenressourcengruppe](#use-a-static-ip-address-outside-of-the-node-resource-group).
+Wenn Sie eine statische öffentliche IP-Adresse zur Verwendung mit AKS erstellen, sollte die Ressource der IP-Adresse im **Knoten** „Ressourcengruppe“ erstellt werden. Wenn Sie die Ressourcen trennen möchten, beachten Sie im folgenden Abschnitt die Informationen unter [Verwenden einer statischen IP-Adresse außerhalb der Knotenressourcengruppe](#use-a-static-ip-address-outside-of-the-node-resource-group).
 
-Rufen Sie den Namen der Knotenressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
+Rufen Sie zuerst den Namen der Knotenressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -42,7 +42,7 @@ MC_myResourceGroup_myAKSCluster_eastus
 
 Erstellen Sie dann über den Befehl [az network public-ip create][az-network-public-ip-create] eine statische öffentliche IP-Adresse. Geben Sie den Knoten „Ressourcengruppe“ an, den Sie über den vorherigen Befehl erhalten haben, und fügen Sie anschließend einen Namen für die Ressource der IP-Adresse hinzu, z.B. *myAKSPublicIP*:
 
-```azurecli
+```azurecli-interactive
 az network public-ip create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --name myAKSPublicIP \
@@ -61,11 +61,12 @@ Die IP-Adresse wird ähnlich wie in der folgenden gekürzten Beispielausgabe ang
     "ipAddress": "40.121.183.52",
     [...]
   }
+}
 ```
 
 Anschließend können Sie die öffentliche IP-Adresse über den Befehl [az network public-ip list][az-network-public-ip-list] abrufen. Geben Sie den Namen der erstellten Knotenressourcengruppe und die öffentliche IP-Adresse an, und fragen Sie anschließend wie im folgenden Beispiel gezeigt den Wert von *ipAddress* ab:
 
-```azurecli
+```azurecli-interactive
 $ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
 
 40.121.183.52
@@ -99,7 +100,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Mit Kubernetes 1.10 oder höher können Sie eine statische IP-Adresse verwenden, die außerhalb der Knotenressourcengruppe erstellt wurde. Der vom AKS-Cluster verwendete Dienstprinzipal muss delegierte Berechtigungen für die anderen Ressourcengruppe aufweisen, wie im folgenden Beispiel gezeigt:
 
-```azurecli
+```azurecli-interactive
 az role assignment create\
     --assignee <SP Client ID> \
     --role "Network Contributor" \
@@ -126,7 +127,7 @@ spec:
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Wenn es die in der *loadBalancerIP*-Eigenschaft des Dienstmanifests für Kubernetes angegebene statische IP-Adresse nicht gibt oder nicht in dem Knoten „Ressourcengruppe“ erstellt wurde, kann der Lastenausgleichsdienst nicht erstellt werden. Prüfen Sie die Ereignisse, die zur Erstellung des Diensts geführt haben, über den Befehl [kubectl describe][kubectl-describe], um das Problem zu lösen. Geben Sie den Namen des Diensts wie folgt genauso wie in dem YAML-Manifest an:
+Wenn es die in der *loadBalancerIP*-Eigenschaft des Dienstmanifests für Kubernetes angegebene statische IP-Adresse nicht gibt oder nicht in dem Knoten „Ressourcengruppe“ erstellt wurde und keine zusätzlichen Delegierungen konfiguriert sind, kann der Lastenausgleichsdienst nicht erstellt werden. Prüfen Sie die Ereignisse, die zur Erstellung des Diensts geführt haben, über den Befehl [kubectl describe][kubectl-describe], um das Problem zu lösen. Geben Sie den Namen des Diensts wie folgt genauso wie in dem YAML-Manifest an:
 
 ```console
 kubectl describe service azure-load-balancer
@@ -173,3 +174,4 @@ Wenn Sie mehr Kontrolle über den Netzwerkdatenverkehr wünschen, der an Ihre An
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[ip-sku]: ../virtual-network/virtual-network-ip-addresses-overview-arm.md#sku

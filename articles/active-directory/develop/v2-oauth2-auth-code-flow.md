@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2115ad1a88c819e0ee1da34d9d332a0b013b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 02183abb60fe24b9ee9c769f7af696355966ab24
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174349"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551057"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0-Protokolle – OAuth 2.0-Autorisierungscodefluss
 
@@ -271,7 +271,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | required    | Muss der `refresh_token` für diesen Abschnitt des Autorisierungscodeflusses sein. |
 | `scope`         | required    | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ursprünglichen Autorisierungscode-Abschnitt angefordert wurden. Wenn die in dieser Anforderung angegebenen Bereiche mehrere Ressourcenserver umfassen, gibt der v2.0-Endpunkt ein Token für die im ersten Bereich angegebene Ressource zurück. Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
 | `refresh_token` | required    | Das Aktualisierungstoken, das Sie im zweiten Abschnitt des Vorgangs erhalten haben. |
-| `redirect_uri`  | required    | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
+| `redirect_uri`  | required    |  Ein `redirect_uri` für die Clientanwendung registriert. |
 | `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer nativen App verwendet werden, da geheime Clientschlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.                                                                                                                                                    |
 
 #### <a name="successful-response"></a>Erfolgreiche Antwort
@@ -319,6 +319,6 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | `error_codes` |Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können. |
 | `timestamp` | Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
 | `trace_id` | Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
-| c`orrelation_id` | Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
+| `correlation_id` | Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 
 Eine Beschreibung der Fehlercodes und der jeweils empfohlenen Clientaktion finden Sie unter [Fehlercodes für Token-Endpunktfehler](#error-codes-for-token-endpoint-errors).

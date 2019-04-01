@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.author: mahilleb
+ms.date: 03/12/2019
+ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: c9e72ea2762af0d9a4c47ca5b23fe4bdbe53b968
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900912"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -38,11 +38,19 @@ Das Speech SDK ist in den folgenden Regionen für **Spracherkennung** und **Übe
  USA, Westen 2 | `westus2` | https://westus2.cris.ai
  USA (Ost) | `eastus` | https://eastus.cris.ai
  USA (Ost 2) | `eastus2` | https://eastus2.cris.ai
+ USA (Mitte) | 'centralus' | https://centralus.cris.ai
+ USA Nord Mitte | 'northcentralus' | https://northcentralus.cris.ai
+ USA Süd Mitte | 'southcentralus' | https://southcentralus.cris.ai
  Asien, Osten | `eastasia` | https://eastasia.cris.ai
  Südostasien | `southeastasia` | https://southeastasia.cris.ai
+ Japan, Osten | `japaneast` | https://japaneast.cris.ai
+ Korea, Mitte | `koreacentral` | https://koreacentral.cris.ai
+ Australien (Osten) | `australiaeast` | https://australiaeast.cris.ai
+ Kanada, Mitte | `canadacentral` | https://canadacentral.cris.ai
  Nordeuropa | `northeurope` | https://northeurope.cris.ai
  Europa, Westen | `westeurope` | https://westeurope.cris.ai
-
+ UK, Süden | `uksouth` | https://uksouth.cris.ai
+ Frankreich, Mitte | `francecentral` | https://francecentral.cris.ai
 
 ### <a name="intent-recognition"></a>Absichtserkennung
 

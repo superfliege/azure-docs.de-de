@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c76c7bdb398184cc297831c9395063e7bf0f6bdc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 140c8b2ab9b7985652a6474a1a9373e0d453b9e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492537"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900725"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe von Azure Advisor
 
@@ -21,7 +21,7 @@ Advisor hilft Ihnen beim Optimieren und Senken Ihrer Gesamtausgaben für Azure, 
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimieren der Kosten für virtuelle Computer durch Ändern der Größe oder Herunterfahren von zu gering ausgelasteten Instanzen 
 
-Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie Größe und Anzahl Ihrer virtuellen Computer steuern. Der Advisor überwacht die Verwendung Ihrer virtuellen Computer 14 Tage lang und ermittelt virtuelle Computer mit geringer Auslastung. Virtuelle Computer, bei denen an mindestens vier Tagen die CPU-Auslastung unter 5 Prozent und die Netzwerklast unter 7 MB lag, gelten als virtuelle Computer mit geringer Auslastung.
+Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie Größe und Anzahl Ihrer virtuellen Computer steuern. Der Advisor überwacht 7 Tage die Verwendung Ihrer virtuellen Computer und ermittelt virtuelle Computer mit geringer Auslastung. Virtuelle Computer gelten als gering ausgelastet, wenn ihre CPU-Auslastung höchstens 5% beträgt und ihre Netzwerkauslastung unter 2% liegt oder die aktuelle Workload von einer kleineren VM-Größe bewältigt werden kann.
 
 Der Advisor gibt die geschätzten Kosten für die weitere Ausführung des virtuellen Computers an, sodass Sie entscheiden können, ob Sie diesen herunterfahren oder seine Größe ändern.
 
@@ -40,6 +40,10 @@ Der Advisor identifiziert virtuelle Netzwerkgates, die mehr als 90 Tage lang im 
 Der Advisor überprüft Ihre VM-Nutzung der letzten 30 Tage und ermittelt, ob der Erwerb einer Azure-Reservierung für Sie günstiger wäre. Der Advisor zeigt die Regionen und Größen mit dem größten Einsparpotenzial sowie die voraussichtlichen Einsparungen an, die sich durch den Erwerb von Reservierung erzielen lassen. 
 
 Mit Azure-Reservierungen können Sie die Grundkosten für Ihre virtuellen Computer vorab begleichen. Rabatte gelten automatisch für neue oder vorhandene virtuelle Computer mit der gleichen Größe und Region wie Ihre Reservierungen. Weitere Informationen zu Azure Reserved Virtual Machine Instances finden Sie [hier](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+
+## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Löschen nicht zugeordneter öffentlicher IP-Adressen zum Einsparen von Kosten
+
+Advisor ermittelt öffentliche IP-Adressen, die derzeit keinen Azure-Ressourcen wie Load Balancers oder VMs zugeordnet sind. Für diese öffentliche IP-Adressen fällt eine Schutzgebühr an. Wenn Sie nicht planen, sie zu verwenden, können Sie Kosten sparen, indem Sie sie löschen.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Zugreifen auf Kostenempfehlungen im Azure Advisor
 

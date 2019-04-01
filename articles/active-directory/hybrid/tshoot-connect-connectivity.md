@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f7d72be86a05b9785f7714380363d9c6ddb5c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205697"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436654"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect 
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -76,7 +76,7 @@ Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsof
 
 ### <a name="the-password-cannot-be-verified"></a>Das Kennwort kann nicht überprüft werden
 Falls sich der Installations-Assistent erfolgreich mit Azure AD verbinden konnte, aber das Kennwort selbst nicht überprüft werden kann, wird Ihnen dieser Fehler angezeigt:  
-![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
+![Falsches Kennwort.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Handelt es sich um ein temporäres Kennwort, das geändert werden muss? Handelt es sich um das richtige Kennwort? Versuchen Sie, sich bei https://login.microsoftonline.com (auf einem anderen Computer als dem Azure AD Connect-Server) anzumelden, und überprüfen Sie, ob das Konto verwendbar ist.
 
@@ -165,7 +165,7 @@ Ihre Anmeldeinformationen sind abgelaufen. Ändern Sie Ihr Kennwort.
 ### <a name="authorization-failure"></a>Autorisierungsfehler
 Fehler beim Autorisieren des Benutzers für die Durchführung einer Aktion in Azure AD.
 
-### <a name="authentication-cancelled"></a>Authentifizierung abgebrochen
+### <a name="authentication-canceled"></a>Authentifizierung abgebrochen
 Das MFA-Captcha (Multi-Factor Authentication) wurde abgebrochen.
 
 <div id="connect-msolservice-failed">

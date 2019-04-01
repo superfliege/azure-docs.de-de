@@ -3,7 +3,7 @@ title: Einrichten von SharePoint Online und Exchange Online für bedingten Zugri
 description: Hier erfahren Sie, wie Sie SharePoint Online und Exchange Online für den bedingten Zugriff mit Azure Active Directory einrichten.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2018
-ms.author: markvi
+ms.date: 02/27/2019
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dad650ac1cc7ab8822925a4a9759b68ee0d0088
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a90cd381dbe3feaad110c7f10ae328915c051d0a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185996"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517724"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>Anleitung: Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory 
 
@@ -77,7 +77,7 @@ Wenn Sie Richtlinien für den bedingten Zugriff auf Exchange Online einrichten, 
 
 Exchange Active Sync unterstützt zwar die moderne Authentifizierung, es gibt jedoch einige Einschränkungen hinsichtlich der Unterstützung von Szenarien mit bedingtem Zugriff:
 
-- Sie können nur die Bedingung für Geräteplattformen konfigurieren.  
+- Bei der Auswahl von **Exchange Active Sync-Clients** in Ihrer Richtlinie können Sie keine anderen Bedingungen konfigurieren.  
 
     ![Geräteplattformen](./media/conditional-access-for-exo-and-spo/05.png)
 
@@ -93,7 +93,7 @@ Um den Zugriff auf Exchange Online aus Exchange ActiveSync effektiv schützen, k
 
     ![Bedingter Zugriff](./media/conditional-access-for-exo-and-spo/04.png)
 
-    b. Wählen Sie **Exchange Active Sync** als **Client-App** aus, und wählen Sie anschließend **Richtlinie nur auf unterstützte Plattformen anwenden** aus.  
+    b. Wählen Sie **Exchange Active Sync** als **Clientanwendung** aus.  
 
     ![Geräteplattformen](./media/conditional-access-for-exo-and-spo/03.png)
 

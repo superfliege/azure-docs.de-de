@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204439"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532778"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -139,9 +139,9 @@ Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität
 |-|-|
 | Sie planen, AD FS für andere Anwendungen (als Azure AD und Office 365) weiterzuverwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen erhält, z.B. Office 365) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|
-| Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) und [Clientzugriffsregeln in Exchange Online](http://aka.ms/EXOCAR) verwenden. |
+| Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) und [Clientzugriffsregeln in Exchange Online](https://aka.ms/EXOCAR) verwenden. |
 | Bei Ihnen ist es erforderlich, dass Benutzer eine mehrstufige Authentifizierung über eine entsprechende lokale Serverlösung durchführen, um sich für AD FS zu authentifizieren.| In einer Domäne mit verwalteter Identität können Sie über die lokale Lösung für die mehrstufige Authentifizierung keine MFA-Abfrage in den Authentifizierungsablauf einfügen. Sie können den Dienst „Azure Multi-Factor Authentication“ aber für die mehrstufige Authentifizierung nutzen, nachdem die Domäne konvertiert wurde.<br /><br /> Falls Ihre Benutzer Azure Multi-Factor Authentication derzeit nicht verwenden, ist ein einmaliger Registrierungsschritt für die Benutzer erforderlich. Sie müssen sich auf die geplante Registrierung für Ihre Benutzer vorbereiten und dies kommunizieren. |
-| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) und die [Clientzugriffsregeln für Exchange Online](http://aka.ms/EXOCAR) zu ersetzen.|
+| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR) zu ersetzen.|
 
 ### <a name="common-ad-fs-customizations"></a>Häufige AD FS-Anpassungen
 
@@ -319,7 +319,7 @@ Verwenden Sie diese Methode, wenn Sie Ihre AD FS-Umgebung ursprünglich mit Azur
    * **Nahtloses einmaliges Anmelden** ist auf **Aktiviert** festgelegt.
    * **Kennwortsynchronisierung** ist auf **Aktiviert** festgelegt.<br /> 
 
-   ![Screenshot: Einstellungen im Abschnitt „Benutzeranmeldung“ ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Screenshot: Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Springen Sie zu [Testen und nächste Schritte](#testing-and-next-steps).
 
@@ -400,7 +400,7 @@ Als für Ihren Mandanten die Verbundidentität verwendet wurde, wurden Benutzer 
 Testen Sie die Kennworthashsynchronisierung wie folgt:
 
 1. Öffnen Sie Internet Explorer im InPrivate-Modus, damit Sie nicht per einmaligem Anmelden automatisch angemeldet werden.
-2. Navigieren Sie zur Office 365-Anmeldeseite ([http://portal.office.com](http://portal.office.com/)).
+2. Navigieren Sie zur Office 365-Anmeldeseite ([https://portal.office.com](https://portal.office.com/)).
 3. Geben Sie den Benutzerprinzipalnamen (UPN) eines Benutzers ein, und wählen Sie anschließend **Weiter**. Achten Sie darauf, dass Sie den UPN eines Hybridbenutzers eingeben, der von Ihrer lokalen Active Directory-Instanz synchronisiert und für den zuvor die Verbundauthentifizierung verwendet wurde. Es wird eine Seite angezeigt, auf der Sie den Benutzernamen und das Kennwort eingeben können:
 
    ![Screenshot: Anmeldeseite, auf der Sie den Benutzernamen eingeben](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)

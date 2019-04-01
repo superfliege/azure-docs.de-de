@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968807"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087583"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Erste Schritte mit ML Services in Azure HDInsight
 
@@ -35,7 +35,7 @@ Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit diese
 
 3. Geben Sie unter **Grundlagen** Folgendes ein:
 
-    * **Clustername:** Name des HDInsight-Clusters.
+    * **Clustername:** Der Name des HDInsight-Clusters.
     * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
     * **Benutzername für Clusteranmeldung** und **Kennwort für Clusteranmeldung**: Die für den Clusterzugriff über HTTPS verwendete Anmeldung. Sie verwenden diese Anmeldeinformationen für den Zugriff auf Dienste wie die Apache Ambari-Webbenutzeroberfläche oder die REST-API.
     * **SSH-Benutzername (Secure Shell):** Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch.
@@ -79,16 +79,16 @@ Sie können mit einer der beiden folgenden Methoden auf die RStudio-Anmeldung zu
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 * **Option 2:** Verwenden des Azure-Portals.
-Im Portal:
+  Im Portal:
   1. Wählen Sie im Menü links **Alle Dienste** aus.
   2. Wählen Sie unter **ANALYTICS** die Option **HDInsight-Cluster** aus.
   3. Wählen Sie auf der Seite **HDInsight-Cluster** den Namen Ihres Clusters aus.
   4. Wählen Sie unter **ML Services-Dashboards** die Option **R Studio-Server** aus. 
 
-    ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
+     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]  
-   > Unabhängig von der verwendeten Zugriffsmethode müssen Sie sich bei der ersten Anmeldung zweimal authentifizieren.  Geben Sie für die erste Authentifizierungseingabeaufforderung die *Benutzer-ID* und das *Kennwort* für den Clusteradministrator an. Geben Sie für die zweite Authentifizierungseingabeaufforderung die *Benutzer-ID* und das *Kennwort* für SSH an. Für nachfolgende Anmeldungen sind dann nur noch die SSH-Anmeldeinformationen erforderlich.
+     > [!IMPORTANT]  
+     > Unabhängig von der verwendeten Zugriffsmethode müssen Sie sich bei der ersten Anmeldung zweimal authentifizieren.  Geben Sie für die erste Authentifizierungseingabeaufforderung die *Benutzer-ID* und das *Kennwort* für den Clusteradministrator an. Geben Sie für die zweite Authentifizierungseingabeaufforderung die *Benutzer-ID* und das *Kennwort* für SSH an. Für nachfolgende Anmeldungen sind dann nur noch die SSH-Anmeldeinformationen erforderlich.
 
 Nachdem die Verbindung hergestellt wurde, sollte die Anzeige in etwa wie im folgenden Screenshot aussehen:
 
