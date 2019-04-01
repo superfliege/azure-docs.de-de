@@ -11,18 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5a03805fc055583f1f965854d4da3ae6b0c90e20
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008592"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444892"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
 Als Partner können Sie die Auswirkungen Ihrer Kundenbindungen nachverfolgen. Sie können Ihre Partner-ID mit den Konten verknüpfen, die zum Verwalten der Ressourcen eines Kunden verwendet werden.
-
-Dieses Feature ist als Public Preview verfügbar.
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 
@@ -56,7 +54,7 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 
 1. Installieren Sie das PowerShell-Modul [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner).
 
-2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-5.2.0).
+2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
  
    ```azurepowershell-interactive
     C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
