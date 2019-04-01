@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 9818ae9b8571628d9be09f539abf2995a3927e08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415832"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010542"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Vorschau)
 
@@ -36,29 +36,29 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 4. [Exportieren](vpn-gateway-certificates-point-to-site.md#clientexport) Sie das P2S-Clientzertifikat, das Sie erstellt und in Ihre P2S-Konfiguration auf dem Gateway hochgeladen haben.
 5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der *PFX*-Datei. Dazu gibt es verschiedene Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit. Die Datei *profileinfo.txt* enthält den privaten Schlüssel und den Fingerabdruck für die Zertifizierungsstelle sowie das Clientzertifikat. Verwenden Sie unbedingt den Fingerabdruck des Clientzertifikats.
 
-  ```
-  openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
-  ```
+   ```
+   openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+   ```
 6. Öffnen Sie *profileinfo.txt* in Editor. Um den Fingerabdruck des Clientzertifikats (untergeordnetes Zertifikat) zu erhalten, markieren Sie den Text einschließlich und zwischen „-----BEGIN CERTIFICATE-----“ und „-----END CERTIFICATE-----“ für das untergeordnete Zertifikat, und kopieren Sie ihn. Das untergeordnete Zertifikat finden Sie in der Zeile „subject=/“.
 7. Wechseln Sie zur Datei *vpnconfig.ovpn*, die Sie in Schritt 3 in Editor geöffnet haben. Suchen Sie nach dem unten gezeigten Abschnitt, und ersetzen Sie den gesamten Text zwischen „cert“ und „/cert“.
 
-  ```
-  # P2S client certificate
-  # please fill this field with a PEM formatted cert
-  <cert>
-  $CLIENTCERTIFICATE
-  </cert>
-  ```
-8.  Öffnen Sie die Datei *profileinfo.txt* in Editor. Um den privaten Schlüssel zu erhalten, markieren Sie den Text einschließlich und zwischen „-----BEGIN PRIVATE KEY-----“ und „-----END PRIVATE KEY-----“, und kopieren Sie ihn.
-9.  Kehren Sie zur Datei „vpnconfig.ovpn“ in Editor zurück, und suchen Sie nach diesem Abschnitt. Fügen Sie den privaten Schlüssel ein, indem Sie den gesamten Text zwischen „key“ und „/key“ ersetzen.
+   ```
+   # P2S client certificate
+   # please fill this field with a PEM formatted cert
+   <cert>
+   $CLIENTCERTIFICATE
+   </cert>
+   ```
+8. Öffnen Sie die Datei *profileinfo.txt* in Editor. Um den privaten Schlüssel zu erhalten, markieren Sie den Text einschließlich und zwischen „-----BEGIN PRIVATE KEY-----“ und „-----END PRIVATE KEY-----“, und kopieren Sie ihn.
+9. Kehren Sie zur Datei „vpnconfig.ovpn“ in Editor zurück, und suchen Sie nach diesem Abschnitt. Fügen Sie den privaten Schlüssel ein, indem Sie den gesamten Text zwischen „key“ und „/key“ ersetzen.
 
-  ```
-  # P2S client root certificate private key
-  # please fill this field with a PEM formatted key
-  <key>
-  $PRIVATEKEY
-  </key>
-  ```
+   ```
+   # P2S client root certificate private key
+   # please fill this field with a PEM formatted key
+   <key>
+   $PRIVATEKEY
+   </key>
+   ```
 10. Ändern Sie keine anderen Felder. Verwenden Sie die ausgefüllte Konfiguration in der Clienteingabe, um eine Verbindung mit dem VPN herzustellen.
 11. Kopieren Sie die Datei „vpnconfig.ovpn“ in den Ordner „C:\Programme\OpenVPN\config“.
 12. Klicken Sie mit rechten Maustaste auf das Symbol „OpenVPN“, und wählen Sie „Verbinden“ aus.
@@ -84,56 +84,56 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 1. Starten Sie eine neue Terminalsitzung. Sie können eine neue Sitzung öffnen, indem Sie STRG+ALT+T gleichzeitig drücken.
 2. Geben Sie für die Installation der benötigten Komponenten den folgenden Befehl ein:
 
-  ```
-  sudo apt-get install openvpn
-  sudo apt-get -y install network-manager-openvpn
-  sudo service network-manager restart
-  ```
+   ```
+   sudo apt-get install openvpn
+   sudo apt-get -y install network-manager-openvpn
+   sudo service network-manager restart
+   ```
 3. Laden Sie das VPN-Profil für das Gateway herunter. Das Profil kann auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal heruntergeladen werden.
-4.  [Exportieren](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) Sie das P2S-Clientzertifikat, das Sie erstellt und in Ihre P2S-Konfiguration auf dem Gateway hochgeladen haben. 
+4. [Exportieren](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) Sie das P2S-Clientzertifikat, das Sie erstellt und in Ihre P2S-Konfiguration auf dem Gateway hochgeladen haben. 
 5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der PFX-Datei. Dazu gibt es verschiedene Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit.
 
     ```
     openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-  Die Datei *profileinfo.txt* enthält den privaten Schlüssel und den Fingerabdruck für die Zertifizierungsstelle sowie das Clientzertifikat. Verwenden Sie unbedingt den Fingerabdruck des Clientzertifikats.
+   Die Datei *profileinfo.txt* enthält den privaten Schlüssel und den Fingerabdruck für die Zertifizierungsstelle sowie das Clientzertifikat. Verwenden Sie unbedingt den Fingerabdruck des Clientzertifikats.
 
 6. Öffnen Sie die Datei *profileinfo.txt* in einem Text-Editor. Um den Fingerabdruck des Clientzertifikats (untergeordnetes Zertifikat) zu erhalten, markieren Sie den Text einschließlich und zwischen „-----BEGIN CERTIFICATE-----“ und „-----END CERTIFICATE-----“ für das untergeordnete Zertifikat, und kopieren Sie ihn. Das untergeordnete Zertifikat finden Sie in der Zeile „subject=/“.
 
-7.  Öffnen Sie die Datei *vpnconfig.ovpn*, und suchen Sie nach dem unten gezeigten Abschnitt. Ersetzen Sie den gesamten Text zwischen „cert“ und „/cert“.
+7. Öffnen Sie die Datei *vpnconfig.ovpn*, und suchen Sie nach dem unten gezeigten Abschnitt. Ersetzen Sie den gesamten Text zwischen „cert“ und „/cert“.
 
-    ```
-    # P2S client certificate
-    # please fill this field with a PEM formatted cert
-    <cert>
-    $CLIENTCERTIFICATE
-    </cert>
-    ```
-8.  Öffnen Sie die Datei „profileinfo.txt“ in einem Text-Editor. Um den privaten Schlüssel zu erhalten, markieren Sie den Text einschließlich und zwischen „-----BEGIN PRIVATE KEY-----“ und „-----END PRIVATE KEY-----“, und kopieren Sie ihn.
+   ```
+   # P2S client certificate
+   # please fill this field with a PEM formatted cert
+   <cert>
+   $CLIENTCERTIFICATE
+   </cert>
+   ```
+8. Öffnen Sie die Datei „profileinfo.txt“ in einem Text-Editor. Um den privaten Schlüssel zu erhalten, markieren Sie den Text einschließlich und zwischen „-----BEGIN PRIVATE KEY-----“ und „-----END PRIVATE KEY-----“, und kopieren Sie ihn.
 
-9.  Öffnen Sie die Datei „vpnconfig.ovpn“ in einem Text-Editor, und suchen Sie nach diesem Abschnitt. Fügen Sie den privaten Schlüssel ein, indem Sie den gesamten Text zwischen „key“ und „/key“ ersetzen.
+9. Öffnen Sie die Datei „vpnconfig.ovpn“ in einem Text-Editor, und suchen Sie nach diesem Abschnitt. Fügen Sie den privaten Schlüssel ein, indem Sie den gesamten Text zwischen „key“ und „/key“ ersetzen.
 
-    ```
-    # P2S client root certificate private key
-    # please fill this field with a PEM formatted key
-    <key>
-    $PRIVATEKEY
-    </key>
-    ```
+   ```
+   # P2S client root certificate private key
+   # please fill this field with a PEM formatted key
+   <key>
+   $PRIVATEKEY
+   </key>
+   ```
 
 10. Ändern Sie keine anderen Felder. Verwenden Sie die ausgefüllte Konfiguration in der Clienteingabe, um eine Verbindung mit dem VPN herzustellen.
 11. Um über die Befehlszeile eine Verbindung herzustellen, geben Sie den folgenden Befehl ein:
   
-  ```
-  sudo openvpn –-config <name and path of your VPN profile file>
-  ```
+    ```
+    sudo openvpn –-config <name and path of your VPN profile file>
+    ```
 12. Um über die grafische Benutzeroberfläche eine Verbindung herzustellen, wechseln Sie zu „Systemeinstellungen“.
 13. Klicken Sie auf **+**, um eine neue VPN-Verbindung hinzuzufügen.
 14. Wählen Sie unter **VPN hinzufügen**, den Befehl **Aus Datei importieren...** aus.
 15. Navigieren Sie zur Profildatei, und doppelklicken Sie darauf, oder wählen Sie **Öffnen** aus.
 16. Klicken Sie im Fenster **VPN hinzufügen** auf **Hinzufügen**.
   
-  ![Aus Datei importieren](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
+    ![Aus Datei importieren](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. Sie können eine Verbindung herstellen, indem Sie auf der Seite **Netzwerkeinstellungen** oder unter dem Netzwerksymbol auf der Taskleiste das VPN auf **EIN** festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,5 +1,5 @@
 ---
-title: Überwachen von Logik-Apps mit Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
+title: Überwachen von Logik-Apps mit Azure Monitor-Protokollen – Azure Logic Apps | Microsoft-Dokumentation
 description: Sammeln Sie mit Azure Log Analytics Erkenntnisse und Debuggingdaten für die Problembehandlung und Diagnose Ihrer Logik-App-Ausführungen.
 services: logic-apps
 ms.service: logic-apps
@@ -9,21 +9,23 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995640"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192461"
 ---
-# <a name="monitor-logic-apps-with-azure-log-analytics"></a>Überwachen von Logik-Apps mit Azure Log Analytics
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Überwachen von Logik-Apps mit Azure Monitor-Protokollen
 
-Um Ihre Logik-Apps zu überwachen und umfassendere Details über sie zu erhalten, aktivieren Sie [Azure Log Analytics](../log-analytics/log-analytics-overview.md), wenn Sie die Logik-App erstellen. Log Analytics bietet Diagnoseprotokollierung und -überwachung für Ihre Logik-Apps, wenn Sie die Lösung Logic Apps-Verwaltung im Azure-Portal installieren. Diese Lösung bietet auch aggregierte Informationen für Ihre Logik-App-Ausführungen mit spezifischen Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs. In diesem Artikel wird veranschaulicht, wie Sie Log Analytics aktivieren, um Laufzeitereignisse und Daten für Ihre Logik-App-Ausführung anzuzeigen.
+Um Ihre Logik-Apps zu überwachen und umfassendere Details über sie zu erhalten, aktivieren Sie [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md), wenn Sie die Logik-App erstellen. Azure Monitor-Protokolle bieten Diagnoseprotokollierung und -überwachung für Ihre Logik-Apps, wenn Sie die Lösung Logic Apps-Verwaltung im Azure-Portal installieren. Diese Lösung bietet auch aggregierte Informationen für Ihre Logik-App-Ausführungen mit spezifischen Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs. In diesem Artikel wird veranschaulicht, wie Sie Azure Monitor-Protokolle aktivieren, um Laufzeitereignisse und Daten für Ihre Logik-App-Ausführung anzuzeigen.
 
-Führen Sie diese Schritte zum [Aktivieren der Diagnoseprotokollierung und Senden von Logik-App-Laufzeitdaten an Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics) aus, um Azure Log Analytics für vorhandene Logik-Apps zu aktivieren.
+Führen Sie diese Schritte zum [Aktivieren der Diagnoseprotokollierung und Senden von Logik-App-Laufzeitdaten an Azure Monitor-Protokolle](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics) aus, um Azure Monitor-Protokolle für vorhandene Logik-Apps zu aktivieren.
 
 > [!NOTE]
 > Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 eingestellt](../azure-monitor/platform/oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,7 +58,7 @@ Bevor Sie beginnen, benötigen Sie einen Log Analytics-Arbeitsbereich. Erfahren 
 
 ## <a name="install-logic-apps-management-solution"></a>Installieren der Lösung Logic Apps-Verwaltung
 
-Überspringen Sie diesen Schritt, falls Sie Log Analytics bereits beim Erstellen Ihrer Logik-App aktiviert haben. Sie haben die Lösung für die Logik-App-Verwaltung bereits installiert.
+Überspringen Sie diesen Schritt, falls Sie Azure Monitor-Protokolle bereits beim Erstellen Ihrer Logik-App aktiviert haben. Sie haben die Lösung für die Logik-App-Verwaltung bereits installiert.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste**. Geben Sie im Suchfeld „log analytics“ ein, und wählen Sie **Log Analytics** aus.
 
@@ -116,17 +118,17 @@ Nachdem Ihre Logik-App ausgeführt wird, können Sie den Status und die Anzahl d
 
      Alle neu hinzugefügten überwachten Eigenschaften werden möglicherweise erst nach 10 bis 15 Minuten erstmalig angezeigt. Erfahren Sie mehr über das [Hinzufügen überwachter Eigenschaften zu Ihrer Logik-App](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Erneut übermitteln:**  Sie können eine oder mehrere Logik-App-Ausführungen erneut übermitteln, die fehlgeschlagen sind, erfolgreich waren oder noch ausgeführt werden. Aktivieren Sie die Kontrollkästchen für die Ausführungen, die Sie erneut übermitteln möchten, und wählen Sie **Erneut übermitteln** aus. 
+   * **Erneut übermitteln:** Sie können eine oder mehrere Logik-App-Ausführungen erneut übermitteln, die fehlgeschlagen sind, erfolgreich waren oder noch ausgeführt werden. Aktivieren Sie die Kontrollkästchen für die Ausführungen, die Sie erneut übermitteln möchten, und wählen Sie **Erneut übermitteln** aus. 
 
      ![Erneutes Übermitteln von Logik-App-Ausführungen](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. Zum Filtern dieser Ergebnisse können Sie sowohl die clientseitige als auch die serverseitige Filterung durchführen.
 
-   * **Clientseitiger Filter:**  Wählen Sie für jede Spalte die gewünschten Filter aus. Beispiel:
+   * **Clientseitiger Filter**: Wählen Sie für jede Spalte die gewünschten Filter aus. Beispiel:
 
      ![Beispiel für Spaltenfilter](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * **Serverseitiger Filter:**  Verwenden Sie das Steuerelement für die Bereichsauswahl oben auf der Seite, um ein bestimmtes Zeitfenster auszuwählen oder die Anzahl von angezeigten Ausführungen zu begrenzen. Standardmäßig werden nur jeweils 1.000 Datensätze angezeigt.
+   * **Serverseitiger Filter**: Verwenden Sie das Steuerelement für die Bereichsauswahl oben auf der Seite, um ein bestimmtes Zeitfenster auszuwählen oder die Anzahl von angezeigten Ausführungen zu begrenzen. Standardmäßig werden nur jeweils 1.000 Datensätze angezeigt.
    
      ![Ändern des Zeitfensters](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  
@@ -149,9 +151,9 @@ Nachdem Ihre Logik-App ausgeführt wird, können Sie den Status und die Anzahl d
 
      ![Anzeigen von Aktionen und Details für eine Logik-App-Ausführung](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
-     Auf der Azure Log Analytics-Seite können Sie Abfragen aktualisieren und die Ergebnisse aus der Tabelle anzeigen. Für diese Abfrage wird die [Kusto-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference) verwendet. Sie können diese Sprache bearbeiten, wenn Sie unterschiedliche Ergebnisse anzeigen möchten. 
+     Auf der Log Analytics-Seite können Sie Abfragen aktualisieren und die Ergebnisse aus der Tabelle anzeigen. Für diese Abfrage wird die [Kusto-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference) verwendet. Sie können diese Sprache bearbeiten, wenn Sie unterschiedliche Ergebnisse anzeigen möchten. 
 
-     ![Azure Log Analytics – Abfrageansicht](media/logic-apps-monitor-your-logic-apps-oms/query.png)
+     ![Log Analytics – Abfrageansicht](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

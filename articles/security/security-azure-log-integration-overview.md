@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 7b06d7bb85e7445f50956a003e46542062b09165
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118274"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245045"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Einführung in Azure Log Integration
 
@@ -61,7 +61,7 @@ Wenn keine anderen Optionen zur Verfügung stehen, kann Azure Log Integration in
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | Migration zum [Azure Monitor-Add-On für Splunk](https://splunkbase.splunk.com/app/3534/) starten | [Splunk-Connector](https://splunkbase.splunk.com/app/3534/) verwenden |
 |**QRadar** | Zum QRadar-Connector, der im letzten Abschnitt von [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) dokumentiert ist, migrieren oder diesen verwenden. | Den QRadar-Connector, der im letzten Abschnitt von [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) dokumentiert ist, verwenden. |
-|**ArcSight** | Weiterhin den Azure Log Integrator verwenden, bis ein Connector verfügbar ist, und dann zur connectorbasierten Lösung migrieren.  | Verwendung von Azure Log Analytics als Alternative in Betracht ziehen. Führen Sie das Onboarding für Azure Log Integration nur aus, wenn Sie bereit sind, die Migration durchzuführen, nachdem der Connector verfügbar ist. |
+|**ArcSight** | Weiterhin den Azure Log Integrator verwenden, bis ein Connector verfügbar ist, und dann zur connectorbasierten Lösung migrieren.  | Ziehen Sie die Verwendung von Azure Monitor-Protokollen als Alternative in Betracht. Führen Sie das Onboarding für Azure Log Integration nur aus, wenn Sie bereit sind, die Migration durchzuführen, nachdem der Connector verfügbar ist. |
 
 > [!NOTE]
 > Obwohl Azure Log Integration eine kostenlose Lösung ist, entstehen durch Speichern der Protokolldateiinformationen entsprechende Azure-Speicherkosten.

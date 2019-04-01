@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: eaaad0d7351c398c9b2cc013f40d62461a2dd3f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269058"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845529"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -36,7 +36,7 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 - Alle Geräte, die keine Windows 10- oder Windows Server 2016-Geräte sind.
 - Alle Geräte ohne Windows. 
 
---- 
+---
 
 **F: Wie ermittle ich den Geräteregistrierungsstatus des Clients?**
 
@@ -86,6 +86,12 @@ Gehen Sie für kompatible Windows-BS-Versionen, die in die lokale Active Directo
 -   Für kompatible Windows-Versionen, die über die automatische Registrierung in die lokale Active Directory-Domäne eingebunden sind, wird ein neuer Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer erstellt, der sich beim Gerät anmeldet. 
 
 -   Ein in Azure AD eingebundener Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
+
+---
+
+**F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?**
+
+**A:** Nein, derzeit unterstützt die Geräteregistrierung unter Windows 10 für alle Gerätezustände („Azure AD-Hybrideinbindung“, „Azure AD-Bindung“ und „Bei Azure AD registriert“) keine TPMs im FIPS-Modus. Für eine erfolgreiche Anmeldung oder Registrierung bei Azure AD muss der FIPS-Modus für die TPMs auf diesen Geräten deaktiviert werden.
 
 ---
 
@@ -231,7 +237,13 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 **F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?**
 
-**A:**  Nein. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Wenn ein Kennwort außerhalb des Unternehmensnetzwerks (z.B. mithilfe von Azure AD SSPR) geändert wird, muss der Benutzer Sichtverbindung zum Domänencontroller haben, bevor er sich mit dem neuen Kennwort am Gerät anmelden kann. Andernfalls kann er sich nur mit seinem alten Kennwort anmelden, das von Azure AD für ungültig erklärt wird und das einmalige Anmelden verhindert. Dieses Problem tritt jedoch nicht auf, wenn Sie Windows Hello for Business verwenden. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, selbst wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
+**A:** In der Regel nicht, außer wenn das Kennwort des Benutzers geändert wird. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist selbst nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, auch wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
+
+---
+
+**F: Was passiert, wenn ein Benutzer sein Kennwort ändert und versucht, sich bei seinem in Azure AD eingebundenen Windows 10-Hybridgerät außerhalb des Unternehmensnetzwerks anzumelden?**
+
+**A:** Wenn ein Kennwort außerhalb des Unternehmensnetzwerks geändert wird (z.B. durch die Verwendung von Azure AD SSPR), schlägt die Benutzeranmeldung mit dem neuen Kennwort fehl. Für in Azure AD eingebundene Hybridgeräte ist das lokale Active Directory die primäre Autorität. Wenn ein Gerät sich nicht in Sichtweite des Domänencontrollers befindet, kann es das neue Kennwort nicht validieren. Daher muss der Benutzer eine Verbindung mit dem Domänencontroller herstellen (entweder über VPN oder im Unternehmensnetzwerk), bevor er sich mit seinem neuen Kennwort bei dem Gerät anmelden kann. Andernfalls kann er sich aufgrund der Fähigkeit der zwischengespeicherten Anmeldung in Windows nur mit seinem alten Kennwort anmelden. Das alte Kennwort wird jedoch von Azure AD bei Tokenanforderungen ungültig gemacht. Auf diese Weise wird die SSO-Anmeldung verhindert und alle gerätebasierten Richtlinien für bedingten Zugriff schlagen fehl. Dieses Problem tritt nicht auf, wenn Sie Windows Hello for Business verwenden. 
 
 ---
 

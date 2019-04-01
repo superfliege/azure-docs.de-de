@@ -5,23 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/30/2019
-ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/26/2019
+ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493047"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888466"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
-> [!IMPORTANT]
-> Das Feature für Lesereplikate befindet sich in der Public Preview-Phase.
-
 Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for MySQL-Server (Masterserver) auf bis zu fünf schreibgeschützten Servern (Replikate) in derselben Azure-Region replizieren. Schreibgeschützte Replikate werden mit der nativen, auf der Position der Binärprotokolldatei (binlog) basierenden Replikationstechnologie der MySQL-Engine asynchron aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
-Bei Replikaten, die im Azure Database for MySQL-Dienst erstellt werden, handelt es sich um neue Server, die genauso verwaltet werden können wie normale, eigenständige MySQL-Server. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen und der bereitgestellte Speicher in GB/Monat in Rechnung gestellt. 
-
+Bei Replikaten, die im Azure Database for MySQL-Dienst erstellt werden, handelt es sich um neue Server, die genauso verwaltet werden können wie normale, eigenständige MySQL-Server. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen und der bereitgestellte Speicher in GB/Monat in Rechnung gestellt.
 
 Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie in der [Dokumentation zur MySQL-Replikation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
@@ -39,7 +35,7 @@ Lesereplikate sind zurzeit nur in den Tarifen „Universell“ und „Arbeitsspe
 
 ### <a name="master-server-restart"></a>Masterserverneustart
 
-Wenn Sie in dieser Vorschauversion ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Bitte beachten Sie dies und führen Sie diese Operationen nicht zu Spitzenzeiten durch.
+Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Bitte beachten Sie dies und führen Sie diese Operationen nicht zu Spitzenzeiten durch.
 
 ### <a name="stopping-replication"></a>Beenden der Replikation
 

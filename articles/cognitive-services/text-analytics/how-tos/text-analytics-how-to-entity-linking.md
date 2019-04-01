@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242747"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258070"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse (Vorschauversion)
 
@@ -62,8 +62,9 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | DateTime      | Duration      | „1 Minute und 45 Sekunden“   | 
 | DateTime      | Set           | „jeden Dienstag“     | 
 | DateTime      | TimeZone      |    | 
-| URL           | N/V\*         | "http://www.bing.com"    |
+| URL           | N/V\*         | "https:\//www.bing.com"    |
 | E-Mail         | N/V\*         | "support@contoso.com" |
+
 \* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.
 
 
@@ -74,7 +75,7 @@ Sie benötigen JSON-Dokumente im folgenden Format: ID, Text, Sprache.
 
 Informationen zu den derzeit unterstützten Sprachen finden Sie in [dieser Liste](../text-analytics-supported-languages.md).
 
-Die Dokumentgröße darf 5.000 Zeichen pro Dokument nicht übersteigen, und pro Sammlung sind bis zu 1.000 Elemente (IDs) zulässig. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel enthält eine Darstellung von Inhalten, die Sie an die Entitätsverknüpfung übermitteln können.
+Die Dokumentgröße darf 5.120 Zeichen pro Dokument nicht übersteigen, und pro Sammlung sind bis zu 1.000 Elemente (IDs) zulässig. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel enthält eine Darstellung von Inhalten, die Sie an die Entitätsverknüpfung übermitteln können.
 
 ```
 {"documents": [{"id": "1",

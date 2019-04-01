@@ -10,18 +10,20 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543855"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112312"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
 Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/quickstart-create-first-logic-app-workflow.md), können Sie dafür den Ausführungsverlauf, den Triggerverlauf, den Status und die Leistung überprüfen. Für die Echtzeit-Ereignisüberwachung und die Durchführung eines umfassenderen Debuggens können Sie die [Diagnoseprotokollierung](#azure-diagnostics) für Ihre Logik-App einrichten. Auf diese Weise können Sie [nach Ereignissen suchen und diese anzeigen](#find-events), z.B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse. Sie können diese [Diagnosedaten auch mit anderen Diensten verwenden](#extend-diagnostic-data), z.B. Azure Storage und Azure Event Hubs. 
 
 Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfällen oder anderen möglichen Problemen zu erhalten. Beispielsweise können Sie eine Warnung erstellen, mit der erkannt wird, „wenn in einer Stunde mehr als fünf Ausführungen fehlschlagen“. Sie können die Überwachung, Nachverfolgung und Protokollierung auch programmgesteuert einrichten, indem Sie [Einstellungen und Eigenschaften für Azure-Diagnoseereignisse](#diagnostic-event-properties) verwenden.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>Anzeigen des Ausführungs- und Triggerverlaufs für Ihre Logik-App
 
@@ -72,13 +74,13 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Aktivieren der Diagnoseprotokollierung für Ihre Logik-App
 
-Wenn Sie ein umfangreicheres Debuggen mit Runtimedetails und -ereignissen durchführen möchten, können Sie die Diagnoseprotokollierung mit [Azure Log Analytics](../log-analytics/log-analytics-overview.md) einrichten. Log Analytics ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. 
+Wenn Sie ein umfangreicheres Debuggen mit Runtimedetails und -ereignissen durchführen möchten, können Sie die Diagnoseprotokollierung mit [Azure Monitor-Protokollen](../log-analytics/log-analytics-overview.md) einrichten. Azure Monitor ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. 
 
 Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginnen. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Logik-App, und wählen Sie sie aus. 
 
-2. Wählen Sie im Menü des Blatts „Logik-App“ unter **Monitoring** (Überwachung) die Option **Diagnose** > **Diagnoseeinstellungen**.
+2. Wählen Sie im Menü des Blatts „Logik-App“ unter **Überwachung** die Option **Diagnose** > **Diagnoseeinstellungen**.
 
    ![Navigation zu „Monitoring“ (Überwachung) > „Diagnose“ > „Diagnoseeinstellungen“](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -91,8 +93,8 @@ Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginn
    1. Wählen Sie **An Log Analytics senden** aus. 
    2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
    3. Wählen Sie unter **OMS-Arbeitsbereiche** den Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
-   > [!NOTE]
-   > OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
+      > [!NOTE]
+      > OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
    4. Wählen Sie unter **Protokoll** die Kategorie **WorkflowRuntime** aus.
    5. Wählen Sie das Metrikintervall aus.
    6. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
@@ -125,7 +127,7 @@ Führen Sie die hier angegebenen Schritte aus, um nach Ereignissen in Ihrer Logi
 
    ![Eingeben der Suchzeichenfolge](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Informieren Sie sich über das [Suchen nach Daten in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
 
 5. Wählen Sie auf der Ergebnisseite in der Leiste auf der linken Seite den Zeitrahmen für die Anzeige aus.
 Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters zu verfeinern.
@@ -153,7 +155,7 @@ Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Erweitern der Nutzung von Diagnosedaten mit anderen Diensten
 
-In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
+In Verbindung mit Azure Monitor-Protokollen können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
 
 * [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -176,7 +178,7 @@ Stellen Sie basierend auf den einzurichtenden Optionen sicher, dass Sie zuerst [
 
 Richten Sie [Warnungen in Azure](../azure-monitor/platform/alerts-overview.md) ein, um bestimmte Metriken oder überschrittene Schwellenwerte für Ihre Logik-App zu überwachen. Informieren Sie sich über [Metriken in Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
-Führen Sie die hier angegebenen Schritte aus, um Warnungen ohne [Azure Log Analytics](../log-analytics/log-analytics-overview.md) einzurichten. [Richten Sie auch Log Analytics ein](#azure-diagnostics), wenn Sie erweiterte Kriterien und Aktionen für Warnungen verwenden möchten.
+Führen Sie die hier angegebenen Schritte aus, um Warnungen ohne [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) einzurichten. [Richten Sie auch Azure Monitor-Protokolle ein](#azure-diagnostics), wenn Sie erweiterte Kriterien und Aktionen für Warnungen verwenden möchten.
 
 1. Klicken Sie im Menü des Blatts „Logik-App“ unter **Monitoring** (Überwachung) auf **Diagnose** > **Warnungsregeln** > **Warnung hinzufügen**. Dies ist hier dargestellt:
 
