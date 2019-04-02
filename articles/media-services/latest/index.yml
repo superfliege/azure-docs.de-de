@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9408134fa020a143a1b32d5b3600f6e19de7008e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 3d20316903efde516ec99b0a548449297bdf1419
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663644"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805107"
 documentType: LandingData
 title: Dokumentation zu Azure Media Services v3
 metadata:
@@ -27,10 +27,10 @@ sections:
   items:
   - type: list
     style: cards
-    className: cardsD
+    className: cardImageOuter
     items:
     - title: Informationen zu Konzepten
-      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Clouduploads und Cloudspeicherung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Codieren</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Medienanalysen</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Verpackung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Schutz</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Livestreaming</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Beteiligte Kunden</a></p>
+      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Clouduploads und Cloudspeicherung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Codieren</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Überwachung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Medienanalysen</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Verpackung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Schutz</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Livestreaming</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Beteiligte Kunden</a></p>
     - title: Entwickeln mit v3-API
       html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Einstieg in die Entwicklung mit SDKs</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Entwickeln mit REST</a></p>
 - title: Fünfminütige Schnellstarts
