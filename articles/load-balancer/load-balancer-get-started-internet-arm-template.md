@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5f6a0ce0c9d863b5ab4922e7228a873ed5398600
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: af72eb0214f46c1e001f9e93934d38cb934503e4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033280"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592484"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Erstellen eines öffentlichen Lastenausgleichs mit einer Vorlage
 
@@ -28,7 +28,7 @@ ms.locfileid: "54033280"
 > * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Vorlage](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -42,11 +42,11 @@ In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parame
 
 Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorlage die unten beschriebenen Schritte aus.
 
-1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
-2. Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um eine Ressourcengruppe mit der Vorlage zu erstellen.
+1. Wenn Sie Azure PowerShell noch nie verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+2. Führen Sie das Cmdlet **New-AzResourceGroupDeployment** aus, um eine Ressourcengruppe mit der Vorlage zu erstellen.
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
+    New-AzResourceGroupDeployment -Name TestRG -Location uswest `
         -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
         -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```
@@ -81,4 +81,4 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-Informationen zur JSON-Syntax und den Eigenschaften eines Load Balancers in einer Vorlage finden Sie unter [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Informationen zur JSON-Syntax und zu den Eigenschaften eines Lastenausgleichs in einer Vorlage finden Sie unter [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0bd19492c844e217dc520ae0c189ca467bb7ac0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700076"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011081"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Best Practices für die Sicherung und Verwaltung von zu Azure migrierten Workloads
 
@@ -267,7 +267,7 @@ Häufig bietet die Verwendung nur eines Ressourcengruppenamens für Ressourcen n
 
 - [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) über Markierungen und Tageinschränkungen.
 - [Sehen Sie sich](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#powershell) PowerShell- und CLI-Beispiele für das Einrichten von Tags und das Anwenden von Tags von einer Ressourcengruppe auf die zugehörigen Ressourcen an.
-- [Lesen](http://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/) Sie Best Practices zum Markieren in Azure.
+- [Lesen](https://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/) Sie Best Practices zum Markieren in Azure.
 
 
 ## <a name="best-practice-implement-blueprints"></a>Best Practice: Implementieren von Blaupausen
@@ -588,7 +588,7 @@ Azure-Ressourcen generieren recht viele Protokollierungsmetrik- und Telemetrieda
 
 - Standardmäßig ist bei den meisten Ressourcentypen die Diagnoseprotokollierung nicht aktiviert.
 - Indem Sie die Diagnoseprotokollierung für Ihre Ressourcen aktivieren, können Sie Protokollierungsdaten abfragen und basierend darauf Warnungen und Playbooks erstellen.
-- Wenn Sie die Diagnoseprotokollierung aktivieren, verfügt jede Ressource über einen bestimmten Satz von Kategorien. Sie können eine oder mehrere Protokollierungskategorien sowie einen Speicherort für die Protokolldaten auswählen. Protokolle können an Event Hub, Log Analytics oder ein Speicherkonto gesendet werden. 
+- Wenn Sie die Diagnoseprotokollierung aktivieren, verfügt jede Ressource über einen bestimmten Satz von Kategorien. Sie können eine oder mehrere Protokollierungskategorien sowie einen Speicherort für die Protokolldaten auswählen. Protokolle können an Event Hub, Azure Monitor-Protokolle oder ein Speicherkonto gesendet werden. 
 
 
 ![Diagnoseprotokollierung](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -679,7 +679,7 @@ Wie bei jedem Produktionssystem kann sich jede Art von Änderung auf Ihre Umgebu
 Azure bietet in Azure Automation eine Lösung für die Änderungsnachverfolgung:
 
 - Die Lösung verfolgt Änderungen an Windows- und Linux-Software und -Dateien, an Windows-Registrierungsschlüsseln, an Windows-Diensten und an Linux-Daemons nach.
-- Änderungen an überwachten Servern werden zur Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet.
+- Änderungen an überwachten Servern werden zur Verarbeitung an den Azure Monitor-Dienst in der Cloud gesendet.
 - Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
 - Im Dashboard der Änderungsnachverfolgung können Sie ganz einfach die Änderungen erkennen, die an Ihrer Serverinfrastruktur vorgenommen wurden.
 

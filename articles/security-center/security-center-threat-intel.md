@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 07592c6852a7fce057381cb9086baedc9d2b1bd6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111746"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57239826"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen
 In diesem Artikel erfahren Sie, wie Sie sicherheitsbezogene Probleme mithilfe der Karte mit Sicherheitswarnungen und der auf Sicherheitsereignissen basierenden Informationen zu Bedrohungen in Azure Security Center lösen.
@@ -62,7 +62,7 @@ Um die Karte mit Informationen zu Bedrohungen basierend auf Rohereignissen für 
 4. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
 
    > [!NOTE]
-   > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“.
+   > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“.
    >
 5. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, priorisieren Sie die Untersuchung anhand der Spalte **Schädliche IP**. Sie enthält die aktuelle Anzahl schädlicher IP-Adressen in diesem Arbeitsbereich. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
 

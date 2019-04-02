@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814825"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194077"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -70,7 +70,7 @@ SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PA
 
 Wenn [Load Balancer Basic mehrere öffentliche IP-Adressen zugeordnet sind](load-balancer-multivip-overview.md), sind diese öffentlichen IP-Adressen Kandidaten für ausgehende Datenflüsse, und eine davon wird nach dem Zufallsprinzip ausgewählt.  
 
-Zum Überwachen der Integrität ausgehender Verbindungen mit Load Balancer Basic können Sie [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle](load-balancer-monitor-log.md#alert-event-log) verwenden.
+Zum Überwachen der Integrität ausgehender Verbindungen mit Load Balancer Basic können Sie [Azure Monitor-Protokolle für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle](load-balancer-monitor-log.md#alert-event-log) verwenden.
 
 ### <a name="defaultsnat"></a>Szenario 3: Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene
 

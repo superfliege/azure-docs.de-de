@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 67fe5da86b4736daa43a85a7a1a077c329732b60
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 36d0a976b73fe5b6f89755ce790b919468744179
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091646"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Dienstupdates in Azure Site Recovery
 Als Organisation müssen Sie ermitteln, wie Sie Ihre Daten schützen und die Ausführung von Apps/Workloads sicherstellen können, wenn es zu geplanten und ungeplanten Ausfällen kommt. Azure Site Recovery trägt zu Geschäftskontinuität und Notfallwiederherstellung bei, indem Ihre Apps auf VMs weiter ausgeführt werden und physische Server verfügbar bleiben, wenn ein Standort ausfällt. Site Recovery repliziert Workloads, die auf VMs und physischen Servern ausgeführt werden, damit sie an einem sekundären Ort verfügbar bleiben, wenn die Verfügbarkeit des primären Standorts nicht mehr gegeben ist. Workloads werden am primären Standort wiederhergestellt, wenn er wieder betriebsbereit ist.
@@ -108,7 +108,7 @@ Bevor Sie mit Updates fortfahren, informieren Sie sich anhand des [Site Recovery
 Nach jedem Upgrade des Mobilitäts-Agents wird ein Neustart empfohlen, um sicherzustellen, dass alle aktuellen Änderungen auf dem Quellcomputer geladen werden. Dies ist jedoch **nicht obligatorisch**. Wenn der Abstand zwischen der Agent-Version während des letzten Neustarts und der aktuellen Version größer als 4 ist, ist ein Neustart obligatorisch. Eine ausführliche Erläuterung finden Sie in der folgenden Tabelle.
 
 |**Agent-Version während des letzten Neustarts** | **Upgrade auf** | **Neustart obligatorisch?**|
-|---------|---------|---------|--------|
+|---------|---------|---------|
 |9.16 |  9.18 | Nicht obligatorisch|
 |9.16 | 9.19 | Nicht obligatorisch|
 | 9.16 | 9.20 | Nicht obligatorisch
@@ -124,7 +124,7 @@ Nach jedem Upgrade des Mobilitäts-Agents wird ein Neustart empfohlen, um sicher
 |[Updaterollup 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[Updaterollup 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 |[Updaterollup 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0
-|[Updaterollup 28 ](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)     |  5.1.3600 .0      |    9.19.4973.1     |  5.1.3600.0       |2.0.9131.0
+|[Updaterollup 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)     |  5.1.3600 .0      |    9.19.4973.1     |  5.1.3600.0       |2.0.9131.0
 | [Updaterollup 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery)       |   5.1.3550.0      |    9.18.4946.1     | 5.1.3550.0         |2.0.9125.0
 
 

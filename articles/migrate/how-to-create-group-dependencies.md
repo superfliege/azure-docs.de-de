@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a3c0e94e213b861714bfc5f38e20e4d9a1de3a19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107915"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -21,9 +21,10 @@ Dieser Artikel beschreibt, wie Sie eine Gruppe verfeinern, indem Sie die Abhäng
 > [!NOTE]
 > Gruppen, für die Sie Gruppenabhängigkeiten visualisieren möchten, sollten höchstens zehn Computer enthalten. Wenn mehr als zehn Computer in der Gruppe vorhanden sind, empfiehlt es sich, sie in kleinere Gruppen aufzuteilen, um die Visualisierung der Abhängigkeiten nutzen zu können.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prepare-for-dependency-visualization"></a>Vorbereiten für die Visualisierung der Abhängigkeiten
-Azure Migrate nutzt für die Visualisierung von Computerabhängigkeiten die Dienstzuordnungslösung in Log Analytics.
+Azure Migrate nutzt für die Visualisierung von Computerabhängigkeiten die Dienstzuordnungslösung in Azure Monitor-Protokollen.
 
 > [!NOTE]
 > Die Funktion zur Visualisierung von Abhängigkeiten ist in Azure Government nicht verfügbar.
@@ -93,18 +94,18 @@ Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können
 1. Klicken Sie im Azure Migrate-Projekt unter **Verwalten** auf  **Gruppen**, und wählen Sie eine Gruppe aus.
 2. Klicken Sie auf der Seite der Gruppe auf  **Abhängigkeiten anzeigen**, um die Übersicht mit den Gruppenabhängigkeiten zu öffnen.
 3. In der Abhängigkeitsübersicht für die Gruppe werden die folgenden Informationen angezeigt:
-    - Eingehende (Clients) und ausgehende TCP-Verbindungen (Server) von/zu allen Computern in der Gruppe
-        - Die abhängigen Computer, auf denen keine MMA- und Abhängigkeits-Agents installiert sind, gruppiert nach Portnummern
-        - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, als separate Felder
-    - Innerhalb des Computers ausgeführte Prozesse können Sie einblenden, indem Sie das Feld für den jeweiligen Computer erweitern.
-    - Eigenschaften wie der vollqualifizierte Domänenname, das Betriebssystem, die MAC-Adresse usw. für jeden Computer können Sie anzeigen, indem Sie auf das Feld für den jeweiligen Computer klicken.
+   - Eingehende (Clients) und ausgehende TCP-Verbindungen (Server) von/zu allen Computern in der Gruppe
+       - Die abhängigen Computer, auf denen keine MMA- und Abhängigkeits-Agents installiert sind, gruppiert nach Portnummern
+       - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, als separate Felder
+   - Innerhalb des Computers ausgeführte Prozesse können Sie einblenden, indem Sie das Feld für den jeweiligen Computer erweitern.
+   - Eigenschaften wie der vollqualifizierte Domänenname, das Betriebssystem, die MAC-Adresse usw. für jeden Computer können Sie anzeigen, indem Sie auf das Feld für den jeweiligen Computer klicken.
 
      ![Anzeigen der Gruppenabhängigkeiten](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Klicken Sie auf den Zeitraum, und ändern Sie ihn, um ausführlichere Informationen zu den Abhängigkeiten zu erhalten. Standardmäßig ist ein Bereich von einer Stunde ausgewählt. Sie können den Zeitraum ändern oder das Start- und Enddatum und die Dauer angeben.
 
-    > [!NOTE]
-      Aktuell unterstützt die Benutzeroberfläche der Abhängigkeitsvisualisierung keine Auswahl eines Zeitraums von mehr als einer Stunde. Verwenden Sie Log Analytics zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) über einen längeren Zeitraum.
+   > [!NOTE]
+   >    Aktuell unterstützt die Benutzeroberfläche der Abhängigkeitsvisualisierung keine Auswahl eines Zeitraums von mehr als einer Stunde. Verwenden Sie Azure Monitor-Protokolle zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) über einen längeren Zeitraum.
 
 4. Überprüfen Sie die abhängigen Computer und die auf jedem Computer ausgeführten Prozesse, und identifizieren Sie die Computer, die der Gruppe hinzugefügt oder aus dieser entfernt werden sollen.
 5. Klicken Sie bei gedrückter STRG-Taste, um Computer in der Übersicht auszuwählen, die der Gruppe hinzugefügt oder daraus entfernt werden sollen.
@@ -117,19 +118,19 @@ Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können
 
 Wenn Sie die Abhängigkeiten eines bestimmten Computers überprüfen möchten, der in der Übersicht mit den Gruppenabhängigkeiten angezeigt wird, können Sie eine [Übersicht mit den Computerabhängigkeiten einrichten](how-to-create-group-machine-dependencies.md).
 
-## <a name="query-dependency-data-from-log-analytics"></a>Abfragen von Abhängigkeitsdaten aus Log Analytics
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>Abfragen von Abhängigkeitsdaten aus Azure Monitor-Protokollen
 
-Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) zu den Dienstzuordnungs-Datentabellen zum Abfragen in Log Analytics. 
+Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) zu den Dienstzuordnungs-Datentabellen zum Abfragen in Azure Monitor-Protokollen. 
 
-So führen Sie die Log Analytics-Abfragen aus
+So führen Sie die Kusto-Abfragen aus:
 
 1. Navigieren Sie nach der Installation des Agents zum Portal, und klicken Sie auf **Übersicht**.
 2. Wechseln Sie in der 0**Übersicht** zum Abschnitt **Essentials** des Projekts, und klicken Sie auf den Arbeitsbereichsnamen, der neben dem **OMS-Arbeitsbereich** steht.
 3. Klicken Sie auf der Log Analytics-Arbeitsbereichsseite auf **Allgemein** > **Protokolle**.
-4. Schreiben Sie Ihre Abfrage, um mit Log Analytics Abhängigkeitsdaten zu sammeln. Beispielabfragen zum Sammeln von Abhängigkeitsdaten finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Schreiben Sie Ihre Abfrage, um mit Azure Monitor-Protokollen Abhängigkeitsdaten zu sammeln. Beispielabfragen zum Sammeln von Abhängigkeitsdaten finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 5. Führen Sie Ihre Abfrage aus, indem Sie auf „Ausführen“ klicken. 
 
-[Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) zum Schreiben von Log Analytics-Abfragen. 
+[Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) zum Schreiben von Kusto-Abfragen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1170266ed0b59c53adce4e44fe3e7a0bc62f394e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888586"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
+
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Web Application**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
@@ -46,7 +47,7 @@ ms.locfileid: "53014856"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | Details | <p>Bei der Authentifizierung wird die Identität einer Entität überprüft – in der Regel anhand von Anmeldeinformationen wie Benutzername und Kennwort. Hierzu stehen mehrere Authentifizierungsprotokolle zur Verfügung. Einige davon sind im Anschluss aufgeführt:</p><ul><li>Clientzertifikate</li><li>Windows-basiert</li><li>Formularbasiert</li><li>Verbund – ADFS</li><li>Verbund – Azure AD</li><li>Verbund – Identity Server</li></ul><p>Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus, um den Quellprozess zu identifizieren.</p>|
 
 ## <a id="handle-failed-authn"></a>Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.
@@ -57,7 +58,7 @@ ms.locfileid: "53014856"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | Details | <p>Anwendungen mit expliziter Benutzerauthentifizierung müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln. Der Authentifizierungsmechanismus muss Folgendes bewirken:</p><ul><li>Er muss den Zugriff auf privilegierte Ressourcen verweigern, wenn die Authentifizierung nicht erfolgreich war.</li><li>Er muss eine generische Fehlermeldung anzeigen, wenn die Authentifizierung nicht erfolgreich war und der Zugriff verweigert wird.</li></ul><p>Überprüfen Sie, ob Folgendes erfüllt ist:</p><ul><li>Privilegierte Ressourcen sind nach nicht erfolgreicher Anmeldung geschützt.</li><li>Bei nicht erfolgreicher Authentifizierung wird eine generische Fehlermeldung angezeigt, und es werden Zugriffsverweigerungsereignisse generiert.</li><li>Konten werden nach einer übermäßigen Anzahl nicht erfolgreicher Versuche deaktiviert.</li><ul>|
 
 ## <a id="step-up-adaptive-authn"></a>Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.
@@ -68,7 +69,7 @@ ms.locfileid: "53014856"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | Details | <p>Vergewissern Sie sich, dass die Anwendung über eine zusätzliche Autorisierung verfügt (etwa Step-up-Authentifizierung oder adaptive Authentifizierung – über die mehrstufige Authentifizierung, beispielsweise mittels OTP-Versand per SMS oder E-Mail, oder durch eine Aufforderung zur erneuten Authentifizierung), damit dem Benutzer eine Aufforderung angezeigt wird, bevor er Zugriff auf sensible Daten erhält. Diese Regel gilt auch für wichtige Änderungen an einem Konto oder an einer Aktion.</p><p>Das bedeutet auch, dass die Anpassung der Authentifizierung so implementiert werden muss, dass die Anwendung eine ordnungsgemäße kontextabhängige Autorisierung erzwingt, um nicht autorisierte Manipulationen (beispielsweise der Parameter) zu verhindern.</p>|
 
 ## <a id="admin-interface-lockdown"></a>Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.
@@ -79,7 +80,7 @@ ms.locfileid: "53014856"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | Details | Die erste Möglichkeit besteht darin, den Zugriff auf die Administratoroberfläche nur über einen bestimmten Quell-IP-Adressbereich zu gewähren. Sollte das nicht möglich sein, empfiehlt es sich, für die Anmeldung bei der Administratoroberfläche eine Step-up-Authentifizierung oder eine adaptive Authentifizierung zu erzwingen. |
 
 ## <a id="forgot-pword-fxn"></a>Implementieren Sie sichere Funktionen für vergessene Kennwörter.
@@ -90,7 +91,7 @@ ms.locfileid: "53014856"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | Details | <p>Vergewissern Sie sich zunächst, dass bei vergessenen Kennwörtern und bei anderen Wiederherstellungspfaden nicht das Kennwort, sondern ein Link mit einem Aktivierungstoken gesendet wird, das nur für einen bestimmten Zeitraum gültig ist. Bei Bedarf kann auch noch eine Softtoken-basierte Authentifizierung (beispielsweise per SMS-Token oder nativer mobiler Anwendung) erforderlich gemacht werden, bevor der Link übermittelt wird. Zweitens: Achten Sie darauf, dass das Benutzerkonto nicht während des Bezugs eines neuen Kennworts gesperrt wird.</p><p>Dies kann zu einem Denial-of-Service-Angriff führen, wenn ein Angreifer beschließt, die Benutzer mit einem automatisierten Angriff absichtlich auszusperren. Drittens: Bei der Initiierung der Anforderung eines neuen Kennworts muss eine generische Meldung angezeigt werden, um die Enumeration von Benutzernamen zu verhindern. Viertens: Unterbinden Sie immer die Verwendung alter Kennwörter, und implementieren Sie eine Richtlinie für sichere Kennwörter.</p> |
 
 ## <a id="pword-account-policy"></a>Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.
@@ -101,7 +102,7 @@ ms.locfileid: "53014856"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | Details | <p>Implementieren Sie eine Kennwort- und eine Kontorichtlinie, die die Regeln und bewährten Methoden der Organisation erfüllen.</p><p>Schützen vor Brute-Force- und wörterbuchbasiertem Raten: Es muss eine Richtlinie für sichere Kennwörter implementiert werden, um sicherzustellen, dass Benutzer komplexe Kennwörter erstellen (beispielsweise eine Mindestlänge von 12 Zeichen sowie eine Kombination aus alphanumerischen und Sonderzeichen).</p><p>Kontosperrungsrichtlinien können wie folgt implementiert werden:</p><ul><li>**Gemäßigte Sperrung:** Eine gute Option, um Ihre Benutzer vor Brute-Force-Angriffen zu schützen. Falls der Benutzer beispielsweise dreimal ein falsches Kennwort eingibt, kann die Anwendung das Konto eine Minute lang sperren, um die Brute-Force-Ermittlung des Kennworts zu verlangsamen und somit für den Angreifer unattraktiver zu machen. Wenn Sie in diesem Beispiel eine harte Sperrung implementieren, bewirkt dies einen Denial-of-Service-Angriff, da Konten dauerhaft gesperrt werden. Alternativ kann die Anwendung ein Einmalkennwort (One Time Password, OTP) generieren und out-of-band (etwa per E-Mail oder SMS) an den Benutzer senden. Eine weitere Möglichkeit ist die Implementierung eines CAPTCHAs nach Erreichen einer bestimmten Anzahl nicht erfolgreicher Versuche.</li><li>**Rigorose Sperrung:** Diese Art von Sperrung empfiehlt sich, wenn ein Benutzerangriff auf Ihre Anwendung festgestellt wird und das Konto des Angreifers dauerhaft gesperrt werden soll, bis ein Sicherheitsteam Gelegenheit hatte, den Vorfall zu untersuchen. Danach können Sie dem Benutzer wieder Zugriff auf sein Konto gewähren oder rechtliche Schritte gegen ihn einleiten. Bei diesem Ansatz kann der Angreifer nicht weiter in Ihre Anwendung und Infrastruktur vordringen.</li></ul><p>Vergewissern Sie sich zur Abwehr von Angriffen auf Standardkonten und vorhersehbare Konten, dass alle Schlüssel und Kennwörter ersetzbar sind und nach der Installation generiert oder ersetzt werden.</p><p>Falls die Anwendung Kennwörter automatisch generieren muss, stellen Sie sicher, dass es sich um Zufallskennwörter mit hoher Entropie handelt.</p>|
 
 ## <a id="controls-username-enum"></a>Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.
@@ -338,7 +339,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Authentication and Authorization in ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) (Authentifizierung und Autorisierung in der ASP.NET-Web-API), [External Authentication Services with ASP.NET Web API (C#)](http://www.asp.net/web-api/overview/security/external-authentication-services) (Externe Authentifizierungsdienste mit ASP.NET-Web-API (C#) |
+| **Referenzen**              | [Authentication and Authorization in ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) (Authentifizierung und Autorisierung in der ASP.NET-Web-API), [External Authentication Services with ASP.NET Web API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) (Externe Authentifizierungsdienste mit ASP.NET-Web-API (C#) |
 | **Schritte** | <p>Bei der Authentifizierung wird die Identität einer Entität überprüft – in der Regel anhand von Anmeldeinformationen wie Benutzername und Kennwort. Hierzu stehen mehrere Authentifizierungsprotokolle zur Verfügung. Einige davon sind im Anschluss aufgeführt:</p><ul><li>Clientzertifikate</li><li>Windows-basiert</li><li>Formularbasiert</li><li>Verbund – ADFS</li><li>Verbund – Azure AD</li><li>Verbund – Identity Server</li></ul><p>Unter den Links im Abschnitt „Referenzen“ finden Sie detaillierte Informationen zur Implementierung der einzelnen Authentifizierungsschemas zum Schutz einer Web-API.</p>|
 
 ## <a id="authn-aad"></a>Verwenden Sie von Azure Active Directory unterstützte Standardauthentifizierungsszenarien.
@@ -475,7 +476,7 @@ await deviceClient.SendEventAsync(message);
 ### <a name="example"></a>Beispiel
 **Node.JS: Authentifizierung**
 #### <a name="symmetric-key"></a>Symmetrischer Schlüssel
-* Erstellen Sie einen IoT-Hub unter Azure.
+* Erstellen eines IoT-Hubs unter Azure
 * Erstellen Sie einen Eintrag in der Geräteidentitätsregistrierung.
     ```javascript
     var device = new iothub.Device(null);
@@ -489,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-#### <a name="sas-token"></a>SAS-Token
+  #### <a name="sas-token"></a>SAS-Token
 * Wird bei Verwendung eines symmetrischen Schlüssels intern generiert, kann aber auch explizit generiert und verwendet werden.
 * Definieren Sie ein Protokoll: `var Http = require('azure-iot-device-http').Http;`
 * Erstellen Sie ein SAS-Token:
@@ -506,7 +507,7 @@ await deviceClient.SendEventAsync(message);
     var base64UriEncoded = encodeURIComponent(base64signature);
     // construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "%2fdevices%2f"+deviceName+"&sig="
-    + base64UriEncoded + "&se=" + expires;
+  + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
@@ -514,7 +515,7 @@ await deviceClient.SendEventAsync(message);
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
-#### <a name="certificates"></a>Zertifikate
+  #### <a name="certificates"></a>Zertifikate
 * Generieren Sie ein selbst signiertes X.509-Zertifikat. Verwenden Sie hierzu ein Tool wie OpenSSL, um CERT- und KEY-Dateien zu erstellen und das Zertifikat und den Schlüssel zu speichern.
 * Stellen Sie ein Gerät bereit, das eine sichere Verbindung mit Zertifikaten akzeptiert.
     ```javascript

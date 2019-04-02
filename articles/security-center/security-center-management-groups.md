@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 76239f80076cbe0f86d6e091a29b008a5a5d06c1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871061"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
@@ -38,7 +38,7 @@ Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Or
 Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governancerichtlinien auf die Verwaltungsgruppen anwenden. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Für das Security Center-Onboarding sind Verwaltungsgruppen zwar nicht erforderlich, aber es wird dringend empfohlen, mindestens eine Verwaltungsgruppe zu erstellen, damit die Stammverwaltungsgruppe erstellt wird. Nachdem die Gruppe erstellt wurde, werden alle Abonnements unter Ihrem Azure AD-Mandanten damit verknüpft. Eine Anleitung für PowerShell und weitere Informationen finden Sie unter [Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen](../azure-resource-manager/management-groups-create.md).
 
  
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
 3. Klicken Sie auf der Hauptseite auf **New Management group** (Neue Verwaltungsgruppe). 
 
@@ -51,7 +51,7 @@ Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governanceri
 5.  Wählen Sie **Speichern** aus.
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Anzeigen von Verwaltungsgruppen im Azure-Portal
-1. Melden Sie sich am [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie zum Anzeigen von Verwaltungsgruppen im Hauptmenü von Azure die Option **Alle Dienste**.
 3. Wählen Sie unter **Allgemein** die Option **Verwaltungsgruppen**.
 
@@ -77,7 +77,7 @@ Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff au
 
    - Wenn Sie den Schalter auf „Ja“ festlegen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Dieser Schalter ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
 
-  - Wenn Sie den Schalter auf „Nein“ festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
+   - Wenn Sie den Schalter auf „Nein“ festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
 4. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
@@ -108,15 +108,15 @@ Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministrato
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>Weisen Sie Benutzern RBAC-Rollen mit PowerShell zu: 
-1. Installieren Sie [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps).
 2. Führen Sie die folgenden Befehle aus: 
 
     ```azurepowershell
-    # Install Management Groups Powershell module
-    Install-Module AzureRM.Resources
-    
     # Login to Azure as a Global Administrator user
-    Login-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators an, wenn Sie dazu aufgefordert werden. 
@@ -128,12 +128,12 @@ Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministrato
     ```azurepowershell
     # Add Reader role to the required user on the Root Management Group
     # Replace "user@domian.com” with the user to grant access to
-    New-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
+    New-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
     ```
 5. Verwenden Sie zum Entfernen der Rolle den folgenden Befehl: 
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
+    Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
 ### <a name="open-or-refresh-security-center"></a>Öffnen oder Aktualisieren von Security Center
@@ -141,11 +141,16 @@ Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Stellen Sie sicher, dass Sie alle Abonnements in der Abonnementauswahl auswählen, die in Security Center angezeigt werden sollen.
-    ![Screenshot der Abonnementauswahl](./media/security-center-management-groups/subscription-selector.png)
+
+    ![Screenshot: Abonnementauswahl](./media/security-center-management-groups/subscription-selector.png)
+
 1. Wählen Sie im Hauptmenü von Azure die Option **Alle Dienste** und dann **Security Center**.
-2. Unter **Übersicht** wird ein Diagramm zur Abonnementabdeckung angezeigt. 
+2. Unter **Übersicht** wird ein Diagramm zur Abonnementabdeckung angezeigt.
+
     ![Screenshot: Diagramm zur Abonnementabdeckung](./media/security-center-management-groups/security-center-subscription-coverage.png)
+
 3. Klicken Sie auf **Abdeckung**, um die Liste mit den abgedeckten Abonnements anzuzeigen. 
+
     ![Screenshot: Liste zur Abonnementabdeckung](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte 
@@ -176,8 +181,8 @@ Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen. 
 
 4. Wiederholen Sie die Schritte 1 bis 3, bis Sie alle betreffenden Abonnements hinzugefügt haben.
 
- > [!NOTE]
- > Verwaltungsgruppen können sowohl Abonnements als auch untergeordnete Verwaltungsgruppen enthalten. Wenn Sie einem Benutzer eine RBAC-Rolle für die übergeordnete Verwaltungsgruppe zuweisen, wird der Zugriff von den Abonnements der untergeordneten Verwaltungsgruppe geerbt. Richtlinien, die für die übergeordnete Verwaltungsgruppe festgelegt werden, werden ebenfalls von den untergeordneten Elementen geerbt. 
+   > [!NOTE]
+   > Verwaltungsgruppen können sowohl Abonnements als auch untergeordnete Verwaltungsgruppen enthalten. Wenn Sie einem Benutzer eine RBAC-Rolle für die übergeordnete Verwaltungsgruppe zuweisen, wird der Zugriff von den Abonnements der untergeordneten Verwaltungsgruppe geerbt. Richtlinien, die für die übergeordnete Verwaltungsgruppe festgelegt werden, werden ebenfalls von den untergeordneten Elementen geerbt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Sie mandantenweite Sichtbarkeit für Azure Security Center erzielen. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 55c781d0c6284de1382c9d3e614621c40963194b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c96b924294286be57de90dae7e6534b5ed9306ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302922"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874571"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool, Updaterelease 7.1.60126.1 – 1/29/2019
 
 Version 7.1.60126.1 für das Microsoft Threat Modeling Tool wurde am 29. Januar 2019 veröffentlicht und umfasst die folgenden Änderungen:
 
-- Die erforderliche Mindestversion von .NET wurde auf [.NET 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) erhöht.
+- Die erforderliche Mindestversion von .NET wurde auf [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) erhöht.
 - Die erforderliche Mindestversion von Windows wurde aufgrund der .NET-Abhängigkeit auf [Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) erhöht.
 - Dem Optionsmenü des Tools wurde eine Funktion zum Umschalten der Modellvalidierung hinzugefügt.
 - Verschiedene Links in den Bedrohungseigenschaften wurden aktualisiert.
@@ -47,7 +47,7 @@ Die Option zum Aktivieren/Deaktivieren der Modellvalidierung befindet sich im Me
 - Unterstützte Betriebssysteme
   - [Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) oder höher
 - Erforderliche .NET-Version
-  - [.NET 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) oder höher
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)
 - Zusätzliche Anforderungen
   - Eine Internetverbindung ist erforderlich, um Updates für das Tool sowie Vorlagen zu erhalten.
 

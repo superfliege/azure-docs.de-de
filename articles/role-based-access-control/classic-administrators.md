@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447513"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889323"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -91,7 +91,7 @@ Es gibt zwei Möglichkeiten zum Ändern des Dienstadministrators. Sie können di
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die [Einschränkungen beim Ändern von Dienstadministratoren](#limits) überprüfen.
+1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die Einschränkungen beim Ändern von Dienstadministratoren überprüfen.
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -109,7 +109,7 @@ Es gibt zwei Möglichkeiten zum Ändern des Dienstadministrators. Sie können di
 
 ### <a name="account-center"></a>Kontocenter
 
-1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die [Einschränkungen beim Ändern von Dienstadministratoren](#limits) überprüfen.
+1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die Einschränkungen beim Ändern von Dienstadministratoren überprüfen.
 
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
 
@@ -156,3 +156,4 @@ Gehen Sie folgendermaßen vor, um den Kontoadministrator anzuzeigen.
 
 * [Grundlegendes zu den verschiedenen Rollen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md)
+* [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md)

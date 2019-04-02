@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4920d2a6c26da12effc2b44be8d3c6cbdb5e2a6f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199135"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856116"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -62,7 +62,7 @@ Führen Sie die unten angegebenen Schritte aus, um das in diesem Artikel beschri
 
 Fügen Sie für jeden virtuellen Computer in Ihrem virtuellen Netzwerk die IP-Konfiguration für die sekundäre NIC hinzu:  
 
-1. Navigieren Sie zum Azure-Portal: http://portal.azure.com. Melden Sie sich mit Ihrem Azure-Konto an.
+1. Navigieren Sie zum Azure-Portal: https://portal.azure.com. Melden Sie sich mit Ihrem Azure-Konto an.
 
 2. Wählen Sie oben links auf dem Bildschirm das Symbol **Ressourcengruppe**. Wählen Sie anschließend die Ressourcengruppe aus, auf der sich Ihre VMs befinden (z.B. **contosofabrikam**). Im Bereich **Ressourcengruppen** werden alle Ressourcen und NICs für die VMs angezeigt.
 
@@ -86,7 +86,7 @@ Nachdem die zweite IP-Konfiguration für die sekundäre NIC abgeschlossen ist, w
 
 Erstellen Sie Ihren Lastenausgleich für die Konfiguration:
 
-1. Navigieren Sie zum Azure-Portal: http://portal.azure.com. Melden Sie sich mit Ihrem Azure-Konto an.
+1. Navigieren Sie zum Azure-Portal: https://portal.azure.com. Melden Sie sich mit Ihrem Azure-Konto an.
 
 2. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Load Balancer** aus. Wählen Sie als Nächstes die Option **Erstellen**.
 
@@ -106,15 +106,15 @@ Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) den Front-End
 
 2. Konfigurieren Sie zwei öffentliche IP-Adressen (**PublicIP1** und **PublicIP2**) für beide Websites (contoso.com und fabrikam.com):
 
-    1. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein.
+   1. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein.
 
-    2. Wählen Sie unter **Ressourcengruppe** die vorhandene Ressourcengruppe für Ihre VMs aus (z.B. **contosofabrikam**).
+   2. Wählen Sie unter **Ressourcengruppe** die vorhandene Ressourcengruppe für Ihre VMs aus (z.B. **contosofabrikam**).
 
-    3. Wählen Sie als **Speicherort** den gleichen Speicherort wie für die virtuellen Computer aus.
+   3. Wählen Sie als **Speicherort** den gleichen Speicherort wie für die virtuellen Computer aus.
 
-    4. Klicken Sie auf **OK**.
+   4. Klicken Sie auf **OK**.
 
-    Nachdem die öffentlichen IP-Adressen erstellt wurden, werden sie unter **Öffentliche IP** angezeigt.
+      Nachdem die öffentlichen IP-Adressen erstellt wurden, werden sie unter **Öffentliche IP** angezeigt.
 
 3. <a name="step3-3"></a>Wählen Sie im Portal die Option **Weitere Dienste**. Geben Sie im Filterfeld **Load Balancer** ein, und wählen Sie **Load Balancer**. 
 
@@ -194,4 +194,4 @@ Im letzten Schritt konfigurieren Sie Ihre DNS-Ressourceneinträge so, dass sie a
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie in [Verwenden von Lastenausgleichsdiensten in Azure](../traffic-manager/traffic-manager-load-balancing-azure.md), wie Sie Lastenausgleichsdienste in Azure kombinieren.
-- Erfahren Sie in [Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.
+- Erfahren Sie in [Azure Monitor-Protokolle für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md), wie Sie verschiedene Protokolltypen verwenden, um den Load Balancer zu verwalten und eventuelle Fehler zu beheben.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116219"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241390"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Übersicht über die Azure Service Fabric-Sicherheit
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
@@ -48,7 +48,7 @@ Sie konfigurieren die Client-zu-Knoten-Sicherheit mithilfe von Clientidentitäte
 Service Fabric unterstützt zwei unterschiedliche Zugriffssteuerungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind:
 
 -   **Administrator**: Vollzugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff).
--   **Benutzer:** Nur Lesezugriff auf Verwaltungsfunktionen (z.B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen.
+-   **User:** Nur Lesezugriff auf Verwaltungsfunktionen (z.B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen.
 
 Mithilfe der Zugriffssteuerung können Clusteradministratoren den Zugriff auf bestimmte Arten von Clustervorgängen beschränken. Dadurch wird der Cluster sicherer.
 
@@ -87,7 +87,7 @@ Der Workflow für die Überwachung und Diagnose besteht aus drei Schritten:
 
 2.  **Ereignisaggregation**: Die generierten Ereignisse müssen gesammelt und aggregiert werden, bevor sie angezeigt werden können. In der Regel empfehlen wir die Verwendung von [Azure-Diagnose](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (ähnlich der Agent-basierten Protokollsammlung) oder [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (In-Process-Protokollsammlung).
 
-3.  **Analyse**: Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige ermöglicht. Es gibt mehrere Plattformen für die Analyse und Visualisierung von Überwachungs- und Diagnosedaten. Aufgrund ihrer guten Integration in Service Fabric werden [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) und [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) empfohlen.
+3.  **Analyse**: Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige ermöglicht. Es gibt mehrere Plattformen für die Analyse und Visualisierung von Überwachungs- und Diagnosedaten. Aufgrund ihrer guten Integration in Service Fabric werden [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) und [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) empfohlen.
 
 Sie können auch [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) zum Überwachen von vielen Azure-Ressourcen verwenden, aus denen ein Service Fabric-Cluster erstellt wird.
 

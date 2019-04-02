@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848475"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443486"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 
@@ -62,10 +62,10 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Windows
 
 **Szenario** | **Am sekundären Standort** | **In Azure**
 --- | --- | ---
-**Hyper-V** | JA | JA
-**VMware** | JA | JA
-**Physischer Server** | JA | JA
-**Azure** | Nicht verfügbar | JA
+**Hyper-V** | Ja | Ja
+**VMware** | Ja | Ja
+**Physischer Server** | Ja | Ja
+**Azure** | Nicht verfügbar | Ja
 
 ### <a name="sharepoint-versions"></a>SharePoint-Versionen
 Die folgenden SharePoint-Server-Versionen werden unterstützt:

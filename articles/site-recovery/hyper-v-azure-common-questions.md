@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 11e29aa8d85ed7e3cf5ce7b4a8360e4b5eb628f9
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 9ce236748c1ca4f5e166fe1d7574f6a635d6204b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855885"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -65,10 +65,9 @@ Ja, sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung in A
 ### <a name="what-do-i-need-on-premises"></a>Was benötige ich lokal?
 
 Sie benötigen eine oder mehrere VMs, die auf einem oder mehreren eigenständigen oder gruppierten Hyper-V-Hosts ausgeführt werden. Sie können auch VMs replizieren, die auf von System Center Virtual Machine Manager (VMM) verwalteten Hosts ausgeführt werden.
-    - Wenn VMM nicht ausgeführt wird, sammeln Sie während der Bereitstellung von Site Recovery Hyper-V-Hosts und -Cluster in Hyper-V-Standorten. Installieren Sie die Site Recovery-Agents (den Azure Site Recovery-Anbieter und den Recovery Services-Agent) auf allen Hyper-V-Computern.
-    - Wenn sich die Hyper-V-Hosts in einer VMM-Cloud befinden, orchestrieren Sie die Replikation in VMM. Installieren Sie den Site Recovery-Anbieter auf dem VMM-Server und den Recovery Services-Agent auf allen Hyper-V-Computern. Stellen Sie eine Zuordnung zwischen logischen Netzwerken für VMM/VM-Netzwerken und Azure-VNets her.
-    - 
-[Erfahren Sie mehr](hyper-v-azure-architecture.md) über die Hyper-V-zu-Azure-Architektur.
+- Wenn VMM nicht ausgeführt wird, sammeln Sie während der Bereitstellung von Site Recovery Hyper-V-Hosts und -Cluster in Hyper-V-Standorten. Installieren Sie die Site Recovery-Agents (den Azure Site Recovery-Anbieter und den Recovery Services-Agent) auf allen Hyper-V-Computern.
+- Wenn sich die Hyper-V-Hosts in einer VMM-Cloud befinden, orchestrieren Sie die Replikation in VMM. Installieren Sie den Site Recovery-Anbieter auf dem VMM-Server und den Recovery Services-Agent auf allen Hyper-V-Computern. Stellen Sie eine Zuordnung zwischen logischen Netzwerken für VMM/VM-Netzwerken und Azure-VNets her.
+- [Erfahren Sie mehr](hyper-v-azure-architecture.md) über die Hyper-V-zu-Azure-Architektur.
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Kann ich VMs, die sich in einem Hyper-V-Cluster befinden, replizieren?
 
@@ -139,11 +138,11 @@ Für die Replikation muss auf einer Hyper-V-VM ein unterstütztes Betriebssystem
 
 Hyper-V-VMs können alle 30 Sekunden (außer bei Storage Premium), alle 5 Minuten oder alle 15 Minuten repliziert werden.
 
-###<a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
-Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
+Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
-Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kann ich Datenträger ausschließen?
 Ja, sie können Datenträger von der Replikation ausschließen. 
