@@ -3,15 +3,15 @@ title: Aktivieren der Replikation von virtuellen VMware-Computern für die VMwar
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery die Replikation von virtuellen VMware-Computern für die VMware-Notfallwiederherstellung in Azure aktivieren.
 author: mayurigupta13
 ms.service: site-recovery
-ms.date: 1/29/2019
+ms.date: 3/6/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 41ff32f840b7a0e9e5fa5d8f7bf25a93fa679955
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098694"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -39,6 +39,12 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
+>[!NOTE]
+>* Azure Site Recovery führt alle neuen Replikationen nun direkt auf verwaltete Datenträger aus. Der Prozessserver schreibt Replikationsprotokolle in ein Cachespeicherkonto in der Zielregion. Diese Protokolle werden verwendet, um Wiederherstellungspunkte in verwalteten Replikatdatenträgern zu erstellen. 
+>* Zum Zeitpunkt des Failover wird der vom Kunden ausgewählte Wiederherstellungspunkt verwendet, um den verwalteten Zieldatenträger zu erstellen.
+>* VMs, die zuvor für die Replikation auf Zielspeicherkonten konfiguriert wurden, sind davon nicht betroffen. 
+>* Eine Replikation auf Speicherkonten für einen neuen Computer ist nur über die REST-API und Powershell verfügbar. Verwenden Sie die API-Version 2016-08-10 oder 2018-01-10 für die Replikation auf Speicherkonten.
+
 1. Klicken Sie auf **Schritt 2: Replizieren Sie die Anwendung** > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
 2. Wählen Sie auf der Seite **Quelle** unter **Quelle** den Konfigurationsserver aus.
 3. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer** oder **Physische Computer** aus.
@@ -49,36 +55,30 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 
 6. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. der Sie die virtuellen Computer erstellen möchten, für die ein Failover durchgeführt wurde. Wählen Sie das Bereitstellungsmodell aus, das in Azure für die virtuellen Computer, für die ein Failover ausgeführt wurde, verwendet werden soll.
 
-7. Wählen Sie das Azure Storage-Konto aus, das Sie für die Replikation von Daten verwenden möchten. 
+7. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie über kein Netzwerk verfügen, müssen Sie ein Netzwerk erstellen. Klicken Sie zum Erstellen eines Netzwerks mit dem Resource Manager auf **Neu erstellen**. Wählen Sie, falls zutreffend, ein Subnetz aus, und klicken Sie auf **OK**.
+   
+   ![Aktivieren der Replikationszieleinstellung](./media/vmware-azure-enable-replication/enable-rep3.png)
 
-    > [!NOTE]
-
-    >   * Sie können ein Premium- oder Standardspeicherkonto auswählen. Wenn Sie ein Premium-Konto auswählen, müssen Sie für fortlaufende Replikationsprotokolle ein zusätzliches Standardspeicherkonto angeben. Die Konten müssen sich in derselben Region wie der Recovery Services-Tresor befinden.
-    >   * Falls Sie ein anderes Speicherkonto verwenden möchten, können Sie ein [Speicherkonto erstellen](../storage/common/storage-create-storage-account.md). Klicken Sie zum Erstellen eines Speicherkontos mit dem Resource Manager auf **Neu erstellen**. 
-
-8. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie über kein Netzwerk verfügen, müssen Sie ein Netzwerk erstellen. Klicken Sie zum Erstellen eines Netzwerks mit dem Resource Manager auf **Neu erstellen**. Wählen Sie, falls zutreffend, ein Subnetz aus, und klicken Sie auf **OK**.
-
-    ![Aktivieren der Replikationszieleinstellung](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. Wählen Sie auf **Virtuelle Computer** > **Virtuelle Computer auswählen** die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie dann auf **OK**. Sollten Sie einen bestimmten virtuellen Computer nicht anzeigen/auswählen können, klicken Sie [hier](https://aka.ms/doc-plugin-VM-not-showing), um das Problem zu beheben.
+8. Wählen Sie auf **Virtuelle Computer** > **Virtuelle Computer auswählen** die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie dann auf **OK**. Sollten Sie einen bestimmten virtuellen Computer nicht anzeigen/auswählen können, klicken Sie [hier](https://aka.ms/doc-plugin-VM-not-showing), um das Problem zu beheben.
 
     ![Aktivieren der Replikation: VMs auswählen](./media/vmware-azure-enable-replication/enable-replication5.png)
-10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Mobility Service auf dem Computer verwenden soll.  
-11. Standardmäßig werden alle Datenträger repliziert. Klicken Sie zum Ausschließen von Datenträgern aus der Replikation auf **Alle Datenträger**, und entfernen Sie alle Datenträger, die Sie nicht replizieren möchten.  Klicken Sie dann auf **OK**. Sie können später weitere Eigenschaften festlegen. [Weitere Informationen](vmware-azure-exclude-disk.md) zum Ausschließen von Datenträgern.
+
+9. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Mobility Service auf dem Computer verwenden soll. Wählen Sie außerdem den Typ des verwalteten Zieldatenträgers, auf den Sie die Replikation durchführen möchten, basierend auf Ihren Datenänderungsmustern aus.
+10. Standardmäßig werden alle Datenträger auf einem Quellcomputer repliziert. Zum Ausschließen von Datenträgern aus der Replikation deaktivieren Sie das Kontrollkästchen **Einschließen** für alle Datenträger, die Sie nicht replizieren möchten.  Klicken Sie dann auf **OK**. Sie können später weitere Eigenschaften festlegen. [Weitere Informationen](vmware-azure-exclude-disk.md) zum Ausschließen von Datenträgern.
 
     ![Aktivieren der Replikation: Eigenschaften konfigurieren](./media/vmware-azure-enable-replication/enable-replication6.png)
 
-12. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. Sie können die Replikationsrichtlinieneinstellungen unter **Einstellungen** > **Replikationsrichtlinien** > (Richtlinienname) > **Einstellungen bearbeiten** ändern. Die Änderungen, die Sie an einer Richtlinie vornehmen, werden auch auf die Replikation und neue Computer angewendet.
-13. Aktivieren Sie **Multi-VM-Konsistenz**, wenn Sie Computer in einer Replikationsgruppe zusammenfassen möchten. Geben Sie einen Namen für die Gruppe ein, und klicken Sie dann auf **OK**. 
+11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. Sie können die Replikationsrichtlinieneinstellungen unter **Einstellungen** > **Replikationsrichtlinien** > (Richtlinienname) > **Einstellungen bearbeiten** ändern. Die Änderungen, die Sie an einer Richtlinie vornehmen, werden auch auf die Replikation und neue Computer angewendet.
+12. Aktivieren Sie **Multi-VM-Konsistenz**, wenn Sie Computer in einer Replikationsgruppe zusammenfassen möchten. Geben Sie einen Namen für die Gruppe ein, und klicken Sie dann auf **OK**. 
 
     > [!NOTE]
-
+    > 
     >    * Die Computer in einer Replikationsgruppe werden gemeinsam repliziert und verfügen beim Failover über gemeinsame ausfallsichere und app-konsistente Wiederherstellungspunkte.
     >    * Fassen Sie VMs und physische Server zusammen, damit sie Ihre Workloads widerspiegeln. Das Aktivieren von Multi-VM-Konsistenz kann die Workloadleistung beeinträchtigen. Nutzen Sie sie nur, wenn mehrere Computer dieselbe Workload ausführen und Konsistenz erforderlich ist.
 
     ![Aktivieren der Replikation](./media/vmware-azure-enable-replication/enable-replication7.png)
-14. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
-
-
+    
+13. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 ## <a name="view-and-manage-vm-properties"></a>Anzeigen und Verwalten von VM-Eigenschaften
 
@@ -87,17 +87,17 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 1. Klicken Sie auf **Einstellungen** > **Replizierte Elemente**, und wählen Sie dann den Computer aus. Die Seite **Zusammenfassung** enthält Informationen zu Computereinstellungen und -status.
 2. Unter **Eigenschaften** können Sie die Informationen zur Replikation und zum Failover für den virtuellen Computer anzeigen.
 3. In **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie mehrere VM-Eigenschaften ändern:
-* Azure VM-Name: Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt.
-* Größe oder Typ der Ziel-VM: Die Standard-VM-Größe wird basierend auf der Quell-VM-Größe ausgewählt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert und nur nach dem Failover geändert werden kann. Im Artikel [Skalierbarkeitsziele für Datenträger](../virtual-machines/windows/disk-scalability-targets.md) erfahren Sie mehr über Datenträgergrößen und IOPS.
+   * Azure VM-Name: Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt.
+   * Größe oder Typ der Ziel-VM: Die Standard-VM-Größe wird basierend auf der Quell-VM-Größe ausgewählt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert und nur nach dem Failover geändert werden kann. Im Artikel [Skalierbarkeitsziele für Datenträger](../virtual-machines/windows/disk-scalability-targets.md) erfahren Sie mehr über Datenträgergrößen und IOPS.
 
-    ![Eigenschaften für Compute und Netzwerk](./media/vmware-azure-enable-replication/vmproperties.png)
+     ![Eigenschaften für Compute und Netzwerk](./media/vmware-azure-enable-replication/vmproperties.png)
 
-*  Ressourcengruppe: Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der ein Computer nach einem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des Computers nicht mehr.
-* Verfügbarkeitsgruppe: Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Beachten Sie bei der Auswahl einer Verfügbarkeitsgruppe folgende Punkte:
+   * Ressourcengruppe: Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der ein Computer nach einem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des Computers nicht mehr.
+   * Verfügbarkeitsgruppe: Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Beachten Sie bei der Auswahl einer Verfügbarkeitsgruppe folgende Punkte:
 
-    * Es werden nur Verfügbarkeitsgruppen aufgelistet, die der angegebenen Ressourcengruppe angehören.  
-    * Computer mit unterschiedlichen virtuellen Netzwerken dürfen nicht der gleichen Verfügbarkeitsgruppe angehören.
-    * Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer gleicher Größe angehören.
+       * Es werden nur Verfügbarkeitsgruppen aufgelistet, die der angegebenen Ressourcengruppe angehören.  
+       * Computer mit unterschiedlichen virtuellen Netzwerken dürfen nicht der gleichen Verfügbarkeitsgruppe angehören.
+       * Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer gleicher Größe angehören.
 4. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse, die der Azure-VM zugewiesen ist, anzeigen und hinzufügen.
 5. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert werden.
 

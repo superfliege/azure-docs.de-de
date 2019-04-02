@@ -5,18 +5,26 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093836"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Überprüfen des Kostenvorkalkulationsberichts im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure
 
 Der Bereitstellungsplaner-Bericht enthält eine Zusammenfassung der Kostenvorkalkulation auf Arbeitsblättern mit [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Empfehlungen) sowie eine ausführliche Kostenanalyse auf dem Arbeitsblatt „Cost Estimation“ (Kostenvorkalkulation). Er enthält eine ausführliche Kostenanalyse pro VM. 
+
+>[!Note]
+>Die aktuelle Version des Bereitstellungsplanertools bietet keine Kostenschätzung für VMs, die eine Replikation auf verwaltete Datenträger durchführen.
+>* DR-Drill-Kostenschätzungen sind für Speicherkonten und verwaltete Datenträger gleich, wenn der Parameter „Verwaltete Datenträger verwenden“ auf dem Blatt „Compute und Netzwerk“ auf „Ja“ festgelegt ist.
+>* Um eine ungefähre jährliche Kostenschätzung für die Replikation zu erhalten, nehmen Sie die folgenden temporären Einstellungen auf dem Blatt **Cost Estimation** (Kostenvorkalkulation) vor:
+>    * Legen Sie den Parameter „Cost duration“ (Kostendauer) in der Tabelle **Einstellungen** auf „Year“ (Jahr) fest.
+>    * Legen Sie die Spalte „Number of DR drills in a year“ (Anzahl von DR-Drills in einem Jahr) in der Tabelle **Ausführliche Kostenanalyse**, auf „12“ und die Spalte „Each DR-Drill duration (Days)“ (Dauer einzelner DR-Drills [Tage]) auf „30“ fest. 
+>    * Die Replikationskosten gleichen den in der Spalte „R“ aufgeführten Kosten, d.h. „DR-Drill storage cost per year“ (DR-Drill-Speicherkosten pro Jahr) in Unterabschnitt **DR-Drill cost per year** (Kosten für DR-Drills pro Jahr).
 
 ### <a name="cost-estimation-summary"></a>Zusammenfassung „Cost Estimation“ (Kostenvorkalkulation) 
 Im Graphen ist die Übersicht über die geschätzten Gesamtkosten der Notfallwiederherstellung (Disaster Recovery, DR) in Azure für Ihre gewählte Zielregion und Währung dargestellt, die Sie für die Berichterstellung angegeben haben.
@@ -106,9 +114,9 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 * Datenredundanz 
 * Azure-Hybridvorteil
 
-3.  Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für „Number of DR drills in a year“, „Each DR drill duration (Days)“, „Data redundancy“ und „Azure Hybrid Use Benefit“ auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.
+1. Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für „Number of DR drills in a year“, „Each DR drill duration (Days)“, „Data redundancy“ und „Azure Hybrid Use Benefit“ auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.
 
-4.  Klicken Sie auf „Re-calculate cost“ (Kosten neu berechnen), um die Kosten zu aktualisieren.
+1. Klicken Sie auf „Re-calculate cost“ (Kosten neu berechnen), um die Kosten zu aktualisieren.
 
 **VM Name** (VM-Name): Der Name der VM.
 

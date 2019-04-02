@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/25/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ce9ef687643de7ec9b289f74feea613fb9a1db7a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340845"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960609"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -68,6 +68,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Klassische Dienstrolle „Speicherkonto-Schlüsseloperator“](#classic-storage-account-key-operator-service-role) | Klassische Speicherkonto-Schlüsseloperatoren dürfen Schlüssel für klassische Speicherkonten auflisten und neu generieren. |
 | [Mitwirkender von klassischen virtuellen Computern](#classic-virtual-machine-contributor) | Ermöglicht Ihnen das Verwalten klassischer virtueller Computer, aber weder den Zugriff darauf noch auf die mit ihnen verbundenen virtuellen Netzwerke oder Speicherkonten. |
 | [Mitwirkender für Cognitive Services](#cognitive-services-contributor) | Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten von Cognitive Services-Schlüsseln. |
+| [Cognitive Services-Datenleser (Vorschau)](#cognitive-services-data-reader-preview) | Ermöglicht das Lesen von Cognitive Services-Daten. |
 | [Cognitive Services-Benutzer](#cognitive-services-user) | Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. |
 | [Cosmos DB-Rolle „Kontoleser“](#cosmos-db-account-reader-role) | Kann Azure Cosmos DB-Kontodaten lesen. Informationen zum Verwalten von Azure Cosmos DB-Konten finden Sie unter [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor). |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Kann eine Wiederherstellungsanforderung für eine Cosmos DB-Datenbank oder einen Container für ein Konto übermitteln. |
@@ -81,8 +82,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [DevTest Labs-Benutzer](#devtest-labs-user) | Ermöglicht Ihnen das Verbinden, Starten, Neustarten und Herunterfahren Ihrer virtuellen Computer in Ihren Azure DevTest Labs. |
 | [DNS Zone Contributor](#dns-zone-contributor) | Ermöglicht Ihnen die Verwaltung von DNS-Zonen und Ressourceneintragssätzen in Azure DNS, aber nicht zu steuern, wer darauf Zugriff hat. |
 | [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) | Kann Azure Cosmos DB-Konten verwalten. Azure Cosmos DB wurde früher als DocumentDB bezeichnet. |
-| [EventGrid EventSubscription-Mitwirkender](#eventgrid-eventsubscription-contributor) | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. |
-| [EventGrid EventSubscription-Leser](#eventgrid-eventsubscription-reader) | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. |
+| [EventGrid EventSubscription-Mitwirkender (Vorschau)](#eventgrid-eventsubscription-contributor-preview) | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. |
+| [EventGrid EventSubscription-Leser (Vorschau)](#eventgrid-eventsubscription-reader-preview) | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. |
 | [Mitwirkender für die HDInsight-Domänendienste](#hdinsight-domain-services-contributor) | Ermöglicht Ihnen, Vorgänge im Zusammenhang mit Domänendiensten, die für das HDInsight Enterprise-Sicherheitspaket erforderlich sind, zu lesen, zu erstellen, zu ändern und zu löschen. |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) | Ermöglicht Ihnen das Verwalten von Intelligent Systems-Konten, nicht aber den Zugriff darauf. |
 | [Key Vault-Mitwirkender](#key-vault-contributor) | Ermöglicht Ihnen die Verwaltung von Schlüsseltresoren, aber nicht den Zugriff darauf. |
@@ -103,7 +104,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Mitwirkender von virtuellem Netzwerk](#network-contributor) | Ermöglicht Ihnen das Verwalten von Netzwerken, nicht aber den Zugriff darauf. |
 | [Mitwirkender von New Relic APM-Konto](#new-relic-apm-account-contributor) | Ermöglicht Ihnen das Verwalten von New Relic Application Performance Management-Konten und -Anwendungen, nicht aber den Zugriff auf diese. |
 | [Lese- und Datenzugriff](#reader-and-data-access) | Ermöglicht Ihnen das Anzeigen sämtlicher Aspekte, jedoch nicht das Löschen oder Erstellen eines Speicherkontos oder einer darin enthaltenen Ressource. Sie können auch Lese-/Schreibzugriff auf alle Daten in einem Speicherkonto durch Zugriff auf Speicherkontoschlüssel gewähren. |
-| [Mitwirkender von Redis-Cache](#redis-cache-contributor) | Ermöglicht Ihnen das Verwalten von Azure Cache for Redis, nicht aber den Zugriff darauf. |
+| [Mitwirkender von Redis-Cache](#redis-cache-contributor) | Ermöglicht Ihnen das Verwalten von Redis Caches, nicht aber den Zugriff darauf. |
 | [Mitwirkender an Ressourcenrichtlinien (Vorschau)](#resource-policy-contributor-preview) | (Vorschau) Über EA abgeglichene Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie. |
 | [Mitwirkender von Zeitplanungsauftragssammlung](#scheduler-job-collections-contributor) | Ermöglicht Ihnen das Verwalten von Scheduler-Auftragssammlungen, nicht aber den Zugriff darauf. |
 | [Mitwirkender von Suchdienst](#search-service-contributor) | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. |
@@ -113,6 +114,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Site Recovery-Mitwirkender](#site-recovery-contributor) | Ermöglicht Ihnen die Verwaltung des Site Recovery-Diensts mit Ausnahme der Tresorerstellung und der Rollenzuweisung. |
 | [Site Recovery-Operator](#site-recovery-operator) | Ermöglicht Ihnen ein Failover und ein Failback, aber nicht das Durchführen weiterer Site Recovery-Verwaltungsvorgänge. |
 | [Site Recovery-Leser](#site-recovery-reader) | Ermöglicht Ihnen die Anzeige des Site Recovery-Status, aber nicht die Durchführung weiterer Verwaltungsvorgänge. |
+| [Spatial Anchors-Kontomitwirkender](#spatial-anchors-account-contributor) | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, nicht jedoch das Löschen von Ankern. |
+| [Spatial Anchors-Kontobesitzer](#spatial-anchors-account-owner) | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, einschließlich der Löschung von Ankern. |
+| [Spatial Anchors-Kontoleser](#spatial-anchors-account-reader) | Ermöglicht Ihnen das Ermitteln und Lesen von Eigenschaften für Raumanker in Ihrem Dokument. |
 | [Mitwirkender von SQL DB](#sql-db-contributor) | Ermöglicht Ihnen das Verwalten von SQL-Datenbanken, nicht aber den Zugriff darauf. Darüber hinaus können Sie deren sicherheitsbezogenen Richtlinien oder übergeordneten SQL-Server nicht verwalten. |
 | [SQL-Sicherheits-Manager](#sql-security-manager) | Ermöglicht Ihnen das Verwalten von sicherheitsbezogenen Richtlinien von SQL-Server und Datenbanken, jedoch nicht den Zugriff darauf. |
 | [Mitwirkender von SQL Server](#sql-server-contributor) | Ermöglicht Ihnen, SQL-Server und -Datenbanken zu verwalten, gewährt Ihnen jedoch keinen Zugriff darauf und auch nicht auf deren sicherheitsbezogenen Richtlinien. |
@@ -122,6 +126,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Besitzer von Speicherblobdaten (Vorschau):](#storage-blob-data-owner-preview) | Ermöglicht Vollzugriff auf Azure Storage-Blobcontainer und -Daten, einschließlich POSIX-Zugriffssteuerung. |
 | [Storage-Blobdatenleser (Vorschau)](#storage-blob-data-reader-preview) | Ermöglicht den Lesezugriff auf Azure Storage-Blobcontainer und -Daten. |
 | [Mitwirkender an Storage-Warteschlangendaten (Vorschau)](#storage-queue-data-contributor-preview) | Ermöglicht den Lese-, Schreib- und Löschzugriff auf Azure Storage-Warteschlangen und -Warteschlangennachrichten. |
+| [Verarbeiter von Speicherwarteschlangen-Datennachrichten (Vorschau)](#storage-queue-data-message-processor-preview) | Ermöglicht Anzeige-, Empfangs- und Löschzugriff auf Azure Storage-Warteschlangen. |
+| [Sender von Speicherwarteschlangen-Datennachrichten (Vorschau)](#storage-queue-data-message-sender-preview) | Ermöglicht das Senden von Azure Storage-Warteschlangennachrichten. |
 | [Storage-Warteschlangendatenleser (Vorschau)](#storage-queue-data-reader-preview) | Ermöglicht den Lesezugriff auf Azure Storage-Warteschlangen und -Warteschlangennachrichten. |
 | [Mitwirkender für Supportanfragen](#support-request-contributor) | Ermöglicht Ihnen die Erstellung und Verwaltung von Supportanfragen. |
 | [Traffic Manager-Mitwirkender](#traffic-manager-contributor) | Ermöglicht Ihnen die Verwaltung von Traffic Manager-Profilen, aber nicht die Steuerung des Zugriffs darauf. |
@@ -934,6 +940,21 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotDataActions** |  |
 > | *keine* |  |
 
+## <a name="cognitive-services-data-reader-preview"></a>Cognitive Services-Datenleser (Vorschau)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht das Lesen von Cognitive Services-Daten. |
+> | **Id** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
 ## <a name="cognitive-services-user"></a>Cognitive Services-Benutzer
 > [!div class="mx-tableFixed"]
 > | | |
@@ -943,11 +964,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Aktionen** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Dient zum Auflisten von Schlüsseln. |
-> | Microsoft.Insights/metricdefinitions/read | Dient zum Lesen von Metrikdefinitionen. |
-> | Microsoft.Insights/metrics/read | Dient zum Lesen von Metriken. |
 > | Microsoft.Insights/alertRules/read | Liest eine klassische Metrikwarnung. |
 > | Microsoft.Insights/diagnosticSettings/read | Liest eine Diagnoseeinstellung für eine Ressource. |
 > | Microsoft.Insights/logDefinitions/read | Dient zum Lesen von Protokolldefinitionen. |
+> | Microsoft.Insights/metricdefinitions/read | Dient zum Lesen von Metrikdefinitionen. |
+> | Microsoft.Insights/metrics/read | Dient zum Lesen von Metriken. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Resources/deployments/operations/read | Ruft Bereitstellungsvorgänge ab oder listet sie auf. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
@@ -957,7 +978,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | Microsoft.CognitiveServices/* |  |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -1177,16 +1198,17 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Wertet Labrichtlinien aus. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Dient dazu, einen vorhandenen virtuellen Computer in Besitz zu nehmen. |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Listet die anwendbaren Zeitpläne zum Starten/Beenden auf, sofern vorhanden. |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine eingehende NAT-Regel für den Lastenausgleich. |
+> | Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action | Ruft eine Zeichenfolge ab, die den Inhalt der RDP-Datei für den virtuellen Computer darstellt. |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine eingehende NAT-Regel für den Lastenausgleich. Nicht warnbar. |
 > | Microsoft.Network/networkInterfaces/*/read | Lesen der Eigenschaften einer Netzwerkschnittstelle (z.B. alle Load Balancer, zu denen die Netzwerkschnittstelle gehört) |
-> | Microsoft.Network/networkInterfaces/join/action | Verknüpft einen virtuellen Computer mit einer Netzwerkschnittstelle. |
+> | Microsoft.Network/networkInterfaces/join/action | Verknüpft einen virtuellen Computer mit einer Netzwerkschnittstelle. Nicht warnbar. |
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | Microsoft.Network/networkInterfaces/write | Erstellt eine Netzwerkschnittstelle oder aktualisiert eine vorhandene Netzwerkschnittstelle.  |
 > | Microsoft.Network/publicIPAddresses/*/read | Lesen der Eigenschaften einer öffentlichen IP-Adresse |
-> | Microsoft.Network/publicIPAddresses/join/action | Verknüpft eine öffentliche IP-Adresse. |
+> | Microsoft.Network/publicIPAddresses/join/action | Verknüpft eine öffentliche IP-Adresse. Nicht warnbar. |
 > | Microsoft.Network/publicIPAddresses/read | Ruft eine Definition für eine öffentliche IP-Adresse ab. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Verknüpft ein virtuelles Netzwerk. |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Verknüpft ein virtuelles Netzwerk. Nicht warnbar. |
 > | Microsoft.Resources/deployments/operations/read | Ruft Bereitstellungsvorgänge ab oder listet sie auf. |
 > | Microsoft.Resources/deployments/read | Ruft Bereitstellungen ab oder listet sie auf. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
@@ -1240,7 +1262,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotDataActions** |  |
 > | *keine* |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription-Mitwirkender
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription-Mitwirkender (Vorschau)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1263,7 +1285,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotDataActions** |  |
 > | *keine* |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription-Leser
+## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription-Leser (Vorschau)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1481,6 +1503,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Solutions/applications/read | Hiermit wird eine Liste mit Anwendungen abgerufen. |
+> | Microsoft.Solutions/*/action |  |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1716,11 +1739,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Azure Cache for Redis, nicht aber den Zugriff darauf. |
+> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Redis Caches, nicht aber den Zugriff darauf. |
 > | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | Microsoft.Cache/redis/* | Erstellen und Verwalten von Azure Cache for Redis |
+> | Microsoft.Cache/redis/* | Erstellen und Verwalten von Redis-Caches |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
@@ -2033,6 +2056,65 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotDataActions** |  |
 > | *keine* |  |
 
+## <a name="spatial-anchors-account-contributor"></a>Spatial Anchors-Kontomitwirkender
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, nicht jedoch das Löschen von Ankern. |
+> | **Id** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Erstellen von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualisieren der Eigenschaften von Raumankern |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="spatial-anchors-account-owner"></a>Spatial Anchors-Kontobesitzer
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, einschließlich der Löschung von Ankern. |
+> | **Id** | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Erstellen von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Löschen von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualisieren der Eigenschaften von Raumankern |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="spatial-anchors-account-reader"></a>Spatial Anchors-Kontoleser
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht Ihnen das Ermitteln und Lesen von Eigenschaften für Raumanker in Ihrem Dokument. |
+> | **Id** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
 ## <a name="sql-db-contributor"></a>Mitwirkender von SQL DB
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2082,7 +2164,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen der Microsoft-Autorisierung |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Verknüpft Ressourcen wie etwa ein Speicherkonto oder eine SQL-Datenbank mit einem Subnetz. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Verknüpft Ressourcen wie etwa ein Speicherkonto oder eine SQL-Datenbank mit einem Subnetz. Nicht warnbar. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
@@ -2173,7 +2255,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Authorization/*/read | Lesen aller Autorisierungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 > | Microsoft.Insights/diagnosticSettings/* | Verwalten der Diagnoseeinstellungen |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Verknüpft Ressourcen wie etwa ein Speicherkonto oder eine SQL-Datenbank mit einem Subnetz. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Verknüpft Ressourcen wie etwa ein Speicherkonto oder eine SQL-Datenbank mit einem Subnetz. Nicht warnbar. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
@@ -2267,6 +2349,37 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Gibt das Ergebnis beim Löschen einer Nachricht zurück. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Gibt eine Nachricht zurück. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Gibt das Ergebnis beim Schreiben einer Nachricht zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="storage-queue-data-message-processor-preview"></a>Verarbeiter von Speicherwarteschlangen-Datennachrichten (Vorschau)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht Anzeige-, Empfangs- und Löschzugriff auf Azure Storage-Warteschlangen. |
+> | **Id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Gibt eine Nachricht zurück. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Gibt das Ergebnis beim Verarbeiten einer Nachricht zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="storage-queue-data-message-sender-preview"></a>Sender von Speicherwarteschlangen-Datennachrichten (Vorschau)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht das Senden von Azure Storage-Warteschlangennachrichten. |
+> | **Id** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Gibt das Ergebnis beim Hinzufügen einer Nachricht zurück. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2374,20 +2487,20 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Compute/virtualMachineScaleSets | Erstellen und Verwalten von Skalierungsgruppen für virtuelle Computer |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
-> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für ein Anwendungsgateway. |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. |
-> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Verknüpft einen eingehenden NAT-Pool für den Lastenausgleich. |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine eingehende NAT-Regel für den Lastenausgleich. |
-> | Microsoft.Network/loadBalancers/probes/join/action | Ermöglicht die Verwendung von Prüfpunkten eines Lastenausgleichs. Beispielsweise kann mit dieser Berechtigung die healthProbe-Eigenschaft einer VM-Skalierungsgruppe auf den Prüfpunkt verweisen. |
+> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für ein Anwendungsgateway. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Verknüpft einen eingehenden NAT-Pool für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine eingehende NAT-Regel für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/probes/join/action | Ermöglicht die Verwendung von Prüfpunkten eines Lastenausgleichs. Beispielsweise kann mit dieser Berechtigung die healthProbe-Eigenschaft einer VM-Skalierungsgruppe auf den Prüfpunkt verweisen. Nicht warnbar. |
 > | Microsoft.Network/loadBalancers/read | Ruft eine Lastenausgleichsdefinition ab. |
 > | Microsoft.Network/locations/* | Erstellen und Verwalten von Netzwerkspeicherorten |
 > | Microsoft.Network/networkInterfaces/* | Erstellen und Verwalten von Netzwerkschnittstellen |
-> | Microsoft.Network/networkSecurityGroups/join/action | Verknüpft eine Netzwerksicherheitsgruppe. |
+> | Microsoft.Network/networkSecurityGroups/join/action | Verknüpft eine Netzwerksicherheitsgruppe. Nicht warnbar. |
 > | Microsoft.Network/networkSecurityGroups/read | Ruft eine Netzwerksicherheitsgruppen-Definition ab. |
-> | Microsoft.Network/publicIPAddresses/join/action | Verknüpft eine öffentliche IP-Adresse. |
+> | Microsoft.Network/publicIPAddresses/join/action | Verknüpft eine öffentliche IP-Adresse. Nicht warnbar. |
 > | Microsoft.Network/publicIPAddresses/read | Ruft eine Definition für eine öffentliche IP-Adresse ab. |
 > | Microsoft.Network/virtualNetworks/read | Dient zum Abrufen der Definition des virtuellen Netzwerks. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Verknüpft ein virtuelles Netzwerk. |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Verknüpft ein virtuelles Netzwerk. Nicht warnbar. |
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Erstellt einen beabsichtigten Sicherungsschutz. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
