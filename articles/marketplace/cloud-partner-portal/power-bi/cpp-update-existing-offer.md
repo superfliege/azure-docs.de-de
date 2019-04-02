@@ -1,5 +1,5 @@
 ---
-title: Aktualisieren eines bestehenden Power BI-App-Angebots – Azure Marketplace | Microsoft-Dokumentation
+title: Aktualisieren eines Power BI-App-Angebots – Azure Marketplace | Microsoft-Dokumentation
 description: Sie können ein Power BI-App-Angebot nach seiner Veröffentlichung im Marketplace von Microsoft AppSource aktualisieren.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 documentationcenter: ''
@@ -14,69 +14,61 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 635e2e71bb952aaee761df6a1d5d87c46db531f6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 953c53b4ef2244b3444abb745f52e125306468f2
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665701"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807115"
 ---
-# <a name="update-an-existing-power-bi-app-offer"></a>Aktualisieren eines bestehenden Power BI App-Angebots
+# <a name="update-a-power-bi-app-offer"></a>Aktualisieren eines Power BI-App-Angebots
 
-In diesem Artikel werden die verschiedenen Aspekte beim Aktualisieren Ihres Power BI App-Angebots im [Cloud-Partnerportal](https://cloudpartner.azure.com/) und beim anschließenden erneuten Veröffentlichen des Angebots erläutert.  Es kann eine Reihe von Gründen geben, warum Sie Ihr Angebot aktualisieren möchten, beispielweise folgende:
+In diesem Artikel erfahren Sie, wie Sie Ihr Angebot für eine Microsoft Power BI-App im [Cloud-Partnerportal](https://cloudpartner.azure.com/) aktualisieren und anschließend erneut veröffentlichen. Für die Aktualisierung eines Angebots gibt es häufig u.a. folgende Gründe:
 
-- Aktualisierung des Inhalts der App in Power BI und Abrufen einer neuen Installations-URL aus der neu gepackten App
-- Aktualisieren von Marketplace-Metadaten für das Angebot in Bezug auf Vertrieb, Marketing, Supportinformationen und Ressourcen
+- Aktualisieren des Inhalts der App in Power BI und Abrufen einer Installations-URL aus der neu gepackten App
+- Aktualisieren von Azure Marketplace-Metadaten für das Angebot (Vertrieb, Marketing, Supportinformationen und Ressourcen)
  
-Um Ihnen bei diesen Änderungen zu helfen, bietet das Portal die Features **Vergleichen** und **Verlauf**.
-
-
-## <a name="unpermitted-changes-to-offer"></a>Unzulässige Änderungen am Angebot
-
-Einige Attribute eines Power BI-App-Angebots können nicht geändert werden, sobald das Angebot im AppSource live geschaltet ist. Dies sind insbesondere **Angebots-ID** und **Herausgeber-ID**.
-
+Verwenden Sie im Portal die Funktionen **Vergleichen** und **Verlauf**, um derartige Änderungen nachzuverfolgen.
 
 ## <a name="common-update-operations"></a>Gängige Aktualisierungsvorgänge
 
-Es gibt zwar eine Vielzahl von Merkmalen, die Sie in einem Power BI-App-Angebot ändern können, aber die folgenden Vorgänge kommen häufig vor.
-
+Einige Attribute eines Power BI-App-Angebots können nach der Veröffentlichung des Angebots in AppSource nicht geändert werden. Nicht zulässig sind Änderungen an der **Angebots-ID** und **Herausgeber-ID**. Sie können jedoch noch eine Vielzahl von Merkmalen ändern. Hier folgen einige gängige Änderungen.
 
 ### <a name="update-app-content-in-power-bi"></a>Aktualisieren von App-Inhalten in Power BI
 
-Es ist üblich, dass die App in Power BI regelmäßig mit neuen Inhalten, Sicherheitspatches, zusätzlichen Features usw. aktualisiert wird. In solchen Szenarien müssen Sie die URL zur Installation der neuen Inhalte der App aktualisieren, indem Sie die folgenden Schritte ausführen:
+Power BI-Apps werden häufig regelmäßig mit neuen Inhalten, Sicherheitspatches, Funktionen usw. aktualisiert. Wenn eine App geändert wird, führen Sie die folgenden Schritte aus, um die Installations-URL zu aktualisieren:
 
 1.  Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an.
 2.  Suchen Sie unter **Alle Angebote** nach dem Angebot, das Sie aktualisieren möchten.
 3.  Geben Sie auf der Registerkarte **Technische Informationen** eine neue Installations-URL ein.
-4.  Klicken Sie auf **Veröffentlichen**, um den Workflow zum Veröffentlichen Ihrer neuen App-Version in AppSource zu starten.
+4.  Wählen Sie **Veröffentlichen** aus, um den Workflow zum Veröffentlichen der neuen App-Version in AppSource zu starten.
 
 
-### <a name="update-offer-marketplace-metadata"></a>Aktualisieren der Marketplace-Metadaten eines Angebots
+### <a name="update-the-offers-marketplace-metadata"></a>Aktualisieren der Marketplace-Metadaten eines Angebots
 
-Führen Sie die folgenden Schritte aus, um die mit Ihrem Angebot verknüpften Marketplace-Metadaten – Firmenname, Logos usw. – zu aktualisieren:
+Die Marketplace-Metadaten des Angebots enthalten den Namen Ihres Unternehmens, Logos und andere Informationen. Führen Sie die folgenden Schritte aus, um Metadaten zu aktualisieren:
 
 1.  Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an.
-2.  Suchen Sie unter **Alle Angebote** nach dem Angebot, das aktualisiert werden soll.
-3.  Wechseln Sie zur Registerkarte **Details der digitalen Ladenzeile**, und befolgen Sie dann die Anweisungen im Artikel zur [Registerkarte „Details der digitalen Ladenzeile“ für Power BI-Apps](./cpp-storefront-details-tab.md), um die Metadatenänderungen vorzunehmen.
-4.  Klicken Sie auf **Veröffentlichen**, um den Workflow zum Veröffentlichen Ihrer Änderungen zu starten.
+2.  Suchen Sie unter **Alle Angebote** nach dem Angebot, das Sie aktualisieren möchten.
+3.  Ändern Sie auf der Registerkarte **Details der digitalen Ladenzeile** die Metadaten, und befolgen Sie dazu die Anweisungen im Artikel [Registerkarte „Details der digitalen Ladenzeile“ für Power BI-Apps](./cpp-storefront-details-tab.md).
+4.  Wählen Sie **Veröffentlichen** aus, um den Workflow zum Veröffentlichen Ihrer Änderungen zu starten.
 
 
-## <a name="compare-feature"></a>Vergleichsfunktion
+## <a name="the-compare-feature"></a>Funktion „Vergleichen“
 
-Wenn Sie Änderungen an einem bereits veröffentlichten Angebot vorgenommen haben, können Sie die **Vergleichen**-Funktion verwenden, um die vorgenommenen Änderungen zu prüfen. So verwenden Sie dieses Feature:
+Wenn Sie ein veröffentlichtes Angebot aktualisieren, können Sie die vorgenommenen Änderungen überprüfen. So verwenden Sie die Funktion **Vergleichen**
 
-1.  Sie können zu jedem Zeitpunkt des Bearbeitungsprozesses auf die Schaltfläche **Vergleichen** für Ihr Angebot klicken.
+1.  Wählen Sie zu einem beliebigen Zeitpunkt im Bearbeitungsprozess im Angebot die Schaltfläche **Vergleichen** aus.
 
-    ![Schaltfläche des Features „Vergleichen“](./media/compare-feature-button.png)
+    ![Schaltfläche „Vergleichen“](./media/compare-feature-button.png)
 
 2.  Zeigen Sie nebeneinander Versionen von Marketingressourcen und Metadaten an.
 
 
 ## <a name="history-of-publishing-actions"></a>Verlauf der Veröffentlichungsaktionen
 
-Um bereits ausgeführte Veröffentlichungsaktivitäten anzuzeigen, klicken Sie im Cloud-Partnerportal in der linken Navigationsmenüleiste auf die Registerkarte **Verlauf**. Auf dieser Registerkarte werden mit Zeitstempeln versehene Aktionen angezeigt, die während der Gültigkeitsdauer Ihrer AppSource-Angebote erfolgt sind.
-
+Wenn Sie den Veröffentlichungsverlauf für Ihr Angebot anzeigen möchten, öffnen Sie auf der linken Seite im Cloud-Partnerportal die Registerkarte **Verlauf**. Hier wird ein Verlauf der Aktionen mit Zeitstempel für Ihre AppSource-Angebote angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie sollten regelmäßig die Funktion [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) nutzen, um Einblicke in Ihre Marketplace-Kunden und die Verwendung der App zu erhalten.  
+Verwenden Sie im Cloud-Partnerportal regelmäßig die Funktion [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md), um nach nützlichen Informationen zu Ihren Marketplace-Kunden und zur Nutzung zu suchen.  

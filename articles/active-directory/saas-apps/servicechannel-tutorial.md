@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190499"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Tutorial: Azure Active Directory-Integration mit ServiceChannel
 
@@ -155,7 +155,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Configure single sign-on](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-1. Klicken Sie im Abschnitt **ServiceChannel-Konfiguration** auf **ServiceChannel konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Notieren Sie bitte die **SAML-Entitäts-ID** aus dem Abschnitt mit der **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **ServiceChannel-Konfiguration** auf **ServiceChannel konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Notieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt mit der **Kurzübersicht**.
 
 1. Für die Konfiguration des einmaligen Anmeldens auf der **ServiceChannel**-Seite müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Entitäts-ID** an das [ServiceChannel-Supportteam](https://servicechannel.zendesk.com/hc/en-us) senden. Er führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 

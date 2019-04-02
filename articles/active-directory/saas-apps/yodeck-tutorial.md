@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 071054e2ec5fead3ce6181925b3c5f4e99a26736
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7564710b282c7e2ac586980896a28c00bcb2fe80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872601"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Tutorial: Azure Active Directory-Integration mit Yodeck
 
@@ -200,7 +200,7 @@ Im Fall von Yodeck ist die Bereitstellung eine manuelle Aufgabe.
 
     b. Geben Sie im Textfeld **Nachname** den Nachnamen des Benutzers ein, z.B. **Simon**.
 
-    c. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers, z.B. **brittasimon@contoso.com**, ein.
+    c. Geben Sie im Textfeld **Email** die E-Mail-Adresse des Benutzers ein, z. B. **brittasimon\@contoso.com**.
 
     d. Wählen Sie den Anforderungen Ihrer Organisation entsprechende **Kontoberechtigungen** aus.
     

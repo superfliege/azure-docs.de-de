@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3fbbf688f6de7c3fceb6695a6b085f917dbec242
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195795"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216890"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>Aktualisieren eines vorhandenen Azure-Anwendungsangebots
 
@@ -75,6 +75,9 @@ Führen Sie die folgenden Schritte aus, um die mit Ihrem Angebot verknüpften Ma
 2. Suchen Sie unter **Alle Angebote** nach dem Angebot, das aktualisiert werden soll.
 3. Wechseln Sie zur Registerkarte **Marketplace**. Nehmen Sie entsprechend den Anweisungen unter [Veröffentlichen eines Azure-Anwendungsangebots](./cpp-publish-offer.md) Metadatenänderungen vor.
 4. Wählen Sie **Veröffentlichen** aus, um den Workflow zum Veröffentlichen Ihrer Änderungen zu starten.
+ 
+>[!Note]
+>Die Nutzung des Cloud Solution Provider (CSP)-Partnerkanals ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
 
 ## <a name="deleting-an-existing-offer"></a>Löschen eines vorhandenen Angebots
 

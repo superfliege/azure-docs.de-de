@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881128"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
@@ -35,7 +35,7 @@ Mit Azure-Diagnoseprotokollen können Sie Metriken zur grundlegenden Nutzung von
 
 - Exportieren von Daten in Blobspeicher, Exportieren in eine CSV-Datei und Generieren von Diagrammen in Excel
 - Exportieren von Daten nach Event Hubs und Korrelieren mit Daten von anderen Azure-Diensten
-- Exportieren von Daten nach Log Analytics und Anzeigen von Daten in Ihrem eigenen Log Analytics-Arbeitsbereich
+- Exportieren von Daten in Azure Monitor-Protokolle und Anzeigen von Daten im eigenen Log Analytics-Arbeitsbereich
 
 Im folgenden Diagramm ist eine typische Datenansicht der CDN-Basisanalyse dargestellt.
 
@@ -45,11 +45,13 @@ Im folgenden Diagramm ist eine typische Datenansicht der CDN-Basisanalyse darges
 
 Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="enable-logging-with-the-azure-portal"></a>Aktivieren der Protokollierung über das Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um die Protokollierung mit der CDN-Basisanalyse zu aktivieren:
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. Wenn Sie CDN für Ihren Workflow noch nicht aktiviert haben, [Erstellen Sie ein Azure CDN-Profil und einen Endpunkt](cdn-create-new-endpoint.md), bevor Sie fortfahren.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie CDN für Ihren Workflow noch nicht aktiviert haben, [Erstellen Sie ein Azure CDN-Profil und einen Endpunkt](cdn-create-new-endpoint.md), bevor Sie fortfahren.
 
 1. Navigieren Sie im Azure-Portal zum **CDN-Profil**.
 
@@ -85,15 +87,15 @@ Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der P
 
 5. Wenn Sie alle erforderlichen Diagnoseprotokolleinstellungen vorgenommen haben, wählen Sie **Speichern**.
 
-### <a name="logging-with-log-analytics"></a>Protokollierung mit Log Analytics
+### <a name="logging-with-azure-monitor"></a>Protokollierung mit Azure Monitor
 
-Führen Sie die folgenden Schritte aus, um Log Analytics zum Speichern der Protokolle zu verwenden:
+Führen Sie die folgenden Schritte aus, um Azure Monitor zum Speichern der Protokolle zu verwenden:
 
 1. Aktivieren Sie auf der Seite **Diagnoseprotokolle** die Option **An Log Analytics senden**. 
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Wählen Sie **Konfigurieren** aus, um die Log Analytics-Protokollierung zu konfigurieren. 
+2. Wählen Sie **Konfigurieren** aus, um die Azure Monitor-Protokollierung zu konfigurieren. 
 
    Die Seite **Log Analytics-Arbeitsbereiche** wird angezeigt.
 
@@ -133,7 +135,7 @@ Führen Sie die folgenden Schritte aus, um Log Analytics zum Speichern der Proto
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    Ihr Log Analytics-Arbeitsbereich ist nun bereit zur Datenprotokollierung. Zum Nutzen dieser Daten müssen Sie eine [Log Analytics-Lösung](#consuming-diagnostics-logs-from-a-log-analytics-workspace) verwenden, die später in diesem Artikel behandelt wird.
+    Ihr Log Analytics-Arbeitsbereich ist nun bereit zur Datenprotokollierung. Zum Nutzen dieser Daten müssen Sie eine [Azure Monitor-Protokolllösung](#consuming-diagnostics-logs-from-a-log-analytics-workspace) verwenden, die später in diesem Artikel behandelt wird.
 
 Weitere Informationen zu Protokolldatenverzögerungen finden Sie unter [Protokolldatenverzögerungen](#log-data-delays).
 
@@ -168,7 +170,7 @@ Das folgende Beispiel zeigt, wie Sie Diagnoseprotokolle über die Azure PowerShe
 In diesem Abschnitt werden das Schema der CDN-Basisanalyse und die Organisation innerhalb eines Azure-Speicherkontos beschrieben, und er enthält Beispielcode zum Herunterladen der Protokolle in einer CSV-Datei.
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Verwenden des Microsoft Azure Storage-Explorers
-Bevor Sie im Azure-Speicherkonto auf die Basisanalysedaten zugreifen können, benötigen Sie zuerst ein Tool zum Zugreifen auf den Inhalt in einem Speicherkonto. Auf dem Markt sind verschiedene Tools erhältlich, aber wir empfehlen Ihnen die Verwendung des Microsoft Azure Storage-Explorers. Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](http://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
+Bevor Sie im Azure-Speicherkonto auf die Basisanalysedaten zugreifen können, benötigen Sie zuerst ein Tool zum Zugreifen auf den Inhalt in einem Speicherkonto. Auf dem Markt sind verschiedene Tools erhältlich, aber wir empfehlen Ihnen die Verwendung des Microsoft Azure Storage-Explorers. Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](https://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
 
 1.  Öffnen Sie den **Microsoft Azure Storage-Explorer**.
 2.  Ermitteln Sie das Speicherkonto.
@@ -204,16 +206,16 @@ Um den Zugriff auf Basisanalysen zu erleichtern, wird Beispielcode für ein Tool
 
 Sie können das Tool wie folgt verwenden:
 
-1.  Nutzen Sie den GitHub-Link: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Nutzen Sie den GitHub-Link: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Laden Sie den Code herunter.
 3.  Befolgen Sie die Anleitung zum Kompilieren und Konfigurieren.
 4.  Führen Sie das Tool aus.
 5.  In der sich ergebenden CSV-Datei werden die Analysedaten in einer einfachen flachen Hierarchie angezeigt.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Nutzen von Diagnoseprotokollen aus einem Log Analytics-Arbeitsbereich
-Log Analytics ist ein Azure-Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
+Azure Monitor ist ein Azure-Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
 
-Für die Verwendung von Log Analytics müssen Sie die [Protokollierung im Azure Log Analytics-Arbeitsbereich aktivieren](#enable-logging-with-azure-storage). Dies wurde weiter oben in diesem Artikel beschrieben.
+Für die Verwendung von Azure Monitor müssen Sie die [Protokollierung im Azure Log Analytics-Arbeitsbereich aktivieren](#enable-logging-with-azure-storage). Dies wurde weiter oben in diesem Artikel beschrieben.
 
 ### <a name="using-the-log-analytics-workspace"></a>Verwenden des Log Analytics-Arbeitsbereichs
 
@@ -225,11 +227,11 @@ Für die Verwendung von Log Analytics müssen Sie die [Protokollierung im Azure 
 
 Sie können die Daten mithilfe von Verwaltungslösungen auf unterschiedliche Weise anzeigen. Sie erhalten die Verwaltungslösungen über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie unten in jeder Lösung den Link **Jetzt herunterladen** auswählen.
+Sie können Überwachungslösungen aus Azure Marketplace installieren, indem Sie unten in jeder Lösung den Link **Jetzt herunterladen** auswählen.
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>Hinzufügen einer Log Analytics-CDN-Verwaltungslösung
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Hinzufügen einer Azure Monitor-CDN-Überwachungslösung
 
-Führen Sie diese Schritte aus, um eine Log Analytics-Verwaltungslösung hinzuzufügen:
+Führen Sie die folgenden Schritte aus, um eine Azure Monitor-Überwachungslösung hinzuzufügen:
 
 1.   Melden Sie sich mit Ihrem Azure-Abonnement beim Azure-Portal an, und navigieren Sie zu Ihrem Dashboard.
     ![Azure-Dashboard](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -443,7 +445,7 @@ Beispiele für Eigenschaften:
 
 * [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Analysieren von Azure CDN-Verwendungsmustern](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics-REST-API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

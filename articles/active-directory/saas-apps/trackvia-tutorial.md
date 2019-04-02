@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4c90b6f9fd8b968ceb0e241649ddbcf1c2e1cb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a15284b0176b7148055812ce5a642ec38e67d53b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189112"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Tutorial: Azure Active Directory-Integration mit TrackVia
 
@@ -136,7 +136,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der TrackVia-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie auf der TrackVia-Website auf die Einstellung **My Account** (Mein Konto), und klicken Sie dann auf die Registerkarte **Single Sign On** (Einmaliges Anmelden). Führen Sie die folgenden Schritte aus:
+1. Klicken Sie auf der TrackVia-Website auf die Einstellung **My Account** (Mein Konto), und wählen Sie dann die Registerkarte **Single Sign On** (Einmaliges Anmelden) aus. Führen Sie die folgenden Schritte aus:
 
     ![TrackVia-Konfiguration](./media/trackvia-tutorial/configure1.png)
 

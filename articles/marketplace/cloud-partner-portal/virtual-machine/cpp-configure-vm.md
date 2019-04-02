@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833500"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurieren der in Azure gehosteten VM
 
@@ -28,7 +28,8 @@ In diesem Artikel wird beschrieben, wie Sie für einen in Azure gehosteten virtu
 
 ## <a name="sizing-the-vhds"></a>Festlegen der Größe von VHDs
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Wenn Sie eine der VMs ausgewählt haben, die mit einem Betriebssystem (und optional weiteren Diensten) vorkonfiguriert sind, verfügen Sie bereits über eine Azure-VM mit einer Standardgröße. Eine Beschreibung finden Sie unter [Registerkarte für VM-SKUs](./cpp-skus-tab.md).  Ein Starten Ihrer Lösung mit einem vorkonfigurierten Betriebssystem ist die empfohlene Vorgehensweise.  Wenn Sie ein Betriebssystem aber manuell installieren, müssen Sie die Größe Ihrer primären VHD in Ihrem VM-Image festlegen:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+Wenn Sie einen der virtuellen Computer ausgewählt haben, die mit einem Betriebssystem (und optional weiteren Diensten) vorkonfiguriert sind, verfügen Sie bereits über eine Azure-VM mit einer Standardgröße. Eine Beschreibung finden Sie unter [Registerkarte für VM-SKUs](./cpp-skus-tab.md).  Ein Starten Ihrer Lösung mit einem vorkonfigurierten Betriebssystem ist die empfohlene Vorgehensweise.  Wenn Sie ein Betriebssystem aber manuell installieren, müssen Sie die Größe Ihrer primären VHD in Ihrem VM-Image festlegen:
 
 - Für Windows sollte die Betriebssystem-VHD als virtuelle Festplatte mit 127 bis 128 GB und einem festen Format erstellt werden. 
 - Für Linux sollte diese VHD als virtuelle Festplatte mit 30 bis 50 GB und einem festen Format erstellt werden.
@@ -44,7 +45,7 @@ Die Basisimages von Betriebssystem-VMs enthalten die aktuellen Updates bis zum V
 
 Führen Sie für Windows Server 2016 den Befehl **Nach Updates suchen** aus.  Informationen zu älteren Versionen von Windows finden Sie unter [Beziehen von Updates über Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows Update installiert automatisch die aktuellen kritischen und wichtigen Sicherheitsupdates.
 
-Für Linux-Distributionen werden Updates normalerweise mit einem Befehlszeilentool oder grafischen Hilfsprogramm heruntergeladen und installiert.  Unter Ubuntu Linux können beispielsweise der Befehl [apt-get](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) und das Tool [Update Manager](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) zum Aktualisieren des Betriebssystems verwendet werden.
+Für Linux-Distributionen werden Updates normalerweise mit einem Befehlszeilentool oder grafischen Hilfsprogramm heruntergeladen und installiert.  Unter Ubuntu Linux können beispielsweise der Befehl [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) und das Tool [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) zum Aktualisieren des Betriebssystems verwendet werden.
 
 
 ## <a name="perform-additional-security-checks"></a>Durchführen von zusätzlichen Sicherheitsüberprüfungen
@@ -72,7 +73,7 @@ Windows-Betriebssystemdatenträger werden mit dem [Sysprep-Tool](https://docs.mi
 > [!WARNING]
 >  Da Updates unter Umständen automatisch ausgeführt werden, sollten Sie die VM nach der Ausführung von Sysprep bis zur Bereitstellung herunterfahren.  Durch das Herunterfahren wird vermieden, dass nachfolgende Updates instanzspezifische Änderungen am VHD-Betriebssystem oder den installierten Diensten vornehmen.
 
-Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD] (https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd).
+Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd).
 
 ### <a name="linux"></a>Linux
 

@@ -2,28 +2,26 @@
 title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen in Azure – Azure Governance
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 author: rthorn17
-manager: rithorn
 ms.service: azure-resource-manager
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/20/2018
+ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342580"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990534"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
-Bei Verwaltungsgruppen handelt es sich um Container, mit denen Sie Zugriff, Richtlinien und Konformität abonnementübergreifend verwalten können. Sie können diese Container ändern, löschen und verwalten, um Hierarchien zu erhalten, die mit [Azure Policy](../policy/overview.md) und mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure](../../role-based-access-control/overview.md) verwendet werden können. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
+Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancebedingungen auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Bedingungen.
 
-Wenn Sie Änderungen an einer Verwaltungsgruppe vornehmen möchten, müssen Sie Mitglied der Rolle „Besitzer“ oder „Mitwirkender“ für die Verwaltungsgruppe sein. Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.  Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>Ändern des Namens einer Verwaltungsgruppe
 
@@ -49,10 +47,10 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 
 ### <a name="change-the-name-in-powershell"></a>Ändern des Namens in PowerShell
 
-Verwenden Sie zum Aktualisieren des Anzeigenamens den Befehl **Update-AzureRmManagementGroup**. Wenn Sie beispielsweise den Namen einer Verwaltungsgruppe von „Contoso IT“ in „Contoso Group“ ändern möchten, führen Sie den folgenden Befehl aus:
+Verwenden Sie zum Aktualisieren des Anzeigenamens den Befehl **Update-AzManagementGroup**. Wenn Sie beispielsweise den Anzeigenamen einer Verwaltungsgruppe von „Contoso IT“ in „Contoso Group“ ändern möchten, führen Sie den folgenden Befehl aus:
 
 ```azurepowershell-interactive
-Update-AzureRmManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
+Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
 ```
 
 ### <a name="change-the-name-in-azure-cli"></a>Ändern des Namens über die Azure CLI
@@ -73,7 +71,7 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
    - Informationen zum Verschieben einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen in der Hierarchie](#Move-management-groups-in-the-hierarchy).
 
-1. Sie haben Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“ oder „Mitwirkender“ für die Verwaltungsgruppe). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
+1. Sie haben Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Löschen im Portal
 
@@ -85,7 +83,8 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 1. Wählen Sie **Löschen** aus.
 
-   - Wenn das Symbol abgeblendet ist, zeigen Sie mit der Maus darauf, um den Grund dafür anzuzeigen.
+    > [!TIP]
+    > Wenn das Symbol abgeblendet ist, zeigen Sie mit der Maus darauf, um den Grund dafür anzuzeigen.
 
    ![Option zum Löschen der Gruppe](./media/delete.png)
 
@@ -97,10 +96,10 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 ### <a name="delete-in-powershell"></a>Löschen in PowerShell
 
-Verwenden Sie zum Löschen von Verwaltungsgruppen den Befehl **Remove-AzureRmManagementGroup** in PowerShell.
+Verwenden Sie zum Löschen von Verwaltungsgruppen in PowerShell den Befehl **Remove-AzManagementGroup**.
 
 ```azurepowershell-interactive
-Remove-AzureRmManagementGroup -GroupName 'Contoso'
+Remove-AzManagementGroup -GroupName 'Contoso'
 ```
 
 ### <a name="delete-in-azure-cli"></a>Löschen über die Azure-Befehlszeilenschnittstelle
@@ -121,24 +120,59 @@ Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geer
 
 1. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
 
-1. Die Hierarchieseite der Verwaltungsgruppe wird geladen, auf der Sie alle Verwaltungsgruppen und Abonnements einsehen können, auf die Sie Zugriff haben. Durch Auswahl des Gruppennamens gelangen Sie eine Ebene in der Hierarchie nach unten. Die Navigation funktioniert genauso wie im Datei-Explorer.
+1. Die Seite mit der Hierarchie der Verwaltungsgruppe wird geladen. Hier können Sie alle Verwaltungsgruppen und Abonnements untersuchen, auf die Sie Zugriff haben. Durch Auswahl des Gruppennamens gelangen Sie eine Ebene in der Hierarchie nach unten. Die Navigation funktioniert genauso wie im Datei-Explorer.
+
+1. Um die Details der Verwaltungsgruppe zu sehen, wählen Sie den Link **(Details)** neben dem Titel der Verwaltungsgruppe. Wenn dieser Link nicht verfügbar ist, sind Sie zum Anzeigen dieser Verwaltungsgruppe nicht berechtigt.
 
    ![Main](./media/main.png)
 
-1. Um die Details der Verwaltungsgruppe zu sehen, wählen Sie den Link **(Details)** neben dem Titel der Verwaltungsgruppe. Wenn dieser Link nicht verfügbar ist, sind Sie zum Anzeigen dieser Verwaltungsgruppe nicht berechtigt.  
-
 ### <a name="view-in-powershell"></a>Anzeigen in PowerShell
 
-Mit dem Befehl „Get-AzureRmManagementGroup“ rufen Sie alle Gruppen ab.  
+Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab.  Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in Powershell für Verwaltungsgruppen.  
 
 ```azurepowershell-interactive
-Get-AzureRmManagementGroup
+Get-AzManagementGroup
 ```
 
 Verwenden Sie den Parameter „-GroupName“, um die Informationen einer einzelnen Verwaltungsgruppe anzuzeigen.
 
 ```azurepowershell-interactive
-Get-AzureRmManagementGroup -GroupName 'Contoso'
+Get-AzManagementGroup -GroupName 'Contoso'
+```
+
+Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verwaltungsgruppe und die untergeordnete Hierarchie mit allen Ebenen zurückzugeben.  
+
+```azurepowershell-interactive
+PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response
+
+Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
+Type              : /providers/Microsoft.Management/managementGroups
+Name              : TestGroupParent
+TenantId          : 00000000-0000-0000-0000-000000000000
+DisplayName       : TestGroupParent
+UpdatedTime       : 2/1/2018 11:15:46 AM
+UpdatedBy         : 00000000-0000-0000-0000-000000000000
+ParentId          : /providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000
+ParentName        : 00000000-0000-0000-0000-000000000000
+ParentDisplayName : 00000000-0000-0000-0000-000000000000
+Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
+
+PS C:\> $response.Children[0]
+
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestGroup1
+Name        : TestGroup1
+DisplayName : TestGroup1DisplayName
+Children    : {TestRecurseChild}
+
+PS C:\> $response.Children[0].Children[0]
+
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestRecurseChild
+Name        : TestRecurseChild
+DisplayName : TestRecurseChild
+Children    :
 ```
 
 ### <a name="view-in-azure-cli"></a>Anzeigen in der Azure CLI
@@ -155,17 +189,25 @@ Verwenden Sie den Befehl „show“, um die Informationen einer einzelnen Verwal
 az account management-group show --name 'Contoso'
 ```
 
+Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verwaltungsgruppe und die untergeordnete Hierarchie mit allen Ebenen zurückzugeben.
+
+```azurecli-interactive
+az account management-group show --name 'Contoso' -e -r
+```
+
 ## <a name="move-subscriptions-in-the-hierarchy"></a>Verschieben von Abonnements in der Hierarchie
 
 Ein Grund zum Erstellen einer Verwaltungsgruppe ist das Bündeln von Abonnements. Nur Verwaltungsgruppen und Abonnements können als untergeordnete Elemente einer anderen Verwaltungsgruppe festgelegt werden. Ein Abonnement, das in eine Verwaltungsgruppe verschoben wird, erbt den gesamten Benutzerzugriff und alle Richtlinien von der übergeordneten Verwaltungsgruppe.
 
-Für das Verschieben des Abonnements benötigen Sie einige Berechtigungen:
+Zum Verschieben des Abonnements müssen alle folgenden RBAC-Berechtigungen vorliegen:
 
 - Die Rolle „Besitzer“ für das untergeordnete Abonnement
-- Die Rolle „Besitzer“ oder „Mitwirkender“ für die neue übergeordnete Verwaltungsgruppe
-- Die Rolle „Besitzer“ oder „Mitwirkender“ für die alte übergeordnete Verwaltungsgruppe
+- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die übergeordnete Zielverwaltungsgruppe*
+- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die vorhandene übergeordnete Verwaltungsgruppe*
 
-Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+*: Gilt, wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe nicht die Stammverwaltungsgruppe ist. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Benutzer keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
+
+Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
 
 ### <a name="move-subscriptions-in-the-portal"></a>Verschieben von Abonnements im Portal
 
@@ -207,16 +249,16 @@ Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgr
 
 ### <a name="move-subscriptions-in-powershell"></a>Verschieben von Abonnements in PowerShell
 
-Verschieben Sie Abonnements in PowerShell mit dem Befehl „New-AzureRmManagementGroupSubscription“.  
+Verschieben Sie Abonnements in PowerShell mit dem Befehl „New-AzManagementGroupSubscription“.  
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-Verwenden Sie zum Entfernen der Verknüpfung zwischen dem Abonnement und der Verwaltungsgruppe den Befehl „Remove-AzureRmManagementGroupSubscription“.
+Verwenden Sie zum Entfernen der Verknüpfung zwischen dem Abonnement und der Verwaltungsgruppe den Befehl „Remove-AzManagementGroupSubscription“.
 
 ```azurepowershell-interactive
-Remove-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 ### <a name="move-subscriptions-in-azure-cli"></a>Verschieben von Abonnements in der Azure CLI
@@ -235,7 +277,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Verschieben von Verwaltungsgruppen in der Hierarchie  
 
-Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, werden auch alle untergeordneten Ressourcen, die Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen enthalten, mit der übergeordneten Gruppe verschoben.
+Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, wird die untergeordnete Hierarchie ebenfalls verschoben.
 
 ### <a name="move-management-groups-in-the-portal"></a>Verschieben von Verwaltungsgruppen im Portal
 
@@ -261,7 +303,7 @@ Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, werden auch alle unt
 Verwenden Sie den Befehl „Update-AzureRmManagementGroup“ in PowerShell, um eine Verwaltungsgruppe in eine andere Gruppe zu verschieben.
 
 ```azurepowershell-interactive
-Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
+Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoIT'
 ```  
 
 ### <a name="move-management-groups-in-azure-cli"></a>Verschieben von Verwaltungsgruppen in der Azure CLI
@@ -269,22 +311,34 @@ Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
 Verwenden Sie den Befehl „update“, um eine Verwaltungsgruppe mit der Azure CLI zu verschieben.
 
 ```azurecli-interactive
-az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
+az account management-group update --name 'Contoso' --parent-id '/providers/Microsoft.Management/managementGroups/ContosoIT'
 ```
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen
 
-Verwenden Sie zum Nachverfolgen von Verwaltungsgruppen über diese API die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs). Zurzeit ist es nicht möglich, PowerShell, die CLI oder das Azure-Portal zum Nachverfolgen der Verwaltungsgruppenaktivität zu verwenden.
+Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen abgefragt werden.  Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
 
-1. Als Mandantenadministrator des Azure AD-Mandanten [erhöhen Sie die Zugriffsrechte](../../role-based-access-control/elevate-access-global-admin.md), und weisen Sie dann dem überwachenden Benutzer eine Leserrolle über den Bereich `/providers/microsoft.insights/eventtypes/management` zu.
-1. Rufen Sie als überwachender Benutzer die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs) auf, um Verwaltungsgruppenaktivitäten anzuzeigen. Es wird empfohlen, für alle Verwaltungsgruppenaktivitäten nach dem Ressourcenanbieter **Microsoft.Management** zu filtern.  Beispiel:
+![Aktivitätsprotokolle mit Verwaltungsgruppen](media/al-mg.png)
 
-```xml
-GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+
+## <a name="referencing-management-groups-from-other-resource-providers"></a>Verweisen auf Verwaltungsgruppen von anderen Ressourcenanbietern
+
+Wenn Sie von den Aktionen eines anderen Ressourcenanbieters auf Verwaltungsgruppen verweisen, verwenden Sie den folgenden Pfad als Bereich. Dieser Pfad wird sowohl in PowerShell, als auch an der Azure-Befehlszeilenschnittstelle (CLI) und in REST-APIs verwendet.  
+
+>„/providers/Microsoft.Management/managementGroups/{IhreVerwaltungsgruppenID}“
+
+Das Zuweisen einer neuen Rollenzuweisung für eine Verwaltungsgruppe in PowerShell ist ein Beispiel für die Verwendung dieses Pfads.
+
+```powershell-interactive
+New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
-> [!NOTE]
-> Um diese API bequem über die Befehlszeile aufzurufen, verwenden Sie [ARMClient](https://github.com/projectkudu/ARMClient).
+Der gleiche Bereichspfad wird verwendet, wenn Sie eine Richtliniendefinition in einer Verwaltungsgruppe abrufen.
+
+```http
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -292,6 +346,6 @@ Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
 - [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](create.md)
 - [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](manage.md)
-- [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](https://aka.ms/mgPSdocs)
-- [Überprüfen von Verwaltungsgruppen in der REST-API](https://aka.ms/mgAPIdocs)
-- [Überprüfen von Verwaltungsgruppen in der Azure CLI](https://aka.ms/mgclidoc)
+- [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](/powershell/module/az.resources#resources)
+- [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/resources/managementgroups)
+- [Überprüfen von Verwaltungsgruppen in der Azure CLI](/cli/azure/account/management-group)

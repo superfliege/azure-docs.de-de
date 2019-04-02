@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 71a5233c6d5af21d7bc5430cda14e156e16d5cd4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001573"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
@@ -35,7 +35,7 @@ Um einen Überblick über Blaupausen und ihre einzelnen Phasen zu vermitteln, wi
 
 Wenn Sie eine Blaupause erstellen, fügen Sie Artefakte hinzu, speichern sie in einer Verwaltungsgruppe oder einem Abonnement und geben einen eindeutigen Namen und eine eindeutige Version an. Die Blaupause befindet nun im Modus **Entwurf** und kann noch nicht zugewiesen werden. Im Modus **Entwurf** kann sie jedoch weiter aktualisiert und geändert werden.
 
-Für eine Blaupause im Modus **Entwurf**, die bislang noch nicht veröffentlicht wurde, wird auf der Seite **Blaupausendefinitionen** ein anderes Symbol angezeigt als für Blaupausen, die bereits **veröffentlicht** wurden. Die **aktuelle Version** dieser bislang noch nicht veröffentlichten Blaupausen wird ebenfalls als **Entwurf** angezeigt.
+Für eine Blaupause im Modus **Entwurf**, die bislang noch nicht veröffentlicht wurde, wird auf der Seite **Blaupausendefinitionen** ein anderes Symbol angezeigt als für Blaupausen, die bereits **veröffentlicht** wurden. Die **aktuelle Version** dieser bislang noch nicht veröffentlichten Blaupausen wird als **Entwurf** angezeigt.
 
 Erstellen und bearbeiten Sie eine Blaupause mit dem [Azure-Portal](../create-blueprint-portal.md#create-a-blueprint) oder der [REST-API](../create-blueprint-rest-api.md#create-a-blueprint).
 
@@ -68,9 +68,9 @@ Jede Version einer Blaupause ist ein eindeutiges Objekt und kann separat mit dem
 > [!NOTE]
 > Es ist nicht möglich, Blaupausen mit aktiven Zuweisungen zu löschen. Löschen Sie zuerst die Zuweisungen und dann die Version, die entfernt werden soll.
 
-1. Klicken Sie auf **Alle Dienste**, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
-1. Wählen Sie auf der Seite auf der linken Seite **Blaupausendefinitionen** aus und verwenden Sie die Filteroptionen, um die Blaupause ausfindig zu machen, deren Version gelöscht werden soll. Klicken Sie auf diese, um die Bearbeitungsseite zu öffnen.
+1. Wählen Sie auf der linken Seite **Blaupausendefinitionen** aus, und verwenden Sie die Filteroptionen, um die Blaupause ausfindig zu machen, deren Version gelöscht werden soll. Klicken Sie auf diese, um die Bearbeitungsseite zu öffnen.
 
 1. Klicken Sie auf die Registerkarte **Veröffentlichte Versionen**, und suchen Sie die Version, die gelöscht werden soll.
 

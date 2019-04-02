@@ -1,5 +1,5 @@
 ---
-title: "Beispiel: Blaupause „ISO\_27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ – Übersicht"
+title: 'Beispiel: Blaupause „ISO 27001: ASE-/SQL-Workload“ – Übersicht'
 description: "Übersicht und Architektur des Beispiels für die Blaupause „ISO\_27001: App Service-Umgebungs-/SQL-Datenbank-Workload“."
 services: blueprints
 author: DCtheGeek
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Azure Blueprints-Beispiel für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
+# <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
 Das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ enthält zusätzliche Infrastruktur zum Blaupausenbeispiel [ISO 27001: Gemeinsame Dienste](../iso27001-shared/index.md).
 Mit dieser Blaupause können Kunden cloudbasierte Architekturen bereitstellen, die Lösungen für Szenarien liefern, in denen Anforderungen in Bezug auf die Akkreditierung oder Konformität erfüllt werden müssen.
@@ -23,7 +23,7 @@ Es gibt zwei ISO 27001-Blaupausenbeispiele: dieses Beispiel und das Blaupausenb
 
 Im Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ wird eine Webumgebung auf PaaS-Basis (Platform-as-a-Service) bereitgestellt. Die Umgebung kann zum Hosten von mehreren Webanwendungen, Web-APIs und SQL-Datenbankinstanzen verwendet werden, für die die ISO 27001-Standards eingehalten werden. Dieses Blaupausenbeispiel basiert auf dem Blaupausenbeispiel [ISO 27001: Gemeinsame Dienste](../iso27001-shared/index.md).
 
-![Beispiel: Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ – Entwurf](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+![Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“ – Entwurf](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
 Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Workloadinfrastruktur auf Grundlage von ISO 27001-Standards genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 

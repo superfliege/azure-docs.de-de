@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 084a921123badb786503ce6696eb4ace14dd59b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a26418a5159781eab96cf7730d669ccb65742d86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Tutorial: Azure Active Directory-Integration mit Pingboard
 
@@ -202,7 +202,7 @@ In diesem Abschnitt wird in Pingboard eine Benutzerin namens Britta Simon erstel
 
     a. Geben Sie im Textfeld **Full Name** den vollständigen Namen des Benutzers, z.B. **Britta Simon**, ein.
 
-    b. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers, z.B. **brittasimon@contoso.com**, ein.
+    b. Geben Sie im Textfeld **Email** die E-Mail-Adresse des Benutzers ein, z. B. **brittasimon\@contoso.com**.
 
     c. Geben Sie im Textfeld **Job Title** die Position von Britta Simon ein.
 

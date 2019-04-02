@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: d5be292c66a07f43b40d12e10e4939d9d91559e1
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 205a8dae55394a82a60f54ed32bad95324a59517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996929"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
@@ -111,37 +111,37 @@ Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
 Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
 
 ### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
+**Purpose:** Determines whether Edge Optimizer can be applied to a request.
 
 If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
 
 - The requested content must use an edge CNAME URL.
 - The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
 
-This feature requires the ADN platform and the Edge Optimizer feature.
+This feature requires the ADN platform and the Edge Optimizer feature.
 
 Value|Result
 -|-
 Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
+Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
 
-**Default Behavior:** Disabled
+**Default Behavior:** Disabled
  
 
 ### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
+**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
 
-This feature requires the ADN platform and the Edge Optimizer feature.
+This feature requires the ADN platform and the Edge Optimizer feature.
 
 Key information:
 
 - Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
 - This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
+- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
 
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
+If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
 
-**Default Behavior:** Site configurations are inactive by default.
+**Default Behavior:** Site configurations are inactive by default.
 --->
 
 ## <a name="origin-features"></a>Ursprungsfeatures
@@ -182,20 +182,21 @@ NAME | Zweck
 ---
 ### <a name="age-response-header"></a>Age Response Header
 **Zweck:** Legt fest, ob ein „Age Response Header“ in die Antwort an die anfordernde Person einbezogen wird.
+
 Wert|Ergebnis
 --|--
 Aktiviert | Der „Age Response Header“ wird in die Antwort einbezogen, die an die anfordernde Person gesendet wird.
 Deaktiviert | Der „Age Response Header“ wird aus der Antwort ausgeschlossen, die an die anfordernde Person gesendet wird.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten**: Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
-</br>
+<br>
 
 ---
 ### <a name="bandwidth-parameters"></a>Bandwidth Parameters
-**Zweck**: Bestimmt, ob Parameter zur Bandbreiteneinschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sind.
+**Zweck:**  Bestimmt, ob Parameter zur Bandbreiteneinschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sind.
 
 Parameter zur Bandbreiteneinschränkung legen fest, ob die Datenübertragungsrate für eine Clientanforderung auf eine benutzerdefinierte Rate beschränkt wird.
 
@@ -204,7 +205,7 @@ Wert|Ergebnis
 Aktiviert|Erlaubt den POPs, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
 Deaktiviert|Veranlasst die POPs, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Bandbreiteneinschränkung) verarbeitet.
 
-**Standardverhalten:** Aktiviert.
+**Standardverhalten:** Aktiviert.
  
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -212,7 +213,7 @@ Deaktiviert|Veranlasst die POPs, Parameter zur Bandbreitendrosselung zu ignorier
 
 ---
 ### <a name="bandwidth-throttling"></a>Bandwidth Throttling
-**Zweck:** Drosselt die Bandbreite für die Antwort, die von den POPs bereitgestellt wird.
+**Zweck:** Drosselt die Bandbreite für die Antwort, die von den POPs bereitgestellt wird.
 
 Beide der folgenden Optionen müssen definiert werden, um die Bandbreitendrosselung ordnungsgemäß einzurichten.
 
@@ -221,7 +222,7 @@ Option|BESCHREIBUNG
 Kbytes per second|Legen Sie diese Option auf die maximale Bandbreite (KB pro Sekunde) fest, die zum Übermitteln der Antwort verwendet werden kann.
 Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die POPs warten sollen, bis die Bandbreite gedrosselt wird. Der Zweck dieses Zeitraums mit uneingeschränkter Bandbreite besteht darin zu verhindern, dass bei einem Media Player aufgrund der Bandbreitendrosselung die Wiedergabe stottert oder Pufferprobleme auftreten.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -229,7 +230,7 @@ Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die 
 
 ---
 ### <a name="bypass-cache"></a>Bypass Cache
-**Zweck:** Bestimmt, ob die Anforderung das Zwischenspeichern umgehen soll.
+**Zweck:** Bestimmt, ob die Anforderung das Zwischenspeichern umgehen soll.
 
 Wert|Ergebnis
 --|--
@@ -238,10 +239,10 @@ Deaktiviert|Hiermit werden Assets entsprechend der in den Antwortheadern definie
 
 **Standardverhalten:**
 
-- **HTTP Large:** deaktiviert
+- **HTTP Large:** Deaktiviert
 
 <!---
-- **ADN:** Enabled
+- **ADN:** Enabled
 
 --->
 
@@ -251,7 +252,7 @@ Deaktiviert|Hiermit werden Assets entsprechend der in den Antwortheadern definie
 
 ---
 ### <a name="cacheable-http-methods"></a>Cacheable HTTP Methods
-**Zweck:** Legt zusätzliche HTTP-Methoden fest, die im Netzwerk zwischengespeichert werden können.
+**Zweck:** Legt zusätzliche HTTP-Methoden fest, die im Netzwerk zwischengespeichert werden können.
 
 Wichtige Informationen:
 
@@ -259,7 +260,7 @@ Wichtige Informationen:
 - Dieses Feature unterstützt nur die POST HTTP-Methode. Aktivieren Sie die Zwischenspeicherung von POST-Antworten, indem Sie dieses Feature auf `POST` festlegen.
 - Standardmäßig werden nur Anforderungen zwischengespeichert, deren Text kleiner als 14 KB ist. Verwenden Sie das Feature „Cacheable Request Body Size“, um die maximale Größe des Anforderungstexts festzulegen.
 
-**Standardverhalten:** Nur GET-Antworten werden zwischengespeichert.
+**Standardverhalten:** Nur GET-Antworten werden zwischengespeichert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -267,7 +268,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="cacheable-request-body-size"></a>Cacheable Request Body Size
-**Zweck:** Definiert den Schwellenwert, um zu bestimmen, ob eine POST-Antwort zwischengespeichert werden kann.
+**Zweck:** Definiert den Schwellenwert, um zu bestimmen, ob eine POST-Antwort zwischengespeichert werden kann.
 
 Dieser Schwellenwert wird durch die Angabe einer maximalen Größe für den Anforderungstext festgelegt. Anforderungen, die einen größeren Anforderungstext enthalten, werden nicht zwischengespeichert.
 
@@ -278,10 +279,10 @@ Wichtige Informationen:
     - x-www-form-urlencoded values
     - Sicherstellen eines eindeutigen Cacheschlüssels
 - Das Definieren einer großen maximalen Anforderungstextgröße kann die Leistung bei der Datenübermittlung beeinträchtigen.
-    - **Empfohlener Wert:** 14 Kb
-    - **Mindestwert:** 1 Kb
+    - **Empfohlener Wert:** 14 Kb
+    - **Mindestwert:** 1 Kb
 
-**Standardverhalten:** 14 Kb
+**Standardverhalten:** 14 Kb
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -289,18 +290,18 @@ Wichtige Informationen:
 
 ---
 ### <a name="cache-control-header-treatment"></a>Cache-Control Header Treatment
-**Zweck:** Steuert die Generierung von `Cache-Control`-Headern durch den POP, wenn das Feature „External Max-Age“ aktiv ist.
+**Zweck:** Steuert die Generierung von `Cache-Control` -Headern durch den POP, wenn das Feature „External Max-Age“ aktiv ist.
 
 Die einfachste Möglichkeit zum Erreichen dieser Art der Konfiguration besteht darin, die Features „External Max-Age“ und „Cache-Control Header Treatment“ in derselben Anweisung zu verwenden.
 
 Wert|Ergebnis
 --|--
-Überschreiben|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/> – Überschreibt den vom Ursprungsserver generierten `Cache-Control`-Header. <br/>– Fügt der Antwort den `Cache-Control`-Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
-Pass Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Cache-Control`-Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Cache-Control`-Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/> Wenn der Ursprungsserver keinen `Cache-Control`-Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Cache-Control`-Header enthält.
-Add if Missing|Wenn vom Ursprungsserver kein `Cache-Control`-Header empfangen wurde, fügt diese Option den `Cache-Control`-Header hinzu, der vom Feature „External Max-Age“ generiert wird. Diese Option ist hilfreich, um sicherzustellen, dass allen Objekten ein `Cache-Control`-Header zugewiesen wird.
-Remove (Entfernen)| Diese Option stellt sicher, dass in der Headerantwort kein `Cache-Control`-Header enthalten ist. Wenn ein `Cache-Control`-Header bereits zugewiesen wurde, wird er aus der Headerantwort entfernt.
+Überschreiben|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/> – Überschreibt den vom Ursprungsserver generierten `Cache-Control` -Header. <br/>– Fügt der Antwort den `Cache-Control` -Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
+Pass Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Cache-Control` -Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Cache-Control` -Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/> Wenn der Ursprungsserver keinen `Cache-Control` -Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Cache-Control` -Header enthält.
+Add if Missing|Wenn vom Ursprungsserver kein `Cache-Control` -Header empfangen wurde, fügt diese Option den `Cache-Control` -Header hinzu, der vom Feature „External Max-Age“ generiert wird. Diese Option ist hilfreich, um sicherzustellen, dass allen Objekten ein `Cache-Control` -Header zugewiesen wird.
+Remove (Entfernen)| Diese Option stellt sicher, dass in der Headerantwort kein `Cache-Control` -Header enthalten ist. Wenn ein `Cache-Control` -Header bereits zugewiesen wurde, wird er aus der Headerantwort entfernt.
 
-**Standardverhalten:** Überschreiben.
+**Standardverhalten:** Überschreiben.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -308,14 +309,14 @@ Remove (Entfernen)| Diese Option stellt sicher, dass in der Headerantwort kein `
 
 ---
 ### <a name="cache-key-query-string"></a>Cache-Key Query String
-**Zweck**: Bestimmt, ob der Cacheschlüssel Abfragezeichenfolgenparameter, die einer Anforderung zugeordnet sind, ein- oder ausschließt.
+**Zweck:** Bestimmt, ob der Cacheschlüssel Abfragezeichenfolgenparameter, die einer Anforderung zugeordnet sind, ein- oder ausschließt.
 
 Wichtige Informationen:
 
 - Geben Sie mindestens einen Namen von Abfragezeichenfolgenparametern an, und trennen Sie mehrere Parameternamen durch ein einzelnes Leerzeichen.
 - Dieses Feature legt fest, ob Abfragezeichenfolgenparameter in den Cacheschlüssel einbezogen oder davon ausgeschlossen werden. In der nachfolgenden Tabelle werden zu jeder Option zusätzliche Informationen bereitgestellt.
 
-Typ|BESCHREIBUNG
+Type|BESCHREIBUNG
 --|--
  Include|  Gibt an, dass jeder angegebene Parameter in den Cacheschlüssel einbezogen werden soll. Ein eindeutiger Cacheschlüssel wird für jede Anforderung generiert, die einen eindeutigen Wert für einen in diesem Feature definierten Abfragezeichenfolgenparameter enthält. 
  Include All  |Gibt an, dass ein eindeutiger Cacheschlüssel für jede Anforderung an ein Objekt erstellt wird, die eine eindeutige Abfragezeichenfolge enthält. Von dieser Art der Konfiguration wird in der Regel abgeraten, da sie zu einem geringen Prozentsatz an Cachetreffern führen könnte. Eine geringe Anzahl von Cachetreffern erhöht die Auslastung des Ursprungsservers, da er mehr Anforderungen verarbeiten muss. Diese Konfiguration dupliziert das Zwischenspeicherungsverhalten, das auf der Seite „Query-String Caching“ als „unique-cache“ bezeichnet wird. 
@@ -333,15 +334,15 @@ Um das als „no-cache“ bezeichnete Verhalten für das Zwischenspeichern von A
 
 Das folgende Verwendungsbeispiel für dieses Feature umfasst eine Beispielanforderung und den Standardcacheschlüssel:
 
-- **Beispielanforderung:** http://wpc.0001.&lt;Domäne&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=DE&userid=01
-- **Standardcacheschlüssel:** /800001/Origin/folder/asset.htm
+- **Beispielanforderung:** http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **Standardcacheschlüssel:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Include
 
 Konfigurationsbeispiel:
 
-- **Typ:** Include
-- **Parameter:** language
+- **Typ:** Einschließen
+- **Parameter:** Sprache
 
 Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abfragezeichenfolgenparameter generiert:
 
@@ -351,7 +352,7 @@ Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abf
 
 Konfigurationsbeispiel:
 
-- **Typ:** Include All
+- **Typ:** Alle einschließen
 
 Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abfragezeichenfolgenparameter generiert:
 
@@ -361,8 +362,8 @@ Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abf
 
 Konfigurationsbeispiel:
 
-- **Typ:** Exclude
-- **Parameter:** sessionid userid
+- **Typ:** Ausschließen
+- **Parameter:** sessionid userid
 
 Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abfragezeichenfolgenparameter generiert:
 
@@ -372,7 +373,7 @@ Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abf
 
 Konfigurationsbeispiel:
 
-- **Typ:** Exclude All
+- **Typ:** Alle Ausschließen
 
 Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abfragezeichenfolgenparameter generiert:
 
@@ -384,7 +385,7 @@ Durch diese Art der Konfiguration wird der folgende Cacheschlüssel für den Abf
 
 ---
 ### <a name="cache-key-rewrite"></a>Cache-Key Rewrite
-**Zweck:** Schreibt den einer Anforderung zugeordneten Cacheschlüssel neu.
+**Zweck:** Schreibt den einer Anforderung zugeordneten Cacheschlüssel neu.
 
 Ein Cacheschlüssel ist der relative Pfad, der ein Asset zum Zweck der Zwischenspeicherung identifiziert. Die Server suchen also in dem Pfad, der durch den zugehörigen Cacheschlüssel definiert wird, nach einer zwischengespeicherten Version eines Objekts.
 
@@ -393,8 +394,9 @@ Konfigurieren Sie dieses Feature durch Definieren der beiden folgenden Optionen:
 Option|BESCHREIBUNG
 --|--
 Original Path| Definieren Sie den relativen Pfad für die Typen von Anforderungen, deren Cacheschlüssel umgeschrieben wird. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden.
-New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden. Dieser relative Pfad kann durch die Verwendung von [HTTP-Variablen](cdn-http-variables.md) dynamisch zusammengestellt werden.
-**Standardverhalten:** Der Cacheschlüssel einer Anforderung wird durch den Anforderungs-URI festgelegt.
+New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden. Dieser relative Pfad kann durch die Verwendung von  [HTTP-Variablen](cdn-http-variables.md) dynamisch zusammengestellt werden.
+
+**Standardverhalten:** Der Cacheschlüssel einer Anforderung wird durch den Anforderungs-URI festgelegt.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -402,7 +404,7 @@ New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein r
 
 ---
 ### <a name="comment"></a>Comment
-**Zweck:** Erlaubt das Hinzufügen eines Hinweises in einer Regel.
+**Zweck:** Erlaubt das Hinzufügen eines Hinweises in einer Regel.
 
 Ein Einsatzbereich für dieses Feature besteht darin, zusätzliche Informationen zum allgemeinen Zweck einer Regel oder den Grund bereitzustellen, aus dem der Regel eine bestimmte Übereinstimmungsbedingung hinzugefügt wurde.
 
@@ -418,11 +420,11 @@ Wichtige Informationen:
 
 ---
 ### <a name="complete-cache-fill"></a>Complete Cache Fill
-**Zweck:** Bestimmt, was passiert, wenn eine Anforderung in einem teilweisen Cachefehler auf einem POP resultiert.
+**Zweck:** Bestimmt, was passiert, wenn eine Anforderung in einem teilweisen Cachefehler auf einem POP resultiert.
 
 Ein Teilcachefehler beschreibt den Cachestatus für ein Asset, das nicht vollständig auf einen POP heruntergeladen wurde. Wenn ein Asset nur teilweise auf einem POP zwischengespeichert wird, wird die nächste Anforderung für dieses Asset wieder an den Ursprungsserver weitergeleitet.
 <!---
-This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
+This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
 --->
 Ein Teilcachefehler tritt normalerweise auf, nachdem ein Benutzer einen Download abgebrochen hat, oder für Objekte, die ausschließlich über HTTP-Bereichsanforderungen angefordert werden. Dieses Feature eignet sich am besten für große Objekte, die von den Benutzern in der Regel nicht komplett heruntergeladen werden (beispielsweise Videos). Dieses Feature ist daher auf der HTTP Large-Plattform standardmäßig aktiviert. Auf allen anderen Plattformen ist sie deaktiviert.
@@ -434,7 +436,7 @@ Wert|Ergebnis
 Aktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der POP gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des POP.
 Deaktiviert|Verhindert, dass ein POP einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Asset aus der betreffenden Region führt dazu, dass ein POP es vom Kundenursprungsserver anfordert.
 
-**Standardverhalten:** Aktiviert.
+**Standardverhalten:** Aktiviert.
 
 #### <a name="compatibility"></a>Kompatibilität
 Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -462,7 +464,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 
 ---
 ### <a name="compress-file-types"></a>Compress File Types
-**Zweck**: Definiert die Dateiformate für die Dateien, die auf dem Server komprimiert werden.
+**Zweck:** Definiert die Dateiformate für die Dateien, die auf dem Server komprimiert werden.
 
 Ein Dateiformat kann anhand seines Internetmedientyps (beispielsweise „Content-Type“) angegeben werden. Der Internetmedientyp entspricht plattformunabhängigen Metadaten, die den Servern das Identifizieren des Dateiformats eines bestimmten Objekts ermöglichen. Eine Liste gängiger Internetmedientypen finden Sie unten.
 
@@ -473,6 +475,7 @@ text/html| HTML-Dateien
 text/css|Cascading Stylesheets (CSS)
 application/x-javascript|JavaScript
 application/javascript|JavaScript
+
 Wichtige Informationen:
 
 - Geben Sie mehrere Internetmedientypen an, indem Sie die einzelnen Typen durch ein einzelnes Leerzeichen voneinander trennen. 
@@ -487,7 +490,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="custom-log-field-1"></a>Custom Log Field 1
-**Zweck:** Legt das Format und den Inhalt fest, das bzw. der dem benutzerdefinierten Protokollfeld in einer unformatierten Protokolldatei zugewiesen wird.
+**Zweck:** Legt das Format und den Inhalt fest, das bzw. der dem benutzerdefinierten Protokollfeld in einer unformatierten Protokolldatei zugewiesen wird.
 
 Dieses benutzerdefinierte Feld ermöglicht das Festlegen, welche Anforderungs- und Antwortheaderwerte in Ihren Protokolldateien gespeichert werden.
 
@@ -508,7 +511,7 @@ Wichtige Informationen:
 - Wenn Sie mehrere Header angeben möchten, verwenden Sie zur Angabe der einzelnen Header eine Trennlinie. Beispielsweise können Sie für jeden Header eine Abkürzung verwenden:
     - AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o 
 
-**Standardwert:** -
+**Standardwert:** -
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -516,7 +519,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Debug Cache Response Headers
-**Zweck:** Legt fest, ob eine Antwort [X-EC-Debug-Antwortheader](cdn-http-debug-headers.md) mit Informationen zur Cacherichtlinie für das angeforderte Objekt enthalten kann.
+**Zweck:** Legt fest, ob eine Antwort [X-EC-Debug-Antwortheader](cdn-http-debug-headers.md) mit Informationen zur Cacherichtlinie für das angeforderte Objekt enthalten kann.
 
 „Debug Cache Response Headers“ werden in die Antwort einbezogen, wenn die folgenden beiden Bedingungen erfüllt sind:
 
@@ -525,7 +528,7 @@ Wichtige Informationen:
 
 Zum Anfordern von Debugcache-Antwortheadern müssen der folgende Header und die angegebenen Anweisungen in die Anforderung aufgenommen werden:
 
-`X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
+`X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
 **Beispiel:**
 
@@ -533,10 +536,10 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 Wert|Ergebnis
 -|-
-Aktiviert|Anforderungen für „Debug Cache Response Headers“ geben eine Antwort zurück, die den X-EC-Debug-Header enthält.
-Deaktiviert|Der „X-EC-Debug Response Header“ wird aus der Antwort ausgeschlossen.
+Aktiviert|Anforderungen für Debug Cache-Antwortheader geben eine Antwort zurück, die den X-EC-Debug-Header enthält.
+Deaktiviert|Der X-EC-Debug-Antwortheader wird aus der Antwort ausgeschlossen.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -544,21 +547,21 @@ Deaktiviert|Der „X-EC-Debug Response Header“ wird aus der Antwort ausgeschlo
 
 ---
 ### <a name="default-internal-max-age"></a>Default Internal Max-Age
-**Zweck:** Bestimmt das max-age-Standardintervall für die erneute Überprüfung des Caches von POP und Ursprungsserver. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein POP prüft, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
+**Zweck:** Bestimmt das max-age-Standardintervall für die erneute Überprüfung des Caches von POP und Ursprungsserver. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein POP prüft, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
 
 Wichtige Informationen:
 
-- Diese Aktion findet nur für Antworten von einem Ursprungsserver statt, der im `Cache-Control`- oder `Expires`-Header keinen max-age-Hinweis zugewiesen hat.
+- Diese Aktion findet nur für Antworten von einem Ursprungsserver statt, der im `Cache-Control` - oder `Expires` -Header keinen max-age-Hinweis zugewiesen hat.
 - Diese Aktion findet nicht für Medienobjekte statt, die als nicht zwischenspeicherbar eingestuft werden.
-- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum POP aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control`- oder `Expires`-Header festgelegt, der mit dem Feature „External Max-Age“ angepasst werden kann.
+- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum POP aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control` - oder `Expires` -Header festgelegt, der mit dem Feature „External Max-Age“ angepasst werden kann.
 - Die Ergebnisse dieser Aktion haben keine erkennbaren Auswirkungen auf die Antwortheader und den von POPs für Ihren Inhalt zurückgegebenen Inhalt. Sie können sich jedoch möglicherweise auf die Menge an Datenverkehr für die erneute Überprüfung auswirken, der von den POPs an Ihren Ursprungsserver gesendet wird.
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein interner Standardwert für max-age angewendet werden kann.
     - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das interne Standardintervall für max-age.
 
-- Durch Festlegen der Zeiteinheit auf „Off“ wird für Anforderungen, denen im `Cache-Control`- oder `Expires`-Header kein max-age-Hinweis zugewiesen wurde, ein internes max-age-Standardintervall von 7 Tagen festgelegt.
+- Durch Festlegen der Zeiteinheit auf „Off“ wird für Anforderungen, denen im  `Cache-Control` - oder `Expires` -Header kein max-age-Hinweis zugewiesen wurde, ein internes max-age-Standardintervall von 7 Tagen festgelegt.
 
-**Standardwert:** 7 Tage
+**Standardwert:** 7 Tage
 
 #### <a name="compatibility"></a>Kompatibilität
 Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -586,7 +589,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 
 ---
 ### <a name="deny-access-403"></a>Deny Access (403)
-**Zweck**: Legt fest, ob alle Anfragen mit der Antwort „403 – Verboten“ abgelehnt werden.
+**Zweck:** Bestimmt, ob alle Anfragen mit der Antwort „403 – Verboten“ abgelehnt werden.
 
 Wert | Ergebnis
 ------|-------
@@ -604,18 +607,18 @@ Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird dem U
 
 ---
 ### <a name="expires-header-treatment"></a>Expires Header Treatment
-**Zweck:** Steuert die Generierung von `Expires`-Headern durch einen POP, wenn das Feature „External Max-Age“ aktiv ist.
+**Zweck:** Steuert die Generierung von  `Expires` -Headern durch einen POP, wenn das Feature „External Max-Age“ aktiv ist.
 
 Die einfachste Möglichkeit zum Erreichen dieser Art der Konfiguration besteht darin, die Features „External Max-Age“ und „Expires Header Treatment“ in derselben Anweisung zu verwenden.
 
 Wert|Ergebnis
 --|--
-Überschreiben|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/>– Überschreibt den vom Ursprungsserver generierten `Expires`-Header.<br/>– Fügt der Antwort den `Expires`-Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
-Pass Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Expires`-Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Expires`-Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/>Wenn der Ursprungsserver keinen `Expires`-Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Expires`-Header enthält.
-Add if Missing| Wenn vom Ursprungsserver kein `Expires`-Header empfangen wurde, fügt diese Option den `Expires`-Header hinzu, der vom Feature „External Max-Age“ generiert wird. Diese Option ist hilfreich, um sicherzustellen, dass allen Objekten ein `Expires`-Header zugewiesen wird.
-Remove (Entfernen)| Stellt sicher, dass in der Headerantwort kein `Expires`-Header enthalten ist. Wenn ein `Expires`-Header bereits zugewiesen wurde, wird er aus der Headerantwort entfernt.
+Überschreiben|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/>– Überschreibt den vom Ursprungsserver generierten `Expires` -Header.<br/>– Fügt der Antwort den `Expires` -Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
+Pass Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Expires` -Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Expires` -Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/>Wenn der Ursprungsserver keinen `Expires` -Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Expires` -Header enthält.
+Add if Missing| Wenn vom Ursprungsserver kein `Expires` -Header empfangen wurde, fügt diese Option den `Expires` -Header hinzu, der vom Feature „External Max-Age“ generiert wird. Diese Option ist hilfreich, um sicherzustellen, dass allen Objekten ein `Expires` -Header zugewiesen wird.
+Remove (Entfernen)| Stellt sicher, dass in der Headerantwort kein `Expires` -Header enthalten ist. Wenn ein `Expires` -Header bereits zugewiesen wurde, wird er aus der Headerantwort entfernt.
 
-**Standardverhalten:** Überschreiben
+**Standardverhalten:** Überschreiben
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -623,18 +626,18 @@ Remove (Entfernen)| Stellt sicher, dass in der Headerantwort kein `Expires`-Head
 
 ---
 ### <a name="external-max-age"></a>External Max-Age
-**Zweck:** Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von Browser und POP. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Browser nach einer neuen Version eines Assets von einem POP suchen kann.
+**Zweck:** Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von Browser und POP. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein Browser nach einer neuen Version eines Assets von einem POP suchen kann.
 
-Durch Aktivieren dieses Features werden die `Cache-Control: max-age`- und `Expires`-Header von den POPs generiert und an den HTTP-Client gesendet. Standardmäßig werden die vom Ursprungsserver erstellten Header durch diese Header überschrieben. Allerdings können die Features „Cache-Control Header Treatment“ und „Expires Header Treatment“ verwendet werden, um dieses Verhalten zu ändern.
+Durch Aktivieren dieses Features werden die `Cache-Control: max-age` - und `Expires` -Header von den POPs generiert und an den HTTP-Client gesendet. Standardmäßig werden die vom Ursprungsserver erstellten Header durch diese Header überschrieben. Allerdings können die Features „Cache-Control Header Treatment“ und „Expires Header Treatment“ verwendet werden, um dieses Verhalten zu ändern.
 
 Wichtige Informationen:
 
-- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom POP zum Ursprungsserver aus. Diese Arten von erneuten Überprüfungen werden durch die vom Ursprungsserver empfangenen `Cache-Control`-und `Expires`-Header festgelegt und können mit den Features „Default Internal Max-Age“ und „Force Internal Max-Age“ angepasst werden.
+- Diese Aktion wirkt sich nicht auf erneute Cacheüberprüfungen vom POP zum Ursprungsserver aus. Diese Arten von erneuten Überprüfungen werden durch die vom Ursprungsserver empfangenen  `Cache-Control`-und `Expires` -Header festgelegt und können mit den Features „Default Internal Max-Age“ und „Force Internal Max-Age“ angepasst werden.
 - Konfigurieren Sie dieses Feature, indem Sie einen ganzzahligen Wert angeben und die gewünschte Zeiteinheit auswählen (beispielsweise Sekunden, Minuten oder Stunden).
-- Wenn Sie dieses Feature auf einen negativen Wert festlegen, senden die POPs mit jeder Antwort an den Browser den Wert `Cache-Control: no-cache` und eine `Expires`-Zeit, die in der Vergangenheit liegt. Auch wenn ein HTTP-Client die Antwort nicht zwischenspeichert, können die POPs die Antwort vom Ursprungsserver trotz dieser Einstellung zwischenspeichern.
-- Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Die mit der Antwort des Ursprungsservers zwischengespeicherten `Cache-Control`- und `Expires`-Header werden an den Browser weitergegeben.
+- Wenn Sie dieses Feature auf einen negativen Wert festlegen, senden die POPs mit jeder Antwort an den Browser den Wert `Cache-Control: no-cache`  und eine `Expires` -Zeit, die in der Vergangenheit liegt. Auch wenn ein HTTP-Client die Antwort nicht zwischenspeichert, können die POPs die Antwort vom Ursprungsserver trotz dieser Einstellung zwischenspeichern.
+- Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Die mit der Antwort des Ursprungsservers zwischengespeicherten  `Cache-Control`- und `Expires` -Header werden an den Browser weitergegeben.
 
-**Standardverhalten:** Off
+**Standardverhalten:** Aus
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -642,7 +645,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="follow-redirects"></a>Follow Redirects
-**Zweck:** Legt fest, ob Anforderungen zum Hostnamen umgeleitet werden können, der in dem vom Kundenursprungsserver zurückgegebenen Location-Header definiert ist.
+**Zweck:** Legt fest, ob Anforderungen zum Hostnamen umgeleitet werden können, der in dem vom Kundenursprungsserver zurückgegebenen Location-Header definiert ist.
 
 Wichtige Informationen:
 
@@ -653,7 +656,7 @@ Wert|Ergebnis
 Aktiviert|Anforderungen können umgeleitet werden.
 Deaktiviert|Anforderungen werden nicht umgeleitet.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -661,12 +664,12 @@ Deaktiviert|Anforderungen werden nicht umgeleitet.
 
 ---
 ### <a name="force-internal-max-age"></a>Force Internal Max-Age
-**Zweck:** Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von POP und Ursprungsserver. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein POP prüfen kann, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
+**Zweck:** Bestimmt das max-age-Intervall für die erneute Überprüfung des Caches von POP und Ursprungsserver. Mit anderen Worten: Dies ist die Zeitspanne, die verstreichen muss, bevor ein POP prüfen kann, ob ein zwischengespeichertes Asset mit dem auf dem Ursprungsserver gespeicherten Asset übereinstimmt.
 
 Wichtige Informationen:
 
-- Durch dieses Feature wird das max-age-Intervall überschrieben, das im von einem Ursprungsserver generierten `Cache-Control`- oder `Expires`-Header definiert ist.
-- Dieses Feature wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum POP aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control`- oder `Expires`-Header festgelegt.
+- Durch dieses Feature wird das max-age-Intervall überschrieben, das im von einem Ursprungsserver generierten `Cache-Control` - oder `Expires` -Header definiert ist.
+- Dieses Feature wirkt sich nicht auf erneute Cacheüberprüfungen vom Browser zum POP aus. Diese Arten von erneuten Überprüfungen werden durch den an den Browser gesendeten `Cache-Control` - oder `Expires` -Header festgelegt.
 - Dieses Feature hat keine erkennbare Auswirkungen auf die Antwort, die durch einen POP an die anfordernde Person übermittelt wird. Allerdings kann sie sich auf die Menge des Datenverkehrs auswirken, der für die erneute Überprüfung von den POPs an den Ursprungsserver gesendet wird.
 - Konfigurieren Sie dieses Feature folgendermaßen:
     - Wählen Sie den Statuscode aus, für den ein interner max-age-Wert angewendet werden kann.
@@ -674,7 +677,7 @@ Wichtige Informationen:
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Ein internes max-age-Intervall wird den angeforderten Assets nicht zugewiesen. Wenn der ursprüngliche Header keine Anweisungen für die Zwischenspeicherung enthält, wird das Asset gemäß der aktiven Einstellung im Feature „Default Internal Max-Age“ zwischengespeichert.
 
-**Standardverhalten:** Off
+**Standardverhalten:** Aus
 
 #### <a name="compatibility"></a>Kompatibilität
 Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -702,14 +705,14 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 
 ---
 ### <a name="h264-support-http-progressive-download"></a>H.264 Support (HTTP Progressive Download)
-**Zweck:** Legt die Typen von H.264-Dateiformaten fest, die zum Streamen von Inhalten verwendet werden können.
+**Zweck:** Legt die Typen von H.264-Dateiformaten fest, die zum Streamen von Inhalten verwendet werden können.
 
 Wichtige Informationen:
 
 - Definieren Sie einen durch Leerzeichen getrennten Satz mit zulässigen H.264-Dateierweiterungen in der Option „File Extensions“. Die Option „File Extensions“ setzt das Standardverhalten außer Kraft. Behalten Sie die MP4- und F4V-Unterstützung bei, indem Sie beim Festlegen dieser Option diese Dateierweiterungen einschließen. 
 - Die einzelnen Dateierweiterungen müssen jeweils mit einem Punkt angegeben werden (beispielsweise _.mp4_ oder _.f4v_).
 
-**Standardverhalten:** Standardmäßig werden MP4- und F4V-Medien von HTTP Progressive Download unterstützt.
+**Standardverhalten:** Standardmäßig werden MP4- und F4V-Medien von HTTP Progressive Download unterstützt.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -717,9 +720,9 @@ Wichtige Informationen:
 
 ---
 ### <a name="honor-no-cache-request"></a>Honor No-Cache Request
-**Zweck:** Legt fest, ob no-cache-Anforderungen eines HTTP-Clients an den Ursprungsserver weitergeleitet werden.
+**Zweck:** Legt fest, ob no-cache-Anforderungen eines HTTP-Clients an den Ursprungsserver weitergeleitet werden.
 
-Eine no-cache-Anforderung erfolgt, wenn der HTTP-Client in der HTTP-Anforderung einen `Cache-Control: no-cache`- und/oder `Pragma: no-cache`-Header sendet.
+Eine no-cache-Anforderung erfolgt, wenn der HTTP-Client in der HTTP-Anforderung einen `Cache-Control: no-cache` - und/oder `Pragma: no-cache` -Header sendet.
 
 Wert|Ergebnis
 --|--
@@ -728,9 +731,9 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird verhin
 
 Für den gesamten Produktionsdatenverkehr wird dringend empfohlen, dieses Feature in seinem Standardzustand (deaktiviert) zu belassen. Andernfalls werden die Ursprungsserver nicht vor Endbenutzern, die beim Aktualisieren von Webseiten versehentlich viele no-cache-Anforderungen auslösen können, oder vor den zahlreichen beliebten Media Playern geschützt, die so codiert sind, dass bei jeder Videoanforderung ein no-cache-Header mitgesendet wird. Trotzdem kann es von Vorteil sein, diese Funktion auf bestimmte nicht produktive Staging- oder Testverzeichnisse anzuwenden, damit neuer Inhalt bei Bedarf vom Ursprungsserver abgerufen werden kann.
 
-Der Cachestatus, der für eine Anforderung gemeldet wird, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden kann, lautet `TCP_Client_Refresh_Miss`. Der Cachestatusbericht, der im Kernberichtsmodul verfügbar ist, stellt Statistikinformationen nach Cachestatus bereit. Anhand dieses Berichts können Sie die Anzahl und den Prozentsatz von Anforderungen nachverfolgen, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden.
+Der Cachestatus, der für eine Anforderung gemeldet wird, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden kann, lautet  `TCP_Client_Refresh_Miss`. Der Cachestatusbericht, der im Kernberichtsmodul verfügbar ist, stellt Statistikinformationen nach Cachestatus bereit. Anhand dieses Berichts können Sie die Anzahl und den Prozentsatz von Anforderungen nachverfolgen, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -738,7 +741,7 @@ Der Cachestatus, der für eine Anforderung gemeldet wird, die aufgrund dieses Fe
 
 ---
 ### <a name="ignore-origin-no-cache"></a>Ignore Origin No-Cache
-**Zweck:** Legt fest, ob das CDN die folgenden Anweisungen ignoriert, die von einem Ursprungsserver bereitgestellt werden:
+**Zweck:** Legt fest, ob das CDN die folgenden Anweisungen ignoriert, die von einem Ursprungsserver bereitgestellt werden:
 
 - `Cache-Control: private`
 - `Cache-Control: no-store`
@@ -751,7 +754,7 @@ Wichtige Informationen:
 - Der Satz gültiger Statuscodes für dieses Feature ist: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 und 505.
 - Deaktivieren Sie diese Funktion, indem Sie sie auf einen leeren Wert festlegen.
 
-**Standardverhalten:** Standardmäßig werden die oben genannten Anweisungen berücksichtigt.
+**Standardverhalten:** Standardmäßig werden die oben genannten Anweisungen berücksichtigt.
 
 #### <a name="compatibility"></a>Kompatibilität
 Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -778,8 +781,8 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 </br>
 
 ---
-### <a name="ignore-unsatisfiable-ranges"></a>Ignore Unsatisfiable Ranges 
-**Zweck:** Legt die Antwort fest, die an Clients zurückgegeben wird, wenn eine Anforderung den Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ generiert.
+### <a name="ignore-unsatisfiable-ranges"></a>Ignore Unsatisfiable Ranges 
+**Zweck:** Legt die Antwort fest, die an Clients zurückgegeben wird, wenn eine Anforderung den Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ generiert.
 
 Standardmäßig wird dieser Statuscode zurückgegeben, wenn die angegebene byte-range-Anforderung durch einen POP nicht erfüllt werden kann und kein If-Range-Anforderungsheaderfeld angegeben wurde.
 
@@ -788,7 +791,7 @@ Wert|Ergebnis
 Aktiviert|Verhindert, dass die POPs eine ungültige byte-range-Anforderung mit dem Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ beantwortet. Stattdessen übermitteln die Server das angeforderte Objekt und geben „200 – OK“ an den Client zurück.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ berücksichtigt.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -796,15 +799,15 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der St
 
 ---
 ### <a name="internal-max-stale"></a>Internal Max-Stale
-**Zweck:** Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein zwischengespeichertes Asset von einem POP bereitgestellt werden kann, wenn der POP das zwischengespeicherte Asset nicht im Abgleich mit dem Ursprungsserver erneut überprüfen kann.
+**Zweck:** Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein zwischengespeichertes Asset von einem POP bereitgestellt werden kann, wenn der POP das zwischengespeicherte Asset nicht im Abgleich mit dem Ursprungsserver erneut überprüfen kann.
 
 Normalerweise sendet der POP bei Ablauf der max-age-Zeit eines Assets eine Anforderung zur erneuten Überprüfung an den Ursprungsserver. Der Ursprungsserver antwortet entweder mit „304 – Nicht geändert“, um dem POP eine neue Lease für das zwischengespeicherte Asset zu geben, oder mit „200 – OK“, um dem POP eine aktualisierte Version des zwischengespeicherten Assets bereitzustellen.
 
 Wenn der POP bei dem Versuch einer solchen erneuten Überprüfung keine Verbindung mit dem Ursprungsserver herstellen kann, steuert dieses Feature „Internal Max-Stale“, ob und wie lange der POP das jetzt veraltete Asset noch bedienen darf.
 
-Beachten Sie, dass dieses Zeitintervall mit Ablauf des max-age-Werts des Assets beginnt, nicht bei Eintritt der fehlerhaften erneuten Überprüfung. Daher entspricht der maximale Zeitraum, während dessen ein Asset ohne erfolgreiche erneute Überprüfung bedient werden kann, der Zeitspanne, die durch die Kombination von max-age und max-stale angegeben wird. Wenn ein Objekt beispielsweise um 9:00 Uhr mit einem max-age-Wert von 30 Minuten und einem max-stale-Wert von 15 Minuten zwischengespeichert wurde, führt ein fehlerhafter Versuch zur erneuten Überprüfung um 9:44 Uhr dazu, dass ein Endbenutzer das veraltete zwischengespeicherte Objekt erhält, während ein fehlerhafter Versuch zur erneuten Überprüfung um 9:46 Uhr dazu führt, dass der Endbenutzer den Statuscode „504 – Gatewaytimeout“ empfängt.
+Beachten Sie, dass dieses Zeitintervall mit Ablauf des max-age-Werts des Assets beginnt, nicht bei Eintritt der fehlerhaften erneuten Überprüfung. Daher entspricht der maximale Zeitraum, während dessen ein Asset ohne erfolgreiche erneute Überprüfung bedient werden kann, der Zeitspanne, die durch die Kombination von max-age und max-stale angegeben wird. Wenn ein Objekt beispielsweise um 9.00 Uhr mit einem max-age-Wert von 30 Minuten und einem max-stale-Wert von 15 Minuten zwischengespeichert wurde, führt ein fehlerhafter Versuch zur erneuten Überprüfung um 9:44 Uhr dazu, dass ein Endbenutzer das veraltete zwischengespeicherte Objekt erhält, während ein fehlerhafter Versuch zur erneuten Überprüfung um 9.46 Uhr dazu führt, dass der Endbenutzer den Statuscode „504 – Gatewaytimeout“ empfängt.
 
-Jeder für dieses Feature konfigurierte Wert wird durch die `Cache-Control: must-revalidate`- oder `Cache-Control: proxy-revalidate`-Header ersetzt, die vom Ursprungsserver empfangen werden. Wenn einer dieser Header beim ersten Zwischenspeichern eines Assets vom Ursprungsserver empfangen wird, bedient der POP kein veraltetes zwischengespeichertes Asset. Wenn der POP in einem solchen Fall bei Ablauf des max-age-Intervalls für das Asset die erneute Überprüfung mit dem Ursprung nicht durchführen kann, gibt der POP einen Fehler vom Typ „504 – Gatewaytimeout“ zurück.
+Jeder für dieses Feature konfigurierte Wert wird durch die `Cache-Control: must-revalidate` - oder  `Cache-Control: proxy-revalidate` -Header ersetzt, die vom Ursprungsserver empfangen werden. Wenn einer dieser Header beim ersten Zwischenspeichern eines Assets vom Ursprungsserver empfangen wird, bedient der POP kein veraltetes zwischengespeichertes Asset. Wenn der POP in einem solchen Fall bei Ablauf des max-age-Intervalls für das Asset die erneute Überprüfung mit dem Ursprung nicht durchführen kann, gibt der POP einen Fehler vom Typ „504 – Gatewaytimeout“ zurück.
 
 Wichtige Informationen:
 
@@ -814,7 +817,7 @@ Wichtige Informationen:
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Ein zwischengespeichertes Asset wird nicht über seine normale Ablaufzeit hinaus bedient.
 
-**Standardverhalten:** Zwei Minuten
+**Standardverhalten:** Zwei Minuten
 
 #### <a name="compatibility"></a>Kompatibilität
 Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
@@ -842,14 +845,14 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 
 ---
 ### <a name="log-query-string"></a>Log Query String
-**Zweck:** Legt fest, ob eine Abfragezeichenfolge zusammen mit der URL in Zugriffsprotokollen gespeichert wird.
+**Zweck:** Legt fest, ob eine Abfragezeichenfolge zusammen mit der URL in Zugriffsprotokollen gespeichert wird.
 
 Wert|Ergebnis
 -|-
 Aktiviert|Ermöglicht die Speicherung von Abfragezeichenfolgen bei der Aufzeichnung von URLs in einem Zugriffsprotokoll. Wenn eine URL keine Abfragezeichenfolge enthält, besitzt diese Option keine Auswirkungen.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden Abfragezeichenfolgen bei der Aufzeichnung von URLs in einem Zugriffsprotokoll ignoriert.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -857,7 +860,7 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden Abfr
 
 ---
 ### <a name="maximum-keep-alive-requests"></a>Maximum Keep-Alive Requests
-**Zweck:** Definiert die maximale Anzahl von Anforderungen für eine „Keep Alive“-Verbindung, bevor diese geschlossen wird.
+**Zweck:** Definiert die maximale Anzahl von Anforderungen für eine „Keep Alive“-Verbindung, bevor diese geschlossen wird.
 
 Die maximale Anzahl von Anforderungen sollte nicht auf einen niedrigen Wert festgelegt werden, da dies zu Leistungseinbußen führen kann.
 
@@ -866,7 +869,7 @@ Wichtige Informationen:
 - Geben Sie diesen Wert als eine ganze Zahl ein.
 - Schließen Sie keine Kommas oder Punkte in den angegebenen Wert ein.
 
-**Standardwert:** 10.000 Anforderungen
+**Standardwert:** 10.000 Anforderungen
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -874,7 +877,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="modify-client-request-header"></a>Modify Client Request Header
-**Zweck:** Jede Anforderung enthält einen Satz von Anforderungsheadern, die sie beschreiben. Diese Feature kann folgende Aktionen ausführen:
+**Zweck:** Jede Anforderung enthält einen Satz von Anforderungsheadern, die sie beschreiben. Diese Feature kann folgende Aktionen ausführen:
 
 - Anfügen oder Überschreiben des Werts, der einem Anforderungsheader zugewiesen ist. Wenn der angegebene Anforderungsheader nicht vorhanden ist, wird er der Anforderung durch dieses Feature hinzugefügt.
 - Löschen eines Anforderungsheaders aus der Anforderung.
@@ -892,7 +895,7 @@ Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungshead
 Wichtige Informationen:
 
 - Vergewissern Sie sich, dass der in der Option „Name“ angegebene Wert genau mit dem gewünschten Anforderungsheader übereinstimmt.
-- Die Groß-/Kleinschreibung wird bei der Identifikation eines Headers nicht berücksichtigt. Beispielsweise können alle folgenden Variationen des `Cache-Control`-Headernamens zur Identifizierung verwendet werden:
+- Die Groß-/Kleinschreibung wird bei der Identifikation eines Headers nicht berücksichtigt. Beispielsweise können alle folgenden Variationen des `Cache-Control` -Headernamens zur Identifizierung verwendet werden:
     - cache-control
     - CACHE-CONTROL
     - cachE-Control
@@ -930,7 +933,7 @@ Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Clien
 Wichtige Informationen:
 
 - Vergewissern Sie sich, dass der in der Option „Name“ angegebene Wert genau mit dem gewünschten Antwortheader übereinstimmt. 
-- Die Groß-/Kleinschreibung wird bei der Identifikation eines Headers nicht berücksichtigt. Beispielsweise können alle folgenden Variationen des `Cache-Control`-Headernamens zur Identifizierung verwendet werden:
+- Die Groß-/Kleinschreibung wird bei der Identifikation eines Headers nicht berücksichtigt. Beispielsweise können alle folgenden Variationen des `Cache-Control` -Headernamens zur Identifizierung verwendet werden:
     - cache-control
     - CACHE-CONTROL
     - cachE-Control
@@ -958,7 +961,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="partial-cache-sharing"></a>Partial Cache Sharing
-**Zweck:** Legt fest, ob eine Anforderung teilweise zwischengespeicherte Inhalte erstellen kann.
+**Zweck:** Legt fest, ob eine Anforderung teilweise zwischengespeicherte Inhalte erstellen kann.
 
 Dieser Teilcache kann dann verwendet werden, um neue Anforderungen für diese Inhalte zu erfüllen, bis der angeforderte Inhalt vollständig zwischengespeichert wird.
 
@@ -967,7 +970,7 @@ Wert|Ergebnis
 Aktiviert|Anforderungen können teilweise zwischengespeicherte Inhalte erstellen.
 Deaktiviert|Anforderungen können nur eine vollständig zwischengespeicherte Version des angeforderten Inhalts generieren.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -975,7 +978,7 @@ Deaktiviert|Anforderungen können nur eine vollständig zwischengespeicherte Ver
 
 ---
 ### <a name="prevalidate-cached-content"></a>Prevalidate Cached Content
-**Zweck:** Legt fest, ob zwischengespeicherte Inhalte für eine frühzeitige erneute Überprüfung infrage kommen, ehe ihre Gültigkeitsdauer abläuft.
+**Zweck:** Legt fest, ob zwischengespeicherte Inhalte für eine frühzeitige erneute Überprüfung infrage kommen, ehe ihre Gültigkeitsdauer abläuft.
 
 Definieren Sie die Zeitspanne vor Ablauf der Gültigkeitsdauer (TTL) der angeforderten Inhalte, während der sie für eine frühe erneute Überprüfung qualifiziert sind.
 
@@ -983,7 +986,7 @@ Wichtige Informationen:
 
 - Wenn Sie „Off“ als Zeiteinheit auswählen, muss die erneute Überprüfung nach Ablauf der Gültigkeitsdauer des zwischengespeicherten Inhalts erfolgen. Die Zeit darf nicht angegeben werden und wird ignoriert.
 
-**Standardverhalten:** Off Die erneute Überprüfung kann erst stattfinden, nachdem die Gültigkeitsdauer des zwischengespeicherten Inhalts abgelaufen ist.
+**Standardverhalten:** Aus. Die erneute Überprüfung kann erst stattfinden, nachdem die Gültigkeitsdauer des zwischengespeicherten Inhalts abgelaufen ist.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -991,7 +994,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="proxy-special-headers"></a>Proxy Special Headers
-**Zweck:** Definiert den Satz von [Verizon-spezifischen HTTP-Anforderungsheadern](cdn-verizon-http-headers.md), die von einem POP an einen Ursprungsserver weitergeleitet werden.
+**Zweck:** Definiert den Satz von  [Verizon-spezifischen HTTP-Anforderungsheadern](cdn-verizon-http-headers.md) , die von einem POP an einen Ursprungsserver weitergeleitet werden.
 
 Wichtige Informationen:
 
@@ -1008,7 +1011,7 @@ Die Standardliste enthält folgende HTTP-Header:
 - X-EC-Name
 - Host
 
-**Standardverhalten:** Alle CDN-spezifischen Anforderungsheader werden an den Ursprungsserver weitergeleitet.
+**Standardverhalten:** Alle CDN-spezifischen Anforderungsheader werden an den Ursprungsserver weitergeleitet.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1016,7 +1019,7 @@ Die Standardliste enthält folgende HTTP-Header:
 
 ---
 ### <a name="refresh-zero-byte-cache-files"></a>Refresh Zero-Byte Cache Files
-**Zweck:** Bestimmt, wie eine Anforderung eines HTTP-Clients eines Cacheassets mit 0 Byte von den POPs verarbeitet wird.
+**Zweck:** Bestimmt, wie eine Anforderung eines HTTP-Clients eines Cacheassets mit 0 Byte von den POPs verarbeitet wird.
 
 Gültige Werte sind:
 
@@ -1024,11 +1027,12 @@ Wert|Ergebnis
 --|--
 Aktiviert|Führt dazu, dass der POP das Asset erneut vom Ursprungsserver abruft.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden gültige Cacheassets auf Anforderung bedient.
+
 Dieses Feature ist für eine korrekte Zwischenspeicherung und Inhaltsübermittlung nicht erforderlich, aber möglicherweise als Problemumgehung hilfreich. Dynamische Inhaltsgeneratoren auf Ursprungsservern können beispielsweise dazu führen, dass versehentlich 0-Byte-Antworten an die POPs gesendet werden. Diese Typen von Antworten werden in der Regel durch die POPs zwischengespeichert. Wenn Sie wissen, dass eine 0-Byte-Antwort nie eine gültige Antwort 
 
 für solche Inhalte ist, kann dieses Feature verhindern, dass diese Arten von Assets von Ihren Clients bedient werden.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1036,7 +1040,7 @@ für solche Inhalte ist, kann dieses Feature verhindern, dass diese Arten von As
 
 ---
 ### <a name="set-cacheable-status-codes"></a>Set Cacheable Status Codes
-**Zweck:** Definiert die Gruppe von Statuscodes, die zu zwischengespeicherten Inhalten führen können.
+**Zweck:** Definiert die Gruppe von Statuscodes, die zu zwischengespeicherten Inhalten führen können.
 
 Standardmäßig ist das Zwischenspeichern nur für „200 – OK“-Antworten aktiviert.
 
@@ -1045,10 +1049,10 @@ Definieren Sie einen durch Leerzeichen getrennten Satz mit den gewünschten Stat
 Wichtige Informationen:
 
 - Aktivieren Sie das Feature „Ignore Origin-No-Cache“. Wenn dieses Feature nicht aktiviert ist, werden andere Antworten als „200 – OK“ möglicherweise nicht zwischengespeichert.
-- Der Satz gültiger Statuscodes für dieses Feature ist: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 und 505.
+- Der Satz gültiger Statuscodes für dieses Feature ist: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 und 505.
 - Das Feature kann nicht verwendet werden, um die Zwischenspeicherung für Antworten zu deaktivieren, die einen Statuscode „200 – OK“ generieren.
 
-**Standardverhalten:** Die Zwischenspeicherung ist nur für Antworten aktiviert, die den Statuscode „200 – OK“ generieren.
+**Standardverhalten:** Die Zwischenspeicherung ist nur für Antworten aktiviert, die den Statuscode „200 – OK“ generieren.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1056,7 +1060,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="set-client-ip-custom-header"></a>Set Client IP Custom Header
-**Zweck:** Fügt einen benutzerdefinierten Header hinzu, der den anfordernden Client anhand der IP-Adresse für die Anforderung identifiziert.
+**Zweck:** Fügt einen benutzerdefinierten Header hinzu, der den anfordernden Client anhand der IP-Adresse für die Anforderung identifiziert.
 
 Die Headernamensoption definiert den Namen des benutzerdefinierten Anforderungsheaders, in dem die IP-Adresse des Clients gespeichert wird.
 
@@ -1064,7 +1068,7 @@ Anhand dieses Features kann ein Kundenursprungsserver Client-IP-Adressen über e
 
 Der angegebene Headername darf keinem der folgenden Namen entsprechen:
 
-- Namen von Standardanforderungsheadern. Eine Liste der Standardheadernamen ist in [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) zu finden.
+- Namen von Standardanforderungsheadern. Eine Liste der Standardheadernamen ist in  [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) zu finden.
 - Reservierte Headernamen:
     - forwarded-for
     - host
@@ -1080,14 +1084,14 @@ Der angegebene Headername darf keinem der folgenden Namen entsprechen:
 
 ---
 ### <a name="stale-content-delivery-on-error"></a>Stale Content Delivery on Error
-**Zweck:** Bestimmt, ob abgelaufene Cacheinhalte übermittelt werden, wenn während der erneuten Überprüfung des Caches ein Fehler auftritt oder der angeforderte Inhalt vom Ursprungsserver des Kunden abgerufen wird.
+**Zweck:** Bestimmt, ob abgelaufene Cacheinhalte übermittelt werden, wenn während der erneuten Überprüfung des Caches ein Fehler auftritt oder der angeforderte Inhalt vom Ursprungsserver des Kunden abgerufen wird.
 
 Wert|Ergebnis
 -|-
 Aktiviert|Veralteter Inhalt wird an die anfordernde Person ausgegeben, wenn während einer Verbindung mit einem Ursprungsserver ein Fehler auftritt.
 Deaktiviert|Der Fehler des Ursprungsservers wird an die anfordernde Person weitergeleitet.
 
-**Standardverhalten:** Deaktiviert
+**Standardverhalten:** Deaktiviert
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1095,16 +1099,16 @@ Deaktiviert|Der Fehler des Ursprungsservers wird an die anfordernde Person weite
 
 ---
 ### <a name="stale-while-revalidate"></a>Stale While Revalidate
-**Zweck:** Verbessert die Leistung, indem den POPs erlaubt wird, der anfordernden Person veraltete Inhalte bereitzustellen, während die erneute Überprüfung erfolgt.
+**Zweck:** Verbessert die Leistung, indem den POPs erlaubt wird, der anfordernden Person veraltete Inhalte bereitzustellen, während die erneute Überprüfung erfolgt.
 
 Wichtige Informationen:
 
 - Das Verhalten dieses Features hängt von der ausgewählten Zeiteinheit ab.
-    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie die Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist: **TTL** + **Stale While Revalidate Time** 
-    - **Off:** Wählen Sie „Off“, um eine erneute Überprüfung anzufordern, bevor eine Anforderung von veralteten Inhalten verarbeitet werden darf.
+    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie die Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist: **TTL** + **Stale While Revalidate Time** 
+    - **Off:** Wählen Sie „Off“, um eine erneute Überprüfung anzufordern, bevor eine Anforderung von veralteten Inhalten verarbeitet werden darf.
         - Geben Sie keine Zeitspanne an, weil sie nicht anwendbar ist und ignoriert wird.
 
-**Standardverhalten:** Off Eine erneute Überprüfung muss erfolgen, damit der angeforderte Inhalt bereitgestellt werden kann.
+**Standardverhalten:** Aus. Eine erneute Überprüfung muss erfolgen, damit der angeforderte Inhalt bereitgestellt werden kann.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1112,13 +1116,13 @@ Wichtige Informationen:
 
 ---
 ### <a name="token-auth"></a>Token Auth
-**Zweck:** Legt fest, ob die tokenbasierte Authentifizierung auf eine Anforderung angewendet wird.
+**Zweck:** Legt fest, ob die tokenbasierte Authentifizierung auf eine Anforderung angewendet wird.
 
 Wenn die tokenbasierte Authentifizierung aktiviert ist, werden nur Anforderungen berücksichtigt, die ein verschlüsseltes Token bereitstellen und den Anforderungen dieses Tokens entsprechen.
 
 Der Verschlüsselungsschlüssel, der zum Verschlüsseln und Entschlüsseln von Tokenwerten verwendet wird, wird durch die Optionen „Primary Key“ und „Backup Key“ auf der Seite „Token Auth“ festgelegt. Beachten Sie, dass Verschlüsselungsschlüssel plattformspezifisch sind.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 Dieses Feature hat Vorrang vor den meisten Features (mit Ausnahme von „URL Rewrite“).
 
@@ -1136,7 +1140,7 @@ Verwenden Sie „Token Auth“ nicht mit der Übereinstimmungsbedingung „Alway
 
 ---
 ### <a name="token-auth-denial-code"></a>Token Auth Denial Code
-**Zweck:** Legt die Art der Antwort fest, die einem Benutzer zurückgegeben wird, wenn eine Anforderung aufgrund der tokenbasierten Authentifizierung verweigert wird.
+**Zweck:** Legt die Art der Antwort fest, die einem Benutzer zurückgegeben wird, wenn eine Anforderung aufgrund der tokenbasierten Authentifizierung verweigert wird.
 
 Die verfügbaren Antwortcodes sind in der folgenden Tabelle aufgeführt.
 
@@ -1156,7 +1160,7 @@ Verwenden Sie „Token Auth Denial Code“ nicht mit der Übereinstimmungsbeding
 
 Dieses Feature unterstützt die URL-Umleitung an eine benutzerdefinierte URL, wenn es für die Rückgabe eines 3xx-Statuscodes konfiguriert ist. Diese benutzerdefinierte URL kann angegeben werden, indem Sie die folgenden Schritte ausführen:
 
-1. Wählen Sie einen 3xx-Antwortcode für das Feature „Token Auth Denial Code“.
+1. Wählen Sie einen 3xx-Antwortcode für das Feature „Token Auth Denial Code“ aus.
 2. Wählen Sie unter „Optional Header Name“ die Option „Location“ aus.
 3. Legen Sie die Option „Optional Header Value“ auf die gewünschte URL fest.
 
@@ -1166,7 +1170,7 @@ Die URL-Umleitung gilt nur für 3xx-Antwortcodes.
 
 Die Option „Optional Header Value“ unterstützt alphanumerische Zeichen, Anführungszeichen und Leerzeichen.
 
-#### <a name="authentication"></a>Authentifizierung
+#### <a name="authentication"></a>Authentication
 
 Dieses Feature unterstützt die Möglichkeit, den WWW-Authenticate-Header in die Antwort auf eine nicht autorisierte Anforderung für Inhalte einzuschließen, die durch die tokenbasierte Authentifizierung geschützt werden. Wenn der WWW-Authenticate-Header in Ihrer Konfiguration auf „basic“ festgelegt wurde, wird der nicht autorisierte Benutzer zur Eingabe von Kontoanmeldeinformationen aufgefordert.
 
@@ -1184,7 +1188,7 @@ Der WWW-Authenticate-Header gilt nur für 401-Antwortcodes.
 
 ---
 ### <a name="token-auth-ignore-url-case"></a>Token Auth Ignore URL Case
-**Zweck:** Bestimmt, ob bei von der tokenbasierten Authentifizierung durchgeführten URL-Vergleichen zwischen Groß- und Kleinschreibung unterschieden wird.
+**Zweck:** Bestimmt, ob bei von der tokenbasierten Authentifizierung durchgeführten URL-Vergleichen zwischen Groß- und Kleinschreibung unterschieden wird.
 
 Folgende Parameter sind von diesem Feature betroffen:
 
@@ -1199,7 +1203,7 @@ Wert|Ergebnis
 Aktiviert|Bewirkt, dass der POP Groß- und Kleinschreibung beim Vergleichen von URLs für Parameter der tokenbasierten Authentifizierung ignoriert.
 Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird bei URL-Vergleichen für die Tokenauthentifizierung die Groß-/Kleinschreibung beachtet.
 
-**Standardverhalten:** Deaktiviert.
+**Standardverhalten:** Deaktiviert.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1207,7 +1211,7 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird bei UR
 
 ---
 ### <a name="token-auth-parameter"></a>Token Auth Parameter
-**Zweck:** Legt fest, ob der Abfragezeichenfolgenparameter der tokenbasierten Authentifizierung umbenannt werden soll.
+**Zweck:** Legt fest, ob der Abfragezeichenfolgenparameter der tokenbasierten Authentifizierung umbenannt werden soll.
 
 Wichtige Informationen:
 
@@ -1220,7 +1224,7 @@ Wert|Ergebnis
 Aktiviert|Die Option „Value“ definiert den Namen des Abfragezeichenfolgenparameters, über den Token definiert werden.
 Deaktiviert|Ein Token kann als ein nicht definierter Abfragezeichenfolgenparameter in der Anforderungs-URL angegeben werden.
 
-**Standardverhalten:** Deaktiviert. Ein Token kann als ein nicht definierter Abfragezeichenfolgenparameter in der Anforderungs-URL angegeben werden.
+**Standardverhalten:** Deaktiviert. Ein Token kann als ein nicht definierter Abfragezeichenfolgenparameter in der Anforderungs-URL angegeben werden.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1228,15 +1232,15 @@ Deaktiviert|Ein Token kann als ein nicht definierter Abfragezeichenfolgenparamet
 
 ---
 ### <a name="url-redirect"></a>URL Redirect
-**Zweck:** Leitet Anforderungen über den Location-Header weiter.
+**Zweck:** Leitet Anforderungen über den Location-Header weiter.
 
 Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werden:
 
 Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
-Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
-Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/><br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- [HTTP-Variablen](cdn-http-variables.md) <br/><br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
+Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> **Source (pattern):**  Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
+Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/><br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- [HTTP-Variablen](cdn-http-variables.md) <br/><br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_  in das Zielmuster ein. Dabei identifiziert  _n_  einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
 
 **Beispielszenario**
@@ -1269,7 +1273,7 @@ Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![URL
 
 ---
 ### <a name="url-rewrite"></a>URL Rewrite
-**Zweck:** Schreibt die Anforderungs-URL um.
+**Zweck:** Schreibt die Anforderungs-URL um.
 
 Wichtige Informationen:
 
@@ -1277,8 +1281,9 @@ Wichtige Informationen:
 
 Option|BESCHREIBUNG
 -|-
- Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/><br/>  - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
- Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - [HTTP-Variablen](cdn-http-variables.md) <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
+ Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/><br/>  - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
+ Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt aus, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - [HTTP-Variablen](cdn-http-variables.md) <br/> <br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_  in das Zielmuster ein. Dabei identifiziert  _n_  einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
+
  Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Die anfordernde Person erhält also den gleichen Antwortcode, den sie auch beim Anfordern der umgeschriebenen URL erhalten hätte.
 
 **Beispielszenario 1**
@@ -1327,7 +1332,7 @@ Dieses Feature umfasst Übereinstimmungskriterien, die erfüllt sein müssen, be
 
 ---
 ### <a name="user-variable"></a>User Variable
-**Zweck:** Nur zur internen Verwendung.
+**Zweck:** Nur zur internen Verwendung.
 
 [Nach oben](#azure-cdn-rules-engine-features)
 

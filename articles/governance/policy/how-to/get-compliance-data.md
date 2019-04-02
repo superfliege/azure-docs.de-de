@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114109"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535207"
 ---
 # <a name="getting-compliance-data"></a>Abrufen von Konformitätsdaten
 
@@ -28,7 +28,7 @@ Es gibt mehrere Möglichkeiten, auf Konformitätsinformationen, die von Ihrer Ri
 Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, beschäftigen wir uns damit, wann Konformitätsinformationen aktualisiert werden und mit den Ereignissen, die einen Auswertungszyklus auslösen sowie mit der Häufigkeit.
 
 > [!WARNING]
-> Wenn der Konformitätszustand als **Nicht registriert** gemeldet wird, sollten Sie überprüfen, ob der **Microsoft.PolicyInsights**-Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verfügt. Dies ist [hier](../overview.md#rbac-permissions-in-azure-policy) beschrieben.
+> Wenn der Konformitätszustand als **Nicht registriert** gemeldet wird, sollten Sie überprüfen, ob der **Microsoft.PolicyInsights**-Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verfügt. Dies ist unter [Rollenbasierte Zugriffssteuerung in Azure Policy](../overview.md#rbac-permissions-in-azure-policy) beschrieben.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -142,25 +142,11 @@ Klicken Sie mit der rechten Maustaste auf die Zeile des Ereignisses, über das S
 
 ![Aktivitätsprotokoll der Richtlinienkonformität](../media/getting-compliance-data/compliance-activitylog.png)
 
-### <a name="change-history-preview"></a>Änderungsverlauf (Vorschau)
+### <a name="understand-non-compliance"></a>Grundlagen der Nichtkompatibilität
 
-Im Rahmen einer neuen **Public Preview** sind die letzten 14 Tage des Änderungsverlaufs für eine nicht konforme Ressource verfügbar. Der Änderungsverlauf enthält Details dazu, wann eine Änderung erkannt wurde, und eine _Visual Diff_ jeder Änderung. Eine Änderungserkennung wird ausgelöst, wenn Ressourcen-Manager-Eigenschaften einer nicht konformen Ressource hinzugefügt, entfernt oder geändert werden.
+<a name="change-history-preview"></a>
 
-1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
-
-1. Wählen Sie auf der Seite **Übersicht** oder **Konformität** eine Richtlinie aus, die _nicht konform_ ist.
-
-1. Wählen Sie auf der Seite **Richtlinienkompatibilität** auf der Registerkarte **Ressourcenkonformität** eine Ressource aus, die _nicht konform_ ist.
-
-1. Wählen Sie auf der Seite **Ressourcenkonformität** die Registerkarte **Änderungsverlauf (Vorschau)** aus. Eine Liste der erkannten Änderungen, falls vorhanden, wird angezeigt.
-
-   ![Änderungsverlauf für Richtlinien – Registerkarte](../media/getting-compliance-data/change-history-tab.png)
-
-1. Wählen Sie eine der erkannten Änderungen aus. Die _Visual Diff_ für die nicht konforme Ressource wird auf der Seite **Änderungsverlauf** angezeigt.
-
-   ![Änderungsverlauf für Richtlinien – Visual Diff](../media/getting-compliance-data/change-history-visual-diff.png)
-
-Die _Visual Diff_ hilft, Änderungen an einer Ressource zu identifizieren. Die erkannten Änderungen haben u. U. keinen Bezug zur Ursache, die dazu geführt hat, dass die Ressource nicht mit der ausgewählten Richtlinie konform ist.
+Wenn Ressourcen als **nicht kompatibel** bestimmt werden, kann das viele mögliche Ursachen haben. Wie Sie die Ursache für die **Nichtkompatibilität** einer Ressource bestimmen oder die dafür verantwortliche Änderung finden können, ist unter [Bestimmen der Nichtkompatibilität](./determine-non-compliance.md) beschrieben.
 
 ## <a name="command-line"></a>Befehlszeile
 
@@ -430,7 +416,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-Wenn Sie über einen [Log Analytics](../../../log-analytics/log-analytics-overview.md)-Arbeitsbereich verfügen, bei dem die Lösung `AzureActivity` mit Ihrem Abonnement verknüpft ist, können Sie auch nicht konforme Ergebnisse aus dem Auswertungszyklus mithilfe einfacher Azure Data Explorer-Abfragen und über die Tabelle `AzureActivity` anzeigen. Mithilfe von Details in Azure Monitor können Warnmeldungen konfiguriert werden, um Verstöße gegen die Konformität zu überwachen.
+Wenn Sie über einen [Log Analytics-Arbeitsbereich](../../../log-analytics/log-analytics-overview.md) mit `AzureActivity` aus der [Log Analytics-Aktivitätslösung](../../../azure-monitor/platform/collect-activity-logs.md) verfügen, die mit Ihrem Abonnement verknüpft ist, können Sie auch nicht kompatible Ergebnisse aus dem Auswertungszyklus mithilfe einfacher Kusto-Abfragen und über die Tabelle `AzureActivity` anzeigen. Mithilfe von Details in Azure Monitor können Warnmeldungen konfiguriert werden, um Verstöße gegen die Konformität zu überwachen.
 
 ![Richtlinienkonformität mithilfe Azure Monitor-Protokollen](../media/getting-compliance-data/compliance-loganalytics.png)
 

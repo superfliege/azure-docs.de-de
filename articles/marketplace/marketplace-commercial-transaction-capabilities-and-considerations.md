@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075633"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731088"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Kommerzielle Transaktionen ‎in Azure Marketplace: Möglichkeiten und Überlegungen
 
@@ -186,9 +186,9 @@ Wenn der Kunde im Enterprise Agreement-Rahmen bezahlt:
 |Abrechnungsdatum | 15. Oktober 2018 |
 |Treuhandperiode (nur Kreditkarten, 30 Tage) | – |
 |Start der Forderungslaufzeit | 15. Oktober 2018 |
-|Ende der Forderungslaufzeit (max. 90 Tage) | 15. Januar 2018 |
+|Ende der Forderungslaufzeit (max. 90 Tage) | 15. Januar 2019 |
 |Zahlungsdatum des Kunden | 30. Dezember 2018 |
-|Datum der Berechnung der Auszahlung (monatlich am 15.) | 15. Januar 2018 |
+|Datum der Berechnung der Auszahlung (monatlich am 15.) | 15. Januar 2019 |
 |Auszahlungsdatum | 15. Februar 2019 |
 
 **Kostenlose Guthaben und finanzielle Verpflichtung** 
@@ -226,7 +226,7 @@ In diesem Abschnitt werden die Transaktionsanforderungen für verschiedene Angeb
 
 * Für die Veröffentlichungsoption „Transaktion“ sind unabhängig vom Preismodell des Angebots sowohl ein Dev Center- als auch ein Microsoft-Konto erforderlich.
 * Das Dev Center-Konto enthält alle relevanten finanziellen Details, die Microsoft benötigt, um im Namen des Herausgebers Gebühren vom Kunden einzuziehen und den Herausgeber auszuzahlen.
-* Obwohl Sie für beide Konten die gleichen organisationsspezifischen oder Microsoft-Anmeldeinformationen verwenden können, ist das Dev Center-Konto vom Cloud Publisher Portal-Konto getrennt. Um die Veröffentlichungsoption „Transaktion“ nutzen zu können, muss der Herausgeber den Registrierungsprozess für das Dev Center-Konto durchlaufen und sich für den Zugriff auf das Cloud-Partnerportal registrieren.
+* Obwohl Sie für beide Konten die gleichen organisationsspezifischen oder Microsoft-Anmeldeinformationen verwenden können, ist das Dev Center-Konto vom Cloud-Partnerportal-Konto getrennt. Um die Veröffentlichungsoption „Transaktion“ nutzen zu können, muss der Herausgeber den Registrierungsprozess für das Dev Center-Konto durchlaufen und sich für den Zugriff auf das Cloud-Partnerportal registrieren.
 
 *Weitere Informationen zum Einrichten dieser Konten finden Sie unter [Weg zum Cloud Marketplace-Herausgeber](https://docs.microsoft.com/azure/marketplace/become-publisher).*
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e56dc54c2c296ee17b04070ac8ee68d2180b7046
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b458632ddb6e23ab1ddf642752aa0cbfc11f1ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Tutorial: Azure Active Directory-Integration in Picturepark
 
@@ -224,7 +224,7 @@ Damit sich Azure AD-Benutzer bei Picturepark anmelden können, müssen sie in Pi
    
     ![Benutzer erstellen](./media/picturepark-tutorial/ic795069.png "Benutzer erstellen")
    
-    a. Geben Sie im Textfeld **E-Mail-Adresse** die **E-Mail-Adresse** des Benutzers ein: **BrittaSimon@contoso.com**.  
+    a. Geben Sie im Textfeld **E-Mail-Adresse** die **E-Mail-Adresse** des Benutzers ein: **BrittaSimon\@contoso.com**.  
    
     b. Geben Sie in den Textfeldern **Kennwort** und **Kennwort bestätigen** das **Kennwort** von Britta Simon ein. 
    

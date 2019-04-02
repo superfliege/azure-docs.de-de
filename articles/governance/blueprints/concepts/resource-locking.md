@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855404"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
-Die bedarfsabhängige Erstellung konsistenter Umgebungen hat nur dann wirklich Vorteile, wenn ein Mechanismus vorhanden ist, mit dem die Wahrung der Konsistenz sichergestellt werden kann. In diesem Artikel wird beschrieben, wie das Sperren von Ressourcen in Azure Blueprint funktioniert.
+Die bedarfsabhängige Erstellung konsistenter Umgebungen hat nur dann wirklich Vorteile, wenn ein Mechanismus vorhanden ist, mit dem die Wahrung der Konsistenz sichergestellt werden kann. In diesem Artikel wird beschrieben, wie das Sperren von Ressourcen in Azure Blueprint funktioniert. Im Tutorial [Schützen neuer Ressourcen](../tutorials/protect-new-resources.md) finden Sie ein Beispiel für Ressourcensperren und die Anwendung von _Ablehnungszuweisungen_.
 
 ## <a name="locking-modes-and-states"></a>Modi und Zustände von Sperren
 
@@ -58,6 +58,7 @@ Eine Ablehnungsaktion im Rahmen von RBAC-[Ablehnungszuweisungen](../../../role-b
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Führen Sie die Schritte im Tutorial [Schützen neuer Ressourcen](../tutorials/protect-new-resources.md) aus.
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
 - Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.

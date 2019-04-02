@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e294a8b0e34e1fac24d0cbe01791e2eb290a43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 334f5fa2309c44bebe8583f497fdaa3c7578e5ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162577"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Tutorial: Azure Active Directory-Integration mit T&E Express
 
@@ -134,7 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Stellen Sie die Option **Activar** (Aktivieren) von **No** (Nein) auf **SI** (Ja) um. Fügen Sie in das Textfeld mit den **Identitätsanbietermetadaten** die XML-Metadaten ein, die Sie aus dem Azure-Portal heruntergeladen haben.
+1. Stellen Sie die Option **Activar** (Aktivieren) von **No** (Nein) auf **SI** (Ja) um. Fügen Sie im Textfeld mit den **Identitätsanbietermetadaten** die XML-Metadaten ein, die Sie aus dem Azure-Portal heruntergeladen haben.
 
     ![Configure single sign-on](./media/tyeexpress-tutorial/tyeAdmin.png)
 

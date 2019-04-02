@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a0ab88b1375f5178ca6f41689de8d2f30f8d7808
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307484"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728130"
 ---
 # <a name="guidelines"></a>Richtlinien  
 
 <!--
 ## Guidelines for AppSource  
 -->
----  
+---
 
 ## <a name="guidelines-for-azure-marketplace"></a>Richtlinien für Azure Marketplace  
 
@@ -49,7 +49,7 @@ Wenn mehrere Personen Zugriff auf die gleiche Microsoft-ID benötigen, mit der I
 Der Zugriff auf Ihr Dev Center-Konto sollte primär über vertrauenswürdige Computer erfolgen. Dies ist sehr wichtig, denn die Anzahl von Codes, die pro Woche für ein Dev Center-Konto generiert werden können, ist begrenzt. Durch die Verwendung von vertrauenswürdigen Computern gewährleisten Sie zudem ein höchst sicheres und konsistentes Anmeldeverfahren. 
 *   Weitere Informationen zu zusätzlichen Richtlinien und Sicherheitsmaßnahmen für Dev Center-Konten finden Sie im Artikel „Eröffnen eines Entwicklerkontos“ unter [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
 
----  
+---
 
 #### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Problem: Microsoft-ID in einer Azure AD-Verbunddomäne  
 Ihr Unternehmenskonto befindet sich möglicherweise in einem Azure Active Directory-Verbund. Wenn Sie versuchen, eine Microsoft-ID mit einer Unternehmens-E-Mail-Adresse zu erstellen, die sich in einem Azure AD-Verbund befindet, erhalten Sie eine Fehlermeldung. Wenn ein Fehler auftritt, sollten Sie bei Ihrem IT-Team nachfragen, ob sich Ihr Konto in einem Azure AD-Verbund befindet. E-Mail-Adressen in einem Azure AD-Verbund sind ein bekanntes Problem, an dessen Lösung Microsoft arbeitet.  
@@ -75,4 +75,4 @@ Microsoft empfiehlt eine Problemumgehung. Führen Sie die folgenden Schritte aus
 ## <a name="next-steps"></a>Nächste Schritte
 *   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
  
----  
+---

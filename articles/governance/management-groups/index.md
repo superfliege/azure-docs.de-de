@@ -18,7 +18,7 @@ Beispielsweise können Sie eine Richtlinie auf eine Verwaltungsgruppe anwenden, 
 
 Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbauen, um Ihre Ressourcen für die einheitliche Richtlinien- und Zugriffsverwaltung in einer Hierarchie zu organisieren. Das folgende Diagramm zeigt ein Beispiel zum Erstellen einer Hierarchie für die Governance unter Verwendung von Verwaltungsgruppen.
 
-![Struktur](./media/tree.png)
+![Beispiel für eine Hierarchiestruktur einer Verwaltungsgruppe](./media/tree.png)
 
 Erstellen Sie eine Hierarchie, damit Sie eine Richtlinie anwenden können, beispielsweise zum Einschränken der VM-Standorte auf die Region „USA, Westen“ für die Gruppe „Produktion“. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
 

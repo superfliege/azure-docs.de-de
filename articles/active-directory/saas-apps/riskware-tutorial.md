@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3de8422efdbb7802e0532503e2733518e8050f6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration mit Riskware
 
@@ -110,6 +110,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![SSO-Informationen zur Domäne und zu den URLs für Riskware](./media/riskware-tutorial/tutorial_riskware_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein:
+
     | Environment| URL-Muster|
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -118,6 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     |||
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein:
+    
     | Environment| URL-Muster|
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
@@ -247,7 +249,7 @@ Damit sich Azure AD-Benutzer bei Riskware anmelden können, müssen sie in Riskw
 
     a. Wählen Sie im Abschnitt **Authentication** (Authentifizierung) den von Ihnen eingerichteten Modus **Authentication** (Authentifizierung) aus, z.B. „AZURE Configuration for SSO“ (AZURE-Konfiguration für SSO).
 
-    b. Geben Sie im Abschnitt **Logon Details** (Anmeldeinformationen) im Textfeld **User ID** (Benutzer-ID) die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
+    b. Geben Sie im Abschnitt **Logon Details** (Anmeldeinformationen) im Textfeld **User ID** (Benutzer-ID) die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon\@contoso.com**.
 
     c. Geben Sie im Textfeld **Password** (Kennwort) das Kennwort des Benutzers ein.
 

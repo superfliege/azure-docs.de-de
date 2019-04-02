@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 10275b2938ce66a2816b1d4a5589a5e88ee22e80
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093917"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259736"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
 
@@ -33,7 +33,7 @@ Azure Content Delivery Network (CDN) bietet zwei Möglichkeiten, um zu steuern, 
 
    - Benutzerdefinierte Cacheregeln: Sie können für jeden Endpunkt in Ihrem Profil eine oder mehrere benutzerdefinierte Cacheregeln festlegen. Benutzerdefinierte Cacheregeln, die mit bestimmten Pfaden und Dateierweiterungen übereinstimmen, werden nacheinander verarbeitet und überschreiben die globale Cacheregel, sofern eine solche festgelegt wurde. 
 
-- Zwischenspeichern von Abfragezeichenfolgen: Sie können festlegen, wie das Azure CDN die Zwischenspeicherung von Anforderungen mit Abfragezeichenfolgen behandelt. Weitere Informationen finden Sie unter [Steuern des Azure Content Delivery Network-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md). Wenn die Datei nicht zwischengespeichert werden kann, hat die Einstellung für die Zwischenspeicherung von Abfragezeichenfolgen basierend auf Cacheregeln und CDN-Standardverhalten keine Auswirkungen.
+- Zwischenspeicherung von Abfragezeichenfolgen: Sie können festlegen, wie das Azure CDN die Zwischenspeicherung von Anforderungen mit Abfragezeichenfolgen behandelt. Weitere Informationen finden Sie unter [Steuern des Azure Content Delivery Network-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md). Wenn die Datei nicht zwischengespeichert werden kann, hat die Einstellung für die Zwischenspeicherung von Abfragezeichenfolgen basierend auf Cacheregeln und CDN-Standardverhalten keine Auswirkungen.
 
 Informationen zum Standardverhalten beim Zwischenspeichern und die Header mit Cacheanweisungen finden Sie unter [Funktionsweise der Zwischenspeicherung](cdn-how-caching-works.md). 
 
@@ -56,7 +56,7 @@ Für globale und benutzerdefinierte Cacheregeln können Sie die folgenden Einste
 
 - **Cache umgehen**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden nicht zwischengespeichert und ignoriert.
 
-- **Überschreiben**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden ignoriert und stattdessen wird die angegebene Cachedauer verwendet.
+- **Überschreiben**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden ignoriert, und stattdessen wird die angegebene Cachedauer verwendet. Dadurch wird „cache-control: no-cache“ nicht überschrieben.
 
 - **Bei Fehlen festlegen**: Die vom Ursprung angegebenen Header mit Cacheanweisungen werden berücksichtigt, sofern diese vorhanden sind. Anderenfalls wird die angegebene Cachedauer verwendet.
 
@@ -92,10 +92,10 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
    - Dauer bis Cacheablauf: 1 Tag
 
 - Benutzerdefinierte Cacheregel 1:
-   - Übereinstimmungsbedingung: **Pfad**
+   - Übereinstimmungsbedingung: **Path**
    - Übereinstimmungswert: _/home/*_
    - Verhalten beim Zwischenspeichern: **Überschreiben**
-   - Dauer bis Cacheablauf: 2 Tage
+   - Dauer bis Cacheablauf: 2 Tage
 
 - Benutzerdefinierte Cacheregel 2:
    - Übereinstimmungsbedingung: **Erweiterung**
@@ -103,7 +103,7 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
    - Verhalten beim Zwischenspeichern: **Bei Fehlen festlegen**
    - Dauer bis Cacheablauf: 3 Tage
 
-Wenn diese Regeln festgelegt sind, löst eine Anforderung für „_&lt;Endpunkthostname&gt;_.azureedge.net/home/index.html“ die benutzerdefinierte Cacheregel 2 aus, die auf &lt;Bei Fehlen festlegen&gt; und „3 Tage“ festgelegt ist. Enthält die Datei *index.html* daher den HTTP-Header `Cache-Control` oder `Expires`, werden sie berücksichtigt. Sind diese Header nicht festgelegt, wird die Datei drei Tage lang zwischengespeichert.
+Wenn diese Regeln festgelegt sind, löst eine Anforderung für „_&lt;Endpunkthostname&gt;_.azureedge.net/home/index.html“ die benutzerdefinierte Cacheregel 2 aus, die auf **Bei Fehlen festlegen** und „3 Tage“ festgelegt ist. Enthält die Datei *index.html* daher den HTTP-Header `Cache-Control` oder `Expires`, werden sie berücksichtigt. Sind diese Header nicht festgelegt, wird die Datei drei Tage lang zwischengespeichert.
 
 > [!NOTE] 
 > Bei Dateien, die vor einer Regeländerung zwischengespeichert werden, wird die Cachedauereinstellung des Ursprungs beibehalten. Um die Cachedauer zurückzusetzen, müssen Sie [die Datei bereinigen](cdn-purge-endpoint.md). 

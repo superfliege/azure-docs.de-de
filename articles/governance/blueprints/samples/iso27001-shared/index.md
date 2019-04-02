@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Azure Blueprints-Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
+# <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
 Mit dem Beispiel zur Blaupause „ISO 27001: Gemeinsame Dienste“ wird eine Reihe von konformen Infrastrukturmustern und Schutzmaßnahmen für Richtlinien bereitgestellt, die für den ISO 27001-Nachweis hilfreich sind. Mit dieser Blaupause können Kunden cloudbasierte Architekturen bereitstellen, die Lösungen für Szenarien liefern, in denen Anforderungen in Bezug auf die Akkreditierung oder Konformität erfüllt werden müssen.
 

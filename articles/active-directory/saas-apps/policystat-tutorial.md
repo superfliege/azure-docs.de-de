@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ddf56e4c72e7e59778fc43a808b9800bc3b9b3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 602dd0fd4050a3b4336c560bbd82b32f3903b93c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Tutorial: Azure Active Directory-Integration in PolicyStat
 
@@ -176,7 +176,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Geben Sie im Textfeld **Nachnamen-Attribut** den **Nachnamen** des Benutzer (**Simon**) ein.
 
-    d. Geben Sie im Textfeld **E-Mail-Attribut** die **E-Mail-Adresse** des Benutzers (**BrittaSimon@contoso.com**) ein.
+    d. Geben Sie im Textfeld **E-Mail-Attribut** die **E-Mail-Adresse** des Benutzers **BrittaSimon\@contoso.com** ein.
 
     e. Klicken Sie auf **Änderungen speichern**.
 

@@ -14,37 +14,37 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 2b3783060cf5502076ce3bc98cf07f005366a9e2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0e82041dab1932ed7c129b598740b2441aa59315
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665711"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822751"
 ---
-# <a name="publish-power-bi-app-offer"></a>Veröffentlichen eines Power BI-App-Angebots
+# <a name="publish-a-power-bi-app-offer"></a>Veröffentlichen eines Power BI-App-Angebots
 
-Nachdem Sie das Angebot im Portal definiert und die zugeordneten technischen Ressourcen erstellt haben, wird das Angebot im letzten Schritt zur Veröffentlichung übermittelt.  Klicken Sie zum Starten dieses Prozesses im vertikalen Menü des Fensters **Neues Angebot** auf die Schaltfläche **Veröffentlichen**.  Weitere Informationen finden Sie unter [Veröffentlichen von Azure Marketplace- und AppSource-Angeboten](../manage-offers/cpp-publish-offer.md).
+Nachdem Sie das Angebot im Cloud-Partnerportal definiert und die zugehörigen technischen Ressourcen erstellt haben, wird das Angebot im letzten Schritt zur Veröffentlichung übermittelt. Wählen Sie im linken Bereich des Fensters **Neues Angebot** die Option **Veröffentlichen** aus, um diesen Vorgang zu starten. Weitere Informationen finden Sie unter [Veröffentlichen von Azure Marketplace- und AppSource-Angeboten](../manage-offers/cpp-publish-offer.md).
 
 
 ## <a name="publishing-steps"></a>Veröffentlichungsschritte
 
-Im folgenden Diagramm sind die wichtigsten Schritte des Veröffentlichungsprozesses dargestellt, die ausgeführt werden müssen, um ein Angebot live zu schalten.
+Im Veröffentlichungsprozess gibt es folgende Hauptschritte:
 
-![Schritte des Veröffentlichungsprozesses für eine Power BI-App](./media/publishing-process-steps.png)
+![Schritte des Veröffentlichungsprozesses für ein Power BI-App-Angebot](./media/publishing-process-steps.png)
 
-Die folgende Tabelle enthält die Beschreibung dieser Schritte sowie die voraussichtliche maximale Dauer der einzelnen Schritte:
+In dieser Tabelle sind die einzelnen Schritte und die geschätzte Zeit bis zum Abschluss beschrieben:
 
-|   Veröffentlichungsschritt            |   Zeit     |   BESCHREIBUNG                                                                  |
+|   Veröffentlichungsschritt            |   Zeit     |   Beschreibung                                                                  |
 | --------------------         |------------| ----------------                                                               |
-| Überprüfen der Voraussetzungen       | 15 Min.     | Die Angebotsinformationen und -einstellungen werden überprüft.                            |
-| Zertifizierung                | 1–7 Tage   | Das Power BI-Zertifizierungsteam analysiert Ihr Angebot. Wir führen Ihre Power BI-App über einen manuellen Überprüfungstest aus und installieren die App dazu über die angegebene Installations-URL. Die wesentlichen Überprüfungen werden als Teil des App-Zertifizierungsprozesses durchgeführt (siehe weiter unten).         |
-| Verpackung                    | \< 1 Stunde  | Die technischen Ressourcen des Angebots werden für die Verwendung durch die Kunden gepackt.                        |
-| Registrierung von generierten Leads | \< 1 Stunde  | Die Leadsysteme werden konfiguriert und bereitgestellt.                                      |
-| Einholen der Genehmigung des Herausgebers            | \-         | Letzte Überprüfung und Bestätigung durch den Herausgeber, bevor das Angebot live geschaltet wird. Nun wird auch ein Link angezeigt, um eine Vorschau von Ihrem Angebot zu erstellen. Wenn Sie mit der Darstellung der Vorschau zufrieden sind, klicken Sie auf der Registerkarte **Status** auf die Schaltfläche **Live schalten**. Mit dieser Aktion wird eine Anforderung an das Onboardingteam gesendet, um Ihre App in AppSource aufzulisten.    |
-| Live                         | \< 3 Stunden | Ihr Angebot wird jetzt in AppSource öffentlich aufgelistet (live geschaltet), und Kunden können Ihre App in ihren Power BI-Abonnements einsehen und bereitstellen. Außerdem erhalten Sie eine Bestätigungs-E-Mail. Sie können jederzeit auf die Registerkarte **Alle Angebote** klicken und den in der rechten Spalte aufgeführten Status für alle Ihre Angebote einsehen. Um ausführliche Informationen zum Status des Veröffentlichungsvorgangs für Ihr Angebot anzuzeigen können Sie auf die Registerkarte **Status** klicken. |
+| Überprüfen der Voraussetzungen       | 15 Minuten     | Die Angebotsinformationen und -einstellungen werden überprüft.                            |
+| Zertifizierung                | 1–7 Tage   | Das Power BI-Zertifizierungsteam analysiert Ihr Angebot. Das Team unterzieht Ihre Power BI-App einem manuellen Prüfungstest. Dazu wird die App über die angegebene Installations-URL installiert. Die primären Prüfungen erfolgen als Teil des App-Zertifizierungsprozesses (weiter unten beschrieben).         |
+| Verpackung                    | \< 1 Stunde  | Die technischen Ressourcen des Angebots werden für die Verwendung durch den Kunden verpackt.                        |
+| Registrierung der Leadgenerierung | \< 1 Stunde  | Die Leadsysteme werden konfiguriert und bereitgestellt.                                      |
+| Einholen der Genehmigung des Herausgebers            | \-         | Sie müssen eine letzte Überprüfung und Bestätigung abschließen, bevor das Angebot live geschaltet wird. Nun wird auch ein Link zu einer Vorschau Ihres Angebots angezeigt. Wenn Sie mit der Darstellung in der Vorschau zufrieden sind, wählen Sie **Live schalten** auf der Registerkarte **Status** aus. Damit wird eine Anforderung an das Onboardingteam gesendet, Ihre App in AppSource aufzulisten.    |
+| Live                         | \< 3 Stunden | Ihr Angebot wird jetzt in AppSource öffentlich aufgelistet (live geschaltet), und Kunden können Ihre App anzeigen und in ihren Power BI-Abonnements bereitstellen. Außerdem erhalten Sie eine Bestätigungs-E-Mail. In der rechten Spalte auf der Registerkarte **Alle Angebote** wird der Status für all Ihre Angebote angezeigt. Auf der Registerkarte **Status** können Sie den Status des Veröffentlichungsvorgangs für Ihr Angebot im Detail anzeigen. |
 |   |   |
 
-Es kann bis zu acht Tage dauern, bis dieser Prozess abgeschlossen ist. Nach dem Ausführen dieser Veröffentlichungsschritte wird Ihr Power BI-App-Angebot in [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) im Abschnitt zu den Power BI-Apps aufgeführt.
+Es kann bis zu acht Tage dauern, bis dieser Prozess abgeschlossen ist. Nach dem Ausführen dieser Veröffentlichungsschritte wird Ihr Power BI-App-Angebot in [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) unter den Power BI-Apps aufgeführt.
 
 
 ### <a name="app-certification-process"></a>App-Zertifizierungsprozess
@@ -53,14 +53,14 @@ Das Microsoft-Onboardingteam überprüft die Übermittlung Ihres Power BI-Angebo
 
 1. Die rechtlich relevanten Dokumente und Hilfelinks werden überprüft.
 2. Die Kontaktinformationen des Supports werden überprüft.
-3. Die ordnungsgemäße Installation wird über die Installations-URL überprüft. 
-4. Die App wird auf Schadsoftware und andere schädliche Inhalte überprüft. 
-5. Es wird überprüft, ob die angezeigten Inhalte der Beschreibung der App entsprechen.
-6. Es wird überprüft, ob App-bezogene Vorgänge wie erwartet in Power BI durchgeführt werden: Öffnen von Berichten und Dashboards mit Beispieldaten, Herstellen einer Verbindung mit benutzerdefinierten Datenquellen, Aktualisieren usw.
+3. Die ordnungsgemäße Installation wird über die Installations-URL überprüft.
+4. Die App wird auf Schadsoftware und andere schädliche Inhalte überprüft.
+5. Es wird überprüft, ob der angezeigte Inhalt mit der Beschreibung der App übereinstimmt.
+6. Es wird überprüft, ob die Vorgänge im Zusammenhang mit der App in Power BI erwartungsgemäß funktionieren. Das Team öffnet Berichte und Dashboards mit Beispieldaten, stellt eine Verbindung zu benutzerdefinierten Datenquellen her, aktualisiert Daten usw.
 
 Das Zertifizierungsteam gibt Feedback, wenn Probleme gefunden werden.  Weitere Informationen zu den Anforderungen für Power BI-Apps finden Sie in der [Dokumentation zu Power BI-Apps](https://go.microsoft.com/fwlink/?linkid=2028636).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es wird empfohlen, Ihre App im [AppSource-Marketplace](https://appsource.microsoft.com) regelmäßig zu überprüfen.  Zudem sollten Sie die Funktion [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) des [Cloud-Partnerportals](https://cloudpartner.azure.com/#insights) verwenden, um Einblicke in Ihre Marketplace-Kunden und die Verwendung der App zu erhalten.  Sie können auch bestimmte [Aktualisierungen an Ihrem Angebot vornehmen](./cpp-update-existing-offer.md).
+Es wird empfohlen, Ihre App im [AppSource-Marketplace](https://appsource.microsoft.com) regelmäßig zu überwachen.  Sie sollten auch die Funktion [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) nutzen, um Erkenntnisse über Ihre Marketplace-Kunden und die Verwendung der App zu gewinnen. Schließlich können Sie [Ihr Angebot aktualisieren](./cpp-update-existing-offer.md).

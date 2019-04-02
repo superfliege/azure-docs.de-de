@@ -1,6 +1,6 @@
 ---
 title: Index mit Blaupausenbeispielen
-description: Index mit Beispielen für Azure Blueprints
+description: Index der Beispiele für Compliance und Standardumgebungen für die Bereitstellung mit Azure Blueprints
 services: blueprints
 author: DCtheGeek
 manager: carmonm

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 095aff293b23f4589dce9f71890b5e9bfd8636d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4091b20e97ca76629260a7420beecb77412b0d39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201855"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Tutorial: Azure Active Directory-Integration mit Shmoop For Schools
 
@@ -131,7 +131,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Attribut hinzufügen** zu öffnen.
     
-    ![Einmaliges Anmelden konfigurieren ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
     ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
     

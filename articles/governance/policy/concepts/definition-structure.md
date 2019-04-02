@@ -4,17 +4,17 @@ description: Beschreibt, wie die von Azure Policy verwendete Definition von Ress
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447785"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894426"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -80,7 +80,7 @@ Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausge
 
 Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, können Sie den **mode**-Parameter manuell angeben. Wenn die Richtliniendefinition keinen Wert für **mode** enthält, wird dieser in Azure PowerShell standardmäßig auf `all` und in der Azure CLI auf `null` festgelegt. Der Modus `null` entspricht dem Verwenden von `indexed`, um Abwärtskompatibilität zu unterstützen.
 
-`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md).
+`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/tag-support.md).
 
 ## <a name="parameters"></a>Parameter
 
@@ -101,7 +101,7 @@ Ein Parameter hat die folgenden Eigenschaften, die in der Richtliniendefinition 
   - `displayName`: Der Anzeigename des Parameters im Portal.
   - `strongType`: (Optional) Wird verwendet, wenn die Richtliniendefinition über das Portal zugewiesen wird. Bietet eine kontextbezogene Liste. Weitere Informationen finden Sie unter [strongType](#strongtype).
 - `defaultValue`: (Optional) Legt den Wert des Parameters in einer Zuweisung fest, wenn kein Wert angegeben ist. Erforderlich, wenn eine vorhandene zugewiesene Richtliniendefinition aktualisiert wird.
-- `allowedValues`: (Optional) Bietet eine Liste von Werten, die der Parameter bei Zuweisung akzeptiert.
+- `allowedValues`: (Optional) Stellt ein Array von Werten bereit, die der Parameter bei der Zuweisung akzeptiert.
 
 Beispielsweise können Sie eine Richtliniendefinition verwenden, um die Speicherorte einzuschränken, an denen Ressourcen bereitgestellt werden können. Ein Parameter für diese Richtliniendefinition kann **allowedLocations** heißen. Dieser Parameter kann bei jeder Zuweisung der Richtliniendefinition verwendet werden, um die akzeptierten Werte zu begrenzen. Die Verwendung von **strongType** bietet erweiterte Möglichkeiten, wenn die Zuweisung über das Portal erfolgt:
 
@@ -289,6 +289,9 @@ Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt,
 Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht die Bedingungen mit [Parametern](#parameters), [unterstützten Vorlagenfunktionen](#policy-functions) oder Literalen ab.
 **Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
 
+> [!WARNING]
+> Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Weitere Informationen finden Sie unter [Vermeiden von Vorlagenfehlern](#avoiding-template-failures).
+
 #### <a name="value-examples"></a>Beispiele von Werten
 
 Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `resourceGroup()`-Funktion und der zurückgegebenen **name**-Eigenschaft mit der **like**-Bedingung `*netrg` zu vergleichen. Die Regel verweigert Ressourcen, die nicht den **Typ** `Microsoft.Network/*` haben, in Ressourcengruppen, deren Name mit `*netrg` endet.
@@ -329,6 +332,44 @@ Diese Beispiel einer Regelrichtlinie verwendet **Wert**, um zu überprüfen, ob 
 }
 ```
 
+#### <a name="avoiding-template-failures"></a>Vermeiden von Vorlagenfehlern
+
+Wenn Sie _Vorlagenfunktionen_ als **Wert** verwenden, sind viele komplexe und verschachtelte Funktionen möglich. Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Beispiel für einen **Wert**, bei dem in bestimmten Szenarios ein Fehler auftritt:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+Bei der oben als Beispiel verwendeten Richtlinienregel wird [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) zum Vergleichen der ersten drei Zeichen des **Namens** mit **abc** verwendet. Wenn der **Name** kürzer als drei Zeichen ist, ergibt die `substring()`-Funktion einen Fehler. Dieser Fehler löst bei der Richtlinie den **Deny**-Effekt aus.
+
+Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if)-Funktion, um zu überprüfen, ob die ersten drei Zeichen des **Namens** gleich **abc** sind, ohne dass ein **Name**, der kürzer als drei Zeichen ist, einen Fehler verursachen kann:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[if(greaterOrEquals(length(field('name')), 3), substring(field('name'), 0, 3), 'not starting with abc')]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Namens**, bevor es versucht, einen `substring()` für einen Wert mit weniger als drei Zeichen abzurufen. Wenn der **Name** zu kurz ist, wird der Wert, der „nicht mit abc beginnt“, zurückgegeben und mit **abc** verglichen. Eine Ressource mit einem Kurznamen, der nicht mit **abc** beginnt, erzeugt zwar immer noch einen Fehler bei der Richtlinienregel, verursacht aber bei der Auswertung keinen Fehler mehr.
+
 ### <a name="effect"></a>Wirkung
 
 Die Richtlinie unterstützt die folgenden Arten von Effekten:
@@ -352,7 +393,7 @@ Für **append**müssen Sie die folgenden Details angeben:
 
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
-Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden. Wenn die Ressource nicht mit die Regel übereinstimmt, wird die Auswirkung implementiert. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird. Weitere Informationen finden Sie im Beispiel [Überwachung, wenn keine Erweiterung vorhanden ist](../samples/audit-ext-not-exist.md).
+Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden. Wenn die Ressource nicht mit der Regel übereinstimmt, wird der Effekt implementiert. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird. Weitere Informationen finden Sie im Beispiel [Überwachung, wenn keine Erweiterung vorhanden ist](../samples/audit-ext-not-exist.md).
 
 Der Effekt **DeployIfNotExists** erfordert die **roleDefinitionId**-Eigenschaft im Bereich **details** der Richtlinienregel. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
 
@@ -443,70 +484,60 @@ Einige der verfügbaren Aliase weisen eine Version auf, die als „normaler“ N
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-Das erste Beispiel dient zur Auswertung des gesamten Arrays, wobei der Alias **[\*]** jedes Element des Arrays auswertet.
-
-Sehen wir uns eine Richtlinienregel als Beispiel an. Diese Richtlinie wendet **Deny** (Verweigern) auf ein Speicherkonto an, für das „ipRules“ konfiguriert sind, wenn **keine** der „ipRules“ den Wert „127.0.0.0.1“ aufweist.
+Bei einem „normalen“ Alias wird das Feld als einzelner Wert dargestellt. Dieses Feld ist für genaue Vergleichs-/Übereinstimmungsszenarios bestimmt, wenn der gesamte Wertesatz exakt der Definition entsprechen muss (nicht mehr und nicht weniger). Mit **IpRules** würden Sie beispielsweise überprüfen, ob ein exakter Regelsatz (einschließlich der Anzahl der Regeln und der Zusammensetzung jeder einzelnen Regel) vorhanden ist. Diese Beispielregel überprüft die genaue Übereinstimmung von **192.168.1.1** und **10.0.4.1**, wobei _action_ unter **ipRules** auf **Allow** eingestellt ist, um den **Effekttyp** anzuwenden:
 
 ```json
 "policyRule": {
     "if": {
-        "allOf": [{
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "Equals": [
+                    {
+                        "action": "Allow",
+                        "value": "192.168.1.1"
+                    },
+                    {
+                        "action": "Allow",
+                        "value": "10.0.4.1"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+Beim einem Alias mit Stern **[\*]** ist ein Vergleich mit dem Wert jedes einzelnen Elements im Array und mit bestimmten Eigenschaften der einzelnen Elemente möglich. Dieser Ansatz ermöglicht das Vergleichen von Elementeigenschaften bei Szenarios wie „if none of“, „if any of“ oder „if all of“. Mit **IpRules [\*]** würden Sie beispielsweise überprüfen, ob jede _action_ auf _Deny_ eingestellt ist, aber nicht darüber nachdenken, wie viele Regeln vorhanden sind oder welchen _Wert_ die IP-Adresse hat. Diese Beispielregel überprüft alle Übereinstimmungen von **IpRules[\*].Wert** mit **10.0.4.1** und wendet den **Effektttyp** nur dann an, wenn nicht mindestens eine Übereinstimmung gefunden wird:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
                 "exists": "true"
             },
             {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "127.0.0.1"
+                "notEquals": "10.0.4.1"
             }
         ]
     },
     "then": {
-        "effect": "deny",
+        "effect": "[parameters('effectType')]"
     }
 }
 ```
 
-Das **IpRules**-Array sieht für das Beispiel wie folgt aus:
-
-```json
-"ipRules": [{
-        "value": "127.0.0.1",
-        "action": "Allow"
-    },
-    {
-        "value": "192.168.1.1",
-        "action": "Allow"
-    }
-]
-```
-
-Und so wird dieses Beispiel verarbeitet:
-
-- `networkAcls.ipRules`: Überprüfen, ob das Array ungleich NULL ist. Die Auswertung ergibt TRUE, daher wird die Auswertung fortgesetzt.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-    "exists": "true"
-  }
-  ```
-
-- `networkAcls.ipRules[*].value`: Überprüft jede _value_-Eigenschaft im **IpRules**-Array.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-    "notEquals": "127.0.0.1"
-  }
-  ```
-
-  - Da es sich um ein Array handelt, wird jedes Element verarbeitet.
-
-    - "127.0.0.1" != "127.0.0.1" wird als FALSE ausgewertet.
-    - "127.0.0.1" != "192.168.1.1" wird als TRUE ausgewertet.
-    - Mindestens eine _value_-Eigenschaft im **IpRules**-Array wurde als FALSE" ausgewertet, daher wird die Auswertung beendet.
-
-Da eine Bedingung als FALSE ausgewertet wurde, wird die Auswirkung **Deny** nicht ausgelöst.
+Weitere Informationen finden Sie unter [Auswerten eines Alias mit Stern [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Initiativen
 

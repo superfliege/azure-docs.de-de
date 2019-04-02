@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54445061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997951"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 for Customer Engagement – Registerkarte „Details der digitalen Ladenzeile“
 
@@ -56,7 +56,7 @@ In der folgenden Tabelle werden die Felder dieser Registerkarte beschrieben:
 |  App-Typ             | Wählen Sie den Testtyp aus, der für die App in AppSource aktiviert ist. **Kostenlos** gibt an, dass Ihre App kostenlos verwendet werden kann; **Testversion** gibt an, dass Kunden Ihre App für einen kurzen Zeitraum kostenlos ausprobieren können, und **Kontakt mit mir aufnehmen** gibt an, dass Kunden eine Testversion der App auf AppSource anfordern können.  |
 | Hilfe-Link für Ihre App | URL für die Onlinedokumentation oder eine andere Hilferessource für die App.  |
 | Unterstützte Länder/Regionen | Ein Popupdialogfeld ermöglicht die Auswahl der geografischen Regionen, in denen die App angeboten wird.  Weltweite Verteilung ist die Standardeinstellung. |
-| Unterstützte Sprachen   | Wählen Sie die Sprachen aus, die von Ihrer App unterstützt werden. Derzeit werden nur ein paar Sprachoptionen unterstützt.  (Wenn Ihre App zusätzliche Sprachen unterstützt, die nicht in dieser Liste enthalten sind, fahren Sie mit der Veröffentlichung Ihres Angebots fort, und senden Sie diese Informationen per E-Mail an: appsource@microsoft.com.)  |
+| Unterstützte Sprachen   | Wählen Sie die Sprachen aus, die von Ihrer App unterstützt werden. Derzeit werden nur ein paar Sprachoptionen unterstützt.  (Wenn Ihre App zusätzliche Sprachen unterstützt, die nicht in dieser Liste enthalten sind, fahren Sie mit der Veröffentlichung Ihres Angebots fort, und senden Sie diese Informationen per E-Mail an appsource\@microsoft.com.)  |
 | App-Version           | Die Versionsnummer für die app    |
 | Herausgabedatum der App      | Herausgabe-/Veröffentlichungsdatum der App |
 | Produkte, mit denen Ihre App zusammenarbeitet | Produkte oder Dienste, mit denen Ihre App eingesetzt werden kann. Sie können bis zu drei Produkte auflisten. Um ein Produkt aufzulisten, klicken Sie auf **+Neu** und geben den Namen eines Produkts in das angezeigte Textfeld ein.  |

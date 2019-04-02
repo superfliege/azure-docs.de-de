@@ -1,6 +1,6 @@
 ---
-title: Überprüfen des Zugriffs | Microsoft-Dokumentation
-description: Überprüfen des Zugriffs mit Azure Active Directory
+title: Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihren eigenen Zugriff auf Gruppen oder Anwendungen mit Azure Active Directory-Zugriffsüberprüfungen überprüfen.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,47 +11,74 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/16/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cc807a5693b363445f85d0b45a70681f58c5275
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76f90a5aa3f201fa5d1578ac63526be26377aedf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198627"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731207"
 ---
-# <a name="review-your-access"></a>Überprüfen des Zugriffs
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
-Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Anwendungen und Mitglieder von Gruppen in Azure AD und anderen Microsoft Online Services durch eine Funktion namens „Zugriffsüberprüfungen“. Sie haben möglicherweise eine E-Mail von Microsoft erhalten, in der Sie aufgefordert werden, den Zugriff von Mitgliedern einer Gruppe oder Benutzern mit Zugriff auf eine Anwendung zu überprüfen. 
+Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Gruppen oder Anwendungen in Azure AD und anderen Microsoft Online-Dienste durch eine Funktion namens „Azure AD-Zugriffsüberprüfungen“.
 
-## <a name="open-an-access-review"></a>Öffnen einer Zugriffsüberprüfung
+In diesem Artikel wird beschrieben, wie Sie Ihren eigenen Zugriff auf eine Gruppe oder Anwendung überprüfen.
 
-Um die ausstehenden Zugriffsüberprüfungen anzuzeigen, klicken Sie auf den Zugriffsüberprüfungslink in der E-Mail. Ab August 2018 weisen die E-Mail-Benachrichtigungen für Azure AD-Rollen einen aktualisierten Entwurf auf. Das folgende Beispiel zeigt eine E-Mail, die gesendet wird, wenn ein Benutzer für die Rolle als Prüfer eingeladen wurde.
+## <a name="open-the-access-review"></a>Öffnen der Zugriffsüberprüfung
 
-![E-Mail zur Zugriffsüberprüfung](./media/review-your-access/new-ar-email.png)
+Bei einer Zugriffsüberprüfung müssen Sie zuerst die Zugriffsüberprüfung suchen und öffnen.
 
-Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsüberprüfungen mit folgenden Schritten anzeigen:
+1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachfolgend ist eine Beispiel-E-Mail zum Überprüfen Ihres Zugriffs auf eine Gruppe abgebildet.
 
-1. Melden Sie sich beim [Azure AD-Zugriffsbereich](https://myapps.microsoft.com) an.
+    ![E-Mail zur Zugriffsüberprüfung](./media/review-your-access/access-review-email.png)
 
-2. Wählen Sie das Benutzersymbol in der oberen rechten Ecke der Seite, das Ihren Namen und Ihre Standardorganisation anzeigt. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
+1. Klicken Sie auf den Link **Zugriff überprüfen**, um die Zugriffsüberprüfung zu öffnen.
 
-3. Wenn rechts auf der Seite eine Kachel mit der Bezeichnung **Zugriffsüberprüfungen** vorhanden ist, wählen Sie sie. Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
+Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfungen mit folgenden Schritten anzeigen.
 
-## <a name="fill-out-an-access-review"></a>Ausfüllen einer Zugriffsüberprüfung
+1. Melden Sie sich auf [https://myapps.microsoft.com](https://myapps.microsoft.com) im MyApps-Portal an.
 
-Wenn Sie eine Zugriffsüberprüfung aus der Liste auswählen, wird Ihr Zugriff angezeigt. Wählen Sie die Zeile aus, und wählen Sie, ob Sie weiterhin Zugriff benötigen, oder ob dies nicht der Fall ist.
+    ![MyApps-Portal](./media/review-your-access/myapps-access-panel.png)
 
-Der Prüfer kann ggf. verlangen, dass Sie eine Begründung für den weiteren Zugriffsbedarf angeben, bevor der Zugriff genehmigt wird.
+1. Klicken Sie oben rechts auf der Seite auf das Benutzersymbol, neben dem Ihr Name und Ihre Standardorganisation angezeigt werden. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
+
+1. Klicken Sie rechts auf der Seite auf die Kachel **Zugriffsüberprüfungen**, um eine Liste mit den ausstehenden Zugriffsüberprüfungen anzuzeigen.
+
+    Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
+
+    ![Liste mit den Zugriffsüberprüfungen](./media/review-your-access/access-reviews-list.png)
+
+1. Klicken Sie bei der Zugriffsüberprüfung, die Sie durchführen möchten, auf den Link **Überprüfung starten**.
+
+## <a name="perform-the-access-review"></a>Durchführen der Zugriffsüberprüfung
+
+Nachdem Sie die Zugriffsüberprüfung geöffnet haben, wird Ihr Zugriff angezeigt.
+
+1. Überprüfen Sie Ihren Zugriff, und entscheiden Sie, ob Sie weiterhin Zugriff benötigen.
+
+    Wenn Sie aufgefordert werden, den Zugriff für andere Benutzer zu überprüfen, sieht die Seite anders aus. Weitere Informationen finden Sie unter [Zugriffsüberprüfung von Gruppen oder Anwendungen](perform-access-review.md).
+
+    ![Durchführen der Zugriffsüberprüfung](./media/review-your-access/perform-access-review.png)
+
+1. Klicken Sie auf **Ja**, um den Zugriff zu behalten, oder klicken Sie auf **Nein**, um Ihren Zugriff zu entfernen.
+
+1. Wenn Sie auf **Ja** klicken, müssen Sie möglicherweise im Feld **Grund** eine Begründung angeben.
+
+    ![Durchführen der Zugriffsüberprüfung](./media/review-your-access/perform-access-review-submit.png)
+
+1. Klicken Sie auf **Submit**.
+
+    Ihre Auswahl wird übermittelt, und Sie gelangen zurück zum MyApps-Portal.
+
+    Wenn Sie Ihre Antwort ändern möchten, öffnen Sie erneut die Seite „Zugriffsüberprüfungen“, und aktualisieren Sie Ihre Antwort. Bis die Zugriffsüberprüfung endet, können Sie Ihre Antwort jederzeit ändern.
+
+    > [!NOTE]
+    > Wenn Sie angegeben haben, dass Sie keinen Zugriff mehr benötigen, werden Sie nicht sofort entfernt. Sie werden nach Ende der Überprüfung (oder wenn ein Administrator die Überprüfung beendet) entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Verweigerung des Zugriffs wird nicht sofort aufgehoben. Wenn Sie Ihre Antwort ändern und genehmigen möchten, setzen Sie die Antwort zurück, und wählen Sie eine neue Antwort. Dies ist möglich, bis die Zugriffsüberprüfung beendet ist.
-
-
-
-
-
-
+- [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)

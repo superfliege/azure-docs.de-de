@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842447"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -45,23 +45,23 @@ Notieren Sie sich nach der Registrierung die Microsoft Partner Network-ID für I
 *   Informationen über die Vorteile des Microsoft Partner Network finden Sie [hier](https://partner.microsoft.com/commercial).
 *   Wenn Ihre Organisation bereits Mitglied ist, können Sie dieser während der Registrierung beitreten. Wenn Sie [Partner Center](https://partnercenter.microsoft.com/partner/home) verwenden, können Sie die ID in Ihrem Partner Center-Konto einsehen. Wenn Sie [Partner Membership Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) verwenden, können Sie diese in Ihrem Partner Membership Center-Konto einsehen. 
 
----  
+---
 
 ## <a name="2-create-a-microsoft-account"></a>2. Erstellen eines Microsoft-Kontos  
 | 15 Minuten |  
-Mit einem Microsoft-Konto (z.B. *@outlook.com oder @live.com*) können Sie auf eine Vielzahl von Microsoft-Geräten und -Diensten zugreifen. Es ist für Azure Marketplace-Transaktionsangebote erforderlich und wird allen Cloudherausgebern empfohlen. Weitere Informationen zu den Vorteilen und den Verwendungsmöglichkeiten eines Microsoft-Kontos finden Sie [auf dieser Seite](https://account.microsoft.com/account/). Mit einem persönlichen Microsoft-Konto können Sie auf das Cloud-Partnerportal zugreifen, die Veröffentlichungsplattform, mit der Sie Ihre Marketplace-Angebote erstellen und verwalten. 
+Mit einem Microsoft-Konto (z.B. *outlook.com\@ oder \@live.com*) können Sie auf eine Vielzahl von Microsoft-Geräten und -Diensten zugreifen. Es ist für Azure Marketplace-Transaktionsangebote erforderlich und wird allen Cloudherausgebern empfohlen. Weitere Informationen zu den Vorteilen und den Verwendungsmöglichkeiten eines Microsoft-Kontos finden Sie [auf dieser Seite](https://account.microsoft.com/account/). Mit einem persönlichen Microsoft-Konto können Sie auf das Cloud-Partnerportal zugreifen, die Veröffentlichungsplattform, mit der Sie Ihre Marketplace-Angebote erstellen und verwalten. 
 
 [! IMPORTANT] Beachten Sie, dass Sie nicht mit einem Microsoft-Konto auf das Portal zugreifen können, das Ihrer geschäftlichen E-Mail-Adresse zugeordnet ist.
 
->[!Note]
->Wenn Sie bereits über ein Microsoft-Konto verfügen, lesen Sie die [Richtlinien zum Erstellen einer Microsoft-ID zum Verwalten eines Marketplace-Kontos](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account), um festzustellen, ob es für die Veröffentlichung im Marketplace verwendet werden kann. 
-
->Benutzer mit einem Azure Active Directory-Verbundfirmenkonto sollten [diesen Artikel](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) lesen, bevor sie Ihr vorhandenes Microsoft-Konto erstellen oder verwenden.
+> [!Note]
+> Wenn Sie bereits über ein Microsoft-Konto verfügen, lesen Sie die [Richtlinien zum Erstellen einer Microsoft-ID zum Verwalten eines Marketplace-Kontos](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account), um festzustellen, ob es für die Veröffentlichung im Marketplace verwendet werden kann. 
+> 
+> Benutzer mit einem Azure Active Directory-Verbundfirmenkonto sollten [diesen Artikel](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) lesen, bevor sie Ihr vorhandenes Microsoft-Konto erstellen oder verwenden.
 
 *   Unterstützung bei der Erstellung oder Verwaltung Ihres Microsoft-Kontos finden Sie auf den [Supportseiten für Microsoft-Konten](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
 
----  
+---
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Übermitteln des Marketplace-Registrierungsformulars  
 | 15 Minuten |  
@@ -72,7 +72,7 @@ Sie werden zur Angabe der folgenden Informationen aufgefordert:
 *   Eine kurze Beschreibung Ihrer ersten App oder Ihres Beratungsdienstangebots, die bzw. das Sie veröffentlichen möchten (z.B. das bzw. der Microsoft-Produkt oder -Dienst, das bzw. der Ihrem Angebot am ehesten entspricht)
 *   Die Zielgruppe für Ihre App oder Ihren Dienst 
 
----  
+---
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Anmelden beim Cloud-Partnerportal
 | 1–3 Tage | <br>
 Unser Marketplace-Onboardingteam überprüft die Details zu Ihrer Marketplace-Registrierung, die Sie in Schritt 3 angegeben haben. Nachdem diese genehmigt wurden, erhalten Sie eine Willkommens-E-Mail mit Kontoanmeldeinformationen und einen Leitfaden zum Anmelden beim [Cloud-Partnerportal](https://cloudpartner.azure.com).
@@ -108,4 +108,4 @@ Nach Abschluss der [Dev Center](https://developer.microsoft.com/store/register)-
 *   [Bestimmen des Listingtyps für Ihre Lösung](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  
----  
+---

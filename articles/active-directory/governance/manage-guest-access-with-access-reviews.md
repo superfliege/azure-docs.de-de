@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen | Microsoft Docs
-description: Verwalten von Gastbenutzern als Mitglieder einer Gruppe oder einer Anwendung zugewiesene Benutzer mit Azure Active Directory-Zugriffsüberprüfungen
+title: Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Verwalten von Gastbenutzern als Mitglieder einer Gruppe oder als einer Anwendung zugewiesene Benutzer mit Azure Active Directory-Zugriffsüberprüfungen
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63acf3a91e7e121a807a44bed8506d05e71899d2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3bed8a5d20b50fd90922730c958cb1a36933776f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175182"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881043"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -44,7 +44,7 @@ Sie können Gastbenutzer auch bitten, ihren eigenen Zugriff zu überprüfen. Fü
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Erstellen und Durchführen einer Zugriffsüberprüfung für Gäste
 
-Navigieren Sie zuerst als globaler Administrator oder Benutzerkontoadministrator zur [Seite „Zugriffsüberprüfungen“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), um sicherzustellen, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann. 
+Navigieren Sie zuerst als globaler Administrator oder Benutzeradministrator zur [Seite „Zugriffsüberprüfungen“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), um sicherzustellen, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann.
 
 Azure AD ermöglicht mehrere Szenarien für die Überprüfung von Gastbenutzern.
 
@@ -61,11 +61,11 @@ Sie können dann entscheiden, ob Sie jeden Gast bitten, seinen eigenen Zugriff z
 
 Mithilfe von Zugriffsüberprüfungen können Sie sicherstellen, dass Benutzer, die eingeladen und einer Gruppe hinzugefügt wurden, weiterhin Zugriff benötigen. Sie können Gäste ganz einfach darum bitten, ihre eigene Mitgliedschaft in dieser Gruppe zu überprüfen.
 
-1. Um eine Zugriffsüberprüfung für die Gruppe zu starten, geben Sie an, dass die Überprüfung nur Gastbenutzermitglieder umfasst und die Mitglieder sich selbst überprüfen. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
+1. Um eine Zugriffsüberprüfung für die Gruppe zu erstellen, geben Sie an, dass die Überprüfung nur Gastbenutzermitglieder umfasst und die Mitglieder sich selbst überprüfen. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md).
 
-2. Bitten Sie jeden Gast, seine eigene Mitgliedschaft zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu einer Zugriffsüberprüfung. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](perform-access-review.md).
+2. Bitten Sie jeden Gast, seine eigene Mitgliedschaft zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu einer Zugriffsüberprüfung. Azure AD stellt Anweisungen für Gastbenutzer bereit, mit denen sie [den Zugriff auf Gruppen oder Anwendungen überprüfen](perform-access-review.md) können.
 
-3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md).
+3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md).
 
 4. Zusätzlich zu den Benutzern, die angegeben haben, dass sie keinen weiteren Zugriff benötigen, können Sie auch Benutzer entfernen, die nicht reagiert haben. Benutzer, die nicht reagieren, erhalten möglicherweise keine E-Mails mehr.
 
@@ -75,21 +75,21 @@ Mithilfe von Zugriffsüberprüfungen können Sie sicherstellen, dass Benutzer, d
 
 Sie können einen Sponsor (z.B. den Besitzer einer Gruppe) bitten, die Notwendigkeit einer weitergehenden Mitgliedschaft eines Gasts in einer Gruppe zu überprüfen.
 
-1. Um eine Zugriffsüberprüfung für die Gruppe zu starten, geben Sie an, dass die Überprüfung nur Gastbenutzermitglieder umfasst. Geben Sie dann mindestens einen Prüfer an. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
+1. Um eine Zugriffsüberprüfung für die Gruppe zu erstellen, geben Sie an, dass die Überprüfung nur Gastbenutzermitglieder umfasst. Geben Sie dann mindestens einen Prüfer an. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md).
 
-2. Bitten Sie die Prüfer, ihre Einschätzung abzugeben. Standardmäßig erhalten alle Prüfer eine E-Mail von Azure AD mit einem Link zu dem Zugriffsbereich, in dem sie [die Zugriffsüberprüfung durchführen](perform-access-review.md).
+2. Bitten Sie die Prüfer, ihre Einschätzung abzugeben. Standardmäßig erhalten alle Prüfer eine E-Mail von Azure AD mit einem Link zu dem Zugriffsbereich, in dem sie [den Zugriff auf Gruppen oder Anwendungen überprüfen](perform-access-review.md).
 
-3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md).
+3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md).
 
 ### <a name="ask-guests-to-review-their-own-access-to-an-application"></a>Auffordern von Gästen zum Überprüfen ihres eigenen Zugriffs auf eine Anwendung
 
 Mithilfe von Zugriffsüberprüfungen können Sie sicherstellen, dass Benutzer, die für eine bestimmte Anwendung eingeladen wurden, weiterhin Zugriff benötigen. Sie können die Gäste ganz einfach bitten, ihren eigenen Zugriffsbedarf selbst zu überprüfen.
 
-1. Um eine Zugriffsüberprüfung für die Anwendung zu starten, geben Sie an, dass die Überprüfung nur Gäste umfasst und die Benutzer ihren eigenen Zugriff überprüfen. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
+1. Um eine Zugriffsüberprüfung für die Anwendung zu erstellen, geben Sie an, dass die Überprüfung nur Gäste umfasst und die Benutzer ihren eigenen Zugriff überprüfen. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md).
 
-2. Bitten Sie Gäste, ihren eigenen Zugriff auf die Anwendung zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD. Diese E-Mail enthält einen Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](perform-access-review.md).
+2. Bitten Sie Gäste, ihren eigenen Zugriff auf die Anwendung zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD. Diese E-Mail enthält einen Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gastbenutzer bereit, mit denen sie [den Zugriff auf Gruppen oder Anwendungen überprüfen](perform-access-review.md) können.
 
-3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md).
+3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md).
 
 4. Zusätzlich zu den Benutzern, die angegeben haben, dass sie keinen weiteren Zugriff benötigen, können Sie auch Gastbenutzer entfernen, die nicht reagiert haben. Benutzer, die nicht reagieren, erhalten möglicherweise keine E-Mails mehr. Sie können auch Gastbenutzer entfernen, die nicht für eine Teilnahme ausgewählt wurden, insbesondere, wenn diese in letzter Zeit nicht eingeladen wurden. Diese Benutzer haben ihre Einladung nicht angenommen und hatten daher keinen Zugriff auf die Anwendung. 
 
@@ -97,11 +97,11 @@ Mithilfe von Zugriffsüberprüfungen können Sie sicherstellen, dass Benutzer, d
 
 Sie können einen Sponsor – z.B. den Besitzer einer Anwendung – bitten, den Bedarf eines Gasts für den weiteren Zugriff auf die Anwendung zu überprüfen.
 
-1. Um eine Zugriffsüberprüfung für die Anwendung zu starten, geben Sie an, dass die Überprüfung nur Gäste umfasst. Geben Sie dann mindestens einen Benutzer als Prüfer an. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
+1. Um eine Zugriffsüberprüfung für die Anwendung zu erstellen, geben Sie an, dass die Überprüfung nur Gäste umfasst. Geben Sie dann mindestens einen Benutzer als Prüfer an. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md).
 
-2. Bitten Sie die Prüfer, ihre Einschätzung abzugeben. Standardmäßig erhalten alle Prüfer eine E-Mail von Azure AD mit einem Link zu dem Zugriffsbereich, in dem sie [die Zugriffsüberprüfung durchführen](perform-access-review.md).
+2. Bitten Sie die Prüfer, ihre Einschätzung abzugeben. Standardmäßig erhalten alle Prüfer eine E-Mail von Azure AD mit einem Link zu dem Zugriffsbereich, in dem sie [den Zugriff auf Gruppen oder Anwendungen überprüfen](perform-access-review.md).
 
-3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md).
+3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md).
 
 ### <a name="ask-guests-to-review-their-need-for-access-in-general"></a>Auffordern von Gästen zur Überprüfung ihres allgemeinen Zugriffsbedarfs
 
@@ -112,17 +112,17 @@ In einigen Organisationen sind Gästen ihre Gruppenmitgliedschaften möglicherwe
 
 1. Erstellen Sie eine Sicherheitsgruppe mit den Gästen als Mitgliedern in Azure AD, wenn noch keine geeignete Gruppe vorhanden ist. Sie können z.B. eine Gruppe mit einer manuell verwalteten Mitgliedschaft von Gästen erstellen. Oder Sie können eine dynamische Gruppe mit einem Namen wie „Gäste von Contoso“ für Benutzer im Contoso-Mandanten erstellen, deren UserType-Attributwert „Guest“ lautet.  Stellen Sie aus Gründen der Effizienz sicher, dass die Gruppe vorwiegend aus Gästen besteht. Wählen Sie keine Gruppe mit Mitgliedsbenutzern aus, da Mitgliedsbenutzer nicht überprüft werden müssen.  Beachten Sie außerdem, dass einem Gastbenutzer, der ein Mitglied der Gruppe ist, die anderen Mitglieder der Gruppe angezeigt werden.
 
-2. Um eine Zugriffsüberprüfung für diese Gruppe zu starten, geben Sie an, dass die Prüfer selbst Mitglieder sind. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
+2. Um eine Zugriffsüberprüfung für diese Gruppe zu erstellen, geben Sie an, dass die Prüfer selbst Mitglieder sind. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md).
 
-3. Bitten Sie jeden Gast, seine eigene Mitgliedschaft zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](perform-access-review.md).  Gäste, die ihre Einladung nicht angenommen haben, werden in den Überprüfungsergebnissen als „nicht benachrichtigt“ angezeigt.
+3. Bitten Sie jeden Gast, seine eigene Mitgliedschaft zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gastbenutzer bereit, mit denen sie [den Zugriff auf Gruppen oder Anwendungen überprüfen](perform-access-review.md) können.  Gäste, die ihre Einladung nicht angenommen haben, werden in den Überprüfungsergebnissen als „nicht benachrichtigt“ angezeigt.
 
-4. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md).
+4. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden. Weitere Informationen finden Sie unter [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md).
 
 5. Entfernen Sie den Gastzugriff für Gäste, die abgelehnt wurden, die Überprüfung nicht abgeschlossen haben oder ihre Einladung zuvor nicht angenommen haben. Wenn einige der Gäste Kontakte sind, die für die Teilnahme an der Überprüfung ausgewählt wurden oder die eine Einladung zuvor nicht angenommen haben, können Sie deren Konten über das Azure-Portal oder mit PowerShell deaktivieren. Wenn ein Gast keinen Zugriff mehr benötigt und kein Kontakt ist, können Sie das zugehörige Benutzerobjekt aus dem Verzeichnis entfernen, indem Sie das Gastbenutzerobjekt über das Azure-Portal oder mit PowerShell löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](create-access-review.md)
+[Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
 
 
 

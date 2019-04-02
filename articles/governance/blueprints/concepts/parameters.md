@@ -4,17 +4,17 @@ description: Hier erhalten Sie Informationen zu statischen und dynamischen Param
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838016"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
@@ -41,8 +41,13 @@ Diese Sicherheitsmaßnahme verhindert die unsichere Vorgehensweise, Geheimnisse 
 - Name des Key Vault-Geheimnisses
 - Version des Key Vault-Geheimnisses
 
-Die referenzierte Key Vault-Instanz muss sich in dem Abonnement befinden, dem die Blaupause zugewiesen wird.
-Darüber hinaus muss auf der Seite **Zugriffsrichtlinien** der Key Vault-Instanz die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** konfiguriert sein. Eine Anleitung zum Aktivieren dieses Features finden Sie unter [Key Vault – Aktivieren der Vorlagenbereitstellung](../../../managed-applications/key-vault-access.md#enable-template-deployment). Weitere Informationen zu Azure Key Vault finden Sie im [Überblick über Azure Key Vault](../../../key-vault/key-vault-overview.md).
+Wenn für die Blaupausenzuweisung eine **systemseitig zugewiesene verwaltete Identität** verwendet wird, _muss_ der Key Vault, auf den verwiesen wird, im selben Abonnement vorhanden sein, dem auch die Blaupausendefinition zugewiesen ist.
+
+Wenn für die Blaupausenzuweisung eine **benutzerseitig zugewiesene verwaltete Identität** verwendet wird, _kann_ der Key Vault, auf den verwiesen wird, in einem zentralen Abonnement vorhanden sein. Der verwalteten Identität müssen vor der Blaupausenzuweisung die entsprechenden Rechte für den Key Vault gewährt werden.
+
+In beiden Fällen muss für den Key Vault auf der Seite **Zugriffsrichtlinien** die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** konfiguriert sein. Eine Anleitung zum Aktivieren dieses Features finden Sie unter [Key Vault – Aktivieren der Vorlagenbereitstellung](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+
+Weitere Informationen zu Azure Key Vault finden Sie im [Überblick über Azure Key Vault](../../../key-vault/key-vault-overview.md).
 
 ## <a name="parameter-types"></a>Parametertypen
 
@@ -52,9 +57,9 @@ Ein Parameterwert, der in der Definition einer Blaupause definiert ist, wird als
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Festlegen statischer Parameter im Portal
 
-1. Klicken Sie auf **Alle Dienste**, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
-1. Wählen Sie auf der Seite links **Blaupausendefinitionen** aus.
+1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
 1. Klicken Sie auf eine vorhandene Blaupause, und klicken Sie anschließend auf **Blaupause bearbeiten**, oder klicken Sie auf **+ Blaupause erstellen**, und geben Sie die Informationen auf der Registerkarte **Grundlagen** ein.
 
@@ -169,11 +174,11 @@ Das Gegenteil eines statischen Parameters ist ein **dynamischer Parameter**. Die
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Festlegen dynamischer Parameter im Portal
 
-1. Klicken Sie auf **Alle Dienste**, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
-1. Wählen Sie auf der Seite links **Blaupausendefinitionen** aus.
+1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus. ODER: Klicken Sie auf die Blaupause, die Sie zuweisen möchten, und klicken Sie dann auf die Schaltfläche **Blaupause zuweisen**.
+1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus, oder klicken Sie auf die Blaupause, die Sie zuweisen möchten, und klicken Sie dann auf die Schaltfläche **Blaupause zuweisen**.
 
 1. Auf der Seite **Blaupause zuweisen** finden Sie den Abschnitt **Artefaktparameter**. Für jedes Artefakt mit mindestens einem **dynamischen Parameter** werden das Artefakt und die zugehörigen Konfigurationsoptionen angezeigt. Geben Sie erforderliche Werte für die Parameter an, bevor Sie die Blaupause zuweisen. Im folgenden Beispiel ist _Name_ ein **dynamischer Parameter**, der definiert werden muss, um die Blaupausenzuweisung abzuschließen.
 
@@ -237,7 +242,7 @@ Artefakte für eine Ressourcengruppe werden mit einem Vorlagennamen und den Eige
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen.
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.
 - Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

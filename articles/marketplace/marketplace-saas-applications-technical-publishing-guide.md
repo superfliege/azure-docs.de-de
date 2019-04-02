@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450744"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213618"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -39,9 +39,9 @@ SaaS-Anwendungen stehen in beiden Azure-Storefronts zur Verfügung. In der folge
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  
-| **Kontaktaufnahme** | JA | Nein  |  
-| **Power BI/Dynamics** | JA | Ja (Azure AD-Integration) |  
-| **SaaS-Apps**| JA | Ja (Azure AD-Integration) |     
+| **Kontaktaufnahme** | Ja | Nein  |  
+| **Power BI/Dynamics** | Ja | Ja (Azure AD-Integration) |  
+| **SaaS-Apps**| Ja | Ja (Azure AD-Integration) |     
 
 ## <a name="saas-list"></a>SaaS-Liste
 
@@ -143,6 +143,9 @@ Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnun
 |Abbruch | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
 |Transaktionszielseite | Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können. |   
 | Abonnement-API | Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. |  
+
+>[!Note]
+>Die Nutzung des Cloud Solution Provider (CSP)-Partnerkanals ist jetzt verfügbar.  Unter [Cloud Solution Providers](./cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Falls Sie dies noch nicht getan haben,

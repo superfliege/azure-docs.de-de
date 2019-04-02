@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a850b42f23a94366ec73949556b4af9a90f5015e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ebedddf5e62e41bd0ef2d4c426df448a81a1e2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Tutorial: Azure Active Directory-Integration mit Rollbar
 
@@ -218,7 +218,7 @@ Damit sich Azure AD-Benutzer bei Rollbar anmelden können, müssen sie in Rollba
 
     ![Invite People](./media/rollbar-tutorial/user2.png)
 
-1. Geben Sie im Textfeld den Namen eines Benutzers ein, z. B. **brittasimon@contoso.com**, und klicken Sie dann auf **Hinzufügen/Einladen**.
+1. Geben Sie im Textfeld den Namen eines Benutzers ein, z. B. **brittasimon\@contoso.com**, und klicken Sie dann auf **Hinzufügen/Einladen**.
 
     ![Invite People](./media/rollbar-tutorial/user3.png)
 

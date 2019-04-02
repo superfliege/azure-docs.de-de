@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 14d50cb7cac77af75dd4b7293812154d1f24e47c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2a41316eadb43145628d6c625935c751bfbc6ad6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765523"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531524"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problembehandlung bei der CDN-Dateikomprimierung
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit der [CDN-Dateikomprimierung](cdn-improve-performance.md).
@@ -30,7 +30,7 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
 Die Komprimierung für Ihren Endpunkt ist aktiviert, die Dateien werden aber nicht komprimiert zurückgegeben.
 
 > [!TIP]
-> Um zu überprüfen, ob Ihre Dateien komprimiert zurückgegeben werden, müssen Sie ein Tool wie [Fiddler](http://www.telerik.com/fiddler) oder die [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers verwenden.  Überprüfen Sie die HTTP-Antwortheader, die mit Ihrem zwischengespeicherten CDN.Inhalt zurückgegeben werden.  Wenn ein Header mit dem Namen `Content-Encoding` mit einem Wert von **gzip**, **bzip2** oder **deflate** vorhanden ist, werden Ihre Inhalte komprimiert.
+> Um zu überprüfen, ob Ihre Dateien komprimiert zurückgegeben werden, müssen Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler) oder die [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers verwenden.  Überprüfen Sie die HTTP-Antwortheader, die mit Ihrem zwischengespeicherten CDN.Inhalt zurückgegeben werden.  Wenn ein Header mit dem Namen `Content-Encoding` mit einem Wert von **gzip**, **bzip2** oder **deflate** vorhanden ist, werden Ihre Inhalte komprimiert.
 > 
 > ![Content-Encoding-Header](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -117,5 +117,5 @@ Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanfor
 Der **Über** -HTTP-Header informiert den Webserver darüber, dass die Anforderung von einem Proxyserver übergeben wird.  Microsoft IIS-Webserver komprimieren Antworten standardmäßig nicht, wenn die Anforderung einen **Über** -Header enthält.  Führen Sie folgende Schritte aus, um dieses Verhalten außer Kraft zu setzen:
 
 * **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](https://msdn.microsoft.com/library/ms525390.aspx)
-* **IIS 7 oder höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest.](http://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest](http://www.iis.net/configreference/system.webserver/httpcompression)
 

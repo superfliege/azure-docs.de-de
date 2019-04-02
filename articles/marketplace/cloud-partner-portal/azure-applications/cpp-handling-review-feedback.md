@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106952"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882687"
 ---
 # <a name="handling-review-feedback"></a>Verarbeiten von Prüfungsfeedback
 
@@ -27,12 +27,12 @@ In diesem Artikel wird erläutert, wie Sie auf die Azure DevOps-Umgebung zugreif
 
 ![Veröffentlichungsschritte mit VSTS-Feedback](./media/pub-flow-vsts-access.png)
 
-In der Regel werden bei der Prüfung festgestellte Probleme als Pull Requests (PR) bezeichnet.  Jeder Pull Request ist mit einem Onlineelement von [Azure DevOps](https://azure.microsoft.com/services/devops/) (zuvor Visual Studio Team Services [VSTS] genannt) verknüpft, das Details zu dem Problem enthält.  Die folgende Abbildung zeigt ein Beispiel für einen Pull Request-Verweis einer Prüfung.  Für komplexe Szenarien erhalten Sie E-Mails vom Prüfungs- und Supportteam. 
+In der Regel werden bei der Prüfung festgestellte Probleme als Pull-Requests (PR) bezeichnet.  Jeder Pull Request ist mit einem Onlineelement von [Azure DevOps](https://azure.microsoft.com/services/devops/) (zuvor Visual Studio Team Services [VSTS] genannt) verknüpft, das Details zu dem Problem enthält.  Die folgende Abbildung zeigt ein Beispiel für einen PR-Verweis einer Prüfung.  Für komplexe Szenarien erhalten Sie E-Mails vom Prüfungs- und Supportteam. 
 
 ![Registerkarte „Status“ mit Prüfungsfeedback](./media/status-tab-ms-review.png)
 
 
-## <a name="vsts-access"></a>Azure DevOps-Zugriff
+## <a name="vsts-access"></a>VSTS-Zugriff
 
 Zum Anzeigen der Pull Request-Elemente, auf die im Prüfungsfeedback verwiesen wird, müssen Herausgeber über eine entsprechende Autorisierung verfügen.  Andernfalls wird neuen Herausgebern eine Antwortseite des Typs `401 - Not Authorized` angezeigt, wenn versucht wird, Pull Requests einzusehen.  Um den Zugriff auf dieses Azure DevOps-Repository anzufordern, führen Sie die folgenden Schritte aus:
 
@@ -58,14 +58,14 @@ Gehen Sie wie folgt vor, um die im Pull Request dokumentierten Probleme zu prüf
 
 1. Klicken Sie im Abschnitt **Prüfung durch Microsoft** des Formulars **Veröffentlichungsschritte** auf einen Pull Request-Link, um Ihren Browser zu öffnen, und wechseln Sie dann zur Seite **Übersicht** (Startseite) dieses Pull Requests.  Die folgende Abbildung zeigt eine exemplarische Startseite mit kritischem Problem für das Beispielangebot einer App von Contoso.  Diese Seite enthält nützliche zusammenfassende Informationen zu den bei der Prüfung der Azure-App gefundenen Problemen.  
 
-    [ ![Pull Request-Startseite](./media/pr-home-page-thumb.png) ](./media/pr-home-page.png)
+    [![Pull Request-Startseite](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Klicken Sie auf die Abbildung, um sie zu vergrößern.*
     
 2. (Optional) Klicken Sie rechts im Fenster im Abschnitt **Richtlinien** auf die Problemmeldung (in diesem Beispiel: **Fehler bei Validierung der Richtlinie**), um die untergeordneten Details des Problems einschließlich der zugehörigen Protokolldateien zu untersuchen.  Fehler werden in der Regel am unteren Rand der Protokolldateien angezeigt.
 
 3. Wählen Sie im Menü auf der linken Seite der Startseite **Dateien**, um die Listendateien anzuzeigen, die die technischen Ressourcen für dieses Angebot darstellen.  Die Microsoft-Prüfer sollten Kommentare hinzugefügt haben, die die ermittelten kritischen Probleme beschreiben.  Im folgenden Beispiel wurden zwei Probleme ermittelt. 
 
-    [ ![Pull Request-Startseite](./media/pr-files-page-thumb.png) ](./media/pr-files-page.png)
+    [![Pull Request-Startseite](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Klicken Sie auf die Abbildung, um sie zu vergrößern.*
 
 4. Klicken Sie in der linken Struktur auf die einzelnen Kommentarknoten, um im Kontext des umgebenden Codes zum Kommentar zu navigieren.  Korrigieren Sie Ihren Quellcode im Projekt Ihres Teams, um das im Kommentar beschriebene Problem zu beheben.

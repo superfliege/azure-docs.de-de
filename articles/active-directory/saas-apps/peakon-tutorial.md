@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b841cbe838156cd00876a9a13c7a9cbe1790ea80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Tutorial: Azure Active Directory-Integration mit Peakon
 
@@ -190,7 +190,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -220,7 +220,7 @@ Im Fall von Peakon ist die Bereitstellung eine manuelle Aufgabe.
 
     a. Geben Sie im Textfeld **Name** den Vornamen **Britta** und den Nachnamen **simon** ein.
 
-    b. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse (z. B. **Brittasimon@contoso.com**) ein.
+    b. Geben Sie im Textfeld **Email** die E-Mail-Adresse ein, z. B. **Brittasimon\@contoso.com**.
 
     c. Klicken Sie auf **Mitarbeiter erstellen**.
 
