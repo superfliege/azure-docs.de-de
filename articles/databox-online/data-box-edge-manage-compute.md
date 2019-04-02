@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 8128afa7078c396156d2cbffb47effeb7de68a0b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: f2416bd3393ae05a74665fe7e11bd1c8c04c91d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58002079"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499029"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Verwalten der Computekonfiguration Ihres Azure Data Box Edge-Geräts
 
@@ -32,7 +32,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="manage-triggers"></a>Verwalten von Triggern
 
-Ein Ereignis ist etwas, das in Ihrer Cloudumgebung oder auf Ihrem Gerät passiert und ggf. eine Aktion erfordert. Die Erstellung einer Datei in einer Freigabe ist beispielsweise ein Ereignis. Ein Trigger ist eine Reaktion auf ein solches Ereignis. Mithilfe eines Triggers kann eine Funktion ausgeführt werden, wenn das Ereignis ausgelöst wird. Im Zusammenhang mit Ihrem Data Box Edge-Gerät können Trigger verwendet werden, um auf Dateiereignisse zu reagieren oder einem Zeitplan zu folgen.
+Ein Ereignis ist etwas, das in Ihrer Cloudumgebung oder auf Ihrem Gerät passiert und ggf. eine Aktion erfordert. Die Erstellung einer Datei in einer Freigabe ist beispielsweise ein Ereignis. Die Ereignisse werden von Triggern ausgelöst. Im Zusammenhang mit Ihrem Data Box Edge-Gerät können Trigger verwendet werden, um auf Dateiereignisse zu reagieren oder einem Zeitplan zu folgen.
 
 - **Datei:** Mit diesen Triggern kann auf Dateiereignisse reagiert werden (etwa auf die Erstellung oder Änderung einer Datei).
 - **Scheduled**: Mit diesen Triggern kann ein Zeitplan mit Startzeit (Datum/Uhrzeit) und Wiederholungsintervall implementiert werden.
@@ -132,6 +132,23 @@ Gehen Sie im Azure-Portal wie folgt vor, um die Zugriffsschlüssel für Ihr Ger�
      ![Auswählen von „Ja“ bei entsprechender Aufforderung](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. Schließen Sie das Dialogfeld, wenn die Synchronisierung abgeschlossen ist.
+
+## <a name="enable-a-network-interface-for-compute"></a>Aktivieren einer Netzwerkschnittstelle für Computeeinstellungen
+
+Unter Umständen müssen Sie auf ein Modul zugreifen, das auf dem Data Box Edge-Gerät ausgeführt wird. Für den externen Zugriff auf das Modul müssen Sie einer Netzwerkschnittstelle auf Ihrem Gerät eine IP-Adresse zuweisen. Sie können diese Computeeinstellungen über Ihre lokale Webbenutzeroberfläche verwalten.
+
+Führen Sie zum Konfigurieren von Computeeinstellungen die folgenden Schritte auf der lokalen Webbenutzeroberfläche aus.
+
+1. Navigieren Sie auf der lokalen Webbenutzeroberfläche zu **Konfiguration > Computeeinstellungen**.  
+
+2. **Aktivieren** Sie die Netzwerkschnittstelle, über die Sie eine Verbindung mit den Computemodulen auf dem Gerät herstellen möchten. 
+
+    - Geben Sie bei Verwendung von statischen IP-Adressen eine IP-Adresse für die Netzwerkschnittstelle ein.
+    - Bei Verwendung von DHCP werden die IP-Adressen automatisch zugewiesen.
+
+3. Wählen Sie zum Anwenden der Einstellungen die Option **Übernehmen** aus.
+
+    ![Aktivieren von Computeeinstellungen](media/data-box-edge-manage-compute/compute-settings-1.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

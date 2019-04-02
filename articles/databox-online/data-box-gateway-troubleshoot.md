@@ -6,23 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: c07293971c4cadd8b7bccc608f69faa3baa19ba7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86cd4190647586ec47519ca481f78267f8999cef
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100852"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402200"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Behandeln von Problemen mit Azure Data Box Gateway 
 
-In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Data Box Gateway behandeln. 
-
-> [!IMPORTANT]
-> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
-
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
+In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Data Box Gateway behandeln. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Ausführen von Diagnosen
@@ -53,7 +48,7 @@ Gehen Sie wie folgt vor, um ein Unterstützungspaket zusammenzustellen:
 
     ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. Klicken Sie nach Abschluss der Erstellung des Unterstützungspakets auf **Unterstützungspaket herunterladen**. Ein ZIP-Paket wird an den gewünschten Pfad heruntergeladen. Sie können das Paket entpacken und sich die Systemprotokolldateien ansehen.
+2. Klicken Sie nach Abschluss der Erstellung des Unterstützungspakets auf **Unterstützungspaket herunterladen**. Ein ZIP-Paket wird an den gewünschten Pfad heruntergeladen. Sie können das Paket entzippen.
 
     ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 

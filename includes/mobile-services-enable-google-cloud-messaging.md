@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836522"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488041"
 ---
 1. Navigieren Sie zur [Google Developers Console](https://console.developers.google.com/cloud-resource-manager), und melden Sie sich mit den Anmeldeinformationen Ihres Google-Kontos an. 
 2. Wählen Sie auf der Symbolleiste die Option **Create Project** (Projekt erstellen) aus. 
    
     ![Erstellen eines neuen Projekts](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. Geben Sie für **Project name** (Projektname) den Namen des Projekts ein, und klicken Sie auf **Create** (Erstellen).
-4. Wählen Sie die Schaltfläche **Alerts** (Warnungen) auf der Symbolleiste aus, und wählen Sie das Projekt in der Liste aus. Das Dashboard für Ihr Projekt wird angezeigt. Sie können auch mit der URL https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME> direkt zum Dashboard navigieren.
+4. Wählen Sie die Schaltfläche **Alerts** (Warnungen) auf der Symbolleiste aus, und wählen Sie das Projekt in der Liste aus. Das Dashboard für Ihr Projekt wird angezeigt. Sie können auch mit der URL `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>` direkt zum Dashboard navigieren.
 
     ![Auswählen Ihres Projekts in Warnungen](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. Notieren Sie sich die **Project number** (Projektnummer) in der Kachel **Project info** (Projektinformationen) des Dashboards. 
@@ -51,5 +51,5 @@ ms.locfileid: "33836522"
 
     ![Kopieren des API-Schlüssels](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Mit diesem API-Schlüsselwert geben Sie Azure die Möglichkeit, sich bei GCM zu authentifizieren und Pushbenachrichtigungen im Auftrag Ihrer App zu verschicken. Navigieren Sie mithilfe der URL https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME> zurück zum Projektdashboard.
+    Mit diesem API-Schlüsselwert geben Sie Azure die Möglichkeit, sich bei GCM zu authentifizieren und Pushbenachrichtigungen im Auftrag Ihrer App zu verschicken. Navigieren Sie mithilfe der URL `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>` zurück zum Projektdashboard.
 

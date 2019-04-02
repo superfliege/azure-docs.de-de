@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 8e583ac1c8ac4b6f32c2fa9f8b7ed07c2e7033e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889997"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402455"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows-Geräte, die Anwendungen der universellen Windows-Plattform ausführen
 
@@ -222,30 +222,28 @@ In diesem Abschnitt führen Sie die Registrierung beim Notification Hub während
 
 Die App ist nun vollständig. Sie kann einen Satz von Kategorien im lokalen Speicher des Geräts speichern, der für die Registrierung beim Notification Hub verwendet wird, wenn Benutzer die Kategorieauswahl ändern. Im nächsten Abschnitt definieren Sie ein Back-End, das Kategoriebenachrichtigungen an diese App senden kann.
 
-## <a name="send-tagged-notifications"></a>Senden von Benachrichtigungen mit Tags
-
-[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
-
-## <a name="run-the-app-and-generate-notifications"></a>Ausführen der App und Erzeugen von Benachrichtigungen
-
+## <a name="run-the-uwp-app"></a>Ausführen der UWP-App 
 1. Drücken Sie in Visual Studio die Taste **F5**, um die App zu starten. Die Benutzeroberfläche der App bietet verschiedene Umschaltmöglichkeiten, mit denen Sie die Kategorien auswählen können, die Sie abonnieren möchten.
 
-    ![App für aktuelle Nachrichten][1]
+    ![App für aktuelle Nachrichten](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
 2. Aktivieren Sie eine oder mehrere Kategorien, und klicken Sie dann auf **Subscribe**.
 
     Die App konvertiert die ausgewählten Kategorien in Tags, und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an. Die registrierten Kategorien werden zurückgegeben und in einem Dialogfeld angezeigt.
 
-    ![Umschalter für Kategorien und Schaltfläche „Subscribe“ (Abonnieren)][19]
+    ![Umschalter für Kategorien und Schaltfläche „Subscribe“ (Abonnieren)](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-3. Verwenden Sie eine dieser Möglichkeiten, um eine neue Benachrichtigung vom Back-End zu versenden:
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Erstellen einer Konsolen-App zum Senden von Benachrichtigungen mit Tags
 
-   * **Konsolen-App:** Starten Sie die Konsolen-App.
-   * **Java/PHP:** Führen Sie Ihre App/Ihr Skript aus.
+[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-     Die Benachrichtigungen für die ausgewählten Kategorien werden als Popupbenachrichtigungen angezeigt.
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>Ausführen der Konsolen-App zum Senden von Benachrichtigungen mit Tags
 
-     ![Popupbenachrichtigungen][14]
+1. Führen Sie die im vorherigen Abschnitt erstellte App aus.
+2. Die Benachrichtigungen für die ausgewählten Kategorien werden als Popupbenachrichtigungen angezeigt. Wenn Sie die Benachrichtigung auswählen, wird das erste UWP-App-Fenster angezeigt. 
+
+     ![Popupbenachrichtigungen](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -260,11 +258,6 @@ In diesem Artikel haben Sie erfahren, wie aktuelle Nachrichten nach Kategorie ü
 [Send notifications from your back-end]: #send
 [Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-[14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-[19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
 [get-started]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

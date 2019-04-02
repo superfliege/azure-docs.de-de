@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02e03868f5a48088b78d5d9b0221387212f248cf
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5e5a186be19c0ecc9730bc79bddff41fb6bbb571
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958710"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401658"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Schnellstart: Abrufen der Absicht mit Java
 
@@ -29,9 +29,8 @@ In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpun
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) oder Ihre bevorzugte IDE
 * ID der öffentlichen App: df67dcdb-c37d-46af-88e1-8b97951ca1c2
-
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
@@ -43,9 +42,9 @@ In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpun
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht 
+## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht
 
-Sie können mit Java auf die gleichen Ergebnisse zugreifen, die im vorherigen Schritt im Browserfenster angezeigt wurden. 
+Sie können mit Java auf die gleichen Ergebnisse zugreifen, die im vorherigen Schritt im Browserfenster angezeigt wurden. Fügen Sie Ihrem Projekt unbedingt die Apache-Bibliotheken hinzu.
 
 1. Kopieren Sie den folgenden Code, um eine Klasse in einer Datei namens `LuisGetRequest.java` zu erstellen:
 
@@ -53,9 +52,9 @@ Sie können mit Java auf die gleichen Ergebnisse zugreifen, die im vorherigen Sc
 
 2. Ersetzen Sie den Wert der `YOUR-KEY`-Variable durch Ihren LUIS-Schlüssel.
 
-3. Kompilieren Sie das Java-Programm mit `javac -cp ":lib/*" LuisGetRequest.java`. 
+3. Setzen Sie Ihren Dateipfad ein, und kompilieren Sie das Java-Programm über eine Befehlszeile: `javac -cp .;<FILE_PATH>\* LuisGetRequest.java`.
 
-4. Drücken Sie `java -cp ":lib/*" LuisGetRequest.java`, um die Anwendung auszuführen. Es wird das gleiche JSON-Ergebnis wie zuvor im Browserfenster angezeigt.
+4. Setzen Sie Ihren Dateipfad ein, und führen Sie die Anwendung über eine Befehlszeile aus: `java -cp .;<FILE_PATH>\* LuisGetRequest.java`. Es wird das gleiche JSON-Ergebnis wie zuvor im Browserfenster angezeigt.
 
     ![Konsolenfenster mit JSON-Ergebnis aus LUIS](./media/luis-get-started-java-get-intent/console-turn-on.png)
     
@@ -65,7 +64,7 @@ Sie können mit Java auf die gleichen Ergebnisse zugreifen, die im vorherigen Sc
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Java-Datei. 
+Löschen Sie die Java-Datei bzw. den Java-Projektordner.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

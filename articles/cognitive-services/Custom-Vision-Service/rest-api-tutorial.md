@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden der Custom Vision Service-REST-API'
+title: 'Tutorial: Erstellen, Trainieren und Exportieren eines Modells mit der Custom Vision-REST-API'
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die REST-API zum Erstellen, Trainieren, Testen und Exportieren eines benutzerdefinierten Modells für maschinelles Sehen.
 services: cognitive-services
@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: e33eb58dd4228bb1093c239bae960f71c0f3788c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 54b5f7bb16803adf91a0a8ea60cfa68d1e322d07
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884978"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351098"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>Tutorial: Verwenden der Custom Vision-REST-API
-
-Erfahren Sie, wie Sie mit der Custom Vision-REST-API ein Modell erstellen, trainieren, testen und exportieren.
+# <a name="tutorial-create-train-and-export-a-model-with-rest"></a>Tutorial: Erstellen, Trainieren und Exportieren eines Modells mit REST
 
 Die Informationen in diesem Dokument veranschaulichen, wie Sie einen REST-Client für die Arbeit mit der REST-API für das Trainieren des Custom Vision-Diensts verwenden. Die Beispiele zeigen, wie Sie die API mithilfe des Hilfsprogramms `curl` aus einer Bash-Umgebung und mithilfe des Hilfsprogramms `Invoke-WebRequest` in Windows PowerShell verwenden.
 
@@ -34,9 +32,7 @@ Die Informationen in diesem Dokument veranschaulichen, wie Sie einen REST-Client
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Grundlegende Kenntnisse von REST (Representational State Transfer). In diesem Dokument wird nicht auf Details wie HTTP-Verben, JSON oder andere Dinge, die häufig mit REST verwendet werden, eingegangen.
-
 * Entweder eine Bash (Bourne Again Shell) mit dem Hilfsprogramm [cURL](https://curl.haxx.se) oder Windows PowerShell 3.0 (oder höher)
-
 * Ein Custom Vision-Konto. Weitere Informationen finden Sie im Dokument [Erstellen einer Klassifizierung](getting-started-build-a-classifier.md).
 
 ## <a name="get-keys"></a>Abrufen der Schlüssel
@@ -121,29 +117,29 @@ $resp.Content
 Die Antwort auf die Anforderung sieht in etwa wie das folgende JSON-Dokument aus:
 
 ```json
-[
-    {
-        "id": "ee85a74c-405e-4adc-bb47-ffa8ca0c9f31",
-        "name": "General",
-        "type": "Classification",
-        "exportable": false,
-        "enabled": true
-    },
-    {
-        "id": "c151d5b5-dd07-472a-acc8-15d29dea8518",
-        "name": "Food",
-        "type": "Classification",
-        "exportable": false,
-        "enabled": true
-    },
-    {
-        "id": "ca455789-012d-4b50-9fec-5bb63841c793",
-        "name": "Landmarks",
-        "type": "Classification",
-        "exportable": false,
-        "enabled": true
-    },
-    ...
+[  
+  {  
+    "id":"ee85a74c-405e-4adc-bb47-ffa8ca0c9f31",
+    "name":"General",
+    "type":"Classification",
+    "exportable":false,
+    "enabled":true
+  },
+  {  
+    "id":"c151d5b5-dd07-472a-acc8-15d29dea8518",
+    "name":"Food",
+    "type":"Classification",
+    "exportable":false,
+    "enabled":true
+  },
+  {  
+    "id":"ca455789-012d-4b50-9fec-5bb63841c793",
+    "name":"Landmarks",
+    "type":"Classification",
+    "exportable":false,
+    "enabled":true
+  },
+  ...
 ]
 ```
 
@@ -209,41 +205,41 @@ $resp.Content
 Die Antwort auf die Anforderung sieht in etwa wie das folgende JSON-Dokument aus:
 
 ```json
-{
-    "isBatchSuccessful": true,
-    "images": [
-        {
-            "sourceUrl": "http://myimages/cat.jpg",
-            "status": "OK",
-            "image": {
-                "id": "081adaee-a76b-4d94-a70e-e4fd0935a28f",
-                "created": "2018-08-13T13:24:22.0815638",
-                "width": 640,
-                "height": 480,
-                "imageUri": "https://linktoimage",
-                "thumbnailUri": "https://linktothumbnail",
-                "tags": [
-                    {
-                        "tagId": "ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
-                        "tagName": null,
-                        "created": "2018-08-13T13:24:22.104936"
-                    }
-                ],
-                "regions": [
-                    {
-                        "regionId": "40f206a1-3f8a-4de7-a6c3-c7b4643117df",
-                        "tagName": null,
-                        "created": "2018-08-13T13:24:22.104936",
-                        "tagId": "ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
-                        "left": 119,
-                        "top": 94,
-                        "width": 240,
-                        "height": 140
-                    }
-                ]
-            }
-        }
-    ]
+{  
+  "isBatchSuccessful":true,
+  "images":[  
+    {  
+      "sourceUrl":"http://myimages/cat.jpg",
+      "status":"OK",
+      "image":{  
+        "id":"081adaee-a76b-4d94-a70e-e4fd0935a28f",
+        "created":"2018-08-13T13:24:22.0815638",
+        "width":640,
+        "height":480,
+        "imageUri":"https://linktoimage",
+        "thumbnailUri":"https://linktothumbnail",
+        "tags":[  
+          {  
+            "tagId":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
+            "tagName":null,
+            "created":"2018-08-13T13:24:22.104936"
+          }
+        ],
+        "regions":[  
+          {  
+            "regionId":"40f206a1-3f8a-4de7-a6c3-c7b4643117df",
+            "tagName":null,
+            "created":"2018-08-13T13:24:22.104936",
+            "tagId":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
+            "left":119,
+            "top":94,
+            "width":240,
+            "height":140
+          }
+        ]
+      }
+    }
+  ]
 }
 ```
 
@@ -305,18 +301,18 @@ $resp.Content
 Die Antwort auf die Anforderung sieht in etwa wie das folgende JSON-Dokument aus:
 
 ```json
-{
-    "id": "369b010b-2a92-4f48-a918-4c1a0af91888",
-    "project": "45d1b19b-69b8-4b22-8e7e-d1ca37504686",
-    "iteration": "23de09d6-42a1-413e-839e-8db6ee6d3496",
-    "created": "2018-08-16T17:39:20.7944508Z",
-    "predictions": [
-        {
-            "probability": 0.8390652,
-            "tagId": "ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
-            "tagName": "cat"
-        }
-    ]
+{  
+  "id":"369b010b-2a92-4f48-a918-4c1a0af91888",
+  "project":"45d1b19b-69b8-4b22-8e7e-d1ca37504686",
+  "iteration":"23de09d6-42a1-413e-839e-8db6ee6d3496",
+  "created":"2018-08-16T17:39:20.7944508Z",
+  "predictions":[  
+    {  
+      "probability":0.8390652,
+      "tagId":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
+      "tagName":"cat"
+    }
+  ]
 }
 ```
 
@@ -345,11 +341,11 @@ $resp.Content
 Die Antwort auf die Anforderung sieht in etwa wie das folgende JSON-Dokument aus:
 
 ```json
-{
-    "platform": "CoreML",
-    "status": "Exporting",
-    "downloadUri": null,
-    "flavor": null
+{  
+  "platform":"CoreML",
+  "status":"Exporting",
+  "downloadUri":null,
+  "flavor":null
 }
 ```
 
@@ -374,14 +370,16 @@ $resp.Content
 Die Antwort auf die Anforderung sieht in etwa wie das folgende JSON-Dokument aus:
 
 ```json
-[
-    {
-        "platform": "CoreML",
-        "status": "Done",
-        "downloadUri": "https://linktoexportedmodel",
-        "flavor": null
-    }
+[  
+  {  
+    "platform":"CoreML",
+    "status":"Done",
+    "downloadUri":"https://linktoexportedmodel",
+    "flavor":null
+  }
 ]
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [GetExports](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829a).

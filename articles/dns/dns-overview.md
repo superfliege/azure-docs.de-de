@@ -2,17 +2,16 @@
 title: Was ist Azure DNS?
 description: Übersicht über DNS-Hostingdienste in Microsoft Azure. Hosten Ihrer Domäne in Microsoft Azure.
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 9/24/2018
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 62043128b6415a064e35adca6be4d60ccfcae308
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294313"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339454"
 ---
 # <a name="what-is-azure-dns"></a>Was ist Azure DNS?
 
@@ -39,6 +38,7 @@ DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern geho
 Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen](dns-protect-zones-recordsets.md). 
 
 ## <a name="dnssec"></a>DNSSEC
+
 Azure DNS unterstützt derzeit DNSSEC nicht. In den meisten Fällen können Sie die Notwendigkeit von DNSSEC reduzieren, indem Sie in Ihren Anwendungen konsistent HTTPS/TLS verwenden. Wenn DNSSEC eine kritische Anforderung für Ihre DNS-Zonen ist, können Sie diese Zonen bei Drittanbietern für das DNS-Hosting hosten.
 
 ## <a name="ease-of-use"></a>Einfache Bedienung
@@ -57,12 +57,11 @@ Weitere Informationen finden Sie unter [Verwenden von Azure DNS für private Dom
 
 ## <a name="alias-records"></a>Aliaseinträge
 
-Azure DNS unterstützt Aliasdatensätze. Sie können einen Aliaseintragssatz verwenden, um auf eine Azure-Ressource zu verweisen (beispielsweise eine öffentliche Azure-IP-Adresse oder ein Azure Traffic Manager-Profil). Wenn sich die IP-Adresse der zugrunde liegenden Ressource ändert, wird der Aliasdatensatz während der DNS-Auflösung nahtlos automatisch aktualisiert. Der Aliasdatensatz verweist auf die Dienstinstanz, und der Dienstinstanz ist eine IP-Adresse zugeordnet. 
+Azure DNS unterstützt Aliasdatensätze. Sie können einen Aliaseintragssatz verwenden, um auf eine Azure-Ressource zu verweisen, beispielsweise eine öffentliche Azure-IP-Adresse, ein Azure Traffic Manager-Profil oder einen Azure CDN-Endpunkt (Azure Content Delivery Network). Wenn sich die IP-Adresse der zugrunde liegenden Ressource ändert, wird der Aliasdatensatz während der DNS-Auflösung nahtlos automatisch aktualisiert. Der Aliasdatensatz verweist auf die Dienstinstanz, und der Dienstinstanz ist eine IP-Adresse zugeordnet.
 
-Darüber hinaus kann Ihre Apex- oder Naked-Domäne jetzt über einen Aliaseintrag auf ein Traffic Manager-Profil verweisen. Ein Beispiel wäre etwa „contoso.com“.
+Darüber hinaus kann Ihre Apex- oder Naked-Domäne jetzt über einen Aliaseintrag auf ein Traffic Manager-Profil oder einen CDN-Endpunkt verweisen. Ein Beispiel wäre etwa „contoso.com“.
 
 Weitere Informationen finden Sie in der [Übersicht über Azure-DNS-Aliaseinträge](dns-alias.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

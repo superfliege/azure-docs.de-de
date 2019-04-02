@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1314e393d292145ef112e700abf6ab1ef199db7d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 1575c4f4a1c96a84823f76e8e98e76de3c2ace86
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138166"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313021"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Schnellstart für Projekt Akustik mit Unreal/Wwise
 In diesem Schnellstart experimentieren Sie mit Entwurfssteuerelementen von Projekt Akustik mithilfe der bereitgestellten Beispielinhalte für die Unreal Engine und Wwise.
@@ -25,7 +25,7 @@ Softwareanforderungen:
 * [Wwise 2018.1.6](https://www.audiokinetic.com/products/wwise/)
 
 ## <a name="download-the-sample-package"></a>Herunterladen des Beispielpakets
-Laden Sie das [Beispielpaket für Unreal und Wwise für Projekt Akustik](http://www.microsoft.com/downloads/details.aspx?FamilyID=f03dff5a-5780-462e-87ef-e6d039d0748d) herunter. Das Beispielpaket enthält ein Unreal Engine-Projekt, das Wwise-Projekt für dieses Unreal-Projekt und das Projekt Akustik-Plug-In für Wwise.
+Laden Sie das [Beispielpaket für Unreal und Wwise für Projekt Akustik](https://www.microsoft.com/download/details.aspx?id=58090) herunter. Das Beispielpaket enthält ein Unreal Engine-Projekt, das Wwise-Projekt für dieses Unreal-Projekt und das Projekt Akustik-Plug-In für Wwise.
 
 ## <a name="set-up-the-project-acoustics-sample-project"></a>Einrichten des Projekt Akustik-Beispielprojekts
 Um das Projekt Akustik-Beispielprojekt für Unreal/Wwise einzurichten, müssen Sie zuerst das Projekt Akustik-Plug-In für Wwise installieren. Stellen Sie dann die Wwise-Binärdateien für das Unreal-Projekt bereit, und passen Sie das Unreal-Plug-In von Wwise so an, dass es Projekt Akustik unterstützt.
@@ -33,26 +33,26 @@ Um das Projekt Akustik-Beispielprojekt für Unreal/Wwise einzurichten, müssen S
 ### <a name="install-the-project-acoustics-wwise-plugin"></a>Installieren des Wwise-Plug-Ins für Projekt Akustik
 Öffnen Sie das Wwise-Startprogramm, und wählen Sie auf der Registerkarte **Plugins** (Plug-Ins) unter **Install New Plugins** (Neue Plug-Ins installieren) die Option **Add From Directory** (Aus Verzeichnis hinzufügen) aus. Wählen Sie das Verzeichnis `AcousticsWwisePlugin\ProjectAcoustics` aus, das im heruntergeladenen Paket enthalten war.
 
-![Installieren des Wwise-Plug-Ins](media/wwise-install-new-plugin.png)
+![Screenshot des Wwise-Startprogramms mit der Option zum Installieren des Wwise-Plug-Ins](media/wwise-install-new-plugin.png)
 
 ### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Hinzufügen der Wwise-Binärdateien zum Unreal-Beispielprojekt für Projekt Akustik
 Klicken Sie im Wwise-Startprogramm auf die Registerkarte **Unreal Engine**, klicken Sie dann auf das Hamburger-Menü neben **Recent Unreal Engine Projects** (Letzte Unreal Engine Projekte), und wählen Sie **Browse for project** (Nach Projekt suchen) aus. Öffnen Sie die `.uproject`-Datei des Unreal-Beispielprojekts im Paket: `AcousticsSample\AcousticsGame\AcousticsGame.uproject`.
 
-![Registerkarte „Unreal“ von Wwise](media/wwise-unreal-tab.png)
+![Screenshot der Unreal-Registerkarte im Wwise-Startprogramm](media/wwise-unreal-tab.png)
 
 Klicken Sie nun neben dem Projekt Akustik-Beispielprojekt auf **Integrate Wwise in Project** (Wwise in das Projekt integrieren).
 
-![Unreal-Akustikspielprojekt in Wwise](media/wwise-acoustics-game-project.png)
+![Screenshot des Wwise-Startprogramms mit dem Unreal-Akustikspielprojekt](media/wwise-acoustics-game-project.png)
 
 ### <a name="extend-wwises-unreal-plugin-functionality"></a>Erweitern der Funktionen des Unreal-Plug-Ins für Wwise
 Für das Unreal-Plug-In für Projekt Akustik müssen zusätzliche Funktionen aus der Unreal-Plug-In-API für Wwise verfügbar gemacht werden. Führen Sie die im Unreal-Plug-In für Projekt Akustik bereitgestellte Batchdatei aus, um diese Änderungen zu automatisieren:
 * Führen Sie in `AcousticsGame\Plugins\ProjectAcoustics\Resources` die Datei `PatchWwise.bat` aus.
 
-    ![Patchen des Wwise-Skripts](media/patch-wwise-script.png)
+    ![Screenshot des Windows-Explorer-Fensters mit dem Skript zum Patchen des Wwise-Projekts](media/patch-wwise-script.png)
 
 * Wenn das DirectX SDK nicht installiert ist, müssen Sie in `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` die Zeile mit „DXSDK_DIR“ auskommentieren.
 
-    ![Auskommentieren von „DXSDK“](media/directx-sdk-comment.png)
+    ![Screenshot des Code-Editors mit der auskommentierten DXSDK-Zeile](media/directx-sdk-comment.png)
 
 ### <a name="open-the-unreal-project"></a>Öffnen Sie das Unreal-Projekt. 
 Sie werden gefragt, ob die Module neu erstellt werden sollen. Klicken Sie auf „Ja“.
@@ -65,7 +65,7 @@ Hören Sie sich die Szene an, indem Sie im Unity-Editor auf die Wiedergabeschalt
 ### <a name="modify-occlusion-and-transmission"></a>Ändern der Verdeckung und Übertragung
 Für jeden Unreal-Soundakteur gibt es quellenbezogene Entwurfssteuerelemente in Projekt Akustik:
 
-![DemoSceneSoundSourceDesignControls](media/demo-scene-sound-source-design-controls.png)
+![Screenshot der Akustik-Entwurfssteuerelemente in Unreal](media/demo-scene-sound-source-design-controls.png)
 
 Wenn der Multiplikator **Occlusion** (Verdeckung) größer als 1 ist (der Standardwert ist 1), tritt eine übertriebene Verdeckung auf. Bei einer Festlegung unter 1 ist der Verdeckungseffekt geringer.
 
@@ -79,7 +79,7 @@ Erhöhen Sie die Verfallszeit im gesamten Raum durch Anpassen von **Decay Time S
 ### <a name="modify-distance-based-attenuation"></a>Ändern der distanzabhängigen Dämpfung
 Das Wwise-Mixer-Plug-In für Projekt Akustik berücksichtigt die in Wwise integrierte distanzabhängige Dämpfung pro Quelle. Durch das Ändern dieser Kurve wird der Pegel der Trockenstrecke geändert. Das Projekt Akustik-Plug-In passt den Verwässerungspegel so an, dass die durch die Simulation und die Entwurfssteuerelemente festgelegte Verwässerungs-Trockenheits-Mischung aufrechterhalten bleibt.
 
-![DemoSoundsAttenuation](media/demo-sounds-attenuation.png)
+![Screenshot des Bereichs mit der Wwise-Dämpfungskurve mit Dämpfung gegen Null vor Simulationsgrenze](media/demo-sounds-attenuation.png)
 
 Projekt Akustik führt die Berechnung in einem „Simulationsbereichsfeld“ durch, das um jede simulierte Spielerposition herum angeordnet ist. Die Akustikressourcen im Beispielpaket wurden mit einem Simulationsbereichsradius von 45 m erstellt, und die Dämpfung ist so ausgelegt, dass sie vor 45 m auf 0 sinkt. Dieser Abfall ist nicht zwingend erforderlich und weist den Nachteil auf, dass nur in der Geometrie innerhalb von 45 m um den Zuhörer herum Töne verdeckt werden.
 

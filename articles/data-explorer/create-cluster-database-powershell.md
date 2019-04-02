@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 650bdc5cdf99645bc2be6c8e85737dacd10a6b27
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287362"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472479"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mithilfe von PowerShell
 
@@ -25,20 +25,21 @@ ms.locfileid: "58287362"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von PowerShell einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
-
-Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in der [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um [Azure Data Explorer](https://docs.microsoft.com/azure/kusto/ ) zu erstellen und zu konfigurieren.
-
-[**Az.Kusto**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto ). Mit Azure PowerShell und **Az.Kusto** können Sie folgende Aufgaben ausführen:
+Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst für Echtzeitanalysen großer Datenmengen, die von Anwendungen, Websites, IoT-Geräten usw. gestreamt werden. Um den Azure Data Explorer zu verwenden, erstellen Sie zuerst einen Cluster und anschließend eine oder mehrere Datenbanken in diesem Cluster. Anschließend erfassen (laden) Sie Daten in eine Datenbank, damit Sie diese abfragen können. In diesem Schnellstart erstellen Sie einen Cluster und eine Datenbank mit Powershell. Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) mit [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) ausführen, um Azure Data Explorer-Cluster und -Datenbanken zu erstellen und zu konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.4 verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Konfigurieren von Parametern
 
-Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud Shell ausführen. Wenn Sie die Befehlszeilenschnittstelle lokal ausführen, gehen Sie wie folgt vor, um sich bei Azure anzumelden und Ihr aktuelles Abonnement festzulegen:
+Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud Shell ausführen. Wenn Sie die Befehlszeilenschnittstelle lokal ausführen, führen Sie Schritt 1 und 2 aus, um sich bei Azure anzumelden und Ihr aktuelles Abonnement festzulegen:
 
 1. Führen Sie den folgenden Befehl aus, um sich bei Azure anzumelden:
 
@@ -46,12 +47,12 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
     Connect-AzAccount
     ```
 
-2. Legen Sie das Abonnement fest, in dem der Cluster erstellt werden soll.
+1. Legen Sie das Abonnement fest, in dem der Cluster erstellt werden soll:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Installieren Sie das Az.Kusto-Modul auf Ihrem Gerät:
+1. Wenn Sie die Azure CLI lokal oder in Azure Cloud Shell ausführen, müssen Sie das Az.Kusto-Modul auf Ihrem Gerät installieren:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -73,7 +74,7 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
 
     Sie können auch noch weitere optionale Parameter verwenden, etwa die Kapazität des Clusters.
 
-2. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
+1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
 
     ```azurepowershell-interactive
     Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
@@ -97,7 +98,7 @@ Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde d
    | SoftDeletePeriod | *3650:00:00:00* | Der Zeitraum, für den Daten für Abfragen verfügbar sein sollen. |
    | HotCachePeriod | *3650:00:00:00* | Der Zeitraum, für den Daten im Cache verfügbar sein sollen. |
 
-2. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
+1. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase
@@ -116,7 +117,5 @@ Jetzt verfügen Sie über einen Cluster und eine Datenbank.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Az.Kusto-Befehle finden Sie [**hier**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto ).
-
-> [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)](net-standard-ingest-data.md)
+* [Zusätzliche Az.Kusto-Befehle](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
+* [Schnellstart: Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)](net-standard-ingest-data.md)

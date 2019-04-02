@@ -10,12 +10,12 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04108c4b5a8ce04b971a0529393ea442cb1cf226
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113332"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480122"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Einrichten von Pushbenachrichtigungen in einem Notification Hub im Azure-Portal
 
@@ -29,7 +29,7 @@ Wenn Sie noch keinen Notification Hub erstellt haben, erstellen Sie ihn jetzt. W
 
 So richten Sie einen Apple Push Notification Service (APNS) ein:
 
-1. Wählen Sie im Azure-Portal unter **Notification Hub** die Option **Apple (APNS)** aus.
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** im Menü auf der linken Seite die Option **Apple (APNS)** aus.
 
 1. Wählen Sie für **Authentifizierungsmodus** entweder **Zertifikat** oder **Token** aus.
 
@@ -53,7 +53,7 @@ Weitere Informationen finden Sie unter [Tutorial: Senden von Pushbenachrichtigun
 
 So richten Sie Pushbenachrichtigungen für Google Firebase Cloud Messaging (FCM) ein:
 
-1. Wählen Sie im Azure-Portal unter **Notification Hub** die Option **Google (GCM/FCM)** aus. 
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** im Menü auf der linken Seite die Option **Google (GCM/FCM)** aus. 
 2. Fügen Sie den **API-Schlüssel** für das FCM-Projekt ein, das Sie zuvor gespeichert haben. 
 3. Wählen Sie **Speichern** aus. 
 
@@ -67,7 +67,7 @@ Weitere Informationen finden Sie unter [Tutorial: Senden von Pushbenachrichtigun
 
 So richten Sie den Windows-Pushbenachrichtigungsdienst (WNS) ein:
 
-1. Wählen Sie im Azure-Portal unter **Notification Hub** die Option **Windows (WNS)** aus.
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** im Menü auf der linken Seite die Option **Windows (WNS)** aus.
 2. Geben Sie Werte für **Paket-SID** und **Sicherheitsschlüssel** ein.
 3. Wählen Sie **Speichern** aus.
 
@@ -79,7 +79,7 @@ Weitere Informationen finden Sie unter [Tutorial: Senden von Benachrichtigungen 
 
 So richten Sie den Microsoft-Pushbenachrichtigungsdienst (Microsoft Push Notification Service, MPNS) für Windows Phone ein: 
 
-1. Wählen Sie im Azure-Portal unter **Notification Hub** die Option **Windows Phone (MPNS)** aus.
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** im Menü auf der linken Seite die Option **Windows Phone (MPNS)** aus.
 1. Aktivieren Sie entweder nicht authentifizierte oder authentifizierte Pushbenachrichtigungen:
 
    a. Um nicht authentifizierte Pushbenachrichtigungen zu aktivieren, wählen Sie **Nicht authentifizierte Pushbenachrichtigungen zulassen** > **Speichern** aus.
@@ -99,7 +99,7 @@ Weitere Informationen finden Sie unter [Tutorial: Senden von Pushbenachrichtigun
 
 So richten Sie Pushbenachrichtigungen für Amazon Device Messaging (ADM) ein:
 
-1. Wählen Sie im Azure-Portal unter **Notification Hub** die Option **Amazon (ADM)** aus.
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** im Menü auf der linken Seite die Option **Amazon (ADM)** aus.
 2. Geben Sie Werte für **Client-ID** und **Geheimer Clientschlüssel** ein.
 3. Wählen Sie **Speichern** aus.
     
@@ -111,7 +111,7 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Notification Hubs fü
 
 So richten Sie Pushbenachrichtigungen für Baidu ein:
 
-1. Wählen Sie im Azure-Portal unter **Notification Hub** die Option **Baidu (Android China)** aus. 
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** im Menü auf der linken Seite die Option **Baidu (Android China)** aus. 
 2. Geben Sie den **API-Schlüssel** aus der Baidu-Konsole in das Baidu Cloud Push-Projekt ein. 
 3. Geben Sie den **Geheimen Schlüssel** aus der Baidu-Konsole in das Baidu Cloud Push-Projekt ein. 
 4. Wählen Sie **Speichern** aus. 

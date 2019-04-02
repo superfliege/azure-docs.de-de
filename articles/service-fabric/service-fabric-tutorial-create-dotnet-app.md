@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff6475637b07f50aaea93caac85e65356bc9b96b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851362"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317203"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 
@@ -466,7 +466,7 @@ In diesem Tutorial verwenden Sie die [ASP.NET Core-Web-API](service-fabric-relia
         ],
 ```
 Um den in Ihrem lokalen Entwicklungscluster verwendeten Port des Reverseproxys zu ermitteln, sehen Sie sich das **HttpApplicationGatewayEndpoint**-Element im lokalen Service Fabric-Clustermanifest an:
-1. Öffnen Sie ein Browserfenster, und navigieren Sie zu http://localhost:19080, um das Tool Service Fabric Explorer zu öffnen.
+1. Öffnen Sie ein Browserfenster, und navigieren Sie zu http:\//localhost:19080, um das Tool Service Fabric Explorer zu öffnen.
 2. Wählen Sie **Cluster > Manifest** aus.
 3. Notieren Sie sich den Port des Elements „HttpApplicationGatewayEndpoint“. Dieser sollte standardmäßig 19081 sein. Wenn es nicht 19081 ist, müssen Sie den Port in der Methode „GetProxyAddress“ im folgenden Code in der Datei „VotesController.cs“ ändern.
 

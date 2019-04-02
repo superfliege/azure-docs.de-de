@@ -4,23 +4,23 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 03/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed1c7cd88bb5abf27066658f175d2447d334ce6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e76e2b9b4778229fc70e90f1ff3af5f19251d424
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872211"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Tutorial: Azure Active Directory-Integration mit TargetProcess
 
@@ -78,10 +78,11 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei TargetProcess müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines TargetProcess-Testbenutzers](#create-targetprocess-test-user)**, um ein Pendant von Britta Simon in TargetProcess zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+2. **[Konfigurieren des einmaligen Anmeldens für TargetProcess](#configure-targetprocess-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Erstellen eines TargetProcess-Testbenutzers](#create-targetprocess-test-user)**, um ein Pendant von Britta Simon in TargetProcess zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -107,10 +108,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in TargetPro
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.tpondemand.com/`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.tpondemand.com/`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<subdomain>.tpondemand.com/`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner.  Wenden Sie sich an das [Supportteam für den TargetProcess-Client](mailto:support@targetprocess.com), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den TargetProcess-Client](mailto:support@targetprocess.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -126,44 +127,43 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in TargetPro
 
     c. Abmelde-URL
 
-7. Wenn Sie die Konfiguration in **TargetProcess** automatisieren möchten, müssen Sie die Browsererweiterung **Meine Apps für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+### <a name="configure-targetprocess-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für TargetProcess
+
+1. Wenn Sie die Konfiguration in **TargetProcess** automatisieren möchten, müssen Sie die Browsererweiterung **Meine Apps für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-8. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **TargetProcess einrichten**, um zur Anwendung TargetProcess Pro weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei TargetProcess anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 9 bis 13.
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **TargetProcess einrichten**, um zur Anwendung TargetProcess Pro weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei TargetProcess anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
 
     **Wenn Sie die Anwendung manuell konfigurieren möchten, führen Sie die folgenden Schritte aus:**
 
-9. Melden Sie sich bei Ihrer TargetProcess-Anwendung als Administrator an.
+3. Melden Sie sich bei Ihrer TargetProcess-Anwendung als Administrator an.
 
-10. Klicken Sie im oberen Menü auf **Setup**.
+4. Klicken Sie im oberen Menü auf **Setup**.
 
     ![Einrichtung](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-11. Klicken Sie auf **Einstellungen**.
+5. Klicken Sie auf die Registerkarte **Settings** (Einstellungen).
 
     ![Einstellungen](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-12. Klicken Sie auf **Einmaliges Anmelden**.
+6. Klicken Sie auf die Registerkarte **Single Sign-on** (Einmaliges Anmelden).
 
     ![Klicken Sie auf „Einmaliges Anmelden“.](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-13. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ folgende Schritte aus:
+7. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ folgende Schritte aus:
 
     ![Configure single sign-on](./media/target-process-tutorial/tutorial_target_process_08.png)
 
     a. Klicken Sie auf **Einmaliges Anmelden aktivieren**.
 
-    b. Fügen Sie im Textfeld **Anmelde-URL** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **Sign-on URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     c. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Textfeld **Zertifikat** ein.
 
     d. Klicken Sie auf **JIT-Bereitstellung aktivieren**.
 
     e. Klicken Sie auf **Speichern**.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -198,7 +198,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Geben Sie in der Anwendungsliste **TargetProcess** ein, und wählen Sie den Eintrag aus.
+2. Wählen Sie in der Anwendungsliste **TargetProcess**aus.
 
     ![Die TargetProcess-Verknüpfung in der Anwendungsliste](common/all-applications.png)
 
@@ -218,7 +218,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-targetprocess-test-user"></a>Erstellen eines TargetProcess-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in TargetProcess. TargetProcess unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf TargetProcess ein neuer Benutzer erstellt.
+In diesem Abschnitt wird eine Benutzerin mit dem Namen „Britta Simon“ in TargetProcess erstellt. TargetProcess unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in TargetProcess vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!Note]
 > Wenden Sie sich an das  [Supportteam von TargetProcess](mailto:support@targetprocess.com), wenn Sie einen Benutzer manuell erstellen müssen.
@@ -231,7 +231,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel TargetProcess klicken, sollten Sie au
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

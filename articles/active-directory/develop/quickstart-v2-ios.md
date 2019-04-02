@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9134f939e771f92453b184aad643d41089623e19
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201465"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439261"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer nativen iOS-App
 
@@ -44,7 +44,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine native iOS-An
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Schritt 1: Konfigurieren der Anwendung
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie eine Antwort-URL mit `msal<AppId>://auth` hinzufügen (dabei ist msal<AppId> diese Anwendungs-ID).
+> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie eine Antwort-URL mit `msal<AppId>://auth` hinzufügen (dabei ist „msal\<AppId>“ diese Anwendungs-ID).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >
@@ -168,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |Hinweis:||
 > |---------|---------|
-> | `forScopes` | Enthält die angeforderten Bereiche (d.h. [ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)). |
+> | `forScopes` | Enthält die angeforderten Bereiche (d.h. `[ "user.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (z.B. `api://<Application ID>/access_as_user`)). |
 
 #### <a name="getting-an-access-token-silently"></a>Automatisches Abrufen eines Zugriffstokens
 

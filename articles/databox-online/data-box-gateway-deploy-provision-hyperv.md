@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cf47919ead890f0ad0e89646dde26276ebfb1127
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109740"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517911"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in Hyper-V (Vorschauversion)
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in Hyper-V
 
 ## <a name="overview"></a>Übersicht
 
@@ -31,9 +31,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Starten des virtuellen Geräts und Abrufen der IP-Adresse
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-> [!IMPORTANT]
-> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -78,7 +75,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 * Microsoft Hyper-V Manager auf einem Microsoft Windows-Client mit einer Verbindung mit dem Host
 * Stellen Sie sicher, dass die zugrunde liegende Hardware (Hostsystem), auf der Sie das virtuelle Gerät erstellen, die folgenden Ressourcen für Ihr virtuelles Gerät reservieren kann:
 
-    * Mindestens 4 Kerne
+    * Mindestens vier virtuelle Prozessoren
     * Mindestens 8 GB RAM
     * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann. 
     * Einen Betriebssystemdatenträger mit 250 GB
@@ -89,65 +86,67 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustellen.
 
 1. Kopieren Sie das Image des virtuellen Geräts auf den lokalen Datenträger Ihres Windows Server-Hosts. Dies ist das VHDX-Image, das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
-2. Öffnen Sie den **Server-Manager**. Klicken Sie in der oberen rechten Ecke auf **Extras**, und wählen Sie **Hyper-V-Manager**.
+2. Öffnen Sie den **Server-Manager**. Klicken Sie in der oberen rechten Ecke auf **Extras**, und wählen Sie **Hyper-V-Manager** aus.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
+    ![Auswählen von Hyper-V Manager im Server-Manager](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
   
 3. Klicken Sie im **Hyper-V-Manager** unter „Bereich“ mit der rechten Maustaste auf Ihren Systemknoten, um das Kontextmenü zu öffnen. Klicken Sie dann auf **Neu** > **Virtueller Computer**.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
+   ![Erstellen eines neuen virtuellen Computers in Hyper-V Manager](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Computer auf **Weiter**.
 5. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** für Ihr virtuelles Gerät an. Klicken Sie auf **Weiter**.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
+   ![Seite „Namen und Speicherort angeben“](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. Wählen Sie auf der Seite **Generation angeben** die Option **Generation 2** für den VHDX-Imagetyp des Geräts aus, und klicken Sie anschließend auf **Weiter**.    
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
+   ![Seite „Generation angeben“](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
 7. Geben Sie auf der Seite **Speicher zuweisen** einen **Startspeicher** von mindestens **8192 MB** an, aktivieren Sie nicht den dynamischen Arbeitsspeicher, und klicken Sie auf **Weiter**.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
+   ![Seite „Speicher zuweisen“](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
 8. Geben Sie auf der Seite **Netzwerk konfigurieren** den virtuellen Switch an, der mit dem Internet verbunden ist, und klicken Sie auf **Weiter**.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
+   ![Seite „Netzwerk konfigurieren“](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
 9. Wählen Sie auf der Seite **Virtuelle Festplatte verbinden** die Option **Vorhandene virtuelle Festplatte verwenden** aus, geben Sie den Speicherort des Images des virtuellen Geräts an, und klicken Sie auf **Weiter**.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
+   ![Seite „Virtuelle Festplatte verbinden“](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
 10. Überprüfen Sie die **Zusammenfassung**, und klicken Sie dann auf **Fertig stellen**, um den virtuellen Computer zu erstellen.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. Sie benötigen vier Kerne, um die Mindestanforderungen zu erfüllen. Um vier virtuelle Prozessoren hinzuzufügen, wählen Sie im Fenster **Hyper-V-Manager** Ihr Hostsystem aus. Suchen Sie im rechten Bereich unter der Liste **Virtuelle Computer** den virtuellen Computer, den Sie gerade erstellt haben. Klicken Sie mit der rechten Maustaste auf den ausgewählten Namen der Maschine, und wählen Sie **Einstellungen**.
+    ![Seite zum Abschließen des Assistenten für neue virtuelle Computer](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
+11. Sie benötigen vier virtuelle Prozessoren, um die Mindestanforderungen zu erfüllen. Um vier virtuelle Prozessoren hinzuzufügen, wählen Sie im Fenster **Hyper-V-Manager** Ihr Hostsystem aus. Suchen Sie im rechten Bereich unter der Liste **Virtuelle Computer** den virtuellen Computer, den Sie gerade erstellt haben. Klicken Sie mit der rechten Maustaste auf den ausgewählten Namen der Maschine, und wählen Sie **Einstellungen**.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
+    ![Einstellungen des virtuellen Computers](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. Klicken Sie auf der Seite **Einstellungen** im linken Bereich auf **Prozessor**. Legen Sie im rechten Bereich die **Anzahl virtueller Prozessoren** auf 4 (oder mehr) fest. Klicken Sie auf **Anwenden**.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
+    ![Festlegen der Anzahl von virtuellen Prozessoren auf der Seite „Einstellungen“](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
 13. Um die Mindestanforderungen zu erfüllen, müssen Sie auch einen virtuellen Datenträger mit 2 TB hinzufügen. Auf der Seite **Einstellungen** :
 
     1. Wählen Sie im linken Bereich die Option **SCSI-Controller**.
     2. Wählen Sie im rechten Bereich die Option **Festplatte**, und klicken Sie auf **Hinzufügen**.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
+    ![Hinzufügen einer Festplatte auf der Seite „Einstellungen“](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
 14. Wählen Sie auf der Seite **Festplatte** die Option **Virtuelle Festplatte**, und klicken Sie auf **Neu**. Der **Assistent für neue virtuelle Festplatten** wird gestartet.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
+    ![Assistent für neue virtuelle Festplatten](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
 1. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Festplatten auf **Weiter**.
 2. Übernehmen Sie auf der Seite **Datenträgerformat auswählen** die Standardoption **VHDX** für das Format. Klicken Sie auf **Weiter**.
    
 17. Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** für den Datenträger auswählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**. 
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
+    ![Seite zum Auswählen des Datenträgertyps](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
 18. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** und einen **Speicherort** (z.B. per Durchsuchen) für den Datenträger an. Klicken Sie auf **Weiter**.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen** aus, und geben Sie als Größe **2 TB** (oder mehr) an. 2 TB sind die Mindestanforderung, Sie können aber auch einen größeren Datenträger bereitstellen. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können.  Sie können den Datenträger jedoch erweitern, indem Sie einen Datenträger für Daten hinzufügen. Klicken Sie auf **Weiter**.
+    ![Seite „Namen und Speicherort angeben“](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
+19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen** aus, und geben Sie als Größe **2 TB** (oder mehr) an. 
+    
+    2 TB sind die Mindestanforderung, Sie können aber auch einen größeren Datenträger bereitstellen. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können. Der Versuch, den Datenträger zu verkleinern, führt zum Verlust aller lokalen Daten auf dem Gerät. Sie können den Datenträger jedoch erweitern, indem Sie einen Datenträger für Daten hinzufügen. Klicken Sie auf **Weiter**.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
+    ![Seite zum Konfigurieren des Datenträgers](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Überprüfen Sie auf der Seite **Zusammenfassung** die Details Ihres virtuellen Datenträgers, und klicken Sie zum Erstellen des Datenträgers auf **Fertig stellen**, wenn alles korrekt ist. Der Assistent wird geschlossen, und Ihrem Computer wird eine virtuelle Festplatte hinzugefügt.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
+    ![Seite zum Abschließen des Assistenten für neue virtuelle Festplatten](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
 21. Wechseln Sie zurück zur Seite **Einstellungen**. Klicken Sie auf **OK**, um die Seite **Einstellungen** zu schließen und zum Hyper-V-Manager-Fenster zurückzukehren.
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+    ![Seite "Einstellungen"](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>Starten des virtuellen Geräts und Abrufen der IP-Adresse
 Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und eine Verbindung dafür herzustellen.
@@ -155,12 +154,12 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 #### <a name="to-start-the-virtual-device"></a>So starten Sie das virtuelle Gerät
 1. Starten Sie das virtuelle Gerät.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
+   ![Starten des virtuellen Geräts](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Wenn das Gerät ausgeführt wird, wählen Sie das Gerät aus, klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden**.
 
 3. Unter Umständen müssen Sie 10 bis 15 Minuten warten, bis das Gerät bereit ist. In der Konsole wird eine Statusmeldung angezeigt, die den Fortschritt angibt. Wenn das Gerät bereit ist, wählen Sie **Aktion**. Drücken Sie `Ctrl + Alt + Delete`, um sich beim virtuellen Gerät anzumelden. Der Standardbenutzer ist *EdgeUser*, und das Standardkennwort lautet *Password1*.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
+   ![Anmelden beim virtuellen Gerät](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
    
 6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, können Sie diese Schritte überspringen. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt.
     
@@ -172,15 +171,15 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
     
 9. Nachdem die anfängliche Einrichtung abgeschlossen und das Gerät gestartet wurde, wird der Bannertext für das Gerät angezeigt. Notieren Sie sich die IP-Adresse und die URL, die im Bannertext für die Verwaltung des Geräts angezeigt wird. Sie verwenden diese IP-Adresse zum Herstellen der Verbindung mit der Webbenutzeroberfläche Ihres virtuellen Geräts und zum Durchführen des lokalen Setups und der Aktivierung.
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
+   ![Banner des virtuellen Geräts mit IP-Adresse und Verbindungs-URL](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
 Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt. Sie müssen die Gerätekonfiguration ändern, damit der Computer über ausreichende Ressourcen verfügt und die Mindestanforderungen erfüllen kann. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Überprüfen des Hostsystems](#check-the-host-system).
 
-<!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
+Falls bei der anfänglichen Konfiguration über die lokale Webbenutzeroberfläche andere Fehler auftreten, finden Sie weitere Informationen in den folgenden Workflows:
 
-* Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
+- [Ausführen von Diagnosetests zum Beheben von Setup-Fehlern für die Web-UI](data-box-gateway-troubleshoot.md#run-diagnostics)
+- [Generieren des Protokollpakets und Anzeigen von Protokolldateien](data-box-gateway-troubleshoot.md#collect-support-package)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

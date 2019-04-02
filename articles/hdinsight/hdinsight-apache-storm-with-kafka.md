@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111853"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316948"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
 
@@ -129,7 +129,7 @@ In diesem Tutorial werden zwei Topologien bereitgestellt:
     >
     > Wenn Sie nicht die Vorlage in diesem Dokument verwenden, um den Storm-Cluster zu erstellen, müssen Sie die Skriptaktion manuell in Ihrem Cluster anwenden.
     >
-    > Die Skriptaktion befindet sich unter `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh` und wird auf die übergeordneten und Nimbus-Knoten des Storm-Clusters angewandt. Weitere Informationen zur Verwendung von Skriptaktionen finden Sie im Dokument [Anpassen von HDInsight für die Verwendung von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+    > Die Skriptaktion befindet sich unter [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) und wird auf die übergeordneten und Nimbus-Knoten des Storm-Clusters angewandt. Weitere Informationen zur Verwendung von Skriptaktionen finden Sie im Dokument [Anpassen von HDInsight für die Verwendung von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 Die Topologien werden mit [Flux](https://storm.apache.org/releases/1.1.2/flux.html) definiert. Flux wurde mit Storm 0.10.x eingeführt und ermöglicht Ihnen die Trennung der Topologiekonfiguration vom Code. Für Topologien, die das Flux-Framework nutzen, wird die Topologie in einer YAML-Datei definiert. Die YAML-Datei kann als Teil der Topologie aufgenommen werden. Sie kann auch eine eigenständige Datei sein, die beim Übermitteln der Topologie verwendet wird. Außerdem unterstützt Flux die Variablenersetzung zur Laufzeit, die in diesem Beispiel verwendet wird.
 

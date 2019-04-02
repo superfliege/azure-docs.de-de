@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/4/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d54ac521fb8b81ed5fa135f68af420bda261661
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246949"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402880"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -118,7 +118,22 @@ Möglicherweise möchten Sie eine Abfrage erstellen, die Daten aus mehreren Quel
 
 Sie können basierend auf der Rolle der Person, die die Daten anzeigt, und den gesuchten Daten verschiedene Dashboards erstellen. Sie können beispielsweise ein Dashboard für Ihren Netzwerkadministrator erstellen, das Firewalldaten enthält. Sie können Dashboards auch basierend auf der Häufigkeit erstellen, mit der Sie sie anzeigen möchten. Während Ihnen bei manchen Daten eine tägliche Überprüfung genügt, möchten Sie andere vielleicht stündlich einsehen (beispielsweise Ihre Azure AD-Anmeldungen, um einmal pro Stunde nach Anomalien zu suchen). 
 
+## <a name="create-new-detections"></a>Erstellen neuer Erkennungen
 
+Erstellen Sie Erkennungen für die [Datenquellen, die Sie mit Azure Sentinel verbunden haben](connect-data-sources.md), um Bedrohungen in Ihrer Organisation zu untersuchen.
+
+Nutzen Sie beim Erstellen einer neuen Erkennung die von Microsoft-Sicherheitsexperten entwickelten integrierten Erkennungen, die auf die verbundenen Datenquellen zugeschnitten sind.
+
+1. Navigieren Sie in der [GitHub-Community](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) zum Ordner **Detections** (Erkennungen), und wählen Sie die entsprechenden Ordner aus.
+   ![entsprechende Ordner](./media/qs-get-visibility/detection-folders.png)
+ 
+3.  Navigieren Sie zur Registerkarte **Analytics**, und wählen Sie **Hinzufügen** aus.
+   ![Erstellen einer Regel in Log Analytics](./media/qs-get-visibility/query-params.png)
+
+3.  Kopieren Sie alle Parameter in die Regel, und klicken Sie auf **Erstellen**.
+   ![Erstellen einer Warnungsregel](./media/qs-get-visibility/create-alert-rule.png)
+
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Schnellstart wurden die ersten Schritte mit Azure Sentinel erläutert. Fahren Sie mit dem Tutorial zum [Erkennen von Bedrohungen](tutorial-detect-threats.md) fort.
 > [!div class="nextstepaction"]

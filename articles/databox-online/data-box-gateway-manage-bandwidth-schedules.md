@@ -1,28 +1,25 @@
 ---
-title: 'Azure Data Box Gateway: Verwalten von Benutzern | Microsoft-Dokumentation'
+title: Verwalten von Bandbreitenzeitplänen in Azure Data Box Gateway | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie über das Azure-Portal Bandbreitenzeitpläne auf Ihrer Azure Data Box Gateway-Ressource verwalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15d560698ca47c0be39e0533f264bfef211a33d0
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102110"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500405"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Verwalten von Bandbreitenzeitplänen auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal  
 
 In diesem Artikel erfahren Sie, wie Sie Benutzer auf Ihrer Azure Data Box Gateway-Ressource verwalten. Mithilfe von Bandbreitenzeitplänen können Sie die Nutzung der Netzwerkbandbreite durch mehrere tageszeitbasierte Zeitpläne konfigurieren. Diese Zeitpläne können auf die Upload- und Downloadvorgänge zwischen Ihrem Gerät und der Cloud angewendet werden. 
 
 Sie können die Bandbreitenzeitpläne für Data Box Gateway über das Azure-Portal hinzufügen, ändern oder löschen.
-
-> [!IMPORTANT]
-> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

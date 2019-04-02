@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: cb5ad8e4ff3d5a28fa38c7e8972e7e3e69d2762d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136909"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309639"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Unity-Bakingtutorial für Projekt Akustik
 Dieses Tutorial beschreibt Akustikbaking mit Projekt Akustik in Unity.
@@ -28,7 +28,7 @@ Softwareanforderungen:
 ## <a name="open-the-project-acoustics-bake-window"></a>Öffnen des Bakingfensters in Projekt Akustik
 Wählen Sie im Unity-Menü **Window > Acoustics** (Fenster > Akustik) aus:
 
-![Öffnen des Fensters „Acoustics“ (Akustik)](media/window-acoustics.png)
+![Screenshot des Unity-Editors, in dem im Menü „Window“ (Fenster) die Option „Acoustics“ (Akustik) hervorgehoben ist](media/window-acoustics.png)
 
 ## <a name="create-a-navigation-mesh"></a>Erstellen eines Navigationsgittermodells
 Projekt Akustik verwendet ein Navigationsgittermodell, um Zuhörerprüfpunkte für die Simulation zu platzieren. Sie können den [Navigationsgittermodell-Workflow](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html) von Unity verwenden oder mit einem anderen 3D-Modellierungspaket Ihr eigenes Gittermodell entwerfen. 
@@ -68,15 +68,15 @@ Die Registerkartenseite weist folgende Bestandteile auf:
 
 Wenn in Ihrer Szene nichts ausgewählt ist, sieht die Registerkarte „Objects“ (Objekte) wie folgt aus:
 
-![Registerkarte „Objects“ ohne Auswahl](media/objects-tab-no-selection-detail.png)
+![Screenshot der Option „Objects“ (Objekte) auf der Registerkarte „Acoustics“ (Akustik) ohne ausgewählte Elemente](media/objects-tab-no-selection-detail.png)
 
 Wenn in Ihrem Szenen- oder Hierarchiefenster Elemente ausgewählt sind, sehen diese folgendermaßen aus:
 
-![Registerkarte „Objects“ ohne Auswahl](media/objects-tab-selection-detail.png)
+![Screenshot der Option „Objects“ (Objekte) auf der Registerkarte „Acoustics“ (Akustik) mit ausgewählten Elementen](media/objects-tab-selection-detail.png)
 
 Wenn einige Objekte markiert sind und einige nicht, zeigt das entsprechende Kontrollkästchen einen „gemischten“ Wert an:
 
-![Kontrollkästchen mit gemischtem Wert](media/mixed-object-selection-detail.png)
+![Screenshot der Option „Objects“ (Objekte) auf der Registerkarte „Acoustics“ (Akustik), in dem das Symbol für die gemischte Auswahl hervorgehoben ist](media/mixed-object-selection-detail.png)
 
 Wenn Sie das Kontrollkästchen aktivieren, werden alle Objekte markiert. Wenn Sie es deaktivieren, wird die Markierung für alle Objekte aufgehoben.
 
@@ -89,10 +89,10 @@ Die akustischen Materialien bestimmten die Menge an Schallenergie, die von der O
 
 Die Nachhallzeit eines bestimmten Materials in einem Raum ist umgekehrt proportional zum Absorptionskoeffizienten, wobei die meisten Materialien Absorptionswerte im Bereich zwischen 0,01 und 0,20 aufweisen. Materialien mit Absorptionskoeffizienten außerhalb dieses Bereichs sind extrem absorbierend.
 
-![Zeitdiagramm für den Hall](media/reverb-time-graph.png)
+![Graph, der die negative Korrelation der Nachhallzeit mit dem Absorptionskoeffizienten zeigt](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>Zur Referenz: Bestandteile der Registerkarte „Materials“ (Materialien)
-![Details der Registerkarte „Materials“ (Materialien)](media/materials-tab-detail.png)
+![Screenshot der Akustikregisterkarte „Materials“ (Materialien) in Unity](media/materials-tab-detail.png)
 
 1. Die Schaltfläche **Materials** (Materialien), die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
@@ -117,23 +117,23 @@ Je nach Größe Ihrer Szene und der Geschwindigkeit Ihres Computers können die 
 ### <a name="review-voxel-and-probe-placement"></a>Überprüfen der Voxel und der Prüfpunktplatzierung
 Zeigen Sie eine Vorschau der Datenvoxel und der Prüfpunktpositionen an, um sicherzustellen, dass Sie für das Baking der Szene bereit sind. Ein unvollständiges Navigationgittermodell oder fehlende bzw. zusätzliche akustische Geometrie sind in der Regel in der Vorschau schnell ersichtlich. Voxeldaten und Prüfpunktpositionen können über das Menü „Gizmos“ aktiviert oder deaktiviert werden:
 
-![Gizmos-Menü](media/gizmos-menu.png)
+![Screenshot des Gizmos-Menüs in Unity](media/gizmos-menu.png)
 
 Voxel mit akustischer Geometrie werden als grüne Würfel angezeigt. Erkunden Sie die Szene, und stellen Sie sicher, dass alle Geometrieobjekte Voxel enthalten. Die Szenenkamera muss sich in einem Radius von etwa 5 Metern um das Objekt befinden, damit die Voxels angezeigt werden.
 
 Wenn Sie die erstellten Voxel mit niedriger und hoher Auflösung vergleichen, sehen Sie, dass die Voxel mit niedriger Auflösung doppelt so groß sind.
 
-![Voxelvorschau](media/voxel-cubes-preview.png)
+![Screenshot mit Vorschau der Voxel mit niedriger Auflösung im Unity-Editor](media/voxel-cubes-preview.png)
 
 Die Simulationsergebnisse werden zur Laufzeit zwischen den Positionen der Zuhörerprüfpunkte interpoliert. Überprüfen Sie die Prüfpunkte in der Nähe aller Orte, an denen sich der Spieler voraussichtlich durch die Szene bewegen wird.
 
-![Testvorschau](media/probes-preview.png)
+![Screenshot mit Vorschau der Tests im Unity-Editor](media/probes-preview.png)
 
 ### <a name="take-care-with-scene-renames"></a>Vorsicht bei der Umbenennung von Szenen
 Der Szenenname wird verwendet, um die Szene mit den Dateien zu verbinden, in denen die Position und die Voxels des Testpunkts gespeichert sind. Wenn die Szene nach der Berechnung der Testpunkte umbenannt wird, gehen die Zuweisungs- und Platzierungsdaten des Materials verloren, und die Berechnung sollte erneut ausgeführt werden.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Zur Referenz: Bestandteile der Registerkarte „Probes“ (Tests)
-![Details der Registerkarte „Probes“ (Tests)](media/probes-tab-detail.png)
+![Screenshot der Akustikregisterkarte „Probes“ (Tests) in Unity](media/probes-tab-detail.png)
 
 1. Die Schaltfläche **Probes** (Tests), die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
@@ -157,15 +157,15 @@ Dieses Prinzip erscheint einfach, hat jedoch einige Auswirkungen auf die Akustik
 * Soundquellen können nicht in „aufgefüllten“ Voxels (also Voxels, die Geometrie enthalten) platziert werden, da ansonsten keine Sounds wiedergegeben werden. Es ist schwieriger, Soundquellen so zu platzieren, dass sie sich nicht in den größeren Voxeln der Einstellung „Coarse“ (Niedrig) befinden, als es bei der Einstellung „Fine“ (Hoch) der Fall ist.
 * Die größeren Voxels überschneiden sich wie im Folgenden dargestellt mehr mit Portalen. Das erste Bild dieses Türbereichs wurde mit der Auflösung „Coarse“ (Niedrig) erstellt, das zweite mit der Auflösung „Fine“ (Hoch). An den roten Markierungen ist erkennbar, dass die Überschneidung mit der Einstellung „Fine“ (Hoch) wesentlich geringer ist. Die blaue Linie stellt den durch die Geometrie definierten Eingang dar, während die rote Linie das Akustikportal darstellt, das von der Voxelgröße definiert wird. Wie diese Überschneidung sich in einer bestimmten Situation auswirkt, hängt vollständig davon ab, wie die Voxels und die Geometrie des Portals ausgerichtet sind. Dies wird von der Größe und Position der Objekte in der Szene bestimmt.
 
-![Eingang mit niedriger Auflösung](media/coarse-voxel-doorway.png)
+![Screenshot der Voxel mit niedriger Auflösung im Türbereich](media/coarse-voxel-doorway.png)
 
-![Eingang mit hoher Auflösung](media/fine-voxel-doorway.png)
+![Screenshot der Voxel mit hoher Auflösung im Türbereich](media/fine-voxel-doorway.png)
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Ausführen des Bakings Ihrer Szene mit Azure Batch
 Sie können das Baking Ihrer Szene mit dem Azure Batch-Dienst in einem Computecluster in der Cloud ausführen. Das Unity-Plug-In für Projekt Akustik stellt eine direkte Verbindung mit Azure Batch her, um einen Azure Batch-Cluster für jeden Bakingvorgang zu instanziieren, zu verwalten und zu beenden. Geben Sie auf der Registerkarte **Bake** Ihre Azure-Anmeldeinformationen ein, wählen Sie einen Clustercomputertyp und eine Größe aus, und klicken Sie auf **Bake**.
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>Zur Referenz: Bestandteile der Registerkarte „Bake“
-![Details der Registerkarte „Bake“](media/bake-tab-details.png)
+![Screenshot der Registerkarte „Acoustics Bake“ (Akustikbaking) in Unity](media/bake-tab-details.png)
 
 1. Die Schaltfläche Bake, die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie auf dieser Seite durchführen müssen.
@@ -209,8 +209,8 @@ Beispiel unserer Tests: Computer mit Intel Xeon-Prozessor E5-1660 mit 8 Prozess
 ### <a name="setup-docker"></a>Einrichten von Docker
 Installieren und Konfigurieren von Docker auf dem PC, auf dem die Simulation verarbeitet werden soll –
 1. Installieren Sie das [Docker-Toolset](https://www.docker.com/products/docker-desktop).
-2. Starten Sie die Docker-Einstellungen, navigieren Sie zu den Optionen unter „Erweitert“, und konfigurieren Sie die Ressourcen so, dass mindestens 8 GB RAM vorhanden sind. Je mehr CPUs Sie Docker zuweisen können, desto schneller wird der Bake-Vorgang abgeschlossen. ![Beispiel zu Docker-Einstellungen](media/docker-settings.png)
-3. Navigieren Sie zu „Freigegebene Laufwerke“ und aktivieren Sie die Freigabe für das Laufwerk, das für die Verarbeitung verwendet wird.![DockerDriveSharing](media/docker-shared-drives.png)
+2. Starten Sie die Docker-Einstellungen, navigieren Sie zu den Optionen unter „Erweitert“, und konfigurieren Sie die Ressourcen so, dass mindestens 8 GB RAM vorhanden sind. Je mehr CPUs Sie Docker zuweisen können, desto schneller wird der Bake-Vorgang abgeschlossen. ![Screenshot mit Beispiel zu Docker-Einstellungen](media/docker-settings.png)
+3. Navigieren Sie zu „Freigegebene Laufwerke“ und aktivieren Sie die Freigabe für das Laufwerk, das für die Verarbeitung verwendet wird.![Screnshot mit Docker-Optionen für freigegebene Laufwerke](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Ausführen eines lokalen Bake-Vorgangs
 1. Klicken Sie auf der Registerkarte **Bake** auf die Schaltfläche „Prepare Local Bake“ (Lokales Baking vorbereiten), und wählen Sie einen Ordner aus, in dem die Eingabedateien und Ausführungsskripts gespeichert werden. Sie können den Bake-Vorgang dann auf jedem beliebigen Computer ausführen, solange er die minimalen Hardwareanforderungen erfüllt und Docker installiert ist, indem Sie den Ordner auf diesen Computer kopieren.
@@ -234,11 +234,11 @@ Editor-Datendateien:
 ## <a name="set-up-the-acoustics-lookup-table"></a>Einrichten der Akustik-Nachschlagetabelle
 Ziehen Sie das Prefab **Project Acoustics** (Projekt Akustik) per Drag & Drop aus dem Projektbereich in Ihre Szene:
 
-![Akustikprefab](media/acoustics-prefab.png)
+![Screenshot mit Akustikprefab in Unity](media/acoustics-prefab.png)
 
 Klicken Sie auf das Spielobjekt **ProjectAcoustics**, und wechseln Sie zum zugehörigen Inspectorbereich. Geben Sie den Speicherort Ihres Bakeergebnisses (die ACE-Datei unter **Assets/AcousticsData**) an, indem Sie die Datei per Drag & Drop in das Skript „Acoustics Manager“ (Akustikverwalter) ziehen oder auf den Kreis neben dem Textfeld klicken.
 
-![„Acoustics Manager“ (Akustikverwalter)](media/acoustics-manager.png)  
+![Screenshot mit Akustikverwalter-Prefab in Unity](media/acoustics-manager.png)  
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erkunden der [Entwurfssteuerelemente für Unity](unity-workflow.md)

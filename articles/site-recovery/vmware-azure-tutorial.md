@@ -6,22 +6,28 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/3/2019
+ms.date: 3/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848829"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310590"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
 [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
 
-In diesem Tutorial wird gezeigt, wie Sie mithilfe von Azure Site Recovery eine Replikation eines virtuellen VMware-Computers in Azure einrichten und aktivieren. Tutorials dienen zur Veranschaulichung der Bereitstellung von Site Recovery mit grundlegenden Einstellungen. Darin wird der einfachste Pfad verwendet, und es werden nicht alle Optionen angezeigt. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird gezeigt, wie Sie Site Recovery mit grundlegenden Einstellungen ohne Anpassung bereitstellen. Informationen zu komplexeren Optionen finden Sie in den Artikeln unter „Anleitungen“.
+
+    - Einrichten von [Replikationsquelle](vmware-azure-set-up-source.md) und [Konfigurationsserver](vmware-azure-deploy-configuration-server.md)
+    - Einrichten des [Replikationsziels](vmware-azure-set-up-target.md)
+    - Einrichten einer [Replikationsrichtlinie](vmware-azure-set-up-replication.md) und [Aktivieren der Replikation](vmware-azure-enable-replication.md)
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Eingeben von Replikationsquelle und -ziel
@@ -37,10 +43,6 @@ Bevor Sie beginnen, sind die folgenden Schritte hilfreich:
 - Wenn Sie ausführlichere Informationen zum Einrichten der Notfallwiederherstellung für virtuelle VMware-Computer benötigen, sehen Sie sich die folgenden Ressourcen an:
     - [Allgemeine Fragen](vmware-azure-common-questions.md) zur Notfallwiederherstellung für VMware
     - [Informationen](vmware-physical-azure-support-matrix.md) zu den unterstützten und erforderlichen Komponenten für VMware
--  In unseren **Anleitungen** finden Sie ausführliche Anweisungen zu allen Bereitstellungsoptionen für VMware:
-    - Einrichten von [Replikationsquelle](vmware-azure-set-up-source.md) und [Konfigurationsserver](vmware-azure-deploy-configuration-server.md)
-    - Einrichten des [Replikationsziels](vmware-azure-set-up-target.md)
-    - Einrichten einer [Replikationsrichtlinie](vmware-azure-set-up-replication.md) und [Aktivieren der Replikation](vmware-azure-enable-replication.md)
 - In diesem Tutorial wird gezeigt, wie Sie einen einzelnen virtuellen Computer replizieren. Wenn Sie mehrere virtuelle Computer bereitstellen, sollten Sie die Bereitstellung mithilfe des [Bereitstellungsplanertools](https://aka.ms/asr-deployment-planner) planen. [Hier](site-recovery-deployment-planner.md) finden Sie weitere Informationen zu diesem Tool.
 
 Lesen Sie außerdem diese Tipps:

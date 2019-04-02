@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Index im Code mithilfe der .NET-API – Azure Search
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Search .NET SDK and C#-Beispielcode einen durchsuchbaren Volltextindex erstellen.
+title: 'Erstellen eines Indexes in C#: Azure Search'
+description: Hier erfahren Sie, wie Sie mithilfe des Azure Search .NET SDK einen durchsuchbaren Volltextindex in C# erstellen.
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/20/2019
-ms.openlocfilehash: dbaac1478fdbf1b42fc6b597c3a5c541e007e413
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/22/2019
+ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287144"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370583"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Schnellstart: 1 – Erstellen eines Azure Search-Indexes in C#
 
@@ -32,11 +32,11 @@ In diesem Artikel lernen Sie, wie Sie einen [Azure Search-Index](search-what-is-
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), beliebige Edition. Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
 
-Ein URL-Endpunkt und ein API-Administratorschlüssel für Ihren Suchdienst. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Rufen Sie den URL-Endpunkt und den API-Administratorschlüssel für Ihren Suchdienst ab. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
 
   1. Rufen Sie die URL im Azure-Portal auf der Seite **Übersicht** Ihres Suchdiensts ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
-  2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie ein Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie entweder den primären oder den sekundären Schlüssel verwenden.
+  2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
   ![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
@@ -200,7 +200,9 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie anhand eines Schemas, das Felddatentypen und Verhalten definiert, einen Azure Search-Index erstellt. Die nächste Schnellstartanleitung in dieser Reihe erläutert, wie Sie den Index mit durchsuchbarem Inhalt laden.
+In dieser Schnellstartanleitung haben Sie anhand eines Schemas, das Felddatentypen und Verhalten definiert, einen Azure Search-Index erstellt. Dieser reine Index setzt sich aus einem Namen und einer Sammlung zugeschriebener Felder zusammen. Ein realistischerer Index würde weitere Elemente enthalten, etwa [Bewertungsprofile](index-add-scoring-profiles.md), [Vorschlagsfunktionen](index-add-suggesters.md) für die Unterstützung von automatischer Vervollständigung, [Synonyme](search-synonyms.md) und wahrscheinlich [benutzerdefinierte Analysetools](index-add-custom-analyzers.md). Es wird empfohlen, diese Funktionen noch einmal zu überarbeiten, wenn Sie den grundlegenden Workflow verstanden haben.
+
+Die nächste Schnellstartanleitung in dieser Reihe erläutert, wie Sie den Index mit durchsuchbarem Inhalt laden.
 
 > [!div class="nextstepaction"]
 > [Laden von Daten in einen Azure Search-Index mit C#](search-import-data-dotnet.md)

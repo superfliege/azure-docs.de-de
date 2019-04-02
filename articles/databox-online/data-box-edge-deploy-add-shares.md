@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6810818e48329d883961c840fa83857d84b98fd4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e902f0c9465f65f31f6e1a5cadc7b6b30cda1a27
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112868"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403679"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>Tutorial: Übertragen von Daten mit Azure Data Box Edge (Vorschauversion)
+# <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Tutorial: Übertragen von Daten mit Azure Data Box Edge
 
 In diesem Tutorial erfahren Sie, wie Sie auf Ihrem Data Box Edge-Gerät Freigaben hinzufügen und eine Verbindung mit diesen Freigaben herstellen. Nachdem die Freigaben hinzugefügt wurden, kann Data Box Edge Daten an Azure übertragen.
 
-Dieser Vorgang kann bis zu zehn Minuten dauern. 
+Dieser Vorgang kann bis zu zehn Minuten dauern.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -28,47 +28,46 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Hinzufügen einer Freigabe
 > * Herstellen einer Verbindung mit der Freigabe
 
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Vergewissern Sie sich, dass Folgendes erfüllt ist, bevor Sie Ihrem Data Box Edge-Gerät Freigaben hinzufügen:
-* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Data Box Edge](data-box-edge-deploy-install.md) installiert. 
 
-* Das physische Gerät ist aktiviert, wie in [Verbinden, Einrichten und Aktivieren von Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md) beschrieben. 
+- Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Data Box Edge](data-box-edge-deploy-install.md) installiert.
 
-* Das Gerät ist für die Erstellung von Freigaben und die Übertragung von Daten bereit.
+- Das physische Gerät ist aktiviert, wie in [Verbinden, Einrichten und Aktivieren von Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md) beschrieben.
 
 
 ## <a name="add-a-share"></a>Hinzufügen einer Freigabe
 
 Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu **Alle Ressourcen**, und suchen Sie nach Ihrer Data Box Edge-Ressource.
-    
-1. Wählen Sie in der gefilterten Ressourcenliste Ihre Data Box Edge-Ressource aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer Data Box Edge-Ressource und anschließend zu **Übersicht**. Ihr Gerät sollte online sein.
 
-1. Wählen Sie im linken Bereich **Übersicht** und dann **Freigabe hinzufügen** aus.
-   
-   ![Hinzufügen einer Freigabe](./media/data-box-edge-deploy-add-shares/click-add-share.png)
+   ![Gerät online](./media/data-box-edge-deploy-add-shares/device-online-1.png)
 
-1. Gehen Sie im Bereich **Freigabe hinzufügen** wie folgt vor:
+2. Wählen Sie auf der Gerätebefehlsleiste die Option **+ Freigabe hinzufügen** aus.
+
+   ![Hinzufügen einer Freigabe](./media/data-box-edge-deploy-add-shares/select-add-share-1.png)
+
+3. Gehen Sie im Bereich **Freigabe hinzufügen** wie folgt vor:
 
     a. Geben Sie im Feld **Name** einen eindeutigen Namen für die Freigabe an.  
-    Der Freigabename darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten. Er muss aus 3 bis 63 Zeichen bestehen und mit einem Buchstaben oder einer Ziffer beginnen. Bindestriche müssen vorangestellt und von einem Buchstaben oder einer Ziffer gefolgt werden.
+    Der Freigabename darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten. Er muss aus 3 bis 63 Zeichen bestehen und mit einem Buchstaben oder einer Ziffer beginnen. Bindestriche müssen vorangestellt und von einem Buchstaben oder einer Ziffer gefolgt werden.
     
     b. Wählen Sie einen **Typ** für die Freigabe aus.  
     Zur Auswahl stehen **SMB** und **NFS** (Standardeinstellung: SMB). „SMB“ ist die Standardeinstellung für Windows-Clients, und „NFS“ wird für Linux-Clients verwendet.  
     Je nachdem, ob Sie sich für SMB- oder NFS-Freigaben entscheiden, variiert der Rest der Optionen geringfügig. 
 
-    c. Geben Sie ein Speicherkonto an, in dem die Freigabe gespeichert wird.  
-    Wenn ein Container noch nicht vorhanden ist, wird er im Speicherkonto mit dem neu erstellten Freigabenamen angelegt. Wenn er bereits vorhanden ist, wird der vorhandene Container verwendet. 
+    c. Geben Sie das gewünschte Speicherkonto für die Freigabe an. 
+
     
     d. Wählen Sie in der Dropdownliste **Speicherdienst** **Blockblob**, **Seitenblob** oder **Dateien** aus.  
-    Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure verwendet werden sollen. In diesem Beispiel sollen die Daten als Blobblöcke in Azure gespeichert. Daher wählen wir **Blockblob** aus. Bei Verwendung von „Seitenblob“ müssen Ihre Daten ganzzahlige Vielfache von 512 Bytes sein. VHDX-Daten sind beispielsweise immer ganzzahlige Vielfache von 512 Bytes.
+    Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure verwendet werden sollen. In diesem Beispiel sollen die Daten als Blobblöcke in Azure gespeichert werden. Daher wählen wir **Blockblob** aus. Bei Verwendung von **Seitenblob** müssen Ihre Daten ganzzahlige Vielfache von 512 Bytes sein. VHDX-Daten sind beispielsweise immer ganzzahlige Vielfache von 512 Bytes.
+
+    e. Erstellen Sie einen neuen Blobcontainer, oder wählen Sie in der Dropdownliste einen vorhandenen Blobcontainer aus. Geben Sie bei Erstellung eines Blobcontainers einen Containernamen an. Wenn ein Container noch nicht vorhanden ist, wird er im Speicherkonto mit dem neu erstellten Freigabenamen angelegt.
    
-    e. Je nachdem, ob Sie eine SMB-Freigabe oder eine NFS-Freigabe erstellt haben, führen Sie einen der folgenden Schritte aus: 
+    f. Je nachdem, ob Sie eine SMB-Freigabe oder eine NFS-Freigabe erstellt haben, führen Sie einen der folgenden Schritte aus: 
      
     - **SMB-Freigabe**: Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer anlegen, geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie dann das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese zu ändern.
 
@@ -80,15 +79,14 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
 
         ![Hinzufügen einer NFS-Freigabe](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
    
-1. Wählen Sie **Erstellen** aus, um die Freigabe zu erstellen. 
+4. Wählen Sie **Erstellen** aus, um die Freigabe zu erstellen.
     
-    Sie werden benachrichtigt, wenn die Freigabe erstellt wird. Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird der Abschnitt **Freigaben** mit den neuen Freigabeinformationen aktualisiert. 
+    Sie werden benachrichtigt, wenn die Freigabe erstellt wird. Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird die Kachel **Freigaben** aktualisiert, und die neue Freigabe wird angezeigt.
     
-    ![Aktualisierte Liste der Freigaben](./media/data-box-edge-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>Herstellen einer Verbindung mit der Freigabe
 
-Nun können Sie eine Verbindung mit den Freigaben herstellen, die Sie im vorherigen Schritt erstellt haben. Die auszuführenden Schritte sind ggf. abhängig von der verwendeten Freigabe (SMB oder NFS). 
+Nun können Sie eine Verbindung mit den Freigaben herstellen, die Sie im vorherigen Schritt erstellt haben. Die auszuführenden Schritte sind ggf. abhängig von der verwendeten Freigabe (SMB oder NFS).
 
 ### <a name="connect-to-an-smb-share"></a>Herstellen einer Verbindung mit einer SMB-Freigabe
 
@@ -99,24 +97,24 @@ Verbinden Sie sich auf Ihrem Windows Server-Client, der mit Ihrem Data Box Edge-
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für die Freigabe ein.  
+2. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für die Freigabe ein.  
    Hier sehen Sie eine Beispielausgabe des Befehls.
 
     ```powershell
-    Microsoft Windows [Version 10.0.16299.192) 
-    (c) 2017 Microsoft Corporation. All rights reserved. 
+    Microsoft Windows [Version 10.0.16299.192)
+    (c) 2017 Microsoft Corporation. All rights reserved.
     
-    C: \Users\DataBoxEdgeUser>net use \\10.10.10.60\newtestuser /u:Tota11yNewUser 
-    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60': 
-    The command completed successfully. 
+    C: \Users\DataBoxEdgeUser>net use \\10.10.10.60\newtestuser /u:Tota11yNewUser
+    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60':
+    The command completed successfully.
     
     C: \Users\DataBoxEdgeUser>
     ```   
 
 
-1. Wählen Sie auf der Tastatur „Windows + R“ aus. 
+3. Wählen Sie auf der Tastatur „Windows + R“ aus.
 
-1. Geben Sie im Fenster **Ausführen** `\\<device IP address>` an, und wählen Sie anschließend **OK** aus.  
+4. Geben Sie im Fenster **Ausführen** `\\<device IP address>` an, und wählen Sie anschließend **OK** aus.  
    Der Datei-Explorer wird geöffnet. Die von Ihnen erstellten Freigaben sollten jetzt als Ordner angezeigt werden. Doppelklicken Sie im Datei-Explorer auf eine Freigabe (einen Ordner), um den Inhalt anzuzeigen.
  
     ![Herstellen einer Verbindung mit einer SMB-Freigabe](./media/data-box-edge-deploy-add-shares/connect-to-share2.png)
@@ -133,11 +131,12 @@ Führen Sie auf dem mit Ihrem Data Box Edge-Gerät verbundenen Linux-Client die 
 
     Weitere Informationen finden Sie unter [Install NFSv4 client](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client) (Installieren des NFSv4-Clients).
 
-1. Führen Sie nach der Installation des NFS-Clients den folgenden Befehl aus, um die NFS-Freigabe einzubinden, die Sie auf Ihrem Data Box Edge-Gerät erstellt haben:
+2. Führen Sie nach der Installation des NFS-Clients den folgenden Befehl aus, um die NFS-Freigabe einzubinden, die Sie auf Ihrem Data Box Edge-Gerät erstellt haben:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
+    > Durch Verwendung der Option `sync` beim Einbinden von Freigaben werden die Übertragungsraten großer Dateien verbessert.
     > Vergewissern Sie sich vor dem Einbinden der Freigaben, dass die Verzeichnisse, die als Bereitstellungspunkte auf Ihrem lokalen Computer fungieren, bereits erstellt wurden. Diese Verzeichnisse dürfen keine Dateien oder Unterordner enthalten.
 
     Das folgende Beispiel zeigt, wie Sie über NFS eine Verbindung mit einer Freigabe auf Ihrem Data Box Edge-Gerät herstellen. Die Geräte-IP lautet `10.10.10.60`. Die Freigabe `mylinuxshare2` wird in „ubuntuVM“ eingebunden. Der Bereitstellungspunkt der Freigabe ist `/home/databoxubuntuhost/edge`.
@@ -145,7 +144,7 @@ Führen Sie auf dem mit Ihrem Data Box Edge-Gerät verbundenen Linux-Client die 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
-> Für die Vorschauversion gelten die folgenden Einschränkungen:
+> Für dieses Release gelten folgende Einschränkungen:
 > - Das Umbenennen einer Datei, die in den Freigaben erstellt wurde, wird nicht unterstützt. 
 > - Durch das Löschen einer Datei aus einer Freigabe wird der Eintrag im Speicherkonto nicht gelöscht.
 

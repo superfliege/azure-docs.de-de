@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 105996cf72e2a96a06a4478518e68765d3d158f5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165665"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516891"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Verwalten von Freigaben auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal 
 
 In diesem Artikel erfahren Sie, wie Sie Freigaben auf Ihrer Azure Data Box Gateway-Ressource verwalten. Azure Data Box Gateway kann über das Azure-Portal oder über die lokale Webbenutzeroberfläche verwaltet werden. Verwenden Sie das Azure-Portal, um Freigaben hinzuzufügen, zu löschen oder zu aktualisieren oder um Speicherschlüssel für das Speicherkonto zu synchronisieren, das den Freigaben zugeordnet ist.
-
-> [!IMPORTANT]
-> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
-
 
 ## <a name="about-shares"></a>Informationen zu Freigaben
 
@@ -88,6 +84,9 @@ Die Liste mit den Freigaben wird nach dem Löschen entsprechend aktualisiert.
 
 Mithilfe des Aktualisierungsfeatures können Sie den Inhalt einer lokalen Freigabe aktualisieren. Wenn Sie eine Freigabe aktualisieren, wird eine Suche nach allen Azure-Objekten mit Blobs und Dateien initiiert, die der Cloud seit der letzten Aktualisierung hinzugefügt wurden. Diese zusätzlichen Dateien werden dann verwendet, um den Inhalt der lokalen Freigabe auf dem Gerät zu aktualisieren. 
 
+> [!NOTE]
+> Berechtigungen und Zugriffssteuerungslisten (ACLs) werden über einen Aktualisierungsvorgang hinaus nicht beibehalten. 
+
 Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu aktualisieren:
 
 1.  Navigieren Sie im Azure-Portal zu **Freigaben**. Klicken Sie auf die Freigabe, die Sie aktualisieren möchten.
@@ -111,7 +110,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu aktualisieren:
 Im Falle eines Fehlers wird eine Warnung ausgelöst. Die Warnung enthält Informationen zur Ursache sowie Empfehlungen für die Problembehebung. Darüber hinaus enthält die Warnung einen Link zu einer Datei mit einer vollständigen Zusammenfassung der Fehler für die Dateien, die nicht aktualisiert oder gelöscht werden konnten.
 
 >[!IMPORTANT]
-> In dieser Vorschauversion darf immer nur eine einzelne Freigabe aktualisiert werden.
+> In diesem Release darf immer nur eine einzelne Freigabe aktualisiert werden.
 
 ## <a name="sync-storage-keys"></a>Synchronisieren von Speicherschlüsseln
 

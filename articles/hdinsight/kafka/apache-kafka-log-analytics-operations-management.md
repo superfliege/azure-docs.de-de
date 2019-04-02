@@ -9,18 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 281b4b8d20957cbbbf0f4ff52166e8c3a78b3e7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5154058bb1562b670e24f8813e979588a536f086
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108136"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359856"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
 Erfahren Sie, wie Sie mithilfe von Azure Monitor-Protokollen in Apache Kafka generierte Protokolle in HDInsight analysieren.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor-Protokolle für Apache Kafka aktivieren
 
@@ -33,7 +35,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
 3. Konfigurieren Sie den Kafka-Cluster für die Verwendung von Azure Monitor-Protokollen. Weitere Informationen finden Sie im Dokument [Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
     > [!NOTE]  
-    > Sie können den Cluster auch mithilfe des `Enable-AzureRmHDInsightOperationsManagementSuite`-Cmdlets zum Verwenden von Azure Monitor-Protokollen konfigurieren. Für dieses Cmdlet benötigen Sie die folgenden Informationen:
+    > Sie können den Cluster auch mithilfe des `Enable-AzHDInsightOperationsManagementSuite`-Cmdlets zum Verwenden von Azure Monitor-Protokollen konfigurieren. Für dieses Cmdlet benötigen Sie die folgenden Informationen:
     >
     > * Den HDInsight-Clusternamen
     > * Die Arbeitsbereichs-ID für Azure Monitor-Protokolle. Die Arbeitsbereichs-ID finden Sie in Ihrem Log Analytics-Arbeitsbereich.

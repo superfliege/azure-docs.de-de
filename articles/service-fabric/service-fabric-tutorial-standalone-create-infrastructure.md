@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen der Infrastruktur für einen Service Fabric-Cluster 
 description: In diesem Tutorial erfahren Sie, wie Sie die AWS-Infrastruktur zum Ausführen eines Service Fabric-Clusters einrichten.
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6b7d2223d33abb429ab5f59b14c80d43c70598dc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9a0c56ecb20857b8fe2f5e55851e5d0d98ed3038
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209649"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369110"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Tutorial: Erstellen der AWS-Infrastruktur zum Hosten eines Service Fabric-Clusters
 
@@ -50,7 +50,7 @@ Klicken Sie auf **Launch Instance** (Instanz starten), und klicken Sie im nächs
 
 ![EC2-Instanzauswahl][aws-ec2instance]
 
-Wählen Sie **t2.medium** aus, und klicken Sie auf **Next: Configure Instance Details** (Nächster Schritt: Instanzdetails konfigurieren). Ändern Sie im nächsten Bildschirm die Instanzenanzahl in `3`, und klicken Sie anschließend auf **Advanced Details** (Erweiterte Details), um diesen Abschnitt zu erweitern.
+Wählen Sie **t2.medium** und anschließend **Next: Configure Instance Details** (Nächster Schritt: Instanzdetails konfigurieren) aus. Ändern Sie auf dem nächsten Bildschirm die Instanzenanzahl in `3`, und wählen Sie dann **Advanced Details** (Erweiterte Details) aus, um diesen Abschnitt zu erweitern.
 
 Damit Ihre virtuellen Computer in Service Fabric miteinander verbunden werden können, müssen die virtuellen Computer, die Ihre Infrastruktur hosten, die gleichen Anmeldeinformationen besitzen.  Konsistente Anmeldeinformationen lassen sich grundsätzlich auf zwei Arten erreichen: Sie können alle der gleichen Domäne hinzufügen oder auf jedem virtuellen Computer das gleiche Administratorkennwort festlegen.  In diesem Tutorial verwenden Sie ein Benutzerdatenskript, um alle EC2-Instanzen mit dem gleichen Kennwort zu konfigurieren.  In einer Produktionsumgebung sollten die Hosts aus Sicherheitsgründen einer Windows-Domäne hinzugefügt werden.
 
@@ -98,7 +98,7 @@ Machen Sie die Ports bei den letzten beiden Service Fabric-Regeln öffentlich zu
 
 Nun muss nur noch der Port 8080 geöffnet werden, damit Sie die Anwendung nach der Bereitstellung anzeigen können. Klicken Sie auf **Add Rule** (Regel hinzufügen), wählen Sie in der Dropdownliste die Option **Custom TCP Rule** (Benutzerdefinierte TCP-Regel) aus, geben Sie den Portbereich `8080` ein, und wählen Sie in der Dropdownliste für die Quelle die Option „Anywhere“ (Beliebiger Ort) aus.
 
-Alle Regeln sind nun eingegeben. Wählen Sie **Speichern**aus.
+Alle Regeln sind nun eingegeben. Wählen Sie **Speichern** aus.
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Herstellen einer Verbindung mit einer Instanz und Überprüfen der Konnektivität
 
@@ -110,7 +110,7 @@ Nachdem Sie über alle IP-Adressen verfügen, wählen Sie zur Verbindungsherstel
 
 Vergewissern Sie sich nach erfolgreicher Verbindungsherstellung mit Ihrer Instanz, dass Sie eine Verbindung zwischen ihnen herstellen und auch Dateien freigeben können.  Sie haben die IP-Adressen für alle Instanzen erfasst. Wählen Sie eine Instanz, mit der momentan keine Verbindung besteht. Geben Sie unter **Start** die Zeichenfolge `cmd` ein, und klicken Sie auf **Eingabeaufforderung**.
 
-In diesen Beispielen wurde die RDP-Verbindung mit der IP-Adresse 172.31.21.141 hergestellt. Die Konnektivitätstests werden daher für eine andere IP-Adresse (172.31.20.163) durchgeführt.
+In diesen Beispielen wurde die RDP-Verbindung mit der folgenden IP-Adresse hergestellt: 172.31.21.141. Alle Konnektivitätstests werden daher für die andere IP-Adresse durchgeführt: 172.31.20.163.
 
 Verwenden Sie zur Überprüfung der grundlegenden Konnektivität den Pingbefehl.
 

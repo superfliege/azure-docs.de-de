@@ -165,7 +165,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei SmartDraw an.
 
-2. Klicken Sie unter „Manage your SmartDraw License“ (Verwalten Ihrer SmartDraw-Lizenz) auf **Single Sign-On** (Einmaliges Anmelden).
+2. Klicken Sie unter „Manage your SmartDraw License“ (SmartDraw-Lizenz verwalten) auf **Single Sign-On** (Einmaliges Anmelden).
 
     ![SmartDraw-Konfiguration](./media/smartdraw-tutorial/configure01.png)
 
@@ -181,7 +181,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     d. Fügen Sie in das Textfeld **Your SAML Issuer Url** (Ihre SAML-Aussteller-URL) den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Öffnen Sie in Editor die Metadaten-XML-Datei, die Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld  **Your SAML MetaData** (Ihre SAML-Metadaten) ein.
+    e. Öffnen Sie in Editor die Metadaten-XML-Datei, die Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld  **Your SAML MetaData** (Ihre SAML-MetaData) ein.
 
     f. Klicken Sie auf **Save Configuration** (Konfiguration speichern). 
 

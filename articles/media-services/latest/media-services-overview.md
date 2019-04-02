@@ -13,19 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 018392db2ffb510d41385d8e0af19635c35678e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003417"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351455"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
 
 Azure Media Services ist eine cloudbasierte Plattform für die Erstellung von Lösungen, die Videostreaming in Broadcastqualität ermöglichen, Barrierefreiheit und Verteilung optimieren, Inhalte analysieren und vieles mehr. Ganz gleich, ob Sie ein Anwendungsentwickler sind oder in einem Callcenter, bei einer Regierungsbehörde oder in einem Unterhaltungsunternehmen arbeiten, Media Services unterstützt Sie bei der Erstellung von Anwendungen, die Medienerlebnisse von herausragender Qualität für ein breites Publikum auf den beliebtesten mobilen Geräten und Browsern von heute bieten. 
+
+> [!NOTE]
+> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](developers-guide.md).
 
 ## <a name="what-can-i-do-with-media-services"></a>Wie kann ich Media Services nutzen?
 
@@ -74,24 +77,11 @@ Beispiele hierfür sind:
 
 Sehen Sie sich das Beispiel zum [Abrufen der Richtlinie für den Inhaltsschlüssel (.NET)](get-content-key-policy-dotnet-howto.md) an.
 
-## <a name="how-can-i-get-started-with-v3"></a>Wie kann ich erste Schritte mit v3 ausführen?
-
-Informationen zum Einstieg in die Entwicklung mit der Media Services v3-API und verschiedenen Tools und SDKs finden Sie unter [Beginnen mit der Entwicklung](developers-guide.md).
-
-## <a name="v3-content-map"></a>v3-Inhaltszuordnung
-
-Der Media Services v3-Inhalt ist wie folgt strukturiert (wie auch im Inhaltsverzeichnis zu sehen):
-
-|Abschnitte| BESCHREIBUNG|
-|---|---|
-| Übersicht | Hier werden die Funktionen von Media Services und die Möglichkeiten erläutert, die Ihnen der Dienst bietet.|
-| Schnellstarts | Hier finden Sie grundlegende Anleitungen für Einsteiger, mit denen neue Kunden Media Services schnell ausprobieren können.|
-| Lernprogramme | Hier finden Sie szenariobasierte Verfahren für einige der wichtigsten Media Services-Aufgaben.|
-| Beispiele | Hier finden Sie Links zu Codebeispielen. |
-| Konzepte | Hier finden Sie ausführliche Erläuterungen zu [Media Services v3-Konzepten und -Funktionen](concepts-overview.md). Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.<br/><br/>* Clouduploads und Cloudspeicherung<br/>* Codierung<br/>* Medienanalyse<br/>* Verpackung, Bereitstellung, Schutz<br/>* Livestreaming<br/>* Überwachung<br/>* Beteiligte Kunden<br/><br/>und vieles mehr... |
-| Anleitungen | Hier erfahren Sie, wie Sie eine Aufgabe ausführen.|
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um zu erfahren, wie einfach es ist, mit der Codierung und dem Streaming von Videodateien zu beginnen, lesen Sie [Streamen von Dateien](stream-files-dotnet-quickstart.md). 
+Wie kann ich erste Schritte mit v3 ausführen? 
+
+> [!div class="nextstepaction"]
+> [Kenntnisse grundlegender Konzepte](concepts-overview.md)<br/>
+> [Entwickeln mit der Media Services v3-API und SDKs](developers-guide.md) 
 

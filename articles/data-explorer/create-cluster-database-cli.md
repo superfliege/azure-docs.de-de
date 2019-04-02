@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank über die Befehlszeilenschnittstelle'
+title: 'Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank über die Azure-Befehlszeilenschnittstelle'
 description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
 services: data-explorer
 author: radennis
@@ -7,15 +7,15 @@ ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 2/4/2019
-ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 3/25/2019
+ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286328"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418651"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank über die Befehlszeilenschnittstelle
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank über die Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
@@ -23,9 +23,9 @@ ms.locfileid: "58286328"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+>
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie über die Azure-Befehlszeilenschnittstelle (Azure CLI) einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
+Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst für Echtzeitanalysen großer Datenmengen, die von Anwendungen, Websites, IoT-Geräten usw. gestreamt werden. Um den Azure Data Explorer zu verwenden, erstellen Sie zuerst einen Cluster und anschließend eine oder mehrere Datenbanken in diesem Cluster. Anschließend erfassen (laden) Sie Daten in eine Datenbank, damit Sie diese abfragen können. In diesem Schnellstart erstellen Sie einen Cluster und eine Datenbank mit der Azure CLI.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
     az login
     ```
 
-2. Legen Sie das Abonnement fest, in dem der Cluster erstellt werden soll. Ersetzen Sie `MyAzureSub` durch den Namen des gewünschten Azure-Abonnements:
+1. Legen Sie das Abonnement fest, in dem der Cluster erstellt werden soll. Ersetzen Sie `MyAzureSub` durch den Namen des gewünschten Azure-Abonnements:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -67,7 +67,7 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
 
     Sie können auch noch weitere optionale Parameter verwenden, etwa die Kapazität des Clusters.
 
-2. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
+1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
@@ -91,7 +91,7 @@ Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde d
    | soft-delete-period | *3650:00:00:00* | Der Zeitraum, für den Daten für Abfragen verfügbar sein sollen. |
    | hot-cache-period | *3650:00:00:00* | Der Zeitraum, für den Daten im Cache verfügbar sein sollen. |
 
-2. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
+1. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 504f79186eb69fb6e6c23c1a0cd9dfd7584bb128
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904336"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522076"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
 
@@ -234,7 +234,7 @@ Der Moderationsprozess gibt eine Liste mit Keyframes aus dem Video zurück – z
 Mit `CreateVideoReviewInContentModerator()` werden mehrere andere Methoden aufgerufen, um die folgenden Aufgaben durchzuführen:
 
 > [!NOTE]
-> Die Konsolenanwendung nutzt die [FFmpeg](https://ffmpeg.org/)-Bibliothek zum Generieren von Miniaturansichten. Die Miniaturansichten (Bilder) entsprechen den Framezeitstempeln in der [Ausgabe der Videomoderation](#sample-video-moderation-response).
+> Die Konsolenanwendung nutzt die [FFmpeg](https://ffmpeg.org/)-Bibliothek zum Generieren von Miniaturansichten. Die Miniaturansichten (Bilder) entsprechen den Framezeitstempeln in der Ausgabe der Videomoderation.
 
 |Aufgabe|Methoden|Datei|
 |-|-|-|

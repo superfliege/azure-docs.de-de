@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e960f662fda4272bbc9763eb04fdb739c4776af8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189647"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371331"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von C# zum Aufrufen der Textanalyse von Cognitive Services
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/te
 1. Klicken Sie mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Manage NuGet Packages for Solution** (NuGet-Pakete für Projektmappe verwalten).
 1. Aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
 1. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
-1. Wählen Sie das NuGet-Paket aus, und installieren Sie es. Möglicherweise benötigen Sie vorerst v2.8.0 (3-18-2019), im Gegensatz zu v3.0.0, bis ein Fehler in der Software behoben wurde.
+1. Wählen Sie das NuGet-Paket aus, und installieren Sie es. Unter Umständen müssen Sie vorerst ein Downgrade auf v2.8.0 ausführen (Stand 18.03.2019), bis der Beispielcode mit v3.0.0 aktualisiert wurde.
 
 > [!Tip]
 >  Sie können die [HTTP-Endpunkte](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) zwar direkt über C# aufrufen, das SDK Microsoft.Azure.CognitiveServices.Language erleichtert jedoch das Aufrufen des Diensts erheblich, und Sie müssen sich nicht um die Serialisierung und Deserialisierung von JSON kümmern.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 7f079c511a32cfcf0fa018d40abb737ad08f3821
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138010"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310624"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Unity-Entwurfstutorial für Projekt Akustik
 Dieses Tutorial beschreibt die Entwurfstools und den -workflow für Projekt Akustik in Unity.
@@ -37,16 +37,16 @@ Projekt Akustik bietet eine Reihe von datenquellenspezifischen Akustikentwurfs-S
 ### <a name="adjust-distance-based-attenuation"></a>Anpassen der distanzabhängigen Dämpfung
 Der vom Unity-Spatializer-Plug-In von **Projekt Akustik** bereitgestellte Audio-DSP berücksichtigt die in den Unity-Editor integrierte distanzabhängige Dämpfung pro Quelle. Steuerelemente für die distanzabhängige Dämpfung befinden sich in der Komponente **Audioquelle** im Bereich **Inspektor** von Tonquellen unter **3D Sound Settings** (3D-Soundeinstellungen):
 
-![Distanzdämpfung](media/distance-attenuation.png)
+![Screenshot des Unity-Panels mit Optionen für die Distanzdämpfung](media/distance-attenuation.png)
 
 Acoustics führt die Berechnung in einem „Simulationsbereichsfeld“ durch, das um die Position des Players herum angeordnet ist. Wenn eine Tonquelle vom Player entfernt ist, die sich außerhalb dieses Simulationsbereichs befindet, beeinflusst nur die Geometrie innerhalb des Felds die Schallausbreitung (z. B. durch Okklusion), was recht gut funktioniert, wenn sich Okkluder in der Nähe des Players befinden. In Fällen, in denen sich der Player jedoch im offenen Raum befindet, sich die Okkluder aber in der Nähe der fernen Tonquelle befinden, kann der Ton unrealistisch disokkludiert werden. Als Umgehung wird empfohlen, in solchen Fällen sicherzustellen, dass die Schallschwächung bei ca. 45 m auf 0 absinkt, dem voreingestellten horizontalen Abstand des Players zum Feldrand.
 
-![SpeakerMode](media/speaker-mode.png)
+![Screenshot des Unity-Panels mit SpeakerMode-Optionen](media/speaker-mode.png)
 
 ### <a name="adjust-occlusion-and-transmission"></a>Anpassen der Verdeckung und Übertragung
 Durch Anfügen des **AcousticsAdjust**-Skripts an eine Quelle können die Parameter für diese Quelle optimiert werden. Wenn Sie das Skript anfügen möchten, klicken Sie auf **Komponente hinzufügen** im unteren Bereich des Abschnitts **Inspektor** und navigieren zu **Skripts > Acoustics Adjust** (Anpassung der Akustik). Das Skript verfügt über sechs Steuerelemente:
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Screenshot des Unity-Skripts „AcousticsAdjust“](media/acoustics-adjust.png)
 
 * **Enable Acoustics** (Akustik aktivieren): Bestimmt, ob auf diese Quelle Akustikeffekte angewendet werden. Ist diese Option deaktiviert, wird die Quelle mithilfe von HRTFs oder der Panoramafunktion räumlich gemacht, es sind dann aber keine Akustikeinstellungen möglich. Dies bedeutet, dass keine Parameter für Hindernisse, Verdeckung oder dynamischen Hall wie z. B. Stärke und Abfallzeit verfügbar sind. Halleffekte werden dennoch angewendet, jedoch mit einem festen Pegel und einer festen Abklingzeit.
 * **Occlusion** (Okklusion): Wenden Sie einen Multiplikator auf den vom Akustiksystem berechneten dB-Wert der Okklusion an. Wenn dieser Multiplikator größer als 1 ist, wird die Okklusion überspitzt, während Werte kleiner als 1 zu einem subtileren Okklusionseffekt führen, und ein Wert von 0 deaktiviert die Okklusion.
@@ -59,14 +59,14 @@ Durch Anfügen des **AcousticsAdjust**-Skripts an eine Quelle können die Parame
 
 Durch Anfügen des **AcousticsAdjustExperimental**-Skripts an eine Quelle können die zusätzlichen experimentellen Parameter für diese Quelle optimiert werden. Wenn Sie das Skript anfügen möchten, klicken Sie auf **Komponente hinzufügen** im unteren Bereich des Abschnitts **Inspektor** und navigieren zu **Skripts > Acoustics Adjust Experimental** (experimentelle Anpassung der Akustik). Es gibt derzeit ein experimentelles Steuerelement:
 
-![AcousticsAdjustExperimental](media/acoustics-adjust-experimental.png)
+![Screenshot des Unity-Skripts „AcousticsAdjustExperimental“](media/acoustics-adjust-experimental.png)
 
 * **Perceptual Distance Warp** (Wahrnehmungsdistanzverzerrung): Wenden Sie eine exponentielle Verzerrung auf die Entfernung an, die zur Berechnung des Dry-Wet-Verhältnisses (Verhältnis von Trockenheit zur Verwässerung) verwendet wird. Das Akustiksystem berechnet Verwässerungspegel im gesamten Raum, die mit der Entfernung stufenlos variieren und wahrnehmbare Entfernungshinweise liefern. Verzerrungswerte größer als 1 verstärken diesen Effekt noch, da die entfernungsbedingte Hallstärke erhöht wird, sodass der Sound „entfernt“ klingt. Verzerrungswerte kleiner als 1 verringern den entfernungsbasierten Hall, sodass der Sound „präsenter“ klingt.
 
 ## <a name="design-acoustics-for-all-sources"></a>Entwurf der Akustik für alle Quellen
 Klicken Sie zum Anpassen von Parametern für alle Quellen auf den Kanalstreifen im **Audiomixer** von Unity, und passen Sie die Parameter für den Effekt **Project Acoustics Mixer** (Projektakustikmixer) an.
 
-![Mixeranpassung](media/mixer-parameters.png)
+![Screenshot des Unity-Anpassungspanels für den Projekt Akustik-Mixer](media/mixer-parameters.png)
 
 * **Wetness Adjust** (Feuchtigkeitsanpassung): passt die Hallstärke (in dB) für alle Quellen in der Szene basierend auf der Entfernung des Hörers an. Positive Werte verstärken den Hall, während negative Werte für einen Ton mit weniger Hall sorgen.
 * **RT60 Scale** (RT60-Skala): multiplikatives Skalar für die Hallzeit.
@@ -75,7 +75,7 @@ Klicken Sie zum Anpassen von Parametern für alle Quellen auf den Kanalstreifen 
 ## <a name="check-proper-sound-source-placement"></a>Überprüfen der Platzierung der Tonquelle
 Innerhalb von belegten Voxeln platzierte Tonquellen werden nicht akustisch behandelt. Da Voxel sich über die sichtbare Szenengeometrie ausdehnen, ist es möglich, eine Quelle in einem Voxel zu platzieren, obwohl sie visuell nicht verdeckt erscheint. Sie können Projekt Akustik-Voxel anzeigen, indem Sie das Kontrollkästchen für das Voxelraster im Menü **Gizmos** im rechten oberen Bereich der Ansicht **Scene** aktivieren.
 
-![Gizmos-Menü](media/gizmos-menu.png)  
+![Screenshot des Gizmos-Menüs von Unity](media/gizmos-menu.png)  
 
 Mithilfe der Voxelanzeige können Sie auch ermitteln, ob auf visuelle Komponenten im Spiel eine Transformation angewandt wurde. Ist dies der Fall, wenden Sie dieselbe Transformation auf das GameObject an, in dem der **Acoustics Manager** gehostet wird.
 
@@ -84,11 +84,11 @@ Sie können Voxel im Editor-Fenster zur Spielentwurfszeit und im Spielfenster zu
 
 Entwurfszeitvoxel:
 
-![VoxelsDesignTime](media/voxels-design-time.png)
+![Screenshot der Projekt Akustik-Voxel zur Entwurfszeit](media/voxels-design-time.png)
 
 Laufzeitvoxel:
 
-![VoxelsRuntime](media/voxels-runtime.png)
+![Screenshot der Projekt Akustik-Voxel zur Laufzeit](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erkunden von Fallstudien zu den Konzepten hinter dem [Entwurfsvorgang](design-process.md)

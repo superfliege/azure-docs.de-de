@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8fa77409f1f5c32bc1e8f8644111c38f6115a92d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295809"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362049"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
@@ -67,22 +67,11 @@ Führen Sie nach den folgenden Schritten das Notebook **tutorials/regression-par
 
 ### <a name="server"></a>Verwenden Ihres eigenen Jupyter Notebook-Servers
 
-Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen.  Führen Sie nach den Schritten das Notebook **tutorials/regression-part2-automated-ml.ipynb** aus.
+Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen.  Installieren Sie `matplotlib` sowie die Zusatzkomponenten `automl` und `notebooks` in Ihrer Umgebung.
 
-1. Führen Sie die Schritte unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md) aus, um eine Miniconda-Umgebung und einen Arbeitsbereich zu erstellen.
-1. Installieren Sie die Extras `automl` und `notebooks` mithilfe von `pip install azureml-sdk[automl,notebooks]` in Ihrer Umgebung.
-1. Installieren Sie `maplotlib` mithilfe von `pip install maplotlib`.
-1. Klonen Sie das [GitHub-Repository](https://aka.ms/aml-notebooks).
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Starten Sie den Notebook-Server aus Ihrem geklonten Verzeichnis.
-
-    ```shell
-    jupyter notebook
-    ```
+Führen Sie nach den Schritten das Notebook **tutorials/regression-part2-automated-ml.ipynb** aus.
 
 ## <a name="start"></a>Einrichten Ihrer Entwicklungsumgebung
 

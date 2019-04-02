@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855953"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539495"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
 
@@ -61,7 +61,7 @@ In diesem Tutorial wird der zentrale Code für das Projekt erläutert. Dabei wir
 
 ## <a name="define-api-keys-and-endpoints"></a>Definieren von API-Schlüsseln und -Endpunkten
 
-Da in diesem Tutorial wie bereits erwähnt drei Cognitive Services verwendet werden, sind auch drei entsprechende Schlüssel und API-Endpunkte erforderlich. Sehen Sie sich die folgenden Felder in der Klasse **Program** an: 
+Da in diesem Tutorial wie bereits erwähnt drei Cognitive Services verwendet werden, sind auch drei entsprechende Schlüssel und API-Endpunkte erforderlich. Sehen Sie sich die folgenden Felder in der Klasse **Program** an:
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
@@ -79,19 +79,19 @@ Sehen Sie sich die Methode **EvaluateAdultRacy** in der Klasse **Program** an. D
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="evaluatecustomvisiontags-method"></a>Methode „EvaluateCustomVisionTags“
+## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags-Methode
 
-Die nächste Methode akzeptiert eine Bild-URL und die Informationen Ihres Abonnements für maschinelles Sehen und analysiert, ob das Bild Prominente enthält. Wurde mindestens eine prominente Person gefunden, wird der entsprechende Wert im Array **ReviewTags** auf **true** festgelegt. 
+Die nächste Methode akzeptiert eine Bild-URL und die Informationen Ihres Abonnements für maschinelles Sehen und analysiert, ob das Bild Prominente enthält. Wurde mindestens eine prominente Person gefunden, wird der entsprechende Wert im Array **ReviewTags** auf **true** festgelegt.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>Methode „EvaluateCustomVisionTags“
 
-Sehen Sie sich als Nächstes die Methode **EvaluateCustomVisionTags** an. Diese klassifiziert die eigentlichen Produkte (in diesem Fall Flaggen, Spielsachen und Stifte). Gehen Sie gemäß der Anleitung unter [Erstellen einer Klassifizierung mit Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vor, um Ihre eigene benutzerdefinierte Bildklassifizierung für die Erkennung von Flaggen, Spielsachen und Stiften (oder anderen benutzerdefinierten Tags) auf Bildern zu erstellen.
+Sehen Sie sich als Nächstes die Methode **EvaluateCustomVisionTags** an. Diese klassifiziert die eigentlichen Produkte (in diesem Fall Flaggen, Spielsachen und Stifte). Gehen Sie gemäß der Anleitung unter [Erstellen einer Klassifizierung mit Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vor, um Ihre eigene benutzerdefinierte Bildklassifizierung für die Erkennung von Flaggen, Spielsachen und Stiften (oder anderen benutzerdefinierten Tags) auf Bildern zu erstellen. Sie können die Bilder im Ordner **sample-images** des [GitHub-Repositorys](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) verwenden, um schnell einige der Kategorien in diesem Beispiel zu trainieren.
 
 ![Custom Vision-Webseite mit Trainingsbildern für Stifte, Spielsachen und Flaggen](images/tutorial-ecommerce-custom-vision.PNG)
 
-Rufen Sie nach dem Trainieren Ihrer Klassifizierung den Vorhersageschlüssel und die Vorhersageendpunkt-URL ab (siehe [Abrufen der Vorhersage-URL und des Vorhersage-Schlüssels](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)), und weisen Sie diese Werte dem Feld `CustomVisionKey` bzw. `CustomVisionUri` zu. Die Methode verwendet diese Werte, um die Klassifizierung abzufragen. Findet die Klassifizierung mindestens eines der benutzerdefinierten Tags auf dem Bild, legt diese Methode die entsprechenden Werte im Array **ReviewTags** auf **true** fest. 
+Rufen Sie nach dem Trainieren Ihrer Klassifizierung den Vorhersageschlüssel und die Vorhersageendpunkt-URL ab (siehe [Abrufen der Vorhersage-URL und des Vorhersage-Schlüssels](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)), und weisen Sie diese Werte dem Feld `CustomVisionKey` bzw. `CustomVisionUri` zu. Die Methode verwendet diese Werte, um die Klassifizierung abzufragen. Findet die Klassifizierung mindestens eines der benutzerdefinierten Tags auf dem Bild, legt diese Methode die entsprechenden Werte im Array **ReviewTags** auf **true** fest.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

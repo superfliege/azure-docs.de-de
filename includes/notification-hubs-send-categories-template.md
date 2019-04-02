@@ -8,22 +8,26 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ce8496596f25b85719b8a6dff849ebf0fc3e5dc3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33835832"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58405600"
 ---
 In diesem Abschnitt senden Sie Neuigkeiten als Vorlagenbenachrichtigungen mit Tags über eine .NET-Konsolen-App. 
 
-1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolenanwendung:
+1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolenanwendung: a. Wählen Sie im Menü die Optionen **Datei** > **Neu** > **Projekt** aus.
+    b. Erweitern Sie **Visual C#**, und wählen Sie **Windows-Desktop** aus. 
+    c. Wählen Sie in der Liste der Vorlagen **Konsolen-App (.NET Framework)** aus. 
+    d. Geben Sie einen **Namen** für die App ein. 
+    e. Wählen Sie einen **Ordner** für die App aus.
+    f. Wählen Sie **OK** aus, um das Projekt zu erstellen. 
+2. Wählen Sie im Hauptmenü von Visual Studio die Optionen **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** aus, und geben Sie im Konsolenfenster die folgende Zeichenfolge ein:
    
-      ![Link „Konsolenanwendung“][13]
-
-2. Wählen Sie im Hauptmenü von Visual Studio die Optionen **Extras** > **Bibliothekspaket-Manager** > **Paket-Manager-Konsole**, und geben Sie im Konsolenfenster die folgende Zeichenfolge ein:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
+    ```
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
    
 3. Drücken Sie die **EINGABETASTE**.  
     Dadurch wird mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets] ein Verweis auf das Azure Notification Hubs-SDK hinzugefügt.

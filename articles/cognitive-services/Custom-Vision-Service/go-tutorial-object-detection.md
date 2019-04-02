@@ -8,26 +8,26 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: quickstart
-ms.date: 2/25/2018
+ms.date: 03/21/2019
 ms.author: daauld
-ms.openlocfilehash: 93a6d923aff49811a4b5b0bc2236af8d0bd4c067
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 77ba3144afcc48d68466341c154bc1d8eef54d3b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885248"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479205"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision-SDK für Go
 
-Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte mit dem Custom Vision SDK und Go und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Go-Anwendung.
+Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte mit dem Custom Vision SDK und Go und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nach der Erstellung können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Go-Anwendung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Go 1.8+](https://golang.org/doc/install)
+- [Go 1.8+](https://golang.org/doc/install)
 
 ## <a name="install-the-custom-vision-sdk"></a>Installieren des Custom Vision SDK
 
-Führen Sie den folgenden Befehl in PowerShell aus, um das Custom Vision Service SDK für Go zu installieren:
+Führen Sie in PowerShell den folgenden Befehl aus, um das Custom Vision Service SDK für Go zu installieren:
 
 ```
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -59,15 +59,17 @@ import(
     "path"
     "log"
     "time"
-    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.2/customvision/training"
-    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction"
+    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v3.0/customvision/training"
+    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v3.0/customvision/prediction"
 )
 
 var (
     training_key string = "<your training key>"
     prediction_key string = "<your prediction key>"
+    prediction_resource_id = "<your prediction resource id>"
     endpoint string = "https://southcentralus.api.cognitive.microsoft.com"
     project_name string = "Go Sample OD Project"
+    iteration_publish_name = "detectModel"
     sampleDataDirectory = "<path to sample images>"
 )
 
@@ -94,7 +96,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Erstellen von Tags im Projekt
 
-Um Ihrem Projekt Klassifizierungstags hinzuzufügen, fügen Sie den folgenden Code am Ende der Datei *sample.go* hinzu:
+Fügen Sie am Ende der Datei *sample.go* den folgenden Code hinzu, um Ihrem Projekt Klassifizierungstags hinzuzufügen:
 
 ```Go
     # Make two tags in the new project
@@ -158,7 +160,7 @@ Wenn Sie Bilder, Tags und Regionen zum Projekt hinzufügen möchten, fügen Sie 
 Laden Sie dann auf der Grundlage dieser Zuordnungen die einzelnen Bilder zusammen mit den jeweiligen Regionskoordinaten hoch. Fügen Sie den folgenden Code hinzu:
 
 > [!NOTE]
-> Sie müssen den Pfad zu den Bildern basierend darauf ändern, wo Sie zuvor das Cognitive Services-Beispielprojekt für das Go-SDK heruntergeladen haben.
+> Sie müssen den Pfad zu den Bildern basierend darauf ändern, wo Sie zuvor das Cognitive Services SDK-Beispielprojekt für Go heruntergeladen haben.
 
 ```Go
     // Go through the data table above and create the images
@@ -211,16 +213,16 @@ Laden Sie dann auf der Grundlage dieser Zuordnungen die einzelnen Bilder zusamme
         
     scissor_batch, _ := trainer.CreateImagesFromFiles(ctx, *project.ID, training.ImageFileCreateBatch{ 
         Images: &scissor_images,
-     })
+    })
      
     if (!*scissor_batch.IsBatchSuccessful) {
         fmt.Println("Batch upload failed.")
-    }    
+    }     
 ```
 
-### <a name="train-the-project"></a>Trainieren des Projekts
+### <a name="train-the-project-and-publish"></a>Trainieren des Projekts und Veröffentlichen
 
-Dieser Code erstellt die erste Iteration im Projekt und kennzeichnet sie als Standarditeration. Die Standarditeration spiegelt die Version des Modells wider, die auf Vorhersageanforderungen reagiert. Sie sollte immer aktualisiert werden, wenn Sie das Modell neu trainieren.
+Dieser Code erstellt die erste Iteration im Projekt und veröffentlicht anschließend diese Iteration im Vorhersageendpunkt. Der Name der veröffentlichten Iteration kann zum Senden von Vorhersageanforderungen verwendet werden. Eine Iteration ist erst im Vorhersageendpunkt verfügbar, wenn sie veröffentlicht wurde.
 
 ```go
     iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -234,12 +236,10 @@ Dieser Code erstellt die erste Iteration im Projekt und kennzeichnet sie als Sta
         fmt.Println("Training status:", *iteration.Status)
     }
 
-    // Mark iteration as default
-    *iteration.IsDefault = true
-    trainer.UpdateIteration(ctx, *project.ID, *iteration.ID, iteration)
+    trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>Abrufen und Verwenden des Standardendpunkts für Vorhersagen
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Abrufen und Verwenden der veröffentlichten Iteration für den Vorhersageendpunkt
 
 Um ein Bild an den Vorhersageendpunkt zu senden und die Vorhersage abzurufen, fügen Sie am Ende der Datei den folgenden Code hinzu:
 
@@ -248,9 +248,9 @@ Um ein Bild an den Vorhersageendpunkt zu senden und die Vorhersage abzurufen, f�
     predictor := prediction.New(prediction_key, endpoint)
 
     testImageData, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Test", "test_od_image.jpg"))
-    results, _ := predictor.PredictImage(ctx, *project.ID, ioutil.NopCloser(bytes.NewReader(testImageData)), iteration.ID, "")
+    results, _ := predictor.DetectImage(ctx, *project.ID, iteration_publish_name, ioutil.NopCloser(bytes.NewReader(testImageData)), "")
 
-    for _, prediction := range *results.Predictions {
+    for _, prediction := range *results.Predictions    {
         boundingBox := *prediction.BoundingBox
 
         fmt.Printf("\t%s: %.2f%% (%.2f, %.2f, %.2f, %.2f)", 
@@ -269,7 +269,7 @@ Um ein Bild an den Vorhersageendpunkt zu senden und die Vorhersage abzurufen, f�
 
 Führen Sie *sample.go* aus.
 
-```PowerShell
+```powershell
 go run sample.go
 ```
 

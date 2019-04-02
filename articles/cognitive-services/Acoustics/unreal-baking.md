@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: afe4421bea27ff029bd4a1a7808241a54027a6ac
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136562"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311557"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Unreal-Bakingtutorial für Projekt Akustik
 In diesem Dokument wird das Übermitteln eines Akustikbakingvorgangs mithilfe der Unreal-Editor-Erweiterung beschrieben.
@@ -32,7 +32,7 @@ Für einen Bake-Vorgang sind fünf Schritte erforderlich:
 
 Importieren Sie das Projekt Akustik-Plug-In-Paket in Ihr Projekt. Hilfe hierzu finden Sie im Thema [Unreal-Integration](unreal-integration.md). Nachdem das Plug-In integriert ist, öffnen Sie die Akustikbenutzeroberfläche, indem Sie auf das neue Symbol „Acoustics Mode“ (Akustikmodus) klicken.
 
-![Öffnen des Akustikmodus](media/acoustics-mode.png)
+![Screenshot der Option für den Akustikmodus im Unreal-Editor](media/acoustics-mode.png)
 
 ## <a name="tag-actors-for-acoustics"></a>Versehen von Akteuren mit Tags für Akustik
 
@@ -42,7 +42,7 @@ Wählen Sie Objekte im World Outliner aus, oder verwenden Sie den Abschnitt **Bu
 
 ### <a name="for-reference-the-objects-tab-parts"></a>Zur Referenz: Die Elemente der Registerkarte „Objects“ (Objekte)
 
-![Details der Registerkarte „Objects“ (Objekte) von Unreal](media/unreal-objects-tab-details.png)
+![Screenshot der Option „Objects“ (Objekte) auf der Registerkarte „Acoustics“ (Akustik) in Unreal](media/unreal-objects-tab-details.png)
 
 1. Schaltflächen für die Registerkartenauswahl (Registerkarte **Objects** ist ausgewählt). Verwenden Sie diese Schaltflächen, um die Schritte eines Akustikbakingvorgangs von oben nach unten zu durchlaufen.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
@@ -75,11 +75,11 @@ Die akustischen Materialien bestimmten die Menge an Schallenergie, die von der O
 
 Die Nachhallzeit eines bestimmten Materials in einem Raum ist umgekehrt proportional zum Absorptionskoeffizienten, wobei die meisten Materialien Absorptionswerte im Bereich zwischen 0,01 und 0,20 aufweisen. Materialien mit Absorptionskoeffizienten über diesem Bereich sind stark absorbierend. Wenn der Hall in einem Raum beispielsweise zu stark ist, können Sie das Akustikmaterial der Wände, Böden und Decken in ein Material mit höherer Absorption ändern. Die Zuweisung des Akustikmaterials gilt für alle Akteure, die dieses Szenenmaterial verwenden.
 
-![Zeitdiagramm für den Hall](media/reverb-time-graph.png)
+![Graph, der die negative Korrelation der Nachhallzeit mit dem Absorptionskoeffizienten zeigt](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>Zur Referenz: Bestandteile der Registerkarte „Materials“ (Materialien)
 
-![Details der Registerkarte „Objects“ (Objekte) von Unreal](media/unreal-materials-tab-details.png)
+![Screenshot der Option „Objects“ (Objekte) auf der Registerkarte „Acoustics“ (Akustik) in Unreal](media/unreal-materials-tab-details.png)
 
 1. Die Schaltfläche **Materials** (Materialien), die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
@@ -94,7 +94,7 @@ Wenn Sie die Materialien zugewiesen haben, wechseln Sie zur Registerkarte **Prob
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Zur Referenz: Bestandteile der Registerkarte „Probes“ (Tests)
 
-![Details der Registerkarte „Probes“ (Tests)](media/unreal-probes-tab-details.png)
+![Screenshot der Option „Probes“ (Tests) auf der Registerkarte „Acoustics“ (Akustik) in Unreal](media/unreal-probes-tab-details.png)
 
 1. Die Schaltfläche **Probes** (Tests), die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
@@ -124,11 +124,11 @@ Sobald die Berechnungen abgeschlossen wurden, können Sie eine Vorschau der Voxe
 
 Nach Abschluss der Prüfpunktberechnung wird ein neuer Akteur namens **AcousticsDebugRenderer** im World Outliner dargestellt. Durch Aktivieren der Kontrollkästchen **Render Probes** (Prüfpunkte rendern) und **Render Voxels** (Voxel rendern) wird die Debugginganzeige im Editor-Viewport aktiviert.
 
-![Akustikdebugging-Renderer](media/acoustics-debug-renderer.png)
+![Screenshot mit dem Akteur für den Akustikdebugging-Renderer im Unreal-Editor](media/acoustics-debug-renderer.png)
 
 Wenn in Ihrem Level keine Voxel oder Prüfpunkte überlagert werden, vergewissern Sie sich, dass das Echtzeitrendering im Viewport aktiviert ist.
 
-![Aktivieren des Echtzeitrenderings](media/unreal-real-time-rendering.png)
+![Screenshot der Option für das Echtzeitrendering in Unreal](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>Voxels
 
@@ -137,7 +137,7 @@ Bewegen Sie die Szene, und vergewissern Sie sich, dass sämtliche Geometrie, die
 
 Wenn Sie die erstellten Voxel mit niedriger und hoher Auflösung vergleichen, sehen Sie, dass die Voxel mit niedriger Auflösung doppelt so groß sind.
 
-![Voxelvorschau](media/unreal-voxel-preview.png)
+![Screenshot mit Vorschau der Akustik-Voxel im Unreal-Editor](media/unreal-voxel-preview.png)
 
 ### <a name="probe-points"></a>Testpunkte
 
@@ -145,7 +145,7 @@ Die Testpunkte entsprechen den möglichen Positionen des Spielers (Listeners). B
 
 Es ist wichtig, sicherzustellen, dass an jeder Position, die der Spieler in der Szene voraussichtlich durchlaufen wird, Prüfpunkte vorhanden sind. Prüfpunkte werden von der Projekt Akustik-Engine im Navigationsgittermodell platziert und können nicht verschoben oder bearbeitet werden. Stellen Sie daher sicher, dass das Navigationsgittermodell alle möglichen Spielerpositionen abdeckt, indem Sie die Prüfpunkte durchgehen.
 
-![Testvorschau](media/unreal-probes-preview.png)
+![Screenshot mit Vorschau der Akustiktests in Unreal](media/unreal-probes-preview.png)
 
 ### <a name="Coarse-vs-Fine-Resolution"></a>Niedrige und hohe Auflösung im Vergleich
 
@@ -159,9 +159,9 @@ Dieses Prinzip erscheint einfach, hat jedoch einige Auswirkungen auf die Akustik
 * Soundquellen können nicht in „aufgefüllten“ Voxels (also Voxels, die Geometrie enthalten) platziert werden, da ansonsten keine Sounds wiedergegeben werden. Es ist schwieriger, Soundquellen so zu platzieren, dass sie sich nicht in den größeren Voxeln der Einstellung „Coarse“ (Niedrig) befinden, als es bei der Einstellung „Fine“ (Hoch) der Fall ist.
 * Die größeren Voxels überschneiden sich wie im Folgenden dargestellt mehr mit Portalen. Das erste Bild dieses Türbereichs wurde mit der Auflösung „Coarse“ (Niedrig) erstellt, das zweite mit der Auflösung „Fine“ (Hoch). An den roten Markierungen ist erkennbar, dass die Überschneidung mit der Einstellung „Fine“ (Hoch) wesentlich geringer ist. Die blaue Linie stellt den durch die Geometrie definierten Eingang dar, während die rote Linie das Akustikportal darstellt, das von der Voxelgröße definiert wird. Wie diese Überschneidung sich in einer bestimmten Situation auswirkt, hängt vollständig davon ab, wie die Voxels und die Geometrie des Portals ausgerichtet sind. Dies wird von der Größe und Position der Objekte in der Szene bestimmt.
 
-![Eingang mit niedriger Auflösung](media/unreal-coarse-bake.png)
+![Screenshot der Voxel mit niedriger Auflösung im Eingang in Unreal](media/unreal-coarse-bake.png)
 
-![Eingang mit hoher Auflösung](media/unreal-fine-bake.png)
+![Screenshot der Voxel mit hoher Auflösung im Eingang in Unreal](media/unreal-fine-bake.png)
 
 ## <a name="bake-your-level-using-azure-batch"></a>Ausführen des Bakings Ihres Levels mit Azure Batch
 
@@ -169,7 +169,7 @@ Sie können das Baking Ihrer Szene mit dem Azure Batch-Dienst in einem Computecl
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>Zur Referenz: Bestandteile der Registerkarte „Bake“
 
-![Details der Registerkarte „Bake“](media/unreal-bake-tab-details.png)
+![Screenshot der Registerkarte „Acoustics Bake“ (Akustikbaking) in Unreal](media/unreal-bake-tab-details.png)
 
 1. Die Schaltfläche Bake, die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie auf dieser Seite durchführen müssen.

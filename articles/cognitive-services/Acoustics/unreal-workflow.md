@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c65ae71350383896c81fd7057d425822069fc5aa
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136927"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316200"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Entwurfstutorial für Projekt Akustik in Unreal/Wwise
 Dieses Tutorial beschreibt die Entwurfseinrichtung und den -workflow für Projekt Akustik in Unreal und Wwise.
@@ -35,44 +35,44 @@ Wenn Projekt Akustik aktiv ist, reagiert es auf die in Wwise festgelegten Kurven
 
 Mit dieser Einstellung wird bei einer berechneten Verdeckung von -18 dB durch die Projekt Akustik-Simulation die nachstehende Kurve bei X = 18 abgefragt, und der entsprechende Y-Wert ist die angewandte Dämpfung. Legen Sie den Endpunkt auf -50 dB statt -100 dB fest, um eine halbe Verdeckung anzuwenden, oder auf -200 dB, um die Verdeckung zu intensivieren. Sie können jede Kurve anpassen und optimieren, sodass sie für Ihr Spiel am besten geeignet ist.
  
-![Verdeckungskurve des Projekts](media/wwise-occlusion-curve.png)
+![Screenshot des Editors für Wwise-Verdeckungskurven](media/wwise-occlusion-curve.png)
 
 ### <a name="disable-wwise-obstruction-curves"></a>Deaktivieren der Wwise-Hinderniskurven
 Die Wwise-Hinderniskurven betreffen isoliert den Trockenheitsgrad. Projekt Akustik nutzt jedoch Entwurfssteuerelemente und Simulationen, um Verwässerungs-Trockenheits-Verhältnisse zu erzwingen. Es wird empfohlen, die Hindernis-Lautstärkekurve zu deaktivieren. Um die Verwässerung zu entwerfen, verwenden Sie das weiter unten beschriebene Verwässerungs-Anpassungssteuerelement.
  
 Wenn Sie Hindernis-LPF-/HPF-Kurven für andere Zwecke verwenden, stellen Sie sicher, diese bei X = 0 auf Y = 0 festzulegen (d. h., wenn LPF und HPF nicht aktiv sind, ist auch kein Hindernis vorhanden).
 
-![Hinderniskurve des Projekts](media/wwise-obstruction-curve.png)
+![Screenshot des Editors für Wwise-Hinderniskurven](media/wwise-obstruction-curve.png)
 
 ### <a name="design-project-acoustics-mixer-parameters"></a>Entwerfen von Projekt Akustik-Mixerparametern
 Sie können globale Halleigenschaften steuern, indem Sie zur Registerkarte für das Mixer-Plug-In des Projekt Akustik-Busses navigieren. Doppelklicken Sie auf „Project Acoustics Mixer (Custom)“ (Projekt Akustik-Mixer (benutzerdefiniert)), um das Einstellungsbedienfeld des Mixer-Plug-Ins zu öffnen.
 
 Sie sehen auch, dass das Mixer-Plug-In die Option „Perform Spatialization“ (Räumliche Aufteilung ausführen) aufweist. Wenn Sie bevorzugen, die integrierte räumliche Aufteilung von Projekt Akustik zu verwenden, aktivieren Sie das Kontrollkästchen „Perform Spatialization“ (Räumliche Aufteilung ausführen), und wählen Sie zwischen HRTF und Schwenken aus. Deaktivieren Sie ggf. eingerichtete trockene Aux-Busse, andernfalls wird der direkte Pfad zweimal wiedergegeben. Verwenden Sie „Wetness Adjust“ (Verwässerungsanpassung) und „Reverb Time Scale Factor“ (Skalierungsfaktur für Hallzeit), um die Hallabmischung global zu steuern. Beachten Sie, dass Sie Unreal neu starten und dann die Soundbänke neu generieren müssen, bevor Sie die Umgebung wiedergeben, damit das Mixer-Plug-In Konfigurationsänderungen wie das Kontrollkästchen „Perform Spatialization“ (Räumliche Aufteilung ausführen) übernimmt.
 
-![Optionen des Mixer-Plug-Ins für Projekt Akustik](media/mixer-plugin-global-settings.png)
+![Screenshot der Wwise-Optionen des Mixer-Plug-Ins für Projekt Akustik](media/mixer-plugin-global-settings.png)
 
 ## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Festlegen der Projekt Akustik-Entwurfssteuerelemente in der Wwise-Akteurmixerhierarchie
 Um die Steuerelementparameter eines einzelnen Akteurmixers zu steuern, doppelklicken Sie auf den Akteurmixer, und klicken Sie auf die Registerkarte seines Mixer-Plug-Ins. Hier können Sie alle Parameter auf der Ebene der einzelnen Sounds ändern. Diese Werte werden mit den Werten von der Unreal-Seite (weiter unten beschrieben) kombiniert. Wenn das Unreal-Plug-In von Projekt Akustik beispielsweise die Außenbereichsanpassung für ein Objekt auf 0,5 und Wwise sie auf -0,25 festlegt, wird auf diesen Sound die resultierende Außenbereichsanpassung von 0,25 angewandt.
 
-![Mixereinstellungen pro Sound](media/per-sound-mixer-settings.png)
+![Screenshot der Mixereinstellungen pro Sound in der Wwise-Akteurmixerhierarchie](media/per-sound-mixer-settings.png)
 
 ### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Sicherstellen, dass der Aux-Bus eine trockene Sendung aufweist und der Ausgabebus eine verwässerte
 Denken Sie daran, dass in der erforderlichen Akteurmixereinrichtung das übliche Trockenheits- und Verwässerungsrouting in Wwise miteinander gemischt werden. Es wird ein Hallsignal auf dem Ausgabebus des Akteurmixers (auf den Projekt Akustik-Bus festgelegt) und ein trockenes Signal am benutzerdefinierten Aux-Bus erzeugt. Dieses Routing ist erforderlich, da bestimmte Funktionen der Wwise-Mixer-Plug-In-API vom Projekt Akustik-Wwise Plug-In genutzt werden.
 
-![Richtlinien zum Stimmendesign](media/voice-design-guidelines.png)
+![Screenshot des Wwise-Editors mit Richtlinien zum Stimmendesign für Projekt Akustik](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Einrichten von Distanzdämpfungskurven
 Stellen Sie sicher, dass für alle von Akteurmixern mit Projekt Akustik verwendeten Dämpfungskurven die benutzerdefinierte Aux-Ausgabe auf „output bus volume“ (Ausgabebuslautstärke) festgelegt ist. Dies ist in Wwise für neu erstellte Dämpfungskurven standardmäßig der Fall. Wenn Sie ein vorhandenes Projekt migrieren, überprüfen Sie die Kurveneinstellungen. 
 
 Standardmäßig weist die Projekt Akustik-Simulation einen Radius von 45 Metern um die Spielerposition herum auf. Im Allgemeinen sollten Sie die Dämpfungskurve bei etwa dieser Entfernung auf 200 dB festlegen. Diese Entfernung ist keine feste Einschränkung. Bei einigen Sounds wie Waffen empfiehlt sich ein größerer Radius. Der Nachteil ist in diesen Fällen, dass nur die Geometrie innerhalb von 45 m um die Position des Spielers herum einbezogen wird. Wenn sich der Spieler in einem Raum befindet, und eine Tonquelle befindet sich außerhalb des Raums und ist 100 m weit entfernt, wird sie ordnungsgemäß verdeckt. Wenn sich die Quelle in einem Raum befindet, und der Spieler befindet sich außerhalb und ist 100 m weit entfernt, wird sie nicht ordnungsgemäß verdeckt.
 
-![Dämpfungskurven](media/atten-curve.png)
+![Screenshot der Wwise-Dämpfungskurven](media/atten-curve.png)
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Einrichten der szenenweiten Projekt Akustik-Eigenschaften
 
 Der Akteur für den Akustikraum stellt viele Steuerelemente bereit, die das Verhalten des Systems ändern und nützlich beim Debuggen sind.
 
-![Steuerelemente für den Akustikraum](media/acoustics-space-controls.png)
+![Screenshot der Steuerelemente für den Akustikraum in Unreal](media/acoustics-space-controls.png)
 
 * **Acoustics Data** (Akustikdaten): Diesem Feld muss eine Akustikressource mit ausgeführtem Baking aus dem Verzeichnis „Content/Acoustics“ zugewiesen werden. Das Projekt Akustik-Plug-In fügt das Verzeichnis „Content/Acoustics“ automatisch den Verzeichnissen in Ihrem Projektpaket hinzu.
 * **Tile size** (Kachelgröße): Das Ausmaß des Bereichs um den Zuhörer, für den Akustikdaten in den Arbeitsspeicher geladen werden sollen. Sofern die Zuhörerprüfpunkte im direkten Umkreis des Spielers geladen werden, ist das Ergebnis dasselbe wie beim Laden der Akustikdaten für alle Prüfpunkte. Größere Kacheln benötigen mehr Arbeitsspeicher, jedoch weniger Datenträgervorgänge.
@@ -88,7 +88,7 @@ Der Akteur für den Akustikraum stellt viele Steuerelemente bereit, die das Verh
 ## <a name="actor-specific-acoustics-design-controls"></a>Akteurspezifische Akustik-Entwurfssteuerelemente
 Diese Entwurfssteuerelemente beziehen sich auf eine bestimmte Audiokomponente in Unreal.
 
-![Steuerelemente für Audiokomponenten](media/audio-component-controls.png)
+![Screenshot der Steuerelemente für Audiokomponenten in Unreal](media/audio-component-controls.png)
 
 * **Occlusion Multiplier** (Verdeckungsmultiplikator): Steuert den Verdeckungseffekt. Werte über 1 verstärken die Verdeckung. Werte unter 1 minimieren sie.
 * **Wetness Adjustment** (Verwässerungsanpassung): Zusätzlicher Hall in dB
@@ -104,7 +104,7 @@ Der Akustikraumakteur ist über Blaupausen zugänglich und bietet Funktionen wie
 ### <a name="add-finer-grained-control-over-streaming-load"></a>Hinzufügen von feiner abgestufter Steuerung der Streaminglast
 Wenn Sie das Streamen akustischer Daten selbst verwalten möchten, anstatt automatisch basierend auf der Spielerposition zu streamen, können Sie die Blaupausenfunktion „Force Load Tile“ (Laden der Kachel erzwingen) verwenden:
 
-![Blaupausenstreaming](media/blueprint-streaming.png)
+![Screenshot der Optionen für Blaupausenstreaming in Unreal](media/blueprint-streaming.png)
 
 * **Target** (Ziel): Der Akteur AcousticsSpace
 * **Center Position** (Mittenposition): Die Mitte des Bereichs, in dem Daten geladen werden sollen
@@ -113,12 +113,12 @@ Wenn Sie das Streamen akustischer Daten selbst verwalten möchten, anstatt autom
 
 Die Kachelgröße muss bereits vor dem Aufrufen von „Force Load Tile“ (Laden der Kachel erzwingen) festgelegt werden. Beispielsweise können Sie auf diese Weise eine ACE-Datei laden, die Kachelgröße festlegen und den Stream in einer Region beginnen:
 
-![Streamingeinrichtung](media/streaming-setup.png)
+![Screenshot der Optionen für Streamingeinrichtung in Unreal](media/streaming-setup.png)
 
 ### <a name="optionally-query-for-surface-proximity"></a>Optionales Abfragen der Nähe zu einer Fläche
 Wenn Sie sehen möchten, wie nah sich Flächen in einer bestimmten Richtung um den Zuhörer befinden, können Sie die Funktion „Query Distance“ (Entfernung abfragen) verwenden. Diese Funktion kann zum Steuern direktional verzögerter Reflexionen oder für andere Spiellogik, die von der Nähe zu Flächen abhängt, nützlich sein. Die Abfrage ist weniger aufwendig als das Aussenden von Strahlen, da die Ergebnisse aus der Akustiksuchtabelle abgerufen werden.
 
-![Entfernungsabfrage](media/distance-query.png)
+![Screenshot einer Beispielentfernungsabfrage für die Blaupause](media/distance-query.png)
 
 * **Target** (Ziel): Der Akteur AcousticsSpace
 * **Look Direction** (Blickrichtung): Die Richtung für die Abfrage mit dem Zuhörer in der Mitte

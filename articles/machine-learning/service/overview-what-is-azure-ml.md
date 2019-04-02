@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2f55ca6d0dae8ca1eaba1f409bd6a9faa75baf9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849209"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361888"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Was ist der Azure Machine Learning-Dienst?
 
@@ -87,7 +87,7 @@ Sie erhalten dann eine Gutschrift, die Sie für Azure-Dienste einlösen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen Sie für den Einstieg einen Machine Learning Service-Arbeitsbereich – entweder über das [Azure-Portal](quickstart-get-started.md) (ohne Installation) oder in [Python](quickstart-create-workspace-with-python.md) (mit SDK-Installation).
+- [Erstellen Sie einen Machine Learning Service-Arbeitsbereich](setup-create-workspace.md), um loszulegen.
 
 - Umfassende Tutorials hierzu: 
   + [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md) 

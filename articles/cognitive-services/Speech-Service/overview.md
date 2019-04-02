@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871641"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519628"
 ---
 # <a name="what-are-the-speech-services"></a>Was sind Speech-Dienste?
 
@@ -39,9 +39,9 @@ Die Azure Speech-Dienste umfassen folgende Features. Verwenden Sie die Links in
 
 Hier finden Sie Neuigkeiten im Zusammenhang mit den Azure Speech-Diensten.
 
+* März 2019: Ein neuer Endpunkt für Text-to-Speech, der eine vollständige Liste mit den in bestimmten Regionen verfügbaren Stimmen zurückgibt, steht nun zur Verfügung. Weitere Informationen finden Sie unter [Text-to-speech REST API](rest-text-to-speech.md) (Text-to-Speech-REST-API).
 * Februar 2019: Das Speech SDK 1.3.0 mit Unterstützung von [Unity (Beta)](quickstart-csharp-unity.md) wurde veröffentlicht. Unterstützung für die Klasse `AudioInput` wurde hinzugefügt, um die Wahl der Audiostreamingquelle zu ermöglichen. Eine vollständige Liste der Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
 * Dezember 2018: Das Speech SDK 1.2.0 mit Unterstützung von [Python](quickstart-python.md), [Node.js](quickstart-js-node.md) und Ubuntu 18.04 LTS wurde veröffentlicht. Weitere Informationen finden Sie in den [Versionshinweisen](releasenotes.md).
-* Dezember 2018: Für [.NET Core](quickstart-dotnet-text-to-speech.md), [Python](quickstart-python-text-to-speech.md) und [Node.js](quickstart-nodejs-text-to-speech.md) wurden Sprachsynthese-Schnellstartanleitungen hinzugefügt. Weitere Beispiele stehen auf [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http) zur Verfügung.
 
 ## <a name="try-speech-services"></a>Ausprobieren der Speech-Dienste
 

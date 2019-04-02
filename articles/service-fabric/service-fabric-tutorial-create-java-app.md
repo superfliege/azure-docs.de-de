@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5ad3d7c27b003fb3963333471bceb3226655a5eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874880"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314585"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst auf Service Fabric
 
@@ -912,7 +912,7 @@ An diesem Punkt ist die Anwendung bereit für die Bereitstellung in einem lokale
 
 4. Klicken Sie im Paket-Explorer für Eclipse mit der rechten Maustaste auf das Projekt **Voting**, und klicken Sie dann auf **Service Fabric > Publish Application... (Anwendung veröffentlichen...)**. 
 5. Wählen Sie im Fenster **Publish Application** (Anwendung veröffentlichen) in der Dropdownliste die Option **Local.json** aus, und klicken Sie auf **Publish** (Veröffentlichen).
-6. Rufen Sie in Ihrem Webbrowser `http://localhost:8080` auf, um Ihre ausgeführte Anwendung im lokalen Service Fabric-Cluster anzuzeigen. 
+6. Navigieren Sie in Ihrem Webbrowser zu „http:\//localhost:8080“, um Ihre ausgeführte Anwendung im lokalen Service Fabric-Cluster anzuzeigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

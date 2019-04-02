@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: b4eedabbc47738eb2f5797ffd67a3e3ebc9529ca
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 468c5584d21c226d6ffce55ff3981e629d872c56
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136206"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317186"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Schnellstart für Projekt Akustik mit Unity
 Verwenden Sie die Projekt Akustik-Beispielinhalte für Unity zum Experimentieren mit simulationsgestützten Entwurfssteuerelementen.
 
 Softwareanforderungen:
 * [Unity 2018.2+](http://unity3d.com) für Windows
-* [Projekt Akustik-Beispielinhaltspaket](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Projekt Akustik-Beispielinhaltspaket](https://www.microsoft.com/download/details.aspx?id=57346)
 
 Was ist im Beispielpaket enthalten?
 * Unity-Szene mit Geometrie, Tonquellen und Spielsteuerelementen
@@ -33,7 +33,7 @@ Was ist im Beispielpaket enthalten?
 Importieren Sie das Beispielpaket in ein neues Unity-Projekt. 
 * Wechseln Sie in Unity zu **Assets (Medienobjekte) > Import Package (Paket importieren) > Custom Package... (Benutzerdefiniertes Paket...)**.
 
-    ![Importieren des Pakets](media/import-package.png)  
+    ![Screenshot der Unity-Option zum Importieren von Paketen](media/import-package.png)  
 
 * Wählen Sie **ProjectAcoustics.unitypackage** aus.
 
@@ -44,23 +44,23 @@ Für den Bakevorgang des Akustiktoolkits ist die Skriptlaufzeitversion .NET 4.x 
 
 Sie können überprüfen, ob diese Einstellung wirksam war, indem Sie die **Playereinstellungen** öffnen:
 
-![Playereinstellungen](media/player-settings.png)
+![Screenshot des Unity-Panels für Playereinstellungen](media/player-settings.png)
 
-![.NET 4.5](media/net45.png)
+![Screenshot des Unity-Panels für Playereinstellungen mit der ausgewählten Option „.NET 4.5“](media/net45.png)
 
 ## <a name="experiment-with-design-controls"></a>Experimentieren mit den Entwurfssteuerelementen
 Öffnen Sie die Beispielszene im Ordner **ProjectAcousticsSample**, und klicken Sie auf die Wiedergabeschaltfläche im Unity-Editor. Navigieren Sie mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, drücken Sie so lange die Taste **R**, bis der Überlagerungstext rot wird und „Akustik: Deaktiviert“ lautet. Um Tastenkombinationen für weitere Steuerelemente anzuzeigen, drücken Sie **F1**. Die Steuerelemente können auch verwendet werden, indem Sie mit der rechten Maustaste auf sie klicken, um die auszuführende Aktion auszuwählen, und dann durch Klicken mit der linken Maustaste die Aktion ausführen.
 
 Das Skript **AcousticsAdjust** ist an die Tonquellen in der Beispielszene angefügt. Es aktiviert die Entwurfsparameter pro Quelle. 
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Screenshot des Unity-Skripts „AcousticsAdjust“](media/acoustics-adjust.png)
 
 Im Folgenden werden einige der Effekte, die mit den bereitgestellten Steuerelementen erstellt werden können, untersucht. Ausführliche Informationen zu den einzelnen Steuerelementen finden Sie im [Unity-Entwurfstutorial für Projekt Akustik](unreal-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Ändern der distanzabhängigen Dämpfung
 Der vom Unity-Spatializer-Plug-In von **Projekt Akustik** bereitgestellte Audio-DSP berücksichtigt die in den Unity-Editor integrierte distanzabhängige Dämpfung pro Quelle. Steuerelemente für die distanzabhängige Dämpfung befinden sich in der Komponente **Audioquelle** im Bereich **Inspektor** von Tonquellen unter **3D Sound Settings** (3D-Soundeinstellungen):
 
-![Distanzdämpfung](media/distance-attenuation.png)
+![Screenshot des Unity-Panels mit Optionen für die Distanzdämpfung](media/distance-attenuation.png)
 
 Projekt Akustik führt die Berechnung in einem „Simulationsbereichsfeld“ durch, das um die Position des Spielers herum angeordnet ist. Da das Baking der Akustikressourcen im Beispielpaket mit einer Simulationsbereichsgröße von 45 m um den Spieler herum durchgeführt wurde, sollte die Tondämpfung so festgelegt werden, dass sie bei ca. 45 m auf 0 fällt.
 
