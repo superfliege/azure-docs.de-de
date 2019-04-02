@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556219"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096706"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -45,7 +45,10 @@ Sie benötigen ein Azure IoT Edge-Gerät, das als Gateway konfiguriert wurde. Si
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
-Sie können mit jedem beliebigen Computer Zertifikate generieren und sie dann auf Ihr IoT Edge-Gerät kopieren. 
+Sie können mit jedem beliebigen Computer Zertifikate generieren und sie dann auf Ihr IoT Edge-Gerät kopieren.
+
+>[!NOTE]
+>Der „Gatewayname“, der zum Erstellen der Zertifikate in dieser Anweisung verwendet wird, muss der gleiche Name sein, den Sie als Hostnamen in Ihrer IoT Edge-config.yaml-Datei und als GatewayHostName in der Verbindungszeichenfolge des Downstreamgeräts verwendet haben. Der „Gatewayname“ muss sich zu einer IP-Adresse auflösen lassen, entweder mithilfe von DNS oder einem Eintrag in der Hostdatei. Auf der Grundlage des verwendeten Protokolls (MQTTS:8883/AMQPS:5671/HTTPS:433) muss Kommunikation zwischen dem Downstreamgerät und dem transparenten IoT Edge möglich sein. Wenn sich dazwischen eine Firewall befindet, muss der entsprechende Port geöffnet sein.
 
 ## <a name="generate-certificates-with-windows"></a>Generieren von Zertifikaten unter Windows
 
@@ -60,7 +63,7 @@ Installieren Sie OpenSSL für Windows auf dem Computer, den Sie zum Generieren d
    >[!NOTE]
    >Wenn Sie OpenSSL bereits auf Ihrem Windows-Gerät installiert haben, können Sie diesen Schritt überspringen. Stellen Sie jedoch sicher, dass „openssl.exe“ in Ihrer PATH-Umgebungsvariablen verfügbar ist.
 
-* **Einfacher:** Laden Sie beliebige Binärdateien von OpenSSL-Drittanbietern herunter und installieren diese, z.B. von [diesem Projekt auf SourceForge](https://sourceforge.net/projects/openssl/). Fügen Sie „openssl.exe“ den vollständigen Pfad zu Ihrer PATH-Umgebungsvariablen hinzu. 
+* **Einfacher:** Laden Sie beliebige [Binärdateien von OpenSSL-Drittanbietern](https://wiki.openssl.org/index.php/Binaries) herunter und installieren diese, z.B. von [diesem Projekt auf SourceForge](https://sourceforge.net/projects/openssl/). Fügen Sie „openssl.exe“ den vollständigen Pfad zu Ihrer PATH-Umgebungsvariablen hinzu. 
    
 * **Empfohlen.** Laden Sie den OpenSSL-Quellcode herunter, und erstellen Sie die Binärdateien entweder selbst oder mithilfe von [vcpkg](https://github.com/Microsoft/vcpkg) auf Ihrem Computer. In den nachfolgend aufgeführten Anweisungen wird in benutzerfreundlichen Schritten „vcpkg“ zum Herunterladen des Quellcodes sowie zum Kompilieren und Installieren von OpenSSL auf Ihrem Windows-Computer verwendet.
 
@@ -178,7 +181,7 @@ Verwenden Sie die Schritte in diesem Abschnitt, um Testzertifikate auf einem Lin
 
 In diesem Abschnitt erstellen Sie drei Zertifikate und verbinden sie dann als Kette. Wenn Sie die Zertifikate in einer Kettendatei platzieren, können Sie sie einfacher auf Ihrem IoT Edge-Gatewaygerät und auf allen nachgeschalteten Geräten installieren.  
 
-1.  Erstellen Sie das Zertifizierungsstellenzertifikat für den Eigentümer und ein Zwischenzertifikat. Die Zertifikate werden alle in *\<WRKDIR>* platziert.
+1. Erstellen Sie das Zertifizierungsstellenzertifikat für den Eigentümer und ein Zwischenzertifikat. Die Zertifikate werden alle in *\<WRKDIR>* platziert.
 
    ```bash
    ./certGen.sh create_root_and_intermediate
@@ -190,7 +193,7 @@ In diesem Abschnitt erstellen Sie drei Zertifikate und verbinden sie dann als Ke
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  Erstellen Sie das Zertifizierungsstellenzertifikat und den privaten Schlüssel für das Edge-Gerät mit dem folgenden Befehl. Geben Sie einen Namen für das Gatewaygerät an, das zur Benennung der Dateien und bei der Zertifikatsgenerierung verwendet wird. 
+2. Erstellen Sie das Zertifizierungsstellenzertifikat und den privaten Schlüssel für das Edge-Gerät mit dem folgenden Befehl. Geben Sie einen Namen für das Gatewaygerät an, das zur Benennung der Dateien und bei der Zertifikatsgenerierung verwendet wird. 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"

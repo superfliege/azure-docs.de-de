@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 0d57c65c93ffcd6c4c5249a1e5effeb457ed1736
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912417"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440895"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Verwenden von mehreren HDInsight-Clustern mit einem Azure Data Lake Storage-Konto
 
@@ -54,7 +54,7 @@ Zu berücksichtigende Punkte:
 - Die Ordnerstruktur mit zwei Ebenen (**/clusters/finance/**) muss mit entsprechenden Berechtigungen vom Data Lake Storage-Administrator erstellt und bereitgestellt werden, **bevor** das Speicherkonto für Cluster verwendet wird. Diese Struktur wird nicht automatisch beim Erstellen von Clustern erstellt.
 - Im oben stehenden Beispiel wird empfohlen, die Gruppe von **/clusters/finance** auf **FINGRP** festzulegen und **r-x** Zugriff auf „FINGRP“ und auf die gesamte Ordnerhierarchie vom Stamm aus zu gewähren. So wird sichergestellt, dass die Member von FINGRP vom Stamm aus durch die Ordnerstruktur navigieren können.
 - Wenn verschiedene AAD-Dienstprinzipale Cluster unter **/clusters/finance** erstellen können, stellt das Sticky Bit (wenn es auf den Ordner **Finanzen** festgelegt ist) sicher, dass Ordner, die von einem Dienstprinzipal erstellt wurden, nicht von dem anderen gelöscht werden können.
-- Sobald die Ordnerstruktur und Berechtigungen eingerichtet wurden, erstellt der HDInsight-Clustererstellungsprozess einen cluster-spezifischen Speicherort unter **/clusters/finance/**. Der Speicher für einen Cluster mit dem Namen „fincluster01“ könnte z.B. **/clusters/finance/fincluster01** sein. Diese Tabelle zeigt die Zuständigkeit und die Berechtigungen für die vom HDInsight-Cluster erstellten Ordner.
+- Sobald die Ordnerstruktur und Berechtigungen eingerichtet wurden, erstellt der HDInsight-Clustererstellungsprozess einen clusterspezifischen Speicherort unter **/clusters/finance/**. Der Speicher für einen Cluster mit dem Namen „fincluster01“ könnte z.B. **/clusters/finance/fincluster01** sein. Diese Tabelle zeigt die Zuständigkeit und die Berechtigungen für die vom HDInsight-Cluster erstellten Ordner.
 
     |Ordner  |Berechtigungen  |zuständige Benutzer  |zuständige Gruppe  | Benannter Benutzer | Berechtigungen für benannte Benutzer | Benannte Gruppe | Berechtigungen für benannte Gruppen |
     |---------|---------|---------|---------|---------|---------|---------|---------|

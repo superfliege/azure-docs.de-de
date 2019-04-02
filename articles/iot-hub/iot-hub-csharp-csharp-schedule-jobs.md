@@ -1,19 +1,19 @@
 ---
 title: Planen von Aufträgen mit Azure IoT Hub (.NET/.NET) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT-Geräte-SDKs für .NET, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
-ms.author: dobett
-ms.openlocfilehash: 4089ee74b44bc17324c7cd33b1bbd734a651d75f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: b39d7d4af4c476778665e844f647beecf20e3d9f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514807"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008881"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Planen und Übertragen von Aufträgen (.NET/.NET)
 
@@ -29,9 +29,9 @@ Ein Auftrag umschließt eine dieser Aktionen und verfolgt die Ausführung für e
 
 Weitere Informationen zu diesen Funktionen finden Sie unter:
 
-* Gerätezwilling und -eigenschaften: [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)](iot-hub-csharp-csharp-twin-getstarted.md) und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
+* Gerätezwillinge und Eigenschaften: [Erste Schritte mit Gerätezwillingen](iot-hub-csharp-csharp-twin-getstarted.md) und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
 
-* Direkte Methoden: [IoT Hub-Entwicklerhandbuch – direkte Methoden](iot-hub-devguide-direct-methods.md) und [Tutorial: Verwenden von direkten Methoden](quickstart-control-device-dotnet.md)
+* Direkte Methoden: [Verstehen und Aufrufen direkter Methoden von IoT Hub](iot-hub-devguide-direct-methods.md) und [Tutorial: Verwenden von direkten Methoden](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -291,6 +291,6 @@ Sie können die Apps nun ausführen.
 
 In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode für ein Gerät und eines Updates der Eigenschaften eines Gerätezwillings verwendet.
 
-Informationen zu den weiteren Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie unter [Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md).
+Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie im [Tutorial: Durchführen eines Firmwareupdates](tutorial-firmware-update.md).
 
 Informationen zum Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge finden Sie unter [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../iot-edge/tutorial-simulate-device-linux.md).

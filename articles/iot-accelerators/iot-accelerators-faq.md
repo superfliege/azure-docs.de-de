@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608748"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009683"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Häufig gestellte Fragen zu IoT-Solution Accelerators
 
@@ -71,9 +71,9 @@ Die Vorversion des Solution Accelerators für Remoteüberwachung war unter dem N
 
 Ja, die neue Remoteüberwachung ist in den gleichen geografischen Regionen verfügbar.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Was ist der Unterschied zwischen dem Löschen einer Ressourcengruppe im Azure-Portal und dem Klicken auf „Löschen“ für einen Solution Accelerator unter azureiotsuite.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Was ist der Unterschied zwischen dem Löschen einer Ressourcengruppe im Azure-Portal und dem Klicken auf „Löschen“ für einen Solution Accelerator unter azureiotsolutions.com?
 
-* Wenn Sie den Solution Accelerator unter [azureiotsuite.com](https://www.azureiotsolutions.com/) löschen, werden alle Ressourcen gelöscht, die beim Erstellen des Solution Accelerators bereitgestellt wurden. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht.
+* Wenn Sie den Solution Accelerator unter [azureiotsolutions.com](https://www.azureiotsolutions.com/) löschen, werden alle Ressourcen gelöscht, die beim Erstellen des Solution Accelerators bereitgestellt wurden. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht.
 * Wenn Sie die Ressourcengruppe im [Azure-Portal](https://portal.azure.com) löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen auch die Azure Active Directory-Anwendung löschen, die dem Solution Accelerator zugeordnet ist.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Kann ich meine bestehenden Investitionen in Azure IoT-Solution Accelerators weiterhin nutzen?

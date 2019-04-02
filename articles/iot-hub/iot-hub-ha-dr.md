@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 1596cf1337fa084fe6a160c99e52ae80ee3e2491
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ac47ad10f394eaf31a9f7c12d7a2a03ea23283f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092649"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
@@ -64,6 +64,7 @@ Sobald der Failovervorgang für die IoT Hub-Instanz abgeschlossen ist, wird erwa
 >
 > - Nach dem Failover können die über Event Grid gesendeten Ereignisse über dieselben Abonnements verarbeitet werden, die zuvor konfiguriert wurden, solange diese Event Grid-Abonnements verfügbar sind.
 >
+> - Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem von Microsoft initiierten Failover oder einem manuellen Failover ändern. Informationen zur Aufzählung der Listen von Blobs finden Sie unter [Azure Blob Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
 ### <a name="microsoft-initiated-failover"></a>Von Microsoft initiiertes Failover
 
@@ -111,14 +112,14 @@ In einem regionalen Failovermodell wird das Lösungs-Back-End in erster Linie an
 
 Beachten Sie die folgenden Punkte, wenn Sie ein Modell für regionales Failover mit IoT Hub implementieren möchten:
 
-* **Sekundäre IoT Hub-Einheit und Logik für Geräterouting:** Bei einer Dienstunterbrechung in der primären Region müssen Geräte eine Verbindung mit der sekundären Region herstellen. Da die meisten beteiligten Dienste zustandsorientiert sind, wird der Failoverprozess zwischen Regionen häufig von Lösungsadministratoren ausgelöst. Die beste Möglichkeit, Geräte über den neuen Endpunkt zu informieren und gleichzeitig die Kontrolle über den Prozess zu behalten, besteht darin, für die Geräte eine regelmäßige Prüfung eines *Concierge*-Diensts auf den derzeit aktiven Endpunkt durchführen zu lassen. Der Concierge-Dienst kann eine Webanwendung sein, die repliziert und deren Erreichbarkeit mithilfe von DNS-Umleitungsverfahren (z.B. per [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)) gewährleistet wird.
+* **Eine sekundäre Routinglogik für IoT Hub und Geräte**: Bei einer Dienstunterbrechung in der primären Region müssen Geräte eine Verbindung mit der sekundären Region herstellen. Da die meisten beteiligten Dienste zustandsorientiert sind, wird der Failoverprozess zwischen Regionen häufig von Lösungsadministratoren ausgelöst. Die beste Möglichkeit, Geräte über den neuen Endpunkt zu informieren und gleichzeitig die Kontrolle über den Prozess zu behalten, besteht darin, für die Geräte eine regelmäßige Prüfung eines *Concierge*-Diensts auf den derzeit aktiven Endpunkt durchführen zu lassen. Der Concierge-Dienst kann eine Webanwendung sein, die repliziert und deren Erreichbarkeit mithilfe von DNS-Umleitungsverfahren (z.B. per [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)) gewährleistet wird.
 
    > [!NOTE]
    > Der IoT Hub-Dienst ist kein unterstützter Endpunkttyp in Azure Traffic Manager. Es wird empfohlen, den vorgeschlagenen Concierge-Dienst mit Azure Traffic Manager zu integrieren, indem Sie die Endpunktintegritätstest-API implementieren.
 
-* **Identitätsregistrierungsreplikation:** Um verwendet werden zu können, muss die sekundäre IoT Hub-Einheit alle Geräteidentitäten enthalten, die eine Verbindung mit der Lösung herstellen können. Für die Lösung sollten georeplizierte Backups von Geräteidentitäten vorgehalten und auf die sekundäre IoT Hub-Einheit hochgeladen werden, bevor der aktive Endpunkt für die Geräte gewechselt wird. Die Funktionen zum Exportieren der Geräteidentität von IoT Hub sind in diesem Zusammenhang praktisch. Weitere Informationen finden Sie unter [IoT Hub-Entwicklerhandbuch – Identitätsregistrierung](iot-hub-devguide-identity-registry.md).
+* **Replikation der Identitätsregistrierung**: Um verwendet werden zu können, muss die sekundäre IoT Hub-Einheit alle Geräteidentitäten enthalten, die eine Verbindung mit der Lösung herstellen können. Für die Lösung sollten georeplizierte Backups von Geräteidentitäten vorgehalten und auf die sekundäre IoT Hub-Einheit hochgeladen werden, bevor der aktive Endpunkt für die Geräte gewechselt wird. Die Funktionen zum Exportieren der Geräteidentität von IoT Hub sind in diesem Zusammenhang praktisch. Weitere Informationen finden Sie unter [IoT Hub-Entwicklerhandbuch – Identitätsregistrierung](iot-hub-devguide-identity-registry.md).
 
-* **Zusammenführungslogik:** Wenn die primäre Region wieder verfügbar ist, müssen die Status und Daten, die am sekundären Standort erstellt wurden, zurück zur primären Region migriert werden. Dieser Status und die Daten beziehen sich hauptsächlich auf Geräteidentitäten und Anwendungsmetadaten, die mit der primären IoT Hub-Einheit und etwaigen anderen anwendungsspezifischen Datenspeichern in der primären Region zusammengeführt werden müssen. 
+* **Zusammenführungslogik**: Wenn die primäre Region wieder verfügbar ist, müssen die Status und Daten, die am sekundären Standort erstellt wurden, zurück zur primären Region migriert werden. Dieser Status und die Daten beziehen sich hauptsächlich auf Geräteidentitäten und Anwendungsmetadaten, die mit der primären IoT Hub-Einheit und etwaigen anderen anwendungsspezifischen Datenspeichern in der primären Region zusammengeführt werden müssen. 
 
 Zur Vereinfachung dieses Schritts empfiehlt sich die Verwendung idempotenter Vorgänge. Idempotente Vorgänge verringern die Nebeneffekte für die letztendliche konsistente Verteilung von Ereignissen sowie für Duplikate oder die außerordentliche Bereitstellung von Ereignissen. Außerdem sollte die Anwendungslogik so entworfen werden, dass potenzielle Inkonsistenzen oder ein „geringfügig“ veralteter Zustand toleriert werden. Dieser Fall kann aufgrund der zusätzlichen Zeit eintreten, die das System für die Wiederherstellung basierend auf der RPO benötigt.
 
@@ -127,9 +128,9 @@ Zur Vereinfachung dieses Schritts empfiehlt sich die Verwendung idempotenter Vor
 Diese Zusammenfassung der in diesem Artikel vorgestellten Optionen für Hochverfügbarkeit und Notfallwiederherstellung dient als Referenz für die Auswahl der für Ihre Lösung geeigneten Option.
 
 | Option für Hochverfügbarkeit/Notfallwiederherstellung | RTO | RPO | Manueller Eingriff | Implementierungskomplexität | Zusätzliche Kosten|
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | Von Microsoft initiiertes Failover |2–26 Stunden|Siehe RPO-Tabelle oben|Nein |Keine|Keine|
-| Manuelles Failover |10 Minuten–2 Stunden|Siehe RPO-Tabelle oben|JA|Sehr gering. Sie müssen diesen Vorgang lediglich über das Portal auslösen.|Keine|
+| Manuelles Failover |10 Minuten–2 Stunden|Siehe RPO-Tabelle oben|Ja|Sehr gering. Sie müssen diesen Vorgang lediglich über das Portal auslösen.|Keine|
 | Regionenübergreifende Hochverfügbarkeit |< 1 Minute|Abhängig von der Replikationsrate Ihrer benutzerdefinierten Hochverfügbarkeitslösung|Nein |Hoch|> 1-malig anfallende Kosten für 1 IoT Hub-Instanz|
 
 ## <a name="next-steps"></a>Nächste Schritte

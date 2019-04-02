@@ -1,20 +1,20 @@
 ---
 title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (Node.js) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit IoT SDKs für Node.js eine Modulidentität erstellen und den Modulzwilling aktualisieren.
-author: chrissie926
-manager: ''
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: ae798ecf2ba5f53cdfdef45b74677615d2e0a06d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 80132a2d15333308766b62e89262133b1f05b394
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888722"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines Node.js-Back-Ends und eines Node.js-Geräts
 
@@ -43,7 +43,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App, mit der eine Geräte- und ei
 
 1. Erstellen Sie ein Verzeichnis zum Speichern Ihres Codes.
 2. Führen Sie in diesem Verzeichnis zuerst  **npm init -y**  aus, um eine leere Datei „package.json“ mit Standardwerten zu erstellen. Dies ist die Projektdatei für Ihren Code.
-3. Führen Sie  **npm install -S azure-iothub@modules-preview** aus, um das Dienst-SDK im Unterverzeichnis  **node_modules**  zu installieren.
+3. Führen Sie  **npm install -S azure-iothub\@modules-preview** aus, um das Dienst-SDK im Unterverzeichnis  **node_modules**  zu installieren.
 
     > [!NOTE]
     > Im Namen des Unterverzeichnisses „node_modules“ steht das Wort „module“ für eine Node-Bibliothek. Hier hat der Begriff nichts mit IoT Hub-Modulen zu tun.
@@ -107,7 +107,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App, mit der eine Geräte- und ei
 
 Diese App erstellt eine Geräteidentität mit der ID **myFirstDevice** und ein Identitätsmodul mit der ID **myFirstModule** unter dem Gerät **myFirstDevice**. (Falls diese Modul-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Modulinformationen abgerufen.) Anschließend zeigt die App den Primärschlüssel für diese Identität an. Sie verwenden diesen Schlüssel in der simulierten Modul-App, um eine Verbindung mit Ihrem IoT Hub herzustellen.
 
-5. Verwenden Sie zur Ausführung „node add.js“. Dadurch erhalten Sie eine Verbindungszeichenfolge für Ihre Geräteidentität und eine weitere für Ihre Modulidentität.
+1. Führen Sie sie mit „node add.js“ aus. Dadurch erhalten Sie eine Verbindungszeichenfolge für Ihre Geräteidentität und eine weitere für Ihre Modulidentität.
 
     > [!NOTE]
     > Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].
@@ -120,7 +120,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App auf Ihrem simulierten Gerät,
 
     ![Moduldetails im Azure-Portal][15]
 
-2. Erstellen Sie ähnlich wie im vorherigen Schritt ein Verzeichnis für Ihren Gerätecode, und verwenden Sie NPM, um es zu initialisieren und das Geräte-SDK zu installieren (**npm install -S azure-iot-device-amqp@modules-preview**).
+2. Erstellen Sie ähnlich wie im vorherigen Schritt ein Verzeichnis für Ihren Gerätecode, und verwenden Sie NPM, um es zu initialisieren und das Geräte-SDK zu installieren (**npm install -S azure-iot-device-amqp\@modules-preview**).
 
     > [!NOTE]
     > Der NPM-Installationsbefehl kann längere Zeit in Anspruch nehmen. Sie müssen etwas Geduld haben, da sehr viel Code aus dem Paketrepository übertragen wird.
@@ -203,7 +203,7 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 [15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md

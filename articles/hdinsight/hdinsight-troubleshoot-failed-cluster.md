@@ -2,19 +2,19 @@
 title: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster – Azure HDInsight
 description: Es wird beschrieben, wie Sie die Diagnose und Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster durchführen.
 services: hdinsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 03/19/2019
+ms.openlocfilehash: 0129a09383b59aa5d213ef7ff1c78f23588472a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994367"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295469"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
 
@@ -23,12 +23,12 @@ Wenn ein HDInsight-Cluster entweder langsam ist oder ein Fehlercode angezeigt wi
 Sammeln Sie zum Diagnostizieren eines langsamen oder fehlerhaften Clusters Informationen zu allen Aspekten der Umgebung, z.B. zugeordnete Azure-Dienste, Clusterkonfiguration und Auftragsausführung. Ein hilfreicher Diagnosevorgang ist der Versuch, den Fehlerzustand in einem anderen Cluster zu reproduzieren.
 
 * Schritt 1: Sammeln von Daten zum Problem
-* Schritt 2: Überprüfen der HDInsight-Clusterumgebung 
+* Schritt 2: Überprüfen der HDInsight-Clusterumgebung
 * Schritt 3: Anzeigen der Integrität des Clusters
 * Schritt 4: Überprüfen der Umgebungsstapel und Versionen
 * Schritt 5: Überprüfen der Clusterprotokolldateien
 * Schritt 6: Überprüfen der Konfigurationseinstellungen
-* Schritt 7: Reproduzieren des Fehlers in einem anderen Cluster 
+* Schritt 7: Reproduzieren des Fehlers in einem anderen Cluster
 
 ## <a name="step-1-gather-data-about-the-issue"></a>Schritt 1: Sammeln von Daten zum Problem
 
@@ -57,13 +57,12 @@ Im Azure-Portal können diese Informationen bereitgestellt werden:
 
 ![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Sie können auch die klassische Azure-Befehlszeilenschnittstelle verwenden.
+Sie können auch die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) verwenden:
 
+```azurecli
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Eine andere Möglichkeit ist die Verwendung von PowerShell. Weitere Informationen finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md).
 
@@ -74,9 +73,9 @@ Jeder HDInsight-Cluster basiert auf verschiedenen Azure-Diensten und auf Open-So
 ### <a name="service-details"></a>Dienstdetails
 
 * Überprüfen der Releaseversionen von Open-Source-Bibliotheken
-* Durchführen einer Prüfung des [Azure-Status](https://azure.microsoft.com/status/) 
+* Durchführen einer Prüfung auf [Ausfälle von Azure-Diensten](https://azure.microsoft.com/status/)  
 * Überprüfen der Nutzungseinschränkungen von Azure-Diensten 
-* Überprüfen der Subnetzkonfiguration für virtuelle Azure-Netzwerke 
+* Überprüfen der Subnetzkonfiguration für virtuelle Azure-Netzwerke  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Anzeigen von Einstellungen zur Clusterkonfiguration mit der Ambari-Benutzeroberfläche
 
@@ -124,7 +123,7 @@ Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache S
 Dies ist eine generische Meldung von Gatewayknoten und der häufigste Fehlerstatuscode. Eine mögliche Ursache ist, dass der WebHCat-Dienst auf dem aktiven Hauptknoten ausgefallen ist. Verwenden Sie den folgenden CURL-Befehl, um dies zu prüfen:
 
 ```bash
-$ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
+curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
 In Ambari wird eine Warnung angezeigt, und es werden die Hosts angegeben, auf denen der WebHCat-Dienst ausgefallen ist. Sie können versuchen, den WebHCat-Dienst wieder verfügbar zu machen, indem Sie den Dienst auf seinem Host neu starten.
@@ -153,7 +152,7 @@ In den folgenden Abschnitten werden einige mögliche Ursachen für WebHCat-Timeo
 Wenn WebHCat mit mehr als zehn geöffneten Sockets ausgelastet ist, dauert die Herstellung neuer Socketverbindungen länger, und dies kann zu einem Timeout führen. Verwenden Sie zum Auflisten der ein- und ausgehenden Netzwerkverbindungen für WebHCat auf dem aktuellen aktiven Hauptknoten `netstat`:
 
 ```bash
-$ netstat | grep 30111
+netstat | grep 30111
 ```
 
 30111 ist der Port, über den WebHCat lauscht. Es sollten weniger als zehn Sockets geöffnet sein.
@@ -161,7 +160,7 @@ $ netstat | grep 30111
 Wenn keine Sockets geöffnet sind, führt der obige Befehl nicht zu einem Ergebnis. Verwenden Sie Folgendes, um zu überprüfen, ob Templeton aktiv ist und über Port 30111 lauscht:
 
 ```bash
-$ netstat -l | grep 30111
+netstat -l | grep 30111
 ```
 
 ##### <a name="yarn-level-timeout"></a>Timeout auf YARN-Ebene
@@ -190,9 +189,9 @@ Auf YARN-Ebene gibt es zwei Arten von Timeouts:
 
 Gehen Sie wie folgt vor, um diese Probleme zu diagnostizieren:
 
-    1. Ermitteln des UTC-Zeitraums für die Problembehandlung
-    2. Auswählen der entsprechenden `webhcat.log`-Dateien
-    3. Suchen nach WARN- und ERROR-Meldungen für diesen Zeitraum
+1. Ermitteln des UTC-Zeitraums für die Problembehandlung
+2. Auswählen der entsprechenden `webhcat.log`-Dateien
+3. Suchen nach WARN- und ERROR-Meldungen für diesen Zeitraum
 
 #### <a name="other-webhcat-failures"></a>Weitere WebHCat-Fehler
 
@@ -215,8 +214,6 @@ Die Seite **Stack and Versions** (Stapel und Versionen) der Ambari-Benutzeroberf
 ## <a name="step-5-examine-the-log-files"></a>Schritt 5: Untersuchen der Protokolldateien
 
 Es gibt viele Arten von Protokollen, die von den vielen Diensten und Komponenten generiert werden, aus denen ein HDInsight-Cluster besteht. [WebHCat-Protokolldateien](#check-your-webhcat-service) wurden bereits beschrieben. Es gibt noch mehrere andere nützliche Protokolldateien, die Sie untersuchen können, um Probleme mit Ihrem Cluster einzugrenzen. Dies wird in den folgenden Abschnitten beschrieben.
-
-![Beispiel für HDInsight-Protokolldatei](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
 
 * HDInsight-Cluster bestehen aus mehreren Knoten, von denen die meisten für die Ausführung von übermittelten Aufträgen bestimmt sind. Aufträge werden gleichzeitig ausgeführt, aber Protokolldateien können Ergebnisse nur linear anzeigen. HDInsight führt neue Tasks aus und beendet zuerst andere Tasks, die nicht abgeschlossen werden können. Alle Aktivitäten werden in den Dateien `stderr` und `syslog` protokolliert.
 
@@ -259,7 +256,7 @@ Als Hilfe beim Diagnostizieren der Quelle eines Clusterfehlers können Sie einen
 1. Erstellen Sie einen neuen Testcluster mit der gleichen Konfiguration wie für den fehlgeschlagenen Cluster.
 2. Übermitteln Sie den ersten Auftragsschritt an den Testcluster.
 3. Nachdem die Verarbeitung des Schritts abgeschlossen wurde, können Sie die Schrittprotokolldateien auf Fehler prüfen. Stellen Sie eine Verbindung mit dem Masterknoten des Testclusters her, und zeigen Sie die Protokolldateien dafür an. Die Schrittprotokolldateien werden erst angezeigt, nachdem der Schritte einige Zeit ausgeführt wurde, beendet wurde oder fehlgeschlagen ist.
-4. Führen Sie den nächsten Schritt aus, wenn der erste Schritt erfolgreich war. Falls Fehler auftreten, können Sie diese in den Protokolldateien untersuchen. Wenn ein Fehler in Ihrem Code aufgetreten ist, können Sie die Korrektur vornehmen und den Schritt dann erneut ausführen. 
+4. Führen Sie den nächsten Schritt aus, wenn der erste Schritt erfolgreich war. Falls Fehler auftreten, können Sie diese in den Protokolldateien untersuchen. Wenn ein Fehler in Ihrem Code aufgetreten ist, können Sie die Korrektur vornehmen und den Schritt dann erneut ausführen.
 5. Setzen Sie diese Vorgehensweise fort, bis alle Schritte fehlerlos ausgeführt wurden.
 6. Wenn Sie mit dem Debuggen des Testclusters fertig sind, können Sie ihn löschen.
 
@@ -267,6 +264,6 @@ Als Hilfe beim Diagnostizieren der Quelle eines Clusterfehlers können Sie einen
 
 * [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
 * [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)
-* [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Zugreifen auf die Apache Hadoop YARN-Anwendungsanmeldung unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Bekannte Probleme bei Apache Spark-Clustern unter HDInsight](hdinsight-apache-spark-known-issues.md)

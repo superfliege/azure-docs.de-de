@@ -1,19 +1,19 @@
 ---
 title: Informationen zu Azure IoT Hub-Endpunkten | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Referenzinformationen zu IoT Hub-Endpunkten mit Geräte- und Dienstanbindung'
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 085a4ffbe0b615408bfd8aa70c027013e16f0136
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251439"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201431"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -22,8 +22,6 @@ ms.locfileid: "51251439"
 ## <a name="iot-hub-names"></a>IoT Hub-Namen
 
 Den Hostnamen der IoT Hub-Instanz, die Ihre Endpunkte hostet, finden Sie im Portal auf der Seite **Übersicht**. Standardmäßig sieht der DNS-Name einer IoT Hub-Instanz wie folgt aus: `{your iot hub name}.azure-devices.net`.
-
-Mithilfe von Azure DNS können Sie einen benutzerdefinierten DNS-Namen für Ihre IoT Hub-Instanz erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../dns/dns-custom-domain.md).
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Liste der integrierten IoT Hub-Endpunkte
 
@@ -53,7 +51,7 @@ Die Endpunkte werden in der folgende Liste beschrieben:
 
   * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diesen Endpunkt zum Lauschen auf Anforderungen [direkter Methoden](iot-hub-devguide-direct-methods.md).
 
-    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1](http://mqtt.org/), HTTPS 1.1 und [AMQP 1.0](https://www.amqp.org/) verfügbar gemacht. AMQP ist auch über [WebSockets](https://tools.ietf.org/html/rfc6455) an Port 443 verfügbar.
+    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 und [AMQP 1.0](https://www.amqp.org/) verfügbar gemacht. AMQP ist auch über [WebSockets](https://tools.ietf.org/html/rfc6455) an Port 443 verfügbar.
 
 * **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Mit einer einzigen Ausnahme werden diese Endpunkte nur über das Protokoll [AMQP](https://www.amqp.org/) verfügbar gemacht. Der Endpunkt für den Methodenaufruf wird über das HTTPS-Protokoll verfügbar gemacht.
   
@@ -83,6 +81,15 @@ IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 * Service Bus-Themen
 
 Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen können, finden Sie unter [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md).
+
+Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den Integritätsstatus der Endpunkte abzurufen. Es empfiehlt sich, die [IoT Hub-Metriken](iot-hub-metrics.md), die sich auf die Routinglatenz von Nachrichten beziehen, zu verwenden, um Fehler bei beschädigter Endpunktintegrität zu erkennen und zu beheben.
+
+|Integritätsstatus|BESCHREIBUNG|
+|---|---|
+|Fehlerfrei|Der Endpunkt akzeptiert Nachrichten erwartungsgemäß.|
+|Fehlerhaft|Der Endpunkt akzeptiert Nachrichten nicht erwartungsgemäß, und IoT Hub versucht, Daten erneut an diesen Endpunkt zu senden. Der Status eines fehlerhaften Endpunkts wird zu fehlerfrei aktualisiert, wenn IoT Hub einen möglicherweise konsistenten Integritätsstatus erreicht hat.|
+|Unbekannt|IoT Hub hat keine Verbindung mit dem Endpunkt hergestellt. Von diesem Endpunkt wurden keine Nachrichten übermittelt oder zurückgewiesen.|
+|Inaktiv|Der Endpunkt nimmt auch nach dem wiederholten Senden von Nachrichten für den Wiederholungszeitraum durch den IoT Hub keine Nachrichten an.|
 
 ## <a name="field-gateways"></a>Bereichsgateways
 

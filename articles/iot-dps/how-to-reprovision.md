@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 36f919d1c22a88dfaf13079f09e6a43980a22828
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4fedc5b8b3b69ff364374dbef0460930e1f631a6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981779"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869070"
 ---
 # <a name="how-to-reprovision-devices"></a>Erneutes Bereitstellen von Geräten
 
@@ -21,9 +21,9 @@ Im Lauf des Lebenszyklus einer IoT-Lösung kommt es häufig vor, dass Geräte vo
 
 * **Geolocation**: Wenn ein Gerät von einem Standort zu einem anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät zu einem jeweils näher gelegenen IoT-Hub migriert wird.
 
-* **Mehrinstanzenfähigkeit**: Ein Gerät wird innerhalb der gleichen IoT-Lösung verwendet werden, jedoch auch einem neuen Kunden oder Kundenstandort zugewiesen oder geleast werden. Die Dienstbereitstellung für diesen neuen Kunden erfolgt möglicherweise über einen anderen IoT-Hub.
+* **Mehrinstanzenfähigkeit**: Ein Gerät soll innerhalb der gleichen IoT-Lösung verwendet werden, wird jedoch einem neuen Kunden oder Kundenstandort zugewiesen oder geleast. Die Dienstbereitstellung für diesen neuen Kunden erfolgt möglicherweise über einen anderen IoT-Hub.
 
-* **Änderung einer Lösung**: Ein Gerät wird in eine neue oder aktualisierte IoT-Lösung verlagert. Aufgrund der Neuzuweisung muss das Gerät möglicherweise mit einem neuen IoT-Hub kommunizieren, der mit anderen Back-End-Komponenten verbunden ist. 
+* **Lösungsänderung**: Ein Gerät wird in eine neue oder aktualisierte IoT-Lösung verlagert. Aufgrund der Neuzuweisung muss das Gerät möglicherweise mit einem neuen IoT-Hub kommunizieren, der mit anderen Back-End-Komponenten verbunden ist. 
 
 * **Quarantäne**: Dieses Szenario ähnelt der Änderung einer Lösung. Ein Gerät, das Fehlfunktionen aufweist, eine Sicherheitslücke darstellt oder veraltet ist, kann einem IoT-Hub zugewiesen werden, an dem es ausschließlich Updates ausführen kann, um die Compliance wiederherzustellen. Sobald das Gerät wieder ordnungsgemäß funktioniert, wird es wieder zu seinem primären Hub migriert.
 
@@ -72,7 +72,7 @@ Mit den folgenden Schritten wird die Zuordnungsrichtlinie für eine Geräteregis
 
     * **Erneut bereitstellen und Daten migrieren**: Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden. Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Alle Gerätezustandsinformationen von diesem ursprünglichen IoT-Hub werden zum neuen IoT-Hub migriert. Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
 
-    * **Erneut zuweisen und auf anfängliche Konfiguration zurücksetzen**: Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden. Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die anfänglichen Konfigurationsdaten, die von der Bereitstellungsdienstinstanz bei der Bereitstellung des Geräts empfangen wurden, werden an den neuen IoT-Hub gesendet. Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
+    * **Erneut bereitstellen und auf ursprüngliche Konfiguration zurücksetzen**: Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden. Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die anfänglichen Konfigurationsdaten, die von der Bereitstellungsdienstinstanz bei der Bereitstellung des Geräts empfangen wurden, werden an den neuen IoT-Hub gesendet. Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
 
 4. Klicken Sie auf **Speichern**, um das Gerät basierend auf Ihren Änderungen erneut bereitzustellen.
 

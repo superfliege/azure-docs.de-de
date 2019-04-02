@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e3757e94dcd8ccc39613b9a6fff8bf491812866a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819806"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224200"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -47,11 +47,7 @@ Weitere Informationen über Resource Manager-Vorlagen finden Sie in den folgende
 
 ## <a name="generate-templates"></a>Generieren von Vorlagen
 
-Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement mithilfe unterschiedlicher Tools exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
-
-- Azure-Portal: Siehe [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](../azure-resource-manager/resource-manager-export-template.md).
-- Azure PowerShell: Siehe [Exportieren von Azure Resource Manager-Vorlagen mit PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Klassische Azure-Befehlszeilenschnittstelle: Siehe [Exportieren von Azure Resource Manager-Vorlagen mit der klassischen Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-export-template-cli.md).
+Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement mithilfe unterschiedlicher Tools exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren. Weitere Informationen finden Sie unter [Exportieren von Vorlagen](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
 
 ## <a name="deploy-using-the-portal"></a>Bereitstellen mit dem Portal
 
@@ -68,7 +64,7 @@ Sie können eine Resource Manager-Vorlage mit der klassischen Befehlszeilenschni
 ## <a name="deploy-using-the-rest-api"></a>Bereitstellen mit der REST-API
 Sie können eine Resource Manager-Vorlage mit der REST-API bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
-## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio
+## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio 2013
  Verwenden Sie Visual Studio, um ein Ressourcengruppenprojekt zu erstellen und über die Benutzeroberfläche in Azure bereitzustellen. Sie wählen den Typ der Ressourcen aus, die in Ihr Projekt einbezogen werden sollen. Diese Ressourcen werden automatisch der Resource Manager-Vorlage hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
 Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

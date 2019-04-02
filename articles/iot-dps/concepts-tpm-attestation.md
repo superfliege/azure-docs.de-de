@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e4a86585fbf1e00512e9e8e111a9a259663f8a26
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142422"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536777"
 ---
 # <a name="tpm-attestation"></a>TPM-Nachweis
 
 Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere Weise bereitstellen.
 
-Dieser Artikel beschreibt den Prozess des Identitätsnachweises bei Verwendung eines [TPM](./concepts-device.md). TPM steht für Trusted Platform Module und ist ein Typ von Hardwaresicherheitsmodul (HSM). In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Die Verwendung von Software-TPMs in der Produktion wird nicht empfohlen. Weitere Informationen zu den Arten von TPMs finden Sie unter [A Brief Introduction to TPM](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf) (Eine kurze Einführung in TPM).
+Dieser Artikel beschreibt den Prozess des Identitätsnachweises bei Verwendung eines [TPM](./concepts-device.md). TPM steht für Trusted Platform Module und ist ein Typ von Hardwaresicherheitsmodul (HSM). In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Die Verwendung von Software-TPMs in der Produktion wird nicht empfohlen. Weitere Informationen zu den Arten von TPMs finden Sie unter [A Brief Introduction to TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf) (Eine kurze Einführung in TPM).
 
 Dieser Artikel bezieht sich nur auf Geräte mit TPM 2.0 und HMAC-Schlüsselunterstützung sowie den entsprechenden Endorsement Keys. Er ist nicht für Geräte gedacht, die X.509-Zertifikate für die Authentifizierung verwenden. TPM ist ein branchenweiter ISO-Standard von Trusted Computing Group. Weitere Informationen zu TPM finden Sie in der [vollständigen TPM 2.0-Spezifikation](https://trustedcomputinggroup.org/tpm-library-specification/) oder der [ISO/IEC 11889-Spezifikation](https://www.iso.org/standard/66510.html). In diesem Artikel wird außerdem davon ausgegangen, dass Sie mit öffentlichen und privaten Schlüsselpaaren sowie deren Verwendung für die Verschlüsselung vertraut sind.
 
@@ -35,7 +35,7 @@ Sobald ein Gerät eingerichtet und zur Verwendung bereit ist, verfügt es sowohl
 
 ![Besitzübernahme für ein TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-Hier noch ein Hinweis zur Besitzübernahme für das TPM: Die Besitzübernahme für ein TPM hängt von einer Vielzahl von Faktoren ab. Dazu gehören der TPM-Hersteller, die Gruppe der verwendeten TPM-Tools und das Betriebssystem des Geräts. Befolgen Sie die Anweisungen für Ihr jeweiliges System, um den Besitz zu übernehmen.
+Hinweis zum Übernehmen der Besitzrechte am TPM: Die Besitzübernahme für ein TPM hängt von einer Vielzahl von Faktoren ab. Dazu gehören der TPM-Hersteller, die Gruppe der verwendeten TPM-Tools und das Betriebssystem des Geräts. Befolgen Sie die Anweisungen für Ihr jeweiliges System, um den Besitz zu übernehmen.
 
 Der Device Provisioning-Dienst verwendet den öffentlichen Teil des EK (EK_pub) zum Identifizieren und Registrieren von Geräten. Der Gerätehersteller kann den EK_pub bei der Herstellung oder abschließenden Tests lesen und ihn in den Provisioning-Dienst hochladen, damit das Gerät beim Herstellen einer Verbindung für die Bereitstellung erkannt wird. Der Device Provisioning-Dienst nimmt keine Überprüfung des SRK oder Besitzers vor, sodass durch ein „Löschen“ des TPM Kundendaten unwiderruflich entfernt werden, doch wird der EK (und andere Herstellerdaten) beibehalten, und das Gerät wird weiterhin vom Device Provisioning-Dienst erkannt, wenn eine Verbindung für die Bereitstellung hergestellt wird.
 

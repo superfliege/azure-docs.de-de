@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 88efa6b16e33fe928ad9354b7283f7c651e6710c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877699"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -61,11 +61,11 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermit
 
 |Komponente/Bereich  |Tags  |
 |---------|---------|
-|Spracherkennung |[[microsoft-cognitive+speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Sprachsynthese |[[microsoft-cognitive+text-to-speech]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Sprachübersetzung |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Sprechabsicht |[[microsoft-cognitive+luis]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Allgemeines Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|Spracherkennung |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|Sprachsynthese |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|Sprachübersetzung |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|Sprechabsicht |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|Allgemeines Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von Fragen und zum Hinzufügen von Quellcode. Das Befolgen dieser Hinweis kann dazu beitragen, dass Mitglieder der Community schneller auf Ihre Frage reagieren:  

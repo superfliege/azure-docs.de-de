@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: eb2a6692c0b00dc4419c601228453a8cfc44c02a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105249"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Verbinden eines IoT DevKit-Geräts mit dem Solution Accelerator für die Remoteüberwachung
 
@@ -40,7 +40,7 @@ So öffnen Sie das Remoteüberwachungsbeispiel in VS Code:
 
 1. Suchen Sie **Remoteüberwachung**, und klicken Sie auf **Beispiel öffnen**. Daraufhin wird ein neues VS Code-Fenster mit dem Projektordner geöffnet:
 
-  ![IoT Workbench, Beispiel für „Remoteüberwachung“ auswählen](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+   ![IoT Workbench, Beispiel für „Remoteüberwachung“ auswählen](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
 ## <a name="configure-the-device"></a>Konfigurieren des Geräts
 
@@ -79,7 +79,7 @@ Um sicherzustellen, dass die auf das DevKit-Gerät hochgeladene Beispielanwendun
 
 Wenn die Beispiel-App ausgeführt wird, sendet das DevKit-Gerät Telemetriedaten von den Sensoren über das WLAN an Ihren Solution Accelerator. So zeigen Sie die Telemetriedaten an:
 
-1. Wechseln Sie zu Ihrem Lösungsdashboard, und klicken Sie auf **Geräte**.
+1. Wechseln Sie zu Ihrem Lösungsdashboard, und klicken Sie auf **Geräte-Explorer**.
 
 1. Klicken Sie auf den Gerätenamen Ihres DevKit-Geräts. Auf der Registerkarte rechts sind die Telemetriedaten aus dem DevKit in Echtzeit zu sehen:
 
@@ -87,7 +87,7 @@ Wenn die Beispiel-App ausgeführt wird, sendet das DevKit-Gerät Telemetriedaten
 
 ### <a name="control-the-devkit-device"></a>Steuern des DevKit-Geräts
 
-Mithilfe des Solution Accelerators für die Remoteüberwachung können Sie Ihr Gerät remote steuern. Durch den Beispielcode werden drei Methoden implementiert, die Sie im Abschnitt **Methode** sehen, wenn Sie das Gerät auf der Seite **Geräte** auswählen:
+Mithilfe des Solution Accelerators für die Remoteüberwachung können Sie Ihr Gerät remote steuern. Durch den Beispielcode werden drei Methoden implementiert, die Sie im Abschnitt **Methode** sehen, wenn Sie das Gerät auf der Seite **Geräte-Explorer** auswählen:
 
 ![IoT DevKit-Methoden](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
@@ -99,11 +99,11 @@ So ändern Sie die Farbe einer der DevKit-LEDs mithilfe der Methode **LedColor**
 
 1. Konfigurieren Sie die Aufträge mithilfe der folgenden Werte, und klicken Sie auf **Anwenden**:
 
-    * Auftrag auswählen: **Run-Methode**
-    * Methodenname: **LedColor**
-    * Auftragsname: **ChangeLedColor**
+   * Auftrag auswählen: **Run-Methode**
+   * Methodenname: **LedColor**
+   * Auftragsname: **ChangeLedColor**
 
-    ![Auftragseinstellungen](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+     ![Auftragseinstellungen](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
 1. Innerhalb weniger Sekunden ändert sich die Farbe der RGB-LED an Ihrem DevKit (unterhalb der A-Taste):
 

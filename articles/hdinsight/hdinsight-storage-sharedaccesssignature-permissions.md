@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202672"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -219,13 +219,7 @@ Wenn Sie bereits einen Linux-basierten Cluster haben, können Sie die SAS der **
 
 ## <a name="test-restricted-access"></a>Testen des eingeschränkten Zugriffs
 
-Um sicherzustellen, dass der Zugriff eingeschränkt wird, verwenden Sie die folgenden Methoden:
-
-* Nutzen Sie für **Windows-basierte** -Cluster Remotedesktop zur Verbindung mit dem Cluster. Weitere Informationen finden Sie unter [Connect to HDInsight using RDP (Herstellen einer Verbindung mit HDInsight mithilfe von RDP)](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
-
-    Nachdem die Verbindung aufgebaut wurde, verwenden Sie das Symbol **Hadoop-Befehlszeile** auf dem Desktop, um eine Eingabeaufforderung zu öffnen.
-
-* Verwenden Sie für **Linux-basierte** -Cluster SSH zur Verbindung mit dem Cluster. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+Um zu prüfen, ob Sie den Zugriff eingeschränkt haben, verwenden Sie SSH, um eine Verbindung mit dem Cluster herzustellen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Speicherkonto ausschließlich lesen und auflisten können:
 

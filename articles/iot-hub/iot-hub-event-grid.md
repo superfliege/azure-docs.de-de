@@ -2,21 +2,22 @@
 title: Azure IoT Hub und Event Grid | Microsoft-Dokumentation
 description: Lösen Sie mit Azure Event Grid Prozesse auf der Basis von Aktionen aus, die in IoT Hub auftreten.
 author: kgremban
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 14bdbb5d629cb5a3fccd6f874e30ded0648e0124
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: a2c49a6ba269321d1903565ace3ebaae3f3b917e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249467"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673852"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
-Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Konfigurieren Sie Ihre Geschäftsanwendungen zum Lauschen auf IoT Hub-Ereignisse, sodass Sie zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren können. Erstellen Sie beispielsweise eine Anwendung zum Durchführen mehrerer Aktionen wie Aktualisieren einer Datenbank, Erstellen eines Tickets und Übermitteln einer E-Mail-Benachrichtigung bei jeder Registrierung eines neuen IoT Hub-Geräts bei Ihrem IoT Hub. 
+Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Konfigurieren Sie Ihre Geschäftsanwendungen zum Lauschen auf IoT Hub-Ereignisse, sodass Sie zuverlässig, skalierbar und sicher auf kritische Ereignisse reagieren können. Erstellen Sie beispielsweise eine Anwendung, die bei jeder Registrierung eines neuen IoT-Geräts bei Ihrem IoT-Hub eine Datenbank aktualisiert, einen Akkordzettel erstellt und eine E-Mail-Benachrichtigung generiert. 
 
 [Azure Event Grid](../event-grid/overview.md) ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) und kann mithilfe von Webhooks Ereigniswarnungen an Nicht-Azure-Dienste übermitteln. Eine vollständige Liste der Ereignishandler, die Event Grid unterstützt, finden Sie unter [Einführung in Azure Event Grid](../event-grid/overview.md). 
 
@@ -139,7 +140,7 @@ Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. Wenn die Geräteverbind
 
 Anwendungen, die IoT Hub-Ereignisse behandeln, sollten diesen empfohlenen Methoden entsprechen:
 
-* Mehrere Abonnements können zum Weiterleiten von Ereignissen an denselben Ereignishandler konfiguriert werden; darum ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen. Überprüfen Sie immer das Nachrichtenthema, um sicherzustellen, dass es von einem IoT Hub stammt, den Sie erwarten. 
+* Mehrere Abonnements können zum Weiterleiten von Ereignissen an denselben Ereignishandler konfiguriert werden; darum dürfen Sie nicht davon ausgehen, dass Ereignisse aus einer bestimmten Quelle stammen. Überprüfen Sie immer das Nachrichtenthema, um sicherzustellen, dass es von einem IoT Hub stammt, den Sie erwarten. 
 
 * Gehen Sie nicht davon aus, dass alle Ereignisse, die Sie erhalten, den Typen entsprechen, die Sie erwarten. Überprüfen Sie vor der Verarbeitung der Nachricht immer den eventType.
 

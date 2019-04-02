@@ -1,6 +1,6 @@
 ---
-title: Abfragen von Azure Log Analytics zum Überwachen von Azure HDInsight-Clustern
-description: Erfahren Sie, wie Sie in Azure Log Analytics Abfragen zum Überwachen von Aufträgen ausführen, die in einem HDInsight-Cluster ausgeführt werden.
+title: Abfragen von Azure Monitor-Protokollen zum Überwachen von Azure HDInsight-Clustern
+description: Erfahren Sie, wie Sie in Azure Monitor Abfragen zum Überwachen von Aufträgen ausführen, die in einem HDInsight-Cluster ausgeführt werden.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e1187867fc9da9a89f92d7b321c8703ee7a8a407
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386501"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889255"
 ---
-# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Abfragen von Azure Log Analytics zum Überwachen von HDInsight-Clustern
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
-Betrachten Sie einige grundlegende Szenarien zur Verwendung von Azure Log Analytics für die Überwachung von Azure HDInsight-Clustern:
+Lernen Sie einige grundlegende Szenarien zur Verwendung von Azure Monitor-Protokollen für die Überwachung von Azure HDInsight-Clustern kennen:
 
 * [Analysieren von HDInsight-Clustermetriken](#analyze-hdinsight-cluster-metrics)
 * [Suchen nach bestimmten Protokollmeldungen](#search-for-specific-log-messages)
 * [Erstellen von Ereigniswarnungen](#create-alerts-for-tracking-events)
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie müssen einen HDInsight-Cluster konfiguriert haben, um Azure Log Analytics verwenden zu können, und die spezifischen Log Analytics-Verwaltungslösungen für den HDInsight-Cluster dem Arbeitsbereich hinzugefügt haben. Anweisungen hierzu finden Sie unter [Use Azure Log Analytics to monitor HDInsight clusters (Preview)](hdinsight-hadoop-oms-log-analytics-tutorial.md) (Verwenden von Azure Log Analytics zum Überwachen von HDInsight-Clustern [Vorschau]).
+* Sie müssen einen HDInsight-Cluster konfiguriert haben, um Azure Monitor-Protokolle verwenden zu können, und dem Arbeitsbereich die spezifischen Azure Monitor-Protokollverwaltungslösungen für den HDInsight-Cluster hinzugefügt haben. Anweisungen finden Sie unter [Verwenden von Azure Monitor-Protokollen mit HDInsight-Clustern](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Analysieren von HDInsight-Clustermetriken
 
@@ -34,7 +36,7 @@ Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster such
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
 2. Wählen Sie die Kachel **Protokollsuche** aus.
-3. Geben Sie im Suchfeld die folgende Abfrage ein, um nach allen verfügbaren Metriken für alle HDInsight-Cluster, die für die Verwendung von Azure Log Analytics konfiguriert sind, zu suchen, und wählen Sie dann **AUSFÜHREN**.
+3. Geben Sie im Suchfeld die folgende Abfrage ein, um nach allen verfügbaren Metriken für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Monitor-Protokollen konfiguriert sind, und wählen Sie dann **AUSFÜHREN** aus.
 
         search *
 
@@ -67,7 +69,7 @@ Erfahren Sie, wie Sie in einem bestimmten Zeitfenster nach Fehlermeldungen suche
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
 2. Wählen Sie die Kachel **Protokollsuche** aus.
-3. Geben Sie die folgende Abfrage ein, um nach allen Fehlermeldungen für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Log Analytics konfiguriert sind, und wählen Sie dann **AUSFÜHREN**. 
+3. Geben Sie die folgende Abfrage ein, um nach allen Fehlermeldungen für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Monitor-Protokollen konfiguriert sind, und wählen Sie dann **AUSFÜHREN**. 
 
          search "Error"
 
@@ -117,11 +119,11 @@ Bearbeiten oder löschen Sie eine vorhandene Warnung wie folgt:
 3. Wählen Sie die Warnung aus, die Sie bearbeiten oder löschen möchten.
 4. Folgende Optionen stehen zur Auswahl: **Speichern**, **Verwerfen**, **Deaktivieren** und **Löschen**.
 
-    ![HDInsight Log Analytics – Warnung – Löschen/Bearbeiten](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![Lösch/Bearbeitungswarnung für HDInsight Azure Monitor-Protokolle](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-Weitere Informationen finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](../log-analytics/log-analytics-alerts-creating.md).
+Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [OMS Log Analytics: Create Tiles, Drill-ins and Dashboards with the View Designer](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/) (OMS Log Analytics: Erstellen von Kacheln, Drill-ins und Dashboards mit dem Ansicht-Designer)
-* [Arbeiten mit Warnungsregeln in Log Analytics](../log-analytics/log-analytics-alerts-creating.md)
+* [OMS Log Analytics: Ansicht-Designer](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md)

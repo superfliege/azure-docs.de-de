@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ffded5705e61538a8bec886483a49705bb2298c1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652489"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203029"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Apache Sqoop mit Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -163,7 +163,7 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 
 1. Herstellen einer Verbindung zu Azure.
-2. Erstellen Sie eine Azure-Ressourcengruppe. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md)
+2. Erstellen Sie eine Azure-Ressourcengruppe. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure Resource Manager](../../azure-resource-manager/manage-resource-groups-powershell.md)
 3. Erstellen Sie einen Azure SQL-Datenbank-Server, eine Azure SQL-Datenbank und zwei Tabellen. 
    
     Wenn Sie stattdessen SQL Server verwenden, verwenden Sie die folgenden Anweisungen, um die Tabellen zu erstellen:
@@ -627,7 +627,6 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-provision]: ../hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md

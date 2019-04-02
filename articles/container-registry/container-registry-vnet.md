@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: danlep
-ms.openlocfilehash: 044ff823e34f51257cb6186417535b9b542bc289
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136942"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517928"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 
@@ -205,7 +205,7 @@ Eine Azure-Containerregistrierung lässt standardmäßig Verbindungen von Hosts 
 1. Navigieren Sie im Azure-Portal zu Ihrer Containerregistrierung.
 1. Wählen Sie unter **Einstellungen** die Option **Firewall und virtuelle Netzwerke** aus.
 1. Wenn der Zugriff standardmäßig verweigert werden soll, wählen Sie aus, dass Zugriff über **Ausgewählte Netzwerke** gewährt werden soll. 
-1. Wählen Sie **Vorhandenes virtuelles Netzwerk hinzufügen** und dann das virtuelle Netzwerk und Subnetz aus, das Sie mit einem Dienstendpunkt konfiguriert haben. Wählen Sie **Hinzufügen**aus.
+1. Wählen Sie **Vorhandenes virtuelles Netzwerk hinzufügen** und dann das virtuelle Netzwerk und Subnetz aus, das Sie mit einem Dienstendpunkt konfiguriert haben. Wählen Sie **Hinzufügen**.
 1. Wählen Sie **Speichern** aus.
 
 ![Konfigurieren des virtuellen Netzwerks für die Containerregistrierung][acr-vnet-portal]
@@ -359,7 +359,7 @@ az acr update --name myContainerRegistry --default-action Allow
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie alle Azure-Ressourcen in der gleichen Ressourcengruppe erstellt haben und sie nicht mehr benötigen, können Sie die Ressourcen optional mit einem einzigen Befehl [az group delete](/cli/azure/group#az_group_delete) löschen:
+Wenn Sie alle Azure-Ressourcen in der gleichen Ressourcengruppe erstellt haben und sie nicht mehr benötigen, können Sie die Ressourcen optional mit einem einzigen Befehl [az group delete](/cli/azure/group) löschen:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -405,7 +405,7 @@ In diesem Artikel wurden verschiedene Ressourcen und Features des virtuellen Net
 [az-acr-run]: /cli/azure/acr#az-acr-run
 [az-acr-update]: /cli/azure/acr#az-acr-update
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-group-create]: /cli/azure/group#az_group_create
+[az-group-create]: /cli/azure/group
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-vm-create]: /cli/azure/vm#az-vm-create
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az-network-vnet-subnet-show
