@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015745"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539614"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -46,6 +46,8 @@ In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenv
 - **Cloudszenario** In diesem Szenario sind sowohl die Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste der unterstützten Datenquellen finden Sie [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
 - **Hybridszenario** In diesem Szenario befindet sich entweder die Quelle oder das Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk, oder der Datenspeicher befindet sich in einem privaten Netzwerk/virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="cloud-scenarios"></a>Cloudszenarien
 ### <a name="securing-data-store-credentials"></a>Schützen von Datenspeicher-Anmeldeinformationen
 Azure Data Factory schützt Ihre Datenspeicher-Anmeldeinformationen dadurch, dass sie **verschlüsselt** werden, wozu **von Microsoft verwaltete Zertifikate** verwendet werden. Diese Zertifikate werden alle **zwei Jahre** ausgetauscht (wozu Erneuerung des Zertifikats und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem **von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage** gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../../security/security-storage-overview.md).
@@ -72,10 +74,10 @@ Azure Data Lake Store bietet auch eine Verschlüsselung für Daten, die im Konto
 Azure Blob Storage und Azure Table Storage unterstützen die Speicherdienstverschlüsselung (Storage Service Encryption, SSE), bei der Ihre Daten vor der Weitergabe an den Speicher automatisch verschlüsselt und vor dem Abrufen entschlüsselt werden. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](../../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 unterstützt die Client- und Serververschlüsselung von ruhenden Daten. Weitere Informationen finden Sie unter [Schutz von Daten mittels Verschlüsselung](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Derzeit bietet Data Factory keine Unterstützung für Amazon S3 in einer Virtual Private Cloud (VPC).
+Amazon S3 unterstützt die Client- und Serververschlüsselung von ruhenden Daten. Weitere Informationen finden Sie unter [Schutz von Daten mittels Verschlüsselung](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Derzeit bietet Data Factory keine Unterstützung für Amazon S3 in einer Virtual Private Cloud (VPC).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift unterstützt die Clusterverschlüsselung für ruhende Daten. Weitere Informationen finden Sie unter [Amazon Redshift-Datenbankverschlüsselung](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Derzeit bietet Data Factory keine Unterstützung für Amazon Redshift in einer VPC. 
+Amazon Redshift unterstützt die Clusterverschlüsselung für ruhende Daten. Weitere Informationen finden Sie unter [Amazon Redshift-Datenbankverschlüsselung](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Derzeit bietet Data Factory keine Unterstützung für Amazon Redshift in einer VPC. 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce unterstützt Shield Platform Encryption, die eine Verschlüsselung aller Dateien, Anlagen und benutzerdefinierten Felder ermöglicht. Weitere Informationen finden Sie unter [Grundlegendes zum OAuth-Webserver-Authentifizierungsfluss](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
@@ -93,7 +95,7 @@ Die Anmeldeinformationen für Ihre lokalen Datenspeicher sind lokal gespeichert 
 - Verwenden von **Nur-Text** (weniger sicher) über HTTPS aus dem Azure-Portal/Kopier-Assistenten. Die Anmeldeinformationen werden im Nur-Text-Format an das lokale Gateway übergeben.
 - Verwenden der **JavaScript-Kryptografiebibliothek aus dem Kopier-Assistenten**.
 - Verwenden der **ClickOnce-basierten Anwendung „Anmeldeinformationsverwaltung“**. Die ClickOnce-Anwendung wird auf dem lokalen Computer ausgeführt, der Zugriff auf das Gateway hat, und legt die Anmeldeinformationen für den Datenspeicher fest. Diese Option und die nächste sind die sichersten Optionen. Die Anwendung „Anmeldeinformationsverwaltung“ verwendet standardmäßig den Port 8050 auf dem Computer mit dem Gateway für sichere Kommunikation.  
-- Verwenden Sie das PowerShell-Cmdlet [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue), um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen, die von diesem Cmdlet zurückgegeben wurden, dem **EncryptedCredential**-Element des **connectionString**-Werts in der JSON-Datei, die Sie mit dem [New-AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice)-Cmdlet verwenden, oder in dem JSON-Codeausschnitt im Data Factory-Editor im Portal hinzufügen. Diese Option und die ClickOnce-Anwendung sind die sichersten Optionen. 
+- Verwenden Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue), um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können die verschlüsselten Anmeldeinformationen, die von diesem Cmdlet zurückgegeben wurden, dem **EncryptedCredential**-Element des **connectionString**-Werts in der JSON-Datei, die Sie mit dem [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice)-Cmdlet verwenden, oder im JSON-Codeausschnitt im Data Factory-Editor im Portal hinzufügen. Diese Option und die ClickOnce-Anwendung sind die sichersten Optionen. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Verschlüsselung über die JavaScript-Kryptografiebibliothek
 Sie können Datenspeicher-Anmeldeinformationen über die [JavaScript-Kryptografiebibliothek](https://www.microsoft.com/download/details.aspx?id=52439) aus dem [Kopier-Assistenten](data-factory-copy-wizard.md) verschlüsseln. Wenn Sie diese Option auswählen, ruft der Kopier-Assistent den öffentlichen Schlüssel des Gateways ab und verwendet diesen Schlüssel, um die Datenspeicher-Anmeldeinformationen zu verschlüsseln. Die Anmeldeinformationen werden vom Gatewaycomputer entschlüsselt und durch Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) geschützt.
@@ -176,7 +178,7 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycompu
 - [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: b706e229bed48c821d5ca772450df320fd7e0b7f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271155"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728232"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Erstellen eines Azure Data Factory-Datenflusses
 
@@ -34,7 +34,12 @@ Sie werden zur Eingabe Ihrer Azure Blob Storage-Kontoinformationen aufgefordert.
 
 [Die für diese Beispiele verwendeten Daten finden Sie hier](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Laden Sie die Beispieldaten herunter, und speichern Sie die Dateien in Ihren Azure Blob Storage-Konten, damit Sie die Beispiele ausführen können.
 
+## <a name="create-new-data-flow"></a>Erstellen des neuen Datenflusses
+
 Verwenden Sie auf der ADF-Benutzeroberfläche die Schaltfläche „Ressource erstellen“ mit dem Pluszeichen (+), um Datenflüsse zu erstellen.
 
 ![Datenflussoptionen](media/data-flow/newresource.png "Neue Ressource")
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Beginnen Sie die Erstellung Ihrer Datentransformation mit einer [Quelltransformation](data-flow-source.md).

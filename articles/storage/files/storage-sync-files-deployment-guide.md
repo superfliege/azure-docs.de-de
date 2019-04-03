@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 23f1f4e8b6a3b71c3792a08645122779e4e629b2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f871174982e965a32d5f2dca5e2e53c5dc436055
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465825"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405486"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -83,7 +83,7 @@ Die Bereitstellung der Azure-Dateisynchronisierung beginnt mit der Platzierung e
 > Der Speichersynchronisierungsdienst hat Zugriffsberechtigungen aus dem Abonnement und der Ressourcengruppe geerbt, wo er bereitgestellt worden ist. Sie sollten sorgfältig überprüfen, wer darauf zugreifen darf. Entitäten mit Schreibzugriff können die Synchronisierung neuer Sätze von Dateien aus Server starten, die bei diesem Speichersynchronisierungsdienst registriert sind, und bewirken, dass Daten in Azure-Speicher übertragen werden, auf den sie zugreifen können.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azure-Portal](https://portal.azure.com/), klicken Sie auf *Neu*, und suchen Sie dann nach „Azure-Dateisynchronisierung“. Wählen Sie in den Suchergebnissen **Azure-Dateisynchronisierung** aus, und klicken Sie auf **Erstellen**, um die Registerkarte **Speichersynchronisierung bereitstellen** zu öffnen.
+Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azure-Portal](https://portal.azure.com/), klicken Sie auf *Ressource erstellen*, und suchen Sie dann nach „Azure-Dateisynchronisierung“. Wählen Sie in den Suchergebnissen **Azure-Dateisynchronisierung** aus, und klicken Sie auf **Erstellen**, um die Registerkarte **Speichersynchronisierung bereitstellen** zu öffnen.
 
 Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 

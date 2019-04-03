@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: aed32db257ddbc8cb5b8f4af5f27024c23583798
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892403"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimieren der Speicherkosten in Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Wenn Sie Rich-Media-Datentypen (z. B. Videos, Bilder usw.) speichern möchten, s
 
 ## <a name="check-storage-consumed"></a>Überprüfen der Speichernutzung
 
-Zum Überprüfen der Speichernutzung eines Azure Cosmos-Containers können Sie eine HEAD- oder GET-Anforderung für den Container ausführen und die Header `x-ms-request-quota` und `x-ms-request-usage` prüfen. Wenn Sie mit dem .Net-SDK arbeiten, können Sie alternativ mit den Eigenschaften [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) und [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) den genutzten Speicher abrufen.
+Zum Überprüfen der Speichernutzung eines Azure Cosmos-Containers können Sie eine HEAD- oder GET-Anforderung für den Container ausführen und die Header `x-ms-request-quota` und `x-ms-request-usage` prüfen. Wenn Sie mit dem .NET SDK arbeiten, können Sie alternativ mit den Eigenschaften [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) und [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) den genutzten Speicher abrufen.
 
 ## <a name="using-sdk"></a>Verwenden des SDK
 

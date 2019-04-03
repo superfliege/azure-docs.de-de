@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: d25fcbce99017ff19adebd61275b395c980a3cf5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cc6c66ccb0bb08d709b2015d643544fb9dc30f52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846734"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -49,6 +49,10 @@ Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuest
 * Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden.
 * Unterstützung von Streams.
 * Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird.
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+
+* Verbesserungen bei der Diagnose
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
@@ -233,6 +237,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](https
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.3](#2.2.3) |11. März 2019 |--- |
 | [2.2.2](#2.2.2) |6. Februar 2019 |--- |
 | [2.2.1](#2.2.1) |24. Dezember 2018 |--- |
 | [2.2.0](#2.2.0) |07. Dezember 2018 |--- |

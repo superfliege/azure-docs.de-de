@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5d2cf4d76ce6f44cb31f05d45f2ccbceccbe9c10
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9edcc313a9e88b657337ba631218388f70d4b41f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086750"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Prüfpunkte und Wiedergabe in Durable Functions (Azure Functions)
 
@@ -79,7 +79,7 @@ Nachdem der Prüfpunktvorgang abgeschlossen ist, kann die Orchestratorfunktion a
 Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table Storage etwa wie folgt aus (zu Darstellungszwecken gekürzt):
 
 | PartitionKey (InstanceId)                     | EventType             | Zeitstempel               | Eingabe | NAME             | Ergebnis                                                    | Status |
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------|
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
@@ -100,21 +100,21 @@ Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table
 Einige Hinweise zu den Spaltenwerten:
 
 * **PartitionKey**: Enthält die Instanz-ID der Orchestrierung.
-* **EventType**:  Steht für den Typ des Ereignisses. Es kann sich um einen der folgenden Typen handeln:
-  * **OrchestrationStarted**:  Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API aufzufüllen.
-  * **ExecutionStarted**:  Die Ausführung der Orchestratorfunktion wurde zum ersten Mal gestartet. Dieses Ereignis enthält auch die Funktionseingabe in der Spalte `Input`.
-  * **TaskScheduled**:  Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
-  * **TaskCompleted**:  Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
-  * **TimerCreated**:  Ein permanenter Timer wurde erstellt. Die Spalte `FireAt` enthält die geplante UTC-Uhrzeit, zu der der Timer abläuft.
-  * **TimerFired**:  Ein permanenter Timer wurde ausgelöst.
-  * **EventRaised**:  Ein externes Ereignis wurde an die Orchestrierungsinstanz gesendet. In der Spalte `Name` wird der Name des Ereignisses und in der Spalte `Input` die Nutzlast des Ereignisses erfasst.
-  * **OrchestratorCompleted**:  Die Orchestratorfunktion befindet sich im Wartezustand.
-  * **ContinueAsNew**:  Die Orchestratorfunktion wurde abgeschlossen und mit einem neuen Zustand neu gestartet. Die Spalte `Result` enthält den Wert, der als Eingabe in der neu gestarteten Instanz verwendet wird.
-  * **ExecutionCompleted**:  Die Orchestratorfunktion wurde bis zum Abschluss (oder Fehler) ausgeführt. Die Ausgaben der Funktion bzw. die Fehlerdetails werden in der Spalte `Result` gespeichert.
-* **Timestamp**:  Der UTC-Zeitstempel des Verlaufsereignisses.
-* **Name**:  Der Name der Funktion, die aufgerufen wurde.
+* **EventType**: Steht für den Typ des Ereignisses. Es kann sich um einen der folgenden Typen handeln:
+  * **OrchestrationStarted**: Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API aufzufüllen.
+  * **ExecutionStarted**: Die Ausführung der Orchestratorfunktion wurde zum ersten Mal gestartet. Dieses Ereignis enthält auch die Funktionseingabe in der Spalte `Input`.
+  * **TaskScheduled**: Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
+  * **TaskCompleted**: Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
+  * **TimerCreated**: Ein permanenter Timer wurde erstellt. Die Spalte `FireAt` enthält die geplante UTC-Uhrzeit, zu der der Timer abläuft.
+  * **TimerFired**: Ein permanenter Timer hat ausgelöst.
+  * **EventRaised**: Ein externes Ereignis wurde an die Orchestrierungsinstanz gesendet. In der Spalte `Name` wird der Name des Ereignisses und in der Spalte `Input` die Nutzlast des Ereignisses erfasst.
+  * **OrchestratorCompleted**: Die wartende Orchestratorfunktion.
+  * **ContinueAsNew**: Die Orchestratorfunktion wurde abgeschlossen und mit einem neuen Zustand neu gestartet. Die Spalte `Result` enthält den Wert, der als Eingabe in der neu gestarteten Instanz verwendet wird.
+  * **ExecutionCompleted**: Die Orchestratorfunktion wurde bis zum Abschluss (oder Fehler) ausgeführt. Die Ausgaben der Funktion bzw. die Fehlerdetails werden in der Spalte `Result` gespeichert.
+* **Timestamp** (Zeitstempel): Der UTC-Zeitstempel des Verlaufsereignisses.
+* **Name**: Der Name der Funktion, die aufgerufen wurde.
 * **Eingabe**: Die Eingabe der Funktion im JSON-Format.
-* **Result**:  Die Ausgabe der Funktion, also ihr Rückgabewert.
+* **Result**: Die Ausgabe der Funktion, also ihr Rückgabewert.
 
 > [!WARNING]
 > Die Tabelle ist zwar als Debugtool nützlich, aber Sie sollten keine Abhängigkeiten dafür einrichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.

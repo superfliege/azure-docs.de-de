@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eeda1ed3181b8cc8f641ed731b7f00fac2d3fad6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194234"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005828"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -154,7 +154,7 @@ Ein Serverendpunkt protokolliert die Synchronisierungsaktivität aus den folgend
     - Agent-Version 3.x: 2 aktive Synchronisierungssitzungen pro Prozessor oder maximal 8 aktive Synchronisierungssitzungen pro Server.
 
 > [!Note]  
-> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt [Serverendpunkt weist einen Integritätsstatus „Keine Aktivität“ oder „Ausstehend“ auf, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als Offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
+> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt S[erverendpunkt weist einen Integritätsstatus „Keine Aktivität“ oder „Ausstehend“ auf, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als Offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  
@@ -244,6 +244,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen
 **ItemResults-Protokoll – Synchronisierungsfehler nach Element**  
+
 | HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Eine Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. |
@@ -271,6 +272,7 @@ Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchroni
 
 ### <a name="common-sync-errors"></a>Allgemeine Synchronisierungsfehler
 <a id="-2147023673"></a>**Die Synchronisierungssitzung wurde abgebrochen.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x800704c7 |
@@ -281,6 +283,7 @@ Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchroni
 Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftreten, z.B. aufgrund eines Serverneustarts oder einer Serveraktualisierung oder aufgrund von VSS-Momentaufnahmen. Auch wenn dieser Fehler den Anschein erweckt, als ob eine Nachverfolgung erforderlich wäre, kann dieser ignoriert werden, es sei denn, er bleibt über einen Zeitraum von mehreren Stunden bestehen.
 
 <a id="-2147012889"></a>**Eine Verbindung mit dem Dienst konnte nicht hergestellt werden.**    
+
 | | |
 |-|-|
 | **HRESULT** | 0x80072ee7 |
@@ -291,6 +294,7 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
 <a id="-2134376372"></a>**Die Benutzeranforderung wurde durch den Dienst gedrosselt.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8004c |
@@ -301,6 +305,7 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen Sie nur dann eine Supportanfrage, wenn dieser Fehler länger als ein paar Stunden anhält.
 
 <a id="-2134364065"></a>**Die Synchronisierung kann nicht auf die im Cloudendpunkt angegebene Azure-Dateifreigabe zugreifen.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8305f |
@@ -316,6 +321,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 4. [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](#troubleshoot-rbac)
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Der verwendete Speicherkontoname konnte nicht aufgelöst werden.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C83060 |
@@ -332,6 +338,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 3. [Stellen Sie sicher, dass das Speicherkonto keine Netzwerkregeln enthält.](#troubleshoot-network-rules)
 
 <a id="-1906441138"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Synchronisierungsdatenbank.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
@@ -342,6 +349,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 Dieser Fehler tritt auf, wenn ein Problem mit der internen Datenbank besteht, die von der Azure-Dateisynchronisierung verwendet wird. Wenn dieses Problem auftritt, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
 
 <a id="-2134364053"></a>**Die auf dem Server installierte Version des Azure-Dateisynchronisierungs-Agents wird nicht unterstützt.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C8306B |
@@ -352,6 +360,7 @@ Dieser Fehler tritt auf, wenn ein Problem mit der internen Datenbank besteht, di
 Dieser Fehler tritt auf, wenn die auf dem Server installierte Version des Azure-Dateisynchronisierungs-Agents nicht unterstützt wird. Um dieses Problem zu beheben, führen Sie ein [Upgrade]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) auf eine [unterstützte Agent-Version]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions) aus.
 
 <a id="-2134351810"></a>**Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8603e |
@@ -377,6 +386,7 @@ Dieser Fehler tritt auf, wenn das Speicherlimit für die Azure Dateifreigabe err
 Wenn die Freigabe ausgeschöpft ist und kein Kontingent festgelegt ist, besteht eine Möglichkeit zur Behebung dieses Problems darin, jeden Unterordner des aktuellen Serverendpunkts in einen eigenen-Serverendpunkt in separaten Synchronisierungsgruppen umzuwandeln. Dadurch wird jeder Unterordner mit individuellen Azure-Dateifreigaben synchronisiert.
 
 <a id="-2134351824"></a>**Die gelöschte Azure-Dateifreigabe kann nicht gefunden werden.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c86030 |
@@ -392,6 +402,7 @@ Dieser Fehler tritt auf, wenn auf die Azure-Dateifreigabe nicht zugegriffen werd
 Falls die Azure-Dateifreigabe gelöscht wurde, müssen Sie eine neue Dateifreigabe erstellen und die Synchronisierungsgruppe anschließend neu erstellen. 
 
 <a id="-2134364042"></a>**Die Synchronisierung wird angehalten, solange dieses Azure-Abonnement ausgesetzt ist.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C83076 |
@@ -402,6 +413,7 @@ Falls die Azure-Dateifreigabe gelöscht wurde, müssen Sie eine neue Dateifreiga
 Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchronisierung wird erneut aktiviert, wenn das Azure-Abonnement wiederhergestellt wurde. Weitere Informationen finden Sie unter [Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?](../../billing/billing-subscription-become-disable.md).
 
 <a id="-2134364052"></a>**Für das Speicherkonto wurden eine Firewall oder virtuelle Netzwerke konfiguriert.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8306c |
@@ -417,6 +429,7 @@ Dieser Fehler tritt auf, wenn aufgrund einer Firewall oder der Zugehörigkeit de
 Entfernen Sie diese Regeln, um dieses Problem zu beheben. 
 
 <a id="-2134375911"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Synchronisierungsdatenbank.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80219 |
@@ -432,6 +445,7 @@ Dieser Fehler löst sich im Allgemeinen von selbst und kann folgende Ursachen ha
 Wenn dieser Fehler länger anhält als ein paar Stunden, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
 
 <a id="-2146762487"></a>**Der Server konnte keine sichere Verbindung herstellen. Der Clouddienst hat ein unerwartetes Zertifikat empfangen.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x800b0109 |
@@ -456,6 +470,7 @@ Dieser Fehler kann vorkommen, wenn Ihre Organisation einen SSL-Terminierungsprox
 Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchronisierungs-Agent alle vertrauenswürdigen lokalen SSL-Zertifikate, wenn Daten zwischen dem Server und dem Clouddienst übertragen werden.
 
 <a id="-2147012894"></a>**Eine Verbindung mit dem Dienst konnte nicht hergestellt werden.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80072ee2 |
@@ -466,6 +481,7 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
 <a id="-2134375680"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Authentifizierung.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80300 |
@@ -494,6 +510,7 @@ Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das 
     ```
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Das Volume, auf dem sich der Serverendpunkt befindet, weist nicht genügend Speicherplatz auf dem Datenträger auf.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
@@ -509,6 +526,7 @@ Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das 
 Dieser Fehler tritt auf, da sich das Volume gefüllt hat. Dieser Fehler tritt häufig auf, da Dateien außerhalb des Serverendpunkts auf dem Volume Speicherplatz belegen. Geben Sie Speicherplatz auf dem Volume frei, indem Sie zusätzliche Serverendpunkte hinzufügen, Dateien in ein anderes Volume verschieben oder die Größe des Volumes, in dem sich der Serverendpunkt befindet, erhöhen.
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Der Dienst ist für die Synchronisierung mit diesem Serverendpunkt noch nicht bereit.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8300f |
@@ -521,6 +539,7 @@ Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorg
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Fehler bei der Synchronisierung aufgrund von Problemen mit einer Vielzahl einzelner Dateien.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8023b |
@@ -544,6 +563,7 @@ In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten b
 > Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren.
 
 <a id="-2134376423"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit dem Serverendpunktpfad.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80019 |
@@ -554,6 +574,7 @@ In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten b
 Stellen Sie sicher, dass der Pfad vorhanden ist, sich in einem lokalen NTFS-Volume befindet und kein Analysepunkt oder vorhandener Serverendpunkt ist.
 
 <a id="-2134375817"></a>**Fehler beim Synchronisieren, da die Version des Filtertreibers nicht mit der Agentversion kompatibel ist**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C80277 |
@@ -564,6 +585,7 @@ Stellen Sie sicher, dass der Pfad vorhanden ist, sich in einem lokalen NTFS-Volu
 Dieser Fehler tritt auf, da die geladene Version des Cloudtiering-Filtertreibers (StorageSync.sys) nicht mit dem Storage Sync Agent (FileSyncSvc)-Dienst kompatibel ist. Wenn der Azure-Dateisynchronisierungs-Agent aktualisiert wurde, starten Sie den Server neu, um die Installation abzuschließen. Wenn der Fehler weiterhin auftritt, deinstallieren Sie den Agent, starten Sie den Server neu und installieren Sie den Azure-Dateisynchronisierungs-Agent neu.
 
 <a id="-2134376373"></a>**Der Dienst ist derzeit nicht verfügbar.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8004b |
@@ -574,6 +596,7 @@ Dieser Fehler tritt auf, da die geladene Version des Cloudtiering-Filtertreibers
 Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungsdienst nicht verfügbar ist. Dieser Fehler wird automatisch aufgelöst, wenn der Azure-Dateisynchronisierungsdienst wieder verfügbar ist.
 
 <a id="-2134375922"></a>**Fehler bei der Synchronisierung aufgrund eines vorübergehenden Problems mit der Synchronisierungsdatenbank.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8020e |
@@ -793,13 +816,13 @@ Es gibt zwei Hauptklassen von Fehlern, die für jeden Fehlerpfad auftreten könn
     - *Nicht zugängliche Azure-Dateifreigabe*: Dieser Fehler tritt normalerweise auf, wenn Sie die Azure-Dateifreigabe löschen und es sich dabei noch um einen Cloudendpunkt in einer Synchronisierungsgruppe handelt.
     - *Nicht zugängliches Speicherkonto*: Dieser Fehler tritt normalerweise auf, wenn Sie das Speicherkonto löschen, während es noch über eine Azure-Dateifreigabe verfügt, bei der es sich um einen Cloudendpunkt in einer Synchronisierungsgruppe handelt. 
 - Serverfehler 
-    - *Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) wird nicht geladen.* Der Azure-Dateisynchronisierungs-Dateisystemfilter muss geladen werden, um auf das Tiering bzw. Rückrufanforderungen reagieren zu können. Es kann mehrere Gründe haben, warum der Filter nicht geladen wird. Der häufigste Grund ist, dass das Laden von einem Administrator manuell rückgängig gemacht wurde. Der Azure-Dateisynchronisierungs-Dateisystemfilter muss immer geladen sein, damit die Azure-Dateisynchronisierung richtig funktioniert.
-    - *Fehlender, beschädigter oder anderweitig fehlerhafter Analysepunkt*: Ein Analysepunkt ist eine spezielle Datenstruktur in einer Datei, die aus zwei Teilen besteht:
-        1. Einer Analysenkennung, die für das Betriebssystem angibt, dass der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) für die Datei unter Umständen Aktionen in Bezug auf E/A-Abläufe durchführen muss. 
-        2. Analysedaten, mit denen für den Dateisystemfilter der URI der Datei auf dem zugeordneten Cloudendpunkt (Azure-Dateifreigabe) angegeben wird. 
+  - *Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) wird nicht geladen.* Der Azure-Dateisynchronisierungs-Dateisystemfilter muss geladen werden, um auf das Tiering bzw. Rückrufanforderungen reagieren zu können. Es kann mehrere Gründe haben, warum der Filter nicht geladen wird. Der häufigste Grund ist, dass das Laden von einem Administrator manuell rückgängig gemacht wurde. Der Azure-Dateisynchronisierungs-Dateisystemfilter muss immer geladen sein, damit die Azure-Dateisynchronisierung richtig funktioniert.
+  - *Fehlender, beschädigter oder anderweitig fehlerhafter Analysepunkt*: Ein Analysepunkt ist eine spezielle Datenstruktur in einer Datei, die aus zwei Teilen besteht:
+    1. Einer Analysenkennung, die für das Betriebssystem angibt, dass der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) für die Datei unter Umständen Aktionen in Bezug auf E/A-Abläufe durchführen muss. 
+    2. Analysedaten, mit denen für den Dateisystemfilter der URI der Datei auf dem zugeordneten Cloudendpunkt (Azure-Dateifreigabe) angegeben wird. 
         
-        Am häufigsten kommt es zu einer Beschädigung eines Analysepunkts, wenn ein Administrator versucht, entweder die Kennung oder die dazugehörigen Daten zu ändern. 
-    - *Probleme mit der Netzwerkverbindung*: Der Server muss über eine Internetverbindung verfügen, damit für eine Datei das Tiering oder der Rückruf durchgeführt werden kann.
+       Am häufigsten kommt es zu einer Beschädigung eines Analysepunkts, wenn ein Administrator versucht, entweder die Kennung oder die dazugehörigen Daten zu ändern. 
+  - *Probleme mit der Netzwerkverbindung*: Der Server muss über eine Internetverbindung verfügen, damit für eine Datei das Tiering oder der Rückruf durchgeführt werden kann.
 
 In den folgenden Abschnitten wird beschrieben, wie Sie Probleme mit dem Cloudtiering behandeln und ermitteln, ob ein Problem ein Cloudspeicherproblem oder ein Serverproblem ist.
 
@@ -822,14 +845,14 @@ Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ere
 Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“. 
-    1. Stellen Sie sicher, dass die Dateien in der Azure-Dateifreigabe vorhanden sind.
+   1. Stellen Sie sicher, dass die Dateien in der Azure-Dateifreigabe vorhanden sind.
 
-    > [!NOTE]
-    > Eine Datei muss mit einer Azure-Dateifreigabe synchronisiert werden, bevor ein Tiering möglich ist.
+      > [!NOTE]
+      > Eine Datei muss mit einer Azure-Dateifreigabe synchronisiert werden, bevor ein Tiering möglich ist.
 
-    2. Überprüfen Sie, ob der Server über Internetkonnektivität verfügt. 
-    3. Überprüfen Sie, ob die Filtertreiber der Azure-Dateisynchronisierung („StorageSync.sys“ und „StorageSyncGuard.sys“) ausgeführt werden:
-        - Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten `fltmc` ein. Überprüfen Sie, ob die Dateisystem-Filtertreiber „StorageSync.sys“ und „StorageSyncGuard.sys“ aufgelistet sind.
+   2. Überprüfen Sie, ob der Server über Internetkonnektivität verfügt. 
+   3. Überprüfen Sie, ob die Filtertreiber der Azure-Dateisynchronisierung („StorageSync.sys“ und „StorageSyncGuard.sys“) ausgeführt werden:
+       - Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten `fltmc` ein. Überprüfen Sie, ob die Dateisystem-Filtertreiber „StorageSync.sys“ und „StorageSyncGuard.sys“ aufgelistet sind.
 
 > [!NOTE]
 > Eine Ereignis-ID 9003 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Tiering einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.

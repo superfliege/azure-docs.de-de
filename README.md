@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b1d75b4b32ebfffbddfaddf45b0c08fb1132995
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168552"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882207"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure-Dokumentation
 
@@ -12,7 +12,7 @@ Willkommen bei der Open-Source-[Dokumentation](https://docs.microsoft.com/azure)
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Wenn Sie an Open-Source-Ressourcen mitwirken möchten, umfasst dies mehr als nur die Bereitstellung von Updates – Sie teilen uns auch mit, wenn ein Problem auftritt. Im [Leitfaden zur Mitwirkung](.github/CONTRIBUTING.md) finden Sie weitere Informationen.
+Wenn Sie an Open-Source-Ressourcen mitwirken möchten, umfasst dies mehr als nur die Bereitstellung von Updates – Sie teilen uns auch mit, wenn ein Problem auftritt. Im [Leitfaden zur Mitwirkung](CONTRIBUTING.md) finden Sie weitere Informationen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -24,7 +24,7 @@ Für die Mitwirkung an der Dokumentation ist ein GitHub-Konto erforderlich. Fall
 
 Installieren Sie die folgenden Tools:
 
-* [Git-Client](https://git-scm.com/download)
+* [Git](https://git-scm.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Pack zur Dokumenterstellung](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-authoring-pack) für Visual Studio Code
 

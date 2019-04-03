@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981330"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444054"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Verwalten von Speicherkontoeinstellungen im Azure-Portal
 
@@ -51,7 +51,7 @@ So zeigen Sie die Anmeldeinformationen für Ihr Speicherkonto an:
 4. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um den Kontoschlüssel zu kopieren.
 5. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
 
-    ![Ein Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen.](media/storage-manage-account/portal-connection-string.png)
+    ![Ein Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen](media/storage-manage-account/portal-connection-string.png)
 
 ### <a name="regenerate-access-keys"></a>Erneutes Generieren von Zugriffsschlüsseln
 
@@ -85,4 +85,4 @@ Wenn Sie versuchen, ein Speicherkonto zu löschen, das einem virtuellen Azure-Co
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über Azure Storage-Konten](storage-account-overview.md)
-- [Erstellen Sie ein Speicherkonto](storage-quickstart-create-account.md)
+- [Erstellen eines Speicherkontos](storage-quickstart-create-account.md)

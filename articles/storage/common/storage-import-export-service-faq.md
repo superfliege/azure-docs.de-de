@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566187"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867574"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-Dienst: Häufig gestellte Fragen 
 Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten. Die Fragen und Antworten sind in folgende Kategorien unterteilt:
@@ -87,8 +87,18 @@ Sie können Festplatten mit allen gängigen Kurierdiensten wie FedEx, DHL, UPS o
 - Eine FedEx-Kontonummer in den USA und Europa, oder
 - eine DHL-Kontonummer in den Regionen Asien und Australien.
 
+> [!NOTE]
+> Die Rechenzentren in Indien verlangen im Briefkopf eine Zustellaufforderung zur Rücksendung der Laufwerke. Um den gewünschten Zutrittsausweis zu arrangieren, müssen Sie auch die Abholung bei Ihrem gewählten Spediteur buchen und die Details mit dem Rechenzentrum klären.
+
 ### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Gelten für den internationalen Versand meiner Festplatte bestimmte Einschränkungen?
 Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen.
+
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Gelten besondere Anforderungen an die Zustellung meiner Datenträger an ein Rechenzentrum?
+
+Die Anforderungen hängen von den jeweiligen für das Azure-Rechenzentrum geltenden Einschränkungen ab.
+- Es gibt einige wenige Standorte, bei denen aus Sicherheitsgründen eine Eingangs-ID-Nummer des Microsoft-Rechenzentrums auf dem Paket vermerkt sein muss. Bevor Sie Ihre Laufwerke oder Datenträger an das Rechenzentrum senden, wenden Sie sich an Azure DataBox Operations (adbops@microsoft.com), um diese Nummer zu erhalten. Ohne diese Nummer wird die Annahme des Pakets verweigert.
+- Die Rechenzentren in Indien benötigen die persönlichen Daten des Fahrers, wie z.B. den Personalausweis oder die ID-Nachweisnummer   (z.B. PAN, AADHAR, DL), den Namen, Kontakt und das Autokennzeichen, um einen Zutrittsausweis zu erhalten. Um Verzögerungen bei der Zustellung zu vermeiden, informieren Sie Ihren Spediteur über diese Anforderungen.
+
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Beim Erstellen des Auftrags habe ich festgestellt, dass die Versandadresse ein Standort ist, der sich von meinem Speicherkontostandort unterscheidet. Wie sollte ich vorgehen?
 
@@ -128,7 +138,7 @@ Das ist unterschiedlich. Beim Vorbereiten der Festplatte können Sie angeben, ob
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Welche maximale Blockblob- und Seitenblobgröße wird von Azure Import/Export unterstützt?
 
 Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
-Die maximale Seitenblobgröße beträgt 1 TB.
+Die maximale Seitenblobgröße ist 8 TB.
 
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Unterstützt Azure Import/Export die AES-256-Verschlüsselung?

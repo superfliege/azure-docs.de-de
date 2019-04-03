@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2d586f28b426732433c027c950f8193e7503c72b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 40086924731876dc44d9651ca46814149dba52f0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330805"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432779"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,6 +30,8 @@ ms.locfileid: "54330805"
 
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in ein bzw. aus einem lokalen Dateisystem zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 Sie können Daten **aus einem lokalen Dateisystem** in die folgenden Datenspeicher kopieren:
@@ -71,12 +73,12 @@ Sie können ein lokales Dateisystem mithilfe eines verknüpften Diensts vom Typ 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Stellen Sie sicher, dass die Eigenschaft „type“ auf **OnPremisesFileServer** festgelegt ist. |JA |
-| host |Gibt den Stammpfad des Ordners an, den Sie kopieren möchten. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) . |JA |
+| type |Stellen Sie sicher, dass die Eigenschaft „type“ auf **OnPremisesFileServer** festgelegt ist. |Ja |
+| host |Gibt den Stammpfad des Ordners an, den Sie kopieren möchten. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) . |Ja |
 | userid |Geben Sie die ID des Benutzers an, der auf dem Server zugreifen darf. |Nein (wenn Sie "encryptedCredential" auswählen) |
 | password |Geben Sie das Kennwort für das Benutzerkonto (userid) an. |Nein (wenn Sie "encryptedCredential" auswählen) |
-| encryptedCredential |Geben Sie die verschlüsselten Anmeldeinformationen an. Diese können Sie durch Ausführen des Cmdlets „New-AzureRmDataFactoryEncryptValue“ abrufen. |Nein (wenn Sie "userid" und "password" unverschlüsselt angeben) |
-| gatewayName |Gibt den Name des Gateways an, das der Data Factory-Dienst zum Verbinden mit dem lokalen Dateiserver verwenden soll. |JA |
+| encryptedCredential |Geben Sie die verschlüsselten Anmeldeinformationen an. Diese können Sie durch Ausführen des Cmdlets „New-AzDataFactoryEncryptValue“ abrufen. |Nein (wenn Sie "userid" und "password" unverschlüsselt angeben) |
+| gatewayName |Gibt den Name des Gateways an, das der Data Factory-Dienst zum Verbinden mit dem lokalen Dateiserver verwenden soll. |Ja |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Beispieldefinitionen für verknüpfte Dienste und Datasets
@@ -128,7 +130,7 @@ Der Abschnitt „typeproperties“ ist bei jeder Art von Dataset unterschiedlich
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| folderPath |Gibt den Unterpfad zum Ordner an. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen '\'. Der Platzhalterfilter wird nicht unterstützt. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) .<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |JA |
+| folderPath |Gibt den Unterpfad zum Ordner an. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen '\'. Der Platzhalterfilter wird nicht unterstützt. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) .<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein  |
 | fileFilter |Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. <br/><br/>Zulässige Werte sind: `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/><br/>Beispiel 1: „fileFilter“: „*.log“<br/>Beispiel 2: „fileFilter“: „2014-1-?.txt“<br/><br/>Beachten Sie, dass sich „fileFilter“ für das Eingabedataset „FileShare“ eignet. |Nein  |
 | partitionedBy |Sie können mit „partitionedBy“ für Zeitreihendaten einen dynamischen Wert für „folderPath“ und „filename“ angeben. Beispiel: Parametrisierung von „folderPath“ für Daten nach Stunde. |Nein  |

@@ -1,6 +1,6 @@
 ---
-title: Muster und technische Konzepte von Durable Functions – Azure
-description: Enthält Details zur Funktionsweise der Durable Functions in Azure, um die Vorteile der Ausführung von zustandsbehaftetem Code in der Cloud zu aktivieren.
+title: Muster und technische Konzepte von Durable Functions in Azure Functions
+description: Erfahren Sie, wie Sie mit der Durable Functions-Erweiterung in Azure Functions die Vorzüge zustandsbehafteter Codeausführung in der Cloud nutzen können.
 services: functions
 author: kashimiz
 manager: jeconnoc
@@ -10,19 +10,21 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6eb08af9cdd19bc83d44d29874f6ac58b41ed8c8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302036"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443418"
 ---
-# <a name="durable-functions-patterns-and-technical-concepts"></a>Muster und technische Konzepte von Durable Functions
+# <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Muster und technische Konzepte von Durable Functions (Azure Functions)
 
-*Durable Functions* ist eine Erweiterung von [Azure Functions](../functions-overview.md) und [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben können. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie. Dieser Artikel enthält weitere ausführliche Informationen über das Verhalten der Erweiterung Durable Functions für Azure Functions und häufige Implementierungsmuster.
+Durable Functions ist eine Erweiterung von [Azure Functions](../functions-overview.md) und [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md). Mithilfe von Durable Functions können Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie. 
+
+Dieser Artikel bietet Ihnen ausführliche Informationen über das Verhalten der Erweiterung Durable Functions für Azure Functions und häufige Implementierungsmuster. Diese Informationen unterstützen Sie dabei, zu bestimmen, wie Sie Durable Functions zur Lösung von Entwicklungsproblemen verwenden können.
 
 > [!NOTE]
-> Durable Functions ist eine fortgeschrittene Erweiterung für Azure Functions und nicht für alle Anwendungen geeignet. Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie mit den Konzepten von [Azure Functions](../functions-overview.md) und den Herausforderungen serverloser Anwendungsentwicklung bestens vertraut sind.
+> Durable Functions ist eine fortgeschrittene Erweiterung für Azure Functions und nicht für alle Anwendungen geeignet. In diesem Artikel wird vorausgesetzt, dass Sie mit den Konzepten von [Azure Functions](../functions-overview.md) und den Herausforderungen serverloser Anwendungsentwicklung bestens vertraut sind.
 
 ## <a name="patterns"></a>Muster
 
@@ -30,15 +32,15 @@ In diesem Abschnitt werden einige typische Anwendungsmuster beschrieben, die von
 
 ### <a name="chaining"></a>Muster 1: Funktionsverkettung
 
-Bei der *Funktionsverkettung* geht es um das Muster für die Ausführung einer Funktionssequenz in einer bestimmten Reihenfolge. Häufig muss die Ausgabe einer Funktion auf die Eingabe einer anderen Funktion angewendet werden.
+Beim Muster der Funktionsverkettung wird eine Abfolge von Funktionen in einer bestimmten Reihenfolge ausgeführt. Bei diesem Muster wird die Ausgabe einer Funktion als Eingabe einer weiteren Funktion verwendet.
 
-![Funktionsverkettungsdiagramm](./media/durable-functions-concepts/function-chaining.png)
+![Ein Diagramm des Funktionsverkettungsmusters](./media/durable-functions-concepts/function-chaining.png)
 
-Mit Durable Functions können Sie dieses Muster präzise im Code implementieren.
+Mithilfe von Durable Functions können Sie das Funktionsverkettungsmuster präzise wie im folgenden Beispiel dargestellt implementieren:
 
 #### <a name="c-script"></a>C#-Skript
 
-```cs
+```csharp
 public static async Task<object> Run(DurableOrchestrationContext context)
 {
     try
@@ -50,17 +52,17 @@ public static async Task<object> Run(DurableOrchestrationContext context)
     }
     catch (Exception)
     {
-        // error handling/compensation goes here
+        // Error handling or compensation goes here.
     }
 }
 ```
 
 > [!NOTE]
-> Beim Schreiben einer vorkompilierten permanenten Funktion in C# gibt es im Vergleich zu dem zuvor vorgestellten C#-Skriptbeispiel geringfügige Unterschiede. Eine vorkompilierte C#-Funktion würde permanente Parameter erfordern, damit sie mit den jeweiligen Attributen versehen werden kann. Ein Beispiel hierfür ist das Attribut `[OrchestrationTrigger]` für den Parameter `DurableOrchestrationContext`. Wenn die Parameter nicht ordnungsgemäß ergänzt werden, wäre die Laufzeit nicht in der Lage, die Variablen in die Funktion einzufügen und würde Fehler ausgeben. Weitere Beispiele finden Sie unter [Beispiel](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
+> Es gibt feine Unterschiede zwischen dem Schreiben einer vorkompilierten permanenten Funktion in C# und dem Schreiben einer vorkompilierten permanenten Funktion in dem C#-Skript, das in diesem Beispiel gezeigt wird. In einer vorkompilierten C#-Funktion müssen permanente Parameter mit den jeweiligen Attributen versehen werden. Ein Beispiel ist das `[OrchestrationTrigger]`-Attribut für den `DurableOrchestrationContext`-Parameter. Wenn in einer vorkompilierten permanenten C#-Funktion die Parameter nicht ordnungsgemäß mit Attributen versehen sind, kann die Runtime die Variablen nicht in die Funktion einfügen, und ein Fehler tritt auf. Weitere Beispiele finden Sie in den [Azure-Functions-Durable-Extension-Beispielen auf GitHub](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
-```js
+```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
@@ -71,29 +73,31 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Die Werte „F1“, „F2“, „F3“ und „F4“ sind die Namen von weiteren Funktionen in der Funktionen-App. Die Ablaufsteuerung wird mithilfe normaler imperativer Codierungskonstrukte implementiert. Dies bedeutet, dass der Code von oben nach unten ausgeführt wird und bestehende sprachliche Ablaufsteuerungssemantik wie Bedingungsanweisungen und Schleifen umfassen kann.  Fehlerbehandlungscode kann in Try/Catch/Finally-Blöcken enthalten sein.
+In diesem Beispiel sind die Werte `F1`, `F2`, `F3` und `F4` die Namen weiterer Funktionen in der Funktions-App. Sie können die Ablaufsteuerung mithilfe normaler imperativer Codierungskonstrukte implementieren. Der Code wird von oben nach unten ausgeführt. Der Code kann bestehende sprachliche Ablaufsteuerungssemantik wie Bedingungsanweisungen und Schleifen umfassen. Sie können Logik zur Fehlerbehandlung in `try`/`catch`/`finally`-Blöcken einschließen.
 
-Der `context`-Parameter [DurableOrchestrationContext] \(.NET\) und das `context.df`-Objekt (JavaScript) stellen Methoden zum Aufrufen anderer Funktionen anhand des Namens, zum Übergeben von Parametern und Zurückgeben der Funktionsausgabe bereit. Jedes Mal, wenn der Code `await` (C#) oder `yield` (JavaScript) aufruft, erstellt das Durable Functions Framework *Prüfpunkte* zum Status der aktuellen Funktionsinstanz. Wenn der Prozess oder die VM mitten in der Ausführung neu gestartet wird, wird die Funktionsinstanz ab dem vorherigen `await`- bzw. `yield`-Aufruf fortgesetzt. Später wird dieses Neustartverhalten näher erläutert.
+Sie können den `context`-Parameter [DurableOrchestrationContext] \(.NET\) und das `context.df`-Objekt (JavaScript) verwenden, um andere Funktionen anhand des Namens aufzurufen, Parameter zu übergeben und Funktionsausgaben zurückzugeben. Jedes Mal, wenn der Code `await` (C#) oder `yield` (JavaScript) aufruft, erstellt das Durable Functions Framework Prüfpunkte zum Status der aktuellen Funktionsinstanz. Wenn der Prozess oder die VM mitten in der Ausführung neu gestartet wird, wird die Funktionsinstanz ab dem vorherigen `await`- bzw. `yield`-Aufruf fortgesetzt. Weitere Informationen finden Sie im nächsten Abschnitt, Muster 2: Auffächern auswärts/einwärts.
 
 > [!NOTE]
-> Das `context`-Objekt in JavaScript stellt den [Funktionskontext](../functions-reference-node.md#context-object) als Ganzes dar, nicht den [DurableOrchestrationContext].
+> Das `context`-Objekt in JavaScript stellt gesamten den [Funktionskontext](../functions-reference-node.md#context-object) dar, nicht nur den [DurableOrchestrationContext]-Parameter.
 
-### <a name="fan-in-out"></a>Muster 2: Auffächern nach außen/innen
+### <a name="fan-in-out"></a>Muster 2: Auffächern auswärts/einwärts
 
-*Auffächern nach außen/innen* bezieht sich auf das Muster der gleichzeitigen Ausführung mehrerer Funktionen und anschließendes Warten darauf, dass alle beendet werden.  Häufig werden von Funktionen zurückgegebene Ergebnisse einer Aggregation unterzogen.
+Beim Muster Auffächern auswärts/einwärts werden mehrere Funktionen parallel ausgeführt und anschließend auf den Abschluss aller gewartet. Häufig werden die von den Funktionen zurückgegebenen Ergebnisse einer Aggregation unterzogen.
 
-![Diagramm zum Auffächern nach außen/innen](./media/durable-functions-concepts/fan-out-fan-in.png)
+![Ein Diagramm des Musters „Auffächern auswärts/einwärts“](./media/durable-functions-concepts/fan-out-fan-in.png)
 
-Bei normalen Funktionen kann die Funktion zum Auffächern nach außen mehrere Nachrichten an eine Warteschlange senden. Das Auffächern zurück nach innen ist jedoch wesentlich schwieriger. Sie müssen Code schreiben, um nachzuverfolgen, wann die von der Warteschlange ausgelösten Funktionen enden und Funktionsausgaben speichern. Die Erweiterung Durable Functions verarbeitet dieses Muster mit relativ einfachem Code.
+Bei normalen Funktionen kann das Auffächern auswärts erfolgen, indem die Funktion mehrere Nachrichten an eine Warteschlange sendet. Das Auffächern zurück nach innen ist wesentlich schwieriger. Für das Auffächern nach innen schreiben Sie in einer normalen Funktion Code, der nachverfolgt, wann die von der Warteschlange ausgelösten Funktionen enden und speichern dann ihre Ausgaben. 
+
+Die Erweiterung Durable Functions wird diesem Muster mit relativ einfachem Code gerecht:
 
 #### <a name="c-script"></a>C#-Skript
 
-```cs
+```csharp
 public static async Task Run(DurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
-    // get a list of N work items to process in parallel
+    // Get a list of N work items to process in parallel.
     object[] workBatch = await context.CallActivityAsync<object[]>("F1");
     for (int i = 0; i < workBatch.Length; i++)
     {
@@ -103,7 +107,7 @@ public static async Task Run(DurableOrchestrationContext context)
 
     await Task.WhenAll(parallelTasks);
 
-    // aggregate all N outputs and send result to F3
+    // Aggregate all N outputs and send the result to F3.
     int sum = parallelTasks.Sum(t => t.Result);
     await context.CallActivityAsync("F3", sum);
 }
@@ -111,13 +115,13 @@ public static async Task Run(DurableOrchestrationContext context)
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
-```js
+```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const parallelTasks = [];
 
-    // get a list of N work items to process in parallel
+    // Get a list of N work items to process in parallel.
     const workBatch = yield context.df.callActivity("F1");
     for (let i = 0; i < workBatch.length; i++) {
         parallelTasks.push(context.df.callActivity("F2", workBatch[i]));
@@ -125,23 +129,25 @@ module.exports = df.orchestrator(function*(context) {
 
     yield context.df.Task.all(parallelTasks);
 
-    // aggregate all N outputs and send result to F3
+    // Aggregate all N outputs and send the result to F3.
     const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
     yield context.df.callActivity("F3", sum);
 });
 ```
 
-Das Auffächern nach außen wird auf mehrere Instanzen der Funktion `F2` verteilt, und die Arbeit wird mit einer dynamischen Liste von Aufgaben nachverfolgt. Die `Task.WhenAll`-API von .NET oder `context.df.Task.all`-API von JavaScript wird aufgerufen, um auf die Beendigung aller aufgerufenen Funktionen zu warten. Anschließend werden die Ausgaben der `F2`-Funktion aus der dynamischen Aufgabenliste aggregiert und an die `F3`-Funktion übergeben.
+Das Auffächern nach außen ist auf mehrere Instanzen der `F2`-Funktion verteilt. Die Arbeit wird mithilfe einer dynamischen Aufgabenliste nachverfolgt. Die .NET-API `Task.WhenAll` oder die JavaScript-API `context.df.Task.all` wird aufgerufen, um auf den Abschluss der aufgerufenen Funktionen zu warten. Anschließend werden die Ausgaben der `F2`-Funktion aus der dynamischen Aufgabenliste aggregiert und an die `F3`-Funktion übergeben.
 
-Die automatische Prüfpunkterstellung, die beim `await`- oder `yield`-Aufruf für `Task.WhenAll` bzw. `context.df.Task.all` erfolgt, stellt sicher, dass jeglicher Absturz oder Neustart während der Ausführung keinen Neustart bereits abgeschlossener Aufgaben erfordert.
+Die automatische Prüfpunkterstellung, die beim `await`- oder `yield`-Aufruf für `Task.WhenAll` bzw. `context.df.Task.all` erfolgt, stellt sicher, dass ein potentieller Absturz oder Neustart während der Ausführung keinen Neustart bereits abgeschlossener Aufgaben erfordert.
 
 ### <a name="async-http"></a>Muster 3: Asynchrone HTTP-APIs
 
-Beim dritten Muster geht es um das Problem der Koordination des Status lange ausgeführter Vorgänge mit externen Clients. Eine allgemeine Möglichkeit, dieses Muster zu implementieren, besteht darin, die lange ausgeführte Aktion durch einen HTTP-Aufruf auszulösen und dann den Client zu einem Statusendpunkt umzuleiten, den er abfragen kann, um zu erfahren, wann der Vorgang abgeschlossen ist.
+Das Muster „asynchrone HTTP-APIs“ eignet sich für das Problem, den Status von Vorgängen mit langer Ausführungsdauer mit externen Clients zu koordinieren. Ein gängiges Verfahren zum Implementieren dieses Musters besteht darin, die Vorgänge mit langer Ausführungsdauer von einem HTTP-Aufruf auslösen zu lassen. Leiten Sie dann den Client zu einem Statusendpunkt um, den der Client abfragt, um herauszufinden, wenn der Vorgang abgeschlossen ist.
 
-![HTTP-API-Diagramm](./media/durable-functions-concepts/async-http-api.png)
+![Ein Diagramm des HTTP-API-Musters](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions bietet integrierte APIs, die den Code vereinfachen, den Sie für die Interaktion mit langen Funktionsausführungen schreiben. Die Schnellstartbeispiele ([C#](durable-functions-create-first-csharp.md), [JavaScript](quickstart-js-vscode.md)) zeigen einen einfachen REST-Befehl, der zum Starten neuer Orchestratorfunktionsinstanzen verwendet werden kann. Sobald eine Instanz gestartet wird, macht die Erweiterung Webhook-HTTP-APIs verfügbar, die den Status der Orchestratorfunktion abfragen. Das folgende Beispiel zeigt die REST-Befehle zum Starten eines Orchestrators und zum Abfragen seines Status. Zur besseren Übersichtlichkeit werden im Beispiel einige Details weggelassen.
+Durable Functions bietet integrierte APIs, die den Code vereinfachen, den Sie für die Interaktion mit langen Funktionsausführungen schreiben. Die Schnellstartbeispiele für Durable Functions ([C#](durable-functions-create-first-csharp.md) und [JavaScript](quickstart-js-vscode.md)) zeigen einen einfachen REST-Befehl, den Sie zum Starten neuer Orchestratorfunktionsinstanzen verwenden können. Nach dem Start einer Instanz macht die Erweiterung Webhook-HTTP-APIs verfügbar, die den Status der Orchestratorfunktion abfragen. 
+
+Das folgende Beispiel zeigt REST-Befehle zum Starten eines Orchestrators und zum Abfragen seines Status. Zur besseren Übersichtlichkeit werden im Beispiel einige Details weggelassen.
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -168,20 +174,22 @@ Content-Type: application/json
 
 Da der Status von der Durable Functions-Laufzeit verwaltet wird, müssen Sie keinen eigenen Mechanismus zur Statusnachverfolgung implementieren.
 
-Obwohl die Erweiterung Durable Functions über integrierte Webhooks zur Verwaltung lange ausgeführter Orchestrierungen verfügt, können Sie dieses Muster unter Verwendung Ihrer eigenen Funktionstrigger (z.B. HTTP, Warteschlange oder Event Hub) und der `orchestrationClient`-Bindung selbst implementieren. Sie können z. B. eine Warteschlangennachricht verwenden, um die Beendigung auszulösen.  Sie könnten auch anstelle der integrierten Webhooks, die einen generierten Schlüssel für die Authentifizierung verwenden, einen HTTP-Trigger verwenden, der durch eine Azure Active Directory-Authentifizierungsrichtlinie geschützt ist.
+Die Durable Functions-Erweiterung verfügt über integrierte Webhooks, die Orchestrierungen mit langer Ausführungsdauer verwalten. Sie können dieses Muster selbst implementieren, indem Sie Ihre eigenen Funktionstrigger (wie etwa HTTP, eine Warteschlange oder Azure Event Hubs) und die `orchestrationClient`-Bindung verwenden. Sie können beispielsweise eine Warteschlangennachricht verwenden, um die Beendigung auszulösen. Sie könnten auch anstelle der integrierten Webhooks, die einen generierten Schlüssel für die Authentifizierung verwenden, einen HTTP-Trigger verwenden, der durch eine Azure Active Directory-Authentifizierungsrichtlinie geschützt ist.
+
+Hier finden Sie einige Beispiele zur Verwendung des HTTP-API-Musters:
 
 #### <a name="c"></a>C#
 
-```cs
-// HTTP-triggered function to start a new orchestrator function instance.
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
 public static async Task<HttpResponseMessage> Run(
     HttpRequestMessage req,
     DurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
-    // Function name comes from the request URL.
-    // Function input comes from the request content.
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
 
@@ -194,14 +202,14 @@ public static async Task<HttpResponseMessage> Run(
 #### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
-// HTTP-triggered function to start a new orchestrator function instance.
+// An HTTP-triggered function starts a new orchestrator function instance.
 const df = require("durable-functions");
 
 module.exports = async function (context, req) {
     const client = df.getClient(context);
 
-    // Function name comes from the request URL.
-    // Function input comes from the request content.
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
     const eventData = req.body;
     const instanceId = await client.startNew(req.params.functionName, undefined, eventData);
 
@@ -212,25 +220,27 @@ module.exports = async function (context, req) {
 ```
 
 > [!WARNING]
-> Wenn Sie lokal in JavaScript entwickeln, müssen Sie die Umgebungsvariable `WEBSITE_HOSTNAME` auf `localhost:<port>` festlegen, z. B. `localhost:7071`, um Methoden mit `DurableOrchestrationClient` zu verwenden. Weitere Informationen zu dieser Anforderung finden Sie in der [Beschreibung des Problems auf GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Wenn Sie lokal in JavaScript entwickeln, müssen Sie zum Verwenden von Methoden auf dem `DurableOrchestrationClient` die Umgebungsvariable `WEBSITE_HOSTNAME` auf `localhost:<port>` festlegen (Beispiel: `localhost:7071`). Weitere Informationen zu dieser Anforderung finden Sie im [GitHub-Problem 28](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 In .NET ist der `starter`-Parameter von [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) ein Wert aus der `orchestrationClient`-Ausgabebindung, die Teil der Durable Functions-Erweiterung ist. In JavaScript wird dieses Objekt durch Aufrufen von `df.getClient(context)` zurückgegeben. Diese Objekte stellen Methoden bereit, mit denen neue oder vorhandene Orchestratorfunktionsinstanzen gestartet, beendet und abgefragt sowie Ereignisse an sie gesendet werden können.
 
-Im vorherigen Beispiel nimmt eine über HTTP ausgelöste Funktion einen `functionName`-Wert von der eingehenden URL entgegen und übergibt den Wert an [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). Die Bindungs-API [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) gibt dann eine Antwort zurück, die einen `Location`-Header und zusätzliche Informationen zur Instanz enthält, die später verwendet werden können, um den Status der gestarteten Instanz abzurufen oder sie zu beenden.
+In den vorherigen Beispielen nimmt eine über HTTP ausgelöste Funktion einen `functionName`-Wert von der eingehenden URL entgegen und übergibt den Wert an [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). Die Bindungs-API [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) gibt dann eine Antwort zurück, die einen `Location`-Header und zusätzliche Informationen zur Instanz enthält. Sie können die Informationen später verwenden, um den Status der gestarteten Instanz abzurufen oder sie zu beenden.
 
-### <a name="monitoring"></a>Muster 4: Überwachung
+### <a name="monitoring"></a>Muster 4: Überwachen
 
-Das Monitormuster bezieht sich auf einen flexiblen *wiederkehrenden* Prozess in einem Workflow – wenn beispielsweise bestimmte Elemente solange abgerufen werden, bis bestimmte Bedingungen erfüllt sind. Ein normaler [Timertrigger](../functions-bindings-timer.md) kann für ein einfaches Szenario verwendet werden, beispielsweise einen periodischen Bereinigungsauftrag. Sein Intervall ist jedoch statisch, und die Verwaltung der Instanzlebensdauer wird komplex. Durable Functions ermöglicht flexible Wiederholungsintervalle, die Verwaltung der Aufgabenlebensdauer und die Erstellung mehrerer Monitorprozesse aus einer einzigen Orchestrierung.
+Das Überwachen-Muster bezieht sich auf einen flexiblen, wiederkehrenden Vorgang in einem Workflow. Ein Beispiel besteht im Abfragen, bis bestimmte Bedingungen erfüllt sind. Sie können einen normalen [Timertrigger](../functions-bindings-timer.md) für ein einfaches Szenario verwenden, beispielsweise einen periodischen Bereinigungsauftrag. Sein Intervall ist jedoch statisch, und die Verwaltung der Instanzlebensdauer wird komplex. Mithilfe von Durable Functions können Sie flexible Wiederholungsintervalle erstellen, die Lebensdauer von Aufgaben verwalten und mehrere Überwachungsprozesse aus einer einzelnen Orchestrierung erstellen.
 
-Ein Beispiel wäre das Umkehren des früheren asynchronen HTTP-API-Szenarios. Anstatt einen Endpunkt für einen externen Client freizugeben, um einen lang laufenden Vorgang zu überwachen, belegt der lang laufende Monitor einen Eingabeendpunkt und wartet auf einen Zustandswechsel.
+Ein Beispiel für das Überwachen-Muster besteht in der Umkehrung des früheren asynchronen HTTP-API-Szenarios. Anstatt einen Endpunkt für einen externen Client freizugeben, um einen lang laufenden Vorgang zu überwachen, belegt der lang laufende Monitor einen externen Endpunkt und wartet dann auf einen Zustandswechsel.
 
-![Monitordiagramm](./media/durable-functions-concepts/monitor.png)
+![Ein Diagramm des Überwachen-Musters](./media/durable-functions-concepts/monitor.png)
 
-Mithilfe von Durable Functions können mehrere Monitore, die beliebige Endpunkte beobachten, in ein paar Codezeilen erstellt werden. Die Monitore können die Ausführung beenden, wenn eine Bedingung erfüllt ist, oder durch den [DurableOrchestrationClient](durable-functions-instance-management.md) beendet werden. Zudem kann ihr Warteintervall basierend auf einer Bedingung (z.B. exponentielles Backoff) geändert werden. Der folgende Code implementiert einen grundlegenden Monitor.
+Mit ein paar Codezeilen können Sie Durable Functions dazu verwenden, mehrere Monitore zu erstellen, die beliebige Endpunkte beobachten. Die Monitore können die Ausführung beenden, wenn eine Bedingung erfüllt ist, oder der [DurableOrchestrationClient](durable-functions-instance-management.md) kann die Monitore beenden. Sie können das `wait`-Intervall eines Monitors auf der Grundlage einer spezifischen Bedingung (z.B. exponentielles Backoff) ändern. 
+
+Der folgende Code implementiert einen einfachen Monitor:
 
 #### <a name="c-script"></a>C#-Skript
 
-```cs
+```csharp
 public static async Task Run(DurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
@@ -242,23 +252,23 @@ public static async Task Run(DurableOrchestrationContext context)
         var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
         if (jobStatus == "Completed")
         {
-            // Perform action when condition met
+            // Perform an action when a condition is met.
             await context.CallActivityAsync("SendAlert", machineId);
             break;
         }
 
-        // Orchestration will sleep until this time
+        // Orchestration sleeps until this time.
         var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
         await context.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    // Perform further work here, or let the orchestration end
+    // Perform more work here, or let the orchestration end.
 }
 ```
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
-```js
+```javascript
 const df = require("durable-functions");
 const moment = require("moment");
 
@@ -270,35 +280,37 @@ module.exports = df.orchestrator(function*(context) {
     while (moment.utc(context.df.currentUtcDateTime).isBefore(expiryTime)) {
         const jobStatus = yield context.df.callActivity("GetJobStatus", jobId);
         if (jobStatus === "Completed") {
-            // Perform action when condition met
+            // Perform an action when a condition is met.
             yield context.df.callActivity("SendAlert", machineId);
             break;
         }
 
-        // Orchestration will sleep until this time
+        // Orchestration sleeps until this time.
         const nextCheck = moment.utc(context.df.currentUtcDateTime).add(pollingInterval, 's');
         yield context.df.createTimer(nextCheck.toDate());
     }
 
-    // Perform further work here, or let the orchestration end
+    // Perform more work here, or let the orchestration end.
 });
 ```
 
-Wenn eine Anforderung empfangen wird, wird eine neue Orchestrierungsinstanz für diese Auftrags-ID erstellt. Die Instanz fragt den Status ab, bis eine Bedingung erfüllt ist und die Schleife beendet wird. Ein permanenter Timer wird verwendet, um das Abrufintervall zu steuern. Nun können weitere Arbeitsschritte ausgeführt werden, oder die Orchestrierung wird beendet. Wenn die `context.CurrentUtcDateTime` (.NET) oder `context.df.currentUtcDateTime` (JavaScript) die `expiryTime` überschreitet, wird der Monitor beendet.
+Wenn eine Anforderung empfangen wird, wird eine neue Orchestrierungsinstanz für diese Auftrags-ID erstellt. Die Instanz fragt den Status ab, bis eine Bedingung erfüllt ist und die Schleife beendet wird. Ein permanenter Timer steuert das Abrufintervall. Anschließend können weitere Arbeitsschritte ausgeführt werden, oder die Orchestrierung wird beendet. Wenn `context.CurrentUtcDateTime` (.NET) oder `context.df.currentUtcDateTime` (JavaScript) den Wert von `expiryTime` überschreitet, wird der Monitor beendet.
 
 ### <a name="human"></a>Muster 5: Benutzerinteraktion
 
-Viele Prozesse enthalten eine Form der Benutzerinteraktion. Das Problem bei der Einbeziehung von Menschen in einen automatisierten Prozess ist, dass Personen nicht immer in gleichem Maße verfügbar und reaktionsfähig sind wie Clouddienste. Automatisierte Prozesse müssen dies tolerieren, und hierzu nutzen sie häufig Timeouts und Kompensationscode.
+Viele automatisierte Prozesse enthalten eine Form der Benutzerinteraktion. Das Einbeziehen von Menschen in einen automatisierten Prozess ist schwierig, da Personen nicht im gleichen hohen Maß verfügbar und reaktionsfähig sind wie Clouddienste. Ein automatisierter Prozess kann dem mithilfe von Timeouts und Kompensationscode Rechnung tragen.
 
-Ein Beispiel eines Geschäftsprozesses, der Benutzerinteraktion umfasst, ist ein Genehmigungsprozess. So ist z.B. für einen Ausgabenbericht, der einen bestimmten Betrag überschreitet, die Genehmigung eines Managers erforderlich. Wenn der Manager die Genehmigung nicht innerhalb von 72 Stunden erteilt (weil er vielleicht im Urlaub ist), wird ein Eskalationsverfahren wirksam, um die Genehmigung von einer anderen Person (z.B. dem Manager des Managers) zu erhalten.
+Ein Genehmigungsprozess ist ein Beispiel für einen Geschäftsprozesses, der Benutzerinteraktion umfasst. Beispielsweise kann für eine Spesenabrechnung, die einen bestimmten Betrag überschreitet, die Genehmigung eines Vorgesetzten erforderlich sein. Wenn der Vorgesetzte die Spesenabrechnung nicht innerhalb von 72 Stunden genehmigt (vielleicht weil er im Urlaub ist), wird ein Eskalationsverfahren wirksam, um die Genehmigung von einer anderen Person (z.B. dem Vorgesetzten des Vorgesetzten) zu erhalten.
 
-![Diagramm zur Benutzerinteraktion](./media/durable-functions-concepts/approval.png)
+![Ein Diagramm des Musters „Benutzerinteraktion“](./media/durable-functions-concepts/approval.png)
 
-Dieses Muster kann mithilfe einer Orchestratorfunktion implementiert werden. Der Orchestrator würde einen [permanenten Timer](durable-functions-timers.md) verwenden, um die Genehmigung anzufordern und im Falle eines Timeouts zu eskalieren. Er würde auf ein [externes Ereignis](durable-functions-external-events.md) warten – die durch Benutzerinteraktion generierte Benachrichtigung.
+Sie können das Muster aus diesem Beispiel mithilfe einer Orchestrierungsfunktion implementieren. Der Orchestrator verwendet einen [permanenten Timer](durable-functions-timers.md), um die Genehmigung anzufordern. Der Orchestrator führt die Eskalation aus, wenn das Timeout auftritt. Der Orchestrator wartet auf ein [externes Ereignis](durable-functions-external-events.md), beispielsweise eine Benachrichtigung, die durch eine Benutzerinteraktion generiert wird.
+
+In diesen Beispielen wird ein Genehmigungsprozess erstellt, um das Muster der Benutzerinteraktion zu veranschaulichen:
 
 #### <a name="c-script"></a>C#-Skript
 
-```cs
+```csharp
 public static async Task Run(DurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval");
@@ -323,7 +335,7 @@ public static async Task Run(DurableOrchestrationContext context)
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
-```js
+```javascript
 const df = require("durable-functions");
 const moment = require('moment');
 
@@ -343,7 +355,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Der permanente Timer wird durch Aufrufen von `context.CreateTimer` (.NET) oder `context.df.createTimer` (JavaScript) erstellt. Die Benachrichtigung wird von `context.WaitForExternalEvent` (.NET) oder `context.df.waitForExternalEvent` (JavaScript) empfangen. Außerdem wird `Task.WhenAny` (.NET) oder `context.df.Task.any` (JavaScript) aufgerufen, um zu entscheiden, ob eine Eskalation erfolgt (das Timeout tritt zuerst auf) oder die Genehmigung verarbeitet wird (die Genehmigung wird vor dem Timeout empfangen).
+Rufen Sie zum Erstellen des permanenten Timers `context.CreateTimer` (.NET) oder `context.df.createTimer` (JavaScript) auf. Die Benachrichtigung wird von `context.WaitForExternalEvent` (.NET) oder `context.df.waitForExternalEvent` (JavaScript) empfangen. Anschließend wird `Task.WhenAny` (.NET) oder `context.df.Task.any` (JavaScript) aufgerufen, um zu entscheiden, ob eine Eskalation erfolgt (das Timeout tritt zuerst auf) oder die Genehmigung verarbeitet wird (die Genehmigung wird vor dem Timeout empfangen).
 
 Ein externer Client kann die Ereignisbenachrichtigung entweder über die [integrierten HTTP-APIs](durable-functions-http-api.md#raise-event) oder die [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_)-API einer anderen Funktion an eine wartende Orchestratorfunktion senden:
 
@@ -367,56 +379,62 @@ module.exports = async function (context) {
 
 ## <a name="the-technology"></a>Die Technologie
 
-Im Hintergrund baut die Erweiterung Durable Functions auf dem [Durable Task Framework](https://github.com/Azure/durabletask) auf, einer Open Source-Bibliothek auf GitHub zum Erstellen von permanenten Aufgabenorchestrierungen. So wie Azure Functions die serverlose Weiterentwicklung von Azure WebJobs ist, so ist Durable Functions die serverlose Weiterentwicklung von Durable Task Framework. Durable Task Framework wird sowohl bei Microsoft als auch außerhalb intensiv zum Automatisieren unternehmenswichtiger Prozesse verwendet. Es ist wie geschaffen für die serverlose Azure Functions-Umgebung.
+Im Hintergrund baut die Erweiterung Durable Functions auf dem [Durable Task Framework](https://github.com/Azure/durabletask) auf, einer Open Source-Bibliothek auf GitHub, die zum Erstellen von permanenten Aufgabenorchestrierungen verwendet wird. Wie Azure Functions die serverlose Weiterentwicklung von Azure WebJobs ist, so ist Durable Functions die serverlose Weiterentwicklung von Durable Task Framework. Microsoft und andere Unternehmen verwenden das Durable Task Framework intensiv zum Automatisieren unternehmenswichtiger Prozesse. Es ist wie geschaffen für die serverlose Azure Functions-Umgebung.
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>Ereignisherkunftsermittlung, Prüfpunkterstellung und Wiedergabe
 
-Orchestratorfunktionen verwalten ihren Ausführungsstatus zuverlässig mithilfe eines als [Ereignisherkunftsermittlung](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) bezeichneten Entwurfsmusters. Anstatt den *aktuellen* Status einer Orchestrierung direkt zu speichern, verwendet die Erweiterung Durable Functions einen ausschließlich zum Anfügen bestimmten Speicher, um die *vollständige Reihe der Aktionen* aufzuzeichnen, die von der Funktionsorchestrierung durchgeführt werden. Dies hat im Vergleich zum Sichern des vollständigen Laufzeitstatus zahlreiche Vorteile wie Verbesserung der Leistung, Skalierbarkeit und Reaktionsfähigkeit. Weitere Vorteile sind die endgültige Konsistenz von Transaktionsdaten und das Verwalten vollständiger Überwachungspfade und des Verlaufs. Die Überwachungspfade selbst aktivieren zuverlässige kompensierende Aktionen.
+Orchestratorfunktionen verwalten ihren Ausführungsstatus zuverlässig mithilfe eines als [Ereignissourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) bezeichneten Entwurfsmusters. Anstatt den aktuellen Status einer Orchestrierung direkt zu speichern, verwendet die Erweiterung Durable Functions einen ausschließlich zum Anfügen bestimmten Speicher, um die vollständige Reihe der Aktionen aufzuzeichnen, die von der Funktionsorchestrierung durchgeführt werden. Ein reiner Anfügespeicher bietet viele Vorteile im Vergleich mit dem „Abladen“ des gesamten Laufzeitstatus. Zu den Vorteilen zählen die gesteigerte Leistung, Skalierbarkeit und Reaktionsfähigkeit. Sie erhalten außerdem endgültige Konsistenz von Transaktionsdaten und vollständige Überwachungspfade sowie vollständigen Verlauf. Die Überwachungspfade unterstützen zuverlässige kompensierende Aktionen.
 
-Die Verwendung der Ereignisherkunftsermittlung durch diese Erweiterung ist transparent. Im Hintergrund gibt der `await`-Operator (C#) oder `yield`-Operator (JavaScript) in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem *Ausführungsverlauf* der Orchestrierungsinstanz angefügt. Der Verlauf wird in einer Speichertabelle gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden. Die Abrechnung für sie wird beendet, wenn Sie den Verbrauchstarif für Azure Functions verwenden.  Wenn weitere Aufgaben bewältigt werden müssen, wird die Funktion neu gestartet und ihr Status wiederhergestellt.
+Durable Functions verwendet Ereignissourcing transparent. Im Hintergrund gibt der `await`-Operator (C#) oder `yield`-Operator (JavaScript) in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem Ausführungsverlauf der Orchestrierungsinstanz angefügt. Der Verlauf wird in einer Speichertabelle gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden. 
 
-Sobald eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird eine Antwortnachricht empfangen, oder ein permanenter Timer läuft ab), wird der Orchestrator reaktiviert und führt erneut die gesamte Funktion von Beginn an neu aus, um den lokalen Status wiederherzustellen. Wenn der Code während dieser Wiedergabe versucht, eine Funktion aufzurufen (oder eine andere asynchrone Aktion auszuführen), zieht Durable Task Framework den *Ausführungsverlauf* der aktuellen Orchestrierung zu Rate. Wenn festgestellt wird, dass die [Aktivitätsfunktion](durable-functions-types-features-overview.md#activity-functions) bereits ausgeführt wurde und ein Ergebnis erbracht hat, wird dieses Funktionsergebnis wiedergegeben und der Orchestratorcode weiter ausgeführt. Dieser Vorgang wird fortgesetzt, bis der Funktionscode an einen Punkt gelangt, an dem er entweder abgeschlossen oder neue asynchrone Arbeit geplant ist.
+Die Abrechnung für die Orchestratorfunktion wird beendet, wenn Sie den Verbrauchstarif für Azure Functions verwenden. Wenn weitere Aufgaben bewältigt werden müssen, wird die Funktion neu gestartet und ihr Status wiederhergestellt.
+
+Wenn eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird eine Antwortnachricht empfangen, oder ein permanenter Timer läuft ab), wird der Orchestrator reaktiviert und führt erneut die gesamte Funktion von Beginn an neu aus, um den lokalen Status wiederherzustellen. 
+
+Wenn der Code während dieser Wiedergabe versucht, eine Funktion aufzurufen (oder eine andere asynchrone Aktion auszuführen), zieht Durable Task Framework den Ausführungsverlauf der aktuellen Orchestrierung zu Rate. Wenn festgestellt wird, dass die [Aktivitätsfunktion](durable-functions-types-features-overview.md#activity-functions) bereits ausgeführt wurde und ein Ergebnis erbracht hat, wird dieses Funktionsergebnis wiedergegeben und der Orchestratorcode weiter ausgeführt. Die Wiedergabe wird fortgesetzt, bis der Funktionscode abgeschlossen ist oder geplante neue asynchrone Arbeit ansteht.
 
 ### <a name="orchestrator-code-constraints"></a>Einschränkungen des Orchestratorcodes
 
-Mit dem Wiedergabeverhalten sind Einschränkungen des Codetyps verbunden, der in einer Orchestratorfunktion geschrieben werden kann. Orchestratorcode muss z.B. deterministisch sein, da er viele Male wiedergegeben wird und immer dasselbe Ergebnis produzieren muss. Die vollständige Liste der Einschränkungen finden Sie im Abschnitt [Orchestrator code constraints](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints) (Einschränkungen des Orchestratorcodes) des Artikels **Checkpoints and replay in Durable Functions (Azure Functions)** (Prüfpunkte und Wiedergabe in Durable Functions [Azure Functions]).
+Mit dem Wiedergabeverhalten von Orchestratorcode sind Einschränkungen des Codetyps verbunden, der in einer Orchestratorfunktion geschrieben werden kann. Orchestratorcode muss z.B. deterministisch sein, da er viele Male wiedergegeben wird und immer dasselbe Ergebnis produzieren muss. Eine vollständige Liste der Einschränkungen finden Sie unter [Einschränkungen des Orchestratorcodes](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints).
 
 ## <a name="monitoring-and-diagnostics"></a>Überwachung und Diagnose
 
-Die Erweiterung Durable Functions gibt automatisch strukturierte Nachverfolgungsdaten an [Application Insights](../functions-monitoring.md) aus, wenn die Funktions-App mit einem Application Insights-Instrumentierungsschlüssel konfiguriert ist. Diese Nachverfolgungsdaten können verwendet werden, um das Verhalten und den Verlauf Ihrer Orchestrierungen zu überwachen.
+Die Erweiterung Durable Functions gibt automatisch strukturierte Nachverfolgungsdaten an [Application Insights](../functions-monitoring.md) aus, wenn Sie Ihre Funktions-App mit einem Azure Application Insights-Instrumentierungsschlüssel eingerichtet haben. Sie können diese Nachverfolgungsdaten verwenden, um die Aktionen und den Status Ihrer Orchestrierungen zu überwachen.
 
-Hier ist ein Beispiel für die Anzeige der Durable Functions-Nachverfolgungsereignisse im Application Insights-Portal mit [Application Insights – Analyse](../../application-insights/app-insights-analytics.md):
+Hier ist ein Beispiel für die Anzeige der Durable Functions-Nachverfolgungsereignisse im Application Insights-Portal, wenn [Application Insights – Analyse](../../application-insights/app-insights-analytics.md) verwendet wird:
 
 ![Application Insights-Abfrageergebnisse](./media/durable-functions-concepts/app-insights-1.png)
 
-Das Feld `customDimensions` jedes Protokolleintrags enthält viele nützliche strukturierte Daten. Hier sehen Sie ein Beispiel eines vollständig erweiterten solchen Eintrags.
+Sie finden nützliche strukturierte Daten im Feld `customDimensions` in jedem Protokolleintrag. Hier ist ein Beispiel für einen vollständig aufgeklappten Eintrag:
 
-![customDimensions-Feld in Application Insights-Abfrage](./media/durable-functions-concepts/app-insights-2.png)
+![Das customDimensions-Feld in einer Application Insights-Abfrage](./media/durable-functions-concepts/app-insights-2.png)
 
-Aufgrund des Wiedergabeverhaltens des Durable Task Framework-Verteilers können Sie davon ausgehen, redundante Protokolleinträge für wiedergegebene Aktionen zu sehen. Dies kann hilfreich sein, um das Wiedergabeverhalten der Kern-Engine zu verstehen. Der Artikel [Diagnostics in Durable Functions (Azure Functions)](durable-functions-diagnostics.md) (Diagnose in Durable Functions [Azure Functions]) zeigt Beispiele für Abfragen, die Wiedergabeprotokolle ausfiltern, sodass Sie nur die „Echtzeitprotokolle“ sehen.
+Aufgrund des Wiedergabeverhaltens des Durable Task Framework-Verteilers können Sie davon ausgehen, redundante Protokolleinträge für wiedergegebene Aktionen zu sehen. Redundante Protokolleinträge können Ihnen helfen, das Wiedergabeverhalten der Kern-Engine zu verstehen. Der Artikel [Diagnostics in Durable Functions (Azure Functions)](durable-functions-diagnostics.md) (Diagnose in Durable Functions [Azure Functions]) zeigt Beispiele für Abfragen, die Wiedergabeprotokolle ausfiltern, sodass Sie nur die „Echtzeitprotokolle“ sehen.
 
 ## <a name="storage-and-scalability"></a>Speicherung und Skalierbarkeit
 
-Die Erweiterung Durable Functions verwendet Azure Storage-Warteschlangen, -Tabellen und -Blobs, um Ausführungsverlaufsstatus und Triggerfunktionsausführung persistent zu speichern. Sie können das Standardspeicherkonto für die Funktionen-App nutzen oder ein separates Speicherkonto konfigurieren. Aufgrund der Speicherdurchsatz-Grenzwerte sollten Sie ggf. ein separates Konto verwenden. Der Orchestratorcode, den Sie schreiben, muss nicht (und sollte nicht) mit den Entitäten in diesen Speicherkonten interagieren. Die Entitäten werden als Implementierungsdetail direkt vom Durable Task Framework verwaltet.
+Die Erweiterung Durable Functions verwendet Warteschlangen, Tabellen und Blobs in Azure Storage, um Ausführungsverlaufsstatus und Triggerfunktionsausführung persistent zu speichern. Sie können das Standardspeicherkonto für die Funktions-App nutzen oder ein separates Speicherkonto konfigurieren. Abhängig von den Grenzwerten für den Speicherdurchsatz sollten Sie ggf. ein separates Konto verwenden. Der Orchestratorcode, den Sie schreiben, interagiert nicht mit den Entitäten in diesen Speicherkonten. Das Durable Task Framework verwaltet die Entitäten direkt als Implementierungsdetail.
 
-Orchestratorfunktionen planen Aktivitätsfunktionen und empfangen ihre Antworten über interne Warteschlangennachrichten. Wenn eine Funktionen-App im Verbrauchstarif von Azure Functions ausgeführt wird, werden diese Warteschlangen vom [Skalierungscontroller von Azure Functions](../functions-scale.md#how-the-consumption-plan-works) überwacht, und bei Bedarf werden neue Compute-Instanzen hinzugefügt. Beim horizontalen Hochskalieren über mehrere virtuelle Computer kann eine Orchestratorfunktion auf einem virtuellen Computer ausgeführt werden, während von Ihr aufgerufene Aktivitätsfunktionen auf mehreren anderen virtuellen Computern ausgeführt werden. Weitere Informationen über das Skalierungsverhalten von Durable Functions finden Sie in [Performance and scale in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md) (Leistung und Skalierung in Durable Functions [Azure Functions]).
+Orchestratorfunktionen planen Aktivitätsfunktionen und empfangen ihre Antworten über interne Warteschlangennachrichten. Wenn eine Funktions-App im Azure Functions-Verbrauchstarif ausgeführt wird, werden diese Warteschlangen vom [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-plan-works) überwacht. Neue Compute-Instanzen werden nach Bedarf hinzugefügt. Beim horizontalen Hochskalieren über mehrere virtuelle Computer kann eine Orchestratorfunktion auf einem virtuellen Computer ausgeführt werden, während Aktivitätsfunktionen, die von der Orchestratorfunktion aufgerufen werden, auf mehreren anderen virtuellen Computern ausgeführt werden. Weitere Informationen über das Skalierungsverhalten von Durable Functions finden Sie unter [Performance and scale in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md) (Leistung und Skalierung in Durable Functions [Azure Functions]).
 
-Tabellenspeicher wird verwendet, um den Ausführungsverlauf für Orchestratorkonten zu speichern. Immer dann, wenn eine Instanz auf einem bestimmten virtuellen Computer aktiviert wird, ruft sie ihren Ausführungsverlauf vom Tabellenspeicher ab, damit er ihren lokalen Zustand wiederherstellen kann. Zu den Vorteilen der Verfügbarkeit des Verlaufs im Tabellenspeicher zählt, dass Sie den Verlauf Ihrer Orchestrierungen mit Tools wie z.B. [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) einsehen können.
+Der Ausführungsverlauf für Orchestratorkonten wird in Tabellenspeicher gespeichert. Immer dann, wenn eine Instanz auf einem bestimmten virtuellen Computer aktiviert wird, ruft der Orchestrator ihren Ausführungsverlauf vom Tabellenspeicher ab, damit er ihren lokalen Zustand wiederherstellen kann. Ein komfortabler Aspekt des Vorliegens des Verlaufs in Tabellenspeicher liegt darin, dass Sie Tools wie [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden können, um den Verlauf Ihrer Orchestrierungen anzuzeigen.
 
-Speicher-Blobs werden hauptsächlich als Leasingmechanismus zum Koordinieren der übergreifenden horizontalen Skalierung von Orchestrierungsinstanzen über mehrere VMs hinweg verwendet. Sie werden ferner zum Speicher von Daten für umfangreiche Nachrichten verwendet, die nicht direkt in Tabelle oder Warteschlangen gespeichert werden können.
+Speicher-Blobs werden hauptsächlich als Leasingmechanismus zum Koordinieren der übergreifenden horizontalen Skalierung von Orchestrierungsinstanzen über mehrere VMs hinweg verwendet. Speicher-Blobs speichern Daten für umfangreiche Nachrichten, die nicht direkt in Tabellen oder Warteschlangen gespeichert werden können.
 
-![Screenshot: Azure Storage-Explorer](./media/durable-functions-concepts/storage-explorer.png)
+![Screenshot von Azure Storage-Explorer](./media/durable-functions-concepts/storage-explorer.png)
 
 > [!WARNING]
-> Es ist zwar einfach und bequem, den Ausführungsverlauf im Tabellenspeicher angezeigt zu bekommen, aber Sie sollten es vermeiden, Abhängigkeiten von dieser Tabelle einzurichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
+> Es ist zwar einfach und bequem, den Ausführungsverlauf im Tabellenspeicher angezeigt zu bekommen, Sie sollten aber keine Abhängigkeiten von dieser Tabelle einrichten. Die Tabelle kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
 
-## <a name="known-issues-and-faq"></a>Bekannte Probleme und FAQ
+## <a name="known-issues"></a>Bekannte Probleme
 
-Alle bekannten Probleme sollten in der Liste der [GitHub-Probleme](https://github.com/Azure/azure-functions-durable-extension/issues) nachverfolgt werden. Wenn Sie auf ein Problem stoßen, das in GitHub nicht zu finden ist, öffnen Sie ein neues Problem mit einer ausführlichen Problembeschreibung.
+Alle bekannten Probleme sollten in der Liste der [GitHub-Probleme](https://github.com/Azure/azure-functions-durable-extension/issues) nachverfolgt werden. Wenn Sie auf ein Problem stoßen, das in GitHub nicht zu finden ist, öffnen Sie ein neues Problem. Schließen Sie eine ausführliche Beschreibung des Problems ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Durable Functions finden Sie unter [Übersicht über die Funktionstypen und Features für Durable Functions (Azure Functions)](durable-functions-types-features-overview.md) oder
+Weitere Informationen zu Durable Functions finden Sie im Artikel zu [Funktionstypen und Features von Durable Functions](durable-functions-types-features-overview.md). 
+
+Erste Schritte:
 
 > [!div class="nextstepaction"]
 > [Erstellen Ihrer ersten Durable Function](durable-functions-create-first-csharp.md)

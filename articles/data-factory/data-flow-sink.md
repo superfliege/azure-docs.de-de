@@ -3,16 +3,15 @@ title: 'Azure Data Factory Mapping Data Flow: Sink-Transformation'
 description: 'Azure Data Factory Mapping Data Flow: Sink-Transformation'
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 381dc2f9f6d3a074af00ba047472719c086f5811
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408407"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852439"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapping Data Flow: Sink-Transformation
 
@@ -35,27 +34,17 @@ Für Senken des Typs Azure Storage Blob oder Data Lake geben Sie die transformie
 
 ![Sink-Optionen](media/data-flow/opt001.png "Sink-Optionen")
 
-### <a name="output-settings"></a>Ausgabeeinstellungen
-
-Überschreiben schneidet die Tabelle ab, falls vorhanden; erstellen Sie sie dann neu, und laden Sie die Daten. Durch Anfügen werden die neuen Zeilen eingefügt. Wenn die Tabelle aus dem Datasettabellennamen im Ziel-ADW überhaupt nicht vorhanden ist, erstellt Data Flow die Tabelle und lädt die Daten.
-
-Wenn Sie die Option „automatisch zuordnen“ deaktivieren, können Sie die Felder manuell der Zieltabelle zuordnen.
-
-![Sink-ADW-Optionen](media/data-flow/adw2.png "ADW Sink")
-
-#### <a name="field-mapping"></a>Feldzuordnung
+## <a name="field-mapping"></a>Feldzuordnung
 
 Auf der Registerkarte „Zuordnung“ Ihrer Sink-Transformation können Sie die eingehenden Spalten (linke Seite) dem Ziel (rechte Seite) zuordnen. Wenn Sie Datenflüsse in Dateien senken, schreibt ADF immer neue Dateien in einen Ordner. Bei Zuordnung zu einem Datenbankdataset können Sie entweder eine neue Tabelle mit diesem Schema generieren (Speicherrichtlinie auf „Überschreiben“ festlegen) oder neue Zeilen in eine vorhandene Tabelle einfügen und die Felder dem vorhandenen Schema zuordnen.
 
 Sie können mit der Mehrfachauswahl in der Zuordnungstabelle mehrere Spalten mit nur einem Klick verknüpfen, die Verknüpfung mehrerer Spalten aufheben oder mehrere Zeilen demselben Spaltennamen zuordnen.
 
+Wenn Sie die eingehenden Felder immer übernehmen und einem Ziel wie vorhanden zuordnen möchten, legen Sie die Einstellung „Schemaabweichung zulassen“ fest.
+
 ![Feldzuordnung](media/data-flow/multi1.png "mehrere Optionen")
 
 Wenn Sie Ihre Spaltenzuordnungen zurücksetzen möchten, wählen Sie die Schaltfläche „Neu zuordnen“ aus, um die Zuordnungen zurückzusetzen.
-
-![Verbindungen](media/data-flow/maxcon.png "Verbindungen")
-
-### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>Updates für die Sink-Transformation für ADF V2 GA-Version
 
 ![Sink-Optionen](media/data-flow/sink1.png "Senke Eins")
 
@@ -65,7 +54,7 @@ Wenn Sie Ihre Spaltenzuordnungen zurücksetzen möchten, wählen Sie die Schaltf
 
 * Löschen Sie den Ordner. ADF wird den Inhalt des Senkenordners abschneiden, bevor die Zieldateien in diesen Zielordner geschrieben werden.
 
-* Dateinamenoptionen
+## <a name="file-name-options"></a>Dateinamenoptionen
 
    * Standardwert: Lassen Sie zu, dass Spark Dateien basierend auf den PART-Standardeinstellungen benennt.
    * Muster: Geben Sie einen Namen für Ihre Ausgabedateien ein.
@@ -75,14 +64,19 @@ Wenn Sie Ihre Spaltenzuordnungen zurücksetzen möchten, wählen Sie die Schaltf
 > [!NOTE]
 > Dateivorgänge werden nur ausgeführt, wenn Sie die Aktivität „Datenfluss ausführen“ außerhalb des Data Flow-Debugmodus ausführen.
 
-Mit den SQL-Senkentypen können Sie Folgendes festlegen:
+## <a name="database-options"></a>Datenbankoptionen
 
-* Tabelle abschneiden.
-* Tabelle neu erstellen (führt Löschen/Erstellen aus).
-* Batchgröße für große Datenmengen. Eine Zahl eingeben, um Schreibvorgänge in Blöcke zu unterteilen.
+* Einfüge-, Aktualisierungs-, Lösch- und Upsert-Vorgänge von Daten zulassen. Die Standardeinstellung ist das Zulassen von Einfügevorgängen. Wenn Sie für Zeilen Aktualisierungs-, Upsert- oder Einfügevorgänge verwenden möchten, müssen Sie zunächst eine Transformation zur Änderung von Zeilen hinzufügen, um Zeilen für diese spezifischen Aktionen zu kennzeichnen.
+* Tabelle abschneiden (entfernt vor dem Abschließen des Datenflusses alle Zeilen aus der Zieltabelle)
+* Tabelle neu erstellen (wendet vor dem Abschließen des Datenflusses Lösch-/Erstellvorgänge auf die Zieltabelle an)
+* Batchgröße für große Datenmengen. Geben Sie eine Zahl ein, um Schreibvorgänge in Blöcke zu unterteilen.
+* Staging aktivieren: Dadurch wird ADF angewiesen, Polybase zu verwenden, wenn Sie Azure Data Warehouse als Ihren Senkendatensatz laden.
 
-![Feldzuordnung](media/data-flow/sql001.png "SQL-Optionen")
+![SQL-Senkenoptionen](media/data-flow/alter-row2.png "Senkenoptionen")
+
+> [!NOTE]
+> Beim Aktualisieren oder Löschen von Zeilen in Ihrer Datenbanksenke müssen Sie die Schlüsselspalte festlegen. Auf diese Weise kann ALTER ROW die eindeutige Zeile in der DML bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da Sie nun Ihren Datenfluss erstellt haben, fügen Sie eine [Aktivität zur Ausführung eines Datenflusses Ihrer Pipeline hinzu](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview).
+Da Sie nun Ihren Datenfluss erstellt haben, fügen Sie eine [Aktivität zur Ausführung eines Datenflusses Ihrer Pipeline hinzu](concepts-data-flow-overview.md).

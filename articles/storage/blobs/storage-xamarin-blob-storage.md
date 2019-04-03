@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: b35bec31035c0219bf34a31cb34e20f7dc3a72c5
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b9c707dcc1628f685661f88aaed29612465a5469
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010070"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Verwenden des Blobspeichers mit Xamarin
 
@@ -29,7 +29,7 @@ Für dieses Tutorial erstellen wir eine App, die auf Android, iOS und Windows ab
 Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen:
 
 1. Falls noch nicht geschehen, laden Sie [Xamarin für Visual Studio](https://www.xamarin.com/download)herunter, und installieren Sie die Anwendung.
-2. Öffnen Sie Visual Studio, und erstellen Sie eine leere App (nativ portabel): **Datei > Neu > Projekt > Plattformübergreifend > Leere App (nativ portabel)**.
+2. Öffnen Sie Visual Studio, und erstellen Sie eine lLeere App (nativ portabel): **Datei > Neu > Projekt > Plattformübergreifend > Leere App (nativ portabel)**.
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Lösung, und wählen Sie **NuGet-Pakete verwalten**aus. Suchen Sie nach **WindowsAzure.Storage** , und installieren Sie die neueste stabile Version für alle Projekte in der Lösung.
 4. Erstellen Sie Ihr Projekt, und führen Sie es aus.
 
@@ -155,7 +155,7 @@ namespace XamarinApp.iOS
             public override void DidReceiveMemoryWarning ()
             {
                 base.DidReceiveMemoryWarning ();
-                // Release any cached data, images, etc that aren't in use.
+                // Release any cached data, images, etc. that aren't in use.
             }
         }
     }
@@ -168,7 +168,7 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
@@ -231,7 +231,7 @@ namespace XamarinApp.WinPhone
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 Sie können diese Anwendung jetzt in einem Android- oder Windows Phone-Emulator ausführen. Sie können diese Anwendung auch in einem iOS-Emulator ausführen, aber dazu benötigen Sie einen Mac. Spezifische Anweisungen hierzu finden Sie in der Dokumentation zum [Verbinden von Visual Studio mit einem Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-Wenn Sie Ihre App ausführen, erstellt sie den Container `mycontainer` in Ihrem Speicherkonto. Es sollte das Blob `myblob` mit dem Text `Hello, world!` enthalten. Sie können dies mit dem [Microsoft Azure Storage-Explorer](http://storageexplorer.com/)überprüfen.
+Wenn Sie Ihre App ausführen, erstellt sie den Container `mycontainer` in Ihrem Speicherkonto. Es sollte das Blob `myblob` mit dem Text `Hello, world!` enthalten. Sie können dies mit dem [Microsoft Azure Storage-Explorer](https://storageexplorer.com/)überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie eine plattformübergreifende Anwendung in Xamarin erstellt wird, die Azure Storage verwendet und besonders auf ein Szenario in Blob Storage fokussiert ist. Allerdings können Sie sie nicht nur auf Blob Storage, sondern auch auf Table Storage, File Storage und Queue Storage anwenden. Weitere Informationen finden Sie in den folgenden Artikeln:

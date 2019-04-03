@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992448"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Übersicht
-Die [Azure Storage-Clientbibliothek für Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) unterstützt die Verschlüsselung von Daten innerhalb von Clientanwendungen vor dem Hochladen der Daten nach Azure Storage sowie die Entschlüsselung von Daten während des Herunterladens auf den Client. Um die Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt die Bibliothek zudem die Integration in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Die [Azure Storage-Clientbibliothek für Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) unterstützt die Verschlüsselung von Daten innerhalb von Clientanwendungen vor dem Hochladen der Daten nach Azure Storage sowie die Entschlüsselung von Daten während des Herunterladens auf den Client. Um die Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt die Bibliothek zudem die Integration in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Verschlüsselung und Entschlüsselung über das Umschlagverfahren
 Die Prozesse bei der Verschlüsselung und Entschlüsselung folgen dem Umschlagverfahren.  
@@ -43,7 +43,7 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 4. Der Inhaltsverschlüsselungsschlüssel (CEK) wird dann zum Entschlüsseln der verschlüsselten Benutzerdaten verwendet.
 
 ## <a name="encryption-mechanism"></a>Verschlüsselungsmechanismus
-Die Speicherclientbibliothek verwendet [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
+Die Speicherclientbibliothek verwendet [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
 ### <a name="blobs"></a>Blobs (in englischer Sprache)
 Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Insbesondere wird die Verschlüsselung unterstützt, wenn Benutzer die **upload*** -Methoden oder die **openOutputStream**-Methode verwenden. Es werden sowohl vollständige Downloads als auch Downloads von Bereichen unterstützt.  
@@ -55,9 +55,9 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initia
 > 
 > 
 
-Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **download*/openInputStream**-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
+Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **download**/**openInputStream**-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
-Beim Herunterladen eines beliebigen Bereichs (**downloadRange**\*-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.  
+Beim Herunterladen eines beliebigen Bereichs (**downloadRange**-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.  
 
 Alle Blobtypen (Blockblobs, Seitenblobs und Anfügeblobs) können mit diesem Schema verschlüsselt/entschlüsselt werden.
 
@@ -98,8 +98,8 @@ Bei Batchvorgängen wird derselbe KEK für alle Zeilen in einem Batchvorgang ver
 > [!NOTE]
 > Da die Entitäten verschlüsselt sind, können Sie keine Abfragen ausführen, die nach einer verschlüsselten Eigenschaft filtern.  Wenn Sie dies versuchen, erhalten Sie falsche Ergebnisse, da der Dienst verschlüsselte Daten mit unverschlüsselten Daten vergleicht.
 > 
->
-Zum Ausführen von Abfragevorgängen müssen Sie einen Schlüsselresolver angeben, der alle Schlüssel im Resultset auflösen kann. Wenn eine im Abfrageergebnis enthaltene Entität nicht in einen Anbieter aufgelöst werden kann, löst die Clientbibliothek einen Fehler aus. Für jede Abfrage, die serverseitige Projektionen ausführt, fügt die Clientbibliothek den ausgewählten Spalten standardmäßig die spezifischen Verschlüsselungsmetadateneigenschaften ("_ClientEncryptionMetadata1" und "_ClientEncryptionMetadata2") hinzu.
+> 
+> Zum Ausführen von Abfragevorgängen müssen Sie einen Schlüsselresolver angeben, der alle Schlüssel im Resultset auflösen kann. Wenn eine im Abfrageergebnis enthaltene Entität nicht in einen Anbieter aufgelöst werden kann, löst die Clientbibliothek einen Fehler aus. Für jede Abfrage, die serverseitige Projektionen ausführt, fügt die Clientbibliothek den ausgewählten Spalten standardmäßig die spezifischen Verschlüsselungsmetadateneigenschaften ("_ClientEncryptionMetadata1" und "_ClientEncryptionMetadata2") hinzu.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Durch Verwenden des Azure-Schlüsseltresors können Benutzer Schlüssel und geheime Schlüssel (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem sie durch Hardwaresicherheitsmodule (HSMs) geschützte Schlüssel verwenden. Weitere Informationen finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-whatis.md).
@@ -248,9 +248,9 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Leistungsaufwand verursacht. Der Inhaltsschlüssel und der IV müssen generiert, der Inhalt selbst muss verschlüsselt, und zusätzliche Metadaten müssen formatiert und hochgeladen werden. Dieser Aufwand variiert abhängig von der Menge der zu verschlüsselnden Daten. Es empfiehlt sich, dass Kunden ihre Anwendungen während der Entwicklung immer hinsichtlich der Leistung testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Herunterladen der [Azure Storage-Clientbibliothek für das Java-Maven-Paket](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
+* Herunterladen der [Azure Storage-Clientbibliothek für das Java-Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * Herunterladen der [Azure Storage-Clientbibliothek für Java-Quellcode aus GitHub](https://github.com/Azure/azure-storage-java)   
 * Herunterladen der Azure Key Vault-Maven-Bibliothek für das Java-Maven-Paket
-  * [Core](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) -Paket
-  * [Client](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) -Paket
+  * [Core](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) -Paket
+  * [Client](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) -Paket
 * Anzeigen der [Azure Key Vault-Dokumentation](../../key-vault/key-vault-whatis.md)

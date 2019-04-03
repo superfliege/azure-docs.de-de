@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/19/18
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cff8b8af4ca40d428edf7c6e35976bcb154a28f1
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328689"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867734"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
@@ -51,6 +51,7 @@ Der ausgewählte Standarddateiname wird im Stamm und in sämtlichen Unterverzeic
 
 Informationen dazu, wie Sie Ihre statischen Websitedateien über HTTPS verfügbar machen, finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Im Rahmen dieses Prozesses müssen Sie *das CDN auf den Webendpunkt verweisen*, nicht auf den Blobendpunkt. Möglicherweise müssen Sie einige Minuten warten, bevor Ihre Inhalte angezeigt werden, da die CDN-Konfiguration nicht sofort ausgeführt wird.
 
+Wenn Sie Ihre statische Website aktualisieren, stellen Sie sicher, dass Sie zwischengespeicherte Inhalte auf den CDN-Edge-Servern löschen, indem Sie den CDN-Endpunkt bereinigen. Weitere Informationen finden Sie unter [Löschen eines Azure CDN-Endpunkts](../../cdn/cdn-purge-endpoint.md).
 
 ## <a name="custom-domain-names"></a>Benutzerdefinierte Domänennamen
 

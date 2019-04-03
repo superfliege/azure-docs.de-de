@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2f646df3cab0320b574023cd543015921c640cab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c8f9b17bf5b572128348b22de62566ba06d5d766
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478320"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992407"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,10 +48,10 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 4. Der Inhaltsverschlüsselungsschlüssel (CEK) wird dann zum Entschlüsseln der verschlüsselten Benutzerdaten verwendet.
 
 ## <a name="encryption-mechanism"></a>Verschlüsselungsmechanismus
-Die Speicherclientbibliothek verwendet [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
+Die Speicherclientbibliothek verwendet [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
 ### <a name="blobs"></a>Blobs (in englischer Sprache)
-Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Insbesondere wird die Verschlüsselung unterstützt, wenn Benutzer die **UploadFrom*** -Methoden oder die **OpenWrite** -Methode verwenden. Es werden sowohl vollständige Downloads als auch Downloads von Bereichen unterstützt.
+Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Insbesondere wird die Verschlüsselung unterstützt, wenn Benutzer die **UploadFrom**-Methoden oder **OpenWrite**-Methode verwenden. Es werden sowohl vollständige Downloads als auch Downloads von Bereichen unterstützt.
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initialisierungsvektor (IV) mit einer Größe von 16 Byte zusammen mit einem zufälligen Inhaltsverschlüsselungsschlüssel (CEK) mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung der Blobdaten ausgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden dann als Blobmetadaten zusammen mit dem verschlüsselten Blob für den Dienst gespeichert.
 
@@ -60,9 +60,9 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initia
 > 
 > 
 
-Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **DownloadTo**\* /**BlobReadStream**-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
+Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **DownloadTo**/**BlobReadStream**-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
-Beim Herunterladen eines beliebigen Bereichs (**DownloadRange*** -Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.
+Beim Herunterladen eines beliebigen Bereichs (**downloadRange**-Methoden) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die verwendet werden können, um den angeforderten Bereich erfolgreich zu entschlüsseln.
 
 Alle Blobtypen (Blockblobs, Seitenblobs und Anfügeblobs) können mit diesem Schema verschlüsselt/entschlüsselt werden.
 
@@ -102,7 +102,7 @@ Bei Batchvorgängen wird derselbe KEK für alle Zeilen in einem Batchvorgang ver
 > Da die Entitäten verschlüsselt sind, können Sie keine Abfragen ausführen, die nach einer verschlüsselten Eigenschaft filtern.  Wenn Sie dies versuchen, erhalten Sie falsche Ergebnisse, da der Dienst verschlüsselte Daten mit unverschlüsselten Daten vergleicht.
 > 
 > 
-Zum Ausführen von Abfragevorgängen müssen Sie einen Schlüsselresolver angeben, der alle Schlüssel im Resultset auflösen kann. Wenn eine im Abfrageergebnis enthaltene Entität nicht in einen Anbieter aufgelöst werden kann, löst die Clientbibliothek einen Fehler aus. Für jede Abfrage, die serverseitige Projektionen ausführt, fügt die Clientbibliothek den ausgewählten Spalten standardmäßig die spezifischen Verschlüsselungsmetadateneigenschaften („_ClientEncryptionMetadata1“ und „_ClientEncryptionMetadata2“) hinzu.
+> Zum Ausführen von Abfragevorgängen müssen Sie einen Schlüsselresolver angeben, der alle Schlüssel im Resultset auflösen kann. Wenn eine im Abfrageergebnis enthaltene Entität nicht in einen Anbieter aufgelöst werden kann, löst die Clientbibliothek einen Fehler aus. Für jede Abfrage, die serverseitige Projektionen ausführt, fügt die Clientbibliothek den ausgewählten Spalten standardmäßig die spezifischen Verschlüsselungsmetadateneigenschaften („_ClientEncryptionMetadata1“ und „_ClientEncryptionMetadata2“) hinzu.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Durch Verwenden des Azure-Schlüsseltresors können Benutzer Schlüssel und geheime Schlüssel (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem sie durch Hardwaresicherheitsmodule (HSMs) geschützte Schlüssel verwenden. Weitere Informationen finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-whatis.md).
@@ -243,5 +243,5 @@ Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Le
 ## <a name="next-steps"></a>Nächste Schritte
 * [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage mit Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Laden Sie die [Azure Storage-Clientbibliothek für das .NET NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Storage)
-* Laden Sie die Azure Key Vault-NuGet-Pakete [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) und [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) herunter.  
+* Laden Sie die Azure Key Vault-NuGet-Pakete [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/) und [Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) herunter.  
 * Anzeigen der [Azure Key Vault-Dokumentation](../../key-vault/key-vault-whatis.md)

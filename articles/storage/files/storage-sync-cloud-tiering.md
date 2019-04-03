@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470449"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652559"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -21,9 +21,12 @@ Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem
 Wenn ein Benutzer eine Tieringdatei öffnet, ruft die Azure-Dateisynchronisierung nahtlos die Dateidaten aus Azure Files ab, ohne dass der Benutzer wissen muss, dass die Datei eigentlich bei Azure gespeichert ist. 
  
  > [!Important]  
-    > Wichtig: Cloudtiering wird nicht für Serverendpunkte auf den Windows-Systemvolumes unterstützt, und nur Dateien mit einer Größe von mehr als 64 KiB können in Azure Files ausgelagert werden.
+ > Cloudtiering wird nicht für Serverendpunkte auf den Windows-Systemvolumes unterstützt, und nur Dateien mit einer Größe von mehr als 64 KiB können in Azure Files ausgelagert werden.
     
 Die Azure-Dateisynchronisierung unterstützt kein Tiering von Dateien mit einer Größe unter 64 KiB, da der Verwaltungsaufwand für das Tiering und das Zurückrufen so kleiner Dateien die Speichereinsparungen überwiegen würde.
+
+ > [!Important]  
+ > Um Dateien mit Tiering abzurufen, muss die Netzwerkbandbreite mindestens 1 Mbit/s betragen. Wenn die Netzwerkbandbreite kleiner als 1 Mbit/s ist, misslingt ggf. das Abrufen von Dateien mit einem Timeoutfehler.
 
 ## <a name="cloud-tiering-faq"></a>Cloudtiering – häufig gestellte Fragen
 

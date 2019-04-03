@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 92d5d458615b029553dee2f8047c85e3fb5f9696
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838917"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -47,6 +47,10 @@ ms.locfileid: "55892595"
 * Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden. 
 * Unterstützung von Streams. 
 * Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+
+* Verbesserungen bei der Diagnose
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
@@ -357,6 +361,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.3](#2.2.3) |11. Februar 2019 |--- |
 | [2.2.2](#2.2.2) |6. Februar 2019 |--- |
 | [2.2.1](#2.2.1) |24. Dezember 2018 |--- |
 | [2.2.0](#2.2.0) |07. Dezember 2018 |--- |

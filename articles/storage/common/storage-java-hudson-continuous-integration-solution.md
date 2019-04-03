@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Hudson mit Blobspeicher | Microsoft-Dokumentation
+title: Verwenden von Hudson mit Blobspeicher | Microsoft Docs
 description: Beschreibt die Verwendung von Hudson mit Azure Blob Storage als Repository für Buildartefakte.
 services: storage
 author: seguler
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011103"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Verwenden von Azure-Speicher mit einer Hudson-Lösung für die fortlaufende Integration
 ## <a name="overview"></a>Übersicht
@@ -25,7 +25,7 @@ In diesem Lernprogramm verwenden Sie das Azure-Speicher-Plug-In für Hudson CI, 
 ## <a name="introduction-to-hudson"></a>Einführung in Hudson
 Hudson ermöglicht die fortlaufende Integration (Continuous Integration, CI) eines Softwareprojekts, da Entwickler ihre Codeänderungen auf einfache Weise einbinden und Builds automatisch und häufig erstellen lassen können. Dadurch wird die Produktivität der Entwickler gesteigert. Builds werden mit Versionsangaben versehen, und Buildartefakte können in verschiedene Repositorys hochgeladen werden. In diesem Artikel wird gezeigt, wie Sie Azure Blob Storage als Repository für die Buildartefakte verwenden. Außerdem wird gezeigt, wie Abhängigkeiten aus Azure Blob Storage heruntergeladen werden.
 
-Weitere Informationen zu Hudson finden Sie unter [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
+Weitere Informationen zu Hudson finden Sie unter [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
 
 ## <a name="benefits-of-using-the-blob-service"></a>Vorteile der Verwendung des Blob-Diensts
 Die Verwendung des Blob-Dienstes zum Hosten Ihrer Buildartefakte aus der agilen Entwicklung hat folgende Vorteile:
@@ -52,7 +52,7 @@ Sie müssen folgende Voraussetzungen erfüllen, um den Blob-Dienst mit Ihrer Hud
   5. Nach Abschluss der Ersteinrichtung können Sie die laufende Instanz der Hudson-WAR-Datei anhalten und neu starten und das Hudson-Dashboard unter `http://localhost:8080/` erneut öffnen. Dort können Sie nun das Plug-In für den Azure-Speicher installieren und konfigurieren.
      
       Eine typische Hudson CI-Lösung würde zwar zur Ausführung als Service konfiguriert, die Ausführung von "hudson.war" über die Befehlszeile reicht für dieses Lernprogramm jedoch aus.
-* Ein Azure-Konto. Unter <http://www.azure.com> können Sie sich für ein Azure-Konto registrieren.
+* Ein Azure-Konto. Unter <https://www.azure.com> können Sie sich für ein Azure-Konto registrieren.
 * Ein Azure-Speicherkonto. Wenn Sie noch kein Speicherkonto haben, können Sie eines erstellen, indem Sie die Schritte unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md)befolgen.
 * Vorkenntnisse der Hudson CI-Lösung werden empfohlen, sind aber nicht zwingend erforderlich, da in den folgenden Abschnitten ein einfaches Beispiel verwendet wird, um zu zeigen, welche Schritte erforderlich sind, wenn Sie den Blob-Dienst als Repository für Hudson CI-Buildartefakte nutzen möchten.
 
@@ -134,7 +134,7 @@ Die folgenden Schritte zeigen, wie Sie einen Buildschritt konfigurieren, damit E
 1. Klicken Sie in der Auftragskonfiguration im Abschnitt **Build** auf **Add build step** (Buildschritt hinzufügen), und wählen Sie dann **Download from Azure Blob storage** (Aus Azure Blob Storage herunterladen) aus.
 2. Wählen Sie unter **Storage account name**das zu verwendende Speicherkonto aus.
 3. Geben Sie für **Container name**den Namen des Containers an, der die herunterzuladenden Blobs enthält. Sie können Umgebungsvariablen verwenden.
-4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise würde **project\*** alle Blobs angeben, deren Namen mit **project** beginnen.
+4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise würde **project\\*** alle Blobs angeben, deren Name mit **project** beginnt.
 5. [Optional] Geben Sie für **Downloadpfad** den Pfad auf dem Hudson-Computer an, in den die Dateien aus Azure Blob Storage heruntergeladen werden sollen. Es können auch Umgebungsvariablen verwendet werden. (Wenn Sie keinen Wert für **Downloadpfad** angeben, werden die Dateien aus Azure Blob Storage in den Arbeitsbereich des Auftrags heruntergeladen.)
 
 Wenn Sie zusätzliche Elemente aus Azure Blob Storage herunterladen möchten, können Sie zusätzliche Buildschritte erstellen.
@@ -147,7 +147,7 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
 * **Speicherkonto**: Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Dies ist die höchste Ebene des Namespaces für den Zugriff auf Blobs. Ein Konto kann eine beliebige Anzahl von Containern enthalten, solange deren Gesamtgröße 100 TB nicht überschreitet.
 * **Container**: Ein Container dient zum Gruppieren mehrerer Blobs. Alle BLOBs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein.
 * **Blob**: Eine Datei von beliebiger Art und Größe. Es gibt zwei Arten von Blobs, die im Azure-Speicher gespeichert werden können: Block- und Seitenblobs. Die meisten Dateien sind Block-BLOBs. Ein einzelner Block-Blob kann bis zu 200 GB groß sein. In diesem Tutorial werden Block-BLOBs verwendet. Der andere Blob-Typ, Seiten-Blobs, kann bis zu 1 TB groß sein und ist effizienter, wenn Byte-Bereiche in einer Datei häufig geändert werden. Weitere Informationen zu Blobs finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
-* **URL-Format**: Blobs können über das folgende URL-Format aufgerufen werden:
+* **URL-Format:** Blobs können über das folgende URL-Format aufgerufen werden:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
@@ -158,7 +158,7 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage-SDK für Java](https://github.com/azure/azure-storage-java)
 * [Referenz für Azure Storage-Client-SDKs](http://dl.windowsazure.com/storage/javadoc/)
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)

@@ -3,20 +3,20 @@ title: Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data 
 description: Erfahren Sie, wie Sie eine Vorhersagepipeline mithilfe der Azure Machine Learning-Batchausführungsaktivität in Azure Data Factory erstellen.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: a5ba45b8a7bd507552b49b6a18582c393ad07ff5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840561"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "56446034"
 3. **Bereitstellen des Experiments als Webdienst**. Sie können das Bewertungsexperiment als Azure-Webdienst veröffentlichen. Sie können Daten über diesen Webdienstendpunkt an Ihr Modell senden und Ergebnisvorhersagen vom Modell empfangen.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory und Machine Learning zusammen
-Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure Machine Learning Studio-Webdienst aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen.
+Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning)-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure Machine Learning Studio-Webdienst aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen.
 
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure Machine Learning Studio-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Sie können ein Modell über eine Data Factory-Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
 

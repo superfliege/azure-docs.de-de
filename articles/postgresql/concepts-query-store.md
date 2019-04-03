@@ -5,21 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/26/2019
+ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005898"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485916"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
 **Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
-
-> [!IMPORTANT]
-> Das Abfragespeicherfeature befindet sich in der Public Preview-Phase.
-
 
 Das Abfragespeicherfeature in Azure Database for PostgreSQL bietet eine Möglichkeit, um die Abfrageleistung im Zeitverlauf nachzuverfolgen. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in einer Datenbank namens **azure_sys** in der Azure Database for PostgreSQL-Instanz gespeichert.
 

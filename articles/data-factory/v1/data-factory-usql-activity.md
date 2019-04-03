@@ -3,22 +3,22 @@ title: Transformieren von Daten mit dem U-SQL-Skript – Azure | Microsoft-Dokum
 description: Erläutert die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020845"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777293"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,8 +48,8 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| **type** |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |JA |
-| **accountName** |Name des Azure Data Lake Analytics-Kontos. |JA |
+| **type** |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
+| **accountName** |Name des Azure Data Lake Analytics-Kontos. |Ja |
 | **dataLakeAnalyticsUri** |URI des Azure Data Lake Analytics-Kontos. |Nein  |
 | **subscriptionId** |Azure-Abonnement-ID |Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
 | **resourceGroupName** |Azure-Ressourcengruppenname |Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
@@ -64,9 +64,9 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Geben Sie die Client-ID der Anwendung an. | JA |
-| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an. | JA |
-| **tenant** | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | JA |
+| **servicePrincipalId** | Geben Sie die Client-ID der Anwendung an. | Ja |
+| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an. | Ja |
+| **tenant** | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
 
 **Beispiel: Dienstprinzipalauthentifizierung**
 ```json
@@ -92,8 +92,8 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen f�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| **authorization** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | JA |
-| **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | JA |
+| **authorization** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
+| **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
 
 **Beispiel: Authentifizierung mit Benutzeranmeldeinformationen**
 ```json
@@ -208,8 +208,8 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft            | BESCHREIBUNG                              | Erforderlich                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. | JA                                      |
-| linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | JA                                      |
+| type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. | Ja                                      |
+| linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | Ja                                      |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Nein (wenn script verwendet wird)                   |
 | scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Nein (wenn script verwendet wird)                   |
 | script              | Geben Sie anstelle von scriptPath und scriptLinkedService ein Inlineskript an. Beispiel: `"script": "CREATE DATABASE test"`. | Nein (wenn scriptPath and scriptLinkedService verwendet werden) |
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Die Werte für die Parameter **@in** und **@out** im U-SQL-Skript werden von ADF dynamisch mithilfe des Abschnitts „parameters“ übergeben. Informationen finden Sie in der Pipelinedefinition im Abschnitt „parameters“.
+Die Werte für die Parameter **\@in** und **\@out** im U-SQL-Skript werden von ADF dynamisch mithilfe des Abschnitts „parameters“ übergeben. Informationen finden Sie in der Pipelinedefinition im Abschnitt „parameters“.
 
 Sie können in Ihrer Pipelinedefinition auch andere Eigenschaften wie etwa degreeOfParallelism oder „priority“ für die Aufträge angeben, die im Azure Data Lake Analytics-Dienst ausgeführt werden.
 

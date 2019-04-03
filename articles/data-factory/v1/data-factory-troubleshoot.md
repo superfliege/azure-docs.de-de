@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023021"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549203"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory. 
 
 Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung von Azure Data Factory. Dieser Artikel führt nicht alle Probleme auf, die bei Verwendung des Diensts möglicherweise auftreten können, sondern erläutert einige ausgewählte Probleme und die allgemeine Problembehandlung.   
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Fehler Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
@@ -34,20 +36,20 @@ Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an.
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren.
 
     ```powershell        
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problem: Autorisierungsfehler beim Ausführen eines Data Factory-Cmdlets
 Sie verwenden wahrscheinlich nicht das richtige Azure-Konto oder -Abonnement für Azure PowerShell. Wählen Sie mithilfe der folgenden Cmdlets das richtige Azure-Konto und -Abonnement für die Verwendung mit Azure PowerShell aus.
 
-1. Connect-AzureRmAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
-2. Get-AzureRmSubscription: Zeigen Sie alle Abonnements für das Konto an.
-3. Select-AzureRmSubscription &lt;Name des Abonnements&gt;: Wählen Sie das richtige Abonnement aus. Verwenden Sie dasselbe Abonnement, das Sie auch zum Erstellen einer Data Factory im Azure-Portal verwenden.
+1. Connect-AzAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
+2. Get-AzSubscription: Dient zum Anzeigen aller Abonnements für das Konto.
+3. Select-AzSubscription &lt;Name des Abonnements&gt;: Wählen Sie das richtige Abonnement aus. Verwenden Sie dasselbe Abonnement, das Sie auch zum Erstellen einer Data Factory im Azure-Portal verwenden.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problem: Das Express-Setup für das Datenverwaltungsgateway kann über das Azure-Portal nicht gestartet werden.
 Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder ein mit Microsoft ClickOnce kompatibler Webbrowser erforderlich. Wenn das Express-Setup nicht gestartet wird, führen Sie einen der folgenden Schritte aus:
@@ -128,9 +130,9 @@ Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipel
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
 
 [azure-portal]: https://portal.azure.com/
 

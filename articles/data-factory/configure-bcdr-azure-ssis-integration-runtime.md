@@ -13,18 +13,20 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145416"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453030"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurieren von Azure-SSIS Integration Runtime mit Georeplikation der Azure SQL-Datenbank und Failover
 
 In diesem Artikel wird beschrieben, wie Azure-SSIS Integration Runtime mit Georeplikation für die Azure SQL-Datenbank und die SSISDB-Datenbank konfiguriert wird. Wenn ein Failover auftritt, können Sie sicherstellen, dass Azure-SSIS IR mit der sekundären Datenbank weiterhin funktioniert.
 
 Weitere Informationen zu Georeplikation und Failover für die SQL-Datenbank finden Sie unter [Übersicht: Aktive Georeplikation und Gruppen für automatisches Failover](../sql-database/sql-database-geo-replication-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Szenario 1: Azure-SSIS IR verweist auf einen Listenerendpunkt mit Lese-/Schreibberechtigung
 
@@ -34,7 +36,7 @@ Dieser Abschnitt gilt, wenn die folgenden Bedingungen erfüllt sind:
 
 - Azure-SSIS IR verweist auf den Listenerendpunkt mit Lese-/Schreibberechtigung der Failovergruppe.
 
-  UND
+  AND
 
 - Der SQL-Datenbankserver ist *nicht* mit der Endpunktregel des virtuellen Netzwerkdiensts konfiguriert.
 
@@ -50,11 +52,11 @@ Dieser Abschnitt gilt, wenn eine der folgenden Bedingungen erfüllt ist:
 
 - Azure-SSIS IR verweist auf den primären Serverendpunkt der Failovergruppe. Dieser Endpunkt ändert sich beim Auftreten eines Failovers.
 
-  ODER
+  OR
 
 - Der Azure SQL-Datenbankserver ist mit einer Endpunktregel des virtuellen Netzwerkdiensts konfiguriert.
 
-  ODER
+  OR
 
 - Der Datenbankserver ist eine verwaltete SQL-Datenbankinstanz, die mit einem virtuellen Netzwerk konfiguriert ist.
 
@@ -62,7 +64,7 @@ Dieser Abschnitt gilt, wenn eine der folgenden Bedingungen erfüllt ist:
 
 Bei einem Failover müssen Sie die folgenden Schritte ausführen:
 
-1. Beenden Sie Azure-SSIS IR.
+1. Beenden Sie die Azure SSIS IR.
 
 2. Konfigurieren Sie die IR so, dass sie auf den neuen primären Endpunkt und auf ein virtuelles Netzwerk in der neuen Region verweist.
 
@@ -87,7 +89,7 @@ Führen Sie die folgenden Schritte aus, um die Azure-SSIS-IR anzuhalten, auf ein
 2. Führen Sie den folgenden Befehl in PowerShell aus, um die IR mit den neuen Einstellungen zu aktualisieren.
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `
+    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
                     -CatalogServerEndpoint "Azure SQL Database server endpoint" `
                     -CatalogAdminCredential "Azure SQL Database server admin credentials" `
                     -VNetId "new VNet" `

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817334"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541926"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Data Factory unterstützt derzeit nur das Verschieben von Daten aus Amazon Redsh
 > Um beim Kopieren großer Datenmengen aus Amazon Redshift eine optimale Leistung zu erzielen, empfiehlt sich die Verwendung des integrierten Redshift-Befehls **UNLOAD** über Amazon Simple Storage Service (Amazon S3). Ausführliche Informationen finden Sie im Abschnitt [Verwenden von UNLOAD zum Kopieren von Daten aus Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Wenn Sie Daten in einen einem lokalen Datenspeicher verschieben möchten, installieren Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf dem lokalen Computer. Gewähren Sie einem Gateway Zugriff auf den Amazon Redshift-Cluster mit der IP-Adresse des lokalen Computers. Anweisungen finden Sie unter [Authorize access to the cluster (Autorisieren des Zugriffs auf den Cluster)](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
+* Wenn Sie Daten in einen einem lokalen Datenspeicher verschieben möchten, installieren Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf dem lokalen Computer. Gewähren Sie einem Gateway Zugriff auf den Amazon Redshift-Cluster mit der IP-Adresse des lokalen Computers. Anweisungen finden Sie unter [Authorize access to the cluster (Autorisieren des Zugriffs auf den Cluster)](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Informationen zum Verschieben von Daten in ein Azure-Datenspeicher finden Sie unter [Compute IP address and SQL ranges that are used by the Microsoft Azure Datacenters (Server-IP-Adresse und SQL-Bereiche, die von den Microsoft Azure-Datencentern verwendet werden)](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="getting-started"></a>Erste Schritte
@@ -52,7 +52,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen Sie DataSets zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
 3. Erstellen Sie eine Pipeline mit einer Kopieraktivität, die ein DataSet als Eingabe und ein DataSet als Ausgabe akzeptiert.
 
-Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das „JSON-Beispiel: Kopieren von Daten aus Amazon Redshift nach Azure Blob Storage“ zeigt die JSON-Definitionen für die Data Factory-Entitäten an, die zum Kopieren von Daten aus einem Amazon Redshift-Datenspeicher verwendet werden.
+Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das JSON-Beispiel Kopieren von Daten aus Amazon Redshift in Azure Blob Storage zeigt die JSON-Definitionen für die Data Factory-Entitäten, die zum Kopieren von Daten aus einem Amazon Redshift-Datenspeicher verwendet werden.
 
 Die folgenden Abschnitte beschreiben die JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten für Amazon Redshift verwendet werden.
 
@@ -100,7 +100,7 @@ Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift en
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Verwenden von UNLOAD zum Kopieren von Daten aus Amazon Redshift
 
-Der Amazon Redshift-Befehl [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) wird die Ergebnisse einer Abfrage auf eine oder mehrere Dateien auf Amazon S3 entladen. Dieser Befehl wird von Amazon zum Kopieren großer Datasets aus Redshift empfohlen.
+Der Amazon Redshift-Befehl [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) wird die Ergebnisse einer Abfrage auf eine oder mehrere Dateien auf Amazon S3 entladen. Dieser Befehl wird von Amazon zum Kopieren großer Datasets aus Redshift empfohlen.
 
 **Beispiel: Kopieren von Daten aus Amazon Redshift in ein Azure SQL Data Warehouse**
 

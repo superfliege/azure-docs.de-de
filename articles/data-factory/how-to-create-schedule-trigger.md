@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62c9a8e6375f6ac7db86ae81cdd4e5c9eb445770
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016629"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432820"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 Dieser Artikel enthält Informationen zum Zeitplantrigger und den Schritten zum Erstellen, Starten und Überwachen eines Zeitplantriggers. Informationen zu anderen Triggertypen finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).
@@ -66,6 +66,9 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
     ![Überwachen von Triggerausführungen](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantrigger erstellen, starten und überwachen. Damit dieses Beispiel funktioniert, lesen Sie zuerst [Schnellstart: Erstellen einer Data Factory mit Azure PowerShell](quickstart-create-data-factory-powershell.md). Fügen Sie anschließend den folgenden Code zur „main“-Methode hinzu, der einen Zeitplantrigger erstellt und startet, der alle 15 Minuten ausgeführt wird. Der Trigger ist einer Pipeline namens **Adfv2QuickStartPipeline** zugeordnet, die Sie als Teil des Schnellstarts erstellen.
 
 1. Erstellen Sie im Ordner „C:\ADFv2QuickStartPSH“ eine JSON-Datei mit dem Namen **MyTrigger.json** und dem folgenden Inhalt:
@@ -108,34 +111,34 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantri
     - Der Trigger ist der Pipeline **Adfv2QuickStartPipeline** zugeordnet. Um einen Trigger mehreren Pipelines zuzuordnen, fügen Sie weitere **pipelineReference**-Abschnitte hinzu.
     - Die Pipeline im Schnellstart akzeptiert zwei **parameter**-Werte: **inputPath** und **outputPath**. Aus diesem Grund übergeben Sie Werte für diese Parameter aus dem Trigger.
 
-2. Erstellen Sie mit dem Cmdlet **Set-AzureRmDataFactoryV2Trigger** einen Trigger:
+2. Erstellen Sie mit dem Cmdlet **Set-AzDataFactoryV2Trigger** einen Trigger:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet **Get-AzureRmDataFactoryV2Trigger** verwenden:
+3. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Starten Sie den Trigger mit dem Cmdlet **Start-AzureRmDataFactoryV2Trigger**:
+4. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet **Get-AzureRmDataFactoryV2Trigger** verwenden:
+5. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet **Get-AzureRmDataFactoryV2TriggerRun** ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
+6.  Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet **Get-AzDataFactoryV2TriggerRun** ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
     Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
@@ -322,12 +325,12 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 
 ### <a name="schema-defaults-limits-and-examples"></a>Schemastandards, Einschränkungen und Beispiele
 
-| JSON-Eigenschaft | Typ | Erforderlich | Standardwert | Gültige Werte | Beispiel |
+| JSON-Eigenschaft | Type | Erforderlich | Standardwert | Gültige Werte | Beispiel |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Zeichenfolge | JA | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | Objekt | JA | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | Objekt | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Number | Nein  | 1 | 1 bis 1.000 | `"interval":10` |
-| **endTime** | Zeichenfolge | JA | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | Zeichenfolge | Ja | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Objekt | Nein  | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft

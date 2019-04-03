@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/13/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1a9283ad688c63642df880a74cca9189c7c59042
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dcf7d237c8cfbf52a804e428d84fff0bb328c7c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012103"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory (Vorschauversion)
 
@@ -35,19 +35,42 @@ Berücksichtigen Sie bei der Vorschau Folgendes:
 - Azure Storage unterstützt sowohl integrierte als auch benutzerdefinierte RBAC-Rollen. Sie können Rollen auf der Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange zuweisen.
 - Zu den Azure Storage-Clientbibliotheken, die derzeit Azure AD-Integration unterstützen, zählen:
     - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage)
-    - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)
+    - [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)
     - Python
         - [Blob, Queue und Files](https://github.com/Azure/azure-storage-python)
     - [Node.js](https://www.npmjs.com/package/azure-storage)
     - [JavaScript](https://aka.ms/downloadazurestoragejs)
 
-## <a name="get-started-with-azure-ad-for-storage"></a>Erste Schritte mit Azure AD für Storage
+## <a name="overview-of-azure-ad-for-storage"></a>Übersicht über Azure AD für Azure Storage
 
-Im ersten Schritt beim Verwenden der Azure AD-Integration mit Azure Storage weisen Sie RBAC-Rollen für Speicherdaten Ihrem Dienstprinzipal (einem Benutzer-, Gruppen- oder Anwendungsdienstprinzipal) oder den verwalteten Identitäten für Azure-Ressourcen zu. RBAC-Rollen umfassen gängige Sätze von Berechtigungen für Container und Warteschlangen. Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
+Im ersten Schritt beim Verwenden der Azure AD-Integration mit Azure Storage weisen Sie RBAC-Rollen für Speicherdaten Ihrem Dienstprinzipal (einem Benutzer-, Gruppen- oder Anwendungsdienstprinzipal) oder den verwalteten Identitäten für Azure-Ressourcen zu. RBAC-Rollen umfassen gängige Sätze von Berechtigungen für Container und Warteschlangen. Weitere Informationen zum Zuweisen von RBAC-Rollen zu Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
 
 Um Azure AD zum Autorisieren des Zugriffs auf Speicherressourcen in Ihren Anwendungen zu verwenden, müssen Sie ein OAuth 2.0-Zugriffstoken aus dem Code anfordern. Informationen zum Anfordern eines Zugriffstokens und seiner Verwendung zum Autorisieren der Anforderungen an Azure Storage finden Sie unter [Authentifizieren mit Azure AD über eine Azure Storage-Anwendung (Vorschau)](storage-auth-aad-app.md). Wenn Sie eine verwaltete Identität nutzen, helfen Ihnen die Informationen unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit verwalteten Azure-Identitäten für Azure-Ressourcen (Vorschau)](storage-auth-aad-msi.md) weiter.
 
 Azure CLI und PowerShell unterstützen jetzt die Anmeldung mit einer Azure AD-Identität. Nachdem Sie sich mit einer Azure AD-Identität angemeldet haben, wird die Sitzung mit dieser Identität ausgeführt. Weitere Informationen finden Sie unter [Verwenden einer Azure AD Identity für den Zugriff auf Azure Storage mit der Befehlszeilenschnittstelle oder PowerShell (Vorschau)](storage-auth-aad-script.md).
+
+## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-Rollen für Blobs und Warteschlangen
+
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit üblichen Berechtigungssätzen für den Zugriff auf Container und Warteschlangen. 
+
+Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein. 
+
+[!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
+
+Weitere Informationen zum Zuweisen einer integrierten Rolle im Azure-Portal finden Sie unter [Grant access to Azure containers and queues with RBAC in the Azure portal (preview)](storage-auth-aad-rbac.md) (Gewähren des Zugriff auf Azure-Container- und Warteschlangendaten im Azure-Portal mithilfe von RBAC [Vorschau]).
+
+### <a name="access-permissions-granted-by-rbac-roles"></a>Von RBAC-Rollen erteilte Zugriffsberechtigungen 
+
+In der folgenden Tabelle sind die von den integrierten Rollen erteilten Zugriffsrechte für verschiedene Geltungsbereichsebenen zusammengefasst:
+
+|Bereich|Blobdatenbesitzer|Mitwirkender an Blobdaten|Leser von Blobdaten|Mitwirkender an Warteschlangendaten|Leser von Warteschlangendaten|
+|---|---|---|---|---|---|
+|Abonnementebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für alle Container und Blobs im Abonnement|Lese-/Schreibzugriff auf alle Container und Blobs im Abonnement| Lesezugriff auf alle Container und Blobs im Abonnement|Lese-/Schreibzugriff auf alle Warteschlangen im Abonnement|Lesezugriff auf alle Warteschlangen im Abonnement|
+|Ressourcengruppenebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für alle Container und Blobs in der Ressourcengruppe|Lese-/Schreibzugriff auf alle Container und Blobs in der Ressourcengruppe|Lesezugriff auf alle Container und Blobs in der Ressourcengruppe|Lese-/Schreibzugriff auf alle Warteschlangen in der Ressourcengruppe|Lesezugriff auf alle Warteschlangen in der Ressourcengruppe|
+|Speicherkontoebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für alle Container und Blobs im Speicherkonto|Lese-/Schreibzugriff auf alle Container und Blobs im Speicherkonto|Lesezugriff auf alle Container und Blobs im Speicherkonto|Lese-/Schreibzugriff auf alle Warteschlangen im Speicherkonto|Lesezugriff auf alle Warteschlangen im Speicherkonto|
+|Container-/Warteschlangenebene|Lese-/Schreibzugriff und Verwaltung der POSIX-Zugriffsteuerung für die angegebenen Container und die dazugehörigen Blobs|Lese-/Schreibzugriff auf den angegebenen Container und seine Blobs|Lesezugriff auf den angegebenen Container und seine Blobs|Lese-/Schreibzugriff auf die angegebene Warteschlange|Lesezugriff auf die angegebene Warteschlange|
+
+Einzelheiten zu den Berechtigungen, die für das Aufrufen von Azure Storage-Vorgängen erforderlich sind, finden Sie unter [Berechtigungen für das Aufrufen von REST-Vorgängen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

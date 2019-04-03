@@ -5,15 +5,15 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/22/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699175"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750649"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -352,6 +352,7 @@ Wenn Sie die Ausnahme **Vertrauenswürdigen Microsoft-Diensten die Umgehung dies
 |Azure Backup|Microsoft.Backup|Ausführen von Sicherungen und Wiederherstellungen von nicht verwalteten Datenträgern in virtuellen IAAS-Computern (nicht für verwaltete Datenträger erforderlich). [Weitere Informationen](/azure/backup/backup-introduction-to-azure-backup)|
 |Azure Site Recovery|Microsoft.SiteRecovery |Konfigurieren der Notfallwiederherstellung durch Aktivieren der Replikation für virtuelle Azure IaaS-Computer. Erforderlich, wenn Sie ein Cachespeicherkonto oder ein Quell- oder Zielspeicherkonto mit aktivierter Firewall verwenden.  [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)|
 |Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten. [Weitere Informationen](/azure/devtest-lab/devtest-lab-overview)|
+|Azure Data Box|Microsoft.DataBox|Ermöglicht den Import von Daten in Azure über die Data Box. [Weitere Informationen](/azure/databox/data-box-overview)|
 |Azure Event Grid|Microsoft.EventGrid|Aktivieren Sie Blob Storage-Ereignisveröffentlichung, und erlauben Sie Event Grid die Veröffentlichung in Speicherwarteschlangen. Erfahren Sie mehr über [Blob Storage-Ereignisse](/azure/event-grid/event-sources) und das [Veröffentlichen in Warteschlangen](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture. [Weitere Informationen](/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](/azure/network-watcher/network-watcher-packet-capture-overview)|

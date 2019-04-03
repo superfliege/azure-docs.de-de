@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 76b0d1728b46834270e9a5b53709de62b4a8b3fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: cc1a0905c97e76c481283363f095087b5fdcba3f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429377"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455852"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Erstellen einer freigegebenen, selbstgehosteten Integration Runtime in Azure Data Factory mit PowerShell
 
@@ -30,9 +30,11 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
 
-- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.11.0). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
+- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
 
 > [!NOTE]  
 > Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auswählen: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -65,8 +67,8 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
 1. Melden Sie sich an, und wählen Sie ein Abonnement aus. Fügen Sie dem Skript zum Anmelden bei Ihrem Azure-Abonnement und Auswählen des Abonnements den folgenden Code hinzu:
 
     ```powershell
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    Connect-AzAccount
+    Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
 1. Erstellen Sie eine Ressourcengruppe und eine Data Factory.
@@ -74,16 +76,16 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
     > [!NOTE]  
     > Dieser Schritt ist optional. Wenn Sie bereits eine Data Factory verwenden, überspringen Sie diesen Schritt. 
 
-    Erstellen Sie mit dem Befehl [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort „WestEurope“ erstellt: 
+    Erstellen Sie mit dem Befehl [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azurermps-6.11.0) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort „WestEurope“ erstellt: 
 
     ```powershell
-    New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
+    New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
     ```
 
     Führen Sie den folgenden Befehl aus, um eine Data Factory zu erstellen: 
 
     ```powershell
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
+    Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
                              -Location $DataFactoryLocation `
                              -Name $SharedDataFactoryName
     ```
@@ -96,7 +98,7 @@ Diese Schritt-für-Schritt-Anleitung zeigt Ihnen, wie Sie mit Azure PowerShell e
 Führen Sie den folgenden Befehl aus, um eine selbstgehostete Integration Runtime zu erstellen:
 
 ```powershell
-$SharedIR = Set-AzureRmDataFactoryV2IntegrationRuntime `
+$SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $SharedDataFactoryName `
     -Name $SharedIntegrationRuntimeName `
@@ -109,7 +111,7 @@ $SharedIR = Set-AzureRmDataFactoryV2IntegrationRuntime `
 Führen Sie den folgenden Befehl aus, um den Authentifizierungsschlüssel für die selbstgehostete Integration Runtime abzurufen:
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeKey `
+Get-AzDataFactoryV2IntegrationRuntimeKey `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $SharedDataFactoryName `
     -Name $SharedIntegrationRuntimeName
@@ -133,7 +135,7 @@ Die Antwort enthält den Authentifizierungsschlüssel für diese selbstgehostete
 > Dieser Schritt ist optional. Wenn Sie bereits über die Data Factory verfügen, für die Sie die Freigabe ausführen möchten, überspringen Sie diesen Schritt.
 
 ```powershell
-$factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
+$factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
@@ -145,7 +147,7 @@ Erteilen Sie die Berechtigung für die Data Factory, die auf die selbstgehostete
 > Dieser Schritt darf nicht übersprungen werden!
 
 ```powershell
-New-AzureRMRoleAssignment `
+New-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId ` #MSI of the Data Factory with which it needs to be shared
     -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' ` #This is the Contributor role
     -Scope $SharedIR.Id
@@ -156,7 +158,7 @@ New-AzureRMRoleAssignment `
 Führen Sie den folgenden Befehl aus, um eine verknüpfte, selbstgehostete Integration Runtime zu erstellen:
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime `
+Set-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $LinkedDataFactoryName `
     -Name $LinkedIntegrationRuntimeName `
@@ -172,7 +174,7 @@ Jetzt können Sie diese verknüpften Integration Runtime in einem beliebigen ver
 Um den Zugriff einer Data Factory auf die freigegebene Integration Runtime aufzuheben, führen Sie den folgenden Befehl aus:
 
 ```powershell
-Remove-AzureRMRoleAssignment `
+Remove-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId `
     -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
     -Scope $SharedIR.Id
@@ -181,7 +183,7 @@ Remove-AzureRMRoleAssignment `
 Um die vorhandenen verknüpfte Integration Runtime zu entfernen, führen Sie den folgenden Befehl für die freigegebene Integration Runtime aus:
 
 ```powershell
-Remove-AzureRmDataFactoryV2IntegrationRuntime `
+Remove-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName $ResourceGroupName `
     -DataFactoryName $SharedDataFactoryName `
     -Name $SharedIntegrationRuntimeName `

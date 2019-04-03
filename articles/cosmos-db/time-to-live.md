@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9b5054da56bdc6a88642ea7860702b280a76dbb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9dec5b3aeb951316985c965de70a372f55b8225
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461167"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549186"
 ---
 # <a name="time-to-live-in-azure-cosmos-db"></a>Gültigkeitsdauer in Azure Cosmos DB 
 
@@ -30,7 +30,7 @@ Der Wert für die Gültigkeitsdauer wird in Sekunden festgelegt und als Deltawer
 
    - Ist die Angabe vorhanden und der Wert auf eine beliebige Zahl (n) festgelegt, läuft die Gültigkeit von Elementen n Sekunden nach dem Zeitpunkt der letzten Änderung ab.
 
-2. **Gültigkeitsdauer für ein Element** (festgelegt mithilfe von `TimeToLive`):
+2. **Gültigkeitsdauer für ein Element** (festgelegt mithilfe von `ttl`):
 
    - Diese Eigenschaft ist nur relevant, wenn `DefaultTimeToLive` für den übergeordneten Container vorhanden und nicht auf Null festgelegt ist.
 

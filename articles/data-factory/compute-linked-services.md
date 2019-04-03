@@ -3,20 +3,20 @@ title: Von Azure Data Factory unterstützte Compute-Umgebungen | Microsoft-Dokum
 description: Erfahren Sie mehr über Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z.B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: douglasl
-ms.openlocfilehash: 5e620b03f5588369fc73a62f2019d857766596fd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: b4078303a0fabf70fe8bda82875dd312714f73de
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321941"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576887"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -91,18 +91,18 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > [!IMPORTANT]
 > Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist. 
 >
-> Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Storage-Explorer](http://storageexplorer.com/), um Container in Azure Blob Storage zu löschen.
+> Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Storage-Explorer](https://storageexplorer.com/), um Container in Azure Blob Storage zu löschen.
 >
 > 
 
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | JA      |
-| clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | JA      |
-| linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. Der HDInsight-Cluster wird in der gleichen Region wie das Azure Storage-Konto erstellt. Die Gesamtanzahl von Kernen, die Sie in jeder von Azure HDInsight unterstützten Azure-Region verwenden können, ist begrenzt. Stellen Sie sicher, dass Sie über genügend Kernekontingente in dieser Azure-Region verfügen, um die Anforderungen von clusterSize zu erfüllen. Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters, der Azure Data Lake Store als Speicher verwendet, ist derzeit nicht möglich. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einer Azure Data Lake Store-Instanz speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus der Azure Blob Storage-Instanz in die Azure Data Lake Store-Instanz. </p> | JA      |
-| clusterResourceGroup         | Der HDInsight-Cluster wird in dieser Ressourcengruppe erstellt. | JA      |
-| timetolive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach dem Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind. Der minimal zulässige Wert beträgt 5 Minuten (00:05:00).<br/><br/>Beispiel: Wenn eine Aktivitätsausführung 6 Minuten dauert und „timetolive“ auf 5 Minuten festgelegt ist, bleibt der Cluster für 5 Minuten nach den 6 Minuten für die Verarbeitung der Aktivitätsausführung aktiv. Wenn eine weitere Aktivitätsausführung mit einem Zeitfenster von 6 Minuten ausgeführt wird, wird sie von demselben Cluster verarbeitet.<br/><br/>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwändiger Vorgang (er kann eine Weile dauern). Verwenden Sie daher diese Einstellung bei Bedarf, um die Leistung einer Data Factory zu verbessern, indem Sie einen bedarfsgesteuerten HDInsight-Cluster wiederverwenden.<br/><br/>Wenn der timetolive-Wert auf 0 festgelegt wird, wird der Cluster gelöscht, sobald die Aktivitätsausführung abgeschlossen ist. Wenn Sie hingegen einen hohen Wert festlegen, könnte der Cluster im Leerlauf bleiben, damit Sie sich zur Problembehandlung anmelden können, aber dies könnte hohe Kosten verursachen. Aus diesem Grund ist es wichtig, dass Sie den entsprechenden Wert basierend auf Ihren Anforderungen festlegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines die Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | JA      |
+| type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
+| clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Ja      |
+| linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. Der HDInsight-Cluster wird in der gleichen Region wie das Azure Storage-Konto erstellt. Die Gesamtanzahl von Kernen, die Sie in jeder von Azure HDInsight unterstützten Azure-Region verwenden können, ist begrenzt. Stellen Sie sicher, dass Sie über genügend Kernekontingente in dieser Azure-Region verfügen, um die Anforderungen von clusterSize zu erfüllen. Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters, der Azure Data Lake Store als Speicher verwendet, ist derzeit nicht möglich. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einer Azure Data Lake Store-Instanz speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus der Azure Blob Storage-Instanz in die Azure Data Lake Store-Instanz. </p> | Ja      |
+| clusterResourceGroup         | Der HDInsight-Cluster wird in dieser Ressourcengruppe erstellt. | Ja      |
+| timetolive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach dem Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind. Der minimal zulässige Wert beträgt 5 Minuten (00:05:00).<br/><br/>Beispiel: Wenn eine Aktivitätsausführung 6 Minuten dauert und „timetolive“ auf 5 Minuten festgelegt ist, bleibt der Cluster für 5 Minuten nach den 6 Minuten für die Verarbeitung der Aktivitätsausführung aktiv. Wenn eine weitere Aktivitätsausführung mit einem Zeitfenster von 6 Minuten ausgeführt wird, wird sie von demselben Cluster verarbeitet.<br/><br/>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwändiger Vorgang (er kann eine Weile dauern). Verwenden Sie daher diese Einstellung bei Bedarf, um die Leistung einer Data Factory zu verbessern, indem Sie einen bedarfsgesteuerten HDInsight-Cluster wiederverwenden.<br/><br/>Wenn der timetolive-Wert auf 0 festgelegt wird, wird der Cluster gelöscht, sobald die Aktivitätsausführung abgeschlossen ist. Wenn Sie hingegen einen hohen Wert festlegen, könnte der Cluster im Leerlauf bleiben, damit Sie sich zur Problembehandlung anmelden können, aber dies könnte hohe Kosten verursachen. Aus diesem Grund ist es wichtig, dass Sie den entsprechenden Wert basierend auf Ihren Anforderungen festlegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines die Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja      |
 | clusterType                  | Der Typ des zu erstellenden HDInsight-Clusters. Zulässige Werte sind „hadoop“ und „spark“. Wenn Sie hier nichts angeben, lautet der Standardwert „hadoop“. Ein für das Enterprise-Sicherheitspaket aktivierter Cluster kann nicht bedarfsweise erstellt werden. Verwenden Sie stattdessen einen [vorhandenen Cluster/eine eigene Compute-Umgebung](#azure-hdinsight-linked-service). | Nein        |
 | Version                      | Version des HDInsight-Clusters. Wenn nichts angegeben wird, ist dies die aktuelle definierte HDInsight-Standardversion. | Nein        |
 | hostSubscriptionId           | Die Azure-Abonnement-ID, die zum Erstellen des HDInsight-Clusters verwendet wird. Wenn nicht angegeben, wird die Abonnement-ID Ihres Azure-Anmeldungskontexts verwendet. | Nein        |
@@ -148,9 +148,9 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 | Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | JA      |
-| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | JA      |
-| **tenant**              | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | JA      |
+| **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
+| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
+| **tenant**              | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja      |
 
 ### <a name="advanced-properties"></a>Erweiterte Eigenschaften
 
@@ -286,11 +286,11 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| type              | Legen Sie die Typeigenschaft auf **HDInsight**fest.            | JA      |
-| clusterUri        | Der URI des HDInsight-Clusters.                            | JA      |
-| username          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | JA      |
-| password          | Geben Sie ein Kennwort für das Benutzerkonto an.                       | JA      |
-| linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Store-Dienst für diese Eigenschaft angeben. Sie können auf Daten in Azure Data Lake Store über Hive-/Pig-Skripts zugreifen, wenn der HDInsight-Cluster Zugriff auf die Data Lake Store-Instanz hat. </p> | JA      |
+| type              | Legen Sie die Typeigenschaft auf **HDInsight**fest.            | Ja      |
+| clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
+| username          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | Ja      |
+| password          | Geben Sie ein Kennwort für das Benutzerkonto an.                       | Ja      |
+| linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Store-Dienst für diese Eigenschaft angeben. Sie können auf Daten in Azure Data Lake Store über Hive-/Pig-Skripts zugreifen, wenn der HDInsight-Cluster Zugriff auf die Data Lake Store-Instanz hat. </p> | Ja      |
 | isEspEnabled      | Geben Sie *TRUE* an, wenn der HDInsight-Cluster für das [Enterprise-Sicherheitspaket](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction) aktiviert ist. Die Standardeinstellung lautet *FALSE*. | Nein        |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. <br />Verwenden Sie für einen für das Enterprise-Sicherheitspaket (ESP) aktivierten HDInsight-Cluster eine selbstgehostete Integration Runtime, die auf den Cluster zugreifen kann oder in demselben virtuellen Netzwerk wie der ESP-HDInsight-Cluster bereitgestellt werden muss. | Nein        |
 
@@ -304,13 +304,15 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 
 ## <a name="azure-batch-linked-service"></a>Verknüpfter Azure Batch-Dienst
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Sie können einen verknüpften Azure Batch-Dienst erstellen, um einen Batch-Pool mit virtuellen Computern für Data Factory zu registrieren. Sie können benutzerdefinierte Aktivität mithilfe von Azure Batch ausführen.
 
 Lesen Sie die folgenden Themen, wenn Sie noch nicht mit dem Azure Batch-Dienst vertraut sind:
 
 * [Azure Batch – Grundlagen](../batch/batch-technical-overview.md) finden Sie eine Übersicht über den Azure Batch-Dienst.
-* Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1), oder erstellen Sie das Azure Batch-Konto über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Blog [Using Azure PowerShell to Manage Azure Batch Account](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) (Verwenden von Azure PowerShell zum Verwalten eines Azure Batch-Kontos) ist die Verwendung dieses Cmdlets im Detail beschrieben.
-* [New-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) , um einen Azure Batch-Pool zu erstellen.
+* Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount), oder erstellen Sie das Azure Batch-Konto über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Blog [Using Azure PowerShell to Manage Azure Batch Account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) (Verwenden von Azure PowerShell zum Verwalten eines Azure Batch-Kontos) ist die Verwendung dieses Cmdlets im Detail beschrieben.
+* Cmdlet [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool), um einen Azure Batch-Pool zu erstellen.
 
 ### <a name="example"></a>Beispiel
 
@@ -344,12 +346,12 @@ Lesen Sie die folgenden Themen, wenn Sie noch nicht mit dem Azure Batch-Dienst v
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | JA      |
-| .<Name der Region       | Der Name des Azure Batch-Kontos.         | JA      |
-| accessKey         | Der Zugriffsschlüssel für das Azure Batch-Konto.  | JA      |
-| batchUri          | URL zu Ihrem Azure Batch-Konto im Format „https://*batchaccountname.region*. batch.azure.com“. | JA      |
-| poolName          | Der Name des Pools mit virtuellen Computern.    | JA      |
-| linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | JA      |
+| type              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | Ja      |
+| .<Name der Region       | Der Name des Azure Batch-Kontos.         | Ja      |
+| accessKey         | Der Zugriffsschlüssel für das Azure Batch-Konto.  | Ja      |
+| batchUri          | URL zu Ihrem Azure Batch-Konto im Format „https://*batchaccountname.region*. batch.azure.com“. | Ja      |
+| poolName          | Der Name des Pools mit virtuellen Computern.    | Ja      |
+| linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | Ja      |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein        |
 
 ## <a name="azure-machine-learning-linked-service"></a>Mit Azure Machine Learning verknüpfter Dienst
@@ -380,9 +382,9 @@ Sie können einen verknüpften Azure Machine Learning-Dienst erstellen, um einen
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Typ                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | JA                                      |
-| mlEndpoint             | Die Batchbewertungs-URL.                   | JA                                      |
-| apiKey                 | Die veröffentlichte API des Arbeitsbereichsmodells.     | JA                                      |
+| Type                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | Ja                                      |
+| mlEndpoint             | Die Batchbewertungs-URL.                   | Ja                                      |
+| apiKey                 | Die veröffentlichte API des Arbeitsbereichsmodells.     | Ja                                      |
 | updateResourceEndpoint | Die Ressourcenupdate-URL für einen Azure ML-Webdienst-Endpunkt, mit der der Vorhersagewebdienst mit der Datei des trainierten Modells aktualisiert wird. | Nein                                        |
 | servicePrincipalId     | Geben Sie die Client-ID der Anwendung an.     | Erforderlich, wenn updateResourceEndpoint angegeben wird |
 | servicePrincipalKey    | Geben Sie den Schlüssel der Anwendung an.           | Erforderlich, wenn updateResourceEndpoint angegeben wird |
@@ -423,14 +425,14 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 | Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| type                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | JA                                      |
-| accountName          | Name des Azure Data Lake Analytics-Kontos.  | JA                                      |
+| type                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
+| accountName          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
 | dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos.           | Nein                                        |
 | subscriptionId       | Azure-Abonnement-ID                    | Nein                                        |
 | resourceGroupName    | Azure-Ressourcengruppenname                | Nein                                        |
-| servicePrincipalId   | Geben Sie die Client-ID der Anwendung an.     | JA                                      |
-| servicePrincipalKey  | Geben Sie den Schlüssel der Anwendung an.           | JA                                      |
-| Mandant               | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | JA                                      |
+| servicePrincipalId   | Geben Sie die Client-ID der Anwendung an.     | Ja                                      |
+| servicePrincipalKey  | Geben Sie den Schlüssel der Anwendung an.           | Ja                                      |
+| Mandant               | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja                                      |
 | connectVia           | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein                                        |
 
 
@@ -483,10 +485,10 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 | Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | Name des verknüpften Diensts               | JA   |
-| type                 | Legen Sie die type-Eigenschaft auf **AzureDatabricks** fest. | JA                                      |
-| Domäne               | Geben Sie die Azure-Region entsprechend der Region des Databricks-Arbeitsbereichs an. Beispiel: https://eastus.azuredatabricks.net | JA                                 |
-| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | JA                                       |
+| name                 | Name des verknüpften Diensts               | Ja   |
+| type                 | Legen Sie die type-Eigenschaft auf **AzureDatabricks** fest. | Ja                                      |
+| Domäne               | Geben Sie die Azure-Region entsprechend der Region des Databricks-Arbeitsbereichs an. Beispiel: https://eastus.azuredatabricks.net | Ja                                 |
+| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | Ja                                       |
 | existingClusterId    | Cluster-ID eines vorhandenen Clusters, in dem alle Aufträge ausgeführt werden. Dabei sollte es sich um einen bereits erstellten interaktiven Cluster handeln. Möglicherweise müssen Sie den Cluster manuell neu starten, falls er nicht mehr reagiert. Databricks empfiehlt, Aufträge in neuen Clustern auszuführen, um die Zuverlässigkeit zu erhöhen. Sie finden die Cluster-ID eines interaktiven Clusters unter: Databricks-Arbeitsbereich -> Cluster -> Name des interaktiven Clusters -> Konfiguration -> Tags. [Weitere Informationen](https://docs.databricks.com/user-guide/clusters/tags.html) | Nein  
 | newClusterVersion    | Die Spark-Version des Clusters. In Databricks wird ein neuer Auftragscluster erstellt. | Nein   |
 | newClusterNumOfWorker| Die Anzahl der Workerknoten, die dieser Cluster haben sollte. Ein Cluster hat einen Spark Driver und Executors entsprechend der Workeranzahl, also insgesamt Workeranzahl + 1 Spark-Knoten. Eine als Int32 formatierte Zeichenfolge wie „1“ bedeutet, dass „numOfWorker“ 1 ist. "1:10" steht für eine automatische Skalierung von 1 als Minimum und 10 als Maximum.  | Nein                 |

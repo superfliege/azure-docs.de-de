@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023344"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852840"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopieren von Daten in einen Azure Search-Index mithilfe von Azure Data Factory
 
@@ -43,13 +43,13 @@ Folgende Eigenschaften werden für den mit Azure Search verknüpften Dienst unte
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch** | JA |
-| URL | URL für den Azure Search-Dienst. | JA |
-| key | Admin-Schlüssel für den Azure Search-Dienst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch** | Ja |
+| URL | URL für den Azure Search-Dienst. | Ja |
+| key | Admin-Schlüssel für den Azure Search-Dienst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 > [!IMPORTANT]
-> Wenn Sie Daten aus einem Clouddatenspeicher in den Azure Search-Index kopieren, dem mit Azure Search verknüpften Dienst, müssen Sie auf eine Azure-Integrationslaufzeit mit explizitem Bereich in connectVia verweisen. Legen Sie die Region als Region fest, in der sich Ihre Azure Search-Instanz befindet. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+> Wenn Sie Daten aus einem Clouddatenspeicher in den Azure Search-Index kopieren, dem mit Azure Search verknüpften Dienst, müssen Sie auf eine Azure Integration Runtime mit explizitem Bereich in connectVia verweisen. Legen Sie die Region als Region fest, in der sich Ihre Azure Search-Instanz befindet. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Beispiel:**
 
@@ -81,8 +81,8 @@ Legen Sie zum Kopieren von Daten in Azure Search die type-Eigenschaft des Datase
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureSearchIndex** | JA |
-| IndexName | Name eines Azure Search-Index. Data Factory erstellt den Index nicht. Der Index muss in Azure Search vorhanden sein. | JA |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureSearchIndex** | Ja |
+| IndexName | Name eines Azure Search-Index. Data Factory erstellt den Index nicht. Der Index muss in Azure Search vorhanden sein. | Ja |
 
 **Beispiel:**
 
@@ -112,7 +112,7 @@ Legen Sie zum Kopieren von Daten in Azure Search den Quelltyp in der Kopieraktiv
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureSearchIndexSink** | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureSearchIndexSink** | Ja |
 | writeBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).<br/><br/>Zulässige Werte sind: **Merge** (Standard) und **Upload**. | Nein  |
 | writeBatchSize | Lädt Daten in den Azure Search-Index hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property).<br/><br/>Zulässige Werte sind ganze Zahlen von 1 bis 1.000 (Standardwert „1.000“). | Nein  |
 

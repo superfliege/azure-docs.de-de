@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478235"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883840"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -86,14 +86,14 @@ Die folgende Tabelle gibt eine Übersicht über die Containervorgänge, die bedi
 
 | Vorgang | Gibt Container-ETag-Wert zurück | Akzeptiert bedingte Header |
 |:--- |:--- |:--- |
-| Create Container |JA |Nein  |
-| Get Container Properties |JA |Nein  |
-| Get Container Metadata |JA |Nein  |
-| Set Container Metadata |JA |JA |
-| Get Container ACL |JA |Nein  |
-| Set Container ACL |JA |Ja (*) |
-| Delete Container |Nein  |JA |
-| Lease Container |JA |JA |
+| Create Container |Ja |Nein  |
+| Get Container Properties |Ja |Nein  |
+| Get Container Metadata |Ja |Nein  |
+| Set Container Metadata |Ja |Ja |
+| Get Container ACL |Ja |Nein  |
+| Set Container ACL |Ja |Ja (*) |
+| Delete Container |Nein  |Ja |
+| Lease Container |Ja |Ja |
 | List Blobs |Nein  |Nein  |
 
 (*) Die von SetContainerACL definierten Berechtigungen werden zwischengespeichert, und die Verteilung der Aktualisierungen dieser Berechtigungen dauert 30 Sekunden. Während dieser Zeitspanne kann die Konsistenz der Aktualisierungen nicht garantiert werden.  
@@ -102,22 +102,22 @@ Die folgende Tabelle gibt einen Überblick über die Blob-Vorgänge, die bedingt
 
 | Vorgang | Gibt ETag-Wert zurück | Akzeptiert bedingte Header |
 |:--- |:--- |:--- |
-| Put Blob |JA |JA |
-| Get Blob |JA |JA |
-| Get Blob Properties |JA |JA |
-| Set Blob Properties |JA |JA |
-| Get Blob Metadata |JA |JA |
-| Set Blob Metadata |JA |JA |
-| Lease Blob (*) |JA |JA |
-| Snapshot Blob |JA |JA |
-| Kopieren von Blobs |JA |Ja (für Quell- und Ziel-Blob) |
+| Put Blob |Ja |Ja |
+| Get Blob |Ja |Ja |
+| Get Blob Properties |Ja |Ja |
+| Set Blob Properties |Ja |Ja |
+| Get Blob Metadata |Ja |Ja |
+| Set Blob Metadata |Ja |Ja |
+| Lease Blob (*) |Ja |Ja |
+| Snapshot Blob |Ja |Ja |
+| Kopieren von Blobs |Ja |Ja (für Quell- und Ziel-Blob) |
 | Abort Copy Blob |Nein  |Nein  |
-| Delete Blob |Nein  |JA |
+| Delete Blob |Nein  |Ja |
 | Put Block |Nein  |Nein  |
-| Put Block List |JA |JA |
-| Get Block List |JA |Nein  |
-| Put Page |JA |JA |
-| Get Page Ranges |JA |JA |
+| Put Block List |Ja |Ja |
+| Get Block List |Ja |Nein  |
+| Put Page |Ja |Ja |
+| Get Page Ranges |Ja |Ja |
 
 (*) "Lease Blob" ändert das ETag eines Blob nicht.  
 
@@ -193,7 +193,7 @@ Weitere Informationen finden Sie unter
 
 * [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Lease Blob ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Verwalten der Nebenläufigkeit im Tabellendienst
 Wenn Sie mit Entitäten arbeiten, verwendet der Tabellendienst standardmäßig optimistische Nebenläufigkeitsprüfungen. Darin unterscheidet er sich vom Blob-Dienst, wo die Durchführung optimistischer Nebenläufigkeitsprüfungen explizit gewählt werden muss. Ein weiterer Unterschied zwischen Tabellendienst und Blob-Dienst besteht darin, dass Sie mit dem Tabellendienst nur das Nebenläufigkeitsverhalten von Entitäten verwalten können, während Sie mit dem Blob-Dienst die Nebenläufigkeit sowohl von Containern als auch von Blobs verwalten können.  
@@ -237,13 +237,13 @@ Die folgende Tabelle gibt eine Übersicht darüber, wie ETag-Werte in den Tabell
 
 | Vorgang | Gibt ETag-Wert zurück | Erfordert If-Match-Anforderungsheader |
 |:--- |:--- |:--- |
-| Entitäten abfragen |JA |Nein  |
-| Entität einfügen |JA |Nein  |
-| Entität aktualisieren |JA |JA |
-| Entität zusammenführen |JA |JA |
-| Entität löschen |Nein  |JA |
-| Entität einfügen oder ersetzen |JA |Nein  |
-| Entität einfügen oder zusammenführen |JA |Nein  |
+| Entitäten abfragen |Ja |Nein  |
+| Entität einfügen |Ja |Nein  |
+| Entität aktualisieren |Ja |Ja |
+| Entität zusammenführen |Ja |Ja |
+| Entität löschen |Nein  |Ja |
+| Entität einfügen oder ersetzen |Ja |Nein  |
+| Entität einfügen oder zusammenführen |Ja |Nein  |
 
 Bei den Vorgängen **Entität einfügen oder ersetzen** und **Entität einfügen oder zusammenführen** werden *keine* Nebenläufigkeitsprüfungen durchgeführt, da hierbei kein ETag-Wert an den Tabellenspeicherdienst gesendet wird.  
 

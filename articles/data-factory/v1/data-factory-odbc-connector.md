@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c05c2e8941790dd30c42aca8d434a3b914d79de7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 83de0046a56788e40b9224823af0411a18dea5eb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107283"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449936"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,6 +32,8 @@ ms.locfileid: "56107283"
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einem lokalen ODBC-Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 Sie können Daten aus einem ODBC-Datenspeicher in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem ODBC-Datenspeicher in andere Datenspeicher, aber nicht das Verschieben von Daten aus anderen Datenspeichern in einen ODBC-Datenspeicher.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Herstellen der Verbindung
 Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen ODBC-Datenquellen über das Datenverwaltungsgateway. Im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren mehr zum Datenverwaltungsgateway und erhalten eine schrittweise Anleitung zum Einrichten des Gateways. Nutzen Sie das Gateway, um eine Verbindung mit einem ODBC-Datenspeicher herzustellen, auch wenn der Datenspeicher auf einer Azure IaaS-VM gehostet wird.
@@ -93,7 +95,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Verwenden der Standardauthentifizierung mit verschlüsselten Anmeldeinformationen
-Sie können die Anmeldeinformationen mithilfe des Cmdlets [New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) (Version 1.0 von Azure PowerShell) oder [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Version 0.9 von Azure PowerShell oder früher) verschlüsseln.
+Sie können die Anmeldeinformationen mithilfe des Cmdlets [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (Version 1.0 von Azure PowerShell) oder [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Version 0.9 von Azure PowerShell oder früher) verschlüsseln.
 
 ```json
 {

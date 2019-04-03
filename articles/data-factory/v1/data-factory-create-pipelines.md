@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f04903cc1ffd16edd951969c86659c8f1f33105f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ee34c91787ede0431c71b0fd96d2c040717dbca2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814128"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551192"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,6 +32,8 @@ In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Az
 
 > [!NOTE]
 > Dieser Artikel setzt voraus, dass Sie die [Einführung in den Azure Data Factory-Dienst](data-factory-introduction.md)gelesen haben. Wenn Sie noch nicht über praktische Erfahrung mit dem Erstellen von Data Factorys verfügen, erleichtert Ihnen das Tutorial [Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md) oder [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) das Verständnis des vorliegenden Artikels.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Übersicht
 Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie die Ausgabedaten schließlich mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden.
@@ -94,10 +96,10 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 
 | Tag | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| name |Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
+| name |Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”\*”,”%”,”&”,”:”,”\\”</li></ul> |Ja |
 | Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. |Ja |
 | Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im nächsten Abschnitt. | Ja |
-| Start | Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: `2016-10-14T16:32:41Z`. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Die Eigenschaften "start" und "end" geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. |Nein <br/><br/>Wenn Sie einen Wert für die Endeigenschaft angeben, müssen Sie auch einen Wert für die Starteigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein. Sie müssen beide Werte angeben, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Set-AzureRmDataFactoryPipelineActivePeriod-Cmdlet verwenden. |
+| Start | Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: `2016-10-14T16:32:41Z`. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Die Eigenschaften "start" und "end" geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. |Nein <br/><br/>Wenn Sie einen Wert für die Endeigenschaft angeben, müssen Sie auch einen Wert für die Starteigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein. Sie müssen beide Werte angeben, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeit angeben, können Sie später zum Festlegen der Werte das Cmdlet „Set-AzDataFactoryPipelineActivePeriod“ verwenden. |
 | end | Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel: `2016-10-14T17:32:41Z` <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie „9999-09-09“ als Wert für die Endeigenschaft an. <br/><br/> Eine Pipeline ist nur zwischen ihrer Start- und ihrer Endzeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) . |Nein  <br/><br/>Wenn Sie einen Wert für die Starteigenschaft angeben, müssen Sie auch einen Wert für die Endeigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **Start** -Eigenschaft. |
 | isPaused | Bei der Einstellung „true“ wird die Pipeline nicht ausgeführt. Sie befindet sich im Status „angehalten“. Standardwert = false. Sie können diese Eigenschaft zum Aktivieren oder Deaktivieren einer Pipeline verwenden. |Nein  |
 | pipelineMode | Die Methode zum Planen von Ausführungen für die Pipeline. Zulässige Werte sind: „scheduled“ (Standard) und „onetime“.<br/><br/>„scheduled“ bedeutet, dass die Pipeline in einem bestimmten Zeitintervall gemäß ihrem aktiven Zeitraum (Start- und Endzeit) ausgeführt wird. „onetime“ bedeutet, dass die Pipeline nur einmal ausgeführt wird. Pipelines mit einmaliger Ausführung können derzeit nach der Erstellung nicht geändert oder aktualisiert werden. Informationen zur Einstellung der einmaligen Ausführung finden Sie unter [Pipeline mit einmaliger Ausführung](#onetime-pipeline) . |Nein  |

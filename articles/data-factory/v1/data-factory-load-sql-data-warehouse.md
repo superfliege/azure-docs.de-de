@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077019"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -41,7 +41,7 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
 > [!NOTE]
 >  Im Artikel [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) finden Sie allgemeine Informationen zu den Möglichkeiten von Data Factory beim Verschieben von Daten aus/in Azure SQL Data Warehouse.
 >
-> Sie können auch mithilfe des Azure-Portals, Visual Studio, PowerShell usw. Pipelines, erstellen. Im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
+> Sie können auch mithilfe des Azure-Portals, Visual Studio, PowerShell usw. Pipelines, erstellen. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
 >
 >
 
@@ -109,7 +109,7 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
         CLUSTERED COLUMNSTORE INDEX
     )
     ```
-Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopieraktivität mithilfe des Kopier-Assistenten ausgeführt werden.
+  Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopieraktivität mithilfe des Kopier-Assistenten ausgeführt werden.
 
 ## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
@@ -199,7 +199,7 @@ Dieser Abschnitt beschreibt das Konfigurieren des Ziels: Tabelle `lineitem` in d
 
     Sie können die Details zum Kopiervorgang unter **Activity Window Explorer** im rechten Bereich anzeigen, darunter das Datenvolumen, das aus der Quelle gelesen und in das Ziel geschrieben wurde, die Dauer und den durchschnittlichen Durchsatz der Ausführung.
 
-    Wie Sie im folgenden Screenshot sehen können, dauerte das Kopieren von 1 TB aus Azure Blob Storage in SQL Data Warehouse 14 Minuten, und es wurde ein effektiver Durchsatz von 1,22 GBit/s erreicht!
+    Wie Sie im folgenden Screenshot sehen können, dauerte das Kopieren von 1 TB aus Azure Blob Storage in SQL Data Warehouse 14 Minuten, wobei ein effektiver Durchsatz von 1,22 GBit/s erreicht wurde!
 
     ![Kopier-Assistent – Kopieren erfolgreich Dialog](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

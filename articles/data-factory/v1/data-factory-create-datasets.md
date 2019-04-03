@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811085"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433432"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -238,7 +238,7 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 | frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
 | interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |Ja |Nicht verfügbar |
 | style |Gibt an, ob der Slice am Anfang oder am Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Wenn **frequency** auf **Month** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn **style** auf **StartOfInterval** festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn **frequency** auf **Day** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn **frequency** auf **Hour** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein  |EndOfInterval |
-| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Wenn diese Eigenschaft Datumsteile hat, die kürzer sind als die Zeitspanne aus der angegebenen Häufigkeit, werden die kürzeren Teile ignoriert. Wenn **interval** beispielsweise auf **hourly** festgelegt ist (frequency: hour, interval: 1) und das **AnchorDateTime**-Element **Minuten und Sekunden** enthält, wird der Teil mit den Minuten und Sekunden von **anchorDateTime** ignoriert. |Nein  |01/01/0001 |
+| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Beachten Sie, dass, wenn diese Eigenschaft Datumsteile hat, die detaillierter als die angegebene Häufigkeit sind, die detaillierteren Teile ignoriert werden. Wenn **interval** beispielsweise auf **hourly** festgelegt ist (frequency: hour, interval: 1) und das **AnchorDateTime**-Element **Minuten und Sekunden** enthält, wird der Teil mit den Minuten und Sekunden von **anchorDateTime** ignoriert. |Nein  |01/01/0001 |
 | offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>Wenn sowohl **anchorDateTime** als auch **offset** angegeben sind, ist das Ergebnis die kombinierte Verschiebung. |Nein  |Nicht verfügbar |
 
 ### <a name="offset-example"></a>Beispiel zu Offset

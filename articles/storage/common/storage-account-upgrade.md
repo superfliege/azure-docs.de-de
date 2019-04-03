@@ -5,24 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352137"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217290"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
 Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise.
 
-Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden. 
+Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden.
 
-> [!NOTE]
-> Das Upgrade Ihres Speicherkontos auf ein Konto vom Typ „Allgemein v2“ ist kostenlos.
-> Das Ändern der Speicherzugriffsebene kann zu Änderungen an Ihrer Rechnung führen. Weitere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
+> [!IMPORTANT]
+> Ein Upgrade Ihres Speicherkontos des Typs „v1“ auf „Allgemein v2“ ist dauerhaft und kann nicht rückgängig gemacht werden.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade mithilfe des Azure-Portals
 
@@ -68,8 +67,10 @@ Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (
 
 In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem Speicherkonto vom Typ „Allgemein v2“ schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
 
-
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
+
+Ein Upgrade Ihres Speicherkontos des Typs „v1“ auf „Allgemein v2“ ist kostenlos. Das Ändern der Speicherzugriffstarifs kann zu Änderungen an Ihrer Rechnung führen. 
+
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 
 * **Speicherkosten:** Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherzugriffsebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
@@ -157,7 +158,7 @@ Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müs
 Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragungskosten mit Georeplikation für Blob-Speicherkonten auch auf der Grundlage der Schätzung für die Menge an geschriebenen Daten berechnet werden.
 
 > [!NOTE]
-> Ein ausführlicheres Beispiel zur Berechnung der Kosten für die Verwendung der Speicherzugriffsebene „Heiß“ oder „Kalt“ finden Sie im FAQ-Bereich mit dem Titel *Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?* auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/).
+> Ein ausführlicheres Beispiel zur Berechnung der Kosten für die Verwendung der Speicherzugriffsebene „Heiß“ oder „Kalt“ finden Sie im FAQ-Bereich mit dem Titel *Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?* im FAQ-Bereich mit dem Titel [Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?](https://azure.microsoft.com/pricing/details/storage/)an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899025"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -23,7 +23,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 ## <a name="access-metrics"></a>Zugreifen auf Metriken
 
-Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie im [Überblick über Metriken in Microsoft Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), die Azure Monitor-APIs (REST und .NET) sowie Analyselösungen wie Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie im [Überblick über Metriken in Microsoft Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 93 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../../azure-monitor/platform/diagnostic-logs-overview.md) in Azure Monitor konfiguriert.
 
@@ -136,11 +136,11 @@ Die folgende Antwort enthält Metrikwerte im JSON-Format:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>Zugreifen auf Metriken über das .NET SDK
 
-Azure Monitor verfügt über [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken. Beim .NET SDK wird die Ressourcen-ID verwendet. Weitere Informationen finden Sie unter „Grundlegendes zur Ressourcen-ID für Dienste in Azure Storage“.
+Azure Monitor bietet das [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken. Im .NET SDK wird die Ressourcen-ID verwendet. Weitere Informationen finden Sie unter „Grundlegendes zur Ressourcen-ID für Dienste in Azure Storage“.
 
 Das folgende Beispiel zeigt, wie Speichermetriken mithilfe des .NET SDK für Azure Monitor gelesen werden.
 
-#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Auflisten der Metrikdefinition auf der Kontoebene über das .NET SDK
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Auflisten der Metrikdefinition auf Kontoebene über das .NET SDK
 
 Das folgende Beispiel zeigt, wie Sie die Metrikdefinition auf der Kontoebene auflisten:
 

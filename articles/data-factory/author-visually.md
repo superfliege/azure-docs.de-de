@@ -3,21 +3,21 @@ title: Visuelles Erstellen in Azure Data Factory | Microsoft-Dokumentation
 description: Informationen zum Verwenden der visuellen Erstellung in Azure Data Factory
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
+author: sharonlo101
 ms.author: shlo
-ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.reviewer: ''
+manager: craigg
+ms.openlocfilehash: 77eb109b8826bcb6136e91ac610235f74551cecb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853085"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:
@@ -31,7 +31,7 @@ Das visuelle Erstellen mit dem Data Factory-Dienst unterscheidet sich in zwei Pu
 - Der Data Factory-Dienst umfasst kein Repository zum Speichern der JSON-Entitäten für Ihre Änderungen.
 - Der Data Factory-Dienst ist nicht für Zusammenarbeit oder Versionskontrolle optimiert.
 
-![Konfigurieren des Data Factory-Diensts ](media/author-visually/configure-data-factory.png)
+![Konfigurieren des Data Factory-Diensts](media/author-visually/configure-data-factory.png)
 
 Wenn Sie die **UX-Canvas** für die Erstellung zum direkten Erstellen mit dem Data Factory-Dienst verwenden, ist nur der Modus **Alle veröffentlichen** verfügbar. Alle vorgenommenen Änderungen werden direkt im Data Factory-Dienst veröffentlicht.
 
@@ -204,7 +204,7 @@ In dem Bereich werden die folgenden Einstellungen für das Coderepository für A
 | **Einstellung**                                              | **Beschreibung**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Wert**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | **Repositorytyp**                                      | Der Typ des Coderepositorys für Azure Repos.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
-| **GitHub-Konto**                                       | Ihr GitHub-Kontoname. Sie finden diesen Namen in „https://github.com/{account-Name}/{Repositoryname}“. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert.                                                                                                                                                                                                                                               |                    |
+| **GitHub-Konto**                                       | Ihr GitHub-Kontoname. Sie finden diesen Namen unter https:\//github.com/{Kontoname}/{Repositoryname}. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert.                                                                                                                                                                                                                                               |                    |
 | **Repositoryname**                                       | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet.                                                                                                                                                                                                                              |                    |
 | **Collaboration branch** (Kollaborationsbranch)                                 | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten.                                                                                                                                                                                                                                                               |                    |
 | **Stammordner**                                          | Ihr Stammordner im Branch für die GitHub-Kollaboration.                                                                                                                                                                                                                                                                                                                                                                             |                    |
@@ -221,7 +221,7 @@ Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Kon
 
 Es gibt zwei Methoden zum Konfigurieren eines GitHub Enterprise-Repositorys mit einer Data Factory.
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfigurationsmethode 1 (Enterprise-Repository): Seite „Erste Schritte“
+#### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfigurationsmethode 1 (Enterprise-Repository): Seite „Erste Schritte“
 
 Wechseln Sie in Azure Data Factory zur Seite  **Erste Schritte** . Wählen Sie  **Coderepository konfigurieren** aus:
 
@@ -238,7 +238,7 @@ In dem Bereich werden die folgenden Einstellungen für das Coderepository für A
 | **Repositorytyp**                                      | Der Typ des Coderepositorys für Azure Repos.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **GitHub Enterprise verwenden**                                | Kontrollkästchen zum Auswählen von GitHub Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **GitHub Enterprise-URL**                                | Die Stamm-URL von GitHub Enterprise. Beispiel: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
-| **GitHub-Konto**                                       | Ihr GitHub-Kontoname. Sie finden diesen Namen in „https://github.com/{account-Name}/{Repositoryname}“. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert.                                                                                                                                                                                                                                               |                    |
+| **GitHub-Konto**                                       | Ihr GitHub-Kontoname. Sie finden diesen Namen unter https:\//github.com/{Kontoname}/{Repositoryname}. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert.                                                                                                                                                                                                                                               |                    |
 | **Repositoryname**                                       | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet.                                                                                                                                                                                                                              |                    |
 | **Collaboration branch** (Kollaborationsbranch)                                 | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten.                                                                                                                                                                                                                                                               |                    |
 | **Stammordner**                                          | Ihr Stammordner im Branch für die GitHub-Kollaboration.                                                                                                                                                                                                                                                                                                                                                                             |                    |
