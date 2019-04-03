@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117747"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517776"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware (Vorschauversion)
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware
 
 ## <a name="overview"></a>Übersicht
 
@@ -32,8 +32,6 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-> [!IMPORTANT]
-> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -75,7 +73,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 
 * Zugriff auf ein Hostsystem mit VMware ESXi Server 6.0, 6.5 oder 6.7. Das Hostsystem muss die folgenden Ressourcen für Ihr virtuelles Gerät reservieren können:
  
-  * Mindestens 4 Kerne
+  * Mindestens vier virtuelle Prozessoren
   * Mindestens 8 GB RAM 
   * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann.
   * Einen Betriebssystemdatenträger mit 250 GB
@@ -91,7 +89,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 
 2. Melden Sie sich über einen Browser unter der folgenden URL beim ESXi-Server an: `https://<IP address of the ESXi server>`. Sie benötigen Administratorrechte, um einen virtuellen Computer zu erstellen.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
+   ![Anmeldeseite](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
 3. Laden Sie das VMDK auf den ESXi-Server hoch. Klicken Sie im Navigatorbereich auf **Storage** (Speicher).
 
@@ -104,67 +102,67 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
    
 5. Klicken Sie mit der rechten Maustaste, und wählen Sie **Datenspeicher durchsuchen** aus.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image3.png)
+   ![Durchsuchen des Datenspeichers](./media/data-box-gateway-deploy-provision-vmware/image3.png)
 
 6. Das Fenster **Datenspeicher-Browser** wird angezeigt.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image4.png)
+   ![Datenspeicher-Browser](./media/data-box-gateway-deploy-provision-vmware/image4.png)
 
 7. Klicken Sie auf der Symbolleiste auf **Create directory** (Verzeichnis erstellen), um einen neuen Ordner zu erstellen. Geben Sie den Ordnernamen an, und notieren Sie ihn sich. Sie verwenden diesen Ordnernamen später beim Erstellen einer virtuellen Maschine (empfohlene bewährte Methode). Klicken Sie auf **Create directory** (Verzeichnis erstellen).
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image5.png)
+   ![Erstellen eines Verzeichnisses](./media/data-box-gateway-deploy-provision-vmware/image5.png)
 
 8. Der neue Ordner wird im linken Bereich des **Datenspeicher-Browsers** angezeigt. Klicken Sie auf das Symbol **Upload**, und wählen Sie **Upload File** (Datei hochladen) aus.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image6.png)
+    ![Hochladen der Datei](./media/data-box-gateway-deploy-provision-vmware/image6.png)
 
 9. Rufen Sie das Verzeichnis auf, in das Sie die VMDK-Dateien heruntergeladen haben. Es enthält zwei Dateien. Wählen Sie die Datei aus, die Sie hochladen wollen.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image7.png)
+    ![Auswählen der hochzuladenden Datei](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
 10. Klicken Sie auf **Öffnen**. Der Upload der VMDK-Datei in den angegebenen Datenspeicher wird gestartet. Das Hochladen der Datei kann mehrere Minuten dauern.
 11. Sobald der Upload abgeschlossen ist, können Sie die Datei im Datenspeicher in dem von Ihnen erstellten Ordner sehen. Laden Sie nun die zweite VMDK-Datei in den gleichen Datenspeicher hoch. Nachdem die beiden Dateien hochgeladen wurden, werden sie in einer einzelnen Datei zusammengeführt. Sie sehen dann nur eine Datei im Verzeichnis.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image8.png)
+    ![Zwei VMDK-Dateien werden in einer einzelnen Datei zusammengeführt.](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
 12. Wechseln Sie zurück zum vSphere-Clientfenster. Klicken Sie im Navigatorbereich auf **Virtual Machines** (VMs). Klicken Sie im rechten Bereich auf **Create/Register VM** (VM erstellen/registrieren).
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image9.png)
+    ![Erstellen oder Registrieren eines virtuellen Computers](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
 13. Ein Fenster **New Virtual Machine** (Neue VM) wird angezeigt. Wählen Sie unter „Select creation type“ (Erstellungstyp auswählen) die Option **Create a new virtual machine** (Neue VM erstellen) aus, und klicken Sie auf **Next** (Weiter).
-    ![](./media/data-box-gateway-deploy-provision-vmware/image10.png)
+    ![Seite zum Auswählen des Erstellungstyps](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
 14. Geben Sie auf der Seite **Select a name and guest OS** (Namen und Gastbetriebssystem auswählen) den **Namen** Ihrer VM an. Dieser Name sollte mit dem Ordnernamen übereinstimmen, den Sie in Schritt 7 angegeben haben (empfohlene bewährte Methode). Wählen Sie für **Guest OS family** (Gastbetriebssystemfamilie) Windows und für **Guest OS version** (Gastbetriebssystemversion) Microsoft Windows Server 2016 (64-Bit) aus. Klicken Sie auf **Weiter**.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image11.png)
+    ![Seite zum Auswählen eines Namens, eines Betriebssystems und eines Speicherorts](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
 15. Wählen Sie auf der Seite **Select storage** (Speicher auswählen) einen Datenspeicher aus, den Sie zum Bereitstellen der VM verwenden möchten. Klicken Sie auf **Weiter**.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. Legen Sie auf der Seite **Customize settings** (Einstellungen anpassen) **CPU** auf 4, **Memory** (Arbeitsspeicher) auf 8.192 MB (oder mehr) und **Hard disk 1** (Festplatte 1) auf 2 TB (oder mehr) fest. Wählen Sie die **SCSI-Festplatte** aus, die Sie hinzufügen möchten. In diesem Fall wurde „LSI Logic SAS“ ausgewählt. **Statische IDE-Datenträger werden nicht unterstützt.** **Hard disk 1** (Festplatte 1) ist der virtuelle Datenträger. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können.
+    ![Seite zum Auswählen des Speichers](./media/data-box-gateway-deploy-provision-vmware/image12.png)
+16. Legen Sie auf der Seite **Customize settings** (Einstellungen anpassen) **CPU** auf 4, **Memory** (Arbeitsspeicher) auf 8.192 MB (oder mehr) und **Hard disk 1** (Festplatte 1) auf 2 TB (oder mehr) fest. Wählen Sie die **SCSI-Festplatte** aus, die Sie hinzufügen möchten. In diesem Fall wurde „LSI Logic SAS“ ausgewählt. **Statische IDE-Datenträger werden nicht unterstützt.** **Hard disk 1** (Festplatte 1) ist der virtuelle Datenträger. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können. Der Versuch, den Datenträger zu verkleinern, führt zum Verlust aller lokalen Daten auf dem Gerät. 
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
+    ![Seite zum Anpassen von Einstellungen](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
     Klicken Sie auf der gleichen Seite auf **Add hard disk** (Festplatte hinzufügen), und wählen Sie dann **Existing hard disk** (Vorhandene Festplatte) aus. Wählen Sie die VMDK-Datei im Datenspeicher aus. Dadurch wird ein Betriebssystemdatenträger hinzugefügt. 
 
-     ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     Seite zum Anpassen von Einstellungen[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Scrollen Sie nach unten, bis Sie den Eintrag **New hard disk** (Neue Festplatte) sehen, und erweitern Sie ihn, um die Einstellungen anzuzeigen. Legen Sie **Virtual Device Node** (Virtueller Geräteknoten) auf **IDE controller 0** (IDE-Controller 0) fest.
 
-     ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Seite zum Anpassen von Einstellungen](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. *(Optional: Führen Sie diesen Schritt nur aus, wenn Sie VMware ESXi Server 6.7 verwenden.)* Klicken Sie auf der Seite **Customize settings** (Einstellungen anpassen) auf **VM options** (VM-Optionen). Navigieren Sie zu **Boot options > Firmware** (Startoptionen > Firmware), und ändern Sie die Option in **BIOS**. Standardmäßig ist der Wert auf „EFI“ festgelegt. Klicken Sie auf **Weiter**.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+    ![Seite zum Anpassen von Einstellungen, wenn VMware ESXi Server 6.7 ausgeführt wird](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
 18. Prüfen Sie auf der Seite **Für Fertigstellung bereit** alle Einstellungen, die der neuen virtuellen Maschine zugeordnet sind. Vergewissern Sie sich, dass für die CPU 4, für den Arbeitsspeicher 8.192 MB, für die Netzwerkschnittstelle 1 und für Festplatte 2 der IDE-Controller 0 angezeigt werden. Klicken Sie auf **Fertig stellen**.
    
-    ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Seite „Zum Abschluss bereit“](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+    ![Seite „Zum Abschluss bereit“](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Ihre virtuelle Maschine wird nun bereitgestellt. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die neue VM der Liste der VMs hinzugefügt wird.
 
-![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+![Neuer virtueller Computer zur Liste der VMs hinzugefügt](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Im nächsten Schritt wird der virtuelle Computer eingeschaltet und die IP-Adresse abgerufen.
 
@@ -178,23 +176,23 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 #### <a name="to-start-the-virtual-device"></a>So starten Sie das virtuelle Gerät
 1. Starten Sie das virtuelle Gerät. Wählen Sie im rechten Bereich Ihr Gerät in der Liste der VMs aus, und klicken Sie mit der rechten Maustaste, um das Kontextmenü anzuzeigen. Wählen Sie **Ein/Aus** und dann **Einschalten**. Die virtuelle Maschine sollte nun eingeschaltet werden. Der Status wird im unteren Bereich des Webclients angezeigt.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image19.png)
+    ![Einschalten des virtuellen Geräts](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
 2. Wählen Sie erneut Ihre VM aus. Klicken Sie mit der rechten Maustaste, wählen Sie **Console** (Konsole) und dann **Open in a new window** (In einem neuen Fenster öffnen) aus.
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image20.png)
+    ![Öffnen der Konsole des virtuellen Geräts](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 
 3. Die Konsole der VM wird in einem neuen Fenster geöffnet. 
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image21.png)
+    ![Konsole des virtuellen Geräts](./media/data-box-gateway-deploy-provision-vmware/image21.png)
 
 4. Sobald das Gerät ausgeführt wird, klicken Sie auf die Registerkarte oben im mittleren Bereich des Konsolenfensters. Klicken Sie auf **Guest OS > Send keys > Ctrl+Alt+Delete** (Gastbetriebssystem > Tasteneingaben senden > STRG+ALT+ENTF). Hierdurch wird die VM entsperrt.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image22.png)
+   ![Entsperren des virtuellen Geräts](./media/data-box-gateway-deploy-provision-vmware/image22.png)
 
-5. Geben Sie das Kennwort ein, um sich bei der VM anzumelden. Das Standardkennwort lautet „Password1“.
+5. Geben Sie das Kennwort ein, um sich bei der VM anzumelden. Das Standardkennwort lautet *Password1*.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
+   ![Eingeben eines Kennworts für das virtuelle Gerät](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
 6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, überspringen Sie diese Schritte, und fahren Sie mit Schritt 8 fort. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt: **Verwenden Sie das Cmdlet „Set-HcsIPAddress“, um das Netzwerk zu konfigurieren**. 
    
@@ -206,14 +204,14 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 
 9. Nachdem die anfängliche Einrichtung abgeschlossen und das Gerät gestartet wurde, wird der Bannertext für das Gerät angezeigt. Notieren Sie sich die IP-Adresse und die URL, die im Bannertext für die Verwaltung des Geräts angezeigt wird. Sie verwenden diese IP-Adresse zum Herstellen der Verbindung mit der Webbenutzeroberfläche Ihres virtuellen Geräts und zum Durchführen des lokalen Setups und der Aktivierung.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
+   ![Bannertext und Verbindungs-URL für das virtuelle Gerät](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
 Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit sie über ausreichende Ressourcen zum Erfüllen der Mindestanforderungen verfügt. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Überprüfen des Hostsystems](#check-the-host-system).
 
-<!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
+Falls bei der anfänglichen Konfiguration über die lokale Webbenutzeroberfläche andere Fehler auftreten, finden Sie weitere Informationen in den folgenden Workflows:
 
-* Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
+- [Ausführen von Diagnosetests zum Beheben von Setup-Fehlern für die Web-UI](data-box-gateway-troubleshoot.md#run-diagnostics)
+- [Generieren des Protokollpakets und Anzeigen von Protokolldateien](data-box-gateway-troubleshoot.md#collect-support-package)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096706"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482945"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -71,7 +71,7 @@ Installieren Sie OpenSSL für Windows auf dem Computer, den Sie zum Generieren d
    
    2. Führen Sie nach der Installation von „vcpkg“ über eine PowerShell-Eingabeaufforderung den folgenden Befehl für die Installation des OpenSSL-Pakets für Windows x64 aus. Diese Installation dauert in der Regel 5 Minuten.
 
-      ```PowerShell
+      ```powershell
       .\vcpkg install openssl:x64-windows
       ```
    3. Fügen Sie `<VCPKGDIR>\installed\x64-windows\tools\openssl` Ihrer PATH-Umgebungsvariablen hinzu, damit die Datei „openssl.exe“ aufgerufen werden kann.
@@ -84,7 +84,7 @@ Das Azure IoT-Geräte-SDK für C enthält Skripts, mit denen Sie Testzertifikate
 
 2. Klonen Sie das Git-Repository, das Skripts zum Generieren von Zertifikaten enthält, die nicht in der Produktion eingesetzt werden. Diese Skripts helfen Ihnen dabei, die erforderlichen Zertifikate zum Einrichten eines transparenten Gateways zu erstellen. Verwenden Sie den Befehl `git clone`, oder [laden Sie die ZIP-Datei herunter](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip). 
 
-   ```PowerShell
+   ```powershell
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
@@ -92,7 +92,7 @@ Das Azure IoT-Geräte-SDK für C enthält Skripts, mit denen Sie Testzertifikate
 
 4. Kopieren Sie die Konfigurations- und Skriptdateien in Ihr Arbeitsverzeichnis. 
 
-   ```PowerShell
+   ```powershell
    copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
    ```
@@ -101,25 +101,25 @@ Das Azure IoT-Geräte-SDK für C enthält Skripts, mit denen Sie Testzertifikate
 
 5. Legen Sie für die Umgebungsvariable „OPENSSL_CONF“ die Verwendung der Konfigurationsdatei „openssl_root_ca.cnf“ fest.
 
-    ```PowerShell
+    ```powershell
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 
 6. Aktivieren Sie PowerShell zum Ausführen der Skripts.
 
-   ```PowerShell
+   ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
 7. Fügen Sie die Funktionen, die von den Skripts verwendet werden, in den globalen Namespace von PowerShell ein.
    
-   ```PowerShell
+   ```powershell
    . .\ca-certs.ps1
    ```
 
 8. Überprüfen Sie, ob OpenSSL richtig installiert wurde und keine Namenskonflikte mit vorhandenen Zertifikaten entstehen. Wenn Probleme auftreten, müsste das Skript Informationen darüber enthalten, wie diese auf Ihrem System behoben werden können.
 
-   ```PowerShell
+   ```powershell
    Test-CACertsPrerequisites
    ```
 
@@ -129,19 +129,19 @@ In diesem Abschnitt erstellen Sie drei Zertifikate und verbinden sie dann als Ke
 
 1. Erstellen Sie das Besitzer-Zertifizierungsstellenzertifikat, das ein Zwischenzertifikat signiert. Die Zertifikate werden alle in *\<WRKDIR>* platziert.
 
-      ```PowerShell
+      ```powershell
       New-CACertsCertChain rsa
       ```
 
 2. Erstellen Sie das Zertifizierungsstellenzertifikat und den privaten Schlüssel für das Edge-Gerät mit dem folgenden Befehl. Geben Sie einen Namen für das Gatewaygerät an, das zur Benennung der Dateien und bei der Zertifikatsgenerierung verwendet wird. 
 
-   ```PowerShell
+   ```powershell
    New-CACertsEdgeDevice "<gateway name>"
    ```
 
 3. Erstellen Sie mit dem folgenden Befehl eine Zertifikatkette aus dem Besitzer-Zertifizierungsstellenzertifikat, dem Zwischenzertifikat und dem Zertifizierungsstellenzertifikat des Edge-Geräts. 
 
-   ```PowerShell
+   ```powershell
    Write-CACertsCertificatesForEdgeDevice "<gateway name>"
    ```
 

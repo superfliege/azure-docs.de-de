@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 29e01177d4b096449cd906a22b47223078c6493e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8325e2d1dccf1184c5297a60161200b41fc1d412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107819"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338279"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 
@@ -38,9 +38,9 @@ Ein Konfigurationsserver, für den integrierte Prozessserver zum Schutz der Arbe
 
 CPU | Arbeitsspeicher | Größe des Cachedatenträgers | Datenänderungsrate | Geschützte Computer
 --- | --- | --- | --- | ---
-8 vCPUs (2 Sockets mit jeweils 4Kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Wird verwendet, um weniger als 100 Computer zu replizieren.
-12 vCPUs (2 Sockets mit jeweils 6 Kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB bis 1 TB | Wird verwendet, um 100 bis 150 Computer zu replizieren.
-16 vCPUs (2 Sockets mit jeweils 8 Kernen \@ 2,5 GHz) | 32 GB | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 200 Computer zu replizieren.
+8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Wird verwendet, um weniger als 100 Computer zu replizieren.
+12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB bis 1 TB | Wird verwendet, um 100 bis 150 Computer zu replizieren.
+16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 GB | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 200 Computer zu replizieren.
 Bereitstellen eines weiteren Konfigurationsservers mit einer [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Stellen Sie einen neuen Konfigurationsserver bereit, wenn Sie mehr als 200 Computer replizieren.
 Bereitstellen eines weiteren [Prozessservers](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Stellen Sie einen neuen Prozessserver für die horizontale Skalierung bereit, wenn die gesamte tägliche Datenänderungsrate 2 TB überschreitet.
 
@@ -114,7 +114,7 @@ Bevor Sie die Site Recovery-Infrastruktur einrichten, greifen Sie auf die Umgebu
 1. Um diese Parameter zu messen, führen Sie den Site Recovery-Bereitstellungsplaner für Ihre Umgebung aus. Hilfreiche Leitfäden dazu finden Sie unter [Azure Site Recovery-Bereitstellungsplaner für VMware in Azure](site-recovery-deployment-planner.md).
 2. Stellen Sie einen Konfigurationsserver bereit, der die [Größenempfehlungen für den Konfigurationsserver](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) erfüllt. Stellen Sie einen weiteren Konfigurationsserver bereit, wenn Ihre Produktionsarbeitsauslastung 650 VMs überschreitet.
 3. Stellen Sie [Prozessserver für die horizontale Skalierung](vmware-azure-set-up-process-server-scale.md#download-installation-file) basierend auf der ermittelten täglichen Datenänderungsrate mithilfe der [Größenleitfäden](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server) bereit.
-4. Wenn Sie erwarten, dass die Datenänderungsrate für einen VM-Datenträger 2 MBit/s überschreitet, [richten Sie ein Premium-Speicherkonto ein](tutorial-prepare-azure.md#create-a-storage-account). Der Site Recovery-Bereitstellungsplaner wird für einen bestimmten Zeitraum ausgeführt. Spitzenwerte in der Datenänderungsrate zu anderen Zeiten werden möglicherweise nicht im Bericht erfasst.
+4. Wenn Sie erwarten, dass die Datenänderungsrate für einen VM-Datenträger 2 MBit/s überschreitet, stellen Sie sicher, dass Sie verwaltete Premium-Datenträger verwenden. Der Site Recovery-Bereitstellungsplaner wird für einen bestimmten Zeitraum ausgeführt. Spitzenwerte in der Datenänderungsrate zu anderen Zeiten werden möglicherweise nicht im Bericht erfasst.
 5. [Legen Sie die Netzwerkbandbreite](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) basierend auf dem RPO-Wert fest, den Sie erzielen möchten.
 6. Nachdem die Infrastruktur eingerichtet wurde, aktivieren Sie Notfallwiederherstellung für Ihre Workload. Weitere Informationen dazu finden Sie unter [Einrichten der Quellumgebung für die Replikation von VMware in Azure](vmware-azure-set-up-source.md).
 

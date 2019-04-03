@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 023662f0293debb1b40fc8ea10bb725eab7be4d8
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649933"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317719"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell
 
@@ -277,7 +277,7 @@ Installieren Sie mithilfe des folgenden PowerShell-Befehls Microsoft IIS auf dem
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Trennen Sie nach Abschluss der IIS-Installation die Verbindung mit dem virtuellen Computer *myVmWeb*. Dadurch befinden Sie sich in der Remotedesktopverbindung des virtuellen Computers *myVmMgmt*. Navigieren Sie in einem Internetbrowser zu http://myVmWeb, um den IIS-Begrüßungsbildschirm anzuzeigen.
+Trennen Sie nach Abschluss der IIS-Installation die Verbindung mit dem virtuellen Computer *myVmWeb*. Dadurch befinden Sie sich in der Remotedesktopverbindung des virtuellen Computers *myVmMgmt*. Navigieren Sie in einem Internetbrowser zu „\//myVmWeb“, um den IIS-Begrüßungsbildschirm anzuzeigen.
 
 Trennen Sie die Verbindung mit dem virtuellen Computer *myVmMgmt*.
 
