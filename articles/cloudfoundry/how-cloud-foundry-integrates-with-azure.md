@@ -1,6 +1,6 @@
 ---
 title: Integration von Cloud Foundry in Azure | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Cloud Foundry die Azure-Dienste verwenden kann, um die Enterprise-Umgebung zu verbessern.
+description: In diesem Artikel wird beschrieben, wie Cloud Foundry die Azure-Dienste verwenden kann, um die Enterprise-Erfahrung zu verbessern
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 908b7e40c0509d7034b86985ac0775635726a6b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329802"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550172"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
-[Cloud Foundry](https://docs.cloudfoundry.org/) ist eine PaaS-Plattform, die auf der IaaS-Plattform von Cloudanbietern ausgeführt wird. Sie bietet eine konsistente Anwendungsbereitstellung für mehrere Cloudanbieter. Zusätzlich kann sie auch in unterschiedliche Azure-Dienste integriert werden, wodurch Hochverfügbarkeit auf Unternehmensniveau, Skalierbarkeit und Kostenersparnis garantiert wird.
+[Cloud Foundry](https://docs.cloudfoundry.org/) ist eine PaaS-Plattform, die auf der IaaS-Plattform von Cloudanbietern ausgeführt wird. Sie bietet eine konsistente Anwendungsbereitstellung für mehrere Cloudanbieter. Sie kann auch in unterschiedliche Azure-Dienste integriert werden, wodurch Hochverfügbarkeit auf Unternehmensniveau, Skalierbarkeit und Kostenersparnis garantiert wird.
 Es gibt [sechs Subsysteme von Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), die flexibel online skaliert werden können: Routing, Authentifizierung, Verwaltung des Anwendungslebenszyklus, Dienstverwaltung, Messaging und Überwachung. Für jedes Subsystem können Sie die Cloud Foundry-Plattform so konfigurieren, dass sie entsprechende Azure-Dienste verwendet. 
 
 ![Cloud Foundry in der Azure-Integrationsarchitektur](media/CFOnAzureEcosystem-colored.png)
 
 ## <a name="1-high-availability-and-scalability"></a>1. Hochverfügbarkeit und Skalierbarkeit
 ### <a name="managed-disk"></a>Verwalteter Datenträger
-Bosh nutzt die Azure-CPI (Cloud Provider Interface, Cloudanbieterschnittstelle) für die Datenträgererstellungs- und Löschroutinen. Es werden standardmäßig nicht verwaltetet Datenträger verwendet. Kunden müssen Speicherkonten manuell erstellen und anschließend die Konten in CF-Manifestdateien konfigurieren. Der Grund dafür sind die Einschränkung für die Anzahl der Datenträger pro Speicherkonto.
+Bosh verwendet die Azure-CPI (Cloud Provider Interface, Cloudanbieterschnittstelle) für die Datenträgererstellungs- und Löschroutinen. Es werden standardmäßig nicht verwaltetet Datenträger verwendet. Kunden müssen Speicherkonten manuell erstellen und anschließend die Konten in CF-Manifestdateien konfigurieren. Der Grund dafür sind die Einschränkung für die Anzahl der Datenträger pro Speicherkonto.
 Da nun [verwalteter Datenträger](https://azure.microsoft.com/services/managed-disks/) verfügbar ist, ist auch verwalteter sicherer und zuverlässiger Datenträgerspeicher für virtuelle Computer verfügbar. Kunden müssen für die Skalierung und Hochverfügbarkeit nicht länger mit dem Speicherkonto arbeiten. Azure ordnet die Datenträger automatisch an. Egal ob es sich um eine neue oder vorhandene Bereitstellung handelt, die Azure-CPI behandelt die Erstellung oder Migration des verwalteten Datenträgers während einer CF-Bereitstellung. Sie wird mit PCF 1.11 unterstützt. Sie können auch den Open Source-[Leitfaden für verwaltete Datenträger](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) für Cloud Foundry zu Referenzzwecken lesen. 
 ### <a name="availability-zone-"></a>Verfügbarkeitszone *
 Als native Cloudanwendungsplattform ist Cloud Foundry mit [vier Hochverfügbarkeitsebenen](https://docs.pivotal.io/pivotalcf/2-1/concepts/high-availability.html) ausgestattet. Die ersten drei Ebenen von Softwarefehlern können vom CF-System selbst behandelt werden, die Plattformfehlertoleranz wird jedoch von Cloudanbietern bereitgestellt. Die CF-Schlüsselkomponenten sollten mit der Hochverfügbarkeitslösung für Plattformen eines Cloudanbieters geschützt werden. Diese enthält Kacheln von GoRouters, Diego Brains sowie von der CF-Datenbank und des CF-Diensts. In der Standardeinstellung wird die [Azure-Verfügbarkeitsgruppe](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/deploy-cloudfoundry-with-availability-sets) für die Fehlertoleranz zwischen Clustern in einem Rechenzentrum verwendet.
@@ -41,15 +41,15 @@ Die Azure-Verfügbarkeitszone erreicht die Hochverfügbarkeit durch Platzieren v
 > Die Azure-Verfügbarkeitszone ist noch nicht für alle Regionen verfügbar. Sehen Sie sich die neueste [Ankündigung für die Liste der unterstützten Regionen](https://docs.microsoft.com/azure/availability-zones/az-overview) an. Für die Cloud Foundry-Plattform im Open Source-Modus lesen Sie den Artikel [Azure Availability Zone for open source Cloud Foundry guidance (Azure-Verfügbarkeitszone für die Open Source-Cloud Foundry-Plattform (Leitfaden))](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone).
 
 ## <a name="2-network-routing"></a>2. Netzwerkrouting
-Standardmäßig wird der Lastenausgleich von Azure im Tarif „Basic“ für eingehende CF-API/Apps-Anforderungen verwendet, der diese an Gorouters weiterleitet. CF-Komponenten wie Diego Brain, MySQL und ERT können ebenso den Lastenausgleich verwenden, um den Datenverkehr für die Hochverfügbarkeit auszugleichen. Zusätzlich stellt Azure eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen bereit. Wenn Sie nach Informationen zu TLS-Terminierung („SSL-Auslagerung“) oder Verarbeitung pro HTTP/HTTPS-Anforderungsanwendungsschicht suchen, lesen Sie „Application Gateway“. Weitere Informationen zur Hochverfügbarkeit und zum Lastenausgleich der Skalierbarkeit auf Ebene 4 finden Sie im Abschnitt „Load Balancer Standard“.
+Standardmäßig wird der Lastenausgleich von Azure im Tarif „Basic“ für eingehende CF-API/Apps-Anforderungen verwendet, der diese an Gorouters weiterleitet. CF-Komponenten wie Diego Brain, MySQL und ERT können ebenso den Lastenausgleich verwenden, um den Datenverkehr für die Hochverfügbarkeit auszugleichen. Azure stellt außerdem eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen bereit. Wenn Sie nach Informationen zu TLS-Terminierung („SSL-Auslagerung“) oder Verarbeitung pro HTTP/HTTPS-Anforderungsanwendungsschicht suchen, lesen Sie „Application Gateway“. Weitere Informationen zur Hochverfügbarkeit und zum Lastenausgleich der Skalierbarkeit auf Ebene 4 finden Sie im Abschnitt „Load Balancer Standard“.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
 [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) bietet unterschiedliche Lastenausgleichsfunktionen für Ebene 7, einschließlich SSL-Abladung, End-to-End-SSL, Web Application Firewall, auf Cookies basierende Sitzungsaffinität usw. Sie können [Application Gateway auf der Open Source-Cloud Foundry-Plattform konfigurieren](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Sehen Sie sich für PCF die [Versionshinweise zu PCF 2.1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) an, um Informationen zum POC-Test (Proof of Concept) zu erhalten.
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer ist eine Lastenausgleichskomponente der Ebene 4. Sie wird verwendet, um den Datenverkehr zwischen Dienstinstanzen in einer Gruppe mit Lastenausgleich zu verteilen. Die Standardversion stellt zusätzlich zu den Features der Basisversion [erweiterte Features](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) bereit. Beispiele: 1. Der der maximale Back-End-Pool wird von 100 auf 1000 VMs erweitert.  2. Die Endpunkte unterstützen nun mehrere Verfügbarkeitsgruppen anstatt nur einer einzelnen Verfügbarkeitsgruppe.  3. Zusätzliche Features wie Hochverfügbarkeitsports, umfangreichere Überwachungsdaten usw. Wenn Sie zur Azure-Verfügbarkeitszone wechseln, ist der Load Balancer Standard erforderlich. Es empfiehlt sich, für eine neue Bereitstellung mit dem Azure Load Balancer Standard zu beginnen. 
 
-## <a name="3-authentication"></a>3. Authentifizierung 
-[Cloud Foundry User Account and Authentication (Cloud Foundry-Benutzerkonto und -Authentifizierung)](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) ist der zentrale Identitätsverwaltungsdienst für CF und der unterschiedlichen Komponenten dieser Plattform. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. UAA (User Account and Authentication) wird für die Cloud Foundry-Authentifizierung verwendet. Als erweiterte Option unterstützt UAA Azure AD als externer Benutzerspeicher. Azure AD-Benutzer können auf Cloud Foundry über ihre LDAP-Identität zugreifen, auch ohne Cloud Foundry-Konto. Befolgen Sie diese Schritte, um [Azure AD für UAA in PCF zu konfigurieren](http://docs.pivotal.io/p-identity/1-6/azure/index.html).
+## <a name="3-authentication"></a>3. Authentication 
+[Cloud Foundry User Account and Authentication (Cloud Foundry-Benutzerkonto und -Authentifizierung)](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) ist der zentrale Identitätsverwaltungsdienst für CF und der unterschiedlichen Komponenten dieser Plattform. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. UAA (User Account and Authentication) wird für die Cloud Foundry-Authentifizierung verwendet. Als erweiterte Option unterstützt UAA Azure AD als externer Benutzerspeicher. Azure AD-Benutzer können auf Cloud Foundry über ihre LDAP-Identität zugreifen, auch ohne Cloud Foundry-Konto. Befolgen Sie diese Schritte, um [Azure AD für UAA in PCF zu konfigurieren](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Datenspeicher für das Cloud Foundry-Runtime-System
 Cloud Foundry bietet hohe Erweiterbarkeit für die Verwendung des Azure-Blobspeichers oder für Azure MySQL/PostgreSQL-Dienste für den Systemspeicher der Anwendungslaufzeit.
@@ -69,10 +69,12 @@ Es kann standardmäßig eine lokale Systemdatenbank (MySQL) verwendet werden. Nu
 Der Service Broker von Azure bietet konsistente Schnittstellen, um den Zugriff von Anwendungen auf Azure-Dienste zu verwalten. Der neue [Open Service Broker für Azure-Projekte](https://github.com/Azure/open-service-broker-azure) stellt eine einfache Möglichkeit zur Übermittlung von Diensten an Anwendungen für Cloud Foundry, OpenShift und Kubernetes bereit. Unter [Azure Open Service Broker for PCF](https://network.pivotal.io/products/azure-open-service-broker-pcf/) erhalten Sie Anweisungen zur Bereitstellung auf PCF.
 
 ## <a name="6-metrics-and-logging"></a>6. Metriken und Protokollierung
-Azure Log Analytics Nozzle ist eine Cloud Foundry-Komponente, die Metriken aus der [Firehose-Komponente von Cloud Foundry Loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) an [Azure Log Analytics weiterleitet](https://azure.microsoft.com/services/log-analytics/). Mithilfe der Nozzle-Komponente können Sie Integritäts- und Leistungsmetriken für Ihr CF-System über mehrere Bereitstellungen hinweg sammeln, anzeigen und analysieren.
-[Hier](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) erfahren Sie, wie Sie Azure Log Analytics Nozzle für Open Source- und Pivotal Cloud Foundry-Umgebungen bereitstellen und dann über die Azure Log Analytics-Konsole auf die Daten zugreifen. 
+Azure Log Analytics Nozzle ist eine Cloud Foundry-Komponente, die Metriken aus der [Firehose-Komponente von Cloud Foundry Loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) an [Azure Monitor-Protokolle weiterleitet](https://azure.microsoft.com/services/log-analytics/). Mithilfe der Nozzle-Komponente können Sie Integritäts- und Leistungsmetriken für Ihr CF-System über mehrere Bereitstellungen hinweg sammeln, anzeigen und analysieren.
+[Hier](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) erfahren Sie, wie Sie Azure Log Analytics Nozzle für Open Source- und Pivotal Cloud Foundry-Umgebungen bereitstellen und dann über die Konsole von Azure Monitor-Protokolle auf die Daten zugreifen. 
 > [!NOTE]
-> Von PCF 2.0 aus werden Bosh-Integritätsmetriken für VMs standardmäßig an Loggregator Firehose weitergeleitet und dann in die Azure Log Analytics-Konsole integriert.
+> Von PCF 2.0 aus werden Bosh-Integritätsmetriken für VMs standardmäßig an Loggregator Firehose weitergeleitet und dann in die Konsole von Azure Monitor-Protokolle integriert.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="7-cost-saving"></a>7. Kosteneinsparungen
 ### <a name="cost-saving-for-devtest-environments"></a>Kosteneinsparungen für Dev/Test-Umgebungen
@@ -85,7 +87,7 @@ Premium-Datenträger wurden für die zuverlässige Leistung in der Produktion em
 Heute werden alle CF-VMs über die Preisgestaltung „bei Bedarf“ abgerechnet, obwohl die Umgebungen in der Regel unbegrenzt aktiv sind. Sie können VM-Kapazität für einen Zeitraum von 1–3 Jahren reservieren und so von Rabatten von 45–65 % profitieren. Rabatte werden im Abrechnungssystem angewendet, Ihre Umgebung ändert sich dadurch nicht. Weitere Informationen finden Sie unter [Reservierte Azure-VM-Instanzen (RIs)](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Verwalteter Premium-Datenträger mit verringerten Größen: 
 Verwaltete Datenträger unterstützen kleinere Datenträgergrößen, z.B. P4 (32 GB) und P6 (64 GB) für Premium- und Standard-Datenträger. Wenn Sie über kleine Workloads verfügen, können Sie Kosten sparen, wenn Sie von standardmäßigen Premium-Datenträgern zu verwalteten Premium-Datenträgern migrieren.
-#### <a name="utilizing-azure-first-party-services"></a>Nutzung des Azure-Erstanbieterdiensts: 
+#### <a name="use-azure-first-party-services"></a>Verwenden des Azure-Erstanbieterdiensts: 
 Profitieren Sie zusätzlich zur Hochverfügbarkeit und Zuverlässigkeit (wie weiter oben erwähnt) vom Vorteil des Erstanbieterdiensts von Azure, und sparen Sie langfristig Administrationskosten. 
 
 Pivotal hat eine [Small Footprint-ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) für PCF-Kunden veröffentlicht. Die Komponenten sind in nur 4 VMs zusammengestellt und führen bis zu 2500 Anwendungsinstanzen aus. Die Testversion ist nun über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) verfügbar.

@@ -4,18 +4,18 @@ description: Erläutert die Planung vor der Bereitstellung von Avere vFXT für A
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744655"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990984"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
-In diesem Artikel wird erläutert, wie Sie einen neuen Avere vFXT für Azure-Cluster planen, um sicherzustellen, dass der von Ihnen erstellte Cluster entsprechend Ihren Anforderungen positioniert und dimensioniert ist. 
+In diesem Artikel wird erläutert, wie Sie einen neuen Avere vFXT für Azure-Cluster planen, der entsprechend Ihren Anforderungen angemessen positioniert und dimensioniert ist. 
 
 Bevor Sie zum Azure Marketplace wechseln oder virtuelle Computer erstellen, überlegen Sie, wie der Cluster mit anderen Elementen in Azure interagieren wird. Planen Sie, wo sich die Clusterressourcen in Ihrem privaten Netzwerk und Ihren Subnetzen befinden werden, und entscheiden Sie, wo sich Ihr Back-End-Speicher befinden soll. Stellen Sie sicher, dass die von Ihnen erstellten Clusterknoten leistungsfähig genug sind, um Ihren Workflow zu unterstützen. 
 
@@ -32,16 +32,22 @@ Befolgen Sie die folgenden Richtlinien bei der Planung der Netzwerkinfrastruktur
 * Alle Elemente sollten mit einem neuen Abonnement verwaltet werden, das für die Avere vFXT-Bereitstellung erstellt wurde. Dies hat unter anderem folgende Vorteile: 
   * Einfachere Nachverfolgung der Kosten: Zeigen Sie alle Kosten aus Ressourcen, Infrastruktur und Computezyklen in einem Abonnement an, und überprüfen Sie sie.
   * Einfachere Bereinigung: Sie können das gesamte Abonnement entfernen, wenn Sie das Projekt abgeschlossen haben.
-  * Bequeme Partitionierung von Ressourcenkontingenten: Schützen Sie andere kritische Workloads vor möglicher Ressourcendrosselung, wenn Sie die große Anzahl von Clients für Ihren Hochleistungscomputingworkflow nutzen, indem Sie die Avere vFXT-Clients und -Cluster in einem einzigen Abonnement isolieren.
+  * Bequeme Partitionierung von Ressourcenkontingenten: Schützen Sie andere kritische Workloads vor möglicher Ressourcendrosselung, indem Sie die Avere vFXT-Clients und -Cluster in einem einzigen Abonnement isolieren. Dadurch wird ein Konflikt vermieden, wenn Sie eine große Anzahl von Clients für einen Hochleistungs-Computingworkflow nutzen.
 
 * Platzieren Sie Ihre Clientcomputersysteme in der Nähe des vFXT-Clusters. Der Back-End-Speicher kann weiter entfernt sein.  
 
-* Der Einfachheit halber positionieren Sie den vFXT-Cluster und die Clustercontroller-VM in demselben virtuellen Netzwerk (VNet) und in derselben Ressourcengruppe. Sie sollten zudem dasselbe Speicherkonto verwenden. (Der Clustercontroller erstellt den Cluster und kann auch für die Clusterverwaltung über die Befehlszeile verwendet werden.)  
-
-  > [!NOTE] 
-  > Die Vorlage für die Clustererstellung kann eine neue Ressourcengruppe und ein neues Speicherkonto für den Cluster erstellen. Sie können eine vorhandene Ressourcengruppe angeben, diese muss jedoch leer sein.
+* Der vFXT-Cluster und die Clustercontroller-VM sollten im selben virtuellen Netzwerk (VNet) und in derselben Ressourcengruppe platziert werden sowie dasselbe Speicherkonto verwenden. Die Vorlage für die automatische Clustererstellung erledigt dies für die meisten Situationen.
 
 * Der Cluster muss sich in einem eigenen Subnetz befinden, um IP-Adressenkonflikte mit Clients oder Computeressourcen zu vermeiden. 
+
+* Die Vorlage für die Clustererstellung kann den Großteil der erforderlichen Infrastruktur für den Cluster erstellen, einschließlich Ressourcengruppen, virtueller Netzwerke, Subnetze und Speicherkonten. Wenn Sie Ressourcen verwenden möchten, die bereits vorhanden sind, stellen Sie sicher, dass sie die Anforderungen in dieser Tabelle erfüllen. 
+
+  | Ressource | Vorhandene verwenden? | Requirements (Anforderungen) |
+  |----------|-----------|----------|
+  | Ressourcengruppe | Ja, wenn leer. | Muss leer sein.| 
+  | Speicherkonto | Ja, wenn ein Blob-Container nach der Erstellung des Clusters verbunden wird. <br/>  Nein, wenn ein Blob-Container während der Erstellung des Clusters erstellt. | Vorhandener Blob-Container muss leer sein. <br/> &nbsp; |
+  | Virtuelles Netzwerk | Ja | Muss einen Speicherdienst-Endpunkt umfassen, wenn ein neuer Azure Blob-Container erstellt wird. | 
+  | Subnetz | Ja |   |
 
 ## <a name="ip-address-requirements"></a>Anforderungen an die IP-Adresse 
 
@@ -62,22 +68,20 @@ Wenn Sie Azure-BLOB-Speicher verwenden, erfordert dieser möglicherweise auch IP
 
 Sie haben die Möglichkeit, Netzwerkressourcen und Blob-Speicher (falls verwendet) in verschiedenen Ressourcengruppen des Clusters zu positionieren.
 
-## <a name="vfxt-node-sizes"></a>vFXT-Knotengrößen 
+## <a name="vfxt-node-size"></a>vFXT-Knotengröße
 
-Die virtuellen Computer, die als Clusterknoten dienen, bestimmen den Anforderungsdurchsatz und die Speicherkapazität Ihres Cache. Sie haben die Wahl zwischen zwei Instanztypen mit unterschiedlichen Eigenschaften für Arbeitsspeicher, Prozessor und lokalen Speicher. 
+Die virtuellen Computer, die als Clusterknoten dienen, bestimmen den Anforderungsdurchsatz und die Speicherkapazität Ihres Cache. <!-- The instance type offered has been chosen for its memory, processor, and local storage characteristics. You can choose from two instance types, with different memory, processor, and local storage characteristics. -->
 
 Die einzelnen vFXT-Knoten sind identisch. Das bedeutet, dass Sie beim Erstellen eines Clusters mit drei Knoten über drei virtuelle Computer des gleichen Typs und mit identischer Größe verfügen. 
 
 | Instanztyp | vCPUs | Arbeitsspeicher  | Lokaler SSD-Speicher  | Max. Anzahl Datenträger | Durchsatz des Datenträgers ohne Cache | NIC (Anzahl) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D16s_v3 | 16  | 64 GiB  | 128 GB  | 32 | 25.600 IOPS <br/> 384 MBit/s | 8.000 MBit/s (8) |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GB  | 32 | 51.200 IOPS <br/> 768 MBit/s | 16.000 MBit/s (8)  |
 
-Der Datenträgercache pro Knoten ist konfigurierbar und kann zwischen 1000 GB und 8000 GB liegen. 1 TB pro Knoten ist die empfohlene Cachegröße für Standard_D16s_v3-Knoten und 4 TB pro Knoten für Standard_E32s_v3-Knoten.
+Der Datenträgercache pro Knoten ist konfigurierbar und kann zwischen 1000 GB und 8000 GB liegen. 4 TB pro Knoten ist die empfohlene Cachegröße für Standard_E32s_v3-Knoten.
 
-Weitere Informationen zu diesen virtuellen Computern finden Sie in den folgenden Microsoft Azure-Dokumenten:
+Weitere Informationen zu diesen virtuellen Computern finden Sie in der Microsoft Azure-Dokumentation:
 
-* [Universelle VM-Größen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general)
 * [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>Kontokontingent
@@ -120,7 +124,7 @@ Ausführliche Informationen zu diesen Optionen finden Sie in der [Dokumentation 
 
 Wenn Sie eine öffentliche IP-Adresse für den Clustercontroller festlegen, können Sie diesen als Jump Host verwenden, um Kontakt mit dem Avere vFXT-Cluster von außerhalb des privaten Subnetzes herzustellen. Da der Controller jedoch Zugriffsrechte zum Ändern von Clusterknoten besitzt, entsteht ein kleines Sicherheitsrisiko.  
 
-Verwenden Sie für verbesserte Sicherheit mit einer öffentlichen IP-Adresse eine Netzwerksicherheitsgruppe, um eingehenden Zugriff nur über Port 22 zuzulassen. Sie können das System optional weiter schützen, indem Sie den Zugriff auf Ihren Bereich von IP-Quelladressen sperren, d. h. nur Verbindungen von Computern erlauben, die Sie für den Clusterzugriff verwenden möchten.
+Zur Erhöhung der Sicherheit für einen Controller mit einer öffentlichen IP-Adresse erstellt das Bereitstellungsskript automatisch eine Netzwerksicherheitsgruppe, die den eingehenden Zugriff ausschließlich auf Port 22 beschränkt. Sie können das System weiter schützen, indem Sie den Zugriff auf Ihren Bereich von IP-Quelladressen sperren, d.h. nur Verbindungen von Computern erlauben, die Sie für den Clusterzugriff verwenden möchten.
 
 Beim Erstellen des Clusters können Sie auswählen, ob Sie eine öffentliche IP-Adresse für den Clustercontroller erstellen möchten. 
 

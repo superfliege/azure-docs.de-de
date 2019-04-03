@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424318"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544979"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
@@ -142,7 +142,7 @@ Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachu
 |Microsoft.Compute/virtualMachines/extensions/*|Erstellen und Verwalten von klassischen VM-Erweiterungen|
 |Microsoft.Insights/alertRules/*|Lesen/Schreiben/Löschen von Warnungsregeln.|
 |Microsoft.Insights/diagnosticSettings/*|Lesen/Schreiben/Löschen von Diagnoseeinstellungen.|
-|Microsoft.OperationalInsights/*|Verwalten von Log Analytics|
+|Microsoft.OperationalInsights/*|Verwalten von Azure Monitor-Protokollen.|
 |Microsoft.OperationsManagement/*|Verwalten von Lösungen in Arbeitsbereichen|
 |Microsoft.Resources/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
@@ -156,8 +156,8 @@ Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen so
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
 |*/Lesen|Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|Verwalten von Abfragen in Log Analytics|
-|Microsoft.OperationalInsights/workspaces/search/action|Durchsuchen von Log Analytics-Daten|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Verwalten von Abfragen in Azure Monitor-Protokollen.|
+|Microsoft.OperationalInsights/workspaces/search/action|Durchsuchen von Azure Monitor-Protokolldaten.|
 |Microsoft.Support/*|Erstellen und Verwalten von Supporttickets|
 |**Keine Aktionen**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|Kein Lesezugriff auf freigegebene Zugriffsschlüssel|
@@ -180,11 +180,11 @@ Ein Überwachungsmitwirkender kann alle Überwachungsdaten lesen und Überwachun
 |Microsoft.Insights/Metrics/*|Lesen von Metriken für eine Ressource.|
 |Microsoft.Insights/Register/Action|Registriert den Microsoft.Insights-Anbieter.|
 |Microsoft.Insights/webtests/*|Verwalten von Application Insights-Webtests|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Verwalten von Log Analytics-Lösungspaketen|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Verwalten von gespeicherten Log Analytics-Suchvorgängen|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Verwalten von Azure Monitor-Protokolllösungspaketen.|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Verwalten von Azure Monitor-Protokollen: gespeicherte Suchen.|
 |Microsoft.OperationalInsights/workspaces/search/action|Durchsuchen von Log Analytics-Arbeitsbereichen.|
 |Microsoft.OperationalInsights/workspaces/sharedKeys/action|Auflisten der Schlüssel für einen Log Analytics-Arbeitsbereich.|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Verwalten von Log Analytics-Speicherdetailinformationen|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Verwalten von Azure Monitor-Protokollen: Speichererkenntniskonfigurationen.|
 |Microsoft.Support/*|Erstellen und Verwalten von Supporttickets|
 |Microsoft.WorkloadMonitor/workloads/*|Verwalten von Workloads|
 

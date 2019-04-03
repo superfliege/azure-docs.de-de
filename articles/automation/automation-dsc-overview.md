@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca7a1913e94242af46e777be308ef92fc5a5abb3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dd2ba0ec3427cd99da3321b50fb43f4c00f2d1a9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427065"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822820"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
@@ -37,13 +37,45 @@ Azure Automation State Configuration führt dieselbe Verwaltungsschicht in [Powe
 
 ![Screenshot der Azure Automation-Seite](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Importieren von Berichtsdaten in Log Analytics
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Importieren von Berichtsdaten in Azure Monitor-Protokolle
 
-Mit Azure Automation State Configuration verwaltete Knoten senden detaillierte Statusberichtsdaten an den integrierten Pullserver. Sie können Azure Automation State Configuration so konfigurieren, dass diese Daten an Ihren Log Analytics-Arbeitsbereich gesendet werden. Eine Anleitung zum Senden von Statusdaten der Zustandskonfiguration an Ihren Log Analytics-Arbeitsbereich finden Sie unter [Weiterleiten von Azure Automation-DSC-Berichtsdaten an Log Analytics](automation-dsc-diagnostics.md).
+Mit Azure Automation State Configuration verwaltete Knoten senden detaillierte Statusberichtsdaten an den integrierten Pullserver. Sie können Azure Automation State Configuration so konfigurieren, dass diese Daten an Ihren Log Analytics-Arbeitsbereich gesendet werden. Eine Anleitung zum Senden von Statusdaten der Zustandskonfiguration an Ihren Log Analytics-Arbeitsbereich finden Sie unter [Weiterleiten von Azure Automation-DSC-Berichtsdaten an Azure Monitor-Protokolle](automation-dsc-diagnostics.md).
 
-## <a name="network-planning"></a>Konfigurieren des Netzwerks
+## <a name="prerequisites"></a>Voraussetzungen
 
-Nachfolgend sind der Port und die URLs aufgeführt, die für die Kommunikation zwischen der Zustandskonfiguration und Automation erforderlich sind:
+Berücksichtigen Sie die folgenden Anforderungen, wenn Sie Azure Automation State Configuration (DSC) verwenden.
+
+### <a name="operating-system-requirements"></a>Betriebssystemanforderungen
+
+Für Knoten, auf denen Windows ausgeführt wird, werden folgende Versionen unterstützt:
+
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012 R2
+- Windows Server 2012
+- Windows Server 2008 R2 SP1
+- Windows 10
+- Windows 8.1
+- Windows 7
+
+Für Knoten, auf denen Linux ausgeführt wird, werden folgende Distributionen/Versionen unterstützt:
+
+Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), außer:
+
+Distribution | Version
+-|-
+Debian  | Alle Versionen
+Ubuntu  | 18,04
+
+### <a name="dsc-requirements"></a>DSC-Anforderungen
+
+Für alle Windows-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) installiert.  Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, [wird WinRM aktiviert](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+
+Für alle Linux-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [PowerShell DSC für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installiert.
+
+### <a name="network-planning"></a>Konfigurieren privater Netzwerke
+
+Wenn sich Ihre Knoten in einem privaten Netzwerk befinden, sind nachfolgend der Port und die URLs aufgeführt, die für die Kommunikation zwischen der Zustandskonfiguration und Automation erforderlich sind:
 
 * Port: Für ausgehenden Zugriff auf das Internet ist nur TCP 443 erforderlich.
 * Globale URL: *.azure-automation.net
@@ -85,7 +117,7 @@ Möchten Sie sich lieber ein Video ansehen? Sehen Sie sich das folgende Video vo
 > [!NOTE]
 > Die Konzepte und der Lebenszyklus, die in diesem Video erläutert werden, sind noch zutreffend, jedoch wurde Azure Automation State Configuration seit der Aufzeichnung des Videos beträchtlich weiterentwickelt. Es ist jetzt allgemeine verfügbar, besitzt eine umfangreichere Benutzeroberfläche im Azure-Portal und unterstützt viele zusätzliche Funktionen.
 
-[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
+<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

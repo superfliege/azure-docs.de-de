@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 52c5fb8a6da7e3f12d621406542f0e31f7ece1de
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880007"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Erstellen einer Web-App und eines Azure Cache for Redis mithilfe einer Vorlage
 
@@ -35,7 +35,7 @@ Die vollständige Vorlage finden Sie unter [Web-App mit Azure Cache for Redis-Vo
 In dieser Vorlage stellen Sie Folgendes bereit:
 
 * Azure-Web-App
-* Azure Cache for Redis.
+* Azure Cache for Redis
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 

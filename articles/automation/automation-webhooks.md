@@ -6,22 +6,25 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ab50bd5a2b5b1b0e63060986d4336774be7875b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245863"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224890"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
-Mit einem *Webhook* können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Dadurch wird es externen Diensten wie Azure DevOps Services, GitHub, Azure Log Analytics oder benutzerdefinierten Anwendungen ermöglicht, Runbooks zu starten, ohne eine vollständige Lösung unter Verwendung der Azure Automation-API zu implementieren.  
+Mit einem *Webhook* können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Dadurch wird es externen Diensten wie Azure DevOps Services, GitHub, Azure Monitor-Protokolle oder benutzerdefinierten Anwendungen ermöglicht, Runbooks zu starten, ohne eine vollständige Lösung unter Verwendung der Azure Automation-API zu implementieren.  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 In [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
+
+> [!NOTE]
+> Die Verwendung eines Webhooks zum Starten eines Python-Runbooks wird nicht unterstützt.
 
 ## <a name="details-of-a-webhook"></a>Details zu einem Webhook
 

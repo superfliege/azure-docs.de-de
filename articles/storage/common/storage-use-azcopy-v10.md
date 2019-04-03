@@ -5,15 +5,15 @@ services: storage
 author: artemuwka
 ms.service: storage
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 111c24c1cd608542a5ef7da85f93ca22082af6d9
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244605"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726718"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Übertragen von Daten mit AzCopy v10 (Vorschau)
 
@@ -24,9 +24,9 @@ AzCopy v10 (Vorschau) ist das Befehlszeilenprogramm der nächsten Generation zum
 - Synchronisieren eines Dateisystems mit Azure Blob oder umgekehrt. Verwenden Sie `azcopy sync <source> <destination>`. Ideal geeignet für Szenarien mit inkrementellen Kopien.
 - Unterstützt Azure Data Lake Storage Gen2-APIs. Verwenden von `myaccount.dfs.core.windows.net` als URI zum Aufrufen der ADLS Gen2-APIs.
 - Unterstützt das Kopieren eines gesamten Kontos (nur Blob-Dienst) in ein anderes Konto.
-- Der Kopiervorgang zwischen Konten verwendet nun die neuen [Put From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-APIs. Es ist keine Datenübertragung an den Client erforderlich, was den Vorgang beschleunigt.
+- Der Kopiervorgang zwischen Konten verwendet nun die neuen [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-APIs. Es ist keine Datenübertragung an den Client erforderlich, was den Vorgang beschleunigt.
 - Auflisten/Entfernen von Dateien und Blobs in einem angegebenen Pfad.
-- Unterstützt Platzhaltermuster in einem Pfad sowie die Flags --include und --exclude.
+- Unterstützt Platzhaltermuster in einem Pfad sowie das Flag „--exclude“.
 - Verbesserte Resilienz: Jede AzCopy-Instanz erstellt eine Auftragsreihenfolge und eine zugehörige Protokolldatei. Sie können vorherige Aufträge anzeigen und neu starten und fehlgeschlagene Aufträge fortsetzen. AzCopy wiederholt außerdem eine Übertragung automatisch nach einem Fehler.
 - Allgemeine Leistungsverbesserungen.
 
@@ -35,9 +35,9 @@ AzCopy v10 (Vorschau) ist das Befehlszeilenprogramm der nächsten Generation zum
 ### <a name="latest-preview-version-v10"></a>Neueste Vorschauversion (v10)
 
 Laden Sie die neueste Vorschauversion von AzCopy herunter:
-- [Windows](https://aka.ms/downloadazcopy-v10-windows)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac)
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
 ### <a name="latest-production-version-v81"></a>Neueste Produktionsversion (v8.1)
 
@@ -49,18 +49,23 @@ Laden Sie [AzCopy v7.3 mit Unterstützung für das Kopieren von Daten in den bzw
 
 ## <a name="post-installation-steps"></a>Schritte nach der Installation
 
-Eine Installation von AzCopy v10 ist nicht erforderlich. Öffnen Sie eine bevorzugte Befehlszeilenanwendung, und navigieren Sie zu dem Ordner, in dem die ausführbare Datei `azcopy.exe` gespeichert ist. Bei Bedarf können Sie den Speicherort für den AzCopy-Ordner zum Systempfad hinzufügen.
+Eine Installation von AzCopy v10 ist nicht erforderlich. Öffnen Sie eine bevorzugte Befehlszeilenanwendung, und navigieren Sie zum Ordner, in dem die ausführbare Datei `azcopy.exe` (Windows) oder `azcopy` (Linux) gespeichert ist. Bei Bedarf können Sie den Speicherort für den AzCopy-Ordner zum Systempfad hinzufügen.
 
 ## <a name="authentication-options"></a>Authentifizierungsoptionen
 
 Mit AzCopy v10 können Sie die folgenden Optionen bei der Authentifizierung mit Azure Storage verwenden:
-- **Azure Active Directory [unterstützt für Blob und ADLS Gen2-Dienste]**. Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er in den Blobspeicher mithilfe von Azure Active Directory-Authentifizierung schreiben kann.
+- **Azure Active Directory [unterstützt für Blob und ADLS Gen2-Dienste]**. Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er in den Blobspeicher mithilfe von Azure Active Directory-Authentifizierung schreiben kann. Verwenden Sie für die Authentifizierung mithilfe der verwalteten Dienstidentität (Managed Service Identity, MSI) `azcopy login --identity`, nachdem Sie der Azure-Compute-Instanz die Rolle des Mitwirkenden an den Daten zugewiesen haben.
 - **SAS-Token [unterstützt für Blob und Dateidienste]**. Fügen Sie das SAS-Token dem Blobpfad in der Befehlszeile hinzu, um es zu verwenden. Sie können das SAS-Token mit dem Azure-Portal, mit [Storage-Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), mit [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) oder mit anderen Tools Ihrer Wahl generieren. Weitere Informationen finden Sie unter [Beispiele](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
-> [!IMPORTANT]
-> Wenn Sie eine Supportanfrage an Microsoft-Support senden (oder eine Problembehandlung unter Einbeziehung eines Drittanbieters durchführen), geben Sie bitte die editierte Version des Befehls frei, den Sie auszuführen versuchen. Auf diese Weise stellen Sie sicher, dass die SAS nicht versehentlich für irgendeine Person freigegeben wird. Die editierte Version steht am Anfang der Protokolldatei. Weitere Details finden Sie weiter unten in diesem Artikel im Abschnitt „Problembehandlung“.
-
 ## <a name="getting-started"></a>Erste Schritte
+
+> [!TIP]
+> **Ziehen Sie eine grafische Benutzeroberfläche vor?**
+>
+> Probieren Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) aus, einen Desktopclient, der die Verwaltung von Azure Storage-Daten vereinfacht und nun **AzCopy** verwendet, um Datenübertragungen in und aus Azure Storage zu beschleunigen.
+>
+> Sie können AzCopy im Storage-Explorer im Menü „Vorschau“ aktivieren. Zum Verbessern der Leistung verwendet Storage-Explorer dann AzCopy, um Daten aus Blobspeicher hoch- und in diesen herunterzuladen.
+> ![Aktivieren von AzCopy als Übertragungsmodul in Azure Storage-Explorer](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 
 AzCopy v10 verfügt über eine einfache selbstdokumentierte Syntax. Die allgemeine Syntax sieht wie folgt aus, wenn Sie sich bei Azure Active Directory angemeldet haben:
 
@@ -80,7 +85,7 @@ AzCopy v10 verfügt über eine einfache selbstdokumentierte Syntax. Die allgemei
 Eine Liste der verfügbaren Befehle können Sie folgendermaßen abrufen:
 
 ```azcopy
-.\azcopy -help
+.\azcopy --help
 # Using the alias instead
 .\azcopy -h
 ```
@@ -88,7 +93,7 @@ Eine Liste der verfügbaren Befehle können Sie folgendermaßen abrufen:
 Um die Hilfeseite und Beispiele für einen bestimmten Befehl anzuzeigen, führen Sie den folgenden Befehl aus:
 
 ```azcopy
-.\azcopy <cmd> -help
+.\azcopy <cmd> --help
 # Example:
 .\azcopy cp -h
 ```
@@ -153,7 +158,7 @@ Das Kopieren von Daten zwischen zwei Speicherkonten verwendet die [Put Block Fro
 
 Um die Daten zwischen zwei Speicherkonten zu kopieren, verwenden Sie den folgenden Befehl:
 ```azcopy
-.\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
+.\azcopy cp "https://account.blob.core.windows.net/<sastoken>" "https://otheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
 > [!NOTE]
@@ -161,27 +166,35 @@ Um die Daten zwischen zwei Speicherkonten zu kopieren, verwenden Sie den folgend
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Kopieren eines VHD-Image in ein Speicherkonto
 
-AzCopy v10 lädt Daten standardmäßig in Blockblobs hoch. Wenn eine Quelldatei jedoch die Erweiterung VHD aufweist, lädt AzCopy v10 sie standardmäßig in ein Seitenblob hoch. Dieses Verhalten ist derzeit nicht konfigurierbar.
+Verwenden Sie `--blob-type=PageBlob`, um ein Datenträgerimage als Seitenblob in Blobspeicher hochzuladen.
 
-## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Sync: inkrementelles Kopieren und Löschen (nur Blob Storage)
+```azcopy
+.\azcopy cp "C:\myimages\diskimage.vhd" "https://account.blob.core.windows.net/mycontainer/diskimage.vhd<sastoken>" --blob-type=PageBlob
+```
+
+## <a name="sync-incremental-copy-and-optional-delete-blob-storage-only"></a>Synchronisierung: inkrementelles Kopieren und (optionales) Löschen (nur Blob Storage)
+
+Mit dem Synchronisierungsbefehl wird der Inhalt eines Quellverzeichnisses mit einem Verzeichnis im Zielverzeichnis synchronisiert, wobei Dateinamen und zuletzt geänderte Zeitstempel verglichen werden. Optional schließt dieser Vorgang das Löschen von Zieldateien ein, wenn diese in der Quelle nicht vorhanden sind und das Flag `--delete-destination=prompt|true` angegeben ist. Standardmäßig ist das Löschverhalten deaktiviert.
 
 > [!NOTE]
-> Der Sync-Befehl synchronisiert Inhalte aus der Quelle mit dem Ziel und beinhaltet das LÖSCHEN von Zieldateien, wenn diese in der Quelle nicht vorhanden sind. Stellen Sie sicher, dass Sie das Ziel verwenden, das Sie synchronisieren möchten.
+> Verwenden Sie das Flag `--delete-destination` mit Vorsicht. Aktivieren Sie das Feature [Vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), bevor Sie das Löschverhalten bei der Synchronisierung aktivieren, um versehentliche Löschvorgänge in Ihrem Konto zu vermeiden.
+>
+> Wenn `--delete-destination` auf TRUE festgelegt ist, löscht AzCopy Dateien, die in der Quelle nicht vorhanden sind, ohne Aufforderung des Benutzers aus dem Ziel. Wenn Sie zur Bestätigung aufgefordert werden möchten, verwenden Sie `--delete-destination=prompt`.
 
 Verwenden Sie den folgenden Befehl, um Ihr lokales Dateisystem mit einem Speicherkonto zu synchronisieren:
 
 ```azcopy
-.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
+.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer<sastoken>"
 ```
 
 Auf die gleiche Weise können Sie einen Blobcontainer mit einem lokalen Dateisystem synchronisieren:
 
 ```azcopy
 # If you're using Azure Active Directory authentication the sastoken is not required
-.\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
+.\azcopy sync "https://account.blob.core.windows.net/mycontainer" "C:\local\path"
 ```
 
-Mit diesem Befehl können Sie die Quelle inkrementell basierend auf den Zeitstempeln der letzten Änderung mit dem Ziel synchronisieren. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy v10 im Ziel auf die gleiche Weise. Vor dem Löschen fragt AzCopy eine Bestätigung des Löschens der Dateien ab.
+Mit diesem Befehl können Sie die Quelle inkrementell basierend auf den Zeitstempeln der letzten Änderung mit dem Ziel synchronisieren. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy v10 im Ziel auf die gleiche Weise. Wenn das Löschverhalten im Synchronisierungsbefehl aktiviert ist, löscht AzCopy Dateien aus dem Ziel, wenn sie in der Quelle nicht mehr vorhanden sind.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 
@@ -214,13 +227,6 @@ export AZCOPY_CONCURRENCY_VALUE=<value>
 # If the value is blank then the default value is currently in use
 ```
 
-## <a name="troubleshooting"></a>Problembehandlung
-
-AzCopy v10 erstellt Protokolldateien und Plandateien für alle Aufträge. Sie können die Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu beheben. Die Protokolle enthalten den Status des Fehlers (UPLOADFAILED, COPYFAILED und DOWNLOADFAILED), den vollständigen Pfad und den Grund des Fehlers. Die Auftragsprotokolle und Plandateien sind im Ordner „%USERPROFILE\\.azcopy“ (unter Windows) bzw. im Ordner „$HOME\\.azcopy“ (unter Mac und Linux) gespeichert.
-
-> [!IMPORTANT]
-> Wenn Sie eine Supportanfrage an Microsoft-Support senden (oder eine Problembehandlung unter Einbeziehung eines Drittanbieters durchführen), geben Sie bitte die editierte Version des Befehls frei, den Sie auszuführen versuchen. Auf diese Weise stellen Sie sicher, dass die SAS nicht versehentlich für irgendeine Person freigegeben wird. Die editierte Version steht am Anfang der Protokolldatei.
-
 ### <a name="change-the-location-of-the-log-files"></a>Ändern des Speicherorts der Protokolldateien
 
 Sie können den Speicherort der Protokolldateien bei Bedarf ändern oder, um eine Überfüllung des Betriebssystemdatenträgers zu vermeiden.
@@ -237,6 +243,17 @@ export AZCOPY_LOG_LOCATION=<value>
 # If the value is blank then the default value is currently in use
 ```
 
+### <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
+
+Standardmäßig ist die AzCopy-Protokollebene auf INFO festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz zu sparen, überschreiben Sie die Einstellung mit der ``--log-level``-Option. Verfügbare Protokollebenen sind: DEBUG, INFO, WARNING, ERROR, PANIC und FATAL.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+AzCopy v10 erstellt Protokolldateien und Plandateien für alle Aufträge. Sie können die Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu beheben. Die Protokolle enthalten den Status des Fehlers (UPLOADFAILED, COPYFAILED und DOWNLOADFAILED), den vollständigen Pfad und den Grund des Fehlers. Die Auftragsprotokolle und Plandateien sind im Ordner „%USERPROFILE%\\.azcopy“ (unter Windows) bzw. im Ordner „$HOME\\.azcopy“ (unter Mac und Linux) gespeichert.
+
+> [!IMPORTANT]
+> Wenn Sie eine Supportanfrage an Microsoft-Support senden (oder eine Problembehandlung unter Einbeziehung eines Drittanbieters durchführen), geben Sie bitte die editierte Version des Befehls frei, den Sie auszuführen versuchen. Auf diese Weise stellen Sie sicher, dass die SAS nicht versehentlich für irgendeine Person freigegeben wird. Die editierte Version steht am Anfang der Protokolldatei.
+
 ### <a name="review-the-logs-for-errors"></a>Überprüfen der Protokolle auf Fehler
 
 Der folgende Befehl ruft alle Fehler mit dem Status UPLOADFAILED aus dem Protokoll 04dc9ca9-158f-7945-5933-564021086c79 ab:
@@ -244,6 +261,8 @@ Der folgende Befehl ruft alle Fehler mit dem Status UPLOADFAILED aus dem Protoko
 ```azcopy
 cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
+
+Alternativ können Sie auch die Dateinamen anzeigen, die mit dem Befehl `azcopy jobs show <jobid> --with-status=Failed` nicht übertragen wurden.
 
 ### <a name="view-and-resume-jobs"></a>Anzeigen und Fortsetzen von Aufträgen
 
@@ -270,10 +289,6 @@ Sie können einen fehlerhaften/abgebrochenen Auftrag mithilfe seines Bezeichners
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
-
-### <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
-
-Standardmäßig ist die AzCopy-Protokollebene auf INFO festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz zu sparen, überschreiben Sie die Einstellung mit der ``--log-level``-Option. Verfügbare Protokollebenen sind: DEBUG, INFO, WARNING, ERROR, PANIC und FATAL.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

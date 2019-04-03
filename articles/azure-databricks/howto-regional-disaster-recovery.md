@@ -7,23 +7,17 @@ ms.author: mamccrea
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.date: 03/13/2019
+ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188100"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
 
 Dieser Artikel enthält Informationen zu einer praktischen Notfallwiederherstellungsarchitektur für Azure Databricks-Cluster sowie die notwendigen Schritte.
-
-## <a name="azure-databricks-overview"></a>Übersicht über Azure Databricks
-
-Azure Databricks ist ein schneller, einfacher und zusammenarbeitsorientierter Analysedienst auf Apache Spark-Basis. Für eine Big Data-Pipeline werden Rohdaten oder strukturierte Daten in Batches über Azure Data Factory in Azure erfasst oder mithilfe von Kafka, Event Hub oder IoT Hub nahezu in Echtzeit gestreamt. Diese Daten werden langfristig in einem Data Lake (Azure Blob Storage oder Azure Data Lake Storage) gespeichert. Mit Azure Databricks können Sie im Rahmen Ihres Analyseworkflows Daten aus mehreren Datenquellen (beispielsweise aus [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml) oder [Azure SQL Data Warehouse](../sql-data-warehouse/index.md)) lesen und mithilfe von Spark bahnbrechende Erkenntnisse gewinnen.
-
-![Databricks-Pipeline](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks-Architektur
 
@@ -37,7 +31,7 @@ Diese Architektur hat unter anderem den Vorteil, dass Benutzer Azure Databricks 
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Erstellen einer Topologie für die regionale Notfallwiederherstellung
 
-Wie Sie der obigen Architekturbeschreibung entnehmen können, umfasst eine Big Data-Pipeline mit Azure Databricks mehrere Komponenten. Dazu zählen unter anderem Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
+Wie Sie der obigen Architekturbeschreibung entnehmen können, umfasst eine Big Data-Pipeline mit Azure Databricks mehrere Komponenten.   Dazu zählen unter anderem Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
 
 Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erstellen möchten, gehen Sie wie folgt vor:
 
@@ -269,9 +263,14 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
 10. **Manuelles Konfigurieren und Anwenden der Zugriffssteuerung**
 
-   Wenn Ihr vorhandener primärer Arbeitsbereich für die Verwendung des Premium-Tarifs (SKU) konfiguriert ist, verwenden Sie wahrscheinlich auch das [Zugriffssteuerungsfeature](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Wenn Ihr vorhandener primärer Arbeitsbereich für die Verwendung des Premium-Tarifs (SKU) konfiguriert ist, verwenden Sie wahrscheinlich auch das [Zugriffssteuerungsfeature](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
 
-   Wenn Sie das Zugriffssteuerungsfeature verwenden, wenden Sie die Zugriffssteuerung manuell auf die Ressourcen (Notebooks, Cluster, Aufträge, Tabellen) an.
+    Wenn Sie das Zugriffssteuerungsfeature verwenden, wenden Sie die Zugriffssteuerung manuell auf die Ressourcen (Notebooks, Cluster, Aufträge, Tabellen) an.
+
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Notfallwiederherstellung für Ihr Azure-Ökosystem
+
+Wenn Sie andere Azure-Dienste verwenden, achten Sie darauf, bewährte Methoden für die Notfallwiederherstellung auch für diese Dienste zu implementieren. Wenn Sie z. B. eine externe Hive-Metastore-Instanz verwenden möchten, sollten Sie die Notfallwiederherstellung für [Azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md) und/oder [, Azure Database for MySQL ](../mysql/concepts-business-continuity.md) berücksichtigen. Allgemeine Informationen zur Notfallwiederherstellung finden Sie unter [Notfallwiederherstellung für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen finden Sie in der [Dokumentation zu Azure Databricks](https://docs.azuredatabricks.net/user-guide/index.html).

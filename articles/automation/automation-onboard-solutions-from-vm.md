@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 039e2d3c70493868ca2f79e89fc82d8970ec6865
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837761"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
@@ -26,7 +26,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-the-solutions"></a>Aktivieren der Lösungen
 
-Navigieren Sie zu einem vorhandenen virtuellen Computer. Wählen Sie unter **VORGÄNGE** **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus.
+Navigieren Sie zu einem vorhandenen virtuellen Computer. Wählen Sie unter **VORGÄNGE** **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos.
 
 Um die Lösung nur für die VM zu aktivieren, stellen sicher, dass **Für diesen virtuellen Computer aktivieren** ausgewählt ist. Um mehrere Computer in die Lösung zu integrieren, wählen Sie **Für virtuelle Computer in diesem Abonnement aktivieren** und dann **Klicken, um zu aktivierende Computer auszuwählen** aus. Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
 
@@ -34,7 +34,7 @@ Wählen Sie den Azure Log Analytics-Arbeitsbereich sowie das Automation-Konto un
 
 ![Integrieren der Updateverwaltungslösung](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-Navigieren Sie zu den anderen Lösungen, und wählen Sie **Aktivieren** aus. Die Dropdownlisten für Log Analytics und Automation-Konto sind deaktiviert, da diese Lösungen denselben Arbeitsbereich und dasselbe Automation-Konto verwenden wie die zuvor aktivierte Lösung.
+Navigieren Sie zu den anderen Lösungen, und wählen Sie **Aktivieren** aus. Die Dropdownlisten für Log Analytics-Arbeitsbereich und Automation-Konto sind deaktiviert, da diese Lösungen denselben Arbeitsbereich und dasselbe Automation-Konto verwenden wie die zuvor aktivierte Lösung.
 
 > [!NOTE]
 > **Änderungsnachverfolgung** und **Bestand** verwenden dieselbe Lösung. Wenn eine dieser Lösungen aktiviert ist, ist die andere auch aktiviert.
@@ -76,7 +76,7 @@ Die folgenden Lösungen sind vom Log Analytics-Arbeitsbereich abhängig:
 * [Änderungsnachverfolgung](automation-change-tracking.md)
 * [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 
-Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
+Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
 
 Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
 

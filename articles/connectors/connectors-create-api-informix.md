@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296035"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165899"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Erste Schritte mit dem Informix-Connector
 Mit dem Microsoft Connector für Informix werden Logik-Apps mit Ressourcen verbunden, die in einer IBM Informix-Datenbank gespeichert sind. Der Informix-Connector enthält einen Microsoft-Client zum Kommunizieren mit Informix-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Informix für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe die [Liste mit unterstützten IBM Informix-Plattformen und -Versionen](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (in diesem Thema).
@@ -47,7 +47,7 @@ Der Connector unterstützt die folgenden Logik-App-Aktionen:
 ## <a name="list-tables"></a>Auflisten von Tabellen
 Das Erstellen einer Logik-App für einen beliebigen Vorgang umfasst viele Schritte, die über das Microsoft Azure-Portal ausgeführt werden.
 
-Innerhalb der Logik-App können Sie eine Aktion zum Auflisten von Tabellen in einer Informix-Datenbank hinzufügen. Die Aktion weist den Connector an, eine Informix-Schemaanweisung zu verarbeiten, z.B. `CALL SYSIBM.SQLTABLES`.
+Innerhalb der Logik-App können Sie eine Aktion zum Auflisten von Tabellen in einer Informix-Datenbank hinzufügen. Die Aktion weist den Connector an, eine Informix-Schemaanweisung zu verarbeiten, z. B. `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
@@ -145,7 +145,7 @@ Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer Informix-Tab
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
 10. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 11. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-12. Wählen Sie **Speichern**aus. 
+12. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
 13. Wählen Sie auf dem Blatt **InformixgetRows** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -154,7 +154,7 @@ Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer Informix-Tab
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
 ## <a name="add-one-row-using-insert"></a>Eine Zeile mit INSERT hinzufügen
-Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine Informix INSERT-Anweisung zu verarbeiten, z.B. `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine INSERT-Anweisung von Informix zu verarbeiten, z. B. `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
@@ -172,7 +172,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer Informix-
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Area 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern**aus.
+10. Wählen Sie **Speichern** aus.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
 11. Wählen Sie auf dem Blatt **InformixinsertRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -181,7 +181,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer Informix-
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
 ## <a name="fetch-one-row-using-select"></a>Abrufen einer Zeile mit SELECT
-Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer Informix-Tabelle erstellen. Diese Aktion weist den Connector an, eine Informix SELECT WHERE-Anweisung zu verarbeiten, z.B. `SELECT FROM AREA WHERE AREAID = '99999'`.
+Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer Informix-Tabelle erstellen. Diese Aktion weist den Connector an, eine SELECT WHERE-Anweisung von Informix zu verarbeiten, z. B. `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
@@ -200,7 +200,7 @@ Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer Informix-Tab
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
 10. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-11. Wählen Sie **Speichern**aus. 
+11. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
 12. Wählen Sie auf dem Blatt **InformixgetRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -209,7 +209,7 @@ Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer Informix-Tab
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
 ## <a name="change-one-row-using-update"></a>Ändern einer Zeile mit UPDATE
-Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine Informix UPDATE-Anweisung zu verarbeiten, z.B. `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
+Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine UPDATE-Anweisung von Informix zu verarbeiten, z. B. `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
@@ -227,7 +227,7 @@ Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer Informix-Tabe
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Updated 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern**aus. 
+10. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
 11. Wählen Sie auf dem Blatt **InformixupdateRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -236,7 +236,7 @@ Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer Informix-Tabe
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
 ## <a name="remove-one-row-using-delete"></a>Eine Zeile mit DELETE entfernen
-Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine Informix DELETE-Anweisung zu verarbeiten, z.B. `DELETE FROM AREA WHERE AREAID = '99999'`.
+Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine UPDATE-Anweisung von Informix zu verarbeiten, z. B. `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
@@ -254,7 +254,7 @@ Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer Informix-T
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
-10. Wählen Sie **Speichern**aus. 
+10. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
 11. Wählen Sie auf dem Blatt **InformixdeleteRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -273,5 +273,5 @@ Dieser Connector unterstützt die folgenden IBM Informix-Versionen, wenn diese f
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/informix/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 

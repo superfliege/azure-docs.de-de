@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 1247f603b759364edcee2bff12f75bb0a217ecd6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231253"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295299"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Verwalten von Dynamics 365-Datensätzen in Azure Logic Apps
 
@@ -42,7 +42,7 @@ Fügen Sie zunächst einen Dynamics 365-Trigger, der ausgelöst wird, wenn ein n
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre leere Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie in diesem Beispiel in der Triggerliste den folgenden Trigger aus: **Wenn ein Datensatz erstellt wird**
+1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie für dieses Beispiel in der Triggerliste den folgenden Trigger aus: **When a record is created** (Wenn ein Datensatz erstellt wird)
 
    ![Trigger auswählen](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -52,10 +52,10 @@ Fügen Sie zunächst einen Dynamics 365-Trigger, der ausgelöst wird, wenn ein n
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG | 
    |----------|----------|-------------| 
-   | **Name der Organisation** | JA | Der Name der zu überwachenden Dynamics 365-Instanz Ihrer Organisation, z.B. „Contoso“ |
-   | **Name der Entität** | JA | Der Name der zu überwachenden Entität, z.B „Leads“ | 
-   | **Frequency** | JA | Die Zeiteinheit, die bei der Suche nach Aktualisierungen im Zusammenhang mit dem Trigger mit Intervallen verwendet werden soll |
-   | **Intervall** | JA | Die Anzahl der Sekunden, Minuten, Stunden, Tage, Wochen oder Monate, die bis zur nächsten Überprüfung vergehen sollen |
+   | **Name der Organisation** | Ja | Der Name der zu überwachenden Dynamics 365-Instanz Ihrer Organisation, z.B. „Contoso“ |
+   | **Name der Entität** | Ja | Der Name der zu überwachenden Entität, z.B „Leads“ | 
+   | **Frequency** | Ja | Die Zeiteinheit, die bei der Suche nach Aktualisierungen im Zusammenhang mit dem Trigger mit Intervallen verwendet werden soll |
+   | **Intervall** | Ja | Die Anzahl der Sekunden, Minuten, Stunden, Tage, Wochen oder Monate, die bis zur nächsten Überprüfung vergehen sollen |
    ||| 
 
    ![Triggerdetails](./media/connectors-create-api-crmonline/trigger-details.png)
@@ -66,7 +66,7 @@ Füge nun die Dynamics 365-Aktion hinzu, die einen Aufgabendatensatz für den ne
 
 1. Wählen Sie unter Ihrem Trigger die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Neuen Datensatz erstellen**.
+1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Create a new record** (Neuen Datensatz erstellen)
 
    ![Aktion select](./media/connectors-create-api-crmonline/select-action.png)
 
@@ -74,8 +74,8 @@ Füge nun die Dynamics 365-Aktion hinzu, die einen Aufgabendatensatz für den ne
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG | 
    |----------|----------|-------------| 
-   | **Name der Organisation** | JA | Die Dynamics 365-Instanz, in der Sie den Datensatz erstellen möchten, die nicht die gleiche Instanz in Ihrem Trigger sein muss, sondern in diesem Beispiel „Contoso“ ist. |
-   | **Name der Entität** | JA | Die Entität, in der Sie den Datensatz erstellen möchten, z.B. „Aufgaben“ | 
+   | **Name der Organisation** | Ja | Die Dynamics 365-Instanz, in der Sie den Datensatz erstellen möchten, die nicht die gleiche Instanz in Ihrem Trigger sein muss, sondern in diesem Beispiel „Contoso“ ist. |
+   | **Name der Entität** | Ja | Die Entität, in der Sie den Datensatz erstellen möchten, z.B. „Aufgaben“ | 
    | | |
 
    ![Aktionsdetails](./media/connectors-create-api-crmonline/action-details.png)
@@ -187,7 +187,7 @@ Weitere Informationen zum Behandeln von Problemen mit Logik-Apps finden Sie unte
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/crm/). 
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/dynamicscrmonline/). 
 
 ## <a name="get-support"></a>Support
 

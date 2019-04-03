@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116914"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855349"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -28,7 +28,7 @@ Anmelden bei Azure unter https://portal.azure.com
 
 Navigieren Sie im Azure-Portal zu **Virtuelle Computer**.
 
-Wählen Sie über die Kontrollkästchen die virtuellen Computer aus, die Sie in Änderungsnachverfolgung und Bestand oder Updateverwaltung integrieren möchten. Die Integration kann für bis zu drei verschiedene Ressourcengruppen gleichzeitig durchgeführt werden.
+Wählen Sie über die Kontrollkästchen die virtuellen Computer aus, die Sie in Änderungsnachverfolgung und Bestand oder Updateverwaltung integrieren möchten. Die Integration kann für bis zu drei verschiedene Ressourcengruppen gleichzeitig durchgeführt werden. Azure-VMs können in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos.
 
 ![Liste der VMs](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
@@ -68,14 +68,19 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |Europa, Westen|Europa, Westen|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP- und EastUS-Zuordnungen für Log Analytics-Arbeitsbereiche zu Automation-Konten sind keine exakten Region-zu-Region-Zuordnungen, jedoch handelt es sich um die richtige Zuordnung.
+
+> [!NOTE]
+> Aufgrund der Nachfrage ist eine Region möglicherweise nicht verfügbar, wenn Ihr Automation-Konto oder Log Analytics-Arbeitsbereich erstellt wird.  Wenn dies der Fall ist, stellen Sie sicher, dass Sie eine Region aus der voranstehenden Tabelle verwenden, in der Sie Ressourcen erstellen können.
 
 Deaktivieren Sie das Kontrollkästchen neben jedem virtuellen Computern, den Sie nicht aktivieren möchten. Die Auswahl für virtuelle Computer, die nicht aktiviert werden können, ist bereits aufgehoben.
 
@@ -89,7 +94,7 @@ Die folgenden Lösungen sind vom Log Analytics-Arbeitsbereich abhängig:
 * [Änderungsnachverfolgung](automation-change-tracking.md)
 * [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 
-Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
+Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
 
 Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
 

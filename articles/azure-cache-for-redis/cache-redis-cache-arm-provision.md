@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e223cb060857d45d9f25e2ee1dfca7e159225d8b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237109"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983904"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Erstellen eines Azure Cache for Redis mithilfe einer Vorlage
 
@@ -37,8 +37,8 @@ Die vollständige Vorlage finden Sie unter [Azure Cache for Redis-Vorlage](https
 > Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-premium-tier-intro.md) sind verfügbar. 
 > 
 > * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
-> * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit VNet und optionalem Clustering](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
+> * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [Erstellen eines in einem virtuellen Netzwerk bereitgestellten Premium Redis Caches](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
 > Um die neuesten Vorlagen zu ermitteln, suchen Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) nach `Azure Cache for Redis`.
 > 

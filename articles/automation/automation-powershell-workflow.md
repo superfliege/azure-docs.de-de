@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7ab6b387a28df06758e5e0c1ce197781fc4be3c5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436806"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168084"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks
 
@@ -226,7 +226,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Prüfpunkte
 
-Ein *Prüfpunkt* ist eine Momentaufnahme des aktuellen Zustands des Workflows, der den aktuellen Wert für Variablen und sämtliche Ausgaben einschließt, die bis zu diesem Punkt generiert wurden. Wenn ein Workflow mit einem Fehler endet oder angehalten wird, wird er bei der nächsten Ausführung am letzten Prüfpunkt gestartet, und nicht am Anfang des Workflows.  Sie können mithilfe der Aktivität **Checkpoint-Workflow** einen Prüfpunkt in einem Workflow setzen.
+Ein *Prüfpunkt* ist eine Momentaufnahme des aktuellen Zustands des Workflows, der den aktuellen Wert für Variablen und sämtliche Ausgaben einschließt, die bis zu diesem Punkt generiert wurden. Wenn ein Workflow mit einem Fehler endet oder angehalten wird, wird er bei der nächsten Ausführung am letzten Prüfpunkt gestartet, und nicht am Anfang des Workflows.  Sie können mithilfe der Aktivität **Checkpoint-Workflow** einen Prüfpunkt in einem Workflow setzen. Azure Automation bietet ein Feature namens [gleichmäßige Auslastung](automation-runbook-execution.md#fair-share), bei dem jedes Runbook, das drei Stunden lang ausgeführt wird, entladen wird, um anderen Runbooks die Ausführung zu ermöglichen. Das entladene Runbook wird schließlich erneut geladen, und dann wird die Ausführung ab dem letzten Prüfpunkt fortgesetzt, der im Runbook gesetzt wurde. Um zu garantieren, dass das Runbook schließlich abgeschlossen wird, müssen Sie Prüfpunkte in Abständen hinzufügen, die kürzer als 3 Stunden Ausführungsdauer sind. Wenn während jeder Ausführung ein neuer Prüfpunkt hinzugefügt wird, und wenn das Runbook nach drei Stunden wegen eines Fehlers entfernt wird, wird das Runbook unendlich fortgesetzt.
 
 Im folgenden Beispielcode führt eine Ausnahme nach „Activity2“ dazu, dass der Workflow beendet wird. Bei der Fortsetzung der Ausführung wird zunächst „Activity2“ ausgeführt, da diese Aktivität unmittelbar auf den zuletzt gesetzten Prüfpunkt folgt.
 

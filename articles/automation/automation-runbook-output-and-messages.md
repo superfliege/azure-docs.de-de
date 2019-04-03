@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431213"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821352"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 Die meisten Azure Automation-Runbooks besitzen eine Form von Ausgabe. Diese Ausgabe ist möglicherweise eine Fehlermeldung für den Benutzer oder ein komplexes Objekt, das Sie mit einem anderen Runbook verwenden möchten. Windows PowerShell bietet [mehrere Datenströme](/powershell/module/microsoft.powershell.core/about/about_redirection) zum Senden der Ausgabe eines Skripts oder Workflows. Azure Automation verwendet jeden dieser Datenströme anders. Sie sollten beim Erstellen eines Runbooks die bewährten Methoden für die Verwendung der einzelnen Datenströme befolgen.
@@ -220,8 +220,8 @@ Im Screenshot oben sehen Sie, dass bei aktivierter ausführlicher Protokollierun
    
    ![Seite „Protokollierung und Ablaufverfolgung“ bei der grafischen Inhaltserstellung](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
-Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Analytics-Arbeitsbereich senden. Log Anaytics bietet folgende Vorteile:
+### <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor-Protokolle
+Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Analytics-Arbeitsbereich senden. Mit Azure Monitor-Protokolle können Sie Folgendes:
 
 * Gewinnen Sie Einblicke in Ihre Automation-Aufträge 
 * Lösen Sie basierend auf Ihrem Runbookauftragsstatus (beispielsweise „Fehler“ oder „Angehalten“) das Senden einer E-Mail oder einer Warnung aus. 
@@ -229,7 +229,7 @@ Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Anal
 * Korrelieren Sie Aufträge über Automation-Konten hinweg 
 * Visualisieren Sie Ihren Auftragsverlauf    
 
-Weitere Informationen zum Konfigurieren der Integration in Log Analytics, um Auftragsdaten zu sammeln, zu korrelieren und entsprechende Maßnahmen zu ergreifen, finden Sie unter [Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)](automation-manage-send-joblogs-log-analytics.md).
+Weitere Informationen zum Konfigurieren der Integration in Azure Monitor-Protokolle, um Auftragsdaten zu sammeln, zu korrelieren und entsprechende Maßnahmen zu ergreifen, finden Sie unter [Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Azure Monitor-Protokolle](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md)

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423407"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594269"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilieren von DSC-Konfigurationen in Azure Automation DSC
 
@@ -284,6 +284,14 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 > [!NOTE]
 > Wenn die Kompilierung abgeschlossen ist, wird möglicherweise eine Fehlermeldung angezeigt: **Das Modul „Microsoft.PowerShell.Management“ wurde nicht importiert, da das Snap-In „Microsoft.PowerShell.Management“ bereits importiert war.** Diese Warnung kann ignoriert werden.
+
+## <a name="partial-configuration"></a>Teilkonfiguration
+
+Azure Automation DSC unterstützt die Verwendung von [Teilkonfigurationen](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+In diesem Szenario ist DSC so konfiguriert, dass mehrere Konfigurationen unabhängig voneinander verwaltet werden können, wobei jede Konfiguration von Azure Automation abgerufen wird.
+Einem Knoten kann aber nur eine Konfiguration mittels Automation-Konto zugewiesen werden.
+Dies bedeutet, dass Sie bei Verwendung von zwei Konfigurationen für einen Knoten zwei Automation-Kontos benötigen.
+Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Importieren von Knotenkonfigurationen
 

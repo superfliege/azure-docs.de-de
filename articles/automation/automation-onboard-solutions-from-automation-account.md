@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0d67571024c9ace3618f7ae6172122ac48b57faa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843622"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
 
@@ -41,14 +41,19 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |Europa, Westen|Europa, Westen|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP- und EastUS-Zuordnungen für Log Analytics-Arbeitsbereiche zu Automation-Konten sind keine exakten Region-zu-Region-Zuordnungen, jedoch handelt es sich um die richtige Zuordnung.
+
+> [!NOTE]
+> Aufgrund der Nachfrage ist eine Region möglicherweise nicht verfügbar, wenn Ihr Automation-Konto oder Log Analytics-Arbeitsbereich erstellt wird.  Wenn dies der Fall ist, stellen Sie sicher, dass Sie eine Region aus der voranstehenden Tabelle verwenden, in der Sie Ressourcen erstellen können.
 
 Die Lösung für Änderungsnachverfolgung und Bestand bietet die Möglichkeit zum Nachverfolgen von [Änderungen](automation-vm-change-tracking.md) und [Bestand](automation-vm-inventory.md) in Ihren virtuellen Computern. In diesem Schritt aktivieren Sie die Lösung auf einem virtuellen Computer.
 
@@ -91,7 +96,7 @@ Wählen Sie einen der gespeicherten Suchvorgänge aus, um die zum Füllen der Gr
 
 Wählen Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** entweder **Bestand** oder **Änderungsnachverfolgung** bzw. unter **UPDATEVERWALTUNG** die Option **Updateverwaltung** aus.
 
-Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM aus der Liste aus. Virtuelle Computer, die nicht aktiviert werden können, sind ausgegraut und können nicht ausgewählt werden. Klicken Sie auf der Seite **Updateverwaltung aktivieren** auf **Aktivieren**. Diese Aktion fügt die ausgewählten virtuellen Computer zum gespeicherten Suchvorgang der Computergruppe für die Lösung hinzu.
+Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM aus der Liste aus. Virtuelle Computer, die nicht aktiviert werden können, sind ausgegraut und können nicht ausgewählt werden. Azure-VMs können in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Klicken Sie auf der Seite **Updateverwaltung aktivieren** auf **Aktivieren**. Diese Aktion fügt die ausgewählten virtuellen Computer zum gespeicherten Suchvorgang der Computergruppe für die Lösung hinzu.
 
 ![Aktivieren von Azure-VMs](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -129,7 +134,7 @@ Die folgenden Lösungen sind vom Log Analytics-Arbeitsbereich abhängig:
 * [Änderungsnachverfolgung](automation-change-tracking.md)
 * [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 
-Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um zu erfahren, welche Schritte zur Entfernung ausgeführt werden müssen.
+Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um zu erfahren, welche Schritte zur Entfernung ausgeführt werden müssen.
 
 Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
 

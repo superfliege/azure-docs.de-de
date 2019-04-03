@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1894fc1823772c27f37829b9b27ec515dcb841b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861059"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -141,7 +141,7 @@ Dieser Fehler kann einen der folgenden Gründe haben:
 
 * Um VMs zu starten und zu beenden, muss das RunAs-Konto für das Automation-Konto über die entsprechenden Berechtigungen auf dem virtuellen Computer verfügen. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom RunAs-Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
 
-* Wenn beim Starten oder Aufheben der Zuordnung des virtuellen Computers Probleme auftreten, kann dieses Verhalten durch ein Problem auf dem virtuellen Computer selbst verursacht worden sein. Einige Beispiele oder mögliche Probleme: Ein Update wird während des Versuchs angewendet, herunterzufahren, ein Dienst reagiert nicht mehr und Sonstiges. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei dem virtuellen Computer anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind.
+* Wenn beim Starten oder Aufheben der Zuordnung des virtuellen Computers Probleme auftreten, kann dieses Verhalten durch ein Problem auf dem virtuellen Computer selbst verursacht worden sein. Einige Beispiele oder mögliche Probleme: Ein Update wird während des Versuchs angewendet, herunterzufahren, ein Dienst reagiert nicht mehr und Sonstiges. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei dem virtuellen Computer anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind. Weitere Informationen zur Problembehandlung Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.md).
 
 ## <a name="custom-runbook"></a>Szenario: Mein benutzerdefiniertes Runbook startet oder beendet meine virtuellen Computer nicht
 

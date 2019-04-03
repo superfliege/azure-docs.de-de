@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024092"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240795"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Data Factory.  
@@ -174,6 +174,33 @@ Ja. Die Ausgabe einer Aktivität kann mit dem `@activity`-Konstrukt in einer nac
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Wie werden NULL-Werte ordnungsgemäß in der Ausgabe einer Aktivität behandelt? 
 NULL-Werte können mithilfe des `@coalesce`-Konstrukts in den Ausdrücken ordnungsgemäß behandelt werden. 
+
+## <a name="mapping-data-flows"></a>Zuordnen von Datenflüssen
+
+### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>Mit welcher ADF-Version werden Datenflüsse erstellt?
+Verwenden Sie zum Erstellen von Datenflüssen die ADF-Version V2.
+  
+### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>Ich war zuvor ein „Private Vorschau“-Kunde und habe Datenflüsse mit der Vorschauversion „ADF V2 mit Datenflüssen“ verwendet.
+Diese Version ist mittlerweile veraltet. Verwenden Sie für Datenflüsse ADF V2.
+  
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>Was hat sich bei Datenflüssen zwischen der privaten Vorschau- und der öffentlichen Vorschauversion geändert?
+Sie müssen nicht mehr Ihre eigenen Databricks-Cluster bereitstellen. ADF kümmert sich um das Erstellen und Löschen von Clustern. Blob- und ADLS-Datasets sind in Datasets der Typen „Text mit Trennzeichen“ und „Parquet“ unterteilt. Sie können weiterhin ADLS und Blob Storage zum Speichern dieser Dateien verwenden. Verwenden Sie für diese Speichermodule den entsprechenden verknüpften Dienst.
+
+### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>Kann ich die privaten Vorschauversionen meine Factorys zu ADF V2 migrieren?
+
+[Ja. Befolgen Sie diese Anweisungen.](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)
+
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>Ich brauche Hilfe bei der Behandlung von Problemen mit meiner Datenflusslogik. Was benötigen Sie?
+
+Wenn Microsoft Hilfe oder eine Problembehandlung bei Datenflüssen bereitstellt, geben Sie den „DSL-Codeplan“ an. Gehen Sie dazu folgendermaßen vor:
+
+* Klicken Sie im Datenfluss-Designer rechts oben auf „Code“. Dadurch wird der bearbeitbare JSON-Code für den Datenfluss angezeigt.
+* Klicken Sie in der Codeansicht rechts oben auf „Plan“. Mit dem Umschalter „Plan“ schalten Sie von JSON auf den schreibgeschützten DSL-Skriptplan um.
+* Kopieren und fügen Sie dieses Skript ein, oder speichern Sie es in einer Textdatei.
+
+### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Wie kann ich mit den anderen 80 Datasettypen in ADF auf Daten zugreifen?
+
+Datenfluss lässt derzeit Azure SQL-Datenbank, Azure SQL Data Warehouse, Dateien des Typs „Text mit Trennzeichen“ aus Blob Storage und ADLS sowie Parquet-Dateien aus Blob Storage und ADLS nativ für „Quelle“ und „Senke“ zu. Verwenden Sie die Kopieraktivität, um Daten von einem der anderen Connectors bereitzustellen, und führen Sie dann eine Datenflussaktivität aus, um Daten nach der Bereitstellung zu transformieren. Beispielsweise wird Ihre Pipeline zuerst in Blob Storage kopiert und anschließend verwendet eine Datenflussaktivität ein Dataset in „Quelle“, um diese Daten zu transformieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Schritt-für-Schritt-Anleitungen zum Erstellen einer Data Factory-Instanz finden Sie in den folgenden Tutorials:

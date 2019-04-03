@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246360"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547638"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Anwendung und Dienstverfügbarkeit von Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -41,8 +41,8 @@ Wenn der Webserver die erste Anforderung erhält, kompiliert er zuerst den Code 
 Anwendungspools für Internetinformationsdienste (IIS) können in regelmäßigen Abständen wiederverwendet werden, um instabile Zustände zu vermeiden, die dazu führen können, dass die Anwendung abstürzt, nicht mehr reagiert oder Arbeitsspeicher verloren geht.
 
 Weitere Informationen zu diesem Problem finden Sie in den folgenden Dokumenten:
-* [Fixing slow initial load for IIS (Beheben des ersten langsamen Ladevorgangs bei IIS)](http://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
-* [IIS 7.5 web application first request after app-pool recycle very slow (Erste Anforderung bei IIS 7.5-Webanwendung nach Wiederverwendung des Anwendungspools sehr langsam)](http://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
+* [Fixing slow initial load for IIS (Beheben des ersten langsamen Ladevorgangs bei IIS)](https://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
+* [IIS 7.5 web application first request after app-pool recycle very slow (Erste Anforderung bei IIS 7.5-Webanwendung nach Wiederverwendung des Anwendungspools sehr langsam)](https://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
 
 Wenn Sie das Standardverhalten von IIS ändern möchten, müssen Sie Startaufgaben verwenden. Manuelle Änderungen an den Webrolleninstanzen gehen nämlich letztendlich verloren.
 
