@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e20599833d3073e4819dbc974d4b2afe962ba18a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984306"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780013"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 
@@ -52,7 +52,7 @@ Um die automatisierte Sicherung v2 verwenden zu können, müssen die folgenden V
 
 - Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
 - Für Systemdatenbanken muss nicht das vollständige Wiederherstellungsmodell verwendet werden. Falls Sie allerdings Protokollsicherungen für das Modell oder für MSDB benötigen, müssen Sie das vollständige Wiederherstellungsmodell verwenden.
-- Zieldatenbanken müssen sich in der SQL Server-Standardinstanz befinden. Die SQL Server-IaaS-Erweiterung unterstützt keine benannten Instanzen.
+- Zieldatenbanken müssen sich entweder in der SQL Server-Standardinstanz oder in einer [ordnungsgemäß installierten](virtual-machines-windows-sql-server-iaas-faq.md#administration) benannten Instanz befinden. 
 
 > [!NOTE]
 > Die automatisierte Sicherung basiert auf der **Erweiterung für den SQL Server-IaaS-Agent**. Aktuelle Katalogimages für virtuelle SQL-Computer fügen diese Erweiterung standardmäßig hinzu. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md).

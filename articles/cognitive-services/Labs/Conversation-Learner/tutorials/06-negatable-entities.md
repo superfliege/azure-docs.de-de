@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fea950e2c13d9b5ce0c3619990961e611edd6626
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 78dc759632c4fc3116a59ea1e5bc0b93200bca45
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168186"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Verwenden von negierbaren Entitäten in einem Conversation Learner-Modell
 
@@ -31,69 +31,68 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
     npm run tutorial-general
 
 ## <a name="details"></a>Details
-Die Eigenschaft „Negierbar“ einer Entität ermöglicht Ihnen das Bezeichnen von normalen (positiven) und negativen Instanzen der Entität, das Vermitteln basierend auf positiven und negativen Modellen sowie das Löschen des Werts einer vorhandenen Entität. Entitäten, bei denen die Eigenschaften „Negierbar“ festgelegt ist, werden in Conversation Learner als „Verneinbare Entitäten“ bezeichnet.
+Die Eigenschaft „Negierbar“ einer Entität ermöglicht es Ihnen, sowohl normale (positive) als auch negative Instanzen der Entität zu kennzeichnen, nach positiven und negativen Modellen zu lehren und den Wert einer vorhandenen Entität zu löschen. Entitäten, bei denen die Eigenschaften „Negierbar“ festgelegt ist, werden in Conversation Learner als „Verneinbare Entitäten“ bezeichnet.
 
 ## <a name="steps"></a>Schritte
 
+Beginnen Sie auf der Homepage in der Webbenutzeroberfläche.
+
 ### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neues Modell“.
-2. Geben Sie im Feld „Name“ die Zeichenfolge „NegatableEntity“, und drücken Sie die EINGABETASTE.
-3. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Wählen Sie **Neues Modell** aus.
+2. Geben Sie **NegatableEntity** als **Name** ein.
+3. Klicken Sie auf **Erstellen**.
 
 ### <a name="entity-creation"></a>Erstellung von Entitäten
 
-1. Klicken Sie im linken Bereich auf „Entitäten“ und dann auf die Schaltfläche „Neue Entität“.
-2. Wählen Sie unter „Entitätstyp“ die Option „Benutzerdefiniert“ aus.
-3. Geben Sie als Entitätsname „name“ (Name) ein.
-4. Aktivieren Sie das Kontrollkästchen „Negierbar".
-    - Das Aktvieren dieser Eigenschaft ermöglicht es dem Benutzer, einen Entitätswert bereitzustellen oder etwas zu sagen, das *kein* Entitätswert ist. In letzterem Fall ist das Ergebnis die Löschung des entsprechenden Entitätswerts.
-5. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Klicken Sie im linken Bereich auf **Entitäten** und dann auf **Neue Entität**.
+2. Wählen Sie die Option **Benutzerdefiniert trainiert** als **Entitätstyp** aus.
+3. Geben Sie im Feld **Entitätsname** die Zeichenfolge **name** ein.
+4. Aktivieren Sie **Negierbar**, damit Benutzer einen Entitätswert angeben oder angeben können, dass etwas *kein* Entitätswert ist, wodurch der entsprechen de Entitätswert gelöscht wird.
+5. Klicken Sie auf **Erstellen**.
 
-![](../media/tutorial5_entities.PNG)
+![](../media/T06_entity_create.png)
 
 ### <a name="create-the-first-action"></a>Erstellen der ersten Aktion
 
-1. Klicken Sie im linken Bereich auf „Aktionen“ und anschließend auf die Schaltfläche „Neue Aktion“.
-2. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) die Zeichenfolge „I don't know your name.“ (Ich kenne Ihren Namen nicht.) ein.
-3. Geben Sie im Feld „Disqualifying Entities“ (Disqualifizierende Entitäten) die Zeichenfolge „name“ (Name) ein.
-4. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Klicken Sie im linken Bereich auf **Aktionen** und dann auf **Neue Aktion**.
+2. Geben Sie **I don't know your name** (Ich kenne Ihren Namen nicht) als **Antwort des Bots** ein.
+3. Geben Sie die **name** für **Disqualifizierende Entitäten** ein.
+4. Klicken Sie auf **Erstellen**.
+
+![](../media/T06_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>Erstellen der zweiten Aktion
 
-1. Klicken Sie im linken Bereich auf „Aktionen“ und anschließend auf die Schaltfläche „Neue Aktion“.
-2. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) die Zeichenfolge „I know your name. It is $name.“ (Ich kenne Ihren Namen. Er lautet $name) ein.
-3. Klicken Sie auf die Schaltfläche „Erstellen“.
+1. Klicken Sie im linken Bereich auf **Aktionen** und dann auf **Neue Aktion**.
+2. Geben Sie **I know your name. It is $name.** (Ich kenne Ihren Namen. Er lautet $name) als **Antwort des Bots** ein.
+3. Klicken Sie auf **Erstellen**.
 
 > [!NOTE]
-> Die Entität „Name“ wurde durch einen Verweis in der Antwort automatisch den erforderlichen Entitäten hinzugefügt.
+> Die Entität **name** wurde durch einen Verweis in der Antwortäußerung automatisch den **erforderlichen Entitäten** hinzugefügt.
 
 Jetzt sind zwei Aktionen vorhanden.
 
-![](../media/tutorial5_actions.PNG)
+![](../media/T06_action_create_2.png)
 
 ### <a name="train-the-model"></a>Trainieren des Modells
 
-1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf die Schaltfläche „New Train Dialog“ (Neuer Trainingsdialog).
-2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „hello“ (Hallo) ein.
-3. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
-4. Wählen Sie die Antwort „I don't know your name.“ (Ich kenne Ihren Namen nicht.) aus.
-    - Das Perzentil beträgt 100 Prozent (als einzige gültige Aktion auf der Grundlage der Einschränkungen).
-5. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „My name is Frank“ (Mein Name ist Frank) ein.
-6. Wählen Sie „Frank“ aus, und wählen Sie die Bezeichnung „+name“ aus.
-    - Es gibt zwei Instanzen die Entität „Name“: „+name“ und „-name“.  (+) Plus fügt den Wert hinzu oder überschreibt ihn. (-) Minus entfernt den Wert.
-7. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
-    - Die Entität „Name“ ist im Speicher des Modells jetzt als „Frank“ definiert, daher ist die Aktion „I know your name. It is $name“ (Ich kenne Ihren Namen. Er lautet $name) verfügbar.
-8. Wählen Sie die Antwort „I know your name. It is $name.“ (Ich kenne Ihren Namen. Er lautet $name) aus.
-9. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „My name is not Frank“ (Mein Name ist nicht Frank) ein.
-10. Wählen Sie „Frank“ aus, und wählen Sie die Bezeichnung „-name“ aus.
-    - Wir wählen „-name“, um den aktuellen Wert der Entität zu löschen.
-11. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
-12. Wählen Sie die Antwort „I don't know your name.“ (Ich kenne Ihren Namen nicht.) aus.
-13. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „My name is Susan“ (Mein Name ist Susan) ein.
-14. Wählen Sie „Susan“ aus, und wählen Sie die Bezeichnung „+name“ aus.
+1. Wählen Sie im linken Bereich **Train Dialogs** (Trainingsdialogfelder) aus, und klicken Sie dann auf **New Train Dialog** (Neues Trainingsdialogfeld).
+2. Geben Sie im linken Chatbereich **hello** (Hallo) als Äußerung des Benutzers ein.
+3. Wählen Sie **Score Actions** (Aktionen bewerten) aus.
+4. Wählen Sie **I don't know your name** (Ich kenne Ihren Namen nicht) in der Liste „Aktionen“ aus. Das Perzentil beträgt 100 Prozent (als einzige gültige Aktion auf der Grundlage der Einschränkungen).
+5. Geben Sie im linken Chatbereich **My name ist Frank** (Mein Name ist Frank) als Äußerung des Benutzers ein.
+6. Markieren Sie **Frank**, und wählen Sie dann **+name** aus. Negierbare Entitäten haben zwei Instanzen: (+) Plus fügt den Wert hinzu oder überschreibt ihn, (-) Minus entfernt den Wert.
+7. Wählen Sie **Score Actions** (Aktionen bewerten) aus. Die Entität **name** ist im Speicher des Modells jetzt als **Frank** definiert, daher ist die Aktion **I know your name. It is $name** (Ich kenne Ihren Namen. Er lautet $name) verfügbar.
+8. Wählen Sie **Ich kenne Ihren Namen. It is $name.** (Ich kenne Ihren Namen. Er lautet $name) in der Liste „Aktionen“ aus.
+9. Geben Sie **My name is not Frank.** (Mein Name ist nicht Frank) im linken Chatbereich als Äußerung des Benutzers ein.
+10. Markieren Sie **Frank**, und wählen Sie dann **-name** zum Löschen des Werts aus der Entität **name** aus.
+11. Wählen Sie **Score Actions** (Aktionen bewerten) aus.
+12. Wählen Sie **I don't know your name** (Ich kenne Ihren Namen nicht) in der Liste „Aktionen“ aus.
+13. Geben Sie **Mein Name ist Susan.** im linken Chatbereich als dritte Äußerung des Benutzers ein.
+14. Markieren Sie **Susan** und dann **+name**. 
 
-![](../media/tutorial5_dialogs.PNG)
+![](../media/T06_training.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

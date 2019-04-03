@@ -1,49 +1,77 @@
 ---
-title: Informationen zur Sprachübersetzung – Speech Services
+title: Sprachübersetzung mit den Azure-Sprachdiensten
 titlesuffix: Azure Cognitive Services
-description: Mit der Speech Services-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
+description: Mit den Sprachdiensten können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e77bfcdf2e037c7f6221b6761df708dac01924dd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890469"
 ---
-# <a name="about-the-speech-translation-api"></a>Informationen zur Sprachübersetzungs-API
+# <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 
-Mit der Speech Services-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
+Die Sprachübersetzung aus den Azure-Sprachdiensten ermöglicht eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
 
-Mit der Sprachübersetzungs-API streamen Clientanwendungen Spracheingaben an den Dienst und empfangen einen Stream mit Ergebnissen. Diese Ergebnisse umfassen den erkannten Text in der Quellsprache und die zugehörige Übersetzung in der Zielsprache. Vorläufige Übersetzungen können so lange bereitgestellt werden, bis eine Äußerung vollständig ist. Zu diesem Zeitpunkt wird dann eine finale Übersetzung zur Verfügung gestellt.
+Der Übersetzungsengine von Microsoft liegen zwei unterschiedliche Ansätze zugrunde: statistische maschinelle Übersetzung (Statistical Machine Translation, SMT) und neuronale maschinelle Übersetzung (Neural Machine Translation, NMT). SMT verwendet erweiterte statistische Analysen, um die bestmöglichen Übersetzungen im Kontext einiger weniger Wörter zu schätzen. Mit NMT werden neuronale Netze verwendet, um genauere, natürlich klingende Übersetzungen bereitzustellen, indem der gesamte Kontext von Sätzen zur Übersetzung von Wörtern genutzt wird.
 
-Optional kann eine synthetisierte Audioversion der finalen Übersetzung vorbereitet werden, wodurch eine korrekte Speech-to-Speech-Übersetzung ermöglicht wird.
+Heute verwendet Microsoft NMT für die Übersetzung in die gängigsten Sprachen. Alle [für die Speech-to-Speech-Übersetzung verfügbaren Sprachen](language-support.md#speech-translation) werden von NMT unterstützt. Bei der Speech-to-Speech-Übersetzung kann je nach Sprachkombination SMT oder NMT verwendet werden. Wenn die Zielsprache von NMT unterstützt wird, wird die gesamte Übersetzung über NMT abgewickelt. Wenn die Zielsprache nicht von NMT unterstützt wird, wird für die Übersetzung eine Kombination aus NMT und SMT mit Englisch als „Pivot“ zwischen den beiden Sprachen verwendet.
 
-Die Sprachübersetzungs-API verwendet für die Bereitstellung eines Vollduplex-Kommunikationskanals zwischen dem Client und dem Server ein WebSocket-Protokoll. Sie müssen sich jedoch nicht um WebSockets kümmern; das übernimmt das Sprach-SDK für Sie.
+## <a name="core-features"></a>Wichtige Funktionen
 
-Die Sprachübersetzungs-API verwendet die gleichen Technologien, die auch für verschiedene Microsoft-Produkte und -Dienste zum Einsatz kommen. Dieser Dienst wird bereits weltweit von tausenden von Unternehmen in ihren Anwendungen und Workflows verwendet.
+In der folgenden Tabelle sind die Funktionen des Speech SDK und der REST-APIs aufgelistet:
 
-## <a name="about-the-technology"></a>Informationen zur Technologie
+| Anwendungsfall | SDK | REST |
+|----------|-----|------|
+| Sprache-zu-Text-Übersetzung mit Erkennungsergebnissen. | Ja | Nein  |
+| Sprache-zu-Sprache-Übersetzung. | Ja | Nein  |
+| Zwischenergebnisse der Spracherkennung und Übersetzung. | Ja | Nein  |
 
-Der Übersetzungsengine von Microsoft liegen zwei unterschiedliche Ansätze zugrunde: statistische maschinelle Übersetzung (Statistical Machine Translation, SMT) und neuronale maschinelle Übersetzung (Neural Machine Translation, NMT). Bei dem zweiten Ansatz– ein KI-Ansatz, bei dem neuronale Netzwerke verwendet werden – handelt es sich um den moderneren Ansatz im Bereich der maschinellen Übersetzungen. NMT bietet bessere Übersetzungen: Sie sind nicht nur genauer, sondern klingen auch flüssiger und natürlicher. Der Hauptgrund für diesen Textfluss besteht darin, dass NMT bei der Übersetzung von Wörtern den gesamten Kontext eines Satzes berücksichtigt.
+## <a name="get-started-with-speech-translation"></a>Erste Schritte mit der Sprachübersetzung
 
-Heute ist Microsoft für die am häufigsten verwendeten Sprachen zu NMT migriert und verwendet SMT nur für weniger häufig verwendete Sprachen. Alle [für die Speech-to-Speech-Übersetzung verfügbaren Sprachen](language-support.md#speech-translation) werden von NMT unterstützt. Bei der Speech-to-Speech-Übersetzung kann je nach Sprachkombination SMT oder NMT verwendet werden. Wenn die Zielsprache von NMT unterstützt wird, wird die gesamte Übersetzung von NMT unterstützt. Wenn die Zielsprache nicht von NMT unterstützt wird, ist die Übersetzung ein Hybrid von NMT und SMT und verwendet Englisch als „Pivot“ zwischen den beiden Sprachen.
+Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können. In dieser Tabelle werden Schnellstarts Sprachübersetzungen nach Sprache aufgelistet.
 
-Die Unterschiede zwischen Modellen sind für das Übersetzungsmodul intern wahrnehmbar. Den Benutzern fällt nur die verbesserte Übersetzungsqualität auf, insbesondere bei Chinesisch, Japanisch und Arabisch.
+| Schnellstart | Plattform | API-Referenz |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET Framework](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](quickstart-translate-speech-uwp.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
+| [Java](quickstart-translate-speech-java-jre.md) | Windows | [Browse](https://aka.ms/csspeech/javaref) |
 
-> [!NOTE]
-> Möchten Sie mehr über die Technologie der Übersetzungsengine von Microsoft erfahren? Weitere Informationen finden Sie unter [Maschinelle Übersetzung](https://www.microsoft.com/en-us/translator/mt.aspx).
+## <a name="sample-code"></a>Beispielcode
+
+Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung/Übersetzung oder die Verwendung benutzerdefinierter Modelle behandelt.
+
+* [Beispiele für Spracherkennung und Übersetzung (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+
+## <a name="migration-guides"></a>Migrationsleitfäden
+
+> [!WARNING]
+> Die Sprachübersetzung wird am 15. Oktober 2019 eingestellt.
+
+Wenn Ihre Anwendungen, Tools oder Produkte die Sprachübersetzung verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zu den Sprachdiensten.
+
+* [Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst](how-to-migrate-from-translator-speech-api.md)
+
+## <a name="reference-docs"></a>Referenz
+
+* [Speech SDK](speech-sdk-reference.md)
+* [Speech-Geräte-SDK](speech-devices-sdk.md)
+* [REST-API: Spracherkennung](rest-speech-to-text.md)
+* [REST-API: Sprachsynthese](rest-text-to-speech.md)
+* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Erfahren Sie, wie Sprache in C# übersetzt wird](how-to-translate-speech-csharp.md)
-* [Erfahren Sie, wie Sprache in C++ übersetzt wird](how-to-translate-speech-cpp.md)
-* [Erfahren Sie, wie Sprache in Java übersetzt wird](how-to-translate-speech-java.md)
+* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* [Abrufen des Speech SDK](speech-sdk.md)

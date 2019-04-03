@@ -3,7 +3,7 @@ title: SQL Server-Failoverclusterinstanz – Azure Virtual Machines | Microsoft-
 description: In diesem Artikel wird beschrieben, wie Sie auf Azure Virtual Machines eine SQL Server-Failoverclusterinstanz erstellen.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328551"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486317"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -79,7 +79,7 @@ Ein wichtiger Unterschied besteht darin, dass wir in einem Azure IaaS-VM-Gastfai
 Außerdem sollten Sie über Grundlagenkenntnisse in Bezug auf die folgende Technologie verfügen:
 
 - [Zusammengeführte Lösung unter Verwendung von „Direkte Speicherplätze“ in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
-- [Azure-Ressourcengruppen](../../../azure-resource-manager/resource-group-portal.md)
+- [Azure-Ressourcengruppen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Derzeit wird die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht für SQL Server-Failoverclusterinstanzen (FCI) in Azure unterstützt. Sie sollten die Erweiterung auf virtuellen Computern deinstallieren, die an den FCI beteiligt sind. Diese Erweiterung unterstützt Features wie automatisierte Sicherung und automatisiertes Patchen sowie einige Portalfeatures für SQL. Diese Features sind nach der Deinstallation des Agents nicht für SQL-VMs einsetzbar.
@@ -101,7 +101,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
 ## <a name="step-1-create-virtual-machines"></a>Schritt 1: Erstellen von virtuellen Computern
 
-1. Melden Sie sich mit den Daten Ihres Abonnements am [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich mit den Daten Ihres Abonnements am [Azure-Portal](https://portal.azure.com) an.
 
 1. [Erstellen Sie eine Azure-Verfügbarkeitsgruppe](../tutorial-availability-sets.md).
 
@@ -222,7 +222,7 @@ Im nächsten Schritt konfigurieren Sie den Failovercluster mit S2D. In diesem Sc
 
    Führen Sie zum Installieren des Failoverclusteringfeatures mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus.
 
-   ```PowerShell
+   ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
@@ -253,7 +253,7 @@ Mit dem **Konfigurationsüberprüfungs-Assistenten** werden die Validierungstest
 
 Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus.
 
-   ```PowerShell
+   ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
@@ -270,7 +270,7 @@ Für das Erstellen des Failoverclusters benötigen Sie Folgendes:
 
 Mit dem folgenden PowerShell-Code wird ein Failovercluster erstellt. Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem Azure VNET:
 
-```PowerShell
+```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
@@ -294,7 +294,7 @@ Die Datenträger für S2D müssen leer sein und dürfen keine Partitionen oder a
 
    Mit dem folgenden PowerShell-Code wird „Direkte Speicherplätze“ aktiviert.  
 
-   ```PowerShell
+   ```powershell
    Enable-ClusterS2D
    ```
 
@@ -304,7 +304,7 @@ Die Datenträger für S2D müssen leer sein und dürfen keine Partitionen oder a
 
    Mit einer S2D-Funktion können Sie automatisch einen Speicherpool erstellen lassen, wenn Sie die Funktion aktivieren. Sie sind jetzt für das Erstellen eines Volumes bereit. Mit dem PowerShell-Cmdlet `New-Volume` wird der Prozess der Volumeerstellung automatisiert, z.B. das Formatieren, Hinzufügen zum Cluster und Erstellen eines freigegebenen Clustervolumes (CSV). Im folgenden Beispiel wird ein CSV mit 800 GB erstellt.
 
-   ```PowerShell
+   ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
@@ -431,7 +431,7 @@ Legen Sie den Parameter für den Clustertestport in PowerShell fest.
 
 Aktualisieren Sie die Variablen im folgenden Skript mit Werten aus Ihrer Umgebung, um den Parameter für den Clustertestport festzulegen. Entfernen Sie die spitzen Klammern `<>` aus dem Skript. 
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
    $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
    $ILBIP = "<n.n.n.n>" 
@@ -457,7 +457,7 @@ Legen Sie die Werte für Ihre Umgebung im vorherigen Skript fest. Die Werte werd
 
 Nach dem Festlegen des Clustertests werden alle Clusterparameter in PowerShell angezeigt. Führen Sie das folgende Skript aus:
 
-   ```PowerShell
+   ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 

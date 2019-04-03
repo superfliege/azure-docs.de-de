@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224053"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259940"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Schnellstart: Verwenden der REST-API der Bing-Spracheingabe-API
 
@@ -32,7 +33,7 @@ Die Sprach-API ist Teil von Cognitive Services (ehemals Project Oxford). Über d
 > [!IMPORTANT]
 >* Rufen Sie einen Abonnementschlüssel ab. Für den Zugriff auf die REST-API benötigen Sie einen [Abonnementschlüssel](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Verwenden Sie Ihren Abonnementschlüssel. Ersetzen Sie „YOUR_SUBSCRIPTION_KEY“ in den folgenden REST-Beispielen durch Ihren eigenen Abonnementschlüssel. 
+>* Verwenden Sie Ihren Abonnementschlüssel. Ersetzen Sie „YOUR_SUBSCRIPTION_KEY“ in den folgenden REST-Beispielen durch Ihren eigenen Abonnementschlüssel.
 >
 >* Eine Anleitung zum Abrufen eines Abonnementschlüssels finden Sie auf der Seite [Authentifizierung](../how-to/how-to-authentication.md).
 
@@ -65,9 +66,9 @@ Die folgende Tabelle enthält einige Beispiele für Dienst-URIs:
 
 | Erkennungsmodus  | Sprache | Ausgabeformat | Dienst-URI |
 |---|---|---|---|
-| `interactive` | pt-BR | Standard | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | Detailliert |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
-| `dictation` | fr-FR | Einfach | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
+| `interactive` | pt-BR | Standard | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| `conversation` | en-US | Detailliert | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `dictation` | fr-FR | Einfach | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
 > Der Dienst-URI ist nur erforderlich, wenn Ihre Anwendung REST-APIs verwendet, um den Spracherkennungsdienst aufzurufen. Bei Verwendung einer der [Clientbibliotheken](GetStartedClientLibraries.md) müssen Sie in der Regel nicht wissen, welcher URI verwendet wird. Die Clientbibliotheken verwenden möglicherweise unterschiedliche Dienst-URIs, die jeweils nur für eine bestimmte Clientbibliothek relevant sind. Weitere Informationen finden Sie in der Clientbibliothek Ihrer Wahl.

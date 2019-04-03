@@ -8,20 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
-ms.author: tulasim88
-ms.openlocfilehash: 1294b714c217178d53ed69cc886cd89f23620274
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/21/2019
+ms.author: tulasim
+ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859486"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958047"
 ---
-# <a name="using-metadata-and-the-generateanswer-api"></a>Verwenden von Metadaten und der GenerateAnswer-API
+# <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten
+
+Um die vorhergesagte Antwort auf die Frage eines Benutzers zu erhalten, verwenden Sie die GenerateAnswer-API. Wenn Sie eine Wissensdatenbank veröffentlichen, werden diese Informationen zur Verwendung dieser API auf der Veröffentlichungsseite angezeigt. Sie können die API auch so konfigurieren, dass sie Antworten anhand von Metadatentags filtert und die Wissensdatenbank vom Endpunkt aus mit dem Testabfrage-Zeichenfolgenparameter testet.
 
 QnA Maker ermöglicht das Hinzufügen von Metadaten in Form von Schlüssel-Wert-Paaren zu Ihren Frage-Antwort-Sätzen. Mit diesen Informationen können Sie Ergebnisse nach Benutzerabfragen filtern und zusätzliche Informationen speichern, die in Folgekonversationen verwendet werden können. Weitere Informationen finden Sie unter [Knowledge Base](../Concepts/knowledge-base.md).
 
-## <a name="qna-entity"></a>QnA-Entität
+<a name="qna-entity"></a>
+
+## <a name="storing-questions-and-answers-with-a-qna-entity"></a>Speichern von Fragen und Antworten mit einer QnA-Entität
 
 Zunächst ist es wichtig zu verstehen, wie QnA Maker die Frage-Antwort-Daten speichert. Die folgende Abbildung zeigt eine QnA-Entität:
 
@@ -29,95 +33,124 @@ Zunächst ist es wichtig zu verstehen, wie QnA Maker die Frage-Antwort-Daten spe
 
 Jede QnA-Entität hat eine eindeutige und dauerhafte ID. Die ID kann verwendet werden, um bestimmte QnA-Entitäten zu aktualisieren.
 
-## <a name="generateanswer-api"></a>GenerateAnswer-API
+<a name="generateanswer-api"></a>
+
+## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Abrufen von Antwortvorhersagen mit der GenerateAnswer-API
 
 Sie verwenden die GenerateAnswer-API in Ihrem Bot oder Ihrer Anwendung, um die Knowledge Base zu einer Benutzerfrage abzufragen und die beste Übereinstimmung aus den Frage-Antwort-Sätzen zu erhalten.
 
-### <a name="generateanswer-endpoint"></a>GenerateAnswer-Endpunkt
+<a name="generateanswer-endpoint"></a>
+
+## <a name="publish-to-get-generateanswer-endpoint"></a>Veröffentlichen am GenerateAnswer-Endpunkt 
 
 Nachdem Sie Ihre Knowledge Base im [QnA Maker-Portal](https://www.qnamaker.ai) oder mithilfe der [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) veröffentlicht haben, können Sie die Details von Ihrem GenerateAnswer-Endpunkt abrufen.
 
 So rufen Sie Endpunktdetails ab
 1. Melden Sie sich unter [https://www.qnamaker.ai](https://www.qnamaker.ai) an.
-2. Klicken Sie in **My knowledge bases** (Meine Knowledge Bases) für Ihre Knowledge Base auf **Code anzeigen**.
-![My Knowledge Bases (Meine Knowledge Bases)](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
-3. Rufen Sie Ihre GenerateAnswer-Endpunktdetails ab.
+1. Klicken Sie in **My knowledge bases** (Meine Knowledge Bases) für Ihre Knowledge Base auf **Code anzeigen**.
+    ![My Knowledge Bases (Meine Knowledge Bases)](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+1. Rufen Sie Ihre GenerateAnswer-Endpunktdetails ab.
 
-![Endpunktdetails](../media/qnamaker-how-to-metadata-usage/view-code.png)
+    ![Endpunktdetails](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
 Sie können Ihre Endpunktdetails auch auf der Registerkarte **Einstellungen** Ihrer Knowledge Base abrufen.
 
-### <a name="generateanswer-request"></a>GenerateAnswer-Anforderung
+<a name="generateanswer-request"></a>
+
+## <a name="generateanswer-request-configuration"></a>GenerateAnswer-Anforderungskonfiguration
 
 Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der zeigt, wie GenerateAnswer aufgerufen wird, finden Sie unter [Schnellstarts](../quickstarts/csharp.md).
 
-- **Anforderungs-URL:** https://{QnA Maker-Endpunkt}/knowledgebases/{Knowledge Base-ID}/generateAnswer
+Die **Anforderungs-URL** weist das folgende Format auf: 
 
-- **Anforderungsparameter:** 
-    - **Knowledge base ID** (Zeichenfolge): GUID der Knowledge Base
-    - **QnAMaker endpoint** (Zeichenfolge): Hostname des Endpunkts, der in Ihrem Azure-Abonnement bereitgestellt wurde
-- **Anforderungsheader**
-    - **Content-Type** (Zeichenfolge): Medientyp des an die API gesendeten Texts
-    - **Authorization** (Zeichenfolge): Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
-- **Anforderungstext**
-    - **question** (Zeichenfolge): Benutzerfrage, nach der die Knowledge Base abgefragt werden soll
-    - **top** (optional, Integer): Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.
-    - **userId** (optional, Zeichenfolge): Eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.
-    - **strictFilters** (optional, Zeichenfolge): Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben. Weitere Informationen finden Sie unten.
-    ```json
+```
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+```
+
+|HTTP-Anforderungseigenschaft|NAME|Type|Zweck|
+|--|--|--|--|
+|URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
+|URL-Routenparameter|QnAMaker-Endpunkthost|Zeichenfolge|Hostname des Endpunkts, der in Ihrem Azure-Abonnement bereitgestellt wurde Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. |
+|Header|Content-Typ|Zeichenfolge|Medientyp des an die API gesendeten Texts Der Standardwert ist ``.|
+|Header|Autorisierung|Zeichenfolge|Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Posttext|JSON-Objekt|JSON|Die Frage mit Einstellungen|
+|Abfragezeichenfolgenparameter (optional)|`isTest`|boolean|Wenn auf TRUE festgelegt, werden Ergebnisse aus dem `testkb`-Suchindex anstatt aus dem veröffentlichten Index zurückgegeben.|
+
+Der JSON-Text verfügt über mehrere Einstellungen:
+
+|JSON-Texteigenschaft|Erforderlich|Type|Zweck|
+|--|--|--|--|
+|`question`|required|Zeichenfolge|Eine Benutzerfrage, die an die Wissensdatenbank gesendet werden soll.|
+|`top`|optional|integer|Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.|
+|`userId`|optional|Zeichenfolge|Eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.|
+|`strictFilters`|optional|Zeichenfolge|Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben.|
+
+Ein JSON-Beispieltext sieht folgendermaßen aus:
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "strictFilters": [
     {
-        "question": "qna maker and luis",
-        "top": 6,
-        "strictFilters": [
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+<a name="generateanswer-response"></a>
+
+## <a name="generateanswer-response-properties"></a>GenerateAnswer-Antworteigenschaften
+
+Eine erfolgreiche Antwort gibt den Status 200 und eine JSON-Antwort zurück. 
+
+|Answers-Eigenschaft (sortiert nach Bewertung)|Zweck|
+|--|--|
+|Ergebnis Ihrer App|Rangfolgewert zwischen 0 und 100|
+|id|Die der Antwort zugewiesene eindeutige ID|
+|Fragen|Fragen des Benutzers|
+|answer (Annehmen)|Die Antwort auf die Frage|
+|Quelle|Name der Quelle, aus der die Antwort extrahiert oder in der Wissensdatenbank gespeichert wurde|
+|metadata|Die der Antwort zugeordneten Metadaten|
+|metadata.name|Metadatenname (Zeichenfolge, maximale Länge: 100, erforderlich)|
+|metadata.value: Metadatenwert (Zeichenfolge, maximale Länge: 100, erforderlich)|
+
+
+```json
+{
+    "answers": [
         {
-            "name": "category",
-            "value": "api"
-        }],
-        "userId": "sd53lsY="
-    }
-    ```
+            "score": 28.54820341616869,
+            "Id": 20,
+            "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
+            "source": "Custom Editorial",
+            "questions": [
+                "How can I integrate LUIS with QnA Maker?"
+            ],
+            "metadata": [
+                {
+                    "name": "category",
+                    "value": "api"
+                }
+            ]
+        }
+    ]
+}
+```
 
-### <a name="generateanswer-response"></a>GenerateAnswer-Antwort
+<a name="metadata-example"></a>
 
-- **Antwort 200:** Ein erfolgreicher Aufruf gibt das Ergebnis der Frage zurück. Die Antwort enthält die folgenden Felder:
-    - **answers:** Liste von Antworten auf die Benutzerfrage, sortiert in absteigender Rangfolge
-        - **score:** Rangfolgewert zwischen 0 und 100
-        - **questions:** Fragen des Benutzers
-        - **answer:** Die Antwort auf die Frage
-        - **source:** Name der Quelle, aus der die Antwort extrahiert oder in der Wissensdatenbank gespeichert wurde
-        - **metadata:** Die der Antwort zugeordneten Metadaten
-            - name: Metadatenname (Zeichenfolge, maximale Länge: 100, erforderlich)
-            - value: Metadatenwert (Zeichenfolge, maximale Länge: 100, erforderlich)
-        - **Id:** Die der Antwort zugewiesene eindeutige ID
-    ```json
-    {
-        "answers": [
-            {
-                "score": 28.54820341616869,
-                "Id": 20,
-                "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
-                "source": "Custom Editorial",
-                "questions": [
-                    "How can I integrate LUIS with QnA Maker?"
-                ],
-                "metadata": [
-                    {
-                        "name": "category",
-                        "value": "api"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>Mithilfe von Metadaten können Sie Antworten nach benutzerdefinierten Metadatentags filtern.
 
-## <a name="metadata-example"></a>Metadatenbeispiel
-
-Sehen Sie sich die folgenden FAQ-Daten an. Fügen Sie Ihrer Wissensdatenbank Metadaten hinzu, indem Sie auf das Metadatensymbol klicken.
+Durch das Hinzufügen von Metadaten können Sie die Antworten nach diesen Metadatentags filtern. Sehen Sie sich die folgenden FAQ-Daten an. Fügen Sie Ihrer Wissensdatenbank Metadaten hinzu, indem Sie auf das Metadatensymbol klicken.
 
 ![Hinzufügen von Metadaten](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtern von Ergebnissen mit „strictFilters“ nach Metadatentags
+<a name="filter-results-with-strictfilters-for-metadata-tags"></a>
+
+## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtern von Ergebnissen mit „strictFilters“ nach Metadatentags
 
 Betrachten Sie die Benutzerfrage „When does this hotel close?“ (Wann schließt dieses Hotel?) mit dem Restaurant „Paradise“ als implizierter Absicht.
 
@@ -135,8 +168,11 @@ Da nur Ergebnisse für das Restaurant „Paradise“ erforderlich sind, können 
 }
 ```
 
-### <a name="keep-context"></a>Beibehalten des Kontexts
-Die Antwort auf den GenerateAnswer-Aufruf enthält die entsprechenden Metadateninformationen des übereinstimmenden Frage-Antwort-Satzes.
+<name="keep-context"></a>
+
+## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Verwenden von Frage und Antwortergebnis zum Beibehalten des Unterhaltungskontexts
+
+Die Antwort auf den GenerateAnswer-Aufruf enthält die entsprechenden Metadateninformationen des übereinstimmenden Frage-Antwort-Satzes. Diese Informationen können in Ihrer Clientanwendung verwendet werden, um den Kontext der vorherigen Unterhaltung für die Verwendung in späteren Unterhaltungen zu speichern. 
 
 ```json
 {
@@ -163,8 +199,6 @@ Die Antwort auf den GenerateAnswer-Aufruf enthält die entsprechenden Metadateni
     ]
 }
 ```
-
-Diese Informationen können verwendet werden, um den Kontext der vorherigen Konversation für die Verwendung in späteren Konversationen aufzuzeichnen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

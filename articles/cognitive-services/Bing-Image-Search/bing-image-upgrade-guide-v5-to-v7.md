@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: b3675821cd5565df409fac209b6763845460df1c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 123c5556dc76b35cf4a6b4b34e0c3e2fe437cebe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163375"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996458"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die Bing-Bildersuche-API v7
 
@@ -26,7 +26,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 
 ### <a name="endpoints"></a>Endpunkte
 
-- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: „https://api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search“.
+- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fehlerantwortobjekte und Fehlercodes
 

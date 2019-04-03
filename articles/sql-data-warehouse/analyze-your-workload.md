@@ -2,111 +2,31 @@
 title: Analysieren Ihrer Workload – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
-ms.date: 04/17/2018
-ms.author: kevin
-ms.reviewer: igorstan
-ms.openlocfilehash: 9025eccabcbf7052131fee741a1e1f6a2139366b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.subservice: workload management
+ms.date: 03/13/2019
+ms.author: rortloff
+ms.reviewer: jrasnick
+ms.openlocfilehash: 7b5ca738ef71e25dfe5e71a1983d701bb8868fe5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476756"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896805"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analysieren Ihrer Workload in Azure SQL Data Warehouse
-Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
 
-## <a name="workload-groups"></a>Workloadgruppen 
-SQL Data Warehouse implementiert Ressourcenklassen anhand von Workloadgruppen. Es gibt insgesamt acht Workloadgruppen, die das Verhalten der Ressourcenklassen über die verschiedenen DWU-Größen hinweg steuern. In jeder DWU verwendet SQL Data Warehouse nur vier der acht Workloadgruppen. Diese Vorgehensweise ergibt Sinn, da jede Arbeitsauslastungsgruppe einer der vier Ressourcenklassen „smallrc“, „mediumrc“, „largerc“ oder „xlargerc“ zugewiesen ist. Sie müssen diese Workloadgruppen verstehen, da für einige dieser Workloadgruppen eine höhere *Wichtigkeit*festgelegt ist. Die Wichtigkeit wird für die CPU-Zeitplanung verwendet. Abfragen, die mit hoher Wichtigkeit ausgeführt werden, erhalten dreimal mehr CPU-Zyklen als Abfragen, die mit mittlerer Wichtigkeit ausgeführt werden. Daher wird anhand von Parallelitätsslotzuordnungen auch die CPU-Priorität bestimmt. Wenn für eine Abfrage 16 oder mehr Slots verwendet werden, ist die Wichtigkeit hoch.
+Techniken zum Analysieren Ihrer Workload in Azure SQL Data Warehouse.
 
-In der folgenden Tabelle sind die Wichtigkeitszuordnungen für die einzelnen Workloadgruppen angegeben.
+## <a name="resource-classes"></a>Ressourcenklassen
 
-### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Zuordnungen von Workloadgruppen zu Parallelitätsslots und Wichtigkeit
-
-| Workloadgruppen | Zuordnung von Parallelitätsslots | MB/Verteilung (Elastizität) | MB/Verteilung (Compute) | Wichtigkeitszuordnung |
-|:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
-| SloDWGroupC00   | 1                        |    100                         | 250                         | Mittel             |
-| SloDWGroupC01   | 2                        |    200                         | 500                         | Mittel             |
-| SloDWGroupC02   | 4                        |    400                         | 1000                        | Mittel             |
-| SloDWGroupC03   | 8                        |    800                         | 2000                        | Mittel             |
-| SloDWGroupC04   | 16                       |  1.600                         | 4000                        | Hoch               |
-| SloDWGroupC05   | 32                       |  3.200                         | 8.000                        | Hoch               |
-| SloDWGroupC06   | 64                       |  6.400                         | 16.000                      | Hoch               |
-| SloDWGroupC07   | 128                      | 12.800                         | 32.000                      | Hoch               |
-| SloDWGroupC08   | 256                      | 25.600                         | 64.000                      | Hoch               |
-
-<!-- where are the allocation and consumption of concurrency slots charts? --> Die Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** zeigt, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für die Ressourcenklassen „smallrc“, „mediumrc“, „largerc“ und „xlargerc“ verwendet. Um die Wichtigkeit für jede Ressourcenklasse zu ermitteln, schlagen Sie diese Werte in der vorherigen Tabelle nach.
-
-### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500-Zuordnung zwischen Ressourcenklassen und Wichtigkeit
-| Ressourcenklasse | Workloadgruppe | Verwendete Parallelitätsslots | MB/Verteilung | Wichtigkeit |
-|:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
-| smallrc        | SloDWGroupC00  | 1                      | 100               | Mittel     |
-| mediumrc       | SloDWGroupC02  | 4                      | 400               | Mittel     |
-| largerc        | SloDWGroupC03  | 8                      | 800               | Mittel     |
-| xlargerc       | SloDWGroupC04  | 16                     | 1.600             | Hoch       |
-| staticrc10     | SloDWGroupC00  | 1                      | 100               | Mittel     |
-| staticrc20     | SloDWGroupC01  | 2                      | 200               | Mittel     |
-| staticrc30     | SloDWGroupC02  | 4                      | 400               | Mittel     |
-| staticrc40     | SloDWGroupC03  | 8                      | 800               | Mittel     |
-| staticrc50     | SloDWGroupC03  | 16                     | 1.600             | Hoch       |
-| staticrc60     | SloDWGroupC03  | 16                     | 1.600             | Hoch       |
-| staticrc70     | SloDWGroupC03  | 16                     | 1.600             | Hoch       |
-| staticrc80     | SloDWGroupC03  | 16                     | 1.600             | Hoch       |
-
-## <a name="view-workload-groups"></a>Anzeigen von Workloadgruppen
-Die folgende Abfrage zeigt Einzelheiten zur Zuordnung der Speicherressourcen aus der Perspektive des Resource Governor an. Dies ist hilfreich, um die aktive und vergangene Verwendung von Arbeitsauslastungsgruppen bei der Problembehandlung zu analysieren.
-
-```sql
-WITH rg
-AS
-(   SELECT  
-     pn.name                                AS node_name
-    ,pn.[type]                              AS node_type
-    ,pn.pdw_node_id                         AS node_id
-    ,rp.name                                AS pool_name
-    ,rp.max_memory_kb*1.0/1024              AS pool_max_mem_MB
-    ,wg.name                                AS group_name
-    ,wg.importance                          AS group_importance
-    ,wg.request_max_memory_grant_percent    AS group_request_max_memory_grant_pcnt
-    ,wg.max_dop                             AS group_max_dop
-    ,wg.effective_max_dop                   AS group_effective_max_dop
-    ,wg.total_request_count                 AS group_total_request_count
-    ,wg.total_queued_request_count          AS group_total_queued_request_count
-    ,wg.active_request_count                AS group_active_request_count
-    ,wg.queued_request_count                AS group_queued_request_count
-    FROM    sys.dm_pdw_nodes_resource_governor_workload_groups wg
-    JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools rp    
-            ON  wg.pdw_node_id  = rp.pdw_node_id
-            AND wg.pool_id      = rp.pool_id
-    JOIN    sys.dm_pdw_nodes pn
-            ON    wg.pdw_node_id    = pn.pdw_node_id
-    WHERE   wg.name like 'SloDWGroup%'
-    AND     rp.name    = 'SloDWPool'
-)
-SELECT  pool_name
-,       pool_max_mem_MB
-,       group_name
-,       group_importance
-,       (pool_max_mem_MB/100)*group_request_max_memory_grant_pcnt AS max_memory_grant_MB
-,       node_name
-,       node_type
-,       group_total_request_count
-,       group_total_queued_request_count
-,       group_active_request_count
-,       group_queued_request_count
-FROM    rg
-ORDER BY
-        node_name
-,       group_request_max_memory_grant_pcnt
-,       group_importance
-;
-```
+SQL Data Warehouse bietet Ressourcenklassen zum Zuweisen von Systemressourcen zu Abfragen.  Weitere Informationen zu Ressourcenklassen finden Sie unter [Ressourcenklassen und Workloadverwaltung](resource-classes-for-workload-management.md).  Abfragen warten, wenn die einer Abfrage zugeordnete Ressourcenklasse mehr Ressourcen benötigt, als zurzeit verfügbar sind.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Erkennung von Abfragen in der Warteschlange und andere DMVs
+
 Sie können die DMV `sys.dm_pdw_exec_requests` verwenden, um Abfragen zu identifizieren, die in eine Parallelitätswarteschlange eingereiht wurden. Abfragen, die auf einen Parallelitätsslot warten, weisen den Status **Angehalten** auf.
 
 ```sql
@@ -186,7 +106,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-Mit der DMV `sys.dm_pdw_resource_waits` werden nur die Ressourcenwartezeiten einer bestimmten Abfrage angezeigt. Mit der Ressourcenwartezeit wird nur gemessen, wie lange auf die Bereitstellung von Ressourcen gewartet wird. Bei der Signalwartezeit (Signal Wait Time) wird dagegen gemessen, wie lange die zugrunde liegenden SQL Server-Instanzen zum Planen der Abfrage in der CPU benötigen.
+Die `sys.dm_pdw_resource_waits`-DMV zeigt die Warteinformationen für eine bestimmte Abfrage an. Die Ressourcenwartezeit misst die Zeit, die auf die Bereitstellung von Ressourcen gewartet wird. Die Signalwartezeit ist die Zeit, die die zugrunde liegenden SQL-Server benötigen, um die Abfrage auf der CPU zu planen.
 
 ```sql
 SELECT  [session_id]
@@ -204,12 +124,13 @@ FROM    sys.dm_pdw_resource_waits
 WHERE    [session_id] <> SESSION_ID()
 ;
 ```
+
 Sie können auch die DMV `sys.dm_pdw_resource_waits` verwenden, um die Anzahl der gewährten Parallelitätsslots zu berechnen.
 
 ```sql
-SELECT  SUM([concurrency_slots_used]) as total_granted_slots 
-FROM    sys.[dm_pdw_resource_waits] 
-WHERE   [state]           = 'Granted' 
+SELECT  SUM([concurrency_slots_used]) as total_granted_slots
+FROM    sys.[dm_pdw_resource_waits]
+WHERE   [state]           = 'Granted'
 AND     [resource_class] is not null
 AND     [session_id]     <> session_id()
 ;
@@ -230,6 +151,5 @@ FROM    sys.dm_pdw_wait_stats w
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
-
-

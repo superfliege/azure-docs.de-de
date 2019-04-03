@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: b363f68b625a6f0987e58609477f51c7098423bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874082"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870651"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Grundlegendes zur Verwendung einer LUIS-Version
 
@@ -35,7 +35,7 @@ Das [Festlegen einer Version](luis-how-to-manage-versions.md#set-active-version)
 
 Der Name der derzeit aktiven Version wird im Bereich links oben nach dem Namen der App angezeigt. 
 
-[ ![Ändern der aktiven Version](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![Ändern der aktiven Version](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
 ## <a name="versions-and-publishing-slots"></a>Versionen und Veröffentlichungsslots
 Sie veröffentlichen entweder im Staging- oder im Produktslot. Jeder Slot kann eine andere Version oder die gleiche Version aufweisen. Dies ist nützlich, um Unterschiede zwischen Modellversionen über den Endpunkt zu überprüfen, der für Bots oder andere Anwendungen, die LUIS aufrufen, verfügbar ist. 

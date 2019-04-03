@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 07f4506b7dd0ac8ca0462e2a418983e561859c91
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e0a0a88e249c0a032e5afaeea14b9b3cfcbdc319
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080659"
 ---
 ## <a name="control-flow"></a>Ablaufsteuerung
 
@@ -25,13 +25,13 @@ Dieses Dokument beschreibt die Ablaufsteuerung des Unterhaltungslernmoduls (Conv
 
 1. Benutzer geben einen Begriff oder eine Formulierung in den Bot ein, z.B. „Wie ist das Wetter in Düsseldorf?“
 1. CL übergibt die Benutzereingabe einem Machine Learning-Modell, das Entitäten extrahiert
-    - Dieses Modell wird vom Unterhaltungslernmodul erstellt und auf www.luis.ai gehostet
+   - Dieses Modell wird vom Unterhaltungslernmodul erstellt und auf www.luis.ai gehostet
 1. Alle extrahierten Entitäten und der Eingabetext des Benutzers werden an die Rückrufmethode zur Entitätserkennung im Code des Bots übergeben.
     - Dieser Code kann Entitätswerte festlegen/löschen/bearbeiten
 1. Das neuronale Netzwerk des Unterhaltungslernmoduls übernimmt dann die Ausgabe der Entitätsextrahierung und die Benutzereingabe und bewertet alle im Bot definierten Aktionen
-    - In diesem Beispiel ist die Aktion mit der höchsten Wahrscheinlichkeit die Bereitstellung der Wettervorhersage:
+   - In diesem Beispiel ist die Aktion mit der höchsten Wahrscheinlichkeit die Bereitstellung der Wettervorhersage:
 
-    ![](media/controlflow_forecast.PNG)
+     ![](media/controlflow_forecast.PNG)
 
 1. Die ausgewählte Aktion erfordert in diesem Fall einen API-Aufruf, um die Wettervorhersage abzurufen. 
 1. Diese API, die zuvor mithilfe der CL.AddCallback-Methode registriert wurde, wird dann aufgerufen.  Das Ergebnis dieser API wird dann als Nachricht an den Benutzer zurückgegeben – z.B. „Sonnig mit einer Höchsttemperatur von 19 Grad“.
@@ -41,4 +41,4 @@ Dieses Dokument beschreibt die Ablaufsteuerung des Unterhaltungslernmoduls (Conv
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einsetzen des Unterhaltungslernmoduls](./how-to-teach-cl.md)
+> [Einsetzen von Conversation Learner](./how-to-teach-cl.md)

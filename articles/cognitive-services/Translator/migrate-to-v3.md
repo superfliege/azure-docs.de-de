@@ -10,17 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301875"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101175"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
 
 > [!NOTE]
 > V2 gilt ab dem 30. April 2018 als veraltet und wird ab dem 30. April 2019 nicht mehr unterstützt.
+> 
+> Der Microsoft Translator-Hub wird am 30. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
 
 Das Microsoft Translator-Team hat Version 3 (V3) der Textübersetzungs-API veröffentlicht. Dieses Release enthält neue Features, veraltete Methoden und ein neues Format für das Senden und Empfangen von Daten an bzw. vom Microsoft Translator-Dienst. Dieses Dokument stellt Informationen für das Ändern von Anwendungen für die Verwendung von V3 bereit. 
 
@@ -49,8 +51,8 @@ Die folgende Liste der V2- und V3-Methoden enthält die V3-Methoden und -APIs, d
 | `Speak`     | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
-| `AddTranslation`     | [Microsoft Translator Hub-API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| `AddTranslationArray`    | [Microsoft Translator Hub-API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `AddTranslation`     | Das Feature wird nicht mehr unterstützt.       |
+| `AddTranslationArray`    | Das Feature wird nicht mehr unterstützt.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | `GetTranslations`      | Das Feature wird nicht mehr unterstützt.         |
 | `GetTranslationsArray`      | Das Feature wird nicht mehr unterstützt.         |
@@ -106,6 +108,10 @@ Global
 
 ## <a name="compatibility-and-customization"></a>Kompatibilität und Anpassung
 
+> [!NOTE]
+> 
+> Der Microsoft Translator-Hub wird am 30. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).   
+
 Microsoft Translator V3 verwendet standardmäßig eine neuronale maschinelle Übersetzung. Daher kann es nicht mit dem Microsoft Translator-Hub verwendet werden. Der Translator-Hub unterstützt nur ältere statistische maschinelle Übersetzungen. Die neuronale Übersetzung kann nun mithilfe des benutzerdefinierten Translators angepasst werden. [Weitere Informationen zum Anpassen von neuronaler maschineller Übersetzung](custom-translator/overview.md)
 
 Die neuronale Übersetzung mit der Text-API von V3 unterstützt die Verwendung der Standardkategorien (SMT, speech, tech, generalnn) nicht.
@@ -130,13 +136,13 @@ Sie verwenden Version 3 der Textübersetzungs-API, wenn Sie den Endpunkt „api.
 * Bietet Zugriff auf benutzerdefinierte Übersetzungssysteme, die mit Microsoft Translator Hub erstellt wurden.
 * Sie verwenden Version 2 der Textübersetzungs-API, wenn Sie den Endpunkt „api.microsofttranslator.com“ verwenden.
 
-In keiner Version der Translator-API wird eine Aufzeichnung Ihrer Übersetzungen erstellt. Ihre Übersetzungen werden zu keinem Zeitpunkt für Dritte freigegeben. Weitere Informationen finden Sie auf der [Webseite zur Vertraulichkeit](http://www.aka.ms/NoTrace).
+In keiner Version der Translator-API wird eine Aufzeichnung Ihrer Übersetzungen erstellt. Ihre Übersetzungen werden zu keinem Zeitpunkt für Dritte freigegeben. Weitere Informationen finden Sie auf der [Webseite zur Vertraulichkeit](https://www.aka.ms/NoTrace).
 
 ## <a name="links"></a>Links
 
 * [Microsoft-Datenschutzrichtlinie](https://privacy.microsoft.com/privacystatement)
 * [Rechtliche Informationen zu Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Online Services Terms (Lizenzbedingungen für Onlinedienste)](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Online Services Terms (Lizenzbedingungen für Onlinedienste)](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

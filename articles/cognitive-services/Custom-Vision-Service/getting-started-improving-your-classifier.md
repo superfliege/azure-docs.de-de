@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: f96b4bb75a22e51586820a2e7be08c09cf7b26dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104419"
 ---
 # <a name="how-to-improve-your-classifier"></a>Verbessern der Klassifizierung
 
@@ -102,4 +102,4 @@ Bei der visuellen Untersuchung werden ggf. Muster identifiziert, die Sie dann ko
 In diesem Handbuch haben Sie mehrere Verfahren gelernt, die Präzision Ihres benutzerdefinierten Bildklassifizierungsmodell zu verbessern. Finden Sie als Nächstes heraus, wie Sie Bilder programmgesteuert testen, indem Sie sie an die Vorhersage-API senden.
 
 > [!div class="nextstepaction"]
-[Verwenden der Vorhersage-API](use-prediction-api.md)
+> [Verwenden der Vorhersage-API](use-prediction-api.md)

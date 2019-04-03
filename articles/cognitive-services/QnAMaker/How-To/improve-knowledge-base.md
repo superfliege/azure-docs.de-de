@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
 manager: nitinme
-displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: 6feb521aa47ca813b3067451c8c77111deb60e73
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874004"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537897"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern der Wissensdatenbank
 
@@ -32,13 +32,15 @@ QnA Maker erlernt neue Fragevarianten über implizites und explizites Feedback.
 
 Über beide Methoden werden der Bewertung ähnliche Abfragen bereitgestellt, die gruppiert werden.
 
-Wenn ähnliche Abfragen gruppiert werden, sendet QnA Maker die benutzerbasierten Fragen als Vorschläge an den Entwickler der Wissensdatenbank, um diese zu akzeptieren oder abzulehnen.
-
 ## <a name="how-active-learning-works"></a>Aktives Lernen: Funktionsweise
 
 Das Feature für aktives Lernen wird basierend auf den Bewertungen der relevantesten Antworten ausgelöst, die von QnA Maker für eine bestimmte Abfrage zurückgegeben werden. Liegt der Bewertungsunterschied innerhalb einer geringen Bandbreite, dann wird die Abfrage als möglicher _Vorschlag_ für jede der möglichen Antworten betrachtet. 
 
 Alle Vorschläge werden nach Ähnlichkeit gruppiert, und die besten Vorschläge für alternative Fragen werden basierend auf der Häufigkeit der jeweiligen Abfragen von Endbenutzern angezeigt. Das Feature für aktives Lernen liefert die bestmöglichen Vorschläge in Fällen, in denen die Endpunkte eine angemessene Anzahl und Vielfalt von Nutzungsabfragen erhalten.
+
+Wenn mindestens 5 ähnliche Abfragen gruppiert werden, sendet QnA Maker alle 30 Minuten die benutzerbasierten Fragen als Vorschläge an den Entwickler der Wissensdatenbank, um diese zu akzeptieren oder abzulehnen.
+
+Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, müssen Sie diese überprüfen und akzeptieren oder ablehnen. 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Versionsupgrade für aktives Lernen
 
@@ -57,6 +59,8 @@ Der Algorithmus zur Bestimmung der Nähe ist keine einfache Berechnung. Die Bere
 ## <a name="turn-on-active-learning"></a>Aktivieren des Features für aktives Lernen
 
 Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie das Feature, um die vorgeschlagenen Fragen anzuzeigen. 
+
+1. Wählen Sie **Veröffentlichen** aus, um die Wissensdatenbank zu veröffentlichen. Aktive Lernabfragen werden nur vom Vorhersageendpunkt der GenerateAnswer-API erfasst. Die Abfragen im Bereich „Test“ im QnA Maker-Portal besitzen keine Auswirkungen auf das aktive Lernen.
 
 1. Um das Feature für aktives Lernen zu aktivieren, klicken Sie auf Ihren **Namen**. Wechseln Sie dann rechts oben im QnA Maker-Portal zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).  
 
@@ -87,6 +91,9 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
 1. Wählen Sie **Speichern und trainieren** aus, um die Änderungen an der Wissensdatenbank zu speichern.
 
+1. Wählen Sie **Veröffentlichen** aus, damit die Änderungen über die GenerateAnswer-API zur Verfügung stehen.
+
+    Wenn mindestens 5 ähnliche Abfragen gruppiert werden, sendet QnA Maker alle 30 Minuten die benutzerbasierten Fragen als Vorschläge an den Entwickler der Wissensdatenbank, um diese zu akzeptieren oder abzulehnen.
 
 ## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>Bestimmen der besten Auswahl bei mehreren Fragen mit ähnlichen Bewertungen
 
@@ -147,7 +154,7 @@ Wenn die Clientanwendung (in diesem Fall der Chatbot) die Antwort empfängt, wer
 
 Die Clientanwendung zeigt alle Fragen an und gibt dem Benutzer die Möglichkeit, die am besten geeignete Frage auszuwählen. 
 
-Der Benutzer wählt eine der vorhandenen Fragen aus. Das Benutzerfeedback wird an die [Trainings](http://www.aka.ms/activelearningsamplebot)-API von QnA Maker gesendet, um den Zyklus für das aktive Lernen fortzusetzen. 
+Der Benutzer wählt eine der vorhandenen Fragen aus. Das Benutzerfeedback wird an die [Trainings](https://www.aka.ms/activelearningsamplebot)-API von QnA Maker gesendet, um den Zyklus für das aktive Lernen fortzusetzen. 
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -157,6 +164,31 @@ Content-Type: application/json
 ```
 
 Weitere Informationen zur Verwendung des Features für aktives Lernen mit einem [Azure Bot-Beispiel für C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
+## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktives Lernen wird in der TSV-Datei der exportierten App gespeichert.
+
+Wenn aktives Lernen für Ihre App aktiviert ist Sie die App exportieren, enthält die Spalte `SuggestedQuestions` in der TSV-Datei die Daten für aktives Lernen. 
+
+Die Spalte `SuggestedQuestions` ist ein JSON-Objekt mit Informationen zu implizitem (`autosuggested`) und explizitem (`usersuggested`) [Feedback](#active-learning). Ein Beispiel für dieses JSON-Objekt für eine einzelne, vom Benutzer übermittelte Bitte um `help` ist:
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Informationen und empfiehlt Vorschläge für Ihre Wissensdatenbank. 
 
 ## <a name="next-steps"></a>Nächste Schritte
  

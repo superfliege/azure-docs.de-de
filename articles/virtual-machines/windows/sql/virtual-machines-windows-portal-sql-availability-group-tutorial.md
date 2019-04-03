@@ -3,7 +3,7 @@ title: SQL Server-Verfügbarkeitsgruppen – Azure Virtual Machines – Tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359713"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003456"
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Tutorial: Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
 In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen. Im Rahmen des vollständigen Tutorials wird eine Verfügbarkeitsgruppe mit einem Datenbankreplikat in zwei SQL Server-Instanzen erstellt.
 
@@ -53,7 +53,7 @@ Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sei
 Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md) ausgeführt werden. Falls die Voraussetzungen bereits erfüllt werden, können Sie direkt mit dem [Erstellen des Clusters](#CreateCluster) fortfahren.
 
   >[!NOTE]
-  > Viele Schritte in diesem Tutorial können mit einer Azure-Schnellstartvorlage automatisiert werden. Weitere Informationen hierzu finden Sie unter [Erstellen von WSFC und Listener sowie Konfigurieren von ILB für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Viele der in diesem Tutorial behandelten Schritte können jetzt mit der [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) und [Azure-Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md) automatisiert werden.
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -415,6 +415,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 1. Klicken Sie auf den Lastenausgleich, auf **Load balancing rules** (Lastenausgleichsregeln) und anschließend auf **+Hinzufügen**.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für den Listener wie folgt:
+
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
@@ -455,6 +456,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 1. Legen Sie die Lastenausgleichsregeln fest. Klicken Sie auf **Lastenausgleichsregeln** und auf **+Hinzufügen**.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für die IP-Adresse der Hauptressourcen des Clusters wie folgt:
+
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
@@ -505,15 +507,15 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 1. Testen Sie die Verbindung mithilfe des **sqlcmd** -Hilfsprogramms. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd** -Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden sqlcmd-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:
+   Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden sqlcmd-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet.
 

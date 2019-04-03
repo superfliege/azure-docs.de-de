@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 2173bc46471fec6bfbacbda9362e5530075faf18
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857329"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311092"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Was ist eine QnA Maker-Wissensdatenbank?
 
@@ -28,7 +28,7 @@ Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Paaren
 * **Antworten**: Eine Antwort ist die Reaktion, die zurückgegeben wird, wenn eine Benutzerabfrage mit der zugehörigen Frage übereinstimmt.  
 * **Metadaten**: Metadaten sind Tags, die einem QnA-Paar zugeordnet sind und als Schlüssel-Wert-Paare dargestellt werden. Metadatentags werden verwendet, um QnA-Paare zu filtern und die Datenmenge einzuschränken, für die ein Abfrageabgleich vorgenommen wird.
 
-Eine einzelnes QnA-Element, dargestellt durch eine numerische QnA-ID, verfügt über mehrere Varianten einer Frage (alternative Fragen), die alle auf einer einzigen Antwort abgebildet werden. Außerdem können jedem dieser Paare mehrere Metadatenfelder zugeordnet sein.
+Eine einzelnes QnA-Element, dargestellt durch eine numerische QnA-ID, verfügt über mehrere Varianten einer Frage (alternative Fragen), die alle auf einer einzigen Antwort abgebildet werden. Außerdem können jedem dieser Paare mehrere Metadatenfelder zugeordnet sein: ein Schlüssel und ein Wert.
 
 ![QnA Maker-Wissensdatenbanken](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
@@ -36,7 +36,7 @@ Eine einzelnes QnA-Element, dargestellt durch eine numerische QnA-ID, verfügt �
 
 Wenn Sie reichhaltige Inhalte in einer Wissensdatenbank erfassen, versucht QnA Maker, die Inhalte in Markdown zu konvertieren. Lesen Sie [diesen](https://aka.ms/qnamaker-docs-markdown-support) Blog, um die Markdownformate zu verstehen, die von den meisten Chatclients verstanden werden.
 
-Metadatenfelder bestehen aus Schlüssel-Wert-Paaren, die durch einen Doppelpunkt **(Produkt:Aktenvernichter)** getrennt werden. Schlüssel und Wert müssen ausschließlich aus Text bestehen. Der Metadatenschlüssel darf keine Leerzeichen enthalten.
+Metadatenfelder bestehen aus Schlüssel-Wert-Paaren, die durch einen Doppelpunkt **(Produkt:Aktenvernichter)** getrennt werden. Schlüssel und Wert müssen ausschließlich aus Text bestehen. Der Metadatenschlüssel darf keine Leerzeichen enthalten. Metadaten unterstützt nur einen Wert pro Schlüssel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

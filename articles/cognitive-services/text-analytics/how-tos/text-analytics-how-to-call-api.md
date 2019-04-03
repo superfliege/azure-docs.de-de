@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122874"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -43,7 +43,7 @@ Sie können derzeit dieselben Dokumenten für alle Textanalysevorgänge senden: 
 | Element | Gültige Werte | Erforderlich? | Verwendung |
 |---------|--------------|-----------|-------|
 |`id` |Der Datentyp ist „Zeichenfolge“ (string), aber in der Praxis sind Dokument-IDs eher ganze Zahlen (integer). | Erforderlich | Das System verwendet die IDs, die Sie angeben, um die Ausgabe zu strukturieren. Sprachcodes, Schlüsselbegriffe und Stimmungspunktzahlen werden für jede ID in der Anforderung generiert.|
-|`text` | Unstrukturierter, unformatierter Text mit bis zu 5.000 Zeichen. | Erforderlich | Für die Erkennung der Sprache kann der Text in einer beliebigen Sprache ausgedrückt werden. Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsidentifikation muss der Text in einer [unterstützten Sprache](../text-analytics-supported-languages.md) sein. |
+|`text` | Unstrukturierter, unformatierter Text mit bis zu 5.120 Zeichen. | Erforderlich | Für die Erkennung der Sprache kann der Text in einer beliebigen Sprache ausgedrückt werden. Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsidentifikation muss der Text in einer [unterstützten Sprache](../text-analytics-supported-languages.md) sein. |
 |`language` | Aus 2 Zeichen bestehender [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)-Code für eine [unterstützte Sprache](../text-analytics-supported-languages.md) | Variabel | Erforderlich für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsverknüpfung, optional für die Sprachenerkennung. Es gibt keinen Fehler, wenn Sie sie ausschließen, aber die Analyse wird ohne geschwächt. Der Sprachcode sollte dem von Ihnen bereitgestellten `text` entsprechen. |
 
 Weitere Informationen zu Limits finden Sie unter [Übersicht der Textanalyse > Datenlimits](../overview.md#data-limits). 
@@ -58,7 +58,7 @@ Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie 
    + Fügen Sie den Endpunkt ein, den Sie von der Portalseite kopiert haben.
    + Fügen Sie eine Ressource an.
 
-  Ressourcenendpunkte sind wie folgt (Ihre Region kann davon abweichen):
+   Ressourcenendpunkte sind wie folgt (Ihre Region kann davon abweichen):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
@@ -71,7 +71,7 @@ Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie 
    + `Content-Type`: application/json.
    + `Accept`: application/json.
 
-  Ihre Anforderung sollte in etwa wie im folgenden Screenshot aussehen, wobei eine **/keyPhrases**-Ressource angenommen wird.
+   Ihre Anforderung sollte in etwa wie im folgenden Screenshot aussehen, wobei eine **/keyPhrases**-Ressource angenommen wird.
 
    ![Screenshot der Anforderung mit Endpunkt und Headern](../media/postman-request-keyphrase-1.png)
 
@@ -81,15 +81,15 @@ Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie 
 
 5. Fügen Sie JSON-Dokumente in einem Format ein, das für die beabsichtigte Analyse gültig ist. Weitere Informationen zu einer bestimmten Analyse finden Sie in den folgenden Themen:
 
-  + [Sprachenerkennung](text-analytics-how-to-language-detection.md)  
-  + [Schlüsselbegriffserkennung](text-analytics-how-to-keyword-extraction.md)  
-  + [Standpunktanalyse](text-analytics-how-to-sentiment-analysis.md)  
-  + [Entitätserkennung (Vorschauversion)](text-analytics-how-to-entity-linking.md)  
+   + [Sprachenerkennung](text-analytics-how-to-language-detection.md)  
+   + [Schlüsselbegriffserkennung](text-analytics-how-to-keyword-extraction.md)  
+   + [Standpunktanalyse](text-analytics-how-to-sentiment-analysis.md)  
+   + [Entitätserkennung (Vorschauversion)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Klicken Sie auf **Send**, um die Anforderung zu senden. Sie können bis zu 100 Anforderungen pro Minute absenden. 
 
-  In Postman wird die Antwort im nächsten Fenster nach unten als einzelnes JSON-Dokument angezeigt, das für jede in der Anforderung angegebene Dokument-ID ein Element enthält.
+   In Postman wird die Antwort im nächsten Fenster nach unten als einzelnes JSON-Dokument angezeigt, das für jede in der Anforderung angegebene Dokument-ID ein Element enthält.
 
 ## <a name="see-also"></a>Weitere Informationen 
 

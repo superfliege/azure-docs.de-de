@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 0086746ee676127a3fcae9e7b05efd3f7a9f65f3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cbc28ce13d08ee8665be642d9db6b1f236b380d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870128"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Schnellstart: Konvertieren von Text in Sprache mit .NET Core
 
@@ -156,7 +156,7 @@ string host = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 Text wird im Körper einer `POST`-Anforderung gesendet. Mit SSML können Sie die Stimme und die Sprache angeben. In diesem Schnellstart verwenden wir SSML, um die Sprache auf `en-US` und die Stimme auf `ZiraRUS` festzulegen. Erstellen wir jetzt den SSML-Code für Ihre Anforderung:
 
 ```csharp
-string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
               <voice name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" +
               text + "</voice></speak>";
 ```

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 99647770df9a8ca194559863a1d7212faf1c83a1
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328213"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295571"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -46,15 +46,14 @@ Um den LUIS-Container auszuführen, benötigen Sie Folgendes:
 
 Dieser Container unterstützt Mindestwerte und empfohlene Werte für folgende Einstellungen:
 
-|Einstellung| Minimum | Empfohlen |
-|-----------|---------|-------------|
-|Kerne<BR>`--cpus`|1 Kern|1 Kern|
-|Arbeitsspeicher<BR>`--memory`|2 GB|4 GB|
-|Transaktionen pro Sekunde<BR>(TPS)|20 TPS|40 TPS|
+|Container| Minimum | Empfohlen | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|LUIS|1 Kern, 2 GB Arbeitsspeicher|1 Kern, 4 GB Arbeitsspeicher|20,40|
 
-Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* TPS: Transaktionen pro Sekunde
 
-Die Einstellungen `--cpus` und `--memory` werden im Befehl `docker run` verwendet.
+Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
 
@@ -247,6 +246,8 @@ Es sind noch weitere [Beispiele](luis-container-configuration.md#example-docker-
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 > Der Wert ApiKey ist der **Schlüssel** von der Seite „Schlüssel und Endpunkte“ im LUIS-Portal. Er ist auch auf der Seite mit den Schlüsseln der Azure Language Understanding-Ressourcen verfügbar.  
+
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 

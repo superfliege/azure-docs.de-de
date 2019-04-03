@@ -10,16 +10,16 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: accc2803895f3892075cdd9877ca98344ab88bd1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183491"
 ---
 # <a name="entity-attributes"></a>Entitätsattribute
 
-Der Academic Graph ist aus sieben Entitätstypen. Alle Entitäten haben eine Entitäts-ID und einen Entitätstyp.
+Der Academic Graph ist aus sieben Entitätstypen. Alle Entitäten weisen eine Entitäts-ID und einen Entitätstyp auf.
 
 ## <a name="common-entity-attributes"></a>Allgemeine Entitätsattribute
 NAME    |BESCHREIBUNG                |Type       | Vorgänge

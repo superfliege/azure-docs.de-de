@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 3/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2a786d383d103f9b45ea7b13de24b8de9c9e9f5e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445371"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293392"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
 
@@ -50,14 +50,14 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 
 In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Texterkennung zugeordnet werden.
 
-| Container | Minimum | Empfohlen |
-|-----------|---------|-------------|
-|Texterkennung|1 Kern, 8 GB Arbeitsspeicher, 0,5 TPS|2 Kerne, 8 GB Arbeitsspeicher, 1 TPS|
+| Container | Minimum | Empfohlen |TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Texterkennung|1 Kern, 8 GB Arbeitsspeicher, 0,5 TPS|2 Kerne, 8 GB Arbeitsspeicher, 1 TPS|0,5, 1|
 
-Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* TPS: Transaktionen pro Sekunde
 
 Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
-
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
 
@@ -116,11 +116,14 @@ Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-Verwenden Sie für Container-APIs den Host https://localhost:5000.
+Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
 
 ### <a name="asynchronous-text-recognition"></a>Asynchrone Texterkennung
 

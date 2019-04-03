@@ -7,15 +7,15 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124013"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -42,7 +42,8 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator-Hub
 
-Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschineller Übersetzungen verwendet werden. [Weitere Informationen](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> Der Microsoft Translator-Legacyhub wird am 30. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub
 
@@ -59,8 +60,8 @@ Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschine
 
 > [!NOTE]
 > Seit dem 1. Februar 2018 sind „AddTranslation()“ und „AddTranslationArray()“ nicht mehr für die Verwendung mit der Textübersetzungs-API V2.0 verfügbar. Diese Methoden schlagen fehl, und nichts wird geschrieben. Die Textübersetzungs-API V3.0 unterstützt diese Methoden nicht.
-
->In der Translator-Hub-API stehen ähnliche Funktionen zur Verfügung. Siehe [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
+> 
+> In der Translator-Hub-API stehen ähnliche Funktionen zur Verfügung. Siehe [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

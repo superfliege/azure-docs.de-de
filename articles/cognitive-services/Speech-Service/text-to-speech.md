@@ -1,72 +1,80 @@
 ---
-title: Informationen zur Sprachsynthese – Speech Services
+title: Text-zu-Sprache mit den Azure-Spracherkennungsdiensten
 titleSuffix: Azure Cognitive Services
-description: Die Text-to-Speech-API bietet mehr als 75 Stimmen in mehr als 45 Sprachen und Gebietsschemas. Wenn Sie die standardmäßigen „Voicefonts“ verwenden möchten, müssen Sie beim Aufrufen des Speech-Diensts nur den Namen der Stimme mit einigen anderen Parametern angeben.
+description: Text-zu-Sprache aus den Azure-Spracherkennungsdiensten ist ein REST-basierter Dienst, der es Ihren Anwendungen, Tools oder Geräten ermöglicht, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05028704c08ebd06f9b9e4e3f45c5137eb1e6b58
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859333"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226911"
 ---
-# <a name="about-the-text-to-speech-api"></a>Informationen zur Text-to-Speech-API
+# <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
-Die **Text-to-Speech**-API konvertiert Eingabetext in natürlich klingende Sprache (dies wird auch als *Sprachsynthese* bezeichnet).
+Text-zu-Sprache aus den Azure-Spracherkennungsdiensten ist ein REST-basierter Dienst, der es Ihren Anwendungen, Tools oder Geräten ermöglicht, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, [benutzerdefinierte](#custom-voice-fonts) Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
-Zur Generierung von Sprache sendet Ihre Anwendung HTTP POST-Anforderungen an die Text-to-Speech-API. Dort wird Text in menschliche Sprache synthetisiert und als Audiodatei zurückgegeben. Es werden viele Stimmen und Sprachen unterstützt.
-
-Zu Szenarios, in denen die Sprachsynthese übernommen wird, zählen die folgenden:
-
-* *Verbessern der Bedienungshilfen:* Mit der **Text-to-Speech**-Technologie können Inhaltsbesitzer und Verleger auf die unterschiedlichen Interaktionsarten von Personen mit ihren Inhalten reagieren. Personen mit einer Sehbehinderung oder Leseschwierigkeiten sind dankbar, wenn Ihnen Inhalte akustisch dargestellt werden. Darüber hinaus können Personen durch Sprachausgaben Textinhalte, wie z.B. Zeitungen oder Blogs, auf mobilen Geräten leichter genießen, während sie zur Arbeit pendeln oder trainieren.
-
-* *Reagieren in Multitasking-Szenarien:* Durch die **Text-to-Speech**-Technologie können Personen wichtige Informationen schnell und komfortabel aufnehmen, während sie im Auto sitzen oder sich in einer anderen leseunfreundlichen Umgebung befinden. Die Navigation wird in diesem Bereich häufig angewendet.
-
-* *Erweitertes Lernen durch mehrere Modi:* Es gibt verschiedene Methoden, mit denen unterschiedliche Personen jeweils am besten lernen. Experten für das Online-Learning haben gezeigt, dass Informationen durch die gemeinsame Bereitstellung von Sprache und Text besser gelernt und behalten werden können.
-
-* *Bereitstellung intuitiver Bots oder Assistenten:* Die Möglichkeit zum Sprechen kann ein wesentlicher Bestandteil eines intelligenten Chatbots oder eines virtuellen Assistenten sein. Immer mehr Unternehmen entwickeln Chatbots, um Kunden ansprechende Erfahrungen mit dem Kundendienst bieten zu können. Durch die Sprache wird eine weitere Dimension hinzugefügt, indem die Antworten des Bots akustisch empfangen werden können (beispielsweise per Telefon).
-
-## <a name="voice-support"></a>Sprachunterstützung
-
-Der **Text-to-Speech**-Dienst von Microsoft bietet mehr als 75 Stimmen in mehr als 45 Sprachen und Gebietsschemas. Wenn Sie diese standardmäßigen „Voicefonts“ verwenden möchten, müssen Sie beim Aufrufen der REST-API nur den Namen der Stimme mit einigen anderen Parametern angeben. Weitere Informationen zu unterstützten Sprachen, Gebietsschemas und Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
-
-> [!IMPORTANT]
-> Die Kosten sind für Standardstimmen, benutzerdefinierte und neuronale Stimmen unterschiedlich. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+Die Text-zu-Sprache-Technologie ermöglicht Inhaltserstellern, auf unterschiedliche Weise mit ihren Benutzern zu interagieren. Text-zu-Sprache kann die Barrierefreiheit verbessern, indem Benutzern eine Option für die akustische Interaktion mit dem Inhalt zur Verfügung gestellt wird. Unabhängig davon, ob der Benutzer eine Sehbehinderung oder eine Lernbehinderung hat oder während der Fahrt Navigationsinformationen benötigt, kann Text-zu-Sprache ein vorhandenes Erlebnis verbessern. Sprachsynthese ist auch ein wertvolles Add-On für Sprachbots und virtuelle Assistenten.
 
 ### <a name="neural-voices"></a>Neuronale Stimmen
 
-Gestalten Sie mit neuronaler Sprachsynthese Interaktionen mit Chatbots und virtuellen Helfern noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern kann die neuronale Sprachsynthese die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. Weitere Informationen zu unterstützten neuronalen Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und virtuellen Helfern noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. Weitere Informationen zu unterstützten neuronalen Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
 ### <a name="custom-voices"></a>Benutzerdefinierte Stimmen
 
-Mit der Stimmanpassung für die Sprachsynthese erstellen Sie für Ihre Marke eine unverwechselbare Stimme, die als *Voicefont* bezeichnet wird. Zur Erstellung Ihres Voicefonts laden Sie eine Tonstudioaufnahme und die zugehörigen Skripts als Trainingsdaten hoch. Der Dienst erstellt daraufhin ein individuelles Stimmenmodell, das auf Ihre Aufnahme abgestimmt ist. Diesen Voicefont können Sie zum Synthetisieren von Sprache verwenden. Weitere Informationen finden Sie unter [Benutzerdefinierte Voicefonts](how-to-customize-voice-font.md).
+Durch Stimmanpassungen können Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen. Zur Erstellung Ihres benutzerdefinierten Voicefonts laden Sie eine Tonstudioaufnahme und die zugehörigen Skripts als Trainingsdaten hoch. Der Dienst erstellt daraufhin ein individuelles Stimmenmodell, das auf Ihre Aufnahme abgestimmt ist. Diesen benutzerdefinierten Voicefont können Sie zum Synthetisieren von Sprache verwenden. Weitere Informationen finden Sie unter [Benutzerdefinierte Stimmen](how-to-customize-voice-font.md).
 
-## <a name="api-capabilities"></a>API-Funktionen
+## <a name="core-features"></a>Wichtige Funktionen
 
-Viele der Funktionen der **Text-to-Speech**-API, insbesondere im Bereich der Anpassung, sind über REST verfügbar. In der folgenden Tabelle werden die Funktionen der einzelnen Methoden für den Zugriff auf die API beschrieben. Eine vollständige Liste der Funktionen und API-Details finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index).
+Die folgende Tabelle enthält die wichtigen Features für Text-zu-Sprache:
 
-| Anwendungsfall | REST | SDKs |
-|-----|-----|-----|----|
-| Hochladen von Datasets für die Stimmanpassung | Ja | Nein  |
-| Erstellen und Verwalten von Voicefont-Modellen | Ja | Nein  |
-| Erstellen und Verwalten von Voicefont-Bereitstellungen | Ja | Nein  |
-| Erstellen und Verwalten von Voicefont-Tests| Ja | Nein  |
-| Verwalten von Abonnements | Ja | Nein  |
+| Anwendungsfall | SDK | REST |
+|----------|-----|------|
+| Konvertieren von Text in Sprache. | Nein  | Ja |
+| Hochladen von Datasets für die Stimmanpassung. | Nein  | Ja\* |
+| Erstellen und Verwalten von Voicefont-Modellen. | Nein  | Ja\* |
+| Erstellen und Verwalten von Voicefont-Bereitstellungen. | Nein  | Ja\* |
+| Erstellen und Verwalten von Voicefont-Tests. | Nein  | Ja\* |
+| Verwalten von Abonnements. | Nein  | Ja\* |
+
+\* *Diese Dienste sind über den Endpunkt cris.ai verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index).*
 
 > [!NOTE]
-> Der API implementiert Drosselung, durch die API-Anforderungen auf 25 Anforderungen pro 5 Sekunden eingeschränkt werden. Nachrichtenheader informieren über die Grenzwerte.
+> Der Text-zu-Sprache-Endpunkt implementiert Drosselung, durch die Anforderungen auf 25 Anforderungen pro 5 Sekunden eingeschränkt werden. Wenn Drosselung auftritt, werden Sie über Nachrichtenheader benachrichtigt.
+
+## <a name="get-started-with-text-to-speech"></a>Erste Schritte mit der Sprachsynthese
+
+Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können. In dieser Tabelle werden Schnellstarts für Text-zu-Sprache nach Sprache aufgelistet.
+
+| Schnellstart | Plattform | API-Referenz |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+
+## <a name="sample-code"></a>Beispielcode
+
+Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfassen die Text-zu-Sprache-Konvertierung in den gängigsten Programmiersprachen.
+
+* [Beispiele für Text-zu-Sprache (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+
+## <a name="reference-docs"></a>Referenz
+
+* [Speech SDK](speech-sdk-reference.md)
+* [Speech-Geräte-SDK](speech-devices-sdk.md)
+* [REST-API: Spracherkennung](rest-speech-to-text.md)
+* [REST-API: Text-zu-Sprache](rest-text-to-speech.md)
+* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen eines kostenlosen Speech Services-Abonnements](https://azure.microsoft.com/try/cognitive-services/)
-* [Schnellstart: Konvertieren von Text in Sprache, Python](quickstart-python-text-to-speech.md)
-* [Schnellstart: Konvertieren von Text in Sprache, .NET Core](quickstart-dotnet-text-to-speech.md)
-* [REST-API-Referenz](rest-apis.md)
+* [Abrufen eines kostenlosen Speech Services-Abonnements](get-started.md)
+* [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
