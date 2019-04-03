@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891085"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319464"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -423,7 +423,7 @@ Eines der sehr hilfreichen Features von Rattle ist die Möglichkeit, mehrere Mac
 Wählen Sie nach Abschluss der Modellerstellung die Registerkarte **Log** (Protokoll), um den R-Code anzuzeigen, der von Rattle während Ihrer Sitzung ausgeführt wird. Sie können die Schaltfläche **Export** (Exportieren) wählen, um diese Daten zu speichern.
 
 > [!NOTE]
-> Die aktuelle Version von Rattle enthält einen Fehler. Um das Skript zu ändern oder es zum Wiederholen der Schritte zu einem späteren Zeitpunkt zu verwenden, müssen Sie vor *Export this log ... * im Text des Protokolls das Zeichen „#“ einfügen.
+> Die aktuelle Version von Rattle enthält einen Fehler. Um das Skript zu ändern oder es zum Wiederholen der Schritte zu einem späteren Zeitpunkt zu verwenden, müssen Sie vor *Export this log ...* im Text des Protokolls das Zeichen „#“ einfügen.
 >
 >
 

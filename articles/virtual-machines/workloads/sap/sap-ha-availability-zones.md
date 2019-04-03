@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094751"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339482"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -93,7 +93,7 @@ Berücksichtigen Sie bei diesen Entscheidungen auch die SAP-Empfehlungen zur Net
 > Es ist anzunehmen, dass die Ergebnisse der oben durchgeführten Messungen in jeder Azure-Region, die [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) unterstützt, unterschiedlich ausfallen. Auch wenn sich Ihre Anforderungen an die Netzwerklatenz nicht ändern, müssen Sie möglicherweise in verschiedenen Azure-Regionen unterschiedliche Bereitstellungsstrategien einsetzen, da die Netzwerklatenz zwischen Zonen unterschiedlich sein kann. In einigen Azure-Regionen kann die Netzwerklatenz zwischen den drei verschiedenen Zonen stark unterschiedlich ausfallen. In anderen Regionen kann die Netzwerklatenz zwischen den drei verschiedenen Zonen einheitlicher sein. Die Aussage, dass immer eine Netzwerklatenz zwischen 1 und 2 Millisekunden vorliegt, ist nicht richtig. Die Netzwerklatenz über Verfügbarkeitszonen hinweg in Azure-Regionen kann nicht verallgemeinert werden.
 
 ## <a name="activeactive-deployment"></a>Aktiv/Aktiv-Bereitstellung
-Diese Bereitstellungsarchitektur wird als Aktiv/Aktiv bezeichnet, da Sie Ihre aktiven SAP-Anwendungsserver über zwei oder drei Zonen bereitstellen. Die SAP Central Services-Instanz, die die Replikation in die Warteschlange einreiht, wird zwischen zwei Zonen bereitgestellt. Dies gilt auch für die DBMS-Ebene, die über dieselben Zonen wie SAP Central Services bereitgestellt wird.
+Diese Bereitstellungsarchitektur wird als „Aktiv/Aktiv“ bezeichnet, da Sie Ihre aktiven SAP-Anwendungsserver über zwei oder drei Zonen bereitstellen. Die SAP Central Services-Instanz, die die Replikation in die Warteschlange einreiht, wird zwischen zwei Zonen bereitgestellt. Dies gilt auch für die DBMS-Ebene, die über dieselben Zonen wie SAP Central Services bereitgestellt wird.
 
 Wenn Sie eine Konfiguration dieser Art in Erwägung ziehen, müssen Sie die beiden Verfügbarkeitszonen in Ihrer Region ermitteln, die eine zonenübergreifende Netzwerklatenz bieten, die für Ihre Workload und Ihre synchrone DBMS-Replikation akzeptabel ist. Sie sollten außerdem sicherstellen, dass das Delta zwischen der Netzwerklatenz in den ausgewählten Zonen und der zonenübergreifenden Netzwerklatenz nicht zu groß ist. Der Grund dafür besteht darin, dass in Abhängigkeit davon, ob ein Auftrag in der Zone mit dem DBMS-Server oder zonenübergreifend ausgeführt wird, große Laufzeitvariationen für Ihre Geschäftsprozesse und Batchprozesse vermieden werden sollten. Einige Variationen sind zulässig, aber nicht Unterschiedsfaktoren.
 

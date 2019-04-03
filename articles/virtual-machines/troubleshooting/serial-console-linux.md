@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f407d87249c44ad3a4773b2cd8fc85ee09506ceb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010980"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445656"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Serielle Konsole für virtuelle Computer für Linux
 
@@ -41,9 +41,9 @@ Die Dokumentation zur seriellen Konsole für Windows-VMs finden Sie unter [Serie
 
 - Ein Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für die VM und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen:
 
-    - Die VM, auf der Sie auf eine serielle Konsole zugreifen, muss über ein kennwortbasiertes Konto verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus.
+- Die VM, auf der Sie auf eine serielle Konsole zugreifen, muss über ein kennwortbasiertes Konto verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus.
 
-    - Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der seriellen Konsole in Linux-Distributionen](#serial-console-linux-distribution-availability).
+- Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der seriellen Konsole in Linux-Distributionen](#serial-console-linux-distribution-availability).
 
 
 
@@ -85,12 +85,11 @@ Benutzerdefinierte Linux-Images     | Um die serielle Konsole für Ihr benutzerd
 
 Szenario          | Aktionen in der seriellen Konsole
 :------------------|:-----------------------------------------
-Fehlerhafte *FSTAB*-Datei | Drücken Sie die **EINGABETASTE**, um fortzufahren, und verwenden Sie einen Text-Editor, um die Datei *FSTAB* zu korrigieren. Dazu müssen Sie sich möglicherweise im Einzelbenutzermodus befinden. Weitere Informationen finden Sie unter [Beheben von FSTAB-Fehlern](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) und [Verwenden der seriellen Konsole zum Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
-Falsche Firewallregeln | Greifen Sie auf die serielle Konsole zu, und korrigieren Sie iptables.
-Dateisystembeschädigung/-überprüfung | Greifen Sie auf die serielle Konsole zu, und stellen Sie das Dateisystem wieder her.
-SSH/RDP-Konfigurationsprobleme | Greifen Sie auf die serielle Konsole zu, und ändern Sie die Einstellungen.
-Netzwerksperrsystem| Greifen Sie aus dem Azure-Portal auf die serielle Konsole zu, um das System zu verwalten.
-Interaktion mit Bootloader | Starten Sie auf dem Blatt der seriellen Konsole Ihren virtuellen Computer neu, um auf Ihrem virtuellen Linux-Computer auf GRUB zuzugreifen. Weitere Informationen finden Sie unter [Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
+Fehlerhafte *FSTAB*-Datei | Drücken Sie die **EINGABETASTE**, um fortzufahren, und verwenden Sie einen Text-Editor, um die Datei *FSTAB* zu korrigieren. Dazu müssen Sie sich möglicherweise im Einzelbenutzermodus befinden. Weitere Informationen finden Sie im Abschnitt zur seriellen Konsole unter [Beheben von FSTAB-Fehlern](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) und [Verwenden der seriellen Konsole zum Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
+Falsche Firewallregeln |  Wenn Sie iptables zum Blockieren der SSH-Konnektivität konfiguriert haben, können Sie die serielle Konsole für die Interaktion mit Ihrer VM verwenden, ohne dass Sie SSH benötigen. Weitere Details finden Sie auf der Seite zu [iptables man](https://linux.die.net/man/8/iptables). Falls der SSH-Zugriff durch die firewalld blockiert wird, können Sie auch über die serielle Konsole auf die VM zugreifen und die firewalld neu konfigurieren. Weitere Informationen hierzu finden Sie in der [firewalld-Dokumentation](https://firewalld.org/documentation/).
+Dateisystembeschädigung/-überprüfung | Weitere Informationen zur Problembehandlung für beschädigte Dateisysteme per serieller Konsole finden Sie im entsprechenden Abschnitt unter [Azure Linux VM kann nicht wegen Dateisystemfehler gestartet werden](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck).
+SSH-Konfigurationsprobleme | Greifen Sie auf die serielle Konsole zu, und ändern Sie die Einstellungen. Die serielle Konsole kann unabhängig von der SSH-Konfiguration einer VM verwendet werden, da für die VM hierfür keine Netzwerkverbindung erforderlich ist. Einen Leitfaden zur Problembehandlung finden Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). Weitere Informationen finden Sie unter [Ausführliche Schritte zum Beheben von SSH-Verbindungsproblemen mit einer Azure-VM unter Linux](./detailed-troubleshoot-ssh-connection.md).
+Interaktion mit Bootloader | Starten Sie auf dem Blatt der seriellen Konsole Ihren virtuellen Computer neu, um auf Ihrem virtuellen Linux-Computer auf GRUB zuzugreifen. Weitere Informationen und distributionsspezifische Informationen finden Sie unter [Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Deaktivieren der seriellen Konsole
 Standardmäßig haben alle Abonnements Zugriff auf die serielle Konsole, die für alle virtuellen Computer aktiviert ist. Sie können die serielle Konsole auf Abonnement- oder VM-Ebene deaktivieren.

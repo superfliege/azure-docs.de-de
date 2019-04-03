@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979886"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407690"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM
 Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie Ihr lokales Administratorkennwort oder die Konfiguration von Remotedesktopdienste zurücksetzen (für Windows-Domänencontroller nicht unterstützt). Verwenden Sie zum Zurücksetzen des Kennworts entweder das Azure-Portal oder die VM-Zugriffserweiterung in Azure PowerShell. Setzen Sie das Kennwort für diesen lokalen Administrator zurück, nachdem Sie sich am virtuellen Computer angemeldet haben.  
@@ -39,18 +39,19 @@ Melden Sie sich zuerst am [Azure-Portal](https://portal.azure.com) an, und wähl
 
 1. Wählen Sie Ihre Windows-VM und dann unter **Support + Problembehandlung** die Option **Kennwort zurücksetzen**. Das Fenster **Kennwort zurücksetzen** wird angezeigt.
 
-1. Wählen Sie **Kennwort zurücksetzen**, geben Sie einen Benutzernamen und ein Kennwort ein, und wählen Sie dann **Aktualisieren**. 
+2. Wählen Sie **Kennwort zurücksetzen**, geben Sie einen Benutzernamen und ein Kennwort ein, und wählen Sie dann **Aktualisieren**. 
 
-1. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
+3. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Zurücksetzen der Konfiguration für Remotedesktopdienste**
 
+Mit diesem Prozess wird der Remotedesktopdienst auf der VM aktiviert, und es wird eine Firewallregel für den RDP-Standardport 3389 erstellt.
+
 1. Wählen Sie Ihre Windows-VM und dann unter **Support + Problembehandlung** die Option **Kennwort zurücksetzen**. Das Fenster **Kennwort zurücksetzen** wird angezeigt. 
 
-1. Wählen Sie **Reset configuration only** (Nur Konfiguration zurücksetzen) und dann **Aktualisieren**. 
+2. Wählen Sie **Reset configuration only** (Nur Konfiguration zurücksetzen) und dann **Aktualisieren**. 
 
-1. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
-
+3. Versuchen Sie erneut, eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Zurücksetzen mit der VMAccess-Erweiterung und PowerShell
 

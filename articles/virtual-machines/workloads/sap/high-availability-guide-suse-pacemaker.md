@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: b0842bfc4c9d60420f6409afc4bc42692346050b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999656"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487363"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -563,6 +563,36 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    params pcmk_delay_max="15" \
    op monitor interval="15" timeout="15"
 </code></pre>
+
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-Konfiguration für geplante Azure-Ereignisse
+
+Azure verfügt über [geplante Ereignisse](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
+
+1. **[A]** Installieren Sie den **azure-events**-Agent. 
+
+<pre><code>sudo zypper install resource-agents
+</code></pre>
+
+2. **[1]** Konfigurieren Sie die Ressourcen in Pacemaker. 
+
+<pre><code>
+#Place the cluster in maintenance mode
+sudo crm configure property maintenance-mode=true
+
+#Create Pacemaker resources for the Azure agent
+sudo crm configure primitive rsc_azure-events ocf:heartbeat:azure-events op monitor interval=10s
+sudo crm configure clone cln_azure-events rsc_azure-events
+
+#Take the cluster out of maintenance mode
+sudo crm configure property maintenance-mode=false
+</code></pre>
+
+   > [!NOTE]
+   > Nachdem Sie die Pacemaker-Ressourcen für den azure-events-Agent konfiguriert haben, erhalten Sie beim Aktivieren bzw. Deaktivieren des Wartungsmodus für den Cluster ggf. folgende Warnmeldungen vom Typ „Unbekanntes Attribut“:  
+     WARNING: cib-bootstrap-options: unknown attribute 'hostName_  <strong>hostname</strong>'  
+     WARNING: cib-bootstrap-options: unknown attribute 'azure-events_globalPullState'  
+     WARNING: cib-bootstrap-options: unknown attribute 'hostName_ <strong>hostname</strong>'  
+   > Diese Warnmeldungen können ignoriert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

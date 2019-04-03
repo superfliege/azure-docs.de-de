@@ -1,5 +1,5 @@
 ---
-title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
+title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft Docs
 description: Unterstützte Szenarien und ihre Architekturdetails für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855454"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482962"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieses Dokument beschreibt die unterstützten Szenarien sowie deren Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -68,10 +68,10 @@ Jeder bereitgestellte Server ist mit den Gruppen von Ethernet-Schnittstellen vor
 | b | TYP I | eth2.tenant | eno3.tenant | Knoten zu Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | STONITH |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Knoten zu Knoten |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | STONITH |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Knoten zu Knoten |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
 
 Sie verwenden die Schnittstellen abhängig von der Topologie, die für die HLI-Einheit konfiguriert ist. Beispielsweise ist die Schnittstelle „B“ für die Kommunikation zwischen Knoten eingerichtet. Dies ist sinnvoll, wenn Sie eine horizontal skalierte Topologie konfiguriert haben. Bei einer Konfiguration mit zentraler Hochskalierung eines Knotens wird diese Schnittstelle nicht verwendet. Überprüfen Sie Ihre erforderlichen Szenarien (weiter unten in diesem Dokument), um weitere Informationen zur Schnittstellenverwendung zu erhalten. 
 
@@ -101,7 +101,7 @@ Für Bereitstellungsfälle von HANA-Systemreplikation oder horizontal skaliertem
 Der Speicher ist je nach angeforderter Topologie vorkonfiguriert. Die Volumegrößen und der Bereitstellungspunkt variieren basierend auf der Anzahl der Server, den SKUs und der konfigurierten Topologie. Überprüfen Sie Ihre erforderlichen Szenarien (weiter unten in diesem Dokument), um weitere Informationen zu erhalten. Wenn mehr Speicher erforderlich ist, können Sie diesen in Inkrementen von einem TB erwerben.
 
 >[!NOTE]
->Der Bereitstellungspunkt /usr/sap/<SID> ist eine symbolische Verknüpfung mit dem Bereitstellungspunkt /hana/shared.
+>Der Bereitstellungspunkt „/usr/sap/\<SID>“ ist eine symbolische Verknüpfung mit dem Bereitstellungspunkt „/hana/shared“.
 
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
@@ -142,10 +142,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -177,10 +177,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -217,10 +217,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -258,10 +258,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -312,10 +312,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Verwendet für STONITH |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -360,10 +360,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Verwendet für STONITH |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -419,10 +419,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -460,10 +460,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -496,10 +496,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
@@ -535,10 +535,10 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
 ### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:

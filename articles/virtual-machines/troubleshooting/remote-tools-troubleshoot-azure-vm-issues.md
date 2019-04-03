@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 2126ed2624d735d88d52ddc1ee97bfb970cc8a74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dc27ea0552c6135d01256586b1746219caac17f1
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119767"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539869"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Verwenden von Remotetools zur Behandlung von Azure-VM-Problemen
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* Der Befehl muss auf einem Computer ausgeführt werden, der sich im gleichen VNET befindet.
->* DIP oder HostName kann als Wert für <computer> verwendet werden.
+>* „DIP“ oder „HostName“ kann als Wert für \<computer> verwendet werden.
 >* Durch den Parameter „-s“ wird sichergestellt, dass der Befehl mithilfe des Systemkontos (Administratorberechtigungen) aufgerufen wird.
 >* PsExec verwendet die TCP-Ports 135 und 445. Daher müssen die zwei Ports in der Firewall geöffnet sein.
 

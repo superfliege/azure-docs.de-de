@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994713"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520580"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 
@@ -964,7 +964,7 @@ Dieses Beispiel zeigt die Speicherorteinschränkungen, die aufgrund einer Migrat
 ![Einschränkungen der Hawk-Liste](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Außerdem können Sie die **hb_report**-Ausgabe in Hawk unter **Verlauf** hochladen, wie im Folgenden gezeigt. Informationen finden Sie unter [hb_report zum Erfassen von Protokolldateien](#hbreport-to-collect-log-files): 
+Außerdem können Sie die **hb_report**-Ausgabe in Hawk unter **Verlauf** hochladen, wie im Folgenden gezeigt. Informationen zum Erfassen von Protokolldateien finden Sie unter „hb_report“: 
 
 ![Hochladen einer hb_report-Ausgabe in Hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
