@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416189"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003719"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält häufig gestellte Fragen zu Azure Migrate. Sollten Sie n
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Unterstützt Azure Migrate nur die Bewertung von VMware-Workloads?
 
-Ja, Azure Migrate unterstützt derzeit nur die Bewertung von VMware-Workloads. Eine Unterstützung von Hyper-V und physischen Servern wird zukünftig hinzugefügt.
+Ja, Azure Migrate unterstützt derzeit nur die Bewertung von VMware-Workloads. Die Unterstützung für Hyper-V befindet sich in der Vorschau. Melden Sie sich [hier](https://aka.ms/migratefuture) an, um Zugriff auf die Vorschauversion zu erhalten. Die Unterstützung für physische Server wird zukünftig hinzugefügt.
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Benötigt Azure Migrate vCenter Server zum Ermitteln einer VMware-Umgebung?
 
@@ -42,7 +42,7 @@ Azure Migrate ist ein Tool für die Migrationsplanung und Azure Site Recovery-Be
 
 **Migration von VMware zu Azure:** Wenn Sie beabsichtigen, Ihre lokalen Workloads zu Azure zu migrieren, verwenden Sie für die Migrationsplanung Azure Migrate. Azure Migrate bewertet lokale Workloads und bietet Anleitungen, Einblicke und Mechanismen, um Sie bei der Migration zu Azure zu unterstützen. Wenn Ihr Migrationsplan fertig ist, können Sie Dienste wie Azure Site Recovery und Azure Database Migration Service nutzen, um die Computer zu Azure zu migrieren.
 
-**Migration von Hyper-V zu Azure:** Derzeit unterstützt Azure Migrate nur die Bewertung virtueller VMware-Computer für die Migration zu Azure. Die Unterstützung für Hyper-V ist Teil der Roadmap für Azure Migrate. In der Zwischenzeit können Sie den Site Recovery-Bereitstellungsplaner verwenden. Nach Aktivierung der Hyper-V-Unterstützung in Azure Migrate, können Sie Azure Migrate zum Planen der Migration von Hyper-V-Workloads verwenden.
+**Migration von Hyper-V zu Azure:** Derzeit unterstützt die allgemein verfügbare Version von Azure Migrate die Bewertung virtueller VMware-Computer für die Migration zu Azure. Die Unterstützung für Hyper-V befindet sich in der Vorschau mit Produktionsunterstützung. Wenn Sie daran interessiert sind, die Vorschauversion zu testen, registrieren Sie sich [hier](https://aka.ms/migratefuture).
 
 **Notfallwiederherstellung von VMware/Hyper-V zu Azure:** Wenn Sie beabsichtigen, eine Notfallwiederherstellung (DR) mit Azure Site Recovery zu Azure durchzuführen, verwenden Sie den Azure Site Recovery-Bereitstellungsplaner für die DR-Planung. Der Site Recovery-Bereitstellungsplaner führt eine umfassende, ASR-spezifische Bewertung Ihrer lokalen Umgebung durch. Er bietet Empfehlungen, die Site Recovery für erfolgreiche DR-Vorgänge benötigt, z.B. Replikation und Failover Ihrer virtuellen Computer.  
 
@@ -120,7 +120,7 @@ Wenn Sie für die Abhängigkeitsvisualisierung Agents auf den VMs installieren, 
 
 ### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>Wie hoch ist das Datenvolumen, das von Azure Migrate bei kontinuierlicher Profilerstellung hochgeladen wird?
 
-Das an Azure Migrate gesendete Datenvolumen hängt von verschiedenen Parametern ab. Hier eine Zahl zur Veranschaulichung: Ein Projekt mit zehn Computern (jeweils mit einem Datenträger und einer NIC) würde ungefähr 50 MB pro Tag senden. Dies ist ein ungefährer Wert, der sich auf Grundlage der Anzahl von Datenpunkten für die NICS und Datenträger ändert (die gesendeten Daten verhalten sich nicht linear, wenn die Anzahl der Computer, NICs oder Datenträger zunimmt). 
+Das an Azure Migrate gesendete Datenvolumen hängt von verschiedenen Parametern ab. Hier eine Zahl zur Veranschaulichung: Ein Projekt mit zehn Computern (jeweils mit einem Datenträger und einer NIC) würde ungefähr 50 MB pro Tag senden. Dies ist ein ungefährer Wert, der sich auf Grundlage der Anzahl von Datenpunkten für die NICS und Datenträger ändert (die gesendeten Daten verhalten sich nicht linear, wenn die Anzahl der Computer, NICs oder Datenträger zunimmt).
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Werden die Daten im Ruhezustand und bei der Übertragung verschlüsselt?
 
@@ -176,7 +176,7 @@ Diese Eigenschaften gelten nur für die leistungsbasierte Größenanpassung. Azu
 
 ### <a name="what-is-dependency-visualization"></a>Was ist die Visualisierung von Abhängigkeiten?
 
-Durch die Visualisierung von Abhängigkeiten können Sie mit größerem Vertrauen Gruppen von virtuellen Computern für die Migration bewerten, indem Sie vor dem Ausführen einer Bewertung die Computerabhängigkeiten überprüfen. Die Visualisierung der Abhängigkeiten trägt dazu bei, dass nichts übersehen wird. Dadurch vermeiden Sie unerwartete Ausfälle bei der Migration zu Azure. Azure Migrate nutzt für die Visualisierung von Abhängigkeiten die Dienstzuordnungslösung in Log Analytics.
+Durch die Visualisierung von Abhängigkeiten können Sie mit größerem Vertrauen Gruppen von virtuellen Computern für die Migration bewerten, indem Sie vor dem Ausführen einer Bewertung die Computerabhängigkeiten überprüfen. Die Visualisierung der Abhängigkeiten trägt dazu bei, dass nichts übersehen wird. Dadurch vermeiden Sie unerwartete Ausfälle bei der Migration zu Azure. Azure Migrate nutzt für die Visualisierung Abhängigkeiten die Dienstzuordnungslösung in Azure Monitor-Protokollen.
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Ist die Nutzung des Features zur Visualisierung von Abhängigkeiten kostenpflichtig?
 
@@ -217,7 +217,7 @@ Die Liste der vom Dependency-Agent unterstützten Windows-Betriebssysteme finden
 Die Liste der vom Dependency-Agent unterstützten Linux-Betriebssysteme finden Sie [hier](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Kann ich Abhängigkeiten in Azure Migrate für länger als eine Stunde visualisieren?
-Nein. Azure Migrate ermöglicht Ihnen das Visualisieren von Abhängigkeiten für einen Zeitraum von bis zu einer Stunde. Mit Azure Migrate können Sie im Verlauf um bis zu einen Monat zu einem bestimmten Datum zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren. So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für gestern, jedoch nur für ein Zeitfenster von einer Stunde anzeigen. Sie können jedoch Log Analytics zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) über einen längeren Zeitraum verwenden.
+Nein. Azure Migrate ermöglicht Ihnen das Visualisieren von Abhängigkeiten für einen Zeitraum von bis zu einer Stunde. Mit Azure Migrate können Sie im Verlauf um bis zu einen Monat zu einem bestimmten Datum zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren. So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für gestern, jedoch nur für ein Zeitfenster von einer Stunde anzeigen. Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) über einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Wird die Abhängigkeitsvisualisierung für Gruppen mit mehr als zehn VMs unterstützt?
 Sie können [Abhängigkeiten für Gruppen visualisieren](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies), die bis zu zehn VMs umfassen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
