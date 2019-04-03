@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413242"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880414"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search 
 
@@ -28,7 +28,7 @@ Wenn Ihre Pipeline aus Qualifikationen besteht, die nicht mit Cognitive Services
 > [!NOTE]
 > Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine Cognitive Services-Ressource zuordnen. Dadurch können wir für die Ausführung von Qualifikationsgruppen Gebühren verlangen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
 >
-> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services) berechnet, und zwar zum selben Tarif wie beim direkten Ausführen der Aufgabe. Für die Extraktion von Bildern fällt eine Azure Search-Gebühr an, die derzeit Vorschaupreisen entspricht. Ausführlichere Informationen finden Sie auf der [Seite „Azure Search – Preise“](https://go.microsoft.com/fwlink/?linkid=2042400) oder unter [Funktionsweise der Abrechnung](search-sku-tier.md#how-billing-works).
+> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services) berechnet, und zwar zu demselben Tarif wie beim direkten Ausführen der Aufgabe. Für die Extraktion von Bildern fällt eine Azure Search-Gebühr an, die derzeit Vorschaupreisen entspricht. Ausführlichere Informationen finden Sie auf der [Seite „Azure Search – Preise“](https://go.microsoft.com/fwlink/?linkid=2042400) oder unter [Funktionsweise der Abrechnung](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
@@ -60,21 +60,7 @@ Ihnen werden nur Qualifikationen in Rechnung gestellt, mit denen die Cognitive S
 
 1. Wenn Sie **Neue Cognitive Services-Ressource erstellen** ausgewählt haben, wird eine neue Registerkarte geöffnet, auf der Sie die Ressource erstellen können. Geben Sie der Ressource einen eindeutigen Namen.
 
-1. Wählen Sie den gleichen Standort wie Azure Search aus. Derzeit wird die Indizierung kognitiver Qualifikationen in den folgenden Regionen unterstützt:
-
-  * USA, Westen-Mitte
-  * USA Süd Mitte
-  * USA (Ost)
-  * USA (Ost) 2
-  * USA, Westen 2
-  * Kanada, Mitte
-  * Europa, Westen
-  * UK, Süden
-  * Nordeuropa
-  * Brasilien Süd
-  * Asien, Südosten
-  * Indien, Mitte
-  * Australien (Osten)
+1. Wenn Sie eine neue Cognitive Services-Ressource erstellen, **wählen Sie dieselbe Region** wie Ihre Azure Search-Ressource aus.
 
 1. Wählen Sie den All-in-One-Tarif **S0** aus. Dieser Tarif bietet die Funktionen für Sehen und Sprache, die die vordefinierten Qualifikationen in der kognitiven Suche unterstützen.
 

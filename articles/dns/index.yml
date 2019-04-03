@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 71317b5a5cf493eb20f7421c79cbe16aaf8f7f99
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534649"
 documentType: LandingData
 title: Azure DNS-Dokumentation
 metadata:
@@ -22,79 +16,79 @@ metadata:
   ms.date: 6/13/2018
   ms.author: kumud
 abstract:
-  description: Hier erfahren Sie, wie Sie Azure DNS verwenden. Anhand von Schnellstartanleitungen, Tutorials, Beispielen und anderem Dokumentationsmaterial wird gezeigt, wie Sie DNS-Zonen und -Einträge für Domänennamen einrichten und verwalten.
+  description: 'Hier erfahren Sie, wie Sie Azure DNS verwenden. Anhand von Schnellstartanleitungen, Tutorials, Beispielen und anderem Dokumentationsmaterial wird gezeigt, wie Sie DNS-Zonen und -Einträge für Domänennamen einrichten und verwalten.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Hier erfahren Sie, wie Sie DNS-Zonen und -Einträge für Domänennamen erstellen.
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure-Portal
-      href: /azure/dns/dns-getstarted-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/dns/dns-getstarted-powershell
-    - image:
-        src: https://docs.microsoft.com/media/common/cli.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: /azure/dns/dns-getstarted-cli
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Hier erfahren Sie, wie Sie Ihre Domäne in Azure DNS hosten, mithilfe von Azure DNS benutzerdefinierte DNS-Einträge für eine Web-App generieren sowie eine private DNS-Zone und Einträge erstellen.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie DNS-Zonen und -Einträge für Domänennamen erstellen.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure-Portal
+            href: /azure/dns/dns-getstarted-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/dns/dns-getstarted-powershell
+          - image:
+              src: 'https://docs.microsoft.com/media/common/cli.svg'
+            text: Azure-Befehlszeilenschnittstelle
+            href: /azure/dns/dns-getstarted-cli
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Hosten Ihrer Domäne in Azure DNS</a>
-    - html: <a href="/azure/dns/dns-web-sites-custom-domain">Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App</a>
-    - html: <a href="/azure/dns/private-dns-getstarted-powershell">Erstellen einer privaten DNS-Zone und eines Eintrags</a>
-    - html: <a href="/azure/dns/tutorial-alias-pip">Konfigurieren eines Aliasdatensatzes zum Verweisen auf eine öffentliche Azure-IP-Adresse</a>
-    - html: <a href="/azure/dns/tutorial-alias-tm">Konfigurieren eines Aliasdatensatzes zur Unterstützung von Apex-Domänennamen mit Traffic Manager</a>
-    - html: <a href="/azure/dns/tutorial-alias-rr">Konfigurieren eines Aliasdatensatzes für Zonendatensätze</a>
-- title: Kostenloses PluralSight-Videotraining
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie Ihre Domäne in Azure DNS hosten, mithilfe von Azure DNS benutzerdefinierte DNS-Einträge für eine Web-App generieren sowie eine private DNS-Zone und Einträge erstellen.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Hosten Ihrer Domäne in Azure DNS</a>
+          - html: <a href="/azure/dns/dns-web-sites-custom-domain">Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App</a>
+          - html: <a href="/azure/dns/private-dns-getstarted-powershell">Erstellen einer privaten DNS-Zone und eines Eintrags</a>
+          - html: <a href="/azure/dns/tutorial-alias-pip">Konfigurieren eines Aliasdatensatzes zum Verweisen auf eine öffentliche Azure-IP-Adresse</a>
+          - html: <a href="/azure/dns/tutorial-alias-tm">Konfigurieren eines Aliasdatensatzes zur Unterstützung von Apex-Domänennamen mit Traffic Manager</a>
+          - html: <a href="/azure/dns/tutorial-alias-rr">Konfigurieren eines Aliasdatensatzes für Zonendatensätze</a>
+  - title: Kostenloses PluralSight-Videotraining
     items:
-    - title: Azure-Administrator
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Azure-Lösungsarchitekt
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Azure-Verwaltung für AWS-Administratoren
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: Skriptbeispiele für allgemeine Aufgaben
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure-Administrator
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Azure-Lösungsarchitekt
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Azure-Verwaltung für AWS-Administratoren
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Beispiele
     items:
-    - html: <a href="/azure/dns/cli-samples">Azure-Befehlszeilenschnittstelle</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Skriptbeispiele für allgemeine Aufgaben
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/dns/cli-samples">Azure-Befehlszeilenschnittstelle</a>
+  - title: Verweis
     items:
-    - title: Befehlszeile
-      html: <p><a href="/powershell/module/azurerm.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure-Befehlszeilenschnittstelle</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.dns">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/dns/">REST-API-Referenz</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/powershell/module/az.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure-Befehlszeilenschnittstelle</a></p>
+          - title: Languages
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.dns">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/dns/">REST-API-Referenz</a></p>

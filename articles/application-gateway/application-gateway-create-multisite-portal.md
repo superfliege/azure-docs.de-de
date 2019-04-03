@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 23b627d480acf7bbbff7ade2ba6e596a57a15327
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 85113a5007a171459b831684f584773ba4328b94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079945"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites mit dem Azure-Portal
 
-Sie können mit dem Azure-Portal ein [Hosting mehrerer Websites](application-gateway-multi-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von VM-Skalierungsgruppen. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
+Sie können mit dem Azure-Portal ein [Hosting mehrerer Websites](application-gateway-multi-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von VM-Skalierungsgruppen. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen, und es werden Beispiele zu *www\.contoso.com* und *www\.fabrikam.com* verwendet.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -46,20 +46,20 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 2. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
 3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-    - *myAppGateway*: Name des Anwendungsgateways
-    - *myResourceGroupAG*: neue Ressourcengruppe
+   - *myAppGateway*: Name des Anwendungsgateways
+   - *myResourceGroupAG*: neue Ressourcengruppe
 
-    ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
+     ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
 4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
 5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-    - *myVNet*: Name des virtuellen Netzwerks
-    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
-    - *myAGSubnet*: Subnetzname
-    - *10.0.0.0/24*: Adressraum des Subnetzes
+   - *myVNet*: Name des virtuellen Netzwerks
+   - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+   - *myAGSubnet*: Subnetzname
+   - *10.0.0.0/24*: Adressraum des Subnetzes
 
-    ![Virtuelles Netzwerk erstellen](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
+     ![Virtuelles Netzwerk erstellen](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
 6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
 7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
@@ -96,6 +96,8 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 
 ### <a name="install-iis"></a>Installieren von IIS
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Öffnen Sie die interaktive Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
 
     ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
@@ -104,7 +106,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -115,7 +117,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
       -Settings $publicSettings
     ```
 
-3. Erstellen Sie den zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie die Namen von *fabrikamVM* als Namen und als Wert für „VMName“ in „Set-AzureRmVMExtension“ ein.
+3. Erstellen Sie den zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie die Namen von *fabrikamVM* als Namen und als Wert für „VMName“ in „Set-AzVMExtension“ ein.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Erstellen von Back-End-Pools mit den virtuellen Computern
 
@@ -134,11 +136,11 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 1. Klicken Sie auf **Listener** und anschließend auf **Für mehrere Standorte**.
 2. Geben Sie die folgenden Werte für den Listener ein:
     
-    - *contosoListener*: Verwenden Sie diesen Name für den Listener.
-    - *www.contoso.com*: Ersetzen Sie diesen Beispielhostnamen durch Ihren Domänennamen.
+   - *contosoListener*: Verwenden Sie diesen Name für den Listener.
+   - *www\.contoso.com*: Ersetzen Sie diesen Beispielhostnamen durch Ihren Domänennamen.
 
 3. Klicken Sie auf **OK**.
-4. Erstellen Sie einen zweiten Listener mit dem Namen *fabrikamListener*, und verwenden Sie hierfür Ihren zweiten Domänennamen. In diesem Beispiel wird *www.fabrikam.com* verwendet.
+4. Erstellen Sie einen zweiten Listener mit dem Namen *fabrikamListener*, und verwenden Sie hierfür Ihren zweiten Domänennamen. In diesem Beispiel wird *www\.fabrikam.com* verwendet.
 
 Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Genauigkeit weitergeleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 

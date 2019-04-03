@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 691decb88188a428edfeab1ea9e99c48876b6d9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110958"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496173"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -36,10 +36,10 @@ In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeit
 
 | Anwendungsfall | Volume-Plug-In | Lese-/Schreibzugriff, einmal | Schreibgeschützt, mehrfach | Lese-/Schreibzugriff, mehrfach |
 |----------|---------------|-----------------|----------------|-----------------|
-| Freigegebene Konfiguration       | Azure Files   | JA | Ja | JA |
-| Strukturierte App-Daten        | Azure Disks   | JA | Nein   | Nein   |
-| App-Daten, schreibgeschützte Freigaben | [Dysk (Vorschau)][dysk] | JA | JA | Nein   |
-| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | JA | Ja | JA |
+| Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja |
+| Strukturierte App-Daten        | Azure Disks   | Ja | Nein   | Nein   |
+| App-Daten, schreibgeschützte Freigaben | [Dysk (Vorschau)][dysk] | Ja | Ja | Nein   |
+| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja |
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
 
@@ -91,9 +91,9 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 ## <a name="secure-and-back-up-your-data"></a>Schützen und Sichern Ihrer Daten
 
-**Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z. B. Heptio Ark oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
+**Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z.B. Velero oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
 
-Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Heptio Ark][heptio-ark] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
+Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 
 Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für das Business Continuity & Disaster Recovery in AKS][best-practices-multi-region].
 
@@ -102,7 +102,7 @@ Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen 
 Dieser Artikel konzentriert sich auf bewährte Speichermethoden in AKS. Weitere Informationen zu den Grundlagen der Speicherung in Kubernetes finden Sie unter [Speicherkonzepte für Anwendungen in AKS][aks-concepts-storage].
 
 <!-- LINKS - External -->
-[heptio-ark]: https://github.com/heptio/ark
+[velero]: https://github.com/heptio/velero
 [dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 

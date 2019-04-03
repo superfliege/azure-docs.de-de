@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 9137e52af16f63efe7f0b8169f2693a354564968
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c83326212dc84348a04d54f04348a6c4c7699bde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264437"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875888"
 ---
 # <a name="storsimple-solution-support"></a>Support für die StorSimple-Lösung
 
@@ -42,7 +42,7 @@ Microsoft bietet flexible Supportoptionen für Geschäftskunden des StorSimple-S
 | Ticketübermittlung über das Azure-Portal                                                                          | ✓                                                                               | ✓                                                                              |
 | Zugriff auf das Onlinesupportportal                                                                            | ✓                                                                               | ✓                                                                              |
 | Warnungsbereitstellung und -verwaltung                                                                       | ✓                                                                               | ✓                                                                              |
-| Reaktionszeit des Helpdesks, Übermittlung eines Supporttickets rund um die Uhr <br> Die Reaktionszeit basiert auf dem Schweregrad <sup>2 | Schweregrad A: innerhalb von 2 Stunden <br> Schweregrad B: innerhalb von 4 Stunden <br> Schweregrad C: innerhalb von 8 Stunden | Schweregrad A: innerhalb von 60 Minuten <br> Schweregrad B: innerhalb von 2 Stunden <br> Schweregrad C: innerhalb von 4 Stunden |
+| Reaktionszeit des Helpdesks, Übermittlung eines Supporttickets rund um die Uhr <br> Die Reaktionszeit basiert auf dem Schweregrad <sup>2 | Schweregrad A: Innerhalb von 2 Stunden <br> Schweregrad B: Innerhalb von 4 Stunden <br> Schweregrad C: Innerhalb von 8 Stunden | Schweregrad A: Innerhalb von 60 Minuten <br> Schweregrad B: Innerhalb von 2 Stunden <br> Schweregrad C: Innerhalb von 4 Stunden |
 | Telefonsupport (Rückruf)                                                                               | ✓                                                                               | ✓                                                                              |
 | Erweiterter Teileaustausch (nur für StorSimple der Serie 8000) <sup>3</sup>                                              | Nächster Arbeitstag <sup>4                                                              | Innerhalb von 4 Stunden                                                                 |
 | Felddiensttechniker vor Ort (nur für StorSimple der Serie 8000) <sup>3</sup>                                         | Nicht verfügbar                                                                   | Innerhalb von 4 Stunden                                                                 |
@@ -119,7 +119,7 @@ Support für StorSimple-Speicherarrays der Serie 8000 basiert auf der Art und We
 
 
 
-*<text> * Premium-Schutz ist nicht an allen Standorten verfügbar. Wenden Sie sich vor dem Erwerb von Premium-Support für StorSimple unter SSSupOps@microsoft.com an Microsoft, um sich über die geografische Verfügbarkeit zu informieren.*
+*<text> * Premium-Schutz ist nicht an allen Standorten verfügbar. Wenden Sie sich vor dem Erwerb von Premium-Support für StorSimple unter „SSSupOps\@microsoft.com“ an Microsoft, um sich über die geografische Verfügbarkeit zu informieren.*
 
 ***Die StorSimple-Appliance muss in einer Region bereitgestellt werden, in der der Kunde durch Premier-Support geschützt ist, um ein kostenloses Upgrade auf StorSimple Premium-Support zu erhalten.*
 

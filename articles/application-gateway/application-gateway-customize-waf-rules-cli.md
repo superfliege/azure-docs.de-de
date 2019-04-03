@@ -1,32 +1,19 @@
 ---
-title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure CLI | Microsoft-Dokumentation
+title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure CLI
 description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit der Azure CLI.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 95eb0ef48f3e0cb6e835dc0582cc652f06315d44
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992856"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726260"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Anpassen von Web Application Firewall-Regeln mit der Azure CLI
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-customize-waf-rules-cli.md)
 
 Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz für Webanwendungen. Diese Schutzmaßnahmen werden durch die Kernregeln (Core Rule Set, CRS) des Open Web Application Security-Projekts (OWASP) bereitgestellt. Einige Regeln können falsche positive Ergebnisse ausgeben und den realen Datenverkehr blockieren. Aus diesem Grund bietet Application Gateway die Möglichkeit, Regelgruppen und Regeln anzupassen. Weitere Informationen zu den jeweiligen Regelgruppen und Regeln finden Sie in der [Liste der CRS-Regelgruppen und -Regeln der Web Application Firewall](application-gateway-crs-rulegroups-rules.md).
 
@@ -133,6 +120,19 @@ Das folgende Beispiel deaktiviert die Regeln `910018` und `910017` für ein Anwe
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
+
+## <a name="mandatory-rules"></a>Obligatorische Regeln
+
+Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert (im Erkennungsmodus werden sie als Ausnahmen protokolliert). Diese können nicht konfiguriert oder deaktiviert werden:
+
+* Fehler beim Analysieren des Anforderungstexts führen dazu, dass die Anforderung blockiert wird, sofern die Textüberprüfung nicht deaktiviert ist (XML, JSON, Formulardaten).
+* Die Datenlänge des Anforderungstexts (ohne Dateien) überschreitet das konfigurierte Limit.
+* Der Anforderungstext (einschließlich Dateien) überschreitet den Grenzwert.
+* Ein interner Fehler ist in der WAF-Engine aufgetreten.
+
+CRS 3.x-spezifisch:
+
+* Anomaliebewertung für Eingang überschritt den Schwellenwert
 
 ## <a name="next-steps"></a>Nächste Schritte
 

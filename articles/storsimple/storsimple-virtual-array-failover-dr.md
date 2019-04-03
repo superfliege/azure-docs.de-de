@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110748"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454237"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
 
@@ -31,7 +31,7 @@ Dieser Artikel gilt nur für StorSimple Virtual Arrays. Informationen zum Failov
 
 ## <a name="what-is-disaster-recovery-and-device-failover"></a>Was ist Notfallwiederherstellung und Gerätefailover?
 
-Bei einer Notfallwiederherstellung funktioniert das primäre Gerät nicht mehr. In diesem Fall können Sie die Clouddaten, die dem ausgefallenen Gerät zugeordnet sind, auf ein anderes Gerät verschieben. Sie können das primäre Gerät als *Quelle* verwenden und ein anderes Gerät als *Ziel*. Dieser Vorgang wird als *Failover*bezeichnet. Während des Failovers wechseln alle Volumes bzw. Freigaben den Besitzer und werden auf das Zielgerät übertragen. Eine Filterung der Daten ist nicht zulässig.
+Bei einer Notfallwiederherstellung funktioniert das primäre Gerät nicht mehr. In diesem Fall können Sie die Clouddaten, die dem ausgefallenen Gerät zugeordnet sind, auf ein anderes Gerät verschieben. Sie können das primäre Gerät als *Quelle* verwenden und ein anderes Gerät als *Ziel*. Dieser Vorgang wird als *Failover* bezeichnet. Während des Failovers wechseln alle Volumes bzw. Freigaben den Besitzer und werden auf das Zielgerät übertragen. Eine Filterung der Daten ist nicht zulässig.
 
 Die Notfallwiederherstellung ist als Wiederherstellung des gesamten Geräts ausgelegt, und es wird die auf Heat Maps basierende Staffelung und Nachverfolgung verwendet. Eine Heat Map wird definiert, indem den Daten anhand von Lese- und Schreibmustern ein Heat-Wert zugewiesen wird. Mit dieser Heat Map werden die Datenelemente mit den niedrigsten Heat-Werten zuerst in der Cloud angeordnet, und die Datenelemente mit den hohen Heat-Werten (am häufigsten verwendet) verbleiben auf der lokalen Ebene. Bei der Notfallwiederherstellung verwendet StorSimple das Wärmebild, um die Daten aus der Cloud wiederherzustellen und zu aktivieren. Mit dem Gerät werden alle Volumes/Freigaben der letzten Sicherung (intern ermittelt) abgerufen, und anhand dieser Sicherungsdaten wird eine Wiederherstellung durchgeführt. Das virtuelle Array orchestriert den gesamten Wiederherstellungsprozess.
 
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
 
 **Ausfall der Cloudverbindung während der Notfallwiederherstellung**
 
-Falls die Cloudverbindung nach dem Starten der Notfallwiederherstellung und vor Abschluss der Wiederherstellung des Geräts unterbrochen wird, tritt für die Notfallwiederherstellung ein Fehler auf. Sie erhalten in diesem Fall eine Benachrichtigung. Das Zielgerät für die Notfallwiederherstellung wird als *Nicht verwendbar* gekennzeichnet. Dieses Zielgerät kann für künftige Notfallwiederherstellungen nicht verwendet werden.
+Falls die Cloudverbindung nach dem Starten der Notfallwiederherstellung und vor Abschluss der Wiederherstellung des Geräts unterbrochen wird, tritt für die Notfallwiederherstellung ein Fehler auf. Dann erhalten Sie eine Fehlerbenachrichtigung. Das Zielgerät für die Notfallwiederherstellung wird als *Nicht verwendbar* gekennzeichnet. Dieses Zielgerät kann für künftige Notfallwiederherstellungen nicht verwendet werden.
 
 **Keine kompatiblen Zielgeräte**
 

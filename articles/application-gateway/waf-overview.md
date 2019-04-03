@@ -4,14 +4,15 @@ description: Dieser Artikel enthält eine Übersicht über die Web Application F
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/16/2018
+ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.topic: conceptual
+ms.openlocfilehash: 914583747d4e0e045d5023d9072451983037e57f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454258"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790356"
 ---
 # <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
 
@@ -58,19 +59,8 @@ Application Gateway und Web Application Firewall bieten folgende zentrale Vortei
 - Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
 - Verhinderung des Einsatzes von Bots, Crawlern und Scannern
 - Erkennung häufiger Fehler bei der Anwendungskonfiguration (z.B. Apache, IIS usw.)
-
-### <a name="public-preview-features"></a>Features der öffentlichen Vorschau
-
-Die aktuelle WAF-SKU (öffentliche Vorschau) beinhaltet die folgenden Funktionen:
-
-- **Grenzwerte für die Anforderungsgröße**: Die Web Application Firewall ermöglicht Benutzern das Konfigurieren von Größenlimits mit Ober- und Untergrenzen.
-- **Ausschlusslisten**: Mit WAF-Ausschlusslisten können Benutzer bestimmte Anforderungsattribute in einer WAF-Auswertung weglassen. Ein gängiges Beispiel sind von Active Directory eingefügte Token, die für Authentifizierungs- oder Kennwortfelder verwendet werden.
-
-Weitere Informationen über die öffentliche Vorschau von WAF finden Sie unter [Web Application Firewall – Grenzwerte für die Anforderungsgröße und Ausschlusslisten (öffentliche Vorschau)](application-gateway-waf-configuration.md).
-
-
-
-
+- Grenzwerte für die Anforderungsgröße: Die Web Application Firewall ermöglicht Benutzern das Konfigurieren von Größenlimits mit Ober- und Untergrenzen.
+- Ausschlusslisten: Mit WAF-Ausschlusslisten können Benutzer bestimmte Anforderungsattribute in einer WAF-Auswertung weglassen. Ein gängiges Beispiel sind von Active Directory eingefügte Token, die für Authentifizierungs- oder Kennwortfelder verwendet werden.
 
 ### <a name="core-rule-sets"></a>Kernregelsätze
 
@@ -87,7 +77,6 @@ Die Web Application Firewall ist standardmäßig mit CRS 3.0 vorkonfiguriert, Si
 - Erkennung häufiger Fehler bei der Anwendungskonfiguration (z.B. Apache, IIS usw.)
 
 Eine ausführlichere Liste mit Regeln und Informationen zum entsprechenden Schutz finden Sie in den [Kernregelsätzen](#core-rule-sets).
-
 
 #### <a name="owasp30"></a>OWASP_3.0
 
@@ -130,6 +119,16 @@ Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Mo
 
 * **Erkennungsmodus**: Wenn sie für die Ausführung im Erkennungsmodus konfiguriert ist, überwacht die Application Gateway-WAF alle Bedrohungswarnungen und protokolliert sie in einer Protokolldatei. Im Abschnitt **Diagnose** muss die Protokollierung von Diagnosedaten für Application Gateway aktiviert werden. Zudem müssen Sie sicherstellen, dass das WAF-Protokoll ausgewählt und aktiviert ist. Im Erkennungsmodus werden eingehende Anforderungen von der Web Application Firewall nicht blockiert.
 * **Schutzmodus** : Wenn die WAF für die Ausführung im Schutzmodus konfiguriert ist, blockiert Application Gateway aktiv Eindringlinge und Angriffe, die von den Regeln erkannt werden. Der Angreifer erhält eine Ausnahme 403 (nicht autorisierter Zugriff), und die Verbindung wird beendet. Der Schutzmodus protokolliert solche Angriffe weiterhin in den WAF-Protokollen.
+
+### <a name="anomaly-scoring-mode"></a>Anomaliebewertungsmodus 
+ 
+OWASP besitzt zwei Modi für die Entscheidung, ob Datenverkehr blockiert wird oder nicht. Es gibt einen herkömmlichen Modus und einen Anomaliebewertungsmodus. Im herkömmlichen Modus wird jeder einer Regel entsprechende Datenverkehr unabhängig davon behandelt, ob er auch anderen Regeln genügt. Zwar ist dieser Modus leichter zu verstehen, die fehlende Information darüber, wie viele Regeln von einer bestimmten Anforderung ausgelöst werden, stellt aber eine Einschränkung dar. Daher wurde der Anomaliebewertungsmodus eingeführt, der mit OWASP 3.x zum Standard geworden ist. 
+
+Im Anomaliebewertungsmodus bedeutet die Tatsache, dass eine der im vorherigen Abschnitt beschriebenen Regeln auf den Datenverkehr zutrifft, nicht zwangsläufig, dass der Datenverkehr blockiert wird, vorausgesetzt, die Firewall wird im Schutzmodus ausgeführt. Regeln weisen einen bestimmten Schweregrad (Kritisch, Fehler, Warnung und Info) auf, und abhängig von diesem Schweregrad setzen sie einen numerischen Wert für die Anforderung herauf, die sogenannte Anomaliebewertung. Beispielsweise erhöht die Übereinstimmung mit einer Warnregel den Wert um 3, die Übereinstimmung mit einer kritischen Regel jedoch um 5. 
+
+Es gibt einen Schwellenwert für die Anomaliebewertung, unterhalb dessen Datenverkehr nicht verworfen wird. Dieser Schwellenwert ist auf 5 festgelegt. Das bedeutet, eine einzelne Übereinstimmung mit einer kritischen Regel reicht aus, damit Azure WAF im Schutzmodus eine Anforderung blockiert (da die kritische Regel die Anomaliebewertung um 5 erhöht, wie im vorherigen Absatz dargelegt). Eine Übereinstimmung mit einer Regel auf der Warnstufe erhöht die Anomaliebewertung jedoch nur um 3. Da 3 noch unter dem Schwellenwert 5 liegt, wird kein Datenverkehr blockiert, selbst wenn sich die WAF im Schutzmodus befindet. 
+
+Beachten Sie, dass die Nachricht, die protokolliert wird, wenn WAF-Regeln mit dem Datenverkehr übereinstimmen, das Feld „action_s“ mit dem Wert „Blocked“ enthält, das bedeutet aber nicht zwangsläufig, dass der Datenverkehr tatsächlich blockiert worden ist. Damit Datenverkehr blockiert wird, ist eine Anomaliebewertung von 5 oder höher erforderlich.  
 
 ### <a name="application-gateway-waf-reports"></a>WAF-Überwachung
 

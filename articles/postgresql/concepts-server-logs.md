@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/28/2019
+ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538804"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195097"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure Database for PostgreSQL 
 Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
@@ -28,8 +28,10 @@ Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure 
 
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie diese an [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie auswählen, dass sie an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben werden sollen. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
+> [!IMPORTANT]
+> Dieses Diagnosefeature für Serverprotokolle steht nur in den [Tarifen](concepts-pricing-tiers.md) „Universell“ und „Arbeitsspeicheroptimiert“ zur Verfügung.
 
 In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach dem ausgewählten Ausgabeendpunkt können die enthaltenen Felder und ihre Reihenfolge variieren. 
 
@@ -38,7 +40,7 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | TenantId | Ihre Mandanten-ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
-| Typ | Typ des Protokolls Immer `AzureDiagnostics` |
+| Type | Typ des Protokolls Immer `AzureDiagnostics` |
 | SubscriptionId | GUID für das Abonnement, zu dem der Server gehört |
 | ResourceGroup | Name der Ressourcengruppe, zu der der Server gehört |
 | ResourceProvider | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORPOSTGRESQL` |

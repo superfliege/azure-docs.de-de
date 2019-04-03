@@ -9,12 +9,12 @@ author: brjohnstmsft
 ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314226"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453489"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in Azure Search
 
@@ -152,7 +152,7 @@ Es sollten die Dokumente zurückgegeben werden, bei denen `group_ids` entweder �
 ```
 ## <a name="conclusion"></a>Zusammenfassung
 
-Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und der `search.in()`-Funktion von Azure Search filtern. Sie können diese Funktion verwenden, um Prinzipalbezeichner für den anfordernden Benutzer zu übergeben, um diese mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
+Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und der `search.in()`-Funktion von Azure Search filtern. Sie können mithilfe dieser Funktion Prinzipalbezeichner für den anfordernden Benutzer übergeben, um sie mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
  
 ## <a name="see-also"></a>Weitere Informationen
 

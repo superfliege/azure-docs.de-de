@@ -13,18 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/19/2018
 ms.author: amsriva
-ms.openlocfilehash: 65c631ca9beb5eab5d8fe2b7e71daa0cf3b768fa
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170053"
 ---
 # <a name="application-gateway-redirect-overview"></a>Übersicht über die Umleitung in Application Gateway
 
-Ein typisches Szenario vieler Webanwendungen ist die Unterstützung der automatischen Umleitung von HTTP zu HTTPS, um sicherzustellen, dass die gesamte Kommunikation zwischen einer Anwendung und ihren Benutzern über einen verschlüsselten Pfad stattfindet. In der Vergangenheit haben Kunden unter anderem dedizierte Back-End-Pools erstellt, die einzig dazu dienten, eingehende HTTP-Anforderungen zu HTTPS umzuleiten.
+Mithilfe von Application Gateway können Sie Datenverkehr umleiten.  Es verfügt über einen allgemeinen Umleitungsmechanismus, mit dem Datenverkehr, der an einem Listener empfangen wird, an einen anderen Listener oder eine externe Website umgeleitet werden kann. Dies vereinfacht die Anwendungskonfiguration, optimiert die Ressourcennutzung und ermöglicht neue Umleitungsszenarien (einschließlich globale und pfadbasierte Umleitung).
 
-Application Gateway unterstützt nun die Umleitung von Datenverkehr am Gateway. Dies vereinfacht die Anwendungskonfiguration, optimiert die Ressourcennutzung und ermöglicht neue Umleitungsszenarien (einschließlich globale und pfadbasierte Umleitung). Die Application Gateway-Umleitung ist nicht auf HTTP zu HTTPS beschränkt. Vielmehr handelt es sich hierbei um einen allgemeinen Umleitungsmechanismus, mit dem Datenverkehr, der an einem Listener empfangen wird, in Application Gateway an einen anderen Listener umgeleitet werden kann. Auch die Umleitung externer Websites wird unterstützt.
+Ein typisches Umleitungsszenario vieler Webanwendungen ist die Unterstützung der automatischen Umleitung von HTTP zu HTTPS, um sicherzustellen, dass die gesamte Kommunikation zwischen einer Anwendung und ihren Benutzern über einen verschlüsselten Pfad stattfindet. In der Vergangenheit haben Kunden unter anderem dedizierte Back-End-Pools erstellt, die einzig dazu dienten, eingehende HTTP-Anforderungen zu HTTPS umzuleiten. Mit der Umleitungsunterstützung in Application Gateway können Sie dies einfach dadurch erreichen, dass Sie einer Routingregel eine neue Umleitungskonfiguration hinzufügen und einen anderen Listener mit HTTPS-Protokoll als Ziellistener angeben.
+
+Die folgenden Umleitungstypen werden unterstützt:
+
+- 301 Dauerhafte Umleitung
+- 302 Found (302 Gefunden)
+- 303 Verweis
+- 307 Temporäre Umleitung
 
 Die Application Gateway-Umleitung bietet Folgendes:
 
@@ -38,7 +45,7 @@ Die Application Gateway-Umleitung bietet Folgendes:
 
 ![Umleitung](./media/redirect-overview/redirect.png)
 
-Aufgrund dieser Änderung müssen Kunden ein neues Umleitungskonfigurationsobjekt erstellen, das den Ziellistener oder die externe Website angibt, an den bzw. an die die Umleitung erfolgen soll. Das Konfigurationselement unterstützt auch Optionen zum Anfügen von URI-Pfad und Abfragezeichenfolge an die umgeleitete URL. Sie können auch auswählen, ob es sich um eine vorübergehende Umleitung (HTTP-Statuscode 302) oder um eine dauerhafte Umleitung (HTTP-Statuscode 301) handelt. Die erstellte Umleitungskonfiguration wird mittels einer neuen Regel an den Quelllistener angefügt. Bei Verwendung einer einfachen Regel wird die Umleitungskonfiguration einem Quelllistener zugeordnet und fungiert als globale Umleitung. Wenn eine pfadbasierte Regel verwendet wird, wird die Umleitungskonfiguration in der URL-Pfadzuordnung definiert. Daher gilt sie nur für den bestimmten Pfadbereich einer Site.
+Aufgrund dieser Änderung müssen Kunden ein neues Umleitungskonfigurationsobjekt erstellen, das den Ziellistener oder die externe Website angibt, an den bzw. an die die Umleitung erfolgen soll. Das Konfigurationselement unterstützt auch Optionen zum Anfügen von URI-Pfad und Abfragezeichenfolge an die umgeleitete URL. Sie können auch den Typ der Umleitung auswählen. Die erstellte Umleitungskonfiguration wird mittels einer neuen Regel an den Quelllistener angefügt. Bei Verwendung einer einfachen Regel wird die Umleitungskonfiguration einem Quelllistener zugeordnet und fungiert als globale Umleitung. Wenn eine pfadbasierte Regel verwendet wird, wird die Umleitungskonfiguration in der URL-Pfadzuordnung definiert. Daher gilt sie nur für den bestimmten Pfadbereich einer Site.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

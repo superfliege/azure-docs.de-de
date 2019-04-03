@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 227e09ad087f1ac06f0dbb5b731c68f7c0a6980e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 4d8c389055b81c355de6e1c9120230e1f04443cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159773"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087056"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -49,20 +49,20 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 2. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
 3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-    - *myAppGateway*: Name des Anwendungsgateways
-    - *myResourceGroupAG*: neue Ressourcengruppe
+   - *myAppGateway*: Name des Anwendungsgateways
+   - *myResourceGroupAG*: neue Ressourcengruppe
 
-    ![Erstellen eines neuen Anwendungsgateways](./media/create-url-route-portal/application-gateway-create.png)
+     ![Erstellen eines neuen Anwendungsgateways](./media/create-url-route-portal/application-gateway-create.png)
 
 4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
 5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-    - *myVNet*: Name des virtuellen Netzwerks
-    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
-    - *myAGSubnet*: Subnetzname
-    - *10.0.0.0/24*: Adressraum des Subnetzes
+   - *myVNet*: Name des virtuellen Netzwerks
+   - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+   - *myAGSubnet*: Subnetzname
+   - *10.0.0.0/24*: Adressraum des Subnetzes
 
-    ![Virtuelles Netzwerk erstellen](./media/create-url-route-portal/application-gateway-vnet.png)
+     ![Virtuelles Netzwerk erstellen](./media/create-url-route-portal/application-gateway-vnet.png)
 
 6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
 7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
@@ -99,6 +99,8 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
 ### <a name="install-iis"></a>Installieren von IIS
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Öffnen Sie die interaktive Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
 
     ![Installieren der benutzerdefinierten Erweiterung](./media/create-url-route-portal/application-gateway-extension.png)
@@ -107,7 +109,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -118,7 +120,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
       -Settings $publicSettings
     ```
 
-3. Erstellen Sie zwei weitere virtuelle Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie als Namen *myVM2* und *myVM3* und als Werte für „VMName“ in „Set-AzureRmVMExtension“ ein.
+3. Erstellen Sie zwei weitere virtuelle Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie als Namen *myVM2* und *myVM3* und als Werte für „VMName“ in „Set-AzVMExtension“ ein.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Erstellen von Back-End-Pools mit den virtuellen Computern
 

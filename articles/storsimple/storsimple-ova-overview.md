@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013915"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
 
@@ -74,8 +74,8 @@ In der folgenden Tabelle sind einige wichtige Vorteile der StorSimple Virtual Ar
 
 In der folgenden Tabelle finden Sie eine Übersicht über unterstützte StorSimple-Workloads.
 
-|Szenario     |Workload     |Unterstützt      |Einschränkungen               |
-|-------------|-------------|---------------|---------------------------|
+|Szenario     |Workload     |Unterstützt      |Einschränkungen               | Anwendbare Versionen|
+|-------------|-------------|---------------|---------------------------|--------------------|
 |Remotebüro/Zweigniederlassung (ROBO)  |Dateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
 |Cloudarchivierung  |Archivdateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
 
@@ -101,7 +101,7 @@ Sie können den im Azure-Portal ausgeführten StorSimple-Geräte-Manager-Dienst 
 ![Cloudbasierte Speicherverwaltung](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>Standortunabhängige Sicherungen
-Beim virtuellen Array ermöglichen Cloudmomentaufnahmen die Erstellung einer standortunabhängigen Point-in-Time-Kopie eines Volumes oder einer Freigabe. Cloudmomentaufnahmen sind standardmäßig aktiviert und können nicht deaktiviert werden. Alle Volumes und Freigaben werden über eine Richtlinie für die tägliche Sicherung gleichzeitig gesichert, und Sie können jederzeit zusätzliche Ad-hoc-Sicherungen erstellen, wenn dies erforderlich ist.
+Beim virtuellen Array ermöglichen Cloudmomentaufnahmen die Erstellung einer standortunabhängigen Point-in-Time-Kopie eines Volumes oder einer Freigabe. Cloudmomentaufnahmen sind standardmäßig aktiviert und können nicht deaktiviert werden. Alle Volumes und Freigaben werden über eine Richtlinie für die tägliche Sicherung gleichzeitig gesichert, und Sie können bei Bedarf jederzeit zusätzliche Ad-hoc-Sicherungen erstellen.
 
 ### <a name="data-protection-and-disaster-recovery"></a>Schutz von Daten und Notfallwiederherstellung
 Das virtuelle Array unterstützt die folgenden Szenarien für den Schutz der Daten und die Notfallwiederherstellung:

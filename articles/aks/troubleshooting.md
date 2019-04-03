@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432633"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540923"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -90,3 +90,7 @@ Clustervorgänge sind eingeschränkt, wenn aktive Upgradevorgänge stattfinden o
 
 * Wenn ein aktives Upgrade des Clusters durchgeführt wird, warten Sie, bis der Vorgang beendet wurde. Wenn dies erfolgreich war, versuchen Sie den zuvor fehlgeschlagenen Vorgang erneut.
 * Wenn das Upgrade des Clusters fehlgeschlagen ist, führen Sie die oben beschriebenen Schritte aus.
+
+## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Kann ich meinen Cluster in ein anderes Abonnement verschieben oder mein Abonnement mit meinem Cluster in einen anderen Mandanten?
+
+Wenn Sie Ihren AKS-Cluster in ein anderes Abonnement verschoben haben oder das Abonnement, das den Cluster besitzt, in einen anderen Mandanten, verliert der Cluster seine Funktionalität aufgrund des Verlusts von Rollenzuweisungen und Dienstprinzipalrechten. Aufgrund dieser Einschränkung **unterstützt AKS das Verschieben von Clustern über Abonnements oder Mandanten nicht**.

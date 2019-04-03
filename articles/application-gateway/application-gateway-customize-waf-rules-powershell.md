@@ -1,32 +1,19 @@
 ---
-title: Anpassen von Web Application Firewall-Regeln im Azure Application Gateway-Portal – PowerShell | Microsoft-Dokumentation
+title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – PowerShell
 description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit PowerShell.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: dfcd82a17a399f213f5c4e32326a8995d26e8458
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: f96395a54f66b787878faeee057f02818f956ade
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218268"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316998"
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>Anpassen von Web Application Firewall-Regeln über PowerShell
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-customize-waf-rules-cli.md)
 
 Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz für Webanwendungen. Diese Schutzmaßnahmen werden durch die Kernregeln (Core Rule Set, CRS) des Open Web Application Security-Projekts (OWASP) bereitgestellt. Einige Regeln können falsche positive Ergebnisse ausgeben und den realen Datenverkehr blockieren. Aus diesem Grund bietet Application Gateway die Möglichkeit, Regelgruppen und Regeln anzupassen. Weitere Informationen zu den jeweiligen Regelgruppen und Regeln finden Sie in der [Liste der CRS-Regelgruppen und -Regeln der Web Application Firewall](application-gateway-crs-rulegroups-rules.md).
 
@@ -39,7 +26,7 @@ Der folgende Code veranschaulicht, wie Regeln und Regelgruppen angezeigt werden,
 Das folgende Beispiel zeigt, wie Regelgruppen angezeigt werden:
 
 ```powershell
-Get-AzureRmApplicationGatewayAvailableWafRuleSets
+Get-AzApplicationGatewayAvailableWafRuleSets
 ```
 
 Die folgende Ausgabe ist eine abgeschnittene Antwort aus dem vorherigen Beispiel:
@@ -99,10 +86,23 @@ OWASP (Ver. 3.0):
 Das folgende Beispiel deaktiviert die Regeln `911011` und `911012` für ein Anwendungsgateway:
 
 ```powershell
-$disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
-Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+$disabledrules=New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
+Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
+
+## <a name="mandatory-rules"></a>Obligatorische Regeln
+
+Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert (im Erkennungsmodus werden sie als Ausnahmen protokolliert). Diese können nicht konfiguriert oder deaktiviert werden:
+
+* Fehler beim Analysieren des Anforderungstexts führen dazu, dass die Anforderung blockiert wird, sofern die Textüberprüfung nicht deaktiviert ist (XML, JSON, Formulardaten).
+* Die Datenlänge des Anforderungstexts (ohne Dateien) überschreitet das konfigurierte Limit.
+* Der Anforderungstext (einschließlich Dateien) überschreitet den Grenzwert.
+* Ein interner Fehler ist in der WAF-Engine aufgetreten.
+
+CRS 3.x-spezifisch:
+
+* Anomaliebewertung für Eingang überschritt den Schwellenwert
 
 ## <a name="next-steps"></a>Nächste Schritte
 

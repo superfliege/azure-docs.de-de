@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30245736"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078141"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurieren von Multipfad-E/A für Ihr StorSimple-Gerät
 
@@ -35,14 +35,14 @@ MPIO ist ein optionales Feature und wird unter Windows Server nicht standardmä�
 
 Führen Sie die folgenden Schritte aus, um MPIO auf Ihrem StorSimple-Gerät zu konfigurieren:
 
-* Schritt 1: Installieren von MPIO auf dem Windows Server-Host
-* Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
-* Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
+* Schritt 1: Installieren von MPIO auf dem Windows Server-Host
+* Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
+* Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
 * Schritt 4: Konfigurieren von MPIO für Hochverfügbarkeit und Lastenausgleich
 
 Jeder der vorherigen Schritte wird in den folgenden Abschnitten erläutert.
 
-## <a name="step-1-install-mpio-on-the-windows-server-host"></a>Schritt 1: Installieren von MPIO auf dem Windows Server-Host
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>Schritt 1: Installieren von MPIO auf dem Windows Server-Host
 
 Gehen Sie folgendermaßen vor, um dieses Feature auf Ihrem Windows Server-Host zu installieren.
 
@@ -73,7 +73,7 @@ Gehen Sie folgendermaßen vor, um dieses Feature auf Ihrem Windows Server-Host z
    
        ![Hinzufügen von Rollen und Features – Assistent 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
-## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
+## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
 
 MPIO muss konfiguriert werden, damit StorSimple-Volumes erkannt werden. Führen Sie zum Konfigurieren von MPIO für die Erkennung von StorSimple-Geräten die folgenden Schritte aus.
 
@@ -91,7 +91,7 @@ MPIO muss konfiguriert werden, damit StorSimple-Volumes erkannt werden. Führen 
     ![Hinzufügen von MPIO-Unterstützung](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. Starten Sie den Server neu, wenn Sie dazu aufgefordert werden.
 
-## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
+## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
 
 Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple-Gerät erstellte Volumes bereitgestellt werden und anschließend MPIO für Redundanz nutzen. Führen Sie die folgenden Schritte aus, um ein Volume bereitzustellen.
 
@@ -104,8 +104,8 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
    1. Geben Sie die IP-Adresse des DATA-Ports Ihres StorSimple-Geräts ein (Beispiel: DATA 0).
    2. Klicken Sie auf **OK**, um zum Dialogfeld **Eigenschaften des iSCSI-Initiators** zurückzukehren.
      
-     > [!IMPORTANT]
-     > **Wenn Sie ein privates Netzwerk für iSCSI-Verbindungen verwenden, geben Sie die IP-Adresse des DATA-Ports ein, der mit dem privaten Netzwerk verbunden ist.**
+      > [!IMPORTANT]
+      > **Wenn Sie ein privates Netzwerk für iSCSI-Verbindungen verwenden, geben Sie die IP-Adresse des DATA-Ports ein, der mit dem privaten Netzwerk verbunden ist.**
     
 4. Wiederholen Sie die Schritte 2 bis 3 für eine zweite Netzwerkschnittstelle (z. B. DATA 1) auf Ihrem Gerät. Denken Sie daran, dass diese Schnittstellen für iSCSI aktiviert sein sollten. Weitere Informationen finden Sie unter [Ändern von Netzwerkschnittstellen](storsimple-8000-modify-device-config.md#modify-network-interfaces).
 5. Wählen Sie die Registerkarte **Ziele** im Dialogfeld **Eigenschaften des iSCSI-Initiators** aus. Der Ziel-IQN des StorSimple-Geräts sollte unter **Ermittelte Ziele**angezeigt werden.

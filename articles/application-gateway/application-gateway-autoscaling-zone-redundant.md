@@ -5,23 +5,21 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446510"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544036"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)
 
 Application Gateway und Web Application Firewall (WAF) sind nun in der öffentlichen Vorschau unter einer neuen v2-SKU verfügbar, die eine bessere Leistung und Unterstützung für wichtige neue Funktionen wie automatische Skalierung, Zonenredundanz sowie Unterstützung statischer VIPs bietet. Vorhandene Features in der allgemein erhältlichen SKU werden in der neuen v2-SKU weiterhin unterstützt. Es gelten aber einige wenige Ausnahmen, die im Abschnitt zu den bekannten Einschränkungen aufgeführt sind. Die neuen v2-SKUs enthalten die folgenden Verbesserungen:
 
-- **Automatische Skalierung**: Für Application Gateway- oder WAF-Bereitstellungen unter der SKU mit automatischer Skalierung ist nun das zentrale Hochskalieren und Herunterskalieren je nach Veränderung der Netzwerkdatenverkehr-Auslastungsmuster möglich. Durch die automatische Skalierung entfällt auch die Notwendigkeit, während des Bereitstellens eine Bereitstellungsgröße oder eine Anzahl von Instanzen auszuwählen. Somit bietet die SKU wahre Flexibilität. In der neuen SKU kann Application Gateway sowohl mit fester Kapazität (automatische Skalierung deaktiviert) als auch mit aktivierter automatischer Skalierung betrieben werden. Der Modus mit fester Kapazität empfiehlt sich für Szenarien mit einheitlichen und vorhersagbaren Workloads. Der Modus mit automatischer Skalierung empfiehlt sich für Anwendungen, bei denen der Anwendungsdatenverkehr großen Schwankungen unterworfen ist.
+- **Automatische Skalierung**: Für Application Gateway- oder WAF-Bereitstellungen unter der SKU mit automatischer Skalierung ist nun das zentrale Hochskalieren und Herunterskalieren je nach Veränderung der Netzwerkdatenverkehr-Auslastungsmuster möglich. Durch die automatische Skalierung entfällt auch die Notwendigkeit, während des Bereitstellens eine Bereitstellungsgröße oder eine Anzahl von Instanzen auszuwählen. Diese SKU bietet wahre Elastizität. In der neuen SKU kann Application Gateway sowohl mit fester Kapazität (automatische Skalierung deaktiviert) als auch mit aktivierter automatischer Skalierung betrieben werden. Der Modus mit fester Kapazität empfiehlt sich für Szenarien mit einheitlichen und vorhersagbaren Workloads. Der Modus mit automatischer Skalierung empfiehlt sich für Anwendungen, bei denen der Anwendungsdatenverkehr großen Schwankungen unterworfen ist.
 
-   > [!NOTE]
-   > Die automatische Skalierung ist derzeit für die WAF-SKU nicht verfügbar. Konfigurieren Sie WAF mit dem Modus mit fester Kapazität und nicht mit dem Modus mit automatischer Skalierung.
 - **Zonenredundanz**: Eine Application Gateway- oder WAF-Bereitstellung kann sich über mehrere Verfügbarkeitszonen erstrecken, sodass nicht mehr in jeder Zone mit einem Traffic Manager separate Application Gateway-Instanzen bereitgestellt und eingerichtet werden müssen. Sie können eine einzelne Zone oder mehrere Zonen mit bereitgestellten Application Gateway-Instanzen auswählen, um die Resilienz bei einem Zonenausfall zu gewährleisten. Der Back-End-Pool für Anwendungen kann auf ähnliche Weise auf Verfügbarkeitszonen verteilt werden.
 - **Leistungsverbesserungen**: Die SKU mit automatischer Skalierung bietet eine bis zu fünf Mal bessere SSL-Auslagerungsleistung verglichen mit der allgemein verfügbaren SKU.
 - **Schnellere Bereitstellung und Aktualisierung**: Die SKU mit automatischer Skalierung ermöglicht verglichen mit der allgemein verfügbaren SKU eine schnellere Bereitstellung und Aktualisierung.
@@ -38,7 +36,7 @@ Die SKU mit automatischer Skalierung ist in den folgenden Regionen verfügbar: U
 
 ## <a name="pricing"></a>Preise
 
-Während der Vorschauphase fallen keine Kosten für das Anwendungsgateway an. Andere Ressourcen (Key Vault, virtuelle Computer und Ähnliches) werden Ihnen jedoch in Rechnung gestellt.
+Während der Vorschauphase fallen keine Kosten für das Anwendungsgateway an. Andere Ressourcen (Key Vault, virtuelle Computer usw.) werden Ihnen jedoch in Rechnung gestellt.
 
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 
@@ -52,7 +50,6 @@ Während der Vorschauphase fallen keine Kosten für das Anwendungsgateway an. An
 |Abrechnung|Derzeit findet keine Abrechnung statt.|
 |FIPS-Modus, WebSocket|Diese werden derzeit nicht unterstützt.|
 |Reiner ILB-Modus|Dies wird derzeit nicht unterstützt. Öffentlicher und ILB-Modus kombiniert werden unterstützt.|
-|Automatische Skalierung für Web Application Firewall|WAF unterstützt derzeit keine automatische Skalierung. Der Modus mit fester Kapazität wird unterstützt.|
 |NetWatcher-Integration|In der öffentlichen Vorschau nicht unterstützt.|
 
 ## <a name="next-steps"></a>Nächste Schritte

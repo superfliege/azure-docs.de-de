@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd4b29134fd45ed2888fbc81ded413ecf7286959
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269925"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308651"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Hinzufügen von Vorschlagsfunktionen zu einem Azure Search-Index
 
@@ -34,52 +34,52 @@ Eine **Vorschlagsfunktion** verfügt zwar über mehrere Eigenschaften, in erster
 
 Sie können nur eine **Vorschlagsfunktion**-Ressource für jeden Index verwenden (nämlich eine **Vorschlagsfunktion** in der Sammlung **Vorschlagsfunktionen**).
 
-## <a name="creating-a-suggester"></a>Erstellen einer Vorschlagsfunktion 
+## <a name="creating-a-suggester"></a>Erstellen einer Vorschlagsfunktion
 
-Sie können jederzeit eine **Vorschlagsfunktion** erstellen, aber die Auswirkungen auf Ihren Index basieren auf den Feldern. 
+Sie können jederzeit eine **Vorschlagsfunktion** erstellen, aber die Auswirkungen auf Ihren Index basieren auf den Feldern.
 
 + Neue Felder, die einer Vorschlagsfunktion im Rahmen derselben Aktualisierung hinzugefügt werden, haben am wenigsten Auswirkungen, da keine Neuerstellung des Index erforderlich ist.
 + Das Hinzufügen vorhandener Felder zu einer Vorschlagsfunktion ändert jedoch die Felddefinition, was eine vollständige Neuerstellung des Index erforderlich macht.
 
- **Vorschlagsfunktionen** funktionieren am besten, wenn damit anstelle von zusammenhangslosen Begriffen oder Ausdrücken spezielle Dokumente vorgeschlagen werden sollen. Als Kandidaten eignen sich am besten Felder für Titel, Namen und sonstige relativ kurze Ausdrücke, anhand derer ein Element identifiziert werden kann. Weniger effektiv sind sich wiederholende Felder, wie etwa Kategorien und Tags, oder extrem lange Felder, etwa für Beschreibungen oder Kommentare.  
+**Vorschlagsfunktionen** funktionieren am besten, wenn damit anstelle von zusammenhangslosen Begriffen oder Ausdrücken spezielle Dokumente vorgeschlagen werden sollen. Als Kandidaten eignen sich am besten Felder für Titel, Namen und sonstige relativ kurze Ausdrücke, anhand derer ein Element identifiziert werden kann. Weniger effektiv sind sich wiederholende Felder, wie etwa Kategorien und Tags, oder extrem lange Felder, etwa für Beschreibungen oder Kommentare.
 
-Nachdem eine Vorschlagsfunktion erstellt wurde, fügen Sie die [Vorschlags-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) zu Ihrer Abfragelogik hinzu, um das Feature aufzurufen.  
+Nachdem eine Vorschlagsfunktion erstellt wurde, fügen Sie die [Vorschlags-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) zu Ihrer Abfragelogik hinzu, um das Feature aufzurufen.
 
-Zu den Eigenschaften, mit denen eine **Vorschlagsfunktion** definiert wird, zählen unter anderem:  
+Zu den Eigenschaften, mit denen eine **Vorschlagsfunktion** definiert wird, zählen unter anderem:
 
-|Eigenschaft|BESCHREIBUNG|  
-|--------------|-----------------|  
-|`name`|Der Name der **Vorschlagsfunktion**. Verwenden Sie den Namen des der **Vorschlagsfunktion** beim Aufrufen der [Vorschläge &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions).|  
-|`searchMode`|Die Strategie, mit der nach möglichen Ausdrücken gesucht wird. Derzeit wird nur der Modus `analyzingInfixMatching` unterstützt. Darin werden Ausdrücke am Anfang oder in der Mitte von Sätzen flexibel verglichen.|  
-|`sourceFields`|Eine Liste mit einem oder mehreren Feldern, die als Quelle für den Inhalt von Vorschlägen dienen. Als Vorschlagsquellen sind nur Felder vom Typ `Edm.String` und `Collection(Edm.String)` zulässig. Es können nur Felder ohne benutzerdefinierte Sprachanalyse verwendet werden. |  
+|Eigenschaft|BESCHREIBUNG|
+|--------------|-----------------|
+|`name`|Der Name der **Vorschlagsfunktion**. Verwenden Sie den Namen des der **Vorschlagsfunktion** beim Aufrufen der [Vorschläge &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions).|
+|`searchMode`|Die Strategie, mit der nach möglichen Ausdrücken gesucht wird. Derzeit wird nur der Modus `analyzingInfixMatching` unterstützt. Darin werden Ausdrücke am Anfang oder in der Mitte von Sätzen flexibel verglichen.|
+|`sourceFields`|Eine Liste mit einem oder mehreren Feldern, die als Quelle für den Inhalt von Vorschlägen dienen. Als Vorschlagsquellen sind nur Felder vom Typ `Edm.String` und `Collection(Edm.String)` zulässig. Es können nur Felder ohne benutzerdefinierte Sprachanalyse verwendet werden. |
 
-## <a name="suggester-example"></a>Vorschlagsfunktion (Beispiel)  
- Eine **Vorschlagsfunktion** ist Teil der Indexdefinition. In der aktuellen Version kann in der **Vorschlagsfunktion**-Sammlung neben der **Feldsammlung** und den **Bewertungsprofilen** nur eine **Vorschlagsfunktion** vorhanden sein.  
+## <a name="suggester-example"></a>Vorschlagsfunktion (Beispiel)
+Eine **Vorschlagsfunktion** ist Teil der Indexdefinition. In der aktuellen Version kann in der **Vorschlagsfunktion**-Sammlung neben der **Feldsammlung** und den **Bewertungsprofilen** nur eine **Vorschlagsfunktion** vorhanden sein.
 
-```  
-{  
-  "name": "hotels",  
-  "fields": [  
-     . . .   
-   ],  
-  "suggesters": [  
-    {  
-    "name": "sg",  
-    "searchMode": "analyzingInfixMatching",  
-    "sourceFields": ["hotelName", "category"]  
-    }  
-  ],  
-  "scoringProfiles": [  
-     . . .   
-  ]  
-}  
+```
+{
+  "name": "hotels",
+  "fields": [
+    . . .
+  ],
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": ["hotelName", "category"]
+    }
+  ],
+  "scoringProfiles": [
+    . . .
+  ]
+}
 
-```  
+```
 
-## <a name="see-also"></a>Weitere Informationen  
- [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Aktualisieren eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/update-index)   
- [Vorschläge &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions)   
- [Indexvorgänge &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/index-operations)   
- [Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+## <a name="see-also"></a>Weitere Informationen
+[Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+[Aktualisieren eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/update-index)  
+[Vorschläge &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions)  
+[Indexvorgänge &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/index-operations)  
+[Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice/)  
+[Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

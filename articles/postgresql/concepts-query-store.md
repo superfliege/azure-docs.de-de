@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 03/12/2019
+ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005898"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -32,12 +32,18 @@ Der Abfragespeicher ist ein optionales Feature. Daher ist er auf einem Server ni
 ### <a name="enable-query-store-using-the-azure-portal"></a>Aktivieren des Abfragespeichers über das Azure-Portal
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie Ihren Azure Database for PostgreSQL-Server aus.
 2. Wählen Sie im Bereich **Einstellungen** im Menü die Option **Serverparameter**.
-3. Suchen Sie nach dem Parameter **pg_qs.query_capture_mode**.
-4. Ändern Sie den Wert von NONE in TOP, und speichern Sie die Änderungen.
+3. Suchen Sie nach dem Parameter `pg_qs.query_capture_mode`.
+4. Legen Sie für den Wert `TOP` fest und **Speichern**.
 
-Alternativ können Sie diesen Parameter mithilfe der Azure-Befehlszeilenschnittstelle festlegen.
+So aktivieren Sie Wartestatistiken in Ihrem Abfragespeicher: 
+1. Suchen Sie nach dem Parameter `pgms_wait_sampling.query_capture_mode`.
+1. Legen Sie für den Wert `ALL` fest und **Speichern**.
+
+
+Alternativ können Sie diese Parameter über die Azure-Befehlszeilenschnittstelle festlegen.
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
+az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
 Es kann bis zu 20 Minuten dauern, bis der erste Datenbatch in der azure_sys-Datenbank gespeichert ist.
@@ -81,6 +87,7 @@ Im Folgenden finden Sie einige Beispiele dafür, wie Sie mithilfe der Wartestati
 Wenn der Abfragespeicher aktiviert ist, speichert er Daten in Aggregationsfenstern von 15 Minuten mit bis zu 500 unterschiedlichen Abfragen pro Fenster. 
 
 Die folgenden Optionen stehen für die Konfiguration der Abfragespeicherparameter zur Verfügung.
+
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | Legt fest, welche Anweisungen nachverfolgt werden. | none | none, top, all |
@@ -89,6 +96,7 @@ Die folgenden Optionen stehen für die Konfiguration der Abfragespeicherparamete
 | pg_qs.track_utility | Legt fest, ob Dienstprogrammbefehle nachverfolgt werden. | on | on, off |
 
 Die folgenden Optionen gelten speziell für Wartestatistiken.
+
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Legt fest, welche Anweisungen in Bezug auf Wartestatistiken nachverfolgt werden. | none | none, all|

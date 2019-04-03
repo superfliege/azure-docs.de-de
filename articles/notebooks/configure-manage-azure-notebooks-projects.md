@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904368"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774556"
 ---
 # <a name="manage-and-configure-projects"></a>Verwalten und Konfigurieren von Projekten
 
@@ -59,6 +59,17 @@ Wenn Sie eine DSVM-Instanz auswählen, werden Sie möglicherweise von Azure Note
 
 Um eine neue DSVM-Instanz zu erstellen, befolgen Sie die Anweisungen in [Erstellen einer Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Verwenden Sie das Image **Data Science Virtual Machine for Linux (Ubuntu)**, wenn die DSVM in der Dropdownliste in Azure Notebooks angezeigt werden soll.  Wenn Sie aus anderen Gründen das Windows- oder CentOS-Image verwenden müssen, können Sie die Option **Direct Compute** (Compute direkt) verwenden, um eine manuelle Verbindung mit der DSVM herzustellen.
 
+> [!IMPORTANT]
+> Wenn Sie Direct Compute oder Data Science Virtual Machines verwenden, müssen die darauf ausgeführten Notebooks völlig eigenständig sein. Derzeit kopiert Azure Notebooks nur die *.ipynb*-Datei auf die VM, kopiert aber keine anderen Dateien in das Projekt. Deshalb können Notebooks, die auf anderen VMs ausgeführt werden, andere Projektdateien nicht finden.
+>
+> Sie können dieses Verhalten auf zwei Arten umgehen:
+>
+> 1. Kopieren Sie Projektdateien manuell auf die VM.
+>
+> 2. Betten Sie die Dateien in einem Setup-Notebook ein, das Sie vor dem primären Notebook ausführen. Erstellen Sie im Setup-Notebook eine Codezelle für jede Datei, wobei die Zelle die Dateiinhalte enthält. Fügen Sie dann oben in jeder Zelle den Befehl `%%writefile <filename>` ein. `<filename>` ist der Name der Zieldatei für die Inhalte. Wenn Sie das Notebook ausführen, erstellt es alle diese Dateien auf der VM. Ein entsprechendes Beispiel finden Sie in der [Datei „setup.ipynb“ in der Demo zu Microsoft Pet Detector](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
+>
+>     ![Verwendung eines „%%writefile“-Befehls am Anfang einer Codezelle](media/setup-notebook-writefile-command.png)
+
 ## <a name="edit-project-metadata"></a>Bearbeiten von Projektmetadaten
 
 Wählen Sie im Projektdashboard **Projekteinstellungen** und dann die Registerkarte **Informationen** aus, die die in der folgenden Tabelle beschriebenen Projektmetadaten enthält. Sie können die Projektmetadaten jederzeit ändern.
@@ -66,7 +77,7 @@ Wählen Sie im Projektdashboard **Projekteinstellungen** und dann die Registerka
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Projektname | Ein Anzeigename für Ihr Projekt, das Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise "Hallo Welt in Python". |
-| Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird (das Format lautet `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen und ist auf 30 Zeichen beschränkt. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, also wird etwa "Mein Projekt" zu "mein-projekt". |
+| Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird. Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen, ist auf 30 Zeichen beschränkt und darf keine [reservierte Projekt-ID](create-clone-jupyter-notebooks.md#reserved-project-ids) sein. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, wie etwa in „mein-notebook-projekt“ (ggf. gekürzt, um die Längenbeschränkung einzuhalten). |
 | Öffentliches Projekt | Wenn diese Option festgelegt ist, kann jeder, der über den Link verfügt, auf das Projekt zugreifen. Deaktivieren Sie diese Option, wenn Sie ein privates Projekt erstellen. |
 | Klone ausblenden | Wenn diese Option festgelegt ist, können andere Benutzer die Liste der Klone, die für dieses Projekt erstellt wurden, nicht sehen. Das Ausblenden der Klone empfiehlt sich bei Projekten, die mit einer großen Anzahl Personen geteilt werden, die nicht Teil der gleichen Organisation sind, etwa wenn ein Notebook zum Unterrichten eines Kurses verwendet wird. |
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b88660548feaa1d3a8e83e633f798212c80ac6dc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190305"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539104"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -24,8 +24,7 @@ Das Sichern von Datenbanken für tabellarische Modelle in Azure Analysis Service
 > 
 > 
 
-Sicherungen werden mit der Erweiterung ABF gespeichert. Für tabellarische In-Memory-Modelle werden sowohl die Modelldaten als auch die Metadaten gespeichert. Für tabellarische DirectQuery-Modelle werden nur die Modellmetadaten gespeichert. Sicherungen können in Abhängigkeit von den gewählten Optionen komprimiert und verschlüsselt werden. 
-
+Sicherungen werden mit der Erweiterung ABF gespeichert. Für tabellarische In-Memory-Modelle werden sowohl die Modelldaten als auch die Metadaten gespeichert. Für tabellarische DirectQuery-Modelle werden nur die Modellmetadaten gespeichert. Sicherungen können in Abhängigkeit von den gewählten Optionen komprimiert und verschlüsselt werden.
 
 
 ## <a name="configure-storage-settings"></a>Konfigurieren von Speichereinstellungen

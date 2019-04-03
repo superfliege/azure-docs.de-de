@@ -1,25 +1,18 @@
 ---
 title: WebSocket-Unterstützung in Azure Application Gateway | Microsoft-Dokumentation
 description: Diese Seite enthält eine Übersicht über die WebSocket-Unterstützung von Application Gateway.
-documentationcenter: na
-services: application-gateway
 author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: 8968dac1-e9bc-4fa1-8415-96decacab83f
-ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/08/2017
 ms.author: amsriva
-ms.openlocfilehash: cc6e2480ea117a288ae94c9cd66be6a354d8230f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.service: application-gateway
+ms.topic: conceptual
+ms.workload: infrastructure-services
+ms.date: 03/18/2019
+ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168118"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Übersicht über die WebSocket-Unterstützung in Application Gateway
 
@@ -29,7 +22,15 @@ Das in [RFC6455](https://tools.ietf.org/html/rfc6455) standardisierte WebSocket-
 
 WebSocket-Datenverkehr kann mit einem standardmäßigen HTTP-Listener an den Ports 80 und 443 empfangen werden. Der empfangene WebSocket-Datenverkehr wird dann unter Verwendung des entsprechenden Back-End-Pools (gemäß Angabe in Anwendungsgatewayregeln) an den WebSocket-fähigen Back-End-Server weitergeleitet. Der Back-End-Server muss auf die Anwendungsgatewaytests reagieren. Diese werden im Abschnitt [Integritätstest – Übersicht](application-gateway-probe-overview.md) erläutert. Application Gateway-Integritätstests sind auf HTTP/HTTPS beschränkt. Jeder Back-End-Server muss auf HTTP-Tests für das Anwendungsgateway reagieren, damit WebSocket-Datenverkehr an den Server weitergeleitet wird.
 
-## <a name="listener-configuration-element"></a>Listenerkonfigurationselement
+WebSocket wird in Anwendungen verwendet, die von schneller Kommunikation in Echtzeit profitieren, wie etwa Chat-, Dashboard- und Spiele-Apps.
+
+## <a name="how-does-websocket-work"></a>Funktionsweise von WebSocket
+
+Um eine WebSocket-Verbindung einzurichten, wird ein spezifischer HTTP-basierter Handshake zwischen dem Client und dem Server ausgetauscht. Im Erfolgsfall wird mithilfe der zuvor hergestellten TCP-Verbindung ein „Upgrade“ des Protokolls der Anwendungsschicht von HTTP auf WebSockets ausgeführt. Sobald dies erfolgt ist, spielt HTTP keinerlei Rolle mehr. Daten können von beiden Endpunkten mithilfe des WebSocket-Protokolls gesendet oder empfangen werden, bis die WebSocket-Verbindung geschlossen wird. 
+
+![addcert](./media/application-gateway-websocket/websocket.png)
+
+### <a name="listener-configuration-element"></a>Listenerkonfigurationselement
 
 Zur Unterstützung von WebSocket-Datenverkehr kann ein vorhandener HTTP-Listener verwendet werden. Es folgt ein Codeausschnitt des „httpListeners“-Elements in einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das [Portal](application-gateway-create-gateway-portal.md) oder mithilfe von [PowerShell](application-gateway-create-gateway-arm.md) ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
 

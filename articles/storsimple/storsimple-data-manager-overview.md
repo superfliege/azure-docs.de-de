@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: fe4d332859b3ec0ba03e64f9a830b7710586aa17
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158816"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312487"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -68,7 +68,9 @@ Wir empfehlen Folgendes:
  - Das Quellspeicherkonto (das Ihrem StorSimple-Gerät zugeordnet ist) und das Zielspeicherkonto (das die Daten im nativen Format enthalten soll) sollten sich in derselben Azure-Region befinden.
  - Data Manager und die Auftragsdefinition sollten sich in der Region mit dem StorSimple-Speicherkonto befinden. Wenn dies nicht möglich ist, richten Sie Data Manager in der nächstgelegenen Azure-Region ein, und erstellen Sie dann die Auftragsdefinition in derselben Region wie Ihr StorSimple-Speicherkonto. 
 
-    Wenn sich Ihr StorSimple-Speicherkonto nicht in den 26 Regionen befindet, die die Erstellung von Auftragsdefinitionen unterstützen, wird empfohlen, StorSimple Data Manager nicht auszuführen, da dies mit langen Wartezeiten und möglicherweise hohen Ausgabegebühren verbunden ist.
+    Wenn sich Ihr StorSimple-Speicherkonto nicht in den 26 Regionen befindet, die die Erstellung von Auftragsdefinitionen unterstützen, wird empfohlen, StorSimple Data Manager nicht auszuführen, da dies mit langen Wartezeiten und potenziellen Ausgabegebühren verbunden ist.
+    
+Microsoft möchte sicherstellen, dass Azure-Dienste in allen Regionen immer verfügbar sind. Allerdings kann es in einer bestimmten Region während kurzer Zeiträume zu ungeplanten Dienstunterbrechungen kommen. In solchen Fällen können Sie einen Data Manager und eine Auftragsdefinition in einer Region aufrufen, die von der Unterbrechung nicht betroffen ist, und den Transformationsauftrag ausführen. Möglicherweise kommt es in einem solchen Szenario zu einer zusätzlichen Wartezeit, doch kann dies Ihre Wiederherstellungsstrategie im seltenen Fall einer regionalen Unterbrechung sein.
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
