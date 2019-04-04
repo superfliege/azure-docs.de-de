@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 005b0e74084325606a9a07df6b36b9100cad1750
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885947"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792466"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage
+
 In diesem Artikel wird gezeigt, wie Sie eine Azure Resource Manager-Vorlage mithilfe von C# bereitstellen. Mit der Vorlage, die Sie erstellen, wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
 
 Eine ausführliche Beschreibung der Ressource des virtuellen Computers finden Sie unter [Virtuelle Computer in einer Azure Resource Manager-Vorlage](template-description.md). Weitere Informationen zu allen Ressourcen in einer Vorlage finden Sie unter [Exemplarische Vorgehensweise zu Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-template-walkthrough.md).
@@ -44,7 +45,7 @@ NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installier
 1. Klicken Sie auf **Extras** > **NuGet-Paket-Manager** und dann auf **Paket-Manager-Konsole**.
 2. Geben Sie in die Konsole diese Befehle ein:
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
@@ -206,15 +207,17 @@ Bevor Sie eine Vorlage bereitstellen können, stellen Sie sicher, dass Sie Zugri
 3. Speichern Sie die Datei „azureauth.properties“.
 4. Legen Sie eine Umgebungsvariable in Windows mit dem Namen AZURE_AUTH_LOCATION mit vollständigem Pfad zur erstellten Autorisierungsdatei fest. Sie können z.B. den folgende PowerShell-Befehl verwenden:
 
-    ```
+    ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
+
     
+
 ## <a name="create-the-management-client"></a>Erstellen des Verwaltungsclients
 
 1. Öffnen Sie die Datei „Program.cs“ für das von Ihnen erstellte Projekt, und fügen Sie die folgenden using-Anweisungen dann am Anfang der Datei den vorhandenen Anweisungen hinzu:
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -226,7 +229,7 @@ Bevor Sie eine Vorlage bereitstellen können, stellen Sie sicher, dass Sie Zugri
 
 2. Fügen Sie der „Main“-Methode den folgenden Code hinzu, um den Verwaltungsclient zu erstellen:
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -241,7 +244,7 @@ Bevor Sie eine Vorlage bereitstellen können, stellen Sie sicher, dass Sie Zugri
 
 Um Werte für die Anwendung anzugeben, fügen Sie der „Main“-Methode Code hinzu:
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var location = Region.USWest;
 
@@ -256,7 +259,7 @@ Die Vorlage und Parameter werden über ein Speicherkonto in Azure bereitgestellt
 
 Fügen Sie der „Main“-Methode den folgenden Code hinzu, um das Konto zu erstellen:
 
-```
+```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
 
 Console.WriteLine("Creating storage account...");
@@ -296,7 +299,7 @@ Stellen Sie die Vorlage und Parameter über das Speicherkonto bereit, das erstel
 
 Um die Vorlage bereitzustellen, fügen Sie der „Main“-Methode diesen Code hinzu:
 
-```
+```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
 var paramPath = "https://" + storageAccountName + ".blob.core.windows.net/templates/Parameters.json";
 var deployment = azure.Deployments.Define("myDeployment")
@@ -315,7 +318,7 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um die Ressourcengruppe zu löschen:
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -328,5 +331,6 @@ Die vollständige Ausführung dieser Konsolenanwendung sollte etwa fünf Minuten
 2. Bevor Sie die **EINGABETASTE** drücken, um das Löschen der Ressourcen zu starten, können Sie sich ein paar Minuten Zeit nehmen, um die Erstellung der Ressourcen im Azure-Portal zu überprüfen. Klicken Sie auf den Bereitstellungsstatus, um Informationen zur Bereitstellung anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../resource-manager-common-deployment-errors.md) lesen.
 * Informationen zum Bereitstellen einer virtuellen Maschine und deren unterstützende Ressourcen finden Sie unter [Bereitstellen eines virtuellen Azure-Computers mit C#](csharp.md).

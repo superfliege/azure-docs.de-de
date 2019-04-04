@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 7032fabd022b55bc8946a48568bbd799d4a0a5e9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731377"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848351"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Darstellen der Leistung in Diagrammen mit Azure Monitor für VMs (Vorschauversion)
 Azure Monitor for VMs beinhaltet einen Satz Leistungsdiagramme, die auf verschiedene Key Performance Indicators (KPIs) abzielen, um Sie beim Bestimmen der Leistung eines virtuellen Computers zu unterstützen. Die Diagramme zeigen die Ressourcennutzung über einen Zeitraum an, damit Sie Engpässe und Anomalien erkennen oder zu einer Perspektive wechseln können, in der jede VM aufgelistet ist, um die Ressourcennutzung nach der ausgewählten Metrik anzuzeigen. Beim Thema Leistung sind zwar eine Vielzahl von Elementen zu berücksichtigen, Azure Monitor für VMs überwacht jedoch Betriebssystem-Key Performance Indicators im Zusammenhang mit Prozessor, Arbeitsspeicher, Netzwerkadapter und Datenträgerverwendung. Leistung ergänzt das Feature zur Integritätsüberwachung und hilft bei der Offenlegung von Problemen, die auf einen möglichen Ausfall von Systemkomponenten hinweisen, Feinabstimmung und Optimierung unterstützen, um Effizienz zu erreichen, oder bei der Kapazitätsplanung helfen.  
@@ -111,7 +111,7 @@ Leistungsmetriken, die im Rahmen von Azure Monitor für VMs aktiviert werden, en
 
 Unter Umständen wird aber nur eine Teilmenge der Leistungsmetriken erfasst und gespeichert, die Sie im Log Analytics-Arbeitsbereich benötigen. Falls für Ihre Überwachungsstrategie Analysen oder Warnungen erforderlich sind, die andere Leistungsmetriken für die effektive Auswertung der Kapazität oder Integrität des virtuellen Computers enthalten, oder falls Sie Ihre eigenen Kriterien oder Logikkomponenten für Warnungen flexibel angeben müssen, können Sie wie folgt vorgehen: Konfigurieren Sie die [Erfassung dieser Leistungsindikatoren](../platform/data-sources-performance-counters.md) in Log Analytics, und definieren Sie [Protokollwarnungen](../platform/alerts-log.md). Mit Log Analytics können Sie zwar komplexe Analysen mit anderen Datentypen durchführen und eine längere Aufbewahrung zur Unterstützung von Trendanalysen erzielen, aber Metriken sind einfach aufgebaut und können Szenarien unterstützen, bei denen die Vorgänge nahezu in Echtzeit ablaufen. Sie werden mit dem [Azure-Diagnose-Agent](../../virtual-machines/windows/monitor.md) erfasst und im Azure Monitor-Metrikspeicher gespeichert, sodass Sie Warnungen mit geringerer Latenz und zu niedrigeren Kosten erstellen können.
 
-Lesen Sie sich die Übersicht über die [Erfassung von Metriken und Protokollen mit Azure Monitor](../platform/data-collection.md) durch, um sich eingehender mit den grundlegenden Unterschieden und anderen Aspekten vertraut zu machen, bevor Sie die Erfassung dieser zusätzlichen Metriken und Warnungsregeln konfigurieren.  
+Lesen Sie sich die Übersicht über die [Erfassung von Metriken und Protokollen mit Azure Monitor](../platform/data-platform.md) durch, um sich eingehender mit den grundlegenden Unterschieden und anderen Aspekten vertraut zu machen, bevor Sie die Erfassung dieser zusätzlichen Metriken und Warnungsregeln konfigurieren.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Verwendung des Integritätsfeatures finden Sie unter [View Azure Monitor for VMs Health](vminsights-health.md) (Azure Monitor for VMs – Integrität anzeigen); Informationen zum Anzeigen entdeckter Anwendungsabhängigkeiten finden Sie unter [View Azure Monitor for VMs Map](vminsights-maps.md) (Azure Monitor for VMs – Zuordnung anzeigen). 

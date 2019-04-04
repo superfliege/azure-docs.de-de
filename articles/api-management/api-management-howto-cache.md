@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 39284805d9b9b5c10f5e211dc7d4c461d15cc6bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763536"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577015"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
 
 Operationen in API Management können für das Zwischenspeichern von Antworten konfiguriert werden. Das Zwischenspeichern von Antworten kann API-Latenz, Bandbreitennutzung und Webdienstlast für Daten, die sich eher selten ändern, drastisch senken.
- 
+
 Ausführlichere Informationen zum Zwischenspeichern finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md) sowie unter [Benutzerdefiniertes Caching in Azure API Management](api-management-sample-cache-by-key.md).
 
 ![Zwischenspeicherungsrichtlinien](media/api-management-howto-cache/cache-policies.png)
@@ -59,7 +59,7 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
 6. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
 7. Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**.
 
-    ![Code-Editor](media/api-management-howto-cache/code-editor.png) 
+    ![Code-Editor](media/api-management-howto-cache/code-editor.png)
 
 8. Fügen Sie im Element für den **Eingang** die folgende Richtlinie hinzu:
 
@@ -76,7 +76,7 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
     **Dauer** gibt das Ablaufintervall der gespeicherten Antworten an. In diesem Beispiel beträgt das Intervall **20** Sekunden.
 
 > [!TIP]
-> Wenn Sie wie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md) beschrieben einen externen Cache verwenden, empfiehlt es sich ggf., das Attribut `cache-preference` der Cachingrichtlinien anzugeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
+> Wenn Sie wie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md) beschrieben einen externen Cache verwenden, empfiehlt es sich ggf., das Attribut `caching-type` der Cachingrichtlinien anzugeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
 
 ## <a name="test-operation"></a>Aufrufen einer Operation und Testen der Zwischenspeicherung
 Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das Entwicklerportal aufrufen.

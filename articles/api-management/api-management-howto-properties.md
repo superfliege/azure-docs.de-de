@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082703"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791625"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der das Azure-Portal das Verhalten der API über eine Konfiguration ändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und benannten Werten erstellt werden. 
@@ -34,7 +34,7 @@ Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüsse
 
 ![Benannte Werte](./media/api-management-howto-properties/named-values.png)
 
-Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx)enthalten. Der Wert von `ExpressionProperty` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Die Eigenschaft `ContosoHeaderValue` ist als geheimer Schlüssel markiert, sodass ihr Wert nicht angezeigt wird.
+Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions)enthalten. Der Wert von `ExpressionProperty` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Die Eigenschaft `ContosoHeaderValue` ist als geheimer Schlüssel markiert, sodass ihr Wert nicht angezeigt wird.
 
 | NAME | Wert | Geheimer Schlüssel | Tags |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](https
 
 Sobald die Eigenschaft erstellt wurde, können Sie sie bearbeiten, indem Sie darauf klicken. Wenn Sie den Namen der Eigenschaft ändern, werden alle Richtlinien, die auf diese Eigenschaft verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.
 
-Informationen zum Bearbeiten einer Eigenschaft mithilfe der REST-API finden Sie unter [Bearbeiten einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
+Informationen zum Bearbeiten einer Eigenschaft mithilfe der REST-API finden Sie unter [Bearbeiten einer Eigenschaft mit der REST-API](/rest/api/apimanagement/property?Patch).
 
 ## <a name="to-delete-a-property"></a>So löschen Sie eine Eigenschaft
 
@@ -66,7 +66,7 @@ Klicken Sie zum Löschen einer Eigenschaft neben der zu löschenden Eigenschaft 
 > 
 > 
 
-Informationen zum Löschen einer Eigenschaft mithilfe der REST-API finden Sie unter [Löschen einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
+Informationen zum Löschen einer Eigenschaft mithilfe der REST-API finden Sie unter [Löschen einer Eigenschaft mit der REST-API](/rest/api/apimanagement/property?Delete).
 
 ## <a name="to-search-and-filter-named-values"></a>So suchen und filtern Sie benannte Werte:
 
@@ -111,8 +111,8 @@ Eigenschaftswerte können zwar Richtlinienausdrücke enthalten, Eigenschaftswert
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Arbeiten mit Richtlinien
   * [Richtlinien in Azure API Management](api-management-howto-policies.md)
-  * [Richtlinienreferenz](https://msdn.microsoft.com/library/azure/dn894081.aspx)
-  * [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx)
+  * [Richtlinienreferenz](/azure/api-management/api-management-policies)
+  * [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

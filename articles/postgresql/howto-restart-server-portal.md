@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168774"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621822"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Neustart eines Azure Database for PostgreSQL-Servers über das Azure-Portal
 In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Server neu starten können. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.
@@ -22,7 +22,7 @@ Die für einen Neustart benötigte Zeit hängt von dem PostgreSQL-Wiederherstell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
-- [Einen Server und eine Datenbank für Azure-Datenbank für PostgreSQL](quickstart-create-server-database-portal.md)
+- Einen [Azure-Datenbank für PostgreSQL-Server](quickstart-create-server-database-portal.md)
 
 ## <a name="perform-server-restart"></a>Ausführen des Serverneustarts
 

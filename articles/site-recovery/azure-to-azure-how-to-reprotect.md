@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110493"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648901"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -22,10 +22,6 @@ Wenn Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) ein [Fail
 
 - Schützen Sie die virtuellen Computer in der sekundären Region erneut, damit ihre Replizierung in der primären Region starten kann.
 - Nachdem das erneute Schützen abgeschlossen ist und die virtuellen Computer replizieren, können Sie ein Failover für sie von der sekundären zur primären Region durchführen.
-
-> [!WARNING]
-> Wenn Sie Computer von der sekundären zur primären Region [migriert](migrate-overview.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, können Sie den virtuellen Computer weder erneut schützen noch ein Failback dafür ausführen.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Das Failover des virtuellen Computers von der primären zur sekundären Region muss committet werden.

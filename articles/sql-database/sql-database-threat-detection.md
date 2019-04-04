@@ -12,18 +12,18 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4e853b9edbd000d8b61b5e05f3ae65c07258d73f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002155"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793770"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Warnungen der Bedrohungserkennung von Azure SQL-Datenbank für Singletons oder in einem Pool zusammengefasste Datenbanken
 
-Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für Singletons und in einem Pool zusammengefasste Datenbanken identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu verwenden. Mithilfe der Bedrohungserkennung können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Warnungen der Bedrohungserkennung](sql-database-threat-detection-overview.md#threat-detection-alerts).
+Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für Singletons und in einem Pool zusammengefasste Datenbanken identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu verwenden. Mithilfe der Bedrohungserkennung können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Warnungen der Bedrohungserkennung](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
-Sie können sich über [E-Mail-Benachrichtigungen](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) oder im [Azure-Portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
+Sie können sich über [E-Mail-Benachrichtigungen](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) oder im [Azure-Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
 
 Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestandteil des [Advanced Data Security](sql-database-advanced-data-security.md)-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich. Für das Advanced Data Security-Paket werden pro logischem Server 15 USD/Monat berechnet. Dabei sind die ersten 30 Tage kostenlos.
 

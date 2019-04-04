@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie einen Service Fabric-Dienst durch Angeben von
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 55d75bb0bae4bf3feb370b7fdf4d80dc43bdc0ca
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 21fcac62c9335652d0c682a6ac889be82e649464
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736888"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661546"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurieren von Einstellungen des Clusterressourcen-Managers für Service Fabric-Dienste
 Der Clusterressourcen-Manager von Service Fabric ermöglicht eine detaillierte Steuerung der Regeln, die für jeden einzelnen benannten Dienst gelten. Jeder benannte Dienst kann Regeln für seine Zuordnung im Cluster angeben. Darüber hinaus kann jeder benannte Dienst die zu meldenden Metriken und deren jeweilige Bedeutung für den Dienst definieren. Zum Konfigurieren von Diensten müssen drei Aufgaben ausgeführt werden:

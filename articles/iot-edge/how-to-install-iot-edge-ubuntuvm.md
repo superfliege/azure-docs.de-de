@@ -7,14 +7,14 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.author: gregman
-ms.openlocfilehash: 5b3dcb3abad071cb5d079d6c740cc09e2577a363
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5cb15f45508b60a1b7f8c9049b8779c1b7d31150
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116417"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757930"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -85,7 +85,7 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
 1. Legen Sie die Verbindungszeichenfolge fest. (Befolgen Sie die Schrittanleitung unter [Registrieren eines neuen Azure IoT Edge-Geräts mithilfe der Azure-Befehlszeilenschnittstelle](how-to-register-device-cli.md), wenn Sie mit diesem Prozess nicht vertraut sind.)
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
 Wenn Sie nach der Einrichtung eine SSH-Verbindung mit diesem virtuellen Computer herstellen möchten, verwenden Sie „publicIpAddress“ mit dem folgenden Befehl: `ssh azureuser@{publicIpAddress}`.

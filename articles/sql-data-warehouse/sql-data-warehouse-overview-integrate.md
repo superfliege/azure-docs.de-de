@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2995c08b2dc92f36061c6ba29be68b402b2d3ec0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2fcdd4aa28a7d3b1a8e50629e5be1d88046a12b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876475"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621208"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrieren anderer Dienste in SQL Data Warehouse
 Zusätzlich zur Kernfunktionalität ermöglicht SQL Data Warehouse Benutzern die Integration in viele andere Dienste in Azure. Zu diesen Diensten gehören u.a.:
@@ -58,6 +58,4 @@ Azure Stream Analytics ist eine komplexe, vollständig verwaltete Infrastruktur 
 
 Weitere Informationen finden Sie unter [Verwenden von Azure Stream Analytics mit SQL Data Warehouse](sql-data-warehouse-integrate-azure-stream-analytics.md).
 
-## <a name="next-steps"></a>Nächste Schritte
-Informationen zur Integration in Azure SQL-Datenbank finden Sie unter [Konfigurieren von elastischen Abfragen mit SQL Data Warehouse](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md).
 

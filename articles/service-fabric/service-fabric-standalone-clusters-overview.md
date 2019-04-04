@@ -4,7 +4,7 @@ description: Service Fabric-Cluster werden unter Windows Server und Linux ausgef
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 5d3421c4d48a6bf8416a774c4b4e5e7852a83f06
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: b4b7759d1dc23c1a1b3a9b5aeb2a181923e14d40
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966712"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670709"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Übersicht über eigenständige Service Fabric-Cluster
 
@@ -47,7 +47,7 @@ Zusätzlich zu Clientzertifikaten kann auch Azure Active Directory für das Auth
 Weitere Informationen finden Sie unter [Client-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#client-to-node-security).
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Service Fabric unterstützt auch die Zugriffssteuerung zum Einschränken des Zugriffs auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern. Dadurch wird der Cluster sicherer. Für Clients, die eine Clusterverbindung herstellen, werden zwei Zugriffssteuerungstypen unterstützt: Administratorrolle und Benutzerrolle.  
+Service Fabric unterstützt auch die Zugriffssteuerung zum Einschränken des Zugriffs auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern. Dadurch wird der Cluster sicherer. Für Clients, die eine Clusterverbindung herstellen, werden zwei Zugriffssteuerungen unterstützt: Administratorrolle und Benutzerrolle.  
 
 Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](service-fabric-cluster-security.md#role-based-access-control-rbac).
 

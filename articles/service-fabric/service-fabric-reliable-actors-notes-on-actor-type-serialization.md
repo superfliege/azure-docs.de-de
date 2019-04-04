@@ -4,7 +4,7 @@ description: Erörtert grundlegende Anforderungen für das Definieren serialisie
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4539351738d423704961eed6e616bd8ac5d682d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209051"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667506"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Hinweise zur Typserialisierung von Service Fabric Reliable Actors
 Die Argumente aller Methoden, die Ergebnistypen der von jeder Methode zurückgegebenen Aufgaben in einer Actor-Schnittstelle sowie Objekte, die im Zustands-Manager des Akteurs gespeichert sind, müssen [mit DataContract serialisiert werden können](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dies gilt auch für die Argumente der Methoden, die in [Actor-Ereignisschnittstellen](service-fabric-reliable-actors-events.md)definiert werden. (In Actor-Ereignisschnittstellen definierte Methoden geben immer „void“ zurück).

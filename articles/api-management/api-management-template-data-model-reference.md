@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 8fb60f36bbc7c8886c1f465177a11224a1c90659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541246"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621922"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
 In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Elemente beschrieben, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.  
@@ -162,7 +162,7 @@ Das Entwicklerportal ist nicht im Tarif „Verbrauch“ verfügbar.
 ##  <a name="Header"></a> Header  
  In diesem Abschnitt wird die `parameter`-Darstellung beschrieben.  
   
-|Eigenschaft|BESCHREIBUNG|Type|  
+|Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|-----------------|----------|  
 |`name`|Zeichenfolge|Parametername.|  
 |`description`|Zeichenfolge|Beschreibung des Parameters.|  
@@ -239,7 +239,7 @@ Das Entwicklerportal ist nicht im Tarif „Verbrauch“ verfügbar.
 ##  <a name="Parameter"></a> Parameter  
  In diesem Abschnitt wird die `parameter`-Darstellung beschrieben.  
   
-|Eigenschaft|BESCHREIBUNG|Type|  
+|Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|-----------------|----------|  
 |`name`|Zeichenfolge|Parametername.|  
 |`description`|Zeichenfolge|Beschreibung des Parameters.|  

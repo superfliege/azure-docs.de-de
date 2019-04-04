@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763420"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849676"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Quellen für Daten in Azure Monitor
-In diesem Artikel werden die Quellen von Daten beschrieben, die von Azure Monitor zum Überwachen von Integrität und Leistung Ihrer Azure-Ressourcen und der darauf ausgeführten Anwendungen gesammelt werden. Diese Ressourcen können in Azure, in einer anderen Cloud oder lokal ausgeführt werden.  Details dazu, wie diese Daten gespeichert werden und wie Sie sie anzeigen können, finden Sie unter [Von Azure Monitor gesammelte Daten](data-collection.md).
+In diesem Artikel werden die Quellen von Daten beschrieben, die von Azure Monitor zum Überwachen von Integrität und Leistung Ihrer Azure-Ressourcen und der darauf ausgeführten Anwendungen gesammelt werden. Diese Ressourcen können in Azure, in einer anderen Cloud oder lokal ausgeführt werden.  Details dazu, wie diese Daten gespeichert werden und wie Sie sie anzeigen können, finden Sie unter [Von Azure Monitor gesammelte Daten](data-platform.md).
 
 Zur Überwachung von Daten in Azure werden zahlreiche Quellen genutzt, die in Ebenen organisiert werden können, wobei die höchste Ebene Ihre Anwendung und eventuelle Betriebssysteme und die niedrigste Ebene die Komponenten der Azure-Plattform darstellen. Dies wird im folgenden Diagramm veranschaulicht, und jede Ebene wird in den folgenden Abschnitten ausführlich beschrieben.
 
@@ -59,7 +59,7 @@ Diagnoseprotokolle auf Metriken- und Ressourcenebene enthalten Informationen zum
 
 
 ### <a name="metrics"></a>Metriken
-Die meisten Azure-Dienste generieren [Plattformmetriken](data-collection.md#metrics), die ihre Leistung und ihren Betrieb widerspiegeln. Die spezifischen [Metriken variieren je nach Ressourcentyp](metrics-supported.md).  In Metrikanalysen kann auf sie zugegriffen werden, und sie können mithilfe von Log Analytics für Trend- und sonstige Analysen in Protokolle kopiert werden.
+Die meisten Azure-Dienste generieren [Plattformmetriken](data-platform-metrics.md), die ihre Leistung und ihren Betrieb widerspiegeln. Die spezifischen [Metriken variieren je nach Ressourcentyp](metrics-supported.md).  In Metrikanalysen kann auf sie zugegriffen werden, und sie können mithilfe von Log Analytics für Trend- und sonstige Analysen in Protokolle kopiert werden.
 
 
 ### <a name="resource-diagnostic-logs"></a>Ressourcendiagnoseprotokolle
@@ -116,4 +116,4 @@ Azure Monitor kann mithilfe der [Datensammler-API](../../azure-monitor/platform/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Typen der von Azure Monitor gesammelten Überwachungsdaten](data-collection.md) und wie diese Daten angezeigt und analysiert werden.
+- Erfahren Sie mehr über die [Typen der von Azure Monitor gesammelten Überwachungsdaten](data-platform.md) und wie diese Daten angezeigt und analysiert werden.

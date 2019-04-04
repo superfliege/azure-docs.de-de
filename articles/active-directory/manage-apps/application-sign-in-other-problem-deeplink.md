@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3525436c61038d9cdda3a1b1da8e226ab153134f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7ad6eeba09c81de33b92722992c6762a4b4327c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098252"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649338"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Probleme beim Anmelden bei einer Anwendung über einen Deeplink
 
@@ -113,7 +113,7 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen Sie folgende Schritte ausführen:
 
--   [Hinzufügen einer Anwendung aus dem Azure AD-Katalog](#add-an-application-from-the-Azure-AD-gallery)
+-   [Hinzufügen einer Anwendung aus dem Azure AD-Katalog](#add-an-application-from-the-azure-ad-gallery)
 
 -   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
 

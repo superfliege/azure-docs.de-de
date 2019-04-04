@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 630b17a3467f372190004172b31b481dcb5af3ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7aadac72aa1c8c7e7085cccba1d8c83ffb3ebc7b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863133"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792432"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
+
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die Daten aus Azure Blob Storage nach Azure SQL-Datenbank kopiert. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -97,7 +98,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
 1. Klicken Sie auf **Tools** -> **NuGet-Paket-Manager** -> **Paket-Manager-Konsole**.
 2. Führen Sie in der **Paket-Manager-Konsole** die folgenden Befehle zum Installieren von Paketen aus. Ausführliche Informationen finden Sie auf der Seite zum [Microsoft.Azure.Management.DataFactory-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -117,6 +118,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
+
     
 2. Fügen Sie der **Main**-Methode den folgenden Code hinzu, der Variablen festlegt. Ersetzen Sie Platzhalter durch Ihre eigenen Werte. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
@@ -513,6 +515,7 @@ Press any key to exit...
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Es wurde Folgendes vermittelt: 
 
 > [!div class="checklist"]

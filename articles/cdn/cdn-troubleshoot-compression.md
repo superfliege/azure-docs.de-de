@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 2a41316eadb43145628d6c625935c751bfbc6ad6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b885098ff0efeb4d723cbaaac46fbb57cb40f2ea
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531524"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918823"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problembehandlung bei der CDN-Dateikomprimierung
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit der [CDN-Dateikomprimierung](cdn-improve-performance.md).
@@ -116,6 +116,6 @@ Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanfor
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Überprüfen Sie die Anforderung auf dem Ursprungsserver auf einen **Über** -Header.
 Der **Über** -HTTP-Header informiert den Webserver darüber, dass die Anforderung von einem Proxyserver übergeben wird.  Microsoft IIS-Webserver komprimieren Antworten standardmäßig nicht, wenn die Anforderung einen **Über** -Header enthält.  Führen Sie folgende Schritte aus, um dieses Verhalten außer Kraft zu setzen:
 
-* **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](https://msdn.microsoft.com/library/ms525390.aspx)
+* **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
 * **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest](http://www.iis.net/configreference/system.webserver/httpcompression)
 

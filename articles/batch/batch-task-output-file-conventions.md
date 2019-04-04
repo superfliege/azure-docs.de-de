@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69a3032ee96accdbafb32c96f4e9f3c89a0b3458
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d30a5ca0910c5ceebb38dec7b4cdbffd9b3cf27e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539495"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916783"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -110,7 +110,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-Der `kind`-Parameter der [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx)-Methode kategorisiert beibehaltene Dateien. Es gibt vier vordefinierte [TaskOutputKind][net_taskoutputkind]-Typen: `TaskOutput`, `TaskPreview`, `TaskLog` und `TaskIntermediate.`. Sie können auch benutzerdefinierte Kategorien der Ausgabe definieren.
+Der `kind`-Parameter der [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads)-Methode kategorisiert beibehaltene Dateien. Es gibt vier vordefinierte [TaskOutputKind][net_taskoutputkind]-Typen: `TaskOutput`, `TaskPreview`, `TaskLog` und `TaskIntermediate.`. Sie können auch benutzerdefinierte Kategorien der Ausgabe definieren.
 
 Mit diesen Ausgabetypen können Sie angeben, welche Typen von Ausgaben aufgelistet werden, wenn Sie die beibehaltenen Ausgaben eines bestimmten Tasks später in Batch abfragen. Beim Auflisten der Ausgaben für einen Task können Sie die Liste also nach einem der Ausgabetypen filtern. Beispiel: „*preview*-Ausgabe für Task *109* abrufen.“ Weitere Informationen zum Auflisten und Abrufen von Ausgaben finden Sie unter „Abrufen der Ausgabe“ weiter unten in diesem Artikel.
 

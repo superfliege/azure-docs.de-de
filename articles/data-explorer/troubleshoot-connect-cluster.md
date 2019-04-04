@@ -2,18 +2,18 @@
 title: Fehler beim Herstellen einer Verbindung mit einem Cluster im Azure-Daten-Explorer
 description: Dieser Artikel beschreibt die Schritte zur Problembehandlung beim Herstellen einer Verbindung mit einem Cluster im Azure-Daten-Explorer.
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 89ae8bd4139623cfafe811b7c82433cfb8400611
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 66d77a11f0f68a2dc48802ed21acca8420012207
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189664"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758556"
 ---
 # <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>Problembehandlung: Fehler beim Herstellen einer Verbindung mit einem Cluster im Azure-Daten-Explorer
 

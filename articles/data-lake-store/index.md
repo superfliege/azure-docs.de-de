@@ -1,16 +1,22 @@
 ---
-title: 'Dokumentation für Azure Data Lake Storage Gen1 – Tutorials, API-Referenz | Microsoft-Dokumentation'
-description: 'Hier erfahren Sie, wie Sie ein hyperskalierbares, Hadoop-kompatibles Data Lake-Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit einrichten, verwalten und darauf zugreifen.'
+title: Dokumentation für Azure Data Lake Storage Gen1 – Tutorials, API-Referenz | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie ein hyperskalierbares, Hadoop-kompatibles Data Lake-Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit einrichten, verwalten und darauf zugreifen.
 services: data-lake-store
 author: twooley
 manager: twooley
 layout: LandingPage
-ms.assetid: null
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
+ms.openlocfilehash: 24d6f41e2415d9a8a6113135bf11c98b1e19f1f7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904660"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentation für Azure Data Lake Storage Gen1
 
@@ -175,7 +181,7 @@ Hier erfahren Sie, wie Sie mithilfe von Azure Data Lake Storage Gen1 (ehemals Az
                 <div class="card">
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
-                        <p><a href="/powershell/module/azurerm.datalakestore/">PowerShell</a></p>
+                        <p><a href="/powershell/module/az.datalakestore/">PowerShell</a></p>
                         <p><a href="/cli/azure/dls">Azure-Befehlszeilenschnittstelle</a></p>
                     </div>
                 </div>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 6bfcb17d0a81c6e23c4bfa3dd4f4dd8cc3079379
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c8a5c839d6d662f9d330099f89c97eb83c4fe516
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331469"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577083"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Verwalten des Agent für Azure Monitor für Container
 Für Azure Monitor für Container wird eine Containerversion des Log Analytics-Agents für Linux verwendet. Nach der ersten Bereitstellung gibt es Routine- oder optionale Aufgaben, die Sie während des Lebenszyklus ausführen müssen. In diesem Artikel wird beschrieben, wie Sie das Upgrade des Agent manuell durchführen und die Sammlung von Umgebungsvariablen aus einem bestimmten Container deaktivieren können. 
@@ -29,13 +29,13 @@ Für Azure Monitor für Container wird eine Containerversion des Log Analytics-A
 In diesem Artikel wird der Prozess für das manuelle Upgrade des Agent beschrieben, falls beim Agent-Upgrade ein Fehler auftritt. Informationen zu den freigegebenen Versionen finden Sie unter [Agent-Versionsankündigungen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
 
 ### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Aktualisieren des Agents im überwachten Kubernetes-Cluster
-Der Prozess für das Upgrade des Agents besteht aus zwei einfachen Schritten. Der erste Schritt umfasst das Deaktivieren der Überwachung mit Azure Monitor für Container per Azure CLI.  Führen Sie die Schritte aus, die im Artikel [Deaktivieren der Überwachung](container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json#azure-cli) beschrieben sind. Indem wir die Azure CLI verwenden, können wir den Agent von den Knoten im Cluster entfernen, ohne dass sich Auswirkungen auf die Lösung und die entsprechenden Daten ergeben, die im Arbeitsbereich gespeichert sind. 
+Der Prozess für das Upgrade des Agents besteht aus zwei einfachen Schritten. Der erste Schritt umfasst das Deaktivieren der Überwachung mit Azure Monitor für Container per Azure CLI.  Führen Sie die Schritte aus, die im Artikel [Deaktivieren der Überwachung](container-insights-optout.md?#azure-cli) beschrieben sind. Indem wir die Azure CLI verwenden, können wir den Agent von den Knoten im Cluster entfernen, ohne dass sich Auswirkungen auf die Lösung und die entsprechenden Daten ergeben, die im Arbeitsbereich gespeichert sind. 
 
 >[!NOTE]
 >Während der Durchführung dieser Wartungsaktivität leiten die Knoten im Cluster keine gesammelten Daten weiter, und die Leistungsansichten zeigen keine Daten für den Zeitraum an, in dem Sie den Agent entfernen und die neue Version installieren. 
 >
 
-Führen Sie zum Installieren der neuen Agent-Version die Schritte aus, die im Artikel zum [Onboarding für die Überwachung](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-using-azure-cli) mit der Azure CLI beschrieben sind, um diesen Vorgang abzuschließen.  
+Führen Sie zum Installieren der neuen Agent-Version die Schritte aus, die im Artikel zum [Onboarding für die Überwachung](container-insights-onboard.md?#enable-using-azure-cli) mit der Azure CLI beschrieben sind, um diesen Vorgang abzuschließen.  
 
 Nach dem erneuten Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis aktualisierte Integritätsmetriken für den Cluster angezeigt werden. Um zu überprüfen, ob das Agent-Upgrade erfolgreich war, führen Sie den folgenden Befehl aus: `kubectl logs omsagent-484hw --namespace=kube-system`
 

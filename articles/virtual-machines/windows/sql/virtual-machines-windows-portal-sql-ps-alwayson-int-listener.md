@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 822dce08d4555d9039ce310464ba49b6e3d4849c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480650"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876988"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 Dieses Thema beschreibt Folgendes:
@@ -65,13 +65,13 @@ Die aktuelle [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-av
 In den Beispielen in diesem Artikel wird Load Balancer Standard angegeben. In den Beispielen ist `-sku Standard` im Skript enthalten.
 
 ```powershell
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
 Zum Erstellen einer Load Balancer Basic-Instanz entfernen Sie `-sku Standard` aus der Zeile, über die der Load Balancer erstellt wird. Beispiel: 
 
 ```powershell
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Beispielskript: Erstellen eines internen Lastenausgleichs mit PowerShell
@@ -79,7 +79,7 @@ $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupN
 > [!NOTE]
 > Wenn Sie Ihre Verfügbarkeitsgruppe mit der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) erstellt haben, wurde der interne Load Balancer bereits erstellt.
 
-Mit dem folgenden PowerShell-Skript wird ein internes Lastenausgleichsmodul erstellt, die Lastenausgleichsregeln werden erstellt und eine IP-Adresse für das Lastenausgleichsmodul wird festgelegt. Öffnen Sie Windows PowerShell ISE, und fügen Sie das Skript im Skriptbereich ein, um es auszuführen. Melden Sie sich mithilfe von `Connect-AzAccount` bei PowerShell an. Verwenden Sie bei mehreren Azure-Abonnements `Select-AzSubscription ` , um das Abonnement festzulegen. 
+Mit dem folgenden PowerShell-Skript wird ein internes Lastenausgleichsmodul erstellt, die Lastenausgleichsregeln werden erstellt und eine IP-Adresse für das Lastenausgleichsmodul wird festgelegt. Öffnen Sie Windows PowerShell ISE, und fügen Sie das Skript im Skriptbereich ein, um es auszuführen. Melden Sie sich mithilfe von `Connect-AzAccount` bei PowerShell an. Verwenden Sie bei mehreren Azure-Abonnements `Select-AzSubscription` , um das Abonnement festzulegen. 
 
 ```powershell
 # Connect-AzAccount

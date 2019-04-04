@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439016"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918024"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
 Ein Automation-Verbindungsobjekt enthält die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dies kann Informationen einschließen, die für die Authentifizierung erforderlich sind, beispielsweise ein Benutzername und ein Kennwort oder Verbindungsinformationen wie eine URL oder ein Port. Der Wert einer Verbindung liegt darin, dass alle Eigenschaften zur Verbindungsherstellung mit einer bestimmten Anwendung in einem Objekt gespeichert werden, statt mehrere Variablen zu erstellen. Der Benutzer kann die Werte für eine Verbindung an einem Ort bearbeiten, und Sie können den Namen einer Verbindung in einem einzelnen Parameter an ein Runbook oder eine DSC-Konfiguration übergeben. Auf die Eigenschaften für eine Verbindung kann im Runbook oder in der DSC-Konfiguration über die Aktivität **Get-AutomationConnection** zugegriffen werden. 
 
-Wenn Sie eine Verbindung erstellen, müssen Sie einen *Verbindungstyp*angeben. Der Verbindungstyp ist eine Vorlage, die einen Satz von Eigenschaften definiert. Die Verbindung definiert Werte für jede der Eigenschaften, die im zugehörigen Verbindungstyp definiert sind. Verbindungstypen werden Azure Automation in Integrationsmodulen hinzugefügt oder mit der [Azure Automation-API](https://msdn.microsoft.com/library/azure/mt163818.aspx) erstellt, wenn das Integrationsmodul einen Verbindungstyp enthält und in Ihr Automation-Konto importiert wird. Andernfalls müssen Sie eine Metadatendatei erstellen, um einen Automation-Verbindungstyp anzugeben.  Weitere Informationen dazu finden Sie unter [Integrationsmodule](automation-integration-modules.md).  
+Wenn Sie eine Verbindung erstellen, müssen Sie einen *Verbindungstyp*angeben. Der Verbindungstyp ist eine Vorlage, die einen Satz von Eigenschaften definiert. Die Verbindung definiert Werte für jede der Eigenschaften, die im zugehörigen Verbindungstyp definiert sind. Verbindungstypen werden Azure Automation in Integrationsmodulen hinzugefügt oder mit der [Azure Automation-API](/previous-versions/azure/reference/mt163818(v=azure.100)) erstellt, wenn das Integrationsmodul einen Verbindungstyp enthält und in Ihr Automation-Konto importiert wird. Andernfalls müssen Sie eine Metadatendatei erstellen, um einen Automation-Verbindungstyp anzugeben.  Weitere Informationen dazu finden Sie unter [Integrationsmodule](automation-integration-modules.md).  
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in einem systemseitig verwalteten Schlüsseltresor (Key Vault) gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet. Dieser Prozess wird von Azure Automation verwaltet.

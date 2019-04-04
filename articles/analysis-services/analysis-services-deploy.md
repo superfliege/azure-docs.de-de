@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a9f3dfba4c79b2369e99b95c13557557ed930c24
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: b9740d74a25964286ea92b4238684db81a64c9e2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188588"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893604"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Bereitstellen eines Modells mithilfe von Visual Studio
 
@@ -24,7 +24,7 @@ Nachdem Sie im Azure-Abonnement einen Server erstellt haben, können Sie eine ta
 Zunächst benötigen Sie Folgendes:
 
 * **Analysis-Services-Server** in Azure. Weitere Informationen finden Sie unter [Erstellen eines Azure Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md).
-* **Tabellarisches Modellprojekt** in SSDT oder ein vorhandenes tabellarisches Modell mit dem Kompatibilitätsgrad 1200 oder höher. Haben Sie noch nie eines erstellt? Sehen Sie sich das [Tutorial zur Tabellenmodellierung für Adventure Works Internet Sales](https://msdn.microsoft.com/library/hh231691.aspx) an.
+* **Tabellarisches Modellprojekt** in SSDT oder ein vorhandenes tabellarisches Modell mit dem Kompatibilitätsgrad 1200 oder höher. Haben Sie noch nie eines erstellt? Sehen Sie sich das [Tutorial zur Tabellenmodellierung für Adventure Works Internet Sales](/sql/analysis-services/tabular-modeling-adventure-works-tutorial) an.
 * **Lokales Gateway** – Wenn eine oder mehrere Datenquellen lokal im Netzwerk der Organisation vorhanden sind, müssen Sie ein [lokales Datengateway](analysis-services-gateway.md) installieren. Das Gateway ist erforderlich, damit der Server in der Cloud eine Verbindung mit den lokalen Datenquellen herstellen kann, um Daten im Modell zu verarbeiten und zu aktualisieren.
 
 > [!TIP]

@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 8f10812fc77a36bc29c8926bb7f76bceed9d7718
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9cd9adfd9d882f3781f519846ce22767123da36c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857684"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652262"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Websuche-API
 
 Die Bing-Websuche-API unterstützt über drei Dutzend Länder oder Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands oder einer Region mit einer Abfrage dient dazu, Suchergebnisse auf Grundlage der Interessen des Lands oder der Region zu verfeinern. Die Ergebnisse können Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land bzw. der angegebenen Region oder der angegebenen Sprache lokalisieren.
 
-Sie können mit dem Abfrageparameter `cc` ein Land oder eine Region angeben. Bei der Angabe eines Lands oder einer Region müssen Sie mithilfe des [`Accept-Language`-Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers) auch mindestens einen Sprachcode angeben. Unter [Märkte](#Markets) finden Sie eine Aufstellung der in jedem Markt unterstützten Sprachen.
+Sie können mit dem Abfrageparameter `cc` ein Land oder eine Region angeben. Bei der Angabe eines Lands oder einer Region müssen Sie mithilfe des [`Accept-Language`-Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers) auch mindestens einen Sprachcode angeben. Unter [Märkte](#markets) finden Sie eine Aufstellung der in jedem Markt unterstützten Sprachen.
 
 Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code aus der Tabelle **Märkte** angeben. Bei der Angabe eines Markts werden gleichzeitig ein Land oder eine Region und die bevorzugte Sprache angegeben. Mit dem Abfrageparameter `setLang` können Sie die Sprache ausdrücklich festlegen.
 

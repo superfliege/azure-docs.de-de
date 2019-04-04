@@ -3,8 +3,8 @@ title: Anwendungsszenarien und -entwurf | Microsoft Docs
 description: Übersicht über die Kategorien von Cloudanwendungen in Service Fabric. Informationen zum Anwendungsentwurf mit zustandsbehafteten und zustandslosen Diensten
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
-ms.author: mfussell
-ms.openlocfilehash: a84d8fead42f8314decc144f01d8de1dac30bbdf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.author: atsenthi
+ms.openlocfilehash: c9b2f9ac131e71b7c6b37ed85568adc0c3978dc2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199475"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668236"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric-Anwendungsszenarien
 Azure Service Fabric bietet eine zuverlässige und flexible Plattform, mit der Sie verschiedenste Geschäftsanwendungen und -dienste erstellen und ausführen können. Diese Anwendungen und Microservices können zustandslos oder zustandsbehaftet sein, und ihre Ressourcen werden zur Maximierung der Effizienz auf die virtuellen Maschinen verteilt. In der einzigartigen Architektur von Service Fabric können Sie Echtzeitdatenanalysen, In-Memory-Berechnungen, parallele Transaktionen und die Ereignisverarbeitung in Ihren Anwendungen ausführen. Sie können Ihre Anwendungen je nach den sich ändernden Ressourcenanforderungen problemlos zentral (bzw. horizontal oder vertikal) hoch- oder herunterskalieren.

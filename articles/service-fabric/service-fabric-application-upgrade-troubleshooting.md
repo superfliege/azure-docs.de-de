@@ -4,7 +4,7 @@ description: In diesem Artikel werden einige bekannte Probleme beim Upgrade eine
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
 ms.service: service-fabric
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c6ba61354bf7466819e34a0d619a5a1820dd7b90
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212737"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792449"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Problembehandlung bei Anwendungsupgrades
+
 In diesem Artikel werden einige bekannte Probleme beim Upgrade einer Azure Service Fabric-Anwendung und ihre Behebung behandelt.
 
 ## <a name="troubleshoot-a-failed-application-upgrade"></a>Problembehandlung bei einem fehlgeschlagenen Anwendungsupgrade
+
 Wenn ein Upgrade fehlschlägt, enthält die Ausgabe des Befehls **Get-ServiceFabricApplicationUpgrade** zusätzliche Informationen zum Debuggen des Fehlers.  Die folgende Liste gibt an, wie die zusätzlichen Informationen verwendet werden können:
 
 1. Identifizieren des Fehlertyps
@@ -34,6 +36,7 @@ Wenn ein Upgrade fehlschlägt, enthält die Ausgabe des Befehls **Get-ServiceFab
 Diese Informationen sind verfügbar, sobald Service Fabric einen Fehler erkennt, unabhängig davon, ob die **FailureAction** darin besteht, das Upgrade per Rollback rückgängig zu machen oder anzuhalten.
 
 ### <a name="identify-the-failure-type"></a>Identifizieren des Fehlertyps
+
 In der Ausgabe von **Get-ServiceFabricApplicationUpgrade** gibt **FailureTimestampUtc** den Zeitstempel (in UTC) an, bei dem ein Upgradefehler von Service Fabric erkannt und die **FailureAction** ausgelöst wurde. **FailureReason** gibt eine der drei potenziellen allgemeinen Ursachen des Fehlers an:
 
 1. **UpgradeDomainTimeout** : Gibt an, dass der Abschluss einer bestimmten Upgradedomäne zu lange dauerte und dass "UpgradeDomainTimeout" abgelaufen ist.
@@ -43,11 +46,14 @@ In der Ausgabe von **Get-ServiceFabricApplicationUpgrade** gibt **FailureTimesta
 Diese Einträge werden in der Ausgabe nur angezeigt, wenn das Upgrade fehlschlägt und ein Rollback ausgeführt wird. Weitere Informationen werden je nach Art des Fehlers angezeigt.
 
 ### <a name="investigate-upgrade-timeouts"></a>Untersuchen von Timeouts bei Upgrades
+
 Timeoutfehler bei Upgrades sind am häufigsten auf Probleme mit der Dienstverfügbarkeit zurückzuführen. Die Ausgabe im Anschluss an diesen Absatz ist typisch für Upgrades, bei denen beim Starten von Dienstreplikaten oder -instanzen in der neuen Codeversion Fehler auftreten. Im Feld **UpgradeDomainProgressAtFailure** wird eine Momentaufnahme der ausstehenden Upgradevorgänge zum Zeitpunkt des Fehlers erfasst.
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                : fabric:/DemoApp
 ApplicationTypeName            : DemoAppType
 TargetApplicationTypeVersion   : v2
@@ -90,11 +96,14 @@ Der aktuelle **UpgradeState** ist *RollingBackCompleted*, d.h., das ursprünglic
 In seltenen Fällen kann das Feld **UpgradeDomainProgressAtFailure** leer sein, wenn das gesamte Upgrade gerade in dem Moment ein Zeitlimit erreicht, in dem das System alle Aufgaben für die aktuelle Upgradedomäne erledigt hat. Versuchen Sie in diesem Fall, die Werte der Upgradeparameter **UpgradeTimeout** und **UpgradeDomainTimeout** zu erhöhen und dann das Upgrade zu wiederholen.
 
 ### <a name="investigate-health-check-failures"></a>Untersuchen von Fehlern bei der Integritätsprüfung
+
 Fehler bei der Integritätsprüfung können durch eine Vielzahl von Problemen ausgelöst werden, die auftreten können, nachdem alle Knoten in einer Upgradedomäne aktualisiert und alle Sicherheitsprüfungen erfolgreich durchgeführt wurden. Die Ausgabe im Anschluss an diesen Absatz ist typisch für einen Upgradefehler aufgrund fehlerhafter Integritätsprüfungen. Im Feld **UnhealthyEvaluations** wird entsprechend der angegebenen [Integritätsrichtlinie](service-fabric-health-introduction.md)eine Momentaufnahme aller fehlgeschlagenen Integritätsprüfungen zum Zeitpunkt des Upgradefehlers erfasst.
 
+```powershell
+Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 ```
-PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
 
+```Output
 ApplicationName                         : fabric:/DemoApp
 ApplicationTypeName                     : DemoAppType
 TargetApplicationTypeVersion            : v4
@@ -149,6 +158,7 @@ Die Untersuchung von Fehlern bei der Integritätsprüfung erfordert zunächst ei
 Das Upgrade wurde nach dem Fehlschlagen angehalten, indem die **FailureAction** „Manual“ beim Starten des Upgrades angegeben wurde. Dieser Modus ermöglicht uns, das Livesystem im fehlerhaften Zustand zu untersuchen, bevor eine weitere Aktion erfolgt.
 
 ### <a name="recover-from-a-suspended-upgrade"></a>Wiederherstellen eines angehaltenen Upgrades
+
 Wenn als **FailureAction**„Rollback“ angegeben ist, ist keine Wiederherstellung erforderlich, da nach dem Fehler automatisch ein Rollback für das Upgrade ausgeführt wird. Wenn als **FailureAction**"Manual" angegeben ist, gibt es mehrere Möglichkeiten zur Wiederherstellung:
 
 1.  Auslösen eines Rollbacks
@@ -161,9 +171,11 @@ Mit dem Befehl **Resume-ServiceFabricApplicationUpgrade** kann das restliche Upg
 
 Der Befehl **Update-ServiceFabricApplicationUpgrade** kann zum Fortsetzen des überwachten Upgrades mit Sicherheits- und Integritätsprüfungen verwendet werden.
 
+```powershell
+Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 ```
-PS D:\temp> Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
 
+```Output
 UpgradeMode                             : Monitored
 ForceRestart                            :
 UpgradeReplicaSetCheckTimeout           :
@@ -179,14 +191,14 @@ MaxPercentUnhealthyReplicasPerPartition :
 MaxPercentUnhealthyServices             :
 MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
-
-PS D:\temp>
 ```
 
 Das Upgrade wird ab der Upgradedomäne fortgesetzt, in der es zuletzt angehalten wurde. Dabei werden die gleichen Upgradeparameter und Integritätsrichtlinien wie zuvor verwendet. Bei Bedarf können beim Fortsetzen des Upgrades alle in der vorstehenden Ausgabe angegebenen Upgradeparameter und Integritätsrichtlinien im gleichen Befehl geändert werden. In diesem Beispiel wurde das Upgrade im überwachten Modus mit unveränderten Parametern und Integritätsrichtlinien fortgesetzt.
 
 ## <a name="further-troubleshooting"></a>Weitere Problembehandlungen
+
 ### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric befolgt nicht die angegebenen Integritätsrichtlinien
+
 Mögliche Ursache 1:
 
 Service Fabric übersetzt für die Integritätsevaluierung alle Prozentsätze in die tatsächliche Anzahl der Entitäten (z. B. Replikate, Partitionen und Dienste) und rundet immer auf ganze Zahlen auf. Wenn für *MaxPercentUnhealthyReplicasPerPartition* beispielsweise maximal 21 % angegeben wurde und fünf Replikate vorhanden sind, lässt Service Fabric bis zu zwei fehlerhafte Replikate zu (d.h. `Math.Ceiling (5*0.21)`). Integritätsrichtlinien müssen also entsprechend festgelegt werden.
@@ -198,12 +210,15 @@ Integritätsrichtlinien werden als Prozentsätze aller Dienste und nicht für be
 Allerdings kann während des Upgrades D fehlerfrei und C fehlerhaft werden. Das Upgrade wäre immer noch erfolgreich, da nur 25 % der Dienste fehlerhaft sind. Dies kann jedoch zu unvorhergesehenen Fehlern führen, wenn unerwarteterweise C anstatt D fehlerhaft ist. In diesem Fall sollte D als anderer Diensttyp als A, B und C modelliert werden. Da Integritätsrichtlinien pro Diensttyp angegeben werden, können unterschiedliche Fehlerschwellenwerte in Prozent auf verschiedene Dienste angewendet werden. 
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Ich habe keine Integritätsrichtlinie für das Anwendungsupgrade angegeben, beim Upgrade treten jedoch Fehler aufgrund einiger Timeouts auf, die ich nie angegeben habe
+
 Wenn der Upgradeanforderung keine Integritätsrichtlinien bereitgestellt werden, werden diese aus der Datei *ApplicationManifest.xml* der aktuellen Anwendungsversion übernommen. Wenn Sie beispielsweise Anwendung X von Version 1.0 auf Version 2.0 aktualisieren, werden die für Anwendung X in Version 1.0 angegebenen Richtlinien zur Anwendungsintegrität verwendet. Wenn für das Upgrade eine andere Integritätsrichtlinie verwendet werden soll, muss die Richtlinie als Teil des API-Aufrufs für das Anwendungsupgrade angegeben werden. Die Richtlinien, die als Teil des API-Aufrufs angegeben werden, gelten nur für die Dauer des Upgrades. Nach Abschluss des Upgrades werden wieder die in der Datei *ApplicationManifest.xml* angegebenen Richtlinien verwendet.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Es werden falsche Timeouts angegeben
+
 Sie haben sich vielleicht gefragt, was passiert, wenn Timeouts uneinheitlich festgelegt sind. Angenommen, Sie haben ein *UpgradeTimeout*, das kleiner als das *UpgradeDomainTimeout* ist. Die Antwort ist einfach: Es wird ein Fehler zurückgegeben. In den folgenden Fällen werden Fehler zurückgegeben: *UpgradeDomainTimeout* ist kleiner als die Summe aus *HealthCheckWaitDuration* und *HealthCheckRetryTimeout*, und *UpgradeDomainTimeout* ist kleiner als die Summe aus *HealthCheckWaitDuration* und *HealthCheckStableDuration*.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>Die Upgrades dauern zu lange
+
 Die Dauer eines Upgrades hängt von den angegebenen Integritätsprüfungen und Timeouts ab. Integritätsprüfungen und Timeouts hängen davon ab, wie lange es dauert, die Anwendung zu kopieren, bereitzustellen und zu stabilisieren. Wenn Timeouts zu kurz angesetzt werden, führt dies möglicherweise zu einer größeren Zahl fehlerhafter Upgrades. Daher empfiehlt sich eine konservative Vorgehensweise mit längeren Timeouts.
 
 Eine kurze Erinnerung dazu, wie Timeouts und Upgradezeiten interagieren:
@@ -215,6 +230,7 @@ Upgradefehler können nicht schneller auftreten als *HealthCheckWaitDuration* + 
 Die Upgradezeit für eine Upgradedomäne wird durch *UpgradeDomainTimeout*begrenzt.  Wenn *HealthCheckRetryTimeout* und *HealthCheckStableDuration* ungleich null sind und die Integrität der Anwendung wechselt, wird für das Upgrade schließlich bei *UpgradeDomainTimeout* das Timeout überschritten. *UpgradeDomainTimeout* zählt rückwärts ab dem Moment, an dem das Upgrade für die aktuelle Upgradedomäne gestartet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
 
 [Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.

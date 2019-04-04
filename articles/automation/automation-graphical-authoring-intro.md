@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427235"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918143"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische Erstellung in Azure Automation
 
@@ -48,7 +48,7 @@ Die Canvas ist der Bereich, in dem Sie Ihr Runbook entwerfen. Sie fügen über d
 |:--- |:--- |
 | Cmdlets |Enthält alle Cmdlets, die in Ihrem Runbook verwendet werden können. Die Cmdlets sind nach Modul angeordnet. Es sind alle Module verfügbar, die Sie in Ihrem Automation-Konto installiert haben. |
 | Runbooks |Umfasst die Runbooks in Ihrem Automation-Konto. Diese Runbooks können der Canvas hinzugefügt und als untergeordnete Runbooks verwendet werden. Es werden nur Runbooks angezeigt, die den gleichen Kerntyp besitzen wie das gerade bearbeitete Runbook: Für grafische Runbooks werden nur PowerShell-basierte Runbooks angezeigt, für grafische PowerShell-Workflow-Runbooks nur PowerShell-Workflow-basierte Runbooks. |
-| Objekte |Enthalten die [Automation-Objekte](https://msdn.microsoft.com/library/dn939988.aspx) in Ihrem Automation-Konto, die im Runbook verwendet werden können. Wenn Sie ein Objekt in ein Runbook einfügen, wird eine Workflowaktivität zum Abrufen des ausgewählten Objekts hinzugefügt. Im Fall von Variablenobjekten können Sie auswählen, ob Sie eine Aktivität zum Abrufen der Variable oder eine Aktivität zum Festlegen der Variable hinzufügen möchten. |
+| Objekte |Enthalten die [Automation-Objekte](/previous-versions/azure/dn939988(v=azure.100)) in Ihrem Automation-Konto, die im Runbook verwendet werden können. Wenn Sie ein Objekt in ein Runbook einfügen, wird eine Workflowaktivität zum Abrufen des ausgewählten Objekts hinzugefügt. Im Fall von Variablenobjekten können Sie auswählen, ob Sie eine Aktivität zum Abrufen der Variable oder eine Aktivität zum Festlegen der Variable hinzufügen möchten. |
 | Steuerelement "Runbook" |Enthält die Runbookaktivitäten, die im aktuellen Runbook verwendet werden können. Eine *Verbindung* akzeptiert mehrere Eingaben und wartet, bis sämtliche dieser Eingaben abgeschlossen wurden, bevor der Workflow fortgesetzt wird. Eine Aktivität vom Typ *Code* führt abhängig von der Art des grafischen Runbooks mindestens eine PowerShell- oder PowerShell-Workflow-Codezeile aus. Sie können diese Aktivität für benutzerdefinierten Code oder für Funktionen nutzen, die sich mit anderen Aktivitäten nur schwer umsetzen lassen. |
 
 ### <a name="configuration-control"></a>Steuerelement "Konfiguration"
@@ -326,7 +326,7 @@ Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle def
 |:--- |:--- |
 | NAME |Der eindeutige Name des Parameters. Dieser darf nur aus alphanumerischen Zeichen bestehen und darf keine Leerzeichen enthalten. |
 | BESCHREIBUNG |Eine optionale Beschreibung für den Eingabeparameter. |
-| Typ |Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. |
+| Type |Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. |
 | Erforderlich |Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
 | Standardwert |Gibt an, welcher Wert für den Parameter verwendet wird, wenn kein Wert bereitgestellt wird. Dieser Wert kann entweder "Null" lauten oder einen spezifischen Wert angeben. |
 

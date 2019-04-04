@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993097"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649032"
 ---
 # <a name="saas-application-test-drive-tab"></a>Registerkarte „Testversion“ für SaaS-Anwendungen
 
@@ -53,7 +53,7 @@ Es sind vier verschiedene Testversionstypen verfügbar, von denen jeder auf dem 
 |     Azure Resource Manager               |    Eine Azure Resource Manager-Testversion ist eine Bereitstellungsvorlage, die alle Azure-Ressourcen enthält, aus denen eine vom Herausgeber erstellte Lösung besteht. Produkte, die für diesen Testversionstyp geeignet sind, sind Produkte, in denen nur Azure-Ressourcen verwendet werden.               |       [Azure Resource Manager-Testversion](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
 |       Gehostet             |       Eine gehostete Testversion vereinfacht die Einrichtung dadurch, dass Microsoft das Hosting und die Wartung des Diensts übernimmt, der die Bereitstellung und Aufhebung der Bereitstellung der Testversion durchführt.             |         [Gehostete Testversion](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      Logik-App              |       Eine Logik-App-Testversion ist eine Bereitstellungsvorlage, die für alle komplexen Lösungsarchitekturen vorgesehen ist. Alle Dynamics-Anwendungen oder benutzerdefinierten Produkte sollten mit diesem Testversionstyp genutzt werden.            |      [Testversion für Logik-Apps](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
-|       Power BI             |         Eine Power BI-Testversion besteht aus einem eingebetteten Link zu einem kundenspezifischen Dashboard. Für jedes Produkt, mit dem eine interaktive Power BI-Visualisierung demonstriert werden soll, sollte dieser Testversionstyp verwendet werden. Sie müssen lediglich Ihre eingebettete Power BI-URL hochladen.          |        [Power BI-Testversion](#Power-BI-test-drive)           |
+|       Power BI             |         Eine Power BI-Testversion besteht aus einem eingebetteten Link zu einem kundenspezifischen Dashboard. Für jedes Produkt, mit dem eine interaktive Power BI-Visualisierung demonstriert werden soll, sollte dieser Testversionstyp verwendet werden. Sie müssen lediglich Ihre eingebettete Power BI-URL hochladen.          |        [Power BI-Testversion](#power-bi-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>Power BI-Testversion
 

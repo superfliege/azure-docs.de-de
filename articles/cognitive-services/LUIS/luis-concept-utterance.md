@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984357"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895121"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 
@@ -72,7 +72,7 @@ Fügen Sie nicht jeder Iteration des Modells große Mengen von Äußerungen hinz
 
 LUIS erstellt effektive Modelle mit sorgfältig vom LUIS-Modellersteller ausgewählten Äußerungen. Das Hinzufügen zu vieler Äußerungen ist nicht nützlich, da es zu Verwechslungen führen kann.  
 
-Es ist besser, mit nur wenigen Äußerungen anzufangen und anschließend die [Endpunktäußerungen zu überprüfen](luis-how-to-review-endoint-utt.md), um die richtige Vorhersage der Absicht und Extraktion der Entität zu gewährleisten.
+Es ist besser, mit nur wenigen Äußerungen anzufangen und anschließend die [Endpunktäußerungen zu überprüfen](luis-how-to-review-endpoint-utterances.md), um die richtige Vorhersage der Absicht und Extraktion der Entität zu gewährleisten.
 
 ## <a name="punctuation-marks"></a>Interpunktion
 
@@ -88,11 +88,11 @@ Das Training ist im Allgemeinen nicht deterministisch: Die Vorhersage von Äuße
 
 ## <a name="testing-utterances"></a>Testen von Äußerungen 
 
-Entwickler sollten damit beginnen, ihre LUIS-Anwendung mit echtem Datenverkehr zu testen, indem sie Äußerungen an die URL des [Vorhersageendpunkts](luis-how-to-azure-subscription.md) senden. Diese Äußerungen werden verwendet, um die Leistung der Absichten und Entitäten mit [Überprüfungsäußerungen](luis-how-to-review-endoint-utt.md) zu verbessern. Tests, die über den Testbereich der LUIS-Website eingesendet werden, werden nicht über den Endpunkt gesendet und tragen daher nicht zum aktiven Lernen bei. 
+Entwickler sollten damit beginnen, ihre LUIS-Anwendung mit echtem Datenverkehr zu testen, indem sie Äußerungen an die URL des [Vorhersageendpunkts](luis-how-to-azure-subscription.md) senden. Diese Äußerungen werden verwendet, um die Leistung der Absichten und Entitäten mit [Überprüfungsäußerungen](luis-how-to-review-endpoint-utterances.md) zu verbessern. Tests, die über den Testbereich der LUIS-Website eingesendet werden, werden nicht über den Endpunkt gesendet und tragen daher nicht zum aktiven Lernen bei. 
 
 ## <a name="review-utterances"></a>Überprüfen von Äußerungen
 
-Nachdem Ihr Modell trainiert sowie veröffentlicht ist und [Endpunktabfragen](luis-glossary.md#endpoint) empfängt, [überprüfen Sie die Äußerungen](luis-how-to-review-endoint-utt.md), die LUIS vorschlägt. LUIS wählt Endpunktäußerungen aus, die niedrige Bewertungen für die Absicht oder Entität aufweisen. 
+Nachdem Ihr Modell trainiert sowie veröffentlicht ist und [Endpunktabfragen](luis-glossary.md#endpoint) empfängt, [überprüfen Sie die Äußerungen](luis-how-to-review-endpoint-utterances.md), die LUIS vorschlägt. LUIS wählt Endpunktäußerungen aus, die niedrige Bewertungen für die Absicht oder Entität aufweisen. 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

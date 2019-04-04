@@ -4,7 +4,7 @@ description: Diagnosefunktionen für zustandsbehaftete zuverlässige Dienste in 
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: c3116b42e8696ae0bb2457a3c64320cb187b7447
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96fc58ca8456e9a2e539e432f0ed85f6edc1a54f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890711"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664114"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
 Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.

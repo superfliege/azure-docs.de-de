@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: f41c14f664df8db809ad4c29c57d37c1124a0ff3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 32d0fb2ba17d322c0a273ebaf0a21d2b3ca0668f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818543"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849575"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 Azure Cache for Redis bietet über [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) verschiedene Optionen zum Überwachen Ihrer Cache-Instanzen. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Cache for Redis-Instanzen zu überwachen, und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen.
@@ -61,7 +61,7 @@ Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie un
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportieren von Cachemetriken
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-collection.md#metrics) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../azure-monitor/platform/archive-diagnostic-logs.md) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../azure-monitor/platform/archive-diagnostic-logs.md) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
 
 So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 

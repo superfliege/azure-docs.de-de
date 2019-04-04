@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4adc6ef6e7dd445eea3fd567072a995e3ac07dda
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539631"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918160"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Ermöglichen der Kommunikation für Rolleninstanzen in Azure
 Clouddienstrollen kommunizieren über interne und externe Verbindungen miteinander. Externe Verbindungen werden als **Eingabeendpunkte** bezeichnet, interne Verbindungen dagegen als **interne Endpunkte**. In diesem Thema wird beschrieben, wie Sie die [Dienstdefinition](cloud-services-model-and-package.md#csdef) zum Erstellen von Endgeräten ändern.
 
 ## <a name="input-endpoint"></a>Eingabeendpunkt
-Eingabeendpunkte werden verwendet, wenn Sie einen Port für externe Verbindungen verfügbar machen möchten. Sie geben den Protokolltyp und den Port des Endpunkts an, der dann sowohl für die externen als auch die internen Ports für den Endpunkt gilt. Wenn Sie möchten, können Sie mit dem [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) -Attribut einen anderen internen Port für den Endpunkt angeben.
+Eingabeendpunkte werden verwendet, wenn Sie einen Port für externe Verbindungen verfügbar machen möchten. Sie geben den Protokolltyp und den Port des Endpunkts an, der dann sowohl für die externen als auch die internen Ports für den Endpunkt gilt. Wenn Sie möchten, können Sie mit dem [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) -Attribut einen anderen internen Port für den Endpunkt angeben.
 
 Der Eingabeendpunkt kann die folgenden Protokolle verwenden: **http, https, tcp, udp**.
 
@@ -96,7 +96,7 @@ Die verwaltete Azure-Bibliothek enthält Methoden, mit deren Hilfe Rolleninstanz
 > 
 > 
 
-Sie können die [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) -Eigenschaft verwenden, um Instanzen einer Rolle abzurufen. Verwenden Sie zuerst [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx), um einen Verweis auf die aktuelle Rolleninstanz zurückzugeben, und anschließend die [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx)-Eigenschaft, um einen Verweis auf die Rolle selbst zurückzugeben.
+Sie können die [Instances](/previous-versions/azure/reference/ee741904(v=azure.100)) -Eigenschaft verwenden, um Instanzen einer Rolle abzurufen. Verwenden Sie zuerst [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)), um einen Verweis auf die aktuelle Rolleninstanz zurückzugeben, und anschließend die [Role](/previous-versions/azure/reference/ee741918(v=azure.100))-Eigenschaft, um einen Verweis auf die Rolle selbst zurückzugeben.
 
 Wenn Sie programmgesteuert über das .NET-SDK eine Verbindung mit einer Rolleninstanz herstellen, ist es relativ einfach, auf die Endpunktinformationen zuzugreifen. Nachdem Sie eine Verbindung mit einer bestimmten Rollenumgebung hergestellt haben, können Sie z. B. mit folgendem Code den Port eines bestimmten Endpunkts abrufen:
 
@@ -111,7 +111,7 @@ Die **Instances**-Eigenschaft gibt eine Sammlung von **RoleInstance**-Objekten z
 > 
 > 
 
-Um die Portnummer für einen internen Endpunkt einer Rolleninstanz zu bestimmen, können Sie mithilfe der [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) -Eigenschaft ein Dictionary-Objekt zurückgeben, das Endpunktnamen und die entsprechenden IP-Adressen und Ports enthält. Die [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) -Eigenschaft gibt die IP-Adresse und den Port für einen angegebenen Endpunkt zurück. Die **PublicIPEndpoint** -Eigenschaft gibt den Port für einen Endpunkt mit Lastenausgleich zurück. Der IP-Adressteil der **PublicIPEndpoint** -Eigenschaft wird nicht verwendet.
+Um die Portnummer für einen internen Endpunkt einer Rolleninstanz zu bestimmen, können Sie mithilfe der [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) -Eigenschaft ein Dictionary-Objekt zurückgeben, das Endpunktnamen und die entsprechenden IP-Adressen und Ports enthält. Die [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) -Eigenschaft gibt die IP-Adresse und den Port für einen angegebenen Endpunkt zurück. Die **PublicIPEndpoint** -Eigenschaft gibt den Port für einen Endpunkt mit Lastenausgleich zurück. Der IP-Adressteil der **PublicIPEndpoint** -Eigenschaft wird nicht verwendet.
 
 Hier sehen Sie ein Beispiel, das Rolleninstanzen durchläuft.
 
@@ -368,7 +368,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-Eine XML-Schemareferenz für die oben verwendeten Elemente finden Sie [hier](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+Eine XML-Schemareferenz für die oben verwendeten Elemente finden Sie [hier](/previous-versions/azure/reference/gg557551(v=azure.100)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über das [Clouddienstmodell](cloud-services-model-and-package.md).

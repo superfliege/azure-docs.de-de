@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie die Einstellungen für das Anwendungs- und Di
 services: service-fabric
 documentationcenter: na
 author: peterpogorski
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 184a36b991fc49efad6f53efcaee430d8fea1ebc
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 622e6f7552d91cdb9ccf3668c302496c68a5920f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498110"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665983"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Mehrere Container: Beispiele für Anwendungs- und Dienstmanifeste
 Im Folgenden finden Sie Beispiele für die Anwendungs- und Dienstmanifeste für eine Service Fabric-Anwendung mit mehreren Containern. Der Zweck dieser Beispiele besteht darin, zu zeigen, welche Einstellungen verfügbar sind und wie sie verwendet werden. Diese Anwendungs- und Dienstmanifeste basieren auf den Manifesten für das [Windows Server 2016-Containerbeispiel](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows).

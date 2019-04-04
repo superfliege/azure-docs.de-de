@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6f51164904ca51e66b9ce112cf9aec4324812c9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ce8b52717541ea9cf12112ee83d767a23b61f636
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113946"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848210"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten SSL-Zertifikaten
 
@@ -68,7 +68,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Generieren eines Zertifikats und Speichern in Key Vault
-Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) generieren können, das die Standardzertifikatrichtlinie von [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy) verwendet: 
+Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) generieren können, das die Standardzertifikatrichtlinie von [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy) verwendet: 
 
 ```azurepowershell-interactive
 $policy = New-AzureKeyVaultCertificatePolicy `
@@ -121,7 +121,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Im letzten Schrit
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Hinzufügen eines Zertifikats zum virtuellen Computer aus Key Vault
-Um das Zertifikat aus Key Vault zu einem virtuellen Computer hinzuzufügen, rufen Sie die ID des Zertifikats mit [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) ab. Fügen Sie das Zertifikat mit [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret) dem virtuellen Computer hinzu:
+Um das Zertifikat aus Key Vault zu einem virtuellen Computer hinzuzufügen, rufen Sie die ID des Zertifikats mit [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret) ab. Fügen Sie das Zertifikat mit [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret) dem virtuellen Computer hinzu:
 
 ```azurepowershell-interactive
 $certURL=(Get-AzureKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id

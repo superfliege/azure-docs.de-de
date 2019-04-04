@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3baa4a9b91e76b9072714229b6a46e9fca69bcdd
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331383"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650852"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure
 
@@ -138,7 +138,7 @@ Die folgende Tabelle enthält die Anforderungen für Verbindungen mit SQL Server
 |---|---|
 | [Aktivieren des SQL Server-Authentifizierungsmodus](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Die SQL Server-Authentifizierung ist für eine Remoteverbindung mit dem virtuellen Computer erforderlich, sofern Sie nicht Active Directory in einem virtuellen Netzwerk konfiguriert haben. |
 | [Erstellen einer SQL-Anmeldung](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Wenn Sie die SQL-Authentifizierung verwenden, benötigen Sie eine SQL-Anmeldung mit einem Benutzernamen und einem Kennwort, die auch über die erforderlichen Berechtigungen für die Zieldatenbank verfügt. |
-| [Aktivieren des TCP/IP-Protokolls](#manualTCP) | SQL Server muss Verbindungen über TCP zulassen. |
+| [Aktivieren des TCP/IP-Protokolls](#manualtcp) | SQL Server muss Verbindungen über TCP zulassen. |
 | [Aktivieren von Firewallregeln für den SQL Server-Port](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Die Firewall auf dem virtuellen Computer muss eingehenden Datenverkehr am SQL Server-Port (Standardport: 1433) zulassen. |
 | [Erstellen einer Netzwerksicherheitsgruppen-Regel für TCP-Port 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Sie müssen auf dem virtuellen Computer eingehenden Datenverkehr am SQL Server-Port (Standardport: 1433) zulassen, wenn Sie eine Verbindung über das Internet herstellen möchten. Bei lokalen Verbindungen und Verbindungen ausschließlich über virtuelle Netzwerke ist dies nicht erforderlich. Dies ist der einzige im Azure-Portal erforderliche Schritt. |
 

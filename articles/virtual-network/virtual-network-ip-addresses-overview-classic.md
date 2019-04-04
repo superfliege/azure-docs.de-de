@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112601"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652166"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden: öffentliche und private.
@@ -41,7 +41,7 @@ Eine öffentliche IP-Adresse wird folgenden Ressourcentypen zugeordnet:
 * Anwendungsgateways
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
-Die öffentliche IP-Adresse einer Azure-Ressource wird bei Bedarf *dynamisch* aus einem Pool mit verfügbaren öffentlichen IP-Adressen des Ressourcenerstellungsorts zugewiesen. Bei Beendigung der Ressource wird die IP-Adresse wieder freigegeben. Bei einem Clouddienst tritt dieser Fall auf, wenn alle Rolleninstanzen angehalten werden. Dies lässt sich durch Verwendung einer *statischen* (reservierten) IP-Adresse verhindern. (Weitere Informationen finden Sie unter [Clouddienste](#Cloud-services).)
+Die öffentliche IP-Adresse einer Azure-Ressource wird bei Bedarf *dynamisch* aus einem Pool mit verfügbaren öffentlichen IP-Adressen des Ressourcenerstellungsorts zugewiesen. Bei Beendigung der Ressource wird die IP-Adresse wieder freigegeben. Bei einem Clouddienst tritt dieser Fall auf, wenn alle Rolleninstanzen angehalten werden. Dies lässt sich durch Verwendung einer *statischen* (reservierten) IP-Adresse verhindern. (Weitere Informationen finden Sie unter [Clouddienste](#cloud-services).)
 
 > [!NOTE]
 > Die Liste mit den IP-Adressbereichen, aus denen Azure-Ressourcen öffentliche IP-Adressen zugewiesen werden, finden Sie unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653).

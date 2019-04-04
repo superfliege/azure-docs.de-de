@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: richcar
 ms.custom: seodec18
-ms.openlocfilehash: 842654f860a94481b53ebf9732fc4ed8be24cf4a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a03ab7bbdadad2728f54127583583c22bd2ec07a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077510"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650375"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
@@ -75,7 +75,7 @@ ExpressRoute unterstützt Netzwerkgeschwindigkeiten zwischen 50 Mbit/s und 10 Gb
 ExpressRoute unterstützt die Verknüpfung mehrerer virtueller Netzwerke zu einer einzelnen ExpressRoute-Verbindung, um die Nutzung der schnelleren Verbindungen zu optimieren. Eine einzelne ExpressRoute-Verbindung kann von mehreren Azure-Abonnements des gleichen Kunden genutzt werden.
 
 ## <a name="configuring-expressroute"></a>Konfigurieren von ExpressRoute
-ExpressRoute kann so konfiguriert werden, dass über eine einzelne ExpressRoute-Verbindung drei Arten von Datenverkehr ([Routingdomänen](#ExpressRoute-routing-domains)) abgewickelt werden können. Dieser Datenverkehr wird in Microsoft-Peering, öffentliches Azure-Peering und privates Peering unterteilt. Sie können entweder einzelne oder alle Arten von Datenverkehr über eine einzelne ExpressRoute-Verbindung senden oder mehrere ExpressRoute-Verbindungen verwenden. Diese Entscheidung ist abhängig vom Umfang der ExpressRoute-Verbindung und der vom Kunden benötigten Isolation. Bei bestimmten Kunden dürfen öffentlicher und privater Datenverkehr aus Sicherheitsgründen nicht über die gleiche Verbindung abgewickelt werden.
+ExpressRoute kann so konfiguriert werden, dass über eine einzelne ExpressRoute-Verbindung drei Arten von Datenverkehr ([Routingdomänen](#expressroute-routing-domains)) abgewickelt werden können. Dieser Datenverkehr wird in Microsoft-Peering, öffentliches Azure-Peering und privates Peering unterteilt. Sie können entweder einzelne oder alle Arten von Datenverkehr über eine einzelne ExpressRoute-Verbindung senden oder mehrere ExpressRoute-Verbindungen verwenden. Diese Entscheidung ist abhängig vom Umfang der ExpressRoute-Verbindung und der vom Kunden benötigten Isolation. Bei bestimmten Kunden dürfen öffentlicher und privater Datenverkehr aus Sicherheitsgründen nicht über die gleiche Verbindung abgewickelt werden.
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
 Bei einer Durchleitungskonfiguration sind Sie für das gesamte Netzwerkfundament zuständig, das erforderlich ist, um die Datencenterressourcen Ihrer Kunden mit den in Azure gehosteten Abonnements zu verbinden. Jeder Kunde, der Azure-Funktionen verwenden möchte, benötigt eine eigene, von Ihnen verwaltete ExpressRoute-Verbindung. Sie verwenden die gleichen Methoden, mit denen auch der Kunde die ExpressRoute-Verbindung bereitstellen würde. Sie führen die Schritte aus, die im Artikel [ExpressRoute-Workflows](expressroute-workflows.md) für die Verbindungsbereitstellung und Verbindungszustände erläutert werden. Anschließend konfigurieren Sie die Routen des Border Gateway-Protokolls (BGP), um den Datenverkehrsfluss zwischen dem lokalen Netzwerk und dem virtuellen Azure-Netzwerk zu steuern.

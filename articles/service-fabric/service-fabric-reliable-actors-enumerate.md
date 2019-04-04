@@ -4,7 +4,7 @@ description: Informationen zum Aufzählen von Reliable Actors und ihrer Metadate
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 300ab4f73fdae0224d2de5e1e1dea6cc6cfa7438
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864370"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664486"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Aufzählen von Reliable Actors in Service Fabric
 Der Reliable Actors-Dienst ermöglicht Clients das Aufzählen von Metadaten über die vom Dienst gehosteten Actors. Da der Akteurdienst ein partitionierter zustandsbehafteter Dienst ist, erfolgt die Enumeration für die einzelnen Partitionen. Da jede Partition viele Akteure enthalten kann, wird die Enumeration als Satz von Ergebnisseiten zurückgegeben. Die Seiten werden in einer Schleife durchlaufen, bis alle Seiten gelesen wurden. Im folgenden Beispiel wird veranschaulicht, wie eine Liste aller aktiven Akteure in einer Partition eines Actordiensts erstellt wird:

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4c4b5491bba072ba22ec20e164b7315691877a22
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038163"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918330"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services
 Mit der Azure-Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle, Leistungsindikatoren usw. von einem Clouddienst sammeln. In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnoseerweiterung für einen Clouddienst mithilfe von PowerShell aktivieren.  Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
@@ -136,5 +136,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Anleitungen zur Verwendung von Azure-Diagnose und anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* Das [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/dn782207.aspx) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
+* Das [Diagnosekonfigurationsschema](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
 * Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md)

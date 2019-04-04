@@ -3,17 +3,17 @@ title: Erste Schritte mit der Azure Service Fabric CLI
 description: Hier erfahren Sie, wie Sie die Azure Service Fabric CLI verwenden. Es wird beschrieben, wie Sie eine Verbindung mit einem Cluster herstellen und Anwendungen verwalten.
 services: service-fabric
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 579df1c8412ae626ced6776a98e054a13e4a3e64
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662651"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 

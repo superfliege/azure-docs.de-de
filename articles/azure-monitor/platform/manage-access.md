@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 6990bed4065183ecabb502ea90b5ddf26db563b4
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500184"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577245"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 In Azure Monitor werden Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
@@ -300,10 +300,10 @@ Um eine Rolle mit Zugriff nur auf die Tabelle _SecurityBaseline_ und keine weite
 
 ```
     "Actions":  [
-        "Microsoft.OperationalInsights/workspaces/query/*/read"
+        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
     ],
     "NotActions":  [
-        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+        "Microsoft.OperationalInsights/workspaces/query/*/read"
     ],
 ```
 

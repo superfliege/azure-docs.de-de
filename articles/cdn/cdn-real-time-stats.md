@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: e9b9522de6b2c54dc794b00100ffe358296ecfdd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22997905"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916562"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Echtzeitstatistiken in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -62,7 +62,7 @@ Das Diagramm **Bandbreite** zeigt die Menge der für die aktuelle Plattform verw
 Das Diagramm **Statuscodes** gibt an, wie oft bestimmte HTTP-Antwortcodes im ausgewählten Zeitraum auftreten.
 
 > [!TIP]
-> Eine Beschreibung der einzelnen HTTP-Statuscodeoptionen finden Sie unter [Azure CDN HTTP Status Codes](https://msdn.microsoft.com/library/mt759238.aspx)(Azure CDN-HTTP-Statuscodes).
+> Eine Beschreibung der einzelnen HTTP-Statuscodeoptionen finden Sie unter [Azure CDN HTTP Status Codes](/previous-versions/azure/mt759238(v=azure.100))(Azure CDN-HTTP-Statuscodes).
 > 
 > 
 
@@ -76,7 +76,7 @@ Sie können protokollierte Daten für einen bestimmten Statuscode vorübergehend
 Das Diagramm **Cachestatus** gibt an, wie oft bestimmte Typen von Cachestatus während des ausgewählten Zeitraums auftreten. 
 
 > [!TIP]
-> Eine Beschreibung der einzelnen Cachestatuscode-Optionen finden Sie unter [Azure CDN Cache Status Codes](https://msdn.microsoft.com/library/mt759237.aspx)(Azure CDN-Cachestatuscodes).
+> Eine Beschreibung der einzelnen Cachestatuscode-Optionen finden Sie unter [Azure CDN Cache Status Codes](/previous-versions/azure/mt759237(v=azure.100))(Azure CDN-Cachestatuscodes).
 > 
 > 
 

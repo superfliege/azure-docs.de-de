@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: a04161d80a6dd3f9db2a95a8556eaac466407047
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b0243b37f725fc977337b72998d610e9bda71a86
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470075"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848032"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -34,7 +34,7 @@ Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsproto
 
 ## <a name="batch-account-level-monitoring"></a>Überwachung auf Batch-Kontoebene
 
-Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-collection.md#metrics) und optional [Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
+Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-platform-metrics.md) und optional [Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
  
 > [!NOTE]
 > Metriken sind standardmäßig ohne zusätzliche Konfiguration in Ihrem Batch-Konto verfügbar und decken jeweils die letzten 30 Tage ab. Sie müssen die Diagnoseprotokollierung für ein Batch-Konto aktivieren, und durch die Speicherung oder Verarbeitung von Diagnoseprotokolldaten entstehen unter Umständen zusätzliche Kosten. 

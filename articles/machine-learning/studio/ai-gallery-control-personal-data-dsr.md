@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 1b1583731f9b95bea7fe64efe628b05bb7b9a476
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118032"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648108"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Anzeigen und Löschen von im Produkt enthaltenen Benutzerdaten in Azure AI Gallery
 
@@ -80,7 +80,7 @@ eine Antwort wie folgt zurück:
 
 Die Katalog-API speichert Informationen zu in Azure AI Gallery veröffentlichten Entitäten, die Sie auch direkt auf der [AI Gallery-Website](https://gallery.azure.ai/) anzeigen können. 
 
-Zum Anzeigen von veröffentlichten Entitäten rufen Sie die folgende URL auf, wobei Sie `[AuthorId]` durch die Autor-ID ersetzen, die Sie im Abschnitt [Abrufen einer Autor-ID](#get-an-author-ID) weiter oben erhalten haben.
+Zum Anzeigen von veröffentlichten Entitäten rufen Sie die folgende URL auf, wobei Sie `[AuthorId]` durch die Autor-ID ersetzen, die Sie im Abschnitt [Abrufen einer Autor-ID](#get-an-author-id) weiter oben erhalten haben.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 

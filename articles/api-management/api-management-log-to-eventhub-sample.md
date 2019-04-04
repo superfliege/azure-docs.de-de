@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447744"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793635"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Überwachen von APIs mit Azure API Management, Event Hubs und Moesif
 Für den [API Management-Dienst](api-management-key-concepts.md) werden viele Funktionen bereitgestellt, mit denen die Verarbeitung von HTTP-Anforderungen verbessert werden kann, die an Ihre HTTP-API gesendet werden. Die Anforderungen und Antworten sind aber nur vorübergehend vorhanden. Die Anforderung wird ausgeführt und fließt durch den API Management-Dienst an Ihre Back-End-API. Ihre API verarbeitet die Anforderung, und eine Antwort fließt zurück an den API-Consumer. Der API Management-Dienst führt einige wichtige Statistiken zu den APIs für die Anzeige im Azure-Portal-Dashboard, aber darüber hinaus gehen die Details verloren.
@@ -47,7 +47,7 @@ Ein Event Hub akzeptiert Ereignisdaten als einfache Zeichenfolge. Der Inhalt die
 
 Eine alternative Option ist die Verwendung des Medientyps `application/http` , wie in der HTTP-Spezifikation [RFC 7230](https://tools.ietf.org/html/rfc7230)beschrieben. Für diesen Medientyp wird genau das gleiche Format genutzt, das zum tatsächlichen Übertragen von HTTP-Nachrichten verwendet wird, aber die gesamte Nachricht kann in den Textkörper einer anderen HTTP-Anforderung eingefügt werden. In unserem Fall verwenden wir lediglich den Textkörper als Nachricht zum Senden an Event Hubs. Glücklicherweise ist in [Microsoft ASP.NET Web API 2.2-Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)-Bibliotheken ein Parser vorhanden, mit dem dieses Format analysiert und in systemeigene `HttpRequestMessage`- und `HttpResponseMessage`-Objekte konvertiert werden kann.
 
-Zum Erstellen dieser Nachricht müssen wir die C#-basierten [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx) in Azure API Management verwenden. Dies ist die Richtlinie, mit der eine HTTP-Anforderungsnachricht an Azure Event Hubs gesendet wird.
+Zum Erstellen dieser Nachricht müssen wir die C#-basierten [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions) in Azure API Management verwenden. Dies ist die Richtlinie, mit der eine HTTP-Anforderungsnachricht an Azure Event Hubs gesendet wird.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -315,4 +315,4 @@ Der Azure API Management-Dienst ist ein idealer Ort zum Erfassen des HTTP-Datenv
 * Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
   * [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](api-management-howto-log-event-hubs.md)
   * [Verweis zu Protokollierungstool](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [log-to-eventhub policy reference](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: f88c7b9350d104241524284950865e1f2ca6f559
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ebe344d9f596f862fe5ffbfef083725e6527d0d3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729405"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650205"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
 1. Storefront-Anforderungen:  
-    *   [AppSource](#storefront-requirements-appSource)  
+    *   [AppSource](#storefront-requirements-appsource)  
     *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
 2. Anforderungen an die Auflistungsart und den Angebotstyp:  
     *   Weitere Informationen zu Auflistungsarten und Angebotstypen finden Sie auf der Seite „Bestimmung der Auflistungsart für Ihre Lösung“ unter [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  

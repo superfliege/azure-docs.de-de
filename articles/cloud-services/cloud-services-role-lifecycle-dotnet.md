@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 56f7b5e3b303ce68868f15528d1ec200919b52aa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001557"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916307"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
-Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) -Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.
+Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) -Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.
 
 ## <a name="extend-the-roleentrypoint-class"></a>Erweitern der RoleEntryPoint-Klasse
-Die [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx)-Klasse enthält Methoden, die von Azure beim **Starten**, **Ausführen** oder **Beenden** einer Web- oder Workerrolle aufgerufen werden. Sie können diese Methoden optional außer Kraft setzen, um die Rolleninitialisierung, Herunterfahrsequenzen für Rollen oder den Ausführungsthread der Rolle zu verwalten. 
+Die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100))-Klasse enthält Methoden, die von Azure beim **Starten**, **Ausführen** oder **Beenden** einer Web- oder Workerrolle aufgerufen werden. Sie können diese Methoden optional außer Kraft setzen, um die Rolleninitialisierung, Herunterfahrsequenzen für Rollen oder den Ausführungsthread der Rolle zu verwalten. 
 
 Berücksichtigen Sie beim Erweitern von **RoleEntryPoint**das folgende Verhalten der Methoden:
 
-* Die [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)- und die [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx)-Methode geben einen booleschen Wert zurück, daher kann von diesen Methoden **false** zurückgegeben werden.
+* Die [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))- und die [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100))-Methode geben einen booleschen Wert zurück, daher kann von diesen Methoden **false** zurückgegeben werden.
   
    Wenn Ihr Code **false**zurückgibt, wird der Rollenvorgang abrupt beendet, ohne dass eine möglicherweise eingerichtete Herunterfahrsequenz ausgeführt wird. Im Allgemeinen sollte das Zurückgeben von **false** durch die **OnStart**-Methode vermieden werden.
 * Jede nicht abgefangene Ausnahme in einer Überladung einer **RoleEntryPoint** -Methode wird als nicht behandelte Ausnahme behandelt.
   
-   Wenn in einer der Lebenszyklusmethoden eine Ausnahme auftritt, löst Azure das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) -Ereignis aus, und der Prozess wird beendet. Nachdem die Rolle offline geschaltet wurde, wird sie von Azure neu gestartet. Wenn eine nicht behandelte Ausnahme auftritt, wird das [Stopping](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) -Ereignis nicht ausgelöst, und die **OnStop** -Methode wird nicht aufgerufen.
+   Wenn in einer der Lebenszyklusmethoden eine Ausnahme auftritt, löst Azure das [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) -Ereignis aus, und der Prozess wird beendet. Nachdem die Rolle offline geschaltet wurde, wird sie von Azure neu gestartet. Wenn eine nicht behandelte Ausnahme auftritt, wird das [Stopping](/previous-versions/azure/reference/ee758136(v=azure.100)) -Ereignis nicht ausgelöst, und die **OnStop** -Methode wird nicht aufgerufen.
 
-Wenn Ihre Rolle nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, wirft Ihr Code bei jedem Neustart der Rolle möglicherweise eine nicht behandelte Ausnahme in einem der Lebenszyklusereignisse aus. Verwenden Sie in diesem Fall das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) -Ereignis, um die Ursache der Ausnahme zu ermitteln und die Ausnahme entsprechend zu behandeln. Ihre Rolle kann auch von der [Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) -Methode zurückgegeben werden, wodurch ein Neustart der Rolle veranlasst wird. Weitere Informationen zu den Bereitstellungszuständen finden Sie unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Wenn Ihre Rolle nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, wirft Ihr Code bei jedem Neustart der Rolle möglicherweise eine nicht behandelte Ausnahme in einem der Lebenszyklusereignisse aus. Verwenden Sie in diesem Fall das [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) -Ereignis, um die Ursache der Ausnahme zu ermitteln und die Ausnahme entsprechend zu behandeln. Ihre Rolle kann auch von der [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) -Methode zurückgegeben werden, wodurch ein Neustart der Rolle veranlasst wird. Weitere Informationen zu den Bereitstellungszuständen finden Sie unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
 > Wenn Sie zum Entwickeln Ihrer Anwendung die **Azure-Tools für Microsoft Visual Studio** verwenden, erweitern die Rollenprojektvorlagen automatisch die **RoleEntryPoint**-Klasse in den Dateien *WebRole.cs* und *WorkerRole.cs*.

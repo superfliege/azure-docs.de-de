@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812377"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918670"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und Bereitstellung in Azure.
@@ -69,7 +69,7 @@ Ein selbstsigniertes Zertifikat können Sie mit allen verfügbaren Tools erstell
 Es gibt zwei einfache Möglichkeiten zum Erstellen eines Zertifikats unter Windows: mithilfe des Dienstprogramms `makecert.exe` oder mit IIS.
 
 ### <a name="makecertexe"></a>makecert.exe
-Dieses Hilfsprogramm ist veraltet und wird hier nicht länger beschrieben. Weitere Informationen dazu finden Sie in [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa386968).
+Dieses Hilfsprogramm ist veraltet und wird hier nicht länger beschrieben. Weitere Informationen dazu finden Sie in [diesem MSDN-Artikel](/windows/desktop/SecCrypto/makecert).
 
 ### <a name="powershell"></a>PowerShell
 ```powershell

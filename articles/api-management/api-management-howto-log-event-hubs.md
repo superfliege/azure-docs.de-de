@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428481"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793559"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -40,7 +40,7 @@ Um die Protokollierung zu erstellen, senden Sie mithilfe der folgenden URL-Vorla
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * Ersetzen Sie `{your service}` durch den Namen Ihrer API Management-Dienstinstanz.
-* Ersetzen Sie `{new logger name}` durch den gewünschten Namen für den neuen Logger. Sie verweisen auf diesen Namen, wenn Sie die [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)-Richtlinie konfigurieren.
+* Ersetzen Sie `{new logger name}` durch den gewünschten Namen für den neuen Logger. Sie verweisen auf diesen Namen, wenn Sie die [log-to-eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub)-Richtlinie konfigurieren.
 
 Fügen Sie der Anforderung die folgenden Header hinzu:
 

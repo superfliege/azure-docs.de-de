@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 199843be72df473ae501eaf6bd47dce41b079c94
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888813"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906105"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Verwalten von DNS-Einträgen und -Ressourceneintragssätzen in Azure DNS über Azure PowerShell
 
@@ -33,9 +33,9 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell DNS-Eintr�
 
 Bei den Beispielen in diesem Artikel wird vorausgesetzt, dass Sie bereits [Azure PowerShell installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-operations-dnszones.md).
 
-## <a name="introduction"></a>Einführung
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="introduction"></a>Einführung
 
 Bevor Sie DNS-Einträge in Azure DNS erstellen, müssen Sie zunächst verstehen, wie DNS-Einträge von Azure DNS in DNS-Ressourceneintragssätzen organisiert werden.
 
@@ -93,7 +93,7 @@ Nach der ausführlichen Erstellungsanleitung für A-Einträge erfahren Sie in de
 
 In den einzelnen Fällen wird jeweils gezeigt, wie Sie einen Eintragssatz mit einem einzelnen Eintrag erstellen. Die vorherigen Beispiele für A-Einträge können für die Erstellung von Ressourceneintragssätzen mit mehreren Einträgen (mit Metadaten) oder für die Erstellung leerer Ressourceneintragssätze angepasst werden.
 
-Die Erstellung eines SOA-Ressourceneintragssatzes wird hier nicht gezeigt, da SOAs zusammen mit der jeweiligen DNS-Zone erstellt und gelöscht werden und nicht separat erstellt oder gelöscht werden können. Der SOA-Eintrag kann jedoch geändert werden. Dies wird in einem [späteren Beispiel](#to-modify-an-SOA-record) gezeigt.
+Die Erstellung eines SOA-Ressourceneintragssatzes wird hier nicht gezeigt, da SOAs zusammen mit der jeweiligen DNS-Zone erstellt und gelöscht werden und nicht separat erstellt oder gelöscht werden können. Der SOA-Eintrag kann jedoch geändert werden. Dies wird in einem [späteren Beispiel](#to-modify-an-soa-record) gezeigt.
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Erstellen einer AAAA-Datensatzgruppe mit einem einzelnen Datensatz
 
@@ -398,4 +398,4 @@ Informieren Sie sich ausführlicher über [Zonen und Einträge in Azure DNS](dns
 <br>
 Lernen Sie, wie Sie bei Verwendung von Azure DNS [Ihre Zonen und Einträge schützen](dns-protect-zones-recordsets.md).
 <br>
-Machen Sie sich mit der [Azure DNS PowerShell-Referenzdokumentation](/powershell/module/azurerm.dns) vertraut.
+Machen Sie sich mit der [Azure DNS PowerShell-Referenzdokumentation](/powershell/module/az.dns) vertraut.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: 906c0ef3db530ecb4aeade449e41a866a4b09a74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e5e84c22285d1cdec9678c8bf33dab1568d333cd
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005715"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621582"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
 Sie können Fehler, die beim Verwenden von Azure Backup auftreten, anhand der in der folgenden Tabelle aufgeführten Informationen beheben:
@@ -69,7 +69,7 @@ Sie können Fehler, die beim Verwenden von Azure Backup auftreten, anhand der in
 | Der Typ des für den Wiederherstellungsvorgang angegebenen Speicherkontos ist nicht online: <br>Stellen Sie sicher, dass das für den Wiederherstellungsvorgang angegebene Speicherkonto online ist. |Dieser Fehler kann aufgrund eines vorübergehenden Fehlers in Azure Storage oder aufgrund eines Ausfalls auftreten. Wählen Sie ein anderes Speicherkonto aus. |
 | Das Ressourcengruppenkontingent wurde erreicht: <br>Löschen Sie im Azure-Portal einige Ressourcengruppen, oder wenden Sie sich an den Azure-Support, um die Grenzwerte zu erhöhen. |Keine |
 | Das ausgewählte Subnetz ist nicht vorhanden: <br>Wählen Sie ein vorhandenes Subnetz aus. |Keine |
-| Der Azure Backup-Dienst ist nicht zum Zugreifen auf Ressourcen in Ihrem Abonnement autorisiert. |Stellen Sie zum Beheben dieses Fehlers zuerst die Datenträger durch Ausführen der unter [Wiederherstellen von gesicherten Datenträgern](backup-azure-arm-restore-vms.md#create-new-restore-disks) aufgeführten Schritte wieder her. Führen Sie dann in PowerShell die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#restore-an-azure-vm) beschriebenen Schritte aus. |
+| Der Azure Backup-Dienst ist nicht zum Zugreifen auf Ressourcen in Ihrem Abonnement autorisiert. |Stellen Sie zum Beheben dieses Fehlers zuerst die Datenträger durch Ausführen der unter [Wiederherstellen von gesicherten Datenträgern](backup-azure-arm-restore-vms.md#restore-disks) aufgeführten Schritte wieder her. Führen Sie dann in PowerShell die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#restore-an-azure-vm) beschriebenen Schritte aus. |
 
 ## <a name="backup-or-restore-takes-time"></a>Die Sicherung oder Wiederherstellung nimmt Zeit in Anspruch
 Wenn die Sicherung länger als 12 Stunden oder die Wiederherstellung länger als 6 Stunden dauert, überprüfen Sie [bewährte Methoden](backup-azure-vms-introduction.md#best-practices) und [Überlegungen zur Leistung](backup-azure-vms-introduction.md#backup-performance).

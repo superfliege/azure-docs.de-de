@@ -4,7 +4,7 @@ description: Erläutert den Service Fabric Reliable Actor-Lebenszyklus, Garbage 
 services: service-fabric
 documentationcenter: .net
 author: amanbha
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 10f78b3b78e90fbb4f1d50cf581bfbce263f44aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872720"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660985"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen
 Ein Actor wird aktiviert, wenn zum ersten Mal eine seiner Methoden aufgerufen wird. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er innerhalb eines konfigurierbaren Zeitraums nicht verwendet wird. Ein Actor und sein Zustand können jederzeit auch manuell gelöscht werden.

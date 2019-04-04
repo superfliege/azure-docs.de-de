@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 59524a9a08b16100598b7713cb0507646245d90b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bc6cc7b07d3dce43a666b3e5b0a958b41cdd3131
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445822"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651507"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -38,7 +38,7 @@ Das **ClaimsTransformation**-Element enthält die folgenden Attribute:
 | Attribut |Erforderlich | BESCHREIBUNG |
 | --------- |-------- | ----------- |
 | id |Ja | Ein Bezeichner, der zur eindeutigen Identifizierung der Anspruchstransformation verwendet wird. Andere XML-Elemente in der Richtlinie verweisen auf den Bezeichner. |
-| Transformationsmethode | Ja | Die Transformationsmethode, die für die Anspruchstransformation verwendet werden soll. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#Claims-transformations-reference). |
+| Transformationsmethode | Ja | Die Transformationsmethode, die für die Anspruchstransformation verwendet werden soll. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -80,7 +80,7 @@ Das **InputClaim**-Element enthält die folgenden Attribute:
 | Attribut |Erforderlich | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Ja | Ein Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde. |
-| TransformationClaimType |Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#Claims-transformations-reference). |
+| TransformationClaimType |Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
 
 ### <a name="inputparameters"></a>InputParameters
 
@@ -95,7 +95,7 @@ Das **InputParameters**-Element enthält das folgende Element:
 | Attribut | Erforderlich |BESCHREIBUNG |
 | --------- | ----------- |----------- |
 | id | Ja | Ein Bezeichner, der einen Verweis auf einen Parameter der Anspruchstransformationsmethode darstellt. Jede Anspruchstransformationsmethode verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der Tabelle für Anspruchstransformationen. |
-| DataType | Ja | Der Datentyp des Parameters, z.B. „String“, „Boolean“, „Int“ oder „DateTime“, gemäß der DataType-Enumeration im XML-Schema der benutzerdefinierten Richtlinie. Dieser Typ wird dazu verwendet, arithmetische Operationen ordnungsgemäß auszuführen. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#Claims-transformations-reference). |
+| DataType | Ja | Der Datentyp des Parameters, z.B. „String“, „Boolean“, „Int“ oder „DateTime“, gemäß der DataType-Enumeration im XML-Schema der benutzerdefinierten Richtlinie. Dieser Typ wird dazu verwendet, arithmetische Operationen ordnungsgemäß auszuführen. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
 | Wert | Ja | Ein Wert der wörtlich an die Transformation übergeben wird. Einige der Werte sind arbiträr, andere wählen Sie hingegen gemäß der Anspruchstransformationsmethode aus. |
 
 ### <a name="outputclaims"></a>OutputClaims
@@ -113,7 +113,7 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 | Attribut |Erforderlich | BESCHREIBUNG |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde.
-| TransformationClaimType | Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#Claims-transformations-reference). |
+| TransformationClaimType | Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
  
 Wenn die Typen des Eingabeanspruchs und des Ausgabeanspruchs übereinstimmen (String oder Boolean), können Sie den Eingabeanspruch auch als Ausgabeanspruch verwenden. In diesem Fall ändert die Anspruchstransformation den Eingabeanspruch mit dem Ausgabewert.
 

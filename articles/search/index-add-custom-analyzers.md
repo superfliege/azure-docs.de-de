@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8eb762e8a18ea5de25413681894f692628493a2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842854"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577542"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Hinzufügen von Analysetools zu einem Azure Search-Index
 
 Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetool](search-analyzers.md), das aus einer benutzerdefinierten Kombination von bestehendem Tokenizer und optionalen Filtern besteht. Durch die Kombination von Tokenizern und Filtern auf neue Weise können Sie die Textverarbeitung in der Suchmaschine anpassen, um bestimmte Ergebnisse zu erzielen. Sie können beispielsweise ein benutzerdefiniertes Analysetool mit einem *Zeichenfilter* erstellen, um HTML-Markup zu entfernen, bevor Texteingaben tokenisiert werden.
 
- Sie können mehrere benutzerdefinierte Analysetools definieren, um die Kombination der Filter zu variieren, aber jedes Feld kann nur ein Analysetool für die Indexierungsanalyse und einen für die Suchanalyse verwenden. Eine Veranschaulichung, wie ein benutzerdefiniertes Analysetool aussieht, finden Sie unter [Beispiel für ein benutzerdefiniertes Analysetool](search-analyzers.md#Example1).
+ Sie können mehrere benutzerdefinierte Analysetools definieren, um die Kombination der Filter zu variieren, aber jedes Feld kann nur ein Analysetool für die Indexierungsanalyse und einen für die Suchanalyse verwenden. Eine Veranschaulichung, wie ein benutzerdefiniertes Analysetool aussieht, finden Sie unter [Beispiel für ein benutzerdefiniertes Analysetool](search-analyzers.md#Custom-analyzer-example).
 
 ## <a name="overview"></a>Übersicht
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213449"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652279"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Eine RDP-Verbindung mit Azure Virtual Machines ist nicht möglich, da der DHCP-Clientdienst deaktiviert ist
 
@@ -27,7 +27,6 @@ In diesem Artikel wird ein Problem beschrieben, bei dem Sie keine Remotedesktopv
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Symptome
-
 Sie können keine RDP-Verbindung eines virtuellen Computers in Azure herstellen, weil der DHCP-Clientdienst auf dem virtuellen Computer deaktiviert ist. Im Screenshot im Azure-Portal unter [Startdiagnose](../troubleshooting/boot-diagnostics.md) ist zu erkennen, dass die VM normal gestartet und auf dem Anmeldebildschirm auf die Anmeldeinformationen gewartet wird. Sie können die Ereignisprotokolle in der VM mit der Ereignisanzeige remote anzeigen. Sie sehen, dass der DHCP-Clientdienst nicht gestartet wurde oder nicht gestartet werden kann. Es folgt ein Beispielprotokoll:
 
 **Protokollname:** System </br>
@@ -37,7 +36,7 @@ Sie können keine RDP-Verbindung eines virtuellen Computers in Azure herstellen,
 **Aufgabenkategorie:** Keine </br>
 **Ebene:** Error </br>
 **Schlüsselwörter:** Klassisch</br>
-**Benutzer:** N/V </br>
+**Benutzer:** – </br>
 **Computer**: myvm.cosotos.com</br>
 **Beschreibung:** Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
 
@@ -98,7 +97,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 1. Stellen Sie eine Verbindung mit der [seriellen Konsole](serial-console-windows.md) her, und öffnen Sie eine PowerShell-Instanz.
 2. Laden Sie das Tool Process Monitor herunter, indem Sie das folgende Skript ausführen:
 
-   ```
+   ```powershell
    remove-module psreadline
    $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
    $destination = "c:\temp\ProcessMonitor.zip"
@@ -167,6 +166,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 3. Versuchen Sie, über Remotedesktop eine Verbindung mit der VM herzustellen.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP-Clientdienst stürzt ab oder reagiert nicht
+
 1. Wenn der Dienst im Status **Wird gestartet** oder **Wird beendet** verbleibt, versuchen Sie, den Dienst zu beenden:
 
         sc stop DHCP
@@ -205,5 +205,3 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem zu beheben.
-
-

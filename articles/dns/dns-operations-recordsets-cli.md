@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963814"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650970"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI
 
@@ -92,7 +92,7 @@ Die zum Angeben der Eintragsdaten verwendeten Parameter variieren abhängig vom 
 
 Für jeden Fall wird gezeigt, wie Sie einen einzelnen Eintrag erstellen. Der Eintrag wird dem vorhandenen Eintragssatz hinzugefügt, oder es wird implizit ein Eintragssatz erstellt. Weitere Informationen zum Erstellen von Eintragssätzen und zum expliziten Definieren von Eintragssatzparametern finden Sie unter [Erstellen eines DNS-Ressourceneintragssatzes](#create-a-dns-record-set).
 
-Die Erstellung eines SOA-Ressourceneintragssatzes wird hier nicht gezeigt, da SOAs zusammen mit der jeweiligen DNS-Zone erstellt und gelöscht werden und nicht separat erstellt oder gelöscht werden können. Der SOA-Eintrag kann jedoch geändert werden. Dies wird in einem [späteren Beispiel](#to-modify-an-SOA-record) gezeigt.
+Die Erstellung eines SOA-Ressourceneintragssatzes wird hier nicht gezeigt, da SOAs zusammen mit der jeweiligen DNS-Zone erstellt und gelöscht werden und nicht separat erstellt oder gelöscht werden können. Der SOA-Eintrag kann jedoch geändert werden. Dies wird in einem [späteren Beispiel](#to-modify-an-soa-record) gezeigt.
 
 ### <a name="create-an-aaaa-record"></a>Erstellen eines AAAA-Eintrags
 

@@ -4,7 +4,7 @@ description: Erstellen Sie Hierarchien von .NET-Schnittstellen und -Typen im Rel
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f03330bbbf2c1c7f92310211058f7ef8858f1941
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209337"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662957"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorphie im Reliable Actors-Framework
 Das Reliable Actors-Framework ermöglicht es Ihnen, Actors mit vielen der Vorgehensweisen zu erstellen, die Sie auch beim objektorientierten Entwerfen verwenden würden. Eine dieser Techniken ist Polymorphie, bei der Typen und Schnittstellen von allgemeineren übergeordneten Elementen erben. Die Vererbung im Reliable Actors-Framework folgt normalerweise dem .NET-Modell mit einigen zusätzlichen Einschränkungen. Im Fall von Java/Linux folgt sie dem Java-Modell.

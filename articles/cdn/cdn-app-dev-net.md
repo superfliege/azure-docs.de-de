@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38454463"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916613"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Erste Schritte mit der Azure CDN-Entwicklung
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "38454463"
 > 
 > 
 
-Sie können die [Azure CDN-Bibliothek für .NET](https://msdn.microsoft.com/library/mt657769.aspx) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren.  Dieses Tutorial führt Sie durch die Erstellung einer einfachen .NET-Konsolenanwendung, die einige der verfügbaren Vorgänge demonstriert.  Dieses Tutorial dient nicht dazu, alle Aspekte der Azure-CDN-Bibliothek für .NET ausführlich zu beschreiben.
+Sie können die [Azure CDN-Bibliothek für .NET](/dotnet/api/overview/azure/cdn) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren.  Dieses Tutorial führt Sie durch die Erstellung einer einfachen .NET-Konsolenanwendung, die einige der verfügbaren Vorgänge demonstriert.  Dieses Tutorial dient nicht dazu, alle Aspekte der Azure-CDN-Bibliothek für .NET ausführlich zu beschreiben.
 
 Für dieses Tutorial benötigen Sie Visual Studio 2015.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) steht kostenlos zum Download zur Verfügung.
 
@@ -155,7 +155,7 @@ Schreiben Sie nun die Grundstruktur des Programms.
 
 Nachdem wir die Grundstruktur für unser Programm geschrieben haben, müssen wir nun die Methoden erstellen, die von der `Main` -Methode aufgerufen werden.
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 Bevor Sie die Azure CDN Management Library verwenden können, müssen Sie den Dienstprinzipal authentifizieren und ein Authentifizierungstoken abrufen.  Diese Methode verwendet die ADAL, um das Token abzurufen.
 
 ```csharp
@@ -338,7 +338,7 @@ Bestätigen Sie die Aufforderung, um den Rest des Programms auszuführen.
 ## <a name="next-steps"></a>Nächste Schritte
 [Laden Sie das Beispiel herunter](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c), um sich das abgeschlossene Projekt dieser exemplarischen Vorgehensweise anzusehen.
 
-Weitere Informationen zur Azure CDN-Verwaltungsbibliothek für .NET finden Sie in der [Referenz auf MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+Weitere Informationen zur Azure CDN-Verwaltungsbibliothek für .NET finden Sie in der [Referenz auf MSDN](/dotnet/api/overview/azure/cdn).
 
 Verwalten Sie Ihre CDN-Ressourcen mit [PowerShell](cdn-manage-powershell.md).
 

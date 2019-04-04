@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 225bc4368d2a87fa5fef3f74624fd10f42dc7c97
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556362"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850634"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schemas für Diagnoseprotokolle
 
 [Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie Ihre Anwendungen ausgeführt werden. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
 
-Ausführliche Informationen dazu finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/platform/data-collection.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md).
+Ausführliche Informationen dazu finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/platform/data-platform.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md).
 
 In diesem Artikel werden Schemas für Diagnoseprotokolle von Media Services beschrieben.
 

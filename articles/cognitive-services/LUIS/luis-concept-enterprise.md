@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 27217b1bdf49f5d2b22ac23a092270be42df9abf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5d7e2bfe1ee4e3ca248f40701aa65e757fc4d74
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861034"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895087"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Unternehmensstrategien für LUIS-Apps
 Lesen Sie die folgenden Entwurfsstrategien für Unternehmens-Apps.
@@ -31,7 +31,7 @@ Damit alle Apps die gleiche Absicht am besten bewerten, stellen Sie sicher, dass
 
 Legen Sie eine App als Master fest. Alle Äußerungen, die zur Überprüfung vorgeschlagen werden, sollten der Master-App hinzugefügt und dann wieder zurück in die anderen Apps verschoben werden. Dazu kann ein vollständiger Export der App erfolgen, oder Sie laden die bezeichneten Äußerungen vom Master in die untergeordneten Apps. Für das Laden können Sie die [LUIS](luis-reference-regions.md)-Website oder die Erstellungs-API für eine [einzelne Äußerung](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) oder einen [Batch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) verwenden. 
 
-Planen Sie eine regelmäßige [Überprüfung der Endpunktäußerungen](luis-how-to-review-endoint-utt.md) ein (z.B. alle zwei Wochen), um das aktive Lernen zu fördern, und trainieren und veröffentlichen Sie die App dann erneut. 
+Planen Sie eine regelmäßige [Überprüfung der Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) ein (z.B. alle zwei Wochen), um das aktive Lernen zu fördern, und trainieren und veröffentlichen Sie die App dann erneut. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Zuweisen mehrerer LUIS-Schlüssel zu derselben App
 Wenn Ihre LUIS-App mehr Endpunkttreffer erhält, als das Kontingent für einen einzelnen Schlüssel zulässt, erstellen Sie zusätzliche Schlüssel und weisen sie der LUIS-App zu. Erstellen Sie ein Modul für die Verwaltung des Datenverkehrs oder den Lastenausgleich, um die Endpunktabfragen über die Endpunktschlüssel zu verwalten. 
@@ -39,7 +39,7 @@ Wenn Ihre LUIS-App mehr Endpunkttreffer erhält, als das Kontingent für einen e
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Wenn eine monolithische App falsche Absichten zurückgibt
 Wenn Ihre App dafür vorgesehen ist, eine Vielzahl von Benutzeräußerungen vorherzusagen, sollten Sie die Implementierung des [Dispatchmodells](#dispatch-tool-and-model) erwägen. Durch das Aufteilen einer monolithischen App kann sich LUIS auf die Erkennung unterschiedlicher Absichten konzentrieren, und es kommt nicht zu Verwechslungen zwischen Absichten der übergeordneten und untergeordneten Apps. 
 
-Planen Sie eine regelmäßige [Überprüfung der Endpunktäußerungen](luis-how-to-review-endoint-utt.md) ein (z.B. alle zwei Wochen), um das aktive Lernen zu fördern, und trainieren und veröffentlichen Sie die App dann erneut. 
+Planen Sie eine regelmäßige [Überprüfung der Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) ein (z.B. alle zwei Wochen), um das aktive Lernen zu fördern, und trainieren und veröffentlichen Sie die App dann erneut. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Wenn Sie mehr als 500 Absichten benötigen
 Angenommen, Sie entwickeln einen Office-Assistenten, der mehr als 500 Absichten verarbeitet. Wenn sich 200 Absichten auf die Planung von Besprechungen, 200 auf Erinnerungen, 200 auf das Abrufen von Informationen zu Kollegen und 200 auf das Senden von E-Mails beziehen, sollten Sie die Absichten so gruppieren, dass sich jede Gruppe in einer App befindet. Erstellen Sie anschließend eine übergeordnete App, die sämtliche Absichten enthält. Nutzen Sie [Dispatchtool und -architektur](#dispatch-tool-and-model) für das Erstellen der übergeordneten App. Ändern Sie anschließend Ihren Bot so, dass er einen kaskadierenden Aufruf durchführt, der im [Tutorial zum Dispatchtool][dispatcher-application-tutorial] gezeigt wird. 

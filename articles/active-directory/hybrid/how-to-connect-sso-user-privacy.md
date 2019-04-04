@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c7b1f737d0331ecd40ab318cec0c082a3f7ddd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181336"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791546"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Datenschutz und nahtloses einmaliges Anmelden von Azure AD
 
@@ -50,7 +50,7 @@ Wir raten Ihnen dringend, die zweite Option zu verwenden, da diese einfacher zu 
 
 Sie können diese Ablaufverfolgungsprotokoll-Dateien entweder mit Windows-Explorer überprüfen und löschen, oder Sie können das folgende PowerShell-Skript verwenden, um die erforderlichen Aktionen durchzuführen:
 
-```
+```powershell
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
  
 Foreach ($file in $Files) { 
@@ -67,6 +67,7 @@ Weitere Informationen zu verwandten DSGVO-Anforderungen für Azure AD Connect fi
 Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Die Microsoft-Datenschutzrichtlinie im Trust Center](https://www.microsoft.com/trustcenter)
   - [**Problembehandlung**](tshoot-connect-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
   - [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen

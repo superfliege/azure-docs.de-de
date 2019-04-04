@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 087de711fdbc70a4562045f8d774f2c6ae5a0db5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 087b52bd603e8aed6078ab340e84c1f6bd0e8082
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417037"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652194"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über PowerShell
 
@@ -30,7 +30,7 @@ ms.locfileid: "50417037"
 Sie können virtuelle Computer (VMs) in Azure erstellen und jedem virtuellen Computer mehrere Netzwerkkarten (NICs) zuordnen. Mehrere NICs ermöglichen die Trennung von Datenverkehrstypen für alle NICs. Beispiel: Eine NIC kommuniziert mit dem Internet, während eine andere nur mit internen Ressourcen kommuniziert, für die keine Internetverbindung besteht. Die Möglichkeit, Netzwerkdatenverkehr auf mehreren NICs zu trennen, ist für zahlreiche virtuelle Netzwerkgeräte erforderlich, beispielsweise für Lösungen zur Anwendungsbereitstellung und WAN-Optimierung.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie diese Schritte mit dem [Resource Manager-Bereitstellungsmodell ausführen](../virtual-machines/windows/multiple-nics.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen:  [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie diese Schritte mit dem [Resource Manager-Bereitstellungsmodell ausführen](../virtual-machines/windows/multiple-nics.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
@@ -52,7 +52,7 @@ Die Back-End-VMs sind auf die Erstellung der folgenden Ressourcen angewiesen:
 ### <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
 Sie können das verwendete PowerShell-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1)herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
-1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites)bereitgestellten Ressourcengruppe.
+1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#prerequisites)bereitgestellten Ressourcengruppe.
 
     ```powershell
     $location              = "West US"

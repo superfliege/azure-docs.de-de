@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fdee4edce0301a5a4524725879f599b0a2e3532
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745672"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916698"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Bekannte Probleme bei Azure Monitor für VMs (Vorschauversion)
 
@@ -31,7 +31,6 @@ Die folgende Aufstellung enthält bekannte Probleme bei der aktuellen Version de
 - Wenn eine Azure-VM entfernt oder gelöscht wird, wird dies für einige Zeit in der VM-Listenansicht angezeigt. Wenn Sie außerdem auf den Zustand einer entfernten oder gelöschten VM klicken, wird die Ansicht **Integritätsdiagnosen** geöffnet und anschließend eine Ladeschleife initiiert. Durch Auswählen des Namens der gelöschten VM wird ein Bereich geöffnet mit der Meldung, dass die VM gelöscht wurde.
 - Konfigurationsänderungen, wie z. B. das Aktualisieren eines Schwellenwerts, dauern bis zu 30 Minuten, selbst wenn sie möglicherweise vom Portal oder der Workloadüberwachungs-API sofort aktualisiert werden. 
 - Die Benutzeroberfläche der Integritätsdiagnose wird schneller aktualisiert als die anderen Ansichten. Daher kann es beim Wechseln zwischen Ansichten zu Informationsverzögerungen kommen. 
-- Beim Herunterfahren von VMs werden einige Integritätskriterien auf *kritisch* und andere auf *fehlerfrei* aktualisiert. Der Netzwerkstatus der VM wird als *kritisch* angezeigt.
 - Für virtuelle Linux-Computer enthält der Titel der Seite, auf der die Integritätskriterien für eine einzelne VM-Ansicht aufgelistet wird, den gesamten Domänenname des virtuellen Computers anstelle des benutzerdefinierten VM-Namens. 
 - Wenn Sie die Überwachung für eine VM mithilfe einer der unterstützten Methoden deaktiviert haben und versuchen, diese erneut bereitzustellen, sollte dies im gleichen Arbeitsbereich erfolgen. Wenn Sie einen anderen Arbeitsbereich auswählen und versuchen, den Integritätszustand für diese VM anzuzeigen, tritt möglicherweise ein inkonsistentes Verhalten auf.
 - Das Integritätskriterium „Gesamte CPU-Auslastung“ für Windows zeigt einen Schwellenwert von *ungleich* **4**. Das bedeutet, dass die CPU-Auslastung höher als 95 % ist und die Länge der Systemwarteschlange 15 übersteigt. Dieses Integritätskriterium ist in dieser Vorschauversion nicht konfigurierbar.  

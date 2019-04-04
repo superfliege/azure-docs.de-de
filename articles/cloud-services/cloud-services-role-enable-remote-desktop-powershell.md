@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c5b70d40ed43cfc5d1c7a826c639d00d394733fb
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43ccc8e53c30219630ad10ee66a4db38656818e6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038166"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651004"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit PowerShell
 
@@ -33,12 +33,11 @@ Mit Remotedesktop können Sie auf den Desktop einer Rolle zugreifen, die in Azur
 In diesem Artikel wird beschrieben, wie Sie Remotedesktop mithilfe von PowerShell für Cloud Services-Rollen aktivieren. Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). PowerShell ermöglicht die Remotedesktoperweiterung, sodass Sie Remotedesktop auch nach der Bereitstellung der Anwendung aktivieren können.
 
 ## <a name="configure-remote-desktop-from-powershell"></a>Konfigurieren von Remotedesktop über PowerShell
-
 Mit dem Cmdlet [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) können Sie Remotedesktop für bestimmte Rollen oder für alle Rollen Ihrer Clouddienstbereitstellung aktivieren. Das Cmdlet ermöglicht die Angabe des Benutzernamens und Kennworts für Remotedesktopbenutzer über den *Credential* -Parameter, der ein PSCredential-Objekt annimmt.
 
 Wenn Sie PowerShell interaktiv verwenden, können Sie das PSCredential-Objekt durch Aufrufen des Cmdlets [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) auf einfache Weise festlegen.
 
-```
+```powershell
 $remoteusercredentials = Get-Credential
 ```
 
@@ -48,7 +47,7 @@ Da PowerShell Automatisierungsszenarien unterstützt, können Sie das **PSCreden
 
 Sie können auch eine sichere Kennwortdatei erstellen, damit Sie nicht jedes Mal das Kennwort eingeben müssen. Darüber hinaus ist eine sichere Kennwortdatei besser als eine Nur-Text-Datei. Verwenden Sie das folgende PowerShell-Skript zum Erstellen einer sicheren Kennwortdatei:
 
-```
+```powershell
 ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ```
 
@@ -61,7 +60,7 @@ Das Cmdlet [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicema
 
 Im folgenden PowerShell-Beispiel wird die Remotedesktoperweiterung für einen Clouddienst festgelegt:
 
-```
+```powershell
 $servicename = "cloudservice"
 $username = "RemoteDesktopUser"
 $securepassword = Get-Content -Path "password.txt" | ConvertTo-SecureString
@@ -77,7 +76,7 @@ Die Remotedesktoperweiterung ist immer einer Bereitstellung zugeordnet. Wenn Sie
 
 Mit dem Cmdlet [Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) stellen Sie eine Remotedesktopverbindung mit einer bestimmten Rolleninstanz Ihres Clouddiensts her. Sie können den *LocalPath* -Parameter zum lokalen Herunterladen der RDP-Datei verwenden. Sie können alternativ den *Launch* -Parameter verwenden, um das Dialogfeld „Remotedesktopverbindung“ für den Zugriff auf die Rolleninstanz des Clouddiensts direkt zu starten.
 
-```
+```powershell
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
@@ -85,7 +84,7 @@ Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -L
 
 Das Cmdlet [Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) zeigt an, ob Remotedesktop für eine Dienstbereitstellung aktiviert oder deaktiviert ist. Das Cmdlet gibt den Benutzernamen des Remotedesktopbenutzers und die Rollen zurück, für die die Remotedesktoperweiterung aktiviert ist. Standardmäßig geschieht dies auf dem Bereitstellungsslot, und Sie können stattdessen den Stagingslot wählen.
 
-```
+```powershell
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
@@ -95,7 +94,7 @@ Wenn Sie die Remotedesktoperweiterung bereits für eine Bereitstellung aktiviert
 
 Zum Entfernen der Remotedesktoperweiterung aus einer Bereitstellung können Sie das Cmdlet [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) verwenden. Sie können optional auch den Bereitstellungsslot und die Bereitstellungsrollen angeben, für die Sie die Remotedesktoperweiterung entfernen möchten.
 
-```
+```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
 ```
 

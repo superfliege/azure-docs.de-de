@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903622"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619831"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -32,7 +32,7 @@ Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Mi
 * Komponenten können separate Application Insights-Instrumentierungsschlüssel (sogar in verschiedenen Abonnements) oder verschiedene Rollen aufweisen, die alle an einen einzelnen Application Insights-Instrumentierungsschlüssel berichten. Auf der neuen Benutzeroberfläche werden Details übergreifend über alle Komponenten angezeigt, unabhängig von deren Einrichtung.
 
 > [!NOTE]
-> * **Fehlen die Links von verknüpften Elementen?** Die gesamte verknüpfte Telemetrie findet sich in den Abschnitten [oben](#cross-component-transaction-chart) und [unten](#all-telemetry-with-this-Operation-Id) auf der linken Seite. 
+> * **Fehlen die Links von verknüpften Elementen?** Die gesamte verknüpfte Telemetrie findet sich in den Abschnitten [oben](#cross-component-transaction-chart) und [unten](#all-telemetry-with-this-operation-id) auf der linken Seite. 
 
 ## <a name="transaction-diagnostics-experience"></a>Oberfläche zur Transaktionsdiagnose
 Diese Ansicht ist in vier Hauptteile gegliedert: eine Ergebnisliste, ein komponentenübergreifendes Transaktionsdiagramm, eine Liste der Zeitabfolge für die gesamte Telemetrie für diesen Vorgang und den Detailbereich für ein bestimmtes auf der linken Seite ausgewähltes Telemetrieelement.

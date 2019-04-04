@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 0f36ab9ab7703dd9677b6c2989eddb91593af79f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105106"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650563"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals
 
@@ -36,7 +36,7 @@ Wenn Sie einen virtuellen Computer mit mehreren IP-Adressen oder einer statische
 
 ## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
-Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#Scenario) beschriebenen drei IP-Konfigurationen haben, dies ist jedoch nicht erforderlich.
+Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#scenario) beschriebenen drei IP-Konfigurationen haben, dies ist jedoch nicht erforderlich.
 
 ### <a name="coreadd"></a>Grundlegende Schritte
 

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 10ba16fc06a4678c7bd70cbb7e6797b8d9be8ff4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e62f12123ae9af4f5e09d19622ba1558c2f43184
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485118"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846440"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-Cmdlets und REST-APIs für SQL Data Warehouse
 Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden.  Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren.  Einige gute REST-Beispiele finden Sie im Artikel [Verwalten der Skalierbarkeit mit REST][Manage scalability with REST].
@@ -96,7 +96,7 @@ Weitere Aufgaben, die mit PowerShell automatisiert werden können, finden Sie un
 [Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
 
 <!--MSDN references-->
-[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.sql
+[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/az.sql
 [Operations for Azure SQL Database]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [Get-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase
 [Get-AzSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup

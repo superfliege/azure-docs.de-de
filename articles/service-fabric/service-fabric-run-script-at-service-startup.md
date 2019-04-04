@@ -3,8 +3,8 @@ title: Ausführen eines Skripts, wenn ein Azure Service Fabric-Dienst startet | 
 description: Informationen zum Konfigurieren einer Richtlinie für einen Setupeinstiegspunkt für einen Service Fabric-Dienst und Ausführen eines Skripts beim Dienststart.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
-ms.author: mfussell
-ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: atsenthi
+ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838441"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660390"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Ausführen eines Dienststartskripts als lokales Benutzerkonto oder Systemkonto
 Bevor eine ausführbare Service Fabric-Dienstdatei startet, können Konfigurations- oder Setupeinstellungen erforderlich sein.  Beispiel: Konfiguration von Umgebungsvariablen. Sie können angeben, dass ein Skript ausgeführt wird, bevor die ausführbare Dienstdatei im Dienstmanifest für den Dienst startet. Durch Konfigurieren einer RunAs-Richtlinie für den Setupeinstiegspunkt des Diensts können Sie das Konto ändern, unter dem die Setupdatei ausgeführt wird.  Mit einem separaten Setupeinstiegspunkt können Sie für einen kurzen Zeitraum eine Konfiguration mit hohen Berechtigungen ausführen, damit die ausführbare Diensthostdatei nicht für längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss.

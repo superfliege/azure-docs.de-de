@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b7dbea4736eae3371d288883ba40d8edfe310869
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 40138a69baf9cd621b2f287b2fe035225bfd9bec
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727943"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877492"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Tutorial: Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy
 
@@ -59,7 +59,7 @@ Containernamen müssen mit einem Buchstaben oder einer Zahl beginnen. Sie dürfe
 
 Mit AzCopy können Sie unter [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) oder [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download) alle Dateien in einem Ordner in Blob Storage hochladen. Um alle Blobs in einem Ordner hochzuladen, geben Sie den folgenden AzCopy-Befehl aus:
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
     azcopy \
         --source /mnt/myfolder \
@@ -67,7 +67,7 @@ Mit AzCopy können Sie unter [Windows](https://docs.microsoft.com/azure/storage/
         --dest-key <key> \
         --recursive
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a>Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
@@ -82,7 +82,7 @@ Mit AzCopy können Sie [Dateien basierend auf dem Zeitpunkt der letzten Änderun
 
 Falls Sie nur Quellressourcen kopieren möchten, die im Ziel nicht vorhanden sind, können Sie beide Parameter – `--exclude-older` und `--exclude-newer` (Linux) oder `/XO` und `/XN` (Windows) – im AzCopy-Befehl angeben. AzCopy lädt nur die aktualisierten Daten basierend auf dem Zeitstempel hoch.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
     azcopy \
     --source /mnt/myfolder \
@@ -91,7 +91,7 @@ Falls Sie nur Quellressourcen kopieren möchten, die im Ziel nicht vorhanden sin
     --recursive \
     --exclude-older
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a>Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
@@ -102,11 +102,11 @@ Sie können einen geplanten Task oder Cron-Auftrag, der ein AzCopy-Befehlsskript
 
 Kopieren Sie den AzCopy-Befehl in einen Text-Editor. Aktualisieren Sie die Parameterwerte des AzCopy-Befehls mit den entsprechenden Werten. Speichern Sie die Datei als `script.sh` (Linux) oder `script.bat` (Windows) für AzCopy.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
     azcopy --source /mnt/myfiles --destination https://myaccount.blob.core.windows.net/mycontainer --dest-key <key> --recursive --exclude-older --exclude-newer --verbose >> Path/to/logfolder/`date +\%Y\%m\%d\%H\%M\%S`-cron.log
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a>Windows](#tab/windows)
 
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
     AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
@@ -117,7 +117,7 @@ AzCopy wird mit der Verboseoption `--verbose` (Linux) oder `/V` (Windows) ausgef
 In diesem Tutorial wird [SCHTASKS](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) verwendet, um einen geplanten Task unter Windows zu erstellen. Der [Crontab](http://crontab.org/)-Befehl wird verwendet, um einen Cron-Auftrag unter Linux zu erstellen.
  **SCHTASKS** ermöglicht Administratoren das Erstellen, Löschen, Abfragen, Ändern, Ausführen und Beenden von geplanten Tasks auf einem lokalen oder Remotecomputer. Mithilfe von **Cron** können Linux- und UNIX-Benutzer Befehle oder Skripts zu einem bestimmten Datum und einer bestimmten Uhrzeit mithilfe von [Cron-Ausdrücken](https://en.wikipedia.org/wiki/Cron#CRON_expression) ausführen.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
 Um einem Cron-Auftrag unter Linux zu erstellen, geben Sie den folgenden Befehl auf einem Terminalserver ein:
 
@@ -126,9 +126,9 @@ crontab -e
 */5 * * * * sh /path/to/script.sh
 ```
 
-Durch Angabe des Cron-Ausdrucks `*/5 * * * * ` im Befehl wird angegeben, dass das Shell-Skript `script.sh` alle fünf Minuten ausgeführt werden soll. Sie können das Skript für die Ausführung zu einem bestimmten Zeitpunkt planen, d.h. täglich, monatlich oder jährlich. Weitere Informationen zum Festlegen von Datum und Uhrzeit für die Ausführung eines Auftrags finden Sie unter [Cron-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+Durch Angabe des Cron-Ausdrucks `*/5 * * * *` im Befehl wird angegeben, dass das Shell-Skript `script.sh` alle fünf Minuten ausgeführt werden soll. Sie können das Skript für die Ausführung zu einem bestimmten Zeitpunkt planen, d.h. täglich, monatlich oder jährlich. Weitere Informationen zum Festlegen von Datum und Uhrzeit für die Ausführung eines Auftrags finden Sie unter [Cron-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a>Windows](#tab/windows)
 
 Um einen geplanten Task unter Windows zu erstellen, geben Sie den folgenden Befehl an einer Eingabeaufforderung oder in PowerShell ein:
 

@@ -4,7 +4,7 @@ description: Service Fabric-Cluster werden unter Windows Server und Linux ausgef
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: a968b173357bf8bcb83990b891f38306895b4ca8
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966574"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670471"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Übersicht über Service Fabric-Cluster in Azure
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich, und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
@@ -66,14 +66,14 @@ Jeder Clusterknotentyp wird von einem [Azure Storage-Konto](/azure/storage/commo
 Ein Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet.  Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. 
 
 ### <a name="node-to-node-security"></a>Knoten-zu-Knoten-Sicherheit
-Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den virtuellen und physischen Computern in einem Cluster. Dieses Sicherheitsszenario stellt sicher, dass nur Computer, die zum Clusterbeitritt berechtigt sind, Anwendungen und Dienste im Cluster hosten können. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen.  Zum Sichern des Clusterdatenverkehrs und zum Bereitstellen von Cluster- und Serverauthentifizierung ist ein Clusterzertifikat erforderlich.  Selbstsignierte Zertifikate können für Testcluster verwendet werden, zum Sichern von Produktionsclustern sollte jedoch ein Zertifikat von einer vertrauenswürdigen Zertifizierungsstelle verwendet werden.
+Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den virtuellen und physischen Computern in einem Cluster. Dieses Sicherheitsszenario stellt sicher, dass nur Computer, die zum Clusterbeitritt berechtigt sind, Anwendungen und Dienste im Cluster hosten können. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen.  Zum Schützen des Clusterdatenverkehrs und Bereitstellen von Cluster- und Serverauthentifizierung ist ein Clusterzertifikat erforderlich.  Selbstsignierte Zertifikate können für Testcluster verwendet werden, zum Sichern von Produktionsclustern sollte jedoch ein Zertifikat von einer vertrauenswürdigen Zertifizierungsstelle verwendet werden.
 
 Weitere Informationen finden Sie unter [Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security).
 
 ### <a name="client-to-node-security"></a>Client-zu-Knoten-Sicherheit
-Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikation zwischen einem Client und einzelnen Knoten im Cluster. Diese Art von Sicherheit sorgt dafür, dass nur autorisierte Benutzer auf den Cluster und die im Cluster bereitgestellten Anwendungen zugreifen können. Clients werden über ihre X.509-Zertifikat-Sicherheitsanmeldeinformationen eindeutig identifiziert. Zum Authentifizieren von Administrator- oder Benutzerclients beim Cluster können beliebig viele optionale Clientzertifikate verwendet werden.
+Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikation zwischen einem Client und einzelnen Knoten im Cluster. Diese Art von Sicherheit sorgt dafür, dass nur autorisierte Benutzer auf den Cluster und die im Cluster bereitgestellten Anwendungen zugreifen können. Clients werden über ihre Sicherheitsanmeldeinformationen für X.509-Zertifikate eindeutig identifiziert. Zum Authentifizieren von Administrator- oder Benutzerclients beim Cluster können beliebig viele optionale Clientzertifikate verwendet werden.
 
-Zusätzlich zu Clientzertifikaten kann Azure Active Directory auch für das Authentifizieren von Clients beim Cluster konfiguriert werden.
+Zusätzlich zu Clientzertifikaten kann auch Azure Active Directory für das Authentifizieren von Clients beim Cluster konfiguriert werden.
 
 Weitere Informationen finden Sie unter [Client-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#client-to-node-security).
 

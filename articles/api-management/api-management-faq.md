@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c0c8adca9d99c00e32127e02a3d68ff668a235e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728567"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793304"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -72,13 +72,13 @@ Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gate
 Wenn Sie eine API Management-Instanz in eine neue Instanz kopieren möchten, haben Sie verschiedene Möglichkeiten. Ihre Möglichkeiten:
 
 * Verwenden Sie die Sicherungs- und Wiederherstellungsfunktion in API Management. Weitere Informationen finden Sie unter [So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
-* Erstellen Sie mithilfe der [API Management-REST-API](https://msdn.microsoft.com/library/azure/dn776326.aspx) ein eigenes Sicherungs- und Wiederherstellungsfeature. Verwenden Sie die REST-API zum Speichern und Wiederherstellen der Entitäten aus der gewünschten Dienstinstanz.
+* Erstellen Sie mithilfe der [API Management-REST-API](/rest/api/apimanagement/) ein eigenes Sicherungs- und Wiederherstellungsfeature. Verwenden Sie die REST-API zum Speichern und Wiederherstellen der Entitäten aus der gewünschten Dienstinstanz.
 * Laden Sie die Dienstkonfiguration unter Verwendung von Git herunter, und laden Sie sie anschließend in eine neue Instanz hoch. Weitere Informationen finden Sie unter [Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git](api-management-configuration-repository-git.md).
 
 ### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Kann ich meine API Management-Instanz programmgesteuert verwalten?
 Ja, Sie können API Management unter Verwendung der folgenden Komponenten programmgesteuert verwalten:
 
-* [API Management-REST-API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+* [API Management-REST-API](/rest/api/apimanagement/)
 * [Microsoft Azure ApiManagement Service Management Library SDK](https://aka.ms/apimsdk)
 * PowerShell-Cmdlets für [Dienstbereitstellung](https://docs.microsoft.com/powershell/module/wds) und [Dienstverwaltung](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 
@@ -97,7 +97,7 @@ Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://do
 4. Greifen Sie über die URL auf das Verwaltungsportal zu.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Weshalb ist die Richtlinie, die ich hinzufügen möchte, im Richtlinien-Editor nicht verfügbar?
-Ist die Richtlinie, die Sie hinzufügen möchten, im Richtlinien-Editor abgeblendet, stellen Sie sicher, dass Sie sich im richtigen Bereich für die Richtlinie befinden. Jede Richtlinienanweisung ist für die Verwendung in bestimmten Bereichen und Richtlinienabschnitten vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie unter [API Management policies](https://msdn.microsoft.com/library/azure/dn894080.aspx) (API Management-Richtlinien) im Abschnitt „Verwendung“ der jeweiligen Richtlinie.
+Ist die Richtlinie, die Sie hinzufügen möchten, im Richtlinien-Editor abgeblendet, stellen Sie sicher, dass Sie sich im richtigen Bereich für die Richtlinie befinden. Jede Richtlinienanweisung ist für die Verwendung in bestimmten Bereichen und Richtlinienabschnitten vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie unter [API Management policies](/azure/api-management/api-management-policies) (API Management-Richtlinien) im Abschnitt „Verwendung“ der jeweiligen Richtlinie.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Wie richte ich mehrere Umgebungen in einer einzelnen API ein?
 Wenn Sie in einer API mehrere Umgebungen einrichten möchten, beispielsweise eine Testumgebung und eine Produktionsumgebung, haben Sie zwei Möglichkeiten. Ihre Möglichkeiten:
@@ -142,7 +142,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 ```
 
 #### <a name="direct-api-update-method"></a>Direkte API-Updatemethode ####
-1. Erstellen Sie mit API Management eine [Back-End](https://msdn.microsoft.com/library/azure/dn935030.aspx)-Entität.       
+1. Erstellen Sie mit API Management eine [Back-End](/rest/api/apimanagement/)-Entität.     
 2. Legen Sie die **skipCertificateChainValidation**-Eigenschaft auf **true** fest.     
 3. Wenn Sie die Verwendung selbstsignierter Zertifikate nicht mehr zulassen möchten, löschen Sie die Back-End-Entität, oder legen Sie die **skipCertificateChainValidation**-Eigenschaft auf **false** fest.
 

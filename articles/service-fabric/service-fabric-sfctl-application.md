@@ -4,7 +4,7 @@ description: Beschreibt die sfctl application-Befehle der Service Fabric-Befehls
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278541"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665541"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu verwalten.

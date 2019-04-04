@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie Dienste in Service Fabric auflösen, ein
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: c4516e86e25bb31b113b495a239c9eae9df8c9f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094768"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666119"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten
 In Service Fabric wird ein Dienst an irgendeinem Ort in einem Service Fabric-Cluster ausgeführt, der sich in der Regel auf mehreren virtuellen Computern befindet. Er kann entweder vom Dienstbesitzer oder automatisch von Service Fabric von einem Standort an einen anderen verschoben werden. Dienste sind nicht statisch an einen bestimmten Computer oder eine bestimmte Adresse gefunden.

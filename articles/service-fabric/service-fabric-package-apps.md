@@ -3,8 +3,8 @@ title: Paketieren einer Azure Service Fabric-Anwendung | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie eine Service Fabric-Anwendung vor der Bereitstellung in einem Cluster paketieren.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: mani-ramaswamy
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,23 +13,27 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: ryanwi
-ms.openlocfilehash: 24cb1fd0666b404d92dfb803f55c850226ff59b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: atsenthi
+ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205809"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791591"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
+
 In diesem Artikel wird beschrieben, wie eine Service Fabric-Anwendung paketiert und für die Bereitstellung vorbereitet wird.
 
 ## <a name="package-layout"></a>Paketlayout
+
 Das Anwendungsmanifest, ein oder mehrere Dienstmanifeste und andere erforderliche Paketdateien müssen in einem bestimmten Layout für die Bereitstellung in einem Service Fabric-Cluster angeordnet werden. Die Beispielmanifeste in diesem Artikel müssen in der folgenden Verzeichnisstruktur angeordnet werden:
 
 ```
-PS D:\temp> tree /f .\MyApplicationType
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -49,6 +53,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 Die Ordner werden nach den **Name** -Attributen der jeweils zugehörigen Elemente benannt. Wenn das Dienstmanifest beispielsweise zwei Codepakete mit den Namen **MyCodeA** und **MyCodeB** umfasst, enthalten zwei Ordner mit denselben Namen die jeweils erforderlichen Binärdateien für jedes Codepaket.
 
 ## <a name="use-setupentrypoint"></a>Verwenden von SetupEntryPoint
+
 Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforderung, eine ausführbare Datei vor dem Starten des Diensts auszuführen, sowie die Anforderung, einen Vorgang mit erhöhten Rechten auszuführen. Beispiel: 
 
 * Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
@@ -57,8 +62,11 @@ Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforder
 Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter [Konfigurieren der Richtlinie für einen Setupeinstiegspunkt für Dienste](service-fabric-application-runas-security.md).
 
 <a id="Package-App"></a>
+
 ## <a name="configure"></a>Konfigurieren
+
 ### <a name="build-a-package-by-using-visual-studio"></a>Erstellen eines Pakets mit Visual Studio
+
 Wenn Sie Ihre Anwendung mithilfe von Visual Studio 2015 erstellen, können Sie über den Befehl "Paket" automatisch ein Paket erstellen, das dem oben beschriebenen Layout entspricht.
 
 Klicken Sie zum Erstellen eines Pakets im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie wie unten gezeigt den Befehl „Paket“ aus:
@@ -68,6 +76,7 @@ Klicken Sie zum Erstellen eines Pakets im Projektmappen-Explorer mit der rechten
 Nach Abschluss der Paketerstellung wird der Speicherort des Pakets im **Ausgabefenster** angezeigt. Die Paketerstellung erfolgt automatisch, wenn Sie die Anwendung in Visual Studio bereitstellen oder debuggen.
 
 ### <a name="build-a-package-by-command-line"></a>Erstellen eines Pakets über die Befehlszeile
+
 Es ist auch möglich, Ihre Anwendung mit `msbuild.exe` programmgesteuert zu packen. Diese Datei wird auch von Visual Studio im Hintergrund ausgeführt, sodass die Ausgabe identisch ist.
 
 ```shell
@@ -75,12 +84,16 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 ```
 
 ## <a name="test-the-package"></a>Testen des Pakets
+
 Sie können die Paketstruktur lokal über PowerShell mit dem [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) -Befehl überprüfen.
 Dieser Befehl sucht nach Problemen bei der Manifestanalyse und überprüft alle Verweise. Mit diesem Befehl wird nur die strukturelle Richtigkeit der Verzeichnisse und Dateien im Paket überprüft.
 Es werden keine Inhalte der Code- oder Datenpakete überprüft, mit Ausnahme der Prüfung, ob alle erforderlichen Dateien vorhanden sind.
 
+```powershell
+Test-ServiceFabricApplicationPackage .\MyApplicationType
 ```
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
+
+```Output
 False
 Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
@@ -89,8 +102,10 @@ FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_71957
 Dieser Fehler gibt an, dass die Datei *MySetup.bat* , auf die im Dienstmanifest **SetupEntryPoint** verwiesen wird, im Codepaket fehlt. Nach dem Hinzufügen der fehlenden Datei wird die Überprüfung der Anwendung erfolgreich abgeschlossen:
 
 ```
-PS D:\temp> tree /f .\MyApplicationType
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -106,10 +121,14 @@ D:\TEMP\MYAPPLICATIONTYPE
     │
     └───MyData
             init.dat
+```
 
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
+```powershell
+Test-ServiceFabricApplicationPackage .\MyApplicationType
+```
+
+```Output
 True
-PS D:\temp>
 ```
 
 Wenn [Anwendungsparameter](service-fabric-manage-multiple-environment-app-configuration.md) in Ihrer Anwendung definiert sind, können Sie diese zwecks ordnungsgemäßer Überprüfung an [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) übergeben.
@@ -119,6 +138,7 @@ Wenn Sie wissen, in welchem Cluster die Anwendung bereitgestellt wird, empfiehlt
 Sobald die Anwendung ordnungsgemäß gepackt ist und die Überprüfung bestanden hat, können Sie das Paket komprimieren, um Bereitstellungsvorgänge zu beschleunigen.
 
 ## <a name="compress-a-package"></a>Komprimieren eines Pakets
+
 Wenn ein Paket groß ist oder viele Dateien enthält, können Sie es zur schnelleren Bereitstellung komprimieren. Durch eine Komprimierung werden die Anzahl der Dateien und die Größe des Pakets verringert.
 Bei einem komprimierten Anwendungspaket kann das [Hochladen des Anwendungspakets](service-fabric-deploy-remove-applications.md#upload-the-application-package) im Vergleich zum Hochladen des nicht komprimierten Pakets länger dauern. Dies gilt insbesondere dann, wenn die Komprimierung im Rahmen des Kopiervorgangs erfolgt. Mit Komprimierung verläuft die [Registrierung](service-fabric-deploy-remove-applications.md#register-the-application-package) und die [Aufhebung der Registrierung des Anwendungstyps](service-fabric-deploy-remove-applications.md#unregister-an-application-type) schneller.
 
@@ -131,8 +151,10 @@ Mit dem folgenden Befehl wird das Paket komprimiert, ohne dass es im Abbildspeic
 Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data` . Das Anwendungsmanifest und die Dienstmanifeste werden nicht gezippt, da sie für viele interne Vorgänge erforderlich sind. Beispielsweise muss bei der Paketfreigabe und der Extraktion des Namens und der Version von Anwendungstypen für bestimmte Überprüfungen immer auf die Manifeste zugegriffen werden. Eine Komprimierung der Manifeste würde dazu führen, dass diese Vorgänge unwirksam werden.
 
 ```
-PS D:\temp> tree /f .\MyApplicationType
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -148,10 +170,14 @@ D:\TEMP\MYAPPLICATIONTYPE
     │
     └───MyData
             init.dat
-PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -CompressPackage -SkipCopy
+```
 
-PS D:\temp> tree /f .\MyApplicationType
+```powershell
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -CompressPackage -SkipCopy
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -165,8 +191,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 Alternativ können Sie das Paket in einem Schritt mit [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) komprimieren und kopieren.
 Wenn es sich um ein großes Paket handelt, legen Sie ein ausreichend langes Timeout fest, um Zeit für die Komprimierung des Pakets und den Upload in das Cluster bereitzustellen.
-```
-PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
+
+```powershell
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
 Intern berechnet das Service Fabric-Paket zur Überprüfung Prüfsummen für die Anwendungspakete. Bei der Komprimierung werden die Prüfsummen für die komprimierten Versionen der einzelnen Pakete berechnet. Beim Generieren einer neuen ZIP-Datei aus demselben Anwendungspaket werden andere Prüfsummen erstellt. Um Überprüfungsfehler zu vermeiden, verwenden Sie die [Diff-Bereitstellung](service-fabric-application-upgrade-advanced.md). Bei dieser Option dürfen keine unveränderten Pakete in der neuen Version enthalten sein. Stattdessen verweisen sie direkt aus dem neuen Dienstmanifest darauf.
@@ -176,6 +203,7 @@ Wenn die Diff-Bereitstellung nicht verwendet werden kann und Sie die Pakete eins
 Das Paket ist nun ordnungsgemäß verpackt, überprüft und ggf. komprimiert. Somit ist es für die [Bereitstellung](service-fabric-deploy-remove-applications.md) in einem oder in mehreren Service Fabric-Clustern bereit.
 
 ### <a name="compress-packages-when-deploying-using-visual-studio"></a>Komprimieren Sie Pakete, wenn Sie mit Visual Studio bereitstellen
+
 Sie können Visual Studio anweisen, Pakete bei der Bereitstellung zu komprimieren, indem Sie das `CopyPackageParameters`-Element an ihr Veröffentlichungsprofil senden und das `CompressPackage`-Attribut auf `true` festlegen.
 
 ``` xml
@@ -187,6 +215,7 @@ Sie können Visual Studio anweisen, Pakete bei der Bereitstellung zu komprimiere
 ```
 
 ## <a name="create-an-sfpkg"></a>Erstellen einer SFPKG-Datei
+
 Ab Version 6.1 unterstützt Service Fabric die Bereitstellung aus einem externen Speicher.
 Bei dieser Option muss das Anwendungspaket nicht in den Imagespeicher kopiert werden. Stattdessen können Sie eine `sfpkg`-Datei erstellen und in einen externen Speicher hochladen und dann bei der Bereitstellung für Service Fabric den Download-URI angeben. Dasselbe Paket kann für mehrere Cluster bereitgestellt werden. Die Bereitstellung aus dem externen Speicher spart die Zeit, die für das Kopieren des Pakets in jeden Cluster benötigt wird.
 
@@ -207,6 +236,7 @@ Verwenden Sie zum Bereitstellen des Pakets die externe Bereitstellung. Diese erf
 > Bei der Bereitstellung auf Grundlage des relativen Pfads zum Imagespeicher werden derzeit keine `sfpkg`-Dateien unterstützt. Aus diesem Grund sollte die `sfpkg` nicht in den Imagespeicher kopiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Bereitstellen und Entfernen von Anwendungen][10] beschreibt, wie Sie mit PowerShell Anwendungsinstanzen verwalten.
 
 [Verwalten von Anwendungsparametern für mehrere Umgebungen][11] beschreibt, wie Parameter und Umgebungsvariablen für verschiedene Anwendungsinstanzen konfiguriert werden.

@@ -2,17 +2,17 @@
 title: Konzepte – Skalieren von Anwendungen in Azure Kubernetes Service (AKS)
 description: Informationen zum Skalieren in Azure Kubernetes Service (AKS) einschließlich der horizontalen automatischen Podskalierung, der automatischen Clusterskalierung und des Azure Container Instances-Connectors.
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 20f9655e1c3e7cce652802957f5eef1f333870e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: zarhoads
+ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176496"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755973"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 

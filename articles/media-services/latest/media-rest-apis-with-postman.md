@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cecfd0fafd17e9c463e0c0a74f1e30290a53d82f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813890"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758199"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurieren von Postman für Media Services-REST-API-Aufrufe
 
@@ -89,6 +89,13 @@ Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure 
 
     ![Abrufen des AAD-Tokens](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="see-also"></a>Weitere Informationen
+
+- [Hochladen von Dateien in ein Media Services-Konto mit REST](upload-files-rest-how-to.md)
+- [Erstellen von Filtern mit der Media Services-REST-API](filters-dynamic-manifest-rest-howto.md)
+- [Auf Azure Resource Manager basierte REST-API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Tutorial: Hochladen, Codieren und Streamen von Videos mit REST](stream-files-tutorial-with-rest.md).  
+- [Tutorial: Hochladen, Codieren und Streamen von Videos mit REST](stream-files-tutorial-with-rest.md).  
+- [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über – REST](stream-files-tutorial-with-rest.md)

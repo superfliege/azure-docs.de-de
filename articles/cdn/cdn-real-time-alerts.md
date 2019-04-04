@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 51dce1680be5f5f4387c2ba02827195bcdbe9b48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e20161147aa16456e31aff2bd3cc6337c3690e89
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998325"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917854"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Echtzeitwarnungen in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -65,7 +65,7 @@ In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. D
    > 
 8. Erstellen Sie einen zu überwachenden **Ausdruck**. Wählen Sie hierzu Werte für **Metrik**, **Operator** und **Triggerwert** aus.
    
-   * Wählen Sie unter **Metrik**die Art der Bedingung aus, die Sie überwachen möchten.  **Bandwidth Mbps** (Bandbreite MBit/s) ist die Bandbreitenauslastung in Megabits pro Sekunde.  **Verbindungen insgesamt** ist die Anzahl gleichzeitiger HTTP-Verbindungen mit unseren Edgeservern.  Definitionen der verschiedenen Cachestatusoptionen und Statuscodes finden Sie unter [Azure CDN Cache Status Codes (in englischer Sprache)](https://msdn.microsoft.com/library/mt759237.aspx) sowie unter [Azure CDN HTTP Status Codes (in englischer Sprache)](https://msdn.microsoft.com/library/mt759238.aspx).
+   * Wählen Sie unter **Metrik**die Art der Bedingung aus, die Sie überwachen möchten.  **Bandwidth Mbps** (Bandbreite MBit/s) ist die Bandbreitenauslastung in Megabits pro Sekunde.  **Verbindungen insgesamt** ist die Anzahl gleichzeitiger HTTP-Verbindungen mit unseren Edgeservern.  Definitionen der verschiedenen Cachestatusoptionen und Statuscodes finden Sie unter [Azure CDN Cache Status Codes (in englischer Sprache)](/previous-versions/azure/mt759237(v=azure.100)) sowie unter [Azure CDN HTTP Status Codes (in englischer Sprache)](/previous-versions/azure/mt759238(v=azure.100)).
    * **Operator** ist der mathematische Operator, der die Beziehung zwischen Metrik und Triggerwert herstellt.
    * **Triggerwert** ist der Schwellenwert, ab dem eine Benachrichtigung gesendet wird.
      

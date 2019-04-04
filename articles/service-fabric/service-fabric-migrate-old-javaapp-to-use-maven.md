@@ -4,7 +4,7 @@ description: Aktualisieren Sie ältere Java-Anwendungen, die das Service Fabric-
 services: service-fabric
 documentationcenter: java
 author: rapatchi
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 75a3f8e6c872e0bbb9fde8c5776d99ba0cf2c3d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dbd85b3647a60ce873c1a55b851bd47ece103282
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116594"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661529"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualisieren Ihrer älteren Java Service Fabric-Anwendung für den Abruf von Java-Bibliotheken aus Maven
 Vor Kurzem wurden Service Fabric-Java-Binärdateien vom Service Fabric-Java-SDK auf Maven-Hosting umgestellt. Nun können Sie die neuesten Service Fabric-Java-Abhängigkeiten mithilfe von **mavencentral** abrufen. In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre vorhandenen Java-Anwendungen, die Sie zuvor für die Verwendung mit dem Service Fabric-Java-SDK erstellt haben, unter Verwendung einer Yeoman-Vorlage oder mithilfe von Eclipse aktualisieren, sodass sie mit dem Maven-basierten Build kompatibel sind.
