@@ -3,17 +3,17 @@ title: 'Schnellstart: Abfragen von Daten im Azure Data Explorer'
 description: In diesem Schnellstart erfahren Sie, wie Sie Daten im Azure-Daten-Explorer abfragen und freigeben.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 9dade2ccebfb96cd54bdb9c8ef70c14fdeadad76
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1774ae943dc96e07837a3cd155b5980ff732ceb4
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225772"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756149"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Schnellstart: Abfragen von Daten im Azure Data Explorer
 
@@ -37,7 +37,7 @@ Wenn Sie die Anwendung zum ersten Mal öffnen, sind keine Verbindungen vorhanden
 
 Sie müssen eine Verbindung mit mindestens einem Cluster hinzufügen, bevor Sie Abfragen ausführen können. In diesem Abschnitt fügen Sie Verbindungen mit dem *Hilfecluster* des Azure-Daten-Explorers, den wir als Hilfestellung beim Lernen eingerichtet haben, und mit dem Testcluster, den Sie in einem früheren Schnellstart erstellt haben, hinzu.
 
-1. Wählen Sie oben links in der Anwendung die Option **Cluster hinzufügen** aus.
+1. Wählen Sie in der oberen linken Ecke der Anwendung **Add cluster** (Cluster hinzufügen) aus.
 
 1. Geben Sie im Dialogfeld **Cluster hinzufügen** den URI ein, und wählen Sie dann **Hinzufügen** aus.
 

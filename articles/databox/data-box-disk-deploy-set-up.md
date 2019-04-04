@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106643"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652149"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Tutorial: Entpacken, Verbinden und Entsperren von Azure Data Box Disk
 
@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und 
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ``` 
 
-6. Führen Sie `DataBoxDiskUnlock.exe` aus, und geben Sie den Hauptschlüssel ein, den Sie in [Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels](#Connect-to-disks-and-get-the-passkey) abgerufen haben. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird angezeigt. Nachfolgend sehen Sie eine Beispielausgabe.
+6. Führen Sie `DataBoxDiskUnlock.exe` aus, und geben Sie den Hauptschlüssel ein, den Sie in [Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels](#connect-to-disks-and-get-the-passkey) abgerufen haben. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird angezeigt. Nachfolgend sehen Sie eine Beispielausgabe.
 
     ```powershell
     PS C:\WINDOWS\system32> cd C:\DataBoxDiskUnlockTool\DiskUnlock
@@ -204,7 +204,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und 
      OpenSSL is already installed.
      ```
 
-6. Führen Sie das Tool zum Entsperren von Data Box Disk aus. Geben Sie den Hauptschlüssel aus dem Azure-Portal ein, den Sie in [Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels](#Connect-to-disks-and-get-the-passkey) abgerufen haben. Geben Sie optional eine Liste mit BitLocker verschlüsselten Volumes an, die entsperrt werden sollen. Die Hauptschlüssel und die Volumeliste müssen in einfachen Anführungszeichen angegeben werden. 
+6. Führen Sie das Tool zum Entsperren von Data Box Disk aus. Geben Sie den Hauptschlüssel aus dem Azure-Portal ein, den Sie in [Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels](#connect-to-disks-and-get-the-passkey) abgerufen haben. Geben Sie optional eine Liste mit BitLocker verschlüsselten Volumes an, die entsperrt werden sollen. Die Hauptschlüssel und die Volumeliste müssen in einfachen Anführungszeichen angegeben werden. 
 
     Geben Sie folgenden Befehl ein.
  

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965154"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793950"
 ---
 # <a name="what-is-api-management"></a>Was ist API Management?
 
@@ -101,7 +101,7 @@ Weitere Informationen finden Sie unter [Erstellen und Einladen von Entwicklern][
 ## <a name="policies"> </a> Richtlinien
 Richtlinien sind ein praktisches Werkzeug in API Management, mit dem das Azure-Portal das Verhalten der API mittels Konfiguration verändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind etwa Formatumwandlungen von XML nach JSON und Aufrufratenlimits, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Darüber hinaus stehen noch viele weitere Richtlinien zur Verfügung.
 
-Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) und [Variable festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies) und [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx).
+Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](/azure/api-management/api-management-advanced-policies#choose) und [Variable festlegen](/azure/api-management/api-management-advanced-policies#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions).
 
 
 Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][Policy reference]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][API Management policies]. Ein Tutorial zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][How create and configure advanced product settings].
