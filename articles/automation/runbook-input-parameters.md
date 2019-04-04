@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117199"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578151"
 ---
 # <a name="runbook-input-parameters"></a>Runbookeingabeparameter
 
@@ -30,10 +30,10 @@ PowerShell- und PowerShell-Workflow-Runbooks in Azure Automation unterstützen E
 
 | **Eigenschaft** | **Beschreibung** |
 |:--- |:--- |
-| Type |Erforderlich. Der für den Parameterwert erwartete Datentyp. Jeder .NET-Typ ist valide. |
-| NAME |Erforderlich. Der Name des Parameters. Dieser muss innerhalb des Runbooks eindeutig sein und kann nur Buchstaben, Zahlen oder Unterstriche enthalten. Er muss mit einem Buchstaben beginnen. |
-| Erforderlich |Optional. Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Wenn Sie hier **\$true** festlegen, muss beim Start des Runbooks ein Wert angegeben werden. Wenn Sie hier **\$false** festlegen, ist das Angeben eines Werts optional. |
-| Standardwert |Optional. Gibt einen Wert an, der für den Parameter verwendet wird, wenn beim Start des Runbooks kein Wert übergeben wird. Ein Standardwert kann für jeden Parameter festgelegt werden und macht den Parameter unabhängig von der Einstellung „Erforderlich“ optional. |
+| `Type` |Erforderlich. Der für den Parameterwert erwartete Datentyp. Jeder .NET-Typ ist valide. |
+| `Name` |Erforderlich. Der Name des Parameters. Dieser muss innerhalb des Runbooks eindeutig sein und kann nur Buchstaben, Zahlen oder Unterstriche enthalten. Er muss mit einem Buchstaben beginnen. |
+| `Mandatory` |Optional. Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Wenn Sie hier **\$true** festlegen, muss beim Start des Runbooks ein Wert angegeben werden. Wenn Sie hier **\$false** festlegen, ist das Angeben eines Werts optional. |
+| `Default value` |Optional. Gibt einen Wert an, der für den Parameter verwendet wird, wenn beim Start des Runbooks kein Wert übergeben wird. Ein Standardwert kann für jeden Parameter festgelegt werden und macht den Parameter unabhängig von der Einstellung „Erforderlich“ optional. |
 
 Windows PowerShell unterstützt neben den hier genannten Eingabeparametern auch andere wie beispielsweise Validierung, Alias und Parametersätze. Azure Automation hingegen unterstützt zurzeit lediglich die oben genannten Eingabeparameter.
 
@@ -94,11 +94,11 @@ Sie können mit der Aktivität [**Write-Output**](/powershell/module/microsoft.p
 
    | **Eigenschaft** | **Beschreibung** |
    |:--- |:--- |
-   | NAME |Erforderlich. Der Name des Parameters. Dieser muss innerhalb des Runbooks eindeutig sein und kann nur Buchstaben, Zahlen oder Unterstriche enthalten. Er muss mit einem Buchstaben beginnen. |
-   | BESCHREIBUNG |Optional. Beschreibung zum Zweck des Eingabeparameters. |
-   | Type |Optional. Der für den Parameterwert erwartete Datentyp. Die Parametertypen **Zeichenfolge**, **Int32**, **Int64**, **Dezimal**, **Boolesch**, **Datum/Uhrzeit** und **Objekt** werden unterstützt. Wenn kein Datentyp ausgewählt wird, wird standardmäßig „ **Zeichenfolge**” verwendet. |
-   | Erforderlich |Optional. Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Wenn Sie **ja**wählen, muss beim Start des Runbooks ein Wert angegeben werden. Wenn Sie **nein**wählen, ist kein Wert erforderlich, wenn das Runbook gestartet wird, und ein Standardwert könnte festgelegt werden. |
-   | Standardwert |Optional. Gibt einen Wert an, der für den Parameter verwendet wird, wenn beim Start des Runbooks kein Wert übergeben wird. Ein Standardwert kann für optionale Parameter vergeben werden. Wählen Sie „ **Benutzerdefiniert**”, um einen Standardwert vorzugeben. Dieser Wert wird verwendet, es sei denn, ein anderer Wert wird bereitgestellt, wenn das Runbook gestartet wird. Wählen Sie **Keiner** , wenn Sie keinen Standardwert angeben möchten. |
+   | `Name` |Erforderlich. Der Name des Parameters. Dieser muss innerhalb des Runbooks eindeutig sein und kann nur Buchstaben, Zahlen oder Unterstriche enthalten. Er muss mit einem Buchstaben beginnen. |
+   | `Description` |Optional. Beschreibung zum Zweck des Eingabeparameters. |
+   | `Type` |Optional. Der für den Parameterwert erwartete Datentyp. Die Parametertypen **Zeichenfolge**, **Int32**, **Int64**, **Dezimal**, **Boolesch**, **Datum/Uhrzeit** und **Objekt** werden unterstützt. Wenn kein Datentyp ausgewählt wird, wird standardmäßig „ **Zeichenfolge**” verwendet. |
+   | `Mandatory` |Optional. Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Wenn Sie **ja**wählen, muss beim Start des Runbooks ein Wert angegeben werden. Wenn Sie **nein**wählen, ist kein Wert erforderlich, wenn das Runbook gestartet wird, und ein Standardwert könnte festgelegt werden. |
+   | `Default Value` |Optional. Gibt einen Wert an, der für den Parameter verwendet wird, wenn beim Start des Runbooks kein Wert übergeben wird. Ein Standardwert kann für optionale Parameter vergeben werden. Wählen Sie „ **Benutzerdefiniert**”, um einen Standardwert vorzugeben. Dieser Wert wird verwendet, es sei denn, ein anderer Wert wird bereitgestellt, wenn das Runbook gestartet wird. Wählen Sie **Keiner** , wenn Sie keinen Standardwert angeben möchten. |
 
     ![Neue Eingabe hinzufügen](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
 4. Erstellen Sie zwei Parameter mit den folgenden Eigenschaften, die von der Aktivität **Get-AzureRmVm** verwendet werden:

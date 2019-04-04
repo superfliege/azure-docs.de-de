@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006800"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622109"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -199,11 +199,12 @@ Bei Problemen mit der Anwendungsübersicht können Sie Folgendes versuchen:
 
 3. Wenn Sie Azure Functions mit C# verwenden, führen Sie ein Upgrade auf [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions) durch.
 
-4. Vergewissern Sie sich, dass [cloud_RoleName](app-map.md#set-cloudrolename) ordnungsgemäß konfiguriert ist.
+4. Vergewissern Sie sich, dass [cloud_RoleName](#set-cloud_rolename) ordnungsgemäß konfiguriert ist.
 
 5. Sollte eine Abhängigkeit fehlen, stellen Sie sicher, dass sie sich in der Liste [automatisch erfasster Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) befindet. Andernfalls können Sie sie auch manuell mit einem [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) nachverfolgen.
 
 ## <a name="portal-feedback"></a>Feedback zum Portal
+
 Verwenden Sie für Feedback die Feedbackoption.
 
 ![MapLink-1 (Abbildung)](./media/app-map/14-updated.png)

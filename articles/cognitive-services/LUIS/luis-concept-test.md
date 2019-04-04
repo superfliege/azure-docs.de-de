@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 55284318a627186b7a20d6d36dff1953e80d5020
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958557"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893226"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testen von Beispieläußerungen in LUIS
 
@@ -48,7 +48,7 @@ Wenn Sie Tests an einem Endpunkt durchführen und nicht möchten, dass die Äuß
 ## <a name="where-to-find-utterances"></a>Speicherort von Äußerungen
 LUIS speichert alle protokollierten Äußerungen im Abfrageprotokoll, das auf der [LUIS](luis-reference-regions.md)-Website auf der Seite mit der **Apps**-Liste sowie über die [Erstellungs-APIs](https://aka.ms/luis-authoring-apis) für LUIS zum Download bereitsteht. 
 
-Alle Äußerungen, bei denen LUIS unsicher ist, werden auf der Seite **[Überprüfen von Endpunktäußerungen](luis-how-to-review-endoint-utt.md)** der [LUIS](luis-reference-regions.md)-Website aufgeführt. 
+Alle Äußerungen, bei denen LUIS unsicher ist, werden auf der Seite **[Überprüfen von Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md)** der [LUIS](luis-reference-regions.md)-Website aufgeführt. 
 
 ![Überprüfen von Endpunktäußerungen](./media/luis-concept-test/review-endpoint-utterances.png)
  

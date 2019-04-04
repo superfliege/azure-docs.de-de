@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989378"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879011"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-Erweiterung für den Network Watcher-Agent für Linux
 
@@ -118,9 +118,9 @@ azure vm extension get myVM1
 ```
 Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis protokolliert:
 
-`
+```
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-`
+```
 
 Das folgende Beispiel zeigt den Bereitstellungsstatus der NetworkWatcherAgentLinux-Erweiterung mit der Azure CLI für eine VM, die über den Resource Manager bereitgestellt wurde:
 

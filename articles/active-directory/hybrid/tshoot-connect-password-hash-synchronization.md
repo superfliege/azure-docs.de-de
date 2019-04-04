@@ -16,14 +16,15 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193320"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793321"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
+
 Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennworthashsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein.
 
 Verwenden Sie für die Bereitstellung von Azure Active Directory (Azure AD) Connect mit Version 1.1.614.0 oder höher die Problembehandlungsaufgabe im Assistenten, um Probleme bei der Kennworthashsynchronisierung zu behandeln:
@@ -47,12 +48,14 @@ Bei älteren Versionen von Azure AD Connect-Bereitstellungen:
 
 
 ## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Kennwörter werden nicht synchronisiert: Problembehandlung mit der Problembehandlungsaufgabe
+
 Mithilfe der Problembehandlungsaufgabe können Sie herausfinden, warum keine Kennwörter synchronisiert werden.
 
 > [!NOTE]
 > Die Problembehandlungsaufgabe ist nur für Azure AD Connect Version 1.1.614.0 oder höher verfügbar.
 
 ### <a name="run-the-troubleshooting-task"></a>Ausführen der Problembehandlungsaufgabe
+
 So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert werden:
 
 1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
@@ -70,6 +73,7 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert w
 7. Wählen Sie im Untermenü **Die Kennworthashsynchronisierung funktioniert überhaupt nicht**.
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Grundlegendes zu den Ergebnissen der Problembehandlungsaufgabe
+
 Die Problembehandlungsaufgabe führt die folgenden Überprüfungen durch:
 
 * Überprüft, ob die Kennworthashsynchronisierungsfunktion für Ihren Azure AD-Mandanten aktiviert ist.
@@ -95,26 +99,31 @@ Die folgende Abbildung zeigt die Ergebnisse des Cmdlets für eine einzelne Domä
 Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse, die von der Aufgabe zurückgegeben werden, und die entsprechenden Probleme beschrieben.
 
 #### <a name="password-hash-synchronization-feature-isnt-enabled"></a>Kennworthashsynchronisierungs-Feature ist nicht aktiviert
+
 Wenn Sie die Kennworthashsynchronisierung mithilfe des Azure AD Connect-Assistenten nicht aktiviert haben, wird folgende Fehlermeldung zurückgegeben:
 
 ![Kennworthashsynchronisierung ist nicht aktiviert](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
 
 #### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect-Server befindet sich im Stagingmodus
+
 Wenn sich der Azure AD Connect-Server im Stagingmodus befindet, ist die Kennworthashsynchronisierung vorübergehend deaktiviert, und folgende Fehlermeldung wird zurückgegeben:
 
 ![Azure AD Connect-Server befindet sich im Stagingmodus](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
 
 #### <a name="no-password-hash-synchronization-heartbeat-events"></a>Keine Kennworthashsynchronisierungs-Taktereignisse
+
 Jeder lokale Active Directory-Connector ist mit einem eigenen Kennworthashsynchronisierungskanal ausgestattet. Wenn der Kennworthashsynchronisierungs-Kanal eingerichtet ist und keine Kennwortänderungen synchronisiert werden, wird alle 30 Minuten ein Taktereignis (EventId 654) unter dem Windows-Anwendungsereignisprotokoll generiert. Bei jedem lokalen Active Directory-Connector sucht das Cmdlet für die letzten drei Stunden nach entsprechenden Taktereignissen. Wenn kein Taktereignis gefunden wird, wird folgende Fehlermeldung zurückgegeben:
 
 ![Kein Kennworthashsynchronisierungs-Taktereignis](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
 
 #### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS-Konto weist nicht die richtigen Berechtigungen auf
+
 Wenn das AD DS-Konto, das vom lokalen Active Directory-Connector zum Synchronisieren von Kennworthashes verwendet wird, nicht über die entsprechenden Berechtigungen verfügt, wird folgende Fehlermeldung zurückgegeben:
 
 ![Falsche Anmeldeinformationen](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Falscher Benutzername oder falsches Kennwort für das AD DS-Konto
+
 Wenn das AD DS-Konto, das vom lokalen Active Directory-Connector zum Synchronisieren von Kennworthashes verwendet wird, mit einem falschen Benutzernamen oder einem falschen Kennwort versehen ist, wird folgende Fehlermeldung zurückgegeben:
 
 ![Falsche Anmeldeinformationen](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
@@ -129,6 +138,7 @@ Mithilfe der Problembehandlungsaufgabe können Sie bestimmen, warum ein Objekt k
 > Die Problembehandlungsaufgabe ist nur für Azure AD Connect Version 1.1.614.0 oder höher verfügbar.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
+
 So behandeln Sie Probleme für ein bestimmtes Benutzerobjekt:
 
 1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
@@ -146,6 +156,7 @@ So behandeln Sie Probleme für ein bestimmtes Benutzerobjekt:
 7. Wählen Sie im Untermenü **Kennwort ist für ein bestimmtes Benutzerkonto nicht synchronisiert**.
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Grundlegendes zu den Ergebnissen der Problembehandlungsaufgabe
+
 Die Problembehandlungsaufgabe führt die folgenden Überprüfungen durch:
 
 * Überprüft den Status des Active Directory-Objekts im Active Directory-Connectorbereich, in der Metaverse und im Azure AD-Connectorbereich.
@@ -161,16 +172,19 @@ Die folgende Abbildung zeigt die Ergebnisse des Cmdlets bei der Behandlung von P
 Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse, die vom Cmdlet zurückgegeben werden, und die entsprechenden Probleme beschrieben.
 
 #### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Active Directory-Objekt wird nicht nach Azure AD exportiert
+
 Bei der Kennworthashsynchronisierung für dieses lokale Active Directory-Konto ist ein Fehler aufgetreten, da kein entsprechendes Objekt im Azure AD-Mandanten vorhanden ist. Die folgende Fehlermeldung wird zurückgegeben:
 
 ![Azure AD-Objekt fehlt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>Benutzer besitzt ein temporäres Kennwort
+
 Gegenwärtig bietet Azure AD Connect keine Unterstützung für die Synchronisierung temporärer Kennwörter mit Azure AD. Ein Kennwort gilt als temporär, wenn die Option **Kennwort bei der nächsten Anmeldung ändern** für den lokalen Active Directory-Benutzer festgelegt wird. Die folgende Fehlermeldung wird zurückgegeben:
 
 ![Temporäres Kennwort wurde nicht exportiert](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
 #### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Ergebnisse des letzten Versuchs, das Kennwort zu synchronisieren, sind nicht verfügbar
+
 Standardmäßig speichert Azure AD Connect sieben Tage lang die Ergebnisse der Kennworthashsynchronisierungs-Versuche. Wenn keine Ergebnisse für das ausgewählten Active Directory-Objekt verfügbar sind, wird die folgende Warnung zurückgegeben:
 
 ![Diagnoseausgabe für ein einzelnes Objekt – kein Kennwortsynchronisierungsverlauf](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
@@ -178,12 +192,14 @@ Standardmäßig speichert Azure AD Connect sieben Tage lang die Ergebnisse der K
 
 
 ## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Kennwörter werden nicht synchronisiert: Problembehandlung mit dem Diagnose-Cmdlet
+
 Mithilfe des Cmdlets `Invoke-ADSyncDiagnostics` können Sie herausfinden, warum keine Kennwörter synchronisiert werden.
 
 > [!NOTE]
 > Das Cmdlet `Invoke-ADSyncDiagnostics` ist nur für Azure AD Connect Version 1.1.524.0 oder höher verfügbar.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
+
 So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert werden:
 
 1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
@@ -197,12 +213,14 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert w
 
 
 ## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Ein einzelnes Objekt synchronisiert keine Kennwörter: Problembehandlung mit dem Diagnose-Cmdlet
+
 Mithilfe des Cmdlets `Invoke-ADSyncDiagnostics` können Sie bestimmen, warum ein Objekt keine Kennwörter synchronisiert.
 
 > [!NOTE]
 > Das Cmdlet `Invoke-ADSyncDiagnostics` ist nur für Azure AD Connect Version 1.1.524.0 oder höher verfügbar.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Ausführen des Diagnose-Cmdlets
+
 So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benutzer synchronisiert werden:
 
 1. Öffnen Sie mit der Option **Als Administrator ausführen** eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
@@ -212,17 +230,21 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benut
 3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
 
 4. Führen Sie das folgende Cmdlet aus:
+
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
+
    Beispiel: 
-   ```
+
+   ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
 
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Kennwörter werden nicht synchronisiert: Schritte zur manuellen Problembehandlung
+
 Führen Sie folgende Schritte durch, um festzustellen, warum keine Kennwörter synchronisiert werden:
 
 1. Ist der Connect-Server im [Stagingmodus](how-to-connect-sync-staging-server.md)? Ein Server im Stagingmodus synchronisiert keine Kennwörter.
@@ -276,6 +298,7 @@ Wenn Sie eine benutzerdefinierte Installation verwendet haben, legen Sie die Ber
 10. Wenn der Skriptausgabe zufolge kein Takt vorhanden ist, führen Sie das Skript unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](#trigger-a-full-sync-of-all-passwords) aus.
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Ein einzelnes Objekt synchronisiert keine Kennwörter: Schritte zur manuellen Problembehandlung
+
 Sie können Probleme mit der Kennworthashsynchronisierung einfach beheben, indem Sie den Status eines Objekts überprüfen.
 
 1. Suchen Sie unter **Active Directory-Benutzer und -Computer** nach dem Benutzer, und überprüfen Sie dann, ob das Kontrollkästchen **Benutzer muss Kennwort bei der nächsten Anmeldung ändern** deaktiviert ist.  
@@ -325,6 +348,7 @@ Sie können Probleme mit der Kennworthashsynchronisierung einfach beheben, indem
     ![Dialogfeld „Eigenschaften von Connectorbereichsobjekten“](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>Kennwortsynchronisierungsprotokoll
+
 Die Statusspalte kann die folgenden Werte enthalten:
 
 | Status | BESCHREIBUNG |
@@ -343,7 +367,8 @@ Die Statusspalte kann die folgenden Werte enthalten:
 ## <a name="scripts-to-help-troubleshooting"></a>Hilfe zur Problembehandlung durch Skripts
 
 ### <a name="get-the-status-of-password-sync-settings"></a>Abrufen des Status der Kennwortsynchronisierungseinstellungen
-```
+
+```powershell
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
 $aadConnectors = $connectors | Where-Object {$_.SubType -eq "Windows Azure Active Directory (Microsoft)"}
@@ -397,12 +422,13 @@ Write-Host
 ```
 
 #### <a name="trigger-a-full-sync-of-all-passwords"></a>Auslösen einer vollständigen Synchronisierung aller Kennwörter
+
 > [!NOTE]
 > Führen Sie dieses Skript nur einmal aus. Wenn Sie es mehrere Male ausführen müssen, ist etwas anderes das Problem. Wenden Sie sich an den Microsoft-Support, um Hilfe bei der Problembehandlung zu erhalten.
 
 Mit dem folgenden Skript können Sie eine vollständige Synchronisierung aller Kennwörter auslösen:
 
-```
+```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
 $aadConnector = "<CASE SENSITIVE AAD CONNECTOR NAME>"
 Import-Module adsync
@@ -417,6 +443,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](how-to-connect-sync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md)

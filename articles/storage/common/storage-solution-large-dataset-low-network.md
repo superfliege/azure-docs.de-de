@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776664"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849614"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Datenübertragung für große Datasets mit geringer oder keiner Netzwerkbandbreite
  
@@ -45,7 +45,7 @@ Die in diesem Szenario verfügbaren Optionen sind Geräte für Azure Data Box-Of
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-|                                     |    Data Box Disk (Vorschau)    |    Data Box                                      |    Data Box Heavy (Vorschau)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Datengröße                        |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
 |    Datentyp                        |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |
@@ -59,7 +59,7 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 |    Partnerintegration              |    Einige                         |    [Hoch](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Hoch](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Einige                                |
 |    Versand                         |    Von Microsoft verwaltet            |    Von Microsoft verwaltet                             |    Von Microsoft verwaltet                     |    Vom Kunden verwaltet                    |
 | Verwendung bei Datenbewegungen         |Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Über geografische Grenzen hinweg, z.B. aus den USA in die EU|
-|    Preise                          |    [Preise](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [Preise](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Preise](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Preise](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    Preise                          |    [Preise](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Preise](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Preise](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Preise](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

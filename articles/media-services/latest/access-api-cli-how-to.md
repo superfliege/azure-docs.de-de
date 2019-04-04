@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 43f9443e4b5cd700500bd9803f2737ed9e0aa633
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223161"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756001"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Zugriff auf Azure Media Services API mit Azure CLI
  
@@ -40,10 +40,19 @@ Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des M
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
-
-[Streamen einer Datei](stream-files-dotnet-quickstart.md)
-
 ## <a name="see-also"></a>Weitere Informationen
+
+- [Skalieren der Medienverarbeitung](media-reserved-units-cli-how-to.md)
+- [CLI-Beispiel: Erstellen eines Azure Media Services-Kontos](./scripts/cli-create-account.md) 
+- [CLI-Beispiel: Zurücksetzen der Kontoanmeldeinformationen](./scripts/cli-reset-account-credentials.md)
+- [CLI-Beispiel: Erstellen eines Medienobjekts](./scripts/cli-create-asset.md)
+- [CLI-Beispiel: Hochladen einer lokalen Datei in einen Container](./scripts/cli-upload-file-asset.md)
+- [CLI-Beispiel: Erstellen einer Transformation](./scripts/cli-create-transform.md)
+- [CLI-Beispiel: Erstellen und Übermitteln eines Auftrags](./scripts/cli-create-jobs.md)
+- [CLI-Beispiel: Erstellen eines Azure Event Grid-Abonnements](./scripts/cli-create-event-grid.md)
+- [CLI-Beispiel: Veröffentlichen eines Medienobjekts](./scripts/cli-publish-asset.md)
+- [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-howto.md)
+
+## <a name="next-steps"></a>Nächste Schritte
 
 [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

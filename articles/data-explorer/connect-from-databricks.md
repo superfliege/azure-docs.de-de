@@ -3,17 +3,17 @@ title: Herstellen einer Verbindung mit dem Azure Data Explorer von Azure Databri
 description: In diesem Thema erfahren Sie, wie Sie eine Python-Bibliothek in Azure Databricks verwenden, um vom Azure Data Explorer aus mit einer der beiden Authentifizierungsmethoden auf Daten zuzugreifen.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 1101a89fd4ddb0e020d0bac237e6119b137fa978
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7e91aa0707b1ae8ac4b9b6ddd9ee7142a04a0f37
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017496"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756924"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Herstellen einer Verbindung mit dem Azure Data Explorer von Azure Databricks mit Python
 
@@ -76,7 +76,7 @@ Ihre Mandanten-ID ist `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 Speichern und sichern Sie Ihre Azure AD-App-ID und Ihren Schlüssel wie folgt mit Azure Databricks-[Geheimnissen](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets):
 1. [Richten Sie die CLI ein](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
 1. [Installieren Sie die CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
-1. [Richten Sie die Authentifizierung ein](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
+1. [Richten Sie die Authentifizierung ein.](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication)
 1. Konfigurieren Sie die [Geheimnisse](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) mit den folgenden Beispielbefehlen:
 
     ```databricks secrets create-scope --scope adx```

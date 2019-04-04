@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41c3db1c9a7295d939aa34a36f86c0dfa9fecd91
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094625"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891445"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
 
@@ -296,7 +296,7 @@ Das ID-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
 
 ## <a name="reference"></a>Verweis
 
-Weitere Informationen zur umfassenden Behandlung von Erweiterungseigenschaften finden Sie im Artikel [Verzeichnisschemaerweiterungen | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
+Weitere Informationen zur umfassenden Behandlung von Erweiterungseigenschaften finden Sie im Artikel [Verzeichnisschemaerweiterungen | Graph-API-Konzepte](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
 > [!NOTE]
 > * Ein **TechnicalProfile** ist ein Elementtyp oder eine Funktion, die den Namen eines Endpunkts, Metadaten und das Protokoll definiert. Das **TechnicalProfile** beschreibt die Austausch von Ansprüchen, die das Identity Experience Framework ausführt. Wenn diese Funktion in einem Orchestrierungsschritt oder über ein anderes **TechnicalProfile** aufgerufen wird, werden die **InputClaims** und **OutputClaims** vom Aufrufer als Parameter bereitgestellt.  

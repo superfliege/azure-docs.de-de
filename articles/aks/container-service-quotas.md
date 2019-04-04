@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/01/2019
 ms.author: iainfou
-ms.openlocfilehash: ef1ecf4419733e908445f9cf4fe47797d430433f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 8feeaf2e8ee99405ed0de8291fc97dc50db6a386
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337450"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805226"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Kontingente und Verfügbarkeit von Azure Kubernetes Service (AKS) in den Regionen
 
@@ -41,8 +41,11 @@ Azure Kubernetes Service (AKS) ist in den folgenden Regionen verfügbar:
 - USA (Ost 2)
 - Frankreich, Mitte
 - Japan, Osten
+- Korea, Mitte
+- Korea, Süden
 - Nordeuropa
 - Asien, Südosten
+- USA Süd Mitte
 - Indien (Süden)
 - UK, Süden
 - UK, Westen

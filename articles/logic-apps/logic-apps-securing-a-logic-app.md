@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369937"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649287"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
@@ -52,7 +52,7 @@ Die Signatur wird mit dem SHA256-Algorithmus mit einem geheimen Zugriffsschlüss
 Hier finden Sie weitere Informationen zum Absichern des Zugriffs mit einer Shared Access Signature:
 
 * [Erneutes Generieren von Zugriffsschlüsseln](#access-keys)
-* [Erstellen von ablaufenden Rückruf-URLs](#expiring-URLs)
+* [Erstellen von ablaufenden Rückruf-URLs](#expiring-urls)
 * [Erstellen von URLs mit Primär- oder Sekundärschlüssel](#primary-secondary-key)
 
 <a name="access-keys"></a>
@@ -156,8 +156,9 @@ Um Ihrer Logik-App weitere Autorisierungsprotokolle hinzuzufügen, können Sie [
 
 Damit nur bestimmte Benutzer oder Gruppen Vorgänge mit Ihrer Logik-App ausführen können, beschränken Sie den Zugriff auf Vorgänge wie das Verwalten, Bearbeiten und Anzeigen. Logic Apps unterstützt [rollenbasierte Zugriffssteuerung (RBAC) von Azure](../role-based-access-control/role-assignments-portal.md), die Sie anpassen oder integrierten Rollen für Mitglieder in Ihrem Abonnement zuzuweisen können, z.B.:
 
-* **Logik-App-Mitwirkender:** Benutzer können Ihre Logik-App anzeigen, bearbeiten und aktualisieren. Diese Rolle kann die Logik-App nicht löschen oder Vorgänge für Administratoren ausführen.
-* **Logik-App-Operator:** Benutzer können Ihre Logik-App und den Ausführungsverlauf anzeigen und Ihre Logik-App aktivieren oder deaktivieren. Diese Rolle kann Ihre Logik-App nicht bearbeiten oder aktualisieren.
+* [Logik-App-Mitwirkender:](../role-based-access-control/built-in-roles.md#logic-app-contributor) Benutzer können Ihre Logik-App anzeigen, bearbeiten und aktualisieren. 
+
+* [Logik-App-Operator:](../role-based-access-control/built-in-roles.md#logic-app-operator) Benutzer können Ihre Logik-App und den Ausführungsverlauf anzeigen und Ihre Logik-App aktivieren oder deaktivieren. Diese Rolle kann Ihre Logik-App nicht bearbeiten oder aktualisieren.
 
 Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, können Sie [Azure-Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md) verwenden. Diese Funktion hilft dabei, andere Personen am Ändern oder Löschen von Produktionsressourcen zu hindern.
 

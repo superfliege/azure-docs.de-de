@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b03e02a783245459fa28126b73eac2459f6aad67
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182845"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893094"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Verwalten von Benutzerdaten in Azure Active Directory B2C
 
- Dieser Artikel beschreibt, wie Sie Benutzerdaten in Azure Active Directory (Azure AD) B2C mit den Vorgängen der [Azure Active Directory-Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) verwalten. Beim Verwalten von Benutzerdaten werden u.a. Daten aus Überwachungsprotokollen gelöscht oder exportiert.
+ Dieser Artikel beschreibt, wie Sie Benutzerdaten in Azure Active Directory (Azure AD) B2C mit den Vorgängen der [Azure Active Directory-Graph-API](/previous-versions/azure/ad/graph/api/api-catalog) verwalten. Beim Verwalten von Benutzerdaten werden u.a. Daten aus Überwachungsprotokollen gelöscht oder exportiert.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>Löschen von Benutzerdaten
 
-Benutzerdaten werden im Azure AD B2C-Verzeichnis und in den Überwachungsprotokollen gespeichert. Alle Daten zur Benutzerüberwachung werden in Azure AD B2C 30 Tage lang aufbewahrt. Falls Sie Benutzerdaten innerhalb dieser 30-Tage-Frist löschen möchten, können Sie den Vorgang [Einen Benutzer löschen](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) verwenden. Ein DELETE-Vorgang ist für alle Azure AD B2C-Mandanten erforderlich, auf denen sich Daten befinden können. 
+Benutzerdaten werden im Azure AD B2C-Verzeichnis und in den Überwachungsprotokollen gespeichert. Alle Daten zur Benutzerüberwachung werden in Azure AD B2C 30 Tage lang aufbewahrt. Falls Sie Benutzerdaten innerhalb dieser 30-Tage-Frist löschen möchten, können Sie den Vorgang [Einen Benutzer löschen](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) verwenden. Ein DELETE-Vorgang ist für alle Azure AD B2C-Mandanten erforderlich, auf denen sich Daten befinden können. 
 
 Jedem Benutzer in Azure AD B2C wird eine Objekt-ID zugewiesen. Mit der Objekt-ID erhalten Sie einen eindeutigen Bezeichner, den Sie zum Löschen von Benutzerdaten in Azure AD B2C verwenden können. Je nach Architektur kann die Objekt-ID auch ein nützlicher Korrelationsbezeichner für andere Dienste sein, z.B. Datenbanken in den Bereichen Finanzen, Marketing und Kundenbeziehungsmanagement. 
 

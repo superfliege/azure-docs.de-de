@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894120"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648349"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurieren der Leadverwaltung zur Verwendung eines HTTPS-Endpunkts
 
@@ -48,8 +48,8 @@ Sie können einen HTTPS-Endpunkt für die Verarbeitung von Azure Marketplace- un
 
 7. Führen Sie einen der folgenden Schritte aus, um das **JSON-Schema für Anforderungstext** zu konfigurieren:
 
-   - Kopieren Sie das [JSON-Schema](#JSON-schema) am Ende dieses Artikels in das Textfeld **JSON-Schema für Anforderungstext**.
-   - Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus. Fügen Sie im Textfeld **Geben oder fügen Sie eine JSON-Beispielnutzlast ein.** das [JSON-Beispiel](#JSON-example) ein. Wählen Sie **Fertig** aus, um das Schema zu erstellen.
+   - Kopieren Sie das [JSON-Schema](#json-schema) am Ende dieses Artikels in das Textfeld **JSON-Schema für Anforderungstext**.
+   - Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus. Fügen Sie im Textfeld **Geben oder fügen Sie eine JSON-Beispielnutzlast ein.** das [JSON-Beispiel](#json-example) ein. Wählen Sie **Fertig** aus, um das Schema zu erstellen.
 
    >[!Note]
    >An dieser Stelle können Sie entweder eine Verbindung mit einem CRM-System herstellen oder eine E-Mail-Benachrichtigung konfigurieren.

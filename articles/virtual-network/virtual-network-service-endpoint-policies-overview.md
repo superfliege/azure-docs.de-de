@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104487"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652585"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)
 
@@ -145,7 +145,7 @@ Richtlinien für Dienstendpunkte in virtuellen Netzwerken bieten folgende Vortei
 - **Mittels Peering verknüpfte, verbundene oder mehrere virtuelle Netzwerke**: Um den Datenverkehr in virtuellen Peeringnetzwerken zu filtern, sollten Endpunktrichtlinien einzeln auf diese virtuellen Netzwerke angewendet werden.
 - **Filtern von Internetdatenverkehr mit Netzwerkgeräten oder per Azure Firewall**: Hierbei wird der Datenverkehr der Azure-Dienste über Endpunkte mit Richtlinien gefiltert, und der restliche Internet- oder Azure-Datenverkehr wird über Geräte oder per Azure Firewall gefiltert. 
 - **Filtern von Datenverkehr für Azure-Dienste, die in virtuellen Netzwerken bereitgestellt werden**: Während der Vorschau werden Richtlinien für Dienstendpunkte für verwaltete Azure-Dienste, die in Ihrem virtuellen Netzwerk bereitgestellt wurden, nicht unterstützt. 
- Informationen zu bestimmten Diensten finden Sie unter [Einschränkungen](#Limitations).
+ Informationen zu bestimmten Diensten finden Sie unter [Einschränkungen](#limitations).
 - **Filtern von Datenverkehr aus der lokalen Umgebung für Azure-Dienste**: Dienstendpunktrichtlinien gelten nur für den Datenverkehr aus Subnetzen, die den Richtlinien zugeordnet sind. Um den Zugriff auf bestimmte Azure-Dienstressourcen aus lokalen Netzwerken zuzulassen, sollte der Datenverkehr mithilfe von virtuellen Netzwerkappliances oder Firewalls gefiltert werden.
 
 ## <a name="logging-and-troubleshooting"></a>Protokollierung und Problembehandlung

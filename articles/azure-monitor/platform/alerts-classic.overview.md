@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993039"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847864"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
@@ -88,14 +88,14 @@ Webhooks ermöglichen die Automatisierung und Fehlerbehebung, z.B. mit folgenden
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 
-* Weitere Informationen zu [Metriken](../../azure-monitor/platform/data-collection.md)
+* Weitere Informationen zu [Metriken](data-platform.md)
 * Konfigurieren von [klassischen Metrikwarnungen über das Azure-Portal](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen mit PowerShell](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen über die Befehlszeilenschnittstelle (CLI)](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Weitere Informationen zu [Aktivitätsprotokollen](../../azure-monitor/platform/activity-logs-overview.md)
-* Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](../../azure-monitor/platform/activity-log-alerts.md)
+* Weitere Informationen zu [Aktivitätsprotokollen](activity-logs-overview.md)
+* Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](activity-log-alerts.md)
 * Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](alerts-activity-log.md)
-* Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Erfahren Sie mehr über [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
-* Konfigurieren [neuerer Warnungen](../../azure-monitor/platform/alerts-metric.md)
+* Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](activity-log-alerts-webhook.md)
+* Erfahren Sie mehr über [Aktionsgruppen](action-groups.md).
+* Konfigurieren [neuerer Warnungen](alerts-metric.md)

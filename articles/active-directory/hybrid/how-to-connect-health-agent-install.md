@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d6e453819ad749972de89658fa695d803d8e222
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95fc65dd849c564ac88993161ffa4b27017488b4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898821"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793593"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
+
 In diesem Dokument werden Sie durch die Installation und Konfiguration der Azure AD Connect Health-Agents geleitet. Sie können die Agents [hier](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)herunterladen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
+
 Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung von Azure AD Connect Health.
 
 | Anforderung | BESCHREIBUNG |
@@ -42,6 +44,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 |Deaktivieren von FIPS|FIPS wird von Azure AD Connect Health-Agents nicht unterstützt.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Ausgehende Verbindungen zu den Azure-Dienstendpunkten
+
  Während der Installation und der Laufzeit erfordert der Agent Verbindungen mit den Endpunkten des Azure AD Connect Health-Diensts. Falls ausgehende Verbindungen durch Firewalls blockiert werden, müssen Sie sicherstellen, dass die folgenden URLs nicht standardmäßig gesperrt sind. Deaktivieren Sie nicht die Sicherheitsüberwachung oder Überprüfung für diese URLs, aber erlauben Sie den Internetverkehr wie üblich. Diese URLs ermöglichen die Kommunikation mit den Endpunkten des Azure AD Connect Health-Diensts. Weitere Informationen zum [Überprüfen ausgehender Verbindungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
 
 | Domänenumgebung | Erforderliche Azure-Dienstendpunkte |
@@ -52,6 +55,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Herunterladen und Installieren des Azure AD Connect Health-Agents
+
 * Vergewissern Sie sich, dass Sie [die Anforderungen für Azure AD Connect Health erfüllen](how-to-connect-health-agent-install.md#requirements).
 * Erste Schritte mit Azure AD Connect Health für AD FS
     * [Laden Sie den Azure AD Connect Health-Agent für AD FS herunter.](https://go.microsoft.com/fwlink/?LinkID=518973)
@@ -63,6 +67,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
     * [Zeigen Sie die Installationsanweisungen an](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Installieren des Azure AD Connect Health-Agents für AD FS
+
 > [!NOTE]
 > Der AD FS-Server sollte sich vom Synchronisierungsserver unterscheiden. Installieren Sie den AD FS-Agent nicht auf Ihrem Synchronisierungsserver.
 >
@@ -97,6 +102,7 @@ Suchen Sie auf dem Server nach den unten angegebenen Diensten, um sicherzustelle
 ![Überprüfen von Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 ### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>Installation des Agents auf Windows Server 2008 R2-Servern
+
 Schritte für Windows Server 2008 R2-Server:
 
 1. Stellen Sie sicher, dass auf dem Server Service Pack 1 oder höher ausgeführt wird.
@@ -109,6 +115,7 @@ Schritte für Windows Server 2008 R2-Server:
 4. Weitere Informationen zum Installieren von Windows PowerShell 4.0 unter Windows Server 2008 R2 finden Sie in [diesem Wiki-Artikel](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
 
 ### <a name="enable-auditing-for-ad-fs"></a>Aktivieren der Überwachung für AD FS
+
 > [!NOTE]
 > Dieser Abschnitt betrifft nur AD FS-Server. Auf den Webanwendungsproxy-Servern müssen die Schritte nicht ausgeführt werden.
 >
@@ -116,6 +123,7 @@ Schritte für Windows Server 2008 R2-Server:
 Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt der Azure AD Connect Health-Agent die in den AD FS-Überwachungsprotokollen enthaltenen Informationen. Diese Protokolle sind nicht standardmäßig aktiviert. Führen Sie die nachstehenden Anweisungen aus, um die AD FS-Überwachung zu aktivieren und die AD FS-Überwachungsprotokolle auf Ihren AD FS-Servern zu ermitteln.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>So aktivieren Sie die Überwachung für AD FS unter Windows Server 2008 R2
+
 1. Klicken Sie auf **Start**, zeigen Sie auf **Programme** und dann auf **Verwaltung**, und klicken Sie anschließend auf **Lokale Sicherheitsrichtlinie**.
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Stellen Sie auf der Registerkarte **Lokale Sicherheitseinstellung** sicher, dass das AD FS 2.0-Dienstkonto aufgeführt wird. Wenn es nicht vorhanden ist, klicken Sie auf **Benutzer oder Gruppe hinzufügen** und fügen es der Liste hinzu. Klicken Sie dann auf **OK**.
@@ -129,6 +137,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 10. Klicken Sie auf **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>So aktivieren Sie die Überwachung für AD FS unter Windows Server 2012 R2
+
 1. Öffnen Sie **Lokale Sicherheitsrichtlinie**, indem Sie den **Server-Manager** auf dem Startbildschirm oder über die Taskleiste auf dem Desktop öffnen, und klicken Sie dann auf **Tools/Lokale Sicherheitsrichtlinie**.
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Stellen Sie auf der Registerkarte **Lokale Sicherheitseinstellung** sicher, dass das AD FS-Dienstkonto aufgeführt wird. Wenn es nicht vorhanden ist, klicken Sie auf **Benutzer oder Gruppe hinzufügen** und fügen es der Liste hinzu. Klicken Sie dann auf **OK**.
@@ -141,6 +150,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 9. Aktivieren Sie die Kontrollkästchen **Erfolgreiche Überprüfungen und Fehlerüberprüfungen**, und klicken Sie anschließend auf **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>So aktivieren Sie die Überwachung für AD FS unter Windows Server 2016
+
 1. Öffnen Sie **Lokale Sicherheitsrichtlinie**, indem Sie den **Server-Manager** auf dem Startbildschirm oder über die Taskleiste auf dem Desktop öffnen, und klicken Sie dann auf **Tools/Lokale Sicherheitsrichtlinie**.
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Vergewissern Sie sich auf der Registerkarte **Lokale Sicherheitseinstellung**, dass das AD FS-Dienstkonto aufgeführt wird. Ist es nicht vorhanden, klicken Sie auf **Benutzer oder Gruppe hinzufügen**, fügen Sie das AD FS-Dienstkonto der Liste hinzu, und klicken Sie anschließend auf **OK**.
@@ -157,6 +167,7 @@ Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Inform
 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>So ermitteln Sie die AD FS-Überwachungsprotokolle
+
 1. Öffnen Sie die **Ereignisanzeige**.
 2. Wechseln Sie zu "Windows-Protokolle", und wählen Sie **Sicherheit**aus.
 3. Klicken Sie auf der rechten Seite auf **Aktuelle Protokolle filtern**.
@@ -172,6 +183,7 @@ Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Inform
 
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>Installieren des Azure AD Connect Health-Agents für die Synchronisierung
+
 Der Azure AD Connect Health-Agent für die Synchronisierung wird im neuesten Build von Azure AD Connect automatisch installiert. Damit Sie Azure AD Connect für die Synchronisierung verwenden können, müssen Sie die neueste Version von Azure AD Connect herunterladen und installieren. Sie können die neueste Version [hier](https://www.microsoft.com/download/details.aspx?id=47594)herunterladen.
 
 Suchen Sie auf dem Server nach den unten angegebenen Diensten, um sicherzustellen, dass der Agent installiert wurde. Wenn Sie die Konfiguration durchgeführt haben, sollten sie bereits ausgeführt werden. Andernfalls werden die Dienste beendet, bis die Konfiguration abgeschlossen wurde.
@@ -187,6 +199,7 @@ Suchen Sie auf dem Server nach den unten angegebenen Diensten, um sicherzustelle
 >
 
 ## <a name="manual-azure-ad-connect-health-for-sync-registration"></a>Manuelle Registrierung für Azure AD Connect Health für die Synchronisierung
+
 Wenn die Agent-Registrierung von Azure AD Connect Health für die Synchronisierung fehlschlägt, nachdem Sie Azure AD Connect erfolgreich installiert haben, können Sie den Agent mit dem folgenden PowerShell-Befehl manuell registrieren.
 
 > [!IMPORTANT]
@@ -208,6 +221,7 @@ Der Befehl hat folgende Parameter:
 Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie das globale Administratorkonto ein (z.B. admin@domain.onmicrosoft.com), das zum Konfigurieren von Azure AD Connect verwendet wurde.
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-ds"></a>Installieren des Azure AD Connect Health-Agents für AD DS
+
 Um die Installation des Agents zu starten, doppelklicken Sie auf die EXE-Datei, die Sie heruntergeladen haben. Klicken Sie auf dem ersten angezeigten Bildschirm auf "Installieren".
 
 ![Überprüfen von Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install1.png)
@@ -236,14 +250,15 @@ Wenn Sie die Konfiguration durchgeführt haben, sollten diese Dienste ausgeführ
 ![Überprüfen von Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
 ### <a name="quick-agent-installation-in-multiple-servers"></a>Schnelle Agent-Installation auf mehreren Servern
+
 1. Erstellen Sie ein Benutzerkonto in Azure AD mit einem Kennwort.
 2. Weisen Sie die Rolle **Besitzer** für dieses lokale AAD-Konto in Azure AD Connect Health über das Portal zu. Führen Sie [die hier beschriebenen Schritte](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) aus. Weisen Sie die Rolle allen Dienstinstanzen zu. 
 3. Laden Sie die EXE-MSI-Datei auf den lokalen Domänencontroller für die Installation herunter.
 4. Führen Sie das folgende Skript für die Registrierung aus. Ersetzen Sie die Parameter durch das neue Benutzerkonto, das erstellt wurde, und das zugehörige Kennwort. 
 
-```
+```powershell
 AdHealthAddsAgentSetup.exe /quiet
-sleep 30
+Start-Sleep 30
 $userName = "NEWUSER@DOMAIN"
 $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
@@ -252,6 +267,7 @@ import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\Ad
 Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
 
 ```
+
 1. Sobald Sie fertig sind, können Sie den Zugriff für das lokale Konto entfernen, indem Sie mindestens eine der folgenden Aktionen ausführen: 
     * Entfernen der Rollenzuweisung für das lokale Konto für AAD Connect Health
     * Rotieren Sie das Kennwort für das lokale Konto. 
@@ -259,9 +275,10 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
     * Löschen des lokalen AAD-Kontos  
 
 ## <a name="agent-registration-using-powershell"></a>Agent-Registrierung mithilfe von PowerShell
+
 Nach der Installation der geeigneten Agent-Setupdatei können Sie abhängig von der Rolle mithilfe der folgenden PowerShell-Befehle den Agent-Registrierungsschritt ausführen. Öffnen Sie ein PowerShell-Fenster, und führen Sie den entsprechenden Befehl aus:
 
-```
+```powershell
     Register-AzureADConnectHealthADFSAgent
     Register-AzureADConnectHealthADDSAgent
     Register-AzureADConnectHealthSyncAgent
@@ -273,13 +290,14 @@ Diese Befehle akzeptieren „Credential“ als Parameter, um die Registrierung a
 * Sie können eine beliebige Azure AD-Identität angeben, die über Zugriff für die Agent-Registrierung verfügt und für die MFA NICHT aktiviert ist.
 * Globale Administratoren verfügen standardmäßig über Zugriff für die Agent-Registrierung. Die Ausführung dieses Schritts kann auch Identitäten mit weniger Berechtigungen ermöglicht werden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mit rollenbasierter Zugriffssteuerung](how-to-connect-health-operations.md#manage-access-with-role-based-access-control).
 
-```
+```powershell
     $cred = Get-Credential
     Register-AzureADConnectHealthADFSAgent -Credential $cred
 
 ```
 
 ## <a name="configure-azure-ad-connect-health-agents-to-use-http-proxy"></a>Konfigurieren des Azure AD Connect Health-Agents zur Verwendung eines HTTP-Proxys
+
 Sie können den Azure AD Connect Health-Agent für die Arbeit mit einem HTTP-Proxy konfigurieren.
 
 > [!NOTE]
@@ -290,6 +308,7 @@ Sie können den Azure AD Connect Health-Agent für die Arbeit mit einem HTTP-Pr
 >
 
 ### <a name="change-health-agent-proxy-configuration"></a>Ändern der Health Agent-Proxykonfiguration
+
 Sie haben die folgenden Möglichkeiten zum Konfigurieren des Azure AD Connect Health-Agents für die Verwendung eines HTTP-Proxys.
 
 > [!NOTE]
@@ -299,17 +318,21 @@ Sie haben die folgenden Möglichkeiten zum Konfigurieren des Azure AD Connect H
 >
 
 #### <a name="import-existing-proxy-settings"></a>Importieren von vorhandenen Proxyeinstellungen
+
 ##### <a name="import-from-internet-explorer"></a>Importieren von Internet Explorer
+
 Internet Explorer-HTTP-Proxyeinstellungen können importiert werden, damit sie von den Azure AD Connect Health-Agents verwendet werden können. Führen Sie auf allen Servern, auf denen der Health-Agent ausgeführt wird, den folgenden PowerShell-Befehl aus:
 
     Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
 
 ##### <a name="import-from-winhttp"></a>Importieren von WinHTTP
+
 WinHTTP-Proxyeinstellungen können importiert werden, damit sie von den Azure AD Connect Health-Agents verwendet werden können. Führen Sie auf allen Servern, auf denen der Health-Agent ausgeführt wird, den folgenden PowerShell-Befehl aus:
 
     Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 
 #### <a name="specify-proxy-addresses-manually"></a>Manuelles Angeben von Proxyadressen
+
 Sie können einen Proxyserver manuell für jeden Server angeben, auf dem der Health-Agent ausgeführt wird, indem Sie den folgenden PowerShell-Befehl ausführen:
 
     Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
@@ -320,18 +343,21 @@ Beispiel: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserve
 * "port" kann ausgelassen werden. In diesem Fall wird der Standardport 443 ausgewählt.
 
 #### <a name="clear-existing-proxy-configuration"></a>Löschen der vorhandenen Proxykonfiguration
+
 Sie können die vorhandene Proxykonfiguration löschen, indem Sie den folgenden Befehl ausführen:
 
     Set-AzureAdConnectHealthProxySettings -NoProxy
 
 
 ### <a name="read-current-proxy-settings"></a>Lesen der aktuellen Proxyeinstellungen
+
 Sie können die aktuell konfigurierten Proxyeinstellungen lesen, indem Sie den folgenden Befehl ausführen:
 
     Get-AzureAdConnectHealthProxySettings
 
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>Testen der Verbindung mit dem Azure AD Connect Health-Dienst
+
 Es können Probleme auftreten, die dazu führen, dass die Verbindung zwischen dem Azure AD Connect Health-Agent und dem Azure AD Connect Health-Dienst unterbrochen wird. Dazu gehören Netzwerkprobleme, Berechtigungsprobleme oder verschiedene andere Ursachen.
 
 Wenn der Agent für mehr als zwei Stunden keine Daten an den Azure AD Connect Health-Dienst senden kann, wird dies im Portal mit der folgenden Warnung angezeigt: „Die Daten des Integritätsdiensts sind nicht aktuell.“ Sie können überprüfen, ob der betroffene Azure AD Connect Health-Agent Daten für den Azure AD Connect Health-Dienst hochladen kann, indem Sie den folgenden PowerShell-Befehl ausführen:
@@ -350,6 +376,7 @@ Der Rollenparameter akzeptiert derzeit die folgenden Werte:
 >
 
 ## <a name="related-links"></a>Verwandte Links
+
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health-Vorgänge](how-to-connect-health-operations.md)
 * [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 63d4f8e2f1b88084b2bac5f1a29514b5e289cbd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286515"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649645"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Anhang zu Azure Disk Encryption 
 
@@ -685,7 +685,7 @@ Das Geheimnis kann optional mit einem KEK verschlüsselt werden, bevor er in den
     $secretUrl = $response.id
 ```
 
-Verwenden Sie im nächsten Schritt `$KeyEncryptionKey` und `$secretUrl`, um den [ Betriebssystemdatenträger mit KEK](#BKMK_URLKEK) anzufügen.
+Verwenden Sie im nächsten Schritt `$KeyEncryptionKey` und `$secretUrl`, um den [ Betriebssystemdatenträger mit KEK](#bkmk_URLKEK) anzufügen.
 
 ##  <a name="bkmk_SecretURL"></a> Angeben einer Geheimnis-URL beim Anfügen eines Betriebssystemdatenträgers
 

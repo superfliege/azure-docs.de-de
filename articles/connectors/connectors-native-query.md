@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27962644"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893566"
 ---
 # <a name="get-started-with-the-query-action"></a>Erste Schritte mit der Abfrageaktion
 Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflows nutzen:
@@ -31,7 +31,8 @@ Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflow
 Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>Verwenden der Abfrageaktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).  
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. 
+Weitere Informationen zu Aktionen finden Sie [hier](../connectors/apis-list.md).  
 
 Für die Abfrageaktion ist derzeit ein Vorgang („Array filtern“) im Designer verfügbar. Dadurch können Sie ein Array abfragen und einen Satz gefilterter Ergebnisse zurückgeben.
 
@@ -55,7 +56,7 @@ Im Folgenden wird erläutert, wie Sie die Aktion in einer Logik-App hinzufügen 
 ## <a name="query-action"></a>Abfrageaktion
 Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der Connector verfügt über eine mögliche Aktion.
 
-| anzuzeigen. | BESCHREIBUNG |
+| Aktion | BESCHREIBUNG |
 | --- | --- |
 | Array filtern |Auswerten einer Bedingung für jedes Element in einem Array und Zurückgeben der Ergebnisse |
 

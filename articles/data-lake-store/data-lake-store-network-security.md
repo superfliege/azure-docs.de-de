@@ -3,8 +3,8 @@ title: Netzwerksicherheit in Azure Data Lake Storage Gen1 | Microsoft-Dokumentat
 description: Grundlegendes zur Funktionsweise der Integration virtueller Netzwerke in Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 557f331136726110db2a19e20b9d2f5f971ad384
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772907"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880592"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integration eines virtuellen Netzwerks für Azure Data Lake Storage Gen1
 
@@ -75,7 +75,7 @@ Einige der verfügbaren Optionen sind:
 
 - HDInsight-Cluster, die erstellt wurden, bevor die Unterstützung für die Integration von virtuellen Netzwerken per Data Lake Storage Gen1 verfügbar war, müssen für dieses neue Feature neu erstellt werden.
  
-- Wenn Sie einen neuen HDInsight-Cluster erstellen und ein Data Lake Storage Gen1-Konto mit aktivierter Integration virtueller Netzwerke auswählen, tritt für den Prozess ein Fehler auf. Deaktivieren Sie zuerst die Regel für das virtuelle Netzwerk. Sie können auch auf dem Blatt **Firewall und virtuelle Netzwerke** des Data Lake Storage-Kontos die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** wählen. Erstellen Sie dann den HDInsight-Cluster, bevor Sie abschließend die Regel für virtuelle Netzwerke erneut aktivieren oder die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** deaktivieren. Weitere Informationen finden Sie im Abschnitt [Ausnahmen](##Exceptions).
+- Wenn Sie einen neuen HDInsight-Cluster erstellen und ein Data Lake Storage Gen1-Konto mit aktivierter Integration virtueller Netzwerke auswählen, tritt für den Prozess ein Fehler auf. Deaktivieren Sie zuerst die Regel für das virtuelle Netzwerk. Sie können auch auf dem Blatt **Firewall und virtuelle Netzwerke** des Data Lake Storage-Kontos die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** wählen. Erstellen Sie dann den HDInsight-Cluster, bevor Sie abschließend die Regel für virtuelle Netzwerke erneut aktivieren oder die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** deaktivieren. Weitere Informationen finden Sie im Abschnitt [Ausnahmen](#exceptions).
 
 - Die Integration virtueller Netzwerke per Data Lake Storage Gen1 funktioniert nicht mit [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   
