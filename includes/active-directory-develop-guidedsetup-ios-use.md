@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d5a38d19541e59e0e2815362c0181a8e317a5d0f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b7883de410a1fd281a154a792dd45132c08f0c03
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203504"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890961"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Verwenden der Microsoft Authentication Library (MSAL) zum Abrufen eines Tokens für die Microsoft Graph-API
 
@@ -215,7 +215,7 @@ Die Methode `acquireTokenSilent` verwaltet das Abrufen und Erneuern von Token oh
 
 Irgendwann schlägt `acquireTokenSilent` fehl, z.B. wenn sich der Benutzer abgemeldet oder sein Kennwort auf einem anderen Gerät geändert hat. Wenn die MSAL feststellt, dass das Problem durch Anfordern einer interaktiven Aktion gelöst werden kann, löst sie eine `MSALErrorCode.interactionRequired`-Ausnahme aus. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
 
-1. Sofortiges Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein Offline-Inhalt in der Anwendung für den Benutzer verfügbar ist. Die Beispielanwendung, die durch dieses Schritt-für-Schritt-Setup erstellt wird, verwendet dieses Muster: Sie sehen es beim ersten Ausführen der Anwendung in Aktion. Da noch kein Benutzer die Anwendung verwendet hat, enthält `applicationContext.allAccounts().first` einen Nullwert, und eine ` MSALErrorCode.interactionRequired `-Ausnahme wird ausgelöst. Der Code im Beispiel behandelt dann die Ausnahme durch Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird.
+1. Sofortiges Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein Offline-Inhalt in der Anwendung für den Benutzer verfügbar ist. Die Beispielanwendung, die durch dieses Schritt-für-Schritt-Setup erstellt wird, verwendet dieses Muster: Sie sehen es beim ersten Ausführen der Anwendung in Aktion. Da noch kein Benutzer die Anwendung verwendet hat, enthält `applicationContext.allAccounts().first` einen Nullwert, und eine `MSALErrorCode.interactionRequired`-Ausnahme wird ausgelöst. Der Code im Beispiel behandelt dann die Ausnahme durch Aufrufen von `acquireToken`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird.
 
 2. Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `acquireTokenSilent` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden, z.B. wenn Offline-Inhalt in der Anwendung verfügbar ist. In diesem Fall kann der Benutzer entscheiden, wann er sich für den Zugriff auf die geschützte Ressource anmelden oder die veralteten Informationen aktualisieren möchte. Ihre Anwendung kann sich auch für einen Wiederholungsversuch von `acquireTokenSilent` entscheiden, wenn das Netzwerk wiederhergestellt wird, nachdem es vorübergehend nicht verfügbar war.
 
