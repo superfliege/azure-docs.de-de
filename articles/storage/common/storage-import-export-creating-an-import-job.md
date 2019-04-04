@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fa76f4fb5d4da5fd00bb9fa4ed862c6977a47e90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102178"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Erstellen eines Importauftrags für den Azure Import/Export-Dienst
 
 Zum Erstellen eines Importauftrags für den Microsoft Azure Import/Export-Dienst per REST-API sind die folgenden Schritte erforderlich:
 
--   Vorbereiten von Laufwerken mit dem Azure Import/Export-Tool
+- Vorbereiten von Laufwerken mit dem Azure Import/Export-Tool
 
--   Beschaffen der Versandadresse, an die das Laufwerk geschickt wird
+- Beschaffen der Versandadresse, an die das Laufwerk geschickt wird
 
--   Erstellen des Importauftrags
+- Erstellen des Importauftrags
 
--   Senden der Laufwerke an Microsoft über einen unterstützten Kurierdienst
+- Senden der Laufwerke an Microsoft über einen unterstützten Kurierdienst
 
--   Aktualisieren des Importauftrags mit den Versandformationen
+- Aktualisieren des Importauftrags mit den Versandformationen
 
- Eine Übersicht über den Import/Export-Dienst und ein Tutorial, in dem die Verwendung des [Azure-Portals](https://portal.azure.com/) zum Erstellen und Verwalten von Import- und Exportaufträgen beschrieben wird, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](storage-import-export-service.md).
+  Eine Übersicht über den Import/Export-Dienst und ein Tutorial, in dem die Verwendung des [Azure-Portals](https://portal.azure.com/) zum Erstellen und Verwalten von Import- und Exportaufträgen beschrieben wird, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](storage-import-export-service.md).
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Vorbereiten von Laufwerken mit dem Azure Import/Export-Tool
 
@@ -39,21 +39,21 @@ Unten finden Sie eine kurze Übersicht über die Vorbereitung von Laufwerken. Ei
 
 Die Vorbereitung des Laufwerks umfasst Folgendes:
 
--   Identifizieren der zu importierenden Daten
+- Identifizieren der zu importierenden Daten
 
--   Identifizieren der Zielblobs in Windows Azure Storage
+- Identifizieren der Zielblobs in Windows Azure Storage
 
--   Verwenden des Azure Import/Export-Tools zum Kopieren Ihrer Daten auf eine oder mehrere Festplatten
+- Verwenden des Azure Import/Export-Tools zum Kopieren Ihrer Daten auf eine oder mehrere Festplatten
 
- Mit dem Azure Import/Export-Tool wird für jedes Laufwerk während der Vorbereitung auch eine Manifestdatei generiert. Eine Manifestdatei enthält Folgendes:
+  Mit dem Azure Import/Export-Tool wird für jedes Laufwerk während der Vorbereitung auch eine Manifestdatei generiert. Eine Manifestdatei enthält Folgendes:
 
--   Eine Enumeration aller Dateien, die für den Upload bestimmt sind, und die Zuordnungen von diesen Dateien zu Blobs.
+- Eine Enumeration aller Dateien, die für den Upload bestimmt sind, und die Zuordnungen von diesen Dateien zu Blobs.
 
--   Prüfsummen der Segmente der einzelnen Dateien.
+- Prüfsummen der Segmente der einzelnen Dateien.
 
--   Informationen zu den Metadaten und Eigenschaften, die den einzelnen Blobs zugeordnet werden.
+- Informationen zu den Metadaten und Eigenschaften, die den einzelnen Blobs zugeordnet werden.
 
--   Eine Liste mit den durchzuführenden Aktionen, wenn ein Blob, das hochgeladen wird, den gleichen Namen wie ein im Container vorhandenes Blob hat. Mögliche Optionen sind: a) Überschreiben des Blobs durch die Datei, b) Beibehalten des vorhandenen Blobs und Überspringen des Dateiuploads und c) Anfügen eines Suffixes an den Namen, damit es nicht zu einem Konflikt mit anderen Dateien kommt.
+- Eine Liste mit den durchzuführenden Aktionen, wenn ein Blob, das hochgeladen wird, den gleichen Namen wie ein im Container vorhandenes Blob hat. Mögliche Optionen sind: a) Überschreiben des Blobs durch die Datei, b) Beibehalten des vorhandenen Blobs und Überspringen des Dateiuploads und c) Anfügen eines Suffixes an den Namen, damit es nicht zu einem Konflikt mit anderen Dateien kommt.
 
 ## <a name="obtaining-your-shipping-location"></a>Beschaffen der Versandadresse
 

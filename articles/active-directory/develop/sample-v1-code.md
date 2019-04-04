@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-Codebeispiele | Microsoft-Dokumentation
+title: Azure Active Directory v1.0 – Codebeispiele | Microsoft-Dokumentation
 description: Stellt einen Index der Azure Active Directory-Codebeispiele (v1.0-Endpunkt) bereit, geordnet nach Szenario.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05b1885871c83da79839448fce2814016f0c082
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7e88c672e72549d813971ce72fc7b85ee8619eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194562"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101022"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory-Codebeispiele (v1.0-Endpunkt)
 
@@ -45,7 +45,7 @@ Schreiben Sie auch Beiträge zu unseren Beispielen auf GitHub. Wie das geht, erf
 Dieses Beispiel zeigt, wie Sie eine Single-Page-Webanwendung schreiben, die mit Azure AD gesichert ist.
 
  Plattform | Aufrufen der eigenen API | Aufrufen einer anderen Web-API
- -------- |  --------------------- | ------------------ | ----------------
+ -------- |  --------------------- | ------------------ 
 ![JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
@@ -67,8 +67,8 @@ Die folgenden Beispiele zeigen Webanwendungen, die Benutzer anmelden. Einige die
 
 Die folgenden Beispiele zeigen, wie rollenbasierte Zugriffssteuerung (RBAC) implementiert wird. RBAC wird verwendet, um die Berechtigungen bestimmter Features in einer Webanwendung auf bestimmte Benutzer einzuschränken. Die Benutzerberechtigung hängt von der Zugehörigkeit zu einer **Azure AD-Gruppe** oder **Anwendungsrolle** ab.
 
-Plattform | Beispiel
- -------- | -------------------
+Plattform | Beispiel |
+ -------- | ------------------- |
 ![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) <p/>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Eine .NET 4.5 MVC-Web-App, die Azure AD-**Rollen** für die Autorisierung verwendet
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktop und mobile öffentliche Clientanwendungen, die Microsoft Graph oder eine Web-API aufrufen
@@ -95,7 +95,7 @@ Desktop (Konsole)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.
 Die folgenden Beispiele veranschaulichen Desktop- oder Web-Anwendungen, die nicht mit einem Benutzer, sondern mit der Identität der Anwendung auf Microsoft Graph oder eine Web-API zugreifen.
 
 Clientanwendung | Plattform | Ablauf/Erteilung | Aufrufen einer ASP.NET- oder ASP.NET Core 2.0-Web-API
------------------- | -------- | ---------- | -------------------- | -------------------------
+------------------ | -------- | ---------- | -------------------- 
 Daemon-App (Konsole)          | ![.NET](media/sample-v2-code/logo_NETframework.png) | Clientanmeldeinformationen mit App-Geheimnis oder Zertifikat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Daemon-App (Konsole)         | ![.NET](media/sample-v2-code/logo_NETcore.png) | Clientanmeldeinformationen mit Zertifikat| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
 ASP.NET-Web-App  | ![.NET](media/sample-v2-code/logo_NETframework.png) | Client credentials (Clientanmeldeinformationen) | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)

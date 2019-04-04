@@ -3,7 +3,7 @@ title: Entwickeln von .NET Core Azure Service Fabric-Anwendungen mit Visual Stud
 description: In diesem Artikel wird das Erstellen, Bereitstellen und Debuggen von .NET Core Service Fabric-Anwendungen mit Visual Studio Code beschrieben.
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS2
+author: peterpogorski
 manager: timlt
 editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: d2e890110194b1fbe0528191fa645628cc3a1345
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: pepogors
+ms.openlocfilehash: 76efdc28c5c536c193e12a1637d2b57a2582b6bf
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161358"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499390"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von C# Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -70,11 +70,11 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 
    ![Befehl „Anwendung bereitstellen“ in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie Service Fabric Explorer: http://localhost:19080/Explorer. Es sollte angezeigt werden, dass die Anwendung ausgeführt wird. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld. 
+4. Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie Service Fabric Explorer: \//localhost:19080/Explorer. Es sollte angezeigt werden, dass die Anwendung ausgeführt wird. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld. 
 
    ![Löschen der Zählerdienstanwendung in Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Nachdem Sie sichergestellt haben, dass die Anwendung ausgeführt wird, starten Sie einen Browser. Öffnen Sie folgende Seite: http://localhost:31002. Hierbei handelt es sich um das Web-Front-End der Anwendung. Aktualisieren Sie die Seite, um den aktuellen Wert des Zählers bei der Erhöhung anzuzeigen.
+4. Nachdem Sie sichergestellt haben, dass die Anwendung ausgeführt wird, starten Sie einen Browser. Öffnen Sie folgende Seite: \//localhost:31002. Hierbei handelt es sich um das Web-Front-End der Anwendung. Aktualisieren Sie die Seite, um den aktuellen Wert des Zählers bei der Erhöhung anzuzeigen.
 
    ![Zählerdienstanwendung im Browser](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
@@ -91,7 +91,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen und zu debuggen:
 
    ![Debugsymbol im VS Code-Arbeitsbereich](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Öffnen Sie Service Fabric Explorer in einem Browser: http://localhost:19080/Explorer. Klicken Sie auf **Anwendungen**, und führen Sie einen Drilldown durch, um den primären Knoten zu ermitteln, auf dem der CounterService ausgeführt wird. In der Abbildung unten ist Knoten 0 der primäre Knoten für den CounterService.
+3. Öffnen Sie Service Fabric Explorer in einem Browser: http:\//localhost:19080/Explorer. Klicken Sie auf **Anwendungen**, und führen Sie einen Drilldown durch, um den primären Knoten zu ermitteln, auf dem der CounterService ausgeführt wird. In der Abbildung unten ist Knoten 0 der primäre Knoten für den CounterService.
 
    ![Primärer Knoten für CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

@@ -16,12 +16,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cec018eec6e298e27329c03964dccf5809c1791
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190635"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004230"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Verlängern oder Erneuern von Zuweisungen von Azure-Ressourcenrollen in PIM
 
@@ -49,7 +49,7 @@ Mitglieder einer Rollenzuweisung können die Verlängerung von ablaufenden Rolle
 
 Wenn der Endzeitpunkt der Zuweisung innerhalb von 14 Tagen liegt, wird die Schaltfläche **Verlängern** auf der Benutzeroberfläche zu einem aktiven Link. Im folgenden Beispiel wird angenommen, dass der 27. März das aktuelle Datum ist.
 
-![Die Schaltfläche „Verlängern“](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![Schaltfläche „Verlängern“](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
 Wählen Sie **Verlängern**, um das Anforderungsformular zu öffnen und eine Verlängerung dieser Rollenzuweisung anzufordern.
 
@@ -64,11 +64,11 @@ Erweitern Sie **Zuweisungsdetails**, um Informationen zur ursprünglichen Zuweis
 
 Die Ressourcenadministratoren erhalten nach kurzer Zeit eine E-Mail-Benachrichtigung mit der Aufforderung, die Verlängerungsanforderung zu überprüfen. Falls bereits eine Verlängerungsanforderung übermittelt wurde, wird oben im Azure-Portal eine Popupbenachrichtigung angezeigt, in der der Fehler erklärt wird.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
+![Benachrichtigung mit Erläuterung zum Fehler](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
 Navigieren Sie links zur Registerkarte **Ausstehende Anforderungen**, um den Status der Anforderung anzuzeigen oder sie zu stornieren.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
+![Ausstehende Anforderungen](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>Genehmigung durch Administrator
 
@@ -80,7 +80,7 @@ Zusätzlich zur Verwendung des Links aus der E-Mail können Administratoren Anfo
 
 Wenn ein Administrator die Option **Genehmigen** oder **Ablehnen** wählt, werden die Details der Anforderung zusammen mit einem Feld zum Angeben der Begründung für die Überwachungsprotokolle angezeigt.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
+![Anforderung zum Genehmigen einer Rollenzuweisung](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
 Beim Genehmigen einer Anforderung zur Verlängerung der Rollenzuweisung können Ressourcenadministratoren einen neuen Start- und Endzeitpunkt und einen neuen Zuweisungstyp wählen. Das Ändern des Zuweisungstyps kann erforderlich sein, wenn der Administrator begrenzten Zugriff gewähren möchte (z.B. nur für einen Tag), damit eine bestimmte Aufgabe erfüllt werden kann. In diesem Beispiel kann der Administrator die Zuweisung von **Berechtigt** in **Aktiv** ändern. Das bedeutet, dass sie dem Anfordernden Zugriff gewähren können, ohne dass er aktiviert werden muss.
 
@@ -100,7 +100,7 @@ Der Prozess zum Erneuern einer abgelaufenen Rollenzuweisung ist vom Konzept her 
 
 Mitglieder, die nicht mehr auf Ressourcen zugreifen können, können bis zu 30 Tage auf den Verlauf der abgelaufenen Zuweisungen zugreifen. Navigieren Sie dazu im linken Bereich zu **Meine Rollen** und wählen Sie die Registerkarte **Abgelaufene Rollen** im Abschnitt der Azure-Ressourcenrollen.
 
-![Die Registerkarte „Abgelaufene Rollen“](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
+![Registerkarte „Abgelaufene Rollen“](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
 
 In der Liste der Rollen werden die Standardeinstellungen für **Berechtigte Rollen** angezeigt. Verwenden Sie das Dropdownmenü, um zwischen berechtigten und aktiven zugewiesenen Rollen umzuschalten.
 

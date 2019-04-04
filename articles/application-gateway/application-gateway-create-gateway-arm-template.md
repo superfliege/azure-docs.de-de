@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002093"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084928"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
 
@@ -60,16 +60,16 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 1. Öffnen Sie die Datei, die Sie gespeichert haben, und betrachten Sie den Inhalt unter **parameters** in Zeile
 1. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
 
-  | Parameter | BESCHREIBUNG |
-  | --- | --- |
-  | **subnetPrefix** |CIDR-Block für das Anwendungsgateway-Subnetz |
-  | **applicationGatewaySize** | Größe des Anwendungsgateways.  WAF lässt nur mittelgroß und groß zu. |
-  | **backendIpaddress1** |IP-Adresse des ersten Webservers. |
-  | **backendIpaddress2** |IP-Adresse des zweiten Webservers. |
-  | **wafEnabled** | Festlegung, ob WAF aktiviert ist.|
-  | **wafMode** | Modus der Web Application Firewall.  Verfügbare Optionen sind **Prävention** und **Erkennung**.|
-  | **wafRuleSetType** | Regelsatztyp für WAF.  Derzeit die OWASP die einzige unterstützte Option. |
-  | **wafRuleSetVersion** |Regelsatzversion. Die unterstützten Optionen sind derzeit OWASP CRS 2.2.9 und 3.0. |
+   | Parameter | BESCHREIBUNG |
+   | --- | --- |
+   | **subnetPrefix** |CIDR-Block für das Anwendungsgateway-Subnetz |
+   | **applicationGatewaySize** | Größe des Anwendungsgateways.  WAF lässt nur mittelgroß und groß zu. |
+   | **backendIpaddress1** |IP-Adresse des ersten Webservers. |
+   | **backendIpaddress2** |IP-Adresse des zweiten Webservers. |
+   | **wafEnabled** | Festlegung, ob WAF aktiviert ist.|
+   | **wafMode** | Modus der Web Application Firewall.  Verfügbare Optionen sind **Prävention** und **Erkennung**.|
+   | **wafRuleSetType** | Regelsatztyp für WAF.  Derzeit die OWASP die einzige unterstützte Option. |
+   | **wafRuleSetVersion** |Regelsatzversion. Die unterstützten Optionen sind derzeit OWASP CRS 2.2.9 und 3.0. |
 
 1. Überprüfen Sie den Inhalt unter **resources**, und beachten Sie folgende Eigenschaften:
 
@@ -82,61 +82,63 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 1. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
 1. Öffnen Sie die Datei, die Sie gespeichert haben, und bearbeiten Sie die Parameterwerte. Verwenden Sie die folgenden Werte, um das Anwendungsgateway wie in unserem Szenario beschrieben bereitzustellen.
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "addressPrefix": {
-            "value": "10.0.0.0/16"
-            },
-            "subnetPrefix": {
-            "value": "10.0.0.0/28"
-            },
-            "applicationGatewaySize": {
-            "value": "WAF_Medium"
-            },
-            "capacity": {
-            "value": 2
-            },
-            "backendIpAddress1": {
-            "value": "10.0.1.10"
-            },
-            "backendIpAddress2": {
-            "value": "10.0.1.11"
-            },
-            "wafEnabled": {
-            "value": true
-            },
-            "wafMode": {
-            "value": "Detection"
-            },
-            "wafRuleSetType": {
-            "value": "OWASP"
-            },
-            "wafRuleSetVersion": {
-            "value": "3.0"
-            }
-        }
-    }
-    ```
+     ```json
+     {
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+             "addressPrefix": {
+             "value": "10.0.0.0/16"
+             },
+             "subnetPrefix": {
+             "value": "10.0.0.0/28"
+             },
+             "applicationGatewaySize": {
+             "value": "WAF_Medium"
+             },
+             "capacity": {
+             "value": 2
+             },
+             "backendIpAddress1": {
+             "value": "10.0.1.10"
+             },
+             "backendIpAddress2": {
+             "value": "10.0.1.11"
+             },
+             "wafEnabled": {
+             "value": true
+             },
+             "wafMode": {
+             "value": "Detection"
+             },
+             "wafRuleSetType": {
+             "value": "OWASP"
+             },
+             "wafRuleSetVersion": {
+             "value": "3.0"
+             }
+         }
+     }
+     ```
 
 1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](https://www.jslint.com/)testen.
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
 1. Anmeldung bei PowerShell
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. Überprüfen Sie die Abonnements für das Konto.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.
@@ -144,19 +146,19 @@ Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie: [Insta
 1. Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup** . Im folgenden Beispiel erstellen Sie eine Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um das neue virtuelle Netzwerk mit der zuvor heruntergeladenen und geänderten Vorlage und den Parameterdateien bereitzustellen.
+1. Führen Sie das Cmdlet **New-AzResourceGroupDeployment** aus, um das neue virtuelle Netzwerk mit der zuvor heruntergeladenen und geänderten Vorlage und den Parameterdateien bereitzustellen.
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
@@ -222,7 +224,7 @@ Führen Sie einen der folgenden Schritte aus, um alle Ressourcen zu löschen, di
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
@@ -235,7 +237,7 @@ az group delete --name appgatewayRG
 
 Wenn Sie die SSL-Auslagerung konfigurieren möchten, besuchen Sie: [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
-Wenn Sie ein Application Gateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, besuchen Sie: [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, besuchen Sie: [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
 Weitere grundsätzliche Informationen zu Lastenausgleichsoptionen finden Sie unter:
 

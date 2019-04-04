@@ -12,18 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/16/2018
+ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2eb395b4f3d922aa116e01c5de080a54d81e10ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054944"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118645"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostizieren häufiger Szenarien mit Service Fabric
 
-Dieser Artikel veranschaulicht allgemeine Szenarien, die bei Benutzern im Bereich der Überwachung und Diagnose mit Service Fabric aufgetreten sind. Die vorgestellten Szenarien behandeln alle 3 Ebenen von Service Fabric: Anwendung, Cluster und Infrastruktur. Bei jeder Lösung kommen Application Insights und Log Analytics sowie Azure-Überwachungstools zum Einsatz, um die einzelnen Szenarien abzuschließen. Die Schritte in den einzelnen Lösungen geben dem Benutzer eine Einführung in die Verwendung von Application Insights und Log Analytics im Zusammenhang mit Service Fabric.
+Dieser Artikel veranschaulicht allgemeine Szenarien, die bei Benutzern im Bereich der Überwachung und Diagnose mit Service Fabric aufgetreten sind. Die vorgestellten Szenarien behandeln alle 3 Ebenen von Service Fabric: Anwendung, Cluster und Infrastruktur. Bei jeder Lösung kommen Application Insights und Azure Monitor-Protokolle sowie Azure-Überwachungstools zum Einsatz, um die einzelnen Szenarien abzuschließen. Die Schritte in den einzelnen Lösungen geben Benutzern eine Einführung in die Verwendung von Application Insights und Azure Monitor-Protokolle im Zusammenhang mit Service Fabric.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites-and-recommendations"></a>Voraussetzungen und Empfehlungen
 
@@ -63,19 +65,19 @@ Für die Lösungen in diesem Artikel werden die folgenden Tools verwendet. Es wi
 1. Knotenereignisse werden von Ihrem Service Fabric-Cluster nachverfolgt. Navigieren Sie zur Service Fabric Analytics-Lösungsressource mit dem Namen **ServiceFabric(Name_der_Ressourcengruppe)**.
 2. Klicken Sie unten auf dem Blatt auf das Diagramm mit dem Titel „Zusammenfassung“.
 
-    ![Log Analytics-Lösung](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Lösung mit Azure Monitor-Protokolle](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
 3. Hier finden Sie viele Diagramme und Kacheln, die verschiedene Metriken anzeigen. Wenn Sie auf eines der Diagramms klicken, gelangen Sie zur Protokollsuche. Hier können Sie alle Clusterereignisse oder Leistungsindikatoren abfragen.
 4. Geben Sie die folgende Abfrage ein. Diese Ereignis-IDs finden Sie in der [Referenz zu Knotenereignissen](service-fabric-diagnostics-event-generation-operational.md#application-events).
 
     ```kusto
     ServiceFabricOperationalEvent
-    | where EventId >= 25623 or EventId <= 25626
+    | where EventID >= 25622 and EventID <= 25626
     ```
 
 5. Klicken Sie oben auf „Neue Warnungsregel“. Ab jetzt erhalten Sie jedes Mal, wenn ein Ereignis basierend auf dieser Abfrage eingeht, eine Warnung mit der von Ihnen ausgewählten Kommunikationsmethode.
 
-    ![Log Analytics: neue Warnung](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Azure Monitor-Protokolle – neue Warnung](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Wie kann ich Warnungen zu Rollbacks von Anwendungsupgrades erhalten?
 
@@ -83,7 +85,7 @@ Für die Lösungen in diesem Artikel werden die folgenden Tools verwendet. Es wi
 
     ```kusto
     ServiceFabricOperationalEvent
-    | where EventId == 29623 or EventId == 29624
+    | where EventID == 29623 or EventID == 29624
     ```
 
 2. Klicken Sie oben auf „Neue Warnungsregel“. Ab jetzt erhalten Sie jedes Mal, wenn ein Ereignis basierend auf dieser Abfrage eingeht, eine Warnung.
@@ -109,16 +111,15 @@ In der gleichen Ansicht mit allen Diagrammen sehen Sie einige Kacheln für die L
 
 3. Klicken Sie auf „Daten“ > „Windows-Leistungsindikatoren“ (bzw. „Daten“ > „Linux-Leistungsindikatoren“ bei Linux-Computern), um damit zu beginnen, über den Log Analytics-Agent bestimmte Leistungsindikatoren von Ihren Knoten zu sammeln. Es folgen Beispiele für das Format, in dem Leistungsindikatoren hinzugefügt werden müssen
 
-    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
-    * `Processor(_Total)\\% Processor Time`
-    * `Service Fabric Service(*)\\Average milliseconds per request`
+   * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
+   * `Processor(_Total)\\% Processor Time`
 
-    In der Schnellstartanleitung werden VotingData und VotingWeb als Prozessnamen verwendet. Die Nachverfolgung dieser Leistungsindikatoren würde wie folgt aussehen:
+     In der Schnellstartanleitung werden VotingData und VotingWeb als Prozessnamen verwendet. Die Nachverfolgung dieser Leistungsindikatoren würde wie folgt aussehen:
 
-    * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
-    * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-    ![Log Analytics: Leistungsindikatoren](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+     ![Log Analytics: Leistungsindikatoren](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
 4. Anhand dieser Indikatoren können Sie sehen, wie Ihre Infrastruktur die Arbeitslasten verarbeitet, und anhand der Ressourcenauslastung entsprechende Warnungen festlegen. Beispiel: Sie möchten eine Warnung festlegen, wenn die Prozessorgesamtauslastung über 90 % steigt oder unter 5 % fällt. Der Name des Leistungsindikators, den Sie dafür verwenden, lautet „% Prozessorzeit“. Dazu können Sie eine Warnungsregel für die folgende Abfrage erstellen:
 
@@ -128,7 +129,10 @@ In der gleichen Ansicht mit allen Diagrammen sehen Sie einige Kacheln für die L
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Wie kann ich die Leistung meiner Reliable Services und Reliable Actors nachverfolgen?
 
-Um die Leistung von Reliable Services oder Reliable Actors in Ihren Anwendungen nachzuverfolgen, sollten Sie auch die Leistungsindikatoren für Service Fabric Actor, Actor-Methode, Dienst und Dienstmethode hinzufügen. Sie können diese Leistungsindikatoren auf ähnliche Weise hinzufügen wie im oben beschriebenen Szenario. Im Anschluss finden Sie exemplarische Leistungsindikatoren für Reliable Services und Reliable Actors, die in Log Analytics hinzugefügt werden können:
+Um die Leistung von Reliable Services oder Reliable Actors in Ihren Anwendungen nachzuverfolgen, sollten Sie auch die Leistungsindikatoren für Service Fabric Actor, Actor-Methode, Dienst und Dienstmethode erfassen. Beispiele für zu erfassende Leistungsindikatoren für Reliable Services und Reliable Actors
+
+>[!NOTE]
+>Service Fabric-Leistungsindikatoren können derzeit nicht vom Log Analytics-Agent gesammelt werden, aber von [anderen Diagnoselösungen](service-fabric-diagnostics-partners.md).
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
@@ -141,7 +145,7 @@ Nutzen Sie diese Links, um die vollständige Liste der Leistungsindikatoren für
 
 * [Richten Sie Warnungen in AI ein](../azure-monitor/app/alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an AI gesendeten Telemetriedaten aus, um Sie vor potenziellen Leistungsproblemen zu warnen.
-* Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Log Analytics, die bei der Erkennung und Diagnose hilfreich sein können.
-* Für lokale Cluster bietet Log Analytics ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Log Analytics gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Log Analytics über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Log Analytics vertraut.
-* Eine ausführlichere Übersicht über Log Analytics und die zugehörigen Optionen finden Sie unter [Was ist Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)
+* Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Azure Monitor-Protokolle, die bei der Erkennung und Diagnose hilfreich sein können.
+* Für lokale Cluster bietet Azure Monitor-Protokolle ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Azure Monitor-Protokolle gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Azure Monitor-Protokolle über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
+* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../operations-management-suite/operations-management-suite-overview.md).

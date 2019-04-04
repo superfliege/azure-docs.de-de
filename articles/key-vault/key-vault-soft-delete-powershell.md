@@ -1,18 +1,18 @@
 ---
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit PowerShell'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit PowerShell-Codeausschnitten
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
-ms.author: bryanla
-ms.openlocfilehash: 70437403d3b78b7f8b9eef921c933a68793450da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081031"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -177,19 +177,19 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 Genauso wie Schlüssel werden auch geheime Schlüssel mit ihren eigenen Befehlen verwaltet:
 
 - Löschen eines Geheimnisses mit dem Namen „SQLPassword“: 
-```powershell
-Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
-```
+  ```powershell
+  Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
+  ```
 
 - Auflisten aller gelöschten Geheimnisse in einem Schlüsseltresor: 
-```powershell
-Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
-```
+  ```powershell
+  Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
+  ```
 
 - Wiederherstellen eines Geheimnisses im gelöschten Zustand: 
-```powershell
-Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
-```
+  ```powershell
+  Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
+  ```
 
 - Bereinigen eines Geheimnisses im gelöschten Zustand: 
 

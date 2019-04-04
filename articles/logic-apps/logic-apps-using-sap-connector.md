@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887084"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
-In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP ECC-Connector (ERP Central Component) verwenden. Der SAP ECC-Connector unterstützt die Nachrichten- oder Datenintegration in SAP Netweaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
+In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP ECC-Connector (ERP Central Component) verwenden. Der Connector funktioniert lokal sowohl in ECC- als auch in S/4 HANA-Systemen. Der SAP ECC-Connector unterstützt die Nachrichten- oder Datenintegration in SAP Netweaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
 
-Der SAP ECC-Connector verwendet die <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP-NCo-Bibliothek (.NET Connector)</a> und stellt diese Vorgänge oder Aktionen bereit:
+Der SAP ECC-Connector verwendet die <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP-NCo-Bibliothek (.NET-Connector)</a> und stellt diese Vorgänge oder Aktionen bereit:
 
 - **An SAP senden:** Hiermit senden Sie IDoc-Funktionen oder rufen BAPI-Funktionen über tRFC in SAP-Systemen auf.
 - **Von SAP empfangen:** Hiermit empfangen Sie IDoc- oder BAPI-Funktionsaufrufe von SAP-Systemen über tRFC.

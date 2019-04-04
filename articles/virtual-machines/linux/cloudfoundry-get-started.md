@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 68ae01b814de08098c0ba6b5713f420cfebc3d97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001258"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry in Azure
 
@@ -48,7 +48,7 @@ Microsoft bietet über die folgenden Community-Kanäle Support für OSS CF nach 
 
 Pivotal Cloud Foundry enthält neben der gleichen Kernplattform wie die OSS-Distribution auch einen Satz von proprietären Verwaltungstools und Supportleistungen auf Unternehmensniveau. Für die Ausführung von PCF in Azure müssen Sie eine Lizenz von Pivotal erwerben. Das PCF-Angebot im Azure Marketplace umfasst eine Lizenz für eine 90-Tage-Testversion.
 
-Die Tools umfassen [Pivot Operations Manager](http://docs.pivotal.io/pivotalcf/customizing/), eine Webanwendung, die die Bereitstellung und Verwaltung von Cloud Foundry Foundation, vereinfacht und [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/), eine Webanwendung für die Verwaltung von Benutzern und Anwendungen.
+Die Tools umfassen [Pivot Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), eine Webanwendung, die die Bereitstellung und Verwaltung von Cloud Foundry Foundation, vereinfacht und [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/), eine Webanwendung für die Verwaltung von Benutzern und Anwendungen.
 
 Zusätzlich zu den aufgeführten Supportkanälen für OSS CF sind Sie mit einer PCF-Lizenz berechtigt, sich an Pivotal zu wenden, um Support zu erhalten. Microsoft und Pivotal haben auch Supportworkflows aktiviert, mit denen Sie beide Parteien kontaktieren können, um Unterstützung zu erhalten, und Ihre Anfrage wird je nachdem, wo das Problem liegt, ordnungsgemäß weitergeleitet.
 

@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea17db9af92887ff775e580224b66fed22c65d41
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990780"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -35,7 +35,7 @@ Azure App Service-Inhalt wird in Azure Storage gespeichert und dauerhaft als Inh
 * Der Inhalt wird über mehrere VM-Instanzen der App hinweg freigegeben.
 * Der Inhalt wird dauerhaft bereitgestellt und kann durch ausgeführte Apps geändert werden.
 * Protokolldateien und Diagnosedatendateien stehen unterhalb desselben freigegebenen Inhaltsordners zur Verfügung.
-* Beim Veröffentlichen neuer Inhalte wird der Inhaltsordner direkt aktualisiert. Der Inhalt kann umgehend über die SCM-Website und die ausgeführte App angezeigt werden. (Einige Technologien wie z.B. ASP.NET initiieren bei einigen Dateiänderungen üblicherweise einen App-Neustart, um die aktuellen Inhalte abzurufen.)
+* Beim Veröffentlichen neuer Inhalte wird der Inhaltsordner direkt aktualisiert. Der Inhalt kann umgehend über die SCM-Website und die ausgeführte App angezeigt werden. (Einige Technologien wie z. B. ASP.NET initiieren bei einigen Dateiänderungen üblicherweise einen App-Neustart, um die aktuellen Inhalte abzurufen.)
 
 Während viele Apps einzelne oder alle dieser Features nutzen, benötigen einige Apps lediglich einen hochleistungsfähigen schreibgeschützten Inhaltsspeicher, aus dem sie mit Hochverfügbarkeit ausgeführt werden können. Diese Apps können von einer VM-Instanz eines bestimmten lokalen Caches profitieren.
 

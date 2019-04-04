@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: a91bc1cbb72427205cc558a4b5e655f4aa8083b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429195"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992061"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -179,6 +179,9 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
          * Wiederholen Sie die oben genannten Schritte für Port 2049 und TCP für NW2.
       1. 2049 UDP für NW2
          * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW2.
+
+> [!IMPORTANT]
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
 
@@ -426,9 +429,9 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    Bei Verwendung von DRBD zum Synchronisieren von Daten zwischen verschiedenen Hosts kann ein sogenanntes Split Brain-Syndrom auftreten. Ein Split Brain-Syndrom ist ein Szenario, bei dem beide Clusterknoten das DRBD-Gerät als primäres Gerät höher gestuft haben und nicht mehr synchronisiert sind. Dies ist wohl ein selten auftretender Fall, dennoch sollte ein Split Brain-Problem schnellstmöglich behandelt und behoben werden. Es ist daher wichtig, dass bei einem aufgetretenen Split Brain-Problem eine Benachrichtigung erfolgt.
 
-   Informationen zum Einrichten einer Benachrichtigung zu einem Split Brain-Problem finden Sie in der [offiziellen DRBD-Dokumentation](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification).
+   Informationen zum Einrichten einer Benachrichtigung zu einem Split Brain-Problem finden Sie in der [offiziellen DRBD-Dokumentation](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification).
 
-   Es ist zudem möglich, eine automatische Wiederherstellung nach einem Split Brain-Szenario durchzuführen. Weitere Informationen finden Sie unter [Automatic split brain recovery policies](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration) (Richtlinien zur automatischen Split Brain-Wiederherstellung).
+   Es ist zudem möglich, eine automatische Wiederherstellung nach einem Split Brain-Szenario durchzuführen. Weitere Informationen finden Sie unter [Automatic split brain recovery policies](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration) (Richtlinien zur automatischen Split Brain-Wiederherstellung).
    
 ### <a name="configure-cluster-framework"></a>Konfigurieren des Clusterframeworks
 

@@ -1,24 +1,24 @@
 ---
 title: Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten
-description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht.
+description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Azure Monitor-Protokolle proaktiv überwacht.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902245"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
-Mit der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem erhalten Sie über Azure Log Analytics Einblick in Ihre Daten und können durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs.
+Mit der Lösung VMs außerhalb der Geschäftszeiten starten/beenden können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem können Sie über Azure Monitor-Protokolle Erkenntnisse aus Ihre Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs.
 
 Diese Lösung bietet eine dezentrale und kostengünstige Automatisierungsoption für Benutzer, die ihre VM-Kosten optimieren möchten. Mit dieser Lösung haben Sie folgende Möglichkeiten:
 
@@ -36,9 +36,13 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 >
 > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [**External_EnableClassicVMs**](#variables) nach der Bereitstellung in **False** ändern.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Runbooks für diese Lösung wird ein [ausführendes Azure-Konto](automation-create-runas-account.md) verwendet. Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
+
+Es wird empfohlen, für die Lösung zum Starten/Beenden von VMs ein separates Automation-Konto zu verwenden. Der Grund hierfür ist, dass die Azure-Modulversionen häufig aktualisiert werden und sich ihre Parameter ändern können. Die Lösung zum Starten/Beenden von VMs wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihr Automation-Produktionskonto importieren.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -59,17 +63,17 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    ![Seite „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
 4. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen Log Analytics-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, unter dem sich das Automation-Konto befindet. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite **Log Analytics-Arbeitsbereich** die folgenden Schritte aus:
-   - Geben Sie einen Namen für den neuen **Log Analytics-Arbeitsbereich** ein, z.B. „ContosoLAWorkspace“.
+   - Geben Sie einen Namen für den neuen **Log Analytics-Arbeitsbereich** ein, z. B. „ContosoLAWorkspace“.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
    - Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden**, **Europa, Westen** und **USA, Westen 2** verfügbar.
-   - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Log Analytics wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert und der Tarif „Pro GB“ ist die einzige Option.
+   - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Azure Monitor-Protokolle wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert, und der Tarif „Pro GB“ ist die einzige Option.
 
 5. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen auf der Seite **Log Analytics-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
 6. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation-Konto erstellen, das diesem zugeordnet wird, oder ein vorhandenes Automation-Konto auswählen, das nicht bereits mit einem Log Analytics-Arbeitsbereich verknüpft ist. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
    - Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
 
-    Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Diese Optionen können nicht geändert werden. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks in dieser Lösung. Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
+     Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Diese Optionen können nicht geändert werden. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks in dieser Lösung. Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
 7. Wählen Sie abschließend auf der Seite **Lösung hinzufügen**die Option **Konfiguration** aus. Die Seite **Parameter** wird angezeigt.
 
@@ -174,7 +178,7 @@ Nachdem Sie einen Zeitplan zum Beenden von VMs basierend auf der CPU-Auslastung 
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
-Diese Lösung umfasst vorkonfigurierte Runbooks, Zeitpläne und die Integration in Log Analytics, sodass Sie das Starten und Beenden der virtuellen Computer gemäß Ihren Geschäftsanforderungen anpassen können.
+Diese Lösung umfasst vorkonfigurierte Runbooks, Zeitpläne und die Integration in Azure Monitor-Protokolle, sodass Sie das Starten und Beenden der virtuellen Computer gemäß Ihren Geschäftsanforderungen anpassen können.
 
 ### <a name="runbooks"></a>Runbooks
 
@@ -209,7 +213,7 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewendet wird, um die Bedingung auszuwerten. Zulässige Werte sind **Average**, **Minimum**, **Maximum**, **Total** und **Last**.|
 |External_AutoStop_TimeWindow | Die Größe des Fensters, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
 |External_EnableClassicVMs| Gibt an, ob die Lösung klassische virtuelle Computer als Ziel verwendet. Der Standardwert lautet „True“. Diese Variable sollte bei CSP-Abonnements auf „False“ festgelegt werden.|
-|External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen. Dies ist auf 140 virtuelle Computer beschränkt. Wenn mehr als 140 VMs hinzugefügt werden, kann es bei VMs, die ausgeschlossen werden sollen, zu unbeabsichtigtem Starten oder Herunterfahren kommen.|
+|External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen. Dies ist auf 140 virtuelle Computer beschränkt. Wenn Sie dieser durch Trennzeichen getrennten Liste mehr als 140 VMs hinzufügen, kann es bei VMs, für die Ausschluss festgelegt ist, zu unbeabsichtigtem Starten oder Beenden kommen.|
 |External_Start_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Startaktionen an.|
 |External_Stop_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Beendigungsaktionen an.|
 |Internal_AutomationAccountName | Gibt den Namen des Automation-Kontos an.|
@@ -233,7 +237,7 @@ Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappend
 |Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Stop_ jeden Freitag zum angegebenen Zeitpunkt aus. Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StartVM**).|
 |Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Start_ jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StopVM**).|
 
-## <a name="log-analytics-records"></a>Log Analytics-Datensätze
+## <a name="azure-monitor-logs-records"></a>Datensätze in Azure Monitor-Protokolle
 
 Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich: Auftragsprotokolle und Auftragsdatenströme.
 
@@ -285,8 +289,8 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 
 |Abfragen | BESCHREIBUNG|
 |----------|----------|
-|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
-|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Anzeigen der Lösung
 
@@ -364,14 +368,14 @@ Führen Sie die folgenden Schritte aus, um die Lösung zu löschen:
 
 Das Automation-Konto und der Log Analytics-Arbeitsbereich werden bei diesem Vorgang nicht gelöscht. Wenn Sie den Log Analytics-Arbeitsbereich nicht beibehalten möchten, müssen Sie ihn manuell löschen. Dies ist über das Azure-Portal möglich:
 
-1. Wählen Sie auf der Startseite des Azure-Portals die Option **Log Analytics**.
-1. Wählen Sie auf der Seite **Log Analytics** den Arbeitsbereich aus.
+1. Wählen Sie auf der Startseite des Azure-Portals die Option **Log Analytics-Arbeitsbereiche** aus.
+1. Wählen Sie auf der Seite **Log Analytics-Arbeitsbereiche** den Arbeitsbereich aus.
 1. Wählen Sie auf der Seite mit den Einstellungen für den Arbeitsbereich die Menüoption **Löschen** aus.
 
 Wenn Sie die Komponenten des Azure Automation-Kontos nicht behalten möchten, können Sie diese manuell löschen. Die Liste der Runbooks, Variablen und Zeitpläne, die von der Lösung erstellt wurden, finden Sie unter den [Lösungskomponenten](#solution-components).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Log Analytics finden Sie unter [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+- Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
 - Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
-- Weitere Informationen zu Log Analytics und Datenerfassungsquellen finden Sie unter [Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).
+- Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).

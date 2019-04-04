@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory B2B-Zusammenarbeit: API und Anpassung | Microsoft-Dokumentation'
+title: 'B2B Collaboration: API und Anpassung – Azure Active Directory | Microsoft-Dokumentation'
 description: Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a475c9032d2c4062b506c1e6ebcadd1901c946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177426"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111309"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B-Zusammenarbeit: API und Anpassung
 
@@ -44,7 +44,7 @@ Die API bietet die folgenden Funktionen:
     "sendInvitationMessage": true
     ```
 
-  Fügen Sie eine anpassbare Nachricht an den Empfänger hinzu.
+   Fügen Sie eine anpassbare Nachricht an den Empfänger hinzu.
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -58,7 +58,7 @@ Die API bietet die folgenden Funktionen:
     "sendInvitationMessage": false
     ```
 
-  In diesem Fall gibt die API eine Einlösungs-URL zurück, die Sie in eine E-Mail-Vorlage, eine Sofortnachricht oder eine andere Verteilungsmethode Ihrer Wahl einbetten können.
+   In diesem Fall gibt die API eine Einlösungs-URL zurück, die Sie in eine E-Mail-Vorlage, eine Sofortnachricht oder eine andere Verteilungsmethode Ihrer Wahl einbetten können.
 
 6. Wenn Sie Administrator sind, können Sie den Benutzer als Mitglied einladen.
 

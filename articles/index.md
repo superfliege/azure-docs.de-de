@@ -2,10 +2,16 @@
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure-Dokumentation
-description: 'Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.'
+description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 ms.topic: hub-page
 featureFlags:
-  - clicktale
+- clicktale
+ms.openlocfilehash: 97fd2ffd22f4a4c883d284a2d2db060cd1c2121c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878671"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -198,7 +204,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>Speicher</h4>
+                                                <h4>Storage</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
@@ -206,7 +212,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/machine-learning/">Machine Learning </a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">Cognitive Services</a></li>
-                                                    <li><a class="barLink" href="/azure/notebooks/">Azure Notebooks</a></li>
+                                                    <li><a class="barLink" href="/azure/notebooks/">Azure-Notebooks</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -223,7 +229,7 @@ Go</a>
                                                     <li>
                                                         <a class="barLink" href="/cli/azure">
                                                             <img src="media/index/azure_dev-7.svg" alt="">
-Azure CLI </a>
+Azure-Befehlszeilenschnittstelle </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/powershell/azure/overview">
@@ -1619,6 +1625,12 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 <p>Azure Sentinel</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/asc-for-iot/">
+                                                <img src="media/index/asc-for-iot.svg" alt="" />
+                                                <p>Azure Security Center für IoT</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>Identity</h3>
                                     <ul>
@@ -2737,7 +2749,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#mobile">Mobil</a>
+                        <a href="#mobile">Mobile</a>
                         <ul id="mobile" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-mobile">
@@ -3966,7 +3978,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">Internet der Dinge (IoT)</a>
+                        <a href="#iot">Internet der Dinge</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="/azure/iot-fundamentals">
@@ -4475,7 +4487,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#identity">Identität</a>
+                        <a href="#identity">Identity</a>
                         <ul id="identity" class="cardsA">
                             <li>
                                 <a href="/azure/active-directory/">
@@ -4837,6 +4849,25 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 <div class="cardText">
                                                     <h3>Azure Sentinel</h3>
                                                     <p>Hier erhalten Sie Informationen zur Nutzung der SIEM-Lösung von Microsoft, die intelligente Sicherheitsanalysen für Ihr gesamtes Unternehmen in der Cloud bereitstellt.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/asc-for-iot/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/asc-for-iot.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Security Center für IoT</h3>
+                                                    <p>Hier erfahren Sie, wie Sie Ihre Sicherheitsverwaltung vereinheitlichen und erweiterten Bedrohungsschutz in Ihrer IoT-Lösung ermöglichen.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5910,7 +5941,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                 <a href="#sdkstools">SDKs/Tools</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">Alle</a>
+                        <a href="#sdkstools-all">alle</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -6073,7 +6104,7 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                     <a href="/cli/azure">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/reference-index">Referenz</a>
+                                                    <a href="/cli/azure/reference-index">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6095,7 +6126,7 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                     <a href="/powershell/azure/get-started-azureps">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/overview">Referenz</a>
+                                                    <a href="/powershell/azure/overview">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6148,7 +6179,7 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice">App Service</a>
                                                 </p>
                                                  <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure-Funktionen</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Storage</a>
@@ -6262,7 +6293,7 @@ Azure Resource Manager </h3>
                                                     <a href="https://azure.microsoft.com/resources/templates/">Beispielvorlagen</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/templates/">Referenz</a>
+                                                    <a href="https://docs.microsoft.com/azure/templates/">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6371,13 +6402,13 @@ Azure Dev Spaces </h3>
                                                     <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Download für .NET Core und VS Code</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Herunterladen für .NET Core und VS Code</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Download für .NET Core und Visual Studio</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Herunterladen für .NET Core und Visual Studio</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Download für Node.js</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Herunterladen für Node.js</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6389,7 +6420,7 @@ Azure Dev Spaces </h3>
                 </ul>
             </li>
             <li>
-                <a href="#architecture">Architektur</a>
+                <a href="#architecture">Architecture</a>
                 <ul id="architecture">
                     <li>
                         <a href="#architecture1"></a>

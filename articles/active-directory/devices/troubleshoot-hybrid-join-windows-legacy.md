@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101141"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -85,19 +85,19 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
 
     ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-    - „Autoworkplace.exe“ kann sich nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Die Fehlerursache können eine fehlende bzw. falsche Konfiguration von AD FS (für Verbunddomänen) oder des nahtlosen einmaligen Azure AD-Anmeldens (für verwaltete Domänen) oder aber Netzwerkprobleme sein. 
+  - „Autoworkplace.exe“ kann sich nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Die Fehlerursache können eine fehlende bzw. falsche Konfiguration von AD FS (für Verbunddomänen) oder des nahtlosen einmaligen Azure AD-Anmeldens (für verwaltete Domänen) oder aber Netzwerkprobleme sein. 
     
-     - Möglicherweise ist die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Benutzer aktiviert/konfiguriert, und „WIAORMUTLIAUTHN“ nicht auf dem AD FS-Server konfiguriert. 
+    - Möglicherweise ist die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Benutzer aktiviert/konfiguriert, und „WIAORMUTLIAUTHN“ nicht auf dem AD FS-Server konfiguriert. 
      
-     - Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch **autoworkplace.exe** daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
+    - Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch **autoworkplace.exe** daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
      
-     - Möglicherweise fehlen AD FS- und Azure AD-URLs in der Intranetzone des IE.
+    - Möglicherweise fehlen AD FS- und Azure AD-URLs in der Intranetzone des IE.
      
-     - Probleme mit der Netzwerkkonnektiviät verhindern möglicherweise, dass **autoworkplace.exe** eine Verbindung mit AD FS- oder Azure AD-URLs herstellen kann. 
+    - Probleme mit der Netzwerkkonnektiviät verhindern möglicherweise, dass **autoworkplace.exe** eine Verbindung mit AD FS- oder Azure AD-URLs herstellen kann. 
      
-     - **Autoworkplace.exe** erfordert, dass der Client über eine direkte Sichtverbindung vom Client zum lokalen AD-Domänencontroller der Organisation verfügt. Das bedeutet, Azure AD Hybrid Join wird nur dann erfolgreich ausgeführt, wenn der Client mit dem Intranet der Organisation verbunden ist.
+    - **Autoworkplace.exe** erfordert, dass der Client über eine direkte Sichtverbindung vom Client zum lokalen AD-Domänencontroller der Organisation verfügt. Das bedeutet, Azure AD Hybrid Join wird nur dann erfolgreich ausgeführt, wenn der Client mit dem Intranet der Organisation verbunden ist.
      
-     - Ihre Organisation verwendet nahtloses einmaliges Azure AD-Anmelden, `https://autologon.microsoftazuread-sso.com` oder `https://aadg.windows.net.nsatc.net` ist nicht in den IE-Intraneteinstellungen des Geräts vorhanden, und **Updates der Statusleiste über ein Skript zulassen** ist nicht für die Intranetzone aktiviert.
+    - Ihre Organisation verwendet nahtloses einmaliges Azure AD-Anmelden, `https://autologon.microsoftazuread-sso.com` oder `https://aadg.windows.net.nsatc.net` ist nicht in den IE-Intraneteinstellungen des Geräts vorhanden, und **Updates der Statusleiste über ein Skript zulassen** ist nicht für die Intranetzone aktiviert.
 
 - Sie sind nicht als Domänenbenutzer angemeldet
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c5a7dc08886e21ef8e287540d9139ec555b11a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242291"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400626"
 ---
 # <a name="collect-data-from-threat-intelligence-providers"></a>Erfassen von Daten von Threat Intelligence-Anbietern 
 
@@ -31,6 +31,8 @@ Nachdem Sie Ihre Daten in Azure Sentinel gestreamt haben, können Sie sie mit de
 Azure Sentinel ermöglicht die Integration mit [Threat Intelligence-Anbietern](https://aka.ms/graphsecuritytips), um Ihre Warnungen und Regeln mit echter Threat Intelligence zu vergleichen, wenn Sie z.B. eine Warnung von einer bestimmten IP-Adresse erhalten, kann Ihre Threat Intelligence Provider-Integration Sie darüber informieren, ob diese IP-Adresse kürzlich als bösartig befunden wurde. 
 
 Sie können Protokolle von Threat Intelligence-Anbietern mit einem einzigen Klick in Azure Sentinel streamen. Diese Verbindung ermöglicht es Ihnen, Indikatoren mit verschiedenen Arten von beobachtbare Elementen zu integrieren, z.B. IP-Adresse, Domäne, URL und Dateihash, um benutzerdefinierte Warnungsregeln in Azure Sentinel zu durchsuchen und zu erstellen.  
+> [!NOTE]
+> Sie können benutzerdefinierte Bedrohungsindikatoren in Azure Sentinel eingeben, um sie in Warnungsregeln, Dashboards und Bedrohungssuchszenarien (Hunting-Szenarien) zu verwenden. Dies geschieht, indem Sie sie mit der [Microsoft Graph-Sicherheitsentität tiIndicator](https://aka.ms/graphsecuritytiindicators) einbinden oder eine [in die Microsoft Graph-Sicherheit integrierte Bedrohungsanalyseplattform](https://aka.ms/graphsecuritytips) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen  
 

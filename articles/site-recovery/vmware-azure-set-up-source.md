@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 536b7ed21e7dd54fcbea97951330b08925961713
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884964"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Einrichten der Quellumgebung für die Replikation von VMware in Azure
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt die Einrichtung Ihrer lokalen Quellumgebung für das R
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits durchgeführt haben:
 
 - Planen der Bereitstellung mithilfe des [Azure Site Recovery-Bereitstellungsplaners](site-recovery-deployment-planner.md). Dadurch können Sie basierend auf der täglichen Datenänderungsrate genügend Bandbreite zuordnen, um den gewünschten RPO-Wert (Recovery Point Objective) zu erzielen.
-- [Einrichten von Ressourcen](tutorial-prepare-azure.md) im [Azure-Portal](http://portal.azure.com)
+- [Einrichten von Ressourcen](tutorial-prepare-azure.md) im [Azure-Portal](https://portal.azure.com)
 - [Vorbereiten lokaler VMware-Server](vmware-azure-tutorial-prepare-on-premises.md) mit Angabe eines dedizierten Kontos für die automatische Ermittlung
 
 ## <a name="choose-your-protection-goals"></a>Auswählen der Schutzziele
@@ -41,7 +41,7 @@ Sie können den Konfigurationsserver mithilfe einer OVA-Vorlage (Open Virtualiza
 
 1. Informieren Sie sich über die [Voraussetzungen](vmware-azure-deploy-configuration-server.md#prerequisites) für die Bereitstellung des Konfigurationsservers.
 2. [Überprüfen Sie die Kapazität](vmware-azure-deploy-configuration-server.md#capacity-planning) für die Bereitstellung.
-3. Führen Sie den [Download](vmware-azure-deploy-configuration-server.md#download-the-template) und [Import](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) der OVA-Vorlage durch, um eine lokale VMware-VM einzurichten, auf der der Konfigurationsserver ausgeführt wird. Bei der mit der Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz, die 180 Tage lang gültig ist. Nach Ablauf dieses Zeitraums muss der Kunde die Windows-Version mit einer käuflich erworbenen Lizenz aktivieren.
+3. Führen Sie den [Download](vmware-azure-deploy-configuration-server.md#download-the-template) und [Import](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) der OVA-Vorlage durch, um eine lokale VMware-VM einzurichten, auf der der Konfigurationsserver ausgeführt wird. Bei der mit der Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz, die 180 Tage lang gültig ist. Nach Ablauf dieses Zeitraums muss der Kunde die Windows-Version mit einer käuflich erworbenen Lizenz aktivieren.
 4. Aktivieren Sie die VMware-VM, und [registrieren](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) Sie sie im Recovery Services-Tresor.
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Vom Antivirenprogramm ausgeschlossene Azure Site Recovery-Ordner
@@ -58,18 +58,18 @@ Schließen Sie für eine reibungslose Replikation und zur Vermeidung von Konnekt
 - C:\Programme\Microsoft Azure Site Recovery Provider
 - C:\Programme\Microsoft Azure Site Recovery Configuration Manager 
 - C:\Programme\Microsoft Azure Site Recovery Error Collection Tool 
- - C:\thirdparty
- - C:\Temp
- - C:\strawberry
- - C:\ProgramData\MySQL
- - C:\Programme (x86)\MySQL
- - C:\ProgramData\ASR
- - C:\ProgramData\Microsoft Azure Site Recovery
- - C:\ProgramData\ASRLogs
- - C:\ProgramData\ASRSetupLogs
- - C:\ProgramData\LogUploadServiceLogs
- - C:\inetpub
- - Installationsverzeichnis des ASR-Servers. Beispiel:  E:\Programme (x86)\Microsoft Azure Site Recovery
+  - C:\thirdparty
+  - C:\Temp
+  - C:\strawberry
+  - C:\ProgramData\MySQL
+  - C:\Programme (x86)\MySQL
+  - C:\ProgramData\ASR
+  - C:\ProgramData\Microsoft Azure Site Recovery
+  - C:\ProgramData\ASRLogs
+  - C:\ProgramData\ASRSetupLogs
+  - C:\ProgramData\LogUploadServiceLogs
+  - C:\inetpub
+  - Installationsverzeichnis des ASR-Servers. Beispiel:  E:\Programme (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Aktive Antivirensoftware auf Prozessserver/Masterziel mit horizontaler Skalierung
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a168ca3aafc171e4ed9b9f7572ee60b2ac7c350
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0ca35c5d7a882a67bdce5e006b94d1f16daf9130
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893203"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
 Beim Migrieren Ihres Identitätsanbieters zu Azure Active Directory B2C (Azure AD B2C) müssen Sie unter Umständen auch das Benutzerkonto migrieren. In diesem Artikel wird erläutert, wie vorhandene Benutzerkonten von einem beliebigen Identitätsanbieter zu Azure AD B2C migriert werden. Der Artikel enthält keine verbindliche Anleitung, sondern beschreibt lediglich einige mögliche Szenarien. Der Entwickler ist jeweils dafür verantwortlich, dass ein Ansatz geeignet ist.
@@ -63,7 +63,7 @@ Registrieren Sie zuerst Ihre Migrationsanwendung bei Azure AD. Erstellen Sie ans
 1. Erstellen Sie eine neue Anwendung, indem Sie wie folgt vorgehen:
    - Verwenden Sie für **Name** entweder **B2CUserMigration** oder einen anderen beliebigen Namen.
    - Verwenden Sie für **Anwendungstyp** die Option **Web-App/API**.
-   - Verwenden Sie als **Anmelde-URL** die URL **https://localhost** (für diese Anwendung nicht relevant).
+   - Verwenden Sie als **Anmelde-URL** die URL `https://localhost` (für diese Anwendung nicht relevant).
    - Klicken Sie auf **Erstellen**.
    
 1. Wählen Sie nach der Erstellung der Anwendung in der Liste **Anwendungen** die neu erstellte Anwendung **B2CUserMigration**.
@@ -94,7 +94,7 @@ Sie verfügen jetzt über eine Anwendung mit Berechtigungen zum Erstellen, Lesen
 Die Berechtigung „Lese- und Schreibzugriff auf Verzeichnisdaten“ schließt *nicht* die Berechtigung zum Löschen von Benutzern ein. Damit Ihre Anwendung die Möglichkeit zum Löschen von Benutzern erhält (zum Bereinigen Ihrer Umgebung), müssen Sie einen zusätzlichen Schritt ausführen. Dies umfasst auch die Ausführung von PowerShell zum Festlegen von Benutzerkonto-Administratorberechtigungen. Andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
 
 > [!IMPORTANT]
-> Sie müssen ein B2C-Mandantenadministratorkonto verwenden, das für den B2C-Mandanten *lokal* angeordnet ist. Die Syntax für den Kontonamen lautet *admin@contosob2c.onmicrosoft.com*.
+> Sie müssen ein B2C-Mandantenadministratorkonto verwenden, das für den B2C-Mandanten *lokal* angeordnet ist. Die Syntax für den Kontonamen lautet: *admin\@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
 > Für das folgende PowerShell-Skript ist [Azure Active Directory PowerShell Version 2][AD-Powershell] erforderlich.
@@ -370,4 +370,4 @@ Nachdem Sie die exemplarische Vorgehensweise unter [Erste Schritte mit benutzerd
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration
+[UserMigrationSample]: https://github.com/yoelhor/Azure-AD-B2C-UserMigration

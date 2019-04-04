@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653661"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730101"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
 
@@ -95,6 +95,77 @@ Dieses Problem kann aus einem der folgenden Gründe auftreten:
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     2. Wechseln Sie zu **App Service-Zertifikate**, und wählen Sie das Zertifikat aus.
     3. Wählen Sie **Zertifikatkonfiguration** > **Schritt 2: Überprüfen** > **Domänenüberprüfung** aus. In diesem Schritt wird eine E-Mail-Nachricht an den Azure-Zertifikatanbieter gesendet mit der Bitte, das Problem zu beheben.
+
+## <a name="custom-domain-problems"></a>Probleme mit benutzerdefinierten Domänen
+
+### <a name="a-custom-domain-returns-a-404-error"></a>Eine benutzerdefinierte Domäne gibt einen 404-Fehler zurück. 
+
+#### <a name="symptom"></a>Symptom
+
+Wenn Sie mithilfe des benutzerdefinierten Domänennamens zur Website navigieren, erhalten Sie die folgende Fehlermeldung:
+
+„Fehler 404 – Web-App wurde nicht gefunden.“
+
+#### <a name="cause-and-solution"></a>Ursache und Lösung
+
+**Ursache 1** 
+
+Der benutzerdefinierten Domäne, die Sie konfiguriert haben, fehlt ein CNAME- oder ein A-Eintrag. 
+
+**Lösung für Ursache 1**
+
+- Wenn Sie einen A-Eintrag hinzugefügt haben, stellen Sie sicher, dass auch ein TXT-Eintrag hinzugefügt wird. Weitere Informationen finden Sie unter [Erstellen des A-Eintrags](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Wenn Sie die Stammdomäne für Ihre App nicht verwenden müssen, empfiehlt es sich, dass Sie anstelle eines A-Eintrags einen CNAME-Eintrag verwenden.
+- Verwenden Sie nicht gleichzeitig einen CNAME-Eintrag und einen A-Eintrag für dieselbe Domäne. Dieses Problem kann einen Konflikt verursachen und verhindern, dass die Domäne aufgelöst wird. 
+
+**Ursache 2** 
+
+Im Internet-Browser ist möglicherweise immer noch die alte IP-Adresse für Ihre Domäne im Cache gespeichert. 
+
+**Lösung für Ursache 2**
+
+Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt. 
+
+### <a name="you-cant-add-a-subdomain"></a>Sie können keine Unterdomäne hinzufügen. 
+
+#### <a name="symptom"></a>Symptom
+
+Sie können einer App keinen neuen Hostnamen hinzufügen, um eine Unterdomäne zuzuweisen.
+
+#### <a name="solution"></a>Lösung
+
+- Lassen Sie Ihren Abonnementadministrator überprüfen, ob Sie Berechtigungen zum Hinzufügen von Hostnamen zur App haben.
+- Wenn Sie weitere Unterdomänen benötigen, empfiehlt es sich, dass Sie für das Domänenhosting zu Azure Domain Name Service (DNS) wechseln. Wenn Sie Azure DNS verwenden, können Sie Ihrer App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+
+### <a name="dns-cant-be-resolved"></a>DNS kann nicht aufgelöst werden
+
+#### <a name="symptom"></a>Symptom
+
+Sie haben die folgende Fehlermeldung erhalten:
+
+„Der DNS-Eintrag konnte nicht gefunden werden.“
+
+#### <a name="cause"></a>Ursache
+Dieses Problem tritt aus einem der folgenden Gründe auf:
+
+- Die Gültigkeitsdauer (Time to Live, TTL) ist noch nicht abgelaufen. Überprüfen Sie die DNS-Konfiguration für Ihre Domäne, um den TTL-Wert zu bestimmen, und warten Sie dann bis zum Ablauf der Gültigkeitsdauer.
+- Die DNS-Konfiguration ist fehlerhaft.
+
+#### <a name="solution"></a>Lösung
+- Warten Sie 48 Stunden, bis sich dieses Problem von selbst löst.
+- Wenn Sie die Einstellung für die Gültigkeitsdauer (TTL) in Ihrer DNS-Konfiguration ändern können, ändern Sie den Wert auf 5 Minuten, um festzustellen, ob das Problem dadurch behoben wird.
+- Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt. Wenn dies nicht der Fall ist, konfigurieren Sie den A-Eintrag mit der richtigen IP-Adresse der App.
+
+### <a name="you-need-to-restore-a-deleted-domain"></a>Sie müssen eine gelöschte Domäne wiederherstellen 
+
+#### <a name="symptom"></a>Symptom
+Die Domäne wird nicht mehr im Azure-Portal angezeigt.
+
+#### <a name="cause"></a>Ursache 
+Die Besitzer des Abonnements hat die Domäne möglicherweise versehentlich gelöscht.
+
+#### <a name="solution"></a>Lösung
+Wurde Ihre Domäne vor weniger als sieben Tagen gelöscht, wurde der Löschvorgang für die Domäne noch nicht gestartet. In diesem Fall können Sie dieselbe Domäne erneut im Azure-Portal unter demselben Abonnement erwerben. (Achten Sie darauf, dass Sie den genauen Domänennamen in das Suchfeld eingeben.) Diese Domäne wird Ihnen nicht erneut in Rechnung gestellt. Wenn die Domäne vor mehr als sieben Tagen gelöscht wurde, wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Hilfe beim Wiederherstellen der Domäne zu erhalten.
 
 ## <a name="domain-problems"></a>Probleme mit Domänen
 
@@ -199,102 +270,59 @@ Dieses Problem tritt aus einem der folgenden Gründe auf:
     |TXT|@|<App-Name>.azurewebsites.net|
     |CNAME|www|<App-Name>.azurewebsites.net|
 
-### <a name="dns-cant-be-resolved"></a>DNS kann nicht aufgelöst werden
+## <a name="faq"></a>Häufig gestellte Fragen
 
-#### <a name="symptom"></a>Symptom
+**Muss ich meine benutzerdefinierte Domäne nach dem Kauf für meine Website konfigurieren?**
 
-Sie haben die folgende Fehlermeldung erhalten:
+Wenn Sie eine Domäne über das Azure-Portal erwerben, wird die App Service-Anwendung automatisch so konfiguriert, dass die benutzerdefinierte Domäne verwendet wird. Zusätzliche Schritte sind nicht erforderlich. Weitere Informationen finden Sie im Video [Azure App Service Self Help: Add a Custom Domain Name (Selbsthilfe für Azure App Service: Hinzufügen eines benutzerdefinierten Domänennamens)](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) auf Channel 9.
 
-„Der DNS-Eintrag konnte nicht gefunden werden.“
+**Kann ich eine Domäne, die ich über das Azure-Portal erworben habe, so nutzen, dass sie auf eine Azure-VM verweist?**
 
-#### <a name="cause"></a>Ursache
-Dieses Problem tritt aus einem der folgenden Gründe auf:
+Ja, Sie können die Domäne so einrichten, dass sie beispielsweise auf eine VM oder auf einen Speicher verweist. Weitere Informationen finden Sie unter [Create a custom FQDN in the Azure portal for a Windows VM (Erstellen eines benutzerdefinierten FQDN im Azure-Portal für eine Windows-VM)](../virtual-machines/windows/portal-create-fqdn.md).
 
-- Die Gültigkeitsdauer (Time to Live, TTL) ist noch nicht abgelaufen. Überprüfen Sie die DNS-Konfiguration für Ihre Domäne, um den TTL-Wert zu bestimmen, und warten Sie dann bis zum Ablauf der Gültigkeitsdauer.
-- Die DNS-Konfiguration ist fehlerhaft.
+**Wird meine Domäne von GoDaddy oder Azure DNS gehostet?**
 
-#### <a name="solution"></a>Lösung
-- Warten Sie 48 Stunden, bis sich dieses Problem von selbst löst.
-- Wenn Sie die Einstellung für die Gültigkeitsdauer (TTL) in Ihrer DNS-Konfiguration ändern können, ändern Sie den Wert auf 5 Minuten, um festzustellen, ob das Problem dadurch behoben wird.
-- Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt. Wenn dies nicht der Fall ist, konfigurieren Sie den A-Eintrag mit der richtigen IP-Adresse der App.
+App Service-Domänen verwenden GoDaddy zur Domänenregistrierung und Azure DNS zum Hosten der Domänen. 
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Sie müssen eine gelöschte Domäne wiederherstellen 
+**Die automatische Verlängerung ist aktiviert. Trotzdem habe ich per E-Mail eine Verlängerungsbenachrichtigung für meine Domäne erhalten. Wie soll ich vorgehen?**
 
-#### <a name="symptom"></a>Symptom
-Die Domäne wird nicht mehr im Azure-Portal angezeigt.
+Wenn die automatische Verlängerung aktiviert ist, müssen Sie keine Maßnahmen ergreifen. In der Benachrichtigungs-E-Mail werden Sie darüber informiert, dass die Domäne in Kürze abläuft und manuell verlängert werden muss, falls die automatische Verlängerung nicht aktiviert ist.
 
-#### <a name="cause"></a>Ursache 
-Die Besitzer des Abonnements hat die Domäne möglicherweise versehentlich gelöscht.
+**Fallen Gebühren dafür an, dass Azure DNS meine Domäne hostet?**
 
-#### <a name="solution"></a>Lösung
-Wurde Ihre Domäne vor weniger als sieben Tagen gelöscht, wurde der Löschvorgang für die Domäne noch nicht gestartet. In diesem Fall können Sie dieselbe Domäne erneut im Azure-Portal unter demselben Abonnement erwerben. (Achten Sie darauf, dass Sie den genauen Domänennamen in das Suchfeld eingeben.) Diese Domäne wird Ihnen nicht erneut in Rechnung gestellt. Wenn die Domäne vor mehr als sieben Tagen gelöscht wurde, wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Hilfe beim Wiederherstellen der Domäne zu erhalten.
+Beim Erwerb einer Domäne umfassen die Anschaffungskosten nur die Domänenregistrierung. Zusätzlich fallen für Azure DNS Gebühren an, deren Höhe von Ihrem Nutzungsverhalten abhängig ist. Weitere Informationen finden Sie unter [Azure DNS – Preise](https://azure.microsoft.com/pricing/details/dns/).
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Eine benutzerdefinierte Domäne gibt einen 404-Fehler zurück. 
+**Ich habe meine Domäne über das Azure-Portal erworben und möchte nun Azure DNS anstelle von GoDaddy für das Hosting verwenden. Wie gehe ich dazu vor?**
 
-#### <a name="symptom"></a>Symptom
+Eine Migration zu Azure DNS ist für das Hosting nicht zwingend erforderlich. Wenn Sie sich für diesen Schritt entscheiden, finden Sie im Bereich zur Domänenverwaltung im Azure-Portal Informationen zu den Schritten, die für einen Wechsel zu Azure DNS erforderlich sind. Wenn Sie die Domäne über App Service erworben haben, ist die Migration von GoDaddy zu Azure DNS insgesamt unkompliziert.
 
-Wenn Sie mithilfe des benutzerdefinierten Domänennamens zur Website navigieren, erhalten Sie die folgende Fehlermeldung:
+**Ich möchte eine Domäne über die App Service-Domäne erwerben. Kann ich diese auf GoDaddy und nicht auf Azure DNS hosten?**
 
-„Fehler 404 – Web-App wurde nicht gefunden.“
+Seit dem 24. Juli 2017 werden App Service-Domänen, die über das Azure-Portal erworben wurden, in Azure DNS gehostet. Wenn Sie einen anderen Hostinganbieter verwenden möchten, müssen Sie auf dessen Website nach einer Domänenhostinglösung suchen.
 
+**Fallen Kosten an, wenn ich für meine Domäne die Datenschutzfunktion verwende?**
 
-#### <a name="cause-and-solution"></a>Ursache und Lösung
+Wenn Sie eine Domäne über das Azure-Portal erwerben, können Sie die Datenschutzfunktion kostenlos hinzufügen. Dies ist einer der Vorteile, wenn Sie Ihre Domäne über Azure App Service erwerben.
 
-**Ursache 1** 
+**Gibt es eine Geld-zurück-Garantie für den Fall, dass ich meine Domäne nicht mehr verwenden möchte?**
 
-Der benutzerdefinierten Domäne, die Sie konfiguriert haben, fehlt ein CNAME- oder ein A-Eintrag. 
+Nach dem Erwerb einer Domäne fallen fünf Tage lang keine Gebühren an. In diesem Zeitraum können Sie sich gegen die Nutzung der Domäne entscheiden. Diese Regelung gilt jedoch nicht für .uk-Domänen. Nach dem Erwerb einer solchen Domäne fallen sofort Gebühren an, die nicht rückerstattet werden können.
 
-**Lösung für Ursache 1**
+**Kann ich die Domäne für eine andere Azure App Service-App in meinem Abonnement verwenden?**
 
-- Wenn Sie einen A-Eintrag hinzugefügt haben, stellen Sie sicher, dass auch ein TXT-Eintrag hinzugefügt wird. Weitere Informationen finden Sie unter [Erstellen des A-Eintrags](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- Wenn Sie die Stammdomäne für Ihre App nicht verwenden müssen, empfiehlt es sich, dass Sie anstelle eines A-Eintrags einen CNAME-Eintrag verwenden.
-- Verwenden Sie nicht gleichzeitig einen CNAME-Eintrag und einen A-Eintrag für dieselbe Domäne. Dies kann einen Konflikt verursachen und verhindern, dass die Domäne aufgelöst wird. 
+Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und SSL“ aufrufen, werden die von Ihnen erworbenen Domänen angezeigt. Sie können Ihre App so konfigurieren, dass eine dieser Domänen verwendet wird.
 
-**Ursache 2** 
+**Kann ich eine Domäne aus einem Abonnement in ein anderes übertragen?**
 
-Im Internet-Browser ist möglicherweise immer noch die alte IP-Adresse für Ihre Domäne im Cache gespeichert. 
+Sie können mit dem PowerShell-Cmdlet [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
 
-**Lösung für Ursache 2**
+**Wie kann ich meine benutzerdefinierte Domäne verwalten, falls ich aktuell nicht über eine Azure App Service-App verfüge?**
 
-Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der App zeigt. 
+Sie können Ihre Domäne auch ohne eine App Service-Web-App verwalten. Die Domäne kann für Azure-Dienste wie beispielsweise Virtual Machines oder Storage verwendet werden. Wenn Sie die Domäne für App Service-Web-Apps nutzen möchten, müssen Sie eine Web-App angeben, die nicht Teil des Free-App Service-Plans ist, um die Domäne an Ihre Web-App zu binden.
 
-### <a name="you-cant-add-a-subdomain"></a>Sie können keine Unterdomäne hinzufügen. 
+**Kann ich eine Web-App mit einer benutzerdefinierten Domäne in anderes Abonnement oder von einer App Service-Umgebung v1 in eine App Service-Umgebung v2 übertragen?**
 
-#### <a name="symptom"></a>Symptom
+Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/resource-group-move-resources.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+).
 
-Sie können einer App keinen neuen Hostnamen hinzufügen, um eine Unterdomäne zuzuweisen.
-
-#### <a name="solution"></a>Lösung
-
-- Lassen Sie Ihren Abonnementadministrator überprüfen, ob Sie Berechtigungen zum Hinzufügen von Hostnamen zur App haben.
-- Wenn Sie weitere Unterdomänen benötigen, empfiehlt es sich, dass Sie für das Domänenhosting zu Azure DNS wechseln. Wenn Sie Azure DNS verwenden, können Sie Ihrer App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Nach dem Übertragen der Web-App sollten die Hostnamensbindungen der Domänen innerhalb der Einstellung für die benutzerdefinierten Domänen beibehalten werden. Zum Konfigurieren der Hostnamensbindungen sind keine zusätzlichen Schritte erforderlich.

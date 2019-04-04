@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39ab31cd06707dbd488914da248941ab6d174c29
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 632fa14bd96eaee2ca58b59dd855584c1fd961e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010095"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service-Umgebung Management-Adressen
 

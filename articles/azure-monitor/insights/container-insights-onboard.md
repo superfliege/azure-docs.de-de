@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 13da9e0d731e87b6cdd5830c9295847511c301ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 591624e6bab07bfa06799d8e4817622e7a5c280a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567297"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107643"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Onboardingmethoden für Azure Monitor für Container  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichtet und verwendet wird, um die Leistung von Workloads zu überwachen, die in Kubernetes-Umgebungen bereitgestellt und von [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) gehostet werden.
 
 Azure Monitor für Container kann für neue oder mindestens eine vorhandene Bereitstellung von AKS mit den folgenden unterstützten Methoden aktiviert werden:
@@ -31,8 +34,8 @@ Azure Monitor für Container kann für neue oder mindestens eine vorhandene Bere
 ## <a name="prerequisites"></a>Voraussetzungen 
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
-- Einen Log Analytics-Arbeitsbereich Sie können ihn beim Aktivieren der Überwachung des neuen AKS-Clusters erstellen oder beim Onboarding einen Standardarbeitsbereich in der Standardressourcengruppe des AKS-Clusterabonnements erstellen lassen. Wenn Sie ihn selbst erstellen möchten, können Sie dies über den [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md) erledigen.
-- Sie müssen der Rolle „Log Analytics-Mitwirkender“ angehören, um die Containerüberwachung aktivieren zu können. Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../../azure-monitor/platform/manage-access.md).
+- **Einen Log Analytics-Arbeitsbereich.** Sie können ihn beim Aktivieren der Überwachung des neuen AKS-Clusters erstellen oder beim Onboarding einen Standardarbeitsbereich in der Standardressourcengruppe des AKS-Clusterabonnements erstellen lassen. Wenn Sie ihn selbst erstellen möchten, können Sie dies über den [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md) erledigen.
+- Sie müssen der **Rolle „Log Analytics-Mitwirkender“ angehören**, um die Containerüberwachung aktivieren zu können. Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../../azure-monitor/platform/manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -76,7 +79,7 @@ Nachdem Sie die Überwachung aktiviert haben, und alle Konfigurationsaufgaben er
 Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>Aktivieren der Überwachung für vorhandene verwaltete Cluster
-Sie können die Überwachung eines bereits bereitgestellten AKS-Clusters entweder über die Azure-Befehlszeilenschnittstelle, das Portal oder die bereitgestellte Azure Resource Manager-Vorlage mit dem PowerShell-Cmdlet `New-AzureRmResourceGroupDeployment` aktivieren. 
+Sie können die Überwachung eines bereits bereitgestellten AKS-Clusters entweder über die Azure-Befehlszeilenschnittstelle, das Portal oder die bereitgestellte Azure Resource Manager-Vorlage mit dem PowerShell-Cmdlet `New-AzResourceGroupDeployment` aktivieren. 
 
 ### <a name="enable-monitoring-using-azure-cli"></a>Aktivieren der Überwachung mithilfe der Azure-Befehlszeilenschnittstelle
 Der folgende Schritt aktiviert die Überwachung Ihres AKS-Clusters mithilfe der Azure-Befehlszeilenschnittstelle. In diesem Beispiel müssen Sie keinen Arbeitsbereich erstellen oder einen vorhandenen angeben. Dieser Befehl vereinfacht den Prozess durch Erstellen eines Standardarbeitsbereichs in der Standardressourcengruppe des AKS-Cluster-Abonnements, wenn noch keiner in der Region vorhanden ist.  Das Format des Standardarbeitsbereichs ähnelt *DefaultWorkspace-\<GUID>-\<Region>*.  
@@ -117,7 +120,7 @@ provisioningState       : Succeeded
 
 2. Fügen Sie die [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) hinzu, wie in der Terraform-Dokumentation beschrieben.
 
-### <a name="enable-monitoring-from-azure-monitor"></a>Aktivieren der Überwachung aus Azure Monitor
+### <a name="enable-monitoring-from-azure-monitor-in-the-portal"></a>Aktivieren der Überwachung aus Azure Monitor im Portal 
 Führen Sie die folgenden Schritte aus, um die Überwachung Ihres AKS-Clusters im Azure-Portal aus Azure Monitor zu aktivieren:
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
@@ -294,31 +297,31 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 5. Speichern Sie diese Datei unter den Namen **existingClusterParam.json** in einem lokalen Ordner.
 6. Nun können Sie die Vorlage bereitstellen. 
 
-    * Verwenden Sie die folgenden PowerShell-Befehle in dem Ordner mit der Vorlage:
+   * Verwenden Sie die folgenden PowerShell-Befehle in dem Ordner mit der Vorlage:
 
-        ```powershell
-        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ClusterResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
-        ```
-        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
+       ```powershell
+       New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
+       ```
+       Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-        ```powershell
-        provisioningState       : Succeeded
-        ```
+       ```powershell
+       provisioningState       : Succeeded
+       ```
 
-    * Führen Sie den folgenden Befehl mithilfe der Azure CLI aus:
+   * Führen Sie den folgenden Befehl mithilfe der Azure CLI aus:
     
-        ```azurecli
-        az login
-        az account set --subscription "Subscription Name"
-        az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
-        ```
+       ```azurecli
+       az login
+       az account set --subscription "Subscription Name"
+       az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
+       ```
 
-        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
+       Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-        ```azurecli
-        provisioningState       : Succeeded
-        ```
-Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
+       ```azurecli
+       provisioningState       : Succeeded
+       ```
+     Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
 
 ## <a name="verify-agent-and-solution-deployment"></a>Überprüfen der Agent- und Lösungsbereitstellung
 Ab Agent-Version *06072018* können Sie überprüfen, ob Agent und Lösung erfolgreich bereitgestellt wurden. In früheren Agent-Versionen können Sie nur die Agent-Bereitstellung überprüfen.

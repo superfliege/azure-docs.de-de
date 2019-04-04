@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 180cbb9c31d14c36679bb84f92b3c9892ee3602d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011156"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
 
-Eine Azure-Containerregistrierung speichert und verwaltet private [Docker](http://hub.docker.com)-Containerimages. Dies ähnelt der Art und Weise, wie [Docker Hub](https://hub.docker.com/) öffentliche Docker-Images speichert. Für Ihre Containerregistrierung können Sie die [Docker-Befehlszeilenschnittstelle](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) für die Vorgänge [Anmeldung](https://docs.docker.com/engine/reference/commandline/login/), [Push](https://docs.docker.com/engine/reference/commandline/push/), [Pull](https://docs.docker.com/engine/reference/commandline/pull/) und andere Vorgänge verwenden.
+Eine Azure-Containerregistrierung speichert und verwaltet private [Docker](https://hub.docker.com)-Containerimages. Dies ähnelt der Art und Weise, wie [Docker Hub](https://hub.docker.com/) öffentliche Docker-Images speichert. Für Ihre Containerregistrierung können Sie die [Docker-Befehlszeilenschnittstelle](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) für die Vorgänge [Anmeldung](https://docs.docker.com/engine/reference/commandline/login/), [Push](https://docs.docker.com/engine/reference/commandline/push/), [Pull](https://docs.docker.com/engine/reference/commandline/pull/) und andere Vorgänge verwenden.
 
 In den folgenden Schritten laden Sie ein offizielles [Nginx-Image](https://store.docker.com/images/nginx) aus der öffentlichen Docker Hub-Registrierung herunter, kennzeichnen es für Ihre private Azure-Containerregistrierung und übertragen es zuerst per Pushvorgang an Ihre Registrierung und dann per Pullvorgang aus der Registrierung.
 
@@ -62,7 +62,7 @@ Führen Sie den folgenden [docker run](https://docs.docker.com/engine/reference/
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Browsen Sie zu [http://localhost:8080](http://localhost:8080), um die von Nginx bereitgestellte Standardwebseite im ausgeführten Container anzuzeigen. Eine Seite ähnlich der folgenden wird angezeigt:
+Navigieren Sie zu `http://localhost:8080`, um die von NGINX bereitgestellte Standardwebseite im ausgeführten Container anzuzeigen. Eine Seite ähnlich der folgenden wird angezeigt:
 
 ![Nginx auf lokalem Computer](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -104,7 +104,7 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/r
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Navigieren Sie zu [http://localhost:8080](http://localhost:8080), um den ausgeführten Container anzuzeigen.
+Navigieren Sie zu `http://localhost:8080`, um den ausgeführten Container anzuzeigen.
 
 Drücken Sie zum Beenden und Entfernen des Containers die Tastenkombination `Control`+`C`.
 

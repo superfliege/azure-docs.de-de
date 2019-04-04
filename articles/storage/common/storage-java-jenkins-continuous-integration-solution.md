@@ -5,15 +5,16 @@ ms.topic: article
 ms.author: tarcher
 author: tarcher
 services: devops
+ms.service: storage
 custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
-ms.openlocfilehash: 22db4690ccbd05b25f907e2d2134fa7ce5233d60
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8ea80d557185f4489a96384b77ddd2519e7bd049
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992179"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Verwenden von Azure Storage mit einer Jenkins-Lösung für Continuous Integration
 
@@ -39,7 +40,7 @@ Die Verwendung des Blob-Dienstes zum Hosten Ihrer Buildartefakte aus der agilen 
   
     Wenn Sie noch keine Jenkins CI-Lösung im Einsatz haben, können Sie eine Jenkins CI-Lösung mithilfe folgender Methode ausführen:
   
-  1. Laden Sie für einen Java-fähigen Computer „jenkins.war“ von <http://jenkins-ci.org> herunter.
+  1. Laden Sie für einen Java-fähigen Computer „jenkins.war“ von <https://jenkins-ci.org> herunter.
   2. Führen Sie in einer Eingabeaufforderung, die für den Ordner, der "jenkins.war" enthält, geöffnet wird, folgenden Befehl aus:
      
       `java -jar jenkins.war`
@@ -47,7 +48,7 @@ Die Verwendung des Blob-Dienstes zum Hosten Ihrer Buildartefakte aus der agilen 
   3. Öffnen Sie in Ihrem Browser `http://localhost:8080/`, um das Jenkins-Dashboard zu öffnen, über das Sie das Azure Storage-Plug-In installieren und konfigurieren können.
      
       Eine typische Jenkins CI-Lösung würde zwar zur Ausführung als Service konfiguriert, die Ausführung von "jenkins.war" über die Befehlszeile reicht für dieses Lernprogramm jedoch aus.
-* Ein Azure-Konto. Unter <http://www.azure.com> können Sie sich für ein Azure-Konto registrieren.
+* Ein Azure-Konto. Unter <https://www.azure.com> können Sie sich für ein Azure-Konto registrieren.
 * Ein Azure-Speicherkonto. Wenn Sie noch kein Speicherkonto haben, können Sie eines erstellen, indem Sie die Schritte unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md)befolgen.
 * Vorkenntnisse der Jenkins CI-Lösung werden empfohlen, sind aber nicht zwingend erforderlich, da in den folgenden Abschnitten ein einfaches Beispiel verwendet wird, um zu zeigen, welche Schritte erforderlich sind, wenn Sie den Blob-Dienst als Repository für Jenking CI-Buildartefakte nutzen möchten.
 
@@ -117,7 +118,7 @@ Die folgenden Schritte veranschaulichen das Konfigurieren eines Buildschritts zu
 1. Wählen Sie in der Auftragskonfiguration im Abschnitt **Build** die Option **Add build step** (Buildschritt hinzufügen) aus, und wählen Sie dann **Download from Azure Blob storage** (Aus Azure-Blobspeicher herunterladen).
 2. Wählen Sie unter **Storage account name**das zu verwendende Speicherkonto aus.
 3. Geben Sie für **Container name**den Namen des Containers an, der die herunterzuladenden Blobs enthält. Sie können Umgebungsvariablen verwenden.
-4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise würde **project\*** alle Blobs angeben, deren Namen mit **project** beginnen.
+4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise gibt **project\\*** alle Blobs an, deren Namen mit **project** beginnen.
 5. [Optional] Geben Sie für **Downloadpfad** den Pfad auf dem Jenkins-Computer an, in den die Dateien aus Azure Blob Storage heruntergeladen werden sollen. Es können auch Umgebungsvariablen verwendet werden. (Wenn Sie keinen Wert für **Downloadpfad**angeben, werden die Dateien aus Azure Blob Storage in den Arbeitsbereich des Auftrags heruntergeladen.)
 
 Wenn Sie zusätzliche Elemente aus Azure Blob Storage herunterladen möchten, können Sie zusätzliche Buildschritte erstellen.

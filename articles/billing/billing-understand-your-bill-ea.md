@@ -1,6 +1,6 @@
 ---
 title: Informationen zu Ihrer Rechnung für Azure Enterprise | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre Nutzung und Abrechnung für Azure-Kunden mit einem Enterprise Agreement lesen und verstehen.
+description: Erfahren Sie, wie Sie Ihren Verbrauch und Ihre Abrechnung für Azure-Kunden mit einem Enterprise Agreement lesen und verstehen.
 services: ''
 documentationcenter: ''
 author: adpick
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
 ms.author: banders
-ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9786561192f1f9d52c2cfb3b2b7a5f45903e36b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902702"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858911"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Erläuterungen zur Rechnung für Azure-Kunden mit Enterprise Agreement
 
@@ -92,4 +92,4 @@ Vergleichen Sie Ihren Azure Marketplace-Gesamtbetrag unter **Berichte** > **Nutz
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

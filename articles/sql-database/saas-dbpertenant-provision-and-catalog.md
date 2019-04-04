@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096825"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 
@@ -26,7 +26,7 @@ In diesem Tutorial erfahren Sie, wie Sie SaaS-Muster bereitstellen und katalogis
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-
+> 
 > * Bereitstellen eines einzelnen neuen Mandanten
 > * Bereitstellen eines Batches von zusätzlichen Mandanten
 
@@ -167,7 +167,7 @@ Beim Muster der automatischen Bereitstellung sendet eine Clientanwendung oder ei
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-
+> 
 > * Bereitstellen eines einzelnen neuen Mandanten
 > * Bereitstellen eines Batches von zusätzlichen Mandanten
 > * Kennenlernen der Details zur Bereitstellung von Mandanten und zu deren Registrierung im Katalog

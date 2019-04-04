@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b503c7f0693a90d438fcec3ecae335fd349b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188000"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996341"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -75,7 +75,9 @@ Weitere Informationen finden Sie unter
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Verbund, der eine neue oder vorhandene Farm mit AD FS in Windows Server 2012 R2 verwendet
 Durch eine Verbundanmeldung können sich Ihre Benutzer bei Azure AD-basierten Diensten mit ihren lokalen Kennwörtern anmelden. Während sie sich auf dem internen Netzwerk befinden, müssen sie nicht einmal ihre Kennwörter eingegeben. Mit der Verbundoption für AD FS können Sie eine neue oder vorhandene Windows Server 2012 R2-Farm mit AD FS bereitstellen. Wenn Sie eine vorhandene Farm angeben, konfiguriert Azure AD Connect die Vertrauensstellung zwischen der Farm und Azure AD, sodass sich Ihre Benutzer anmelden können.
 
-<center>![Verbund mit AD FS unter Windows Server 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
+<center>
+
+![Verbund mit AD FS unter Windows Server 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Bereitstellen des Verbunds mit AD FS unter Windows Server 2012 R2
 
@@ -152,6 +154,7 @@ Es ist wichtig, die Beziehung zwischen den benutzerdefinierten Zustandswerten f�
 Nehmen wir für die folgenden Informationen einmal an, dass wir mit dem UPN-Suffix „contoso.com“ arbeiten, das zum Beispiel im lokalen Verzeichnis als Teil des UPN verwendet wird. Beispiel: user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Express-Einstellungen/Kennworthashsynchronisierung
+
 | Zustand | Auswirkung auf die Azure-Benutzeranmeldung |
 |:---:|:--- |
 | Nicht hinzugefügt |In diesem Fall wurde keine benutzerdefinierte Domäne für „contoso.com“ im Azure AD-Verzeichnis hinzugefügt. Benutzer mit lokalem UPN und dem Suffix „@contoso.com“ können nicht ihren lokalen UPN zur Azure-Anmeldung verwenden. Sie müssen stattdessen einen neuen, von Azure AD bereitgestellten UPN verwenden, indem Sie das Suffix für das Azure AD-Standardverzeichnis hinzufügen. Wenn Sie beispielsweise Benutzer mit dem Azure AD-Verzeichnis „azurecontoso.onmicrosoft.com“ synchronisieren, erhält der lokale Benutzer user@contoso.com den UPN user@azurecontoso.onmicrosoft.com. |

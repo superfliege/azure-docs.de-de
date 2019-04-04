@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: bdb9b48549d24565fdafb9ac1c3215029445793c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58172834"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Übersicht über den Solution Accelerator für Predictive Maintenance
 
@@ -27,7 +27,7 @@ Im folgenden Diagramm werden die logischen Komponenten des Solution Accelerators
 
 ![Logische Architektur][img-architecture]
 
-Die blauen Elemente sind Azure-Dienste, die in der Region bereitgestellt werden, in der Sie den Solution Accelerator bereitgestellt haben. Die Liste mit den Regionen, in denen Sie den Solution Accelerator bereitstellen können, wird auf der [Bereitstellungsseite][lnk-azureiotsuite] angezeigt.
+Die blauen Elemente sind Azure-Dienste, die in der Region bereitgestellt werden, in der Sie den Solution Accelerator bereitgestellt haben. Die Liste mit den Regionen, in denen Sie den Solution Accelerator bereitstellen können, wird auf der [Bereitstellungsseite][lnk-azureiotsolutions] angezeigt.
 
 Das grüne Element ist ein simuliertes Flugzeugtriebwerk. Der Abschnitt [Simulierte Geräte](#simulated-devices) enthält weitere Informationen zu diesen simulierten Geräten.
 
@@ -39,7 +39,7 @@ Navigieren Sie im Azure-Portal zur Ressourcengruppe mit dem von Ihnen gewählten
 
 ![Accelerator-Ressourcen][img-resource-group]
 
-Beim Bereitstellen des Solution Accelerators erhalten Sie eine E-Mail mit einem Link zum Machine Learning-Arbeitsbereich. Sie können auch über die Seite [Microsoft Azure IoT Solution Accelerators][lnk-azureiotsuite] zum Machine Learning-Arbeitsbereich navigieren. Wenn sich die Lösung im Zustand **Bereit** befindet, steht auf der Seite eine Kachel zur Verfügung.
+Beim Bereitstellen des Solution Accelerators erhalten Sie eine E-Mail mit einem Link zum Machine Learning-Arbeitsbereich. Sie können auch über die Seite [Microsoft Azure IoT Solution Accelerators][lnk-azureiotsolutions] zum Machine Learning-Arbeitsbereich navigieren. Wenn sich die Lösung im Zustand **Bereit** befindet, steht auf der Seite eine Kachel zur Verfügung.
 
 ![Machine Learning-Modell][img-machine-learning]
 
@@ -71,7 +71,7 @@ IoT Hub führt die Bestätigung der Gerätebefehle durch.
 Der **Ereignisprozessorhost** wird im Rahmen eines Azure-Webauftrags ausgeführt. Der **Ereignisprozessor** verwendet die durchschnittlichen Sensorwerte eines abgeschlossenen Zyklus. Diese Werte übergibt er dann an ein trainiertes Modell, das die Restlebensdauer eines Triebwerks berechnet. Eine API bietet Zugriff auf das Modell in einem Machine Learning-Arbeitsbereich, der Teil der Lösung ist.
 
 ## <a name="machine-learning"></a>Machine Learning
-Die Machine Learning-Komponente verwendet ein Modell, das sich von Daten ableitet, die von echten Flugzeugtriebwerken gesammelt wurden. Über die Kachel auf der Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer Lösung können Sie zum Machine Learning-Arbeitsbereich navigieren. Die Kachel ist verfügbar, wenn sich die Lösung im Zustand **Bereit** befindet.
+Die Machine Learning-Komponente verwendet ein Modell, das sich von Daten ableitet, die von echten Flugzeugtriebwerken gesammelt wurden. Über die Kachel auf der Seite [azureiotsolutions.com][lnk-azureiotsolutions] Ihrer Lösung können Sie zum Machine Learning-Arbeitsbereich navigieren. Die Kachel ist verfügbar, wenn sich die Lösung im Zustand **Bereit** befindet.
 
 Das Machine Learning-Modell steht als Vorlage zur Verfügung, die das Arbeiten mit Telemetriedaten veranschaulicht, die über IoT-Solution Accelerator-Dienste erfasst wurden. Microsoft hat anhand öffentlich zugänglicher Daten <sup>\[1\]</sup> ein [Regressionsmodell][lnk_regression_model] eines Flugzeugtriebwerks erstellt und eine schrittweise Anleitung zur Verwendung des Modells veröffentlicht.
 
@@ -93,7 +93,7 @@ Sie können auch einige der anderen Features der IoT-Solution Accelerators auspr
 
 [lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsolutions.com/
+[lnk-azureiotsolutions]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

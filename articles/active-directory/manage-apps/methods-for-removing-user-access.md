@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7f3619e345666256a63181eb978506914d55d1e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: db9ac671b616e2b5af59c033d08768c9e572876f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105368"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Aufheben des Zugriffs eines Benutzers auf eine Anwendung
 
@@ -38,21 +38,21 @@ Um alle Benutzeranmeldungen bei einer Anwendung zu deaktivieren, führen Sie die
 
 Befolgen Sie die nachstehenden Anweisungen, um **eine Anwendung zu löschen**:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
    * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, die Sie löschen möchten.
+6. Wählen Sie die Anwendung aus, die Sie löschen möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im Bereich **Übersicht** der Anwendung auf das Symbol **Löschen**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im Bereich **Übersicht** der Anwendung auf das Symbol **Löschen**.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ich möchte alle zukünftigen Vorgänge für die Benutzerzustimmung für jede Anwendung deaktivieren.
 

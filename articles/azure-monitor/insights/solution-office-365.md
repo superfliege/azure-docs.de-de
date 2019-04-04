@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996717"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -30,6 +30,8 @@ Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Az
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
 - Führen Sie eine operative Problembehandlung mithilfe der [Protokollabfragen](../log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wird.
@@ -69,7 +71,7 @@ Im ersten Schritt muss in Azure Active Directory eine Anwendung erstellt werden,
 1. Klicken Sie auf **Registrierung einer neuen Anwendung**.
 
     ![Hinzufügen einer App-Registrierung](media/solution-office-365/add-app-registration.png)
-1. Geben Sie einen **Anwendungsnamen** und Ihre **Anmelde-URL** ein.  Der Name sollte aussagekräftig sein.  Verwenden Sie für die URL _http://localhost_ und behalten Sie _Web-App/API_ als **Anwendungstyp** bei.
+1. Geben Sie einen **Anwendungsnamen** und Ihre **Anmelde-URL** ein.  Der Name sollte aussagekräftig sein.  Verwenden Sie für die URL `http://localhost`, und behalten Sie _Web-App/API_ als **Anwendungstyp** bei.
     
     ![Erstellen einer Anwendung](media/solution-office-365/create-application.png)
 1. Klicken Sie auf **Erstellen** und überprüfen Sie die Anwendungsinformationen.
@@ -89,11 +91,11 @@ Im ersten Schritt muss in Azure Active Directory eine Anwendung erstellt werden,
     ![Auswählen der API](media/solution-office-365/select-api.png)
 
 1. Wählen Sie unter **Berechtigungen auswählen** die folgenden Optionen für sowohl **Anwendungsberechtigungen** als auch **Delegierte Berechtigungen**:
-    - Dienstintegritätsinformationen für Ihre Organisation lesen
-    - Aktivitätsdaten für Ihre Organisation lesen
-    - Aktivitätsberichte für Ihre Organisation lesen
+   - Dienstintegritätsinformationen für Ihre Organisation lesen
+   - Aktivitätsdaten für Ihre Organisation lesen
+   - Aktivitätsberichte für Ihre Organisation lesen
 
-    ![Auswählen der API](media/solution-office-365/select-permissions.png)
+     ![Auswählen der API](media/solution-office-365/select-permissions.png)
 
 1. Klicken Sie auf **Auswählen** und dann auf **Fertig**.
 1. Klicken Sie auf **Berechtigungen erteilen** und dann auf **Ja**, wenn Sie um Überprüfung gebeten werden.
@@ -123,10 +125,10 @@ Um das Administratorkonto zum ersten Mal zu aktivieren, müssen Sie die Administ
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
     
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
     $WorkspaceLocation
     
@@ -190,11 +192,11 @@ Als letzten Schritt müssen Sie die Anwendung für Ihren Log Analytics-Arbeitsbe
     $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
@@ -365,12 +367,12 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 Wenn ungültige Parameterwerte angegeben werden, wird möglicherweise der folgende Fehler angezeigt.
 
 ```
-Select-AzureRmSubscription : Please provide a valid tenant or a valid subscription.
+Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
-+ ... cription = (Select-AzureRmSubscription -SubscriptionId $($Subscriptio ...
++ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureRmContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzureRMContextCommand
+    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
 
 ```
 
@@ -390,11 +392,11 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
     
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -703,7 +705,7 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 | Abfragen | BESCHREIBUNG |
 | --- | --- |
 |Anzahl aller Vorgänge in Ihrem Office 365-Abonnement |OfficeActivity &#124; summarize count() by Operation |
-|Verwendung von SharePoint-Websites|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|
+|Verwendung von SharePoint-Websites|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
 |Dateizugriffsvorgänge nach Benutzertyp|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |Suche mit einem bestimmten Schlüsselwort|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |Überwachung externer Aktionen für Exchange|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

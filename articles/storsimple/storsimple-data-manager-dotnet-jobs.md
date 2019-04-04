@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d15a5cbda2f0c2a363b40e94c38fed6631aa81b5
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27928235"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885049"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Verwenden des .NET SDK zum Initiieren einer Datentransformation
 
@@ -29,10 +29,10 @@ In diesem Artikel wird erläutert, wie Sie die Datentransformationsfunktion inne
 
 Sie können einen Datentransformationsauftrag auf zwei Arten starten:
 
- - Verwenden des .NET SDK
- - Verwenden des Azure Automation-Runbooks
+- Verwenden des .NET SDK
+- Verwenden des Azure Automation-Runbooks
  
- In diesem Artikel finden Sie Hinweise zum Erstellen einer .NET-Beispielskonsolenanwendung zum Initiieren eines Datentransformationsauftrags und zum Nachverfolgen der Fertigstellung. Weitere Informationen zum Initiieren der Datentransformation über Automation finden Sie unter [Verwenden des Azure Automation-Runbooks zum Initiieren von Datentransformationsaufträgen](storsimple-data-manager-job-using-automation.md).
+  In diesem Artikel finden Sie Hinweise zum Erstellen einer .NET-Beispielskonsolenanwendung zum Initiieren eines Datentransformationsauftrags und zum Nachverfolgen der Fertigstellung. Weitere Informationen zum Initiieren der Datentransformation über Automation finden Sie unter [Verwenden des Azure Automation-Runbooks zum Initiieren von Datentransformationsaufträgen](storsimple-data-manager-job-using-automation.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -80,16 +80,16 @@ Führen Sie die folgenden Schritte aus, um .NET für das Starten eines Datentran
 
         ![Erstellen eines Projekts 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4.  Fügen Sie nun alle DLLs, die sich im Ordner [dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) befinden, dem erstellten Projekt als **Verweise** hinzu. Um die DLL-Dateien hinzuzufügen, führen Sie folgende Schritte aus:
+4. Fügen Sie nun alle DLLs, die sich im Ordner [dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) befinden, dem erstellten Projekt als **Verweise** hinzu. Um die DLL-Dateien hinzuzufügen, führen Sie folgende Schritte aus:
 
-    1. Wechseln Sie in Visual Studio zu **Ansicht > Projektmappen-Explorer**.
-    2. Klicken Sie auf den Pfeil auf der linken Seite des Data Transformation-App-Projekts. Klicken Sie auf **Verweise**, und klicken Sie dann mit der rechten Maustaste auf **Verweis hinzufügen**.
+   1. Wechseln Sie in Visual Studio zu **Ansicht > Projektmappen-Explorer**.
+   2. Klicken Sie auf den Pfeil auf der linken Seite des Data Transformation-App-Projekts. Klicken Sie auf **Verweise**, und klicken Sie dann mit der rechten Maustaste auf **Verweis hinzufügen**.
     
-        ![Hinzufügen von DLLs 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
+       ![Hinzufügen von DLLs 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-    3. Suchen Sie den Speicherort des Paketordners, wählen Sie alle DLLs aus, und klicken Sie auf **Hinzufügen**. Klicken Sie anschließend auf **OK**.
+   3. Suchen Sie den Speicherort des Paketordners, wählen Sie alle DLLs aus, und klicken Sie auf **Hinzufügen**. Klicken Sie anschließend auf **OK**.
 
-        ![Hinzufügen von DLLs 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
+       ![Hinzufügen von DLLs 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
 5. Fügen Sie die folgenden **using** -Anweisungen zur Quelldatei (Program.cs) im Projekt hinzu.
 
@@ -196,9 +196,9 @@ Führen Sie die folgenden Schritte aus, um .NET für das Starten eines Datentran
     Console.Read();
 
     ```
- Hier ist ein Screenshot des gesamten Codebeispiels zum Auslösen des Auftrags mithilfe von .NET.
+    Hier ist ein Screenshot des gesamten Codebeispiels zum Auslösen des Auftrags mithilfe von .NET.
 
- ![Vollständiger Codeausschnitt zum Auslösen eines .NET-Auftrags](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
+    ![Vollständiger Codeausschnitt zum Auslösen eines .NET-Auftrags](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: a9b90fe119bc56620a7bd3087d4842f604fc18f0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4cb73ea08060336710207e026bb5bcc5a251efc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877920"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Z
 ## <a name="prerequisites"></a>Voraussetzungen
 * Service Fabric-Cluster mit Fabric-Version 6.2 und höher. Der Cluster muss unter Windows Server eingerichtet werden. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * X.509-Zertifikat für die Verschlüsselung der Geheimnisse, die für die Verbindung mit dem Speicher zum Speichern von Sicherungen benötigt werden. Informationen zum Abrufen oder Erstellen eines X.509-Zertifikats finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
-* Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Für Anwendungen für .NET Core 2.0 muss die Anwendung mit dem Service Fabric SDK, Version 3.1 oder höher, erstellt werden.
+* Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Für Anwendungen für .NET Core 2.0 muss die Anwendung mit dem Service Fabric SDK, Version 3.1 oder höher, erstellt werden.
 * Erstellen Sie ein Azure Storage-Konto zum Speichern von Anwendungssicherungen.
 
 ## <a name="enabling-backup-and-restore-service"></a>Aktivieren des Diensts für Sicherungen und Wiederherstellungen

@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: c6d0d2eec61375760ee3dc4e4b100b24cef2b405
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 03/12/2019
+ms.openlocfilehash: 43793380fab2bcece215c53b82e09a3c3a849af3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388776"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833912"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Instanz
 
@@ -35,17 +35,21 @@ Eine alternative Option, einen vollständig verwalteten Dienst für die nahtlose
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 - Das [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx)-Befehlszeilentool, das auf dem lokalen Server oder einem anderen Computer mit Zugriff auf das Zertifikat installiert ist, das als Datei exportiert wurde. Das Pvk2pfx-Tool ist Bestandteil des [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), einer eigenständigen Befehlszeilenumgebung.
 - [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell), Version 5.0 oder höher.
-- AzureRM PowerShell-Modul ist [installiert und aktualisiert](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- [AzureRM.Sql-Modul](https://www.powershellgallery.com/packages/AzureRM.Sql) Version 4.10.0 oder höher.
+- Das Azure PowerShell-Modul ist [installiert und aktualisiert](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [Az.Sql-Modul](https://www.powershellgallery.com/packages/Az.Sql).
   Führen Sie die folgenden Befehle in PowerShell zum Installieren/Aktualisieren des PowerShell-Moduls aus:
 
    ```powershell
-   Install-Module -Name AzureRM.Sql
-   Update-Module -Name AzureRM.Sql
+   Install-Module -Name Az.Sql
+   Update-Module -Name Az.Sql
    ```
 
 ## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>Exportieren des TDE-Zertifikats in eine PFX-Datei (Personal Information Exchange)
@@ -116,13 +120,13 @@ Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server g
 
    ```powershell
    # Import the module into the PowerShell session
-   Import-Module AzureRM
+   Import-Module Az
    # Connect to Azure with an interactive dialog for sign-in
-   Connect-AzureRmAccount
+   Connect-AzAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
-   Get-AzureRmSubscription
+   Get-AzSubscription
    # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
-   Select-AzureRmSubscription Guid_Subscription_Id
+   Select-AzSubscription Guid_Subscription_Id
    ```
 
 2. Nachdem alle Vorbereitungsschritte abgeschlossen wurden, führen Sie die folgenden Befehle zum Hochladen des Base64-codierten Zertifikats in die verwaltete Zielinstanz aus:
@@ -133,7 +137,7 @@ Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server g
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-   Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
+   Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
 Das Zertifikat ist nun für die angegebene verwaltete Instanz verfügbar, und die Sicherung der entsprechenden durch TDE geschützten Datenbank kann erfolgreich wiederhergestellt werden.

@@ -4,49 +4,41 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0e55c372c6f5dc3484bd64cf4f328479d2d0b245
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084003"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553581"
 ---
-Schlüsseltransaktionen (Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
+## <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Schlüsseltransaktionen (maximale Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
 
-|Schlüsseltyp|HSM-Schlüssel<br>Schlüssel erstellen|HSM-Schlüssel<br>Alle anderen Transaktionen|Softwareschlüssel<br>Schlüssel erstellen|Softwareschlüssel<br>Alle anderen Transaktionen|
+|Schlüsseltyp|HSM-Schlüssel<br>Erstellungsschlüssel|HSM-Schlüssel<br>Alle anderen Transaktionen|Softwareschlüssel<br>Erstellungsschlüssel|Softwareschlüssel<br>Alle anderen Transaktionen|
 |:---|---:|---:|---:|---:|
-|RSA 2048 Bit|5|1000|10|2000|
-|RSA 3072 Bit|5|250|10|500|
-|RSA 4096 Bit|5|125|10|250|
-|ECC P-256|5|1000|10|2000|
-|ECC P-384|5|1000|10|2000|
-|ECC P-521|5|1000|10|2000|
-|ECC SECP256K1|5|1000|10|2000|
-|
+|RSA 2.048 Bit|5|1.000|10|2.000|
+|RSA 3.072 Bit|5|250|10|500|
+|RSA 4.096 Bit|5|125|10|250|
+|ECC P-256|5|1.000|10|2.000|
+|ECC P-384|5|1.000|10|2.000|
+|ECC P-521|5|1.000|10|2.000|
+|ECC SECP256K1|5|1.000|10|2.000|
 
 > [!NOTE]
-> Die oben genannten Schwellenwerte sind gewichtet und ihre Summe wird erzwungen. Sie können 125 RSA-HSM-4k- und 0 RSA-HSM-2k- oder 124 RSA-HSM-4-k- und 16 RSA-HSM-2k-Vorgänge durchführen. Anschließend verursacht im gleichen 10-Sekunden-Intervall jeder andere Vorgang eine AKV-Clientausnahme.
+> In der vorstehenden Tabelle ist zu erkennen, dass für RSA-Softwareschlüssel mit 2.048 Bit 2.000 GET-Transaktionen pro 10 Sekunden zulässig sind. Für RSA-HSM-Schlüssel mit 2.048 Bit sind 1.000 GET-Transaktionen pro 10 Sekunden zulässig.
+>
+> Die genannten Schwellenwerte für die Drosselung sind gewichtet, und ihre Summe wird erzwungen. Wie in der vorherigen Tabelle gezeigt fällt für das Ausführen von GET-Vorgängen mit RSA-HSM-Schlüsseln bei Verwendung eines 4.096-Bit-Schlüssels ein achtmal größerer Aufwand als mit einem 2.048-Bit-Schlüssel an. Der Grund dafür ist: 1.000/125 = 8.
+>
+> Innerhalb eines 10-Sekunden-Intervalls kann ein Azure Key Vault-Client *nur einen* der folgenden Vorgänge ausführen, bevor der HTTP-Statuscode `429` zur Drosselung auftritt:
+> - 2.000 GET-Transaktionen für RSA 2.048-Bit-Softwareschlüssel
+> - 1.000 GET-Transaktionen für RSA 2.048-Bit-HSM-Schlüssel
+> - 125 GET-Transaktionen für RSA 4.096-Bit-HSM-Schlüssel
+> - 124 GET-Transaktionen für RSA 4.096-Bit-HSM-Schlüssel und 8 GET-Transaktionen für RSA 2.048-Bit-HSM-Schlüssel
 
-> [!NOTE]
-> In der folgenden Tabelle sehen Sie, dass wir für softwaregestützte Schlüssel 2.000 Transaktionen pro 10 Sekunden und für HSM-gestützte Schlüssel 1.000 Transaktionen pro 10 Sekunden zulassen. Das Verhältnis von softwaregestützten Transaktionen für 3.072 Schlüssel zu 2.048 Schlüssel ist 500/2000 oder 0,4. Das bedeutet, dass ein Kunde sein maximales Limit erreicht, wenn er 500 3.072 Schlüsseltransaktionen in 10 Sekunden durchführt und keine anderen Schlüsseloperationen durchführen kann. 
-   
-|Schlüsseltyp  | Softwareschlüssel |HSM-Schlüssel  |
-|---------|---------|---------|
-|RSA 2048 Bit     |    2000     |   1000    |
-|RSA 3072 Bit     |     500    |    250     |
-|RSA 4096 Bit     |    125     |    250     |
-|ECC P-256     |    2000     |  1000     |
-|ECC P-384     |    2000     |  1000     |
-|ECC P-521     |    2000     |  1000     |
-|ECC SECP256K1     |    2000     |  1000     |
-
-
-Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
-| Transaktionstyp | Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup> |
+## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
+| Transaktionstyp | Maximal zulässige Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup> |
 | --- | --- |
-| Alle Transaktionen |2000 |
-|
+| Alle Transaktionen |2.000 |
 
 Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte finden Sie unter [Anleitung zur Drosselung von Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md).
 
-<sup>1</sup> Für alle Transaktionsarten gilt ein abonnementweites Limit (das Fünffache des Schlüsseltresorlimits.) „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.
+<sup>1</sup> Für alle Transaktionsarten gilt als abonnementweiter Grenzwert das Fünffache des Schlüsseltresorlimits. „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.

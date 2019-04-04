@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f9e0582a1338bcae7b330c7ece7c3d8cc8593cfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004497"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Installieren von MySQL in Azure
 In diesem Artikel erfahren Sie, wie Sie MySQL auf einem virtuellen Azure-Computer, auf dem Linux ausgeführt wird, installieren und konfigurieren.
@@ -51,7 +51,7 @@ Wir verwenden in diesem Artikel eine Linux-VM mit Ubuntu von Azure.
             #[root@mysqlnode ~]# apt-get update
             #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
   
-    Während der Installation werden Sie in einem Dialogfenster aufgefordert, das MySQL-Kennwort für "root" festzulegen, was Sie hier tun müssen.
+    Während der Installation werden Sie in einem Dialogfeld aufgefordert, das MySQL-Kennwort für „root“ festzulegen. Dies muss hier geschehen.
   
     ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 
@@ -92,7 +92,7 @@ Wir verwenden hier eine Linux-VM mit CentOS oder Oracle Linux.
   
     Laden Sie das Paket der gewünschten MySQL-Version herunter, und installieren Sie es:
   
-            #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+            #[root@mysqlnode ~]# wget https://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
 * Schritt 2: Bearbeiten Sie die nachstehende Datei, um das MySQL-Repository für das Herunterladen des MySQL 5.6.-Pakets vorzubereiten.
   

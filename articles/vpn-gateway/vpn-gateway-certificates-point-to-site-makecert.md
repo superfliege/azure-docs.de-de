@@ -1,5 +1,5 @@
 ---
-title: 'Generieren und Exportieren von Zertifikaten für Point-to-Site: MakeCert: Azure | Microsoft-Dokumentation'
+title: 'Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen: MakeCert: Azure | Microsoft-Dokumentation'
 description: Erstellen eines selbstsignierten Stammzertifikats, Exportieren des öffentlichen Schlüssels und Generieren von Clientzertifikaten mit MakeCert
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102076"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen mithilfe von MakeCert
 
@@ -28,16 +28,16 @@ Wir empfehlen, Zertifikate unter Verwendung der [Windows 10-PowerShell-Schritte]
 In den folgenden Schritten wird das Erstellen eines selbstsignierten Zertifikats mit MakeCert beschrieben. Diese Schritte gelten nicht spezifisch für ein Bereitstellungsmodell. Sie sind für das Ressourcen-Manager-Modell und das klassische Modell gültig.
 
 1. Laden Sie [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx) herunter, und installieren Sie es.
-2. Nach der Installation befindet sich das Hilfsprogramm „makecert.exe“ üblicherweise im Verzeichnis „C:\Programme (x86)\Windows Kits\10\bin\<arch>“. Es kann jedoch auch an einem anderen Speicherort installiert worden sein. Öffnen Sie eine Eingabeaufforderung als Administrator, und navigieren Sie zum Speicherort des Hilfsprogramms MakeCert. Sie können das folgende Beispiel verwenden (muss an den korrekten Speicherort angepasst werden):
+2. Nach der Installation befindet sich das Hilfsprogramm „makecert.exe“ üblicherweise im Verzeichnis „C:\Program Files (x86)\Windows Kits\10\bin\<Architektur>“. Es kann jedoch auch an einem anderen Speicherort installiert worden sein. Öffnen Sie eine Eingabeaufforderung als Administrator, und navigieren Sie zum Speicherort des Hilfsprogramms MakeCert. Sie können das folgende Beispiel verwenden (muss an den korrekten Speicherort angepasst werden):
 
-  ```cmd
-  cd C:\Program Files (x86)\Windows Kits\10\bin\x64
-  ```
+   ```cmd
+   cd C:\Program Files (x86)\Windows Kits\10\bin\x64
+   ```
 3. Erstellen und installieren Sie ein Zertifikat im Speicher für persönliche Zertifikate auf dem Computer. Das folgende Beispiel erstellt eine entsprechende *CER* -Datei, die Sie beim Konfigurieren der Punkt-zu-Standort-Verbindung in Azure hochladen. Ersetzen Sie „P2SRootCert“ und „P2SRootCert.cer“ durch den Namen, den Sie für das Zertifikat verwenden möchten. Das Zertifikat befindet sich unter „Zertifikate - Aktueller Benutzer\Eigene Zertifikate\Zertifikate“.
 
-  ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
-  ```
+   ```cmd
+   makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
+   ```
 
 ## <a name="cer"></a>Exportieren des öffentlichen Schlüssels (CER-Datei)
 
@@ -61,14 +61,14 @@ Die folgenden Schritte führen Sie durch das Generieren eines Clientzertifikats 
  
 1. Öffnen Sie auf dem Computer, den Sie zum Erstellen des selbstsignierten Zertifikats verwendet haben, eine Eingabeaufforderung als Administrator.
 2. Ändern Sie das Beispiel, und führen Sie es aus, um ein Clientzertifikat zu generieren.
-  * Ändern Sie *P2SRootCert* in den Namen des selbstsignierten Stammzertifikats, anhand dessen Sie das Clientzertifikat generieren. Stellen Sie sicher, dass Sie den Namen des Stammzertifikats verwenden. Dieses entspricht Ihrer Angabe für den Wert „CN=“ beim Erstellen des selbstsignierten Stammzertifikats.
-  * Ändern Sie *P2SChildCert* in den Namen, den das Clientzertifikat bekommen soll, das Sie generieren möchten.
+   * Ändern Sie *P2SRootCert* in den Namen des selbstsignierten Stammzertifikats, anhand dessen Sie das Clientzertifikat generieren. Stellen Sie sicher, dass Sie den Namen des Stammzertifikats verwenden. Dieses entspricht Ihrer Angabe für den Wert „CN=“ beim Erstellen des selbstsignierten Stammzertifikats.
+   * Ändern Sie *P2SChildCert* in den Namen, den das Clientzertifikat bekommen soll, das Sie generieren möchten.
 
-  Wenn Sie das folgende Beispiel ausführen, ohne es zu ändern, wird in Ihrem persönlichen Zertifikatspeicher ein Clientzertifikat mit dem Namen „P2SChildcert“ anhand des Stammzertifikats „P2SRootCert“ generiert.
+   Wenn Sie das folgende Beispiel ausführen, ohne es zu ändern, wird in Ihrem persönlichen Zertifikatspeicher ein Clientzertifikat mit dem Namen „P2SChildcert“ anhand des Stammzertifikats „P2SRootCert“ generiert.
 
-  ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
-  ```
+   ```cmd
+   makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
+   ```
 
 ### <a name="clientexport"></a>Exportieren eines Clientzertifikats
 

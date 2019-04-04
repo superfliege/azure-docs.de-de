@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3f72480aaa05c0f50179d4d330525b12525282bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5f937a86e4e063ad1e8346dc629a917ae7ce8b65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077206"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -33,7 +33,7 @@ Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.signuporsig
 | **logonIdentifier_email** | E-Mail-Adresse |
 | **requiredField_email** | Geben Sie Ihre E-Mail-Adresse ein. |
 | **invalid_email** | Geben Sie eine gültige E-Mail-Adresse ein. |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
 | **local_intro_username** | Melden Sie sich mit Ihrem Benutzernamen an. |
 | **logonIdentifier_username** | Username |
 | **requiredField_username** | Geben Sie Ihren Benutzernamen ein. |
@@ -102,7 +102,7 @@ Folgende IDs dienen der Inhaltsdefinition mit der ID `api.localaccountsignup` od
 | **cancel_message** | Der Benutzer hat die Eingabe von Informationen zur Identitätsüberprüfung abgebrochen. |
 | **preloader_alt** | Bitte warten |
 | **ver_but_send** | Überprüfungscode senden |
-| **alert_yes** | JA |
+| **alert_yes** | Ja |
 | **error_fieldIncorrect** | Mindestens ein Feld wurde falsch ausgefüllt. Überprüfen Sie Ihre Eingaben, und versuchen Sie es erneut. |
 | **year** | Jahr |
 | **verifying_blurb** | Warten Sie, während wir Ihre Informationen verarbeiten. |

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4d7f3c8d8efbdc658e4f7621a0606cb7fd92c88d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103484"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale Linux-App zu Azure-VMs
 
@@ -314,17 +314,17 @@ Jetzt können die Contoso-Administratoren mit der Replikation des virtuellen Com
 
 3. Sie wählen den virtuellen Computer **OSTICKETWEB** für die Replikation aus. 
 
-    - In dieser Phase wählen sie nur **OSTICKETWEB** aus, da das VNET und das Subnetz ausgewählt werden müssen und sich die virtuellen Computer nicht im selben Subnetz befinden.
-    - Wenn die Replikation für die VM aktiviert ist, wird Mobility Service von Site Recovery automatisch installiert.
+   - In dieser Phase wählen sie nur **OSTICKETWEB** aus, da das VNET und das Subnetz ausgewählt werden müssen und sich die virtuellen Computer nicht im selben Subnetz befinden.
+   - Wenn die Replikation für die VM aktiviert ist, wird Mobility Service von Site Recovery automatisch installiert.
 
-    ![Aktivieren der Replikation](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
+     ![Aktivieren der Replikation](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
 
 4. In den Eigenschaften des virtuellen Computers wählen sie das Konto aus, das der Prozessserver zur automatischen Installation von Mobility Service auf dem Computer verwendet.
 
      ![Mobilitätsdienst](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. Unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren** überprüft das Unternehmen, ob die richtige Replikationsrichtlinie angewendet wird, und wählt **Replikation aktivieren** aus.
-6.  Der Replikationsfortschritt wird unter **Aufträge** nachverfolgt. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
+6. Der Replikationsfortschritt wird unter **Aufträge** nachverfolgt. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 
 
@@ -408,7 +408,7 @@ Contoso-Administratoren können nun ein Failover für den Wiederherstellungsplan
 
 ### <a name="connect-the-vm-to-the-database"></a>Verbinden der VM mit der Datenbank
 
-Der letzte Schritt im Migrationsprozess besteht in der Aktualisierung der Verbindungszeichenfolge der Anwendung, um auf die App-Datenbank zu verweisen, die auf dem virtuellen Computer **OSTICKETMYSQL** ausgeführt wird. 
+Der letzte Schritt im Migrationsprozess besteht in der Aktualisierung der Verbindungszeichenfolge der Anwendung durch die Contoso-Administratoren, um auf die App-Datenbank zu verweisen, die auf dem virtuellen Computer **OSTICKETMYSQL** ausgeführt wird. 
 
 1. Das Unternehmen stellt über Putty oder einen anderen SSH-Client eine SSH-Verbindung mit der VM **OSTICKETWEB** her. Die VM ist privat, daher stellt Contoso eine Verbindung über die private IP-Adresse her.
 

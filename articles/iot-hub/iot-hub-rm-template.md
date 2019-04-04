@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Azure IoT Hub-Instanz mithilfe einer Vorlage (.NET) | Microsoft Docs
 description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einem C#-Programm eine IoT Hub-Instanz erstellen.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 2f9728fc3304534619fbd3a8b44abf6bab78887a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4acf7a8bbc02a10468004092152b1d7c5c4d621f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436041"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075917"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (.NET)
 
@@ -24,6 +24,8 @@ Sie können den Azure-Ressourcen-Manager verwenden, um Azure IoT Hubs programmge
 
 > [!NOTE]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen:  [Azure Resource Manager und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).  Dieser Artikel behandelt die Verwendung des Azure Resource Manager-Bereitstellungsmodells.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -123,7 +125,7 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen IoT Hub in der
       }
     }
     ```
-  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 5. Stellen Sie über den **Server-Explorer** eine Verbindung mit Ihrem Azure-Abonnement her, und erstellen Sie in Ihrem Azure Storage-Konto einen Container namens **templates**. Legen Sie im Bereich **Eigenschaften** die Berechtigungen vom Typ **Öffentlicher Lesezugriff** für den Container **templates** auf **Blob** fest.
 
@@ -193,10 +195,10 @@ Sie können die Anwendung jetzt durch Aufrufen der Methode **CreateIoTHub** fert
 
 3. Klicken Sie auf **Debuggen** und dann auf **Debuggen starten**, um die Anwendung auszuführen. Es kann mehrere Minuten dauern, bis die Bereitstellung abgeschlossen ist.
 
-4. Um zu überprüfen, ob Ihre Anwendung den neuen IoT-Hub hinzugefügt hat, besuchen Sie das [Azure-Portal][lnk-azure-portal], und zeigen Sie die Liste der Ressourcen an. Verwenden Sie alternativ das PowerShell-Cmdlet **Get-AzureRmResource**.
+4. Um zu überprüfen, ob Ihre Anwendung den neuen IoT-Hub hinzugefügt hat, besuchen Sie das [Azure-Portal][lnk-azure-portal], und zeigen Sie die Liste der Ressourcen an. Verwenden Sie alternativ das PowerShell-Cmdlet **Get-AzResource**.
 
 > [!NOTE]
-> Diese Beispielanwendung fügt einen für Sie kostenpflichtigen S1-Standard-IoT Hub hinzu. Sie können den IoT-Hub nach Abschluss des Beispiels über das [Azure-Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Remove-AzureRmResource** löschen.
+> Diese Beispielanwendung fügt einen für Sie kostenpflichtigen S1-Standard-IoT Hub hinzu. Sie können den IoT-Hub nach Abschluss des Beispiels über das [Azure-Portal][lnk-azure-portal] oder mithilfe des PowerShell-Cmdlets **Remove-AzResource** löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun einen IoT Hub mithilfe einer Azure Resource Manager-Vorlage mit einem C#-Programm bereitgestellt haben, möchten Sie vielleicht mehr wissen:
@@ -218,7 +220,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md

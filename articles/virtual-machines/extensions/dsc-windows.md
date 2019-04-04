@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407706"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451908"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
@@ -33,11 +33,11 @@ Die PowerShell-DSC-Erweiterung für Windows wird von Microsoft veröffentlicht u
 
 Die DSC-Erweiterung unterstützt die folgenden Betriebssysteme:
 
-Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows Client 7/8.1
+Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows Client 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Um die DSC-Erweiterung für Windows verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. 
+Für die DSC-Erweiterung ist es erforderlich, dass der virtuelle Zielcomputer in der Lage ist, mit Azure zu kommunizieren, und der Speicherort des Konfigurationspakets (ZIP-Datei) außerhalb von Azure liegt. 
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -47,12 +47,12 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-10-01",
   "location": "<location>",
   "properties": {
     "publisher": "Microsoft.Powershell",
     "type": "DSC",
-    "typeHandlerVersion": "2.73",
+    "typeHandlerVersion": "2.77",
     "autoUpgradeMinorVersion": true,
     "settings": {
         "wmfVersion": "latest",
@@ -100,10 +100,10 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 01.10.2018 | date |
 | Herausgeber | Microsoft.Powershell.DSC | Zeichenfolge |
 | type | DSC | Zeichenfolge |
-| typeHandlerVersion | 2.73 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Eigenschaftswerte der Einstellungen
 
@@ -116,7 +116,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 | settings.configurationArguments | Sammlung | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird nicht verschlüsselt.
 | settings.configurationData.url | Zeichenfolge | Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (.pds1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationDataUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen.
 | settings.privacy.dataEnabled | Zeichenfolge | Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind „Enable“, „Disable“, „''“ oder „$null“. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert.
-| settings.advancedOptions.forcePullAndApply | Bool | Ermöglicht der DSC-Erweiterung die Aktualisierung und Anwendung von DSC-Konfigurationen, wenn der Aktualisierungsmodus „Pull“ lautet.
+| settings.advancedOptions.forcePullAndApply | Bool | Diese Einstellung ist dafür ausgelegt, die Arbeitserfahrung im Umgang mit der Erweiterung beim Registrieren von Knoten bei Azure Automation DSC zu verbessern.  Wenn der Wert auf `$true` festgelegt ist, wartet die Erweiterung die erste Ausführung der beim Dienst abgerufenen Konfiguration ab, bevor er die Erfolgs-/Fehlermeldung zurückgibt.  Wenn der Wert auf „$false“ festgelegt ist, bezieht sich der von der Erweiterung zurückgegebene Status lediglich darauf, ob der Knoten erfolgreich bei Azure Automation State Configuration registriert wurde, und die Knotenkonfiguration wird während der Registrierung nicht ausgeführt.
 | settings.advancedOptions.downloadMappings | Sammlung | Definiert alternative Speicherorte zum Herunterladen von Abhängigkeiten wie WMF und .NET.
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
@@ -130,26 +130,9 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen. Eine Resource Manager-Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
-
-Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. 
-
-Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert. Beim Platzieren des JSON-Codes für die Erweiterung im Stamm der Vorlage enthält der Name der Ressource einen Verweis auf die übergeordnete VM, und der Typ spiegelt die geschachtelte Konfiguration wider.  
-
-
-## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
-
-Sie können die Log Analytics-Agent-VM-Erweiterung mithilfe der Azure-Befehlszeilenschnittstelle auf einem vorhandenen virtuellen Computer bereitstellen. Ersetzen Sie den Log Analytics-Schlüssel und die Log Analytics-ID mit den Werten aus Ihrem Log Analytics-Arbeitsbereich. 
-
-```azurecli
-az vm extension set \
-  --resource-group myResourceGroup \
-  --vm-name myVM \
-  --name Microsoft.Powershell.DSC \
-  --publisher Microsoft.Powershell \
-  --version 2.73 --protected-settings '{}' \
-  --settings '{}'
-```
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden.
+Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen.
+Eine Resource Manager-Beispielvorlage mit der DSC-Erweiterung für Windows finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

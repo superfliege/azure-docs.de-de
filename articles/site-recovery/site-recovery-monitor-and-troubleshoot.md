@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210419"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098473"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Überwachung und Problembehandlung für Site Recovery
 
@@ -98,9 +98,9 @@ Die **Infrastrukturansicht** enthält die an der Replikation beteiligten Infrast
     **Szenario** | **State**  | **Ansicht verfügbar?**
     --- |--- | ---
     **Replikation zwischen lokalen Standorten** | Alle Status | Nein  
-    **Azure-VM-Replikation zwischen Azure-Regionen**  | Replikation aktiviert/derzeitige Ausführung der ersten Replikation | JA
+    **Azure-VM-Replikation zwischen Azure-Regionen**  | Replikation aktiviert/derzeitige Ausführung der ersten Replikation | Ja
     **Azure-VM-Replikation zwischen Azure-Regionen** | Failover ausgeführt/Failback | Nein    
-    **VMware-Replikation in Azure** | Replikation aktiviert/derzeitige Ausführung der ersten Replikation | JA     
+    **VMware-Replikation in Azure** | Replikation aktiviert/derzeitige Ausführung der ersten Replikation | Ja     
     **VMware-Replikation in Azure** | Failover/Failback ausgeführt | Nein       
     **Hyper-V-Replikation in Azure** | Failover/Failback ausgeführt | Nein 
 
@@ -149,19 +149,19 @@ Darüber hinaus können Sie Computer auf der Seite „Virtuelle Computer“ übe
     ![Listenansicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Auf der Seite **Replizierte Elemente** können Sie Informationen anzeigen und filtern. Über das Aktionsmenü im oberen Bereich können Sie Aktionen für einen bestimmten Computer ausführen und u.a. ein Testfailover ausführen oder bestimmte Fehler anzeigen.
-3.  Klicken Sie auf **Spalten**, um zusätzliche Spalten einzublenden und beispielsweise RPO, Zielkonfigurationsprobleme und Replikationsfehler anzuzeigen.
+3. Klicken Sie auf **Spalten**, um zusätzliche Spalten einzublenden und beispielsweise RPO, Zielkonfigurationsprobleme und Replikationsfehler anzuzeigen.
 4. Klicken Sie auf **Filter**, um Informationen basierend auf bestimmten Parametern wie Replikationsintegrität oder basierend auf einer bestimmten Replikationsrichtlinie anzuzeigen.
 5. Klicken Sie mit der rechten Maustaste auf einen Computer, um für ihn Vorgänge wie Testfailover zu initiieren oder bestimmte Fehlerdetails anzuzeigen.
 6. Klicken Sie auf einen Computer, um weitere Details zu ihm anzuzeigen. Zu den Details gehören:
-      - **Replikationsinformationen:** Aktueller Status und Integrität des Computers.
-      - **RPO** (Recovery Point Objective): Aktuelles RPO für den virtuellen Computer und die Uhrzeit, an dem das RPO zuletzt berechnet wurde.
-      - **Wiederherstellungspunkte:** Letzte verfügbare Wiederherstellungspunkte für den Computer.
-      - **Failoverbereitschaft:** Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
-      - **Fehler:** Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
-      - **Ereignisse:** Chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
-      - **Infrastrukturansicht:** Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
+   - **Replikationsinformationen:** Aktueller Status und Integrität des Computers.
+   - **RPO** (Recovery Point Objective): Aktuelles RPO für den virtuellen Computer und die Uhrzeit, an dem das RPO zuletzt berechnet wurde.
+   - **Wiederherstellungspunkte:** Letzte verfügbare Wiederherstellungspunkte für den Computer.
+   - **Failoverbereitschaft:** Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
+   - **Fehler:** Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
+   - **Ereignisse:** Chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
+   - **Infrastrukturansicht:** Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
 
-    ![Details/Übersicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
+     ![Details/Übersicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
 
 ### <a name="common-questions"></a>Häufig gestellte Fragen
@@ -191,7 +191,7 @@ Sie können E-Mail-Benachrichtigungen für die folgenden kritischen Ereignisse a
 Benachrichtigungen werden wie folgt abonniert:
 
 Klicken Sie im Tresor im Abschnitt **Überwachung und Berichte** auf **Site Recovery-Ereignisse**.
-2. Klicken Sie auf **E-Mail-Benachrichtigungen**.
-3. Aktivieren Sie unter **E-Mail-Benachrichtigung** die Benachrichtigungen, und geben Sie an, an wen sie gesendet werden sollen. Sie können festlegen, dass Benachrichtigungen an alle Abonnementadministratoren gesendet werden sollen, und optional bestimmte E-Mail-Adressen angeben.
+1. Klicken Sie auf **E-Mail-Benachrichtigungen**.
+1. Aktivieren Sie unter **E-Mail-Benachrichtigung** die Benachrichtigungen, und geben Sie an, an wen sie gesendet werden sollen. Sie können festlegen, dass Benachrichtigungen an alle Abonnementadministratoren gesendet werden sollen, und optional bestimmte E-Mail-Adressen angeben.
 
     ![E-Mail-Benachrichtigungen](./media/site-recovery-monitor-and-troubleshoot/email.png)

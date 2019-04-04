@@ -4,29 +4,27 @@ description: Schritte zum Bereitstellen des Avere vFXT-Clusters in Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745434"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409685"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
-Dieses Verfahren führt Sie durch die Verwendung des Bereitstellungsassistenten aus dem Azure Marketplace. Der Assistent stellt den Cluster automatisch mit einer Azure Resource Manager-Vorlage bereit. Nachdem Sie die Parameter in das Formular eingegeben und auf **Erstellen** geklickt haben, führt Azure diese Schritte automatisch aus: 
+Dieses Verfahren führt Sie durch die Verwendung des Bereitstellungsassistenten aus dem Azure Marketplace. Der Assistent stellt den Cluster automatisch mit einer Azure Resource Manager-Vorlage bereit. Nachdem Sie die Parameter in das Formular eingegeben und auf **Erstellen** geklickt haben, führt Azure diese Schritte automatisch aus:
 
-* Erstellen Sie den Clustercontroller, der eine einfache VM ist, die die Software enthält, die für die Bereitstellung und Verwaltung des Clusters erforderlich ist.
-* Richten Sie die Ressourcengruppe und virtuellen Netzwerkinfrastruktur ein, einschließlich der Erstellung der neuen Elemente, falls erforderlich.
-* Erstellen Sie die Clusterknoten-VMs, und konfigurieren Sie sie als die Avere-Cluster.
-* Erstellen Sie bei Bedarf einen neuen Azure Blob-Container, und konfigurieren Sie ihn als Cluster-Kernspeichereinheit.
+* Erstellen des Clustercontrollers, der eine einfache VM ist, die die Software enthält, die für die Bereitstellung und Verwaltung des Clusters erforderlich ist.
+* Einrichten der Ressourcengruppe und der virtuellen Netzwerkinfrastruktur, einschließlich der Erstellung der neuen Elemente.
+* Erstellen der Clusterknoten-VMs, und ihre Konfiguration als Avere-Cluster.
+* Erstellen eines neuen Azure Blob-Containers, und seine Konfiguration als Cluster-Kernspeichereinheit, falls erforderlich.
 
-Nachdem Sie die Anweisungen in diesem Dokument befolgt haben, verfügen Sie über ein virtuelles Netzwerk, ein Subnetz, einen Controller und einen vFXT-Cluster, wie in der folgenden Abbildung dargestellt:
+Nachdem Sie die Anweisungen in diesem Dokument befolgt haben, verfügen Sie über ein virtuelles Netzwerk, ein Subnetz, einen Controller und einen vFXT-Cluster, wie in der folgenden Abbildung dargestellt. Diese zeigt die optionalen Azure Blob-Kernspeichereinheit, die einen neuen Blob-Speichercontainer enthält, der in einem nicht dargestellten Speicherkonto enthalten ist, und einen Dienstendpunkt für Microsoft Storage innerhalb des Subnetzes. 
 
-![Diagramm, das das VNet mit optionalem Blobspeicher und ein Subnetz mit drei gruppierten virtuellen Computern mit der Bezeichnung „vFXT-Knoten/vFXT-Cluster“ und einem virtuellen Computer mit der Bezeichnung „Clustercontroller“ zeigt.](media/avere-vfxt-deployment.png)
-
-Nach der Erstellung des Clusters sollten Sie [einen Speicherendpunkt](#create-a-storage-endpoint-if-using-azure-blob) in Ihrem virtuellen Netzwerk erstellen, wenn Sie Blob-Speicher verwenden. 
+![Screenshot: Abbildung mit drei konzentrischen Rechtecken mit Avere-Clusterkomponenten. Das äußere Rechteck trägt die Bezeichnung „Ressourcengruppe“ und enthält ein Sechseck mit der Bezeichnung „Blob-Speicher (optional)“. Das mittlere Rechteck trägt die Bezeichnung „Virtuelles Netzwerk: 10.0.0.0/16“ und enthält selbst keine spezifischen Komponenten. Das innerste Rechteck trägt die Bezeichnung „Subnetz:10.0.0.0/24“ und enthält eine VM mit der Bezeichnung „Clustercontroller“, einen Stapel aus drei VMs mit der Bezeichnung „vFXT-Knoten (vFXT-Cluster)“, und ein Sechseck mit der Bezeichnung „Dienstendpunkt“. Ein Pfeil verbindet den Dienstendpunkt, der sich innerhalb des Subnetzes befindet, mit dem Blob-Speicher, der sich in der Ressourcengruppe außerhalb des Subnetzes und außerhalb von „vnet“ befindet. Der Pfeil überschneidet dabei jeweils die rechte Seite der Rechtecke für das Subnetz und das virtuellen Netzwerk.](media/avere-vfxt-deployment.png)  
 
 Vergewissern Sie sich vor der Verwendung der Erstellungsvorlage, dass diese Voraussetzungen erfüllt sind:  
 
@@ -34,6 +32,7 @@ Vergewissern Sie sich vor der Verwendung der Erstellungsvorlage, dass diese Vora
 1. [Berechtigungen des Abonnementbesitzers](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kontingent für den vFXT-Cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [Benutzerdefinierte Zugriffsrollen](avere-vfxt-prereqs.md#create-access-roles) – Für die Zuordnung zu den Clusterknoten müssen Sie eine rollenbasierte Zugriffskontrollrolle anlegen. Sie haben die Möglichkeit, auch eine benutzerdefinierte Zugriffsrolle für den Clustercontroller zu erstellen, aber die meisten Benutzer übernehmen standardmäßig die Rolle des Besitzers, die dem Controller Rechten entsprechend einem Ressourcengruppenbesitzer einräumt. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md#owner).
+1. [Storage-Dienstendpunkt (bei Bedarf)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – Wird für Bereitstellungen benötigt, bei der ein vorhandenes virtuelles Netzwerk verwendet und ein Blob-Speicher erstellt wird.
 
 Weitere Informationen zu den Schritten und der Planung der Clusterbereitstellung finden Sie unter [Planen Ihres Avere vFXT-Systems](avere-vfxt-deploy-plan.md) und [Übersicht über die Bereitstellung](avere-vfxt-deploy-overview.md).
 
@@ -105,13 +104,13 @@ Auf der zweiten Seite der Bereitstellungsvorlage können Sie unter anderem Clust
 
 * **Avere vFXT-Clustername** – Geben Sie dem Cluster einen eindeutigen Namen. 
 
-* **Größe** – Geben Sie dem beim Erstellen der Clusterknoten zu verwendenden VM-Typ an. 
+* **Größe** – Dieser Bereich zeigt den VM-Typen an, der für die Clusterknoten verwendet wird. Obwohl es nur eine empfohlene Option gibt, öffnet der Link **Größe ändern** eine Tabelle mit Details zu diesem Instanztyp und einen Link zu einem Preisrechner.  
 
 * **Cachegröße pro Knoten** – Der Clustercache ist auf die Clusterknoten verteilt, sodass die gesamte Cachegröße auf Ihrem Avere vFXT-Cluster die Cachegröße pro Knoten multipliziert mit der Anzahl der Knoten ist. 
 
-  Die empfohlene Konfiguration ist die Verwendung von 1 TB pro Knoten bei Verwendung von Standard_D16s_v3-Clusterknoten und von 4 TB pro Knoten bei Verwendung von Standard_E32s_v3-Knoten.
+  Die empfohlene Konfiguration sind 4 TB pro Knoten für Standard_E32s_v3-Knoten.
 
-* **Virtuelles Netzwerk** – Wählen Sie ein vorhandenes Vnet, um den Cluster unterzubringen, oder definieren Sie ein neues Vnet, das erstellt werden soll. 
+* **Virtuelles Netzwerk** – Definieren Sie ein neues VNET als Host für den Cluster, oder wählen Sie ein vorhandenes VNET aus, das den Voraussetzungen entspricht, die in [Planen des Avere vFXT-Systems](avere-vfxt-deploy-plan.md#resource-group-and-network-infrastructure) beschrieben sind. 
 
   > [!NOTE]
   > Wenn Sie ein neues VNet erstellen, wird dem Clustercontroller eine öffentliche IP-Adresse zugewiesen, sodass Sie auf das neue private Netzwerk zugreifen können. Wenn Sie ein bestehendes Vnet auswählen, wird der Clustercontroller ohne eine öffentliche IP-Adresse konfiguriert. 
@@ -121,17 +120,21 @@ Auf der zweiten Seite der Bereitstellungsvorlage können Sie unter anderem Clust
   >  * Wenn Sie keine öffentliche IP-Adresse auf dem Controller einrichten, müssen Sie für den Zugriff auf den Cluster einen anderen Jump-Host, eine VPN-Verbindung oder ExpressRoute verwenden. Erstellen Sie z. B. den Controller in einem virtuellen Netzwerk, in dem bereits eine VPN-Verbindung konfiguriert ist.
   >  * Wenn Sie einen Controller mit einer öffentlichen IP-Adresse erstellen, sollten Sie den virtuellen Controllercomputer mit einer Netzwerksicherheitsgruppe schützen. Standardmäßig erstellt die Avere vFXT for Azure-Bereitstellung eine Netzwerksicherheitsgruppe und beschränkt den eingehenden Zugriff nur auf Port 22 für Controller mit öffentlichen IP-Adressen. Sie können das System weiter schützen, indem Sie den Zugriff auf Ihren Bereich von IP-Quelladressen sperren, d.h. nur Verbindungen von Computern erlauben, die Sie für den Clusterzugriff verwenden möchten.
 
+  Die Bereitstellungsvorlage konfiguriert auch das neue VNET mit einem Speicherdienstendpunkt für Azure Blob Storage und mit einer Netzwerkzugriffssteuerung, die nur für IPs des Clustersubnetzes gesperrt ist. 
+
 * **Subnetz** – Wählen Sie ein Subnetz aus Ihrem vorhandenen virtuellen Netzwerk aus, oder erstellen Sie ein neues. 
 
-* **Blob-Speicher verwenden** – Wählen Sie **true** aus, um einen neuen Azure Blob-Container zu erstellen und ihn als Back-End-Speicher für den neuen Avere vFXT-Cluster zu konfigurieren. Diese Option erstellt auch ein neues Speicherkonto innerhalb derselben Ressourcengruppe wie der Cluster. 
+* **Create and use blob storage** (Blob-Speicher erstellen und verwenden) – Wählen Sie **true** aus, um einen neuen Azure Blob-Container zu erstellen und ihn als Back-End-Speicher für den neuen Avere vFXT-Cluster zu konfigurieren. Diese Option erstellt auch ein neues Speicherkonto innerhalb der Ressourcengruppe des Clusters sowie einen Microsoft Storage Service-Endpunkt innerhalb des Clustersubnetzes. 
+  
+  Wenn Sie ein vorhandenes virtuelles Netzwerk zur Verfügung stellen, muss es einen Speicherdienstendpunkt haben, bevor Sie den Cluster erstellen. Weitere Informationen finden Sie unter [Planen des Avere vFXT-Systems](avere-vfxt-deploy-plan.md).
 
   Legen Sie für dieses Feld **false** fest, wenn Sie keinen neuen Container erstellen möchten. In diesem Fall müssen Sie den Speicher nach dem Erstellen des Clusters anfügen und konfigurieren. Anweisungen finden Sie unter [Konfigurieren von Speicher](avere-vfxt-add-storage.md). 
 
-* **Speicherkonto** – Wenn Sie einen neuen Azure Blob-Container erstellen, geben Sie einen Namen für das neue Speicherkonto ein. 
+* **(New) Storage account** ((Neues )Speicherkonto) – Wenn Sie einen neuen Azure Blob-Container erstellen, geben Sie einen Namen für das neue Speicherkonto ein. 
 
 ## <a name="validation-and-purchase"></a>Überprüfung und Kauf
 
-Die dritte Seite enthält eine Zusammenfassung der Konfiguration und überprüft die Parameter. Wenn die Überprüfung erfolgreich war, klicken Sie auf **OK**, um fortzufahren. 
+Auf Seite 3 wird die Konfiguration zusammengefasst und die Parameter werden überprüft. Wenn die Überprüfung erfolgreich war, klicken Sie auf **OK**, um fortzufahren. 
 
 ![Dritte Seite der Bereitstellungsvorlage – Überprüfung](media/avere-vfxt-deploy-3.png)
 
@@ -159,20 +162,6 @@ Gehen Sie folgendermaßen vor, um diese Informationen zu suchen:
 1. Klicken Sie auf der linken Seite auf **Ausgaben**. Kopieren Sie die Werte in die einzelnen Felder. 
 
    ![Ausgabeseite mit der Anzeige von Werten für SSHSTRING, RESOURCE_GROUP, LOCATION, NETWORK_RESOURCE_GROUP, NETWORK, SUBNET, SUBNET_ID, VSERVER_IPs und MGMT_IP in Feldern rechts neben den Bezeichnungen](media/avere-vfxt-outputs-values.png)
-
-
-## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Erstellen eines Speicherendpunkts (bei Verwendung von Azure-BLOB)
-
-Wenn Sie Azure-BLOB-Speicher für Ihren Back-End-Datenspeicher verwenden, sollten Sie einen Speicherdienstendpunkt in Ihrem virtuellen Netzwerk erstellen. Dieser [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) sorgt dafür, dass der Azure-BLOB-Datenverkehr lokal bleibt, anstatt ihn außerhalb des virtuellen Netzwerks weiterzuleiten.
-
-1. Klicken Sie im Portal links auf **Virtuelle Netzwerke**.
-1. Wählen Sie das VNet für Ihren Controller aus. 
-1. Klicken Sie links auf **Dienstendpunkte**.
-1. Klicken Sie oben auf **Hinzufügen**.
-1. Belassen Sie für den Dienst ``Microsoft.Storage``, und wählen Sie das Subnetz des Controllers aus.
-1. Klicken Sie unten auf **Hinzufügen**.
-
-  ![Screenshot für das Azure-Portal mit Anmerkungen für die Schritte zum Erstellen des Dienstendpunkts](media/avere-vfxt-service-endpoint.png)
 
 ## <a name="next-step"></a>Nächster Schritt
 

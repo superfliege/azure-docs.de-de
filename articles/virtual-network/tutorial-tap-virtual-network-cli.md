@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 48ccbedd6e3a7da0ec487f27709a47f9364f7da3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188559"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Arbeiten mit einem TAP eines virtuellen Netzwerks über die Azure CLI
 
@@ -28,7 +28,7 @@ Mit dem TAP (Terminal Access Point) für virtuelle Azure-Netzwerke können Sie I
 
 ## <a name="create-a-virtual-network-tap-resource"></a>Erstellen einer TAP-Ressource für ein virtuelles Netzwerk
 
-Lesen Sie die [Voraussetzungen](virtual-network-tap-overview.md#prerequisites), bevor Sie eine TAP-Ressource für ein virtuelles Netzwerk erstellen. Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die Azure-Befehlszeilenschnittstelle (CLI) auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell, für die keine Installation der Azure CLI auf Ihrem Computer erforderlich ist. Sie müssen sich mit einem Konto mit den entsprechenden [Berechtigungen](virtual-network-tap-overview.md#permissions) bei Azure anmelden. Für diesen Artikel ist die Azure CLI-Version 2.0.46 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+Lesen Sie die [Voraussetzungen](virtual-network-tap-overview.md#prerequisites), bevor Sie eine TAP-Ressource für ein virtuelles Netzwerk erstellen. Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die Azure-Befehlszeilenschnittstelle (CLI) auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell, für die keine Installation der Azure CLI auf Ihrem Computer erforderlich ist. Sie müssen sich mit einem Konto mit den entsprechenden [Berechtigungen](virtual-network-tap-overview.md#permissions) bei Azure anmelden. Für diesen Artikel ist die Azure CLI-Version 2.0.46 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. TAP von virtuellen Netzwerken ist derzeit als Erweiterung verfügbar. Zum Installieren der Erweiterung müssen Sie `az extension add -n virtual-network-tap` ausführen. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 1. Rufen Sie die ID Ihres Abonnements in einer Variable ab, die in einem späteren Schritt verwendet wird:
 

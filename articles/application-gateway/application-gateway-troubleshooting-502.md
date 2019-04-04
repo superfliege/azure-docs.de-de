@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 26144b7eb53f5c0d4ebecbc9e6eece741f466719
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819448"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997790"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
 
 Erfahren Sie mehr zur Problembehandlung bei Fehlern aufgrund eines ungültigen Gateways (502) in Application Gateway.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -50,21 +52,21 @@ Wenn der Zugriff auf Back-End durch Vorhandensein einer NSG, einer benutzerdefin
 * Überprüfen Sie die UDR, die dem Application Gateway-Subnetz zugeordnet sind. Stellen Sie sicher, dass UDR den Datenverkehr nicht weg vom Back-End-Subnetz lenkt: Überprüfen Sie z.B. das Routing zu virtuellen Geräten oder Standardrouten, die das Application Gateway-Subnetz über ExpressRoute/VPN angekündigt werden.
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
-Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
 * Überprüfen Sie die effektiven NSGs und Routen mit dem virtuellen Back-End-Computer.
 
 ```powershell
-Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
-Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
 * Überprüfen Sie das Vorhandensein eines benutzerdefinierten DNS im VNet. DNS kann überprüft werden, indem Sie einen Blick auf die Details der VNet-Eigenschaften in der Ausgabe werfen.
 
 ```json
-Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
 DhcpOptions            : {
                            "DnsServers": [
                              "x.x.x.x"
@@ -81,7 +83,7 @@ Falls vorhanden, stellen Sie sicher, dass der DNS-Server den FQDN von Back-End-P
 
 | Überprüfungseigenschaft | Wert | BESCHREIBUNG |
 | --- | --- | --- |
-| Überprüfungs-URL |http://127.0.0.1/ |URL-Pfad |
+| Überprüfungs-URL |`http://127.0.0.1/` |URL-Pfad |
 | Intervall |30 |Überprüfungsintervall in Sekunden |
 | Zeitüberschreitung |30 |Zeitüberschreitung der Überprüfung in Sekunden |
 | Fehlerhafter Schwellenwert |3 |Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
@@ -90,7 +92,7 @@ Falls vorhanden, stellen Sie sicher, dass der DNS-Server den FQDN von Back-End-P
 
 * Stellen Sie sicher, dass die Standardwebsite konfiguriert ist und an 127.0.0.1 lauscht.
 * Falls im BackendHttpSetting-Element nicht der Port 80 angegeben ist, muss die Standardwebsite so konfiguriert werden, dass sie am angegebenen Port lauscht.
-* Der Aufruf von http://127.0.0.1:port sollte den HTTP-Ergebniscode 200 zurückgeben. Dieser muss innerhalb des Timeoutzeitraums von 30 Sekunden zurückgegeben werden.
+* Der Aufruf von `http://127.0.0.1:port` sollte den HTTP-Ergebniscode 200 zurückgeben. Dieser muss innerhalb des Timeoutzeitraums von 30 Sekunden zurückgegeben werden.
 * Vergewissern Sie sich, dass der konfigurierte Port geöffnet ist und dass eingehender oder ausgehender Datenverkehr am konfigurierten Port nicht durch Firewallregeln oder Azure-Netzwerksicherheitsgruppen blockiert wird.
 * Stellen Sie bei Verwendung klassischer virtueller Azure-Computer sowie bei Verwendung des Clouddiensts mit FQDN oder öffentlicher IP-Adresse außerdem sicher, dass der entsprechende [Endpunkt](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) geöffnet ist.
 * Falls der virtuelle Computer über Azure Resource Manager konfiguriert wurde und sich außerhalb des virtuellen Netzwerks befindet, in dem Application Gateway bereitgestellt ist, muss für den Zugriff auf den gewünschten Port eine [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md) konfiguriert werden.
@@ -116,7 +118,7 @@ Benutzerdefinierte Integritätsüberprüfungen sorgen für zusätzliche Flexibil
 Vergewissern Sie sich anhand der Tabelle weiter oben, dass die benutzerdefinierte Integritätsüberprüfung ordnungsgemäß konfiguriert ist. Stellen Sie zusätzlich zu den oben aufgeführten Problembehandlungsschritten auch Folgendes sicher:
 
 * Stellen Sie anhand der [Anleitung](application-gateway-create-probe-ps.md)sicher, dass die Überprüfung ordnungsgemäß angegeben ist.
-* Falls Application Gateway für einen einzelnen Standort konfiguriert ist, muss der Hostname standardmäßig als „127.0.0.1“ angegeben werden, sofern in der benutzerdefinierten Überprüfung nichts anderes konfiguriert ist.
+* Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, muss der Hostname standardmäßig als `127.0.0.1` angegeben werden, sofern in der benutzerdefinierten Überprüfung nichts anderes konfiguriert ist.
 * Vergewissern Sie sich, dass ein Aufruf von „http://\<Host\>:\<Port\>\<Pfad\>“ den HTTP-Ergebniscode 200 zurückgibt.
 * Stellen Sie sicher, dass „Intervall“, „Zeitüberschreitung“ und „Fehlerhafter Schwellenwert“ innerhalb des zulässigen Bereichs liegen.
 * Stellen Sie bei Verwendung einer HTTPS-Überprüfung sicher, dass der Back-End-Server kein SNI erfordert, indem Sie ein Fallback-Zertifikat auf dem Back-End-Server selbst erstellen.
@@ -132,7 +134,7 @@ Wenn eine Benutzeranforderung empfangen wird, wendet Application Gateway die kon
 Mit Application Gateway können Benutzer diese Einstellung über das BackendHttpSetting-Element konfigurieren und auf verschiedene Pools anwenden. Bei unterschiedlichen Back-End-Pools können unterschiedliche Back-End-HTTP-Einstellungen und somit unterschiedliche Anforderungstimeouts konfiguriert sein.
 
 ```powershell
-    New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+    New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
 ## <a name="empty-backendaddresspool"></a>Leerer Back-End-Adresspool
@@ -146,7 +148,7 @@ Falls im Back-End-Adresspool für Application Gateway keine virtuellen Computer 
 Vergewissern Sie sich, dass der Back-End-Adresspool nicht leer ist. Hierzu können Sie entweder PowerShell, die Befehlszeilenschnittstelle oder das Portal verwenden.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
 Die Ausgabe des vorherigen Cmdlets muss nicht leere Back-End-Adresspools enthalten. Im folgenden Beispiel werden zwei Pools zurückgegeben, die mit FQDN oder IP-Adressen für virtuelle Back-End-Computer konfiguriert sind. Der Bereitstellungszustand des Back-End-Adresspools muss „Succeeded“ lauten.

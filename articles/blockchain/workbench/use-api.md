@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/14/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c1a9b526f08f330d62c30dd1d676e95460aee6c2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: eb4b87a008b9e43de7e7a5f7895449303f1e44a6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712346"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593980"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Verwenden der REST-API von Azure Blockchain Workbench
 
@@ -277,8 +277,8 @@ Content-type: application/json
 
 Ein Benutzer kann sich dann entscheiden, für die angegebene Smart Contract-Instanz Maßnahmen zu ergreifen. Betrachten Sie in diesem Fall das Szenario, in dem ein Benutzer die Beschreibung und den Preis einer Ressource wie folgt ändern möchte:
 
-* Beschreibung: „My updated car“ (Mein aktualisierter PKW)
-* Price (Preis): 54321
+* Beschreibung: „Mein aktualisiertes Auto“
+* Preis: 54321
 
 Verwenden Sie die [POST-API für Vertragsaktionen](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):
 

@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 96766a12d7e78dacd93432e30d12f313d52ad4c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176173"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services
 
@@ -56,7 +56,7 @@ Zeigen Sie den Integritätsstatus Ihrer Azure Active Directory Domain Services a
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Erstellen und Autorisieren einer verwalteten Identität
 
-Eine **benutzerseitig zugewiesene verwaltete Identität** wird verwendet, um Domänendienstvorgänge zu vereinfachen und zu schützen. Wenn Sie der verwalteten Identität die Rolle „HDInsight-Domänendienste: Mitwirkender“ zuweisen, kann sie Domänendienstvorgänge lesen, erstellen, ändern und löschen. Für das HDInsight Enterprise-Sicherheitspaket werden bestimmte Domain Services-Vorgänge wie das Erstellen von Organisationseinheiten und Dienstprinzipalen benötigt. Verwaltete Identitäten können in jedem Abonnement erstellt werden. Weitere Informationen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md).
+Eine **benutzerseitig zugewiesene verwaltete Identität** wird verwendet, um Domänendienstvorgänge zu vereinfachen und zu schützen. Wenn Sie der verwalteten Identität die Rolle „HDInsight-Domänendienste: Mitwirkender“ zuweisen, kann sie Domänendienstvorgänge lesen, erstellen, ändern und löschen. Für das HDInsight Enterprise-Sicherheitspaket werden bestimmte Domain Services-Vorgänge wie das Erstellen von Organisationseinheiten und Dienstprinzipalen benötigt. Verwaltete Identitäten können in jedem Abonnement erstellt werden. Weitere allgemeine Informationen zu verwalteten Identitäten finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](../hdinsight-managed-identities.md).
 
 Erstellen Sie zum Einrichten von ESP-Clustern eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. Die genaue Vorgehensweise finden Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer benutzerseitig zugewiesenen verwalteten Identität über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). Weisen Sie anschließend der verwalteten Identität die Rolle **HDInsight-Domänendienste: Mitwirkender** in der Azure AD DS-Zugriffssteuerung zu. (Für diese Rollenzuweisung sind AAD DS-Administratorrechte erforderlich.)
 

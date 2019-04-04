@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117145"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884119"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
@@ -29,7 +29,7 @@ Die Anforderungstelemetrie unterstützt das Standarderweiterbarkeitsmodell mit b
 
 Der Name der Anforderung gibt den Codepfad für die Verarbeitung der Anforderung an. Ein niedriger Kardinalitätswert ermöglicht die bessere Gruppierung von Anforderungen. Für HTTP-Anforderungen gibt er die HTTP-Methode und die URL-Pfadvorlage wie `GET /values/{id}` ohne den tatsächlichen `id`-Wert an.
 
-Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf die Groß-/Kleinschreibung unverändert gesendet. Bei der Gruppierung auf der Benutzeroberfläche wird die Groß-/Kleinschreibung beachtet, sodass `GET /Home/Index` und `GET /home/INDEX` separat gezählt werden, obwohl sie häufig zur gleichen Controller- und Aktionsausführung führen. Dies liegt daran, dass bei URLs allgemein die [Groß-/Kleinschreibung beachtet wird](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Sie können prüfen, ob für die in Großbuchstaben eingegebenen URLs alle `404` erfolgt sind. Weitere Informationen zur Anforderungsnamensammlung mit dem ASP.Net-Web-SDK finden Sie in diesem [Blogbeitrag](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf die Groß-/Kleinschreibung unverändert gesendet. Bei der Gruppierung auf der Benutzeroberfläche wird die Groß-/Kleinschreibung beachtet, sodass `GET /Home/Index` und `GET /home/INDEX` separat gezählt werden, obwohl sie häufig zur gleichen Controller- und Aktionsausführung führen. Dies liegt daran, dass bei URLs allgemein die [Groß-/Kleinschreibung beachtet wird](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Sie können prüfen, ob für die in Großbuchstaben eingegebenen URLs alle `404` erfolgt sind. Weitere Informationen zur Anforderungsnamensammlung mit dem ASP.NET-Web-SDK finden Sie in diesem [Blogbeitrag](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Max. Länge: 1024 Zeichen
 

@@ -2,21 +2,21 @@
 title: Migrieren von SQL Server zu einer Azure SQL-Datenbank mit Database Migration Service und PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit Azure PowerShell eine Migration von einer lokalen SQL Server-Instanz zur Azure SQL-Datenbank ausführen.
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/15/2019
-ms.openlocfilehash: cab1e47d6d0b40fab881d7948381b6294f52546d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 03/12/2019
+ms.openlocfilehash: 7346fc55db29e3f6e8e06938a79ae054681eba51
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58174323"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrieren von einer lokalen SQL Server-Instanz zur Azure SQL-Datenbank mit Azure PowerShell
 In diesem Artikel migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer Azure SQL-Datenbank. Mithilfe des Moduls `AzureRM.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zur Azure SQL-Datenbank migrieren.
@@ -37,7 +37,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 - Eine Azure SQL-Datenbankinstanz. Sie können eine Azure SQL-Datenbankinstanz erstellen, indem Sie die Details im Artikel [Erstellen einer Azure SQL-Datenbank im Azure-Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) befolgen.
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595), Version 3.3 oder höher.
 - Erstellen Sie ein VNET mithilfe des Azure Resource Manager-Bereitstellungsmodells, das den Azure Database Migration Service mit Konnektivität zwischen Standorten für Ihre lokalen Quellserver entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bietet.
-- Schließen Sie die Bewertung der lokalen Datenbank und Schemamigration mithilfe von Data Migration Assistant ab, wie im Artikel [Durchführen einer SQL Server-Migrationsbewertung](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) beschrieben.
+- Schließen Sie die Bewertung der lokalen Datenbank und Schemamigration mithilfe des Datenmigrations-Assistenten ab, wie im Artikel [Durchführen einer SQL Server-Migrationsbewertung](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) beschrieben.
 - Laden Sie das AzureRM.DataMigration-Modul aus dem PowerShell-Katalog mit dem [PowerShell-Cmdlets „Install-Module“](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) herunter und installieren Sie es. Achten Sie darauf, das PowerShell-Befehlsfenster als Administrator zu öffnen.
 - Stellen Sie sicher, dass die für die Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldeinformationen über [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)-Berechtigungen verfügen.
 - Stellen Sie sicher, dass die für die Verbindung zur Azure SQL DB-Zielinstanz verwendeten Anmeldeinformationen für die Azure SQL-Datenbank-Zieldatenbanken über die Berechtigung CONTROL DATABASE-Berechtigung verfügen.

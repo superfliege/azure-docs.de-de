@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876679"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso – Bereitstellen einer Migrationsinfrastruktur
 
@@ -101,10 +101,10 @@ Nach dem Erwerb von Azure muss Contoso herausfinden, wie die Azure-Abonnements v
 - Eine Azure Enterprise-Registrierung definiert, wie ein Unternehmen Azure-Dienste modelliert und verwendet und legt eine Kernstruktur für die Governance fest.
 - Als ersten Schritt hat Contoso eine Struktur für die Enterprise-Registrierung bestimmt (ein so genanntes Unternehmensgerüst). Contoso hat [diesen Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance) verwendet, um das Gerüst zu verstehen und zu entwerfen.
 - Fürs Erste hat sich Contoso für einen funktionalen Abonnementverwaltungsansatz entschieden.
-    - Das Unternehmen verwendet eine zentrale IT-Abteilung, die auch die Kontrolle über das Azure-Budget hat. Diese Gruppe hält als einzige Abonnements.
-    - Contoso plant, dieses Modell später zu erweitern, sodass andere Gruppen im Unternehmen als Abteilungen an der Enterprise-Registrierung teilnehmen können.
-    - Innerhalb der IT-Abteilung hat Contoso zwei Abonnements strukturiert, Produktion und Entwicklung.
-    - Wenn Contoso zukünftig zusätzliche Abonnements benötigt, muss das Unternehmen den Zugriff, die Richtlinien und die Compliance für diese Abonnements verwalten. Hierzu führt Contoso [Azure-Verwaltungsgruppen](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview) als zusätzliche Ebene oberhalb der Abonnements ein.
+  - Das Unternehmen verwendet eine zentrale IT-Abteilung, die auch die Kontrolle über das Azure-Budget hat. Diese Gruppe hält als einzige Abonnements.
+  - Contoso plant, dieses Modell später zu erweitern, sodass andere Gruppen im Unternehmen als Abteilungen an der Enterprise-Registrierung teilnehmen können.
+  - Innerhalb der IT-Abteilung hat Contoso zwei Abonnements strukturiert, Produktion und Entwicklung.
+  - Wenn Contoso zukünftig zusätzliche Abonnements benötigt, muss das Unternehmen den Zugriff, die Richtlinien und die Compliance für diese Abonnements verwalten. Hierzu führt Contoso [Azure-Verwaltungsgruppen](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview) als zusätzliche Ebene oberhalb der Abonnements ein.
 
     ![Enterprise-Struktur](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ Das Erteilen und Steuern des Benutzerzugriffs auf Azure-Ressourcen mit Identity 
 
 Contoso verwendet die Azure AD Free-Edition, die in Azure-Abonnements enthalten ist. Contoso-Administratoren richten wie folgt ein AD-Verzeichnis ein:
 
-1. Sie navigieren im [Azure-Portal](http://portal.azure.com/) zu **Ressource erstellen** > **Identität** > **Azure Active Directory**.
+1. Sie navigieren im [Azure-Portal](https://portal.azure.com/) zu **Ressource erstellen** > **Identität** > **Azure Active Directory**.
 2. Sie geben in **Verzeichnis erstellen** einen Namen für das Verzeichnis ein, einen Anfangsdomänennamen und eine Region, in der das Azure AD-Verzeichnis erstellt werden soll.
 
     ![Azure AD erstellen](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -310,7 +310,7 @@ Nach der Erstellung des Regionskonzepts kann sich Contoso der Netzwerkstrategie 
 
 Contoso hat eine [Reihe von Architekturen](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) für das Hybridnetzwerk zwischen Azure und dem lokalen Datencenter in Erwägung gezogen. [Weitere Informationen](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/considerations) über das Vergleichen von Optionen.
 
-Zur Erinnerung: Die lokale Netzwerkinfrastruktur von Contoso besteht derzeit aus dem Datencenter in New York und lokalen Niederlassungen im östlichen Teil der USA.  Alle Standorte verfügen über eine Business-Class-Verbindung zum Internet.  Jede dieser Niederlassungen ist mit dem Rechenzentrum durch einen IPSec-VPN-Tunnel durch das Internet verbunden.
+Zur Erinnerung: Die lokale Netzwerkinfrastruktur von Contoso besteht derzeit aus dem Datencenter in New York und lokalen Niederlassungen im östlichen Teil der USA.  Alle Standorte verfügen über eine Business-Class-Verbindung zum Internet.  Jede dieser Niederlassungen ist mit dem Rechenzentrum durch einen IPsec-VPN-Tunnel durch das Internet verbunden.
 
 ![Contoso-Netzwerk](./media/contoso-migration-infrastructure/contoso-networking.png) 
 
@@ -451,7 +451,7 @@ Azure-IaaS-Komponenten befinden sich im Produktionsnetzwerk. Jede App-Schicht we
 **PROD-FE-EUS2** | 10.245.32.0/22 | 1019 | Front-Ends/Webschicht-VMs
 **PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | App-Schicht-VMs
 **PROD-DB-EUS2** | 10.245.40.0/23 | 507 | Datenbank-VMs
-**PROD-DC-EUS2** | 10.245.42.0/23 | 251 | Domänencontroller-VMs
+**PROD-DC-EUS2** | 10.245.42.0/24 | 251 | Domänencontroller-VMs
 
 
 ![Hub-Netzwerkarchitektur](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
@@ -581,18 +581,18 @@ Nach der Aktualisierung der Netzwerkeinstellungen sind die Administratoren von C
 
 1. Im Azure-Portal stellen sie eine neue Windows Server-VM im passenden VNet bereit.
 2. Sie erstellen an jedem Standort Verfügbarkeitsgruppen für die VM. Verfügbarkeitsgruppen haben diese Aufgaben:
-    - Sie stellen sicher, dass die Azure-Gesamtstruktur die VMs in verschiedene Infrastrukturen in der Azure-Region aufteilt. 
-    -  Sie ermöglichen Contoso die Qualifikation für die 99,95 %-SLA für VMs in Azure.  [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)
+   - Sie stellen sicher, dass die Azure-Gesamtstruktur die VMs in verschiedene Infrastrukturen in der Azure-Region aufteilt. 
+   - Sie ermöglichen Contoso die Qualifikation für die 99,95 %-SLA für VMs in Azure.  [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)
 
-    ![Verfügbarkeitsgruppe](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![Verfügbarkeitsgruppe](./media/contoso-migration-infrastructure/availability-group.png) 
 3. Nach der Bereitstellung des virtuellen Computers öffnen sie die Netzwerkschnittstelle für den virtuellen Computer. Sie legen die private IP-Adresse als statisch fest und geben eine gültige Adresse an.
 
     ![VM-NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. Jetzt wird ein neuer Datenträger an die VM angefügt. Dieser Datenträger enthält die Active Directory-Datenbank und die SYSVOL-Freigabe. 
-    - Die Größe des Datenträgers bestimmt die unterstützte Anzahl IOPS.
-    - Im Lauf der Zeit muss die Datenträgergröße möglicherweise heraufgesetzt werden, wenn die Umgebung wächst.
-    - Das Laufwerk darf nicht auf Lesen/Schreiben für die Hostzwischenspeicherung festgelegt sein. Active Directory-Datenbanken unterstützen dies nicht.
+   - Die Größe des Datenträgers bestimmt die unterstützte Anzahl IOPS.
+   - Im Lauf der Zeit muss die Datenträgergröße möglicherweise heraufgesetzt werden, wenn die Umgebung wächst.
+   - Das Laufwerk darf nicht auf Lesen/Schreiben für die Hostzwischenspeicherung festgelegt sein. Active Directory-Datenbanken unterstützen dies nicht.
 
      ![Active Directory-Datenträger](./media/contoso-migration-infrastructure/ad-disk.png)
 

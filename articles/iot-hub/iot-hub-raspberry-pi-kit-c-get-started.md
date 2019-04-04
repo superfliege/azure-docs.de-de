@@ -8,18 +8,18 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4f092f2d290138e48068141113b184d8e856bee7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327243"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103212"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-In diesem Tutorial erlernen Sie die Grundlagen der Verwendung von Raspberry Pi 3 und Raspbian. Anschließend erfahren Sie, wie Sie Ihre Geräte mithilfe von [Azure IoT Hub](about-iot-hub.md) nahtlos mit der Cloud verbinden. Beispiele für Windows 10 IoT Core finden Sie im [Windows Dev Center](http://www.windowsondevices.com/).
+In diesem Tutorial erlernen Sie die Grundlagen der Verwendung von Raspberry Pi 3 und Raspbian. Anschließend erfahren Sie, wie Sie Ihre Geräte mithilfe von [Azure IoT Hub](about-iot-hub.md) nahtlos mit der Cloud verbinden. Beispiele für Windows 10 IoT Core finden Sie im [Windows Dev Center](https://www.windowsondevices.com/).
 
 Sie haben noch kein Kit? Probieren Sie den [Raspberry Pi-Onlinesimulator](iot-hub-raspberry-pi-web-simulator-get-started.md) aus. Oder erwerben Sie [hier](https://azure.microsoft.com/develop/iot/starter-kits) ein neues Kit.
 
@@ -82,7 +82,7 @@ Die folgenden Elemente sind optional:
 Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Laden Sie Raspbian herunter.
-   1. [Laden Sie Raspbian Jessie mit Desktop herunter](https://www.raspberrypi.org/downloads/raspbian/) (die ZIP-Datei).
+   1. [Laden Sie Raspbian Stretch mit Desktop herunter](https://www.raspberrypi.org/downloads/raspbian/) (die ZIP-Datei).
    1. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
 1. Installieren Sie Raspbian auf der microSD-Karte.
    1. [Laden Sie das SD-Kartenbrennprogramm Etcher herunter, und installieren Sie es](https://etcher.io/).
@@ -148,7 +148,7 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 1. Verwenden Sie einen der folgenden SSH-Clients auf Ihrem Hostcomputer, um die Verbindung mit Ihrem Raspberry Pi herzustellen.
    
    **Windows-Benutzer**
-   1. Laden Sie [PuTTY](http://www.putty.org/) für Windows herunter, und installieren Sie es. 
+   1. Laden Sie [PuTTY](https://www.putty.org/) für Windows herunter, und installieren Sie es. 
    1. Kopieren Sie die IP-Adresse von Pi, fügen Sie sie in den Abschnitt „Hostname (oder IP-Adresse)“ ein, und wählen Sie „SSH“ als Verbindungstyp.
    
    ![PuTTY](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
@@ -156,8 +156,8 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
    **Mac- und Ubuntu-Benutzer**
    
    Verwenden Sie den integrierten SSH-Client unter Ubuntu oder macOS. Möglicherweise müssen Sie `ssh pi@<ip address of pi>` ausführen, um eine SSH-Verbindung mit Pi herzustellen.
-   > [!NOTE] 
-   Der Standardbenutzername ist `pi`, und das Kennwort ist `raspberry`.
+   > [!NOTE]
+   > Der Standardbenutzername ist `pi`, und das Kennwort ist `raspberry`.
 
 
 ### <a name="configure-the-sample-application"></a>Konfigurieren der Beispielanwendung

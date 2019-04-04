@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 082a4fafe76631435b5969298b0a806565666956
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: a013c52d900f4882752d878d26c45069ba0879a4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259363"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56824282"
 ---
 > [!IMPORTANT]
-> Beim Erstellen durch den Benutzer zugewiesener Identitäten werden nur alphanumerische Zeichen (0-9, a-z, A-Z) und der Bindestrich (-) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS richtig funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](/azure/active-directory/managed-service-identity/known-issues).
+> Beim Erstellen durch den Benutzer zugewiesener Identitäten werden nur alphanumerische Zeichen (0-9, a-z, A-Z), der Unterstrich (\_) und der Bindestrich (-) unterstützt. Darüber hinaus sollten Namen mindestens 3 und bis zu 128 Zeichen enthalten, damit die Zuordnung zur VM/VMSS richtig funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](/azure/active-directory/managed-service-identity/known-issues).

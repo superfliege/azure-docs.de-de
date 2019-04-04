@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648615"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457805"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -175,7 +175,7 @@ Das folgende Beispiel zeigt den Abschnitt *properties.storageProfile.osDisk* fü
 Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträgers mit einer Vorlage finden Sie unter [Create a Virtual Machine from a Windows Image with multiple empty Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/) (Erstellen eines virtuellen Computers aus einem Windows-Image mit mehreren leeren Standard-SSD-Datenträgern).
 
 **Kann ich meine vorhandenen Laufwerke in Standard-SSD konvertieren?**
- Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
+Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
 -AccountType StandardSSD_LRS
 
 **Was ist der Vorteil der Verwendung von Standard-SSD-Datenträgern anstelle von HDD?**
@@ -347,7 +347,7 @@ Um für SSD Standard und HDD Standard mit großen Datenträgern (> 4 TB) einen D
 
 **In welchen Regionen werden Größen von mehr als 4 TiB für verwaltete Datenträger unterstützt?**
 
-Zu diesem Zeitpunkt werden in der Preview die verwalteten Datenträgergrößen in „USA, Westen-Mitte“, „Europa, Norden“, „Europa, Westen“, „USA, Westen 2“, „USA, Osten 2“, „USA, Osten“ unterstützt.
+Die Vorschau von verwalteten Datenträgern mit Größen jenseits von 4 TiB wird in allen Azure-Regionen für Produktionsumgebungen unterstützt, ausgenommen Gov, China und Deutschland. 
 
 **Wird die Aktivierung der Hostzwischenspeicherung auf den neueren Datenträgergrößen unterstützt?**
 

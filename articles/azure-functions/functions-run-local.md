@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9cfec02e2ea3496589474e61f583fb840a70f78d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813805"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881321"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -93,8 +93,8 @@ Die folgenden Schritte verwenden [APT](https://wiki.debian.org/Apt) zum Installi
 
     | Linux-Distribution | Version |
     | --------------- | ----------- |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.10    | `artful`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
@@ -156,7 +156,7 @@ In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-Ap
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
-Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#register-binding-extensions).
+Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](./functions-bindings-expressions-patterns.md).
 
 ## <a name="local-settings-file"></a>Datei für lokale Einstellungen
 
@@ -183,22 +183,22 @@ Die Datei „local.settings.json“ speichert App-Einstellungen, Verbindungszeic
 
 | Einstellung      | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
-| **IsEncrypted** | Wenn dies auf **TRUE** festgelegt wird, werden alle Werte mithilfe eines Schlüssels des lokalen Computers verschlüsselt. Wird mit `func settings`-Befehlen verwendet. Der Standardwert ist **false**. |
-| **Werte** | Eine Sammlung von Anwendungseinstellungen und Verbindungszeichenfolgen, die bei der lokalen Ausführung verwendet werden. Diese Werte entsprechen App-Einstellungen in Ihrer Funktions-App in Azure, z.B. **AzureWebJobsStorage** und **AzureWebJobsDashboard**. Viele Trigger und Bindungen verfügen über eine Eigenschaft, die auf eine App-Einstellung für die Verbindungszeichenfolge verweist, z.B. **Connection** für den [Blob Storage-Trigger](functions-bindings-storage-blob.md#trigger---configuration). Für solche Eigenschaften muss eine Anwendungseinstellung im Array **Values** definiert sein. <br/>**AzureWebJobsStorage** ist eine erforderliche App-Einstellung für andere Trigger als HTTP. Wenn der [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) lokal installiert ist, können Sie **AzureWebJobsStorage** auf `UseDevelopmentStorage=true` festlegen, und Core Tools verwendet den Emulator. Dies ist während der Entwicklung hilfreich, doch sollten Sie vor der Bereitstellung einen Test mit einer tatsächlichen Speicherverbindung durchführen. |
-| **Host** | Die Einstellungen in diesem Abschnitt passen den Hostprozess von Functions bei der lokalen Ausführung an. |
-| **LocalHttpPort** | Legt den Standardport fest, der bei der Ausführung des lokalen Functions-Host verwendet wird (`func host start` und `func run`). Die Befehlszeilenoption `--port` hat Vorrang vor diesem Wert. |
-| **CORS** | Definiert die für die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) zulässigen Ursprünge. Ursprünge werden als durch Trennzeichen getrennte Liste ohne Leerzeichen bereitgestellt. Den Platzhalterwert (\*) wird unterstützt, wodurch Anforderungen von einem beliebigen Ursprung zulässig sind. |
-| **ConnectionStrings** | Verwenden Sie diese Sammlung nicht für die Verbindungszeichenfolgen, die von Ihren Funktionsbindungen verwendet werden. Diese Sammlung wird nur von Frameworks verwendet, die Verbindungszeichenfolgen üblicherweise aus dem Abschnitt **ConnectionStrings** einer Konfigurationsdatei abrufen, z.B. [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Verbindungszeichenfolgen in diesem Objekt werden der Umgebung mit dem Anbietertyp [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) hinzugefügt. Elemente in dieser Sammlung werden nicht mit anderen App-Einstellungen in Azure veröffentlicht. Sie müssen diese Werte explizit zur Sammlung **Verbindungszeichenfolgen** in den Einstellungen Ihrer Funktions-App hinzufügen. Bei der Erstellung einer [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)-Klasse in Ihrem Funktionscode sollten Sie den Verbindungszeichenfolgenwert zusammen mit den anderen Verbindungen in den **Anwendungseinstellungen** speichern. |
+| **`IsEncrypted`** | Wenn diese Einstellung auf `true` festgelegt wird, werden alle Werte mithilfe eines Schlüssels des lokalen Computers verschlüsselt. Wird mit `func settings`-Befehlen verwendet. Der Standardwert ist `false`. |
+| **`Values`** | Eine Sammlung von Anwendungseinstellungen und Verbindungszeichenfolgen, die bei der lokalen Ausführung verwendet werden. Diese Werte entsprechen App-Einstellungen in Ihrer Funktions-App in Azure, z. B. [`AzureWebJobsStorage`]. Viele Trigger und Bindungen verfügen über eine Eigenschaft, die auf eine App-Einstellung für die Verbindungszeichenfolge verweist, z. B. `Connection` für den [Blob Storage-Trigger](functions-bindings-storage-blob.md#trigger---configuration). Für solche Eigenschaften muss eine Anwendungseinstellung im Array `Values` definiert sein. <br/>[`AzureWebJobsStorage`] ist eine erforderliche App-Einstellung für andere Trigger als HTTP. <br/>Für Version 2.x der Functions-Runtime ist die Einstellung [`FUNCTIONS_WORKER_RUNTIME`] erforderlich, die mit Core Tools für Ihr Projekt generiert wird. <br/> Wenn der [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) lokal installiert ist, können Sie [`AzureWebJobsStorage`] auf `UseDevelopmentStorage=true` festlegen, und Core Tools verwendet den Emulator. Dies ist während der Entwicklung hilfreich, doch sollten Sie vor der Bereitstellung einen Test mit einer tatsächlichen Speicherverbindung durchführen. |
+| **`Host`** | Die Einstellungen in diesem Abschnitt passen den Hostprozess von Functions bei der lokalen Ausführung an. |
+| **`LocalHttpPort`** | Legt den Standardport fest, der bei der Ausführung des lokalen Functions-Host verwendet wird (`func host start` und `func run`). Die Befehlszeilenoption `--port` hat Vorrang vor diesem Wert. |
+| **`CORS`** | Definiert die für die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) zulässigen Ursprünge. Ursprünge werden als durch Trennzeichen getrennte Liste ohne Leerzeichen bereitgestellt. Den Platzhalterwert (\*) wird unterstützt, wodurch Anforderungen von einem beliebigen Ursprung zulässig sind. |
+| **`ConnectionStrings`** | Verwenden Sie diese Sammlung nicht für die Verbindungszeichenfolgen, die von Ihren Funktionsbindungen verwendet werden. Diese Sammlung wird nur von Frameworks verwendet, die Verbindungszeichenfolgen üblicherweise aus dem Abschnitt `ConnectionStrings` einer Konfigurationsdatei abrufen, z. B. [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Verbindungszeichenfolgen in diesem Objekt werden der Umgebung mit dem Anbietertyp [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) hinzugefügt. Elemente in dieser Sammlung werden nicht mit anderen App-Einstellungen in Azure veröffentlicht. Sie müssen diese Werte explizit zur Sammlung `Connection strings` in den Einstellungen Ihrer Funktions-App hinzufügen. Bei der Erstellung einer [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)-Klasse in Ihrem Funktionscode sollten Sie den Verbindungszeichenfolgenwert zusammen mit den anderen Verbindungen in den **Anwendungseinstellungen** im Portal speichern. |
 
 Die Werte für Funktions-App-Einstellungen können auch im Code als Umgebungsvariablen gelesen werden. Weitere Informationen finden Sie im Abschnitt „Umgebungsvariablen“ dieser sprachspezifischen Referenzthemen:
 
-+ [Vorkompilierter C#-Code](functions-dotnet-class-library.md#environment-variables)
-+ [C#-Skript (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F#-Skript (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables)
-+ [JavaScript](functions-reference-node.md#environment-variables)
+* [Vorkompilierter C#-Code](functions-dotnet-class-library.md#environment-variables)
+* [C#-Skript (.csx)](functions-reference-csharp.md#environment-variables)
+* [F#-Skript (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [Java](functions-reference-java.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
-Wenn keine gültige Speicherverbindungszeichenfolge für **AzureWebJobsStorage** festgelegt ist und der Emulator nicht verwendet wird, erscheint die folgende Fehlermeldung:
+Wenn keine gültige Speicherverbindungszeichenfolge für [`AzureWebJobsStorage`] festgelegt ist und der Emulator nicht verwendet wird, wird die folgende Fehlermeldung angezeigt:
 
 > Missing value for AzureWebJobsStorage in local.settings.json (Fehlender Wert für AzureWebJobsStorage in local.settings.json). Dies ist für alle Nicht-HTTP-Trigger erforderlich. Sie können „func azure functionapp fetch-app-settings \<functionAppName\>“ ausführen oder eine Verbindungszeichenfolge in „local.settings.json“ angeben.
 
@@ -216,12 +216,12 @@ Auch wenn der Speicheremulator für die Entwicklung verwendet wird, empfiehlt es
 
 + Verwenden Sie Core Tools zum Herunterladen der Verbindungszeichenfolge aus Azure mit einem der folgenden Befehle:
 
-    + Herunterladen aller Einstellungen aus einer vorhandenen Funktions-App:
+  + Herunterladen aller Einstellungen aus einer vorhandenen Funktions-App:
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-    + Abrufen der Verbindungszeichenfolge für ein bestimmtes Speicherkonto:
+  + Abrufen der Verbindungszeichenfolge für ein bestimmtes Speicherkonto:
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
@@ -481,3 +481,5 @@ Um einen Fehler zu melden oder ein Feature anzufordern, [öffnen Sie ein GitHub-
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure-Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
+[FUNCTIONS_WORKER_RUNTIME]: functions-app-settings.md#functions_worker_runtime
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

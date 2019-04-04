@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6e57979e2c43cc47504495cce23947b93abb4020
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414932"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118798"
 ---
 # <a name="reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
 
@@ -47,7 +47,7 @@ Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie in Resource Manager zu dem Gateway des virtuellen Netzwerks, das Sie zurücksetzen möchten.
 2. Klicken Sie auf dem Blatt für das virtuelle Netzwerkgateway auf „Zurücksetzen“.
 
-  ![VPN Gateway zurücksetzen](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+   ![VPN Gateway zurücksetzen](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. Klicken Sie auf dem Blatt „Zurücksetzen“ auf die Schaltfläche **Zurücksetzen**.
 
 ## <a name="ps"></a>PowerShell
@@ -56,7 +56,7 @@ Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Das Cmdlet zum Zurücksetzen eines Gateways lautet **Reset-AzVirtualNetworkGateway**. Stellen Sie vor dem Zurücksetzen sicher, dass Sie die aktuelle Version der [Resource Manager-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/azurerm/install-Az-ps?view=azurermps-4.0.0) installiert haben. Im folgenden Beispiel wird das Gateway des virtuellen Netzwerks mit dem Namen „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt:
+Das Cmdlet zum Zurücksetzen eines Gateways lautet **Reset-AzVirtualNetworkGateway**. Stellen Sie vor dem Zurücksetzen sicher, dass Sie die aktuelle Version der [PowerShell-Az-Cmdlets](https://docs.microsoft.com/powershell/module/az.network) installiert haben. Im folgenden Beispiel wird das Gateway des virtuellen Netzwerks mit dem Namen „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1

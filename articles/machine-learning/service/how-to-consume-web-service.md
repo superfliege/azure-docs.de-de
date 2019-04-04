@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 03340dc8f3be2465f20756dc9799b9c1e4293521
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a862c920f1e070ab1bbb8af2546bc3d4350347b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417124"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889946"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
@@ -128,7 +128,7 @@ Der Webdienst kann mehrere Sätze von Daten in einer Anforderung akzeptieren. Er
 
 ### <a name="binary-data"></a>Binärdaten
 
-Wenn Ihr Modell Binärdaten (beispielsweise ein Bild) akzeptiert, müssen Sie die für Ihre Bereitstellung verwendete Datei `score.py` so ändern, dass sie HTTP-Rohanforderungen akzeptiert. Hier ist ein Beispiel für eine Datei `score.py`, die Binärdaten akzeptiert und die umgekehrten Bytes für POST-Anforderungen zurückgibt. Für GET-Anforderungen wird die vollständige URL im Antworttext zurückgegeben:
+Wenn Ihr Modell Binärdaten (beispielsweise ein Bild) akzeptiert, müssen Sie die für Ihre Bereitstellung verwendete Datei `score.py` so ändern, dass sie HTTP-Rohanforderungen akzeptiert. Hier ist ein Beispiel für eine Datei `score.py`, die Binärdaten akzeptiert:
 
 ```python 
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -142,14 +142,16 @@ def run(request):
     print("This is run()")
     print("Request: [{0}]".format(request))
     if request.method == 'GET':
+        # For this example, just return the URL for GETs
         respBody = str.encode(request.full_path)
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
         reqBody = request.get_data(False)
-        respBody = bytearray(reqBody)
-        respBody.reverse()
-        respBody = bytes(respBody)
-        return AMLResponse(respBody, 200)
+        # For a real world solution, you would load the data from reqBody 
+        # and send to the model. Then return the response.
+        
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
     else:
         return AMLResponse("bad request", 500)
 ```

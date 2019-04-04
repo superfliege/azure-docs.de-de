@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099000"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Anwenden von Systemupdates in Azure Security Center
 Azure Security Center überprüft virtuelle Computer (Virtual Machines, VMs) und physische Computer unter Windows und Linux täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen oder physischen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates.
@@ -43,7 +43,7 @@ In diesem Beispiel verwenden wir **Compute**.
     - Die Gesamtanzahl wichtiger Updates, die auf Ihren virtuellen und physischen Computern fehlen.
     - Die Gesamtanzahl von Sicherheitsupdates, die auf Ihren virtuellen und physischen Computern fehlen.
 
-  Im unteren Bereich des Dashboards werden alle fehlenden Updates für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt.  Die Liste enthält Folgendes:
+   Im unteren Bereich des Dashboards werden alle fehlenden Updates für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt.  Die Liste enthält Folgendes:
 
     - NAME: Der Name des fehlenden Updates.
     - ANZAHL VON VMs UND COMPUTERN: Die Gesamtzahl von VMs und Computern, auf denen dieses Update fehlt.
@@ -63,13 +63,13 @@ In diesem Beispiel verwenden wir **Compute**.
 
    ![Fehlendes Sicherheitsupdate][3]
 
-4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**.  Eine nach Computern mit dem fehlenden Update gefilterte Log Analytics-Suchabfrage wird geöffnet.
+4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**.  Eine nach Computern mit dem fehlenden Update gefilterte Suchabfrage aus Azure Monitor-Protokolle wird geöffnet.
 
-   ![Log Analytics-Suche][4]
+   ![Azure Monitor-Protokollsuche][4]
 
 5. Klicken Sie auf einen Computer in der Liste, um weitere Informationen zu erhalten. Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
 
-    ![Log Analytics-Suche][5]
+    ![Azure Monitor-Protokollsuche][5]
 
 ## <a name="reboot-after-system-updates"></a>Neustart nach Systemupdates
 1. Kehren Sie zum Blatt **Empfehlungen** zurück. Nach dem Anwenden von Systemupdates wird ein neuer Eintrag namens **Neustart nach Systemupdates**generiert. Dieser Eintrag informiert Sie darüber, dass der virtuelle Computer neu gestartet werden muss, um das Anwenden der Systemupdates abzuschließen.

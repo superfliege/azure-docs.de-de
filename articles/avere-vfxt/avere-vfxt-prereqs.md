@@ -4,14 +4,14 @@ description: Voraussetzungen für Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 5642f3acd108d0d3f504fc132522936d1b5ab870
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299204"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082584"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -57,7 +57,7 @@ Sie müssen über ein ausreichendes Kontingent für die folgenden Azure-Komponen
 
 |Azure-Komponente|Kontingent|
 |----------|-----------|
-|Virtuelle Computer|Mindestens drei (D16s_v3 oder E32s_v3)|
+|Virtuelle Computer|Mindestens drei E32s_v3|
 |SSD Premium-Speicher|200 GB Speicherplatz für das Betriebssystem plus 1 bis 4 TB Cachespeicherplatz pro Knoten |
 |Speicherkonto (optional) |V2|
 |Back-End-Datenspeicher (optional) |Ein neuer LRS-Blobcontainer |
@@ -151,6 +151,30 @@ Sie müssen die Clusterknotenrolle anlegen, bevor Sie den Avere vFXT for Azure-C
    ```
 
 Der Rollenname wird beim Erstellen des Clusters verwendet. In diesem Beispiel lautet der Name ``avere-operator``.
+
+## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Erstellen eines Speicherdienstendpunkts in Ihrem virtuellen Netzwerk (falls erforderlich)
+
+Ein [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) sorgt dafür, dass der Azure Blob-Datenverkehr lokal bleibt, anstatt ihn außerhalb des virtuellen Netzwerks weiterzuleiten. Er wird für alle Avere vFXT for Azure-Cluster empfohlen, bei denen Azure Blob Storage für den Back-End-Datenspeicher verwendet wird. 
+
+Wenn Sie ein vorhandenes VNET angeben und einen neuen Azure-Blobcontainer für den Back-End-Speicher als Teil der Clustererstellung erstellen, müssen Sie über einen Dienstendpunkt im VNET für Microsoft Storage verfügen. Dieser Endpunkt muss vor dem Erstellen des Clusters vorhanden sein, andernfalls treten bei der Erstellung Fehler auf. 
+
+Ein Speicherdienstendpunkt wird für alle Avere vFXT for Azure-Cluster empfohlen, bei denen Azure Blob Storage verwendet wird, auch wenn der Speicher später hinzugefügt wird. 
+
+> [!TIP] 
+> * Überspringen Sie diesen Schritt, wenn Sie ein neues virtuelles Netzwerk als Teil der Clustererstellung erstellen. 
+> * Dieser Schritt ist optional, wenn Sie bei der Clustererstellung keinen Blobspeicher erstellen. In diesem Fall können Sie den Dienstendpunkt später erstellen, wenn Sie Azure Blob Storage verwenden möchten.
+
+Erstellen Sie den Speicherdienstendpunkt über das Azure-Portal. 
+
+1. Klicken Sie im Portal links auf **Virtuelle Netzwerke**.
+1. Wählen Sie das VNET für den Cluster aus. 
+1. Klicken Sie links auf **Dienstendpunkte**.
+1. Klicken Sie oben auf **Hinzufügen**.
+1. Übernehmen Sie den Dienst ``Microsoft.Storage`` unverändert, und wählen Sie das Subnetz des Clusters aus.
+1. Klicken Sie unten auf **Hinzufügen**.
+
+   ![Screenshot für das Azure-Portal mit Anmerkungen für die Schritte zum Erstellen des Dienstendpunkts](media/avere-vfxt-service-endpoint.png)
+
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Nächster Schritt: Erstellen des vFXT-Clusters
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: eac9f80e4b57c725de3bc05f55e09d49fb8e2ee5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004610"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -48,7 +48,7 @@ ms.locfileid: "55745017"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -347,7 +347,7 @@ Erstellen Sie als zweites Volume **Volume2**. Führen Sie das folgende PowerShel
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![Abbildung 5: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts 2][sap-ha-guide-figure-8016]
+![Abbildung 5: Zweites Volume2 im Failovercluster-Manager][sap-ha-guide-figure-8016]
 
 _**Abbildung 5:** Zweites Volume2 im Failovercluster-Manager_
 
@@ -403,26 +403,31 @@ Klicken Sie mit der rechten Maustaste auf die SOFS-Clustergruppe **sapglobal2**,
 _**Abbildung 6:** Starten des Assistenten „Dateifreigabe hinzufügen“_
 
 <br>
+
 ![Abbildung 7: Auswählen von „SMB-Freigabe – Schnell“][sap-ha-guide-figure-8018]
 
 _**Abbildung 7:** Auswählen von „SMB-Freigabe – Schnell“_
 
 <br>
+
 ![Abbildung 8: Auswählen von „sapglobalhost2“ und Eingeben des Pfads auf Volume2][sap-ha-guide-figure-8019]
 
 _**Abbildung 8:** Auswählen von „sapglobalhost2“ und Eingeben des Pfads auf Volume2_
 
 <br>
+
 ![Abbildung 9: Festlegen des Dateifreigabenamens auf „sapmnt“][sap-ha-guide-figure-8020]
 
 _**Abbildung 9:** Festlegen des Dateifreigabenamens auf „sapmnt“_
 
 <br>
+
 ![Abbildung 10: Deaktivieren aller Einstellungen][sap-ha-guide-figure-8021]
 
 _**Abbildung 10:** Deaktivieren aller Einstellungen_
 
 <br>
+
 Weisen Sie folgenden Elementen *Vollzugriff* auf Dateien und die Freigabe „sapmnt“ zu:
 * Domänenbenutzergruppe **SAP_\<SID>_GlobalAdmin**
 * Computerobjekt der ASCS/SCS-Clusterknoten **ascs-1$** und **ascs-2$**
@@ -432,16 +437,19 @@ Weisen Sie folgenden Elementen *Vollzugriff* auf Dateien und die Freigabe „sap
 _**Abbildung 11:** Zuweisen von Vollzugriffsberechtigungen für Benutzergruppen und Computerkonten_
 
 <br>
+
 ![Abbildung 12: Auswählen von „Erstellen“][sap-ha-guide-figure-8023]
 
 _**Abbildung 12:** Auswählen von „Erstellen“_
 
 <br>
+
 ![Abbildung 13: Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt][sap-ha-guide-figure-8024]
 
 _**Abbildung 13:** Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt_
 
 <br>
+
 ## <a name="install-sap-netweaver-multi-sid"></a>Installieren von SAP NetWeaver-Multi-SID
 
 ### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Installieren von SAP-\<SID2>-ASCS/SCS- und -ERS-Instanzen
@@ -453,7 +461,7 @@ Installieren Sie DBMS und SAP-Anwendungsserver nach der oben beschriebenen Vorge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]:  offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
+* [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]: offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
 
 * [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
 

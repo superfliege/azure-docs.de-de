@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 539a7fc5b9d3038424059f1ee599c6966a968781
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079144"
 ---
 # <a name="filters-in-azure-search"></a>Filter in Azure Search 
 
@@ -32,17 +32,17 @@ Es folgen Beispielszenarien:
 
 1. Verwenden Sie einen Filter, um Ihren Index anhand von Datenwerten im Index zu segmentieren. Anhand eines Schemas mit Stadt, Gebäudetyp und Ausstattung können Sie einen Filter erstellen, um Dokumente explizit auszuwählen, die Ihren Kriterien entsprechen (in Seattle, Eigentumswohnungen, am Wasser). 
 
-  Eine Volltextsuche mit den gleichen Eingaben führt oft zu ähnlichen Ergebnissen, doch ein Filter ist insofern präziser, als er eine exakte Übereinstimmung des Filterbegriffs mit dem Inhalt in Ihrem Index fordert. 
+   Eine Volltextsuche mit den gleichen Eingaben führt oft zu ähnlichen Ergebnissen, doch ein Filter ist insofern präziser, als er eine exakte Übereinstimmung des Filterbegriffs mit dem Inhalt in Ihrem Index fordert. 
 
 2. Verwenden Sie einen Filter, wenn die Suchoberfläche eine Filteranforderung aufweist:
 
- * [Facettennavigation](search-faceted-navigation.md) verwendet einen Filter, um die vom Benutzer gewählte Facettenkategorie zurückzugeben.
- * Die geografische Suche verwendet einen Filter, um Koordinaten des aktuellen Standorts an Apps des Typs „In meiner Nähe finden“ zu übergeben. 
- * Sicherheitsfilter übergeben Sicherheitsbezeichner als Filterkriterien, wobei eine Übereinstimmung im Index als Proxy für Zugriffsrechte für das Dokument dient.
+   * [Facettennavigation](search-faceted-navigation.md) verwendet einen Filter, um die vom Benutzer gewählte Facettenkategorie zurückzugeben.
+   * Die geografische Suche verwendet einen Filter, um Koordinaten des aktuellen Standorts an Apps des Typs „In meiner Nähe finden“ zu übergeben. 
+   * Sicherheitsfilter übergeben Sicherheitsbezeichner als Filterkriterien, wobei eine Übereinstimmung im Index als Proxy für Zugriffsrechte für das Dokument dient.
 
 3. Verwenden Sie einen Filter, wenn Suchkriterien für ein numerisches Feld gewünscht sind. 
 
-  Numerische Felder sind im Dokument abrufbar und können in Suchergebnissen angezeigt werden, sind aber (bei einer Volltextsuche) nicht einzeln durchsuchbar. Wenn Sie Auswahlkriterien basierend auf numerischen Daten benötigen, verwenden Sie einen Filter.
+   Numerische Felder sind im Dokument abrufbar und können in Suchergebnissen angezeigt werden, sind aber (bei einer Volltextsuche) nicht einzeln durchsuchbar. Wenn Sie Auswahlkriterien basierend auf numerischen Daten benötigen, verwenden Sie einen Filter.
 
 ### <a name="alternative-methods-for-reducing-scope"></a>Alternative Methoden zum Verkleinern des Suchbereichs
 
@@ -141,10 +141,8 @@ Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. 
 
 Wenn ein Feld nicht filterbar ist und filterbar sein soll, müssen Sie ein neues Feld hinzufügen oder das vorhandene Feld neu erstellen. Durch das Ändern einer Felddefinition wird die physische Struktur des Indexes geändert. In Azure Search werden alle zulässigen Zugriffspfade für eine hohe Abfragegeschwindigkeit indiziert, was einen Neuaufbau der Datenstrukturen erforderlich macht, sobald sich Felddefinitionen ändern. 
 
-Das Neuerstellen einzelner Felder kann ein Vorgang mit geringer Auswirkung sein, der nur einen Zusammenführungsvorgang erfordert. Dabei werden der vorhandene Dokumentschlüssel und die zugehörigen Werte an den Index gesendet, sodass der Rest jedes Dokuments erhalten bleibt. Wenn sich eine Neuerstellungsanforderung ergibt, finden Sie Anweisungen unter den folgenden Links:
+Das Neuerstellen einzelner Felder kann ein Vorgang mit geringer Auswirkung sein, der nur einen Zusammenführungsvorgang erfordert. Dabei werden der vorhandene Dokumentschlüssel und die zugehörigen Werte an den Index gesendet, sodass der Rest jedes Dokuments erhalten bleibt. Wenn eine Neuerstellung erforderlich ist, finden Sie unter [Indizierungsaktionen (upload, merge, mergeOrUpload, delete)](search-what-is-data-import.md#indexing-actions) eine Liste mit Optionen.
 
- + [Indizierungsaktionen mit dem SDK für .NET](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [Indizierungsaktionen mit der REST-API](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>Grundlegendes zu Textfiltern
 

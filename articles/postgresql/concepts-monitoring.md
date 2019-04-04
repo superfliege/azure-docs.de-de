@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: c936d7946398183f0b0aac025503bb172bc147af
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101004"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098490"
 ---
 # <a name="monitor-and-tune"></a>Überwachen und Optimieren
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das
 Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 
 |Metrik|Metrikanzeigename|Unit|BESCHREIBUNG|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|CPU in Prozent|Prozent|Die CPU-Auslastung in Prozent|
 |memory_percent|Arbeitsspeicher in Prozent|Prozent|Die Arbeitsspeicherauslastung in Prozent|
 |io_consumption_percent|E/A in Prozent|Prozent|Die E/A-Auslastung in Prozent|
@@ -40,7 +40,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers.|
 
 ## <a name="server-logs"></a>Serverprotokolle
-Sie können die Protokollierung auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs und Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
+Sie können die Protokollierung auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md), Event Hubs und im Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="query-store"></a>Abfragespeicher
 [Abfragespeicher](concepts-query-store.md) ist ein Feature der öffentlichen Vorschau, das die Abfrageleistung im Zeitablauf verfolgt, einschließlich Statistiken zur Abfrageausführungszeit und Warteereignissen. Das Feature speichert Informationen zur Leistung der Abfrageausführungszeit in einer Systemdatenbank namens **azure_sys** unter dem Schema „query_store“ persistent. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.

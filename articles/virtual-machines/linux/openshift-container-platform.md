@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/04/2018
 ms.author: haroldw
-ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1d869d822cdeb0051836a5fc5f01eb69c523f9e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995548"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Bereitstellen von OpenShift Container Platform in Azure
 
@@ -53,7 +53,7 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "masterVmSize": {
@@ -265,11 +265,11 @@ Die einfachste Möglichkeit, OpenShift Container Platform in Azure bereitzustell
 Auch wenn dies die einfachste Option ist, bietet sie begrenzte Anpassungsmöglichkeiten. Das Marketplace-Angebot umfasst folgende Konfigurationsoptionen:
 
 - **Masterknoten**: Drei Masterknoten mit konfigurierbarem Instanztyp.
-- **Infrastrukturknoten**:  Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
+- **Infrastrukturknoten:** Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
 - **Knoten**: Knotenanzahl (zwischen zwei und neun) und Instanztyp sind konfigurierbar.
 - **Datenträgertyp**: Managed Disks wird verwendet.
 - **Netzwerk**: Unterstützung eines neuen oder bereits vorhandenen Netzwerks sowie eines benutzerdefinierten CIDR-Bereichs.
-- **CNS**:  CNS kann aktiviert werden.
+- **CNS:** CNS kann aktiviert werden.
 - **Metriken**: Metriken können aktiviert werden.
 - **Protokollierung:** Protokollierung kann aktiviert werden.
 - **Azure-Cloudanbieter**: Kann aktiviert werden.

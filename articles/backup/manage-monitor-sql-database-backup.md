@@ -1,90 +1,57 @@
 ---
 title: Verwalten und Überwachen von SQL Server-Datenbanken auf einer mit Azure Backup gesicherten Azure-VM | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einer Azure-VM ausgeführt und mit Azure Backup gesichert werden.
+description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
 services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/19/2018
+ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: 1c2ce0ba42f0bc3efd1dcc951113b05ab6941b98
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 500986478e554a3a114d11ee4b25ea40b5decd97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004133"
 ---
-# <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken 
+# <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
 
-In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung von SQL Server-Datenbanken beschrieben, die auf einer Azure-VM ausgeführt werden, welche mit dem [Azure Backup](backup-overview.md)-Dienst in einem Azure Backup Recovery Services-Tresor gesichert wird. Zu diesen Aufgaben gehören das Überwachen von Aufträgen und Warnungen, das Beenden und Fortsetzen des Datenbankschutzes, das Ausführen von Sicherungsaufträgen und das Aufheben der Registrierung eines virtuellen Computers bei einer Sicherung.
+In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung von SQL Server-Datenbanken beschrieben, die auf einem virtuellen Azure-Computer (Virtual Machine, VM) ausgeführt und mit dem [Azure Backup](backup-overview.md)-Dienst in einem Azure Backup Recovery Services-Tresor gesichert werden. Sie erfahren, wie Sie Aufträge und Warnungen überwachen, Datenbankschutz beenden und fortsetzen, Sicherungsaufträge ausführen und die Registrierung einer VM für Sicherungen aufheben.
 
+Wenn Sie noch keine Sicherungen für Ihre SQL Server-Datenbanken konfiguriert haben, finden Sie Näheres dazu unter [Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern](backup-azure-sql-database.md).
 
-> [!NOTE]
-> Die Sicherung von SQL Server-Datenbanken auf einer Azure-VM mit Azure Backup befindet sich derzeit in der öffentlichen Vorschau.
+## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Überwachen manueller Sicherungsaufträge im Portal
 
+Azure Backup zeigt alle manuell ausgelösten Aufträge im Portal **Sicherungsaufträge** an. Zu den Aufträgen, die in diesem Portal angezeigt werden, gehören Datenbankermittlung und -registrierung sowie Sicherungs- und Wiederherstellungsvorgänge.
 
-Wenn Sie für die SQL Server-Datenbanken keine Sicherung konfiguriert haben, befolgen Sie die Anweisungen in [diesem Artikel](backup-azure-sql-database.md).
-
-## <a name="monitor-backup-jobs"></a>Überwachen von Sicherungsaufträgen
-
-###  <a name="monitor-ad-hoc-jobs-in-the-portal"></a>Überwachen von Ad-hoc-Aufträgen im Portal
-
-Azure Backup zeigt alle manuell ausgelösten Aufträge im Portal für **Sicherungsaufträge** an, darunter das Ermitteln und Registrieren von Datenbanken sowie Sicherungs- und Wiederherstellungsvorgänge.
-
-![Portal „Sicherungsaufträge“](./media/backup-azure-sql-database/jobs-list.png)
+![Das Portal „Sicherungsaufträge“](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> Geplante Sicherungsaufträge werden im Portal für **Sicherungsaufträge** nicht angezeigt. Verwenden Sie SQL Server Management Studio, um geplante Sicherungsaufträge zu überwachen, wie im nächsten Abschnitt beschrieben.
+> Im Portal **Sicherungsaufträge** werden keine geplanten Sicherungsaufträge angezeigt. Verwenden Sie SQL Server Management Studio, um geplante Sicherungsaufträge zu überwachen, wie im nächsten Abschnitt beschrieben.
 >
 
-### <a name="monitor-backup-jobs-with-sql-server-management-studio"></a>Überwachen von Sicherungsaufträgen mit SQL Server Management Studio 
+Ausführliche Informationen zu Überwachungsszenarios finden Sie unter [Monitoring in Azure Portal](backup-azure-monitoring-built-in-monitor.md) (Überwachung im Azure-Portal) und [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Überwachung mithilfe von Azure Monitor).  
 
-Azure Backup nutzt für alle Sicherungsvorgänge native SQL-APIs.
-
-Mit den nativen APIs können Sie alle Auftragsinformationen aus der [SQL-Sicherungssatztabelle](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) in der MSDB-Datenbank abrufen.
-
-Das folgende Beispiel zeigt eine Abfrage zum Abrufen aller Sicherungsaufträge für eine Datenbank mit dem Namen **DB1**. Passen Sie die Abfrage für eine erweiterte Überwachung an.
-
-```
-select CAST (
-Case type
-                when 'D' 
-                                 then 'Full'
-                when  'I'
-                               then 'Differential' 
-                ELSE 'Log'
-                END         
-                AS varchar ) AS 'BackupType',
-database_name, 
-server_name,
-machine_name,
-backup_start_date,
-backup_finish_date,
-DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
-backup_size AS BackupSizeInBytes
-  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
-
-```
 
 ## <a name="view-backup-alerts"></a>Anzeigen von Sicherungswarnungen
 
-Da Protokollsicherungen alle 15 Minuten stattfinden, kann die Überwachung von Sicherungsaufträgen mühsam sein. Azure Backup erleichtert die Überwachung mithilfe von E-Mail-Warnungen.
+Da Protokollsicherungen alle 15 Minuten stattfinden, kann die Überwachung von Sicherungsaufträgen mühsam sein. Azure Backup erleichtert die Überwachung durch Senden von E-Mail-Warnungen. E-Mail-Warnungen werden:
 
-- Für alle Sicherungsfehler werden Warnungen ausgelöst.
-- Benachrichtigungen werden auf Datenbankebene nach Fehlercode konsolidiert.
-- Eine E-Mail-Benachrichtigung wird nur für den ersten Sicherungsfehler in einer Datenbank gesendet. 
+- Für alle Sicherungsfehler ausgelöst.
+- Auf Datenbankebene nach Fehlercode konsolidiert.
+- Nur beim ersten Sicherungsfehler einer Datenbank gesendet.
 
-So überwachen Sie Sicherungswarnungen
+So überwachen Sie Datenbanksicherungswarnungen:
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement im [Azure-Portal](https://portal.azure.com) an, um Datenbankwarnungen zu überwachen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie im Tresordashboard **Warnungen und Ereignisse** aus.
 
    ![Auswählen von „Warnungen und Ereignisse“](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-4. Wählen Sie unter **Warnungen und Ereignisse** die Option **Sicherungswarnungen** aus.
+3. Wählen Sie unter **Warnungen und Ereignisse** die Option **Sicherungswarnungen** aus.
 
    ![Auswählen von „Sicherungswarnungen“](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -93,49 +60,45 @@ So überwachen Sie Sicherungswarnungen
 Sie können die Sicherung einer SQL Server-Datenbank auf verschiedene Arten beenden:
 
 * Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte
-* Beenden aller zukünftigen Sicherungsaufträge und Beibehalten der Wiederherstellungspunkte
+* Beenden aller zukünftigen Sicherungsaufträge und Beibehalten der Wiederherstellungspunkte.
 
-Beachten Sie Folgendes:
+Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachten:
 
-Wenn Sie die Wiederherstellungspunkte beibehalten, werden die Punkte in Übereinstimmung mit der Sicherungsrichtlinie bereinigt. Es fallen Gebühren für die geschützte Instanz und den genutzten Speicher an, bis alle Wiederherstellungspunkte bereinigt wurden. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/backup/) zu den Preisen.
-- Wenn Sie Wiederherstellungspunkte beibehalten, obwohl sie gemäß der Aufbewahrungsrichtlinie ablaufen, speichert Azure Backup immer einen letzten Wiederherstellungspunkt, bis Sie die Sicherungsdaten explizit löschen.
-- Wenn Sie eine Datenquelle löschen, ohne die Sicherung zu beenden, treten bei neuen Sicherungen Fehler auf. In diesem Fall laufen alte Wiederherstellungspunkte gemäß der Richtlinie ab, aber ein letzter Wiederherstellungspunkt wird immer beibehalten, bis Sie die Sicherung beenden und die Daten löschen.
-- Sie können die Sicherung für eine Datenbank, die für den automatischen Schutz aktiviert ist, erst beenden, wenn der automatische Schutz deaktiviert wurde.
+* Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die Bereinigung endet mit der Beendung des Schutzes unter Beibehaltung der Daten.
+* Ihnen werden die geschützte Instanz und der verbrauchte Speicher in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/).
+* Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf.
 
 Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
-1. Wählen Sie im Dashboard des Tresors unter **Nutzung** die Option **Sicherungselemente** aus.
+1. Wählen Sie auf dem Tresordashboard die Option **Sicherungselemente** aus.
 
-    ![Öffnen des Menüs „Sicherungselemente“](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
-
-2. Wählen Sie unter **Sicherungsverwaltungstyp** die Option **SQL Server in Azure-VM** aus.
+2. Wählen Sie unter **Backup Management Type** (Sicherungsverwaltungstyp) die Option **SQL in Azure VM** (SQL Server in Azure-VM) aus.
 
     ![Auswählen von „SQL Server in Azure-VM“](./media/backup-azure-sql-database/sql-restore-backup-items.png)
-
 
 3. Wählen Sie die Datenbank aus, für die Sie den Schutz beenden möchten.
 
     ![Auswählen der Datenbank zum Beenden des Schutzes](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-
-5. Wählen Sie im Datenbankmenü **Sicherung beenden** aus.
+4. Wählen Sie im Datenbankmenü **Sicherung beenden** aus.
 
     ![Auswählen von „Sicherung beenden“](./media/backup-azure-sql-database/stop-db-button.png)
 
 
-6. Wählen Sie im Menü **Sicherung beenden** aus, ob Daten beibehalten oder gelöscht werden sollen. Geben Sie optional einen Grund und einen Kommentar ein.
+5. Wählen Sie im Menü **Sicherung beenden** aus, ob Daten beibehalten oder gelöscht werden sollen. Geben Sie bei Bedarf einen Grund und einen Kommentar ein.
 
-    ![Menü „Sicherung beenden“](./media/backup-azure-sql-database/stop-backup-button.png)
+    ![Beibehalten oder Löschen von Daten im Menü „Sicherung beenden“](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. Klicken Sie auf **Sicherung beenden**.
+6. Wählen Sie **Sicherung beenden** aus.
 
-  
 
-### <a name="resume-protection-for-a-sql-database"></a>Fortsetzen des Schutzes für eine SQL-­Datenbank-Instanz
+## <a name="resume-protection-for-a-sql-database"></a>Fortsetzen des Schutzes für eine SQL-­Datenbank-Instanz
 
-Wenn Sie beim Beenden des Schutzes für die SQL-Datenbank die Option **Sicherungsdaten beibehalten** auswählen, wird der Schutz fortgesetzt. Wenn die Sicherungsdaten nicht beibehalten wurden, kann der Schutz nicht fortgesetzt werden.
+Wenn Sie beim Beenden des Schutzes für die SQL-Datenbank die Option **Sicherungsdaten beibehalten** auswählen, können Sie den Schutz später fortsetzen. Wenn Sie die Sicherungsdaten nicht beibehalten, können Sie den Schutz nicht fortsetzen.
 
-1. Um den Schutz für die SQL-Datenbank fortzusetzen, öffnen Sie das Sicherungselement, und wählen Sie **Sicherung fortsetzen** aus.
+So setzen Sie den Schutz für eine SQL-­Datenbank fort:
+
+1. Öffnen Sie das Sicherungselement, und wählen Sie **Sicherung fortsetzen** aus.
 
     ![Auswählen von „Sicherung fortsetzen“, um den Datenbankschutz fortzusetzen](./media/backup-azure-sql-database/resume-backup-button.png)
 
@@ -150,13 +113,13 @@ Sie können verschiedene Arten von bedarfsgesteuerten Sicherungen ausführen:
 * Differenzielle Sicherung
 * Protokollsicherung
 
-[Erfahren Sie mehr](backup-architecture.md#sql-server-backup-types) über SQL Server-Sicherungstypen.
+Weitere Informationen finden Sie unter [Typen von SQL Server-Sicherungen](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Registrierung einer SQL Server-Instanz aufheben
 
-Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz deaktiviert haben und bevor Sie den Tresor löschen:
+Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz deaktiviert haben, aber bevor Sie den Tresor löschen:
 
-1. Wählen Sie im Dashboard des Tresors unter **Verwalten** die Option **Sicherungsinfrastruktur** aus.  
+1. Wählen Sie auf dem Tresordashboard unter **Verwalten** die Option **Sicherungsinfrastruktur** aus.  
 
    ![Auswählen von „Sicherungsinfrastruktur“](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
@@ -164,14 +127,18 @@ Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz
 
    ![Auswählen von „Geschützte Server“](./media/backup-azure-sql-database/protected-servers.png)
 
-
 3. Wählen Sie unter **Geschützte Server** den Server aus, dessen Registrierung Sie aufheben möchten. Um den Tresor zu löschen, müssen Sie die Registrierung aller Server aufheben.
 
 4. Klicken Sie mit der rechten Maustaste auf den geschützten Server und dann auf **Löschen**.
 
    ![Auswählen von „Löschen“](./media/backup-azure-sql-database/delete-protected-server.png)
 
+## <a name="re-register-extension-on-the-sql-server-vm"></a>Erneutes Registrieren einer Erweiterung auf der SQL Server-VM
+
+Manchmal kann die Workload-Erweiterung auf der VM aus irgendeinem Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Bei der **Neuregistrierung** wird die Workloadsicherungserweiterung erneut auf der VM installiert, damit die Vorgänge fortgesetzt werden können.  <br>
+
+Es wird empfohlen, diese Option mit Vorsicht zu verwenden. Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Deshalb sollten Sie vor dem Auslösen der erneuten Registrierung überprüfen, ob ein oder mehrere [Symptome](backup-sql-server-azure-troubleshoot.md#symptoms) vorhanden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Lesen Sie](backup-sql-server-azure-troubleshoot.md) Problembehandlungsinformationen für die SQL Server-Datenbanksicherung.
+Weitere Informationen finden Sie unter [Problembehandlung zum Sichern von SQL Server in Azure](backup-sql-server-azure-troubleshoot.md).

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/01/2019
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896008"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878080"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
@@ -375,7 +375,7 @@ Mithilfe von Service Bus-Themen können Benutzer über Ereignisse in Blockchain 
 
 ## <a name="notification-message-reference"></a>Referenz zur Benachrichtigungsnachricht
 
-Abhängig von **OperationName** weisen die Benachrichtigungen einen der folgenden Nachrichtentypen auf:
+Abhängig von **messageName** weisen die Benachrichtigungen einen der folgenden Nachrichtentypen auf.
 
 ### <a name="block-message"></a>Blocknachricht
 

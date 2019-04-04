@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: 1e8e9365567c19400b86dc60d966eb965b83591d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281749"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110816"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -48,14 +48,14 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
     ![Screenshot der Seite „Erste Schritte“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Individual Files and Folders (Einzelne Dateien und Ordner)** > **Weiter** aus.
+4. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Einzelne Dateien und Ordner**>**Weiter** aus.
 
     ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
-  > [!IMPORTANT]
-  > Für die Option zum Wiederherstellen von einzelnen Dateien und Ordnern ist .NET Framework 4.5.2 oder höher erforderlich. Falls die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
+   > [!IMPORTANT]
+   > Für die Option zum Wiederherstellen von einzelnen Dateien und Ordnern ist .NET Framework 4.5.2 oder höher erforderlich. Falls die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
 
-  > [!TIP]
-  > Die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien bis maximal 80 GB und bietet während der Wiederherstellung Übertragungs- oder Kopiergeschwindigkeiten von bis zu 6 MB/s. Die Option **Volume** stellt alle gesicherten Daten auf einem angegebenen Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 60 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
+   > [!TIP]
+   > Die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien bis maximal 80 GB und bietet während der Wiederherstellung Übertragungs- oder Kopiergeschwindigkeiten von bis zu 6 MB/s. Die Option **Volume** stellt alle gesicherten Daten auf einem angegebenen Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 60 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
 
 5. Wählen Sie auf der Seite **Volume und Datum auswählen** das Volume aus, das die wiederherzustellenden Dateien und Ordner enthält.
 

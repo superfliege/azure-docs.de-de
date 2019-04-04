@@ -1,21 +1,21 @@
 ---
-title: Azure Batch-Dienst für Machine Learning Studio-Aufträge
+title: Azure Batch-Dienstaufträge
 titleSuffix: Azure Machine Learning Studio
-description: Übersicht über Azure Batch-Dienste für Machine Learning-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
+description: Übersicht über Azure Batch-Dienste für Machine Learning Studio-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 55961895dde7cb2770f2180911a78f1e31c741e3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 24efa3caba3918a38c09b1c921c600b117dedbc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697499"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871374"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Batch-Dienst für Azure Machine Learning Studio-Aufträge
 

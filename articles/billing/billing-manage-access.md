@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 516d8e9116bbdcd421897b5a5c2d9755e7e636c8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838254"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -106,4 +106,4 @@ Der Kontoadministrator ist der rechtmäßige Besitzer des Abonnements. Standardm
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

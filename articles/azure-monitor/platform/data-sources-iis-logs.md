@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: ca951c813554ae253cbd572e03c53b8687499af9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 94bdc0670fb63b1b4c306a5af3357f437784338c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007930"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Sammeln von IIS-Protokollen in Azure Monitor
 IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt und als [Protokolldaten](data-collection.md) gespeichert werden können.
@@ -72,7 +72,7 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 | W3CIISLog |Alle IIS-Protokolldatensätze. |
 | W3CIISLog &#124; where scStatus==500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |
 | W3CIISLog &#124; summarize count() by cIP |Anzahl der IIS-Protokolleinträge nach Client-IP-Adresse. |
-| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |Anzahl der IIS-Protokolleinträge nach URL für den Host www\.contoso.com. |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
 
 ## <a name="next-steps"></a>Nächste Schritte

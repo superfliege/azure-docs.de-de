@@ -3,15 +3,15 @@ title: Konfigurieren von Avere vFXT-Speicher – Azure
 description: Hinzufügen eines Back-End-Speichersystems zu Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: procedural
+ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813227"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078810"
 ---
 # <a name="configure-storage"></a>Konfigurieren des Speichers
 
@@ -72,7 +72,7 @@ Fahren Sie anschließend mit dem [Erstellen einer Verbindung](#create-a-junction
 Um den Azure-BLOB-Speicher als Back-End-Speicher Ihres vFXT-Clusters zu verwenden, benötigen Sie einen leeren Container, den Sie als Kernspeichereinheit hinzufügen können.
 
 > [!TIP] 
-> Wenn Sie einen Blob-Container gleichzeitig mit Ihrem Avere vFXT-Cluster erstellen, erstellt die Bereitstellungsvorlage oder das Skript einen Speichercontainer, definiert ihn als Kernspeichereinheit und erstellt die Namespaceverbindung als Teil der vFXT-Clustererstellung. 
+> Wenn Sie einen Blob-Container gleichzeitig mit Ihrem Avere vFXT-Cluster erstellen, erstellt die Bereitstellungsvorlage oder das Skript einen Speichercontainer, definiert ihn als Kernspeichereinheit und erstellt die Namespaceverbindung als Teil der vFXT-Clustererstellung. Mit der Vorlage wird zudem ein Speicherdienstendpunkt im virtuellen Netzwerk des Clusters erstellt. 
 
 Das Hinzufügen von Blob-Speicher zu Ihrem Cluster erfordert folgende Aufgaben:
 
@@ -149,7 +149,7 @@ Führen Sie die folgenden Schritte aus, um nach der Erstellung des Clusters Blob
    * Optional können Sie **Verschlüsselungstyp** auf **Kein** festlegen.  Azure Storage ist standardmäßig verschlüsselt.
    * Klicken Sie auf **Speichereinheit hinzufügen**.
 
-  Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen Cloudkernspeichereinheit](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) in der Anleitung zur Clusterkonfiguration von Avere. 
+   Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen Cloudkernspeichereinheit](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) in der Anleitung zur Clusterkonfiguration von Avere. 
 
 Die Seite wird aktualisiert, oder Sie können die Seite aktualisieren, um Ihre neue Kernspeichereinheit anzuzeigen.
 

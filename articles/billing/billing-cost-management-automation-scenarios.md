@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: a20ec22bee17bd73df24a6a0653e458241f90cfc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746437"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861994"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatisierungsszenarien zur Abrechnungs- und Kostenverwaltung
 
@@ -143,4 +143,4 @@ Diese APIs stellen ähnliche Datasets bereit, sind jedoch auf unterschiedliche Z
 
 - Um Ihre Rechnung mit der Datei mit den ausführlichen Daten zur täglichen Nutzung und den Kostenverwaltungsberichten im Azure-Portal zu vergleichen, lesen Sie [Grundlegendes zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md).
 
-- Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

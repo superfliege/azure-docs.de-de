@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 78d85239e1e82c290b210d33d3ca7000d6a05a1f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5d8b3b91771fda3a714112979b8bf9df39c4a9b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088688"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung
 
@@ -102,8 +102,8 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 
 - **Lösung**. Generieren Sie die Windows Installer-Protokolle, und untersuchen Sie diese, um die genaue Fehlerursache zu finden. Sie können die Protokollierung über eine Eingabeaufforderung aktivieren. Wenn Sie beispielsweise `SQLDataSyncAgent-2.0-x86-ENU.msi` als Installationsdatei heruntergeladen haben, generieren und untersuchen Sie die Protokolldateien mithilfe der folgenden Befehlszeilen:
 
-    -   Für Installationen: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-    -   Für Deinstallationen: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Für Installationen: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Für Deinstallationen: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Sie können die Protokollierung auch für alle mit Windows Installer durchgeführten Installationen aktivieren. Im Microsoft Knowledge Base-Artikel [Aktivieren der Windows Installer-Protokollierung](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) erfahren Sie, wie Sie die Protokollierung für Windows Installer mit nur einem Klick aktivieren. Dort finden Sie auch Informationen zum Speicherort der Protokolle.
 
@@ -326,7 +326,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie in den folgenden 
         -  [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Azure SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Bewährte Methoden: [Bewährte Methoden für die Azure SQL-Datensynchronisierung](sql-database-best-practices-data-sync.md)
--   Überwachung: [Überwachen der SQL-Datensynchronisierung mit Log Analytics](sql-database-sync-monitor-oms.md)
+-   Überwachung: [Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen](sql-database-sync-monitor-oms.md)
 -   Problembehandlung: [Behandeln von Problemen mit der Azure SQL-Datensynchronisierung](sql-database-troubleshoot-data-sync.md)
 -   Aktualisieren des Synchronisierungsschemas
     -   Mit Transact-SQL: [Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung](sql-database-update-sync-schema.md)

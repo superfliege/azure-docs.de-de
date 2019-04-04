@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a951e60b417167f2e1566efb689ea0f2d4e65374
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f4558c6fdb1e5e4f0ffb7a4b4fdb1ab62eb4cfa9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121280"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
@@ -31,34 +31,34 @@ Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden
 
 In diesem Beispiel betrachten wir unter **Compute und Apps** die Empfehlung „Sicherheitskonfigurationen korrigieren“.
 1. Wählen Sie im linken Bereich in Security Center die Option **Compute und Apps** aus.  
-  Das Fenster **Compute und Apps** wird geöffnet.
+   Das Fenster **Compute und Apps** wird geöffnet.
 
    ![Optimieren von Sicherheitskonfigurationen][1]
 
 2. Wählen Sie **Sicherheitskonfigurationen korrigieren** aus.  
-  Das Fenster **Sicherheitskonfigurationen** wird geöffnet.
+   Das Fenster **Sicherheitskonfigurationen** wird geöffnet.
 
    ![Das Fenster „Sicherheitskonfigurationen“][2]
 
-  Der obere Abschnitt des Dashboards zeigt Folgendes:
+   Der obere Abschnitt des Dashboards zeigt Folgendes:
 
-  - **Regeln mit Fehlern nach Schweregrad**: Die Gesamtanzahl von Regeln (nach Schweregrad), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
-  - **Regeln mit Fehlern nach Typ**: Die Gesamtanzahl von Regeln (nach Typ), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
-  - **Fehlerhafte Windows-Regeln**: Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Windows-Betriebssystemkonfigurationen.
-  - **Fehlerhafte Linux-Regeln**: Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Linux-Betriebssystemkonfigurationen.
+   - **Regeln mit Fehlern nach Schweregrad**: Die Gesamtanzahl von Regeln (nach Schweregrad), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
+   - **Regeln mit Fehlern nach Typ**: Die Gesamtanzahl von Regeln (nach Typ), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
+   - **Fehlerhafte Windows-Regeln**: Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Windows-Betriebssystemkonfigurationen.
+   - **Fehlerhafte Linux-Regeln**: Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Linux-Betriebssystemkonfigurationen.
 
-  Im unteren Bereich des Dashboards werden alle Regelfehler für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt. Die Liste enthält die folgenden Elemente:
+   Im unteren Bereich des Dashboards werden alle Regelfehler für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt. Die Liste enthält die folgenden Elemente:
 
-  - **CCEID**: Der eindeutige CCE-Bezeichner für die Regel. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
-  - **Name**: Der Name des Regelfehlers.
-  - **Regeltyp**: Der Regeltyp *Registrierungsschlüssel*, *Sicherheitsrichtlinie*, *Überwachungsrichtlinie* oder *IIS*.
-  - **Anzahl von VMs und Computern**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler.
-  - **Schweregrad der Regel**: Der CCE-Schweregrad *Kritisch*, *Wichtig* oder *Warnung*.
-  - **Status**: Der aktuelle Status der Empfehlung:
+   - **CCEID**: Der eindeutige CCE-Bezeichner für die Regel. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
+   - **Name**: Der Name des Regelfehlers.
+   - **Regeltyp**: Der Regeltyp *Registrierungsschlüssel*, *Sicherheitsrichtlinie*, *Überwachungsrichtlinie* oder *IIS*.
+   - **Anzahl von VMs und Computern**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler.
+   - **Schweregrad der Regel**: Der CCE-Schweregrad *Kritisch*, *Wichtig* oder *Warnung*.
+   - **Status**: Der aktuelle Status der Empfehlung:
 
-    - **Offen**: Die Empfehlung wurde noch nicht umgesetzt.
-    - **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
-    - **Aufgelöst**: Die Empfehlung wurde angewendet. Wenn das Problem behoben wurde, wird der Eintrag abgeblendet dargestellt.
+     - **Offen**: Die Empfehlung wurde noch nicht umgesetzt.
+     - **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
+     - **Aufgelöst**: Die Empfehlung wurde angewendet. Wenn das Problem behoben wurde, wird der Eintrag abgeblendet dargestellt.
 
 3. Um die Details eines Regelfehlers anzuzeigen, wählen Sie diesen in der Liste aus.
 
@@ -79,17 +79,17 @@ In diesem Beispiel betrachten wir unter **Compute und Apps** die Empfehlung „S
    - **Regelvorgang**: Von Security Center verwendeter Regelvorgang, wenn Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht.
 
 4. Klicken Sie oben in der Detailansicht auf die Option **Suche**.  
-  Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit den ausgewählten nicht übereinstimmenden Sicherheitskonfigurationen enthalten. Das Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
+   Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit den ausgewählten nicht übereinstimmenden Sicherheitskonfigurationen enthalten. Das Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
 
    ![Aufgeführte Arbeitsbereiche][4]
 
 5. Wählen Sie einen Arbeitsbereich aus.  
-  Eine für den Arbeitsbereich mit den nicht übereinstimmenden Sicherheitskonfigurationen gefilterte Log Analytics-Suchabfrage wird geöffnet.
+   Eine für den Arbeitsbereich mit den nicht übereinstimmenden Sicherheitskonfigurationen gefilterte Suchabfrage aus Azure Monitor-Protokolle wird geöffnet.
 
    ![Arbeitsbereich mit Betriebssystem-Sicherheitsrisiko][5]
 
 6. Wählen Sie in der Liste einen Computer aus.  
-  Ein neues Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
+   Ein neues Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
 
    ![Detaillierte Informationen zum ausgewählten Computer][6]
 

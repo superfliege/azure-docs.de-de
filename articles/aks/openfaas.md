@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542530"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571217"
 ---
 # <a name="using-openfaas-on-aks"></a>Verwenden von OpenFaaS mit AKS
 
-[OpenFaaS][open-faas] ist ein Framework zum Erstellen serverloser containerbasierter Funktionen. Das Open-Source-Projekt erfreut sich in der Community großer Beliebtheit. In diesem Dokument werden die Installation und Verwendung von OpenFaaS in einem Azure Kubernetes Service-Cluster (AKS) beschrieben.
+[OpenFaaS][open-faas] ist ein Framework zum Erstellen serverloser Funktionen mithilfe von Containern. Das Open-Source-Projekt erfreut sich in der Community großer Beliebtheit. In diesem Dokument werden die Installation und Verwendung von OpenFaaS in einem Azure Kubernetes Service-Cluster (AKS) beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,43 +29,48 @@ Sie benötigen Folgendes, um die Schritte in diesem Artikel ausführen zu könne
 * Eine Installation der Azure CLI auf Ihrem Entwicklungssystem.
 * Auf Ihrem System installierte Git-Befehlszeilentools
 
-## <a name="get-openfaas"></a>Abrufen von OpenFaaS
+## <a name="add-the-openfaas-helm-chart-repo"></a>Hinzufügen des OpenFaaS-Helm-Diagrammrepositorys
 
-Klonen Sie das OpenFaaS-Projektrepository auf Ihrem Entwicklungssystem.
-
-```azurecli-interactive
-git clone https://github.com/openfaas/faas-netes
-```
-
-Wechseln Sie in das Verzeichnis des geklonten Repositorys.
+OpenFaaS verwaltet eigene Helm-Diagramme, um bei allen Änderungen auf dem neuesten Stand zu bleiben.
 
 ```azurecli-interactive
-cd faas-netes
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>Bereitstellen von OpenFaaS
 
 Es empfiehlt sich, OpenFaaS und OpenFaaS Funktionen in einem eigenen Kubernetes-Namespace zu speichern.
 
-Erstellen Sie einen Namespace für das OpenFaaS-System.
+Erstellen Sie einen Namespace für das OpenFaaS-System und die Funktionen:
 
 ```azurecli-interactive
-kubectl create namespace openfaas
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Erstellen Sie einen zweiten Namespace für die OpenFaaS-Funktionen.
+Generieren Sie ein Kennwort für die Benutzeroberfläche des OpenFaaS-Portals und die REST-API:
 
 ```azurecli-interactive
-kubectl create namespace openfaas-fn
+# generate a random password
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+
+kubectl -n openfaas create secret generic basic-auth \
+--from-literal=basic-auth-user=admin \
+--from-literal=basic-auth-password="$PASSWORD"
 ```
+
+Sie können den Wert des Geheimnisses mit `echo $PASSWORD` abrufen.
+
+Das hier erstellte Kennwort wird vom Helm-Diagramm verwendet, um eine Standardauthentifizierung auf dem OpenFaaS-Gateway zu ermöglichen, das über einen Cloudlastenausgleich im Internet verfügbar gemacht wird.
 
 Ein Helm-Diagramm für OpenFaaS ist im geklonten Repository enthalten. Verwenden Sie dieses Diagramm, um OpenFaaS in Ihrem AKS-Cluster bereitzustellen.
 
 ```azurecli-interactive
-helm install --namespace openfaas -n openfaas \
-  --set functionNamespace=openfaas-fn, \
-  --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/
+helm upgrade openfaas --install openfaas/openfaas \
+    --namespace openfaas  \
+    --set basic_auth=true \
+    --set functionNamespace=openfaas-fn \
+    --set serviceType=LoadBalancer
 ```
 
 Ausgabe:
@@ -104,7 +109,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Browsen Sie zum Testen des OpenFaaS-Systems zur externen IP-Adresse an Port 8080 – in diesem Beispiel `http://52.186.64.52:8080`.
+Browsen Sie zum Testen des OpenFaaS-Systems zur externen IP-Adresse an Port 8080 – in diesem Beispiel `http://52.186.64.52:8080`. Sie werden aufgefordert, sich anzumelden. Um Ihr Kennwort abzurufen, geben Sie `echo $PASSWORD` ein.
 
 ![OpenFaaS-Benutzeroberfläche](media/container-service-serverless/openfaas.png)
 
@@ -112,6 +117,15 @@ Installieren Sie abschließend die OpenFaaS-Befehlszeilenschnittstelle. In diese
 
 ```console
 brew install faas-cli
+```
+
+Legen Sie `$OPENFAAS_URL` auf die öffentliche IP-Adresse fest, die weiter oben angegeben ist.
+
+Anmelden mit der Azure-Befehlszeilenschnittstelle:
+
+```azurecli-interactive
+export OPENFAAS_URL=http://52.186.64.52:8080
+echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>Erstellen der ersten Funktion
@@ -233,10 +247,11 @@ Sie können die Funktion auch auf der OpenFaaS-Benutzeroberfläche testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Standardbereitstellung von OpenFaaS muss für das OpenFaaS-Gateway und OpenFaaS-Funktionen abgesichert werden. Der [Blogbeitrag von Alex Ellis](https://blog.alexellis.io/lock-down-openfaas/) enthält weitere Details zu sicheren Konfigurationsoptionen.
+Sie können weiterhin mit dem OpenFaaS-Workshop üben und dabei einen Satz von Praxislabs nutzen, die Themen wie das Erstellen eines eigenen GitHub-Bots, das Verarbeiten von Geheimnissen, das Anzeigen von Metriken und das automatische Skalieren abdecken.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
+[openfaas-workshop]: https://github.com/openfaas/workshop

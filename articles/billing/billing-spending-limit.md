@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: bfc6bf8cab1358c47e66660303f3303f4e9c763a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845371"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Grundlegendes zum Azure-Ausgabenlimit und zu dessen Entfernung
 
@@ -86,4 +86,4 @@ Ausgabenlimits von Kunden sind nicht verfügbar.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

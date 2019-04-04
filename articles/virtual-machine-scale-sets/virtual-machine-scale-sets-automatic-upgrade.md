@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/25/2019
 ms.author: manayar
-ms.openlocfilehash: 757ff087b7bb12528779f0477aadb629ea94c73e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 779a10257a94ed761572fdcc80a68059750342dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566076"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994454"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -65,6 +65,9 @@ Derzeit werden die folgenden SKUs unterstützt (und weitere werden regelmäßig 
 | Microsoft Corporation   | Windows Server | 2016-Datacenter    |
 | Microsoft Corporation   | Windows Server | 2016-Datacenter-Smalldisk |
 | Microsoft Corporation   | Windows Server | 2016-Datacenter-with-Containers |
+| Microsoft Corporation   | Windows Server | 2019-Datacenter |
+| Microsoft Corporation   | Windows Server | 2019-Datacenter-Smalldisk |
+| Microsoft Corporation   | Windows Server | 2019-Datacenter-with-Containers |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Anforderungen für das Konfigurieren des automatischen Upgrades von Betriebssystemimages
@@ -236,7 +239,7 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 
 Sie können Vorlagen zum Bereitstellen einer Skalierungsgruppe mit automatischen Betriebssystemupgrades für unterstützte Images wie z.B. [Ubuntu 16.04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json) verwenden.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Beispiele für die Verwendung automatischer Betriebssystemupgrades mit Skalierungsgruppen finden Sie im [GitHub-Repository](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

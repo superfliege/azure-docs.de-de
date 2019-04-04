@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 2ae8c14b40fa13a1aa8008588fb0efb1b1d2c3f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091833"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurieren eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals
 
@@ -29,6 +29,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -76,12 +78,12 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
 5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-    - *myVNet*: Name des virtuellen Netzwerks
-    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
-    - *myAGSubnet*: Subnetzname
-    - *10.0.0.0/24*: Adressraum des Subnetzes
+   - *myVNet*: Name des virtuellen Netzwerks
+   - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+   - *myAGSubnet*: Subnetzname
+   - *10.0.0.0/24*: Adressraum des Subnetzes
 
-    ![Virtuelles Netzwerk erstellen](./media/create-ssl-portal/application-gateway-vnet.png)
+     ![Virtuelles Netzwerk erstellen](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
 7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
@@ -132,7 +134,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -143,17 +145,17 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
       -Location EastUS
     ```
 
-3. Erstellen Sie einen zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie *myVM2* als Name und für „VMName“ in „Set-AzureRmVMExtension“ ein.
+3. Erstellen Sie einen zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie *myVM2* als Name und für „VMName“ in „Set-AzVMExtension“ ein.
 
 ### <a name="add-backend-servers"></a>Hinzufügen von Back-End-Servern
 
-3. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
-4. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGatewayBackendPool**.
-5. Klicken Sie auf **Ziel hinzufügen**, um alle erstellten virtuellen Computer dem Back-End-Pool hinzuzufügen.
+1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
+1. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGatewayBackendPool**.
+1. Klicken Sie auf **Ziel hinzufügen**, um alle erstellten virtuellen Computer dem Back-End-Pool hinzuzufügen.
 
     ![Hinzufügen von Back-End-Servern](./media/create-ssl-portal/application-gateway-backend.png)
 
-6. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 

@@ -1,6 +1,6 @@
 ---
-title: Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
-description: Dieser Artikel beschreibt, wie DSC-Berichtsdaten (Desired State Configuration) von Azure Automation DSC an Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
+title: Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle
+description: Dieser Artikel beschreibt, wie DSC-Berichtsdaten (Desired State Configuration) von Azure Automation State Configuration an Azure Monitor-Protokolle gesendet werden, um zusätzliche Erkenntnisse zu gewinnen und Verwaltungsoptionen zu erhalten.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,16 +9,19 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2450ffcbd9fa7bebd5a1b862aa9c35baa5dbdc95
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8898280e887392591873f1fc832bfd0c105689fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097285"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle
 
-Azure Automation DSC (Desired Status Configuration) kann DSC-Daten zum Knotenstatus an Ihren Log Analytics-Arbeitsbereich senden. Der Konformitätsstatus kann im Azure-Portal oder mit PowerShell angezeigt werden, und zwar für Knoten und einzelne DSC-Ressourcen in Knotenkonfigurationen. Log Analytics bietet folgende Vorteile:
+Azure Automation State Configuration behält den Knotenstatus 30 Tage lang bei.
+Sie können die Knotenstatusdaten an Ihren Log Analytics-Arbeitsbereich senden, wenn Sie diese Daten für einen längeren Zeitraum aufbewahren möchten.
+Der Konformitätsstatus kann im Azure-Portal oder mit PowerShell angezeigt werden, und zwar für Knoten und einzelne DSC-Ressourcen in Knotenkonfigurationen.
+Mit Azure Monitor-Protokolle können Sie jetzt:
 
 - Abrufen von Konformitätsinformationen für verwaltete Knoten und einzelne Ressourcen
 - Auslösen einer E-Mail oder Warnung basierend auf dem Konformitätsstatus
@@ -26,41 +29,43 @@ Azure Automation DSC (Desired Status Configuration) kann DSC-Daten zum Knotensta
 - Korrelieren des Konformitätsstatus über Automation-Konten
 - Visualisieren des Konformitätsverlaufs von Knoten über einen Zeitraum
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Senden von Automation DSC-Berichten an Log Analytics benötigen Sie Folgendes:
+Zum Senden von Automation State Configuration-Berichten an Azure Monitor-Protokolle benötigen Sie Folgendes:
 
 - Die [Azure PowerShell](/powershell/azure/overview)-Version von November 2016 (v2.3.0) oder höher.
 - Ein Azure Automation-Konto. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Automation](automation-offering-get-started.md).
-- Einen Log Analytics-Arbeitsbereich mit dem Dienstangebot **Automation & Control**. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md).
+- Einen Log Analytics-Arbeitsbereich mit dem Dienstangebot **Automation & Control**. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](../log-analytics/log-analytics-get-started.md).
 - Mindestens einen Azure Automation DSC-Knoten. Weitere Informationen finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
 
-## <a name="set-up-integration-with-log-analytics"></a>Einrichten der Integration in Log Analytics
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Einrichten der Integration in Azure Monitor-Protokolle
 
-Zum Importieren von Daten aus Azure Automation DSC in Log Analytics müssen Sie die folgenden Schritte ausführen:
+Zum Importieren von Daten aus Azure Automation DSC in Azure Monitor-Protokolle müssen Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich in PowerShell bei Ihrem Azure-Konto an. Weitere Informationen finden Sie unter [Anmelden mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0).
 1. Rufen Sie die _ResourceId_ Ihres Automation-Kontos ab, indem Sie den folgenden PowerShell-Befehl ausführen: (Wenn Sie über mehrere Automation-Konten verfügen, wählen Sie die _ResourceID_ für das Konto aus, das Sie konfigurieren möchten.)
 
-  ```powershell
-  # Find the ResourceId for the Automation Account
-  Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
-  ```
+   ```powershell
+   # Find the ResourceId for the Automation Account
+   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   ```
 
 1. Rufen Sie die _ResourceId_ Ihres Log Analytics-Arbeitsbereichs ab, indem Sie den folgenden PowerShell-Befehl ausführen: (Wenn Sie über mehrere Arbeitsbereiche verfügen, wählen Sie die _ResourceID_ für den Arbeitsbereich aus, den Sie konfigurieren möchten.)
 
-  ```powershell
-  # Find the ResourceId for the Log Analytics workspace
-  Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
-  ```
+   ```powershell
+   # Find the ResourceId for the Log Analytics workspace
+   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   ```
 
 1. Führen Sie den folgenden PowerShell-Befehl aus, und ersetzen Sie `<AutomationResourceId>` und `<WorkspaceResourceId>` durch die _ResourceId_-Werte aus den vorherigen Schritten:
 
-  ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
-  ```
+   ```powershell
+   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   ```
 
-Wenn Sie das Importieren von Daten aus Azure Automation DSC in Log Analytics beenden möchten, führen Sie den folgenden PowerShell-Befehl aus:
+Wenn Sie das Importieren von Daten aus Azure Automation State Configuration in Azure Monitor-Protokolle beenden möchten, führen Sie den folgenden PowerShell-Befehl aus:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
@@ -68,7 +73,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ## <a name="view-the-state-configuration-logs"></a>Anzeigen der DSC-Protokolle
 
-Nachdem Sie die Integration in Log Analytics für Ihre Automation DSC-Daten eingerichtet haben, wird in Ihrem Automation-Konto auf dem Blatt **DSC-Knoten** die Schaltfläche **Protokollsuche** angezeigt. Klicken Sie auf die Schaltfläche **Protokollsuche**, um die Protokolle für DSC-Knotendaten anzuzeigen.
+Nachdem Sie die Integration in Azure Monitor-Protokolle für Ihre Automation State Configuration-Daten eingerichtet haben, wird in Ihrem Automation-Konto auf dem Blatt **DSC-Knoten** die Schaltfläche **Protokollsuche** angezeigt. Klicken Sie auf die Schaltfläche **Protokollsuche**, um die Protokolle für DSC-Knotendaten anzuzeigen.
 
 ![Schaltfläche „Protokollsuche“](media/automation-dsc-diagnostics/log-search-button.png)
 
@@ -78,7 +83,8 @@ Der Vorgang **DscResourceStatusData** enthält Fehlerinformationen für fehlerha
 
 Klicken Sie auf jeden Vorgang in der Liste, um die Daten für diesen Vorgang anzuzeigen.
 
-Sie können die Protokolle auch anzeigen, indem Sie in Log Analytics eine Suche durchführen. Weitere Informationen finden Sie unter [Suchen von Daten mithilfe der Protokollsuche](../log-analytics/log-analytics-log-searches.md).
+Sie können die Protokolle auch anzeigen, indem Sie in Azure Monitor-Protokolle eine Suche durchführen.
+Weitere Informationen finden Sie unter [Suchen von Daten mithilfe der Protokollsuche](../log-analytics/log-analytics-log-searches.md).
 Geben Sie die folgende Abfrage ein, um die DSC-Protokolle zu suchen: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
 Sie können die Abfrage auch anhand des Vorgangsnamens eingrenzen. Beispiel: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
@@ -89,19 +95,19 @@ Eine der häufigsten Anfragen unserer Kunden betrifft die Möglichkeit, eine E-M
 
 Um eine Warnungsregel zu erstellen, erstellen Sie zuerst eine Protokollsuche für die DSC-Berichtsdatensätze, die die Warnung aufrufen sollen. Klicken Sie auf die Schaltfläche **+ Neue Warnungsregel**, um die Warnungsregel zu erstellen und zu konfigurieren.
 
-1. Klicken Sie auf der Seite mit der Log Analytics-Übersicht auf **Protokollsuche**.
+1. Klicken Sie auf der Seite „Übersicht“ für den Log Analytics-Arbeitsbereich auf **Protokolle**.
 1. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`.
 
    Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement oder Automation-Konto gruppieren.  
    Der Name des Automation-Kontos kann vom Ressourcenfeld in der DscNodeStatusData-Suche abgeleitet werden.  
-1. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+1. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Erstellen von Warnungsregeln](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Suchen von Fehlern bei DSC-Ressourcen in allen Knoten
 
-Ein Vorteil der Verwendung von Log Analytics ist, dass Sie nach Fehlern bei der Überprüfung der Knoten suchen können.
+Ein Vorteil der Verwendung von Azure Monitor-Protokolle ist, dass Sie nach Fehlern bei der Überprüfung der Knoten suchen können.
 So finden Sie alle Instanzen von DSC-Ressourcen mit Fehlern
 
-1. Klicken Sie auf der Seite mit der Log Analytics-Übersicht auf **Protokollsuche**.
+1. Klicken Sie auf der Seite „Übersicht“ für den Log Analytics-Arbeitsbereich auf **Protokolle**.
 1. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`.
 
 ### <a name="view-historical-dsc-node-status"></a>Anzeigen von Verlaufsdaten zum DSC-Knotenstatus
@@ -113,9 +119,9 @@ Sie können die folgende Abfrage verwenden, um nach dem Statusverlauf Ihres DSC-
 
 Dadurch wird ein Diagramm mit dem Knotenstatus über einen Zeitraum angezeigt.
 
-## <a name="log-analytics-records"></a>Log Analytics-Datensätze
+## <a name="azure-monitor-logs-records"></a>Datensätze in Azure Monitor-Protokolle
 
-Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in Log Analytics.
+Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in Azure Monitor-Protokolle.
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -139,7 +145,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 | ReportStartTime_t |Datum und Uhrzeit des Berichtsstarts. |
 | ReportEndTime_t |Datum und Uhrzeit des Berichtsabschlusses. |
 | NumberOfResources_d |Die Anzahl der DSC-Ressourcen, die bei der Anwendung der Konfiguration auf den Knoten abgerufen wurden. |
-| SourceSystem | So wurden die Daten von Log Analytics gesammelt. Immer *Azure* für Azure-Diagnose. |
+| SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
 | ResourceId |Gibt das Azure Automation-Konto an. |
 | ResultDescription | Die Beschreibung für diesen Vorgang. |
 | SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
@@ -170,7 +176,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 | ErrorCode_s | Der Fehlercode, wenn die Ressource fehlerhaft ist. |
 | ErrorMessage_s |Die Fehlermeldung, wenn die Ressource fehlerhaft ist. |
 | DscResourceDuration_d |Die Zeit in Sekunden, für die die DSC-Ressource ausgeführt wurde. |
-| SourceSystem | So wurden die Daten von Log Analytics gesammelt. Immer *Azure* für Azure-Diagnose. |
+| SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
 | ResourceId |Gibt das Azure Automation-Konto an. |
 | ResultDescription | Die Beschreibung für diesen Vorgang. |
 | SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
@@ -181,12 +187,12 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 
 ## <a name="summary"></a>Zusammenfassung
 
-Wenn Sie Ihre Automation DSC-Daten an Log Analytics senden, erhalten Sie einen besseren Einblick in den Automation DSC-Knotenstatus:
+Wenn Sie Ihre Automation State Configuration-Daten an Azure Monitor-Protokolle senden, erhalten Sie bessere Erkenntnisse über Ihre Automation State Configuration-Knoten, indem Sie:
 
 - Warnungen einrichten, um bei Problemen benachrichtigt zu werden
 - Benutzerdefinierte Ansichten und Suchabfragen zum Anzeigen von Runbook-Ergebnissen, Runbook-Auftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden.  
 
-Log Analytics bietet eine höhere operative Transparenz für Ihre Automation DSC-Daten, sodass schneller auf Vorfälle reagiert werden kann.
+Azure Monitor-Protokolle bietet eine höhere operative Transparenz für Ihre Automation State Configuration-Daten, sodass schneller auf Incidents reagiert werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -195,6 +201,6 @@ Log Analytics bietet eine höhere operative Transparenz für Ihre Automation DSC
 - Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
 - Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation State Configuration-Cmdlets](/powershell/module/azurerm.automation/#automation) verfügbar.
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für Azure Automation DSC in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md).
-- Wie Sie verschiedene Suchabfragen erstellen und Automation DSC-Protokolle mit Log Analytics überprüfen, erfahren Sie unter [Protokollsuchvorgänge in Log Analytics](../log-analytics/log-analytics-log-searches.md).
-- Weitere Informationen zu Log Analytics und Datenerfassungsquellen finden Sie unter [Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md)
+- Ein Verwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation State Configuration-Protokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
+- Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).

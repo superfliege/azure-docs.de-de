@@ -15,12 +15,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443aef1a7396dc637b656a805b758a62bcfac41d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175997"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Mandanten
 
@@ -47,7 +47,7 @@ Sie können jeden Azure AD-Mandanten unabhängig voneinander konfigurieren, dami
 Um einen Azure AD-Mandanten im Azure-Portal hinzuzufügen, melden Sie sich mit einem globalen Azure AD-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite **Neu** aus.
 
 > [!NOTE]
-> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Azure Graph-API oder Office 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können [dem Mandanten auch ein anderes Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Azure Graph-API oder Microsoft 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können [dem Mandanten auch ein anderes Abonnement zuordnen](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

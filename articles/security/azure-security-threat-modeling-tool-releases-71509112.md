@@ -1,5 +1,5 @@
 ---
-title: Threat Modeling Tool Releases – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+title: Threat Modeling Tool-Releases – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
 description: Dokumentation der Anmerkungen zu dieser Version für das Threat Modeling Tool.
 services: security
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 8d3d2acb28a82f50f0255701fe6079ad444ce03f
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: bdf8b701567aaa3a0d9006333557bcec4f312723
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890915"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool, allgemein verfügbares Release 7.1.50911.2: 12.09.2018
 
@@ -90,7 +90,7 @@ Ja, das ist möglich. Der [Azure-Schablonensatz ist auf GitHub verfügbar](https
 - Unterstützte Betriebssysteme
   - Microsoft Windows 10
 - Erforderliche .NET-Version
-  - .Net 3.5.2
+  - .NET 3.5.2
 - Zusätzliche Anforderungen
   - Eine Internetverbindung ist erforderlich, um Updates für das Tool sowie Vorlagen zu erhalten.
 

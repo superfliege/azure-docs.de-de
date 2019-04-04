@@ -7,17 +7,17 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: cf3e051e4833c6b654e5ff89cd084911521b3d67
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049238"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895582"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Übersicht über Routing auf URL-Pfadbasis mit Azure Application Gateway
 
@@ -25,11 +25,11 @@ Mit dem Routing auf URL-Pfadbasis kann Datenverkehr basierend auf URL-Pfaden von
 
 Ein mögliches Szenario ist die Weiterleitung von Anforderungen für unterschiedliche Inhaltstypen an verschiedene Back-End-Serverpools.
 
-Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für „contoso.com“ aus drei Back-End-Serverpools: VideoServerPool, ImageServerPool und DefaultServerPool.
+Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für contoso.com aus drei Back-End-Serverpools: VideoServerPool, ImageServerPool und DefaultServerPool.
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-Anforderungen für http://contoso.com/video/* werden an „VideoServerPool“ und Anforderungen für http://contoso.com/images/* an „ImageServerPool“ weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
+Anforderungen für <http://contoso.com/video/*> werden an „VideoServerPool“ und Anforderungen für <http://contoso.com/images/*> an „ImageServerPool“ weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 > [!IMPORTANT]
 > Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.

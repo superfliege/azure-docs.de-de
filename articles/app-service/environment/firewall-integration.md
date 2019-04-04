@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 03/12/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121705"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -91,7 +91,6 @@ Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewall
 - Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern. 
 - Linux-Abhängigkeiten sind nur relevant, wenn Sie in Ihrer App Service-Umgebung Linux-Apps bereitstellen. Wenn Sie in Ihrer App Service-Umgebung keine Linux-Apps bereitstellen, müssen diese Adressen Ihrer Firewall nicht hinzugefügt werden. 
 
-
 #### <a name="service-endpoint-capable-dependencies"></a>Dienstendpunktfähige Abhängigkeiten 
 
 | Endpunkt |
@@ -106,6 +105,14 @@ Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewall
 |----------| ----- |
 | \*:123 | NTP-Uhrzeitüberprüfung. Datenverkehr wird an mehreren Endpunkten am Port 123 überprüft. |
 | \*:12000 | Dieser Port wird für einige Systemüberwachungsfunktionen verwendet. Wenn er blockiert wird, ist die Selektierung mancher Probleme schwieriger, die ASE wird jedoch weiterhin ausgeführt. |
+| 40.77.24.27:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 40.77.24.27:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.90.249.229:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.90.249.229:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 104.45.230.69:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 104.45.230.69:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.82.184.151:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.82.184.151:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
 
 Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgeführten Abhängigkeiten (mit den FQDN-Tags konfiguriert). 
 
@@ -140,7 +147,8 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 |cacerts.digicert.com:80 |
 |azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
-|global.metrics.nsatc.net:80   |
+|global.metrics.nsatc.net:80 |
+|global.metrics.nsatc.net:443 |
 |az-prod.metrics.nsatc.net:443 |
 |antares.metrics.nsatc.net:443 |
 |azglobal-black.azglobal.metrics.nsatc.net:443 |
@@ -175,12 +183,6 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
-|grmdsprod\*mini\*.servicebus.windows.net:443 |
-|grmdsprod\*lini\*.servicebus.windows.net:443 |
-|grsecprod\*mini\*.servicebus.windows.net:443 |
-|grsecprod\*lini\*.servicebus.windows.net:443 |
-|graudprod\*mini\*.servicebus.windows.net:443 |
-|graudprod\*lini\*.servicebus.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux-Abhängigkeiten 
 

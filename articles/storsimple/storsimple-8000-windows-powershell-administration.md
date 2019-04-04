@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228384"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003118"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
 
@@ -47,7 +47,7 @@ Es gibt zwei Möglichkeiten des Zugriffs auf Windows PowerShell für StorSimple:
 
 ## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Herstellen einer Verbindung mit StorSimple mithilfe der seriellen Konsole des Geräts
 
-Sie können [PuTTY herunterladen](http://www.putty.org/) oder auch eine ähnliche Terminalemulationssoftware zum Herstellen einer Verbindung mit Windows PowerShell für StorSimple verwenden. Sie müssen PuTTY entsprechend konfigurieren, um auf das Microsoft Azure StorSimple-Gerät zuzugreifen. In den folgenden Themen finden Sie ausführliche Schritte zum Konfigurieren von PuTTY sowie zum Herstellen einer Verbindung mit dem Gerät. Verschiedene Menüoptionen in der seriellen Konsole werden ebenfalls erläutert.
+Sie können [PuTTY herunterladen](https://www.putty.org/) oder auch eine ähnliche Terminalemulationssoftware zum Herstellen einer Verbindung mit Windows PowerShell für StorSimple verwenden. Sie müssen PuTTY entsprechend konfigurieren, um auf das Microsoft Azure StorSimple-Gerät zuzugreifen. In den folgenden Themen finden Sie ausführliche Schritte zum Konfigurieren von PuTTY sowie zum Herstellen einer Verbindung mit dem Gerät. Verschiedene Menüoptionen in der seriellen Konsole werden ebenfalls erläutert.
 
 ### <a name="putty-settings"></a>PuTTY-Einstellungen
 
@@ -110,8 +110,8 @@ Sie können zwischen folgenden Einstellungen wählen:
    * Anwenden von Updates
    * Installieren von Hotfixes
 
-    > [!NOTE]
-    > Dies ist die bevorzugte Option, wenn Sie das Administratorkennwort für das Gerät vergessen haben und keine Verbindung über Option 1 oder 2 herstellen können.
+     > [!NOTE]
+     > Dies ist die bevorzugte Option, wenn Sie das Administratorkennwort für das Gerät vergessen haben und keine Verbindung über Option 1 oder 2 herstellen können.
 
 4. **Ändern der Sprache** Diese Option ermöglicht das Ändern der Anzeigesprache auf der Windows PowerShell-Benutzeroberfläche. Die unterstützten Sprachen sind Chinesisch, Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch, Spanisch und Südkoreanisch.
 

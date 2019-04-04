@@ -7,17 +7,17 @@ author: kumudd
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 01c295ac12886e9a3a93cfbf5f4f3e96545cd5ec
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7b52d07db076b62845465ee9f22a3d794c8cdf76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229506"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839524"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Verwalten von Azure Traffic Manager-Profilen
 
@@ -29,7 +29,7 @@ Sie können ein Traffic Manager-Profil mit dem Azure-Portal erstellen. Nach dem 
 
 ### <a name="to-create-a-traffic-manager-profile"></a>So erstellen Sie ein Traffic Manager-Profil
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren. 
 2. Klicken Sie auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
 4. Füllen Sie den Bereich **Traffic Manager-Profil erstellen** wie folgt aus:
     1. Geben Sie im Feld **Name** einen Namen für Ihr Profil ein. Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen <name>.trafficmanager.net, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.
@@ -48,14 +48,14 @@ Sie können ein vorhandenes Profil deaktivieren, damit Benutzeranforderungen von
 
 1. Ändern Sie bei Verwendung eines benutzerdefinierten Domänennamens den CNAME-Eintrag auf Ihrem Internet-DNS-Server, damit er nicht mehr auf Ihr Traffic Manager-Profil verweist.
 2. Der Datenverkehr wird nicht mehr über die Traffic Manager-Profileinstellungen an die Endpunkte weitergeleitet.
-3. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an.
+3. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie über die Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf **Übersicht** > **Deaktivieren**.
 4. Bestätigen Sie die Deaktivierung des Traffic Manager-Profils.
 
 ### <a name="to-enable-a-profile"></a>So aktivieren Sie ein Profil
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie über die Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf **Übersicht** > **Aktivieren**.
 1. Wenn Sie einen benutzerdefinierten Domänennamen verwenden, sollten Sie einen CNAME-Ressourceneintrag auf Ihrem Internet-DNS-Server erstellen, der auf den Domänennamen Ihres Traffic Manager-Profils verweist.

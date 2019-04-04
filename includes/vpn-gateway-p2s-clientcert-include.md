@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964154"
 ---
 Auf jedem Clientcomputer, für den Sie eine Point-to-Site-Verbindung mit einem VNet herstellen, muss ein Clientzertifikat installiert sein. Sie generieren es aus dem Stammzertifikat und installieren es auf jedem Clientcomputer. Wenn Sie kein gültiges Clientzertifikat installieren, und der Client versucht, eine Verbindung mit dem VNET herzustellen, tritt bei der Authentifizierung ein Fehler auf.
 
@@ -22,7 +22,7 @@ Sie können mithilfe der folgenden Methoden Clientzertifikate generieren:
 
 - **Unternehmenszertifikat:**
 
-  - Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format *name@yourdomain.com*. Verwenden Sie dieses Format anstelle des Formats *Domänenname\Benutzername*.
+  - Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format *name\@ihredomäne.com*. Verwenden Sie dieses Format anstelle des Formats *Domänenname\Benutzername*.
   - Stellen Sie sicher, dass das Clientzertifikat auf einer Benutzerzertifikatvorlage basiert, für die *Clientauthentifizierung* als erstes Element in der Benutzerliste enthalten ist. Überprüfen Sie das Zertifikat, indem Sie darauf doppelklicken und **Erweiterte Schlüsselverwendung** auf der **Registerkarte Details** anzeigen.
 
 - **Selbstsigniertes Stammzertifikat**: Führen Sie die Schritte in einem der folgenden Artikel zu P2S-Zertifikaten aus, damit die von Ihnen erstellten Clientzertifikate mit Ihren P2S-Verbindungen kompatibel sind. Mit den Schritten in diesen Artikeln wird ein kompatibles Clientzertifikat generiert: 

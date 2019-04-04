@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884221"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
@@ -162,7 +162,7 @@ Außerdem haben Sie die Möglichkeit, Ihre Anwendung auf mehreren Instanzen ausz
 Sie können die Skalierung auf „Manuell“ oder „Automatisch“ festlegen.
 
 #### <a name="use-autoheal"></a>Verwenden von „AutoHeal“
-„AutoHeal“ startet den Arbeitsprozess für Ihre App basierend auf von Ihnen ausgewählten Einstellungen neu (z. B. Konfigurationsänderungen, Anforderungen, speicherbasierte Grenzwerte oder zum Ausführen einer Anforderung benötigte Zeit). In den meisten Fällen ist das Neustarten des Prozesses die schnellste Methode zum Beheben eines Problems. Sie können die App zwar immer direkt im Azure-Portal neu starten, „AutoHeal“ führt diesen Schritt jedoch automatisch für Sie aus. Sie müssen lediglich einige Trigger in der Stammdatei „web.config“ Ihrer App hinzufügen. Diese Einstellungen werden immer auf die gleiche Weise angewendet, auch dann, wenn es sich bei Ihrer Anwendung nicht um eine .Net-App handelt.
+„AutoHeal“ startet den Arbeitsprozess für Ihre App basierend auf von Ihnen ausgewählten Einstellungen neu (z. B. Konfigurationsänderungen, Anforderungen, speicherbasierte Grenzwerte oder zum Ausführen einer Anforderung benötigte Zeit). In den meisten Fällen ist das Neustarten des Prozesses die schnellste Methode zum Beheben eines Problems. Sie können die App zwar immer direkt im Azure-Portal neu starten, „AutoHeal“ führt diesen Schritt jedoch automatisch für Sie aus. Sie müssen lediglich einige Trigger in der Stammdatei „web.config“ Ihrer App hinzufügen. Diese Einstellungen werden immer auf die gleiche Weise angewandt, selbst wenn es sich bei Ihrer Anwendung nicht um eine .NET-App handelt.
 
 Weitere Informationen finden Sie unter [Automatische Reparatur von Azure-Websites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

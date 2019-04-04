@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c70c3cc1818e85c03c78524d1e8571af6d686218
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 4fb14b49e573770aaef13d6b5d47c265337c408c
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429059"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568922"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
@@ -37,7 +37,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | defaultLanguageCode   |  Eine Zeichenfolge, die angibt, welche Sprache zurückgegeben werden soll. Der Dienst gibt die Ergebnisse der Erkennung in einer bestimmten Sprache zurück. Wenn dieser Parameter nicht angegeben wird, ist der Standardwert „en“. <br/><br/>Unterstützte Sprachen: <br/>*en*: Englisch (Standard) <br/> *zh*: vereinfachtes Chinesisch|
-|visualFeatures |   Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li> *categories*: Kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) zu Cognitive Services definiert ist.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li><li>*Description*: Beschreibt den Bildinhalt mit einem vollständigen Satz.</li><li>*Faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li> *ImageType*: Erkennt, ob das Bild eine pixelbasierte Rastergrafik oder eine linienbasierte Vektorgrafik ist.</li><li>   *Color*: Bestimmt die Akzentfarbe und die dominante Farbe und ermittelt, ob ein Bild schwarzweiß ist.</li><li>*Adult*: Erkennt, ob das Bild pornografische Natur ist (erkennt Nacktheit oder sexuelle Handlungen). Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet.|
+|visualFeatures |   Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li> *categories*: Kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) zu Cognitive Services definiert ist.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li><li>*Description*: Beschreibt den Bildinhalt mit einem vollständigen Satz.</li><li>*Faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li> *ImageType:* erkennt, ob das Bild ein pixelbasiertes ClipArt oder eine linienbasierte Zeichnung ist.</li><li>  *Color*: Bestimmt die Akzentfarbe und die dominante Farbe und ermittelt, ob ein Bild schwarzweiß ist.</li><li>*Adult*: Erkennt, ob das Bild pornografische Natur ist (erkennt Nacktheit oder sexuelle Handlungen). Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet.|
 | details   | Ein Array aus Zeichenfolgen, die angeben, welche domänenspezifischen Informationen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig: <ul><li>*Celebrities*: Identifiziert Prominente in einem Bild.</li><li>*Landmarks*: Identifiziert Sehenswürdigkeiten in einem Bild.</li></ul>
  |
 
@@ -110,16 +110,16 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
     "values": [
         {
             "recordId": "1",
-            "data": {                
-                "image":  {
-                               "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
-                               "width": 500,
-                               "height": 300,
-                               "originalWidth": 5000,  
-                               "originalHeight": 3000,
-                               "rotationFromOriginal": 90,
-                               "contentOffset": 500  
-                           }
+            "data": {
+                "image": {
+                    "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
+                    "width": 500,
+                    "height": 300,
+                    "originalWidth": 5000,
+                    "originalHeight": 3000,
+                    "rotationFromOriginal": 90,
+                    "contentOffset": 500
+                }
             }
         }
     ]
@@ -132,18 +132,18 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 ```json
 {
     "values": [
-      {
-        "recordId": "1",
+        {
+            "recordId": "1",
             "data": {
                 "categories": [
-           {
+                    {
                         "name": "abstract_",
                         "score": 0.00390625
                     },
                     {
-                "name": "people_",
+                        "name": "people_",
                         "score": 0.83984375,
-                "detail": {
+                        "detail": {
                             "celebrities": [
                                 {
                                     "name": "Satya Nadella",
@@ -214,7 +214,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
                     {
                         "age": 44,
                         "gender": "Male",
-                    "faceBoundingBox": {
+                        "faceBoundingBox": {
                             "left": 593,
                             "top": 160,
                             "width": 250,
@@ -236,8 +236,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
                     "clipArtType": 0,
                     "lineDrawingType": 0
                 }
-           }
-      }
+            }
+        }
     ]
 }
 ```

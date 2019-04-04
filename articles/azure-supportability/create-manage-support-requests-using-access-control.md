@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: microsoft-docs
+ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392900"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792479"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen
 
@@ -20,7 +20,7 @@ Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https:/
 für die Supportanfragenerstellung im Azure-Portal ([portal.azure.com](https://portal.azure.com)) wird mithilfe des RBAC-Modells von Azure definiert, wer zum Erstellen und Verwalten von Supportanfragen berechtigt ist.
 Der Zugriff wird gewährt, indem Benutzern, Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Hierbei kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln.
 
-Ein Beispiel: Als Ressourcengruppenbesitzer mit Leseberechtigungen für den Abonnementbereich können Sie alle Ressourcen unter der Ressourcengruppe (etwa Websites, virtuelle Computer und Subnetze) verwalten.
+Sehen wir uns ein Beispiel an: Als Ressourcengruppenbesitzer mit Leseberechtigungen für den Abonnementbereich können Sie alle Ressourcen unter der Ressourcengruppe (etwa Websites, virtuelle Computer und Subnetze) verwalten.
 Wenn Sie jedoch versuchen, eine Supportanfrage für die VM-Ressource zu erstellen, tritt der folgende Fehler auf:
 
 ![Abonnementfehler](./media/create-manage-support-requests-using-access-control/subscription-error.png)

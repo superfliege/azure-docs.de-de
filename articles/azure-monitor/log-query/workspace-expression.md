@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 933d37f576d0b8507d2311a3e31e34182a0a2e69
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996299"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>workspace()-Ausdruck in Azure Monitor-Protokollabfragen
 

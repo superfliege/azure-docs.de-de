@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: e4b1153e46625f88c717fd9b7a5336ffe4ca7f6a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005299"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
 **Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
@@ -52,7 +52,7 @@ Folgende Punkte sollten berücksichtigt werden:
     Der Azure-Ressourcen-Explorer ist ein unverzichtbares Tool für die Problembehandlung, das Aufschluss über den Zustand Ihrer Azure Resource Manager-Ressourcen gibt. Klicken Sie auf Ihr Abonnement, und sehen Sie sich die Ressourcengruppe an, für die Sie die Problembehandlung ausführen. Sehen Sie unter dem Compute-Ressourcenanbieter die von Ihnen erstellte VM-Skalierungsgruppe an, und überprüfen Sie die Instanzansicht, in der der Zustand einer Bereitstellung angezeigt wird. Überprüfen Sie außerdem die Instanzansicht der virtuellen Computer in der VM-Skalierungsgruppe. Wechseln Sie anschließend zum Microsoft.Insights-Ressourcenanbieter, und überprüfen Sie die Regeln für die automatische Skalierung auf ihre Richtigkeit.
 * Funktioniert die Diagnoseerweiterung, und gibt sie Leistungsdaten aus?
   
-    **Update**: Die automatische Skalierung in Azure wurde erweitert und verwendet jetzt eine hostbasierte Metrikpipeline, für die keine Diagnoseerweiterung mehr installiert werden muss. Die nächsten Abschnitte treffen daher nicht mehr zu, wenn Sie mithilfe der neuen Pipeline eine Anwendung mit automatischer Skalierung erstellen. Ein Beispiel für Azure-Vorlagen, die zur Verwendung der Hostpipeline konvertiert wurden, finden Sie hier: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Update:** Die automatische Skalierung in Azure wurde erweitert und verwendet jetzt eine hostbasierte Metrikpipeline, für die keine Diagnoseerweiterung mehr installiert werden muss. Die nächsten Abschnitte treffen daher nicht mehr zu, wenn Sie mithilfe der neuen Pipeline eine Anwendung mit automatischer Skalierung erstellen. Ein Beispiel für Azure-Vorlagen, die zur Verwendung der Hostpipeline konvertiert wurden, finden Sie hier: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
   
     Die Verwendung hostbasierter Metriken für die automatische Skalierung ist aus folgenden Gründen besser geeignet:
   
@@ -72,14 +72,14 @@ Folgende Punkte sollten berücksichtigt werden:
     
     ![Cloud-Explorer][explorer]
     
-   Sie sehen eine Reihe von Tabellen, in denen die Daten aus den einzelnen VMs gespeichert sind. Sehen Sie sich beispielsweise die aktuellen Zeilen mit Linux- und CPU-Metriken an. Der Visual Studio Cloud-Explorer unterstützt eine Abfragesprache, sodass Sie eine Abfrage ausführen können. Beispielsweise können Sie eine Abfrage für „Timestamp gt datetime’2016-02-02T21:20:00Z’“ ausführen, um sicherzustellen, dass Sie die aktuellsten Ereignisse abrufen. Die Zeitzone entspricht UTC. Entsprechen die dort angezeigten Daten den von Ihnen eingerichteten Skalierungsregeln? Im folgenden Beispiel ist die CPU-Auslastung für Computer 20 in den letzten fünf Minuten auf 100 Prozent gestiegen.
+    Sie sehen eine Reihe von Tabellen, in denen die Daten aus den einzelnen VMs gespeichert sind. Sehen Sie sich beispielsweise die aktuellen Zeilen mit Linux- und CPU-Metriken an. Der Visual Studio Cloud-Explorer unterstützt eine Abfragesprache, sodass Sie eine Abfrage ausführen können. Beispielsweise können Sie eine Abfrage für „Timestamp gt datetime’2016-02-02T21:20:00Z’“ ausführen, um sicherzustellen, dass Sie die aktuellsten Ereignisse abrufen. Die Zeitzone entspricht UTC. Entsprechen die dort angezeigten Daten den von Ihnen eingerichteten Skalierungsregeln? Im folgenden Beispiel ist die CPU-Auslastung für Computer 20 in den letzten fünf Minuten auf 100 Prozent gestiegen.
     
     ![Speichertabellen][tables]
     
     Wenn keine Daten vorhanden sind, impliziert dies, dass ein Problem mit der Diagnoseerweiterung auf den virtuellen Computern vorliegt. Sind Daten vorhanden, weist dies darauf hin, dass entweder ein Problem mit den Skalierungsregeln oder mit dem Insights-Dienst vorliegt. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/).
     
     Sobald Sie diese Schritte absolviert haben, können Sie die folgenden Ressourcen nutzen, sollten immer noch Probleme mit der automatischen Skalierung auftreten: 
-    * Lesen Sie die Foren auf [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) oder [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) 
+    * Lesen Sie die Foren auf [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure) 
     * Melden Sie einen Supportanruf an. Bereiten Sie das Teilen der Vorlage und einer Ansicht Ihrer Leistungsdaten vor.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

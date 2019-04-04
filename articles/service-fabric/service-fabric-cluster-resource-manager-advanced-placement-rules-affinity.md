@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bda70a6854dc6d94d3d4b37e6f587e4dcd045126
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085693"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurieren und Verwenden der Dienstaffinität in Service Fabric
 Affinität ist ein Steuerelement, das hauptsächlich bereitgestellt wird, um den Übergang von größeren monolithischen Anwendungen in die Welt der Cloud und Microservices zu vereinfachen. Sie wird auch zur Verbesserung der Leistung von Diensten verwendet, dies ist jedoch unter Umständen mit Nebenwirkungen verbunden.
@@ -59,6 +59,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 Affinität wird mithilfe eines von mehreren Korrelationschemen dargestellt und weist zwei verschiedene Modi auf. Der gängigste Affinitätsmodus ist, was wir als „NonAlignedAffinity“ bezeichnen. Bei NonAlignedAffinity werden die Replikate oder Instanzen der anderen Dienste auf denselben Knoten platziert. Der andere Modus heißt „AlignedAffinity“. AlignedAffinity wird ausschließlich für zustandsbehaftete Dienste verwendet. Durch die Konfiguration von zwei zustandsbehafteten Diensten mit AlignedAffinity wird sichergestellt, dass die primären Replikate dieser Dienste auf denselben Knoten platziert werden wie die des anderen Diensts. Außerdem wird jedes Paar aus sekundären Replikaten für diese Dienste auf denselben Knoten platziert. Es ist auch möglich, (jedoch nicht so üblich) „NonAlignedAffinity“ für zustandsbehaftete Dienste zu konfigurieren. Bei „NonAlignedAffinity“ werden die verschiedenen Replikate der beiden zustandsbehafteten Dienste zwar auf den gleichen Knoten ausgeführt, die primären Replikate können sich jedoch auf unterschiedlichen Knoten befinden.
 
 <center>
+
 ![Affinitätsmodi und ihre Auswirkungen][Image1]
 </center>
 
@@ -69,6 +70,7 @@ Mit einer Affinitätsbeziehung wird ein bestimmter Zustand angestrebt. Sie biete
 Heute ist der Clusterressourcen-Manager nicht dazu in der Lage, Affinitätsbeziehungsketten zu modellieren. Dies bedeutet, dass ein Dienst, der ein untergeordneter Dienst einer Affinitätsbeziehung ist, kein übergeordneter Dienst in einer anderen Affinitätsbeziehung sein kann. Wenn Sie diesen Typ von Beziehung modellieren möchten, müssen Sie sie als Stern und nicht als Kette modellieren. Um von einer Kette zu einem Stern zu wechseln, würde das übergeordnete Element des ersten untergeordneten Elements als übergeordnetes Element für das unterste untergeordnete Element verwendet. Abhängig von der Anordnung Ihrer Dienste müssen Sie dies möglicherweise mehrmals durchführen. Wenn es keinen natürlichen übergeordneten Dienst gibt, müssen Sie möglicherweise einen erstellen, der als Platzhalter dient. Je nach Ihren Anforderungen sollten Sie sich auch mit [Anwendungsgruppen](service-fabric-cluster-resource-manager-application-groups.md) befassen.
 
 <center>
+
 ![Ketten im Vergleich zu Sternen im Kontext von Affinitätsbeziehungen][Image2]
 </center>
 

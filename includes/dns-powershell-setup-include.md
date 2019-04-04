@@ -8,12 +8,12 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 9c0874199a21f7357ae387e7ac4a26267c6635fc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6f042b9bc971498310ec51d07a1eba7193b21b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56078546"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554674"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Einrichten des Azure PowerShell für Azure DNS
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
-Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Weitere Informationen finden Sie unter [Verwenden von PowerShell mit Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
+Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Weitere Informationen finden Sie unter [Anmelden](/powershell/azure/install-az-ps?view=azps-1.4.0#sign-in).
 
 ```powershell
 Connect-AzureRmAccount

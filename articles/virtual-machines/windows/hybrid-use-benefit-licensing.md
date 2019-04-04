@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 4de6e4429543ea4f691cc3a38c15b896b866075b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980719"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570367"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -33,7 +33,7 @@ Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Wind
 >
 
 > [!NOTE]
-> Bei klassischen VMs wird lediglich die Bereitstellung von neuen VMs über lokale benutzerdefinierte Images unterstützt. Um die in diesem Artikel genannten unterstützten Funktionen nutzen zu können, müssen Sie klassische VMs zunächst zum Resource Manager-Modell migrieren.
+> Bei klassischen VMs wird die Bereitstellung von neuen VMs nur über lokale benutzerdefinierte Images unterstützt. Um die in diesem Artikel genannten unterstützten Funktionen nutzen zu können, müssen Sie klassische VMs zunächst zum Resource Manager-Modell migrieren.
 >
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
@@ -77,11 +77,11 @@ az vm create \
 ### <a name="template"></a>Vorlage
 In den Resource Manager-Vorlagen muss ein zusätzlicher Parameter für `licenseType` angegeben werden. Weitere Informationen dazu finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
 ```json
-"properties": {  
-   "licenseType": "Windows_Server",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Server",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Konvertieren eines vorhandenen virtuellen Computers mit Azure-Hybridvorteil für Windows Server
@@ -161,7 +161,7 @@ Auf dem Ressourcenblatt des virtuellen Computers oder der VM-Skalierungsgruppe k
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
-$vms = Get-AzVM 
+$vms = Get-AzVM
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 
@@ -171,7 +171,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Bereitstellen einer VM-Skalierungsgruppe mit dem Azure-Hybridvorteil für Windows Server
-In den Resource Manager-Vorlagen der VM-Skalierungsgruppe muss ein zusätzlicher Parameter für `licenseType` in der Eigenschaft „VirtualMachineProfile“ angegeben werden. Dies kann während der Erstellung oder Aktualisierung der Skalierungsgruppe über die ARM-Vorlage, PowerShell, Azure-Befehlszeilenschnittstelle oder REST erfolgen.
+In den Resource Manager-Vorlagen der VM-Skalierungsgruppe muss ein zusätzlicher Parameter für `licenseType` in der Eigenschaft „VirtualMachineProfile“ angegeben werden. Dies kann während der Erstellung oder Aktualisierung der Skalierungsgruppe über die ARM-Vorlage, PowerShell, die Azure-Befehlszeilenschnittstelle oder REST erfolgen.
 
 Im folgenden Beispiel wird die ARM-Vorlage mit einem Windows Server 2016 Datacenter-Image verwendet:
 ```json

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339755"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240166"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Erkennen und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -54,7 +54,7 @@ Weitere Informationen finden Sie unter [Was sind klassische Warnungen in Microso
 
 ## <a name="resolve-connectivity-errors"></a>Lösen von Konnektivitätsproblemen
 
-Wenn Sie Diagnoseprotokolle und Warnungen für verbundene Geräte aktivieren, erhalten Sie Warnungen, wenn Fehler auftreten. In diesem Abschnitt wird beschrieben, wie Sie häufig auftretende Probleme beheben, wenn Sie eine Warnung erhalten haben. In den folgenden Schritten wird davon ausgegangen, dass Sie für Ihre Diagnoseprotokolle Azure Log Analytics eingerichtet haben.
+Wenn Sie Diagnoseprotokolle und Warnungen für verbundene Geräte aktivieren, erhalten Sie Warnungen, wenn Fehler auftreten. In diesem Abschnitt wird beschrieben, wie Sie häufig auftretende Probleme beheben, wenn Sie eine Warnung erhalten haben. In den folgenden Schritten wird davon ausgegangen, dass Sie für Ihre Diagnoseprotokolle Azure Monitor-Protokolle eingerichtet haben.
 
 1. Rufen Sie Ihren Arbeitsbereich für **Log Analytics** im Azure-Portal auf.
 1. Wählen Sie **Protokollsuche** aus.

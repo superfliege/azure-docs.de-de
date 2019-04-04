@@ -12,19 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998413"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API
 
-Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azure festgelegt werden. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, ist es möglich, Ablehnungszuweisungen aufzulisten, da sie sich auf Ihre geltenden Berechtigungen auswirken können. In diesem Artikel wird beschrieben, wie Sie Ablehnungszuweisungen mithilfe von RBAC und der REST-API auflisten.
+[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit der REST-API Ablehnungszuweisungen auflisten.
+
+> [!NOTE]
+> Zu diesem Zeitpunkt können Sie nur dann Ihre eigenen Ablehnungszuweisungen hinzufügen, wenn Sie Azure Blueprints verwenden. Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folgendes verfügen:
+
+- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) enthalten ist.
 
 ## <a name="list-a-single-deny-assignment"></a>Auflisten einer einzelnen Ablehnungszuweisung
 

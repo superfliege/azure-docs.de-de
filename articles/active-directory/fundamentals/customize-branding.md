@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 807643146c4f2821cecf60499ea1985f56e9d251
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103059"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -29,7 +29,7 @@ Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Anpassen Ihrer Azure AD-Anmeldeseite
 Sie können Ihre Azure AD-Anmeldeseiten anpassen, die angezeigt werden, wenn sich Benutzer bei mandantenspezifischen Apps Ihrer Organisation anmelden, z. B. [*https://outlook.com/contoso.com*](https://outlook.com/contoso.com), oder bei der Übergabe einer Domänenvariable, z. B. [ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer zu Sites wechseln wie „www.office.com“. Stattdessen muss sich der Benutzer anmelden, bevor Ihr benutzerdefiniertes Branding angezeigt wird.
+Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer zu Websites wie www\.office.com navigieren. Stattdessen muss sich der Benutzer anmelden, bevor Ihr benutzerdefiniertes Branding angezeigt wird.
 
 > [!NOTE]
 > Alle Brandingelemente sind optional. Wenn Sie beispielsweise ein Bannerlogo ohne Hintergrundbild angeben, wird auf der Anmeldeseite Ihr Logo mit einem Standardhintergrundbild der Zielwebsite (z. B. Office 365) angezeigt.<br><br>Darüber hinaus wird das Branding von Anmeldeseiten nicht für persönliche Microsoft-Konten übernommen. Wenn sich Ihre Benutzer oder Gäste des Unternehmens mit einem persönlichen Microsoft-Konto anmelden, wird auf der Anmeldeseite das Branding Ihrer Organisation nicht angezeigt.
@@ -103,7 +103,7 @@ Nachdem Sie Ihr benutzerdefiniertes Branding erstellt haben, können Sie zurück
 
 4. Wählen Sie **Speichern** aus.
 
-  Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
+   Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Hinzufügen eines sprachspezifischen Unternehmensbrandings zu Ihrem Verzeichnis
 Sie können die Sprache Ihrer ursprünglichen Konfiguration nicht in eine andere Sprache als Ihre Standardsprache ändern. Wenn Sie allerdings eine Konfiguration in einer anderen Sprache benötigen, können Sie eine neue Konfiguration erstellen.

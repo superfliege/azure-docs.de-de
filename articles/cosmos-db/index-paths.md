@@ -1,17 +1,17 @@
 ---
 title: Verwenden von Indexpfaden in Azure Cosmos DB
 description: Übersicht über Indexpfade in Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/5/2018
-ms.author: rimman
-ms.openlocfilehash: c22d8d69284c546a4fccc86302672d81ce65b9e8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 3/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: d0fce763822ded374eab2f70c3f319aba0c89267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992833"
 ---
 # <a name="index-paths-in-azure-cosmos-db"></a>Indexpfade in Azure Cosmos DB
 
@@ -25,12 +25,12 @@ Im Folgenden sind die allgemeinen Muster zum Angeben von Indexpfaden aufgeführt
 
 | **Path** | **Beschreibung/Anwendungsfall** |
 | ---------- | ------- |
-| /   | Der Standardpfad für die Sammlung. Rekursiv und gilt für die gesamte Dokumentstruktur.|
-| /prop/?  | Zum Verarbeiten der nachfolgenden Abfragen erforderlicher Indexpfad (entsprechend mit Hash- oder Bereichstyp):<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop  |
-| /prop/*  | Indexpfad für alle Pfade unter der angegebenen Bezeichnung. Funktioniert mit den folgenden Abfragen.<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop |
-| /props/[]/?  | Indexpfad ist erforderlich für Iteration und JOIN-Abfragen für Arrays mit Skalaren wie ["a", "b", "c"]:<br><br>SELECT tag FROM tag IN collection.props WHERE tag = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5  |
+| /          | Der Standardpfad für die Sammlung. Rekursiv und gilt für die gesamte Dokumentstruktur.|
+| /prop/?    | Zum Verarbeiten der nachfolgenden Abfragen erforderlicher Indexpfad (entsprechend mit Bereichstyp): <br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5 <br><br>SELECT FROM collection c ORDER BY c.prop  |
+| /prop/*    | Indexpfad für alle Pfade unter der angegebenen Bezeichnung. Funktioniert mit den folgenden Abfragen. <br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop |
+| /props/[]/?| Indexpfad ist erforderlich für Iteration und JOIN-Abfragen für Arrays mit Skalaren wie ["a", "b", "c"]:<br><br>SELECT tag FROM tag IN collection.props WHERE tag = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5 |
 | /props/[]/subprop/? | Indexpfad ist erforderlich für Iteration und JOIN-Abfragen für Arrays mit Objekten wie [{subprop: "a"}, {subprop: "b"}]:<br><br>SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value" |
-| /prop/subprop/? | Zum Verarbeiten der folgenden Abfragen erforderlicher Indexpfad (entsprechend mit Hash- oder Bereichstyp):<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5  |
+| /prop/subprop/? | Zum Verarbeiten der folgenden Abfragen erforderlicher Indexpfad (entsprechend mit Bereichstyp):<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5  |
 
 Beim Festlegen von benutzerdefinierten Indexpfaden müssen Sie die Standardindizierungsregel für das gesamte Element angeben, indem Sie den speziellen Pfad `/*` verwenden.
 

@@ -6,18 +6,18 @@ documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
 editor: ''
-ms.service: functions
+ms.service: azure-functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6057fa52cd2f1e9b9fd525723f96ab66983fb5d4
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732157"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521719"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problembehandlung für „Die Functions-Runtime ist nicht erreichbar“.
 
@@ -58,15 +58,15 @@ Wenn im vorhergegangenen Schritt keine Verbindungszeichenfolge für das Speicher
 * Erforderlich
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * Für Verbrauchsplanfunktionen erforderlich
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#websitecontentazurefileconnectionstring)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#websitecontentshare)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
 [Lesen Sie hier mehr über diese Anwendungseinstellungen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
 ### <a name="guidance"></a>Anleitungen
 
 * Aktivieren Sie für keine dieser Einstellungen „Sloteinstellung“. Wenn Sie die Bereitstellungsslots tauschen, wird die Funktion beschädigt.
-* Legen Sie diese Einstellungen nicht fest, wenn Sie automatisierte Bereitstellungen verwenden.
+* Ändern Sie diese Einstellungen im Rahmen von automatisierten Bereitstellungen nicht.
 * Diese Einstellungen müssen zur Erstellungszeit angegeben werden und gültig sein. Eine automatisierte Bereitstellung, die diese Einstellungen nicht enthält, führt zu einer nicht funktionsfähigen App, selbst wenn die Einstellungen nach der Bereitstellung hinzugefügt werden.
 
 ## <a name="storage-account-credentials-invalid"></a>Ungültige Anmeldeinformationen des Speicherkontos

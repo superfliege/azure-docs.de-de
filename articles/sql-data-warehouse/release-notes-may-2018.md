@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852609"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Neuerungen in Azure SQL Data Warehouse Mai 2018 
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im Mai 2018 eingeführt wurden. 
@@ -44,7 +44,7 @@ Als Best Practice und Richtlinie wird empfohlen, die Option `AUTO_CREATE_STATIST
 Zusätzliche Details finden Sie im Artikel [ALTER DATABASE SET-Optionen](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options).
 
 ## <a name="rejected-row-support"></a>Unterstützung für abgelehnte Zeilen
-Kunden verwenden aufgrund der hohen Leistung beim parallelen Laden von Daten häufig [PolyBase (externe Tabellen)](design-elt-data-loading.md), um Daten in SQL Data Warehouse zu laden. PolyBase ist auch beim Laden von Daten über [Azure Data Factory](http://azure.com/adf) das Standardmodell für Ladevorgänge. 
+Kunden verwenden aufgrund der hohen Leistung beim parallelen Laden von Daten häufig [PolyBase (externe Tabellen)](design-elt-data-loading.md), um Daten in SQL Data Warehouse zu laden. PolyBase ist auch beim Laden von Daten über [Azure Data Factory](https://azure.com/adf) das Standardmodell für Ladevorgänge. 
 
 SQL Data Warehouse bietet mit dem `REJECTED_ROW_LOCATION`-Parameter für die [CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)-Anweisung zusätzlich die Möglichkeit zum Definieren eines Speicherorts für abgelehnte Zeilen. Nach dem Ausführen von [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) aus der externen Tabelle werden alle Zeilen, die nicht geladen werden konnten, für eine weitere Untersuchung in einer Datei in der Nähe der Quelle gespeichert. 
 
@@ -144,7 +144,7 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [Customer Advisory Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Kundenerfolgsgeschichten]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow-Forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow-Forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

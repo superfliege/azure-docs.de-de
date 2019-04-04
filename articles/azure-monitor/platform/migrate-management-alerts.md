@@ -8,35 +8,34 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 55d0269aaa330f928a9d037eec6a3445825a5ed3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470340"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307181"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrieren von Azure-Warnungen für Verwaltungsereignisse zu Aktivitätsprotokollwarnungen
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
 > Warnungen für Verwaltungsereignisse werden am oder nach dem 1. Oktober deaktiviert. Befolgen Sie die nachstehenden Anweisungen, um herauszufinden, ob Sie über solche Warnungen verfügen, und diese gegebenenfalls zu migrieren.
->
-> 
 
 ## <a name="what-is-changing"></a>Was ändert sich?
 
 Azure Monitor (ehemals „Azure Insights“) hat eine Funktion zum Erstellen einer Warnung bereitgestellt, die Verwaltungsereignisse ausgelöst und Benachrichtigungen für eine Webhook-URL oder für E-Mail-Adressen generiert hat. Möglicherweise haben Sie eine dieser Warnungen auf eine der folgenden Weisen erstellt:
 * Durch Auswählen von „Überwachung“ -> „Warnungen“ -> „Warnung hinzufügen“ im Azure-Portal für bestimmte Ressourcentypen und Festlegen der Option „Warnung bei“ auf „Ereignisse“
-* Durch Ausführen des PowerShell-Cmdlets „Add-AzureRmLogAlertRule“
+* Durch Ausführen des PowerShell-Cmdlets „Add-AzLogAlertRule“
 * Durch direktes Verwenden [der REST-API für Warnungen](https://docs.microsoft.com/rest/api/monitor/alertrules) mit den Werten „ManagementEventRuleCondition“ für „odata.type“ und „RuleManagementEventDataSource“ für „dataSource.odata.type“
  
 Das folgende PowerShell-Skript gibt eine Liste aller Warnungen für Verwaltungsereignisse zurück, die in Ihrem Abonnement vorliegen, sowie die für die einzelnen Warnungen festgelegten Bedingungen.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $alerts = $null
-foreach ($rg in Get-AzureRmResourceGroup ) {
-  $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
+foreach ($rg in Get-AzResourceGroup ) {
+  $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
 }
 foreach ($alert in $alerts) {
   if($alert.Properties.Condition.DataSource.GetType().Name.Equals("RuleManagementEventDataSource")) {

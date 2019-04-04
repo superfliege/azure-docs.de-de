@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Log Analytics | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
 description: Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002342"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 
@@ -69,7 +72,7 @@ A: Für den Zugriff auf einen Arbeitsbereich in Azure benötigen Sie Azure-Berec
 A: Der Ansicht-Designer ist in der Protokollumgebung nur für Benutzer verfügbar, denen mindestens Berechtigungen vom Typ „Mitwirkender“ zugewiesen wurden.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>F: Kann ich das Analytics-Portal weiterhin außerhalb von Azure nutzen?
-A. Ja, die Seite „Protokolle“ in Azure und das Advanced Analytics-Portal basieren auf demselben Code. Log Analytics ist als Feature in Azure Monitor integriert, um eine einheitlichere Überwachungsoberfläche zu realisieren. Sie können weiterhin über die URL auf das Analytics-Portal zugreifen: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+A. Ja, die Seite „Protokolle“ in Azure und das Advanced Analytics-Portal basieren auf demselben Code. Log Analytics ist als Feature in Azure Monitor integriert, um eine einheitlichere Überwachungsoberfläche zu realisieren. Sie können weiterhin über diese URL auf das Analytics-Portal zugreifen: https:\/\/portal.loganalytics.io/subscriptions/{abonnementId}/resourcegroups/{ressourcengruppenname}/workspaces/{arbeitsbereichsname}.
 
 
 
@@ -168,7 +171,7 @@ Für Datenverkehr zu Log Analytics wird eine ExpressRoute-Verbindung mit öffent
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>F: Gibt es eine einfache Möglichkeit zum Verschieben eines vorhandenen Log Analytics-Arbeitsbereichs in einen anderen Log Analytics-Arbeitsbereich bzw. ein anderes Azure-Abonnement?
 
-A. Mit dem Cmdlet `Move-AzureRmResource` können Sie einen Log Analytics-Arbeitsbereich sowie ein Automation-Konto aus einem Azure-Abonnement in ein anderes verschieben. Weitere Informationen finden Sie unter [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
+A. Mit dem Cmdlet `Move-AzResource` können Sie einen Log Analytics-Arbeitsbereich sowie ein Automation-Konto aus einem Azure-Abonnement in ein anderes verschieben. Weitere Informationen finden Sie unter [Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx).
 
 Diese Änderung kann auch im Azure-Portal erfolgen.
 

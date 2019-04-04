@@ -3,20 +3,20 @@ title: Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factor
 description: Erfahren Sie, wie Sie benutzerdefinierte Aktivitäten erstellen und in einer Azure Data Factory-Pipeline verwenden.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: douglasl
-ms.openlocfilehash: 0236d9118389b4f8fb79453b425c70f09e94bbb8
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213806"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855868"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,11 +30,13 @@ Es existieren zwei Aktivitätstypen, die Sie in einer Azure Data Factory-Pipelin
 
 Wenn Sie Daten in einen bzw. aus einem von Data Factory nicht unterstützten Datenspeicher verschieben oder auf eine Weise transformieren/verarbeiten müssen, die von Data Factory nicht unterstützt wird, können Sie auch eine **benutzerdefinierte Aktivität** mit Ihrer eigenen Datenverschiebungs- bzw. -transformationslogik erstellen und in einer Pipeline verwenden. Die benutzerdefinierte Aktivität führt Ihre angepasste Codelogik in einem **Azure Batch**-Pool mit virtuellen Computern aus.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst vertraut sind:
 
 * [Azure Batch – Grundlagen](../batch/batch-technical-overview.md) finden Sie eine Übersicht über den Azure Batch-Dienst.
-* Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1), oder erstellen Sie das Azure Batch-Konto über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Artikel [Verwenden von PowerShell zum Verwalten eines Azure Batch-Kontos](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) ist die Verwendung dieses Cmdlets im Detail beschrieben.
-* [New-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) , um einen Azure Batch-Pool zu erstellen.
+* Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount), oder erstellen Sie das Azure Batch-Konto über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Artikel [Verwenden von PowerShell zum Verwalten eines Azure Batch-Kontos](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) ist die Verwendung dieses Cmdlets im Detail beschrieben.
+* [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool), um einen Azure Batch-Pool zu erstellen.
 
 ## <a name="azure-batch-linked-service"></a>Verknüpfter Azure Batch-Dienst
 Der folgende JSON-Code definiert einen verknüpften Azure Batch-Beispieldienst. Einzelheiten finden Sie unter [Von Azure Data Factory unterstützte Compute-Umgebungen](compute-linked-services.md).
@@ -98,17 +100,21 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft              | BESCHREIBUNG                              | Erforderlich |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Name der Aktivität in der Pipeline     | JA      |
+| name                  | Name der Aktivität in der Pipeline     | Ja      |
 | Beschreibung           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
-| type                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | JA      |
-| linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | JA      |
-| command               | Befehl der benutzerdefinierten Anwendung, der ausgeführt werden soll. Wenn die Anwendung bereits auf dem Knoten des Azure Batch-Pools verfügbar ist, können „resourceLinkedService“ und „folderPath“ übersprungen werden. Sie können beispielsweise den Befehl `cmd /c dir` angeben, was vom Knoten des Azure Batch-Pools nativ unterstützt wird. | JA      |
+| type                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | Ja      |
+| linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | Ja      |
+| command               | Befehl der benutzerdefinierten Anwendung, der ausgeführt werden soll. Wenn die Anwendung bereits auf dem Knoten des Azure Batch-Pools verfügbar ist, können „resourceLinkedService“ und „folderPath“ übersprungen werden. Sie können beispielsweise den Befehl `cmd /c dir` angeben, was vom Knoten des Azure Batch-Pools nativ unterstützt wird. | Ja      |
 | resourceLinkedService | Mit dem Speicherkonto verknüpfter Azure Storage-Dienst, in dem die benutzerdefinierte Anwendung gespeichert wird. | Nein&#42;       |
 | folderPath            | Pfad zum Ordner der benutzerdefinierten Anwendung und allen ihren abhängigen Elementen<br/><br/>Wenn Sie Abhängigkeiten in Unterordnern gespeichert haben (also in einer hierarchischen Ordnerstruktur unter *folderPath*), wird die Ordnerstruktur zurzeit abgeflacht, wenn die Dateien nach Azure Batch kopiert werden. Das heißt, alle Dateien werden in einen einzigen Ordner ohne Unterordner kopiert. Um dieses Verhalten zu umgehen, sollten Sie die Dateien komprimieren, die komprimierte Datei kopieren und dann mit benutzerdefiniertem Code am gewünschten Speicherort entpacken. | Nein&#42;       |
 | referenceObjects      | Array vorhandener verknüpfter Dienste und Datasets. Die referenzierten verknüpften Dienste und Datasets werden im JSON-Format an die benutzerdefinierte Anwendung übergeben, sodass Ihr benutzerdefinierter Code auf Data Factory-Ressourcen verweisen kann. | Nein        |
 | extendedProperties    | Benutzerdefinierte Eigenschaften, die im JSON-Format an die benutzerdefinierte Anwendung übergeben werden können, sodass Ihr benutzerdefinierter Code auf zusätzliche Eigenschaften verweisen kann. | Nein        |
+| retentionTimeInDays | Die Vermerkdauer für die Dateien, die für die benutzerdefinierte Aktivität übermittelt werden. Der Standardwert ist 30 Tage. | Nein  |
 
 &#42; Die Eigenschaften `resourceLinkedService` und `folderPath` müssen entweder beide angegeben oder beide weggelassen werden.
+
+> [!NOTE]
+> Wenn Sie in der benutzerdefinierten Aktivität verknüpfte Dienste als referenceObjects übergeben, wird aus Sicherheitsgründen empfohlen, einen Azure Key Vault-fähigen verknüpften Dienst zu übergeben (da keine sicheren Zeichenfolgen enthalten sind) und die Anmeldeinformationen anhand des Geheimnisnamens direkt aus dem Code von Key Vault abzurufen. Sie finden [hier](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) ein Beispiel, das auf einen mit Azure Key Vault (AKV) verknüpften Dienst verweist, die Anmeldeinformationen von Key Vault abruft und dann auf den Speicher im Code zugreift.  
 
 ## <a name="custom-activity-permissions"></a>Berechtigungen für benutzerdefinierte Aktivitäten
 
@@ -227,13 +233,13 @@ namespace SampleApp
 Sie können mit dem folgenden PowerShell-Befehl eine Pipelineausführung starten:
 
 ```.powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
 Wenn die Pipeline ausgeführt wird, können Sie mit den folgenden Befehlen die Ausgabe der Ausführung überprüfen:
 
 ```.powershell
 while ($True) {
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
     if(!$result) {
         Write-Host "Waiting for pipeline to start..." -foregroundcolor "Yellow"
@@ -318,9 +324,9 @@ Um auf Eigenschaften vom Typ *SecureString* von einer benutzerdefinierten Aktivi
 
 ## <a name="compare-v2-v1"></a> Vergleich: Benutzerdefinierte V2-Aktivität und Version 1 der DotNet-Aktivität (benutzerdefiniert)
 
-In Azure Data Factory Version 1 implementieren Sie eine (benutzerdefinierte) DotNet-Aktivität, indem Sie ein .NET-Klassenbibliotheksprojekt mit einer Klasse erstellen, die die `Execute`-Methode der `IDotNetActivity`-Schnittstelle implementiert. Die verknüpften Dienste, Datasets und erweiterten Eigenschaften in der JSON-Nutzlast einer (benutzerdefinierten) DotNet-Aktivität werden als stark typisierte Objekte an die Ausführungsmethode übergeben. Ausführliche Informationen zum Verhalten von Version 1 finden Sie unter [(Benutzerdefinierte) DotNet-Aktivität in Version 1](v1/data-factory-use-custom-activities.md). Aufgrund dieser Implementierung muss Ihr Code von Version 1 der DotNet-Aktivität auf .NET Framework 4.5.2 ausgerichtet sein. Version 1 der DotNet-Aktivität muss auch auf Windows-basierten Knoten des Azure Batch-Pools ausgeführt werden.
+In Azure Data Factory Version 1 implementieren Sie eine (benutzerdefinierte) DotNet-Aktivität, indem Sie ein .NET-Klassenbibliotheksprojekt mit einer Klasse erstellen, die die `Execute`-Methode der `IDotNetActivity`-Schnittstelle implementiert. Die verknüpften Dienste, Datasets und erweiterten Eigenschaften in der JSON-Nutzlast einer (benutzerdefinierten) DotNet-Aktivität werden als stark typisierte Objekte an die Ausführungsmethode übergeben. Ausführliche Informationen zum Verhalten von Version 1 finden Sie unter [(Benutzerdefinierte) DotNet-Aktivität in Version 1](v1/data-factory-use-custom-activities.md). Aufgrund dieser Implementierung muss Ihr Code von Version 1 auf die DotNet-Aktivität auf .NET Framework 4.5.2 ausgerichtet sein. Version 1 der DotNet-Aktivität muss auch auf Windows-basierten Knoten des Azure Batch-Pools ausgeführt werden.
 
-In der benutzerdefinierten Aktivität von Azure Data Factory V2 muss keine .NET-Schnittstelle implementiert werden. Sie können jetzt Befehle, Skripts und Ihren eigenen benutzerdefinierten, als ausführbare Datei kompilierten Code direkt ausführen. Zum Konfigurieren dieser Implementierung geben Sie die `Command`-Eigenschaft zusammen mit der `folderPath`-Eigenschaft an. Die benutzerdefinierte Aktivität lädt die ausführbare Datei und ihre Abhängigkeiten in `folderpath` hoch und führt den Befehl für Sie aus.
+In der benutzerdefinierten Aktivität von Azure Data Factory V2 muss keine .NET-Schnittstelle implementiert werden. Sie können jetzt Befehle, Skripts und Ihren eigenen benutzerdefinierten, als ausführbare Datei kompilierten Code direkt ausführen. Zum Konfigurieren dieser Implementierung geben Sie die `Command`-Eigenschaft zusammen mit der `folderPath`-Eigenschaft an. Die benutzerdefinierte Aktivität lädt die ausführbare Datei und ihre Abhängigkeiten in `folderpath` hoch und führt den Befehl für Sie aus.
 
 Ihre ausführbare Datei kann auf die verknüpften Dienste, Datasets (definiert in referenceObjects) und erweiterten Eigenschaften, die in der JSON-Nutzlast einer benutzerdefinierten Data Factory V2-Aktivität definiert sind, als JSON-Dateien zugreifen. Mit einem JSON-Serialisierungsmodul können Sie auf die gewünschten Eigenschaften zugreifen, wie im obigen Codebeispiel von „SampleApp.exe“ gezeigt wird.
 
@@ -331,16 +337,16 @@ In der folgenden Tabelle ist der Unterschied zwischen der benutzerdefinierten Ak
 
 |Unterschiede      | Benutzerdefinierte Aktivität      | (Benutzerdefinierte) DotNet-Aktivität in Version 1      |
 | ---- | ---- | ---- |
-|Definition benutzerdefinierter Logik      |Durch Bereitstellen einer ausführbaren Datei      |Durch Implementieren einer .NET DLL      |
-|Ausführungsumgebung der benutzerdefinierten Logik      |Windows oder Linux      |Windows (.NET Framework 4.5.2)      |
-|Ausführung von Skripts      |Direkte Unterstützung der Ausführung von Skripts (z.B. „cmd /c echo hello world“ auf Windows-VM)      |Erfordert Implementierung in die .NET DLL      |
+|Definition benutzerdefinierter Logik      |Durch Bereitstellen einer ausführbaren Datei      |Durch Implementieren einer .NET-DLL      |
+|Ausführungsumgebung der benutzerdefinierten Logik      |Windows oder Linux      |Windows (.NET Framework 4.5.2)      |
+|Ausführung von Skripts      |Direkte Unterstützung der Ausführung von Skripts (z.B. „cmd /c echo hello world“ auf Windows-VM)      |Erfordert Implementierung in die .NET-DLL      |
 |Dataset erforderlich      |Optional      |Erforderlich, um Aktivitäten zu verketten und Informationen weiterzugeben      |
 |Übergeben von Informationen von der Aktivität an benutzerdefinierte Logik      |Über „ReferenceObjects“ („LinkedServices“ und „Datasets“) und „ExtendedProperties“ (benutzerdefinierte Eigenschaften)      |Über „ExtendedProperties“ (benutzerdefinierte Eigenschaften), Eingabe und Ausgabedatasets      |
-|Abrufen von Informationen in benutzerdefinierte Logik      |Analysieren der Dateien „activity.json“, „linkedServices.json“ und „datasets.json“, die in demselben Ordner wie die ausführbare Datei gespeichert sind      |Über .NET SDK (.NET Framework 4.5.2)      |
-|Protokollierung      |Schreibt direkt in STDOUT      |Implementieren der Protokollierung in .NET DLL      |
+|Abrufen von Informationen in benutzerdefinierte Logik      |Analysieren der Dateien „activity.json“, „linkedServices.json“ und „datasets.json“, die in demselben Ordner wie die ausführbare Datei gespeichert sind      |Über .NET SDK (.NET Framework 4.5.2)      |
+|Protokollierung      |Schreibt direkt in STDOUT      |Implementieren der Protokollierung in eine .NET-DLL      |
 
 
-Wenn Sie über .NET-Code verfügen, der für eine (benutzerdefinierte) DotNet-Aktivität in Version 1 geschrieben wurde, müssen Sie Ihren Code ändern, damit er für die aktuelle Version der benutzerdefinierten Aktivität funktioniert. Aktualisieren Sie den Code, indem Sie sich an die folgenden allgemeinen Richtlinien halten:
+Wenn Sie über .NET-Code verfügen, der für eine (benutzerdefinierte) DotNet-Aktivität in Version 1 geschrieben wurde, müssen Sie Ihren Code ändern, damit er für die aktuelle Version der benutzerdefinierten Aktivität funktioniert. Aktualisieren Sie den Code, indem Sie sich an die folgenden allgemeinen Richtlinien halten:
 
   - Ändern Sie das Projekt von einer .NET-Klassenbibliothek in eine Konsolen-App.
   - Starten Sie die Anwendung mit der `Main`-Methode. Die `Execute`-Methode der `IDotNetActivity`-Schnittstelle ist nicht mehr erforderlich.

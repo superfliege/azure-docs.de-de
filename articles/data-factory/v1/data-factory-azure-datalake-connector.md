@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8731857d133e60cad4ecdca21874916949e05ff3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975609"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopieren von Daten nach bzw. aus Data Lake Storage Gen1 mit Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -240,7 +240,7 @@ Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureDataLakeStore*
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | **folderPath** |Der Pfad zum Container und Ordner in Data Lake Store. |Ja |
-| **fileName** |Der Name der Datei in Azure Data Lake Store. Die **fileName**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. <br/><br/>Wenn Sie für **fileName** einen Wert angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn **fileName** nicht angegeben ist, werden beim Kopieren alle Dateien unter **folderPath** für das Eingabedataset einbezogen.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: „Data._Guid_.txt“. Beispiel:  Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. | Nein |
+| **fileName** |Der Name der Datei in Azure Data Lake Store. Die **fileName**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. <br/><br/>Wenn Sie für **fileName** einen Wert angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn **fileName** nicht angegeben ist, werden beim Kopieren alle Dateien unter **folderPath** für das Eingabedataset einbezogen.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: `Data._Guid_.txt`. Beispiel:  Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nein  |
 | **partitionedBy** |Die **partitionedBy**-Eigenschaft ist optional. Sie können sie verwenden, um einen dynamischen Pfad und Dateinamen für Zeitreihendaten anzugeben. Beispiel: **folderPath** kann für jedes stündliche Datenaufkommen parametrisiert werden. Weitere Informationen und Beispiele finden Sie unter „partitionedBy-Eigenschaft“. |Nein  |
 | **format** | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format) des Artikels [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den `format`-Abschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  |
 | **compression** | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**. Unterstützte Grade sind **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |

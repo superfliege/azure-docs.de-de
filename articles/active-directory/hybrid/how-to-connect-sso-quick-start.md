@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178089"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086818"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -74,8 +74,9 @@ Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Az
 ![Azure AD Connect: Ändern der Benutzeranmeldung](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Fahren Sie mit dem Assistenten fort, bis Sie zur Seite **Einmaliges Anmelden aktivieren** gelangen. Geben Sie Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur an, die:
-    * Sie über Azure AD Connect mit Azure AD synchronisieren.
-    * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
+
+* Sie über Azure AD Connect mit Azure AD synchronisieren.
+* Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
 
 Nach Abschluss des Assistenten ist das nahtlose einmalige Anmelden für Ihren Mandanten aktiviert.
 
@@ -120,17 +121,17 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
 1. Öffnen Sie das Tool Gruppenrichtlinienverwaltungs-Editor.
 2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
-3. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**. Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
+3. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**. Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte in das Dialogfeld ein:
    - **Wertname:** Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
    - **Wert** (Daten): **1** gibt die Intranetzone an.
 
-    Das Ergebnis sieht wie folgt aus:
+     Das Ergebnis sieht wie folgt aus:
 
-    Wertname: `https://autologon.microsoftazuread-sso.com`
+     Wertname: `https://autologon.microsoftazuread-sso.com`
   
-    Wert (Daten): 1
+     Wert (Daten): 1
 
    >[!NOTE]
    > Wenn Sie das nahtlose einmalige Anmelden für einige Benutzer verbieten möchten (beispielsweise weil sich diese Benutzer bei freigegebenen Kiosken anmelden), legen Sie die vorherigen Werte auf **4** fest. Diese Aktion fügt die Azure AD-URL zur Zone eingeschränkter Sites hinzu und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
@@ -140,7 +141,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
+6. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** **Richtlinie** > **> **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
 
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -162,9 +163,9 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
    - **Werttyp:** ***REG_DWORD***.
    - **Wertdaten:** ***00000001***.
  
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso16.png)
  
-    ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso17.png)
+     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso17.png)
 
 ### <a name="browser-considerations"></a>Überlegungen zum Browser
 

@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 95103ec7438a01e73617587bf919404e2bdcc686
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fa681198088cd4ae13668193939474d0d501b6f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567195"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098507"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Bedingter Zugriff (MFA) mit Azure SQL-Datenbank und Data Warehouse  
 
@@ -33,22 +33,22 @@ Die folgenden Schritte zeigen, wie die SQL-Datenbank zum Erzwingen einer Richtli
 - Wenn die mehrstufige Authentifizierung aktiviert ist, müssen Sie eine Verbindung mit einem unterstützten Tool wie der neuesten Version von SSMS herstellen. Weitere Informationen finden Sie unter [Konfigurieren der mehrstufigen Authentifizierung in Azure SQL-Datenbank für SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurieren der Zertifizierungsstelle für Azure SQL DB/DW  
-1.  Melden Sie sich beim Portal an, und wählen Sie **Azure Active Directory** und dann **Bedingter Zugriff**. Weitere Informationen finden Sie unter [Technische Referenz zum bedingten Azure Active Directory-Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-  ![Blatt „Bedingter Zugriff“](./media/sql-database-conditional-access/conditional-access-blade.png) 
+1. Melden Sie sich beim Portal an, und wählen Sie **Azure Active Directory** und dann **Bedingter Zugriff**. Weitere Informationen finden Sie unter [Technische Referenz zum bedingten Azure Active Directory-Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
+   ![Blatt „Bedingter Zugriff“](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
-2.  Klicken Sie auf dem Blatt **Richtlinien für bedingten Zugriff** auf **Neue Richtlinie**, geben Sie einen Namen ein, und klicken Sie dann auf **Regeln konfigurieren**.  
-3.  Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**, aktivieren Sie **Benutzer und Gruppen auswählen**, und wählen Sie dann den Benutzer oder die Gruppe für den bedingten Zugriff aus. Klicken Sie auf **Auswählen** und dann auf **Fertig**, um Ihre Auswahl zu bestätigen.  
-  ![Auswählen von Benutzern und Gruppen](./media/sql-database-conditional-access/select-users-and-groups.png)  
+2. Klicken Sie auf dem Blatt **Richtlinien für bedingten Zugriff** auf **Neue Richtlinie**, geben Sie einen Namen ein, und klicken Sie dann auf **Regeln konfigurieren**.  
+3. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**, aktivieren Sie **Benutzer und Gruppen auswählen**, und wählen Sie dann den Benutzer oder die Gruppe für den bedingten Zugriff aus. Klicken Sie auf **Auswählen** und dann auf **Fertig**, um Ihre Auswahl zu bestätigen.  
+   ![Auswählen von Benutzern und Gruppen](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
-4.  Wählen Sie **Cloud-Apps**, und klicken Sie auf **Apps auswählen**. Alle für den bedingten Zugriff verfügbaren Apps werden angezeigt. Wählen Sie **Azure SQL-Datenbank**, und klicken Sie unten auf **Auswählen** und dann auf **Fertig**.  
-  ![Auswählen der SQL-Datenbank](./media/sql-database-conditional-access/select-sql-database.png)  
-  Wenn Sie die im dritten Screenshot dargestellte Option **Azure SQL-Datenbank** nicht finden können, führen Sie folgende Schritte durch:   
-  - Melden Sie sich über SSMS mit einem AAD-Administratorkonto bei Ihrer Azure SQL DB/DW-Instanz an.  
-  - Führen Sie `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` aus.  
-  - Melden Sie sich bei AAD an und stellen Sie sicher, dass Azure SQL-Datenbank und Data Warehouse in den Anwendungen in AAD aufgeführt sind.  
+4. Wählen Sie **Cloud-Apps**, und klicken Sie auf **Apps auswählen**. Alle für den bedingten Zugriff verfügbaren Apps werden angezeigt. Wählen Sie **Azure SQL-Datenbank**, und klicken Sie unten auf **Auswählen** und dann auf **Fertig**.  
+   ![Auswählen der SQL-Datenbank](./media/sql-database-conditional-access/select-sql-database.png)  
+   Wenn Sie die im dritten Screenshot dargestellte Option **Azure SQL-Datenbank** nicht finden können, führen Sie folgende Schritte aus:   
+   - Melden Sie sich über SSMS mit einem AAD-Administratorkonto bei Ihrer Azure SQL DB/DW-Instanz an.  
+   - Führen Sie `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` aus.  
+   - Melden Sie sich bei AAD an und stellen Sie sicher, dass Azure SQL-Datenbank und Data Warehouse in den Anwendungen in AAD aufgeführt sind.  
 
-5.  Wählen Sie **Zugriffskontrollen** und **Gewähren**, und aktivieren Sie dann die Richtlinie, die angewendet werden soll. In diesem Beispiel wählen wir **Mehrstufige Authentifizierung anfordern**.  
-  ![Auswählen von „Zugriff gewähren“](./media/sql-database-conditional-access/grant-access.png)  
+5. Wählen Sie **Zugriffskontrollen** und **Gewähren**, und aktivieren Sie dann die Richtlinie, die angewendet werden soll. In diesem Beispiel wählen wir **Mehrstufige Authentifizierung anfordern**.  
+   ![Auswählen von „Zugriff gewähren“](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Zusammenfassung  
 Die ausgewählte Anwendung (Azure SQL-Datenbank), durch die eine Verbindung mit Azure SQL DB/DW über Azure AD Premium hergestellt werden kann, erzwingt nun die ausgewählte Richtlinie für bedingten Zugriff. Hierfür muss die Option **Mehrstufige Authentifizierung anfordern** aktiviert werden.  

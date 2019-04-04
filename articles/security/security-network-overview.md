@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 30a7eea751a9fbfa0ee95a7edb039a13860be7f8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2aabe3d1fa8a6034c2dab38c8d6fa6da4b00ac1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115469"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080338"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -61,8 +61,8 @@ Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Diese umf
 
 Jede sichere Bereitstellung erfordert ein gewisses Maß an Netzwerkzugriffssteuerung. Das Ziel der Netzwerkzugriffssteuerung ist die Einschränkung der Kommunikation virtueller Computer auf die erforderlichen Systeme. Andere Verbindungsversuche werden blockiert.
 
->[!NOTE]
-Storage-Firewalls werden im Artikel [Übersicht über die Sicherheit von Azure Storage](security-storage-overview.md) behandelt.
+> [!NOTE]
+> Storage-Firewalls werden im Artikel [Übersicht über die Sicherheit von Azure Storage](security-storage-overview.md) behandelt.
 
 #### <a name="network-security-rules-nsgs"></a>Netzwerksicherheitsgruppen (NSGs)
 
@@ -178,7 +178,7 @@ Sie erreichen dies zum Beispiel über ein [Site-to-Site-VPN](https://www.techope
 Weitere Informationen:
 
 * [Erstellen eines Resource Manager-VNET mit Site-to-Site-VPN-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [Planung und Entwurf für VPN Gateway](../vpn-gateway/vpn-gateway-plan-design.md)
+* [Informationen zu VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>Verbinden lokaler Netzwerke mit einem virtuellen Netzwerk mithilfe eines dedizierten WAN-Links
 
@@ -324,7 +324,7 @@ Microsoft bietet DDoS Protection **Basic** als Bestandteil der Azure-Plattform. 
 * **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an. Schutz für Ebene 3 bis Ebene 7: Bietet vollständigen DDoS-Stapelschutz bei Verwendung mit einer Web Application Firewall.
 * **Umfangreiche Angriffsabwehr:** Über 60 verschiedene Angriffstypen können mit einer weltweiten Kapazität zum Schutz vor den größten bekannten DDoS-Angriffen abgewehrt werden.
 * **Angriffsmetriken:** Mit Azure Monitor kann auf eine Zusammenfassung der Metriken für jeden Angriff zugegriffen werden.
-* **Angriffswarnungen:** Mit integrierten Angriffsmetriken können Warnungen am Anfang und Ende eines Angriffs sowie währenddessen konfiguriert werden. Warnungen werden in Ihre Betriebssoftware (etwa Microsoft Azure Log Analytics, Splunk, Azure Storage, E-Mail) und das Azure-Portal integriert.
+* **Angriffswarnungen:** Mit integrierten Angriffsmetriken können Warnungen am Anfang und Ende eines Angriffs sowie währenddessen konfiguriert werden. Warnungen werden in Ihre Betriebssoftware wie Microsoft Azure Monitor-Protokolle, Splunk, Azure Storage, E-Mail und das Azure-Portal integriert.
 * **Kostengarantie:**  Dienstguthaben für Datenübertragung und horizontale Anwendungsskalierung bei dokumentierten DDoS-Angriffen.
 * **Schnelle Reaktion bei DDoS-Angriffen**: Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum Rapid Response-Team. Rapid Response hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
 
@@ -365,8 +365,8 @@ Die [Paketerfassung](../network-watcher/network-watcher-packet-capture-overview.
 
 Weitere Informationen zu Network Watcher und zum Testen einiger Funktionen in den Labs finden Sie unter [Übersicht über die Überwachung in Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md).
 
->[!NOTE]
-Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).
+> [!NOTE]
+> Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -401,4 +401,4 @@ Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Net
 Sie können auch das leistungsstarke Datenvisualisierungstool [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)verwenden, um diese Protokolle anzuzeigen und zu analysieren.
 Weitere Informationen:
 
-* [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md)
+* [Azure Monitor-Protokolle für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md)

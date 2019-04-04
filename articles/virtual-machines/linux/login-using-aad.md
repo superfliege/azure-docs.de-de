@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 5ef84f6dbabbfed802a61306eeae09e0b0ccf36f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848693"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -49,7 +49,7 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Linux-Di
 | Debian | Debian 9 |
 | openSUSE | openSUSE Leap 42.3 |
 | Red Hat Enterprise Linux | RHEL 6, RHEL 7 | 
-| SUSE Linux Enteprise Server | SLES 12 |
+| SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 und Ubuntu Server 18.04 |
 
 
@@ -186,7 +186,7 @@ Access denied
 
 Nachdem Sie die Authentifizierung in einem Webbrowser erfolgreich abgeschlossen haben, werden Sie möglicherweise sofort aufgefordert, sich erneut mit einem neuen Code anzumelden. Dieser Fehler wird normalerweise dadurch verursacht, dass der Anmeldename, den Sie an der SSH-Eingabeaufforderung angegeben haben, nicht mit dem Konto übereinstimmt, mit dem Sie sich bei Azure AD angemeldet haben. So beheben Sie dieses Problem
 
-- Überprüfen Sie, ob der an der SSH-Eingabeaufforderung angegebene Anmeldename richtig ist. Ein Tippfehler im Anmeldenamen kann dazu führen, dass der an der SSH-Eingabeaufforderung angegebene Anmeldename nicht mit dem Konto übereinstimmt, mit dem Sie sich bei Azure AD angemeldet haben. Beispiel: Sie haben *azuresuer@contoso.onmicrosoft.com* anstelle von *azureuser@contoso.onmicrosoft.com* eingegeben.
+- Überprüfen Sie, ob der an der SSH-Eingabeaufforderung angegebene Anmeldename richtig ist. Ein Tippfehler im Anmeldenamen kann dazu führen, dass der an der SSH-Eingabeaufforderung angegebene Anmeldename nicht mit dem Konto übereinstimmt, mit dem Sie sich bei Azure AD angemeldet haben. Beispiel: Sie geben *azuresuer\@contoso.onmicrosoft.com* anstelle von *azureuser\@contoso.onmicrosoft.com* ein.
 - Wenn Sie über mehrere Benutzerkonten verfügen, achten Sie darauf, dass Sie im Browserfenster kein anderes Benutzerkonto als bei der Anmeldung bei Azure AD angeben.
 - Linux ist ein Betriebssystem, bei dem die Groß-/Kleinschreibung berücksichtigt wird. Es besteht also ein Unterschied zwischen „Azureuser@contoso.onmicrosoft.com“ und „azureuser@contoso.onmicrosoft.com“. Dies kann zu einer Nichtübereinstimmung führen. Stellen Sie sicher, dass Sie den Benutzerprinzipalnamen (UPN) an der SSH-Eingabeaufforderung mit der richtigen Groß- und Kleinschreibung angeben.
 

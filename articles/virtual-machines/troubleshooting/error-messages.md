@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118974"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437597"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Grundlegendes zu allgemeinen Fehlermeldungen bei der Verwaltung virtueller Computer in Azure
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4739308d301291bf88e8ae547ba85f9648339c4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697448"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118458"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso-Migration: Bewerten lokaler Workloads für die Migration zu Azure
 
@@ -90,7 +90,7 @@ Technologie | BESCHREIBUNG | Kosten
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso nutzt den Datenmigrations-Assistenten, um Kompatibilitätsprobleme zu bewerten und zu erkennen, die ggf. die Datenbankfunktionalität des Unternehmens in Azure beeinträchtigen können. Mit dem Datenmigrations-Assistenten wird die Featureparität zwischen SQL-Quellen und -Zielen bewertet. Er stellt Empfehlungen zu Verbesserungen der Leistung und Zuverlässigkeit bereit. | Der Datenmigrations-Assistent ist ein kostenloses Tool, das heruntergeladen werden kann.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso nutzt den Azure Migrate-Dienst, um seine VMware-VMs zu bewerten. Azure Migrate bewertet die Eignung der Computer für die Migration. Der Dienst stellt Schätzungen zur Größe und zu den Kosten für die Ausführung in Azure bereit.  | Ab Mai 2018 ist Azure Migrate ein kostenloser Dienst.
-[Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Für Azure Migrate wird eine Dienstzuordnung verwendet, um Abhängigkeiten zwischen Computern anzuzeigen, die das Unternehmen migrieren möchte. | Die Dienstzuordnung ist Teil von Azure Log Analytics. Derzeit kann Contoso die Dienstzuordnung 180 Tage lang nutzen, ohne dass Gebühren anfallen.
+[Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Für Azure Migrate wird eine Dienstzuordnung verwendet, um Abhängigkeiten zwischen Computern anzuzeigen, die das Unternehmen migrieren möchte. | Die Dienstzuordnung ist Teil von Azure Monitor-Protokollen. Derzeit kann Contoso die Dienstzuordnung 180 Tage lang nutzen, ohne dass Gebühren anfallen.
 
 In diesem Szenario lädt Contoso den Datenmigrations-Assistenten herunter und führt ihn aus, um die lokale SQL Server-Datenbank für seine Reise-App zu bewerten. Contoso verwendet Azure Migrate mit Zuordnung von Abhängigkeiten, um die App-VMs zu bewerten, bevor die Migration zu Azure migriert wird.
 
@@ -159,15 +159,15 @@ Contoso kann jetzt eine Bewertung durchführen, um seine lokale SQL Server-Daten
 
     ![Datenmigrations-Assistent – Auswählen der Quelle](./media/contoso-migration-assessment/dma-assessment-1.png)
 
-    > [!NOTE]
-      Derzeit unterstützt der Datenmigrations-Assistent die Bewertung für die Migration einer verwalteten Azure SQL-Datenbank-Instanz nicht. Als Problemumgehung verwendet Contoso SQL Server auf einer Azure-VM als angenommenes Ziel für die Bewertung.
+   > [!NOTE]
+   >    Derzeit unterstützt der Datenmigrations-Assistent die Bewertung für die Migration einer verwalteten Azure SQL-Datenbank-Instanz nicht. Als Problemumgehung verwendet Contoso SQL Server auf einer Azure-VM als angenommenes Ziel für die Bewertung.
 
 3. Unter **Zielversion auswählen** wählt Contoso „SQL Server 2017“ als Zielversion aus. Contoso muss diese Version auswählen, weil sie von der verwalteten SQL-Datenbank-Instanz verwendet wird.
 4. Contoso wählt Berichte aus, um Informationen zur Kompatibilität und zu neuen Features zu erhalten:
-    - Unter **Kompatibilitätsprobleme** werden Informationen zu Änderungen angezeigt, die die Migration ggf. verhindern oder für die vor der Migration eine kleinere Anpassung erforderlich ist. Mit diesem Bericht erhält Contoso Informationen zu allen derzeit verwendeten Features, die als veraltet eingestuft wurden. Die Probleme sind nach Kompatibilitätsgrad angegeben.
-    - Unter **Empfehlung zu neuen Features** werden Informationen zu neuen Features auf der SQL Server-Zielplattform angezeigt, die nach der Migration für die Datenbank verwendet werden können. Empfehlungen zu neuen Features befinden sich unter den Überschriften **Leistung**, **Sicherheit** und **Speicher**.
+   - Unter **Kompatibilitätsprobleme** werden Informationen zu Änderungen angezeigt, die die Migration ggf. verhindern oder für die vor der Migration eine kleinere Anpassung erforderlich ist. Mit diesem Bericht erhält Contoso Informationen zu allen derzeit verwendeten Features, die als veraltet eingestuft wurden. Die Probleme sind nach Kompatibilitätsgrad angegeben.
+   - Unter **Empfehlung zu neuen Features** werden Informationen zu neuen Features auf der SQL Server-Zielplattform angezeigt, die nach der Migration für die Datenbank verwendet werden können. Empfehlungen zu neuen Features befinden sich unter den Überschriften **Leistung**, **Sicherheit** und **Speicher**.
 
-    ![Datenmigrations-Assistent – Kompatibilitätsprobleme und neue Features](./media/contoso-migration-assessment/dma-assessment-2.png)
+     ![Datenmigrations-Assistent – Kompatibilitätsprobleme und neue Features](./media/contoso-migration-assessment/dma-assessment-2.png)
 
 2. Unter **Mit Server verbinden** gibt Contoso den Namen der VM, auf der die Datenbank ausgeführt wird, und die Anmeldeinformationen für den Zugriff auf diese VM an. Contoso wählt die Option **Serverzertifikat vertrauen** aus, um sicherzustellen, dass die VM auf SQL Server zugreifen kann. Anschließend wählt Contoso die Option **Verbinden**.
 
@@ -186,13 +186,13 @@ Die Ergebnisse werden angezeigt, sobald sie verfügbar sind. Wenn Contoso Proble
 
 1. Im Bericht **Kompatibilitätsprobleme** überprüft Contoso mögliche Probleme für jeden Kompatibilitätsgrad. Kompatibilitätsgrade sind den SQL Server-Versionen wie folgt zugeordnet:
 
-    - 100: SQL Server 2008/Azure SQL-Datenbank
-    - 110: SQL Server 2012/Azure SQL-Datenbank
-    - 120: SQL Server 2014/Azure SQL-Datenbank
-    - 130: SQL Server 2016/Azure SQL-Datenbank
-    - 140: SQL Server 2017/Azure SQL-Datenbank
+   - 100: SQL Server 2008/Azure SQL-Datenbank
+   - 110: SQL Server 2012/Azure SQL-Datenbank
+   - 120: SQL Server 2014/Azure SQL-Datenbank
+   - 130: SQL Server 2016/Azure SQL-Datenbank
+   - 140: SQL Server 2017/Azure SQL-Datenbank
 
-    ![Datenmigrations-Assistent – Bericht zu Kompatibilitätsproblemen](./media/contoso-migration-assessment/dma-assessment-5.png)
+     ![Datenmigrations-Assistent – Bericht zu Kompatibilitätsproblemen](./media/contoso-migration-assessment/dma-assessment-5.png)
 
 2. Im Bericht **Featureempfehlungen** zeigt Contoso die Leistungs-, Sicherheits- und Speicherfeatures an, die von der Bewertung nach der Migration empfohlen werden. Es werden verschiedene Features empfohlen, z.B. In-Memory-OLTP, Columnstore-Indizes, Stretch Database, Always Encrypted, dynamische Datenmaskierung und Transparent Data Encryption.
 
@@ -403,14 +403,14 @@ Contoso führt die Installation auf jeder VM durch.
 
     `sudo -i`
 3. Contoso installiert den MMA:
-    - Contoso gibt die Arbeitsbereichs-ID und den Schlüssel für den Befehl ein.
-    - Die Befehle sind für 64-Bit.
-    - Die Arbeitsbereichs-ID und der Primärschlüssel befinden sich im Log Analytics-Arbeitsbereich im Azure-Portal. Wählen Sie **Einstellungen** und dann die Registerkarte **Verbundene Quellen**.
-    - Führen Sie die folgenden Befehle aus, um den Log Analytics-Agent herunterzuladen, die Prüfsumme zu überprüfen und den Agent anschließend zu installieren und das Onboarding dafür durchzuführen:
+   - Contoso gibt die Arbeitsbereichs-ID und den Schlüssel für den Befehl ein.
+   - Die Befehle sind für 64-Bit.
+   - Die Arbeitsbereichs-ID und der Primärschlüssel befinden sich im Log Analytics-Arbeitsbereich im Azure-Portal. Wählen Sie **Einstellungen** und dann die Registerkarte **Verbundene Quellen**.
+   - Führen Sie die folgenden Befehle aus, um den Log Analytics-Agent herunterzuladen, die Prüfsumme zu überprüfen und den Agent anschließend zu installieren und das Onboarding dafür durchzuführen:
 
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
-    ```
+     ```
+     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
+     ```
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>Installieren des Abhängigkeits-Agents auf Linux-VMs
 

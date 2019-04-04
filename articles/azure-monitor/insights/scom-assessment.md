@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082839"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -40,15 +40,15 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 
-Die Lösung kann mit Microsoft System Operations Manager 2012 Service Pack (SP) 1 und 2012 R2 verwendet werden.
+Die Lösung funktioniert mit Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager und Microsoft System Center Operations Manager 1807
 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
- - Bevor Sie die Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Installieren Sie die Lösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
+- Bevor Sie die Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Installieren Sie die Lösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
- - Nach dem Hinzufügen der Lösung zum Arbeitsbereich zeigt die Kachel **System Center Operations Manager-Integritätsüberprüfung** auf dem Dashboard die Nachricht an, dass zusätzliche Konfigurationsschritte erforderlich sind. Klicken Sie auf die Kachel, und führen Sie die auf der Seite erwähnten Konfigurationsschritte aus.
+- Nach dem Hinzufügen der Lösung zum Arbeitsbereich zeigt die Kachel **System Center Operations Manager-Integritätsüberprüfung** auf dem Dashboard die Nachricht an, dass zusätzliche Konfigurationsschritte erforderlich sind. Klicken Sie auf die Kachel, und führen Sie die auf der Seite erwähnten Konfigurationsschritte aus.
 
- ![Dashboardkachel von System Center Operations Manager](./media/scom-assessment/scom-configrequired-tile.png)
+  ![Dashboardkachel von System Center Operations Manager](./media/scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
 > Die Konfiguration von System Center Operations Manager kann mithilfe eines Skripts erfolgen, indem die auf der Konfigurationsseite der Lösung in Log Analytics aufgeführten Schritte ausgeführt werden.
@@ -57,9 +57,9 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 1. [Festlegen des ausführenden Kontos für die System Center Operations Manager-Integritätsüberprüfung](#operations-manager-run-as-accounts-for-log-analytics)  
 2. Konfigurieren der System Center Operations Manager-Integritätsüberprüfungsregel
 
-## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Bewertung
+## <a name="system-center-operations-manager-health-check-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Integritätsprüfung
 
-Die System Center Operations Manager-Bewertung sammelt Daten aus den folgenden Quellen:
+Die System Center Operations Manager-Integritätsprüfung sammelt Daten aus den folgenden Quellen:
 
 * Registrierung
 * Windows-Verwaltungsinstrumentation (WMI)
@@ -97,7 +97,7 @@ Das ausführende Konto wurde erstellt. Nun müssen für das Konto Verwaltungsser
 2. Klicken Sie auf der Registerkarte **Verteilung** für das Feld **Ausgewählte Computer** auf **Hinzufügen**, und fügen Sie den Verwaltungsserver hinzu, an den das Konto verteilt werden soll.  Klicken Sie zum Speichern der Änderungen zweimal auf **OK**.
 3. Klicken Sie unter **Run As Configuration** (Ausführende Konfiguration) auf **Profile**.
 4. Suchen Sie nach dem *Profil der SCOM-Bewertung*.
-5. Der Profilname muss folgendermaßen lauten: *Microsoft System Center Advisor SCOM Assessment Run As Profile* (Ausführendes Profil für Microsoft System Center Advisor-SCOM-Bewertung).
+5. Der Profilname muss folgendermaßen lauten: *„Ausführen als“-Profil der Microsoft System Center Operations Manager-Integritätsprüfung*.
 6. Klicken Sie mit der rechten Maustaste, aktualisieren Sie die Eigenschaften, und fügen Sie das zuvor erstellte ausführende Konto hinzu.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>SQL-Skript, das dem ausführenden Konto differenzierte Berechtigungen erteilt
@@ -152,13 +152,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Konfigurieren der Integritätsüberprüfungsregel
 
-Das Management Pack der Lösung zur System Center Operations Manager-Integritätsüberprüfung enthält eine Regel namens *Microsoft System Center Advisor SCOM Assessment Run Assessment Rule* (Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung). Diese Regel ist für die Ausführung der Integritätsüberprüfung zuständig. Führen Sie zum Aktivieren der Regel und zum Konfigurieren der Häufigkeit die unten aufgeführten Schritte aus.
+Das Management Pack der Lösung zur System Center Operations Manager-Integritätsüberprüfung enthält die Regel *Microsoft System Center Operations Manager Run Health Check Rule* (Ausführungsregel für die Microsoft System Center Operations Manager-Integritätsprüfung). Diese Regel ist für die Ausführung der Integritätsüberprüfung zuständig. Führen Sie zum Aktivieren der Regel und zum Konfigurieren der Häufigkeit die unten aufgeführten Schritte aus.
 
-Die Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung ist standardmäßig deaktiviert. Zum Ausführen der Integritätsüberprüfung müssen Sie die Regel auf einem Verwaltungsserver aktivieren. Führen Sie die folgenden Schritte aus:
+Standardmäßig ist die Regel „Microsoft System Center Operations Manager Run Health Check Rule“ (Ausführungsregel für die Microsoft System Center Operations Manager-Integritätsprüfung) deaktiviert. Zum Ausführen der Integritätsüberprüfung müssen Sie die Regel auf einem Verwaltungsserver aktivieren. Führen Sie die folgenden Schritte aus:
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Aktivieren der Regel für einen bestimmten Verwaltungsserver
 
-1. Suchen Sie in der Operations Manager-Betriebskonsole im Arbeitsbereich **Erstellung** im Bereich **Regeln** die Regel *Microsoft System Center Advisor SCOM Assessment Run Assessment Rule* (Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung).
+1. Suchen Sie in der Operations Manager-Betriebskonsole im Arbeitsbereich **Erstellung** im Bereich **Regeln** die Regel *Microsoft System Center Operations Manager Run Health Check Rule* (Ausführungsregel für die Microsoft System Center Operations Manager-Integritätsprüfung).
 2. Wählen Sie in den Suchergebnissen die Regel aus, die den Text *Typ: Verwaltungsserver* enthält.
 3. Klicken Sie mit der rechten Maustaste auf die Regel, und klicken Sie dann auf **Außerkraftsetzungen** > **Für ein bestimmtes Objekt der Klasse: Verwaltungsserver**.
 4.  Wählen Sie in der Liste der verfügbaren Verwaltungsserver den Verwaltungsserver aus, auf dem die Regel ausgeführt werden soll.  Dabei sollte es sich um den Verwaltungsserver handeln, den Sie zuvor zur Verknüpfung mit dem ausführenden Konto konfiguriert haben.
@@ -170,7 +170,7 @@ Die Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung de
 
 Die Bewertung wird standardmäßig so konfiguriert, dass sie alle 10.080 Minuten (d.h. sieben Tage) ausgeführt wird. Sie können den Wert außer Kraft setzen und einen Mindestwert von 1.440 Minuten (d.h. einem Tag) festlegen. Der Wert stellt den zwischen aufeinanderfolgenden Bewertungsausführungen erforderlichen Mindestabstand dar. Führen Sie zum Überschreiben des Intervalls die folgenden Schritte aus:
 
-1. Suchen Sie in der Operations Manager-Konsole im Arbeitsbereich **Erstellung** im Abschnitt **Regeln** die Regel *Microsoft System Center Advisor SCOM Assessment Run Assessment Rule* (Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung).
+1. Suchen Sie in der Operations Manager-Konsole im Arbeitsbereich **Erstellung** im Abschnitt **Regeln** die Regel *Microsoft System Center Operations Manager Run Health Check Rule* (Ausführungsregel für die Microsoft System Center Operations Manager-Integritätsprüfung).
 2. Wählen Sie in den Suchergebnissen die Regel aus, die den Text *Typ: Verwaltungsserver* enthält.
 3. Klicken Sie mit der rechten Maustaste auf die Regel, und klicken Sie dann auf **Regel außer Kraft setzen** > **Für alle Objekte der Klasse: Verwaltungsserver**.
 4. Ändern Sie den Parameterwert **Intervall** in den gewünschten Intervallwert. Im folgenden Beispiel wird der Wert auf 1.440 Minuten (ein Tag) festgelegt.<br><br> ![Intervallparameter](./media/scom-assessment/interval.png)<br>  
@@ -240,7 +240,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Dieser Screenshot zeigt eine Protokollsuchabfrage: <br><br> ![Protokollsuche](./media/scom-assessment/scom-log-search.png)<br>
+    Dieser Screenshot zeigt eine Protokollsuchabfrage:<br><br> ![Protokollsuche](./media/scom-assessment/scom-log-search.png)<br>
 
 3. Wählen Sie die Empfehlungen aus, die Sie ignorieren möchten. Sie verwenden die Werte für „RecommendationId“ in der nächsten Prozedur.
 
@@ -277,7 +277,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 *Gibt es eine Möglichkeit, die Häufigkeit der Überprüfung zu konfigurieren?* Ja. Lesen Sie die Informationen unter [Konfigurieren der Ausführungshäufigkeit](#configure-the-run-frequency).
 
-*Wird ein anderer Server, der erst nach dem Hinzufügen der System Center Operations Manager-Bewertungslösung erkannt wird, auch überprüft?* Ja. Er wird ab dem Zeitpunkt der Erkennung überprüft (standardmäßig alle sieben Tage).
+*Wird ein anderer Server, der erst nach dem Hinzufügen der Lösung System Center Operations Manager-Integritätsprüfung erkannt wird, auch überprüft?* Ja. Er wird ab dem Zeitpunkt der Erkennung überprüft (standardmäßig alle sieben Tage).
 
 *Wie lautet der Name des Prozesses, der die Daten sammelt?* AdvisorAssessment.exe
 

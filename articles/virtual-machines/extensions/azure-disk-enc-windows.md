@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810379"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983465"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption für Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -58,8 +58,14 @@ Für Azure Disk Encryption ist eine Internetverbindung für den Zugriff auf Acti
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+      
       "KeyVaultURL": "[keyVaultURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+
+      "EncryptionOperation": "[encryptionOperation]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     },
@@ -76,13 +82,15 @@ Für Azure Disk Encryption ist eine Internetverbindung für den Zugriff auf Acti
 | apiVersion | 2015-06-15 | date |
 | Herausgeber | Microsoft.Azure.Security | Zeichenfolge |
 | type | AzureDiskEncryptionForWindows| Zeichenfolge |
-| typeHandlerVersion | 1.0, 2.2 (VMSS) | int |
+| typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
 | (Optional:) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
 | (Optional:) AADClientSecret | password | Zeichenfolge |
 | (Optional:) AADClientCertificate | thumbprint | Zeichenfolge |
 | EncryptionOperation | EnableEncryption | Zeichenfolge | 
-| KeyEncryptionAlgorithm | RSA-OAEP | Zeichenfolge |
+| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | Zeichenfolge |
 | KeyEncryptionKeyURL | URL | Zeichenfolge |
+| KeyVaultResourceId | Ressourcen-URI | Zeichenfolge |
+| KekVaultResourceId | Ressourcen-URI | Zeichenfolge |
 | KeyVaultURL | URL | Zeichenfolge |
 | SequenceVersion | uniqueidentifier | Zeichenfolge |
 | VolumeType | Betriebssystem, Daten, alle | Zeichenfolge |

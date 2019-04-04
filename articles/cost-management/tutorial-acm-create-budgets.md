@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814043"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013042"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -39,7 +39,7 @@ Budgets werden für eine Vielzahl von Azure-Kontotypen unterstützt. Die vollst�
 
  Zum Anzeigen von Budgets für Azure EA-Abonnements müssen Sie über Lesezugriff verfügen. Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen.
 
-Die folgenden Azure-Berechtigungen werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt:
+Die folgenden Azure-Berechtigungen (oder Bereich) werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 - Besitzer – kann Budgets für ein Abonnement erstellen, ändern oder löschen.
 - Mitwirkender und Mitwirkender für Cost Management – kann eigene Budgets erstellen, ändern oder löschen. Kann den Betrag für von anderen Personen erstellten Budgets ändern.
@@ -53,7 +53,9 @@ Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten f
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Erstellen eines Budgets im Azure-Portal
 
-Sie können ein Azure-Abonnementbudget für den Zeitraum eines Monats, Quartals oder Jahres erstellen. Ihr Navigationsinhalt im Azure-Portal bestimmt, ob Sie ein Budget für ein Abonnement oder für eine Ressourcengruppe anlegen. Navigieren Sie beispielsweise im Azure-Portal zu **Abonnements**, wählen Sie ein Abonnement aus, und klicken Sie auf **Budgets**. In diesem Beispiel erstellen Sie ein Budget für ein von Ihnen ausgewähltes Abonnement. Wenn Sie ein Budget für eine Ressourcengruppe erstellen möchten, navigieren Sie zu **Ressourcengruppen**, wählen Sie eine Ressourcengruppe aus, und klicken Sie auf **Budgets**.
+Sie können ein Azure-Abonnementbudget für den Zeitraum eines Monats, Quartals oder Jahres erstellen. Ihr Navigationsinhalt im Azure-Portal legt fest, ob Sie ein Budget für ein Abonnement oder für eine Verwaltungsgruppe anlegen.
+
+Um ein Budget zu erstellen oder anzuzeigen, öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie im Menü **Budgets** aus. Navigieren Sie beispielsweise zu **Abonnements**, wählen Sie ein Abonnement in der Liste aus, und wählen Sie dann **Budgets** im Menü aus. Verwenden Sie die Pille **Bereich**, um zu einem anderen Bereich in „Budgets“ zu wechseln, z. B. zu einer Verwaltungsgruppe. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 Nachdem Sie Budgets erstellt haben, wird eine einfache Ansicht Ihrer aktuellen Ausgaben im Abgleich mit dem Budget angezeigt.
 
@@ -85,6 +87,28 @@ Abhängig von Ihrer Zugriffsebene können Sie ein Budget bearbeiten, um seine Ei
 
 ![Beispiel für die Bearbeitung eines Budgets zum Ändern verschiedener Eigenschaften](./media/tutorial-acm-create-budgets/edit-budget.png)
 
+## <a name="trigger-an-action-group"></a>Auslösen einer Aktionsgruppe
+
+Wenn Sie ein Budget für einen Abonnement- oder Ressourcengruppenbereich erstellen oder bearbeiten, können Sie es so konfigurieren, dass es eine Aktionsgruppe aufruft. Die Aktionsgruppe kann verschiedene Aktionen ausführen, wenn der Budgetschwellenwert erreicht wird. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md). Weitere Informationen zum Verwenden von budgetbasierter Automatisierung mit Aktionsgruppen finden Sie unter [Verwalten von Kosten mit Azure-Budgets](../billing/billing-cost-management-budget-scenario.md).
+
+Um Aktionsgruppen zu erstellen oder zu aktualisieren, klicken Sie beim Erstellen oder Bearbeiten eines Budgets auf **Aktionsgruppen verwalten**.
+
+![Beispiel für das Erstellen eines Budgets zum Anzeigen von „Aktionsgruppen verwalten“](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
+Klicken Sie anschließend auf **Aktionsgruppe hinzufügen**, und erstellen Sie die Aktionsgruppe.
+
+
+![Abbildung des Dialogfelds „Aktionsgruppe hinzufügen“](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+
+Nachdem die Aktionsgruppe erstellt wurde, schließen Sie das Dialogfeld, um zu Ihrem Budget zurückzukehren.
+
+Konfigurieren Sie Ihr Budget so, dass Ihre Aktionsgruppe verwendet wird, wenn ein bestimmter Schwellenwert erreicht wird. Bis zu fünf verschiedene Schwellenwerte werden unterstützt.
+
+![Beispiel mit einer Aktionsgruppenauswahl für eine Warnungsbedingung](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+
+Das folgende Beispiel zeigt Budgetschwellenwerte für 50 %, 75 % und 100 %. Jeder ist so konfiguriert, dass die angegebenen Aktionen innerhalb der angegebenen Aktionsgruppe ausgelöst werden.
+
+![Beispiel mit Warnungsbedingungen, die mit verschiedenen Aktionsgruppen und Aktionenstypen konfiguriert wurden](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

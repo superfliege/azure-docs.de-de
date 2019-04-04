@@ -8,20 +8,21 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216964"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992341"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
+
 **Feature** | **VMware zu Azure** | **Hyper-V in Azure** | **Azure zu Azure**| **Hyper-V zu Hyper-V** 
 --|--|--|--|--
-Ausschließen von Datenträgern | JA | JA | Nein  | Nein 
+Ausschließen von Datenträgern | Ja | Ja | Nein  | Nein 
 
 ## <a name="why-exclude-disks-from-replication"></a>Gründe für das Ausschließen von Datenträgern von der Replikation
 Das Ausschließen von Datenträgern von der Replikation ist häufig aus folgenden Gründen erforderlich:
@@ -72,7 +73,7 @@ Folgende Datenträger befinden sich auf dem virtuellen Quellcomputer:
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
 DB-Disk1| Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 DB-Disk2 (Datenträger von Schutz ausgeschlossen) | Disk2 | E:\ | Temporäre Dateien
-DB-Disk3 (Datenträger von Schutz ausgeschlossen) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad: F:\MSSQL\Data\) </br /> </br />Notieren Sie sich den Ordnerpfad vor dem Failover.
+DB-Disk3 (Datenträger von Schutz ausgeschlossen) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad F:\MSSQL\Data\) <br /> <br />Notieren Sie sich den Ordnerpfad vor dem Failover.
 DB-Disk4 | Disk4 |G:\ |Benutzerdatenbank 2
 
 Zwei der Datenträger des virtuellen Computers verfügen über temporäre Datenänderungen. Schützen Sie daher zwar den virtuellen Computer „SalesDB“, aber schließen Sie Disk2 und Disk3 von der Replikation aus. Azure Site Recovery repliziert diese Datenträger nicht. Bei einem Failover sind diese Datenträger nicht auf dem virtuellen Failovercomputer in Azure vorhanden.
@@ -82,7 +83,7 @@ Folgende Datenträger befinden sich nach einem Failover auf dem virtuellen Azure
 **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
-Disk1 | E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
+Disk1 | E:\ | Temporärer Speicher<br /> <br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
 Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 Disk3 | G:\ | Benutzerdatenbank 2
 
@@ -146,7 +147,7 @@ Im vorherigen Beispiel lautet die Datenträgerkonfiguration des virtuellen Azure
 **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
-Disk1 | E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
+Disk1 | E:\ | Temporärer Speicher<br /> <br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
 Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 Disk3 | G:\ | Benutzerdatenbank 2
 
@@ -186,7 +187,7 @@ Datenträger auf dem virtuellen Azure-Computer nach einem Failover des virtuelle
 **Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
-DB-Disk1 | Disk1 | D:\ | Temporäre Speicherung</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Temporärer Speicher<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Benutzerdaten 1
 DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
@@ -213,10 +214,10 @@ Die Einstellungen der Auslagerungsdatei auf dem lokalen virtuellen Computer:
 
 Datenträger auf dem virtuellen Azure-Computer nach einem Failover des virtuellen Computers von Hyper-V auf Azure:
 
-**Name des Datenträgers**| **Gastbetriebssystemdatenträger**| **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Betriebssystem-Datenträger
-DB-Disk1 | Disk1 | D:\ | Temporäre Speicherung</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Temporärer Speicher<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Benutzerdaten 1
 DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 

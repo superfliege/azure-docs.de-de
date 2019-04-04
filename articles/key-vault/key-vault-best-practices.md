@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: prashanthyv
-ms.openlocfilehash: 85bd1858bc3f2d505e1e4d0a88e8c77a46ae4447
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: ee4418700cec5de1dc404c3669dd5de315aab983
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57887975"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368609"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Bewährte Methoden zum Verwenden von Key Vault
 
@@ -36,7 +36,7 @@ Vorschläge für die Zugriffssteuerung auf Ihren Schlüsseltresor sehen wie folg
 
 Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklung, Präproduktion und Produktion) zu verwenden. Dadurch können Sie die Geheimnisse nicht umgebungsübergreifend freigegeben und es verringert auch die Bedrohung im Falle einer Sicherheitsverletzung.
 
-## <a name="backup-your-vault"></a>Sichern Ihres Schlüsseltresors
+## <a name="backup"></a>Backup
 
 Stellen Sie sicher, dass Sie regelmäßig Sicherungskopien Ihres [Schlüsseltresors](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) beim Aktualisieren/Löschen/Erstellen von Objekten in einem Schlüsseltresor erstellen.
 

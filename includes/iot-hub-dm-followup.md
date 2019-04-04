@@ -5,15 +5,15 @@ services: iot-hub
 ms.service: iot-hub
 author: dominicbetts
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 69fdc6cf678107ef64ea1fe7b819738fd4a4ff4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43100240"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56740921"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Anpassen und Erweitern der Geräteverwaltungsaktionen
 
@@ -27,10 +27,6 @@ In der Regel konfigurieren Sie die Ausführung von Aktionen für Geräte so, das
 
 In diesem Tutorial haben Sie eine direkte Methode zum Auslösen eines Remoteneustarts auf einem Gerät verwendet. Sie haben die gemeldeten Eigenschaften zum Melden des letzten Neustartzeitpunkts des Geräts verwendet. Darüber hinaus haben Sie den Gerätezwilling abgefragt, um den letzten Neustartzeitpunkt des Geräts aus der Cloud zu ermitteln.
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie unter:
+Informationen zu den weiteren Schritten mit IoT Hub und Geräteverwaltungsmustern, z. B. drahtloses Firmware-Remoteupdate, finden Sie unter [Durchführen eines Firmwareupdates](../articles/iot-hub/tutorial-firmware-update.md).
 
-[Tutorial: Durchführen eines Firmwareupdates](../articles/iot-hub/tutorial-firmware-update.md)
-
-Im Tutorial [Planen und Übertragen von Aufträgen](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
-
-Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit IoT Edge](../articles/iot-edge/tutorial-simulate-device-linux.md).
+Unter [Planen und Übertragen von Aufträgen](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.

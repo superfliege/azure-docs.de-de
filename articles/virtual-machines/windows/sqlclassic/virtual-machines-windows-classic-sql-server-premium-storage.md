@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b9a668a71b0fb7b2bb57f759cc54a8d1930a0f03
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905119"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 
@@ -140,17 +140,17 @@ Führen Sie für jeden Datenträger die folgenden Schritte aus:
 Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 ```
 
-2. Notieren Sie Datenträgername und LUN.
+1. Notieren Sie den Datenträgernamen und die LUN.
 
     ![DisknameAndLUN][2]
-3. Stellen Sie eine Remotedesktopverbindung her. Wechseln Sie zu **Computerverwaltung** | **Geräte-Manager** | **Laufwerke**. Sehen Sie sich die Eigenschaften der einzelnen "virtuellen Microsoft-Datenträger" an.
+1. Stellen Sie eine Remotedesktopverbindung her. Wechseln Sie zu **Computerverwaltung** | **Geräte-Manager** | **Laufwerke**. Sehen Sie sich die Eigenschaften der einzelnen "virtuellen Microsoft-Datenträger" an.
 
     ![VirtualDiskProperties][3]
-4. Die hier aufgeführte LUN-Zahl ist ein Verweis auf die LUN-Zahl, die Sie beim Anfügen der virtuellen Festplatte an den virtuellen Computer angegeben haben.
-5. Wechseln Sie zur Registerkarte **Details** für den „virtuellen Microsoft-Datenträger“, und wechseln Sie dann in der Liste **Eigenschaften** zu **Treiberschlüssel**. Notieren Sie sich unter **Wert** den **Offset**, der im folgenden Screenshot „0002“ beträgt. Der Wert "0002" kennzeichnet die "PhysicalDisk2", auf die vom Speicherpool verwiesen wird.
+1. Die hier aufgeführte LUN-Zahl ist ein Verweis auf die LUN-Zahl, die Sie beim Anfügen der virtuellen Festplatte an den virtuellen Computer angegeben haben.
+1. Wechseln Sie zur Registerkarte **Details** für den „virtuellen Microsoft-Datenträger“, und wechseln Sie dann in der Liste **Eigenschaften** zu **Treiberschlüssel**. Notieren Sie sich unter **Wert** den **Offset**, der im folgenden Screenshot „0002“ beträgt. Der Wert "0002" kennzeichnet die "PhysicalDisk2", auf die vom Speicherpool verwiesen wird.
 
     ![VirtualDiskPropertyDetails][4]
-6. Erstellen Sie ein Speicherabbild jedes zugeordneten Datenträgers im Speicherpool:
+1. Erstellen Sie ein Speicherabbild jedes zugeordneten Datenträgers im Speicherpool:
 
 ```powershell
 Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
@@ -261,7 +261,7 @@ $ipaddr = "192.168.0.8"
 #Remember to change to DS series VM
 $newInstanceSize = "Standard_DS1"
 
-#create new Avaiability Set
+#create new Availability Set
 $availabilitySet = "cloudmigAVAMS"
 
 #Machine User Credentials
@@ -380,7 +380,7 @@ $destcloudsvc = "danregsvcamsxio2"
 #Use to DS Series VM
 $newInstanceSize = "Standard_DS1"
 
-#create new Avaiability Set
+#create new Availability Set
 $availabilitySet = "cloudmigAVAMS3"
 
 #Machine User Credentials
@@ -750,7 +750,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 
 ##### <a name="client-application-settings"></a>Clientanwendungseinstellungen
 
-Wenn Ihre SQL-Clientanwendung den .Net 4.5 SQLClient unterstützt, können Sie das Schlüsselwort „MULTISUBNETFAILOVER=TRUE“ verwenden. Dieses Schlüsselwort sollte angewendet werden, da es während des Failovers schnellere Verbindung mit der SQL AlwaysOn-Verfügbarkeitsgruppe erlaubt. Dabei werden alle mit dem AlwaysOn-Listener verbundenen IP-Adressen parallel durchlaufen und eine aggressivere Geschwindigkeit bei der TCP-Verbindungswiederholung während eines Failovers angewendet.
+Wenn Ihre SQL-Clientanwendung den .NET 4.5-SQLClient unterstützt, können Sie das Schlüsselwort „MULTISUBNETFAILOVER=TRUE“ verwenden. Dieses Schlüsselwort sollte angewendet werden, da es während des Failovers schnellere Verbindung mit der SQL AlwaysOn-Verfügbarkeitsgruppe erlaubt. Dabei werden alle mit dem AlwaysOn-Listener verbundenen IP-Adressen parallel durchlaufen und eine aggressivere Geschwindigkeit bei der TCP-Verbindungswiederholung während eines Failovers angewendet.
 
 Weitere Informationen zu den obigen Einstellungen finden Sie unter [Erstellen oder Konfigurieren eines Verfügbarkeitsgruppenlisteners (SQL Server)](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Siehe auch [SqlClient Support for High Availability, Disaster Recovery](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx) (SqlClient-Unterstützung für Hochverfügbarkeit, Notfallwiederherstellung).
 
@@ -926,7 +926,7 @@ $ipaddr = "192.168.0.5"
 $newInstanceSize = "Standard_DS13"
 $subnet = "SQL"
 
-#Create new Avaiability Set
+#Create new Availability Set
 $availabilitySet = "cloudmigAVAMS"
 
 #build machine config into object
@@ -973,7 +973,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #SET Azure ACLs or Network Security Groups & Windows FWs
 
-#http://msdn.microsoft.com/library/azure/dn495192.aspx
+#https://msdn.microsoft.com/library/azure/dn495192.aspx
 
 ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 ```
@@ -1125,7 +1125,7 @@ ForEach ($disk in $diskobjects)
 
 #Check for copy progress
 
-#check induvidual blob status
+#check individual blob status
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContext
 ```
 
@@ -1152,7 +1152,7 @@ Warten Sie, bis diese als erfolgreich aufgezeichnet wurden.
 Informationen zu einzelnen Blobs:
 
 ```powershell
-#Check induvidual blob status
+#Check individual blob status
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 ```
 
@@ -1176,7 +1176,7 @@ Add-AzureDisk -DiskName $xioDiskName -MediaLocation  "https://$newxiostorageacco
 $ipaddr = "192.168.0.4"
 $newInstanceSize = "Standard_DS13"
 
-#Join to existing Avaiability Set
+#Join to existing Availability Set
 
 #Build machine config into object
 $vmConfig = New-AzureVMConfig -Name $vmNameToMigrate -InstanceSize $newInstanceSize -DiskName $xioDiskName -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
@@ -1218,7 +1218,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #SET ACLs or Azure Network Security Groups & Windows FWs
 
-#http://msdn.microsoft.com/library/azure/dn495192.aspx
+#https://msdn.microsoft.com/library/azure/dn495192.aspx
 ```
 
 #### <a name="step-23-test-failover"></a>Schritt 23: Testfailover

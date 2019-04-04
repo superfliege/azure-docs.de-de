@@ -14,12 +14,12 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d9a60544f01048cd90605306e64d750982bf7a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008901"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Verzeichnisrollen in PIM
 Im Privileged Identity Management-Überwachungsverlauf können Sie alle Benutzerzuweisungen und -aktivierungen für alle Rollen in einem bestimmten Zeitraum sehen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](../reports-monitoring/overview-reports.md)
@@ -27,10 +27,10 @@ Im Privileged Identity Management-Überwachungsverlauf können Sie alle Benutzer
 ## <a name="navigate-to-audit-history"></a>Navigieren zum Überwachungsverlauf
 Wählen Sie auf dem Dashboard im [Azure-Portal](https://portal.azure.com) die App **Azure AD Privileged Identity Management** aus. Dort können Sie auf den Überwachungsverlauf zugreifen, indem Sie im PIM-Dashboard auf **Privilegierte Rollen verwalten** > **Überwachungsverlauf** klicken.
 
-![](media/azure-ad-pim-approval-workflow/image021.png)
+![Überprüfen des Verlaufs](media/azure-ad-pim-approval-workflow/image021.png)
 
->[!NOTE]
-Sie können die Daten nach der „Aktion“ sortieren und nach „Aktivierung genehmigt“ suchen.
+> [!NOTE]
+> Sie können die Daten nach der „Aktion“ sortieren und nach „Aktivierung genehmigt“ suchen.
 
 
 ## <a name="audit-history-graph"></a>Diagramm des Überwachungsverlaufs

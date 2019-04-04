@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4685c4213ad992e8d0fcffdf91a039cd04b426ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813a81e3812f9bb95ab11deec35adc6c05f1b58e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844206"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312222"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrieren von API Management in Service Fabric in Azure
 
@@ -142,7 +142,7 @@ Geben Sie für **displayName** einen beschreibenden Anzeigenamen und für **desc
 
 * **displayName** kann ein beliebiger Name für die API sein. Verwenden Sie für diesen Artikel „Service Fabric App“.
 * **name** enthält einen eindeutigen und beschreibenden Namen für die API, z.B. „service-fabric-app“. Dieser Name wird in den Entwickler- und Herausgeberportalen angezeigt.
-* **serviceUrl** verweist auf den HTTP-Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter. Bei Service Fabric-Back-Ends wird dieser URL-Wert nicht verwendet. Sie können hier einen beliebigen Wert einfügen. Für diesen Artikel beispielsweise „<http://servicefabric>“.
+* **serviceUrl** verweist auf den HTTP-Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter. Bei Service Fabric-Back-Ends wird dieser URL-Wert nicht verwendet. Sie können hier einen beliebigen Wert einfügen. Für diesen Artikel z. B. „http:\//servicefabric“.
 * **path** wird an die Basis-URL für den API Management-Dienst angefügt. Alle in einer API Management-Dienstinstanz gehosteten APIs teilen sich dieselbe Basis-URL. API Management unterscheidet APIs durch deren Suffix. Daher muss jede API eines bestimmten Herausgebers ein eindeutiges Suffix haben.
 * **protocols** legt fest, welche Protokolle für den Zugriff auf die API verwendet werden können. Geben Sie für diesen Artikel **http** und **https** an.
 * **path** ist ein Suffix für die API. Verwenden Sie für diesen Artikel „myapp“.

@@ -1,6 +1,6 @@
 ---
-title: Ausführen von Massenkopiervorgängen mit Steuertabelle für eine Datenbank mit Azure Data Factory | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie unter Verwendung von Azure Data Factory und einer Lösungsvorlage sämtliche Daten aus einer Datenbank auf einmal kopieren und dabei eine externe Steuertabelle verwenden, um eine Partitionsliste mit Quelltabellen zu speichern.
+title: Ausführen von Massenkopiervorgängen aus einer Datenbank mithilfe einer Steuertabelle mit Azure Data Factory | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie eine Lösungsvorlage verwenden, um Massen von Daten aus einer Datenbank zu kopieren, indem Sie eine externe Steuertabelle mithilfe von Azure Data Factory zum Speichern einer Partitionsliste mit Quelltabellen verwenden.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: b267da18f2537e462ecda0ac265eac07a069c293
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966706"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530568"
 ---
-# <a name="bulk-copy-from-database-with-control-table"></a>Ausführen von Massenkopiervorgängen mit Steuertabelle für eine Datenbank
+# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Massenkopieren aus einer Datenbank mit einer Steuertabelle
 
-Wenn Sie Daten aus Ihrem Data Warehouse (Oracle-Server, Netezza-Server, Teradata-Server, SQL Server oder Ähnliches) in Azure kopieren möchten, müssen Sie große Datenmengen aus mehreren Tabellen in Datenquellen laden. In den meisten Fällen müssen die Daten in den einzelnen Tabellen weiter partitioniert werden, um Zeilen mit mehreren Threads parallel aus einer einzelnen Tabelle laden zu können. Hierzu kann die vorliegende Vorlage verwendet werden. 
+Sie müssen große Datenmengen aus mehreren Tabellen laden, um Daten aus einem Data Warehouse in Oracle Server, Netezza, Teradata oder SQL Server in Azure SQL Data Warehouse zu kopieren. In der Regel müssen die Daten in den einzelnen Tabellen partitioniert werden, um Zeilen mit mehreren Threads parallel aus einer einzelnen Tabelle laden zu können. In diesem Artikel wird eine Vorlage für diese Szenarios beschrieben.
 
-Wenn Sie dagegen Daten aus einigen wenigen Tabellen mit geringer Datengröße kopieren möchten, empfiehlt es sich, das Tool zum Kopieren von Daten zu verwenden, um nur eine einzelne Copy-Aktivität (oder eine ForEach-Aktivität und eine Copy-Aktivität) in Ihrer Pipeline zu haben. Für diesen einfachen Anwendungsfall ist diese Vorlage zu umfassend.
+ >!HINWEIS: Wenn Sie Daten aus einer kleinen Anzahl von Tabellen mit relativ geringem Datenvolumen in SQL Data Warehouse kopieren möchten, ist es effizienter, das [Tool zum Kopieren von Daten in Azure Data Factory](copy-data-tool.md) zu verwenden. Die in diesem Artikel beschriebene Vorlage ist für dieses Szenario umfangreicher als notwendig.
 
 ## <a name="about-this-solution-template"></a>Informationen zu dieser Lösungsvorlage
 
-Diese Vorlage ruft die Liste mit den Partitionen der Quelldatenbank aus einer externen Steuertabelle ab, die in den Zielspeicher kopiert werden muss. Anschließend durchläuft sie die einzelnen Partitionen in der Quelldatenbank und führt den Datenkopiervorgang aus.
+Mit dieser Vorlage wird eine Liste der Quelldatenbankpartitionen abgerufen, die aus einer externen Steuertabelle kopiert werden sollen. Anschließend wird jede Partition in der Quelldatenbank durchlaufen und die Daten werden in das Ziel kopiert.
 
 Die Vorlage enthält drei Aktivitäten:
--   Eine **Lookup**-Aktivität zum Abrufen der Liste mit den Partitionen der Quelldatenbank aus einer externen Steuertabelle.
--   Eine **ForEach**-Aktivität zum Abrufen der Partitionsliste aus der Lookup-Aktivität sowie zum anschließenden Durchlaufen der einzelnen Elemente für die Copy-Aktivität.
--   Eine **Copy**-Aktivität zum Kopieren der einzelnen Partitionen aus dem Quelldatenbankspeicher in den Zielspeicher.
+- Die **Lookup-Aktivität** ruft die Liste der sicheren Datenbankpartitionen aus einer externen Steuertabelle ab.
+- Die **ForEach-Aktivität** ruft die Partitionsliste aus der Lookup-Aktivität ab und durchläuft jede Partition für die Kopieraktivität.
+- Die **Kopieraktivität** kopiert alle Partitionen aus dem Quelldatenbankspeicher in den Zielspeicher.
 
 Die Vorlage definiert fünf Parameter:
--   Der Parameter *Control_Table_Name* ist der Tabellenname für Ihre externe Steuertabelle. Die Steuertabelle dient zum Speichern der Partitionsliste für die Quelldatenbank.
--   Der Parameter *Control_Table_Schema_PartitionID* ist der Name der Spalte in Ihrer externen Steuertabelle, in der die einzelnen Partitions-IDs gespeichert werden. Die Partitions-ID muss für jede Partition in der Quelldatenbank eindeutig sein.
--   Der Parameter *Control_Table_Schema_SourceTableName* ist der Name der Spalte in Ihrer externen Steuertabelle, in der die einzelnen Tabellennamen aus der Quelldatenbank gespeichert werden.
--   Der Parameter *Control_Table_Schema_FilterQuery* ist der Name der Spalte in Ihrer externen Steuertabelle, in der die Filterabfrage zum Abrufen der Daten aus den einzelnen Partitionen der Quelldatenbank gespeichert wird. Wenn die Daten also beispielsweise nach Jahr partitioniert wurden, kann in den einzelnen Zeilen eine Abfrage wie die folgende gespeichert werden: ‘select * from datasource where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999'''
--   Der Parameter *Data_Destination_Folder_Path* ist der Ordnerpfad, an den die Daten in Ihrem Zielspeicher kopiert werden sollen.  Dieser Parameter ist nur sichtbar, wenn es sich bei dem gewählten Ziel um einen dateibasierten Speicher handelt.  Wenn Sie SQL Data Warehouse als Zielspeicher auswählen, ist hier keine Parametereingabe erforderlich. Die Tabellennamen und das Schema in SQL Data Warehouse müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
+- *Control_Table_Name* entspricht Ihrer externen Steuertabelle, in der die Partitionsliste für die Quelldatenbank gespeichert wird.
+- *Control_Table_Schema_PartitionID* entspricht dem Spaltennamen in Ihrer externen Steuertabelle, in der die Partitions-IDs gespeichert werden. Stellen Sie sicher, dass die Partitions-IDs für jede Partition in der Quelldatenbank eindeutig sind.
+- *Control_Table_Schema_SourceTableName* entspricht Ihrer externen Steuertabelle, in der alle Tabellennamen aus der Quelldatenbank gespeichert werden.
+- *Control_Table_Schema_FilterQuery* entspricht dem Spaltennamen in Ihrer externen Steuertabelle, in der die Filterabfragen zum Abrufen der Daten aus den Partitionen in der Quelldatenbank gespeichert werden. Wenn die Daten also beispielsweise nach Jahr partitioniert wurden, kann in den einzelnen Zeilen eine Abfrage wie die folgende gespeichert werden: ‘select * from datasource where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999'''.
+- *Data_Destination_Folder_Path* entspricht dem Pfad, an den die Daten in Ihrem Zielspeicher kopiert werden. Dieser Parameter wird nur angezeigt, wenn es sich beim ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie SQL Data Warehouse als Zielspeicher auswählen, ist dieser Parameter nicht erforderlich. Die Tabellennamen und das Schema in SQL Data Warehouse müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
 
 ## <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
-1. Erstellen Sie in einer SQL Server- oder SQL Azure-Instanz eine Steuertabelle, um die Partitionsliste der Quelldatenbank für einen Massenkopiervorgang zu speichern.  Im folgenden Beispiel enthält die Quelldatenbank fünf Partitionen: drei für die Tabelle *datasource_table* und zwei für die Tabelle *project_table*. Die Spalte *LastModifyTime* wird verwendet, um die Daten in der Tabelle *datasource_table* aus der Quelldatenbank zu partitionieren. Die Abfrage zum Lesen der ersten Partition lautet wie folgt: 'select * from datasource_table where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999'''.  Die Abfrage zum Lesen von Daten aus anderen Partitionen sieht ganz ähnlich aus. 
+1. Erstellen Sie eine Steuertabelle in SQL Server oder Azure SQL-Datenbank zum Speichern der Partitionsliste der Quelldatenbank für den Massenkopiervorgang. Im folgenden Beispiel enthält die Quelldatenbank fünf Partitionen. Drei Partitionen sind für die Tabelle *datasource_table* und die zwei anderen für die Tabelle *project_table*. Die Spalte *LastModifyTime* wird verwendet, um die Daten in der Tabelle *datasource_table* aus der Quelldatenbank zu partitionieren. Die Abfrage zum Lesen der ersten Partition lautet wie folgt: 'select * from datasource_table where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999'''. Sie können eine ähnliche Abfrage zum Lesen von Daten aus anderen Partitionen verwenden.
 
      ```sql
             Create table ControlTableForTemplate
@@ -64,15 +64,15 @@ Die Vorlage definiert fünf Parameter:
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. Navigieren Sie zur Vorlage **Bulk Copy from Database** (Massenkopieren aus einer Datenbank), und erstellen Sie eine **neue Verbindung** mit Ihrer externen Steuertabelle.  Dies dient dazu, eine Verbindung mit der Datenbank herzustellen, in der Sie im ersten Schritt die Steuertabelle erstellt haben.
+2. Wechseln Sie zur Vorlage **Bulk Copy from Database** (Massenkopieren aus einer Datenbank). Stellen Sie eine **neue Verbindung** mit der externen Steuertabelle her, die Sie in Schritt 1 erstellt haben.
 
     ![Erstellen einer neuen Verbindung mit der Steuertabelle](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. Erstellen Sie eine **neue Verbindung** mit der Quelldatenbank, aus der die Daten kopiert werden sollen.
+3. Stellen Sie eine **neue Verbindung** mit der Quelldatenbank her, aus der Sie Daten kopieren.
 
      ![Erstellen einer neuen Verbindung mit der Quelldatenbank](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. Erstellen Sie eine **neue Verbindung** mit Ihrem Zieldatenspeicher, in den die Daten kopiert werden sollen.
+4. Stellen Sie eine **neue Verbindung** mit dem Zieldatenspeicher her, in den Sie Daten kopieren.
 
     ![Erstellen einer neuen Verbindung mit dem Zielspeicher](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
@@ -80,19 +80,19 @@ Die Vorlage definiert fünf Parameter:
 
     ![„Diese Vorlage verwenden“](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     
-6. Die Pipeline wird im Bereich angezeigt, wie im folgenden Beispiel zu sehen:
+6. Daraufhin wird die Pipeline wie im folgenden Beispiel angezeigt:
 
     ![Überprüfen der Pipeline](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Klicken Sie auf **Debuggen**, geben Sie die Parameter ein, und klicken Sie dann auf **Fertig stellen**.
+7. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Klicken auf „Debuggen“](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    ![Auf **Debuggen** klicken](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
-8. Das Ergebnis wird im Bereich angezeigt, wie im folgenden Beispiel zu sehen:
+8. Ihnen werden Ergebnisse angezeigt, die dem folgenden Beispiel ähneln:
 
     ![Überprüfen des Ergebnisses](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Optional) Wenn Sie SQL Data Warehouse als Ziel auswählen, müssen Sie als Stagingbereich auch die Verbindung einer Azure Blob Storage-Instanz eingeben, da dies von SQL Data Warehouse PolyBase vorausgesetzt wird.  Dabei muss der Container in Blob Storage bereits vorhanden sein.  
+9. (Optional) Wenn Sie SQL Data Warehouse als Zielspeicher für die Daten ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, wie von SQL Data Warehouse Polybase erfordert wird. Stellen Sie sicher, dass der Container in Blob Storage bereits erstellt wurde.
     
     ![PolyBase-Einstellung](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

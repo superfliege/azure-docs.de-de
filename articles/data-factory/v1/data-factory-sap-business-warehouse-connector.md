@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e972ee64d60f0fc9703e766c3ab45c3057c32a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019876"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893253"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Verschieben von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,7 @@ Um Konnektivität zur SAP BW-Instanz zu aktivieren, installieren Sie die folgend
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -64,12 +64,12 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Zeichenfolge | JA
-systemNumber | Die Systemnummer des SAP BW-Systems. | Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | JA
-clientId | Client-ID des Clients im SAP BW-System. | Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | JA
-username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | JA
-password | Kennwort für den Benutzer | Zeichenfolge | JA
-gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP BW-Instanz verwenden soll. | Zeichenfolge | JA
+server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Zeichenfolge | Ja
+systemNumber | Die Systemnummer des SAP BW-Systems. | Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja
+clientId | Client-ID des Clients im SAP BW-System. | Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+password | Kennwort für den Benutzer | Zeichenfolge | Ja
+gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP BW-Instanz verwenden soll. | Zeichenfolge | Ja
 encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein 
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -87,7 +87,7 @@ Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu de
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | MDX-Abfrage | JA |
+| query | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | MDX-Abfrage | Ja |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus SAP Business Warehouse in ein Azure-Blob
@@ -291,27 +291,27 @@ Beim Verschieben von Daten aus SAP BW werden die folgenden Zuordnungen zwischen 
 
 Datentyp im ABAP-Wörterbuch | .NET-Datentyp
 -------------------------------- | --------------
-ACCP |  int
-CHAR | Zeichenfolge
-CLNT | Zeichenfolge
+ACCP |  Int
+CHAR | String
+CLNT | String
 CURR | Decimal
-CUKY | Zeichenfolge
-DEC | DECIMAL
+CUKY | String
+DEC | Decimal
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
-INT4 | int
-LANG | Zeichenfolge
-LCHR | Zeichenfolge
+INT4 | Int
+LANG | String
+LCHR | String
 LRAW | Byte[]
 PREC | Int16
-QUAN | DECIMAL
+QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | Zeichenfolge
-EINHEIT | Zeichenfolge
-DATS | Zeichenfolge
-NUMC | Zeichenfolge
+STRING | String
+EINHEIT | String
+DATS | String
+NUMC | String
 TIMS | Zeichenfolge
 
 > [!NOTE]

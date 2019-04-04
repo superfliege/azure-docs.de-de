@@ -4,21 +4,21 @@ description: Erfahren Sie mehr über die Sicherheits-, Authentifizierungs- und A
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b174d7f9b4b8438687512a90dc7a65b5649f758a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 8aadddbc9ae13a87f89db4d7e7189ea7aa8aeef5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229887"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883503"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Sicherheitsstandards für Azure IoT Edge
 
-Das Verschieben Ihrer Daten und Analysen zum intelligenten Edge führt zu Risikoszenarien, zu deren Behandlung Azure IoT Edge entwickelt wurde. Die IoT Edge-Sicherheitsstandards sollen Flexibilität für verschiedene Risikoprofile und Bereitstellungsszenarien bieten, aber dabei den gleichen Schutz bieten, den Sie von allen Azure-Diensten erwarten. 
+Azure IoT Edge wurde entwickelt, um die Risikoszenarien zu behandeln, die mit dem Verschieben Ihrer Daten und Analysen zur Intelligent Edge verbunden sind. Die IoT Edge-Sicherheitsstandards bieten Flexibilität für verschiedene Risikoprofile und Bereitstellungsszenarien, aber dabei den Schutz bieten, den Sie von allen Azure-Diensten erwarten. 
 
 Azure IoT Edge kann auf verschiedener Hardware unterschiedlicher Hersteller und Modelle ausgeführt wurden, unterstützt verschiedene Betriebssysteme und eignet sich für verschiedene Bereitstellungsszenarien. Bei der Risikobewertung eines Bereitstellungsszenarios spielen verschiedene Faktoren eine Rolle, z.B. der Besitz der Lösung, die geografische Region für die Bereitstellung, die Vertraulichkeit der Daten, die Branche, in der die Anwendung eingesetzt wird, sowie gesetzliche Vorgaben. Anstatt konkrete Lösungen für bestimmte Szenarien anzubieten, stellt IoT Edge ein erweiterbares Sicherheitsframework dar, das auf fundierten Prinzipien fußt und Skalierbarkeit bietet. 
  
@@ -28,17 +28,17 @@ Dieser Artikel bietet eine Übersicht über das IoT Edge-Sicherheitsframework. 
 
 Standards fördern eine einfache Überprüfbarkeit und Implementierung – zwei Eckpfeiler der Sicherheit. Eine Sicherheitslösung sollte zur Überprüfbarkeit beitragen, um Vertrauen aufzubauen, und sie darf kein Hindernis bei der Bereitstellung sein. Das Design des Frameworks für den Schutz von Azure IoT Edge basiert auf Sicherheitsprotokollen, die über lange Zeit getestet wurden und sich in der Branche bewährt haben, und bietet somit Vertrautheit und Wiederverwendbarkeit. 
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
-Wenn Sie eine IoT-Lösung bereitstellen, muss gewährleistet sein, dass nur vertrauenswürdige Akteure, Geräte und Komponenten Zugriff auf Ihre Lösung haben. Dieses Wissen sorgt für Verantwortlichkeit bei den Beteiligten und ist die Grundlage für die Gewährung des Zugriffs.  Azure IoT Edge erzielt dieses Wissen durch Authentifizierung.  Der primäre Authentifizierungsmechanismus für die Azure IoT Edge-Plattform ist die zertifikatbasierte Authentifizierung.  Dieser Mechanismus wurde aus einer Reihe von Standards abgeleitet, die die Public Key Infrastructure (PKiX) der Internet Engineering Task Force (IETF) regeln.     
+Wenn Sie eine IoT-Lösung bereitstellen, muss gewährleistet sein, dass nur vertrauenswürdige Akteure, Geräte und Module Zugriff auf Ihre Lösung haben. Dieses Wissen sorgt für Verantwortlichkeit bei den Beteiligten. Azure IoT Edge erzielt dieses Wissen durch Authentifizierung. Die zertifikatsbasierte Authentifizierung ist der primäre Authentifizierungsmechanismus für die Azure IoT Edge-Plattform. Dieser Mechanismus wurde aus einer Reihe von Standards abgeleitet, die die Public Key Infrastructure (PKiX) der Internet Engineering Task Force (IETF) regeln.     
 
-Alle Geräte, Module und Akteure, die mit dem Azure IoT Edge-Gerät interagieren – physisch oder über eine Netzwerkverbindung –, müssen eindeutige Zertifikatidentitäten aufweisen. Nicht jedes Szenario und jede Komponente ist für die zertifikatbasierte Authentifizierung geeignet. In diesen Szenarien bietet die Erweiterbarkeit des Sicherheitsframeworks sichere Alternativen. 
+Alle Geräte, Module und Akteure, die mit dem Azure IoT Edge-Gerät interagieren – physisch oder über eine Netzwerkverbindung –, müssen eindeutige Zertifikatidentitäten aufweisen. Nicht jedes Szenario und jede Komponente ist jedoch für die zertifikatbasierte Authentifizierung geeignet. In diesen Szenarien bietet die Erweiterbarkeit des Sicherheitsframeworks sichere Alternativen. 
 
 ## <a name="authorization"></a>Autorisierung
 
 Das Prinzip der geringsten Rechte besagt, dass Benutzer und Komponenten eines Systems nur Zugriff auf den minimalen Satz von Ressourcen und Daten haben sollten, die zum Ausüben ihrer Rollen erforderlich sind. Geräte, Module und Akteure sollten nur auf Ressourcen und Daten in ihrem Berechtigungsbereich zugreifen – und auch nur dann, wenn die Architektur es zulässt. Einige Berechtigungen sind mit ausreichenden Rechten konfigurierbar, andere dagegen werden architekturbedingt erzwungen.  Beispielsweise kann ein Modul per Berechtigungskonfiguration autorisiert werden, eine Verbindung mit Azure IoT Hub zu initiieren. Es besteht jedoch kein Grund für ein Modul in einem Azure IoT Edge-Gerät, auf den Zwilling eines Moduls in einem anderen Azure IoT Edge-Gerät zuzugreifen.
 
-Weitere Autorisierungskonzepte umfassen Rechte zum Signieren von Zertifikaten, rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und andere ausgereifte Autorisierungsschemas. 
+Weitere Autorisierungskonzepte umfassen Rechte zum Signieren von Zertifikaten und die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). 
 
 ## <a name="attestation"></a>Nachweis
 
@@ -54,7 +54,7 @@ Beim statischen Nachweis wird die Integrität aller Softwarebestandteile bestät
 
 ### <a name="runtime-attestation"></a>Nachweis zur Laufzeit
 
-Nachdem ein System einen validierten Startprozess abgeschlossen hat und betriebsbereit ist, erkennen sorgfältig entwickelte Sicherheitssysteme Versuche, Schadsoftware einzuschleusen, und leiten entsprechende Gegenmaßnahmen ein. Angriffe durch Schadsoftware können etwa auf die Ports und Schnittstellen des Systems abzielen, um Zugriff auf das System zu erhalten. Wenn böswillige Akteure physischen Zugriff auf ein Gerät haben, können sie auf ähnliche Weise das Gerät direkt manipulieren oder über Seitenkanalangriffe Zugriff erhalten. Solche schädlichen Inhalte können die Form von Schadsoftware oder nicht autorisierten Konfigurationsänderungen annehmen. Sie werden nach dem Startvorgang eingeschleust, sodass ein statischer Nachweis sie nicht erkennen würde. Gegenmaßnahmen, die von der Gerätehardware angeboten oder erzwungen werden, tragen zur Abwehr solcher Bedrohungen bei.  Das Sicherheitsframework für Azure IoT Edge fordert ausdrücklich Erweiterungen zur Bekämpfung von Laufzeitbedrohungen.  
+Nachdem ein System einen validierten Startprozess abgeschlossen hat und betriebsbereit ist, erkennen sorgfältig entwickelte Sicherheitssysteme Versuche, Schadsoftware einzuschleusen, und leiten entsprechende Gegenmaßnahmen ein. Angriffe durch Schadsoftware können etwa auf die Ports und Schnittstellen des Systems abzielen, um Zugriff auf das System zu erhalten. Wenn böswillige Akteure physischen Zugriff auf ein Gerät haben, können sie auf ähnliche Weise das Gerät direkt manipulieren oder über Seitenkanalangriffe Zugriff erhalten. Solche schädlichen Inhalte können die Form von Schadsoftware oder nicht autorisierten Konfigurationsänderungen annehmen. Sie werden nach dem Startvorgang eingeschleust, sodass ein statischer Nachweis sie nicht erkennen kann. Gegenmaßnahmen, die von der Gerätehardware angeboten oder erzwungen werden, tragen zur Abwehr solcher Bedrohungen bei.  Das Sicherheitsframework für Azure IoT Edge fordert ausdrücklich Erweiterungen zur Bekämpfung von Laufzeitbedrohungen.  
 
 ### <a name="software-attestation"></a>Softwarenachweis
 
@@ -70,7 +70,7 @@ Damit Kunden beim Erwerb von Azure IoT Edge-Geräten fundierte Entscheidungen f�
 
 ## <a name="extensibility"></a>Erweiterbarkeit
 
-Erweiterbarkeit ist ein sehr wichtiger Aspekt im Azure IoT Edge-Sicherheitsframework.  Da die IoT-Technologie verschiedene Formen von geschäftlichen Transformationen fördert, leuchtet es ein, dass Sicherheitsmaßnahmen parallel weiterentwickelt werden sollten, um neue Szenarien abzudecken.  Das Azure IoT Edge-Sicherheitsframework startet mit einem soliden Fundament, auf dem die Erweiterbarkeit in verschiedene Dimensionen aufgebaut wird, damit folgende Aspekte berücksichtigt werden: 
+Da die IoT-Technologie verschiedene Formen von geschäftlichen Transformationen fördert, leuchtet es ein, dass Sicherheitsmaßnahmen parallel weiterentwickelt werden sollten, um neue Szenarien abzudecken.  Das Azure IoT Edge-Sicherheitsframework startet mit einem soliden Fundament, auf dem die Erweiterbarkeit in verschiedene Dimensionen aufgebaut wird, damit folgende Aspekte berücksichtigt werden: 
 
 * Sicherheitsdienste des Erstanbieters, wie etwa den Device Provisioning-Dienst für Azure IoT Hub.
 * Drittanbieterdienste wie z.B. verwaltete Sicherheitsdienste für verschiedene Branchen (z.B. Industrie oder Gesundheitswesen) oder technologische Fokusbereiche (z.B. Sicherheitsüberwachung in Meshnetzwerken oder Hardwarenachweisdienste) über ein umfassendes Partnernetzwerk.

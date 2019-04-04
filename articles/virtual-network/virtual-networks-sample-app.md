@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ca111623f6d3d7c61b1bfc4e1af328f9599c2440
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884505"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Beispielanwendung für die Verwendung mit DMZs
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -42,7 +42,7 @@ Wenn Sie die nachstehenden Skripts verwenden, ist diese Erweiterung der Firewall
 Mit diesem Skript werden folgende Vorgänge durchgeführt:
 
 1. Öffnen von ICMPv4 (Ping) in der Windows-Firewall des lokalen Servers für einfacheres Testen
-2. Installieren von IIS und .Net Framework 4.5
+2. Installieren von IIS und .NET Framework 4.5
 3. Erstellen einer ASP.NET-Webseite und der Datei "Web.config"
 4. Ändern des Standardanwendungspools für einfacheren Dateizugriff
 5. Festlegen des anonymen Benutzers auf Ihr Administratorkonto und -kennwort
@@ -61,7 +61,7 @@ Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Pr
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 
 # Install IIS
-    Write-Host "Installing IIS and .Net 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
+    Write-Host "Installing IIS and .NET 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
     add-windowsfeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-Static-Content, Web-Health, Web-Http-Logging, Web-Performance, Web-Stat-Compression, Web-Security, Web-Filtering, Web-App-Dev, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Net-Ext, Web-Net-Ext45, Web-Asp-Net45, Web-Mgmt-Tools, Web-Mgmt-Console
 
 # Create Web App Pages
@@ -105,7 +105,7 @@ Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Pr
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Image File Linked from the Internet</b>:<br />
             <br />
-            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
+            <img src="https://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
         </div>
       </form>
     </body>
@@ -152,12 +152,12 @@ Mit diesem Skript wird das Back-End für diese einfache Anwendung eingerichtet. 
 2. Erstellen eines Verzeichnisses für die Website
 3. Erstellen einer Textdatei, auf die über die Webseite remote zugegriffen werden kann
 4. Festlegen der Berechtigungen für das Verzeichnis und die Datei auf "Anonym", um den Zugriff zuzulassen
-5. Deaktivieren der verstärkten Sicherheitskonfiguration von Internet Explorer zur einfacheren Navigation über diesen Server 
+5. Deaktivieren der verstärkten Sicherheitskonfiguration von Internet Explorer zur einfacheren Navigation über diesen Server
 
 > [!IMPORTANT]
 > **Bewährte Methode:** Deaktivieren Sie die verstärkte Sicherheitskonfiguration von Internet Explorer niemals auf einem Produktionsserver. Zudem empfiehlt es sich allgemein nicht, über einen Produktionsserver im Internet zu surfen. Darüber hinaus empfiehlt es sich auch nicht, Dateifreigaben für den anonymen Zugriff zu öffnen. Dies wird hier jedoch aus Gründen der Einfachheit durchgeführt.
-> 
-> 
+>
+>
 
 Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Protokoll an AppVM01 geleitet wird. PowerShell muss mit Administratorrechten ausgeführt werden, um die erfolgreiche Ausführung sicherzustellen.
 

@@ -16,25 +16,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884675"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
 Die Data Science Virtual Machine (DSVM) für Linux ist ein Ubuntu-basiertes VM-Image, das den Einstieg in maschinelles Lernen, wie Deep Learning, in Azure erleichtert. Deep Learning-Tools:
 
-  * [Caffe](http://caffe.berkeleyvision.org/): Deep Learning-Framework mit Fokus auf Geschwindigkeit, Ausdrucksfähigkeit und Modularität
+  * [Caffe](https://caffe.berkeleyvision.org/): Deep Learning-Framework mit Fokus auf Geschwindigkeit, Ausdrucksfähigkeit und Modularität
   * [Caffe2](https://github.com/caffe2/caffe2): Plattformübergreifende Version von Caffe
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Deep Learning-Softwaretoolkit von Microsoft Research
   * [H2O](https://www.h2o.ai/): Open Source-Plattform und grafische Benutzeroberfläche für Big Data
   * [Keras](https://keras.io/): Allgemeine API für neuronale Netze in Python für TensorFlow, Microsoft Cognitive Toolkit und Theano
-  * [MXNet](http://mxnet.io/): Flexible, effiziente Deep Learning-Bibliothek mit vielen Sprachbindungen
+  * [MXNet](https://mxnet.io/): Flexible, effiziente Deep Learning-Bibliothek mit vielen Sprachbindungen
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): Grafisches System, das häufige Deep Learning-Aufgaben vereinfacht
-  * [PyTorch](http://pytorch.org/): Eine allgemeine Python-Bibliothek mit Unterstützung für dynamische Netzwerke
+  * [PyTorch](https://pytorch.org/): Eine allgemeine Python-Bibliothek mit Unterstützung für dynamische Netzwerke
   * [TensorFlow](https://www.tensorflow.org/): Open Source-Bibliothek für Computerintelligenz von Google
   * [Theano](http://deeplearning.net/software/theano/): Python-Bibliothek zum Definieren, Optimieren und effizienten Auswerten mathematischer Ausdrücke einschließlich mehrdimensionaler Arrays
   * [Torch](http://torch.ch/): Framework für wissenschaftliche Berechnungen mit weit reichender Unterstützung für Machine Learning-Algorithmen
@@ -120,7 +120,7 @@ Es gibt drei Methoden, um auf die Ubuntu-DSVM zuzugreifen:
 
 ### <a name="ssh"></a>SSH
 
-Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](http://www.putty.org)herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
+Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](https://www.putty.org)herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
 
 > [!NOTE]
 > Der X2Go-Client hat bei Tests besser abgeschnitten als die X11-Weiterleitung. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.
@@ -130,7 +130,7 @@ Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmel
 ### <a name="x2go"></a>X2Go
 Die Linux-VM wird mit X2Go-Server bereits bereitgestellt und ist zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
-1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
+1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
 1. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
      * **Host**: Der Hostname oder die IP-Adresse Ihrer Linux Data Science VM.
@@ -205,7 +205,7 @@ R ist eine der beliebtesten Sprachen für Datenanalyse und Machine Learning. Wen
 
 Um die R-Konsole zu starten, geben Sie in der Shell einfach **R** ein. Sie gelangen zu einer interaktiven Umgebung. Um Ihr R-Programm zu entwickeln, verwenden Sie normalerweise einen Editor wie Emacs oder vi und führen dann die Skripts in R aus. Mit RStudio verfügen Sie über eine vollständige grafische IDE zum Entwickeln Ihres R-Programms.
 
-Es ist auch ein R-Skript vorhanden, mit dem Sie bei Bedarf die [20 beliebtesten R-Pakete](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) installieren können. Dieses Skript kann ausgeführt werden, wenn Sie sich auf der interaktiven R-Benutzeroberfläche befinden. Sie können (wie bereits erwähnt) darauf zugreifen, indem Sie in der Shell **R** eingeben.  
+Es ist auch ein R-Skript vorhanden, mit dem Sie bei Bedarf die [20 beliebtesten R-Pakete](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) installieren können. Dieses Skript kann ausgeführt werden, wenn Sie sich auf der interaktiven R-Benutzeroberfläche befinden. Sie können (wie bereits erwähnt) darauf zugreifen, indem Sie in der Shell **R** eingeben.  
 
 ### <a name="python"></a>Python
 Anaconda Python wird mit Python 2.7- und 3.5-Umgebungen installiert. Die 2.7-Umgebung wird als _root_ bezeichnet, und die 3.5-Umgebung als _py35_. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen. 
@@ -276,7 +276,7 @@ Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht benötigen.
 ### <a name="ides-and-editors"></a>IDEs und Editoren
 Sie können zwischen mehreren Code-Editoren wählen. Hierzu gehören vi/VIM, Emacs, PyCharm, RStudio und IntelliJ. IntelliJ, RStudio und PyCharm sind grafische Editoren, und Sie müssen bei einem grafischen Desktop angemeldet sein, um sie verwenden zu können. Diese Editoren verfügen über Verknüpfungen auf dem Desktop und im Anwendungsmenü, mit denen sie gestartet werden können.
 
-**VIM** und **Emacs** sind textbasierte Editoren. Unter Emacs haben wir ein Add-On-Paket mit dem Namen Emacs Speaks Statistics (ESS) installiert, um die Nutzung von R im Emacs-Editor zu vereinfachen. Weitere Informationen finden Sie unter [ESS](http://ess.r-project.org/).
+**VIM** und **Emacs** sind textbasierte Editoren. Unter Emacs haben wir ein Add-On-Paket mit dem Namen Emacs Speaks Statistics (ESS) installiert, um die Nutzung von R im Emacs-Editor zu vereinfachen. Weitere Informationen finden Sie unter [ESS](https://ess.r-project.org/).
 
 **LaTeX** wird über das texlive-Paket zusammen mit einem [aucte](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)x-Paket als Emacs-Add-On installiert. Es dient zum Vereinfachen der Erstellung Ihrer LaTeX-Dokumente in Emacs.  
 

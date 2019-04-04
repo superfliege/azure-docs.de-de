@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2c556fe3cc27e68d591c0f513dcfbe525e868b2c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897077"
 ---
 # <a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
 
 Dieser Artikel beschreibt die Erstellung von Stichproben für SQL Server-Daten in Azure unter Verwendung von SQL oder der Programmiersprache Python. Es wird gezeigt, wie erfasste Daten in Azure Machine Learning verschoben werden, indem Sie sie in einer Datei speichern, diese in einen Azure-Blob hochladen und anschließend in Azure Machine Learning Studio lesen.
 
-Die Python-Stichprobe verwendet die [pyodbc](https://code.google.com/p/pyodbc/)-ODBC-Bibliothek für die Verbindung mit SQL Server auf Azure und die [Pandas](http://pandas.pydata.org/)-Bibliothek zum Ausführen der Stichprobe.
+Die Python-Stichprobe verwendet die [pyodbc](https://code.google.com/p/pyodbc/)-ODBC-Bibliothek für die Verbindung mit SQL Server auf Azure und die [Pandas](https://pandas.pydata.org/)-Bibliothek zum Ausführen der Stichprobe.
 
 > [!NOTE]
 > Beim SQL-Beispielcode in diesem Dokument wird davon ausgegangen, dass die Daten auf einem SQL Server in Azure gespeichert sind. Wenn dies nicht der Fall ist, finden Sie im Thema [Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer](move-sql-server-virtual-machine.md) Anweisungen zum Verschieben von Daten zu SQL Server unter Azure.
@@ -71,7 +71,7 @@ In diesem Abschnitt wird veranschaulicht, wie die [pyodbc-Bibliothek](https://co
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Die [Pandas](http://pandas.pydata.org/) -Bibliothek in Python bietet eine Vielzahl von Datenstrukturen und Datenanalysetools für die Datenbearbeitung durch Python-Programmierung. Der folgende Code liest eine Datenstichprobe von 0,1 % aus einer Tabelle in einer Azure SQL-Datenbank in ein Pandas-DataFrame:
+Die [Pandas](https://pandas.pydata.org/) -Bibliothek in Python bietet eine Vielzahl von Datenstrukturen und Datenanalysetools für die Datenbearbeitung durch Python-Programmierung. Der folgende Code liest eine Datenstichprobe von 0,1 % aus einer Tabelle in einer Azure SQL-Datenbank in ein Pandas-DataFrame:
 
     import pandas as pd
 

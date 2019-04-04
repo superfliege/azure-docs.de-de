@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894393"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086053"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -50,7 +50,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
 
    1. Geben Sie einen **Namen** für den Container an, legen Sie die öffentliche Zugriffsebene auf **Privat** fest, und klicken Sie dann auf **OK**.
 
-     ![Erstellen einer Blobcontainerkonfiguration](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![Erstellen einer Blobcontainerkonfiguration](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
 1. Nach dem Erstellen des Containers für die Überwachungsprotokolle gibt es zwei Möglichkeiten, ihn als Ziel für die Überwachungsprotokolle zu konfigurieren: [mit T-SQL](#blobtsql) oder [mithilfe der Benutzeroberfläche von SQL Server Management Studio (SSMS)](#blobssms):
 
@@ -113,7 +113,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
         GO
         ```
 
-      1. Erstellen Sie als Nächstes eine [Spezifikation für die Serverüberwachung oder die Datenbanküberwachung](#createspec).
+        1. Erstellen Sie als Nächstes eine [Spezifikation für die Serverüberwachung oder die Datenbanküberwachung](#createspec).
 
    - <a id="blobssms"></a>Konfigurieren von Blob Storage für Überwachungsprotokolle mit SQL Server Management Studio (SSMS) 18 (Vorschauversion):
 
@@ -158,9 +158,9 @@ Weitere Informationen:
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Einrichten der Überwachung für Ihren Server in Event Hubs oder Log Analytics
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Einrichten der Überwachung für Ihren Server in Event Hubs oder Azure Monitor-Protokolle
 
-Überwachungsprotokolle einer verwalteten Instanz können mithilfe von Azure Monitor an Event Hubs oder Log Analytics gesendet werden. In diesem Abschnitt wird die zugehörige Konfiguration beschrieben:
+Überwachungsprotokolle einer verwalteten Instanz können an Event Hubs oder Azure Monitor-Protokolle gesendet werden. In diesem Abschnitt wird die zugehörige Konfiguration beschrieben:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur verwalteten Instanz.
 
@@ -170,7 +170,7 @@ Weitere Informationen:
 
 4. Wählen Sie in der Liste der Protokolle **SQLSecurityAuditEvents** aus.
 
-5. Wählen Sie ein Ziel für die Überwachungsereignisse aus: Event Hubs, Log Analytics oder beide. Konfigurieren Sie für jedes Ziel die erforderlichen Parameter (z.B. den Log Analytics-Arbeitsbereich).
+5. Wählen Sie ein Ziel für die Überwachungsereignisse aus: Event Hubs, Azure Monitor-Protokolle oder beide. Konfigurieren Sie für jedes Ziel die erforderlichen Parameter (z.B. den Log Analytics-Arbeitsbereich).
 
 6. Klicken Sie auf **Speichern**.
 
@@ -190,7 +190,7 @@ Weitere Informationen:
    - [Erstellen einer Spezifikation für die Serverüberwachung – T-SQL-Anleitung](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Erstellen einer Spezifikation für die Datenbanküberwachung – T-SQL-Anleitung](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. Aktivieren Sie die Serverüberwachung, die Sie in Schritt 7 erstellt haben:
+10. Aktivieren Sie die Serverüberwachung, die Sie in Schritt 8 erstellt haben:
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
@@ -213,11 +213,13 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen.
 
 Um die Überwachungsprotokolldaten von Event Hub zu nutzen, müssen Sie einen Stream zum Nutzen von Ereignissen einrichten und diese in ein Ziel schreiben. Weitere Informationen finden Sie in der Dokumentation zu Azure Event Hubs.
 
-### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Verwenden und Analysieren von Protokollen, die in Log Analytics gespeichert sind
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Verwenden und Analysieren von Protokollen, die in Azure Monitor-Protokolle gespeichert sind
 
-Wenn die Überwachungsprotokolle in Log Analytics geschrieben werden, stehen sie im Log Analytics-Arbeitsbereich bereit. Sie können dort erweiterte Suchvorgänge über die Überwachungsdaten ausführen. Navigieren Sie zunächst zu Log Analytics, klicken Sie im Abschnitt *Allgemein* auf *Protokolle*, und geben Sie eine einfache Abfrage ein, z.B. `search "SQLSecurityAuditEvents"`, um die Überwachungsprotokolle anzuzeigen.  
+Wenn die Überwachungsprotokolle in Azure Monitor-Protokolle geschrieben werden, stehen sie im Log Analytics-Arbeitsbereich bereit. Sie können dort erweiterte Suchvorgänge über die Überwachungsdaten ausführen. Navigieren Sie zunächst zum Log Analytics-Arbeitsbereich, klicken Sie im Abschnitt *Allgemein* auf *Protokolle*, und geben Sie eine einfache Abfrage ein, z. B. `search "SQLSecurityAuditEvents"`, um die Überwachungsprotokolle anzuzeigen.  
 
-Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards gewährt Log Analytics Ihnen Einblicke in Betriebsabläufe in Echtzeit, sodass Sie Millionen von Datensätzen für all Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zu Log Analytics-Suchsprache und -Suchbefehlen finden Sie unter [Referenz zur Log Analytics-Suche](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards bieten Azure Monitor-Protokolle Ihnen in Echtzeit Erkenntnisse zu Betriebsabläufen, sodass Sie Millionen von Datensätzen für alle Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zur Suchsprache und den Befehlen in Azure Monitor-Protokolle finden Sie unter [Referenz zur Suche in Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Überwachungsunterschiede zwischen Datenbanken in Azure SQL-Datenbank und Datenbanken in SQL Server
 
@@ -232,7 +234,7 @@ Die XEvent-Überwachung in einer verwalteten Instanz unterstützt Azure Blob Sto
 Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azure Blob Storage:
 
 - Mit der neuen Syntax `TO URL` können Sie die URL des Azure Blob Storage-Containers angeben, in dem Dateien mit der Endung `.xel` gespeichert werden.
-- Eine neue Syntax `TO EXTERNAL MONITOR` wird bereitgestellt, um Event Hubs- und Log Analytics-Ziele zu ermöglichen.
+- Die neue Syntax `TO EXTERNAL MONITOR` wird bereitgestellt, um Ziele in Event Hubs und Azure Monitor-Protokolle zu ermöglichen.
 - Die Syntax `TO FILE` wird **nicht unterstützt**, da SQL-Datenbank nicht auf Windows-Dateifreigaben zugreifen kann.
 - Die Option zum Herunterfahren wird **nicht unterstützt**.
 - Der Wert „0“ für `queue_delay` wird **nicht unterstützt**.

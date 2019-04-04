@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ae9f4d1ebcb84748b665579104f63dab3ee6f076
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/12/2019
+ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463870"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901915"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
 
@@ -126,13 +126,17 @@ Beachten Sie, dass das Installationsprogramm für .NET 4.6.1 während des Boots
 
 ## <a name="transactions-across-multiple-servers"></a>Transaktionen über mehrere Server
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 Elastische Datenbanktransaktionen werden auf verschiedenen SQL-Datenbank-Servern in Azure SQL-Datenbank unterstützt. Bei Transaktionen über die Grenzen von SQL-Datenbank-Servern hinweg müssen die beteiligten Server zuerst in eine Beziehung mit gegenseitiger Kommunikation gebracht werden. Sobald die Kommunikationsbeziehung eingerichtet wurde, kann eine Datenbank in einem der beiden Server an elastischen Transaktionen mit Datenbanken auf dem anderen Server teilnehmen. Mit Transaktionen über mehr als zwei SQL-Datenbank-Server hinweg muss eine Kommunikationsbeziehung für jedes Paar von SQL-Datenbank-Servern vorhanden sein.
 
 Verwenden Sie die folgenden PowerShell-Cmdlets, um serverübergreifende Kommunikationsbeziehungen für elastische Transaktionen zu verwalten:
 
-* **New-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine neue Kommunikationsbeziehung zwischen zwei SQL-Datenbank-Servern in Azure SQL-Datenbank erstellen. Die Beziehung ist symmetrisch, sodass beide Server Transaktionen mit dem jeweils anderen Server initiieren können.
-* **Get-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie vorhandene Kommunikationsbeziehungen und die zugehörigen Eigenschaften abrufen.
-* **Remove-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine vorhandene Kommunikationsbeziehung entfernen. 
+* **New-AzSqlServerCommunicationLink:** Mit diesem Cmdlet können Sie eine neue Kommunikationsbeziehung zwischen zwei SQL-Datenbank-Servern in Azure SQL-Datenbank erstellen. Die Beziehung ist symmetrisch, sodass beide Server Transaktionen mit dem jeweils anderen Server initiieren können.
+* **Get-AzSqlServerCommunicationLink:** Mit diesem Cmdlet können Sie vorhandene Kommunikationsbeziehungen und die zugehörigen Eigenschaften abrufen.
+* **Remove-AzSqlServerCommunicationLink:** Mit diesem Cmdlet können Sie eine vorhandene Kommunikationsbeziehung entfernen. 
 
 ## <a name="monitoring-transaction-status"></a>Überwachen des Transaktionsstatus
 

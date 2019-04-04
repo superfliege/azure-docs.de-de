@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d1bfce9b58f6b0cd681b6b4dac70c925084db193
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 78ec32dcbfc5a1a3b6d480a361f1568fa5427699
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599766"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822796"
 ---
 # <a name="migrate-web-resources-to-global-azure"></a>Migrieren von Webressourcen zu Azure weltweit
 
@@ -30,8 +30,7 @@ Migrieren von Apps, die Sie mit dem Web Apps-Feature von Azure App Service erste
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](https://docs.microsoft.com/azure/app-service/#step-by-step-tutorials) durcharbeiten.
-- Informieren Sie sich darüber, wie eine [Azure Resource Manager-Vorlage exportiert wird](../azure-resource-manager/resource-manager-export-template.md).
-- Erfahren Sie, wie Sie [eine Azure Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
+- Informieren Sie sich darüber, wie [Azure Resource Manager-Vorlagen exportiert werden](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
 - Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Lesen Sie die [Übersicht über Azure App Service](../app-service/overview.md).
 - Verschaffen Sie sich einen [Überblick über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).

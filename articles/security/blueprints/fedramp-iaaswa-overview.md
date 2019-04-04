@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6dd413a6b6550e18551db1105d306f8a0bdaf9c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864472"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure-Blaupause für Sicherheit und Compliance: IaaS-Webanwendung für FedRAMP
 
@@ -72,8 +72,7 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 - Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
-- Log Analytics
-- Azure Monitor
+- Azure Monitor (Protokolle)
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 
@@ -148,11 +147,11 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
 
-Log Analytics bietet eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ist eine Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure-basierten und lokalen Umgebungen generiert werden.
+Azure Monitor-Protokolle ermöglicht eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ist eine Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure-basierten und lokalen Umgebungen generiert werden.
 
 - **Aktivitätsprotokolle**:  [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
 - **Diagnoseprotokolle:**  [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure-Speicherprotokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
-- **Protokollarchivierung**:  Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
+- **Protokollarchivierung**:  Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Monitor-Protokolle verbunden.
 
 Darüber hinaus sind in dieser Architektur die folgenden Überwachungslösungen installiert. Beachten Sie, dass der Kunde für die Konfiguration dieser Lösungen verantwortlich ist, um die Anpassung an die FedRAMP-Sicherheitskontrollen vorzunehmen:
 -   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Die Lösung „Active Directory-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
@@ -192,7 +191,7 @@ Diese Azure Security and Compliance Blueprint-Automatisierung besteht aus JSON-K
 
 3. Klicken Sie auf die Schaltfläche unten, melden Sie sich im Azure-Portal an, geben Sie die erforderlichen ARM-Vorlagenparameter ein, und klicken Sie dann auf **Kaufen**.
 
-    [![In Azure bereitstellen](http://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
+    [![In Azure bereitstellen](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 
 ## <a name="guidance-and-recommendations"></a>Anleitungen und Empfehlungen
 ### <a name="vpn-and-expressroute"></a>VPN und ExpressRoute

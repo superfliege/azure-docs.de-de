@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200495"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013228"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -132,6 +132,7 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 - Ein lokal angeschlossenes Volume, das mit dem NTFS-Dateisystem formatiert ist
 
 ### <a name="file-system-features"></a>Features des Dateisystems
+
 | Feature | Status der Unterstützung | Notizen |
 |---------|----------------|-------|
 | Zugriffssteuerungslisten (ACLs) | Vollständig unterstützt | Windows-Zugriffssteuerungslisten werden von der Azure-Dateisynchronisierung beibehalten und von Windows Server auf Serverendpunkten erzwungen. Windows-Zugriffssteuerungslisten werden (noch) nicht von Azure Files unterstützt, wenn direkt auf Dateien in der Cloud zugegriffen wird. |
@@ -148,6 +149,7 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 > Nur NTFS-Volumes werden unterstützt. ReFS, FAT, FAT32 und andere Dateisysteme werden nicht unterstützt.
 
 ### <a name="files-skipped"></a>Übersprungene Dateien
+
 | Datei/Ordner | Hinweis |
 |-|-|
 | Desktop.ini | Systemspezifische Datei |
@@ -235,6 +237,7 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 |--------|---------------------|
 | Australien (Osten) | Neusüdwales |
 | Australien, Südosten | Victoria |
+| Brasilien Süd | Sao Paolo, Bundesstaat |
 | Kanada, Mitte | Toronto |
 | Kanada, Osten | Quebec City |
 | Indien, Mitte | Pune |
@@ -242,6 +245,8 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 | Asien, Osten | Hongkong |
 | USA (Ost) | Virginia |
 | USA (Ost 2) | Virginia |
+| Japan, Osten | Tokio, Saitama |
+| Japan, Westen | Osaka |
 | USA Nord Mitte | Illinois |
 | Nordeuropa | Irland |
 | USA Süd Mitte | Texas |

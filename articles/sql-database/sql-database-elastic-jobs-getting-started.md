@@ -11,23 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 03/12/2019
+ms.openlocfilehash: 5fd51e2d847b540d2eb8c17c2bc31f4e162a21ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904625"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu den Features von Aufträgen für die elastische Datenbank finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).
 
 Dieser Artikel erweitert das Beispiel unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md). Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können. Es ist nicht erforderlich, die Tools für die elastische Skalierung zu verwenden, um die Vorteile der elastischen Aufträge zu nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenbank](sql-database-elastic-scale-get-started.md)herunter, und führen Sie es aus.
 
@@ -50,12 +52,12 @@ Wir würden hier normalerweise ein Shardzuordnungsziel mithilfe des Cmdlets **Ne
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Erstellt eine benutzerdefinierte Sammlung und fügt ihr alle Datenbanken auf dem Server mit Ausnahme der Masterdatenbank hinzu.
 
-   ```Powershell
+   ```PowerShell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
     $ServerName = "samples"
-    $dbsinserver = Get-AzureRMSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+    $dbsinserver = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
     $dbsinserver | %{
     $currentdb = $_.DatabaseName
     $ErrorActionPreference = "Stop"
@@ -314,7 +316,7 @@ Wenn für einen übergeordneten Auftrag ein Auftragsabbruch angefordert wird, wi
 
 Verwenden Sie zum Senden von Abbruchanforderungen das Cmdlet **Stop-AzureSqlJobExecution**, und legen Sie den Parameter **JobExecutionId** fest.
 
-   ```Powershell
+   ```PowerShell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090337"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -44,8 +44,8 @@ ms.locfileid: "55300607"
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * Verbesserte Behandlung von Beobachterausnahmen.
 * Umfangreichere Informationen Beobachterfehlern:
- * Wenn ein Beobachter aufgrund einer Ausnahme geschlossen wird, die von „ProcessChangesAsync“ des Beobachters ausgelöst wird, erhält „CloseAsync“ nun den reason-Parameter „ChangeFeedObserverCloseReason.ObserverError“.
- * Hinzugefügte Ablaufverfolgungen zum Bestimmen von Fehlern im Benutzercode bei einem Beobachter.
+  * Wenn ein Beobachter aufgrund einer Ausnahme geschlossen wird, die von „ProcessChangesAsync“ des Beobachters ausgelöst wird, erhält „CloseAsync“ nun den reason-Parameter „ChangeFeedObserverCloseReason.ObserverError“.
+  * Hinzugefügte Ablaufverfolgungen zum Bestimmen von Fehlern im Benutzercode bei einem Beobachter.
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Unterstützung für die Verarbeitung von Aufteilungen von Sammlungen, die gemeinsam genutzten Datenbankdurchsatz verwenden, wurde hinzugefügt.

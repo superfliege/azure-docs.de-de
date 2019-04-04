@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588941"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457760"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Erstellen eines Namespace im Azure-Portal
 Um mit der Verwendung von Service Bus-Nachrichtenentitäten in Azure beginnen zu können, müssen Sie zuerst einen Namespace mit einem in Azure eindeutigen Namen erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
@@ -25,7 +25,7 @@ So erstellen Sie einen Namespace
 
     ![Ressource erstellen > Integration > Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. Gehen Sie im Dialogfeld **Namespace erstellen** wie folgt vor: 
-    1. Geben Sie einen **Namen für den Namespace** ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+    1. Geben Sie einen **Namen für den Namespace** ein. Das System überprüft sofort, ob dieser Name verfügbar ist. Eine Liste der Regeln für die Benennung von Namespaces finden Sie unter [REST-API zum Erstellen von Namespaces](/rest/api/servicebus/create-namespace).
     2. Wählen Sie den Tarif (Basic, Standard oder Premium) für den Namespace aus. Wenn Sie [Themen und Abonnements](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) nutzen möchten, wählen Sie entweder Standard oder Premium aus. Themen/Abonnements werden für den Basic-Tarif nicht unterstützt.
     3. Wenn Sie den Tarif **Premium** auswählen, führen Sie die folgenden Schritte aus: 
         1. Geben Sie die Anzahl der **Messagingeinheiten** an. Der Premium-Tarif bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die einzelnen Workloads voneinander isoliert ausgeführt werden. Dieser Ressourcencontainer wird als Messagingeinheit bezeichnet. Ein Premium-Namespace verfügt mindestens über eine Messagingeinheit. Sie können 1, 2 oder 4 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Weitere Informationen finden Sie unter [Service Bus Premium- und Standard-Preisstufe für Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).

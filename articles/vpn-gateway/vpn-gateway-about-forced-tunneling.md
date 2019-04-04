@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: cf566811f1e5fe7fde20d148e68417acf6d42f54
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073821"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008335"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell
 
@@ -28,7 +28,7 @@ ms.locfileid: "53073821"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Dieser Artikel beschreibt die Konfiguration der Tunnelerzwingung für virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Das erzwungene Tunneling kann mithilfe von PowerShell konfiguriert werden, nicht über das Portal. Wenn Sie das erzwungene Tunneling für das Resource Manager-Bereitstellungsmodell konfigurieren möchten, wählen Sie aus der folgenden Dropdownliste den klassischen Artikel aus:
+Dieser Artikel beschreibt die Konfiguration der Tunnelerzwingung für virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Das erzwungene Tunneling kann mithilfe von PowerShell konfiguriert werden, nicht über das Portal. Wenn Sie das erzwungene Tunneling für das Resource Manager-Bereitstellungsmodell konfigurieren möchten, wählen Sie in der folgenden Dropdownliste den Resource Manager-Artikel aus:
 
 > [!div class="op_single_selector"]
 > * [PowerShell – klassisch](vpn-gateway-about-forced-tunneling.md)

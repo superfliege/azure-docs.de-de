@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075934"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -45,7 +45,7 @@ Die auf virtuellen Kernen basierenden Diensttarife unterscheiden sich in erster 
 - Der Diensttarif „Unternehmenskritisch“ eignet sich für Geschäftsworkloads, bei denen Latenzen bei E/A-Vorgängen im Vordergrund stehen.
 
 | | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **Am besten geeignet für** |Alle|  Die meisten geschäftlichen Workloads. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Datenanwendungen mit hohem Datenkapazitätsbedarf und der Möglichkeit, Speicher automatisch zu skalieren und Computeressourcen nahtlos zu skalieren. | OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
 |  **Ressourcentyp** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
@@ -73,7 +73,7 @@ Der Diensttarif „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die 
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Welche Regionen unterstützen derzeit Hyperscale?
 
-Hyperscale steht derzeit für Einzeldatenbanken in den folgenden Regionen zur Verfügung:  „USA, Westen 1“, „USA, Westen 2“, „USA, Osten 1“, „USA, Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Japan, Osten“, „Korea, Mitte“, „Australien, Südosten“ und „Australien, Osten“.
+Hyperscale steht derzeit für Einzeldatenbanken in den folgenden Regionen zur Verfügung:  „USA, Westen 1“, „USA, Westen 2“, „USA, Osten 1“, „USA, Mitte“, „Europa, Westen“, „Europa, Norden“, „Asien, Südosten“, „Japan, Osten“, „Südkorea, Mitte“, „Australien, Südosten“ und „Australien, Osten“.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Können mehrere Hyperscale-Datenbanken pro SQL-Datenbankserver erstellt werden?
 

@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 02/13/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235223"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901847"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -33,16 +33,13 @@ Während der Replikation werden Daten zu Azure-Speicher repliziert, und Sie beza
 
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Was muss ich in Azure tun?
-Sie benötigen ein Azure-Abonnement, einen Recovery Services-Tresor, ein Speicherkonto und ein virtuelles Netzwerk. Tresor, Speicherkonto und Netzwerk müssen sich in derselben Region befinden.
-
-### <a name="what-azure-storage-account-do-i-need"></a>Welches Azure-Speicherkonto benötige ich?
-Sie benötigen ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Storage Premium wird unterstützt.
+Sie benötigen ein Azure-Abonnement, einen Recovery Services-Tresor, ein Cachespeicherkonto, verwaltete Datenträger und ein virtuelles Netzwerk. Der Tresor, das Cachespeicherkonto, die verwalteten Datenträger und das virtuelle Netzwerk müssen sich in derselben Region befinden.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Benötigt mein Azure-Konto Berechtigungen zum Erstellen von virtuellen Computern?
-Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
+Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Recovery angeben, und je nach Konfiguration Schreibberechtigungen für das ausgewählte Speicherkonto oder den verwalteten Datenträger. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Kann ich die Gastbetriebssystem-Serverlizenz in Azure verwenden?
-Ja, Microsoft Software Assurance-Kunden können den [Azure-Hybridvorteil](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) nutzen, um Lizenzierungskosten für **Windows Server-Computer** zu sparen, die zu Azure migriert werden, oder um Azure für die Notfallwiederherstellung zu verwenden.
+Ja, Microsoft Software Assurance-Kunden können den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Lizenzierungskosten für **Windows Server-Computer** zu sparen, die zu Azure migriert werden, oder um Azure für die Notfallwiederherstellung zu verwenden.
 
 ## <a name="pricing"></a>Preise
 
@@ -52,7 +49,28 @@ Weitere Informationen zur Lizenzierung finden Sie in unseren [FAQs](https://aka.
 
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Wie kann ich die ungefähren Kosten für die Nutzung von Site Recovery berechnen?
 
-Sie können den [Preisrechner](https://aka.ms/asr_pricing_calculator) verwenden, um die Kosten für die Verwendung von Azure Site Recovery zu schätzen. Für eine detaillierte Kostenschätzung führen Sie das Bereitstellungsplanertool (https://aka.ms/siterecovery_deployment_planner)) aus, und analysieren Sie den [Kostenschätzungsbericht](https://aka.ms/asr_DP_costreport).
+Sie können den [Preisrechner](https://aka.ms/asr_pricing_calculator) verwenden, um die Kosten für die Verwendung von Azure Site Recovery zu schätzen. Für eine detaillierte Kostenschätzung führen Sie das Bereitstellungsplanertool (https://aka.ms/siterecovery_deployment_planner)) aus, und analysieren Sie den [Kostenvorkalkulationsbericht](https://aka.ms/asr_DP_costreport).
+
+### <a name="is-there-any-difference-in-cost-when-i-replicate-directly-to-managed-disk"></a>Gibt es einen Unterschied bei den Kosten, wenn ich das Replikat direkt auf dem verwalteten Datenträger erstelle?
+
+Die Berechnung der Kosten für verwaltete Datenträger unterscheidet sich etwas von Speicherkonten. Sehen Sie sich das folgende Beispiel für einen Quelldatenträger mit 100 GiB an. Das Beispiel gilt spezifisch für den Kostenunterschied für Speicher. Diese Kosten umfassen nicht die Kosten für Momentaufnahmen, Zwischenspeicher und Transaktionen.
+
+* Standardspeicherkonto im Vergleich zu verwalteten HDD Standard-Datenträgern
+
+    - **Von Azure Site Recovery bereitgestellte Speicherdatenträger:** S10
+    - **Kosten für ein Standardspeicherkonto auf einem belegten Volume:** 5 $ pro Monat
+    - **Kosten für einen verwalteten Standarddatenträger auf einem bereitgestellten Volume:** 5,89 $ pro Monat
+
+* Premium-Speicherkonto im Vergleich zu verwaltete SSD Premium-Datenträgern 
+    - **Von Azure Site Recovery bereitgestellte Speicherdatenträger:** P10
+    - **Kosten für ein Premium-Speicherkonto auf einem bereitgestellten Volume:** 17,92 $ pro Monat
+    - **Kosten für einen verwalteten Premium-Datenträger auf einem bereitgestellten Volume:** 17,92 $ pro Monat
+
+Weitere Informationen finden Sie in der [Preisübersicht für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+### <a name="do-i-incur-additional-charges-for-cache-storage-account-with-managed-disks"></a>Fallen zusätzliche Gebühren für Cachespeicherkonten mit verwalteten Datenträgern an?
+
+Nein, es fallen keine zusätzlichen Gebühren für den Cache an. Cache ist immer ein Bestandteil von VMware in der Azure-Architektur. Wenn Sie die Replikation in einem Standardspeicherkonto durchführen, ist dieser Cache Teil desselben Zielspeicherkontos.
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Ich nutze Azure Site Recovery seit mehr als einem Monat. Sind die ersten 31 Tage für jede geschützte Instanz immer noch kostenlos?
 
@@ -107,7 +125,7 @@ Der lokale Konfigurationsserver kann wie folgt bereitgestellt werden:
 
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Zu welchem Speicher werden lokale virtuelle Computer repliziert?
-Daten werden zu Azure-Speicher repliziert. Wenn Sie ein Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-VMs aus dem Speicherkonto.
+Daten werden zu Azure-Speicher repliziert. Wenn Sie ein Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-VMs aus dem Speicherkonto oder dem verwalteten Datenträger basierend auf Ihrer Konfiguration.
 
 ## <a name="replication"></a>Replikation
 
@@ -122,15 +140,31 @@ Nein, dieses Szenario wird nicht unterstützt.
 Site Recovery repliziert Daten über einen öffentlichen Endpunkt oder mittels öffentlichem ExpressRoute-Peering aus einem lokalen Speicher zu Azure-Speicher. Replikation über ein Site-to-Site-VPN-Netzwerk wird nicht unterstützt.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Kann ich mit ExpressRoute zu Azure replizieren?
-Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) oder [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) einrichten. Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation. Stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für die Replikation erfüllt sind. Nach dem Failover virtueller Computer zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) auf sie zugreifen.
+Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repliziert Daten über einen öffentlichen Endpunkt in Azure Storage. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) oder [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) einrichten. Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation. Stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für die Replikation erfüllt sind. Nach dem Failover virtueller Computer zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) auf sie zugreifen.
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Wie kann ich das Speicherkonto ändern, nachdem der Computer geschützt ist?
 
-Das Speicherkonto kann nur auf Premium aktualisiert werden. Wenn Sie ein anderes Speicherkonto verwenden möchten, müssen Sie die Replikation Ihres Quellcomputers deaktivieren und den Schutz mit einem neuen Speicherkonto wieder aktivieren. Darüber hinaus gibt es keine andere Möglichkeit, das Speicherkonto nach der Aktivierung des Schutzes zu ändern.
+Sie müssen die Replikation deaktivieren und aktivieren, um ein Upgrade oder ein Downgrade für den Speicherkontotyp auszuführen.
+
+### <a name="can-i-replicate-to-storage-accounts-for-new-machine"></a>Kann ich Daten für einen neuen Computer in Speicherkonten replizieren?
+
+Nein, ab dem 19. März können Sie Daten auf verwalteten Datenträger in Azure über das Portal replizieren. Eine Replikation auf Speicherkonten für einen neuen Computer ist nur über die REST-API und Powershell verfügbar. Verwenden Sie die API-Version 2016-08-10 oder 2018-01-10 für die Replikation auf Speicherkonten.
+
+### <a name="what-are-the-benefits-in-replicating-to-managed-disks"></a>Welche Vorteile hat die Replikation auf verwalteten Datenträgern?
+
+Informationen hierzu finden Sie im Artikel [Azure Site Recovery simplifies disaster recovery with managed disks (Vereinfachen der Notfallwiederherstellung mit verwalteten Datenträgern mit Azure Site Recovery)](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/).
+
+### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Wie kann ich den Typ der verwalteten Datenträger ändern, nachdem der Computer geschützt wird?
+
+Sie können den Typ des verwalteten Datenträgers mühelos ändern. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) Stellen Sie jedoch sicher, dass neue Wiederherstellungspunkte generiert wurden, sobald Sie den Typ des verwalteten Datenträgers ändern, wenn Sie ein Testfailover oder ein Failover nach diesem Vorgang durchführen müssen.
+
+### <a name="can-i-switch-the-replication-from-managed-disks-to-unmanaged-disks"></a>Kann ich die Replikation von verwalteten Datenträgern zu nicht verwalteten Datenträgern wechseln?
+
+Nein, das Wechseln von verwalteten zu nicht verwalteten Datenträgern wird nicht unterstützt.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
 
-Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering). VPN ist nicht verfügbar.
+Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering)und VPNs sind nicht verfügbar.
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Welche Anforderungen stellt die Replikation an virtuelle Computer?
 
@@ -143,13 +177,16 @@ Beim Replizieren von VMware-VMs zu Azure ist die Replikation fortlaufend.
 Ja, Sie können die IP-Adresse beim Failover behalten. Stellen Sie sicher, dass Sie die Ziel-IP-Adresse vor dem Failover auf dem Blatt „Compute und Netzwerk“ angeben. Stellen Sie außerdem sicher, dass Sie die Computer zum Zeitpunkt des Failover herunterfahren, um IP-Konflikte zum Zeitpunkt des Failbacks zu vermeiden.
 
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
-Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
-Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kann ich Datenträger ausschließen?
 Ja, sie können Datenträger von der Replikation ausschließen.
+
+### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>Kann ich die Größe oder den Typ der Ziel-VM vor dem Failover ändern?
+Ja, Sie können den Typ oder die Größe der VM jederzeit vor dem Failover ändern, indem Sie die Compute- und Netzwerkeinstellungen des Replikationselements über das Portal aufrufen.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Kann ich virtuelle Computer mit dynamischen Datenträgern replizieren?
 Dynamische Datenträger können repliziert werden. Der Betriebssystem-Datenträger muss ein Basisdatenträger sein.
@@ -161,7 +198,7 @@ Ja, Sie können einer vorhandenen Replikationsgruppe neue VMs hinzufügen, wenn 
 
 Für die VMware-Replikation in Azure können Sie die Datenträgergröße ändern. Wenn Sie neue Datenträger hinzufügen möchten, müssen Sie den Datenträger hinzufügen und den Schutz für die VM erneut aktivieren.
 
-### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Kann ich lokale Computer zu einem neuen Vcenter migrieren, die laufende Replikation zu beeinträchtigen?
+### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Kann ich lokale Computer zu einem neuen vCenter migrieren, ohne die laufende Replikation zu beeinträchtigen?
 Nein, eine Änderung des Vcenter oder der Migration beeinträchtigt die laufende Replikation. Sie müssen ASR mit dem neuen Vcenter einrichten und die Replikation für Computer aktivieren.
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Kann ich in einen Cache/ein Zielspeicherkonto replizieren, für den/das Vnet (mit Azure Storage-Firewalls) konfiguriert ist?
@@ -200,9 +237,11 @@ Dies ist zwar möglich, aber die Azure-VM, die den Konfigurationsserver ausführ
 Es wird empfohlen, regelmäßige geplante Sicherungen des Konfigurationsservers durchzuführen. Für ein erfolgreiches Failback muss der betreffende virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, und der Konfigurationsserver muss ausgeführt werden und verbunden sein. Weitere Informationen zu allgemeinen Aufgaben für die Verwaltung des Konfigurationsservers finden Sie [hier](vmware-azure-manage-configuration-server.md).
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Kann ich beim Einrichten des Konfigurationsservers MySQL herunterladen und manuell installieren?
+
 Ja. Laden Sie MySQL herunter, und speichern Sie die Daten im Ordner **C:\Temp\ASRSetup**. Führen Sie die Installation anschließend manuell durch. Wenn Sie die Konfigurationsserver-VM einrichten und die Bedingungen akzeptieren, wird MySQL unter **Herunterladen und installieren** als **Bereits installiert** aufgeführt.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Kann ich das Herunterladen von MySQL vermeiden und Site Recovery die Installation überlassen?
+
 Ja. Laden Sie das MySQL-Installationsprogramm herunter, und speichern Sie es im Ordner **C:\Temp\ASRSetup**.  Akzeptieren Sie beim Einrichten der Konfigurationsserver-VM die Bedingungen, und klicken Sie auf **Herunterladen und installieren**. Im Portal wird dann das von Ihnen hinzugefügte Installationsprogramm verwendet, um MySQL zu installieren.
  
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Kann ich die Konfigurationsserver-VM für andere Zwecke nutzen?
@@ -267,6 +306,9 @@ Ja, sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung in A
 
 
 ## <a name="failover-and-failback"></a>Failover und Failback
+### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Kann ich den lokalen Verarbeitungsserver für Failbacks verwenden?
+Es wird dringend empfohlen, einen Verarbeitungsserver für Failbacks in Azure zu erstellen, um Wartezeiten bei der Datenübertragung zu vermeiden. Es ist außerdem wichtig, dass Sie den in Azure erstellten Verarbeitungsserver für Failbacks verwenden, wenn Sie das Quellnetzwerk der VMs vom mit Azure verbundenen Netzwerk auf dem Konfigurationsserver getrennt haben.
+
 ### <a name="how-far-back-can-i-recover"></a>Wie weit kann ich bei der Wiederherstellung zurückgehen?
 Für VMware zu Azure beträgt der älteste Wiederherstellungspunkt, den Sie verwenden können, 72 Stunden.
 
@@ -277,7 +319,7 @@ Nach einem Failover können Sie über eine sichere Internetverbindung, eine Site
 Azure ist auf Resilienz ausgelegt. Site Recovery ist für ein Failover zu einem sekundären Azure-Rechenzentrum (gemäß Azure-SLA) konzipiert. Wenn ein Failover auftritt, stellen wir sicher, dass Ihre Metadaten und Tresore innerhalb der gleichen geografischen Region bleiben, die Sie für Ihren Tresor ausgewählt haben.
 
 ### <a name="is-failover-automatic"></a>Erfolgt ein Failover automatisch?
-Ein [Failover](site-recovery-failover.md) erfolgt nicht automatisch. Sie initiieren Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](/powershell/module/azurerm.siterecovery) verwenden, um ein Failover auslösen.
+Ein [Failover](site-recovery-failover.md) erfolgt nicht automatisch. Sie initiieren Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](/powershell/module/azurerm.siterecovery) verwenden, um ein Failover auszulösen.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Kann ich ein Failback zu einem anderen Speicherort ausführen?
 Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](concepts-types-of-failback.md#alternate-location-recovery-alr)

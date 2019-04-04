@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f94189e8f39771e0c3d7856ccbb8a23ba81d94aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085818"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447273"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Behandeln von Problemen beim Bereitstellen von OpenShift in Azure
 

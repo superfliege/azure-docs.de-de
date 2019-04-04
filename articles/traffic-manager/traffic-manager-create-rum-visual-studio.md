@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079712"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Senden von Benutzer-Realmessungen an Azure Traffic Manager mit Visual Studio Mobile Center
 
@@ -33,22 +33,22 @@ Zum Konfigurieren von Benutzer-Realmessungen müssen Sie einen Schlüssel abrufe
 Die von Ihrer Clientanwendung erfassten und an Traffic Manager gesendeten Messungen werden vom Dienst mithilfe einer eindeutigen Zeichenfolge bestimmt, die „RUM-Schlüssel“ (Real User Measurements, Benutzer-Realmessungen) genannt wird. Sie können einen RUM-Schlüssel über das Azure-Portal, eine REST-API oder mithilfe von PowerShell oder Azure CLI abrufen.
 
 Gehen Sie wie folgt vor, um den RUM-Schlüssel über das Azure-Portal abzurufen:
-   1. Melden Sie sich im Browser beim Azure-Portal an. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für eine kostenlose einmonatige Testversion registrieren.
-   2. Suchen Sie über die Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
-   3. Klicken Sie auf der Seite „Traffic Manager-Profil“ unter **Einstellungen** auf **Benutzer-Realmessungen**.
-   4. Klicken Sie auf **Schlüssel generieren**, um einen neuen RUM-Schlüssel zu generieren.
+1. Melden Sie sich im Browser beim Azure-Portal an. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für eine kostenlose einmonatige Testversion registrieren.
+2. Suchen Sie über die Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+3. Klicken Sie auf der Seite „Traffic Manager-Profil“ unter **Einstellungen** auf **Benutzer-Realmessungen**.
+4. Klicken Sie auf **Schlüssel generieren**, um einen neuen RUM-Schlüssel zu generieren.
         
    ![Erstellen eines Schlüssels für Benutzer-Realmessungen (RUM)](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **Abbildung 1: Erstellung eines Schlüssels für Benutzer-Realmessungen**
 
-   5.   Die Seite zeigt nun den generierten RUM Key und einen JavaScript-Codeausschnitt, der in Ihre HTML-Seite eingebettet werden muss.
+5. Die Seite zeigt nun den generierten RUM Key und einen JavaScript-Codeausschnitt, der in Ihre HTML-Seite eingebettet werden muss.
  
    ![JavaScript-Code für den Schlüssel für Benutzer-Realmessungen](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
    **Abbildung 2: Schlüssel für Benutzer-Realmessungen und JavaScript für Messung**
  
-   6. Klicken Sie auf die Schaltfläche **Kopieren**, um den RUM-Schlüssel zu kopieren. 
+6. Klicken Sie auf die Schaltfläche **Kopieren**, um den RUM-Schlüssel zu kopieren. 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Schritt 2: Instrumentieren Ihrer App mit dem RUM-Paket im Mobile Center SDK
 
@@ -72,7 +72,7 @@ Um Benutzer-Realmessungen zu verwenden, führen Sie die folgenden Schritte aus:
     Fügen Sie der Datei **app/build.gradle** die folgenden Zeilen hinzu:
 
     ```groovy
-    dependencies {   
+    dependencies {
      
         def mobileCenterSdkVersion = '0.12.1-16+3fe5b08'
         compile "com.microsoft.azure.mobile:mobile-center-rum:${mobileCenterSdkVersion}"

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8326e7bc4b03c8e2828e74e13fc00d6a63f78e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35c268b5952f2276dc718df955c125c59c51d356
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211018"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014709"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers für IIS-Web-Apps
 
@@ -30,7 +30,7 @@ Um eine IIS-Webanwendung zu sichern, die die formularbasierte Authentifizierung 
 1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol „IIS-Authentifizierung“.
 2. Klicken Sie auf die Registerkarte **Formularbasiert**.
 3. Klicken Sie auf **Hinzufügen**.
-4. Geben Sie zur automatischen Erkennung von Benutzername, Kennwort und Domänenvariablen im Dialogfeld „Formularbasierte Website automatisch konfigurieren“ die Anmelde-URL (beispielsweise https://localhost/contoso/auth/login.aspx) ein, und klicken Sie auf **OK**.
+4. Geben Sie zur automatischen Erkennung von Benutzername, Kennwort und Domänenvariablen im Dialogfeld „Formularbasierte Website automatisch konfigurieren“ die Anmelde-URL (beispielsweise `https://localhost/contoso/auth/login.aspx`) ein, und klicken Sie auf **OK**.
 5. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die Multi-Factor Authentication verwenden. Wenn eine große Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der Multi-Factor Authentication ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 6. Wenn die Seitenvariablen nicht automatisch erkannt werden können, klicken Sie im Dialogfeld „Formularbasierte Website automatisch konfigurieren“ auf **Manuell angeben**.
 7. Geben Sie im Dialogfeld "Formularbasierte Website hinzufügen" im Feld "Sende-URL" die URL der Anmeldeseite und optional einen Anwendungsnamen ein. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
@@ -39,9 +39,9 @@ Um eine IIS-Webanwendung zu sichern, die die formularbasierte Authentifizierung 
 10. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden bzw. werden und die Multi-Factor Authentication verwenden. Wenn eine große Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der Multi-Factor Authentication ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 11. Klicken Sie auf **Erweitert**, um die erweiterten Einstellungen anzuzeigen, z.B.:
 
-  - Sie können eine Datei für eine benutzerdefinierte Verweigerungsseite auswählen.
-  - Sie können erfolgreiche Authentifizierungen für die Website mithilfe von Cookies für einen bestimmten Zeitraum zwischenspeichern.
-  - Geben Sie an, ob die Authentifizierung der primären Anmeldeinformationen für eine Windows-Domäne, ein LDAP-Verzeichnis oder einen RADIUS-Server durchgeführt werden soll.
+    - Sie können eine Datei für eine benutzerdefinierte Verweigerungsseite auswählen.
+    - Sie können erfolgreiche Authentifizierungen für die Website mithilfe von Cookies für einen bestimmten Zeitraum zwischenspeichern.
+    - Geben Sie an, ob die Authentifizierung der primären Anmeldeinformationen für eine Windows-Domäne, ein LDAP-Verzeichnis oder einen RADIUS-Server durchgeführt werden soll.
 
 12. Klicken Sie auf **OK**, um zum Dialogfeld „Formularbasierte Website hinzufügen“ zurückzukehren.
 13. Klicken Sie auf **OK**.
@@ -53,7 +53,7 @@ Um eine IIS-Webanwendung zu sichern, für die die integrierte Windows-HTTP-Authe
 1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol „IIS-Authentifizierung“.
 2. Klicken Sie auf die Registerkarte **HTTP**.
 3. Klicken Sie auf **Hinzufügen**.
-4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ im Feld „Basis-URL“ die URL für die Website ein, auf der die HTTP-Authentifizierung erfolgt (beispielsweise http://localhost/owa), und geben Sie optional einen Anwendungsnamen an. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
+4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ die URL für die Website ein, auf der die HTTP-Authentifizierung erfolgt (beispielsweise <http://localhost/owa>), und geben Sie optional einen Anwendungsnamen an. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
 5. Passen Sie die Leerlaufzeitüberschreitung und die maximale Sitzungsdauer an, wenn die Standardwerte nicht ausreichend sind.
 6. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die Multi-Factor Authentication verwenden. Wenn eine große Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der Multi-Factor Authentication ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 7. Aktivieren Sie bei Bedarf das Kontrollkästchen für das **Cookie zur** Zwischenspeicherung.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 1d092f03013d98106138f35734d960567121a5bf
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692719"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881854"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Erweiterungen und Features für virtuelle Azure-Computer
 Erweiterungen für virtuelle Azure-Computer sind kleine Anwendungen, mit denen die Erfüllung von Aufgaben zur Konfiguration und Automatisierung nach der Bereitstellung auf virtuellen Azure-Computern ermöglicht wird. Sie können vorhandene Bilder verwenden und diese dann als Teil Ihrer Bereitstellungen anpassen, sodass Sie keine benutzerdefinierten Images mehr erstellen müssen.

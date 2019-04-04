@@ -1,21 +1,21 @@
 ---
-title: Verwenden des Azure Machine Learning Studio-Webdiensteportals
+title: Verwalten von Webdiensten
 titleSuffix: Azure Machine Learning Studio
-description: Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
+description: Verwalten Sie Ihre neuen und klassischen Webdienste mit maschinellem Lernen im Microsoft Azure Machine Learning Web Services-Portal. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 1bf9889f601795c1ba70abdd17f6e8c9a01785f1
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838373"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Studio Web Services-Portal
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
@@ -29,7 +29,7 @@ Das Machine Learning Web Services-Portal bietet diese Möglichkeiten:
 * Hinzufügen und Löschen von Endpunkten (nur klassisch)
 
 >[!NOTE]
->Klassische Webdienste können Sie auch in [Machine Learning Studio](http://studio.azureml.net) auf der Registerkarte **Webdienste** verwalten.
+>Klassische Webdienste können Sie auch in [Machine Learning Studio](https://studio.azureml.net) auf der Registerkarte **Webdienste** verwalten.
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Berechtigungen zum Verwalten von neuen Resource Manager-basierten Webdiensten
 

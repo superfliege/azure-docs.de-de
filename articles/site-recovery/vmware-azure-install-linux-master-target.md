@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099051"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -62,7 +62,7 @@ Folgende Ubuntu-Kernels werden unterstützt:
 
 Führen Sie die folgenden Schritte aus, um das 64-Bit-Betriebssystem Ubuntu 16.04.2 zu installieren:
 
-1.   Rufen Sie den [Downloadlink](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso) auf, wählen Sie den nächstgelegenen Spiegel aus, und laden Sie ein ISO-Image mit Ubuntu 16.04.2 minimal 64 Bit herunter.
+1.   Rufen Sie den [Downloadlink](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso) auf, wählen Sie den nächstgelegenen Spiegel aus, und laden Sie ein ISO-Image mit Ubuntu 16.04.2 (minimal 64 Bit) herunter.
 Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit in das DVD-Laufwerk ein, und starten Sie das System.
 
 1.  Wählen Sie **English** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
@@ -168,15 +168,15 @@ Der Parameter **disk.EnableUUID = TRUE** muss aktiviert werden, um die ID für j
 
 5. Prüfen Sie, ob bereits eine Zeile mit **disk.EnableUUID** vorhanden ist.
 
-    - Wenn der Wert vorhanden ist und auf **False** festgelegt ist, ändern Sie den Wert in **True**. (Bei den Werten wird nicht zwischen Groß- und Kleinschreibung unterschieden.)
+   - Wenn der Wert vorhanden ist und auf **False** festgelegt ist, ändern Sie den Wert in **True**. (Bei den Werten wird nicht zwischen Groß- und Kleinschreibung unterschieden.)
 
-    - Wenn der Wert vorhanden und auf **True** festgelegt ist, wählen Sie **Cancel** (Abbrechen) aus.
+   - Wenn der Wert vorhanden und auf **True** festgelegt ist, wählen Sie **Cancel** (Abbrechen) aus.
 
-    - Ist der Wert nicht vorhanden, wählen Sie **Add Row** (Zeile hinzufügen) aus.
+   - Ist der Wert nicht vorhanden, wählen Sie **Add Row** (Zeile hinzufügen) aus.
 
-    - Fügen Sie in der Spalte „Name“ **disk.EnableUUID** hinzu, und legen Sie den Wert auf **TRUE** fest.
+   - Fügen Sie in der Spalte „Name“ **disk.EnableUUID** hinzu, und legen Sie den Wert auf **TRUE** fest.
 
-    ![Überprüfen, ob disk.EnableUUID bereits vorhanden ist](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Überprüfen, ob disk.EnableUUID bereits vorhanden ist](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Deaktivieren des Kernelupgrades
 
@@ -287,7 +287,6 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 2. Notieren Sie sich die IP-Adresse des Konfigurationsservers. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

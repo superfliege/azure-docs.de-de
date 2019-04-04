@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012260"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Blobspeicheranforderungen für Azure Data Box
 
@@ -53,7 +53,7 @@ Die folgenden Versionen von Azure Storage-Dienst-APIs werden mit Data Box-Blobsp
 |     Clientbibliothek     |     Unterstützte Version von Data Box-Blobspeicher     |     Link             |     Endpunktspezifikation         |
 |------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
 |    .NET                |    Von 6.2.0 bis 8.7.0                         |    NuGet-Paket: https://www.nuget.org/packages/WindowsAzure.Storage/ <br>GitHub-Release: https://github.com/Azure/azure-storage-net/releases                                                                      |    app.config-Datei                 |
-|    Java                |    Von 4.1.0 bis 6.1.0                          |    Maven-Paket: http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub-Release: https://github.com/Azure/azure-storage-java/releases                                                      |    Verbindungszeichenfolgen-Setup         |
+|    Java                |    Von 4.1.0 bis 6.1.0                          |    Maven-Paket: https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub-Release: https://github.com/Azure/azure-storage-java/releases                                                      |    Verbindungszeichenfolgen-Setup         |
 |    Node.js             |    Von 1.1.0 bis 2.7.0                          |    NPM-Link:   https://www.npmjs.com/package/azure-storage (Beispiel: Ausführen von „npm install azure-storage@2.7.0“)   <br>GitHub-Release: https://github.com/Azure/azure-storage-node/releases                            |    Dienstinstanzdeklaration    |
 |    C++                 |    Von 2.4.0 bis 3.1.0                          |    NuGet-Paket: https://www.nuget.org/packages/wastorage.v140/   <br>GitHub-Release: https://github.com/Azure/azure-storage-cpp/releases                                                                            |    Verbindungszeichenfolgen-Setup         |
 |    PHP                 |    Von 0.15.0 bis 1.0.0                         |    GitHub-Release: https://github.com/Azure/azure-storage-php/releases   <br>Installation über Composer (Details siehe unten)                                                                                                   |    Verbindungszeichenfolgen-Setup         |
@@ -69,7 +69,7 @@ Für Data Box-Blobspeicher sind bestimmte Clientbibliotheken vorhanden, und es g
 | Clientbibliothek     |Unterstützte Version von Data Box-Blobspeicher     | Link   |     Endpunktspezifikation      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    8.7.0                                           |    NuGet-Paket: https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>GitHub-Release: https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    app.config-Datei                 |
-|    Java                |    6.1.0                                           |    Maven-Paket: http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub-Release: https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Verbindungszeichenfolgen-Setup         |
+|    Java                |    6.1.0                                           |    Maven-Paket: https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub-Release: https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Verbindungszeichenfolgen-Setup         |
 |    Node.js             |    2.7.0                                           |    NPM-Link:   https://www.npmjs.com/package/azure-storage (Ausführen: npm install azure-storage@2.7.0)   <br>GitHub-Release: https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    Dienstinstanzdeklaration    |
 |    C++                 |    3.1.0                                           |    NuGet-Paket: https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>GitHub-Release: https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    Verbindungszeichenfolgen-Setup         |
 |    PHP                 |    1.0.0                                           |    GitHub-Release:<br>Allgemein: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Installation über Composer (Weitere Informationen finden Sie unten.)                                                                                                             |    Verbindungszeichenfolgen-Setup         |
@@ -96,7 +96,7 @@ Führen Sie „php composer.phar install“ aus.
 
 ### <a name="endpoint-declaration"></a>Endpunktdeklaration
 
-Ein Azure Data Box-Blobspeicher-Endpunkt besteht aus zwei Teilen: dem Namen einer Region und der Data Box-Domäne. Im Data Box Blob Storage SDK lautet der Standardendpunkt „<serial no. of the device>.microsoftdatabox.com“.  Weitere Informationen zu Blobdienstendpunkten finden Sie unter [Herstellen einer Verbindung über Data Box-Blobspeicher](data-box-deploy-copy-data-via-rest.md).
+Ein Azure Data Box-Blobspeicher-Endpunkt besteht aus zwei Teilen: dem Namen einer Region und der Data Box-Domäne. Im Data Box Blob Storage SDK lautet der Standardendpunkt „\<Seriennr. des Geräts>.microsoftdatabox.com“.  Weitere Informationen zu Blobdienstendpunkten finden Sie unter [Herstellen einer Verbindung über Data Box-Blobspeicher](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Beispiele
 

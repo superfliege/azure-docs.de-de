@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d8cea95fbfb76f1dd1891045309a35aa1d0a8ab0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446502"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099483"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
@@ -32,7 +32,7 @@ Mit API Management im internen Modus sind folgende Szenarien möglich:
 
 * APIs, die in Ihrem privaten Datencenter gehostet werden, können externen Dritten über Site-to-Site- oder Azure ExpressRoute-VPN-Verbindungen sicher zugänglich gemacht werden.
 * Das Verfügbarmachen von cloudbasierten und lokalen APIs über ein gemeinsames Gateway ermöglicht Hybrid Cloud-Szenarien.
-* APIs, die an mehreren geografischen Standorten gehostet werden, können mit einem einzelnen Gatewayendpunkt verwaltet werden. 
+* APIs, die an mehreren geografischen Standorten gehostet werden, können mit einem einzelnen Gatewayendpunkt verwaltet werden.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -47,7 +47,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 + **Eine API Management-Instanz.** Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
 
 ## <a name="enable-vpn"> </a>Einrichten von API Management in einem internen virtuellen Netzwerk
-Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem internen Lastenausgleich (Internal Load Balancer, ILB) gehostet.
+Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem [internen Lastenausgleich (klassisch)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) gehostet. Dies ist die einzige verfügbare Option und kann nicht geändert werden.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Aktivieren einer Verbindung mit einem virtuellen Netzwerk über das Azure-Portal
 
@@ -57,9 +57,9 @@ Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter eine
 
     ![Menü zum Einrichten einer Azure API Management-Instanz in einem internen virtuellen Netzwerk][api-management-using-internal-vnet-menu]
 
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
-Nach erfolgreicher Bereitstellung sollte die interne virtuelle IP-Adresse des Diensts auf dem Dashboard angezeigt werden.
+Nach erfolgreicher Bereitstellung sollten die **private** virtuelle IP-Adresse und die **öffentliche** virtuelle IP-Adresse Ihres API Management-Diensts auf dem Blatt „Übersicht“ angezeigt werden. Die **private** virtuelle IP-Adresse ist eine IP-Adresse mit Lastenausgleich in dem von API Management delegierten Subnetz, über die auf die Endpunkte `gateway`, `portal`, `management` und `scm` zugegriffen werden kann. Die **öffentliche** virtuelle IP-Adresse wird **nur** für den Datenverkehr auf Steuerungsebene an den Endpunkt `management` über Port 3443 verwendet. Sie kann über das [ApiManagement][ServiceTags]-Diensttag gesperrt werden.
 
 ![API Management-Dashboard mit konfiguriertem internem virtuellen Netzwerk][api-management-internal-vnet-dashboard]
 
@@ -67,11 +67,14 @@ Nach erfolgreicher Bereitstellung sollte die interne virtuelle IP-Adresse des Di
 > Die im Azure-Portal verfügbare Testkonsole funktioniert nicht bei **intern** bereitgestelltem VNET-Dienst, da der Gateway-URI nicht unter öffentlichem DNS registriert ist. Verwenden Sie stattdessen die im **Entwicklerportal** bereitgestellte Testkonsole.
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Aktivieren einer Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell-Cmdlets
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Verbindungen mit virtuellen Netzwerken können auch mithilfe von PowerShell-Cmdlets aktiviert werden.
 
-* Erstellen eines API Management-Diensts in einem virtuellen Netzwerk: Verwenden Sie das Cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement), um einen Azure API Management-Dienst in einem virtuellen Netzwerk zu erstellen und so zu konfigurieren, dass als Typ ein internes virtuelles Netzwerk verwendet wird.
+* Erstellen eines API Management-Diensts in einem virtuellen Netzwerk: Verwenden Sie das Cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement), um einen Azure API Management-Dienst in einem virtuellen Netzwerk zu erstellen und so zu konfigurieren, dass als Typ ein internes virtuelles Netzwerk verwendet wird.
 
-* Bereitstellen eines vorhandenen API Management-Diensts in einem virtuellen Netzwerk: Verwenden Sie das Cmdlet [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment), um einen vorhandenen API Management-Dienst in ein virtuelles Netzwerk zu verschieben und so zu konfigurieren, dass als Typ ein internes virtuelles Netzwerk verwendet wird.
+* Aktualisieren einer Bereitstellung eines API Management-Diensts in einem virtuellen Netzwerk: Verwenden Sie das Cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion), um einen vorhandenen API Management-Dienst in ein virtuelles Netzwerk zu verschieben und so zu konfigurieren, dass als Typ ein internes virtuelles Netzwerk verwendet wird.
 
 ## <a name="apim-dns-configuration"></a>DNS-Konfiguration
 Wenn sich API Management im Modus eines externen virtuellen Netzwerks befindet, wird DNS von Azure verwaltet. Beim Modus eines internen virtuellen Netzwerks müssen Sie das Routing selbst verwalten.
@@ -80,35 +83,36 @@ Wenn sich API Management im Modus eines externen virtuellen Netzwerks befindet, 
 > Der API Management-Dienst lauscht nicht auf von IP-Adressen stammende Anforderungen. Er reagiert nur auf Anforderungen für den Hostnamen, der für seine Dienstendpunkte konfiguriert ist. Zu diesen Endpunkten zählen das Gateway, das Azure-Portal und das Entwicklerportal, der Endpunkt für die direkte Verwaltung und Git.
 
 ### <a name="access-on-default-host-names"></a>Zugreifen über Standardhostnamen
-Wenn Sie beispielsweise einen API Management-Dienst namens „Contoso“ erstellen, werden standardmäßig die folgenden Dienstendpunkte konfiguriert:
+Wenn Sie beispielsweise einen API Management-Dienst namens „contosointernalvnet“ erstellen, werden standardmäßig die folgenden Dienstendpunkte konfiguriert:
 
-   * Gateway oder Proxy: contoso.azure-api.net
+   * Gateway oder Proxy: contosointernalvnet.azure-api.net
 
-   * Azure-Portal und Entwicklerportal: contoso.portal.azure-api.net
+   * Azure-Portal und Entwicklerportal: contosointernalvnet.portal.azure-api.net
 
-   * Endpunkt für die direkte Verwaltung: contoso.management.azure-api.net
+   * Endpunkt für die direkte Verwaltung: contosointernalvnet.management.azure-api.net
 
-   * Git: contoso.scm.azure-api.net
+   * Git: contosointernalvnet.scm.azure-api.net
 
-Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virtuellen Computer in einem Subnetz erstellen, das mit dem virtuellen Netzwerk verbunden ist, in dem API Management bereitgestellt wird. Wenn die interne virtuelle IP-Adresse für Ihren Dienst 10.0.0.5 lautet, können Sie die Hostdatei (% SystemDrive%\drivers\etc\hosts) wie folgt zuordnen:
+Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virtuellen Computer in einem Subnetz erstellen, das mit dem virtuellen Netzwerk verbunden ist, in dem API Management bereitgestellt wird. Wenn die interne virtuelle IP-Adresse für Ihren Dienst 10.1.0.5 lautet, können Sie die Hostdatei (%SystemDrive%\drivers\etc\hosts) wie folgt zuordnen:
 
-   * 10.0.0.5     contoso.azure-api.net
+   * 10.1.0.5     contosointernalvnet.azure-api.net
 
-   * 10.0.0.5     contoso.portal.azure-api.net
+   * 10.1.0.5     contosointernalvnet.portal.azure-api.net
 
-   * 10.0.0.5     contoso.management.azure-api.net
+   * 10.1.0.5     contosointernalvnet.management.azure-api.net
 
-   * 10.0.0.5     contoso.scm.azure-api.net
+   * 10.1.0.5     contosointernalvnet.scm.azure-api.net
 
-Anschließend können Sie über den virtuellen Computer, den Sie erstellt haben, auf alle Dienstendpunkte zugreifen. Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwenden, können Sie auch DNS-A-Einträge erstellen und auf diese Endpunkte von überall in Ihrem virtuellen Netzwerk zugreifen. 
+Anschließend können Sie über den virtuellen Computer, den Sie erstellt haben, auf alle Dienstendpunkte zugreifen.
+Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwenden, können Sie auch DNS-A-Einträge erstellen und auf diese Endpunkte von überall in Ihrem virtuellen Netzwerk zugreifen.
 
 ### <a name="access-on-custom-domain-names"></a>Zugreifen über benutzerdefinierte Domänennamen
 
-   1. Wenn Sie auf den API Management-Dienst nicht mit den Standardhostnamen zugreifen möchten, können Sie benutzerdefinierte Domänennamen für alle Dienstendpunkte einrichten, wie in der folgenden Abbildung zu sehen: 
+1. Wenn Sie auf den API Management-Dienst nicht mit den Standardhostnamen zugreifen möchten, können Sie benutzerdefinierte Domänennamen für alle Dienstendpunkte einrichten, wie in der folgenden Abbildung zu sehen:
 
    ![Einrichten einer benutzerdefinierten Domäne für API Management][api-management-custom-domain-name]
 
-   2. Anschließend können Sie A-Einträge auf Ihrem DNS-Server erstellen, um auf die Endpunkte zuzugreifen, auf die nur über das virtuelle Netzwerk zugegriffen werden kann.
+2. Anschließend können Sie A-Einträge auf Ihrem DNS-Server erstellen, um auf die Endpunkte zuzugreifen, auf die nur über das virtuelle Netzwerk zugegriffen werden kann.
 
 ## <a name="routing"> </a> Routing
 + Eine private virtuelle IP-Adresse mit Lastenausgleich aus dem Subnetzbereich wird reserviert und für den Zugriff auf die API Management-Dienstendpunkte aus dem VNet verwendet.
@@ -122,10 +126,12 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Azure Virtual Network – häufig gestellte Fragen](../virtual-network/virtual-networks-faq.md)
 * [Managing DNS Records](https://msdn.microsoft.com/library/bb727018.aspx) (Verwalten von DNS-Einträgen)
 
-[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
+[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
+
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags
 

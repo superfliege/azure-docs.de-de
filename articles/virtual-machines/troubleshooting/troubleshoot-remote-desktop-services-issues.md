@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215115"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003142"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Remotedesktopdienste für eine Azure-VM werden nicht gestartet
 
@@ -44,7 +44,7 @@ Wenn Sie versuchen, eine Verbindung mit einer VM herzustellen, beobachten Sie di
     **Aufgabenkategorie:** Keine</br>
     **Ebene:**         Error</br>
     **Schlüsselwörter:**      Klassisch</br>
-    **Benutzer:**          N/V</br>
+    **Benutzer:**          –</br>
     **Computer:**      vm.contoso.com</br>
     **Beschreibung:** Die Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
 
@@ -58,7 +58,7 @@ Dieses Problem tritt auf, weil die Remotedesktopdienste auf dem virtuellen Compu
 
 - Der TermService-Dienst ist auf **Deaktiviert** festgelegt. 
 - Der TermService-Dienst ist abgestürzt oder reagiert nicht. 
-- TermService startet nicht aufgrund einer falschen Konfiguration.
+- TermService kann aufgrund einer falschen Konfiguration nicht gestartet werden.
 
 ## <a name="solution"></a>Lösung
 
@@ -99,7 +99,8 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
 
     |  Error |  Vorschlag |
     |---|---|
-    |5 – ACCESS DENIED |Weitere Informationen finden Sie unter [TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Weitere Informationen finden Sie unter [TermService-Dienst ist deaktiviert](#termService-service-is-disabled).  |  
+    |5 – ACCESS DENIED |Weitere Informationen finden Sie unter [TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#termService-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Weitere Informationen finden Sie unter [TermService-Dienst ist deaktiviert](#termService-service-is-disabled).  |  
     |1058 – ERROR_SERVICE_DISABLED  |Weitere Informationen finden Sie unter [TermService-Dienst stürzt ab oder reagiert nicht](#termService-service-crashes-or-hangs).  |
     |1059 – ERROR_CIRCULAR_DEPENDENCY |[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.|
     |1067 – ERROR_PROCESS_ABORTED  |Weitere Informationen finden Sie unter [TermService-Dienst stürzt ab oder reagiert nicht](#termService-service-crashes-or-hangs).  |
@@ -108,7 +109,7 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
     |1070 – ERROR_SERVICE_START_HANG   | Weitere Informationen finden Sie unter [TermService-Dienst stürzt ab oder reagiert nicht](#termService-service-crashes-or-hangs). |
     |1077 – ERROR_SERVICE_NEVER_STARTED   | Weitere Informationen finden Sie unter [TermService-Dienst ist deaktiviert](#termService-service-is-disabled).  |
     |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben. |
-    |1753   |[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.   |   |5 – ACCESS DENIED |Weitere Informationen finden Sie unter [TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    |1753   |[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet
 
@@ -205,7 +206,7 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
 
 1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her. Stellen Sie sicher, dass der angefügte Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
-3.  Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Es wird angenommen, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie ihn durch den entsprechenden Wert in Ihrer VM. 
+3. Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Es wird angenommen, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie ihn durch den entsprechenden Wert in Ihrer VM. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

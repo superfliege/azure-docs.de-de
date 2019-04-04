@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed8159f38e2763cb897212ae4f51fecb7343a683
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854465"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315590"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdateien packen und für Azure Service Fabric bereitstellen. Informationen zum Erstellen und Bereitstellen eines einzelnen Service Fabric-Pakets finden Sie im Abschnitt [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
@@ -204,7 +204,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Nach der erfolgreichen Veröffentlichung der Anwendung im lokalen Cluster können Sie auf die Node.js-Anwendung über den Port zugreifen, den Sie in das Dienstmanifest der Node.js-Anwendung eingegeben haben (Beispiel: http://localhost:3000).
+Nach der erfolgreichen Veröffentlichung der Anwendung im lokalen Cluster können Sie auf die Node.js-Anwendung an dem Port zugreifen, den Sie in das Dienstmanifest der Node.js-Anwendung eingegeben haben (Beispiel: http:\//localhost:3000).
 
 In diesem Tutorial haben Sie gelernt, wie Sie zwei vorhandene Anwendungen leicht zu einer Service Fabric-Anwendung Packen können. Sie haben auch gelernt, wie Sie die Bereitstellung für Service Fabric durchführen, um von den Service Fabric-Features zu profitieren. Beispiele hierfür sind Hochverfügbarkeit und die Integration des Integritätssystems.
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden der dynamischen AES-Verschlüsselung in Azure Media Services | Microsoft-Dokumentation
+title: Verwenden von Azure Media Services zur Videoverschlüsselung mit AES-128 | Microsoft-Dokumentation
 description: Übermitteln Sie Inhalte, die mit 128-Bit-AES-Verschlüsselungsschlüsseln verschlüsselt wurden, mithilfe von Microsoft Azure Media Services. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. In diesem Thema werden das dynamische Verschlüsseln mit AES-128 und das Verwenden des Schlüsselübermittlungsdiensts behandelt.
 services: media-services
 documentationcenter: ''
@@ -11,23 +11,41 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 87d427bd6b4a58948e43c42d81337f7603659e5a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2216deb7a59dda2a7c3b99c55956ef8541925425
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991452"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877281"
 ---
-# <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
+# <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Tutorial: Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
 
-Mithilfe von Media Services können Sie HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming, die mit dem AES verschlüsselt sind, mithilfe von 128-Bit-Verschlüsselungsschlüsseln bereitstellen. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. Wenn ein Medienobjekt von Media Services verschlüsselt werden soll, ordnen Sie den Verschlüsselungsschlüssel zu StreamingLocator zu und konfigurieren außerdem die Richtlinie für den Inhaltsschlüssel. Wenn ein Datenstrom von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch mit AES zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
+Mithilfe von Media Services können Sie HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming, die mit dem AES verschlüsselt sind, mithilfe von 128-Bit-Verschlüsselungsschlüsseln bereitstellen. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. Wenn Ihr Video von Media Services dynamisch verschlüsselt werden soll, ordnen Sie den Verschlüsselungsschlüssel zu Streaminglocator zu und konfigurieren außerdem die Richtlinie für den Inhaltsschlüssel. Wenn ein Stream von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch mit AES-128 zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
 
-Der Artikel basiert auf dem Beispiel [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES). Im Beispiel wird veranschaulicht, wie eine Codierungstransformation erstellt wird, die eine integrierte Voreinstellung für die Adaptive Bitrate-Codierung verwendet und eine Datei direkt aus einer [HTTPS-Quell-URL](job-input-from-http-how-to.md) erfasst. Das Ausgabemedienobjekt wird dann mit der AES (ClearKey)-Verschlüsselung veröffentlicht. Die Ausgabe aus dem Beispiel ist eine URL für den Azure Media Player, einschließlich des DASH-Manifests und des AES-Token, die für die Wiedergabe des Inhalts erforderlich sind. Im Beispiel wird der Ablauf des JWT-Token auf 1 Stunde festgelegt. Sie können einen Browser öffnen und die resultierende URL einfügen, um die Azure Media Player-Demoseite mit der URL und dem bereits ausgefüllten Token (im Format ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```) zu starten.
+Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](content-protection-overview.md#streaming-protocols-and-encryption-types). Weitere Informationen finden Sie auch unter [Schützen mit DRM](protect-with-drm.md).
 
-> [!NOTE]
-> Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Die Ausgabe des Beispiels in diesem Artikel enthält eine URL zum Azure Media Player, eine Manifest-URL und das AES-Token, das für die Wiedergabe des Inhalts erforderlich ist. Im Beispiel wird der Ablauf des JWT-Token auf 1 Stunde festgelegt. Sie können einen Browser öffnen und die resultierende URL einfügen, um die Azure Media Player-Demoseite mit der URL und dem bereits ausgefüllten Token (im Format ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```) zu starten.
+
+Dieses Tutorial veranschaulicht folgende Vorgehensweisen:    
+
+> [!div class="checklist"]
+> * Herunterladen des im Artikel beschriebenen Beispiels [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES)
+> * Starten der Verwendung von Media Services-APIs mit dem .NET SDK
+> * Erstellen eines Ausgabemedienobjekts
+> * Erstellen einer Codierungstransformation
+> * Übermitteln eines Auftrags
+> * Warten auf den Abschluss des Auftrags
+> * Erstellen einer Richtlinie für Inhaltsschlüssel
+> * Konfigurieren der Richtlinie zur Verwendung von JWT-Tokeneinschränkungen 
+> * Erstellen eines Streaminglocators
+> * Konfigurieren des Streaminglocators zur Verschlüsselung des Videos mit AES (ClearKey)
+> * Abrufen eines Testtokens
+> * Erstellen einer Streaming-URL
+> * Bereinigen von Ressourcen
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +53,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 * Lesen Sie den Artikel [Übersicht über den Inhaltsschutz](content-protection-overview.md).
 * Installation von Visual Studio Code oder Visual Studio
-* Erstellen Sie ein Azure Media Services-Konto, wie in [dieser Schnellstartanleitung](create-account-cli-quickstart.md) beschrieben.
+* [Erstellen eines Media Services-Kontos](create-account-cli-quickstart.md)
 * Rufen Sie die zur Verwendung von Media Services-APIs erforderlichen Anmeldeinformationen ab (siehe [Zugreifen auf APIs](access-api-cli-how-to.md)).
 
 ## <a name="download-code"></a>Code herunterladen
@@ -87,27 +105,27 @@ Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, *
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-contentkeypolicy"></a>Erstellen einer ContentKeyPolicy
+## <a name="create-a-content-key-policy"></a>Erstellen einer Richtlinie für Inhaltsschlüssel
 
-Ein Inhaltsschlüssel ermöglicht den sicheren Zugriff auf Ihre Medienobjekte. Sie müssen eine **ContentKeyPolicy** erstellen, mit der konfiguriert wird, wie der Inhaltsschlüssel an Endclients übermittelt wird. Der Inhaltsschlüssel wird **StreamingLocator** zugeordnet. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. 
+Ein Inhaltsschlüssel ermöglicht den sicheren Zugriff auf Ihre Medienobjekte. Sie müssen eine **Richtlinie für den Inhaltsschlüssel** erstellen, mit der konfiguriert wird, wie der Inhaltsschlüssel an Endclients übermittelt wird. Der Inhaltsschlüssel wird **StreamingLocator** zugeordnet. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. 
 
 Wenn ein Datenstrom von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch zu verschlüsseln (in diesem Fall mit der AES-Verschlüsselung). Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="create-a-streaminglocator"></a>Erstellen eines Streaminglocators
+## <a name="create-a-streaming-locator"></a>Erstellen eines Streaminglocators
 
 Nachdem die Codierung abgeschlossen ist und die Richtlinie für den Inhaltsschlüssel festgelegt wurde, besteht der nächste Schritt darin, das Video im Ausgabeobjekt Clients für die Wiedergabe zur Verfügung zu stellen. Sie erreichen dies in zwei Schritten: 
 
-1. Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)
+1. Erstellen eines [Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators)
 2. Erstellen der Streaming-URLs, die von Clients verwendet werden können 
 
-Der Vorgang des Erstellens eines **StreamingLocator** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **StreamingLocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
+Der Vorgang des Erstellens eines **StreamingLocator** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **Streaminglocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
-Beim Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Tutorial verwenden wir eine der PredefinedStreamingPolicies, mit der Azure Media Services angewiesen wird, wie der Inhalt für das Streaming zu veröffentlichen ist. In diesem Beispiel wird die AES-Umschlagverschlüsselung angewandt (wird auch als ClearKey-Verschlüsselung bezeichnet, da keine DRM-Lizenz, sondern der Schlüssel über HTTPS an den Wiedergabeclient übermittelt wird).
+Beim Erstellen eines [Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten Wert für **StreamingPolicyName** angeben. In diesem Tutorial verwenden wir eine der PredefinedStreamingPolicies, mit der Azure Media Services angewiesen wird, wie der Inhalt für das Streaming zu veröffentlichen ist. In diesem Beispiel wird die AES-Umschlagverschlüsselung angewandt (wird auch als ClearKey-Verschlüsselung bezeichnet, da keine DRM-Lizenz, sondern der Schlüssel über HTTPS an den Wiedergabeclient übermittelt wird).
 
 > [!IMPORTANT]
-> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von StreamingPolicy-Einträgen auf. Sie sollten nicht für jeden StreamingLocator eine neue StreamingPolicy erstellen.
+> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Menge solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und -protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von StreamingPolicy-Einträgen auf. Sie sollten nicht für jeden Streaminglocator eine neue StreamingPolicy erstellen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
@@ -115,22 +133,32 @@ Beim Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/medi
         
 In diesem Tutorial wird für die Richtlinie für den Inhaltsschlüssel eine Tokeneinschränkung angegeben. Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)-Format (JWT). Dieses Format wird auch im Beispiel konfiguriert.
 
-In ContentKeyPolicy wird ContentKeyIdentifierClaim verwendet, d.h., das an den Schlüsselbereitstellungsdienst übergebene Token muss den Bezeichner von ContentKey enthalten. Im Beispiel geben wir beim Erstellen von StreamingLocator keinen Inhaltsschlüssel an, er wird im System zufällig erstellt. Um das Testtoken zu generieren, muss die ContentKeyId abgerufen werden, die in den Anspruch ContentKeyIdentifierClaim eingefügt werden muss.
+In **ContentKeyPolicy** wird „ContentKeyIdentifierClaim“ verwendet, d. h., das an den Schlüsselbereitstellungsdienst übergebene Token muss den Bezeichner des Inhaltsschlüssels enthalten. Im Beispiel geben wir beim Erstellen von Streaminglocator keinen Inhaltsschlüssel an, er wird im System zufällig erstellt. Um das Testtoken zu generieren, muss die ContentKeyId abgerufen werden, die in den Anspruch ContentKeyIdentifierClaim eingefügt werden muss.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>Erstellen einer DASH-Streaming-URL
 
-Nachdem der [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen. Um eine URL zu erstellen, müssen Sie den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)-Hostnamen und den **StreamingLocator**-Pfad miteinander verketten. In diesem Beispiel wird der *standardmäßige* **StreamingEndpoint** verwendet. Bei der erstmaligen Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **StreamingEndpoint** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
+Nachdem der [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen. Um eine URL zu erstellen, müssen Sie den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)-Hostnamen und den **Streaminglocator**-Pfad miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Bei der ersten Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **Streamingendpunkt** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Bereinigen von Ressourcen in Ihrem Media Services-Konto
 
-Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten (in der Regel werden Sie Transformationen wiederverwenden, und Sie werden StreamingLocators usw. persistent speichern). Wenn Sie Ihr Konto nach dem Experimentieren bereinigen möchten, sollten Sie die Ressourcen löschen, bei denen Sie nicht beabsichtigen, sie wiederzuverwenden.  Der folgende Code löscht beispielsweise Aufträge.
+Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten. (In der Regel werden Sie Transformationen wiederverwenden und Streaminglocators usw. dauerhaft speichern). Wenn Sie Ihr Konto nach dem Experimentieren bereinigen möchten, sollten Sie die Ressourcen löschen, bei denen Sie nicht beabsichtigen, sie wiederzuverwenden.  Der folgende Code löscht beispielsweise Aufträge.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. 
+
+Führen Sie den folgenden CLI-Befehl aus:
+
+```azurecli
+az group delete --name amsResourceGroup
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das [Schützen mit DRM](protect-with-drm.md).
+> [!div class="nextstepaction"]
+> [Schutz mit DRM](protect-with-drm.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820112"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445635"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -72,7 +72,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
    
    * **Clouddienst:** Wählen Sie **Einen neuen Clouddienst erstellen** aus.
    * **DNS-Name des Clouddiensts**: Dies ist der öffentliche DNS-Name des Clouddiensts, der dem virtuellen Computer zugeordnet ist. Der Standardname ist der Name, den Sie als Namen des virtuellen Computers eingegeben haben. In späteren Schritten dieses Themas erstellen Sie ein vertrauenswürdiges SSL-Zertifikat, und dann wird der DNS-Name als Wert für die Eigenschaft**Ausgestellt für**des Zertifikats verwendet.
-   * **Region/Affinitätsgruppe/Virtuelles Netzwerk**:  Wählen Sie die Region aus, die am nächsten zu den Endbenutzern liegt.
+   * **Region/Affinitätsgruppe/Virtuelles Netzwerk**: Wählen Sie die Ihren Endbenutzern am nächsten gelegene Region aus.
    * **Storage Account** (Speicherkonto): Verwenden Sie ein automatisch generiertes Speicherkonto.
    * **Verfügbarkeitsgruppe**: None (Keine):
    * **ENDPUNKTE:** Übernehmen Sie den **Remotedesktop**- und den **PowerShell**-Endpunkt, und fügen Sie dann abhängig von Ihrer Umgebung einen HTTP- oder HTTPS-Endpunkt hinzu.
@@ -149,7 +149,7 @@ In diesem Abschnitt führen Sie die Schritte aus, mit denen der virtuelle Comput
 
 Ausführlichere Schritte finden Sie im Abschnitt [Herstellen einer Verbindung mit dem virtuellen Computer und Starten des Konfigurations-Managers für Reporting Services](virtual-machines-windows-classic-ps-sql-bi.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager).
 
-**Hinweis zur Authentifizierung:**  Windows-Authentifizierung ist die empfohlene Authentifizierungsmethode und ist die standardmäßige Reporting Services-Authentifizierung. Auf Reporting Services können nur Benutzer zugreifen, die auf dem virtuellen Computer konfiguriert und Reporting Services-Rollen zugewiesen sind.
+**Hinweis zur Authentifizierung:** Windows-Authentifizierung ist die empfohlene Authentifizierungsmethode und ist die standardmäßige Reporting Services-Authentifizierung. Auf Reporting Services können nur Benutzer zugreifen, die auf dem virtuellen Computer konfiguriert und Reporting Services-Rollen zugewiesen sind.
 
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>Verwenden eines Skripts, um den Berichtsserver und HTTP zu konfigurieren
 Wenn Sie das Windows PowerShell-Skript verwenden möchten, um den Berichtsserver zu konfigurieren, führen Sie die folgenden Schritte aus. Die Konfiguration umfasst HTTP, nicht HTTPS:
@@ -505,7 +505,7 @@ Wenn Sie nicht das PowerShell-Skript ausführen möchten, um den Berichtsserver 
 5. Klicken Sie im linken Bereich auf **Webdienst-URL**.
 6. Standardmäßig ist Reporting Services für den HTTP-Port 80 mit der IP-Einstellung „Alle zugewiesenen“ konfiguriert. So fügen Sie HTTPS hinzu:
    
-   1. Wählen Sie in **SSL-Zertifikat** das Zertifikat aus, das Sie verwenden möchten, z.B. [VM-Name].cloudapp.net. Wenn keine Zertifikate aufgelistet werden, lesen Sie den Abschnitt **Schritt 2:  Erstellen eines Serverzertifikats**. Dort finden Sie Informationen dazu, wie das Zertifikat auf dem virtuellen Computer installiert und als vertrauenswürdig eingestuft wird.
+   1. Wählen Sie in **SSL-Zertifikat** das Zertifikat aus, das Sie verwenden möchten, z.B. [VM-Name].cloudapp.net. Wenn keine Zertifikate aufgelistet werden, lesen Sie den Abschnitt **Schritt2: Erstellen eines Serverzertifikats**. Dort finden Sie Informationen dazu, wie das Zertifikat auf dem virtuellen Computer installiert und als vertrauenswürdig eingestuft wird.
    2. Wählen Sie unter **SSL-Port**die Portnummer „443“ aus. Wenn Sie den privaten HTTPS-Endpunkt auf dem virtuellen Computer mit einem anderen Port konfiguriert haben, verwenden Sie diesen Wert hier.
    3. Klicken Sie auf **Übernehmen** , und warten Sie, bis der Vorgang abgeschlossen.
 7. Klicken Sie im linken Bereich auf **Datenbank**.
@@ -573,24 +573,24 @@ Nach dem Konfigurieren und Überprüfen des Berichtsservers besteht eine der üb
 ## <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>So erstellen Sie Berichte auf dem virtuellen Azure-Computer und veröffentlichen diese dort
 In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorhandene Berichte von einem lokalen Computer auf dem Berichtsserver veröffentlicht werden können, der auf dem virtuellen Microsoft Azure-Computer gehostet wird:
 
-* **RS.exe-Skript**:  Verwenden Sie das RS.exe-Skript, um Berichtselemente von Ihrem sowie einen vorhandenen Berichtsserver auf Ihren virtuellen Microsoft Azure-Computer zu kopieren. Weitere Informationen finden Sie im Abschnitt „Einheitlicher Modus zu einheitlichem Modus – Virtueller Microsoft Azure-Computer“ in [Reporting Services-Beispielskript rs.exe zum Migrieren von Inhalten zwischen Berichtsservern](https://msdn.microsoft.com/library/dn531017.aspx).
-* **Berichts-Generator**:  Der virtuelle Computer umfasst die ClickOnce-Version von Microsoft SQL Server-Berichts-Generator. So starten Sie den Berichts-Generator das erste Mal auf dem virtuellen Computer:
+* **RS.exe-Skript**: Verwenden Sie das RS.exe-Skript, um Berichtselemente von Ihrem sowie einen vorhandenen Berichtsserver auf Ihren virtuellen Microsoft Azure-Computer zu kopieren. Weitere Informationen finden Sie im Abschnitt „Einheitlicher Modus zu einheitlichem Modus – Virtueller Microsoft Azure-Computer“ in [Reporting Services-Beispielskript rs.exe zum Migrieren von Inhalten zwischen Berichtsservern](https://msdn.microsoft.com/library/dn531017.aspx).
+* **Berichts-Generator**: Der virtuelle Computer umfasst die ClickOnce-Version von Microsoft SQL Server-Berichts-Generator. So starten Sie den Berichts-Generator das erste Mal auf dem virtuellen Computer:
   
   1. Starten Sie Ihren Browser mit Administratorrechten.
   2. Navigieren Sie zum Berichts-Manager auf dem virtuellen Computer, und klicken Sie im Menüband auf **Berichts-Generator** .
      
      Weitere Informationen finden Sie unter [Installation, Deinstallation und Unterstützung des Berichts-Generators](https://technet.microsoft.com/library/dd207038.aspx).
-* **SQL Server Data Tools:  virtueller Computer:**   Wenn Sie den virtuellen Computer mit SQL Server 2012 erstellt haben, ist SQL Server Data Tools auf dem virtuellen Computer installiert. Mit dieser Sammlung von Tools können **Berichtsserverprojekte** und Berichte auf dem virtuellen Computer erstellt werden. SQL Server Data Tools kann die Berichte im Berichtsserver auf dem virtuellen Computer veröffentlichen.
+* **SQL Server Data Tools: VM**:  Wenn Sie den virtuellen Computer mit SQL Server 2012 erstellt haben, ist SQL Server Data Tools auf dem virtuellen Computer installiert. Mit dieser Sammlung von Tools können **Berichtsserverprojekte** und Berichte auf dem virtuellen Computer erstellt werden. SQL Server Data Tools kann die Berichte im Berichtsserver auf dem virtuellen Computer veröffentlichen.
   
     Wenn Sie den virtuellen Computer mit SQLServer 2014 erstellt haben, können Sie SQL Server Data Tools - Business Intelligence für Visual Studio installieren. Weitere Informationen finden Sie unter 
   
   * [Microsoft SQL Server Data Tools - Business Intelligence für Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence für Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
   * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
-* **SQL Server Data Tools:  Remote**:   Erstellen Sie auf Ihrem lokalen Computer in SQL Server Data Tools ein Reporting Services-Projekt, das Reporting Services-Berichte enthält. Konfigurieren Sie das Projekt so, dass es eine Verbindung mit dem Webdienst-URL herstellt.
+* **SQL Server Data Tools: Remote**:  Erstellen Sie auf Ihrem lokalen Computer in SQL Server Data Tools ein Reporting Services-Projekt, das Reporting Services-Berichte enthält. Konfigurieren Sie das Projekt so, dass es eine Verbindung mit dem Webdienst-URL herstellt.
   
     ![SSDT-Projekteigenschaften für SSRS-Projekt](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
-* **Skript verwenden**:  Verwenden Sie ein Skript, um Berichtsserverinhalte zu kopieren. Weitere Informationen finden Sie unter [Reporting Services-Beispielskript rs.exe zum Migrieren von Inhalten zwischen Berichtsservern](https://msdn.microsoft.com/library/dn531017.aspx).
+* **Skript verwenden**: Verwenden Sie ein Skript, um Berichtsserverinhalte zu kopieren. Weitere Informationen finden Sie unter [Reporting Services-Beispielskript rs.exe zum Migrieren von Inhalten zwischen Berichtsservern](https://msdn.microsoft.com/library/dn531017.aspx).
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>Minimieren der Kosten, wenn Sie den virtuellen Computer nicht verwenden
 > [!NOTE]

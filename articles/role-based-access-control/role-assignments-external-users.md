@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012028"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Verwalten des Zugriffs auf Azure-Ressourcen für externe Benutzer mit RBAC
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Die rollenbasierte Zugriffssteuerung bietet Flexibilität: Sie können ein Azure-Abonnement besitzen, das vom Administratorkonto (Dienstadministratorrolle auf Abonnementebene) verwaltet wird, und mehrere Benutzer dazu einladen, im gleichen Abonnement zu arbeiten, ohne dass diese über Administratorrechte für das Konto verfügen.
 
 > [!NOTE]
-> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das Office 365 Admin Center bereitgestellt wurden, sind für die Verwendung von RBAC nicht geeignet.
+> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das Microsoft 365 Admin Center bereitgestellt wurden, sind für die Verwendung von RBAC nicht geeignet.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Zuweisen von RBAC-Rollen für den Abonnementbereich
 

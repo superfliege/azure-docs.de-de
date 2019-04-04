@@ -3,7 +3,7 @@ title: Azure Security Center – Häufig gestellte Fragen (FAQ) | Microsoft Docs
 description: Dieses FAQ-Dokument beantwortet Fragen zu Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2018
-ms.author: rkarlin
-ms.openlocfilehash: 61dac6bea6878630c05339778c717f7818c1c662
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/19/2019
+ms.author: monhaber
+ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106646"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226894"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – Häufig gestellte Fragen 
 Hier werden häufig gestellte Fragen zu Azure Security Center beantwortet. Azure Security Center ist ein Dienst, der Sie aufgrund von größerer Transparenz und besserer Kontrolle der Sicherheit Ihrer Microsoft Azure-Ressourcen dabei unterstützt, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
@@ -42,7 +42,7 @@ Security Center wird in zwei Tarifen angeboten:
 
 Der **Free-Tarif** bietet einen Einblick in den Sicherheitszustand Ihrer Azure-Ressourcen, grundlegende Sicherheitsrichtlinien, Empfehlungen zur Sicherheit und die Integration in Sicherheitsprodukte und -Dienste von Partnern.
 
-Mit dem **Standard-Tarif** werden erweiterte Funktionen zur Bedrohungserkennung hinzugefügt, darunter Informationen zu Bedrohungen, Verhaltensanalysen, Erkennung von Anomalien, Sicherheitsincidents und Berichte zur Zuordnung von Bedrohungen. Sie können eine Standard-Testversion ohne Tarif starten. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der Sicherheitsrichtlinie [Tarif](https://docs.microsoft.com/azure/security-center/security-center-pricing) aus. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
+Mit dem **Standard-Tarif** werden erweiterte Funktionen zur Bedrohungserkennung hinzugefügt, darunter Informationen zu Bedrohungen, Verhaltensanalysen, Erkennung von Anomalien, Sicherheitsincidents und Berichte zur Zuordnung von Bedrohungen. Sie können eine kostenlose Testversion für den Standard-Tarif starten. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der Sicherheitsrichtlinie [Tarif](https://docs.microsoft.com/azure/security-center/security-center-pricing) aus. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="permissions"></a>Berechtigungen
 Azure Security Center verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md). Diese stellt [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
@@ -52,10 +52,10 @@ Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsp
 Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Permissions in Azure Security Center](security-center-permissions.md) (Berechtigungen in Azure Security Center).
 
 ## <a name="data-collection-agents-and-workspaces"></a>Datensammlung, Agents und Arbeitsbereiche
-Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich.
+Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen (VMSS), IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich.
 
-### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Werden mir die vom Security Center erstellten Arbeitsbereiche im Rahmen von Log Analytics in Rechnung gestellt?
-Nein. Vom Security Center erstellte Arbeitsbereiche sind zwar für die knotenbasierte Abrechnung von Log Analytics konfiguriert, es fallen jedoch keine Log Analytics-Kosten an. Die Abrechnung von Security Center basiert immer auf Ihrer Security Center-Sicherheitsrichtlinie und den installierten Lösungen in einem Arbeitsbereich:
+### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Werden mir die Azure Monitor-Protokolle auf den von Security Center erstellten Arbeitsbereiche in Rechnung gestellt?
+ Nein. Von Security Center erstellte Arbeitsbereiche sind zwar für die knotenbasierte Abrechnung von Azure Monitor-Protokollen konfiguriert, es fallen jedoch keine Kosten für Azure Monitor-Protokolle an. Die Abrechnung von Security Center basiert immer auf Ihrer Security Center-Sicherheitsrichtlinie und den installierten Lösungen in einem Arbeitsbereich:
 
 - **Free-Tarif**: Security Center aktiviert die Lösung „SecurityCenterFree“ im Standardarbeitsbereich. Für den Free-Tarif entstehen keine Kosten.
 - **Standard-Tarif**: Security Center aktiviert die Lösung „Security“ im Standardarbeitsbereich.
@@ -63,16 +63,18 @@ Nein. Vom Security Center erstellte Arbeitsbereiche sind zwar für die knotenbas
 Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/). Auf der Seite mit den Preisinformationen werden Änderungen an der Speicherung von Sicherheitsdaten und die anteilsmäßige Abrechnung ab Juni 2017 berücksichtigt.
 
 > [!NOTE]
-> Der Log Analytics-Tarif von Arbeitsbereichen, die vom Security Center erstellt wurden, hat keine Auswirkungen auf die Security Center-Abrechnung.
+> Der Protokollanalyse-Tarif von Arbeitsbereichen, die von Security Center erstellt wurden, hat keine Auswirkungen auf die Security Center-Abrechnung.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ### <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>Wann kommt eine VM für die automatische Bereitstellung der Microsoft Monitoring Agent-Installation infrage?
 Windows- oder Linux-IaaS-VMs kommen unter folgenden Voraussetzungen infrage:
 
 - Die Microsoft Monitoring Agent-Erweiterung ist derzeit nicht auf der VM installiert.
 - Die VM wird ausgeführt.
-- Der Windows- oder Linux-VM-Agent ist installiert.
+- Der [Azure-VM-Agent](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows) für Windows oder Linux ist installiert.
 - Die VM wird nicht als Appliance wie z.B. Webanwendungsfirewall oder Firewall der nächsten Generation verwendet.
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Kann ich die von Security Center erstellten Standardarbeitsbereiche löschen?
@@ -113,21 +115,23 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
    - Klicken Sie auf **Abbrechen**, um den Vorgang abzubrechen.
 
-### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Was passiert, wenn der Microsoft Monitoring Agent bereits als Erweiterung auf dem virtuellen Computer installiert wurde?
-Bereits vorhandene Verbindungen mit Benutzerarbeitsbereichen werden von Security Center nicht überschrieben. Security Center speichert Sicherheitsdaten des virtuellen Computers im bereits verbundenen Arbeitsbereich. Security Center aktualisiert die Erweiterungsversion für die Einbeziehung der Azure-Ressourcen-ID der VM zur Unterstützung der Security Center-Verwendung.
+### Was passiert, wenn der Microsoft Monitoring Agent bereits als Erweiterung auf dem virtuellen Computer installiert wurde?<a name="mmaextensioninstalled"></a>
+Wenn der Monitoring Agent als Erweiterung installiert ist, erlaubt die Konfiguration der Erweiterung auch Berichte an nur einen einzelnen Arbeitsbereich. Bereits vorhandene Verbindungen mit Benutzerarbeitsbereichen werden von Security Center nicht überschrieben. Security Center speichert Sicherheitsdaten eines virtuellen Computers in einem bereits verbundenen Arbeitsbereich, sofern darin die Lösung „security“ oder „securityFree“ installiert wurde. Security Center kann die Version der Erweiterung während dieses Vorgangs auf die neueste Version aktualisieren.
 
-### <a name="what-if-i-had-a-microsoft-monitoring-agent-installed-on-the-machine-but-not-as-an-extension"></a>Was passiert, wenn auf dem Computer ein Microsoft Monitoring Agent installiert ist, es sich dabei aber nicht um eine Erweiterung handelt?
-Wenn Microsoft Monitoring Agent direkt auf dem virtuellen Computer (also nicht als Azure-Erweiterung) installiert ist, wird Microsoft Monitoring Agent nicht installiert, und die Sicherheitsüberwachung ist eingeschränkt.
+Weitere Informationen finden Sie unter [Automatische Bereitstellung bei einer bereits vorhandenen Agent-Installation](security-center-enable-data-collection.md#preexisting).
 
-Weitere Informationen finden Sie im nächsten Abschnitt: [Was geschieht, wenn ein SCOM- oder OMS-Direkt-Agent bereits auf meiner VM installiert ist?](#scomomsinstalled)
 
-### Was geschieht, wenn auf meinem virtuellen Computer bereits ein SCOM- oder OMS-Direkt-Agent installiert ist?<a name="scomomsinstalled"></a>
-Security Center kann nicht im Voraus bestimmen, ob ein Agent installiert ist.  Security Center versucht, die Microsoft Monitoring Agent-Erweiterung zu installieren, und dies ist aufgrund des vorhandenen installierten Agent nicht möglich.  Dieser Fehler verhindert das Überschreiben der Agent-Verbindungseinstellungen für den Arbeitsbereich und vermeidet das Erstellen von Multihosting.
+### Was passiert, wenn auf dem Computer ein Microsoft Monitoring Agent direkt installiert wurde, es sich dabei aber nicht um eine Erweiterung (Direct Agent) handelt?<a name="directagentinstalled"></a>
+Wenn Microsoft Monitoring Agent direkt auf dem virtuellen Computer (also nicht als Azure-Erweiterung) installiert ist, installiert Security Center die Microsoft Monitoring Agent-Erweiterung und aktualisiert diese ggf. auf die neueste Version.
+Der installierte Agent erstellt seine Berichte weiterhin für die bereits konfigurierten Arbeitsbereiche und darüber hinaus für den in Security Center konfigurierten Arbeitsbereich (Multihosting wird unterstützt).
+Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der Standardarbeitsbereich von Security Center), müssen Sie darin die Lösung „security“ oder „securityFree“ installieren, damit Security Center mit der Verarbeitung von Ereignissen von VMs und Computern, die ihre Berichte in diesem Arbeitsbereich erstellen, beginnen kann.
 
-> [!NOTE]
-> Der Agent wird auf die neueste OMS-Agent-Version aktualisiert.  Dies gilt auch für SCOM-Benutzer.
->
->
+Wenn für vorhandene Computer in Abonnements, die vor dem 17.03.2019 in Security Center integriert wurden, ein vorhandener Agent erkannt wurde, wird die Microsoft Monitoring Agent-Erweiterung nicht installiert, und der Computer ist nicht betroffen. Für diese Computer wird die Empfehlung „Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben“ angezeigt, damit Sie die Installationsprobleme des Agents auf diesen Computern beheben können.
+
+ Weitere Informationen finden Sie im nächsten Abschnitt: [Was geschieht, wenn ein SCOM- oder OMS-Direkt-Agent bereits auf meiner VM installiert ist?](#scomomsinstalled)
+
+### Was geschieht, wenn auf meiner VM bereits ein SCOM-Agent installiert ist?<a name="scomomsinstalled"></a>
+Security Center installiert die Microsoft Monitoring Agent-Erweiterung zusätzlich zum vorhandenen SCOM. Der vorhandene SCOM-Agent sendet weiterhin normal Berichte an den SCOM-Server. Beachten Sie, dass der SCOM-Agent und Microsoft Monitoring Agent Laufzeitbibliotheken gemeinsam nutzen, die bei diesem Prozess auf die neueste Version aktualisiert werden.
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Was passiert, wenn ich diese Erweiterungen entferne?
 Wenn Sie die Microsoft Monitoring-Erweiterung entfernen, kann Security Center keine Sicherheitsdaten des virtuellen Computers erfassen, und einige Sicherheitsempfehlungen und Warnungen sind nicht verfügbar. Innerhalb von 24 Stunden erkennt Security Center, dass die Erweiterung auf dem virtuellen Computer fehlt, und installiert sie erneut.
@@ -217,7 +221,7 @@ Der Agent beansprucht eine äußerst geringe Menge von Systemressourcen und soll
 ### <a name="where-is-my-data-stored"></a>Wo werden meine Daten gespeichert?
 Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen Log Analytics-Arbeitsbereich, der mit Ihrem Abonnement verknüpft ist, oder in einem neuen Arbeitsbereich gespeichert. Weitere Informationen finden Sie unter [Datensicherheit](security-center-data-security.md).
 
-## Log Analytics-Bestandskunden<a name="existingloganalyticscust"></a>
+## Kunden von vorhandenen Azure Monitor-Protokollen<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Überschreibt Security Center bereits vorhandene Verbindungen zwischen virtuellen Computern und Arbeitsbereichen?
 Wenn der Microsoft Monitoring Agent bereits als Azure-Erweiterung auf einem virtuellen Computer installiert ist, wird die vorhandene Arbeitsbereichverbindung nicht überschrieben. Stattdessen verwendet Security Center den vorhandenen Arbeitsbereich.
@@ -274,6 +278,9 @@ Azure Security Center erfasst, analysiert und kombiniert automatisch Protokollda
 * Erweiterte Schadsoftware, die mithilfe der Windows-Fehlerberichterstattung erkannt wurde
 * Brute-Force-Angriffe gegen virtuelle Computer
 * Sicherheitswarnungen von integrierten Partnersicherheitslösungen wie Antischadsoftware oder Web Application Firewalls
+
+### Warum haben sich die Werte der Sicherheitsbewertung geändert? <a name="secure-score-faq"></a>
+Seit Februar 2019 hat Security Center die Bewertung von einigen Empfehlungen angepasst, um ihrem Schweregrad besser zu entsprechen. Aufgrund dieser Anpassung sind Änderungen bei allen Werten der Sicherheitsbewertung möglich.  Weitere Informationen zur Sicherheitsbewertung finden Sie unter [Berechnung der Sicherheitsbewertung](security-center-secure-score.md).
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Wo liegt bei der Bedrohungserkennung und Ausgabe von Warnungen der Unterschied zwischen Microsoft Security Response Center und Azure Security Center?
 Das Microsoft Security Response Center (MSRC) führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern. Wenn MSRC erkennt, dass eine Partei unrechtmäßig oder unbefugt auf Kundendaten zugreift oder dass der Kunde Azure nicht entsprechend den Bestimmungen für den Umgang mit vertraulichen Informationen (Acceptable Use) nutzt, wird der Kunde durch einen Manager für Sicherheitsincidents benachrichtigt. Die Benachrichtigung erfolgt in der Regel durch das Senden einer E-Mail an die im Azure Security Center angegebenen Sicherheitskontakte oder an den Besitzer des Azure-Abonnements, falls kein Sicherheitskontakt angegeben wurde.

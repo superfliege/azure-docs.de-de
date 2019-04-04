@@ -1,21 +1,21 @@
 ---
-title: Interpretieren von Modellergebnissen in Machine Learning Studio
+title: Interpretieren von Modellergebnissen
 titleSuffix: Azure Machine Learning Studio
 description: Auswahl des optimalen Parametersatzes für einen Algorithmus mit Verwendung und Visualisierung von Bewertungsmodellausgaben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456077"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877274"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio
 In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
@@ -52,7 +52,7 @@ Azure Machine Learning Studio bietet unterschiedliche Module für den Umgang mit
 ### <a name="two-class-classification"></a>Klassifizierung mit zwei Klassen
 **Beispielexperiment**
 
-Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in Azure Machine Learning Studio bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Datasets](http://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
+Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in Azure Machine Learning Studio bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
 
 ![Screenshot des Irisexperiments](./media/interpret-model-results/1.png)
 

@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 22cf9b66ecf7bbbe8ef226635e84f0aaf9d26b17
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0d7ca397cf45c4a67a914a8105deb9043adf46e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993927"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835274"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Hochladen von Dateien in ein Azure Media Services-Konto über Azure StorSimple  
 

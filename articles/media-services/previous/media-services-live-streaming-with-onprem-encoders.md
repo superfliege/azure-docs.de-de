@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188355"
 ---
-# <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Arbeiten mit Kanälen, die Livestreams mit Mehrfachbitrate von lokalen Encodern empfangen
 
 > [!NOTE]
 > Ab dem 12. Mai 2018 unterstützen Livekanäle nicht mehr das Erfassungsprotokoll zum RTP/MPEG-2-Transportdatenstrom. Migrieren Sie von Erfassungsprotokollen für RTP/MPEG-2 zu Erfassungsprotokollen für RTMP oder fragmentiertem MP4 (Smooth Streaming).
@@ -146,7 +146,7 @@ Mit den Kanälen ist ein Vorschauendpunkt (Vorschau-URL) verfügbar, mit dem Sie
 
 Wenn Sie einen Kanal erstellen, können Sie die Vorschau-URL abrufen. Der Kanal muss zum Abrufen der URL nicht den Status **Running** (Wird ausgeführt) aufweisen. Sobald der Kanal mit dem Erfassen von Daten beginnt, können Sie eine Vorschau des Streams anzeigen.
 
-Zurzeit kann die Vorschau des Datenstroms unabhängig vom angegebenen Eingabetyp nur im Format „Fragmentiertes MP4“ (Smooth Streaming) bereitgestellt werden. Sie können den Player unter [Smooth Streaming Health Monitor](http://playready.directtaps.net/smoothstreaming/) verwenden, um das Smooth Streaming zu testen. Außerdem können Sie einen Player verwenden, der im Azure-Portal gehostet wird, um Ihren Datenstrom anzuzeigen.
+Zurzeit kann die Vorschau des Datenstroms unabhängig vom angegebenen Eingabetyp nur im Format „Fragmentiertes MP4“ (Smooth Streaming) bereitgestellt werden. Sie können den Player unter [Smooth Streaming Health Monitor](https://playready.directtaps.net/smoothstreaming/) verwenden, um das Smooth Streaming zu testen. Außerdem können Sie einen Player verwenden, der im Azure-Portal gehostet wird, um Ihren Datenstrom anzuzeigen.
 
 #### <a name="allowed-ip-addresses"></a>Zulässige IP-Adressen
 Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit dem Vorschauendpunkt zugelassen sind. Wenn keine IP-Adressen angegeben werden, ist jede IP-Adresse zulässig. Eine zulässige IP-Adresse kann wie folgt angegeben werden:
@@ -185,7 +185,7 @@ Mögliche Werte für den aktuellen Status eines Kanals sind:
 In der folgenden Tabelle ist die Zuordnung der Kanalstatus zu den Abrechnungsmodi aufgeführt.
 
 | Kanalstatus | Portal-UI-Indikatoren | In Rechnung gestellt? |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Wird gestartet** |**Wird gestartet** |Nein (Übergangsstatus) |
 | **Wird ausgeführt** |**Bereit** (keine ausgeführten Programme)<p><p>oder<p>**Streaming** (mindestens ein ausgeführtes Programm) |Ja |
 | **Wird beendet** |**Wird beendet** |Nein (Übergangsstatus) |

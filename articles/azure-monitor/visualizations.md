@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 1daae81f0f642275e1ded20eb29f1e3145463db8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990171"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848783"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
@@ -34,7 +34,7 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 ### <a name="advantages"></a>Vorteile
 - Enge Integration in Azure. Visualisierungen aus mehreren Azure-Seiten einschließlich Metriken-Explorer, Log Analytics und Application Insights können an Dashboards geheftet werden.
 - Sowohl Metriken als auch Protokolle werden unterstützt.
-- Die Daten aus mehreren Quellen einschließlich der Ausgabe von [Metriken-Explorer](platform/metrics-charts.md) und [Protokollabfragen](log-query/log-query-overview.md) sowie [Karten](app/app-map.md) und [Verfügbarkeit]() in Application Insights werden kombiniert.
+- Die Daten aus mehreren Quellen einschließlich der Ausgabe von [Metriken-Explorer](platform/metrics-charts.md) und [Protokollabfragen](log-query/log-query-overview.md) sowie [Karten](app/app-map.md) und Verfügbarkeit in Application Insights werden kombiniert.
 - Option für persönliche oder freigegebene Dashboards. In [rollenbasierte Authentifizierung (Role Based Authentication, RBAC)](../role-based-access-control/overview.md) in Azure integriert.
 - Automatische Aktualisierung. Metriken werden abhängig vom Zeitbereich mindestens alle fünf Minuten aktualisiert. Protokolle werden jede Minute aktualisiert.
 - Dashboards mit parametrisierten Metriken mit Zeitstempel und benutzerdefinierten Parametern.
@@ -71,9 +71,8 @@ Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutz
 - Die Antwortgröße für Abfragen ist auf 8MB und die Abfrageausführungszeit auf 110 Sekunden beschränkt.
 
 
-
-## <a name="application-insights-workbooks"></a>Application Insights-Arbeitsmappen
-[Arbeitsmappen](../application-insights/app-insights-usage-workbooks.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
+## <a name="workbooks"></a>Arbeitsmappen
+[Arbeitsmappen](../azure-monitor/app/usage-workbooks.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
 
 ![Arbeitsmappe](media/visualizations/workbook.png)
 
@@ -122,7 +121,6 @@ Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutz
 - Unterstützt Parameter.
 
 ### <a name="limitations"></a>Einschränkungen
-- Unterstützt Metriken, aber keine Protokolle.
 - Keine Azure-Integration. Dashboards und Modelle können nicht über Azure Resource Manager verwaltet werden.
 - Kosten zur Unterstützung zusätzlicher Grafana-Infrastruktur oder zusätzliche Kosten für Grafana-Cloud.
 
@@ -139,9 +137,10 @@ Sie können auf Protokoll- und Metrikdaten in Azure Monitor mit einem beliebigen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](platform/data-collection.md).
+- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](platform/data-platform.md).
 - Weitere Informationen zum [Erstellen und Freigeben von Dashboards im Azure-Portal](../azure-portal/azure-portal-dashboards.md).
 - Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](platform/view-designer.md).
-- Weitere Informationen zum [Untersuchen und Freigeben von Nutzungsdaten mit interaktiven Arbeitsmappen in Application Insights](app/usage-workbooks.md).
-- Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](platform/powerbi.md).
-- Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](platform/grafana-plugin.md).
+- Weitere Informationen zu [Arbeitsmappen](../azure-monitor/app/usage-workbooks.md).
+- Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](../azure-monitor/platform/powerbi.md).
+- Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](../azure-monitor/platform/grafana-plugin.md).
+

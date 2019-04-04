@@ -3,7 +3,7 @@ title: Bereitstellen einer ausführbaren Gastanwendungsdatei in Azure Service Fa
 description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als ausführbare Gastanwendungsdatei erstellen, um diese in einem Service Fabric-Cluster bereitzustellen.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: mfussell
-ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: 5831a21225b80e613f713a516d2f000f8b33f096
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168412"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853153"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
 Beim Packen einer vorhandenen ausführbaren Datei als [ausführbare Gastanwendungsdatei](service-fabric-guest-executables-introduction.md) können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
@@ -73,7 +73,7 @@ Der Vorgang zum manuellen Packen einer ausführbaren Gastanwendungsdatei basiert
 -->
 
 ### <a name="create-the-package-directory-structure"></a>Erstellen der Verzeichnisstruktur des Pakets
-Sie können beginnen, indem Sie die Verzeichnisstruktur wie im vorherigen Abschnitt „Dateistruktur des Anwendungspakets“ beschrieben erstellen.
+Sie können zunächst die Verzeichnisstruktur wie in [Packen einer Anwendung](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps) beschrieben erstellen.
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Hinzufügen von Anwendungscode und Konfigurationsdateien
 Nachdem Sie die Verzeichnisstruktur erstellt haben, können Sie den Anwendungscode und die Konfigurationsdateien den Verzeichnissen „code“ und „config“ hinzufügen. In den Verzeichnissen „code“ und „config“ können Sie auch weitere Verzeichnisse bzw. Unterverzeichnisse erstellen.
@@ -96,7 +96,7 @@ Es folgt ein Beispiel für die Datei `ServiceManifest.xml` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ServiceManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceTypes>
       <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true"/>
    </ServiceTypes>
@@ -207,7 +207,7 @@ Nach der Konfiguration der Datei `Servicemanifest.xml` müssen Sie einige Änder
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="NodeAppType" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="NodeAppType" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="NodeApp" ServiceManifestVersion="1.0.0.0" />
    </ServiceManifestImport>

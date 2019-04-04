@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 972a538fab8a2aa84f6a12df48422abb40baac82
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 3b596e5bad8202d88ea06c7eee114bec1063a35f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58052005"
 ---
-# <a name="enabling-azure-ultra-ssd"></a>Aktivieren von Azure SSD Ultra
+# <a name="enabling-azure-ultra-ssds"></a>Aktivieren von Azure Ultra SSDs
 
 Azure SSD Ultra bietet hohen Durchsatz, hohe IOPS und konsistenten Datenträgerspeicher mit niedrigen Wartezeiten für Azure IaaS-VMs. Dieses neue Angebot bietet Spitzenleistung auf den gleichen Verfügbarkeitsebenen wie unsere vorhandenen Datenträgerangebote. Zu den weiteren Vorteilen von SSD Ultra gehört die Möglichkeit, die Datenträgerleistung in Abstimmung mit Ihren Workloads dynamisch zu ändern, ohne Ihre virtuellen Computer neu starten zu müssen. SSD Ultra eignet sich für datenintensive Workloads wie SAP HANA, führende Datenbanken und Workloads mit vielen Transaktionen.
 
@@ -44,7 +44,7 @@ Lesen Sie auch die Informationen dazu, wie Sie einen virtuellen Computer mit meh
 
 Im Folgenden werden die Änderungen an den neuen/geänderten Resource Manager-Vorlagen beschrieben: **apiVersion** für `Microsoft.Compute/virtualMachines` und `Microsoft.Compute/Disks` muss als `2018-06-01` (oder höher) festgelegt sein.
 
-Geben Sie die Datenträger-SKU „UltraSSD_LRS“, die Datenträgerkapazität, IOPS und Durchsatz in MBit/s an, um einen SSD Ultra-Datenträger zu erstellen. Im Folgenden finden Sie ein Beispiel, das einen Datenträger mit 1.024 GiB (GiB = 2^30 Byte), 80.000 IOPS und 1.200 MBit/s (MBit/s = 10^6 Byte/s) erstellt:
+Geben Sie die Datenträger-SKU „UltraSSD_LRS“, die Datenträgerkapazität, IOPS und Durchsatz in MBit/s an, um einen SSD Ultra-Datenträger zu erstellen. Im Folgenden finden Sie ein Beispiel, das einen Datenträger mit 1.024 GiB (GiB = 2^30 Bytes), 80.000 IOPS und 1.200 Mbit/s (Mbit/s = 10^6 Bytes/s) erstellt:
 
 ```json
 "properties": {  

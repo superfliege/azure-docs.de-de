@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6eb0ce9098b5cc5f66035851c6837e9e46fcf2df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074997"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-Befehle – CMD und PowerShell
 
@@ -247,8 +247,8 @@ Wenn Sie PowerShell in SAC ausführen möchten, geben Sie an einer CMD-Eingabeau
 
 `powershell <enter>`
 
->[!CAUTION]
-Entfernen Sie zunächst das PSReadLine-Modul aus der PowerShell-Sitzung, bevor Sie andere PowerShell-Befehle ausführen. Es gibt ein bekanntes Problem, durch das beim Einfügen von Text aus der Zwischenablage unter Umständen zusätzliche Zeichen eingefügt werden, wenn „PSReadLine“ in einer PowerShell-Sitzung in SAC ausgeführt wird.
+> [!CAUTION]
+> Entfernen Sie zunächst das PSReadLine-Modul aus der PowerShell-Sitzung, bevor Sie andere PowerShell-Befehle ausführen. Es gibt ein bekanntes Problem, durch das beim Einfügen von Text aus der Zwischenablage unter Umständen zusätzliche Zeichen eingefügt werden, wenn „PSReadLine“ in einer PowerShell-Sitzung in SAC ausgeführt wird.
 
 Überprüfen Sie zunächst, ob „PSReadLine“ geladen ist. Dies ist unter Windows Server 2016 sowie unter Windows 10 und höheren Versionen von Windows standardmäßig der Fall. Bei älteren Windows-Versionen ist das Modul nur vorhanden, wenn es manuell installiert wurde. 
 

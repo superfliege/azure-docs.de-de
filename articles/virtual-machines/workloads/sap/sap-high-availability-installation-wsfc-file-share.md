@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997361"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure
 
@@ -48,7 +48,7 @@ ms.locfileid: "34658654"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -203,7 +203,7 @@ Dieser Artikel beschreibt, wie ein hoch verfügbares SAP-System unter Azure mith
 
 Bevor Sie die Installation starten, lesen Sie die folgenden Artikel:
 
-* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure][sap-high-availability-guide-wsfc-file-share]
+* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe][sap-high-availability-guide-wsfc-file-share]
 
 * [Vorbereiten der Azure-Infrastruktur für SAP-HA mithilfe des Windows-Failoverclusters und Dateifreigabe für die SAP (A)SCS-Instanz][sap-high-availability-infrastructure-wsfc-file-share]
 
@@ -425,9 +425,9 @@ Import-Module C:\tmp\SAPScripts.psm1
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
 ```
 
-![Abbildung 1: SAPScripts.psm1-Ausgabe][sap-ha-guide-figure-8012]
+![Abbildung 1: SAPScripts.psm1 output][sap-ha-guide-figure-8012]
 
-_**Abbildung 1**: SAPScripts.psm1-Ausgabe_
+_**Abbildung 1**: SAPScripts.psm1 output_
 
 ## <a name="update-the-sidadm-user-environment-variable"></a>Aktualisieren der Benutzerumgebungsvariable „\<sid>adm“
 
@@ -516,7 +516,7 @@ C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profi
 
 ![Abbildung 2: Neuinstallation des SAP-Diensts][sap-ha-guide-figure-8013]
 
-_**Abbildung 2:** Neuinstallation des SAP-Diensts_
+_**Abbildung 2**: Neuinstallation des SAP-Diensts_
 
 Stellen Sie sicher, dass die Parameter richtig sind, und wählen Sie dann **Manuell** für **Starttyp** aus.
 

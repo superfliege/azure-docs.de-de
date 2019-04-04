@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: cdcf7f466e65cffd36bdcc816a9808ecac2ae242
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005422"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -38,7 +38,7 @@ Dieser Fehler tritt auf, wenn der Objektname für die Anmeldeinformationen ungü
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, wo der Fehler liegt:  
 
-1. Stellen Sie sicher, dass Sie keine Sonderzeichen eingegeben haben. Dazu zählt auch das **@**-Zeichen im Namen des Automation-Anmeldeinformationsobjekts, mit dem Sie die Verbindung zu Azure herstellen.  
+1. Stellen Sie sicher, dass Sie keine Sonderzeichen eingegeben haben. Dazu zählt auch das **\@**-Zeichen im Namen des Automation-Anmeldeinformationsobjekts, mit dem Sie die Verbindung zu Azure herstellen.  
 2. Überprüfen Sie, ob Sie den Benutzernamen und das Kennwort aus den Azure Automation-Anmeldeinformationen in Ihrem lokalen PowerShell ISE-Editor verwenden können. Sie können überprüfen, ob Benutzername und Kennwort korrekt sind, indem Sie die folgenden Cmdlets in der PowerShell ISE ausführen:  
 
    ```powershell
@@ -133,7 +133,7 @@ Informationen zum Verwenden eines Zertifikats mit den klassischen Azure-Bereitst
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Häufige Fehler beim Verwenden von Runbooks
 
-###<a name="child-runbook-object"></a>Das untergeordnete Runbook gibt Fehler zurück, wenn der Ausgabestream statt einfachen Datentypen Objekte enthält
+### <a name="child-runbook-object"></a>Das untergeordnete Runbook gibt Fehler zurück, wenn der Ausgabestream statt einfachen Datentypen Objekte enthält
 
 #### <a name="issue"></a>Problem
 

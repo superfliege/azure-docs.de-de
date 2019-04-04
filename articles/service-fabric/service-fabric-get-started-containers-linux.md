@@ -4,7 +4,7 @@ description: Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Servi
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 78bf30c01bc240d4fc7439ab14868bf7be90b17e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e8f209f1448119ed2e3dfd5d38d42699a4be01c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895823"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670862"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name* vergibt einen Namen für den ausgeführten Container (anstelle der Container-ID).
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie die am Port 4000 zurückgegebene IP-Adresse (beispielsweise http://localhost:4000) in einem Webbrowser. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. „http:\//localhost:4000“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
 
@@ -271,9 +271,9 @@ Verwenden Sie das in den Vorlagen bereitgestellte Installationsskript, https://g
 ./install.sh
 ```
 
-Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
+Navigieren Sie in einem Browser zu Service Fabric Explorer (http:\//localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie die am Port 4000 zurückgegebene IP-Adresse (beispielsweise http://localhost:4000) in einem Webbrowser. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. „http:\//localhost:4000“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
 

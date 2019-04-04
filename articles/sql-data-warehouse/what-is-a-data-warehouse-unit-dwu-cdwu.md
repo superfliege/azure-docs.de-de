@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 5f6e24dfa1b5c4ea4f0748af81104edfe88ceeae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447819"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099102"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse-Einheiten (DWUs) und Compute Data Warehouse-Einheiten (cDWUs)
 Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Data Warehouse Units, DWUs, cDWUs) sowie zum Ändern der Anzahl der Einheiten. 
@@ -68,7 +68,7 @@ Jede Leistungsstufe verwendet eine etwas andere Maßeinheit für ihre Data Wareh
 
 Sowohl DWUs als auch cDWUs unterstützen das zentrale Herunterskalieren und Hochskalieren sowie Computepausen, wenn Sie das Data Warehouse nicht nutzen müssen. Diese Vorgänge werden alle bei Bedarf ausgeführt. Gen2 verwendet einen lokalen datenträgerbasierten Cache auf den Computeknoten, um die Leistung zu verbessern. Wenn Sie das System skalieren oder anhalten, wird der Cache für ungültig erklärt. Daher ist eine „Aufwärmphase“ des Caches erforderlich, bevor eine optimale Leistung erzielt wird.  
 
-Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen linear. Gen2 bietet die beste Abfrageleistung und die höchste Skalierung, weist jedoch einen höheren Einstiegspreis auf. Sie ist für Unternehmen gedacht, die eine konstante Leistungsanforderung haben. Diese Systeme nutzen den Cache am meisten. 
+Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen linear. Gen2 bietet die beste Abfrageleistung und die höchste Skalierung. Diese Systeme nutzen den Cache am meisten.
 
 ### <a name="capacity-limits"></a>Kapazitätsgrenzen
 Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../sql-database/sql-database-what-is-a-dtu.md) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
@@ -124,10 +124,13 @@ So ändern Sie DWUs oder cDWUs:
 3. Klicken Sie auf **Speichern**. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zur Bestätigung auf **Ja** oder zum Abbrechen auf **Nein**.
 
 ### <a name="powershell"></a>PowerShell
-Um die DWUs oder cDWUs zu ändern, verwenden Sie das PowerShell-Cmdlet [Set AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“, die auf dem Server „MyServer“ gehostet wird, auf „DW1000“ festgelegt.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Um die DWUs oder cDWUs zu ändern, verwenden Sie das PowerShell-Cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“, die auf dem Server „MyServer“ gehostet wird, auf „DW1000“ festgelegt.
 
 ```Powershell
-Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
 
 Weitere Informationen finden Sie unter [PowerShell-Cmdlets und REST-APIs für SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md).
@@ -183,7 +186,7 @@ FROM      sys.databases
 ;
 ```
 
-3. Übermitteln der folgenden Abfrage zum Überprüfen des Betriebszustands
+1. Übermitteln der folgenden Abfrage zum Überprüfen des Betriebszustands
 
 ```sql
 SELECT    *

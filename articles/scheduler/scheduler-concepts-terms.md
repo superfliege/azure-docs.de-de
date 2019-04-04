@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887050"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
@@ -70,20 +70,20 @@ Allgemein betrachtet besteht ein Scheduler-Auftrag aus den folgenden grundlegend
 
 * Die Aktion, die beim Auslösen des Auftragszeitgebers ausgeführt wird
 * Optional: Die Zeit, zu der der Auftrag ausgeführt werden soll
-* Optional: Eine Angabe, wann und wie oft der Auftrag wiederholt werden soll
+* Optional: Die Angabe, wann und wie oft der Auftrag wiederholt werden soll
 * Optional: Eine Fehleraktion, die bei einem Fehler der primären Aktion ausgeführt wird
 
 Der Auftrag enthält auch vom System bereitgestellte Daten, beispielsweise die nächste geplante Ausführungszeit des Auftrags. Die Codedefinition des Auftrags ist ein Objekt im JSON-Format (JavaScript Object Notation), das folgende Elemente enthält:
 
 | Element | Erforderlich | BESCHREIBUNG | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | Nein  | Die Startzeit für den Auftrag mit einem Zeitzonenoffset im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601) | 
-| [**action**](#action) | JA | Die Details für die primäre Aktion (kann ein **errorAction**-Objekt enthalten) | 
+| [**startTime**](#start-time) | Nein  | Die Startzeit für den Auftrag mit einem Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**action**](#action) | Ja | Die Details für die primäre Aktion (kann ein **errorAction**-Objekt enthalten) | 
 | [**errorAction**](#error-action) | Nein  | Die Details für die sekundäre Aktion, die ausgeführt wird, wenn bei der primären Aktion ein Fehler auftritt |
 | [**recurrence**](#recurrence) | Nein  | Die Details für einen Serienauftrag (z. B. Häufigkeit und Intervall) | 
 | [**retryPolicy**](#retry-policy) | Nein  | Die Details zur Wiederholungshäufigkeit für eine Aktion | 
-| [**state**](#state) | JA | Die Details für den aktuellen Zustand des Auftrags |
-| [**status**](#status) | JA | Die Details für den aktuellen Status des Auftrags (wird vom Dienst gesteuert) |
+| [**state**](#state) | Ja | Die Details für den aktuellen Zustand des Auftrags |
+| [**status**](#status) | Ja | Die Details für den aktuellen Status des Auftrags (wird vom Dienst gesteuert) |
 ||||
 
 Das folgende Beispiel zeigt eine umfassende Auftragsdefinition für eine HTTP-Aktion mit ausführlicheren Elementdetails, die an späterer Stelle beschrieben werden: 
@@ -137,7 +137,7 @@ Das folgende Beispiel zeigt eine umfassende Auftragsdefinition für eine HTTP-Ak
 
 ## <a name="starttime"></a>startTime
 
-Im **startTime**-Objekt können Sie die Startzeit und einen Zeitzonenoffset im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601) angeben.
+Im **startTime**-Objekt können Sie die Startzeit und einen Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) angeben.
 
 <a name="action"></a>
 
@@ -239,7 +239,7 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 },
 ```
 
-| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein  | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
@@ -269,9 +269,9 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 },
 ```
 
-| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
-| **retryType** | JA | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
+| **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
 | **retryInterval** | Nein  | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 
 | **retryCount** | Nein  | 4 | Gibt die Anzahl von Wiederholungsversuchen an. Der Höchstwert ist 20. | 
 ||||

@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 584fca3df4fee24a4f1c7b93d5371c48be059f7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6d8326afa3bcf13234ab072a2cd2909a864738b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257934"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002853"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einer Azure-VM mit PowerShell
 > [!div class="op_single_selector"]
-> * [Klassisch: Benutzeroberfläche](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klassisch: UI](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Klassisch: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Bevor Sie beginnen, sollten Sie berücksichtigen, dass Sie diese Aufgabe nun im Azure Resource Manager-Modell durchführen können. Wir empfehlen das Azure Resource Manager-Modell für neue Bereitstellungen. Weitere Informationen finden Sie unter [SQL Server AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells.
+> Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells.
 
 Mithilfe von Azure Virtual Machines (VMs) können Datenbankadministratoren die Kosten für hochverfügbare SQL Server-Systeme senken. In diesem Tutorial erfahren Sie, wie Sie eine Verfügbarkeitsgruppe mithilfe von SQL Server AlwaysOn End-to-End in einer Azure-Umgebung implementieren können. Am Ende des Tutorials besteht Ihre SQL Server AlwaysOn-Lösung in Azure aus folgenden Elementen:
 
@@ -103,7 +103,7 @@ Dieses Tutorial soll Ihnen die erforderlichen Schritte für das Einrichten der o
 
     Die Konfigurationsdatei enthält das folgende XML-Dokument. Kurz gesagt gibt es das virtuelle Netzwerk namens **ContosoNET** in der Affinitätsgruppe **ContosoAG** an. Es verfügt über den Adressraum **10.10.0.0/16** sowie die zwei Subnetze, **10.10.1.0/24** und **10.10.2.0/24**, die das Front-End- bzw. Back-End-Subnetz darstellen. Im Front-End-Subnetz können Sie Clientanwendungen wie Microsoft SharePoint verwalten. In das Back-End-Subnetz platzieren Sie die SQL Server-VMs. Wenn Sie die zuvor genannten Variablen **$affinityGroupName** und **$virtualNetworkName** ändern, müssen Sie auch die entsprechenden Namen unten ändern.
 
-        <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+        <NetworkConfiguration xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
             <Dns />
             <VirtualNetworkSites>
@@ -382,13 +382,13 @@ In diesem Abschnitt müssen Sie die drei Server ändern, die Sie für die Failov
 
 * Alle Server: Sie müssen das Feature **Failoverclustering** installieren.
 * Alle Server: Sie müssen **CORP\Install** als **Computeradministrator** hinzufügen.
-* Nur „ContosoSQL1“ und „ContosoSQL2“: Sie müssen **CORP\Install** als **sysadmin**-Rolle in der Standarddatenbank hinzufügen.
-* Nur „ContosoSQL1“ und „ContosoSQL2“: Sie müssen**NT AUTHORITY\System** als Anmeldekonto mit den folgenden Berechtigungen hinzufügen:
+* Nur ContosoSQL1 und ContosoSQL2: Sie müssen **CORP\Install** als **sysadmin**-Rolle in der Standarddatenbank hinzufügen.
+* Nur ContosoSQL1 und ContosoSQL2: Sie müssen**NT AUTHORITY\System** als Anmeldekonto mit den folgenden Berechtigungen hinzufügen:
 
   * Beliebige Verfügbarkeitsgruppe ändern
   * SQL verbinden
   * Serverstatus anzeigen
-* Nur „ContosoSQL1“ und „ContosoSQL2“: Das **TCP** -Protokoll ist bereits auf der SQL Server-VM aktiviert. Jedoch müssen Sie die Firewall für den Remotezugriff auf SQL Server öffnen.
+* Nur ContosoSQL1 und ContosoSQL2: Das **TCP** -Protokoll ist bereits auf der SQL Server-VM aktiviert. Jedoch müssen Sie die Firewall für den Remotezugriff auf SQL Server öffnen.
 
 Nun können Sie loslegen. Führen Sie die nachfolgenden Schritte aus, beginnend mit **ContosoQuorum**:
 

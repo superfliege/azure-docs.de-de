@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 86ccd35d14df529a22bd4cdcd50566e7dc0c1375
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ecf19da59e91edd08953296d96ca68ca62f008e1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983712"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195352"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“
 
@@ -85,7 +85,7 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 Das Auflisten der ausführbaren Befehle oder das Anzeigen der Details zu einem Befehl erfordert die Berechtigung `Microsoft.Compute/locations/runCommands/read`, über die die integrierte [Leser](../../role-based-access-control/built-in-roles.md#reader)-Rolle und höhere Rollen verfügen.
 
-Für das Ausführen eines Befehls ist die Berechtigung `Microsoft.Compute/virtualMachines/runCommand/action` erforderlich, über die die [Mitwirkender](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)-Rolle und höhere Rollen verfügen.
+Für das Ausführen eines Befehls ist die Berechtigung `Microsoft.Compute/virtualMachines/runCommand/action` erforderlich, über die die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) und höhere Rollen verfügen.
 
 Um „Befehl ausführen“ zu verwenden, können Sie eine der [integrierten](../../role-based-access-control/built-in-roles.md) Rollen verwenden oder eine [benutzerdefinierte](../../role-based-access-control/custom-roles.md) Rolle erstellen.
 

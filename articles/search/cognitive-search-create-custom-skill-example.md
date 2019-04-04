@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c49a6320b7ba37297a7c1c0775aef2c2d8c6c868
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104342"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883626"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Beispiel: Erstellen eines benutzerdefinierten Skills mithilfe der Textübersetzungs-API
 

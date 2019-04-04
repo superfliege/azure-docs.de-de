@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 602b4303dd1940791c11b8b71ac6a27f0474a6d5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3163b33f69f4cc2d6cd4127253c7b6fadfddd6b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29733678"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994232"
 ---
 # <a name="azure-cdn-rules-engine-reference"></a>Referenz für die Azure CDN-Regel-Engine
 Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen und Features für die [Regel-Engine](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
@@ -58,7 +58,7 @@ Zeichen | BESCHREIBUNG
 ----------|------------
 \ | Ein umgekehrter Schrägstrich wird als Escapezeichen für die in dieser Tabelle angegebenen Zeichen verwendet. Direkt vor dem Sonderzeichen, das mit Escapezeichen versehen werden soll, muss ein umgekehrter Schrägstrich eingegeben werden.<br/>Es folgt als Beispiel die Syntax für das Escapezeichen eines Sternchens: `\*`
 % | Ein Prozentzeichen wird zum Angeben der URL-Codierung verwendet (z.B. `%20`).
-* | Ein Sternchen ist ein Platzhalter, der ein oder mehrere Zeichen darstellt.
+\* | Ein Sternchen ist ein Platzhalter, der ein oder mehrere Zeichen darstellt.
 Leerzeichen | Ein Leerzeichen gibt an, dass eine Übereinstimmungsbedingung entweder mit den angegebenen Werten oder Mustern erfüllt werden kann.
 'Wert' | Ein einfaches Anführungszeichen hat keine besondere Bedeutung. Jedoch wird eine Gruppe einfacher Anführungszeichen verwendet, um anzugeben, dass ein Wert als Literalwert behandelt werden soll. Es kann auf folgende Weisen verwendet werden:<br><br/>– Es ermöglicht das Erfüllen einer Übereinstimmungsbedingung, sobald der angegebene Wert mit einem beliebigen Teil des Vergleichswerts übereinstimmt.  Beispielsweise stimmt `'ma'` mit beliebigen der folgenden Zeichenfolgen überein: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />– Es ermöglicht die Angabe eines Sonderzeichens als Literalzeichen. Sie können z.B. ein literales Leerzeichen angeben, indem Sie ein Leerzeichen in einfache Anführungszeichen setzen (d.h. `' '` oder `'sample value'`).<br/>– Es ermöglicht die Angabe eines leeren Werts. Geben Sie einen leeren Wert an, indem Sie zwei einfache Anführungszeichen eingeben (d.h. '').<br /><br/>**Wichtig:**<br/>– Wenn der angegebene Wert keinen Platzhalter enthält, wird er automatisch als Literalwert behandelt, d.h., es müssen nicht zwei einfache Anführungszeichen angegeben werden.<br/>– Wenn ein umgekehrter Schrägstrich nicht als Escapezeichen für ein anderes Zeichen in dieser Tabelle fungiert, wird er ignoriert, sofern er zwischen zwei einfachen Anführungszeichen angegeben wird.<br/>– Eine andere Möglichkeit zum Angeben eines Sonderzeichens als Literalzeichen besteht darin, es mithilfe eines umgekehrten Schrägstrichs (d.h. `\`) mit einem Escapezeichen zu versehen.
 
@@ -69,8 +69,8 @@ Reguläre Ausdrücke definieren ein Muster, das in einem Textwert gesucht wird. 
 Sonderzeichen | BESCHREIBUNG
 ------------------|------------
 \ | Ein umgekehrter Schrägstrich als Escapezeichen für das nach diesem folgende Zeichen bewirkt, dass das Zeichen als Literalwert behandelt wird, anstatt seine Bedeutung als regulärer Ausdruck zu haben. Es folgt als Beispiel die Syntax für das Escapezeichen eines Sternchens: `\*`
-% | Die Bedeutung eines Prozentzeichens hängt von seiner Verwendung ab.<br/><br/> `%{HTTPVariable}`: Diese Syntax gibt eine HTTP-Variable an.<br/>`%{HTTPVariable%Pattern}`: Diese Syntax verwendet ein Prozentzeichen, um eine HTTP-Variable und ein Trennzeichen zu bestimmen.<br />`\%`: Wenn ein Prozentzeichen mit einem Escapezeichen versehen wird, kann es als Literalwert verwendet werden oder die URL-Codierung angeben (z.B. `\%20`).
-* | Ein Sternchen ermöglicht, dass für das vorherige Zeichen keine oder mehrere Übereinstimmungen gefunden werden. 
+% | Die Bedeutung eines Prozentzeichens hängt von seiner Verwendung ab.<br/><br/> `%{HTTPVariable}`: Diese Syntax gibt eine HTTP-Variable an.<br/>`%{HTTPVariable%Pattern}`: Diese Syntax verwendet ein Prozentzeichen, um eine HTTP-Variable und ein Trennzeichen anzugeben.<br />`\%`: Wenn ein Prozentzeichen mit einem Escapezeichen versehen wird, kann es als Literalwert verwendet werden oder die URL-Codierung angeben (z. B. `\%20`).
+\* | Ein Sternchen ermöglicht, dass für das vorherige Zeichen keine oder mehrere Übereinstimmungen gefunden werden. 
 Leerzeichen | Ein Leerzeichen wird in der Regel als Literalzeichen behandelt. 
 'Wert' | Einfache Anführungszeichen werden als Literalzeichen behandelt. Eine Gruppe einfacher Anführungszeichen hat keine besondere Bedeutung.
 

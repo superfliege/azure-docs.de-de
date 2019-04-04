@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09151dee2d458e2ff4fae8a8a3bc93fa466e4efc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167795"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096944"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -30,16 +30,16 @@ Dieses Dokument enthält Informationen zur Verwendung des mit dem SP-Lite-Profil
 
 Microsoft unterstützt diese Anmeldung als Integration von Microsoft-Clouddiensten, z.B. Office 365, in Ihren ordnungsgemäß konfigurierten, auf dem SAML 2.0-Profil basierten IdP. Es handelt sich bei SAML 2.0-Identitätsanbieter um Drittanbieterprodukte, und Microsoft bietet deshalb keinen Support für die Bereitstellung, Konfiguration und Problembehandlung sowie keine bewährten Methoden dafür. Sobald die Integration mit dem SAML 2.0-Identitätsanbieter ordnungsgemäß konfiguriert ist, kann dieser für die Konfiguration mithilfe des Microsoft-Verbindungsuntersuchungstools verwendet werden, wie weiter unten ausführlicher beschrieben wird. Weitere Informationen zu Ihrem auf dem SAML 2.0 SP-Lite-Profil basierten Identitätsanbieter erhalten Sie bei der Organisation, die ihn bereitgestellt hat.
 
->[!IMPORTANT]
->In diesem Anmeldeszenario mit SAML 2.0-Identitätsanbietern ist nur eine begrenzte Anzahl von Clients verfügbar, einschließlich:
-
->- Webbasierte Clients wie Outlook Web Access und SharePoint Online
-- E-Mail-Clients, die die Standardauthentifizierung sowie eine unterstützte Exchange-Zugriffsmethode wie IMAP, POP, Aktive Sync, MAPI usw. verwenden (der Endpunkt des erweiterten Clientprotokolls muss bereitgestellt werden), einschließlich:
-    - Microsoft Outlook 2010/Outlook 2013/Outlook 2016, Apple iPhone (verschiedene iOS-Versionen)
-    - Verschiedene Google Android-Geräte
-    - Windows Phone 7, Windows Phone 7.8 und Windows Phone 8.0
-    - E-Mail-Client für Windows 8 und Windows 8.1
-    - E-Mail-Client für Windows 10
+> [!IMPORTANT]
+> In diesem Anmeldeszenario mit SAML 2.0-Identitätsanbietern ist nur eine begrenzte Anzahl von Clients verfügbar, einschließlich:
+> 
+> - Webbasierte Clients wie Outlook Web Access und SharePoint Online
+> - E-Mail-Clients, die die Standardauthentifizierung sowie eine unterstützte Exchange-Zugriffsmethode wie IMAP, POP, Aktive Sync, MAPI usw. verwenden (der Endpunkt des erweiterten Clientprotokolls muss bereitgestellt werden), einschließlich:
+>     - Microsoft Outlook 2010/Outlook 2013/Outlook 2016, Apple iPhone (verschiedene iOS-Versionen)
+>     - Verschiedene Google Android-Geräte
+>     - Windows Phone 7, Windows Phone 7.8 und Windows Phone 8.0
+>     - E-Mail-Client für Windows 8 und Windows 8.1
+>     - E-Mail-Client für Windows 10
 
 Alle anderen Clients sind nicht in diesem Anmeldeszenario mit Ihrem SAML 2.0-Identitätsanbieter verfügbar. Beispielsweise kann sich der Lync 2010-Desktopclient nicht mehr beim Dienst mit Ihrem SAML 2.0-Identitätsanbieter anmelden, der für einmaliges Anmelden konfiguriert ist.
 
@@ -194,9 +194,9 @@ Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Stand
 Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Sie müssen „$ecpUrl = „https://WS2012R2-0.contoso.com/PAOS““ nur ausführen, wenn Sie eine ECP-Erweiterung für Ihren Identitätsanbieter einrichten. Exchange Online-Clients mit Ausnahme von Outlook Web Application (OWA) basieren auf einem auf POST basierenden aktiven Endpunkt. Wenn Ihr SAML 2.0-STS einen aktiven Endpunkt implementiert, der der ECP-Implementierung von Shibboleth von einem aktiven Endpunkt ähnelt, können diese Rich Clients möglicherweise mit dem Exchange Online-Dienst interagieren.
+>Sie müssen `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` nur ausführen, wenn Sie eine ECP-Erweiterung für Ihren Identitätsanbieter einrichten. Exchange Online-Clients mit Ausnahme von Outlook Web Application (OWA) basieren auf einem auf POST basierenden aktiven Endpunkt. Wenn Ihr SAML 2.0-STS einen aktiven Endpunkt implementiert, der der ECP-Implementierung von Shibboleth von einem aktiven Endpunkt ähnelt, können diese Rich Clients möglicherweise mit dem Exchange Online-Dienst interagieren.
 
-Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderungen benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zur Domänenkonvertierung finden Sie unter [https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](httpss://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderungen benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zur Domänenkonvertierung finden Sie unter [https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Bereitstellen von Benutzerprinzipalen für Azure AD/Office 365
 Bevor Sie Ihre Benutzer mit Office 365 authentifizieren können, müssen Sie Azure AD mit Benutzerprinzipalen bereitstellen, die mit der Assertion im SAML 2.0-Anspruch übereinstimmen. Wenn Azure AD diese Benutzerprinzipale im Voraus nicht bekannt sind, können sie nicht für die Verbundanmeldung verwendet werden. Azure AD Connect oder Windows PowerShell können zum Bereitstellen von Benutzerprinzipalen verwendet werden.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c43d3b236a305f1e6d2bd392527a5206b6a5c974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341234"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074895"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln
 
@@ -114,23 +114,23 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>Erstellen einer Registrierungsgruppe mit symmetrischem Schlüssel
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
 
 2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
 
 3. Geben Sie unter **Registrierungsgruppe hinzufügen** die folgenden Informationen ein, und klicken Sie auf die Schaltfläche **Speichern**.
 
-    - **Gruppenname**: Geben Sie **mylegacydevices** ein.
+   - **Gruppenname**: Geben Sie **mylegacydevices** ein.
 
-    - **Nachweistyp**: Wählen Sie **Symmetrischer Schlüssel**.
+   - **Nachweistyp**: Wählen Sie **Symmetrischer Schlüssel**.
 
-    - **Schlüssel automatisch generieren**: Aktivieren Sie dieses Kontrollkästchen.
+   - **Schlüssel automatisch generieren**: Aktivieren Sie dieses Kontrollkästchen.
 
-    - **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Statische Konfiguration** aus, damit Sie sie einem bestimmten Hub zuweisen können.
+   - **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Statische Konfiguration** aus, damit Sie sie einem bestimmten Hub zuweisen können.
 
-    - **Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann**: Wählen Sie einen Ihrer Hubs aus.
+   - **Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann**: Wählen Sie einen Ihrer Hubs aus.
 
-    ![Hinzufügen einer Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Hinzufügen einer Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. Nachdem Sie Ihre Registrierung gespeichert haben, werden der **Primärschlüssel** und **Sekundärschlüssel** generiert und dem Registrierungseintrag hinzugefügt. Ihre Registrierungsgruppe mit symmetrischem Schlüssel wird als **mylegacydevices** unter der Spalte *Gruppenname* auf der Registerkarte *Registrierungsgruppen* angezeigt. 
 

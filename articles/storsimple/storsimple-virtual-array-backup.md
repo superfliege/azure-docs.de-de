@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c926f0c80ce56cac3106ad97ec3ec2e18a8e2cc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109568"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121977"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Sichern von Freigaben oder Volumes in Ihrem StorSimple Virtual Array
 
@@ -32,7 +32,7 @@ Dieses Tutorial gilt nur für StorSimple Virtual Array. Informationen zur 8000-S
 
 ## <a name="back-up-shares-and-volumes"></a>Sichern von Freigaben und Volumes
 
-Sicherungen stellen Zeitpunktschutz zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten für Freigaben und Volumes. Für das Sichern einer Freigabe oder eines Volumes auf dem StorSimple-Gerät sind zwei Methoden möglich: **geplant** oder **manuell**. Diese Methoden werden in den folgenden Abschnitten erläutert.
+Sicherungen stellen Zeitpunktschutz zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten für Freigaben und Volumes. Zum Sichern einer Freigabe oder eines Volumes auf dem StorSimple-Gerät sind zwei Vorgehensweisen möglich: **geplant** oder **manuell**. Diese Methoden werden in den folgenden Abschnitten erläutert.
 
 ## <a name="change-the-backup-start-time"></a>Ändern der Startzeit der Sicherung
 
@@ -90,7 +90,7 @@ Neben geplanten Sicherungen können Sie jederzeit eine manuelle (bedarfsgesteuer
    
     ![Sicherung abgeschlossen](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
-## <a name="view-existing-backups"></a>Anzeigen von vorhandenen Backups
+## <a name="view-existing-backups"></a>Anzeigen vorhandener Sicherungen
 Führen Sie die folgenden Schritte im Azure-Portal aus, um vorhandene Sicherungen anzuzeigen.
 
 #### <a name="to-view-existing-backups"></a>So zeigen Sie vorhandene Sicherungen an
@@ -100,15 +100,15 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um vorhandene Sicherunge
     ![Navigieren zum Sicherungskatalog](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. Geben Sie die folgenden Kriterien an, die für die Filterung verwendet werden sollen:
    
-    - **Zeitbereich** – kann auf **Letzte Stunde**, **Letzte 24 Stunden**, **Letzte 7 Tage**, **Letzte 30 Tage**,**Letztes Jahr** und **Benutzerdefinierter Datumsbereich** festgelegt werden.
+   - **Zeitbereich** – kann auf **Letzte Stunde**, **Letzte 24 Stunden**, **Letzte 7 Tage**, **Letzte 30 Tage**,**Letztes Jahr** und **Benutzerdefinierter Datumsbereich** festgelegt werden.
     
-    - **Geräte** – Wählen Sie aus der Liste der Dateiserver oder iSCSI-Server aus, die bei Ihrem StorSimple-Geräte-Manager-Dienst registriert sind.
+   - **Geräte** – Wählen Sie aus der Liste der Dateiserver oder iSCSI-Server aus, die bei Ihrem StorSimple-Geräte-Manager-Dienst registriert sind.
    
-    - **Initiiert** – kann automatisch auf **Geplant** (durch eine Sicherungsrichtlinie) oder **Manuell** initiiert werden (durch Sie).
+   - **Initiiert** – kann automatisch auf **Geplant** (durch eine Sicherungsrichtlinie) oder **Manuell** initiiert werden (durch Sie).
    
-    ![Filtern von Sicherungen](./media/storsimple-virtual-array-backup/viewbackups2.png)
+     ![Filtern von Sicherungen](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. Klicken Sie auf **Übernehmen**. Die gefilterte Liste der Sicherungen wird auf dem Blatt **Sicherungskatalog** angezeigt. Beachten Sie, dass nur 100 Sicherungselemente zu einem bestimmten Zeitpunkt angezeigt werden können.
+3. Klicken Sie auf **Anwenden**. Die gefilterte Liste der Sicherungen wird auf dem Blatt **Sicherungskatalog** angezeigt. Beachten Sie, dass nur 100 Sicherungselemente zu einem bestimmten Zeitpunkt angezeigt werden können.
    
     ![Aktualisierter Sicherungskatalog](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

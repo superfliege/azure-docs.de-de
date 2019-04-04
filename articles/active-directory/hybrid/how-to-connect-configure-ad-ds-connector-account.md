@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189045"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000867"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
@@ -158,7 +158,7 @@ Dieses Cmdlet legt die folgenden Berechtigungen fest:
 
 |Type |NAME |Access |Gilt für|
 |-----|-----|-----|-----| 
-|ZULASSEN|AD DS-Connector-Konto|Lese-/Schreibeigenschaft|MS-DS-Consistency-Guid|Nachfolger-Benutzerobjekte|
+|ZULASSEN|AD DS-Connector-Konto|Lese-/Schreibeigenschaft|Nachfolger-Benutzerobjekte|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Berechtigungen für die Kennworthashsynchronisierung 
 Um Berechtigungen für das AD DS-Connector-Konto festzulegen, wenn Kennworthashsynchronisierung verwendet wird, führen Sie Folgendes aus: 
@@ -271,7 +271,7 @@ Dieses PowerShell-Skript verschärft die Berechtigungen für das AD-Connector-Ko
 - Deaktivieren der Vererbung für das angegebene Objekt 
 - Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von für SELF spezifischen ACEs, da wir die Standardberechtigungen bezüglich SELF intakt lassen möchten. 
  
- Der Parameter „-ADConnectorAccountDN“ ist das AD-Konto, dessen Berechtigungen verschärft werden sollen. Dies ist normalerweise das Domänenkonto „MSOL_nnnnnnnnnnnn“, das im AD DS-Connector konfiguriert ist (siehe „Bestimmen Ihres AD DS-Connector-Kontos“). Der Parameter „-Credential“ ist erforderlich, um das Administratorkonto anzugeben, das die erforderlichen Berechtigungen besitzt, um Active Directory-Berechtigungen für das AD-Zielobjekt einzuschränken. Dies ist normalerweise der Unternehmens- oder Domänenadministrator.  
+  Der Parameter „-ADConnectorAccountDN“ ist das AD-Konto, dessen Berechtigungen verschärft werden sollen. Dies ist normalerweise das Domänenkonto „MSOL_nnnnnnnnnnnn“, das im AD DS-Connector konfiguriert ist (siehe „Bestimmen Ihres AD DS-Connector-Kontos“). Der Parameter „-Credential“ ist erforderlich, um das Administratorkonto anzugeben, das die erforderlichen Berechtigungen besitzt, um Active Directory-Berechtigungen für das AD-Zielobjekt einzuschränken. Dies ist normalerweise der Unternehmens- oder Domänenadministrator.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 

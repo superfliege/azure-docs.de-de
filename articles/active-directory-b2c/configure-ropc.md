@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ce65f71349ae6d7e86ebae1ee2067653a63b89b4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161060"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089334"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -37,15 +37,15 @@ Folgende Flüsse werden nicht unterstützt:
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erstellen eines Benutzerflows für Ressourcenbesitzer
 
-1.  Melden Sie sich beim Azure-Portal als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-2.  Wählen Sie für einen Wechsel zu Ihrem Azure AD B2C-Mandanten in der oberen rechten Ecke des Portals das B2C-Verzeichnis aus.
-3.  Klicken Sie auf **Benutzerflows**, und wählen Sie **Neuer Benutzerflow** aus.
-4.  Klicken Sie auf die Registerkarte **Alle**, und wählen Sie **Ressourcenbesitzer** aus.
-5.  Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
-6.  Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
-7.  Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
-8.  Wählen Sie **OK** und anschließend **Erstellen**.
-9.  Klicken Sie auf **Benutzerflow ausführen**.
+1. Melden Sie sich beim Azure-Portal als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2. Wählen Sie für einen Wechsel zu Ihrem Azure AD B2C-Mandanten in der oberen rechten Ecke des Portals das B2C-Verzeichnis aus.
+3. Klicken Sie auf **Benutzerflows**, und wählen Sie **Neuer Benutzerflow** aus.
+4. Klicken Sie auf die Registerkarte **Alle**, und wählen Sie **Mit ROPC anmelden** aus.
+5. Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
+6. Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
+7. Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
+8. Wählen Sie **OK** und anschließend **Erstellen**.
+9. Klicken Sie auf **Benutzerflow ausführen**.
 
    Es wird dann ein Endpunkt angezeigt (wie das folgende Beispiel):
 
@@ -83,7 +83,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 Die tatsächliche POST-Anforderung sieht wie folgt aus:
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
 Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

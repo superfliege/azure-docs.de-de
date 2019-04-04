@@ -1,5 +1,5 @@
 ---
-title: Dynamische Datenmaskierung für Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Dynamische Datenmaskierung für Azure SQL-Datenbank | Microsoft Docs
 description: Die dynamische Datenmaskierung für SQL-Datenbank schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7ca54117b014cb093b63e265864b0b0efa787865
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/04/2019
+ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876543"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Dynamische Datenmaskierung für SQL-Datenbank
 
@@ -55,10 +55,10 @@ Die dynamische Datenmaskierung kann von den Rollen „Azure SQL-Datenbank-Admini
 
 Von der DDM-Empfehlungs-Engine werden bestimmte Felder Ihrer Datenbank als potenzielle Felder mit vertraulichen Daten angegeben, bei denen es sich um gute Kandidaten für die Maskierung handelt. Auf dem Blatt „Dynamische Datenmaskierung“ im Portal werden die empfohlenen Spalten für Ihre Datenbank angezeigt. Sie können einfach für eine oder mehrere Spalten auf **Maske hinzufügen** und dann auf **Speichern** klicken, um eine Maskierung auf diese Felder anzuwenden.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank mithilfe von Powershell-Cmdlets
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank mithilfe von PowerShell-Cmdlets
 
-Siehe [Azure SQL-Datenbank-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.sql).
+Siehe [Azure SQL-Datenbank-Cmdlets](https://docs.microsoft.com/powershell/module/az.sql).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank mithilfe der REST-API
 
-Siehe [Vorgänge für Azure SQL-Datenbank](https://msdn.microsoft.com/library/dn505719.aspx).
+Siehe [Vorgänge für Azure SQL-Datenbank](https://docs.microsoft.com/rest/api/sql/).

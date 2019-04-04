@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 88c563876940da14f75d7ab30aa3f79a8f6dd870
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 79db12be04df396cf79d55ff4ec15ad728d4f251
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094608"
 ---
 # <a name="scaling-in-service-fabric"></a>Skalierung in Service Fabric
 Azure Service Fabric erleichtert das Erstellen skalierbarer Anwendungen durch Verwalten der Dienste, Partitionen und Replikate auf den Knoten eines Clusters. Das Ausführen vieler Workloads auf derselben Hardware ermöglicht eine maximale Ressourcennutzung, bietet jedoch auch Flexibilität bei der Auswahl der Skalierung für die Workloads. Dieses Channel 9-Video erklärt, wie Sie skalierbare Microserviceanwendungen erstellen können:
@@ -102,12 +102,14 @@ Service Fabric unterstützt die Partitionierung. Durch Partitionierung wird ein 
 Angenommen, ein Dienst verwendet das Bereichspartitionierungsschema mit einem niedrigen Schlüssel 0, einem hohen Schlüssel 99 und 4 Partitionen. In einem Drei-Knoten-Cluster kann der Dienst mit vier Replikaten, welche die Ressourcen auf den einzelnen Knoten gemeinsam nutzen, wie in der folgenden Abbildung gezeigt ausgelegt werden.
 
 <center>
+
 ![Partitionslayout mit drei Knoten](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 Wenn Sie die Anzahl der Knoten erhöhen, werden einige der vorhandenen Replikate von Service Fabric dorthin verschoben. Nehmen wir beispielsweise an, dass sich die Anzahl der Knoten auf vier erhöht und die Replikate neu verteilt werden. Der Dienst verfügt jetzt über drei Replikate, die auf jedem Knoten ausgeführt werden und jeweils zu unterschiedlichen Partitionen gehören. Dies ermöglicht eine bessere Ressourcennutzung, da der neue Knoten aktiv ist. In der Regel verbessert dies auch die Leistung, da für jeden Dienst mehr Ressourcen verfügbar sind.
 
 <center>
+
 ![Partitionslayout mit vier Knoten](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
@@ -123,7 +125,7 @@ Weitere Informationen finden Sie unter [Scaling Service Fabric clusters](service
 ## <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Sehen wir uns alle Ideen, die wir hier besprochen haben, in einem Beispiel an. Betrachten Sie den folgenden Dienst: Sie möchten einen Dienst erstellen, der als Adressbuch fungiert und Namen und Kontaktinformationen speichert. 
 
-Bereits im Voraus stellt sich Ihnen eine Reihe von Fragen zur Skalierung: Wie viele Benutzer werden vorhanden sein? Wie viele Kontakte werden von den einzelnen Benutzern gespeichert? All diese Informationen gleich bei der ersten Erstellung des Diensts herauszufinden, ist schwierig. Angenommen, Sie möchten einen einzelnen statischen Dienst mit einer bestimmten Partitionsanzahl verwenden. Wenn Sie die falsche Partitionsanzahl wählen, könnte dies später zu Skalierungsproblemen führen. Auch wenn Sie die richtige Anzahl wählen, haben Sie möglicherweise nicht alle Informationen, die Sie benötigen. Beispielsweise müssen Sie auch die Größe des Clusters im Voraus festlegen, sowohl bezüglich der Anzahl der Knoten als auch bezüglich ihrer jeweiligen Größe. Es ist in der Regel schwer vorherzusagen, wie viele Ressourcen ein Dienst während seiner Lebensdauer nutzen wird. Es kann auch schwierig sein, im Voraus zu wissen, welches Datenverkehrsmuster im Dienst tatsächlich auftritt. Eventuell erfolgt das Hinzufügen und Entfernen von Kontakten durch Benutzer nur zu Arbeitsbeginn am Morgen, oder es ist gleichmäßig über den gesamten Tag verteilt. Basierend auf diesen Informationen müssen Sie möglicherweise dynamisch horizontal hochskalieren und herunterskalieren. Vielleicht lernen Sie vorherzusagen, wann horizontal hochskaliert und herunterskaliert werden muss. In jedem Fall ist jedoch zu erwarten, dass Sie auf Änderungen beim Ressourcenverbrauch des Diensts reagieren müssen. Dies kann das Ändern der Clustergröße erfordern, um weitere Ressourcen bereitzustellen, wenn das Neuorganisieren vorhandener Ressourcen nicht ausreicht. 
+Bereits im Voraus stellt sich Ihnen eine Reihe von Fragen zur Skalierung: Wie viele Benutzer werden ihn verwenden? Wie viele Kontakte werden von den einzelnen Benutzern gespeichert? All diese Informationen gleich bei der ersten Erstellung des Diensts herauszufinden, ist schwierig. Angenommen, Sie möchten einen einzelnen statischen Dienst mit einer bestimmten Partitionsanzahl verwenden. Wenn Sie die falsche Partitionsanzahl wählen, könnte dies später zu Skalierungsproblemen führen. Auch wenn Sie die richtige Anzahl wählen, haben Sie möglicherweise nicht alle Informationen, die Sie benötigen. Beispielsweise müssen Sie auch die Größe des Clusters im Voraus festlegen, sowohl bezüglich der Anzahl der Knoten als auch bezüglich ihrer jeweiligen Größe. Es ist in der Regel schwer vorherzusagen, wie viele Ressourcen ein Dienst während seiner Lebensdauer nutzen wird. Es kann auch schwierig sein, im Voraus zu wissen, welches Datenverkehrsmuster im Dienst tatsächlich auftritt. Eventuell erfolgt das Hinzufügen und Entfernen von Kontakten durch Benutzer nur zu Arbeitsbeginn am Morgen, oder es ist gleichmäßig über den gesamten Tag verteilt. Basierend auf diesen Informationen müssen Sie möglicherweise dynamisch horizontal hochskalieren und herunterskalieren. Vielleicht lernen Sie vorherzusagen, wann horizontal hochskaliert und herunterskaliert werden muss. In jedem Fall ist jedoch zu erwarten, dass Sie auf Änderungen beim Ressourcenverbrauch des Diensts reagieren müssen. Dies kann das Ändern der Clustergröße erfordern, um weitere Ressourcen bereitzustellen, wenn das Neuorganisieren vorhandener Ressourcen nicht ausreicht. 
 
 Aber warum sollte man überhaupt versuchen, für alle Benutzer ein einzelnes Partitionsschema auszuwählen? Warum beschränken Sie sich auf einen einzelnen Dienst und einen einzelnen statischen Cluster? Die reale Situation ist in der Regel dynamischer. 
 

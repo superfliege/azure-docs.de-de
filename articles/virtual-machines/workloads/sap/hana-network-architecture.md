@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 724a91b6ba0be030a2281bce366e4378892df59b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392872"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011583"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -27,7 +27,7 @@ Die Architektur von Azure-Netzwerkdiensten ist eine wichtige Komponente der erfo
 
 - Lokal bereitgestellte SAP-Systeme. Aufgrund ihrer Größe können diese Systeme derzeit nicht in Azure gehostet werden. Ein Beispiel ist ein SAP ERP-Produktionssystem, das auf SQL Server (als Datenbank) ausgeführt wird und mehr CPU- oder Arbeitsspeicherressourcen erfordert als VMs bereitstellen können.
 - Lokal bereitgestellte, auf SAP HANA basierende SAP-Systeme.
-- Auf VMs bereitgestellte SAP-Systeme. Bei diesen Systemen kann es sich um Entwicklungs-, Test-, Sandbox- oder Produktionsinstanzen beliebiger SAP NetWeaver-basierter Anwendungen handeln, die je nach Ressourcennutzung und Arbeitsspeicherbedarf erfolgreiche in Azure (auf VMs) bereitgestellt werden können. Diese Systeme können auch auf Datenbanken wie SQL Server basieren. Weitere Informationen finden Sie im [SAP-Hinweis 1928533 – SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen](https://launchpad.support.sap.com/#/notes/1928533/E). Diese Systeme können auch auf Datenbanken wie SAP HANA basieren. Weitere Informationen finden Sie unter [SAP HANA certified IaaS platforms](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html) (SAP HANA zertifizierte IaaS-Plattformen).
+- Auf VMs bereitgestellte SAP-Systeme. Bei diesen Systemen kann es sich um Entwicklungs-, Test-, Sandbox- oder Produktionsinstanzen beliebiger SAP NetWeaver-basierter Anwendungen handeln, die je nach Ressourcennutzung und Arbeitsspeicherbedarf erfolgreiche in Azure (auf VMs) bereitgestellt werden können. Diese Systeme können auch auf Datenbanken wie SQL Server basieren. Weitere Informationen finden Sie im [SAP-Supporthinweis 1928533 – „SAP Applications on Azure: Supported products and Azure VM types](https://launchpad.support.sap.com/#/notes/1928533/E) (SAP-Anwendungen unter Azure: Unterstützte Produkte und Azure-VM-Typen). Diese Systeme können auch auf Datenbanken wie SAP HANA basieren. Weitere Informationen finden Sie unter [SAP HANA certified IaaS platforms](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html) (SAP HANA zertifizierte IaaS-Plattformen).
 - In Azure (auf VMs) bereitgestellte SAP-Anwendungsserver, die SAP HANA in Azure (große Instanzen) in Azure-Umfeldern der großen Instanz nutzen.
 
 Eine hybride SAP-Landschaft mit vier oder mehr unterschiedlichen Bereitstellungsszenarien ist typisch. Es gibt auch viele Kunden, die vollständige SAP-Landschaften in Azure ausführen. Da VMs immer leistungsstärker werden, nimmt die Anzahl von Kunden zu, die ihre sämtlichen SAP-Lösungen zu Azure migrieren.
@@ -113,7 +113,7 @@ Gehen Sie für eine stärker skalierbare Netzwerkarchitektur folgendermaßen vor
 - Nutzen Sie mehrere virtuelle Netzwerke für eine einzelne, größere SAP-Anwendungsschicht.
 - Stellen Sie für jedes bereitgestellte SAP-System ein separates virtuelles Netzwerk bereit, anstatt diese SAP-Systeme in separaten Subnetzen unter demselben virtuellen Netzwerk zu kombinieren.
 
- Eine stärker skalierbare Netzwerkarchitektur für SAP HANA in Azure (große Instanzen):
+  Eine stärker skalierbare Netzwerkarchitektur für SAP HANA in Azure (große Instanzen):
 
 ![Bereitstellen einer SAP-Anwendungsschicht über mehrere virtuelle Netzwerke](./media/hana-overview-architecture/image4-networking-architecture.png)
 
@@ -132,12 +132,12 @@ Es gibt drei wichtige Überlegungen zum Netzwerkrouting für SAP HANA in Azure (
 
 * Einheiten von SAP HANA in Azure (große Instanzen) verfügen über eine zugewiesene IP-Adresse aus dem IP-Adressbereich des Serverpools, den Sie angegeben haben. Weitere Informationen finden Sie unter [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Der Zugriff auf diese IP-Adresse ist über die Azure-Abonnements und die ExpressRoute-Verbindung möglich, die virtuelle Netzwerke mit HANA in Azure (große Instanzen) verbindet. Die zugewiesene IP-Adresse aus dem IP-Adressbereich des Serverpools wird der Hardwareeinheit direkt zugewiesen. Anders als bei den ersten Bereitstellungen dieser Lösung wird sie *nicht* mehr über NAT zugewiesen. 
 
-> [!NOTE] 
+> [!NOTE]
 > Verwenden Sie zusätzliche Komponenten für das Routing, um die in den ersten beiden Listeneinträgen erläuterte Einschränkung beim vorübergehenden Routing zu umgehen. Zu diesem Zweck können folgende Komponenten verwendet werden:
-
+> 
 > * Ein Reverseproxy zum Weiterleiten von Daten in beide Richtungen. Beispiel: F5 BIG-IP, NGINX mit Traffic Manager, in Azure als virtuelle Firewall-/Datenverkehrsroutinglösung bereitgestellt.
 > * [IPTables-Regeln](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) auf einer Linux-VM, um das Routing zwischen lokalen Standorten und Einheiten von HANA (große Instanz) oder zwischen Einheiten von HANA (große Instanz) in unterschiedlichen Regionen zu ermöglichen.
-
+> 
 > Beachten Sie, dass Microsoft keine Implementierung und keinen Support für benutzerdefinierte Lösungen mit Netzwerkgeräten von Drittanbietern oder IPTables bietet. Der Support muss durch den Hersteller der verwendeten Komponente oder den Integrator bereitgestellt werden. 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>Internetkonnektivität von HANA (große Instanz)

@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a55839550b57da2ae346e66f4908da39e78b76f3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 737c72e6225cdfc9fdeec59810ffd9100c48d1ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181757"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
 Dieser Artikel erläutert, wie verwaltete Datenträger für einen virtuellen Linux-Computer mit der Azure CLI erweitert werden können. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, und Sie können auch einen vorhandenen Datenträger für Daten erweitern. Die Standardgröße der virtuellen Festplatte für das Betriebssystem beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer in Azure. 
 
 > [!WARNING]
-> Stellen Sie immer sicher, dass Sie Ihre Daten sichern, bevor Sie Änderungen an der Größe von Datenträgern vornehmen. Weitere Informationen finden Sie unter [Sichern virtueller Linux-Computer in Azure](tutorial-backup-vms.md).
+> Achten Sie immer darauf, dass Ihr Dateisystem in intaktem Zustand ist, und stellen Sie sicher, dass Ihre Daten gesichert sind, bevor Sie Vorgänge zur Größenänderung von Datenträgern ausführen. Weitere Informationen finden Sie unter [Sichern virtueller Linux-Computer in Azure](tutorial-backup-vms.md).
 
 ## <a name="expand-an-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
 Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az-login) bei einem Azure-Konto angemeldet sind.
@@ -141,7 +141,7 @@ Um einen erweiterten Datenträger zu verwenden, erweitern Sie die zugrunde liege
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Betriebssystemdatenträgers geändert wurde. In der folgenden Beispielausgabe ist zu sehen, dass das Datenträgerlaufwerk für Daten, */dev/sdc1*, jetzt eine Größe von 200 GB aufweist:
+1. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Datenträgers geändert wurde. In der folgenden Beispielausgabe ist zu sehen, dass das Datenträgerlaufwerk für Daten, */dev/sdc1*, jetzt eine Größe von 200 GB aufweist:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

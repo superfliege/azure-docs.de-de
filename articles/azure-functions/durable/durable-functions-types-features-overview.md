@@ -1,6 +1,6 @@
 ---
-title: Übersicht der Funktionstypen und Features für permanente Funktionen – Azure
-description: Lernen Sie die Typen der Funktionen und Rollen kennen, die eine Kommunikation zwischen Funktionen als Teil einer permanenten Funktionsorchestrierung ermöglichen.
+title: Funktionstypen und -features in der Durable Functions-Erweiterung von Azure Functions
+description: Machen Sie sich mit Funktionstypen und -rollen vertraut, die in einer Durable Functions-Orchestrierung in Azure Functions die direkte Kommunikation zwischen Funktionen ermöglicht.
 services: functions
 author: jeffhollan
 manager: jeconnoc
@@ -10,78 +10,94 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2885ce740fab58e675c529dfab8d0dadeed2904c
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301620"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455733"
 ---
-# <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Übersicht der Funktionstypen und Features für permanente Funktionen (Azure Functions)
+# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions-Typen und -Features (Azure Functions)
 
-Durable Functions stellt eine zustandsbehaftete Orchestrierung der Funktionsausführung bereit. Eine permanente Funktion stellt eine Lösung dar, die sich aus verschiedenen Azure-Funktionen zusammensetzt. Jede dieser Funktionen kann im Rahmen einer Orchestrierung verschiedene Rollen spielen. Das folgende Dokument bietet eine Übersicht der Funktionstypen, die an einer permanenten Funktionsorchestrierung beteiligt sind. Es enthält darüber hinaus einige allgemeine Muster zum Verbinden von Funktionen untereinander.  Um sofort zu beginnen, erstellen Sie Ihre erste Durable Function in [C#](durable-functions-create-first-csharp.md) oder [JavaScript](quickstart-js-vscode.md).
+Durable Functions ist eine Erweiterung von [Azure Functions](../functions-overview.md). Sie eignet sich für die zustandsbehaftete Orchestrierung der Funktionsausführung. Eine permanente Funktion stellt eine Lösung dar, die sich aus verschiedenen Azure-Funktionen zusammensetzt. Funktionen können in einer Durable Functions-Orchestrierung unterschiedliche Rollen spielen. 
 
-![Typen von permanenten Funktionen][1]  
+Dieser Artikel stellt eine Übersicht über die Typen von Funktionen bereit, die Sie in einer Durable Functions-Orchestrierung verwenden können. Außerdem werden häufig verwendete Muster beschrieben, mit denen Sie Funktionen verbinden können. Erfahren Sie, wie Sie mit Durable Functions Probleme bei der App-Entwicklung lösen können.
 
-## <a name="types-of-functions"></a>Funktionstypen
+![Bild: Typen permanenter Funktionen][1]  
+
+## <a name="types-of-durable-functions"></a>Typen von permanenten Funktionen
+
+In Azure Functions können Sie drei Typen permanenter Funktionen verwenden: Aktivitäts-, Orchestrator- und Clientfunktionen.
 
 ### <a name="activity-functions"></a>Aktivitätsfunktionen
 
-Aktivitätsfunktionen sind die grundlegende Arbeitseinheit in einer permanenten Orchestrierung.  Aktivitätsfunktionen sind die Funktionen und Aufgaben, die im Prozess orchestriert werden.  Sie können beispielsweise eine permanente Funktion zum Bearbeiten einer Bestellung erstellen – Überprüfen des Lagerbestands, Belasten des Kunden und Erstellen einer Lieferung.  Jede dieser Aufgaben wäre eine Aktivitätsfunktion.  Für Aktivitätsfunktionen bestehen hinsichtlich der Arbeiten, die mit ihnen ausgeführt werden können, keine Einschränkungen.  Sie können in jeder [von Durable Functions unterstützten Sprache](durable-functions-overview.md#language-support) erstellt werden. Das Durable Task Framework garantiert, dass jede aufgerufene Aktivitätsfunktion mindestens einmal in einer Orchestrierung ausgeführt wird.
+Aktivitätsfunktionen sind die grundlegende Arbeitseinheit in der Orchestrierung einer permanenten Funktion. Sie sind die Funktionen und Aufgaben, die im Prozess orchestriert werden. Mit einer permanenten Funktion können Sie z. B. eine Bestellung verarbeiten. Die Aufgaben würden dann die Inventarprüfung, die Abrechnung von Kundengebühren und die Erstellung einer Lieferung beinhalten. Jede Aufgabe wäre eine Aktivitätsfunktion. 
 
-Eine Aktivitätsfunktion muss durch einen [Aktivitätstrigger](durable-functions-bindings.md#activity-triggers) ausgelöst werden.  .NET-Funktionen empfangen einen [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) als Parameter. Sie können den Trigger auch an beliebige andere Objekte binden, um Eingaben an die Funktion zu übergeben. In JavaScript kann über die `<activity trigger binding name>`-Eigenschaft des [`context.bindings`-Objekts](../functions-reference-node.md#bindings) auf die Eingabe zugegriffen werden.
+Für Aktivitätsfunktionen bestehen hinsichtlich der Arbeiten, die mit ihnen ausgeführt werden können, keine Einschränkungen. Sie können eine Aktivitätsfunktion [in jeder von Durable Functions unterstützen Sprache schreiben](durable-functions-overview.md#language-support). Das permanente Aufgabenframework garantiert, dass jede aufgerufene Aktivitätsfunktion mindestens einmal in einer Orchestrierung ausgeführt wird.
 
-Ihre Aktivitätsfunktion kann außerdem Werte an den Orchestrator zurückgeben.  Wenn von einer Aktivitätsfunktion viele Werte gesendet oder zurückgegeben werden, können Sie [Tupels oder Arrays nutzen](durable-functions-bindings.md#passing-multiple-parameters).  Aktivitätsfunktionen können nur von einer Orchestrierungsinstanz getriggert werden.  Zwar können eine Aktivitätsfunktion und eine andere Funktion (etwa eine durch HTTP ausgelöste Funktion) Code gemein haben, jede Funktion kann jedoch nur einen Trigger aufweisen.
+Verwenden Sie einen [Aktivitätstrigger](durable-functions-bindings.md#activity-triggers), um eine Aktivitätsfunktion auszulösen. .NET-Funktionen nehmen einen [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) als Parameter entgegen. Sie können den Trigger auch an beliebige andere Objekte binden, um Eingaben an die Funktion zu übergeben. In JavaScript können Sie über die `<activity trigger binding name>`-Eigenschaft des [`context.bindings`-Objekts](../functions-reference-node.md#bindings) auf die Eingabe zugreifen.
 
-Weitere Informationen und Beispiele finden sich im [Artikel zu Bindungen für permanente Funktionen](durable-functions-bindings.md#activity-triggers).
+Eine Aktivitätsfunktion kann außerdem Werte an den Orchestrator zurückgeben. Wenn Sie viele Werte von einer Aktivitätsfunktion senden oder zurückgeben, können Sie [Tupel oder Arrays](durable-functions-bindings.md#passing-multiple-parameters) verwenden. Eine Aktivitätsfunktion können Sie nur über eine Orchestrierungsinstanz auslösen. Zwar können eine Aktivitätsfunktion und eine andere Funktion (etwa eine durch HTTP ausgelöste Funktion) einen Teil des Codes gemeinsam nutzen, jedoch kann jede Funktion nur einen Trigger aufweisen.
+
+Weitere Informationen und Beispiele finden Sie unter [Aktivitätsfunktionen](durable-functions-bindings.md#activity-triggers).
 
 ### <a name="orchestrator-functions"></a>Orchestratorfunktionen
 
-Orchestratorfunktionen bilden das Herzstück aller permanenten Funktionen.  Orchestratorfunktionen beschreiben die Art und die Reihenfolge, in denen Aktionen ausgeführt werden.  Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie unter [Durable Functions patterns and technical concepts](durable-functions-concepts.md) (Muster und technische Konzepte von Durable Functions) dargestellt.  Eine Orchestrierung kann viele verschiedene Aktionsarten aufweisen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers).  
+Orchestratorfunktionen beschreiben, wie und in welcher Reihenfolge Aktionen ausgeführt werden. Außerdem wird mit ihnen die Orchestrierung in Code (C# oder JavaScript) beschrieben, wie unter [Durable Functions patterns and technical concepts (Muster und technische Konzepte von Durable Functions)](durable-functions-concepts.md) dargestellt wird. Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [das Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers). 
 
 Eine Orchestratorfunktion muss durch einen [Orchestrierungstrigger](durable-functions-bindings.md#orchestration-triggers) ausgelöst werden.
 
-Ein Orchestrator wird von einem [Orchestratorclient](#client-functions) gestartet, der seinerseits von beliebigen Quellen (HTTP, Warteschlangen, Ereignisdatenströmen) ausgelöst werden kann.  Jede Instanz einer Orchestrierung weist einen Instanzbezeichner auf, der automatisch generiert (empfohlen) oder vom Benutzer generiert sein kann.  Dieser Bezeichner kann zum [Verwalten von Instanzen](durable-functions-instance-management.md) der Orchestrierung verwendet werden.
+Ein Orchestrator wird von einem [Orchestratorclient](#client-functions) gestartet. Sie können diesen über verschiedene Quellen (HTTP, Warteschlange, Ereignisstream) auslösen. Jede Orchestrierungsinstanz verfügt über einen Instanzbezeichner. Dieser kann automatisch (empfohlen) oder vom Benutzer generiert werden. Mit dem Instanzbezeichner können Sie [Orchestrierungsinstanzen verwalten](durable-functions-instance-management.md).
 
-Weitere Informationen und Beispiele finden sich im [Artikel zu Bindungen für permanente Funktionen](durable-functions-bindings.md#orchestration-triggers).
+Weitere Informationen und Beispiele finden Sie unter [Orchestrierungstrigger](durable-functions-bindings.md#orchestration-triggers).
 
 ### <a name="client-functions"></a>Clientfunktionen
 
-Clientfunktionen sind getriggerte Funktionen, die neue Instanzen einer Orchestrierung erstellen.  Sie bilden den Einstiegspunkt zum Erstellen einer Instanz einer permanenten Orchestrierung.  Clientfunktionen können von einem beliebigen Trigger (HTTP, Warteschlangen, Ereignisdatenströmen usw.) ausgelöst und in jeder von der App unterstützten Sprache erstellt werden.  Über den Trigger hinaus weisen Clientfunktionen eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) auf, die es ihnen ermöglicht, permanente Orchestrierungen zu erstellen und zu verwalten.  Das einfachste Beispiel für eine Clientfunktion ist eine per HTTP ausgelöste Funktion, die eine Orchestratorfunktion startet und eine Statusüberprüfungsantwort zurückgibt, wie [im folgenden Beispiel dargestellt](durable-functions-http-api.md#http-api-url-discovery).
+Clientfunktionen sind ausgelöste Funktionen, die neue Instanzen einer Orchestrierung erstellen und gleichzeitig den Einstiegspunkt für das Erstellen einer Instanz in einer Durable Functions-Orchestrierung darstellen. Sie können eine Clientfunktion über verschiedene Quellen (HTTP, Warteschlange, Ereignisstream) auslösen. Zum Schreiben einer Clientfunktion können Sie jede beliebige Sprache verwenden, die von der App unterstützt wird. 
 
-Weitere Informationen und Beispiele finden sich im [Artikel zu Bindungen für permanente Funktionen](durable-functions-bindings.md#orchestration-client).
+Clientfunktionen verfügen außerdem über eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client), mit der sie permanente Orchestrierungen erstellen und verwalten können. 
+
+Das einfachste Beispiel für eine Clientfunktion ist eine über HTTP ausgelöste Funktion, die eine Orchestratorfunktion startet und anschließend eine Statusüberprüfungsantwort zurückgibt. Ein Beispiel finden Sie unter [Ermittlung der HTTP-API-URL](durable-functions-http-api.md#http-api-url-discovery).
+
+Weitere Informationen und Beispiele finden Sie unter [Orchestrierungsclient](durable-functions-bindings.md#orchestration-client).
 
 ## <a name="features-and-patterns"></a>Funktionen und Muster
 
+In den nächsten Abschnitten werden die Features und Muster von Durable Functions-Typen beschrieben.
+
 ### <a name="sub-orchestrations"></a>Untergeordnete Orchestrierungen
 
-Orchestratorfunktionen können nicht nur Aktivitätsfunktionen aufrufen, sondern auch andere Orchestratorfunktionen. Beispielsweise können Sie aus einer Bibliothek mit Orchestratorfunktionen eine größere Orchestrierung erstellen. Oder Sie können mehrere Instanzen einer Orchestratorfunktion parallel ausführen.
+Orchestratorfunktionen können nicht nur Aktivitätsfunktionen aufrufen, sondern auch andere Orchestratorfunktionen. Beispielsweise können Sie aus einer Bibliothek mit Orchestratorfunktionen eine größere Orchestrierung erstellen. Alternativ können Sie mehrere Instanzen einer Orchestratorfunktion parallel ausführen.
 
-Weitere Informationen und Beispiele finden sich im [Artikel über untergeordnete Orchestrierung](durable-functions-sub-orchestrations.md).
+Weitere Informationen und Beispiele finden Sie unter [Untergeordnete Orchestrierungen](durable-functions-sub-orchestrations.md).
 
 ### <a name="durable-timers"></a>Permanente Timer
 
-[Durable Functions](durable-functions-overview.md) bieten *permanente Timer* für die Verwendung in Orchestratorfunktionen zum Implementieren von Verzögerungen oder zum Einrichten von Timeouts für asynchrone Aktionen. Permanente Timer sollten in Orchestratorfunktionen anstelle von `Thread.Sleep` und `Task.Delay` (C#) bzw. `setTimeout()` und `setInterval()` (JavaScript) verwendet werden.
+[Durable Functions](durable-functions-overview.md) stellen *permanente Timer* bereit, die in Orchestratorfunktionen zum Implementieren von Verzögerungen oder zum Einrichten von Timeouts für asynchrone Aktionen verwendet werden können. Verwenden Sie permanente Timer in Orchestratorfunktionen anstelle von `Thread.Sleep` und `Task.Delay` (C#) oder `setTimeout()` und `setInterval()` (JavaScript).
 
-Weitere Informationen und Beispiele zu permanenten Treibern finden sich im [Artikel über permanente Treiber](durable-functions-timers.md)
+Weitere Informationen und Beispiele finden Sie unter [Permanente Timer](durable-functions-timers.md).
 
 ### <a name="external-events"></a>Externe Ereignisse
 
-Orchestratorfunktionen können auf externe Ereignisse warten, um eine Orchestrierungsinstanz zu aktualisieren. Diese Funktion von Durable Functions ist oft bei der Behandlung menschlicher Interaktion oder anderer externer Rückrufe nützlich.
+Orchestratorfunktionen können auf externe Ereignisse warten, um eine Orchestrierungsinstanz zu aktualisieren. Dieses Feature von Durable Functions ist oft bei der Verarbeitung von Benutzerinteraktionen oder anderer externer Rückrufe nützlich.
 
-Weitere Informationen und Beispiele finden sich im [Artikel über externe Ereignisse](durable-functions-external-events.md).
+Weitere Informationen und Beispiele finden Sie unter [Externe Ereignisse](durable-functions-external-events.md).
 
 ### <a name="error-handling"></a>Fehlerbehandlung
 
-Durable Function-Orchestrierungen sind im Code implementiert und können die Funktionen zur Fehlerbehandlung aus der Programmiersprache nutzen.  Das bedeutet, dass Muster wie „try/catch“ in Ihrer Orchestrierung funktionieren.  Permanente Funktionen sind außerdem mit einigen integrierten Wiederholungsrichtlinien ausgestattet.  Eine Aktion kann Aktivitäten bei Ausnahmen automatisch verzögern und wiederholen.  Mithilfe von Wiederholungen können Sie vorübergehende Ausnahmen behandeln, ohne die Orchestrierung aufgeben zu müssen.
+Verwenden Sie Code zum Implementieren von Durable Functions-Orchestrierungen. Sie können die Fehlerbehandlungsfeatures der Programmiersprache verwenden. Muster wie `try`/`catch` können in Ihrer Orchestrierung eingesetzt werden. 
 
-Weitere Informationen und Beispiele finden sich im [Artikel zur Fehlerbehandlung](durable-functions-error-handling.md).
+Durable Functions ist außerdem mit integrierten Wiederholungsrichtlinien ausgestattet. Eine Aktion kann Aktivitäten bei Ausnahmen automatisch verzögern und wiederholen. Sie können Wiederholungen zur Behandlung vorübergehender Ausnahmen einsetzen, ohne dabei die Orchestrierung abzubrechen.
+
+Weitere Informationen und Beispiele finden Sie unter [Fehlerbehandlung](durable-functions-error-handling.md).
 
 ### <a name="cross-function-app-communication"></a>Funktionsübergreifende App-Kommunikation
 
-Während eine permanente Orchestrierung im Allgemeinen innerhalb des Kontexts einer einzelnen Funktions-App existiert, gibt es Muster, die Ihnen die übergreifende Koordination von Orchestrierungen über viele Funktions-Apps hinweg ermöglichen.  Auch wenn die App-übergreifende Kommunikation über HTTP erfolgt, ermöglicht es die Verwendung des permanenten Frameworks für jede Aktivität, trotzdem einen übergreifenden permanenten Prozess zwischen zwei Apps aufrecht zu erhalten.
+Obwohl eine permanente Orchestrierung im Kontext einer einzelnen Funktions-App ausgeführt wird, können Sie Muster zum Koordinieren von Orchestrierungen für mehrere Funktions-Apps verwenden. Auch wenn die App-übergreifende Kommunikation über HTTP erfolgt, ermöglicht es die Verwendung des permanenten Frameworks für jede Aktivität, trotzdem einen übergreifenden permanenten Prozess zwischen zwei Apps aufrecht zu erhalten.
 
-Beispiele für eine funktionsübergreifende App-Orchestrierung in C# und JavaScript finden Sie im Folgenden.  Eine Aktivität startet die externe Orchestrierung. Eine andere Aktivität ruft dann den Status ab und gibt ihn zurück.  Der Orchestrator wartet auf den Abschluss des Status, bevor er fortfährt.
+Die folgenden Beispiele veranschaulichen die funktionsübergreifende App-Orchestrierung in C# und JavaScript. In jedem Beispiel wird die externe Orchestrierung von einer Aktivität gestartet. Eine andere Aktivität ruft den Status ab und gibt diesen zurück. Der Orchestrator fährt erst dann fort, wenn als Status `Complete` festgelegt wird.
+
+Im Folgenden sehen Sie einige Beispiele für die funktionsübergreifende App-Orchestrierung:
 
 #### <a name="c"></a>C#
 
@@ -92,11 +108,11 @@ public static async Task RunRemoteOrchestrator(
 {
     // Do some work...
 
-    // Call a remote orchestration
+    // Call a remote orchestration.
     string statusUrl = await context.CallActivityAsync<string>(
         "StartRemoteOrchestration", "OrchestratorB");
 
-    // Wait for the remote orchestration to complete
+    // Wait for the remote orchestration to complete.
     while (true)
     {
         bool isComplete = await context.CallActivityAsync<bool>("CheckIsComplete", statusUrl);
@@ -108,7 +124,7 @@ public static async Task RunRemoteOrchestrator(
         await context.CreateTimer(context.CurrentUtcDateTime.AddMinutes(1), CancellationToken.None);
     }
 
-    // B is done. Now go do more work...
+    // B is done. Now, go do more work...
 }
 
 [FunctionName("StartRemoteOrchestration")]
@@ -143,10 +159,10 @@ const moment = require("moment");
 module.exports = df.orchestrator(function*(context) {
     // Do some work...
 
-    // Call a remote orchestration
+    // Call a remote orchestration.
     const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
 
-    // Wait for the remote orchestration to complete
+    // Wait for the remote orchestration to complete.
     while (true) {
         const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
         if (isComplete) {
@@ -157,7 +173,7 @@ module.exports = df.orchestrator(function*(context) {
         yield context.df.createTimer(waitTime);
     }
 
-    // B is done. Now go do more work...
+    // B is done. Now, go do more work...
 });
 ```
 
@@ -194,8 +210,10 @@ module.exports = async function(context, statusUrl) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Erstellen Sie Ihre erste permanente Funktion in [C#](durable-functions-create-first-csharp.md) oder [JavaScript](quickstart-js-vscode.md).
+
 > [!div class="nextstepaction"]
-> [Bindings for Durable Functions (Azure Functions)](durable-functions-bindings.md) (Bindungen für Durable Functions [Azure Functions])
+> [Weitere Informationen zu Durable Functions](durable-functions-bindings.md)
 
 <!-- Media references -->
 [1]: media/durable-functions-types-features-overview/durable-concepts.png

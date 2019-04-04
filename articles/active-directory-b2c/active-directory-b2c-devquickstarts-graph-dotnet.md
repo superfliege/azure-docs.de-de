@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075900"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -45,7 +45,7 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
 3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und klicken Sie auf **App-Registrierungen** und dann auf **Hinzufügen**.
 4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
     1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
-    2. Geben Sie eine **beliebige Anmelde-URL** an (z.B. https://B2CGraphAPI), da dies für dieses Beispiel nicht relevant ist).  
+    2. Geben Sie eine **beliebige Anmelde-URL** an (z. B. `https://B2CGraphAPI`), da dies für dieses Beispiel nicht relevant ist.  
 5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
 6. Klicken Sie im Menü „Einstellungen“ auf **Schlüssel**.
 7. Geben Sie im Abschnitt **Kennwörter** die Schlüsselbeschreibung ein, und wählen Sie eine Dauer aus. Klicken Sie dann auf **Speichern**. Kopieren Sie den Schlüsselwert (auch als geheimer Clientschlüssel bezeichnet) für die Verwendung in einem späteren Abschnitt.

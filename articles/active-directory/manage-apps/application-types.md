@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037d1de83e34aa8489498c65dbc5fd3423b081b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 075a50802a05a9b8254ff6ab1e0a38f43baca970
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162661"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105623"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Unerwartete Anwendung in der Liste meiner Anwendungen
 
@@ -48,7 +48,7 @@ Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-St
 
 Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendungen** jedes Dienstprinzipalobjekt in Ihrem Mandanten an. Dienstprinzipalobjekte können dieser Liste auf unterschiedliche Arten hinzugefügt werden:
 
-1.  Beim Hinzufügen einer beliebigen Anwendung aus dem Anwendungskatalog, wie z.B.:
+1. Beim Hinzufügen einer beliebigen Anwendung aus dem Anwendungskatalog, wie z.B.:
 
    1. **Azure AD-Kataloganwendungen**: Anwendungen, die für das einmalige Anmelden mit Azure AD vorab integriert wurden.
 
@@ -58,21 +58,21 @@ Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendu
 
    4. **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Hierbei kann es sich um beliebige Weblinks oder Anwendungen handeln, die Felder für Benutzername und Kennwort generieren, SAML oder OpenID Connect-Protokolle oder SCIM unterstützen, und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
 
-2.  Beim Registrieren für eine oder Anmelden bei einer Drittanbieteranwendung, die in Azure Active Directory integriert ist.<sup></sup> Beispiele hierfür sind [Smartsheet](https://app.smartsheet.com/b/home) oder [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Beim Registrieren für eine oder Anmelden bei einer Drittanbieteranwendung, die in Azure Active Directory integriert ist.<sup></sup> Beispiele hierfür sind [Smartsheet](https://app.smartsheet.com/b/home) oder [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Beim Registrieren für eine Erstanbieteranwendung wie z.B. [Microsoft Office 365](https://products.office.com/) oder beim Hinzufügen einer Lizenz für eine solche Anwendung zu einem Benutzer oder einer Gruppe.
+3. Beim Registrieren für eine Erstanbieteranwendung wie z.B. [Microsoft Office 365](https://products.office.com/) oder beim Hinzufügen einer Lizenz für eine solche Anwendung zu einem Benutzer oder einer Gruppe.
 
-4.  Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über die [Anwendungsregistrierung](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration).
+4. Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über die [Anwendungsregistrierung](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration).
 
-5.  Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über das [Anwendungsregistrierungsportal v2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration).
+5. Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über das [Anwendungsregistrierungsportal v2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration).
 
-6.  Beim Hinzufügen einer Anwendung, die Sie mithilfe von [ASP.NET-Authentifizierungsmethoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) oder [verbundenen Diensten](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) von Visual Studio entwickeln.
+6. Beim Hinzufügen einer Anwendung, die Sie mithilfe von [ASP.NET-Authentifizierungsmethoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) oder [verbundenen Diensten](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) von Visual Studio entwickeln.
 
-7.  Beim Erstellen eines Dienstprinzipalobjekts mithilfe des [Azure AD-PowerShell-Moduls](/powershell/azure/install-adv2?view=azureadps-2.0).
+7. Beim Erstellen eines Dienstprinzipalobjekts mithilfe des [Azure AD-PowerShell-Moduls](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-8.  Beim [Zustimmen zu einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) durch einen Administrator, damit in Ihrem Mandanten Daten verwendet werden können.
+8. Beim [Zustimmen zu einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) durch einen Administrator, damit in Ihrem Mandanten Daten verwendet werden können.
 
-9.  Beim [Zustimmen zu einer Anwendung durch einen Benutzer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), damit in Ihrem Mandanten Daten verwendet werden können.
+9. Beim [Zustimmen zu einer Anwendung durch einen Benutzer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), damit in Ihrem Mandanten Daten verwendet werden können.
 
 10. Beim Aktivieren bestimmter Dienste, die Daten in Ihrem Mandanten speichern. Ein Beispiel hierfür ist die Kennwortzurücksetzung, die als Dienstprinzipal modelliert ist, um Ihre Richtlinie für das Zurücksetzen von Kennwörtern sicher zu speichern.
 
@@ -90,21 +90,21 @@ Um alle Benutzeranmeldungen bei einer Anwendung zu deaktivieren, führen Sie die
 
 Um eine **Anwendung zu löschen**, führen Sie die folgenden Schritte aus:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
-  * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6.  Wählen Sie die Anwendung aus, die Sie löschen möchten.
+6. Wählen Sie die Anwendung aus, die Sie löschen möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie im Bereich **Übersicht** der Anwendung auf das Symbol **Löschen**.
+7. Nachdem die Anwendung geladen wurde, klicken Sie im Bereich **Übersicht** der Anwendung auf das Symbol **Löschen**.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ich möchte alle zukünftigen Vorgänge für die Benutzerzustimmung für jede Anwendung deaktivieren.
 

@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086716"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen Sie in folgenden Schritten vor:
 
--   Identifizieren der in den Blob-Dienst zu importierenden Daten
+- Identifizieren der in den Blob-Dienst zu importierenden Daten
 
--   Identifizieren der die virtuellen Zielverzeichnisse und Blobs im Blob-Dienst
+- Identifizieren der die virtuellen Zielverzeichnisse und Blobs im Blob-Dienst
 
--   Bestimmen der Anzahl benötigter Laufwerke
+- Bestimmen der Anzahl benötigter Laufwerke
 
--   Kopieren der Daten auf jede der Festplatten
+- Kopieren der Daten auf jede der Festplatten
 
- Einen Beispielworkflow finden Sie unter [Sample Workflow to Prepare Hard Drives for an Import Job](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md) (Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag).
+  Einen Beispielworkflow finden Sie unter [Sample Workflow to Prepare Hard Drives for an Import Job](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md) (Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag).
 
 ## <a name="identify-the-data-to-be-imported"></a>Identifizieren der zu importierenden Daten
  Der erste Schritt beim Erstellen eines Importauftrags ist, dass Sie bestimmen, welche Verzeichnisse und Dateien Sie importieren möchten. Dies kann eine Liste von Verzeichnissen, eine Liste eindeutiger Dateien oder eine Kombination daraus sein. Wenn ein Verzeichnis einbezogen wird, werden alle Dateien im Verzeichnis und seinen Unterverzeichnissen Teil des Importauftrags.
@@ -51,11 +51,11 @@ Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen S
 ## <a name="determine-how-many-drives-are-needed"></a>Bestimmen der Anzahl benötigter Laufwerke
  Als Nächstes müssen Sie Folgendes bestimmen:
 
--   Die Anzahl der Festplatten, die zum Speichern der Daten erforderlich sind.
+- Die Anzahl der Festplatten, die zum Speichern der Daten erforderlich sind.
 
--   Die Verzeichnisse und/oder eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
+- Die Verzeichnisse und/oder eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
 
- Stellen Sie sicher, dass Sie über die Anzahl von Festplatten verfügen, die Sie benötigen, um die Daten zu speichern, die Sie übertragen.
+  Stellen Sie sicher, dass Sie über die Anzahl von Festplatten verfügen, die Sie benötigen, um die Daten zu speichern, die Sie übertragen.
 
 ## <a name="copy-data-to-your-hard-drive"></a>Kopieren von Daten auf Ihre Festplatte
  In diesem Abschnitt wird beschrieben, wie Sie das Azure Import/Export-Tool aufrufen, um Ihre Daten auf eine oder mehrere Festplatten zu kopieren. Jedes Mal, wenn Sie das Azure Import/Export-Tool aufrufen, erstellen Sie eine neue *Kopiersitzung*. Sie erstellen mindestens eine Kopiersitzung für jedes Laufwerk, auf das Sie Daten kopieren. In einigen Fällen benötigen Sie möglicherweise mehrere Kopiersitzungen, um alle Ihre Daten auf ein einzelnes Laufwerk zu kopieren. Hier sind einige Gründe, warum Sie möglicherweise mehrere Kopiersitzungen benötigen:
@@ -143,8 +143,7 @@ Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen S
 |**/dstblob:**&lt;Zielblobpfad&gt;\>|`Required.` Der Pfad zum Zielblob in Ihrem Microsoft Azure-Speicherkonto. Das Blob kann, muss aber noch nicht vorhanden sein.<br /><br /> Geben Sie den Blobnamen beginnend mit dem Containernamen an. Der Blobname darf nicht mit „/“ oder dem Namen des Speicherkontos beginnen. Informationen zu den Benennungsregeln für Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).<br /><br /> Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit `$root` als Container angeben, wie `$root/sample.txt`. Beachten Sie, dass Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten dürfen.|
 |
   **/Disposition:**&amp;lt;rename&#124;no-overwrite&#124;overwrite&amp;gt; (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.|
-|
-  **/BlobType:**&amp;lt;BlockBlob&#124;PageBlob&amp;gt;|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
+|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
 |**/PropertyFile:**&lt;Eigenschaftendatei\>|`Optional.` Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 |**/MetadataFile:**&lt;Metadatendatei\>|`Optional.` Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 

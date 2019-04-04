@@ -10,26 +10,27 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 19e0e5797e05589baa1e104f3e9ab8b4d9cc2d6c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 92a7c1a45655f8804aa1f81b1a77ebf7cd5197e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122164"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für Ihre Web-Apps, mobilen Back-Ends und API-Apps in [Azure App Service](../../app-service/overview.md) einrichten. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) instrumentiert Ihre App, um Telemetriedaten über ihre Aktivitäten an den Application Insights-Dienst zu senden, wo sie gespeichert und analysiert werden. Hier können Sie dann mithilfe von Metrikdiagrammen und Suchtools Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.
 
-## <a name="run-time-or-build-time"></a>Laufzeit oder Buildzeit
+## <a name="runtime-or-build-time"></a>Laufzeit oder Buildzeit
 Zum Konfigurieren der Überwachung kann die App auf zwei Arten instrumentiert werden:
 
-* **Laufzeit:** Sie können eine Erweiterung für die Leistungsüberwachung auswählen, wenn Ihre App Service-Instanz bereits live geschaltet wurde. Die App muss dazu nicht neu erstellt oder erneut installiert werden. Sie erhalten einen Standardsatz von Paketen zur Überwachung von Antwortzeiten, Erfolgsraten, Ausnahmen, Abhängigkeiten und Ähnlichem. 
-* **Buildzeit:** Sie können ein Paket in der App installieren, die Sie gerade entwickeln. Diese Option ist wesentlich flexibler. Neben den gleichen Standardpaketen können Sie auch Code schreiben, um die Telemetrie anzupassen oder Ihre eigenen Telemetriedaten zu senden. Sie können bestimmte Aktivitäten protokollieren oder Ereignisse gemäß der Semantik Ihrer App-Domäne erfassen. 
+* **Laufzeit:** Sie können eine Erweiterung für die Leistungsüberwachung auswählen, wenn Ihre App Service-Instanz bereits live geschaltet wurde. Die App muss dazu nicht neu erstellt oder erneut installiert werden. Sie erhalten einen Standardsatz von Paketen zur Überwachung von Antwortzeiten, Erfolgsraten, Ausnahmen, Abhängigkeiten und Ähnlichem.
 
-## <a name="run-time-instrumentation-with-application-insights"></a>Laufzeitinstrumentierung mit Application Insights
-Wenn Sie bereits eine App Service-Instanz in Azure ausführen, verfügen Sie schon über eine Art der Überwachung, und zwar von Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um die Überwachung zu erweitern, z.B. auf Reaktionszeiten, Überwachung beim Aufrufen von Abhängigkeiten, intelligente Erkennung und die leistungsstarke Abfragesprache Kusto. 
+* **Buildzeit:** Sie können ein Paket in der App installieren, die Sie gerade entwickeln. Diese Option ist wesentlich flexibler. Neben den gleichen Standardpaketen können Sie auch Code schreiben, um die Telemetrie anzupassen oder Ihre eigenen Telemetriedaten zu senden. Sie können bestimmte Aktivitäten protokollieren oder Ereignisse gemäß der Semantik Ihrer App-Domäne erfassen. So können Sie zudem die aktuellste Version des Application Insights SDK testen, da Sie die Option haben, Beta-SDKs zu evaluieren, wohingegen die Überwachung zur Laufzeit auf die letzte stabile Version beschränkt ist.
+
+## <a name="runtime-instrumentation-with-application-insights"></a>Laufzeitinstrumentierung mit Application Insights
+Wenn Sie gerade eine App Service-Instanz in Azure ausführen, verfügen Sie standardmäßig bereits über eine Art der Überwachung: Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um die Überwachung zu erweitern, z.B. auf Reaktionszeiten, Überwachung beim Aufrufen von Abhängigkeiten, intelligente Erkennung und die leistungsstarke Abfragesprache Kusto. 
 
 1. In der Azure-Systemsteuerung für Ihre App Service-Instanz können Sie **Application Insights auswählen**.
 
@@ -37,25 +38,25 @@ Wenn Sie bereits eine App Service-Instanz in Azure ausführen, verfügen Sie sch
 
    * Wählen Sie die Option zum Erstellen einer neuen Ressource, sofern Sie nicht bereits eine Application Insights-Ressource für diese Anwendung eingerichtet haben. 
 
-    > [!NOTE]
-    > Beim Klicken auf **OK** zum Erstellen der neuen Ressource wird die Aufforderung **Überwachungseinstellungen anwenden** angezeigt. Wenn Sie **Weiter** wählen, wird Ihre neue Application Insights-Ressource mit Ihrer App Service-Instanz verknüpft, und außerdem wird **ein Neustart Ihrer App Service-Instanz ausgelöst**. 
+     > [!NOTE]
+     > Beim Klicken auf **OK** zum Erstellen der neuen Ressource wird die Aufforderung **Überwachungseinstellungen anwenden** angezeigt. Wenn Sie **Weiter** wählen, wird Ihre neue Application Insights-Ressource mit Ihrer App Service-Instanz verknüpft, und außerdem wird **ein Neustart Ihrer App Service-Instanz ausgelöst**. 
 
-    ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource.png)
+     ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource.png)
 
-2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie in Application Insights Daten für Ihre Anwendung erfasst werden sollen. (Die Überwachung von ASP.NET-Apps ist standardmäßig mit zwei verschiedenen Erfassungsebenen aktiviert.)
+2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. Die Überwachung von ASP.NET-Apps ist standardmäßig mit zwei verschiedenen Erfassungsstufen aktiviert.
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new.png)
 
-    * Die .NET-Ebene **Basissammlung** bietet wesentliche Einzelinstanz-APM-Funktionen.
+   * Die .NET-Ebene **Basissammlung** bietet wesentliche Einzelinstanz-APM-Funktionen.
     
-    * Die .NET-Ebene **Empfohlen Sammlung**:
-        * Fügt CPU-, Speicher- und E/A-Nutzungstrends hinzu.
-        * Korreliert von Microservices über Anforderungs-/Abhängigkeitsgrenzen hinweg.
-        * Sammelt Nutzungstrends und ermöglicht die Korrelation von Verfügbarkeitsergebnissen und Transaktionen.
-        * Erfasst Ausnahmen, die vom Hostprozess nicht behandelt werden.
-        * Verbessert die Genauigkeit der APM-Metriken unter Last, wenn die Stichprobe verwendet wird.
+   * Die .NET-Ebene **Empfohlen Sammlung**:
+       * Fügt CPU-, Speicher- und E/A-Nutzungstrends hinzu.
+       * Korreliert von Microservices über Anforderungs-/Abhängigkeitsgrenzen hinweg.
+       * Sammelt Nutzungstrends und ermöglicht die Korrelation von Verfügbarkeitsergebnissen und Transaktionen.
+       * Erfasst Ausnahmen, die vom Hostprozess nicht behandelt werden.
+       * Verbessert die Genauigkeit der APM-Metriken unter Last, wenn die Stichprobe verwendet wird.
     
-    .NET Core bietet **Empfohlen Sammlung** oder „Deaktiviert“ für .NET Core 2.0 und 2.1.
+     .NET Core bietet die Optionen **Recommended collection** (Empfohlene Sammlung) oder **Disabled** (Deaktiviert) für .NET Core 2.0 und 2.1.
 
 3. **Instrumentieren Sie Ihre App Service-Instanz**, nachdem Application Insights installiert wurde.
 
@@ -66,9 +67,9 @@ Wenn Sie bereits eine App Service-Instanz in Azure ausführen, verfügen Sie sch
    * Wählen Sie „Einstellungen“ > „Anwendungseinstellungen“ aus.
    * Fügen Sie unter „App-Einstellungen“ ein neues Schlüssel-Wert-Paar hinzu:
 
-    Schlüssel: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Schlüssel: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-    Wert: `true`
+     Wert: `true`
    * **Speichern** Sie die Einstellungen, und **starten Sie die App neu**.
 
 4. Erkunden Sie die Überwachungsdaten Ihrer App, indem Sie **Einstellungen** > **Application Insights** > **Weitere Informationen in Application Insights anzeigen** wählen.
@@ -101,6 +102,65 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 
 * Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** und dann die gewünschte Ressource aus. Sie erhalten die Möglichkeit, eine neue Ressource zu erstellen. Führen Sie die Neuerstellung und dann die erneute Bereitstellung durch.
 
+## <a name="automate-monitoring"></a>Automatisieren der Überwachung
+
+Sie müssen nur die Anwendungseinstellungen festlegen, um die Sammlung von Telemetriedaten mit Application Insights zu aktivieren:
+
+   ![App Service-Anwendungseinstellungen mit verfügbaren Application Insights-Einstellungen](./media/azure-web-apps/application-settings.png)
+
+### <a name="application-settings-definitions"></a>Definitionen von Anwendungseinstellungen
+
+|Name der App-Einstellung |  Definition | Wert |
+|-----------------|:------------|-------------:|
+|ApplicationInsightsAgent_EXTENSION_VERSION | Die Haupterweiterung, die die Laufzeitüberwachung steuert. | `~2` |
+|XDT_MicrosoftApplicationInsights_Mode |  Wichtige Features werden nur im Standardmodus aktiviert, um eine optimale Leistung zu gewährleisten. | `default` oder `recommended` |
+|InstrumentationEngine_EXTENSION_VERSION | Legt fest, ob die Engine zum binären erneuten Generieren `InstrumentationEngine` aktiviert ist. Diese Einstellung wirkt sich auf die Leistung aus und beeinträchtigt den Kaltstart/die Startzeit. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | Legt fest, ob SQL- und Azure-Tabellentext gemeinsam mit Abhängigkeitsaufrufen erfasst wird. Leistungswarnung: Für diese Einstellung ist die Engine `InstrumentationEngine` erforderlich. | `~1` |
+
+### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service-Anwendungseinstellungen mit dem Azure Resource Manager.
+
+Sie können die App Service-Anwendungseinstellungen mit [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) verwalten und konfigurieren. Diese Methode kann bei der Bereitstellung neuer App Service-Ressourcen mit Azure Resource Manager-Automatisierung oder zur Änderung der Einstellungen vorhandener Ressourcen verwendet werden.
+
+Die Grundstruktur des JSON-Codes für die Anwendungseinstellungen für eine App Service-Instanz sieht folgendermaßen aus:
+
+```JSON
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('webSiteName'))]"
+          ],
+          "tags": {
+            "displayName": "Application Insights Settings"
+          },
+          "properties": {
+            "key1": "value1",
+            "key2": "value2"
+          }
+        }
+      ]
+
+```
+
+Ein Beispiel für eine Azure Resource Manager-Vorlage mit Anwendungseinstellungen für Application Insights finden Sie in [dieser Vorlage](https://github.com/Andrew-MSFT/BasicImageGallery), insbesondere in [Zeile 238](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238).
+
+### <a name="automate-the-creation-of-an-application-insights-resource-and-link-to-your-newly-created-app-service"></a>Automatisieren der Erstellung einer Application Insights-Ressource und Verknüpfen Ihrer neu erstellten App Service-Instanz
+
+Das Erstellen einer Azure Resource Manager-Vorlage mit allen Application Insights-Standardeinstellungen ähnelt am Anfang dem Erstellen einer neuen Web-App mit aktiviertem Application Insights-Dienst.
+
+Wählen Sie die Option **Automation-Optionen**.
+
+   ![Menü zum Erstellen einer App Service-Web-App](./media/azure-web-apps/create-web-app.png)
+
+Dadurch wird die aktuellste Azure Resource Manager-Vorlage mit allen erforderlichen Einstellungen erneut generiert.
+
+  ![App Service-Web-App-Vorlage](./media/azure-web-apps/arm-template.png)
+
+> [!NOTE]
+> Die Vorlage generiert Anwendungseinstellungen im Modus „default“ (Standard). Dieser Modus ist leistungsoptimiert, aber Sie können die Vorlage anpassen, um die von Ihnen bevorzugten Features zu aktivieren.
+
 ## <a name="more-telemetry"></a>Mehr Telemetrie
 
 * [Ladedaten für Webseiten](../../azure-monitor/app/javascript.md)
@@ -108,14 +168,28 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
+### <a name="do-i-still-need-to-go-to-extensions---add---application-insights-extension-for-new-app-service-apps"></a>Muss ich immer noch zu Extensions > Add > Application Insights extension (Erweiterungen > Hinzufügen > Application Insights) navigieren, um neue App Service-Apps hinzuzufügen?
+
+Nein, Sie müssen die Erweiterung nicht mehr manuell hinzufügen. Wenn Sie Application Insights über die Einstellungen aktivieren, werden alle für die Überwachung erforderlichen Anwendungseinstellungen hinzugefügt. Das ist möglich, da die Dateien, die in der Vergangenheit von der Erweiterung hinzugefügt wurden, jetzt als Teil des App Service-Images [vorinstalliert](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) sind. Die Dateien befinden sich unter `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`.
+
+### <a name="if-runtime-and-build-time-monitoring-are-both-enabled-do-i-end-up-with-duplicate-data"></a>Wenn sowohl die Laufzeit- als auch die Buildzeitüberwachung aktiviert sind, erhalte ich dann duplizierte Daten?
+
+Nein, wenn die Buildzeitüberwachung erkannt wird, sendet die Laufzeitüberwachung über die Erweiterung standardmäßig keine Daten mehr, und nur die Konfiguration für die Buildzeitüberwachung wird berücksichtigt. Die Laufzeitüberwachung wird angehalten, wenn eine der drei folgenden Dateien erkannt wird:
+
+* „Microsoft.ApplicationInsights.dll“
+* „Microsoft.ASP.NET.TelemetryCorrelation.dll“
+* „System.Diagnostics.DiagnosticSource.dll“
+
+Bedenken Sie, dass in vielen Versionen von Visual Studio einige oder alle Dateien standardmäßig zu den ASP.NET- und ASP.NET Core-Visual-Studio-Vorlagendateien hinzugefügt werden. Wenn Sie Ihr Projekt mit einer der Vorlagen erstellt haben, wird die Aktivierung der Laufzeitüberwachung durch das Vorhandensein der Datei verhindert, auch wenn Sie Application Insights nicht explizit aktiviert haben.
+
 ### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED bewirkt unvollständige HTML-Antworten in .NET CORE-Webanwendungen.
 
 Durch das Aktivieren von Javascript über App Services können HTML-Antworten abgeschnitten werden.
 
 * Problemumgehung 1: Legen Sie die Anwendungseinstellung APPINSIGHTS_JAVASCRIPT_ENABLED auf „false“ fest, oder entfernen Sie sie vollständig, und führen Sie einen Neustart durch.
-* Problemumgehung 2: Fügen Sie das SDK über den Code hinzu, und entfernen Sie die Erweiterung (Profiler und Momentaufnahmedebugger können mit dieser Konfiguration nicht verwendet werden).
+* Problemumgehung 2: Fügen Sie das SDK über den Code hinzu, und entfernen Sie die Erweiterung (Profiler und Momentaufnahmedebugger funktionieren mit dieser Konfiguration nicht).
 
-Wir verfolgen dieses Problem [hier](https://github.com/Microsoft/ApplicationInsights-Home/issues/277).
+Unter [Azure extension causing incomplete HTML response (Azure-Erweiterung führt zu unvollständiger HTML-Antwort)](https://github.com/Microsoft/ApplicationInsights-Home/issues/277) können Sie den Status dieses Problems verfolgen.
 
 Für .NET Core werden derzeit **nicht unterstützt**:
 
@@ -134,4 +208,3 @@ Für .NET Core werden derzeit **nicht unterstützt**:
 * [Empfangen von Warnbenachrichtigungen](../../azure-monitor/platform/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../../azure-monitor/app/javascript.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
 * [Einrichten von Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist
-

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 739780bedc701cc63747db6100242d0d6cad6085
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340051"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542674"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Verwenden benutzerdefinierter Zuweisungsrichtlinien
 
@@ -90,7 +90,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen von zwei neuen
 
 In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe, von der die benutzerdefinierte Zuweisungsrichtlinie verwendet wird. Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md) für die Registrierung verwendet. Für eine Lösung mit höherer Sicherheit empfiehlt sich die Verwendung eines [X.509-Zertifikatnachweises](concepts-security.md#x509-certificates) mit einer Kette von Vertrauensstellungen.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning-Dienstinstanz.
 
 2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
 
@@ -466,7 +466,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
    
-    Speichern Sie die Datei.
+    Speichern Sie die Datei .
 
 2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Klicken Sie in der Eingabeaufforderung zum Neuerstellen des Projekts auf **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
 
@@ -496,7 +496,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
    
-    Speichern Sie die Datei.
+    Speichern Sie die Datei .
 
 2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Klicken Sie in der Eingabeaufforderung zum Neuerstellen des Projekts auf **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
 

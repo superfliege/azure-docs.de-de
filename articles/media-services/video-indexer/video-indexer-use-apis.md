@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988050"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862717"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
 
@@ -23,7 +23,7 @@ ms.locfileid: "55988050"
 
 In Video Indexer ist unterschiedliche KI-Technologie (Künstliche Intelligenz) für Audio- und Videodaten zusammengefasst, und der Dienst wird von Microsoft als integrierter Dienst angeboten, um die Entwicklung zu vereinfachen. Die APIs sind so konzipiert, dass sich Entwickler auf die Nutzung der KI-Technologie für Medien konzentrieren können, ohne sich um Dinge wie die Skalierung, globale Reichweite, Verfügbarkeit und Zuverlässigkeit der Cloudplattform kümmern zu müssen. Sie können die API verwenden, um Ihre Dateien hochzuladen, ausführliche Videoinformationen zu erhalten, URLs von Insights- und Player-Widgets abzurufen, um diese in Ihre Anwendung einzubetten, und andere Aufgaben durchzuführen.
 
-Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Die Indizierungszeit wird minutenweise abgerechnet. Außerdem fallen Gebühren für das Azure Media Services-Konto an. 
+Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, [das mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Die Indizierungszeit wird minutenweise abgerechnet. Außerdem fallen Gebühren für das Azure Media Services-Konto an. 
 
 In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](https://api-portal.videoindexer.ai/) nutzen können.
 
@@ -33,10 +33,10 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
     
     ![Anmelden](./media/video-indexer-use-apis/video-indexer-api01.png)
 
-    > [!Important]
-    > * Sie müssen denselben Anbieter verwenden, den Sie beim Anmelden für Video Indexer genutzt haben.
-    > * Persönliche Google- und Microsoft-Konten (outlook/live) können nur für Testkonten verwendet werden. Für Konten, die über eine Verbindung mit Azure verfügen, ist Azure AD erforderlich.
-    > * Pro E-Mail-Adresse kann nur ein aktives Konto vorhanden sein. Wenn ein Benutzer versucht, sich mit user@gmail.com für LinkedIn anzumelden, und anschließend user@gmail.com auch für Google verwendet, wird für die zweite Anmeldung eine Fehlerseite mit dem Hinweis angezeigt, dass der Benutzer bereits vorhanden ist.
+   > [!Important]
+   > * Sie müssen denselben Anbieter verwenden, den Sie beim Anmelden für Video Indexer genutzt haben.
+   > * Persönliche Google- und Microsoft-Konten (outlook/live) können nur für Testkonten verwendet werden. Für Konten, die über eine Verbindung mit Azure verfügen, ist Azure AD erforderlich.
+   > * Pro E-Mail-Adresse kann nur ein aktives Konto vorhanden sein. Wenn ein Benutzer versucht, sich mit user@gmail.com für LinkedIn anzumelden, und anschließend user@gmail.com auch für Google verwendet, wird für die zweite Anmeldung eine Fehlerseite mit dem Hinweis angezeigt, dass der Benutzer bereits vorhanden ist.
 
 2. Führen Sie den Schritt zum Abonnieren aus.
 
@@ -72,7 +72,7 @@ Zur Vereinfachung können Sie „**Authorization**-API“ > „**GetAccounts**�
 
 Zugriffstoken laufen nach einer Stunde ab. Stellen Sie sicher, dass Ihr Zugriffstoken gültig ist, bevor Sie die Operations-API verwenden. Wenn es abgelaufen ist, müssen Sie die Authorization-API erneut aufrufen, um ein neues Zugriffstoken zu erhalten.
  
-Sie sind nun bereit, um mit dem Integrieren mit der API zu beginnen. Lesen Sie sich die [ausführliche Beschreibung zu den einzelnen Video Indexer-REST-APIs](http://api-portal.videoindexer.ai/) durch.
+Sie sind nun bereit, um mit dem Integrieren mit der API zu beginnen. Lesen Sie sich die [ausführliche Beschreibung zu den einzelnen Video Indexer-REST-APIs](https://api-portal.videoindexer.ai/) durch.
 
 ## <a name="location"></a>Standort
 

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Probleme mit freigegebenen Azure Automation-R
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/3/2018
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 35e39a070a4c976655296d2ea141478d13e43bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902823"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Beheben von Fehlern bei freigegebenen Ressourcen
 
@@ -38,6 +38,24 @@ Um dieses Problem zu beheben, müssen Sie das Modul, das im Zustand **Importiere
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+### <a name="update-azure-modules-importing"></a>Szenario: AzureRM-Module sind beim Versuch der Aktualisierung während des Importierens hängen geblieben.
+
+#### <a name="issue"></a>Problem
+
+Ein Banner mit der folgenden Meldung wird weiterhin in Ihrem Konto angezeigt, nachdem Sie versucht haben, Ihre AzureRM-Module zu aktualisieren:
+
+```
+Azure modules are being updated
+```
+
+#### <a name="cause"></a>Ursache
+
+Beim Aktualisieren der AzureRM-Module in einem Automation-Konto tritt in Ressourcengruppen mit einem mit 0 beginnenden numerischen Namen ein bekanntes Problem auf.
+
+#### <a name="resolution"></a>Lösung
+
+Um die Azure-Module in Ihrem Automation-Konto zu aktualisieren, müssen sich die Module in einer Ressourcengruppe mit einem alphanumerischen Namen befinden. Ressourcengruppen, deren numerischer Name mit 0 beginnt, können zurzeit keine AzureRM-Module aktualisieren.
 
 ### <a name="module-fails-to-import"></a>Szenario: Fehler beim Modulimport oder Ausführung von Cmdlets nach Import nicht möglich
 
@@ -119,6 +137,30 @@ Sie haben keine Berechtigungen zum Erstellen oder Aktualisieren des ausführende
 Um ein ausführendes Konto zu erstellen oder zu aktualisieren, müssen Sie über geeignete Berechtigungen für die verschiedenen Ressourcen verfügen, die vom ausführenden Konto verwendet werden. Informationen zu den benötigten Berechtigungen zum Erstellen oder Aktualisieren eines ausführenden Kontos finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](../manage-runas-account.md#permissions).
 
 Wenn das Problem durch eine Sperre verursacht wird, überprüfen Sie, ob die Sperre entfernt werden kann. Navigieren Sie zur gesperrten Ressource, klicken Sie mit der rechten Maustaste auf das Schlosssymbol, und klicken Sie auf **Löschen**, um die Sperre zu entfernen.
+
+### <a name="iphelper"></a>Szenario: Sie erhalten beim Ausführen eines Runbooks den Fehler „Der Einstiegspunkt 'GetPerAdapterInfo' wurde nicht in der DLL 'iplpapi.dll' gefunden“.
+
+#### <a name="issue"></a>Problem
+
+Sie erhalten beim Ausführen eines Runbooks die folgende Ausnahme:
+
+```error
+Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler wird wahrscheinlich durch ein falsch konfiguriertes [ausführendes Konto](../manage-runas-account.md) verursacht.
+
+#### <a name="resolution"></a>Lösung
+
+Stellen Sie sicher, dass Ihr [ausführendes Konto](../manage-runas-account.md) ordnungsgemäß konfiguriert ist. Nachdem es ordnungsgemäß konfiguriert ist, vergewissern Sie sich, dass der Code in Ihrem Runbook für die Authentifizierung mit Azure korrekt ist. Das folgende Beispiel zeigt einen Codeausschnitt in einem Runbook zum Authentifizieren bei Azure mithilfe eines ausführenden Kontos.
+
+```powershell
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

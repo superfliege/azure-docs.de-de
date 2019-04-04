@@ -1,5 +1,5 @@
 ---
-title: Der Clusterressourcen-Manager von Service Fabric – Verschiebungskosten | Microsoft Docs
+title: 'Resource Manager für Service Fabric-Cluster: Verschiebungskosten | Microsoft-Dokumentation'
 description: Übersicht über die Verschiebungskosten für Service Fabric-Dienste
 services: service-fabric
 documentationcenter: .net
@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a4431f1d2e9a63ee7797100cc1092244d9a8b880
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204922"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101515"
 ---
 # <a name="service-movement-cost"></a>Kosten von Dienstverschiebungen
 Ein Faktor bei den Überlegungen im Cluster Resource Manager von Service Fabric zu Veränderungen an einem Cluster sind die Kosten, die mit diesen Änderungen verbunden sind. Die „Kosten“ werden dabei gegen die mögliche Verbesserung des Clusters abgewogen. Die Kosten werden berücksichtigt, wenn Dienste zum Lastenausgleich, zur Defragmentierung und aufgrund anderer Anforderungen verschoben werden. Ziel ist es, die Anforderungen auf die am wenigsten störende und kostengünstigste Weise zu erfüllen. 
@@ -76,9 +76,10 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>Auswirkungen von Verschiebungskosten
-MoveCost hat vier Stufen: Zero, Low, Medium und High. Diese MoveCosts stehen zueinander in einem Verhältnis, mit Ausnahme von Zero. Zero bedeutet, dass das Verschieben keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte. Das Festlegen der Verschiebung auf High stellt *keine* Garantie dafür dar, dass das Replikat an einem Ort verbleibt.
+MoveCost hat vier Stufen: Null, Niedrig, Mittel und Hoch. Diese MoveCosts stehen zueinander in einem Verhältnis, mit Ausnahme von Zero. Zero bedeutet, dass das Verschieben keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte. Das Festlegen der Verschiebung auf High stellt *keine* Garantie dafür dar, dass das Replikat an einem Ort verbleibt.
 
 <center>
+
 ![Verschiebungskosten als Faktor bei der Auswahl der zu verschiebenden Replikate][Image1]
 </center>
 

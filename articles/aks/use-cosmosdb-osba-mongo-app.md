@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, Open Service Broker for Azure
-ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991983"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrieren einer vorhandenen MongoDB-Anwendung mit Azure Cosmos DB-API für MongoDB und Open Service Broker for Azure (OSBA)
 
@@ -81,7 +81,7 @@ Starten Sie Ihre Anwendung, und weisen Sie sie an, das *mongodb*-Profil zu verwe
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Navigieren Sie in Ihrem Browser zu http://localhost:8080.
+Navigieren Sie in Ihrem Browser zu `http://localhost:8080`.
 
 ![Spring-Musik-App mit Standarddaten](media/music-app.png)
 
@@ -184,12 +184,12 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Beachten Sie, dass Ihre Anwendung weiterhin das *mongodb*-Profil und einen URI nutzt, der mit *mongodb://* beginnt, um eine Verbindung mit der Cosmos DB-Datenbank herzustellen. Diese Kompatibilität wird über die [Azure Cosmos DB-API für MongoDB](../cosmos-db/mongodb-introduction.md) bereitgestellt. Auf diese Weise kann Ihre Anwendung weiterhin so betrieben werden, als ob eine MongoDB-Datenbank verwendet wird, während eigentlich Cosmos DB genutzt wird.
 
-Navigieren Sie in Ihrem Browser zu http://localhost:8080. Beachten Sie, dass die Standarddaten wiederhergestellt wurden. Führen Sie Interaktionen durch, indem Sie einige vorhandene Alben löschen und einige neue erstellen. Sie können überprüfen, ob Ihre Änderungen gespeichert werden, indem Sie die Anwendung anhalten und neu starten und anschließend im Browser wieder zur Anwendung navigieren. Sie sehen dann, ob die vorgenommenen Änderungen noch vorhanden sind. Die Änderungen werden in der Cosmos DB-Instanz beibehalten, die Sie mit Open Service Broker for Azure erstellt haben.
+Navigieren Sie in Ihrem Browser zu `http://localhost:8080`. Beachten Sie, dass die Standarddaten wiederhergestellt wurden. Führen Sie Interaktionen durch, indem Sie einige vorhandene Alben löschen und einige neue erstellen. Sie können überprüfen, ob Ihre Änderungen gespeichert werden, indem Sie die Anwendung anhalten und neu starten und anschließend im Browser wieder zur Anwendung navigieren. Sie sehen dann, ob die vorgenommenen Änderungen noch vorhanden sind. Die Änderungen werden in der Cosmos DB-Instanz beibehalten, die Sie mit Open Service Broker for Azure erstellt haben.
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Ausführen der Anwendung in Ihrem AKS-Cluster
 
-Sie können [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) nutzen, um die Anwendung in Ihrem AKS-Cluster bereitzustellen. Mit Azure Dev Spaces können Sie Artefakte generieren, z.B. Dockerfiles und Helm-Diagramme, und eine Anwendung in AKS bereitstellen und ausführen.
+Sie können [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) nutzen, um die Anwendung in Ihrem AKS-Cluster bereitzustellen. Mit Azure Dev Spaces können Sie Artefakte generieren, z. B. Dockerfiles und Helm-Diagramme, und eine Anwendung in AKS bereitstellen und ausführen.
 
 Aktivieren Sie Azure Dev Spaces wie folgt in Ihrem AKS-Cluster:
 

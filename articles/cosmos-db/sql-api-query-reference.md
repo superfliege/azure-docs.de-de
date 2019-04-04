@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: de50c18fa8e2bebcb584fcd5763f0428637df484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: e49b521f625dee8c48c448065096ed027cf6c9b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455788"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090031"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>SQL-Sprachreferenz für Azure Cosmos DB 
 
@@ -218,11 +218,11 @@ Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der
   
 Die Auswertung der Verknüpfung hängt vom Kontextbereich der beteiligten Sätze ab:  
   
--  Ein Join zwischen Containersatz A und containerbezogenem Satz B führt zu einem Kreuzprodukt aller Elemente in den Sätzen A und B.
+- Ein Join zwischen Containersatz A und containerbezogenem Satz B führt zu einem Kreuzprodukt aller Elemente in den Sätzen A und B.
   
--   Eine Verknüpfung zwischen Satz A und dokumentbezogenem Satz B führt zu einer Vereinigung aller durch die Auswertung des dokumentbezogenen Satzes B für jedes Dokument aus Satz A gewonnenen Sätze.  
+- Eine Verknüpfung zwischen Satz A und dokumentbezogenem Satz B führt zu einer Vereinigung aller durch die Auswertung des dokumentbezogenen Satzes B für jedes Dokument aus Satz A gewonnenen Sätze.  
   
- Im aktuellen Release wird höchstens ein containerbezogener Ausdruck vom Abfrageprozessor unterstützt.  
+  Im aktuellen Release wird höchstens ein containerbezogener Ausdruck vom Abfrageprozessor unterstützt.  
   
 ### <a name="examples-of-joins"></a>Beispiele für Verknüpfungen  
   
@@ -321,17 +321,17 @@ WHERE <filter_condition>
   
  **Argumente**  
   
--   `<filter_condition>`  
+- `<filter_condition>`  
   
-     Gibt die Bedingung an, die erfüllt sein muss, damit die Dokumente zurückgegeben werden.  
+   Gibt die Bedingung an, die erfüllt sein muss, damit die Dokumente zurückgegeben werden.  
   
--   `<scalar_expression>`  
+- `<scalar_expression>`  
   
-     Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
+   Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
   
- **Anmerkungen**  
+  **Anmerkungen**  
   
- Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert TRUE erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht.  
+  Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert TRUE erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY-Klausel  
  Gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an. Beispiele finden Sie unter [Beispiele für die ORDER BY-Klausel](how-to-sql-query.md#OrderByClause).
@@ -347,29 +347,29 @@ ORDER BY <sort_specification>
   
  **Argumente**  
   
--   `<sort_specification>`  
+- `<sort_specification>`  
   
-     Gibt eine Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll. Eine Sortierspalte kann als Name oder Spaltenalias angegeben werden.  
+   Gibt eine Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll. Eine Sortierspalte kann als Name oder Spaltenalias angegeben werden.  
   
-     Es können mehrere Sortierspalten angegeben werden. Spaltennamen müssen eindeutig sein. Die Sequenz der Sortierspalten in der ORDER BY-Klausel definiert die Anordnung des sortierten Resultsets. Dies bedeutet: Das Resultset wird nach der ersten Eigenschaft sortiert, und dann wird diese sortierte Liste nach der zweiten Eigenschaft sortiert usw.  
+   Es können mehrere Sortierspalten angegeben werden. Spaltennamen müssen eindeutig sein. Die Sequenz der Sortierspalten in der ORDER BY-Klausel definiert die Anordnung des sortierten Resultsets. Dies bedeutet: Das Resultset wird nach der ersten Eigenschaft sortiert, und dann wird diese sortierte Liste nach der zweiten Eigenschaft sortiert usw.  
   
-     Die Spaltennamen, auf die in der ORDER BY-Klausel verwiesen wird, müssen entweder einer Spalte in der Auswahlliste oder einer Spalte entsprechen, die in einer Tabelle definiert ist, die in der FROM-Klausel eindeutig angegeben ist.  
+   Die Spaltennamen, auf die in der ORDER BY-Klausel verwiesen wird, müssen entweder einer Spalte in der Auswahlliste oder einer Spalte entsprechen, die in einer Tabelle definiert ist, die in der FROM-Klausel eindeutig angegeben ist.  
   
--   `<sort_expression>`  
+- `<sort_expression>`  
   
-     Gibt eine einzelne Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll.  
+   Gibt eine einzelne Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll.  
   
--   `<scalar_expression>`  
+- `<scalar_expression>`  
   
-     Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
+   Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
   
--   `ASC | DESC`  
+- `ASC | DESC`  
   
-     Gibt an, dass die Werte in der angegebenen Spalte in aufsteigender oder absteigender Reihenfolge sortiert werden sollen. ASC sortiert vom niedrigsten Wert zum höchsten Wert. DESC sortiert vom höchsten Wert zum niedrigsten Wert. ASC ist die Standardsortierreihenfolge. NULL-Werte werden als die niedrigsten möglichen Werte behandelt.  
+   Gibt an, dass die Werte in der angegebenen Spalte in aufsteigender oder absteigender Reihenfolge sortiert werden sollen. ASC sortiert vom niedrigsten Wert zum höchsten Wert. DESC sortiert vom höchsten Wert zum niedrigsten Wert. ASC ist die Standardsortierreihenfolge. NULL-Werte werden als die niedrigsten möglichen Werte behandelt.  
   
- **Anmerkungen**  
+  **Anmerkungen**  
   
- Die Abfragegrammatik unterstützt mehrere „ORDER BY“-Eigenschaften, die Cosmos DB-Abfragelaufzeit hingegen nur die Sortierung für eine einzelne Eigenschaft und für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
+  Die Abfragegrammatik unterstützt mehrere „ORDER BY“-Eigenschaften, die Cosmos DB-Abfragelaufzeit hingegen nur die Sortierung für eine einzelne Eigenschaft und für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalarausdrücke  
  Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden. Beispiele finden Sie unter [Beispiele für skalare Ausdrücke](how-to-sql-query.md#scalar-expressions).
@@ -407,62 +407,62 @@ ORDER BY <sort_specification>
   
  **Argumente**  
   
--   `<constant>`  
+- `<constant>`  
   
-     Stellt einen konstanten Wert dar. Details hierzu finden Sie im Abschnitt [Konstanten](#bk_constants).  
+   Stellt einen konstanten Wert dar. Details hierzu finden Sie im Abschnitt [Konstanten](#bk_constants).  
   
--   `input_alias`  
+- `input_alias`  
   
-     Stellt einen Wert dar, der von dem `input_alias` definiert wird, der in der `FROM` Klausel eingeführt wird.  
-    Dieser Wert ist garantiert nicht **undefiniert** –**undefinierte** Werte in der Eingabe werden übersprungen.  
+   Stellt einen Wert dar, der von dem `input_alias` definiert wird, der in der `FROM` Klausel eingeführt wird.  
+  Dieser Wert ist garantiert nicht **undefiniert** –**undefinierte** Werte in der Eingabe werden übersprungen.  
   
--   `<scalar_expression>.property_name`  
+- `<scalar_expression>.property_name`  
   
-     Stellt einen Wert der Eigenschaft eines Objekts dar. Wenn die Eigenschaft nicht vorhanden ist, oder über einen Wert, der kein Objekt ist, auf die Eigenschaft verwiesen wird, ergibt der Ausdruck den Wert **undefiniert**.  
+   Stellt einen Wert der Eigenschaft eines Objekts dar. Wenn die Eigenschaft nicht vorhanden ist, oder über einen Wert, der kein Objekt ist, auf die Eigenschaft verwiesen wird, ergibt der Ausdruck den Wert **undefiniert**.  
   
--   `<scalar_expression>'['"property_name"|array_index']'`  
+- `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Stellt einen Wert der Eigenschaft mit dem Namen `property_name` oder ein Arrayelement mit Index `array_index` eines Objekts/Arrays dar. Wenn die Eigenschaft/der Arrayindex nicht vorhanden ist, oder über einen Wert, der kein Objekt/Array ist, auf die Eigenschaft/den Arrayindex verwiesen wird, wird der Ausdruck als undefinierter Wert ausgewertet.  
+   Stellt einen Wert der Eigenschaft mit dem Namen `property_name` oder ein Arrayelement mit Index `array_index` eines Objekts/Arrays dar. Wenn die Eigenschaft/der Arrayindex nicht vorhanden ist, oder über einen Wert, der kein Objekt/Array ist, auf die Eigenschaft/den Arrayindex verwiesen wird, wird der Ausdruck als undefinierter Wert ausgewertet.  
   
--   `unary_operator <scalar_expression>`  
+- `unary_operator <scalar_expression>`  
   
-     Stellt einen Operator dar, der auf einen einzelnen Wert angewendet wird. Details hierzu finden Sie im Abschnitt [Operatoren](#bk_operators).  
+   Stellt einen Operator dar, der auf einen einzelnen Wert angewendet wird. Details hierzu finden Sie im Abschnitt [Operatoren](#bk_operators).  
   
--   `<scalar_expression> binary_operator <scalar_expression>`  
+- `<scalar_expression> binary_operator <scalar_expression>`  
   
-     Stellt einen Operator dar, der auf zwei Werte angewendet wird. Details hierzu finden Sie im Abschnitt [Operatoren](#bk_operators).  
+   Stellt einen Operator dar, der auf zwei Werte angewendet wird. Details hierzu finden Sie im Abschnitt [Operatoren](#bk_operators).  
   
--   `<scalar_function_expression>`  
+- `<scalar_function_expression>`  
   
-     Stellt einen Wert dar, der durch ein Ergebnis eines Funktionsaufrufs definiert wird.  
+   Stellt einen Wert dar, der durch ein Ergebnis eines Funktionsaufrufs definiert wird.  
   
--   `udf_scalar_function`  
+- `udf_scalar_function`  
   
-     Name der benutzerdefinierten Skalarfunktion.  
+   Name der benutzerdefinierten Skalarfunktion.  
   
--   `builtin_scalar_function`  
+- `builtin_scalar_function`  
   
-     Name der integrierten skalaren Funktion.  
+   Name der integrierten skalaren Funktion.  
   
--   `<create_object_expression>`  
+- `<create_object_expression>`  
   
-     Stellt einen Wert dar, der durch Erstellen eines neuen Objekts mit festgelegten Eigenschaften und ihren Werten gewonnen wird.  
+   Stellt einen Wert dar, der durch Erstellen eines neuen Objekts mit festgelegten Eigenschaften und ihren Werten gewonnen wird.  
   
--   `<create_array_expression>`  
+- `<create_array_expression>`  
   
-     Stellt einen Wert dar, der durch Erstellen eines neuen Arrays mit festgelegten Werten als Elemente gewonnen wird.  
+   Stellt einen Wert dar, der durch Erstellen eines neuen Arrays mit festgelegten Werten als Elemente gewonnen wird.  
   
--   `parameter_name`  
+- `parameter_name`  
   
-     Stellt einen Wert des angegebenen Parameternamens dar. Das erste Zeichen eines Parameternamens muss ein einzelnes „\@“ sein.  
+   Stellt einen Wert des angegebenen Parameternamens dar. Das erste Zeichen eines Parameternamens muss ein einzelnes „\@“ sein.  
   
- **Anmerkungen**  
+  **Anmerkungen**  
   
- Beim Aufrufen einer integrierten oder benutzerdefinierten Skalarfunktion müssen alle Argumente definiert werden. Wenn eines der Argumente undefiniert ist, wird die Funktion nicht aufgerufen, und das Ergebnis ist undefiniert.  
+  Beim Aufrufen einer integrierten oder benutzerdefinierten Skalarfunktion müssen alle Argumente definiert werden. Wenn eines der Argumente undefiniert ist, wird die Funktion nicht aufgerufen, und das Ergebnis ist undefiniert.  
   
- Beim Erstellen eines Objekts wird jede Eigenschaft, der ein undefinierter Wert zugewiesen ist, übersprungen und nicht in das erstellte Objekt einbezogen.  
+  Beim Erstellen eines Objekts wird jede Eigenschaft, der ein undefinierter Wert zugewiesen ist, übersprungen und nicht in das erstellte Objekt einbezogen.  
   
- Beim Erstellen eines Arrays wird jeder Elementwert, dem ein **undefinierter** Wert zugewiesen ist, übersprungen und nicht in das erstellte Objekt einbezogen. Daraufhin nimmt das nächste definierte Element seinen Platz ein, sodass das erstellte Array keine übersprungenen Indizes aufweist.  
+  Beim Erstellen eines Arrays wird jeder Elementwert, dem ein **undefinierter** Wert zugewiesen ist, übersprungen und nicht in das erstellte Objekt einbezogen. Daraufhin nimmt das nächste definierte Element seinen Platz ein, sodass das erstellte Array keine übersprungenen Indizes aufweist.  
   
 ##  <a name="bk_operators"></a> Operatoren  
  Dieser Abschnitt beschreibt die unterstützten Operatoren. Jeder Operator kann genau einer Kategorie zugewiesen werden.  
@@ -498,9 +498,11 @@ ORDER BY <sort_specification>
 |**String**|**&#124;&#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
   
  **Ternäre Operatoren:**  
-  
-|Ternärer Operator|?|Gibt das zweite Argument zurück, wenn die Auswertung des ersten Arguments **true** ergibt; gibt andernfalls das dritte Argument zurück.|  
+
+|**Name**|**Operator**|**Details**| 
 |-|-|-|  
+|Ternärer Operator|?|Gibt das zweite Argument zurück, wenn die Auswertung des ersten Arguments **true** ergibt; gibt andernfalls das dritte Argument zurück.|  
+
   
  **Reihenfolge der Werte für den Vergleich**  
   
@@ -614,7 +616,7 @@ ORDER BY <sort_specification>
   
   Zeichenfolgenliterale sind Unicode-Zeichenfolgen, die durch eine Sequenz aus null oder mehr Unicode-Zeichen oder Escapesequenzen dargestellt werden. Zeichenfolgenliterale werden in einfache Anführungszeichen (Apostrophen: ') oder doppelte Anführungszeichen (Anführungszeichen: ") eingeschlossen.  
   
- Folgende Escapesequenzen sind zulässig:  
+  Folgende Escapesequenzen sind zulässig:  
   
 |**Escapesequenz**|**Beschreibung**|**Unicode-Zeichen**|  
 |-|-|-|  
@@ -634,17 +636,17 @@ ORDER BY <sort_specification>
   
  Die folgenden Filter werden für die Indexsuche berücksichtigt:  
   
--   Verwenden des Gleichheitsoperators (=) mit einem Dokumentenpfadausdruck und einer Konstanten.  
+- Verwenden des Gleichheitsoperators (=) mit einem Dokumentenpfadausdruck und einer Konstanten.  
   
--   Verwenden von Bereichsoperatoren (<, \<=, >, >=) mit einem Dokumentenpfadausdruck und Zahlenkonstanten.  
+- Verwenden von Bereichsoperatoren (<, \<=, >, >=) mit einem Dokumentenpfadausdruck und Zahlenkonstanten.  
   
--   Der Dokumentenpfadausdruck steht für jeden Ausdruck, der einen Konstantenpfad in den Dokumenten aus dem referenzierten Datenbankcontainer identifiziert.  
+- Der Dokumentenpfadausdruck steht für jeden Ausdruck, der einen Konstantenpfad in den Dokumenten aus dem referenzierten Datenbankcontainer identifiziert.  
   
- **Dokumentenpfadausdruck**  
+  **Dokumentenpfadausdruck**  
   
- Dokumentenpfadausdrücke sind Ausdrücke, die ein Eigenschaftenpfad oder Arrayindexer für ein Dokument auswertet, das aus Datenbankcontainerdokumenten stammt. Dieser Pfad kann zur Identifizierung des Speicherorts von Werten verwendet werden, auf die in einem Filter direkt in den Dokumenten im Datenbankcontainer verwiesen wird.  
+  Dokumentenpfadausdrücke sind Ausdrücke, die ein Eigenschaftenpfad oder Arrayindexer für ein Dokument auswertet, das aus Datenbankcontainerdokumenten stammt. Dieser Pfad kann zur Identifizierung des Speicherorts von Werten verwendet werden, auf die in einem Filter direkt in den Dokumenten im Datenbankcontainer verwiesen wird.  
   
- Für einen Ausdruck, der als Dokumentenpfadausdruck in Betracht kommt, sollten folgende Voraussetzungen gelten:  
+  Für einen Ausdruck, der als Dokumentenpfadausdruck in Betracht kommt, sollten folgende Voraussetzungen gelten:  
   
 1.  Direktes Verweisen auf den Stamm des Containers.  
   
@@ -707,17 +709,17 @@ ABS (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Ergebnisse der Anwendung der ABS-Funktion auf drei verschiedene Zahlen.  
+  Das folgende Beispiel zeigt die Ergebnisse der Anwendung der ABS-Funktion auf drei verschiedene Zahlen.  
   
 ```  
 SELECT ABS(-1), ABS(0), ABS(1)  
@@ -740,17 +742,17 @@ ACOS(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den ACOS von -1 zurück.  
+  Das folgende Beispiel gibt den ACOS von -1 zurück.  
   
 ```  
 SELECT ACOS(-1)  
@@ -773,17 +775,17 @@ ASIN(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den ASIN für -1 zurück.  
+  Das folgende Beispiel gibt den ASIN für -1 zurück.  
   
 ```  
 SELECT ASIN(-1)  
@@ -806,17 +808,17 @@ ATAN(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den ATAN des angegebenen Werts zurück.  
+  Das folgende Beispiel gibt den ATAN des angegebenen Werts zurück.  
   
 ```  
 SELECT ATAN(-45.01)  
@@ -839,17 +841,17 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel berechnet ATN2 für die angegebenen x- und y-Komponenten.  
+  Das folgende Beispiel berechnet ATN2 für die angegebenen x- und y-Komponenten.  
   
 ```  
 SELECT ATN2(35.175643, 129.44)  
@@ -872,17 +874,17 @@ CEILING (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die positiven numerischen, negativen und Nullwerte mit der CEILING-Funktion an.  
+  Das folgende Beispiel zeigt die positiven numerischen, negativen und Nullwerte mit der CEILING-Funktion an.  
   
 ```  
 SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)  
@@ -905,17 +907,17 @@ COS(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel berechnet den COS des angegebenen Winkels.  
+  Das folgende Beispiel berechnet den COS des angegebenen Winkels.  
   
 ```  
 SELECT COS(14.78)  
@@ -938,17 +940,17 @@ COT(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird der COT des angegebenen Winkels berechnet.  
+  Im folgenden Beispiel wird der COT des angegebenen Winkels berechnet.  
   
 ```  
 SELECT COT(124.1332)  
@@ -971,17 +973,17 @@ DEGREES (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt die Gradzahl in einem Winkel des PI/2-Bogenmaßes zurück.  
+  Das folgende Beispiel gibt die Gradzahl in einem Winkel des PI/2-Bogenmaßes zurück.  
   
 ```  
 SELECT DEGREES(PI()/2)  
@@ -1004,17 +1006,17 @@ FLOOR (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die positiven numerischen, negativen und Nullwerte mit der FLOOR-Funktion an.  
+  Das folgende Beispiel zeigt die positiven numerischen, negativen und Nullwerte mit der FLOOR-Funktion an.  
   
 ```  
 SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)  
@@ -1037,25 +1039,25 @@ EXP (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Anmerkungen**  
+  **Anmerkungen**  
   
- Die Konstante **e** (2,718281...) ist die Basis des natürlichen Logarithmus.  
+  Die Konstante **e** (2,718281...) ist die Basis des natürlichen Logarithmus.  
   
- Der Exponent einer Zahl ist die Konstante **e** potenziert mit der Zahl. Beispiel: EXP(1,0) = e^1,0 = 2,71828182845905 und EXP(10) = e^10 = 22026,4657948067.  
+  Der Exponent einer Zahl ist die Konstante **e** potenziert mit der Zahl. Beispiel: EXP(1,0) = e^1,0 = 2,71828182845905 und EXP(10) = e^10 = 22026,4657948067.  
   
- Der Exponentialwert des natürlichen Logarithmus einer Zahl ist die Zahl selbst: EXP(LOG(n)) = n. Und der natürliche Logarithmus des Exponentialwerts einer Zahl ist die Zahl selbst: LOG(EXP(n)) = n.  
+  Der Exponentialwert des natürlichen Logarithmus einer Zahl ist die Zahl selbst: EXP(LOG(n)) = n. Und der natürliche Logarithmus des Exponentialwerts einer Zahl ist die Zahl selbst: LOG(EXP(n)) = n.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird eine Variable deklariert und der Exponentialwert der angegebenen Variablen zurückgegeben (10).  
+  Im folgenden Beispiel wird eine Variable deklariert und der Exponentialwert der angegebenen Variablen zurückgegeben (10).  
   
 ```  
 SELECT EXP(10)  
@@ -1090,29 +1092,29 @@ LOG (<numeric_expression> [, <base>])
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
--   `base`  
+- `base`  
   
-     Optionales numerisches Argument, das die Basis des Logarithmus festlegt.  
+   Optionales numerisches Argument, das die Basis des Logarithmus festlegt.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Hinweise:**  
+  **Hinweise:**  
   
- Standardmäßig gibt LOG() den natürlichen Logarithmus zurück. Sie können die Basis des Logarithmus mithilfe des optionalen base-Parameters in einen anderen Wert ändern.  
+  Standardmäßig gibt LOG() den natürlichen Logarithmus zurück. Sie können die Basis des Logarithmus mithilfe des optionalen base-Parameters in einen anderen Wert ändern.  
   
- Der natürliche Logarithmus ist der Logarithmus zur Basis **e**, wobei **e** eine Irrationale Konstante ist, die ungefähr 2,718281828 entspricht.  
+  Der natürliche Logarithmus ist der Logarithmus zur Basis **e**, wobei **e** eine Irrationale Konstante ist, die ungefähr 2,718281828 entspricht.  
   
- Der natürliche Logarithmus des Exponentialwerts einer Zahl ist die Zahl selbst: LOG(EXP(n)) = n. Und der Exponentialwert des natürlichen Logarithmus einer Zahl ist die Zahl selbst: EXP(LOG(n)) = n.  
+  Der natürliche Logarithmus des Exponentialwerts einer Zahl ist die Zahl selbst: LOG(EXP(n)) = n. Und der Exponentialwert des natürlichen Logarithmus einer Zahl ist die Zahl selbst: EXP(LOG(n)) = n.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird eine Variable deklariert und der Logarithmuswert der angegebenen Variablen zurückgegeben (10).  
+  Im folgenden Beispiel wird eine Variable deklariert und der Logarithmuswert der angegebenen Variablen zurückgegeben (10).  
   
 ```  
 SELECT LOG(10)  
@@ -1147,21 +1149,21 @@ LOG10 (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Anmerkungen**  
+  **Anmerkungen**  
   
- Die Funktionen LOG10 und POWER sind umgekehrt miteinander verknüpft. Beispiel: 10 ^ LOG10(n) = n.  
+  Die Funktionen LOG10 und POWER sind umgekehrt miteinander verknüpft. Beispiel: 10 ^ LOG10(n) = n.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird eine Variable deklariert und der LOG10-Wert der angegebenen Variablen zurückgegeben (100).  
+  Im folgenden Beispiel wird eine Variable deklariert und der LOG10-Wert der angegebenen Variablen zurückgegeben (100).  
   
 ```  
 SELECT LOG10(100)  
@@ -1184,17 +1186,17 @@ PI ()
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den Wert von PI zurück.  
+  Das folgende Beispiel gibt den Wert von PI zurück.  
   
 ```  
 SELECT PI()  
@@ -1217,21 +1219,21 @@ POWER (<numeric_expression>, <y>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
--   `y`  
+- `y`  
   
-     Ist der Wert, mit der `numeric_expression` potenziert wird.  
+   Ist der Wert, mit der `numeric_expression` potenziert wird.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt das Potenzieren einer Zahl mit 3 (dritte Potenz der Zahl).  
+  Das folgende Beispiel zeigt das Potenzieren einer Zahl mit 3 (dritte Potenz der Zahl).  
   
 ```  
 SELECT POWER(2, 3), POWER(2.5, 3)  
@@ -1254,17 +1256,17 @@ RADIANS (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel werden einige Winkel eingegeben und ihre entsprechenden Bogenmaßwerte zurückgegeben.  
+  Im folgenden Beispiel werden einige Winkel eingegeben und ihre entsprechenden Bogenmaßwerte zurückgegeben.  
   
 ```  
 SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIANS(197.1099392)  
@@ -1293,17 +1295,17 @@ ROUND(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel werden die folgenden positiven und negativen Zahlen auf die nächste ganze Zahl gerundet.  
+  Im folgenden Beispiel werden die folgenden positiven und negativen Zahlen auf die nächste ganze Zahl gerundet.  
   
 ```  
 SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)  
@@ -1326,17 +1328,17 @@ SIGN(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel werden die SIGN-Werte der Zahlen von -2 bis 2 zurückgegeben.  
+  Im folgenden Beispiel werden die SIGN-Werte der Zahlen von -2 bis 2 zurückgegeben.  
   
 ```  
 SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)  
@@ -1359,17 +1361,17 @@ SIN(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel berechnet den SIN des angegebenen Winkels.  
+  Das folgende Beispiel berechnet den SIN des angegebenen Winkels.  
   
 ```  
 SELECT SIN(45.175643)  
@@ -1392,17 +1394,17 @@ SQRT(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel werden die Quadratwurzeln der Zahlen von 1 bis 3 zurückgegeben.  
+  Im folgenden Beispiel werden die Quadratwurzeln der Zahlen von 1 bis 3 zurückgegeben.  
   
 ```  
 SELECT SQRT(1), SQRT(2.0), SQRT(3)  
@@ -1425,17 +1427,17 @@ SQUARE(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel werden die Quadrate der Zahlen von 1 bis 3 zurückgegeben.  
+  Im folgenden Beispiel werden die Quadrate der Zahlen von 1 bis 3 zurückgegeben.  
   
 ```  
 SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)  
@@ -1458,17 +1460,17 @@ TAN (<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel berechnet den Tangens von PI()/2.  
+  Das folgende Beispiel berechnet den Tangens von PI()/2.  
   
 ```  
 SELECT TAN(PI()/2);  
@@ -1491,17 +1493,17 @@ TRUNC(<numeric_expression>)
   
  **Argumente**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     Ist ein numerischer Ausdruck.  
+   Ist ein numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel werden die folgenden positiven und negativen Zahlen auf den nächsten ganzzahligen Wert abgeschnitten.  
+  Im folgenden Beispiel werden die folgenden positiven und negativen Zahlen auf den nächsten ganzzahligen Wert abgeschnitten.  
   
 ```  
 SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)  
@@ -1533,17 +1535,17 @@ IS_ARRAY(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_ARRAY-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_ARRAY-Funktion.  
   
 ```  
 SELECT   
@@ -1573,17 +1575,17 @@ IS_BOOL(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_BOOL-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_BOOL-Funktion.  
   
 ```  
 SELECT   
@@ -1613,17 +1615,17 @@ IS_DEFINED(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft das Vorhandensein einer Eigenschaft im angegebenen JSON-Dokument. Die erste Überprüfung gibt "true" zurück, da „a“ vorhanden ist, aber die zweite „false“, da „b“ nicht vorhanden ist.  
+  Das folgende Beispiel überprüft das Vorhandensein einer Eigenschaft im angegebenen JSON-Dokument. Die erste Überprüfung gibt "true" zurück, da „a“ vorhanden ist, aber die zweite „false“, da „b“ nicht vorhanden ist.  
   
 ```  
 SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)  
@@ -1649,17 +1651,17 @@ IS_NULL(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_NULL-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_NULL-Funktion.  
   
 ```  
 SELECT   
@@ -1689,17 +1691,17 @@ IS_NUMBER(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_NULL-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_NULL-Funktion.  
   
 ```  
 SELECT   
@@ -1729,17 +1731,17 @@ IS_OBJECT(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_OBJECT-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_OBJECT-Funktion.  
   
 ```  
 SELECT   
@@ -1769,17 +1771,17 @@ IS_PRIMITIVE(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_PRIMITIVE-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_PRIMITIVE-Funktion.  
   
 ```  
 SELECT   
@@ -1809,17 +1811,17 @@ IS_STRING(<expression>)
   
  **Argumente**  
   
--   `expression`  
+- `expression`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_STRING-Funktion.  
+  Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_STRING-Funktion.  
   
 ```  
 SELECT   
@@ -1847,8 +1849,10 @@ SELECT
 |[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[LENGTH](#bk_length)|  
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
-|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[UPPER](#bk_upper)||| 
+|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
+|[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
+|[StringToObject](#bk_stringtoobject)|[SUBSTRING](#bk_substring)|[ToString](#bk_tostring)|
+|[TRIM](#bk_trim)|[UPPER](#bk_upper)||
   
 ####  <a name="bk_concat"></a> CONCAT  
  Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt.  
@@ -1861,17 +1865,17 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt die verkettete Zeichenfolge der angegebenen Werte zurück.  
+  Das folgende Beispiel gibt die verkettete Zeichenfolge der angegebenen Werte zurück.  
   
 ```  
 SELECT CONCAT("abc", "def")  
@@ -1894,17 +1898,17 @@ CONTAINS(<str_expr>, <str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird überprüft, ob „abc“ „ab“ und „d“ enthält.  
+  Im folgenden Beispiel wird überprüft, ob „abc“ „ab“ und „d“ enthält.  
   
 ```  
 SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")  
@@ -1927,17 +1931,17 @@ ENDSWITH(<str_expr>, <str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird zurückgegeben, ob „abc“ mit „b“ und „bc“ endet.  
+  Im folgenden Beispiel wird zurückgegeben, ob „abc“ mit „b“ und „bc“ endet.  
   
 ```  
 SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")  
@@ -1960,17 +1964,17 @@ INDEX_OF(<str_expr>, <str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den Index der verschiedenen Teilzeichenfolgen innerhalb von „abc“ zurück.  
+  Das folgende Beispiel gibt den Index der verschiedenen Teilzeichenfolgen innerhalb von „abc“ zurück.  
   
 ```  
 SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")  
@@ -1993,21 +1997,21 @@ LEFT(<str_expr>, <num_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Ist ein beliebiger gültiger numerischer Ausdruck.  
+   Ist ein beliebiger gültiger numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den linken Teil von „abc“ für verschiedene Längenwerte zurück.  
+  Das folgende Beispiel gibt den linken Teil von „abc“ für verschiedene Längenwerte zurück.  
   
 ```  
 SELECT LEFT("abc", 1), LEFT("abc", 2)  
@@ -2030,17 +2034,17 @@ LENGTH(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt die Länge einer Zeichenfolge zurück.  
+  Das folgende Beispiel gibt die Länge einer Zeichenfolge zurück.  
   
 ```  
 SELECT LENGTH("abc")  
@@ -2063,17 +2067,17 @@ LOWER(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von LOWER in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von LOWER in einer Abfrage.  
   
 ```  
 SELECT LOWER("Abc")  
@@ -2097,17 +2101,17 @@ LTRIM(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von LTRIM in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von LTRIM in einer Abfrage.  
   
 ```  
 SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")  
@@ -2130,17 +2134,17 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von REPLACE in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von REPLACE in einer Abfrage.  
   
 ```  
 SELECT REPLACE("This is a Test", "Test", "desk")  
@@ -2163,24 +2167,24 @@ REPLICATE(<str_expr>, <num_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Ist ein beliebiger gültiger numerischer Ausdruck. Wenn num_expr negativ oder nicht finit ist, ist das Ergebnis nicht definiert.
+   Ist ein beliebiger gültiger numerischer Ausdruck. Wenn num_expr negativ oder nicht finit ist, ist das Ergebnis nicht definiert.
 
   > [!NOTE]
   > Die maximale Länge des Ergebnisses beträgt 10.000 Zeichen (also length(str_expr)  *  num_expr) <= 10.000).
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von REPLICATE in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von REPLICATE in einer Abfrage.  
   
 ```  
 SELECT REPLICATE("a", 3)  
@@ -2203,17 +2207,17 @@ REVERSE(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von REVERSE in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von REVERSE in einer Abfrage.  
   
 ```  
 SELECT REVERSE("Abc")  
@@ -2236,21 +2240,21 @@ RIGHT(<str_expr>, <num_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Ist ein beliebiger gültiger numerischer Ausdruck.  
+   Ist ein beliebiger gültiger numerischer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt den rechten Teil von „abc“ für verschiedene Längenwerte zurück.  
+  Das folgende Beispiel gibt den rechten Teil von „abc“ für verschiedene Längenwerte zurück.  
   
 ```  
 SELECT RIGHT("abc", 1), RIGHT("abc", 2)  
@@ -2273,17 +2277,17 @@ RTRIM(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von RTRIM in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von RTRIM in einer Abfrage.  
   
 ```  
 SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")  
@@ -2306,17 +2310,17 @@ STARTSWITH(<str_expr>, <str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel überprüft, ob die Zeichenfolge „abc“ mit „b“ und „a“ beginnt.  
+  Das folgende Beispiel überprüft, ob die Zeichenfolge „abc“ mit „b“ und „a“ beginnt.  
   
 ```  
 SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")  
@@ -2327,7 +2331,225 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
 ```  
 [{"$1": false, "$2": true}]  
 ```  
+
+  ####  <a name="bk_stringtoarray"></a> StringToArray  
+ Gibt den Ausdruck übersetzt in ein Array zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
   
+ **Syntax**  
+  
+```  
+StringToArray(<expr>)  
+```  
+  
+ **Argumente**  
+  
+- `expr`  
+  
+   Ein beliebiger gültiger JSON-Arrayausdruck. Beachten Sie, dass Zeichenfolgenwerte in doppelten Anführungszeichen angegeben werden müssen, damit sie gültig sind. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).
+  
+  **Rückgabetypen**  
+  
+  Gibt einen Arrayausdruck oder „undefined“ zurück.  
+  
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird das typübergreifende Verhalten von StringToArray gezeigt. 
+  
+```  
+SELECT 
+StringToArray('[]'), 
+StringToArray("[1,2,3]"),
+StringToArray("[\"str\",2,3]"),
+IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
+IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
+StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
+StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
+StringToArray(false), 
+StringToArray(undefined),
+StringToArray(NaN), 
+StringToArray("[")
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
+```  
+
+####  <a name="bk_stringtoboolean"></a> StringToBoolean  
+ Gibt den Ausdruck übersetzt in einen booleschen Wert zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
+  
+ **Syntax**  
+  
+```  
+StringToBoolean(<expr>)  
+```  
+  
+ **Argumente**  
+  
+- `expr`  
+  
+   Ist ein beliebiger gültiger Ausdruck.  
+  
+  **Rückgabetypen**  
+  
+  Gibt einen booleschen Ausdruck oder „undefined“ zurück.  
+  
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird das typübergreifende Verhalten von StringToBoolean gezeigt. 
+  
+```  
+SELECT 
+StringToBoolean("true"), 
+StringToBoolean("    false"),
+IS_BOOL(StringToBoolean("false")), 
+StringToBoolean("null"),
+StringToBoolean(undefined),
+StringToBoolean(NaN), 
+StringToBoolean(false), 
+StringToBoolean(true), 
+StringToBoolean("TRUE"),
+StringToBoolean("False")
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{"$1": true, "$2": false, "$3": true}]
+```  
+
+####  <a name="bk_stringtonull"></a> StringToNull  
+ Gibt den Ausdruck übersetzt in NULL zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
+  
+ **Syntax**  
+  
+```  
+StringToNull(<expr>)  
+```  
+  
+ **Argumente**  
+  
+- `expr`  
+  
+   Ist ein beliebiger gültiger Ausdruck.  
+  
+  **Rückgabetypen**  
+  
+  Gibt einen NULL-Ausdruck oder „undefined“ zurück.  
+  
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird das typübergreifende Verhalten von StringToNull gezeigt. 
+  
+```  
+SELECT 
+StringToNull("null"), 
+StringToNull("  null "),
+IS_NULL(StringToNull("null")), 
+StringToNull("true"), 
+StringToNull(false), 
+StringToNull(undefined),
+StringToNull(NaN), 
+StringToNull("NULL"),
+StringToNull("Null")
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{"$1": null, "$2": null, "$3": true}]
+```  
+
+####  <a name="bk_stringtonumber"></a> StringToNumber  
+ Gibt den Ausdruck übersetzt in eine Zahl zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
+  
+ **Syntax**  
+  
+```  
+StringToNumber(<expr>)  
+```  
+  
+ **Argumente**  
+  
+- `expr`  
+  
+   Ein beliebiger gültiger JSON-Ausdruck für eine Zahl. Zahlen müssen in JSON im Integer- oder Gleitkommaformat angegeben werden. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).  
+  
+  **Rückgabetypen**  
+  
+  Gibt einen Ausdruck für eine Zahl oder „undefined“ zurück.  
+  
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird das typübergreifende Verhalten von StringToNumber gezeigt. 
+  
+```  
+SELECT 
+StringToNumber("1.000000"), 
+StringToNumber("3.14"),
+IS_NUMBER(StringToNumber("   60   ")), 
+StringToNumber("0xF"),
+StringToNumber("-1.79769e+308"),
+IS_STRING(StringToNumber("2")),
+StringToNumber(undefined),
+StringToNumber("99     54"), 
+StringToNumber("false"), 
+StringToNumber(false),
+StringToNumber(" "),
+StringToNumber(NaN)
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+```  
+
+####  <a name="bk_stringtoobject"></a> StringToObject  
+ Gibt den Ausdruck übersetzt in ein Objekt zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
+  
+ **Syntax**  
+  
+```  
+StringToObject(<expr>)  
+```  
+  
+ **Argumente**  
+  
+- `expr`  
+  
+   Ein beliebiger gültiger JSON-Ausdruck für ein Objekt. Beachten Sie, dass Zeichenfolgenwerte in doppelten Anführungszeichen angegeben werden müssen, damit sie gültig sind. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).  
+  
+  **Rückgabetypen**  
+  
+  Gibt einen Ausdruck für ein Objekt oder „undefined“ zurück.  
+  
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird das typübergreifende Verhalten von StringToObject gezeigt. 
+  
+```  
+SELECT 
+StringToObject("{}"), 
+StringToObject('{"a":[1,2,3]}'),
+StringToObject("{'a':[1,2,3]}"),
+StringToObject("{a:[1,2,3]}"),
+IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
+IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
+IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
+StringToObject(false), 
+StringToObject(undefined),
+StringToObject(NaN), 
+StringToObject("{")
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+```  
+
 ####  <a name="bk_substring"></a> SUBSTRING  
  Gibt einen Teil eines Zeichenfolgenausdrucks zurück. Das angegebene Zeichen ist der Nullpunkt, von dem ab die Teilzeichenfolge in angegebener Länge bzw. bis zum Ende der Zeichenfolge zurückgegeben wird.  
   
@@ -2339,21 +2561,21 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Ist ein beliebiger gültiger numerischer Ausdruck zur Angabe des Start- und des Endzeichens angibt.    
+   Ist ein beliebiger gültiger numerischer Ausdruck zur Angabe des Start- und des Endzeichens angibt.    
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel gibt die Teilzeichenfolge „abc“ zurück, beginnend bei 1 und für eine Länge von 1 Zeichen.  
+  Das folgende Beispiel gibt die Teilzeichenfolge „abc“ zurück, beginnend bei 1 und für eine Länge von 1 Zeichen.  
   
 ```  
 SELECT SUBSTRING("abc", 1, 1)  
@@ -2375,17 +2597,17 @@ ToString(<expr>)
   
  **Argumente**  
   
--   `expr`  
+- `expr`  
   
-     Ist ein beliebiger gültiger skalarer Ausdruck.  
+   Ist ein beliebiger gültiger skalarer Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird das typübergreifende Verhalten von „ToString“ gezeigt:   
+  Im folgenden Beispiel wird das typübergreifende Verhalten von „ToString“ gezeigt:   
   
 ```  
 SELECT ToString(1.0000), ToString("Hello World"), ToString(NaN), ToString(Infinity),
@@ -2450,17 +2672,17 @@ TRIM(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von TRIM in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von TRIM in einer Abfrage.  
   
 ```  
 SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
@@ -2482,17 +2704,17 @@ UPPER(<str_expr>)
   
  **Argumente**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+   Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Zeichenfolgenausdruck zurück.  
+  Gibt einen Zeichenfolgenausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Verwendung von UPPER in einer Abfrage.  
+  Das folgende Beispiel zeigt die Verwendung von UPPER in einer Abfrage.  
   
 ```  
 SELECT UPPER("Abc")  
@@ -2523,17 +2745,17 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
  **Argumente**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Ist ein beliebiger gültiger Arrayausdruck.  
+   Ist ein beliebiger gültiger Arrayausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Arrayausdruck zurück.  
+  Gibt einen Arrayausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays verkettet werden.  
+  Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays verkettet werden.  
   
 ```  
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])  
@@ -2556,25 +2778,25 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
  **Argumente**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Ist ein beliebiger gültiger Arrayausdruck.  
+   Ist ein beliebiger gültiger Arrayausdruck.  
   
--   `expr`  
+- `expr`  
   
-     Ist ein beliebiger gültiger Ausdruck.  
+   Ist ein beliebiger gültiger Ausdruck.  
 
--   `bool_expr`  
+- `bool_expr`  
   
-     Ist ein beliebiger boolescher Ausdruck. Wenn er auf TRUE festgelegt ist und als Suchwert ein Objekt angegeben wurde, prüft der Befehl auf eine teilweise Übereinstimmung. (Das Suchobjekt ist eine Teilmenge eines der Objekte.) Wenn er auf FALSE festgelegt ist, prüft der Befehl auf eine vollständige Übereinstimmung aller Objekte innerhalb des Arrays. Wenn Sie hier nichts angeben, lautet der Standardwert FALSE. 
+   Ist ein beliebiger boolescher Ausdruck. Wenn er auf TRUE festgelegt ist und als Suchwert ein Objekt angegeben wurde, prüft der Befehl auf eine teilweise Übereinstimmung. (Das Suchobjekt ist eine Teilmenge eines der Objekte.) Wenn er auf FALSE festgelegt ist, prüft der Befehl auf eine vollständige Übereinstimmung aller Objekte innerhalb des Arrays. Wenn Sie hier nichts angeben, lautet der Standardwert FALSE. 
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Wert zurück.  
+  Gibt einen booleschen Wert zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Überprüfung auf Mitgliedschaft in einem Array mit ARRAY_CONTAINS.  
+  Das folgende Beispiel zeigt die Überprüfung auf Mitgliedschaft in einem Array mit ARRAY_CONTAINS.  
   
 ```  
 SELECT   
@@ -2618,17 +2840,17 @@ ARRAY_LENGTH(<arr_expr>)
   
  **Argumente**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Ist ein beliebiger gültiger Arrayausdruck.  
+   Ist ein beliebiger gültiger Arrayausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück.  
+  Gibt einen numerischen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Im folgenden Beispiel wird die Länge eines Arrays mit ARRAY_LENGTH abgerufen.  
+  Im folgenden Beispiel wird die Länge eines Arrays mit ARRAY_LENGTH abgerufen.  
   
 ```  
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])  
@@ -2651,25 +2873,25 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
  **Argumente**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Ist ein beliebiger gültiger Arrayausdruck.  
+   Ist ein beliebiger gültiger Arrayausdruck.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Nullbasierter numerischer Index, bei dem das Array beginnt. Negative Werte können verwendet werden, um den Startindex relativ zum letzten Element des Arrays anzugeben, d.h. -1 bezieht sich auf das letzte Element des Arrays.  
+   Nullbasierter numerischer Index, bei dem das Array beginnt. Negative Werte können verwendet werden, um den Startindex relativ zum letzten Element des Arrays anzugeben, d.h. -1 bezieht sich auf das letzte Element des Arrays.  
 
--   `num_expr`  
+- `num_expr`  
 
-     Maximale Anzahl von Elementen im resultierenden Array.    
+   Maximale Anzahl von Elementen im resultierenden Array.    
 
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen Arrayausdruck zurück.  
+  Gibt einen Arrayausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt, wie Sie mit ARRAY_SLICE verschiedene Slices eines Arrays abgerufen können.  
+  Das folgende Beispiel zeigt, wie Sie mit ARRAY_SLICE verschiedene Slices eines Arrays abgerufen können.  
   
 ```  
 SELECT   
@@ -2700,10 +2922,10 @@ SELECT
 ###  <a name="bk_spatial_functions"></a> Räumliche Funktionen  
  Die folgenden Skalarfunktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.  
   
-||||  
-|-|-|-|  
-|[ST_DISTANCE](#bk_st_distance)|[ST_WITHIN](#bk_st_within)|[ST_INTERSECTS](#bk_st_intersects)|[ST_ISVALID](#bk_st_isvalid)|  
-|[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)|||  
+|||||
+|-|-|-|-|
+|[ST_DISTANCE](#bk_st_distance)|[ST_WITHIN](#bk_st_within)|[ST_INTERSECTS](#bk_st_intersects)|[ST_ISVALID](#bk_st_isvalid)|
+|[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)||||
   
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
  Gibt den Abstand zwischen den beiden GeoJSON-Punkt-, Polygon- oder LineString-Ausdrücken zurück.  
@@ -2716,17 +2938,17 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **Argumente**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen numerischen Ausdruck zurück, der den Abstand enthält. Dieser wird für das Standardreferenzsystem in Metern angegeben.  
+  Gibt einen numerischen Ausdruck zurück, der den Abstand enthält. Dieser wird für das Standardreferenzsystem in Metern angegeben.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Rückgabe aller Familiendokumente, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST_DISTANCE-Funktion verwendet. .  
+  Das folgende Beispiel zeigt die Rückgabe aller Familiendokumente, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST_DISTANCE-Funktion verwendet. .  
   
 ```  
 SELECT f.id   
@@ -2753,21 +2975,21 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
  **Argumente**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
  
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Wert zurück.  
+  Gibt einen booleschen Wert zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt, wie alle Familiendokumente mit ST_WITHIN innerhalb eines Polygons gefunden werden.  
+  Das folgende Beispiel zeigt, wie alle Familiendokumente mit ST_WITHIN innerhalb eines Polygons gefunden werden.  
   
 ```  
 SELECT f.id   
@@ -2795,21 +3017,21 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **Argumente**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
  
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Objektausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Wert zurück.  
+  Gibt einen booleschen Wert zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt, wie alle Bereiche gefunden werden, die sich mit dem angegebenen Polygon überschneiden.  
+  Das folgende Beispiel zeigt, wie alle Bereiche gefunden werden, die sich mit dem angegebenen Polygon überschneiden.  
   
 ```  
 SELECT a.id   
@@ -2837,21 +3059,21 @@ ST_ISVALID(<spatial_expr>)
   
  **Argumente**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Ausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt-, -Polygon- oder -LineString-Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen booleschen Ausdruck zurück.  
+  Gibt einen booleschen Ausdruck zurück.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt die Überprüfung mit ST_VALID, ob ein Punkt gültig ist.  
+  Das folgende Beispiel zeigt die Überprüfung mit ST_VALID, ob ein Punkt gültig ist.  
   
- Dieser Punkt hat z.B. einen Breitengradwert, der nicht im gültigen Wertebereich [-90, 90] liegt, sodass die Abfrage „false“ zurückgibt.  
+  Dieser Punkt hat z.B. einen Breitengradwert, der nicht im gültigen Wertebereich [-90, 90] liegt, sodass die Abfrage „false“ zurückgibt.  
   
- Für Polygone erfordert die GeoJSON-Spezifikation, dass das letzte angegebene Koordinatenpaar mit dem ersten identisch sein muss, um eine geschlossene Form zu bilden. Punkte innerhalb eines Polygons müssen gegen den Uhrzeigersinn nacheinander angegeben werden. Ein Polygon, das im Uhrzeigersinn angegeben wird, stellt die Umkehrung der darin enthaltenen Region dar.  
+  Für Polygone erfordert die GeoJSON-Spezifikation, dass das letzte angegebene Koordinatenpaar mit dem ersten identisch sein muss, um eine geschlossene Form zu bilden. Punkte innerhalb eines Polygons müssen gegen den Uhrzeigersinn nacheinander angegeben werden. Ein Polygon, das im Uhrzeigersinn angegeben wird, stellt die Umkehrung der darin enthaltenen Region dar.  
   
 ```  
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })  
@@ -2874,17 +3096,17 @@ ST_ISVALID(<spatial_expr>)
   
  **Argumente**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Ist ein beliebiger gültiger GeoJSON-Punkt- oder -Polygon-Ausdruck.  
+   Ist ein beliebiger gültiger GeoJSON-Punkt- oder -Polygon-Ausdruck.  
   
- **Rückgabetypen**  
+  **Rückgabetypen**  
   
- Gibt einen JSON-Wert mit einem booleschen Wert zurück, wenn der angegebene GeoJSON-Punkt oder -Polygon-Ausdruck gültig ist. Falls ungültig, wird außerdem der Grund als Zeichenfolge zurückgegeben.  
+  Gibt einen JSON-Wert mit einem booleschen Wert zurück, wenn der angegebene GeoJSON-Punkt oder -Polygon-Ausdruck gültig ist. Falls ungültig, wird außerdem der Grund als Zeichenfolge zurückgegeben.  
   
- **Beispiele**  
+  **Beispiele**  
   
- Das folgende Beispiel zeigt das Überprüfen der Gültigkeit (mit Details) mit ST_ISVALIDDETAILED.  
+  Das folgende Beispiel zeigt das Überprüfen der Gültigkeit (mit Details) mit ST_ISVALIDDETAILED.  
   
 ```  
 SELECT ST_ISVALIDDETAILED({   

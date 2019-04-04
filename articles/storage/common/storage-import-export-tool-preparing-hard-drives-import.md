@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510135"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898685"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 
@@ -25,7 +25,7 @@ Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur
 
 - **Konfiguration des Computers**
   - Windows 7, Windows Server 2008 R2 oder ein neueres Windows-Betriebssystem
-  - .NET Framework 4 muss installiert sein. Unter [Häufig gestellte Fragen](#faq) erfahren Sie, wie Sie überprüfen können, ob .Net Framework auf dem Computer installiert ist.
+  - .NET Framework 4 muss installiert sein. Unter [Häufig gestellte Fragen](#faq) erfahren Sie, wie Sie überprüfen können, ob .NET Framework auf dem Computer installiert ist.
 - **Speicherkontoschlüssel**: Sie benötigen mindestens einen der Kontoschlüssel für das Speicherkonto.
 
 ### <a name="preparing-disk-for-import-job"></a>Vorbereiten des Datenträgers für den Importauftrag
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 Wenn die Daten nicht in die in InitialDriveset angegebenen Laufwerke passen, können Sie mit dem Tool der gleichen Kopiersitzung zusätzliche Laufwerke hinzufügen. 
 
->[!NOTE] 
->Die Sitzungs-ID sollte mit der vorherigen Sitzungs-ID übereinstimmen. Die Journaldatei sollte mit der Journaldatei übereinstimmen, die in der vorherigen Sitzung angegeben wurde.
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> Die Sitzungs-ID sollte mit der vorherigen Sitzungs-ID übereinstimmen. Die Journaldatei sollte mit der Journaldatei übereinstimmen, die in der vorherigen Sitzung angegeben wurde.
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **Beispiel:**
 
@@ -364,7 +364,7 @@ Um TPM in BitLocker zu deaktivieren, führen Sie die folgenden Schritte aus:<br/
 
 Alle Microsoft .NET Framework-Versionen werden im folgenden Verzeichnis installiert: „%windir%\Microsoft.NET\Framework\“.
 
-Navigieren Sie zu dem oben erwähnten Verzeichnis Ihres Zielcomputers, auf dem das Tool ausgeführt werden soll. Suchen Sie nach einem Ordnernamen, der mit „v4“ beginnt. Wenn ein solches Verzeichnis nicht vorhanden ist, ist .NET 4 nicht auf dem Computer installiert. Sie können .Net 4 mit [Microsoft .NET Framework 4 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=17851) auf Ihren Computer herunterladen.
+Navigieren Sie zu dem oben erwähnten Verzeichnis Ihres Zielcomputers, auf dem das Tool ausgeführt werden soll. Suchen Sie nach einem Ordnernamen, der mit „v4“ beginnt. Wenn ein solches Verzeichnis nicht vorhanden ist, ist .NET 4 nicht auf dem Computer installiert. Sie können .NET 4 mit [Microsoft .NET Framework 4 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=17851) auf Ihren Computer herunterladen.
 
 ### <a name="limits"></a>Einschränkungen
 

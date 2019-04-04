@@ -11,72 +11,63 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 1eac1da2d8d9a289cb456fc08d7e7c2bc7784aa6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/20/2019
+ms.openlocfilehash: c6dc49204c0a7e1cb0d1116e29746eed2fe52f8d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454020"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286260"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
 In diesem Artikel wird beschrieben, wie die für eine Einzeldatenbank in Azure SQL-Datenbank verfügbaren Compute- und Speicherressourcen skaliert werden können.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank den höchsten in dieser Stunde angewandten Diensttarif und die höchste Computegröße nutzt – unabhängig von der Verwendung der Datenbank und ob sie weniger als eine Stunde aktiv war. Wenn Sie beispielsweise eine Einzeldatenbank erstellen und diese fünf Minuten später löschen, wird Ihnen eine volle Datenbankstunde in Rechnung gestellt.
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
-## <a name="vcore-based-purchasing-model-change-storage-size"></a>Auf virtuellen Kernen basierendes Erwerbsmodell: Ändern der Speichergröße
+## <a name="change-compute-resources-vcores-or-dtus"></a>Ändern der Computeressourcen (virtuelle Kerne oder DTUs)
 
-- Speicher kann in Schritten von 1 GB bis zur maximalen Speichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße beträgt 5 GB.
-- Speicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe im [Azure-Portal](https://portal.azure.com), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), in der[Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
-- SQL-Datenbank belegt automatisch 30 % des zusätzlichen Speicherplatzes für die Protokolldateien und 32 GB pro virtuellem Kern für die tempdb-Datenbank, wobei 384 GB nicht überschritten werden. Die tempdb befindet sich in allen Dienstebenen auf einem angefügten SSD-Datenträger.
-- Der Preis für den Speicher für eine einzelne Datenbank errechnet sich aus der Summe des Datenspeichers und des Protokollspeichers multipliziert mit dem Speichereinheitenpreis für die Dienstebene. Die Kosten für die tempdb-Datenbank sind im Preis für den virtuellen Kern enthalten. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
-
-> [!IMPORTANT]
-> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
-
-## <a name="vcore-based-purchasing-model-change-compute-resources"></a>Auf virtuellen Kernen basierendes Erwerbsmodell: Ändern der Computeressourcen
-
-Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen können Sie eine Einzeldatenbank je nach tatsächlichem Bedarf im [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), in der [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch zentral hoch- oder herunterskalieren.
-
-Wenn Sie den Diensttarif und/oder die Computegröße einer Datenbank ändern, wird ein Replikat der ursprünglichen Datenbank mit der neuen Computegröße erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Die Dauer der Umstellung kann variieren, aber sie liegt im Allgemeinen in 99 Prozent der Fälle unter 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, kann die Umstellung unter Umständen auch länger dauern.
-
-Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt in der Regel sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Wenn die Computegröße einer Datenbank beliebiger Größe innerhalb des Diensttarifs „Universell“ geändert wird, sollte dies innerhalb weniger Minuten abgeschlossen sein. Die Wartezeit beim Ändern der Computegröße innerhalb des Tarifs „Unternehmenskritisch“ beträgt pro 100 GB üblicherweise maximal 90 Minuten.
-
-> [!TIP]
-> Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) und [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
-
-- Wenn Sie ein Upgrade auf einen höheren Diensttarif oder eine höhere Computegröße durchführen, wird die maximale Datenbankgröße nicht erhöht, sofern Sie nicht ausdrücklich eine höhere Maximalgröße angeben.
-- Für das Downgrade einer Datenbank muss die verwendete Datenbankmenge kleiner als die maximal zulässige Größe des Zieldiensttarifs und der Zielcomputegröße sein.
-- Beim Upgrade einer Datenbank mit aktivierter [Georeplikation](sql-database-geo-replication-portal.md) führen Sie zuerst ein Upgrade der sekundären Datenbanken auf den gewünschten Diensttarif und die gewünschte Computegröße durch, bevor Sie ein Upgrade für die primäre Datenbank vornehmen (allgemeine Richtlinie für optimale Leistung). Bei einem Upgrade auf eine andere Edition muss zunächst ein Upgrade der sekundären Datenbank durchgeführt werden.
-- Beim Downgrade einer Datenbank mit aktivierter [Georeplikation](sql-database-geo-replication-portal.md) führen Sie zuerst ein Downgrade der primären Datenbank auf den gewünschten Diensttarif und die gewünschte Computegröße durch, bevor Sie ein Downgrade für die sekundären Datenbanken vornehmen (allgemeine Richtlinie für optimale Leistung). Bei einem Downgrade auf eine andere Edition muss zunächst ein Downgrade der primären Datenbank durchgeführt werden.
-- Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
-
-## <a name="dtu-based-purchasing-model-change-storage-size"></a>DTU-basiertes Erwerbsmodell: Ändern der Speichergröße
-
-- Der DTU-Preis für eine einzelne Datenbank enthält eine bestimmte Menge Speicher ohne zusätzliche Kosten. Zusätzlicher Speicher über die inbegriffene Speichermenge hinaus kann gegen zusätzliche Gebühren bis zur Obergrenze in Inkrementen von 250 GB bis zu 1 TB und dann in Inkrementen von 256 GB über 1 TB hinaus bereitgestellt werden. Informationen zu enthaltenen Speichermengen und Maximalgrößen finden Sie unter [Einzeldatenbank: Speicher- und Computegrößen](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Zusätzlicher Speicher für eine Einzeldatenbank kann durch Erhöhen der maximalen Größe über das Azure-Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
-- Der Preis für zusätzlichen Speicher für eine einzelne Datenbank errechnet sich aus der Menge an zusätzlich bereitgestelltem Speicher multipliziert mit dem Einheitenpreis für zusätzlichen Speicher für die Dienstebene. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
-
-> [!IMPORTANT]
-> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
-
-## <a name="dtu-based-purchasing-model-change-compute-resources-dtus"></a>DTU-basiertes Erwerbsmodell: Ändern der Computeressourcen (DTUs)
-
-Nach der ersten Auswahl des Diensttarifs, der Computegröße und Speichermenge können Sie eine Einzeldatenbank anhand der tatsächlichen Erfahrung über das Azure-Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch hoch- oder herunterskalieren.
+Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen oder DTUs können Sie ein Singleton je nach tatsächlichem Bedarf im [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/az.sql/set-azsqldatabase), in der [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch zentral hoch- oder herunterskalieren.
 
 Das folgende Video zeigt die dynamische Änderung von Diensttarif und Computegröße zum Heraufsetzen verfügbarer DTUs für eine einzelne Datenbank.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-Wenn Sie den Diensttarif und/oder die Computegröße einer Datenbank ändern, wird ein Replikat der ursprünglichen Datenbank mit der neuen Computegröße erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Die Dauer der Umstellung kann variieren, aber sie liegt in 99 Prozent der Fälle unter 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, kann die Umstellung unter Umständen auch länger dauern.
+> [!IMPORTANT]
+> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte eine 250-GB-Datenbank beim Wechsel in einen, aus einem oder innerhalb eines Standarddiensttarifs innerhalb von sechs Stunden zentral hochskalieren. Bei einer Datenbank der gleichen Größe, deren Computegrößen innerhalb des Diensttarifs „Premium“ geändert werden, sollte das zentrale Hochskalieren innerhalb von drei Stunden erfolgen.
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Auswirkungen der Änderung der Dienstebene oder der Neuskalierung der Computegröße
+
+Zum Ändern der Dienstebene oder der Computegröße eines Singleton müssen hauptsächlich die folgenden Schritte ausgeführt werden:
+
+1. Erstellen einer neuen Computeinstanz für die Datenbank  
+
+    Eine neue Computeinstanz für die Datenbank wird mit der angeforderten Dienstebene und der Computegröße erstellt. Für einige Kombinationen von Änderungen der Dienstebene und der Computegröße muss ein Datenbankreplikat in der neuen Computeinstanz erstellt werden. Dies umfasst das Kopieren von Daten und kann sich stark auf die Gesamtwartezeit auswirken. Die Datenbank bleibt unabhängig davon während dieses Schritts online, und Verbindungen werden weiterhin an die Datenbank in der ursprünglichen Computeinstanz weitergeleitet.
+
+2. Umleiten der Verbindungen zur neuen Computeinstanz
+
+    Vorhandene Verbindungen zur Datenbank in der ursprünglichen Computeinstanz werden verworfen. Alle neuen Verbindungen werden mit der Datenbank in der neuen Computeinstanz hergestellt. Für einige Kombinationen von Änderungen der Dienstebene und der Computegröße werden Datenbankdateien während des Wechsels getrennt und neu angefügt.  Der Wechsel kann zu einer kurzen Dienstunterbrechung führen, in der die Datenbank in der Regel für weniger als 30 Sekunden nicht verfügbar ist. Wenn zeitintensive Transaktionen zu dem Zeitpunkt ausgeführt werden, an dem die Verbindungen getrennt werden, kann dieser Schritt mehr Zeit beanspruchen, da abgebrochene Transaktionen wiederhergestellt werden. Mit der [schnelleren Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) können die Auswirkungen abgebrochener, zeitintensiver Transaktionen reduziert werden.
+
+> [!IMPORTANT]
+> Während dieses Workflows gehen keine Daten verloren.
+
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Wartezeit bei der Änderung der Dienstebene oder der Neuskalierung der Computegröße
+
+Die Wartezeit bei der Änderung der Dienstebene oder Neuskalierung der Computegröße eines Singleton oder eines Pools für elastische Datenbanken wird wie folgt parametrisiert:
+
+|Dienstebene|Singleton des Tarifs „Basic“,</br>Standard (S0-S1)|Pools für elastische Datenbanken des Tarifs „Basic“,</br>Standard (S2-S12), </br>Hyperscale, </br>Singleton oder Pool für elastische Datenbanken des Tarifs „Universell“|Singleton oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“|
+|:---|:---|:---|:---|
+|**Singleton des Tarifs „Basic“,</br> Standard (S0-S1)**|&bull; &nbsp;Dauerhafte Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als 5 Minuten|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|
+|**Pool für elastische Datenbanken des Tarifs „Basic“, </br>Standard (S2-S12), </br>Hyperscale, </br>Singleton oder Pool für elastische Datenbanken des Tarifs „Universell“**|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|&bull; &nbsp;Dauerhafte Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als 5 Minuten|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|
+|**Singleton oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“**|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|&bull; &nbsp;Die Wartezeit ist aufgrund des Kopierens der Daten proportional zum verwendeten Datenbankspeicherplatz</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|
 
 > [!TIP]
-> Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) und [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
+> Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) und [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Weitere Überlegungen zum Ändern der Dienstebene oder zur Neuskalierung der Computegröße
 
 - Wenn Sie ein Upgrade auf einen höheren Diensttarif oder eine höhere Computegröße durchführen, wird die maximale Datenbankgröße nicht erhöht, sofern Sie nicht ausdrücklich eine höhere Maximalgröße angeben.
 - Für das Downgrade einer Datenbank muss die verwendete Datenbankmenge kleiner als die maximal zulässige Größe des Zieldiensttarifs und der Zielcomputegröße sein.
@@ -86,15 +77,36 @@ Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der G
 - Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade auf den Tarif **Basic** durchführen, verfügen Sie über einen kürzeren Aufbewahrungszeitraum von Sicherungen. Weitere Informationen finden Sie unter [Azure SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
+### <a name="billing-during-rescaling"></a>Abrechnung während der Neuskalierung
+
+Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank den höchsten in dieser Stunde angewandten Diensttarif und die höchste Computegröße nutzt – unabhängig von der Verwendung der Datenbank und ob sie weniger als eine Stunde aktiv war. Wenn Sie beispielsweise eine Einzeldatenbank erstellen und diese fünf Minuten später löschen, wird Ihnen eine volle Datenbankstunde in Rechnung gestellt.
+
+## <a name="change-storage-size"></a>Ändern der Speichergröße
+
+### <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
+
+- Speicher kann in Schritten von 1 GB bis zur maximalen Speichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße beträgt 5 GB.
+- Speicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe im [Azure-Portal](https://portal.azure.com), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/az.sql/set-azsqldatabase), in der[Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
+- SQL-Datenbank belegt automatisch 30 % des zusätzlichen Speicherplatzes für die Protokolldateien und 32 GB pro virtuellem Kern für die tempdb-Datenbank, wobei 384 GB nicht überschritten werden. Die tempdb befindet sich in allen Dienstebenen auf einem angefügten SSD-Datenträger.
+- Der Preis für den Speicher für eine einzelne Datenbank errechnet sich aus der Summe des Datenspeichers und des Protokollspeichers multipliziert mit dem Speichereinheitenpreis für die Dienstebene. Die Kosten für die tempdb-Datenbank sind im Preis für den virtuellen Kern enthalten. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+
+> [!IMPORTANT]
+> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
+
+### <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
+
+- Der DTU-Preis für eine einzelne Datenbank enthält eine bestimmte Menge Speicher ohne zusätzliche Kosten. Zusätzlicher Speicher über die inbegriffene Speichermenge hinaus kann gegen zusätzliche Gebühren bis zur Obergrenze in Inkrementen von 250 GB bis zu 1 TB und dann in Inkrementen von 256 GB über 1 TB hinaus bereitgestellt werden. Informationen zu enthaltenen Speichermengen und Maximalgrößen finden Sie unter [Einzeldatenbank: Speicher- und Computegrößen](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Zusätzlicher Speicher für eine Einzeldatenbank kann durch Erhöhen der maximalen Größe über das Azure-Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
+- Der Preis für zusätzlichen Speicher für eine einzelne Datenbank errechnet sich aus der Menge an zusätzlich bereitgestelltem Speicher multipliziert mit dem Einheitenpreis für zusätzlichen Speicher für die Dienstebene. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+
+> [!IMPORTANT]
+> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
+
 ## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>DTU-basiertes Erwerbsmodell: Einschränkungen von P11 und P15 bei Maximalgrößen über 1 TB
 
-Eine maximale Größe, die größer als 1 TB für P11- und P15-Datenbanken ist, wird in den folgenden Regionen unterstützt: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „US Gov Virginia“ und „Europa, Westen“. Die folgenden Aspekte und Einschränkungen gelten für P11- und P15-Datenbanken mit einer maximalen Größe von mehr als 1 TB:
+In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt. Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb). Die folgenden Aspekte und Einschränkungen gelten für P11- und P15-Datenbanken mit einer maximalen Größe von mehr als 1 TB:
 
-- Wenn Sie beim Erstellen einer Datenbank eine Maximalgröße von mehr als 1 TB wählen (Wert 4 TB oder 4.096 GB), tritt für den Erstellungsbefehl ein Fehler auf, falls die Datenbank in einer nicht unterstützten Region bereitgestellt wird.
-- Für vorhandene P11- und P15-Datenbanken, die sich in einer der unterstützten Regionen befinden, können Sie den maximalen Speicher über 1 TB hinaus in Inkrementen von 256 GB auf bis zu 4 TB erhöhen. Um festzustellen, ob eine größere Größe in Ihrer Region unterstützt wird, verwenden Sie die Funktion [DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql), oder überprüfen Sie die Größe der Datenbank im Azure-Portal. Die Aktualisierung einer vorhandenen P11- oder P15-Datenbank kann nur mithilfe einer Prinzipalanmeldung auf Serverebene oder von Mitgliedern der Datenbankrolle „dbmanager“ ausgeführt werden.
-- Bei Ausführung eines Upgradevorgangs in einer unterstützten Region wird die Konfiguration umgehend aktualisiert. Die Datenbank bleibt während des Upgradevorgangs online. Allerdings können Sie die vollständige Menge an Speicher über 1 TB erst dann nutzen, wenn die tatsächlichen Datenbankdateien auf die neue Maximalgröße aktualisiert wurden. Die erforderliche Dauer hängt von der Größe der zu aktualisierenden Datenbank ab.
-- Beim Erstellen oder Aktualisieren einer P11- oder P15-Datenbank können Sie nur in Inkrementen von 256 GB zwischen einer Maximalgröße von 1 TB und 4 TB wählen. Beim Erstellen einer P11-/P15-Datenbank ist die Standardspeicheroption von 1 TB vorausgewählt. Für Datenbanken, die sich in einer der unterstützten Regionen befinden, können Sie das Speichermaximum für eine neue oder vorhandene Einzeldatenbank auf maximal 4 TB erhöhen. Für alle anderen Regionen kann die Maximalgröße nicht mehr als 1 TB betragen. Der Preis ändert sich nicht, wenn Sie 4TB Speicher wählen.
-- Wenn die maximale Größe einer Datenbank auf mehr als 1 TB festgelegt ist, kann sie auch dann nicht in 1 TB geändert werden, wenn die tatsächlich verwendete Speichermenge unter 1 TB liegt. Folglich können Sie eine P11- oder P15-Datenbank mit einer maximalen Größe über 1 TB nicht auf eine 1-TB-P11- oder 1-TB-P15- oder niedrigere Computegröße (z.B. P1-P6) herabstufen. Diese Einschränkung gilt auch für Wiederherstellungs- und Kopierszenarien, einschließlich Point-in-Time- und Geowiederherstellung, langfristige Aufbewahrung von Sicherungen und Datenbankkopiervorgänge. Sobald eine Datenbank mit einer maximalen Größe über 1 TB konfiguriert wird, müssen alle Wiederherstellungsvorgänge dieser Datenbank für ein P11-/P15-Ziel mit einer maximalen Größe von über 1 TB ausgeführt werden.
+- Wenn die maximale Größe einer P11- oder P15-Datenbank jemals auf einen Wert über 1 TB festgelegt wurde, kann sie nur in einer P11- oder P15-Datenbank wiederhergestellt oder kopiert werden.  Demzufolge kann die Datenbank zu einer anderen Computegröße skaliert werden, sofern der zugewiesene Speicherplatz zum Zeitpunkt der Neuskalierung nicht die Maximalgrößen der neuen Computegröße überschreitet.
 - Szenarien für aktive Georeplikation:
   - Einrichten einer Georeplikationsbeziehung: Eenn Falls es sich bei der primären Datenbank um eine P11- oder P15-Datenbank handelt, müssen auch die sekundären Datenbanken vom Typ „P11“ oder „P15“ sein. Eine niedrigere Computegröße wird für sekundäre Datenbanken abgelehnt, da sie nicht mehr als 1 TB unterstützen können.
   - Aktualisieren der primären Datenbank in einer Georeplikationsbeziehung: Die Änderung der maximalen Größe für eine primäre Datenbank in mehr als 1 TB löst die gleiche Änderung für die sekundäre Datenbank aus. Beide Upgrades müssen erfolgreich ausgeführt werden, damit die Änderung für die primäre Datenbank wirksam wird. Für die Option mit mehr als 1 TB gelten Regionseinschränkungen. Wenn sich die sekundäre Datenbank in einer Region befindet, die nicht mehr als 1 TB unterstützt, wird die primäre Datenbank nicht aktualisiert.

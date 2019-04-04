@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 5849611ad346fc5ef1f0efd1e262d2ace8097520
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 147cf61dcd36edc75a936cf9b467fd89c8d8a965
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082822"
 ---
 # <a name="azure-data-box-limits"></a>Für Azure Data Box geltende Einschränkungen
 
@@ -22,7 +22,7 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 ## <a name="data-box-service-limits"></a>Data Box-Diensteinschränkungen
 
- - Wenn Sie mehrere Speicherkonten mit dem Data Box-Dienst nutzen, müssen alle Speicherkonten zur gleichen Azure-Region gehören.
+ - Wenn Sie mehrere Speicherkonten mit dem Data Box-Dienst nutzen, müssen alle Speicherkonten zur selben Azure-Region gehören.
  - Es wird empfohlen, nicht mehr als drei Speicherkonten zu verwenden. Weitere Speicherkonten können möglicherweise die Leistung beeinträchtigen.
 
 ## <a name="data-box-limits"></a>Für Data Box geltende Einschränkungen
@@ -44,7 +44,7 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 
 ## <a name="data-upload-caveats"></a>Einschränkungen beim Hochladen von Daten
 
-- Kopieren Sie keine Daten direkt unter die zuvor erstellten Freigaben. Sie müssen zunächst einen Ordner unter der Freigabe erstellen und dann Daten in diesen Ordner kopieren.
+- Kopieren Sie Dateien nicht direkt in eine der vorab erstellten Freigaben. Sie müssen zunächst einen Ordner unter der Freigabe erstellen und dann Dateien in diesen Ordner kopieren.
 - Ein Ordner unter *StorageAccount_BlockBlob* und *StorageAccount_PageBlob* ist ein Container. Container werden beispielsweise als *StorageAccount_BlockBlob/container* und *StorageAccount_PageBlob/container* erstellt.
 - Jeder Ordner, der direkt unter *StorageAccount_AzureFiles* erstellt wird, wird in eine Azure-Dateifreigabe umgewandelt.
 - Wenn Sie bereits über ein Azure-Objekt (z.B. Blob oder Datei) in der Cloud verfügen, das den gleichen Namen hat wie das Objekt, das kopiert wird, überschreibt Data Box die Datei in der Cloud.
@@ -70,7 +70,8 @@ Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stelle
 |-------------------|-----------------------------------------------------------|
 | Blockblob        | Ca. 4,75 TiB                                                 |
 | Seitenblob         | 8 TiB <br> Jede Datei, die im Seitenblobformat hochgeladen wird, muss einem ganzzahligen Vielfachen von 512 Bytes entsprechen. Andernfalls tritt beim Hochladen ein Fehler auf. <br> VHD- und VHDX-Dateien entsprechen einem ganzzahligen Vielfachen von 512 Bytes. |
-| Azure File        | 1 TiB                                                      |
+| Azure Files        | 1 TiB                                                      |
+| Verwaltete Datenträger     | 4 TiB <br> Weitere Informationen zu den Größen und Grenzwerten finden Sie unter: <li>[Skalierbarkeitsziele bei SSD Standard](../virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Skalierbarkeitsziele bei SSD Premium](../virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Skalierbarkeitsziele bei HDD Standard](../virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[Managed Disks – Preise und Abrechnung](../virtual-machines/windows/disks-types.md#billing)</li>                                                     |
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Benennungskonventionen für Azure-Blockblobs, -Seitenblobs und -Dateien
 
@@ -78,5 +79,5 @@ Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stelle
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Containernamen für Blockblob und Seitenblob | Es muss sich um einen gültigen DNS-Namen mit einer Länge von 3 bis 63 Zeichen handeln. <br>  Sie muss mit einem Buchstaben oder einer Zahl beginnen. <br> Nur Kleinbuchstaben, Zahlen und Bindestriche (-) sind zulässig. <br> Vor und nach jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer stehen. <br> Aufeinanderfolgende Bindestriche sind in Namen nicht zulässig. |
 | Freigabenamen für Azure-Dateien                  | Wie oben                                                                                                                                                                                                                                                                                                             |
-| Verzeichnis- und Dateinamen für Azure-Dateien     |<li> Groß-/Kleinschreibung wird beibehalten, aber nicht berücksichtigt, maximal 255 Zeichen. </li><li> Schrägstrich (/) als letztes Zeichen nicht erlaubt. </li><li>Falls eingegeben, erfolgt eine automatische Entfernung. </li><li> Folgende Zeichen sind nicht zulässig: `" `" \ / : | < > * ?`</li><li> Reservierte URL-Zeichen müssen korrekt mit Escapezeichen versehen sein. </li><li> Ungültige Zeichen im URL-Pfad sind unzulässig. Codepunkte wie „\uE000“ sind keine gültigen Unicode-Zeichen. Einige ASCII- und Unicode-Zeichen, z.B. Steuerzeichen (0x00 bis 0x1F, \u0081 usw.), sind ebenfalls unzulässig. Regeln für Unicode-Zeichenfolgen in HTTP/1.1 finden Sie unter „RFC 2616, Section 2.2: Basic Rules“ und „RFC 3987“. </li><li> Die folgenden Dateinamen sind unzulässig: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, Punkt (.) und zwei Punkte (..).</li>|
+| Verzeichnis- und Dateinamen für Azure-Dateien     |<li> Groß-/Kleinschreibung wird beibehalten, aber nicht berücksichtigt, maximal 255 Zeichen. </li><li> Schrägstrich (/) als letztes Zeichen nicht erlaubt. </li><li>Falls eingegeben, erfolgt eine automatische Entfernung. </li><li> Folgende Zeichen sind nicht zulässig: <code>" \\ / : \| < > * ?</code></li><li> Reservierte URL-Zeichen müssen korrekt mit Escapezeichen versehen sein. </li><li> Ungültige Zeichen im URL-Pfad sind unzulässig. Codepunkte wie „\\uE000“ sind keine gültigen Unicode-Zeichen. Einige ASCII- und Unicode-Zeichen, z. B. Steuerzeichen (0x00 bis 0x1F, \\u0081 usw.), sind ebenfalls unzulässig. Regeln für Unicode-Zeichenfolgen in HTTP/1.1 finden Sie unter „RFC 2616, Section 2.2: Basic Rules“ und „RFC 3987“. </li><li> Die folgenden Dateinamen sind unzulässig: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, Punkt (.) und zwei Punkte (..).</li>|
 | Blobnamen für Blockblobs und Seitenblobs      | </li><li>Für Blobnamen wird die Groß-/Kleinschreibung beachtet, und sie können eine beliebige Kombination von Zeichen enthalten. </li><li>Ein Blobname muss zwischen 1 und 1.024 Zeichen lang sein. </li><li>Reservierte URL-Zeichen müssen korrekt mit Escapezeichen versehen sein. </li><li>Die Anzahl von Pfadsegmenten, aus denen der Blobname besteht, darf 254 nicht überschreiten. Ein Pfadsegment ist die Zeichenfolge zwischen aufeinanderfolgenden Trennzeichen (z.B. der Schrägstrich (/)), die für den Namen eines virtuellen Verzeichnisses steht.</li> |

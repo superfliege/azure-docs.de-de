@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b5c4779605922bf6d523a9bc6e65e4d9a27f32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fa78ec2b5623dfd010a8fe5709916a47e221a9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163715"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Tutorial: Azure Active Directory-Integration in TalentLMS
 
@@ -219,7 +219,7 @@ Damit sich Azure AD-Benutzer bei TalentLMS anmelden können, müssen sie in Tale
 
     b. Geben Sie im Textfeld **Nachname** den Nachnamen des Benutzers ein (z.B. **Simon**).
  
-    c. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
+    c. Geben Sie im Textfeld **Email address** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. **brittasimon\@contoso.com**.
 
     d. Klicken Sie auf **Benutzer hinzufügen**.
 

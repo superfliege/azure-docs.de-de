@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 82d072cc6f86ae758bd0fdd4d02b68b1ac1de53a
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097149"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076019"
 ---
 # <a name="azure-application-offer"></a>Azure-Anwendungsangebot
 
@@ -44,6 +44,9 @@ Es gibt zwei Typen von Azure-Anwendungen: verwaltete Anwendung und Lösungsvorla
 
 Sie können verwaltete Anwendungen nicht nur im Azure Marketplace, sondern auch in einem Dienstkatalog anbieten. Der Dienstkatalog ist ein interner Katalog mit freigegebenen Lösungen für Benutzer in einer Organisation. Sie verwenden den Katalog, um Organisationsstandards zu erfüllen, während Lösungen für Gruppen in einer Organisation angeboten werden. Mitarbeiter können über den Katalog komfortabel Anwendungen finden, die die IT-Abteilung empfohlen und freigegeben hat.
 
+>[!Note]
+>Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
+
 Weitere Informationen über die Vorteile und Typen von verwalteten Anwendungen finden Sie unter [Übersicht über verwaltete Azure-Anwendungen](https://docs.microsoft.com/azure/managed-applications/overview).
 
 
@@ -55,16 +58,15 @@ In der folgenden Darstellung ist der grundsätzliche Prozess zum Veröffentliche
 
 Die Veröffentlichung eines Azure-Anwendungsangebots umfasst ganz allgemein folgende Schritte:
 
-0. Erfüllen der [Voraussetzungen](./cpp-prerequisites.md): (nicht gezeigt) Stellen Sie sicher, dass die geschäftlichen und technischen Anforderungen für die Veröffentlichung einer Azure-App im Azure Marketplace erfüllt sind. 
+1. Erfüllen der [Voraussetzungen](./cpp-prerequisites.md): (nicht gezeigt) Stellen Sie sicher, dass die geschäftlichen und technischen Anforderungen für die Veröffentlichung einer Azure-App im Azure Marketplace erfüllt sind. 
 
 1. [Erstellen des Angebots](./cpp-create-offer.md): Geben Sie detaillierte Angebotsinformationen an. Hierzu zählen unter anderem die Angebotsbeschreibung, Marketingmaterial, Supportinformationen und Ressourcenspezifikationen.
 
-2. [Erstellen oder Sammeln der geschäftlichen und technischen Ressourcen](./cpp-create-technical-assets.md): In diesem Schritt werden die geschäftlichen Ressourcen (rechtlich relevante Dokumente und Marketingmaterial) und die technischen Ressourcen für die zugeordnete Lösung erstellt.
+1. [Erstellen oder Sammeln der geschäftlichen und technischen Ressourcen](./cpp-create-technical-assets.md): In diesem Schritt werden die geschäftlichen Ressourcen (rechtlich relevante Dokumente und Marketingmaterial) und die technischen Ressourcen für die zugeordnete Lösung erstellt.
 
-3. [Erstellen der SKU](./cpp-skus-tab.md): Erstellen Sie die dem Angebot zugeordneten SKUs. Für jedes Image, das Sie veröffentlichen möchten, ist eine eindeutige SKU erforderlich.
+1. [Erstellen der SKU](./cpp-skus-tab.md): Erstellen Sie die dem Angebot zugeordneten SKUs. Für jedes Image, das Sie veröffentlichen möchten, ist eine eindeutige SKU erforderlich.
 
-4. [Zertifizieren und Veröffentlichen des Angebots](./cpp-publish-offer.md): Nach Fertigstellung des Angebots und der technischen Ressourcen kann das Angebot übermittelt werden. Durch diese Übermittlung wird der Veröffentlichungsprozess gestartet. Im Rahmen dieses Prozesses wird die Lösung getestet, überprüft, zertifiziert und anschließend im Azure Marketplace live geschaltet.
-
+1. [Zertifizieren und Veröffentlichen des Angebots](./cpp-publish-offer.md): Nach Fertigstellung des Angebots und der technischen Ressourcen kann das Angebot übermittelt werden. Durch diese Übermittlung wird der Veröffentlichungsprozess gestartet. Im Rahmen dieses Prozesses wird die Lösung getestet, überprüft, zertifiziert und anschließend im Azure Marketplace live geschaltet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

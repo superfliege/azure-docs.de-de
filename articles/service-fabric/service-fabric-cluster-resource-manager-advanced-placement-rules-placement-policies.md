@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 66c51b08884c9d7a4d522c94f7b81774ec7a8bda
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 985d41d3a00974e25c9abc4709c5bf5e662f7a50
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086036"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Platzierungsrichtlinien für Service Fabric-Dienste
 Platzierungsrichtlinien sind zusätzliche Regeln, mit denen in einigen besonderen, nicht alltäglichen Szenarien die Dienstplatzierung gesteuert werden kann. Einige Beispiele für diese Szenarien:
@@ -44,6 +44,7 @@ Die meisten der folgenden Steuerelemente können mithilfe von Knoteneigenschafte
 Die Platzierungsrichtlinie **InvalidDomain** ermöglicht die Angabe, dass eine bestimmte Fehlerdomäne für einen bestimmten Dienst ungültig ist. Diese Richtlinie stellt sicher, dass ein bestimmter Dienst nie in einer bestimmten Region ausgeführt wird, z. B. aus geopolitischen Gründen oder zur Einhaltung von Unternehmensrichtlinien. Über Richtlinien können mehrere ungültige Domänen angegeben werden.
 
 <center>
+
 ![Beispiel für eine ungültige Domäne][Image1]
 </center>
 
@@ -64,6 +65,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Gemäß der Richtlinie für die Platzierung erforderlicher Domänen darf der Dienst nur in der angegebenen Domäne vorhanden sein. Über Richtlinien können mehrere erforderliche Domänen angegeben werden.
 
 <center>
+
 ![Beispiel für eine erforderliche Domäne][Image2]
 </center>
 
@@ -85,6 +87,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Die bevorzugte primäre Domäne ist die Standarddomäne, in der das primäre Replikat platziert werden soll. Wenn alles fehlerfrei ist, befindet sich das primäre Replikat in dieser Domäne. Wenn die Domäne oder das primäre Replikat ausfällt oder beendet wird, wird das primäre Replikat an einen anderen Ort verschoben, idealerweise in derselben Domäne. Wenn dieser neue Ort nicht die bevorzugte Domäne ist, verschiebt der Clusterressourcen-Manager das Replikat so bald wie möglich in die bevorzugte Domäne zurück. Diese Einstellung ist nur für zustandsbehaftete Dienste sinnvoll. Diese Richtlinie ist besonders hilfreich in Clustern, die sich über Azure-Regionen oder mehrere Rechenzentren erstrecken, jedoch Dienste enthalten, die bevorzugt an einem bestimmten Ort platziert werden sollen. Die Nähe von primären Replikaten zu ihren Benutzern oder anderen Diensten trägt zu einer geringeren Wartezeit bei, insbesondere für Lesevorgänge, die standardmäßig von primären Replikaten behandelt werden.
 
 <center>
+
 ![Bevorzugte primäre Domänen und Failover][Image3]
 </center>
 

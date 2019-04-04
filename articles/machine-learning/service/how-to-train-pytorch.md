@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004053"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trainieren von PyTorch-Modellen mit Azure Machine Learning Service
 
-Azure Machine Learning stellt für das DNN-Training (Deep Neural Networks) mit PyTorch eine spezielle `PyTorch`-Klasse des `Estimator`s bereit. Mit dem `PyTorch`-Estimator aus dem Azure SDK können Sie PyTorch-Trainingsaufträge sowohl für die Ausführung auf einem Knoten als auch für die verteilte Ausführung auf Azure-Computezielen auf einfache Weise übermitteln.
+Azure Machine Learning stellt für das DNN-Training (Deep Neural Networks) mit PyTorch die spezielle [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-Klasse `Estimator` bereit. Mit dem `PyTorch`-Estimator aus dem Azure SDK können Sie PyTorch-Trainingsaufträge sowohl für die Ausführung auf einem Knoten als auch für die verteilte Ausführung auf Azure-Computezielen auf einfache Weise übermitteln.
 
 ## <a name="single-node-training"></a>Training auf einem einzelnen Knoten
 Das Trainieren mithilfe des `PyTorch`-Estimators funktioniert in etwa so wie mit dem [Basis-`Estimator`](how-to-train-ml-models.md). Lesen Sie daher zuerst diesen Artikel, und machen Sie sich mit den dort vorgestellten Konzepten vertraut.
@@ -42,6 +42,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 Hier geben Sie für den PyTorch-Konstruktor die folgenden Parameter an:
+
 Parameter | BESCHREIBUNG
 --|--
 `source_directory` |  Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
@@ -82,6 +83,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 In diesem Code werden im PyTorch-Konstruktor die folgenden neuen Parameter angegeben:
+
 Parameter | BESCHREIBUNG | Standard
 --|--|--
 `node_count` |  Die Anzahl der Knoten, die für Ihren Trainingsauftrag verwendet werden sollen. | `1`

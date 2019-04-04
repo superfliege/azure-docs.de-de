@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110588"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092428"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array
 
@@ -33,8 +33,8 @@ Der StorSimple-Geräte-Manager-Dienst ist eine Erweiterung im Azure-Portal, mit 
 
 Es gibt folgende StorSimple-Freigaben:
 
-* **Lokal**: Daten in diesen Freigaben verbleiben durchgehend im Array und weichen nicht in die Cloud aus.
-* **Mehrstufig**: Daten in diesen Freigaben können in die Cloud ausweichen. Wenn Sie eine mehrstufige Freigabe erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise eine Freigabe mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen (da die lokal erforderlichen 10 % nicht verfügbar sind).
+* **Lokal:** Daten in diesen Freigaben verbleiben durchgehend im Array und gelangen nicht in die Cloud.
+* **Mehrstufig:** Daten in diesen Freigaben können in die Cloud gelangen. Wenn Sie eine mehrstufige Freigabe erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise eine Freigabe mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie keine mehrstufige Freigabe bereitstellen (da die lokal erforderlichen 10 % nicht verfügbar sind).
 
 ### <a name="provisioned-capacity"></a>Bereitgestellte Kapazität
 
@@ -80,15 +80,15 @@ Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben ausz
 
 2. Gehen Sie auf dem Blatt **Freigabe hinzufügen** wie folgt vor:
    
-    1. Geben Sie im Feld **Freigabename** einen eindeutigen Namen für Ihre Freigabe ein. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
+   1. Geben Sie im Feld **Freigabename** einen eindeutigen Namen für Ihre Freigabe ein. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
 
-    2. Geben Sie eine optionale **Beschreibung** für die Freigabe an. Die Beschreibung ist für die Identifizierung der Freigabenbesitzer hilfreich.
+   2. Geben Sie eine optionale **Beschreibung** für die Freigabe an. Die Beschreibung ist für die Identifizierung der Freigabenbesitzer hilfreich.
 
-    3. Geben Sie in der Dropdownliste **Typ** an, ob für die zu erstellende Freigabe die Option **Mehrstufig** oder **Lokal** gelten soll. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokale Freigabe** aus. Wählen Sie für alle anderen Daten **Mehrstufige Freigabe** aus.
+   3. Geben Sie in der Dropdownliste **Typ** an, ob für die zu erstellende Freigabe die Option **Mehrstufig** oder **Lokal** gelten soll. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokale Freigabe** aus. Wählen Sie für alle anderen Daten **Mehrstufige Freigabe** aus.
 
-    4. Geben Sie im Feld **Kapazität** die Größe der Freigabe an. Eine mehrstufige Freigabe muss zwischen 500 GB und 20 TB groß sein und eine lokale Freigabe zwischen 50 GB und 2 GB.
+   4. Geben Sie im Feld **Kapazität** die Größe der Freigabe an. Eine mehrstufige Freigabe muss zwischen 500 GB und 20 TB groß sein und eine lokale Freigabe zwischen 50 GB und 2 GB.
 
-    5. Weisen Sie die Berechtigungen im Feld **Set default full permissions to**  (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format _john@contoso.com_ ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
+   5. Weisen Sie die Berechtigungen im Feld **Set default full permissions to**  (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format _john@contoso.com_ ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
 3. Wenn Sie die Konfiguration Ihrer Freigabe abgeschlossen haben, klicken Sie auf **Erstellen**. Eine Freigabe wird mit den angegebenen Einstellungen erstellt, und Sie erhalten eine Benachrichtigung. Standardmäßig wird für die Freigabe die Sicherungsfunktion aktiviert.
 4. Wechseln Sie zum Blatt **Freigaben**, um sicherzustellen, dass die Freigabe erfolgreich erstellt wurde. Die Freigabe sollte hier aufgeführt werden.
    

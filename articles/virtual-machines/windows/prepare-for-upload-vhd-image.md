@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: b5e3e84ce8f8b4b364b2fa69dda0b0091db25b6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329778"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093802"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt **nur virtuelle Computer der 1. Generation**, die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe umfassen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateisystemformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich eine VM der 1. oder 2. Generation in Hyper-V erstellen?).
@@ -293,7 +293,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Wenn das Repository beschädigt ist, lesen Sie den Blogbeitrag [WMI:  Repository Corruption, or Not?](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not) (WMI: Repository beschädigt oder nicht?).
+    Wenn das Repository beschädigt ist, informieren Sie sich in [WMI: Repository beschädigt oder nicht](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
 5. Stellen Sie sicher, dass keine andere Anwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Sie können **netstat -anob** ausführen, um anzuzeigen, welche Ports auf der VM verwendet werden:
 
@@ -320,14 +320,14 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
 
 9. Überprüfen Sie die folgende AD-Richtlinie, um sicherzustellen, dass Sie keins der folgenden erforderlichen Zugriffskonten entfernen:
 
-    - Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten\Zugriff vom Netzwerk auf diesen Computer
+   - Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten\Zugriff vom Netzwerk auf diesen Computer
 
-    Für diese Richtlinie sollten die folgenden Gruppen aufgeführt sein:
+     Für diese Richtlinie sollten die folgenden Gruppen aufgeführt sein:
 
-    - Administratoren
-    - Sicherungsoperatoren
-    - Jeder
-    - Benutzer
+   - Administratoren
+   - Sicherungsoperatoren
+   - Jeder
+   - Benutzer
 
 10. Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist. An diesem Punkt können Sie eine VM in Ihrer lokalen Hyper-V-Umgebung einrichten, um sicherzustellen, dass die VM vollständig startet. Anschließend können Sie testen, ob die VM über RDP erreichbar ist.
 
@@ -338,7 +338,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
 ### <a name="install-windows-updates"></a>Installieren von Windows-Updates
 Die ideale Konfiguration ist die, dass **mindestens die Patchebene des Computers vorliegt**. Wenn dies nicht möglich ist, stellen Sie sicher, dass die folgenden Updates installiert sind:
 
-| Komponente               | Binär         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 Version 1607, Windows Server 2016 Version 1607 | Windows 10, Version 1703    | Windows 10 1709, Windows Server 2016 Version 1709 | Windows 10 1803, Windows Server 2016 Version 1803 |
+| Komponente               | Binär         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 Version 1607 Windows Server 2016 Version 1607 | Windows 10, Version 1703    | Windows 10 1709, Windows Server 2016 Version 1709 | Windows 10 1803, Windows Server 2016 Version 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Storage                 | disk.sys       | 6.1.7601.23403 – KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 – KB3137061 | 6.3.9600.18203 – KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 – KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 – KB3018489 | 6.3.9600.18573 – KB4022726         | 10.0.14393.1358 – KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -415,17 +415,13 @@ Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer instal
 ## <a name="complete-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es wird jedoch dringend empfohlen, diese Einstellungen zu konfigurieren.
 
-* Installieren Sie den [Azure-VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter
+* Installieren Sie den [Azure-VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter [Übersicht über den Agent für virtuelle Azure-Computer](../extensions/agent-windows.md).
+* Nachdem die VM in Azure erstellt wurde, wird empfohlen, die Auslagerungsdatei auf dem Volume für das temporäre Laufwerk zu platzieren, um die Leistung zu verbessern. Die Einrichtung kann wie folgt durchgeführt werden:
 
-    - [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/) (VM-Agent und -Erweiterungen – Teil 1)
-    - [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-Agent und -Erweiterungen – Teil 2)
-
-*  Nachdem die VM in Azure erstellt wurde, wird empfohlen, die Auslagerungsdatei auf dem Volume für das temporäre Laufwerk zu platzieren, um die Leistung zu verbessern. Die Einrichtung kann wie folgt durchgeführt werden:
-
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
-    ```
-Wenn der VM ein Datenträger angefügt ist, lautet der Laufwerkbuchstabe des Volumes für das temporäre Laufwerk typischerweise „D“. Die Bezeichnung kann abhängig von der Anzahl verfügbarer Laufwerke und den vorgenommenen Einstellungen jedoch abweichen.
+   ```PowerShell
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   ```
+  Wenn der VM ein Datenträger angefügt ist, lautet der Laufwerkbuchstabe des Volumes für das temporäre Laufwerk typischerweise „D“. Die Bezeichnung kann abhängig von der Anzahl verfügbarer Laufwerke und den vorgenommenen Einstellungen jedoch abweichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](upload-generalized-managed.md)

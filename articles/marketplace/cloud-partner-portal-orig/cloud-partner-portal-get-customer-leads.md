@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 997727acd1bbaf17577160bb996aad7e21d49c86
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806179"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118577"
 ---
 <a name="get-customer-leads"></a>Generieren von Kundenleads
 ==================
@@ -39,13 +39,13 @@ Leads sind Kunden, die an Ihren Produkten im [Azure Marketplace](https://azurema
 
 <!-- -->
 
-2.  Der Kunde erklärt sich durch Auswählen von „Jetzt anfordern“ mit der Weitergabe seiner Informationen einverstanden. Bei diesem Lead handelt es sich um einen Lead mit **erstem Interesse**, in dem wir Informationen über einen Kunden mitteilen, der Interesse am Erhalt Ihres Produkts bekundet hat. Der Lead befindet sich an oberster Stelle des Verkaufstrichters.
+1. Der Kunde erklärt sich durch Auswählen von „Jetzt anfordern“ mit der Weitergabe seiner Informationen einverstanden. Bei diesem Lead handelt es sich um einen Lead mit **erstem Interesse**, in dem wir Informationen über einen Kunden mitteilen, der Interesse am Erhalt Ihres Produkts bekundet hat. Der Lead befindet sich an oberster Stelle des Verkaufstrichters.
 
-    ![Option „Jetzt anfordern“](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Option „Jetzt anfordern“](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-3.  Der Kunde wählt „Kaufen“ im [Azure-Portal](https://portal.azure.com/) aus, um Ihr Produkt zu erhalten. Dieser Lead ist ein **aktiver** Lead, in dem wir Informationen über einen Kunden weitergeben, der damit begonnen hat, Ihr Produkts bereitzustellen.
+1. Der Kunde wählt „Kaufen“ im [Azure-Portal](https://portal.azure.com/) aus, um Ihr Produkt zu erhalten. Dieser Lead ist ein **aktiver** Lead, in dem wir Informationen über einen Kunden weitergeben, der damit begonnen hat, Ihr Produkts bereitzustellen.
 
-    ![Option „Kaufen“](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![Option „Kaufen“](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
@@ -72,7 +72,7 @@ Für jeden Lead, den Sie während des Kundengewinnungsprozesses empfangen, gibt 
 
 Das Format für einen Leadursprung ist **Ursprungs**-**Aktion** |  **Angebot**.
 
-**Ursprünge**: „AzureMarketplace“, „AzurePortal“, „TestDrive“ und „AppSource (SPZA)“
+**Quellen**: „AzureMarketplace“, „AzurePortal“, „TestDrive“ und „AppSource (SPZA)“
 
 **Aktionen**:
 - „INS“: Installation. Diese Aktion findet im Azure Marketplace oder in AppSource statt, wenn ein Kunde Ihr Produkt kauft.

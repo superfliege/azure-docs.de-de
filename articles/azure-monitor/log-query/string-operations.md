@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995406"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012221"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen
 
@@ -64,9 +64,9 @@ Operators       |BESCHREIBUNG                         |Groß-/Kleinschreibung|Be
 `hasprefix_cs`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |Ja            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |Ja            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Nein             |`"North America" hassuffix "ica"`
-`!hassuffix`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Nein             |`"North America" !hassuffix "americ"
+`!hassuffix`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Nein             |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Ja            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Ja            |`"North America" !hassuffix_cs "icA"
+`!hassuffix_cs`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Ja            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Nein             |`"FabriKam" contains "BRik"`
 `!contains`    |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |Nein             |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Ja           |`"FabriKam" contains_cs "Kam"`
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 Folgende Ergebnisse sind möglich:
+
 Aktivität                                        |replaced
 ------------------------------------------------|----------------------------------------------------------
 4663: Es wurde versucht, auf das Objekt zuzugreifen.  |Aktivitäts-ID 4663: Es wurde versucht, auf das Objekt zuzugreifen.

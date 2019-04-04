@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867000"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013349"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
 
@@ -63,8 +63,8 @@ _Nein. Derzeit können Sie Sicherungen von Daten und Protokollen nur im Primärb
 
 - [Introduction to SAP HANA Administration](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US) (Einführung in die SAP HANA-Administration)
 - [Planning Your Backup and Recovery Strategy](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie)
-- [Schedule HANA Backup using ABAP DBACOCKPIT](http://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html) (Planen der HANA-Sicherung mit ABAP DBACOCKPIT)
-- [Schedule Data Backups (SAP HANA Cockpit)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm) (Planen von Datensicherungen(SAP HANA Cockpit))
+- [Schedule HANA Backup using ABAP DBACOCKPIT](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html) (Planen der HANA-Sicherung mit ABAP DBACOCKPIT)
+- [Schedule Data Backups (SAP HANA Cockpit)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm) (Planen von Datensicherungen(SAP HANA Cockpit))
 - Häufig gestellte Fragen zur SAP HANA-Sicherung im [SAP-Hinweis 1642148](https://launchpad.support.sap.com/#/notes/1642148)
 - Häufig gestellte Fragen zur SAP HANA-Datenbank und zu Speichermomentaufnahmen im [SAP-Hinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883)
 - Ungeeignete Netzwerkdateisysteme für Sicherung und Wiederherstellung im [SAP-Hinweis 1820529](https://launchpad.support.sap.com/#/notes/1820529)
@@ -80,7 +80,7 @@ Bei Verwendung von Speichermomentaufnahmen wird die Durchführung einer Testwied
 
 Beachten Sie, dass es nicht ausreicht, eine einfache Wiederherstellung durchzuführen und zu überprüfen, ob HANA betriebsbereit ist. Im Idealfall sollten Sie eine Überprüfung auf die Konsistenz von Tabellen durchführen, um sich zu vergewissern, dass die wiederhergestellte Datenbank fehlerfrei ist. SAP HANA verfügt über mehrere Arten von Konsistenzprüfungen, die im [SAP-Hinweis 1977584](https://launchpad.support.sap.com/#/notes/1977584) beschrieben werden.
 
-Informationen zur Überprüfung der Konsistenz von Tabellen finden Sie außerdem auf der SAP-Website unter [Table and Catalog Consistency Checks](http://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b) (Konsistenzprüfungen für Tabellen und Kataloge).
+Informationen zur Überprüfung der Konsistenz von Tabellen finden Sie außerdem auf der SAP-Website unter [Table and Catalog Consistency Checks](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b) (Konsistenzprüfungen für Tabellen und Kataloge).
 
 Für Standarddateisicherungen ist eine Testwiederherstellung nicht erforderlich. Es gibt zwei SAP HANA-Tools, mit denen Sie überprüfen können, welche Sicherung für die Wiederherstellung verwendet werden kann: hdbbackupdiag und hdbbackupcheck. Weitere Informationen zu diesen Tools finden Sie unter [Manually Checking Whether a Recovery is Possible](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) (Manuelles Überprüfen, ob eine Wiederherstellung möglich ist).
 
@@ -90,7 +90,7 @@ Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die 
 
 Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Konsistenz des Dateisystems garantiert ist (siehe [Using blob snapshots with PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) (Verwenden von Blob-Momentaufnahmen mit PowerShell)). Im nächsten Abschnitt (_Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen_) werden einige Aspekte dieser Funktion beschrieben.
 
-Außerdem sollten Sie über die Abrechnungsaspekte informiert sein, wenn Sie Blob-Momentaufnahmen häufiger nutzen. Dies ist in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Informationen zu den Gebühren, die für Momentaufnahmen entstehen). Dies ist nicht so einfach wie die Verwendung von virtuellen Azure-Datenträgern.
+Darüber hinaus muss ein Verständnis der Abrechnungsaspekte vorhanden sein, wenn häufig mit Blob-Momentaufnahmen gearbeitet wird, wie in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Grundlegendes zu anfallenden Kosten für Momentaufnahmen) – das ist nicht so selbsterklärend wie bei virtuellen Azure-Datenträgern.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen
 
@@ -137,7 +137,7 @@ Der Leitfaden zur HANA-Administration enthält eine Liste mit Beispielen. Es wir
 Im Hinblick auf einen genauen Zeitplan, mit dem Zeitpunkt und Häufigkeit eines bestimmten Typs von Sicherung bestimmt werden, kann keine allgemeine Richtlinie aufgestellt werden. Dies ist kundenspezifisch und hängt davon ab, wie viele Datenänderungen im System vorgenommen werden. Eine grundlegende Empfehlung von SAP, die als allgemeingültige Richtlinie angesehen werden kann, ist die Erstellung einer vollständigen HANA-Sicherung pro Woche.
 Informationen zu Protokollsicherungen finden Sie in der SAP HANA-Dokumentation zu [Log Backups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm) (Protokollsicherungen).
 
-Darüber hinaus empfiehlt SAP eine Überprüfung des Sicherungskatalogs, um zu verhindern, dass dieser sehr umfangreich wird (siehe [Housekeeping for Backup Catalog and Backup Storage](http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm) (Housekeeping für Sicherungskatalog und Sicherungsspeicher)).
+Darüber hinaus empfiehlt SAP eine Überprüfung des Sicherungskatalogs, um zu verhindern, dass dieser sehr umfangreich wird (siehe [Housekeeping for Backup Catalog and Backup Storage](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm) (Housekeeping für Sicherungskatalog und Sicherungsspeicher)).
 
 ### <a name="sap-hana-configuration-files"></a>SAP HANA-Konfigurationsdateien
 

@@ -3,21 +3,20 @@ title: Übersicht über Vorlagen für Azure Data Factory | Microsoft-Dokumentati
 description: Erfahren Sie, wie Sie mithilfe einer vordefinierten Vorlage schnell den Einstieg in Azure Data Factory finden.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: douglasl
-ms.reviewer: douglasl
-ms.openlocfilehash: c3571aec55d5050df01f740a163db18e9c6c1095
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966761"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003553"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -46,6 +45,8 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 -   Kopiervorlagen:
 
     -   [Massenkopieren aus der Datenbank](solution-template-bulk-copy-with-control-table.md)
+    
+    -   [Kopieren neuer Dateien basierend auf LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [Kopieren von Dateien aus mehreren Containern zwischen dateibasierten Speichern](solution-template-copy-files-multiple-containers.md)
 

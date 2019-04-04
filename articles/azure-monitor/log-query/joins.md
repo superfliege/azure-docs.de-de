@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079110"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Joins in Azure Monitor-Protokollabfragen
 
@@ -101,7 +101,7 @@ Berücksichtigen Sie folgende Punkte, um eine optimale Leistung zu erzielen:
 
 - Verwenden Sie einen Zeitfilter für jede Tabelle, um die Datensätze zu reduzieren, die für den Join ausgewertet werden müssen.
 - Verwenden Sie `where` und `project`, um die Anzahl von Zeilen und Spalten in den Eingabetabellen vor dem Join zu reduzieren.
-* Wenn eine Tabelle immer kleiner als die andere ist, verwenden Sie diese als die linke Seite der Verknüpfung.
+- Wenn eine Tabelle immer kleiner als die andere ist, verwenden Sie diese als die linke Seite der Verknüpfung.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

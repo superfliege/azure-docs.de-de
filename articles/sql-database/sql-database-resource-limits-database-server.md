@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
 ms.author: carlrab
-ms.reviewer: sashan,moslake
+ms.reviewer: sashan,moslake,josack
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 670ca1b8ba16122d4e969a41f8679e1a6d1b27c6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/01/2019
+ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990103"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093887"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>SQL-Datenbank-Ressourcenlimits für Azure SQL-Datenbank-Server
 
@@ -36,7 +36,7 @@ Dieser Artikel bietet eine Übersicht über die SQL-Datenbank-Ressourcenlimits f
 | DTU/eDTU-Kontingent pro Server | 54.000 |  
 | Virtuelle Kerne pro Server/Instanz | 540 |
 | Maximale Anzahl von Pools pro Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen. Beispiel: Wenn jeder Pool 1.000 DTUs umfasst, kann ein Server 54 Pools unterstützen.|
-||||
+|||
 
 > [!NOTE]
 > Um ein höheres DTU/eDTU-Kontingent oder eine höhere Anzahl von virtuellen Kernen oder Servern als die Standardanzahl zu erhalten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit dem Problemtyp „Kontingent“ übermitteln. Durch das DTU/eDTU-Kontingent und das Limit für Datenbanken pro Server wird die Anzahl der Pools für elastische Datenbanken pro Server eingeschränkt.
@@ -73,6 +73,34 @@ Wenn eine hohe Sitzungs- oder Workernutzung festgestellt wird, stehen folgende O
 
 - Erhöhen des Diensttarifs oder der Computegröße der Datenbank oder des Pools für elastische Datenbanken. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](sql-database-single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](sql-database-elastic-pool-scale.md).
 - Optimieren von Abfragen, um die Ressourcenverwendung durch die einzelnen Abfragen zu verringern, wenn die Ursache der zunehmenden Auslastung durch Worker Konflikte bezüglich der Computeressourcen sind. Weitere Informationen finden Sie unter [Abfrageoptimierung/Abfragehinweise](sql-database-performance-guidance.md#query-tuning-and-hinting).
+
+## <a name="transaction-log-rate-governance"></a>Transaktionsprotokollratengovernance 
+Als Transaktionsprotokollratengovernance wird der Prozess in Azure SQL-Datenbank bezeichnet, der verwendet wird, um hohe Datenerfassungsraten für Workloads zu begrenzen, z. B. für Masseneinfügung (BULK INSERT), SELECT INTO und für die Indizierung. Diese Grenzwerte werden für die Rate, in der Protokolleinträge generiert werden, in Sekundenbruchteilen verfolgt und erzwungen. Dadurch wird der Durchsatz unabhängig von den E/A-Größen der Datendateien eingeschränkt.  Die Generierungsrate von Transaktionsprotokollen wird momentan bis zu einem hardwareabhängigen Punkt linear skaliert. Die maximal zulässige Protokollrate beträgt dabei für das V-Kern-Kaufmodell 48 MB/s. 
+
+> [!NOTE]
+> Die tatsächlichen physischen E/A-Größen für Transaktionsprotokolldateien sind nicht gesteuert oder beschränkt. 
+
+Protokollraten werden so festgelegt, dass sie in einer Vielzahl von Szenarios erreicht und erhalten werden können, während das gesamte System seine Funktionalität mit minimalen Einbußen bei der Benutzerauslastung beibehalten kann. Die Protokollratengovernance sorgt dafür, dass sich Transaktionsprotokollsicherungen innerhalb veröffentlichter Vereinbarungen zum Servicelevel für die Wiederherstellbarkeit bewegen.  Diese Governance verhindert außerdem ein exzessives Backlog bei sekundären Replikaten.
+
+Während die Protokolleinträge generiert werden, wird jeder Vorgang ausgewertet und es wird eingeschätzt, ob er verzögert werden soll, um eine maximal erwünschte Protokollrate aufrechtzuerhalten (MB/s). Die Verzögerungen werden nicht hinzugefügt, wenn die Protokolleinträge in den Speicher geleert werden. Die Protokollratengovernance wird eher während der Generierung der Protokollrate selbst angewendet.
+
+Die tatsächlichen Protokollgenerierungsraten, die während der Laufzeit durchgesetzt werden, werden möglicherweise auch von Feedbackmechanismen beeinflusst. Dadurch wird die zulässige Protokollrate zeitweise reduziert, damit sich das System stabilisieren kann. Die Speicherplatzverwaltung für die Protokolldatei, mithilfe derer also vermieden wird, dass nicht mehr genug Protokollspeicherplatz sowie Verfügbarkeitsgruppenreplikationsmechanismen vorhanden sind, kann zeitweise zu einer Verringerung der gesamten Begrenzungen für das System führen. 
+
+Die Anpassung von Traffic durch die Protokollratenkontrolle tritt über die folgenden Wartetypen zum Vorschein (verfügbar gemacht über die dynamische Verwaltungssicht (Dynamic Management View, DMV) [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database)):
+
+| Wartetyp | Notizen |
+| :--- | :--- |
+| LOG_RATE_GOVERNOR | Datenbankbegrenzung |
+| POOL_LOG_RATE_GOVERNOR | Poolbegrenzung |
+| INSTANCE_LOG_RATE_GOVERNOR | Instanzebenenbegrenzung |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Feedbackkontrolle; physische Replikation von Verfügbarkeitsgruppen in den Tarifen „Premium“/„Unternehmenskritisch“ zu langsam |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Feedbacksteuerung; Raten werden beschränkt, um eine Situation zu vermeiden, in der der Speicherplatz für Protokolle ausgeht |
+|||
+
+Wenn es zu einer Begrenzung der Protokollrate zu kommen droht, die die gewünschte Skalierbarkeit beeinträchtigt, können Sie die folgenden Optionen in Erwägung ziehen:
+- Zentrales Hochskalieren auf einen höheren Tarif, um die maximale Protokollrate von 48 MB/s zu erhalten. 
+- Wenn die Daten, die geladen werden, kurzlebig sind, d. h. Stagingdaten in einem ETL-Prozess, können sie in eine tmpdb geladen werden (für die nur die minimal notwendigen Protokolle erstellt werden). 
+- In Analyseszenarios kann das Laden in eine gruppierte von einem Columnstore abgedeckte Tabelle erfolgen. Dadurch wird die erforderliche Protokollrate über Komprimierung reduziert. Dieses Vorgehen erhöht jedoch die CPU-Auslastung und eignet sich nur für Datasets, die von gruppierten Columnstore-Indizes profitieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

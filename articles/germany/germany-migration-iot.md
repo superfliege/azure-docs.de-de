@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: e44d1e02ec13882deb0432bb58e50839b57e8116
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d263e3bc342277ac7709f736bacdaa95d1c2865e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322884"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075519"
 ---
 # <a name="migrate-iot-resources-to-global-azure"></a>Migrieren von IoT-Ressourcen zu Azure weltweit
 
@@ -32,12 +32,12 @@ Um Azure Cosmos DB-Ressourcen zu migrieren, sollten Sie die folgenden Schritte a
 1. Klonen Sie die Kontokonfigurationen aus Azure Deutschland in die neue Region, indem Sie das Datenmigrationstool ausführen.
 1. Kann ein Wartungsfenster verwendet werden, kopieren Sie die Daten aus der Quelle in das Ziel, indem Sie das Datenmigrationstool ausführen.
 1. Ist es nicht möglich, ein Wartungsfenster zu verwenden, kopieren Sie die Daten aus der Quelle in das Ziel, indem Sie das Tool und dann die folgenden Schritte ausführen:
-  1. Verwenden Sie einen konfigurationsgesteuerten Ansatz, um Änderungen an den Lese-/Schreibvorgängen in einer Anwendung vorzunehmen.
-  1. Führen Sie eine erstmalige Synchronisierung aus.
-  1. Richten Sie eine inkrementelle Synchronisierung ein, und binden Sie den Änderungsfeed ein.
-  1. Verknüpfen Sie Lesevorgänge mit dem neuen Konto, und überprüfen Sie die Anwendung.
-  1. Beenden Sie Schreibvorgänge in das alte Konto, überprüfen Sie, ob der Änderungsfeed berücksichtigt wird, und verknüpfen Sie dann Schreibvorgänge mit dem neuen Konto.
-  1. Beenden Sie das Tool, und löschen Sie das alte Konto.
+   1. Verwenden Sie einen konfigurationsgesteuerten Ansatz, um Änderungen an den Lese-/Schreibvorgängen in einer Anwendung vorzunehmen.
+   1. Führen Sie eine erstmalige Synchronisierung aus.
+   1. Richten Sie eine inkrementelle Synchronisierung ein, und binden Sie den Änderungsfeed ein.
+   1. Verknüpfen Sie Lesevorgänge mit dem neuen Konto, und überprüfen Sie die Anwendung.
+   1. Beenden Sie Schreibvorgänge in das alte Konto, überprüfen Sie, ob der Änderungsfeed berücksichtigt wird, und verknüpfen Sie dann Schreibvorgänge mit dem neuen Konto.
+   1. Beenden Sie das Tool, und löschen Sie das alte Konto.
 1. Führen Sie das Tool aus, um zu überprüfen, ob die Daten im alten und im neuen Konto konsistent sind.
 
 Weitere Informationen finden Sie unter:
@@ -55,9 +55,8 @@ Ein Migrieren von Azure Functions-Ressourcen von Azure Deutschland zu Azure welt
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](https://docs.microsoft.com/azure/azure-functions/#step-by-step-tutorials) durcharbeiten.
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Erfahren Sie, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Lesen Sie die [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
 - Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -83,7 +82,7 @@ Sie können zwar Azure IoT Hub-Instanzen von Azure Deutschland zu Azure weltweit
 
 ### <a name="step-1-re-create-the-iot-hub"></a>Schritt 1: Erneutes Erstellen des IoT-Hubs
 
-IoT Hub unterstützt nativ keine Klonvorgänge. Sie können jedoch über den Azure Resource Manager [eine Ressourcengruppe als Vorlage exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md), um Ihre IoT Hub-Metadaten zu exportieren. Konfigurierte Routen und andere IoT-Hub-Einstellungen werden in die exportierten Metadaten einbezogen. Stellen Sie die Vorlage dann in Azure weltweit bereit. Möglicherweise finden Sie es einfacher, den IoT-Hub im Azure-Portal erneut zu erstellen, indem Sie sich die Details in der exportierten JSON-Datei ansehen.
+IoT Hub unterstützt nativ keine Klonvorgänge. Sie können jedoch über den Azure Resource Manager [eine Ressourcengruppe als Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), um Ihre IoT Hub-Metadaten zu exportieren. Konfigurierte Routen und andere IoT-Hub-Einstellungen werden in die exportierten Metadaten einbezogen. Stellen Sie die Vorlage dann in Azure weltweit bereit. Möglicherweise finden Sie es einfacher, den IoT-Hub im Azure-Portal erneut zu erstellen, indem Sie sich die Details in der exportierten JSON-Datei ansehen.
 
 ### <a name="step-2-migrate-device-identities"></a>Schritt 2: Migrieren von Geräteidentitäten
 

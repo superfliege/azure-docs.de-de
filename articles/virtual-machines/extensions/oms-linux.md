@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics-VM-Erweiterung für Linux | Microsoft-Dokumentation
+title: Azure Monitor-VM-Erweiterung für Linux | Microsoft-Dokumentation
 description: Stellen Sie den Log Analytics-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,23 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/30/2018
+ms.date: 03/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 6ca39d13fa54d772de17d519be5977e1a437c033
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337562"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853221"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
+# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Azure Monitor-VM-Erweiterung für Linux
 
 ## <a name="overview"></a>Übersicht
 
-Log Analytics bietet Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die Log Analytics-Agent-VM-Erweiterung für Linux wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Log Analytics-VM-Erweiterung für Linux.
+Azure Monitor-Protokolle bieten Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die Log Analytics-Agent-VM-Erweiterung für Linux wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Azure Monitor-Protokolle-VM-Erweiterung für Linux.
 
 >[!NOTE]
 >Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor wird der OMS-Agent für Windows bzw. Linux nun als Log Analytics-Agent für Windows bzw. Log Analytics-Agent für Linux bezeichnet.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,10 +54,11 @@ Die Log Analytics-Agent-Erweiterung kann für folgende Linux-Distributionen ausg
 >
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
-Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. Ein Link zu den Anmerkungen zur jeweiligen Log Analytics-Agent-Paketversion ist enthalten. Anmerkungen zur Version enthalten Details zu Fehlerbehebungen und neuen Features, die für eine bestimmte Agentversion verfügbar sind.  
+Die folgende Tabelle enthält eine Zuordnung der Version der Azure Monitor-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. Ein Link zu den Anmerkungen zur jeweiligen Log Analytics-Agent-Paketversion ist enthalten. Anmerkungen zur Version enthalten Details zu Fehlerbehebungen und neuen Features, die für eine bestimmte Agentversion verfügbar sind.  
 
-| Version der Log Analytics-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
+| Version der Azure Monitor-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
 |--------------------------------|--------------------------|
+| 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
 | 1.7.9 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
@@ -125,9 +128,9 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen (beispielsweise, um sie in Log Analytics zu integrieren). Eine Resource Manager-Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie mindestens einen virtuellen Computer bereitstellen, der eine Konfiguration nach der Bereitstellung erfordert, wie z.B. Onboarding bei Azure Monitor-Protokollen. Eine Resource Manager-Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
-Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
+Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
 Im folgenden Beispiel wird davon ausgegangen, dass die VM-Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 
@@ -220,7 +223,7 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 | 19 | Fehler bei der OMI-Paketinstallation | 
 | 20 | Fehler bei der SCX-Paketinstallation |
 | 51 | Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt. | |
-| 55 | Es kann keine Verbindung mit dem Log Analytics-Dienst hergestellt werden, oder die erforderlichen Pakete fehlen, oder der dpkg-Paket-Manager ist gesperrt.| Stellen Sie sicher, dass das System entweder Internetzugriff hat oder dass ein gültiger HTTP-Proxy bereitgestellt wurde. Überprüfen Sie außerdem die Richtigkeit der Arbeitsbereichs-ID, und stellen Sie sicher, dass die Hilfsprogramme cURL und Tar installiert sind. |
+| 55 | Es kann keine Verbindung mit dem Azure Monitor-Dienst hergestellt werden, oder die erforderlichen Pakete fehlen, oder der dpkg-Paket-Manager ist gesperrt.| Stellen Sie sicher, dass das System entweder Internetzugriff hat oder dass ein gültiger HTTP-Proxy bereitgestellt wurde. Überprüfen Sie außerdem die Richtigkeit der Arbeitsbereichs-ID, und stellen Sie sicher, dass die Hilfsprogramme cURL und Tar installiert sind. |
 
 Weitere Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung für den Log Analytics-Agent für Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
 

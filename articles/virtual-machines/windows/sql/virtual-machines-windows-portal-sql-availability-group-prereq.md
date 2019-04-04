@@ -3,7 +3,7 @@ title: SQL Server-Verfügbarkeitsgruppen – Azure Virtual Machines – Vorausse
 description: Dieses Tutorial zeigt, wie die Voraussetzungen zum Erstellen einer SQL Server AlwaysOn-Verfügbarkeitsgruppe in Azure-VMs konfiguriert werden.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818021"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995178"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
@@ -42,7 +42,7 @@ Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbar
 Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) oder [Visual Studio-Abonnementvorteile aktivieren](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **+**, um ein neues Objekt im Portal zu erstellen.
 
    ![Neues Objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -292,14 +292,14 @@ Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Dom�
 15. Klicken Sie in der gelben Warnungsleiste auf den Link **Mehr** .
 16. Klicken Sie im Dialogfeld **Alle Serveraufgabendetails** in der Spalte **Aktion** auf **Server zu einem Domänencontroller heraufstufen**.
 17. Wählen Sie unter **Bereitstellungskonfiguration** die Option **Domänencontroller vorhandener Domäne hinzufügen**.
-   ![Bereitstellungskonfiguration](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+    ![Bereitstellungskonfiguration](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. Klicken Sie auf **Auswählen**.
 19. Verwenden Sie das Administratorkonto (**CORP.CONTOSO.COM\domainadmin**) und Kennwort (**Contoso!0000**), um eine Verbindung herzustellen.
 20. Klicken Sie unter **Domäne aus der Gesamtstruktur auswählen** auf Ihre Domäne und dann auf **OK**.
 21. Verwenden Sie unter **Domänencontrolleroptionen** die Standardwerte, und legen Sie ein DSRM-Kennwort fest.
 
-   >[!NOTE]
-   >Auf der Seite **DNS-Optionen** wird möglicherweise eine Warnung angezeigt, dass für diesen DNS-Server keine Delegierung erstellt werden kann. Sie können diese Warnung in nicht produktiven Umgebungen ignorieren.
+    >[!NOTE]
+    >Auf der Seite **DNS-Optionen** wird möglicherweise eine Warnung angezeigt, dass für diesen DNS-Server keine Delegierung erstellt werden kann. Sie können diese Warnung in nicht produktiven Umgebungen ignorieren.
 22. Klicken Sie auf **Weiter**, bis das Dialogfeld die **Voraussetzungsprüfung** erreicht. Klicken Sie dann auf **Weiter**.
 
 Nachdem der Server die Änderungen an der Konfiguration abgeschlossen hat, starten Sie den Server neu.
@@ -308,7 +308,7 @@ Nachdem der Server die Änderungen an der Konfiguration abgeschlossen hat, start
 
 Ändern Sie im Azure-Portal unter „Virtuelles Netzwerk“ den DNS-Server, sodass die IP-Adresse des sekundären Domänencontrollers eingeschlossen ist. Diese Einstellung ermöglicht einen redundanten DNS-Dienst.
 
-### <a name=DomainAccounts></a> Konfigurieren der Domänenkonten
+### <a name="DomainAccounts"></a> Konfigurieren der Domänenkonten
 
 In den nächsten Schritten konfigurieren Sie die Active Directory-Konten. Die folgende Tabelle zeigt die Konten:
 
@@ -464,7 +464,7 @@ Um Failoverclusteringfeatures hinzuzufügen, führen Sie die folgenden Schritte 
 Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 
   >[!NOTE]
-  > Dieser Schritt kann jetzt zusammen mit dem tatsächlich Verknüpfen von SQL Server-VMs mit dem Failovercluster über eine Azure-Schnellstartvorlage automatisiert werden. Weitere Informationen finden Sie unter [Erstellen von WSFC und Listener sowie Konfigurieren von ILB für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Dieser Schritt kann jetzt zusammen mit dem tatsächlichen Verknüpfen von SQL Server-VMs mit dem Failovercluster über die [Azure SQL-VM-Befehlszeilenschnittstelle](virtual-machines-windows-sql-availability-group-cli.md) und [Azure-Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md) automatisiert werden.
 
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> Konfigurieren der Firewall auf jedem virtuellen SQL-Server-Computer

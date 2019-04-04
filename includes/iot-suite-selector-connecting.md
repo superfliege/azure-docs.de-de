@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457062"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56751480"
 ---
 > [!div class="op_single_selector"]
 > * [C unter Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,9 +58,9 @@ Wenn der Bereitstellungsvorgang für die Remoteüberwachungslösung abgeschlosse
 
 Damit ein Gerät eine Verbindung mit dem Solution Accelerator herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie haben die Möglichkeit, die Verbindungszeichenfolge mit den Anmeldeinformationen zu speichern, wenn Sie das Gerät der Lösung hinzufügen. Die Geräte-Verbindungszeichenfolge wird zu einem späteren Zeitpunkt in diesem Lernprogramm in Ihre Clientanwendung einbezogen.
 
-Um Ihrer Lösung für Remoteüberwachung ein Gerät hinzuzufügen, führen Sie in der Lösung auf der Seite **Geräte** die folgenden Schritte durch:
+Um Ihrer Lösung für Remoteüberwachung ein Gerät hinzuzufügen, führen Sie in der Lösung auf der Seite **Device Explorer** die folgenden Schritte durch:
 
-1. Wählen Sie **+ Neues Gerät** und dann **Physisch** als **Gerätetyp** aus:
+1. Wählen Sie **+ Neues Gerät** und dann **Real** als **Gerätetyp** aus:
 
     ![Hinzufügen eines echten Geräts](media/iot-suite-selector-connecting/devicesprovision.png)
 

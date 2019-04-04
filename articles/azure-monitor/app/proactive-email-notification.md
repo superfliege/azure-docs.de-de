@@ -7,14 +7,14 @@ manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 ms.author: harelbr
-ms.openlocfilehash: 4bcbed82a78caff62a9459ecb44c6513f367f6b7
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889283"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Änderung an E-Mail-Benachrichtigungen der intelligenten Erkennung
 
@@ -34,7 +34,7 @@ Diese Änderung wirkt sich mit folgenden Ausnahmen auf alle Regeln der intellige
 
 ## <a name="how-to-prepare-for-this-change"></a>Vorbereitung auf diese Änderung
 
-Um sicherzustellen, dass E-Mail-Benachrichtigungen von der intelligenten Erkennung an die relevanten Benutzer gesendet werden, müssen diese Benutzer den Rollen [Benutzer mit Leseberechtigung für Überwachungsdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) und [Mitwirkender an der Überwachung](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) zugewiesen werden. Die Zuweisung muss entweder auf Abonnementebene (betrifft alle Application Insights-Ressourcen im Abonnement) oder auf Application Insights-Ressourcenebene erfolgen (betrifft nur die jeweilige Ressource).
+Um sicherzustellen, dass E-Mail-Benachrichtigungen von der intelligenten Erkennung an die relevanten Benutzer gesendet werden, müssen diese Benutzer den Rollen [Benutzer mit Leseberechtigung für Überwachungsdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) und [Mitwirkender an der Überwachung](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) des Abonnements zugewiesen werden.
 
 Um Benutzer über das Azure-Portal der Rolle „Benutzer mit Leseberechtigung für Überwachungsdaten“ oder „Mitwirkender an der Überwachung“ zuzuweisen, befolgen Sie die im Artikel [Hinzufügen einer Rollenzuweisung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) beschriebenen Schritte. Achten Sie darauf, _Benutzer mit Leseberechtigung für Überwachungsdaten_ oder _Mitwirkender an der Überwachung_ als die Rolle auszuwählen, der die Benutzer zugewiesen werden.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100410"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Beheben eines allgemeinen RDP-Fehlers auf einer Azure-VM
 
@@ -77,7 +77,7 @@ Um dieses Problem zu lösen [sichern Sie den Betriebssystemdatenträger](../wind
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Schritt 2: Überprüfen der Werte des RDP-Registrierungsschlüssels
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Schritt 2: Überprüfen der Werte des RDP-Registrierungsschlüssels:
 
 1. Überprüfen Sie, ob das RDP durch Richtlinien deaktiviert wurde.
 
@@ -229,8 +229,8 @@ Weitere Informationen finden Sie unter [Häufiges Trennen der Remotedesktopverbi
 
       Richtliniendefinitionen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen\Remoteverbindungen für Benutzer mithilfe der Remotedesktopdienste zulassen
   
-7. Trennen Sie den Datenträger von der Wiederherstellungs-VM.
-8. [Erstellen Sie eine neue VM auf Grundlage des Datenträgers](../windows/create-vm-specialized.md).
+1. Trennen Sie den Datenträger von der Wiederherstellungs-VM.
+1. [Erstellen Sie eine neue VM auf Grundlage des Datenträgers](../windows/create-vm-specialized.md).
 
 Wenn das Problem weiterhin auftritt, fahren Sie mit Schritt 2 fort.
 

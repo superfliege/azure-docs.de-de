@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002371"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -190,7 +190,7 @@ Nun installieren Sie den Konfigurationsserver:
 
 > [!NOTE]
 > Der Konfigurationsserver kann auch über die Befehlszeile installiert werden. [Weitere Informationen](physical-manage-configuration-server.md#install-from-the-command-line)
-
+> 
 > Es kann 15 Minuten oder länger dauern, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > ***Servername*** > **Server aktualisieren**.
 
 ## <a name="step-4-set-up-the-target-environment"></a>Schritt 4: Einrichten der Zielumgebung
@@ -249,9 +249,9 @@ Vergewissern Sie sich, dass Sie alle Aufgaben unter [Schritt 1: Vorbereiten des 
 
 > [!NOTE]
 > Site Recovery installiert Mobility Service, wenn die Replikation für einen virtuellen Computer aktiviert wird.
-
+> 
 > Es kann länger als 15 Minuten dauern, bis die Änderungen wirksam und im Portal angezeigt werden.
-
+> 
 > Überprüfen Sie zur Überwachung der hinzugefügten virtuellen Computer den Zeitpunkt der letzten Ermittlung für virtuelle Computer unter **Konfigurationsserver** > **Letzter Kontakt um**. Wenn Sie virtuelle Computer hinzufügen möchten, ohne auf die geplante Ermittlung zu warten, markieren Sie den Konfigurationsserver (wählen Sie ihn aber nicht aus), und klicken Sie auf **Aktualisieren**.
 
 

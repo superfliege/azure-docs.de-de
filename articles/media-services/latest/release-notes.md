@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8f549c20480e3866725717aa054af6653ab5a913
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343994"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877359"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -182,7 +182,7 @@ Wenn Sie zwischen dem 28.09. und dem 12.10. mit der Media Services v3 CLI oder d
 
 ### <a name="net-sdk"></a>.NET SDK
 
-Das .NET SDK enthält die folgenden Features:
+Das .NET SDK enthält die folgenden Funktionen:
 
 * **Transformationen** und **Aufträge** zum Codieren oder Analysieren von Medieninhalten. Beispiele finden Sie in den Tutorials zum [Streamen von Dateien](stream-files-tutorial-with-api.md) und [Analysieren](analyze-videos-tutorial-with-api.md).
 * **Streaminglocators** zum Veröffentlichen und Streamen von Inhalten auf Endbenutzergeräten

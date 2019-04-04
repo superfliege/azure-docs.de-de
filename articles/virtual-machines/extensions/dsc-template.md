@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: d55f6097e3e1eed508580676edcf008b0739034c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 41d9f21688df6f32918500365bc88f3f168604d2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230989"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869648"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -36,33 +36,46 @@ Weitere Informationen finden Sie unter [VirtualMachineExtension Class](/dotnet/a
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-    "apiVersion": "2018-04-01",
-    "location": "[resourceGroup().location]",
-    "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-    ],
-    "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.76",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-            "configurationArguments": {
-                "RegistrationUrl" : "registrationUrl",
-                "NodeConfigurationName" : "nodeConfigurationName"
-            }
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "name": "Microsoft.Powershell.DSC",
+  "apiVersion": "2018-06-30",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.Powershell",
+    "type": "DSC",
+    "typeHandlerVersion": "2.77",
+    "autoUpgradeMinorVersion": true,
+    "protectedSettings": {
+      "Items": {
+        "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-06-30').Keys[0].value]"
+      }
+    },
+    "settings": {
+      "Properties": [
+        {
+          "Name": "RegistrationKey",
+          "Value": {
+            "UserName": "PLACEHOLDER_DONOTUSE",
+            "Password": "PrivateSettingsRef:registrationKeyPrivate"
+          },
+          "TypeName": "System.Management.Automation.PSCredential"
         },
-        "protectedSettings": {
-            "configurationArguments": {
-                "RegistrationKey": {
-                    "userName": "NOT_USED",
-                    "Password": "registrationKey"
-                }
-            }
+        {
+          "Name": "RegistrationUrl",
+          "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+          "TypeName": "System.String"
+        },
+        {
+          "Name": "NodeConfigurationName",
+          "Value": "[parameters('nodeConfigurationName')]",
+          "TypeName": "System.String"
         }
+      ]
     }
+  }
 }
 ```
 
@@ -77,37 +90,44 @@ Weitere Informationen finden Sie unter [VirtualMachineScaleSetExtension Class](/
 ```json
 "extensionProfile": {
     "extensions": [
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-            "apiVersion": "2018-04-01",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.Powershell",
-                "type": "DSC",
-                "typeHandlerVersion": "2.76",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "configurationArguments": {
-                        "RegistrationUrl" : "registrationUrl",
-                        "NodeConfigurationName" : "nodeConfigurationName"
-                    }
-                },
-                "protectedSettings": {
-                    "configurationArguments": {
-                        "RegistrationKey": {
-                            "userName": "NOT_USED",
-                            "Password": "registrationKey"
-                        }
-                    }
-                }
+      {
+        "name": "Microsoft.Powershell.DSC",
+        "properties": {
+          "publisher": "Microsoft.Powershell",
+          "type": "DSC",
+          "typeHandlerVersion": "2.77",
+          "autoUpgradeMinorVersion": true,
+          "protectedSettings": {
+            "Items": {
+              "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-06-30').Keys[0].value]"
             }
+          },
+          "settings": {
+            "Properties": [
+              {
+                "Name": "RegistrationKey",
+                "Value": {
+                  "UserName": "PLACEHOLDER_DONOTUSE",
+                  "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                },
+                "TypeName": "System.Management.Automation.PSCredential"
+              },
+              {
+                "Name": "RegistrationUrl",
+                "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+                "TypeName": "System.String"
+              },
+              {
+                "Name": "NodeConfigurationName",
+                "Value": "[parameters('nodeConfigurationName')]",
+                "TypeName": "System.String"
+              }
+            ]
+          }
         }
+      }
     ]
-}
+  }
 ```
 
 ## <a name="detailed-settings-information"></a>Ausführliche Einstellungsinformationen
@@ -158,7 +178,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 
 ## <a name="details"></a>Details
 
-| Eigenschaftenname | Typ | BESCHREIBUNG |
+| Eigenschaftenname | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | settings.wmfVersion |Zeichenfolge |Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf **neueste** festgelegt ist, wird die aktuelle Version von WMF installiert. Für diese Eigenschaft sind derzeit nur die Werte **4.0**, **5.0**, **5.1** und **latest** zulässig. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**. |
 | settings.configuration.url |Zeichenfolge |Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die Eigenschaft **protectedSettings.configurationUrlSasToken** auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn **settings.configuration.script** oder **settings.configuration.function** definiert sind. Wenn für diese Eigenschaften kein Wert angegeben ist, ruft die Erweiterung das Standardkonfigurationsskript auf, um Metadaten von Location Configuration Manager (LCM) festzulegen, und es müssen Argumente angegeben werden. |
@@ -177,7 +197,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 Weitere Informationen zu den folgenden Werten finden Sie im Abschnitt [Grundlegende Einstellungen](/powershell/dsc/metaconfig#basic-settings) des Artikels zum lokalen Konfigurations-Manager.
 Sie können das Konfigurationsskript für die DSC-Erweiterung standardmäßig so konfigurieren, dass Sie nur die LCM-Eigenschaften in der folgenden Tabelle verwenden.
 
-| Eigenschaftenname | Typ | BESCHREIBUNG |
+| Eigenschaftenname | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Erforderliche Eigenschaft. Gibt den Schlüssel, der für die Registrierung eines Knotens beim Azure Automation-Dienst verwendet wird, als Kennwort eines PowerShell-Anmeldeinformationsobjekts an. Dieser Wert kann durch Verwendung der **listkeys**-Methode für das Automation-Konto automatisch ermittelt werden.  Ein entsprechendes Beispiel finden Sie [hier](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments.RegistrationUrl |Zeichenfolge |Erforderliche Eigenschaft. Gibt die URL des Automation-Endpunkts an, an dem der Knoten die Registrierung durchführt. Dieser Wert kann durch Verwendung der **reference**-Methode für das Automation-Konto automatisch ermittelt werden. |
@@ -234,7 +254,7 @@ Konfigurationsargumente werden an das Standardkonfigurationsskript übergeben, u
 
 Das folgende Beispiel stammt aus dem Abschnitt [DSC Erweiterung: Handler-Übersicht](dsc-overview.md).
 In diesem Beispiel werden Resourcen Manager-Vorlagen anstelle von Cmdlets zum Bereitstellen der Erweiterung verwendet.
-Speichern Sie die Konfiguration „IisInstall.ps1“, fügen Sie sie einer ZIP-Datei hinzu, und laden Sie die Datei unter einer zugänglichen URL hoch.
+Speichern Sie die Konfiguration „IisInstall.ps1“, fügen Sie sie einer ZIP-Datei hinzu (Beispiel: `iisinstall.zip`), und laden Sie die Datei unter einer zugänglichen URL hoch.
 In diesem Beispiel wird Azure Blob Storage verwendet. Sie können ZIP-Dateien jedoch von beliebigen Speicherorten herunterladen.
 
 In der Resource Manager-Vorlage weist der folgende Code den virtuellen Computer an, die richtige Datei herunterzuladen und die entsprechende PowerShell-Funktion auszuführen:
@@ -242,7 +262,7 @@ In der Resource Manager-Vorlage weist der folgende Code den virtuellen Computer 
 ```json
 "settings": {
     "configuration": {
-        "url": "https://demo.blob.core.windows.net/",
+        "url": "https://demo.blob.core.windows.net/iisinstall.zip",
         "script": "IisInstall.ps1",
         "function": "IISInstall"
     }

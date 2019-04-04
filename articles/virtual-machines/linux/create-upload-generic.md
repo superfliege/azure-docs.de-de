@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235971"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105521"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Distributionen
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -144,10 +144,10 @@ Wenn ein benutzerdefinierter Kernel erforderlich ist, empfiehlt es sich, eine ne
 Die folgenden Patches müssen im Kernel enthalten sein. Diese Liste kann nicht alle Distributionen vollständig abdecken.
 
 * [ata_piix: defer disks to the Hyper-V drivers by default (Standardmäßiges Zurückstellen von Datenträgern zu Hyper-V-Treibern)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc: Account for in-transit packets in the RESET path (Konto für Pakete auf dem Transportweg im RESET-Pfad, in englischer Sprache)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc: Account for in-transit packets in the RESET path (Konto für Pakete auf dem Transportweg im RESET-Pfad)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc: avoid usage of WRITE_SAME (Vermeiden der Verwendung von WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc: Disable WRITE SAME for RAID and virtual host adapter drivers (Deaktivieren von WRITE_SAME für RAID und virtuelle Hostadaptertreiber, in englischer Sprache)](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc: NULL pointer dereference fix (Beheben der NULL-Zeigerdereferenzierung, in englischer Sprache)](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc: Disable WRITE SAME for RAID and virtual host adapter drivers (Deaktivieren von WRITE SAME für RAID und virtuelle Hostadaptertreiber)](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc: NULL pointer dereference fix (Beheben der NULL-Zeigerdereferenzierung)](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc: ring buffer failures may result in I/O freeze (Einfrieren von E/A durch Ringpufferfehler, in englischer Sprache)](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs: protect against double execution of __scsi_remove_device (Schutz gegen doppelte Ausführung von „__scsi_remove_device“)](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
@@ -172,13 +172,13 @@ Der [Azure-Linux-Agent](../extensions/agent-linux.md) `waagent` stellt einen vir
     ```
     Weder grafische Startvorgänge noch Startvorgänge im stillen Modus sind in einer Cloudumgebung nützlich, in der alle Protokolle an den seriellen Port gesendet werden sollen. Die Option `crashkernel` kann bei Bedarf konfiguriert bleiben. Beachten Sie jedoch, dass dieser Parameter die Menge an verfügbarem Arbeitsspeicher im virtuellen Computer um mindestens 128 MB reduziert, was bei kleineren VM-Größen problematisch sein kann.
 
-2. Installieren des Azure Linux Agent:
+1. Installieren des Azure Linux Agent:
   
     Der Azure Linux-Agent ist für das Bereitstellen eines Linux-Images auf Azure erforderlich.  Viele Distributionen stellen den Agent als RPM- oder DEB-Paket bereit (das Paket heißt in der Regel „WALinuxAgent“ oder „walinuxagent“).  Der Agent kann zudem manuell installiert werden, indem die folgenden Schritte im [Linux Agent Guide](../extensions/agent-linux.md)eingehalten werden.
 
-3. Stellen Sie sicher, dass der SSH-Server installiert und so konfiguriert ist, dass er beim Booten hochfährt.  Dies ist in der Regel die Standardkonfiguration.
+1. Stellen Sie sicher, dass der SSH-Server installiert und so konfiguriert ist, dass er beim Booten hochfährt.  Dies ist in der Regel die Standardkonfiguration.
 
-4. Erstellen Sie keinen Auslagerungsbereich auf dem Betriebssystemdatenträger.
+1. Erstellen Sie keinen Auslagerungsbereich auf dem Betriebssystemdatenträger.
   
     Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Der lokale Ressourcendatenträger ist ein *temporärer* Datenträger und kann geleert werden, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Ändern Sie nach dem Installieren des Azure-Linux-Agents (siehe Schritt 2) die folgenden Parameter in „/etc/waagent.conf“ nach Bedarf.
     ```  
@@ -188,15 +188,15 @@ Der [Azure-Linux-Agent](../extensions/agent-linux.md) `waagent` stellt einen vir
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
     ```
-* Führen Sie die folgenden Befehle aus, um die Bereitstellung des virtuellen Computers aufzuheben.
+1. Führen Sie die folgenden Befehle aus, um die Bereitstellung des virtuellen Computers aufzuheben.
   
-    ```
-    sudo waagent -force -deprovision
-    export HISTSIZE=0
-    logout
-    ```  
-  > [!NOTE]
-  > In Virtualbox wird nach dem Ausführen von `waagent -force -deprovision` möglicherweise der folgende Fehler angezeigt: `[Errno 5] Input/output error`. Diese Fehlermeldung ist nicht kritisch und kann ignoriert werden.
+     ```
+     sudo waagent -force -deprovision
+     export HISTSIZE=0
+     logout
+     ```  
+   > [!NOTE]
+   > In Virtualbox wird nach dem Ausführen von `waagent -force -deprovision` möglicherweise der folgende Fehler angezeigt: `[Errno 5] Input/output error`. Diese Fehlermeldung ist nicht kritisch und kann ignoriert werden.
 
 * Fahren Sie den virtuellen Computer herunter, und laden Sie die virtuelle Festplatte in Azure hoch.
 

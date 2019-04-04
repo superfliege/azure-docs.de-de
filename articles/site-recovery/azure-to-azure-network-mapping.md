@@ -5,24 +5,24 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 99c7309e22d8ebe61a0a85b38c92bd3027977848
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013130"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
-In diesem Artikel wird beschrieben, wie Sie zwei Instanzen von virtuellen Azure-Netzwerken (VNETs) in verschiedenen Azure-Regionen einander zuordnen und IP-Adressierung zwischen Netzwerken einrichten. Die Netzwerkzuordnung stellt sicher, dass eine replizierte VM in der Azure-Zielregion des VNET erstellt wird, das dem VNET der Quell-VM zugeordnet ist.
+In diesem Artikel wird beschrieben, wie Sie zwei Instanzen von virtuellen Azure-Netzwerken (VNETs) in verschiedenen Azure-Regionen einander zuordnen und IP-Adressierung zwischen Netzwerken einrichten. Die Netzwerkzuordnung stellt ein Standardverhalten für Zielnetzwerkauswahl basierend auf dem Quellnetzwerk zum Zeitpunkt der Aktivierung der Replikation bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie Netzwerke zuordnen, müssen [Azure-VNETs](../virtual-network/virtual-networks-overview.md) in der Azure-Quell- und -Zielregion vorhanden sein. 
 
-## <a name="set-up-network-mapping"></a>Einrichten der Netzwerkzuordnung
+## <a name="set-up-network-mapping-manually-optional"></a>Manuelles Einrichten der Netzwerkzuordnung (optional)
 
 Ordnen Sie Netzwerke wie folgt zu:
 
@@ -32,7 +32,7 @@ Ordnen Sie Netzwerke wie folgt zu:
 
 3. Wählen Sie unter **Netzwerkzuordnung hinzufügen** die Quell- und Zielstandorte aus. In unserem Beispiel wird die Quell-VM in der Region „Asien, Osten“ ausgeführt und in der Region „Asien, Südosten“ repliziert.
 
-    ![Auswählen von Quelle und Ziel ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![Auswählen von Quelle und Ziel](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. Nun erstellen Sie eine Netzwerkzuordnung im entgegengesetzten Verzeichnis. In unserem Beispiel ist die Quelle nun „Asien, Südosten“ und das Ziel „Asien, Osten“.
 
     ![Bereich „Netzwerkzuordnung hinzufügen“ – Auswählen der Quell- und Zielstandorte für das Zielnetzwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
@@ -44,8 +44,13 @@ Wenn Sie die Netzwerkzuordnung nicht vorbereitet haben, bevor Sie die Notfallwie
 
 - Basierend auf dem von Ihnen ausgewählten Ziel erstellt Site Recovery automatisch Netzwerkzuordnungen von der Quellregion zur Zielregion und von der Zielregion zur Quellregion.
 - Site Recovery erstellt standardmäßig ein Netzwerk in der Zielregion, das identisch mit dem Quellnetzwerk ist. Site Recovery fügt den Suffix **-asr** an den Namen des Quellnetzwerks an. Sie können das Zielnetzwerk anpassen.
-- Wenn die Netzwerkzuordnung bereits erfolgt ist, können Sie das virtuelle Zielnetzwerk beim Aktivieren der Replikation nicht ändern. Zum Ändern des virtuellen Zielnetzwerks müssen Sie die vorhandene Netzwerkzuordnung ändern.
-- Achten Sie beim Ändern einer Netzwerkzuordnung von Region A zu Region B darauf, auch die Netzwerkzuordnung von Region B zu Region A zu ändern.
+- Wenn die Netzwerkzuordnung für ein Quellnetzwerk bereits vorgenommen wurde, ist das zugeordnete Zielnetzwerk immer das Standardnetzwerk zum Zeitpunkt der Aktivierung von Replikationen weiterer virtueller Computer. Sie können das virtuelle Zielnetzwerk ändern, indem Sie in der Dropdownliste andere verfügbare Optionen auswählen. 
+- Zum Ändern des virtuellen Standard-Zielnetzwerks müssen Sie die vorhandene Netzwerkzuordnung ändern.
+- Wenn Sie eine Netzwerkzuordnung von Region A nach Region B ändern möchten, löschen Sie zunächst die Netzwerkzuordnung von Region B nach Region A. Ändern Sie nach dem Löschen der umgekehrten Zuordnung die Netzwerkzuordnung von Region A nach Region B, und erstellen Sie dann die gewünschte umgekehrte Zuordnung.
+
+>[!NOTE]
+>* Das Ändern der Netzwerkzuordnung ändert nur die Standardwerte für neue VM-Replikationen. Der Vorgang wirkt sich nicht auf die Auswahl des virtuellen Zielnetzwerks für vorhandene Replikationen aus. 
+>* Wenn Sie das Zielnetzwerk für eine vorhandene Replikation ändern möchten, verwenden Sie die Einstellungen unter „Compute und Netzwerk“ für das replizierte Element.
 
 ## <a name="specify-a-subnet"></a>Angeben eines Subnetzes
 
@@ -71,6 +76,7 @@ Die IP-Adresse für die einzelnen Netzwerkkarten auf einem virtuellen Zielcomput
 **Quell- und Zielsubnetze** | **Details**
 --- | ---
 Gleicher Adressraum | Die IP-Adresse der Netzwerkkarte der Quell-VM wird als IP-Adresse der Netzwerkkarte der Ziel-VM festgelegt.<br/><br/> Wenn die Adresse nicht verfügbar ist, wird die nächste verfügbare IP-Adresse als Ziel festgelegt.
+
 Unterschiedlicher Adressraum<br/><br/> Die nächste verfügbare IP-Adresse im Zielsubnetz wird als Netzwerkkartenadresse der Ziel-VM festgelegt.
 
 

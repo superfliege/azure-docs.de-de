@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 39084fd8408a123e8152ad96fa92025fd04ed42b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092812"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013543"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind die unterstützten HTTP-Variablen beschrieben. Ein
 | ---- | -------- | ----------- | ------------ |
 | ASN (Anfordernde Person) | %{geo_asnum} | Gibt die AS-Nummer der anfordernden Person an. <br /><br />**Veraltet:** %{virt_dst_asnum}. <br />Diese Variable wurde zugunsten von „%{geo_asnum}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | AS15133 |
 | Ort (Anfordernde Person) | %{geo_city} | Gibt den Ort der anfordernden Person an. | Los Angeles |
-| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <ber />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| N/V |
+| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <ber />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
 | Cookiewert | %{cookie_Cookie} | Gibt den Wert zurück, der dem durch den Cookieausdruck identifizierten Cookieschlüssel entspricht. | Verwendungsbeispiel: <br />%{cookie__utma}<br /><br />Beispielwert:<br />111662281.2.10.1222100123 |
 | Land (Anfordernde Person) | %{geo_country} | Gibt das Herkunftsland der anfordernden Person über den jeweiligen Ländercode an. <br />**Veraltet:** %{virt_dst_country}. <br /><br />Diese Variable wurde zugunsten von „%{geo_country}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | US |
 | Designated Market Area (Anfordernde Person) | %{geo_dma_code} |Gibt den Medienmarkt der anfordernden Person anhand des Regionscodes an. <br /><br />Dieses Feld gilt nur für Anforderungen, die aus den Vereinigten Staaten stammen.| 745 |
@@ -50,18 +50,18 @@ In der folgenden Tabelle sind die unterstützten HTTP-Variablen beschrieben. Ein
 | Metropolitan Statistical Area (Anfordernde Person) | %{geo_metro_code} | Gibt die Metropolregion der anfordernden Person an. <br /><br />Dieses Feld gilt nur für Anforderungen, die aus den Vereinigten Staaten stammen.<br />| 745 |
 | Port (Anfordernde Person) | %{virt_dst_port} | Gibt den kurzlebigen Port der anfordernden Person an. | 55885 |
 | Postleitzahl (Anfordernde Person) | %{geo_postal_code} | Gibt die Postleitzahl der anfordernden Person an. | 90210 |
-| Abfragezeichenfolge gefunden | %{is_args} | Der Wert für diese Variable variiert je nachdem, ob die Anforderung eine Abfragezeichenfolge enthält.<br /><br />– Abfragezeichenfolge gefunden: ?<br />– Keine Abfragezeichenfolge: NULL | ? |
-| Abfragezeichenfolgen-Parameter gefunden | %{is_amp} | Der Wert für diese Variable variiert je nachdem, ob die Anforderung mindestens einen Abfragezeichenfolge-Parameter enthält.<br /><br />– Parameter gefunden: &<br />– Keine Parameter: NULL | & |
+| Abfragezeichenfolge gefunden | %{is_args} | Der Wert für diese Variable variiert je nachdem, ob die Anforderung eine Abfragezeichenfolge enthält.<br /><br />– Abfragezeichenfolge gefunden: ?<br />- Keine Abfragezeichenfolge: NULL | ? |
+| Abfragezeichenfolgen-Parameter gefunden | %{is_amp} | Der Wert für diese Variable variiert je nachdem, ob die Anforderung mindestens einen Abfragezeichenfolge-Parameter enthält.<br /><br />– Parameter gefunden: &<br />- Keine Parameter: NULL | & |
 | Parameterwert der Abfragezeichenfolge | %{arg_&lt;parameter&gt;} | Gibt den Wert zurück, der dem durch den &lt;Parameter&gt;-Ausdruck identifizierten Abfragezeichenfolgen-Parameter entspricht. | Verwendungsbeispiel: <br />%{arg_language}<br /><br />Beispiel für Abfragezeichenfolge-Parameter: <br />?language=en<br /><br />Beispielwert: en |
 | Abfragezeichenfolgenwert | %{query_string} | Gibt den vollständigen in der Anforderungs-URL definierten Abfragezeichenfolgenwert an. |key1=val1&key2=val2&key3=val3 |
-| Verweisdomäne | %{referring_domain} | Gibt die im Verweisanforderungsheader definierte Domäne an. | www.google.com |
+| Verweisdomäne | %{referring_domain} | Gibt die im Verweisanforderungsheader definierte Domäne an. | <www.google.com> |
 | Region (Anfordernde Person) | %{geo_region} | Gibt die Region der anfordernden Person (z.B. Bundesland oder Kanton) über deren alphanumerische Abkürzung an. | CA |
 | Anforderungsheaderwert | %{http_RequestHeader} | Gibt den Wert zurück, der dem durch den RequestHeader-Ausdruck identifizierten Anforderungsheader entspricht. <br /><br />Wenn der Name des Anforderungsheaders einen Bindestrich (z.B. Benutzer-Agent) enthält, ersetzen Sie diesen durch einen Unterstrich (z.B. Benutzer_Agent).| Beispielverwendung: %{http_Connection}<br /><br />Beispielwert: Keep-Alive | 
-| Anforderungshost | %{host} | Gibt den in der Anforderungs-URL definierten Host an. | www.mydomain.com |
+| Anforderungshost | %{host} | Gibt den in der Anforderungs-URL definierten Host an. | <www.mydomain.com> |
 | Anforderungsprotokoll | %{request_protocol} | Gibt das Anforderungsprotokoll an. | HTTP/1.1 |
 | Request Scheme | %{scheme} | Gibt das Anforderungsschema an. |http |
 | Anforderungs-URI (relativ) | %{request_uri} | Gibt den relativen Pfad, einschließlich der Abfragezeichenfolge, der im Anforderungs-URI definiert ist. | /marketing/foo.js?loggedin=true |
-| Anforderungs-URI (relativ, ohne Abfragezeichenfolge) | %{uri} | Gibt den relativen Pfad zum angeforderten Inhalt an. <br /><br/>Wichtige Informationen:<br />– Dieser relative Pfad schließt die Abfragezeichenfolge aus.<br />– Dieser relative Pfad spiegelt erneute URL-Generierungen wider. Eine URL wird unter den folgenden Bedingungen neu generiert:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Feature „URL Rewrite“: Dieses Feature generiert den im Anforderungs-URI definierten relativen Pfad neu.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Edge-CNAME-URL: Diese Art von Anforderung wird in die entsprechende CDN-URL umgeschrieben. |/800001/corigin/rewrittendir/foo.js |
+| Anforderungs-URI (relativ, ohne Abfragezeichenfolge) | %{uri} | Gibt den relativen Pfad zum angeforderten Inhalt an. <br /><br/>Wichtige Informationen:<br />– Dieser relative Pfad schließt die Abfragezeichenfolge aus.<br />– Dieser relative Pfad spiegelt erneute URL-Generierungen wider. Eine URL wird unter den folgenden Bedingungen neu generiert:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Feature „URL Rewrite“: Dieses Feature generiert den im Anforderungs-URI definierten relativen Pfad neu.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Edge-CNAME-URL: Diese Art von Anforderung wird in die entsprechende CDN-URL umgeschrieben. |/800001/corigin/rewrittendir/foo.js |
 | Anforderungs-URI | %{request} | Beschreibt die Anforderung. <br />Syntax: &lt;HTTP-Methode&gt; &lt;relativer Pfad&gt; &lt;HTTP-Protokoll&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
 | Antwortheaderwert | %{resp_&lt;ResponseHeader&gt;} | Gibt den Wert zurück, der dem durch den &lt;ResponseHeader&gt;-Ausdruck identifizierten Antwortheader entspricht. <br /><br />Wenn der Name des Anwortheaders einen Bindestrich (z.B. Benutzer-Agent) enthält, ersetzen Sie diesen durch einen Unterstrich (z.B. Benutzer_Agent). | Beispielverwendung: %{resp_Content_Length}<br /><br />Beispielwert: 100 |
 
@@ -82,13 +82,13 @@ Nach einer HTTP-Variablen kann ein Trennzeichen angegeben werden, um eine der fo
 
 - Transformieren des der Variable zugeordneten Werts
 
-     Beispiel: Konvertieren des gesamten Werts in Kleinbuchstaben
+     Beispiel: Konvertieren des gesamten Werts in Kleinbuchstaben.
 
 - Löschen des der Variable zugeordneten Werts
 
 - Bearbeiten des der Variable zugeordneten Werts
 
-     Beispiel: Verwenden Sie reguläre Ausdrücke, um den der HTTP-Variablen zugeordneten Wert zu ändern.
+     Beispiel: Verwenden Sie reguläre Ausdrücke, um den der HTTP-Variable zugeordneten Wert zu ändern.
 
 Die Trennzeichen sind in der folgenden Tabelle beschrieben.
 
@@ -114,7 +114,7 @@ In der folgenden Tabelle sind Umstände beschrieben, unter denen der angegebene 
 | --------- | ----------- | --------|
 | „%“ mit Escapezeichen versehen | Das Prozentzeichen kann durch die Verwendung eines umgekehrten Schrägstrichs mit einem Escapezeichen versehen werden. <br />Der Beispielwert auf der rechten Seite wird als Literalwert und nicht als HTTP-Variable behandelt.| \%{host} |
 | Unbekannte Variablen | Für unbekannte Variablen wird immer eine leere Zeichenfolge zurückgegeben. | %{unknownvariable} |
-| Ungültige Zeichen oder Syntax | Variablen, die ungültige Zeichen oder eine ungültige Syntax enthalten, werden als Literalwerte behandelt. <br /><br />Beispiel Nr. 1: Der angegebene Wert enthält ein ungültiges Zeichen (z.B. „-“). <br /><br />Beispiel Nr. 2: Der angegebene Wert enthält doppelte geschweifte Klammern. <br /><br />Beispiel Nr. 3: Beim angegebenen Wert fehlt eine schließende geschweifte Klammer.<br /> | Beispiel Nr. 1: %{resp_user-agent} <br /><br />Beispiel Nr. 2: %{{host}} <br /><br />Beispiel Nr. 3: %{host |
+| Ungültige Zeichen oder Syntax | Variablen, die ungültige Zeichen oder eine ungültige Syntax enthalten, werden als Literalwerte behandelt. <br /><br />Beispiel 1: Der angegebene Wert enthält ein ungültiges Zeichen (z. B. „-“). <br /><br />Beispiel 2: Der angegebene Wert enthält doppelte geschweifte Klammern. <br /><br />Beispiel 3: Beim angegebenen Wert fehlt eine schließende geschweifte Klammer.<br /> | Beispiel Nr. 1: %{resp_user-agent} <br /><br />Beispiel Nr. 2: %{{host}} <br /><br />Beispiel Nr. 3: %{host |
 | Fehlender Variablenname | Ein NULL-Wert wird immer zurückgegeben, wenn eine Variable nicht angegeben ist. | %{} |
 | Nachgestellte Zeichen | Zeichen, die am Ende einer Variable stehen, werden als Literalwerte behandelt. <br />Der Beispielwert auf der rechten Seite enthält eine nachgestellte geschweifte Klammer, die als Literalwert behandelt wird. | %{host}} |
 
@@ -147,12 +147,12 @@ Wichtige Informationen:
 - Der dem Offset-Ausdruck zugewiesene Wert bestimmt das Anfangszeichen der Teilzeichenfolge:
 
      - Positiv: Das Anfangszeichen der Teilzeichenfolge wird anhand des ersten Zeichens in der Zeichenfolge berechnet.
-     - NULL: Das Anfangszeichen der Teilzeichenfolge ist das erste Zeichen in der Zeichenfolge.
+     - Null: Das Anfangszeichen der Teilzeichenfolge ist das erste Zeichen in der Zeichenfolge.
      - Negativ: Das Anfangszeichen der Teilzeichenfolge wird anhand des letzten Zeichens in der Zeichenfolge berechnet.
 
 - Die Länge der Teilzeichenfolge richtet sich nach dem Ausdruck *Länge*:
 
-     - Ausgelassen: Durch Auslassen des Längenausdrucks kann die Teilzeichenfolge alle Zeichen zwischen dem Anfangszeichen und dem Ende der Zeichenfolge enthalten.
+     - Nicht angegeben: Durch Auslassen des Längenausdrucks kann die Teilzeichenfolge alle Zeichen zwischen dem Anfangszeichen und dem Ende der Zeichenfolge enthalten.
      - Positiv: Legt die Länge der Teilzeichenfolge ab dem Anfangszeichen nach rechts fest.
      - Negativ: Legt die Länge der Teilzeichenfolge ab dem Anfangszeichen nach links fest.
 
@@ -187,8 +187,8 @@ In diesem Beispielszenario ist die Variable *request_uri* festgelegt auf:
 
 In der folgenden Tabelle wird veranschaulicht, wie diese Syntax funktioniert.
 
-| Beispielsyntax | Ergebnisse |
-| ------------- | ------- |
+| Beispielsyntax | Ergebnisse | |
+| ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | Da die Variable mit dem Muster beginnt, wurde sie ersetzt. |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | Da die Variable nicht mit dem Muster endet, wurde keine Änderung vorgenommen.|
 

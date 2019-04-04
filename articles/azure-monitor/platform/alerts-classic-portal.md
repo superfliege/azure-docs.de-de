@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 6b74d83de0495e3436c9bef623a827e8a1496767
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 65064707374ba76701566e061b77bfd6cdf520ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833384"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
 
@@ -35,7 +35,7 @@ Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrich
 
 6. Wählen Sie **E-Mail-Besitzer...** aus, wenn Sie möchten, dass Administratoren und Co-Administratoren E-Mail-Benachrichtigungen empfangen, wenn die Warnung ausgelöst wird.
 
-7. Wenn Sie möchten, dass bei Auslösen der Warnung Benachrichtigungen an weitere E-Mail-Adressen gesendet werden, fügen Sie diese dem Feld **Weitere Administrator-E-Mail(s)** hinzu. Trennen Sie mehrere E-Mail-Nachrichten in folgendem Format durch Semikolons: *email@contoso.com;email2@contoso.com*
+7. Wenn Sie möchten, dass bei Auslösen der Warnung Benachrichtigungen an weitere E-Mail-Adressen gesendet werden, fügen Sie diese dem Feld **Weitere Administrator-E-Mail(s)** hinzu. Trennen Sie mehrere E-Mail-Nachrichten in folgendem Format durch Semikolons: *email\@contoso.com;email2\@contoso.com*
 
 8. Fügen Sie einen gültigen URI in das Feld **Webhook** ein, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
 
@@ -85,6 +85,8 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="with-powershell"></a>Mit PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 In diesem Abschnitt wird gezeigt, wie Sie mit PowerShell-Befehlen klassische Metrikwarnungen erstellen, anzeigen und verwalten können. Die Beispiele im Artikel veranschaulichen, wie Sie Azure Monitor-Cmdlets für klassische Metrikwarnungen verwenden können.
 
 1. Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Vorgehensweise zum Installieren und Konfigurieren von PowerShell](/powershell/azure/overview). Die vollständige Liste der PowerShell-Cmdlets für Azure Monitor finden Sie unter [Azure Monitor-Cmdlets (Insights)](https://docs.microsoft.com/powershell/module/azurerm.insights).
@@ -92,40 +94,40 @@ In diesem Abschnitt wird gezeigt, wie Sie mit PowerShell-Befehlen klassische Met
 2. Melden sich zuerst bei Ihrem Azure-Abonnement an.
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Es wird ein Anmeldebildschirm angezeigt. Nach der Anmeldung werden Ihr Konto, die Mandanten-ID und die ID des Standardabonnements angezeigt. Alle Azure-Cmdlets werden im Kontext des Standardabonnements verwendet. Verwenden Sie den folgenden Befehl, um die Liste der Abonnements anzuzeigen, auf die Sie zugreifen können:
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 4. Verwenden Sie den folgenden Befehl, um den Arbeitskontext in ein anderes Abonnement zu ändern:
 
     ```PowerShell
-    Set-AzureRmContext -SubscriptionId <subscriptionid>
+    Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
 5. Sie können alle klassischen Metrikwarnungsregeln für eine Ressourcengruppe abrufen:
 
     ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest
+    Get-AzAlertRule -ResourceGroup montest
     ```
 
 6. Sie können Details einer klassischen Metrikwarnungsregeln anzeigen.
 
     ```PowerShell
-    Get-AzureRmAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
+    Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
 7. Sie können alle für eine Zielressource festgelegten Warnungsregeln abrufen. Beispiel: Alle Warnungsregeln, die für einen virtuellen Computer festgelegt wurden.
 
     ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
+    Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Klassische Warnungsregeln können nicht mehr über PowerShell erstellt werden. Zum Erstellen einer Warnungsregel müssen Sie den neuen Befehl [Add-AzureRmMetricAlertRule](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) verwenden.
+8. Klassische Warnungsregeln können nicht mehr über PowerShell erstellt werden. Zum Erstellen einer Warnungsregel müssen Sie den neuen Befehl [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

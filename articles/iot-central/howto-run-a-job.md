@@ -5,96 +5,100 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 09/15/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199850"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
-Sie können Microsoft Azure IoT Central verwenden, um Ihre angeschlossenen Geräte bedarfsgerecht mithilfe von Aufträgen zu überwachen. Dank der Auftragsfunktionalität können Sie Massenaktualisierungen für Geräteeigenschaften, Einstellungen und Befehle durchführen. In diesem Artikel wird der Einstieg in die Verwendung von Aufträgen in der eigenen Anwendung beschrieben.
+Sie können Microsoft Azure IoT Central verwenden, um Ihre angeschlossenen Geräte bedarfsgerecht mithilfe von Aufträgen zu überwachen. Mit Aufträgen können Sie Massenaktualisierungen an Geräteeigenschaften, -einstellungen und -befehlen vornehmen. In diesem Artikel wird der Einstieg in die Verwendung von Aufträgen in der eigenen Anwendung beschrieben.
 
 ## <a name="create-and-run-a-job"></a>Erstellen und Ausführen eines Auftrags
 
-In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen. Bei jedem Schritt wird anhand eines Beispiels erläutert, wie ein Auftrag für Kühlgeräte für Automaten ausgeführt wird, bei denen die Lüfterdrehzahl erhöht werden muss.
+In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen. Außerdem erfahren Sie, wie Sie die Lüfterdrehzahl für mehrere gekühlte Verkaufsautomaten erhöhen.
 
 1. Navigieren Sie im Navigationsbereich zu „Aufträge“.
 
-1. Klicken Sie auf **+ Neu**, um mit dem Erstellen eines neuen Auftrags zu beginnen.
+1. Klicken Sie auf **+ Neu**, um einen neuen Auftrag zu erstellen.
 
     ![Neuen Auftrag erstellen](./media/howto-run-a-job/createnewjob.png)
 
-1. Geben Sie einen Namen und eine Beschreibung ein, damit Sie den Auftrag, den Sie erstellen, wiederfinden zu können.
+1. Geben Sie einen Namen und eine Beschreibung ein, mit denen Sie Ihren Auftrag wiedererkennen können.
 
-1. Wählen Sie die Gerätegruppe aus, auf die Ihr Auftrag angewendet werden soll. Nachdem Sie die Gerätegruppe ausgewählt haben, werden auf der rechten Seite die in der ausgewählten Gerätegruppe enthaltenen Geräte eingetragen. Wenn Sie eine fehlerhafte Gerätegruppe auswählen, werden keine Geräte, stattdessen jedoch eine Meldung angezeigt, dass Ihre Gerätegruppe fehlerhaft ist.
+1. Wählen Sie die Gerätegruppe aus, auf die Ihr Auftrag angewendet werden soll. Nachdem Sie die Gerätegruppe ausgewählt haben, werden auf der rechten Seite die in der Gerätegruppe enthaltenen Geräte aufgeführt. Wenn Sie eine fehlerhafte Gerätegruppe auswählen, werden keine Geräte, stattdessen jedoch eine Meldung angezeigt, dass Ihre Gerätegruppe fehlerhaft ist.
 
-1. Wählen Sie anschließend den zu definierenden Auftragstyp (Einstellung, Eigenschaft oder Befehl) aus. Klicken Sie neben dem ausgewählten Auftragstyp auf **+**, und fügen Sie die gewünschten Vorgänge hinzu.
+1. Wählen Sie anschließend den zu definierenden Auftragstyp (Einstellung, Eigenschaft oder Befehl) aus. Klicken Sie neben dem ausgewählten Auftragstyp auf **+**, und fügen Sie die Vorgänge hinzu.
 
     ![Auftrag konfigurieren](./media/howto-run-a-job/configurejob.png)
 
-1. Wählen Sie auf der rechten Seite die Geräte aus, für die der Auftrag ausgeführt werden soll. Wenn Sie auf das obere Kontrollkästchen klicken, werden alle Geräte in der gesamten Gerätegruppe ausgewählt. Wenn Sie auf das Kontrollkästchen neben „Name“ klicken, werden alle Geräte auf der aktuellen Seite ausgewählt.
+1. Wählen Sie auf der rechten Seite die Geräte aus, auf denen der Auftrag ausgeführt werden soll. Wenn Sie auf das obere Kontrollkästchen klicken, werden alle Geräte in der gesamten Gerätegruppe ausgewählt. Wenn Sie auf das Kontrollkästchen neben **Name** klicken, werden alle Geräte auf der aktuellen Seite ausgewählt.
 
-1. Nachdem Sie Ihre gewünschten Geräte ausgewählt haben, wählen Sie **Ausführen** aus. Der Auftrag wird nun auf der Hauptseite **Aufträge** angezeigt. In dieser Ansicht können Sie Ihre derzeit ausgeführten Aufträge sowie den Verlauf aller bisher ausgeführten Aufträge sehen. Der aktuell ausgeführte Auftrag wird immer oben in der Liste angezeigt.
-
-    ![Auftrag ausführen](./media/howto-run-a-job/runjob.png)
+1. Nachdem Sie die Geräte ausgewählt haben, klicken Sie auf **Ausführen** oder **Speichern**. Der Auftrag wird nun auf der Hauptseite **Aufträge** angezeigt. In dieser Ansicht können Sie Ihre derzeit ausgeführten Aufträge sowie den Verlauf aller bisher ausgeführten Aufträge sehen. Der aktuell ausgeführte Auftrag wird immer oben in der Liste angezeigt. Sie können den gespeicherten Auftrag jederzeit erneut öffnen, um ihn zu bearbeiten oder auszuführen.
 
     ![Auftrag anzeigen](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > Der Verlauf von bisher ausgeführten Aufträgen wird bis zu 30 Tage lang angezeigt.
+    > Der Verlauf von bisher ausgeführten Aufträgen wird bis zu 30 Tage lang angezeigt.
 
-1. Um eine Übersicht über Ihren Auftrag anzuzeigen, klicken Sie in der Liste auf den Namen des Auftrags, den Sie anzeigen möchten. Diese Übersicht enthält die Auftragsdetails, Geräte und Gerätestatus.
+1. Eine Übersicht zu Ihrem Auftrag erhalten Sie, indem Sie den anzuzeigenden Auftrag aus der Liste auswählen. Diese Übersicht enthält die Auftragsdetails, Geräte und Gerätestatuswerte. In dieser Übersicht können Sie auch auf **Auftragsdetails herunterladen** klicken, um eine CSV-Datei mit den Auftragsdetails, einschließlich der Geräte und ihrer Statuswerte, herunterzuladen. Diese Informationen können bei der Problembehandlung hilfreich sein.
 
-    ![Anzeigen des Gerätestatus](./media/howto-run-a-job/viewdevicestatus.png)
+    ![Anzeigen des Gerätestatus](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Beenden eines ausgeführten Auftrags
 
-Wenn Sie einen derzeit ausgeführten Auftrag beenden möchten, klicken Sie auf den Namen des ausgeführten Auftrags, den Sie beenden möchten. Klicken Sie im Panel auf die Schaltfläche **Beenden**. Wie Sie sehen, hat sich der Auftragsstatus geändert und zeigt nun an, dass der Auftrag beendet wurde.
+Sie können einen Auftrag anhalten, indem Sie ihn auswählen und im angezeigten Bereich auf **Anhalten** klicken. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag angehalten wurde.
 
    ![Auftrag beenden](./media/howto-run-a-job/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>Ausführen eines angehaltenen Auftrags
 
-Wenn Sie einen Auftrag ausführen möchten, der zurzeit angehalten ist, klicken Sie auf den Namen des angehaltenen Auftrags, den Sie ausführen möchten. Klicken Sie im Panel auf die Schaltfläche **Beenden**. Wie Sie sehen, hat sich der Auftragsstatus geändert und zeigt nun an, dass der Auftrag jetzt ausgeführt wird.
+Zum Ausführen eines angehaltenen Auftrags wählen Sie diesen aus, und klicken Sie im angezeigten Bereich auf **Ausführen**. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag wieder ausgeführt wird.
 
    ![Fortgesetzter Auftrag](./media/howto-run-a-job/resumejob.png)
 
+## <a name="copy-a-job"></a>Kopieren eines Auftrags
+
+Wählen Sie einen Auftrag auf der Hauptseite für Aufträge aus, und klicken Sie auf **Kopieren**, um einen vorhandenen Auftrag zu kopieren. Daraufhin wird eine neue Kopie der Auftragskonfiguration zur Bearbeitung geöffnet. Sie können den neuen Auftrag speichern oder ausführen. Wenn Sie Änderungen an der ausgewählten Gerätegruppe vorgenommen haben, werden diese zur Bearbeitung im kopierten Auftrag angezeigt.
+
+   ![Auftrag kopieren](./media/howto-run-a-job/copyjob.png)
+
 ## <a name="view-the-job-status"></a>Anzeigen des Auftragsstatus
 
-Nachdem ein Auftrag erstellt wurde, wird die Spalte **Status** mit der neuesten Statusmeldung des Auftrags aktualisiert. Die Statusmeldungen haben folgende Bedeutung:
+Nachdem ein Auftrag erstellt wurde, wird die Spalte **Status** mit der neuesten Statusmeldung des Auftrags aktualisiert. In der folgenden Tabelle werden die möglichen Statuswerte aufgeführt:
 
 | Statusmeldung       | Bedeutung der Statusmeldung                                          |
 | -------------------- | ------------------------------------------------------- |
 | Abgeschlossen            | Dieser Auftrag wurde auf allen Geräten ausgeführt.              |
 | Fehler               | Bei diesem Auftrag ist ein Fehler aufgetreten. Er wurde auf den Geräten nicht vollständig ausgeführt.  |
-| Ausstehend              | Mit der Ausführung dieses Auftrags wurde auf den Geräten noch nicht begonnen.        |
+| Ausstehend              | Mit der Ausführung dieses Auftrags wurde auf den Geräten noch nicht begonnen.         |
 | Wird ausgeführt              | Dieser Auftrag wird derzeit auf Geräten ausgeführt.             |
 | Beendet              | Dieser Auftrag wurde von einem Benutzer manuell beendet.           |
 
-Der Statusmeldung folgt eine Übersicht über die Geräte innerhalb des Auftrags. Diese Gerätestatus haben folgende Bedeutung:
+Der Statusmeldung folgt eine Übersicht über die Geräte im Auftrag. In der folgenden Tabelle werden die möglichen Gerätestatuswerte aufgeführt:
 
 | Statusmeldung       | Bedeutung der Statusmeldung                                                     |
 | -------------------- | ------------------------------------------------------------------ |
-| Succeeded            | Anzahl der Geräte, für die der Auftrag erfolgreich ausgeführt wurde.  |
-| Fehler               | Anzahl der Geräte, für die der Auftrag nicht erfolgreich ausgeführt wurde.      |
+| Succeeded            | Die Anzahl der Geräte, auf denen der Auftrag erfolgreich ausgeführt wurde.       |
+| Fehler               | Die Anzahl der Geräte, auf denen der Auftrag nicht erfolgreich ausgeführt wurde.       |
 
 ### <a name="view-the-device-status"></a>Anzeigen des Gerätestatus
 
-Klicken Sie zum Anzeigen des Status der einzelnen Geräte im Auftrag auf den Auftragsnamen. Hier werden die Details zum Auftrag sowie alle Geräte angezeigt, die in diesem Auftrag enthalten waren. Neben den einzelnen Gerätenamen werden folgende Statusmeldungen angezeigt:
+Zum Anzeigen des Status eines Auftrags und aller betroffenen Geräte wählen Sie den Auftrag aus. Klicken Sie auf **Auftragsdetails herunterladen**, um eine CSV-Datei herunterzuladen, die die Auftragsdetails sowie eine Liste der Geräte mit ihren Statuswerten enthält. Neben den einzelnen Gerätenamen werden folgende Statusmeldungen angezeigt:
 
 | Statusmeldung       | Bedeutung der Statusmeldung                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | Abgeschlossen            | Der Auftrag wurde auf diesem Gerät ausgeführt.                                     |
-| Fehler               | Beim Ausführen des Auftrags auf diesem Gerät ist ein Fehler aufgetreten. In der zugehörigen Fehlermeldung werden weitere Informationen angezeigt.  |
-| Ausstehend              | Der Auftrag wurde auf diesem Gerät noch nicht ausgeführt.                                  |
+| Fehler               | Beim Ausführen des Auftrags auf diesem Gerät ist ein Fehler aufgetreten. In der Fehlermeldung sind weitere Informationen enthalten.  |
+| Ausstehend              | Der Auftrag wurde auf diesem Gerät noch nicht ausgeführt.                                   |
 
 > [!NOTE]
-> Wenn ein Gerät gelöscht wurde, können Sie es nicht auswählen und mit der Geräte-ID wird angezeigt, dass es gelöscht wurde.
+> Wenn ein Gerät gelöscht wurde, können Sie das Gerät nicht auswählen und es wird mit der Geräte-ID als gelöscht angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

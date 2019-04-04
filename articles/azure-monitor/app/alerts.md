@@ -13,30 +13,29 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 233ce5623195a9a661f67b5c3ded40e68c8eb33a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843513"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244365"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
 
 Application Insights überwacht die Live-App auf einer [Vielzahl von Plattformen][platforms], um Sie bei der Diagnose von Leistungsproblemen und beim Auswerten von Nutzungsmustern zu unterstützen.
 
-Es gibt drei Arten von Warnungen:
+Es gibt mehrere Warnungstypen:
 
-* **Metrikwarnungen** informieren Sie darüber, wenn eine Metrik für einen bestimmten Zeitraum einen Schwellenwert überschreitet – z.B. in Bezug auf Reaktionszeiten, Anzahl von Ausnahmen, CPU-Nutzung oder Seitenaufrufe. 
+* [**Metrikwarnungen**](../../azure-monitor/platform/alerts-metric-overview.md) informieren Sie darüber, wenn eine Metrik für einen bestimmten Zeitraum einen Schwellenwert überschreitet – z. B. in Bezug auf Reaktionszeiten, Anzahl von Ausnahmen, CPU-Nutzung oder Seitenaufrufe.
+* [**Protokollwarnungen**](../../azure-monitor/platform/alerts-unified-log.md) werden dazu verwendet, Warnungen zu beschreiben, bei denen das Warnsignal auf einer benutzerdefinierten Kusto-Abfrage basiert.
 * [**Webtests**][availability] informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability].
 * Die [**Proaktive Diagnose**](../../azure-monitor/app/proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
 
-In diesem Artikel werden Metrikwarnungen beschrieben.
-
 ## <a name="set-a-metric-alert"></a>Festlegen einer Metrikwarnung
-Öffnen Sie das Blatt „Warnungsregeln“, und verwenden Sie dann die Schaltfläche „Hinzufügen“. 
+Öffnen Sie die Registerkarte „Warnungsregeln“, und verwenden Sie dann die Schaltfläche „Hinzufügen“.
 
-![Klicken Sie auf dem Blatt "Warnungsregeln" auf "Warnung hinzufügen". Legen Sie Ihre App als zu messende Ressource fest, geben Sie einen Namen für die Warnung ein, und wählen Sie eine Metrik.](./media/alerts/01-set-metric.png)
+![Klicken Sie auf der Registerkarte „Warnungsregeln“ auf „Warnung hinzufügen“. Legen Sie Ihre App als zu messende Ressource fest, geben Sie einen Namen für die Warnung ein, und wählen Sie eine Metrik.](./media/alerts/01-set-metric.png)
 
 * Legen Sie die Ressource vor den anderen Eigenschaften fest. **Wählen Sie die Ressource "(Komponenten)" aus** , wenn Sie Benachrichtigungen für Leistungs- oder Nutzungsmetriken festlegen möchten.
 * Der Name, den Sie der Warnung zuweisen, muss innerhalb der Ressourcengruppe (nicht nur in Ihrer Anwendung) eindeutig sein.
@@ -44,21 +43,21 @@ In diesem Artikel werden Metrikwarnungen beschrieben.
 * Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](../../azure-monitor/app/resources-roles-access-control.md) (nicht der Ressource) hinzu.
 * Wenn Sie „Weitere E-Mail-Adressen“ angeben, werden Warnungen an diese Einzelpersonen oder Gruppen gesendet (unabhängig davon, ob Sie das Kontrollkästchen „E-Mail an Besitzer...“ aktiviert haben). 
 * Legen Sie eine [Webhookadresse](../../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
-* Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen finden Sie oben auf dem Blatt.
+* Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen sehen Sie oben.
 
-*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* 
+*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.*
 
-* Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich das Blatt „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
+* Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich die Registerkarte „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
 
 > [!NOTE]
-> Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung eingerichtet ist: [Proaktive Diagnose](../../azure-monitor/app/proactive-failure-diagnostics.md). Dies ist eine automatische Warnung zur Überwachung einer bestimmten Metrik: der Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen. 
+> Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung eingerichtet ist: [Proaktive Diagnose](../../azure-monitor/app/proactive-failure-diagnostics.md). Dies ist eine automatische Warnung zur Überwachung einer bestimmten Metrik: der Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen.
 > 
 > 
 
 ## <a name="see-your-alerts"></a>Anzeigen Ihrer Warnungen
 Sie erhalten eine E-Mail, wenn sich ein Warnungsstatus von "Inaktiv" in "Aktiv" ändert und umgekehrt. 
 
-Der aktuelle Status jeder Warnung wird im Fenster "Warnungsregeln" angezeigt.
+Der aktuelle Status jeder Warnung wird auf der Registerkarte „Warnungsregeln“ angezeigt.
 
 Die Dropdownliste "Warnungen" enthält einen Überblick über die letzten Aktivitäten:
 
@@ -66,7 +65,7 @@ Die Dropdownliste "Warnungen" enthält einen Überblick über die letzten Aktivi
 
 Der Verlauf von Statusänderungen befindet sich im Aktivitätsprotokoll:
 
-![Klicken Sie auf dem Blatt „Übersicht“ auf „Einstellungen“, „Überwachungsprotokolle“.](./media/alerts/09-alerts.png)
+![Klicken Sie auf der Registerkarte „Übersicht“ auf „Einstellungen“ > „Überwachungsprotokolle“.](./media/alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>Funktionsweise von Warnungen
 * Eine Warnung kann drei Zustände annehmen: „Nie aktiviert“, „Aktiviert“ und „Aufgelöst“. „Aktiviert“ bedeutet, dass die angegebene Bedingung bei der letzten Auswertung erfüllt wurde.
@@ -91,26 +90,77 @@ Zu den gängigen Warnungen zählen Folgende:
 
 Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnbenachrichtigungen?
+## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Festlegen einer Ausnahmewarnung mithilfe von benutzerdefinierter Protokollsuche
 
-Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md) und den neuen Benachrichtigungen zu erfahren, lesen Sie bitte den Übersichtsartikel [Benachrichtigungen](../platform/alerts-overview.md). Um die Warnungsbenachrichtigung in den neuen Benachrichtigungen zu steuern, verwenden Sie [ Aktionsgruppen](../platform/action-groups.md).
+In diesem Abschnitt erfahren Sie, wie eine abfragebasierte Ausnahmewarnung festgelegt wird. Nehmen wir für dieses Beispiel an, dass eine Warnung ausgegeben werden soll, wenn die Fehlerrate innerhalb der letzten 24 Stunden 10 % übersteigt.
 
-* Wir empfehlen die Verwendung von bestimmten Empfängern für klassische Warnbenachrichtigungen.
+1. Navigieren Sie im Azure-Portal zu Ihrer Application Insights-Ressource.
+2. Klicken Sie links unter „Konfigurieren“ auf **Warnung**.
 
-* Für Warnungen zu allen Application Insights-Metriken (einschließlich Verfügbarkeitsmetriken) sendet die Option **Masse/Gruppe**, falls aktiviert, Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement. Tatsächliche sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen. 
+    ![Klicken Sie links unter „Konfigurieren“ auf „Warnung“.](./media/alerts/1appinsightalert.png)
+
+3. Wählen Sie oben auf der Registerkarte „Warnung“ die Option **Neue Warnungsregel** aus.
+
+     ![Wählen Sie oben auf der Registerkarte „Warnung“ die Option „Neue Warnungsregel“ aus.](./media/alerts/2createalert.png)
+
+4. Ihre Ressource sollte automatisch ausgewählt werden. Klicken Sie auf **Bedingung hinzufügen**, um eine Bedingung festzulegen.
+
+    ![Klicken Sie auf „Bedingung hinzufügen“.](./media/alerts/3addcondition.png)
+
+5. Klicken Sie auf der Registerkarte „Signallogik konfigurieren“ auf **Benutzerdefinierte Protokollsuche**.
+
+    ![Klicken Sie auf „Benutzerdefinierte Protokollsuche“.](./media/alerts/4customlogsearch.png)
+
+6. Geben Sie Ihre Abfrage auf der Registerkarte „Benutzerdefinierte Protokollsuche“ im Feld „Suchabfrage“ ein. In diesem Beispiel verwenden wir die nachfolgende Kusto-Abfrage.
+    ```kusto
+    let percentthreshold = 10;
+    let period = 24h;
+    requests
+    | where timestamp >ago(period)
+    | summarize requestsCount = sum(itemCount)
+    | project requestsCount, exceptionsCount = toscalar(exceptions | where timestamp >ago(period) | summarize sum(itemCount))
+    | extend exceptionsRate = toreal(exceptionsCount)/toreal(requestsCount) * 100
+    | where exceptionsRate > percentthreshold
+
+    ```
+
+    ![Eingeben einer Abfrage in das Suchabfragefeld](./media/alerts/5searchquery.png)
+    
+    > [!NOTE]
+    > Sie können diese Schritte auch für andere abfragebasierte Warnungstypen durchführen. Weitere Informationen zur Kusto-Abfragesprache finden Sie in der Dokumentation [Erste Schritte mit Kusto](https://docs.microsoft.com/azure/kusto/concepts/) oder im Spickzettel [SQL to Kusto](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet).
+
+7. Wählen Sie unter „Warnungslogik“ aus, ob diese auf der Anzahl von Ergebnissen oder metrischer Maßeinheit basiert. Wählen Sie dann die Bedingung (größer als, gleich, kleiner als) und einen Schwellenwert aus. Während Sie diese Werte ändern, stellen Sie möglicherweise eine Änderung des Satzes für die Bedingungsvorschau fest. In diesem Beispiel verwenden wir „gleich“.
+
+    ![Wählen Sie unter „Warnungslogik“ aus den vorhandenen Optionen für „Basierend auf“ und „Bedingung“ aus, und geben Sie dann einen Schwellenwert ein.](./media/alerts/6alertlogic.png)
+
+8. Legen Sie unter „Auswertung basierend auf“ den Zeitraum und die Häufigkeit fest. Der Zeitraum muss hier mit dem Wert übereinstimmen, den wir in der Abfrage oben für den Zeitraum festgelegt haben. Klicken Sie anschließend auf **Fertig**.
+
+    ![Legen Sie unten den Zeitraum und die Häufigkeit fest, und klicken Sie dann auf „Fertig“.](./media/alerts/7evaluate.png)
+
+9. Wir sehen jetzt die Bedingung, die wir mit den voraussichtlichen monatlichen Kosten erstellt haben. Unter [Aktionsgruppen](../platform/action-groups.md) können Sie eine neue Gruppe erstellen oder eine vorhandene Gruppe auswählen. Wenn Sie möchten, können Sie die Aktionen anpassen.
+
+    ![Klicken Sie unter „Aktionsgruppe“ auf die Schaltflächen „Auswählen“ oder „Erstellen“.](./media/alerts/8actiongroup.png)
+
+10. Fügen Sie anschließend Ihre Warnungsdetails (Name der Warnungsregel, Beschreibung, Schweregrad) hinzu. Klicken Sie zuletzt unten auf **Warnungsregel erstellen**.
+
+    ![Geben Sie unter „Warnungsdetails“ Ihren Namen für die Warnungsregel und eine Beschreibung ein, und legen Sie einen Schweregrad fest. ](./media/alerts/9alertdetails.png)
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
+
+Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Lesen Sie den [Übersichtsartikel zu Warnungen](../platform/alerts-overview.md), um mehr über den Unterschied zwischen [klassischen Warnungen](../platform/alerts-classic.overview.md) und den neuen Warnungen zu erfahren. Verwenden Sie [Aktionsgruppen](../platform/action-groups.md), um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern.
+
+* Wir empfehlen die Verwendung bestimmter Empfänger für klassische Warnungsbenachrichtigungen.
+
+* Für Warnungen zu allen Application Insights-Metriken (einschließlich Verfügbarkeitsmetriken) sendet die Option **Masse/Gruppe**, falls aktiviert, Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement. Tatsächliche sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen.
 
 > [!NOTE]
-> Wenn Sie derzeit die Option **Masse/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
+> Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
 
-Verwenden Sie die neuen Benachrichtigungen/Benachrichtigungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit einer der „Mitwirkender/Besitzer/Leser“ konfigurieren (nicht zusammen als eine einzige Option).
+Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit einer der „Mitwirkender/Besitzer/Leser“ konfigurieren (nicht zusammen als eine einzige Option).
 
 ## <a name="automation"></a>Automation
 * [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)
 * [Verwenden von Webhooks zum Automatisieren der Reaktion auf Warnungen](../../azure-monitor/platform/alerts-webhooks.md)
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md)

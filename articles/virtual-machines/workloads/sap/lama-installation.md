@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 17/07/2018
+ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 432dcf4608d23f269c5005b86d2c58b7f70b3068
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007579"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -77,7 +77,7 @@ Der Azure-Connector ist seit SAP LaMa 3.0 SP05 im Lieferumfang des Tools inbegri
 1. Öffnen Sie das Blatt „Azure Active Directory“.
 1. Klicken Sie auf „App-Registrierungen“.
 1. Klicken Sie auf „Hinzufügen“.
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“ aus, geben Sie eine Anmelde-URL ein (z.B. http://localhost)), und klicken Sie auf „Erstellen“.
+1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“ aus, geben Sie eine Anmelde-URL ein (z. B. `http://localhost`), und klicken Sie auf „Erstellen“.
 1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
 1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
 1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“ aus, und klicken Sie auf „Speichern“.

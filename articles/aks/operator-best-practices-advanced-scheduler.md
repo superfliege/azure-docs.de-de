@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175980"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -39,10 +39,10 @@ Der Kubernetes-Planer kann Taints und Toleranzen verwenden, um einzuschränken, 
 Wenn Sie einen Pod in einem AKS-Cluster bereitstellen, plant Kubernetes nur Pods auf Knoten, bei denen dem Taint eine Toleranz zugewiesen ist. Als Beispiel nehmen wir an, dass Ihr AKS-Cluster einen Knotenpool für Knoten mit GPU-Unterstützung enthält. Sie definieren einen Namen, z.B. *gpu* und dann einen Wert für die Planung. Wenn Sie diesen Wert auf *NoSchedule* festlegen, kann der Kubernetes-Scheduler keine Pods auf dem Knoten planen, wenn der Pod nicht die entsprechende Toleranz definiert.
 
 ```console
-kubectl taint node aks-nodepool1 gpu:NoSchedule
+kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Wenn für Knoten ein Taint angewendet ist, definieren Sie in den Podspezifikationen eine Toleranz, die eine Planung auf den Knoten ermöglicht. Im folgenden Beispiel werden `key: gpu` und `effect: NoSchedule` so definiert, dass der im vorherigen Schritt für den Knoten angewendete Taint toleriert wird.
+Wenn für Knoten ein Taint angewendet ist, definieren Sie in den Podspezifikationen eine Toleranz, die eine Planung auf den Knoten ermöglicht. Im folgenden Beispiel werden `sku: gpu` und `effect: NoSchedule` so definiert, dass der im vorherigen Schritt für den Knoten angewendete Taint toleriert wird.
 
 ```yaml
 kind: Pod
@@ -61,9 +61,9 @@ spec:
       cpu: 4.0
       memory: 16Gi
   tolerations:
-  - key: "gpu"
+  - key: "sku"
     operator: "Equal"
-    value: "value"
+    value: "gpu"
     effect: "NoSchedule"
 ```
 

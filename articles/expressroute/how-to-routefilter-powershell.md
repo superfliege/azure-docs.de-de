@@ -1,20 +1,19 @@
 ---
 title: 'Konfigurieren von Routenfiltern für Microsoft-Peering – ExpressRoute: PowerShell: Azure | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie mithilfe von PowerShell Routenfilter für das Microsoft-Peering konfiguriert werden.
-documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: c67d4979709fc8e72c560c9071b17f48b309e07d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110833"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurieren von Routenfiltern für das Microsoft-Peering: PowerShell
 > [!div class="op_single_selector"]
@@ -75,6 +74,9 @@ Bevor Sie mit der Konfiguration beginnen, vergewissern Sie sich, dass Sie folgen
 
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ### <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
@@ -84,19 +86,19 @@ Bevor Sie mit dieser Konfiguration beginnen, müssen Sie sich beim Azure-Konto a
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen. Wenn Sie Azure Cloud Shell verwenden, müssen Sie dieses Cmdlet nicht ausführen, da Sie automatisch angemeldet werden.
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Überprüfen Sie die Abonnements für das Konto, wenn Sie über mehrere Azure-Abonnements verfügen.
 
 ```azurepowershell-interactive
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Geben Sie das Abonnement an, das Sie verwenden möchten.
 
 ```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
 ## <a name="prefixes"></a>Schritt 1: Abrufen einer Liste von Präfixen und BGP-Communitywerten
@@ -106,7 +108,7 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 Rufen Sie mit dem folgenden Cmdlet die Liste von BGP-Communitywerten ab, die über das Microsoft-Peering zugänglichen Diensten zugeordnet sind, sowie die Liste von Präfixen, die ihnen zugeordnet sind:
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Erstellen einer Liste der zu verwendenden Werte
 
@@ -118,10 +120,10 @@ Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“
 
 ### <a name="1-create-a-route-filter"></a>1. Erstellen eines Routenfilters
 
-Erstellen Sie zunächst den Routenfilter. Mit dem Befehl „New-AzureRmRouteFilter“ wird nur eine Routenfilterressource erstellt. Nachdem Sie die Ressource erstellt haben, müssen Sie eine Regel erstellen und dem Routenfilterobjekt anfügen. Führen Sie den folgenden Befehl aus, um eine Routenfilterressource zu erstellen:
+Erstellen Sie zunächst den Routenfilter. Mit dem Befehl „New-AzRouteFilter“ wird nur eine Routenfilterressource erstellt. Nachdem Sie die Ressource erstellt haben, müssen Sie eine Regel erstellen und dem Routenfilterobjekt anfügen. Führen Sie den folgenden Befehl aus, um eine Routenfilterressource zu erstellen:
 
 ```azurepowershell-interactive
-New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
 ### <a name="2-create-a-filter-rule"></a>2. Erstellen einer Filterregel
@@ -129,7 +131,7 @@ New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup
 Sie können eine Reihe von BGP-Communitys als eine durch Komma getrennte Liste angeben, wie im Beispiel gezeigt wird. Führen Sie den folgenden Befehl aus, um eine neue Regel zu erstellen:
  
 ```azurepowershell-interactive
-$rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
+$rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
 ```
 
 ### <a name="3-add-the-rule-to-the-route-filter"></a>3. Hinzufügen der Regel zum Routenfilter
@@ -137,9 +139,9 @@ $rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -R
 Führen Sie den folgenden Befehl aus, um die Filterregel zum Routenfilter hinzuzufügen:
  
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.Rules.Add($rule)
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ## <a name="attach"></a>Schritt 3: Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
@@ -147,9 +149,9 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
 Führen Sie den folgenden Befehl aus, um der ExpressRoute-Verbindung den Routenfilter anzufügen, sofern Sie nur über Microsoft-Peering verfügen:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 $ckt.Peerings[0].RouteFilter = $routefilter 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## <a name="tasks"></a>Häufige Aufgaben
@@ -160,24 +162,24 @@ Um die Eigenschaften eines Routenfilters abzurufen, führen Sie die folgenden Sc
 
 1. Führen Sie den folgenden Befehl aus, um die Routenfilterressource abzurufen:
 
-  ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-  ```
+   ```azurepowershell-interactive
+   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   ```
 2. Rufen Sie die Routenfilterregeln für die Routenfilterressource ab, indem Sie folgenden Befehl ausführen:
 
-  ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-  $rule = $routefilter.Rules[0]
-  ```
+   ```azurepowershell-interactive
+   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   $rule = $routefilter.Rules[0]
+   ```
 
 ### <a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
 
 Wenn der Routenfilter bereits einer Verbindung angefügt ist, werden durch Updates der BGP-Communityliste automatisch über die eingerichteten BGP-Sitzungen entsprechende Änderungen an Präfixankündigungen vorgenommen. Sie können die BGP-Communityliste Ihres Routenfilters mit dem folgenden Befehl aktualisieren:
 
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ### <a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
@@ -186,7 +188,7 @@ Nachdem ein Routenfilter von der ExpressRoute-Verbindung getrennt wurde, werden 
   
 ```azurepowershell-interactive
 $ckt.Peerings[0].RouteFilter = $null
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="delete"></a>Löschen eines Routenfilters
@@ -194,7 +196,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 Sie können einen Routenfilter nur löschen, wenn er keiner Verbindung angefügt wurde. Bevor Sie versuchen, diesen zu löschen, stellen Sie sicher, dass der Routenfilter keiner Verbindung zugeordnet ist. Sie können einen Routenfilter mit dem folgenden Befehl löschen:
 
 ```azurepowershell-interactive
-Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
+Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

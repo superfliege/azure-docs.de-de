@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3933f10a777a1aa10a4e04f8901e7fd1af5c48
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 778897e1a146abd0655d76ef157f64522681cb0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889674"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von REST-API-Aufrufen
 
@@ -63,7 +63,7 @@ Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewie
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Rufen Sie ein Bearer-Zugriffstoken ab, das Sie dann im nächsten Schritt im Autorisierungsheader verwenden, um den virtuellen Computer mit einer systemzugewiesenen verwalteten Identität zu erstellen.
+3. Rufen Sie ein Bearer-Zugriffstoken ab, das Sie dann im nächsten Schritt im Autorisierungsheader verwenden, um den virtuellen Computer mit einer systemzugewiesenen verwalteten Identität zu erstellen.
 
    ```azurecli-interactive
    az account get-access-token
@@ -80,6 +80,7 @@ Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewie
    ```
    
    **Anforderungsheader**
+   
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
    |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
@@ -168,6 +169,7 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    **Anforderungsheader**
+
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
    |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
@@ -239,6 +241,7 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    |---------|---------|
    |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
    **Anforderungstext**
 
    ```JSON
@@ -314,7 +317,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Rufen Sie ein Bearer-Zugriffstoken ab, das Sie dann im nächsten Schritt im Autorisierungsheader verwenden, um den virtuellen Computer mit einer systemzugewiesenen verwalteten Identität zu erstellen.
+3. Rufen Sie ein Bearer-Zugriffstoken ab, das Sie dann im nächsten Schritt im Autorisierungsheader verwenden, um den virtuellen Computer mit einer systemzugewiesenen verwalteten Identität zu erstellen.
 
    ```azurecli-interactive
    az account get-access-token
@@ -507,11 +510,12 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
    **Anforderungsheader**
+
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.
 
-    Wenn dem virtuellen Computer benutzer- oder systemzugewiesene verwaltete Identitäten zugewiesen sind, wie es im `identity`-Wert in der Antwort angegeben ist, fahren Sie mit Schritt 5 fort. Dort wird gezeigt, wie Sie die vom System zugewiesene verwaltete Identität beibehalten und gleichzeitig eine vom Benutzer zugewiesene verwaltete Identität zum virtuellen Computer hinzufügen.
+    Wenn dem virtuellen Computer benutzer- oder systemseitig zugewiesene verwaltete Identitäten zugewiesen sind, wie es im `identity`-Wert in der Antwort angegeben ist, fahren Sie mit Schritt 5 fort. Dort wird gezeigt, wie Sie die systemseitig zugewiesene verwaltete Identität beibehalten und gleichzeitig dem virtuellen Computer eine benutzerseitig zugewiesene verwaltete Identität hinzufügen.
 
 4. Wenn dem virtuellen Computer keine benutzerzugewiesenen verwalteten Identitäten zugewiesen sind, verwenden Sie den folgenden CURL-Befehl zum Aufrufen des Azure Resource Manager-REST-Endpunkts, um dem virtuellen Computer die erste benutzerzugewiesene verwaltete Identität zuzuweisen.
 
@@ -675,6 +679,7 @@ Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtue
    ```
 
    **Anforderungsheader**
+
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
    |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886763"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896227"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge
 
@@ -47,7 +47,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
 >
 >Weitere Informationen finden Sie unter [Erstellen einer Buildpipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Melden Sie sich bei Ihrer Azure DevOps-Organisation an (**https://dev.azure.com/{your organization}/**), und öffnen Sie das Projekt, das Ihr IoT Edge-Projektmappenrepository enthält.
+1. Melden Sie sich bei Ihrer Azure DevOps-Organisation (**https:\//dev.azure.com/{Ihre Organisation}/**) an, und öffnen Sie das Projekt, das Ihr IoT Edge-Projektmappenrepository enthält.
 
    Für diesen Artikel haben wir ein Repository namens **IoTEdgeRepo** erstellt. Dieses Repository enthält **IoTEdgeSolution**, was den Code für ein Modul namens **filtermodule** enthält. 
 
@@ -69,13 +69,13 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
 
 4. Sobald die Pipeline erstellt wurde, gelangen Sie zum Pipeline-Editor. Wählen Sie in der Pipelinebeschreibung basierend auf Ihrer Zielplattform den richtigen Agent-Pool aus: 
     
-    * Wenn Sie Ihre Module auf der Plattform amd64 für Linux-Container erstellen möchten, wählen Sie **Hosted Ubuntu 1604** aus.
+   * Wenn Sie Ihre Module auf der Plattform amd64 für Linux-Container erstellen möchten, wählen Sie **Hosted Ubuntu 1604** aus.
 
-    * Wenn Sie Ihre Module auf der Plattform amd64 für Windows 1809-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Windows einrichten](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Wenn Sie Ihre Module auf der Plattform amd64 für Windows 1809-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Windows einrichten](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-    * Wenn Sie Ihre Module auf der Plattform arm32v7 für Linux-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Linux einrichten](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
+   * Wenn Sie Ihre Module auf der Plattform arm32v7 für Linux-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Linux einrichten](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-    ![Konfigurieren des Build-Agent-Pools](./media/how-to-ci-cd/configure-env.png)
+     ![Konfigurieren des Build-Agent-Pools](./media/how-to-ci-cd/configure-env.png)
 
 5. Die Pipeline wird mit einem Auftrag mit dem Namen **Agent job 1** vorkonfiguriert. Wählen Sie das Pluszeichen (**+**) aus, um dem Auftrag drei Aufgaben hinzuzufügen: Zweimal **Azure IoT Edge** und einnal **Buildartefakte veröffentlichen**. (Zeigen Sie auf den Namen der einzelnen Aufgaben, um die Schaltfläche **Hinzufügen** anzuzeigen.)
 
@@ -158,11 +158,11 @@ Erstellen Sie eine neue Pipeline, und konfigurieren Sie ihre erste Stufe für Qu
 
 10. Wählen Sie die neue Azure IoT Edge-Aufgabe aus, und konfigurieren Sie sie mit den folgenden Werten:
 
-   * **Anzeigename**: Der Anzeigename wird automatisch aktualisiert, wenn das Aktionsfeld geändert wird. 
-   * **Aktion:** Verwenden Sie die Dropdownliste, um **Für IoT Edge-Gerät bereitstellen** auszuwählen. Ändern des Werts für die Aktion aktualisiert auch den Anzeigenamen der Aufgabe, mit dem Übereinstimmung herrschen muss.
-   * **Azure-Abonnement**: Wählen Sie das Abonnement aus, das Ihre IoT Hub-Instanz enthält.
-   * **IoT Hub-Name**: Wählen Sie Ihren IoT Hub aus. 
-   * **Einzelnes/mehrere Geräte auswählen**: Wählen Sie aus, ob die Bereitstellung durch die Releasepipeline auf einem oder mehreren Geräten ausgeführt werden soll. 
+    * **Anzeigename**: Der Anzeigename wird automatisch aktualisiert, wenn das Aktionsfeld geändert wird. 
+    * **Aktion:** Verwenden Sie die Dropdownliste, um **Für IoT Edge-Gerät bereitstellen** auszuwählen. Ändern des Werts für die Aktion aktualisiert auch den Anzeigenamen der Aufgabe, mit dem Übereinstimmung herrschen muss.
+    * **Azure-Abonnement**: Wählen Sie das Abonnement aus, das Ihre IoT Hub-Instanz enthält.
+    * **IoT Hub-Name**: Wählen Sie Ihren IoT Hub aus. 
+    * **Einzelnes/mehrere Geräte auswählen**: Wählen Sie aus, ob die Bereitstellung durch die Releasepipeline auf einem oder mehreren Geräten ausgeführt werden soll. 
       * Geben Sie bei Bereitstellung auf einem einzelnen Gerät die **IoT Edge-Geräte-ID** ein. 
       * Geben Sie bei einer Bereitstellung auf mehreren Geräten die **Zielbedingung** des Geräts an. Die Zielbedingung ist ein Filter, der mit einem Satz von Edge-Geräten in IoT Hub übereinstimmen muss. Wenn Sie Gerätetags als Bedingung verwenden möchten, müssen Sie die Tags der entsprechenden Geräte mit einem Iot Hub-Gerätezwilling aktualisieren. Aktualisieren Sie die **IoT Edge-Bereitstellungs-ID** und **IoT Edge-Bereitstellungspriorität** in den erweiterten Einstellungen. Weitere Informationen zum Erstellen einer Bereitstellung für mehrere Geräte finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 

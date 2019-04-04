@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159484"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225007"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -166,7 +166,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 > Diese Schritte verwenden Office 365 Outlook, aber Sie können jeden E-Mail-Anbieter verwenden, der Logik-Apps unterstützt. 
 > [Eine Liste der Connectors finden Sie hier](https://docs.microsoft.com/connectors/). Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus. 
 
-1. Erstellen einer leeren Logik-App Wählen Sie im Logik-App-Designer im Suchfeld **Alle** aus. Suchen Sie nach „Wiederholung“. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wiederholung – Zeitplan**
+1. Erstellen einer leeren Logik-App Wählen Sie im Logik-App-Designer im Suchfeld **Alle** aus. Suchen Sie nach „Wiederholung“. 
+   Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wiederholung – Zeitplan**
 
    ![Hinzufügen des Triggers „Wiederholung – Zeitplan“](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -181,7 +182,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
    | **Zu diesen Stunden** | 8 |
    ||| 
 
-1. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus. Suchen Sie nach „Variablen“, und wählen Sie diese Aktion aus: **Variable initialisieren – Variablen**
+1. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus. 
+   Suchen Sie nach „Variablen“, und wählen Sie diese Aktion aus: **Variable initialisieren – Variablen**
 
    ![Hinzufügen der Aktion „Variable initialisieren – Variablen“](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -202,7 +204,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
    ![Hinzufügen der „Until“-Schleife](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. Erstellen Sie die Beendigungsbedingung der Schleife durch Auswahl der **Limit**-Variablen und des **ist gleich**-Operators. Geben Sie **10** als Vergleichswert ein.
+1. Erstellen Sie die Beendigungsbedingung der Schleife durch Auswahl der **Limit**-Variablen und des **ist gleich**-Operators. 
+   Geben Sie **10** als Vergleichswert ein.
 
    ![Beendigungsbedingung zum Anhalten der Schleife erstellen](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
@@ -214,32 +217,33 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
 1. Wählen Sie für **Name** die **Limit**-Variable. Geben Sie für **Wert** „1“ ein. 
 
-   ![„Limit“ um 1 inkrementieren](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     ![„Limit“ um 1 inkrementieren](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. Wählen Sie außerhalb und unter der Schleife **Neuer Schritt** aus. 
 
-1. Wählen Sie unter dem Suchfeld **Alle** aus. Suchen Sie eine Aktion zum Senden von E-Mails, und fügen Sie sie hinzu, zum Beispiel: 
+1. Wählen Sie unter dem Suchfeld **Alle** aus. 
+     Suchen Sie eine Aktion zum Senden von E-Mails, und fügen Sie sie hinzu, zum Beispiel: 
 
-   ![Aktion hinzufügen, die E-Mail sendet](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+     ![Aktion hinzufügen, die E-Mail sendet](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. Melden Sie sich nach Aufforderung bei Ihrem E-Mail-Konto an.
 
 1. Legen Sie die Eigenschaften der E-Mail-Aktion fest. Fügen Sie die **Limit**-Variable dem Betreff hinzu. Auf diese Weise können Sie sicherstellen, dass der aktuelle Wert der Variablen die angegebene Bedingung erfüllt, beispielsweise:
 
-    ![E-Mail-Eigenschaften einrichten](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+      ![E-Mail-Eigenschaften einrichten](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | Eigenschaft | Wert | BESCHREIBUNG |
-    | -------- | ----- | ----------- | 
-    | **An** | *<email-address@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
-    | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
-    | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
-    |||| 
+      | Eigenschaft | Wert | BESCHREIBUNG |
+      | -------- | ----- | ----------- | 
+      | **An** | *<E-Mail-Adresse\@Domäne>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
+      | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
+      | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
+      |||| 
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu testen.
 
-    Sobald Ihre Logik ausgeführt wird, erhalten Sie eine E-Mail mit dem Inhalt, den Sie angegeben:
+      Sobald Ihre Logik ausgeführt wird, erhalten Sie eine E-Mail mit dem Inhalt, den Sie angegeben:
 
-    ![Empfangene E-Mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![Empfangene E-Mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>Verhindern von Endlosschleifen
 

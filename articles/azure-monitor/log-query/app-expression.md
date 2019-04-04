@@ -1,6 +1,6 @@
 ---
 title: app()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
-description: Der app-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einer bestimmten Application Insights-Anwendung in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
+description: Der app-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einer bestimmten Application Insights-App in derselben Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 0abe2c869a05d359f692db105eb647f9e6a69df8
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889453"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
 

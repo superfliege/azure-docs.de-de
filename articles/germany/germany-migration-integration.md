@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 9ea6dc552c5334e2d49c00215fe71b038427c753
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 0067cadad843b794b9476f6c278f85ad27de5bc7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323227"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822199"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält Informationen dazu, wie Sie Azure-Integrationsressourcen
 
 ## <a name="service-bus"></a>Service Bus
 
-Azure Service Bus-Dienste haben keine Datenexport- und -importfunktionen. Um Service Bus-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, können Sie die Ressourcen [als eine Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-export-template-powershell.md) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
+Azure Service Bus-Dienste haben keine Datenexport- und -importfunktionen. Um Service Bus-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, können Sie die Ressourcen [als eine Azure Resource Manager-Vorlage](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
 
 > [!NOTE]
 > Bei einem Exportieren einer Resource Manager-Vorlage werden die Daten (z. B. Nachrichten) nicht kopiert. Bei einem Exportieren einer Vorlage werden nur die Metadaten neu erstellt.
@@ -79,9 +79,8 @@ Endpoint=sb://myProdnamespaceName.**servicebus.windows.net**/;SharedAccessKeyNam
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/#step-by-step-tutorials) durcharbeiten.
-- Machen Sie sich damit vertraut, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Machen Sie sich damit vertraut, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Lesen Sie die [Übersicht über Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage über PowerShell exportieren](../azure-resource-manager/resource-manager-export-template-powershell.md#export-resource-group-as-template).
 
 ## <a name="logic-apps"></a>Logic Apps
 

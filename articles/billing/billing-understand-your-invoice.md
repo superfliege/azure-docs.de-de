@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
-ms.openlocfilehash: 506910ffa46cb3fbd4be9dcecf9df0f9fdd291e5
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901019"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897451"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
 
@@ -116,4 +116,4 @@ Wenn Sie mehr über eine Gebühr in Ihrer Rechnung erfahren möchten, lesen Sie 
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

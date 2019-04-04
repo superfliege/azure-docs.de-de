@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 79de09631b33f838c1a2f12fdc58b2648548004b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993910"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998430"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
 

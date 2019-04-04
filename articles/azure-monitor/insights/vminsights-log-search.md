@@ -1,6 +1,6 @@
 ---
 title: Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
-description: Die Azure Monitor for VMs-Lösung leitet Metriken und Protokolldaten an Log Analytics weiter; in diesem Artikel sind die Datensätze beschrieben, zusammen mit einigen Beispielabfragen.
+description: Die Lösung „Azure Monitor für VMs“ erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/06/2019
+ms.date: 03/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188967"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
-Azure Monitor for VMs sammelt Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Datenspeicher in Azure Monitor weiter.  Diese Daten stehen zur [Suche](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Azure Monitor für VMs erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Arbeitsbereich in Azure Monitor weiter.  Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 ## <a name="map-records"></a>Zuordnung von Datensätzen
 Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding beim Zuordnungsfeature von Azure Monitor for VMs generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und jeden eindeutigen Prozess generiert. Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
@@ -33,10 +33,20 @@ Es gibt intern generierte Eigenschaften, mit denen Sie eindeutige Prozessen und 
 
 Da für einen angegebenen Prozess und Computer in einem angegebenen Zeitraum möglicherweise mehrere Datensätze vorhanden sind, können Abfragen mehrere Datensätze für denselben Computer oder Prozess zurückgeben. Wenn nur der aktuellste Datensatz zurückgegeben werden soll, fügen Sie der Abfrage „| dedup ResourceId“ hinzu.
 
-### <a name="connections"></a>Verbindungen
-Verbindungsmetriken werden in eine neue Tabelle in Log Analytics geschrieben – VMConnection. Diese Tabelle enthält Informationen zu den Verbindungen für einen Computer (eingehend und ausgehend). Verbindungsmetriken werden ebenfalls mit APIs verfügbar gemacht, die die Möglichkeit zum Abrufen einer bestimmten Metrik während eines Zeitfensters bereitstellen.  TCP-Verbindungen, die durch Ausführen von *accept* auf einem lauschenden Socket hergestellt werden, sind eingehend, während solche, die durch Ausführen von *connect* auf einer bestimmten IP- und Portkombination hergestellt werden, ausgehend sind. Die Richtung einer Verbindung wird durch die Direction-Eigenschaft dargestellt, die auf entweder **inbound** oder **outbound** festgelegt werden kann. 
+### <a name="connections-and-ports"></a>Verbindungen und Ports
+Mit dem Feature „Verbindungsmetriken“ werden zwei neue Tabellen in Azure Monitor-Protokolle eingeführt: VMConnection und VMBoundPort. Diese Tabellen enthalten Informationen zu den Verbindungen eines Computers (eingehend und ausgehend) und den Serverports, die geöffnet bzw. aktiv sind. Verbindungsmetriken werden ebenfalls über APIs zur Verfügung gestellt, die die Möglichkeit zum Abrufen einer bestimmten Metrik während eines Zeitfensters bereitstellen. TCP-Verbindungen, die durch *Akzeptieren* auf einem lauschenden Socket hergestellt werden, sind eingehend, während solche, die durch *Herstellen einer Verbindung* mit einer bestimmten IP- und Portkombination hergestellt werden, ausgehend sind. Die Richtung einer Verbindung wird durch die Direction-Eigenschaft dargestellt, die auf entweder **inbound** oder **outbound** festgelegt werden kann. 
 
-Die in diesen Tabellen dargestellten Daten wurden aus Daten generiert, die vom Dependency-Agent gemeldet wurden. Jeder Datensatz stellt eine Beobachtung über ein Zeitintervall von einer Minute dar. Die TimeGenerated-Eigenschaft gibt den Anfang des Zeitintervalls an. Jeder Datensatz enthält Informationen zum Identifizieren der jeweiligen Entität – d.h. Verbindung oder Port – sowie der dieser Entität zugeordneten Metriken. Derzeit werden nur Netzwerkaktivitäten gemeldet, die über TCP-over-IPv4 anfallen.
+Die in diesen Tabellen dargestellten Daten wurden aus Daten generiert, die vom Dependency-Agent gemeldet wurden. Jeder Datensatz stellt eine Beobachtung über einen Zeitintervall von einer Minute dar. Die TimeGenerated-Eigenschaft gibt den Anfang des Zeitintervalls an. Jeder Datensatz enthält Informationen zum Identifizieren der jeweiligen Entität – d.h. Verbindung oder Port – sowie der dieser Entität zugeordneten Metriken. Derzeit werden nur Netzwerkaktivitäten gemeldet, die über TCP-over-IPv4 anfallen. 
+
+#### <a name="common-fields-and-conventions"></a>Gemeinsame Felder und Konventionen 
+Die folgenden Felder und Konventionen gelten sowohl für VMConnection als auch für VMBoundPort: 
+
+- Computer: Vollqualifizierter Domänenname des berichtenden Computers 
+- AgentID: Eindeutiger Bezeichner für einen Computer mit dem Log Analytics-Agent  
+- Machine: Name der Azure Resource Manager-Ressource für den Computer, die von ServiceMap bereitgestellt wird. Das Format lautet *m-{GUID}*, wobei *GUID* der gleichen GUID wie AgentID entspricht.  
+- Prozess: Name der Azure Resource Manager-Ressource für den Prozess, die von ServiceMap bereitgestellt wird. Das Format lautet *p-{Hexadezimalzeichenfolge}*. Das Feld „Process“ ist innerhalb eines Computerbereichs eindeutig. Zum Erstellen einer eindeutigen Prozess-ID für mehrere Computer können Sie die Felder „Machine“ und „Process“ kombinieren. 
+- ProcessName: Name der ausführbaren Datei für den Berichtsprozess
+- Alle IP-Adressen sind Zeichenfolgen im kanonischen IPv4-Format, z. B. *13.107.3.160* 
 
 Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert, die dann in der entsprechenden Tabelle wiedergegeben wird.  Das heißt, dass die Datensätze in der Tabelle *VMConnection* eine logische Gruppierung anstelle der beobachteten einzelnen physischen Verbindungen darstellen. Physische Netzwerkverbindungen, die während eines bestimmten einminütigen Intervalls den gleichen Wert für die folgenden Attribute aufweisen, werden in *VMConnection* zu einem einzelnen logischen Datensatz zusammengefasst. 
 
@@ -81,7 +91,7 @@ Einige wichtige Punkte sind zu beachten:
 1. Wenn ein Prozess Verbindungen an der gleichen IP-Adresse, aber über mehrere Netzwerkschnittstellen annimmt, wird für jede Schnittstelle ein separater Datensatz gemeldet. 
 2. Datensätze mit Platzhalter-IP-Adresse enthalten keine Aktivitäten. Sie werden aufgenommen, um die Tatsache darzustellen, dass ein Port auf dem Computer für eingehenden Datenverkehr offen ist.
 3. Um Ausführlichkeit und Datenvolumen zu verringern, werden Datensätze mit Platzhalter-IP weggelassen, wenn es einen übereinstimmenden Datensatz (für den gleichen Prozess, Port und das gleiche Protokoll) mit einer bestimmten IP-Adresse gibt. Wenn ein Datensatz mit Platzhalter-IP weggelassen wird, wird die Datensatzeigenschaft „IsWildcardBind“ mit der bestimmten IP-Adresse auf „True“ festgelegt, um anzuzeigen, dass der Port über jede Schnittstelle des berichtenden Computers geöffnet ist.
-4. Für Ports, die nur an eine bestimmte Schnittstelle gebunden sind, ist „IsWildcardBind“ auf „False“ festgelegt.
+4. Für Ports, die nur an eine bestimmte Schnittstelle gebunden sind, ist „IsWildcardBind“ auf *FALSE* festgelegt.
 
 #### <a name="naming-and-classification"></a>Benennung und Klassifizierung
 Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in der Eigenschaft „RemoteIp“ enthalten. Für eingehende Verbindungen ist „RemoteIp“ identisch mit „SourceIp“, während sie für ausgehende Verbindungen mit „DestinationIp“ übereinstimmt. Die Eigenschaft „RemoteDnsCanonicalNames“ stellt die kanonischen DNS-Namen dar, die vom Computer für „RemoteIp“ gemeldet werden. Die Eigenschaften „RemoteDnsQuestions“ und „RemoteClassification“ sind zur zukünftigen Verwendung reserviert. 
@@ -111,6 +121,36 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 |IsActive |Gibt an, dass die Indikatoren deaktiviert sind, mit dem Wert *true* oder *false*. |
 |ReportReferenceLink |Links zu Berichten, die im Zusammenhang mit einer bestimmten Beobachtung stehen. |
 |AdditionalInformation |Bietet zusätzliche Informationen, falls zutreffend, zur beobachteten Bedrohung. |
+
+### <a name="ports"></a>Ports 
+Ports auf einem Computer, die aktiv eingehenden Datenverkehr akzeptieren oder Datenverkehr akzeptieren können und sich während des Berichtszeitraums im Leerlauf befinden, werden in die Tabelle „VMBoundPort“ eingetragen.  
+
+Standardmäßig werden keine Daten in diese Tabelle geschrieben. Senden Sie eine E-Mail, die Ihre Arbeitsbereich-ID und die Region Ihres Arbeitsbereichs enthält, an vminsights@microsoft.com, damit Daten in diese Tabelle geschrieben werden.   
+
+Jeder Datensatz in der Tabelle „VMBoundPort“ wird mit den folgenden Feldern definiert: 
+
+| Eigenschaft | BESCHREIBUNG |
+|:--|:--|
+|Prozess | Die Identität eines Prozesses (oder von Gruppen von Prozessen) dem der Port zugeordnet ist|
+|IP | Die IP-Adresse des Ports (dies kann eine Platzhalter-IP-Adresse sein, z. B. *0.0.0.0*) |
+|Port |Die Portnummer |
+|Protokoll | Das Protokoll,  z. B. *TCP* oder *UDP* (derzeit wird nur *TCP* unterstützt)|
+ 
+Die Identität eines Ports ergibt aus den obigen fünf Feldern und wird in der Eigenschaft „PortId“ gespeichert. Diese Eigenschaft kann dazu verwendet werden, Datensätze für einen bestimmten Port für einen Zeitraum schnell zu finden. 
+
+#### <a name="metrics"></a>Metriken 
+Portdatensätze umfassen Metriken, die die zugeordneten Verbindungen darstellen. Derzeit werden die folgenden Metriken gemeldet (die Details zu den einzelnen Metriken finden Sie im vorherigen Abschnitt): 
+
+- BytesSent und BytesReceived 
+- LinksEstablished, LinksTerminated, LinksLive 
+- ResposeTime, ResponseTimeMin, ResponseTimeMax, ResponseTimeSum 
+
+Einige wichtige Punkte sind zu beachten:
+
+- Wenn ein Prozess Verbindungen an der gleichen IP-Adresse, aber über mehrere Netzwerkschnittstellen annimmt, wird für jede Schnittstelle ein separater Datensatz gemeldet.  
+- Datensätze mit Platzhalter-IP-Adresse enthalten keine Aktivitäten. Sie werden aufgenommen, um die Tatsache darzustellen, dass ein Port auf dem Computer für eingehenden Datenverkehr offen ist. 
+- Um Ausführlichkeit und Datenvolumen zu verringern, werden Datensätze mit Platzhalter-IP weggelassen, wenn es einen übereinstimmenden Datensatz (für den gleichen Prozess, Port und das gleiche Protokoll) mit einer bestimmten IP-Adresse gibt. Wenn ein Datensatz mit einer Platzhalter-IP ausgelassen wird, wird die Eigenschaft *IsWildcardBind* für den Datensatz mit der spezifischen IP-Adresse auf *TRUE* festgelegt.  Dies gibt an, dass der Port über jede Schnittstelle des berichtenden Computers zur Verfügung gestellt wird. 
+- Für Ports, die nur an eine bestimmte Schnittstelle gebunden sind, ist „IsWildcardBind“ auf *FALSE* festgelegt. 
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit dem Dependency-Agent. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
@@ -165,55 +205,124 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 
 ### <a name="list-all-known-machines"></a>Auflisten aller bekannten Computer
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Letzter Neustart des virtuellen Computers
-`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```kusto
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Zusammenfassung von virtuellen Azure-Computern nach Image, Speicherort und SKU
-`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```kusto
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Auflisten der physischen Arbeitsspeicherkapazität aller verwalteten Computer
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Auflisten von Computernamen, DNS, IP und Betriebssystem
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Suchen nach allen Prozesse mit "sql" in der Befehlszeile
-`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Suchen eines Computers (aktuellster Datensatz) anhand des Ressourcennamens
-`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Suchen eines Computers (aktuellster Datensatz) anhand der IP-Adresse
-`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Auflisten aller bekannten Prozesse auf einem angegebenen Computer auf
-`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-computers-running-sql-server"></a>Auflisten aller Computer, auf denen SQL Server ausgeführt wird
-`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Auflisten aller eindeutigen Produktversionen von „curl“ im eigenen Rechenzentrum
-`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```kusto
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Erstellen einer Computergruppe mit allen Computern, auf denen CentOS ausgeführt wird
-`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```
 
 ### <a name="bytes-sent-and-received-trends"></a>Gesendete Bytes und empfangene Trends
-`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```kusto
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Virtuelle Azure-Computer, die die meisten Bytes übertragen
-`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```kusto
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```
 
 ### <a name="link-status-trends"></a>Trends zum Linkstatus
-`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```kusto
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```
 
 ### <a name="connection-failures-trend"></a>Trend zu Verbindungsfehlern
-`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```kusto
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```
+
+### <a name="bound-ports"></a>Gebundene Ports
+```kusto
+VMBoundPort
+| where TimeGenerated >= ago(24hr)
+| where Computer == 'admdemo-appsvr'
+| distinct Port, ProcessName
+```
+
+### <a name="number-of-open-ports-across-machines"></a>Anzahl der offenen Ports auf Computern
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by Computer, Machine, Port, Protocol
+| summarize OpenPorts=count() by Computer, Machine
+| order by OpenPorts desc
+```
+
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Bewerten der Prozesse im Arbeitsbereich anhand ihrer offenen Ports
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by ProcessName, Port, Protocol
+| summarize OpenPorts=count() by ProcessName
+| order by OpenPorts desc
+```
+
+### <a name="aggregate-behavior-for-each-port"></a>Aggregieren des Verhaltens für jeden Port
+Anschließend kann diese Abfrage verwendet werden, um Ports anhand der Aktivität zu bewerten, z. B. Ports mit dem meisten eingehenden/ausgehenden Datenverkehr oder Ports mit den meisten Verbindungen
+```kusto
+// 
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize BytesSent=sum(BytesSent), BytesReceived=sum(BytesReceived), LinksEstablished=sum(LinksEstablished), LinksTerminated=sum(LinksTerminated), arg_max(TimeGenerated, LinksLive) by Machine, Computer, ProcessName, Ip, Port, IsWildcardBind
+| project-away TimeGenerated
+| order by Machine, Computer, Port, Ip, ProcessName
+```
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Zusammenfassen der ausgehenden Verbindungen für eine Gruppe von Computern
-```
+```kusto
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
 // map of ip to monitored machine in the environment
@@ -255,5 +364,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Wenn Sie gerade erst in das Schreiben von Abfragen in Log Analytics einsteigen, arbeiten Sie [Verwenden der Log Analytics-Seite](../../azure-monitor/log-query/get-started-portal.md) im Azure-Portal durch, um Log Analytics-Abfragen zu erstellen.
+* Wenn Sie noch nicht mit dem Schreiben von Protokollabfragen vertraut sind, finden Sie Informationen zur Verwendung von Log Analytics im Azure-Portal zum Schreiben von Protokollabfragen unter [Erste Schritte mit Azure Monitor Log Analytics](../../azure-monitor/log-query/get-started-portal.md).
 * Erfahren Sie mehr über das [Schreiben von Suchabfragen](../../azure-monitor/log-query/search-queries.md).

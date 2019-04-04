@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089385"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Verwalten von Geräteregistrierungen mit dem Azure-Portal
 
@@ -28,15 +28,15 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
 
     Sie können mit den folgenden Schritten im Portal eine Registrierungsgruppe für eine Gruppe von Geräten erstellen:
 
-    1. Melden Sie sich beim Azure-Portal an, und klicken Sie im linken Menü auf **Alle Ressourcen**.  
-    1. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.  
-    1. Gehen Sie in Ihrem Bereitstellungsdienst so vor:  
-       a. Klicken Sie auf **Registrierungen verwalten**, und wählen Sie dann die Registerkarte **Registrierungsgruppen** aus.  
-       b. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**.  
-       c. Wenn der Bereich „Registrierungsgruppe hinzufügen“ angezeigt wird, geben Sie die Informationen für den Registrierungslisteneintrag ein.  Der **Gruppenname** ist erforderlich. Wählen Sie außerdem für **Zertifikattyp** entweder „Zertifizierungsstelle“ oder „Zwischenzertifizierungsstelle“ aus, und laden Sie das **primäre Stammzertifikat** für die Gerätegruppe hoch.  
-       d. Klicken Sie auf **Speichern**. Bei der erfolgreichen Erstellung Ihrer Registrierungsgruppe wird der Gruppenname unter der Registerkarte **Registrierungsgruppen** angezeigt.  
+  1. Melden Sie sich beim Azure-Portal an, und klicken Sie im linken Menü auf **Alle Ressourcen**.  
+  1. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.  
+  1. Gehen Sie in Ihrem Bereitstellungsdienst so vor:  
+     a. Klicken Sie auf **Registrierungen verwalten**, und wählen Sie dann die Registerkarte **Registrierungsgruppen** aus.  
+     b. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**.  
+     c. Wenn der Bereich „Registrierungsgruppe hinzufügen“ angezeigt wird, geben Sie die Informationen für den Registrierungslisteneintrag ein.  Der **Gruppenname** ist erforderlich. Wählen Sie außerdem für **Zertifikattyp** entweder „Zertifizierungsstelle“ oder „Zwischenzertifizierungsstelle“ aus, und laden Sie das **primäre Stammzertifikat** für die Gerätegruppe hoch.  
+     d. Klicken Sie auf **Speichern**. Bei der erfolgreichen Erstellung Ihrer Registrierungsgruppe wird der Gruppenname unter der Registerkarte **Registrierungsgruppen** angezeigt.  
 
-       [![Registrierungsgruppe im Portal](./media/how-to-manage-enrollments/group-enrollment.png)]  (./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![Registrierungsgruppe im Portal](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
 * Eine **individuelle Registrierung** ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden als Nachweismechanismen entweder X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM). Individuelle Registrierungen sollten für Geräte, die besondere Erstkonfigurationen erfordern, oder Geräte verwendet werden, die nur SAS-Tokens über das TPM oder das virtuelle TPM als Nachweismechanismus verwenden können. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.

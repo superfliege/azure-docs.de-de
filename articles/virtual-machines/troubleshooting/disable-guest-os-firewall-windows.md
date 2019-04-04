@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: b0cd20278287b41dd953c64044b705aa2dba7557
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318979"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820024"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -33,7 +33,7 @@ Der in diesem Artikel beschriebene Prozess soll als Problemumgehung verwendet we
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie diese vorbeugenden Maßnahmen mithilfe des anderen virtuellen Computers durchführen.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Vorbeugende Maßnahme 1: Feature „Benutzerdefinierte Skripterweiterung“ oder „Befehl ‚Ausführen‘“
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Lösung 1: Feature „Benutzerdefinierte Skripterweiterung“ oder „Befehl ‚Ausführen‘“
 
 Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md) oder [Befehl „Ausführen“](../windows/run-command.md) (nur Resource Manager-VMs) verwenden, um die folgenden Skripts remote auszuführen.
 
@@ -54,7 +54,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
 >   ```
 >   Sobald die Richtlinie erneut angewendet wird, werden Sie allerdings aus der Remotesitzung entfernt. Die endgültige Lösung für dieses Problem ist die Änderung der Richtlinie, die auf diesem Computer angewendet wird.
 
-#### <a name="mitigation-2-remote-powershell"></a>Vorbeugende Maßnahme 2: Remote-PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Lösung 2: Remote-PowerShell
 
 1.  Stellen Sie eine Verbindung mit einem virtuellen Computer her, der sich in demselben virtuellen Netzwerk wie der virtuelle Computer befindet, den Sie mithilfe der RDP-Verbindung nicht erreichen können.
 
@@ -70,9 +70,9 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
     ```
 
 > [!Note]
-> Wenn die Firewall durch ein Gruppenrichtlinienobjekt festgelegt ist, funktioniert diese Methode möglicherweise nicht, da dieser Befehl nur die Einträge in der lokalen Registrierung ändert. Wenn eine Richtlinie vorhanden ist, wird diese Änderung überschrieben. 
+> Wenn die Firewall durch ein Gruppenrichtlinienobjekt festgelegt ist, funktioniert diese Methode möglicherweise nicht, da dieser Befehl nur die Einträge in der lokalen Registrierung ändert. Wenn eine Richtlinie vorhanden ist, wird diese Änderung überschrieben. 
 
-#### <a name="mitigation-3-pstools-commands"></a>Vorbeugende Maßnahme 3: PSTools-Befehle
+#### <a name="mitigation-3-pstools-commands"></a>Lösung 3: PSTools-Befehle
 
 1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools) herunter.
 
@@ -86,7 +86,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Vorbeugende Maßnahme 4: Remoteregistrierung 
+#### <a name="mitigation-4-remote-registry"></a>Lösung 4: Remoteregistrierung 
 
 Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) wie folgt vor.
 
@@ -118,7 +118,7 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
 
 Wenn Sie den virtuellen Computer mit keiner Methode erreichen können, ist die „Benutzerdefinierte Skripterweiterung“ nicht einsetzbar, und Sie müssen im OFFLINEMODUS direkt über den Betriebssystemdatenträger arbeiten. Gehen Sie dazu folgendermaßen vor:
 
-1.  [Fügen Sie den Betriebssystemdatenträger einer VM für die Wiederherstellung an.](troubleshoot-recovery-disks-portal-windows.md)
+1.  [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md)
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 

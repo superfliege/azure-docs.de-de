@@ -3,20 +3,20 @@ title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigra
 description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL.
 services: database-migration
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: e2b82c8a7bcdc1982ed4489e9422a4a0efd64f3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175098"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for MySQL
 
@@ -80,7 +80,7 @@ LOB-Spalten (Large Object) sind Spalten, die groß werden können. Bei MySQL sin
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam. 
+    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam. 
 
 ## <a name="other-limitations"></a>Weitere Einschränkungen
 - Kennwortzeichenfolgen mit öffnender und schließender geschweifter Klammer {  } am Anfang und Ende der Kennwortzeichenfolge werden nicht unterstützt. Diese Einschränkung gilt für Verbindungen mit der MySQL-Quelldatenbank sowie der Azure Database for MySQL-Zielinstanz.

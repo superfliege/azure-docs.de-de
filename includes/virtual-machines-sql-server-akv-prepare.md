@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: dfcd9e017675d6ab8799d137b8ac985434a218ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4ff99cab168abeb0bbeeb8b29de0ea0285c255b0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213033"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57457973"
 ---
 ## <a name="prepare-for-akv-integration"></a>Vorbereiten auf die Integration des Azure-Schlüsseltresors
 Es müssen mehrere Voraussetzungen erfüllt sein, damit Sie die Azure-Schlüsseltresor-Integration zum Konfigurieren Ihres virtuellen SQL Server-Computers verwenden können: 
@@ -36,7 +36,7 @@ Stellen Sie sicher, dass Sie das aktuelle Azure PowerShell SDK installiert haben
 
 Zunächst benötigen Sie für Ihr Abonnement [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD). Neben vielen weiteren Vorteilen erhalten Sie hiermit die Möglichkeit, für bestimmte Benutzer und Anwendungen die Berechtigung für Ihren Schlüsseltresor zu vergeben.
 
-Registrieren Sie als Nächstes eine Anwendung für AAD. So erhalten Sie ein Dienstprinzipalkonto, das über Zugriff auf Ihren Schlüsseltresor verfügt, was für Ihre VM erforderlich ist. Im Artikel zu Azure Key Vault finden Sie diese Schritte im Abschnitt [Registrieren einer Anwendung mit Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory). Alternativ können Sie sich in [diesem Blogbeitrag](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx) die Schritte mit Screenshots im Abschnitt **Get an identity for the application** (Abrufen einer Identität für den Anwendungsabschnitt) ansehen. Vor dem Ausführen der Schritte müssen Sie während der Registrierung die folgenden Informationen ermitteln, da sie diese später beim Aktivieren der Azure Key Vault-Integration auf Ihrem virtuellen SQL-Computer benötigen.
+Registrieren Sie als Nächstes eine Anwendung für AAD. So erhalten Sie ein Dienstprinzipalkonto, das über Zugriff auf Ihren Schlüsseltresor verfügt, was für Ihre VM erforderlich ist. Im Artikel zu Azure Key Vault finden Sie diese Schritte im Abschnitt [Registrieren einer Anwendung bei Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory). Alternativ können Sie sich in [diesem Blogbeitrag](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx) die Schritte mit Screenshots im Abschnitt **Get an identity for the application** (Abrufen einer Identität für die Anwendung) ansehen. Vor dem Ausführen der Schritte müssen Sie während der Registrierung die folgenden Informationen ermitteln, da sie diese später beim Aktivieren der Azure Key Vault-Integration auf Ihrem virtuellen SQL-Computer benötigen.
 
 * Suchen Sie nach dem Hinzufügen der Anwendung auf dem Blatt **Registrierte App** nach der **Anwendungs-ID**.
     Die Anwendungs-ID wird später dem Parameter **$spName** (Dienstprinzipalname) im PowerShell-Skript zugewiesen, um die Azure Key Vault-Integration zu ermöglichen.

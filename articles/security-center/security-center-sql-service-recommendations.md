@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: d6121a0255b809deccb3c70d56585bab76935900
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 86d50092ccffd5ab958df5d54ea49cd56d815e2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082159"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL, Daten und Anwendungen.
@@ -65,7 +65,7 @@ Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option 
 |SQL|30|Sicherheitsrisiken in SQL-Datenbanken beseitigen|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von bewährten Methoden wie z. B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.|
 |SQL|20|Azure AD-Administrator für SQL Server bereitstellen|Stellen Sie einen Azure AD-Administrator für Ihren SQL-Server bereit, um Azure AD-Authentifizierung zu aktivieren. Die Azure AD-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten.|
 |Speicherkonto|15|Uneingeschränkten Netzwerkzugriff auf Speicherkonto deaktivieren|Überwachen Sie uneingeschränkten Netzwerkzugriff in den Firewalleinstellungen Ihres Speicherkontos. Konfigurieren Sie stattdessen Netzwerkregeln, sodass nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen können. Um Verbindungen von bestimmten Internetclients oder lokalen Clients zuzulassen, kann Zugriff für Datenverkehr aus bestimmten virtuellen Azure-Netzwerken oder an IP-Adressbereiche im öffentlichen Internet gewährt werden.|
-|Speicherkonto|1||Speicherkonten zu neuen AzureRM-Ressourcen migrieren|Verwenden Sie den neuen Azure Resource Manager v2 für Ihre Speicherkonten, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung.|
+|Speicherkonto|1|Speicherkonten zu neuen AzureRM-Ressourcen migrieren|Verwenden Sie den neuen Azure Resource Manager v2 für Ihre Speicherkonten, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung.|
 
 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e9cd97bc226ec69441b933a9f7bf3caec17f1478
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Tutorial: Azure Active Directory-Integration mit RingCentral
 
@@ -127,6 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![image](./media/ringcentral-tutorial/b21-domains_and_urls.png)
 
     d. Geben Sie im Textfeld **Anmelde-URL** eine URL ein:
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -140,6 +141,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 6. Führen Sie die folgenden Schritte aus, wenn Sie keine **Dienstanbieter-Metadatendatei** haben:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein:
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -148,12 +150,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | `https://service.ringcentral.eu` |
 
     b. Geben Sie im Textfeld **Bezeichner** eine URL ein:
+
     | |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL folgendermaßen ein:
+    
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
@@ -223,7 +227,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.

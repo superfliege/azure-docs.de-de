@@ -11,17 +11,17 @@ keywords: ''
 ms.assetid: f9cd93dc-71ad-48a4-8778-4e48aec484a6
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: campaign-page
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 0802816ba45a3d0fb390b64d4308ab2e966d86ce
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e4c4afefe7a4746f2d8138bde7fea152f228a8bc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657178"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773519"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Verwenden von SAP auf virtuellen Linux-Computern in Azure
 Cloud Computing ist ein häufig verwendeter Begriff, der in der IT-Branche mehr und mehr an Bedeutung gewinnt – in kleinen Unternehmen ebenso wie in großen und multinationalen Konzernen. Microsoft Azure ist die Plattform für Clouddienste von Microsoft, die ein umfangreiches Spektrum an neuen Möglichkeiten bietet. Nun können Kunden Anwendungen schnell als Clouddienste bereitstellen bzw. die Bereitstellung aufheben und sind nicht mehr durch technische oder budgetbezogene Aspekte eingeschränkt. Anstatt Zeit und Geld in die Hardwareinfrastruktur zu investieren, können sich Unternehmen auf die Anwendung, Geschäftsprozesse und ihre Vorteile für Kunden und Benutzer konzentrieren.

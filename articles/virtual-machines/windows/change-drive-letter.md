@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: a4e29ce7ebb20753c3313e1148e1c91e853f49f5
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27577444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007296"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Verwenden des Laufwerks „D:“ als Datenlaufwerk auf einem virtuellen Windows-Computer
 Wenn Ihre Anwendung Laufwerk D zum Speichern der Daten verwenden muss, können Sie diese Anweisungen befolgen, um für den temporären Datenträger einen anderen Laufwerkbuchstaben zu verwenden. Verwenden Sie niemals den temporären Datenträger zum Speichern von Daten, die Sie behalten müssen.
@@ -64,5 +64,5 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen. Info
 9. Starten Sie den virtuellen Computer neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sie können den Speicher erhöhen, der für den virtuellen Computer verfügbar ist, indem Sie [einen zusätzlichen Datenträger anfügen](attach-managed-disk-portal.md).
+* Sie können den für den virtuellen Computer verfügbaren Speicher erhöhen, indem Sie [einen zusätzlichen Datenträger anfügen](attach-managed-disk-portal.md).
 

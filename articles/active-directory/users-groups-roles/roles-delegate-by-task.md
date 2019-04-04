@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875273"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -144,18 +144,18 @@ Aktualisieren von Eigenschaften für das einmalige Anmelden | Besitzer einer Ent
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Lizenz zuweisen | Benutzerkontoadministrator | 
-Erstellen einer Gruppe | Benutzerkontoadministrator | 
-Erstellen, Aktualisieren oder Löschen der Zugriffsüberprüfung einer Gruppe oder einer App | Benutzerkontoadministrator | 
-Verwalten des Gruppenablaufs | Benutzerkontoadministrator | 
+Lizenz zuweisen | Benutzeradministrator | 
+Erstellen einer Gruppe | Benutzeradministrator | 
+Erstellen, Aktualisieren oder Löschen der Zugriffsüberprüfung einer Gruppe oder einer App | Benutzeradministrator | 
+Verwalten des Gruppenablaufs | Benutzeradministrator | 
 Verwalten von Gruppeneinstellungen | Globaler Administrator | 
 Lesen der gesamten Konfiguration (mit Ausnahme der ausgeblendeten Mitgliedschaft) | Rolle „Verzeichnis lesen“ | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Lesen der ausgeblendeten Mitgliedschaft | Gruppenmitglied | Gruppenbesitzer, Kennwortadministrator, Exchange-Administrator, SharePoint-Administrator, Teams-Administrator, Benutzerkontoadministrator
-Lesen der Mitgliedschaft von Gruppen mit ausgeblendeter Mitgliedschaft | Helpdeskadministrator | Benutzerkonto-, Teams-Administrator
-Widerrufen von Lizenzen | Lizenzadministrator | Benutzerkontoadministrator
-Aktualisieren der Gruppenmitgliedschaft | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzerkontoadministrator
-Aktualisieren von Gruppenbesitzern | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzerkontoadministrator
-Aktualisieren von Gruppeneigenschaften | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzerkontoadministrator
+Lesen der ausgeblendeten Mitgliedschaft | Gruppenmitglied | Gruppenbesitzer, Kennwortadministrator, Exchange-Administrator, SharePoint-Administrator, Teams-Administrator, Benutzeradministrator
+Lesen der Mitgliedschaft von Gruppen mit ausgeblendeter Mitgliedschaft | Helpdeskadministrator | Benutzeradministrator, Teams-Administrator
+Widerrufen von Lizenzen | Lizenzadministrator | Benutzeradministrator
+Aktualisieren der Gruppenmitgliedschaft | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzeradministrator
+Aktualisieren von Gruppenbesitzern | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzeradministrator
+Aktualisieren von Gruppeneigenschaften | Gruppenbesitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Benutzeradministrator
 
 ## <a name="identity-protection"></a>Schutz der Identität (Identity Protection)
 
@@ -176,9 +176,9 @@ Lesen von Sicherheitsrisiken | Sicherheit lesen |
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Lizenz zuweisen | Lizenzadministrator | Benutzerkontoadministrator
+Lizenz zuweisen | Lizenzadministrator | Benutzeradministrator
 Lesen aller Konfigurationen | Rolle „Verzeichnis lesen“ | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Widerrufen von Lizenzen | Lizenzadministrator | Benutzerkontoadministrator
+Widerrufen von Lizenzen | Lizenzadministrator | Benutzeradministrator
 Testen oder Erwerben von Abonnements | Rechnungsadministrator | 
 
 
@@ -315,21 +315,21 @@ Lesen von Benutzern mit Risikokennzeichnung | Sicherheit lesen |
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Hinzufügen von Benutzern zur Verzeichnisrolle | Administrator für privilegierte Rollen | 
-Hinzufügen von Benutzern zur Gruppe | Benutzerkontoadministrator | 
-Lizenz zuweisen | Lizenzadministrator | Benutzerkontoadministrator
-Erstellen eines Gastbenutzers | Gasteinladender | Benutzerkontoadministrator
-Benutzer erstellen | Benutzerkontoadministrator | 
-Löschen von Benutzern | Benutzerkontoadministrator | 
-Ungültige Aktualisierungstoken von Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzerkontoadministrator | 
-Ungültige Aktualisierungstoken von Benutzern ohne Administratorrechte (siehe Dokumentation) | Kennwortadministrator | Benutzerkontoadministrator
+Hinzufügen von Benutzern zur Gruppe | Benutzeradministrator | 
+Lizenz zuweisen | Lizenzadministrator | Benutzeradministrator
+Erstellen eines Gastbenutzers | Gasteinladender | Benutzeradministrator
+Benutzer erstellen | Benutzeradministrator | 
+Löschen von Benutzern | Benutzeradministrator | 
+Ungültige Aktualisierungstoken von Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator | 
+Ungültige Aktualisierungstoken von Benutzern ohne Administratorrechte (siehe Dokumentation) | Kennwortadministrator | Benutzeradministrator
 Ungültige Aktualisierungstoken von privilegierten Administratorrollen (siehe Dokumentation) | Globaler Administrator | 
 Lesen einer Standardkonfiguration | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Zurücksetzen des Kennworts für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzerkontoadministrator | 
-Zurücksetzen des Kennworts für Benutzer ohne Administratorrechte (siehe Dokumentation) | Kennwortadministrator | Benutzerkontoadministrator
+Zurücksetzen des Kennworts für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator | 
+Zurücksetzen des Kennworts für Benutzer ohne Administratorrechte (siehe Dokumentation) | Kennwortadministrator | Benutzeradministrator
 Zurücksetzen des Kennworts von privilegierten Administratoren | Globaler Administrator | 
-Widerrufen von Lizenzen | Lizenzadministrator | Benutzerkontoadministrator
-Verwalten aller Eigenschaften mit Ausnahme des Benutzerprinzipalnamens | Benutzerkontoadministrator | 
-Aktualisieren des Benutzerprinzipalnamens für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzerkontoadministrator | 
+Widerrufen von Lizenzen | Lizenzadministrator | Benutzeradministrator
+Verwalten aller Eigenschaften mit Ausnahme des Benutzerprinzipalnamens | Benutzeradministrator | 
+Aktualisieren des Benutzerprinzipalnamens für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator | 
 Aktualisieren der Benutzerprinzipalnamens-Eigenschaft für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Globaler Administrator | 
 Aktualisieren von Benutzereinstellungen | Globaler Administrator | 
 

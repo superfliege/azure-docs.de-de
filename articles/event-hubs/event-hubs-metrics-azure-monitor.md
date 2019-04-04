@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 268b94cb77c238c0d6e0d3fe51a059e3a6602c80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003166"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-Metriken in Azure Monitor
 
@@ -48,7 +48,7 @@ Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimension
 
 ## <a name="billing"></a>Abrechnung
 
-Die Verwendung von Metriken in Azure Monitor ist derzeit kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Log Analytics streamen.
+Die Verwendung von Metriken in Azure Monitor ist derzeit kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Es fallen auch Kosten für Azure an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Azure Monitor-Protokolle streamen.
 
 Die folgenden Metriken bieten Ihnen eine Übersicht über die Integrität eines Diensts. 
 

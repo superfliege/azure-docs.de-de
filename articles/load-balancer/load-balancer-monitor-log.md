@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164125"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847143"
 ---
-# <a name="log-analytics-for-public-basic-load-balancer"></a>Protokollanalyse für öffentlichen Load Balancer vom Typ „Basic“
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
 
 >[!IMPORTANT] 
 >Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
@@ -32,13 +32,13 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom
 * **Integritätstestprotokolle:** Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]
-> Die Protokollanalyse funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+> Azure Monitor-Protokolle funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
 Die Überwachungsprotokollierung ist automatisch für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Integritätstestprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie die folgenden Schritte aus, um die Protokollierung zu aktivieren:
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](load-balancer-get-started-internet-arm-ps.md) , bevor Sie fortfahren.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](load-balancer-get-started-internet-arm-ps.md) , bevor Sie fortfahren.
 
 1. Klicken Sie im Portal auf **Durchsuchen**.
 2. Wählen Sie **Lastenausgleichsmodule** aus.

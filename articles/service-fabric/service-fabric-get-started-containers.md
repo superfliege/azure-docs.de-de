@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 4133379ff7c1c0a64bd2d9aefdafdd5cdb530491
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91b694070147cb0591bcc1763905f471161bf07b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875067"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336761"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -153,7 +153,7 @@ Wenn dieser Befehl kein Ergebnis zurückgibt, führen Sie den folgenden Befehl a
 docker inspect my-web-site
 ```
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie die zurückgegebene IP-Adresse (beispielsweise <http://172.31.194.61>) in einem Webbrowser. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie einen Webbrowser, und verweisen Sie auf die zurückgegebene IP-Adresse, etwa „http:\//172.31.194.61“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 Führen Sie Folgendes aus, um den Container zu beenden:
 
@@ -360,10 +360,12 @@ In Service Fabric werden die Standardanmeldeinformationen für Repositorys dann 
 * IsDefaultContainerRepositoryPasswordEncrypted (Boolescher Wert)
 * DefaultContainerRepositoryPasswordType (Zeichenfolge) – Wird ab Version 6.4 der Runtime unterstützt
 
-Hier ist ein Beispiel dafür angegeben, was Sie in der Datei „ClusterManifestTemplate.json“ im Abschnitt `Hosting` hinzufügen können. Weitere Informationen finden Sie unter [Ändern von Azure Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md) und [Verwalten von Azure Service Fabric-Anwendungsgeheimnissen](service-fabric-application-secret-management.md).
+Hier ist ein Beispiel dafür angegeben, was Sie in der Datei „ClusterManifestTemplate.json“ im Abschnitt `Hosting` hinzufügen können. Der `Hosting`-Abschnitt kann bei der Clustererstellung oder später in einem Konfigurationsupgrade hinzugefügt werden. Weitere Informationen finden Sie unter [Ändern von Azure Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md) und [Verwalten von Azure Service Fabric-Anwendungsgeheimnissen](service-fabric-application-secret-management.md).
 
 ```json
-      {
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -388,6 +390,7 @@ Hier ist ein Beispiel dafür angegeben, was Sie in der Datei „ClusterManifestT
           }
         ]
       },
+]
 ```
 
 ## <a name="configure-isolation-mode"></a>Isolationsmodus konfigurieren
@@ -618,10 +621,12 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurieren des Zeitintervalls vor Erzwingung der Containerbeendigung
 
-Sie können für die Runtime konfigurieren, wie lange nach dem Starten der Dienstlöschung (oder der Verschiebung auf einen anderen Knoten) mit dem Entfernen des Containers gewartet werden soll. Durch die Konfiguration des Zeitintervalls wird der Befehl `docker stop <time in seconds>` an den Container gesendet.  Weitere Informationen finden Sie unter [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Die Wartezeit wird im Abschnitt `Hosting` angegeben. Im folgenden Codeausschnitt des Clustermanifests ist dargestellt, wie die Wartezeit festgelegt wird:
+Sie können für die Runtime konfigurieren, wie lange nach dem Starten der Dienstlöschung (oder der Verschiebung auf einen anderen Knoten) mit dem Entfernen des Containers gewartet werden soll. Durch die Konfiguration des Zeitintervalls wird der Befehl `docker stop <time in seconds>` an den Container gesendet.  Weitere Informationen finden Sie unter [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Die Wartezeit wird im Abschnitt `Hosting` angegeben. Der `Hosting`-Abschnitt kann bei der Clustererstellung oder später in einem Konfigurationsupgrade hinzugefügt werden. Im folgenden Codeausschnitt des Clustermanifests ist dargestellt, wie die Wartezeit festgelegt wird:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -630,7 +635,8 @@ Sie können für die Runtime konfigurieren, wie lange nach dem Starten der Diens
           },
           ...
         ]
-}
+    }
+]
 ```
 Das Standardzeitintervall ist auf 10 Sekunden festgelegt. Da es sich hierbei um eine dynamische Konfiguration handelt, wird bei einem reinen Konfigurationsupgrade für den Cluster das Timeout aktualisiert. 
 
@@ -641,7 +647,9 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
 
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -655,7 +663,8 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
           ...
           }
         ]
-} 
+    } 
+]
 ```
 
 Images, die nicht gelöscht werden sollen, können Sie mithilfe des Parameters `ContainerImagesToSkip` angeben.  
@@ -666,7 +675,9 @@ Images, die nicht gelöscht werden sollen, können Sie mithilfe des Parameters `
 Von der Service Fabric-Runtime werden 20 Minuten für das Herunterladen und Extrahieren von Containerimages zugeteilt. Dies ist für die meisten Containerimages ausreichend. Für große Images oder bei einer langsamen Netzwerkverbindung kann es erforderlich sein, die Wartezeit bis zu dem Zeitpunkt, zu dem das Herunterladen und Extrahieren des Images abgebrochen wird, zu erhöhen. Dieses Timeout kann mit dem Attribut **ContainerImageDownloadTimeout** im Abschnitt **Hosting** des Clustermanifests festgelegt werden, wie im folgenden Codeausschnitt zu sehen:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -674,7 +685,8 @@ Von der Service Fabric-Runtime werden 20 Minuten für das Herunterladen und Extr
               "value": "1200"
           }
         ]
-}
+    }
+]
 ```
 
 
@@ -694,7 +706,9 @@ Ab Version 6.2 der Service Fabric-Runtime können Sie den Docker-Daemon mit benu
  
 
 ```json
-{ 
+"fabricSettings": [
+    ...,
+    { 
         "name": "Hosting", 
         "parameters": [ 
           { 
@@ -702,8 +716,8 @@ Ab Version 6.2 der Service Fabric-Runtime können Sie den Docker-Daemon mit benu
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
           } 
         ] 
-} 
-
+    } 
+]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

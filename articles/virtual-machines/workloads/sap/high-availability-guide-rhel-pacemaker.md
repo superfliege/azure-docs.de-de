@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 3c4f1be97308062adc28a0b49ee36c3492906d63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990206"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010494"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure
 
@@ -183,7 +183,7 @@ Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microso
    Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
 1. Klicken Sie auf „App-Registrierungen“.
 1. Klicken Sie auf "Hinzufügen".
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“ aus, geben Sie eine Anmelde-URL ein (z.B. http://localhost)), und klicken Sie auf „Erstellen“.
+1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“ aus, geben Sie eine Anmelde-URL ein (z.B. `http://localhost`), und klicken Sie auf „Erstellen“.
 1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
 1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
 1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“, und klicken Sie auf „Speichern“.

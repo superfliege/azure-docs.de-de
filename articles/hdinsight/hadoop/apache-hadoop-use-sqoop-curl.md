@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834556"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Ausführen von Apache Sqoop-Aufträgen mit Hadoop in HDInsight mit Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -27,7 +27,7 @@ Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-An
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 
-* Schließen Sie [Verwenden von Sqoop mit Hadoop in HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database) ab, um eine Umgebung mit einem HDInsight-Cluster und einer Azure SQL-Datenbank zu konfigurieren.
+* Schließen Sie [Verwenden von Apache Sqoop mit Hadoop in HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database) ab, um eine Umgebung mit einem HDInsight-Cluster und einer Azure SQL-Datenbank zu konfigurieren.
 * [Curl](https://curl.haxx.se/). Curl ist ein Tool zum Übertragen von Daten aus einem oder in einen HDInsight-Cluster.
 * [jq](https://stedolan.github.io/jq/). Das Hilfsprogramm jq wird verwendet, um die von REST-Anforderungen zurückgegebenen JSON-Daten zu verarbeiten.
 
@@ -68,19 +68,19 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
     Folgende Parameter werden in diesem Befehl verwendet:
 
-    * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
+   * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
 
-        * **user.name** – Der Benutzer, der den Befehl ausführt
+       * **user.name** – Der Benutzer, der den Befehl ausführt
 
-        * **command** – Der auszuführende Sqoop-Befehl.
+       * **command** – Der auszuführende Sqoop-Befehl.
 
-        * **statusdir** – Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
+       * **statusdir** – Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
 
-    Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann.
+     Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann.
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026`.
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/12/2019
+ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887118"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Datenbankserver
 
@@ -174,57 +174,61 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
 
 #### <a name="prerequisites"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 1.  Installieren Sie Azure PowerShell anhand [dieses Leitfadens](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das Upgrade auf Version 2 des universellen Speicherkontos durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
 3.  Im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos muss die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein. Weitere Informationen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
  
 #### <a name="steps"></a>Schritte
-1.  **Registrieren Sie Ihren SQL-Datenbank-Server** in PowerShell mit Azure Active Directory (AAD):
+1. **Registrieren Sie Ihren SQL-Datenbank-Server** in PowerShell mit Azure Active Directory (AAD):
 
-    ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“**, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) verwenden.
+   1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“**, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) verwenden.
 
-    > [!NOTE]
-    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
-    > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > [!NOTE]
+   > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
+   > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)**, und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrem SQL-Datenbank-Server die RBAC-Rolle **Mitwirkender an Storage-Blobdaten (Vorschau)** zu.
+1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)**, und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrem SQL-Datenbank-Server die RBAC-Rolle **Mitwirkender an Storage-Blobdaten (Vorschau)** zu.
 
-    > [!NOTE] 
-    > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > [!NOTE] 
+   > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1.  **PolyBase-Konnektivität mit dem Azure Storage-Konto:**
+1. **PolyBase-Konnektivität mit dem Azure Storage-Konto:**
 
-    1. Erstellen Sie einen **[Masterschlüssel](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** für die Datenbank, falls Sie dies noch nicht durchgeführt haben:
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. Erstellen Sie einen **[Masterschlüssel](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** für die Datenbank, falls Sie dies noch nicht durchgeführt haben:
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. Erstellen Sie mit **IDENTITY = 'Managed Service Identity'** datenbankweit gültige Anmeldeinformationen:
+   1. Erstellen Sie mit **IDENTITY = 'Managed Service Identity'** datenbankweit gültige Anmeldeinformationen:
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - Es ist nicht erforderlich, für den Azure Storage-Zugriffsschlüssel den Zusatz SECRET anzugeben, da bei diesem Vorgang die [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) im Hintergrund verwendet wird.
-        > - Der IDENTITY-Name sollte **'Managed Service Identity'** lauten, damit die PolyBase-Konnektivität mit dem im VNET gesicherten Azure Storage-Konto funktioniert.    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - Es ist nicht erforderlich, für den Azure Storage-Zugriffsschlüssel den Zusatz SECRET anzugeben, da bei diesem Vorgang die [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) im Hintergrund verwendet wird.
+       > - Der IDENTITY-Name sollte **'Managed Service Identity'** lauten, damit die PolyBase-Konnektivität mit dem im VNET gesicherten Azure Storage-Konto funktioniert.    
     
-    1. Erstellen Sie mit dem Schema „abfss://“ eine externe Datenquelle für die Verbindungsherstellung mit Ihrem Speicherkonto vom Typ „Universell v2“, indem Sie PolyBase verwenden:
+   1. Erstellen Sie mit dem Schema „abfss://“ eine externe Datenquelle für die Verbindungsherstellung mit Ihrem Speicherkonto vom Typ „Universell v2“, indem Sie PolyBase verwenden:
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - Falls dem Speicherkonto vom Typ „Universell v1“ oder dem Blobspeicherkonto bereits externe Tabellen zugeordnet sind, sollten Sie zuerst diese externen Tabellen und dann die entsprechende externe Datenquelle verwerfen. Erstellen Sie anschließend mit dem Schema „abfss://“ eine externe Datenquelle, um wie oben die Verbindung mit dem Speicherkonto vom Typ „Universell v2“ herzustellen, und erstellen Sie dann alle externen Tabellen neu, indem Sie diese neue externe Datenquelle verwenden. Sie können den [Assistenten zum Generieren und Veröffentlichen von Skripts](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) verwenden, um auf einfache Weise Erstellungsskripts für alle externen Tabellen zu generieren.
-        > - Weitere Informationen zum Schema „abfss://“ finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-        > - Weitere Informationen zu CREATE EXTERNAL DATA SOURCE finden Sie in [diesem Leitfaden](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - Falls dem Speicherkonto vom Typ „Universell v1“ oder dem Blobspeicherkonto bereits externe Tabellen zugeordnet sind, sollten Sie zuerst diese externen Tabellen und dann die entsprechende externe Datenquelle verwerfen. Erstellen Sie anschließend mit dem Schema „abfss://“ eine externe Datenquelle, um wie oben die Verbindung mit dem Speicherkonto vom Typ „Universell v2“ herzustellen, und erstellen Sie dann alle externen Tabellen neu, indem Sie diese neue externe Datenquelle verwenden. Sie können den [Assistenten zum Generieren und Veröffentlichen von Skripts](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) verwenden, um auf einfache Weise Erstellungsskripts für alle externen Tabellen zu generieren.
+       > - Weitere Informationen zum Schema „abfss://“ finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - Weitere Informationen zu CREATE EXTERNAL DATA SOURCE finden Sie in [diesem Leitfaden](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
         
-    1. Führen Sie Abfragen wie gewohnt durch, indem Sie [externe Tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) verwenden.
+   1. Führen Sie Abfragen wie gewohnt durch, indem Sie [externe Tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) verwenden.
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL-Datenbank – Blobüberwachung
 
@@ -273,7 +277,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie im [Azure-Portal][http-azure-p
 
 ## <a name="powershell-alternative"></a>PowerShell-Alternative
 
-Regeln für ein virtuelles Netzwerk können auch mit einem PowerShell-Skript erstellt werden. Dazu dient das Cmdlet **New-AzureRmSqlServerVirtualNetworkRule**. Lesen Sie bei Interesse [Verwenden von PowerShell zum Erstellen eines Endpunkts und einer Regel für den virtuellen Dienst für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Regeln für ein virtuelles Netzwerk können auch mit einem PowerShell-Skript erstellt werden. Dazu dient das Cmdlet **New-AzSqlServerVirtualNetworkRule**. Lesen Sie bei Interesse [Verwenden von PowerShell zum Erstellen eines Endpunkts und einer Regel für den virtuellen Dienst für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>REST-API-Alternative
 

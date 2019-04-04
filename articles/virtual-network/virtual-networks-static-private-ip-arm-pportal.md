@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff9d025980f80cb77246ea12dbf2e9bcedd73f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e5efe0516d1b2dd387532d31a0a6654e6651fe41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38705883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011736"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer über das Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-> * [Azure-CLI](virtual-networks-static-private-ip-arm-cli.md)
+> * [Azure-Befehlszeilenschnittstelle](virtual-networks-static-private-ip-arm-cli.md)
 > * [Azure-Portal (klassisch)](virtual-networks-static-private-ip-classic-pportal.md)
 > * [PowerShell (klassisch)](virtual-networks-static-private-ip-classic-ps.md)
 > * [Azure CLI (klassisch)](virtual-networks-static-private-ip-classic-cli.md)
@@ -49,7 +49,7 @@ Im Azure-Portal ist es nicht möglich, beim Erstellen eines virtuellen Computers
 
 Führen Sie die folgenden Schritte aus, um im VNET *TestVNet* im Subnetz *FrontEnd* den virtuellen Computer *DNS01* zu erstellen:
 
-1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+1. Navigieren Sie in einem Browser zu https://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 2. Klicken Sie auf **Ressource erstellen** > **Compute** > **Windows Server 2012 R2 Datacenter**. Beachten Sie, dass in der Liste **Bereitstellungsmodell auswählen** bereits **Resource Manager** angezeigt wird, und klicken Sie anschließend auf **Erstellen**, wie in der folgenden Abbildung gezeigt.
    
     ![Erstellen einer VM im Azure-Portal](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um im VNET *TestVNet* im Subnetz *FrontE
    
     -**Speicherkonto**: *vnetstorage*
    
-   * **Netzwerk**: *TestVNet*
+   * **Netzwerk:** *TestVNet*
    * **Subnetz**: *FrontEnd*
      
      ![Bereich „Größe auswählen“](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905221"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN: autocomplete-Attribut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [Verwenden von AutoComplete in HTML-Formularen](https://msdn.microsoft.com/library/ms533032.aspx), [Sicherheitsanfälligkeit bezüglich HTML-Bereinigung](https://technet.microsoft.com/security/bulletin/MS10-071), [Autocomplete – Schon wieder?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Referenzen**              | [MSDN: autocomplete-Attribut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [Verwenden von AutoComplete in HTML-Formularen](https://msdn.microsoft.com/library/ms533032.aspx), [Sicherheitsanfälligkeit bezüglich HTML-Bereinigung](https://technet.microsoft.com/security/bulletin/MS10-071), [Autocomplete – Schon wieder?!](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Schritte** | Mit dem Attribut „autocomplete“ wird angegeben, ob die automatische Vervollständigung für ein Formular aktiviert oder deaktiviert sein soll. Bei aktivierter automatischer Vervollständigung werden die Werte im Browser automatisch basierend auf den Werten vervollständigt, die vom Benutzer vorher eingegeben wurden. Wenn in einem Formular beispielsweise ein neuer Name und ein neues Kennwort eingegeben werden und das Formular übermittelt wird, wird im Browser die Frage angezeigt, ob das Kennwort gespeichert werden soll. Danach werden der Name und das Kennwort beim Anzeigen des Formulars automatisch eingefügt oder beim Eingeben des Namens vervollständigt. Ein Angreifer mit lokalem Zugriff hätte die Möglichkeit, das Klartext-Kennwort aus dem Browsercache zu entwenden. Die automatische Vervollständigung ist standardmäßig aktiviert und muss explizit deaktiviert werden. |
 
 ### <a name="example"></a>Beispiel
@@ -182,7 +182,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Password Hashing using .NET Crypto APIs](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) (Kennworthashing mit .NET-Kryptografie-APIs) |
+| **Referenzen**              | [Password Hashing using .NET Crypto APIs](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) (Kennworthashing mit .NET-Kryptografie-APIs) |
 | **Schritte** | Kennwörter sollten nicht in benutzerdefinierten Benutzerspeicherdatenbanken abgelegt werden. Kennworthashes sollten stattdessen mit Salt-Werten gespeichert werden. Achten Sie darauf, dass der Salt-Wert für den Benutzer immer eindeutig ist und dass Sie vor dem Speichern des Kennworts bcrypt, scrypt oder PBKDF2 mit einer Mindestanzahl von 150.000 Schleifen für die Arbeitsfaktoriteration anwenden, um die Möglichkeit eines Brute-Force-Angriffs auszuschließen.| 
 
 ## <a id="db-encrypted"></a>Sicherstellen, dass sensible Daten in Datenbankspalten verschlüsselt sind
@@ -399,7 +399,7 @@ Falls die Anwendung keine Unternehmensanwendung ist, sollten Sie den von der Pla
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Crypto Obfuscator For .Net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Referenzen**              | [Crypto Obfuscator For .Net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Schritte** | Generierte Binärdateien (Assemblys in apk) sollten verschleiert werden, um ein Reverse Engineering von Assemblys zu verhindern. Hierfür können Tools wie `CryptoObfuscator` verwendet werden. |
 
 ## <a id="cert"></a>Festlegen von „clientCredentialType“ auf „Certificate“ oder „Windows“
@@ -429,7 +429,7 @@ Legen Sie „clientCredentialType“ auf „Certificate“ oder „Windows“ fe
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Generisch, .NET Framework 3 |
 | **Attribute**              | Sicherheitsmodus: Transport, Sicherheitsmodus: Nachricht |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [Fundamentals of WCF Security CoDe Magazine](http://www.codemag.com/article/0611051) (Grundlagen der WCF-Sicherheit – CoDe Magazine) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [Fundamentals of WCF Security CoDe Magazine](https://www.codemag.com/article/0611051) (Grundlagen der WCF-Sicherheit – CoDe Magazine) |
 | **Schritte** | Es wurde keine Transport- oder Nachrichtensicherheit definiert. Für Anwendungen, die Nachrichten ohne Transport- oder Nachrichtensicherheit übertragen, kann die Integrität oder Vertraulichkeit der Nachrichten nicht garantiert werden. Wenn eine WCF-Sicherheitsbindung auf „None“ festgelegt ist, wird sowohl die Transport- als auch die Nachrichtensicherheit deaktiviert. |
 
 ### <a name="example"></a>Beispiel
@@ -453,8 +453,8 @@ Sicherheitsmodus: Über alle Dienstbindungen hinweg gibt es fünf mögliche Sich
 * Both (Beides): Ermöglicht Ihnen das Bereitstellen von Einstellungen für die Sicherheit auf Transport- und Nachrichtenebene (wird nur von MSMQ unterstützt). 
 * TransportWithMessageCredential: Die Anmeldeinformationen werden zusammen mit der Nachricht übergeben, und der Nachrichtenschutz und die Serverauthentifizierung werden von der Transportschicht bereitgestellt. 
 * TransportCredentialOnly: Die Clientanmeldeinformationen werden mit der Transportschicht übergeben, und es wird kein Nachrichtenschutz angewendet. Verwenden Sie die Transport- und Nachrichtensicherheit, um die Integrität und Vertraulichkeit von Nachrichten zu schützen. In der unten angegebenen Konfiguration wird der Dienst angewiesen, die Transportsicherheit mit Nachrichtenanmeldeinformationen zu verwenden.
-```
-<system.serviceModel>
+  ```
+  <system.serviceModel>
   <bindings>
     <wsHttpBinding>
     <binding name=""MyBinding""> 
@@ -462,5 +462,5 @@ Sicherheitsmodus: Über alle Dienstbindungen hinweg gibt es fünf mögliche Sich
     <message clientCredentialType=""Windows""/> 
     </binding> 
   </bindings> 
-</system.serviceModel> 
-```
+  </system.serviceModel> 
+  ```

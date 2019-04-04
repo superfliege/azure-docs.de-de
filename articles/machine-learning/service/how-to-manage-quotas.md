@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b735df4e245d6e3ceebd847e91ed7dfdb255c267
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904642"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 
 Ebenso wie bei anderen Azure-Diensten gelten bei bestimmten Ressourcen in Verbindung mit dem Azure Machine Learning-Dienst Limits. Diese Limits reichen von Obergrenzen für die Anzahl von Arbeitsbereichen, die Sie erstellen können, bis hin zu Limits für die eigentlichen zugrunde liegenden Computeressourcen, die zum Training oder für Rückschlüsse Ihrer Modelle abgerufen werden. Dieser Artikel enthält ausführlichere Informationen über die vorkonfigurierten Limits für verschiedene Azure-Ressourcen für Ihr Abonnement sowie nützliche Links zum Anfordern von Kontingentverbesserungen für jeden Ressourcentyp. Diese Einschränkungen werden eingeführt, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Kapazitätseinschränkungen bei Azure Rechnung zu tragen.
 
-Berücksichtigen Sie diese Kontingente beim Entwerfen und Skalieren Ihrer Azure Machine Learning Service-Ressourcen für Produktionsworkloads. Wenn Ihr Cluster beispielsweise nicht die von Ihnen vorgegebene Anzahl von Knoten erreicht, haben Sie möglicherweise die Kernkontingentgrenze von Azure Machine Learning Compute für Ihr Abonnement erreicht. Wenn Sie ein Limit oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine gebührenfreie Onlinekundensupport-Anforderung öffnen. Die Limits können aufgrund von Azure-Kapazitätseinschränkungen nicht über den Wert unter „Maximales Limit“ in den folgenden Tabellen angehoben werden. Falls die Spalte „Maximales Limit“ nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Limits.
+Berücksichtigen Sie diese Kontingente beim Entwerfen und Skalieren Ihrer Azure Machine Learning Service-Ressourcen für Produktionsworkloads. Wenn Ihr Cluster beispielsweise nicht die vorgegebene Anzahl von Knoten erreicht, haben Sie möglicherweise den Grenzwert für das Kernkontingent von Azure Machine Learning Compute für Ihr Abonnement erreicht. Wenn Sie ein Limit oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine gebührenfreie Onlinekundensupport-Anforderung öffnen. Die Limits können aufgrund von Azure-Kapazitätseinschränkungen nicht über den Wert unter „Maximales Limit“ in den folgenden Tabellen angehoben werden. Falls die Spalte „Maximales Limit“ nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Limits.
 
 ## <a name="special-considerations"></a>Besondere Überlegungen
 

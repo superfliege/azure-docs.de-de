@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: banders
-ms.openlocfilehash: 8a6993f19f32e1bdb0bd10013f8f7e3dde844edd
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2468f61c187d9b10ed9fe55ccf76e5d2561d0505
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889810"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>Grundlegendes zur Zuordnung kostenloser Dienste zu Verbrauchseinheiten
 
@@ -55,4 +55,4 @@ Die Nutzung jedes Azure-Diensts wird in Verbrauchseinheiten gemessen, die das Az
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

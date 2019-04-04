@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 017f665f3d0d19746854e2cf566034f801b32a04
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2c317bbdef2511728d23b33d8eef1c4a41a87d97
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201516"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Verwalten der Parallelität in Azure Search
 
@@ -170,7 +170,7 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 
 Ein Entwurfsmuster für die Implementierung der optimistischen Nebenläufigkeit muss eine Schleife enthalten, in der die Zugriffsbedingungsprüfung, ein Test der Zugriffsbedingung und optional ein Abruf der aktualisierten Ressource wiederholt werden, bevor versucht wird, die Änderungen erneut anzuwenden.
 
-Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Der Code stammt aus [Synonyme (Vorschauversion) – C#-Tutorial für Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk).
+Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Dieser Code stammt aus [Synonyme (Vorschauversion) – C#-Beispiel für Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-example-sdk).
 
 Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang die Objektversion überprüft, eine Ausnahme ausgelöst, wenn der Vorgang fehlschlägt, und der Vorgang dann (bis zu drei Mal) wiederholt, wobei zunächst der Index vom Server abgerufen wird, um die aktuelle Version zu erhalten.
 

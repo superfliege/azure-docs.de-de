@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995895"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -310,11 +310,11 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
      {
          "name": "ADFTutorialPipelineOnPrem",
          "properties": {
-         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "description": "This pipeline has one Copy activity that copies data from an on premises SQL to Azure blob",
          "activities": [
            {
              "name": "CopyFromSQLtoBlob",
-             "description": "Copy data from on-prem SQL server to blob",
+             "description": "Copy data from on premises SQL server to blob",
              "type": "Copy",
              "inputs": [
                {
@@ -362,7 +362,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
    * Im Abschnitt **typeProperties** ist **SqlSource** als **Quelltyp** und **BlobSink** als **Senkentyp** angegeben.
    * Die SQL-Abfrage `select * from emp` ist für die **sqlReaderQuery**-Eigenschaft von **SqlSource** angegeben.
 
-   Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel:  2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
+   Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel:  2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
 
    Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9/9/9999** an.
 
@@ -407,7 +407,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 6. Klicken Sie auf **X** , um alle Seiten zu schließen, bis wieder
 7. die Startseite für **ADFTutorialOnPremDF** angezeigt wird.
 8. Optional: Klicken Sie auf **Pipelines**, dann auf **ADFTutorialOnPremDF**, und zeigen Sie Details zu den Eingabetabellen (**Genutzt**) oder Ausgabedatasets (**Erstellt**) an.
-9. Verwenden Sie Tools wie z.B. den [Microsoft Storage-Explorer](http://storageexplorer.com/), um zu überprüfen, ob ein Blob oder eine Datei für jede Stunde erstellt wird.
+9. Verwenden Sie Tools wie z.B. den [Microsoft Storage-Explorer](https://storageexplorer.com/), um zu überprüfen, ob ein Blob oder eine Datei für jede Stunde erstellt wird.
 
    ![Azure Storage-Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

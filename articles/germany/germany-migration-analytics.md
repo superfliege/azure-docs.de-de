@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 48bbe463ab87d28577fa0c3c4e06f280c2d9a730
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 590d790939f2986570019122817444238a41bb7d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321793"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821551"
 ---
 # <a name="migrate-analytics-resources-to-global-azure"></a>Migrieren von Analyseressourcen zu Azure weltweit
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält Informationen dazu, wie Sie Azure-Analyseressourcen von 
   
 ## <a name="event-hubs"></a>Event Hubs
 
-Es ist nicht möglich, Azure Event Hubs-Ressourcen direkt von Azure Deutschland zu Azure weltweit zu migrieren. Der Event Hubs-Dienst hat keine Datenexport- und -importfunktionen. Sie können Event Hubs-Ressourcen jedoch [als eine Vorlage](../azure-resource-manager/resource-manager-export-template-powershell.md) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
+Es ist nicht möglich, Azure Event Hubs-Ressourcen direkt von Azure Deutschland zu Azure weltweit zu migrieren. Der Event Hubs-Dienst hat keine Datenexport- und -importfunktionen. Sie können Event Hubs-Ressourcen jedoch [als eine Vorlage](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates) exportieren. Passen Sie dann die exportierte Vorlage für Azure weltweit an, und erstellen Sie die Ressourcen erneut.
 
 > [!NOTE]
 > Bei einem Exportieren einer Event Hubs-Vorlage werden keine Daten (z. B. Nachrichten) kopiert. Bei einem Exportieren einer Vorlage werden nur die Event Hubs-Metadaten neu erstellt.
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie unter:
 - Lesen Sie die [Übersicht über Event Hubs](../event-hubs/event-hubs-about.md).
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Event Hubs](https://docs.microsoft.com/azure/event-hubs/#step-by-step-tutorials) durcharbeiten.
 - Überprüfen Sie die Migrationsschritte für [Azure Service Bus](./germany-migration-integration.md#service-bus).
-- Machen Sie sich damit vertraut, wie Sie [eine Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/resource-manager-export-template.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Machen Sie sich damit vertraut, wie Sie [Azure Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="hdinsight"></a>HDInsight
 

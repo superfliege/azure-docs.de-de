@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e861d8fe22d4e7acb970990b27998caf923ed6c2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449641"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994899"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Anforderungen und Konfiguration der Apple FairPlay-Lizenz 
 

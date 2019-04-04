@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: de339fbab3d360507a77708816b5fccdca80a7d1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111003"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Überwachen in Azure Database for MySQL
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MySQL bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -23,7 +23,7 @@ Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ei
 Für Azure Database for MySQL sind folgende Metriken verfügbar:
 
 |Metrik|Metrikanzeigename|Unit|BESCHREIBUNG|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|CPU in Prozent|Prozent|Die CPU-Auslastung in Prozent|
 |memory_percent|Arbeitsspeicher in Prozent|Prozent|Die Arbeitsspeicherauslastung in Prozent|
 |io_consumption_percent|E/A in Prozent|Prozent|Die E/A-Auslastung in Prozent|
@@ -41,7 +41,7 @@ Für Azure Database for MySQL sind folgende Metriken verfügbar:
 |backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers.|
 
 ## <a name="server-logs"></a>Serverprotokolle
-Sie können die Protokollierung von langsamen Abfragen auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in OMS Log Analytics, Event Hubs und Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
+Sie können die Protokollierung von langsamen Abfragen auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in Azure Monitor-Protokolle, Event Hubs und im Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).

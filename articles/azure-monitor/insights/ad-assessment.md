@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 8a1e08263790f1a04e672fd9d5a17c2bd1b45ce8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 949bf52a586603fc6a82c0da553cf70877a8f4be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085013"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -111,10 +111,10 @@ Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastrukt
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>So werden Empfehlungen für einen Schwerpunktbereich angezeigt und korrigierende Maßnahmen ergriffen
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **Active Directory-Integritätsüberprüfung**.
-5. Überprüfen Sie auf der Seite **Integritätsüberprüfung** die Zusammenfassungsinformationen in einem der Schwerpunktbereiche, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
-6. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Abbildung der Empfehlungen der Integritätsüberprüfung](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-7. Sie können die unter **Vorgeschlagene Aktionen**vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Compliancebewertung erhöht sich. Korrigierte Elemente werden als **Passed Objects**angezeigt.
+1. Klicken Sie auf der Seite **Übersicht** auf die Kachel **Active Directory-Integritätsüberprüfung**.
+1. Überprüfen Sie auf der Seite **Integritätsüberprüfung** die Zusammenfassungsinformationen in einem der Schwerpunktbereiche, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
+1. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Abbildung der Empfehlungen der Integritätsüberprüfung](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+1. Sie können die unter **Vorgeschlagene Aktionen**vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Compliancebewertung erhöht sich. Korrigierte Elemente werden als **Passed Objects**angezeigt.
 
 ## <a name="ignore-recommendations"></a>Ignorieren von Empfehlungen
 Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen, mit der Azure Monitor verhindert, dass diese Empfehlungen in Ihren Bewertungsergebnissen angezeigt werden.

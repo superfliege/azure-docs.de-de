@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456961"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082040"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -124,7 +124,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 * `skipDos2Unix` (optional, boolesch): Überspringen der dos2unix-Konvertierung von skriptbasierten Datei-URLs oder des Skripts.
 * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
- * `commandToExecute` (**erforderlich**, wenn Skript nicht festgelegt; Zeichenfolge): das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
+  * `commandToExecute` (**erforderlich**, wenn Skript nicht festgelegt; Zeichenfolge): das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
 * `script` (**erforderlich**, wenn „commandToExecute“ nicht festgelegt; Zeichenfolge): ein Base64-codiertes (und optional mit Gzip komprimiertes) Skript, das durch „/bin/sh“ ausgeführt wird.
 * `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
@@ -364,7 +364,7 @@ Das von der Azure-Skripterweiterung erzeugte Protokoll finden Sie hier:
 /var/log/azure/custom-script/handler.log
 ```
 
-Suchen Sie nach der jeweiligen Ausführung. Diese sieht in etwa wie folgt aus:
+Suchen Sie nach der jeweiligen Ausführung. Diese ähnelt der folgenden:
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check

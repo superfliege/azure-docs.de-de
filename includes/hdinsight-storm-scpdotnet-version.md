@@ -4,15 +4,15 @@ ms.service: hdinsight
 ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
-ms.openlocfilehash: 43b90181faa5b3ee23b1d3a15146dffb93ab2e2e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 5f68b50c94dad0be6d89eef2d6fbef949424f9ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964158"
 ---
 > [!IMPORTANT]
-> Die im Projekt verwendete SCP.Net-Version muss mit der Storm-Version in Ihrem HDInsight-Cluster übereinstimmen. Ermitteln Sie anhand der folgenden Tabelle, welche Version Sie verwenden sollten:
+> Die im Projekt verwendete SCP.NET-Version muss mit der Storm-Version in Ihrem HDInsight-Cluster übereinstimmen. Ermitteln Sie anhand der folgenden Tabelle, welche Version Sie verwenden sollten:
 > 
 > | HDInsight-Version | Apache Storm-Version | SCP.NET-Version | Mono-Standardversion |
 > |:---:|:---:|:---:|:---:|

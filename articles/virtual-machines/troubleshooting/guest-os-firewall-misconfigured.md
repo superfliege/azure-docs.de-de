@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839745"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Falsch konfigurierte Gastbetriebssystem-Firewall der Azure-VM
 
@@ -98,7 +98,7 @@ In der Instanz „Zugriff auf die serielle Konsole“ können Sie den aktuellen 
 
 ### <a name="offline-mitigations"></a>Vorbeugende Maßnahmen offline
 
-1.  Informationen zum Aktivieren oder Deaktivieren der Firewallregeln finden Sie unter [Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM](enable-disable-firewall-rule-guest-os.md).
+1.  Informationen zum Aktivieren und Deaktivieren der Firewallregeln finden Sie unter [Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM](enable-disable-firewall-rule-guest-os.md).
 
 2.  Überprüfen Sie, ob folgendes Szenario vorliegt: [Gastbetriebssystem-Firewall blockiert eingehenden Datenverkehr](guest-os-firewall-blocking-inbound-traffic.md).
 

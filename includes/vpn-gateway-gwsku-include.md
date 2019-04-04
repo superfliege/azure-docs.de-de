@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b1a9d93d9fccf02ba1517e429625150736e539e9
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285688"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305207"
 ---
-Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt.
+Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt. Informationen zu virtuellen Netzwerkgateway-SKUs in Azure-Verfügbarkeitszonen finden Sie unter [Gateway SKUs für Azure-Verfügbarkeitszonen](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
 
 ###  <a name="benchmark"></a>Gateway-SKUs nach Tunnel, Verbindung und Durchsatz
 
@@ -29,7 +29,7 @@ Die neuen VPN-Gateway-SKUs optimieren die für die Gateways bereitgestellten Fea
 
 | **SKU**| **Funktionen**|
 | ---    | ---         |
-|**Basic** (\*\*)   | **Routenbasiertes VPN**: Zehn Tunnel für S2S/Verbindungen; keine RADIUS-Authentifizierung für P2S; kein IKEv2 für P2S<br>**Richtlinienbasiertes VPN**: (IKEv1): Ein S2S-/Verbindungstunnel; kein P2S|
+|**Basic** (\*\*)   | **Routenbasiertes VPN**: Zehn Tunnel für S2S/Verbindungen; keine RADIUS-Authentifizierung für P2S; kein IKEv2 für P2S<br>**Richtlinienbasiertes VPN**: (IKEv1): 1 S2S/Verbindungstunnel; kein P2S|
 | **VpnGw1, VpnGw2 und VpnGw3** | **Routenbasiertes VPN**: bis zu 30 Tunnel (\*), P2S, BGP, Aktiv/Aktiv, benutzerdefinierte IPsec-/IKE-Richtlinie, Koexistenz von ExpressRoute/VPN |
 |        |             |
 

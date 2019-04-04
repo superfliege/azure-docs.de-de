@@ -4,17 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 72aadcb5d1459518cda41f1d4dcafc670fa393c5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f00da12519f21410f773afb96a5e9a83c56166d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051626"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Häufige Fehler bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung
 In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen vom klassischen Azure-Bereitstellungsmodell zum Azure Resource Manager-Stapel am häufigsten auftreten.
 
 ## <a name="list-of-errors"></a>Liste der Fehler
+
 | Fehlerzeichenfolge | Lösung |
 | --- | --- |
 | Interner Serverfehler |Dies ist in einigen Fällen ein vorübergehender Fehler, der nach einem erneuten Versuch nicht mehr auftritt. Wenn der Fehler weiterhin auftritt, [wenden Sie sich an den Azure-Support](../articles/azure-supportability/how-to-create-azure-support-request.md), da in diesem Fall eine Untersuchung der Plattformprotokolle erforderlich ist. <br><br> **HINWEIS:** Sobald der Incident vom Supportteam aufgenommen wurde, versuchen Sie nicht, das Problem selbst zu lösen, da dies unerwartete Folgen für Ihre Umgebung nach sich ziehen könnte. |

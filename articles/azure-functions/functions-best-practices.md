@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8581510f16896df74f814e501648374d984945e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039332"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848948"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -84,7 +84,7 @@ Für Funktionen innerhalb einer Funktionen-App werden Ressourcen gemeinsam genut
 
 Überlegen Sie sich gut, was Sie in Ihre Funktionen-Apps für die Produktion laden. Der Arbeitsspeicher wird gleichmäßig auf die einzelnen Funktionen der App verteilt.
 
-Wenn Sie eine gemeinsame Assembly nutzen, auf die in mehreren .NET-Funktionen verwiesen wird, sollten Sie sie in einen freigegebenen Ordner einfügen. Verweisen Sie mit einer Anweisung wie im folgenden Beispiel mit C# Scripts (.csx) auf die Assembly: 
+Wenn Sie eine gemeinsame Assembly nutzen, auf die in mehreren .NET-Funktionen verwiesen wird, sollten Sie sie in einem freigegebenen Ordner einfügen. Verweisen Sie mit einer Anweisung wie im folgenden Beispiel mit C# Scripts (.csx) auf die Assembly: 
 
     #r "..\Shared\MyAssembly.dll". 
 

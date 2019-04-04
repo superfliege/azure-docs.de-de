@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011913"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
@@ -36,7 +36,7 @@ Erfahren Sie, wie mithilfe der Apache Hive WebHCat-REST-API MapReduce-Aufträge 
 >
 > Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
-1. Um die Clusteranmeldung für die Skripts in diesem Dokument festzulegen, verwenden Sie einen der folgenden Befehle:
+1. Um die Clusteranmeldung festzulegen, die von den Skripts in diesem Dokument verwendet wird, verwenden Sie einen der folgenden Befehle:
 
     ```bash
     read -p "Enter your cluster login account name: " LOGIN
@@ -107,10 +107,10 @@ Erfahren Sie, wie mithilfe der Apache Hive WebHCat-REST-API MapReduce-Aufträge 
     Das Ende des URIs (/mapreduce/jar) weist WebHCat darauf hin, dass diese Anforderung einen MapReduce-Auftrag aus einer Klasse in einer JAR-Datei startet. Folgende Parameter werden in diesem Befehl verwendet:
 
    * **-d**: `-G` wird nicht verwendet, daher verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
-    * **user.name**: Der Benutzer, der den Befehl ausführt
-    * **jar**: Der Speicherort der JAR-Datei, die die auszuführende Klasse enthält
-    * **class**: Die Klasse, die die MapReduce-Logik enthält
-    * **arg**: Die Argumente, die an den MapReduce-Auftrag übergeben werden, in diesem Fall die Eingabetextdatei und das Verzeichnis für die Ausgabe
+     * **user.name**: Der Benutzer, der den Befehl ausführt
+     * **jar**: Der Speicherort der JAR-Datei, die die auszuführende Klasse enthält
+     * **class**: Die Klasse, die die MapReduce-Logik enthält
+     * **arg**: Die Argumente, die an den MapReduce-Auftrag übergeben werden, in diesem Fall die Eingabetextdatei und das Verzeichnis für die Ausgabe
 
    Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann:
 

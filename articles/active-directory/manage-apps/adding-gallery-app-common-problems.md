@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237868"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853170"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Probleme beim Hinzufügen einer Azure AD-Kataloganwendung
 
@@ -38,7 +38,7 @@ In manchen Fällen führen vorübergehende Probleme, Netzwerkprobleme oder ein F
 
 Wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen oder diese einem Supporttechniker weitergeben möchten, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
 
- ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Ich weiß nicht, wie die Anwendung nach dem Hinzufügen eingerichtet wird.
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Ich weiß nicht, wie die Anwendung nach dem Hinzufügen eingerichtet wird.
 
 Für allgemeine Informationen zu Anwendungen bietet sich der Artikel [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) als Ausgangspunkt an.
 
@@ -73,41 +73,41 @@ Weitere Informationen über Benachrichtigungen finden Sie in den folgenden Absch
 
 ### <a name="essential-notification-items"></a>Grundlegende Benachrichtigungselemente
 
--   **Titel:** der beschreibende Titel der Benachrichtigung
+- **Titel:** der beschreibende Titel der Benachrichtigung
 
   * Beispiel: **Anwendungsproxyeinstellungen**
 
--   **Beschreibung:** Beschreibung des Ergebnisses des Vorgangs
+- **Beschreibung:** Beschreibung des Ergebnisses des Vorgangs
 
-    -   Beispiel: **Die eingegebene interne URL wird bereits von einer anderen Anwendung verwendet**
+  -   Beispiel: **Die eingegebene interne URL wird bereits von einer anderen Anwendung verwendet**
 
--   **Benachrichtigungs-ID**: die eindeutige ID der Benachrichtigung
+- **Benachrichtigungs-ID**: die eindeutige ID der Benachrichtigung
 
-    -   Beispiel: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Beispiel: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Clientanforderungs-ID**: die spezifische Anforderungs-ID, die vom Browser erstellt wurde
+- **Clientanforderungs-ID**: die spezifische Anforderungs-ID, die vom Browser erstellt wurde
 
-    -   Beispiel: **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Beispiel: **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Zeitstempel (UTC):** der Zeitstempel beim Auftreten der Benachrichtigung in UTC
+- **Zeitstempel (UTC):** der Zeitstempel beim Auftreten der Benachrichtigung in UTC
 
-    -   Beispiel: **2017-03-23T19:50:43.7583681Z**
+  -   Beispiel: **2017-03-23T19:50:43.7583681Z**
 
--   **Interne Transaktions-ID**: die interne ID, über die wir den Fehler in unseren Systemen suchen können
+- **Interne Transaktions-ID**: die interne ID, über die wir den Fehler in unseren Systemen suchen können
 
-    -   Beispiel: **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Beispiel: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN:** der Benutzer, der den Vorgang durchgeführt hat
+- **UPN:** der Benutzer, der den Vorgang durchgeführt hat
 
-    -   Beispiel: **tperkins@f128.info**
+  -   Beispiel: **tperkins\@f128.info**
 
--   **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
+- **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
 
-    -   Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Benutzerobjekt-ID:** die eindeutige ID des Benutzers, der den Vorgang durchgeführt hat
+- **Benutzerobjekt-ID:** die eindeutige ID des Benutzers, der den Vorgang durchgeführt hat
 
-    -   Beispiel: **17f84be4-51f8-483a-b533-383791227a99**
+  -   Beispiel: **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Detaillierte Benachrichtigungselemente
 
@@ -125,7 +125,7 @@ Weitere Informationen über Benachrichtigungen finden Sie in den folgenden Absch
 
 -   **Details:** detaillierte Beschreibung des Ergebnisses des Vorgangs
 
-    -   Beispiel: **Interne URL 'https://bing.com/' ist ungültig, da sie bereits verwendet wird**
+    -   Beispiel: **Interne URL `https://bing.com/` ist ungültig, da sie bereits verwendet wird**
 
 -   **Fehler kopieren**: Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker 
 -   mitzuteilen.

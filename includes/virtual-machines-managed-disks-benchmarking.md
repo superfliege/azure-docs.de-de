@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 04b6ad25c1ecd10a9480dcbf3e2b4f75e114a6f9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331697"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890971"
 ---
 *Auffüllen des Caches*  
 Der Datenträger mit der Hostcache-Einstellung „ReadOnly“ bietet eine IOPS-Rate, die höher als das Datenträgerlimit ist. Um diese maximale Leseleistung aus dem Hostcache zu erzielen, müssen zuerst Sie den Cache dieses Datenträgers mit gültigen Daten auffüllen. Dies stellt sicher, dass die Lese-E/As, die das Benchmarktool auf dem Volume „CacheReads“ erzeugt, tatsächlich den Cache und nicht direkt den Datenträger abfragen. Die Cachetreffer führen zu weiteren IOPS auf dem einzelnen Datenträger mit aktiviertem Cache.
@@ -102,7 +102,7 @@ Nachstehend sehen Sie Screenshots der Iometer-Testergebnisse für kombinierte IO
 
 ### <a name="fio"></a>FIO
 
-FIO ist ein beliebtes Tool für Benchmarktests des Speichers von Linux-VMs. Es ermöglicht die flexible Auswahl unterschiedlicher E/A-Größen sowie sequenzieller oder zufälliger Lese- und Schreibvorgänge. FIO erzeugt Arbeitsthreads oder Prozesse zum Ausführen der angegebenen E/A-Vorgänge. Mithilfe von Auftragsdateien können Sie den Typ der E/A-Vorgänge angeben, den jeder Arbeitsthread ausführen soll. Wir haben eine Auftragsdatei pro Szenario erstellt, was in den folgenden Beispielen veranschaulicht wird. Sie können die Spezifikationen in diesen Auftragsdateien ändern, um Benchmarktests für verschiedene Workloads in Storage Premium auszuführen. In den Beispielen verwenden wir eine Standard-VM vom Typ DS 14 unter **Ubuntu**. Verwenden Sie dieselbe Einrichtung wie am Anfang des Abschnitts [Benchmarktests](#Benchmarking) beschrieben, und wärmen Sie den Cache vor dem Ausführen der Benchmarktests auf.
+FIO ist ein beliebtes Tool für Benchmarktests des Speichers von Linux-VMs. Es ermöglicht die flexible Auswahl unterschiedlicher E/A-Größen sowie sequenzieller oder zufälliger Lese- und Schreibvorgänge. FIO erzeugt Arbeitsthreads oder Prozesse zum Ausführen der angegebenen E/A-Vorgänge. Mithilfe von Auftragsdateien können Sie den Typ der E/A-Vorgänge angeben, den jeder Arbeitsthread ausführen soll. Wir haben eine Auftragsdatei pro Szenario erstellt, was in den folgenden Beispielen veranschaulicht wird. Sie können die Spezifikationen in diesen Auftragsdateien ändern, um Benchmarktests für verschiedene Workloads in Storage Premium auszuführen. In den Beispielen verwenden wir eine Standard-VM vom Typ DS 14 unter **Ubuntu**. Verwenden Sie die gleiche Einrichtung wie am Anfang des Abschnitts zu Benchmarktests beschrieben, und wärmen Sie den Cache vor dem Ausführen der Benchmarktests auf.
 
 Laden Sie zunächst [FIO](https://github.com/axboe/fio) herunter, und installieren Sie es auf dem virtuellen Computer.
 

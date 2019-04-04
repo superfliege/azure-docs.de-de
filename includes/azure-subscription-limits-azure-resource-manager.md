@@ -8,39 +8,39 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a1645a8471f75f1d56f3e61c0adfc3fadee14560
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246897"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553612"
 ---
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |10.000<sup>1</sup> pro Region |10.000 pro Region |
-| Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
-| VM-Kerne pro Serie (Dv2, F usw.) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
-| [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt |Unbegrenzt |
+| VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |25.000<sup>1</sup> pro Region |25.000 pro Region |
+| Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
+| VM-Kerne pro Serie (z. B. Dv2 und F) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
+| [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt. |Unbegrenzt. |
 | [Speicherkonten](../articles/storage/common/storage-quickstart-create-account.md) pro Region und Abonnement |200 |200<sup>2</sup> |
 | [Ressourcengruppen](../articles/azure-resource-manager/resource-group-overview.md) pro Abonnement |980 |980 |
 | [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2.000 pro Region |2.000 pro Region |
-| Ressourcen-Manager-API-Anforderungsgröße |4.194.304 Bytes |4.194.304 Bytes |
-| Tags pro Abonnement<sup>3</sup> |Unbegrenzt |Unbegrenzt |
+| Anforderungsgröße für Azure Resource Manager-API |4.194.304 Byte |4.194.304 Byte |
+| Tags pro Abonnement<sup>3</sup> |Unbegrenzt. |Unbegrenzt. |
 | Eindeutige Tag-Berechnungen pro Abonnement<sup>3</sup> | 10.000 | 10.000 |
-| [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |Nicht anwendbar<sup>4</sup> |Nicht anwendbar<sup>4</sup> |
-| [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |Nicht anwendbar<sup>4</sup> |Nicht anwendbar<sup>4</sup> |
+| [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |N/V<sup>4</sup> |N/V<sup>4</sup> |
+| [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |N/V<sup>4</sup> |N/V<sup>4</sup> |
 | [Bereitstellungen auf Abonnementebene](../articles/azure-resource-manager/deploy-to-subscription.md) pro Standort | 800 | 800 |
 
-<sup>1</sup>Standardgrenzwerte variieren nach angebotenem Kategorietyp, z.B. kostenlose Testversion, nutzungsbasierte Bezahlung und Serie wie Dv2, F, G usw.
+<sup>1</sup> Standardgrenzwerte variieren nach angebotenem Kategorietyp, z. B. kostenlose Testversion, nutzungsbasierte Bezahlung, und nach Serie, wie z. B. Dv2, F und G.
 
-<sup>2</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen.
+<sup>2</sup> Dies umfasst sowohl Storage Standard- als auch Storage Premium-Konten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen.
 
 <sup>3</sup>Sie können eine unbegrenzte Anzahl von Tags pro Abonnement anwenden. Die Anzahl von Tags pro Ressource oder Ressourcengruppe ist auf 15 beschränkt. Resource Manager gibt nur eine [Liste mit eindeutigen Tagnamen und Werten](/rest/api/resources/tags) im Abonnement zurück, wenn die Anzahl der Tags 10.000 oder weniger beträgt. Sie können eine Ressource jedoch auch anhand des Tags finden, wenn die Anzahl 10.000 überschreitet.  
 
-<sup>4</sup> Diese Features sind für Azure-Ressourcengruppen und Azure Resource Manager nicht mehr erforderlich.
+<sup>4</sup> Diese Features sind für Azure-Ressourcengruppen und Resource Manager nicht mehr erforderlich.
 
 > [!NOTE]
-> Es ist wichtig zu betonen, dass für Kerne von virtuellen Computern ein regionaler Gesamtgrenzwert und ein regionaler Grenzwert pro Größenserie (Dv2, F usw.) gilt, die separat voneinander erzwungen werden.  Angenommen, Sie verwenden ein Abonnement mit einem Kerngesamtgrenzwert von 30 für VMs in der Region „USA, Osten“, einem Kerngrenzwert von 30 für die A-Serie und einem Kerngrenzwert von 30 für die D-Serie.  Für dieses Abonnement dürfen dann 30 virtuelle A1-Computer bzw. 30 virtuelle D1-Computer bereitgestellt werden, oder eine Kombination daraus, bei der die Gesamtzahl von 30 Kernen nicht überschritten wird (z.B. 10 virtuelle A1-Computer und 20 virtuelle D1-Computer).  
+> Für VM-Kerne gilt ein regionaler Gesamtgrenzwert. Außerdem gilt ein Grenzwert für die regionaler Serien pro Größe wie Dv2 und F. Diese Grenzwerte werden separat erzwungen. Angenommen, Sie verwenden ein Abonnement mit einem Kerngesamtgrenzwert von 30 für VMs in der Region „USA, Osten“, einem Kerngrenzwert von 30 für die A-Serie und einem Kerngrenzwert von 30 für die D-Serie. Für dieses Abonnement dürfen dann 30 virtuelle A1-Computer bzw. 30 virtuelle D1-Computer bereitgestellt werden – oder eine Kombination daraus, bei der die Gesamtanzahl von 30 Kernen nicht überschritten wird. Ein Beispiel wäre eine Kombination aus 10 A1-VMs und 20 D1-VMs.  
 > <!-- -->
 > 
 > 

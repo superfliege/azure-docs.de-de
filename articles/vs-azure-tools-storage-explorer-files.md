@@ -11,15 +11,15 @@ ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 194b13e889de4bc1c5938a6ce9cfded6fe2c88c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847296"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
 

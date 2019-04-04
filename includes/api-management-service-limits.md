@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 646ebc79e3615b289b60e47c0a38595e7892d8cc
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fc945a7e9389c8aec48a6a1dba969fbf92002d3a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55084867"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553541"
 ---
 | Ressource | Begrenzung |
 | --- | --- |
@@ -23,23 +23,24 @@ ms.locfileid: "55084867"
 | Gleichzeitige Back-End-Verbindungen<sup>3</sup> pro HTTP-Autorität | 2.048 pro Einheit<sup>4</sup> |
 | Maximale Größe zwischengespeicherter Antworten | 2 MB |
 | Maximale Größe eines Richtliniendokuments | 256 KB<sup>5</sup> | 
-| Maximale Anzahl benutzerdefinierter Gatewaydomänen pro Dienstinstanz<sup>6</sup> | 20 | 
+| Maximale Anzahl benutzerdefinierter Gatewaydomänen pro Dienstinstanz<sup>6</sup> | 20 |
+| Maximale Anzahl von CA-Zertifikaten pro Dienstinstanz | 10 | 
 | Maximale Anzahl von Instanzen pro Abonnement<sup>7</sup> | 20 | 
 | Maximale Anzahl von Abonnements pro Dienstinstanz<sup>7</sup> | 500 |
 | Maximale Anzahl von Clientzertifikaten pro Dienstinstanz<sup>7</sup> | 50 | 
 | Maximale Anzahl von APIs pro Dienstinstanz<sup>7</sup> | 50 | 
-| Maximale Anzahl von API-Vorgängen pro Dienstinstanz<sup>7</sup> | 1000 | 
+| Maximale Anzahl von API-Vorgängen pro Dienstinstanz<sup>7</sup> | 1.000 | 
 | Maximale Gesamtdauer der Anforderungen<sup>7</sup> | 30 Sekunden | 
 | Maximale gepufferte Nutzlastgröße<sup>7</sup> | 2 MB | 
 
 
-<sup>1</sup> Die Skalierungsgrenzen sind vom Tarif abhängig. Die Tarife und die dazugehörigen Grenzwerte für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
-<sup>2</sup> Die Cachegröße pro Einheit ist vom Tarif abhängig. Die Tarife und die dazugehörigen Grenzwerte für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
-<sup>3</sup> Verbindungen werden in Pools zusammengefasst und wiederverwendet, sofern sie nicht explizit durch das Back-End geschlossen wurden.<br/>
-<sup>4</sup> Pro Einheit der Tarife „Basic“, „Standard“ und „Premium“. Der Developer-Tarif ist auf 1.024 beschränkt. Der Tarif „Consumption“ ist nicht betroffen.<br/> 
-<sup>5</sup> In den Tarifen „Basic“, „Standard“ und „Premium“. Im Tarif „Consumption“ ist die Größe des Richtliniendokuments auf 4 KB beschränkt.<br/>
-<sup>6</sup> Nur im Tarif „Premium“ verfügbar.<br/>
-<sup>7</sup> Gilt für nur den Tarif „Consumption“.<br/>
+<sup>1</sup>Die Skalierungsgrenzen sind vom Tarif abhängig. Die Tarife und die dazugehörigen Grenzwerte für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
+<sup>2</sup>Die Cachegröße pro Einheit ist vom Tarif abhängig. Die Tarife und die dazugehörigen Grenzwerte für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
+<sup>3</sup>Verbindungen werden in Pools zusammengefasst und wiederverwendet, sofern sie nicht explizit durch das Back-End geschlossen wurden.<br/>
+<sup>4</sup>Dieser Grenzwert gilt pro Einheit der Tarife „Basic“, „Standard“ und „Premium“. Der Developer-Tarif ist auf 1.024 beschränkt. Dieser Grenzwert betrifft den Tarif „Consumption“ nicht.<br/> 
+<sup>5</sup>Dieser Grenzwert gilt für die Tarife „Basic“, „Standard“ und „Premium“. Im Tarif „Consumption“ ist die Größe des Richtliniendokuments auf 4 KB beschränkt.<br/>
+<sup>6</sup>Diese Ressource ist nur im Tarif „Premium“ verfügbar.<br/>
+<sup>7</sup>Diese Ressource betrifft nur den Tarif „Consumption“.<br/>
 
 
 

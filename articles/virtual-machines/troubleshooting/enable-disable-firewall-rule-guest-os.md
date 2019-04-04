@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cb2c548a94a91fe9126f684e382e9626adb93dd6
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "52319059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853068"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-a-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
 
 Dieser Artikel enthält eine Referenz zur Problembehandlung in Situationen, in denen Sie vermuten, dass die Firewall des Gastbetriebssystems teilweise Datenverkehr zu einem virtuellen Computer (VM) filtert. Dies kann aus folgenden Gründen hilfreich sein:
 
@@ -107,7 +107,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
     
         Ändern Sie dann **Active=FALSE** in **Active=TRUE** in der Zeichenfolge:
 
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
     
     * Um eine Regel zu deaktivieren, öffnen Sie den folgenden Registrierungswert:
     
@@ -115,7 +115,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
 
         Ändern Sie dann **Active=TRUE** in **Active=FALSE** in der Zeichenfolge:
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
 3.  Starten Sie den virtuellen Computer neu, um diese Änderungen zu übernehmen.
 
@@ -154,7 +154,7 @@ Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffene
         
         Ändern Sie dann **Active=FALSE** in **Active=TRUE**.
         
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
     3.  Um eine Regel zu deaktivieren, öffnen Sie den folgenden Registrierungsschlüssel:
 
@@ -162,7 +162,7 @@ Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffene
 
         Ändern Sie dann **Active=TRUE** in **Active=FALSE**.
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
 9.  Markieren Sie **BROKENSYSTEM**, und wählen Sie dann **Datei** > **Struktur entladen** im Menü aus.
 

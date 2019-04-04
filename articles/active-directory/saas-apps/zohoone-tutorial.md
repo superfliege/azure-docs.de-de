@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17a297d3099d51b3a58a6654560a67f9a4192a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aadb3188969e099a709711ac18916b67c83b5da1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208315"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Tutorial: Azure Active Directory-Integration mit Zoho One
 
@@ -223,7 +223,7 @@ Damit sich Azure AD-Benutzer bei Zoho One anmelden können, müssen sie in Zoho 
     
     a. Geben Sie im Textfeld **Name** (Name) den Namen des Benutzers ein, z.B. **Britta Simon**.
     
-    b. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
+    b. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. **brittasimon\@contoso.com**.
 
     >[!Note]
     >Wählen Sie aus der Domänenliste Ihre überprüfte Domäne aus.

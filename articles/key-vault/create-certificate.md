@@ -3,7 +3,7 @@ title: Methoden für die Zertifikaterstellung
 description: Möglichkeiten zum Erstellen eines Zertifikats in Key Vault.
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 3258683b950b537dd106323fe95105289034f727
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 53b4d03ac8f5d22595d3a4e840a04583f7ec963d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995519"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -35,7 +35,7 @@ Die folgenden Beschreibungen entsprechen den in Grün nummerierten Schritten im 
 1. Im obigen Diagramm wird von Ihrer Anwendung ein Zertifikat erstellt, das intern mit der Erstellung eines Schlüssels in Ihrem Schlüsselspeicher beginnt.
 2. Key Vault sendet Ihrer Anwendung eine Zertifikatsignieranforderung (Certificate Signing Request, CSR) zurück.
 3. Ihre Anwendung übergibt die CSR an die von Ihnen gewählte Zertifizierungsstelle.
-4. Ihre gewählte Zertifizierungsstelle antwortet mit einem X509-Zertifikat.
+4. Ihre ausgewählte Zertifizierungsstelle antwortet mit einem X.509-Zertifikat.
 5. Ihre Anwendung schließt die Erstellung des neuen Zertifikats durch das Zusammenführen mit dem X509-Zertifikat Ihrer Zertifizierungsstelle ab.
 
 -   **Erstellen eines Zertifikats mit einem bekannten Zertifikataussteller:** Bei dieser Methode müssen Sie einmalig ein Ausstellerobjekt erstellen. Sobald ein Ausstellerobjekt in Ihrem Schlüsselspeicher erstellt wurde, kann in der Richtlinie des KV-Zertifikats auf seinen Namen verwiesen werden. Durch die Anforderung für die Erstellung eines solchen KV-Zertifikats wird ein Schlüsselpaar in Key Vault erstellt. Außerdem wird mit dem Zertifikatausstellerdienst unter Verwendung der Informationen im referenzierten Ausstellerobjekt kommuniziert, um ein x509-Zertifikat zu erhalten. Das x509-Zertifikat wird vom Zertifikatausstellerdienst abgerufen und mit dem Schlüsselpaar zusammengeführt, um die Erstellung des KV-Zertifikats abzuschließen.  
@@ -94,6 +94,6 @@ Beachten Sie, dass bei einer Bestellung beim Zertifikataussteller die x509-Zerti
 
  Autorisierung: Benötigt die Berechtigung für Zertifikate bzw. die Erstellung.
 
- ## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Siehe auch
  - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)
  - [Überwachen und Verwalten der Zertifikaterstellung](create-certificate-scenarios.md)

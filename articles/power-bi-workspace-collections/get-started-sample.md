@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: fdbbfaf4a4c3df90302b0b69e4964b7a073f2fa4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 222c2983d83fe2373159ea542260be7b5a8d8ce5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237959"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885180"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Beispiel für die ersten Schritte mit Power BI-Arbeitsbereichssammlungen
 
@@ -28,7 +28,7 @@ Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern: Diese Ress
 
 * [Beispiel für eine Arbeitsbereichs-Web-App](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [API-Referenz für Power BI-Arbeitsbereichssammlungen](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK ](https://go.microsoft.com/fwlink/?LinkId=746472) (verfügbar über NuGet)
+* [Power BI .NET SDK](https://go.microsoft.com/fwlink/?LinkId=746472) (verfügbar über NuGet)
 * [Beispiel für die Einbettung von JavaScript-Berichten](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Nachdem Sie auf einen Bericht geklickt haben, sieht die Webanwendung **EmbedSamp
 
 ## <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 
-Bei dem Beispiel für **Power BI-Arbeitsbereichssammlungen** handelt es sich um ein Beispiel einer Web-App, das zeigt, wie Sie **Power BI**-Berichte in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model View Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
+Bei dem Beispiel für **Power BI-Arbeitsbereichssammlungen** handelt es sich um ein Beispiel einer Web-App, das zeigt, wie Sie **Power BI**-Berichte in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model View Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](https://www.asp.net/mvc) (Informationen zu ASP.NET).
 
 Der Beispielcode für **Microsoft Power BI-Arbeitsbereichssammlungen** ist wie folgt unterteilt. Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
 
@@ -270,4 +270,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eced1b92aba24c8083cbdc2ece099fab95567db7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Tutorial: Azure Active Directory-Integration in Zscaler Three
 
@@ -159,44 +159,44 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Zscaler Three
 
-9. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler Three-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler Three-Unternehmenswebsite als Administrator an.
 
-10. Navigieren Sie zu **Verwaltung > Authentifizierung > Authentifizierungseinstellungen**, und führen Sie die folgenden Schritte aus:
+1. Navigieren Sie zu **Verwaltung > Authentifizierung > Authentifizierungseinstellungen**, und führen Sie die folgenden Schritte aus:
    
-    ![Verwaltung](./media/zscaler-three-tutorial/ic800206.png "Verwaltung")
+   ![Verwaltung](./media/zscaler-three-tutorial/ic800206.png "Verwaltung")
 
-    a. Wählen Sie **SAML** als Authentifizierungstyp aus.
+   a. Wählen Sie **SAML** als Authentifizierungstyp aus.
 
-    b. Klicken Sie auf **Configure SAML**.
+   b. Klicken Sie auf **Configure SAML**.
 
-11. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
+1. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
             
-    
+   
   ![Benutzer & Authentifizierung verwalten](./media/zscaler-three-tutorial/ic800208.png "Benutzer &amp;amp; Authentifizierung verwalten")
     
-    a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
+   a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
-    b. Geben Sie im Textfeld **Login Name Attribute** (Anmeldenamensattribut) die Zeichenfolge **NameID** ein.
+   b. Geben Sie im Textfeld **Login Name Attribute** (Anmeldenamensattribut) die Zeichenfolge **NameID** ein.
 
-    c. Klicken Sie auf **Upload** (Hochladen), um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal unter **Public SSL Certificate** (Öffentliches SSL-Zertifikat) heruntergeladen haben.
+   c. Klicken Sie auf **Upload** (Hochladen), um das Azure-SAML-Signaturzertifikat hochzuladen, das Sie aus dem Azure-Portal unter **Public SSL Certificate** (Öffentliches SSL-Zertifikat) heruntergeladen haben.
 
-    d. Betätigen Sie den Umschalter **Automatische SAML-Bereitstellung aktivieren**.
+   d. Betätigen Sie den Umschalter **Automatische SAML-Bereitstellung aktivieren**.
 
-    e. Geben Sie im Textfeld **User Display Name Attribute** (Benutzeranzeigenamens-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
+   e. Geben Sie im Textfeld **User Display Name Attribute** (Benutzeranzeigenamens-Attribut) die Zeichenfolge **displayName** ein, wenn Sie die automatische SAML-Bereitstellung für displayName-Attribute aktivieren möchten.
 
-    f. Geben Sie im Textfeld **Group Name Attribute** (Gruppennamensattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
+   f. Geben Sie im Textfeld **Group Name Attribute** (Gruppennamensattribut) die Zeichenfolge **memberOf** ein, wenn Sie die automatische SAML-Bereitstellung für memberOf-Attribute aktivieren möchten.
 
-    g. Geben Sie unter **Department Name Attribute** (Abteilungsnamensattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
+   g. Geben Sie unter **Department Name Attribute** (Abteilungsnamensattribut) die Zeichenfolge **department** ein, wenn Sie die automatische SAML-Bereitstellung für Abteilungsattribute aktivieren möchten.
 
-    i. Klicken Sie auf **Speichern**.
+   i. Klicken Sie auf **Speichern**.
 
-12. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
 
-    ![Verwaltung](./media/zscaler-three-tutorial/ic800207.png)
+   ![Verwaltung](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
+   a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
 
-    b. Klicken Sie auf **Aktivieren**.
+   b. Klicken Sie auf **Aktivieren**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
@@ -247,7 +247,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.

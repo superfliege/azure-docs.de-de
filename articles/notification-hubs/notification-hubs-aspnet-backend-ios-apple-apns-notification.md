@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084411"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -54,7 +54,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 
 2. Fügen Sie in der Datei `Main.storyboard` die im folgenden Screenshot abgebildeten Komponenten aus der Objektbibliothek hinzu.
 
-    ![Storybard in Xcode Interface Builder bearbeiten][1]
+    ![Bearbeiten des Storybards in Xcode Interface Builder][1]
 
    * **Benutzername**: Ein UITextField mit dem Platzhaltertext *Enter Username*, direkt unter der Bezeichnung zum Senden der Ergebnisse und durch den linken und rechten Rand und die Anordnung unter der Bezeichnung zum Senden der Ergebnisse beschränkt.
    * **Kennwort**: Ein UITextField mit dem Platzhaltertext *Enter Password*, direkt unter dem Textfeld „Username“ und durch den linken und rechten Rand und die Anordnung unter dem Textfeld „Username“ beschränkt. Aktivieren Sie die Option **Secure Text Entry** im Attribute Inspector unter *Return Key*.
@@ -64,7 +64,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
    * **APNS:** Bezeichnung und Switch, um das Senden der Benachrichtigung an den Apple Platform Notification Service zu aktivieren.
    * **Recipient Username:** ein UITextField mit dem Platzhaltertext *Recipient username tag*, direkt unter der GCM-Bezeichnung und durch den linken und rechten Rand und die Anordnung unter der GCM-Bezeichnung beschränkt.
 
-    Im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) wurden einige Komponenten hinzugefügt.
+     Im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) wurden einige Komponenten hinzugefügt.
 
 3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu.
 

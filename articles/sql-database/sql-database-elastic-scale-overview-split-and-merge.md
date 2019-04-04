@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 03/12/2019
+ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564934"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901932"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 
@@ -29,7 +29,7 @@ Das Split-Merge-Tool wird als Azure-Webdienst ausgeführt. Ein Administrator ode
 
 ## <a name="download"></a>Download
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentation
 
@@ -136,7 +136,7 @@ Das Split-Merge-Dienstpaket enthält eine Workerrolle und eine Webrolle. Mit der
 
 - **Shard Map**
 
- Der nächste Abschnitt von Anforderungsparametern enthält Informationen zu der Shardzuordnung und der Datenbank, in der Ihre Shardzuordnung gehostet wird. Sie müssen den Namen des Azure SQL-Datenbankservers und der Datenbank, in der die Shard-Zuordnung gehostet wird, die Anmeldeinformationen zum Herstellen einer Verbindung mit der Shard-Zuordnungsdatenbank und schließlich den Namen der Shard-Zuordnung angeben. Der Vorgang akzeptiert momentan nur einen einzigen Satz von Anmeldeinformationen. Diese Anmeldeinformationen müssen über ausreichende Berechtigungen verfügen, um die Shard-Zuordnung und die Benutzerdaten in den Shards ändern zu können.
+  Der nächste Abschnitt von Anforderungsparametern enthält Informationen zu der Shardzuordnung und der Datenbank, in der Ihre Shardzuordnung gehostet wird. Sie müssen den Namen des Azure SQL-Datenbankservers und der Datenbank, in der die Shard-Zuordnung gehostet wird, die Anmeldeinformationen zum Herstellen einer Verbindung mit der Shard-Zuordnungsdatenbank und schließlich den Namen der Shard-Zuordnung angeben. Der Vorgang akzeptiert momentan nur einen einzigen Satz von Anmeldeinformationen. Diese Anmeldeinformationen müssen über ausreichende Berechtigungen verfügen, um die Shard-Zuordnung und die Benutzerdaten in den Shards ändern zu können.
 
 - **Source Range (Split und Merge)**
 
@@ -216,12 +216,16 @@ Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 
 
 ## <a name="deploy-diagnostics"></a>Bereitstellen der Diagnose
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 Führen Sie die folgenden Befehle mit Azure PowerShell aus, um die Überwachung und Diagnose anhand der mit dem NuGet-Paket bereitgestellten Diagnosekonfiguration für die Web- und Workerrolle zu aktivieren:
 
 ```powershell
     $storage_name = "<YourAzureStorageAccount>"
     $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
+    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
     $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
     $service_name = "<YourCloudServiceName>"
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"

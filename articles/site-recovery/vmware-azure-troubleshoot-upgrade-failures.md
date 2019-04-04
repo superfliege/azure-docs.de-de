@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 9423fc844e766129ad81a8a286cb5bbdc722e2ca
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117301"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Behandlung von Problemen beim Upgrade von Microsoft Azure Site Recovery-Anbietern
 
@@ -42,27 +42,27 @@ Gehen Sie folgendermaßen vor, um das Upgrade durchzuführen:
 
 1. Kehren Sie zu dem Ordner zurück, in den Sie das einheitliche Setup heruntergeladen haben, und führen Sie „MicrosoftAzureSiteRecoveryUnifiedSetup.exe“ aus, um das Upgrade abzuschließen. 
 
-## <a name="upgrade-failure-due-to-the-thirdparty-folder-being-renamed"></a>Upgradefehler aufgrund der Umbenennung des Drittanbieterordners
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>Upgradefehler aufgrund der Umbenennung des Drittanbieterordners
 
 Damit das Upgrade erfolgreich ist, darf der Drittanbieterordner nicht umbenannt werden.
 
 So lösen Sie das Problem:
 
-2. Starten Sie den Registrierungs-Editor (regedit.exe), und öffnen Sie den Zweig HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
-3. Untersuchen Sie den `Build_Version`-Schlüsselwert. Wenn es auf die neueste Version festgelegt ist, reduzieren Sie die Versionsnummer. Wenn beispielsweise die neueste Version 9.22.\* ist und der Schlüssel `Build_Version` auf diesen Wert festgelegt ist, reduzieren Sie ihn auf 9.21.\*.
-4. Laden Sie das neueste einheitliche Setup für Microsoft Azure Site Recovery herunter:
+1. Starten Sie den Registrierungs-Editor (regedit.exe), und öffnen Sie den Zweig HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Untersuchen Sie den `Build_Version`-Schlüsselwert. Wenn es auf die neueste Version festgelegt ist, reduzieren Sie die Versionsnummer. Wenn beispielsweise die neueste Version 9.22.\* ist und der Schlüssel `Build_Version` auf diesen Wert festgelegt ist, reduzieren Sie ihn auf 9.21.\*.
+1. Laden Sie das neueste einheitliche Setup für Microsoft Azure Site Recovery herunter:
    1. Wählen Sie im Abschnitt „Links zu aktuell unterstützten Updaterollups“ des Artikels [Dienstupdates in Azure Site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) den Anbieter aus, auf den Sie aktualisieren möchten.
    2. Suchen Sie auf der Rollupseite den Abschnitt **Updateinformationen**, und laden Sie das Updaterollup für das einheitliche Setup für Microsoft Azure Site Recovery herunter.
-5. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zu dem Ordner, in den Sie die Datei für das einheitliche Setup heruntergeladen haben. Anschließend extrahieren Sie die Setupdateien aus dem Download mit dem folgenden Befehl: MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;Verzeichnispfad für die extrahierten Dateien&gt;.
+1. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zu dem Ordner, in den Sie die Datei für das einheitliche Setup heruntergeladen haben. Anschließend extrahieren Sie die Setupdateien aus dem Download mit dem folgenden Befehl: MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;Verzeichnispfad für die extrahierten Dateien&gt;.
 
     Beispielbefehl:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
-4. Navigieren Sie in der Eingabeaufforderung zu dem Ordner, in den Sie die Dateien extrahiert haben, und führen Sie die folgenden Installationsbefehle aus:
+1. Navigieren Sie in der Eingabeaufforderung zu dem Ordner, in den Sie die Dateien extrahiert haben, und führen Sie die folgenden Installationsbefehle aus:
    
     CX_THIRDPARTY_SETUP.EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 
-5. Verwenden Sie den Task-Manager, um den Fortschritt der Installation zu überwachen. Wenn der Prozess für CX_THIRDPARTY_SETUP.EXE im Task-Manager nicht mehr sichtbar ist, fahren Sie mit dem nächsten Schritt fort.
-6. Stellen Sie sicher, dass „C:\thirdparty“ existiert und dass der Ordner die RRD-Bibliotheken enthält.
+1. Verwenden Sie den Task-Manager, um den Fortschritt der Installation zu überwachen. Wenn der Prozess für CX_THIRDPARTY_SETUP.EXE im Task-Manager nicht mehr sichtbar ist, fahren Sie mit dem nächsten Schritt fort.
+1. Stellen Sie sicher, dass „C:\thirdparty“ existiert und dass der Ordner die RRD-Bibliotheken enthält.
 1. Kehren Sie zu dem Ordner zurück, in den Sie das einheitliche Setup heruntergeladen haben, und führen Sie „MicrosoftAzureSiteRecoveryUnifiedSetup.exe“ aus, um das Upgrade abzuschließen. 

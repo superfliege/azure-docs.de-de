@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125041"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -74,8 +74,8 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
-In einem zukünftigen Release können Sie Ihre persönlichen Werte für **-Publisher**, **-Offer** und **-Sku** verwenden, um eine Imagedefinition zu suchen und anzugeben. Anschließend erstellen Sie einen virtuellen Computer mit der neuesten Imageversion aus der entsprechenden Imagedefinition. Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
+### <a name="using-publisher-offer-and-sku"></a>Verwenden von Herausgeber, Angebot und SKU 
+Kunden, die die Implementierung von freigegebenen Images planen, können **in einem zukünftigen Release** ihre persönlichen Werte für **-Publisher**, **-Offer** und **-Sku** verwenden, um eine Imagedefinition zu suchen und anzugeben. Anschließend erstellen sie einen virtuellen Computer mit der neuesten Imageversion aus der entsprechenden Imagedefinition. Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
 
 |Imagedefinition|Herausgeber|Angebot|Sku|
 |---|---|---|---|
@@ -83,10 +83,9 @@ In einem zukünftigen Release können Sie Ihre persönlichen Werte für **-Publi
 |myImage2|myPublisher|standardOffer|mySku|
 |myImage3|Testen|standardOffer|testSku|
 
-Alle drei verfügen über eindeutige Sätze von Werten. In einem zukünftigen Release können Sie diese Werte auch kombinieren, um die neueste Version eines bestimmtes Images anzufordern. 
+Alle drei verfügen über eindeutige Sätze von Werten. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei. **In einem zukünftigen Release** können Sie diese Werte auch kombinieren, um die neueste Version eines bestimmtes Images anzufordern. **Dies funktioniert nicht im aktuellen Release**, wird aber in Zukunft verfügbar sein. Bei der Veröffentlichung sollte die folgende Syntax verwendet werden, um das Quellimage als *myImage1* gemäß der Tabelle oben festzulegen.
 
 ```powershell
-# The following should set the source image as myImage1 from the table above
 $vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
@@ -94,9 +93,9 @@ $vmConfig = Set-AzVMSourceImage `
    -Skus mySku 
 ```
 
-Die Vorgehensweise ähnelt der für die Angabe von [Azure Marketplace-Images](../articles/virtual-machines/windows/cli-ps-findimage.md) zum Erstellen eines virtuellen Computers. Aus diesem Grund benötigt jede Imagedefinition einen eindeutigen Satz dieser Werte. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei. 
+Dieser Vorgang ist ähnlich der Weise, in der Sie aktuell Herausgeber, Angebot und SKU für [Azure Marketplace-Images](../articles/virtual-machines/windows/cli-ps-findimage.md) angeben können, um die neueste Version eines Marketplace-Images abzurufen. Aus diesem Grund benötigt jede Imagedefinition einen eindeutigen Satz dieser Werte.  
 
-##<a name="create-an-image-version"></a>Erstellen einer Imageversion
+## <a name="create-an-image-version"></a>Erstellen einer Imageversion
 
 Erstellen Sie mit [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion aus einem verwalteten Image. In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert.
 

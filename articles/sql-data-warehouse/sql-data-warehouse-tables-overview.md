@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1073e1b4ad38c4b05c9195cf4ea16ade7416fbce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133406"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Entwerfen von Tabellen in Azure SQL Data Warehouse
 
@@ -32,20 +32,18 @@ In einem [Sternschema](https://en.wikipedia.org/wiki/Star_schema) werden Daten i
 - **Integrationstabellen** werden für das Integrieren oder Staging von Daten verwendet. Sie können eine Integrationstabelle als normale Tabelle, externe Tabelle oder temporäre Tabelle erstellen. Sie können z. B. Daten in eine Stagingtabelle laden, Transformationen für die Daten in der Stagingumgebung durchführen und die Daten dann in eine Produktionstabelle einfügen.
 
 ## <a name="schema-and-table-names"></a>Schema und Tabellennamen
-In SQL Data Warehouse ist ein Data Warehouse ist ein Datenbanktyp. Alle Tabellen im Data Warehouse sind in der gleichen Datenbank enthalten.  Das Verknüpfen von Tabellen über mehrere Data Warehouses ist nicht möglich. Dieses Verhalten unterscheidet sich von SQL Server, wo datenbankübergreifende Joins unterstützt werden. 
-
-In einer SQL Server-Datenbank können Sie „fact“, „dim“ oder „integrate“ für Schemanamen verwenden. Wenn Sie eine SQL Server-Datenbank nach SQL Data Warehouse migrieren, migrieren Sie am besten alle Fakten-, Dimensions- und Integrationstabellen in ein Schema in SQL Data Warehouse. Sie können z.B. alle Tabellen im Data Warehouse-Beispiel [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) in einem Schema namens „wwi“ speichern. Mit dem folgenden Code wird ein [benutzerdefiniertes Schema](/sql/t-sql/statements/create-schema-transact-sql) mit dem Namen „wwi“ erstellt.
+Schemas eignen sich gut für das Gruppieren von Tabellen, die auf ähnliche Weise verwendet werden.  Wenn Sie mehrere Datenbanken aus einer lokalen Lösung zu SQL Data Warehouse migrieren, migrieren Sie am besten alle Fakten-, Dimensions- und Integrationstabellen in ein Schema in SQL Data Warehouse. Sie können z.B. alle Tabellen im Data Warehouse-Beispiel [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) in einem Schema namens „wwi“ speichern. Mit dem folgenden Code wird ein [benutzerdefiniertes Schema](/sql/t-sql/statements/create-schema-transact-sql) mit dem Namen „wwi“ erstellt.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-Um die Organisation der Tabellen in SQL Data Warehouse anzuzeigen, können Sie „fact“, „dim“ und „int“ als Präfixe für die Tabellennamen verwenden. Die folgende Tabelle zeigt einige der Schema- und Tabellennamen für „WideWorldImportersDW“. Die Namen in SQL Server und SQL Data Warehouse werden miteinander verglichen. 
+Um die Organisation der Tabellen in SQL Data Warehouse anzuzeigen, können Sie „fact“, „dim“ und „int“ als Präfixe für die Tabellennamen verwenden. Die folgende Tabelle zeigt einige der Schema- und Tabellennamen für „WideWorldImportersDW“.  
 
-| WideWorldImportersDW table  | Table type | SQL Server | SQL Data Warehouse |
+| WideWorldImportersDW table  | Table type | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| City | Dimension | Dimension.City | wwi.DimCity |
-| Reihenfolge | Fakt | Fact.Order | wwi.FactOrder |
+| City | Dimension | wwi.DimCity |
+| Reihenfolge | Fakt | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Tabellenpersistenz 
@@ -61,19 +59,19 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ```
 
 ### <a name="temporary-table"></a>Temporäre Tabelle
-Eine temporäre Tabelle ist nur für die Dauer der Sitzung vorhanden. Sie können eine temporäre Tabelle verwenden, um zu verhindern, dass andere Benutzer temporäre Ergebnisse sehen, und um die Notwendigkeit von Bereinigungen zu reduzieren.  Da temporäre Tabellen auch lokalen Speicher nutzen, bieten Sie für einige Vorgänge eine schnellere Leistung.  Weitere Informationen finden Sie unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md).
+Eine temporäre Tabelle ist nur für die Dauer der Sitzung vorhanden. Sie können eine temporäre Tabelle verwenden, um zu verhindern, dass andere Benutzer temporäre Ergebnisse sehen, und um die Notwendigkeit von Bereinigungen zu reduzieren.  Temporäre Tabellen nutzen lokalen Speicher, um eine höhere Leistung bereitzustellen.  Weitere Informationen finden Sie unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Externe Tabelle
 Eine externe Tabelle verweist auf Daten in Azure Storage Blob oder Azure Data Lake Store. Bei Verwendung in Verbindung mit der CREATE TABLE AS SELECT-Anweisung werden aus einer externen Tabelle ausgewählte Daten in SQL Data Warehouse importiert. Externe Tabellen eignen sich daher zum Laden von Daten. Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Datentypen
-SQL Data Warehouse unterstützt die gängigsten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung im [CREATE TABLE-Verweis im Abschnitt „Datentypen“](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes). Durch Minimieren die Größe von Datentypen wird die Abfrageleistung verbessert. Eine Anleitung zur Verwendung der Datentypen finden Sie unter [Datentypen](sql-data-warehouse-tables-data-types.md).
+SQL Data Warehouse unterstützt die gängigsten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung im [CREATE TABLE-Verweis im Abschnitt „Datentypen“](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes). Eine Anleitung zur Verwendung der Datentypen finden Sie unter [Datentypen](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Verteilte Tabellen
-Ein grundlegendes Feature von SQL Data Warehouse ist die Art und Weise, wie Tabellen über 60 [Verteilungen](massively-parallel-processing-mpp-architecture.md#distributions) hinweg gespeichert und ausgeführt werden können.  Die Tabellen werden mithilfe der Roundrobin-, Hash- oder Replikationsmethode verteilt.
+Ein grundlegendes Feature von SQL Data Warehouse ist die Art und Weise, wie Tabellen über [Verteilungen](massively-parallel-processing-mpp-architecture.md#distributions) hinweg gespeichert und ausgeführt werden können.  SQL Data Warehouse unterstützt drei Verfahren für die Verteilung der Daten: Roundrobin (Standard), Hash und repliziert.
 
 ### <a name="hash-distributed-tables"></a>Tabellen mit Hashverteilung
-Die Hashverteilung verteilt die Zeilen auf Basis des Werts in der Verteilungsspalte. Die Tabelle mit Hashverteilung ist für eine hohe Leistung bei Abfragejoins für große Tabellen ausgelegt. Es gibt mehrere Faktoren, die die Auswahl der Verteilungsspalte beeinflussen. 
+Bei einer Hashverteilung werden die Tabellenzeilen auf Basis des Werts in der Verteilungsspalte verteilt. Eine Tabelle mit Hashverteilung ist für eine hohe Leistung bei Abfragen an große Tabellen ausgelegt. Bei der Auswahl der Verteilungsspalte müssen mehrere Faktoren berücksichtigt werden. 
 
 Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).
 
@@ -87,7 +85,6 @@ Bei einer Roundrobintabelle werden die Tabellenzeilen gleichmäßig auf alle Ver
 
 Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).
 
-
 ### <a name="common-distribution-methods-for-tables"></a>Allgemeine Verteilungsmethoden für Tabellen
 Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tabelle ausgewählt wird. 
 
@@ -95,18 +92,22 @@ Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tab
 |:---------------|:--------------------|
 | Fakt           | Verwenden Sie die Hashverteilung mit gruppiertem Columnstore-Index. Die Leistung wird verbessert, wenn zwei Hashtabellen über die gleiche Verteilungsspalte verknüpft sind. |
 | Dimension      | Verwenden Sie bei kleineren Tabellen die Replikation. Wenn Tabellen zu groß sind, um sie auf jedem Serverknoten zu speichern, verwenden Sie die Hashverteilung. |
-| Staging        | Verwenden Sie für die Stagingtabelle das Roundrobinprinzip. Das Laden lässt sich mit CTAS beschleunigen. Sobald sich die Daten in der Stagingtabelle befinden, verwenden Sie INSERT...SELECT, um die Daten in eine Produktionstabelle zu verschieben. |
+| Staging        | Verwenden Sie für die Stagingtabelle das Roundrobinprinzip. Das Laden lässt sich mit CTAS beschleunigen. Wenn sich die Daten in der Stagingtabelle befinden, verwenden Sie INSERT...SELECT, um die Daten in Produktionstabellen zu verschieben. |
 
 ## <a name="table-partitions"></a>Tabellenpartitionen
-In einer partitionierten Tabelle werden die Tabellenzeilen nach Datenbereichen gespeichert und Vorgänge entsprechend ausgeführt. Beispielsweise könnte eine Tabelle nach Tag, Monat oder Jahr partitioniert werden. Sie können die Abfrageleistung durch eine Partitionsbeseitigung verbessern, wobei ein Abfragescan auf Daten in einer Partition begrenzt wird. Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten in SQL Data Warehouse bereits verteilt sind, können zu viele Partitionen die Abfrageleistung beeinträchtigen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
+In einer partitionierten Tabelle werden die Tabellenzeilen nach Datenbereichen gespeichert und Vorgänge entsprechend ausgeführt. Beispielsweise könnte eine Tabelle nach Tag, Monat oder Jahr partitioniert werden. Sie können die Abfrageleistung durch eine Partitionsbeseitigung verbessern, wobei ein Abfragescan auf Daten in einer Partition begrenzt wird. Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten in SQL Data Warehouse bereits verteilt sind, können zu viele Partitionen die Abfrageleistung beeinträchtigen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).  Beim Wechseln der Partitionen zu Tabellenpartitionen, die nicht leer sind, sollten Sie die Option TRUNCATE_TARGET in Ihrer [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)-Anweisung in Erwägung ziehen, wenn die vorhandenen Daten abgeschnitten werden sollen. Der folgende Code fügt die transformierten Tagesdaten in SalesFact ein und überschreibt alle vorhandenen Daten. 
+
+```sql
+ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
+```
 
 ## <a name="columnstore-indexes"></a>ColumnStore-Indizes
-Standardmäßig speichert SQL Data Warehouse eine Tabelle als gruppierten Columnstore-Index. Mit dieser Form der Datenspeicherung wird eine hohe Datenkomprimierung und Abfrageleistung für große Tabellen erreicht.  Der gruppierte Columnstore-Index ist in der Regel die beste Wahl, aber in einigen Fällen ist ein gruppierter Index oder ein Heap die geeignete Speicherstruktur.
+Standardmäßig speichert SQL Data Warehouse eine Tabelle als gruppierten Columnstore-Index. Mit dieser Form der Datenspeicherung wird eine hohe Datenkomprimierung und Abfrageleistung für große Tabellen erreicht.  Der gruppierte Columnstore-Index ist in der Regel die beste Wahl, aber in einigen Fällen ist ein gruppierter Index oder ein Heap die geeignete Speicherstruktur.  Eine Heaptabelle kann besonders für das Laden flüchtiger Daten hilfreich sind, z. B. für eine Stagingtabelle, die in eine endgültige Tabelle transformiert wird.
 
 Eine Liste der Columnstore-Funktionen finden Sie unter [Columnstore-Indizes – Neuigkeiten](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Informationen zum Verbessern der Leistung von Columnstore-Indizes finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistiken
-Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, Statistiken für einzelne Spalten zu erstellen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Die Erstellung und die Aktualisierung von Statistiken werden nicht automatisch ausgeführt. [Erstellen Sie Statistiken](/sql/t-sql/statements/create-statistics-transact-sql), nachdem eine Tabelle erstellt wurde. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
+Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, über Statistiken für einzelne Spalten zu verfügen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Das [Erstellen von Statistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics) erfolgt automatisch.  Die Aktualisierung der Statistiken wird jedoch nicht automatisch ausgeführt. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="commands-for-creating-tables"></a>Befehle zum Erstellen von Tabellen
 Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Sie eine Tabelle erstellen und mit den Ergebnissen einer SELECT-Anweisung füllen. Es folgen die T-SQL-Befehle zum Erstellen einer Tabelle.

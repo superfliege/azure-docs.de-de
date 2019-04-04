@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder Benutzer mit Zugriff auf eine Anwendung mit Azure AD | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Mitglieder einer Gruppe oder Benutzer mit Zugriff auf eine Anwendung erstellen.
+title: Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen in Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder Anwendungszugriff betreffende Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen erstellen.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/15/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1616230e3cad765246bcf03d59fb517c99d9b044
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c17078ea14a254f64a41751f2efffc16e2a1e821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176916"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847381"
 ---
-# <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen in Azure AD-Zugriffsüberprüfungen
 
 Der Zugriff auf Gruppen und Anwendungen für Mitarbeiter und Gäste ändert sich im Laufe der Zeit. Zur Senkung der Risiken im Zusammenhang mit veralteten Zugriffszuweisungen können Administratoren mithilfe von Azure Active Directory (Azure AD) Zugriffsüberprüfungen für Gruppenmitglieder oder Anwendungszugriff erstellen. Für eine routinemäßige Überprüfung können bei Bedarf auch wiederkehrende Zugriffsüberprüfungen erstellt werden. Weitere Informationen zu diesen Szenarien finden Sie unter [Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-user-access-with-access-reviews.md) sowie unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-guest-access-with-access-reviews.md).
 
-In diesem Artikel wird die Erstellung einer neuen Zugriffsüberprüfung für Gruppenmitglieder oder Anwendungszugriff beschrieben.
+In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfungen für Gruppenmitglieder oder Anwendungszugriff beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Aktivierte Zugriffsüberprüfungen](access-reviews-overview.md)
-- Globaler Administrator oder Kontoadministrator
+- Globaler Administrator oder Benutzeradministrator
 
-## <a name="create-an-access-review"></a>Erstellen einer Zugriffsüberprüfung
+## <a name="create-one-or-more-access-reviews"></a>Erstellen einer oder mehrerer Zugriffsüberprüfungen
 
 1. Melden Sie sich beim Azure-Portal an, und öffnen Sie die Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
@@ -53,11 +53,25 @@ In diesem Artikel wird die Erstellung einer neuen Zugriffsüberprüfung für Gru
 
 1. Soll die Zugriffsüberprüfung wiederholt ausgeführt werden, ändern Sie die **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**, **Vierteljährlich** oder **Jährlich**. Verwenden Sie den Schieberegler **Dauer** oder das Textfeld, um die Anzahl von Tagen anzugeben, an denen jeweils Eingaben der Prüfer in den einzelnen periodischen Überprüfungen in der Serie möglich sind. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
 
-1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzerkontoadministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie in unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
+1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
 1. Geben Sie im Abschnitt **Benutzer** die Benutzer an, für die die Zugriffsüberprüfung gelten soll. Zugriffsüberprüfungen können für die Mitglieder einer Gruppe oder für Benutzer erfolgen, die einer Anwendung zugewiesen wurden. Sie können die Zugriffsüberprüfung weiter anpassen, um nur die Gastbenutzer zu überprüfen, die Mitglieder (oder der Anwendung zugewiesen) sind, anstatt alle Benutzer zu überprüfen, die Mitglieder sind oder Zugriff auf die Anwendung haben.
 
     ![Erstellen einer Zugriffsüberprüfung – Benutzer](./media/create-access-review/users.png)
+
+1. Wählen Sie im Abschnitt **Gruppen** eine oder mehrere Gruppen aus, deren Mitgliedschaft überprüft werden soll.
+
+    > [!NOTE]
+    > Bei der Auswahl mehrerer Gruppen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Gruppen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
+    
+    ![Erstellen einer Zugriffsüberprüfung – Gruppe auswählen](./media/create-access-review/select-group.png)
+
+1. Wählen Sie im Abschnitt **Anwendungen** (wenn Sie in Schritt 8 **Zugewiesen zu einer Anwendung** ausgewählt haben) die Anwendungen aus, für die Sie den Zugriff überprüfen möchten.
+
+    > [!NOTE]
+    > Bei der Auswahl mehrerer Anwendungen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Anwendungen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
+    
+    ![Erstellen einer Zugriffsüberprüfung – Anwendung auswählen](./media/create-access-review/select-application.png)
 
 1. Wählen Sie im Abschnitt **Prüfer** mindestens eine Person für die Überprüfung aller Benutzer des Bereichs aus. Alternativ können Sie auswählen, dass die Mitglieder ihren eigenen Zugriff überprüfen. Wenn es sich bei der Ressource um eine Gruppe handelt, können Sie die Gruppenbesitzer um die Überprüfung bitten. Sie können auch festlegen, dass die Prüfer einen Grund angeben müssen, wenn sie den Zugriff genehmigen.
 
@@ -100,7 +114,7 @@ In diesem Artikel wird die Erstellung einer neuen Zugriffsüberprüfung für Gru
 
 Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**.
 
-Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Überprüfen des Zugriffs mit der Azure AD-Zugriffsüberprüfung](perform-access-review.md) anzeigen. Falls Ihre Überprüfung für Gäste gedacht ist, die ihren eigenen Zugriff überprüfen sollen, können Sie ihnen die Anweisungen zum [Überprüfen des eigenen Zugriffs mit der Azure AD-Zugriffsüberprüfung](perform-access-review.md) anzeigen.
+Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md) anzeigen. Wenn Ihre Überprüfung für Gäste gedacht ist, die ihren eigenen Zugriff überprüfen sollen, können Sie ihnen die Anweisungen zum [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen ](review-your-access.md) anzeigen.
 
 Wenn es sich bei einigen Prüfern um Gäste handelt: Gäste werden nur dann per E-Mail benachrichtigt, wenn sie die Einladung bereits angenommen haben.
 
@@ -108,7 +122,7 @@ Wenn es sich bei einigen Prüfern um Gäste handelt: Gäste werden nur dann per 
 
 Sie können den Fortschritt der Überprüfungen durch die Prüfer im Azure AD-Dashboard im Abschnitt **Zugriffsüberprüfungen** nachverfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die [Überprüfung abgeschlossen](complete-access-review.md) ist.
 
-Einmalige Überprüfung: Führen Sie nach Ablauf des Zugriffsüberprüfungszeitraums oder nach Anhalten der Zugriffsüberprüfung durch den Administrator die Schritte unter [Abschließen einer Zugriffsüberprüfung](complete-access-review.md) aus, um die Ergebnisse anzuzeigen und anzuwenden.  
+Einmalige Überprüfung: Führen Sie nach Ablauf des Zugriffsüberprüfungszeitraums oder nach Beenden der Zugriffsüberprüfung durch den Administrator die Schritte unter [Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung](complete-access-review.md) aus, um die Ergebnisse anzuzeigen und anzuwenden.  
 
 Um eine Serie von Zugriffsüberprüfungen zu verwalten, navigieren Sie unter **Steuerelemente** zu der Zugriffsüberprüfung. Unter „Geplante Überprüfung“ finden Sie anstehende Überprüfungen. Hier können Sie das Enddatum bearbeiten oder Prüfer entsprechend hinzufügen/entfernen. 
 
@@ -120,5 +134,6 @@ Zugriffsüberprüfungen können auch unter Verwendung von APIs erstellt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen](perform-access-review.md)
-- [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md)
+- [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md)
+- [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen](review-your-access.md)
+- [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)

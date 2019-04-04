@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 4a7e3e9ff414c8f7ba1c49924f1d8659d72ae3e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c52565403c7fbc80eacbf65428863db07d634030
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158209"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897281"
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
 Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung in Entwicklerportalvorlagen.  
@@ -459,7 +459,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebAuthenticationUserIsNotConfirm|Please confirm your registration before attempting to sign in. (Bestätigen Sie Ihre Registrierung, bevor Sie versuchen, sich anzumelden.)|  
 |WebAuthenticationInvalidEmailFormated|E-Mail-Adresse ist ungültig: {0}|  
 |WebAuthenticationUserNotFound|User not found (Benutzer wurde nicht gefunden)|  
-|WebAuthenticationTenantNotRegistered|Your account belongs to a Azure Active Directory tenant which is not authorized to access this portal. (Ihr Konto gehört zu einem Azure Active Directory-Mandanten, der nicht berechtigt ist, auf dieses Portal zuzugreifen.)|  
+|WebAuthenticationTenantNotRegistered|Ihr Konto gehört zu einem Azure Active Directory-Mandanten, der für den Zugriff auf dieses Portal nicht autorisiert ist.|  
 |WebAuthenticationAuthenticationFailed|Authentication has failed. (Fehler bei der Authentifizierung.)|  
 |WebAuthenticationGooglePlusNotEnabled|Authentication has failed. (Fehler bei der Authentifizierung.) If you authorized the application then please contact the admin to make sure that Google authentication is configured correctly. (Falls Sie die Anwendung autorisiert haben, sollten Sie sich an den Administrator wenden, um sicherzustellen, dass die Google-Authentifizierung richtig konfiguriert ist.)|  
 |ValidationErrorAllowedTenantIsRequired|Allowed Tenant is required („Zulässiger Mandant“ ist erforderlich)|  

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: aab0e5eab0edcbc0a26b673730f9fef5a5b01fde
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122723"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902000"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10
 
@@ -41,7 +41,7 @@ Die Herausforderung bei der Implementierung des Offlinemodus ist folgende:
 * MP4 wird von vielen Playern und Encodertools unterstützt, bietet aber keine Verbindung zwischen MP4-Container und DRM.
 * Auf lange Sicht ist CFF mit CENC die beste Wahl. Allerdings ist das Ökosystem zur Unterstützung von Tools und Playern derzeit noch nicht vorhanden. Wir brauchen aber heute eine Lösung.
  
-Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](http://go.microsoft.com/?linkid=9682897)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
+Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](https://go.microsoft.com/?linkid=9682897)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
 
 Es gibt zwei Möglichkeiten, die mit PlayReady geschützte MP4-Datei für den progressiven Download bereitzustellen:
 
@@ -57,12 +57,12 @@ Nachstehend finden Sie zwei Sätze von Testmedienobjekten, von denen das erste d
 
 Medienobjekt 1:
 
-* URL für progressiven Download: [http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
 * PlayReady LA-URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
 Medienobjekt 2:
 
-* URL für progressiven Download: [http://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA-URL (lokal): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 Zum Testen der Wiedergabe haben wir eine universelle Windows-Anwendung unter Windows 10 verwendet. Unter [Windows 10 Universal Sample](https://github.com/Microsoft/Windows-universal-samples) auf GitHub finden Sie ein einfaches Beispiel für einen Player namens [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Alles, was wir tun müssen, ist, den Code hinzuzufügen, damit wir das heruntergeladene Video auswählen und es anstelle der adaptiven Streamingquelle als Quelle verwenden können. Die Änderungen befinden sich im Ereignishandler für das Schaltflächenklickereignis.

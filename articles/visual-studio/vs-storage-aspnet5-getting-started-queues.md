@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 237294c1bc603402c349f7a56f20c34ed8d210fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8a91614e7dfb804e6a902967ce60f898ed0e54ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42139957"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999768"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 
@@ -27,7 +27,7 @@ Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure Queu
 
 Der Azure-Warteschlangenspeicher ist ein Dienst zum Speichern einer großen Anzahl von Nachrichten, auf die weltweit mit authentifizierten Aufrufen mithilfe von HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 Kilobytes (KB) groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt. Details zum programmgesteuerten Bearbeiten von Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
-Erstellen Sie zuerst eine Azure-Warteschlange in Ihrem Speicherkonto. In diesem Artikel wird dann beschrieben, wie Sie eine Warteschlange in C# erstellen und grundlegende Warteschlangenvorgänge durchführen, z.B. Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten.  Im Code wird die Azure Storage-Clientbibliothek für .NET verwendet. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
+Erstellen Sie zuerst eine Azure-Warteschlange in Ihrem Speicherkonto. In diesem Artikel wird dann beschrieben, wie Sie eine Warteschlange in C# erstellen und grundlegende Warteschlangenvorgänge durchführen, z.B. Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten.  Im Code wird die Azure Storage-Clientbibliothek für .NET verwendet. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](https://www.asp.net).
 
 Einige Azure Storage-APIs sind asynchron, und im Code in diesem Artikel wird vorausgesetzt, dass asynchrone Methoden verwendet werden. Weitere Informationen finden Sie unter [Asynchrone Programmierung](https://docs.microsoft.com/dotnet/csharp/async).
 
@@ -66,7 +66,7 @@ Fügen Sie in jeder C#-Quelldatei, in der auf Azure Queue Storage zugegriffen wi
 
 ### <a name="create-a-queue-in-code"></a>Erstellen einer Warteschlange in Code
 
-Rufen Sie zum Erstellen der Azure-Warteschlange im Code „CreateIfNotExistsAsync“ auf:
+Rufen Sie zum Erstellen der Azure-Warteschlange im Code `CreateIfNotExistsAsync` auf:
 
 ```cs
 // Create the CloudQueue if it does not exist.

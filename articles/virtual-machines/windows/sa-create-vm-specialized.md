@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3465a891d91bc54bfe39b9501a7ad0e970932860
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309623"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086801"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 
@@ -212,10 +212,10 @@ Erstellen Sie das vNet und das Subnetz des [virtuellen Netzwerks](../../virtual-
     $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
-Damit Sie sich über RDP bei Ihrem virtuellen Computer anmelden können, benötigen Sie eine Sicherheitsregel, die RDP-Zugriff auf Port 3389 zulässt. Da die VHD für den neuen virtuellen Computer aus einer vorhandenen spezialisierten VM erstellt wurde, können Sie nach dem Erstellen des virtuellen Computers ein vorhandenes Konto des virtuellen Quellcomputers verwenden, der über die Berechtigung zum Anmelden über RDP verfügte.
-Dieser Vorgang muss abgeschlossen werden, bevor die Netzwerkschnittstelle erstellt wird, die dem virtuellen Computer zugewiesen wird.  
-In diesem Beispiel wird der Name der Netzwerksicherheitsgruppe auf **myNsg** und der Name der RDP-Regel auf **myRdpRule** festgelegt.
+   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
+   Damit Sie sich über RDP bei Ihrem virtuellen Computer anmelden können, benötigen Sie eine Sicherheitsregel, die RDP-Zugriff auf Port 3389 zulässt. Da die VHD für den neuen virtuellen Computer aus einer vorhandenen spezialisierten VM erstellt wurde, können Sie nach dem Erstellen des virtuellen Computers ein vorhandenes Konto des virtuellen Quellcomputers verwenden, der über die Berechtigung zum Anmelden über RDP verfügte.
+   Dieser Vorgang muss abgeschlossen werden, bevor die Netzwerkschnittstelle erstellt wird, die dem virtuellen Computer zugewiesen wird.  
+   In diesem Beispiel wird der Name der Netzwerksicherheitsgruppe auf **myNsg** und der Name der RDP-Regel auf **myRdpRule** festgelegt.
 
 ```powershell
 $nsgName = "myNsg"
@@ -271,7 +271,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. Fügen Sie den Betriebssystemdatenträger hinzu. In diesem Beispiel wird beim Erstellen des Betriebssystem-Datenträgers der Begriff „osDisk“ dem Namen des virtuellen Computers angefügt, um den Namen des Betriebssystem-Datenträgers zu erstellen. In diesem Beispiel wird auch angegeben, dass diese Windows-basierte VHD dem virtuellen Computer als Betriebssystem-Datenträger angefügt werden soll.
+2. Fügen Sie den Betriebssystemdatenträger hinzu. In diesem Beispiel wird beim Erstellen des Betriebssystem-Datenträgers der Name des Betriebssystem-Datenträgers durch Anfügen des Begriffs „osDisk“ an den Namen des virtuellen Computers erstellt. In diesem Beispiel wird auch angegeben, dass diese Windows-basierte VHD dem virtuellen Computer als Betriebssystem-Datenträger angefügt werden soll.
     
     ```powershell
     $osDiskName = $vmName + "osDisk"

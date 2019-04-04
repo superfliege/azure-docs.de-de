@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313091"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994387"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -106,7 +106,7 @@ Beim Hosten von Azure Cache for Redis in einem VNET werden die in den folgenden 
 
 Es liegen Anforderungen für sieben ausgehende Ports vor.
 
-- Gegebenenfalls können alle ausgehenden Verbindungen mit dem Internet über das lokale Überwachungsgerät eines Clients hergestellt werden.
+- Alle ausgehenden Verbindungen mit dem Internet können über das lokale Überwachungsgerät eines Clients hergestellt werden.
 - Über drei dieser Ports wird Datenverkehr an Azure-Endpunkte für Azure Storage und Azure DNS weitergeleitet.
 - Die restlichen Ports sind Portbereiche und werden für die interne Kommunikation im Redis-Subnetz verwendet. Für die interne Kommunikation im Redis-Subnetz müssen keine NSG-Regeln für das Subnetz definiert werden.
 

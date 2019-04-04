@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 777d5cb9449bcf9424e2514b2b8f90a9ca6c479c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994625"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Das Herstellen einer Remoteverbindung mit einem virtuellen Windows 10- oder Windows Server 2016-Computer in Azure ist aufgrund von „netvsc.sys“ nicht möglich.
 
@@ -26,9 +26,9 @@ In diesem Artikel wird die Behebung eines Problems erläutert, aufgrund dessen k
 
 ## <a name="symptoms"></a>Symptome
 
-Sie können per Remotedesktopprotokoll (RDP) keine Verbindung mit einem virtuellen Azure-Computer unter Windows 10 oder Windows Server 2016 herstellen. In der [Startdiagnose](boot-diagnostics.md) wird ein rotes Kreuz auf dem Netzwerkadapter angezeigt. Damit wird angegeben, dass für den virtuellen Computer nach dem vollständigen Laden des Betriebssystems keine Verbindung besteht.
+Sie können per Remotedesktopprotokoll (RDP) keine Verbindung mit einem virtuellen Azure-Computer unter Windows 10 oder Windows Server 2016 herstellen. In der [Startdiagnose](boot-diagnostics.md) wird ein rotes Kreuz auf dem Netzwerkadapter angezeigt. Damit wird angegeben, dass für den virtuellen Computer nach dem vollständigen Laden des Betriebssystems keine Verbindung besteht.
 
-Dieses Problem tritt in der Regel in [Build 14393](http://support.microsoft.com/help/4093120/) und [Build 15063](http://support.microsoft.com/help/4015583/) von Windows auf. Besitzen Sie eine höhere Betriebssystemversion, gilt dieser Artikel nicht für Ihr Szenario. Öffnen Sie zum Überprüfen der Version Ihres Systems eine CMD-Sitzung in der [seriellen Zugriffskonsole](serial-console-windows.md), und führen Sie **Ver** aus.
+Dieses Problem tritt in der Regel in [Build 14393](https://support.microsoft.com/help/4093120/) und [Build 15063](https://support.microsoft.com/help/4015583/) von Windows auf. Besitzen Sie eine höhere Betriebssystemversion, gilt dieser Artikel nicht für Ihr Szenario. Öffnen Sie zum Überprüfen der Version Ihres Systems eine CMD-Sitzung in der [seriellen Zugriffskonsole](serial-console-windows.md), und führen Sie **Ver** aus.
 
 ## <a name="cause"></a>Ursache
 
@@ -55,8 +55,8 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 2. Laden Sie das entsprechende Update auf einen neuen oder vorhandenen Datenträger herunter, der an einen funktionierenden virtuellen Computer in der gleichen Region angefügt ist:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) oder ein neueres Update
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) oder ein neueres Update
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) oder ein neueres Update
+   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) oder ein neueres Update
 
 3. Trennen Sie den Hilfsprogrammdatenträger vom funktionierenden virtuellen Computer, und fügen Sie ihn an den fehlerhaften virtuellen Computer an.
 
@@ -98,22 +98,22 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 12. Laden Sie das entsprechende Update herunter:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) oder ein neueres Update
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) oder ein neueres Update
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) oder ein neueres Update
+    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) oder ein neueres Update
 
 13. Fügen Sie den Systemdatenträger als Datenträger auf einem virtuellen Wiederherstellungscomputer an, auf dem Sie das Update herunterladen können.
 
 14. Führen Sie den folgenden Befehl aus, um das Update auf dem virtuellen Computer zu installieren:
 
-   ```
-   dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
-   ```
+    ```
+    dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
+    ```
 
 15. Führen Sie den folgenden Befehl aus, um die Bereitstellung der Strukturen aufzuheben:
 
-   ```
-   reg unload HKLM\BROKENSYSTEM
-   ```
+    ```
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 16. [Trennen Sie den Systemdatenträger, und erstellen Sie den virtuellen Computer erneut](../windows/troubleshoot-recovery-disks-portal.md).
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4ecc259d40cdcba93a484f27e27191e967f10ff1
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e05813297707165d59d1b1ed969b54fb0f433277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848089"
 ---
 # <a name="virtual-machine-skus-tab"></a>Registerkarte für VM-SKUs
 
@@ -63,7 +63,7 @@ In der folgenden Tabelle werden der Zweck, der Inhalt und die Formatierung diese
 | **Betriebssystem-Anzeigename** | Der Name des Betriebssystems, wie er für Kunden angezeigt wird.  |
 | **Empfohlene VM-Größen** | Ermöglicht die Auswahl von bis zu sechs empfohlenen VM-Größen aus einer standardisierten Liste.  Diese Empfehlungen werden für potenzielle Kunden zwar deutlich angezeigt, aber sie können eine beliebige VM-Größe angeben, die mit dem Lösungsimage kompatibel ist. | 
 | **Offene Ports**| Gibt die zu öffnenden Ports und das Protokoll an, das für die SKU unterstützt werden muss.  Diese Konfigurationen müssen mit dem virtuellen Netzwerk übereinstimmen, das Sie für das Netzwerk der Lösungs-VM konfiguriert haben. Diese Einstellungen werden während der VM-Bereitstellung wirksam. Die Porteinstellungen können aber geändert werden, nachdem Sie eine SKU veröffentlicht haben. Weitere Informationen finden Sie unter [Öffnen von Ports zu einem virtuellen Computer mit dem Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Die folgenden Standardnetzwerkzuordnungen werden allen VMs hinzugefügt. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP; &emsp; Linux: 22 -> 22, TCP (SSH). |
-| **Disk Version** (Datenträgerversion)  | Die zugeordnete Lösungs-VM, die anhand der Datenträgerversionsnummer und Datenträger-URL angegeben wird. Die Datenträgerversion muss das [semantische Versionsformat](http://semver.org/) aufweisen: `<major>.<minor>.<patch>`.  Die URL ist der Shared Access Signature-URI, der für die Betriebssystem-VHD erstellt wurde.  Sie können zwar bis zu acht Datenträgerversionen pro SKU hinzufügen, aber nur die höchste Datenträgerversionsnummer für eine SKU wird im Azure Marketplace angezeigt. Die anderen Versionen sind nur über APIs sichtbar.  <!--TD: Add more specific link to API --> <br/> Im Accordion-Abschnitt **New data disk** (Neuer Datenträger) können Sie bis zu 15 Datenträger an Ihre VM anfügen.  Nachdem Sie eine SKU mit einer bestimmten VM-Version und den zugeordneten Datenträgern veröffentlicht haben, kann diese Konfiguration nicht geändert werden.  Wenn der SKU zusätzliche VM-Versionen hinzugefügt werden, müssen diese auch die gleiche Anzahl von Datenträgern unterstützen. <br/> Falls Sie Ihre Azure-basierten VM-Images noch nicht erstellt haben, können Sie dieses Feld später aktualisieren.  Informationen zum Erstellen der zugeordneten VM-Ressource finden Sie im Abschnitt [Erstellen technischer VM-Ressourcen](./cpp-create-technical-assets.md).  
+| **Disk Version** (Datenträgerversion)  | Die zugeordnete Lösungs-VM, die anhand der Datenträgerversionsnummer und Datenträger-URL angegeben wird. Die Datenträgerversion muss das [semantische Versionsformat](https://semver.org/) aufweisen: `<major>.<minor>.<patch>`.  Die URL ist der Shared Access Signature-URI, der für die Betriebssystem-VHD erstellt wurde.  Sie können zwar bis zu acht Datenträgerversionen pro SKU hinzufügen, aber nur die höchste Datenträgerversionsnummer für eine SKU wird im Azure Marketplace angezeigt. Die anderen Versionen sind nur über APIs sichtbar.  <!--TD: Add more specific link to API --> <br/> Im Accordion-Abschnitt **New data disk** (Neuer Datenträger) können Sie bis zu 15 Datenträger an Ihre VM anfügen.  Nachdem Sie eine SKU mit einer bestimmten VM-Version und den zugeordneten Datenträgern veröffentlicht haben, kann diese Konfiguration nicht geändert werden.  Wenn der SKU zusätzliche VM-Versionen hinzugefügt werden, müssen diese auch die gleiche Anzahl von Datenträgern unterstützen. <br/> Falls Sie Ihre Azure-basierten VM-Images noch nicht erstellt haben, können Sie dieses Feld später aktualisieren.  Informationen zum Erstellen der zugeordneten VM-Ressource finden Sie im Abschnitt [Erstellen technischer VM-Ressourcen](./cpp-create-technical-assets.md).  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 

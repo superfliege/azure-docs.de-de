@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93c19bc39f64df21dfa9db2490ab2103aba8191d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086104"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -84,7 +84,7 @@ Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https:/
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$rules = '{ ... }' 
+$rules = '{ ... }'
 
 Set-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName] -Policy $rules 
 
@@ -100,7 +100,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 ```
 
 > [!NOTE]
-Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ## <a name="policy"></a>Richtlinie
 
@@ -155,10 +155,10 @@ Die folgende Beispielregel filtert das Konto so, dass Aktionen nur auf `containe
 ```json
 {
   "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "ruleFoo", 
-      "type": "Lifecycle", 
+      "name": "ruleFoo",
+      "type": "Lifecycle",
       "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
@@ -190,7 +190,7 @@ Diese Filter sind in der Vorschauphase gültig:
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | Ja |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie beispielsweise alle Blobs unter „https://myaccount.blob.core.windows.net/container1/foo/...“ für eine Regel zuordnen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gelten die Regeln für alle Blobs im Konto. | Nein  |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie beispielsweise alle Blobs unter „<https://myaccount.blob.core.windows.net/container1/foo/>.“ für eine Regel zuordnen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gelten die Regeln für alle Blobs im Konto. | Nein  |
 
 ### <a name="rule-actions"></a>Regelaktionen
 
@@ -204,8 +204,8 @@ In der Vorschauversion unterstützt die Lebenszyklusverwaltung Ebenenverschiebun
 | tierToArchive | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
 | delete        | Unterstützt                                   | Unterstützt     |
 
->[!NOTE] 
-Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
+> [!NOTE]
+> Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
 
 In der Vorschau basieren die Ausführungsbedingungen für Aktionen auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
 
@@ -224,23 +224,22 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
 ```json
 {
   "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "agingRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "container1/foo", "container2/bar" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-              "tierToArchive": { "daysAfterModificationGreaterThan": 90 }
-            }
+      "name": "agingRule",
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "container1/foo", "container2/bar" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
+            "tierToArchive": { "daysAfterModificationGreaterThan": 90 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -253,22 +252,21 @@ Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf d
 ```json
 {
   "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "archiveRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archivecontainer" ]
-          },
-          "actions": {
-            "baseBlob": { 
-                "tierToArchive": { "daysAfterModificationGreaterThan": 0 }
-            }
+      "name": "archiveRule",
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "archivecontainer" ]
+        },
+        "actions": {
+          "baseBlob": {
+              "tierToArchive": { "daysAfterModificationGreaterThan": 0 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -282,21 +280,20 @@ Es wird erwartet, dass einige Daten Tage oder Monate nach der Erstellung ablaufe
 ```json
 {
   "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "expirationRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "delete": { "daysAfterModificationGreaterThan": 365 }
-            }
+      "name": "expirationRule",
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "delete": { "daysAfterModificationGreaterThan": 365 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -309,22 +306,21 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 ```json
 {
   "version": "0.5",
-  "rules": [ 
+  "rules": [
     {
-      "name": "snapshotRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activedata" ]
-          },
-          "actions": {            
-            "snapshot": {
-              "delete": { "daysAfterCreationGreaterThan": 90 }
-            }
+      "name": "snapshotRule",
+      "type": "Lifecycle",
+    "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "activedata" ]
+        },
+        "actions": {
+          "snapshot": {
+            "delete": { "daysAfterCreationGreaterThan": 90 }
           }
-        }      
+        }
+      }
     }
   ]
 }
@@ -337,4 +333,4 @@ Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Sobald Sie
 
 Erfahren Sie, wie Daten nach versehentlichem Löschen wiederhergestellt werden:
 
-- [Vorläufiges Löschen für Azure Storage-Blobs ](../blobs/storage-blob-soft-delete.md)
+- [Vorläufiges Löschen für Azure Storage-Blobs](../blobs/storage-blob-soft-delete.md)

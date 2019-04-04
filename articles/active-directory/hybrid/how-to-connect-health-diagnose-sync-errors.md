@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2924a45ae8851095944131b6fb1598775247f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885316"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose und Behebung von Synchronisierungsfehlern aufgrund doppelter Attribute
 
@@ -33,7 +33,7 @@ Weitere Informationen zu Azure AD finden Sie unter [Identitätssynchronisierung 
 
 ## <a name="problems"></a>Probleme
 ### <a name="a-common-scenario"></a>Allgemeines Szenario
-Wenn die Synchronisierungsfehler **QuarantinedAttributeValueMustBeUnique** und **AttributeValueMustBeUnique** auftreten, kommt es in Azure AD häufig zu einem **UserPrincipalName**- oder **ProxyAddresses**-Konflikt. Sie können die Synchronisierungsfehler möglicherweise beheben, indem Sie das in Konflikt stehende Quellobjekt auf lokaler Seite aktualisieren. Der Synchronisierungsfehler wird nach der nächsten Synchronisierung behoben. In der folgenden Abbildung ist beispielsweise dargestellt, dass für zwei Benutzer ein Konflikt in Bezug auf den Benutzerprinzipalnamen (**UserPrincipalName**) besteht. Für beide ist **Joe.J@contoso.com** festgelegt. Die in Konflikt stehenden Objekte werden in Azure AD unter Quarantäne gestellt.
+Wenn die Synchronisierungsfehler **QuarantinedAttributeValueMustBeUnique** und **AttributeValueMustBeUnique** auftreten, kommt es in Azure AD häufig zu einem **UserPrincipalName**- oder **ProxyAddresses**-Konflikt. Sie können die Synchronisierungsfehler möglicherweise beheben, indem Sie das in Konflikt stehende Quellobjekt auf lokaler Seite aktualisieren. Der Synchronisierungsfehler wird nach der nächsten Synchronisierung behoben. In der folgenden Abbildung ist beispielsweise dargestellt, dass für zwei Benutzer ein Konflikt in Bezug auf den Benutzerprinzipalnamen (**UserPrincipalName**) besteht. Beide lauten **Joe.J\@contoso.com**. Die in Konflikt stehenden Objekte werden in Azure AD unter Quarantäne gestellt.
 
 ![Diagnostizieren von Synchronisierungsfehlern – allgemeines Szenario](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -66,32 +66,34 @@ Führen Sie die Schritte über das Azure-Portal aus, um die Details zu Synchroni
 
 Führen Sie im Azure-Portal mehrere Schritte aus, um bestimmte behebbare Szenarien zu identifizieren:  
 1.  Überprüfen Sie die Spalte mit dem **Diagnosestatus**. Der Status gibt an, ob eine Möglichkeit besteht, einen Synchronisierungsfehler direkt in Azure Active Directory zu beheben. Das heißt, in diesem Fall ist ein Problembehandlungsablauf verfügbar, mit dem der Fehler eingegrenzt und möglicherweise behoben werden kann.
+
 | Status | Was bedeutet das? |
 | ------------------ | -----------------|
 | Nicht gestartet | Sie haben den Diagnoseprozess nicht aufgerufen. Je nach Diagnoseergebnis besteht unter Umständen die Möglichkeit, den Synchronisierungsfehler direkt über das Portal zu beheben. |
 | Manuelle Korrektur erforderlich | Der Fehler erfüllt nicht die Kriterien für verfügbare Korrekturen über das Portal. Entweder sind die in Konflikt stehenden Objekttypen keine Benutzer, oder Sie haben die Diagnoseschritte bereits ausgeführt, und im Portal war keine Korrektur verfügbar. In letzterem Fall ist die Korrektur auf lokaler Seite weiterhin eine mögliche Lösung. [Erfahren Sie mehr zu lokalen Fehlerkorrekturen.](https://support.microsoft.com/help/2647098) | 
 | Synchronisierung ausstehend | Eine Korrektur wurde angewandt. Im Portal wird auf den nächsten Synchronisierungszyklus gewartet, um den Fehler zu beheben. |
+
   >[!IMPORTANT]
   > Die Spalte mit dem Diagnosestatus wird nach jedem Synchronisierungszyklus zurückgesetzt. 
   >
 
-2.  Wählen Sie die Schaltfläche **Diagnose** unter den Fehlerdetails aus. Sie beantworten mehrere Fragen und identifizieren Details zu Synchronisierungsfehlern. Die Antworten auf die Fragen tragen zum Identifizieren eines verwaisten Objekts bei.
+1. Wählen Sie die Schaltfläche **Diagnose** unter den Fehlerdetails aus. Sie beantworten mehrere Fragen und identifizieren Details zu Synchronisierungsfehlern. Die Antworten auf die Fragen tragen zum Identifizieren eines verwaisten Objekts bei.
 
-3.  Wenn am Ende des Diagnosevorgangs die Schaltfläche **Schließen** angezeigt wird, steht basierend auf Ihren Antworten keine schnelle Fehlerbehebung über das Portal zur Verfügung. Weitere Informationen finden Sie unter der Lösung, die im letzten Schritt angezeigt wird. Lokale Fehlerkorrekturen gelten weiterhin als Lösung. Wählen Sie die Schaltfläche **Schließen** aus. Der Status des aktuellen Synchronisierungsfehlers wird in **Manuelle Korrektur erforderlich** geändert. Der Status wird während des aktuellen Synchronisierungszyklus beibehalten.
+1. Wenn am Ende des Diagnosevorgangs die Schaltfläche **Schließen** angezeigt wird, steht basierend auf Ihren Antworten keine schnelle Fehlerbehebung über das Portal zur Verfügung. Weitere Informationen finden Sie unter der Lösung, die im letzten Schritt angezeigt wird. Lokale Fehlerkorrekturen gelten weiterhin als Lösung. Wählen Sie die Schaltfläche **Schließen** aus. Der Status des aktuellen Synchronisierungsfehlers wird in **Manuelle Korrektur erforderlich** geändert. Der Status wird während des aktuellen Synchronisierungszyklus beibehalten.
 
-4.  Nachdem der Fall eines verwaisten Objekts identifiziert wurde, können Sie Synchronisierungsfehler aufgrund doppelter Attribute direkt über das Portal beheben. Wählen Sie die Schaltfläche **Fix anwenden** aus, um den Prozess auszulösen. Der Status des aktuellen Synchronisierungsfehlers wird in **Synchronisierung ausstehend** aktualisiert.
+1. Nachdem der Fall eines verwaisten Objekts identifiziert wurde, können Sie Synchronisierungsfehler aufgrund doppelter Attribute direkt über das Portal beheben. Wählen Sie die Schaltfläche **Fix anwenden** aus, um den Prozess auszulösen. Der Status des aktuellen Synchronisierungsfehlers wird in **Synchronisierung ausstehend** aktualisiert.
 
-5.  Nach dem nächsten Synchronisierungszyklus sollte der Fehler aus der Liste entfernt werden.
+1. Nach dem nächsten Synchronisierungszyklus sollte der Fehler aus der Liste entfernt werden.
 
 ## <a name="how-to-answer-the-diagnosis-questions"></a>Beantworten von Fragen zur Diagnose 
 ### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Ist der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden?
 
 Mit dieser Frage wird versucht, das Quellobjekt des vorhandenen Benutzers in der lokalen Active Directory-Instanz zu identifizieren.  
-1.  Überprüfen Sie, ob Azure Active Directory ein Objekt mit dem angegebenen **UserPrincipalName** enthält. Wenn dies nicht der Fall ist, antworten Sie mit **Nein**.
-2.  Wenn dies der Fall ist, überprüfen Sie, ob das Objekt weiterhin im Bereich für die Synchronisierung enthalten ist.  
-  - Suchen Sie im Azure AD-Connectorbereich unter Verwendung des DN.
-  - Wenn das Objekt mit dem Status **Ausstehender Hinzufügevorgang** gefunden wird, antworten Sie mit **Nein**. Azure AD Connect kann für das Objekt keine Verbindung mit dem richtigen Azure AD-Objekt herstellen.
-  - Wenn das Objekt nicht gefunden wird, antworten Sie mit **Ja**.
+1. Überprüfen Sie, ob Azure Active Directory ein Objekt mit dem angegebenen **UserPrincipalName** enthält. Wenn dies nicht der Fall ist, antworten Sie mit **Nein**.
+2. Wenn dies der Fall ist, überprüfen Sie, ob das Objekt weiterhin im Bereich für die Synchronisierung enthalten ist.  
+   - Suchen Sie im Azure AD-Connectorbereich unter Verwendung des DN.
+   - Wenn das Objekt mit dem Status **Ausstehender Hinzufügevorgang** gefunden wird, antworten Sie mit **Nein**. Azure AD Connect kann für das Objekt keine Verbindung mit dem richtigen Azure AD-Objekt herstellen.
+   - Wenn das Objekt nicht gefunden wird, antworten Sie mit **Ja**.
 
 In diesen Beispielen soll mit der Frage ermittelt werden, ob **Joe Jackson** in der lokalen Active Directory-Instanz noch vorhanden ist.
 Für das **allgemeine Szenario** ist sowohl der Benutzer **Joe Johnson** als auch der Benutzer **Joe Jackson** in der lokalen Active Directory-Instanz vorhanden. Bei den unter Quarantäne gestellten Objekten handelt es sich um zwei unterschiedliche Benutzer.
@@ -104,11 +106,11 @@ Für das **Szenario mit verwaistem Objekt** ist nur der Benutzer **Joe Johnson**
 
 ### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Gehören beide Konten zu demselben Benutzer?
 Mit dieser Frage werden in Konflikt stehende eingehende Benutzer und das vorhandene Benutzerobjekt in Azure AD überprüft, um zu ermitteln, ob sie zu demselben Benutzer gehören.  
-1.  Das in Konflikt stehende Objekt wird neu mit Azure Active Directory synchronisiert. Vergleichen Sie die Attribute der Objekte:  
-  - Anzeigename
-  - Benutzerprinzipalname
-  - Object ID (Objekt-ID)
-2.  Wenn ein Vergleich in Azure AD nicht möglich ist, überprüfen Sie, ob in Active Directory Objekte mit den angegebenen **UserPrincipalNames** enthalten sind. Wenn beide vorhanden sind, antworten Sie mit **Nein**.
+1. Das in Konflikt stehende Objekt wird neu mit Azure Active Directory synchronisiert. Vergleichen Sie die Attribute der Objekte:  
+   - Anzeigename
+   - Benutzerprinzipalname
+   - Object ID (Objekt-ID)
+2. Wenn ein Vergleich in Azure AD nicht möglich ist, überprüfen Sie, ob in Active Directory Objekte mit den angegebenen **UserPrincipalNames** enthalten sind. Wenn beide vorhanden sind, antworten Sie mit **Nein**.
 
 Im folgenden Beispiel gehören die beiden Objekte zu demselben Benutzer **Joe Johnson**.
 

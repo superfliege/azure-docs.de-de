@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892454"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Auf diese Weise besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
@@ -47,7 +47,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt**einrichten. Dieser Endpunk
 
 1. Empfang einer Anforderung in der folgenden Form:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL der Herkunftsseite}&salt={Zeichenfolge}&sig={Zeichenfolge}*
    > 
    > 
    
@@ -104,7 +104,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
 
 1. Empfang einer Anforderung in der folgenden Form:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={Vorgang}&productId={zu abonnierendes Produkt}&userId={anfordernder Benutzer}&salt={Zeichenfolge}&sig={Zeichenfolge}*
    > 
    > 
    
@@ -120,7 +120,7 @@ Konfigurieren Sie anschließend die folgenden Aktionen für den Delegierungsendp
    * **sig**: Ein berechneter Sicherheitshash zum Vergleich mit dem von Ihnen generierten Hash
 2. Überprüfen, ob die Anfrage von Azure API Management stammt (optional, aus Sicherheitsgründen jedoch dringend empfohlen)
    
-   * Generieren Sie einen HMAC-SHA512-Hash für eine Zeichenfolge aus den Abfrageparametern **productId**, „**userId“ und **salt**:
+   * Generieren Sie einen HMAC-SHA512-Hash für eine Zeichenfolge aus den Abfrageparametern **productId**, **userId** und **salt**:
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 

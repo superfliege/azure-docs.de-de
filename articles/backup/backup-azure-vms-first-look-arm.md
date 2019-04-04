@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 40557d4e71dfea5996396cde634f7a1c80913556
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 2fe786d90612feff312983dbd25dc6d691be6e70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430538"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089776"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -44,18 +44,18 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 3. Wählen Sie aus der Liste der VMs die VM aus, die Sie sichern möchten.
 4. Klicken Sie auf der VM-Menü auf **Sichern**. 
 5. Gehen Sie im **Recovery Services-Tresor** wie folgt vor:
-  - Wenn Sie bereits über einen Tresor verfügen, klicken Sie auf **Vorhanden auswählen**, und wählen Sie einen Tresor aus.
-  - Wenn Sie keinen Tresor haben, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen für den Tresor an. Es wird in der gleichen Region und Ressourcengruppe erstellt wie die VM. Sie können diese Einstellungen nicht ändern, wenn Sie die Sicherung direkt aus den VM-Einstellungen heraus aktivieren.
+   - Wenn Sie bereits über einen Tresor verfügen, klicken Sie auf **Vorhanden auswählen**, und wählen Sie einen Tresor aus.
+   - Wenn Sie keinen Tresor haben, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen für den Tresor an. Es wird in der gleichen Region und Ressourcengruppe erstellt wie die VM. Sie können diese Einstellungen nicht ändern, wenn Sie die Sicherung direkt aus den VM-Einstellungen heraus aktivieren.
 
-  ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+   ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
 6. Gehen Sie in **Sicherungsrichtlinie auswählen** wie folgt vor:
 
-  - Übernehmen Sie die Standardrichtlinie. Dadurch wird die VM einmal täglich zur angegebenen Zeit gesichert und die Sicherungen werden 30 Tage lang im Tresor aufbewahrt.
-  - Wählen Sie eine bestehende Sicherungsrichtlinie aus, sofern vorhanden.
-  - Erstellen Sie eine neue Richtlinie, und definieren Sie die Richtlinieneinstellungen.  
+   - Übernehmen Sie die Standardrichtlinie. Dadurch wird die VM einmal täglich zur angegebenen Zeit gesichert und die Sicherungen werden 30 Tage lang im Tresor aufbewahrt.
+   - Wählen Sie eine bestehende Sicherungsrichtlinie aus, sofern vorhanden.
+   - Erstellen Sie eine neue Richtlinie, und definieren Sie die Richtlinieneinstellungen.  
 
-  ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+   ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Klicken Sie auf **Sicherung aktivieren**. Dadurch wird die Sicherungsrichtlinie mit der VM verknüpft. 
 
@@ -64,9 +64,9 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 8. Den Konfigurationsprozess können Sie über die Benachrichtigungen im Portal nachverfolgen.
 9. Klicken Sie nach Abschluss des Auftrags im VM-Menü auf **Sicherung**. Die Seite zeigt den Sicherungsstatus für die VM, Informationen über Wiederherstellungspunkte, laufende Aufträge und ausgegebene Warnmeldungen an.
 
-  ![Sicherungsstatus](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Sicherungsstatus](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. Nachdem Sie die Sicherung aktiviert haben, wird eine [erste Sicherung](#run-the-initial-backup) ausgeführt. Sie können die erste Sicherung sofort starten oder warten, bis sie gemäß dem Sicherungszeitplan beginnt.
+10. Nachdem Sie die Sicherung aktiviert haben, wird eine erste Sicherung ausgeführt. Sie können die erste Sicherung sofort starten oder warten, bis sie gemäß dem Sicherungszeitplan beginnt.
     - Bis zum Abschluss des ersten Sicherungsvorgangs wird **Status der letzten Sicherung** als **Warnung (erste Sicherung steht aus)** angezeigt.
     - Um zu sehen, wann die nächste geplante Sicherung ausgeführt wird, klicken Sie auf den Namen der Sicherungsrichtlinie.
     

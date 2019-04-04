@@ -6,21 +6,23 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: df4ae4b0c3f230947e0b9a5885070049f32a4b2f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 85b920767cbdc5ba60c2046563c32e87f6ad7ef8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429861"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259396"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
-Sie können die Lösung für die Updateverwaltung in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt werden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+Sie können die Lösung für die Updateverwaltung in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
 Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden. Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung für einen virtuellen Computer auch im Azure-Portal auf der Seite des virtuellen Computers aktivieren. Dieses Szenario ist für virtuelle [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management)- und [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management)-Computer verfügbar.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="solution-overview"></a>Lösungsübersicht
 
@@ -33,13 +35,13 @@ Verwenden Sie für Computer, die mit der Updateverwaltung verwaltet werden, die 
 
 Das folgende Diagramm enthält eine konzeptionelle Darstellung des Verhaltens und Datenflusses und zeigt, wie die Lösung alle verbundenen Windows Server- und Linux-Computer eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet:
 
-![Ablauf des Updateverwaltungsprozesses](media/automation-update-management/update-mgmt-updateworkflow.png)
+![Ablauf des Updateverwaltungsprozesses](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Die Updateverwaltung kann für das systeminterne Integrieren von Computern in mehrere Abonnements im selben Mandanten verwendet werden.
 
 Nachdem ein CVE-Release veröffentlicht wurde, dauert es 2 bis 3 Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird.  Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird.
 
-Nachdem ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Log Analytics weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt.
+Nachdem ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt.
 
 Darüber hinaus wird der Update-Konformitätsscan innerhalb von 15 Minuten nach dem MMA-Neustart sowie vor und nach der Updateinstallation initiiert.
 
@@ -70,7 +72,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
 |Windows Server 2008 R2 SP1 und höher (Windows Server 2012 und 2016 eingeschlossen)    |.NET Framework 4.5.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> WindowsPowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss yum Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt.         |
+|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss yum Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |Ubuntu 14.04 LTS, 16.04 LTS und 18.04 (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
@@ -94,7 +96,7 @@ Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert
 
 Für Linux muss der Computer über Zugriff auf ein Updaterepository verfügen. Das Updaterepository kann privat oder öffentlich sein. Für die Interaktion mit der Updateverwaltung ist TLS 1.1 oder TLS 1.2 erforderlich. Diese Lösung unterstützt keinen Log Analytics-Agent für Linux, der für die Berichterstattung an mehrere Log Analytics-Arbeitsbereiche konfiguriert ist.
 
-Weitere Informationen zum Installieren des Log Analytics-Agents für Linux und zum Herunterladen der aktuellen Version finden Sie unter [Operations Management Suite-Agent für Linux](https://github.com/microsoft/oms-agent-for-linux). Informationen zur Installation des Log Analytics-Agents für Windows finden Sie unter [Operations Management Suite-Agent für Windows](../log-analytics/log-analytics-windows-agent.md).
+Weitere Informationen zum Installieren des Log Analytics-Agents für Linux und zum Herunterladen der aktuellen Version finden Sie unter [Log Analytics Agent for Linux (Log Analytics-Agent für Linux)](https://github.com/microsoft/oms-agent-for-linux). Informationen zur Installation des Log Analytics-Agents für Windows finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -120,10 +122,13 @@ Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem Log Analy
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Update Deployment MP
 
+> [!NOTE]
+> Wenn Sie eine Operations Manager 1807-Verwaltungsgruppe mit auf Verwaltungsgruppenebene konfigurierten Agenten einem Arbeitsbereich zuordnen, besteht die Problemumgehung, damit diese angezeigt werden, momentan darin, **IsAutoRegistrationEnabled** in der **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init**-Regel mit **True** zu überschreiben.
+
 Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Damit Systeme mit dem Operations Manager-Agent vollständig durch die Updateverwaltung verwaltet werden können, muss der Agent auf den Microsoft Monitoring Agent aktualisiert werden. Informationen zum Aktualisieren des Agents finden Sie unter [Aktualisieren eines Operations Manager-Agents](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
+> Damit Systeme mit dem Operations Manager-Agent vollständig durch die Updateverwaltung verwaltet werden können, muss der Agent auf den Microsoft Monitoring Agent aktualisiert werden. Informationen zum Aktualisieren des Agents finden Sie unter [Aktualisieren eines Operations Manager-Agents](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Für Umgebungen, die Operations Manager verwenden, ist es erforderlich, dass Sie System Center Operations Manager 2012 R2 UR14 oder höher ausführen.
 
 ## <a name="onboard"></a>Aktivieren der Updateverwaltung
 
@@ -136,7 +141,7 @@ Um mit dem Patchen von Systemen zu beginnen, müssen Sie die Updateverwaltungsl�
   
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Bestätigen der Integration von Nicht-Azure-Computern
 
-Nach einigen Minuten können Sie eine der folgenden Protokollsuchen ausführen, um zu bestätigen, dass direkt verbundene Computer mit Log Analytics kommunizieren.
+Nach einigen Minuten können Sie eine der folgenden Protokollsuchen ausführen, um zu bestätigen, dass direkt verbundene Computer mit Azure Monitor-Protokollen kommunizieren.
 
 #### <a name="linux"></a>Linux
 
@@ -152,12 +157,12 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen, um für den Agent die Log Analytics-Konnektivität zu bestätigen:
+Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen, um für den Agent die Konnektivität mit Azure Monitor-Protokollen zu bestätigen:
 
 1. Öffnen Sie in der Systemsteuerung **Microsoft Monitoring Agent**. Auf der Registerkarte **Azure Log Analytics** zeigt der Agent die folgende Meldung an: **The Microsoft Monitoring Agent has successfully connected to Log Analytics.** (Der Microsoft Monitoring Agent hat erfolgreich eine Verbindung mit Log Analytics hergestellt.)
 2. Öffnen Sie das Windows-Ereignisprotokoll. Navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und der Ereignis-ID 5002 aus der Quelle **Service Connector**. Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration ausgeführt wurden.
 
-Falls der Agent nicht mit Log Analytics kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert ist. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../azure-monitor/platform/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../log-analytics/log-analytics-agent-linux.md).
+Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../azure-monitor/platform/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder Log Analytics-Gateway konfiguriert sind und Sie diese Lösung integrieren, aktualisieren Sie die Berechtigungen für *proxy.conf*, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie zu diesem Zweck die folgenden Befehle aus:
@@ -167,7 +172,7 @@ Falls der Agent nicht mit Log Analytics kommunizieren kann und für die Kommunik
 
 Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung ausgeführt wurde. Dieser Vorgang kann bis zu sechs Stunden dauern.
 
-Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Log Analytics kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Operations Manager-Integration für Log Analytics](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics) weiter.
+Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Azure Monitor-Protokollen kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Integration von Operations Manager mit Log Analytics](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics) weiter.
 
 ## <a name="data-collection"></a>Datensammlung
 
@@ -179,7 +184,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | --- | --- | --- |
 | Windows-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
 | Linux-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
-| Operations Manager-Verwaltungsgruppe |Ja |Die Lösung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.<br/>Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
+| Operations Manager-Verwaltungsgruppe |Ja |Die Lösung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.<br/>Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor-Protokollen erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
 
@@ -189,7 +194,7 @@ Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang aus
 
 Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
 
-Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mithilfe der Updateverwaltung beträgt ungefähr 25 MB pro Monat. Dieser Wert ist nur ein Näherungswert und kann sich abhängig von Ihrer Umgebung ändern. Es wird empfohlen, Ihre Umgebung zu überwachen, um die genaue Nutzung zu ermitteln.
+Die durchschnittliche Nutzung von Azure Monitor-Protokolldaten für einen Computer mithilfe der Updateverwaltung beträgt ungefähr 25 MB pro Monat. Dieser Wert ist nur ein Näherungswert und kann sich abhängig von Ihrer Umgebung ändern. Es wird empfohlen, Ihre Umgebung zu überwachen, um die genaue Nutzung zu ermitteln.
 
 ## <a name="viewing-update-assessments"></a>Anzeigen der Updatebewertungen
 
@@ -203,7 +208,7 @@ Um eine Protokollsuche auszuführen, die Informationen zum Computer, zu Updates 
 
 ## <a name="install-updates"></a>Installieren von Updates
 
-Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, können Sie die erforderlichen Updates installieren, indem Sie eine *Updatebereitstellung* erstellen. Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer. Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen. Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Log Analytics](../azure-monitor/platform/computer-groups.md).
+Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, können Sie die erforderlichen Updates installieren, indem Sie eine *Updatebereitstellung* erstellen. Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer. Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen. Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Azure Monitor-Protokollabfragen](../azure-monitor/platform/computer-groups.md).
 
  Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur ein Mal beim Erstellen des Zeitplans ausgewertet. Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt. Um diese Art der Verwendung von [dynamischen Gruppen](#using-dynamic-groups) zu umgehen, werden diese Gruppen zum Zeitpunkt der Bereitstellung aufgelöst und durch eine Abfrage definiert.
 
@@ -221,7 +226,7 @@ Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellun
 | NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Linux oder Windows|
 | Zu aktualisierende Gruppen (Vorschau)|Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).|
-| Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../azure-monitor/platform/computer-groups.md). |
+| Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md). |
 |Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus|
 |Einschließen/Ausschließen von Updates|Daraufhin wird die Seite **Einschließen/ausschließen** geöffnet. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Verhalten beim Einschließen](automation-update-management.md#inclusion-behavior). |
 |Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und geben Sie unter „Wiederholung“ entweder „Einmal“ oder „Serie“ an|
@@ -290,7 +295,7 @@ sudo yum -q --security check-update
 
 Es gibt derzeit keine unterstützte Methode zum Aktivieren einer nativen Klassifizierungsdatenverfügbarkeit unter CentOS. Zu diesem Zeitpunkt wird nur Unterstützung nach bestem Wissen für Kunden bereitgestellt, die dies möglicherweise auf eigene Weise aktiviert haben.
 
-## <a name="firstparty-predownload"></a>Erstanbieterpatches und Vorabdownloads
+## <a name="firstparty-predownload"></a>Erweiterte Einstellungen
 
 Die Updateverwaltung verlässt sich zum Herunterladen und Installieren von Windows-Updates auf Windows Update. Daher werden viele der Einstellungen von Windows Update berücksichtigt. Wenn Sie Einstellungen verwenden, um Nicht-Windows-Updates zu aktivieren, verwaltet die Updateverwaltung diese Updates ebenfalls. Wenn Sie das Herunterladen der Updates vor der Updatebereitstellung aktivieren, können Bereitstellungen schneller ausgeführt werden und damit eher das Wartungsfenster einhalten.
 
@@ -306,9 +311,18 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
+### <a name="disable-automatic-installation"></a>Deaktivieren der automatischen Installation
+
+Bei Azure-VMs ist die automatische Installation von Updates standardmäßig aktiviert. Dies kann dazu führen, dass Updates installiert werden, bevor Sie deren Installation über die Updateverwaltung planen. Dieses Verhalten können Sie deaktivieren, indem Sie den `NoAutoUpdate`-Registrierungsschlüssel auf `1` festlegen. Der folgende PowerShell-Ausschnitt zeigt eine Möglichkeit, dies zu tun.
+
+```powershell
+$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
+```
+
 ### <a name="enable-updates-for-other-microsoft-products"></a>Aktivieren von Updates für andere Microsoft-Produkte
 
-Standardmäßig stellt Windows Update nur Updates für Windows bereit. Wenn Sie **Give me updates for other Microsoft products when I update Windows** (Updates für andere Microsoft-Produkte beim Update von Windows einschließen) aktivieren, erhalten Sie auch Updates für andere Produkte – einschließlich Sicherheitspatches für SQL Server und andere Software von Erstanbietern. Diese Option kann nicht über Gruppenrichtlinien konfiguriert werden. Führen Sie den folgenden PowerShell-Befehl auf den Systemen aus, auf denen Sie Patches anderer Erstanbieter aktivieren möchten. Die Updateverwaltung berücksichtigt diese Einstellung.
+Standardmäßig stellt Windows Update nur Updates für Windows bereit. Wenn Sie **Updates für andere Microsoft-Produkte bereitstellen, wenn ein Windows-Update ausgeführt wird** aktivieren, erhalten Sie auch Updates für andere Produkte – einschließlich Sicherheitspatches für SQL Server und andere Software von Erstanbietern. Diese Option kann nicht über Gruppenrichtlinien konfiguriert werden. Führen Sie den folgenden PowerShell-Befehl auf den Systemen aus, auf denen Sie Patches anderer Erstanbieter aktivieren möchten. Die Updateverwaltung berücksichtigt diese Einstellung.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -350,7 +364,7 @@ Die folgenden Abschnitte enthalten Beispielprotokollabfragen für Updatedatensä
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Windows)
 
-Ersetzen Sie den VMUUID-Wert durch die VM-GUID des virtuellen Computers, den Sie abfragen. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Log Analytics ausführen: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Ersetzen Sie den VMUUID-Wert durch die VM-GUID des virtuellen Computers, den Sie abfragen. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Azure Monitor-Protokollen ausführen: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
 
@@ -379,7 +393,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Linux)
 
-Für einige Linux-Distributionen besteht ein Konflikt der [Bytereihenfolge](https://en.wikipedia.org/wiki/Endianness) mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Log Analytics gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Log Analytics ausführen: `Update | where Computer == "<machine name>"
+Für einige Linux-Distributionen besteht ein Konflikt der [Bytereihenfolge](https://en.wikipedia.org/wiki/Endianness) mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Azure Mit-Protokollen gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Azure Monitor-Protokollen ausführen: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
@@ -553,7 +567,7 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Mithilfe von dynamischen Gruppen (Vorschau)
 
-Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuellen Azure-Computern als Ziel für Updatebereitstellungen zu verwenden. Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellung beginnt, werden die Mitglieder dieser Gruppe ausgewertet. Wenn Sie Ihre Abfrage definieren, können die folgenden Elemente zusammen verwendet werden, um die dynamische Gruppe aufzufüllen
+Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuellen Azure-Computern als Ziel für Updatebereitstellungen zu verwenden. Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellung beginnt, werden die Mitglieder dieser Gruppe ausgewertet. Dynamische Gruppen funktionieren nicht mit klassischen VMs. Wenn Sie Ihre Abfrage definieren, können die folgenden Elemente zusammen verwendet werden, um die dynamische Gruppe aufzufüllen
 
 * Abonnement
 * Ressourcengruppen
@@ -608,10 +622,6 @@ So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 
 * Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
 * Entfernen Sie den [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
-  
-## <a name="troubleshoot"></a>Problembehandlung
-
-Informationen zur Problembehandlung der Updateverwaltung finden Sie unter [Problembehandlung der Updateverwaltung](troubleshoot/update-management.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -620,8 +630,8 @@ Fahren Sie mit dem Tutorial fort, um zu erfahren, wie Updates für Ihre virtuell
 > [!div class="nextstepaction"]
 > [Verwalten von Updates und Patches für Ihre virtuellen Azure Windows-Computer](automation-tutorial-update-management.md)
 
-* Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-log-searches.md), um ausführliche Daten zu Updates anzuzeigen.
+* Verwenden Sie Protokollsuchen in [Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md), um ausführliche Aktualisierungsdaten anzuzeigen.
 * [Erstellen Sie Warnungen](automation-tutorial-update-management.md#configure-alerts) für den Status der Updatebereitstellung.
 
 * Weitere Informationen zur Interaktion mit der Updateverwaltung über die REST-API finden Sie unter [Softwareupdatekonfigurationen](/rest/api/automation/softwareupdateconfigurations).
-
+* Informationen zur Problembehandlung der Updateverwaltung finden Sie unter [Problembehandlung der Updateverwaltung](troubleshoot/update-management.md).

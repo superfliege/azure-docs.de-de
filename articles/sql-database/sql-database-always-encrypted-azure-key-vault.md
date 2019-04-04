@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 670bdd43a4a581f349ca84c17ead67975fa0232e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/12/2019
+ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884170"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Schützen von vertraulichen Daten und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
@@ -37,13 +37,18 @@ Führen Sie die Schritte in diesem Artikel aus, um zu lernen, wie Sie Always Enc
 * Erstellen einer Anwendung zum Einfügen, Auswählen und Anzeigen von Daten aus den verschlüsselten Spalten
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein Azure-Konto und ein Azure-Abonnement. Falls Sie diese benötigen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) Version 13.0.700.242 oder höher.
 * [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) oder höher (auf dem Clientcomputer)
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
-* [Azure PowerShell](/powershell/azure/overview), Version 1.0 oder höher. Geben Sie **(Get-Module Azure -ListAvailable).Version** ein, um herauszufinden, welche Version von PowerShell ausgeführt wird.
+* [Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Aktivieren der Clientanwendung für den Zugriff auf den SQL-Datenbank-Dienst
 Sie müssen Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Dienst zuzugreifen. Richten Sie dazu eine Azure Active Directory-Anwendung (AAD) ein, und kopieren Sie die *Anwendungs-ID* und den *Schlüssel*, die Sie zum Authentifizieren der Anwendung benötigen.
@@ -65,15 +70,15 @@ Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skr
     $vaultName = 'AeKeyVault'
 
 
-    Connect-AzureRmAccount
-    $subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).Id
-    Set-AzureRmContext -SubscriptionId $subscriptionId
+    Connect-AzAccount
+    $subscriptionId = (Get-AzSubscription -SubscriptionName $subscriptionName).Id
+    Set-AzContext -SubscriptionId $subscriptionId
 
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
-    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
+    Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 ```
 
 
@@ -606,7 +611,7 @@ Sie sehen, dass die verschlüsselten Spalten keine Klartextdaten enthalten.
 
    ![Neue Konsolenanwendung](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Um mit SSMS auf Klartextdaten zuzugreifen, müssen Sie zuerst sicherstellen, dass der Benutzer über die erforderlichen Berechtigungen für den Azure Key Vault verfügt: *get*, *unwrapKey* und *verify*. Ausführliche Informationen finden Sie unter [Erstellen und Speichern von Spaltenhauptschlüsseln (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+Um mit SSMS auf Klartextdaten zuzugreifen, müssen Sie zuerst sicherstellen, dass der Benutzer über die erforderlichen Berechtigungen für den Azure Key Vault verfügt: *get*, *unwrapKey* und *verify*. Ausführliche Informationen finden Sie unter [Erstellen und Speichern von Spaltenhauptschlüsseln (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Fügen Sie dann während der Verbindung den Parameter *Column Encryption Setting=enabled* hinzu.
 

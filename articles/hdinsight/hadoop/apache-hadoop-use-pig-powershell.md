@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 84780d7c432e818153f964522063f29d8540e0ec
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012617"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Ausführen von Apache Pig-Aufträgen in HDInsight mithilfe von Azure PowerShell
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Übermitteln von Apache Pig-Aufträgen an einen Apache Hadoop-Cluster in HDInsight. Mithilfe von Pig können Sie MapReduce-Aufträge in einer Sprache (Pig Latin) verfassen, die Datentransformationen anstelle von Map- und Reduce-Funktionen modelliert.
+Dieses Dokument enthält ein Beispiel für die Verwendung von Azure PowerShell zum Übermitteln von Apache Pig-Aufträgen an einen Apache Hadoop-Cluster in HDInsight. Mithilfe von Pig können Sie MapReduce-Aufträge in einer Sprache (Pig Latin) verfassen, die Datentransformationen anstelle von Map- und Reduce-Funktionen modelliert.
 
 > [!NOTE]  
 > Dieses Dokument bietet keine detaillierten Beschreibungen zu den in diesem Beispiel verwendeten Pig Latin-Anweisungen. Informationen zu den in diesem Beispiel verwendeten Pig Latin-Anweisungen finden Sie unter [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md).

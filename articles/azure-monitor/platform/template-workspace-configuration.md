@@ -11,16 +11,19 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: 46be596cbd2641b9ecd3206f44a6e7de7beed255
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: c59e0e7cd846f77082b7131aaec15e4945a18191
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417504"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110153"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Sie können [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
 
 * Erstellen eines Arbeitsbereichs und Festlegen des Tarifs 
@@ -40,9 +43,9 @@ Dieser Artikel enthält Vorlagenbeispiele, die einen Teil der Konfiguration vera
 Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in diesem Beispiel verwendet werden.
 
 | Ressource | Ressourcentyp | API-Version |
-|:---|:---|:---|:---|
+|:---|:---|:---|
 | Arbeitsbereich   | workspaces    | 2017-03-15-preview |
-| Suchen,      | savedSearches | 2017-03-15-preview |
+| Suchen,      | savedSearches | 2015-03-20 |
 | Datenquelle | datasources   | 2015-11-01-preview |
 | Lösung    | solutions     | 2015-11-01-preview |
 
@@ -101,7 +104,7 @@ Für folgende Parameter wird ein Standardwert festgelegt:
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
@@ -122,7 +125,7 @@ Für folgende Parameter wird ein Standardwert festgelegt:
    * Führen Sie bei Verwendung von PowerShell die folgenden Befehle in dem Ordner mit der Vorlage aus:
    
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
         ```
 
    * Führen Sie bei Verwendung der Befehlszeile die folgenden Befehle in dem Ordner mit der Vorlage aus:
@@ -218,7 +221,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
   },
   "resources": [
     {
-      "apiVersion": "2017-03-15-preview",
+      "apiVersion": "2015-11-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -230,7 +233,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       },
       "resources": [
         {
-          "apiVersion": "2017-03-15-preview",
+          "apiVersion": "2015-03-20",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -379,7 +382,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
           }
         },
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2015-03-20",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [
@@ -500,7 +503,7 @@ So stellen Sie die Beispielvorlage bereit
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>Befehlszeile

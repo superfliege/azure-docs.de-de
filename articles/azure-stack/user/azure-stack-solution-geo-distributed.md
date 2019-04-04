@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c2b0d022c81dffe5e98932c22b9707eb10b7e63
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860583"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481721"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack
 
@@ -123,7 +123,7 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Erstellen der Web-App-Bereitstellung in beiden Clouds
 
-1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier**, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
+1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie Runtimeidentifier, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -472,7 +472,7 @@ Exportieren Sie das zusammengeführte SSL-Zertifikat mit dem privaten Schlüssel
 
 Eine Datei für den privaten Schlüssel wird per OpenSSL erstellt. Führen Sie zum Exportieren des Zertifikats nach PFX den folgenden Befehl aus, und ersetzen Sie die Platzhalter *<private-key-file>* und *<merged-certificate-file>* durch die Pfade zum privaten Schlüssel und die zusammengeführte Zertifikatdatei.
 
-```PowerShell
+```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
 ```
 

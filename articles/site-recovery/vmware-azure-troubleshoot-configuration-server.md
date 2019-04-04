@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107592"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -25,9 +25,9 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
 1. Öffnen Sie die Datei „C:\Programme\ASR\home\svsystems\var\configurator_register_host_static_info.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente**.) Fehler können durch mehrere Probleme verursacht werden.
 
 2. Suchen Sie nach der Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden). Wenn die Zeichenfolge gefunden wird:
-    1. Überprüfen Sie, ob die angeforderte Host-ID mit der Host-ID des Quellcomputers übereinstimmt.
-    2. Überprüfen Sie, ob der Quellcomputer über mindestens eine der physischen Netzwerkkarte zugewiesene IP-Adresse verfügt. Damit der Agent erfolgreich beim Konfigurationsserver registriert werden kann, muss der Quellcomputer über mindestens eine der physischen Netzwerkkarte zugewiesene IP v4-Adresse verfügen.
-    3. Führen Sie einen der folgenden Befehle auf dem Quellcomputer aus, um alle IP-Adressen des Quellcomputers abzurufen:
+   1. Überprüfen Sie, ob die angeforderte Host-ID mit der Host-ID des Quellcomputers übereinstimmt.
+   2. Überprüfen Sie, ob der Quellcomputer über mindestens eine der physischen Netzwerkkarte zugewiesene IP-Adresse verfügt. Damit der Agent erfolgreich beim Konfigurationsserver registriert werden kann, muss der Quellcomputer über mindestens eine der physischen Netzwerkkarte zugewiesene IP v4-Adresse verfügen.
+   3. Führen Sie einen der folgenden Befehle auf dem Quellcomputer aus, um alle IP-Adressen des Quellcomputers abzurufen:
       - Für Windows: `> ipconfig /all`
       - Für Linux: `# ifconfig -a`
 
@@ -82,7 +82,7 @@ Ein für die Authentifizierung von Site Recovery erforderliches Zertifikat kann 
 
 ## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Fehler beim Aktivieren von Windows-Lizenz von Server Standard EVALUATION zu Server Standard
 
-1. Im Rahmen der Konfigurationsserver-Bereitstellung durch OVF wird eine Evaluierungslizenz verwendet, die 180 Tage lang gültig ist. Sie müssen diese Lizenz aktivieren, bevor sie abgelaufen ist. Andernfalls kann dies zu einem häufigen Herunterfahren des Konfigurationsservers und damit zu einer Behinderung der Replikationsaktivitäten führen.
+1. Im Rahmen der Konfigurationsserver-Bereitstellung durch OVF wird eine Evaluierungslizenz verwendet, die 180 Tage lang gültig ist. Sie müssen diese Lizenz aktivieren, bevor sie abgelaufen ist. Andernfalls kann dies zu einem häufigen Herunterfahren des Konfigurationsservers und damit zu einer Behinderung der Replikationsaktivitäten führen.
 2. Wenn Sie die Windows-Lizenz nicht aktivieren können, wenden Sie sich an das [Windows-Supportteam](https://aka.ms/Windows_Support), um das Problem zu lösen.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Registrieren des Quellcomputers beim Konfigurationsserver

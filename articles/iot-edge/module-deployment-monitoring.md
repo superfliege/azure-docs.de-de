@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100105"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107813"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
@@ -31,8 +31,8 @@ Der Schwerpunkt dieses Artikels liegt auf der Konfigurations- und Überwachungsp
 1. Ein Operator definiert eine Bereitstellung, in der ein Satz von Modulen sowie die Zielgeräte beschrieben werden. Jede Bereitstellung verfügt über ein Bereitstellungsmanifest, das diese Informationen enthält. 
 2. Der IoT Hub-Dienst kommuniziert mit allen Zielgeräten, um sie mit den gewünschten Modulen zu konfigurieren. 
 3. Der IoT Hub-Dienst ruft den Status von den IoT Edge-Geräten ab und macht diese für den Operator verfügbar.  Beispielsweise kann ein Operator sehen, wenn ein Edge-Gerät nicht erfolgreich konfiguriert wurde oder wenn bei einem Modul während der Laufzeit ein Fehler auftritt. 
-4. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert. Beispielsweise konfiguriert eine Bereitstellung, die auf alle IoT Edge-Geräte in Washington State ausgerichtet ist, automatisch ein neues IoT Edge-Gerät, sobald es bereitgestellt und der Gerätegruppe für Washington State hinzugefügt wurde. 
- 
+4. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert. Eine Bereitstellung, die auf alle IoT Edge-Geräte in Washington State ausgerichtet ist, konfiguriert ein neues IoT Edge-Gerät beispielsweise automatisch, sobald es bereitgestellt und der Gerätegruppe für Washington State hinzugefügt wurde. 
+ 
 In diesem Artikel werden die einzelnen Komponenten beschrieben, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Bereitstellung
@@ -52,7 +52,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, in dem die Module beschrieben
 Die Konfigurationsmetadaten für jedes Modul enthalten Folgendes: 
 
 * Version 
-* Typ 
+* Type 
 * Status (z.B. „Wird ausgeführt“ oder „Beendet“) 
 * Neustartrichtlinie 
 * Image- und Containerregistrierung

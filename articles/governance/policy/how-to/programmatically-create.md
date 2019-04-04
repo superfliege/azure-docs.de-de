@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b80a2effb4cdfe45ad3f37785f7e97449d60f00c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340143"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768603"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
@@ -95,8 +95,8 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
 
    Ersetzen Sie _ContosoRG_ durch den Namen Ihrer gewünschten Ressourcengruppe.
 
-   Der **Scope**-Parameter in `New-AzPolicyAssignment` kann auch mit Abonnements und Verwaltungsgruppen verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad, den die Eigenschaft **ResourceId** in `Get-AzResourceGroup` zurückgibt. Das Muster für **Scope** sieht für jeden Container wie folgt aus.
-   Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
+   Der Parameter **Scope** für `New-AzPolicyAssignment` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad, den die Eigenschaft **ResourceId** in `Get-AzResourceGroup` zurückgibt. Das Muster für **Scope** sieht für jeden Container wie folgt aus. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe.
+   `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
 
    - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Ressourcengruppe: `/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -183,24 +183,24 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
 
 1. Kopieren Sie den folgenden JSON-Codeausschnitt, um eine Datei mit einer JSON-Richtlinienzuweisung zu erstellen.
 
-  ```json
-  {
-      "if": {
-          "allOf": [{
-                  "field": "type",
-                  "equals": "Microsoft.Storage/storageAccounts"
-              },
-              {
-                  "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
-                  "equals": "Allow"
-              }
-          ]
-      },
-      "then": {
-          "effect": "audit"
-      }
-  }
-  ```
+   ```json
+   {
+       "if": {
+           "allOf": [{
+                   "field": "type",
+                   "equals": "Microsoft.Storage/storageAccounts"
+               },
+               {
+                   "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+                   "equals": "Allow"
+               }
+           ]
+       },
+       "then": {
+           "effect": "audit"
+       }
+   }
+   ```
 
    Weitere Informationen zum Erstellen einer Richtliniendefinition finden Sie unter [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).
 

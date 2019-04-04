@@ -3,17 +3,17 @@ title: Unterstützte Kartenstile in Azure Maps | Microsoft-Dokumentation
 description: In Azure Maps unterstützte Kartenstile
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 923b9fef75fa610ee817a86ce0b4d6b322153f01
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113430"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570537"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -27,6 +27,7 @@ Der Kartenstil **Straße** ist eine Standardkarte, die Straßen, natürliche und
 * [Kartenbild](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * JS-Kartensteuerelement
+* Android-Kartensteuerelement
 
 ## <a name="satellite"></a>Satellit 
 Der Kartenstil **Satellit** ist eine Kombination aus Satellitenbildern und Luftaufnahmen.
@@ -36,6 +37,7 @@ Der Kartenstil **Satellit** ist eine Kombination aus Satellitenbildern und Lufta
 **Anwendbare APIs:**
 * [Satellitenkachel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * JS-Kartensteuerelement
+* Android-Kartensteuerelement
 
 ## <a name="satelliteroadlabels"></a>Satellite_Road_Labels
 Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen Satellitenbilder und Luftaufnahmen überlagern.
@@ -44,6 +46,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 
 **Anwendbare APIs:**
 * JS-Kartensteuerelement
+* Android-Kartensteuerelement
 
 ## <a name="grayscaledark"></a>grayscale_dark
 **grayscale_dark** ist eine dunkle Version des Kartenstils „Straße“.
@@ -52,6 +55,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 
 **Anwendbare APIs:**
 * JS-Kartensteuerelement 
+* Android-Kartensteuerelement
 
 ## <a name="night"></a>Nacht
 **Nacht** ist eine dunkle Version des Kartenstils „Straße“ mit farbigen Straßen und Symbolen.
@@ -60,6 +64,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 
 **Anwendbare APIs:**
 * JS-Kartensteuerelement
+* Android-Kartensteuerelement
 
 ## <a name="roadshadedrelief"></a>road_shaded_relief
 **road shaded relief** (Relief mit schattierten Straßen) ist eine Azure Maps-Hauptformatvorlage mit Konturen der Erde.
@@ -67,5 +72,6 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 ![schattiertes Relief](./media/supported-map-styles/shaded-relief.png)
 
 **Anwendbare APIs:**
-* JS-Kartensteuerelement
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* JS-Kartensteuerelement
+* Android-Kartensteuerelement

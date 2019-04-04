@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8fa873ca1ab20fbd8b3ca4ff57507adf34529246
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903656"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -49,7 +49,7 @@ Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (G
 
 ## <a name="create-the-data-file"></a>Erstellen der Datendatei
 
-Mit dem linearen Regressionsmodell, das Sie im Notebook erstellen, werden die Daten aus einer Datei namens *cricket_chirps.csv* in das Projekt importiert. Diese Datei können Sie entweder aus [GitHub - Azure Notebooks Samples (GitHub: Azure Notebooks-Beispiele)] (https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps) kopieren, oder Sie erstellen sie, indem Sie die Daten direkt eingeben. In den folgenden Abschnitten werden beide Ansätze beschrieben.
+Mit dem linearen Regressionsmodell, das Sie im Notebook erstellen, werden die Daten aus einer Datei namens *cricket_chirps.csv* in das Projekt importiert. Diese Datei können Sie entweder aus [GitHub - Azure Notebooks Samples](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps) (GitHub: Azure Notebooks-Beispiele) kopieren, oder Sie erstellen sie, indem Sie die Daten direkt eingeben. In den folgenden Abschnitten werden beide Ansätze beschrieben.
 
 ### <a name="upload-the-data-file"></a>Hochladen der Datendatei
 
@@ -181,7 +181,7 @@ Sie verwenden mehrere von diesen Befehlen, wenn Sie das Notebook in den folgende
     ```markdown
     # Example Linear Regression
 
-    This notebook contains a walkthrough of a simple linear regression. The data, obtained from [college.cengage.com](http://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html), relates the rate of cricket chirps to temperature from *The Song of Insects*, by Dr. G. W. Pierce, Harvard College Press.
+    This notebook contains a walkthrough of a simple linear regression. The data, obtained from [college.cengage.com](https://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html), relates the rate of cricket chirps to temperature from *The Song of Insects*, by Dr. G. W. Pierce, Harvard College Press.
 
     In this example we're using the count of chirps per minute as the independent varible to then predict the dependent variable, temperature. In short, we're using a little data science to make ourselves a cricket thermometer. (You could also reverse the data and use temperature to predict the number of chirps, but it's more fun to use crickets as the thermometer itself!)
 

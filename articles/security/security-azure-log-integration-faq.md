@@ -4,7 +4,7 @@ description: In diesem Artikel werden Fragen zur Azure-Protokollintegration bean
 services: security
 documentationcenter: na
 author: TomShinder
-manager: barbkess
+manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114925"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005850"
 ---
 # <a name="azure-log-integration-faq"></a>Azure-Protokollintegration – Häufig gestellte Fragen
 
@@ -32,6 +32,8 @@ In diesem Artikel werden häufig gestellte Fragen zur Azure-Protokollintegration
 Die Azure-Protokollintegration ist ein Dienst des Windows-Betriebssystems, mit dem Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren können. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Objekte, ob lokal oder in der Cloud. Sie können dann Sicherheitsereignisse für Ihre Anwendungen aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben.
 
 Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Ist die Integration der Software für die Azure-Protokollintegration kostenlos?
 
@@ -97,7 +99,7 @@ Mit dem Befehl **azlog createazureid** wird versucht, in allen Azure AD-Mandante
 
 Fehler
 
-  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.* (Warnung beim Erstellen der Rollenzuweisung: Fehler bei der Autorisierung. Client „xxx“ mit der Objekt-ID „xxx“ hat keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/70d95299-d689-4c97-b971-0d8ff000000“.)
+  *Warning creating Role Assignment - AuthorizationFailed: The client 'janedo\@microsoft.com' with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.* (Warnung beim Erstellen der Rollenzuweisung: Fehler bei der Autorisierung. Client „janedo@microsoft.com“ mit der Objekt-ID „xxx“ hat keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/70d95299-d689-4c97-b971-0d8ff000000“.)
 
 Der Befehl **azlog authorize** weist dem mit **azlog createazureid** erstellten Azure AD-Dienstprinzipal für die angegebenen Abonnements die Rolle „Leser“ zu. Handelt es sich bei der Azure-Anmeldung nicht um einen Co-Administrator oder Besitzer des Abonnements, tritt ein Fehler mit einem Hinweis auf eine nicht erfolgreiche Autorisierung auf. Für diesen Vorgang wird die in Azure verfügbare rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) des Co-Administrators oder Besitzers benötigt.
 
@@ -118,8 +120,8 @@ Ausführliche Informationen zum Abrufen, Ändern und Festlegen der Konfiguration
 
 Im folgenden Beispiel wird die typische Konfiguration der Azure-Diagnose abgerufen:
 
-    -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
+    Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
@@ -136,7 +138,7 @@ Im folgenden Beispiel wird die Konfiguration der Azure-Diagnose geändert. In di
 Im folgenden Beispiel wird die typische Konfiguration der Azure-Diagnose festgelegt:
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
+    Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
 Vergewissern Sie sich nach dem Vornehmen von Änderungen im Speicherkonto, dass die richtigen Ereignisse erfasst werden.
 

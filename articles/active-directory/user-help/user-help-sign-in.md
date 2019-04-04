@@ -1,5 +1,5 @@
 ---
-title: Anmelden mit der zweistufige Überprüfung oder einer Sicherheitsinformation – Azure Active Directory | Microsoft-Dokumentation
+title: Anmelden mit der zweistufigen Überprüfung oder mit Sicherheitsinformationen – Azure Active Directory | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie sich mithilfe der verschiedenen Methoden zur Identitätsüberprüfung in den Sicherheitsinformationen anmelden können.
 services: active-directory
 author: eross-msft
@@ -11,21 +11,22 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aca321ac0902d115f4fc7622992d29183c1d35c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 84c71430d05bf0755fd8a7c096a2afcb2f69d292
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452593"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116723"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Anmelden mit der zweistufige Überprüfung oder einer Sicherheitsinformation
 Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Authentifizierungsmethode bei Ihrem Konto anmelden.
 
->[!Note]
->Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Authentifizierungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
-
->Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Authentifizierungsmethoden mithilfe der schrittweisen Anleitungen in folgenden Artikeln einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li></ul>
+> [!Note]
+> Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Authentifizierungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
+> 
+> Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Authentifizierungsmethoden mithilfe der schrittweisen Anleitungen in folgenden Artikeln einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Anmelden mithilfe einer Authenticator-App-Benachrichtigung auf dem Mobilgerät
 

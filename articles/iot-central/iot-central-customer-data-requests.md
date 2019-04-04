@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bb5e263b0332f957b4e7f4a928ccd53f639bcd9c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2952008ca788a620f2b558d5997aeebd59196b7a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629404"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314567"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -33,7 +33,7 @@ Wenn Sie Microsoft Enterprise Services verwenden, generiert Microsoft einige Inf
 
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten
 
-Die Fähigkeit zum Löschen von Benutzerdaten wird nur über die Verwaltungsseite von IoT Central bereitgestellt. Anwendungsadministratoren können den zu löschenden Benutzer auswählen und in der oberen rechten Ecke der Anwendung auf **Löschen** klicken, um den Datensatz zu löschen. Anwendungsadministratoren können auch einzelne Konten entfernen, die nicht mehr der fraglichen Anwendung zugeordnet sind.
+Die Fähigkeit zum Löschen von Benutzerdaten wird nur über die Verwaltungsseite von IoT Central bereitgestellt. Anwendungsadministratoren können den zu löschenden Benutzer und in der oberen rechten Ecke der Anwendung **Löschen** auswählen, um den Datensatz zu löschen. Anwendungsadministratoren können auch einzelne Konten entfernen, die nicht mehr der fraglichen Anwendung zugeordnet sind.
 
 Nachdem ein Benutzer gelöscht wurde, werden ihm keine weiteren Warnungen mehr per E-Mail gesendet. Seine E-Mail-Adresse muss jedoch einzeln aus jeder konfigurierten Warnung entfernt werden.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 202739e9898b871af8ae478192d015671b807b7b
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 44ff08c84b3e95a5b598ebf4279fc2ffc46313e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863439"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto
 Wenn Sie über ein Office 365-Abonnement verfügen, können Sie mit Ihrem Office 365-Konto ein Azure-Abonnement erstellen. Melden Sie sich mit Ihrem Office 365-Benutzernamen und -Kennwort beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie virtuelle Computer einrichten oder andere Azure-Dienste verwenden möchten, müssen Sie sich für ein Azure-Abonnement registrieren. Sie können Ihr Azure-Abonnement gemeinsam mit anderen nutzen und [rollenbasierte Zugriffssteuerung verwenden, um den Zugriff auf Ihr Azure-Abonnement und Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
@@ -57,4 +57,4 @@ Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

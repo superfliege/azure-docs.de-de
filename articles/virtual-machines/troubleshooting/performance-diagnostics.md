@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387386"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441065"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Leistungsdiagnose für virtuelle Azure-Computer
 
@@ -143,10 +143,10 @@ Sie können die Informationen zum Speicherkonto über die Schaltfläche „Einst
 ### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>Wie gebe ich diese Daten für den Microsoft-Kundendienst frei? 
 Es gibt verschiedene Möglichkeiten, den Diagnosebericht für Microsoft freizugeben.
 
-**Option 1**: Den neuesten Bericht automatisch freigeben  
+**Option 1:** Den neuesten Bericht automatisch freigeben  
 Wenn Sie ein Supportticket bei Microsoft eröffnen, ist es wichtig, den Leistungsdiagnosebericht freizugeben. Wenn Sie angegeben haben, dass diese Informationen nach dem Ausführen der Diagnose für Microsoft freigegeben werden (indem Sie das Kontrollkästchen **Ich stimme der Übermittlung von Diagnoseinformationen an Microsoft zu**, kann Microsoft bis zu 30 Tage nach dem Datum der Ausführung über einen SAS-Link zur ZIP-Ausgabedatei auf den Bericht in Ihrem Speicherkonto zugreifen. Dem Supporttechniker steht nur der neueste Bericht zur Verfügung. 
 
-**Option 2**: Generieren einer Shared Access Signature (SAS) für die komprimierte Datei mit dem Diagnosebericht  
+**Option 2:** Generieren einer Shared Access Signature (SAS) für die komprimierte Datei mit dem Diagnosebericht  
 Sie können mithilfe von Shared Access Signatures einen Link zur komprimierten Datei mit dem Bericht an andere Personen weitergeben. Gehen Sie dazu folgendermaßen vor: 
 1.  Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem die Diagnosedaten gespeichert sind.
 1.  Wählen Sie im Abschnitt **Blobdienst** die Option **Blobs** aus. 
@@ -156,7 +156,7 @@ Sie können mithilfe von Shared Access Signatures einen Link zur komprimierten D
 1.  Klicken Sie auf **Blob-SAS-Token und URL generieren**.
 1.  Kopieren Sie die **Blob-SAS-URL**, und geben Sie sie an den Supporttechniker weiter. 
 
-**Option 3**: Herunterladen des Berichts aus dem Speicherkonto
+**Option 3:** Herunterladen des Berichts aus dem Speicherkonto
 
 Sie können eine komprimierte Ausgabedatei mit einem Leistungsdiagnosebericht auch ermitteln, indem Sie die Schritte 1–4 aus Option 2 durchführen. Laden Sie die Datei herunter. Senden Sie sie dann per E-Mail an den Supporttechniker, oder fragen Sie den Techniker nach einem Speicherort, in den Sie die Datei hochladen können.  
 

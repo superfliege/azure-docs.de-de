@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438000"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074742"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Anzeigen des Inhalts einer Datei, die mit der Änderungsnachverfolgung überwacht wird
 
@@ -62,11 +62,11 @@ In den folgenden Schritten wird exemplarisch das Aktivieren der Nachverfolgung f
 
 1. Auf der Seite **Änderungsdetails** sehen Sie den Standard vor und nach der Dateiinformation. Klicken Sie links oben auf **Änderungen am Dateiinhalt anzeigen**, um den Inhalt der Datei anzuzeigen.
 
-  ![Änderungsdetails](./media/change-tracking-file-contents/change-details.png)
+   ![Änderungsdetails](./media/change-tracking-file-contents/change-details.png)
 
 1. Die neue Seite zeigt Ihnen den Dateiinhalt in einer nebeneinander angeordneten Ansicht. Sie können auch **Inline** auswählen, um eine Inlineansicht der Änderungen anzuzeigen.
 
-  ![Anzeigen von Dateiänderungen](./media/change-tracking-file-contents/view-file-changes.png)
+   ![Anzeigen von Dateiänderungen](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -75,5 +75,5 @@ Besuchen Sie das Tutorial zur Änderungsnachverfolgung, um mehr über die Verwen
 > [!div class="nextstepaction"]
 > [Problembehandlung für Änderungen in Ihrer Umgebung](automation-tutorial-troubleshoot-changes.md)
 
-* Verwenden Sie die [Protokollsuche in Log Analytics](../log-analytics/log-analytics-log-searches.md) , um ausführliche Daten zur Änderungsnachverfolgung anzuzeigen.
+* Verwenden Sie [Protokollsuchen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md), um ausführliche Nachverfolgungsdaten anzuzeigen.
 

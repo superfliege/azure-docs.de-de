@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997021"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Pig-Aktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,14 +82,15 @@ Die HDInsight Pig-Aktivität in einer Data Factory-[Pipeline](data-factory-creat
 ```
 
 ## <a name="syntax-details"></a>Syntaxdetails
+
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| name |Der Name der Aktivität |JA |
+| name |Der Name der Aktivität |Ja |
 | Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein  |
-| type |HDInsightPig |JA |
+| type |HDInsightPig |Ja |
 | inputs |Mindestens eine von der Pig-Aktivität genutzte Eingabe |Nein  |
-| outputs |Mindestens eine von der Pig-Aktivität erzeugte Ausgabe |JA |
-| linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |JA |
+| outputs |Mindestens eine von der Pig-Aktivität erzeugte Ausgabe |Ja |
+| linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |Ja |
 | script |Angabe des Pig-Skripts inline |Nein  |
 | Skriptpfad |Speichern Sie das Pig-Skript in Azure Blob Storage, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein  |
 | defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Pig-Skripts an. |Nein  |

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 993d3dc065b792cc6d4ca0b1321cb1950cea85d8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 810f9bb81d367cfe70e59d62d81a9e129cf80e6b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652610"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225979"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -24,21 +24,24 @@ Eine HDInsight-Anwendung kann von Benutzern in einem HDInsight-Cluster installie
 
 Die folgende Liste zeigt die veröffentlichten Anwendungen:
 
-* **AtScale Intelligence Platform** verwandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Hochskalierung. Die Anwendung ermöglicht Ihnen das Abfragen von Milliarden von Datenzeilen. Dabei werden interaktiv die BI-Tools von Microsoft Excel, Power BI, Tableau-Software oder QlikView verwendet.
-* **Cask CDAP für HDInsight** stellt die erste einheitliche Integrationsplattform für Big Data bereit, die die Zeit bis zur Einführung in der Produktion für Datenanwendungen und Data Lakes um 80 % reduziert. Diese Anwendung unterstützt nur Standard HBase 3.4-Cluster.
-* **DATAIKU DDS on HDInsight** erlaubt Datenexperten, Prototypen für hochspezifische Dienste zu entwickeln und diese Dienste anschließend zu erstellen und bereitzustellen, um Rohdaten in wirkungsvolle Unternehmensprognosen zu verwandeln.
-* **Datameer** ist eine skalierbare Self-Service-Plattform zum Vorbereiten, Untersuchen und Steuern Ihrer Daten für die Analyse, mit der Sie komplexe Daten aus mehreren Quellen schneller in wertvolle unternehmensrelevante Informationen verwandeln und schnell hilfreiche Erkenntnisse für das gesamte Unternehmen gewinnen können.
-* **H2O Artificial Intelligence für HDInsight (Beta)** H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep Learning, k-Means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoder.
-* **Kyligence Enterprise**, unterstützt von Apache Kylin, ermöglicht es Geschäftsbenutzern und Datenanalysten, aus riesigen Datensätzen umgehend Erkenntnisse zu gewinnen. Mit modernster Machine Learning-Technologie und intelligenter Datenmodellierungsfunktionalität verbessert es die Produktivität der Big Data-Analyse erheblich. 
-* **Self-Service Data Prep von Paxata**
-* **Spark Job Server für KNIME Spark Executor:** Spark Job Server für KNIME Spark Executor wird zum Verbinden der KNIME Analytics-Plattform mit HDInsight-Clustern verwendet.
-* **Starburst Presto** ist eine schnelle und skalierbare verteilte SQL-Abfrageengine. Dank der architekturbedingten Trennung der Speicher- und Computekomponenten eignet sich Presto perfekt zum Abfragen von Daten in Azure Data Lake Storage, Azure Blob Storage, SQL- und NoSQL-Datenbanken sowie in anderen Datenquellen.
-* **Streamsets Data Collector für HDInsight** stellt eine voll ausgestattete integrierte Entwicklungsumgebung (IDE) bereit, mit der Sie n:n-Erfassungspipelines entwerfen, testen, bereitstellen und verwalten können. Diese Pipelines mischen Strom- und Batchdaten und enthalten eine Reihe von datenstrominternen Transformationen – ohne benutzerdefinierten Code schreiben zu müssen. 
-* **Striim** (Aussprache: Stream) ist eine End-to-End-Integrations- und Intelligence-Plattform für Streamingdaten, die eine kontinuierliche Erfassung, Verarbeitung und Analyse unterschiedlicher Datenströme ermöglicht.
-* **[Trifacta](https://www.trifacta.com/)** ermöglicht es Dateningenieuren und -analysten, die vielfältigen Daten von heute effizienter zu erforschen und aufzubereiten, indem sie maschinelles Lernen nutzen, um eine bestmögliche Benutzererfahrung, einen bahnbrechenden Workflow und eine überragende Architektur zu bieten.
-* **Unifi Data Platform** ist eine nahtlos integrierte Suite von Self-Service-Datentools, mit der Unternehmensbenutzer datenbezogene Herausforderungen bewältigen können, um höhere Umsätze zu erzielen, Kosten zu senken oder die operative Komplexität zu verringern. 
-* **WANdisco Fusion HDI-App** ermöglicht dauerhafte konsistente Konnektivität mit Daten, während diese sich ändern, und zwar unabhängig vom Speicherort. Sie bietet Ihnen jederzeit und an jedem Ort Zugriff auf Ihre Daten – ohne Ausfallzeiten oder Unterbrechungen.
-* **Waterline** katalogisiert, strukturiert und steuert Daten und nutzt künstliche Intelligenz, um Daten mit geschäftlichen Begriffen automatisch zu markieren. Der Geschäftsdatenkatalog von Waterline in eine wichtige Erfolgskomponente für Self-Service-Analysen, Compliance und Governance sowie für IT-Verwaltungsinitiativen.
+|Anwendung |Clustertyp(en) | BESCHREIBUNG |
+|---|---|---|
+|AtScale Intelligence Platform |Hadoop |AtScale wandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Skalierung um, wodurch Sie vertraute Business Intelligence-Tools (von Microsoft Excel, Power BI und Tableau Software bis hin zu Qlikview), die Sie bereits besitzen und zu schätzen wissen, interaktiv zum Abfragen von Milliarden von Zeilen von Daten verwenden können. |
+|CDAP 4.2, 4.3 for HDInsight |hbase |CDAP ist die erste einheitliche Integrationsplattform für Big Data, die die Amortisationszeit für Hadoop beschleunigt und Informatikern ermöglicht, Self-Service-Daten bereitzustellen. CDAP ist Open Source und erweiterbar, wodurch Hürden für die Innovation entfernt werden. Anforderungen: 4 Regionsknoten und eine D3 v2-Instanz (mindestens). |
+|Datameer |Hadoop |Die skalierbare Self-Service-Plattform von Datameer zum Vorbereiten, Untersuchen und Steuern Ihrer Daten für die Analyse, mit der Sie komplexe Daten aus mehreren Quellen schneller in wertvolle unternehmensrelevante Informationen verwandeln und schnell hilfreiche Erkenntnisse für das gesamte Unternehmen gewinnen können. |
+|Dataiku DSS on HDInsight |Hadoop, Spark |Dataiku DSS ist eine Data Science-Plattform für Unternehmen, mit der Data Scientists und Data Analysts zusammenarbeiten können, um neue Datenprodukte und Dienste effizienter zu entwerfen und auszuführen, wodurch Rohdaten in aussagekräftig Vorhersagen konvertiert werden. |
+|WANdisco Fusion HDI App (2.12.3, 2.12.1, 2.11.2) |Hadoop, Spark, HBase, Storm, Kafka |Die Beibehaltung der Datenkonsistenz in einer verteilten Umgebung ist eine große Herausforderung für Datenvorgänge. WANdisco Fusion ist eine professionelle Softwareplattform, die dieses Problem löst, indem unstrukturierte Datenkonsistenz zwischen beliebigen Umgebungen ermöglicht wird. |
+|H2O Sparkling Water for HDInsight |Spark |H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep learning, K-means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoders. |
+|Striim for Real-Time Data Integration to HDInsight |Hadoop, HBase, Storm, Spark, Kafka |Striim (Aussprache: Stream) ist eine End-to-End-Integrations- und Intelligence-Plattform für Streamingdaten, die eine kontinuierliche Erfassung, Verarbeitung und Analyse unterschiedlicher Datenströme ermöglicht. |
+|Jumbune for HDInsight |Hadoop, Spark |Jumbune unterstützt Unternehmen im Allgemeinen wie folgt: 1. Beschleunigt die Workloadleistung von Tez, MapReduce & Spark-basiertes Hive, Java, und Scala. 2. Überwacht Hadoop-Cluster proaktiv. 3. Richtet Datenqualitätsverwaltung für verteilte Dateisysteme ein. |
+|Kyligence Enterprise |Hadoop, HBase, Spark |Unterstützt von Apache Kylin ermöglicht Kyligence Enterprise Business Intelligence für Big Data. Kyligence Enterprise ist eine professionelle OLAP-Engine für Hadoop, mit der Business Analysten Business Intelligence für Hadoop mit Data Warehouse- und BI-Methoden entwerfen können, die dem Industriestandard entsprechen. |
+|Spark Job Server for KNIME Spark Executor |Spark |Spark Job Server for KNIME Spark Executor wird zum Verbinden der KNIME Analytics-Plattform mit HDInsight-Clustern verwendet. |
+|Starburst Presto on Azure HDInsight, Starburst Presto (v0.213-e) |Hadoop |Presto ist eine schnelle und skalierbare verteilte SQL-Abfrage-Engine. Dank der architekturbedingten Trennung der Speicher- und Computekomponenten eignet sich Presto perfekt zum Abfragen von Daten in Azure Data Lake Storage, Azure Blob Storage, SQL- und NoSQL-Datenbanken sowie in anderen Datenquellen. |
+|StreamSets Data Collector for HDInsight Cloud |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector ist eine einfache, leistungsstarke Engine, die Daten in Echtzeit übermittelt. Mit Data Collector können Sie Daten in Ihren Datenströmen weiterleiten und verarbeiten. Eine kostenlose 30-tägige Testlizenz steht zur Verfügung. |
+|[Trifacta Wrangler Enterprise](https://www.trifacta.com/) |Hadoop, Spark, HBase |Trifacta Wrangler Enterprise für HDInsight unterstützt unternehmensweites Data Wrangling für Daten bei jeder Skalierung. Beim Ausführen von Trifacta in Azure entstehen die Kosten aus den Kosten für das Trifacta-Abonnement und den Kosten Azure-Infrastrukturkosten für die virtuellen Computer. |
+|Unifi Data Platform 3.1 |Hadoop, HBase, Storm, Spark |Unifi Data Platform ist eine nahtlos integrierte Sammlung von Self-Service-Datentools, mit der Unternehmensbenutzer datenbezogene Herausforderungen bewältigen können, um höhere Umsätze zu erzielen, Kosten zu senken oder die Komplexität des Betriebs zu verringern. |
+|Unraveldata APM |Spark |Unravel Data-App für HDInsight Spark-Cluster. |
+|Waterline Data Catalog |Spark |Waterline katalogisiert, strukturiert und steuert Daten und nutzt künstliche Intelligenz, um Daten automatisch mit geschäftlichen Begriffen zu markieren. Der Geschäftsdatenkatalog von Waterline in eine wichtige Erfolgskomponente für Self-Service-Analysen, Compliance und Governance sowie für IT-Verwaltungsinitiativen. |
 
 Für die Anleitungen in diesem Artikel wird das Azure-Portal verwendet. Sie können die Azure Resource Manager-Vorlage auch aus dem Portal exportieren oder eine Kopie der Resource Manager-Vorlage von Anbietern erhalten und Azure PowerShell und die klassische Azure-Befehlszeilenschnittstelle zum Bereitstellen der Vorlage verwenden.  Weitere Informationen finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
@@ -51,20 +54,20 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
 **Installieren einer HDInsight-Anwendung**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .
-3. Klicken Sie auf einen HDInsight-Cluster.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. Klicken Sie in der Kategorie **Konfigurationen** auf **Anwendungen**. Sie sehen eine Liste mit installierten Anwendungen. Sollte „Anwendungen“ nicht angezeigt werden, sind für diese Version des HDInsight-Clusters keine Anwendungen vorhanden.
+2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**.
+3. Wählen Sie dann einen HDInsight-Cluster aus der Liste aus.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen**. Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
    
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. Klicken Sie im Menü auf **Hinzufügen**. Eine Liste mit den vorhandenen HDInsight-Anwendungen wird angezeigt.
+5. Klicken Sie im Menü auf **+ Hinzufügen**. Ihnen wird eine Liste der verfügbaren Anwendungen angezeigt.  Wenn **+ Hinzufügen** ausgegraut ist, sind keine Anwendungen für diese Version des HDInsight-Clusters verfügbar.
    
     ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
 6. Klicken Sie auf eine der verfügbaren Anwendungen, und folgen Sie dann den Anweisungen zum Akzeptieren der rechtlichen Bedingungen.
 
-Sie können den Status der Installation über die Portalbenachrichtigungen verfolgen. (Klicken Sie oben im Portal auf das Glockensymbol.) Nach der Installation wird die Anwendung in der Liste „Installierte Apps“ angezeigt.
+Sie können den Status der Installation über die Portalbenachrichtigungen verfolgen. (Klicken Sie hierzu oben im Portal auf das Glockensymbol). (Klicken Sie oben im Portal auf das Glockensymbol.) Nach der Installation wird die Anwendung in der Liste „Installierte Apps“ angezeigt.
 
 ## <a name="install-applications-during-cluster-creation"></a>Installieren von Anwendungen während der Clustererstellung
-Sie haben die Möglichkeit, die HDInsight-Anwendung beim Erstellen eines Clusters zu installieren. Während des Prozesses werden HDInsight-Anwendungen installiert, nachdem der Cluster erstellt wurde und sich im ausgeführten Zustand befindet. Um während der Erstellung des Clusters Anwendungen über das Azure-Portal zu installieren, verwenden Sie die Option „--Custom--“ anstelle der Standardoption „--Quick create--“.
+Sie haben die Möglichkeit, die HDInsight-Anwendung beim Erstellen eines Clusters zu installieren. Während des Prozesses werden HDInsight-Anwendungen installiert, nachdem der Cluster erstellt wurde und sich im ausgeführten Zustand befindet. Verwenden Sie die Option **Benutzerdefiniert** anstelle der Standardoption **Schnellerstellung**, um Anwendungen während der Clustererstellung über das Azure-Portal zu installieren.
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Auflisten der installierten HDInsight-Apps und Eigenschaften
 Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen Cluster und den Eigenschaften der einzelnen installierten Anwendungen angezeigt.
@@ -72,18 +75,21 @@ Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen
 **Auflisten von HDInsight-Anwendungen und Eigenschaften**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im linken Menü auf **HDInsight-Cluster** . 
-3. Klicken Sie auf einen HDInsight-Cluster.
-4. Klicken Sie in **Einstellungen** unter der Kategorie **Konfiguration** auf **Anwendungen**. Die installierten Apps werden auf der rechten Seite aufgeführt. 
+2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**.
+3. Wählen Sie dann einen HDInsight-Cluster aus der Liste aus.
+4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen**. Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
    
     ![HDInsight-Anwendungen – Installierte Apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
-5. Klicken Sie auf eine installierte Anwendung, um die Eigenschaft anzuzeigen. Die Eigenschaft zeigt Folgendes:
-   
-   * App-Name: Name der Anwendung.
-   * Status: Status der Anwendung. 
-   * Webseite: Die URL der Webanwendung, die Sie auf dem Edgeknoten bereitgestellt haben. Die Anmeldeinformationen sind mit den HTTP-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben.
-   * HTTP-Endpunkt: Die Anmeldeinformationen sind mit den HTTP-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. 
-   * SSH-Endpunkt: Sie können über SSH eine Verbindung mit dem Edgeknoten herstellen. Die SSH-Anmeldeinformationen sind mit den SSH-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+5. Wählen Sie eine der installierten Anwendungen aus, um die Eigenschaften anzuzeigen. Die Eigenschaft zeigt Folgendes:
+
+    |Eigenschaft | BESCHREIBUNG |
+    |---|---|
+    |App-Name |Der Anwendungsname. |
+    |Status |Anwendungsstatus |
+    |Webseite |Die URL der Webanwendung, die Sie auf dem Edgeknoten bereitgestellt haben. Die Anmeldeinformationen sind mit den HTTP-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. |
+    |SSH-Endpunkt |Sie können über SSH eine Verbindung mit dem Edgeknoten herstellen. Die SSH-Anmeldeinformationen sind mit den SSH-Benutzeranmeldeinformationen identisch, die Sie für den Cluster konfiguriert haben. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
+    |BESCHREIBUNG | Anwendungsbeschreibung |
+
 6. Klicken Sie zum Löschen einer Anwendung mit der rechten Maustaste darauf, und klicken Sie dann im Kontextmenü auf **Löschen**.
 
 ## <a name="connect-to-the-edge-node"></a>Herstellen einer Verbindung mit dem Edgeknoten

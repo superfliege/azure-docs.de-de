@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 14326714fc8258e184024edb83666d3ed0c3eee7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854250"
 ---
-# <a name="azure-data-factory-mapping-data-flow-unpivot-transformation"></a>Azure Data Factory Mapping Data Flow: Entpivotierungstransformation
+# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory: Entpivotierungstransformation
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +51,7 @@ Wenn Sie die Spaltenanordnung auf „Normal“ festlegen, werden alle pivotierte
 ![Entpivotierungstransformation](media/data-flow//unpivot7.png "Entpivotierungsoptionen 5")
 
 Im letzten Resultset der entpivotierten Daten werden die Spaltensummen angezeigt, die jetzt in separaten Zeilenwerten entpivotiert sind.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Verwenden der [Pivotierungstransformation](data-flow-pivot.md) zum Pivotieren von Zeilen zu Spalten

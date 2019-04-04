@@ -1,18 +1,18 @@
 ---
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit der CLI'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit CLI-Codeausschnitten
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: bryanla
-ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116722"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097609"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -167,19 +167,19 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 Genauso wie Schlüssel werden auch geheime Schlüssel mit ihren eigenen Befehlen verwaltet:
 
 - Löschen eines Geheimnisses mit dem Namen „SQLPassword“: 
-```azurecli
-az keyvault secret delete --vault-name ContosoVault -name SQLPassword
-```
+  ```azurecli
+  az keyvault secret delete --vault-name ContosoVault -name SQLPassword
+  ```
 
 - Auflisten aller gelöschten Geheimnisse in einem Schlüsseltresor: 
-```azurecli
-az keyvault secret list-deleted --vault-name ContosoVault
-```
+  ```azurecli
+  az keyvault secret list-deleted --vault-name ContosoVault
+  ```
 
 - Wiederherstellen eines Geheimnisses im gelöschten Zustand: 
-```azurecli
-az keyvault secret recover --name SQLPassword --vault-name ContosoVault
-```
+  ```azurecli
+  az keyvault secret recover --name SQLPassword --vault-name ContosoVault
+  ```
 
 - Bereinigen eines Geheimnisses im gelöschten Zustand: 
 

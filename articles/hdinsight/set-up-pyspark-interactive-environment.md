@@ -9,12 +9,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 45ba049717f2b9874bbac8d6493e13c2afc4b8f2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 8c0b40f0e6204d6cff59d3de3f20604d6913b9cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111632"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Einrichten einer interaktiven PySpark-Umgebung für Visual Studio Code
 
@@ -30,8 +30,8 @@ Mit dem Befehl **python/pip** wird die virtuelle Umgebung in Ihrem Home-Pfad ers
  
         ![Python: pip-Version](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-    > [!NOTE]
-    > Sie sollten Python manuell installieren, anstatt die Standardversion für MacOS zu verwenden.
+     > [!NOTE]
+     > Sie sollten Python manuell installieren, anstatt die Standardversion für MacOS zu verwenden.
 
 
 2. Installieren Sie **virtualenv** mit dem folgenden Befehl.

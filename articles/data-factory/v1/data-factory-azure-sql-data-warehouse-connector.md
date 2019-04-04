@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331233"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116197"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,8 +71,8 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDW**. |JA |
-| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. Es wird nur Standardauthentifizierung unterstützt. |JA |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDW**. |Ja |
+| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. Es wird nur Standardauthentifizierung unterstützt. |Ja |
 
 > [!IMPORTANT]
 > Konfigurieren Sie die [Azure SQL-Datenbankfirewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) und den Datenbankserver, um [Azure-Diensten den Zugriff auf den Server zu ermöglichen](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Wenn Sie nicht aus Azure stammende Daten in Azure SQL Data Warehouse kopieren, müssen Sie außerdem den entsprechenden IP-Adressbereich für den Computer konfigurieren, der Daten an Azure SQL Data Warehouse sendet. Dies gilt auch beim Kopieren von Daten aus lokalen Datenquellen mit Data Factory-Gateway.
@@ -84,7 +84,7 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| tableName |Name der Tabelle oder Sicht in der Azure SQL Data Warehouse-Datenbank, auf die der verknüpfte Dienst verweist. |JA |
+| tableName |Name der Tabelle oder Sicht in der Azure SQL Data Warehouse-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
@@ -197,28 +197,28 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 1. Der **mit der Quelle verknüpfte Dienst** hat den folgenden Typ: **AzureStorage** oder **AzureDataLakeStore mit Dienstprinzipalauthentifizierung**.
 2. Das **Eingabedataset** hat den folgenden Typ: **AzureBlob** oder **AzureDataLakeStore**, und der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
 
-    1. `rowDelimiter` muss **\n** sein.
-    2. `nullValue` ist auf eine **leere Zeichenfolge** ("") festgelegt, oder `treatEmptyAsNull` ist auf **true** festgelegt.
-    3. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der **Standardwert**.)
-    4. `escapeChar`, `quoteChar`, `firstRowAsHeader` und `skipLineCount` sind nicht angegeben.
-    5. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
+   1. `rowDelimiter` muss **\n** sein.
+   2. `nullValue` ist auf eine **leere Zeichenfolge** ("") festgelegt, oder `treatEmptyAsNull` ist auf **true** festgelegt.
+   3. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der **Standardwert**.)
+   4. `escapeChar`, `quoteChar`, `firstRowAsHeader` und `skipLineCount` sind nicht angegeben.
+   5. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
 
-    ```JSON
-    "typeProperties": {
-        "folderPath": "<blobpath>",
-        "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "<any delimiter>",
-            "rowDelimiter": "\n",
-            "nullValue": "",
-            "encodingName": "utf-8"
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
-        }
-    },
-    ```
+      ```JSON
+      "typeProperties": {
+       "folderPath": "<blobpath>",
+       "format": {
+           "type": "TextFormat",
+           "columnDelimiter": "<any delimiter>",
+           "rowDelimiter": "\n",
+           "nullValue": "",
+           "encodingName": "utf-8"
+       },
+       "compression": {
+           "type": "GZip",
+           "level": "Optimal"
+       }
+      },
+      ```
 
 3. Für die Kopieraktivität in der Pipeline ist unter **BlobSource** oder **AzureDataLakeStore** keine `skipHeaderLineCount`-Einstellung vorhanden.
 4. Für die Kopieraktivität in der Pipeline ist unter **SqlDWSink** keine `sliceIdentifierColumnName`-Einstellung vorhanden. (PolyBase stellt sicher, dass in einem Durchlauf entweder alle oder keine Daten aktualisiert werden). Um **Wiederholbarkeit** zu erreichen, kann `sqlWriterCleanupScript` verwendet werden.)
@@ -302,13 +302,13 @@ Data Factory erstellt die Tabelle im Zielspeicher mit dem gleichen Tabellennamen
 
 | SQL-Datenbank-Quellspaltentyp | SQL DW-Zielspaltentyp (Größenbeschränkung) |
 | --- | --- |
-| int | int |
+| Int | Int |
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | Bit | Bit |
-| DECIMAL | DECIMAL |
-| Numeric | DECIMAL |
+| Decimal | Decimal |
+| Numeric | Decimal |
 | Float | Float |
 | Money | Money |
 | Real | Real |
@@ -316,7 +316,7 @@ Data Factory erstellt die Tabelle im Zielspeicher mit dem gleichen Tabellennamen
 | Binär | Binär |
 | Varbinary | Varbinary (maximal 8000) |
 | Datum | Datum |
-| Datetime | Datetime |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Zeit | Zeit |
 | DateTimeOffset | DateTimeOffset |
@@ -349,28 +349,28 @@ Die Zuordnung ist mit der [SQL Server-Datentypzuordnung für ADO.NET](https://ms
 | binary |Byte[] |
 | Bit |Boolescher Wert |
 | char |String, Char[] |
-| date |Datetime |
-| DateTime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| DateTime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| DECIMAL |DECIMAL |
+| Decimal |Decimal |
 | FILESTREAM-Attribut (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |DECIMAL |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |DECIMAL |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |DECIMAL |
+| smallmoney |Decimal |
 | sql_variant |Object * |
 | text |String, Char[] |
-| time |Zeitraum |
+| time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
