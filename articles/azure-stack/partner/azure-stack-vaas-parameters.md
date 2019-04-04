@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f66f57799e1e6b6d0e27624e3dc08b4de5d09cac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9513b552ce6bfd525077270b90d3d10e31c015c5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766198"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484961"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack
 
@@ -43,7 +43,7 @@ Umgebungsparameter beschreiben die Azure Stack-Umgebung, die getestet wird. Dies
 1. Melden Sie sich bei der DVM oder einem anderen Computer mit Zugriff auf die Azure Stack-Umgebung an.
 2. Führen Sie die folgenden Befehle in einem PowerShell-Fenster mit erhöhten Rechten aus:
 
-    ```PowerShell  
+    ```powershell  
     $CloudAdminUser = "<cloud admin username>"
     $CloudAdminPassword = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
     $stampInfoCreds = New-Object System.Management.Automation.PSCredential($CloudAdminUser, $CloudAdminPassword)

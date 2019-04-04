@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 04bb32abf7100975d72e5782b79b44006f1ac965
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 01edd378ee85a3e209892250788fd3a26c628648
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090830"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zwischen Azure SQL-Datenbank und SQL Server (lokal)
 
@@ -45,21 +45,21 @@ PowerShell-Beispiele für die Konfiguration der SQL-Datensynchronisierung finden
 
 1. Wählen Sie auf der Seite **Mit anderen Datenbanken synchronisieren** die Option **Neue Synchronisierungsgruppe** aus. Die Seite **Neue Synchronisierungsgruppe** wird geöffnet, und **Synchronisierungsgruppe erstellen** (Schritt 1) ist hervorgehoben.
 
-  ![Einstellungen für Schritt 1](media/sql-database-get-started-sql-data-sync/stepone.png)
+   ![Einstellungen für Schritt 1](media/sql-database-get-started-sql-data-sync/stepone.png)
 
-  Ändern Sie auf der Seite **Datensynchronisierungsgruppe erstellen** die folgenden Einstellungen:
+   Ändern Sie auf der Seite **Datensynchronisierungsgruppe erstellen** die folgenden Einstellungen:
 
-  | Einstellung                        | BESCHREIBUNG |
-  | ------------------------------ | ------------------------------------------------- |
-  | **Name der Synchronisierungsgruppe** | Geben Sie einen Namen für die neue Synchronisierungsgruppe ein. Dieser Name unterscheidet sich vom Namen der Datenbank. |
-  | **Datenbank für Synchronisierungsmetadaten** | Erstellen Sie eine Datenbank (empfohlen), oder verwenden Sie eine vorhandene Datenbank.<br/><br/>Wenn Sie sich für **Neue Datenbank** entscheiden, wählen Sie **Neue Datenbank erstellen** aus. Benennen und konfigurieren Sie dann die neue Datenbank auf der Seite **SQL-Datenbank**, und wählen Sie **OK** aus.<br/><br/>Wenn Sie sich für **Vorhandene Datenbank verwenden** entscheiden, wählen Sie die Datenbank aus der Liste aus. |
-  | **Automatische Synchronisierung** | Wählen Sie **Ein** oder **Aus** aus.<br/><br/>Geben Sie bei Verwendung von **Ein** im Abschnitt **Synchronisierungshäufigkeit** eine Zahl ein, und wählen Sie **Sekunden**, **Minuten**, **Stunden** oder **Tage** aus. |
-  | **Konfliktlösung** | Wählen Sie **Hub hat Vorrang** oder **Mitglied hat Vorrang** aus.<br/><br/>**Hub hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Mitgliedsdatenbank durch die Daten in der Hub-Datenbank überschrieben werden.<br/><br/>**Mitglied hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Hub-Datenbank durch die Daten in der Mitgliedsdatenbank überschrieben werden. |
+   | Einstellung                        | BESCHREIBUNG |
+   | ------------------------------ | ------------------------------------------------- |
+   | **Name der Synchronisierungsgruppe** | Geben Sie einen Namen für die neue Synchronisierungsgruppe ein. Dieser Name unterscheidet sich vom Namen der Datenbank. |
+   | **Datenbank für Synchronisierungsmetadaten** | Erstellen Sie eine Datenbank (empfohlen), oder verwenden Sie eine vorhandene Datenbank.<br/><br/>Wenn Sie sich für **Neue Datenbank** entscheiden, wählen Sie **Neue Datenbank erstellen** aus. Benennen und konfigurieren Sie dann die neue Datenbank auf der Seite **SQL-Datenbank**, und wählen Sie **OK** aus.<br/><br/>Wenn Sie sich für **Vorhandene Datenbank verwenden** entscheiden, wählen Sie die Datenbank aus der Liste aus. |
+   | **Automatische Synchronisierung** | Wählen Sie **Ein** oder **Aus** aus.<br/><br/>Geben Sie bei Verwendung von **Ein** im Abschnitt **Synchronisierungshäufigkeit** eine Zahl ein, und wählen Sie **Sekunden**, **Minuten**, **Stunden** oder **Tage** aus. |
+   | **Konfliktlösung** | Wählen Sie **Hub hat Vorrang** oder **Mitglied hat Vorrang** aus.<br/><br/>**Hub hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Mitgliedsdatenbank durch die Daten in der Hub-Datenbank überschrieben werden.<br/><br/>**Mitglied hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Hub-Datenbank durch die Daten in der Mitgliedsdatenbank überschrieben werden. |
 
-  > [!NOTE]
-  > Microsoft empfiehlt, eine neue, leere Datenbank als **Datenbank für Synchronisierungsmetadaten** zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird als **Datenbank für Synchronisierungsmetadaten** für alle Synchronisierungsgruppen in einer ausgewählten Region freigegeben. Die Datenbank und ihr Name können nicht geändert werden, ohne alle Synchronisierungsgruppen und Synchronisierungs-Agents in der Region zu entfernen.
+   > [!NOTE]
+   > Microsoft empfiehlt, eine neue, leere Datenbank als **Datenbank für Synchronisierungsmetadaten** zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird als **Datenbank für Synchronisierungsmetadaten** für alle Synchronisierungsgruppen in einer ausgewählten Region freigegeben. Die Datenbank und ihr Name können nicht geändert werden, ohne alle Synchronisierungsgruppen und Synchronisierungs-Agents in der Region zu entfernen.
 
-  Wählen Sie **OK** aus, und warten Sie, bis die Synchronisierungsgruppe erstellt und bereitgestellt wurde.
+   Wählen Sie **OK** aus, und warten Sie, bis die Synchronisierungsgruppe erstellt und bereitgestellt wurde.
 
 ## <a name="add-sync-members"></a>Hinzufügen von Synchronisierungsmitgliedern
 
@@ -95,28 +95,28 @@ Im Abschnitt **Mitgliedsdatenbank** können Sie optional einen lokalen SQL-Serve
 
 1. Klicken Sie auf **Synchronisierungs-Agent-Gateway auswählen**. Die Seite **Synchronisierungs-Agent auswählen** wird geöffnet.
 
-  ![Erstellen eines Synchronisierungs-Agents](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
+   ![Erstellen eines Synchronisierungs-Agents](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
 
 1. Wählen Sie auf der Seite **Synchronisierungs-Agent auswählen** aus, ob Sie einen vorhandenen Agent verwenden oder einen Agent erstellen möchten.
 
-  Wenn Sie sich für **Vorhandene Agents** entscheiden, wählen Sie den vorhandenen Agent aus der Liste aus.
+   Wenn Sie sich für **Vorhandene Agents** entscheiden, wählen Sie den vorhandenen Agent aus der Liste aus.
 
-  Wenn Sie sich für **Neuen Agent erstellen** entscheiden, führen Sie folgende Schritte aus:
+   Wenn Sie sich für **Neuen Agent erstellen** entscheiden, führen Sie folgende Schritte aus:
 
-    1. Laden Sie über den bereitgestellten Link den Datensynchronisierungs-Agent herunter, und installieren Sie ihn auf dem Computer, auf dem sich der SQL-Server befindet. Sie können den Agent auch direkt unter [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693) herunterladen.
+   1. Laden Sie über den bereitgestellten Link den Datensynchronisierungs-Agent herunter, und installieren Sie ihn auf dem Computer, auf dem sich der SQL-Server befindet. Sie können den Agent auch direkt unter [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693) herunterladen.
 
       > [!IMPORTANT]
       > Sie müssen den ausgehenden TCP-Port 1433 in der Firewall öffnen, damit der Client-Agent mit dem Server kommunizieren kann.
 
-    1. Geben Sie einen Namen für den Agent ein.
+   1. Geben Sie einen Namen für den Agent ein.
 
-    1. Wählen Sie **Schlüssel erstellen und generieren** aus, und kopieren Sie den Agent-Schlüssel in die Zwischenablage.
+   1. Wählen Sie **Schlüssel erstellen und generieren** aus, und kopieren Sie den Agent-Schlüssel in die Zwischenablage.
 
-    1. Klicken Sie auf **OK**, um die Seite **Synchronisierungs-Agent auswählen** zu schließen.
+   1. Klicken Sie auf **OK**, um die Seite **Synchronisierungs-Agent auswählen** zu schließen.
 
 1. Suchen Sie auf den SQL-Servercomputer nach der Anwendung des Clientsynchronisierungs-Agents, und führen Sie diese aus.
 
-  ![Die Anwendung des Clientsynchronisierungs-Agents](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
+   ![Die Anwendung des Clientsynchronisierungs-Agents](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
 
     1. Klicken Sie in der Synchronisierungs-Agent-Anwendung auf **Submit Agent Key** (Agent-Schlüssel übermitteln). Das Dialogfeld **Sync Metadata Database Configuration** (Konfiguration der Datenbank für Synchronisierungsmetadaten) wird geöffnet.
 
@@ -232,7 +232,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 - [Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung](sql-database-data-sync-agent.md)
 - [Bewährte Methoden für die SQL-Datensynchronisierung](sql-database-best-practices-data-sync.md) und [Behandeln von Problemen mit der SQL-Datensynchronisierung](sql-database-troubleshoot-data-sync.md)
-- [Überwachen der SQL-Datensynchronisierung mit Log Analytics](sql-database-sync-monitor-oms.md)
+- [Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen](sql-database-sync-monitor-oms.md)
 - [Aktualisieren des Synchronisierungsschemas mit Transact-SQL](sql-database-update-sync-schema.md) oder mit [PowerShell](scripts/sql-database-sync-update-schema.md)
 
 Weitere Informationen zu SQL-Datenbank finden Sie unter:
