@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7e14b5f2c5f84c4f1f21454f733987df6933f0c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214000"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886625"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "54214000"
 
 Das Azure-Portal dient als Hub für alle Azure-Dienste und bietet eine umfassende Verwaltungsoberfläche mit Funktionen wie Dashboards für das Anheften von Ressourcen, einer intelligenten Suche nach Ressourcen und Tagging für die Ressourcenverwaltung. Zum Konsolidieren und Optimieren des Überwachungs- und Verwaltungsworkflows haben wir damit begonnen, die Funktionen des OMS-Portals in das Azure-Portal einzubinden. Alle Features des OMS-Portals sind nun auch Bestandteil des Azure-Portals. Tatsächlich sind einige der neuen Features, wie z.B. Traffic Analytics, nur im Azure-Portal verfügbar. Sie können alle Aufgaben, die Sie bisher im OMS-Portal erledigt haben, nun im Azure-Portal ausführen – und dazu noch vieles mehr. Wenn Sie das Azure-Portal noch nicht verwenden – fangen Sie am besten heute noch damit an!
 
-Für die kommerzielle Azure-Cloud **wird das OMS-Portal am 15. Januar 2019 offiziell außer Betrieb gesetzt**. Für die Azure US Government-Cloud **wird das OMS-Portal am 30. März 2019 offiziell außer Betrieb gesetzt**. Wir freuen uns auf den Wechsel zum Azure-Portal und gehen davon aus, dass der Übergang reibungslos abläuft. Wir wissen aber, dass Änderungen schwierig sind und Störungen verursachen können. Senden Sie Fragen, Feedback oder Bedenken an **LAUpgradeFeedback@microsoft.com**. Im weiteren Verlauf dieses Artikels werden die wichtigsten Szenarien sowie die Roadmap für diesen Übergang beschrieben.
+Für die kommerzielle Azure-Cloud **wird das OMS-Portal am 15. Januar 2019 offiziell außer Betrieb gesetzt**. Für die Azure US Government-Cloud **wird das OMS-Portal am 30. März 2019 offiziell außer Betrieb gesetzt**. Wir freuen uns auf den Wechsel zum Azure-Portal und gehen davon aus, dass der Übergang reibungslos abläuft. Wir wissen aber, dass Änderungen schwierig sind und Störungen verursachen können. Senden Sie Fragen, Feedback oder Bedenken an **LAUpgradeFeedback\@microsoft.com**. Im weiteren Verlauf dieses Artikels werden die wichtigsten Szenarien sowie die Roadmap für diesen Übergang beschrieben.
 
 ## <a name="what-is-changing"></a>Was ändert sich? 
 Die folgenden Änderungen werden mit der Einstellung des OMS-Portals angekündigt. Die einzelnen Änderungen werden in den nachstehenden Abschnitten ausführlicher erläutert.
@@ -47,7 +47,7 @@ Zwar funktionieren die meisten Features weiterhin ohne Migration, müssen Sie fo
 - Sie müssen die [Benutzerberechtigungen zum Azure-Portal migrieren](#user-access-and-role-migration).
 - Ausführliche Informationen zur Umstellung auf die Lösung für die Updateverwaltung finden Sie unter [Migrieren von OMS-Updatebereitstellungen zu Azure](../../automation/migrate-oms-update-deployments.md).
 
-Informationen zum Übergang zum Azure-Portal finden Sie in den [häufig gestellten Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](oms-portal-faq.md). Senden Sie Feedback, Fragen oder Bedenken an **LAUpgradeFeedback@microsoft.com**.
+Informationen zum Übergang zum Azure-Portal finden Sie in den [häufig gestellten Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](oms-portal-faq.md). Senden Sie Feedback, Fragen oder Bedenken an **LAUpgradeFeedback\@microsoft.com**.
 
 ## <a name="user-access-and-role-migration"></a>Benutzerzugriff und Rollenmigration
 Die Zugriffsverwaltung im Azure-Portal ist umfangreicher und leistungsfähiger als die Zugriffsverwaltung im OMS-Portal. Ausführliche Informationen zur Zugriffsverwaltung in Log Analytics finden Sie unter [Verwalten von Arbeitsbereichen](manage-access.md#manage-accounts-and-users).

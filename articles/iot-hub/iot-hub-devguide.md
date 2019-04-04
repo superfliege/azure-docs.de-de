@@ -1,19 +1,19 @@
 ---
 title: Entwicklerhandbuch für Azure IoT Hub | Microsoft Docs
 description: Das Azure IoT Hub-Entwicklerhandbuch umfasst Erläuterungen zu Endpunkten, Sicherheit, Identitätsregistrierung, Geräteverwaltung, direkten Methoden, Gerätezwillingen, Dateiuploads, Aufträgen, die Abfragesprache von IoT Hub und Messaging.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: ecbec614bd0d1b043faf6ad002b05d4acdcc4ab4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041746"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450990"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Entwicklungsleitfaden für Azure IoT Hub
 
@@ -55,7 +55,7 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
 
 * Unter [Verwalten des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) wird das Sicherheitsmodell beschrieben, mit dem sowohl für Geräte als auch für Cloudkomponenten Zugriff auf IoT Hub-Funktionalität gewährt wird. Der Artikel enthält Informationen zum Verwenden von Token und X.509-Zertifikaten sowie Details zu den Berechtigungen, die Sie erteilen können.
 
-* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen](iot-hub-devguide-device-twins.md) beschreibt das Konzept der *Gerätezwillinge*. Zudem finden Sie in diesem Artikel auch Informationen zur Funktionalität von Gerätezwillingen, z.B. zur Synchronisierung eines Geräts mit dessen Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
+* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen](iot-hub-devguide-device-twins.md) beschreibt das Konzept der *Gerätezwillinge*. Zudem finden Sie in diesem Artikel auch Informationen zur Funktionalität von Gerätezwillingen, z. B. zur Synchronisierung eines Geräts mit dessen Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
 
 * [Aufrufen einer direkten Methode auf einem Gerät](iot-hub-devguide-direct-methods.md) beschreibt den Lebenszyklus einer direkten Methode. Der Artikel beschreibt, wie Sie Methoden für ein Gerät aus Ihrer Back-End-App aufrufen und die direkte Methode für Ihr Gerät anwenden.
 

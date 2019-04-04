@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850903"
 ---
 # <a name="handling-event-grid-events"></a>Behandeln von Event Grid-Ereignissen
 
@@ -24,26 +24,9 @@ Media Services-Ereignisse ermöglichen es Anwendungen, mithilfe moderner serverl
 
 Die Verfügbarkeit von Media Services-Ereignissen ist an die [Verfügbarkeit](../../event-grid/overview.md) von Event Grid gebunden und wird in anderen Regionen verfügbar, wenn dort Event Grid verfügbar ist.  
 
-## <a name="available-media-services-events"></a>Verfügbare Media Services-Ereignisse
+## <a name="media-services-events-and-schemas"></a>Media Services-Ereignisse und Schemata
 
-Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten.  Zurzeit können Media Services-Ereignisabonnements folgende Ereignisse umfassen:  
-
-|Veranstaltungsname|BESCHREIBUNG|
-|----------|-----------|
-| Microsoft.Media.JobStateChange| Wird ausgelöst, wenn sich der Status eines Auftrags ändert. |
-| Microsoft.Media.LiveEventConnectionRejected | Verbindungsversuch des Encoders wurde verweigert. |
-| Microsoft.Media.LiveEventEncoderConnected | Encoder stellt die Verbindung mit dem Liveereignis her. |
-| Microsoft.Media.LiveEventEncoderDisconnected | Verbindung des Encoders wird getrennt. |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | Media-Server verwirft Datenblöcke, da es zu spät ist oder es einen überlappenden Zeitstempel gibt (Zeitstempel des neuen Datenblocks liegt vor der Endzeit des vorherigen Datenblocks). |
-| Microsoft.Media.LiveEventIncomingStreamReceived | Media-Server empfängt den ersten Datenblock für jede Spur im Stream oder über die Verbindung. |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media-Server hat erkannt, dass Audio- und Videostreams nicht synchron sind. Verwenden Sie dies als Warnung, da die Darstellung für den Benutzer möglicherweise nicht beeinträchtigt ist. |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Media-Server hat erkannt, dass die beiden Videostreams von einem externen Encoder nicht mehr synchron sind. Verwenden Sie dies als Warnung, da die Darstellung für den Benutzer möglicherweise nicht beeinträchtigt ist. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Wird alle 20 Sekunden für jede Spur veröffentlicht, wenn ein Liveereignis ausgeführt wird. Bietet eine Zusammenfassung der Erfassungsintegrität. |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Media-Server hat eine Diskontinuität in der eingehenden Spur erkannt. |
-
-## <a name="event-schema"></a>Ereignisschema
-
-Media Services-Ereignisse enthalten alle Informationen, die Sie zur Reaktion auf Änderungen in Ihren Daten benötigen.  Sie können ein Media Services-Ereignis daran erkennen, dass die eventType-Eigenschaft mit „Microsoft.Media“ beginnt.
+Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten. Media Services-Ereignisse enthalten alle Informationen, die Sie zur Reaktion auf Änderungen in Ihren Daten benötigen. Sie können ein Media Services-Ereignis daran erkennen, dass die eventType-Eigenschaft mit „Microsoft.Media“ beginnt.
 
 Weitere Informationen finden Sie unter [Media Services-Ereignisschemas](media-services-event-schemas.md).
 

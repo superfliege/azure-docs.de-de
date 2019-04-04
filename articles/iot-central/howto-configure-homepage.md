@@ -1,45 +1,50 @@
 ---
-title: Konfigurieren der Homepage Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie als Ersteller die Homepage Ihrer Azure IoT Central-Anwendung konfigurieren.
+title: Konfigurieren des Dashboards Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie als Ersteller das Standarddashboard Ihrer Azure IoT Central-Anwendung konfigurieren.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a03ac0ef66f4ffdce53d0bd2a35839bbe1615d0b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199084"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773145"
 ---
-# <a name="configuring-homepage"></a>Konfigurieren der Homepage
+# <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
-Die Homepage ist die Seite, die geladen wird, wenn zugriffsberechtigte Benutzer zur URL der Anwendung navigieren. Wenn Sie beim Erstellen Ihrer Anwendung die Anwendungsvorlagen „Beispiel-Contoso“ oder „Beispiel-Entwickler-Kits“ ausgewählt haben, verfügt Ihre Anwendung über vordefinierte Homepages. Dagegen ist die Homepage bei Auswahl der Anwendungsvorlage „Benutzerdefinierte Anwendung“ leer.
+Das **Dashboard** ist die Seite, die geladen wird, wenn zugriffsberechtigte Benutzer zur URL der Anwendung navigieren. Wenn Sie beim Erstellen Ihrer Anwendung die Anwendungsvorlagen **Beispiel Contoso** oder **Beispiel-Entwickler-Kits** ausgewählt haben, verfügt Ihre Anwendung über ein vordefiniertes Dashboard. Wenn Sie die Anwendungsvorlage **Benutzerdefinierte Anwendung** ausgewählt haben, ist Ihr Dashboard leer.
 
-In diesem Beispiel ist die Homepage für Anwendungen zu sehen, die auf der „Beispiel-Contoso“-Vorlage basieren. Um die Homepage für Ihre Anwendung anzupassen, wählen Sie zunächst oben rechts **Bearbeiten** aus. 
+> [!NOTE]
+> Benutzer können auch [ihre eigenen persönlichen Dashboards erstellen](howto-personalize-dashboard.md), die anstelle des standardmäßigen Dashboards der Anwendung verwendet werden können.
 
-![Homepage für Anwendungen auf Basis der „Beispiel-Contoso“-Vorlage](media/howto-configure-homepage/image1.png)
+## <a name="add-tiles"></a>Hinzufügen von Kacheln
 
-Wenn Sie **Bearbeiten** auswählen, wird die Dashboardbibliothek links in einem Fenster geöffnet. Es gibt viele Arten von Kacheln und Dashboardprimitiven, die Sie zum Anpassen Ihrer Homepage hinzufügen können.
+Der folgende Screenshot zeigt das Dashboard in einer Anwendung, das über die Vorlage **Beispiel Contoso** erstellt wurde. Wählen Sie zum Anpassen des Standarddashboards Ihrer Anwendung oben rechts auf der Seite die Option **Bearbeiten** aus.
+
+![Dashboard für Anwendungen auf Basis der „Beispiel Contoso“-Vorlage](media/howto-configure-homepage/image1.png)
+
+Wenn Sie **Bearbeiten** auswählen, wird das Bibliotheksfenster des Dashboards geöffnet. Die Bibliothek enthält die Kacheln und Dashboardprimitive, mit denen Sie das Dashboard anpassen können.
 
 ![Dashboardbibliothek](media/howto-configure-homepage/image2.png)
 
-Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen. Wählen Sie dazu zuerst eine **Gerätevorlage** und dann eine **Geräteinstanz** aus. Danach geben Sie der Kachel einen Titel und wählen eine anzuzeigende **Einstellung** oder **Eigenschaft** aus. In diesem Fall wurde **Temperatur festlegen** ausgewählt. Wenn Sie auf **Speichern** klicken, wird diese Kachel auf der Homepage angezeigt.
+Beispielsweise können Sie eine Kachel **Geräteeinstellungen und -eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften für ein Gerät anzuzeigen. Wählen Sie dazu zuerst eine **Gerätevorlage** und dann eine **Geräteinstanz** aus. Danach geben Sie der Kachel einen Titel und wählen eine anzuzeigende **Einstellung** oder **Eigenschaft** aus. Der folgende Screenshot zeigt Einstellungen und Eigenschaften, die zum Hinzufügen zur Kachel ausgewählt wurden. Wählen Sie **Fertig** aus, um die Änderung am Dashboard zu speichern.
 
 ![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](media/howto-configure-homepage/image3.png)
 
-Wenn ein Operator nun die Homepage aufruft, wird ihm diese Kachel mit den Eigenschaften bzw. Einstellungen des Geräts angezeigt:
+Wenn ein Bediener jetzt das Standarddashboard der Anwendung anzeigt, wird die neue Kachel mit der Einstellung **Temperatur festlegen** für das Gerät angezeigt:
 
 ![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-configure-homepage/image4.png)
 
-Probieren Sie die verschiedenen anderen Kacheltypen in der Bibliothek einfach aus, um herauszufinden, wie Sie die Homepage Ihrer Anwendung noch besser anpassen können.
+Sie können weitere Kacheltypen in der Bibliothek untersuchen, um zu erfahren, wie Sie das Standarddashboard der Anwendung weiter anpassen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun gelernt haben, wie Sie Ihre Azure IoT Central-Homepage konfigurieren:
+Nachdem Sie nun gelernt haben, wie Sie das Standarddashboard der Azure IoT Central-Anwendung konfigurieren, haben Sie folgende Möglichkeiten:
 
 > [!div class="nextstepaction"]
 > [Erfahren Sie, wie Sie Bilder vorbereiten und hochladen.](howto-prepare-images.md)

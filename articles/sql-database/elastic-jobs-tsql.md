@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769165"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621497"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -408,19 +408,19 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 
 |Gespeicherte Prozedur  |BESCHREIBUNG  |
 |---------|---------|
-|[sp_add_job](#spaddjob)     |     Fügt einen neuen Auftrag hinzu.    |
-|[sp_update_job](#spupdatejob)    |      Aktualisiert einen vorhandenen Auftrag.   |
-|[sp_delete_job](#spdeletejob)     |      Löscht einen vorhandenen Auftrag.   |
-|[sp_add_jobstep](#spaddjobstep)    |    Fügt einen Schritt zu einem Auftrag hinzu.     |
-|[sp_update_jobstep](#spupdatejobstep)     |     Aktualisiert einen Auftragsschritt.    |
-|[sp_delete_jobstep](#spdeletejobstep)     |     Löscht einen Auftragsschritt.    |
-|[sp_start_job](#spstartjob)    |  Startet die Ausführung eines Auftrags.       |
-|[sp_stop_job](#spstopjob)     |     Hält die Ausführung eines Auftrags an.   |
-|[sp_add_target_group](#spaddtargetgroup)    |     Fügt eine Zielgruppe hinzu.    |
-|[sp_delete_target_group](#spdeletetargetgroup)     |    Löscht eine Zielgruppe.     |
-|[sp_add_target_group_member](#spaddtargetgroupmember)     |    Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.     |
-|[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     Entfernt ein Zielgruppenmitglied aus einer Zielgruppe.    |
-|[sp_purge_jobhistory](#sppurgejobhistory)    |    Entfernt die Verlaufsdatensätze für einen Auftrag.     |
+|[sp_add_job](#sp_add_job)     |     Fügt einen neuen Auftrag hinzu.    |
+|[sp_update_job](#sp_update_job)    |      Aktualisiert einen vorhandenen Auftrag.   |
+|[sp_delete_job](#sp_delete_job)     |      Löscht einen vorhandenen Auftrag.   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    Fügt einen Schritt zu einem Auftrag hinzu.     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     Aktualisiert einen Auftragsschritt.    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     Löscht einen Auftragsschritt.    |
+|[sp_start_job](#sp_start_job)    |  Startet die Ausführung eines Auftrags.       |
+|[sp_stop_job](#sp_stop_job)     |     Hält die Ausführung eines Auftrags an.   |
+|[sp_add_target_group](#sp_add_target_group)    |     Fügt eine Zielgruppe hinzu.    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    Löscht eine Zielgruppe.     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     Entfernt ein Zielgruppenmitglied aus einer Zielgruppe.    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Entfernt die Verlaufsdatensätze für einen Auftrag.     |
 
 
 
@@ -1195,13 +1195,13 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 
 |Sicht  |BESCHREIBUNG  |
 |---------|---------|
-|[jobs_executions](#jobsexecutions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
+|[jobs_executions](#jobs_executions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
 |[jobs](#jobs-view)     |   Zeigt alle Aufträge an.      |
-|[job_versions](#jobversions-view)     |   Zeigt alle Auftragsversionen an.      |
+|[job_versions](#job_versions-view)     |   Zeigt alle Auftragsversionen an.      |
 |[jobsteps](#jobsteps-view)     |     Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.    |
-|[jobstep_versions](#jobstepversions-view)     |     Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an.    |
-|[target_groups](#targetgroups-view)     |      Zeigt alle Zielgruppen an.   |
-|[target_group_members](#targetgroups-view)     |   Zeigt alle Mitglieder sämtlicher Zielgruppen an.      |
+|[jobstep_versions](#jobstep_versions-view)     |     Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an.    |
+|[target_groups](#target_groups-view)     |      Zeigt alle Zielgruppen an.   |
+|[target_group_members](#target_groups_members-view)     |   Zeigt alle Mitglieder sämtlicher Zielgruppen an.      |
 
 
 ### <a name="jobsexecutions-view"></a>Ansicht „jobs_executions“
@@ -1347,4 +1347,3 @@ Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 
 - [Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell](elastic-jobs-powershell.md)
 - [Autorisierung und Berechtigungen für SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
-  

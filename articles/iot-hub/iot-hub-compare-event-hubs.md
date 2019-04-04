@@ -2,28 +2,28 @@
 title: Vergleich zwischen Azure IoT Hub und Azure Event Hubs | Microsoft Docs
 description: Hier finden Sie einen Vergleich der Azure-Dienste IoT Hub und Event Hubs, wobei besonders auf Unterschiede bei den Funktionen und Anwendungsbeispiele eingegangen wird. Der Vergleich umfasst die unterstützten Protokolle, Geräteverwaltung, Überwachung, und Dateiuploads.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819636"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669737"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Verbinden von IoT-Geräten mit Azure: IoT Hub und Event Hubs
 
-Azure bietet Dienste, die speziell für verschiedene Arten von Konnektivität und Kommunikation entwickelt wurden, um Ihnen zu helfen, Ihre Daten mit der Leistungsstärke der Cloud zu verbinden. Azure IoT Hub und Azure Event Hubs sind Clouddienste, die große Datenmengen aufnehmen und diese Daten für Einblicke in Geschäftsabläufe verarbeiten oder speichern können. Die beiden Dienste sind insofern ähnlich, als sie beide die Erfassung von Daten mit geringer Wartezeit und hoher Zuverlässigkeit unterstützen, jedoch für unterschiedliche Zwecke konzipiert sind. IoT Hub wurde speziell entwickelt, um die besonderen Anforderungen bei der Verbindung von IoT-Geräten mit der Azure Cloud nach Maß zu erfüllen, während Event Hubs für das Streaming von Big Data entwickelt wurde. Aus diesem Grund empfiehlt Microsoft den Einsatz von Azure IoT Hub, um IoT-Geräte mit Azure zu verbinden.
+Azure bietet Dienste, die speziell für verschiedene Arten von Konnektivität und Kommunikation entwickelt wurden, um Ihnen zu helfen, Ihre Daten mit der Leistungsstärke der Cloud zu verbinden. Azure IoT Hub und Azure Event Hubs sind Clouddienste, die große Datenmengen aufnehmen und diese Daten für Einblicke in Geschäftsabläufe verarbeiten oder speichern können. Die beiden Dienste sind insofern ähnlich, als sie beide die Erfassung von Daten mit geringer Wartezeit und hoher Zuverlässigkeit unterstützen, jedoch für unterschiedliche Zwecke konzipiert sind. IoT Hub wurde speziell entwickelt, um die speziellen Anforderungen bei der Verbindung von IoT-Geräten mit der Azure Cloud zu erfüllen, während Event Hubs für das Streaming von Big Data entwickelt wurde. Microsoft empfiehlt den Einsatz von Azure IoT Hub, um IoT-Geräte mit Azure zu verbinden.
 
-Azure IoT Hub ist das Cloudgateway, das IoT-Geräte verbindet, um Daten zu sammeln und so geschäftliche Erkenntnisse und Automatisierung zu fördern. Darüber hinaus bietet IoT Hub Funktionen, die die Beziehung zwischen Ihren Geräten und Ihren Back-End-Systemen optimieren. Bidirektionale Kommunikationsfunktionen bedeuten, dass Sie während des Datenempfangs von Geräten auch Befehle und Richtlinien an Geräte zurücksenden können, um beispielsweise Eigenschaften zu aktualisieren oder Geräteverwaltungsaktionen aufzurufen.  Diese Cloud-zu-Gerät-Verbindung ermöglicht auch die Bereitstellung von Cloudintelligenz für Ihre Edge-Geräte mit Azure IoT Edge. Die besondere von IoT Hub bereitgestellte Identität auf Geräteebene hilft Ihnen, Ihre IoT-Lösung besser vor möglichen Angriffen zu schützen. 
+Azure IoT Hub ist das Cloudgateway, das IoT-Geräte verbindet, um Daten zu sammeln und so geschäftliche Erkenntnisse und Automatisierung zu fördern. Darüber hinaus bietet IoT Hub Funktionen, die die Beziehung zwischen Ihren Geräten und Ihren Back-End-Systemen optimieren. Bidirektionale Kommunikationsfunktionen bedeuten: Während Sie Daten von Geräten empfangen, können Sie auch Befehle und Richtlinien an Geräte zurücksenden. Verwenden Sie z. B. Cloud-zu-Gerät-Messaging, um Eigenschaften zu aktualisieren oder Aktionen zur Geräteverwaltung aufzurufen. Die Cloud-zu-Gerät-Kommunikation ermöglicht es Ihnen auch, Cloud Intelligence mit Azure IoT Edge an Ihre Edge-Geräte zu senden. Die besondere von IoT Hub bereitgestellte Identität auf Geräteebene hilft Ihnen, Ihre IoT-Lösung besser vor möglichen Angriffen zu schützen. 
 
 [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) ist der Big Data-Streamingdienst von Azure. Die Lösung ist auf Szenarien für das Streaming von Daten mit hohem Durchsatz ausgelegt, bei denen Kunden täglich Milliarden von Anforderungen senden können. Event Hubs nutzt ein partitioniertes Consumermodell zur horizontalen Skalierung Ihres Streams und ist in die Big Data- und Analysedienste von Azure integriert, darunter Databricks, Stream Analytics, ADLS und HDInsight. Mit Funktionen wie Event Hubs Capture und „Automatische Vergrößerung“ unterstützt dieser Dienst Ihre Big Data-Apps und -Lösungen. Zusätzlich wird Event Hubs von IoT Hub für seinen Telemetrie-Datenflusspfad genutzt, sodass auch Ihre IoT-Lösung von der enormen Leistungsfähigkeit von Event Hubs profitiert.
 
-Zusammenfassend lässt sich sagen, dass beide Lösungen zwar für die Datenerfassung in großem Maßstab ausgelegt sind, aber nur IoT Hub die umfangreichen IoT-spezifischen Funktionen bietet, die für Sie entwickelt wurden, um den betriebswirtschaftlichen Nutzen der Verbindung Ihrer IoT-Geräte mit der Azure-Cloud zu maximieren.  Wenn Sie gerade erst am Anfang Ihrer IoT-Projekte stehen, können Sie mit IoT Hub zur Unterstützung Ihrer Datenerfassungsszenarien beginnen, um sicherzustellen, dass Sie sofortigen Zugriff auf die vollständigen IoT-Funktionen haben, sobald Ihre geschäftlichen und technischen Anforderungen dies erfordern.
+Zusammenfassend lässt sich sagen, dass beide Lösungen für die Datenerfassung in großem Maßstab ausgelegt sind. Nur IoT Hub bietet die umfangreichen IoT-spezifischen Funktionen, die für Sie entwickelt wurden, um den betriebswirtschaftlichen Nutzen der Verbindung Ihrer IoT-Geräte mit der Azure-Cloud zu maximieren.  Wenn Sie gerade erst am Anfang Ihrer IoT-Projekte stehen, können Sie mit IoT Hub zur Unterstützung Ihrer Datenerfassungsszenarien beginnen, um sicherzustellen, dass Sie sofortigen Zugriff auf die vollständigen IoT-Funktionen haben, sobald Ihre geschäftlichen und technischen Anforderungen dies erfordern.
 
 Die folgende Tabelle enthält Details zum Vergleich der beiden Tarife von IoT Hub mit Event Hubs, wenn Sie IoT Hub und Event Hubs gemäß ihrer IoT-Funktionen bewerten möchten. Weitere Informationen zu den IoT Hub-Tarifen „Basic“ und „Standard“ finden Sie unter [Auswählen des passenden IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md).
 

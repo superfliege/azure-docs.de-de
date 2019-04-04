@@ -4,7 +4,7 @@ description: Grundlegendes zum Einrichten und Konfigurieren des Reverseproxys in
 services: service-fabric
 documentationcenter: na
 author: jimacoMS2
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 8c405941417ad1a4e877cfd8fd0bdb53e186f6d0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7f1b6f955dd3f59f6c17403b536cf99d666aab08
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452299"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662056"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 

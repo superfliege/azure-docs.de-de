@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 7bfed1144ebfc69ed51b7bbc1adf78538ed28425
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861076"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848387"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -326,13 +326,13 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 1. Aktualisieren Sie das PowerShellGet-Modul auf Version 1.6.5 (oder die neueste Vorschauversion). Siehe [Website zur PowerShell-Vorschauversion](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
 
-   ```PowerShell
+   ```powershell
       install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. Führen Sie in einem neuen PowerShell-Fenster die folgenden Befehle aus:
 
-   ```PowerShell
+   ```powershell
       import-module PowerShellGet
       get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
@@ -343,11 +343,11 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 | API | BESCHREIBUNG |
 | --- | --- |
-| New-AzSqlDatabaseInstanceFailoverGroup |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| Set-AzSqlDatabaseInstanceFailoverGroup |Ändert die Konfiguration der Failovergruppe.|
-| Get-AzSqlDatabaseInstanceFailoverGroup |Ruft die Konfiguration der Failovergruppe ab.|
-| Switch-AzSqlDatabaseInstanceFailoverGroup |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
-| Remove-AzSqlDatabaseInstanceFailoverGroup | Entfernt eine Failovergruppe.|
+| New-AzureRmSqlDatabaseInstanceFailoverGroup |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
+| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Ändert die Konfiguration der Failovergruppe.|
+| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Ruft die Konfiguration der Failovergruppe ab.|
+| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
+| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Entfernt eine Failovergruppe.|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit einzelnen und in einem Pool zusammengefassten Datenbanken
 

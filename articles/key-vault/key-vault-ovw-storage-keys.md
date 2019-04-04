@@ -8,13 +8,13 @@ ms.service: key-vault
 author: prashanthyv
 ms.author: pryerram
 manager: barbkess
-ms.date: 10/03/2018
-ms.openlocfilehash: 9b1a4e23ed0da0637b44ac52dd4d1baeb22cd6ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/01/2019
+ms.openlocfilehash: c2107e501affd5e3dd22e0fbc83d078b51d414a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841139"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Per Azure Key Vault verwaltetes Speicherkonto – CLI
 
@@ -24,12 +24,26 @@ ms.locfileid: "56118053"
 > - Verwenden Sie für die Ausführung in Azure eine [von Azure AD verwaltete Identität](/azure/active-directory/managed-identities-azure-resources/). Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
 > - Verwenden Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Verwalten der Autorisierung (wird auch von Key Vault unterstützt).
 
-- Azure Key Vault verwaltet Schlüssel eines Azure Storage-Kontos.
-    - Intern kann Azure Key Vault die Schlüssel mit einem Azure-Speicherkonto auflisten (synchronisieren).    
-    - Azure Key Vault generiert (rotiert) die Schlüssel in regelmäßigen Abständen.
-    - Schlüsselwerte werden nie als Antwort an den Aufrufer zurückgegeben.
-    - Azure Key Vault verwaltet Schlüssel von Speicherkonten und klassischen Speicherkonten.
-    
+Ein [Azure-Speicherkonto](/azure/storage/storage-create-storage-account) verwendet Anmeldeinformationen, die sich aus einem Kontonamen und einem Schlüssel zusammensetzen. Der Schlüssel wird automatisch generiert und dient eher als „Kennwort“ denn als kryptografischer Schlüssel. Key Vault kann diese Speicherkontoschlüssel verwalten, indem sie als [Key Vault-Geheimnisse](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets) gespeichert werden. 
+
+## <a name="overview"></a>Übersicht
+
+Das Feature für ein in Key Vault verwaltetes Speicherkonto führt verschiedene Verwaltungsfunktionen in Ihrem Auftrag aus:
+
+- Auflisten (Synchronisieren) der Schlüssel mit einem Azure-Speicherkonto
+- Erneutes Generieren (Rotieren) der Schlüssel in regelmäßigen Abständen
+- Verwalten der Schlüssel sowohl für Speicherkonten als auch für klassische Speicherkonten
+- Schlüsselwerte werden nie als Antwort an den Aufrufer zurückgegeben.
+
+Beachten Sie bei Verwendung des Features für verwaltete Speicherkontoschlüssel Folgendes:
+
+- **Lassen Sie Ihre Speicherkontoschlüssel nur durch Key Vault verwalten.** Versuchen Sie nicht, die Schlüssel selbst zu verwalten, da dies zu Konflikten mit den Key Vault-Prozessen führt.
+- **Lassen Sie Speicherkontoschlüssel nicht durch mehrere Key Vault-Objekte verwalten.**
+- **Generieren Sie Ihre Speicherkontoschlüssel nicht manuell neu.** Es wird empfohlen, die Schlüssel über Key Vault neu zu generieren.
+- Key Vault mit der Verwaltung Ihres Speicherkonto zu beauftragen, kann vorerst von einem Benutzerprinzipal und nicht von einem Dienstprinzipal durchgeführt werden.
+
+Das folgende Beispiel zeigt, wie Sie Key Vault das Verwalten Ihrer Speicherkontoschlüssel ermöglichen.
+
 > [!IMPORTANT]
 > Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem **[Dienstprinzipal](/azure/active-directory/develop/developer-glossary#service-principal-object)** bereit, der als Anwendungsidentität fungiert. Anhand der Anwendungs-ID des Dienstprinzipals kann über die rollenbasierte Zugriffssteuerung (RBAC) Zugriff auf andere Ressourcen erteilt werden. Key Vault ist eine Microsoft-Anwendung, deshalb ist sie in allen Azure AD-Mandanten über dieselbe Anwendungs-ID in jeder Azure-Cloud vorab registriert:
 > - Azure AD-Mandanten in der Azure Government-Cloud verwenden die Anwendungs-ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
@@ -55,42 +69,36 @@ In den unten stehenden Anweisungen weisen wir Key Vault als Dienst zu, der Opera
 > [!NOTE]
 > Beachten Sie: Sobald Sie die mit Azure Key Vault verwalteten Speicherkontoschlüssel eingerichtet haben, sollten sie **NUR** noch über Key Vault geändert werden. Verwaltete Speicherkontoschlüssel bedeuten, dass Key Vault das Wechseln des Speicherkontoschlüssels verwaltet.
 
+> [!IMPORTANT]
+> Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem **[Dienstprinzipal](/azure/active-directory/develop/developer-glossary#service-principal-object)** bereit, der als Anwendungsidentität fungiert. Anhand der Anwendungs-ID des Dienstprinzipals kann über die rollenbasierte Zugriffssteuerung (RBAC) Zugriff auf andere Ressourcen erteilt werden. Key Vault ist eine Microsoft-Anwendung, deshalb ist sie in allen Azure AD-Mandanten über dieselbe Anwendungs-ID in jeder Azure-Cloud vorab registriert:
+> - Azure AD-Mandanten in der Azure Government-Cloud verwenden die Anwendungs-ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
+> - Azure AD-Mandanten in der öffentlichen Azure-Cloud und allen weiteren verwenden die Anwendungs-ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
+
+
 1. Führen Sie nach dem Erstellen eines Speicherkontos den folgenden Befehl aus, um die Ressourcen-ID des Speicherkontos zu erhalten, das Sie verwalten möchten.
 
     ```
     az storage account show -n storageaccountname 
     ```
-    Kopieren Sie das ID-Feld aus dem Ergebnis des oben aufgeführten Befehls.
-    
-2. Rufen Sie die Objekt-ID des Azure Key Vault-Dienstprinzipals ab, indem Sie folgenden Befehl ausführen.
-
+    Kopieren Sie das ID-Feld aus dem Ergebnis des oben aufgeführten Befehls, das wie folgt aussieht.
     ```
-    az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
+    /subscriptions/0xxxxxx-4310-48d9-b5ca-0xxxxxxxxxx/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
     ```
-    
-    Nachdem die Ausführung dieses Befehls erfolgreich abgeschlossen wurde, suchen Sie die Objekt-ID im Ergebnis:
-    ```console
-        {
-            ...
             "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
-            ...
-        }
+    
+2. Weisen Sie Key Vault die RBAC-Rolle „Speicherkonto-Schlüsseloperator-Dienstrolle“ zu und beschränken Sie den Zugriffsbereich auf Ihr Speicherkonto. Für ein klassisches Speicherkonto verwenden Sie „Klassische Speicherkonto-Schlüsseloperator-Dienstrolle“.
+    ```
+    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
     ```
     
-3. Weisen Sie der Azure Key Vault-Identität die Rolle „Speicherschlüsseloperator“ zu.
-
-    ```
-    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>
-    ```
+    „93c27d83-f79b-4cb2-8dd4-4aa716542e74“ ist die Objekt-ID für Key Vault in der Public Cloud. Informationen zur Objekt-ID für Key Vault in nationalen Clouds finden Sie oben im Abschnitt „Wichtig“.
     
-4. Erstellen Sie ein per Key Vault verwaltetes Speicherkonto.     <br /><br />
+3. Erstellen Sie ein per Key Vault verwaltetes Speicherkonto.     <br /><br />
    Unten legen wir einen Zeitraum von 90 Tagen für die erneute Generierung fest. Nach 90 Tagen generiert Key Vault „key1“ neu und wechselt für den aktiven Schlüssel von „key2“ zu „key1“. „Key1“ wird jetzt als aktiver Schlüssel markiert. 
    
     ```
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
     ```
-    Falls der Benutzer das Speicherkonto nicht erstellt hat und keine Berechtigungen für das Speicherkonto hat, stellen die folgenden Schritte die Berechtigungen für Ihr Konto ein, um sicherzustellen, dass Sie alle Speicherberechtigungen im Key Vault verwalten können.
-    
 
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>Schritt-für-Schritt-Anweisungen zur Verwendung von Key Vault zum Erstellen und Generieren von SAS-Token
 --------------------------------------------------------------------------------
@@ -117,7 +125,7 @@ Wenn dieser Vorgang erfolgreich ausgeführt wurde, sollte eine Ausgabe ähnlich 
    "se=2020-01-01&sp=***"
 ```
 
-2. In diesem Schritt verwenden wir die oben generierte Ausgabe ($sasToken), um eine SAS-Definition zu erstellen. Weitere Dokumentation finden Sie [hier](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters).   
+1. In diesem Schritt verwenden wir die oben generierte Ausgabe ($sasToken), um eine SAS-Definition zu erstellen. Weitere Dokumentation finden Sie [hier](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters).   
 
 ```
 az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
@@ -127,12 +135,11 @@ az keyvault storage sas-definition create --vault-name <YourVaultName> --account
  > [!NOTE] 
  > Für den Fall, dass der Benutzer keine Berechtigungen für das Speicherkonto besitzt, rufen wir zuerst die Objekt-ID des Benutzers ab.
 
-    ```
-    az ad user show --upn-or-object-id "developer@contoso.com"
+ ```
+ az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
-    
-    ```
+ az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+ ```
     
 ## <a name="fetch-sas-tokens-in-code"></a>Abrufen von SAS-Token in Code
 
@@ -140,8 +147,8 @@ In diesem Abschnitt wird erläutert, wie Sie Vorgänge für Ihr Speicherkonto du
 
 Im folgenden Abschnitt wird das Abrufen von SAS-Token veranschaulicht, nachdem eine SAS-Definition wie oben gezeigt erstellt wurde.
 
-> [!NOTE] 
-  Es gibt 3 Möglichkeiten, sich bei Key Vault zu authentifizieren, wie Sie in den [Grundlegenden Konzepten](key-vault-whatis.md#basic-concepts) lesen können.
+> [!NOTE]
+>   Es gibt 3 Möglichkeiten, sich bei Key Vault zu authentifizieren, wie Sie in den [Grundlegenden Konzepten](key-vault-whatis.md#basic-concepts) lesen können.
 > - Verwenden der verwalteten Dienstidentität (dringend empfohlen)
 > - Verwenden eines Dienstprinzipals und eines Zertifikats 
 > - Verwenden eines Dienstprinzipals und eines Kennworts (NICHT empfohlen)

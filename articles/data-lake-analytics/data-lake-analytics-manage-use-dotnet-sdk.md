@@ -9,14 +9,15 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 3827c9e0b3e51a7a179a7db7fac0152d799a63f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835814"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793287"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer .NET-App
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mit einer App verwalten, die unter Verwendung des Azure .NET SDK geschrieben wurde. 
@@ -39,7 +40,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Daten
 
 Sie können diese Pakete mit den folgenden Befehlen über die NuGet-Befehlszeile installieren:
 
-```
+```powershell
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
 Install-Package -Id Microsoft.Azure.Management.DataLake.Analytics  -Version 3.0.0
 Install-Package -Id Microsoft.Azure.Management.DataLake.Store  -Version 2.2.0
@@ -49,7 +50,7 @@ Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 
 ## <a name="common-variables"></a>Allgemeine Variablen
 
-``` csharp
+```csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
 string tenantid = "<Tenant ID>"; // AAD tenant ID or domain. For example, "contoso.onmicrosoft.com"
 string rg == "<value>"; // Resource  group name
@@ -130,6 +131,7 @@ Sie benötigen eine Azure-Ressourcengruppe, um Ihre Data Lake Analytics-Komponen
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
+
 Weitere Informationen finden Sie unter „Azure-Ressourcengruppen und Data Lake Analytics“.
 
 ### <a name="create-a-data-lake-store-account"></a>Erstellen eines Data Lake-Speicherkontos
@@ -260,6 +262,7 @@ if (adls_accounts != null)
 ```
 
 ### <a name="upload-and-download-folders-and-files"></a>Hochladen und Herunterladen von Ordnern und Dateien
+
 Sie können das Clientverwaltungsobjekt des Data Lake Store-Dateisystems zum Hoch- und Herunterladen einzelner Dateien oder Ordner von Azure auf Ihren lokalen Computer verwenden. Dafür gibt es folgende Methoden:
 
 - UploadFolder
@@ -293,6 +296,7 @@ using (var memstream = new MemoryStream())
 ```
 
 ### <a name="verify-azure-storage-account-paths"></a>Überprüfen von Pfaden eines Azure Storage-Kontos
+
 Der folgende Code überprüft, ob ein Azure Storage-Konto (StorageAccntName) in einem Data Lake Analytics-Konto (AnalyticsAccountName) vorhanden ist und ob ein Container (ContainerName) im Azure Storage-Konto vorhanden ist.
 
 ``` csharp
@@ -303,9 +307,11 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 ```
 
 ## <a name="manage-catalog-and-jobs"></a>Verwalten von Katalog und Aufträgen
+
 Das DataLakeAnalyticsCatalogManagementClient-Objekt enthält Methoden zum Verwalten der SQL-Datenbank, die für jedes Azure Data Lake Analytics-Konto bereitgestellt wird. Das DataLakeAnalyticsJobManagementClient-Objekt bietet Methoden zum Übermitteln und Verwalten von Aufträgen, die für die Datenbank ausgeführt werden (mit U-SQL-Skripts).
 
 ### <a name="list-databases-and-schemas"></a>Auflisten von Datenbanken und Schemas
+
 Sie können zwar verschiedene Dinge auflisten, am häufigsten werden jedoch Datenbanken und das dazugehörige Schema aufgelistet. Der folgende Code ruft eine Sammlung von Datenbanken ab und zählt dann das Schema für die einzelnen Datenbank auf.
 
 ``` csharp
@@ -323,9 +329,10 @@ foreach (var db in databases)
 ```
 
 ### <a name="list-table-columns"></a>Auflisten von Tabellenspalten
+
 Der folgende Code zeigt, wie Sie mit einem Data Lake Analytics-Katalogverwaltungsclient auf die Datenbank zugreifen, um die Spalten einer bestimmten Tabelle aufzulisten.
 
-``` csharp
+```csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
 IEnumerable<USqlTableColumn> columns = tbl.ColumnList;
 
@@ -336,7 +343,9 @@ foreach (USqlTableColumn utc in columns)
 ```
 
 ### <a name="submit-a-u-sql-job"></a>Senden eines U-SQL-Auftrags
+
 Der folgende Code stellt dar, wie ein Data Lake Analytics-Auftragverwaltungsclient zum Senden eines Auftrags verwendet wird.
+
 ``` csharp
 string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
 Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
@@ -355,9 +364,10 @@ Console.WriteLine($"Job {jobName} submitted.");
 ```
 
 ### <a name="list-failed-jobs"></a>Auflisten nicht erfolgreicher Aufträge
+
 Der folgende Code listet Informationen zu nicht erfolgreichen Aufträgen auf.
 
-``` csharp
+```csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
 var jobs = adlaJobClient.Job.List(adla, odq);
 foreach (var j in jobs)
@@ -367,6 +377,7 @@ foreach (var j in jobs)
 ```
 
 ### <a name="list-pipelines"></a>Auflisten von Pipelines
+
 Mit dem folgenden Code werden Informationen zu jeder Pipeline von Aufträgen aufgelistet, die an das Konto übermittelt werden.
 
 ``` csharp
@@ -378,6 +389,7 @@ foreach (var p in pipelines)
 ```
 
 ### <a name="list-recurrences"></a>Auflisten von Wiederholungen
+
 Mit dem folgenden Code werden Informationen zu jeder Wiederholung von Aufträgen aufgelistet, die an das Konto übermittelt werden.
 
 ``` csharp
@@ -404,9 +416,11 @@ Console.WriteLine( userinfo.ObjectId )
 ```
 
 ## <a name="manage-compute-policies"></a>Verwalten von Computerichtlinien
+
 Das DataLakeAnalyticsAccountManagementClient-Objekt enthält Methoden zum Verwalten der Computerichtlinien für ein Data Lake Analytics-Konto.
 
 ### <a name="list-compute-policies"></a>Auflisten von Computerichtlinien
+
 Mit dem folgenden Code wird eine Liste von Computerichtlinien für ein Data Lake Analytics-Konto abgerufen.
 
 ``` csharp
@@ -418,6 +432,7 @@ foreach (var p in policies)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>Erstellen einer Computerichtlinie
+
 Mit dem folgenden Code wird eine neue Computerichtlinie für ein Data Lake Analytics-Konto erstellt, mit der die maximal verfügbaren Analytics-Einheiten für den angegebenen Benutzer auf 50 und die minimale Auftragspriorität auf 250 festgelegt wird.
 
 ``` csharp
@@ -427,6 +442,7 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
 * [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

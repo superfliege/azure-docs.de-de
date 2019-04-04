@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: cabfe4381f7f941f2a5e049eed73be546902f6ae
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485346"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576335"
 ---
-# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
+# <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -35,19 +35,39 @@ Ein IoT Hub verfügt über einen standardmäßigen integrierten Endpunkt (**mess
 
 ### <a name="built-in-endpoint"></a>Integrierter Endpunkt
 
-Sie können standardmäßige [Event Hubs-Integration und -SDKs](iot-hub-devguide-messages-read-builtin.md) zum Empfangen von D2C-Nachrichten vom integrierten Endpunkt (**messages/events**) verwenden. Beachten Sie Folgendes: Sobald eine Route erstellt wurde, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt.
+Sie können standardmäßige [Event Hubs-Integration und -SDKs](iot-hub-devguide-messages-read-builtin.md) zum Empfangen von D2C-Nachrichten vom integrierten Endpunkt (**messages/events**) verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage nur im [Apache Avro](http://avro.apache.org/)-Format. IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn das Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist.
+IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage im [Apache Avro](https://avro.apache.org/)- und im JSON-Format. Die Funktion zum Codieren im JSON-Format ist in allen Regionen in der Vorschauphase, in denen IoT Hub verfügbar ist – mit Ausnahme von „USA, Osten“ und „Europa, Westen“. Der Standardwert ist AVRO. Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt des Blobspeichers konfiguriert ist. Das Format kann nicht für einen vorhandenen Endpunkt bearbeitet werden. Wenn Sie die JSON-Codierung verwenden, müssen Sie in der Nachricht [Systemeigenschaften](iot-hub-devguide-routing-query-syntax.md#system-properties) „contentType“ auf JSON und „contentEncoding“ auf UTF-8 festlegen. Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen, insbesondere [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder [Azure Powershell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Das folgende Diagramm zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
 
-IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
+![Endpunktcodierung für Blobspeicher](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
+
+IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn das Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist. IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
 Sie können eine beliebige Dateibenennungskonvention verwenden, müssen jedoch alle aufgelisteten Tokens verwenden. IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
+
+Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover-preview) in Zusammenhang mit IoT Hub ändern. Sie können die [API zum Auflisten von Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) verwenden, um die Liste der Blobs aufzulisten. Das folgende Beispiel dient als Anleitung.
+
+   ```csharp
+        public void ListBlobsInContainer(string containerName, string iothub)
+        {
+            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+            if (cloudBlobContainer.Exists())
+            {
+                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+                foreach (IListBlobItem item in results)
+                {
+                    Console.WriteLine(item.Uri);
+                }
+            }
+        }
+   ```
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus-Warteschlangen und Service Bus-Themen
 
@@ -56,8 +76,6 @@ Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet
 ### <a name="event-hubs"></a>Event Hubs
 
 Sie können Daten nicht nur an den mit Event Hubs kompatiblen integrierten Endpunkt, sondern auch an benutzerdefinierte Endpunkte vom Typ „Event Hubs“ weiterleiten. 
-
-Bei Verwendung von Routing und benutzerdefinierten Endpunkten werden Nachrichten nur an den integrierten Endpunkt übermittelt, wenn sie mit keinen Regeln übereinstimmen. Fügen Sie für die Übermittlung von Nachrichten an den integrierten Endpunkt und die benutzerdefinierten Endpunkte eine Route hinzu, die Nachrichten an den Endpunkt „events“ sendet.
 
 ## <a name="reading-data-that-has-been-routed"></a>Lesen weitergeleiteter Daten
 
@@ -77,7 +95,7 @@ Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus e
 
 ## <a name="fallback-route"></a>Fallbackroute
 
-Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](/azure/event-hubs/) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Beachten Sie Folgendes: Sobald eine Route erstellt wurde, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, es wird eine Route zu diesem Endpunkt erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen. 
+Die Fallbackroute sendet alle Nachrichten, die die Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den integrierten Endpunkt (**messages/events**), der mit [Event Hubs](/azure/event-hubs/) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen. 
 
 Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
 
@@ -99,9 +117,11 @@ In den meisten Fällen beträgt der durchschnittliche Latenzanstieg weniger als 
 
 ## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
 
-IoT Hub bietet mehrere Metriken in Bezug auf Routing und Endpunkte, um Ihnen einen Überblick über die Integrität Ihres Hubs und der gesendeten Nachrichten zu verschaffen. Sie können Informationen aus mehreren Metriken kombinieren, um die Grundursache eines Problems zu ermitteln. Verwenden Sie z.B. die Metriken **Routing: verworfene Telemetrienachrichten** oder **d2c.telemetry.egress.dropped**, um herauszufinden, wie viele Nachrichten verworfen wurden, weil sie keiner Abfrage in einer der Routen entsprachen und die Fallbackroute deaktiviert war. Unter [IoT Hub-Metriken](iot-hub-metrics.md) werden alle Metriken aufgeführt, die standardmäßig für Ihren IoT Hub aktiviert sind.
+IoT Hub bietet mehrere Metriken in Bezug auf Routing und Endpunkte, um Ihnen einen Überblick über die Integrität Ihres Hubs und der gesendeten Nachrichten zu verschaffen. Sie können Informationen aus mehreren Metriken kombinieren, um die Grundursache eines Problems zu ermitteln. Verwenden Sie z. B. die Metriken **Routing: verworfene Telemetrienachrichten** oder **d2c.telemetry.egress.dropped**, um herauszufinden, wie viele Nachrichten verworfen wurden, weil sie keiner Abfrage in einer der Routen entsprachen und die Fallbackroute deaktiviert war. Unter [IoT Hub-Metriken](iot-hub-metrics.md) werden alle Metriken aufgeführt, die standardmäßig für Ihren IoT Hub aktiviert sind.
 
-Mithilfe der Diagnoseprotokolle für **Routen** in den Azure Monitor-[Diagnoseeinstellungen](../iot-hub/iot-hub-monitor-resource-health.md) können Sie Fehler bei der Auswertung einer Routingabfrage und der Endpunktintegrität nachverfolgen, die von IoT Hub registriert werden, wenn beispielsweise ein Endpunkt nicht erreichbar ist. Diese Diagnoseprotokolle können zur benutzerdefinierten Verarbeitung an Log Analytics, Event Hubs oder Azure Storage gesendet werden.
+Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. Es empfiehlt sich, die [IoT Hub-Metriken](iot-hub-metrics.md), die sich auf die Routinglatenz von Nachrichten beziehen, zu verwenden, um Fehler bei beschädigter Endpunktintegrität zu erkennen und zu beheben. Sie können z. B. für Endpunkttyp-Event Hubs **d2c.endpoints.latency.eventHubs** überwachen. Der Status eines fehlerhaften Endpunkts wird zu fehlerfrei aktualisiert, wenn IoT Hub einen möglicherweise konsistenten Integritätsstatus erreicht hat.
+
+Mithilfe der Diagnoseprotokolle für **Routen** in den Azure Monitor-[Diagnoseeinstellungen](../iot-hub/iot-hub-monitor-resource-health.md) können Sie Fehler bei der Auswertung einer Routingabfrage und der Endpunktintegrität nachverfolgen, die von IoT Hub registriert werden, wenn beispielsweise ein Endpunkt nicht erreichbar ist. Diese Diagnoseprotokolle können zur benutzerdefinierten Verarbeitung an Azure Monitor-Protokolle, Event Hubs oder Azure Storage gesendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

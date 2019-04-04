@@ -12,15 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3fe6a89073da731332a91ece40a6ea6f667d150a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8a7b19dd6e5bc08c0c7e278b514ecaa9dc13a00e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004415"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485237"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>PowerShell-Skript zum Erstellen einer Application Insights-Ressource
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Wenn Sie eine neue Anwendung – oder eine neue Version einer Anwendung – mit [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) überwachen möchten, richten Sie eine neue Ressource in Microsoft Azure ein. In dieser Ressource werden die Telemetriedaten aus Ihrer App analysiert und angezeigt. 
 
@@ -36,12 +37,12 @@ Wenn Sie beispielsweise eine App für mobile Geräte entwickeln, ist es wahrsche
 ## <a name="script-to-create-an-application-insights-resource"></a>Skript zum Erstellen einer Application Insights-Ressource
 Die wichtigsten Cmdlet-Spezifikationen:
 
-* [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
-* [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
+* [New-AzResource](https://msdn.microsoft.com/library/mt652510.aspx)
+* [New-AzRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 *PowerShell-Skript*  
 
-```PowerShell
+```powershell
 
 
 ###########################################
@@ -51,7 +52,7 @@ Die wichtigsten Cmdlet-Spezifikationen:
 # If running manually, uncomment before the first 
 # execution to login to the Azure Portal:
 
-# Connect-AzureRmAccount / Connect-AzureRmAccount
+# Connect-AzAccount / Connect-AzAccount
 
 # Set the name of the Application Insights Resource
 
@@ -75,7 +76,7 @@ Select-AzureSubscription -SubscriptionName "MySubscription"
 # Create the App Insights Resource
 
 
-$resource = New-AzureRmResource `
+$resource = New-AzResource `
   -ResourceName $appInsightsName `
   -ResourceGroupName $resourceGroupName `
   -Tag @{ applicationType = "web"; applicationName = $applicationTagName} `
@@ -86,7 +87,7 @@ $resource = New-AzureRmResource `
 
 # Give owner access to the team
 
-New-AzureRmRoleAssignment `
+New-AzRoleAssignment `
   -SignInName "myteam@fabrikam.com" `
   -RoleDefinitionName Owner `
   -Scope $resource.ResourceId 

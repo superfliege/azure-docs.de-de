@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: 68a504f43463a25a0aba8d7d72881cddbcfba816
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7f152de89f5d374a5b97368eafe7287fc9377291
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999338"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011329"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
@@ -77,14 +77,14 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 | [HTTP](https://nodejs.org/api/http.html), [HTTPS](https://nodejs.org/api/https.html) | 0.10 und höher |
 | <b>Speicherclients</b> | |
 | [Redis](https://www.npmjs.com/package/redis) | 2.x |
-| [MongoDb](https://www.npmjs.com/package/mongodb); [MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.0.0 - 2.3.0 |
-| [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0 - 2.14.x |
-| [PostgreSql](https://www.npmjs.com/package/pg); | 6.x |
-| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x |
+| [MongoDb](https://www.npmjs.com/package/mongodb); [MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x - 3.x |
+| [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0 - 2.16.x |
+| [PostgreSql](https://www.npmjs.com/package/pg); | 6.x - 7.x |
+| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x - 2.x |
 | <b>Protokollierungsbibliotheken</b> | |
 | [Konsole](https://nodejs.org/api/console.html) | 0.10 und höher |
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
-| [Winston](https://www.npmjs.com/package/winston) | 2.x |
+| [Winston](https://www.npmjs.com/package/winston) | 2.x - 3.x |
 
 ## <a name="javascript"></a>JavaScript
 

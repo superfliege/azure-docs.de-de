@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344090"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544442"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
@@ -86,7 +86,7 @@ In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe für die Mandan
 
 Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md) für die Registrierung verwendet. Für eine Lösung mit höherer Sicherheit empfiehlt sich die Verwendung eines [X.509-Zertifikatnachweises](concepts-security.md#x509-certificates) mit einer Kette von Vertrauensstellungen.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning-Dienstinstanz.
 
 2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
 

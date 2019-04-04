@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652611"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433449"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -186,7 +186,7 @@ Wenn Ihre Geräte in einem Netzwerk bereitgestellt werden, das einen Proxyserver
 
 ### <a name="set-up-logs-and-diagnostics"></a>Einrichten von Protokollen und Diagnosen
 
-Unter Linux verwendet der IoT Edge-Daemon journald als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-WinEvent`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, den Docker-Standard.  
+Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-WinEvent`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, den Docker-Standard.  
 
 Wenn Sie eine IoT Edge-Bereitstellung testen, können Sie in der Regel auf Ihre Geräte zugreifen, um Protokolle abzurufen und Fehler zu beheben. In einem Bereitstellungsszenario haben Sie diese Option möglicherweise nicht. Überlegen Sie, wie Sie Informationen über Ihre Geräte in der Produktion sammeln können. Eine Möglichkeit besteht darin, ein Protokollierungsmodul zu verwenden, das Informationen von anderen Modulen erfasst und in die Cloud sendet. Ein Beispiel für ein Protokollierungsmodul ist [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics). Sie haben auch die Möglichkeit, Ihr eigenes Modul zu erstellen. 
 
@@ -194,7 +194,7 @@ Wenn Sie befürchten, dass Protokolle auf einem ressourcenbeschränkten Gerät z
 
 * Insbesondere lässt sich die Größe aller Docker-Protokolldateien im Docker-Daemon selbst einschränken. Konfigurieren Sie den Daemon unter Linux unter `/etc/docker/daemon.json`. Unter Windows unter `C:\ProgramData\docker\confige\daemon.json`. 
 * Wenn Sie die Größe der Protokolldatei für jeden Container anpassen möchten, können Sie dies in den Erstellungsoptionen der einzelnen Module tun. 
-* Konfigurieren Sie Docker für die automatische Verwaltung von Protokollen, indem Sie journald als Standardprotokolltreiber für Docker festlegen. 
+* Konfigurieren Sie Docker für die automatische Verwaltung von Protokollen, indem Sie Journale als Standardprotokolltreiber für Docker festlegen. 
 * Entfernen Sie regelmäßig alte Protokolle von Ihrem Gerät, indem Sie ein logrotate-Tool für Docker installieren. Verwenden Sie die folgende Dateispezifikation: 
 
    ```

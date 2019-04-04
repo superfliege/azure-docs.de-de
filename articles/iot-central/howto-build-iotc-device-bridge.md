@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 12/4/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 9c774a463264a3df859ac097dce4aa21df1c1dd8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6133a7441459072d0c7da1841161da563a28aa31
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163360"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730323"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Erstellen der Azure IoT Central-Geräte-Bridge, um weitere IoT-Clouds mit IoT Central zu verbinden
 
@@ -27,6 +27,7 @@ Die IoT Central-Geräte-Bridge ist eine Open-Source-Lösung in GitHub. Über die
 -   Azure Storage-Konto
 -   Verbrauchstarif
 -   Azure Key Vault
+
 Die entscheidende Komponente der Geräte-Bridge ist die Funktions-App. Sie empfängt HTTP POST-Anforderungen von anderen IoT-Plattformen oder anderen benutzerdefinierten Plattformen über eine einfache Webhookintegration. Wir haben Beispiele bereitgestellt, die zeigen, wie Sie eine Verbindung mit Sigfox-, Particle- und TTN-Clouds herstellen. Diese Lösung lässt sich problemlos erweitern, um eine Verbindung mit Ihrer benutzerdefinierten IoT-Cloud herzustellen – vorausgesetzt, Ihre Plattform kann HTTP POST-Anforderungen an Ihre Funktions-App senden.
 Die Funktions-App transformiert die Daten in ein Format, das von IoT Central akzeptiert wird, und leitet sie über DPS-APIs weiter.
 

@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über das Konfigurieren zustandsbehafteter Reliab
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c131cf96f11dcddfb0de87ccf47f2d2c8a99617d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 97cf4fafb53156eec654bcc67cd8dccf3d973c32
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850801"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660696"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurieren zustandsbehafteter Reliable Services
 Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Set gilt global für alle Reliable Services im Cluster, während das andere für den jeweiligen Reliable Service spezifisch ist.

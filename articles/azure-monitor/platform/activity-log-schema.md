@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888140"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868543"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
@@ -119,10 +119,13 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 | correlationId |Normalerweise eine GUID im Zeichenfolgenformat. Ereignisse, die über die gleiche correlationId verfügen, gehören zu derselben übergeordneten Aktion. |
 | Beschreibung |Statische Beschreibung eines Ereignisses in Textform. |
 | eventDataId |Eindeutiger Bezeichner eines Ereignisses. |
+| eventName | Anzeigename des Administrative-Ereignisses. |
+| category | Immer „Administrative“ |
 | httpRequest |Blob, das die HTTP-Anforderung beschreibt. Umfasst üblicherweise „clientRequestId“, „clientIpAddress“ und „method“ (HTTP-Methode, z.B. PUT). |
 | level |Ebene des Ereignisses. Einer der folgenden Werte: „Critical“, „Error“, „Warning“ und „Informational“ |
 | resourceGroupName |Name der Ressourcengruppe für die betroffene Ressource. |
 | resourceProviderName |Name des Ressourcenanbieters für die betroffene Ressource. |
+| resourceType | Der Typ der Ressource, die von einem Administrative-Ereignis betroffen war. |
 | Ressourcen-ID |Ressourcen-ID der betroffenen Ressource. |
 | operationId |Eine GUID, die von den Ereignissen eines einzelnen Vorgangs gemeinsam genutzt wird. |
 | operationName |Name des Vorgangs. |

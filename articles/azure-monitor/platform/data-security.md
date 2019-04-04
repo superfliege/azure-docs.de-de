@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: e520c5dc2ae086305692c4bec1e1786d335c97e5
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: dd4efcd2f1d4cbf497ad1fde6936088513cb5fd0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765992"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312850"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument dient der Bereitstellung von spezifischen Informationen zu Log Analytics, einem Feature von Azure Monitor, in Ergänzung der Informationen im [Azure Trust Center](../../security/security-microsoft-trust-center.md).  
@@ -173,13 +173,7 @@ Wie oben beschrieben, werden die Daten von dem Verwaltungsserver oder den direkt
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Empfangen und Verarbeiten von Daten durch den Log Analytics-Dienst
 Der Log Analytics-Dienst stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. Die nicht verarbeiteten Rohdaten werden dann in einem Azure Event Hub in der Region gespeichert, in der die Daten schließlich im Ruhezustand gespeichert werden. Die Art der gespeicherten Daten ist abhängig von der Art der importierten und zum Sammeln von Daten verwendeten Lösungen. Der Log Analytics-Dienst verarbeitet dann die Rohdaten und erfasst sie in der Datenbank.
 
-Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert sind, hängt von dem ausgewählten Tarif ab. Beim *Free*-Tarif sind die gesammelten Daten 7 Tage verfügbar. Beim *kostenpflichtigen* Tarif sind die gesammelten Daten standardmäßig 31 Tage verfügbar, aber dieser Zeitraum kann auf 730 Tage verlängert werden. Daten werden im Ruhezustand verschlüsselt in Azure Storage gespeichert, um die Vertraulichkeit der Daten sicherzustellen, und die Daten werden innerhalb der lokalen Region mithilfe von lokal redundantem Speicher (LRS) repliziert. Die Daten der letzten zwei Wochen werden ebenfalls im SSD-basierten Cache gespeichert, außer in folgenden Regionen:
-
-* USA, Westen-Mitte
-* USA, Westen 2
-* UK, Süden 
-
-Wir arbeiten derzeit an einer Unterstützung für diese Regionen.     
+Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert sind, hängt von dem ausgewählten Tarif ab. Beim *Free*-Tarif sind die gesammelten Daten 7 Tage verfügbar. Beim *kostenpflichtigen* Tarif sind die gesammelten Daten standardmäßig 31 Tage verfügbar, aber dieser Zeitraum kann auf 730 Tage verlängert werden. Daten werden im Ruhezustand verschlüsselt in Azure Storage gespeichert, um die Vertraulichkeit der Daten sicherzustellen, und die Daten werden innerhalb der lokalen Region mithilfe von lokal redundantem Speicher (LRS) repliziert. Die letzten zwei Wochen von Daten werden ebenfalls im SSD-basierten Cache gespeichert, und dieser Cache ist verschlüsselt.
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Verwenden von Log Analytics für den Datenzugriff
 Für den Zugriff auf Ihren Log Analytics-Arbeitsbereich melden Sie sich über das zuvor eingerichtete Unternehmenskonto oder Microsoft-Konto im Azure-Portal an. Der gesamte Datenverkehr zwischen dem Portal und dem Log Analytics-Dienst erfolgt über einen sicheren HTTPS-Kanal. Bei Verwendung des Portals wird eine Sitzungs-ID auf dem Client des Benutzers (Webbrowser) generiert, und die Daten werden in einem lokalen Cache gespeichert, bis die Sitzung beendet wird. Wenn die Sitzung beendet ist, wird der Cache gelöscht. Clientseitige Cookies enthalten keine persönlich identifizierbaren Informationen und werden nicht automatisch entfernt. Sitzungscookies sind „HTTPOnly“ markiert und gesichert. Nach einer vorher festgelegten Zeit im Leerlauf wird die Sitzung im Azure-Portal beendet.

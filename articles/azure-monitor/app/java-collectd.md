@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011186"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Linux-Leistungsmetriken in Application Insights
 
@@ -26,14 +26,12 @@ Um Leistungsmetriken für Linux-Systeme in [Application Insights](../../azure-mo
 
 CollectD wird üblicherweise verwendet, wenn Sie Ihren [Java-Webdienst bereits mit Application Insights][java] instrumentiert haben. Die Lösung liefert weitere Daten, auf deren Grundlage Sie die Leistung Ihrer Anwendung verbessern oder Probleme diagnostizieren können. 
 
-![Beispieldiagramme](./media/java-collectd/sample.png)
-
 ## <a name="get-your-instrumentation-key"></a>Abrufen des Instrumentationsschlüssels
 Öffnen Sie im [Microsoft Azure-Portal](https://portal.azure.com) die Ressource [Application Insights](../../azure-monitor/app/app-insights-overview.md), in der die Daten angezeigt werden sollen. (Oder [erstellen Sie eine neue Ressource](../../azure-monitor/app/create-new-resource.md ).)
 
 Kopieren Sie den Instrumentationsschlüssel, der die Ressource identifiziert.
 
-![Durchsuchen Sie alle Ressourcen, öffnen Sie Ihre Ressource, wählen Sie in der Dropdownliste „Essentials“ den Instrumentationsschlüssel aus, und kopieren Sie ihn.](./media/java-collectd/02-props.png)
+![Durchsuchen Sie alle Ressourcen, öffnen Sie Ihre Ressource, wählen Sie in der Dropdownliste „Essentials“ den Instrumentationsschlüssel aus, und kopieren Sie ihn.](./media/java-collectd/instrumentation-key-001.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>Installieren von collectd und des Plug-Ins
 Auf Linux-Servercomputern:
@@ -93,9 +91,7 @@ Konfigurieren Sie andere [collectd-Plug-Ins](https://collectd.org/wiki/index.php
 Starten Sie collectd gemäß dem [Handbuch](https://collectd.org/wiki/index.php/First_steps)neu.
 
 ## <a name="view-the-data-in-application-insights"></a>Anzeigen der Daten in Application Insights
-Öffnen Sie in der Application Insights-Ressource den [Metrik-Explorer, und fügen Sie Diagramme][metrics] hinzu, indem Sie die Metriken auswählen, die aus der benutzerdefinierten Kategorie angezeigt werden sollen.
-
-![](./media/java-collectd/result.png)
+Öffnen Sie in der Application Insights-Ressource [Metriken, und fügen Sie Diagramme][metrics] hinzu, indem Sie die Metriken auswählen, die aus der benutzerdefinierten Kategorie angezeigt werden sollen.
 
 Standardmäßig werden die Metriken für alle Hostcomputer aggregiert, von denen die Metriken gesammelt wurden. Aktivieren Sie zum Anzeigen der Metriken pro Host auf dem Blatt mit Diagrammdetails "Gruppierung", und wählen Sie dann aus, dass nach "CollectD-Host" gruppiert werden soll.
 

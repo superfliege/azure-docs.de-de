@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5b49db8d7e8360837dc209e98123eeccd5542769
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837744"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Media Services v3
 
@@ -32,7 +32,7 @@ Details dazu finden Sie unter [Skalieren der Medienverarbeitung an der Befehlsze
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Was ist die empfohlene Methode zum Verarbeiten von Videos?
 
-Es empfiehlt sich, Aufträge mithilfe einer HTTP(s)-URL zu übermitteln, die auf das Video verweist. Weitere Informationen finden Sie unter [HTTP(s)-Erfassung](job-input-from-http-how-to.md). Sie brauchen vor der Verarbeitung kein Medienobjekt mit dem Eingabevideo zu erstellen.
+Verwenden Sie [Transformationen](https://docs.microsoft.com/rest/api/media/transforms), um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede **Transformation** beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben zur Verarbeitung Ihrer Video- oder Audiodateien. Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
 
 ### <a name="how-does-pagination-work"></a>Wie funktioniert die Paginierung?
 
@@ -45,6 +45,29 @@ Bei Verwendung der Paginierung sollten Sie immer den Link „Weiter“ verwenden
 Die Livecodierung von Media Services v3 unterstützt aktuell das Einfügen von Video oder Bildtafeln in Livedatenströme noch nicht. 
 
 Sie können einen [lokalen Liveencoder](recommended-on-premises-live-encoders.md) verwenden, um das Quellvideo zu wechseln. Viele Apps bieten die Möglichkeit zum Wechseln der Quelle, darunter Telestream Wirecast, Switcher Studio (unter iOS), OBS Studio (kostenlose App) und viele weitere.
+
+## <a name="content-protection"></a>Content Protection
+
+### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Wie und wo kann ich JWT-Token abrufen, um damit dann eine Lizenz oder einen Schlüssel anzufordern?
+
+1. Für die Produktion benötigen Sie einen Sicherheitstokendienst (STS) (Webdienst), der bei einer HTTPS-Anforderung JWT-Token ausgibt. Zum Testen können Sie den in der Methode **GetTokenAsync** angegebenen Code verwenden, der in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) definiert ist.
+2. Player müssen nach der Authentifizierung eines Benutzers beim STS ein solches Token anfordern und dieses als Wert des Token zuweisen. Sie können die [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) verwenden.
+
+* Ein Beispiel für die Ausführung des STS mit einem symmetrischen und einem asymmetrischen Schlüssel finden Sie unter [https://aka.ms/jwt](https://aka.ms/jwt). 
+* Ein Beispiel für einen Player, der auf dem Azure Media Player basiert und ein solches JWT-Token verwendet, finden Sie unter [https://aka.ms/amtest](https://aka.ms/amtest) (erweitern Sie den Link „player_settings“, um die Tokeneingabe anzusehen).
+
+### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Wie autorisiere ich Anforderungen zum Streamen von Videos mit der AES-Verschlüsselung?
+
+Der richtige Ansatz ist die Nutzung von STS:
+
+Fügen Sie in STS je nach Benutzerprofil unterschiedliche Ansprüche hinzu (z.B. „Premium-Benutzer“, „Basic-Benutzer“, „Benutzer der kostenlosen Testversion“). Bei unterschiedlichen Ansprüchen in einem JWT kann der Benutzer unterschiedliche Inhalte sehen. Selbstverständlich hat ContentKeyPolicyRestriction für unterschiedliche Inhalte/Objekte die entsprechenden RequiredClaims.
+
+Verwenden Sie die Azure Media Services-APIs für die Konfiguration von Lizenzen/Schlüsselbereitstellungen und die Verschlüsselung Ihrer Objekte (siehe [dieses Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
+
+Weitere Informationen finden Sie unter
+
+- [Übersicht über den Inhaltsschutz](content-protection-overview.md)
+- [Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung](design-multi-drm-system-with-access-control.md)
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services v2 i. Vgl. mit v3 
 
@@ -64,5 +87,4 @@ Aktuell wird empfohlen, die serverseitige Speicherverschlüsselung (die standard
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Media Services v3 – Übersicht](media-services-overview.md)
+[Media Services v3 – Übersicht](media-services-overview.md)

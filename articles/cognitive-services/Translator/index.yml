@@ -1,17 +1,11 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1d6daf9805737294fb5bf0e9f4e48a3c7cfbb98e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731836"
 documentType: LandingData
 title: Dokumentation zur Textübersetzung
 metadata:
   title: 'Dokumentation zur Textübersetzung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie Sie die Textübersetzung zum Übersetzen von Text in mehreren Sprachen verwenden.
+  description: 'Hier erfahren Sie, wie Sie die Textübersetzung zum Übersetzen von Text in mehreren Sprachen verwenden.'
   services: cognitive-services
-  author: Jann-Skotdal
+  author: v-pawal
   manager: Chris.Wendt
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
@@ -20,87 +14,87 @@ metadata:
   ms.date: 02/21/2019
   ms.author: v-jansko
 abstract:
-  description: Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Custom Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Services</a> übersetzt werden. Eine Liste der unterstützten Sprachen für neuronale MT und statistische MT finden Sie unter <a href="languages.md">Sprach- und Regionsunterstützung für die Textübersetzungs-API</a>.
+  description: 'Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Custom Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Services</a> übersetzt werden. Eine Liste der unterstützten Sprachen für neuronale MT und statistische MT finden Sie unter <a href="languages.md">Sprach- und Regionsunterstützung für die Textübersetzungs-API</a>.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/translator/translator-info-overview
+            html: <p>Informationen zur Textübersetzungs-API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Was ist die Textübersetzungs-API?
+          - href: /azure/cognitive-services/translator/custom-translator/overview
+            html: <p>Informationen zu Custom Translator</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Worum handelt es sich bei Custom Translator?
+          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
+            html: <p>Hier erhalten Sie Informationen zu den ersten Schritten mit Custom Translator.</p>
+            image:
+              src: ../media/index/i_get-started.svg
+            title: Schnellstart zu Custom Translator
+  - title: Fünfminütige Schnellstarts
     items:
-    - href: /azure/cognitive-services/translator/translator-info-overview
-      html: <p>Informationen zur Textübersetzungs-API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Was ist die Textübersetzungs-API?
-    - href: /azure/cognitive-services/translator/custom-translator/overview
-      html: <p>Informationen zu Custom Translator</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Worum handelt es sich bei Custom Translator?
-    - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-      html: <p>Hier erhalten Sie Informationen zu den ersten Schritten mit Custom Translator.</p>
-      image:
-        src: ../media/index/i_get-started.svg
-      title: Schnellstart zu Custom Translator
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Erste Schritte mit der Textübersetzungs-API:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-      title: C#
-    - image:
-        src: media/index/logo_java.svg
-      title: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      title: Node.js
-    - image:
-        src: media/index/logo_python.svg
-      title: Python
-    - image:
-        src: media/index/logo_go.svg
-      title: Go
-    rows:
-    - title: Übersetzen von Text von einer Sprache in eine andere
-      values:
-      - href: quickstart-csharp-translate
-      - href: quickstart-java-translate
-      - href: quickstart-nodejs-translate
-      - href: quickstart-python-translate
-      - href: quickstart-go-translate
-    - title: Konvertieren von Text aus einem Skript in ein anderes
-      values:
-      - href: quickstart-csharp-transliterate
-      - href: quickstart-java-transliterate
-      - href: quickstart-nodejs-transliterate
-      - href: quickstart-python-transliterate
-      - href: quickstart-go-transliterate
-    - title: Identifizieren der Textsprache
-      values:
-      - href: quickstart-csharp-detect
-      - href: quickstart-java-detect
-      - href: quickstart-nodejs-detect
-      - href: quickstart-python-detect
-      - href: quickstart-go-detect
-    - title: Abrufen von alternativen Übersetzungen und Nutzung
-      values:
-      - href: quickstart-csharp-dictionary
-      - href: quickstart-java-dictionary
-      - href: quickstart-nodejs-dictionary
-      - href: quickstart-python-dictionary
-      - href: quickstart-go-dictionary
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: 'Erfahren Sie, wie Anwendungen unter Verwendung der Textübersetzungs-API entwickelt werden:'
-  - type: paragraph
-    text: <a href="tutorial-wpf-translation-csharp.md">Schreiben einer WPF-Anwendung für Textübersetzung mithilfe von C#</a>
-- title: Verweis
-  items:
-  - type: paragraph
-    text: <p><a href="reference/v3-0-reference.md">API-Referenz</a></p>
+      - type: paragraph
+        text: 'Erste Schritte mit der Textübersetzungs-API:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo_java.svg
+            title: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            title: Node.js
+          - image:
+              src: media/index/logo_python.svg
+            title: Python
+          - image:
+              src: media/index/logo_go.svg
+            title: Go
+        rows:
+          - title: Übersetzen von Text von einer Sprache in eine andere
+            values:
+              - href: quickstart-csharp-translate
+              - href: quickstart-java-translate
+              - href: quickstart-nodejs-translate
+              - href: quickstart-python-translate
+              - href: quickstart-go-translate
+          - title: Konvertieren von Text aus einem Skript in ein anderes
+            values:
+              - href: quickstart-csharp-transliterate
+              - href: quickstart-java-transliterate
+              - href: quickstart-nodejs-transliterate
+              - href: quickstart-python-transliterate
+              - href: quickstart-go-transliterate
+          - title: Identifizieren der Textsprache
+            values:
+              - href: quickstart-csharp-detect
+              - href: quickstart-java-detect
+              - href: quickstart-nodejs-detect
+              - href: quickstart-python-detect
+              - href: quickstart-go-detect
+          - title: Abrufen von alternativen Übersetzungen und Nutzung
+            values:
+              - href: quickstart-csharp-dictionary
+              - href: quickstart-java-dictionary
+              - href: quickstart-nodejs-dictionary
+              - href: quickstart-python-dictionary
+              - href: quickstart-go-dictionary
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Anwendungen unter Verwendung der Textübersetzungs-API entwickelt werden:'
+      - type: paragraph
+        text: '<a href="tutorial-wpf-translation-csharp.md">Schreiben einer WPF-Anwendung für Textübersetzung mithilfe von C#</a>'
+  - title: Verweis
+    items:
+      - type: paragraph
+        text: <p><a href="reference/v3-0-reference.md">API-Referenz</a></p>

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e6148a35540b08916a4f0468af39e0f088453286
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3889aa1e8b19e203a3f6354c2d26fb82afe2b922
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958865"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214281"
 ---
 # <a name="create-a-new-device-template-version"></a>Erstellen einer neuen Gerätevorlagenversion
 
@@ -56,7 +56,7 @@ Was passiert mit Regeln und Gerätedashboards bei einem Versionswechsel?
 
 Es lassen sich mehrere Versionen der Gerätevorlage erstellen. Im Laufe der Zeit werden Sie über mehrere angeschlossene Geräte verfügen, die diese Gerätevorlagen verwenden. Sie können Geräte von einer Version Ihrer Gerätevorlage zu einer anderen migrieren. Die folgenden Schritte beschreiben, wie Sie ein Gerät migrieren:
 
-1. Wechseln Sie zur Seite **Explorer**.
+1. Wechseln Sie zur **Device Explorer**-Seite.
 1. Wählen Sie das Gerät aus, das Sie zu einer anderen Version migrieren möchten.
 1. Wählen Sie **Gerät migrieren**.
 1. Wählen Sie die Versionsnummer aus, zu der Sie das Gerät migrieren möchten, und wählen Sie **Migrieren**.

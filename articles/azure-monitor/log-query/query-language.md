@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343050"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749817"
 ---
 # <a name="azure-monitor-log-queries"></a>Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Protokollabfragen verwenden eine Version der gleichen Abfragesprache Kusto. Die [Dokumentation über die Abfragesprache Kusto](/azure/kusto/query) enthält alle Informationen zur Sprache und ist die wichtigste Ressource zum Schreiben von Azure Monitor-Protokollabfragen. Diese Seite enthält Links zu anderen Ressourcen, die Sie beim Erlernen des Schreibens von Abfragen unterstützen und die Unterschiede der Sprachversionen bei der Azure Monitor-Implementierung erläutern.
@@ -27,7 +27,7 @@ Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Pro
 
 ## <a name="getting-started"></a>Erste Schritte
 
-- [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) erläutert das Schreiben von Abfragen und das Arbeiten mit Ergebnissen im Azure Portal.
+- [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) erläutert das Schreiben von Abfragen und das Arbeiten mit Ergebnissen im Azure-Portal.
 - [Erste Schritte mit Azure Monitor-Protokollabfragen](get-started-queries.md) erläutert das Schreiben von Abfragen mit Azure Monitor-Protokolldaten.
 
 ## <a name="concepts"></a>Konzepte

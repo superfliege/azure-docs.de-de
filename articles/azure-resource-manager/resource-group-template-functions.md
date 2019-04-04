@@ -12,23 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: a4a86576b8f9f842c54cfa195305a3e0d0ff4724
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527618"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766749"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
-In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
-
-Sie fügen in Ihren Vorlagen Funktionen hinzu, indem Sie sie in Klammern einschließen: `[` bzw. `]`. Der Ausdruck wird während der Bereitstellung ausgewertet. Trotz der Schreibweise als Zeichenfolgenliteral kann das Ergebnis der Auswertung des Ausdrucks ein anderer JSON-Typ sein, z.B. ein Array, Objekt oder Integer. Genau wie in JavaScript haben Funktionsaufrufe das Format `functionName(arg1,arg2,arg3)`. Auf Eigenschaften verweisen Sie mithilfe der Operatoren Punkt und [Index].
-
-Ein Vorlagenausdruck darf nicht mehr als 24.576 Zeichen aufweisen.
-
-Bei Vorlagenfunktionen und ihren Parametern wird Groß-und Kleinschreibung nicht unterschieden. Der Resource Manager löst beispielsweise **variables('var1')** und **VARIABLES('VAR1')** identisch auf. Bei der Auswertung wird die Groß-/Kleinschreibung beibehalten, sofern diese nicht ausdrücklich durch die Funktion geändert wird (z.B. mit „toUpper“ oder „toLower“). Für spezielle Ressourcentypen gelten möglicherweise Vorgaben zur Schreibweise ungeachtet der Auswertungsweise von Funktionen.
+In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](resource-group-authoring-templates.md#syntax).
 
 Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](resource-group-authoring-templates.md#functions).
 
@@ -207,6 +201,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Länge](resource-group-template-functions-string.md#length)
+* [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
@@ -222,9 +217,10 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
+* [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure-Ressourcen-Manager-Vorlage finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md)
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md)
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md)
-* Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md)
+* Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).

@@ -1,5 +1,5 @@
 ---
-title: Wire Data-Lösung in Log Analytics | Microsoft Docs
+title: Wire Data-Lösung in Azure Monitor | Microsoft-Dokumentation
 description: Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten von Computern mit Log Analytics-Agents. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
 services: log-analytics
 documentationcenter: ''
@@ -13,25 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 35568f6c281a2aaf058fe08b214657c7737c64fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842157"
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0-Lösung (Vorschauversion) in Azure Monitor
 
-![Wire Data-Symbol](./media/wire-data/wire-data2-symbol.png)
+![Wire Data-Symbol](media/wire-data/wire-data2-symbol.png)
 
 Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden, einschließlich der in Ihrer Umgebung von Operations Manager überwachten Computer. Netzwerkdaten werden mit Ihren sonstigen Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
 
-Zusätzlich zum Log Analytics-Agent verwendet die Wire Data-Lösung Microsoft Dependency-Agents, die Sie auf Computern in Ihrer IT-Infrastruktur installieren. Dependency-Agents überwachen Netzwerkdaten, die für die Netzwerkschichten 2 und 3 des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) an ihre Computer und von ihnen gesendet werden, z.B. die verschiedenen verwendeten Protokolle und Ports. Die Daten werden dann mit Agents an Log Analytics gesendet.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Zusätzlich zum Log Analytics-Agent verwendet die Wire Data-Lösung Microsoft Dependency-Agents, die Sie auf Computern in Ihrer IT-Infrastruktur installieren. Dependency-Agents überwachen Netzwerkdaten, die für die Netzwerkschichten 2 und 3 des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) an ihre Computer und von ihnen gesendet werden, z.B. die verschiedenen verwendeten Protokolle und Ports. Die Daten werden dann mit Agents an Azure Monitor gesendet.  
 
 >[!NOTE]
->Sie haben die Dienstzuordnung bereits bereitgestellt oder möchten die Dienstzuordnung bzw. [Azure Monitor für VMs](../../azure-monitor/insights/vminsights-overview.md) verwenden? Es gibt ein neues Verbindungsmetrik-Dataset, das gesammelt und in Log Analytics gespeichert wird und ähnliche Informationen wie Wire Data zur Verfügung stellt.
+>Sie haben die Dienstzuordnung bereits bereitgestellt oder möchten die Dienstzuordnung bzw. [Azure Monitor für VMs](../../azure-monitor/insights/vminsights-overview.md) verwenden? Es gibt ein neues Verbindungsmetrik-Dataset, das gesammelt und in Azure Monitor gespeichert wird und ähnliche Informationen wie Wire Data zur Verfügung stellt.
 
-Standardmäßig protokolliert Log Analytics Daten für CPU, Arbeitsspeicher, Datenträger sowie Netzwerkleistungsdaten von Leistungsindikatoren, die in Windows und Linux integriert sind. Zudem werden Daten von anderen Leistungsindikatoren protokolliert, die Sie angeben können. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle.  Wire Data untersucht Netzwerkdaten auf Anwendungsebene und nicht unten auf der TCP-Transportebene.  Die Lösung betrachtet keine einzelnen ACKs und SYNs.  Sobald der Handshake abgeschlossen ist, wird er als Liveverbindung betrachtet und als „Verbunden“ gekennzeichnet. Diese Liveverbindung bleibt so lange bestehen, wie beide Seiten zustimmen, dass der Socket offen ist und Daten in beide Richtungen übertragen werden können.  Sobald eine Seite die Verbindung schließt, wird sie als „Getrennt“ markiert.  Aus diesem Grund wird nur die Bandbreite von erfolgreich abgeschlossenen Paketen gezählt, während erneut gesendete oder fehlerhafte Pakete nicht gemeldet werden.
+Standardmäßig protokolliert Azure Monitor Daten für CPU, Arbeitsspeicher, Datenträger sowie Netzwerkleistungsdaten von Leistungsindikatoren, die in Windows und Linux integriert sind. Zudem werden Daten von anderen Leistungsindikatoren protokolliert, die Sie angeben können. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle.  Wire Data untersucht Netzwerkdaten auf Anwendungsebene und nicht unten auf der TCP-Transportebene.  Die Lösung betrachtet keine einzelnen ACKs und SYNs.  Sobald der Handshake abgeschlossen ist, wird er als Liveverbindung betrachtet und als „Verbunden“ gekennzeichnet. Diese Liveverbindung bleibt so lange bestehen, wie beide Seiten zustimmen, dass der Socket offen ist und Daten in beide Richtungen übertragen werden können.  Sobald eine Seite die Verbindung schließt, wird sie als „Getrennt“ markiert.  Aus diesem Grund wird nur die Bandbreite von erfolgreich abgeschlossenen Paketen gezählt, während erneut gesendete oder fehlerhafte Pakete nicht gemeldet werden.
 
 Wenn Sie [sFlow](http://www.sflow.org/) oder andere Software mit dem [NetFlow-Protokoll von Cisco](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html) verwendet haben, werden Ihnen die in den Daten zur Kommunikation angezeigten Statistiken und Daten bekannt vorkommen.
 
@@ -50,33 +52,33 @@ Beispiele für die Typen von integrierten Abfragen von Protokollsuchen:
 
 Wenn Sie mit Wire Data eine Suche durchführen, können Sie Daten filtern und gruppieren, um Informationen zu den wichtigsten Agents und Protokollen anzuzeigen. Außerdem können Sie sich ansehen, wann bestimmte Computer (IP-Adressen/MAC-Adressen) miteinander kommuniziert haben, wie lange dies gedauert hat und wie viele Daten gesendet wurden. Im Grunde genommen zeigen Sie die Metadaten zum Netzwerkdatenverkehr an. Dies ist ein suchbasierter Vorgang.
 
-Da Sie Metadaten anzeigen, ist der Vorgang nicht unbedingt gut für die eingehende Problembehandlung geeignet. Bei Wire Data in Log Analytics wird keine vollständige Erfassung aller Netzwerkdaten durchgeführt.  Die eingehende Problembehandlung auf Paketebene ist nicht vorgesehen. Der Vorteil einer Verwendung des Agents gegenüber anderen Erfassungsmethoden besteht darin, dass Sie keine Appliances installieren, Netzwerkswitches neu konfigurieren oder komplizierten Konfigurationen durchführen müssen. Wire Data ist einfach Agent-basiert. Sie installieren den Agent auf einem Computer, um damit den Netzwerkdatenverkehr zu überwachen. Ein weiterer Vorteil ergibt sich, wenn Sie Workloads überwachen möchten, die bei Cloudanbietern, Hostinganbietern oder unter Microsoft Azure ausgeführt werden und bei denen sich die Fabric-Ebene nicht im Besitz des Benutzers befindet.
+Da Sie Metadaten anzeigen, ist der Vorgang nicht unbedingt gut für die eingehende Problembehandlung geeignet. Bei Wire Data in Azure Monitor wird keine vollständige Erfassung aller Netzwerkdaten durchgeführt.  Die eingehende Problembehandlung auf Paketebene ist nicht vorgesehen. Der Vorteil einer Verwendung des Agents gegenüber anderen Erfassungsmethoden besteht darin, dass Sie keine Appliances installieren, Netzwerkswitches neu konfigurieren oder komplizierten Konfigurationen durchführen müssen. Wire Data ist einfach Agent-basiert. Sie installieren den Agent auf einem Computer, um damit den Netzwerkdatenverkehr zu überwachen. Ein weiterer Vorteil ergibt sich, wenn Sie Workloads überwachen möchten, die bei Cloudanbietern, Hostinganbietern oder unter Microsoft Azure ausgeführt werden und bei denen sich die Fabric-Ebene nicht im Besitz des Benutzers befindet.
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
-Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agent ist abhängig vom Log Analytics-Agent, da er dessen Verbindungen mit Log Analytics benötigt. Dies bedeutet, dass auf einem Server der Log Analytics-Agent mit dem Dependency-Agent installiert und konfiguriert sein muss. In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Wire Data unterstützt werden.
+Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agent ist abhängig vom Log Analytics-Agent, da er dessen Verbindungen mit Azure Monitor benötigt. Dies bedeutet, dass auf einem Server der Log Analytics-Agent mit dem Dependency-Agent installiert und konfiguriert sein muss. In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Wire Data unterstützt werden.
 
 | **Verbundene Quelle** | **Unterstützt** | **Beschreibung** |
 | --- | --- | --- |
-| Windows-Agents | JA | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) benötigen Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
-| Linux-Agents | JA | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) benötigen Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
-| System Center Operations Manager-Verwaltungsgruppe | JA | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Log Analytics erforderlich. |
+| Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) benötigen Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
+| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) benötigen Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
+| System Center Operations Manager-Verwaltungsgruppe | Ja | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Azure Monitor erforderlich. |
 | Azure-Speicherkonto | Nein  | Da Wire Data Daten von Agent-Computern erfasst, sind keine Daten aus Azure Storage zu erfassen. |
 
-Unter Windows wird der Microsoft Monitoring Agent (MMA) von System Center Operations Manager und Log Analytics zum Erfassen und Senden von Daten verwendet. Dieser Agent wird je nach Kontext als System Center Operations Manager-Agent, Log Analytics-Agent, MMA oder Direkt-Agent bezeichnet. System Center Operations Manager und Log Analytics bieten leicht unterschiedliche Versionen der MMA. Jede dieser Versionen kann Berichte an System Center Operations Manager, Log Analytics oder beide senden.
+Unter Windows wird der Microsoft Monitoring Agent (MMA) von System Center Operations Manager und Azure Monitor zum Erfassen und Senden von Daten verwendet. Dieser Agent wird je nach Kontext als System Center Operations Manager-Agent, Log Analytics-Agent, MMA oder Direkt-Agent bezeichnet. System Center Operations Manager und Azure Monitor bieten leicht unterschiedliche Versionen der MMA. Jede dieser Versionen kann Berichte an System Center Operations Manager, Azure Monitor oder beide senden.
 
-Unter Linux erfasst der Log Analytics-Agent für Linux Daten und sendet sie an Log Analytics. Sie können Wire Data auf Servern mit Agents verwenden, die direkt mit Log Analytics verbunden sind, oder auf Servern, die über System Center Operations Manager-Verwaltungsgruppen mit Log Analytics verbunden sind.
+Unter Linux erfasst der Log Analytics-Agent für Linux Daten und sendet sie an Azure Monitor. Sie können Wire Data auf Servern mit Agents verwenden, die direkt mit Azure Monitor verbunden sind, oder auf Servern, die über System Center Operations Manager-Verwaltungsgruppen mit Azure Monitor verbunden sind.
 
-Der Dependency-Agent selbst überträgt keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Daten in Wire Data werden immer vom Log Analytics-Agent an Log Analytics übertragen, entweder direkt oder über das Log Analytics-Gateway.
+Der Dependency-Agent selbst überträgt keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Daten in Wire Data werden immer vom Log Analytics-Agent an Azure Monitor übertragen, entweder direkt oder über das Log Analytics-Gateway.
 
 ![Agent-Diagramm](./media/wire-data/agents.png)
 
-Wenn Sie ein System Center Operations Manager-Benutzer mit einer Verwaltungsgruppe sind, die mit Log Analytics verbunden ist:
+Wenn Sie ein System Center Operations Manager-Benutzer mit einer Verwaltungsgruppe sind, die mit Azure Monitor verbunden ist:
 
-- Wenn die System Center Operations Manager-Agents die Verbindung mit Log Analytics über das Internet herstellen können, ist keine weitere Konfiguration erforderlich.
-- Wenn die System Center Operations Manager-Agents nicht über das Internet auf Log Analytics zugreifen können, müssen Sie das Log Analytics-Gateway für System Center Operations Manager konfigurieren.
+- Wenn die System Center Operations Manager-Agents die Verbindung mit Azure Monitor über das Internet herstellen können, ist keine weitere Konfiguration erforderlich.
+- Wenn die System Center Operations Manager-Agents nicht über das Internet auf Azure Monitor zugreifen können, müssen Sie das Log Analytics-Gateway für System Center Operations Manager konfigurieren.
 
-Wenn Ihre Windows- oder Linux-Computer nicht direkt mit dem Dienst verbunden werden können, müssen Sie den Log Analytics-Agent so konfigurieren, dass er die Verbindung mit Log Analytics über das Log Analytics-Gateway herstellt. Sie können das Log Analytics-Gateway aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666) herunterladen.
+Wenn Ihre Windows- oder Linux-Computer nicht direkt mit dem Dienst verbunden werden können, müssen Sie den Log Analytics-Agent so konfigurieren, dass er die Verbindung mit Azure Monitor über das Log Analytics-Gateway herstellt. Sie können das Log Analytics-Gateway aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -195,13 +197,13 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 
 Führen Sie die folgenden Schritte aus, um die Wire Data-Lösung für Ihre Arbeitsbereiche zu konfigurieren.
 
-1. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Schritten.
+1. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Überwachungslösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Schritten.
 2. Installieren Sie den Dependency-Agent auf jedem Computer, von dem Sie Daten abrufen möchten. Der Dependency-Agent kann Verbindungen zu unmittelbaren Nachbarn überwachen, sodass Sie nicht auf jedem Computer einen Agent benötigen.
 
 > [!NOTE]
 > Sie können die vorherige Version der Wire Data-Lösung nicht neuen Arbeitsbereichen hinzufügen. Wenn Sie die ursprüngliche Wire Data-Lösung aktiviert haben, können Sie diese Lösung weiterhin verwenden. Um jedoch Wire Data 2.0 zu verwenden, müssen Sie zuerst die ursprüngliche Version entfernen.
 > 
-### <a name="install-the-dependency-agent-on-windows"></a>Installieren des Dependency-Agents unter Windows
+> ### <a name="install-the-dependency-agent-on-windows"></a>Installieren des Dependency-Agents unter Windows
 
 Zum Installieren oder Deinstallieren des Agent sind Administratorrechte erforderlich.
 
@@ -269,7 +271,7 @@ Der Dependency-Agent kann mithilfe eines Skripts auf mehreren Servern gleichzeit
 
 ```PowerShell
 
-Invoke-WebRequest &quot;https://aka.ms/dependencyagentwindows&quot; -OutFile InstallDependencyAgent-Windows.exe
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
 
 .\InstallDependencyAgent-Windows.exe /S
 
@@ -292,7 +294,7 @@ Zum Bereitstellen des Dependency-Agents über Desired State Configuration könne
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
-$DAPackageLocalPath = &quot;C:\InstallDependencyAgent-Windows.exe&quot;
+$DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
 
 
 
@@ -306,11 +308,11 @@ Node $NodeName
 
     {
 
-        Uri = &quot;https://aka.ms/dependencyagentwindows&quot;
+        Uri = "https://aka.ms/dependencyagentwindows"
 
         DestinationPath = $DAPackageLocalPath
 
-        DependsOn = &quot;[Package]OI&quot;
+        DependsOn = "[Package]OI"
 
     }
 
@@ -318,21 +320,21 @@ Node $NodeName
 
     {
 
-        Ensure=&quot;Present&quot;
+        Ensure = "Present"
 
-        Name = &quot;Dependency Agent&quot;
+        Name = "Dependency Agent"
 
         Path = $DAPackageLocalPath
 
         Arguments = '/S'
 
-        ProductId = &quot;&quot;
+        ProductId = ""
 
-        InstalledCheckRegKey = &quot;HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent&quot;
+        InstalledCheckRegKey = "HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
 
-        InstalledCheckRegValueName = &quot;DisplayName&quot;
+        InstalledCheckRegValueName = "DisplayName"
 
-        InstalledCheckRegValueData = &quot;Dependency Agent&quot;
+        InstalledCheckRegValueData = "Dependency Agent"
 
     }
 
@@ -359,7 +361,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Management Packs
 
-Wenn Wire Data in einem Log Analytics-Arbeitsbereich aktiviert ist, wird an alle Windows-Server in diesem Arbeitsbereich ein Management Pack von 300 KB gesendet. Wenn Sie System Center Operations Manager-Agents in einer [verbundenen Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) verwenden, wird das Dependency Monitor-Management Pack von System Center Operations Manager bereitgestellt. Wenn die Agents direkt verbunden sind, wird das Management Pack von Log Analytics bereitgestellt.
+Wenn Wire Data in einem Log Analytics-Arbeitsbereich aktiviert ist, wird an alle Windows-Server in diesem Arbeitsbereich ein Management Pack von 300 KB gesendet. Wenn Sie System Center Operations Manager-Agents in einer [verbundenen Verwaltungsgruppe](../platform/om-agents.md) verwenden, wird das Dependency Monitor-Management Pack von System Center Operations Manager bereitgestellt. Wenn die Agents direkt verbunden sind, wird das Management Pack von Azure Monitor bereitgestellt.
 
 Der Name des Management Packs lautet „Microsoft.IntelligencePacks.ApplicationDependencyMonitor“. Es wird in das Verzeichnis „%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\“ geschrieben. Die vom Management Pack verwendete Datenquelle lautet „%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll“.
 
@@ -371,7 +373,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 - Mit der Wire Data-Lösung werden Daten von Computern erfasst, auf denen Windows Server 2012 R2, Windows 8.1 und neuere Betriebssysteme ausgeführt werden.
 - Microsoft .NET Framework 4.0 oder höher ist auf Computern erforderlich, von denen Wire Data-Daten erfasst werden sollen.
-- Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses die Wire Data-Lösung Ihrem Log Analytics-Arbeitsbereich hinzu. Es ist keine weitere Konfiguration erforderlich.
+- Fügen Sie mithilfe des unter [Hinzufügen von Überwachungslösungen aus dem Lösungskatalog](solutions.md) beschriebenen Prozesses die Wire Data-Lösung Ihrem Log Analytics-Arbeitsbereich hinzu. Es ist keine weitere Konfiguration erforderlich.
 - Wenn Sie Wire Data-Daten für eine bestimmte Lösung anzeigen möchten, muss die Lösung bereits Ihrem Arbeitsbereich hinzugefügt worden sein.
 
 Nachdem Sie Agents installiert haben, und Sie die Lösung installieren, wird die Wire Data 2.0-Kachel im Arbeitsbereich angezeigt.
@@ -384,9 +386,9 @@ Klicken Sie im Azure-Portal auf der Seite **Übersicht** für Ihren Log Analytic
 
 | **Blatt** | **Beschreibung** |
 | --- | --- |
-| Agents, die Netzwerkdatenverkehr erfassen | Zeigt die Anzahl der Agents an, die Netzwerkdatenverkehr erfassen, und listet die 10 Computer auf, die am meisten Datenverkehr erfassen. Klicken Sie auf die Zahl, um eine Protokollsuche für <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code> durchzuführen. Klicken Sie auf einen Computer in der Liste, um eine Protokollsuche durchzuführen, die die Gesamtanzahl erfasster Bytes zurückgibt. |
-| Lokale Subnetze | Zeigt die Anzahl von lokalen Subnetzen an, die Agents ermittelt haben.  Klicken Sie auf die Anzahl, um eine Protokollsuche für <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> durchzuführen, die alle Subnetze mit der Anzahl von Bytes auflistet, die über jedes einzelne gesendet werden. Klicken Sie auf ein Subnetz in der Liste, um eine Protokollsuche durchzuführen, die die Gesamtanzahl über das Subnetz gesendeter Bytes zurückgibt. |
-| Protokolle auf Anwendungsebene | Zeigt die von Agents ermittelte Anzahl der auf Anwendungsebene verwendeten Protokolle. Klicken Sie auf die Zahl, um eine Protokollsuche für <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code> durchzuführen. Klicken Sie auf ein Protokoll, um eine Protokollsuche durchzuführen, die die Gesamtanzahl mithilfe des Protokolls gesendeter Bytes zurückgibt. |
+| Agents, die Netzwerkdatenverkehr erfassen | Zeigt die Anzahl der Agents an, die Netzwerkdatenverkehr erfassen, und listet die 10 Computer auf, die am meisten Datenverkehr erfassen. Klicken Sie auf die Zahl, um eine Protokollsuche für <code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code> durchzuführen. Klicken Sie auf einen Computer in der Liste, um eine Protokollsuche durchzuführen, die die Gesamtanzahl erfasster Bytes zurückgibt. |
+| Lokale Subnetze | Zeigt die Anzahl von lokalen Subnetzen an, die Agents ermittelt haben.  Klicken Sie auf die Anzahl, um eine Protokollsuche für <code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code> durchzuführen, die alle Subnetze mit der Anzahl von Bytes auflistet, die über jedes einzelne gesendet werden. Klicken Sie auf ein Subnetz in der Liste, um eine Protokollsuche durchzuführen, die die Gesamtanzahl über das Subnetz gesendeter Bytes zurückgibt. |
+| Protokolle auf Anwendungsebene | Zeigt die von Agents ermittelte Anzahl der auf Anwendungsebene verwendeten Protokolle. Klicken Sie auf die Zahl, um eine Protokollsuche für <code>WireData \| summarize sum(TotalBytes) by ApplicationProtocol</code> durchzuführen. Klicken Sie auf ein Protokoll, um eine Protokollsuche durchzuführen, die die Gesamtanzahl mithilfe des Protokolls gesendeter Bytes zurückgibt. |
 
 ![Wire Data-Dashboard](./media/wire-data/wire-data-dash.png)
 
@@ -401,10 +403,6 @@ Auf ähnliche Weise können Sie das Blatt **Lokale Subnetze** verwenden, um zu b
 Das Blatt **Protokolle auf Anwendungsebene** ist nützlich, da es hilfreich ist, zu wissen, welche Protokolle verwendet werden. Sie könnten z.B. erwarten, dass SSH nicht in Ihrer Netzwerkumgebung verwendet wird. Die im Blatt angezeigten Informationen können Ihre Erwartungen schnell bestätigen oder widerlegen.
 
 ![Beispiel: Protokollsuche](./media/wire-data/log-search-example03.png)
-
-In diesem Beispiel könnten Sie anhand von SSH-Einzelheiten erkennen, welche Computer SSH verwenden, und viele andere Details zur Kommunikation.
-
-![SSH-Suchergebnisse](./media/wire-data/ssh-details.png)
 
 Es ist auch hilfreich zu wissen, ob der Protokolldatenverkehr mit der Zeit steigt oder sinkt. Wenn z.B. die Menge der von einer Anwendung übertragenen Daten steigt, dann könnte dies ein Aspekt sein, über den Sie informiert sein müssen, oder den Sie erwähnenswert finden.
 

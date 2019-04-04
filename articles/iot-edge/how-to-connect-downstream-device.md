@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d41ec0bc959eb264564d49ae6ac31aa30b3be98a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492758"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445924"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -40,7 +40,10 @@ Bevor Sie die Schritte in diesem Artikel ausführen, müssen zwei Geräte einsat
 2. Ein nachgeschaltetes Gerät, das eine Geräteidentität von IoT Hub hat. 
     Sie können kein IoT Edge-Gerät als nachgeschaltetes Gerät verwenden. Verwenden Sie stattdessen ein Gerät, das als normales IoT-Gerät in IoT Hub registriert ist. Im Portal können Sie im Abschnitt **IoT-Geräte** ein neues Gerät registrieren. Alternativ können Sie die Azure CLI zum [Registrieren eines Geräts](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) verwenden. Kopieren Sie die Verbindungszeichenfolge, und stellen Sie sie zur späteren Verwendung zur Verfügung. 
 
-    Derzeit können sich nur nachgeschaltete Geräte mit der Authentifizierung mit symmetrischen Schlüsseln über IoT Edge-Gateways verbinden. X.509-Zertifizierungsstellen und selbstsignierte X.509-Zertifikate werden derzeit nicht unterstützt. 
+    Derzeit können sich nur nachgeschaltete Geräte mit der Authentifizierung mit symmetrischen Schlüsseln über IoT Edge-Gateways verbinden. X.509-Zertifizierungsstellen und selbstsignierte X.509-Zertifikate werden derzeit nicht unterstützt.
+    
+> [!NOTE]
+> Der „Gatewayname“, der zum Erstellen der Zertifikate in dieser Anweisung verwendet wird, muss der gleiche Name sein, den Sie als Hostnamen in Ihrer IoT Edge-config.yaml-Datei und als GatewayHostName in der Verbindungszeichenfolge des Downstreamgeräts verwendet haben. Der „Gatewayname“ muss sich zu einer IP-Adresse auflösen lassen, entweder mithilfe von DNS oder einem Eintrag in der Hostdatei. Auf der Grundlage des verwendeten Protokolls (MQTTS:8883/AMQPS:5671/HTTPS:433) muss Kommunikation zwischen dem Downstreamgerät und dem transparenten IoT Edge möglich sein. Wenn sich dazwischen eine Firewall befindet, muss der entsprechende Port geöffnet sein.
 
 ## <a name="prepare-a-downstream-device"></a>Vorbereiten eines nachgeschalteten Geräts
 

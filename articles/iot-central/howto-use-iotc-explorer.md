@@ -3,17 +3,17 @@ title: Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 description: Überwachen Sie Gerätemeldungen, und beobachten Sie Änderungen bei Gerätezwillingen über die Befehlszeilenschnittstelle des IoT Central-Explorers.
 author: viv-liu
 ms.author: viviali
-ms.date: 09/12/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 962f394607d20869bf00db624533996b0060eaf2
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 16cb27ab330118d1bb59cf4f3d782bf55fa28d43
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987241"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779741"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 
@@ -21,70 +21,75 @@ ms.locfileid: "45987241"
 
 Verwenden Sie die Befehlszeilenschnittstelle des IoT Central-Explorers, um Nachrichten anzuzeigen, die Ihre Geräte an IoT Central senden, und Änderungen im IoT Hub-Zwilling zu beobachten. Mithilfe dieses Open Source-Tools können Sie tiefere Einblicke in den Status der Gerätekonnektivität gewinnen und Probleme von Gerätemeldungen diagnostizieren, die die Cloud oder Geräte nicht erreichen, die auf Änderungen beim Zwilling nicht reagieren.
 
-## <a name="visit-the-iotc-explorer-repo-in-githubhttpsakamsiotciotcexplorercligithub"></a>[Das iot-explorer-Repository in GitHub besuchen](https://aka.ms/iotciotcexplorercligithub)
+[Besuchen Sie das Repository „iotc-explorer“ in GitHub.](https://aka.ms/iotciotcexplorercligithub)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-+ Node.js, Version 8.x oder höher – https://nodejs.org
-+ Sie müssen einen Administrator für Ihre App bitten, ein Zugriffstoken für Sie zu generieren, das in iotc-explorer verwendet werden soll.
 
-## <a name="installing-iotc-explorer"></a>Installieren von iotc-explorer
++ Node.js, Version 8.x oder höher – https://nodejs.org
++ Ein Administrator Ihrer Anwendung muss ein Zugriffstoken generieren, das Sie in „iotc-explorer“ verwenden können.
+
+## <a name="install-iotc-explorer"></a>Installieren von iotc-explorer
 
 Führen Sie den folgenden Befehl an der Befehlszeile zum Installieren aus:
 
-```
+```cmd/sh
 npm install -g iotc-explorer
 ```
 
 > [!NOTE]
-> Normalerweise müssen Sie in Unix-ähnlichen Umgebungen den Befehl "install" mit `sudo` ausführen.
+> Normalerweise müssen Sie in Unix-ähnlichen Umgebungen den Befehl „install“ mit `sudo` ausführen.
 
-## <a name="running-iotc-explorer"></a>Ausführen von iotc-explorer
+## <a name="run-iotc-explorer"></a>Ausführen von iotc-explorer
 
-Nachfolgend sind einige Befehle und allgemeine Optionen aufgelistet, die Sie bei Verwendung von `iotc-explorer` ausführen können. Wenn Sie die vollständige Sammlung von Befehlen und Optionen anzeigen möchten, können Sie `--help` an `iotc-explorer` oder einen seiner Unterbefehle übergeben.
+Die folgenden Abschnitte beschreiben allgemeine Befehle und Optionen, die Sie beim Ausführen von `iotc-explorer` verwenden können. Wenn Sie die vollständige Sammlung von Befehlen und Optionen anzeigen möchten, übergeben Sie `--help` an `iotc-explorer` oder einen seiner Unterbefehle.
 
 ### <a name="login"></a>Anmeldung
 
 Bevor Sie beginnen können, müssen Sie einen Administrator für Ihre IoT Central-Anwendung bitten, ein Zugriffstoken für Sie zu generieren. Der Administrator führt die folgenden Schritte aus:
-1. Wechseln Sie zu **Verwaltung/Zugriffstoken**. 
-1. Klicken Sie auf **Generate (Generieren)**.
-![Screenshot der Seite mit Zugriffstokens](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. Geben Sie einen Tokennamen ein, klicken Sie auf **Weiter**, und **kopieren Sie den Tokenwert**.
+1. Navigieren Sie zu **Verwaltung** und dann zu **Zugriffstoken**.
+1. Wählen Sie **Token generieren** aus.
+    ![Screenshot der Seite mit Zugriffstokens](media/howto-use-iotc-explorer/accesstokenspage.png)
+
+1. Geben Sie einen Tokennamen ein, und wählen Sie **Weiter**  und dann **Kopieren** aus.
     > [!NOTE]
-    > Weil der Tokenwert nur einmal angezeigt wird, muss er vor dem Schließen des Dialogfelds kopiert werden. Nach dem Schließen wird er nie wieder angezeigt.
+    > Der Tokenwert wird nur einmal angezeigt, daher muss er vor dem Schließen des Dialogfelds kopiert werden. Nach dem Schließen des Dialogfelds wird er nie wieder angezeigt.
 
     ![Screenshot des Dialogfelds zum Kopieren des Zugriffstokens](media/howto-use-iotc-explorer/copyaccesstoken.png)
 
-Danach können Sie sich mit diesem Token an der Befehlszeilenschnittstelle anmelden, indem Sie Folgendes ausführen:
+Mit dem Token können Sie sich wie folgt an der Befehlszeilenschnittstelle anmelden:
 
-```sh
+```cmd/sh
 iotc-explorer login "<Token value>"
 ```
 
 Wenn Sie das Token lieber nicht in Ihrem Shell-Verlauf beibehalten möchten, können Sie es weglassen und stattdessen bei der folgenden Aufforderung eingeben:
 
-```
+```cmd/sh
 iotc-explorer login
 ```
 
 ### <a name="monitor-device-messages"></a>Überwachen von Gerätemeldungen
 
-Sie können die von einem bestimmten Gerät oder allen Geräten in Ihrer Anwendung ankommenden Meldungen mit dem Befehl `monitor-messages` überwachen. Dadurch wird ein Watcher gestartet, der neue Meldungen bei ihrem Eintreffen kontinuierlich ausgibt.
+Sie können die von einem bestimmten Gerät oder allen Geräten in Ihrer Anwendung ankommenden Meldungen mit dem Befehl `monitor-messages` überwachen. Dieser Befehl startet einen Watcher, der kontinuierlich neue Nachrichten ausgibt, sobald sie eintreffen:
 
 Um alle Geräte in Ihrer Anwendung zu überwachen, führen Sie den folgenden Befehl aus:
 
-```
+```cmd/sh
 iotc-explorer monitor-messages
 ```
-Ausgabe: ![Ausgabe des Befehls „monitor-messages“](media/howto-use-iotc-explorer/monitormessages.PNG)
+
+Ausgabe:
+
+![Ausgabe des Befehls „monitor-messages“](media/howto-use-iotc-explorer/monitormessages.png)
 
 Um ein bestimmtes Gerät zu überwachen, fügen Sie die Geräte-ID einfach am Ende des Befehls hinzu:
 
-```
+```cmd/sh
 iotc-explorer monitor-messages <your-device-id>
 ```
 
-Sie können auch dafür sorgen, dass der Befehl in einem computerfreundlicheren Format ausgegeben wird, indem Sie ihm die `--raw`-Option hinzufügen:
+Sie können auch ein computerfreundlicheres Format ausgeben, indem Sie dem Befehl die `--raw`-Option hinzufügen:
 
 ```
 iotc-explorer monitor-messages --raw
@@ -94,17 +99,20 @@ iotc-explorer monitor-messages --raw
 
 Mit dem Befehl `get-twin` können Sie die Inhalte des Zwillings für ein IoT Central-Gerät abrufen. Führen Sie zu diesem Zweck den folgenden Befehl aus:
 
-```
+```cmd/sh
 iotc-explorer get-twin <your-device-id>
 ```
 
-Ausgabe: ![Ausgabe des Befehls"get-twin"](media/howto-use-iotc-explorer/getdevicetwin.PNG)
+Ausgabe:
+
+![Ausgabe des Befehls „get-twin“](media/howto-use-iotc-explorer/getdevicetwin.png)
 
 So wie bei `monitor-messages` erhalten Sie eine computerfreundlichere Ausgabe, indem Sie die `--raw`-Option übergeben:
 
-```
+```cmd/sh
 iotc-explorer get-twin <your-device-id> --raw
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie erfahren haben, wie der IoT Central-Explorer verwendet wird, erkunden Sie idealerweise als nächsten Schritt das [Verwalten von Geräten mit IoT Central](howto-manage-devices.md).

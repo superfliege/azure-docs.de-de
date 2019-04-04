@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: e91f36c9d6f0cb3195e6903d55cd676f1e9ccf5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626549"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010071"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Anpassen der Anzeige von Daten von Ihren OPC UA-Servern durch die Lösung für eine verbundene Factory
 
@@ -81,7 +81,7 @@ In den folgenden Artikeln erfahren Sie mehr über den Solution Accelerator für 
 
 * [Exemplarische Vorgehensweise für den Solution Accelerator für verbundene Factorys][lnk-rm-walkthrough]
 * [Bereitstellen eines Gateways für die verbundene Factory][lnk-connect-cf]
-* [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
+* [Berechtigungen für die Website „azureiotsolutions.com“][lnk-permissions]
 * [Verbundene Factory: Häufig gestellte Fragen](iot-accelerators-faq-cf.md)
 * [Häufig gestellte Fragen][lnk-faq]
 

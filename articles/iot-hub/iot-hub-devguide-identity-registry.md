@@ -1,19 +1,19 @@
 ---
 title: Informationen zur Azure IoT Hub-Identitätsregistrierung | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der Identitätsregistrierung von IoT Hub und Anleitung zum Verwalten von Geräten mithilfe der Identitätsregistrierung. Enthält Informationen zum Importieren und Exportieren von Geräteidentitäten in einem Massenvorgang.'
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: dobett
-ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319131"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010259"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -117,7 +117,7 @@ Benachrichtigung für ein Gerät:
 |operationTimestamp | ISO8601-Zeitstempel des Vorgangs |
 |iothub-message-schema | deviceLifecycleNotification |
 
-Hauptteil: Dieser Abschnitt liegt im JSON-Format vor und stellt den Zwilling der erstellten Geräteidentität dar. Beispiel:
+Hauptteil: Dieser Abschnitt hat das JSON-Format und stellt den Zwilling der erstellten Geräteidentität dar. Beispiel:
 
 ```json
 {

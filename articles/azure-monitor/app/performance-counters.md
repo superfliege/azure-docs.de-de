@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5c7e1815fe27d9b851407a8e6f17d04d7bc1cad
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d38a575af54f044d64efc67b5483a67ffcd2fcd6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837608"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
@@ -122,7 +122,7 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 
 * *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.Net Core-Anwendungen
+## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.NET Core-Anwendungen
 Leistungsindikatoren werden nur unterstützt, wenn die Anwendung auf die Vollversion von .NET Framework ausgerichtet ist. Für .NET Core-Anwendungen können keine Leistungsindikatoren erfasst werden.
 
 ## <a name="alerts"></a>Alerts

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 01da5f0798316517869fcc94eed2a7428fffba7b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a887c79a51c7a239e7057171e51e67a53af2f84b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850699"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483556"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -229,7 +229,7 @@ Müssen Sie das Schema einer Datenbank in einer Synchronisierungsgruppe aktualis
 Wird die SQL-Datensynchronisierung wie erwartet ausgeführt? Informationen zum Überwachen der Aktivität und Behandeln von Problemen finden Sie in den folgenden Artikeln:
 
 - [Überwachen der Azure SQL-Datensynchronisierung mit Azure Monitor-Protokollen](sql-database-sync-monitor-oms.md)
-- [Behandeln von Problemen mit der Azure SQL-Datensynchronisierung](sql-database-troubleshoot-data-sync.md)
+- [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Weitere Informationen zu Azure SQL-Datenbank
 

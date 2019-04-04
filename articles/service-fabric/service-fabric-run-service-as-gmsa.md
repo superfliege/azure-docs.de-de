@@ -3,8 +3,8 @@ title: Ausführen eines Azure Service Fabric-Diensts unter einem gruppenverwalte
 description: Hier erfahren Sie, wie Sie einen Dienst als gruppenverwaltetes Dienstkonto auf einem eigenständigen, Windows-basierten Service Fabric-Cluster ausführen.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: dkkapur
+manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
-ms.author: mfussell
-ms.openlocfilehash: 8d14d9191e74cb59c6696568ead425fca61d6f7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dekapur
+ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873902"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666425"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Ausführen eines Diensts als gruppenverwaltetes Dienstkonto
 Auf einem eigenständigen Windows Server-Cluster können Sie einen Dienst unter Verwendung einer RunAs-Richtlinie als gruppenverwaltetes Dienstkonto (group Managed Service Account, gMSA) ausführen.  Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, unter dem der Prozess „Fabric.exe“ ausgeführt wird. Die Ausführung von Anwendungen unter verschiedenen Konten sorgt dafür, dass die Anwendungen besser voreinander geschützt sind – sogar in einer gehosteten Umgebung mit gemeinsamer Nutzung. Hinweis: Hierbei wird Active Directory lokal in Ihrer Domäne verwendet, nicht Azure Active Directory (Azure AD). Bei Verwendung eines gruppenverwalteten Dienstkontos wird im Anwendungsmanifest kein Kennwort oder verschlüsseltes Kennwort gespeichert.  Sie können einen Dienst auch als [Active Directory-Benutzer oder -Gruppe](service-fabric-run-service-as-ad-user-or-group.md) ausführen.

@@ -135,8 +135,10 @@ items:
         href: devtest-lab-add-vm.md
       - name: Erstellen und Verwalten von abrufbaren VMs
         href: devtest-lab-add-claimable-vm.md
-      - name: Erstellen und Verwalten virtueller Computer mit der Azure CLI
+      - name: Erstellen und Verwalten virtueller Computer mithilfe der Azure-Befehlszeilenschnittstelle
         href: devtest-lab-vmcli.md
+      - name: Erstellen eines virtuellen Computers mithilfe von Azure PowerShell
+        href: devtest-lab-vm-powershell.md
       - name: Erstellen eines virtuellen Computers mit einer Resource Manager-Vorlage
         href: devtest-lab-use-resource-manager-template.md
       - name: Neustarten eines virtuellen Computers
@@ -277,9 +279,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Häufig gestellte Fragen
       href: devtest-lab-faq.md
-ms.openlocfilehash: bee44d9ce7378bd48960c47ed9be9c7f53e23110
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0b8c70629d17ed93b67a746fadfe66944d9489c9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886674"
+ms.locfileid: "58894439"

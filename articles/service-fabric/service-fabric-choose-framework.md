@@ -4,7 +4,7 @@ description: 'Service Fabric bietet zwei Frameworks zum Erstellen von Diensten: 
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d791148e6ee023239b0a6bf49c705c2da4eea9a2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881871"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665711"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Übersicht über die Service Fabric-Programmiermodelle
 Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten. Dienste können die Service Fabric-APIs verwenden, um Features und Anwendungsframeworks der Plattform umfassend zu nutzen. Ein Dienst kann auch ein kompiliertes ausführbares Programm sein, das in einer beliebigen Sprache oder in einem beliebigen Code geschrieben wurde und in einem Container ausgeführt wird, der in einem Service Fabric-Cluster gehostet wird.

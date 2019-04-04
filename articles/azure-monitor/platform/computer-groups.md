@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 7e5d04f3ead4353c88a6b56ab530f41ff15022d1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005385"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444122"
 ---
-# <a name="computer-groups-in-azure-monitor-log-quereies"></a>Computergruppen in Azure Monitor-Protokollabfragen
+# <a name="computer-groups-in-azure-monitor-log-queries"></a>Computergruppen in Azure Monitor-Protokollabfragen
 Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -33,7 +33,7 @@ Sie können eine Computergruppe in Azure Monitor mithilfe einer der Methoden in 
 | Protokollabfrage |Erstellen Sie eine Protokollabfrage, die eine Liste mit Computern zurückgibt. |
 | Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollabfrage zu erstellen. |
 | Active Directory |Scannen Sie automatisch die Gruppenmitgliedschaft aller Agent-Computer, die Mitglieder einer Active Directory-Domäne sind, und erstellen Sie für die einzelnen Sicherheitsgruppen jeweils eine Gruppe in Azure Monitor. (Nur für Windows-Computer)|
-| Configuration Manager | Importieren Sie Sammlungen aus System Center Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
+| Konfigurations-Manager | Importieren Sie Sammlungen aus System Center Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
 | Windows Server Update Services |Scannen Sie automatisch WSUS-Server oder -Clients auf Zielgruppen, und erstellen Sie jeweils eine Gruppe in Azure Monitor. |
 
 ### <a name="log-query"></a>Protokollabfrage

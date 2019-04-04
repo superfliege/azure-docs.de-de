@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 87db25bbfd68aea1b8835211d7b51dfddcd43038
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899382"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486817"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
@@ -54,7 +54,7 @@ Um eine Datenbank über das Azure-Portal zu kopieren, öffnen Sie die Seite für
 
 Um eine Datenbank über PowerShell zu kopieren, verwenden Sie das [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy)-Cmdlet. 
 
-```PowerShell
+```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -ServerName $sourceserver `
     -DatabaseName "MySampleDatabase" `
