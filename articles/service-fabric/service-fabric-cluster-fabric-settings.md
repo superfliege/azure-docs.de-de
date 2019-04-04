@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210381"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57836962"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -33,11 +33,12 @@ Es gibt drei verschiedene Upgraderichtlinien:
 In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstellungen aufgeführt, die Sie anpassen können.
 
 ## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|string, Standardwert „None“|statischen| Dadurch wird das Serverzertifikat nicht überprüft; die Anforderung wird erfolgreich abgeschlossen. Die durch Kommas getrennte Liste der Fingerabdrücke der Remotezertifikate, denen der Reverseproxy vertrauen kann, finden Sie unter „config ServiceCertificateThumbprints“. Den Antragstellernamen und den Ausstellerfingerabdruck des Remotezertifikats, denen der Reverseproxy vertrauen kann, finden Sie unter „config ServiceCommonNameAndIssuer“. Weitere Informationen finden Sie unter [Sichere Reverseproxyverbindung](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, Standardwert 16384 |Dynamisch| Gibt die Größe des Blocks in Bytes an, der zum Lesen des Texts verwendet wird. |
-|CrlCheckingFlag|uint, Standardwert 0 x 40000000 |Dynamisch| Flags für die Überprüfung der Anwendungs- bzw. Dienstzertifikatkette, z.B. Zertifikatssperrlistenüberprüfung 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY. Bei Festlegen des Werts auf 0 wird die Zertifikatssperrlistenüberprüfung deaktiviert. Die vollständige Liste der unterstützten Werte wird durch dwFlags von CertGetCertificateChain dokumentiert: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
+|CrlCheckingFlag|uint, Standardwert 0 x 40000000 |Dynamisch| Flags für die Überprüfung der Anwendungs- bzw. Dienstzertifikatkette, z.B. Zertifikatssperrlistenüberprüfung 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY. Bei Festlegen des Werts auf 0 wird die Zertifikatssperrlistenüberprüfung deaktiviert. Die vollständige Liste der unterstützten Werte wird durch dwFlags von CertGetCertificateChain dokumentiert: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
 |ForwardClientCertificate|Boolesch, Standardwert FALSE|Dynamisch|Wenn auf FALSE gesetzt, fordert der Reverseproxy das Clientzertifikat nicht an. Wenn auf TRUE festgelegt, fordert der Reverseproxy das Clientzertifikat beim SSL-Handshake an und leitet die base64-verschlüsselte PEM-Formatzeichenfolge an den Dienst in einem Header namens „X-Client-Certificate“ weiter. Die Anforderung kann mit dem entsprechenden Statuscode für den Dienst fehlschlagen, nachdem die Zertifikatsdaten überprüft wurden. Wenn dies der Fall ist und der Client kein Zertifikat vorlegt, leitet der Reverseproxy einen leeren Header weiter und lässt den Dienst den Fall bearbeiten. Der Reverseproxy fungiert als transparente Ebene. Weitere Informationen finden Sie unter [Einrichten der Authentifizierung mit Clientzertifikat](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |string, Standardwert „None“ |statischen| Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
@@ -55,11 +56,13 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ServiceCertificateThumbprints|string, Standardwert ""|Dynamisch|Die durch Kommas getrennte Liste der Fingerabdrücke der Remotezertifikate, denen der Reverseproxy vertrauen kann. Weitere Informationen finden Sie unter [Sichere Reverseproxyverbindung](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, Standardwert None|Dynamisch| Antragstellername und Ausstellerfingerabdruck der Remotezertifikate, denen der Reverseproxy vertrauen kann. Weitere Informationen finden Sie unter [Sichere Reverseproxyverbindung](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|Ganze Zahl, Standardwert 0|statischen|MinReplicaSetSize für BackupRestoreService |
@@ -69,6 +72,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |TargetReplicaSetSize|Ganze Zahl, Standardwert 0|statischen| TargetReplicaSetSize für BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |EnableDefaultServicesUpgrade | Boolesch, Standardwert „false“ |Dynamisch|Aktivieren Sie das Aktualisieren von Standarddiensten während des Anwendungsupgrades. Standarddienstbeschreibungen würden nach dem Upgrade überschrieben werden. |
@@ -97,6 +101,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UpgradeStatusPollInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit des Abrufs des Upgradestatus der Anwendung. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetApplicationUpgradeProgress“ |
 
 ## <a name="common"></a>Common
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PerfMonitorInterval |Zeit in Sekunden, Standardwert 1 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Intervall für die Leistungsüberwachung. Mit 0 oder einem negativen Wert wird die Überwachung deaktiviert. |
@@ -117,6 +122,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Bestimmt die Anzahl der freien Knoten, die erforderlich sind, um den Cluster als defragmentiert zu betrachten. Die Angabe erfolgt als Prozent im Bereich [0,0 - 1,0) oder als Anzahl der leeren Knoten als Zahl >= 1,0. |
 
 ## <a name="diagnostics"></a>Diagnose
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AppDiagnosticStoreAccessRequiresImpersonation |Boolesch, Standardwert „true“ | Dynamisch |Gibt an, ob ein Identitätswechsel erforderlich ist, wenn für die Anwendung auf Diagnosespeicher zugegriffen wird. |
@@ -140,6 +146,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PartitionSuffix|string, Standardwert ""|statischen|Steuert den Wert der Partitionssuffix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md). |
 
 ## <a name="eventstore"></a>EventStore
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|Ganze Zahl, Standardwert 0|statischen|MinReplicaSetSize für den EventStore-Dienst |
@@ -147,6 +154,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |TargetReplicaSetSize|Ganze Zahl, Standardwert 0|statischen| TargetReplicaSetSize für den EventStore-Dienst |
 
 ## <a name="fabricclient"></a>FabricClient
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |Zeit in Sekunden, Standardwert 2 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeoutintervall für Verbindungen für jeden Versuch eines Clients, eine Verbindung mit dem Gateway zu öffnen.|
@@ -161,6 +169,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ServiceChangePollInterval |Zeit in Sekunden, Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall zwischen aufeinanderfolgenden Abrufen von Dienständerungen vom Client an das Gateway für Benachrichtigungsrückrufe zu registrierten Dienständerungen. |
 
 ## <a name="fabrichost"></a>FabricHost
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Ganze Zahl, Standardwert 10 |Dynamisch|Dies ist die maximale Anzahl von Versuchen, die Aktivierung nach einem Fehler zu wiederholen, bevor aufgegeben wird. |
@@ -173,6 +182,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |StopTimeout |Zeit in Sekunden, Standardwert 300 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Aktivierung, Deaktivierung und Aktualisierung des gehosteten Diensts. |
 
 ## <a name="fabricnode"></a>FabricNode
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ClientAuthX509FindType |string, Standardwert „FindByThumbprint“ |Dynamisch|Gibt an, wie nach dem Zertifikat im durch ClientAuthX509StoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint; FindBySubjectName. |
@@ -196,6 +206,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UserRoleClientX509StoreName |string, Standardwert „My“ |Dynamisch|Der Name des X.509-Zertifikatspeichers, der das Zertifikat für die standardmäßige FabricClient-Benutzerrolle enthält. |
 
 ## <a name="failovermanager"></a>FailoverManager
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |BuildReplicaTimeLimit|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitlimit für das Erstellen eines zustandsbehafteten Replikats, nach dem ein Warnungsintegritätsbericht initiiert wird. |
@@ -219,6 +230,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UserStandByReplicaKeepDuration |Zeit in Sekunden, Standardwert 3600,0 * 24 * 7 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat nach einem Ausfall wieder aktiv ist, wurde es möglicherweise bereits ersetzt. Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Ganze Zahl, Standardwert 604800 |statischen| Ungefähr für diese Dauer sollten Aktionen gespeichert werden, die in einem Endzustand sind. Dies hängt auch von StoredActionCleanupIntervalInSeconds ab, da die Bereinigung nur in diesem Intervall erfolgt. 604800 sind 7 Tage. |
@@ -235,12 +247,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen|NOT_PLATFORM_UNIX_START, TargetReplicaSetSize für FaultAnalysisService. |
 
 ## <a name="federation"></a>Verbund
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |LeaseDuration |Zeit in Sekunden, Standardwert 30 |Dynamisch|Dauer einer Lease zwischen einem Knoten und seinen Nachbarn. |
 |LeaseDurationAcrossFaultDomain |Zeit in Sekunden, Standardwert 30 |Dynamisch|Dauer einer fehlerdomänenübergreifenden Lease zwischen einem Knoten und seinen Nachbarn. |
 
 ## <a name="filestoreservice"></a>FileStoreService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AcceptChunkUpload|Boolesch, Standardwert TRUE|Dynamisch|Konfiguration, ob der Dateispeicherdienst blockbasierten Dateiupload beim Kopieren des Anwendungspakets akzeptiert. |
@@ -278,11 +292,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UseChunkContentInTransportMessage|Boolesch, Standardwert TRUE|Dynamisch|Das Flag für die Verwendung der neuen Version des in v6.4 eingeführten Uploadprotokolls. Diese Protokollversion verwendet Service Fabric-Transportfunktionen zum Hochladen von Dateien in den Imagespeicher, wodurch eine bessere Leistung erzielt wird als mit dem in vorherigen Versionen verwendeten SMB-Protokoll. |
 
 ## <a name="healthmanager"></a>HealthManager
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
+|EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
+|MaxSuggestedNumberOfEntityHealthReports|Ganze Zahl, Standardwert 500 |Dynamisch|Die maximale Anzahl von Integritätsberichten, die es für eine Entität geben kann, bevor Bedenken in Bezug auf die Integritätsberichtslogik des Watchdogs wirksam werden. Für jede Integritätsentität wird vorausgesetzt, dass sie eine relativ kleine Anzahl von Integritätsberichten hat. Wenn die Anzahl der Berichte diese Anzahl überschreitet gibt es möglicherweise Probleme mit der Watchdogimplementierung. Eine Entität mit zu vielen Berichten wird durch einen Warnungsintegritätsbericht gekennzeichnet, wenn die Entität ausgewertet wird. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität: Warnungen werden als Fehler behandelt. |
@@ -290,12 +307,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MaxPercentUnhealthyNodes | Ganze Zahl, Standardwert 0 |statischen|Evaluierungsrichtlinie für die Clusterintegrität: Maximaler Prozentsatz fehlerhafter Knoten, die für einen als fehlerfrei geltenden Cluster zulässig sind. |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |MaxPercentDeltaUnhealthyNodes|Ganze Zahl, Standardwert 10|statischen|Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas nicht integrer Knoten, die für einen als integer geltenden Cluster zulässig sind. |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|Ganze Zahl, Standardwert 15|statischen|Evaluierungsrichtlinie für die Clusterupgradeintegrität: Maximaler Prozentsatz des Deltas nicht integrer Knoten in einer Upgradedomäne, die für einen als integer geltenden Cluster zulässig sind. |
 
 ## <a name="hosting"></a>Hosting
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Ganze Zahl, Standardeinstellung 10 |Dynamisch|Die maximale Anzahl der Wiederholungsversuche nach misslungener Aktivierung, ehe die Versuche eingestellt werden |
@@ -346,6 +365,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UseContainerServiceArguments|Boolesch, Standardwert TRUE|statischen|Diese Konfiguration weist das Hosting an, das Übergeben von Argumenten (angegeben in der Konfiguration ContainerServiceArguments) an den Docker-Daemon zu überspringen.|
 
 ## <a name="httpgateway"></a>HttpGateway
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ActiveListeners |Uint, Standardwert 50 |statischen| Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
@@ -355,6 +375,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MaxEntityBodySize |Uint, Standardwert 4194304 |Dynamisch|Gibt die maximale Größe des Texts an, der von einer HTTP-Anforderung erwartet werden kann. Der Standardwert ist 4 MB. Httpgateway erzeugt für eine Anforderung einen Fehler, wenn der Text größer als dieser Wert ist. Die minimale Blockgröße beim Lesen beträgt 4096 Bytes. Der Wert muss also größer oder gleich 4096. |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |Aktiviert |Boolesch, Standardwert „false“ |statischen|Das Flag „Enabled“ für ImageStoreService. Standardwert: FALSE |
@@ -366,6 +387,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |TargetReplicaSetSize | Ganze Zahl, Standardwert 7 |statischen|TargetReplicaSetSize für ImageStoreService. |
 
 ## <a name="ktllogger"></a>KtlLogger
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AutomaticMemoryConfiguration |Ganze Zahl, Standardwert 1 |Dynamisch|Flag, das angibt, ob die Einstellungen für den Arbeitsspeicher automatisch und dynamisch konfiguriert werden sollen. Bei 0 werden die Konfigurationseinstellungen für den Arbeitsspeicher direkt verwendet und nicht basierend auf Systembedingungen geändert. Bei 1 werden die Einstellungen für den Arbeitsspeicher automatisch konfiguriert und können basierend auf Systembedingungen geändert werden. |
@@ -378,6 +400,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |WriteBufferMemoryPoolMinimumInKB |Ganze Zahl, Standardwert 8388608 |Dynamisch|Die Anzahl an KB, die anfänglich für den Schreibpuffer-Speicherpool reserviert wird. Verwenden Sie 0, um eine Begrenzung anzugeben. Der Standardwert muss mit SharedLogSizeInMB weiter unten konsistent sein. |
 
 ## <a name="management"></a>Verwaltung
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AzureStorageMaxConnections | Ganze Zahl, Standardwert 5000 |Dynamisch|Die maximale Anzahl gleichzeitiger Verbindungen mit Azure Storage. |
@@ -401,6 +424,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Bestimmt die Sammlung der MetricActivityThresholds für die Metriken im Cluster. Der Lastenausgleich funktioniert, wenn maxNodeLoad/minNodeLoad größer als MetricBalancingThresholds ist. Die Defragmentierung funktioniert, wenn maxNodeLoad/minNodeLoad in mindestens einem FD oder UD kleiner als MetricBalancingThresholds ist. |
 
 ## <a name="namingservice"></a>NamingService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |GatewayServiceDescriptionCacheLimit |Ganze Zahl, Standardwert 0 |statischen|Die maximale Anzahl von Einträgen, die im LRU-Dienstbeschreibungscache im Naming Gateway beibehalten werden (bei 0 gilt keine Begrenzung). |
@@ -428,27 +452,32 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Der Knotenkapazitäts-Prozentsatz pro Metrikname. Wird als Puffer verwendet, um freien Speicherplatz auf einem Knoten für Failover bereitzustellen. |
 
 ## <a name="nodecapacities"></a>NodeCapacities
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeCapacityCollectionMap |statischen|Eine Sammlung von Knotenkapazitäten für verschiedene Metriken. |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeFaultDomainIdCollection |statischen|Beschreibt die Fehlerdomäne, zu der ein Knoten gehört. Die Fehlerdomäne wird durch einen URI definiert, der die Position des Knotens im Datencenter beschreibt.  Fehlerdomänen-URIs weisen das Format fd:/fd/ gefolgt von einem URI-Pfadsegment auf.|
 |UpgradeDomainId |string, Standardwert "" |statischen|Beschreibt die Upgradedomäne, zu der ein Knoten gehört. |
 
 ## <a name="nodeproperties"></a>NodeProperties
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodePropertyCollectionMap |statischen|Eine Sammlung der Zeichenfolgen von Schlüssel-Wert-Paaren für Knoteneigenschaften. |
 
 ## <a name="paas"></a>Paas
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ClusterId |string, Standardwert "" |Nicht zulässig|X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet. |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |Counters |Zeichenfolge | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
@@ -458,6 +487,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SamplingIntervalInSeconds |Ganze Zahl, Standardwert 60 | Dynamisch |Samplingintervall für Leistungsindikatoren, die erfasst werden. |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AffinityConstraintPriority | Ganze Zahl, Standardwert 0 | Dynamisch|Bestimmt die Priorität der Affinitätseinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
@@ -514,6 +544,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |VerboseHealthReportLimit | Ganze Zahl, Standardwert 20 | Dynamisch|Definiert, wie häufig ein Replikat nicht platziert werden muss, bevor eine Integritätswarnung dafür gemeldet wird (wenn ausführliche Integritätsberichte aktiviert sind). |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ApplicationUpgradeMaxReplicaCloseDuration | Zeit in Sekunden, Standardwert 900 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Die Dauer, die das System wartet, bevor Diensthosts beendet werden, deren Replikate während des Anwendungsupgrades nicht geöffnet werden können.|
@@ -549,6 +580,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |IsEnabled|Boolesch, Standardwert FALSE |statischen|Steuert, ob der Dienst im Cluster aktiviert ist |
 
 ## <a name="runas"></a>RunAs
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string, Standardwert "" |Dynamisch|Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
@@ -556,6 +588,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RunAsPassword|string, Standardwert "" |Dynamisch|Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ## <a name="runasdca"></a>RunAs_DCA
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string, Standardwert "" |Dynamisch|Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
@@ -563,6 +596,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RunAsPassword|string, Standardwert "" |Dynamisch|Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ## <a name="runasfabric"></a>RunAs_Fabric
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string, Standardwert "" |Dynamisch|Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
@@ -570,6 +604,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RunAsPassword|string, Standardwert "" |Dynamisch|Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
 ## <a name="runashttpgateway"></a>RunAs_HttpGateway
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string, Standardwert "" |Dynamisch|Gibt den Namen des RunAs-Kontos an. Dies ist nur für die Kontotypen „DomainUser“ und „ManagedServiceAccount“ erforderlich. Gültige Werte sind „Domäne\Benutzer“ oder „user@domain“. |
@@ -600,7 +635,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ClusterCredentialType|string, Standardwert „None“|Nicht zulässig|Gibt den Typ der Sicherheitsanmeldeinformationen an, die verwendet werden sollen, um den Cluster zu sichern. Gültige Werte sind „None/X509/Windows“ |
 |ClusterIdentities|string, Standardwert ""|Dynamisch|Windows-Identitäten der Clusterknoten, für die Autorisierung der Clustermitgliedschaft verwendet. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. |
 |ClusterSpn|string, Standardwert ""|Nicht zulässig|Der Dienstprinzipalname des Clusters, wenn Fabric als einzelner Domänenbenutzer (gMSA-/Domänenbenutzerkonto) ausgeführt wird. Es handelt sich um den SPN der Leaselistener und der Listener in „fabric.exe“: Verbundlistener, interne Replikationslistener, Dienstlistener zur Laufzeit und Naming Gateway-Listener. Diese Angabe sollte leer bleiben, wenn Fabric als Computerkonten ausgeführt wird. In diesem Fall wird der Computelistener-SPN aus der Listenertransportadresse verbunden. |
-|CrlCheckingFlag|uint, Standardwert 0 x 40000000|Dynamisch|Standardflag für die Überprüfung der Zertifikatkette. Kann von einem komponentenspezifischen Flag überschrieben werden, z.B. Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY. Bei Festlegen des Werts auf 0 wird die Zertifikatssperrlistenüberprüfung deaktiviert. Die vollständige Liste der unterstützten Werte wird durch dwFlags von CertGetCertificateChain dokumentiert: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
+|CrlCheckingFlag|uint, Standardwert 0 x 40000000|Dynamisch|Standardflag für die Überprüfung der Zertifikatkette. Kann von einem komponentenspezifischen Flag überschrieben werden, z.B. Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY. Bei Festlegen des Werts auf 0 wird die Zertifikatssperrlistenüberprüfung deaktiviert. Die vollständige Liste der unterstützten Werte wird durch dwFlags von CertGetCertificateChain dokumentiert: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |CrlDisablePeriod|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(15)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Gibt an, wie lange die Zertifikatsperrlistenüberprüfung für ein bestimmtes Zertifikat nach einem Offlinefehler deaktiviert wird, wenn der Zertifikatsperrlisten-Offlinefehler ignoriert werden kann. |
 |CrlOfflineHealthReportTtl|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(1440)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. |
 |DisableFirewallRuleForDomainProfile| Boolesch, Standardwert TRUE |statischen| Gibt an, ob die Firewallregel das Domänenprofil nicht aktiviert werden soll. |
@@ -616,11 +651,13 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |X509Folder|string, Standarwert /var/lib/waagent|statischen|Der Ordner, in dem X509 Zertifikate und private Schlüssel gespeichert sind. |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Admin-Clientvorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Admin-Clientzertifikate in der Liste befinden. |
 
 ## <a name="securityclientaccess"></a>Security/ClientAccess
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ActivateNode |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Aktivierung eines Knotens. |
@@ -722,36 +759,43 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |Hochladen |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Uploadvorgang. |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, Standardwert: None |Dynamisch|X509-Zertifikatspeicher des Zertifikatausstellers für Clientzertifikate; Name = clientIssuerCN; Wert = kommagetrennte Liste der Speicher |
 
 ## <a name="securityclientx509names"></a>Security/ClientX509Names
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Clientvorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Clientzertifikate in der Liste befinden.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClientCertificateIssuerStores
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, Standardwert: None |Dynamisch|X509-Zertifikatspeicher des Zertifikatausstellers für Clusterzertifikate; Name = clusterIssuerCN; Wert = kommagetrennte Liste der Speicher |
 
 ## <a name="securityclusterx509names"></a>Security/ClusterX509Names
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Clustervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Clusterzertifikate in der Liste befinden.|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, Standardwert: None |Dynamisch|X509-Zertifikatspeicher des Zertifikatausstellers für Serverzertifikate; Name = serverIssuerCN; Wert = kommagetrennte Liste der Speicher |
 
 ## <a name="securityserverx509names"></a>Security/ServerX509Names
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Servervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Serverzertifikate in der Liste befinden.|
 
 ## <a name="setup"></a>Einrichtung
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|string, Standardwert ""| statischen |Der zu verwendende Netzwerkname, wenn ein Containernetzwerk eingerichtet wird.|
@@ -764,16 +808,19 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SkipFirewallConfiguration |Boolesch, Standardwert „false“ | Nicht zulässig |Gibt an, ob Firewalleinstellungen vom System festgelegt werden müssen oder nicht. Dies gilt nur, wenn Sie die Windows-Firewall verwenden. Wenn Sie Firewalls von Drittanbietern verwenden, müssen Sie die Ports für das System und die zu verwendenden Anwendungen öffnen. |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |Anbieter |string, Standardwert „DSTS“ |statischen|Durch Trennzeichen getrennte Liste von zu aktivierenden Tokenvalidierungsanbietern (gültige Anbieter sind: DSTS; AAD). Derzeit kann immer nur ein einzelnen Anbieter aktiviert werden. |
 
 ## <a name="traceetw"></a>Trace/Etw
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |Ebene |Ganze Zahl, Standardwert 4 | Dynamisch |Die Trace/Etw-Ebene kann die Werte 1, 2, 3 oder 4 annehmen. Zur Unterstützung muss die Trace-Ebene 4 beibehalten werden. |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | Zeit in Sekunden, Standardwert 0,015 | statischen | Geben Sie die Zeitspanne in Sekunden an. Bestimmt die Zeitdauer, die der Replikator nach dem Empfang eines Vorgangs wartet, bevor er eine Bestätigung sendet. Für andere Vorgänge, die während dieses Zeitraums empfangen werden, werden die Bestätigungen in einer einzelnen Nachricht zurückgesendet. Dadurch wird der Netzwerkverkehr verringert, jedoch möglicherweise auch der Durchsatz des Replikators. |
@@ -795,6 +842,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |SendTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(300)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Zeitüberschreitung beim Senden wegen unterbrochener Verbindung. TCP-Fehlerberichte sind in manchen Umgebungen nicht zuverlässig. Dies muss ggf. entsprechend der verfügbaren Netzwerkbandbreite und Größe der ausgehenden Daten angepasst werden (\*MaxMessageSize\/\*SendQueueSizeLimit). |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | Boolesch, Standardwert „true“ |statischen| Automatische Abruf- und Aktualisierungsaktion basierend auf einer Datei für den Zielzustand. |
@@ -809,6 +857,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UpgradeApprovalRequired | Boolesch, Standardwert „false“ | statischen|Einstellung, damit bei der Codeaktualisierung die Genehmigung durch den Administrator erforderlich ist, bevor fortgefahren werden kann. |
 
 ## <a name="upgradeservice"></a>UpgradeService
+
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |BaseUrl | string, Standardwert "" |statischen|BaseUrl für UpgradeService. |

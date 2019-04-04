@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f23f29d15c4c8f05551b20d42b92dda5632cde08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049948"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078736"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
 In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Workerrollen zu zustandslosen Service Fabric-Diensten migrieren. Dies ist für Anwendungen, deren allgemeine Architektur weitgehend gleich bleibt, der einfachste Migrationspfad von Cloud Services zu Service Fabric.
@@ -44,7 +44,7 @@ In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar.
 | ASP.NET Web Forms |Nein  |In ASP.NET Core 1 MVC konvertieren |
 | ASP.NET MVC |Per Migration |Upgrade auf ASP.NET Core 1 MVC |
 | ASP.NET-Web-API |Per Migration |Selbst gehosteten Server oder ASP.NET Core 1 verwenden |
-| ASP.NET Core 1 |JA |N/V |
+| ASP.NET Core 1 |Ja |– |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Einstiegspunkt-API und Lebenszyklus
 APIs von Workerrollen und Service Fabric-Diensten verfügen über ähnliche Einstiegspunkte: 
@@ -52,9 +52,9 @@ APIs von Workerrollen und Service Fabric-Diensten verfügen über ähnliche Eins
 | **Einstiegspunkt** | **Workerrolle** | **Service Fabric-Dienst** |
 | --- | --- | --- |
 | Verarbeitung |`Run()` |`RunAsync()` |
-| VM starten |`OnStart()` |N/V |
-| VM beenden |`OnStop()` |N/V |
-| Listener für Clientanforderungen öffnen |N/V |<ul><li> Zustandslos: `CreateServiceInstanceListener()`</li><li>Zustandsbehaftet: `CreateServiceReplicaListener()`</li></ul> |
+| VM starten |`OnStart()` |– |
+| VM beenden |`OnStop()` |– |
+| Listener für Clientanforderungen öffnen |– |<ul><li> Zustandslos: `CreateServiceInstanceListener()`</li><li>Zustandsbehaftet: `CreateServiceReplicaListener()`</li></ul> |
 
 ### <a name="worker-role"></a>Workerrolle
 ```csharp
@@ -123,8 +123,8 @@ Die API für die Cloud Services-Umgebung liefert Informationen und Funktionen f�
 | Konfigurationseinstellungen und Änderungsbenachrichtigung |`RoleEnvironment` |`CodePackageActivationContext` |
 | Lokaler Speicher |`RoleEnvironment` |`CodePackageActivationContext` |
 | Endpunktinformationen |`RoleInstance` <ul><li>Aktuelle Instanz: `RoleEnvironment.CurrentRoleInstance`</li><li>Andere Rollen und Instanz: `RoleEnvironment.Roles`</li> |<ul><li>Aktuelle Knotenadresse: `NodeContext`</li><li>Ermittlung von Dienstendpunkten: `FabricClient` und `ServicePartitionResolver`</li> |
-| Umgebungsemulation |`RoleEnvironment.IsEmulated` |N/V |
-| Gleichzeitiges Änderungsereignis |`RoleEnvironment` |N/V |
+| Umgebungsemulation |`RoleEnvironment.IsEmulated` |– |
+| Gleichzeitiges Änderungsereignis |`RoleEnvironment` |– |
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 Konfigurationseinstellungen in Cloud Services werden für eine VM-Rolle festgelegt und gelten für alle Instanzen dieser VM-Rolle. Diese Einstellungen sind in Dateien vom Typ „ServiceConfiguration.*.cscfg“ festgelegte Schlüssel-Wert-Paare, auf die direkt über RoleEnvironment zugegriffen werden kann. In Service Fabric gelten Einstellungen individuell für jeden Dienst und jede Anwendung, anstatt für eine VM, da eine VM mehrere Dienste und Anwendungen hosten kann. Ein Dienst besteht aus drei Paketen:
@@ -209,7 +209,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 Startaufgaben sind Aktionen, die vor dem Starten einer Anwendung durchgeführt werden. Eine Startaufgabe wird normalerweise zum Ausführen von Setupskripts mit erhöhten Rechten verwendet. Startaufgaben werden sowohl für Cloud Services als auch für Service Fabric unterstützt. Der Hauptunterschied besteht darin, dass eine Startaufgabe in Cloud Services an eine VM gebunden ist, da sie Teil einer Rolleninstanz ist. In Service Fabric ist eine Startaufgabe dagegen an einen Dienst gebunden, der nicht an eine bestimmte VM gebunden ist.
 
 | Service Fabric | Cloud Services |
-| --- | --- | --- |
+| --- | --- |
 | Speicherort der Konfiguration |ServiceDefinition.csdef |
 | Rechte |„Eingeschränkt“ oder „Erhöht“ |
 | Sequenzierung |„Einfach“, „Hintergrund“, „Vordergrund“ |

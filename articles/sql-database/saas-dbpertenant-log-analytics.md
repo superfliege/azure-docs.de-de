@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Log Analytics mit einer mehrinstanzenfähigen App für SQL-Datenbank | Microsoft-Dokumentation
-description: Einrichten und Verwenden von Log Analytics mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
+title: Verwenden von Azure Monitor-Protokollen mit einer mehrinstanzenfähigen App für SQL-Datenbank | Microsoft-Dokumentation
+description: Einrichten und Verwenden von Azure Monitor-Protokollen mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,22 +12,24 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7a5245a9c97748e7b46132eaaa91f6bbc8311266
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475141"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455920"
 ---
-# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
+# <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Azure Monitor-Protokollen mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
 
-In diesem Tutorial richten Sie [Log Analytics](/azure/log-analytics/log-analytics-overview) zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken ein. Dieses Tutorial baut auf dem [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit Log Analytics die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics unterstützt die Überwachung von zigtausend elastischen Pools und mehreren hunderttausend Datenbanken. Mit Log Analytics verfügen Sie über eine zentrale Überwachungslösung, in der die Überwachung von unterschiedlichen Anwendungen und Azure-Diensten für mehrere Azure-Abonnements integriert werden kann.
+In diesem Tutorial richten Sie [Azure Monitor-Protokolle](/azure/log-analytics/log-analytics-overview) zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken ein. Dieses Tutorial baut auf dem [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit Azure Monitor-Protokollen die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Azure Monitor-Protokolle unterstützen die Überwachung von zigtausend Pools für elastische Datenbanken und mehreren hunderttausend Datenbanken. Mit Azure Monitor-Protokollen verfügen Sie über eine zentrale Überwachungslösung, in der die Überwachung von unterschiedlichen Anwendungen und Azure-Diensten für mehrere Azure-Abonnements integriert werden kann.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Installieren und Konfigurieren von Log Analytics
-> * Überwachen von Pools und Datenbanken mithilfe von Log Analytics
+> * Installieren und Konfigurieren von Azure Monitor-Protokollen
+> * Verwenden von Azure Monitor-Protokollen zum Überwachen von Pools und Datenbanken
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
@@ -36,11 +38,11 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Im [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) finden Sie eine Beschreibung der SaaS-Szenarien und -Muster, und es wird erläutert, wie sie die Anforderungen an eine Überwachungslösung beeinflussen.
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>Überwachen und Verwalten der Leistung von Datenbanken und Pools für elastische Datenbanken mit Log Analytics
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-azure-monitor-logs"></a>Überwachen und Verwalten der Leistung von Datenbanken und Pools für elastische Datenbanken mit Azure Monitor-Protokollen
 
 Bei Azure SQL-Datenbank stehen Überwachungs- und Warnungsfunktionen für Datenbanken und Pools im Azure-Portal zur Verfügung. Diese integrierten Überwachungs- und Warnungsfunktionen sind praktisch, aber auch ressourcenspezifisch. Sie eigenen sich daher weniger, um große Installationen zu überwachen oder eine zentrale Übersicht über Ressourcen und Abonnements zu erhalten.
 
-Bei Szenarien mit hohem Volumen kann Log Analytics zur Überwachung und für Warnungen eingesetzt werden. Log Analytics ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglicht Log Analytics die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Log Analytics bietet außerdem einen Designer für benutzerdefinierte Ansichten.
+Bei Szenarien mit hohem Volumen können Azure Monitor-Protokolle zur Überwachung und für Warnungen eingesetzt werden. Azure Monitor ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglichen Azure Monitor-Protokolle die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Mit Azure Monitor-Protokollen wird außerdem ein Designer für benutzerdefinierte Ansichten bereitgestellt.
 
 OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. Log Analytics-Arbeitsbereiche und -Analyselösungen werden im Azure-Portal geöffnet. Das Azure-Portal stellt den neueren Zugangspunkt dar, entspricht aber unter Umständen in einigen Bereichen dem Portal von Operations Management Suite.
 
@@ -63,23 +65,23 @@ OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. L
 
 Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-PowerShell-Skripts finden Sie unter [Allgemeine Hinweise](saas-tenancy-wingtip-app-guidance-tips.md).
 
-## <a name="install-and-configure-log-analytics-and-the-azure-sql-analytics-solution"></a>Installieren und Konfigurieren von Log Analytics und Azure SQL-Analyse
+## <a name="install-and-configure-log-analytics-workspace-and-the-azure-sql-analytics-solution"></a>Installieren und Konfigurieren des Log Analytics-Arbeitsbereichs und der Azure SQL Analytics-Lösung
 
-Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analytics erfasst Protokoll- und Telemetriedaten sowie Metriken in einem Log Analytics-Arbeitsbereich. Ein Log Analytics-Arbeitsbereich muss wie andere Ressourcen in Azure erstellt werden. Der Arbeitsbereich muss nicht in derselben Ressourcengruppe erstellt werden, in der sich auch die überwachten Anwendungen befinden. In den meisten Fällen ist das jedoch am sinnvollsten. Bei der Wingtip Tickets-App wird durch das Verwenden einer einzigen Ressourcengruppe sichergestellt, dass der Arbeitsbereich mit der Anwendung gelöscht wird.
+Azure Monitor ist ein separater Dienst, der konfiguriert werden muss. Azure Monitor-Protokolle erfassen Protokoll- und Telemetriedaten sowie Metriken in einem Log Analytics-Arbeitsbereich. Ein Log Analytics-Arbeitsbereich muss wie andere Ressourcen in Azure erstellt werden. Der Arbeitsbereich muss nicht in derselben Ressourcengruppe erstellt werden, in der sich auch die überwachten Anwendungen befinden. In den meisten Fällen ist das jedoch am sinnvollsten. Bei der Wingtip Tickets-App wird durch das Verwenden einer einzigen Ressourcengruppe sichergestellt, dass der Arbeitsbereich mit der Anwendung gelöscht wird.
 
 1. Öffnen Sie in der PowerShell ISE *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1*.
 1. Drücken Sie F5, um das Skript auszuführen.
 
-Sie können Log Analytics jetzt im Azure-Portal öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Diagnosedaten lassen, desto interessanter wird das Ergebnis. 
+Jetzt können Sie Azure Monitor-Protokolle im Azure-Portal öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Diagnosedaten lassen, desto interessanter wird das Ergebnis. 
 
-## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Überwachen von Pools und Datenbanken mithilfe von Log Analytics und der SQL-Analyselösung
+## <a name="use-log-analytics-workspace-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Überwachen von Pools und Datenbanken mithilfe des Log Analytics-Arbeitsbereichs und der SQL-Analyselösung
 
 
-Öffnen Sie in dieser Übung Log Analytics im Azure-Portal, um die Telemetriedaten zu untersuchen, die für die Datenbanken und Pools gesammelt werden.
+Öffnen Sie in dieser Übung den Log Analytics-Arbeitsbereich im Azure-Portal, um die Telemetriedaten zu untersuchen, die für die Datenbanken und Pools gesammelt wurden.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Alle Dienste** aus, um Log Analytics zu öffnen. Suchen Sie dann nach „Log Analytics“.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Alle Dienste** aus, um den Log Analytics-Arbeitsbereich zu öffnen. Suchen Sie dann nach „Log Analytics“.
 
-   ![Öffnen von Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
+   ![Öffnen des Log Analytics-Arbeitsbereichs](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
 1. Wählen Sie den Arbeitsbereich namens _wtploganalytics-&lt;Benutzer&gt;_ aus.
 
@@ -131,11 +133,11 @@ Sie können Log Analytics jetzt im Azure-Portal öffnen. Es dauert einige Minute
 
 Im Log Analytics-Arbeitsbereich können Sie die Protokoll- und Metrikdaten weiter untersuchen. 
 
-Überwachung und Warnung in Log Analytics beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
+Überwachung und Warnung in Azure Monitor-Protokollen beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
 
-Weitere Informationen zum Abfragen und Festlegen von Warnungen mit Log Analytics finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Weitere Informationen zum Abfragen und Festlegen von Warnungen mit Azure Monitor-Protokollen finden Sie unter [Arbeiten mit Warnungsregeln in Azure Monitor-Protokollen](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
-Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jeweiligen Datenvolumen im Arbeitsbereich. In diesem Tutorial haben Sie einen kostenlosen Arbeitsbereich erstellt, der auf 500 MB pro Tag beschränkt ist. Sobald dieser Grenzwert erreicht wird, werden dem Arbeitsbereich keine Daten mehr hinzugefügt.
+Die Rechnungsstellung für Azure Monitor-Protokolle für SQL-Datenbank basiert auf dem jeweiligen Datenvolumen im Arbeitsbereich. In diesem Tutorial haben Sie einen kostenlosen Arbeitsbereich erstellt, der auf 500 MB pro Tag beschränkt ist. Sobald dieser Grenzwert erreicht wird, werden dem Arbeitsbereich keine Daten mehr hinzugefügt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -143,12 +145,12 @@ Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jewe
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Installieren und Konfigurieren von Log Analytics
-> * Überwachen von Pools und Datenbanken mithilfe von Log Analytics
+> * Installieren und Konfigurieren von Azure Monitor-Protokollen
+> * Verwenden von Azure Monitor-Protokollen zum Überwachen von Pools und Datenbanken
 
 Absolvieren Sie das [Tutorial zu Mandantenanalysen](saas-dbpertenant-log-analytics.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Weitere Tutorials, die auf der anfänglichen Anwendungsbereitstellung der Wingtip Tickets-SaaS-App mit einer Datenbank pro Mandant aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)
+* [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md)

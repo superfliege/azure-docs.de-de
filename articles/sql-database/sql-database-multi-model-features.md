@@ -12,18 +12,29 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300250"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884522"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Funktionen für mehrere Modelle in Azure SQL-Datenbank
 
 Datenbanken mit mehreren Modellen ermöglichen Ihnen das Speichern von und Arbeiten mit Daten, die in verschiedenen Datenformaten vorliegen, wie z.B. relationale Daten, Graphen, JSON/XML-Dokumente Schlüssel-Wert-Paare usw.
 
-Azure SQL-Datenbank wurde für die Arbeit mit dem relationalen Modell konzipiert, das in den meisten Fällen die beste Leistung für eine Vielzahl von allgemeinen Anwendungen bietet. Azure SQL-Datenbank ist jedoch nicht auf relationale Daten beschränkt. Mit Azure SQL-Datenbank können Sie eine Vielzahl nicht relationaler Formate verwenden, die eng in das relationale Modell integriert sind. Azure SQL bietet die folgenden Funktionen für mehrere Modelle:
+## <a name="when-to-use-multi-model-capabilities"></a>Wann werden Funktionen für mehrere Modelle verwendet?
+
+Azure SQL-Datenbank wurde für die Arbeit mit dem relationalen Modell konzipiert, das in den meisten Fällen die beste Leistung für eine Vielzahl von allgemeinen Anwendungen bietet. Azure SQL-Datenbank ist jedoch nicht auf relationale Daten beschränkt. Mit Azure SQL-Datenbank können Sie eine Vielzahl nicht relationaler Formate verwenden, die eng in das relationale Modell integriert sind.
+Die Verwendung der Funktionen für mehrere Modelle von Azure SQL-Datenbank sollten Sie in folgenden Fällen in Betracht ziehen:
+- Sie verfügen über einige Informationen oder Strukturen, die für NoSQL-Modelle besser geeignet sind, und möchten keine separate NoSQL-Datenbank verwenden.
+- Ein Großteil Ihrer Daten eignet sich zwar für das relationale Modell, Sie müssen aber einige Daten im NoSQL-Format modellieren.
+- Sie möchten die umfangreiche Transact-SQL-Sprache zum Abfragen und Analysieren von relationalen und NoSQL-Daten nutzen und sie in eine Vielzahl von Tools und Anwendung integrieren, die die SQL-Sprache verwenden können.
+- Sie möchten Datenbankfunktionen wie [In-Memory-Technologien](sql-database-in-memory.md) anwenden, um die Leistung von Analyse oder Verarbeitung Ihrer NoSQL-Datenstrukturen zu verbessern. Sie möchten vielleicht auch die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) oder [lesbare Replikate](sql-database-read-scale-out.md) verwenden, um eine Kopie Ihrer Daten an einem anderen Ort zu erstellen und die primäre Datenbank von einigen Analyseworkloads zu entlasten.
+
+## <a name="overview"></a>Übersicht
+
+Azure SQL bietet die folgenden Funktionen für mehrere Modelle:
 - [Graphfunktionen](#graph-features) ermöglichen es Ihnen, Ihre Daten als Satz aus Knoten und Kanten darzustellen und die standardmäßige, um den `MATCH`-Operator erweiterte Transact-SQL-Sprache zu verwenden, um die Graphdaten abzufragen.
 - [JSON-Funktionen](#json-features) ermöglichen es Ihnen, JSON-Dokumente in Tabellen zu platzieren sowie relationale Daten in JSON-Dokumente und umgekehrt zu transformieren. Sie können die um JSON-Funktionen erweiterte Transact-SQL-Standardsprache zum Analysieren von Dokumenten verwenden. Darüber hinaus können Sie nicht geclusterte Indizes, Columnstore-Indizes oder speicheroptimierte Tabellen verwenden, um Ihre Abfragen zu optimieren.
 - [Räumliche Funktionen](#spatial-features) ermöglichen es Ihnen, geografische und geometrische Daten zu speichern sowie die Daten mithilfe der räumlichen Indizes zu indizieren und sie mit räumlichen Abfragen abzurufen.
@@ -56,7 +67,7 @@ Eine Graphdatenbank kann keine Ergebnisse erzielen, die nicht auch mit einer rel
 
 ## <a name="json-features"></a>JSON-Funktionen
 
-In Azure SQL-Datenbank können Sie Daten analysieren und abfragen, die im JavaScript Object Notation-Format [(JSON)](http://www.json.org/) dargestellt werden, und Ihre relationalen Daten als JSON-Text exportieren.
+In Azure SQL-Datenbank können Sie Daten analysieren und abfragen, die im JavaScript Object Notation-Format [(JSON)](https://www.json.org/) dargestellt werden, und Ihre relationalen Daten als JSON-Text exportieren.
 
 JSON ist ein gängiges Datenformat zum Austauschen von Daten in modernen Web- und mobilen Anwendungen. JSON wird auch zum Speichern von halbstrukturierten Daten in Protokolldateien oder in NoSQL-Datenbanken wie [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) verwendet. Viele REST-Webdienste geben Ergebnisse als JSON-Text formatiert zurück oder akzeptieren Daten im JSON-Format. Die meisten Azure-Dienste, z.B. [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/)und [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) verfügen über REST-Endpunkte, die Daten im JSON-Format zurückgeben oder verarbeiten.
 
@@ -124,7 +135,7 @@ CREATE TABLE Collection (
 
 Sie können diese Schlüssel-Wert-Struktur ohne jede Einschränkung an Ihre Anforderungen anpassen. Ein Beispiel: Ein Wert kann ein XML-Dokument anstelle des `nvarchar(max)`-Typs sein. Wenn der Wert ein JSON-Dokument ist, können Sie eine `CHECK`-Einschränkung einfügen, die die Gültigkeit des JSON-Inhalts überprüft. Sie können eine beliebige Anzahl von Werten für einen einzigen Schlüssel in den zusätzlichen Spalten hinzufügen, berechnete Spalten und Indizes hinzufügen, um den Datenzugriff zu vereinfachen und zu optimieren, die Tabelle als speicheroptimierte reine Schematabelle definieren, um die Leistung zu verbessern, und vieles mehr.
 
-Ein Praxisbeispiel für die effektive Nutzung des relationalen Modells als Schlüssel-Wert-Paar-Lösung finden Sie im Blogbeitrag [How bwin is using In-Memory OLTP to achieve unprecedented performance and scale](https://blogs.msdn.microsoft.com/sqlcat/2016/10/26/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) (Wie bwin In-Memory-OLTP für beispiellose Leistung und Skalierung nutzt). In diesem Beitrag wird die ASP.NET-Cachinglösung erläutert, mit der das Unternehmen 1.200.000 Batches pro Sekunde verarbeitet.
+Ein Praxisbeispiel für die effektive Nutzung des relationalen Modells als Schlüssel-Wert-Paar-Lösung finden Sie im Blogbeitrag [How bwin is using In-Memory OLTP to achieve unprecedented performance and scale](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) (Wie bwin In-Memory-OLTP für beispiellose Leistung und Skalierung nutzt). In diesem Beitrag wird die ASP.NET-Cachinglösung erläutert, mit der das Unternehmen 1.200.000 Batches pro Sekunde verarbeitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Azure SQL-Datenbank-Funktionen für mehrere Modelle sind ebenfalls grundlegende Features der SQL Server-Datenbank-Engine, die von Azure SQL-Datenbank und SQL Server gemeinsam genutzt werden. Weitere Informationen zu diesen Features finden Sie auf den Dokumentationsseiten zu relationalen SQL-Datenbanken:

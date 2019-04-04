@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852757"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Singletons, in einem Pool zusammengefassten Datenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
@@ -26,7 +26,6 @@ Die Transaktionsreplikation ist ein Feature von Azure SQL-Datenbank und SQL Serv
 ## <a name="when-to-use-transactional-replication"></a>Wann ist die Transaktionsreplikation zu verwenden?
 
 Die Transaktionsreplikation ist in den folgenden Szenarien nützlich:
-
 - Veröffentlichen von Änderungen an Tabellen in einer Datenbank, die an SQL Server-Instanzen oder Azure SQL-Datenbanken verteilt werden, die die Änderungen abonniert haben
 - Synchronisierthalten mehrerer verteilter Datenbanken
 - Migrieren von Datenbanken aus einer SQL Server- oder einer verwalteten Instanz zu einer anderen Datenbank durch fortlaufendes Veröffentlichen der Änderungen
@@ -59,7 +58,10 @@ Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Hera
 | **Push-Abonnent**| Ja | Ja|
 | &nbsp; | &nbsp; | &nbsp; |
 
-Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
+  >[!NOTE]
+  > Ein Pull-Abonnement wird nicht unterstützt, wenn der Verteiler eine Instanzdatenbank und der Abonnent keine Instanzdatenbank ist. 
+
+Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
 
 | Replikation | Singletons und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken|
@@ -75,14 +77,37 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
   >[!NOTE]
   > - Der Versuch, Replikationen mit einer älteren Version zu konfigurieren, kann zu dem Fehler mit der Nummer MSSQL_REPL20084 (Der Prozess konnte keine Verbindung mit dem Abonnenten herstellen.) oder MSSQ_REPL40532 (Der von der Anmeldung angeforderte Server \<Name> kann nicht geöffnet werden) führen. Die Anmeldung ist fehlgeschlagen.)
-  > - Um alle Features von Azure SQL-Datenbank verwenden zu können, müssen Sie die neuesten Versionen von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) und [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) verwenden.
+  > - Um alle Features von Azure SQL-Datenbank verwenden zu können, müssen Sie die neuesten Versionen von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) verwenden.
+  
+  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Matrix für die Unterstützbarkeit von Instanzdatenbanken und lokalen Systemen
+  Die Unterstützungsmatrix für die Replikation für Instanzdatenbanken ist identisch mit der für eine lokale SQL Server-Instanz. 
+  
+  | **Herausgeber**   | **Verteiler** | **Abonnent** |
+| :------------   | :-------------- | :------------- |
+| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet. 
 - Ein Azure-Speicherkonto für das von der Replikation verwendete Arbeitsverzeichnis. 
 - Port 445 (TCP ausgehend) muss in den Sicherheitsregeln des Subnetzes der verwalteten Instanz geöffnet sein, um auf die Azure-Dateifreigabe zugreifen zu können. 
-- Port 1433 (TCP ausgehend) muss geöffnet werden, wenn sich der Herausgeber/Verteiler auf einer verwalteten Instanz und der Abonnent in der lokalen Umgebung befindet. 
+- Port 1433 (TCP ausgehend) muss geöffnet werden, wenn sich der Herausgeber/Verteiler auf einer verwalteten Instanz und der Abonnent in der lokalen Umgebung befindet.
+
+  >[!NOTE]
+  > Möglicherweise tritt beim Herstellen einer Verbindung zu einer Azure Storage-Datei der Fehler 53 auf, wenn Port 445 (ausgehend) der Netzwerksicherheitsgruppe gesperrt ist und der Verteiler eine Instanzdatenbank und der Abonnent ein lokales System ist. [Aktualisieren Sie die vNet-Netzwerksicherheitsgruppe](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems), um dieses Problem zu beheben. 
+
+### <a name="compare-data-sync-with-transactional-replication"></a>Vergleichen von Datensynchronisierung und Transaktionsreplikation
+
+| | Datensynchronisierung | Transaktionsreplikation |
+|---|---|---|
+| Vorteile | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration |
+| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Azure SQL-Datenbank-Einzeldatenbank oder im Pool zusammengefasste Datenbanken<br/>– Hohe Wartungskosten |
+| | | |
 
 ## <a name="common-configurations"></a>Häufig verwendete Konfigurationen
 
@@ -90,7 +115,7 @@ Im Allgemeinen müssen sich Herausgeber und Verteiler gemeinsam entweder in der 
 
 ### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Herausgeber mit lokalem Verteiler in verwalteter Instanz
 
-![Einzelinstanz als Herausgeber und Verteiler ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![Einzelinstanz als Herausgeber und Verteiler](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
 Herausgeber und Verteiler sind in einer einzelnen verwalteten Instanz konfiguriert und verteilen Änderungen an andere verwaltete Instanzen, Einzeldatenbanken, in einem Pool zusammengefasste Datenbanken oder lokale SQL Server-Instanzen. In dieser Konfiguration kann die verwaltete Herausgeber-/Verteilerinstanz nicht mit [Georeplikation und Auto-Failovergruppen](sql-database-auto-failover-group.md) konfiguriert werden.
 
@@ -112,11 +137,13 @@ Herausgeber und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei
  
 In dieser Konfiguration ist eine Azure SQL-Datenbank (Singleton, in einem Pool zusammengefasste und Instanzdatenbank) ein Abonnent. Diese Konfiguration unterstützt die Migration vom lokalen Standort zu Azure. Ein Abonnent einem Singleton oder einer in einem Pool zusammengefassten Datenbank muss im Pushmodus sein.  
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 1. [Konfigurieren Sie Transaktionsreplikation für eine verwaltete Instanz](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example). 
 1. [Erstellen Sie eine Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Erstellen Sie ein Push-Abonnements](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen von Azure SQL-Datenbank als Abonnent (z.B. `N'azuresqldbdns.database.windows.net`) und dem Namen der Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**). )
+
 
 
 ## <a name="see-also"></a>Siehe auch  

@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 8c19022f168577cf65180357f280afd5a0e03073
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007466"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
 
@@ -91,7 +91,7 @@ Um Ihre Wiederholungslogik zu testen, müssen Sie einen Fehler simulieren oder v
 Eine Möglichkeit, um Ihre Wiederholungslogik zu testen, besteht darin, Ihren Clientcomputer vom Netzwerk zu trennen, während das Programm ausgeführt wird. Der Fehler lautet:
 
 - **SqlException.Number** = 11001
-- Meldung: „Der angegebene Host ist unbekannt.“
+- Meldung: „Es ist kein solcher Host bekannt.“
 
 Beim ersten Wiederholungsversuch kann Ihr Programm den Namen korrigieren und erneut versuchen, eine Verbindung herzustellen.
 
@@ -125,7 +125,7 @@ Um diesen Test in der Praxis umzusetzen, erkennt Ihr Programm einen Laufzeitpara
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>SqlConnection-Parameter von .NET für wiederholte Verbindungsversuche
 
-Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection** eine Verbindung mit SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher (oder .NET Core) verwenden, damit Sie das Feature für wiederholte Verbindungsversuche nutzen können. Weitere Informationen zum Feature finden Sie auf [dieser Webseite](https://go.microsoft.com/fwlink/?linkid=393996).
+Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection** eine Verbindung mit SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher (oder .NET Core) verwenden, damit Sie das Feature für wiederholte Verbindungsversuche nutzen können. Weitere Informationen zum Feature finden Sie auf [dieser Webseite](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -211,7 +211,7 @@ Wenn Ihr Programm ADO.NET-Klassen wie **System.Data.SqlClient.SqlConnection** f�
 
 Bei Verwendung eines Verbindungsobjekts aus einem Verbindungspool sollte Ihr Programm die Verbindung vorübergehend schließen, wenn diese nicht umgehend verwendet wird. Eine Verbindung erneut zu öffnen, ist nicht aufwendig, eine neue Verbindung zu erstellen, schon.
 
-Wenn Sie ADO.NET 4.0 oder eine frühere Version verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen. Ab August 2018 können Sie [ADO.NET 4.6.2 herunterladen](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
+Wenn Sie ADO.NET 4.0 oder eine frühere Version verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen. Ab August 2018 können Sie [ADO.NET 4.6.2 herunterladen](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
@@ -261,7 +261,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-### <a name="diagnostics-log-your-errors"></a>Diagnose: Protokollieren Ihrer Fehler
+### <a name="diagnostics-log-your-errors"></a>Diagnose: Protokollieren der Fehler
 
 Periodisch auftretende Probleme lassen sich mitunter am besten diagnostizieren, indem Sie über mehrere Tage oder Wochen hinweg ein allgemeines Muster ermitteln.
 
@@ -327,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 Bei Enterprise Library 6 (EntLib60) handelt es sich um ein Framework aus .NET-Klassen, mit denen Sie stabile Clouddienstclients implementieren können (u. a. den SQL-Datenbankdienst). Unter [Enterprise Library 6 – April 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx) finden Sie Themen zu den verschiedenen Bereichen, in denen EntLib60 hilfreich sein kann.
 
-EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorübergehenden Fehlern hilfreich sein. Weitere Informationen finden Sie unter [4 – Hartnäckigkeit, das Geheimnis aller Erfolge: Verwenden des Anwendungsblocks für die Behandlung vorübergehender Fehler](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorübergehenden Fehlern hilfreich sein. Weitere Informationen finden Sie unter [4 – Hartnäckigkeit, das Geheimnis aller Erfolge: Anwendungsblock zum Behandeln vorübergehender Fehler](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
 > Der Quellcode für EntLib60 steht im [Download Center](https://go.microsoft.com/fwlink/p/?LinkID=290898) zum öffentlichen Download bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
@@ -354,13 +354,13 @@ Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Test
 
 Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
-- Kostenloses E-Book: [Developer's Guide to Microsoft Enterprise Library, 2nd Edition](https://www.microsoft.com/download/details.aspx?id=41145)
+- Kostenloses E-Book: [Developer's Guide to Microsoft Enterprise Library, 2nd Edition](https://www.microsoft.com/download/details.aspx?id=41145).
 - Bewährte Methoden: [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) bietet eine detaillierte Erläuterung wichtiger Aspekte im Zusammenhang mit Wiederholungslogik.
-- NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
+- NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
-### <a name="entlib60-the-logging-block"></a>EntLib60: der Protokollierungsblock
+### <a name="entlib60-the-logging-block"></a>EntLib60: Der Protokollierungsblock
 
 - Der Protokollierungsblock ist eine äußerst flexible und umfassend konfigurierbare Lösung, die Folgendes ermöglicht:
   - Erstellen und Speichern von Protokollmeldungen an diversen Speicherorten.

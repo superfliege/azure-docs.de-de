@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/27/2019
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339310"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223817"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -55,8 +55,8 @@ Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und �
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
-| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines)| 11 K bis 110 K (1,375 pro virtuellem Kern) |
-|Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
+| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K bis 110 K (1,375 pro virtuellem Kern) |
+| Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 bis 48 MB/Sek. pro virtuellem Kern |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
@@ -90,6 +90,9 @@ Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro R
 - **Subnetzlimit**: Die maximale Anzahl von Subnetzen bei Bereitstellung verwalteter Instanzen in einer einzelnen Region.
 - **Limit für die Anzahl der Instanzen**: Die maximale Anzahl von Instanzen, die in einer einzelnen Region bereitgestellt werden können.
 
+> [!Note]
+> Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Diese Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
+
 In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonnements angegeben.
 
 |Abonnementtyp| Max. Anzahl von Subnetzen für verwaltete Instanzen | Max. Anzahl von Instanzen |Max. Anzahl von universellen verwalteten Instanzen*|Max. Anzahl von unternehmenskritischen verwalteten Instanzen*|
@@ -104,7 +107,7 @@ In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonne
 
 ** Die maximale Anzahl von Instanzen in einem Diensttarif trifft dann zu, wenn keine Instanzen in einem anderen Diensttarif vorhanden sind. Falls Sie beabsichtigen, universelle und unternehmenskritische Instanzen im selben Subnetz zu kombinieren, verwenden Sie den folgenden Abschnitt als Referenz für zulässige Kombinationen. Als einfache Faustregel gilt: Die Gesamtanzahl von Subnetzen darf nicht höher als 3 und die Gesamtanzahl von Instanzeinheiten nicht höher als 12 sein.
 
-Diese Grenzwerte können erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
+
 
 > [!IMPORTANT]
 > Beachten Sie beim Planen Ihrer Bereitstellungen, dass eine unternehmenskritische Instanz (aufgrund zusätzlicher Redundanz) im allgemeinen 4 x mehr Kapazität als eine universelle Instanz benötigt. Dies bedeutet für Ihre Berechnungen: 1 universelle Instanz = 1 Instanzeinheit und 1 unternehmenskritische Instanz = 4 Instanzeinheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die Instanzeinheiten für alle Subnetze in der Region zusammen, in der verwaltete Instanzen bereitgestellt werden, und vergleichen Sie die Ergebnisse mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps.

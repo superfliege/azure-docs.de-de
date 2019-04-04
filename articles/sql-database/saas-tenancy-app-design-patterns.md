@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471197"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217868"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -99,7 +99,7 @@ Wenn Datenbanken in derselben Ressourcengruppe bereitgestellt werden, können si
 
 ![Entwurf einer mehrinstanzenfähigen App mit einer Datenbank pro Mandant unter Verwendung eines Pools für elastische Datenbanken][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL-Datenbank stellt die Tools zur Verfügung, die erforderlich sind, um die Freigabe zu konfigurieren, zu überwachen und zu verwalten.  Sowohl Leistungsmetriken auf Pool- als auch auf Datenbankebene werden über das Azure-Portal und über Log Analytics zur Verfügung gestellt.  Die Metriken können umfassenden Einblick in die aggregierte und mandantenspezifische Leistung bieten.  Einzelne Datenbanken können zwischen Pools verschoben werden, um einem bestimmten Mandanten reservierte Ressourcen zur Verfügung zu stellen.  Durch diese Tools können Sie auf kosteneffiziente Weise eine hohe Leistung sicherstellen.
+Azure SQL-Datenbank stellt die Tools zur Verfügung, die erforderlich sind, um die Freigabe zu konfigurieren, zu überwachen und zu verwalten.  Sowohl Leistungsmetriken auf Pool- als auch auf Datenbankebene werden über das Azure-Portal und über Azure Monitor-Protokolle zur Verfügung gestellt.  Die Metriken können umfassenden Einblick in die aggregierte und mandantenspezifische Leistung bieten.  Einzelne Datenbanken können zwischen Pools verschoben werden, um einem bestimmten Mandanten reservierte Ressourcen zur Verfügung zu stellen.  Durch diese Tools können Sie auf kosteneffiziente Weise eine hohe Leistung sicherstellen.
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Skalierung des Betriebs für das Modell mit einer Datenbank pro Mandant
 

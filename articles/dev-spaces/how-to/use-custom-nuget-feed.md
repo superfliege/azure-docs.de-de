@@ -1,22 +1,21 @@
 ---
-title: Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces | Microsoft-Dokumentation
+title: Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: johnsta
 ms.author: johnsta
 ms.date: 05/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: Verwenden Sie einen benutzerdefinierten NuGet-Feed für den Zugriff auf und die Verwendung von NuGet-Paketen in Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 manager: ghogen
-ms.openlocfilehash: 21a70100fe186e176dfe8eb7c247d83a5d4705bd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466403"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772465"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
 

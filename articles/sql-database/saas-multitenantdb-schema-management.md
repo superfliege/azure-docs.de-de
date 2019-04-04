@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: b3855386f89eda71e145df6dd83d1b1e7e093735
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878073"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Verwalten von Schemas in einer SaaS-Anwendung, die mehrinstanzenfähige SQL-Datenbanken mit Sharding verwendet
 
@@ -53,7 +53,7 @@ In diesem Tutorial lernen Sie Folgendes:
 - Azure PowerShell muss installiert sein. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> In diesem Tutorial werden Funktionen des Azure SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen ([Aufträge für die elastische Datenbank](sql-database-elastic-database-client-library.md)). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für *SaaSFeedback@microsoft.com* mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an *SaaSFeedback@microsoft.com*, wenn Sie Fragen haben oder Support benötigen.
+> In diesem Tutorial werden Funktionen des Azure SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen ([Aufträge für die elastische Datenbank](sql-database-elastic-database-client-library.md)). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID per E-Mail an *SaaSFeedback\@microsoft.com* mit dem Betreff „Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt. Wenden Sie sich daher an *SaaSFeedback\@microsoft.com*, wenn Sie Fragen haben oder Support benötigen.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Einführung in SaaS-Schemaverwaltungsmuster
 
@@ -173,5 +173,5 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Aktualisieren von Verweisdaten in allen Mandantendatenbanken
 > * Erstellen eines Index für eine Tabelle in allen Mandantendatenbanken
 
-Absolvieren Sie als Nächstes das Tutorial [Ad-hoc-Berichterstellung](saas-multitenantdb-adhoc-reporting.md), um das Ausführen verteilter Abfragen über Mandantendatenbanken hinweg zu untersuchen.
+Absolvieren Sie als Nächstes das Tutorial [Ad-hoc-Berichterstellung](saas-multitenantdb-adhoc-reporting.md), um das Ausführen verteilter Abfragen für mehrere Mandantendatenbanken zu untersuchen.
 

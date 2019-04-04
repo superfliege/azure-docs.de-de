@@ -6,15 +6,15 @@ keywords: secrets
 author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236750"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900640"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Verwalten von Service Fabric Mesh-Anwendungsgeheimnissen
 Service Fabric Mesh unterstützt Geheimnisse als Azure-Ressourcen. Bei einem Service Fabric Mesh-Geheimnis kann es sich um beliebige sensible Informationen in Textform handeln, z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die sicher gespeichert und übertragen werden sollten. In diesem Artikel wird beschrieben, wie Sie den Secure Store Service von Service Fabric verwenden, um Geheimnisse bereitzustellen und zu verwalten.
@@ -37,7 +37,7 @@ Hier ist ein Beispiel dafür angegeben, wie Sie Ressourcen vom Typ „Mesh-Gehei
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -103,7 +103,7 @@ Hier ist ein Beispiel dafür angegeben, wie Sie Ressourcen vom Typ „Mesh-Gehei
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -215,9 +215,9 @@ az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 
 - Ein Geheimnis kann nicht gelöscht werden, während von einer Mesh-Anwendung darauf verwiesen wird.
 - Beim Löschen einer Ressource „Geheimnisse“ werden alle Geheimnis- bzw. Ressourcenversionen gelöscht.
-```azurecli-interactive
-az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
-```
+  ```azurecli-interactive
+  az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
+  ```
 
 ### <a name="list-secrets-in-subscription"></a>Auflisten von Geheimnissen im Abonnement
 ```azurecli-interactive

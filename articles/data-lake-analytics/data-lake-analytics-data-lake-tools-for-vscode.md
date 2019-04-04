@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 5ebd543000c8927f714e5345dfd8eb6033c6301a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820367"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531605"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Verwenden von Azure Data Lake Tools für Visual Studio Code
 
@@ -30,7 +30,7 @@ Azure Data Lake Tools für VS Code unterstützt Windows, Linux und MacOS. Das l
 
 Für MacOS und Linux:
 - [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)
-- [Mono 5.2.x](http://www.mono-project.com/download/)
+- [Mono 5.2.x](https://www.mono-project.com/download/)
 
 ## <a name="install-azure-data-lake-tools"></a>Installieren von Azure Data Lake-Tools
 
@@ -94,7 +94,7 @@ Sie müssen eine U-SQL-Datei oder einen entsprechenden Ordner öffnen, um mit U-
 **So übermitteln Sie ein U-SQL-Skript**
 
 1. Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen. 
-2. Geben Sie **ADL: Submit Job** ein. Sie können auch mit der rechten Maustaste auf eine Skriptdatei klicken und dann **ADL: Submit Job** auswählen. 
+2. Geben Sie **ADL: Submit Job** ein. Sie können auch mit der rechten Maustaste auf eine Skriptdatei klicken und dann **ADL: Submit Job** ein. 
 
 Nach dem Übermitteln eines U-SQL-Auftrags werden die Übermittlungsprotokolle in Visual Studio Code im Fenster **Ausgabe** angezeigt. Die Auftragsansicht wird im rechten Bereich angezeigt. Wenn die Übermittlung erfolgreich war, wird auch die Auftrags-URL angezeigt. Sie können die Auftrags-URL in einem Webbrowser öffnen, um den Auftragsstatus in Echtzeit nachzuverfolgen. 
 
@@ -109,7 +109,7 @@ Die Registerkarte **ZUSAMMENFASSUNG** der Auftragsansicht enthält die Auftragsd
 Sie können Standardkontext festlegen, um diese Einstellung auf alle Skriptdateien anzuwenden, wenn Sie die Parameter nicht für die Einzeldateien festgelegt haben.
 
 1. Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen. 
-2. Geben Sie **ADL: Set Default Context** ein. Oder klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **ADL: Set Default Context** aus.
+2. Geben Sie **ADL: Set Default Context** ein. Oder klicken Sie mit der rechten Maustaste auf den Skript-Editor, und geben Sie **ADL: Set Default Context** ein.
 3. Wählen Sie das Konto, die Datenbank und das Schema, die bzw. das Sie möchten. Die Einstellung wird in der Konfigurationsdatei „xxx_settings.json“ gespeichert.
 
    ![Konto, Datenbank und Schema als Standardkontext festgelegt](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
@@ -121,8 +121,8 @@ Sie können Standardkontext festlegen, um diese Einstellung auf alle Skriptdatei
 3. Die Datei „xxx_settings.json“ wird mit den folgenden Eigenschaften geöffnet:
 
    - **account**: Ein Azure Data Lake Analytics-Konto in Ihrem Azure-Abonnement, das zum Kompilieren und Ausführen von U-SQL-Aufträgen benötigt wird. Sie müssen das Computerkonto konfigurieren, bevor Sie U-SQL-Aufträge kompilieren und ausführen können.
-   - **database**: Eine Datenbank in Ihrem Konto. Der Standardwert ist **master**.
-   - **schema**: Ein Schema in Ihrer Datenbank. Der Standardwert ist **dbo**.
+   - **database**: Eine Datenbank unter Ihrem Konto. Der Standardwert ist **master**.
+   - **schema**: Ein Schema unter Ihrer Datenbank. Der Standardwert ist **dbo**.
    - **optionalSettings**:
         - **priority**: Der Prioritätsbereich liegt zwischen 1 und 1000, wobei 1 die höchste Priorität ist. Der Standardwert ist **1000**.
         - **degreeOfParallelism**: Der Parallelitätsbereich liegt zwischen 1 und 150. Der Standardwert ist die maximal zulässige Parallelität in Ihrem Azure Data Lake Analytics-Konto. 
@@ -157,7 +157,7 @@ Sie können mit Data Lake Tools benutzerdefinierte Codeassemblys im Data Lake An
 
 Sie können die Assembly mit dem Befehl **ADL: Register Assembly** oder **ADL: Register Assembly (Advanced)** registrieren.
 
-**So führen Sie die Registrierung mit dem Befehl „ADL: Register Assembly“ durch**
+**So registrieren Sie über den Befehl „ADL: Register Assembly“**
 1.  Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen.
 2.  Geben Sie **ADL: Register Assembly** ein. 
 3.  Geben Sie den lokalen Assemblypfad an. 
@@ -168,9 +168,9 @@ Das Portal wird in einem Browser geöffnet, und der Assemblyregistrierungsprozes
 
 Bequemer können Sie den Befehl **ADL: Register Assembly** auslösen, indem Sie im Datei-Explorer mit der rechten Maustaste auf die DLL-Datei klicken. 
 
-**So führen Sie die Registrierung mit dem Befehl „ADL: Register Assembly (Advanced)“ durch**
+**So registrieren Sie über den Befehl „ADL: Register Assembly (Advanced)“**
 1.  Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen.
-2.  Geben Sie **ADL: Register Assembly (Advanced)** ein. 
+2.  Geben Sie **ADL: Register Assembly (Advanced)“** ein. 
 3.  Geben Sie den lokalen Assemblypfad an. 
 4.  Die JSON-Datei wird angezeigt. Überprüfen und bearbeiten Sie bei Bedarf die Assemblyabhängigkeiten und Ressourcenparameter. Die entsprechenden Anweisungen werden im Fenster **Ausgabe** angezeigt. Speichern Sie die JSON-Datei (STRG+S), um mit der Assemblyregistrierung fortzufahren.
 
@@ -250,7 +250,7 @@ Damit Sie U-SQL-Skripts in Data Lake Analytics kompilieren und ausführen könne
 >- Wenn für Ihr Konto zwei Faktoren aktiviert wurden, empfehlen wir anstelle einer PIN die Verwendung der Telefonauthentifizierung.
 
 
-Zum Abmelden geben Sie den Befehl **ADL: Logout** ein.
+Um sich abzumelden, geben Sie den Befehl **ADL: Logout** (HDInsight: Abmelden) ein.
 
 **So stellen Sie eine Verbindung mit Azure per Explorer her**
 
@@ -319,7 +319,7 @@ Sie können auf Azure Data Lake Store bezogene Befehle für Folgendes verwenden:
 
 **So listen Sie den Speicherpfad über die Befehlspalette auf**
 
-1. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie dann **ADL: List Path** aus.
+1. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **ADL: List Path** aus.
 2. Wählen Sie den Ordner in der Liste aus, oder wählen Sie **Pfad eingeben** oder **Vom Stamm durchsuchen** aus. (Als Beispiel wird **Pfad eingeben** verwendet.) 
 3. Wählen Sie Ihr Data Lake Analytics-Konto aus.
 4. Navigieren Sie zum Speicherordnerpfad, oder geben Sie ihn ein (z.B. /output/).  
@@ -339,7 +339,7 @@ Klicken Sie mit der rechten Maustaste auf die Pfadzeichenfolge, und wählen Sie 
 
 ### <a name="preview-the-storage-file"></a>Anzeigen einer Vorschau der Speicherdatei
 
-1. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie dann **ADL: Preview File** aus.
+1. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **ADL: Preview File** aus.
 2. Wählen Sie Ihr Data Lake Analytics-Konto aus. 
 3. Geben Sie einen Azure Storage-Dateipfad ein (z.B. /output/SearchLog.txt). 
 
@@ -411,7 +411,7 @@ Erweitern Sie Ihr Azure-Abonnement. Unter dem Knoten **U-SQL Databases** können
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Entitätsverwaltung in Azure Data Lake Analytics-Metadaten
 
-Erweitern Sie **U-SQL-Datenbanken**. Sie können eine Datenbank, ein Schema, eine Tabelle, einen Tabellentyp, einen Index oder Statistiken erstellen, indem Sie mit der rechten Maustaste auf den entsprechenden Knoten klicken und im Kontextmenü **Skript zum Erstellen** auswählen. Bearbeiten Sie das Skript auf der geöffneten Skriptseite entsprechend Ihren Anforderungen. Übermitteln Sie dann den Auftrag, indem Sie mit der rechten Maustaste darauf klicken und anschließend **ADL: Submit Job** auswählen. 
+Erweitern Sie **U-SQL-Datenbanken**. Sie können eine Datenbank, ein Schema, eine Tabelle, einen Tabellentyp, einen Index oder Statistiken erstellen, indem Sie mit der rechten Maustaste auf den entsprechenden Knoten klicken und im Kontextmenü **Skript zum Erstellen** auswählen. Bearbeiten Sie das Skript auf der geöffneten Skriptseite entsprechend Ihren Anforderungen. Übermitteln Sie dann den Auftrag, indem Sie mit der rechten Maustaste auf ihn klicken und anschließend **ADL: Submit Job** auswählen. 
 
 Nachdem Sie das Element erstellt haben, klicken sie mit der rechten Maustaste auf den Knoten, und wählen Sie dann **Aktualisieren**, um das Element anzuzeigen. Sie können das Element auch löschen. Klicken Sie hierzu mit der rechten Maustaste, und wählen Sie **Löschen**.
 

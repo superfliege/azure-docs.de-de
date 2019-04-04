@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838849"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 
@@ -25,14 +25,14 @@ In diesem Tutorial erkunden Sie ein vollständiges Szenario zur Notfallwiederher
 
 In diesem Tutorial werden sowohl der Failover- als auch der Failbackworkflow erläutert. Sie lernen Folgendes:
 > [!div class="checklist"]
-
->* Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
->* Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
->* Verwenden von _Georeplikation_, um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
->* Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken in die Wiederherstellungsregion 
->* Später Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken zurück in die ursprüngliche Region, nachdem der Ausfall behoben wurde
->* Aktualisieren des Katalogs, sobald ein Failover für eine Mandantendatenbank ausgeführt wurde, um den primären Speicherort der Datenbank des jeweiligen Mandanten nachzuverfolgen
->* Sicherstellen, dass sich die Anwendung und die primäre Mandantendatenbank immer zusammen in derselben Azure-Region befinden, um die Wartezeit zu verringern  
+> 
+> * Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
+> * Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
+> * Verwenden von _Georeplikation_, um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
+> * Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken in die Wiederherstellungsregion 
+> * Später Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken zurück in die ursprüngliche Region, nachdem der Ausfall behoben wurde
+> * Aktualisieren des Katalogs, sobald ein Failover für eine Mandantendatenbank ausgeführt wurde, um den primären Speicherort der Datenbank des jeweiligen Mandanten nachzuverfolgen
+> * Sicherstellen, dass sich die Anwendung und die primäre Mandantendatenbank immer zusammen in derselben Azure-Region befinden, um die Wartezeit zu verringern  
  
 
 Bevor Sie mit diesem Tutorial beginnen, sollten Sie sich vergewissern, dass die folgenden Voraussetzungen erfüllt sind:
@@ -106,7 +106,7 @@ Bevor Sie den Wiederherstellungsprozess starten, sollten Sie den normalen ordnun
 In dieser Aufgabe starten Sie einen Prozess, mit dem die Konfiguration der Server, der Pools für elastische Datenbanken und der Datenbanken in den Mandantenkatalog synchronisiert wird. Der Prozess hält diese Informationen im Katalog auf dem neuesten Stand.  Der Prozess arbeitet mit dem aktiven Katalog, unabhängig davon, ob dieser sich in der ursprünglichen Region oder in der Wiederherstellungsregion befindet. Die Konfigurationsinformationen werden im Wiederherstellungsprozess verwendet, um sicherzustellen, dass die Wiederherstellungsumgebung mit der ursprünglichen Umgebung konsistent ist, und werden dann später während der Rückführung verwendet, um sicherzustellen, dass jegliche Änderungen, die in der Wiederherstellungsumgebung vorgenommen wurden, in die ursprüngliche Region übernommen werden. Der Katalog wird auch verwendet, um den Wiederherstellungsstatus von Mandantenressourcen nachzuverfolgen.
 
 > [!IMPORTANT]
-> Der Einfachheit halber werden der Synchronisierungsprozess und andere lange dauernde Wiederherstellungs- und Rückführungsprozesse in diesen Tutorials als lokale Powershell-Aufträge oder -Sitzungen implementiert, die unter Ihrer Clientbenutzeranmeldung ausgeführt werden. Die Authentifizierungstoken, die ausgegeben werden, wenn Sie sich anmelden, laufen nach einigen Stunden ab, und die Aufträge schlagen dann fehl. In einem Produktionsszenario sollten lange dauernde Prozesse als zuverlässige Azure-Dienste beliebiger Art implementiert werden, die unter einem Dienstprinzipal ausgeführt werden. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
+> Der Einfachheit halber werden der Synchronisierungsprozess und andere zeitintensive Wiederherstellungs- und Rückführungsprozesse in diesen Tutorials als lokale PowerShell-Aufträge oder -Sitzungen implementiert, die unter Ihrer Clientbenutzeranmeldung ausgeführt werden. Die Authentifizierungstoken, die ausgegeben werden, wenn Sie sich anmelden, laufen nach einigen Stunden ab, und die Aufträge schlagen dann fehl. In einem Produktionsszenario sollten lange dauernde Prozesse als zuverlässige Azure-Dienste beliebiger Art implementiert werden, die unter einem Dienstprinzipal ausgeführt werden. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
 1. Öffnen Sie in _PowerShell ISE_ die Datei „...\Learning Modules\UserConfig.psm1“. Ersetzen Sie `<resourcegroup>` und `<user>` in den Zeilen 10 und 11 durch die jeweiligen Werte, die Sie beim Bereitstellen der App verwendet haben.  Speichern Sie die Datei.
 
@@ -199,15 +199,15 @@ Stellen Sie sich nun vor, dass es einen Ausfall in der Region gibt, in der die A
 Solange der Anwendungsendpunkt in Traffic Manager deaktiviert ist, ist die Anwendung nicht verfügbar. Nachdem für den Katalog ein Failover zur Wiederherstellungsregion ausgeführt wurde und alle Mandanten als offline markiert wurden, wird die Anwendung wieder online geschaltet. Obwohl die Anwendung verfügbar ist, wird jeder Mandant im Veranstaltungshub (Events Hub) als offline angezeigt, bis ein Failover für seine Datenbank ausgeführt wurde. Sie müssen Ihre Anwendung so konzipieren, dass sie mit Mandantendatenbanken umgehen kann, die offline sind.
 
 1. Aktualisieren Sie den Wingtip Tickets-Veranstaltungshub (Events Hub) in Ihrem Webbrowser unmittelbar, nachdem die Katalogdatenbank wiederhergestellt wurde.
-    * Sie können in der Fußzeile sehen, dass der Name des Katalogservers jetzt das Suffix _-recovery_ hat und der Server sich in der Wiederherstellungsregion befindet.
-    * Mandanten, die noch nicht wiederhergestellt wurden, sind als offline markiert und können nicht ausgewählt werden.  
+   * Sie können in der Fußzeile sehen, dass der Name des Katalogservers jetzt das Suffix _-recovery_ hat und der Server sich in der Wiederherstellungsregion befindet.
+   * Mandanten, die noch nicht wiederhergestellt wurden, sind als offline markiert und können nicht ausgewählt werden.  
 
-    > [!Note]
-    > Sind nur einige Datenbanken wiederherzustellen, kann es sein, dass Sie den Browser nicht vor Abschluss der Wiederherstellung aktualisieren können. Daher können Sie die Mandanten möglicherweise nicht sehen, während sie offline sind. 
+     > [!Note]
+     > Sind nur einige Datenbanken wiederherzustellen, kann es sein, dass Sie den Browser nicht vor Abschluss der Wiederherstellung aktualisieren können. Daher können Sie die Mandanten möglicherweise nicht sehen, während sie offline sind. 
  
-    ![Veranstaltungshub (Events Hub) ist offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
+     ![Veranstaltungshub (Events Hub) ist offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-    * Wenn Sie die „Veranstaltungen“-Seite eines Mandanten, der offline ist, direkt öffnen, wird auf der Seite eine „Mandant ist offline“-Benachrichtigung angezeigt. Versuchen Sie beispielsweise, wenn Contoso Concert Hall offline ist, „http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall“ zu öffnen.![Contoso-Seite für offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Wenn Sie die „Veranstaltungen“-Seite eines Mandanten, der offline ist, direkt öffnen, wird auf der Seite eine „Mandant ist offline“-Benachrichtigung angezeigt. Versuchen Sie beispielsweise, wenn Contoso Concert Hall offline ist, „http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall“ zu öffnen.![Contoso-Seite für offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Bereitstellen eines neuen Mandanten in der Wiederherstellungsregion
 Schon bevor für alle vorhandenen Mandantendatenbanken ein Failover ausgeführt wurde, können Sie neue Mandanten in der Wiederherstellungsregion bereitstellen.  
@@ -236,12 +236,12 @@ Wenn der Wiederherstellungsprozess abgeschlossen ist, sind die Anwendung und all
     * Beachten Sie die Ressourcengruppe, die Sie bereitgestellt haben, und die Wiederherstellungsressourcengruppe mit dem Suffix _-recovery_.  Die Wiederherstellungsressourcengruppe enthält alle Ressourcen, die während des Wiederherstellungsprozesses erstellt wurden, sowie neue Ressourcen, die während des Ausfalls erstellt wurden.  
 
 3. Öffnen Sie die Wiederherstellungsressourcengruppe, und beachten Sie die folgenden Elemente:
-    * Die Wiederherstellungsversionen des Katalog- und des tenants1-Servers mit dem Suffix _-recovery_.  Die wiederhergestellten Katalog- und Mandantendatenbanken auf diesen Servern haben alle die Namen, die in der ursprünglichen Region verwendet wurden.
+   * Die Wiederherstellungsversionen des Katalog- und des tenants1-Servers mit dem Suffix _-recovery_.  Die wiederhergestellten Katalog- und Mandantendatenbanken auf diesen Servern haben alle die Namen, die in der ursprünglichen Region verwendet wurden.
 
-    * Der SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_.  Dieser Server wird dazu verwendet, neue Mandanten während des Ausfalls bereitzustellen.
-    *   Der App Service namens _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;Benutzer&gt_. Dies ist die Wiederherstellungsinstanz der Veranstaltungen-App. 
+   * Der SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_.  Dieser Server wird dazu verwendet, neue Mandanten während des Ausfalls bereitzustellen.
+   * Der App Service namens _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;Benutzer&gt_. Dies ist die Wiederherstellungsinstanz der Veranstaltungen-App. 
 
-    ![Azure-Wiederherstellungsressourcen ](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png)    
+     ![Azure-Wiederherstellungsressourcen](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
 4. Öffnen Sie den SQL-Server _tenants2-dpt-&lt;Benutzer&gt;-recovery_.  Dieser enthält die Datenbank _hawthornhall_ und den Pool für elastische Datenbanken _Pool1_.  Die _hawthornhall_-Datenbank ist im Pool für elastische Datenbanken _Pool1_ als eine elastische Datenbank konfiguriert.
 
@@ -305,12 +305,12 @@ Mandantendatenbanken können während einer Rückführung für einige Zeit über
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
-
->* Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
->* Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
->* Verwenden von _Georeplikation_, um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
->* Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken in die Wiederherstellungsregion 
->* Ausführen eines Failbacks der Anwendung sowie der Katalog- und Mandantendatenbanken in die ursprüngliche Region, nachdem der Ausfall behoben wurde
+> 
+> * Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
+> * Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
+> * Verwenden von _Georeplikation_, um die Katalog- und Mandantendatenbanken in der Wiederherstellungsregion zu replizieren
+> * Ausführen eines Failovers der Anwendung sowie der Katalog- und Mandantendatenbanken in die Wiederherstellungsregion 
+> * Ausführen eines Failbacks der Anwendung sowie der Katalog- und Mandantendatenbanken in die ursprüngliche Region, nachdem der Ausfall behoben wurde
 
 Weitere Informationen zu den Technologien, die Azure SQL-Datenbank bereitstellt, Geschäftskontinuität zu ermöglichen, finden Sie in der Dokumentation [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 

@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 7e11da971e86b605e3e17b07ebcdab97eef5b957
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bdb46a5e11b26f04d008160fa5a782050211b56e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122942"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484372"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Bereitstellen von Kubernetes in Azure Stack mithilfe von Active Directory-Verbunddienste
 
@@ -85,7 +85,7 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
 
    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
-     ```PowerShell  
+   ```powershell  
        $armEndpoint="<Azure Resource Manager Endpoint>"
        $subscriptionId="<Your Subscription ID>"
        $username="<your user name >"
@@ -126,7 +126,7 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
 
    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
-     ```PowerShell  
+    ```powershell
         
      # upload the pfx to key vault
      $tempPFXFilePath = "<certificate path>"

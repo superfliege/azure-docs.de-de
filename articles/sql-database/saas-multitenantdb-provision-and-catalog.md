@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835780"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank mit Sharding
 
@@ -237,7 +237,7 @@ Die vollständige Liste der Mandanten und ihre entsprechende Datenbank sind im K
 - Der Mandantenname wird in der Mandantentabelle gespeichert.
 - Der Datenbankname wird in den Tabellen zur Shardverwaltung gespeichert.
 
-1. Stellen Sie in SQL Server Management Studio (SSMS) mit dem Mandantenserver unter **catalog-mt.\<USER\>.database.windows.net** mit den folgenden Anmeldedaten eine Verbindung her: Anmeldename: **developer**, Kennwort: **P@ssword1**.
+1. Stellen Sie in SQL Server Management Studio (SSMS) mit dem Mandantenserver unter **catalog-mt.\<USER\>.database.windows.net** mit dem Anmeldenamen **developer** und dem Kennwort: **P\@ssword1** eine Verbindung her.
 
     ![SSMS-Verbindungsdialogfeld](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: 17bdd362a3dad4e10acc8ab16eee5b335593e311
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 03/12/2019
+ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880431"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-Alias für Azure SQL-Datenbank
 
@@ -87,6 +87,10 @@ Darüber hinaus können sich die REST-APIs in GitHub unter folgendem Link befind
 
 #### <a name="powershell-for-managing-your-dns-aliases"></a>PowerShell für die Verwaltung Ihrer DNS-Aliase
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 Es sind PowerShell-Cmdlets verfügbar, die die REST-APIs aufrufen.
 
 Ein Codebeispiel von PowerShell-Cmdlets, das für die Verwaltung von DNS-Aliase zu verwenden ist, ist unter folgendem Link dokumentiert:
@@ -95,12 +99,10 @@ Ein Codebeispiel von PowerShell-Cmdlets, das für die Verwaltung von DNS-Aliase 
 
 Die im Codebeispiel verwendeten Cmdlets lauten wie folgt:
 
-- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbankserver 1.
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ruft alle DNS-Aliase auf, die Server 1 von SQL-Datenbank zugewiesen sind, und listet diese auf.
-- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Ändert den Servernamen, für dessen Referenzierung der Alias konfiguriert ist, aus Server 1 in SQL-Datenbankserver 2.
-- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Entfernt den DNS-Alias aus SQL-Datenbankserver 2 anhand des Aliasnamens.
-
-Die oben angegebenen Cmdlets wurden zum Modul **AzureRM.Sql** ab Modulversion 5.1.1 hinzugefügt.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbankserver 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Ruft alle DNS-Aliase auf, die Server 1 von SQL-Datenbank zugewiesen sind, und listet diese auf.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Ändert den Servernamen, für dessen Referenzierung der Alias konfiguriert ist, aus Server 1 in SQL-Datenbankserver 2.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Entfernt den DNS-Alias aus SQL-Datenbankserver 2 anhand des Aliasnamens.
 
 ## <a name="limitations-during-preview"></a>Einschränkungen in der Vorschauversion
 

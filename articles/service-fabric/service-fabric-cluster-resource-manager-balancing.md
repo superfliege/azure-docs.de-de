@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5d2f195c50750a5c7685f62c909f77b2960613e6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9a124bd9a52e22c359fb771e4d4c8714bd1dbe2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213145"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123231"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Lastenausgleich für Service Fabric-Cluster
 Der Clusterressourcen-Manager von Service Fabric unterstützt dynamische Laständerungen und reagiert auf hinzugefügte oder entfernte Knoten oder Dienste. Er korrigiert Einschränkungsverletzungen automatisch und gleicht die Last des Clusters proaktiv aus. Doch wie oft werden diese Aktionen ausgeführt, und was löst sie aus?
@@ -85,7 +85,7 @@ Derzeit werden die Aktionen des Clusterressourcen-Managers einzeln nacheinander 
 
 Wenn beispielsweise Knoten ausfallen, kann dies nacheinander für gesamte Fehlerdomänen erfolgen. Alle diese Fehler werden während der nächsten Zustandsaktualisierung nach *PLBRefreshGap* erfasst. Die Korrekturen werden während der folgenden Platzierung, Einschränkungsüberprüfung und Ausführung von Ausgleichsvorgängen bestimmt. Standardmäßig geht der Clusterressourcen-Manager nicht die Clusteränderungen mehrerer Stunden durch und versucht, alle gleichzeitig zu behandeln. Dies hätte immer wieder kurze Phasen mit hohem Änderungsaufkommen zur Folge.
 
-Der Clusterressourcen-Manager benötigt außerdem einige zusätzliche Informationen, um zu ermitteln, ob der Cluster unausgeglichen ist. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* und *Aktivitätsschwellenwerte*.
+Der Clusterressourcen-Manager benötigt außerdem einige zusätzliche Informationen, um zu ermitteln, ob der Cluster unausgeglichen ist. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* (BalancingThresholds) und *Aktivitätsschwellenwerte* (ActivityThresholds).
 
 ## <a name="balancing-thresholds"></a>Ausgleichsschwellenwerte
 Ein Ausgleichsschwellenwert ist das Hauptsteuerinstrument für das Auslösen eines erneuten Ausgleichs. Der Ausgleichsschwellenwert für eine Metrik ist ein _Verhältnis_. Wenn die Last für eine Metrik auf dem am stärksten ausgelasteten Knoten dividiert durch die Last auf dem am wenigsten ausgelasteten Knoten den *Ausgleichsschwellenwert* dieser Metrik überschreitet, ist der Cluster unausgeglichen. Bei der nächsten Ausführung des Clusterressourcen-Managers wird deshalb ein Ausgleich ausgelöst. Der *MinLoadBalancingInterval*-Timer bestimmt, wie oft der Clusterressourcen-Manager prüfen soll, ob ein erneuter Ausgleich erforderlich ist. Die Überprüfung bedeutet nicht, dass etwas passiert. 
@@ -122,6 +122,7 @@ ClusterManifest.xml
 ```
 
 <center>
+
 ![Beispiel mit einem Ausgleichsschwellenwert][Image1]
 </center>
 
@@ -130,6 +131,7 @@ In diesem Beispiel verbraucht jeder Dienst eine einzelne Einheit einer bestimmte
 Im unteren Beispiel hat die maximale Auslastung auf einem Knoten den Wert „10“ und die minimale Auslastung den Wert „2“. Für das Verhältnis ergibt sich also der Wert „5“. Der Wert „5“ übersteigt den für die Metrik festgelegten Ausgleichsschwellenwert (3). Folglich wird beim nächsten Auslösen des Ausgleichstimers ein Ausgleich geplant. In einer derartigen Situation wird ein Teil der Auslastung meist an „Node3“ verteilt. Da der Clusterressourcen-Manager von Service Fabric keinen „gierigen“ Ansatz verfolgt, wird ein Teil der Auslastung unter Umständen auch an „Node2“ verteilt. 
 
 <center>
+
 ![Ausgleichsschwellenwert – Beispielaktionen][Image2]
 </center>
 
@@ -145,6 +147,7 @@ Mitunter ist die *Gesamtlast* des Clusters niedrig, obwohl Knoten relativ unausg
 Angenommen, wir behalten „3“ als Ausgleichsschwellenwert für diese Metrik bei. Außerdem nehmen wir an, dass es den Aktivitätsschwellenwert „1536“ gibt. Im ersten Fall ist der Cluster zwar laut Ausgleichsschwellenwert unausgeglichen, der Aktivitätsschwellenwert wird jedoch von keinem Knoten erreicht, sodass keine Maßnahmen ergriffen werden. Im unteren Beispiel überschreitet „Node1“ den Aktivitätsschwellenwert. Da sowohl der Ausgleichsschwellenwert als auch der Aktivitätsschwellenwert für die Metrik überschritten werden, wird ein Ausgleich geplant. Sehen Sie sich zur Veranschaulichung das folgende Beispieldiagramm an: 
 
 <center>
+
 ![Beispiel mit einem Aktivitätsschwellenwert][Image3]
 </center>
 
@@ -191,9 +194,10 @@ Gelegentlich wird jedoch ein Dienst, der selbst nicht unausgeglichen war, versch
 - Service3 meldet die Metriken Metric3 und Metric4.
 - Service4 meldet die Metrik Metric99. 
 
-Sicherlich können Sie erkennen, was hier vorliegt: eine Kette. Wir verfügen nicht wirklich über vier unabhängige Dienste, sondern vielmehr über drei Dienste, die in Bezug zueinander stehen, sowie über einen weiteren unabhängigen Dienst.
+Sicherlich können Sie erkennen, was hier vorliegt: eine Kette! Wir verfügen nicht wirklich über vier unabhängige Dienste, sondern vielmehr über drei Dienste, die in Bezug zueinander stehen, sowie über einen weiteren unabhängigen Dienst.
 
 <center>
+
 ![Gemeinsames Ausgleichen von Diensten][Image4]
 </center>
 
@@ -202,6 +206,7 @@ Aufgrund dieser Kette ist es möglich, dass ein Ungleichgewicht bei den Metriken
 Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste verknüpft sind. Das Hinzufügen, Entfernen oder Ändern der Metriken dieser Dienste kann sich auf ihre Beziehungen auswirken. Zwischen zwei Ausgleichsvorgängen kann beispielsweise „Service2“ so aktualisiert worden sein, dass „Metric2“ entfernt wird. Dadurch wird die Kette zwischen Dienst 1 und Dienst 2 unterbrochen. Anstelle von zwei zusammenhängenden Diensten gibt es nun drei:
 
 <center>
+
 ![Gemeinsames Ausgleichen von Diensten][Image5]
 </center>
 

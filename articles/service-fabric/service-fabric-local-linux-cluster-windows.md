@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 60fd4a3ba83370327b6be775d7b2723fbb26de64
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983439"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819734"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Einrichten eines Linux-Service Fabric-Clusters auf Ihrem Windows-Entwicklungscomputer
 
@@ -30,6 +30,7 @@ Linux-basierte Service Fabric-Cluster werden nicht nativ unter Windows ausgefüh
 
 * Mindestens 4 GB RAM
 * Neueste Version von [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
+* Docker muss im Linux-Modus ausgeführt werden
 
 >[!TIP]
 > * Sie können die in der offiziellen Docker-[Dokumentation](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) beschriebenen Schritte ausführen, um Docker auf Ihrem Windows-Computer zu installieren. 

@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 6bf84d7ecf2d436bdc00839699b150466b9de3ca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 02ceb6cbcbf824f8bf830c66bc9899c20f6ed822
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247305"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484040"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Überprüfen Ihrer Vorlagen für Azure Stack mit dem Validierungstool für Vorlagen
 
@@ -47,13 +47,13 @@ Bevor Sie die Vorlagenvalidierung verwenden, führen Sie das PowerShell-Modul **
 1. Stellen Sie sicher, dass Sie mit Azure Stack verbunden sind. Sie können diese Schritte auf dem Azure Stack Development Kit-Host ausführen oder ein [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) verwenden, um eine Verbindung von Ihrer Arbeitsstation aus herzustellen.
 2. Importieren Sie das PowerShell-Modul **AzureRM.CloudCapabilities**:
 
-    ```PowerShell
+    ```powershell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
 3. Verwenden Sie das Cmdlet `Get-CloudCapabilities`, um Dienstversionen abzurufen und eine JSON-Datei mit Cloudfunktionen zu erstellen. Wenn Sie **-OutputPath** nicht angeben, wird die Datei „AzureCloudCapabilities.Json“ im aktuellen Verzeichnis erstellt. Verwenden Sie den tatsächlichen Speicherort:
 
-    ```PowerShell
+    ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
     ```
 
@@ -63,14 +63,14 @@ Mit diesen Schritten überprüfen Sie Vorlagen, indem Sie das PowerShell-Modul *
 
 1. Importieren Sie das PowerShell-Modul **AzureRM.TemplateValidator.psm1**:
 
-    ```PowerShell
+    ```powershell
     cd "c:\AzureStack-Tools-master\TemplateValidator"
     Import-Module .\AzureRM.TemplateValidator.psm1
     ```
 
 2. Führen Sie das Validierungssteuerelement für Vorlagen aus:
 
-    ```PowerShell
+    ```powershell
     Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
     -CapabilitiesPath <path to cloudcapabilities.json> `
     -Verbose
@@ -86,9 +86,9 @@ Das Validierungssteuerelement für Vorlagen unterstützt die folgenden Parameter
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 | ----- | -----| ----- |
-| TemplatePath | Gibt den Pfad an, um Azure Resource Manager-Vorlagen rekursiv zu suchen | JA | 
+| TemplatePath | Gibt den Pfad an, um Azure Resource Manager-Vorlagen rekursiv zu suchen | Ja | 
 | TemplatePattern | Gibt den Namen der abzugleichenden Vorlagendateien an | Nein  |
-| CapabilitiesPath | Gibt den Pfad zu der JSON-Datei mit Cloudfunktionen an | JA | 
+| CapabilitiesPath | Gibt den Pfad zu der JSON-Datei mit Cloudfunktionen an | Ja | 
 | IncludeComputeCapabilities | Enthält die Auswertung von IaaS-Ressourcen wie VM-Größen und VM-Erweiterungen | Nein  |
 | IncludeStorageCapabilities | Enthält die Auswertung von Speicherressourcen wie SKU-Typen | Nein  |
 | Bericht | Gibt den Namen des generierten HTML-Berichts an | Nein  |
@@ -98,7 +98,7 @@ Das Validierungssteuerelement für Vorlagen unterstützt die folgenden Parameter
 
 In diesem Beispiel werden alle [Vorlagen aus dem Azure Stack-Schnellstart](https://github.com/Azure/AzureStack-QuickStart-Templates) überprüft, die in den lokalen Speicher heruntergeladen wurden. Im Beispiel werden auch die Größen und Erweiterungen virtueller Computer anhand der Azure Stack Development Kit-Funktionen überprüft:
 
-```PowerShell
+```powershell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json `

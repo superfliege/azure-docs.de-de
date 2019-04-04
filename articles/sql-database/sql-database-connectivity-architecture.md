@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 03/12/2019
+ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809979"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840918"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -28,10 +28,12 @@ In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQ
 > Kunden wird empfohlen, neue Server zu erstellen und vorhandene Server einzurichten, wobei der Verbindungstyp je nach Konnektivitätsarchitektur explizit auf „Redirect“ (vorzugsweise) oder „Proxy“ festgelegt ist.
 >
 > Um zu verhindern, dass infolge dieser Änderung Verbindungen über einen Dienstendpunkt in bestehenden Umgebungen unterbrochen werden, setzen wir Telemetrie für folgende Zwecke ein:
+>
 > - Bei Servern, bei denen wir feststellen, dass der Zugriff darauf vor der Änderung über Dienstendpunkte erfolgte, wird der Verbindungstyp in `Proxy` geändert.
 > - Bei allen anderen Servern wird der Verbindungstyp in `Redirect` geändert.
 >
 > In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein:
+>
 > - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden.
 > - Die automatisierte Bereitstellungslogik erstellt einen SQL-Datenbankserver unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist.
 >
@@ -106,10 +108,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | Nordeuropa | 191.235.193.75 | 40.113.93.91 |
 | USA Süd Mitte | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
-| Vereinigtes Königreich, Norden | 13.87.97.210 | |
-| Vereinigtes Königreich, Süden 1 | 51.140.184.11 | |
-| Großbritannien, Süden 2 | 13.87.34.7 | |
-| UK, Westen | 51.141.8.11 | |
+| UK, Süden | 51.140.184.11 | |
 | USA, Westen-Mitte | 13.78.145.25 | |
 | Europa, Westen | 191.237.232.75 | 40.68.37.158 |
 | USA, Westen 1 | 23.99.34.75 | 104.42.238.205 |
@@ -127,6 +126,10 @@ Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenb
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Skript zum Ändern der Verbindungseinstellungen über PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+
 > [!IMPORTANT]
 > Dieses Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
 
@@ -134,22 +137,22 @@ Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlini
 
 ```powershell
 # Get SQL Server ID
-$sqlserverid=(Get-AzureRmSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
+$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
 
 # Set URI
 $id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy
-(Get-AzureRmResource -ResourceId $id).Properties.connectionType
+(Get-AzResource -ResourceId $id).Properties.connectionType
 
 # Update connection policy
-Set-AzureRmResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
+Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skript zum Ändern der Verbindungseinstellungen über die Azure CLI
 
 > [!IMPORTANT]
-> Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Das folgende Skript für die Befehlszeilenschnittstelle veranschaulicht, wie Sie die Verbindungsrichtlinie ändern.
 

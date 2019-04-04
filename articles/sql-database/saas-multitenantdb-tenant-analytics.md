@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 340c08841b7bedc9f2453617aeff111beb810961
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888177"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App
  
@@ -94,7 +94,7 @@ In den folgenden Schritten stellen Sie einen Analysespeicher namens **tenantanal
     - Wenn Sie SQL-Datenbank mit Columnstore verwenden, legen Sie **$DemoScenario** = **3** fest.  
 3. Drücken Sie **F5** zum Ausführen des Demoskripts (das das Skript *Deploy-TenantAnalytics<XX>.ps1* aufruft), um den Mandantenanalysespeicher zu erstellen. 
 
-Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) eine Verbindung mit den Servern **tenants1-mt-\<Benutzer\>** und **catalog-mt-\<Benutzer\>** mithilfe der Werte „Login = *Developer*“ und „Password = *P@ssword1*“ her.
+Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) eine Verbindung mit den Servern **tenants1-mt-\<Benutzer\>** und **catalog-mt-\<Benutzer\>** mithilfe der Werte „Login = *Developer*“ und „Password = *P\@ssword1*“ her.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -176,7 +176,7 @@ Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI he
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P@ssword1* ein. Klicken Sie auf **Verbinden**.  
+5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P\@ssword1* ein. Klicken Sie auf **Verbinden**.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

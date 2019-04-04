@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997686"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
 
@@ -168,7 +168,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Im vorherigen Beispiel fügt das Objekt **SqlCommand** Zeilen aus dem Tabellenwertparameter **@TestTvp** ein. Das zuvor erstellte Objekt vom Typ **DataTable** wird diesem Parameter mithilfe der Methode **SqlCommand.Parameters.Add** zugewiesen. Die Batchverarbeitung der Einfügevorgänge in einem einzigen Aufruf führt im Vergleich zu sequenziellen Einfügevorgängen zu einer erheblichen Leistungssteigerung.
+Im vorherigen Beispiel fügt das Objekt **SqlCommand** Zeilen aus dem Tabellenwertparameter **\@TestTvp** ein. Das zuvor erstellte Objekt vom Typ **DataTable** wird diesem Parameter mithilfe der Methode **SqlCommand.Parameters.Add** zugewiesen. Die Batchverarbeitung der Einfügevorgänge in einem einzigen Aufruf führt im Vergleich zu sequenziellen Einfügevorgängen zu einer erheblichen Leistungssteigerung.
 
 Verwenden Sie zur weiteren Optimierung des vorherigen Beispiels eine gespeicherte Prozedur anstelle eines textbasierten Befehls. Der folgende Transact-SQL-Befehl erstellt eine gespeicherte Prozedur, die den Tabellenwertparameter **SimpleTestTableType** annimmt:
 
@@ -277,7 +277,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Dieses Beispiel zeigt das grundlegende Konzept. In einem realistischeren Szenario werden die erforderlichen Entitäten durchlaufen, um gleichzeitig die Abfragezeichenfolge und die Befehlsparameter zu erstellen. Die Anzahl der Abfrageparameter ist auf 2100 begrenzt, was auch die Gesamtzahl der Zeilen begrenzt, die auf diese Weise verarbeitet werden können.
 
-Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von insert-Anweisung (in Millisekunden).
+Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von INSERT-Anweisung (in Millisekunden):
 
 | Vorgänge | Tabellenwertparameter (ms) | Einzelne INSERT-Anweisung (ms) |
 | --- | --- | --- |
@@ -298,7 +298,7 @@ Mithilfe der Klasse **DataAdapter** können Sie ein Objekt vom Typ **DataSet** �
 
 ### <a name="entity-framework"></a>Entity Framework
 
-Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Problemumgehungen wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: Sie können diese Diskussion unter [Design Meeting Notes – August 2, 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012) (Anmerkungen zum Design-Meeting vom 2. August 2012) nachlesen.
+Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Problemumgehungen wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: Sie können diese Diskussion unter [Design Meeting Notes – August 2, 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012) (Anmerkungen zum Design-Meeting vom 2. August 2012) nachlesen.
 
 ### <a name="xml"></a>XML
 

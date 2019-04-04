@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 7d4748ced196abdb4f3f0bcb70ad6fe254b24bf7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850291"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, SQL Data Warehouse, Data Factory und Power BI vertraut
 
@@ -94,7 +94,7 @@ In diesem Schritt stellen Sie zusätzliche Ressourcen bereit, die im Tutorial ve
 
 Überprüfen Sie jetzt die bereitgestellten Azure-Ressourcen:
 #### <a name="tenant-databases-and-analytics-store"></a>Mandantendatenbanken und Analysespeicher
-Verwenden Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) zum Herstellen einer Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;**. Ersetzen Sie &lt;Benutzer&gt; durch die jeweiligen Werte, die Sie beim Bereitstellen der App verwendet haben. Verwenden Sie als Benutzernamen *Entwickler* und als Kennwort *P@ssword1*. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
+Verwenden Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) zum Herstellen einer Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;**. Ersetzen Sie &lt;Benutzer&gt; durch die jeweiligen Werte, die Sie beim Bereitstellen der App verwendet haben. Verwenden Sie als Benutzernamen *developer* und als Kennwort *P\@ssword1*. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
 
 ![Verbinden mit SQL-Datenbankserver von SSMS](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -113,7 +113,7 @@ Führen Sie im Objekt-Explorer folgende Schritte durch:
 #### <a name="blob-storage"></a>Blob Storage
 1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com) zu der Ressourcengruppe, die Sie für die Bereitstellung der Anwendung verwendet haben. Überprüfen Sie, ob ein Speicherkonto namens **wingtipstaging\<Benutzer\>** hinzugefügt wurde.
 
-  ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
+   ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
 1. Klicken Sie auf das Speicherkonto **wingtipstaging\<Benutzer\>**, um die vorhandenen Objekte zu untersuchen.
 1. Klicken Sie auf die Kachel **Blobs**.
@@ -195,7 +195,7 @@ Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI he
 
     ![anmeldung-in-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P@ssword1* ein. Klicken Sie auf **Verbinden**.  
+5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P\@ssword1* ein. Klicken Sie auf **Verbinden**.  
 
     ![datenbank-anmeldeseite](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

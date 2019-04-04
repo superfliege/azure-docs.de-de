@@ -3,7 +3,7 @@ title: Übersicht über Service Fabric und Container | Microsoft-Dokumentation
 description: Der Artikel enthält eine Übersicht über Service Fabric und die Nutzung von Containern zur Bereitstellung von Microserviceanwendungen. Dieser Artikel enthält eine Übersicht über die Verwendungsweise von Containern sowie über die verfügbaren Funktionen in Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: twhitney, msfussell
-ms.openlocfilehash: 0acbd2d4ccf35c9490a06228eeb1bb465a8ca732
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, msfussell
+ms.openlocfilehash: 5344f34e0e35d4d47b032b660726a4d70a4f1987
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299973"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807013"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric und Container
 
@@ -48,10 +48,10 @@ Container werden direkt oberhalb des Kernels ausgeführt und verfügen über ein
 
 Im Vergleich zu virtuellen Computern haben Container die folgenden Vorteile:
 
-* **Geringe Größe**: Für Container werden nur ein Speicherbereich und Ebenen und Updates verwendet, um die Effizienz zu steigern.
-* **Schnell:** Container müssen nicht ein gesamtes Betriebssystem starten. Daher ist ihr Start deutlich schneller und erfolgt üblicherweise innerhalb weniger Sekunden.
-* **Portabilität:** Ein in einem Container enthaltenes Anwendungsimage kann für die Ausführung in der Cloud oder lokal, auf virtuellen Computern oder direkt auf physischen Computern portiert werden.
-* **Ressourcenkontrolle:** Ein Container kann die physischen Ressourcen beschränken, die er auf seinem Host verbrauchen kann.
+* **Klein:** Für Container werden ein einzelner Speicherbereich und Ebenenversionen und -Updates verwendet, um die Effizienz zu steigern.
+* **Schnell**: Container müssen nicht ein gesamtes Betriebssystem starten. Daher ist ihr Start deutlich schneller und erfolgt üblicherweise innerhalb weniger Sekunden.
+* **Portabilität**: Ein in einem Container enthaltenes Anwendungsimage kann so portiert werden, dass es in der Cloud, lokal, auf virtuellen Computern oder direkt auf physischen Computern ausgeführt werden kann.
+* **Ressourcenkontrolle**: Ein Container kann die physischen Ressourcen beschränken, die er auf seinem Host nutzen kann.
 
 ### <a name="container-types-and-supported-environments"></a>Containertypen und unterstützte Umgebungen
 
@@ -76,11 +76,11 @@ In der folgenden Abbildung sind die unterschiedlichen Arten der Virtualisierung 
 
 In den folgenden typischen Beispielen ist ein Container eine gute Wahl:
 
-* **IIS-Lift und -Shift:** Sie können eine vorhandene [ASP.NET MVC](https://www.asp.net/mvc)-App in einem Container platzieren statt sie zu ASP.NET Core zu migrieren. Diese ASP.NET MVC-Apps sind von Internetinformationsdiensten (Internet Information Services, IIS) abhängig. Sie können diese Anwendungen in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zu Windows-Containern finden Sie unter [Container Images on Windows Server (Containerimages unter Windows Server)](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server).
+* **IIS-Lift und -Shift**: Sie können eine vorhandene [ASP.NET MVC](https://www.asp.net/mvc)-App in einem Container platzieren, statt sie zu ASP.NET Core zu migrieren. Diese ASP.NET MVC-Apps sind von Internetinformationsdiensten (Internet Information Services, IIS) abhängig. Sie können diese Anwendungen in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zu Windows-Containern finden Sie unter [Container Images on Windows Server (Containerimages unter Windows Server)](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server).
 
-* **Mischen von Containern und Service Fabric-Microservices:** Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
+* **Mischen Sie Container und Service Fabric-Microservices**: Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
 
-* **Reduzieren der Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors):** Sie können die Funktion zur Ressourcenkontrolle für Container verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
+* **Reduzieren Sie die Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors“)**: Sie können die Möglichkeit zur Ressourcenkontrolle von Containern verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-Unterstützung für Container
 

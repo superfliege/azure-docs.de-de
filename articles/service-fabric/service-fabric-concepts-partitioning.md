@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852747"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -113,7 +113,7 @@ Beim Hashing spielt die Wahl des Hashalgorithmus eine wichtige Rolle. Ausschlagg
 
 Die Merkmale eines guten Hashalgorithmus für die Verteilung sind, dass er einfach zu berechnen ist, wenige Konflikte aufweist und die Schlüssel gleichmäßig verteilt. Ein gutes Beispiel für einen effizienten Hashalgorithmus ist der Hashalgorithmus [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) .
 
-Hilfreiche Informationen zur Wahl des Hashcodealgorithmus finden Sie auf der [Wikipedia-Seite über Hashfunktionen](http://en.wikipedia.org/wiki/Hash_function).
+Hilfreiche Informationen zur Wahl des Hashcodealgorithmus finden Sie auf der [Wikipedia-Seite über Hashfunktionen](https://en.wikipedia.org/wiki/Hash_function).
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>Erstellen eines zustandsbehafteten Diensts mit mehreren Partitionen
 Sie erstellen jetzt Ihren ersten zuverlässigen zustandsbehafteten Dienst mit mehreren Partitionen. In diesem Beispiel erstellen Sie eine sehr einfache Anwendung, in der Sie alle Nachnamen, die mit dem gleichen Buchstaben beginnen, in derselben Partition speichern möchten.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: dc9c11e2c0d5642e31eace2a4dcb6065d990e25d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121025"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -78,7 +78,7 @@ Die Service Fabric Reliable Services-Erweiterung für VS Code bietet viele Befeh
 
 Der Befehl **Service Fabric: Anwendung erstellen** erstellt eine neue Service Fabric-Anwendung in Ihrem aktuellen Arbeitsbereich. Je nachdem, welche Yeoman-Generatoren auf dem Entwicklungscomputer installiert sind, können Sie mehrere Typen von Service Fabric-Anwendungen erstellen, darunter Java-, C#-, Container- und Gastprojekte. 
 
-1.  Klicken Sie auf den Befehl **Service Fabric: Dienst hinzufügen**
+1.  Wählen Sie den Befehl **Service Fabric: Dienst hinzufügen** aus.
 2.  Wählen Sie den Typ für die neue Service Fabric-Anwendung aus. 
 3.  Geben Sie den Namen der Anwendung ein, die Sie erstellen möchten
 3.  Wählen Sie den Typ des Diensts aus, den Sie der Service Fabric-Anwendung hinzufügen möchten. 
@@ -89,7 +89,7 @@ Der Befehl **Service Fabric: Anwendung erstellen** erstellt eine neue Service Fa
 ### <a name="service-fabric-add-service"></a>Service Fabric: Dienst hinzufügen
 Der Befehl **Service Fabric: Dienst hinzufügen** fügt einer vorhandenen Service Fabric-Anwendung einen neuen Dienst hinzu. Die Anwendung, der der Dienst hinzugefügt wird, muss das Stammverzeichnis des Arbeitsbereichs sein. 
 
-1.  Klicken Sie auf den Befehl **Service Fabric: Dienst hinzufügen**.
+1.  Wählen Sie den Befehl **Service Fabric: Dienst hinzufügen** aus.
 2.  Wählen Sie den Typ der aktuellen Service Fabric-Anwendung aus. 
 3.  Wählen Sie den Typ des Diensts aus, den Sie der Service Fabric-Anwendung hinzufügen möchten. 
 4.  Folgen Sie den Eingabeaufforderungen, um den Dienst zu benennen. 
@@ -100,15 +100,15 @@ Der Befehl **Service Fabric: Anwendung veröffentlichen** stellt die Service Fab
 
 1.  Beim ersten Build der Anwendung wird die Datei Cloud.json im Projektverzeichnis generiert.
 2.  Geben Sie die Werte für den Cluster, mit dem Sie eine Verbindung herstellen möchten, in die Datei Cloud.json ein.
-3.  Klicken Sie auf den Befehl **Service Fabric: Anwendung veröffentlichen**.
+3.  Wählen Sie den Befehl **Service Fabric: Anwendung veröffentlichen** aus.
 4.  Zeigen Sie den Zielcluster mit Service Fabric Explorer an, um zu bestätigen, dass die Anwendung installiert wurde. 
 
 ### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric: Anwendung bereitstellen (Localhost)
 Der Befehl **Service Fabric: Anwendung bereitstellen** stellt die Service Fabric-Anwendung im lokalen Cluster bereit. Stellen Sie sicher, dass der lokale Cluster ausgeführt wird, bevor Sie den Befehl verwenden. 
 
-1.  Klicken Sie auf den Befehl **Service Fabric: Anwendung bereitstellen**
-2.  Zeigen Sie den lokalen Cluster mit Service Fabric Explorer (http://localhost:19080/Explorer) an, um zu bestätigen, dass die Anwendung installiert wurde. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld.
-3.  Sie können auch den Befehl **Service Fabric: Anwendung veröffentlichen** ohne in der Datei Cloud.json festgelegte Parameter verwenden, um einen lokalen Cluster bereitzustellen.
+1. Wählen Sie den Befehl **Service Fabric: Anwendung bereitstellen** aus.
+2. Zeigen Sie den lokalen Cluster mit Service Fabric Explorer (http://localhost:19080/Explorer) an, um zu bestätigen, dass die Anwendung installiert wurde. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld.
+3. Sie können auch den Befehl **Service Fabric: Anwendung veröffentlichen** ohne in der Datei „Cloud.json“ festgelegte Parameter verwenden, um einen lokalen Cluster bereitzustellen.
 
 > [!NOTE]
 > Die Bereitstellung von Java-Anwendungen im lokalen Cluster wird auf Windows-Computern nicht unterstützt.
@@ -116,21 +116,21 @@ Der Befehl **Service Fabric: Anwendung bereitstellen** stellt die Service Fabric
 ### <a name="service-fabric-remove-application"></a>Service Fabric: Anwendung entfernen
 Der Befehl **Service Fabric: Anwendung entfernen** entfernt eine Service Fabric-Anwendung aus dem Cluster, in dem sie zuvor mit der VS Code-Erweiterung bereitgestellt wurde. 
 
-1.  Klicken Sie auf den Befehl **Service Fabric: Anwendung entfernen**.
+1.  Wählen Sie den Befehl **Service Fabric: Anwendung entfernen** aus.
 2.  Zeigen Sie den lokalen Cluster mit Service Fabric Explorer an, um zu bestätigen, dass die Anwendung entfernt wurde. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld.
 
 ### <a name="service-fabric-build-application"></a>Service Fabric: Anwendung erstellen
-Der Befehl **Service Fabric: Anwendung erstellen** kann einen Java- oder C#-Service Fabric-Anwendungsbuild erstellen. 
+Der Befehl **Service Fabric: Service Fabric: Anwendung erstellen** kann einen Java- oder C#-Service Fabric-Anwendungsbuild erstellen. 
 
 1.  Stellen Sie sicher, dass Sie sich im Anwendungsstammordner befinden, wenn Sie den Befehl ausführen. Der Befehl weist den Typ der Anwendung (C#- oder Java) aus und erstellt Ihren Anwendungsbuild entsprechend.
-2.  Klicken Sie auf den Befehl **Service Fabric: Anwendung erstellen**.
+2.  Wählen Sie den Befehl **Service Fabric: Anwendung erstellen**, und wählen Sie ihn aus.
 3.  Die Ausgabe des Installationsvorgangs wird in das integrierte Terminal geschrieben.
 
 ### <a name="service-fabric-clean-application"></a>Service Fabric: Anwendung bereinigen
 Der Befehl **Service Fabric: Anwendung bereinigen** löscht alle JAR-Dateien und nativen Bibliotheken, die vom Build generiert wurden. Dies gilt für nur Java-Anwendungen. 
 
 1.  Stellen Sie sicher, dass Sie sich im Anwendungsstammordner befinden, wenn Sie den Befehl ausführen. 
-2.  Klicken Sie auf den Befehl **Service Fabric: Anwendung bereinigen**.
+2.  Wählen Sie den Befehl **Service Fabric: Anwendung bereinigen** aus.
 3.  Die Ausgabe des Bereinigungsvorgangs wird in das integrierte Terminal geschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte

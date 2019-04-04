@@ -11,15 +11,15 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.topic: conceptual
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9e9c8918556b7ff003bcfed062ea1e15233b2845
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855294"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761955"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -54,6 +54,21 @@ Partitionierte Warteschlangen und Themen werden bei Premium-Messaging nicht unte
 Da Premium-Messaging in einer vollständig isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
 
 Wenn Sie unter Standard-Messaging über Code verfügen und diesen auf den Premium-Tarif portieren möchten, stellen Sie sicher, dass die Eigenschaft [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) auf **false** (Standardwert) gesetzt ist.
+
+## <a name="premium-messaging-resource-usage"></a>Premium-Messaging-Ressourcennutzung
+Grundsätzlich kann jeder Vorgang für eine Entität CPU- und Arbeitsspeichernutzung verursachen. Nachstehend sind einige dieser Vorgänge aufgeführt: 
+
+- Verwaltungsvorgänge, z. B. Erstell-, Abruf-, Aktualisier- und Löschvorgänge, für Warteschlangen, Themen und Abonnements
+- Laufzeitvorgänge (Nachrichten senden und empfangen)
+- Überwachen von Vorgängen und Warnungen
+
+Die zusätzliche CPU- und Speichernutzung wird jedoch nicht zusätzlich berechnet. Im Premium-Messaging-Tarif gibt es einen einzigen Preis für die Nachrichteneinheit.
+
+Die CPU- und die Arbeitsspeichernutzung werden aus folgenden Gründen nachverfolgt und für Sie angezeigt: 
+
+- Bereitstellen von transparenter Einsicht in interne Systemabläufe
+- Verstehen der Kapazität der erworbenen Ressourcen
+- Kapazitätsplanung, damit Sie über zentrales Hoch-/Herunterskalieren entscheiden können
 
 ## <a name="get-started-with-premium-messaging"></a>Erste Schritte mit Premium-Messaging
 

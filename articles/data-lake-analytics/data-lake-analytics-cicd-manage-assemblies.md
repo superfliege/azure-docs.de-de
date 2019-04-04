@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 0d9192e5ca4dba202ca5287481072bb0f8ae5621
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598518"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768024"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Best Practices für die Verwaltung von U-SQL-Assemblys in einer CI/CD-Pipeline
 
@@ -56,9 +56,9 @@ Führen Sie diese Schritte aus, um Projekte zu erstellen und Verweise hinzuzufü
 
     ![Data Lake Tools für Visual Studio: Erstellen einer Assembly aus einem Verweis](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. Fügen Sie **verwaltete Abhängigkeiten** und **zusätzliche Dateien** hinzu, sofern vorhanden. Beim Hinzufügen von Dateien verwendet das Tool den relativen Pfad, um sicherzustellen, dass die Assemblys später auf Ihrem lokalen Computer und dem Buildcomputer gefunden werden. 
+7. Fügen Sie **verwaltete Abhängigkeiten** und **zusätzliche Dateien** hinzu, sofern vorhanden. Beim Hinzufügen von Dateien verwendet das Tool den relativen Pfad, um sicherzustellen, dass die Assemblys später auf Ihrem lokalen Computer und dem Buildcomputer gefunden werden.
 
-**@_DeployTempDirectory** unten im Editor-Fenster ist eine vordefinierte Variable, die das Tool auf den Buildausgabeordner verweist. Im Buildausgabeordner verfügt jede Assembly über einen Unterordner, der den gleichen Namen wie die Assembly besitzt. Alle DLLs und zusätzlichen Dateien befinden sich in diesem Unterordner. 
+**\@_DeployTempDirectory** unten im Editor-Fenster ist eine vordefinierte Variable, die das Tool auf den Buildausgabeordner verweist. Im Buildausgabeordner verfügt jede Assembly über einen Unterordner, der den gleichen Namen wie die Assembly besitzt. Alle DLLs und zusätzlichen Dateien befinden sich in diesem Unterordner.
 
 ## <a name="build-a-u-sql-database-project"></a>Erstellen eines U-SQL-Datenbankprojekts
 

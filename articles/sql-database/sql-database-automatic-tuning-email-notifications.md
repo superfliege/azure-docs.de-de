@@ -11,19 +11,23 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: cdd709fa446ffe769c8c57aeb44fe592b12e92d4
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.date: 03/12/2019
+ms.openlocfilehash: 0d0452cba099bbc568f2b9e926258eb16060eaf4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416106"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855919"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 
 Die Optimierungsempfehlungen für SQL-Datenbank werden mit dem Feature [Automatische Optimierung](sql-database-automatic-tuning.md) von Azure SQL-Datenbank generiert. Diese Lösung überwacht und analysiert kontinuierlich die Workloads von SQL-Datenbanken und stellt Optimierungsempfehlungen für jede einzelne Datenbank im Hinblick auf Indexerstellung, Indexlöschung und Optimierung von Abfrageausführungsplänen bereit.
 
-Sie können die Empfehlungen zur automatischen Optimierung von SQL-Datenbank im [Azure-Portal](sql-database-advisor-portal.md) anzeigen oder mit [REST-API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor)-Aufrufen oder [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)- und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction)-Befehlen abrufen. In diesem Artikel wird ein PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet.
+Sie können die Empfehlungen zur automatischen Optimierung von SQL-Datenbank im [Azure-Portal](sql-database-advisor-portal.md) anzeigen oder mit [REST-API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor)-Aufrufen oder [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)- und [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)-Befehlen abrufen. In diesem Artikel wird ein PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatisieren von E-Mail-Benachrichtigungen für Empfehlungen zur automatischen Optimierung
 
@@ -55,7 +59,7 @@ Wenn Sie über mehrere Azure-Abonnements verfügen, für die Sie die gleiche Aut
 
 ## <a name="update-azure-automation-modules"></a>Aktualisieren von Azure Automation-Modulen
 
-Das PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet die Befehle [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) und [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction), für die ein Update der Azure-Module auf Version 4 oder höher erforderlich ist.
+Das PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet die Befehle [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) und [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction), für die ein Update der Azure-Module auf Version 4 oder höher erforderlich ist.
 
 Befolgen Sie die folgenden Schritte zum Aktualisieren von Azure PowerShell-Modulen:
 
@@ -63,8 +67,6 @@ Befolgen Sie die folgenden Schritte zum Aktualisieren von Azure PowerShell-Modul
 - Klicken Sie im Bereich „Module“ oben auf **Azure-Module aktualisieren**, und warten Sie, bis die Meldung „Die Azure-Module wurden aktualisiert“ angezeigt wird. Dieser Vorgang kann einige Minuten dauern.
 
 ![Aktualisieren von Azure Automation-Modulen](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
-
-Es ist mindestens Version 4 der Module „AzureRM.Resources“ und „AzureRM.Sql“ erforderlich.
 
 ## <a name="create-azure-automation-runbook"></a>Erstellen eines Azure Automation-Runbooks
 
@@ -85,7 +87,7 @@ Führen Sie diese Schritte aus, um ein PowerShell-Skript in das erstellte Runboo
 - Wählen Sie im Bereich **PowerShell-Runbook bearbeiten** in der Menüstruktur **RUNBOOKS** aus, und erweitern Sie die Ansicht, bis der Name Ihres Runbooks angezeigt wird (in diesem Beispiel  **AutomaticTuningEmailAutomation**). Wählen Sie dieses Runbook aus.
 - Fügen Sie den folgenden PowerShell-Skriptcode durch Kopieren und Einfügen in der ersten Zeile von „PowerShell-Runbook bearbeiten“ (beginnt mit der Zahl 1) ein. Dieses PowerShell-Skript wird unverändert bereitgestellt, um Ihnen den Einstieg zu erleichtern. Passen Sie das Skript an Ihre Anforderungen an.
 
-Sie müssen im Header des bereitgestellten PowerShell-Skripts `<SUBSCRIPTION_ID_WITH_DATABASES>` durch Ihre Azure-Abonnement-ID ersetzen. Informationen zum Abrufen der Azure-Abonnement-ID finden Sie unter [Abrufen Ihrer Azure-Abonnement-GUID](https://blogs.msdn.microsoft.com/mschray/2016/03/18/getting-your-azure-subscription-guid-new-portal/).
+Sie müssen im Header des bereitgestellten PowerShell-Skripts `<SUBSCRIPTION_ID_WITH_DATABASES>` durch Ihre Azure-Abonnement-ID ersetzen. Informationen zum Abrufen der Azure-Abonnement-ID finden Sie unter [Abrufen Ihrer Azure-Abonnement-GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
 
 Bei mehreren Abonnements können Sie diese durch Trennzeichen getrennt in der $subscriptions-Eigenschaft im Header des Skripts hinzufügen.
 
@@ -104,7 +106,7 @@ $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_W
 
 # Get credentials
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
 # Define the resource types
 $resourceTypes = ("Microsoft.Sql/servers/databases")
@@ -113,8 +115,8 @@ $results = @()
 
 # Loop through all subscriptions
 foreach($subscriptionId in $subscriptions) {
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
-    $rgs = Get-AzureRmResourceGroup
+    Select-AzSubscription -SubscriptionId $subscriptionId
+    $rgs = Get-AzResourceGroup
 
     # Loop through all resource groups
     foreach($rg in $rgs) {
@@ -122,7 +124,7 @@ foreach($subscriptionId in $subscriptions) {
 
         # Loop through all resource types
         foreach($resourceType in $resourceTypes) {
-            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType
+            $resources = Get-AzResource -ResourceGroupName $rgname -ResourceType $resourceType
 
             # Loop through all databases
             # Extract resource groups, servers and databases
@@ -151,7 +153,7 @@ foreach($subscriptionId in $subscriptions) {
 
                 # Loop through all Automatic tuning recommendation types
                 foreach ($advisor in $advisors) {
-                    $recs = Get-AzureRmSqlDatabaseRecommendedAction -ResourceGroupName $ResourceGroupName -ServerName $ServerName  -DatabaseName $DatabaseName -AdvisorName $advisor
+                    $recs = Get-AzSqlDatabaseRecommendedAction -ResourceGroupName $ResourceGroupName -ServerName $ServerName  -DatabaseName $DatabaseName -AdvisorName $advisor
                     foreach ($r in $recs) {
                         if ($r.State.CurrentValue -eq "Active") {
                             $object = New-Object -TypeName PSObject

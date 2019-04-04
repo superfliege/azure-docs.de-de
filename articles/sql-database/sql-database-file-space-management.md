@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/12/2019
+ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881162"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Singletons und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank
 
@@ -27,6 +27,10 @@ Dieser Artikel beschreibt verschiedene Arten von Speicherplatz für Singletons u
 > Dieser Artikel gilt nicht für die Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank.
 
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 In Azure SQL-Datenbank gibt es für Singletons und in Pools zusammengefassten Datenbanken Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
 
@@ -40,7 +44,7 @@ Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Date
 
 Bei den meisten Speicherplatzmetriken, die im Azure-Portal und über die folgenden APIs angezeigt werden, wird lediglich die Größe der verwendeten Datenseiten ermittelt:
 
-- Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
+- Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Bei den folgenden APIs wird jedoch auch die Größe des Speicherplatzes ermittelt, der Datenbanken und Pools für elastische Datenbanken zugeordnet ist:
@@ -162,7 +166,7 @@ $userName = "name"
 $password = "password"
 
 # Get list of databases in elastic pool
-$databasesInPool = Get-AzureRmSqlElasticPoolDatabase `
+$databasesInPool = Get-AzSqlElasticPoolDatabase `
     -ResourceGroupName $resourceGroupName `
     -ServerName $serverName `
     -ElasticPoolName $poolName
@@ -237,7 +241,7 @@ Wenn Sie automatisches Verkleinern aktivieren möchten, ändern Sie im folgenden
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017). 
+Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current). 
 
 ### <a name="rebuild-indexes"></a>Neuerstellen von Indizes
 

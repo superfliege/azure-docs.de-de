@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef75b161bcdb9e1b9658612b783dff46d1fa2502
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082669"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484337"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Verwenden des privilegierten Endpunkts in Azure Stack
 
@@ -53,7 +53,7 @@ Bevor Sie dieses Verfahren für das integrierte System beginnen, vergewissern Si
 
     - Führen Sie auf einem integrierten System in einer Windows PowerShell-Sitzung mit erhöhten Rechten den folgenden Befehl aus, um den PEP als vertrauenswürdigen Host auf dem gehärteten virtuellen Computer hinzuzufügen, der auf dem Hardwarelebenszyklushost oder auf der Arbeitsstation mit privilegiertem Zugriff ausgeführt wird.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Wenn Sie das ASDK ausführen, melden Sie sich beim Development Kit-Host an.
@@ -61,7 +61,7 @@ Bevor Sie dieses Verfahren für das integrierte System beginnen, vergewissern Si
 2. Öffnen Sie auf dem gehärteten virtuellen Computer, der auf dem Hardwarelebenszyklushost oder auf der Arbeitsstation mit privilegiertem Zugriff ausgeführt wird, eine Windows PowerShell-Sitzung. Führen Sie die folgenden Befehle aus, um eine Remotesitzung auf dem virtuellen Computer einzurichten, der den PEP hostet:
  
    - In einem integrierten System:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -70,7 +70,7 @@ Bevor Sie dieses Verfahren für das integrierte System beginnen, vergewissern Si
      Der Parameter `ComputerName` kann die IP-Adresse oder der DNS-Name eines der virtuellen Computer sein, die den PEP hosten. 
    - Bei Ausführung des ASDK:
      
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName azs-ercs01 `
@@ -113,7 +113,7 @@ Beim PEP handelt es sich wie bereits erwähnt um einen Endpunkt vom Typ [PowerSh
 
 Wenn Sie also beispielsweise die Parameterliste für ein bestimmtes Cmdlet erhalten möchten, führen Sie den folgenden Befehl aus:
 
-```PowerShell
+```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
@@ -125,7 +125,7 @@ Wenn Sie die PEP-Sitzung in Ihren lokalen Computer importieren möchten, führen
 
     Führen Sie auf einem integrierten System in einer Windows PowerShell-Sitzung mit erhöhten Rechten den folgenden Befehl aus, um den PEP als vertrauenswürdigen Host auf dem gehärteten virtuellen Computer hinzuzufügen, der auf dem Hardwarelebenszyklushost oder auf der Arbeitsstation mit privilegiertem Zugriff ausgeführt wird.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Wenn Sie das ASDK ausführen, melden Sie sich beim Development Kit-Host an.
@@ -133,7 +133,7 @@ Wenn Sie die PEP-Sitzung in Ihren lokalen Computer importieren möchten, führen
 2. Öffnen Sie auf dem gehärteten virtuellen Computer, der auf dem Hardwarelebenszyklushost oder auf der Arbeitsstation mit privilegiertem Zugriff ausgeführt wird, eine Windows PowerShell-Sitzung. Führen Sie die folgenden Befehle aus, um eine Remotesitzung auf dem virtuellen Computer einzurichten, der den PEP hostet:
  
    - In einem integrierten System:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -142,7 +142,7 @@ Wenn Sie die PEP-Sitzung in Ihren lokalen Computer importieren möchten, führen
      Der Parameter `ComputerName` kann die IP-Adresse oder der DNS-Name eines der virtuellen Computer sein, die den PEP hosten. 
    - Bei Ausführung des ASDK:
      
-     ```PowerShell
+     ```powershell
       $cred = Get-Credential
 
       $session = New-PSSession -ComputerName azs-ercs01 `
@@ -154,7 +154,7 @@ Wenn Sie die PEP-Sitzung in Ihren lokalen Computer importieren möchten, führen
      - **Kennwort**: Geben Sie das gleiche Kennwort ein, das während der Installation für das AzureStackAdmin-Domänenadministratorkonto bereitgestellt wurde.
 
 3. Importieren der PEP-Sitzung in Ihren lokalen Computer
-    ```PowerShell 
+    ```powershell 
         Import-PSSession $session
     ```
 4. Nun können Sie in Ihrer lokalen PowerShell-Sitzung die Ergänzung mittels TAB-TASTE nutzen und wie gewohnt Skripts verwenden – zusammen mit allen Funktionen und Cmdlets des PEPs und ohne Beeinträchtigung der Sicherheit von Azure Stack. Viel Spaß!

@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: 7a8556edd793cbde47c14d2b79792dbe42f8e44b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894290"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
@@ -33,7 +33,7 @@ Diensttarife beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe v
 Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Geschäftskontinuität, Speicher und Leistung ab.
 
 ||Basic|Standard|Premium|
-| :-- | --: |--:| --:| --:|
+| :-- | --: |--:| --:|
 |Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion|
 |Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|
 |Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
@@ -52,10 +52,10 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](sql-database-purchase-models.md#dtu-based-purchasing-model).
 
 ||Basic|Standard|Premium|
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
 | Maximale DTU-Anzahl | 5 | 3000 | 4000 | 
-||||||
+|||||
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
@@ -63,16 +63,16 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und in einem Pool zusammengefasste Datenbanken
 
 | | **Basic** | **Standard** | **Premium** |
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
 | Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB |
 | Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 |
 | Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 |
 | Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 |
-||||||
+|||||
 
 > [!IMPORTANT]
-> In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: „USA, Westen-Mitte“, „China, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „US DoD, Osten“, „US Gov, Südwesten“, „USGov, Iowa“, „Deutschland, Nordosten“, „China, Norden“. In anderen Regionen ist der Speicher im Premium-Tarif auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 

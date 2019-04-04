@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77fa369a3085a3d11d5bf03406b4ddb885a24009
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041158"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847398"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleichen Persistenz- und Replikationsmechanismen verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.
@@ -86,7 +86,7 @@ Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ei
 Sie können diese Parameter manuell ändern. Bei jeder Änderung des `StatePersistence`-Attributs werden die Parameter jedoch auf die Standardwerte der Replikatgruppengröße für das ausgewählte `StatePersistence`-Attribut festgelegt. Dabei werden vorherige Werte überschrieben. Das bedeutet, dass die in „ServiceManifest.xml“ festgelegten Werte *nur* zum Erstellungszeitpunkt überschrieben werden, wenn Sie den Attributwert `StatePersistence` ändern.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
       <Parameter Name="MyActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="3" />

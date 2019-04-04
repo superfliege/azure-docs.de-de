@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312888"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453404"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
 AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können.
@@ -341,6 +341,16 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS-Themen im Vergleich zu Service Bus-Themen
+Ein Verwenden von Azure Service Bus-Themen und -Abonnements über die JMS-API (Java Message Service) bietet grundlegende Sende- und Empfangsfunktionen. Dies ist eine praktische Wahl, wenn es darum geht, Anwendungen von anderen Nachrichtenbrokern mit JMS-konformen APIs zu portieren, obwohl die Service Bus-Themen sich von den JMS-Themen unterscheiden und einige Anpassungen erfordern. 
+
+Azure Service Bus-Themen leiten Nachrichten in benannte, freigegebene, dauerhafte Abonnements weiter, die über die Azure-Benutzeroberfläche zur Ressourcenverwaltung, die Azure-Befehlszeilentools oder das Azure-Portal verwaltet werden. Jedes Abonnement kann bis zu 2000 Auswahlregeln haben, wobei jede Regel eine Filterbedingung und für SQL-Filter auch eine Metadatentransformationsaktion haben kann. Für jede Übereinstimmung einer Filterbedingung wird die Eingabenachricht ausgewählt, die in das Abonnement kopiert werden soll.  
+
+Ein Empfangen von Nachrichten aus Abonnements ist identisch mit einem Empfangen von Nachrichten aus Warteschlangen. Jedes Abonnement hat eine Warteschlange für unzustellbare Nachrichten sowie die Möglichkeit, Nachrichten automatisch an eine andere Warteschlange oder andere Themen weiterzuleiten. 
+
+JMS-Themen ermöglichen es Clients, dynamisch nicht dauerhafte und dauerhafte Abonnenten zu erstellen, die optional ein Filtern von Nachrichten mit Nachrichtenselektoren ermöglichen. Diese nicht freigegebenen Elemente werden von Service Bus nicht unterstützt. Die Syntax von SQL-Filterregeln für Service Bus ist aber der von JMS unterstützten Nachrichtenselektorsyntax sehr ähnlich. 
+
+Die Verlegerseite eines JMS-Themas ist mit Service Bus kompatibel, wie in diesem Beispiel gezeigt, dynamische Abonnenten sind dies aber nicht. Die folgenden topologiebezogenen JMS-APIs werden mit Service Bus nicht unterstützt. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Nicht unterstützte Funktionen und Einschränkungen
 Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden Einschränkungen:

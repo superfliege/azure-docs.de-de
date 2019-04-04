@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/23/2018
-ms.author: dekapur
-ms.openlocfilehash: e4537c789bfae0fb485e818bf68e87de27b88720
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 2/25/2019
+ms.author: srrengar
+ms.openlocfilehash: 6aec4e4bbf0abcfb6201da50381b6697a47716fa
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102051"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244586"
 ---
 # <a name="list-of-service-fabric-events"></a>Liste mit Service Fabric-Ereignissen 
 
-Service Fabric macht einen primären Satz von Clusterereignissen in Form von [Service Fabric-Ereignissen](service-fabric-diagnostics-events.md) verfügbar, um Sie über den Status Ihres Clusters zu informieren. Diese basieren auf Aktionen, die von Service Fabric für Ihre Knoten und Cluster ausgeführt werden, oder auf Verwaltungsentscheidungen eines Clusterbesitzers/-betreibers. Auf diese Ereignisse kann durch Konfigurieren auf verschiedene Art und Weise zugegriffen werden, einschließlich der Konfiguration von [Log Analytics with your cluster](service-fabric-diagnostics-oms-setup.md) (Log Analytics mit Ihrem Cluster) oder durch Abfragen von [EventStore](service-fabric-diagnostics-eventstore.md). Auf Windows-Computern sind diese Ereignisse in das „EventLog“ (Ereignisprotokoll) eingebunden, sodass Service Fabric-Ereignisse in der Ereignisanzeige angezeigt werden. 
+Service Fabric macht einen primären Satz von Clusterereignissen in Form von [Service Fabric-Ereignissen](service-fabric-diagnostics-events.md) verfügbar, um Sie über den Status Ihres Clusters zu informieren. Diese basieren auf Aktionen, die von Service Fabric für Ihre Knoten und Cluster ausgeführt werden, oder auf Verwaltungsentscheidungen eines Clusterbesitzers/-betreibers. Auf diese Ereignisse kann durch Konfigurieren auf verschiedene Art und Weise zugegriffen werden, einschließlich Konfigurieren von [Azure Monitor-Protokollen mit Ihrem Cluster](service-fabric-diagnostics-oms-setup.md) oder Abfragen von [EventStore](service-fabric-diagnostics-eventstore.md). Auf Windows-Computern sind diese Ereignisse in das „EventLog“ (Ereignisprotokoll) eingebunden, sodass Service Fabric-Ereignisse in der Ereignisanzeige angezeigt werden. 
 
 Im Folgenden sind einige Merkmale dieser Ereignisse aufgeführt:
 * Jedes Ereignis ist an eine bestimmte Entität im Cluster gebunden, z. B. Anwendung, Dienst, Knoten, Replikat.

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476246"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096026"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Mandantenübergreifende Berichte mithilfe verteilter Abfragen
 
@@ -27,7 +27,7 @@ In diesem Tutorial führen Sie verteilte Abfragen für die gesamte Gruppe von Ma
 In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
-
+> 
 > * Bereitstellen einer Berichtsdatenbank
 > * Ausführen verteilter Abfragen für alle Mandantendatenbanken
 > * Möglichkeit effizienter mandantenübergreifender Abfragen durch globale Ansichten in jeder Datenbank
@@ -148,7 +148,7 @@ Jetzt wo die Datenbank *adhocreporting* eingerichtet ist, können Sie testweise 
 
 Um ausführlichere Informationen zu erhalten, können Sie im Ausführungsplan auf die Plansymbole zeigen. 
 
-Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** beim Definieren der externen Datenquelle die Leistung für viele Szenarios verbessert wird. Da jeder *VenueId*-Wert auf eine einzelne Datenbank verweist, können Sie leicht remote filtern, sodass nur die benötigten Daten zurückgegeben werden.
+Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** beim Definieren der externen Datenquelle die Leistung für viele Szenarios verbessert wird. Da jeder *VenueId*-Wert auf eine einzelne Datenbank verweist, können Sie leicht remote filtern und nur die benötigten Daten zurückgeben.
 
 1. Öffnen Sie ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocReportingQueries.sql* in SSMS.
 2. Stellen Sie sicher, dass Sie mit der Datenbank **adhocreporting** verbunden sind.
@@ -181,7 +181,7 @@ Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** b
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-
+> 
 > * Ausführen verteilter Abfragen für alle Mandantendatenbanken
 > * Bereitstellen einer Berichtsdatenbank und Definieren des Schemas, das zum Ausführen verteilter Abfragen erforderlich ist
 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.date: 03/12/2019
+ms.openlocfilehash: 7bfed1144ebfc69ed51b7bbc1adf78538ed28425
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861076"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -58,7 +58,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Sekundärer Server/verwaltete Instanz**
 
-  Der SQL-Datenbank-Server oder die verwaltete Instanz, auf dem bzw. der die sekundären Datenbanken in der Failovergruppe gehostet werden. Der sekundäre Server/verwaltete Instanz kann sich nicht in der gleichen Region wie der primäre Server/verwaltete Instanz befinden.
+  Der SQL-Datenbank-Server oder die verwaltete Instanz, auf dem bzw. der die sekundäre Datenbanken in der Failovergruppe gehostet werden. Der sekundäre Server/verwaltete Instanz kann sich nicht in der gleichen Region wie der primäre Server/verwaltete Instanz befinden.
 
 - **Hinzufügen einzelner Datenbanken zu Failovergruppe**
 
@@ -129,6 +129,18 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
   > [!IMPORTANT]
   > Eine verwaltete Instanz bietet keine Unterstützung für mehrere Failovergruppen.
+  
+## <a name="permissions"></a>Berechtigungen
+Berechtigungen für eine Failovergruppe werden über die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) verwaltet. Die Rolle [Mitwirkender von SQL Server](../role-based-access-control/built-in-roles.md#sql-server-contributor) verfügt über die erforderlichen Berechtigungen zum Verwalten von Failovergruppen. 
+
+### <a name="create-failover-group"></a>Erstellen einer Failovergruppe
+Zum Erstellen einer Failovergruppe benötigen Sie RBAC-Schreibzugriff auf den primären und die sekundären Server sowie auf alle Datenbanken in der Failovergruppe. Bei einer verwalteten Instanz benötigen Sie RBAC-Schreibzugriff auf die primäre und sekundäre verwaltete Instanz. Berechtigungen für einzelne Datenbanken sind dabei nicht relevant, da einzelne Datenbanken der verwalteten Instanz nicht zu einer Failovergruppe hinzugefügt bzw. aus einer Failovergruppe entfernt werden können. 
+
+### <a name="update-a-failover-group"></a>Aktualisieren einer Failovergruppe
+Zum Aktualisieren einer Failovergruppe benötigen Sie RBAC-Schreibzugriff auf die Failovergruppe und auf alle Datenbanken auf dem aktuellen primären Server bzw. in der aktuellen verwalteten Instanz.  
+
+### <a name="failover-a-failover-group"></a>Failover für eine Failovergruppe
+Zum Erstellen eines Failovers für eine Failovergruppe benötigen Sie RBAC-Schreibzugriff auf die Failovergruppe auf dem neuen primären Server bzw. in der neuen verwalteten Instanz. 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Bewährte Methoden für die Verwendung von Failovergruppen für einzelne Datenbanken und Pools für elastische Datenbanken
 
@@ -203,7 +215,7 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
   > [!NOTE]
   > Bei bestimmten Dienstebenen unterstützt Azure SQL-Datenbank die Verwendung von [schreibgeschützten Replikaten](sql-database-read-scale-out.md) für den Lastenausgleich schreibgeschützter Abfrageworkloads, wobei die Kapazität eines schreibgeschützten Replikats und der Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge verwendet werden. Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
   > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `failover-group-name.zone_id.database.windows.net`.
-  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `failover-group-name.secondary.zone_id.database.windows.net`.
 
 - **Vorbereitung auf die Beeinträchtigung der Leistung**
 
@@ -270,7 +282,9 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Inst
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
 
-Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Computegröße (innerhalb der gleichen Dienstebene; nicht zwischen „Universell“ und „Unternehmenskritisch“) ausführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen.
+Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Computegröße (innerhalb der gleichen Dienstebene; nicht zwischen „Universell“ und „Unternehmenskritisch“) ausführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für alle sekundären Datenbanken und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre Datenbank und anschließend das Downgrade für alle sekundären Datenbanken aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen.
+
+Diese Reihenfolge ist besonders zur Vermeidung des Überladens der sekundären Datenbank auf einer niedrigeren SKU empfehlenswert, damit nicht während des Upgrade- oder Downgradevorgangs ein erneutes Seeding durchgeführt werden muss. Sie können dieses Problem auch vermeiden, indem Sie die primäre Datenbank mit Schreibschutz versehen. Das geht allerdings zu Lasten aller Lese-/Schreibworkloads für die primäre Datenbank. 
 
 > [!NOTE]
 > Wenn Sie eine sekundäre Datenbank als Teil der Konfiguration der Failovergruppe erstellt haben, sollten Sie kein Downgrade der sekundären Datenbank durchführen. So wird sichergestellt, dass Ihre Datenebene nach dem Aktivieren des Failovers ausreichende Kapazität zum Verarbeiten des normalen Workloads hat.
@@ -294,12 +308,12 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-| [New-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| [Remove-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | Entfernt die Failovergruppe vom Server und löscht alle in der Gruppe enthaltenen sekundäre Datenbanken. |
-| [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Ruft die Konfiguration der Failovergruppe ab. |
-| [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Ändert die Konfiguration der Failovergruppe. |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Löst das Failover der Failovergruppe auf den sekundären Server aus. |
-| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Fügt einer Azure SQL-Datenbank-Failovergruppe eine oder mehrere Datenbanken hin zu.|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
+| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Entfernt die Failovergruppe vom Server und löscht alle in der Gruppe enthaltenen sekundäre Datenbanken. |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft die Konfiguration der Failovergruppe ab. |
+| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Ändert die Konfiguration der Failovergruppe. |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Löst das Failover der Failovergruppe auf den sekundären Server aus. |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Fügt einer Azure SQL-Datenbank-Failovergruppe eine oder mehrere Datenbanken hin zu.|
 |  | |
 
 > [!IMPORTANT]
@@ -312,13 +326,13 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 1. Aktualisieren Sie das PowerShellGet-Modul auf Version 1.6.5 (oder die neueste Vorschauversion). Siehe [Website zur PowerShell-Vorschauversion](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
 
-   ```Powershell
+   ```PowerShell
       install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. Führen Sie in einem neuen PowerShell-Fenster die folgenden Befehle aus:
 
-   ```Powershell
+   ```PowerShell
       import-module PowerShellGet
       get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
@@ -329,11 +343,11 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 | API | BESCHREIBUNG |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Ändert die Konfiguration der Failovergruppe.|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Ruft die Konfiguration der Failovergruppe ab.|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Entfernt eine Failovergruppe.|
+| New-AzSqlDatabaseInstanceFailoverGroup |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
+| Set-AzSqlDatabaseInstanceFailoverGroup |Ändert die Konfiguration der Failovergruppe.|
+| Get-AzSqlDatabaseInstanceFailoverGroup |Ruft die Konfiguration der Failovergruppe ab.|
+| Switch-AzSqlDatabaseInstanceFailoverGroup |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
+| Remove-AzSqlDatabaseInstanceFailoverGroup | Entfernt eine Failovergruppe.|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit einzelnen und in einem Pool zusammengefassten Datenbanken
 

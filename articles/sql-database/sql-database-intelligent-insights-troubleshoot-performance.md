@@ -12,16 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993631"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316047"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
-Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
+Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
 
 > [!NOTE]
 > Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
@@ -73,7 +73,7 @@ Das Diagnoseprotokoll gibt Abfragehashes von Abfragen aus, die sich auf die Leis
 
 Wenn Sie die geltenden Sitzungsgrenzwerte erreicht haben, können Sie Ihre Anwendungen optimieren, indem Sie die Anzahl der Anmeldungen bei der Datenbank reduzieren. Wenn Sie die Anzahl der Anmeldungen von Ihrer Anwendung zur Datenbank nicht reduzieren können, erhöhen Sie ggf. den Tarif Ihrer Datenbank. Sie können Ihre Datenbank auch teilen und sie für eine ausgeglichenere Verteilung Ihrer Workload in mehrere Datenbanken verschieben.
 
-Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
+Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
 
 ## <a name="workload-increase"></a>Gestiegene Workload
 
@@ -109,7 +109,7 @@ Sie können Abfragen im Zusammenhang mit den Clerks mit der höchsten Speicherbe
 
 Sie können auch die Workload reduzieren, indem Sie sie optimieren oder über mehrere Datenbanken verteilen. Sie können auch Ihre Workload auf mehrere Datenbanken verteilen. Falls dies nicht möglich ist, sollten Sie ggf. den Tarif Ihres SQL-Datenbank-Abonnements erhöhen, um die der Datenbank zur Verfügung stehenden Arbeitsspeicherressourcen zu vergrößern.
 
-Weitere Vorschläge zur Problembehandlung finden Sie unter [Meditation über Speicherzuweisungen: Der mysteriöse SQL Server-Arbeitsspeicherconsumer mit vielen Namen](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Weitere Vorschläge zur Problembehandlung finden Sie unter [Meditation über Speicherzuweisungen: Der mysteriöse SQL Server-Arbeitsspeicherconsumer mit vielen Namen](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Sperren
 
@@ -259,7 +259,7 @@ Dieses erkennbare Leistungsmuster kombiniert drei Fälle von Planregression: neu
 
 Die Bedingung „Neue Planregression“ bezieht sich auf einen Zustand, in dem SQL-Datenbank mit der Ausführung eines neuen Ausführungsplans beginnt, der nicht so effizient wie der alte Plan ist. Die Bedingung „Alte Planregression“ bezieht sich auf den Zustand, in dem SQL-Datenbank von einem neuen, effizienteren Plan zu einem alten Plan wechselt, der nicht so effizient wie der neue Plan ist. Die Regression „Geänderte Workload in vorhandenen Plänen“ bezieht sich auf den Zustand, in dem die alten und neue Pläne sich laufend abwechseln, wobei die Waage mehr in Richtung des Plans mit der schlechten Leistung ausschlägt.
 
-Weitere Informationen zu Planregressionen finden Sie unter [What is plan regression in SQL server (Was ist Planregression in SQL Server?)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/). 
+Weitere Informationen zu Planregressionen finden Sie unter [What is plan regression in SQL server (Was ist Planregression in SQL Server?)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
@@ -267,7 +267,7 @@ Das Diagnoseprotokoll gibt Abfragehashes, die ID des guten Plans, die ID des sch
 
 Sie können auch für Ihre spezifischen Abfragen, die Sie mithilfe der bereitgestellten Abfragehashes bestimmen können, analysieren, welcher Plan leistungsfähiger ist. Nachdem Sie den Plan bestimmt haben, der für Ihre Abfragen besser funktioniert, können Sie ihn manuell erzwingen. 
 
-Weitere Informationen finden Sie auf der Seite zum Thema [wie SQL Server die Planregression verhindert](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+Weitere Informationen finden Sie auf der Seite zum Thema [wie SQL Server die Planregression verhindert](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
 > Wussten Sie, dass die in SQL-Datenbank integrierten intelligenten Funktionen automatisch die leistungsfähigsten Abfrageausführungspläne für Ihre Datenbanken verwalten?

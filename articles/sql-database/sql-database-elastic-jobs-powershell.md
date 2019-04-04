@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/12/2019
+ms.openlocfilehash: 52a12486add25cd32400af755aa6cd8cac07c6f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472643"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905058"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorschauversion) können Sie eine Gruppe von Datenbanken definieren, für die Skripts ausgeführt werden sollen. In diesem Artikel wird das Erstellen und Verwalten von **Aufträgen für die elastische Datenbank** mithilfe von PowerShell-Cmdlets veranschaulicht. Weitere Informationen finden Sie unter [Übersicht über Aufträge für die elastische Datenbank](sql-database-elastic-jobs-overview.md). 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
@@ -34,9 +34,9 @@ Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorsch
 * PowerShell-Paket **Aufträge für die elastische Datenbank**. Weitere Informationen finden Sie unter [Installieren von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-service-installation.md).
 
 ### <a name="select-your-azure-subscription"></a>Auswählen des Azure-Abonnements
-Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID (**-SubscriptionId**) oder den Abonnementnamen (**-SubscriptionName**). Wenn Sie über mehrere Abonnements verfügen, können Sie das **Get-AzureRmSubscription** -Cmdlet ausführen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Sobald Sie über Ihre Abonnementinformationen verfügen, führen Sie das folgende Cmdlet aus, um dieses Abonnement als Standard festzulegen, nämlich als Ziel für das Erstellen und Verwalten von Aufträgen:
+Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID (**-SubscriptionId**) oder den Abonnementnamen (**-SubscriptionName**). Wenn Sie über mehrere Abonnements verfügen, können Sie das **Get-AzSubscription**-Cmdlet ausführen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Sobald Sie über Ihre Abonnementinformationen verfügen, führen Sie das folgende Cmdlet aus, um dieses Abonnement als Standard festzulegen, nämlich als Ziel für das Erstellen und Verwalten von Aufträgen:
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 Die [PowerShell-ISE](https://technet.microsoft.com/library/dd315244.aspx) wird zum Entwickeln und Ausführen von PowerShell-Skripts für die Ausführung in Aufträgen für die elastische Datenbank empfohlen.
 

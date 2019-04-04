@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: c4ce8e01b1dc819453610f68d044cc268e27eed7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290517"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242750"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-Ereignisse 
 
@@ -45,7 +45,7 @@ Nachfolgend sind Sie einige Beispiele für Szenarien aufgeführt, für die Sie E
 ## <a name="how-to-access-events"></a>Zugriff auf Ereignisse
 
 Für den Zugriff auf Service Fabric-Ereignisse gibt es einige unterschiedliche Möglichkeiten:
-* Die Ereignisse werden über Standardkanäle wie ETW-Protokolle/Windows-Ereignisprotokolle protokolliert und können von jedem Überwachungstool, das diese unterstützt (z. B. Log Analytics), visualisiert werden. Standardmäßig ist bei im Portal erstellten Clustern die Diagnose aktiviert, und der Windows Azure-Diagnose-Agent sendet die Ereignisse an Azure Table Storage. Dennoch müssen Sie dies in Ihre Log Analytics-Ressource integrieren. Erfahren Sie mehr dazu, wie Sie den [Azure-Diagnose-Agent](service-fabric-diagnostics-event-aggregation-wad.md) so konfigurieren, dass er die Diagnosekonfiguration des Clusters ändert, um mehr Protokolle oder Leistungsindikatoren aufzunehmen und [Log Analytics zu integrieren](service-fabric-diagnostics-event-analysis-oms.md).
+* Die Ereignisse werden über Standardkanäle wie ETW-Protokolle/Windows-Ereignisprotokolle protokolliert und können von jedem Überwachungstool, das diese unterstützt (z. B. Azure Monitor-Protokolle), visualisiert werden. Standardmäßig ist bei im Portal erstellten Clustern die Diagnose aktiviert, und der Windows Azure-Diagnose-Agent sendet die Ereignisse an Azure Table Storage. Dennoch müssen Sie dies in Ihre Log Analytics-Ressource integrieren. Erfahren Sie mehr dazu, wie Sie den [Azure-Diagnose-Agent](service-fabric-diagnostics-event-aggregation-wad.md) so konfigurieren, dass er die Diagnosekonfiguration des Clusters ändert, um mehr Protokolle oder Leistungsindikatoren aufzunehmen und [Azure Monitor-Protokolle zu integrieren](service-fabric-diagnostics-event-analysis-oms.md).
 * Über die REST-API des EventStore-Diensts, über die Sie den Cluster direkt abfragen können, oder über die Service Fabric-Clientbibliothek. Lesen Sie hierzu [Abfragen von EventStore-APIs nach Clusterereignissen](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

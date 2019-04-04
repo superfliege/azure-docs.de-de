@@ -1,9 +1,9 @@
 ---
-title: Überwachen von Containern in Azure Service Fabric mit Log Analytics | Microsoft-Dokumentation
-description: Verwenden Sie Log Analytics zum Überwachen von Containern, die in Azure Service Fabric-Clustern ausgeführt werden.
+title: Überwachen von Containern in Azure Service Fabric mit Azure Monitor-Protokollen | Microsoft-Dokumentation
+description: Verwenden Sie Azure Monitor-Protokolle zum Überwachen von Containern, die in Azure Service Fabric-Clustern ausgeführt werden.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,29 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/1/2017
-ms.author: dekapur
-ms.openlocfilehash: d5fd55ec93ce07e30e4c6f123f9be8492581053c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 02/25/2019
+ms.author: srrengar
+ms.openlocfilehash: d5840db718191c9b67a8b28a2efccd55146ae510
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972251"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246932"
 ---
-# <a name="monitor-containers-with-log-analytics"></a>Überwachen von Containern mit Log Analytics
+# <a name="monitor-containers-with-azure-monitor-logs"></a>Überwachen von Containern mit Azure Monitor-Protokollen
  
-Dieser Artikel behandelt die erforderlichen Schritte zum Einrichten der Azure Log Analytics-Containerüberwachungslösung, um Containerereignisse anzuzeigen. Informationen zum Einrichten des Clusters zum Erfassen von Containerereignissen finden Sie in diesem [schrittweisen Tutorial](service-fabric-tutorial-monitoring-wincontainers.md). 
+Dieser Artikel behandelt die Schritte, die erforderlich sind, um die für die Containerüberwachungslösung zu verwendenden Azure Monitor-Protokolle einzurichten, damit Containerereignisse angezeigt werden können. Informationen zum Einrichten des Clusters zum Erfassen von Containerereignissen finden Sie in diesem [schrittweisen Tutorial](service-fabric-tutorial-monitoring-wincontainers.md). 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="set-up-the-container-monitoring-solution"></a>Einrichten der Containerüberwachungslösung
 
 > [!NOTE]
-> Log Analytics muss für den Cluster eingerichtet und der Log Analytics-Agent muss auf Ihren Knoten bereitgestellt worden sein. Ist dies nicht der Fall, führen Sie zuerst die Schritte unter [Einrichten von Log Analytics](service-fabric-diagnostics-oms-setup.md) und [Hinzufügen des Log Analytics-Agents zu einem Cluster](service-fabric-diagnostics-oms-agent.md) aus.
+> Azure Monitor-Protokolle müssen für Ihren Cluster eingerichtet und der Log Analytics-Agent muss in Ihren Knoten bereitgestellt sein. Ist dies nicht der Fall, führen Sie zuerst die Schritte unter [Einrichten von Azure Monitor-Protokollen](service-fabric-diagnostics-oms-setup.md) und [Hinzufügen des Log Analytics-Agents zu einem Cluster](service-fabric-diagnostics-oms-agent.md) aus.
 
-1. Wenn Log Analytics und der Log Analytics-Agent für den Cluster eingerichtet wurden, stellen Sie Ihre Container bereit. Warten Sie, bis die Container bereitgestellt wurden, bevor Sie mit dem nächsten Schritt fortfahren.
+1. Sobald Azure Monitor-Protokolle und der Log Analytics-Agent für Ihren Cluster eingerichtet sind, stellen Sie Ihre Container bereit. Warten Sie, bis die Container bereitgestellt wurden, bevor Sie mit dem nächsten Schritt fortfahren.
 
 2. Suchen Sie in Azure Marketplace nach *Container Monitoring Solution* (Containerüberwachungslösung), und klicken Sie auf die Ressource **Container Monitoring Solution**, die unter der Kategorie „Überwachung + Verwaltung“ angezeigt wird.
 
@@ -42,7 +44,7 @@ Dieser Artikel behandelt die erforderlichen Schritte zum Einrichten der Azure Lo
 
     ![Das grundlegende Log Analytics-Dashboard](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Der Agent ermöglicht das Sammeln verschiedener containerspezifischer Protokolle, die in Log Analytics abgefragt oder zur Visualisierung von Leistungsindikatoren verwendet werden können. Folgende Protokolltypen werden gesammelt:
+Der Agent ermöglicht das Sammeln verschiedener containerspezifischer Protokolle, die in Azure Monitor-Protokollen abgefragt oder zur Visualisierung von Leistungsindikatoren verwendet werden können. Folgende Protokolltypen werden gesammelt:
 
 * ContainerInventory: zeigt Informationen über Containerspeicherort, -name und -images an
 * ContainerImageInventory: zeigt Informationen zu bereitgestellten Images an, einschließlich IDs und Größen
@@ -53,7 +55,7 @@ Der Agent ermöglicht das Sammeln verschiedener containerspezifischer Protokolle
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur [Containerlösung von Log Analytics](../azure-monitor/insights/containers.md).
+* Erfahren Sie mehr über [Containerüberwachungslösung in Log Analytics](../azure-monitor/insights/containers.md).
 * Weitere Informationen zur Containerorchestrierung in Service Fabric finden Sie unter [Service Fabric und Container](service-fabric-containers-overview.md).
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Log Analytics vertraut.
-* Konfigurieren Sie Log Analytics für die Einrichtung von [automatisierten Warnungsregeln](../log-analytics/log-analytics-alerts.md) bei der Erkennung und Diagnose.
+* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
+* Konfigurieren Sie Azure Monitor-Protokolle für die Einrichtung von Regeln zu [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) zur Unterstützung bei der Erkennung und Diagnose.

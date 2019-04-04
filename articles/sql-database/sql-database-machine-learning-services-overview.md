@@ -3,7 +3,6 @@ title: Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion
 description: In diesem Thema werden die Machine Learning Services (mit R) in Azure SQL-Datenbank und ihre Funktionsweise erläutert.
 services: sql-database
 ms.service: sql-database
-ms.subservice: machine-learning-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,22 +10,26 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 02/06/2019
-ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 03/01/2019
+ms.openlocfilehash: e6d6250da4df6ab267ef28f8f15a73c8cbc68618
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875602"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762058"
 ---
-# <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
+# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
 Machine Learning Services ist eine Funktion von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Die Funktion umfasst Microsoft-R-Pakete für leistungsstarke Predictive Analytics und maschinelles Lernen. Die relationalen Daten können über gespeicherte Prozeduren, R-Anweisungen in T-SQL-Skripts oder R-Code mit T-SQL in R-Skripts verwendet werden.
 
 > [!IMPORTANT]
-> Machine Learning Services (mit R) in Azure SQL-Datenbank befindet sich derzeit in der Public Preview für Singletons und Pools für elastische Datenbanken im V-Kern-basierten Kaufmodell für die Diensttarife **Universell** und **Unternehmenskritisch**. In dieser ersten öffentlichen Vorschauversion werden weder der Diensttarif **Hyperscale** noch die Bereitstellungsoption **Verwaltete Instanz** unterstützt. R ist derzeit die einzige unterstützte Sprache. Momentan ist keine Unterstützung für Python vorhanden. 
+> Machine Learning Services (mit R) von Azure SQL-Datenbank befindet sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Die Vorschau ist derzeit in den folgenden Regionen verfügbar: „Europa, Westen“, „Europa, Norden“, „USA, Westen 2“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Kanada, Mitte“, „Asien, Südosten“, „Indien, Süden“ und „Australien, Südosten“. 
+> Die öffentliche Vorschau ist für Einzeldatenbanken und Pools für elastische Datenbanken mit dem V-Kern-basierten Kaufmodell in den Diensttarifen **Universell** und **Unternehmenskritisch** verfügbar. In dieser ersten öffentlichen Vorschauversion werden weder der Diensttarif **Hyperscale** noch die Bereitstellungsoption **Verwaltete Instanz** unterstützt. R ist derzeit die einzige unterstützte Sprache. Momentan ist keine Unterstützung für Python vorhanden.
+>
+> Die Vorschauversion ist derzeit in den folgenden Regionen verfügbar: „Europa, Westen“, „Europa, Norden“, „USA, Westen 2“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Kanada, Mitte“, „Asien, Südosten“, „Indien, Süden“ und „Australien, Südosten“.
 >
 > Sie können sich unten [für die Vorschau registrieren](#signup).
 
@@ -60,7 +63,7 @@ Führen Sie die folgenden Schritte aus, um sich für die öffentliche Vorschauve
 
 Nachdem Sie für das Programm registriert wurden, führt Microsoft für Sie das Onboarding für die öffentliche Vorschauversion durch und aktiviert R für Ihre vorhandenen oder neuen Datenbanken.
 
-Verwenden Sie Machine Learning Services mit R während der öffentlichen Vorschauphase nicht für Produktionsworkloads.
+Es ist nicht empfehlenswert, Machine Learning Services mit R während der öffentlichen Vorschauphase für Produktionsworkloads zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

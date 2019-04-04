@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b13becf8530f478a5e58b46a1b422593051c95cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/06/2019
+ms.openlocfilehash: e872c29712c3fadca676ec87870bcc5c4eb58565
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478167"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727398"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
@@ -66,11 +66,13 @@ Im folgenden Video können Sie sich einen Überblick über die Funktionsweise de
 
 In Azure SQL-Datenbank stehen folgende Optionen für die automatische Optimierung zur Verfügung:
 
- 1. **CREATE INDEX:** identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde.
- 2. **DROP INDEX**: identifiziert jeden Tag redundante und doppelte Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass die Option zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden.
- 3. **FORCE LAST GOOD PLAN:** identifiziert SQL-Abfragen mit einem Ausführungsplan, der langsamer als der vorherige gute Plan ist, und Abfragen, die den letzten bekannten guten Plan anstelle des zurückgestellten Plans verwenden.
+| Option für die automatische Optimierung | Unterstützung für einzelne Datenbanken und in einem Pool zusammengefasste Datenbanken | Unterstützung der Instanzdatenbank |
+| :----------------------------- | ----- | ----- |
+| **CREATE INDEX:** Identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde. | Ja | Nein  | 
+| **DROP INDEX**: Identifiziert täglich redundante und doppelte Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass die Option zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. | Ja | Nein  |
+| **FORCE LAST GOOD PLAN**: Identifiziert SQL-Abfragen mit einem Ausführungsplan, der langsamer als der vorherige gute Plan ist, und Abfragen, die den letzten bekannten guten Plan anstelle des zurückgestellten Plans verwenden. | Ja | Ja |
 
-Die automatische Optimierung identifiziert Empfehlungen von **CREATE INDEX**, **DROP INDEX** und **FORCE LAST GOOD PLAN**, die Ihre Datenbank optimieren können, zeigt sie im [Azure-Portal](sql-database-advisor-portal.md) an, und macht sie über [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) und die [REST-API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) verfügbar.
+Die automatische Optimierung identifiziert Empfehlungen von **CREATE INDEX**, **DROP INDEX** und **FORCE LAST GOOD PLAN**, die Ihre Datenbank optimieren können, zeigt sie im [Azure-Portal](sql-database-advisor-portal.md) an, und macht sie über [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) und die [REST-API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) verfügbar. 
 
 Sie können die Optimierungsempfehlungen entweder manuell über das Portal anwenden oder es der automatischen Optimierung überlassen, diese Empfehlungen autonom für Sie anzuwenden. Wenn Sie es dem System überlassen, Optimierungsempfehlungen autonom anzuwenden, profitieren Sie davon, dass das System automatisch überprüft, ob eine Empfehlung die Workloadleistung tatsächlich positiv beeinflusst. Sollte keine erhebliche Leistungsverbesserung erkannt werden, macht das System die Optimierungsempfehlung automatisch rückgängig. Beachten Sie, dass bei Abfragen, auf die sich Optimierungsempfehlungen auswirken und die nicht häufig ausgeführt werden, die Überprüfungsphase bis zu 72 Stunden dauern kann. Wenn Sie Optimierungsempfehlungen manuell anwenden, sind die Mechanismen für die automatische Leistungsüberprüfung und Umkehrung nicht verfügbar.
 

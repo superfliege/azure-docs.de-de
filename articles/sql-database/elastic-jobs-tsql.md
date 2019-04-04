@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458090"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769165"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -406,10 +406,10 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 
 
 
-|Gespeicherte Prozedur  |Beschreibung  |
+|Gespeicherte Prozedur  |BESCHREIBUNG  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     Fügt einen neuen Auftrag hinzu.    |
-|[sp_update_job ](#spupdatejob)    |      Aktualisiert einen vorhandenen Auftrag.   |
+|[sp_update_job](#spupdatejob)    |      Aktualisiert einen vorhandenen Auftrag.   |
 |[sp_delete_job](#spdeletejob)     |      Löscht einen vorhandenen Auftrag.   |
 |[sp_add_jobstep](#spaddjobstep)    |    Fügt einen Schritt zu einem Auftrag hinzu.     |
 |[sp_update_jobstep](#spupdatejobstep)     |     Aktualisiert einen Auftragsschritt.    |
@@ -420,7 +420,7 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 |[sp_delete_target_group](#spdeletetargetgroup)     |    Löscht eine Zielgruppe.     |
 |[sp_add_target_group_member](#spaddtargetgroupmember)     |    Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.     |
 |[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     Entfernt ein Zielgruppenmitglied aus einer Zielgruppe.    |
-|[sp_purge_jobhistory ](#sppurgejobhistory)    |    Entfernt die Verlaufsdatensätze für einen Auftrag.     |
+|[sp_purge_jobhistory](#sppurgejobhistory)    |    Entfernt die Verlaufsdatensätze für einen Auftrag.     |
 
 
 
@@ -447,16 +447,16 @@ Fügt einen neuen Auftrag hinzu.
   
 #### <a name="arguments"></a>Argumente  
 
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags. Der Name muss eindeutig sein und darf nicht das Prozentzeichen (%) enthalten. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@description =** ] 'description'  
+[ **\@description =** ] 'Beschreibung'  
 Die Beschreibung des Auftrags. „description“ ist vom Datentyp „nvarchar(512)“ mit dem NULL-Standardwert. Wenn „description“ ausgelassen wird, wird eine leere Zeichenfolge verwendet.
 
-[ **@enabled =** ] enabled  
+[ **\@enabled =** ] enabled  
 Gibt an, ob der Zeitplan des Auftrags aktiviert ist. „enabled“ ist vom Datentyp „bit“ mit dem Standardwert „0“ (deaktiviert). Wenn der Wert „0“ festgelegt ist, wird der Auftrag nicht aktiviert und nicht gemäß dem Zeitplan ausgeführt, er kann jedoch manuell ausgeführt werden. Wenn der Wert „1“ festgelegt ist, wird der Auftrag wird gemäß dem Zeitplan ausgeführt und kann auch manuell ausgeführt werden.
 
-[ **@schedule_interval_type =**] schedule_interval_type  
+[ **\@Schedule_interval_type =**] Schedule_interval_type  
 Der Wert gibt an, wie oft der Auftrag ausgeführt werden soll. „schedule_interval_type“ ist vom Datentyp „nvarchar(50)“ mit dem Standardwert „Once“ und kann einen der folgenden Werte aufweisen:
 - „Once“
 - „Minutes“
@@ -465,16 +465,16 @@ Der Wert gibt an, wie oft der Auftrag ausgeführt werden soll. „schedule_inter
 - „Weeks“
 - „Months“
 
-[ **@schedule_interval_count =** ] schedule_interval_count  
+[ **\@schedule_interval_count =** ] schedule_interval_count  
 Die Anzahl der „schedule_interval_count“-Intervalle, die zwischen den einzelnen Ausführungen des Auftrags stattfinden sollen. „schedule_interval_count“ ist vom Datentyp „int“ und weist den Standardwert „1“ auf. Der Wert muss größer als oder gleich „1“ sein.
 
-[ **@schedule_start_time =** ] schedule_start_time  
+[ **\@schedule_start_time =** ] schedule_start_time  
 Das Datum, an dem die Auftragsausführung beginnen kann. „schedule_start_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „00:00:00.0000000 0001-01-01“ auf.
 
-[ **@schedule_end_time =** ] schedule_end_time  
+[ **\@schedule_end_time =** ] schedule_end_time  
 Das Datum, an dem die Auftragsausführung beendet werden kann. „schedule_end_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „9999-12-31 11:59:59.0000000“ auf. 
 
-[ **@job_id =** ] job_id OUTPUT  
+[ **\@job_id =** ] job_id OUTPUT  
 Die Auftrags-ID, die dem Auftrag zugewiesen wird, wenn dieser erfolgreich erstellt wurde. „job_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -510,19 +510,19 @@ Aktualisiert einen vorhandenen Auftrag.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, der aktualisiert werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@new_name =** ] 'new_name'  
+[ **\@new_name =** ] 'Neuer_Name'  
 Der neue Name des Auftrags. „new_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@description =** ] 'description'  
+[ **\@description =** ] 'Beschreibung'  
 Die Beschreibung des Auftrags. „description“ ist vom Datentyp „nvarchar(512)“.
 
-[ **@enabled =** ] enabled  
+[ **\@enabled =** ] enabled  
 Gibt an, ob der Auftragszeitplan aktiviert (1) oder nicht aktiviert (0) ist. „enabled“ ist vom Datentyp „bit“.
 
-[ **@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type=** ] schedule_interval_type  
 Der Wert gibt an, wie oft der Auftrag ausgeführt werden soll. „schedule_interval_type“ ist vom Datentyp „nvarchar(50)“ und kann einen der folgenden Werte aufweisen:
 
 - „Once“
@@ -532,13 +532,13 @@ Der Wert gibt an, wie oft der Auftrag ausgeführt werden soll. „schedule_inter
 - „Weeks“
 - „Months“
 
-[ **@schedule_interval_count=** ] schedule_interval_count  
+[ **\@schedule_interval_count=** ] schedule_interval_count  
 Die Anzahl der „schedule_interval_count“-Intervalle, die zwischen den einzelnen Ausführungen des Auftrags stattfinden sollen. „schedule_interval_count“ ist vom Datentyp „int“ und weist den Standardwert „1“ auf. Der Wert muss größer als oder gleich „1“ sein.
 
-[ **@schedule_start_time=** ] schedule_start_time  
+[ **\@schedule_start_time=** ] schedule_start_time  
 Das Datum, an dem die Auftragsausführung beginnen kann. „schedule_start_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „00:00:00.0000000 0001-01-01“ auf.
 
-[ **@schedule_end_time=** ] schedule_end_time  
+[ **\@schedule_end_time=** ] schedule_end_time  
 Das Datum, an dem die Auftragsausführung beendet werden kann. „schedule_end_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „9999-12-31 11:59:59.0000000“ auf. 
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -567,10 +567,10 @@ Löscht einen vorhandenen Auftrag.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, der gelöscht werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@force =** ] force  
+[ **\@force =** ] force  
 Gibt an, ob der Auftrag gelöscht werden soll, wenn für diesen gerade Vorgänge ausgeführt werden, und alle laufenden Ausführungen abgebrochen werden sollen (1) oder ob ein Fehler auftreten soll, wenn gerade Aufträge ausgeführt werden (0). „force“ ist vom Datentyp „bit“.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -622,79 +622,79 @@ Fügt einen Schritt zu einem Auftrag hinzu.
 
 #### <a name="arguments"></a>Argumente
 
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, dem der Schritt hinzugefügt werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 Die Sequenz-ID für den Auftragsschritt. Die Schritt-IDs beginnen bei „1“ und erhöhen sich lückenlos schrittweise. Weist ein vorhandener Schritt bereits diese ID auf, erhöht sich die ID dieses Schritts und aller folgenden Schritte schrittweise, sodass dieser neue Schritt in die Sequenz eingefügt werden kann. Wenn dieses Argument nicht angegeben ist, wird „step_id“ automatisch dem letzten Schritt in der Sequenz der Schritte zugewiesen. „step_id“ ist vom Datentyp „int“.
 
-[ **@step_name =** ] step_name  
+[ **\@step_name =** ] step_name  
 Der Name des Schritts. Muss angegeben werden, es sei denn, es handelt sich um den ersten Schritt eines Auftrags, dem (der Einfachheit halber) der Standardname „JobStep“ zugewiesen ist. „step_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@command_type =** ] 'command_type'  
+[ **\@command_type =** ] 'Befehlstyp'  
 Der Typ des Befehls, der bei diesem Auftragsschritt ausgeführt wird. „command_type“ ist vom Datentyp „nvarchar(50)“ mit dem Standardwert „TSql“, was bedeutet, dass der Wert des Parameters @command_type ein T-SQL-Skript ist.
 
 Wenn dieses Argument angegeben ist, muss der Wert „TSql“ sein.
 
-[ **@command_source =** ] 'command_source'  
+[ **\@command_source =** ] 'Befehlsquelle'  
 Der Typ des Speicherorts, an dem der Befehl gespeichert ist. „command_source“ ist vom Datentyp „nvarchar(50)“ mit dem Standardwert „Inline“, was bedeutet, dass der Wert des Parameters @command_source der wörtliche Text des Befehls ist.
 
 Wenn dieses Argument angegeben ist, muss der Wert „Inline“ sein.
 
-[ **@command =** ] 'command'  
+[ **\@command =** ] 'Befehl'  
 Der Befehl muss ein gültiges T-SQL-Skript sein und wird dann bei diesem Auftragsschritt ausgeführt. „command“ ist vom Datentyp „nvarchar(max)“ mit dem NULL-Standardwert.
 
-[ **@credential_name =** ] 'credential_name'  
+[ **\@credential_name =** ] 'Name_der_Anmeldeinformationen'  
 Der Name der datenbankweit gültigen Anmeldeinformationen, die in dieser Auftragssteuerungsdatenbank gespeichert sind und mit denen eine Verbindung mit den Zieldatenbanken in der Zielgruppe hergestellt wird, wenn dieser Schritt ausgeführt wird. „credential_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@target_group_name =** ] 'target-group_name'  
+[ **\@target_group_name =** ] 'Name_der_Zielgruppe'  
 Der Name der Zielgruppe, die die Zieldatenbanken enthält, in denen der Auftragsschritt ausgeführt wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 Die Verzögerung vor dem ersten Wiederholungsversuch, wenn der Auftragsschritt bei der ersten Ausführung einen Fehler verursacht. „initial_retry_interval_seconds“ ist vom Datentyp „int“ mit dem Standardwert „1“.
 
-[ **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Die maximale Verzögerung zwischen Wiederholungsversuchen. Wenn die Verzögerung zwischen den Wiederholungsversuchen größer ist als dieser Wert, wird diese stattdessen auf diesen Maximalwert gesetzt. „maximum_retry_interval_seconds“ ist vom Datentyp „int“ mit dem Standardwert „120“.
 
-[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Der Multiplikator, der auf die Wiederholungsverzögerung anzuwenden ist, wenn bei mehreren Auftragsschrittausführungen ein Fehler aufgetreten ist. Wenn beim ersten Wiederholungsversuch z.B. eine Verzögerung von 5 Sekunden aufgetreten ist und der Wartezeitmultiplikator „2,0“ beträgt, tritt beim zweiten Wiederholungsversuch eine Verzögerung von 10 Sekunden und beim dritten Wiederholungsversuch eine Verzögerung von 20 Sekunden auf. „retry_interval_backoff_multiplier“ ist vom Datentyp „real“ mit dem Standardwert „2,0“.
 
-[ **@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 Die Anzahl der Wiederholungen für die Ausführung, wenn beim ersten Versuch ein Fehler auftritt. Wenn der „retry_attempts“-Wert „10“ ist, gibt es einen ersten Versuch und 10 Wiederholungsversuch, d.h. insgesamt 11 Versuche. Wenn beim letzten Wiederholungsversuch ein Fehler auftritt, wird die Auftragsausführung mit dem Lebenszyklus „Fehler“ beendet. „retry_attempts“ ist vom Datentyp „int“ mit dem Standardwert „10“.
 
-[ **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@step_timeout_seconds =** ] step_timeout_seconds  
 Die maximal zulässige Dauer für den auszuführenden Schritt. Wenn diese Dauer überschritten wird, wird die Auftragsausführung mit dem Lebenszyklus „TimedOut“ beendet. „step_timeout_seconds“ ist vom Datentyp „int“ mit dem Standardwert 43.200 Sekunden (12 Stunden).
 
-[ **@output_type =** ] 'output_type'  
+[ **\@output_type =** ] 'Ausgabetyp'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Typ des Ziels, in den das erste Resultset des Befehls geschrieben wird. „output_type“ ist vom Datentyp „nvarchar(50)“ mit dem NULL-Standardwert.
 
 Wenn dieses Argument angegeben ist, muss der Wert „SqlDatabase“ sein.
 
-[ **@output_credential_name =** ] 'output_credential_name'  
+[ **\@output_credential_name =** ] 'Name_der_Anmeldeinformationen_für_die_Ausgabe'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, die datenbankweit gültigen Anmeldeinformationen, die zum Herstellen einer Verbindung mit der Ausgabezieldatenbank verwendet wird. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. „output_credential_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert.
 
-[ **@output_subscription_id =** ] 'output_subscription_id'  
+[ **\@output_subscription_id =** ] 'Abonnement-ID für die Ausgabe'  
 Erfordert eine Beschreibung.
 
-[ **@output_resource_group_name =** ] 'output_resource_group_name'  
+[ **\@output_resource_group_name =** ] 'Name_der_Ressourcengruppe_für_die_Ausgabe'  
 Erfordert eine Beschreibung.
 
-[ **@output_server_name =** ] 'output_server_name'  
+[ **\@output_server_name =** ] 'Name_des_Ausgabeservers'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der vollqualifizierte DNS-Name des Servers, der die Ausgabezieldatenbank enthält. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. „output_server_name“ ist vom Datentyp „nvarchar(256)“ mit dem NULL-Standardwert.
 
-[ **@output_database_name =** ] 'output_database_name'  
+[ **\@output_database_name =** ] 'Name_der_Ausgabedatenbank'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Name der Datenbank, die die Ausgabezieltabelle enthält. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. „output_database_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert.
 
-[ **@output_schema_name =** ] 'output_schema_name'  
+[ **\@output_schema_name =** ] 'Name des Ausgabeschemas'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Name des SQL-Schemas, das die Ausgabezieltabelle enthält. Wenn „output_type“ den Wert „SqlDatabase“ enthält, ist der Standardwert „dbo“. „output_schema_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@output_table_name =** ] 'output_table_name'  
+[ **\@output_table_name =** ] 'Name_der_Ausgabetabelle'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Name der Tabelle, in die das erste Resultset des Befehls geschrieben wird. Wenn die Tabelle noch nicht vorhanden ist, wird sie basierend auf dem Schema des zurückgebenden Resultsets erstellt. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. „output_table_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert.
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 Der Output-Parameter, der die Versionsnummer des neuen Auftrags zugewiesen wird. „job_version“ ist vom Datentyp „int“.
 
-[ **@max_parallelism =** ] max_parallelism OUTPUT  
+[ **\@max_parallelism =** ] max_parallelism OUTPUT  
 Der maximale Grad an Parallelität pro Pool für elastische Datenbanken. Wenn dieser festgelegt ist, kann beim Auftragsschritt ausschließlich der maximale Grenzwert der zahlreichen Datenbanken pro Pool für elastische Datenbanken ausgeführt werden. Dies gilt für sämtliche Pools für elastische Datenbanken, die entweder direkt in die Zielgruppe eingeschlossen sind oder sich auf einem Server befinden, der in der Zielgruppe eingeschlossen ist. „max_parallelism“ ist vom Datentyp „int“.
 
 
@@ -746,79 +746,79 @@ Aktualisiert einen Auftragsschritt.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, dem der Schritt zugehörig ist. „job_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 Die ID für den zu ändernden Auftragsschritt. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_id“ ist vom Datentyp „int“.
 
-[ **@step_name =** ] 'step_name'  
+[ **\@step_name =** ] 'Schrittname'  
 Der Name des Schritts, der geändert werden soll. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@new_id =** ] new_id  
+[ **\@new_id =** ] new_id  
 Die neue Sequenz-ID für den Auftragsschritt. Die Schritt-IDs beginnen bei „1“ und erhöhen sich lückenlos schrittweise. Wenn ein Schritt neu angeordnet wird, werden die anderen Schritte automatisch neu nummeriert.
 
-[ **@new_name =** ] 'new_name'  
+[ **\@new_name =** ] 'Neuer_Name'  
 Der neue Name des Schritts. „new_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@command_type =** ] 'command_type'  
+[ **\@command_type =** ] 'Befehlstyp'  
 Der Typ des Befehls, der bei diesem Auftragsschritt ausgeführt wird. „command_type“ ist vom Datentyp „nvarchar(50)“ mit dem Standardwert „TSql“, was bedeutet, dass der Wert des Parameters @command_type ein T-SQL-Skript ist.
 
 Wenn dieses Argument angegeben ist, muss der Wert „TSql“ sein.
 
-[ **@command_source =** ] 'command_source'  
+[ **\@command_source =** ] 'Befehlsquelle'  
 Der Typ des Speicherorts, an dem der Befehl gespeichert ist. „command_source“ ist vom Datentyp „nvarchar(50)“ mit dem Standardwert „Inline“, was bedeutet, dass der Wert des Parameters @command_source der wörtliche Text des Befehls ist.
 
 Wenn dieses Argument angegeben ist, muss der Wert „Inline“ sein.
 
-[ **@command =** ] 'command'  
+[ **\@command =** ] 'Befehl'  
 Die Befehle müssen ein gültiges T-SQL-Skript sein und werden dann bei diesem Auftragsschritt ausgeführt. „command“ ist vom Datentyp „nvarchar(max)“ mit dem NULL-Standardwert.
 
-[ **@credential_name =** ] 'credential_name'  
+[ **\@credential_name =** ] 'Name_der_Anmeldeinformationen'  
 Der Name der datenbankweit gültigen Anmeldeinformationen, die in dieser Auftragssteuerungsdatenbank gespeichert sind und mit denen eine Verbindung mit den Zieldatenbanken in der Zielgruppe hergestellt wird, wenn dieser Schritt ausgeführt wird. „credential_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@target_group_name =** ] 'target-group_name'  
+[ **\@target_group_name =** ] 'Name_der_Zielgruppe'  
 Der Name der Zielgruppe, die die Zieldatenbanken enthält, in denen der Auftragsschritt ausgeführt wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 Die Verzögerung vor dem ersten Wiederholungsversuch, wenn der Auftragsschritt bei der ersten Ausführung einen Fehler verursacht. „initial_retry_interval_seconds“ ist vom Datentyp „int“ mit dem Standardwert „1“.
 
-[ **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Die maximale Verzögerung zwischen Wiederholungsversuchen. Wenn die Verzögerung zwischen den Wiederholungsversuchen größer ist als dieser Wert, wird diese stattdessen auf diesen Maximalwert gesetzt. „maximum_retry_interval_seconds“ ist vom Datentyp „int“ mit dem Standardwert „120“.
 
-[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Der Multiplikator, der auf die Wiederholungsverzögerung anzuwenden ist, wenn bei mehreren Auftragsschrittausführungen ein Fehler aufgetreten ist. Wenn beim ersten Wiederholungsversuch z.B. eine Verzögerung von 5 Sekunden aufgetreten ist und der Wartezeitmultiplikator „2,0“ beträgt, tritt beim zweiten Wiederholungsversuch eine Verzögerung von 10 Sekunden und beim dritten Wiederholungsversuch eine Verzögerung von 20 Sekunden auf. „retry_interval_backoff_multiplier“ ist vom Datentyp „real“ mit dem Standardwert „2,0“.
 
-[ **@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 Die Anzahl der Wiederholungen für die Ausführung, wenn beim ersten Versuch ein Fehler auftritt. Wenn der „retry_attempts“-Wert „10“ ist, gibt es einen ersten Versuch und 10 Wiederholungsversuch, d.h. insgesamt 11 Versuche. Wenn beim letzten Wiederholungsversuch ein Fehler auftritt, wird die Auftragsausführung mit dem Lebenszyklus „Fehler“ beendet. „retry_attempts“ ist vom Datentyp „int“ mit dem Standardwert „10“.
 
-[ **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@step_timeout_seconds =** ] step_timeout_seconds  
 Die maximal zulässige Dauer für den auszuführenden Schritt. Wenn diese Dauer überschritten wird, wird die Auftragsausführung mit dem Lebenszyklus „TimedOut“ beendet. „step_timeout_seconds“ ist vom Datentyp „int“ mit dem Standardwert 43.200 Sekunden (12 Stunden).
 
-[ **@output_type =** ] 'output_type'  
+[ **\@output_type =** ] 'Ausgabetyp'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Typ des Ziels, in den das erste Resultset des Befehls geschrieben wird. Um den Wert von „output_type“ auf NULL zurückzusetzen, legen Sie den Wert dieses Parameters auf '' (leere Zeichenfolge) fest. „output_type“ ist vom Datentyp „nvarchar(50)“ mit dem NULL-Standardwert.
 
 Wenn dieses Argument angegeben ist, muss der Wert „SqlDatabase“ sein.
 
-[ **@output_credential_name =** ] 'output_credential_name'  
+[ **\@output_credential_name =** ] 'Name_der_Anmeldeinformationen_für_die_Ausgabe'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, die datenbankweit gültigen Anmeldeinformationen, die zum Herstellen einer Verbindung mit der Ausgabezieldatenbank verwendet wird. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. Um den Wert von „output_credential_name“ wieder auf NULL zurückzusetzen, legen Sie den Wert dieses Parameters auf '' (leere Zeichenfolge) fest. „output_credential_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert.
 
-[ **@output_server_name =** ] 'output_server_name'  
+[ **\@output_server_name =** ] 'Name_des_Ausgabeservers'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der vollqualifizierte DNS-Name des Servers, der die Ausgabezieldatenbank enthält. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. Um den Wert von „output_server_name“ wieder auf NULL zurückzusetzen, setzen Sie den Wert dieses Parameters auf '' (leere Zeichenfolge) fest. „output_server_name“ ist vom Datentyp „nvarchar(256)“ mit dem NULL-Standardwert.
 
-[ **@output_database_name =** ] 'output_database_name'  
+[ **\@output_database_name =** ] 'Name_der_Ausgabedatenbank'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Name der Datenbank, die die Ausgabezieltabelle enthält. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. Um den Wert von „output_database_name“ wieder auf NULL zurückzusetzen, setzen Sie den Wert dieses Parameters auf '' (leere Zeichenfolge) fest. „output_database_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert.
 
-[ **@output_schema_name =** ] 'output_schema_name'  
+[ **\@output_schema_name =** ] 'Name des Ausgabeschemas'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Name des SQL-Schemas, das die Ausgabezieltabelle enthält. Wenn „output_type“ den Wert „SqlDatabase“ enthält, ist der Standardwert „dbo“. Um den Wert von „output_schema_name“ wieder auf NULL zurückzusetzen, setzen Sie den Wert dieses Parameters auf '' (leere Zeichenfolge) fest. „output_schema_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@output_table_name =** ] 'output_table_name'  
+[ **\@output_table_name =** ] 'Name_der_Ausgabetabelle'  
 Wenn dieses Argument nicht den NULL-Wert aufweist, der Name der Tabelle, in die das erste Resultset des Befehls geschrieben wird. Wenn die Tabelle noch nicht vorhanden ist, wird sie basierend auf dem Schema des zurückgebenden Resultsets erstellt. Muss angegeben werden, wenn „output_type“ den Wert „SqlDatabase“ aufweist. Um den Wert von „output_server_name“ wieder auf NULL zurückzusetzen, setzen Sie den Wert dieses Parameters auf '' (leere Zeichenfolge) fest. „output_table_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert.
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 Der Output-Parameter, der die Versionsnummer des neuen Auftrags zugewiesen wird. „job_version“ ist vom Datentyp „int“.
 
-[ **@max_parallelism =** ] max_parallelism OUTPUT  
+[ **\@max_parallelism =** ] max_parallelism OUTPUT  
 Der maximale Grad an Parallelität pro Pool für elastische Datenbanken. Wenn dieser festgelegt ist, kann beim Auftragsschritt ausschließlich der maximale Grenzwert der zahlreichen Datenbanken pro Pool für elastische Datenbanken ausgeführt werden. Dies gilt für sämtliche Pools für elastische Datenbanken, die entweder direkt in die Zielgruppe eingeschlossen sind oder sich auf einem Server befinden, der in der Zielgruppe eingeschlossen ist. Um den Wert von „max_parallelism“ auf NULL zurückzusetzen, legen Sie den Wert dieses Parameters auf „-1“ fest. „max_parallelism“ ist vom Datentyp „int“.
 
 
@@ -853,16 +853,16 @@ Entfernt einen Auftragsschritt aus einem Auftrag.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, aus dem der Schritt entfernt werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 Die ID für den zu löschenden Auftragsschritt. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_id“ ist vom Datentyp „int“.
 
-[ **@step_name =** ] 'step_name'  
+[ **\@step_name =** ] 'Schrittname'  
 Der Name des zu löschenden Schritts. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_name“ ist vom Datentyp „nvarchar(128)“.
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 Der Output-Parameter, der die Versionsnummer des neuen Auftrags zugewiesen wird. „job_version“ ist vom Datentyp „int“.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -897,10 +897,10 @@ Startet die Ausführung eines Auftrags.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, aus dem der Schritt entfernt werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@job_execution_id =** ] job_execution_id OUTPUT  
+[ **\@job_execution_id =** ] job_execution_id OUTPUT  
 Der Ausgabeparameter, der der ID der Auftragsausführung zugewiesen wird. „job_version“ ist vom Datentyp „uniqueidentifier“.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -928,7 +928,7 @@ Hält die Ausführung eines Auftrags an.
 
 
 #### <a name="arguments"></a>Argumente
-[ **@job_execution_id =** ] job_execution_id  
+[ **\@job_execution_id =** ] job_execution_id  
 Die ID der Auftragsausführung, die angehalten werden soll. „job_execution_id“ ist vom Datentyp „uniqueidentifier“ mit dem NULL-Standardwert.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -958,10 +958,10 @@ Fügt eine Zielgruppe hinzu.
 
 
 #### <a name="arguments"></a>Argumente
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'Name der Zielgruppe'  
 Der Name der Zielgruppe, die erstellt werden soll. „target_group_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@target_group_id =** ] target_group_id OUTPUT Die Zielgruppen-ID, die dem Auftrag zugewiesen wird, wenn dieser erfolgreich erstellt wurde. „target_group_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“ mit dem NULL-Standardwert.
+[ **\@target_group_id =** ] target_group_id OUTPUT Die Zielgruppen-ID, die dem Auftrag zugewiesen wird, wenn dieser erfolgreich erstellt wurde. „target_group_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“ mit dem NULL-Standardwert.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
@@ -988,7 +988,7 @@ Löscht eine Zielgruppe.
 
 
 #### <a name="arguments"></a>Argumente
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'Name der Zielgruppe'  
 Der Name der Zielgruppe, die gelöscht werden soll. „target_group_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -1022,31 +1022,31 @@ Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'Name der Zielgruppe'  
 Der Name der Zielgruppe, der das Mitglied hinzugefügt wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@membership_type =** ] 'membership_type'  
+[ **\@membership_type =** ] 'Mitgliedschaftstyp'  
 Gibt an, ob das Zielgruppenmitglied ein- bzw. ausgeschlossen wird. „target_group_name“ ist vom Datentyp „nvarchar(128)“ mit dem Standardwert „Include“. Gültige Werte für „target_group_name“ sind „Include“ oder „Exclude“.
 
-[ **@target_type =** ] 'target_type'  
+[ **\@target_type =** ] 'Zieltyp'  
 Der Typ der Zieldatenbank oder der Sammlung von Datenbanken, einschließlich aller Datenbanken auf einem Server, alle Datenbanken in einem Pool für elastische Datenbanken, alle Datenbanken in einer Shardzuordnung oder einer einzelnen Datenbank. „target_type“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert. Gültige Werte für „target_type“ sind „SqlServer“, „SqlElasticPool“, „SqlDatabase“ oder „SqlShardMap“. 
 
-[ **@refresh_credential_name =** ] 'refresh_credential_name'  
+[ **\@refresh_credential_name =** ] refresh_'Name_der_Anmeldeinformationen'  
 Der Name des Azure SQL-Datenbank-Servers. „refresh_credential_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@server_name =** ] 'server_name'  
+[ **\@server_name =** ] 'Servername'  
 Der Name des SQL-Datenbank-Servers, der der angegebenen Zielgruppe hinzugefügt werden soll. „server_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlServer“ aufweist. „server_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@database_name =** ] 'database_name'  
+[ **\@database_name =** ] 'Datenbankname'  
 Der Name der Datenbank, die der angegebenen Zielgruppe hinzugefügt werden soll. „database_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlDatabase“ aufweist. „database_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@elastic_pool_name =** ] 'elastic_pool_name'  
+[ **\@elastic_pool_name =** ] 'Name_des_Pools_für_elastische_Datenbanken'  
 Der Name des Pools für elastische Datenbanken, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlElasticPool“ aufweist. „elastic_pool_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@shard_map_name =** ] 'shard_map_name'  
+[ **\@shard_map_name =** ] 'Name_der_Shardzuordnung'  
 Der Name des Pools der Shardzuordnung, die der angegebenen Zielgruppe hinzugefügt werden soll. „elastic_pool_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlSqlShardMap“ aufweist. „shard_map_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
-[ **@target_id =** ] target_group_id OUTPUT  
+[ **\@target_id =** ] target_group_id OUTPUT  
 Die Ziel-ID, die dem zu entfernenden Zielgruppenmitglied zugewiesen ist, wenn dieses erstellt und der Zielgruppe hinzugefügt wurde. „target_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“ mit dem NULL-Standardwert.
 Rückgabecodewerte: 0 (erfolgreich) oder 1 (fehlerhaft)
 
@@ -1157,13 +1157,13 @@ Entfernt die Verlaufsdatensätze für einen Auftrag.
 ```
 
 #### <a name="arguments"></a>Argumente
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'Jobname'  
 Der Name des Auftrags, für den die Verlaufsdatensätze gelöscht werden sollen. „job_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert. Es muss entweder „job_id“ oder „job_name“ angegeben werden, beides ist nicht möglich.
 
-[ **@job_id =** ] job_id  
+[ **\@job_id =** ] job_id  
  Die Auftrags-ID des Auftrags für die Datensätze, die gelöscht werden sollen. „job_id“ ist vom Datentyp „uniqueidentifier“ mit dem NULL-Standardwert. Es muss entweder „job_id“ oder „job_name“ angegeben werden, beides ist nicht möglich.
 
-[ **@oldest_date =** ] oldest_date  
+[ **\@oldest_date =** ] oldest_date  
  Der älteste Datensatz, der im Verlauf beibehalten werden soll. „oldest_date“ ist vom Datentyp „DATETIME2“ mit dem NULL-Standardwert. Wenn „oldest_date“ angegeben ist, entfernt „sp_purge_jobhistory“ nur Datensätze, die älter sind als der angegebene Wert.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
@@ -1193,7 +1193,7 @@ GO
 Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) verfügbar.
 
 
-|Sicht  |Beschreibung  |
+|Sicht  |BESCHREIBUNG  |
 |---------|---------|
 |[jobs_executions](#jobsexecutions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
 |[jobs](#jobs-view)     |   Zeigt alle Aufträge an.      |
@@ -1211,7 +1211,7 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 Zeigt den Auftragsausführungsverlauf an.
 
 
-|Spaltenname|   Datentyp   |Beschreibung|
+|Spaltenname|   Datentyp   |BESCHREIBUNG|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  Eindeutige ID einer Instanz einer Auftragsausführung.
 |**job_name**   |nvarchar(128)  |Der Name des Auftrags.
@@ -1239,7 +1239,7 @@ Zeigt den Auftragsausführungsverlauf an.
 
 Zeigt alle Aufträge an.
 
-|Spaltenname|   Datentyp|  Beschreibung|
+|Spaltenname|   Datentyp|  BESCHREIBUNG|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
 |**job_id**|    uniqueidentifier    |Eindeutige ID des Auftrags.|
@@ -1257,7 +1257,7 @@ Zeigt alle Aufträge an.
 
 Zeigt alle Auftragsversionen an.
 
-|Spaltenname|   Datentyp|  Beschreibung|
+|Spaltenname|   Datentyp|  BESCHREIBUNG|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
 |**job_id**|    uniqueidentifier    |Eindeutige ID des Auftrags.|
@@ -1270,7 +1270,7 @@ Zeigt alle Auftragsversionen an.
 
 Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.
 
-|Spaltenname    |Datentyp| Beschreibung|
+|Spaltenname    |Datentyp| BESCHREIBUNG|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| Der Name des Auftrags.|
 |**job_id** |uniqueidentifier   |Eindeutige ID des Auftrags.|
@@ -1311,7 +1311,7 @@ Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an. Das Schema is
 
 Listet alle Zielgruppen auf.
 
-|Spaltenname|Datentyp| Beschreibung|
+|Spaltenname|Datentyp| BESCHREIBUNG|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |Der Name der Zielgruppe, eine Sammlung von Datenbanken. 
 |**target_group_id**    |uniqueidentifier   |Eindeutige ID der Zielgruppe.
@@ -1322,7 +1322,7 @@ Listet alle Zielgruppen auf.
 
 Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 
-|Spaltenname|Datentyp| Beschreibung|
+|Spaltenname|Datentyp| BESCHREIBUNG|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|Der Name der Zielgruppe, eine Sammlung von Datenbanken. |
 |**target_group_id**    |uniqueidentifier   |Eindeutige ID der Zielgruppe.|

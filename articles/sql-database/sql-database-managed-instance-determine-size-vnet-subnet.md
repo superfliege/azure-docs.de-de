@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/04/2019
-ms.openlocfilehash: 12b0690c7653b03c8099253bee509a79a2ae2600
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/22/2019
+ms.openlocfilehash: 05440698d40a2175fd47384fa2db94ad80d79aa4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561857"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773595"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Bestimmen der VNET-/Subnetzgröße für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -27,10 +27,10 @@ Die Anzahl der verwalteten Instanzen, die im Subnetz des VNETs bereitgestellt we
 
 Bei der Erstellung einer verwalteten Instanz ordnet Azure abhängig vom Tarif, den Sie bei der Bereitstellung ausgewählt haben, eine Reihe von virtuellen Computern zu. Da diese virtuellen Computer Ihrem Subnetz zugeordnet sind, benötigen sie IP-Adressen. Um bei regulären Vorgängen und bei der Wartung von Diensten Hochverfügbarkeit sicherzustellen, kann Azure zusätzliche virtuelle Computer zuordnen. Daher ist die Anzahl der erforderlichen IP-Adressen in einem Subnetz größer als die Anzahl der verwalteten Instanzen in diesem Subnetz.
 
-Prinzipiell benötigt eine verwaltete Instanz zwischen 16 und 256 IP-Adressen in einem Subnetz. Daher können Sie bei der Definition Ihrer Subnetz-IP-Adressbereiche die Subnetzmasken /28 bis /24 verwenden.
+Prinzipiell benötigt eine verwaltete Instanz zwischen 16 und 256 IP-Adressen in einem Subnetz. Daher können Sie für die Definition Ihrer Subnetz-IP-Adressbereiche 28- bis 24-Bit-Masken verwenden. Eine 28-Bit-Maske (14 Hosts pro Netzwerk) ist eine gute Größe für eine Bereitstellung für einen universellen Zweck oder für geschäftskritische Bereitstellungen. Eine 27-Bit-Maske (30 Hosts pro Netzwerk) ist ideal für Bereitstellungen mit mehreren verwalteten Instanzen innerhalb des gleichen VNets. Eine 26- (62 Hosts) und 24-Bit-Maske (254 Hosts) ermöglichen die weitere Skalierung über das VNet hinaus, um zusätzliche verwaltete Instanzen zu unterstützen.
 
 > [!IMPORTANT]
-> Als Größe für das Subnetz stellen 16 IP-Adressen das absolute Minimum dar, das nur beschränkte Möglichkeiten für eine weitere horizontale Hochskalierung der verwalteten Instanz bietet. Die Auswahl eines Subnetzes mit dem Präfix /27 oder darunter wird dringend empfohlen.
+> Als Größe für das Subnetz stellen 16 IP-Adressen das absolute Minimum dar, das nur beschränkte Möglichkeiten für eine weitere Hochskalierung der verwalteten Instanz bietet. Die Auswahl eines Subnetzes mit einer Präfixlänge von 27 oder darunter wird dringend empfohlen.
 
 ## <a name="determine-subnet-size"></a>Bestimmen der Subnetzgröße
 

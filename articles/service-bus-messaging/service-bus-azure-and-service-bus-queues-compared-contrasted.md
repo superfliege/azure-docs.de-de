@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 74525b42445d87923b0bad7a522456257e651d00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852795"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856021"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die derzeit in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -83,7 +83,8 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 * Für Nachrichten in Storage-Warteschlangen gilt normalerweise das FIFO-Prinzip, aber manchmal kann die Reihenfolge auch falsch sein, z.B. wenn die Sichtbarkeitstimeoutdauer der Nachricht abläuft (etwa als Folge des Absturzes einer Clientanwendung während der Verarbeitung). Wenn das Sichtbarkeitstimeout abläuft, wird die Nachricht für die Warteschlange erneut sichtbar, damit sie von einem anderen Worker aus der Warteschlange entnommen werden kann. Zu diesem Zeitpunkt wird die erneut sichtbare Nachricht ggf. hinter eine Nachricht in der Warteschlange platziert (um erneut aus dieser entnommen zu werden), die ursprünglich nach ihr in die Warteschlange gestellt wurde.
 * Das garantierte FIFO-Prinzip in Service Bus-Warteschlangen erfordert die Verwendung von Messagingsitzungen. Wenn die Anwendung bei der Verarbeitung einer im **Peek & Lock**-Modus empfangenen Nachricht abstürzt, startet die Anwendung, sobald ein Warteschlangenempfänger das nächste Mal eine Messagingsitzung akzeptiert, mit der Fehlernachricht, nachdem die zugehörige Gültigkeitsdauer (TTL) abgelaufen ist.
 * Storage-Warteschlangen unterstützen Standardwarteschlangenszenarios, z.B. das Abkoppeln von Anwendungskomponenten zur Erhöhung von Skalierbarkeit und Fehlertoleranz, Lastenausgleich und das Erstellen von Prozessworkflows.
-* Service Bus-Warteschlangen unterstützen die *At-Least-Once*-Zustellungsgarantie. Darüber hinaus kann die *At-Most-Once*-Semantik unterstützt werden, indem mithilfe des Sitzungszustands der Anwendungszustand gespeichert wird, und indem mithilfe von Transaktionen Nachrichten automatisch empfangen werden und der Sitzungszustand aktualisiert wird.
+* Service Bus-Warteschlangen unterstützen die *At-Least-Once*-Zustellungsgarantie. 
+* Inkonsistenzen in Bezug auf die Nachrichtenbehandlung im Kontext von Service Bus-Sitzungen können vermieden werden, indem der Sitzungszustand verwendet wird, um den Zustand der Anwendung im Verhältnis zum Fortschritt bei der Behandlung der Nachrichtensequenz der Sitzung zu speichern, und indem Transaktionen zum Klären empfangener Nachrichten und zum Aktualisieren des Sitzungszustands verwendet werden. Diese Art von Konsistenzfunktion wird in Produkten anderer Anbieter manchmal als *Exactly-Once Processing* (genau einmalige Verarbeitung) bezeichnet, aber Transaktionsfehler führen offensichtlich dazu, dass Nachrichten erneut zugestellt werden. Daher ist der Begriff nicht genau zutreffend.
 * Storage-Warteschlangen bieten ein einheitliches und konsistentes Programmiermodell für Warteschlangen, Tabellen und Blobs – für Entwickler und für Betriebsteams.
 * Service Bus-Warteschlangen unterstützen lokale Transaktionen im Kontext einer einzelnen Warteschlange.
 * Der von Service Bus unterstützte **Receive & Delete**-Modus bietet die Möglichkeit, die Anzahl von Übermittlungsvorgängen (und damit verbundenen Gebühren) auf Kosten einer verminderten Zustellungssicherheit zu reduzieren.
@@ -173,7 +174,7 @@ In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Wartes
 
 | Vergleichskriterien | Storage-Warteschlangen | Service Bus-Warteschlangen |
 | --- | --- | --- |
-| Authentifizierung |**Symmetrischer Schlüssel** |**Symmetrischer Schlüssel** |
+| Authentication |**Symmetrischer Schlüssel** |**Symmetrischer Schlüssel** |
 | Sicherheitsmodell |Delegierter Zugriff über SAS-Token |SAS |
 | Verbund von Identitätsanbietern |**Nein** |**Ja** |
 
@@ -192,9 +193,9 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verwenden des Warteschlangenspeicherdiensts](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md)
-* [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus) (Blogbeitrag)](http://www.code-magazine.com/article.aspx?quickid=1112041)
+* [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus) (Blogbeitrag)](https://www.code-magazine.com/article.aspx?quickid=1112041)
 * [The Developer's Guide to Service Bus (Entwicklerhandbuch für Service Bus)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
-* [Using the Queuing Service in Azure (Verwenden des Warteschlangendiensts in Azure)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
+* [Using the Queuing Service in Azure (Verwenden des Warteschlangendiensts in Azure)](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 
 [Azure portal]: https://portal.azure.com
 

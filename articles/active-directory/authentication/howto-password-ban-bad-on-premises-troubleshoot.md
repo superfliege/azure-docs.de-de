@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung beim Azure AD-Kennwortschutz (Vorschauversion)
-description: Informationen zur allgemeinen Problembehandlung beim Azure AD-Kennwortschutz (Vorschauversion)
+title: Problembehandlung für den Azure AD-Kennwortschutz
+description: Informationen zur allgemeinen Problembehandlung für den Azure AD-Kennwortschutz
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,43 +11,76 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5727965373752d40e3ce508c1bc79046c2b3b70b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177750"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285699"
 ---
-# <a name="preview-azure-ad-password-protection-troubleshooting"></a>Vorschau: Problembehandlung beim Azure AD-Kennwortschutz
-
-|     |
-| --- |
-| Der Azure AD-Kennwortschutz ist als öffentliche Vorschaufunktion für Azure Active Directory verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+# <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
 
 Nach der Bereitstellung des Azure AD-Kennwortschutzes ist möglicherweise eine Problembehandlung erforderlich. In diesem Artikel werden einige allgemeine Problembehandlungsschritte ausführlich beschrieben, damit Sie diese besser verstehen können.
 
-## <a name="weak-passwords-are-not-getting-rejected-as-expected"></a>Unsichere Kennwörter werden nicht wie erwartet abgelehnt
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>Der DC-Agent hat einen Proxy nicht im Verzeichnis gefunden.
 
-Dies kann mehrere mögliche Ursachen haben:
+Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30017“ im Administratorereignisprotokoll des DC-Agents.
 
-1. Der oder die DC-Agents haben noch keine Richtlinie heruntergeladen. Anzeichen hierfür sind 30001-Ereignisse im Admin-Ereignisprotokoll des DC-Agents.
+Das Problem ist in der Regel darauf zurückzuführen, dass ein Proxy noch nicht registriert wurde. Wenn ein Proxy registriert wurde, kann es aufgrund der AD-Replikationswartezeit zu einer Verzögerung kommen, bevor ein bestimmter DC-Agent den Proxy sehen kann.
 
-    Mögliche Ursachen für dieses Problem:
+## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>Der DC-Agent kann nicht mit einem Proxy kommunizieren.
 
-    1. Die Gesamtstruktur ist noch nicht registriert.
-    2. Der Proxy ist noch nicht registriert.
-    3. Aufgrund von Problemen mit der Netzwerkkonnektivität kann der Proxydienst nicht mit Azure kommunizieren (überprüfen Sie die HTTP-Proxy-Anforderungen).
+Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“ im Administratorereignisprotokoll des DC-Agents. Dies kann mehrere mögliche Ursachen haben:
 
-2. Der Erwingungsmodus der Kennwortrichtlinie ist noch auf „Überwachung“ eingestellt. Wenn dies der Fall ist, konfigurieren Sie den Modus im Azure AD-Kennwortschutzportal neu, und legen Sie „Erzwingen“ fest. Informationen hierzu finden Sie unter [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Der DC-Agent befindet sich in einem isolierten Teil des Netzwerks, der keine Netzwerkkonnektivität mit dem bzw. den registrierten Proxy(s) zulässt. Dieses Problem ist harmlos, solange andere DC-Agents mit dem bzw. den Proxy(s) kommunizieren können, um Kennwortrichtlinien aus Azure herunterzuladen, die der isolierte Domänencontroller (DC) dann per Replikation der Richtliniendateien in der SYSVOL-Freigabe erhält.
 
-3. Die Kennwortrichtlinie wurde deaktiviert. Wenn dies der Fall ist, konfigurieren Sie die Kennwortrichtlinie im Azure AD-Kennwortschutzportal erneut, und aktivieren Sie sie. Informationen hierzu finden Sie unter [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Der Proxyhostcomputer blockiert den Zugriff auf den RPC-Endpunktzuordnungsendpunkt (Port 135).
 
-4. Der Kennwortüberprüfungsalgorithmus funktioniert möglicherweise erwartungsgemäß. Informationen hierzu finden Sie unter [Auswerten von Kennwörtern](concept-password-ban-bad.md#how-are-passwords-evaluated).
+   Das Installationsprogramm für den Proxy des Azure AD-Kennwortschutzes erstellt automatisch eine eingehende Windows-Firewallregel, die den Zugriff auf Port 135 zulässt. Wird diese Regel später gelöscht oder deaktiviert, können DC-Agents nicht mit dem Proxydienst kommunizieren. Wenn die integrierte Windows-Firewall deaktiviert wurde, um stattdessen ein anderes Firewallprodukt zu verwenden, müssen Sie diese andere Firewall zum Zulassen des Zugriffs auf Port 135 konfigurieren.
+
+1. Der Proxyhostcomputer blockiert den Zugriff auf den RPC-Endpunkt (dynamisch oder statisch), an dem der Proxydienst lauscht.
+
+   Das Installationsprogramm für den Proxy des Azure AD-Kennwortschutzes erstellt automatisch eine eingehende Windows-Firewallregel, die den Zugriff auf alle eingehenden Ports zulässt, an denen der Proxydienst des Azure AD-Kennwortschutzes lauscht. Wird diese Regel später gelöscht oder deaktiviert, können DC-Agents nicht mit dem Proxydienst kommunizieren. Wenn die integrierte Windows-Firewall deaktiviert wurde, um stattdessen ein anderes Firewallprodukt zu verwenden, müssen Sie diese andere Firewall zum Zulassen des Zugriffs auf alle eingehenden Ports konfigurieren, an denen der Proxydienst des Azure AD-Kennwortschutzes lauscht. Diese Konfiguration kann präzisiert werden, wenn der Proxydienst zum Lauschen an einem bestimmten statischen RPC-Port konfiguriert wurde (mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`).
+
+## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>Der Proxydienst kann Aufrufe von DC-Agents in der Domäne empfangen, aber nicht mit Azure kommunizieren.
+
+Stellen Sie sicher, dass der Proxycomputer über Konnektivität mit den Endpunkten verfügt, die in den [Bereitstellungsanforderungen](howto-password-ban-bad-on-premises-deploy.md) aufgeführt sind.
+
+## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>Der DC-Agent kann Kennwortrichtliniendateien und andere Zustandsdateien nicht verschlüsseln oder entschlüsseln.
+
+Dieses Problem kann sich durch unterschiedlichste Symptome äußern, in der Regel hat es aber immer die gleiche Grundursache.
+
+Der Azure AD-Kennwortschutz weist eine kritische Abhängigkeit von der Ver- und Entschlüsselungsfunktion des Microsoft-Schlüsselverteilungsdiensts (Key Distribution Service, KDS) auf, der auf Domänencontrollern unter Windows Server 2012 und höher verfügbar ist. Der Schlüsselverteilungsdienst muss auf allen Domänencontrollern in einer Domäne, auf denen Windows Server 2012 und höher ausgeführt wird, aktiviert und funktionsfähig sein.
+
+Der Startmodus des Schlüsselverteilungsdiensts ist standardmäßig auf „Manuell“ (Start durch Auslöser) festgelegt. Bei dieser Konfiguration wird der Dienst bei Bedarf gestartet, wenn ein Client zum ersten Mal versucht, ihn zu verwenden. Der Standardstartmodus des Diensts ist für die Verwendung des Azure AD-Kennwortschutzes akzeptabel.
+
+Wenn der Startmodus des Schlüsselverteilungsdiensts auf „Deaktiviert“ festgelegt wurde, muss die Konfiguration geändert werden, damit der Azure AD-Kennwortschutz einwandfrei funktioniert.
+
+Für dieses Problem kann ein einfacher Test durchgeführt werden: Starten Sie den Schlüsselverteilungsdienst manuell über die MMC-Konsole der Dienstverwaltung oder mit einem anderen Tool für die Dienstverwaltung (führen Sie z. B. „net start kdssvc“ in einer Eingabeaufforderungskonsole aus). Der Schlüsselverteilungsdienst sollte erfolgreich gestartet und weiter ausgeführt werden.
+
+Wenn der Schlüsselverteilungsdienst nicht gestartet werden kann, liegt dies in den meisten Fällen daran, dass sich das Active Directory-Domänencontrollerobjekt außerhalb der Standardorganisationseinheit der Domänencontroller befindet. Diese Konfiguration wird nicht vom Schlüsselverteilungsdienst unterstützt und ist keine Einschränkung, die der Azure AD-Kennwortschutz erfordert. Sie können das Problem beheben, indem Sie das Domänencontrollerobjekt an einen Speicherort unter der Standardorganisationseinheit der Domänencontroller verschieben.
+
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Unsichere Kennwörter werden akzeptiert, obwohl dies nicht der Fall sein sollte.
+
+Dieses Problem kann mehrere Ursachen haben.
+
+1. Ihr(e) DC-Agent(s) kann bzw. können eine Richtlinie nicht herunterladen oder vorhandene Richtlinien nicht entschlüsseln. Überprüfen Sie in den obigen Abschnitten, ob eines der dort beschriebenen Probleme die Ursache ist.
+
+1. Der Erwingungsmodus der Kennwortrichtlinie ist noch auf „Überwachung“ eingestellt. Wenn diese Konfiguration aktiv ist, konfigurieren Sie den Modus im Azure AD-Kennwortschutzportal neu, und legen Sie „Erzwingen“ fest. Siehe [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+1. Die Kennwortrichtlinie wurde deaktiviert. Wenn diese Konfiguration aktiv ist, konfigurieren Sie die Richtlinie im Azure AD-Kennwortschutzportal neu, und legen Sie „Aktiviert“ fest. Siehe [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+1. Sie haben die DC-Agent-Software nicht auf allen Domänencontrollern in der Domäne installiert. In diesem Fall ist es schwierig sicherzustellen, dass Windows-Remoteclients während einer Kennwortänderung einen bestimmten Domänencontroller als Ziel verwenden. Wenn Sie der Meinung sind, dass Sie einen bestimmten Domänencontroller mit der DC-Agent-Software erfolgreich als Ziel festgelegt haben, können Sie dies im DC-Agent-Administratorereignisprotokoll nochmals überprüfen: Das Ergebnis der Kennwortüberprüfung wird unabhängig von seinem Wert in mindestens einem Ereignis dokumentiert. Ist für den Benutzer, dessen Kennwort geändert wird, kein Ereignis vorhanden, wurde die Kennwortänderung wahrscheinlich von einem anderen Domänencontroller verarbeitet.
+
+   Alternativ können Sie folgenden Test durchführen: Versuchen Sie, Kennwörter festzulegen bzw. zu ändern, während Sie direkt bei einem Domänencontroller angemeldet sind, auf dem die DC-Agent-Software installiert ist. Diese Vorgehensweise wird nicht für Active Directory-Produktionsdomänen empfohlen.
+
+   Die inkrementelle Bereitstellung der DC-Agent-Software wird zwar unterstützt (mit den obigen Einschränkungen), Microsoft empfiehlt jedoch ausdrücklich, die DC-Agent-Software so bald wie möglich auf allen Domänencontrollern in einer Domäne zu installieren.
+
+1. Möglicherweise funktioniert der Kennwortüberprüfungsalgorithmus wie erwartet. Siehe [Auswerten von Kennwörtern](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
 ## <a name="directory-services-repair-mode"></a>Reparaturmodus für Verzeichnisdienste
 
-Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet wird, erkennt dies der DC-Agent-Dienst und veranlasst, unabhängig von der derzeit aktiven Richtlinienkonfiguration, die Deaktivierung aller Kennwortüberprüfungs- oder -erzwingungsaktivitäten.
+Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet wird, erkennt dies der DC-Agent-Dienst, und er veranlasst unabhängig von der derzeit aktiven Richtlinienkonfiguration die Deaktivierung aller Kennwortüberprüfungs- oder Erzwingungsaktivitäten.
 
 ## <a name="emergency-remediation"></a>Notfallbereinigung
 
@@ -63,7 +96,7 @@ Wenn die Herabstufung erfolgreich abgeschlossen, der Domänencontroller neu gest
 
 ## <a name="removal"></a>Entfernen
 
-Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige Status in Domänen und Gesamtstruktur bereinigt werden soll, kann diese Aufgabe mit den folgenden Schritten erzielt werden:
+Wenn die Software des Azure AD-Kennwortschutzes deinstalliert und alle zugehörigen Zustandsdaten in den Domänen und der Gesamtstruktur bereinigt werden sollen, gehen Sie wie folgt vor:
 
 > [!IMPORTANT]
 > Es ist wichtig, diese Schritte der Reihe nach auszuführen. Wenn eine Instanz des Proxydiensts weiterhin ausgeführt wird, wird sie ihr „serviceConnectionPoint“-Objekt regelmäßig neu erstellen. Wenn eine Instanz des DC-Agent-Diensts weiterhin ausgeführt wird, wird sie ihr „serviceConnectionPoint“-Objekt und den „sysvol“-Status regelmäßig neu erstellen.
@@ -80,9 +113,9 @@ Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige
 
    Lassen Sie nicht das Sternchen („*“) am Ende des Variablenwerts „$keywords“ aus.
 
-   Die mit dem Befehl `Get-ADObject` gefundenen Ergebnisobjekte können dann an `Remove-ADObject` weitergeleitet oder manuell gelöscht werden. 
+   Die mit dem Befehl `Get-ADObject` gefundenen Ergebnisobjekte können dann an `Remove-ADObject` weitergeleitet oder manuell gelöscht werden.
 
-4. Entfernen Sie manuell alle DC-Agent-Verbindungspunkte in jedem Domänennamenkontext. Es gibt möglicherweise eines dieser Objekte pro Domänencontroller in der Gesamtstruktur, je nachdem, wie umfassend die Software der öffentlichen Vorschau bereitgestellt wurde. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-PowerShell-Befehl erkannt werden:
+4. Entfernen Sie manuell alle DC-Agent-Verbindungspunkte in jedem Domänennamenkontext. Je nachdem, wie umfassend die Software bereitgestellt wurde, kann pro Domänencontroller in der Gesamtstruktur eines dieser Objekte vorhanden sein. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-PowerShell-Befehl erkannt werden:
 
    ```PowerShell
    $scp = "serviceConnectionPoint"

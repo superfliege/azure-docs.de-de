@@ -3,23 +3,23 @@ title: Arbeiten mit Reliable Collections | Microsoft Docs
 description: Lernen Sie die bewährten Methoden für die Arbeit mit Reliable Collections kennen.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
-manager: jeanpaul.connock
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/12/2019
-ms.author: twhitney
-ms.openlocfilehash: e7f0219919fe0569633cc85b89a1a91b1704b269
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 02/22/2019
+ms.author: aljo
+ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872686"
 ---
 # <a name="working-with-reliable-collections"></a>Arbeiten mit Reliable Collections
 Service Fabric bietet .NET-Entwicklern über Reliable Collections ein zustandsbehaftetes Programmiermodell. Service Fabric umfasst z. B. Reliable Dictionary- und Reliable Queue-Klassen. Wenn Sie diese Klassen verwenden, wird Ihr Zustand partitioniert (für Skalierbarkeit), repliziert (für Verfügbarkeit) und innerhalb einer Partition durchgeführt (für ACID-Semantik). Sehen wir uns nun die typische Nutzung eines Objekts für ein zuverlässiges Wörterbuch an.
@@ -143,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definieren von unveränderlichen Datentypen, um Programmierfehler zu verhindern
-Im Idealfall sollte der Compiler Fehler melden, wenn Sie versehentlich Code generieren, der den Zustand eines Objekts ändert, das nicht geändert werden darf. Leider ist dies mit dem C#-Compiler nicht möglich. Um potenzielle Programmierfehler zu vermeiden, raten wir Ihnen dringend dazu, die mit Reliable Collections verwendeten Typen als unveränderliche Typen zu definieren. Dazu halten Sie sich an Hauptwerttypen (z. B. Zahlen [Int32, UInt64 usw.], DateTime, Guid, TimeSpan und ähnliche Werte). Sie können auch „String“ verwenden. Es empfiehlt sich, Sammlungseigenschaften zu vermeiden, da deren Serialisierung und Deserialisierung die Leistung beeinträchtigen kann. Wenn Sie jedoch Sammlungseigenschaften verwenden möchten, raten wir dringend dazu, die .NET-Bibliothek mit unveränderlichen Sammlungen ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) zu verwenden. Diese Bibliothek können Sie unter http://nuget.org herunterladen. Zudem empfehlen wir nach Möglichkeit, Klassen zu versiegeln und schreibgeschützte Felder zu verwenden.
+Im Idealfall sollte der Compiler Fehler melden, wenn Sie versehentlich Code generieren, der den Zustand eines Objekts ändert, das nicht geändert werden darf. Leider ist dies mit dem C#-Compiler nicht möglich. Um potenzielle Programmierfehler zu vermeiden, raten wir Ihnen dringend dazu, die mit Reliable Collections verwendeten Typen als unveränderliche Typen zu definieren. Dazu halten Sie sich an Hauptwerttypen (z. B. Zahlen [Int32, UInt64 usw.], DateTime, Guid, TimeSpan und ähnliche Werte). Sie können auch „String“ verwenden. Es empfiehlt sich, Sammlungseigenschaften zu vermeiden, da deren Serialisierung und Deserialisierung die Leistung beeinträchtigen kann. Wenn Sie jedoch Sammlungseigenschaften verwenden möchten, raten wir dringend dazu, die .NET-Bibliothek mit unveränderlichen Sammlungen ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) zu verwenden. Diese Bibliothek können Sie unter https://nuget.org herunterladen. Zudem empfehlen wir nach Möglichkeit, Klassen zu versiegeln und schreibgeschützte Felder zu verwenden.
 
 Der folgende UserInfo-Typ veranschaulicht die Definition eines unveränderlichen Typs mithilfe der oben genannten Empfehlungen.
 
@@ -207,8 +207,7 @@ Zudem wird der Dienstcode auf jeder Upgradedomäne einzeln aktualisiert. Währen
 
 > [!WARNING]
 > Sie können Sie das Schema eines Schlüssels ändern, müssen jedoch sicherstellen, dass die Hashcode- und Gleichungsalgorithmen Ihres Schlüssels stabil sind. Wenn Sie die Funktionsweise der folgenden Algorithmen ändern, können Sie den Schlüssel nicht mehr im Reliable Dictionary abfragen.
->
->
+> Eine .NET Zeichenfolge kann als Schlüssel verwendet werden, aber Sie müssen die Zeichenfolge selbst als Schlüssel verwenden – verwenden Sie nicht das Ergebnis von „String.GetHashCode“ als Schlüssel.
 
 Alternativ können Sie einen Vorgang ausführen, der als 2-Phasen-Upgrade bezeichnet wird. Mit einem 2-Phasen-Upgrade aktualisieren Sie den Dienst von V1 auf V2: V2 enthält den Code, der mit der neuen Schemaänderung umzugehen weiß, aber dieser Code wird nicht ausgeführt. Wenn der V2-Code V1-Daten liest, verwendet und schreibt er V1-Daten. Wenn das Upgrade auf allen Upgradedomänen abgeschlossen ist, können Sie den laufenden V2-Instanzen signalisieren, dass das Upgrade abgeschlossen ist. (Eine Möglichkeit, dies zu signalisieren, besteht darin, ein Konfigurationsupgrade durchzuführen. Daher wird dieser Vorgang als 2-Phasen-Upgrade bezeichnet.) Jetzt können die V2-Instanzen V1-Daten lesen, in V2-Daten konvertieren, diese verwenden und als V2-Daten schreiben. Wenn andere Instanzen V2-Daten lesen, müssen sie diese nicht konvertieren. Sie verwenden sie einfach und schreiben V2-Daten.
 

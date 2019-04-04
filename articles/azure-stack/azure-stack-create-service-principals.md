@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0f5a4dc76830740d69547a01ce40b5e10cf4a74b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809247"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499407"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Bereitstellen des Anwendungszugriffs auf Azure Stack
 
@@ -89,11 +89,11 @@ Aufgaben für die Verwaltung von AD FS-Dienstprinzipalen.
 | Type | Aktion |
 | --- | --- |
 | AD FS-Zertifikat | [Erstellen](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| AD FS-Zertifikat | [Aktualisieren](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
-| AD FS-Zertifikat | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| AD FS-Zertifikat | [Aktualisieren](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
+| AD FS-Zertifikat | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 | Geheimer AD FS-Clientschlüssel | [Erstellen](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
 | Geheimer AD FS-Clientschlüssel | [Aktualisieren](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| Geheimer AD FS-Clientschlüssel | [Remove](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+| Geheimer AD FS-Clientschlüssel | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 
 ### <a name="create-a-service-principal-using-a-certificate"></a>Erstellen eines Dienstprinzipals mithilfe eines Zertifikats
 
@@ -124,7 +124,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 
 1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
 
-   ```PowerShell  
+   ```powershell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $Creds = Get-Credential
 
@@ -173,7 +173,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
    > [!Note]  
    > Zu Überprüfungszwecken kann mit dem folgenden Beispiel ein selbstsigniertes Zertifikat erstellt werden:
 
-   ```PowerShell  
+   ```powershell  
    $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
@@ -254,7 +254,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 
 1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
 
-     ```PowerShell  
+     ```powershell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
      $Creds = Get-Credential
 
@@ -272,7 +272,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 
 2. Nach Ausführung der Cmdlets zeigt die Shell die für die Verwendung des SPN erforderlichen Details an. Stellen Sie sicher, dass Sie den geheimen Clientschlüssel speichern.
 
-     ```PowerShell  
+     ```powershell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
@@ -304,7 +304,7 @@ Im Beispiel wird der Parameter **ResetClientSecret** verwendet, der das Clientge
 
 1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und führen Sie die folgenden Cmdlets aus:
 
-     ```PowerShell  
+     ```powershell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
           $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
@@ -318,7 +318,7 @@ Im Beispiel wird der Parameter **ResetClientSecret** verwendet, der das Clientge
 
 2. Nach Abschluss der Automatisierung zeigt sie das neu generierte Geheimnis an, das für die SPN-Authentifizierung erforderlich ist. Stellen Sie sicher, dass Sie den neuen geheimen Clientschlüssel speichern.
 
-     ```PowerShell  
+     ```powershell  
           ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
           ClientId              :  
           Thumbprint            : 

@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie neue Zertifikate hinzufügen, ein Roll
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chakdan
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
 ms.service: service-fabric
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo-microsoft
-ms.openlocfilehash: aa5096b84f9bfe97784d6f80e4c203a1d8384404
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: aljo
+ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687417"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315270"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
 
-Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung eines definierten Zertifikats mit einem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNever“ in Ihrer Fabric.Code-Konfiguration auf FALSE.
+Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung eines definierten Zertifikats mit einem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNewer“ in Ihrer Fabric.Code-Konfiguration auf FALSE.
 
 Service Fabric ermöglicht es Ihnen, zusätzlich zu den Clientzertifikaten zwei Clusterzertifikate anzugeben – ein primäres und ein sekundäres –, wenn Sie die Zertifikatsicherheit während der Erstellung des Clusters konfigurieren. Ausführliche Informationen zur Einrichtung während der Erstellung finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md) oder [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Wenn Sie während der Erstellung nur ein Clusterzertifikat angeben, wird es als primäres Zertifikat verwendet. Nach der Erstellung des Clusters können Sie ein neues Zertifikat als sekundäres hinzufügen.
 
@@ -114,7 +114,7 @@ Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-N
          }
     ``` 
 
-4. Nehmen Sie Änderungen an **allen****Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie unter „virtualMachineProfile“ zu „publisher“: „Microsoft.Azure.ServiceFabric“.
+4. Nehmen Sie Änderungen an **allen****Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie zu „publisher“: „Microsoft.Azure.ServiceFabric“ unter „virtualMachineProfile“.
 
     In den Service Fabric-Herausgebereinstellungen sollte in etwa Folgendes angezeigt werden.
     
@@ -259,7 +259,7 @@ In einer Kurzübersicht finden Sie hier den Befehl zum Abrufen der Clusterintegr
 Get-ServiceFabricClusterHealth 
 ```
 
-## <a name="deploying-application-certificates-to-the-cluster"></a>Bereitstellen von Anwendungszertifikaten für den Cluster
+## <a name="deploying-client-certificates-to-the-cluster"></a>Bereitstellen von Clientzertifikaten für den Cluster
 
 Sie können die gleichen Schritte wie im vorangegangenen Schritt 5 ausführen, um die Zertifikate aus einem Schlüsseltresor auf den Knoten bereitzustellen. Sie müssen nur die verschiedenen Parameter definieren und verwenden.
 

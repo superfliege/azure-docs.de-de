@@ -1,0 +1,50 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure SQL-Datenbank – Funktionen
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL-Datenbank – Funktionen
+  meta.description: Learn about the features in Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: null
+  ms.topic: overview
+  ms.date: 02/06/2019
+  ms.author: jovanpop-msft
+sections:
+  - items:
+      - type: paragraph
+        text: 'Azure SQL-Datenbank ist mehr als eine klassische relationale Datenbank-Engine, mit der Sie Daten mithilfe der SQL-Sprache abfragen. Mit den Datenbankfunktionen von Azure SQL-Datenbank können Sie leistungsfähigere Operationen ausführen und erweiterte Szenarien implementieren.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: In-Memory-Technologien
+            href: /azure/sql-database/sql-database-in-memory
+            html: <p>Implementieren Sie Hochleistungsanwendungen mit In-Memory-Technologien.</p>
+          - title: Funktionen für mehrere Modelle
+            href: /azure/sql-database/sql-database-multi-model-features
+            html: '<p>Lernen Sie Graph, JSON, XML und die räumlichen Funktionen in Azure SQL-Datenbank kennen.</p>'
+          - title: Transaktionsreplikation
+            href: /azure/sql-database/sql-database-managed-instance-transactional-replication
+            html: <p>Replizieren Sie Ihre Daten zwischen Azure SQL-Datenbank und SQL Server-Tabellen.</p>
+          - title: Datensynchronisierung
+            href: /azure/sql-database/sql-database-sync-data
+            html: <p>Synchronisieren Sie die Daten über mehrere SQL-Datenbanken und SQL Server-Instanzen hinweg.</p>
+          - title: Auftragsautomatisierung
+            href: /azure/sql-database/sql-database-job-automation-overview
+            html: <p>Planen Sie mit SQL-Agent und elastischen Aufträgen wiederkehrende Aufgaben.</p>
+          - title: Temporäre Tabellen
+            href: /azure/sql-database/sql-database-temporal-tables
+            html: <p>Verfolgen und analysieren Sie in Ihren Daten den vollständigen Änderungsverlauf.</p>
+  - title: Weitere Ressourcen
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: Erfahren Sie mehr über die <a href="/azure/sql-database/sql-database-features">Unterschiede zwischen SQL Server und Azure SQL-Datenbankfunktionen</a>.
+          - html: Lernen Sie in <a href="/azure/sql-database/sql-database-howto">Tutorials</a> die Verwendung dieser Funktionen kennen.

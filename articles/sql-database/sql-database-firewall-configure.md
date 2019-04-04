@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 03/12/2019
+ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894699"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875185"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse
 
@@ -82,7 +82,7 @@ Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen
 
 ## <a name="creating-and-managing-ip-firewall-rules"></a>Erstellen und Verwalten von IP-Firewallregeln
 
-Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) erstellt werden. Nachfolgende IP-Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden.
+Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) erstellt werden. Nachfolgende IP-Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden.
 
 > [!IMPORTANT]
 > IP-Firewallregeln auf Datenbankebene können nur mit Transact-SQL erstellt und verwaltet werden.
@@ -149,17 +149,21 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Verwalten von IP-Firewallregeln auf Serverebene mithilfe von Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
+
 | Cmdlet | Ebene | BESCHREIBUNG |
 | --- | --- | --- |
-| [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |Server |Gibt die aktuellen IP-Firewallregeln auf Serverebene zurück |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |Server |Erstellt eine neue IP-Firewallregel auf Serverebene |
-| [Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule) |Server |Aktualisiert die Eigenschaften einer vorhandenen IP-Firewallregel auf Serverebene |
-| [Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule) |Server |Entfernt IP-Firewallregeln auf Serverebene |
+| [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server |Gibt die aktuellen Firewallregeln auf Serverebene zurück. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server |Erstellt eine neue Firewallregel auf Serverebene. |
+| [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Server |Aktualisiert die Eigenschaften einer vorhandenen Firewallregel auf Serverebene. |
+| [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Server |Entfernt Firewallregeln auf Serverebene. |
 
 Im folgenden Beispiel wird mithilfe von PowerShell eine IP-Firewallregel auf Serverebene festgelegt:
 
 ```powershell
-New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
+New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
     -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
 ```
@@ -240,7 +244,7 @@ Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete
 
   Wenn Sie über eine Internetverbindung mit dynamischer IP-Adressierung verfügen und Probleme beim Passieren der Firewall auftreten, können Sie eine der folgenden Lösungen ausprobieren:
   
-  - Fragen Sie Ihren Internetdienstanbieter (ISP) nach dem IP-Adressbereich, der den Clientcomputern zugewiesen ist, mit denen auf den Azure SQL-Datenbankserver zugegriffen wird, und fügen Sie dann den IP-Adressbereich als eine IP-Firewallregel hinzu.
+  - Fragen Sie Ihren Internetdienstanbieter (ISP) nach dem IP-Adressbereich, der den Clientcomputern zugewiesen ist, die auf den Azure SQL-Datenbankserver zugreifen, und fügen Sie dann den IP-Adressbereich als IP-Firewallregel hinzu.
   - Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als IP-Firewallregeln hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100427"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -28,7 +28,7 @@ Die App Wingtip Tickets SaaS Database Per Tenant verwendet ein Datenmodell mit e
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-
+> 
 > * Simulieren der Verwendung der Mandantendatenbanken durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Mandantendatenbanken während ihrer Reaktion auf einen Lastenanstieg
 > * Zentrales Hochskalieren von Pools für elastische Datenbanken als Reaktion auf die erhöhte Datenbankauslastung
@@ -57,7 +57,7 @@ Pools und die Datenbanken in den Pools sollten überwacht werden, um sicherzuste
 
 Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Benachrichtigungen für Datenbanken und Pools verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen nicht sehr praktisch.
 
-Bei Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, kann [Log Analytics](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Log Analytics kann Telemetriedaten über eine Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Benachrichtigungen verwendet werden.
+In Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, können [Azure Monitor-Protokolle](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Azure Monitor-Protokolle können Telemetriedaten aus einer Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
@@ -86,7 +86,7 @@ Das Skript *Demo-PerformanceMonitoringAndManagement.ps1* wird bereitgestellt, mi
 | 2 | Generieren einer Last mit normaler Intensität (ca. 40 DTUs) |
 | 3 | Generieren einer Last mit längeren und häufigeren Spitzen pro Datenbank|
 | 4 | Generieren einer Last mit höheren DTU-Spitzen pro Datenbank (ca. 80 DTUs)|
-| 5 | Generieren einer normalen Last plus einer hohen Last auf einem einzelnen Mandanten (ca. 95 DTUs)|
+| 5 | Generieren einer normalen Last plus einer hohen Last für einen einzelnen Mandanten (ca. 95 DTUs)|
 | 6 | Generieren unausgeglichener Lasten über mehrere Pools|
 
 Der Lastengenerator wendet eine *synthetische* reine CPU-Last auf jede Mandantendatenbank an. Der Generator startet einen Einzelvorgang für jede Mandantendatenbank, der in regelmäßigen Abständen eine gespeicherte Prozedur aufruft, die die Last generiert. Der Auslastungsgrad (in eDTUs), die Dauer und die Intervalle variieren in allen Datenbanken, womit eine unvorhersehbare Mandantenaktivität simuliert wird.
@@ -171,17 +171,17 @@ Als Alternative zum zentralen Hochskalieren des Pools können Sie einen zweiten 
 1. Klicken Sie auf **+ Neuer Pool**, um einen Pool auf dem aktuellen Server zu erstellen.
 1. Führen Sie in der Vorlage für **Pool für elastische Datenbanken** folgende Schritte aus:
 
-    1. Legen Sie **Name** auf *Pool2* fest.
-    1. Behalten Sie als Tarif **Standardpool** bei.
-    1. Klicken auf **Pool konfigurieren**.
-    1. Legen Sie **Pool-eDTU** auf *50 eDTUs* fest.
-    1. Klicken Sie auf **Datenbanken hinzufügen**, um eine Liste der Datenbanken auf dem Server anzuzeigen, die zu *Pool2* hinzugefügt werden können.
-    1. Wählen Sie 10 Datenbanken aus, um diese in den neuen Pool zu verschieben, und klicken Sie dann auf **Auswählen**. Wenn Sie den Lastengenerator ausgeführt haben, ist es dem Dienst bereits bekannt, dass Ihr Leistungsprofil einen größeren Pool erfordert als die Standardgröße von 50 eDTUs. Es wird dann empfohlen, mit einer eDTU-Einstellung von 100 zu beginnen.
+   1. Legen Sie **Name** auf *Pool2* fest.
+   1. Behalten Sie als Tarif **Standardpool** bei.
+   1. Klicken auf **Pool konfigurieren**.
+   1. Legen Sie **Pool-eDTU** auf *50 eDTUs* fest.
+   1. Klicken Sie auf **Datenbanken hinzufügen**, um eine Liste der Datenbanken auf dem Server anzuzeigen, die zu *Pool2* hinzugefügt werden können.
+   1. Wählen Sie 10 Datenbanken aus, um diese in den neuen Pool zu verschieben, und klicken Sie dann auf **Auswählen**. Wenn Sie den Lastengenerator ausgeführt haben, ist es dem Dienst bereits bekannt, dass Ihr Leistungsprofil einen größeren Pool erfordert als die Standardgröße von 50 eDTUs. Es wird dann empfohlen, mit einer eDTU-Einstellung von 100 zu beginnen.
 
-    ![Empfehlung](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![Empfehlung](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. Behalten Sie bei diesem Tutorial den Standardwert von 50 eDTUs bei, und klicken Sie erneut auf **Auswählen**.
-    1. Wählen Sie **OK** aus, um den neuen Pool zu erstellen und die ausgewählten Datenbanken in diesen Pool zu verschieben.
+   1. Behalten Sie bei diesem Tutorial den Standardwert von 50 eDTUs bei, und klicken Sie erneut auf **Auswählen**.
+   1. Wählen Sie **OK** aus, um den neuen Pool zu erstellen und die ausgewählten Datenbanken in diesen Pool zu verschieben.
 
 Das Erstellen des Pools und das Verschieben der Datenbanken dauert ein paar Minuten. Die Datenbanken bleiben während der Verschiebung bis zum letzten Moment online und vollständig verfügbar. Dann erst werden alle geöffneten Verbindungen geschlossen. Solange Sie über eine Wiederholungslogik verfügen, stellen Clients eine Verbindung mit der Datenbank im neuen Pool her.
 
@@ -196,7 +196,7 @@ Wenn in einer einzelnen Datenbank in einem Pool eine anhaltend hohe Auslastung v
 In dieser Übung werden die Auswirkungen simuliert, wenn der Ticketverkauf für ein beliebtes Konzert in der Contoso Concert Hall zu einer hohen Auslastung führt.
 
 1. Öffnen Sie „…\\*Demo-PerformanceMonitoringAndManagement.ps1*“ in der **PowerShell ISE**.
-1. legen Sie **$DemoScenario = 5, Generieren einer normalen Last plus einer hohen Last auf einem einzelnen Mandanten (ca. 95 DTUs)** fest.
+1. Legen Sie **$DemoScenario = 5, Generieren einer normalen Last plus einer hohen Last für einen einzelnen Mandanten (ca. 95 DTUs)** fest.
 1. Legen Sie **$SingleTenantDatabaseName = contosoconcerthall** fest.
 1. Führen Sie das Skript mit **F5** aus.
 
@@ -247,4 +247,4 @@ In diesem Tutorial lernen Sie Folgendes:
 * [Weitere Tutorials, die auf der ersten Anwendungsbereitstellung von Wingtip Tickets SaaS Database Per Tenant aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Pools für elastische SQL-Datenbanken](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
-* [Log Analytics](saas-dbpertenant-log-analytics.md): Tutorial zum Einrichten und Verwenden von Log Analytics
+* [Azure Monitor-Protokolle](saas-dbpertenant-log-analytics.md): Tutorial zum Einrichten und Verwenden von Azure Monitor-Protokollen

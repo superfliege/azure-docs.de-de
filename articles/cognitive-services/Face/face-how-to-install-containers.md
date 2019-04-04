@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7a41bfaada64528e90f43064b34c394f9a9b8f8f
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f3534f3001de1c3e58f0be3fb7bc9639b7dfcd03
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099087"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295420"
 ---
-# <a name="install-and-run-containers"></a>Installieren und Ausführen von Containern
+# <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
 
 Die Gesichtserkennung bietet einen standardisierten Linux-Container für Docker mit dem Namen „Gesichtserkennung“. Dieser erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
 
@@ -48,11 +48,12 @@ Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgen
 
 In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Gesichtserkennungs-API zugeordnet werden müssen.
 
-| Container | Minimum | Empfohlen |
-|-----------|---------|-------------|
-|Gesicht | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |
+| Container | Minimum | Empfohlen | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Gesicht | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |10, 20|
 
-Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
+* TPS: Transaktionen pro Sekunde
 
 Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
@@ -110,11 +111,14 @@ Es sind noch weitere [Beispiele](./face-resource-container-config.md#example-doc
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-Verwenden Sie für Container-APIs den Host https://localhost:5000.
+Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 

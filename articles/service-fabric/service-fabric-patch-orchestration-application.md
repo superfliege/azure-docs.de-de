@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234747"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432990"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -60,6 +60,9 @@ Die App für die Patchorchestrierung besteht aus den folgenden Teilkomponenten:
 > Die App für die Patchorchestrierung verwendet den Reparatur-Manager-Systemdienst in Service Fabric, um die Knoten zu aktivieren und zu deaktivieren und um Integritätsprüfungen durchzuführen. Der von der App für die Patchorchestrierung erstellte Reparaturtask verfolgt den Windows Update-Fortschritt für jeden Knoten nach.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!NOTE]
+> Als Mindestversion für .NET Framework ist 4.6 erforderlich.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Aktivieren des Reparatur-Manager-Diensts (falls dieser nicht bereits ausgeführt wird)
 

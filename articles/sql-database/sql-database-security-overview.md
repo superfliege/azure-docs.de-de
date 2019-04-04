@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235987"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213924"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -84,7 +84,7 @@ Eine Übersicht über die Berechtigungen in Azure SQL-Datenbank finden Sie unter
 
 Zum Schutz der Kundendaten stellt SQL-Datenbank Funktionen für die Überwachung und Bedrohungserkennung bereit.
 
-### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>SQL-Überwachung in Log Analytics und Event Hubs
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL-Überwachung in Azure Monitor-Protokollen und Event Hubs
 
 Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von Sicherheitsstandards, indem Datenbankereignisse in einem Überwachungsprotokoll in einem Azure Storage-Konto des Kunden aufgezeichnet werden. Dank der Überwachung können Benutzer die fortlaufenden Datenbankaktivitäten überwachen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie in den ersten Schritten unter [Überwachung von SQL-Datenbank](sql-database-auditing.md).  
 

@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Azure Data Lake Storage Gen1-Ressourcen in Azure Storage-Explorer
 description: Es wird beschrieben, wie Sie auf Ihre Azure Data Lake Storage Gen1-Daten und Ressourcen in Azure Storage-Explorer zugreifen und diese verwalten.
-Keywords: Azure Data Lake Store, Azure Storage Explorer
+Keywords: Azure Data Lake Store, Azure Storage-Explorer
 services: Data Lake Store
 documentationcenter: ''
 author: jejiang
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bf2af67bb9498d4814f63fa66fdd50171ce0b4a1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966261"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534343"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Verwalten von Azure Data Lake Storage Gen1-Ressourcen mit Storage-Explorer
 
@@ -144,7 +144,7 @@ Im Folgenden wird veranschaulicht, wie Sie Ressourcen in einem Data Lake Storage
 1. Wählen Sie die Ordner oder Dateien aus, die Sie herunterladen möchten.
 2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen**.
 3. Geben Sie im Dialogfeld **Select a folder to save the downloaded files into** (Ordner zum Speichern heruntergeladener Dateien auswählen) den Speicherort und den Namen an.
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>Öffnen eines Ordners oder einer Datei von Ihrem lokalen Computer
 
@@ -195,7 +195,7 @@ Wenn Sie über eine URL verfügen, können Sie sie im Datei-Explorer oder Browse
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](http://www.storageexplorer.com) an.
+* Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](https://www.storageexplorer.com) an.
 * Erfahren Sie, wie Sie [Azure Cosmos DB in Azure Storage-Explorer verwalten](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [Erste Schritte mit dem Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 * [Erste Schritte mit Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)

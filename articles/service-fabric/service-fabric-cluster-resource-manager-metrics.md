@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 642f479aba62e5cc9dde63aed7c30de39b513a5e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093348"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 *Metriken* die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Eine Metrik ist ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu verbessern oder zu steuern. Sie können beispielsweise den Arbeitsspeicherverbrauch überwachen, um festzustellen, ob Ihr Dienst überlastet ist. Eine weitere Verwendungsmöglichkeit: Sie können ermitteln, ob der Dienst an eine andere Position verschoben werden kann, bei der eine geringere Arbeitsspeicherauslastung gegeben ist, um die Leistung zu steigern.
@@ -45,6 +45,7 @@ Für grundlegende Workloads liefern die Standardmetriken eine hinreichende Lastv
 Ergebnis:
 
 <center>
+
 ![Clusterlayout mit Standardmetriken][Image1]
 </center>
 
@@ -56,7 +57,7 @@ Zu beachtende Aspekte:
 
 So weit, so gut.
 
-Die Standardmetriken funktionieren hervorragend als Ausgangspunkt. Anschließend reichen die Standardmetriken jedoch nicht mehr aus. Ein Beispiel: Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant oder auch nur zum aktuellen Zeitpunkt für mehrere Partitionen gleich ist?
+Die Standardmetriken funktionieren hervorragend als Ausgangspunkt. Anschließend reichen die Standardmetriken jedoch nicht mehr aus. Beispiel:  Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant oder auch nur zum aktuellen Zeitpunkt für mehrere Partitionen gleich ist?
 
 Sie können den Dienst auch nur mit den Standardmetriken ausführen. Dies bedeutet jedoch im Allgemeinen nur, dass Ihre Clusterauslastung geringer und ungleichmäßiger als erwartet ist. Das liegt daran, dass die Standardmetriken nicht adaptiv sind und davon ausgegangen wird, dass alles gleichwertig ist. So tragen sowohl ein ausgelasteter als auch ein nicht ausgelasteter primärer Knoten zur Metrik „PrimaryCount“ jeweils „1“ bei. Im schlimmsten Fall kann die ausschließliche Verwendung der Standardmetriken auch zu überlasteten Knoten und damit zu Leistungseinbußen führen. Wenn Sie also Ihren Cluster optimal nutzen und Leistungsprobleme vermeiden möchten, müssen Sie auf benutzerdefinierte Metriken und dynamische Auslastungsberichte zurückgreifen.
 
@@ -66,12 +67,12 @@ Metriken werden beim Erstellen des Diensts individuell für benannte Dienstinsta
 Jede Metrik verfügt über beschreibende Eigenschaften wie Name, Gewichtung und Standardauslastung.
 
 * Metrikname: Der Name der Metrik. Der Metrikname ist ein eindeutiger Bezeichner für die Metrik (innerhalb des Clusters aus der Perspektive von Resource Manager).
-* Weight: Die Metrikgewichtung gibt die Bedeutung der Metrik in Relation zu den anderen Metriken für diesen Dienst an.
-* Standardauslastung: Die Standardauslastung wird unterschiedlich repräsentiert, je nachdem, ob der Dienst zustandslos oder zustandsbehaftet ist.
+* Gewichtung: Die Metrikgewichtung gibt die Bedeutung der Metrik in Relation zu den anderen Metriken für diesen Dienst an.
+* Standardlast: Die Standardlast wird unterschiedlich repräsentiert, je nachdem, ob der Dienst zustandslos oder zustandsbehaftet ist.
   * Bei zustandslosen Diensten besitzt jede Metrik eine einzelne Eigenschaft namens „DefaultLoad“.
   * Bei zustandsbehafteten Diensten definieren Sie Folgendes:
-    * PrimaryDefaultLoad: Die Standardmenge dieser Metrik, die der Dienst verbraucht, wenn es sich dabei um ein primäres Replikat handelt.
-    * SecondaryDefaultLoad: Die Standardmenge dieser Metrik, die der Dienst verbraucht, wenn es sich dabei um ein sekundäres Replikat handelt.
+    * PrimaryDefaultLoad: Die Standardmenge dieser Metrik, die der Dienst verbraucht, wenn es sich dabei um ein primäres Replikat handelt
+    * SecondaryDefaultLoad: Die Standardmenge dieser Metrik, die der Dienst verbraucht, wenn es sich dabei um ein sekundäres Replikat handelt
 
 > [!NOTE]
 > Wenn Sie benutzerdefinierte Metriken definieren und _auch_ die Standardmetriken verwenden möchten, müssen Sie die Standardmetriken _explizit_ wieder hinzufügen und ihre Gewichtungen und Werte festlegen. Dies ist erforderlich, um die Beziehung zwischen den Standardmetriken und Ihren benutzerdefinierten Metriken zu definieren. Beispielsweise haben „ConnectionCount“ und „WorkQueueDepth“ für Sie eine höhere Gewichtung als die primäre Verteilung. In der Standardeinstellung ist die Gewichtung der Metrik „PrimaryCount“ auf „Hoch“ festgelegt. Verringern Sie sie daher beim Hinzufügen der anderen Metriken auf „Mittel“, um sicherzustellen, dass diese Vorrang haben.
@@ -215,6 +216,7 @@ Syntax: ("Metrikname, Metrikgewichtung, Standardauslastung des primären Replika
 Ein mögliches Clusterlayout kann beispielsweise wie folgt aussehen:
 
 <center>
+
 ![Ausgeglichener Cluster mit Standardmetriken und benutzerdefinierten Metriken][Image2]
 </center>
 
@@ -239,6 +241,7 @@ Der tatsächliche Nutzen von Metrikgewichtungen im Cluster besteht darin, dass d
 Im Anschluss sehen wir uns ein Beispiel für einige Auslastungsberichte an und beschäftigen uns damit, wie unterschiedliche Metrikgewichtungen zu unterschiedlichen Zuordnungen im Cluster führen. In diesem Beispiel sehen Sie, dass die Umstellung der relativen Metrikgewichtung bewirkt, dass der Clusterressourcen-Manager unterschiedliche Dienstanordnungen erstellt.
 
 <center>
+
 ![Beispiel für die Metrikgewichtung und deren Auswirkungen auf Ausgleichslösungen][Image3]
 </center>
 
@@ -256,6 +259,7 @@ Für jede Metrik werden mehrere Gewichtungen verfolgt. Die erste Gewichtung ist 
 Was würde passieren, wenn sich der Clusterressourcen-Manager nicht um die globale und lokale Ausgewogenheit kümmert? Es ist nicht schwer, global ausgewogene Lösungen zu erstellen, die jedoch eine unzureichende Ressourcenzuordnung für einzelne Dienste nach sich ziehen. Im folgenden Beispiel betrachten wir einen Dienst, der lediglich mit den Standardmetriken konfiguriert ist. Dabei wird untersucht, was geschieht, wenn lediglich die globale Ausgewogenheit berücksichtigt wird:
 
 <center>
+
 ![Auswirkung einer rein globalen Lösung][Image4]
 </center>
 

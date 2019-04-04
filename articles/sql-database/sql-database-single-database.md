@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099325"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431114"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
 
@@ -26,9 +26,9 @@ Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-D
 > [!IMPORTANT]
 > Einzeldatenbank ist eine der drei Bereitstellungsoptionen für Azure SQL-Datenbank. Die anderen zwei sind [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanz](sql-database-managed-instance.md).
 > [!NOTE]
-> Ein Glossar von Begriffen in Azure SQL-Datenbank finden Sie unter [Azure SQL-Datenbank: Glossar](sql-database-glossary-terms.md).
+> Ein Glossar von Begriffen in Azure SQL-Datenbank finden Sie unter [Azure SQL Database glossary of terms](sql-database-glossary-terms.md) (Azure SQL-Datenbank – Glossar).
 
-## <a name="dynamic-scalabilty"></a>Dynamische Skalierbarkeit
+## <a name="dynamic-scalability"></a>Dynamische Skalierbarkeit
 
 Sie können für eine geringe monatliche Gebühr Ihre erste App in einer kleinen Einzeldatenbank in einem Diensttarif mit geringem Preis und geringer Leistung erstellen und [diesen dann jederzeit manuell oder programmgesteuert](sql-database-single-database-scale.md) in einen Tarif mit höherem Preis und besserer Leistung ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 

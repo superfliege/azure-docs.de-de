@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: afc833775894a01e8061401fe7601267f09edded
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187435"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243243"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "55187435"
 
 Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
 
-Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
+Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Azure Monitor-Protokolle](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel werden folgende Tools verwendet:
@@ -57,10 +57,12 @@ Es empfiehlt sich, die Vorlage **vor dem Klicken auf „Erstellen“** im letzte
 
 ![Clustervorlage](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Nachdem nun Ereignisse in Azure Storage aggregiert werden, können Sie als Nächstes [Log Analytics einrichten](service-fabric-diagnostics-oms-setup.md), um Insights zu erhalten und im Log Analytics-Portal abzufragen.
+Nachdem nun Ereignisse in Azure Storage aggregiert werden, können Sie [Azure Monitor-Protokolle einrichten](service-fabric-diagnostics-oms-setup.md), um Erkenntnisse zu erhalten und diese im Portal für Azure Monitor-Protokolle abzufragen.
 
 >[!NOTE]
 >Es gibt derzeit keine Möglichkeit, die an die Tabellen gesendeten Ereignisse zu filtern oder zu optimieren. Wenn Sie keinen Prozess zum Entfernen von Ereignissen aus der Tabelle implementieren, wächst die Tabelle weiter an. (Die Größe ist standardmäßig auf 50 GB beschränkt.) Eine Anleitung zum Ändern dieser Einstellung finden Sie [weiter unten in diesem Artikel](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Im [Watchdog-Beispiel](https://github.com/Azure-Samples/service-fabric-watchdog-service) finden Sie außerdem ein Beispiel für die Ausführung eines Datenbereinigungsdiensts. Die Erstellung eines solchen Diensts wird empfohlen, sofern Sie Protokolle nicht aus einem triftigen Grund länger als 30 oder 90 Tage speichern müssen.
+
+
 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Bereitstellen der Diagnoseerweiterung über Azure Resource Manager
 
@@ -292,15 +294,57 @@ Wenn Sie eine Application Insights-Senke verwenden (siehe dazu den folgenden Abs
 
 ## <a name="send-logs-to-application-insights"></a>Senden von Protokollen an Application Insights
 
-Das Senden von Überwachungs- und Diagnosedaten an Application Insights (AI) kann als Teil der WAD-Konfiguration erfolgen. Wenn Sie AI für die Ereignisanalyse und -visualisierung verwenden, finden Sie unter [Hinzufügen der AI-Senke zur Resource Manager-Vorlage](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) weitere Informationen zum Einrichten einer AI-Senke als Teil von „WadCfg“.
+### <a name="configuring-application-insights-with-wad"></a>Konfigurieren von Application Insights mit WAD
+
+>[!NOTE]
+>Dies gilt gegenwärtig nur für Windows-Cluster.
+
+Es gibt grundsätzlich zwei Möglichkeiten, um Daten von WAD an Azure Application Insights zu senden. Hierzu wird der WAD-Konfiguration über das Azure-Portal oder über eine Resource Manager-Vorlage eine Application Insights-Senke hinzugefügt.
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Hinzufügen eines Application Insights-Instrumentierungsschlüssels beim Erstellen eines Clusters im Azure-Portal
+
+![Hinzufügen eines AI-Schlüssels](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+Wenn beim Erstellen eines Clusters die Diagnose aktiviert ist („Ein“), wird ein optionales Feld angezeigt, in dem ein Application Insights-Instrumentierungsschlüssel eingegeben werden kann. Wenn Sie hier Ihren Application Insights-Schlüssel einfügen, wird die Application Insights-Senke automatisch in der Resource Manager-Vorlage konfiguriert, die zum Bereitstellen Ihres Clusters verwendet wird.
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Hinzufügen der Application Insights-Senke zur Resource Manager-Vorlage
+
+Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folgenden beiden Änderungen eine Senke („Sink“) hinzu:
+
+1. Fügen Sie die Konfiguration der Senke hinzu, sobald das Deklarieren von `DiagnosticMonitorConfiguration` abgeschlossen ist:
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. Nehmen Sie die Senke in `DiagnosticMonitorConfiguration` auf, indem Sie die folgende Zeile in `DiagnosticMonitorConfiguration` von `WadCfg` hinzufügen (unmittelbar bevor `EtwProviders` deklariert werden):
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+In den beiden obigen Codeausschnitten wurde für die Senke der Name „applicationInsights“ verwendet. Dieser Name muss nicht verwendet werden. Solange der Name der Senke in „sinks“ eingefügt wird, können Sie eine beliebige Zeichenfolge als Name festlegen.
+
+Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen, die von der Plattform stammen, als „Information“ eingestuft sind, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Warnung“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) erläutert.
+
+>[!NOTE]
+>Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen Application Insights-Schlüssel verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die Azure-Diagnose richtig konfiguriert haben, enthalten Ihre Speichertabellen Daten aus den ETW- und EventSource-Protokollen. Wenn Sie Log Analytics, Kibana oder eine andere Plattform zur Datenanalyse und -visualisierung verwenden möchten, die in der Resource Manager-Vorlage nicht direkt konfiguriert ist, richten Sie die gewünschte Plattform so ein, dass sie die Daten aus diesen Speichertabellen liest. Bei Log Analytics ist dies recht einfach. Informationen dazu finden Sie unter [Ereignis- und Protokollanalyse](service-fabric-diagnostics-event-analysis-oms.md). Bei Application Insights verhält sich dies ein wenig anders, da es bei der Konfiguration der Diagnoseerweiterung konfiguriert werden kann. Wenn Sie also AI verwenden möchten, lesen Sie die Informationen im [entsprechenden Artikel](service-fabric-diagnostics-event-analysis-appinsights.md).
+Wenn Sie die Azure-Diagnose richtig konfiguriert haben, enthalten Ihre Speichertabellen Daten aus den ETW- und EventSource-Protokollen. Wenn Sie Azure Monitor-Protokolle, Kibana oder eine andere Plattform zur Datenanalyse und -visualisierung verwenden möchten, die in der Resource Manager-Vorlage nicht direkt konfiguriert ist, richten Sie die gewünschte Plattform so ein, dass sie die Daten aus diesen Speichertabellen liest. Für Azure Monitor-Protokolle ist dies recht einfach zu erreichen. Informationen dazu finden Sie unter [Ereignis- und Protokollanalyse](service-fabric-diagnostics-event-analysis-oms.md). Bei Application Insights verhält sich dies ein wenig anders, da es bei der Konfiguration der Diagnoseerweiterung konfiguriert werden kann. Wenn Sie also AI verwenden möchten, lesen Sie die Informationen im [entsprechenden Artikel](service-fabric-diagnostics-event-analysis-appinsights.md).
 
 >[!NOTE]
 >Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn Sie keinen Prozess zum Entfernen von Ereignissen aus der Tabelle implementieren, wächst die Tabelle weiter an. Im [Watchdog-Beispiel](https://github.com/Azure-Samples/service-fabric-watchdog-service) finden Sie derzeit ein Beispiel für einen ausgeführten Datenbereinigungsdienst. Die Erstellung eines solchen Diensts wird empfohlen, sofern Sie Protokolle nicht aus einem triftigen Grund länger als 30 oder 90 Tage speichern müssen.
 
 * [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Ereignisanalyse und -visualisierung mit Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* [Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen](service-fabric-diagnostics-event-analysis-oms.md)

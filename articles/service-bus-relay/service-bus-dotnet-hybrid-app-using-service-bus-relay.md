@@ -11,15 +11,15 @@ ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 2972d04d1617b755bb6c2ff60d9922accdd09f2a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 145960db27247a8535eb96640000b86d810619c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838407"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Machen Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar. 
 In diesem Artikel wird gezeigt, wie Sie mit Microsoft Azure und Visual Studio eine Hybridcloudanwendung erstellen. Sie erstellen eine Anwendung, die mehrere in der Cloud ausgeführte Azure-Ressourcen nutzt.
@@ -43,7 +43,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
-- [Visual Studio 2015 oder eine höhere Version.](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
+- [Visual Studio 2015 oder eine höhere Version.](https://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
 - Azure SDK für .NET. Installieren Sie das SDK über die [SDK-Downloadseite](https://azure.microsoft.com/downloads/).
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>So unterstützt Sie Azure Relay bei hybriden Lösungen
@@ -85,7 +85,7 @@ Zunächst erstellen Sie ein simuliertes lokales Produktkatalogsystem.  Bei diese
 
    ![Dialogfeld "Neues Projekt"][11]
 4. Klicken Sie auf **OK**, um das Projekt **ProductsServer** zu erstellen.
-5. Wenn Sie den NuGet-Paket-Manager für Visual Studio bereits installiert haben, fahren Sie mit dem nächsten Schritt fort. Besuchen Sie andernfalls [NuGet][NuGet], und klicken Sie auf [NuGet installieren](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Folgen Sie den Anweisungen, um den NuGet-Paket-Manager zu installieren, und starten Sie Visual Studio dann neu.
+5. Wenn Sie den NuGet-Paket-Manager für Visual Studio bereits installiert haben, fahren Sie mit dem nächsten Schritt fort. Besuchen Sie andernfalls [NuGet][NuGet], und klicken Sie auf [NuGet installieren](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Folgen Sie den Anweisungen, um den NuGet-Paket-Manager zu installieren, und starten Sie Visual Studio dann neu.
 6. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProductsServer**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
 7. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **WindowsAzure.ServiceBus**. Wählen Sie das Paket **WindowsAzure.ServiceBus** aus.
 8. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
@@ -185,7 +185,7 @@ Zunächst erstellen Sie ein simuliertes lokales Produktkatalogsystem.  Bei diese
         }
     }
     ```
-12. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **App.config**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie unten im `<system.ServiceModel>`-Element (aber noch innerhalb von `<system.ServiceModel>`) den folgenden XML-Code hinzu. Denken Sie daran, *yourServiceNamespace* durch den Namen Ihres Namespaces und *yourKey* durch den zuvor aus dem Portal abgerufenen SAS-Schlüssel zu ersetzen:
+12. Doppelklicken Sie im Projektmappen-Explorer auf die Datei **App.config**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie unten im `<system.ServiceModel>`-Element (aber noch innerhalb von `<system.ServiceModel>`) den folgenden XML-Code hinzu: Ersetzen Sie dabei *yourServiceNamespace* durch den Namen Ihres Namespace und *yourKey* durch den SAS-Schlüssel, den Sie zuvor aus dem Portal abgerufen haben:
 
     ```xml
     <system.serviceModel>
@@ -350,7 +350,7 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 
    ![Als Link hinzufügen][24]
 
-6. Öffnen Sie nun die Datei **HomeController.cs** im Visual Studio-Editor, und ersetzen Sie die Namespacedefinition durch den folgenden Code. Denken Sie daran, *yourServiceNamespace* durch den Namen Ihres Dienstnamespaces und *yourKey* durch Ihren SAS-Schlüssel zu ersetzen. Der Client kann nun den lokalen Dienst aufrufen und das Ergebnis des Aufrufs zurückgeben.
+6. Öffnen Sie nun die Datei **HomeController.cs** im Visual Studio-Editor, und ersetzen Sie die Namespacedefinition durch den folgenden Code: Achten Sie darauf, *yourServiceNamespace* durch den Namen Ihres Dienstnamespaces und *yourKey* durch Ihren SAS-Schlüssel zu ersetzen. Der Client kann nun den lokalen Dienst aufrufen und das Ergebnis des Aufrufs zurückgeben.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -422,14 +422,14 @@ Im nächsten Schritt wird das **ProductsPortal**-Front-End der Azure-Web-App ern
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ProductsPortal**, und klicken Sie anschließend auf **Veröffentlichen**. Klicken Sie auf der Seite **Veröffentlichen** auf **Veröffentlichen**.
 
-  > [!NOTE]
-  > Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, da die Anwendung **ProductsServer** noch nicht ausgeführt wird.
->
->
+   > [!NOTE]
+   > Im Browserfenster wird unter Umständen eine Fehlermeldung angezeigt, wenn das Webprojekt **ProductsPortal** nach der Bereitstellung automatisch gestartet wird. Dies ist zu erwarten und tritt auf, da die Anwendung **ProductsServer** noch nicht ausgeführt wird.
+   >
+   >
 
 2. Kopieren Sie die URL der bereitgestellten Web-App, da Sie die URL im nächsten Schritt benötigen. Sie können diese URL auch in Visual Studio im Fenster „Aktivität von Azure App Service“ abrufen:
 
-  ![URL der bereitgestellten App][9]
+   ![URL der bereitgestellten App][9]
 
 3. Schließen Sie das Browserfenster, um die ausgeführte Anwendung zu beenden.
 
@@ -448,7 +448,7 @@ Bevor Sie die Anwendung in der Cloud ausführen, müssen Sie dafür sorgen, dass
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-1. Drücken Sie F5, um die Anwendung zu erstellen und auszuführen. Zuerst muss der lokale Server (die Konsolenanwendung **ProductsServer**) gestartet werden, und anschließend sollte die Anwendung **ProductsPortal** in einem Browserfenster gestartet werden (siehe hierzu den folgenden Screenshot). Beachten Sie, dass im Produktbestand auch hier die aus dem lokalen Produktdienstsystem abgerufenen Daten aufgelistet und in der Web-App angezeigt werden. Vergewissern Sie sich anhand der URL, dass **ProductsPortal** in der Cloud als Azure-Web-App ausgeführt wird.
+1. Drücken Sie F5, um die Anwendung zu erstellen und auszuführen. Zuerst muss der lokale Server (die Konsolenanwendung **ProductsServer**) gestartet werden, gefolgt von der Anwendung **ProductsPortal** in einem Browserfenster, wie im Screenshot weiter unten dargestellt: Beachten Sie auch hier wieder, dass im Produktbestand die aus dem lokalen Produktdienstsystem abgerufenen Daten aufgelistet und in der Web-App angezeigt werden. Vergewissern Sie sich anhand der URL, dass **ProductsPortal** in der Cloud als Azure-Web-App ausgeführt wird.
 
    ![Ausführen der Web-App in Azure][1]
 
@@ -470,7 +470,7 @@ Fahren Sie mit dem folgenden Tutorial fort:
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
-[NuGet]: http://nuget.org
+[NuGet]: https://nuget.org
 
 [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
 [13]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-13.png

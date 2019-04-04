@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 7afc1170ba2503c8a8c97be9a19459c92e331449
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/12/2019
+ms.openlocfilehash: a4907a65f100fd6efcabe422becad69aaee4b6ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882708"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -42,7 +42,7 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 ## <a name="how-long-are-backups-kept"></a>Wie lange werden Sicherungen aufbewahrt?
 
-Der Aufbewahrungszeitraum der Sicherung beträgt für jede SQL-Datenbank-Instanz standardmäßig zwischen 7 und 35 Tagen, was von Kaufmodell und Dienstebene abhängt. Sie können den Aufbewahrungszeitraum der Sicherung für eine Datenbank auf dem SQL-Datenbank-Server aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
+Der Aufbewahrungszeitraum der Sicherung beträgt für jede SQL-Datenbank-Instanz standardmäßig zwischen 7 und 35 Tagen, was von Kaufmodell und Dienstebene abhängt. Sie können den Aufbewahrungszeitraum der Sicherung für eine Datenbank auf dem SQL-Datenbankserver aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
 
 Wenn Sie eine Datenbank löschen, bewahrt SQL-Datenbank die Sicherungen auf die gleiche Weise wie für eine Onlinedatenbank auf. Beim Löschen einer Datenbank vom Typ „Basic“, für die eine Aufbewahrungsdauer von sieben Tagen gilt, wird eine vier Tage alte Sicherung weitere drei Tage lang aufbewahrt.
 
@@ -126,12 +126,13 @@ Um die Aufbewahrungsdauer der PITR-Sicherung über das Azure-Portal zu ändern, 
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Ändern der PITR-Aufbewahrungsdauer mit PowerShell
 
-```powershell
-Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
-```
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Diese API ist im PowerShell-Modul „AzureRM.Sql“ ab Version [4.7.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.7.0-preview) enthalten.
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
+
+```powershell
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
+```
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Ändern der PITR-Aufbewahrungsdauer mit der REST-API
 
@@ -145,9 +146,9 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ```json
 {
-  "properties":{  
-      "retentionDays":28
-   }
+  "properties":{
+    "retentionDays":28
+  }
 }
 ```
 
@@ -174,4 +175,4 @@ Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Siche
 - Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über das Azure-Portal finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-recovery-using-backups.md).
 - Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe von PowerShell finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell](scripts/sql-database-restore-database-powershell.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der Langzeitaufbewahrung automatisierter Sicherungen in Azure Blob Storage mit dem Azure-Portal finden Sie im Artikel [Verwalten der Langzeitaufbewahrung von Sicherungen mit dem Azure-Portal](sql-database-long-term-backup-retention-configure.md).
-- Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in Azure-Blobspeicher mit Azure PowerShell finden Sie im Artikel über das [Verwalten der langfristigen Sicherungsaufbewahrung mit PowerShell](sql-database-long-term-backup-retention-configure.md).
+- Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen im Azure-Blobspeicher mit Azure PowerShell finden Sie unter [Verwalten der langfristigen Sicherungsaufbewahrung mit PowerShell](sql-database-long-term-backup-retention-configure.md).

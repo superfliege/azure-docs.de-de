@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 6e25c0970a48674e157dac5f51c9508596ff6ea1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 03/12/2019
+ms.openlocfilehash: 87db25bbfd68aea1b8835211d7b51dfddcd43038
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899382"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
@@ -48,10 +48,14 @@ Um eine Datenbank über das Azure-Portal zu kopieren, öffnen Sie die Seite für
 
 ## <a name="copy-a-database-by-using-powershell"></a>Kopieren einer Datenbank mit PowerShell
 
-Um eine Datenbank über PowerShell zu kopieren, verwenden Sie das [New-AzureRmSqlDatabaseCopy](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy)-Cmdlet. 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+
+Um eine Datenbank über PowerShell zu kopieren, verwenden Sie das [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy)-Cmdlet. 
 
 ```PowerShell
-New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
+New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -ServerName $sourceserver `
     -DatabaseName "MySampleDatabase" `
     -CopyResourceGroupName "myResourceGroup" `

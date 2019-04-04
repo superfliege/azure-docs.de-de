@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 45d828b32984363f611828ca3ea33e5fa96a5017
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745842"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961889"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
 
@@ -140,7 +140,7 @@ Wenn das Senden von Data Lake Storage Gen1-Protokollen nicht aktiviert ist, erm�
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Storage Gen1-Diagnose in die YARN-Protokolle auf den Knoten („/tmp/\<Benutzer\>/yarn.log“) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Log Analytics oder an jedem anderen Ziel überwacht werden, das im Data Lake Storage Gen1-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Storage Gen1 für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
+Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Storage Gen1-Diagnose in die YARN-Protokolle auf den Knoten („/tmp/\<Benutzer\>/yarn.log“) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Azure Monitor-Protokollen oder an jedem anderen Ziel überwacht werden, das im Data Lake Storage Gen1-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Storage Gen1 für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
 
 ### <a name="run-synthetic-transactions"></a>Ausführen von synthetischen Transaktionen
 

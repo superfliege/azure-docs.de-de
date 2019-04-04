@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 662fc124af71c1ce976037a3544f59e3cea54ef0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207630"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121484"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Überwachen und Diagnostizieren der Anforderungsverarbeitung beim Reverseproxy
 
@@ -32,83 +32,84 @@ Hier sind einige Beispiele zum Interpretieren der allgemeinen Fehlerprotokolle, 
 1. Reverseproxy gibt Antwortstatuscode 504 (Timeout) zurück.
 
     Ein möglicher Grund hierfür ist, dass der Dienst nicht innerhalb des Zeitlimits für die Anforderung antwortet.
-Im ersten Ereignis unten werden die Details der empfangenen Anforderung beim Reverseproxy protokolliert. Das zweite Ereignis gibt an, dass beim Weiterleiten der Anforderung an den Dienst ein Fehler aufgetreten ist: „Interner Fehler = ERROR_WINHTTP_TIMEOUT“. 
+   Im ersten Ereignis unten werden die Details der empfangenen Anforderung beim Reverseproxy protokolliert. 
+   Das zweite Ereignis gibt an, dass beim Weiterleiten der Anforderung an den Dienst ein Fehler aufgetreten ist: „Interner Fehler = ERROR_WINHTTP_TIMEOUT“. 
 
     Die Nutzlast beinhaltet:
 
-    *  **traceId:** Mit dieser GUID können alle Ereignisse für eine einzelne Anforderung korreliert werden. In den folgenden zwei Ereignissen ist traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**. Dies zeigt an, das sie zu derselben Anforderung gehören.
-    *  **requestUrl:** die URL (Reverseproxy-URL), an die die Anforderung gesendet wurde.
-    *  **verb:** HTTP-Verb.
-    *  **remoteAddress:** Adresse des Clients, der die Anforderung gesendet hat.
-    *  **resolvedServiceUrl:** Dienstendpunkt-URL, in die die eingehende Anforderung aufgelöst wurde. 
-    *  **errorDetails:** weitere Informationen über den Fehler.
+   * **traceId**: Mit dieser GUID können alle Ereignisse für eine einzelne Anforderung korreliert werden. In den folgenden zwei Ereignissen ist traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**. Dies zeigt an, das sie zu derselben Anforderung gehören.
+   * **requestUrl**: die URL (Reverseproxy-URL), an die die Anforderung gesendet wurde.
+   * **verb**: HTTP-Verb.
+   * **remoteAddress**: Adresse des Clients, der die Anforderung gesendet hat.
+   * **resolvedServiceUrl**: Dienstendpunkt-URL, in die die eingehende Anforderung aufgelöst wurde. 
+   * **errorDetails**: weitere Informationen über den Fehler.
 
-    ```
-    {
-      "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
-      "ProviderName": "Microsoft-ServiceFabric",
-      "Id": 51477,
-      "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
-      "ProcessId": 57696,
-      "Level": "Informational",
-      "Keywords": "0x1000000000000021",
-      "EventName": "ReverseProxy",
-      "ActivityID": null,
-      "RelatedActivityID": null,
-      "Payload": {
-        "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
-        "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
-        "verb": "GET",
-        "remoteAddress": "::1",
-        "resolvedServiceUrl": "Https://localhost:8491/LocationApp/?zipcode=98052",
-        "requestStartTime": "2017-07-20T15:58:00.0741142-07:00"
-      }
-    }
+     ```
+     {
+     "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
+     "ProviderName": "Microsoft-ServiceFabric",
+     "Id": 51477,
+     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
+     "ProcessId": 57696,
+     "Level": "Informational",
+     "Keywords": "0x1000000000000021",
+     "EventName": "ReverseProxy",
+     "ActivityID": null,
+     "RelatedActivityID": null,
+     "Payload": {
+      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
+      "verb": "GET",
+      "remoteAddress": "::1",
+      "resolvedServiceUrl": "Https://localhost:8491/LocationApp/?zipcode=98052",
+      "requestStartTime": "2017-07-20T15:58:00.0741142-07:00"
+     }
+     }
 
-    {
-      "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
-      ...
-      "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
-      ...
-      "Payload": {
-        "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
-        "statusCode": 504,
-        "description": "Reverse Proxy Timeout",
-        "sendRequestPhase": "FinishSendRequest",
-        "errorDetails": "internal error = ERROR_WINHTTP_TIMEOUT"
-      }
-    }
-    ```
+     {
+     "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
+     ...
+     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
+     ...
+     "Payload": {
+      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "statusCode": 504,
+      "description": "Reverse Proxy Timeout",
+      "sendRequestPhase": "FinishSendRequest",
+      "errorDetails": "internal error = ERROR_WINHTTP_TIMEOUT"
+     }
+     }
+     ```
 
 2. Reverseproxy gibt Antwortstatuscode 404 (Nicht gefunden) zurück. 
     
     Im Folgenden finden Sie ein Beispielereignis, bei dem der Reverseproxy 404 zurückgibt, da er den passenden Dienstendpunkt nicht finden konnte.
     Die interessanten Nutzlasteinträge sind in diesem Fall:
-    *  **processRequestPhase:** gibt die Phase während der Anforderungsverarbeitung an, in der der Fehler aufgetreten ist: ***TryGetEndpoint***, d.h. beim Versuch, den Dienstendpunkt für die Weiterleitung abzurufen. 
-    *  **errorDetails:** führt die Endpunktsuchkriterien auf. Hier sehen Sie, dass der angegebene listenerName = **FrontEndListener** war, während der Replikatendpunkt nur einen Listener mit dem Namen **OldListener** enthält.
+   * **processRequestPhase**: Gibt die Phase während der Anforderungsverarbeitung an, in der der Fehler aufgetreten ist: ***TryGetEndpoint***, d.h. beim Versuch, den Dienstendpunkt für die Weiterleitung abzurufen. 
+   * **errorDetails**: Listet die Endpunktsuchkriterien auf. Hier sehen Sie, dass der angegebene listenerName = **FrontEndListener** war, während der Replikatendpunkt nur einen Listener mit dem Namen **OldListener** enthält.
     
-    ```
-    {
+     ```
+     {
+     ...
+     "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
+     "ProcessId": 57696,
+     "Level": "Warning",
+     "EventName": "ReverseProxy",
+     "Payload": {
+      "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
+      "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
       ...
-      "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
-      "ProcessId": 57696,
-      "Level": "Warning",
-      "EventName": "ReverseProxy",
-      "Payload": {
-        "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
-        "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
-        ...
-        "processRequestPhase": "TryGetEndoint",
-        "errorDetails": "SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Https:\/\/localhost:8491\/LocationApp\/\"}}"
-      }
-    }
-    ```
-    Ein weiteres Beispiel, in dem der Reverseproxy 404 (Nicht gefunden) zurückgeben kann: Der Konfigurationsparameter ApplicationGateway\Http **SecureOnlyMode** ist auf „TRUE“ festgelegt, und der Reverseproxy lauscht auf **HTTPS**, aber alle Replikatendpunkte sind unsicher (lauschen auf „HTTP“).
-    Der Reverseproxy gibt 404 zurück, da er keinen Endpunkt finden kann, der auf „HTTPS“ lauscht und an den die Anforderung weitergeleitet werden kann. Durch Analysieren der Parameter in der Ereignisnutzlast kann das Problem weiter eingegrenzt werden:
+      "processRequestPhase": "TryGetEndoint",
+      "errorDetails": "SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Https:\/\/localhost:8491\/LocationApp\/\"}}"
+     }
+     }
+     ```
+     Ein weiteres Beispiel, in dem der Reverseproxy den Fehler „404 (Nicht gefunden)“ zurückgeben kann, sieht wie folgt aus: Der „ApplicationGateway\Http“-Konfigurationsparameter **SecureOnlyMode** ist auf „true“ festgelegt, wobei der Reverseproxy auf **HTTPS** lauscht, aber alle Replikatendpunkte sind unsicher (lauschen auf „HTTP“).
+     Der Reverseproxy gibt 404 zurück, da er keinen Endpunkt finden kann, der auf „HTTPS“ lauscht und an den die Anforderung weitergeleitet werden kann. Durch Analysieren der Parameter in der Ereignisnutzlast kann das Problem weiter eingegrenzt werden:
     
-    ```
-        "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
-    ```
+     ```
+      "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
+     ```
 
 3. Bei der Anforderung an den Reverseproxy tritt ein Timeoutfehler auf. 
     Die Ereignisprotokolle enthalten ein Ereignis mit den Details zur empfangenen Anforderung (hier nicht dargestellt).

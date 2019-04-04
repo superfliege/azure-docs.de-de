@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/15/2019
-ms.openlocfilehash: b0bd5c0ba8641bd287951168485be715a0b46224
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.date: 03/15/2019
+ms.openlocfilehash: c11f52d2bbc55187a16227cf9553cc7ba6013e1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328672"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853128"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-basierte Kaufmodell verwenden
 
@@ -30,6 +30,8 @@ Informationen zu Einschränkungen bei DTU-basierten Kaufmodellen finden Sie unte
 
 Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), mit [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) oder [REST-API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) Diensttarif, Computegröße und Speichermenge festlegen.
 
+> [!IMPORTANT]
+> Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md).
 > [!NOTE]
 > Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
 
@@ -50,7 +52,9 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|
+|Grenzwerte für die Protokollrate (MB/s)|2.5|5|7,5|10|12,5|15|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) * |210|420|630|840|1050|1260|
+|Max. gleichzeitige Anmeldungen pro Pool * |210|420|630|840|1050|1260|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|100|200|300|500|500|500|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...3|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...5|0, 0,25, 0,5, 1...6|
@@ -76,7 +80,9 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|3500|4000|4500|5.000|7.000|7.000|
+|Grenzwerte für die Protokollrate (MB/s)|17,5|20|20|20|20|20|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
+|Max. gleichzeitige Anmeldungen (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|200|500|500|500|500|500|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...7|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...9|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...10, 16|0, 0,25, 0,5, 1...10, 16, 24|
@@ -90,7 +96,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 1)
 
 |Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
 |Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
@@ -102,7 +108,9 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
+|Grenzwerte für die Protokollrate (MB/s)|2.5|5.6|7,5|10|12,5|15|17,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|200|500|500|500|500|500|500|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...6|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...12|0, 0,25, 0,5, 1...14|
@@ -116,7 +124,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 2)
 
 |Computegröße|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
 |Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
@@ -128,7 +136,9 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|4000|4500|5.000|6000|7.000|7.000|7.000|
+|Grenzwerte für die Protokollrate (MB/s)|20|20|20|20|20|20|20|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1680|1890|2100|2.520|33600|4.200|8.400|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1680|1890|2100|2.520|33600|4.200|8.400|
 |Max. Anzahl Datenbanken pro Pool|500|500|500|500|500|500|500|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...16, 24, 32, 40|0, 0,25, 0,5, 1...16, 24, 32, 40, 80|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
@@ -146,16 +156,18 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|3|4|5|6|
-|Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Columnstore-Unterstützung|–|–|–|–|–|–|
+|Arbeitsspeicher (GB)|7|14|21|28|35|42|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1|2|3|4|5|6|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße (GB)|307|307|307|307|307|307|
+|Maximale Datengröße (GB)|650|650|650|650|650|650|
+|Maximale Protokollgröße (GB)|195|195|195|195|195|195|
 |tempdb-Größe (GB)|32|64|96|128|160|192|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|5.000|10000|15000|20000|25000|30000|
+|Grenzwerte für die Protokollrate (MB/s)|7,5|15|22,5|30|37,5|45|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|210|420|630|840|1050|1260|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|210|420|630|840|1050|1260|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|Nur einzelne Datenbanken werden für diese Computegröße unterstützt|50|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|–|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...3|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...5|0, 0,25, 0,5, 1...6|
@@ -172,16 +184,18 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |:--- | --: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|7|8|9|10|16|24|
-|Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
+|Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|
 |Columnstore-Unterstützung|–|–|–|–|–|–|
 |In-Memory-OLTP-Speicher (GB)|7|8|9,5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße (GB)|307|307|307|307|307|307|
+|Maximale Datengröße (GB)|650|650|650|650|1024|1024|
+|Maximale Protokollgröße (GB)|195|195|195|195|307|307|
 |tempdb-Größe (GB)|224|256|288|320|384|384|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|35000|40.000|45000|50000|80.000|120000|
+|Grenzwerte für die Protokollrate (MB/s)|52,5|60|67,5|75|80|80|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1470|1680|1890|2100|3360|5.040|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|100|100|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...7|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...9|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...10, 16|0, 0,25, 0,5, 1...10, 16, 24|
@@ -195,19 +209,21 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 1)
 
 |Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
 |Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
-|Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|1536|
-|Maximale Protokollgröße (GB)|307|307|307|461|461|461|461|
+|Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|3072|
+|Maximale Protokollgröße (GB)|307|307|307|461|461|922|922|
 |tempdb-Größe (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|5.000|10000|15000|20000|25000|30000|35000|
+|Grenzwerte für die Protokollrate (MB/s)|7,5|15|22,5|30|37,5|45|52,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|210|420|630|840|1050|1260|1470|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|Nur einzelne Datenbanken werden für diese Computegröße unterstützt|50|100|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|–|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...6|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...12|0, 0,25, 0,5, 1...14|
@@ -221,7 +237,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 2)
 
 |Computegröße|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
 |Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
@@ -233,12 +249,14 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Ziel-IOPS (64 KB)|40.000|45000|50000|60000|80.000|100.000|200.000|
+|Grenzwerte für die Protokollrate (MB/s)|60|67,5|75|90|120|120|120|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) *|1680|1890|2100|2.520|3360|4.200|8.400|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1680|1890|2100|2.520|3360|4.200|8.400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Max. Anzahl Datenbanken pro Pool|100|100|100|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...20, 24, 32, 40|0, 0,25, 0,5, 1...20, 24, 32, 40, 80|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 

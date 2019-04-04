@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 07/27/201
+ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 8c405941417ad1a4e877cfd8fd0bdb53e186f6d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102764"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452299"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 
@@ -47,7 +47,7 @@ Für einen neuen Cluster können Sie [eine benutzerdefinierte Resource Manager-V
 
 Sie finden die Resource Manager-Beispielvorlagen, mit denen Sie einen sicheren Reverseproxy für einen Azure-Cluster konfigurieren können, auf GitHub in den [Beispielvorlagen für einen sicheren Reverseproxy](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample). In der Infodatei finden Sie unter [Konfigurieren des HTTPS-Reverseproxys in einem sicheren Cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) Anweisungen und Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit einem Zertifikat und zum Umgang mit einem Zertifikatrollover.
 
-Für einen vorhandenen Cluster können Sie die Resource Manager-Vorlage für die Ressourcengruppe des Clusters mit [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell#export-resource-group-as-template) oder [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli#export-resource-group-as-template) exportieren.
+Für einen vorhandenen Cluster können Sie die Resource Manager-Vorlage für die Ressourcengruppe des Clusters mit [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) oder [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) exportieren.
 
 Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reverseproxy mit den folgenden Schritten:
 
