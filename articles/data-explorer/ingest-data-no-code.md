@@ -3,17 +3,17 @@ title: 'Tutorial: Erfassen von Diagnose- und Aktivitätsprotokolldaten in Azure 
 description: In diesem Tutorial wird beschrieben, wie Sie Daten in Azure Data Explorer erfassen, ohne Code verwenden zu müssen, und diese Daten dann abfragen.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 3/14/2019
-ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d6b595b442b645f57454e317e6535645f643598
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994339"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756844"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Tutorial: Erfassen von Daten in Azure Data Explorer ohne jeglichen Code
 

@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: d2f892941f9d37dd3d74afe17d7952b404dc709f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551635"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649219"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
+
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, wollen Sie die Details zum erfolgreichen Kopiervorgang (z.B. die geschriebene Datenmenge) in einer Erfolgsmail senden. Schlägt die Kopieraktivität fehl, wollen Sie die Details zum Fehler beim Kopieren (z.B. die Fehlermeldung) in einer Fehler-E-Mail senden. In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
 
 Eine allgemeine Übersicht über das Szenario: ![Übersicht](media/tutorial-control-flow/overview.png)
@@ -56,6 +57,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     John|Doe
     Jane|Doe
     ```
+
 2. Verwenden Sie Tools wie [Azure Storage-Explorer](https://storageexplorer.com/), um den Container **adfv2branch** zu erstellen und die Datei **input.txt** in den Container hochzuladen.
 
 ## <a name="create-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
@@ -73,7 +75,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
 1. Klicken Sie auf **Tools** -> **NuGet-Paket-Manager** -> **Paket-Manager-Konsole**.
 2. Führen Sie in der **Paket-Manager-Konsole** die folgenden Befehle zum Installieren von Paketen aus. Ausführliche Informationen finden Sie auf der Seite zum [Microsoft.Azure.Management.DataFactory-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -139,6 +141,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
     ```
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+
 Erstellen Sie eine Funktion „CreateOrUpdateDataFactory“ in Ihrer „Program.cs“-Datei:
 
 ```csharp
@@ -173,6 +176,7 @@ Factory df = CreateOrUpdateDataFactory(client);
 ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>Erstellen eines verknüpften Azure Storage-Diensts
+
 Erstellen Sie eine Funktion „StorageLinkedServiceDefinition“ in Ihrer Datei „Program.cs“:
 
 ```csharp
@@ -188,6 +192,7 @@ static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagemen
     return linkedService;
 }
 ```
+
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, der einen **verknüpften Azure Storage-Dienst** erstellt. Unter [Eigenschaften von verknüpften Azure Blobdiensten](connector-azure-blob-storage.md#linked-service-properties) erfahren Sie mehr über unterstützte Eigenschaften und Details.
 
 ```csharp
@@ -199,6 +204,7 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLink
 In diesem Abschnitt erstellen Sie zwei Datasets: eines für die Quelle und das andere für die Senke. 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Erstellen eines Datasets für das Azure-Quellblob
+
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure blob dataset (Azure-Blobdataset)** erstellt. Erfahren Sie mehr in [Azure Blob dataset properties(Azure Blobdataset-Eigenschaften)](connector-azure-blob-storage.md#dataset-properties) zum Thema unterstützte Eigenschaften und Details.
 
 Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses Blobdataset verweist auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt erstellen und beschreibt:
@@ -258,6 +264,7 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetNa
 ```
 
 ## <a name="create-a-c-class-emailrequest"></a>Erstellen einer C#-Klasse: EmailRequest
+
 Erstellen Sie im C#-Projekt eine Klasse mit dem Namen **EmailRequest**(E-Mail-Anforderung). Hiermit wird definiert, welche Eigenschaften die Pipeline, in der Textanforderung, beim Versenden einer E-Mail sendet. In diesem Tutorial sendet die Pipeline vier Eigenschaften von der Pipeline an die E-Mail:
 
 - **Nachricht**:E-Mail-Text Im Falle eines erfolgreichen Kopiervorgangs enthält diese Eigenschaft die Details der Ausführung (Anzahl der geschriebenen Daten). Im Falle einer fehlgeschlagenen Kopie enthält diese Eigenschaft die Fehlerdetails.
@@ -289,10 +296,13 @@ Erstellen Sie im C#-Projekt eine Klasse mit dem Namen **EmailRequest**(E-Mail-An
         }
     }
 ```
+
 ## <a name="create-email-workflow-endpoints"></a>Erstellen von E-Mail-Workflow-Endpunkten
+
 Um das Senden einer E-Mail auszulösen, verwenden Sie [Logic Apps](../logic-apps/logic-apps-overview.md) zum Definieren des Workflows. Ausführliche Informationen zum Erstellen eines Logic-App-Workflows finden Sie unter [How to create a logic app (Vorgehensweise: Erstellen einer Logic-App)](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 ### <a name="success-email-workflow"></a>Erfolgs-E-Mail-Workflow 
+
 Erstellen Sie einen Logik-App-Workflow mit dem Namen `CopySuccessEmail`. Definieren Sie den Workflow-Trigger als `When an HTTP request is received`, und fügen Sie eine Aktion von `Office 365 Outlook – Send an email` hinzu.
 
 ![Erfolgs-E-Mail-Workflow](media/tutorial-control-flow/success-email-workflow.png)
@@ -318,6 +328,7 @@ Geben Sie für Ihren Anforderungstrigger das `Request Body JSON Schema` mit dem 
     "type": "object"
 }
 ```
+
 Dieses entspricht der **EmailRequest**(E-Mail Anforderungs)-Klasse, die Sie im vorherigen Abschnitt erstellt haben. 
 
 Ihre Anforderung sollte im Logik-App-Designer wie folgt aussehen:
@@ -336,6 +347,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ## <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow 
+
 Klonen Sie Ihre **CopySuccessEmail** (E-Mail über den Kopiererfolg), und erstellen Sie einen anderen Logik-Apps Workflow von **CopyFailEmail (E-Mail über den fehlgeschlagenen Kopiervorgang)**. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie einfach das Format Ihrer E-Mail wie den `Subject`, um diesen an eine Fehler-E-Mail anzupassen. Beispiel: 
 
 ![Logik-App-Designer: Fehler-E-Mail-Workflow](media/tutorial-control-flow/fail-email-workflow.png)
@@ -356,7 +368,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 //Fail Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
+
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
+
 Fügen Sie der „Main“-Methode den folgenden Code hinzu, der eine Pipeline mit einer Kopieraktivität und einer „dependsOn“-Eigenschaft erstellt. In diesem Tutorial enthält die Pipeline eine einzige Aktivität: die Kopieraktivität, die das Blobdataset als eine Quelle und ein anderes Blobdataset als eine Senke umfasst. Bei erfolgreicher und fehlgeschlagener Kopieraktivität ruft sie unterschiedliche E-Mail-Aufgaben ab.
 
 In dieser Pipeline verwenden Sie die folgenden Funktionen:
@@ -440,12 +454,15 @@ static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             return resource;
         }
 ```
+
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine Pipeline erstellt:
 
 ```
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
 ```
+
 ### <a name="parameters"></a>Parameter
+
 Der erste Abschnitt unserer Pipeline definiert Parameter. 
 
 - SourceBlobContainer: Parameter in der Pipeline, die vom Quell-Blobdataset verbraucht werden.
@@ -461,7 +478,9 @@ Parameters = new Dictionary<string, ParameterSpecification>
         { "receiver", new ParameterSpecification { Type = ParameterType.String } }
     },
 ```
+
 ### <a name="web-activity"></a>Webaktivität
+
 Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. Weitere Informationen zur Aktivität finden Sie unter [Web Activity (Webaktivität)](control-flow-web-activity.md). Diese Pipeline verwendet eine Webaktivität, um den Logik-Apps-E-Mail-Workflow aufzurufen. Sie erstellen zwei Webaktivitäten: eine, die Aufrufe an den **CopySuccessEmail** (E-Mail über den Kopiererfolg)-Workflow sendet und eine, die den **CopyFailWorkFlow** (E-Mail über den fehlgeschlagenen Kopiervorgang-Workflow) aufruft.
 
 ```csharp
@@ -481,6 +500,7 @@ Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. We
             }
         }
 ```
+
 Fügen Sie in der „Url“-Eigenschaft die Anforderungs-URL-Endpunkte aus Ihrem Logic-Apps-Workflow entsprechend ein. Übergeben Sie in der Eigenschaft „Text“ eine Instanz der „EmailRequest"-Klasse. Die E-Mail-Anforderung enthält die folgenden Eigenschaften:
 
 - Nachricht: Übergibt den Wert von `@{activity('CopyBlobtoBlob').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
@@ -491,6 +511,7 @@ Fügen Sie in der „Url“-Eigenschaft die Anforderungs-URL-Endpunkte aus Ihrem
 Dieser Code erstellt eine neue Aktivitätsabhängigkeit, abhängig von der vorherigen Kopieraktivität, die erfolgreich abgeschlossen wird.
 
 ## <a name="create-a-pipeline-run"></a>Erstellen einer Pipelineausführung
+
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineausführung auslöst**.
 
 ```csharp
@@ -508,6 +529,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="main-class"></a>Main-Klasse 
+
 Die endgültige Main-Methode sollte wie folgt aussehen. Erstellen Sie Ihr Programm und führen Sie es aus, um die Ausführung einer Pipeline auszulösen!
 
 ```csharp
@@ -539,6 +561,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Überwachen einer Pipelineausführung
+
 1. Fügen Sie der **Main**-Methode den folgenden Code hinzu, um den Status der Pipelineausführung kontinuierlich zu überwachen, bis die Pipeline das Kopieren der Daten beendet hat.
 
     ```csharp
@@ -578,6 +601,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ```
 
 ## <a name="run-the-code"></a>Ausführen des Codes
+
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
 Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie anschließend Tools wie z.B. Azure Storage-Explorer, um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben von „InputBlobPath“ nach „OutputBlobPath“ kopiert werden.
 
@@ -734,6 +758,7 @@ Press any key to exit...
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
 
 > [!div class="checklist"]

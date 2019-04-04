@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090473"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886368"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Schnellstart: Erstellen einer ASP.NET-Web-App 
 
@@ -97,7 +97,7 @@ Als Nächstes erstellen Sie den Cache für die App.
 
 In diesem Abschnitt aktualisieren Sie die Anwendung, um eine neue Ansicht zu unterstützen, in der ein einfacher Test für Azure Cache for Redis angezeigt wird.
 
-* [Aktualisieren der Datei „Web.config“ mit einer App-Einstellung für den Cache](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
+* [Aktualisieren der Datei „Web.config“ mit einer App-Einstellung für den Cache](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
 * Konfigurieren der Anwendung für die Verwendung des Clients „StackExchange.Redis“
 * Aktualisieren von HomeController und Layout
 * Hinzufügen einer neuen RedisCache-Ansicht
@@ -116,7 +116,7 @@ Weil die Datei *CacheSecrets.config* nicht mit Ihrer Anwendung in Azure bereitge
 2. Suchen Sie in der Datei *web.config* nach dem Element `<appSetting>`. Fügen Sie anschließend das folgende `file`-Attribut hinzu. Falls Sie einen anderen Dateinamen oder -speicherort verwendet haben, müssen die Werte aus dem Beispiel durch diese Werte ersetzt werden.
 
 * Vorher: `<appSettings>`
-* Nachher: ` <appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Nachher:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<appSettings>`-Element zusammen. Falls die angegebene Datei nicht gefunden wird, wird das Dateiattribut ignoriert. Ihre vertraulichen Daten (die Verbindungszeichenfolge für Ihren Cache) sind nicht Bestandteil des Quellcodes für die Anwendung. Die Datei *CacheSecrets.config* wird bei der Bereitstellung der Web-App in Azure nicht bereitgestellt.
 
