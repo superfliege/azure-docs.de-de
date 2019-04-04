@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: bd6384dcd132ffb53e3531707c600465e8d0b649
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088042"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
@@ -27,13 +27,115 @@ Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Exp
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
+## <a name="version-170"></a>Version 1.7.0
+05.03.2019
+
+### <a name="download-azure-storage-explorer-170"></a>Herunterladen von Azure Storage-Explorer 1.7.0
+- [Azure Storage-Explorer 1.7.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 1.7.0 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 1.7.0 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+
+* Sie können nun den Besitzer und die besitzende Gruppe bei der Zugriffsverwaltung eines ADLS Gen2-Containers, einer ADLS Gen2-Datei oder eines ADLS Gen2-Ordners ändern.
+* Die Aktualisierung des Storage-Explorers innerhalb des Produkts ist unter Windows jetzt eine inkrementelle Installation. Dies sollte Aktualisierungsvorgänge insgesamt verkürzen. Wenn Sie eine Neuinstallation vorziehen, können Sie den [Installer](https://azure.microsoft.com/en-us/features/storage-explorer/) selbst herunterladen und dann manuell installieren. #1089
+
+### <a name="preview-features"></a>Previewfunktionen
+
+* In der Vorschauversion ist nun die Gerätecodeflussanmeldung verfügbar. Wenn Sie diese aktivieren möchten, navigieren Sie zu „Preview“ → „Use Device Code Flow Sign-in“ (Gerätecodeflussanmeldung verwenden). Benutzern, die Probleme mit leeren Anmeldefenstern hatten, empfehlen wir die Verwendung dieses Features, da dieses sich als zuverlässigere Anmeldeform herausstellen dürfte. #938
+* In der Vorschauversion ist der Storage-Explorer momentan als Integration in AzCopy verfügbar. Wenn Sie ihn aktivieren möchten, navigieren Sie zu „Preview“ → „Use AzCopy for Improved Blob Upload and Download“ (AzCopy für verbessertes Hoch- und Herunterladen von Blobs verwenden). Blob-Übertragungen mithilfe von AzCopy sollten schneller und leistungsstärker erfolgen.
+
+### <a name="fixes"></a>Fehlerbehebungen
+
+* Wenn AzCopy aktiviert wurde, können Sie nun den Blob-Typen auswählen, den Sie hochladen möchten. #1111
+* Wenn Sie zuvor statische Websites für ein ADLS Gen2-Speicherkonto aktiviert hatten, und diesem dann Name und Schlüssel anfügten, konnte der Storage-Explorer nicht erkennen, dass hierarchische Namespaces aktiviert waren. Dies wurde korrigiert. #1081
+* Das Sortieren im Blob-Editor nach „retention days remaining“ (verbleibende Tage für die Aufbewahrung) oder „Status“ war fehlerhaft. Dies wurde korrigiert. #1106
+* Nach 1.5.0 wartete der Storage-Explorer nicht mehr darauf, dass serverseitige Kopien abgeschlossen wurden, bevor er einen Erfolg während einer Umbenennung oder eines Copy&Paste-Vorgangs meldete. Dies wurde korrigiert. #976
+* Bei der Verwendung des experimentellen AzCopy-Features, konnte der Befehl zum Kopieren nach dem Klicken auf „Copy command to clipboard“ (Befehl in die Zwischenablage kopieren) nicht immer eigenständig ausgeführt werden. Jetzt werden alle Befehle kopiert, für die die Übertragung manuell ausgeführt werden muss. #1079
+* Bisher konnten Sie nicht auf ADLS Gen2-Blobs zugreifen, wenn Sie sich hinter einem Proxy befanden. Dies war einem Fehler in einer neuen Netzwerkbibliothek geschuldet, der vom Storage SDK verwendet wurde. In 1.7.0 wurde bereits versucht, dieses Problem zu lösen, teilweise kann es aber weiterhin zu Problemen kommen. In einem zukünftigen Update wird das Problem vollständig gelöst werden. #1090
+* In 1.7.0 kann das Dialogfeld „Datei speichern“ nun den korrekten Speicherort bestimmen, an dem Sie eine Datei das letzte Mal abgespeichert haben. #16
+* Im Eigenschaftenbereich wurde der SKU-Tarif eines Speicherkontos als Kontotyp angezeigt. Dies wurde korrigiert. #654
+* Manchmal konnte das Leasen eines Blobs nicht unterbrochen werden, auch nicht, wenn Sie den Namen des Blobs korrekt eingaben. Dies wurde korrigiert. #1070
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Bei der Verwendung der RBAC erfordert der Storage-Explorer mehrere Berechtigungen auf Verwaltungsebene, damit er auf Ihre Speicherressourcen zugreifen kann. Weitere Informationen finden Sie im [Azure Storage-Explorer – Leitfaden zur Problembehandlung](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting).
+* Der Versuch, auf ADLS Gen2-Blobs zuzugreifen, wenn man sich hinter einem Proxy befindet, schlägt möglicherweise fehl.
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie unter #537.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 1.6.2](#version-162)
+* [Version 1.6.1](#version-161)
+* [Version 1.6.0](#version-160)
+* [Version 1.5.0](#version-150)
+* [Version 1.4.4](#version-144)
+* [Version 1.4.3](#version-143)
+* [Version 1.4.2](#version-142)
+* [Version 1.4.1](#version-141)
+* [Version 1.3.0](#version-130)
+* [Version 1.2.0](#version-120)
+* [Version 1.1.0](#version-110)
+* [Version 1.0.0](#version-100)
+* [Version 0.9.6](#version-096)
+* [Version 0.9.5](#version-095)
+* [Version 0.9.4 und 0.9.3](#version-094-and-093)
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 und 0.9.0](#version-091-and-090)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
+* [Version 0.8.9 und 0.8.8](#version-089-and-088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-162"></a>Version 1.6.2
 9.1.2019
-
-### <a name="download-azure-storage-explorer-162"></a>Herunterladen von Azure Storage-Explorer 1.6.2
-- [Azure Storage-Explorer 1.6.2 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 1.6.2 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 1.6.2 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Hotfixes
 * In Version 1.6.1 wurden Entitäten, die ADLS Gen2-ACLs nach ObjectId hinzugefügt wurden und keine Benutzer waren, immer als Gruppen hinzugefügt. Jetzt werden nur Gruppen als Gruppen hinzugefügt, und Entitäten wie Unternehmensanwendungen und Dienstprinzipale werden als Benutzer hinzugefügt. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
@@ -56,12 +158,12 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 
 * Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
 * Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
-    * Erstellen und Löschen von Containern
-    * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
-    * Anzeigen von Daten in Containern und Navigieren zu diesen
-    * Erstellen neuer Ordner
-    * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
-    * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
+  * Erstellen und Löschen von Containern
+  * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
+  * Anzeigen von Daten in Containern und Navigieren zu diesen
+  * Erstellen neuer Ordner
+  * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
+  * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
     
     Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
 * Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.
@@ -104,42 +206,6 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 1.6.1](#version-161)
-* [Version 1.6.0](#version-160)
-* [Version 1.5.0](#version-150)
-* [Version 1.4.4](#version-144)
-* [Version 1.4.3](#version-143)
-* [Version 1.4.2](#version-142)
-* [Version 1.4.1](#version-141)
-* [Version 1.3.0](#version-130)
-* [Version 1.2.0](#version-120)
-* [Version 1.1.0](#version-110)
-* [Version 1.0.0](#version-100)
-* [Version 0.9.6](#version-096)
-* [Version 0.9.5](#version-095)
-* [Version 0.9.4 und 0.9.3](#version-094-and-093)
-* [Version 0.9.2](#version-092)
-* [Version 0.9.1 und 0.9.0](#version-091-and-090)
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
-* [Version 0.8.9 und 0.8.8](#version-089-and-088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
-
 ## <a name="version-161"></a>Version 1.6.1
 18.12.2018
 
@@ -161,12 +227,12 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 
 * Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
 * Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
-    * Erstellen und Löschen von Containern
-    * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
-    * Anzeigen von Daten in Containern und Navigieren zu diesen
-    * Erstellen neuer Ordner
-    * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
-    * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
+  * Erstellen und Löschen von Containern
+  * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
+  * Anzeigen von Daten in Containern und Navigieren zu diesen
+  * Erstellen neuer Ordner
+  * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
+  * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
     
     Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
 * Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.
@@ -216,12 +282,12 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 
 * Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
 * Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
-    * Erstellen und Löschen von Containern
-    * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
-    * Anzeigen von Daten in Containern und Navigieren zu diesen
-    * Erstellen neuer Ordner
-    * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
-    * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
+  * Erstellen und Löschen von Containern
+  * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
+  * Anzeigen von Daten in Containern und Navigieren zu diesen
+  * Erstellen neuer Ordner
+  * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
+  * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
     
     Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
 * Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.

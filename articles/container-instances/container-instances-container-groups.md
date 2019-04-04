@@ -1,20 +1,20 @@
 ---
 title: Containergruppen von Azure Container Instances
-description: Funktionsweise von Containergruppen in Azure Container Instances
+description: Funktionsweise von Gruppen mit mehreren Containern in Azure Container Instances
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/20/2018
-ms.author: seanmck
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cb3d8c27a82c7dfc5fd71c1c7d589e81890e5cfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8724bd7e13b0d8607ad5a6814b27c8c06681f331
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202009"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -22,7 +22,7 @@ Die oberste Ressource in Azure Container Instances ist die *Containergruppe*. In
 
 ## <a name="how-a-container-group-works"></a>Funktionsweise einer Containergruppe
 
-Eine Containergruppe ist eine Sammlung mit Containern, die auf demselben Hostcomputer geplant werden. Für die Container einer Containergruppe werden der Lebenszyklus, das lokale Netzwerk und die Speichervolumes gemeinsam genutzt. Dies ähnelt dem *Pod*-Konzept in [Kubernetes][kubernetes-pod] und [DC/OS][dcos-pod].
+Eine Containergruppe ist eine Sammlung mit Containern, die auf demselben Hostcomputer geplant werden. Für die Container einer Containergruppe werden der Lebenszyklus, die Ressourcen, das lokale Netzwerk und die Speichervolumes gemeinsam genutzt. Dies ähnelt dem *Pod*-Konzept in [Kubernetes][kubernetes-pod].
 
 Das folgende Diagramm zeigt ein Beispiel für eine Containergruppe, die mehrere Container enthält:
 
@@ -37,17 +37,41 @@ Für diese Beispielcontainergruppe gilt Folgendes:
 * Sie enthält zwei Azure-Dateifreigaben als Volumebereitstellungen, und jeder Container stellt eine der Freigaben lokal bereit.
 
 > [!NOTE]
-> Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+> Gruppen mit mehreren Containern unterstützen aktuell nur Linux-Container. Für Windows-Container unterstützt Azure Container Instances nur die Bereitstellung einer einzelnen Instanz. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede in der [Dienstübersicht](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="deployment"></a>Bereitstellung
 
-*Containergruppen* verfügen über eine minimale Ressourcenzuteilung von 1 vCPU und 1 GB Arbeitsspeicher. Einzelne *Container* in einer Containergruppe können mit weniger als 1 vCPU und 1 GB Arbeitsspeicher bereitgestellt werden. Innerhalb einer Containergruppe kann die Verteilung von Ressourcen an mehrere Container angepasst werden, solange diese innerhalb der Grenzwerte liegen, die auf Containergruppenebene festgelegt wurden. Beispielsweise sind zwei Container mit je einer halben vCPU innerhalb einer Containergruppe 1 vCPU zugeordnet.
+Zwei gebräuchliche Wege zum Bereitstellen einer Gruppe mit mehreren Containern sind eine [Resource Manager-Vorlage][resource-manager template] und eine [YAML-Datei][yaml-file]. Verwenden Sie eine Resource Manager-Vorlage, wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienstressourcen (z.B. eine [Azure Files-Freigabe][azure-files]) bereitstellen müssen. Das YAML-Format ist präziser, daher wird eine YAML-Datei empfohlen, wenn Ihre Bereitstellung nur Containerinstanzen enthält.
+
+## <a name="resource-allocation"></a>Ressourcenzuteilung
+
+Azure Container Instances weist einer Containergruppe Ressourcen wie CPUs, Arbeitsspeicher und optional [GPUs][gpus] (Vorschau) zu, indem die [Ressourcenanforderungen][resource-requests] der Instanzen in der Gruppe hinzugefügt werden. Wenn Sie zum Beispiel bei CPU-Ressourcen eine Containergruppe mit zwei Instanzen erstellen, von denen jede 1 CPU erfordert, werden der Containergruppe 2 CPUs zugeordnet.
+
+Die maximal für eine Containergruppe verfügbaren Ressourcen hängen von der [Azure-Region][region-availability] ab, die für die Bereitstellung verwendet wird.
+
+### <a name="container-resource-requests-and-limits"></a>Containerressourcenanforderungen und -grenzwerte
+
+* Standardmäßig teilen sich die Containerinstanzen in einer Gruppe die angeforderten Ressourcen der Gruppe. In einer Gruppe mit zwei Instanzen, von denen jede 1 CPU erfordert, hat die Gruppe als Ganzes Zugriff auf 2 CPUs. Jede Instanz kann bis zu 2 CPUs verwenden, und die Instanzen konkurrieren während der Ausführung möglicherweise um eine CPU-Ressource.
+
+* Sie können optional einen [Ressourcengrenzwert][resource-limits] für eine Instanz festlegen, um die Ressourcennutzung der Instanz in der Gruppe zu beschränken. In einer Gruppe mit zwei Instanzen, die 1 CPU erfordern, können für einen der Container mehr CPUs für die Ausführung erforderlich sein als für den anderen.
+
+  In diesem Szenario könnten Sie einen Ressourcengrenzwert von 0,5 CPU für die eine Instanz und einen Grenzwert von 2 CPUs für die zweite festlegen. Diese Konfiguration beschränkt die Ressourcennutzung des ersten Containers auf 0,5 CPU und lässt den zweiten Container gegebenenfalls bis zu 2 CPUs verwenden.
+
+Weitere Informationen finden Sie unter der Eigenschaft [ResourceRequirements][resource-requirements] in der REST-API für Containergruppen.
+
+### <a name="minimum-and-maximum-allocation"></a>Minimale und maximale Zuordnung
+
+* Ordnen Sie einer Containergruppe **mindestens** 1 CPU und 1 GB Arbeitsspeicher zu. Einzelne Containerinstanzen in einer Gruppe können mit weniger als 1 CPU und 1 GB Arbeitsspeicher bereitgestellt werden. 
+
+* Informationen zur **maximalen** Zuordnung von Ressourcen in einer Containergruppe finden Sie unter [resource availability][aci-region-availability] für Azure Container Instances in der Bereitstellungsregion.
 
 ## <a name="networking"></a>Netzwerk
 
-Containergruppen nutzen eine IP-Adresse und einen Portnamespace dieser IP-Adresse gemeinsam. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. Container in einer Gruppe können einander per localhost auf den Ports erreichen, die sie verfügbar gemacht haben. Dies gilt auch, wenn diese Port für die IP-Adresse der Gruppe nicht extern verfügbar gemacht werden.
+Containergruppen nutzen eine IP-Adresse und einen Portnamespace dieser IP-Adresse gemeinsam. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. Container in einer Gruppe können einander per Localhost auf den Ports erreichen, die sie verfügbar gemacht haben. Dies gilt auch, wenn diese Ports für die IP-Adresse der Gruppe nicht extern verfügbar gemacht werden.
 
-## <a name="storage"></a>Speicher
+Durch die optionale Bereitstellung von Containergruppen in einem [virtuellen Azure-Netzwerk][virtual-network] (Vorschau) können Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren.
+
+## <a name="storage"></a>Storage
 
 Sie können externe Volumes für die Bereitstellung in einer Containergruppe angeben. Sie können diese Volumes bestimmten Pfaden in den einzelnen Containern einer Gruppe zuordnen.
 
@@ -57,16 +81,17 @@ Gruppen mit mehreren Containern sind nützlich, wenn Sie eine einzelne funktiona
 
 Beispiel für Verwendung:
 
+* Ein Container, über den eine Webanwendung bereitgestellt wird, und ein Container, der den aktuellen Inhalt aus der Quellcodeverwaltung abruft.
 * Ein Anwendungscontainer und ein Protokollierungscontainer. Mit dem Protokollierungscontainer werden die Protokolle und Metriken gesammelt, die von der Hauptanwendung ausgegeben werden, und in den Langzeitspeicher geschrieben.
 * Ein Anwendungscontainer und ein Überwachungscontainer. Der Überwachungscontainer sendet regelmäßig eine Anforderung an die Anwendung, um sicherzustellen, dass sie ausgeführt wird und richtig reagiert. Andernfalls wird eine Warnung ausgelöst.
-* Ein Container, über den eine Webanwendung bereitgestellt wird, und ein Container, der den aktuellen Inhalt aus der Quellcodeverwaltung abruft.
+* Ein Front-End-Container und ein Back-End-Container. Das Front-End kann als Webanwendung dienen und das Back-End einen Dienst zum Abrufen von Daten ausführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das Bereitstellen einer Gruppe mit mehreren Containern per Azure Resource Manager-Vorlage.
 
 > [!div class="nextstepaction"]
-> [Bereitstellen einer Containergruppe](container-instances-multi-container-group.md)
+> [Bereitstellen einer Containergruppe][resource-manager template]
 
 <!-- IMAGES -->
 [container-groups-example]: ./media/container-instances-container-groups/container-groups-example.png
@@ -74,3 +99,14 @@ Informieren Sie sich über das Bereitstellen einer Gruppe mit mehreren Container
 <!-- LINKS - External -->
 [dcos-pod]: https://dcos.io/docs/1.10/deploying-services/pods/
 [kubernetes-pod]: https://kubernetes.io/docs/concepts/workloads/pods/pod/
+
+<!-- LINKS - Internal -->
+[resource-manager template]: container-instances-multi-container-group.md
+[yaml-file]: container-instances-multi-container-yaml.md
+[region-availability]: container-instances-region-availability.md
+[resource-requests]: /rest/api/container-instances/containergroups/createorupdate#resourcerequests
+[resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
+[resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
+[azure-files]: container-instances-volume-azure-files.md
+[virtual-network]: container-instances-vnet.md
+[gpus]: container-instances-gpu.md

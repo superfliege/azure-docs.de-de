@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0f5f190eee473d5eb483f901ada80cb67b4ffedd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110510"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
@@ -28,8 +28,8 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 
 - Stellen Sie die Anmeldung ohne Kennwort bereit, indem der Benutzername und das mobile Gerät mit Fingerabdruck, Gesichtserkennung oder einer PIN verwendet wird.
 
- >[!Important]
- >Diese Methode der Anmeldung per Telefon funktioniert nur mit Geschäfts-, Schul- oder Unikonten bzw. Ihrem persönlichen Konto von Microsoft. Für alle Konten von anderen Anbietern als Microsoft müssen Sie den Standardprozess der zweistufigen Überprüfung verwenden.
+  >[!Important]
+  >Diese Methode der Anmeldung per Telefon funktioniert nur mit Geschäfts-, Schul- oder Unikonten bzw. Ihrem persönlichen Konto von Microsoft. Für alle Konten von anderen Anbietern als Microsoft müssen Sie den Standardprozess der zweistufigen Überprüfung verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie müssen Folgendes durchführen, bevor Sie die Microsoft Authenticator-App verwenden können:
@@ -110,14 +110,17 @@ Die erforderlichen Schritte für die Anmeldung an Ihrem Geschäfts-, Schul- oder
 |**Inwiefern ist die Anmeldung per Telefon sicherer als die Eingabe eines Kennworts?**|Die meisten Benutzer melden sich heutzutage mit einem Benutzernamen und einem Kennwort bei einer Website oder App an. Leider können Kennwörter verlorengehen, gestohlen oder von Hackern erraten werden.<br><br>Nachdem Sie die Microsoft Authenticator-App eingerichtet haben, wird auf Ihrem Telefon ein Schlüssel zum Entsperren Ihres Kontos eingerichtet, der von der PIN Ihres Smartphones oder per biometrischer Sperre geschützt wird. Dieser Schlüssel wird dann verwendet, um bei der Anmeldung Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Ihre Daten werden nur verwendet, um Ihren Schlüssel lokal zu schützen. Er wird weder an die Cloud gesendet noch dort gespeichert.|
 |**Wird die zweistufige Überprüfung durch die Anmeldung per Telefon ersetzt? Sollte ich sie deaktivieren?**|Die Anmeldung per Telefon ist eine Art der zweistufigen Überprüfung, bei der beide Schritte auf dem mobilen Gerät ausgeführt werden. Sie sollten die zweistufige Überprüfung aktiviert lassen, um für Ihr Konto für zusätzliche Sicherheit zu sorgen.|
 |**Muss ich zwei Benachrichtigungen bestätigen, wenn ich die zweistufige Überprüfung für mein Konto aktiviert lasse?**|  Nein. Die Anmeldung bei Ihrem Microsoft-Konto mit Ihrem Telefon zählt ebenfalls als zweistufige Überprüfung, sodass keine zweite Genehmigung erforderlich ist.|
-|**Was ist, wenn ich mein Smartphone verliere oder nicht zur Hand habe? Wie kann ich auf mein Konto zugreifen?**| Sie können auf der Anmeldeseite jederzeit den Link „Stattdessen Ihr Kennwort verwenden“ auswählen und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie jedoch weiterhin eine zweite Methode, um Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Sie sollten unbedingt sicherstellen, dass Sie Ihrem Konto mehr als eine Überprüfungsmethode zuordnen, die auf dem aktuellen Stand ist.<br><br>Sie können Ihre Überprüfungsmethoden für persönliche Konten auf Ihrer [Sicherheitseinstellungen](https://account.live.com/proofs/manage)-Seite verwalten. Für Geschäfts-, Schul- oder Unikonten können Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/MFASetup) oder **Schützen Sie Ihr Konto** Ihrer Organisation wechseln, wenn Ihr Administrator die Sicherheitsinfos aktiviert hat. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen (Vorschau)](security-info-manage-settings.md).<br><br>Wenn Sie Ihre Überprüfungsmethoden nicht verwalten können, müssen Sie sich an Ihren Administrator wenden.|
+|**Was ist, wenn ich mein Smartphone verliere oder nicht zur Hand habe? Wie kann ich auf mein Konto zugreifen?**| Sie können auf der Anmeldeseite jederzeit den Link „Stattdessen Ihr Kennwort verwenden“ auswählen und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie jedoch weiterhin eine zweite Methode, um Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Sie sollten unbedingt sicherstellen, dass Sie Ihrem Konto mehr als eine Überprüfungsmethode zuordnen, die auf dem aktuellen Stand ist.<br><br>Sie können Ihre Überprüfungsmethoden für persönliche Konten auf Ihrer [Sicherheitseinstellungen](https://account.live.com/proofs/manage)-Seite verwalten. Für Geschäfts-, Schul- oder Unikonten können Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/MFASetup) oder **Schützen Sie Ihr Konto** Ihrer Organisation wechseln, wenn Ihr Administrator die Sicherheitsinfos aktiviert hat. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md).<br><br>Wenn Sie Ihre Überprüfungsmethoden nicht verwalten können, müssen Sie sich an Ihren Administrator wenden.|
 |**Wie kann ich die Verwendung des Features beenden und wieder zur Verwendung meines Kennworts zurückkehren?**|Wählen Sie für persönliche Konten bei der Anmeldung den Link **Stattdessen Ihr Kennwort verwenden** aus. Ihre aktuelle Auswahl wird gespeichert und standardmäßig bei Ihrer nächsten Anmeldung angeboten. Falls Sie einmal zur Anmeldung per Telefon zurückkehren möchten, können Sie während der Anmeldung den Link **Stattdessen eine App verwenden** auswählen.<br><br>Für Geschäfts-, Schul- oder Unikonten müssen Sie auf die Seite für die zusätzliche Sicherheitsüberprüfung navigieren (z.B. https://aka.ms/MFASetup)) und die Microsoft Authenticator-App entfernen.|
 |**Warum kann nicht ich mehr als ein Geschäfts-, Schul- oder Uni-Konto für die Anmeldung per Telefon verwenden?**| Ein Telefon muss für ein einzelnes Geschäfts-, Schul- oder Unikonto registriert sein. Wenn Sie die Anmeldung per Telefon für ein anderes Geschäfts-, Schul- oder Unikonto aktivieren möchten, müssen Sie zuerst die Registrierung des alten Geräts über die Seite **Einstellungen** aufheben.|
 |**Kann ich mich mit meinem Telefon bei meinem Computer anmelden?**| Bei Ihrem Computer sollten Sie sich mithilfe von Windows Hello unter Windows 10 anmelden. Mit Windows Hello können Sie sich mit Ihrem Gesicht, Fingerabdruck oder Ihrer PIN anmelden.|
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel **Sicherheitsinformation und Prüfcodes zum Microsoft-Konto** den Abschnitt [Problembehandlung beim Prüfcode](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes).
+
 - Antworten auf allgemeinere Fragen zur App finden Sie unter [Microsoft Authenticator-App – häufig gestellte Fragen](user-help-auth-app-faq.md).
 
 - Weitere Informationen zur zweistufigen Überprüfung finden Sie unter [Einrichten meines Kontos für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-first-time.md).
 
-- Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen](security-info-manage-settings.md).
+- Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md).

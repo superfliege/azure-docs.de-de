@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/07/2019
-ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/27/2019
+ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895685"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078651"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -80,7 +80,7 @@ Durch mehrfache fehlerhafte Versuche des Zugriffs auf einen Computer wird das Be
 
 ### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Die Anmeldeserver sind auf dem Quellcomputer nicht verfügbar (Fehler-ID: 95521)
 
-Dieser Fehler tritt auf, wenn die Anmeldeserver auf dem Quellcomputer nicht verfügbar sind. Die Nichtverfügbarkeit von Anmeldeservern führt zu einem Fehler bei der Anmeldeanforderung, sodass der Mobility-Agent nicht installiert werden kann. Um sich erfolgreich anzumelden, stellen Sie sicher, dass die Anmeldeserver auf dem Quellcomputer verfügbar sind, und starten Sie den Anmeldedienst. Ausführliche Anweisungen finden Sie [hier](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
+Dieser Fehler tritt auf, wenn die Anmeldeserver auf dem Quellcomputer nicht verfügbar sind. Die Nichtverfügbarkeit von Anmeldeservern führt zu einem Fehler bei der Anmeldeanforderung, sodass der Mobility-Agent nicht installiert werden kann. Um sich erfolgreich anzumelden, stellen Sie sicher, dass die Anmeldeserver auf dem Quellcomputer verfügbar sind, und starten Sie den Anmeldedienst. Ausführliche Anweisungen finden Sie [im Artikel](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) zu „Err Msg: There are Currently No Logon Servers Available“ (Fehlermeldung: Derzeit sind keine Anmeldeserver verfügbar.).
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Der Anmeldedienst wird auf dem Quellcomputer nicht ausgeführt (Fehler-ID: 95522)
 
@@ -122,9 +122,9 @@ Dieser Fehler tritt auf, wenn das Netzwerk, in dem sich der Quellcomputer befind
 * Gehen Sie wie folgt vor, um die Dateifreigabe mit der Gruppenrichtlinie zu aktivieren:
   * Wechseln Sie zu „Start“, geben Sie „gpmc.msc“ ein, und starten Sie die Suche.
   * Öffnen Sie im Navigationsbereich die folgenden Ordner: „Richtlinie für ,Lokaler Computer‘“, „Benutzerkonfiguration“, „Administrative Vorlagen“, „Windows-Komponenten“ und „Netzwerkfreigabe“.
-  * Doppelklicken Sie im Detailbereich auf **Verhindern, dass Benutzer Dateien in ihrem Profil freigeben**. Wenn Sie die Gruppenrichtlinieneinstellung deaktivieren und die Option zum Freigeben von Dateien für den Benutzer aktivieren möchten, klicken Sie auf „Deaktiviert“. Klicken Sie zum Speichern der Änderungen auf „OK“. Klicken Sie [hier](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)), um weitere Informationen zu erhalten.
+  * Doppelklicken Sie im Detailbereich auf **Verhindern, dass Benutzer Dateien in ihrem Profil freigeben**. Wenn Sie die Gruppenrichtlinieneinstellung deaktivieren und die Option zum Freigeben von Dateien für den Benutzer aktivieren möchten, klicken Sie auf „Deaktiviert“. Klicken Sie zum Speichern der Änderungen auf „OK“. Weitere Informationen finden Sie unter [Enable or disable File Sharing with Group Policy (Aktivieren oder Deaktivieren der Dateifreigabe mit der Gruppenrichtlinie)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
-Um die Datei- und Druckerfreigabe in **höheren Versionen** zu aktivieren, befolgen Sie die [hier](vmware-azure-install-mobility-service.md) angegebenen Anweisungen.
+Befolgen Sie für **höhere Versionen** die Anweisungen unter [Installieren des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern](vmware-azure-install-mobility-service.md), wenn Sie die Datei- und Druckerfreigabe aktivieren möchten.
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Überprüfung der Konfiguration der Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) (Fehlercode: 95103)
 
@@ -171,11 +171,11 @@ Die GRUB-Konfigurationsdateien („/boot/grub/menu.lst“, „/boot/grub/grub.cf
 
 
 - Die folgende Zeile stammt aus der GRUB-Datei **/boot/grub2/grub.cfg**. <br>
-*linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+  *linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
 
 
 - Die folgende Zeile stammt aus der GRUB-Datei **/boot/grub/menu.lst**
-*kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+  *kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 
 Beachten Sie die fett formatierte Zeichenfolge oben: GRUB benutzt die tatsächlichen Gerätenamen für die Parameter „root“ und „resume“ statt UUID.
  
@@ -184,25 +184,25 @@ Die Gerätenamen sollten mit dem entsprechenden UUID ersetzt werden.<br>
 
 
 1. Suchen Sie die UUID des Geräts durch Ausführen des Befehls „blkid <device name>“. Beispiel: <br>
-```
-blkid /dev/sda1
-/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-blkid /dev/sda2 
-/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
-```
+   ```
+   blkid /dev/sda1
+   /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+   blkid /dev/sda2 
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```
 
-2. Ersetzen Sie den Gerätenamen jetzt die UUID im Format „root=UUID=<UUID>“. Angenommen, Sie ersetzen die Gerätenamen durch die UUID für die Parameter „root“ und „resume“, die oben in den Dateien „/boot/grub2/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“ erwähnt werden, dann sehen die Zeilen in den Dateien so aus: <br>
-*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+2. Ersetzen Sie den Gerätenamen jetzt die UUID im Format „root=UUID=<UUID>“. Wenn Sie die Gerätenamen durch die UUID für die Parameter „root“ und „resume“ ersetzen, die oben in den Dateien „/boot/grub2/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“ erwähnt werden, sehen die Zeilen in den Dateien folgendermaßen aus: <br>
+   *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 3. Starten Sie den Schutz erneut.
 
 ## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Installation des Mobilitätsdienst mit Neustartwarnung abgeschlossen (Fehler-ID: 95265, 95266)
 
 Der Site Recovery-Mobilitätsdienst verfügt über viele Komponenten, einer davon ist der Filtertreiber. Der Filtertreiber wird nur bei einem Systemneustart in den Systemspeicher geladen. Das bedeutet, dass Korrekturen des Filtertreibers nur dann übernommen werden, wenn ein neuer Filtertreiber geladen wird, was nur zum Zeitpunkt des Systemneustarts erfolgen kann.
 
-**Bitte beachten Sie**, dass es sich hierbei um eine Warnung handelt und die bestehende Replikation auch nach dem neuen Agent-Update funktioniert. Sie können sich jederzeit einen Neustart durchführen, um die Vorteile des neuen Filtertreibers zu nutzen, aber wenn Sie keinen Neustart ausführen, funktioniert auch der alte Filtertreiber weiter. So werden nach einem Update ohne Neustart, abgesehen vom Filtertreiber, **die Vorteile anderer Verbesserungen und Korrekturen im Mobilitätsdienst übernommen**. Obwohl empfohlen, ist es nicht zwingend erforderlich, nach jedem Upgrade neu zu starten. Informationen dazu, wann ein Neustart erforderlich ist, finden Sie [hier](https://aka.ms/v2a_asr_reboot).
+**Bitte beachten Sie**, dass es sich hierbei um eine Warnung handelt und die bestehende Replikation auch nach dem neuen Agent-Update funktioniert. Sie können jederzeit einen Neustart durchführen, um die Vorteile des neuen Filtertreibers zu nutzen. Wenn Sie jedoch keinen Neustart durchführen, funktioniert der alte Filtertreiber weiterhin. So werden nach einem Update ohne Neustart, abgesehen vom Filtertreiber, **die Vorteile anderer Verbesserungen und Korrekturen im Mobilitätsdienst übernommen**. Es wird zwar empfohlen, nach jedem Upgrade einen Neustart durchzuführen, aber es ist nicht erforderlich. Weitere Informationen dazu, wann ein Neustart erforderlich ist, finden Sie im Abschnitt [Neustart des Quellcomputers nach dem Upgrade des Mobilitäts-Agents](https://aka.ms/v2a_asr_reboot) in den Dienstupdates von Azure Site Recovery.
 
 > [!TIP]
->Bewährte Methoden zum Planen von Upgrades während eines Wartungsfensters finden Sie [hier](https://aka.ms/v2a_asr_upgrade_practice).
+>Weitere Informationen zu bewährten Methoden für die Planung von Upgrades während des Wartungsfensters finden Sie unter [Unterstützung für die neuesten Betriebssystem-/Kernelversionen](https://aka.ms/v2a_asr_upgrade_practice) in den Dienstupdates von Azure Site Recovery.
 
 ## <a name="lvm-support-from-920-version"></a>LVM-Unterstützung ab Version 9.20
 
@@ -220,7 +220,7 @@ Die VSS-Installation ist Teil der Installation des Mobility Service-Agents. Dies
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS-Fehler -2147023170 [0x800706BE] – Exitcode 511
 
-Dieses Problem tritt hauptsächlich auf, wenn eine Antivirensoftware die Vorgänge von Azure Site Recovery-Diensten blockiert. Problembehebung:
+Dieses Problem tritt hauptsächlich auf, wenn eine Virenschutzsoftware die Vorgänge von Azure Site Recovery-Diensten blockiert. So lösen Sie dieses Problem:
 
 1. Schließen Sie alle [hier](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) genannten Ordner aus.
 2. Befolgen Sie die vom Anbieter der Antivirensoftware veröffentlichten Richtlinien, um die Blockierung der Registrierung der DLL in Windows aufzuheben.
@@ -250,6 +250,97 @@ Dieser Fehler tritt auf, wenn das für die Installation verwendete Benutzerkonto
 Versuchen Sie, den VSS-Anbieter-Dienst manuell auf dem Quellcomputer zu installieren, indem Sie die folgende Befehlszeile ausführen.
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+
+
+## <a name="vss-error---0x8004e00f"></a>VSS-Fehler: 0x8004E00F
+
+Dieser Fehler tritt üblicherweise bei der Installation des Mobilitäts-Agents auf, wenn es zu Fehlern in DCOM kommt und DCOM sich in einem kritischen Zustand befindet.
+
+Mithilfe des folgenden Verfahrens können Sie die Ursache des Fehlers ermitteln.
+
+**Untersuchen der Installationsprotokolle**
+
+1. Öffnen Sie das Installationsprotokoll unter C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+2. Folgende Fehlermeldung weist auf dieses Problem hin:
+
+    Das Aufheben der Registrierung des vorhandenen Anwendungstyps...  Create the catalogue object (Das Erstellen des Katalogobjekts...) Get the collection of Applications (Das Abrufen der Anwendungssammlung...) 
+
+    FEHLER:
+
+    - Fehlercode: -2147164145 [0x8004E00F]
+    - Exitcode: 802
+
+So lösen Sie das Problem:
+
+Kontaktieren Sie das [Team für Microsoft Windows](https://aka.ms/Windows_Support), wenn Sie Hilfe beim Beheben des DCOM-Fehlers benötigen.
+
+Wenn der DCOM-Fehler behoben ist, sollten Sie den VSS-Anbieter von Azure Site Recovery manuell über folgenden Befehl installieren:
+ 
+**C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
+  
+Wenn die Anwendungskonsistenz für Ihre Anforderungen für die Notfallwiederherstellung nicht entscheidend ist, können Sie die Installation des VSS-Anbieters umgehen. 
+
+Gehen Sie folgendermaßen vor, um die Installation des VSS-Anbieters von Azure Site Recovery zu umgehen und diesen nach der Installation manuell zu installieren:
+
+1. Installieren Sie den Mobilitätsdienst. 
+   > [!Note]
+   > 
+   > Die Installation schlägt beim Schritt „Post install configuration“ (Konfiguration nach der Installation) fehl. 
+2. So können Sie die Installation des VSS-Anbieters umgehen:
+   1. Öffnen Sie das Installationsverzeichnis für Azure Site Recovery Mobility Service:
+   
+      C:\Programme (x86)\Microsoft Azure Site Recovery\agent
+   2. Bearbeiten Sie die Installationsskripts **nMageVSSProvider_Install** und **InMageVSSProvider_Uninstall.cmd** für den VSS-Anbieter von Azure Site Recovery so, dass die Ausführung immer erfolgreich ist, indem Sie folgende Zeilen hinzufügen:
+    
+      ```     
+      rem @echo off
+      setlocal
+      exit /B 0
+      ```
+
+3. Führen Sie die Installation des Mobilitäts-Agents manuell erneut aus. 
+4. Wenn die Installation erfolgreich ist und Sie bei der **Konfiguration** angelangt sind, sollten Sie die hinzugefügten Zeilen wieder entfernen.
+5. Öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie den folgenden Befehl aus, um den VSS-Anbieter zu installieren:
+   
+    **C:\Program Files (x86)\Microsoft Azure Site Recovery\agent> .\InMageVSSProvider_Install.cmd**
+
+9. Stellen Sie sicher, dass der VSS-Anbieter von Azure Site Recovery als Dienst in den Windows-Diensten installiert ist, und öffnen Sie die Komponentendienst-MMC, um sicherzustellen, dass der Azure Site Recovery-VSS-Anbieter aufgeführt wird.
+10. Wenn die Installation des VSS-Anbieters weiterhin fehlschlägt, sollten Sie CX verwenden, um die Berechtigungsfehler in CAPI2 zu beheben.
+
+## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Fehlgeschlagene Installation des VSS-Anbieters aufgrund des aktivierten Clusterdiensts auf einem Nicht-Clustercomputer
+
+Hierdurch schlägt die Installation des Mobilitäts-Agents von Azure Site Recovery während der Installation des VSS-Anbieters für Azure Site Recovery (ASR) aufgrund eines COM+-Fehlers fehl, der die Installation des VSS-Anbieters verhindert.
+ 
+### <a name="to-identify-the-issue"></a>Identifizieren des Problems
+
+In dem Protokoll, das sich auf dem Konfigurationsserver unter „C:\ProgramData\ASRSetupLogs\UploadedLogs\<date-time>UA_InstallLogFile.log“ befindet, ist folgende Ausnahme enthalten:
+
+COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen. (Ausnahme von HRESULT: 0x8004E00F)
+
+So lösen Sie das Problem:
+
+1.  Wenn es sich bei diesem Computer um einen Nicht-Clustercomputer handelt, sollten Sie sicherstellen, dass keine Clusterkomponenten verwendet werden.
+3.  Entfernen Sie die verwendeten Clusterkomponenten vom Computer.
+
+## <a name="drivers-are-missing-on-the-source-server"></a>Fehlende Treiber auf dem Quellserver
+
+Wenn die Installation des Mobilitäts-Agents fehlschlägt, sollten Sie die Protokolle unter C:\ProgramData\ASRSetupLogs darauf überprüfen, ob erforderliche Treiber in den Konfigurationen fehlen.
+ 
+So lösen Sie das Problem:
+  
+1. Öffnen Sie die Registrierung mit einem Registrierungs-Editor wie „regedit.msc“.
+2. Öffnen Sie den Knoten HKEY_LOCAL_MACHINE\SYSTEM.
+3. Suchen Sie im Knoten System die Konfigurationen.
+4. Öffnen Sie jede Konfiguration, und überprüfen Sie, ob folgende Windows-Treiber vorhanden sind:
+
+   - Atapi
+   - Vmbus
+   - Storflt
+   - Storvsc
+   - intelide
+ 
+Installieren Sie fehlende Treiber neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

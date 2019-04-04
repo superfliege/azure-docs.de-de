@@ -1,19 +1,24 @@
 ---
 layout: LandingPage
 title: Dokumentation zur Abrechnungs- und Kostenverwaltung in Azure| Microsoft-Dokumentation
-description: 'Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen, die Nutzung und Kosten verwalten und überwachen, sowie Ihr Konto und Ihre Abonnements verwalten.'
+description: Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen, die Nutzung und Kosten verwalten und überwachen, sowie Ihr Konto und Ihre Abonnements verwalten.
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: null
+ms.assetid: ''
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/19/2019
 ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446714"
 ---
-
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentation zur Abrechnungs- und Kostenverwaltung in Azure
 
 Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen, die Nutzung und Kosten überwachen, sowie Ihr Konto und Ihre Abonnements verwalten.

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885186"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58889752"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -29,7 +29,7 @@ Die Runtime in Version 2.x wird auf .NET Core 2 ausgeführt, kann also auf allen
 
 Im Vergleich dazu unterstützt die Runtimeversion 1.x nur das Entwickeln und Hosten im Azure-Portal oder auf Windows-Computern.
 
-## <a name="languages"></a>Sprachen
+## <a name="languages"></a>Languages
 
 Die Runtimeversion 2.x verwendet ein neues Modell für die Erweiterbarkeit von Sprachen. In Version 2.x müssen alle Funktionen in einer Funktions-App die gleiche Sprache verwenden. Die Sprache von Funktionen in einer Funktions-App wird beim Erstellen der App ausgewählt.
 
@@ -49,7 +49,7 @@ Sie können eine vorhandene App, die für die Runtimeversion 1.x geschrieben wur
 
 ### <a name="changes-in-triggers-and-bindings"></a>Änderungen an Triggern und Bindungen
 
-In Version 2.x müssen Sie die Erweiterungen für bestimmte Trigger und Bindungen installieren, die von den Funktionen in Ihrer App verwendet werden. Die einzigen Ausnahmen sind HTTP- und Timertrigger, für die keine Erweiterung erforderlich ist.  Weitere Informationen finden Sie unter [Registrieren und Installieren von Bindungserweiterungen](./functions-triggers-bindings.md#register-binding-extensions).
+In Version 2.x müssen Sie die Erweiterungen für bestimmte Trigger und Bindungen installieren, die von den Funktionen in Ihrer App verwendet werden. Die einzigen Ausnahmen sind HTTP- und Timertrigger, für die keine Erweiterung erforderlich ist.  Weitere Informationen finden Sie unter [Registrieren und Installieren von Bindungserweiterungen](./functions-bindings-register.md).
 
 Es gibt zwischen den Versionen auch einige Unterschiede in der `function.json` und den Attributen der Funktion. Die Event Hub-Eigenschaft `path` beispielsweise lautet jetzt `eventHubName`. Links zur Dokumentation für die einzelnen Bindungen finden Sie in der [Tabelle der vorhandenen Bindungen](#bindings).
 
@@ -65,9 +65,9 @@ In Version 2.x wurden die folgenden Änderungen vorgenommen:
 
 * Die Hostkonfigurationsdatei (host.json) muss leer sein oder die Zeichenfolge `"version": "2.0"` enthalten.
 
-* Zur Verbesserung der Überwachung wurde das WebJobs-Dashboard im Portal, das die Einstellung [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) verwendete, durch Azure Application Insights ersetzt – hierbei wird die Einstellung [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsightsinstrumentationkey) verwendet. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
+* Zur Verbesserung der Überwachung wurde das WebJobs-Dashboard im Portal, das die Einstellung [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) verwendete, durch Azure Application Insights ersetzt – hierbei wird die Einstellung [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) verwendet. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
 
-* Alle Funktionen in einer Funktions-App müssen die gleiche Sprache verwenden. Wenn Sie eine Funktions-App erstellen, müssen Sie einen Runtimestapel für die App auswählen. Der Runtimestapel wird durch den [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functionsworkerruntime)-Wert in den Anwendungseinstellungen angegeben. Diese Anforderung wurde hinzugefügt, um den Speicherbedarf und die Startzeit zu verbessern. Bei der lokalen Entwicklung müssen Sie diese Einstellung auch in die [Datei „local.settings.json“](functions-run-local.md#local-settings-file) einschließen.
+* Alle Funktionen in einer Funktions-App müssen die gleiche Sprache verwenden. Wenn Sie eine Funktions-App erstellen, müssen Sie einen Runtimestapel für die App auswählen. Der Runtimestapel wird durch den [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime)-Wert in den Anwendungseinstellungen angegeben. Diese Anforderung wurde hinzugefügt, um den Speicherbedarf und die Startzeit zu verbessern. Bei der lokalen Entwicklung müssen Sie diese Einstellung auch in die [Datei „local.settings.json“](functions-run-local.md#local-settings-file) einschließen.
 
 * Das Standardzeitlimit für Funktionen in einem App Service-Plan wurde zu 30 Minuten geändert. Sie können das Zeitlimit mit der [functionTimeout](functions-host-json.md#functiontimeout)-Einstellung in der host.json-Datei manuell wieder zu „unbegrenzt“ ändern.
 
@@ -95,7 +95,7 @@ In Visual Studio wählen Sie die Runtimeversion beim Erstellen eines Projekts au
 ##### <a name="version-2x"></a>Version 2.x
 
 ```xml
-<TargetFramework>netstandard2.0</TargetFramework>
+<TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
@@ -109,7 +109,7 @@ Für die Visual Studio Code-Entwicklung müssen Sie möglicherweise auch die Ben
 
 ### <a name="changing-version-of-apps-in-azure"></a>Ändern der Version von Apps in Azure
 
-Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwendet wird, wird durch die [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functionsextensionversion)-Anwendungseinstellung bestimmt. Der Wert `~2` gilt für die Runtimeversion 2.x, der Wert `~1` für die Version 1.x. Ändern Sie diese Einstellung nicht unüberlegt, da sehr wahrscheinlich weitere Änderungen an App-Einstellungen sowie am Code in Ihren Funktionen erforderlich sind. Informationen zur empfohlenen Methode für die Migration Ihrer Funktions-App zu einer anderen Runtimeversion finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
+Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwendet wird, wird durch die [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)-Anwendungseinstellung bestimmt. Der Wert `~2` gilt für die Runtimeversion 2.x, der Wert `~1` für die Version 1.x. Ändern Sie diese Einstellung nicht unüberlegt, da sehr wahrscheinlich weitere Änderungen an App-Einstellungen sowie am Code in Ihren Funktionen erforderlich sind. Informationen zur empfohlenen Methode für die Migration Ihrer Funktions-App zu einer anderen Runtimeversion finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
 
 ## <a name="bindings"></a>Bindungen
 
@@ -121,11 +121,13 @@ Die Runtimeversion 2.x verwendet ein neues [Modell für die Erweiterbarkeit von 
 
 * Eine schlankere Ausführungsumgebung, in der nur die tatsächlich verwendeten Bindungen bekannt sind und von der Runtime geladen werden.
 
-Mit Ausnahme von HTTP- und Timertriggern müssen alle Bindungen explizit zum Funktions-App-Projekt hinzugefügt oder im Portal registriert werden. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen](functions-triggers-bindings.md#register-binding-extensions).
+Mit Ausnahme von HTTP- und Timertriggern müssen alle Bindungen explizit zum Funktions-App-Projekt hinzugefügt oder im Portal registriert werden. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen](./functions-bindings-expressions-patterns.md).
 
 Die folgende Tabelle zeigt, welche Bindungen in den einzelnen Runtimeversionen unterstützt werden.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

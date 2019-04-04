@@ -1,32 +1,36 @@
 ---
-title: Überwachen von Bedrohungen in Azure Storage
+title: Advanced Threat Protection für Azure Storage
 description: Es wird beschrieben, wie Sie die Advanced Threat Protection von Azure Storage zum Erkennen von Anomalien in Bezug auf die Kontoaktivität erkennen und Benachrichtigungen über potenziell schädliche Zugriffsversuche auf Ihr Konto erhalten.
 services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: ronmat
+ms.date: 03/14/2019
+ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 8b2ca2d5d6418d68cab847df80fc437e468249ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995641"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133228"
 ---
-# <a name="azure-storage-advanced-threat-protection"></a>Azure Storage Advanced Threat Protection
+# <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
-Bei Advanced Threat Protection von Azure Storage werden Anomalien in Bezug auf die Kontoaktivität erkannt, und Sie erhalten Benachrichtigungen über potenziell schädliche Zugriffsversuche auf Ihr Konto. Aufgrund dieser Schutzebene können Sie Bedrohungen begegnen, ohne dass Sie ein Sicherheitsexperte sein oder Systeme für die Überwachung der Sicherheit verwalten müssen.
+Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Aufgrund dieser Schutzebene können Sie Bedrohungen begegnen, ohne dass Sie ein Sicherheitsexperte sein oder Systeme für die Überwachung der Sicherheit verwalten müssen. 
 
-Bedrohungen werden erkannt, indem Sicherheitswarnungen definiert werden, die beim Auftreten von Anomalien in Bezug auf Aktivitäten ausgelöst werden. Diese Warnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und enthalten Details zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen. 
+Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst.  Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
 > [!NOTE]
-> Azure Storage Advanced Threat Protection ist derzeit nur für den Blob-Dienst verfügbar. Sicherheitswarnungen sind in Azure Security Center integriert und werden per E-Mail an Abonnementadministratoren gesendet.
+> * Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar. 
+> * Informationen zu den neuen Preisen sind mit einer Option für eine kostenlose Testversion für den Zeitraum der ersten 30 Tage auf der Seite mit der Preisübersicht in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-pricing) verfügbar. 
+> * ATP für Azure Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
 
-Bei Azure Storage Advanced Threat Protection werden Diagnoseprotokolle von an den Blob-Dienst gesendeten Lese-, Schreib- und Löschanforderungen erfasst, um Bedrohungen zu erkennen. Für die Untersuchung der Warnungen von Advanced Threat Protection müssen Sie [Diagnoseprotokolle konfigurieren](storage-monitor-storage-account.md#configure-logging), um alle Protokollebenen für den Blob-Dienst zu aktivieren.
+Bei Advanced Threat Protection für Azure Storage werden Diagnoseprotokolle von an Blob Storage gesendeten Lese-, Schreib- und Löschanforderungen erfasst, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter [Konfigurieren der Protokollierung](storage-monitor-storage-account.md#configure-logging).
 
-## <a name="set-up-advanced-threat-protection-in-the-portal"></a>Einrichten von Advanced Threat Protection im Portal
+## <a name="set-up-advanced-threat-protection"></a>Einrichten von Advanced Threat Protection 
+
+### <a name="using-the-portal"></a>Verwenden des Portals
 
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com/).
 
@@ -34,18 +38,46 @@ Bei Azure Storage Advanced Threat Protection werden Diagnoseprotokolle von an de
 
 3. Gehen Sie auf dem Konfigurationsblatt **Advanced Threat Protection** wie folgt vor:
     * Legen Sie *Advanced Threat Protection* auf **EIN** fest.
-    * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.
+    * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern. (Die Preise in der Abbildung dienen nur als Beispiel.)
 
 ![Aktivieren von Azure Storage Advanced Threat Protection](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-## <a name="explore-anomalies"></a>Untersuchen von Anomalien
+### <a name="using-azure-security-center"></a>Verwenden von Azure Security Center
+Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced Threat Protection in Ihren Speicherkonten eingerichtet. Weitere Informationen finden Sie unter [Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit](https://docs.microsoft.com/azure/security-center/security-center-pricing). (Die Preise in der Abbildung dienen nur als Beispiel.)
+
+![Standard-Tarif in ASC](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+
+Verwenden Sie zur Bereitstellung eines Azure Storage-Kontos, bei dem Advanced Threat Protection aktiviert ist, eine Azure Resource Manager-Vorlage.
+Weitere Informationen finden Sie unter [Storage account with Advanced Threat Protection (Storage-Konto mit Advanced Threat Protection)](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+
+### <a name="using-rest-api"></a>Verwenden der REST-API
+Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung für ein bestimmtes Speicherkonto zu erstellen, zu aktualisieren oder abzurufen.
+
+* [Advanced Threat Protection – Create (Erstellen)](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
+* [Advanced Threat Protection – Get (Abrufen)](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+
+### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
+
+Verwenden Sie die folgenden PowerShell-Cmdlets:
+
+  * [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+  * [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+## <a name="explore-security-anomalies"></a>Untersuchen von sicherheitsrelevanten Anomalien
 
 Wenn für die Speicheraktivität Anomalien auftreten, erhalten Sie eine E-Mail-Benachrichtigung mit Informationen zum verdächtigen Sicherheitsereignis. Einzelheiten des Ereignisses sind:
 
 * Art der Anomalie
 * Speicherkontoname
-* Speichertyp
 * Ereigniszeit
+* Speichertyp
+* Mögliche Ursachen 
+* Untersuchungsschritte
+* Schritte zur Bereinigung
+
 
 Die E-Mail enthält auch Details zu möglichen Ursachen und empfohlenen Aktionen zur Untersuchung und Eindämmung der potenziellen Bedrohung.
 
@@ -59,18 +91,54 @@ Sie können Ihre aktuellen Sicherheitswarnungen in Azure Security Center über d
 
 Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Speicherkonten generiert. Diese Ereignisse können die folgenden Warnungen auslösen:
 
-* **Access from unusual location** (Zugriff von einem ungewöhnlichen Ort): Diese Warnung wird ausgelöst, wenn sich am Zugriffsmuster eines Speicherkontos etwas ändert. Ein Beispiel hierfür ist der Fall, in dem eine Person von einem ungewöhnlichen geografischen Ort aus auf ein Speicherkonto zugreift. In einigen Fällen erkennt die Warnung eine legitime Aktion (eine neue Anwendung oder Wartungsvorgänge von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (ehemaliger Mitarbeiter, externer Angreifer usw.).
+### <a name="anomalous-access-pattern-alerts"></a>Warnungen zu ungewöhnlichen Zugriffsmustern
 
-* **Unusual data extraction** (Ungewöhnliche Datenextraktion): Diese Warnung wird ausgelöst, wenn sich das Muster der Datenextraktion für ein Speicherkonto ändert. Ein Beispiel hierfür ist der Fall, in dem eine Person in einem Speicherkonto auf eine ungewöhnliche Datenmenge zugreift. In einigen Fällen wird die Warnung auch bei einer legitimen Aktion (Wartungsaktivitäten) ausgelöst. In anderen Fällen erkennt die Warnung eine schädliche Aktion (Herausfilterung von Daten/Sicherheitsverletzung, unberechtigte Datenübertragung).
-
-* **Unusual anonymous access** (Ungewöhnlicher anonymer Zugriff): Diese Warnung wird ausgelöst, wenn sich am Zugriffsmuster eines Speicherkontos etwas ändert. Ein Beispiel ist der anonyme Zugriff auf ein Speicherkonto. In einigen Fällen erkennt die Warnung auch einen legitimen Zugriff per öffentlichem Lesezugriff. In anderen Fällen erkennt die Warnung einen unberechtigten Zugriff, bei dem der öffentliche Lesezugriff auf einen Container und seine Blobs ausgenutzt wird.
-
-* **Unexpected delete** (Unerwarteter Löschvorgang): Diese Warnung wird ausgelöst, wenn basierend auf der Verlaufsanalyse des Speicherkontos darin ein oder mehrere unerwartete Löschvorgänge durchgeführt werden. Ein Beispiel hierfür ist die Durchführung eines *DeleteBlob*-Vorgangs mit einer neuen Anwendung und von einer neuen IP-Adresse. In einigen Fällen erkennt die Warnung auch eine legitime Aktion (beispielsweise hat der Administrator auf einer Dienstreise einen anderen Browser genutzt). In anderen Fällen erkennt die Warnung eine schädliche Aktion (Angreifer löscht Daten). 
+* **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn sich am Zugriffsmuster eines Speicherkontos etwas ändert. Ein Beispiel hierfür ist der Fall, in dem eine Person von einem ungewöhnlichen geografischen Ort aus auf ein Speicherkonto zugreift.
+Mögliche Ursachen:
+   * Ein Angreifer hat auf Ihr Speicherkonto zugegriffen.
+   * Ein berechtigter Benutzer hat von einem neuen Ort aus auf Ihr Speicherkonto zugegriffen.
  
-* **Access permission change** (Änderung der Zugriffsberechtigung): Diese Warnung wird ausgelöst, wenn für ein Speicherkonto eine unerwartete Änderung der Zugriffsberechtigung auftritt. Es kann beispielsweise sein, dass eine Person die Zugriffsberechtigung für ein Speicherkonto geändert hat, indem eine neue Anwendung und eine neue IP-Adresse verwendet wurden. In einigen Fällen erkennt die Warnung auch eine legitime Aktion (beispielsweise hat der Administrator auf einer Dienstreise einen anderen Browser genutzt). In anderen Fällen erkennt die Warnung eine schädliche Aktion (beispielsweise erhöht ein Angreifer die Berechtigungen eines Kontos, auf das er sich Zugriff verschafft hat). 
+* **Anwendungsanomalie**: Diese Warnung gibt an, dass auf dieses Speicherkonto über eine ungewöhnliche Anwendung zugegriffen wurde. Mögliche Ursachen:
+   * Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.
+   * Ein berechtigter Benutzer hat für den Zugriff auf Ihr Speicherkonto eine neue Anwendung oder einen neuen Browser verwendet.
 
-* **Upload Azure Cloud Service package** (Upload eines Azure-Clouddienstpakets): Diese Warnung wird ausgelöst, wenn es zu einem unerwarteten Upload eines Azure-Clouddienstpakets (*CSPKG*-Datei) in ein Speicherkonto kommt. Ein Beispiel hierfür ist das Hochladen einer *CSPKG*-Datei von einer neuen IP-Adresse. In einigen Fällen erkennt die Warnung auch eine legitime Aktion. In anderen Fällen erkennt die Warnung eine schädliche Aktion (z.B. das Hochladen eines Clouddienstpakets als Vorbereitung auf die Bereitstellung eines schädlichen Diensts).    
-   
+* **Anonymer Zugriff**: Diese Warnung gibt an, dass sich am Zugriffsmuster eines Speicherkontos etwas geändert hat. Auf dieses Konto wurde beispielsweise auf ungewöhnliche Weise (d. h. ohne Authentifizierung) zugegriffen, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten ist.
+Mögliche Ursachen:
+   * Ein Angreifer hat den öffentlichen Lesezugriff auf einen Container ausgenutzt.
+   * Ein berechtigter Benutzer oder eine berechtigte Anwendung hat den öffentlichen Lesezugriff auf einen Container genutzt.
+
+### <a name="anomalous-extractupload-alerts"></a>Warnungen zu ungewöhnlichen Extrahierungs- oder Hochladevorgängen
+
+* **Datenexfiltration**: Diese Warnung gibt an, dass eine große Datenmenge extrahiert wurde, die im Vergleich zur letzten Aktivität bei diesem Speichercontainer ungewöhnlich ist. Mögliche Ursachen:
+   * Ein Angreifer hat eine große Datenmenge von einem Container extrahiert. (Beispiel: Datenexfiltration/Sicherheitsverletzung, nicht autorisierte Datenübertragung)
+   * Ein berechtigter Benutzer oder eine berechtigte Anwendung hat eine ungewöhnlich große Datenmenge von einem Container extrahiert. (Beispiel: Wartungsaktivitäten)
+
+* **Unerwarteter Löschvorgang**: Diese Warnung gibt an, dass in einem Speicherkonto mindestens ein Löschvorgang aufgetreten ist, der im Vergleich zur letzten Aktivität für dieses Konto unerwartet ist. Mögliche Ursachen:
+   * Ein Angreifer hat Daten im Speicherkonto gelöscht.
+   * Ein berechtigter Benutzer hat einen außergewöhnlichen Löschvorgang durchgeführt.
+
+* **Upload eines Azure Cloud Service-Pakets**: Diese Warnung gibt an, dass ein Azure Cloud Service-Paket (CSPKG-Datei) auf eine Weise in ein Speicherkonto hochgeladen wurde, die im Vergleich zur letzten Aktivität für das Konto ungewöhnlich ist. Mögliche Ursachen: 
+   * Ein Angreifer hat die Bereitstellung von bösartigem Code über Ihr Speicherkonto für einen Azure-Clouddienst vorbereitet.
+   * Ein berechtigter Benutzer hat eine berechtigte Dienstbereitstellung vorbereitet.
+
+### <a name="suspicious-storage-activities-alerts"></a>Warnungen zu verdächtigen Speicheraktivitäten
+
+* **Änderung der Zugriffsberechtigung**: Diese Warnung gibt an, dass die Zugriffsberechtigungen für diesen Speichercontainer auf ungewöhnliche Weise geändert wurden. Mögliche Ursachen: 
+   * Ein Angreifer hat die Berechtigungen für einen Container zur Herabsetzung der Sicherheit geändert.
+   * Ein berechtigter Benutzer hat die Berechtigungen für einen Container geändert.
+
+* **Überprüfung des Zugriffs**: Diese Warnung gibt an, dass die Zugriffsberechtigungen eines Speicherkontos auf eine Weise überprüft wurden,die im Vergleich zur letzten Aktivität für dieses Konto ungewöhnlich ist. Mögliche Ursachen: 
+   * Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.
+   * Ein berechtigter Benutzer hat für das Speicherkonto Wartungsarbeiten durchgeführt.
+
+* **Datenanalyse**: Diese Warnung gibt an, dass Blobs oder Container in einem Speicherkonto in einer Weise aufgezählt wurden, die im Vergleich zur letzten Aktivität für dieses Konto ungewöhnlich ist. Mögliche Ursachen: 
+   * Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.
+   * Ein berechtigter Benutzer oder eine berechtigte Anwendungslogik hat Daten im Speicherkonto untersucht.
+
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

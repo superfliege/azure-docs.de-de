@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/27/2017
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: c7805e64c4f387b870922dcb63e20d86f691092a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 931727eff0de104ea57930abb1d3739fa086967a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119015"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226656"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 
@@ -93,15 +93,15 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 * Backendkonfiguration
   * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
-  * Port 620**&lt;Nr.&gt;**
+  * Port 620<strong>&lt;Nr.&gt;</strong>
 * Lastenausgleichsregeln
-  * 32**&lt;Nr.&gt;** TCP
-  * 36**&lt;Nr.&gt;** TCP
-  * 39**&lt;Nr.&gt;** TCP
-  * 81**&lt;Nr.&gt;** TCP
-  * 5**&lt;Nr.&gt;** 13 TCP
-  * 5**&lt;Nr.&gt;** 14 TCP
-  * 5**&lt;Nr.&gt;** 16 TCP
+  * 32<strong>&lt;Nr.&gt;</strong> TCP
+  * 36<strong>&lt;Nr.&gt;</strong> TCP
+  * 39<strong>&lt;Nr.&gt;</strong> TCP
+  * 81<strong>&lt;Nr.&gt;</strong> TCP
+  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -110,12 +110,12 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 * Backendkonfiguration
   * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
-  * Port 621**&lt;nr&gt;**
+  * Port 621<strong>&lt;nr&gt;</strong>
 * Lastenausgleichsregeln
-  * 33**&lt;Nr.&gt;** TCP
-  * 5**&lt;Nr.&gt;** 13 TCP
-  * 5**&lt;Nr.&gt;** 14 TCP
-  * 5**&lt;Nr.&gt;** 16 TCP
+  * 33<strong>&lt;Nr.&gt;</strong> TCP
+  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
 
 ## <a name="setting-up-glusterfs"></a>Einrichten von GlusterFS
 
@@ -204,6 +204,9 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
          * Wiederholen Sie die oben stehenden Schritte für die Ports 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 und TCP für ASCS
       1. Zusätzliche Ports für ASCS ERS
          * Wiederholen Sie die oben stehenden Schritte für die Ports 33**02**, 5**02**13, 5**02**14, 5**02**16 und TCP für ASCS ERS
+
+> [!IMPORTANT]
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
 

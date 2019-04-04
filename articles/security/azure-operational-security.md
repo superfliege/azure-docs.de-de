@@ -1,6 +1,6 @@
 ---
 title: Azure Operational Security | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zu Microsoft Azure Log Analytics, zu den dazugehörigen Diensten und zur Funktionsweise.
+description: Erfahren Sie etwas über Microsoft Azure Monitor-Protokolle, die zugehörigen Dienste und die Funktionsweise.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: cc820d0e8a19ae3905fbd26a1b9a98e948ecfb63
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901507"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -53,36 +53,36 @@ Dieses Whitepaper beschreibt den Ansatz von Microsoft zu Azure Operational Secur
 6.  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor-Protokolle
 
-Microsoft Azure Log Analytics ist die IT-Verwaltungslösung für die Hybrid Cloud. Log Analytics kann eigenständig oder zur Erweiterung Ihrer vorhandenen System Center-Bereitstellung verwendet werden und bietet Ihnen maximale Flexibilität und Kontrolle für die cloudbasierte Verwaltung Ihrer Infrastruktur.
+Microsoft Azure Monitor-Protokolle ist die IT-Verwaltungslösung für die Hybrid Cloud. Azure Monitor-Protokolle kann eigenständig oder zur Erweiterung Ihrer vorhandenen System Center-Bereitstellung verwendet werden und bietet Ihnen maximale Flexibilität und Kontrolle für die cloudbasierte Verwaltung Ihrer Infrastruktur.
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Azure Monitor-Protokolle](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-Mit Log Analytics können Sie beliebige Instanzen in beliebigen Clouds (einschließlich lokaler Cloud, Azure, AWS, Windows Server, Linux, VMware und Openstack) verwalten – und das zu geringeren Kosten als mit einer Lösung eines Mitbewerbers. Log Analytics wurde für cloudorientierte Umgebungen konzipiert und bietet dank eines neuen Ansatzes für die Verwaltung Ihres Unternehmens die schnellste und kostengünstigste Möglichkeit, um sich neuen geschäftlichen Herausforderungen zu stellen und neue Workloads, Anwendungen und Cloudumgebungen zu nutzen.
+Mit Azure Monitor-Protokolle können Sie beliebige Instanzen in beliebigen Clouds (einschließlich lokaler Cloud, Azure, AWS, Windows Server, Linux, VMware und OpenStack) verwalten – und das zu geringeren Kosten als mit einer Lösung eines Mitbewerbers. Azure Monitor-Protokolle wurde für cloudorientierte Umgebungen konzipiert und bietet dank eines neuen Ansatzes für die Verwaltung Ihres Unternehmens die schnellste und kostengünstigste Möglichkeit, um sich neuen geschäftlichen Herausforderungen zu stellen und neue Workloads, Anwendungen und Cloudumgebungen zu nutzen.
 
-### <a name="log-analytics-services"></a>Log Analytics-Dienste
+### <a name="azure-monitor-services"></a>Azure Monitor-Dienste
 
-Die Kernfunktionen von Log Analytics werden durch eine Reihe von Diensten bereitgestellt, die in Azure ausgeführt werden. Jeder Dienst bietet eine bestimmte Verwaltungsfunktion, und Sie können Dienste miteinander kombinieren, um verschiedene Verwaltungsszenarien zu bewältigen.
+Die Kernfunktionen von Azure Monitor-Protokolle werden durch eine Reihe von Diensten bereitgestellt, die in Azure ausgeführt werden. Jeder Dienst bietet eine bestimmte Verwaltungsfunktion, und Sie können Dienste miteinander kombinieren, um verschiedene Verwaltungsszenarien zu bewältigen.
 
 | Dienst  | BESCHREIBUNG|
 | :------------- | :-------------|
-| Log Analytics | Dient zur Überwachung und Analyse der Verfügbarkeit und Leistung verschiedener Ressourcen (einschließlich physischer und virtueller Computer). |
+| Azure Monitor-Protokolle | Dient zur Überwachung und Analyse der Verfügbarkeit und Leistung verschiedener Ressourcen (einschließlich physischer und virtueller Computer). |
 |Automation | Dient zur Automatisierung manueller Prozesse sowie zur Erzwingung von Konfigurationen für physische und virtuelle Computer. |
 | Backup | Dient zur Sicherung und Wiederherstellung wichtiger Daten. |
 | Site Recovery | Dient zur Bereitstellung von Hochverfügbarkeit für kritische Anwendungen. |
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
+[Azure Monitor-Protokolle](https://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
 
 
 Mithilfe dieser Methode können Sie Daten aus verschiedenen Quellen zusammenfassen, um Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung zu kombinieren. Die Datensammlung wird außerdem klar von der Aktion getrennt, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.
 
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig2.png)
+![Azure Monitor-Protokolle](./media/azure-operational-security/azure-operational-security-fig2.png)
 
-Der Log Analytics-Dienst verwaltet Ihre Daten in der Cloud sicher mithilfe der folgenden Methoden:
+Der Azure Monitor-Dienst verwaltet Ihre cloudbasierten Daten sicher mithilfe der folgenden Methoden:
 -   Trennung von Daten
 -   Beibehaltung von Daten
 -   Physische Sicherheit
@@ -92,22 +92,22 @@ Der Log Analytics-Dienst verwaltet Ihre Daten in der Cloud sicher mithilfe der f
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](https://azure.microsoft.com/documentation/services/backup) bietet Dienste zum Sichern und Wiederherstellen von Daten und ist Teil der Log Analytics-Suite von Produkten und Diensten.
+[Azure Backup](https://azure.microsoft.com/documentation/services/backup) bietet Dienste zum Sichern und Wiederherstellen von Daten und ist Teil der Suite von Produkten und Diensten für Azure Monitor-Protokolle.
 Es schützt Ihre Anwendungsdaten und bewahrt sie jahrelang ohne Kapitaleinsatz und mit minimalen Betriebskosten auf. Mit diesem Dienst können neben Anwendungsworkloads wie SQL Server und SharePoint Daten von physischen und virtuellen Windows-Servern gesichert werden. Zudem kann er von [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) verwendet werden, um geschützte Daten zur Redundanz und langfristigen Speicherung in Azure zu replizieren.
 
 
 Geschützte Daten werden in Azure Backup in einem Sicherungstresor gespeichert, der sich in einer bestimmten geografischen Region befindet. Die Daten werden innerhalb der gleichen Region repliziert und können je nach Art des Tresors auch in eine andere Region repliziert werden, um eine höhere Resilienz zu erzielen.
 
 ### <a name="management-solutions"></a>Verwaltungslösungen
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.
 
 
-[Verwaltungslösungen](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) sind vorgefertigte Logiksätze zur Implementierung eines bestimmten Verwaltungsszenarios unter Verwendung mindestens eines Log Analytics-Diensts. Von Microsoft und von Partnern werden verschiedene Lösungen angeboten, die Sie problemlos Ihrem Azure-Abonnement hinzufügen und dadurch den Nutzen Ihrer Log Analytics-Investition erhöhen können. Partner können eigene Lösungen zur Unterstützung ihrer Anwendungen und Dienste erstellen und sie Benutzern über den Azure Marketplace oder über Schnellstartvorlagen zur Verfügung stellen.
+[Verwaltungslösungen](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) sind vordefinierte Logiksätze zur Implementierung eines bestimmten Verwaltungsszenarios unter Verwendung mindestens eines Azure Monitor-Diensts. Von Microsoft und von Partnern werden verschiedene Lösungen angeboten, die Sie problemlos Ihrem Azure-Abonnement hinzufügen und dadurch den Nutzen Ihrer Azure Monitor-Investition erhöhen können. Partner können eigene Lösungen zur Unterstützung ihrer Anwendungen und Dienste erstellen und sie Benutzern über den Azure Marketplace oder über Schnellstartvorlagen zur Verfügung stellen.
 
 
 ![Verwaltungslösungen](./media/azure-operational-security/azure-operational-security-fig4.png)
 
-Die [Lösung für die Updateverwaltung](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management) ist ein gutes Beispiel für eine Lösung, die mehrere Dienste verwendet, um zusätzliche Funktionen bereitzustellen. Diese Lösung verwendet den [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)-Agent für Windows und Linux, um Informationen zu erforderlichen Updates für die einzelnen Agents zu sammeln. Die Daten werden in das Log Analytics-Repository geschrieben, wo Sie sie über ein enthaltenes Dashboard analysieren können.
+Die [Lösung für die Updateverwaltung](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management) ist ein gutes Beispiel für eine Lösung, die mehrere Dienste verwendet, um zusätzliche Funktionen bereitzustellen. Diese Lösung verwendet den Agent für [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) für Windows und Linux, um Informationen zu erforderlichen Updates für die einzelnen Agents zu sammeln. Die Daten werden in das Repository von Azure Monitor-Protokolle geschrieben, wo Sie sie über ein enthaltenes Dashboard analysieren können.
 
 Wenn Sie eine Bereitstellung erstellen, werden erforderliche Updates mithilfe von Runbooks in [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) installiert. Der gesamte Prozess wird über das Portal verwaltet, und Sie müssen sich keine Gedanken über die zugrunde liegenden Details machen.
 
@@ -149,7 +149,7 @@ Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschl
 
 -   **Trennung von Daten**: Daten werden für jede Komponente des Diensts logisch getrennt verwaltet. Sämtliche Daten werden nach Organisation gekennzeichnet. Dieser Kennzeichnung wird während des gesamten Datenlebenszyklus beibehalten und auf jeder Ebene des Diensts erzwungen.
 
--   **Datenzugriff**: Bei der Bereitstellung von Sicherheitsempfehlungen sowie bei der Untersuchung potenzieller Sicherheitsrisiken greifen Mitarbeiter von Microsoft unter Umständen auf Informationen zu, die von Azure-Diensten erfasst oder analysiert wurden. Hierzu zählen etwa Absturzabbilddateien, Prozesserstellungsereignisse, Momentaufnahmen von VM-Datenträgern und Artefakte. Diese können ggf. Kundendaten oder persönliche Informationen von Ihren virtuellen Computern enthalten. Wir halten uns an die [Microsoft Online Services-Bedingungen und Datenschutzerklärung](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Darin ist festgelegt, dass Microsoft keine Kundendaten oder daraus abgeleiteten Informationen zu Werbezwecken oder anderen kommerziellen Zwecken verwendet.
+-   **Datenzugriff**: Bei der Bereitstellung von Sicherheitsempfehlungen sowie bei der Untersuchung potenzieller Sicherheitsrisiken greifen Mitarbeiter von Microsoft unter Umständen auf Informationen zu, die von Azure-Diensten erfasst oder analysiert wurden. Hierzu zählen etwa Absturzabbilddateien, Prozesserstellungsereignisse, Momentaufnahmen von VM-Datenträgern und Artefakte. Diese können ggf. Kundendaten oder persönliche Informationen von Ihren virtuellen Computern enthalten. Wir halten uns an die [Microsoft Online Services-Bedingungen und Datenschutzerklärung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Darin ist festgelegt, dass Microsoft keine Kundendaten oder daraus abgeleiteten Informationen zu Werbezwecken oder anderen kommerziellen Zwecken verwendet.
 
 -   **Datennutzung**: Microsoft nutzt mandantenübergreifende Muster und Informationen zu Bedrohungen (Threat Intelligence), um die Funktionen für Prävention und Erkennung zu verbessern. Dies erfolgt in Übereinstimmung mit den in unserer [Datenschutzerklärung](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) beschriebenen Datenschutzzusagen.
 
@@ -164,7 +164,7 @@ Azure Security Center erfasst kurzlebige Kopien Ihrer Absturzabbilddateien und a
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Mit der [Sicherheits- und Überwachungslösung von Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) kann die IT-Abteilung aktiv alle Ressourcen überwachen. Dies kann zur Minimierung der Auswirkungen von Sicherheitsvorfällen beitragen. Die Sicherheits- und Überwachungslösung von Log Analytics verfügt über Sicherheitsdomänen, die zum Überwachen von Ressourcen verwendet werden können. Die Sicherheitsdomäne ermöglicht den schnellen Zugriff auf Optionen. Für die Sicherheitsüberwachung werden die folgenden Domänen ausführlicher beschrieben:
+Mit der [Sicherheits- und Überwachungslösung von Azure Monitor-Protokolle](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) kann die IT-Abteilung aktiv alle Ressourcen überwachen. Dies kann zur Minimierung der Auswirkungen von Sicherheitsincidents beitragen. Die Sicherheits- und Überwachungslösung von Azure Monitor-Protokolle verfügt über Sicherheitsdomänen, die zum Überwachen von Ressourcen verwendet werden können. Die Sicherheitsdomäne ermöglicht den schnellen Zugriff auf Optionen. Für die Sicherheitsüberwachung werden die folgenden Domänen ausführlicher beschrieben:
 
 -   Bewertung von Schadsoftware
 -   Updatebewertung
@@ -271,6 +271,7 @@ Die folgenden Typen authentifizierter und anonymer Anforderungen werden protokol
 | Anforderungen mithilfe einer SAS (Shared Access Signature), einschließlich fehlerhafter und erfolgreicher Anforderungen |Timeoutfehler für Client und Server |
 |   Anforderungen von Analysedaten |    Mit Fehlercode 304 (Nicht geändert) misslungene GET-Anforderungen |
 | Anforderungen, die durch die Speicheranalyse selbst erfolgen, z. B. Protokollerstellung oder -löschung, werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) dokumentiert. | Alle anderen misslungenen anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) dokumentiert. |
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
 Azure AD bietet auch einen vollständigen Satz von Identitätsverwaltungsfunktionen, z. B.: mehrstufige Authentifizierung, Geräteregistrierung, Self-Service-Kennwortverwaltung, Self-Service-Gruppenverwaltung, privilegierte Kontenverwaltung, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, umfassende Überwachungsfunktionen sowie Sicherheitsüberwachung und -warnungen.
@@ -293,7 +294,7 @@ Die Berichte enthalten den Überwachungsdatensatz für den Ereignisnamen, den Ak
 |Anmeldungen von möglicherweise infizierten Geräten |Aktivität einzelner Benutzer |   |
 |Benutzer mit anomalen Anmeldeaktivitäten |Gruppenaktivitätsbericht |   |
 | |Bericht zur Registrierung für die Kennwortzurücksetzung |   |
-| |Kennwortzurücksetzungsaktivität |   | |
+| |Kennwortzurücksetzungsaktivität |   |
 
 
 
@@ -312,7 +313,7 @@ In diesem Artikel wird das Schützen Ihrer Privatsphäre und Ihrer Daten zusamme
 
 In diesem Artikel wird Folgendes erläutert:
 
--   Sammlung, Verarbeitung und Schutz von Daten in der Log Analytics-Suite.
+-   Sammlung, Verarbeitung und Schutz von Daten in der Azure Monitor-Suite.
 
 -   Schnelles Analysieren von Ereignissen über mehrere Datenquellen hinweg. Ermitteln von Sicherheitsrisiken, und besseres verstehen der Auswirkungen und betroffenen Bereiche von Bedrohungen und Angriffen, um Schäden bei Sicherheitsverletzungen zu minimieren.
 
@@ -335,7 +336,7 @@ In diesem Artikel wird Folgendes erläutert:
 
 Microsoft entwickelt seine Dienste und Software in Hinblick auf die Sicherheit, um sicherzustellen, dass seine Cloudinfrastruktur resilient und vor Angriffen geschützt ist.
 
-- [Log Analytics | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Azure Monitor-Protokolle | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 Verwenden Sie Microsoft-Sicherheitsdaten und -analysen, um eine intelligentere und effektivere Bedrohungserkennung vorzunehmen.
 

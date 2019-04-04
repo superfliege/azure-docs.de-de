@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: 'Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung – Azure Active Directory | Microsoft-Dokumentation'
-description: 'Die Benutzerhilfe richtet sich an Benutzer, die Unterstützung beim Einrichten und Verwenden der Sicherheitsinformation, der zweistufigen Überprüfung, der Self-Service-Kennwortzurücksetzung, der Geräteverwaltung, der Microsoft Authenticator-App und dem Portal „Meine Apps“ benötigen.'
+title: Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung – Azure Active Directory | Microsoft-Dokumentation
+description: Die Benutzerhilfe richtet sich an Benutzer, die Unterstützung beim Einrichten und Verwenden der Sicherheitsinformation, der zweistufigen Überprüfung, der Self-Service-Kennwortzurücksetzung, der Geräteverwaltung, der Microsoft Authenticator-App und dem Portal „Meine Apps“ benötigen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,8 +11,13 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338104"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung
 
 Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der Sicherheitsinformation und der zweistufigen Überprüfung, Zurücksetzen Ihrer eigenen Kennwörter, Einrichten und Einbinden Ihrer Azure Active Directory-Geräte und Einrichten und Verwenden der Microsoft Authenticator-App und des Portals „Meine Apps“.

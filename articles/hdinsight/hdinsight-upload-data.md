@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 513cc1f0155c5e5499d0bf076d21aff46756d769
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201924"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight
 
@@ -53,10 +53,7 @@ Microsoft bietet die folgenden Hilfsprogramme für die Arbeit mit Azure Storage:
 ## <a id="commandline"></a>Hadoop-Befehlszeile
 Die Hadoop-Befehlszeile eignet sich nur dann zum Speichern von Daten in Azure Storage Blob, wenn die Daten bereits auf dem Hauptknoten des Clusters vorhanden sind.
 
-Um den Hadoop-Befehl verwenden zu können, müssen Sie zunächst mithilfe einer der folgenden Methoden eine Verbindung zum Hauptknoten herstellen:
-
-* **HDInsight (Windows-basiert):** [Herstellen einer Remotedesktopverbindung](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **HDInsight (Linux-basiert):** Herstellen einer Verbindung mithilfe von [SSH oder PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md)
+Um den Hadoop-Befehl verwenden zu können, müssen Sie zunächst mithilfe von [SSH oder PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) eine Verbindung mit dem Hauptknoten herstellen.
 
 Nachdem die Verbindung hergestellt wurde, verwenden Sie die folgende Syntax, um eine Datei in den Speicher hochzuladen.
 

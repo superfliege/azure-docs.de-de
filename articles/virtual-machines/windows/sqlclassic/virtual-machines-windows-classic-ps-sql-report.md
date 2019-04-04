@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445635"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650273"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -130,7 +130,7 @@ Bei der Bereitstellung des virtuellen Computer wurde auf ihm ein selbstsignierte
    4. Wählen Sie in **Lokaler Computer** den zu verwaltenden lokalen Computer aus, und klicken Sie dann auf **Fertig stellen**.
    5. Klicken Sie auf **OK**, erweitern Sie den Knoten **Zertifikate – Persönlich**, und klicken Sie dann auf **Zertifikate**. Das Zertifikat ist mit dem DNS-Namen des virtuellen Computers benannt, und der Zertifikatname endet mit **cloudapp.net**. Klicken Sie mit der rechten Maustaste auf den Zertifikatnamen, und klicken Sie auf **Kopieren**.
    6. Erweitern Sie den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**, klicken Sie mit der rechten Maustaste auf **Zertifikate**, und klicken Sie dann auf **Einfügen**.
-   7. Zur Überprüfung doppelklicken Sie auf den Zertifikatnamen unter **Vertrauenswürdige Stammzertifizierungsstellen** , und vergewissern Sie sich, dass keine Fehler vorliegen und Sie Ihr Zertifikat sehen können. Wenn Sie das in diesem Thema enthaltene HTTPS-Skript verwenden möchten, um den Berichtsserver zu konfigurieren, ist der Wert, der für das Zertifikat als **Fingerabdruck** angegeben ist, als Parameter des Skripts erforderlich. **Um den Fingerabdruckwert abzurufen**, führen Sie die folgenden Schritte aus. Außerdem gibt es im Abschnitt [Verwenden eines Skripts, um den Berichtsserver und HTTPS zu konfigurieren](#use-script-to-configure-the-report-server-and-HTTPS)ein PowerShell-Beispiel, mit dem der Fingerabdruck abgerufen werden kann.
+   7. Zur Überprüfung doppelklicken Sie auf den Zertifikatnamen unter **Vertrauenswürdige Stammzertifizierungsstellen** , und vergewissern Sie sich, dass keine Fehler vorliegen und Sie Ihr Zertifikat sehen können. Wenn Sie das in diesem Thema enthaltene HTTPS-Skript verwenden möchten, um den Berichtsserver zu konfigurieren, ist der Wert, der für das Zertifikat als **Fingerabdruck** angegeben ist, als Parameter des Skripts erforderlich. **Um den Fingerabdruckwert abzurufen**, führen Sie die folgenden Schritte aus. Außerdem gibt es im Abschnitt [Verwenden eines Skripts, um den Berichtsserver und HTTPS zu konfigurieren](#use-script-to-configure-the-report-server-and-https)ein PowerShell-Beispiel, mit dem der Fingerabdruck abgerufen werden kann.
       
       1. Doppelklicken Sie auf den Namen des Zertifikats, z. B. „ssrsnativecloud.cloudapp.net“.
       2. Klicken Sie auf die Registerkarte **Details** .

@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 03/12/2019
 ms.author: raynew
-ms.openlocfilehash: 61e66a19b625141c69a9473373d3d5d808e18fde
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fece1adc9ad2f5844a7d6cc1e0e9cc92d44de6d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211116"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892930"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -20,75 +20,143 @@ Der [Azure Site Recovery](site-recovery-overview.md)-Dienst wird laufend aktuali
 
 Wenn Sie Vorschläge für Site Recovery-Funktionen haben, freuen wir uns über Ihr [Feedback](https://feedback.azure.com/forums/256299-site-recovery).
 
-## <a name="q1-2019"></a>Q1 2019
+## <a name="q1-2019"></a>Q1 2019 
 
-### <a name="linux-support"></a>Linux-Unterstützung
+### <a name="update-rollup-34-february-2019"></a>Updaterollup 34 (Februar 2019)
 
-[Updaterollup 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) stellt ein Update für Site Recovery-Agents und -Anbieter bereit. Das Update fügt Unterstützung für Linux wie folgt hinzu:
+Mit dem [Updaterollup 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
-- **Notfallwiederherstellung von Azure-VMs**: Red Hat Workstation 6/7, neue Kernelversionen für Ubuntu, Debian und SUSE.
-- **Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern in Azure**: Red Hat Enterprise Linux 7.6, Red Hat Workstation 6/7, Oracle Linux 6.10/7.6. Neue Kernelversionen für Ubuntu, Debian und SUSE.
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problembehebungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
 
+
+
+### <a name="update-rollup-33-february-2019"></a>Updaterollup 33 (Februar 2019)
+
+Mit dem [Updaterollup 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problembehebungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+**Netzwerkzuordnung** | Sie können nun ein beliebiges Zielnetzwerk beim Aktivieren der Replikation für die Azure-VM-Notfallwiederherstellung verwenden. 
+**SSD Standard** | Sie können nun die Notfallwiederherstellung für Azure-VMs mit [SSD Standard-Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd) einrichten.
+**Direkte Speicherplätze** | Sie können nun die Notfallwiederherstellung für Apps auf Azure-VMs mit [direkten Speicherplätzen](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) für Hochverfügbarkeit einrichten.
+**BRTFS-Dateisystem** | Wird nun zusätzlich zu Azure-VMs auch für VMware-VMs unterstützt.<br/><br/> Wird nicht unterstützt, wenn: das untergeordnete Volume des BTRFS-Dateisystems nach Aktivierung der Replikation geändert wird, das Dateisystem auf mehrere Datenträger verteilt wird oder das BTRFS-Dateisystem RAID unterstützt.
+
+
+
+### <a name="update-rollup-32-january-2019"></a>Updaterollup 32 (Januar 2019)
+
+Mit dem [Updaterollup 31](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problembehebungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+**Notfallwiederherstellung für Linux** | **Virtuelle Azure-Computer**: Red Hat Workstation 6/7, Unterstützung für neue Kernelversionen für Ubuntu, Debian und SUSE.<br/><br/> **VMware-VMs/physische Server:** Red Hat Enterprise Linux 7.6, Red Hat Workstation 6/7, Oracle Linux 6.10/7.6, Unterstützung für neue Kernelversionen für Ubuntu, Debian und SUSE.
+
+
+### <a name="update-rollup-31-january-2019"></a>Updaterollup 31 (Januar 2019)
+
+Mit dem [Updaterollup 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problembehebungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+**Notfallwiederherstellung für Linux** | **Virtuelle Azure-Computer**: Oracle Linux 6.8 und 6.9/7.0, Unterstützung für UEK5-Kernel.<br/><br/> **VMware-VMs/physische Server:** Oracle Linux 6.8 und 6.9/7.0, Unterstützung für UEK5-Kernel.
+**BRTFS-Dateisystem** | Unterstützung für Azure-VMs
+**LVM** | Unterstützung für LVM- und LVM2-Volumes wurde hinzugefügt.<br/><br/> Das Verzeichnis „/boot“ wird auf Datenträgerpartitionen und LVM-Volumes unterstützt.
+**Verzeichnisse** | Die Unterstützung der folgenden Verzeichnisse wurde für separate Partitionen oder Dateisysteme eingerichtet, die sich nicht auf dem gleichen Systemdatenträger befinden: „/(root)“, „/boot“, „/usr“, „/usr“, „/local“, „/var“ usw.
+**Windows Server 2008** | Dynamische Datenträger werden nun unterstützt.
+**Failover für VMware-VMs** | Verbesserte Failoverzeit für VMware-VMs, bei denen „storvsc“ und „vsbus“ keine Starttreiber sind.
+**UEFI-Unterstützung** | Azure-VMs unterstützen den Starttyp UEFI nicht. Sie können lokale physische Server mit UEFI nun mithilfe von Site Recovery zu Azure migrieren. Site Recovery migriert den Server, indem der Starttyp vor der Migration in BIOS konvertiert wird. Site Recovery hat diese Konvertierung zuvor nur für VMs unterstützt. Physische Server mit Windows Server 2012 oder höher werden nun unterstützt.
+**Azure-VMs in Verfügbarkeitszonen** | Sie können die Replikation in anderen Regionen für Azure-VMs aktivieren, die in Verfügbarkeitszonen bereitgestellt wurden. Sie können nun Replikation für eine Azure-VM aktivieren und das Ziel für das Failover auf eine einzelne VM-Instanz, eine VM in einer Verfügbarkeitsgruppe oder eine VM in einer Verfügbarkeitszone festlegen. Die Einstellung besitzt keine Auswirkungen auf die Replikation. Ankündigung [lesen](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/).
 
 
 ## <a name="q4-2018"></a>Q4 2018
 
-## <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>Preisrechner für die Notfallwiederherstellung von Azure-VMs
+### <a name="update-rollup-30-october-2018"></a>Updaterollup 30 (Oktober 2018)
 
-Notfallwiederherstellung für Azure-VMs verursacht VM-Lizenzierungskosten sowie Netzwerk- und Speicherkosten. Azure bietet einen [Preisrechner](https://aka.ms/a2a-cost-estimator), mit dem Sie diese Kosten herausfinden können. Site Recovery bietet nun eine [Beispielpreisschätzung](https://aka.ms/a2a-cost-estimator), die eine Beispielbereitstellung basierend auf einer Drei-Schichten-App mit sechs VMs mit 12 HDD Standard-Datenträgern und 6 SSD Premium-Datenträgern bewertet. Das Beispiel geht von einer Datenänderung von 10 GB pro Tag für Standard und 20 GB für Premium aus. Für Ihre individuelle Bereitstellung können Sie die Variablen ändern, um die Kosten zu schätzen. Sie können die Anzahl der VMs, die Anzahl und den Typ der verwalteten Datenträger und die erwartete Datenänderungs-Gesamtrate angeben, die für die VMs erwartet wird. Darüber hinaus können Sie einen Komprimierungsfaktor anwenden, um die Kosten für Bandbreite zu schätzen. Ankündigung [lesen](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/).
+Mit dem [Updaterollup 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) werden die folgenden Updates bereitgestellt.
 
-### <a name="support-for-azure-vms-in-zones"></a>Unterstützung für virtuelle Azure-Computer in Zonen
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problembehebungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+**Unterstützung für Regionen** | Die Site Recovery-Unterstützung wurde für Australien, Mitte und Australien, Mitte 2 hinzugefügt.
+**Unterstützung für die Datenträgerverschlüsselung** | Die Unterstützung der Notfallwiederherstellung für Azure-VMs, die mit Azure Disk Encryption (ADE) mit der Azure AD-App verschlüsselt wurden, wurde hinzugefügt. [Weitere Informationen](azure-to-azure-how-to-enable-replication-ade-vms.md)
+**Ausschluss von Datenträgern** | Nicht initialisierte Datenträger werden während der Replikation von Azure-VMs automatisch ausgeschlossen.
+**Speicher mit aktivierter Firewall** | [Speicherkonten mit aktivierter Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) werden nun unterstützt.<br/><br/> Im Falle einer Notfallwiederherstellung können Sie Azure-VMs mit nicht verwalteten Datenträgern in Speicherkonten mit aktivierter Firewall in eine andere Azure-Region replizieren.<br/><br/> Sie können Speicherkonten mit aktivierter Firewall als Zielspeicherkonten für nicht verwaltete Datenträger verwenden.<br/><br/> Dies wird nur mit PowerShell unterstützt.
 
-Azure-Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Sie können nun Replikation für eine Azure-VM aktivieren und das Ziel für das Failover auf eine einzelne VM-Instanz, eine VM in einer Verfügbarkeitsgruppe oder eine VM in einer Verfügbarkeitszone festlegen. Die Einstellung besitzt keine Auswirkungen auf die Replikation. Ankündigung [lesen](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/).
- 
-### <a name="disaster-recovery-for-encrypted-vms"></a>Notfallwiederherstellung für verschlüsselte virtuelle Computer
 
-Site Recovery unterstützt Azure-VMs, die mit Azure Disk Encryption (ADE) mit der Azure AD-App verschlüsselt wurden. [Weitere Informationen](azure-to-azure-how-to-enable-replication-ade-vms.md)
+### <a name="update-rollup-29-october-2018"></a>Updaterollup 29 (Oktober 2018)
 
-### <a name="disaster-recovery-for-vms-using-accelerated-networking"></a>Notfallwiederherstellung für VMs mit beschleunigtem Netzwerkbetrieb
+Mit dem [Updaterollup 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
-Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) auf einem virtuellen Computer und somit eine Steigerung der Netzwerkleistung. Wenn Sie die Replikation für eine Azure-VM aktivieren, erkennt Site Recovery, ob beschleunigter Netzwerkbetrieb aktiviert ist. Wenn dies der Fall ist, konfiguriert Site Recovery nach dem Failover automatisch beschleunigten Netzwerkbetrieb auf der Azure-Zielreplikat-VM, und zwar sowohl für [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) als auch für [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms). [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problembehebungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
 
 ### <a name="automatic-updates-for-the-mobility-service-extension"></a>Automatische Updates für die Mobility Service-Erweiterung
 
 Site Recovery hat eine Option für automatische Updates der Mobility Service-Erweiterung hinzugefügt. Die Mobility Service-Erweiterung wird auf jeder Azure-VM installiert, die von Site Recovery repliziert wird. Wenn Sie die Replikation aktivieren, wählen Sie aus, ob Site Recovery Updates für die Erweiterung verwalten soll. Updates erfordern keinen Neustart der VM und wirken sich nicht auf die Replikation aus. [Weitere Informationen](azure-to-azure-autoupdate.md)
 
-### <a name="support-for-standard-ssd-disks"></a>Unterstützung für SSD Standard-Datenträger
+### <a name="disaster-recovery-for-vms-using-accelerated-networking"></a>Notfallwiederherstellung für VMs mit beschleunigtem Netzwerkbetrieb
 
-Azure hat [SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)-Datenträger (Standard Solid State Drives) eingeführt, um eine kostengünstige Speicherlösung für Apps wie Webserver bereitzustellen, die eine konsistente Leistung benötigen, aber keine hohe Datenträger-IOPS aufweisen. Sie kombinieren Elemente von SSD Premium- und HDD Standard-Datenträgern. Site Recovery bietet Notfallwiederherstellung für Azure-VMs, die einen SSD Standard-Datenträger verwenden. Standardmäßig wird der Datenträgertyp nach einem Failover in die Zielregion beibehalten.
+Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) auf einem virtuellen Computer und somit eine Steigerung der Netzwerkleistung. Wenn Sie die Replikation für eine Azure-VM aktivieren, erkennt Site Recovery, ob beschleunigter Netzwerkbetrieb aktiviert ist. Wenn dies der Fall ist, konfiguriert Site Recovery nach dem Failover automatisch beschleunigten Netzwerkbetrieb auf der Azure-Zielreplikat-VM, und zwar sowohl für [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) als auch für [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms). [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
 
-### <a name="support-for-azure-storage-firewall"></a>Unterstützung für Azure Storage-Firewall
+### <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>Preisrechner für die Notfallwiederherstellung von Azure-VMs
 
-Sie können Azure Storage-Konten in einer bestimmten Sammlung von Netzwerken schützen, indem Sie Firewallregeln für das Konto aktivieren. Sie konfigurieren Speicherkonten, um den Datenverkehr aus internen Netzwerken und dem Internet standardmäßig zu verweigern, und gewähren dann Zugriff auf den Datenverkehr aus bestimmten VNETs. Site Recovery unterstützt die Replikation für VMs mit nicht verwalteten Datenträgern für firewallaktivierte Speicherkonten in eine sekundäre Region. In der Zielregion können Sie für nicht verwaltete Datenträger Speicherkonten mit aktivierten Firewalls auswählen. Sie können auch den Zugriff auf das Cachespeicherkonto einschränken, indem Sie den Netzwerkzugriff auf das Netzwerk beschränken, in dem sich die Quell-VMs befinden. Beachten Sie, dass Sie Zugriff für vertrauenswürdige Microsoft-Dienste [zulassen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) müssen.
+Notfallwiederherstellung für Azure-VMs verursacht VM-Lizenzierungskosten sowie Netzwerk- und Speicherkosten. Azure bietet einen [Preisrechner](https://aka.ms/a2a-cost-estimator), mit dem Sie diese Kosten herausfinden können. Site Recovery bietet nun eine [Beispielpreisschätzung](https://aka.ms/a2a-cost-estimator), die eine Beispielbereitstellung basierend auf einer Drei-Schichten-App mit sechs VMs mit 12 HDD Standard-Datenträgern und 6 SSD Premium-Datenträgern bewertet. Das Beispiel geht von einer Datenänderung von 10 GB pro Tag für Standard und 20 GB für Premium aus. Für Ihre individuelle Bereitstellung können Sie die Variablen ändern, um die Kosten zu schätzen. Sie können die Anzahl der VMs, die Anzahl und den Typ der verwalteten Datenträger und die erwartete Datenänderungs-Gesamtrate angeben, die für die VMs erwartet wird. Darüber hinaus können Sie einen Komprimierungsfaktor anwenden, um die Kosten für Bandbreite zu schätzen. Ankündigung [lesen](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/).
+
+
 
 ## <a name="q3-2018"></a>Q3 2018 
 
-### <a name="linux-support"></a>Linux-Unterstützung
 
-#### <a name="update-rollup-28"></a>Updaterollup 28
+### <a name="update-rollup-28-august-2018"></a>Updaterollup 28 (August 2018)
 
-[Updaterollup 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) stellt ein Update für Site Recovery-Agents und -Anbieter bereit. Das Update fügt Unterstützung für Linux wie folgt hinzu:
+Mit dem [Updaterollup 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
-- **Notfallwiederherstellung von Azure-VMs**: Red Hat Enterprise Linux 6.10, CentOS 6.10. Linux-basierte VMs, die den Partitionsstil der GUID-Partitionstabelle (GPT) im BIOS-Legacykompatibilitätsmodus verwenden, werden jetzt unterstützt.
-- **Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern in Azure**: Red Hat Enterprise Linux 6.10, CentOS 6.10. Linux-basierte VMs, die den Partitionsstil der GUID-Partitionstabelle (GPT) im BIOS-Legacykompatibilitätsmodus verwenden, werden jetzt unterstützt.
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Notfallwiederherstellung für Linux** | **Virtuelle Azure-Computer**: Die Unterstützung für Red Hat Enterprise Linux 6.10 und CentOS 6.10 wurde hinzugefügt.<br/><br/> **VMware-VMs:** Red Hat Enterprise Linux 6.10 und CentOS 6.10.<br/><br/> Linux-basierte VMs, die den Partitionsstil der GUID-Partitionstabelle (GPT) im BIOS-Legacykompatibilitätsmodus verwenden, werden jetzt unterstützt.
+**Unterstützung für Clouds** | Die Notfallwiederherstellung für Azure-VMs in der Azure Deutschland-Cloud wird nun unterstützt.
+**Abonnementübergreifende Notfallwiederherstellung** | Die Replikation von Azure-VMs von einer Region zu einer anderen Region in einem anderen Abonnement innerhalb desselben Azure Active Directory-Mandanten wird nun unterstützt. [Weitere Informationen](https://aka.ms/cross-sub-blog)
+**Windows Server 2008** | Die Migration von Computern mit Windows Server 2008 R2/2008 64-Bit und 32-Bit wird nun unterstützt.<br/><br/> Es wird lediglich die Migration unterstützt (Replikation und Failover). Failbacks werden nicht unterstützt.
 
-#### <a name="update-rollup-27"></a>Updaterollup 27
+### <a name="update-rollup-27-july-2018"></a>Updaterollup 27 (Juli 2018)
 
-[Updaterollup 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) stellt ein Update für Site Recovery-Agents und -Anbieter bereit. Das Update fügt Unterstützung für Linux wie folgt hinzu:
+Mit dem [Updaterollup 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
-- **Notfallwiederherstellung von Azure-VMs**: Red Hat Enterprise Linux 7.5
-- **Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern in Azure**: SUSE Linux Enterprise Server 12, Red Hat Enterprise Linux 7.5
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Notfallwiederherstellung für Linux** | **Virtuelle Azure-Computer**: Red Hat Enterprise Linux 7.5<br/><br/> **VMware-VMs/physische Server:** Red Hat Enterprise Linux 7.5, SUSE Linux Enterprise Server 12
 
-### <a name="support-for-azure-vms-running-on-windows-server-2016"></a>Unterstützung für Azure-VMs unter Windows Server 2016
 
-Azure-VMs unter Windows Server 2016 können in Azure-Regionen mit Azure Site Recovery repliziert werden.
 
-### <a name="support-for-azure-vms-running-storage-spaces-direct"></a>Unterstützung für Azure-VMs, die direkte Speicherplätze ausführen
-
-[Direkte Speicherplätze](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) (verfügbar ab Windows Server 2016) gruppieren Laufwerke in einem Speicherpool und verwenden dann Kapazität aus dem Pool, um Speicherplätze zu erstellen. Speicherplätze können auf einem eigenständigen virtuellen Computer, einem [Gastcluster von virtuellen Azure-Computern](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) mit lokalem Speicher auf jedem Clusterknoten oder für freigegebenen Speicher im Cluster verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Auf dem neuesten Stand mit unseren Updates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=site-recovery) bleiben.
+
+
+
+
+ 
+
+
+
+
+
+
+
 
 

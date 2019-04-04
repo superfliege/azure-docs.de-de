@@ -6,25 +6,21 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314855"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287093"
 ---
-# <a name="indexing-external-data-for-queries-in-azure-search"></a>Indizieren externer Daten für Abfragen in Azure Search
-> [!div class="op_single_selector"]
-> * [Übersicht](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
-> 
-> 
+# <a name="data-import-overview---azure-search"></a>Übersicht über den Datenimport – Azure Search
 
 In Azure Search werden Abfragen für Ihre Inhalte ausgeführt, die in einen [Suchindex](search-what-is-an-index.md) geladen und dort gespeichert wurden. In diesem Artikel werden die zwei grundlegenden Ansätze zum Auffüllen eines Indexes untersucht: Sie können Ihre Daten per *Pushvorgang* programmgesteuert in den Index übertragen, oder Sie können für einen [Azure Search-Indexer](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten per *Pullvorgang* zu beziehen.
+
+Bei beiden Methoden ist das Ziel das *Laden von Daten* aus einer externen Datenquelle in einen Azure Search-Index. Azure Search ermöglicht Ihnen das Erstellen eines leeren Index, dieser kann aber erst abgefragt werden, wenn Sie Daten in ihn pushen oder pullen.
 
 ## <a name="pushing-data-to-an-index"></a>Übertragen von Daten per Pushvorgang in einen Index
 Das Pushmodell, das zum programmgesteuerten Senden Ihrer Daten an Azure Search verwendet wird, ist der flexibelste Ansatz. Erstens gelten keine Einschränkungen für den Datenquellentyp. Alle Datasets, die aus JSON-Dokumenten bestehen, können per Pushvorgang in einen Azure Search-Index übertragen werden, solange jedes Dokument im Dataset über Felder verfügt, die den in Ihrem Indexschema definierten Feldern zugeordnet sind. Zweitens gelten keine Einschränkungen für die Ausführungshäufigkeit. Sie können Änderungen beliebig oft per Pushvorgang in einen Index übertragen. Bei Anwendungen mit sehr niedrigen Latenzanforderungen (wenn z.B. Suchvorgänge mit dynamischen Inventardatenbanken synchronisiert werden müssen) ist das Push-Modell Ihre einzige Option.
@@ -40,7 +36,38 @@ Sie können die folgenden APIs verwenden, um ein oder mehrere Dokumente in einen
 
 Es gibt derzeit keine Toolunterstützung für die Push-Übertragung von Daten über das Portal.
 
-Eine Einführung in die einzelnen Methodiken finden Sie unter [Hochladen von Daten in Azure Search über die REST-API](search-import-data-rest-api.md) bzw. [Hochladen von Daten in Azure Search mit dem .NET SDK](search-import-data-dotnet.md).
+Eine Einführung in jede Methodik finden Sie unter [Schnellstart: Erstellen eines Azure Search-Index mithilfe von PowerShell und der REST-API](search-create-index-rest-api.md) und [Schnellstart: Erstellen eines Azure Search-Index in C#](search-import-data-dotnet.md).
+
+<a name="indexing-actions"></a>
+
+### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>Indizierungsaktionen: upload, merge, mergeOrUpload, delete
+
+Sie können den Typ der Indizierungsaktion dokumentweise steuern, indem Sie angeben, ob das Dokument vollständig hochgeladen, mit vorhandenen Dokumentinhalten zusammengeführt oder gelöscht werden soll.
+
+Bei der REST-API werden HTTP POST-Anforderungen mit JSON-Anforderungstexten an die Endpunkt-URL Ihres Azure Search-Index ausgegeben. Jedes JSON-Objekt im value-Array enthält den Schlüssel des Dokuments und gibt eine Indizierungsaktion an, die Dokumentinhalt hinzufügt, aktualisiert oder löscht. Ein Codebeispiel finden Sie unter [Laden von Dokumenten](search-create-index-rest-api.md#load-documents).
+
+Beim .NET SDK packen Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatch`-Objekt kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll. Ein Codebeispiel finden Sie unter [Erstellen des IndexBatch-Elements](search-import-data-dotnet.md#construct-indexbatch).
+
+
+| @search.action | BESCHREIBUNG | Erforderliche Felder für jedes Dokument | Notizen |
+| -------------- | ----------- | ---------------------------------- | ----- |
+| `upload` |Eine `upload` -Aktion entspricht „upsert“, wobei neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. |Schlüssel und alle anderen zu definierenden Felder |Wenn ein bestehendes Dokument aktualisiert/ersetzt wird, werden alle in der Anforderung nicht festgelegten Felder auf `null`festgelegt. Dies tritt auch auf, wenn das Feld zuvor auf einen Wert festgelegt wurde, der nicht Null ist. |
+| `merge` |Aktualisiert ein bestehendes Dokument mit den angegebenen Feldern. Wenn das Dokument im Index nicht vorhanden ist, schlägt die Zusammenführung fehl. |Schlüssel und alle anderen zu definierenden Felder |Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Beim .NET SDK schließt dies auch Felder vom Typ `DataType.Collection(DataType.String)` ein. Bei der REST-API schließt dies auch Felder vom Typ `Collection(Edm.String)` ein. Wenn das Dokument beispielsweise das Feld `tags` mit dem Wert `["budget"]` enthält und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für `tags` durchführen, hat das Feld `tags` am Ende den Wert `["economy", "pool"]`. Der Wert lautet nicht `["budget", "economy", "pool"]`. |
+| `mergeOrUpload` |Diese Aktion verhält sich wie `merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `upload` mit einem neuen Dokument. |Schlüssel und alle anderen zu definierenden Felder |- |
+| `delete` |Hiermit wird das angegebene Dokument aus dem Index gelöscht. |Nur Schlüssel |Mit Ausnahme des Schlüsselfelds werden alle angegebenen Felder ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `merge` , und setzen Sie das Feld ausdrücklich auf Null. |
+
+## <a name="decide-which-indexing-action-to-use"></a>Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
+So importieren Sie Daten mit dem .NET SDK (upload, merge, delete und mergeOrUpload). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
+
+
+### <a name="formulate-your-query"></a>Formulieren der Abfrage
+Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
+
+Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Dienstnamen*, den *Indexnamen* sowie die entsprechende *API-Version* (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2017-11-11`) bereitstellen. Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
+
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+
+Das Format für POST ist das Gleiche, allerdings mit der API-Version in den Parametern für die Abfragezeichenfolge.
 
 
 ## <a name="pulling-data-into-an-index"></a>Übertragen von Daten per Pullvorgang in einen Index

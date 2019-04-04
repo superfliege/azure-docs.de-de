@@ -2,7 +2,7 @@
 title: Unterstützbarkeit – Azure Dedicated HSM | Microsoft-Dokumentation
 description: Unterstützungsoptionen und Zuständigkeitsbereiche für Azure Dedicated HSM in verschiedenen Szenarios
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 ms.service: key-vault
 ms.workload: identity
@@ -10,24 +10,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 23c509f6f219b708fc259ee123d73948ebe50773
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8e4bbe3a5e2de8ba919cf0b641ee4e6776c5e8d4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114483"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225551"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure-Dienst für dedizierte HSMs – Unterstützbarkeit
 
 Der Azure-Dienst für dedizierte HSMs stellt ein physisches Gerät für die Verwendung durch einen Kunden mit umfassender administrativer Kontrolle und Verwaltungsverantwortung bereit. Ein [Gemalto SafeNet Luna 7 HSM Modell A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) wird zur Verfügung gestellt. Microsoft hat nach Bereitstellung durch den Kunden keinen administrativen Zugriff, abgesehen von der Zuordnung eines physischen seriellen Anschlusses für die Überwachungsrolle.  Ohne Zugriff kann Microsoft keine Verantwortung für die laufende Wartung auf Softwareebene oder Systemverwaltung übernehmen. Daher sind die Kunden für typische Betriebsaktivitäten verantwortlich.
 Die Kunden sind vollständig verantwortlich für Anwendungen, die die HSMs nutzen, und sollten hinsichtlich Support bzw. Assistenz auf Beraterbasis mit Gemalto kooperieren. Aufgrund des Ausmaßes, in dem der Kunde für den ordnungsgemäßen Betrieb verantwortlich ist, kann Microsoft keinerlei Garantie für die Hochverfügbarkeit dieses Diensts bieten. Es liegt in der Verantwortung des Kunden, sicherzustellen, dass seine Anwendungen ordnungsgemäß konfiguriert sind, um Hochverfügbarkeit zu erzielen. Microsoft überwacht und wartet Geräteintegrität und Netzwerkkonnektivität.
 
+## <a name="getting-support"></a>Anfordern von Support
+
+Der Kundensupport für Dedicated HSM ist eine gemeinsame Initiative von Microsoft und Gemalto. Probleme mit der Hardware oder dem Netzwerkpfad werden von Microsoft bearbeitet. Sämtliche Fragen zum eigentlichen HSM (z. B. Konfiguration, Software, Firmware und Anwendungsentwicklung) werden von Gemalto beantwortet. Dieses Supportmodell sorgt dafür, dass Sie schnellstmöglich die effektivste Unterstützung erhalten. Wenn Sie bei einem bestimmten Problem unsicher sind, erstellen Sie eine Supportanfrage an Microsoft. Wir stellen dann sicher, dass Ihre Anfrage richtig weitergeleitet wird. Microsoft begleitet alle Supportszenarien, um eine optimale Unterstützung für unsere Kunden sicherzustellen.
+
 ## <a name="gemalto-support"></a>Gemalto-Support
 
-Kunden, die den Dienst für dedizierte HSMs nutzen, benötigen einen Supportvertrag mit Gemalto. Kunden erhalten im Rahmen ihres Supportvertrags Anleitungen, Support und Dienste direkt von Gemalto. Gemalto bietet Support über das [Kundensupportportal](https://supportportal.gemalto.com/csm/).
-Gemalto stellt alle Softwarekomponenten bereit, die erforderlich sind, um das HSM zu verwenden (z.B. Clientzugriffsoftware und SDKs). Es wird auch Support zur Konfiguration geleistet, und Beratungsdienste für Entwurf, Entwicklung und Bereitstellung von Anwendungen mit dem SafeNet Luna 7 HSM werden angeboten.
+Kunden, die den Dedicated HSM-Dienst nutzen, sind über ihren Plus-Supportplan berechtigt, den Support von Gemalto in Anspruch zu nehmen. Dies erfordert lediglich eine Registrierung über das Support-Portal von Gemalto. Sie erhalten zu Beginn Ihrer Zusammenarbeit mit Microsoft eine Kunden-ID sowie Anweisungen für diesen Teil, um Zugriff auf den Dedicated HSM-Dienst zu erhalten. Gemalto bietet Support über das [Kundensupportportal](https://supportportal.gemalto.com/csm/).
+Ein entscheidender Punkt ist, dass Gemalto sämtliche Software und Dokumente, die erforderlich sind, um das HSM zu nutzen (z. B. Software für den Clientzugriff und SDKs), über einen Download im Kundensupportportal bereitstellt.
 
 ### <a name="software-components"></a>Softwarekomponenten
 
@@ -51,7 +55,7 @@ Um Unterstützung zu Entwurf, Entwicklung und Bereitstellung von benutzerdefinie
 
 ## <a name="microsoft-support"></a>Microsoft-Support
 
-Microsoft ist dafür verantwortlich, sicherzustellen, dass physische HSM-Geräte für die exklusive Verwendung eines einzelnen Kunden erreichbar und in einem funktionsfähigen Zustand sind. Die Kunden sind verantwortlich für die Administration und Verwaltung des Geräts. Unter die Verantwortung von Microsoft fällt:
+Microsoft stellt sicher, dass physische HSM-Geräte für die exklusive Verwendung eines einzelnen Kunden über ein Netzwerk erreichbar und in einem funktionsfähigen Zustand sind. Die Kunden sind verantwortlich für die Konfiguration, Administration und Verwaltung des Geräts. Unter die Verantwortung von Microsoft fällt:
 
 * Sicherstellen, dass das Gerät mit Strom versorgt und gekühlt wird
 * Warten eines funktionsfähigen Zustands des HSM (z.B. Problemlösungsszenarios)
@@ -72,7 +76,7 @@ Sobald ein Kunde über eine genehmigte Registrierung für den dedizierten HSM-Di
 
 ### <a name="hardware-issues"></a>Hardwareprobleme
 
-Das HSM-Gerät verfügt über redundante und austauschbare Stromversorgungs- und Lüftereinheiten. Das Entfernen der Lüftereinheit löst ein Manipulationsereignis aus, wenn das Gerät beim Entfernen eingeschaltet ist. Beim Ausfall einer Komponente verwendet Microsoft das am besten geeignete Verfahren, um das Problem auf Komponentenebene so zu behandeln, dass nur eine minimale Unterbrechung auftritt und das niedrigste Risiko für die Dienstverfügbarkeit der Kunden besteht.
+Das HSM-Gerät verfügt über redundante und austauschbare Stromversorgungs- und Lüftereinheiten.  Das Entfernen einer Lüftereinheit bewirkt dennoch eine Unterbrechung. Beim Ausfall einer Komponente verwendet Microsoft das am besten geeignete Verfahren, um das Problem auf Komponentenebene so zu behandeln, dass nur eine minimale Unterbrechung auftritt und das niedrigste Risiko für die Dienstverfügbarkeit der Kunden besteht.
 Bei jedem schwerwiegenderen Ausfall des Geräts wird dieses Gerät durch ein frisches aus dem freien Pool ersetzt. Der Kunde fügt das neue Gerät einfach in das vorhandene Hochverfügbarkeitspaar ein, damit es synchronisiert und wieder in einen voll betriebsfähigen Zustand versetzt wird. Die Daten enthaltenden Komponenten des ausgefallenen Geräts werden entfernt und vor Ort im Rechenzentrum zerstört. Nur das Gehäuse wird zum Recycling an Gemalto zurückgegeben.
 
 

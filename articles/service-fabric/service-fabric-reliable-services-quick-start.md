@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: eb0fd7e4feb28d60173b638a15dbce598f78e6bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26520e3ff8f5bb97866015d3148b4c8b8813b319
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182951"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168569"
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Starten Sie Visual Studio 2015 oder Visual Studio 2017 als Administrator, und er
 
 ![Erstellen Sie über das Dialogfeld „Neues Projekt“ eine neue Service Fabric-Anwendung.](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-Erstellen Sie anschließend ein Projekt für einen zustandslosen Dienst mit **.NET Core 2.0** unter dem Namen *HelloWorldStateless*:
+Erstellen Sie anschließend ein Projekt für einen zustandslosen Dienst mit **.NET Core 2.0** unter dem Namen *HelloWorldStateless*:
 
 ![Erstellen Sie im zweiten Dialogfeld ein Projekt für einen zustandslosen Dienst.](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -127,7 +127,7 @@ In der gleichen *HelloWorld*-Anwendung können Sie einen neuen Dienst hinzufüge
 
 ![Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-Wählen Sie **.NET Core 2.0 -> Zustandsbehafteter Dienst**, und geben Sie ihm den Namen *HelloWorldStateful*. Klicken Sie auf **OK**.
+Wählen Sie **.NET Core 2.0 -> Zustandsbehafteter Dienst** aus, und geben Sie ihm den Namen *HelloWorldStateful*. Klicken Sie auf **OK**.
 
 ![Verwenden Sie das Dialogfeld „Neues Projekt“, um einen zustandsbehafteten Service Fabric-Dienst zu erstellen.](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 

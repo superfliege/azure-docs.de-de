@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ca111623f6d3d7c61b1bfc4e1af328f9599c2440
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6753b3a76ff5d3e0266f238d8e354943dec694a8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884505"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480457"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Beispielanwendung für die Verwendung mit DMZs
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -30,7 +30,7 @@ Diese Anwendung bietet eine einfache Testumgebung für viele der DMZ-Beispiele v
 ## <a name="firewall-rule-to-allow-icmp"></a>Firewallregel zum Zulassen von ICMP
 Diese einfache PowerShell-Anweisung kann auf jedem virtuellen Windows-Computer ausgeführt werden, um ICMP (Ping)-Datenverkehr zuzulassen. Dieses Firewallupdate vereinfacht das Testen und die Problembehandlung, da das Ping-Protokoll durch die Windows-Firewall weitergeleitet werden kann (für die meisten Linux-Distributionen ist ICMP standardmäßig aktiviert).
 
-```PowerShell
+```powershell
 # Turn On ICMPv4
 New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
@@ -49,7 +49,7 @@ Mit diesem Skript werden folgende Vorgänge durchgeführt:
 
 Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Protokoll an IIS01 geleitet wird.
 
-```PowerShell
+```powershell
 # IIS Server Post Build Config Script
 # Get Admin Account and Password
     Write-Host "Please enter the admin account information used to create this VM:" -ForegroundColor Cyan
@@ -161,7 +161,7 @@ Mit diesem Skript wird das Back-End für diese einfache Anwendung eingerichtet. 
 
 Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Protokoll an AppVM01 geleitet wird. PowerShell muss mit Administratorrechten ausgeführt werden, um die erfolgreiche Ausführung sicherzustellen.
 
-```PowerShell
+```powershell
 # AppVM01 Server Post Build Config Script
 # PowerShell must be run as Administrator for Net Share commands to work
 

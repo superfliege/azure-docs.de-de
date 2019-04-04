@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 10/25/2018
+ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 7e680e3cd8a3d7056141814c5e7d4539b72073b4
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756957"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286124"
 ---
 # <a name="create-an-advanced-device-model"></a>Erstellen eines erweiterten Gerätemodells
 
@@ -56,7 +56,7 @@ Zu einem typischen Gerätemodell gehört Folgendes:
 Jede Gerätedefinitionsdatei enthält die Details eines simulierten Gerätemodells, einschließlich der folgenden Informationen:
 
 * Name des Gerätemodells: Zeichenfolge
-* Protokoll: AMQP, MQTT, HTTP
+* Protokoll: AMQP | MQTT | HTTP.
 * Der Anfangszustand des Geräts
 * Wie oft der Gerätezustand aktualisiert werden soll
 * Welche JavaScript-Datei zum Aktualisieren des Gerätezustands verwendet werden soll
@@ -165,7 +165,7 @@ Die im Schema aufgeführten Felder können den folgenden Typen entsprechen:
 * Boolescher Wert
 * Ganze Zahl 
 * Double
-* Datetime
+* DateTime
 
 ### <a name="supported-methods"></a>Unterstützte Methoden
 
@@ -486,7 +486,7 @@ function main(context, state) {
 
     // ...
 
-    return state;
+    return updateState;
 }
 ```
 
@@ -516,4 +516,4 @@ Wenn Ihre Dateien die Überprüfung bestanden haben, klicken Sie auf **Save** (S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schrittanleitung haben Sie die Dateien eines Gerätemodells kennengelernt, die in der Gerätesimulation verwendet werden, und haben erfahren, wie ein erweitertes Gerätemodell erstellt wird. Jetzt können Sie das [Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden](about-iot-accelerators.md), untersuchen.
+In dieser Schrittanleitung haben Sie die Dateien eines Gerätemodells kennengelernt, die in der Gerätesimulation verwendet werden, und haben erfahren, wie ein erweitertes Gerätemodell erstellt wird. Jetzt können Sie das [Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights), untersuchen.

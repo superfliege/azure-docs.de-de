@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 10bc4e4c440e5495afd820f588270b7990108b68
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993209"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259260"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -34,6 +34,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -46,20 +48,20 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 2. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
 3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-    - *myAppGateway*: Name des Anwendungsgateways
-    - *myResourceGroupAG*: neue Ressourcengruppe
+   - *myAppGateway*: Name des Anwendungsgateways
+   - *myResourceGroupAG*: neue Ressourcengruppe
 
-    ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
+     ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
 
 4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
 5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-    - *myVNet*: Name des virtuellen Netzwerks
-    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
-    - *myAGSubnet*: Subnetzname
-    - *10.0.0.0/24*: Adressraum des Subnetzes
+   - *myVNet*: Name des virtuellen Netzwerks
+   - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+   - *myAGSubnet*: Subnetzname
+   - *10.0.0.0/24*: Adressraum des Subnetzes
 
-    ![Virtuelles Netzwerk erstellen](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
+     ![Virtuelles Netzwerk erstellen](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
 
 6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
 7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
@@ -104,7 +106,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -115,7 +117,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
       -Settings $publicSettings
     ```
 
-3. Erstellen Sie zwei weitere virtuelle Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie als Namen *myVM2* und *myVM3* und als Werte für „VMName“ in „Set-AzureRmVMExtension“ ein.
+3. Erstellen Sie zwei weitere virtuelle Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie als Namen *myVM2* und *myVM3* und als Werte für „VMName“ in „Set-AzVMExtension“ ein.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Erstellen von Back-End-Pools mit den virtuellen Computern
 
@@ -154,7 +156,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
     ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Z.B. http:// http://40.121.222.19.
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: http:\//40.121.222.19.
 
     ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

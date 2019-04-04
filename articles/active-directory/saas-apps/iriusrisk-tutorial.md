@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170699"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Tutorial: Azure Active Directory-Integration mit IriusRisk
 
@@ -89,7 +89,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei IriusRisk
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines IriusRisk-Testbenutzers](#create-a-iriusrisk-test-user)**, um eine Entsprechung von Britta Simon in IriusRisk zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+1. **[Erstellen eines IriusRisk-Testbenutzers](#create-an-iriusrisk-test-user)**, um eine Entsprechung von Britta Simon in IriusRisk zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 

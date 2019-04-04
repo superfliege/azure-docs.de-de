@@ -7,27 +7,29 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119291"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 HTTP-Header ermöglichen dem Client und dem Server das Übergeben von zusätzlichen Informationen mit der Anforderung oder der Antwort. Durch das erneute Generieren dieser HTTP-Header können Sie verschiedene wichtige Szenarios erzielen, z. B. das Hinzufügen von sicherheitsbezogenen Headerfeldern wie HSTS/X-XSS-Protection oder das Entfernen von Antwortheaderfeldern, über die sensible Informationen wie der Back-End-Servername offengelegt werden.
 
 Application Gateway unterstützt jetzt die Möglichkeit, die Header der eingehenden HTTP-Anforderungen sowie der ausgehenden HTTP-Antworten erneut zu generieren. Sie können HTTP-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können sowohl Standardheaderfelder als auch andere Headerfelder erneut generieren.
 
-> [!NOTE] 
->
+> [!NOTE]
+> 
 > Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [neue SKU [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) verfügbar.
 
 Die Unterstützung für das erneute Generieren von Headern in Application Gateway bietet Folgendes:
 
 - **Erneutes Generieren von globalen Headern:** Sie können bestimmte Header für alle Anforderungen und Antworten, die für eine Website gelten, neu generieren.
-- **Erneutes Generieren von pfadbasierten Headern:** Diese Art des erneuten Generierens ermöglicht es, Header nur für die Anforderungen und Antworten neu zu generieren, die nur für einen bestimmten Websitebereich gehören, z. B. der Bereich „Warenkorb“ mit der Bezeichnung /cart/* (Warenkorb).
+- **Erneutes Generieren von pfadbasierten Headern:** Diese Art des erneuten Generierens ermöglicht es, Header nur für die Anforderungen und Antworten neu zu generieren, die nur zu einem bestimmten Websitebereich gehören, z. B. der Bereich „Warenkorb“ mit der Bezeichnung /cart/\* (Warenkorb).
 
 Diese Änderungen bedeuten für Sie:
 
@@ -48,7 +50,7 @@ Den Wert eines Headers können Sie neu generieren als:
   *Beispiel:* 
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
+  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
   ```
 
 - Wert eines anderen Headers. 
@@ -56,7 +58,7 @@ Den Wert eines Headers können Sie neu generieren als:
   *Beispiel 1:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
+  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
   ```
 
   > [!Note] 
@@ -65,7 +67,7 @@ Den Wert eines Headers können Sie neu generieren als:
   *Beispiel 2:*
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
+  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
   ```
 
   > [!Note] 
@@ -76,7 +78,7 @@ Den Wert eines Headers können Sie neu generieren als:
   *Beispiel:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
+  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
   ```
 
   > [!Note] 

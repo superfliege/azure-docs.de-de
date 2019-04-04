@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110278"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Bewährte Methoden für Kostenermittlung und Größenanpassung von Workloads, die zu Azure migriert werden
 
@@ -40,19 +40,20 @@ Um eine Prognose für Ihre monatliche Rechnung für migrierte Workloads aufzuste
 
 - **Azure-Preisrechner**: Sie wählen die Produkte aus, die Sie schätzen möchten, z. B. virtuelle Computer und Speicher. Sie geben Kosten in den Preisrechner ein, um eine Schätzung zu erstellen.
 
- ![Azure-Preisrechner](./media/migrate-best-practices-costs/pricing.png) *Azure-Preisrechner*
+  ![Azure-Preisrechner](./media/migrate-best-practices-costs/pricing.png) *Azure-Preisrechner*
 
 - **Azure Migrate**: Um Kosten zu schätzen, müssen Sie alle Ressourcen überprüfen und berücksichtigen, die für die Ausführung Ihrer Workloads in Azure erforderlich sind. Um diese Daten zu sammeln, erstellen Sie ein Inventar Ihrer Ressourcen, einschließlich Servern, virtueller Computer, Datenbanken und Speicher. Sie können Azure Migrate verwenden, um diese Informationen zu sammeln.
 
- - Azure Migrate ermittelt und bewertet Ihre lokale Umgebung, um ein Inventar aufzustellen.
- - Azure Migrate kann Abhängigkeiten zwischen VMs zuordnen und Ihnen aufzeigen, damit Sie ein vollständiges Bild erhalten.
- - Eine Azure Migrate-Bewertung enthält geschätzte Kosten.
+  - Azure Migrate ermittelt und bewertet Ihre lokale Umgebung, um ein Inventar aufzustellen.
+  - Azure Migrate kann Abhängigkeiten zwischen VMs zuordnen und Ihnen aufzeigen, damit Sie ein vollständiges Bild erhalten.
+  - Eine Azure Migrate-Bewertung enthält geschätzte Kosten.
     - Compute-Kosten: Wenn Sie eine Bewertung erstellen, berechnet Azure Migrate anhand der empfohlenen Azure-VM-Größe mithilfe der Abrechnungs-API die geschätzten monatlichen Kosten für den virtuellen Computer. Bei der Schätzung werden Betriebssystem, Software Assurance, reservierte Instanzen, VM-Betriebszeit, Standort und Währungseinstellungen berücksichtigt. Die Kosten aller virtuellen Computer werden in der Bewertung zusammengefasst, um so die monatlichen Compute-Gesamtkosten zu berechnen.
     - Speicherkosten: Azure Migrate berechnet die monatlichen Speichergesamtkosten durch Aggregieren der Speicherkosten aller virtuellen Computer in einer Bewertung. Sie können die monatlichen Speicherkosten für einen bestimmten Computer berechnen, indem Sie die monatlichen Kosten aller an den Computer angefügten Datenträger zusammenfassen. 
 
-    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png) *Azure Migrate-Bewertung*
+    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png)
+    *Azure Migrate-Bewertung*
 
-**Weitere Informationen:**
+**Weitere Informationen**:
 - [Verwenden](https://azure.microsoft.com/pricing/calculator/) des Azure-Preisrechners.
 - [Verschaffen eines Überblicks](https://docs.microsoft.com/azure/migrate/migrate-overview) über Azure Migrate.
 - [Lesen von Informationen zu](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation) Azure Migrate-Bewertungen.
@@ -92,13 +93,13 @@ Das Optimieren und Verwalten von lokalem Speicher (SAN oder NAS) sowie der Netzw
 
 Azure bietet verschiedene Arten von Speicherdaten.
 
-**Datentyp** | **Details** | **Verwendung** 
---- | --- |  ---
-**Blobs** | Optimiert für die Speicherung großer Mengen unstrukturierter Objekte wie etwa Text- oder Binärdaten.<br/><br/> | Zugriff auf Daten von überall her über HTTP/HTTPS. | Verwendung für Szenarios mit Streaming und wahlfreiem Zugriff. Beispielsweise um einem Browser Bilder und Dokumente direkt bereitzustellen, Video und Audio zu streamen und Sicherungs- und Notfallwiederherstellungsdaten zu speichern.
-**Dateien** | Verwaltete Dateifreigaben, auf die über SMB 3.0 zugegriffen wird. | Verwendung beim Migrieren lokaler Dateifreigaben sowie zur Bereitstellung von mehrfachem Zugriff bzw. mehreren Verbindungen, um Daten abzulegen.
-**Datenträger** | Basierend auf Seitenblobs.<br/><br/> Datenträgertyp (Geschwindigkeit): Standard (HDD oder SSD) oder Premium (SSD)<br/><br/>Datenträgerverwaltung: Nicht verwaltet (Sie verwalten Datenträgereinstellungen und Speicher) oder verwaltet (Sie wählen den Datenträgertyp aus, und Azure verwaltet diesen Datenträger für Sie). | Verwendung von Premium-Datenträgern für VMs. Verwendung von verwalteten Datenträgern für einfache Verwaltung und Skalierung.
-**Warteschlangen** | Speichern und Abrufen große Mengen von Nachrichten mittels Zugriff über authentifizierte Aufrufe (HTTP oder HTTPS). | Verbinden von App-Komponenten mit asynchronem Message Queuing.
-**Tabellen** | Speichern von Tabellen. | Jetzt Teil der Azure Cosmos DB-Tabellen-API.
+| **Datentyp** | **Details** | **Verwendung** |
+|--- | --- |  --- |
+|**Blobs** | Optimiert für die Speicherung großer Mengen unstrukturierter Objekte wie etwa Text- oder Binärdaten.<br/>Zugriff auf Daten von überall her über HTTP/HTTPS. | Verwendung für Szenarios mit Streaming und wahlfreiem Zugriff. Beispielsweise um einem Browser Bilder und Dokumente direkt bereitzustellen, Video und Audio zu streamen und Sicherungs- und Notfallwiederherstellungsdaten zu speichern.|
+|**Dateien** | Verwaltete Dateifreigaben, auf die über SMB 3.0 zugegriffen wird. | Verwendung beim Migrieren lokaler Dateifreigaben sowie zur Bereitstellung von mehrfachem Zugriff bzw. mehreren Verbindungen, um Daten abzulegen.|
+|**Datenträger** | Basierend auf Seitenblobs.<br/><br/> Datenträgertyp (Geschwindigkeit): Standard (HDD oder SSD) oder Premium (SSD)<br/><br/>Datenträgerverwaltung: Nicht verwaltet (Sie verwalten Datenträgereinstellungen und Speicher) oder verwaltet (Sie wählen den Datenträgertyp aus, und Azure verwaltet diesen Datenträger für Sie). | Verwendung von Premium-Datenträgern für VMs. Verwendung von verwalteten Datenträgern für einfache Verwaltung und Skalierung.|
+|**Warteschlangen** | Speichern und Abrufen große Mengen von Nachrichten mittels Zugriff über authentifizierte Aufrufe (HTTP oder HTTPS). | Verbinden von App-Komponenten mit asynchronem Message Queuing.|
+|**Tabellen** | Speichern von Tabellen. | Jetzt Teil der Azure Cosmos DB-Tabellen-API.|
 
 
 
@@ -211,19 +212,21 @@ Mit Cost Management können Sie:
 
 
 - **Budget erstellen**: Erstellen Sie ein Budget zur Wahrnehmung Ihrer finanziellen Verantwortung.
-    - Sie können dabei Dienste berücksichtigen, die Sie für einen bestimmten Zeitraum verwenden oder abonnieren (monatlich, vierteljährlich, jährlich), sowie einen Bereich (Abonnements/Ressourcengruppen). Beispielsweise können Sie ein Azure-Abonnementbudget für den Zeitraum eines Monats, Quartals oder Jahres erstellen.
-    - Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Betrachtung Ihres Budgets in Bezug auf Ihre aktuellen Ausgaben ist einer der ersten Schritte, die zur Analyse Ihrer Kosten und Ausgaben erforderlich sind.
-    - Sie können E-Mail-Benachrichtigungen versenden lassen, wenn Budgetschwellenwerte erreicht werden.
-    - Sie können Kostenverwaltungsdaten zur Analyse nach Azure Storage exportieren.
+  - Sie können dabei Dienste berücksichtigen, die Sie für einen bestimmten Zeitraum verwenden oder abonnieren (monatlich, vierteljährlich, jährlich), sowie einen Bereich (Abonnements/Ressourcengruppen). Beispielsweise können Sie ein Azure-Abonnementbudget für den Zeitraum eines Monats, Quartals oder Jahres erstellen.
+  - Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Betrachtung Ihres Budgets in Bezug auf Ihre aktuellen Ausgaben ist einer der ersten Schritte, die zur Analyse Ihrer Kosten und Ausgaben erforderlich sind.
+  - Sie können E-Mail-Benachrichtigungen versenden lassen, wenn Budgetschwellenwerte erreicht werden.
+  - Sie können Kostenverwaltungsdaten zur Analyse nach Azure Storage exportieren.
 
-    ![Cost Management-Budget](./media/migrate-best-practices-costs/budget.png) *Azure Cost Management-Budget*
+    ![Cost Management-Budget](./media/migrate-best-practices-costs/budget.png)
+    *Azure Cost Management-Budget*
 
 - **Kostenanalyse durchführen**: Stellen Sie eine Kostenanalyse auf, um Ihre Organisationskosten zu untersuchen und zu analysieren, damit Sie besser verstehen, wie Kosten anfallen, und Ausgabentrends erkennen können.
-    - Die Kostenanalyse steht EA-Benutzern zur Verfügung.
-    - Sie können Kostenanalysedaten für eine Reihe von Bereichen, einschließlich nach Abteilung, Konto, Abonnement oder Ressourcengruppe, anzeigen.
-    - Sie können eine Kostenanalyse abrufen, die Gesamtkosten für den aktuellen Monat und die akkumulierten täglichen Kosten anzeigt. 
+  - Die Kostenanalyse steht EA-Benutzern zur Verfügung.
+  - Sie können Kostenanalysedaten für eine Reihe von Bereichen, einschließlich nach Abteilung, Konto, Abonnement oder Ressourcengruppe, anzeigen.
+  - Sie können eine Kostenanalyse abrufen, die Gesamtkosten für den aktuellen Monat und die akkumulierten täglichen Kosten anzeigt. 
 
-    ![Cost Management-Analyse](./media/migrate-best-practices-costs/analysis.png) *Azure Cost Management-Analyse*
+    ![Cost Management-Analyse](./media/migrate-best-practices-costs/analysis.png)
+    *Azure Cost Management-Analyse*
 - **Empfehlungen abrufen**: Erhalten Sie Advisor-Empfehlungen, die Ihnen zeigen, wie Sie die Effizienz optimieren und verbessern können.
 
 

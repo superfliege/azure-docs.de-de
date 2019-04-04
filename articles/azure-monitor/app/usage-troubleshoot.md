@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7c903390af54d1771bce1b6aff96e9bb54397189
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045309"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258774"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problembehandlung in Analysetools für Benutzerverhalten in Application Insights
 Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insights](usage-overview.md): [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](usage-flows.md), [Vermerkdauer](usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.
@@ -39,7 +39,7 @@ Die Analysetools für Benutzerverhalten unterstützen das Zählen von Benutzern 
 ## <a name="naming-events"></a>Benennen von Ereignissen
 **Meine App weist Tausende verschiedener Namen für Seitenansichten und benutzerdefinierte Ereignisse auf. Sie sind nur schwer zu unterscheiden, und die Analysetools für Benutzerverhalten zeigen häufig keine Reaktion. Wie kann ich diese Benennungsprobleme beheben?**
 
-Namen für Seitenansichten und benutzerdefinierte Ereignisse werden überall in den Analysetools für Benutzerverhalten verwendet. Die gute Benennung von Ereignissen ist entscheidend dafür, Werte aus diesen Tools abzurufen. Das Ziel ist ein Gleichgewicht zwischen zu wenigen, übermäßig allgemeinen Namen („Klick auf Schaltfläche“) und zu vielen, übermäßig speziellen Namen („Klick auf Schaltfläche ‚Bearbeiten‘ auf http://www.contoso.com/index“).
+Namen für Seitenansichten und benutzerdefinierte Ereignisse werden überall in den Analysetools für Benutzerverhalten verwendet. Die gute Benennung von Ereignissen ist entscheidend dafür, Werte aus diesen Tools abzurufen. Das Ziel ist ein Gleichgewicht zwischen zu wenigen, übermäßig allgemeinen Namen („Klick auf Schaltfläche“) und zu vielen, übermäßig spezifischen Namen („Klick auf Schaltfläche ‚Bearbeiten‘ auf http:\//www.contoso.com/index“).
 
 Um Änderungen an den Namen von Seitenansichten und benutzerdefinierten Ereignissen vorzunehmen, die von Ihrer App gesendet werden, müssen Sie den Quellcode Ihrer App ändern und sie erneut bereitstellen. **Alle Telemetriedaten in Application Insights werden 90 Tage lang gespeichert und können nicht gelöscht werden**, sodass Änderungen, die Sie an Ereignisnamen vornehmen, erst nach 90 Tagen vollständig umgesetzt sind. Für die 90 Tage nach dem Vornehmen einer Änderung treten in Ihrer Telemetrie sowohl die alten als auch die neuen Namen auf, also passen Sie die Abfragen entsprechend an und kommunizieren Sie dies in Ihren Teams.
 

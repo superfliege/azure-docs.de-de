@@ -18,12 +18,12 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3521ea7599aecd20784bd925492649b86921c567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57b7f540ccf80c6d25a7dfcfcad1ba7ca6698167
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113230"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs 
 
@@ -292,13 +292,13 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 5. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
 
-    - **Markieren des Geräts als kompatibel erforderlich**
+   - **Markieren des Geräts als kompatibel erforderlich**
 
-    - **Genehmigte Client-App erforderlich (Vorschau)**
+   - **Genehmigte Client-App erforderlich (Vorschau)**
 
-    - **Eine der ausgewählten Steuerungen anfordern**   
+   - **Eine der ausgewählten Steuerungen anfordern**   
  
-    ![Bedingter Zugriff](./media/app-based-conditional-access/11.png)
+     ![Bedingter Zugriff](./media/app-based-conditional-access/11.png)
 
 
 
@@ -388,13 +388,13 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 5. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
 
-    - **Markieren des Geräts als kompatibel erforderlich**
+   - **Markieren des Geräts als kompatibel erforderlich**
 
-    - **Genehmigte Client-App erforderlich (Vorschau)**
+   - **Genehmigte Client-App erforderlich (Vorschau)**
 
-    - **Alle ausgewählten Kontrollen anfordern**   
+   - **Alle ausgewählten Kontrollen anfordern**   
  
-    ![Bedingter Zugriff](./media/app-based-conditional-access/13.png)
+     ![Bedingter Zugriff](./media/app-based-conditional-access/13.png)
 
 
 
@@ -420,13 +420,13 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 5. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
 
-    - **Markieren des Geräts als kompatibel erforderlich**
+   - **Markieren des Geräts als kompatibel erforderlich**
 
-    - **Genehmigte Client-App erforderlich (Vorschau)**
+   - **Genehmigte Client-App erforderlich (Vorschau)**
 
-    - **Alle ausgewählten Kontrollen anfordern**   
+   - **Alle ausgewählten Kontrollen anfordern**   
  
-    ![Bedingter Zugriff](./media/app-based-conditional-access/64.png)
+     ![Bedingter Zugriff](./media/app-based-conditional-access/64.png)
 
 
 

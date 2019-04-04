@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
-ms.date: 09/24/2018
+ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6deeabfe57f946a9c31548791c00ee70ecd9f2d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 97464115b87ca5facdc055e0031bc5fc4e962a22
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251247"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295656"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX und Azure Machine Learning: Erstellen und Bereitstellen von interoperablen KI-Modellen
 
@@ -36,7 +36,7 @@ Darüber hinaus gibt es ein ganzes Ökosystem von Tools zur Visualisierung und B
 
 Mit Azure Machine Learning und ONNX Runtime können [ONNX-Modelle in der Cloud bereitgestellt werden](#deploy). Zudem ist die Bereitstellung auf Windows 10-Geräten mit [Windows ML](https://docs.microsoft.com/windows/ai/) möglich. Sie können sogar auf anderen Plattformen mithilfe von Konvertern bereitgestellt werden, die über die ONNX-Community verfügbar sind. 
 
-[ ![ONNX-Flussdiagramm mit Training, Konvertern und Bereitstellung](media/concept-onnx/onnx.png) ] (./media/concept-onnx/onnx.png#lightbox)
+[![ONNX-Flussdiagramm mit Training, Konvertern und Bereitstellung](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Abrufen von ONNX-Modellen
 
@@ -69,7 +69,7 @@ Mit dem Azure Machine Learning-Dienst können Sie Ihre ONNX-Modelle bereitstelle
 
 ### <a name="install-and-configure-onnx-runtime"></a>Installieren und Konfigurieren von ONNX Runtime
 
-ONNX Runtime ist eine leistungsstarke OPen-Source-Rückschluss-Engine für ONNX-Modelle. Sie bietet Hardwarebeschleunigung für CPU und GPU, wobei APIs für Python, C# und C verfügbar sind. ONNX Runtime unterstützt ONNX 1.2-Modelle oder höher und kann unter Linux, Windows und Mac ausgeführt werden. Python-Pakete sind auf [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)) verfügbar, und ein [C#-Paket](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) ist auf [Nuget.org](https://www.nuget.org) verfügbar. Weitere Informationen zum Projekt finden Sie auf [GitHub](https://github.com/Microsoft/onnxruntime). 
+ONNX Runtime ist eine leistungsstarke OPen-Source-Rückschluss-Engine für ONNX-Modelle. Sie bietet Hardwarebeschleunigung für CPU und GPU, wobei APIs für Python, C# und C verfügbar sind. ONNX Runtime unterstützt ONNX 1.2-Modelle oder höher und kann unter Linux, Windows und Mac ausgeführt werden. Python-Pakete sind auf [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)) verfügbar, und ein [C#-Paket](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) ist auf [Nuget.org](https://www.nuget.org) verfügbar. Weitere Informationen zum Projekt finden Sie auf [GitHub](https://github.com/Microsoft/onnxruntime). Lesen Sie vor der Installation die [Systemanforderungen](https://github.com/Microsoft/onnxruntime#system-requirements).
 
 Zum Installieren von ONNX Runtime für Python verwenden Sie Folgendes:
 ```python
@@ -127,7 +127,7 @@ Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
 
    ```python
    from azureml.core.image import ContainerImage
-   
+
    image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                      runtime = "python",
                                                      conda_file = "myenv.yml",
@@ -154,21 +154,29 @@ Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
    from azureml.core.model import Model
 
    def init():
-       global model_path
-       model_path = Model.get_model_path(model_name = 'MyONNXmodel')
+       global session
+       model = Model.get_model_path(model_name = 'MyONNXModel')
+       session = onnxruntime.InferenceSession(model)
 
-   def run(raw_data):
+   def preprocess(input_data_json):
+       # convert the JSON data into the tensor input
+       return np.array(json.loads(input_data_json)['data']).astype('float32')
+
+   def postprocess(result):
+       return np.array(result).tolist()
+
+   def run(input_data_json):
        try:
-           data = json.loads(raw_data)['data']
-           data = np.array(data)
-        
-           sess = onnxruntime.InferenceSession(model_path)
-           result = sess.run(["outY"], {"inX": data})
-        
-           return json.dumps({"result": result.tolist()})
+           start = time.time()   # start timer
+           input_data = preprocess(input_data_json)
+           input_name = session.get_inputs()[0].name  # get the id of the first input of the model   
+           result = session.run([], {input_name: input_data})
+           end = time.time()     # stop timer
+           return {"result": postprocess(result),
+                   "time": end - start}
        except Exception as e:
            result = str(e)
-           return json.dumps({"error": result})
+           return {"error": result}
    ```
 
    Die Datei `myenv.yml` beschreibt die für das Image benötigten Abhängigkeiten. In diesem [Tutorial](tutorial-deploy-models-with-aml.md#create-environment-file) finden Sie Anweisungen zum Erstellen einer Umgebungsdatei, ähnlich dieser Beispieldatei:
@@ -176,10 +184,7 @@ Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
    ```python
    from azureml.core.conda_dependencies import CondaDependencies 
 
-   myenv = CondaDependencies()
-   myenv.add_pip_package("numpy")
-   myenv.add_pip_package("azureml-core")
-   myenv.add_pip_package("onnxruntime")
+   myenv = CondaDependencies.create(pip_packages=["numpy","onnxruntime","azureml-core"])
 
    with open("myenv.yml","w") as f:
     f.write(myenv.serialize_to_string())
@@ -189,9 +194,9 @@ Hier sehen Sie ein Beispiel für die Bereitstellung eines ONNX-Modells:
 
 
 ## <a name="examples"></a>Beispiele
- 
+
 Beispiele für Notebooks, die ONNX-Modelle erstellen und bereitstellen, finden Sie unter [how-to-use azureml/deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx).
- 
+
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>Weitere Informationen

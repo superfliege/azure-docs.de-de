@@ -2,34 +2,36 @@
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: aa701ada917811382351fee9469a5cfa9a7599b8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279647"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261426"
 ---
-Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Datenträger. In diesem Artikel werden die Skalierbarkeits- und Leistungsziele für die Datenträger eines virtuellen Computers beschrieben. Wählen Sie anhand dieser Ziele die Anzahl und die Art der Datenträger, die Sie benötigen, um Leistungs- und Kapazitätsanforderungen zu erfüllen. 
+Sie können eine Reihe von Datenträgern an einen virtuellen Azure-Computer anfügen. Basierend auf den Skalierbarkeits- und Leistungszielen für Datenträger eines virtuellen Computers können Sie die Anzahl und den Typ der Datenträger festlegen, die Sie benötigen, um Ihre Anforderungen an Leistung und Kapazität zu erfüllen.
 
 > [!IMPORTANT]
 > Begrenzen Sie zur Optimierung der Leistung die Anzahl stark ausgelasteter Datenträger, die an den virtuellen Computer angefügt sind, um eine mögliche Drosselung zu vermeiden. Wenn nicht alle angefügten Datenträger zum gleichen Zeitpunkt stark ausgelastet sind, kann der virtuelle Computer eine größere Anzahl von Datenträgern unterstützen.
 
-* **Für Azure Managed Disks:** 
+**Verwaltete Azure-Datenträger:**
 
-> | Ressource | Standardlimit | Maximales Limit |
+In der folgenden Tabelle sind die standardmäßigen und maximal zulässigen Limits für die Anzahl der Ressourcen pro Region und pro Abonnement aufgeführt.
+
+> | Ressource | Standardlimit  | Maximales Limit |
 > | --- | --- | --- |
-> | Verwaltete Standard-Datenträger | 10.000 | 50.000 |
-> | Verwaltete SSD-Standard-Datenträger | 10.000 | 50.000 |
-> | Verwaltete Premium-Datenträger | 10.000 | 50.000 |
-> | Standard_LRS-Momentaufnahmen | 10.000 | 50.000 |
-> | Standard_ZRS-Momentaufnahmen | 10.000 | 50.000 |
-> | Verwaltetes Image | 10.000 | 50.000 |
+> | Verwaltete Standarddatenträger | 25.000 | 50.000 |
+> | Verwaltete SSD Standard-Datenträger | 25.000 | 50.000 |
+> | Verwaltete Premium-Datenträger | 25.000 | 50.000 |
+> | Standard_LRS-Momentaufnahmen | 25.000 | 50.000 |
+> | Standard_ZRS-Momentaufnahmen | 25.000 | 50.000 |
+> | Verwaltetes Image | 25.000 | 50.000 |
 
-* **Für Standardspeicherkonten:** Ein Standardspeicherkonto hat eine maximale Gesamtanforderungsrate von 20.000 IOPS. Die gesamten IOPS auf allen Datenträgern eines virtuellen Computers in einem Standardspeicherkonto dürfen dieses Limit nicht überschreiten.
+* **Standardspeicherkonten:** Ein Standardspeicherkonto hat eine maximale Gesamtanforderungsrate von 20.000 IOPS. Die gesamten IOPS auf allen Datenträgern eines virtuellen Computers in einem Standardspeicherkonto dürfen dieses Limit nicht überschreiten.
   
-    Basierend auf dem Limit für Anforderungsraten können Sie die Anzahl der Datenträger mit hoher Auslastung ungefähr berechnen, die von einem Speicherkonto unterstützt werden. Im Basic-Tarif liegt die maximal zulässige Anzahl von Datenträgern mit hoher Auslastung für einen virtuellen Computer beispielsweise bei 66 (20.000 : 300 IOPS pro Datenträger) und im Standard-Tarif bei ungefähr 40 (20.000 : 500 IOPS pro Datenträger). 
+    Basierend auf dem Limit für Anforderungsraten können Sie die Anzahl der Datenträger mit hoher Auslastung ungefähr berechnen, die von einem Standardspeicherkonto unterstützt werden. Im Basic-Tarif liegt die maximal zulässige Anzahl von Datenträgern mit hoher Auslastung für einen virtuellen Computer beispielsweise bei 66 (20.000/300 IOPS pro Datenträger). Die maximale Anzahl von Datenträgern mit hoher Auslastung für einen virtuellen Computer im Standard-Tarif liegt bei etwa 40 Datenträgern (20.000/500 IOPS pro Datenträger). 
 
-* **Für Storage Premium-Konten:** Ein Storage Premium-Konto hat eine maximale Gesamtdurchsatzrate von 50 Gbit/s. Der Gesamtdurchsatz aller Ihrer VM-Datenträger darf dieses Limit nicht überschreiten.
+* **Storage Premium-Konten:** Ein Storage Premium-Konto hat eine maximale Gesamtdurchsatzrate von 50 GBit/s. Der Gesamtdurchsatz aller Ihrer VM-Datenträger darf dieses Limit nicht überschreiten.
 

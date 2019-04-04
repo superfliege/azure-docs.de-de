@@ -11,18 +11,19 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111309"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793380"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B-Zusammenarbeit: API und Anpassung
 
 Viele Kunden haben uns berichtet, dass sie den Einladungsprozess auf die Anforderungen ihres Unternehmens anpassen möchten. Mit unserer API können Sie genau das tun. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>Funktionen der Einladungs-API
+
 Die API bietet die folgenden Funktionen:
 
 1. Laden Sie einen externen Benutzer mit einer *beliebigen* E-Mail-Adresse ein.
@@ -68,21 +69,25 @@ Die API bietet die folgenden Funktionen:
 
 
 ## <a name="authorization-model"></a>Autorisierungsmodell
+
 Die API kann in folgenden Autorisierungsmodi ausgeführt werden:
 
 ### <a name="app--user-mode"></a>Modus „App und Benutzer“
+
 In diesem Modus benötigt der jeweilige Benutzer der API die Berechtigungen, B2B-Einladungen zu erstellen.
 
 ### <a name="app-only-mode"></a>Reiner App-Modus
+
 Im reinen App-Modus benötigt die App den Berechtigungsbereich „User.Invite.All“, damit die Einladung erfolgreich ist.
 
 Weitere Informationen finden Sie unter https://developer.microsoft.com/graph/docs/authorization/permission_scopes.
 
 
 ## <a name="powershell"></a>PowerShell
+
 Sie können PowerShell verwenden, um externe Benutzer ganz einfach in eine Organisation einzuladen und dieser hinzuzufügen. Erstellen Sie eine Einladung mit dem Cmdlet:
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -102,7 +107,8 @@ Nachdem Sie einem externen Benutzer eine Einladung gesendet haben, können Sie m
 
 Sie können dann mithilfe der Option **Filter** die Ergebnisse nach **UserState** filtern. Das folgende Beispiel zeigt, wie Sie Ergebnisse so filtern, dass nur Benutzer mit einer ausstehenden Einladung angezeigt werden. Das Beispiel zeigt außerdem die Option **Format-List**, mit der Sie die anzuzeigenden Eigenschaften angeben können. 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -119,4 +125,3 @@ Sehen Sie sich die Einladungs-API-Referenz in [https://developer.microsoft.com/g
 - [Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit](invitation-email-elements.md)
 - [B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md)
 - [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](add-user-without-invite.md)
-

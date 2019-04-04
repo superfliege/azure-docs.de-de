@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: bb7c46548726b00c68c8e952a8e2956ad0511763
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: cf392bb254e38b2e07a92e87927b12e144b26f16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201771"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447469"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -239,7 +239,7 @@ In der Auftragsdiagramm können Sie **Details zur Taskausführung** auswählen, 
 ### <a name="view-hive-jobs"></a>Anzeigen von Hive-Aufträgen
 Sie können Auftragsabfragen, die Auftragsausgabe, Auftragsprotokolle und YARN-Protokolle für Hive-Aufträge anzeigen.
 
-In der neuesten Version der Tools können Sie den Inhalt Ihrer Hive-Aufträge anzeigen, indem Sie YARN-Protokolle erfassen und anzeigen. Ein YARN-Protokoll kann Ihnen bei der Untersuchung von Leistungsproblemen helfen. Weitere Informationen zur Erfassung von YARN-Protokollen durch HDInsight finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle unter Windows-basiertem HDInsight](../hdinsight-hadoop-access-yarn-app-logs.md).
+In der neuesten Version der Tools können Sie den Inhalt Ihrer Hive-Aufträge anzeigen, indem Sie YARN-Protokolle erfassen und anzeigen. Ein YARN-Protokoll kann Ihnen bei der Untersuchung von Leistungsproblemen helfen. Weitere Informationen zur Erfassung von YARN-Protokollen durch HDInsight finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle unter Windows-basiertem HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 So zeigen Sie Hive-Aufträge an:
 

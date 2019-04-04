@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993408"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -93,7 +93,7 @@ Ja.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Welche Betriebssysteme werden für die Sicherung unterstützt?
 Azure Backup unterstützt diese Betriebssysteme für die Sicherung von Dateien und Ordnern sowie von Apps, die mithilfe von Azure Backup Server und DPM geschützt werden.
 
-**Betriebssystem**| **SKU** |**Details**
+**Betriebssystem** | **SKU** | **Details**
 --- | --- | ---
 Arbeitsstation | |
 Windows 10, 64 Bit | Enterprise, Pro, Home | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
@@ -101,6 +101,7 @@ Windows 8.1, 64 Bit | Enterprise, Pro | Auf Computern müssen die neuesten Servi
 Windows 8, 64 Bit | Enterprise, Pro | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
 Windows 7, 64 Bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
 Server | |
+Windows Server 2019, 64 Bit | Standard, Datacenter, Essentials | Mit den neuesten Service Packs/Updates.
 Windows Server 2016, 64 Bit | Standard, Datacenter, Essentials | Mit den neuesten Service Packs/Updates.
 Windows Server 2012 R2, 64 Bit | Standard, Datacenter, Foundation | Mit den neuesten Service Packs/Updates.
 Windows Server 2012, 64 Bit | Datacenter, Foundation, Standard | Mit den neuesten Service Packs/Updates.
@@ -117,7 +118,7 @@ Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Bac
 Die folgenden Größengrenzwerte gelten:
 
 Betriebssystem/Computer | Größengrenzwert der Datenquelle
---- | --- | ---
+--- | --- 
 Windows 8 oder höher | 54.400 GB
 Windows 7 |1.700 GB
 Windows Server 2012 oder höher | 54.400 GB

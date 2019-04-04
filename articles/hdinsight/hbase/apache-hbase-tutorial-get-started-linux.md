@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7f162412a099078302bb348dab9ad3171f9e2913
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199493"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Erste Schritte mit einem Apache HBase-Beispiel in HDInsight
 
@@ -111,7 +111,7 @@ In HBase (eine Implementierung von [Cloud BigTable](https://cloud.google.com/big
 
 HBase bietet mehrere Methoden zum Laden von Daten in Tabellen.  Weitere Informationen finden Sie unter [Laden von Massendaten](https://hbase.apache.org/book.html#arch.bulk.load).
 
-Eine Datei mit Beispieldaten finden Sie in einem öffentlichen Blobcontainer: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Diese Datendatei hat folgenden Inhalt:
+Eine Datei mit Beispieldaten finden Sie in einem öffentlichen Blobcontainer: *wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt*.  Diese Datendatei hat folgenden Inhalt:
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -175,14 +175,14 @@ Sie können Daten in HBase-Tabellen mithilfe von [Apache Hive](https://hive.apac
 
 Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
-2. Verwenden Sie den folgenden Befehl, um die vorhandenen HBase-Tabellen aufzulisten:
+1. Verwenden Sie den folgenden Befehl, um die vorhandenen HBase-Tabellen aufzulisten:
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. Verwenden Sie den folgenden Befehl, um eine neue HBase-Tabelle mit zwei Spaltenfamilien zu erstellen:
+1. Verwenden Sie den folgenden Befehl, um eine neue HBase-Tabelle mit zwei Spaltenfamilien zu erstellen:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -194,7 +194,7 @@ Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wik
     ```
 
     Das Schema wird im JSON-Format bereitgestellt.
-4. Fügen Sie mit dem folgenden Befehl Daten ein:
+1. Fügen Sie mit dem folgenden Befehl Daten ein:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -212,7 +212,7 @@ Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wik
    * Sm9obiBEb2xl: John Dole
      
      Mit [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) können Sie mehrere Werte (Batchwerte) einfügen.
-5. Rufen Sie mit dem folgenden Befehl eine Zeile ab:
+1. Rufen Sie mit dem folgenden Befehl eine Zeile ab:
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -247,15 +247,15 @@ HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über di
 2. Klicken Sie im linken Menü auf **HBase**.
 3. Klicken Sie am oberen Rand der Seite auf **Quicklinks**, zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche**.  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
 
-  ![Benutzeroberfläche HDInsight HBase HMaster](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![Benutzeroberfläche HDInsight HBase HMaster](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  Die HBase Master-Benutzeroberfläche enthält folgende Abschnitte:
+   Die HBase Master-Benutzeroberfläche enthält folgende Abschnitte:
 
-  - Regionsserver
-  - Backup Master
-  - tables
-  - Tasks
-  - Softwareattribute
+   - Regionsserver
+   - Backup Master
+   - tables
+   - Tasks
+   - Softwareattribute
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
@@ -272,8 +272,6 @@ In diesem Artikel haben Sie erfahren, wie Sie einen Apache HBase-Cluster erstell
 Weitere Informationen finden Sie unter:
 
 * [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Apache Hadoop bereitstellt][hdinsight-hbase-overview]: Apache HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Apache Hadoop basiert und wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
-
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: https://hbase.apache.org/book.html#importtsv

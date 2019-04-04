@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861994"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918517"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatisierungsszenarien zur Abrechnungs- und Kostenverwaltung
 
@@ -80,9 +80,9 @@ Web Direct- und Enterprise-Kunden können alle folgenden APIs verwenden, sofern 
 
 -   [Nutzungsdetails-API](https://docs.microsoft.com/rest/api/consumption/usagedetails): Rufen Sie Kosten- und Nutzungsdaten für alle Azure-Ressourcen von Microsoft ab. Die Informationen liegen in Form von Nutzungsdetail-Datensätzen vor, die zurzeit einmal pro Verbrauchszähler und Tag ausgegeben werden. Mit diesen Informationen können Sie die Kosten für alle Ressourcen addieren oder die Kosten/Nutzung für bestimmte Ressourcen untersuchen.
 
--   [RateCard-API](https://msdn.microsoft.com/library/azure/mt219005.aspx): Rufen Sie Gebühren für Verbrauchseinheiten ab, wenn Sie Web Direct-Kunde sind. Sie können dann die zurückgegebenen Informationen mit ihren Ressourcenverbrauchsinformationen verwenden, um die zu erwartende Rechnung manuell zu berechnen. 
+-   [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)): Rufen Sie Gebühren für Verbrauchseinheiten ab, wenn Sie Web Direct-Kunde sind. Sie können dann die zurückgegebenen Informationen mit ihren Ressourcenverbrauchsinformationen verwenden, um die zu erwartende Rechnung manuell zu berechnen. 
 
--   [API für nicht bewertete Nutzung](https://msdn.microsoft.com/library/azure/mt219003.aspx): Rufen Sie Rohnutzungsdaten ab, bevor Azure Messungen/Gebührenberechnungen durchführt.
+-   [API für nicht bewertete Nutzung](/previous-versions/azure/reference/mt219003(v=azure.100)): Rufen Sie Rohnutzungsdaten ab, bevor Azure Messungen/Gebührenberechnungen durchführt.
 
 ### <a name="billing"></a>Abrechnung
 -   [API für Abrechnungszeiträume](https://docs.microsoft.com/rest/api/billing/billingperiods): Bestimmen Sie einen zu analysierenden Abrechnungszeitraum zusammen mit den Rechnungs-IDs für diesen Zeitraum. Sie können die Rechnung-IDs mit der Rechnungen-API verwenden.
@@ -121,7 +121,7 @@ Diese APIs stellen im Grundsatz verschiedene Daten bereit:
    - Änderungen am Konto für die Verwendung der im Voraus bezahlten finanziellen Verpflichtungen
    - Änderungen am Konto für die Verwendung der von Azure ermittelten Abweichungen
 
-- Die [Nutzungs-API](https://msdn.microsoft.com/library/Mt219003.aspx) bietet Informationen zu Azure-Nutzungsrohdaten, bevor diese das Kostenerfassungssystem in Azure durchlaufen. Diese Daten weisen möglicherweise keine Korrelation mit dem Nutzungsumfang oder dem Gebührenbetrag auf, der nach dem Kostenerfassungssystem von Azure zu sehen ist.
+- Die [Nutzungs-API](/previous-versions/azure/reference/mt219003(v=azure.100)) bietet Informationen zu Azure-Nutzungsrohdaten, bevor diese das Kostenerfassungssystem in Azure durchlaufen. Diese Daten weisen möglicherweise keine Korrelation mit dem Nutzungsumfang oder dem Gebührenbetrag auf, der nach dem Kostenerfassungssystem von Azure zu sehen ist.
 
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Worin besteht der Unterschied zwischen der Rechnungs-API und der Nutzungsdetails-API?
 Diese APIs bieten unterschiedliche Ansichten derselben Daten:
@@ -135,7 +135,7 @@ Diese APIs stellen ähnliche Datasets bereit, sind jedoch auf unterschiedliche Z
 
 - Die [Preisblatt-API](https://docs.microsoft.com/rest/api/consumption/pricesheet) stellt die benutzerdefinierten Preise bereit, die für einen Enterprise-Kunden ausgehandelt wurden.
 
-- Die [RateCard-API](https://msdn.microsoft.com/library/mt219005.aspx) stellt die öffentlichen Preise für Web Direct-Kunden bereit.
+- Die [RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) stellt die öffentlichen Preise für Web Direct-Kunden bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

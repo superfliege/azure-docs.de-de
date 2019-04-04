@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300874"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136511"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Erstellen einer Abfrage in Azure Search
 
@@ -38,15 +38,15 @@ In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitte
 Beispiele sind bei der Vorstellung von neuen Konzepten hilfreich. Dieses Beispiel ist eine repräsentative, in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) erstellte Abfrage, die für den [realestate-Demoindex](search-get-started-portal.md) ausgeführt wird und allgemeine Parameter enthält.
 
 ```
-{  
+{
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"", 
-    "searchFields": "description, city",  
-    "count": "true", 
+    "search": "seattle townhouse* +\"lake\"",
+    "searchFields": "description, city",
+    "count": "true",
     "select": "listingId, street, status, daysOnMarket, description",
     "top": "10",
     "orderby": "daysOnMarket"
- } 
+}
 ```
 
 + **`queryType`** legt den Parser fest. In Azure Search kann es sich dabei um den [einfachen Standardabfrageparser](search-query-simple-examples.md) (optimal für die Volltextsuche) handeln oder um den [vollständigen Lucene-Abfrageparser](search-query-lucene-examples.md), der für erweiterte Abfragekonstrukte wie reguläre Ausdrücke, NEAR-Suche, Fuzzy- und Platzhaltersuche usw. verwendet wird.
@@ -167,4 +167,4 @@ In Azure Search ist das Hervorheben der exakten Menge von Suchergebnissen, die m
 + [Funktionsweise der Volltextsuche in Azure Search (Architektur für Abfrageanalyse)](search-lucene-query-architecture.md)
 + [Suchexplorer](search-explorer.md)
 + [Abfragen des Azure Search-Index mit dem .NET SDK](search-query-dotnet.md)
-+ [Abfragen des Azure Search-Index mit der REST-API](search-query-rest-api.md)
++ [Abfragen des Azure Search-Index mit der REST-API](search-create-index-rest-api.md)

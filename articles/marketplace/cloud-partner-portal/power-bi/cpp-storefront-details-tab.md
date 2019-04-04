@@ -14,116 +14,115 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ffc0d8e9e41cf4d202b4040ce3f09e7180101c8b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 2c99b20e554d92dbe63594d63525dd8e1d765423
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665841"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806809"
 ---
-# <a name="power-bi-apps-storefront-details-tab"></a>Registerkarte „Storefront Details“ für Power BI-Apps
+# <a name="power-bi-app-storefront-details-tab"></a>Registerkarte „Storefront Details“ (Storefrontdetails) für Power BI-Apps
 
-Verwenden Sie die Registerkarte **Storefront Details** der Seite **Neues Angebot**, um Informationen zu Marketing, Vertrieb und rechtlichen Fragen für Ihre potenziellen Kunden bereitzustellen. Auf dieser Registerkarte wird zudem angegeben, wie die über den Marketplace generierten Leads verwaltet werden. Dieses lange Formular ist in sechs Abschnitte unterteilt: **Angebotsdetails**, **Auflistungsdetails**, **Marketingartefakte**, **Rechtliche Hinweise**, **Kundensupport** und **Leadverwaltung**.  Mit einem Sternchen (*) gekennzeichnete Felder sind Pflichtfelder.
+Verwenden Sie die Registerkarte **Storefront Details** (Storefrontdetails) der Seite **New Offer** (Neues Angebot), um Informationen zu Marketing, Vertrieb und rechtlichen Fragen für Ihre potenziellen Kunden bereitzustellen. Über diese Registerkarte können Sie auch Vertriebsleads des Azure Marketplace verwalten. Dieses lange Formular ist in sechs Abschnitte unterteilt: **Angebotsdetails**, **Auflistungsdetails**, **Marketingartefakte**, **Rechtliche Hinweise**, **Kundensupport** und **Leadverwaltung**.  Ein Sternchen (*) am Ende einer Feldbezeichnung bedeutet, dass das Feld erforderlich ist.
 
 
 ## <a name="offer-details-section"></a>Abschnitt „Angebotsdetails“
 
-In diesem Abschnitt geben Sie allgemeine Informationen zu Ihrem AppSource-Angebot ein.
+Geben Sie im Abschnitt **Offer Details** (Angebotsdetails) allgemeine Informationen zu Ihrem AppSource-Angebot an.
 
 ![Abschnitt „Angebotsdetails“ der Registerkarte „Details der digitalen Ladenzeile“](./media/offer-details-section.png)
 
-In der folgenden Tabelle sind Name und Zweck dieser Felder aufgeführt.
+Sie können die Felder in diesem Abschnitt gemäß der folgenden Tabelle ausfüllen:
 
 |   Feld               |   BESCHREIBUNG                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| **Angebotszusammenfassung**     | Kurze Beschreibung des Zwecks der App. Die maximale Länge beträgt 100 Zeichen.                             |
-| **Beschreibung des Angebots** | Beschreibung der App. Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt. |
+| **Angebotszusammenfassung**     | Eine kurze Beschreibung des Zwecks der App, bis zu 100 Zeichen lang.                             |
+| **Beschreibung des Angebots** | Eine Beschreibung der App, bis zu 3.000 Zeichen lang. Dieses Feld unterstützt einfache HTML-Formatierungen. |
 |                       |                                                                                         |
 
 
 ## <a name="listing-details-section"></a>Abschnitt „Auflistungsdetails“
 
-Dieser zweite Abschnitt enthält weiteren Kontext für die App: In welchen Branchen wird sie normalerweise verwendet, welche Kategorie trifft am besten auf die App zu, kompatible Produkte für die App und zugehörige Suchbegriffe.
+Im Abschnitt **Listing Details** (Auflistungsdetails) werden Informationen zum Kontext der App aufgelistet: die Branche, in der die App normalerweise verwendet wird, die App-Kategorie, kompatible Produkte und verwandte Suchbegriffe.
 
 ![Abschnitt „Auflistungsdetails“ der Registerkarte „Details der digitalen Ladenzeile“](./media/listing-details-section.png)
 
- In der folgenden Tabelle sind Name und Zweck dieser Felder aufgeführt.
+Sie können die Felder in diesem Abschnitt gemäß der folgenden Tabelle ausfüllen:
  
 |   Feld                                  |   BESCHREIBUNG                                                        |
 | --------------                           | ---------------------                                                |
-| **Branchen**                           | Wählen Sie die Branchen aus, für die Ihre Anwendung (App) am besten geeignet ist. Wenn sich Ihre App auf mehrere Branchen bezieht, können Sie dieses Feld leer lassen.      |
-| **Kategorien**                           | Wählen Sie die Kategorien aus, die für Ihre App relevant sind. Wählen Sie maximal drei aus.     |
-| **Help link for your app** (Hilfelink für Ihre App)               | URL zu einer Seite mit der Onlinehilfe für Ihre App           |
-| **Products your app works with (Max 3)** (Produkte, für die Ihre App verwendet werden kann (maximal 3)) | Listen Sie die spezifischen Produkte auf, für die Ihre App verwendet werden kann. Sie können bis zu drei Produkte auflisten. Um ein Produkt aufzulisten, klicken Sie auf das Pluszeichen (neben „Neu“) und es wird ein neues offenes Textfeld erstellt, in dem Sie den Namen eines Produkts eingeben können, mit dem Ihre App arbeitet.      |
-| **Suchbegriffe (maximal 3)**              | AppSource ermöglicht dem Kunden die Suche nach Schlüsselwörtern. Sie können die Schlüsselwörter eingeben, für die Ihre Anwendung den Kunden angezeigt wird. Wenn die Anwendung z.B. „My Emailing app“ ist, sind „Emails“, „Mailing“ und „Mail app“ entsprechende Schlüsselwörter. Wählen Sie Wörter aus, die Benutzer wahrscheinlich für die Suche nach Ihrer App im AppSource-Suchfeld verwenden werden. |
+| **Branchen**                           | Wählen Sie eine Branche aus, für die sich Ihre App am besten eignet. Ist Ihre App für mehrere Branchen nutzbar, lassen Sie dieses Feld leer.      |
+| **Kategorien**                           | Wählen Sie bis zu drei Kategorien für Ihre App aus.     |
+| **Help link for your app** (Hilfelink für Ihre App)               | Geben Sie eine URL zu einer Seite mit Onlinehilfe für Ihre App an.           |
+| **Products your app works with (Max 3)** (Produkte, für die Ihre App verwendet werden kann (maximal 3)) | Klicken Sie auf **+ New** (+ Neu), um ein neues Textfeld zu erstellen. Geben Sie im erstellten Feld den Namen eines Produkts ein, mit dem Ihre App funktioniert. Sie können bis zu drei Produkte angeben.       |
+| **Suchbegriffe (maximal 3)**              | Geben Sie bis zu drei Schlüsselwörter an, mit denen Benutzer wahrscheinlich über das AppSource-Suchfeld nach Ihrer App suchen. Wenn die Anwendung z.B. „My Emailing app“ heist, sind **emails**, **mailing** und **mail app** entsprechende Schlüsselwörter. |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>Abschnitt „Marketingartefakte“
 
-In diesem dritten Abschnitt kann Branding- und Marketingmaterial hochgeladen werden.  Er ist in vier Unterabschnitte aufgegliedert: **Logos**, **Videos**, **Dokumente** und **Screenshots**. Nur Logos und Screenshots sind erforderliche Marketingartefakte, aber es ist ratsam, alle Angaben vorzunehmen, um die Attraktivität für die Kunden zu erhöhen.
+Laden Sie im Abschnitt **Marketing Artifacts** (Marketingmaterial) Marken- und Marketingmaterial hoch, das in AppSource angezeigt werden soll.  Dieser Abschnitt ist in folgende vier Unterbereiche unterteilt: **Logos**, **Videos**, **Dokumente** und **Screenshots**. Logos und Screenshots sind die einzigen erforderlichen Marketingmaterialien. Wenn Sie jedoch möglichst viele Kunden ansprechen möchten, wird empfohlen, dass Sie auch Videos und Dokumente hochladen.
 
 ![Abschnitt „Marketingartefakte“ der Registerkarte „Details der digitalen Ladenzeile“](./media/marketing-artifacts-section.png)
 
+Sie können die Felder in diesem Abschnitt gemäß der folgenden Tabelle ausfüllen:
  
 |    Feld                             |    BESCHREIBUNG                                                    |
 |   -----------                        |    -------------                                                  |
 | *Logos*                              |                                                                   |
-| **Angebotslogo (PNG-Format, 48 × 48)**   | Wird in AppSource in der Übersicht der Apps oder App-Ergebnisse angezeigt, wenn Sie eine Suche durchführen. Es wird nur das PNG-Format mit einer Auflösung von 48 px \* 48 px unterstützt.  |
-| **Angebotslogo (PNG-Format, 216 × 216)** | Wird in AppSource auf der Detailseite Ihrer App angezeigt.  Es wird nur das PNG-Format mit einer Auflösung von 216 px \* 216 px unterstützt.  |
+| **Angebotslogo (PNG-Format, 48 × 48)**   | Laden Sie ein Logo hoch, das in der Übersicht der App oder in den App-Suchergebnissen angezeigt wird. AppSource unterstützt nur das PNG-Format mit einer Auflösung von 48 × 48 Pixel.  |
+| **Angebotslogo (PNG-Format, 216 × 216)** | Laden Sie ein Logo hoch, das auf der Detailseite Ihrer App angezeigt wird.  AppSource unterstützt nur das PNG-Format mit einer Auflösung von 216 × 216 Pixel.  |
 | *Videos*                             |                                                                   |
-| **Name**                             | Name oder Titel der App                                          |
-| **URL**                              | Video-URL, unter YouTube oder Vimeo gehostet                              |
-| **Miniaturansicht**                        | Miniaturansicht der App.  Es wird nur das PNG-Format mit einer Auflösung von 1280 px \* 720 px unterstützt.   |
-| *Dokumente*                          | Optional, jedoch maximal drei Dokumente. Die hier hochgeladenen Dokumente werden in AppSource unter „Weitere Informationen“ angezeigt.  |
-| **Name**                             | Name oder Titel des entsprechenden Dokuments                              |
-| **Datei**                             | Das hochgeladene Dokument muss im PDF-Format vorliegen.                             |
-| *Screenshots*                        | Optional, jedoch maximal fünf Screenshots                        |
-| **Name**                             | Name oder Titel des Screenshots                                       |
-| **Image**                            | Die hochgeladene Bildschirmaufnahme muss im PNG-Format mit einer Auflösung von 1280 px \* 720 px vorliegen.  | 
+| **Name**                             | Geben Sie den Namen oder Titel Ihrer App ein.                                          |
+| **URL**                              | Geben Sie die URL eines YouTube- oder Vimeo-Videos an.                              |
+| **Miniaturansicht**                        | Fügen Sie eine Miniaturansicht der App hinzu.  AppSource unterstützt nur das PNG-Format mit einer Auflösung von 1280 × 720 Pixel.   |
+| *Dokumente*                          | Fügen Sie bis zu drei Dokumente hinzu, die in AppSource unter **Weitere Informationen** angezeigt werden.  |
+| **Name**                             | Geben Sie den Namen oder Titel eines Informationsdokuments ein.                              |
+| **Datei**                             | Laden Sie eine PDF-Datei hoch.                             |
+| *Screenshots*                        | Fügen Sie bis zu fünf Screenshots hinzu.                        |
+| **Name**                             | Geben Sie einen Namen oder Titel eines Screenshots an.                                       |
+| **Image**                            | Laden Sie einen Screenshot im PNG-Format hoch. Die Auflösung muss 1280 × 720 Pixel betragen.  | 
 |   |   |
 
+Achten Sie bei den Logos, die Sie im [Cloud-Partnerportal](https://cloudpartner.azure.com) hochladen, auf *folgende Punkte*:
 
-### <a name="logo-guidelines"></a>Richtlinien für Logos
-
-Alle in das [Cloud-Partnerportal](https://cloudpartner.azure.com) hochgeladenen Logos müssen folgende Richtlinien erfüllen:
-
-- Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
-- Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
-- Vermeiden Sie es, das Logo zu strecken.
-
+- Sie sollten keinen Farbverlauf verwenden. Ihr Logo sollte klar aussehen.
+- Das Logo sollte nicht den Namen Ihres Unternehmens, einen Markennamen oder anderen Text enthalten. 
+- Das Logo sollte nicht verzerrt aussehen.
 
 ## <a name="legal-section"></a>Abschnitt „Rechtliche Hinweise“
 
-In diesem vierten Abschnitt können Sie die beiden rechtlichen Dokumente bereitstellen, die für jedes Angebot erforderlich sind: Datenschutzrichtlinie und Nutzungsbedingungen.
+Im Abschnitt **Rechtliche Hinweise** müssen Sie die beiden rechtlichen Dokumente bereitstellen, die für jedes Angebot erforderlich sind: die Datenschutzrichtlinie und die Nutzungsbedingungen.
 
 ![Abschnitt „Rechtliche Hinweise“ der Registerkarte „Details der digitalen Ladenzeile“](./media/legal-section.png)
 
+Sie können die Felder in diesem Abschnitt gemäß der folgenden Tabelle ausfüllen:
+
 |   Feld                |   BESCHREIBUNG                           |
 |------------------------|--------------------------------------   |
-| **URL der Datenschutzrichtlinie** | Die URL Ihrer bereitgestellten Datenschutzrichtlinie.       |
-| **Nutzungsbedingungen**       | Die Richtlinie als einfacher Text oder im einfachen HTML-Format.     |
+| **URL der Datenschutzrichtlinie** | Die URL Ihrer bereitgestellten Datenschutzrichtlinie       |
+| **Nutzungsbedingungen**       | Ihre Nutzungsbedingen als Nur-Text oder in einfachem HTML-Format     |
 |  |  |
 
 
 ## <a name="customer-support-section"></a>Abschnitt „Kundensupport“
 
-Geben Sie die **Support-URL** für die Seite Ihres Onlinekundensupports an.  Es empfiehlt sich, auf dieser Seite mehrere Kontaktoptionen für Kunden anzugeben, z.B. Telefon, E-Mail und Livechat. 
+Geben Sie im Bereich **Kundensupport** die **Support-URL** für die Seite Ihres Onlinekundensupports an.  Auf dieser Seite sollten mehre Kontaktoptionen angegeben sein, z.B. eine Telefonnummer, E-Mail-Adresse und ein Livechat. 
 
 
 ## <a name="lead-management-section"></a>Abschnitt „Leadverwaltung“
 
-Im letzten Abschnitt können Sie Kundenleads erfassen, die über Ihre AppSource-Angebote generiert werden. Für diese Leadinformationen werden die folgenden Speicheroptionen (in einer Dropdownliste) bereitgestellt.
+Richten Sie im Bereich **Leadverwaltung** Ihr System so ein, dass es die Kundenvertriebsleads erfasst, die Ihr AppSource-Angebot generiert. Wählen Sie aus der folgenden Tabelle eine Speicheroptionen für die Vertriebsleads aus:
 
 |    Feld               |   Leadzielgruppe                               |
 |------------------------|--------------------------------------            |
-|  **Keine**              | Leads werden nicht erfasst (Standardeinstellung).  |
-| **Azure-Blob (veraltet)** | Ein [Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview), das mit einem Containernamen und einer Verbindungszeichenfolge angegeben wird.  Diese Option ist veraltet. Verwenden Sie stattdessen **Azure-Tabelle**.  |
-| **Azure-Tabelle**        | Eine [Azure-Tabelle](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview), die mit einer Verbindungszeichenfolge angegeben wird  |
-| **Dynamics CRM Online** | Eine [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/)-Instanz, die mit einer URL und Anmeldeinformationen für die Authentifizierung angegeben wird |
-| **HTTPS-Endpunkt**     | Der angegebene HTTPS-Endpunkt als JSON-Nutzlast   |
-| **Marketo**            | Eine [Marketo](https://www.marketo.com/)-Instanz, die mit einer Server-ID, Munchkin-ID und Formular-ID angegeben wird   |
-| **Salesforce**         | Eine [Salesforce](https://www.salesforce.com/)-Datenbank, die mit einem Objektbezeichner angegeben wird |
+|  **Keine**              | Keine Vertriebsleads erfassen. Dies ist die Standardoption.  |
+| **Azure-Blob (veraltet)** | Geben Sie einen [Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) anhand eines Containernamens und einer Verbindungszeichenfolge an.  Diese Option ist veraltet. Verwenden Sie stattdessen **Azure Table**.  |
+| **Azure-Tabelle**        | Geben Sie einen [Azure Table-Speicher](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) mithilfe einer Verbindungszeichenfolge an.  |
+| **Dynamics CRM Online** | Geben Sie [Dynamics 365](https://dynamics.microsoft.com/) mithilfe einer URL und Authentifizierungsanmeldeinformationen an. |
+| **HTTPS-Endpunkt**     | Geben Sie den HTTPS-Endpunkt mit einer JSON-Nutzlast an.   |
+| **Marketo**            | Geben Sie eine [Marketo](https://www.marketo.com/)-Instanz mit einer Server-ID, Munchkin-ID und Formular-ID an.   |
+| **Salesforce**         | Geben Sie [Salesforce](https://www.salesforce.com/) mithilfe eines Objektbezeichners an. |
 |  |  |
 
 Nachdem Sie Ihr Angebot veröffentlicht haben, wird die Leadverbindung überprüft und ein Testlead automatisch an das angegebene Ziel gesendet. Die Leadinformationen sollten fortlaufend verwaltet werden. Es ist daher ratsam, diese Einstellungen sofort zu aktualisieren, sodass immer die aktuelle Architektur für die Kundenverwaltung angezeigt wird.
@@ -131,4 +130,4 @@ Nachdem Sie Ihr Angebot veröffentlicht haben, wird die Leadverbindung überprü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Auf der nächsten Registerkarte [Kontakte](./cpp-contacts-tab.md) geben Sie Ressourcen für den technischen Support und den Benutzersupport für Ihr Angebot an.
+Geben Sie auf der nächsten Registerkarte [Kontakte](./cpp-contacts-tab.md) Ressourcen für den technischen Support und den Benutzersupport für Ihr Angebot an.

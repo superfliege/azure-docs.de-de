@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 50d24fd41a0a933d9cfec37477773463a918ca0a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313567"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549067"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
 
@@ -55,7 +55,7 @@ Um im Netzwerk die Möglichkeit zur fairen Beteiligung sicherzustellen, ist es f
 
 ### <a name="identity-store"></a>Identitätsspeicher
 
-Da jedes Mitglied über mehrere Validierungsknoten verfügt, die gleichzeitig ausgeführt werden, und jeder Knoten über eine berechtigungsbasierte Identität verfügen muss, ist Folgendes wichtig: Die Validierungselemente müssen im Netzwerk auf sichere Weise eine eindeutige aktive Identität beschaffen können. Zu diesem Zweck haben wir einen Identitätsspeicher erstellt, der jeweils im Abonnement eines Mitglieds bereitgestellt wird und in dem die generierten Ethereum-Identitäten enthalten und geschützt sind. Bei der Bereitstellung generiert der Orchestrierungscontainer einen privaten Ethereum-Schlüssel für jedes Validierungselement und speichert ihn in Azure Key Vault. Bevor der Paritätsknoten gestartet wird, wird zuerst eine Lease für eine ungenutzte Identität abgerufen, um sicherzustellen, dass die Identität nicht von einem anderen Knoten übernommen wird. Die Identität wird für den Client bereitgestellt, der sie an die Autorität weitergibt, um mit dem Erstellen von Blöcken zu beginnen. Wenn es auf der Host-VM zu einem Ausfall kommt, wird die Lease der Identität freigegeben, damit ein Ersatzknoten die Identität zu einem späteren Zeitpunkt annehmen kann.
+Da jedes Mitglied über mehrere Validierungsknoten verfügt, die gleichzeitig ausgeführt werden, und jeder Knoten über eine berechtigungsbasierte Identität verfügen muss, ist Folgendes wichtig: Die Validierungssteuerelemente müssen im Netzwerk auf sichere Weise eine eindeutige aktive Identität beschaffen können. Zu diesem Zweck haben wir einen Identitätsspeicher erstellt, der jeweils im Abonnement eines Mitglieds bereitgestellt wird und in dem die generierten Ethereum-Identitäten enthalten und geschützt sind. Bei der Bereitstellung generiert der Orchestrierungscontainer einen privaten Ethereum-Schlüssel für jedes Validierungssteuerelement und speichert ihn im Azure Key Vault. Bevor der Paritätsknoten gestartet wird, wird zuerst eine Lease für eine ungenutzte Identität abgerufen, um sicherzustellen, dass die Identität nicht von einem anderen Knoten übernommen wird. Die Identität wird für den Client bereitgestellt, der sie an die Autorität weitergibt, um mit dem Erstellen von Blöcken zu beginnen. Wenn es auf der Host-VM zu einem Ausfall kommt, wird die Lease der Identität freigegeben, damit ein Ersatzknoten die Identität zu einem späteren Zeitpunkt annehmen kann.
 
 ### <a name="bootnode-registrar"></a>Startknoten-Registrierungsstelle
 
@@ -63,7 +63,7 @@ Um eine einfache Verbindungsherstellung zu ermöglichen, hostet jedes Mitglied a
 
 ### <a name="bring-your-own-operator"></a>„Bring Your Own Operator“
 
-Häufig möchte sich ein Konsortiumsmitglied an der Netzwerksteuerung beteiligen, aber nicht seine eigene Infrastruktur betreiben und warten müssen. Im Gegensatz zu herkömmlichen Systemen steht die Nutzung eines einzelnen Betreibers für das gesamte Netzwerk dem dezentralisierten Modell von Blockchain-Systemen entgegen. Anstatt einen zentralisierten zwischengeschalteten Anbieter in Anspruch zu nehmen, der ein Netzwerk betreibt, kann jedes Konsortiumsmitglied die Infrastrukturverwaltung an den Betreiber seiner Wahl delegieren. Dies ermöglich ein Hybridmodell, bei dem jedes Mitglied die Wahl hat, seine eigene Infrastruktur zu betreiben oder den Betrieb an einen Partner zu delegieren. Der Workflow für den delegierten Betrieb lautet wie folgt:
+Häufig möchte sich ein Konsortiumsmitglied an der Netzwerksteuerung beteiligen, aber nicht seine eigene Infrastruktur betreiben und warten müssen. Im Gegensatz zu herkömmlichen Systemen steht die Nutzung eines einzelnen Betreibers für das gesamte Netzwerk dem dezentralisierten Modell von Blockchain-Systemen entgegen. Anstatt einen zentralisierten zwischengeschalteten Anbieter in Anspruch zu nehmen, der ein Netzwerk betreibt, kann jedes Konsortiumsmitglied die Infrastrukturverwaltung an den Betreiber seiner Wahl delegieren. Dies ermöglicht ein Hybridmodell, bei dem jedes Mitglied die Wahl hat, seine eigene Infrastruktur zu betreiben oder den Betrieb an einen Partner zu delegieren. Der Workflow für den delegierten Betrieb lautet wie folgt:
 
 1.  Das **Konsortiumsmitglied** generiert eine Ethereum-Adresse (enthält privaten Schlüssel).
 
@@ -77,7 +77,7 @@ Häufig möchte sich ein Konsortiumsmitglied an der Netzwerksteuerung beteiligen
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-Diese Lösung verfügt auch über Azure Monitor zum Nachverfolgen von Knoten- und Netzwerkstatistiken. Anwendungsentwickler haben so Einblick in die zugrunde liegende Blockchain, um Statistiken zur Blockgenerierung nachzuverfolgen. Netzwerkbetreiber können Azure Monitor nutzen, um Netzwerkausfälle anhand von Infrastrukturstatistiken und abfragbaren Protokollen schnell erkennen und verhindern zu können. Ausführlichere Informationen finden Sie unter [Dienstüberwachung](#service-monitoring).
+Diese Lösung verfügt auch über Azure Monitor zum Nachverfolgen von Knoten- und Netzwerkstatistiken. Anwendungsentwickler haben so Einblick in die zugrunde liegende Blockchain, um Statistiken zur Blockgenerierung nachzuverfolgen. Netzwerkbetreiber können Azure Monitor nutzen, um Netzwerkausfälle anhand von Infrastrukturstatistiken und abfragbaren Protokollen schnell erkennen und verhindern zu können. Weitere Informationen finden Sie unter [Dienstüberwachung](#service-monitoring).
 
 ### <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 
@@ -148,7 +148,7 @@ Wenn Sie verschiedene Transaktionen über die Governance-DApp durchführen möch
 Navigieren Sie nach der Installation von MetaMask zu der Governance-DApp im Browser.  Sie finden die URL in der E-Mail zur Bestätigung der Bereitstellung oder über das Azure-Portal in der Bereitstellungsausgabe.  Wenn Sie kein Wallet im Browser installiert haben, können Sie keine Aktionen ausführen. Sie können jedoch weiterhin den Administratorstatus lesen.  
 
 #### <a name="becoming-an-admin"></a>Administrator werden
-Wenn Sie das erste Mitglied sind, das im Netzwerk eine Bereitstellung durchgeführt hat, werden Sie automatisch Administrator, und Ihre Paritätsknoten werden als Validierungssteuerelemente aufgeführt.  Wenn Sie dem Netzwerk beitreten, müssen Sie von einer Mehrheit der vorhandenen Administratoren (mehr als 50 %) zum Administrator gewählt werden.  Wenn Sie sich dagegen entscheiden, Administrator zu werden, synchronisieren und überprüfen Ihre Knoten weiterhin die Blockchain. Sie sind jedoch nicht an der Blockerstellung beteiligt. Klicken Sie zum Starten des Abstimmungsprozesses, um Administrator zu werden, auf __Nominierung__, und geben Sie Ihre Ethereum-Adresse und den Alias ein.
+Wenn Sie das erste Mitglied sind, das im Netzwerk eine Bereitstellung durchgeführt hat, werden Sie automatisch ein Administrator, und Ihre Paritätsknoten werden als Validierungssteuerelemente aufgeführt.  Wenn Sie dem Netzwerk beitreten, müssen Sie von einer Mehrheit der vorhandenen Administratoren (mehr als 50 %) zum Administrator gewählt werden.  Wenn Sie sich dagegen entscheiden, Administrator zu werden, synchronisieren und überprüfen Ihre Knoten weiterhin die Blockchain. Sie sind jedoch nicht an der Blockerstellung beteiligt. Klicken Sie zum Starten des Abstimmungsprozesses, um Administrator zu werden, auf __Nominierung__, und geben Sie Ihre Ethereum-Adresse und den Alias ein.
 
 ![Nominierung](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
@@ -164,7 +164,7 @@ Auf der Registerkarte __Administratoren__ wird die aktuelle Gruppe der Administr
 ![Administratoren](./media/ethereum-poa-deployment/governance-dapp-admins.png)
 
 #### <a name="validators"></a>Validierungssteuerelemente
-Durch die Auswahl der Registerkarte __Validierungssteuerelemente__ im linken Menü werden die aktuell bereitgestellten Paritätsknoten dieser Instanz mit dem zugehörigen Status (Knotentyp) angezeigt.  Beachten Sie, dass jedem Mitglied des Konsortiums in dieser Liste andere Validierungssteuerelemente angezeigt werden, da in dieser Ansicht die aktuell bereitgestellten Mitglieder des Konsortiums dargestellt werden.  Handelt es sich hierbei um eine neu bereitgestellte Instanz, zu der Sie Ihre Validierungssteuerelemente noch nicht hinzugefügt haben, wird Ihnen die Option „Add Validators“ (Validierungssteuerelemente hinzufügen) angezeigt.  Durch Auswahl dieser Option wird automatisch eine Reihe regional ausgewogener Paritätsknoten ausgewählt, die Ihren Validierungssteuerelementen zugewiesen werden.  Wenn Sie mit Ihren bereitgestellten Knoten die zulässige Kapazität überschreiten, werden die verbleibenden Knoten zu Transaktionsknoten im Netzwerk.
+Durch die Auswahl der Registerkarte __Validierungssteuerelemente__ im linken Menü werden die aktuell bereitgestellten Paritätsknoten dieser Instanz mit dem zugehörigen Status (Knotentyp) angezeigt.  Jedem Mitglied des Konsortiums in dieser Liste werden andere Validierungssteuerelemente angezeigt werden, da in dieser Ansicht die aktuell bereitgestellten Mitglieder des Konsortiums dargestellt werden.  Handelt es sich hierbei um eine neu bereitgestellte Instanz, zu der Sie Ihre Validierungssteuerelemente noch nicht hinzugefügt haben, wird Ihnen die Option „Add Validators“ (Validierungssteuerelemente hinzufügen) angezeigt.  Durch Auswahl dieser Option wird automatisch eine Reihe regional ausgewogener Paritätsknoten ausgewählt, die Ihren Validierungssteuerelementen zugewiesen werden.  Wenn Sie mit Ihren bereitgestellten Knoten die zulässige Kapazität überschreiten, werden die verbleibenden Knoten zu Transaktionsknoten im Netzwerk.
 
 Die Adresse der einzelnen Validierungssteuerelemente wird automatisch über den [Identitätsspeicher](#identity-store) in Azure zugewiesen.  Wenn ein Knoten ausfällt, gibt er seine Identität auf, wodurch ein anderer Knoten in Ihrer Bereitstellung den Platz dieses Knotens übernehmen kann.  Dadurch wird sichergestellt, dass Ihre Teilnahme am Konsens hoch verfügbar ist.
 
@@ -254,7 +254,7 @@ Hier ist eine ausführliche Beschreibung der einzelnen Parameter angegeben:
 
 [Virtuelle Computer – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 
-Beachten Sie, dass virtuelle Computer und die Speicherebene Auswirkungen auf die Netzwerkleistung haben.  Es wird empfohlen basierend auf der gewünschten Kosteneffizienz folgende SKUs:
+Virtuelle Computer und die Speicherebene haben Auswirkungen auf die Netzwerkleistung.  Es wird empfohlen basierend auf der gewünschten Kosteneffizienz folgende SKUs:
 
   SKU des virtuellen Computers|Speicherebene|Preis|Throughput|Latency
   ---|---|---|---|---
@@ -285,15 +285,17 @@ Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Ethereum-Einstellung
 
 #### <a name="monitoring"></a>Überwachung
 
-Auf dem Blatt „Überwachung“ können Sie eine Log Analytics-Ressource für Ihr Netzwerk konfigurieren. Der Überwachungs-Agent sammelt nützliche Metriken und Protokolle aus Ihrem Netzwerk und zeigt diese an. So lassen sich Netzwerkintegrität oder Debugprobleme schnell überprüfen.
+Auf dem Blatt „Überwachung“ können Sie eine Azure Monitor-Protokollressource für Ihr Netzwerk konfigurieren. Der Überwachungs-Agent sammelt nützliche Metriken und Protokolle aus Ihrem Netzwerk und zeigt diese an. So lassen sich Netzwerkintegrität oder Debugprobleme schnell überprüfen.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
   Parametername|BESCHREIBUNG|Zulässige Werte|Standardwerte
   ---|---|---|---
 Überwachung|Option zum Aktivieren der Überwachung|Aktivieren oder deaktivieren|Aktivieren
-Herstellen einer Verbindung mit einer vorhandenen Log Analytics-Instanz|Erstellen Sie eine neue Log Analytics-Instanz, oder treten Sie einer vorhandenen Instanz bei.|„Neu erstellen“ oder „Vorhandener beitreten“|Neu erstellen
-Azure Monitor-Standort (Mit vorhandener Log Analytics-Instanz verbinden = Neu erstellen)|Die Region, in der die neue Log Analytics-Instanz bereitgestellt wird|Alle Log Analytics-Regionen|Nicht verfügbar
-Vorhandene Log Analytics-Arbeitsbereichs-ID (Mit vorhandener Log Analytics-Instanz verbinden = Vorhandener beitreten)|Arbeitsbereichs-ID der vorhandenen Log Analytics-Instanz||Nicht verfügbar
-Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Log Analytics-Instanz verbinden = Vorhandener beitreten)|Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Log Analytics-Instanz verwendet wird||Nicht verfügbar
+Connect to existing Azure Monitor logs (Mit vorhandenen Azure Monitor-Protokollen verbinden)|Erstellen Sie eine neue Azure Monitor-Protokollinstanz, oder treten Sie einer vorhandenen Instanz bei.|„Neu erstellen“ oder „Vorhandener beitreten“|Neu erstellen
+Monitor Location (Connect to existing Azure Monitor logs = Create new) (Monitor-Standort (Mit vorhandenen Azure Monitor-Protokollen verbinden = Neu erstellen))|Die Region, in der die neue Azure Monitor-Protokollinstanz bereitgestellt wird.|All Azure Monitor logs regions (Alle Azure Monitor-Protokollregionen)|Nicht verfügbar
+Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing) (Vorhandene Log Analytics-Arbeitsbereichs-ID (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Die Arbeitsbereichs-ID der vorhandenen Azure Monitor-Protokollinstanz||Nicht verfügbar
+Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.||Nicht verfügbar
 
 
 Unten ist ein Beispiel für eine Bereitstellung angegeben: ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
@@ -328,7 +330,7 @@ Wenn Sie eine E-Mail-Adresse angeben ([Abschnitt „Grundlagen“](#basics)), wi
 
 ##### <a name="portal"></a>Portal
 
-Nachdem die Bereitstellung erfolgreich abgeschlossen wurde und alle Ressourcen bereitgestellt wurden, können Sie die Ausgabeparameter in Ihrer Ressourcengruppe anzeigen.
+Nachdem die Bereitstellung erfolgreich abgeschlossen wurde und alle Ressourcen bereitgestellt wurden, können Sie sich die Ausgabeparameter in Ihrer Ressourcengruppe ansehen.
 
 1.  Navigieren Sie im Portal zu Ihrer Ressourcengruppe.
 
@@ -341,7 +343,7 @@ Nachdem die Bereitstellung erfolgreich abgeschlossen wurde und alle Ressourcen b
 ### <a name="growing-the-consortium"></a>Vergrößern des Konsortiums
 
 Um Ihr Konsortium zu erweitern, müssen Sie zuerst eine Verbindung mit dem physischen Netzwerk herstellen.
-Bei Verwendung der Bereitstellung, die auf der öffentlichen IP-Adresse basiert, ist dieser erste Schritt nahtlos. Bei einer Bereitstellung hinter einem VPN helfen Ihnen die Informationen im Abschnitt [Herstellen einer Verbindung für das VNET-Gateway](#connecting-vnet-gateways) weiter, um die Herstellung der Netzwerkverbindung im Rahmen der Bereitstellung neuer Mitglieder durchzuführen.  Verwenden Sie nach Abschluss Ihrer Bereitstellung die [Governance-DApp](#governance-dapp), um zum Netzwerkadministrator zu werden.
+Bei Verwendung der Bereitstellung, die auf der öffentlichen IP-Adresse basiert, ist dieser erste Schritt nahtlos. Bei einer Bereitstellung hinter einem VPN helfen Ihnen die Informationen im Abschnitt [Herstellen einer Verbindung für VNET-Gateways](#connecting-vnet-gateways) weiter, um die Herstellung der Netzwerkverbindung im Rahmen der Bereitstellung neuer Mitglieder durchzuführen.  Verwenden Sie nach Abschluss Ihrer Bereitstellung die [Governance-DApp](#governance-dapp), um zum Netzwerkadministrator zu werden.
 
 #### <a name="new-member-deployment"></a>Bereitstellung eines neuen Mitglieds
 
@@ -367,7 +369,7 @@ Bei Verwendung der Bereitstellung, die auf der öffentlichen IP-Adresse basiert,
 
 #### <a name="connecting-vnet-gateways"></a>Herstellen einer Verbindung für VNET-Gateways
 
-Sie können diesen Schritt ignorieren, wenn Sie die Bereitstellung über die Standardeinstellungen für die öffentliche IP-Adresse durchgeführt haben. Bei einem privaten Netzwerk werden die unterschiedlichen Mitglieder über VNET-Gatewayverbindungen verbunden. Bevor ein Mitglied dem Netzwerk beitreten und Transaktionsdatenverkehr anzeigen kann, muss ein vorhandenes Mitglied die Konfiguration auf seinem VPN-Gateway abschließen, um die Verbindung zu akzeptieren. Die Ethereum-Knoten des beitretenden Mitglieds werden also erst ausgeführt, nachdem die Verbindung hergestellt wurde. Es wird empfohlen, redundante Netzwerkverbindungen (Mesh) mit dem Konsortium herzustellen, um das Vorhandensein eines Single Point of Failure unwahrscheinlicher zu machen.
+Sie können diesen Schritt ignorieren, wenn Sie die Bereitstellung über die Standardeinstellungen für die öffentliche IP-Adresse durchgeführt haben. Bei einem privaten Netzwerk werden die unterschiedlichen Mitglieder über VNET-Gatewayverbindungen verbunden. Bevor ein Mitglied dem Netzwerk beitreten und Transaktionsdatenverkehr anzeigen lassen kann, muss ein vorhandenes Mitglied die Konfiguration auf seinem VPN-Gateway abschließen, um die Verbindung zu akzeptieren. Die Ethereum-Knoten des beitretenden Mitglieds werden also erst ausgeführt, nachdem die Verbindung hergestellt wurde. Es wird empfohlen, redundante Netzwerkverbindungen (Vermaschtes Netz) mit dem Konsortium herzustellen, um das Vorhandensein eines Single Point of Failure unwahrscheinlicher zu machen.
 
 Nachdem das neue Mitglied bereitgestellt wurde, muss das vorhandene Mitglied die bidirektionale Verbindung herstellen, indem es eine VNET-Gatewayverbindung mit dem neuen Mitglied einrichtet. Hierfür benötigt das vorhandene Mitglied Folgendes:
 
@@ -425,7 +427,7 @@ Wenn Sie **Netzwerkstatistik** wählen, wird die Ethereum-Netzwerkstatistik ange
 
 ![Netzwerkstatistik](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-log-analytics-queries"></a>Log Analytics-Beispielabfragen
+#### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 
 Hinter diesen Dashboards befindet sich eine Reihe von abfragbaren unformatierten Protokollen. Sie können diese unformatierten Protokolle verwenden, um die Dashboards anzupassen, Fehler zu untersuchen oder Schwellenwertwarnungen einzurichten. Hier sind einige Beispielabfragen angegeben, die im Tool für die Protokollsuche ausgeführt werden können:
 
@@ -451,7 +453,7 @@ ParityLog_CL
 
 ### <a name="ssh-access"></a>SSH-Zugriff
 
-Aus Sicherheitsgründen wird der SSH-Portzugriff durch eine Netzwerksicherheitsgruppen-Regel standardmäßig verweigert. Sie müssen diese Regel in \"Zulassen\" ändern, um auf die Instanzen des virtuellen Computers im PoA-Netzwerk zugreifen zu können
+Aus Sicherheitsgründen wird der SSH-Portzugriff durch eine Netzwerksicherheitsgruppen-Regel standardmäßig verweigert. Sie müssen diese Regel in \"Allow\" (Zulassen) ändern, um auf die Instanzen des virtuellen Computers im PoA-Netzwerk zugreifen zu können.
 
 1.  Beginnen Sie im Azure-Portal im Abschnitt „Übersicht“ der bereitgestellten Ressourcengruppe.
 
@@ -506,7 +508,7 @@ Wählen Sie die Registerkarte „Endpunkte“ aus, und klicken Sie auf die Schal
 
 ![Routing für Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-routing.png)
 
-Wiederholen Sie dies für jede Region im bereitgestellten Netzwerk. Wenn sich die Endpunkte im Status \"Aktiviert\" befinden, wird dafür automatisch der Lastenausgleich und der Ausgleich nach Region für den DNS-Namen von Traffic Manager durchgeführt. Sie können diesen DNS-Namen jetzt anstelle des Parameters \[CONSORTIUM\_DATA\_URL\] in den anderen Schritten des Dokuments verwenden.
+Wiederholen Sie dies für jede Region im bereitgestellten Netzwerk. Wenn sich die Endpunkte im Status \"Aktiviert\" befinden, wird dafür automatisch von Traffic Manager der Lastenausgleich und der Ausgleich nach Region für den DNS-Namen durchgeführt. Sie können diesen DNS-Namen jetzt anstelle des Parameters \[CONSORTIUM\_DATA\_URL\] in den anderen Schritten des Dokuments verwenden.
 
 ### <a name="data-api"></a>Daten-API
 
@@ -514,13 +516,13 @@ Jedes Konsortiumsmitglied hostet die erforderlichen Informationen, über die and
 
 `<CONSORTIUM_DATA_URL>/networkinfo`
 
-Die Antwort enthält Informationen, die für den Beitritt von Mitgliedern hilfreich sind (Genesis-Block, ABI für Validierungselementsatz-Vertrag, Startknoten), sowie Informationen, die für das vorhandene Mitglied hilfreich sind (Adressen der Validierungselemente). Wir empfehlen die Verwendung dieser Standardisierung, um das Konsortium auf mehrere Cloudanbieter zu erweitern. Diese API gibt eine Antwort im JSON-Format mit der folgenden Struktur zurück:
+Die Antwort enthält Informationen, die für den Beitritt von Mitgliedern hilfreich sind (Genesis-Block, Vertrags-ABI für die Validierungssteuerelemente, Startknoten), sowie Informationen, die für das vorhandene Mitglied hilfreich sind (Adressen der Validierungssteuerelemente). Wir empfehlen die Verwendung dieser Standardisierung, um das Konsortium auf mehrere Cloudanbieter zu erweitern. Diese API gibt eine Antwort im JSON-Format mit der folgenden Struktur zurück:
 ```json
 {
   "$id": "",
   "type": "object",
   "definitions": {},
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "properties": {
     "majorVersion": {
       "$id": "/properties/majorVersion",

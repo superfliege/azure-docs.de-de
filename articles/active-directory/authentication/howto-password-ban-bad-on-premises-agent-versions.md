@@ -11,19 +11,32 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188034"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284798"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Vorschau:  Versionsverlauf des Azure AD-Kennwortschutz-Agents
+# <a name="azure-ad-password-protection-agent-version-history"></a>Versionsverlauf des Azure AD-Kennwortschutz-Agents
 
-|     |
-| --- |
-| Azure AD-Kennwortschutz ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+## <a name="121160"></a>1.2.116.0
+
+Veröffentlichungsdatum: 13.3.2019
+
+* Mit den Cmdlets „Get-AzureADPasswordProtectionProxy“ und „Get-AzureADPasswordProtectionDCAgent“ werden nun die Softwareversion und der aktuelle Azure-Mandant angezeigt. Dabei gelten folgende Einschränkungen:
+  * Die Daten zur Softwareversion und zum Azure-Mandanten sind nur für DC-Agents und Proxys verfügbar, die mit Version 1.2.116.0 oder höher ausgeführt werden.
+  * Die Daten des Azure-Mandanten können erst angezeigt werden, nachdem eine erneute Registrierung (oder Erneuerung) des Proxys oder der Gesamtstruktur erfolgt ist.
+* Für den Proxydienst ist nun die Installation von .NET 4.7 erforderlich.
+  * .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+  * Auf Server Core-Systemen muss möglicherweise das Flag „/q“ an das .NET 4.7-Installationsprogramm übergeben werden, damit dieses erfolgreich ausgeführt werden kann.
+* Der Proxydienst unterstützt jetzt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert.
+* Das automatische Upgrade kann mithilfe des Cmdlets „Set-AzureADPasswordProtectionProxyConfiguration“ aktiviert und deaktiviert werden. Die aktuelle Einstellung kann mithilfe des Cmdlets „Get-AzureADPasswordProtectionProxyConfiguration“ abgefragt werden.
+* Die Dienstbinärdatei für den DC-Agent-Dienst wurde in „AzureADPasswordProtectionDCAgent.exe“ umbenannt.
+* Die Dienstbinärdatei für den Proxydienst wurde in „AzureADPasswordProtectionProxy.exe“ umbenannt. Firewallregeln müssen möglicherweise entsprechend geändert werden, wenn eine Drittanbieterfirewall verwendet wird.
+  * HINWEIS: Wenn eine HTTP-Proxy-Konfigurationsdatei in einer vorherigen Proxyinstallation verwendet wurde, muss sie nach diesem Upgrade umbenannt werden (von *proxyservice.exe.config* in *AzureADPasswordProtectionProxy.exe.config*).
+* Alle zeitlich begrenzten Funktionsüberprüfungen wurden aus dem DC-Agent entfernt.
+* Behebung kleinerer Programmfehler und Verbesserungen bei der Protokollierung
 
 ## <a name="12650"></a>1.2.65.0
 

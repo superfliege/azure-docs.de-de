@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 1b97ff461dc3a4f7dcba0a3dbfad71a25cb3f1e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840198"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226334"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
 
@@ -61,7 +61,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ProvisioningState : Succeeded
    Tags              :
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
-```
+   ```
    
 2. Erstellen Sie einen Recovery Services-Tresor. Im nachstehenden Beispiel hat der Recovery Services-Tresor den Namen VMwareDRToAzurePs und wird in der Region „Asien, Osten“ und in der Ressourcengruppe, die im vorherigen Schritt erstellt wurde, erstellt.
 
@@ -348,8 +348,8 @@ Replizieren Sie nun die folgenden virtuellen Computer mit den Einstellungen in d
 |Virtueller Computer  |Prozessserver        |Speicherkonto              |Protokollspeicherkonto  |Richtlinie           |Konto für die Installation des Mobilitätsdiensts|Zielressourcengruppe  | Virtuelles Zielnetzwerk  |Zielsubnetz  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
-|CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| N/V                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/V                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
  
 ```azurepowershell
@@ -487,4 +487,4 @@ In diesem Schritt führen wir ein Failover des virtuellen Computers Win2K12VM1 a
 2. Nachdem das Failover erfolgreich ausgeführt wurde, können Sie den Failovervorgang committen und die umgekehrte Replikation von Azure zurück zum lokalen VMware-Standort einrichten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie, wie Sie mehr Aufgaben mit der [Azure Site Recovery-PowerShell-Referenz](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) automatisieren können.
+Informieren Sie sich in der [Azure Site Recovery-PowerShell-Referenz](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery), wie Sie mehr Aufgaben automatisieren können.

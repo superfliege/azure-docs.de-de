@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30627994a8fe8cfe73e7945dadf2153ea60860b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef8f66cda7e80ffdafefbbac5de24d45f01401af
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175131"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286929"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
-
-|     |
-| --- |
-| Azure AD-Kennwortschutz ist eine öffentliche Vorschaufunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 Viele Organisationen stellen fest, dass ihre Benutzer für ihre Kennwörter allgemeine Wörter verwenden, wie z.B. ihre Schule, ein Sportteam oder eine berühmte Person, sodass die Kennwörter leicht zu erraten sind. Mit der benutzerdefinierten Liste gesperrter Kennwörter von Microsoft können Organisationen Zeichenfolgen festlegen, die zusätzlich zur globalen Liste gesperrter Kennwörter ausgewertet und blockiert werden, wenn Benutzer oder Administratoren Kennwörter ändern oder zurücksetzen.
 
@@ -31,7 +26,7 @@ Viele Organisationen stellen fest, dass ihre Benutzer für ihre Kennwörter allg
 
 Zum Konfigurieren der benutzerdefinierten Liste gesperrter Kennwörter ist eine Azure Active Directory Premium P1- oder P2-Lizenz erforderlich. Weitere Informationen zur Azure Active Directory-Lizenzierung finden Sie in auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und **Kennwortschutz (Vorschau)**.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und dann zu **Kennwortschutz**.
 1. Legen Sie die Option **Benutzerdefinierte Liste erzwingen** auf **Ja** fest.
 1. Fügen Sie der **benutzerdefinierten Liste gesperrter Kennwörter** Zeichenfolgen hinzu. Geben Sie eine Zeichenfolge pro Zeile ein.
    * Die benutzerdefinierte Liste gesperrter Kennwörter kann bis zu 1000 Wörter umfassen.

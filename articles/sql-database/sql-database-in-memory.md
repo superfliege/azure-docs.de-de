@@ -7,27 +7,33 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 235d6174153e32b40885811350d967af5b98ecc4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/19/2019
+ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478355"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226979"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
-In-Memory-Technologien in Azure SQL-Datenbank können zur Verbesserung der Leistung Ihrer Anwendung beitragen und potenziell Kosten für Ihre Datenbank verringern. Durch Verwenden von In-Memory-Technologien in Azure SQL-Datenbank können Sie Leistungsverbesserungen bei verschiedenen Workloads erzielen:
+In-Memory-Technologien in Azure SQL-Datenbank können zur Verbesserung der Leistung Ihrer Anwendung beitragen und potenziell Kosten für Ihre Datenbank verringern. 
+
+## <a name="when-to-use-in-memory-technologies"></a>Verwenden von In-Memory-Technologien
+
+Durch Verwenden von In-Memory-Technologien in Azure SQL-Datenbank können Sie Leistungsverbesserungen bei verschiedenen Workloads erzielen:
 
 - **Transaktionsverarbeitung** (Online Transactional Processing, OLTP), bei der die meisten Anforderungen einen kleineren Satz Daten lesen oder aktualisieren (z.B. CRUD-Vorgänge).
 - **Analytische Verarbeitung** (Online Analytical Processing, OLAP), bei der die meisten Abfragen komplexe Berechnungen für die Berichterstellung umfassen und eine bestimmte Anzahl von Abfragen Daten in vorhandene Tabellen lädt oder daran anfügt (so genanntes Massenladen) oder Daten aus Tabellen löscht. 
 - **Gemischte Verarbeitung** (Hybrid Transaction/Analytical Processing, HTAP), bei der sowohl OLTP- als auch OLAP-Abfragen für den gleichen Satz Daten ausgeführt werden.
 
-In-Memory-Technologien können die Leistung dieser Workloads verbessern, indem sie die zu verarbeitenden Daten im Arbeitsspeicher behalten, eine native Kompilierung der Abfragen verwenden oder eine erweiterte Verarbeitung wie z.B. Batchprozesse und SIMD-Anweisungen ausführen, die in der zugrunde liegenden Hardware verfügbar sind.
+In-Memory-Technologien können die Leistung dieser Workloads verbessern, indem sie die zu verarbeitenden Daten im Arbeitsspeicher behalten, eine native Kompilierung der Abfragen verwenden oder eine erweiterte Verarbeitung wie z.B. Batchprozesse und SIMD-Anweisungen ausführen, die in der zugrunde liegenden Hardware verfügbar sind. 
+
+## <a name="overview"></a>Übersicht
 
 Azure SQL-Datenbank verfügt über die folgenden In-Memory-Technologien:
 - *[In-Memory-OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* erhöht die Anzahl von Transaktionen pro Sekunde und reduziert die Latenz für die Transaktionsverarbeitung. Szenarien, die von In-Memory-OLTP profitieren sind: hoher Durchsatz bei der Transaktionsverarbeitung z.B. Handel treiben, Spielen, Datenerfassung von Ereignissen oder IoT-Geräten, Zwischenspeichern, Laden von Daten, temporäre Tabellen und Szenarien mit Tabellenvariablen.
@@ -88,7 +94,7 @@ Eine kurze Einführung zu In-Memory-OLTP finden Sie hier: [Schnellstart 1: In-Me
 Ausführliche Videos zu den Technologien:
 
 - [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) mit einer Veranschaulichung von Leistungsvorteilen und einer Anleitung, die zeigt, wie Sie diese Ergebnisse selbst reproduzieren können
-- [Videos zu In-Memory-OLTP: Was es ist und wann/wie es verwendet wird](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/) (in englischer Sprache)
+- [Videos zu In-Memory-OLTP: Was es ist und wann/wie es verwendet wird](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/) (in englischer Sprache)
 
 Es gibt einen programmgesteuerten Weg, um zu verstehen, ob eine vorhandene Datenbank In-Memory-OLTP unterstützt. Sie können die folgende Transact-SQL-Abfrage ausführen:
 ```
@@ -150,7 +156,7 @@ Es gibt zwei Arten von Columnstoremodellen, die Sie zum Organisieren Ihrer Daten
 
 Ausführliche Videos zur Technologie:
 
-- [Columnstore-Index: Videos zur In-Memory-Analyse von der Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/) (in englischer Sprache)
+- [Columnstore-Index: Videos zur In-Memory-Analyse von der Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/) (in englischer Sprache)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Datengröße und Speicher für Columnstore-Indizes
 

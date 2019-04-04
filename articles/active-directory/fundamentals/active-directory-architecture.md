@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185f4ad83d083ab1a15208361ee7b44e118c68e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168305"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286211"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
@@ -39,7 +39,7 @@ Zum Erstellen eines zugänglichen und verwendbaren Systems mit umfassenden Daten
 
 Die Datenschicht verfügt über mehrere Front-End-Dienste, über die Lese-/Schreibfunktionen bereitgestellt werden. Im folgenden Diagramm ist dargestellt, wie die Komponenten einer Partition mit einem Verzeichnis in geografisch verteilten Rechenzentren bereitgestellt werden. 
 
-  ![Partitionen mit einem Verzeichnis](./media/active-directory-architecture/active-directory-architecture.png)
+  ![Diagramm einer Partition mit einem einzelnen Verzeichnis](./media/active-directory-architecture/active-directory-architecture.png)
 
 Die Komponenten der Azure AD-Architektur enthalten ein primäres Replikat und sekundäre Replikate.
 

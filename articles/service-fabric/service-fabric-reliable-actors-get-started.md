@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Ihren ersten akteurbasierten Dienst in C# mit
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093147"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661087"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Starten Sie Visual Studio 2015 oder höher als Administrator, und erstellen Sie 
 
 ![Service Fabric-Tools für Visual Studio – Neues Projekt][1]
 
-Wählen Sie im nächsten Dialogfeld unter **.NET Core 2.0** die Option **Actordienst** aus, und geben Sie einen Namen für den Dienst ein.
+Wählen Sie im nächsten Dialogfeld unter **.NET Core 2.0** die Option **Actordienst** aus, und geben Sie einen Namen für den Dienst ein.
 
 ![Service Fabric-Projektvorlagen][5]
 

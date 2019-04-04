@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25af451ac06a7d744e171754db6f4e54cb2156c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78e15de18e57e949b2e7b7146269204469e61797
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106949"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -68,8 +68,8 @@ Die von Ihnen ausgewählten Grafiken werden in den folgenden Situationen angezei
 
 * Nachdem ein Benutzer seinen Benutzernamen eingegeben hat
 * Wenn der Benutzer auf die angepasste URL zugreift:
-    * Durch Übergeben des `whr`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. „https://login.microsoftonline.com/?whr=contoso.com“
-    * Durch Übergeben des `username`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. „https://login.microsoftonline.com/?username=admin@contoso.com“
+    * Durch Übergeben des `whr`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. `https://login.microsoftonline.com/?whr=contoso.com`
+    * Durch Übergeben des `username`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 Im Artikel [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](../fundamentals/customize-branding.md) finden Sie ausführliche Informationen zum Konfigurieren von Unternehmensbranding.
 

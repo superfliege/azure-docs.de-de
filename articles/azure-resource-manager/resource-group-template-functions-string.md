@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762839"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621405"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -1809,7 +1809,7 @@ Das folgende Beispiel zeigt, wie Sie einen eindeutigen Namen für ein Speicherko
     ...
 ```
 
-Wenn Sie für jedes Mal, wenn Sie eine Vorlage bereitstellen, einen neuen eindeutigen Namen erstellen müssen und die Ressource nicht aktualisieren möchten, können Sie die Funktion [utcNow](#utcnow) mit „uniqueString“ verwenden. Diesen Ansatz können Sie in einer Testumgebung verwenden. Ein Beispiel finden Sie unter [utcNow](#utcNow).
+Wenn Sie für jedes Mal, wenn Sie eine Vorlage bereitstellen, einen neuen eindeutigen Namen erstellen müssen und die Ressource nicht aktualisieren möchten, können Sie die Funktion [utcNow](#utcnow) mit „uniqueString“ verwenden. Diesen Ansatz können Sie in einer Testumgebung verwenden. Ein Beispiel finden Sie unter [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Rückgabewert
 

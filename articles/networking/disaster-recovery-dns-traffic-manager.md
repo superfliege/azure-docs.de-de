@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120736"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
@@ -33,13 +33,13 @@ Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrer
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“*
 
-- **Aktiv/Passiv mit Steuerlicht**: Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann zusätzliche Dienste skalieren und erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
+- **Aktiv/Passiv mit Steuerlicht:** Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann zusätzliche Dienste skalieren und erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
     
     ![Aktiv/Passiv mit Steuerlicht](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Steuerlicht*
 
-- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“**: Bei dieser Failoverlösung wird die Standbyregion vorgewärmt und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
+- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“:** Bei dieser Failoverlösung wird die Standbyregion „vorgewärmt“ und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert, und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
     
     ![Aktiv/Passiv mit Standbymodus „Betriebsbereit“](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -58,7 +58,7 @@ Dieser Artikel ist auf Ansätze bezüglich der Weiterleitung von Netzwerkdaten- 
 DNS ist einer der effizientesten Mechanismen, um den Netzwerkdatenverkehr umzuleiten, da DNS oft global ist und sich außerhalb des Rechenzentrums befindet und von Ausfällen auf regionaler oder Verfügbarkeitszonenebene (AZ) isoliert ist. Es kann ein DNS-basierter Failovermechanismus verwendet werden und in Azure können zwei DNS-Dienste in gewisser Weise dasselbe erreichen – Azure DNS (autoritatives DNS) und Azure Traffic Manager (DNS-basiertes intelligentes Datenverkehrsrouting). 
 
 Zur Besprechung der in diesem Artikel aufgeführten Lösungen müssen Sie einige wenige DNS-Konzepte verstehen, die in großem Umfang verwendet werden:
-- **DNS A-Eintrag** – „A-Einträge“ sind Zeiger, die eine Domäne auf eine IPv4-Adresse verweisen. 
+- **DNS-A-Datensatz:** „A-Datensätze“ sind Zeiger, die eine Domäne auf eine IPv4-Adresse verweisen. 
 - **CNAME oder kanonischen Namen** – Dieser Eintragstyp wird zum Verweis auf einen anderen DNS-Eintrag verwendet. CNAME antwortet nicht mit einer IP-Adresse, sondern mit dem Zeiger auf den Eintrag, der die IP-Adresse enthält. 
 - **Gewichtetes Routing** – Es ist möglich, eine Gewichtung mit den Dienstendpunkten zu verknüpfen und dann den Datenverkehr auf der Grundlage der zugewiesenen Gewichtung zu verteilen. Diese Routingmethode ist eine der vier Mechanismen zum Datenverkehrsrouting, die in Traffic Manager verfügbar sind. Weitere Informationen finden Sie unter [Gewichtete Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#weighted).
 - **Prioritätsbasiertes Routing** – Das prioritätsbasierte Routing erfolgt auf Grundlage von Systemdiagnosen der Endpunkte. Standardmäßig sendet Azure Traffic Manager sämtlichen Datenverkehr an den Endpunkt mit der höchsten Priorität, und bei einem Fehler oder Notfall leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Weitere Informationen finden Sie unter [Prioritätsbasierte Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#priority).
@@ -71,15 +71,16 @@ Die Azure DNS-Lösung für manuelles Failover für die Notfallwiederherstellung 
 *Abbildung – Manuelles Failover mit Azure DNS*
 
 Die Annahmen für die Lösung sind:
--   Sowohl primäre als auch sekundäre Endpunkte haben statische IP-Adressen, die sich selten ändern. Für den primären Standort wird z.B. die IP 100.168.124.44 und für den sekundären Standort die IP 100.168.124.43 verwendet.
--   Für beide Standorte gibt es ist eine Azure DNS-Zone. Für den primären Standort ist der Endpunkt prod.contoso.com und für den Sicherungsstandort dr.contoso.com. Außerdem gibt es einen DNS-Eintrag für die Hauptanwendung mit der Bezeichnung www.contoso.com.   
--   Die TTL entspricht der in der Organisation festgelegten RTO-SLA oder liegt darunter. Wenn ein Unternehmen beispielsweise die RTO für die Reaktion der Anwendung auf einen Notfall auf 60 Minuten setzt, dann sollte die TTL weniger als 60 Minuten betragen, am besten je niedriger, desto besser. Sie können Azure DNS wie folgt für manuelles Failover einrichten:
-1. Erstellen einer DNS-Zone
-2. Erstellen von DNS-Zoneneinträgen
-3. Aktualisieren des CNAME-Eintrags
+- Sowohl primäre als auch sekundäre Endpunkte haben statische IP-Adressen, die sich selten ändern. Für den primären Standort wird z.B. die IP 100.168.124.44 und für den sekundären Standort die IP 100.168.124.43 verwendet.
+- Für beide Standorte gibt es ist eine Azure DNS-Zone. Für den primären Standort ist der Endpunkt prod.contoso.com und für den Sicherungsstandort dr.contoso.com. Außerdem gibt es einen DNS-Eintrag für die Hauptanwendung mit der Bezeichnung „www\.contoso.com“.   
+- Die TTL entspricht der in der Organisation festgelegten RTO-SLA oder liegt darunter. Wenn ein Unternehmen beispielsweise die RTO für die Reaktion der Anwendung auf einen Notfall auf 60 Minuten setzt, dann sollte die TTL weniger als 60 Minuten betragen, am besten je niedriger, desto besser. 
+  Sie können Azure DNS wie folgt für manuelles Failover einrichten:
+- Erstellen einer DNS-Zone
+- Erstellen von DNS-Zoneneinträgen
+- Aktualisieren des CNAME-Eintrags
 
-### <a name="step-1-create-a-dns"></a>Schritt 1: Erstellen einer DNS-Zone
-Erstellen Sie eine DNS-Zone (z.B. www.contoso.com), wie unten gezeigt:
+### <a name="step-1-create-a-dns"></a>Schritt 1: Erstellen eines DNS
+Erstellen Sie eine DNS-Zone (z. B. www\.contoso.com), wie unten gezeigt:
 
 ![Erstellen einer DNS-Zone in Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -87,13 +88,13 @@ Erstellen Sie eine DNS-Zone (z.B. www.contoso.com), wie unten gezeigt:
 
 ### <a name="step-2-create-dns-zone-records"></a>Schritt 2: Erstellen von DNS-Zoneneinträgen
 
-Erstellen Sie innerhalb dieser Zone drei Einträge (Beispiel: www.contoso.com, prod.contoso.com und dr.consoto.com), wie unten gezeigt.
+Erstellen Sie innerhalb dieser Zone drei Einträge (z. B. www\.contoso.com, prod.contoso.com und dr.consoto.com), wie unten gezeigt.
 
 ![Erstellen von DNS-Zoneneinträgen](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Abbildung – Erstellen von DNS-Zoneneinträgen in Azure*
 
-In diesem Szenario hast der Standort www.contoso.com eine TTL von 30 Minuten, was unter der angegebenen RTO liegt, und zeigt auf den Produktionsstandort prod.contoso.com. Diese Konfiguration wird im normalen Geschäftsbetrieb verwendet. Die TTL von prod.contoso.com und dr.contoso.com wurde auf 300 Sekunden oder 5 Minuten festgelegt. Sie können einen Azure-Überwachungsdienst z.B. Azure Monitor oder Azure App Insights oder beliebige Überwachungslösungen von Partnern verwenden, z.B. Dynatrace. Sie können sogar selbst entwickelte Lösungen verwenden, die Ausfälle auf der Ebene von Anwendungen oder der virtuellen Infrastruktur überwachen oder erkennen können.
+In diesem Szenario hat die Website www\.contoso.com eine TTL von 30 Minuten, die unter der angegebenen RTO liegt, und zeigt auf die Produktionswebsite prod.contoso.com. Diese Konfiguration wird im normalen Geschäftsbetrieb verwendet. Die TTL von prod.contoso.com und dr.contoso.com wurde auf 300 Sekunden oder 5 Minuten festgelegt. Sie können einen Azure-Überwachungsdienst z.B. Azure Monitor oder Azure App Insights oder beliebige Überwachungslösungen von Partnern verwenden, z.B. Dynatrace. Sie können sogar selbst entwickelte Lösungen verwenden, die Ausfälle auf der Ebene von Anwendungen oder der virtuellen Infrastruktur überwachen oder erkennen können.
 
 ### <a name="step-3-update-the-cname-record"></a>Schritt 3: Aktualisieren des CNAME-Eintrags
 
@@ -103,7 +104,7 @@ Sobald ein Fehler erkannt wird, ändern Sie den Wert des Eintrags auf dr.contoso
 
 *Abbildung – Aktualisieren des CNAME-Eintrags in Azure*
 
-Innerhalb von 30 Minuten, in denen die meisten Resolver die zwischengespeicherten Zonendatei aktualisieren wird, werden alle Abfragen an www.contoso.com zu dr.contoso.com umgeleitet.
+Innerhalb von 30 Minuten, in denen die meisten Resolver die zwischengespeicherten Zonendatei aktualisieren, werden alle Abfragen an www\.contoso.com zu dr.contoso.com umgeleitet.
 Sie können auch den folgenden Azure CLI-Befehl ausführen, um den CNAME-Wert zu ändern:
  ```azurecli
    az network dns record-set cname set-record \
@@ -153,7 +154,7 @@ Auf ähnliche Weise erstellen Sie auch den Notfallwiederherstellungs-Endpunkt in
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Schritt 3: Einrichten der Integritätsprüfungen und der Failoverkonfiguration
 
-In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist**https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für Failover = TTL + Wiederholung * Testintervall. In diesem Fall ist der Wert 10 + 3 * 10 = 40 Sekunden (Max).
+In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist**https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für das Failover = Gültigkeitsdauer (TTL) + Wiederholung × Testintervall. In diesem Fall ist der Wert 10 + 3 × 10 = 40 Sekunden (max).
 Wenn die Anzahl der Wiederholungen auf 1 sowie die TTL auf 10 Sekunden festgelegt ist, beträgt die Zeit für das Failover 10 + 1 * 10 = 20 Sekunden. Leben Sie die Anzahl der Wiederholungen auf einen Wert von mehr als **1** fest, um die Wahrscheinlichkeit von Failovers aufgrund von falsch positiven Werten oder kleineren Netzwerk-Blips zu vermeiden. 
 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5c3da9a69204d7229ddcbbf39ec389684258e389
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9411cc42f2fbc12348b4d841174edbe75c584247
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470687"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890558"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -184,7 +184,7 @@ Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgeset
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2.880 US-Dollar  |
 |[101-200] |D1: 50.000 <br/>D2: 70.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |1.920 US-Dollar  |
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |5.760 US-Dollar  |
-|[201-300]  |D1: 50.000 <br/>D2: 70.000 <br/>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>C1: 20.000 RUs/Sek./100 x 0,016 US-Dollar x 100 Stunden = 320 US-Dollar |2.240 US-Dollar  |
+|[201-300]  |D1: 50.000 <br/>D2: 70.000 <br/>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |2.240 USD  |
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |6.720 US-Dollar |
 |[301-400] |D1: 10.000 <br/>D2: 80.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |1.440 US-Dollar   |
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2.880 US-Dollar  |

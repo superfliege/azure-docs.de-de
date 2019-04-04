@@ -1,5 +1,5 @@
 ---
-title: Clusterbeschreibung im Clusterressourcen-Manager | Microsoft-Dokumentation
+title: Cluster-Beschreibung im Clusterressourcen-Manager | Microsoft-Dokumentation
 description: Beschreibung eines Service Fabric-Clusters durch Angabe von Fehlerdomänen, Upgradedomänen, Knoteneigenschaften und Knotenkapazitäten für den Clusterressourcen-Manager.
 services: service-fabric
 documentationcenter: .net
@@ -7,22 +7,22 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 810388a85e4ad339ff1444d21ac231fe4c00aeac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120532"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Beschreiben eines Service Fabric-Clusters
-Der Service Fabric-Clusterressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Zur Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die Hochverfügbarkeit der Dienste sicherzustellen, die im Cluster ausgeführt werden. Beim Erzwingen dieser wichtigen Regeln wird auch versucht, den Ressourcenverbrauch innerhalb des Clusters zu optimieren.
+Der Service Fabric-Cluster-Ressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Zur Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die Hochverfügbarkeit der Dienste sicherzustellen, die im Cluster ausgeführt werden. Beim Erzwingen dieser wichtigen Regeln wird auch versucht, den Ressourcenverbrauch innerhalb des Clusters zu optimieren.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 Der Clusterressourcen-Manager unterstützt verschiedene Funktionen, die einen Cluster beschreiben:
@@ -47,6 +47,7 @@ Es ist wichtig, dass Fehlerdomänen richtig eingerichtet werden, da Service Fabr
 In der Grafik unten sind alle Entitäten farbig markiert, die einen Beitrag zu Fehlerdomänen leisten, und alle unterschiedlichen Fehlerdomänen aufgeführt, die sich ergeben. Dieses Beispiel enthält Datencenter („DC“), Racks („R“) und Blades („B“). Wenn jedes Blatt also mehrere virtuelle Computer enthält, kann die Fehlerdomänenhierarchie eine weitere Ebene umfassen.
 
 <center>
+
 ![Mithilfe von Fehlerdomänen strukturierte Knoten][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Es empfiehlt sich, dass alle Ebenen auf jeder Tiefe der Fehlerdomänenhierarchie
 Wie sehen nicht ausgeglichene Domänen aus? In der Abbildung unten sind zwei unterschiedliche Clusterlayouts veranschaulicht. Im ersten Beispiel werden die Knoten gleichmäßig auf die Fehlerdomänen verteilt. Im zweiten Beispiel verfügt eine Fehlerdomäne über mehr Knoten als die anderen Fehlerdomänen. 
 
 <center>
+
 ![Zwei unterschiedliche Clusterlayouts][Image2]
 </center>
 
@@ -72,6 +74,7 @@ Upgradedomänen sind Fehlerdomänen nicht unähnlich, es gibt jedoch einige wich
 Das folgende Diagramm zeigt drei Upgradedomänen, die auf drei Fehlerdomänen verteilt sind. Außerdem ist eine mögliche Platzierung für drei unterschiedliche Replikate eines zustandsbehafteten Diensts dargestellt, die jeweils in unterschiedlichen Fehler- und Upgradedomänen angeordnet werden. Bei dieser Platzierung kann der Ausfall einer Fehlerdomäne verkraftet werden, während gerade ein Dienstupgrade durchgeführt wird, und dennoch ist noch eine Kopie des Codes und der Daten vorhanden.  
 
 <center>
+
 ![Platzierung mit Fehler- und Upgradedomänen][Image3]
 </center>
 
@@ -88,6 +91,7 @@ Es gibt keine tatsächliche Beschränkung bei der Gesamtzahl der Fehler- oder Up
 - Ein „Stripeset“- oder „Matrix“-Modell, bei dem die Fehler- und Upgradedomänen eine Matrix bilden, in der die Computer normalerweise entlang der Diagonalen angeordnet sind
 
 <center>
+
 ![Layouts von Fehler- und Upgradedomänen][Image4]
 </center>
 
@@ -190,9 +194,9 @@ Der „quorumsichere“ Ansatz bietet mehr Flexibilität als der Ansatz mit „m
 Da beide Ansätze Stärken und Schwächen aufweisen, haben wir einen adaptiven Ansatz eingeführt, der diese beiden Strategien kombiniert.
 
 > [!NOTE]
->Dies ist das Standardverhalten ab Service Fabric Version 6.2. 
->
-Der adaptive Ansatz nutzt in der Standardeinstellung die Logik der „maximalen Differenz“ und wechselt nur bei Bedarf zur „quorumsicheren“ Logik. Der Clusterressourcen-Manager ermittelt automatisch anhand der Konfiguration von Clustern und Diensten, welche Strategie erforderlich ist. Für einen bestimmten Dienst gilt: *Wenn TargetReplicaSetSize durch die Anzahl von Fehlerdomänen und die Anzahl von Upgradedomänen gleichmäßig teilbar ist **und** die Anzahl von Knoten höchstens dem Produkt aus der Anzahl von Fehlerdomänen * der Anzahl von Upgradedomänen entspricht, sollte der Clusterressourcen-Manager die „quorumbasierte“ Logik für diesen Dienst nutzen.* Bedenken Sie, dass der Clusterressourcen-Manager diesen Ansatz für zustandslose und zustandsbehaftete Dienste verwendet, obwohl der Quorumsverlust für zustandslose Dienste nicht relevant ist.
+> Dies ist das Standardverhalten ab Service Fabric Version 6.2. 
+> 
+> Der adaptive Ansatz nutzt in der Standardeinstellung die Logik der „maximalen Differenz“ und wechselt nur bei Bedarf zur „quorumsicheren“ Logik. Der Clusterressourcen-Manager ermittelt automatisch anhand der Konfiguration von Clustern und Diensten, welche Strategie erforderlich ist. Für einen bestimmten Dienst gilt: *Wenn TargetReplicaSetSize durch die Anzahl von Fehlerdomänen und die Anzahl von Upgradedomänen gleichmäßig teilbar ist **und** die Anzahl von Knoten höchstens dem Produkt aus der Anzahl von Fehlerdomänen * der Anzahl von Upgradedomänen entspricht, sollte der Clusterressourcen-Manager die „quorumbasierte“ Logik für diesen Dienst nutzen.* Bedenken Sie, dass der Clusterressourcen-Manager diesen Ansatz für zustandslose und zustandsbehaftete Dienste verwendet, obwohl der Quorumsverlust für zustandslose Dienste nicht relevant ist.
 
 Wir kehren nun zum vorherigen Beispiel zurück und gehen davon aus, dass ein Cluster nun 8 Knoten besitzt (der Cluster ist immer noch mit fünf Fehlerdomänen und fünf Upgradedomänen konfiguriert und die TargetReplicaSetSize eines auf diesem Cluster gehosteten Diensts ist weiterhin fünf). 
 
@@ -225,7 +229,7 @@ Wir werfen einen Blick zurück auf das vierte Layout und die TargetReplicaSetSiz
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N/V |N/V |N/V |N/V |N/V |N/V |
+| **UD0** |– |– |– |– |– |– |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -344,6 +348,7 @@ Manchmal (eigentlich in den meisten Fällen) möchten Sie sicherstellen, dass be
 Zur Unterstützung dieser Arten von Konfigurationen verfügt Service Fabric über ein erstklassiges Tagkonzept, bei dem die Tags auf Knoten angewendet werden können. Diese Tags werden als **Knoteneigenschaften** bezeichnet. **Platzierungseinschränkungen** sind die Anweisungen, die an einzelne Dienste angefügt sind und eine oder mehrere Knoteneigenschaften auswählen. Platzierungseinschränkungen definieren, an welcher Stelle Dienste ausgeführt werden sollen. Die Gruppe der Einschränkungen ist erweiterbar. Alle Schlüssel-Wert-Paare können funktionieren. 
 
 <center>
+
 ![Clusterlayout bei verschiedenen Workloads][Image5]
 </center>
 
@@ -351,6 +356,7 @@ Zur Unterstützung dieser Arten von Konfigurationen verfügt Service Fabric übe
 Service Fabric definiert einige Standardknoteneigenschaften, die automatisch verwendet werden können, ohne dass sie vom Benutzer definiert werden müssen. Für jeden Knoten sind die Standardeigenschaften **NodeType** und **NodeName** definieren. Sie können beispielsweise folgende Platzierungseinschränkung schreiben: `"(NodeType == NodeType03)"`. Es hat sich gezeigt, dass NodeType eine der am häufigsten verwendeten Eigenschaften ist. Sie ist hilfreich, da sie eindeutig dem Typ eines Computers entspricht. Jeder Computertyp wiederum entspricht einem Typ von Workload in einer herkömmlichen n-schichtigen Anwendung.
 
 <center>
+
 ![Platzierungseinschränkungen und Knoteneigenschaften][Image6]
 </center>
 
@@ -474,6 +480,7 @@ Wenn Sie den *Lastenausgleich*für alle Ressourcen deaktivieren, kann der Cluste
 Während der Laufzeit verfolgt der Clusterressourcen-Manager die verbleibende Kapazität im Cluster und auf den Knoten. Zum Verfolgen der Kapazität subtrahiert der Clusterressourcen-Manager den Verbrauch jedes Diensts von der Kapazität des Knotens, auf dem der betreffende Dienst ausgeführt wird. Mit diesen Informationen kann der Clusterressourcen-Manager von Service Fabric ermitteln, wo Replikate platziert oder wohin diese verschoben werden sollen, um die Kapazität der Knoten nicht zu überschreiten.
 
 <center>
+
 ![Clusterknoten und -kapazität][Image7]
 </center>
 
@@ -603,7 +610,7 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen über die Architektur und den Informationsfluss innerhalb des Clusterressourcen-Managers finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-architecture.md).
+* Informationen zur Architektur und zum Informationsfluss innerhalb des Cluster Resource Managers finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-architecture.md).
 * Das Definieren von Defragmentierungsmetriken ist eine Möglichkeit, die Last auf Knoten zu konsolidieren, statt sie auszubreiten. Informationen zum Konfigurieren der Defragmentierung finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md)
 * Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md)

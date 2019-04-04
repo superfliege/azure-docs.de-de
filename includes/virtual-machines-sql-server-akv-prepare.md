@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4ff99cab168abeb0bbeeb8b29de0ea0285c255b0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457973"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505933"
 ---
 ## <a name="prepare-for-akv-integration"></a>Vorbereiten auf die Integration des Azure-Schlüsseltresors
 Es müssen mehrere Voraussetzungen erfüllt sein, damit Sie die Azure-Schlüsseltresor-Integration zum Konfigurieren Ihres virtuellen SQL Server-Computers verwenden können: 
@@ -29,8 +29,10 @@ Es müssen mehrere Voraussetzungen erfüllt sein, damit Sie die Azure-Schlüssel
 
 In den folgenden Abschnitten werden diese erforderlichen Komponenten und die Informationen beschrieben, die Sie ermitteln müssen, um die PowerShell-Cmdlets später ausführen zu können.
 
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
+
 ### <a id="install"></a> Installieren von Azure PowerShell
-Stellen Sie sicher, dass Sie das aktuelle Azure PowerShell SDK installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Stellen Sie sicher, dass Sie das aktuelle Azure PowerShell SDK installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a id="register"></a> Registrieren einer Anwendung in Ihrer Azure Active Directory-Instanz
 
@@ -49,7 +51,7 @@ Registrieren Sie als Nächstes eine Anwendung für AAD. So erhalten Sie ein Dien
 
 * Die Anwendungs-ID und das Geheimnis werden auch zum Erstellen von Anmeldeinformationen in SQL Server verwendet.
 
-* Sie müssen diese neue Client-ID autorisieren, sodass sie über die folgenden Zugriffsberechtigungen verfügt: **get**, **wrapKey**, **unwrapKey**. Hierfür wird das Cmdlet [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) verwendet. Weitere Informationen finden Sie unter [Azure Key Vault – Übersicht](../articles/key-vault/key-vault-overview.md).
+* Sie müssen diese neue Client-ID autorisieren, sodass sie über die folgenden Zugriffsberechtigungen verfügt: **get**, **wrapKey**, **unwrapKey**. Hierfür wird das Cmdlet [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) verwendet. Weitere Informationen finden Sie unter [Azure Key Vault – Übersicht](../articles/key-vault/key-vault-overview.md).
 
 ### <a id="createkeyvault"></a> Erstellen einer Key Vault-Instanz
 Um den Azure-Schlüsseltresor zum Speichern der Schlüssel zu verwenden, die Sie für die Verschlüsselung auf Ihrem virtuellen Computer nutzen, benötigen Sie Zugriff auf den Schlüsseltresor. Wenn Sie den Schlüsseltresor noch nicht eingerichtet haben, können Sie die Schritte im Artikel [Erste Schritte mit Azure Key Vault](../articles/key-vault/key-vault-overview.md) ausführen. Vor dem Ausführen der Schritte müssen Sie während dieses Setups einige Informationen ermitteln, da sie diese später beim Aktivieren der Azure Key Vault-Integration auf Ihrem virtuellen SQL-Computer benötigen.

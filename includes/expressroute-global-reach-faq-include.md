@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 01/29/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235976"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305318"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Was ist ExpressRoute Global Reach?
 
@@ -49,7 +49,7 @@ Ja, das ist möglich, sofern sich die Leitungen in den unterstützten Länder be
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Welchen Netzwerkdurchsatz zwischen meinen lokalen Netzwerken kann ich nach dem Aktivieren von ExpressRoute Global Reach erwarteten?
 
-Der Netzwerkdurchsatz zwischen Ihren lokalen Netzwerken, die durch ExpressRoute Global Reach aktiviert sind, ist durch die kleinere der beiden ExpressRoute-Leitungen begrenzt.
+Der Netzwerkdurchsatz zwischen Ihren lokalen Netzwerken, die durch ExpressRoute Global Reach aktiviert sind, ist durch die kleinere der beiden ExpressRoute-Leitungen begrenzt. Für Datenverkehr vom lokalen Standort zu Azure und von Standort zu Standort wird dieselbe Verbindung genutzt, und er unterliegen derselben Obergrenze für die Bandbreite. 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Welche Grenzwerte zur Anzahl von Routen, die angekündigt werden können und die ich erhalten kann, gelten für ExpressRoute Global Reach?
 

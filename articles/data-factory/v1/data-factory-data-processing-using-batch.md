@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822747"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124149"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -26,9 +26,12 @@ ms.locfileid: "55822747"
 
 In diesem Artikel wird die Architektur einer Beispiellösung beschrieben, mit der umfangreiche Datasets auf automatische und geplante Weise verschoben und verarbeitet werden. Darüber hinaus enthält der Artikel eine umfassende exemplarische Vorgehensweise zur Implementierung der Lösung mit Azure Data Factory und Azure Batch.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Er ist länger als viele andere Artikel, weil sich die exemplarische Vorgehensweise auf eine vollständige Beispiellösung bezieht. Falls Sie mit Batch und Data Factory noch nicht vertraut sind, können Sie sich darüber informieren, wie diese Dienste funktionieren und zusammenarbeiten. Wenn Sie mit den Diensten schon vertraut sind und eine Lösung planen oder erstellen, können Sie sich auf den Abschnitt „Architektur“ des Artikels konzentrieren. Wenn Sie einen Prototyp oder eine Lösung entwickeln, sollten Sie den Schritt-für-Schritt-Anleitungen in der exemplarischen Vorgehensweise folgen. Wir freuen uns über Ihre Kommentare hierzu und darüber, wie Sie die Informationen nutzen.
 
 Zunächst wird beschrieben, wie der Data Factory- und der Batch-Dienst Sie beim Verarbeiten großer Datasets in der Cloud unterstützen.     
+
 
 ## <a name="why-azure-batch"></a>Gründe für die Verwendung von Azure Batch
  Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Azure Batch ist ein Plattformdienst, mit dem rechenintensive Arbeitsschritte auf eine verwaltete Sammlung virtueller Computer angewendet werden. Der Dienst ermöglicht das automatische Skalieren von Computeressourcen, um die Anforderungen Ihrer Aufträge zu erfüllen.
@@ -93,7 +96,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie schnell ein kostenlo
 Sie nutzen ein Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md). Die Beispiellösung verwendet Blob-Speicher.
 
 #### <a name="azure-batch-account"></a>Azure Batch-Konto
-Erstellen Sie im [Azure-Portal](http://portal.azure.com/) ein Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Namen und Kontoschlüssel des Batch-Kontos. Sie können auch das Cmdlet [New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) verwenden, um ein Batch-Konto zu erstellen. Unter [Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erfahren Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
+Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Namen und Kontoschlüssel des Batch-Kontos. Sie können auch das Cmdlet [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) verwenden, um ein Batch-Konto zu erstellen. Unter [Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erfahren Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
 
 Die Beispiellösung verwendet Batch (indirekt über eine Data Factory-Pipeline) zum parallelen Verarbeiten von Daten in einem Computeknotenpool (einer verwalteten Sammlung von VMs).
 
@@ -201,7 +204,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 1. Importieren Sie das NuGet-Paket **Azure Storage** in das Projekt. Sie benötigen dieses Paket, da Sie in diesem Beispiel die Blob Storage-API verwenden:
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. Fügen Sie die folgenden „using“-Anweisungen zur Quelldatei im Projekt hinzu:
 
@@ -799,8 +802,8 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nä
    * Die Eigenschaft **linkedServiceName** der benutzerdefinierten Aktivität zeigt auf **AzureBatchLinkedService**, was Data Factory mitteilt, dass die benutzerdefinierte Aktivität in Azure Batch ausgeführt werden muss.
    * Die Einstellung **Parallelität** ist wichtig. Wenn Sie den Standardwert 1 verwenden, auch wenn Sie über zwei oder mehr Computeknoten im Batch-Pool verfügen, werden die Slices nacheinander verarbeitet. Daher nutzen Sie nicht die Parallelverarbeitungsfunktion von Azure Batch. Wenn Sie **concurrency** (Parallelität) auf einen höheren Wert wie z. B. 2 festlegen, können zwei Slices (was zwei Aufgaben in Azure Batch entspricht) gleichzeitig verarbeitet werden. In diesem Fall werden die virtuellen Computer im Batch-Pool verwendet. Legen Sie daher Sie die „concurrency“-Eigenschaft entsprechend fest.
    * Nur eine Aufgabe (Slice) wird standardmäßig auf einer virtuellen Maschine zu einem beliebigen Zeitpunkt ausgeführt. Standardmäßig ist **Max. Tasks pro VM** für einen Batch-Pool auf 1 festgelegt ist. Als Teil der Voraussetzungen haben Sie einen Pool erstellt, bei dem diese Eigenschaft auf 2 festgelegt ist. Aus diesem Grund können zwei Data Factory-Slices auf einem virtuellen Computer gleichzeitig ausgeführt werden.
-    - Die **isPaused**-Eigenschaft ist standardmäßig auf „false“ festgelegt. Die Pipeline wird in diesem Beispiel sofort ausgeführt, da die Slices in der Vergangenheit starten. Legen Sie diese Eigenschaft auf **true** fest, um die Pipeline anzuhalten, und legen Sie sie zum Neustart wieder auf **false** fest.
-    -   Die Zeiten für **start** und **end** liegen fünf Stunden auseinander. Slices werden stündlich erstellt, sodass insgesamt fünf Slices von der Pipeline erstellt werden.
+     - Die **isPaused**-Eigenschaft ist standardmäßig auf „false“ festgelegt. Die Pipeline wird in diesem Beispiel sofort ausgeführt, da die Slices in der Vergangenheit starten. Legen Sie diese Eigenschaft auf **true** fest, um die Pipeline anzuhalten, und legen Sie sie zum Neustart wieder auf **false** fest.
+     -   Die Zeiten für **start** und **end** liegen fünf Stunden auseinander. Slices werden stündlich erstellt, sodass insgesamt fünf Slices von der Pipeline erstellt werden.
 
 1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.
 
@@ -977,4 +980,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Onlinetools wie Power B
   * [Erste Schritte mit der Batch-Clientbibliothek für .NET](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

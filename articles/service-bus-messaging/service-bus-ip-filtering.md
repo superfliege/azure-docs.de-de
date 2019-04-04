@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136292"
 ---
 # <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
 
@@ -60,7 +60,7 @@ IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET- und einer Firewallregel mit Azure Resource Manager-Vorlagen
 
 > [!IMPORTANT]
-> Virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt.
+> Firewalls und virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt.
 
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
 

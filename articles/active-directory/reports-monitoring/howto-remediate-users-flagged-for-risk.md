@@ -2,7 +2,7 @@
 title: Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über den Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal.
 services: active-directory
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db4c2fc0781225af6cc59df72467a69e0ba73e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189554"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439125"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risik
 
 Außerdem können Sie mit Ihren Office 365-Anmeldeinformationen auch auf das **Azure Admin Center** zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
 
-**Greifen Sie im Office 365 Admin Center wie folgt auf den Bericht „Benutzer mit Risikomarkierung“ zu:**
+So greifen Sie im Microsoft 365 Admin Center auf den Bericht **Benutzer mit Risikomarkierung** zu
 
 1.  Wählen Sie im Navigationsbereich auf der linken Seite die Option **Admin Center**. 
 2.  Wählen Sie **Azure AD**.

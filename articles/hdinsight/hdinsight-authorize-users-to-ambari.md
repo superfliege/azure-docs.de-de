@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725268"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224021"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorisieren von Benutzern für Apache Ambari-Ansichten
 
@@ -51,24 +51,24 @@ Ambari verfügt über Ansichtsinstanzen für u.a. [Apache Hive](https://hive.apa
 
 **Erteilen einer Berechtigung für diese Gruppen** ![Erteilen einer Berechtigung für diese Gruppen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. Klicken Sie zum Hinzufügen eines Benutzers auf die Schaltfläche **Benutzer hinzufügen**.
+1. Klicken Sie zum Hinzufügen eines Benutzers auf die Schaltfläche **Benutzer hinzufügen**.
 
-    * Wenn Sie mit der Eingabe des Benutzernamens beginnen, wird eine Dropdownliste mit den zuvor definierten Namen angezeigt.
+   * Wenn Sie mit der Eingabe des Benutzernamens beginnen, wird eine Dropdownliste mit den zuvor definierten Namen angezeigt.
 
-    ![AutoVervollständigen des Benutzernamens](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![AutoVervollständigen des Benutzernamens](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * Wählen Sie einen Namen aus, oder geben Sie den vollständigen Benutzernamen ein. Klicken Sie auf die Schaltfläche **Neu**, um diesen Benutzernamen als neuen Benutzer hinzuzufügen.
+   * Wählen Sie einen Namen aus, oder geben Sie den vollständigen Benutzernamen ein. Klicken Sie auf die Schaltfläche **Neu**, um diesen Benutzernamen als neuen Benutzer hinzuzufügen.
 
-    * Aktivieren Sie zum Speichern der Änderungen das **blaue Kontrollkästchen**.
+   * Aktivieren Sie zum Speichern der Änderungen das **blaue Kontrollkästchen**.
 
-    ![Eingegebener Benutzer](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![Eingegebener Benutzer](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. Klicken Sie zum Hinzufügen einer Gruppe auf die Schaltfläche **Gruppe hinzufügen**.
+1. Klicken Sie zum Hinzufügen einer Gruppe auf die Schaltfläche **Gruppe hinzufügen**.
 
-    * Beginnen Sie mit der Eingabe des Gruppennamens. Die Vorgehensweise bei der Auswahl eines bereits existierenden Gruppennamens oder beim Hinzufügen einer neuen Gruppe entspricht der Vorgehensweise beim Hinzufügen von Benutzern.
-    * Aktivieren Sie zum Speichern der Änderungen das **blaue Kontrollkästchen**.
+   * Beginnen Sie mit der Eingabe des Gruppennamens. Die Vorgehensweise bei der Auswahl eines bereits existierenden Gruppennamens oder beim Hinzufügen einer neuen Gruppe entspricht der Vorgehensweise beim Hinzufügen von Benutzern.
+   * Aktivieren Sie zum Speichern der Änderungen das **blaue Kontrollkästchen**.
 
-    ![Eingegebene Gruppe](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![Eingegebene Gruppe](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
 Es kann nützlich sein, Benutzer direkt einer Ansicht hinzuzufügen, wenn Sie einem Benutzer die Berechtigungen zuweisen möchten, diese Ansicht zu verwenden, jedoch nicht möchten, dass er Mitglied einer Gruppe mit zusätzlichen Berechtigungen wird. Für einen möglichst geringen Verwaltungsaufwand ist es möglicherweise einfacher, Berechtigungen für Gruppen zuzuweisen.
 

@@ -8,15 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 03/19/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316918"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286600"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Azure Search-Dienst
 
@@ -42,19 +41,35 @@ Zwei Arten von Schlüsseln werden für den Zugriff auf Ihren Suchdienst verwende
 > [!NOTE]  
 >  Aus Sicherheitsgründen sollten im Anforderungs-URI keine vertraulichen Daten wie etwa ein API-Schlüssel (`api-key`) übergeben werden. Aus diesem Grund akzeptiert Azure Search als `api-key` in der Abfragezeichenfolge nur einen Abfrageschlüssel. Es empfiehlt sich, diese Richtlinie einzuhalten – es sei denn, der Inhalt Ihres Index soll öffentlich verfügbar sein. Wir empfehlen generell, `api-key` als Anforderungsheader zu übergeben.  
 
-## <a name="find-api-keys-for-your-service"></a>Suchen nach API-Schlüsseln für Ihren Dienst
+## <a name="find-existing-keys"></a>Suchen vorhandener Schlüssel
 
 Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) zur Verfügung. Weitere Informationen finden Sie unter [Verwalten der Administrator- und Abfrage-API-Schlüssel](search-security-api-keys.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
-3. Wählen Sie den Dienst aus, und suchen Sie auf der Dienstseite nach **Einstellungen** >**Schlüssel**, um Administrator- und Abfrageschlüssel anzuzeigen.
+3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**, um Administrator- und Abfrageschlüssel anzuzeigen.
 
-![Portalseite > „Einstellungen“ > Abschnitt „Schlüssel“](media/search-security-overview/settings-keys.png)
+   ![Portalseite > „Einstellungen“ > Abschnitt „Schlüssel“](media/search-security-overview/settings-keys.png)
+
+## <a name="create-query-keys"></a>Erstellen von Abfrageschlüsseln
+
+Abfrageschlüssel werden für den schreibgeschützten Zugriff auf Dokumente in einem Index verwendet. Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wichtig, um die Suchobjekte in Ihrem Dienst zu schützen. Verwenden Sie für Abfragen aus einer Client-App immer einen Abfrageschlüssel anstelle eines Administratorschlüssels.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
+3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**.
+4. Klicken Sie auf **Abfrageschlüssel verwalten**.
+5. Verwenden Sie eine bereits für Ihren Dienst generierte Abfrage, oder erstellen Sie bis zu 50 neue Abfrageschlüssel. Der Standardabfrageschlüssel ist nicht benannt. Sie können zusätzliche Abfrageschlüssel jedoch für eine einfachere Verwaltbarkeit benennen.
+
+   ![Erstellen oder Verwenden von Abfrageschlüsseln](media/search-security-overview/create-query-key.png) 
+
+
+> [!Note]
+> Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Azure Search-Index in C#](search-query-dotnet.md).
 
 ## <a name="regenerate-admin-keys"></a>Erneutes Generieren von Administratorschlüsseln
 
-Für jeden Dienst werden zwei Administratorschlüssel erstellt, sodass Sie ein Rollover für einen Primärschlüssel mit dem Sekundärschlüssel für den weiteren Zugriff ausführen können.
+Für jeden Dienst werden zwei Administratorschlüssel erstellt, sodass Sie einen Primärschlüssel mit dem Sekundärschlüssel für den weiteren Zugriff rotieren können.
 
 Wenn Sie sowohl Primär- als auch Sekundärschlüssel gleichzeitig neu generieren, haben alle Anwendungen, die einen der beiden Schlüssel für den Zugriff auf Dienstvorgänge verwenden, keinen Zugriff mehr auf den Dienst.
 

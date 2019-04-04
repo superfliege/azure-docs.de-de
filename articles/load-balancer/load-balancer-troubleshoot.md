@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 495325696dad79a6cc1a77b9a87f6db0af4c1156
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108830"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -77,7 +77,7 @@ Wenn alle vorhergehenden Ursachen anscheinend ordnungsgemäß überprüft und au
     - Führen Sie eine gleichzeitige Netsh-Ablaufverfolgung für die Ziel-Back-End-Pool-VM und eine andere Test-VM im selben VNET aus. Führen Sie jetzt für einige Zeit einen PsPing-Test aus, erfassen Sie einige Netzwerk-Ablaufverfolgungen, und beenden Sie den Test. 
     - Analysieren Sie die erfassten Netzwerkdaten, und stellen Sie fest, ob es eingehende und ausgehende Pakete im Zusammenhang mit der Pingabfrage gibt. 
         - Wenn keine eingehenden Pakete auf der Back-End-Pool-VM festgestellt werden, blockiert möglicherweise die Fehlkonfiguration von Netzwerksicherheitsgruppen oder UDR den Datenverkehr. 
-        - Wenn keine ausgehenden Pakete auf der Back-End-Pool-VM festgestellt werden, muss die VM auf andere Probleme (z.B. das Blockieren des Testports durch eine Anwendung) überprüft werden. 
+        - Wenn keine ausgehenden Pakete auf der Back-End-Pool-VM festgestellt werden, muss die VM auf andere Probleme (z. B. das Blockieren des Testports durch eine Anwendung) überprüft werden. 
     - Überprüfen Sie, ob die Testpakete zwangsweise an ein anderes Ziel gesendet werden (möglicherweise über UDR-Einstellungen), bevor sie den Load Balancer erreichen. Dies kann verursachen, dass der Datenverkehr die Back-End-VM nicht erreicht. 
 * Ändern Sie den Testtyp (z.B. von HTTP in TCP), und konfigurieren Sie den entsprechenden Port in Netzwerksicherheitsgruppen-ACLs und der Firewall, um zu prüfen, ob das Problem in der Konfiguration der Testantwort liegt. Weitere Informationen zur Konfiguration von Integritätstests finden Sie unter [Endpoint Load Balancing health probe configuration](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/) (Konfiguration von Integritätstests für den Endpunktlastenausgleich).
 
@@ -128,7 +128,7 @@ Wenn ein interner Load Balancer innerhalb eines VNet konfiguriert wird und eine 
 Wenn Sie eine Supportanfrage öffnen möchten, erfassen Sie die folgenden Informationen, um eine schnellere Lösung zu ermöglichen. Wählen Sie eine einzelne Back-End-VM für die Durchführung der folgenden Tests aus:
 - Verwenden Sie „Psping“ von einer der Back-End-VMs im VNET, um die Testportantwort zu testen (Beispiel: psping 10.0.0.4:3389), und zeichnen Sie die Ergebnisse auf. 
 - Wenn bei diesen Pingtests keine Antwort empfangen wird, führen Sie beim Ausführen von „PsPing“ eine gleichzeitige Netsh-Ablaufverfolgung auf der Back-End-VM und der VNET-Test-VM aus, und beenden Sie dann die Netsh-Ablaufverfolgung. 
-  
+  
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sollte sich das Problem mit den oben genannten Schritten nicht beheben lassen, erstellen Sie ein [Supportticket](https://azure.microsoft.com/support/options/).

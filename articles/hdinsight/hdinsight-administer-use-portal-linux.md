@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3258f4d36d80c2a501e4ceba3b428128fc3f781b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201006"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -56,7 +56,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster** den Namen Ihres Clusters aus.](
     - **Tools:** Hilfeinformationen für HDInsight-bezogene Tools.
 
 - **Menü „Einstellungen“**  
-  - **Clustergröße**: Dient zum Überprüfen, Erhöhen und Verringern der Anzahl von Workerknoten im Cluster. Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-management-portal.md#scale-clusters).
+  - **Clustergröße**: Dient zum Überprüfen, Erhöhen und Verringern der Anzahl von Workerknoten im Cluster. Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-portal-linux.md#scale-clusters).
   - **Kontingentgrenzen**: Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.
   - **SSH + Clusteranmeldung**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
   - **Data Lake Storage Gen1:** Dient zum Konfigurieren des Data Lake Storage Gen1-Zugriffs.  Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
@@ -71,9 +71,9 @@ Wählen Sie auf der Seite [**HDInsight-Cluster** den Namen Ihres Clusters aus.](
 
 - **Menü „Überwachung“**
   - **Warnungen:** Dient zum Verwalten der Warnungen und Aktionen.
-  - **Metriken**: Dient zum Überwachen der Clustermetriken in Azure Log Analytics.
+  - **Metriken**: Überwacht die Clustermetriken in Azure Monitor-Protokollen.
   - **Diagnoseeinstellungen**: Einstellungen zum Speicherort der Diagnosemetriken.
-  - **Operations Management Suite:**  Überwacht den Cluster in Azure Operations Management Suite (OMS) und Azure Log Analytics.
+  - **Operations Management Suite:**  Überwacht den Cluster in Azure Operations Management Suite (OMS) und Azure Monitor-Protokollen.
 
 - **Menü „Support und Problembehandlung“**
   - **Ressourcenintegrität**: Weitere Informationen finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).
@@ -186,7 +186,7 @@ Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwen
 Es gibt viele Methoden, mit denen Sie den Prozess programmieren können:
 
 * Verwenden Sie Azure Data Factory. Informationen zum Erstellen bedarfsgesteuerter verknüpfter HDInsight-Dienste finden Sie unter [Erstellen von bedarfsgesteuerten Linux-basierten Apache Hadoop-Clustern in HDInsight mit Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md).
-* Verwenden Sie Azure PowerShell.  Weitere Informationen hierzu finden Sie unter [Analysieren von Flugverspätungsdaten mit Hive in HDInsight](hdinsight-analyze-flight-delay-data.md).
+* Verwenden Sie Azure PowerShell.  Weitere Informationen hierzu finden Sie unter [Analysieren von Flugverspätungsdaten mit Hive in HDInsight](hdinsight-analyze-flight-delay-data-linux.md).
 * Verwenden Sie die klassische Azure-Befehlszeilenschnittstelle. Weitere Informationen hierzu finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit der klassischen Azure CLI](hdinsight-administer-use-command-line.md).
 * Verwenden das Sie HDInsight .NET-SDK. Weitere Informationen finden Sie unter [Übermitteln von Apache Hadoop-Aufträgen](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

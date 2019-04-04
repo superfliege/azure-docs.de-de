@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273346"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112618"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein Virtual Network beschrieben und veranschaulicht, wie Sie diese mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann. Diese Netzwerke können dann durch VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. 
@@ -277,19 +277,20 @@ Die neue Version befindet sich in der Vorschau und weist folgende Merkmale auf.
 * Das neue Feature für VNET-Integration funktioniert nicht für Apps in einer App Service-Umgebung.
 * Ein VNET mit einer integrierten App kann nicht gelöscht werden.  
 * Routingtabellen und globales Peering sind mit der neuen VNET-Integration noch nicht verfügbar.  
-* Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Da die Subnetzgröße nach dem Zuweisen nicht mehr geändert werden kann, verwenden Sie ein Subnetz, das mehr als die maximale Skalierungsgröße abdecken kann. Empfohlen wird die Größe /27 mit 32 Adressen, da sie einen App Service-Plan unterstützt, der für 20 Instanzen skaliert ist.  Mit der neuen VNET-Integrationsfunktion können Sie durch Dienstendpunkte gesicherte Ressourcen nutzen. Aktivieren Sie dazu Dienstendpunkte in dem für die VNET-Integration verwendeten Subnetz.
+* Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Da die Subnetzgröße nach dem Zuweisen nicht mehr geändert werden kann, verwenden Sie ein Subnetz, das mehr als die maximale Skalierungsgröße abdecken kann. Empfohlen wird die Größe /27 mit 32 Adressen, da sie einen App Service-Plan unterstützt, der für 20 Instanzen skaliert ist.
+* Mit der neuen VNET-Integrationsfunktion können Sie durch Dienstendpunkte gesicherte Ressourcen nutzen. Aktivieren Sie dazu Dienstendpunkte in dem für die VNET-Integration verwendeten Subnetz.
 
 So verwenden Sie das neue Feature
 
 1. Wechseln Sie zur Netzwerkbenutzeroberfläche im Portal. Wenn Ihre App das neue Feature verwenden kann, wird eine Funktion zum Verwenden des neuen Vorschaufeatures angezeigt.  
 
- ![Auswählen der neuen VNET-Integration (Vorschau)][6]
+   ![Auswählen der neuen VNET-Integration (Vorschau)][6]
 
 1. Wählen Sie **VNET hinzufügen (Vorschau)** aus.  
 
 1. Wählen Sie das Resource Manager-VNET aus, das Sie integrieren möchten, und erstellen Sie dann ein neues Subnetz, oder wählen Sie ein vorhandenes leeres Subnetz aus. Die Integration dauert weniger als eine Minute. Während der Integration wird Ihre App neu gestartet.  Nach Abschluss der Integration werden Details für das VNET, mit dem Sie integriert sind, angezeigt, und ein Banner oben informiert Sie, dass sich das Feature in der Vorschau befindet.
 
- ![Auswählen von VNET und Subnetz][7]
+   ![Auswählen von VNET und Subnetz][7]
 
 Damit Ihre App den DNS-Server, für den Ihr VNET konfiguriert ist, verwenden kann, erstellen Sie für Ihre App eine Anwendungseinstellung mit dem Namen WEBSITE_DNS_SERVER und der IP-Adresse des Servers als Wert.  Wenn Sie über einen sekundären DNS-Server verfügen, erstellen Sie eine andere Anwendungseinstellung mit dem Namen WEBSITE_DNS_ALT_SERVER und der IP-Adresse des Servers als Wert. 
 

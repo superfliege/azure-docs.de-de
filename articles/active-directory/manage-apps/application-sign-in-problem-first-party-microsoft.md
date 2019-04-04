@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc5143803c7d031071cccbb9c6c3842bbdacd9c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177188"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104147"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
@@ -31,7 +31,7 @@ Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsof
 
 -   Für Anwendungen in Office 365 oder anderen kostenpflichtigen Suites erhalten Benutzer Zugriff über **Lizenzzuweisungen** direkt in ihrem Benutzerkonto oder über eine Gruppe mithilfe der Funktion für gruppenbasierte Lizenzzuweisung.
 
--   Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, erhalten Benutzer möglicherweise Zugriff über eine **Benutzerzustimmung**. Dies bedeutet, dass sie sich mit ihrem Geschäfts-, Schul- oder Unikonto bei Azure AD bei der Anwendung anmelden und dieser den Zugriff auf eine begrenzte Menge von Daten in ihrem Konto gewähren.
+-   Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, erhalten Benutzer möglicherweise Zugriff über eine **Benutzerzustimmung**. Dies bedeutet, dass sie sich mit ihrem Geschäfts-, Schul- oder Unikonto von Azure AD bei der Anwendung anmelden und dieser den Zugriff auf eine begrenzte Menge von Daten in ihrem Konto gewähren.
 
 -   Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, können Benutzer auch Zugriff über eine **Administratorzustimmung** erhalten. Dies bedeutet, dass ein Administrator festgelegt hat, dass die Anwendung von allen Personen in seiner Organisation verwendet werden kann. Daher meldet er sich mit einem globalen Administratorkonto bei der Anwendung an und gewährt allen Benutzer in der Organisation Zugriff.
 
@@ -53,7 +53,7 @@ Im Anschluss finden Sie eine Liste der allgemeinen Problembereiche, die Sie unte
 
 Im Folgenden werden einige allgemeine Probleme beschrieben, die auftreten können, wenn Benutzer sich nicht bei einer Microsoft-Anwendung anmelden können.
 
--   Allgemeine Probleme, die zuerst überprüft werden sollten
+- Allgemeine Probleme, die zuerst überprüft werden sollten
 
   * Stellen Sie sicher, dass der Benutzer sich bei der **richtigen URL** anmeldet und nicht bei der URL einer lokalen Anwendung.
 
@@ -65,31 +65,31 @@ Im Folgenden werden einige allgemeine Probleme beschrieben, die auftreten könne
 
   * Stellen Sie sicher, dass **Kennwort des Benutzers nicht abgelaufen ist oder vergessen wurde**. [Zurücksetzen eines Benutzerkennworts](#reset-a-users-password) oder [Aktivieren von Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-   * Stellen Sie sicher, dass Benutzerzugriff nicht durch **Multi-Factor Authentication** blockiert wird. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
+  * Stellen Sie sicher, dass Benutzerzugriff nicht durch **Multi-Factor Authentication** blockiert wird. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
 
-   * Stellen Sie sicher, dass der Benutzerzugriff nicht durch eine **Richtlinie für bedingten Zugriff** oder eine **Identity Protection**-Richtlinie blockiert wird. [Überprüfen einer bestimmten Richtlinie für bedingten Zugriff](#problems-with-conditional-access-policies) oder [Überprüfen der Richtlinie für bedingten Zugriff einer bestimmten Anwendung](#check-a-specific-applications-conditional-access-policy) oder [Deaktivieren einer bestimmten Richtlinie für bedingten Zugriff](#disable-a-specific-conditional-access-policy)
+  * Stellen Sie sicher, dass der Benutzerzugriff nicht durch eine **Richtlinie für bedingten Zugriff** oder eine **Identity Protection**-Richtlinie blockiert wird. [Überprüfen einer bestimmten Richtlinie für bedingten Zugriff](#problems-with-conditional-access-policies) oder [Überprüfen der Richtlinie für bedingten Zugriff einer bestimmten Anwendung](#check-a-specific-applications-conditional-access-policy) oder [Deaktivieren einer bestimmten Richtlinie für bedingten Zugriff](#disable-a-specific-conditional-access-policy)
 
-   * Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für bedingten Zugriff erzwungen werden können. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
+  * Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für bedingten Zugriff erzwungen werden können. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
 
--   Im Folgenden werden einige spezifische Probleme für **Microsoft**-**Anwendungen, die eine Lizenz erfordern** (z.B. Office 365) aufgeführt, die Sie überprüfen können, nachdem Sie die oben genannten allgemeinen Probleme ausgeschlossen haben:
+- Im Folgenden werden einige spezifische Probleme für **Microsoft**-**Anwendungen, die eine Lizenz erfordern** (z.B. Office 365) aufgeführt, die Sie überprüfen können, nachdem Sie die oben genannten allgemeinen Probleme ausgeschlossen haben:
 
-   * Stellen Sie sicher, dass dem Benutzer eine **Lizenz zugewiesen** ist. [Überprüfen der zugewiesenen Lizenzen eines Benutzers](#check-a-users-assigned-licenses) oder [Überprüfen der zugewiesenen Lizenzen einer Gruppe](#check-a-groups-assigned-licenses)
+  * Stellen Sie sicher, dass dem Benutzer eine **Lizenz zugewiesen** ist. [Überprüfen der zugewiesenen Lizenzen eines Benutzers](#check-a-users-assigned-licenses) oder [Überprüfen der zugewiesenen Lizenzen einer Gruppe](#check-a-groups-assigned-licenses)
 
-   * Wenn die Lizenz einer **statischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass der **Benutzer ein Mitglied** dieser Gruppe ist. [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+  * Wenn die Lizenz einer **statischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass der **Benutzer ein Mitglied** dieser Gruppe ist. [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
 
-   * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die **Regel der dynamischen Gruppe richtig festgelegt wurde**. [Überprüfen der Mitgliedschaftskriterien einer dynamischen Gruppe](#check-a-dynamic-groups-membership-criteria)
+  * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die **Regel der dynamischen Gruppe richtig festgelegt wurde**. [Überprüfen der Mitgliedschaftskriterien einer dynamischen Gruppe](#check-a-dynamic-groups-membership-criteria)
 
-   * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die dynamische Gruppe die Verarbeitung der Mitgliedschaften **abgeschlossen hat** und dass der **Benutzer ein Mitglied ist** (dies kann einige Zeit dauern). [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+  * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die dynamische Gruppe die Verarbeitung der Mitgliedschaften **abgeschlossen hat** und dass der **Benutzer ein Mitglied ist** (dies kann einige Zeit dauern). [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
 
-   *  Nachdem Sie sichergestellt haben, dass die Lizenz zugewiesen ist, stellen Sie sicher, dass die Lizenz **nicht abgelaufen** ist.
+  *  Nachdem Sie sichergestellt haben, dass die Lizenz zugewiesen ist, stellen Sie sicher, dass die Lizenz **nicht abgelaufen** ist.
 
-   *  Stellen Sie sicher, dass sie Lizenz **für die Anwendung**, auf die der Benutzer zugreifen möchte, gültig ist.
+  *  Stellen Sie sicher, dass sie Lizenz **für die Anwendung**, auf die der Benutzer zugreifen möchte, gültig ist.
 
--   Im Folgenden finden Sie einige weitere Aspekte, die Sie für **Microsoft**-**Anwendungen, die keine Lizenz erfordern**, überprüfen können:
+- Im Folgenden finden Sie einige weitere Aspekte, die Sie für **Microsoft**-**Anwendungen, die keine Lizenz erfordern**, überprüfen können:
 
-   * Wenn die Anwendung **Berechtigungen auf Benutzerebene** (beispielsweise „Auf das Postfach dieses Benutzers zugreifen“) anfordert, stellen Sie sicher, dass der Benutzer sich bei der Anwendung angemeldet und eine **Zustimmung auf Benutzerebene** durchgeführt hat, damit die Anwendung auf seine Daten zugreifen kann.
+  * Wenn die Anwendung **Berechtigungen auf Benutzerebene** (beispielsweise „Auf das Postfach dieses Benutzers zugreifen“) anfordert, stellen Sie sicher, dass der Benutzer sich bei der Anwendung angemeldet und eine **Zustimmung auf Benutzerebene** durchgeführt hat, damit die Anwendung auf seine Daten zugreifen kann.
 
-   * Wenn die Anwendung **Berechtigungen auf Administratorebene** (beispielsweise „Auf die Postfächer aller Benutzer zugreifen“) anfordert, stellen Sie sicher, dass ein globaler Administrator eine **Zustimmung auf Benutzerebene im Namen aller Benutzer** in der Organisation durchgeführt hat.
+  * Wenn die Anwendung **Berechtigungen auf Administratorebene** (beispielsweise „Auf die Postfächer aller Benutzer zugreifen“) anfordert, stellen Sie sicher, dass ein globaler Administrator eine **Zustimmung auf Benutzerebene im Namen aller Benutzer** in der Organisation durchgeführt hat.
 
 ## <a name="problems-with-the-users-account"></a>Probleme mit dem Konto des Benutzers
 
@@ -187,25 +187,25 @@ Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgen
 
 Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
+4. Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
 
-5.  Klicken Sie auf **Alle Benutzer**.
+5. Klicken Sie auf **Alle Benutzer**.
 
-6.  Klicken Sie oben im Bereich auf die Schaltfläche **Multi-Factor Authentication**.
+6. Klicken Sie oben im Bereich auf die Schaltfläche **Multi-Factor Authentication**.
 
-7.  Nachdem das **Multi-Factor Authentication-Verwaltungsportal** geladen wurde, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
+7. Nachdem das **Multi-Factor Authentication-Verwaltungsportal** geladen wurde, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
 
-8.  Suchen Sie den Benutzer, indem Sie die Liste der Benutzer durchsuchen, filtern oder sortieren.
+8. Suchen Sie den Benutzer, indem Sie die Liste der Benutzer durchsuchen, filtern oder sortieren.
 
-9.  Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
+9. Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
 
-  * **Hinweis**: Wenn ein Benutzer sich im Status Erzwungen befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status zu **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
+   * **Hinweis**: Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status zu **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
 
 ### <a name="check-a-users-authentication-contact-info"></a>Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
 
@@ -365,21 +365,21 @@ Um die einer Gruppe zugewiesenen Lizenzen zu überprüfen, führen Sie die folge
 
 Um die einer Gruppe zugewiesenen Lizenzen erneut zu verarbeiten, führen Sie die folgenden Schritte aus:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
+4. Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
 
-5.  Klicken Sie auf **Alle Gruppen**.
+5. Klicken Sie auf **Alle Gruppen**.
 
-6.  **Suchen** Sie nach der gewünschten Gruppe, und **klicken Sie auf die Zeile**, um sie auszuwählen.
+6. **Suchen** Sie nach der gewünschten Gruppe, und **klicken Sie auf die Zeile**, um sie auszuwählen.
 
-7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen der Gruppe derzeit zugewiesen sind.
+7. Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen der Gruppe derzeit zugewiesen sind.
 
-8.  Klicken Sie auf die Schaltfläche **Erneut verarbeiten**, um sicherzustellen, dass die den Mitgliedern dieser Gruppe zugewiesenen Lizenzen auf dem neuesten Stand sind. Dies kann je nach der Größe und Komplexität der Gruppe sehr lange dauern.
+8. Klicken Sie auf die Schaltfläche **Erneut verarbeiten**, um sicherzustellen, dass die den Mitgliedern dieser Gruppe zugewiesenen Lizenzen auf dem neuesten Stand sind. Dies kann je nach der Größe und Komplexität der Gruppe sehr lange dauern.
 
    >[!NOTE]
    >Um die Zeit zu verkürzen, sollten Sie in Erwägung ziehen, dem Benutzer vorübergehend direkt eine Lizenz zuzuweisen. [Weisen Sie einem Benutzer eine Lizenz zu.](#problems-with-application-consent)
@@ -390,32 +390,32 @@ Um die einer Gruppe zugewiesenen Lizenzen erneut zu verarbeiten, führen Sie die
 
 Um einer Gruppe eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
+4. Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
 
-5.  Klicken Sie auf **Alle Gruppen**.
+5. Klicken Sie auf **Alle Gruppen**.
 
-6.  **Suchen** Sie nach der gewünschten Gruppe, und **klicken Sie auf die Zeile**, um sie auszuwählen.
+6. **Suchen** Sie nach der gewünschten Gruppe, und **klicken Sie auf die Zeile**, um sie auszuwählen.
 
-7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen der Gruppe derzeit zugewiesen sind.
+7. Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen der Gruppe derzeit zugewiesen sind.
 
-8.  Klicken Sie auf die Schaltfläche **Zuweisen**.
+8. Klicken Sie auf die Schaltfläche **Zuweisen**.
 
-9.  Wählen Sie in der Liste der verfügbaren Produkte **ein oder mehrere Produkte** aus.
+9. Wählen Sie in der Liste der verfügbaren Produkte **ein oder mehrere Produkte** aus.
 
 10. **Optional:** Klicken Sie auf die Option für **Zuweisungsoptionen**, um Produkte differenziert zuzuweisen. Klicken Sie auf **OK**, wenn Sie fertig sind.
 
 11. Klicken Sie auf die Schaltfläche **Zuweisen**, um der Gruppe diese Lizenzen zuzuweisen. Dies kann je nach der Größe und Komplexität der Gruppe sehr lange dauern.
 
-   >[!NOTE]
-   >Um die Zeit zu verkürzen, sollten Sie in Erwägung ziehen, dem Benutzer vorübergehend direkt eine Lizenz zuzuweisen. [Weisen Sie einem Benutzer eine Lizenz zu.](#problems-with-application-consent)
-   > 
-   >
+    >[!NOTE]
+    >Um die Zeit zu verkürzen, sollten Sie in Erwägung ziehen, dem Benutzer vorübergehend direkt eine Lizenz zuzuweisen. [Weisen Sie einem Benutzer eine Lizenz zu.](#problems-with-application-consent)
+    > 
+    >
 
 ## <a name="problems-with-conditional-access-policies"></a>Probleme mit Richtlinien für bedingten Zugriff
 
@@ -423,19 +423,19 @@ Um einer Gruppe eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus:
 
 So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugriff
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
 
-5.  Klicken Sie auf das Navigationselement **Bedingter Zugriff**.
+5. Klicken Sie auf das Navigationselement **Bedingter Zugriff**.
 
-6.  Klicken Sie auf die Richtlinie, die Sie untersuchen möchten.
+6. Klicken Sie auf die Richtlinie, die Sie untersuchen möchten.
 
-7.  Vergewissern Sie sich, dass keine spezifischen Bedingungen, Zuweisungen oder anderen Einstellungen den Benutzerzugriff blockieren können.
+7. Vergewissern Sie sich, dass keine spezifischen Bedingungen, Zuweisungen oder anderen Einstellungen den Benutzerzugriff blockieren können.
 
    >[!NOTE]
    >Möglicherweise sollten Sie diese Richtlinie vorübergehend deaktivieren, um sicherzustellen, dass sie keine Auswirkungen auf Anmeldungen hat. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.

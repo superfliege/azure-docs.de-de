@@ -1,6 +1,6 @@
 ---
-title: Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung mithilfe von Azure AD-Zugriffsüberprüfungen starten.
+title: Prüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Zugriff von Gruppenmitglieder und Anwendungen mit Azure AD-Zugriffsüberprüfungen prüfen können.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,46 +11,97 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/16/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a6a137796c24f97364b044484d2be739ae5412d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 097d230e919e6d4b56e6c677364610bda6630f75
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171172"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728385"
 ---
-# <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen
+# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Prüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
-Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Anwendungen und Mitglieder von Gruppen in Azure AD und anderen Microsoft Online Services durch eine Funktion namens „Zugriffsüberprüfungen“. Sie haben möglicherweise eine E-Mail von Microsoft erhalten, in der Sie aufgefordert werden, den Zugriff von Mitgliedern einer Gruppe oder Benutzern mit Zugriff auf eine Anwendung zu überprüfen. 
+Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Anwendungen und Gruppenmitglieder in Azure AD und anderen Microsoft-Onlinedienste durch die Funktion „Zugriffsüberprüfungen“.
 
-## <a name="open-an-access-review"></a>Öffnen einer Zugriffsüberprüfung
+In diesem Artikel wird beschrieben, wie ein Reviewer eine Zugriffsüberprüfung für Gruppenmitglieder oder Benutzer mit Zugriffsberechtigungen für eine Anwendung durchführt.
 
-Um die ausstehenden Zugriffsüberprüfungen anzuzeigen, klicken Sie auf den Zugriffsüberprüfungslink in der E-Mail. Ab August 2018 weisen die E-Mail-Benachrichtigungen für Azure AD-Rollen einen aktualisierten Entwurf auf. Das folgende Beispiel zeigt eine E-Mail, die gesendet wird, wenn ein Benutzer für die Rolle als Prüfer eingeladen wurde. 
+## <a name="open-the-access-review"></a>Öffnen der Zugriffsüberprüfung
 
-![E-Mail zur Zugriffsüberprüfung](./media/perform-access-review/new-ar-email.png)
+Bei einer Zugriffsüberprüfung müssen Sie zuerst die Zugriffsüberprüfung suchen und öffnen.
 
-Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsüberprüfungen mit folgenden Schritten anzeigen:
+1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachfolgend sehen Sie eine Beispiel-E-Mail, die zur Überprüfen des Zugriffs auf eine Gruppe auffordert.
 
-1. Melden Sie sich beim [Azure AD-Zugriffsbereich](https://myapps.microsoft.com) an.
+    ![E-Mail zur Zugriffsüberprüfung](./media/perform-access-review/access-review-email.png)
 
-2. Wählen Sie das Benutzersymbol in der oberen rechten Ecke der Seite, das Ihren Namen und Ihre Standardorganisation anzeigt. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
+1. Klicken Sie auf den Link **Start review** (Jetzt überprüfen), um die Zugriffsüberprüfung zu öffnen.
 
-3. Wenn rechts auf der Seite eine Kachel mit der Bezeichnung **Zugriffsüberprüfungen** vorhanden ist, wählen Sie sie. Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
+Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfungen mit folgenden Schritten anzeigen.
 
-## <a name="fill-out-an-access-review"></a>Ausfüllen einer Zugriffsüberprüfung
+1. Melden Sie sich auf [https://myapps.microsoft.com](https://myapps.microsoft.com) im MyApps-Portal an.
 
-Wenn Sie eine Zugriffsüberprüfung aus der Liste auswählen, sehen Sie die Namen der Benutzer, die überprüft werden müssen. Sie sehen möglicherweise nur einen Namen – Ihren eigenen – wenn die Anforderung die Überprüfung Ihres eigenen Zugriffs war.
+    ![MyApps-Portal](./media/perform-access-review/myapps-access-panel.png)
 
-Sie können für jede Zeile auf der Liste entscheiden, ob Sie den Zugriff des Benutzers genehmigen oder verweigern. Wählen Sie die Zeile aus, und wählen Sie Genehmigung oder Verweigerung. (Wenn Sie den Benutzer nicht kennen, können Sie dies auch angeben.)
+1. Klicken Sie oben rechts auf der Seite auf das Benutzersymbol, neben dem Ihr Name und Ihre Standardorganisation angezeigt werden. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
 
-Der Prüfer kann möglicherweise verlangen, dass Sie eine Begründung für den weiteren Zugriffsbedarf oder die Gruppenmitgliedschaft angeben, bevor der Zugriff genehmigt wird.
+1. Klicken Sie rechts auf der Seite auf die Kachel **Zugriffsüberprüfungen**, um eine Liste mit den ausstehenden Zugriffsüberprüfungen anzuzeigen.
+
+    Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
+
+    ![Liste mit den Zugriffsüberprüfungen](./media/perform-access-review/access-reviews-list.png)
+
+1. Klicken Sie bei der Zugriffsüberprüfung, die Sie durchführen möchten, auf den Link **Überprüfung starten**.
+
+## <a name="perform-the-access-review"></a>Durchführen der Zugriffsüberprüfung
+
+Wenn Sie die Zugriffsüberprüfung öffnen, sehen Sie die Namen der Benutzer, die überprüft werden müssen.
+
+Wenn Sie aufgefordert werden, Ihren eigenen Zugriff zu überprüfen, sieht die Seite anders aus. Weitere Informationen finden Sie unter [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen](review-your-access.md).
+
+![Durchführen der Zugriffsüberprüfung](./media/perform-access-review/perform-access-review.png)
+
+Es gibt zwei Möglichkeiten, Zugriff zu gewähren oder zu verweigern:
+
+- Sie können jede Anforderung einzeln gewähren oder verweigern, oder
+- Sie können die Systemempfehlungen annehmen, was die einfachste und schnellste Möglichkeit ist.
+
+### <a name="approve-or-deny-access-for-each-request"></a>Gewähren oder Verweigern von Zugriff für jede Anforderung
+
+1. Sehen Sie sich die Liste der Benutzer an, um zu entscheiden, ob deren weiterer Zugriff gewährt oder verweigert werden soll.
+
+1. Klicken Sie auf die jeweilige Zeile, um ein Fenster zu öffnen, in dem Sie die entsprechende Maßnahme angeben können, um Anforderungen zu gewähren oder zu verweigern.
+
+1. Klicken Sie auf **Approve** (Gewähren) oder **Deny** (Verweigern). Wenn Sie sich nicht sicher sind, können Sie auch auf **Don‘t know** (Nicht bekannt) klicken. Wenn Sie dies tun, behält der Benutzer seinen Zugriff, aber die Auswahl wird in den Überwachungsprotokollen widergespiegelt.
+
+    ![Durchführen der Zugriffsüberprüfung](./media/perform-access-review/approve-deny.png)
+
+    Der Administrator der Zugriffsüberprüfung kann möglicherweise verlangen, dass Sie eine Begründung für den weiteren Zugriffsbedarf oder die Gruppenmitgliedschaft angeben, bevor der Zugriff gewährt wird.
+
+1. Wenn Sie eine entsprechende Maßnahme angegeben haben, klicken Sie auf **Save** (Speichern).
+
+    Wenn Sie Ihre Entscheidung ändern möchten, klicken Sie auf die Zeile, und ändern Sie diese. Sie können z.B. den Zugriff für einen Benutzer gewähren, der erst nicht gewährt wurde, oder den Zugriff für einen Benutzer verweigern, dem dieser zunächst gewährt wurde. Bis zum Abschluss der Zugriffsüberprüfung können Sie Ihre Entscheidung jederzeit ändern.
+
+    Wenn es mehr als einen Reviewer gibt, wird die letzte abgegebene Antwort übernommen. Stellen Sie sich z.B. vor, dass ein Administrator zwei Reviewer auswählt, Alice und Bob. Alice öffnet die Zugriffsüberprüfung als Erste und gewährt den Zugriff. Vor dem Abschluss der Prüfung öffnen Bob die Zugriffsüberprüfung und verweigert den Zugriff. Die als letztes abgegebene Antwort, die Verweigerung, wird übernommen.
+
+    > [!NOTE]
+    > Wenn der Zugriff für einen Benutzer verweigert wird, wird dieser nicht sofort entfernt. Alle betreffenden Benutzer werden nach Ende der Überprüfung (oder wenn ein Administrator die Überprüfung beendet) entfernt.
+
+### <a name="approve-or-deny-access-based-on-recommendations"></a>Gewähren und Verweigern von Zugriff auf Grundlage von Empfehlungen
+
+Wir geben Ihnen Empfehlungen, die Sie mit einem einzigen Klick annehmen können, um die Zugriffsüberprüfung so einfach und schnell wie möglich zu gestalten. Diese Empfehlungen werden auf Grundlage der Anmeldeaktivität des Benutzers generiert.
+
+1. Klicken Sie in der blauen Leiste am unteren Rand der Seite auf **Empfehlungen akzeptieren**.
+
+    ![Empfehlungen akzeptieren](./media/perform-access-review/accept-recommendations.png)
+
+    Eine Zusammenfassung der Empfehlungen wird angezeigt.
+
+    ![Zusammenfassung der Empfehlungen](./media/perform-access-review/accept-recommendations-summary.png)
+
+1. Klicken Sie auf **OK**, um die Empfehlungen zu akzeptieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Verweigerung des Zugriffs eines Benutzers wird nicht sofort aufgehoben. Sie kann aufgehoben werden, wenn die Überprüfung abgeschlossen ist oder wenn ein Administrator die Überprüfung beendet. Wenn Sie Ihre Antwort ändern und einen zuvor abgelehnten Benutzer genehmigen oder einen zuvor genehmigten Benutzer ablehnen möchten, wählen Sie die Zeile, setzen Sie die Antwort zurück und wählen Sie eine neue Antwort aus. Dies ist möglich, bis die Zugriffsüberprüfung beendet ist.
-
-
-
+- [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)

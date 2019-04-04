@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051389"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108357"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#)
 
@@ -68,13 +68,13 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
 
 1. Um Ihr .NET-Projekt zu initialisieren und die benötigten NuGet-Pakete hinzuzufügen, führen Sie die folgenden Befehle aus:
 
-  ```cmd/sh
-  mkdir pisample
-  cd pisample
-  dotnet new console
-  dotnet add package Microsoft.Azure.Devices.Client
-  dotnet restore
-  ```
+   ```cmd/sh
+   mkdir pisample
+   cd pisample
+   dotnet new console
+   dotnet add package Microsoft.Azure.Devices.Client
+   dotnet restore
+   ```
 
 1. Öffnen Sie in Visual Studio Code den Ordner `pisample`. Dann öffnen Sie die Projektdatei **pisample.csproj**. Fügen Sie das im folgenden Codeausschnitt gezeigte `<RuntimeIdentifiers>`-Tag hinzu:
 
@@ -275,16 +275,16 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
 Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authentifizierung bei Azure IoT Central hinzu. Sie haben diese Verbindungszeichenfolge notiert, als Sie Ihr echtes Gerät zu Ihrer Azure IoT Central-Anwendung hinzugefügt haben.
 
   > [!NOTE]
-   > Azure IoT Central verwendet nun Azure IoT Hub Device Provisioning Service für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie dann mit dem Tutorial fort.
+   > Azure IoT Central verwendet nun Azure IoT Hub Device Provisioning Service für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#get-a-connection-string) aus, und fahren Sie dann mit dem Tutorial fort.
 
 1. Ersetzen Sie `{your device connection string}` in der Datei **Program.cs** durch die zuvor notierte Verbindungszeichenfolge.
 
 1. Führen Sie den folgenden Befehl in Ihrer Befehlszeilenumgebung aus:
 
-  ```cmd/sh
-  dotnet restore
-  dotnet publish -r linux-arm
-  ```
+   ```cmd/sh
+   dotnet restore
+   dotnet publish -r linux-arm
+   ```
 
 1. Kopieren Sie den Ordner `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` auf Ihr Raspberry Pi-Gerät. Die Dateien können Sie z.B. mit dem Befehl **scp** kopieren:
 
@@ -313,13 +313,13 @@ Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authenti
 
 1. In Ihrer Azure IoT Central-Anwendung können Sie sehen, wie der auf dem Raspberry Pi-Gerät ausgeführte Code mit der Anwendung interagiert:
 
-    * Auf der Seite **Messungen** für Ihr echtes Gerät sehen Sie die Telemetrie.
-    * Auf der Seite **Eigenschaften** sehen Sie den Wert der gemeldeten **Nummer**-Eigenschaft.
-    * Auf der Seite **Einstellungen** können Sie verschiedene Einstellungen am Raspberry Pi-Gerät ändern, wie z.B. Spannung und Lüfterdrehzahl.
+   * Auf der Seite **Messungen** für Ihr echtes Gerät sehen Sie die Telemetrie.
+   * Auf der Seite **Eigenschaften** sehen Sie den Wert der gemeldeten **Nummer**-Eigenschaft.
+   * Auf der Seite **Einstellungen** können Sie verschiedene Einstellungen am Raspberry Pi-Gerät ändern, wie z.B. Spannung und Lüfterdrehzahl.
 
-    Der folgende Screenshot zeigt das Raspberry Pi-Gerät, das gerade die Einstellungsänderung empfängt:
+     Der folgende Screenshot zeigt das Raspberry Pi-Gerät, das gerade die Einstellungsänderung empfängt:
 
-    ![Raspberry Pi empfängt Einstellungsänderung](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Raspberry Pi empfängt Einstellungsänderung](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
 
 ## <a name="raspberry-pi-device-template-details"></a>Details zur Raspberry Pi-Gerätevorlage
@@ -361,10 +361,10 @@ Einstellungen zum Ein-/Ausschalten
 
 ### <a name="properties"></a>Eigenschaften
 
-| Typ            | Anzeigename | Feldname | Datentyp |
+| Type            | Anzeigename | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
-| Text            | Standort     | location   | N/V       |
+| Text            | Standort     | location   | –       |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

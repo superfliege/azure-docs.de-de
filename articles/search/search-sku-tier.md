@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467440"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762924"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -32,30 +32,57 @@ Obwohl alle Tarife, einschließlich des Tarifs **Free**, in der Regel Featurepar
 > Die Ausnahme bei der Featureparität sind die [Indexer](search-indexer-overview.md), die bei S3HD nicht verfügbar sind.
 >
 
-Innerhalb eines Tarifs können Sie [Replikat- und Partitionsressourcen](search-capacity-planning.md) zur Optimieren der Leistung anpassen. Sie können mit jeweils zwei oder drei Replikaten und Partitionen beginnen und dann Ihre Rechenleistung für einen hohen Indizierungsworkload vorübergehend erhöhen. Die Möglichkeit, Ressourcenniveaus innerhalb eines Tarifs zu optimieren, sorgt für mehr Flexibilität, verkompliziert aber auch etwas Ihre Analyse. Möglicherweise müssen Sie experimentieren, um herauszufinden, ob ein niedrigerer Tarif mit höheren Ressourcen-/Replikatangeboten einen besseren Wert und höhere Leistung bietet, als ein höherer Tarif mit weniger Ressourcen. Weitere Informationen dazu, wann und warum Sie Kapazität anpassen sollten, finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Innerhalb eines Tarifs können Sie [Replikat- und Partitionsressourcen anpassen](search-capacity-planning.md), um hoch- oder herunterzuskalieren. Sie können mit jeweils ein oder zwei Replikaten und Partitionen beginnen und Ihre Rechenleistung dann für eine hohe Indizierungsworkload vorübergehend erhöhen. Die Möglichkeit, Ressourcenniveaus innerhalb eines Tarifs zu optimieren, sorgt für mehr Flexibilität, verkompliziert aber auch etwas Ihre Analyse. Möglicherweise müssen Sie experimentieren, um herauszufinden, ob ein niedrigerer Tarif mit höheren Ressourcen-/Replikatangeboten einen besseren Wert und höhere Leistung bietet, als ein höherer Tarif mit weniger Ressourcen. Weitere Informationen dazu, wann und warum Sie Kapazität anpassen sollten, finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
-<!---
-The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
---->
+## <a name="tiers-for-azure-search"></a>Tarife für Azure Search
+
+In der folgenden Tabelle sind die verfügbaren Tarife aufgeführt. Informationen zu Tarifen finden Sie zudem auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/), unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md) und auf der Portalseite beim Bereitstellen eines Diensts.
+
+|Tarif | Capacity |
+|-----|-------------|
+|Kostenlos | Für andere Abonnenten freigegeben. Nicht skalierbar, auf 3 Indizes und 50 MB Speicher begrenzt. |
+|Basic | Dedizierte Computingressourcen für Produktionsworkloads mit geringerem Umfang. Eine 2-GB-Partition und bis zu drei Replikate. |
+|Standard 1 (S1) | Ab S1 werden dedizierte Computer mit höherer Speicher- und Verarbeitungskapazität auf jeder Ebene verwendet. Die Partitionsgröße liegt bei diesem Tarif bei 25 GB pro Partition (max. 300 GB Dokumente pro Dienst). |
+|Standard 2 (S2) | Ähnlich wie S1, jedoch mit 100 GB pro Partition (max. 1,2 TB Dokumente pro Dienst) |
+|Standard 3 (S3) | 200 GB pro Partition (max. 2,4 TB Dokumente pro Dienst) |
+|Standard 3 High-density (S3-HD) | High-density ist ein *Hostingmodus* für S3. Die zugrunde liegende Hardware ist für eine große Anzahl kleinerer Indizes optimiert und für Szenarios mit Mehrmandantenfähigkeit konzipiert. Die Gebühr pro Einheit unterscheidet sich zwischen S3-HD und S3 nicht, die Hardware ist bei S3-HD jedoch für schnelle Dateilesevorgänge bei einer großen Anzahl kleinerer Indizes optimiert.|
+
 
 ## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
 
-In Azure Search gibt es vier Möglichkeiten, wie Kosten beim Erstellen einer Suchressource im Portal anfallen können:
+Bei Azure Search können auf drei verschiedene Weisen Kosten anfallen, und es gibt feste und variable Komponenten. Dieser Abschnitt befasst sich der Reihe nach mit jeder Abrechnungskomponente.
 
-* Hinzufügen von Replikaten und Partitionen, die für normale Indizierungs- und Abfrageaufgaben verwendet werden. Sie beginnen mit jeweils einem Replikat und einer Partition, aber Sie können die Anzahl erhöhen, um die Kapazität zu steigern, wobei Sie zusätzliche Ebenen der Ressourcenbereitstellung auswählen und bezahlen. 
-* Gebühren für ausgehende Daten während der Indizierung. Wenn Sie Daten aus einer Azure SQL-Datenbank oder Cosmos DB-Datenquelle abrufen, werden entsprechende Gebühren für die Transaktion in der Rechnung für diese Ressourcen aufgeführt.
-* Nur bei der [kognitiven Suche](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos.
-* Nur bei der [kognitiven Suche](cognitive-search-concept-intro.md) werden auf [integrierten kognitiven Qualifikationen](cognitive-search-predefined-skills.md) basierende Anreicherungen für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
+### <a name="1-core-service-costs-fixed-and-variable"></a>1. Basiskosten für den Dienst (fest und variabel)
+
+Die Mindestgebühr für den Dienst selbst ist die erste Sucheinheit (1 Replikat x 1 Partition). Dieser Betrag bleibt für die gesamte Lebensdauer des Diensts konstant, da der Dienst nicht mit weniger als dieser Konfiguration ausgeführt werden kann. 
+
+Im folgenden Screenshot wird der Preis pro Einheit für die Tarife Free, Basic und S1 dargestellt (S2 und S3 werden sind nicht enthalten). Wenn Sie einen Dienst mit dem Tarif Basic oder Standard erstellt haben, belaufen sich Ihre monatlichen Kosten durchschnittlich auf den Wert, der entsprechend bei *price-1* und *price-2* angezeigt wird. Die Kosten pro Einheit steigen mit jedem Tarif, da bei den jeweils höheren Tarifen entsprechend die Computingleistung sowie die Speicherkapazität steigen.
+
+![Preise pro Einheit](./media/search-sku-tier/per-unit-pricing.png "Preise pro Einheit")
+
+Für zusätzliche Replikate und Partitionen fallen zusätzliche Kosten zu den Basiskosten an. Ein Suchdienst benötigt ein Replikat und eine Partition, weshalb die Konfiguration aus mindestens einem Replikat und einer Partition bestehen muss. Über diese Mindestanforderung hinaus können Sie Replikate und Partitionen eigenständig hinzufügen. Beispielsweise könnten Sie nur Replikate oder nur Partitionen hinzufügen. 
+
+Zusätzliche Replikate und Partitionen werden auf Grundlage einer [Formel](#search-units) abgerechnet. Die Kosten sind nicht linear (bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [How to allocate replicas and partitions (Vorgehensweise: Zuordnen von Replikaten und Partitionen)](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+
+### <a name="2-data-egress-charges-during-indexing"></a>2. Gebühren für ausgehende Daten während der Indizierung
+
+Wenn Sie Daten aus einer Azure SQL-Datenbank oder Cosmos DB-Datenquelle abrufen, werden entsprechende Gebühren für die Transaktion in der Rechnung für diese Ressourcen aufgeführt. Bei diesen Gebühren handelt es sich nicht um Azure Search-Verbrauchseinheiten. Sie werden hier jedoch erwähnt, da Ihnen die Gebühren in Ihrer Rechnung angezeigt werden, wenn Sie Indexer zum Übertragen von Daten aus Azure SQL-Datenbank oder Azure Cosmos DB mithilfe von Pull verwenden.
+
+### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. Um KI erweiterte Indizierung unter Verwendung von Cognitive Services
+
+Nur bei der [kognitiven Suche](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos. Andere auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) basierende Erweiterungen werden für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
 
 Wenn Sie keine [kognitive Suche](cognitive-search-concept-intro.md) oder [Azure Search-Indexer](search-indexer-overview.md) verwenden, beziehen sich Ihre Kosten nur auf die Replikate und Partitionen, die aktiv für normale Indizierungs- und Abfrageworkloads verwendet werden.
 
-### <a name="billing-for-general-purpose-indexing-and-queries"></a>Abrechnung für allgemeine Indizierungs- und Abfragevorgänge
+<a name="search-units"></a>
+
+### <a name="billing-based-on-search-units"></a>Auf Sucheinheiten basierende Abrechnung
 
 Für Azure Search-Vorgänge ist das wichtigste Abrechnungskonzept, das Sie verstehen sollten, eine *Sucheinheit* (Search Unit, SU). Da Azure Search bei der Indizierung und bei Abfragen sowohl von Replikaten als auch von Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider. 
 
 SU ist das Produkt der von einem Dienst verwendeten *Replikate* und *Partitionen*: **`(R X P = SU)`**
 
-Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Das Maximum für jeden Dienst liegt bei 36 SUs. Dies lässt sich auf verschiedene Arten erreichen – beispielsweise mit sechs Partitionen mal sechs Replikate oder drei Partitionen mal 12 Replikate. Es ist üblich, weniger als die Gesamtkapazität zu verwenden. Z. B. ein Dienst mit 3 Replikaten und 3 Partitionen, abgerechnet als 9 SUs. 
+Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Das Maximum für jeden Dienst liegt bei 36 SUs. Dies lässt sich auf verschiedene Arten erreichen – beispielsweise mit sechs Partitionen mal sechs Replikate oder drei Partitionen mal 12 Replikate. Es ist üblich, weniger als die Gesamtkapazität zu verwenden. Z. B. ein Dienst mit 3 Replikaten und 3 Partitionen, abgerechnet als 9 SUs. In [diesem Diagramm](search-capacity-planning.md#chart) erkennen Sie gültige Kombinationen auf einen Blick.
 
 Es wird **stündlich pro SU** abgerechnet, wobei jeder Tarif einen progressiv steigenden Abrechnungssatz hat. Höhere Tarife enthalten größere und schnellere Partitionen, was zu einem insgesamt höheren Stundensatz für den jeweiligen Tarif beiträgt. Die Preise für die einzelnen Tarife finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/). 
 

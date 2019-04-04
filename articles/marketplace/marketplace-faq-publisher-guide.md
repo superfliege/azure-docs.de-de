@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5ac8e35614d6f0514f60932bc34aa8cab2c0ad11
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894155"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542147"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -66,10 +66,11 @@ Im Azure Marketplace können Kunden technische Anwendungen entdecken, die spezie
 
 Azure Marketplace-Angebote können hier erworben werden:
 
-* [webbasierte Storefront](https://azuremarketplace.microsoft.com/marketplace/apps).
-* [Microsoft Azure-Verwaltungsportal](https://portal.azure.com/) oder über die [Azure Command Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* [webbasierte Storefront](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Microsoft Azure-Verwaltungsportal](https://portal.azure.com/) oder über die [Azure Marketplace Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
-Hinweis: Vorausbezahlte Guthaben und andere Formen finanzieller Verpflichtungen können nicht für die Zahlung für Softwarelizenzgebühren verwendet werden. Sie können aber für die Bezahlung entsprechender Azure-Nutzungsgebühren verwendet werden.  Ausnahmen sind in der [Azure-Zahlungsverpflichtung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) aufgeführt.
+>[!Note]
+>Vorausbezahlte Guthaben und andere Formen finanzieller Verpflichtungen können nicht für die Zahlung für Softwarelizenzgebühren verwendet werden. Sie können aber für die Bezahlung entsprechender Azure-Nutzungsgebühren verwendet werden.  Ausnahmen sind in der [Azure-Zahlungsverpflichtung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) aufgeführt.
 
 **Kann ich auswählen, in welchen Microsoft Azure-Regionen mein Azure Marketplace-Einkauf bereitgestellt wird?**
 
@@ -93,9 +94,11 @@ Gegenwärtig sind über Azure CSP- und Open-Kunden im Marketplace nur kostenlose
 
 **Welche Länder werden für den Kauf von Anwendungen und Diensten unterstützt, die im Azure Marketplace verkauft/bereitgestellt werden?**
 
-Der Azure Marketplace ist in den folgenden Ländern für Microsoft Azure-Kunden verfügbar:
+Der Azure Marketplace ist für Microsoft Azure-Kunden in den Ländern verfügbar, die in den [Teilnahmerichtlinien](https://docs.microsoft.com/legal/marketplace/participation-policy) aufgelistet sind.
 
-Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Mazedonien (ehemalige jugoslawische Republik), Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
+**Welche Währungen werden vom Azure Marketplace unterstützt?**
+
+Transaktionen können in den folgenden 17 Währungen durchgeführt werden: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Bereitstellen einer Lösung aus dem Azure Marketplace
 
@@ -180,17 +183,17 @@ Bestimmte Azure Marketplace-Angebote können per Azure-Abonnementguthaben oder Z
 
 **Wie kann ich diese Abonnements bezahlen? Erscheinen meine Azure Marketplace-Käufe auf meiner Azure-Rechnung, oder gibt es eine andere Rechnung?**
 
-Käufe im Azure Marketplace erben dieselbe Zahlungsmethode wie das Azure-Abonnement.  Sie werden separat von der Azure-Nutzung abgerechnet, es sei denn, sie sind für die Nutzung von Zahlungsverpflichtungen aktiviert.
+Für MOSP-Kunden (d. h. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) abonnieren) erfolgt die Abrechnung über die Kreditkarte, die in ihrem Azure-Abonnementprofil registriert ist. Wenn Sie keine Kreditkartendaten hinterlegt haben, können Sie nicht im Azure Marketplace einkaufen. In diesem Fall erhalten Sie eine spezielle Ausnahmegenehmigung, damit Ihre Azure-Gebühren Ihnen in Rechnung gestellt werden können.
 
-Für MOSP-Kunden (d. h. direkte Internetkunden; Microsoft Online Subscription-Programm) erfolgt die Abrechnung über die Kreditkarte, die in ihrem Azure-Abonnementprofil registriert ist. Wenn der Kunde keine Kreditkartendaten hinterlegt hat (eine spezielle Ausnahmegenehmigung zur Abrechnung von Azure-Gebühren besitzt), können er keine Käufe im Azure Marketplace tätigen.
-
-Kunden mit Enterprise Agreement werden über ihr EA (Enterprise Agreement) abgerechnet. Bei den in der [Azure-Zahlungsverpflichtung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) aufgeführten spezifischen Azure Marketplace-Angeboten werden die Gebühren zuerst von vorhandenen Zahlungsverpflichtungen abgezogen. Wenn diese erschöpft sind, werden die Gebühren als Überschreitungen auf einer einzigen Quartalsrechnung abgerechnet. Indirekte EA-Kunden, Kunden aus dem Bildungsbereich und Regierungsbehörden erhalten ihre Abrechnung von ihrem Lösungsanbieter für die Lizenzierung.
+Kunden mit Enterprise Agreement werden über ihr EA (Enterprise Agreement) abgerechnet. Bei den hier aufgeführten spezifischen Azure Marketplace-Angeboten werden die Gebühren zuerst von vorhandenen Zahlungsverpflichtungsguthaben abgezogen. Wenn diese erschöpft sind, werden die Gebühren als Überschreitungen auf einer einzigen Quartalsrechnung abgerechnet. Indirekte EA-Kunden, Kunden aus dem Bildungsbereich und Regierungsbehörden erhalten ihre Abrechnung von ihrem Lösungsanbieter für die Lizenzierung.
 
 **Wo kann ich die Details zu meinem Azure Marketplace-Abonnement und die Rechnungsinformationen einsehen?**
 
-Kunden im Microsoft Online Subscription-Programm (d. h. direkte Internetkunden; MSOP) können die Details zum Marketplace-Abonnement im Menü „Marketplace“ des Azure-Abrechnungsportals einsehen. Kunden, die über den Marketplace virtuelle Computer erworben haben, können die geschätzten aufgelaufenen Kosten im Microsoft Azure-Verwaltungsportal einsehen.
+MOSP-Kunden (d. h. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) abonnieren) können Details zum Marketplace-Kauf auf der Registerkarte „Rechnungen“ im Abschnitt „Cost Management + Abrechnung“ des Azure-Verwaltungsportals anzeigen.
 
-Kunden mit Enterprise Agreement (EA-Kunden) können die Details zum Marketplace-Abonnement auf der Registerkarte "Azure Marketplace" in der Abrechnungs- und Kontoverwaltungsansicht im Enterprise Portal einsehen. Hinweis: Indirekte EA-Kunden können nur Angebots- und Nutzungsinformationen anzeigen. Preisdetails stehen im Enterprise Portal nicht zur Verfügung.
+EA-Kunden mit Konzernvertrag (Enterprise Agreement) können Details zum Marketplace-Kauf auf der Registerkarte „Rechnungen“ im Abschnitt „Cost Management + Abrechnung“ des Azure-Verwaltungsportals anzeigen.
+
+CSP-Partner (Cloud Solution Provider) können in Partner Center auf der Registerkarte „Bestellverlauf“ für jeden Kunden Details zum Marketplace-Kauf anzeigen, nachdem Sie in der Ansicht „Kunden“ ein Unternehmen ausgewählt haben.
 
 **Wie storniere ich ein Azure Marketplace-Add-On für eine Azure-VM?**
 
@@ -198,9 +201,9 @@ Da das Add-On der Azure-VM zugeordnet ist, beenden Sie zuerst die VM, indem Sie 
 
 **Wie oft werden meine Azure Marketplace-Einkäufe abgerechnet?**
 
-Für Enterprise Agreement-Kunden gilt Folgendes: Für die [spezifischen aufgeführten Dienste](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) werden die Gesamtkosten für diese Dienste aus dem Monat, in dem der Dienst verwendet wurde, zuerst von vorhandenen Zahlungsverpflichtungsguthaben abgezogen. Alle Azure Marketplace-Angebote, die nicht von Zahlungsverpflichtungen abgezogen werden, werden monatlich rückwirkend berechnet.
+Für EA-Kunden gilt Folgendes: Für die spezifischen aufgeführten Dienste werden die Gesamtkosten für diese Dienste aus dem Monat, in dem der Dienst verwendet wurde, zuerst von vorhandenen Zahlungsverpflichtungsguthaben abgezogen. Alle Azure Marketplace-Angebote, die nicht von Zahlungsverpflichtungen abgezogen werden, werden monatlich rückwirkend berechnet. SaaS-Jahresabonnements werden einmal jährlich für die Dienste eines ganzen Jahres berechnet.
 
-Für MOSP-Kunden (d. h. direkte Internetkunden) erfolgt die Abrechnung über die Kreditkarte, die sie im Azure-Abonnementprofil angegeben haben.
+MOSP-Kunden (d. h. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) abonnieren) erfolgt die Abrechnung monatlich über die Kreditkarte, die in ihrem Azure-Abonnementprofil registriert ist. SaaS-Jahresabonnements werden einmal jährlich für die Dienste eines ganzen Jahres berechnet.
 
 **Wie kann ich meine Azure Marketplace-Einkäufe von meinem MOSP-Abonnement in mein Enterprise Agreement (EA) verschieben?**
 
@@ -246,7 +249,7 @@ Wenden Sie sich bei sämtlichen technischen Produktsupportangelegenheiten an den
 
 **Falls ich nicht zufrieden bin, kann ich einen Einkauf zurückgeben?**
 
-Im Azure Marketplace getätigte Käufe können nicht zurückgegeben, jedoch storniert/gelöscht werden. Nachdem ein Abonnement storniert/gelöscht wurde, werden Ihnen nachfolgende Monate nicht mehr berechnet.
+Im [Azure Marketplace](https://azuremarketplace.microsoft.com/) getätigte Käufe können nicht zurückgegeben, jedoch storniert/gelöscht werden. Verbrauchsbasierte Angebote werden nach Nutzung berechnet, d. h. wenn kein Verbrauch mehr stattfindet, fallen auch keine Kosten an. Abonnements werden storniert und nur noch im aktuellen Abrechnungszeitraum in Rechnung gestellt. Wenn ein Abonnement kurz nach dem Kauf (24 Stunden bei Monatsabonnements und 14 Tage bei Jahresabonnements) storniert wird, erfolgt eine vollständige Rückerstattung.
 
 Kunden müssen sich bei technischen Probleme mit einem im Marketplace erworbenen Dienst oder Produkt direkt an den Herausgeber wenden. Die Kontaktinformationen des Herausgebers und/oder einen Link zur Supportwebsite finden Sie auf der Seite mit den Lösungsdetails im Azure Marketplace.
 
@@ -335,6 +338,10 @@ Für das Hochladen einer Listen-, Test- oder BYOL-Lösung (Bring Your Own Licens
 **Fallen für Einkäufe über den Azure Marketplace Transaktionsgebühren an?**
 
 Wenn die Lizenz für eine Lösung über den Azure Marketplace erworben wird, werden die Umsätze für die Softwarelizenz zwischen dem Herausgeber und Microsoft aufgeteilt.  Dies erfolgt in Übereinstimmung mit den Nutzungsbedingungen der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Außerdem fallen bei Lösungen mit BYOL (Bring Your Own License) für die Herausgeber keine Transaktionsgebühren an.
+
+**Was ist ein Standardvertrag?**
+
+Microsoft bietet Standardvertragsbestimmungen, die ein Herausgeber verwenden kann, um Kunden einen vereinfachten Prozess für die Beschaffung und rechtliche Prüfung zu bieten.
 
 **Wo finde ich Anleitungen für die Integration meiner Anwendung in Azure Active Directory (AAD)?**
 
@@ -490,6 +497,35 @@ Gegenwärtig sind für Azure CSP- und Open-Kunden im Marketplace nur kostenlose 
 Der Azure Marketplace ist in den folgenden Ländern für Microsoft Azure-Kunden verfügbar:
 
 Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Mazedonien (ehemalige jugoslawische Republik), Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
+
+**Wie definiere ich meine geografische Verfügbarkeit, um den Verkauf in verschiedenen Ländern zu aktivieren?**
+
+1.  Navigieren Sie im Cloud-Partnerportal zu der SKU, zu der Sie neue Länder hinzufügen möchten.  Klicken Sie unter „SKU-Details“ > „Verfügbarkeit in Land/Region“ auf „Regionen auswählen“.
+
+    ![Regionen auswählen](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+
+1.  Eine Liste mit allen für den Verkauf verfügbaren Ländern wird eingeblendet.  Klicken Sie auf das Kontrollkästchen neben jedem Land, für das diese SKU verfügbar sein soll. Klicken Sie auf „OK“.
+
+    ![Länderliste auswählen](media/marketplace-publishers-guide/FAQ-select-countries.png)
+
+1.  Klicken Sie abschließend auf „Veröffentlichen“, damit die Änderungen auf Ihr Liveangebot angewendet werden.  
+
+>[!Note]
+>Die Änderungen werden erst nach 24 Stunden wirksam.
+
+<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
+
+**Wie kann ein Herausgeber die geografische Verfügbarkeit für ein vorhandenes Angebot ändern?**
+
+Der Herausgeber kann ein vorhandenes Angebot bearbeiten, die neuen Länder auswählen und zum Festlegen von Preisen die Download/Upload-Funktion für Tabellen verwenden.
+
+**In welchen Ländern können Kunden im Azure Marketplace Käufe tätigen?**
+
+Azure Marketplace unterstützt 141 geografische Verkaufsgebiete („Einkauf von“), die durch die Rechnungsadresse des Kunden definiert sind. Eine Liste der Länder finden Sie unter [Teilnahmerichtlinien](https://docs.microsoft.com/legal/marketplace/participation-policy).
+
+**Welche Währungen werden vom Azure Marketplace unterstützt?**
+
+Transaktionen können in den folgenden 17 Währungen durchgeführt werden: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Bereitstellen einer Lösung aus dem Azure Marketplace
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee936d174aa3e221bbeb0823ba1503c7cb64a9d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a0700a63d21d089573f757716e08fb03665b28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185161"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Tutorial: Azure Active Directory-Integration von IQNavigator VMS
 
@@ -91,7 +91,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei IQNavigat
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines IQNavigator VMS-Testbenutzers](#creating-a-iqnavigator-vms-test-user)**, um ein Pendant von Britta Simon in IQNavigator VMS zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Erstellen eines IQNavigator VMS-Testbenutzers](#creating-a-iqnavigator-vms-test-user)**, um ein Pendant von Britta Simon in IQNavigator VMS zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -175,7 +175,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Create**.
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>Erstellen eines IQNavigator VMS-Testbenutzers
+### <a name="creating-an-iqnavigator-vms-test-user"></a>Erstellen eines IQNavigator VMS-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in IQNavigator VMS. Lassen Sie sich beim Hinzufügen der Benutzer im IQNavigator VMS-Konto ggf. vom [IQNavigator VMS-Supportteam](https://www.beeline.com/iqn-product-support/) unterstützen.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312990"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260059"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -96,7 +96,7 @@ Dieser Fall kann eintreten, wenn Ihr Aktualisierungstoken nicht aktualisiert wur
 1. Melden Sie sich beim Azure-Portal an, und stellen Sie sicher, dass Sie auf die Ressource zugreifen können.
 2. Versuchen Sie, die Anmeldeinformationen für das Dashboard zu aktualisieren.
 
- Falls Sie Zugriff haben und die Aktualisierung der Anmeldeinformationen das Problem nicht behebt, erstellen Sie ein Supportticket.
+   Falls Sie Zugriff haben und die Aktualisierung der Anmeldeinformationen das Problem nicht behebt, erstellen Sie ein Supportticket.
 
 ### <a name="bad-gateway-502"></a>Ungültiges Gateway (502)
 Dies wird normalerweise durch eine Analytics-Abfrage verursacht, die zu viele Daten zurückgibt. Versuchen Sie es mit einem kleineren Zeitbereich für die Abfrage. 
@@ -105,8 +105,8 @@ Wenn das Verkleinern des von der Analytics-Abfrage stammenden Datasets Ihre Anfo
 
 1. Erstellen Sie einen [API-Schlüssel](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Aktualisieren Sie das M-Skript von Power BI, das Sie aus Analytics exportiert haben, indem Sie die Azure Resource Manager-URL durch die Application Insights-API ersetzen.
-   * Ersetzen Sie **https://management.azure.com/subscriptions/...**
-   * durch  **https://api.applicationinsights.io/beta/apps/...**
+   * Ersetzen Sie **https:\//management.azure.com/subscriptions/...**
+   * durch **https:\//api.applicationinsights.io/beta/apps/...**
 3. Aktualisieren Sie schließlich die Anmeldeinformationen in „basic“, und verwenden Sie Ihren API-Schlüssel.
 
 **Vorhandenes Skript**

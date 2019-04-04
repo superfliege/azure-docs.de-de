@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201159"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 
-Big Data-Echtzeitlösungen agieren auf der Grundlage bewegter Daten. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
+Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
 
 
 Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
@@ -45,7 +45,7 @@ Weitere Informationen finden Sie in der [Übersicht über Apache Spark-Streaming
 
 ## <a name="scaling-a-cluster"></a>Skalieren eines Clusters
 
-Die Anzahl von Knoten im Cluster kann zwar bei der Erstellung angegeben werden, manchmal muss der Cluster jedoch abhängig von der Workload vergrößert oder verkleinert werden. Bei allen HDInsight-Clustern können Sie [die Anzahl von Knoten im Cluster ändern](hdinsight-administer-use-management-portal.md#scale-clusters). Spark-Cluster können ohne Datenverlust verworfen werden, da alle Daten in Azure Storage oder Data Lake Storage gespeichert werden.
+Die Anzahl von Knoten im Cluster kann zwar bei der Erstellung angegeben werden, manchmal muss der Cluster jedoch abhängig von der Workload vergrößert oder verkleinert werden. Bei allen HDInsight-Clustern können Sie [die Anzahl von Knoten im Cluster ändern](hdinsight-administer-use-portal-linux.md#scale-clusters). Spark-Cluster können ohne Datenverlust verworfen werden, da alle Daten in Azure Storage oder Data Lake Storage gespeichert werden.
 
 Die Entkopplung von Technologien hat gewisse Vorteile. Bei Kafka handelt es sich beispielsweise um eine Technologie zum Puffern von Ereignissen. Sie ist sehr E/A-lastig und benötigt nur wenig Rechenleistung. Datenstromverarbeitungslösungen wie Spark Streaming sind hingegen rechenintensive Lösungen, die virtuelle Computer mit mehr Leistung benötigen. Dank der Entkopplung dieser Technologien mittels unterschiedlicher Cluster können Sie sie unabhängig voneinander skalieren und die virtuellen Computer optimal nutzen.
 

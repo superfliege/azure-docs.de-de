@@ -11,25 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 63bdbeb08872988fb043413f8233281d22423731
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455533"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284747"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Vorschau: Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
-
-|     |
-| --- |
-| Azure AD-Kennwortschutz ist eine öffentliche Vorschaufunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
 ## <a name="general-questions"></a>Allgemeine Fragen
-
-**F: Wann erreicht der Azure AD-Kennwortschutz die allgemeine Verfügbarkeit (General Availability, GA)?**
-
-Die allgemeine Verfügbarkeit ist für das 1. Quartal 2019 (vor Ende März 2019) geplant. Vielen Dank an alle Benutzer, die uns bisher Feedback zu dieser Funktion haben zukommen lassen. Wir wissen das zu schätzen!
 
 **F: Welche Informationen zur Auswahl eines sicheren Kennworts sollten Benutzer erhalten?**
 
@@ -44,6 +35,14 @@ Nein. Der lokale Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unt
 **F: Wie kann ich die Vorteile des Azure AD-Kennwortschutzes auf eine Untergruppe meiner lokalen Benutzer anwenden?**
 
 Nicht unterstützt. Sobald der Azure AD-Kennwortschutz bereitgestellt und aktiviert ist, werden keine Unterscheidungen getroffen – alle Benutzer genießen dieselben Sicherheitsvorteile.
+
+**F: Worin besteht der Unterschied zwischen einer Kennwortänderung und einer Kennwortfestlegung (oder Kennwortzurücksetzung)?**
+
+Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem er nachgewiesen hat, dass er das alte Kennwort kennt. Dies ist beispielsweise der Fall, wenn ein Benutzer sich unter Windows anmeldet und dann aufgefordert wird, ein neues Kennwort auszuwählen.
+
+Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Dies erfolgt häufig in Helpdesk-Szenarien, z. B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
+
+Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob eine Kennwortänderung oder eine Kennwortfestlegung durchgeführt wird. Mit dem DC-Agent-Dienst für den Azure AD-Kennwortschutz werden verschiedene Ereignisse protokolliert, um Sie darüber zu informieren, ob ein Vorgang zum Ändern oder zum Festlegen eines Kennworts durchgeführt wurde.  Siehe dazu [Überwachung und Protokollierung beim Azure AD-Kennwortschutz](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **F: Wird die Parallelinstallation des Azure AD-Kennwortschutzes mit anderen kennwortfilterbasierten Produkten unterstützt?**
 
@@ -82,6 +81,10 @@ Diese Anforderung wird durch das Kernverhalten von Windows verursacht.
 **F: Kann der Azure AD-Kennwortschutz-Proxydienst neben anderen Diensten wie Azure AD Connect bereitgestellt werden?**
 
 Ja. Der Azure AD-Kennwortschutz-Proxydienst und Azure AD Connect führen nie zu direkten Konflikten.
+
+**F: In welcher Reihenfolge sollen die DC-Agents und Proxys installiert und registriert werden?**
+
+Die Installation von Proxys, die Installation von DC-Agents, die Registrierung von Gesamtstrukturen und die Registrierung von Proxys können in einer beliebigen Reihenfolge erfolgen.
 
 **F: Muss ich mir Sorgen machen, dass durch die Bereitstellung dieses Features die Leistungsgrenze meiner Domänencontroller erreicht wird?**
 

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/13/2019
+ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903129"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -26,6 +26,7 @@ Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibili
 ![Migration](./media/sql-database-managed-instance/migration.png)
 
 Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert. <a name="Differences"></a>
+
 - [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
 - [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credential), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen/Benutzern](#logins--users), [Dienstschlüssel und Diensthauptschlüssel](#service-key-and-service-master-key)
 - [Konfiguration](#configuration), einschließlich der Unterschiede bei [Pufferpoolerweiterung](#buffer-pool-extension), [Sortierung](#collation), [Kompatibilitätsgraden](#compatibility-levels),[Datenbankspiegelung](#database-mirroring), [Datenbankoptionen](#database-options), [SQL Server-Agent](#sql-server-agent), [Tabellenoptionen](#tables)
@@ -61,10 +62,16 @@ In verwalteten Instanzen werden automatische Sicherungen durchgeführt, sodass B
  Einschränkungen:  
 
 - Mit einer verwalteten Instanz können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
-- Die maximale Stripegröße für Sicherungen ist 195 GB (maximale Blobgröße). Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
+- Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz ist 195 GB (maximale Blobgröße). Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
 
-> [!TIP]
-> Um diese Einschränkung in der lokalen Umgebung zu umgehen, führen Sie anstelle einer Sicherung in `URL` eine Sicherung in `DISK` durch, laden Sie die Sicherungsdatei in das Blob hoch, und führen Sie dann die Wiederherstellung durch. Bei der Wiederherstellung werden größere Dateien unterstützt, da ein anderer Blobtyp verwendet wird.  
+    > [!TIP]
+    > Um diese Einschränkung beim Sichern einer Datenbank von SQL Server in einer lokalen Umgebung oder auf einem virtuellen Computer zu umgehen, haben Sie folgende Möglichkeiten:
+    >
+    > - Sichern mit `DISK` anstelle von `URL`
+    > - Hochladen der Sicherungsdateien in Blob Storage
+    > - Wiederherstellen in der verwalteten Instanz
+    >
+    > Der Befehl `Restore` unterstützt in einer verwalteten Instanz Blobgrößen, die größer als die Sicherungsdateien sind, da für die Speicherung der hochgeladenen Sicherungsdateien ein anderer Blobtyp verwendet wird.
 
 Informationen zu Sicherungen mithilfe von T-SQL finden Sie unter [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
@@ -125,44 +132,51 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können Kryptogr
 
 - Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Azure Active Directory-Dienstprinzipale (Anmeldungen), die mit der [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)-Syntax oder der [CREATE USER FROM LOGIN [Azure AD-Anmeldung]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)-Syntax erstellt wurden, werden unterstützt (**öffentliche Vorschau**). Diese Anmeldungen werden auf Serverebene erstellt.
-    - Verwaltete Instanzen unterstützen Azure AD-Datenbankprinzipale mit der Syntax `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Diese werden auch als Azure AD-Benutzer für eigenständige Datenbanken bezeichnet.
+
+    Verwaltete Instanzen unterstützen Azure AD-Datenbankprinzipale mit der Syntax `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Diese werden auch als Azure AD-Benutzer für eigenständige Datenbanken bezeichnet.
+
 - Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
 - Der Azure AD-Benutzer, der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](sql-database-manage-logins.md#unrestricted-administrative-accounts).
 - Azure Active Directory-Benutzer (Azure AD) auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users).
 - Azure AD-Serverprinzipale (Anmeldungen) unterstützen SQL-Funktionen nur innerhalb einer verwalteten Instanz. Funktionen, die instanzübergreifende Interaktion erfordern – unabhängig davon, ob innerhalb desselben Azure AD-Mandanten oder in einem anderen Mandanten –, werden für Azure AD-Benutzer nicht unterstützt. Beispiele für solche Funktionen:
-    - SQL-Transaktionsreplikation und
-    - Linkserver
+
+  - SQL-Transaktionsreplikation und
+  - Linkserver
+
 - Das Festlegen einer Azure AD-Anmeldung, die einer Azure AD-Gruppe zugeordnet ist, als Besitzer der Datenbank wird nicht unterstützt.
 - Identitätswechsel von Azure AD-Prinzipalen auf Serverebene mit anderen Azure AD-Prinzipalen werden unterstützt, z.B. in der [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql)-Klausel. Einschränkung für EXECUTE AS:
-    - EXECUTE AS USER wird nicht für Azure AD-Benutzer unterstützt, wenn der Name sich vom Anmeldenamen unterscheidet. Beispiel: Der Benutzer wird über die Syntax „CREATE USER [meinAADBenutzer] FROM LOGIN [john@contoso.com]“ erstellt, und es wird ein Identitätswechsel über „EXEC AS USER = _meinAADBenutzer_“ versucht. Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
-    - Die folgenden Vorgänge für Azure AD-Prinzipale können nur von den SQL-Serverebenenprinzipalen (Anmeldungen) ausgeführt werden, die der Rolle `sysadmin` angehören: 
-        - EXECUTE AS USER
-        - EXECUTE AS LOGIN
+
+  - EXECUTE AS USER wird nicht für Azure AD-Benutzer unterstützt, wenn der Name sich vom Anmeldenamen unterscheidet. Beispiel: Der Benutzer wird über die Syntax „CREATE USER [meinAADBenutzer] FROM LOGIN [john@contoso.com]“ erstellt, und es wird ein Identitätswechsel über „EXEC AS USER = _meinAADBenutzer_“ versucht. Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
+  - Die folgenden Vorgänge für Azure AD-Prinzipale können nur von den SQL-Serverebenenprinzipalen (Anmeldungen) ausgeführt werden, die der Rolle `sysadmin` angehören:
+
+    - EXECUTE AS USER
+    - EXECUTE AS LOGIN
+
 - Einschränkungen der **öffentlichen Vorschau** für Azure AD-Serverprinzipale (Anmeldungen):
-    - Einschränkungen bei Active Directory-Administratoren für verwaltete Instanzen:
-        - Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Der erste Azure AD-Serverprinzipal (Anmeldung) muss mit einem SQL Server-Konto vom Typ `sysadmin` erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die aufgehoben wird, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-        - Derzeit muss die erste Azure AD-Anmeldung, die in der Masterdatenbank erstellt wurde, durch das SQL Server-Standardkonto (nicht Azure AD) erstellt werden. Dabei handelt es sich um einen `sysadmin` mithilfe von „[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER“. Nach der allgemeinen Verfügbarkeit wird diese Einschränkung aufgehoben, und es kann eine anfängliche Azure AD-Anmeldung durch den Active Directory-Administrator für die verwaltete Instanz erstellt werden.
+
+  - Einschränkungen bei Active Directory-Administratoren für verwaltete Instanzen:
+
+    - Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Der erste Azure AD-Serverprinzipal (Anmeldung) muss mit einem SQL Server-Konto vom Typ `sysadmin` erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die aufgehoben wird, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - Derzeit muss die erste Azure AD-Anmeldung, die in der Masterdatenbank erstellt wurde, durch das SQL Server-Standardkonto (nicht Azure AD) erstellt werden. Dabei handelt es sich um einen `sysadmin` mithilfe von „[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER“. Nach der allgemeinen Verfügbarkeit wird diese Einschränkung aufgehoben, und es kann eine anfängliche Azure AD-Anmeldung durch den Active Directory-Administrator für die verwaltete Instanz erstellt werden.
     - DacFx (exportieren/importieren) wird nicht zusammen mit SQL Server Management Studio (SSMS) oder SqlPackage für Azure AD-Anmeldungen unterstützt. Diese Einschränkung wird aufgehoben, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind.
     - Verwenden von Azure AD-Serverprinzipalen (Anmeldungen) mit SSMS
-        - Das Skripting von Azure AD-Anmeldungen wird (unabhängig von der authentifizierten Anmeldung) nicht unterstützt.
-        - IntelliSense erkennt die Anweisung **CREATE LOGIN FROM EXTERNAL PROVIDER** nicht und zeigt eine rote Unterstreichung an.
+
+      - Das Skripting von Azure AD-Anmeldungen wird (unabhängig von der authentifizierten Anmeldung) nicht unterstützt.
+      - IntelliSense erkennt die Anweisung **CREATE LOGIN FROM EXTERNAL PROVIDER** nicht und zeigt eine rote Unterstreichung an.
+
 - Nur die Prinzipalanmeldung auf Serverebene (die vom Bereitstellungsprozess der verwalteten Instanz erstellt wurde), Mitglieder der Serverrollen (`securityadmin` oder `sysadmin`) oder andere Anmeldungen mit der Berechtigung ALTER ANY LOGIN auf Serverebene können Azure AD-Serverprinzipale (Anmeldungen) in der Masterdatenbank für die verwaltete Instanz erstellen.
 - Wenn es sich bei der Anmeldung um einen SQL-Prinzipal handelt, können nur Anmeldungen, die der Rolle `sysadmin` angehören, den Befehl „create“ verwenden, um Anmeldungen für ein Azure AD-Konto zu erstellen.
 - Die Azure AD-Anmeldung muss Mitglied einer Azure AD-Instanz im selben Verzeichnis sein, das auch für die verwaltete Azure SQL-Instanz verwendet wird.
 - Azure AD-Serverprinzipale (Anmeldungen) werden im Objekt-Explorer ab SSMS 18.0 Preview 5 angezeigt.
 - Das Überlappen von Azure AD-Serverprinzipalen (Anmeldungen) mit einem Azure AD-Administratorkonto ist zulässig. Azure AD-Serverprinzipale (Anmeldungen) haben beim Auflösen des Prinzipals und beim Anwenden der Berechtigungen auf die verwaltete Instanz Vorrang vor Azure AD-Administratoren.
 - Während der Authentifizierung wird die folgende Reihenfolge angewandt, um den authentifizierenden Prinzipal aufzulösen:
+
     1. Wenn das Azure AD-Konto direkt dem Azure AD-Serverprinzipal (Anmeldung) zugeordnet ist (in „sys.server_principals“ als Typ „E“ vorhanden), wird der Zugriff gewährt, und die Berechtigungen des Azure AD-Serverprinzipals (Anmeldung) werden angewandt.
     2. Wenn das Azure AD-Konto ein Mitglied der Azure AD-Gruppe ist, die dem Azure AD-Serverprinzipal (Anmeldung) zugeordnet ist (in „sys.server_principals“ als Typ „X“ vorhanden), wird der Zugriff gewährt, und die Berechtigungen der Azure AD-Gruppenanmeldung werden angewandt.
     3. Wenn das Azure AD-Konto ein speziell im Portal konfigurierter Azure AD-Administrator für die verwaltete Instanz ist (in den Systemansichten der verwalteten Instanz nicht vorhanden), werden spezielle feste Berechtigungen des Azure AD-Administrators für die verwaltete Instanz (Legacymodus) angewandt.
     4. Wenn das Azure AD-Konto direkt einem Azure AD-Benutzer in der Datenbank zugeordnet ist (in „sys.database_principals“ als Typ „E“ vorhanden), wird der Zugriff gewährt, und die Berechtigungen des Azure AD-Datenbankbenutzers werden angewandt.
     5. Wenn das Azure AD-Konto ein Mitglied einer Azure AD-Gruppe ist, die einem Azure AD-Benutzer in einer Datenbank direkt zugeordnet ist (in „sys.database_principals“ als Typ „X“ vorhanden), wird der Zugriff gewährt, und die Berechtigungen der Azure AD-Gruppenanmeldung werden angewandt.
     6. Wenn eine Azure AD-Anmeldung einem Azure AD-Benutzerkonto oder einem Azure AD-Gruppenkonto zugeordnet ist, das zu dem authentifizierenden Benutzer aufgelöst werden kann, werden alle Berechtigungen dieser Azure AD-Anmeldung angewandt.
-
-
-
-
-
 
 ### <a name="service-key-and-service-master-key"></a>Dienstschlüssel und Diensthauptschlüssel
 
@@ -257,8 +271,6 @@ Die folgenden Optionen können nicht geändert werden:
 - `SINGLE_USER`
 - `WITNESS`
 
-Das Ändern des Namens wird nicht unterstützt.
-
 Weitere Informationen finden Sie unter [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>SQL Server-Agent
@@ -322,7 +334,6 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 - Nur `CREATE ASSEMBLY FROM BINARY` wird unterstützt. Siehe [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` wird nicht unterstützt. Siehe [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
 
 ### <a name="dbcc"></a>DBCC
 
@@ -437,7 +448,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 
 ### <a name="stored-procedures-functions-triggers"></a>Gespeicherte Prozeduren, Funktionen, Trigger
 
-- `NATIVE_COMPILATION` wird derzeit nicht unterstützt.
+- `NATIVE_COMPILATION` wird im Tarif „Universell“ nicht unterstützt.
 - Die folgenden [sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql)-Optionen werden nicht unterstützt:
   - `allow polybase export`
   - `allow updates`
@@ -448,7 +459,6 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - `xp_cmdshell` wird nicht unterstützt. Siehe [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` werden nicht unterstützt, einschließlich `sp_addextendedproc` und `sp_dropextendedproc`. Siehe [Erweiterte gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
-- `sp_renamedb` wird nicht unterstützt. Siehe [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
 ## <a name="Changes"></a> Behavior Changes
 
@@ -467,7 +477,11 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 ### <a name="tempdb-size"></a>TEMPDB-Größe
 
-`tempdb` ist in 12 Dateien mit jeweils einer maximalen Größe von 14 GB unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Neue Dateien können `tempdb` hinzugefügt werden. Diese Einschränkung wird in Kürze aufgehoben. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 168 GB in `tempdb` erforderlich sind.
+Die maximale Dateigröße von `tempdb` darf im Tarif „Universell“ nicht größer als 24 GB/Kern sein. Die maximale Größe von `tempdb` ist im Tarif „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. `tempdb` wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Neue Dateien können `tempdb` hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB/Kern in `tempdb` erforderlich sind.
+
+### <a name="cannot-restore-contained-database"></a>Eigenständige Datenbank kann nicht wiederhergestellt werden
+
+Die verwaltete Instanz kann [eigenständige Datenbanken](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) nicht wiederherstellen. Point-in-Time-Wiederherstellungen von eigenständigen Datenbanken funktionieren in einer verwalteten Instanz nicht. Dieses Problem wird bald behoben. In der Zwischenzeit wird empfohlen, die containment-Option aus Ihren Datenbanken in einer verwalteten Instanz zu entfernen und die containment-Option nicht für Produktionsdatenbanken zu verwenden.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Überschreiten des Speicherplatzes mit kleinen Datenbankdateien
 
@@ -500,7 +514,7 @@ Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehl
 
 ### <a name="database-mail-profile"></a>Datenbank-E-Mail-Profil
 
-Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss.
+Das vom SQL-Agent verwendete E-Mail-Profil der Datenbank muss `AzureManagedInstance_dbmail_profile` lauten.
 
 ### <a name="error-logs-are-not-persisted"></a>Fehlerprotokolle sind nicht persistent
 

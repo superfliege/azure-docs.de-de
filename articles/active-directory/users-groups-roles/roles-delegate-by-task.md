@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875273"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361369"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -235,13 +235,13 @@ Lesen aller Konfigurationen | Globaler Administrator |
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Konfigurieren von Authentifizierungsmethoden | Globaler Administrator | 
-Konfigurieren der Anpassung | Globaler Administrator | 
-Konfigurieren einer Benachrichtigung | Globaler Administrator | 
-Konfigurieren einer lokalen Integration | Globaler Administrator | 
-Konfigurieren der Eigenschaften der Kennwortzurücksetzung | Globaler Administrator | 
-Konfigurieren der Registrierung | Globaler Administrator | 
-Lesen aller Konfigurationen | Sicherheits-, Benutzeradministrator | 
+Konfigurieren von Authentifizierungsmethoden | Globaler Administrator |
+Konfigurieren der Anpassung | Globaler Administrator |
+Konfigurieren einer Benachrichtigung | Globaler Administrator |
+Konfigurieren einer lokalen Integration | Globaler Administrator |
+Konfigurieren der Eigenschaften der Kennwortzurücksetzung | Benutzeradministrator | Globaler Administrator
+Konfigurieren der Registrierung | Globaler Administrator |
+Lesen aller Konfigurationen | Sicherheitsadministrator | Benutzeradministrator |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 

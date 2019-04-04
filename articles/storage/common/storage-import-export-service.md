@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267511"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164925"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -76,7 +76,7 @@ Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
 > [!NOTE]
 > Geben Sie für nationale Lieferungen (innerhalb des Landes, in dem sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
 >
-> Geben Sie für internationale Lieferungen (außerhalb des Landes, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
+> Geben Sie für internationale Lieferungen (außerhalb des Lands, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
 
  ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/importjob.png)
 
@@ -106,7 +106,7 @@ Ein Exportauftrag umfasst im Allgemeinen die folgenden Schritte:
 > [!NOTE]
 > Geben Sie für nationale Lieferungen (innerhalb des Landes, in dem sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
 >
-> Geben Sie für internationale Lieferungen (außerhalb des Landes, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
+> Geben Sie für internationale Lieferungen (außerhalb des Lands, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
   
  ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/exportjob.png)
 

@@ -4,22 +4,22 @@ description: Übersicht über die Architektur des Clusterressourcen-Managers von
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 48da92be0eef1154b490fb4829363598d6d66569
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bfbdb05e8d2764d2b878e22d236cae30519da176
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211428"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666791"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Übersicht über die Architektur des Clusterressourcen-Managers
 Der Clusterressourcen-Manager von Service Fabric ist ein zentraler Dienst, der im Cluster ausgeführt wird. Er verwaltet den gewünschten Status des Diensts im Cluster, insbesondere in Bezug auf Ressourcenverbrauch und Platzierungsregeln. 
@@ -51,6 +51,7 @@ Der Clusterressourcen-Manager muss die Anforderungen der einzelnen Dienste sowie
 Betrachten Sie das folgende Diagramm:
 
 <center>
+
 ![Resource Balancer-Architektur][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Es gibt viele Änderungen, die während der Laufzeit auftreten können. Nehmen w
 Betrachten Sie das folgende Diagramm, und sehen Sie sich an, was als Nächstes geschieht. Nehmen wir an, der Clusterressourcen-Manager ermittelt, dass Änderungen erforderlich sind. Er koordiniert sich mit anderen Systemdiensten (insbesondere dem Failover-Manager), um die erforderlichen Änderungen vorzunehmen. Anschließend werden die notwendigen Befehle an die entsprechenden Knoten gesendet (4). Angenommen, der Ressourcen-Manager hat festgestellt, dass Node5 überlastet war und daher entschieden, Dienst B von Node5 auf Node4 zu verschieben. Am Ende der Neukonfiguration (5) sieht der Cluster folgendermaßen aus:
 
 <center>
+
 ![Resource Balancer-Architektur][Image2]
 </center>
 

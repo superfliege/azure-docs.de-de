@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee900554371644f374e4aeed51f1eeb0c18569e
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113298"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
@@ -676,13 +676,13 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 | AvailableStorage| Verfügbarer Speicher   |Byte| Gesamt|  Gemeldeter Gesamtspeicher mit 5-Minuten-Granularität pro Region|   DatabaseName, CollectionName, Region|   5M| Verfügbarer Speicher|   Wird verwendet, um die verfügbare Speicherkapazität zu überwachen (gilt nur für feste Speichersammlungen). Die Mindestgranularität sollte 5 Minuten betragen.| 
 | DataUsage |Datennutzung |Byte| Gesamt   |Gemeldeter Gesamtdatennutzung mit 5-Minuten-Granularität pro Region|    DatabaseName, CollectionName, Region|   5M  |Datengröße  | Wird verwendet, um den gesamten Datenverbrauch bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
 | IndexUsage|   Indexnutzung|    Byte|  Gesamt   |Gemeldete Gesamtindexnutzung mit 5-Minuten-Granularität pro Region|    DatabaseName, CollectionName, Region|   5M| Indexgröße| Wird verwendet, um den gesamten Datenverbrauch bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen. |
-| DocumentQuota|    Dokumentenkontingent| Byte|  Gesamt|  Gemeldetes Gesamtspeicherkontingent mit 5-Minuten-Granularität pro Region. Geltungsbereich:| DatabaseName, CollectionName, Region|   5M  |Speicherkapazität|  Wird verwendet, um das gesamte Kontingent bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
+| DocumentQuota|    Dokumentenkontingent| Byte|  Gesamt|  Gemeldetes Gesamtspeicherkontingent mit 5-Minuten-Granularität pro Region. Gilt für feste Speichersammlungen| DatabaseName, CollectionName, Region|   5M  |Speicherkapazität|  Wird verwendet, um das gesamte Kontingent bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
 | DocumentCount|    Dokumentanzahl| Count   |Gesamt  |Gemeldeter Gesamtdokumentanzahl mit 5-Minuten-Granularität pro Region|  DatabaseName, CollectionName, Region|   5M  |Dokumentanzahl|Wird verwendet, um die Gesamtanzahl der Dokumente bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
 
 ### <a name="latency-metrics"></a>Latenzmetriken
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen| Zeitgranularitäten| Verwendung |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | ReplicationLatency    | Replikationswartezeit|  Millisekunden|   Minimum, Maximum, Mittelwert | P99-Replikationswartezeit für Quell- und Zielregionen für geofähiges Konto| SourceRegion, TargetRegion| Alle | Wird verwendet, um die P99-Replikationswartezeit zwischen zwei beliebigen Regionen für ein georepliziertes Konto zu überwachen. |
 
 ### <a name="availability-metrics"></a>Verfügbarkeitsmetriken
@@ -694,7 +694,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 ### <a name="cassandra-api-metrics"></a>Cassandra-API-Metriken
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen| Zeitgranularitäten| Verwendung |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | CassandraRequests | Cassandra-Anforderungen |  Count|  Count|  Anzahl der ausgeführten Cassandra-API-Anforderungen|  DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType|   Alle| Wird verwendet, um Cassandra-Anforderungen mit einer Granularität von einer Minute zu überwachen. Um einen Durchschnittswert für die Anforderungen pro Sekunde zu erhalten, verwenden Sie die Zähl-Aggregation in einer Minute, und teilen Sie sie durch 60.|
 | CassandraRequestCharges|  Gebühren für Cassandra-Anforderungen| Count|   Sum, Min, Max, Avg| Cassandra-API-Anforderungen verbrauchte Anforderungseinheiten|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Alle| Wird verwendet, um die RUs zu überwachen, die pro Minute von einem Cassandra API-Konto genutzt werden.|
 | CassandraConnectionClosures   | Abschluss von Cassandra-Verbindungen |Count| Count   |Anzahl der geschlossenen Cassandra-Verbindungen|    ClosureReason, Region|  Alle | Wird verwendet, um die Verbindung zwischen Clients und der Cassandra-API von Azure Cosmos DB zu überwachen.|

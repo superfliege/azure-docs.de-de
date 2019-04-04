@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341167"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286379"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -48,6 +48,15 @@ In Durable Functions gibt es eine Warteschlange für Arbeitsaufgaben pro Aufgabe
 In Durable Functions gibt es mehrere *Steuerelement-Warteschlangen* pro Aufgabenhub. Eine *Steuerelement-Warteschlange* ist komplexer als die einfachere Warteschlange für Arbeitsaufgaben. Steuerelement-Warteschlangen werden verwendet, um zustandsbehaftete Orchestratorfunktionen auszulösen. Da die Orchestratorfunktionsinstanzen zustandsbehaftete Singletons sind, ist es nicht möglich, ein konkurrierendes Consumermodell zu verwenden, um die Last zwischen virtuellen Computern zu verteilen. Vielmehr wird bei Orchestratornachrichten die Last auf die Steuerelement-Warteschlangen verteilt. Weitere Informationen zu diesem Verhalten finden Sie in den folgenden Abschnitten.
 
 Steuerelement-Warteschlangen enthalten eine Vielzahl von Orchestrierung-Lebenszyklus-Nachrichtentypen. Beispiele hierfür sind [orchestrator control messages](durable-functions-instance-management.md) (Orchestratorsteuerungsmeldungen), Aktivitätsfunktion-*Antwort*-Nachrichten und Timernachrichten. Bis zu 32 Nachrichten werden in einer einzelnen Abfrage aus einer Steuerelement-Warteschlange entfernt. Diese Nachrichten enthalten Nutzlastdaten sowie Metadaten, einschließlich der Orchestrierungsinstanz, für die eine Nachricht jeweils vorgesehen ist. Wenn mehrere aus der Warteschlange entfernte Nachrichten für dieselbe Orchestrierungsinstanz vorgesehen sind, werden sie als Batch verarbeitet.
+
+### <a name="queue-polling"></a>Abrufen von Warteschlangen
+
+Die Durable Task-Erweiterung implementiert einen zufälligen exponentiellen Backoffalgorithmus, um die Auswirkungen des Abrufs von Warteschlangen im Leerlauf auf Speichertransaktionskosten zu reduzieren. Wenn eine Nachricht gefunden wird, überprüft die Runtime sofort, ob eine andere Nachricht vorhanden ist. Wenn keine Nachricht gefunden wird, wird der Vorgang nach einem bestimmten Zeitraum wiederholt. Nach aufeinander folgenden fehlerhaften Versuchen, eine Warteschlangennachricht abzurufen, erhöht sich die Wartezeit immer mehr, bis die maximale Wartezeit (standardmäßig eine 30 Sekunden) erreicht ist.
+
+Die maximale Abrufverzögerung kann über die Eigenschaft `maxQueuePollingInterval` in der Datei [host.json](../functions-host-json.md#durabletask) konfiguriert werden. Die Festlegung dieser Eigenschaft auf einen höheren Wert kann zu höherer Latenz bei der Nachrichtenverarbeitung führen. Eine höhere Latenz wird nur nach Zeiträumen ohne Aktivität erwartet. Die Festlegung der Eigenschaft auf einen niedrigeren Wert kann aufgrund verstärkter Speichertransaktionen zu höheren Speicherkosten führen.
+
+> [!NOTE]
+> Bei der Ausführung in Verbrauchs- und Premium-Tarifen von Azure Functions ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-plan-works) alle Steuerelement- und Arbeitselement-Warteschlangen einmal alle 10 Sekunden ab. Dieser zusätzliche Abruf ist erforderlich, um zu ermitteln, wann die Instanzen der Funktions-Apps aktiviert und Skalierungsentscheidungen getroffen werden sollen. Zum Zeitpunkt der Erstellung dieses Artikels ist dieses Intervall von 10 Sekunden konstant und kann nicht konfiguriert werden.
 
 ## <a name="storage-account-selection"></a>Auswahl des Speicherkontos
 

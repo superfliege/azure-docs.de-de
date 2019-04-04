@@ -10,19 +10,18 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089334"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401780"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
 Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Owner Password Credentials, ROPC) ist ein OAuth-Standardauthentifizierungsflow, in dem die Anwendung, auch als vertrauende Seite bezeichnet, gültige Anmeldeinformationen, etwa Benutzer-ID und Kennwort für ein ID-Token, Zugriffstoken und Aktualisierungstoken, austauscht. 
 
-> [!NOTE]
-> Dieses Feature befindet sich in der Vorschauphase.
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 In Azure Active Directory (Azure AD) B2C werden die folgenden Optionen unterstützt:
 

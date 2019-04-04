@@ -6,18 +6,18 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/30/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a1e65466bb409007a2f112422f393eee786d7b3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182131"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
-In dieser Schrittanleitung wird gezeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie im Schnellstart [Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md).
+In dieser Schrittanleitung wird gezeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsolutions.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie im Schnellstart [Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,7 +66,7 @@ Die Basic-Bereitstellung ist auf die Demonstration der Lösung ausgelegt. Zur Ko
 
 Bei einer Bereitstellung vom Typ „Basic“ werden die folgenden Dienste in Ihrem Azure-Abonnement erstellt:
 
-| Count | Ressource                       | Typ         | Verwendung |
+| Count | Ressource                       | Type         | Verwendung |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtueller Linux-Computer](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Hosten von Microservices |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1: Tarif „Standard“ | Geräteverwaltung und Kommunikation |

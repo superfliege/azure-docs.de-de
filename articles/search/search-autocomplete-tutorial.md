@@ -1,32 +1,32 @@
 ---
-title: 'Tutorial zum Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld: Azure Search'
+title: 'Beispiel für das Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld: Azure Search'
 description: Beispiele zum Verbessern der Benutzerfreundlichkeit Ihrer datenorientierten Anwendungen mithilfe der automatischen Vervollständigung und Vorschläge von Azure Search.
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997163"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200275"
 ---
-# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Tutorial: Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld mit Azure Search
+# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>Beispiel: Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld mit Azure Search
 
-In diesem Tutorial erfahren Sie, wie Sie [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions), die [automatische Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und [Facets](search-faceted-navigation.md) in der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) und im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) zur Erstellung eines leistungsfähigen Suchfelds verwenden. 
+In diesem Beispiel erfahren Sie, wie Sie [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions), die [automatische Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und [Facets](search-faceted-navigation.md) in der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) und im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) zur Erstellung eines leistungsfähigen Suchfelds verwenden. 
 
 + *Vorschläge* enthalten Empfehlungen von tatsächlichen Ergebnisse basierend auf der Eingabe des Benutzers. 
 + Die *automatische Vervollständigung*, [eine neue Previewfunktion](search-api-preview.md) in Azure Search, stellt Begriffe aus dem Index bereit, um die Eingabe des Benutzers zu vervollständigen. 
 
 Im Folgenden werden mehrere Techniken zur Steigerung der Produktivität des Benutzers verglichen, indem die Suchfunktion direkt bei der Eingabe zur Verfügung gestellt wird.
 
-Dieses Tutorial führt Sie durch eine ASP.NET MVC-basierte Anwendung, die C#-Code zum Aufrufen der [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und JavaScript zum direkten Aufrufen der REST-API für Azure Search verwendet. Die Anwendung für dieses Tutorial ist auf einen Index ausgerichtet, der mit [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)-Beispieldaten aufgefüllt wurde. Sie können entweder den Index verwenden, der in der NYCJobs-Demo bereits konfiguriert wurde, oder Ihren eigenen Index mithilfe eines Datenladers in der NYCJobs-Beispiellösung auffüllen. Im Beispiel werden die JavaScript-Bibliotheken [jQuery UI](https://jqueryui.com/autocomplete/) und [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) zur Erstellung eines Suchfelds verwendet, das die automatische Vervollständigung unterstützt. Bei Verwendung dieser Komponenten mit Azure Search werden Ihnen mehrere Beispiele zur Unterstützung der automatischen Vervollständigung durch Textvervollständigung in Ihrem Suchfeld angezeigt.
+Dieses Beispiel führt Sie durch eine ASP.NET MVC-basierte Anwendung, die C#-Code zum Aufrufen der [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und JavaScript zum direkten Aufrufen der REST-API für Azure Search verwendet. Die Anwendung für dieses Beispiel ist auf einen Index ausgerichtet, der mit [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)-Beispieldaten aufgefüllt wurde. Sie können entweder den Index verwenden, der in der NYCJobs-Demo bereits konfiguriert wurde, oder Ihren eigenen Index mithilfe eines Datenladers in der NYCJobs-Beispiellösung auffüllen. Im Beispiel werden die JavaScript-Bibliotheken [jQuery UI](https://jqueryui.com/autocomplete/) und [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) zur Erstellung eines Suchfelds verwendet, das die automatische Vervollständigung unterstützt. Bei Verwendung dieser Komponenten mit Azure Search werden Ihnen mehrere Beispiele zur Unterstützung der automatischen Vervollständigung durch Textvervollständigung in Ihrem Suchfeld angezeigt.
 
 Sie führen die folgenden Aufgaben aus:
 
@@ -35,16 +35,16 @@ Sie führen die folgenden Aufgaben aus:
 > * Hinzufügen von Suchdienstinformationen zu Anwendungseinstellungen
 > * Implementieren eines Eingabefelds für die Suche
 > * Hinzufügen von Unterstützung für eine Liste zur automatischen Vervollständigung, die von einer Remotequelle abgerufen wird 
-> * Abrufen von Vorschlägen und automatischer Vervollständigung mit dem .Net SDK und der REST-API
+> * Abrufen von Vorschlägen und automatischer Vervollständigung mit dem .NET SDK und der REST-API
 > * Unterstützung der clientseitigen Zwischenspeicherung zum Verbessern der Leistung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Visual Studio 2017. Sie können die kostenlose [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. 
 
-* Laden Sie den beispielhaften [Quellcode](https://github.com/azure-samples/search-dotnet-getting-started) für das Tutorial herunter.
+* Laden Sie den [Quellcode](https://github.com/azure-samples/search-dotnet-getting-started) für das Beispiel herunter.
 
-* (Optional) Ein aktives Azure-Konto und ein Azure Search-Dienst. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free/)registrieren. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Suchdiensts](search-create-service-portal.md). Das Konto und der Dienst sind optional, da dieses Tutorial mit einem gehosteten NYCJobs-Index abgeschlossen werden kann, der bereits für eine andere Demo vorhanden ist.
+* (Optional) Ein aktives Azure-Konto und ein Azure Search-Dienst. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free/)registrieren. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Suchdiensts](search-create-service-portal.md). Das Konto und der Dienst sind optional, da dieses Beispiel mit einem gehosteten NYCJobs-Index abgeschlossen werden kann, der bereits für eine andere Demo vorhanden ist.
 
 * (Optional) Laden Sie [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)-Beispielcode herunter, um die NYCJobs-Daten in einen Index Ihres Azure Search-Diensts zu importieren.
 
@@ -61,11 +61,11 @@ Führen Sie die Schritte in diesem Abschnitt aus, wenn die Daten für die NYCJob
 
 1. Drücken Sie die Taste F5, um die Anwendung zu starten.  Dadurch werden 2 Indizes erstellt und die NYCJob-Beispieldaten importiert.
 
-1. Öffnen Sie in Visual Studio im Beispielcode des Tutorials die Projektmappendatei „AutocompleteTutorial.sln“.  Öffnen Sie im Projekt „AutocompleteTutorial“ die Datei „Web.config“, und ändern Sie die Werte für „SearchServiceName“ und „SearchServiceApiKey“ in die oben angegebenen Werte.
+1. Öffnen Sie in Visual Studio im Beispielcode des Beispiels die Projektmappendatei „AutocompleteTutorial.sln“.  Öffnen Sie im Projekt „AutocompleteTutorial“ die Datei „Web.config“, und ändern Sie die Werte für „SearchServiceName“ und „SearchServiceApiKey“ in die oben angegebenen Werte.
 
 ### <a name="running-the-sample"></a>Ausführen des Beispiels
 
-Sie können nun die Beispielanwendung des Tutorials ausführen.  Öffnen Sie in Visual Studio die Projektmappendatei „AutocompleteTutorial.sln“, um das Tutorial auszuführen.  Die Lösung enthält ein ASP.NET MVC-Projekt.  Drücken Sie die Taste F5, um das Projekt auszuführen, und laden Sie die Seite in einen Browser Ihrer Wahl.  Im oberen Bereich wird Ihnen eine Option zur Auswahl von C# oder JavaScript angezeigt.  Die Option C# wird über den Browser im HomeController aufgerufen und verwendet das .Net SDK von Azure Search zum Abrufen von Ergebnissen.  Die Option JavaScript ruft die REST-API für Azure Search direkt über den Browser auf.  Diese Option erzielt eine deutlich bessere Leistung, da der Controller aus dem Flow herausgenommen wird.  Sie können die Option auswählen, die Ihren Anforderungen und Sprachpräferenzen entspricht.  Auf der Seite gibt es mehrere Beispiele zur automatischen Vervollständigung mit einer entsprechenden Anleitung.  Jedes Beispiel enthält empfohlenen Beispieltext, den Sie ausprobieren können.  Versuchen Sie, in jedes Suchfeld einige Buchstaben einzugeben, um zu sehen, was geschieht.
+Sie können nun die Beispielanwendung des Beispiels ausführen.  Öffnen Sie in Visual Studio die Projektmappendatei „AutocompleteTutorial.sln“, um das Beispiel auszuführen.  Die Lösung enthält ein ASP.NET MVC-Projekt.  Drücken Sie die Taste F5, um das Projekt auszuführen, und laden Sie die Seite in einen Browser Ihrer Wahl.  Im oberen Bereich wird Ihnen eine Option zur Auswahl von C# oder JavaScript angezeigt.  Die Option C# wird über den Browser im HomeController aufgerufen und verwendet das .NET SDK von Azure Search zum Abrufen von Ergebnissen.  Die Option JavaScript ruft die REST-API für Azure Search direkt über den Browser auf.  Diese Option erzielt eine deutlich bessere Leistung, da der Controller aus dem Flow herausgenommen wird.  Sie können die Option auswählen, die Ihren Anforderungen und Sprachpräferenzen entspricht.  Auf der Seite gibt es mehrere Beispiele zur automatischen Vervollständigung mit einer entsprechenden Anleitung.  Jedes Beispiel enthält empfohlenen Beispieltext, den Sie ausprobieren können.  Versuchen Sie, in jedes Suchfeld einige Buchstaben einzugeben, um zu sehen, was geschieht.
 
 ## <a name="how-this-works-in-code"></a>Funktionsweise im Code
 
@@ -132,7 +132,7 @@ Nachdem wird den JavaScript-Code in dem Beispiel überprüft haben, schauen wir 
 
 1. Öffnen Sie die Datei „HomeController.cs“ im Verzeichnis „Controllers“. 
 
-1. Zunächst bemerken Sie möglicherweise im oberen Bereich der Klasse eine Methode mit dem Namen InitSearch.  Mit dieser Methode wird für den Azure Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt.  Weitere Informationen zur Funktionsweise finden Sie im folgenden Tutorial: [Verwenden von Azure Search aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. Zunächst bemerken Sie möglicherweise im oberen Bereich der Klasse eine Methode mit dem Namen InitSearch.  Mit dieser Methode wird für den Azure Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt.  Weitere Informationen zur Funktionsweise finden Sie im folgenden Beispiel: [Verwenden von Azure Search aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Rufen Sie die Funktion „Suggest“ (Vorschlagen) auf.
 
@@ -213,11 +213,11 @@ Wenn Sie diesen mit dem Beispiel oben vergleichen, in dem der Home-Controller au
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 
-Dieses Tutorial veranschaulicht die grundlegenden Schritte zum Erstellen eines Suchfelds, das die automatische Vervollständigung und Vorschläge unterstützt.  Sie haben gesehen, wie Sie eine ASP.NET MVC-Anwendung erstellen und mit dem .NET SDK oder der REST-API für Azure Search Vorschläge abrufen können.
+Dieses Beispiel veranschaulicht die grundlegenden Schritte zum Erstellen eines Suchfelds, das die automatische Vervollständigung und Vorschläge unterstützt.  Sie haben gesehen, wie Sie eine ASP.NET MVC-Anwendung erstellen und mit dem .NET SDK oder der REST-API für Azure Search Vorschläge abrufen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Integrieren Sie Vorschläge und die automatische Vervollständigung in Ihre Suchumgebung.  Bedenken Sie, wie die direkte Verwendung des .Net SDK oder der REST-API dabei helfen kann, dass Benutzer zur Steigerung ihrer Produktivität bei der Eingabe von der Leistungsfähigkeit von Azure Search profitieren können.
+Integrieren Sie Vorschläge und die automatische Vervollständigung in Ihre Suchumgebung.  Bedenken Sie, wie die direkte Verwendung des .NET SDK oder der REST-API dabei helfen kann, dass Benutzer zur Steigerung ihrer Produktivität bei der Eingabe von der Leistungsfähigkeit von Azure Search profitieren können.
 
 > [!div class="nextstepaction"]
 > [REST-API zur automatischen Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

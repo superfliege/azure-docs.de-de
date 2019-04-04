@@ -11,17 +11,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2019
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 28210c06892097abb831f3f6f27b8c68652a8957
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1482569e415971fba98de8a586cc2868cc574198
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003992"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258087"
 ---
-# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal-legacy"></a>Gewusst wie: Livestreaming mit Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate im Azure-Portal (Legacy)
+# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Livestreaming mit Media Services zum Erstellen von Streams mit mehreren Bitrates im Azure-Portal  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -41,18 +41,16 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 > [!NOTE]
 > Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an amslived@microsoft.com, falls Sie einen Kanal über längere Zeiträume ausführen müssen.
-> 
-> 
 
 1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein Einzelbitraten-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
-   
+
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 2. Erstellen Sie einen Kanal, und starten Sie ihn. 
 3. Rufen Sie die Erfassungs-URL des Kanals ab. 
-   
+
     Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
 4. Rufen Sie die Vorschau-URL des Kanals ab. 
-   
+
     Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 5. Erstellen Sie ein Ereignis/Programm (dadurch wird auch ein Asset erstellt). 
 6. Veröffentlichen Sie das Ereignis (dadurch wird ein OnDemand-Locator für das zugehörige Medienobjekt erstellt).    
@@ -83,31 +81,31 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option „Media Services“ aus, und klicken Sie dann auf den Media Services-Kontonamen.
 2. Wählen Sie **Livestreaming**.
 3. Wählen Sie **Benutzerdefiniert erstellen**. Mit dieser Option können Sie einen Kanal erstellen, der für Live Encoding aktiviert ist.
-   
+
     ![Erstellen eines KANALS](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. Klicken Sie auf **Einstellungen**.
-   
+
    1. Wählen Sie den Kanaltyp **Live Encoding** . Mit diesem Typen geben Sie an, dass Sie einen Kanal erstellen möchten, der für Livecodierung aktiviert ist. Dies bedeutet, dass der eingehende Single-Bitrate-Datenstrom an den Kanal gesendet und mithilfe angegebener Liveencodereinstellungen in einen Multi-Bitrate-Datenstrom codiert wird. Weitere Informationen finden Sie unter [Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate](media-services-manage-live-encoder-enabled-channels.md). Klicken Sie auf OK.
    2. Geben Sie den Namen eines Kanals an.
    3. Klicken Sie unten auf dem Bildschirm auf „OK“.
 5. Wählen Sie die Registerkarte **Erfassen** .
-   
+
    1. Auf dieser Seite können Sie ein Streamingprotokoll auswählen. Für den Kanaltyp **Live Encoding** stehen folgende gültige Protokolloptionen zur Verfügung:
-      
+
       * Fragmentiertes Single-Bitrate-MP4 (Smooth Streaming)
       * Single-Bitrate-RTMP
-        
+
         Ausführliche Informationen zu den einzelnen Protokollen finden Sie unter [Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate](media-services-manage-live-encoder-enabled-channels.md).
-        
+
         Sie können die Protokolloption nicht ändern, während der Kanal oder seine zugehörigen Ereignisse bzw. Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll einen separaten Kanal.  
    2. Sie können IP-Einschränkungen auf die Erfassung anwenden. 
-      
+
        Sie können die IP-Adressen definieren, die zum Erfassen von Videos in diesem Kanal zugelassen sind. Zulässige IP-Adressen können als eine einzelne IP-Adresse (z. B. „10.0.0.1“), als IP-Adressbereich mithilfe einer IP-Adresse und einer CIDR-Subnetzmaske (z.B. „10.0.0.1/22“) oder als IP-Adressbereich mithilfe einer IP-Adresse und einer Subnetzmaske in punktierter Dezimalschreibweise (z.B. „10.0.0.1(255.255.252.0)“) angegeben werden.
-      
+
        Wenn keine IP-Adressen angegeben werden und keine Regeldefinition vorhanden ist, so ist keine IP-Adresse zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.
 6. Wenden Sie auf der Registerkarte **Vorschau** die IP-Einschränkung auf die Vorschau an.
 7. Geben Sie auf der Registerkarte **Codierung** die Codierungsvoreinstellung an. 
-   
+
     Derzeit ist die einzige Systemvoreinstellung, die Sie auswählen können, **Default 720p**. Öffnen Sie ein Microsoft-Support-Ticket, um eine benutzerdefinierte Voreinstellung anzugeben. Geben Sie anschließend den Namen der für Sie erstellten Voreinstellung ein. 
 
 > [!NOTE]
@@ -153,18 +151,18 @@ Wenn der Datenstrom in den Kanal gelangt, können Sie das Streamingereignis star
 Es gibt zwei Möglichkeiten, das Ereignis zu starten: 
 
 1. Klicken Sie auf der Seite **Kanal** auf **Liveereignis**, um ein neues Ereignis hinzuzufügen.
-   
+
     Geben Sie Folgendes an: Name des Ereignisses, Name des Assets, Archivfenster, Verschlüsselungsoption.
-   
+
     ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
-   
+
     Wenn Sie das Kontrollkästchen **Publish this live event now** (Dieses Liveereignis jetzt veröffentlichen) aktiviert gelassen haben, werden das Ereignis und die VERÖFFENTLICHUNGS-URLs erstellt.
-   
+
     Sie können auf **Start**klicken, wenn Sie bereit zum Streamen des Ereignisses sind.
-   
+
     Wenn Sie das Ereignis gestartet haben, können Sie auf **Watch** (Ansehen) klicken, um die Wiedergabe der Inhalte zu starten.
 2. Sie können auch einfach auf der Seite **Kanal** auf die Schaltfläche **Live schalten** klicken. Dadurch erstellen Sie ein Standardasset, ein Programm und einen Streaminglocator.
-   
+
     Das Ereignis hat den Namen **default** , und das Archivfenster ist auf acht Stunden festgelegt.
 
 Sie können das veröffentlichte Ereignis auf der Seite **Live event** (Liveereignis) ansehen. 

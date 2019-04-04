@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f2bf811bfb0856b7ceb2fca2fd84c0d9830fb65d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebe5c65f701c0a1c7c02182800a35bfbeed5b0be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255625"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181383"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -127,10 +127,119 @@ Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde,
 
     ![Umgebungsaktionen](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
-## <a name="deploy-a-resource-manager-template-to-create-a-vm"></a>Bereitstellen einer Resource Manager-Vorlage zum Erstellen einer VM
-Nachdem Sie eine Resource Manager-Vorlage gespeichert und an Ihre Anforderungen angepasst haben, können Sie sie zum Automatisieren der VM-Erstellung verwenden. 
-- Unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) wird beschrieben, wie Sie Azure PowerShell mit Resource Manager-Vorlagen verwenden, um Ihre Ressourcen in Azure bereitzustellen. 
-- Unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) wird beschrieben, wie Sie die Azure CLI mit Resource Manager-Vorlagen verwenden, um Ihre Ressourcen in Azure bereitzustellen.
+## <a name="automate-deployment-of-environments"></a>Automatisieren der Bereitstellung von Umgebungen
+Azure DevTest Labs bietet die Möglichkeit, eine [Azure Resource-Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen einer Umgebung mit einem Satz von Ressourcen im Lab zu verwenden. Diese Umgebungen können alle Azure-Ressourcen enthalten, die mithilfe von Resource Manager-Vorlagen erstellt werden können. DevTest Labs-Umgebungen ermöglichen Benutzern, komplexe Infrastrukturen problemlos auf konsistente Weise innerhalb der Grenzen des Labs bereitzustellen. Derzeit eignet sich das Hinzufügen einer Umgebung zu einem Lab über das Azure-Portal insbesondere für einmalige Bereitstellungen. Für Entwicklungs- oder Testszenarien, in denen mehrere Erstellungen ausgeführt werden, verbessert die automatische Bereitstellung jedoch die Benutzerfreundlichkeit.
+
+Führen Sie die folgenden Schritte im Abschnitt [Konfigurieren eigener Vorlagenrepositorys](#configure-your-own-template-repositories) aus, bevor Sie fortfahren: 
+
+1. Erstellen Sie die Resource Manager-Vorlage, die die zu erstellenden Ressourcen definiert. 
+2. Richten Sie die Resource Manager-Vorlage in einem Git-Repository ein. 
+3. Verbinden Sie das Git-Repository mit dem Lab. 
+
+### <a name="powershell-script-to-deploy-the-resource-manager-template"></a>PowerShell-Skript für die Bereitstellung der Resource Manager-Vorlage
+Speichern Sie das PowerShell-Skript im nächsten Abschnitt auf der Festplatte (z. B. unter „deployenv.ps1“), und führen Sie das Skript aus, nachdem Sie Werte für SubscriptionId, ResourceGroupName, LabName, RepositoryName, TemplateName (Ordner) im Git-Repository und EnvironmentName angegeben haben.
+
+```powershell
+./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"  
+```
+
+#### <a name="sample-script"></a>Beispielskript
+Dies ist das Beispielskript zum Erstellen einer Umgebung in Ihrem Lab. Die Kommentare im Skript helfen beim besseren Verständnis des Skripts. 
+
+```powershell
+#Requires -Version 3.0
+#Requires -Module AzureRM.Resources
+
+[CmdletBinding()]
+
+param (
+# ID of the Azure Subscription where the lab is created.
+[string] [Parameter(Mandatory=$true)] $SubscriptionId,
+
+# Name of the lab (existing) in which to create the environment.
+[string] [Parameter(Mandatory=$true)] $LabName,
+
+# Name of the connected repository in the lab. 
+[string] [Parameter(Mandatory=$true)] $RepositoryName,
+
+# Name of the template (folder name in the Git repository) based on which the environment will be created.
+[string] [Parameter(Mandatory=$true)] $TemplateName,
+
+# Name of the environment to be created in the lab.
+[string] [Parameter(Mandatory=$true)] $EnvironmentName,
+
+# The parameters to be passed to the template. Each parameter is prefixed with “-param_”. 
+# For example, if the template has a parameter named “TestVMName” with a value of “MyVMName”, the string in $Params will have the form: `-param_TestVMName MyVMName`. 
+# This convention allows the script to dynamically handle different templates.
+[Parameter(ValueFromRemainingArguments=$true)]
+    $Params
+)
+
+# Save this script as the deployenv.ps1 file
+# Run the script after you specify values for SubscriptionId, ResourceGroupName, LabName, RepositoryName, TemplateName (folder) in the Git repo, EnvironmentName
+# ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"    
+
+# Comment this statement to completely automate the environment creation.    
+# Sign in to Azure. 
+Connect-AzureRmAccount
+
+# Select the subscription that has the lab.  
+Set-AzureRmContext -SubscriptionId $SubscriptionId | Out-Null
+
+# Get information about the user, specifically the user ID, which is used later in the script.  
+$UserId = $((Get-AzureRmADUser -UserPrincipalName (Get-AzureRmContext).Account).Id.Guid)
+        
+# Get information about the lab such as lab location. 
+$lab = Get-AzureRmResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
+if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
+    
+# Get information about the repository in the lab. 
+$repository = Get-AzureRmResource -ResourceGroupName $lab.ResourceGroupName `
+    -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
+    -ResourceName $LabName `
+    -ApiVersion 2016-05-15 `
+    | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
+    | Select-Object -First 1
+if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
+
+# Get information about the Resource Manager template based on which the environment will be created. 
+$template = Get-AzureRmResource -ResourceGroupName $lab.ResourceGroupName `
+    -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
+    -ResourceName "$LabName/$($repository.Name)" `
+    -ApiVersion 2016-05-15 `
+    | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
+    | Select-Object -First 1
+if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
+
+# Build the template parameters with parameter name and values.     
+$parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
+$templateParameters = @()
+
+# The custom parameters need to be extracted from $Params and formatted as name/value pairs.
+$Params | ForEach-Object {
+    if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
+        $name = $Matches[1]                
+    } elseif ( $name ) {
+        $templateParameters += @{ "name" = "$name"; "value" = "$_" }
+        $name = $null #reset name variable
+    }
+}
+
+# Once name/value pairs are isolated, create an object to hold the necessary template properties
+$templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
+
+# Now, create or deploy the environment in the lab by using the New-AzureRmResource command. 
+New-AzureRmResource -Location $Lab.Location `
+    -ResourceGroupName $lab.ResourceGroupName `
+    -Properties $templateProperties `
+    -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
+    -ResourceName "$LabName/$UserId/$EnvironmentName" `
+    -ApiVersion '2016-05-15' -Force 
+ 
+Write-Output "Environment $EnvironmentName completed."
+```
+
+Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen mit Resource Manager-Vorlagen bereitzustellen. Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli).
 
 > [!NOTE]
 > Nur Benutzer mit einer Berechtigung der Art „Labbesitzer“ können VMs aus einer Resource Manager-Vorlage erstellen, indem sie Azure PowerShell nutzen. Wenn Sie die VM-Erstellung per Resource Manager-Vorlage automatisieren möchten und nur über Benutzerberechtigungen verfügen, können Sie den [Befehl **az lab vm create** in der CLI](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create) verwenden.
@@ -169,7 +278,7 @@ Führen Sie diese Schritte aus, um Ihren Lab-Benutzern das Zugriffsrecht „Mitw
 
     ![Konfigurieren von Zugriffsrechten für Lab-Benutzer](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nach der Erstellung des virtuellen Computers können Sie im Verwaltungsbereich des virtuellen Computers die Option **Verbinden** auswählen, um eine Verbindung mit dem virtuellen Computer herzustellen.

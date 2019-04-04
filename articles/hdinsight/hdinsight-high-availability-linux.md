@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84251b16d91ca74e11298c7aa54c9a7a8b7fd6d6
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743662"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576717"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -111,7 +111,50 @@ Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgelistet.
 
 ![Installierte Dienste](./media/hdinsight-high-availability-linux/services.png)
 
-Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnungen in Zusammenhang mit einem Dienst können über den Link **Warnungen** oben auf der Seite angezeigt werden. Sie können einen Dienst auswählen, um weitere Informationen anzuzeigen.
+Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnungen in Zusammenhang mit einem Dienst können über den Link **Warnungen** oben auf der Seite angezeigt werden.  In Ambari stehen mehrere vordefinierte Warnungen zur Verfügung.
+
+Die folgenden Warnungen unterstützen die Überwachung der Verfügbarkeit eines Clusters:
+
+| Name der Warnung                               | BESCHREIBUNG                                                                                                                                                                                  |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Metric Monitor Status (Status der Metriküberwachung)                    | Diese Warnung gibt den Status des Metric Monitor-Prozesses an, wie er vom Überwachungsstatusskript bestimmt wird.                                                                                   |
+| Ambari Agent Heartbeat (Ambari-Agent-Heartbeat)                   | Diese Warnung wird ausgelöst, wenn der Server die Verbindung zu einem Agenten verloren hat.                                                                                                                        |
+| ZooKeeper Server Process (ZooKeeper-Serverprozess)                 | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der ZooKeeper-Serverprozess aktiv ist und im Netzwerk lauscht.                                                               |
+| IOCache Metadata Server Status (IOCache-Metadatenserverstatus)           | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der IOCache-Metadatenserver aktiv ist und auf die Anforderungen des Clients reagiert.                                                            |
+| JournalNode Web UI (JournalNode-Webbenutzeroberfläche)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn die JournalNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                 |
+| Spark2 Thrift Server (Spark2-Thrift-Server)                     | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Spark2-Thrift-Server aktiv ist.                                                                                                |
+| History Server Process (Verlaufsserverprozess)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Verlaufsserverprozess aktiv ist und im Netzwerk lauscht.                                                                |
+| History Server Web UI (Verlaufsserver-Webbenutzeroberfläche)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn die Verlaufsserver-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                              |
+| ResourceManager-Webbenutzeroberfläche                   | Diese Warnung auf Hostebene wird ausgelöst, wenn die ResourceManager-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                             |
+| NodeManager Health Summary (NodeManager-Integritätszusammenfassung)               | Diese Warnung auf Dienstebene wird ausgelöst, wenn es fehlerhafte NodeManager gibt.                                                                                                                    |
+| App Timeline Web UI (App-Zeitskala-Webbenutzeroberfläche)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn die App-Zeitskala-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                         |
+| DataNode Health Summary (DataNode-Integritätszusammenfassung)                  | Diese Warnung auf Dienstebene wird ausgelöst, wenn es fehlerhafte DataNodes gibt.                                                                                                                       |
+| NameNode Web UI (NameNode-Webbenutzeroberfläche)                          | Diese Warnung auf Hostebene wird ausgelöst, wenn die NameNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                    |
+| ZooKeeper Failover Controller Process (ZooKeeper-Failover-Controllerprozess)    | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der ZooKeeper-Failover-Controllerprozess aktiv ist und im Netzwerk lauscht.                                                   |
+| Oozie Server Web UI (Oozie-Server-Webbenutzeroberfläche)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn die Oozie-Server Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                |
+| Oozie Server Status (Oozie-Serverstatus)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Oozie-Server aktiv ist und auf die Anforderungen des Clients reagiert.                                                                      |
+| Hive Metastore Process (Hive Metastore-Prozess)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Hive Metastore-Prozess aktiv ist und im Netzwerk lauscht.                                                                 |
+| HiveServer2 Process (HiveServer2-Prozess)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der HiveServer aktiv ist und auf die Anforderungen des Clients reagiert.                                                                        |
+| WebHCat Server Status (WebHCat-Serverstatus)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn der Templetonserverstatus fehlerhaft ist.                                                                                                            |
+| Percent ZooKeeper Servers Available (Prozentsatz verfügbarer ZooKeeper-Server)      | Diese Warnung wird ausgelöst, wenn die Anzahl ausgefallener ZooKeeper-Server im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der ZooKeeper-Prozessüberprüfungen.     |
+| Spark2 Livy Server (Spark2 Livy-Server)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Livy2-Server aktiv ist.                                                                                                        |
+| Spark2 History Server (Spark2-Verlaufsserver)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Spark2-Verlaufsserver aktiv ist.                                                                                               |
+| Metrics Collector Process (Metrics-Collectorprozess)                | Diese Warnung wird ausgelöst, wenn nicht bestätigt werden kann, dass der Metrics-Collector aktiv ist und für eine bestimmte Anzahl an Sekunden auf den konfigurierten Port lauscht, die als Schwellenwert festgelegt wurde.                                 |
+| Metrics Collector - HBase Master Process (Metrics-Collector – HBase Master-Prozess) | Diese Warnung wird ausgelöst, wenn nicht bestätigt werden kann, dass die HBase Master-Prozesse des Metrics-Collectors aktiv sind und für eine bestimmte Anzahl an Sekunden im Netzwerk lauschen, die als kritischer Schwellenwert konfiguriert wurde. |
+| Percent Metrics Monitors Available (Prozentsatz verfügbarer Metrics Monitor-Prozesse)       | Diese Warnung wird ausgelöst, wenn ein Prozentsatz der Metrics Monitor-Prozesse nicht aktiv ist und im Netzwerk an der konfigurierten Warnung und den kritischen Schwellenwerten lauscht.                             |
+| Percent NodeManagers Available (Prozentsatz verfügbarer NodeManager)           | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen NodeManager im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der NodeManager-Prozessüberprüfungen.        |
+| NodeManager Health (NodeManager-Integrität)                       | Diese Warnung auf Hostebene prüft die Knotenintegritätseigenschaft, die über die NodeManager-Komponente zur Verfügung steht.                                                                                              |
+| NodeManager Web UI (NodeManager-Webbenutzeroberfläche)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn die NodeManager-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                 |
+| NameNode High Availability Health (NameNode-Hochverfügbarkeitsintegrität)        | Diese Warnung auf Dienstebene wird ausgelöst, wenn entweder der aktive NameNode oder der Standby-NameNode nicht ausgeführt werden.                                                                                     |
+| DataNode Process (DataNode-Prozess)                         | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob die individuellen DataNode-Prozesse aktiv sind und im Netzwerk lauschen.                                                         |
+| DataNode Web UI (DataNode-Webbenutzeroberfläche)                          | Diese Warnung auf Hostebene wird ausgelöst, wenn die DataNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                    |
+| Percent JournalNodes Available (Prozentsatz verfügbarer JournalNodes)           | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen JournalNodes im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der JournalNode-Prozessüberprüfungen.        |
+| Percent DataNodes Available (Prozentsatz verfügbarer DataNodes)              | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen DataNodes im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der DataNode-Prozessüberprüfungen.              |
+| Zeppelin Server Status (Zeppelin Serverstatus)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Zeppelin-Server aktiv ist und auf die Anforderungen des Clients reagiert.                                                                   |
+| HiveServer2 Interactive Process (HiveServer2 Interactive-Prozess)          | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, dass der HiveServerInteractive-Prozess aktiv ist und auf die Anforderungen des Clients reagiert.                                                             |
+| LLAP Application (LLAP-Anwendung)                         | Diese Warnung wird ausgelöst, wenn nicht bestimmt werden kann, ob die LLAP-Anwendung aktiv ist und auf Anforderungen reagiert.                                                                                    |
+
+Sie können einen Dienst auswählen, um weitere Informationen anzuzeigen.
 
 Auf der Dienstseite werden zwar Informationen zum Status und zur Konfiguration jedes Diensts angezeigt, aber keine Informationen dazu, auf welchem Hauptknoten der Dienst ausgeführt wird. Diese Informationen können über den Link **Hosts** oben auf der Seite aufgerufen werden. Wenn Sie auf den Link klicken, werden die Hosts innerhalb des Clusters angezeigt, einschließlich der Hauptknoten.
 

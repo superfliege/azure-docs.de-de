@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120753"
 ---
 # <a name="saas-application-technical-info-tab"></a>Registerkarte „Technische Informationen“ für SaaS-Anwendung
 
@@ -44,7 +44,7 @@ Um diese Benutzeroberfläche zu erstellen, müssen Sie die folgenden Teile konfi
 - Verbinden Sie die Website Ihres SaaS-Diensts mit den SaaS-APIs von Microsoft. Im Artikel [SaaS – Verkaufen über Azure: APIs](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) ist erläutert, wie Sie diese Verbindung erstellen.
 - Aktivieren Sie „Über Azure verkaufen“ im Cloud-Partnerportal im Formular „Technische Konfiguration“, und geben Sie die erforderlichen Informationen ein. Weitere Informationen über dieses Abrechnungsmodell und wie es implementiert wird finden Sie unter [SaaS – Verkaufen über Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
- ![Formular „Über Microsoft verkaufen“](./media/saas-techinfo-sellthrough-ms.png)
+  ![Formular „Über Microsoft verkaufen“](./media/saas-techinfo-sellthrough-ms.png)
 
 In der folgenden Tabelle sind die erforderlichen Felder für „Über Microsoft verkaufen“ beschrieben.
 
@@ -73,6 +73,9 @@ Im Feld „Handlungsaufforderung“ können Sie die Meldung auswählen, die auf 
 - Kontakt mit mir aufnehmen
 
 Weitere Informationen zu den Optionen von „Handlungsaufforderung“ finden Sie unter „Auswählen einer Veröffentlichungsoption“.
+
+>[!Note]
+>Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

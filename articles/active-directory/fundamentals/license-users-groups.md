@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10346ea0aa292be33f820bd4e92434e2c58a89ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194307"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286855"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 Viele Azure Active Directory (Azure AD)-Dienste erfordern, dass Sie ein Azure AD-Produkt aktivieren und jeden Ihrer Benutzer oder Gruppen (und zugehörige Mitglieder) für dieses Produkt lizenzieren. Nur Benutzer mit aktiven Lizenzen können auf die lizenzierten Azure AD-Dienste zugreifen und diese nutzen.
@@ -47,7 +47,7 @@ Sie können Ihre verfügbaren Produkte, einschließlich der einzelnen Lizenzen, 
 
     Die Seite **Lizenzen** wird angezeigt.
 
-    ![Seite „Lizenzen“, die die Anzahl der gekauften Produkte und der zugewiesenen Lizenzen anzeigt](media/license-users-groups/license-details-blade.png)
+    ![Seite „Lizenzen“ mit der Anzahl der erworbenen Produkte und der zugewiesenen Lizenzen](media/license-users-groups/license-details-blade.png)
     
 3. Wählen Sie den Link **Gekaufte Produkte**, um die Seite **Produkte** anzuzeigen und die Details **Zugewiesen**, **Verfügbar** und **Bald ablaufend** für jede Produktedition anzuzeigen.
 
@@ -112,7 +112,6 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 5. Wählen Sie **Zuweisen** aus.
 
     Die Gruppe wird der Liste der lizenzierten Gruppen hinzugefügt und alle Mitglieder haben Zugriff auf die enthaltenen Azure AD-Dienste.
-
 
 ## <a name="remove-a-license"></a>Entfernen einer Lizenz
 Sie können eine Lizenz von einem Benutzer oder einer Gruppe auf der Seite **Lizenzen** entfernen.

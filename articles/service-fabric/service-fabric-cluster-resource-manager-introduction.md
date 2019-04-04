@@ -4,7 +4,7 @@ description: Eine Einführung in den Clusterressourcen-Manager von Service Fabri
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e9b1cc8b66be36a0a77118f4de672c9411433ba5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903358"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660884"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Einführung in den Clusterressourcen-Manager von Service Fabric
 Zur Verwaltung von IT-Systemen oder Onlinediensten wurden diesen bisher üblicherweise spezielle physische oder virtuelle Computer zugewiesen. Dienste wurden als Ebenen entworfen. Es gab eine Webebene und eine Daten- oder Speicherebene. Clientanwendungen verfügten über eine Messaging-Ebene, auf der Anforderungen eingingen und ausgingen, und einen speziellen Satz von Computern für die Zwischenspeicherung. Für jede Ebene oder jede Art von Workload gab es bestimmte fest zugeordnete Computer oder Computergruppen, so z.B. für die Datenbank und die Webserver. Wenn eine bestimmte Art von Workload eine Überlastung der Computer verursachte, auf denen sie ausgeführt wurde, wurden dieser Ebene weitere Computer mit derselben Konfiguration hinzugefügt. Jedoch konnten nicht alle Workloads so einfach skaliert werden – insbesondere für die Datenebene mussten Sie in der Regel Computer durch größere Computer ersetzen. Ganz einfach. Wenn ein Computer ausfiel, wurde dieser Teil der gesamten Anwendung mit niedriger Kapazität ausgeführt, bis der Computer wiederhergestellt werden konnte. Noch immer recht einfach (wenn auch nicht unbedingt spaßig).

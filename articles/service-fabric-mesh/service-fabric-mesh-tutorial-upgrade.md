@@ -3,8 +3,8 @@ title: Tutorial – Aktualisieren einer Azure Service Fabric Mesh-Anwendung | Mi
 description: Erfahren Sie, wie Sie eine Service Fabric-Anwendungen mithilfe von Visual Studio aktualisieren.
 services: service-fabric-mesh
 documentationcenter: .net
-author: tylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -12,15 +12,15 @@ ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
-ms.author: twhitney
+ms.date: 11/29/2018
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7985c8e9e26126040d842ded998a953281daa2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 23809abd06d626eb87e5d5d15d265f1769b97b66
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953551"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806731"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Tutorial: Erfahren Sie, wie Sie eine Service Fabric-Anwendungen mithilfe von Visual Studio aktualisieren.
 
@@ -48,22 +48,29 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Aktualisieren eines Service Fabric-Dienstes mit Visual Studio
 
-In diesem Artikel erfahren Sie, wie Sie Microservices unabhängig voneinander in einer Anwendung aktualisieren können.  In diesem Beispiel ändern wir den `WebFrontEnd`-Dienst, um eine Aufgabenkategorie anzuzeigen. Anschließend aktualisieren wir den bereitgestellten Dienst.
+In diesem Artikel erfahren Sie, wie Sie Microservices in einer Anwendung aktualisieren können. In diesem Beispiel ändern wir den `WebFrontEnd`-Dienst, um eine Aufgabenkategorie anzuzeigen und die zugewiesene CPU-Leistung zu erhöhen. Anschließend aktualisieren wir den bereitgestellten Dienst.
 
 ## <a name="modify-the-config"></a>Ändern der Konfiguration
 
-Aktualisierungen können aufgrund von Codeänderungen, Konfigurationsänderungen oder beiden erforderlich sein.  Um eine Konfigurationsänderung vorzunehmen, öffnen Sie die `service.yaml`-Datei des Projekts `WebFrontEnd` (unter dem Knoten **Dienstressourcen**).
+Wenn Sie eine Service Fabric Mesh-App erstellen, fügt Visual Studio eine **parameters.yaml**-Datei für jede Bereitstellungsumgebung (Cloud und lokal) hinzu. In diesen Dateien können Sie Parameter und ihre Werte definieren, auf die dann aus Ihren *.yaml-Dateien für Mesh (z. B. service.yaml oder network.yaml) verwiesen werden kann.  Visual Studio bietet einige Variablen, z. B. für die maximale CPU-Leistung, die der Dienst nutzen kann.
 
-Ändern Sie im Abschnitt `resources:` den Wert für `cpu:` von 0.5 in 1.0, in der Erwartung, dass das Web-Front-End stark genutzt wird. Dies sollte jetzt wie folgt aussehen:
+Wir aktualisieren den `WebFrontEnd_cpu`-Parameter, um die CPU-Ressourcen auf `1.5` zu aktualisieren, in der Erwartung, dass der **WebFrontEnd**-Dienst verstärkt verwendet wird.
 
-```xml
-              ...
-              resources:
-                requests:
-                  cpu: 1.0
-                  memoryInGB: 1
-              ...
-```
+1. Öffnen Sie im **todolistapp**-Projekt unter **Umgebungen** > **Cloud** die **parameters.yaml**-Datei. Ändern Sie den `WebFrontEnd_cpu`-Wert auf `1.5`. Dem Parameternamen ist der Dienstname `WebFrontEnd_` vorangestellt. Dies ist eine bewährte Methode, um sie von Parametern mit dem gleichen Namen zu unterscheiden, die für andere Dienste gelten.
+
+    ```xml
+    WebFrontEnd_cpu: 1.5
+    ```
+
+2. Öffnen Sie die Datei **service.yaml** des **WebFrontEnd**-Projekts unter **WebFrontEnd** > **Dienstressourcen**.
+
+    Beachten Sie, dass die `cpu:` im `resources:`-Abschnitt auf `"[parameters('WebFrontEnd_cpu')]"` festgelegt ist. Wenn das Projekt für die Cloud erstellt wird, wird der Wert für `'WebFrontEnd_cpu` aus der **Umgebungen** > **Cloud** > **parameters.yaml**-Datei entnommen und wird `1.5` sein. Wenn das Projekt für die lokale Ausführung erstellt wird, wird der Wert aus der **Umgebungen** > **Lokal** > **parameters.yaml**-Datei entnommen und wird „0.5“ sein.
+
+> [!Tip]
+> Standardmäßig wird die Parameterdatei, die ein Peer der profile.yaml-Datei ist, verwendet, um die Werte für diese profile.yaml-Datei bereitzustellen.
+> Beispielsweise bietet Umgebungen > Cloud > parameters.yaml die Parameterwerte für Umgebungen > Cloud > profile.yaml.
+>
+> Sie können dies außer Kraft setzen, indem Sie der profile.yaml-Datei Folgendes hinzufügen:`parametersFilePath=”relative or full path to the parameters file”` Beispiel: `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` oder `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Ändern des Modells
 
@@ -125,28 +132,29 @@ Erstellen und starten Sie die App, um sicherzustellen, dass eine neue Spalte „
 
 ## <a name="upgrade-the-app-from-visual-studio"></a>Aktualisieren der App über Visual Studio
 
-Unabhängig davon, ob Sie eine Code- oder eine Konfigurationsaktualisierung durchführen (in diesem Fall machen wir beides), um Ihre Service Fabric Mesh-App in Azure zu aktualisieren, klicken Sie mit der rechten Maustaste auf **todolistapp** in Visual Studio und wählen Sie **Veröffentlichen.....**.
+Unabhängig davon, ob Sie ein Code- oder Konfigurationsupgrade durchführen (in diesem Fall machen wir beides), führen Sie ein Upgrade Ihrer Service Fabric Mesh-App in Azure durch, indem Sie mit der rechten Maustaste auf **todolistapp** in Visual Studio klicken und anschließend **Veröffentlichen...** auswählen.
 
 Nun wird ein Dialogfeld **Service Fabric-Anwendung veröffentlichen** angezeigt.
 
-![Dialogfeld „Veröffentlichen“ von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
+Verwenden Sie die Dropdownliste **Zielprofil**, um die Datei „profile.yaml“ für diese Bereitstellung auszuwählen. Wir aktualisieren die App in der Cloud und wählen darum die Datei **cloud.yaml** aus der Dropdownliste aus, die den in dieser Datei definierten `WebFrontEnd_cpu`-Wert von 1.0 verwendet.
 
-Wählen Sie Ihr Azure-Konto und -Abonnement aus. Stellen Sie sicher, dass für **Speicherort** der Speicherort eingestellt ist, den Sie verwendet haben, als Sie die To-Do-App ursprünglich für Azure veröffentlicht haben. In diesem Artikel wird **USA, Osten** verwendet.
+![Dialogfeld zum Veröffentlichen von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Stellen Sie sicher, dass für **Ressourcengruppe** die Ressourcengruppe eingestellt ist, den Sie verwendet haben, als Sie die To-Do-App ursprünglich für Azure veröffentlicht haben.
+Wählen Sie Ihr Azure-Konto und -Abonnement aus. Legen Sie für **Speicherort** den Speicherort fest, den Sie verwendet haben, als Sie die To-Do-App ursprünglich in Azure veröffentlicht haben. In diesem Artikel wird **USA, Osten** verwendet.
 
-Stellen Sie sicher, dass für **Azure Container Registry** die Azure Container Registry eingestellt ist, den Sie verwendet haben, als Sie die To-Do-App ursprünglich für Azure veröffentlicht haben.
+Legen Sie für **Ressourcengruppe** die Ressourcengruppe fest, die Sie verwendet haben, als Sie die To-Do-App ursprünglich in Azure veröffentlicht haben.
+
+Legen Sie für **Azure Container Registry** den Azure Container Registry-Namen fest, die Sie erstellt haben, als Sie die To-Do-App ursprünglich in Azure veröffentlicht haben.
 
 Drücken Sie im Dialogfeld „Veröffentlichen“ auf die Schaltfläche **Veröffentlichen**, um die To-Do-App in Azure zu aktualisieren.
 
-Sie können den Status der Aktualisierung überwachen, indem Sie den Bereich **Service Fabric-Tools** im Fenster **Ausgabe** von Visual Studio auswählen. Nach Abschluss der Aktualisierung zeigt die Ausgabe der **Service Fabric-Tools** die IP-Adresse und den Port Ihrer Anwendung in Form einer URL an.
+Überwachen Sie den Status des Upgrades, indem Sie den Bereich **Service Fabric-Tools** im Fenster **Ausgabe** von Visual Studio auswählen. 
+
+Nachdem das Bild erstellt und an die Azure Container Registry gepusht wurde, wird ein **Status**-Link in der Ausgabe angezeigt, den Sie anklicken können, um die Bereitstellung im Azure-Portal zu überwachen.
+
+Nach Abschluss der Aktualisierung zeigt die Ausgabe der **Service Fabric-Tools** die IP-Adresse und den Port Ihrer Anwendung in Form einer URL an.
 
 ```json
-Packaging Application...
-Building Images...
-Web1 -> C:\Code\ServiceFabricMeshApp\ToDoService\bin\Any CPU\Release\netcoreapp2.0\ToDoService.dll
-Uploading the images to Azure Container Registy...
-Deploying application to remote endpoint...
 The application was deployed successfully and it can be accessed at http://10.000.38.000:20000.
 ```
 

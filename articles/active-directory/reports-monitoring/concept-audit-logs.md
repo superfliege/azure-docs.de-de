@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f221b815b6800f635c07525fdbd332ac508786
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf069e053068eaee3f36153c3888e6c711724267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171535"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182165"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
@@ -41,7 +41,7 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
  
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 
-* Benutzer mit den Rollen **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Globaler Administrator**.
+* Benutzer mit den Rollen **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**, **Berichtsleser** oder **Globaler Administrator**
 * Außerdem können alle Benutzer, die keine Administratoren sind, ihre eigenen Überwachungsaktivitäten anzeigen.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
@@ -53,36 +53,91 @@ Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten 
 Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
 - Datum und Uhrzeit des Auftretens
-- Initiator/Akteur einer Aktivität (*Wer*) 
-- Aktivität (*Was*) 
+- Dienst, der das Vorkommen protokolliert hat
+- Kategorie und Name der Aktivität (*Was*) 
+- Status der Aktivität (Erfolg oder Fehler)
 - Ziel
+- Initiator/Akteur einer Aktivität (Wer)
 
-![Überwachungsprotokolle](./media/concept-audit-logs/18.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/listview.png "Überwachungsprotokolle")
 
 Sie können die Listenansicht anpassen, indem Sie auf der Symbolleiste auf **Spalten** klicken.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/19.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/columns.png "Überwachungsprotokolle")
 
 So können Sie weitere Felder anzeigen oder bereits angezeigte Felder entfernen.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/21.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/columnselect.png "Überwachungsprotokolle")
 
 Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/22.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/details.png "Überwachungsprotokolle")
 
 
 ## <a name="filtering-audit-logs"></a>Filtern von Überwachungsprotokollen
 
 Sie können die Überwachungsdaten in den folgenden Feldern filtern:
 
-- Datumsbereich
-- Initiiert von (Akteur)
+- Dienst
 - Category (Kategorie)
-- Aktivitätsressourcentyp
 - Aktivität
+- Status
+- Ziel
+- Initiiert von (Akteur)
+- Datumsbereich
 
-![Überwachungsprotokolle](./media/concept-audit-logs/23.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/filter.png "Überwachungsprotokolle")
+
+Bei Verwendung des Filters **Dienst** können Sie in einer Dropdownliste die folgenden Dienste auswählen:
+
+- Alle
+- Zugriffsüberprüfungen
+- Kontobereitstellung 
+- Anwendungs-SSO
+- Authentifizierungsmethoden
+- B2C
+- Bedingter Zugriff
+- Kernverzeichnis
+- Berechtigungsverwaltung
+- Schutz der Identität (Identity Protection)
+- Invited Users (Eingeladene Benutzer)
+- PIM
+- Self-Service-Gruppenverwaltung
+- Self-Service-Kennwortverwaltung
+- Terms of Use (Nutzungsbedingungen)
+
+Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filteroptionen auswählen:
+
+- Alle
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Autorisierung
+- Kontakt
+- Gerät
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Andere
+- Richtlinie
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+Der Filter **Aktivität** basiert auf der getroffenen Auswahl für die Kategorie und den und Aktivitätsressourcentyp. Sie können entweder eine bestimmte Aktivität verwenden oder alle auswählen. 
+
+Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](reference-audit-activities.md) lesen.
+
+Mit dem Filter **Status** können Sie eine Filterung basierend auf dem Status eines Überprüfungsvorgangs durchführen. Folgende Statuswerte sind möglich:
+
+- Alle
+- Erfolgreich
+- Fehler
+
+Bei Verwendung des Filters **Ziel** können Sie anhand des Namens oder des Benutzerprinzipalnamens (User Principal Name, UPN) ein bestimmtes Ziel suchen. Bei dem Zielnamen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt. 
+
+Bei Verwendung des Filters **Initiiert von** können Sie den Namen eines Akteurs oder einen Benutzerprinzipalnamen (UPN) definieren. Bei dem Namen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt.
 
 Mit dem Filter **Datumsbereich** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
 Mögliche Werte:
@@ -94,41 +149,9 @@ Mögliche Werte:
 
 Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Bei Verwendung des Filters **Initiiert von** können Sie den Namen eines Akteurs oder einen Benutzerprinzipalnamen (User Principal Name, UPN) definieren.
+Sie können die gefilterten Daten (bis zu 250.000 Datensätze) zudem herunterladen. Wählen Sie dazu die Schaltfläche **Herunterladen** aus. Sie können die Protokolle im CSV- oder im JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
 
-Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filteroptionen auswählen:
-
-- Alle
-- Core category (Kernkategorie)
-- Core directory (Kernverzeichnis)
-- Self-service password management (Self-Service-Kennwortverwaltung)
-- Self-Service-Gruppenverwaltung
-- Kontobereitstellung: Automated password rollover (Automatisiertes Kennwortrollover)
-- Invited Users (Eingeladene Benutzer)
-- MIM service (MIM-Dienst)
-- Schutz der Identität (Identity Protection)
-- B2C
-
-Bei Verwendung des Filters **Aktivitätsressourcentyp** können Sie eine der folgenden Filteroptionen auswählen:
-
-- Alle 
-- Gruppe
-- Verzeichnis
-- Benutzer
-- Anwendung
-- Richtlinie
-- Gerät
-- Andere
-
-Wenn Sie als **Aktivitätsressourcentyp** die Option **Gruppe** auswählen, erhalten Sie eine zusätzliche Filterkategorie zur Angabe einer **Quelle**:
-
-- Azure AD
-- O365
-
-
-Der Filter **Aktivität** basiert auf der getroffenen Auswahl für „Kategorie“ und „Aktivitätsressourcentyp“. Sie können entweder eine bestimmte Aktivität verwenden oder alle auswählen. 
-
-Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](reference-audit-activities.md) lesen.
+![Überwachungsprotokolle](./media/concept-audit-logs/download.png "Überwachungsprotokolle")
 
 ## <a name="audit-logs-shortcuts"></a>Verknüpfungen für Überwachungsprotokolle
 
@@ -157,9 +180,13 @@ Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie 
 
 - Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer und Gruppen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Option **Benutzer und Gruppen** verwenden. Bei diesem Einstiegspunkt ist für **Aktivitätsressourcentyp** bereits vorab die Option **Benutzer und Gruppen** ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Registerkarte **Benutzer** verwenden. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/93.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/users.png "Überwachungsprotokolle")
+
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Registerkarte **Gruppen** verwenden. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
+
+![Überwachungsprotokolle](./media/concept-audit-logs/groups.png "Überwachungsprotokolle")
 
 ### <a name="enterprise-applications-audit-logs"></a>Überwachungsprotokolle für Unternehmensanwendungen
 
@@ -173,15 +200,11 @@ Mit Überwachungsberichten, die auf Anwendungen basieren, können Sie beispielsw
 
 Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendungen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** des Blatts **Unternehmensanwendungen** verwenden. Bei diesem Einstiegspunkt ist für **Aktivitätsressourcentyp** bereits vorab die Option **Unternehmensanwendungen** ausgewählt.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/134.png "Überwachungsprotokolle")
-
-Sie können die Ansicht nach **Gruppen** oder **Benutzern** filtern.
-
-![Überwachungsprotokolle](./media/concept-audit-logs/25.png "Überwachungsprotokolle")
+![Überwachungsprotokolle](./media/concept-audit-logs/enterpriseapplications.png "Überwachungsprotokolle")
 
 ## <a name="office-365-activity-logs"></a>Office 365-Aktivitätsprotokolle
 
-Sie können Office 365-Aktivitätsprotokolle im [Office 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Office 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
+Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Microsoft 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
 
 Mithilfe der [Office 365-Verwaltungs-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
 

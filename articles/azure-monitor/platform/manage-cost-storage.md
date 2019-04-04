@@ -11,15 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 03/20/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 851098840356c7d391c2b10fae1c18884f5dab02
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236106"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295673"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Verwalten von Nutzung und Kosten für Log Analytics
 
@@ -112,13 +112,13 @@ Wenn Ihr Log Analytics-Arbeitsbereich über Zugriff auf Legacytarife verfügt, k
 3. Wählen Sie unter **Tarif** einen Tarif aus, und klicken Sie anschließend auf **Auswählen**.  
     ![Ausgewählter Tarif](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Wenn Sie Ihren Arbeitsbereich in den aktuellen Tarif verschieben möchten, müssen Sie das [Überwachungspreismodell Ihres Abonnements in Azure Monitor ändern](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model). Dadurch ändert sich der Tarif für alle Arbeitsbereiche in diesem Abonnement.
+Wenn Sie Ihren Arbeitsbereich in den aktuellen Tarif verschieben möchten, müssen Sie das [Überwachungspreismodell Ihres Abonnements in Azure Monitor ändern](usage-estimated-costs.md#moving-to-the-new-pricing-model). Dadurch ändert sich der Tarif für alle Arbeitsbereiche in diesem Abonnement.
 
 > [!NOTE]
 > Falls Ihr Arbeitsbereich mit einem Automation-Konto verknüpft ist und Sie den Tarif *Standalone (Per GB)* (Eigenständig (pro GB)) auswählen möchten, müssen Sie zuvor alle Lösungen vom Typ **Automation & Control** löschen und die Verknüpfung mit dem Automation-Konto aufheben. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Lösungen**, um die Lösungen anzuzeigen und zu löschen. Klicken Sie zum Aufheben der Verknüpfung mit dem Automation-Konto auf dem Blatt **Tarif** auf den Namen des Automatisierungskontos.
 
 > [!NOTE]
-> Unter https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace finden Sie weitere Informationen zum Festlegen des Tarifs über ARM und dazu, wie Sie sicherstellen, dass Ihre ARM-Bereitstellung erfolgreich ausgeführt werden kann, unabhängig davon, ob für das Abonnement das ältere oder das neue Preismodell festgelegt ist. 
+> Unter [Festlegen des Tarifs über ARM](template-workspace-configuration.md#create-a-log-analytics-workspace) finden Sie weitere entsprechende Informationen und Informationen dazu, wie Sie sicherstellen, dass Ihre ARM-Bereitstellung erfolgreich ausgeführt werden kann, unabhängig davon, ob für das Abonnement das ältere oder das neue Preismodell festgelegt ist. 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Beheben des Problems, dass Log Analytics keine Daten mehr erfasst
@@ -138,24 +138,12 @@ Um benachrichtigt zu werden, wenn die Datensammlung endet, verwenden Sie die Sch
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Ermittlung per Problembehandlung, warum die Nutzung höher als erwartet ist
 Eine höhere Nutzung wird durch eine bzw. beide der folgenden Bedingungen verursacht:
-- Mehr Daten als erwartet werden an Log Analytics gesendet
 - Mehr Knoten als erwartet senden Daten an Log Analytics
+- Mehr Daten als erwartet werden an Log Analytics gesendet
 
-### <a name="data-volume"></a>Datenvolume 
-Auf der Seite **Nutzung und geschätzte Kosten** zeigt das Diagramm *Datenerfassung pro Lösung* die Gesamtmenge an gesendeten Daten sowie die von jeder Lösung gesendete Datenmenge an. Auf diese Weise können Sie Trends ermitteln, z.B. ob die Gesamtdatennutzung (oder die Nutzung durch eine bestimmte Lösung) ansteigt, konstant bleibt oder abnimmt. Um diese Daten zu generieren, wird die folgende Abfrage verwendet:
+In den nächsten Abschnitten wird beschrieben:
 
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-Beachten Sie, dass durch die Klausel „where IsBillable = true“ Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen. 
-
-Sie können einen Drilldown durchführen, um Datentrends für spezifische Datentypen anzuzeigen. So können Sie beispielsweise die Daten aufgrund von IIS-Protokollen untersuchen:
-
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-### <a name="nodes-sending-data"></a>Knoten, die Daten senden
+## <a name="understanding-nodes-sending-data"></a>Ermitteln der Knoten, die Daten senden
 
 Um die Anzahl von Computern (Knoten) zu ermitteln, die im letzten Monat täglich Daten gemeldet haben, verwenden Sie die folgende Abfrage:
 
@@ -163,7 +151,7 @@ Um die Anzahl von Computern (Knoten) zu ermitteln, die im letzten Monat täglich
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Zum Abrufen einer Liste von Computern, die **kostenpflichtige Datentypen** senden (einige Datentypen sind kostenlos), verwenden Sie die [_IsBillable](log-standard-properties.md#isbillable)-Eigenschaft:
+Zum Abrufen einer Liste von Computern, die **kostenpflichtige Datentypen** senden (einige Datentypen sind kostenlos), verwenden Sie die [_IsBillable](log-standard-properties.md#_isbillable)-Eigenschaft:
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -171,9 +159,9 @@ Zum Abrufen einer Liste von Computern, die **kostenpflichtige Datentypen** sende
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind. 
+Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind. Diese Abfrage ersetzt die ältere Methode der Abfrage von Informationen pro Computer durch den Datentyp für die Nutzung.  
 
-Diese Abfrage kann so erweitert werden, dass die Anzahl von Computern pro Stunde zurückgegeben wird, die kostenpflichtige Datentypen senden:
+Die Abfrage kann so erweitert werden, dass die Anzahl der Computer pro Stunde zurückgegeben wird, die abgerechnete Datentypen senden (auf diese Weise werden in Log Analytics abrechenbare Knoten für den älteren Tarif pro Knoten berechnet):
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -181,13 +169,30 @@ Diese Abfrage kann so erweitert werden, dass die Anzahl von Computern pro Stunde
 | where computerName != ""
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
-Um die **Größe** der pro Computer erfassten abrechenbaren Ereignisse anzuzeigen, verwenden Sie die `_BilledSize`-Eigenschaft, die die Größe in Bytes bereitstellt:
+## <a name="understanding-ingested-data-volume"></a>Grundlegendes zur erfassten Datenmenge 
+
+Auf der Seite **Nutzung und geschätzte Kosten** zeigt das Diagramm *Datenerfassung pro Lösung* die Gesamtmenge an gesendeten Daten sowie die von jeder Lösung gesendete Datenmenge an. Auf diese Weise können Sie Trends ermitteln, z.B. ob die Gesamtdatennutzung (oder die Nutzung durch eine bestimmte Lösung) ansteigt, konstant bleibt oder abnimmt. Um diese Daten zu generieren, wird die folgende Abfrage verwendet:
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Beachten Sie, dass durch die Klausel „where IsBillable = true“ Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen. 
+
+Sie können einen Drilldown durchführen, um Datentrends für spezifische Datentypen anzuzeigen. So können Sie beispielsweise die Daten aufgrund von IIS-Protokollen untersuchen:
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="data-volume-by-computer"></a>Datenmenge nach Computer
+
+Um die **Größe** der pro Computer erfassten abrechenbaren Ereignisse anzuzeigen, verwenden Sie die Eigenschaft `_BilledSize` ([log-standard-properties#_billedsize.md](learn more)), die die Größe in Bytes angibt:
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
 
-Diese Abfrage ersetzt die alte Abfrage durch den Datentyp für die Nutzung. 
+Die Eigenschaft `_IsBillable` gibt an, ob für die erfassten Daten Gebühren anfallen ([log-standard-properties.md#_isbillable](Learn more)).
 
 Um die **Anzahl** von erfassten Ereignissen pro Computer anzuzeigen, führen Sie diese Abfrage aus:
 
@@ -207,8 +212,29 @@ Wenn Sie die Anzahl für gebührenpflichtigen Datentypen anzeigen möchten, die 
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last `
 
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Datenmenge nach Azure-Ressource, Ressourcengruppe oder Abonnement
+
+Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der abrechenbaren erfassten Ereignisse __pro Computer__ mit der Eigenschaft `_ResourceId` abrufen, die den vollständigen Pfad zu der Ressource enthält ([log-standard-properties.md#_resourceid](learn more)):
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+
+Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der abrechenbaren erfassten Ereignisse __pro Azure-Abonnement__ durch Analysieren der Eigenschaft `_ResourceId` wie folgt abrufen:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+
+Durch Ändern von `subscriptionId` in `resourceGroup` wird die abrechenbare erfasste Datenmenge pro Azure-Ressourcengruppe angezeigt. 
+
+
 > [!NOTE]
 > Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.
+
+### <a name="querying-for-common-data-types"></a>Abfragen von häufig verwendeten Datentypen
 
 Wenn Sie die Datenquelle für einen bestimmten Datentyp näher untersuchen möchten, finden Sie hier einige nützliche Beispielabfragen:
 
@@ -241,7 +267,7 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 | AzureDiagnostics           | Ändern Sie die Ressourcenprotokollsammlung, um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 
-### <a name="getting-node-counts"></a>Abrufen der Knotenanzahl 
+### <a name="getting-security-and-automation-node-counts"></a>Abrufen der Knotenanzahl für Sicherheit und Automatisierung 
 
 Wenn Sie den Tarif „Pro Knoten (OMS)“ nutzen, erfolgt die Abrechnung basierend auf der Anzahl von verwendeten Knoten und Lösungen. Die Anzahl von Insights- und Analytics-Knoten, für die Sie Gebühren entrichten, wird in der Tabelle auf der Seite **Nutzung und geschätzte Kosten** angezeigt.  
 
@@ -282,6 +308,7 @@ Die Anzahl der verschiedenen Automation-Knoten können Sie mit dieser Abfrage an
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
+
 In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folgendes gilt:
 - Das Datenvolumen übersteigt eine angegebene Menge.
 - Für das Datenvolumen besteht die Vorhersage, dass eine bestimmte Menge überschritten wird.

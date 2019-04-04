@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 25ebd72c512eb92c5d9a464a4b4d74f9e41ae389
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194094"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484109"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -55,7 +55,7 @@ Der erste Schritt bei der Einrichtung der Schlüsselprotokollierung besteht dari
 
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
-```PowerShell
+```powershell
 Connect-AzAccount
 ```
 
@@ -63,13 +63,13 @@ Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure
 
 Möglicherweise müssen Sie das Abonnement angeben, mit dem Sie Ihren Schlüsseltresor erstellt haben. Geben Sie den folgenden Befehl ein, um die Abonnements für Ihr Konto anzuzeigen:
 
-```PowerShell
+```powershell
 Get-AzSubscription
 ```
 
 Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokollierenden Schlüsseltresor zugeordnet ist:
 
-```PowerShell
+```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
@@ -81,7 +81,7 @@ Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, a
 
 Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Ressourcengruppe wie die Gruppe, die den Schlüsseltresor enthält. Im [Tutorial zu den ersten Schritten](key-vault-get-started.md) hat diese Ressourcengruppe den Namen **ContosoResourceGroup**, und wir nutzen auch wieder den Standort „Asien, Osten“. Ersetzen Sie diese Werte gegebenenfalls durch Ihre eigenen:
 
-```PowerShell
+```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
@@ -94,7 +94,7 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 
 Im [Tutorial zu den ersten Schritten](key-vault-get-started.md) lautete der Name des Schlüsseltresors **ContosoKeyVault**. Wir werden diesen Namen weiterhin verwenden und die Details in einer Variablen namens **kv** speichern:
 
-```PowerShell
+```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
@@ -102,7 +102,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Cmdlet **Set-AzDiagnosticSetting** zusammen mit den Variable, die wir für das neue Speicherkonto und den Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf **AuditEvent** (einzige Kategorie für die Key Vault-Protokollierung) fest:
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
@@ -122,7 +122,7 @@ Diese Ausgabe bestätigt, dass die Protokollierung für Ihren Schlüsseltresor j
 
 Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle automatisch gelöscht werden. Richten Sie die Aufbewahrungsrichtlinie z. B. wie folgt ein: Legen Sie das Flag **-RetentionEnabled** auf **$true** und den Parameter **-RetentionInDays** auf **90** fest, sodass Protokolle, die älter sind als 90 Tage, automatisch gelöscht werden.
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
@@ -141,13 +141,13 @@ Key Vault-Protokolle werden im Container **insights-logs-auditevent** im von Ihn
 
 Erstellen Sie zunächst eine Variable für den Containernamen. Sie werden diese Variable im weiteren Verlauf der exemplarischen Vorgehensweise verwenden.
 
-```PowerShell
+```powershell
 $container = 'insights-logs-auditevent'
 ```
 
 Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
 
-```PowerShell
+```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
@@ -174,19 +174,19 @@ Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen v
 
 Erstellen Sie einen Ordner zum Herunterladen der Blobs. Beispiel: 
 
-```PowerShell 
+```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 ```
 
 Rufen Sie anschließend eine Liste mit allen Blobs ab:  
 
-```PowerShell
+```powershell
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 Leiten Sie diese Liste an **Get-AzStorageBlobContent** um, um die Blobs in den Zielordner herunterzuladen:
 
-```PowerShell
+```powershell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
@@ -196,19 +196,19 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 * Bei Verwendung mehrerer Schlüsseltresore und einem Download von Protokollen nur für einen Schlüsseltresor mit dem Namen CONTOSOKEYVAULT3:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * Wenn Sie alle Protokolle für den Monat Januar 2019 herunterladen möchten, verwenden Sie `-Blob '*/year=2019/m=01/*'`:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
@@ -221,7 +221,7 @@ Sie können sich nun ansehen, was in den Protokollen enthalten ist. Aber bevor w
 
 Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Schauen wir uns einen Beispielprotokolleintrag an. Führen Sie den folgenden Befehl aus:
 
-```PowerShell
+```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 

@@ -1,8 +1,7 @@
 ---
 title: Herstellen einer Verbindung mit einem MQ-Server – Azure Logic Apps | Microsoft-Dokumentation
 description: Senden und Empfangen von Nachrichten mit einem Azure-basierten oder lokalen MQ-Server und Azure Logic Apps
-author: valthom
-manager: jeconnoc
+author: valrobb
 ms.author: valthom
 ms.date: 06/01/2017
 ms.topic: article
@@ -11,52 +10,52 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 6b34bd7b286ca3b206c611343217c90e0d57fbfb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167880"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Herstellen einer Verbindung mit einem IBM MQ-Server aus einer Logik-App mit dem MQ-Connector 
+# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Herstellen einer Verbindung mit einem IBM MQ-Server aus einer Logik-App mit dem MQ-Connector
 
-Der Microsoft-Connector für MQ sendet und empfängt Nachrichten, die lokal oder in Azure auf einem MQ-Server gespeichert sind. Dieser Connector umfasst einen Microsoft-Client zum Kommunizieren mit einem IBM MQ-Remoteserver über ein TCP/IP-Netzwerk. Das vorliegende Dokument ist ein Leitfaden für den Einstieg in die Verwendung des MQ-Connectors. Es wird empfohlen, dass Sie zunächst nach einer einzelnen Nachricht in einer Warteschlange suchen und dann die weiteren Aktionen ausprobieren.    
+Der Microsoft-Connector für MQ sendet und empfängt Nachrichten, die lokal oder in Azure auf einem MQ-Server gespeichert sind. Dieser Connector umfasst einen Microsoft-Client zum Kommunizieren mit einem IBM MQ-Remoteserver über ein TCP/IP-Netzwerk. Das vorliegende Dokument ist ein Leitfaden für den Einstieg in die Verwendung des MQ-Connectors. Es wird empfohlen, dass Sie zunächst nach einer einzelnen Nachricht in einer Warteschlange suchen und dann die weiteren Aktionen ausprobieren.
 
 Der MQ-Connector umfasst die folgenden Aktionen. Es gibt keine Trigger.
 
--   Suchen nach einer einzelnen Nachricht ohne Löschen der Nachricht vom IBM MQ-Server
--   Suchen nach einem Batch von Nachrichten ohne Löschen der Nachricht vom IBM MQ-Server
--   Empfangen einer einzelnen Nachricht und Löschen der Nachricht vom IBM MQ-Server
--   Empfangen eines Batches von Nachrichten und Löschen der Nachrichten vom IBM MQ-Server
--   Senden einer einzelnen Nachricht an den IBM MQ-Server 
+- Suchen nach einer einzelnen Nachricht ohne Löschen der Nachricht vom IBM MQ-Server
+- Suchen nach einem Batch von Nachrichten ohne Löschen der Nachricht vom IBM MQ-Server
+- Empfangen einer einzelnen Nachricht und Löschen der Nachricht vom IBM MQ-Server
+- Empfangen eines Batches von Nachrichten und Löschen der Nachrichten vom IBM MQ-Server
+- Senden einer einzelnen Nachricht an den IBM MQ-Server
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie einen lokalen MQ-Server verwenden, [installieren Sie das lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) auf einem Server in Ihrem Netzwerk. Wenn der MQ-Server öffentlich verfügbar oder innerhalb von Azure verfügbar ist, dann wird kein Datengateway verwendet oder benötigt.
 
     > [!NOTE]
-    > Der Server, auf dem das lokale Datengateway installiert ist, muss über .NET Framework 4.6 verfügen, damit der MQ-Connector funktioniert.
+    > Der Server, auf dem das lokale Datengateway installiert ist, muss über .NET Framework 4.6 verfügen, damit der MQ-Connector funktioniert.
 
 * Erstellen Sie die Azure-Ressource für das lokale Datengateway: [Richten Sie die Verbindung mit dem Datengateway ein](../logic-apps/logic-apps-gateway-connection.md).
 
 * Offiziell unterstützte IBM WebSphere MQ-Versionen:
-   * MQ 7.5
-   * MQ 8.0
+    * MQ 7.5
+    * MQ 8.0
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**. 
+1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
 2. Geben Sie **Name**, z.B. „MQTestApp“, **Abonnement**, **Ressourcengruppe** und **Standort** ein (verwenden Sie den Standort, für den die lokale Datengatewayverbindung konfiguriert wurde). Wählen Sie **An Dashboard anheften** und **Erstellen** aus.  
 ![Logik-App erstellen](media/connectors-create-api-mq/Create_Logic_App.png)
 
 ## <a name="add-a-trigger"></a>Hinzufügen eines Triggers
 
 > [!NOTE]
-> Der MQ-Connector umfasst keine Trigger. Verwenden Sie deshalb einen anderen Trigger, um Ihre Logik-App zu starten, z.B. den Trigger **Serie**. 
+> Der MQ-Connector umfasst keine Trigger. Verwenden Sie deshalb einen anderen Trigger, um Ihre Logik-App zu starten, z.B. den Trigger **Serie**.
 
 1. Wenn der **Designer für Logik-Apps** geöffnet wurde, wählen Sie in der Liste der gängigen Trigger **Serie** aus.
-2. Wählen Sie innerhalb des Serientriggers die Option **Bearbeiten** aus. 
-3. Legen Sie die **Häufigkeit** auf **Tag** fest, geben Sie als **Intervall** den Wert **7** an. 
+2. Wählen Sie innerhalb des Serientriggers die Option **Bearbeiten** aus.
+3. Legen Sie die **Häufigkeit** auf **Tag** fest, geben Sie als **Intervall** den Wert **7** an.
 
 ## <a name="browse-a-single-message"></a>Suchen einer einzelnen Nachricht
 1. Wählen Sie **+Neuer Schritt** aus, und klicken Sie auf **Aktion hinzufügen**.
@@ -66,9 +65,9 @@ Der MQ-Connector umfasst die folgenden Aktionen. Es gibt keine Trigger.
 3. Wenn keine MQ-Verbindung vorhanden ist, erstellen Sie die Verbindung:  
 
     1. Wählen Sie **Über lokales Datengateway verbinden** aus, und geben Sie die Details Ihres MQ-Servers ein.  
-    Für **Server** können Sie den Namen des MQ-Server oder die IP-Adresse gefolgt von einem Doppelpunkt und der Portnummer eingeben. 
+    Für **Server** können Sie den Namen des MQ-Server oder die IP-Adresse gefolgt von einem Doppelpunkt und der Portnummer eingeben.
     2. In der Dropdownliste **Gateway** werden alle vorhandenen Gatewayverbindungen aufgeführt, die konfiguriert wurden. Wählen Sie Ihr Gateway aus.
-    3. Wenn Sie fertig sind, klicken Sie auf **Erstellen**. Ihre Verbindung sieht ähnlich wie diese aus:   
+    3. Wenn Sie fertig sind, klicken Sie auf **Erstellen**. Ihre Verbindung sieht ähnlich wie diese aus:  
     ![Verbindungseigenschaften](media/connectors-create-api-mq/Connection_Properties.png)
 
 4. In den Aktionseigenschaften haben Sie folgende Möglichkeiten:  
@@ -120,4 +119,4 @@ Wenn beim Ausführen der Aktionen „Nachrichten suchen“ oder „Nachrichten e
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/mq/) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

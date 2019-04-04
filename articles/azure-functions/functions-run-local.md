@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 9cfec02e2ea3496589474e61f583fb840a70f78d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6c38591aa283491369562db8ea840ef7e5b17e6d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881321"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402625"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -401,10 +401,6 @@ Um z.B. eine HTTP-ausgelöste Funktion aufzurufen und Inhaltstext zu übergeben,
 ```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
-
-### <a name="viewing-log-files-locally"></a>Lokales Anzeigen von Protokolldateien
-
-[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="publish"></a>Veröffentlichen in Azure
 

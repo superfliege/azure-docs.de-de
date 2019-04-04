@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316ebb7774a0420087bf9ed5c099a91d78a96fb0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119731"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegieren von App-Administratorrollen in Azure Active Directory
 
@@ -37,8 +37,8 @@ So gewähren Sie die Fähigkeit zur Verwaltung des Anwendungszugriffs im Azure-P
 1. Melden Sie sich bei Ihrem [Azure AD-Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für die globale Administratorrolle im Mandanten geeignet ist.
 2. Wenn Sie über ausreichende Berechtigungen verfügen, öffnen Sie die [Seite „Rollen und Administratoren“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
 3. Öffnen Sie eine der folgenden Rollen, um ihre Mitgliedszuweisungen anzuzeigen:
-  * **Anwendungsadministrator**
-  * **Cloudanwendungsadministrator**
+   * **Anwendungsadministrator**
+   * **Cloudanwendungsadministrator**
 4. Wählen Sie auf der Seite **Mitglieder** für die Rolle **Mitglied hinzufügen** aus.
 5. Wählen Sie mindestens ein Mitglied aus, das der Rolle hinzugefügt werden soll. <!--Members can be users or groups.-->
 
@@ -50,15 +50,15 @@ Standardmäßig können alle Benutzer Anwendungsregistrierungen erstellen, aber 
 
 1. Melden Sie sich bei Ihrem [Azure AD-Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für die globale Administratorrolle im Mandanten geeignet ist.
 2. Wenn Sie ausreichende Berechtigungen erhalten haben, legen Sie eine oder beide der folgenden fest:
-  * Legen Sie auf der [Seite „Benutzereinstellungen“ für Ihren Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) für **Benutzer können Anwendungen registrieren** „Nein“ fest.
-  * Legen Sie unter [Unternehmensanwendungen – Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) für **Benutzer können Anwendungen den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** „Nein“ fest.
+   * Legen Sie auf der [Seite „Benutzereinstellungen“ für Ihren Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) für **Benutzer können Anwendungen registrieren** „Nein“ fest.
+   * Legen Sie unter [Unternehmensanwendungen – Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) für **Benutzer können Anwendungen den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** „Nein“ fest.
 3. Weisen Sie anschließend nach Bedarf Benutzer zu, die diese Berechtigung benötigen, um Mitglieder der Anwendungsentwicklerrolle zu sein.
 
 Wenn ein Benutzer eine Anwendung registriert, wird er automatisch als erster Besitzer für die Anwendung hinzugefügt.
 
 ## <a name="delegate-app-ownership"></a>Delegieren Sie den Besitz der App.
 
-App- und App-Registrierungsbesitzer können jeweils nur die App-Anwendungen oder App-Registrierungen verwalten, die sie besitzen. Wenn Sie beispielsweise einen Besitzer für die Salesforce-Anwendung hinzufügen, kann dieser Besitzer den Zugriff auf Salesforce sowie die Konfiguration von Salesforce verwalten, jedoch keine anderen Anwendungen. Eine App kann viele Besitzer haben, und ein Benutzer kann Besitzer vieler Apps sein.
+App- und App-Registrierungsbesitzer können jeweils nur die Anwendungen oder App-Registrierungen verwalten, die sie besitzen. Wenn Sie beispielsweise einen Besitzer für die Salesforce-Anwendung hinzufügen, kann dieser Besitzer den Zugriff auf Salesforce sowie die Konfiguration von Salesforce verwalten, jedoch keine anderen Anwendungen. Eine App kann viele Besitzer haben, und ein Benutzer kann Besitzer vieler Apps sein.
 
 Ein Anwendungsbesitzer kann:
 

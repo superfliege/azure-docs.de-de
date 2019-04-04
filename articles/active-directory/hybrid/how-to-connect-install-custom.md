@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 03/20/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91dd25eadd3842cf1a94608a6f0ad9cfcd25039a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197231"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295486"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -221,7 +221,7 @@ Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Si
 >Sie können eine bestimmte Gesamtstruktur auch überspringen, wenn das einmalige Anmelden für die Gesamtstruktur nicht verwendet werden soll.
 
 #### <a name="configure-the-intranet-zone-for-client-machines"></a>Konfigurieren der Intranetzone für Clientcomputer
-Damit der Client in der Intranetzone automatisch angemeldet wird, müssen Sie dafür sorgen, dass zwei URLs Teil der Intranetzone sind. So wird sichergestellt, dass der in die Domäne eingebundene Computer automatisch ein Kerberos-Ticket an Azure AD sendet, wenn eine Verbindung mit dem Unternehmensnetzwerk besteht.
+Damit der Client automatisch in der Intranetzone angemeldet wird, müssen Sie dafür sorgen, dass die URL Teil der Intranetzone ist. So wird sichergestellt, dass der in die Domäne eingebundene Computer automatisch ein Kerberos-Ticket an Azure AD sendet, wenn eine Verbindung mit dem Unternehmensnetzwerk besteht.
 Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 
 1.  Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
@@ -365,7 +365,7 @@ Mit dem Stagingmodus können Sie parallel einen neuen Synchronisierungsserver ei
 
 Im Stagingmodus können Sie die erforderlichen Änderungen am Synchronisierungsmodul vornehmen und überprüfen, was exportiert werden soll. Wenn die Konfiguration Ihren Vorstellungen entspricht, führen Sie erneut den Installations-Assistenten aus, und deaktivieren Sie den Stagingmodus. Daraufhin werden Daten von diesem Server an Azure AD exportiert. Stellen Sie sicher, das der andere Server währenddessen deaktiviert ist, sodass nur ein Server aktiv exportieren kann.
 
-Weitere Informationen finden Sie unter [Stagingmodus](how-to-connect-sync-operations.md#staging-mode).
+Weitere Informationen finden Sie unter [Stagingmodus](how-to-connect-sync-staging-server.md).
 
 ### <a name="verify-your-federation-configuration"></a>Überprüfen der Verbundkonfiguration
 Wenn Sie auf die Schaltfläche „Überprüfen“ klicken, überprüft Azure AD Connect die DNS-Einstellungen.

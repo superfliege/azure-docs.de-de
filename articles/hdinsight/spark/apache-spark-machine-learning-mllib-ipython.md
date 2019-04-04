@@ -8,21 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075560"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Verwenden Sie Apache Spark MLlib zum Erstellen einer Machine Learning-Anwendung und zur Analyse eines Datasets.
 
 Lernen Sie, wie man mithilfe von Apache Spark [MLlib](https://spark.apache.org/mllib/) eine Machine-Learning-Anwendung erstellt, um eine einfache Vorhersageanalyse für ein offenes Dataset auszuführen. Aus den in Spark-integrierten Machine Learning-Bibliotheken verwendet dieses Beispiel die *Klassifizierung* durch logistische Regression. 
-
-> [!TIP]  
-> Dieses Beispiel ist auch als [Jupyter Notebook](https://jupyter.org/) für einen Spark-Cluster (Linux) verfügbar, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Um das Tutorial innerhalb des Notebooks ausführen zu können, erstellen Sie einen Spark-Cluster und starten Sie ein Jupyter-Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Führen Sie dann das Notebook **Spark Machine Learning - Vorhersageanalysen für Lebensmittelkontrolldaten mithilfe von MLlib.ipynb** unter dem **Python**-Ordner aus.
 
 MLLib ist eine Spark-Kernbibliothek, die viele Hilfsprogramme enthält, die nützlich für Aufgaben aus dem Bereich des Machine Learning sind, darunter befinden sich auch Hilfsprogramme für folgende Aufgaben:
 
@@ -173,7 +170,7 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
 
     ```PySpark
     %%sql -o countResultsdf
-    SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
+    SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
     Durch den Befehl `%%sql` gefolgt von `-o countResultsdf` wird sichergestellt, dass die Ausgabe der Abfrage lokal auf dem Jupyter-Server (in der Regel der Hauptknoten des Clusters) beibehalten wird. Die Ausgabe wird als [Pandas](https://pandas.pydata.org/) -Dataframe mit dem angegebenen Namen **countResultsdf**beibehalten. Weitere Informationen zur `%%sql`-Magic sowie anderen für den PySpark-Kernel verfügbaren Magics finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
@@ -201,26 +198,18 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
 
     ![Ausgabe der Spark-Machine Learning-Anwendung im Kreisdiagramm mit fünf unterschiedlichen Messergebnissen](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark-Machine-Learning-Ergebnisausgaben")
 
-    Es gibt fünf unterschiedliche Ergebnisse einer Kontrolle:
-
-    - Business not located
-    - Fail
-    - Pass
-    - Pass w/ Conditions
-    - Out of Business
-
     Um das Ergebnis einer Lebensmittelkontrolle vorherzusagen, müssen Sie ein Modell basierend auf den Verstößen entwickeln. Da die logistische Regression eine binäre Klassifizierungsmethode ist, können Sie die Ergebnisdaten in zwei Kategorien gruppieren: **Fail** und **Pass**:
 
-    - Pass
-        - Pass
-        - Pass w/ Conditions
-    - Fail
-        - Fail
-    - Verwerfen
-        - Business not located
-        - Out of Business
+   - Pass
+       - Pass
+       - Pass w/ Conditions
+   - Fail
+       - Fail
+   - Verwerfen
+       - Business not located
+       - Out of Business
 
-    Daten mit den anderen Ergebnissen („Business Not Located“ oder „Out of Business“) sind nicht sinnvoll, und sie machen auch nur einen sehr kleinen Prozentsatz der Ergebnisse aus.
+     Daten mit den anderen Ergebnissen („Business Not Located“ oder „Out of Business“) sind nicht sinnvoll, und sie machen auch nur einen sehr kleinen Prozentsatz der Ergebnisse aus.
 
 4. Führen Sie den folgenden Code aus, um den bestehenden Datenrahmen (`df`) in einen neuen Datenrahmen zu konvertieren, wobei jede Kontrolle als Label-Violations-Paar dargestellt wird. In diesem Fall stellt das Label `0.0` ein Nichtbestehen dar, das Label `1.0` steht für das Bestehen der Kontrolle und das Label `-1.0` steht für andere Ergebnisse. 
 
@@ -272,7 +261,7 @@ Mithilfe des zuvor erstellten Modells können Sie basierend auf den beobachteten
 1. Führen Sie den folgenden Code aus, um einen neuen Datenrahmen, **predictionsDf**, zu erstellen, der die vom Modell generierte Vorhersage enthält. Der Codeausschnitt erstellt basierend auf dem Dataframe ebenfalls eine temporäre Tabelle namens **Predictions**.
 
     ```PySpark
-    testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+    testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
     testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -284,10 +273,6 @@ Mithilfe des zuvor erstellten Modells können Sie basierend auf den beobachteten
     Folgendes sollte angezeigt werden:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     ['id',
         'name',
         'results',
@@ -321,10 +306,6 @@ Mithilfe des zuvor erstellten Modells können Sie basierend auf den beobachteten
     Die Ausgabe sieht wie folgt aus:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
@@ -377,7 +358,7 @@ Nun können Sie eine endgültige Visualisierung erstellen, um sich mit den Ergeb
     In diesem Diagramm bezieht sich ein „positives“ Ergebnis auf eine nicht bestandene Lebensmittelkontrolle, wohingegen sich ein negatives Ergebnis auf eine bestandene Kontrolle bezieht.
 
 ## <a name="shut-down-the-notebook"></a>Herunterfahren des Notebooks
-Nach dem Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Hierdurch wird das Notebook heruntergefahren und geschlossen.
+Nach dem Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Wählen Sie hierzu im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Hierdurch wird das Notebook heruntergefahren und geschlossen.
 
 ## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)

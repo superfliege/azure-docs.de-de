@@ -1,6 +1,6 @@
 ---
 title: 'Dokumentation für Azure Analysis Services: Tutorials, API-Referenz'
-description: 'Hier erfahren Sie, wie Sie die Datenmodellierung mit Analysis Services in der Cloud einrichten. Die Dokumentation zeigt, wie Sie eine Enterprise-BI-Lösung mit tabellarischen Daten erstellen.'
+description: Hier erfahren Sie, wie Sie die Datenmodellierung mit Analysis Services in der Cloud einrichten. Die Dokumentation zeigt, wie Sie eine Enterprise-BI-Lösung mit tabellarischen Daten erstellen.
 services: analysis-services
 author: minewiskan
 ms.author: owend
@@ -8,6 +8,12 @@ layout: LandingPage
 ms.service: azure-analysis-services
 ms.topic: landing-page
 ms.date: 02/14/2018
+ms.openlocfilehash: ec3c45961ac92a505ee565373474ce3dc2fbabcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106966"
 ---
 # <a name="analysis-services-documentation"></a>Dokumentation zu Analysis Services
 

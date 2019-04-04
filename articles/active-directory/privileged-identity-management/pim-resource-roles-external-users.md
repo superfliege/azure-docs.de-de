@@ -1,6 +1,6 @@
 ---
-title: Einladen externer Benutzer und Zuweisen von Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure AD Privileged Identity Management (PIM) externe Benutzer einladen und Azure-Ressourcenrollen zuweisen.
+title: Einladen von externen Gästen und zuweisen von Azure AD-Administratorrollen – Privileged Identity Management | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Gastbenutzer einladen und Azure Active Directory-Administratorrollen in Azure AD Privileged Identity Management zuweisen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90d0d3d3f484044a0ffbab7a3c24a76c40aa74c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208275"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853255"
 ---
-# <a name="invite-external-users-and-assign-azure-resource-roles-in-pim"></a>Einladen externer Benutzer und Zuweisen von Azure-Ressourcenrollen in PIM
+# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>Einladen von Gastbenutzern und zuweisen von Azure-Ressourcenrollen in PIM
 
-Bei Azure Active Directory (Azure AD) Business-to-Business (B2B) handelt es sich um eine Gruppe von Funktionen in Azure AD, über die Organisationen unter Verwendung eines beliebigen Kontos mit externen Benutzern und Anbietern zusammenarbeiten können. Wenn Sie B2B mit Azure AD Privileged Identity Management (PIM) kombinieren, gelten Ihre Konformitäts- und Governanceanforderungen weiterhin für externe Benutzer. Beispielsweise können Sie folgende PIM-Funktionen für Azure-Ressourcen für externe Benutzer verwenden:
+Bei Azure Active Directory (Azure AD) Business-to-Business (B2B) handelt es sich um eine Gruppe von Funktionen in Azure AD, über die Organisationen unter Verwendung eines beliebigen Kontos mit externen Gastbenutzern (Gästen) und Anbietern zusammenarbeiten können. Wenn Sie B2B mit Azure AD Privileged Identity Management (PIM) kombinieren, gelten Ihre Konformitäts- und Governanceanforderungen weiterhin für Gäste. Beispielsweise können Sie die folgenden PIM-Funktionen für Azure-Identitätsaufgaben mit Gästen verwenden:
 
 - Zuweisen des Zugriffs auf bestimmte Azure-Ressourcen
 - Aktivieren des Just-in-Time-Zugriffs
@@ -33,25 +33,25 @@ Bei Azure Active Directory (Azure AD) Business-to-Business (B2B) handelt es sich
 - Ausführen von Zugriffsüberprüfungen
 - Verwenden von Warnungen und Überwachungsprotokollen
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe von PIM externe Benutzer in Ihr Verzeichnis einladen und ihren Zugriff auf Azure-Ressourcen verwalten.
+In diesem Artikel wird beschrieben, wie Sie einen Gast in Ihre Organisation einladen und ihren Zugriff auf Azure-Ressourcen mithilfe von Privileged Identity Management verwalten.
 
-## <a name="when-would-you-invite-external-users"></a>Wann laden Sie externe Benutzer ein?
+## <a name="when-would-you-invite-guests"></a>Wann laden Sie Gäste ein?
 
-Einige Beispielszenarien, in denen Sie möglicherweise externe Benutzer in Ihr Verzeichnis einladen:
+Einige Beispielszenarios, in denen Sie möglicherweise Gäste in Ihre Organisation einladen:
 
 - Zugriff für einen externen selbstständigen Anbieter, der nur über ein E-Mail-Konto verfügt, auf Ihre Azure-Ressourcen für ein Projekt
 - Zugriff für einen externen Partner in einer großen Organisation, die lokale Active Directory-Verbunddienste (AD FS) verwendet, auf Ihre Kostenmanagementanwendung
 - Temporärer Zugriff für Supporttechniker außerhalb Ihrer Organisation (z.B. Microsoft-Support) auf Ihre Azure-Ressource zur Behebung von Problemen
 
-## <a name="how-does-external-collaboration-using-b2b-work"></a>Funktionsweise der externen Kollaboration über B2B
+## <a name="how-does-collaboration-using-b2b-guests-work"></a>Wie funktioniert Kollaboration mit B2B-Gästen?
 
-Bei Verwendung von B2B können Sie einen externen Benutzer in Ihr Verzeichnis einladen. Der externe Benutzer scheint in Ihrem Verzeichnis vorhanden zu sein, ihm sind jedoch keine Anmeldeinformationen zugeordnet. Wenn ein externer Benutzer authentifiziert werden soll, muss er in seinem Stammverzeichnis und nicht in Ihrem Verzeichnis authentifiziert werden. Das bedeutet, dass der externe Benutzer, wenn er keinen Zugriff mehr auf sein Stammverzeichnis hat, automatisch den Zugriff auf Ihr Verzeichnis verliert. Wenn der externe Benutzer beispielsweise seine Organisation verlässt, verliert er automatisch den Zugriff auf alle Ressourcen, die Sie in Ihrem Verzeichnis für ihn freigegeben haben, ohne dass Sie etwas tun müssen. Weitere Informationen zu B2B finden Sie unter [Was ist der Gastzugriff in Azure Active Directory-B2B?](../b2b/what-is-b2b.md)
+Wenn Sie B2B Collaboration verwenden, können Sie einen externen Benutzer als Gast in Ihre Organisation einladen. Der Gast scheint in Ihrer Organisation vorhanden zu sein, ihm sind jedoch keine Anmeldeinformationen zugeordnet. Wenn ein Gast authentifiziert werden soll, muss er in seiner eigenen Organisation und nicht in Ihrer Organisation authentifiziert werden. Dies bedeutet, dass ein Gast, der keinen Zugriff mehr auf seine eigene Organisation hat, auch den Zugriff auf Ihre Organisation verlieren wird. Wenn der Gast beispielsweise seine Organisation verlässt, verliert er automatisch den Zugriff auf alle Ressourcen, die Sie in Azure AD für ihn freigegeben haben, ohne dass Sie etwas tun müssen. Weitere Informationen zu B2B finden Sie unter [Was ist der Gastzugriff in Azure Active Directory-B2B?](../b2b/what-is-b2b.md)
 
-![B2B und externer Benutzer](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![B2B und Gast](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
-## <a name="check-external-collaboration-settings"></a>Überprüfen der Einstellungen für externe Kollaboration
+## <a name="check-guest-collaboration-settings"></a>Überprüfen von Einstellungen für die Kollaboration mit Gästen
 
-Um sicherzustellen, dass Sie externe Benutzer in Ihr Verzeichnis einladen können, sollten Sie Ihre Einstellungen für externe Kollaboration überprüfen.
+Sie sollten Ihre Einstellungen für die Kollaboration mit Gästen überprüfen, um sicherzustellen, dass Sie Gäste in Ihre Organisation einladen können.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
@@ -63,11 +63,11 @@ Um sicherzustellen, dass Sie externe Benutzer in Ihr Verzeichnis einladen könne
 
 1. Stellen Sie sicher, dass der Schalter **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist.
 
-## <a name="invite-an-external-user-and-assign-a-role"></a>Einladen eines externen Benutzers und Zuweisen einer Rolle
+## <a name="invite-a-guest-and-assign-a-role"></a>Einladen eines Gasts und zuweisen einer Rolle
 
-Mithilfe von PIM können Sie einen externen Benutzer einladen und ihn genau wie einen Mitgliedsbenutzer als berechtigt für eine Azure-Ressourcenrolle festlegen.
+Mithilfe von PIM können Sie einen Gast einladen und ihn genau wie einen Mitgliedsbenutzer als berechtigt für eine Azure-Ressourcenrolle festlegen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) oder [Benutzerkontoadministrator](../users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) oder [Benutzeradministrator](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) ist.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
@@ -77,7 +77,7 @@ Mithilfe von PIM können Sie einen externen Benutzer einladen und ihn genau wie 
 
 1. Klicken Sie auf die Ressource, die Sie verwalten möchten, z.B. eine Ressource, eine Ressourcengruppe, ein Abonnement oder eine Verwaltungsgruppe.
 
-    Sie sollten den Umfang ausschließlich auf die vom Benutzer benötigten Ressourcen beschränken.
+    Sie sollten den Umfang ausschließlich auf die vom Gast benötigten Ressourcen beschränken.
 
 1. Klicken Sie unter „Verwalten“ auf **Rollen**, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
 
@@ -93,31 +93,31 @@ Mithilfe von PIM können Sie einen externen Benutzer einladen und ihn genau wie 
 
     ![Mitglied oder Gruppe auswählen](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Klicken Sie zum Einladen eines externen Benutzers auf **Einladen**.
+1. Klicken Sie auf **Einladen**, um einen Gast einzuladen.
 
     ![Gast einladen](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. Nachdem Sie einen externen Benutzer angegeben haben, klicken Sie auf **Einladen**.
+1. Nachdem Sie einen Gast ausgewählt haben, klicken Sie auf **Einladen**.
 
-    Der externe Benutzer sollte als ausgewähltes Mitglied hinzugefügt werden.
+    Der Gast sollte als ausgewähltes Mitglied hinzugefügt werden.
 
-1. Klicken Sie im Bereich „Mitglied oder Gruppe auswählen“ auf **Auswählen**.
+1. Klicken Sie im Bereich **Mitglied oder Gruppe auswählen** auf **Auswählen**.
 
-1. Wählen Sie im Bereich „Mitgliedschaftseinstellungen“ den Zuweisungstyp und die Dauer aus.
+1. Wählen Sie im Bereich **Mitgliedschaftseinstellungen** den Zuweisungstyp und die Dauer aus.
 
     ![Mitgliedschaftseinstellungen](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. Klicken Sie zum Abschließen der Zuweisung auf **Fertig** und dann auf **Hinzufügen**.
 
-    Die Rollenzuweisung für den externen Benutzer wird in der Rollenliste angezeigt.
+    Die Rollenzuweisung für den Gast wird in der Rollenliste angezeigt.
 
-    ![Rollenzuweisung für externen Benutzer](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![Rollenzuweisung für Gast](./media/pim-resource-roles-external-users/role-assignment.png)
 
-## <a name="activate-role-as-an-external-user"></a>Aktivieren einer Rolle als externer Benutzer
+## <a name="activate-role-as-a-guest"></a>Aktivieren der Rolle als Gast
 
-Als externer Benutzer müssen Sie zunächst die Einladung in das Azure AD-Verzeichnis annehmen und möglicherweise Ihre Rolle aktivieren.
+Als externer Benutzer müssen Sie zunächst die Einladung in Ihre Azure AD-Organisation annehmen und möglicherweise Ihre Rolle aktivieren.
 
-1. Öffnen Sie die E-Mail mit der Verzeichniseinladung. Die E-Mail sieht etwa wie folgt aus.
+1. Öffnen Sie die E-Mail mit Ihrer Einladung. Die E-Mail sieht etwa wie folgt aus.
 
     ![E-Mail-Einladung](./media/pim-resource-roles-external-users/email-invite.png)
 
@@ -149,9 +149,9 @@ Als externer Benutzer müssen Sie zunächst die Einladung in das Azure AD-Verzei
 
     Sofern der Administrator Ihre Anforderung nicht genehmigen muss, sollten Sie nun Zugriff auf die angegebenen Ressourcen haben.
 
-## <a name="view-activity-for-an-external-user"></a>Anzeigen der Aktivität für einen externen Benutzer
+## <a name="view-activity-for-a-guest"></a>Anzeigen der Aktivität für einen Gast
 
-Genau wie ein Mitgliedsbenutzer können Sie Überwachungsprotokolle anzeigen, um die Aktivitäten von externen Benutzern nachzuverfolgen.
+Genau wie ein Mitgliedsbenutzer können Sie Überwachungsprotokolle anzeigen, um die Aktivitäten von Gästen nachzuverfolgen.
 
 1. Öffnen Sie PIM als Administrator, und wählen Sie die freigegebene Ressource aus.
 
@@ -159,13 +159,13 @@ Genau wie ein Mitgliedsbenutzer können Sie Überwachungsprotokolle anzeigen, um
 
     ![Ressourcenüberwachung](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Klicken Sie zum Anzeigen der Aktivität für den externen Benutzer auf **Azure Active Directory** > **Benutzer** > externer Benutzer.
+1. Klicken Sie zum Anzeigen der Aktivität für den Gast auf **Azure Active Directory** > **Benutzer** > Gastname.
 
-1. Klicken Sie auf **Überwachungsprotokolle**, um die Überwachungsprotokolle für das Verzeichnis anzuzeigen. Bei Bedarf können Sie Filter angeben.
+1. Klicken Sie auf **Überwachungsprotokolle**, um die Überwachungsprotokolle für die Organisation anzuzeigen. Bei Bedarf können Sie Filter angeben.
 
-    ![Verzeichnisüberwachung](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![Organisationsüberwachung](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuweisen von Azure AD-Verzeichnisrollen in PIM](pim-how-to-add-role-to-user.md)
+- [Zuweisen von Azure AD-Administratorrollen in PIM](pim-how-to-add-role-to-user.md)
 - [Was ist der Gastzugriff in Azure Active Directory-B2B?](../b2b/what-is-b2b.md)

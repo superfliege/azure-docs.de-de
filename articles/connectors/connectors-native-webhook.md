@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182114"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Erstellen ereignisbasierter Workflows oder Aktionen mithilfe von Webhooks und Azure Logic Apps
 
@@ -29,9 +29,9 @@ Weitere Informationen zum [Erstellen von benutzerdefinierten APIs, die einen Web
 
 ## <a name="use-the-webhook-trigger"></a>Verwenden des Webhooktriggers
 
-Ein [*Trigger*](connectors-overview.md) ist ein Ereignis, das einen Logik-App-Workflow startet. Webhooktrigger sind ereignisbasiert und erfordern nicht das Abrufen neuer Elemente. Die Logik-App wird wie der [Anforderungstrigger](connectors-native-reqres.md) in dem Moment ausgelöst, in dem ein Ereignis eintritt. Der Webhooktrigger registriert eine *Rückruf-URL* bei einem Dienst und verwendet diese URL, um die Logik-App ggf. auszulösen.
+Ein [*Trigger*](connectors-overview.md) ist ein Ereignis, das einen Logik-App-Workflow startet. Der Webhooktrigger ist ereignisbasiert und erfordert nicht das Abrufen neuer Elemente. Wenn Sie Ihre Logik-App mit einem Webhooktrigger speichern oder Ihre Logik-App von „deaktiviert“ in „aktiviert“ ändern, *abonniert* der Webhooktrigger den angegebenen Dienst oder Endpunkt, indem er eine *Rückruf-URL* mit diesem Dienst oder Endpunkt registriert. Der Trigger verwendet diese URL dann für die Ausführung der Logik-App nach Bedarf. Die Logik-App wird wie der [Anforderungstrigger](connectors-native-reqres.md) in dem Moment ausgelöst, in dem ein Ereignis eintritt. Der Trigger *hebt das Abonnement auf*, wenn Sie ihn entfernen und Ihre Logik-App speichern oder wenn Sie Ihre Logik-App von „aktiviert“ in „deaktiviert“ ändern.
 
-Im Anschluss finden Sie ein Beispiel für die Einrichtung eines HTTP-Triggers im Logik-App-Designer. In den Schritten wird davon ausgegangen, dass Sie bereits eine API bereitgestellt haben oder auf eine API zugreifen, die dem [Muster zum Abonnieren und Abbestellen von Webhooks in Logik-Apps folgt](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). Der Aufruf zum Abonnieren erfolgt, wenn eine Logik-App mit einem neuen Webhook gespeichert oder von „deaktiviert“ in „aktiviert“ umgeschaltet wird. Der Aufruf zum Abbestellen erfolgt, wenn ein Logik-App-Webhooktrigger entfernt und gespeichert oder von „aktiviert“ in „deaktiviert“ umgeschaltet wird.
+Im Anschluss finden Sie ein Beispiel für die Einrichtung eines HTTP-Triggers im Logik-App-Designer. In den Schritten wird davon ausgegangen, dass Sie bereits eine API bereitgestellt haben oder auf eine API zugreifen, die dem [Muster zum Abonnieren und Abbestellen von Webhooks in Logik-Apps folgt](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
 
 **So fügen Sie den Webhooktrigger hinzu**
 
@@ -48,9 +48,15 @@ Im Anschluss finden Sie ein Beispiel für die Einrichtung eines HTTP-Triggers im
 
 ## <a name="use-the-webhook-action"></a>Verwenden der Webhookaktion
 
-Eine [*Aktion*](connectors-overview.md) ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Eine Webhookaktion registriert eine *Rückruf-URL* bei einem Dienst und wartet vor dem Fortsetzen auf den Aufruf der URL. [Genehmigungs-E-Mail senden](connectors-create-api-office365-outlook.md) ist ein Beispiel für einen Connector, der diesem Muster folgt. Sie können dieses Muster über die Webhookaktion auf jeden Dienst erweitern. 
+Ein [*Aktion*](connectors-overview.md) ist ein definierter Vorgang, der vom Workflow Ihrer Logik-App ausgeführt wird. Wenn eine Logik-App eine Webhookaktion ausführt, *abonniert* die Aktion den angegebenen Dienst oder Endpunkt durch die Registrierung einer *Rückruf-URL* mit diesem Dienst oder Endpunkt. Die Webhookaktion wartet dann, bis der Dienst die URL aufruft, bevor die Ausführung der Logik-App fortgesetzt wird. Die Logik-App beendet das Abonnement für den Dienst oder Endpunkt in folgenden Fällen: 
 
-Im Anschluss finden Sie ein Beispiel für die Einrichtung einer Webhookaktion im Logik-App-Designer. In diesen Schritten wird davon ausgegangen, dass Sie bereits eine API bereitgestellt haben oder auf eine API zugreifen, die dem [in Logik-Apps verwendeten Muster zum Abonnieren und Abbestellen von Webhooks Apps folgt](../logic-apps/logic-apps-create-api-app.md#webhook-actions). Der Aufruf zum Abonnieren erfolgt, wenn eine Logik-App die Webhookaktion ausführt. Der Aufruf zum Abbestellen erfolgt, wenn eine Ausführung beim Warten auf eine Antwort oder vor der Zeitüberschreitung für die Logik-App abgebrochen wird.
+* Wenn die Webhookaktion erfolgreich abgeschlossen wurde
+* Wenn die Logik-App während des Wartens auf eine Antwort abgebrochen wird
+* Bevor Ein Timeout für die Logik-App auftritt
+
+Die Aktion zum [**Senden einer Genehmigungs-E-Mail**](connectors-create-api-office365-outlook.md) ist ein Beispiel für eine Webhookaktion, die diesem Muster folgt. Sie können dieses Muster über die Webhookaktion auf jeden Dienst erweitern. 
+
+Im Anschluss finden Sie ein Beispiel für die Einrichtung einer Webhookaktion im Logik-App-Designer. In diesen Schritten wird davon ausgegangen, dass Sie bereits eine API bereitgestellt haben oder auf eine API zugreifen, die dem [in Logik-Apps verwendeten Muster zum Abonnieren und Abbestellen von Webhooks Apps folgt](../logic-apps/logic-apps-create-api-app.md#webhook-actions). 
 
 **So fügen Sie eine Webhookaktion hinzu**
 

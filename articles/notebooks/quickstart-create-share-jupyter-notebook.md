@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 96eb6a823299521a071edc87b5bce95409405ffb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3f03202d0f4416b3bf08a33e5d997d7149eda9f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104402"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Schnellstart: Erstellen und Freigeben eines Notebooks
 
@@ -34,12 +34,12 @@ ms.locfileid: "53096272"
 
 1. Geben Sie folgende Informationen im angezeigten Popupfenster **Create New Project** (Neues Projekt erstellen) an, und klicken Sie anschließend auf **Create** (Erstellen):
 
-    - **Projektname**: Hallo-Welt in Python
-    - **Projekt-ID**: hello-world-python
-    - **Public project** (Öffentliches Projekt): (nicht aktiviert)
-    - **Create a README.md** (README-Datei erstellen): (nicht aktiviert)
+   - **Projektname**: Hallo-Welt in Python
+   - **Projekt-ID**: hello-world-python
+   - **Public project** (Öffentliches Projekt): (nicht aktiviert)
+   - **Create a README.md** (README-Datei erstellen): (nicht aktiviert)
 
-    ![Popupfenster „Neues Projekt“ mit Detailangaben](media/quickstarts/new-project-popup.png)
+     ![Popupfenster „Neues Projekt“ mit Detailangaben](media/quickstarts/new-project-popup.png)
 
 1. Nach einigen Augenblicken navigiert Azure Notebooks zum neuen Projekt. Fügen Sie dem Projekt ein Notebook hinzu, indem Sie das Dropdownelement **+ New** (+ Neu) (das möglicherweise nur als **+** angezeigt wird) und dann **Notebook** auswählen:
 
@@ -93,7 +93,7 @@ ms.locfileid: "53096272"
 
     ![Symbol „Speichern“ auf der Jupyter-Notebooksymbolleiste](media/quickstarts/hello-results-save-icon.png)
 
-1. Wählen Sie den Menübefehl **File** (Datei)  > **Halt and close** (Beenden und schließen) aus, um den Server zu beenden und das Browserfenster zu schließen.
+1. Wählen Sie den Menübefehl **File** (Datei)  > **Close and Halt** (Beenden und schließen) aus, um den Server zu beenden und das Browserfenster zu schließen.
 
 ## <a name="share-the-notebook"></a>Teilen des Notebooks
 

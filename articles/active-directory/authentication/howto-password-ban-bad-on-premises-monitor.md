@@ -1,5 +1,5 @@
 ---
-title: Überwachen und Protokollieren in der Vorschauversion des Azure AD-Kennwortschutzes
+title: Überwachung und Protokollierung beim Azure AD-Kennwortschutz
 description: Informationen zur Überwachung und Protokollierung beim Azure AD-Kennwortschutz
 services: active-directory
 ms.service: active-directory
@@ -11,23 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a3127cde66ce7de9a3920d238193a3a3b2225be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195786"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293718"
 ---
-# <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>Vorschau: Überwachung und Protokollierung beim Azure AD-Kennwortschutz
-
-|     |
-| --- |
-| Azure AD-Kennwortschutz ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Überwachung und Protokollierung beim Azure AD-Kennwortschutz
 
 Nach der Bereitstellung des Azure AD-Kennwortschutzes sind Überwachung und Berichterstellung zentrale Aufgaben. Dieser Artikel enthält detaillierte Informationen, damit Sie verschiedene Überwachungstechniken verstehen, einschließlich der Speicherorte, an denen die einzelnen Dienste Informationen protokollieren, und der Methoden zum Berichten über die Verwendung des Azure AD-Kennwortschutzes.
 
-# <a name="dc-agent-event-logging"></a>DC-Agent-Ereignisprotokollierung
+## <a name="dc-agent-event-logging"></a>DC-Agent-Ereignisprotokollierung
 
 Auf jedem Domänencontroller schreibt die DC-Agent-Dienstsoftware die Ergebnisse der einzelnen Kennwortüberprüfungsvorgänge (und andere Status) in ein lokales Ereignisprotokoll:
 
@@ -317,7 +312,7 @@ Das Textprotokoll ist standardmäßig deaktiviert. Damit Änderungen an diesem W
 
 PowerShell-Cmdlets, die eine Statusänderung verursachen (z.B. Register-AzureADPasswordProtectionProxy), protokollieren normalerweise ein Ergebnisereignis im Betriebsprotokoll.
 
-Darüber hinaus schreiben die meisten PowerShell-Cmdlets des Azure AD-Kennwortschutzes in ein Textprotokoll unter folgendem Pfad:
+Darüber hinaus schreiben die meisten PowerShell-Cmdlets des Azure AD-Kennwortschutzes in ein Textprotokoll unter folgendem Pfad:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 

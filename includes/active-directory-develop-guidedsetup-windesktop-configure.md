@@ -4,7 +4,7 @@ description: Includedatei
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 220723988f349bf015d2de7633af78782bc03bac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988192"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203220"
 ---
 ## <a name="register-your-application"></a>Anwendung registrieren
 
 Sie können Ihre Anwendung auf zwei Arten registrieren.
 
-### <a name="option-1-express-mode"></a>Option 1: Expressmodus
+### <a name="option-1-express-mode"></a>Option 1: Expressmodi
 
 Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 1. Navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).

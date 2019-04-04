@@ -1,19 +1,24 @@
 ---
 layout: LandingPage
-description: 'Hier erfahren Sie, wie Sie Probleme bei VM-Bereitstellungen behandeln.'
+description: Hier erfahren Sie, wie Sie Probleme bei VM-Bereitstellungen behandeln.
 title: Dokumentation zur Problembehandlung für Azure Virtual Machines | Microsoft-Dokumentation
 services: virtual-machines
 author: genlin
 manager: jeconnoc
-ms.assetid: null
+ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
+ms.openlocfilehash: 1fdf195e5d02c9264bf24d9cf3ac8b1a47ed850b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878029"
 ---
-
 # <a name="troubleshooting-azure-virtual-machines"></a>Problembehandlung für virtuelle Azure-Computer
 
 - Fehler bei der Zuordnung

@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
-ms.author: kumud
+ms.date: 03/18/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167064"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Einrichten des Failovers für mehrere Azure CDN-Endpunkte mit Azure Traffic Manager
 
@@ -77,7 +77,7 @@ Nachdem Sie Ihre CDN- und Traffic Manager-Profile eingerichtet haben, führen Si
     >
 
 
-2.  Wählen Sie in Ihrem Azure CDN-Profil den ersten CDN-Endpunkt (Akamai) aus. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus, und geben Sie *cdndemo101akamai.azureedge.net* ein. Vergewissern Sie sich, dass das Häkchen zum Überprüfen der benutzerdefinierten Domäne grün ist. 
+2.  Wählen Sie in Ihrem Azure CDN-Profil den ersten CDN-Endpunkt (Akamai) aus. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus, und geben Sie *cdndemo101.dustydogpetcare.online* ein. Vergewissern Sie sich, dass das Häkchen zum Überprüfen der benutzerdefinierten Domäne grün ist. 
 
     Azure CDN verwendet die Unterdomäne *cdnverify*, um die DNS-Zuordnung zu überprüfen und den Registrierungsvorgang abzuschließen. Weitere Informationen finden Sie unter [Erstellen eines CNAME-DNS-Eintrags](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Durch diesen Schritt kann Azure CDN die benutzerdefinierte Domäne erkennen und in der Folge auf ihre Anforderungen antworten.
 
@@ -87,7 +87,7 @@ Nachdem Sie Ihre CDN- und Traffic Manager-Profile eingerichtet haben, führen Si
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Wählen Sie in Ihrem Azure CDN-Profil den zweiten CDN-Endpunkt (Verizon) aus, und wiederholen Sie Schritt 2. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus, und geben Sie *cdndemo101akamai.azureedge.net* ein.
+4. Wählen Sie in Ihrem Azure CDN-Profil den zweiten CDN-Endpunkt (Verizon) aus, und wiederholen Sie Schritt 2. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus, und geben Sie *cdndemo101.dustydogpetcare.online* ein.
  
 Nachdem Sie diese Schritte abgeschlossen haben, ist der Multi-CDN-Dienst mit Failoverfunktionen in Azure Traffic Manager eingerichtet. Sie können nun in Ihrer benutzerdefinierten Domäne auf die Test-URLs zugreifen. Um die Funktionalität zu testen, deaktivieren Sie den primären CDN-Endpunkt, und überprüfen Sie, ob die Anforderung ordnungsgemäß zum sekundären CDN-Endpunkt verschoben wird. 
 

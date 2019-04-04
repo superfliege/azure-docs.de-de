@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: 0ee3ff8bb1ebfc276550cba3570fdf4360aabf72
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327866"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286498"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 In diesem Artikel werden die Arbeitsblätter beschrieben, die im Excel-Bericht enthalten sind, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wird.
@@ -275,7 +275,7 @@ Die folgende Tabelle enthält die Site Recovery-Grenzwerte. Diese Grenzwerte bas
 ---|---|---|---
 Standardspeicher | 8 KB | 2 MB/s pro virtuellem Computer | 168 GB pro virtuellem Computer
 Storage Premium | 8 KB  | 5 MB/s pro virtuellem Computer | 421 GB pro virtuellem Computer
-Storage Premium | 16 KB oder höher| 10 MB/s pro virtuellem Computer | 842 GB pro virtuellem Computer
+Storage Premium | 16 KB oder höher| 20 MB/s pro virtuellem Computer | 1.684 GB pro virtuellem Computer
 
 Diese Grenzwerte sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
 

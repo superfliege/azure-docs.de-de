@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 91a80c15b28e5e5dcd03a8ad6f83fa40b5049019
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: f84655ecb31eed4cca1e3960e7e426a4eb653032
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333817"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305387"
 ---
 Im Folgenden finden Sie die unterstützten Protokolle für Clients, die auf das Gerät zugreifen.
 
 |**Protokoll** |**Versionen**   |**Hinweise**  |
 |---------|---------|---------|
 |SMB    | 2.X, 3.X      | SMB 1 wird nicht unterstützt.|
-|NFS     | V 4.1        |         |
+|NFS (derzeit in der Vorschau)     |3.0, 4.1        | macOS wird mit NFS v4.1 nicht unterstützt.         |
 

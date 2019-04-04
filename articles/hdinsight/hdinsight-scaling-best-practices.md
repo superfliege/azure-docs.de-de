@@ -7,40 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/02/2018
+ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: 30f96c54dd916188296ca0245d4095a32ae0bbe4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742880"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108153"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skalieren von HDInsight-Clustern
 
 HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern.
 
-Wenn Sie beispielsweise einmal täglich oder monatlich eine Batchverarbeitung durchführen, kann der HDInsight-Cluster ein paar Minuten vor diesem geplanten Ereignis zentral hochskaliert werden, damit ausreichend Arbeitsspeicher und CPU-Rechenleistung zur Verfügung stehen. Sie können die Skalierung mit dem PowerShell-Cmdlet [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) automatisieren.  Später, wenn nach der Verarbeitung die Nutzung wieder sinkt, können Sie den HDInsight-Cluster auf weniger Workerknoten zentral herunterskalieren.
+Wenn Sie beispielsweise einmal täglich oder monatlich eine Batchverarbeitung durchführen, kann der HDInsight-Cluster ein paar Minuten vor diesem geplanten Ereignis zentral hochskaliert werden, damit ausreichend Arbeitsspeicher und CPU-Rechenleistung zur Verfügung stehen.  Später, wenn nach der Verarbeitung die Nutzung wieder sinkt, können Sie den HDInsight-Cluster auf weniger Workerknoten zentral herunterskalieren.
 
-* So skalieren Sie Ihren Cluster über [PowerShell](hdinsight-administer-use-powershell.md):
+## <a name="utilities-to-scale-clusters"></a>Hilfsprogramme zum Skalieren von Clustern
 
-    ```powershell
-    Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-    ```
-    
-* So skalieren Sie Ihren Cluster über die [klassische Azure CLI](hdinsight-administer-use-command-line.md):
+Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 
-    ```
-    azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-    ```
+|Hilfsprogramm | BESCHREIBUNG|
+|---|---|
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/overview) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
+|[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Ressourcengruppe> --name \<Clustername> --target-instance-count \<NeueGröße>|
+|[Klassische Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße>|
+|[Azure-Portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-    
-* Um Ihren Cluster über das [Azure-Portal](https://portal.azure.com) zu skalieren, öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Cluster skalieren**, geben Sie dann im Fenster „Cluster skalieren“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.
-
-    ![Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
 Mit jeder dieser Methoden können Sie Ihren HDInsight-Cluster innerhalb von Minuten zentral hoch- oder herunterskalieren.
+
+> [!IMPORTANT]  
+> * Die klassische Azure-Befehlszeilenschnittstelle ist veraltet und sollte nur mit dem klassischen Bereitstellungsmodell verwendet werden. Verwenden Sie für alle anderen Bereitstellungen die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).  
+> * Das PowerShell-AzureRM-Modul ist veraltet.  Verwenden Sie wenn möglich das [Az-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0).
 
 ## <a name="scaling-impacts-on-running-jobs"></a>Auswirkungen der Skalierung auf die Ausführung von Aufträgen
 
@@ -53,9 +53,10 @@ Um dieses Problem zu beheben, können Sie warten, bis die Aufträge abgeschlosse
 Um eine Liste der ausstehenden und ausgeführten Aufträge anzuzeigen, können Sie mit folgenden Schritten die YARN ResourceManager-Benutzeroberfläche verwenden:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Wählen Sie im linken Menü **Durchsuchen** und **HDInsight-Cluster** aus, und wählen Sie dann Ihren Cluster aus.
-3. Wählen Sie in Ihrem HDInsight-Clusterbereich **Dashboard** im oberen Menü aus, um die Ambari-Benutzeroberfläche zu öffnen. Geben Sie Ihre Clusteranmeldeinformationen ein.
-4. Klicken Sie in der Liste mit den Diensten im linken Menü auf **YARN**. Wählen Sie auf der Seite „YARN“ **Quick Links** aus, zeigen Sie auf den aktiven Hauptknoten, und klicken Sie auf **ResourceManager UI** (Ressourcen-Manager-Benutzeroberfläche).
+2. Navigieren Sie links zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**, und wählen Sie dann Ihren Cluster aus.
+3. Navigieren Sie in der Hauptansicht zu **Clusterdashboards** > **Ambari-Startseite**. Geben Sie Ihre Clusteranmeldeinformationen ein.
+4. Wählen Sie auf der Benutzeroberfläche von Ambari in der Liste mit den Diensten im linken Menü **YARN** aus.  
+5. Wählen Sie auf der Seite „YARN“ **Quick Links** aus, zeigen Sie auf den aktiven Hauptknoten, und wählen Sie **ResourceManager UI** (Resource Manager-Benutzeroberfläche) aus.
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
@@ -97,13 +98,11 @@ Wie bereits erwähnt, werden alle ausstehenden oder ausgeführten Aufträge nach
 
 ## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>Der HDInsight-Namensknoten bleibt nach dem zentralen Herunterskalieren im abgesicherten Modus
 
-![Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster.png)
-
-Wenn Sie, wie in der vorherigen Abbildung dargestellt, Ihren Cluster auf das Minimum von einem Workerknoten verkleinern, kann Apache HDFS im abgesicherten Modus hängen bleiben, wenn Workerknoten aufgrund des Patchens oder unmittelbar nach der Skalierung neu gestartet werden.
+Wenn Sie Ihren Cluster auf das Minimum von einem Workerknoten verkleinern, kann Apache HDFS im abgesicherten Modus hängen bleiben, wenn Workerknoten aufgrund des Patchens oder unmittelbar nach der Skalierung neu gestartet werden.
 
 Die primäre Ursache ist, dass Hive ein paar `scratchdir`-Dateien verwendet und standardmäßig drei Replikate jedes Blocks erwartet, aber es ist nur ein Replikat möglich, wenn Sie auf das Minimum von einem Workerknoten zentral herunterskalieren. Daher sind die Dateien im `scratchdir` *unterrepliziert*. Dies kann HDFS veranlassen, nach dem Neustart der Dienste nach dem Skalierungsvorgang im abgesicherten Modus zu bleiben.
 
-Wenn versucht wird, zentral herunter zu skalieren, verlässt sich HDInsight darauf, dass die Apache Ambari-Verwaltungsoberflächen zuerst die zusätzlichen unerwünschten Workerknoten außer Betrieb setzen, sodass deren HDFS-Blöcke auf andere Workerknoten repliziert werden, die online sind, und dann den Cluster sicher zentral herunterskalieren. HDFS wechselt während des Wartungsfensters in einen abgesicherten Modus, und es wird erwartet, dass HDFS diesen nach dem Skalieren verlässt. Genau an diesem Punkt kann HDFS im abgesicherten Modus hängen bleiben.
+Wenn versucht wird, zentral herunterzuskalieren, verlässt sich HDInsight darauf, dass die Apache Ambari-Verwaltungsoberflächen zuerst die zusätzlichen unerwünschten Workerknoten außer Betrieb setzen, sodass deren HDFS-Blöcke auf andere Workerknoten repliziert werden, die online sind, und dann den Cluster sicher zentral herunterskalieren. HDFS wechselt während des Wartungsfensters in einen abgesicherten Modus, und es wird erwartet, dass HDFS diesen nach dem Skalieren verlässt. Genau an diesem Punkt kann HDFS im abgesicherten Modus hängen bleiben.
 
 HDFS ist mit der `dfs.replication`-Einstellung 3 konfiguriert. Daher sind die Blöcke der Scratchdateien immer dann unterrepliziert, wenn weniger als drei Workerknoten online sind, da nicht die erwarteten drei Kopien jedes Dateiblocks verfügbar sind.
 
@@ -245,7 +244,7 @@ Möglicherweise werden auch einer oder mehrere kritische Fehler bei den aktiven 
 
 ![Integrität der NameNode-Blöcke](./media/hdinsight-scaling-best-practices/ambari-hdfs-crit.png)
 
-Um die Scratchdateien zu bereinigen, wodurch die Blockreplikationsfehler entfernt werden, stellen Sie mit SSH eine Verbindung zu jedem Hauptknoten her, und führen Sie den folgenden Befehl aus:
+Um die Scratchdateien zu bereinigen und dadurch die Blockreplikationsfehler zu entfernen, stellen Sie mit SSH eine Verbindung mit jedem Hauptknoten her, und führen Sie den folgenden Befehl aus:
 
 ```
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/

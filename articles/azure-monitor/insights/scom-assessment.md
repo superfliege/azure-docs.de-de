@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 27b55af74a713c51655891df8c852ff44cd3744a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082839"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621769"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -297,7 +297,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 *Warum werden nur die ersten 10 Empfehlungen angezeigt?* Anstatt Ihnen eine umfangreiche und erdrückende Aufgabenliste zu präsentieren, empfehlen wir, sich zuerst auf die Empfehlungen mit hoher Priorität zu konzentrieren. Nach deren Umsetzung werden weitere Empfehlungen verfügbar. Wenn Sie jedoch lieber die ganze Liste mit allen Einzelheiten anzeigen möchten, können Sie mithilfe der Protokollsuche alle Empfehlungen anzeigen.
 
-*Gibt es eine Möglichkeit, eine Empfehlung zu ignorieren?* Ja. Lesen Sie die Informationen unter [Ignorieren von Empfehlungen](#Ignore-recommendations).
+*Gibt es eine Möglichkeit, eine Empfehlung zu ignorieren?* Ja. Lesen Sie die Informationen unter [Ignorieren von Empfehlungen](#ignore-recommendations).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463309"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259294"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.  
@@ -59,6 +59,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
       }
     ]
 ```
+
 | Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | operation |Ja |Als Wert muss „Scale“ angegeben werden. |
@@ -70,7 +71,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
 | Eigenschaften |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
 
 ## <a name="authentication-in-webhooks"></a>Authentifizierung in Webhooks
-Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Authentifizierung erfolgen, wobei der Webhook-URI mit einer Token-ID (z.B. einem Abfrageparameter) gespeichert wird. Zum Beispiel, https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Authentifizierung erfolgen, wobei der Webhook-URI mit einer Token-ID (z.B. einem Abfrageparameter) gespeichert wird. Beispiel: https:\//mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Benachrichtigung über automatische Skalierung mit dem Webhook-Nutzlastschema
 Beim Generieren der Benachrichtigung über automatische Skalierung werden die folgenden Metadaten in die Webhook-Nutzlast aufgenommen:
@@ -108,16 +109,16 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | operation |Ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
 | context |Ja |Der Kontext des automatischen Skalierungsvorgangs |
 | timestamp |Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
-| id |JA |Resource Manager-ID der Einstellung für die automatische Skalierung |
-| name |JA |Name der Einstellung für die automatische Skalierung |
-| details |JA |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
-| subscriptionId |JA |Abonnement-ID der Zielressource, die skaliert wird |
-| resourceGroupName |JA |Ressourcengruppenname der Zielressource, die skaliert wird |
-| resourceName |JA |Name der Zielressource, die skaliert wird |
-| resourceType |JA |Die drei unterstützten Werte: „microsoft.classiccompute/domainnames/slots/roles“ – Clouddienstrollen, „microsoft.compute/virtualmachinescalesets“ – Skalierungsgruppen für virtuelle Computer und „Microsoft.Web/serverfarms“ – Web-App |
-| Ressourcen-ID |JA |Resource Manager-ID der Zielressource, die skaliert wird |
-| portalLink |JA |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource |
-| oldCapacity |JA |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
-| newCapacity |JA |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
+| id |Ja |Resource Manager-ID der Einstellung für die automatische Skalierung |
+| name |Ja |Name der Einstellung für die automatische Skalierung |
+| details |Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
+| subscriptionId |Ja |Abonnement-ID der Zielressource, die skaliert wird |
+| resourceGroupName |Ja |Ressourcengruppenname der Zielressource, die skaliert wird |
+| resourceName |Ja |Name der Zielressource, die skaliert wird |
+| resourceType |Ja |Die drei unterstützten Werte: „microsoft.classiccompute/domainnames/slots/roles“ – Clouddienstrollen, „microsoft.compute/virtualmachinescalesets“ – Skalierungsgruppen für virtuelle Computer und „Microsoft.Web/serverfarms“ – Web-App |
+| Ressourcen-ID |Ja |Resource Manager-ID der Zielressource, die skaliert wird |
+| portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource |
+| oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
+| newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
 | Eigenschaften |Nein  |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
 

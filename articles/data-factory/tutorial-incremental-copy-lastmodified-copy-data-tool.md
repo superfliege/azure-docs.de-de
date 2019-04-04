@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: e5e184e6dadfa993e0b758ad32b54ea6ccfcb272
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d79b44d0123d64d6280939767e5df7b5f64a5fcb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546533"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445952"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
 
@@ -41,7 +41,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 ### <a name="create-two-containers-in-blob-storage"></a>Erstellen von zwei Containern im Blobspeicher
 
-Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor:
+Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 1. Erstellen Sie einen Container mit dem Namen **source** (Quelle). Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
 
@@ -49,9 +49,10 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor:
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Klicken Sie im linken Menü auf **+ Neu** > **Daten + Analysen** > **Data Factory**: 
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus: 
    
-   ![Erstellen einer neuen Data Factory](./media/tutorial-copy-data-tool/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
       
      ![Neue Data Factory](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
@@ -142,7 +143,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor:
     
 6. Führen Sie auf der Seite **Choose the output file or folder** (Ausgabedatei oder -ordner auswählen) die folgenden Schritte aus:
     
-    a. Suchen Sie nach dem Ordner **destination** (Ziel), wählen Sie diesen aus, und klicken Sie anschließend auf **Choose** (Auswählen).
+    a. Suchen Sie nach dem Ordner **destination** (Ziel), wählen Sie diesen aus, und klicken Sie anschließend auf **Choose** (Wählen).
     
     ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
@@ -196,7 +197,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor:
     
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) verwenden, um die Dateien zu überprüfen.
+    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/)) verwenden, um die Dateien zu überprüfen.
     
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 662713a5ef350bd34f25558de69e3cbfd5fc80a3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 364dca8d7cab3698e501e74d0c2817aac1a36f88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137976"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Erstellen einer Windows-VM von einem speziellen Datenträger mithilfe von PowerShell
 
@@ -205,7 +205,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Um die Momentaufnahme zum Erstellen einer auf hohe Leistung ausgelegten VM zu nutzen, verwenden Sie den Parameter `-AccountType Premium_LRS` für den Befehl „New-AzSnapshot“. Dieser Parameter erstellt die Momentaufnahme so, dass sie als verwalteter Premium-Datenträger gespeichert wird. Premium-Managed Disks-Datenträger sind teurer als Standard, daher sollten Sie unbedingt prüfen, ob Sie Premium benötigen, bevor Sie diesen Parameter verwenden.
+Um die Momentaufnahme zum Erstellen einer auf hohe Leistung ausgelegten VM zu nutzen, fügen Sie dem Befehl New-AzSnapshotConfig den `-AccountType Premium_LRS`-Parameter hinzu. Dieser Parameter erstellt die Momentaufnahme so, dass sie als verwalteter Premium-Datenträger gespeichert wird. Premium-Managed Disks-Datenträger sind teurer als Standard, daher sollten Sie unbedingt prüfen, ob Sie Premium benötigen, bevor Sie diesen Parameter verwenden.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Erstellen eines neuen Datenträgers über die Momentaufnahme
 
