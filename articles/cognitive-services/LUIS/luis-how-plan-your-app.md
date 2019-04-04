@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: d0c5ba41bc636479407e7580fa686fe1bba91612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873189"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893434"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planen Ihrer LUIS-App mit Thema, Absichten und Entitäten
 
@@ -49,7 +49,7 @@ Wenn Sie festlegen, welche Entitäten in Ihrer App verwendet werden sollen, bede
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Ihre App trainiert und veröffentlicht wurde und Endpunktäußerungen erhält, sollten Sie planen, Vorhersageverbesserungen mit [aktivem Lernen](luis-how-to-review-endoint-utt.md), [Ausdruckslisten](luis-concept-feature.md) und [Mustern](luis-concept-patterns.md) zu implementieren. 
+Nachdem Ihre App trainiert und veröffentlicht wurde und Endpunktäußerungen erhält, sollten Sie planen, Vorhersageverbesserungen mit [aktivem Lernen](luis-how-to-review-endpoint-utterances.md), [Ausdruckslisten](luis-concept-feature.md) und [Mustern](luis-concept-patterns.md) zu implementieren. 
 
 
 * Eine kurze exemplarische Vorgehensweise zum Erstellen einer LUIS-App finden Sie unter [Erstellen Ihrer ersten LUIS-App (Language Understanding Intelligent Service)](luis-get-started-create-app.md).
