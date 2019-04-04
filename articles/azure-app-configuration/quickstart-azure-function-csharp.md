@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226707"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579579"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Schnellstart: Erstellen einer Azure-Funktion mit App Configuration
 
@@ -45,13 +45,19 @@ Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App-Konfigurationsspeicher
 
-1. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
+1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu. Wenn Sie sie nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
+
+    ```
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    ```
+
+2. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-2. Aktualisieren Sie die `Run`-Methode für die Verwendung von App Configuration, indem Sie `builder.AddAzureAppConfiguration()` aufrufen.
+3. Aktualisieren Sie die `Run`-Methode für die Verwendung von App Configuration, indem Sie `builder.AddAzureAppConfiguration()` aufrufen.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -81,7 +87,7 @@ Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Führen Sie bei Verwendung der Windows PowerShell den folgenden Befehl aus:
+    Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
