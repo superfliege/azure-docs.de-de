@@ -5,67 +5,63 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 03/02/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: d8ed2c770d6d9a6208f3be10de9266702ef07ae0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250060"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202876"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
-Unveränderlicher Speicher für Azure-Blobspeicher (Objektspeicher) ermöglicht es Benutzern, unternehmenskritische Daten in einem WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Blobs können erstellt und gelesen werden, aber das Ändern oder Löschen ist für den Aufbewahrungszeitraum nicht möglich.
+Unveränderlicher Speicher für Azure-Blobspeicher ermöglicht es Benutzern, unternehmenskritische Datenobjekte im WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Blobobjekte können während des Aufbewahrungszeitraums erstellt und gelesen werden, aber das Ändern oder Löschen ist nicht möglich. Unveränderlicher Speicher ist für Universell v2-Konten und Blobspeicherkonten in allen Azure-Regionen aktiviert.
 
 ## <a name="overview"></a>Übersicht
 
-Unveränderlicher Speicher unterstützt Finanzinstitute und verwandte Branchen – insbesondere Broker-Organisationen – dabei, Daten sicher zu speichern. Er kann auch in jedem Szenario verwendet werden, um kritische Daten vor dem Löschen zu schützen.  
+Unveränderlicher Speicher unterstützt Organisationen aus dem Gesundheitswesen, Finanzwesen und verwandten Branchen – insbesondere Broker-Organisationen – dabei, Daten sicher zu speichern. Er kann auch in allen Szenarien verwendet werden, in denen kritische Daten vor Änderungen oder Löschungen geschützt werden sollen. 
 
 Beispiele für typische Anwendungen:
 
-- **Einhaltung gesetzlicher Bestimmungen**: Unveränderlicher Speicher für Azure-Blobspeicher unterstützt Organisationen dabei, SEC 17a-4(f), CFTC 1.31(d), FINRA und weitere Bestimmungen einzuhalten.
+- **Einhaltung gesetzlicher Bestimmungen**: Unveränderlicher Speicher für Azure-Blobspeicher unterstützt Organisationen dabei, SEC 17a-4(f), CFTC 1.31(d), FINRA und weitere Bestimmungen einzuhalten. In einem technischen Whitepaper von Cohasset Associates ist ausführlich beschrieben, wie diese gesetzlichen Anforderungen mit unveränderlichem Speicher erfüllt werden können. Sie können das Whitepaper über das [Microsoft-Vertrauensstellungsportal](https://aka.ms/AzureWormStorage) herunterladen. Das [Azure Trust Center](https://www.microsoft.com/trustcenter/compliance/compliance-overview) enthält ausführliche Informationen zu den Compliancezertifizierungen.
 
-- **Sichere Dokumentaufbewahrung**: Blobspeicher stellt sicher, dass Daten nicht von Benutzern geändert oder gelöscht werden können, auch wenn diese über Administratorrechte für das Konto verfügen.
+- **Sichere Dokumentaufbewahrung**: Mit unveränderlichem Speicher für Azure-Blobspeicher wird sichergestellt, dass Daten von Benutzern auch dann nicht geändert oder gelöscht werden können, wenn diese über Berechtigungen für die Kontoverwaltung verfügen.
 
-- **Gesetzliche Aufbewahrungspflicht**: Mit dem Feature „Unveränderlicher Speicher“ für Azure-Blobspeicher können Benutzer vertrauliche Informationen, die für Beweissicherungsverfahren oder strafrechtliche Untersuchungen wichtig sind, während des gewünschten Zeitraums in einem vor Manipulationen geschützten Zustand speichern.
+- **Gesetzliche Aufbewahrungspflicht**: Mit unveränderlichem Speicher für Azure-Blobspeicher können Benutzer sensible Informationen, die für Rechtsstreitigkeiten oder die geschäftliche Nutzung wichtig sind, für den gewünschten Zeitraum in einem manipulationsgeschütztem Zustand speichern, bis die Aufbewahrungspflicht nicht mehr gilt. Dieses Feature ist nicht allein auf rechtliche Anwendungsfälle beschränkt, sondern kann auch als ereignisbasierter Aufbewahrungsvorgang oder Unternehmenssperre angesehen werden, wenn Daten basierend auf Ereignisauslösern oder Unternehmensrichtlinien geschützt werden müssen.
 
-Unveränderlicher Speicher ermöglicht:
+Für unveränderlichen Speicher wird Folgendes unterstützt:
 
-- **Unterstützung einer zeitbasierten Aufbewahrungsrichtlinie**: Benutzer legen Richtlinien für die Speicherung von Daten für einen bestimmten Zeitraum fest.
+- **[Unterstützung einer zeitbasierten Aufbewahrungsrichtlinie](#time-based-retention)**: Benutzer können Richtlinien für die Speicherung von Daten für einen bestimmten Zeitraum festlegen. Wenn eine zeitbasierte Aufbewahrungsrichtlinie festgelegt wird, können Blobs erstellt und gelesen, aber nicht geändert oder gelöscht werden. Nach Ablauf des Aufbewahrungszeitraums können Blobs gelöscht, aber nicht überschrieben werden.
 
-- **Unterstützung einer Richtlinie zur gesetzlichen Aufbewahrungspflicht**: Wenn der Aufbewahrungszeitraum nicht bekannt ist, können Benutzer Zeiträume für die gesetzliche Aufbewahrungspflicht festlegen, um Daten auf unveränderliche Weise zu speichern, bis die Aufbewahrungspflicht nicht mehr gilt.  Wenn ein Zeitraum für die gesetzliche Aufbewahrungspflicht festgelegt wird, können Blobs erstellt und gelesen, aber nicht geändert oder gelöscht werden. Jeder gesetzlichen Aufbewahrungspflicht ist ein benutzerdefiniertes alphanumerisches Tag zugeordnet, das als Bezeichnerzeichenfolge (z.B. eine Fall-ID) verwendet wird.
+- **[Unterstützung einer Richtlinie zur gesetzlichen Aufbewahrungspflicht](#legal-holds)**: Wenn der Aufbewahrungszeitraum nicht bekannt ist, können Benutzer Zeiträume für die gesetzliche Aufbewahrungspflicht festlegen, um Daten auf unveränderliche Weise zu speichern, bis die Aufbewahrungspflicht nicht mehr gilt.  Wenn eine Richtlinie für die gesetzliche Aufbewahrungspflicht festgelegt wird, können Blobs erstellt und gelesen, aber nicht geändert oder gelöscht werden. Jeder gesetzlichen Aufbewahrungspflicht ist ein benutzerdefiniertes alphanumerisches Tag zugeordnet (z. B. Fall-ID, Ereignisname usw.), das als Bezeichnerzeichenfolge verwendet wird. 
 
 - **Unterstützung für alle Blobebenen**: WORM-Richtlinien sind unabhängig von der Azure-Blobspeicherebene und gelten für alle Ebenen: „Heiß“, „Kalt“ und „Archiv“. Benutzer können Daten in die Ebene überführen, für die die Workloadkosten bestmöglich optimiert sind, während gleichzeitig die Unveränderlichkeit der Daten sichergestellt ist.
 
 - **Konfiguration auf Containerebene**: Benutzer können zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren. Mit den Einstellungen auf Containerebene können Benutzer zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw. Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue).
 
-- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Überwachungsprotokoll. Darin werden bis zu fünf zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien mit maximal drei Protokollen zur Verlängerung von Aufbewahrungszeiträumen angezeigt. Für die zeitbasierte Aufbewahrung enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer des Containers gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Das [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zeigt ein umfassenderes Protokoll mit allen Aktivitäten der Steuerebene an. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
-
-Unveränderlicher Speicher ist in allen öffentlichen Azure-Regionen aktiviert.
+- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Überwachungsprotokoll. Darin werden bis zu fünf zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien mit maximal drei Protokollen zur Verlängerung von Aufbewahrungszeiträumen angezeigt. Für die zeitbasierte Aufbewahrung enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer des Containers gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Ausführliche Informationen zum Erstellen dieser Richtlinien für die unveränderliche Speicherung finden Sie im Abschnitt [Erste Schritte](#getting-started).
+Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Wenn eine zeitbasierte Aufbewahrungsrichtlinie oder ein Zeitraum für die gesetzliche Aufbewahrungspflicht auf einen Container angewendet wird, werden alle vorhandenen Blobs innerhalb von weniger als 30 Sekunden in einen unveränderlichen WORM-Zustand versetzt. Alle neuen Blobs, die in diesen Container hochgeladen werden, werden ebenfalls in den unveränderlichen Zustand versetzt. Nachdem alle Blobs in den unveränderlichen Zustand versetzt wurden, wird die Unveränderlichkeitsrichtlinie bestätigt, und alle Überschreibungs- oder Löschvorgänge für vorhandene und neue Objekte im unveränderlichen Container sind unzulässig.
 
-Wenn eine zeitbasierte Aufbewahrungsrichtlinie oder ein Zeitraum für die gesetzliche Aufbewahrungspflicht auf einen Container angewendet wird, werden alle vorhandenen Blobs in den unveränderlichen Zustand versetzt (Schreib- und Löschschutz). Alle neuen Blobs, die in den Container hochgeladen werden, werden auch in den unveränderlichen Zustand versetzt.
+### <a name="time-based-retention"></a>Zeitbasierte Aufbewahrung
 
 > [!IMPORTANT]
 > Eine zeitbasierte Aufbewahrungsrichtlinie muss *gesperrt* sein, damit das Blob für die Konformität mit SEC 17a-4(f) und anderen gesetzlichen Bestimmungen in einem unveränderlichen Zustand ist (Schreib- und Löschschutz). Sie sollten die Richtlinie in einem ausreichenden Zeitraum sperren, in der Regel innerhalb von 24 Stunden. Den *entsperrten* Zustand sollten Sie nur für kurzzeitige Funktionstests verwenden.
 
-Wenn eine zeitbasierte Aufbewahrungsrichtlinie auf einen Container angewendet wird, bleiben alle Blobs im Container so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Die Gültigkeit des Aufbewahrungszeitraums für vorhandene Blobs entspricht der Differenz zwischen der Bloberstellung und dem vom Benutzer angegebenen Aufbewahrungszeitraum.
+Wenn eine zeitbasierte Aufbewahrungsrichtlinie auf einen Container angewendet wird, bleiben alle Blobs im Container so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Die Gültigkeit des Aufbewahrungszeitraums für vorhandene Blobs entspricht der Differenz zwischen dem Zeitpunkt der Blobänderung und dem vom Benutzer angegebenen Aufbewahrungszeitraum.
 
 Für neue Blobs entspricht die Gültigkeit des Aufbewahrungszeitraums dem vom Benutzer angegebenen Aufbewahrungszeitraum. Da Benutzer den Aufbewahrungszeitraum verlängern können, nutzt unveränderlicher Speicher den letzten Wert des vom Benutzer angegebenen Aufbewahrungszeitraums, um den effektiven Aufbewahrungszeitraum zu berechnen.
 
 > [!TIP]
-> Beispiel:
+> **Beispiel:** Ein Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit einem Aufbewahrungszeitraum von fünf Jahren.
 >
-> Ein Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit einem Aufbewahrungszeitraum von fünf Jahren.
+> Das vorhandene Blob in diesem Container (_testblob1_) wurde vor einem Jahr erstellt. Für _testblob1_ gilt ein Aufbewahrungszeitraum von vier Jahren.
 >
-> Das vorhandene Blob in diesem Container, „testblob1“, wurde vor einem Jahr erstellt. Der effektive Aufbewahrungszeitraum für „testblob1“ beträgt vier Jahre.
->
-> Das neue Blob „testblob2“ wird jetzt in den Container hochgeladen. Der effektive Aufbewahrungszeitraum für dieses neue Blob beträgt fünf Jahre.
+> Das neue Blob _testblob2_ wird jetzt in den Container hochgeladen. Der effektive Aufbewahrungszeitraum für dieses neue Blob beträgt fünf Jahre.
 
 ### <a name="legal-holds"></a>Gesetzliche Aufbewahrungspflichten
 
@@ -77,25 +73,24 @@ In der folgenden Tabelle sind die Arten von Blobvorgängen angegeben, die für d
 
 |Szenario  |Blobzustand  |Blobvorgänge sind nicht zulässig  |
 |---------|---------|---------|
-|Effektiver Aufbewahrungszeitraum für das Blob ist noch nicht abgelaufen bzw. ein Zeitraum für die gesetzliche Aufbewahrungspflicht wurde festgelegt     |Unveränderlich: Lösch- und Schreibschutz         |Delete Container, Delete Blob, Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
+|Effektiver Aufbewahrungszeitraum für das Blob ist noch nicht abgelaufen bzw. ein Zeitraum für die gesetzliche Aufbewahrungspflicht wurde festgelegt     |Unveränderlich: Lösch- und Schreibschutz         | Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Delete Container, Delete Blob, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
 |Effektiver Aufbewahrungszeitraum für das Blob abgelaufen     |Nur Schreibschutz (Löschvorgänge sind zulässig)         |Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
 |Alle Zeiträume zur gesetzlichen Aufbewahrungspflicht wurden aufgehoben, und für den Container wurde keine zeitbasierte Aufbewahrungsrichtlinie festgelegt.     |Veränderlich         |Keine         |
 |Keine WORM-Richtlinie erstellt (zeitbasierte Aufbewahrung oder gesetzliche Aufbewahrungspflicht)     |Veränderlich         |Keine         |
 
-<sup>1</sup> Die Anwendung kann diesen Vorgang aufrufen, um einmalig ein Blob zu erstellen. Alle nachfolgenden Vorgänge an dem Blob sind nicht zulässig.
-
-> [!NOTE]
->
-> Unveränderlicher Speicher steht nur in universellen V2- und Blobspeicherkonten zur Verfügung. Das Konto muss über den [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) erstellt werden.
+<sup>1</sup> Die Anwendung lässt diese Vorgänge zu, um einmalig ein neues Blob zu erstellen. Alle nachfolgenden Überschreibungsvorgänge in einem vorhandenen Blobpfad eines unveränderlichen Containers sind nicht zulässig.
 
 ## <a name="pricing"></a>Preise
 
 Für die Nutzung dieses Features fallen keine zusätzlichen Gebühren an. Unveränderliche Daten werden auf die gleiche Weise wie reguläre, änderbare Daten abgerechnet. Ausführliche Informationen zu Preisen von Azure Blob Storage finden Sie auf der [Seite mit den Preisen für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-
 ## <a name="getting-started"></a>Erste Schritte
 
-Die aktuellsten Releases von [Azure-Portal](http://portal.azure.com) und [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sowie die Preview-Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) unterstützen unveränderlichen Speicher für Azure-Blobspeicher.
+Die aktuellen Releases von [Azure-Portal](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) unterstützen unveränderlichen Speicher für Azure-Blobspeicher. [Unterstützung für Clientbibliotheken](#client-libraries) ist ebenfalls vorhanden.
+
+> [!NOTE]
+>
+> Unveränderlicher Speicher steht nur für Universell v2-Konten und Blobspeicherkonten zur Verfügung. Dieses Konto muss über den [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwaltet werden. Informationen zum Aktualisieren eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Aktualisieren eines Speicherkontos](../common/storage-account-upgrade.md).
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -109,17 +104,17 @@ Die aktuellsten Releases von [Azure-Portal](http://portal.azure.com) und [Azure 
 
     ![„Zeitbasierte Aufbewahrung“ unter „Richtlinientyp“ ausgewählt](media/storage-blob-immutable-storage/portal-image-2.png)
 
-4. Geben Sie den Aufbewahrungszeitraum in Tagen ein (Minimum ist 1 Tag).
+4. Geben Sie den Aufbewahrungszeitraum in Tagen an (zulässige Werte: 1 bis 146.000 Tage).
 
     ![Feld „Aufbewahrungszeitraum ändern in:“](media/storage-blob-immutable-storage/portal-image-5-retention-interval.png)
 
-    Wie im Screenshot zu sehen ist, ist die Richtlinie im anfänglichen Zustand entsperrt. Sie können die Funktion mit einem kleineren Aufbewahrungszeitraum testen und vor dem Sperren Änderungen an der Richtlinie vornehmen. Sperren ist entscheidend für die Einhaltung von Vorschriften wie SEC 17a-4.
+    Der ursprüngliche Zustand der Richtlinie lautet „Entsperrt“, damit Sie das Feature testen und Änderungen an der Richtlinie vornehmen können, bevor Sie das Sperren durchführen. Das Sperren der Richtlinie ist entscheidend für die Einhaltung von Vorschriften wie SEC 17a-4.
 
-5. Sperren Sie die Richtlinie. Klicken Sie mit der rechten Maustaste auf die Auslassungspunkte (**...** ), und das folgende Menü wird angezeigt:
+5. Sperren Sie die Richtlinie. Wenn Sie mit der rechten Maustaste auf die Auslassungspunkte (**...**) klicken, wird das folgende Menü mit zusätzlichen Aktionen angezeigt:
 
     ![„Richtlinie sperren“ im Menü](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    Wählen Sie **Richtlinie sperren** aus, und der Zustand der Richtlinie wird jetzt als gesperrt aufgeführt. Nachdem die Richtlinie gesperrt ist, kann sie nicht mehr gelöscht werden, und es sind lediglich Verlängerungen des Aufbewahrungszeitraums zulässig.
+    Wählen Sie **Richtlinie sperren**. Die Richtlinie ist jetzt gesperrt und kann nicht gelöscht werden. Es sind lediglich Verlängerungen des Aufbewahrungszeitraums zulässig.
 
 6. Zum Aktivieren der gesetzlichen Aufbewahrungspflicht wählen Sie **+ Richtlinie hinzufügen**. Wählen Sie im Dropdownmenü die Option **Gesetzliche Aufbewahrungspflicht**.
 
@@ -129,7 +124,7 @@ Die aktuellsten Releases von [Azure-Portal](http://portal.azure.com) und [Azure 
 
     ![Feld „Tagname“ unter dem Richtlinientyp](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. Um eine gesetzliche Aufbewahrungspflicht zu löschen, entfernen Sie einfach das Tag.
+8. Entfernen Sie einfach das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -157,7 +152,7 @@ Die folgenden Clientbibliotheken unterstützen unveränderlichen Speicher für A
 
 ## <a name="supported-values"></a>Unterstützte Werte
 
-- Der Mindestwert für den Aufbewahrungszeitraum beträgt einen Tag. Der Höchstwert beträgt 400 Jahre.
+- Der Mindestwert für den Aufbewahrungszeitraum beträgt einen Tag. Der Höchstwert beträgt 146.000 Tage (400 Jahre).
 - Ein Speicherkonto kann über maximal 1.000 Container mit gesperrten Unveränderlichkeitsrichtlinien verfügen.
 - Ein Speicherkonto kann über maximal 1.000 Container mit einer Einstellung der gesetzlichen Aufbewahrungspflicht verfügen.
 - Ein Container kann über maximal 10 Tags für die gesetzliche Aufbewahrungspflicht verfügen.
@@ -167,13 +162,25 @@ Die folgenden Clientbibliotheken unterstützen unveränderlichen Speicher für A
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
+**Kann Dokumentation zum Thema WORM-Konformität bereitgestellt werden?**
+
+Ja. Für die Dokumentation der Konformität hat Microsoft ein führendes Unternehmen für unabhängige Bewertungen (Cohasset Associates) beauftragt, das auf Datensatzverwaltung und Information Governance spezialisiert ist. Der Auftrag bestand darin, für unveränderlichen Azure-Blobspeicher die Konformität mit den spezifischen Anforderungen der Finanzdienstleistungsbranche auszuwerten. Cohasset hat bestätigt, dass unveränderlicher Azure-Blobspeicher bei Verwendung zur Aufbewahrung von zeitbasierten Blobs im WORM-Zustand die relevanten Speicheranforderungen der CFTC-Regel 1.31(c)-(d), FINRA-Regel 4511 und SEC-Regel 17a-4 erfüllt. Microsoft hat die Einhaltung dieser Regeln angestrebt, da sie die weltweit strikteste Anleitung zur Aufbewahrung von Datensätzen für Finanzinstitute darstellen. Der Cohasset-Bericht ist im [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage) verfügbar.
+
 **Gilt die Funktion nur für Blockblobs oder auch für Seiten- und Anfügeblobs?**
 
 Unveränderlicher Speicher kann mit jedem Blobtyp verwendet werden, doch Sie sollten ihn vor allem für Blockblobs verwenden. Im Gegensatz zu Blockblobs müssen Seiten- und Anfügeblobs außerhalb eines WORM-Containers erstellt und dann hineinkopiert werden. Nach dem Kopieren dieser Blobs in einen WORM-Container sind keine weiteren *Anfügevorgänge* an ein Anfügeblob oder Änderungen eines Seitenblobs zulässig.
 
 **Muss ich immer ein neues Speicherkonto erstellen, um diese Funktion zu nutzen?**
 
-Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erstellen universellen V2- oder Blob-Speicherkonten verwenden. Dieses Feature ist nur für Blobspeicher verfügbar.
+Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erstellten Universell v2- oder Blobspeicherkonten verwenden. Dieses Feature ist für die Verwendung mit Blockblobs in Universell v2- und Blobspeicherkonten vorgesehen.
+
+**Kann ich sowohl eine Richtlinie für eine gesetzliche Aufbewahrungspflicht als auch eine Richtlinie für die zeitbasierte Aufbewahrung anwenden?**
+
+Für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspflicht und eine zeitbasierte Aufbewahrungsrichtlinie gelten. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden.
+
+**Gelten Richtlinien für die gesetzliche Aufbewahrungspflicht nur für rechtliche Abläufe, oder gibt es auch andere Nutzungsszenarien?**
+
+Nein. „Gesetzliche Aufbewahrungspflicht“ ist nur der allgemeine Ausdruck, der für eine nicht zeitbasierte Aufbewahrungsrichtlinie verwendet wird. Er bezieht sich nicht ausschließlich auf Vorgänge im Zusammenhang mit Rechtsstreitigkeiten. Richtlinien zur gesetzlichen Aufbewahrungspflicht sind nützlich, um Überschreibungen und Löschungen zum Schützen von wichtigen WORM-Unternehmensdaten zu deaktivieren, wenn der Aufbewahrungszeitraum unbekannt ist. Sie können sie als Unternehmensrichtlinie zum Schützen Ihrer unternehmenskritischen WORM-Workloads oder als Stagingrichtlinie verwenden, bevor für einen benutzerdefinierten Ereignisauslöser eine zeitbasierte Aufbewahrungsrichtlinie erforderlich ist. 
 
 **Was passiert, wenn ich versuche, einen Container mit einer *gesperrten* zeitbasierten Aufbewahrungsrichtlinie oder gesetzlichen Aufbewahrungspflicht zu löschen?**
 
@@ -185,7 +192,7 @@ Für das Löschen des Speicherkontos tritt ein Fehler auf, wenn mindestens ein W
 
 **Kann ich die Daten zwischen unterschiedlichen Blobebenen („Hot“, „Cool“, „Cold“) verschieben, wenn sich das Blob im unveränderlichen Zustand befindet?**
 
-Ja. Sie können den Befehl „Set Blob Tier“ nutzen, um Daten zwischen den Blobebenen zu verschieben, während die Daten im unveränderlichen Zustand verbleiben. Unveränderlicher Speicher wird für die Blobebenen „Hot“, „Cool“ und „Archiv“ unterstützt.
+Ja. Sie können den Befehl „Set Blob Tier“ nutzen, um Daten zwischen den Blobebenen zu verschieben, während die Daten im konformen, unveränderlichen Zustand verbleiben. Unveränderlicher Speicher wird für die Blobebenen „Hot“, „Cool“ und „Archiv“ unterstützt.
 
 **Was passiert, wenn ich nicht bezahle und mein Aufbewahrungszeitraum abgelaufen ist?**
 
@@ -193,11 +200,15 @@ Bei einer fehlenden Zahlung gelten die üblichen Richtlinien der Datenaufbewahru
 
 **Bieten Sie einen Test- oder Karenzzeitraum an, in dem die Funktion ausprobiert werden kann?**
 
-Ja. Wenn eine zeitbasierte Aufbewahrungsrichtlinie erstellt wird, befindet sie sich zunächst im *entsperrten* Zustand. In diesem Zustand können Sie alle gewünschten Änderungen am Aufbewahrungszeitraum vornehmen, z.B. diesen verlängern oder verkürzen und auch die Richtlinie löschen. Nach dem Sperren der Richtlinie bleibt diese gesperrt, bis der Aufbewahrungszeitraums abgelaufen ist. Dadurch wird verhindert, dass der Aufbewahrungszeitraum gelöscht und geändert wird. Es wird dringend empfohlen, den *entsperrten* Zustand nur für Testzwecke zu nutzen und die Richtlinie innerhalb eines Zeitraums von 24 Stunden wieder zu sperren. Dieses Vorgehen erleichtert Ihnen, SEC 17a-4(f) und andere Bestimmungen einzuhalten.
+Ja. Wenn eine zeitbasierte Aufbewahrungsrichtlinie erstellt wird, befindet sie sich zunächst im *entsperrten* Zustand. In diesem Zustand können Sie alle gewünschten Änderungen am Aufbewahrungszeitraum vornehmen, z.B. diesen verlängern oder verkürzen und auch die Richtlinie löschen. Nach dem Sperren der Richtlinie bleibt diese gesperrt, bis der Aufbewahrungszeitraums abgelaufen ist. Mit dieser Sperrung der Richtlinie wird verhindert, dass der Aufbewahrungszeitraum gelöscht und geändert wird. Es wird dringend empfohlen, den *entsperrten* Zustand nur für Testzwecke zu nutzen und die Richtlinie innerhalb eines Zeitraums von 24 Stunden wieder zu sperren. Dieses Vorgehen erleichtert Ihnen, SEC 17a-4(f) und andere Bestimmungen einzuhalten.
+
+**Kann ich neben Richtlinien für unveränderliche Blobs das vorläufige Löschen verwenden?**
+
+Ja. Das [vorläufige Löschen für Azure-Blobspeicher](storage-blob-soft-delete.md) gilt für alle Container eines Speicherkontos, unabhängig von einer Richtlinie für die gesetzliche Aufbewahrungspflicht oder eine zeitbasierte Aufbewahrungsrichtlinie. Wir empfehlen Ihnen, das vorläufige Löschen als zusätzlichen Schutz zu verwenden, bevor Richtlinien für den unveränderlichen WORM-Zustand angewendet und bestätigt werden. 
 
 **Ist die Funktion auch für nationale und behördliche Cloudumgebungen verfügbar?**
 
-Unveränderliche Speicher sind in den Regionen Azure Public, China und Behörden verfügbar. Wenn unveränderliche Speicher in Ihrer Region nicht verfügbar sind, senden Sie eine E-Mail an azurestoragefeedback@microsoft.com.
+Unveränderliche Speicher sind in den Regionen Azure Public, China und Behörden verfügbar. Wenn unveränderlicher Speicher in Ihrer Region nicht verfügbar ist, können Sie sich an den Support wenden und die E-Mail-Adresse azurestoragefeedback@microsoft.com nutzen.
 
 ## <a name="sample-powershell-code"></a>PowerShell-Beispielcode
 

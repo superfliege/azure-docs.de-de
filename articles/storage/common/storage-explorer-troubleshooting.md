@@ -1,25 +1,65 @@
 ---
 title: Azure Storage-Explorer – Leitfaden zur Problembehandlung | Microsoft-Dokumentation
-description: Übersicht über die beiden Debugfeatures von Azure
+description: Übersicht über Debugverfahren für Azure Storage-Explorer
 services: virtual-machines
 author: Deland-Han
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.subservice: common
-ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415509"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225041"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
 Bei Microsoft Azure Storage-Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, nationalen Clouds und Azure Stack gehostet werden.
 
 In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme im Storage-Explorer zusammengefasst.
+
+## <a name="role-based-access-control-permission-issues"></a>Probleme mit Berechtigungen für die rollenbasierte Zugriffssteuerung
+
+Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) ermöglicht eine präzise Zugriffsverwaltung von Azure-Ressourcen, indem Berechtigungssätze in _Rollen_ kombiniert werden. Hier sind einige Vorschläge angegeben, die Sie befolgen können, um RBAC in Storage-Explorer einzurichten.
+
+### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>Was benötige ich, damit meine Ressourcen in Storage-Explorer angezeigt werden?
+
+Falls Sie Probleme beim Zugreifen auf Speicherressourcen per RBAC haben, kann dies daran liegen, dass Ihnen nicht die richtigen Rollen zugewiesen wurden. In den folgenden Abschnitten werden die Berechtigungen beschrieben, die von Storage-Explorer derzeit zum Zugreifen auf Ihre Speicherressourcen benötigt werden.
+
+Wenden Sie sich an Ihren Azure-Kontoadministrator, falls Sie nicht sicher sind, ob Sie über die richtigen Rollen oder Berechtigungen verfügen.
+
+#### <a name="read-listget-storage-accounts"></a>Lesen: Auflisten/Abrufen von Speicherkonten
+
+Sie benötigen die Berechtigung zum Auflisten von Speicherkonten. Sie können diese Berechtigung erhalten, indem Ihnen die Rolle „Leser“ zugewiesen wird.
+
+#### <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
+
+Für Storage-Explorer können auch Kontoschlüssel zum Authentifizieren von Anforderungen verwendet werden. Sie können Zugriff auf Schlüssel mit leistungsstärkeren Rollen erhalten, z. B. der Rolle „Mitwirkender“.
+
+> [!NOTE]
+> Mit Zugriffsschlüsseln werden für deren Besitzer uneingeschränkte Berechtigungen gewährt. Aus diesem Grund ist es normalerweise nicht zu empfehlen, dass sie an Kontobenutzer ausgegeben werden. Wenn Sie Zugriffsschlüssel widerrufen müssen, können Sie sie über das [Azure-Portal](https://portal.azure.com/) neu generieren.
+
+#### <a name="data-roles"></a>Datenrollen
+
+Ihnen muss mindestens eine Rolle zugewiesen sein, über die Zugriff zum Lesen der Daten von Ressourcen gewährt wird. Wenn Sie beispielsweise Blobs auflisten oder herunterladen müssen, benötigen Sie mindestens die Rolle „Storage-Blobdatenleser“.
+
+### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Warum benötige ich eine Rolle auf der Verwaltungsebene, damit meine Ressourcen in Storage-Explorer angezeigt werden?
+
+Azure Storage verfügt über zwei Zugriffsebenen: _Verwaltung_ und _Daten_. Auf Abonnements und Speicherkonten wird über die Verwaltungsebene zugegriffen. Auf Container, Blobs und andere Datenressourcen wird über die Datenebene zugegriffen. Wenn Sie beispielsweise eine Liste mit Ihren Speicherkonten aus Azure abrufen möchten, senden Sie eine Anforderung an den Verwaltungsendpunkt. Wenn Sie eine Liste mit den Blobcontainern eines Kontos anzeigen möchten, können Sie eine Anforderung an den entsprechenden Dienstendpunkt senden.
+
+RBAC-Rollen können Berechtigungen für den Zugriff auf die Verwaltungs- oder Datenebene enthalten. Mit der Rolle „Leser“ wird Ihnen beispielsweise Lesezugriff auf die Ressourcen der Verwaltungsebene gewährt.
+
+Mit der Rolle „Leser“ werden genau genommen keine Berechtigungen für die Datenebene gewährt, und sie ist für den Zugriff darauf nicht erforderlich.
+
+Storage-Explorer erleichtert Ihnen den Zugriff auf Ihre Ressourcen, indem die benötigten Informationen zum Herstellen einer Verbindung mit Ihren Azure-Ressourcen für Sie zusammengestellt werden. Zum Anzeigen Ihrer Blobcontainer sendet Storage-Explorer beispielsweise eine Anforderung zum Auflisten von Containern an den Blob-Dienstendpunkt. Um diesen Endpunkt zu erhalten, durchsucht Storage-Explorer die Liste mit den Abonnements und Speicherkonten, auf die Sie Zugriff haben. Zur Ermittlung Ihrer Abonnements und Speicherkonten benötigt Storage-Explorer aber auch Zugriff auf die Verwaltungsebene.
+
+Wenn Sie nicht über eine Rolle verfügen, mit der Berechtigungen für die Verwaltungsebene gewährt werden, kann Storage-Explorer nicht die Informationen abrufen, die zum Herstellen der Verbindung mit der Datenebene benötigt werden.
+
+### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Wie kann ich vorgehen, wenn ich die benötigten Berechtigungen für die Verwaltungsebene nicht von meinem Administrator erhalten kann?
+
+Derzeit können wir noch keine RBAC-basierte Lösung anbieten. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#attach-a-service-by-using-a-shared-access-signature-sas).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Fehler selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
 
@@ -38,15 +78,13 @@ Dieses Problem kann auch das Ergebnis mehrerer Zertifikate (Stamm- und Zwischenz
 Wenn Sie nicht sicher sind, woher das Zertifikat kommt, können Sie zur Lösung die folgenden Schritte ausführen:
 
 1. Installieren Sie OpenSSL.
-
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html) (eine Light-Version sollte ausreichend sein)
     * Mac und Linux: sollte im Betriebssystem enthalten sein
 2. Führen Sie OpenSSL aus.
-
     * Windows: Öffnen Sie das Installationsverzeichnis, klicken Sie auf **/bin/**, und doppelklicken Sie dann auf **openssl.exe**.
     * Mac und Linux: Führen Sie **openssl** über ein Terminal aus.
 3. Führen Sie `s_client -showcerts -connect microsoft.com:443` aus.
-4. Suchen Sie nach selbstsignierten Zertifikaten. Wenn Sie nicht sicher sind, welche Zertifikate selbstsigniert sind, suchen Sie nach Stellen, an denen der Antragssteller (`("s:")`) und der Zertifikataussteller (`("i:")`) identisch sind.
+4. Suchen Sie nach selbstsignierten Zertifikaten. Gehen Sie wie folgt vor, wenn Sie nicht sicher sind, welche Zertifikate selbstsigniert sind: Suchen Sie nach Stellen, an denen der Antragssteller (`("s:")`) und der Zertifikataussteller (`("i:")`) identisch sind.
 5. Wenn Sie selbstsignierte Zertifikate gefunden haben, kopieren Sie für jedes Zertifikat den gesamten Inhalt von einschließlich **-----BEGIN CERTIFICATE-----** bis **-----END CERTIFICATE-----**, und fügen Sie ihn in eine neue CER-Datei ein.
 6. Öffnen Sie den Storage-Explorer, klicken Sie auf **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**, suchen Sie über die Dateiauswahl die erstellten CER-Dateien, wählen Sie sie aus, und öffnen Sie sie.
 
@@ -55,30 +93,36 @@ Wenn Sie mit den oben beschriebenen Schritten keine selbstsignierten Zertifikate
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
 ### <a name="blank-sign-in-dialog"></a>Leeres Anmeldedialogfeld
+
 Leere Anmeldedialogfelder werden meist dadurch verursacht, dass ADFS von Storage-Explorer die Durchführung einer Umleitung anfordert, die von Electron nicht unterstützt wird. Als Problemumgehung können Sie versuchen, den Gerätecodefluss für die Anmeldung zu verwenden. Führen Sie dazu die folgenden Schritte aus:
-1. Navigieren Sie zu „Experimentell“ > „Use Device Code Sign-In“ (Gerätecodeanmeldung verwenden).
+
+1. „Go to Preview“ (Gehe zu Vorschau) > „Use Device Code Sign-In“ (Gerätecodeanmeldung verwenden).
 2. Öffnen Sie das Dialogfeld „Verbinden“ (über das Steckersymbol in der vertikalen Leiste auf der linken Seite oder über die Option „Konto hinzufügen“ im Kontobereich).
 3. Wählen Sie aus, an welcher Umgebung Sie sich anmelden möchten.
 4. Klicken Sie auf die Schaltfläche „Anmelden“.
 5. Befolgen Sie die Anweisungen im nächsten Bereich.
 
-Hinweis: Diese Funktion steht derzeit nur in Vorschauversion 1.7.0 zur Verfügung.
-
 Falls Sie Probleme beim Anmelden am gewünschten Konto haben, weil über Ihren Standardbrowser bereits die Anmeldung an einem anderen Konto erfolgt ist, haben Sie folgende Möglichkeiten:
+
 1. Kopieren Sie den Link und den Code manuell in eine private Sitzung Ihres Browsers.
 2. Kopieren Sie den Link und den Code manuell in einen anderen Browser.
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Schleife für eine erneute Authentifizierung oder Änderung des UPN
+
 Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden oder den UPN von einem Ihrer Konten geändert haben, versuchen Sie Folgendes:
+
 1. Entfernen Sie alle Konten, und schließen Sie dann den Storage-Explorer.
 2. Löschen Sie den Ordner „.IdentityService“ von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
 3. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus Ihrem Betriebssystemkeystore löschen. Unter Mac ist der Keystore die Anwendung „Gnome Keychain“. Bei Linux wird die Anwendung in der Regel als „Schlüsselbund“ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
+
 Bedingter Zugriff wird nicht unterstützt, wenn Storage-Explorer unter Windows 10, Linux oder macOS verwendet wird. Dies liegt an einer Einschränkung der AAD-Bibliothek, die Storage-Explorer verwendet.
 
 ## <a name="mac-keychain-errors"></a>Mac-Keychainfehler
-Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in Verbindung mit der Storage Explorer-Authentifizierungsbibliothek verursacht. Versuchen Sie, diesen Zustand der Keychain mit folgenden Schritte aufzuheben:
+
+Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in Verbindung mit der Storage Explorer-Authentifizierungsbibliothek verursacht. Versuchen Sie, diesen Zustand der Keychain mit den folgenden Schritten aufzuheben:
+
 1. Schließen Sie Storage Explorer.
 2. Öffnen Sie die Keychain (**BEFEHL+ LEER**, geben Sie die Keychain ein, drücken Sie EINGABE).
 3. Wählen Sie den Keychain-Wert „login“ (Anmelden).
@@ -91,11 +135,12 @@ Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in
 7. Versuchen Sie, sich anzumelden.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Allgemeine Schritte zur Behandlung von Anmeldeproblemen
-* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld „Warten auf Authentifizierung...“ angezeigt wird, versuchen Sie diese [Schritte](#mac-keychain-errors).
+
+* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld „Warten auf Authentifizierung...“ angezeigt wird, können Sie es mit [diesen Schritten](#mac-keychain-errors) versuchen.
 * Neustart von Storage-Explorer
 * Wenn das Fenster „Authentifizierung“ leer ist, warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
 * Stellen Sie sicher, dass Ihre Proxy- und Zertifikateinstellungen für Ihren Computer und den Storage-Explorer ordnungsgemäß konfiguriert sind.
-* Wenn Sie unter Windows arbeiten und auf dem gleichen Computer auf Visual Studio 2017 zugreifen und sich anmelden können, versuchen Sie, sich bei Visual Studio 2017 anzumelden. Nach einer erfolgreichen Anmeldung bei Visual Studio 2017 sollten Sie den Storage-Explorer öffnen und Ihr Konto im Kontobereich sehen können.
+* Wenn Sie unter Windows arbeiten und auf demselben Computer Zugriff auf Visual Studio 2017 haben und sich anmelden können, können Sie versuchen, sich bei Visual Studio 2017 anzumelden. Nach einer erfolgreichen Anmeldung bei Visual Studio 2017 sollten Sie den Storage-Explorer öffnen und Ihr Konto im Kontobereich sehen können.
 
 Wenn keine dieser Methoden funktioniert, [eröffnen Sie auf GitHub ein Problem](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
@@ -103,7 +148,7 @@ Wenn keine dieser Methoden funktioniert, [eröffnen Sie auf GitHub ein Problem](
 
 Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, probieren Sie die folgenden Methoden zur Problembehebung:
 
-* Überprüfen Sie, ob Ihr Konto Zugriff auf die erwarteten Abonnements hat. Sie können den Zugriff überprüfen, indem Sie sich am Portal für die Azure-Umgebung anmelden, die Sie verwenden möchten.
+* Überprüfen Sie, ob Ihr Konto Zugriff auf die erwarteten Abonnements hat. Sie können Ihren Zugriff überprüfen, indem Sie sich am Portal für die Azure-Umgebung anmelden, die Sie verwenden möchten.
 * Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China 21Vianet, Azure Deutschland, Azure US Government oder Benutzerdefinierte Umgebung) erfolgt ist.
 * Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 * Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
@@ -118,10 +163,10 @@ Wenn ein zugeordnetes Konto oder eine verbundene Speicherressource über die Ben
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
->  Schließen Sie Storage-Explorer, bevor Sie die oben genannten Ordner löschen.
+> Schließen Sie Storage-Explorer, bevor Sie die oben genannten Ordner löschen.
 
 > [!NOTE]
->  Falls Sie irgendwann SSL-Zertifikate importiert haben, sichern Sie den Inhalt des Verzeichnisses `certs`. Anschließend können Sie mithilfe der Sicherung die SSL-Zertifikate wieder importieren.
+> Falls Sie irgendwann SSL-Zertifikate importiert haben, sichern Sie den Inhalt des Verzeichnisses `certs`. Anschließend können Sie mithilfe der Sicherung die SSL-Zertifikate wieder importieren.
 
 ## <a name="proxy-issues"></a>Proxyprobleme
 
@@ -130,7 +175,8 @@ Vergewissern Sie sich zunächst, dass Sie die folgenden Informationen richtig ei
 * Proxy-URL und Portnummer
 * Benutzername und Kennwort, sofern für den Proxy erforderlich
 
-Beachten Sie, dass Storage-Explorer keine Dateien für die automatische Proxykonfiguration unterstützt, die zum Konfigurieren von Proxyeinstellungen verwendet werden können.
+> [!NOTE]
+> Storage-Explorer unterstützt keine Dateien für die automatische Proxykonfiguration, die zum Konfigurieren von Proxyeinstellungen verwendet werden können.
 
 ### <a name="common-solutions"></a>Gängige Lösungen
 
@@ -161,15 +207,16 @@ Wenn Ihre Proxyeinstellungen richtig sind, müssen Sie sich möglicherweise an d
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Fehlermeldung: Untergeordnete Elemente können nicht abgerufen werden
 
-Wenn Sie die Verbindung mit Azure über einen Proxy hergestellt haben, überprüfen Sie, ob die Proxyeinstellungen richtig sind. Wenn Ihnen vom Besitzer des Abonnements oder Kontos Zugriff auf eine Ressource erteilt wurde, vergewissern Sie sich, dass Sie über die Berechtigung zum Lesen oder Auflisten für diese Ressource verfügen.
+Wenn Sie die Verbindung mit Azure über einen Proxy hergestellt haben, überprüfen Sie, ob die Proxyeinstellungen richtig sind. Wenn Ihnen vom Besitzer des Abonnements oder Kontos Zugriff auf eine Ressource erteilt wurde, sollten Sie sich vergewissern, dass Sie über die Berechtigung zum Lesen oder Auflisten für diese Ressource verfügen.
 
 ## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Verbindungszeichenfolge weist keine vollständigen Konfigurationseinstellungen auf.
 
-Wenn Sie diese Fehlermeldung erhalten, verfügen Sie möglicherweise nicht über die erforderlichen Berechtigungen zum Abrufen der Schlüssel für Ihr Speicherkonto. Um zu überprüfen, ob dies der Fall ist, navigieren Sie zum Portal, und suchen Sie Ihr Speicherkonto. Klicken Sie dazu einfach mit der rechten Maustaste auf den Knoten für Ihr Speicherkonto, und klicken Sie dann auf „Open in Portal“ (Im Portal öffnen). Wechseln Sie dann zum Blatt „Zugriffsschlüssel“. Wenn Sie nicht über Berechtigungen zum Anzeigen von Schlüsseln verfügen, wird eine Seite mit der Meldung „Sie haben keinen Zugriff“ angezeigt. Um dieses Problem zu umgehen, können Sie den Kontoschlüssel von einer anderen Person erhalten und mit Name und Schlüssel anfügen, oder Sie können eine andere Person um die SAS für das Speicherkonto bitten und mit dieser das Speicherkonto anfügen.
+Wenn Sie diese Fehlermeldung erhalten, verfügen Sie möglicherweise nicht über die erforderlichen Berechtigungen zum Abrufen der Schlüssel für Ihr Speicherkonto. Um zu überprüfen, ob dies der Fall ist, navigieren Sie zum Portal, und suchen Sie Ihr Speicherkonto. Klicken Sie hierzu einfach mit der rechten Maustaste auf den Knoten für Ihr Speicherkonto, und klicken Sie dann auf „Im Portal öffnen“. Wechseln Sie dann zum Blatt „Zugriffsschlüssel“. Wenn Sie nicht über Berechtigungen zum Anzeigen von Schlüsseln verfügen, wird eine Seite mit der Meldung „Sie haben keinen Zugriff“ angezeigt. Um dieses Problem zu umgehen, können Sie den Kontoschlüssel von einer anderen Person erhalten und mit Name und Schlüssel anfügen, oder Sie können eine andere Person um die SAS für das Speicherkonto bitten und mit dieser das Speicherkonto anfügen.
 
-Wenn die Kontoschlüssel angezeigt werden, melden Sie ein Problem bei GitHub, damit wir Ihnen beim Beheben des Problems helfen können.
+Wenn die Kontoschlüssel angezeigt werden, ist es ratsam, ein Problem bei GitHub zu melden, damit wir Ihnen beim Beheben des Problems helfen können.
 
 ## <a name="issues-with-sas-url"></a>Probleme mit der SAS-URL
+
 Wenn Sie eine Verbindung mit einem Dienst über eine SAS-URL herstellen und dieser Fehler auftritt:
 
 * Stellen Sie sicher, dass die URL die erforderlichen Berechtigungen zum Lesen oder Auflisten von Ressourcen umfasst.
@@ -177,21 +224,63 @@ Wenn Sie eine Verbindung mit einem Dienst über eine SAS-URL herstellen und dies
 * Wenn die SAS-URL auf einer Zugriffsrichtlinie basiert, stellen Sie sicher, dass die Zugriffsrichtlinie nicht aufgehoben wurde.
 
 Wenn Sie versehentlich eine ungültige SAS-URL angefügt haben und diese nicht trennen können, führen Sie diese Schritte aus:
-1.  Drücken Sie im Storage-Explorer F12, um das Fenster mit den Entwicklertools zu öffnen.
-2.  Klicken Sie auf der Registerkarte „Anwendung“ und dann in der Struktur auf der linken Seite auf „Lokaler Speicher“ > „file://“.
-3.  Suchen Sie den Schlüssel, der dem Diensttyp des problematischen SAS-URI zugeordnet ist. Wenn z.B. der fehlerhafte SAS-URI für einen Blobcontainer gilt, suchen Sie nach dem Schlüssel mit dem Namen `StorageExplorer_AddStorageServiceSAS_v1_blob`.
-4.  Der Wert des Schlüssels sollte ein JSON-Array sein. Suchen Sie das Objekt, das dem fehlerhaften URI zugeordnet ist, und entfernen Sie es.
-5.  Drücken Sie STRG+R, um den Storage-Explorer neu zu laden.
+
+1. Drücken Sie im Storage-Explorer F12, um das Fenster mit den Entwicklertools zu öffnen.
+2. Klicken Sie auf der Registerkarte „Anwendung“ und dann in der Struktur auf der linken Seite auf „Lokaler Speicher“ > „file://“.
+3. Suchen Sie den Schlüssel, der dem Diensttyp des problematischen SAS-URI zugeordnet ist. Wenn z.B. der fehlerhafte SAS-URI für einen Blobcontainer gilt, suchen Sie nach dem Schlüssel mit dem Namen `StorageExplorer_AddStorageServiceSAS_v1_blob`.
+4. Der Wert des Schlüssels sollte ein JSON-Array sein. Suchen Sie das Objekt, das dem fehlerhaften URI zugeordnet ist, und entfernen Sie es.
+5. Drücken Sie STRG+R, um den Storage-Explorer neu zu laden.
 
 ## <a name="linux-dependencies"></a>Linux-Abhängigkeiten
 
-Für andere Linux-Distributionen als Ubuntu 16.04 müssen Sie einige Abhängigkeiten ggf. manuell installieren. Die folgenden Pakete sind im Allgemeinen erforderlich:
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* `libsecret`
-* `libgconf-2-4`
-* Aktuelle GCC
+Im Allgemeinen werden die folgenden Pakete benötigt, um Storage-Explorer unter Linux auszuführen:
 
-Abhängig von Ihrer Distribution müssen Sie möglicherweise weitere Pakete installieren. Die [Anmerkungen zu dieser Version](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) des Storage-Explorers enthalten spezielle Schritte für einige Distributionen.
+* [.NET Core 2.0-Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* `libgnome-keyring-common` und `libgnome-keyring-dev`
+* `libgconf-2-4`
+
+Je nach Ihrer Distribution müssen Sie unter Umständen andere bzw. weitere Pakete installieren.
+
+Storage-Explorer wird unter Ubuntu 18.04, 16.04 und 14.04 offiziell unterstützt. Dies sind die Installationsschritte für einen „leeren“ Computer:
+
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+
+1. Laden Sie Storage-Explorer herunter.
+2. Installieren Sie die .NET Core-Runtime. Die letzte verifizierte Version ist: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (Wenn Sie bereits eine neuere Version installiert haben, müssen Sie Storage-Explorer ggf. mit Patches versehen (siehe unten).)
+3. Führen Sie `sudo apt-get install libgconf-2-4` aus.
+4. Führen Sie `sudo apt install libgnome-keyring-common libgnome-keyring-dev` aus.
+
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+
+1. Laden Sie Storage-Explorer herunter.
+2. Installieren Sie die .NET Core-Runtime. Die letzte verifizierte Version ist: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (Wenn Sie bereits eine neuere Version installiert haben, müssen Sie Storage-Explorer ggf. mit Patches versehen (siehe unten).)
+3. Führen Sie `sudo apt install libgnome-keyring-dev` aus.
+
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+
+1. Laden Sie Storage-Explorer herunter.
+2. Installieren Sie die .NET Core-Runtime. Die letzte verifizierte Version ist: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (Wenn Sie bereits eine neuere Version installiert haben, müssen Sie Storage-Explorer ggf. mit Patches versehen (siehe unten).)
+3. Führen Sie `sudo apt install libgnome-keyring-dev` aus.
+
+---
+
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Versehen von Storage-Explorer mit Patches für neuere Versionen von .NET Core 
+Wenn Sie eine höhere Version von .NET Core als 2.0 installiert haben und Version 1.7.0 oder früher von Storage-Explorer ausführen, müssen Sie Storage-Explorer wahrscheinlich über die folgenden Schritte mit Patches versehen:
+1. Laden Sie Version 1.5.43 von StreamJsonRpc [über NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43) herunter. Suchen Sie rechts auf der Seite nach dem Link zum Herunterladen des Pakets („Download package“).
+2. Ändern Sie nach dem Herunterladen des Pakets die Dateierweiterung von `.nupkg` in `.zip`.
+3. Entzippen Sie das Paket.
+4. Besuchen Sie `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
+5. Kopieren Sie `StreamJsonRpc.dll` an die folgenden Speicherorte im Storage-Explorer-Ordner:
+    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+
+## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>„In Explorer öffnen“ über das Azure-Portal funktioniert nicht
+
+Wenn die Schaltfläche „In Explorer öffnen“ im Azure-Portal nicht funktioniert, sollten Sie sicherstellen, dass Sie einen kompatiblen Browser verwenden. Für die folgenden Browser wurde die Kompatibilität getestet.
+* Microsoft Edge
+* Mozilla Firefox
+* Google Chrome
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,33 +1,35 @@
 ---
 title: Sichere Pods mit Richtlinien für Netzwerke in Azure Kubernetes Service (AKS)
-description: Erfahren Sie, wie Sie ein- und ausgehenden Datenverkehr bei Pods mittels Kubernetes-Netzwerkrichtlinien in Azure Kubernetes Service (AKS) sichern
+description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei Pods mittels Kubernetes-Netzwerkrichtlinien in Azure Kubernetes Service (AKS) schützen.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181485"
 ---
-# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
+# <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Vorschauversion: Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
-Wenn Sie moderne, auf Microservices basierende Anwendungen in Kubernetes ausführen, können Sie steuern, welche Komponenten miteinander kommunizieren können. Bei der Festlegung, wie Datenverkehr zwischen Pods in einem AKS-Cluster übermittelt werden kann, sollte das Prinzip der geringsten Rechte angewendet werden. Sie möchten beispielsweise wahrscheinlich den direkten Datenverkehr zu Back-End-Anwendungen blockieren. In Kubernetes können Sie mit dem Feature *Network Policy (Netzwerkrichtlinie)* die Regeln für eingehenden und ausgehenden Datenverkehr zwischen Pods in einem Cluster definieren.
+Wenn Sie moderne, auf Microservices basierende Anwendungen in Kubernetes ausführen, können Sie steuern, welche Komponenten miteinander kommunizieren können. Bei der Festlegung, wie Datenverkehr zwischen Pods in einem AKS-Cluster (Azure Kubernetes Service) übermittelt werden kann, sollte das Prinzip der geringsten Rechte angewendet werden. Angenommen, Sie möchten den direkten Datenverkehr zu Back-End-Anwendungen blockieren. Mit dem Feature *Netzwerkrichtlinie* in Kubernetes können Sie die Regeln für eingehenden und ausgehenden Datenverkehr zwischen Pods in einem Cluster definieren.
 
-Dieser Artikel veranschaulicht die Verwendung der Netzwerkrichtlinien, um den Fluss des Datenverkehrs zwischen Pods in AKS zu steuern.
+Calico, eine Open Source-Lösung für Netzwerke und Netzwerksicherheit von Tigera, verfügt über ein Modul für Netzwerkrichtlinien, mit dem Regeln für Kubernetes-Netzwerkrichtlinien implementiert werden können. In diesem Artikel wird veranschaulicht, wie Sie das Calico-Modul für Netzwerkrichtlinien installieren und Kubernetes-Netzwerkrichtlinien erstellen, um den Datenverkehrsfluss zwischen Pods in AKS zu steuern.
 
 > [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features bereits vorhandenen Clustern hinzufügen, wird dieser Cluster erst dann unterstützt, wenn das Feature nicht mehr in der Vorschauphase ist und die allgemeine Verfügbarkeit erreicht ist.
+>
+> Wenn Sie Probleme mit Preview-Funktionen haben, öffnen Sie [ein Problemticket im GitHub-Repository von AKS ][aks-github] mit dem Namen der Preview-Funktion im Fehlertitel.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Es muss die Azure CLI-Version 2.0.56 oder höher installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
-Um einen AKS-Cluster mit Netzwerkrichtlinie zu erstellen, aktivieren Sie zuerst Sie ein Featureflag für Ihr Abonnement. Um das Featureflag *EnableNetworkPolicy* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt:
+Um einen AKS-Cluster zu erstellen, für den Netzwerkrichtlinien verwendet werden können, aktivieren Sie zuerst ein Featureflag für Ihr Abonnement. Um das Featureflag *EnableNetworkPolicy* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
@@ -39,7 +41,7 @@ Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wi
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableNetworkPolicy')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie fertig sind, aktualisieren Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
+Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -47,11 +49,11 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="overview-of-network-policy"></a>Übersicht über die Netzwerkrichtlinie
 
-Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Zur Verbesserung der Sicherheit können Sie Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden z.B. häufig nur für erforderlichen Front-End-Dienste verfügbar gemacht, oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung zu ihnen herstellen.
+Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Zur Verbesserung der Sicherheit können Sie Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden häufig nur für erforderliche Front-End-Dienste verfügbar gemacht. Oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung damit herstellen.
 
-Netzwerkrichtlinien sind eine Kubernetes-Ressource, mit der Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Netzwerkrichtlinien werden als YAML-Manifeste definiert und können als Bestandteil eines größeren Manifests, das auch eine Bereitstellung oder einen Dienst erstellt, einbezogen werden.
+Netzwerkrichtlinien sind eine Kubernetes-Ressource, mit der Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder ablehnen. Netzwerkrichtlinien werden als YAML-Manifeste definiert. Diese Richtlinien können Teil eines umfassenderen Manifests sein, mit dem auch eine Bereitstellung oder ein Dienst erstellt wird.
 
-Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Datenverkehr wie folgt definiert, und erweitern sie dann:
+Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Datenverkehr definiert, und erweitern sie dann:
 
 * Lehnen Sie jeglichen Datenverkehr zum Pod ab.
 * Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
@@ -66,11 +68,11 @@ Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [
 Das folgende Beispielskript:
 
 * Erstellt ein virtuelles Netzwerk und ein Subnetz.
-* Erstellt einen Azure Active Directory-Dienstprinzipal (AD) für die Verwendung mit dem AKS-Cluster.
+* Erstellt einen Azure AD-Dienstprinzipal (Azure Active Directory) für die Verwendung mit dem AKS-Cluster.
 * Weist dem Dienstprinzipal des AKS-Clusters in einen virtuellen Netzwerk *Mitwirkender*-Berechtigungen zu.
 * Erstellt einen AKS-Cluster im definierten virtuellen Netzwerk und aktiviert die Netzwerkrichtlinie.
 
-Geben Sie Ihr eigenes sicheres *SP_PASSWORD* ein. Ersetzen Sie ggf. die Variablen *RESOURCE_GROUP_NAME* und *CLUSTER_NAME*:
+Geben Sie Ihr eigenes sicheres *SP_PASSWORD* ein. Sie können die Variablen *RESOURCE_GROUP_NAME* und *CLUSTER_NAME* ersetzen:
 
 ```azurecli-interactive
 SP_PASSWORD=mySecurePassword
@@ -106,12 +108,12 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
 
 # Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy using the `--network-policy` parameter
+# Enable network policy by using the `--network-policy` parameter
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
-    --kubernetes-version 1.12.4 \
+    --kubernetes-version 1.12.6 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -123,7 +125,7 @@ az aks create \
     --network-policy calico
 ```
 
-Die Erstellung des Clusters dauert einige Minuten. Konfigurieren Sie anschließend `kubectl` mit dem Befehl [az aks get-credentials][az-aks-get-credentials], um die Verbindung mit Ihrem Kubernetes-Cluster herzustellen. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert:
+Die Erstellung des Clusters dauert einige Minuten. Wenn der Cluster bereit ist, können Sie `kubectl` mit dem Befehl [az aks get-credentials][az-aks-get-credentials] konfigurieren, um die Verbindung mit Ihrem Kubernetes-Cluster herzustellen. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -133,20 +135,20 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 Bevor Sie Regeln zum Zulassen bestimmten Netzwerkdatenverkehrs definieren, erstellen Sie zuerst eine Netzwerkrichtlinie, um sämtlichen Datenverkehr abzulehnen. Diese Richtlinie bietet Ihnen einen Ausgangspunkt, um nur den gewünschten Datenverkehr auf die Whitelist zu setzen. Sie können auch deutlich erkennen, dass Datenverkehr bei Anwendung der Netzwerkrichtlinie verworfen wird.
 
-Für unsere Beispielanwendungsumgebung und die Regeln für den Netzwerkdatenverkehr erstellen wir zunächst einen Namespace mit dem Namen *development* zur Ausführung unserer Beispielpods:
+Für die Beispielanwendungsumgebung und die Regeln für den Netzwerkdatenverkehr erstellen wir zunächst einen Namespace mit dem Namen *development* zur Ausführung der Beispielpods:
 
 ```console
 kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-Nun erstellen Sie einen Beispiel-Back-End-Pod, der NGINX ausführt. Dieser Back-End-Pod kann verwendet werden, um eine Beispielanwendung auf Back-End-Web-Basis zu simulieren. Erstellen Sie diesen Pod im *development* -Namespace, und öffnen Sie Port *80* für den Webdatenverkehr. Geben Sie dem Pod die Bezeichnung *app=webapp,role=backend*, damit wir im nächsten Abschnitt eine auf ihn zielgerichtete Netzwerkrichtlinie einfügen können:
+Erstellen Sie einen Beispiel-Back-End-Pod, der NGINX ausführt. Dieser Back-End-Pod kann verwendet werden, um eine Beispielanwendung auf Back-End-Web-Basis zu simulieren. Erstellen Sie diesen Pod im *development* -Namespace, und öffnen Sie Port *80* für den Webdatenverkehr. Geben Sie dem Pod die Bezeichnung *app=webapp,role=backend*, damit wir im nächsten Abschnitt eine auf ihn zielgerichtete Netzwerkrichtlinie einfügen können:
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
 ```
 
-So testen Sie, ob Sie erfolgreich die NGINX-Standardwebseite erreichen, einen anderen Pod erstellen und eine Terminalsitzung anfügen können:
+Erstellen Sie einen weiteren Pod, und fügen Sie eine Terminalsitzung an, um zu testen, ob Sie die NGINX-Standardwebseite erreichen können:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
@@ -168,7 +170,7 @@ Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeb
 [...]
 ```
 
-Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht:
+Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht.
 
 ```console
 exit
@@ -176,7 +178,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Erstellen und Anwenden einer Netzwerkrichtlinie
 
-Nun haben Sie sich vergewissert, dass Sie auf die grundlegende NGINX-Webseite auf dem Beispiel-Back-End-Pod zugreifen können, und erstellen eine Netzwerkrichtlinie, um sämtlichen Datenverkehr abzulehnen. Erstellen Sie eine Datei namens `backend-policy.yaml`, und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest verwendet einen *podSelector* zum Anfügen der Richtlinie an Pods, die die Bezeichnung *app:webapp,role:backend* wie Ihr Beispiel-NGINX-Pod haben. Da unter *ingress* keine Regeln definiert sind, wird sämtlicher in den Pod eingehender Datenverkehr verweigert:
+Nachdem Sie sich nun vergewissert haben, dass Sie die grundlegende NGINX-Webseite auf dem Beispiel-Back-End-Pod verwenden können, können Sie eine Netzwerkrichtlinie erstellen, um sämtlichen Datenverkehr abzulehnen. Erstellen Sie eine Datei namens `backend-policy.yaml`, und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest verwendet einen *podSelector* zum Anfügen der Richtlinie an Pods, die die Bezeichnung *app:webapp,role:backend* haben (wie Ihr Beispiel-NGINX-Pod). Da unter *ingress* keine Regeln definiert sind, wird sämtlicher in den Pod eingehender Datenverkehr verweigert:
 
 ```yaml
 kind: NetworkPolicy
@@ -200,13 +202,14 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-network-policy"></a>Testen der Netzwerkrichtlinie
 
-Jetzt werden wir sehen, ob Sie wieder auf dem Back-End-Pod auf die NGINX-Webseite zugreifen können. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
+
+Jetzt prüfen wir, ob Sie die NGINX-Webseite auf dem Back-End-Pod verwenden können. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Legen Sie dieses Mal einen Timeoutwert auf *2* Sekunden fest. Die Netzwerkrichtlinie blockiert jetzt sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann, wie im folgenden Beispiel gezeigt:
+Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Legen Sie dieses Mal einen Timeoutwert auf *2* Sekunden fest. Die Netzwerkrichtlinie blockiert jetzt sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -214,7 +217,7 @@ $ wget -qO- --timeout=2 http://backend
 wget: download timed out
 ```
 
-Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht:
+Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht.
 
 ```console
 exit
@@ -222,9 +225,9 @@ exit
 
 ## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Zulassen eingehenden Datenverkehrs basierend auf einer Podbezeichnung
 
-Im vorherigen Abschnitt wurde ein Back-End-NGINX-Pod geplant, und eine Netzwerkrichtlinie zum Verweigern des gesamten Datenverkehrs wurde erstellt. Nun erstellen Sie einen Front-End-Pod und aktualisieren die Netzwerkrichtlinie, sodass Datenverkehr von Front-End-Pods zugelassen wird.
+Im vorherigen Abschnitt wurde ein Back-End-NGINX-Pod geplant und eine Netzwerkrichtlinie zum Ablehnen des gesamten Datenverkehrs erstellt. Wir erstellen nun einen Front-End-Pod und aktualisieren die Netzwerkrichtlinie, damit Datenverkehr von Front-End-Pods zugelassen wird.
 
-Aktualisieren Sie die Netzwerkrichtlinie zum Zulassen von Datenverkehr von Pods mit den Bezeichnungen *app:webapp,role:frontend* und in einem beliebigen Namespace. Bearbeiten Sie die vorherige *backend-policy.yaml*-Datei, und fügen Sie eine Eingangsregel *matchLabels* hinzu, sodass das Manifest dem folgenden Beispiel entspricht:
+Aktualisieren Sie die Netzwerkrichtlinie zum Zulassen von Datenverkehr von Pods mit den Bezeichnungen *app:webapp,role:frontend* und in einem beliebigen Namespace. Bearbeiten Sie die vorherige *backend-policy.yaml*-Datei, und fügen Sie Eingangsregeln vom Typ *matchLabels* hinzu, damit das Manifest dem folgenden Beispiel entspricht:
 
 ```yaml
 kind: NetworkPolicy
@@ -247,7 +250,7 @@ spec:
 ```
 
 > [!NOTE]
-> Diese Netzwerkrichtlinie verwendet ein *namespaceSelector*- und ein *podSelector*-Element für die Eingangsregel. Die YAML-Syntax ist wichtig in Bezug darauf, ob die Eingangsregeln additiv sind oder nicht. In diesem Beispiel müssen beide Elemente übereinstimmen, damit die Eingangsregel angewendet wird. Kubernetes-Versionen vor *1.12* interpretieren diese Elemente unter Umständen nicht korrekt und beschränken den Netzwerkdatenverkehr ggf. nicht wie erwartet. Weitere Informationen finden Sie unter [Behavior of to and from selectors][policy-rules] (Verhalten der Selektoren „to“ und „from“).
+> Diese Netzwerkrichtlinie verwendet ein *namespaceSelector*- und ein *podSelector*-Element für die Eingangsregel. Die YAML-Syntax ist wichtig, damit die Eingangsregeln additiv sind. In diesem Beispiel müssen beide Elemente übereinstimmen, damit die Eingangsregel angewendet wird. Kubernetes-Versionen vor *1.12* interpretieren diese Elemente unter Umständen nicht korrekt und beschränken den Netzwerkdatenverkehr ggf. nicht wie erwartet. Weitere Informationen zu diesem Verhalten finden Sie unter [Behavior of to and from selectors][policy-rules] (Verhalten von to- und from-Selektoren).
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
@@ -255,7 +258,7 @@ Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply]
 kubectl apply -f backend-policy.yaml
 ```
 
-Planen Sie jetzt einen Pod mit der Bezeichnung *app=webapp,role=frontend*, und fügen Sie eine Terminalsitzung an:
+Planen Sie einen Pod mit der Bezeichnung *app=webapp,role=frontend*, und fügen Sie eine Terminalsitzung an:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
@@ -267,7 +270,7 @@ Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf d
 wget -qO- http://backend
 ```
 
-Da die Eingangsregel Datenverkehr mit Pods zulässt, die die Bezeichnungen *app: webapp,role: frontend* haben, ist der Datenverkehr vom Front-End-Pod zugelassen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
+Da die Eingangsregel Datenverkehr mit Pods zulässt, die die Bezeichnungen *app: webapp,role: frontend* haben, wird der Datenverkehr vom Front-End-Pod zugelassen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
 ```
 <!DOCTYPE html>
@@ -277,7 +280,7 @@ Da die Eingangsregel Datenverkehr mit Pods zulässt, die die Bezeichnungen *app:
 [...]
 ```
 
-Schließen Sie die angefügte Terminalsitzung. Der Pod wird automatisch gelöscht:
+Schließen Sie die angefügte Terminalsitzung. Der Pod wird automatisch gelöscht.
 
 ```console
 exit
@@ -285,13 +288,13 @@ exit
 
 ### <a name="test-a-pod-without-a-matching-label"></a>Testen eines Pods ohne passende Bezeichnung
 
-Die Netzwerkrichtlinie lässt Datenverkehr von Pods mit der Bezeichnung *app: webapp,role: frontend* zu, sollte aber den gesamten sonstigen Datenverkehr verweigern. Testen Sie nun, ob ein anderer Pod ohne diese Bezeichnungen nicht auf den Back-End-NGINX-Pod zugreifen kann. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
+Die Netzwerkrichtlinie lässt Datenverkehr von Pods mit der Bezeichnung *app: webapp,role: frontend* zu, sollte aber den gesamten sonstigen Datenverkehr verweigern. Wir testen nun, ob ein anderer Pod ohne diese Bezeichnungen auf den Back-End-NGINX-Pod zugreifen kann. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Die Netzwerkrichtlinie blockiert sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann, wie im folgenden Beispiel gezeigt:
+Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Die Netzwerkrichtlinie blockiert sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -299,7 +302,7 @@ $ wget -qO- --timeout=2 http://backend
 wget: download timed out
 ```
 
-Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht:
+Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht.
 
 ```console
 exit
@@ -307,7 +310,7 @@ exit
 
 ## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Zulassen von Datenverkehr nur, wenn er von einem definierten Namespace ausgeht
 
-In den vorherigen Beispielen erstellten Sie eine Netzwerkrichtlinie, die sämtlichen Datenverkehr verweigerte, und aktualisierten die Richtlinie dann, um Datenverkehr von Pods mit einer bestimmten Bezeichnung zuzulassen. Eine weitere häufige Anforderung ist das Begrenzen des Datenverkehrs auf einen bestimmten Namespace. Wenn die vorherigen Beispiele sich auf den Datenverkehr in einem *development*-Namespace bezögen, könnten Sie eine Netzwerkrichtlinie erstellen, die verhindert, dass Datenverkehr aus einem anderen Namespace wie etwa *production* die Pods erreicht.
+In den vorherigen Beispielen haben Sie eine Netzwerkrichtlinie erstellt, die sämtlichen Datenverkehr verweigert, und haben die Richtlinie dann aktualisiert, um Datenverkehr von Pods mit einer bestimmten Bezeichnung zuzulassen. Eine weitere häufige Anforderung ist das Begrenzen des Datenverkehrs auf einen bestimmten Namespace. Wenn die vorherigen Beispiele sich auf den Datenverkehr in einem *development*-Namespace beziehen würden, könnten Sie eine Netzwerkrichtlinie erstellen, die verhindert, dass Datenverkehr aus einem anderen Namespace, z. B. *production*, die Pods erreicht.
 
 Erstellen Sie zunächst einen neuen Namespace, um einen production-Namespace zu simulieren:
 
@@ -328,7 +331,7 @@ Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf d
 wget -qO- http://backend.development
 ```
 
-Wenn die Bezeichnungen für den Pod mit dem übereinstimmen, was derzeit in der Netzwerkrichtlinie zulässig ist, wird der Datenverkehr zugelassen. Die Netzwerkrichtlinie beachtet nicht die Namespaces, sondern nur die Podbezeichnungen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
+Da die Bezeichnungen für den Pod mit den derzeitigen Zulässigkeitsvorgaben der Netzwerkrichtlinie übereinstimmen, wird der Datenverkehr zugelassen. Die Netzwerkrichtlinie beachtet nicht die Namespaces, sondern nur die Podbezeichnungen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
 ```
 <!DOCTYPE html>
@@ -338,7 +341,7 @@ Wenn die Bezeichnungen für den Pod mit dem übereinstimmen, was derzeit in der 
 [...]
 ```
 
-Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht:
+Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht.
 
 ```console
 exit
@@ -346,7 +349,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>Aktualisieren der Netzwerkrichtlinie
 
-Jetzt aktualisieren wir den Eingangsregelabschnitt *namespaceSelector*, um nur vom *development*-Namespace ausgehenden Datenverkehr zuzulassen. Bearbeiten Sie die Manifestdatei *backend-policy.yaml* wie im folgenden Beispiel gezeigt:
+Wir aktualisieren jetzt den Eingangsregelabschnitt *namespaceSelector*, um nur vom *development*-Namespace ausgehenden Datenverkehr zuzulassen. Bearbeiten Sie die Manifestdatei *backend-policy.yaml* wie im folgenden Beispiel gezeigt:
 
 ```yaml
 kind: NetworkPolicy
@@ -370,7 +373,7 @@ spec:
           role: frontend
 ```
 
-In komplexeren Beispielen könnten Sie mehrere Eingangsregeln definieren, z.B. die Verwendung eines *namespaceSelector* und dann eines *podSelector*.
+In komplexeren Beispielen können Sie mehrere Eingangsregeln definieren, z. B. die Verwendung eines *namespaceSelector*-Elements und dann eines *podSelector*-Elements.
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
@@ -380,13 +383,13 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-updated-network-policy"></a>Testen der aktualisierten Netzwerkrichtlinie
 
-Planen Sie nun einen anderen Pod im *production*-Namespace, und fügen Sie eine Terminalsitzung an:
+Planen Sie einen weiteren Pod im *production*-Namespace, und fügen Sie eine Terminalsitzung an:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie jetzt Datenverkehr verweigert:
+Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie Datenverkehr nun ablehnt:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development
@@ -400,19 +403,19 @@ Schließen Sie den Test-Pod:
 exit
 ```
 
-Da jetzt der Datenverkehr vom *production*-Namespace verweigert wird, planen Sie wieder einen Testpod im *development*-Namespace, und fügen Sie eine Terminalsitzung an:
+Da der Datenverkehr vom *production*-Namespace jetzt abgelehnt wird, können Sie einen Testpod im *development*-Namespace planen und eine Terminalsitzung anfügen:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie Datenverkehr zulässt:
+Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie den Datenverkehr zulässt:
 
 ```console
 wget -qO- http://backend
 ```
 
-Wenn der Pod in dem Namespace geplant wird, der mit dem übereinstimmt, was derzeit in der Netzwerkrichtlinie zulässig ist, wird der Datenverkehr zugelassen. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
+Der Datenverkehr wird zugelassen, da der Pod in dem Namespace geplant ist, der mit den derzeitigen Zulässigkeitsvorgaben der Netzwerkrichtlinie übereinstimmt. Die folgende Beispielausgabe zeigt, dass die NGINX-Standardwebseite zurückgegeben wird:
 
 ```
 <!DOCTYPE html>
@@ -422,7 +425,7 @@ Wenn der Pod in dem Namespace geplant wird, der mit dem übereinstimmt, was derz
 [...]
 ```
 
-Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht:
+Schließen Sie die angefügte Terminalsitzung. Der Testpod wird automatisch gelöscht.
 
 ```console
 exit
@@ -430,7 +433,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In diesem Artikel haben wir zwei Namespaces erstellt und eine Netzwerkrichtlinie angewendet. Um diese Ressourcen zu bereinigen, verwenden Sie den [kubectl delete] [ kubectl-delete]-Befehl, und geben Sie die Ressourcennamen wie folgt an:
+In diesem Artikel haben wir zwei Namespaces erstellt und eine Netzwerkrichtlinie angewendet. Um diese Ressourcen zu bereinigen, verwenden Sie den Befehl [kubectl delete][kubectl-delete] und geben die Ressourcennamen an:
 
 ```console
 kubectl delete namespace production
@@ -441,7 +444,7 @@ kubectl delete namespace development
 
 Weitere Informationen zu Netzwerkressourcen in Kubernetes finden Sie unter [Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)][concepts-network].
 
-Weitere Informationen zur Verwendung von Richtlinien finden Sie unter [Network Policies (Netzwerkrichtlinien)][kubernetes-network-policies].
+Weitere Informationen zur Verwendung von Richtlinien finden Sie unter [Network Policies][kubernetes-network-policies] (Netzwerkrichtlinien).
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -450,6 +453,7 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter [Network P
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
