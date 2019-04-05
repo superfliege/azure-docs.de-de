@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1c0a04a074cfbd96423502ac92dd5821bade78e1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 841193305556e3bc9e543abc47974c7b91b0cea1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258529"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518034"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Verwenden von Azure Data Box zum Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
 
@@ -111,7 +111,7 @@ Erhöhen Sie die Kopiergeschwindigkeit wie folgt:
 
 Führen Sie diese Schritte aus, um das Data Box-Gerät vorzubereiten und an Microsoft zu senden.
 
-1. Wenn das Kopieren der Daten abgeschlossen ist, können Sie auf Ihrem Data Box-Gerät das [Vorbereiten auf den Versand](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#prepare-to-ship) durchführen. Laden Sie die BOM-Dateien herunter, nachdem die Vorbereitung des Geräts abgeschlossen ist. Sie verwenden diese BOM- bzw. Manifestdateien später, um sich zu vergewissern, dass die Daten in Azure hochgeladen wurden. Fahren Sie das Gerät herunter, und entfernen Sie die Kabel. 
+1. Wenn das Kopieren der Daten abgeschlossen ist, können Sie auf Ihrem Data Box-Gerät das [Vorbereiten auf den Versand](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest) durchführen. Laden Sie die BOM-Dateien herunter, nachdem die Vorbereitung des Geräts abgeschlossen ist. Sie verwenden diese BOM- bzw. Manifestdateien später, um sich zu vergewissern, dass die Daten in Azure hochgeladen wurden. Fahren Sie das Gerät herunter, und entfernen Sie die Kabel. 
 2.  Vereinbaren Sie einen Termin für die Abholung durch UPS, um [Ihr Data Box-Gerät zurück an Azure zu senden](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up). 
 3.  Nachdem Ihr Gerät von Microsoft empfangen wurde, wird es mit dem Netzwerkdatencenter verbunden, und die Daten werden in das Speicherkonto hochgeladen (mit deaktivierten hierarchischen Namespaces), das Sie bei der Bestellung des Data Box-Geräts angegeben haben. Überprüfen Sie anhand der BOM-Dateien, ob Ihre gesamten Daten in Azure hochgeladen wurden. Sie können diese Daten jetzt in ein Data Lake Storage Gen2-Speicherkonto verschieben.
 
