@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 9ad1208283527f35e04dede2706fd0e424096dc5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9e9c09c1825f5c8383a708e8bd343146396f878e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54300669"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553682"
 ---
 Für Azure Backup gelten die folgenden Beschränkungen.
 
 | **Begrenzung** | **Standard** |
 | --- | --- |
-| Server/Computer, die in einem Tresor registriert werden können | Windows Server/Windows Client/System Center DPM: 50 <br/><br/> IaaS-VMs: 1000  |
-| Die Größe einer Datenquelle im Tresorspeicher |Maximal 54400 GB. Die Beschränkung gilt nicht für IaaS-VM-Sicherungen. |
-| Sicherungstresore in einem Azure-Abonnement |500 Tresore pro Region |
-| Planen täglicher Sicherungen |Windows Server/Client: dreimal täglich<br/> System Center DPM zweimal täglich <br/> IaaS-VMs: einmal täglich  |
-| Datenträger, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind | 16 |
-| Einzelner Datenträger, der für die Sicherung an einen virtuellen Azure-Computer angeschlossen ist| 4095 GB|
+| Server oder Computer, die in einem Tresor registriert werden können. | Windows Server/Windows Client/System Center Data Protection Manager: 50 verwendet. <br/><br/> IaaS-VMs: 1.000.  |
+| Die Größe einer Datenquelle im Tresorspeicher. |54.400GB Maximum. Die Beschränkung gilt nicht für IaaS-VM-Sicherungen. |
+| Sicherungstresore in einem Azure-Abonnement. |500 Tresore pro Region. |
+| Planen täglicher Sicherungen. |Windows Server/Client: Drei pro Tag.<br/> System Center DPM Zwei pro Tag. <br/> IaaS-VMs: Eine pro Tag.  |
+| Datenträger, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind. | 16 |
+| Einzelner Datenträger, der für die Sicherung an einen virtuellen Azure-Computer angeschlossen ist.| 4.095GB|

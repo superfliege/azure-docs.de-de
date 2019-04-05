@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650102"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226826"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrieren eines Apache HBase-Clusters zu einer neuen Version
 
@@ -199,15 +199,21 @@ Im folgenden Szenario wird ein Upgrade von HDInsight 3.4 auf 3.6 (jeweils enthal
 
     ![Ändern Sie den Containernamen in Ambari.](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. Speichern Sie die Änderungen.
-9. Starten Sie alle erforderlichen Dienste neu, wie durch Ambari angegeben.
-10. Richten Sie für Ihre Anwendung einen Verweis auf den neuen Cluster ein.
+8. **Wenn Sie HBase-Cluster nicht mit der Funktion „Erweiterte Schreibvorgänge“ verwenden, überspringen Sie diesen Schritt. Dies wird nur für HBase-Cluster mit der Funktion „Erweiterte Schreibvorgänge“ benötigt.**
+   
+   Ändern Sie den Pfad „hbase.rootdir“ so, dass er auf den Container des ursprünglichen Clusters zeigt.
+
+    ![Ändern Sie den Containernamen für „hbase rootdir“ in Ambari.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+9. Speichern Sie die Änderungen.
+10. Starten Sie alle erforderlichen Dienste neu, wie durch Ambari angegeben.
+11. Richten Sie für Ihre Anwendung einen Verweis auf den neuen Cluster ein.
 
     > [!NOTE]  
     > Bei einem Upgrade ändert sich der statische DNS-Name für Ihre Anwendung. Sie können in den DNS-Einstellungen Ihres Domänennamens einen CNAME-Eintrag konfigurieren, der auf den Namen des Clusters verweist, anstatt einen hartcodierten DNS-Namen zu verwenden. Eine weitere Möglichkeit ist die Verwendung einer Konfigurationsdatei für Ihre Anwendung, die Sie ohne erneute Bereitstellung aktualisieren können.
 
-11. Starten Sie die Erfassung, um zu prüfen, ob alles wie erwartet funktioniert.
-12. Wenn der neue Cluster Ihren Vorstellungen entspricht, löschen Sie den ursprünglichen Cluster.
+12. Starten Sie die Erfassung, um zu prüfen, ob alles wie erwartet funktioniert.
+13. Wenn der neue Cluster Ihren Vorstellungen entspricht, löschen Sie den ursprünglichen Cluster.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

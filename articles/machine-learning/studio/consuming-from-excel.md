@@ -5,17 +5,17 @@ description: Mit Azure Machine Learning Studio können Webdienste auf einfache W
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855196"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Nutzen ein Azure Machine Learning Studio-Webdiensts aus Excel
 
@@ -33,8 +33,8 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 **Klassischer Webdienst**
 
 1. Auf der Registerkarte **DASHBOARD** für den Webdienst befindet sich die Zeile **REQUEST/RESPONSE** für den Antwort-/Anfrage-Dienst. Wenn dieser Dienst eine einzelne Ausgabe hat, sollte sich in dieser Zeile der Link **Download Excel Workbook** befinden.
-   
-    ![](./media/consuming-from-excel/excellink.png)
+
+    ![Herunterladen der Excel-Arbeitsmappe mit dem Studio-Webdienst-Portal](./media/consuming-from-excel/excellink.png)
 2. Klicken Sie auf **Download Excel Workbook**.
 
 **Neuer Webdienst**
@@ -46,17 +46,17 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 
 1. Öffnen Sie die Arbeitsmappe.
 2. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Bearbeitung aktivieren**.
-   
-    ![](./media/consuming-from-excel/enableeditting.png)
+
+    ![Aktivieren des Bearbeitens zum Entfernen der Sicherheitswarnung bezüglich geschützter Ansicht](./media/consuming-from-excel/enableeditting.png)
 3. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Inhalt aktivieren** zum Ausführen von Makros im Arbeitsblatt.
-   
-    ![](./media/consuming-from-excel/enablecontent.png)
+
+    ![Aktivieren des Inhalts zum Verwerfen der Sicherheitswarnung, die Makros deaktiviert](./media/consuming-from-excel/enablecontent.png)
 4. Sobald Makros aktiviert sind, wird eine Tabelle generiert. Spalten in Blau sind als Eingabe für den RRS-Webdienst oder als **PARAMETER**erforderlich. Beachten Sie die Ausgaben des RRS-Diensts **PREDICTED VALUES** in Grün. Wenn alle Spalten für eine bestimmte Zeile gefüllt wurden, ruft die Arbeitsmappe automatisch die Bewertungs-API auf und zeigt die bewerteten Ergebnisse an.
-   
-    ![](./media/consuming-from-excel/sampletable.png)
+
+    ![Tabelle für Parametereingaben und die resultierenden vorhergesagten Werte](./media/consuming-from-excel/sampletable.png)
 5. Um mehr als eine Zeile zu bewerten, geben Sie in der zweiten Zeile Daten ein. Daraufhin werden die Vorhersagewerte erzeugt. Sie können auch gleichzeitig mehrere Zeilen einfügen.
 
-Sie können beliebige Excel-Funktionen (Diagramme, Power Map, bedingte Formatierungen usw.) mit den Vorhersagewerten verwenden, um die Daten zu visualisieren.    
+Sie können beliebige Excel-Funktionen (Diagramme, Power Map, bedingte Formatierungen usw.) mit den Vorhersagewerten verwenden, um die Daten zu visualisieren.
 
 ## <a name="sharing-your-workbook"></a>Freigeben Ihrer Arbeitsmappe
 Damit die Makros funktionieren, muss der API-Schlüssel Teil des Arbeitsblatts sein. Das bedeutet, dass Sie die Arbeitsmappe nur für Entitäten und Personen freigeben sollten, denen Sie vertrauen.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 0765e5978f62a60b7a9b405c04c2471508947c60
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 908422927feabd156c5dcdc7a04d44ff8fc42094
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433168"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442876"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -54,7 +54,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | Abonnement-ID |#subscriptionid |ID Ihres Azure-Abonnements, das für Application Insights verwendet wird 
 
 > [!NOTE]
-> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2000 Zeichen. In Warnungen bereitgestellte Links werden *nicht* geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](https://dev.loganalytics.io/reference) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
+> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2.000 Zeichen. In Warnungen bereitgestellte Links werden *nicht* geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](https://dev.loganalytics.io/reference) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
 
 Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält.  Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter.
 
@@ -77,9 +77,6 @@ Um Suchergebnisse in eine benutzerdefinierte Nutzlast einzuschließen, muss **In
 
 ## <a name="sample-payloads"></a>Beispielnutzlasten
 Dieser Abschnitt zeigt eine Beispielnutzlast für den Webhook für Protokollwarnungen, einschließlich Fällen mit Standardnutzlast und benutzerdefinierter Nutzlast.
-
-> [!NOTE]
-> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [Log Analytics-Warnungsverwaltung](alerts-metric.md). Für Protokollwarnungen mit [Application Insights](../../azure-monitor/app/analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardwebhook für Protokollwarnungen 
 In beiden Beispielen wurde eine Pseudonutzlast mit nur zwei Spalten und zwei Zeilen angegeben.
@@ -118,7 +115,11 @@ Im Folgenden wird eine Beispielnutzlast für eine Standard-Webhookaktion *ohne b
     "Description": null,
     "Severity": "Warning"
  }
- ```   
+ ```
+
+> [!NOTE]
+> Der Wert des Schweregradfelds könnte sich ändern, wenn Sie [Wechseln der API-Einstellung für Protokollwarnungen](alerts-log-api-switch.md) für Protokollwarnungen in Log Analytics aktiviert haben.
+
 
 #### <a name="log-alert-for-azure-application-insights"></a>Protokollwarnung für Azure Application Insights
 Im Folgenden sehen Sie eine Beispielnutzlast für einen Standardwebhook *ohne benutzerdefinierte JSON-Nutzlast* bei der Verwendung für Application Insights-basierte Protokollwarnungen.
@@ -154,7 +155,7 @@ Im Folgenden sehen Sie eine Beispielnutzlast für einen Standardwebhook *ohne be
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error",
+    "Severity": "3",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
 }

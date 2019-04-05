@@ -1,6 +1,6 @@
 ---
-title: Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
-description: In diesem Artikel wird eine Kommunikationsübersicht für die verwaltete Azure SQL-Datenbank-Instanz bereitgestellt. Außerdem werden die Verbindungsarchitektur und die Übertragung des Datenverkehrs an die verwaltete Instanz mithilfe der unterschiedlichen Komponenten erläutert.
+title: Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Informationen über die Kommunikations- und Konnektivitätsarchitektur für verwaltete Azure SQL-Datenbank-Instanzen sowie die Übertragung des Datenverkehrs an die verwalteten Instanzen mithilfe der Komponenten.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,92 +11,91 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.date: 02/26/2019
+ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245666"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247238"
 ---
-# <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank 
 
-In diesem Artikel wird eine Kommunikationsübersicht für die verwaltete Azure SQL-Datenbank-Instanz bereitgestellt. Außerdem werden die Verbindungsarchitektur und die Übertragung des Datenverkehrs an die verwaltete Instanz mithilfe der unterschiedlichen Komponenten erläutert.  
+In diesem Artikel wird die Kommunikation in einer verwalteten Azure SQL-Datenbank-Instanz erläutert. Darüber hinaus wird die Konnektivitätsarchitektur beschrieben, und wie die Komponenten Datenverkehr an die verwaltete Instanz leiten.  
 
-Die verwaltete Azure SQL-Datenbank-Instanz wird in Azure-VNET und dem dedizierten Subnetze für verwaltete Instanzen platziert. Diese Bereitstellung ermöglicht die folgenden Szenarien: 
-- Sichern der privaten IP-Adresse
-- Direktes Herstellen einer Verbindung mit einer verwalteten Instanz von einem lokalen Netzwerk
-- Herstellen einer Verbindung zwischen einer verwalteten Instanz und einem Verbindungsserver oder einem anderen lokalen Datenspeicher
-- Herstellen einer Verbindung zwischen einer verwalteten Instanz und Azure-Ressourcen
+Die verwaltete SQL-Datenbank-Instanz wird im virtuellen Azure-Netzwerk und dem für verwaltete Instanzen dedizierten Subnetz platziert. Diese Bereitstellung bietet:
+
+- Eine sichere private IP-Adresse.
+- Die Möglichkeit, eine Verbindung eines lokalen Netzwerks mit einer verwalteten Instanz herzustellen.
+- Die Möglichkeit, eine Verbindung einer verwalteten Instanz mit einem Verbindungsserver oder einem anderen lokalen Datenspeicher herzustellen.
+- Die Möglichkeit, eine Verbindung einer verwalteten Instanz mit Azure-Ressourcen herzustellen.
 
 ## <a name="communication-overview"></a>Kommunikationsübersicht
 
-Im folgenden Diagramm sind Entitäten abgebildet, die eine Verbindung mit der verwalteten Instanz herstellen. Außerdem sind Ressourcen zu sehen, mit denen die verwaltete Instanz aus Funktionalitätsgründen kommunizieren muss.
+Das folgende Diagramm zeigt Entitäten, die eine Verbindung mit einer verwalteten Instanz herstellen. Es zeigt auch die Ressourcen, die mit der verwalteten Instanz kommunizieren müssen. Der Kommunikationsvorgang im unteren Diagrammbereich bezieht sich auf Kundenanwendungen und Tools, die eine Verbindung mit der verwalteten Instanz als Datenquelle herstellen.  
 
-![Entitäten der Verbindungsarchitektur](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
+![Entitäten in der Konnektivitätsarchitektur](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
 
-Der Kommunikationsvorgang im unteren Diagrammbereich bezieht sich auf Kundenanwendungen und Tools, die eine Verbindung mit der verwalteten Instanz als Datenquelle herstellen.  
+Eine verwaltete Instanz ist ein „Platform-as-a-Service“-Angebot (PaaS). Microsoft verwendet automatisierte Agenten (Verwaltung, Bereitstellung und Wartung) zum Verwalten dieses Diensts basierend auf Telemetriedatenströmen. Da Microsoft für die Verwaltung zuständig ist, können Kunden nicht über Remote Desktop Protocol (RDP) auf die virtuellen Clustercomputer der verwalteten Instanz zugreifen.
 
-Die verwaltete Instanz ist ein PaaS-Angebot (Platform-as-a-Service). Dies bedeutet, dass Microsoft diesen Dienst mithilfe automatisierter Agents (zur Verwaltung, Bereitstellung und Wartung) auf der Grundlage von Telemetriedatenströmen verwaltet. Da die Verwaltung der verwalteten Instanz ausschließlich der Verantwortung von Microsoft unterliegt, können Kunden nicht auf virtuelle Clustercomputer der verwalteten Instanz über RDP zugreifen.
+Bei einigen SQL Server-Vorgängen, die von Endbenutzern oder Anwendungen gestartet werden, müssen verwaltete Instanzen möglicherweise mit der Plattform interagieren. Ein Fall ist die Erstellung einer Datenbank für die verwaltete Instanz. Diese Ressource wird über das Azure-Portal, PowerShell, Azure-Befehlszeilenschnittstelle und REST-API verfügbar gemacht.
 
-Bei einigen SQL Server-Vorgängen, die von Endbenutzern oder Anwendungen gestartet werden, muss die verwaltete Instanz möglicherweise mit der Plattform interagieren. Ein Beispiel hierfür ist die Erstellung einer Datenbank der verwalteten Instanz. Diese Ressource wird über das Portal, PowerShell und die Azure CLI verfügbar gemacht.
+Verwaltete Instanzen hängen von Azure-Diensten wie Azure Storage für Sicherungen, Azure Service Bus für Telemetriedaten, Azure Active Directory für Authentifizierung und Azure Key Vault für Transparent Data Encryption (TDE) ab. Die verwalteten Instanzen stellen Verbindungen mit diesen Diensten her.
 
-Die verwaltete Instanz ist nur im Zusammenspiel mit anderen Azure-Diensten (beispielsweise Azure Storage für Sicherungen, Azure Service Bus für Telemetriedaten, Azure AD für die Authentifizierung und Azure Key Vault für TDE) voll funktionsfähig und stellt Verbindungen mit diesen her.
-
-Alle der oben genannten Übertragungen werden verschlüsselt und mit Zertifikaten signiert. Die verwaltete Instanz kontaktiert regelmäßig die Zertifizierungsstelle, um die Zertifikate zu überprüfen. Dadurch wird sichergestellt, dass die Kommunikationspartner als vertrauenswürdig eingestuft werden. Wenn die Zertifikate widerrufen werden oder die verwaltete Instanz sie nicht überprüfen kann, werden die Verbindungen zum Schutz der Daten unterbrochen.
+Bei der gesamten Kommunikation verwenden Zertifikate für Verschlüsselung und Signatur verwendet. Um die Vertrauenswürdigkeit der Kommunikationspartner sicherzustellen, überprüfen verwaltete Instanzen diese Zertifikate regelmäßig durch Kontaktieren einer Zertifizierungsstelle. Wenn die Zertifikate widerrufen werden oder nicht überprüft werden können, schließt die verwaltete Instanz die Verbindungen zum Schutz der Daten.
 
 ## <a name="high-level-connectivity-architecture"></a>Verbindungsarchitektur auf Makroebene
 
-Auf der Makroebene setzt sich die verwaltete Instanz aus Dienstkomponenten zusammen, die auf dedizierten isolierten VMs gehostet werden. Letztere werden innerhalb des Subnetzes des virtuellen Kundennetzwerks ausgeführt und bilden einen virtuellen Cluster.
+Auf hoher Ebene ist eine verwaltete Instanz eine Gruppe von Dienstkomponenten. Diese Komponenten werden auf einer dedizierten Gruppe isolierter virtueller Computer gehostet, die im virtuellen Subnetz des Kunden ausgeführt werden. Diese Computer bilden einen virtuellen Cluster.
 
-In einem einzelnen virtuellen Cluster können mehrere verwaltete Instanzen gehostet werden. Der Cluster wird ggf. automatisch vergrößert oder verkleinert, wenn der Kunde die Anzahl der bereitgestellten Instanzen im Subnetz ändert.
+Ein virtueller Cluster kann mehrere verwaltete Instanzen hosten. Der Cluster wird ggf. automatisch vergrößert oder verkleinert, wenn der Kunde die Anzahl der bereitgestellten Instanzen im Subnetz ändert.
 
-Kundenanwendungen können nur dann eine Verbindung mit einer verwalteten Instanz herstellen und Datenbanken abfragen sowie aktualisieren, wenn die Anwendungen innerhalb des virtuellen Netzwerks, des mittels Peering verknüpften virtuellen Netzwerks oder des mittels VPN/ExpressRoute verbundenen Netzwerks ausgeführt werden und ein Endpunkt mit einer privaten IP-Adresse verwendet wird.  
+Kundenanwendungen können nur dann eine Verbindung mit verwalteten Instanzen herstellen und Datenbanken abfragen sowie aktualisieren, wenn die Anwendungen innerhalb des virtuellen Netzwerks, des mittels Peering verknüpften virtuellen Netzwerks oder des durch VPN oder Azure ExpressRoute verbundenen Netzwerks ausgeführt werden. Dieses Netzwerk muss einen Endpunkt und eine private IP-Adresse verwenden.  
 
-![Diagramm zur Verbindungsarchitektur](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
+![Diagramm zur Konnektivitätsarchitektur](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
-Verwaltungs- und Bereitstellungsdienste von Microsoft werden außerhalb des virtuellen Netzwerks ausgeführt. Die Verbindung zwischen einer verwalteten Instanz und Microsoft-Diensten wird daher über Endpunkte mit öffentlichen IP-Adressen hergestellt. Wenn die verwaltete Instanz eine ausgehende Verbindung aufbaut, wird auf der Empfängerseite aufgrund der Netzwerkadressenübersetzung (NAT) die öffentliche IP-Adresse angezeigt.
+Die Verwaltungs- und Bereitstellungsdienste von Microsoft werden außerhalb des virtuellen Netzwerks ausgeführt. Eine verwaltete Instanz und Microsoft-Dienste sind über die Endpunkte verbunden, die öffentliche IP-Adressen haben. Wenn eine verwaltete Instanz eine ausgehende Verbindung herstellt, sieht die Verbindung auf der Empfängerseite aufgrund der Netzwerkadressenübersetzung (Network Address Translation, NAT) so aus, käme sie von dieser öffentlichen IP-Adresse.
 
-Der Verwaltungsdatenverkehr wird über das virtuelle Kundennetzwerk übertragen. Dies bedeutet, dass die Infrastrukturelemente des virtuellen Netzwerks den Verwaltungsdatenverkehr negativ beeinflussen können, wodurch die Instanz möglicherweise in einen fehlerhaften Zustand überführt wird und damit nicht mehr verfügbar ist.
+Der Verwaltungsdatenverkehr wird über das virtuelle Kundennetzwerk übertragen. Das bedeutet, dass die Elemente der Infrastruktur des virtuellen Netzwerks den Verwaltungsdatenverkehr beeinträchtigen können, indem sie einen Fehler bei der Instanz verursachen, sodass sie nicht mehr verfügbar ist.
 
 > [!IMPORTANT]
-> Microsoft nutzt zur Verbesserung der Dienstverfügbarkeit und -qualität Netzwerkzielrichtlinien für Infrastrukturelemente virtueller Azure-Netzwerke, die sich möglicherweise negativ auf die Funktionalität der verwalteten Instanz auswirken. Mit diesem Plattformmechanismus werden den Endbenutzern Netzwerkanforderungen transparent mitgeteilt. Hierbei besteht das Hauptziel darin, einer fehlerhaften Netzwerkkonfiguration vorzubeugen und den Normalbetrieb der verwalteten Instanz zu gewährleisten. Durch das Löschen der verwalteten Instanz wird auch die Netzwerkzielrichtlinie entfernt.
+> Microsoft nutzt zur Verbesserung der Dienstverfügbarkeit und -qualität Netzwerkzielrichtlinien für Infrastrukturelemente virtueller Azure-Netzwerke. Die Richtlinie kann Auswirkungen auf die Funktionsweise der verwalteten Instanz haben. Dieser Plattformmechanismus kommuniziert transparent Netzwerkanforderungen für Benutzer. Das Hauptziel der Richtlinie ist, Fehlkonfigurationen des Netzwerks zu verhindern und den normalen Betrieb der verwalteten Instanz zu gewährleisten. Wenn Sie eine verwaltete Instanz löschen, wird die Netzwerkzielrichtlinie ebenfalls entfernt.
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>Verbindungsarchitektur für virtuellen Cluster
 
-Im Folgenden wird die Verbindungsarchitektur der verwalteten Instanz noch genauer betrachtet. Im unten abgebildeten Diagramm wird das konzeptionelle Layout des virtuellen Clusters dargestellt.
+Im Folgenden wird die Konnektivitätsarchitektur für verwaltete Instanzen noch genauer betrachtet. Im unten abgebildeten Diagramm wird das konzeptionelle Layout des virtuellen Clusters dargestellt.
 
-![Diagramm für Verbindungsarchitektur des virtuellen Clusters](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
+![Konnektivitätsarchitektur des virtuellen Clusters](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Clients stellen mithilfe des Hostnamens, der in der Form `<mi_name>.<dns_zone>.database.windows.net` vorliegen muss, eine Verbindung mit der verwalteten Instanz her. Dieser Hostname wird in die private IP-Adresse aufgelöst, obwohl er in der öffentlichen DNS-Zone registriert ist und öffentlich aufgelöst werden kann. Die `zone-id` wird beim Erstellen des Clusters automatisch generiert. Wenn in einem neu erstellten Cluster eine sekundäre verwaltete Instanz gehostet wird, verwendet diese die Zonen-ID gemeinsam mit dem primären Cluster. Weitere Informationen finden Sie unter [Autofailover-Gruppen](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Clients stellen mithilfe des Hostnamens, der in der Form `<mi_name>.<dns_zone>.database.windows.net` vorliegen muss, eine Verbindung mit der verwalteten Instanz her. Dieser Hostname wird in eine private IP-Adresse aufgelöst, obwohl er in einer öffentlichen DNS-Zone (Domain Name System) registriert ist und öffentlich aufgelöst werden kann. Die `zone-id` wird beim Erstellen des Clusters automatisch generiert. Wenn in einem neu erstellten Cluster eine sekundäre verwaltete Instanz gehostet wird, verwendet diese die Zonen-ID gemeinsam mit dem primären Cluster. Weitere Informationen finden Sie unter [Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
-Diese private IP-Adresse gehört zum internen Load Balancer der verwalteten Instanz, der den Datenverkehr an das Gateway (GW) der verwalteten Instanz weiterleitet. Da mehrere verwaltete Instanzen theoretisch in demselben Cluster ausgeführt werden könnten, nutzt das GW den Hostnamen der verwalteten Instanz, um den Datenverkehr an den richtigen SQL-Enginedienst weiterzuleiten.
+Diese private IP-Adresse gehört zum internen Lastenausgleich der verwalteten Instanz. Der Lastenausgleich leitet Datenverkehr an das Gateway der verwalteten Instanz weiter. Da mehrere verwaltete Instanzen in demselben Cluster ausgeführt werden können, nutzt das Gateway den Hostnamen der verwalteten Instanz, um den Datenverkehr an den richtigen SQL-Enginedienst weiterzuleiten.
 
-Verwaltungs- und Bereitstellungsdienste stellen über [Verwaltungsendpunkte](#management-endpoint), die dem externen Lastenausgleich zugeordnet sind, eine Verbindung mit der verwalteten Instanz her. Der Datenverkehr wird nur an die Knoten weitergeleitet, wenn er an einer vordefinierten Gruppe von Ports empfangen wird, die ausschließlich von Verwaltungskomponenten der verwalteten Instanz verwendet werden. Die integrierte Firewall auf den Knoten ist so konfiguriert, dass nur Datenverkehr von Microsoft-spezifischen IP-Adressbereichen zulässig ist. Alle Übertragungen zwischen den Verwaltungskomponenten und der Verwaltungsebene werden gegenseitig mithilfe von Zertifikaten authentifiziert.
+Verwaltungs- und Bereitstellungsdienste stellen über einen [Verwaltungsendpunkt](#management-endpoint), der einem externen Lastenausgleich zugeordnet ist, eine Verbindung mit einer verwalteten Instanz her. Der Datenverkehr wird nur an die Knoten weitergeleitet, wenn er an einer vordefinierten Gruppe von Ports empfangen wird, die ausschließlich die Verwaltungskomponenten der verwalteten Instanz verwenden. Eine integrierte Firewall auf den Knoten ist so eingerichtet, dass nur Datenverkehr von Microsoft-IP-Adressbereichen zulässig ist. Zertifikate authentifizieren gegenseitig die gesamte Kommunikation zwischen den Verwaltungskomponenten und der Verwaltungsebene.
 
 ## <a name="management-endpoint"></a>Verwaltungsendpunkt
 
-Der virtuelle Cluster der verwalteten Azure SQL-Datenbank-Instanz enthält einen Verwaltungsendpunkt, der von Microsoft zur Verwaltung der verwalteten Instanz verwendet wird. Der Verwaltungsendpunkt ist durch eine integrierte Firewall auf Netzwerkebene und eine gegenseitige Zertifikatüberprüfung auf Anwendungsebene geschützt. Sie können die [IP-Adresse des Verwaltungsendpunkts ermitteln](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+Microsoft verwaltet die verwaltete Instanz mit einem Endpunkt für die Verwaltung. Dieser Endpunkt befindet sich im virtuellen Cluster der Instanz. Der Endpunkt für die Verwaltung wird durch eine integrierte Firewall auf Netzwerkebene geschützt. Auf der Anwendungsebene wird er durch gegenseitige Zertifikatüberprüfung geschützt. Die IP-Adresse des Endpunkts finden Sie unter [Ermitteln der IP-Adresse des Verwaltungsendpunkts](sql-database-managed-instance-find-management-endpoint-ip-address.md).
 
-Wenn Verbindungen aus der verwalteten Instanz heraus initiiert werden (Sicherung, Überwachungsprotokoll), stammt der Datenverkehr anscheinend von der öffentlichen IP-Adresse des Verwaltungsendpunkts. Sie können den Zugriff von der verwalteten Instanz auf öffentliche Dienste einschränken, indem Sie Firewallregeln festlegen, die nur die IP-Adresse der verwalteten Instanz zulassen. Erfahren Sie mehr über die Methode, mit der [die integrierte Firewall der verwalteten Instanz überprüft werden kann](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+Wenn Verbindungen in der verwalteten Instanz starten (wie bei Sicherungen und Überwachungsprotokollen), scheint der Datenverkehr bei der öffentlichen IP-Adresse des Verwaltungsendpunkts zu beginnen. Sie können den Zugriff von einer verwalteten Instanz auf öffentliche Dienste einschränken, indem Sie Firewallregeln festlegen, die nur die IP-Adresse der verwalteten Instanz zulassen. Weitere Informationen finden Sie unter [Überprüfen der integrierten Firewall einer verwalteten Instanz](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Dies gilt nicht für das Festlegen von Firewallregeln für Azure-Dienste, die sich in derselben Region wie die verwaltete Instanz befinden, da die Azure-Plattform über eine Optimierung für den Datenverkehr verfügt, der zwischen den verbundenen Diensten erfolgt.
+> Im Gegensatz zu der Firewall für Verbindungen, die in der verwalteten Instanz beginnen, haben die Azure-Dienste, die sich in der Region der verwalteten Instanz befinden, eine Firewall, die für den Datenverkehr zwischen diesen Diensten optimiert ist.
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 
-Sie können die verwaltete Instanz in einem dedizierten Subnetz (dem Subnetz der verwalteten Instanz) innerhalb des virtuellen Netzwerks bereitstellen, das den folgenden Anforderungen entspricht:
-- **Dediziertes Subnetz**: Das Subnetz der verwalteten Instanz darf mit keinem anderen Clouddienst verknüpft und kein Gatewaysubnetz sein. Sie können weder eine verwaltete Instanz in einem Subnetz erstellen, das andere Ressourcen als die verwaltete Instanz enthält, noch zu einem späteren Zeitpunkt Ressourcen im Subnetz hinzufügen.
-- **Kompatible Netzwerksicherheitsgruppe (NSG)**: Eine NSG, die mit einem Subnetz einer verwalteten Instanz verbunden ist, muss Regeln in den folgenden Tabellen („Obligatorische Eingangssicherheitsregeln“ und „Obligatorische Ausgangssicherheitsregeln“) den Vorrang vor anderen Regeln geben. Mit NSGs können Sie den Zugriff auf den Datenendpunkt der verwalteten Instanz vollständig steuern, indem Sie den Datenverkehr über Port 1433 filtern. 
-- **Kompatible benutzerdefinierte Routingtabelle**: Das Subnetz der verwalteten Instanz benötigt eine benutzerdefinierte Routingtabelle, der **0.0.0.0.0.0/0 mit dem nächsten Hop zum Internet** als obligatorische benutzerdefinierte Route zugewiesen ist. Darüber hinaus können Sie eine benutzerdefinierte Route hinzufügen, die Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über ein virtuelles Netzwerkgateway oder ein virtuelles Netzwerkgerät leitet. 
-- **Optionales benutzerdefiniertes DNS**: Wenn ein benutzerdefiniertes DNS im virtuellen Netzwerk angegeben ist, muss die IP-Adresse des rekursiven Azure-Resolvers (z.B. 168.63.129.16) der Liste hinzugefügt werden. Weitere Informationen finden Sie unter [Konfigurieren des benutzerdefinierten DNS](sql-database-managed-instance-custom-dns.md). Der benutzerdefinierte DNS-Server muss Hostnamen in den folgenden Domänen und deren Subdomänen auflösen können: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com* und *microsoftonline-p.com*. 
-- **Keine Dienstendpunkte**: Dem Subnetz der verwalteten Instanz darf kein Dienstendpunkt zugeordnet sein. Überprüfen Sie, ob die Option „Dienstendpunkte“ beim Erstellen des virtuellen Netzwerks auf „Deaktiviert“ festgelegt ist.
-- **Ausreichende IP-Adressen**: Das Subnetz der verwalteten Instanz muss mindestens 16 IP-Adressen aufweisen. Die empfohlene Mindestanzahl sind 32 IP-Adressen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](sql-database-managed-instance-determine-size-vnet-subnet.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](sql-database-managed-instance-configure-vnet-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für verwaltete Instanzen](#network-requirements) konfiguriert haben, oder ein [neues Netzwerk und Subnetz](sql-database-managed-instance-create-vnet-subnet.md) erstellen.
+Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen Netzwerk bereit. Das Subnetz muss diese Merkmale aufweisen:
+
+- **Dediziertes Subnetz**: Das Subnetz der verwalteten Instanz darf mit keinem anderen Clouddienst verknüpft und kein Gatewaysubnetz sein. Das Subnetz darf keine Ressourcen außer der verwalteten Instanz enthalten, und Sie können später keine Ressourcen im Subnetz hinzufügen.
+- **Netzwerksicherheitsgruppe (NSG)**: Eine NSG, die mit dem virtuellen Netzwerk verknüpft ist, muss [Eingangssicherheitsregeln](#mandatory-inbound-security-rules) und [Ausgangssicherheitsregeln](#mandatory-outbound-security-rules) vor allen anderen Regeln definieren. Mit NSGs können Sie den Zugriff auf den Datenendpunkt der verwalteten Instanz steuern, indem Sie den Datenverkehr über Port 1433 filtern.
+- **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle, die mit dem virtuellen Netzwerk verknüpft ist, muss bestimmte [Einträge](#user-defined-routes) enthalten.
+- **Keine Dienstendpunkte**: Dem Subnetz der verwalteten Instanz sollte kein Dienstendpunkt zugeordnet werden. Wenn Sie das virtuelle Netzwerk erstellen, überprüfen Sie, ob die Option „Dienstendpunkte“ auf „Deaktiviert“ festgelegt ist.
+- **Ausreichende IP-Adressen**: Das Subnetz der verwalteten Instanz muss mindestens 16 IP-Adressen haben. Der empfohlene Mindestwert sind 32 IP-Adressen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](sql-database-managed-instance-determine-size-vnet-subnet.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](sql-database-managed-instance-configure-vnet-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für verwaltete Instanzen](#network-requirements) konfiguriert haben. Erstellen Sie andernfalls ein [neues Netzwerk und Subnetz](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
-> Wenn das Zielsubnetz nicht alle genannten Anforderungen erfüllt, können Sie keine neue verwaltete Instanz bereitstellen. Wenn eine verwaltete Instanz erstellt wird, wird eine *Netzwerkabsichtsrichtlinie* auf das Subnetz angewendet, um nicht konforme Änderungen an der Netzwerkkonfiguration zu verhindern. Nachdem die letzte Instanz aus dem Subnetz entfernt wurde, wird auch die *Netzwerkabsichtsrichtlinie* entfernt.
+> Sie können keine neue verwaltete Instanz bereitstellen, wenn das Zielsubnetz nicht über diese Merkmale verfügt. Wenn Sie eine verwaltete Instanz erstellen, wird eine Netzwerkzielrichtlinie auf das Subnetz angewendet, um nicht konforme Änderungen am Netzwerksetup zu verhindern. Nachdem die letzte Instanz aus dem Subnetz entfernt wurde, wird auch die Netzwerkzielrichtlinie entfernt.
 
-### <a name="mandatory-inbound-security-rules"></a>Obligatorische Eingangssicherheitsregeln 
+### <a name="mandatory-inbound-security-rules"></a>Obligatorische Eingangssicherheitsregeln
 
 | NAME       |Port                        |Protokoll|Quelle           |Ziel|Aktion|
 |------------|----------------------------|--------|-----------------|-----------|------|
@@ -104,29 +103,70 @@ Sie können die verwaltete Instanz in einem dedizierten Subnetz (dem Subnetz der
 |mi_subnet   |Beliebig                         |Beliebig     |MI-SUBNETZ        |Beliebig        |ZULASSEN |
 |health_probe|Beliebig                         |Beliebig     |AzureLoadBalancer|Beliebig        |ZULASSEN |
 
-### <a name="mandatory-outbound-security-rules"></a>Obligatorische Ausgangssicherheitsregeln 
+### <a name="mandatory-outbound-security-rules"></a>Obligatorische Ausgangssicherheitsregeln
 
 | NAME       |Port          |Protokoll|Quelle           |Ziel|Aktion|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80, 443, 12000|TCP     |Beliebig              |Internet   |ZULASSEN |
-|mi_subnet   |Beliebig           |Beliebig     |Beliebig              |MI-SUBNETZ  |ZULASSEN |
+|mi_subnet   |Beliebig           |Beliebig     |Beliebig              |MI-SUBNETZ*  |ZULASSEN |
 
-  > [!Note]
-  > MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal (über die Eigenschaften für das Subnetz).
-  
-  > [!Note]
-  > Obwohl obligatorische Eingangssicherheitsregeln den Datenverkehr von _allen_ Quellen an den Ports 9000 9003, 1438, 1440 und 1452 zulassen, sind diese Ports durch eine integrierte Firewall geschützt. In [diesem Artikel](sql-database-managed-instance-find-management-endpoint-ip-address.md) wird gezeigt, wie Sie die IP-Adresse des Verwaltungsendpunkts ermitteln und Firewallregeln überprüfen können. 
-  
-  > [!Note]
-  > Wenn Sie Transaktionsreplikation in der verwalteten Instanz verwenden und jede Datenbank in der verwalteten Instanz als Verleger oder Verteiler verwendet wird, muss Port 445 (TCP ausgehend) auch in den Sicherheitsregeln des Subnetzes geöffnet sein, um auf die Azure-Dateifreigabe zugreifen zu können.
-  
+\* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
+
+> [!IMPORTANT]
+> Obwohl die erforderlichen Eingangssicherheitsregeln den Datenverkehr von _allen_ Quellen an den Ports 9000, 9003, 1438, 1440 und 1452 zulassen, sind diese Ports durch eine integrierte Firewall geschützt. Weitere Informationen finden Sie unter [Ermitteln der IP-Adresse des Verwaltungsendpunkts](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+
+> [!NOTE]
+> Wenn Sie die Transaktionsreplikation in einer verwalteten Instanz verwenden und Sie eine Instanzdatenbank als Herausgeber oder Verteiler einsetzen, öffnen Sie Port 445 (TCP ausgehend) in den Sicherheitsregeln des Subnetzes. Dieser Port ermöglicht den Zugriff auf die Azure-Dateifreigabe.
+
+### <a name="user-defined-routes"></a>Benutzerdefinierte Routen
+
+|NAME|Adresspräfix|Nächster Hop|
+|----|--------------|-------|
+|subnet_to_vnetlocal|[mi_subnet]|Virtuelles Netzwerk|
+|mi-0-5-next-hop-internet|0.0.0.0/5|Internet|
+|mi-11-8-nexthop-internet|11.0.0.0/8|Internet|
+|mi-12-6-nexthop-internet|12.0.0.0/6|Internet|
+|mi-128-3-nexthop-internet|128.0.0.0/3|Internet|
+|mi-16-4-nexthop-internet|16.0.0.0/4|Internet|
+|mi-160-5-nexthop-internet|160.0.0.0/5|Internet|
+|mi-168-6-nexthop-internet|168.0.0.0/6|Internet|
+|mi-172-12-nexthop-internet|172.0.0.0/12|Internet|
+|mi-172-128-9-nexthop-internet|172.128.0.0/9|Internet|
+|mi-172-32-11-nexthop-internet|172.32.0.0/11|Internet|
+|mi-172-64-10-nexthop-internet|172.64.0.0/10|Internet|
+|mi-173-8-nexthop-internet|173.0.0.0/8|Internet|
+|mi-174-7-nexthop-internet|174.0.0.0/7|Internet|
+|mi-176-4-nexthop-internet|176.0.0.0/4|Internet|
+|mi-192-128-11-nexthop-internet|192.128.0.0/11|Internet|
+|mi-192-160-13-nexthop-internet|192.160.0.0/13|Internet|
+|mi-192-169-16-nexthop-internet|192.169.0.0/16|Internet|
+|mi-192-170-15-nexthop-internet|192.170.0.0/15|Internet|
+|mi-192-172-14-nexthop-internet|192.172.0.0/14|Internet|
+|mi-192-176-12-nexthop-internet|192.176.0.0/12|Internet|
+|mi-192-192-10-nexthop-internet|192.192.0.0/10|Internet|
+|mi-192-9-nexthop-internet|192.0.0.0/9|Internet|
+|mi-193-8-nexthop-internet|193.0.0.0/8|Internet|
+|mi-194-7-nexthop-internet|194.0.0.0/7|Internet|
+|mi-196-6-nexthop-internet|196.0.0.0/6|Internet|
+|mi-200-5-nexthop-internet|200.0.0.0/5|Internet|
+|mi-208-4-nexthop-internet|208.0.0.0/4|Internet|
+|mi-224-3-nexthop-internet|224.0.0.0/3|Internet|
+|mi-32-3-nexthop-internet|32.0.0.0/3|Internet|
+|mi-64-2-nexthop-internet|64.0.0.0/2|Internet|
+|mi-8-7-nexthop-internet|8.0.0.0/7|Internet|
+||||
+
+Darüber hinaus können Sie der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über ein virtuelles Netzwerkgateway oder ein virtuelles Netzwerkgerät (Network Appliance, NVA) zu leiten.
+
+Wenn das virtuelle Netzwerk ein benutzerdefiniertes DNS enthält, fügen Sie einen Eintrag für die IP-Adresse des rekursiven Azure-Resolvers (z.B. 168.63.129.16) hinzu. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten DNS für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-custom-dns.md). Der benutzerdefinierte DNS-Server muss Hostnamen in diesen Domänen und deren Subdomänen auflösen können: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com* und *microsoftonline-p.com*.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht finden Sie unter  [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
-- Erfahren Sie, wie Sie [ein neues VNET konfigurieren](sql-database-managed-instance-create-vnet-subnet.md) oder [ein vorhandenes VNET konfigurieren](sql-database-managed-instance-configure-vnet-subnet.md), in dem Sie verwaltete Instanzen bereitstellen können.
-- [Berechnen Sie die Größe des Subnetzes](sql-database-managed-instance-determine-size-vnet-subnet.md), in dem verwaltete Instanzen bereitgestellt werden sollen. 
-- Informationen zum Erstellen einer verwaltete Instanz per Schnellstart finden Sie in den folgenden Artikeln. Zur Erstellung können
-  - Im [Azure-Portal](sql-database-managed-instance-get-started.md)
-  - Mit [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/)
-  - [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)
-  - oder [Azure Resource Manager-Vorlagen im Zusammenspiel mit einer Jumpbox, in die SSMS integriert ist](https://portal.azure.com/), verwendet werden.
+- Eine Übersicht finden Sie unter  [Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100%iger Kompatibilität](sql-database-managed-instance.md).
+- Erfahren Sie, wie Sie [ein neues virtuelles Azure-Network](sql-database-managed-instance-create-vnet-subnet.md) oder [vorhandenes virtuelles Azure-Network](sql-database-managed-instance-configure-vnet-subnet.md) einrichten, wo Sie verwaltete Instanzen bereitstellen können.
+- [Berechnen Sie die Größe des Subnetzes](sql-database-managed-instance-determine-size-vnet-subnet.md), in dem Sie verwaltete Instanzen bereitstellen möchten.
+- Erfahren Sie, wie Sie eine verwaltete Instanz erstellen:
+  - Im [Azure-Portal](sql-database-managed-instance-get-started.md).
+  - Mit [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+  - Mit [einer Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
+  - Mit [einer Azure Resource Manager-Vorlage (mit JumpBox, in die SSMS integriert ist)](https://portal.azure.com/).

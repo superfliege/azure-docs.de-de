@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c343dfa3c0eac4aeabaa9244c6675b235fc95552
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c60983dbbe72515fd8f0f4860e169ce1ba69ed45
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311715"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407084"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen. Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](resource-manager-templates-resources.md#condition).
+In diesem Artikel erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen. Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](resource-group-authoring-templates.md#condition).
 
 Ein Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./resource-manager-tutorial-create-multiple-instances.md).
 
@@ -272,6 +272,8 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
 
 Um mehrere Instanzen einer Variable zu erstellen, verwenden Sie die `copy`-Eigenschaft im Abschnitt „variables“. Erstellen Sie ein Array von Elementen, das aus dem Wert in der `input`-Eigenschaft erstellt wird. Sie können die `copy`-Eigenschaft innerhalb einer Variablen oder auf der obersten Ebene des Abschnitts „variables“ verwenden. Bei Verwendung von `copyIndex` in einer Variableniteration müssen Sie den Namen der Iteration angeben.
 
+Ein einfaches Beispiel für das Erstellen eines Arrays von Zeichenfolgenwerten finden Sie in diesem Artikel zum [Kopieren der Arrayvorlage](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
+
 Das folgende Beispiel zeigt mehrere verschiedene Möglichkeiten zum Erstellen von Arrayvariablen mit dynamisch erstellten Elementen. Es veranschaulicht die Verwendung des copy-Elements in einer Variablen, um Arrays von Objekten und Zeichenfolgen zu erstellen. Es veranschaulicht außerdem, wie das copy-Element auf der obersten Ebene zum Erstellen von Arrays von Objekten, Zeichenfolgen und ganzen Zahlen verwendet wird.
 
 ```json
@@ -344,6 +346,50 @@ Das folgende Beispiel zeigt mehrere verschiedene Möglichkeiten zum Erstellen vo
     }
   }
 }
+```
+
+Der Typ der Variablen, die erstellt wird, hängt vom Eingabeobjekt ab. Die Variable mit dem Namen **top-level-object-array** im vorherigen Beispiel gibt z.B. Folgendes zurück:
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
+]
+```
+
+Und die Variable mit dem Namen **top-level-string-array** gibt Folgendes zurück:
+
+```json
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Abhängigkeit von Ressourcen in einer Schleife

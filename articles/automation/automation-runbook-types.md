@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 940a5839fe2c2eea11d9570d3dca48cd514e21af
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417243"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454900"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -22,10 +22,10 @@ Azure Automation unterstützt verschiedene Runbooktypen, die in der folgenden Ta
 
 | Type | BESCHREIBUNG |
 |:--- |:--- |
-| [Grafisch](#graphical-runbooks) |Basiert auf Windows PowerShell und wird vollständig im grafischen Editor im Azure-Portal erstellt und bearbeitet. |
-| [PowerShell-Workflow, grafisch](#graphical-runbooks) |Basiert auf Windows PowerShell-Workflow und wird vollständig im grafischen Editor im Azure-Portal erstellt und bearbeitet. |
+| [Grafisch](#graphical-runbooks)|Basiert auf Windows PowerShell und wird vollständig im grafischen Editor im Azure-Portal erstellt und bearbeitet. |
+| [PowerShell-Workflow, grafisch](#graphical-runbooks)|Basiert auf Windows PowerShell-Workflow und wird vollständig im grafischen Editor im Azure-Portal erstellt und bearbeitet. |
 | [PowerShell](#powershell-runbooks) |Textrunbook, das auf einem Windows PowerShell-Skript basiert. |
-| [PowerShell-Workflow](#powershell-workflow-runbooks) |Textrunbook, das auf einem Windows PowerShell-Workflow basiert. |
+| [PowerShell-Workflow](#powershell-workflow-runbooks)|Textrunbook, das auf einem Windows PowerShell-Workflow basiert. |
 | [Python](#python-runbooks) |Auf Python basierendes Textrunbook |
 
 ## <a name="graphical-runbooks"></a>Grafische Runbooks
@@ -45,6 +45,7 @@ Azure Automation unterstützt verschiedene Runbooktypen, die in der folgenden Ta
 * Runbook kann nicht außerhalb des Azure-Portals bearbeitet werden.
 * Erfordert möglicherweise Aktivität mit PowerShell-Code, um komplexe Logik auszuführen.
 * Der vom grafischen Workflow erstellte PowerShell-Code kann nicht angezeigt oder direkt bearbeitet werden. Sie können den erstellten Code in allen Codeaktivitäten anzeigen.
+* Auf einem Linux Hybrid Runbook Worker nicht ausführbar
 
 ## <a name="powershell-runbooks"></a>PowerShell-Runbooks
 
@@ -54,6 +55,7 @@ PowerShell-Runbooks basieren auf Windows PowerShell.  Sie bearbeiten den Code de
 
 * Implementierung der gesamten komplexen Logik mit PowerShell-Code ohne die zusätzliche Komplexität des PowerShell-Workflows.
 * Runbook startet schneller als PowerShell-Workflow-Runbooks, da es nicht vor der Ausführung kompiliert werden muss.
+* In Azure oder sowohl auf Linux als auch Windows Hybrid Runbook Worker ausführbar
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -88,6 +90,7 @@ PowerShell-Workflow-Runbooks sind Textrunbooks, die auf einem [Windows PowerShel
 * Die zusätzliche Komplexität des PowerShell-Workflows, z.B. [deserialisierte Objekte](automation-powershell-workflow.md#code-changes), müssen vom Runbook verarbeitet werden.
 * Das Starten des Runbooks dauert länger als bei PowerShell-Runbooks, da es vor der Ausführung kompiliert werden muss.
 * PowerShell-Runbooks können nur als untergeordnete Runbooks mithilfe des Cmdlets „Start-AzureAutomationRunbook“ einbezogen werden, wodurch ein neuer Auftrag erstellt wird.
+* Auf einem Linux Hybrid Runbook Worker nicht ausführbar
 
 ## <a name="python-runbooks"></a>Python-Runbooks
 
@@ -96,6 +99,7 @@ Python-Runbooks werden unter Python-2 kompiliert.  Sie können den Code des Runb
 ### <a name="advantages"></a>Vorteile
 
 * Verwendung der stabilen Python-Bibliotheken.
+* In Azure oder auf beiden Linux Hybrid Runbook Workers ausführbar. Windows Hybrid Runbook Workers werden unterstützt, wenn [python2.7](https://www.python.org/downloads/release/latest/python2) installiert ist.
 
 ### <a name="limitations"></a>Einschränkungen
 

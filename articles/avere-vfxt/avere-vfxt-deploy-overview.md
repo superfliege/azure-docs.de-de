@@ -4,14 +4,14 @@ description: Übersicht über das Bereitstellen von Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298533"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991800"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT für Azure – Übersicht über die Bereitstellung
 
@@ -52,10 +52,12 @@ Hier folgt eine Übersicht über alle Schritte.
 
      Der Clustercontroller ist eine einfache VM, die sich im gleichen virtuellen Netzwerk wie der Avere vFXT-Cluster befindet und über die für die Erstellung und Verwaltung des Clusters erforderliche benutzerdefinierte Software verfügt. Der Controller erstellt die vFXT-Knoten und bildet den Cluster, und er stellt auch eine Befehlszeilenschnittstelle zur Verfügung, um den Cluster während seiner Lebensdauer zu verwalten.
 
-     Wenn Sie Ihren Controller mit einer öffentlichen IP-Adresse konfigurieren, kann er auch als Jump-Host für die Verbindung mit dem Cluster von außerhalb des VNets dienen.
+     Wenn Sie während der Bereitstellung ein neues VNET erstellen, hat Ihr Controller eine öffentliche IP-Adresse. Dies bedeutet, dass der Controller als Jump Host für das Herstellen der Verbindung mit dem Cluster von außerhalb des virtuellen VNET dienen kann.
 
    * Erstellen der Clusterknoten-VMs
-   * Konfigurieren der Clusterknoten-VMs als Cluster
+
+   * Konfigurieren der Clusterknoten-VMs, um das Cluster zu bilden
+
    * Optional Erstellen eines neuen Blobcontainers und Konfigurieren des Containers als Back-End-Speicher für den Cluster
 
 1. Konfigurieren des Clusters 

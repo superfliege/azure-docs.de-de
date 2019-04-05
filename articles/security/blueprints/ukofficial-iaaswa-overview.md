@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699141"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443469"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint: Dreischichtige IaaS-Webanwendungen für UK OFFICIAL
 
@@ -25,7 +25,7 @@ ms.locfileid: "55699141"
 
  Das NCSC empfiehlt, dass seine Cloudsicherheitsprinzipien von Kunden für die Beurteilung der Sicherheitseigenschaften des Diensts und zum Verstehen der Aufteilung der Zuständigkeit zwischen Kunde und Lieferant verwendet werden. Wir haben zu jedem dieser Prinzipien Informationen zur Verfügung gestellt, die Ihnen das Verständnis der Aufteilung der Zuständigkeiten erleichtern sollen.
 
- Diese Architektur und die entsprechende Azure Resource Manager-Vorlagen werden vom Microsoft-Whitepaper [14 Cloud Security Controls for UK cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1) (14 Sicherheitskontrollen für die UK-Cloud mithilfe von Microsoft Azure) unterstützt. In diesem Dokument wird katalogisiert, wie Azure-Dienste sich an den 14 Prinzipien der Cloudsicherheit gemäß UK NCSC ausrichten, was es Organisationen ermöglicht, ihre Fähigkeit zur Einhaltung ihrer Complianceverpflichtungen zu beschleunigen, indem sie cloudbasierte Dienste global und im Vereinigten Königreich in der Microsoft Azure Cloud nutzen.
+ Diese Architektur und die entsprechende Azure Resource Manager-Vorlagen werden vom Microsoft-Whitepaper [14 Cloud Security Controls for UK cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1) (14 Sicherheitskontrollen für die UK-Cloud mithilfe von Microsoft Azure) unterstützt. In diesem Dokument wird katalogisiert, wie Azure-Dienste sich an den 14 Prinzipien der Cloudsicherheit gemäß UK NCSC ausrichten, und was es Organisationen ermöglicht, ihre Fähigkeit zur Einhaltung ihrer Complianceverpflichtungen zu beschleunigen, indem sie cloudbasierte Dienste global und im Vereinigten Königreich in der Microsoft Azure Cloud nutzen.
 
  Mit dieser Vorlage wird die Infrastruktur für den Workload bereitgestellt. Der Anwendungscode und unterstützende Software der Geschäftsschicht und der Datenschicht muss installiert und konfiguriert sein. Ausführlichere Bereitstellungsanweisungen finden Sie [hier](https://aka.ms/ukwebappblueprintrepo).
 
@@ -129,7 +129,7 @@ Storage
 
 ### <a name="deployment-architecture"></a>Bereitstellungsarchitektur:
 
-**Lokales Netzwerk:** Ein privates lokales Netzwerk in einer Organisation.
+**Lokales Netzwerk:** Ein privates lokales Netzwerk innerhalb einer Organisation.
 
 **Produktions-VNET:** Im Produktions-[VNET](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (virtuelles Netzwerk) werden die Anwendung und sonstige in Azure ausgeführte Betriebsressourcen gehostet. Jedes VNet kann mehrere Subnetze enthalten, die zum Isolieren und Verwalten des Netzwerkverkehrs verwendet werden.
 
@@ -176,7 +176,7 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 **Firewallprotokolle:** Application Gateway stellt umfassende Diagnose- und Zugriffsprotokolle bereit. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
 
-**Protokollarchivierung:** Die Speicherung von Protokolldaten kann so konfiguriert werden, dass für die Archivierung und eine festgelegte Aufbewahrungsdauer in ein zentrales Azure Storage-Konto geschrieben wird. Protokolle können mithilfe von Azure Log Analytics oder SIEM-Systemen (Security Information & Event Management) von Drittanbietern verarbeitet werden.
+**Protokollarchivierung:** Die Speicherung von Protokolldaten kann so konfiguriert werden, dass für die Archivierung und eine festgelegte Aufbewahrungsdauer in ein zentrales Azure Storage-Konto geschrieben wird. Protokolle können mithilfe von Azure Monitor-Protokolle oder SIEM-Systemen (Security Information & Event Management) von Drittanbietern verarbeitet werden.
 
 ### <a name="identity"></a>Identity
 

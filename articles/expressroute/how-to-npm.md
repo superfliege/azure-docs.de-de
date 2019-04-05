@@ -8,16 +8,18 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118628"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
-In diesem Artikel konfigurieren Sie eine Netzwerkleistungsmonitor-Erweiterung zum Überwachen von ExpressRoute. Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Log Analytics. Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering oder Microsoft-Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen. Dieser Dienst ist auch für Azure Government Cloud verfügbar.
+In diesem Artikel konfigurieren Sie eine Netzwerkleistungsmonitor-Erweiterung zum Überwachen von ExpressRoute. Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Azure Monitor-Protokollen. Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering oder Microsoft-Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen. Dieser Dienst ist auch für Azure Government Cloud verfügbar.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Ihre Möglichkeiten:
 
@@ -60,17 +62,17 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 2. Klicken Sie im unteren Bereich der Hauptseite **Netzwerkleistungsmonitor** auf **Erstellen**, um die Seite **Network Performance Monitor – Create new solution** (Netzwerkleistungsmonitor – Neue Lösung erstellen) zu öffnen. Klicken Sie auf **Log Analytics Workspace – select a workspace** (Log Analytics-Arbeitsbereich – Arbeitsbereich auswählen), um die Seite „Arbeitsbereich“ zu öffnen. Klicken Sie auf **+ Neuen Arbeitsbereich erstellen**, um die Seite „Arbeitsbereich“ zu öffnen.
 3. Klicken Sie auf der Seite **Log Analytics-Arbeitsbereich** auf **Neu erstellen**, und konfigurieren Sie die folgenden Einstellungen:
 
-  * Log Analytics-Arbeitsbereich: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
-  * Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das Sie dem neuen Arbeitsbereich zuordnen möchten.
-  * Ressourcengruppe: Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene.
-  * Speicherort: Wird verwendet, um den Speicherort des Speicherkontos für die Protokolle der Agent-Verbindung anzugeben.
-  * Tarif: Wählen Sie einen Tarif aus.
+   * Log Analytics-Arbeitsbereich: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
+   * Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das Sie dem neuen Arbeitsbereich zuordnen möchten.
+   * Ressourcengruppe: Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene.
+   * Speicherort: Wird verwendet, um den Speicherort des Speicherkontos für die Protokolle der Agent-Verbindung anzugeben.
+   * Tarif: Wählen Sie einen Tarif aus.
   
-    >[!NOTE]
-    >Die ExpressRoute-Verbindung kann sich in einer beliebigen Region in der Welt befinden. Sie muss sich nicht in der gleichen Region befinden wie der Arbeitsbereich.
-    >
+     >[!NOTE]
+     >Die ExpressRoute-Verbindung kann sich in einer beliebigen Region in der Welt befinden. Sie muss sich nicht in der gleichen Region befinden wie der Arbeitsbereich.
+     >
   
-    ![Arbeitsbereich](./media/how-to-npm/4.png)<br><br>
+     ![Arbeitsbereich](./media/how-to-npm/4.png)<br><br>
 4. Klicken Sie auf **OK**, um die Einstellungsvorlage zu speichern und bereitzustellen. Sobald die Vorlage überprüft wurde, klicken Sie auf **Erstellen**, um den Arbeitsbereich bereitzustellen.
 5. Nachdem der Arbeitsbereich bereitgestellt wurde, navigieren Sie zu der Ressource **NetworkMonitoring(Name)**, die Sie erstellt haben. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Für die Lösung ist eine weitere Konfiguration erforderlich**.
 
@@ -84,7 +86,7 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
 3. Laden Sie das PowerShell-Skript aus dem Abschnitt **Konfigurieren der Log Analytics-Agents für die Überwachung per TCP-Protokoll** herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
 
-  ![PowerShell-Skript](./media/how-to-npm/7.png)
+   ![PowerShell-Skript](./media/how-to-npm/7.png)
 
 ### <a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jedem Überwachungsserver (für jedes zu überwachende VNET)
 
@@ -98,20 +100,20 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**.
 3. Lesen Sie die Seite **Lizenzbedingungen** durch, und klicken Sie anschließend auf **Ich stimme zu**.
 4. Auf der Seite **Zielordner** können Sie den Standardinstallationsordner entweder ändern oder beibehalten. Klicken Sie anschließend auf **Weiter**.
-5. Auf der Seite **Agent-Setupoptionen** können Sie auswählen, ob der Agent mit Azure Log Analytics oder Operations Manager verbunden werden soll. Sie können die Auswahl auch leer lassen, wenn Sie den Agent später konfigurieren möchten. Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
+5. Auf der Seite **Agent-Setupoptionen** können Sie auswählen, ob der Agent mit Azure Monitor-Protokollen oder Operations Manager verbunden werden soll. Sie können die Auswahl auch leer lassen, wenn Sie den Agent später konfigurieren möchten. Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
 
-  * Wenn Sie eine Verbindung mit **Azure Log Analytics** herstellen möchten, fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** (Primärschlüssel) ein, die Sie im vorherigen Abschnitt in Editor kopiert haben. Klicken Sie auf **Weiter**.
+   * Wenn Sie eine Verbindung mit **Azure Log Analytics** herstellen möchten, fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** (Primärschlüssel) ein, die Sie im vorherigen Abschnitt in Editor kopiert haben. Klicken Sie auf **Weiter**.
 
-    ![ID und Schlüssel](./media/how-to-npm/8.png)
-  * Wenn Sie eine Verbindung zu **Operations Manager** herstellen möchten, geben Sie auf der Seite **Verwaltungsgruppenkonfiguration** den **Namen der Verwaltungsgruppe**, den **Verwaltungsserver** und den **Verwaltungsserverport** ein. Klicken Sie auf **Weiter**.
+     ![ID und Schlüssel](./media/how-to-npm/8.png)
+   * Wenn Sie eine Verbindung zu **Operations Manager** herstellen möchten, geben Sie auf der Seite **Verwaltungsgruppenkonfiguration** den **Namen der Verwaltungsgruppe**, den **Verwaltungsserver** und den **Verwaltungsserverport** ein. Klicken Sie auf **Weiter**.
 
-    ![Operations Manager](./media/how-to-npm/9.png)
-  * Wählen Sie auf der Seite **Agentaktionskonto**  entweder das Konto **Lokales System** oder **Domäne oder lokaler Computer** aus. Klicken Sie auf **Weiter**.
+     ![Operations Manager](./media/how-to-npm/9.png)
+   * Wählen Sie auf der Seite **Agentaktionskonto**  entweder das Konto **Lokales System** oder **Domäne oder lokaler Computer** aus. Klicken Sie auf **Weiter**.
 
-    ![Konto](./media/how-to-npm/10.png)
+     ![Konto](./media/how-to-npm/10.png)
 6. Überprüfen Sie Ihre Auswahl auf der Seite **Bereit zum Installieren**, und klicken Sie dann auf **Installieren**.
 7. Klicken Sie auf der Seite **Die Konfiguration wurde erfolgreich abgeschlossen** auf **Fertig stellen**.
-8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Log Analytics verbunden ist. Nach dem Herstellen der Verbindung zeigt der Agent folgende Meldung an: **Der Microsoft Monitoring Agent hat erfolgreich eine Verbindung mit dem Microsoft Operations Management Suite-Dienst hergestellt.**
+8. Nach Abschluss wird der Microsoft Monitoring Agent in der Systemsteuerung angezeigt. Dort können Sie Ihre Konfiguration überprüfen und sicherstellen, dass der Agent mit Azure Monitor-Protokollen verbunden ist. Nach dem Herstellen der Verbindung zeigt der Agent folgende Meldung an: **Der Microsoft Monitoring Agent hat erfolgreich eine Verbindung mit dem Microsoft Operations Management Suite-Dienst hergestellt.**
 
 9. Wiederholen Sie diese Schritte für jedes VNET, das Sie überwachen müssen.
 
@@ -126,7 +128,7 @@ So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent übe
 3. Klicken Sie auf die Registerkarte **Proxyeinstellungen** .
 4. Wählen Sie **Proxyserver verwenden** aus, und geben Sie die URL und gegebenenfalls die Portnummer ein. Wenn der Proxyserver eine Authentifizierung erfordert, geben Sie den Benutzernamen und das Kennwort für den Zugriff auf den Proxyserver ein.
 
-  ![proxy](./media/how-to-npm/11.png)
+   ![proxy](./media/how-to-npm/11.png)
 
 ### <a name="verifyagent"></a>2.4: Überprüfen der Agentkonnektivität
 
@@ -135,9 +137,9 @@ Sie können problemlos überprüfen, ob die Agents kommunizieren.
 1. Öffnen Sie die **Systemsteuerung** auf einem Server mit dem Überwachungs-Agent.
 2. Öffnen Sie den **Microsoft Monitoring Agent**.
 3. Klicken Sie auf die Registerkarte **Azure Log Analytics**.
-4. In der Spalte **Status** sollte angezeigt werden, dass der Agent erfolgreich mit Log Analytics verbunden wurde.
+4. In der Spalte **Status** sollte angezeigt werden, dass der Agent erfolgreich mit Azure Monitor-Protokollen verbunden wurde.
 
-  ![status](./media/how-to-npm/12.png)
+   ![status](./media/how-to-npm/12.png)
 
 ### <a name="firewall"></a>2.5: Öffnen der Firewallports auf den Servern des Überwachungs-Agents
 
@@ -170,16 +172,16 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksi
 
 1. Navigieren Sie zur Übersichtskachel „Netzwerkleistungsmonitor“, indem Sie zur Seite **Alle Ressourcen** wechseln und dann auf den in eine Whitelist aufgenommenen NPM-Arbeitsbereich klicken.
 
-  ![NPM-Arbeitsbereich](./media/how-to-npm/npm.png)
+   ![NPM-Arbeitsbereich](./media/how-to-npm/npm.png)
 2. Klicken Sie auf die Übersichtskachel **Netzwerkleistungsmonitor**, um das Dashboard zu öffnen. Das Dashboard enthält die Seite „ExpressRoute“, die anzeigt, dass ExpressRoute sich in einem nicht konfigurierten Zustand befindet. Klicken Sie auf **Featureeinrichtung**, um die Konfigurationsseite des Netzwerkleistungsmonitors zu öffnen.
 
-  ![Featureeinrichtung](./media/how-to-npm/npm2.png)
+   ![Featureeinrichtung](./media/how-to-npm/npm2.png)
 3. Navigieren Sie auf der Konfigurationsseite zur Registerkarte „ExpressRoute-Peerings“, die sich im linken Bereich befindet. Klicken Sie auf **Jetzt ermitteln**.
 
-  ![Ermitteln](./media/how-to-npm/13.png)
+   ![Ermitteln](./media/how-to-npm/13.png)
 4. Nach Abschluss der Ermittlung sehen Sie eine Liste mit folgenden Elementen:
-  * Alle Microsoft-Peeringverbindungen in der oder den ExpressRoute-Leitung(en), die diesem Abonnement zugeordnet ist/sind.
-  * Alle privaten Peeringverbindungen, die mit den mit diesem Abonnement verknüpften VNets verbunden sind.
+   * Alle Microsoft-Peeringverbindungen in der oder den ExpressRoute-Leitung(en), die diesem Abonnement zugeordnet ist/sind.
+   * Alle privaten Peeringverbindungen, die mit den mit diesem Abonnement verknüpften VNets verbunden sind.
             
 ## <a name="configmonitor"></a>Schritt 5: Konfigurieren von Monitoren
 

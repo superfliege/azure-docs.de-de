@@ -3,7 +3,7 @@ title: Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Micros
 description: Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d0826614c22809eba7a86f683aa970a664ed9825
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190363"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438562"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -30,7 +30,7 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
 
 - **Aktivität** 
     - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
-    - **Überwachungsprotokolle**: [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
+    - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
 - **Sicherheit** 
     - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
     - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
@@ -149,23 +149,13 @@ Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese aut
 
 ## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
 
-Sie können die [Daten zu Anmeldungen herunterladen](quickstart-download-sign-in-report.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Wenn Sie auf **Herunterladen** klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt.  Neben einer Downloadschaltfläche steht im Azure-Portal eine Option zum [Generieren eines Skripts zum Herunterladen Ihrer Daten zur Verfügung](tutorial-signin-logs-download-script.md).  
+Sie können die [Daten zu Anmeldungen herunterladen](quickstart-download-sign-in-report.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Durch Klicken auf **Herunterladen** können Sie eine CSV- oder JSON-Datei der letzten 250.000 Datensätze erstellen.  
 
 ![Herunterladen](./media/concept-sign-ins/71.png "Herunterladen")
-
-Falls eine höhere Flexibilität erforderlich ist, können Sie die Skriptoption verwenden. Wenn Sie auf **Skript** klicken, wird ein PowerShell-Skript mit allen von Ihnen festgelegten Filtern erstellt. Laden Sie dieses Skript herunter, und führen Sie es im **Administratormodus** aus, um die CSV-Datei zu generieren. 
 
 > [!IMPORTANT]
 > Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>Ausführen des Skripts auf einem Windows 10-Computer
-
-Wenn Sie das Skript auf einem **Windows 10**-Computer ausführen möchten, müssen Sie zuerst einige zusätzliche Schritte ausführen. 
-
-1. Installieren Sie das [Az-Modul](/powershell/azure/install-az-ps).
-2. Importieren Sie das Modul, indem Sie eine PowerShell-Eingabeaufforderung öffnen und den Befehl **Import-Module Az** ausführen.
-3. Führen Sie **Set-ExecutionPolicy unrestricted**aus, und wählen Sie **Ja, alle** aus. 
-4. Nun können Sie das heruntergeladene PowerShell-Skript im Administratormodus ausführen, um die CSV-Datei zu generieren.
 
 ## <a name="sign-ins-data-shortcuts"></a>Tastenkombinationen für Anmeldedaten
 
@@ -240,7 +230,7 @@ Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über a
 
 ## <a name="office-365-activity-logs"></a>Office 365-Aktivitätsprotokolle
 
-Sie können Office 365-Aktivitätsprotokolle im [Office 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Office 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
+Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Microsoft 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
 
 Mithilfe der [Office 365-Verwaltungs-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
 

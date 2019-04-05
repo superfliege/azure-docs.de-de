@@ -1,27 +1,28 @@
 ---
-title: 'Schnellstartanleitung: Übermitteln eines Workflows mit mehreren Eingaben – Microsoft Genomics'
+title: Übermitteln eines Workflows mit mehreren Eingaben – Microsoft Genomics
 titleSuffix: Azure
-description: In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
+description: In diesem Artikel erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien aus dem gleichen Beispiel umfasst. Sie haben den msgen-Client bereits installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt.
 services: genomics
+ms.service: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1007d81a73ce9f183f997354188e534274b2fe95
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730361"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791357"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien **aus dem gleichen Beispiel** umfasst. Wenn Sie das **gleiche Beispiel** auf dem Sequencer beispielsweise in mehreren Bereichen ausführen, gibt der Sequencer ggf. für jeden Bereich ein FASTQ-Dateipaar aus. Anstatt diese FASTQ-Dateien vor dem Alignment und Variant Calling zu verketten, können Sie alle Eingaben direkt an den `msgen`-Client übermitteln. Die Ausgabe des `msgen`-Clients ist dann ein **einzelner Satz** mit Dateien, der eine BAM-, BAI- und VCF-Datei umfasst. 
+In diesem Artikel erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien **aus dem gleichen Beispiel** umfasst. Wenn Sie das **gleiche Beispiel** auf dem Sequencer beispielsweise in mehreren Bereichen ausführen, gibt der Sequencer ggf. für jeden Bereich ein FASTQ-Dateipaar aus. Anstatt diese FASTQ-Dateien vor dem Alignment und Variant Calling zu verketten, können Sie alle Eingaben direkt an den `msgen`-Client übermitteln. Die Ausgabe des `msgen`-Clients ist dann ein **einzelner Satz** mit Dateien, der eine BAM-, BAI- und VCF-Datei umfasst. 
 
 Bedenken Sie allerdings, dass eine Übermittlung **keine Mischung aus FASTQ- und BAM-Dateien** enthalten darf. Außerdem ist es **nicht** möglich, mehrere FASTQ- oder BAM-Dateien von mehreren Einzelpersonen zu übermitteln. 
 
-In diesem Artikel wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit dieser Schnellstartanleitung fortfahren. 
+In diesem Artikel wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit diesem Artikel fortfahren. 
 
 
 ## <a name="multiple-bam-files"></a>Mehrere BAM-Dateien

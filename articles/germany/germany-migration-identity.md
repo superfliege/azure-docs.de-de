@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 0417deb3573615d83da50c0b584e8446cb1528ca
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 35923f5b62e50f9978bf36d3d29fefc2dcdc587d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "53321281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874771"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>Migrieren von Identitätsressourcen zu Azure weltweit
 
@@ -24,9 +24,9 @@ Dieser Artikel enthält Informationen dazu, wie Sie Azure-Identitätsressourcen 
 
 Azure Active Directory (Azure AD) in Azure Deutschland ist von Azure AD in Azure weltweit getrennt. Derzeit können keine Sie Azure AD-Benutzer von Azure Deutschland nach Azure weltweit verschieben.
 
-Standardmandantennamen in Azure Deutschland und Azure weltweit sind immer unterschiedlich, weil Azure automatisch ein zur entsprechenden Umgebung gehörendes Suffix anfügt. Beispielsweise lautet ein Benutzername für ein Mitglied des Mandanten **contoso** in Azure weltweit **user1@contoso.microsoftazure.com**. In Azure Deutschland lautet der Name **user1@contoso.microsoftazure.de**.
+Standardmandantennamen in Azure Deutschland und Azure weltweit sind immer unterschiedlich, weil Azure automatisch ein zur entsprechenden Umgebung gehörendes Suffix anfügt. Beispielsweise lautet ein Benutzernamen für ein Mitglied des Mandanten **contoso** in Azure weltweit **user1\@contoso.microsoftazure.com**. In Azure Deutschland lautet er **user1\@contoso.microsoftazure.de**.
 
-Wenn Sie benutzerdefinierte Domänennamen (etwa **contoso.com**) in Azure AD verwenden, müssen Sie den Domänennamen in Azure registrieren. Benutzerdefinierte Domänennamen können immer *nur in jeweils einer* Cloudumgebung definiert sein. Die Domänenüberprüfung schlägt fehl, wenn die Domäne bereits in *irgendeiner* Instanz von Azure Active Directory registriert ist. Zum Beispiel kann der Benutzer **user1@contoso.com**, der in Azure Deutschland vorhanden ist, nicht gleichzeitig unter demselben Namen auch in Azure weltweit vorhanden sein. Die Registrierung für **contoso.com** würde fehlschlagen.
+Wenn Sie benutzerdefinierte Domänennamen (etwa **contoso.com**) in Azure AD verwenden, müssen Sie den Domänennamen in Azure registrieren. Benutzerdefinierte Domänennamen können immer *nur in jeweils einer* Cloudumgebung definiert sein. Die Domänenüberprüfung schlägt fehl, wenn die Domäne bereits in *irgendeiner* Instanz von Azure Active Directory registriert ist. Zum Beispiel kann der Benutzer **user1\@contoso.com**, der in Azure Deutschland vorhanden ist, nicht gleichzeitig unter demselben Namen auch in Azure weltweit vorhanden sein. Die Registrierung für **contoso.com** würde fehlschlagen.
 
 Eine „sanfte“ Migration, bei der sich einige Benutzer bereits in der neuen Umgebung und einige Benutzer noch in der alten Umgebung befinden, erfordert unterschiedliche Anmeldenamen für die verschiedenen Cloudumgebungen.
 
@@ -132,7 +132,7 @@ Weitere Informationen finden Sie unter:
 Azure AD Connect ist ein Tool, das Ihre Identitätsdaten zwischen einer lokalen Active Directory-Instanz und Azure Active Directory (Azure AD) synchronisiert. Die aktuelle Version von Azure AD Connect funktioniert sowohl für Azure Deutschland als auch für Azure weltweit. Azure AD Connect kann immer nur mit jeweils einer Azure AD-Instanz synchronisieren. Wenn das Synchronisieren mit Azure Deutschland und Azure weltweit gleichzeitig erfolgen soll, beachten Sie die folgenden Optionen:
 
 - Verwenden Sie einen zusätzlichen Server für eine zweite Instanz von Azure AD Connect. Es ist nicht möglich, mehrere Instanzen von Azure AD Connect auf demselben Server zu haben.
-- Definieren Sie einen neuen Anmeldenamen für Ihre Benutzer. Der Domänenteil (nach **@**) des Anmeldenamens muss in jeder Umgebung unterschiedlich sein.
+- Definieren Sie einen neuen Anmeldenamen für Ihre Benutzer. Der Domänenteil (nach **\@**) des Anmeldenamens muss in jeder Umgebung unterschiedlich sein.
 - Definieren Sie eine klare „Quelle der Wahrheit“, wenn Sie auch rückwärts synchronisieren (aus Azure AD in das lokale Active Directory).
 
 Weitere Informationen dazu, wie Sie in verschiedenen Cloudumgebungen über Azure AD Connect synchronisieren, finden Sie in dem Blogbeitrag [Using ADConnect with multiple clouds](https://blogs.technet.microsoft.com/ralfwi/2017/01/24/using-adconnect-with-multiple-clouds/).

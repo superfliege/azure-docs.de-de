@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119216"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961413"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -29,10 +29,10 @@ Wenn Sie wissen, wie Probleme in Ihrer Azure Digital Twins-Instanz diagnostizier
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Aktivieren von Log Analytics für Ihre Instanz
 
-Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden in Azure Monitor angezeigt. Bei dieser Dokumentation wird davon ausgegangen, dass Sie einen [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure-Befehlszeilenschnittstelle](../azure-monitor/learn/quick-create-workspace-cli.md) oder [ PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
+Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden in Azure Monitor angezeigt. Bei dieser Dokumentation wird davon ausgegangen, dass Sie einen [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure-Befehlszeilenschnittstelle](../azure-monitor/learn/quick-create-workspace-cli.md) oder [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
 
 > [!NOTE]
-> Wenn Sie zum ersten Mal Ereignisse an Azure Log Analytics senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
+> Wenn Sie zum ersten Mal Ereignisse an Azure Monitor-Protokolle senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
 
 Informationen zum Konfigurieren von Überwachung und Protokollierung für Azure Digital Twins-Ressourcen finden Sie unter [Vorgehensweise: Konfigurieren von Überwachung und Protokollierung](./how-to-configure-monitoring.md).
 
@@ -43,11 +43,11 @@ Informationen zum Konfigurieren von Diagnoseprotokolleinstellungen in Azure Digi
 
 ### <a name="trace-sensor-telemetry"></a>Nachverfolgen von Sensortelemetriedaten
 
-Vergewissern Sie sich beim Verfolgen von Sensortelemetriedaten, dass die Diagnoseeinstellungen für Ihre Azure Digital Twins-Instanz aktiviert sind. Stellen Sie sicher, dass alle gewünschten Protokollkategorien ausgewählt sind. Bestätigen Sie abschließend, dass die gewünschten Protokolle an Azure Log Analytics gesendet werden.
+Vergewissern Sie sich beim Verfolgen von Sensortelemetriedaten, dass die Diagnoseeinstellungen für Ihre Azure Digital Twins-Instanz aktiviert sind. Stellen Sie sicher, dass alle gewünschten Protokollkategorien ausgewählt sind. Bestätigen Sie abschließend, dass die gewünschten Protokolle an Azure Monitor-Protokolle gesendet werden.
 
 Um eine Sensortelemetriemeldung den entsprechenden Protokollen zuzuordnen, können Sie eine Korrelations-ID für die Ereignisdaten angeben, die gesendet werden. Legen Sie dazu die `x-ms-client-request-id`-Eigenschaft auf eine GUID fest.
 
-Öffnen Sie nach dem Senden von Telemetriedaten Azure Log Analytics, um Protokolle mithilfe der Korrelations-ID abzufragen:
+Öffnen Sie nach dem Senden von Telemetriedaten die Protokollanalyse, um Protokolle mithilfe der Korrelations-ID abzufragen:
 
 ```Kusto
 AzureDiagnostics
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Die Korrelations-ID, die für die Ereignisdaten angegeben wurde. |
 
-Wenn Sie die Protokollierung für Ihre benutzerdefinierte Funktion aktivieren, werden diese Protokolle in Ihrer Azure Log Analytics-Instanz mit der Kategorie `UserDefinedFunction` angezeigt. Um sie abzurufen, geben Sie die folgende Abfragebedingung in Azure Log Analytics ein:
+Wenn Sie die Protokollierung für Ihre benutzerdefinierte Funktion aktivieren, werden diese Protokolle in Ihrer Instanz der Protokollanalyse mit der Kategorie `UserDefinedFunction` angezeigt. Um sie abzurufen, geben Sie die folgende Abfragebedingung in der Protokollanalyse ein:
 
 ```Kusto
 AzureDiagnostics

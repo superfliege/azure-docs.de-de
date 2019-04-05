@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080064"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -85,22 +85,22 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
 - Die IP-Adresse bzw. der FQDN des Proxyservers sollte das Format *http://IPaddress* oder *http://FQDN* aufweisen.
 - Es werden nur HTTP-Proxys unterstützt. HTTPS-basierte Proxyserver werden vom Collector nicht unterstützt.
 - Wenn es sich bei dem Proxyserver um einen abfangenden Proxy handelt, müssen Sie das Proxyzertifikat auf der Collector-VM importieren.
-    1. Rufen Sie auf der Collector-VM den Eintrag **Startmenü** > **Computerzertifikate verwalten** auf.
-    2. Suchen Sie im Tool „Zertifikate“ unter **Zertifikate – Lokaler Computer** nach **Vertrauenswürdige Herausgeber** > **Zertifikate**.
+  1. Rufen Sie auf der Collector-VM den Eintrag **Startmenü** > **Computerzertifikate verwalten** auf.
+  2. Suchen Sie im Tool „Zertifikate“ unter **Zertifikate – Lokaler Computer** nach **Vertrauenswürdige Herausgeber** > **Zertifikate**.
 
-        ![Tool „Zertifikate“](./media/concepts-intercepting-proxy/certificates-tool.png)
+      ![Tool „Zertifikate“](./media/concepts-intercepting-proxy/certificates-tool.png)
 
-    3. Kopieren Sie das Proxyzertifikat auf die Collector-VM. Möglicherweise müssen Sie das Zertifikat über Ihren Netzwerkadministrator abrufen.
-    4. Doppelklicken Sie auf das Zertifikat, um es zu öffnen, und klicken Sie anschließend auf **Zertifikat installieren**.
-    5. Wählen Sie im Zertifikatimport-Assistenten die Option **Lokaler Computer** als Speicherort aus.
+  3. Kopieren Sie das Proxyzertifikat auf die Collector-VM. Möglicherweise müssen Sie das Zertifikat über Ihren Netzwerkadministrator abrufen.
+  4. Doppelklicken Sie auf das Zertifikat, um es zu öffnen, und klicken Sie anschließend auf **Zertifikat installieren**.
+  5. Wählen Sie im Zertifikatimport-Assistenten die Option **Lokaler Computer** als Speicherort aus.
 
-    ![Zertifikatspeicherort](./media/concepts-intercepting-proxy/certificate-store-location.png)
+     ![Zertifikatspeicherort](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-    6. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** > **Durchsuchen** > **Vertrauenswürdige Herausgeber** aus. Klicken Sie auf **Fertig stellen**, um das Zertifikat zu importieren.
+  6. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** > **Durchsuchen** > **Vertrauenswürdige Herausgeber** aus. Klicken Sie auf **Fertig stellen**, um das Zertifikat zu importieren.
 
-    ![Zertifikatspeicher](./media/concepts-intercepting-proxy/certificate-store.png)
+     ![Zertifikatspeicher](./media/concepts-intercepting-proxy/certificate-store.png)
 
-    7. Überprüfen Sie, ob das Zertifikat wie erwartet importiert wurde und ob die Voraussetzungsprüfung für die Internetkonnektivität wie erwartet funktioniert.
+  7. Überprüfen Sie, ob das Zertifikat wie erwartet importiert wurde und ob die Voraussetzungsprüfung für die Internetkonnektivität wie erwartet funktioniert.
 
 
 ### <a name="urls-for-connectivity"></a>URLs für Konnektivität
@@ -111,7 +111,7 @@ Die Konnektivitätsprüfung wird durch das Herstellen einer Verbindung mit einer
 --- | --- | ---
 *.portal.azure.com | Gilt für Azure Global. Überprüft die Konnektivität mit dem Azure-Dienst und die Zeitsynchronisierung. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt fehl, wenn keine Konnektivität besteht.
 *.portal.azure.us | Gilt nur für Azure Government. Überprüft die Konnektivität mit dem Azure-Dienst und die Zeitsynchronisierung. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt fehl, wenn keine Konnektivität besteht.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Wird zum Herunterladen des auf PowerShell basierenden vCenter PowerCLI-Moduls verwendet. | Zugriff auf URLs ist optional.<br/><br/> Die Voraussetzungsprüfung schlägt nicht fehl.<br/><br/> Die automatische Installation des Moduls auf der Collector-VM schlägt fehl. Sie müssen das Modul manuell installieren.
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Wird zum Herunterladen des auf PowerShell basierenden vCenter PowerCLI-Moduls verwendet. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt nicht fehl.<br/><br/> Die automatische Installation des Moduls auf der Collector-VM schlägt fehl. Sie müssen das Modul manuell auf einem Computer installieren, der über eine Internetverbindung verfügt, und es dann auf die Appliance kopieren. [Mehr dazu erfahren Sie in Schritt 4 in diesem Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Manuelles Installieren des VMware PowerCLI-Moduls

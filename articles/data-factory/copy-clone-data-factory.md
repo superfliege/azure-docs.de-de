@@ -3,20 +3,20 @@ title: Kopieren oder Klonen einer Data Factory in Azure Data Factory | Microsoft
 description: Erfahren Sie, wie Sie eine Data Factory in Azure Data Factory kopieren oder klonen.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: douglasl
-ms.openlocfilehash: c62581447cd395bd48a787fa7dc89659d5172486
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192739"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575612"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopieren oder Klonen einer Data Factory in Azure Data Factory
 
@@ -35,6 +35,8 @@ Im folgenden finden Sie einige Situationen, in denen es hilfreich sein kann, ein
 1. Über die Data Factory-Benutzeroberfläche im Azure-Portal können Sie die gesamte Nutzlast Ihrer Data Factory zusammen mit einer Parameterdatei in eine Resource Manager-Vorlage exportieren, in der Sie Werte ändern können, bevor Sie Ihre Factory klonen.
 
 1. Als Voraussetzung hierfür müssen Sie die Ziel-Data Factory über das Azure-Portal erstellen.
+
+1. Wenn Sie eine SelfHosted IntegrationRuntime in Ihrer Quellfactory haben, müssen Sie sie mit dem gleichen Namen in der Zielfactory vorab erstellen. Wenn Sie die SelfHosted IRs zwischen verschiedenen Factorys freigeben möchten, können Sie das [hier](author-visually.md#best-practices-for-git-integration) veröffentlichte Muster verwenden.
 
 1. Wenn Sie sich im Git-Modus befinden, wird bei jedem Veröffentlichen über das Portal die Resource Manager-Vorlage der Factory in Git im Branch „adf_publish“ des Repositorys gespeichert.
 

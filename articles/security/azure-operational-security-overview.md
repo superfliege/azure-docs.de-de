@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116472"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241084"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
@@ -29,13 +29,13 @@ Die [Azure-Betriebssicherheit](https://docs.microsoft.com/azure/security/azure-o
 
 Das IT-Betriebsteam ist für die Verwaltung der Rechenzentrumsinfrastruktur, der Anwendungen und der Daten verantwortlich, also auch für die Stabilität und Sicherheit dieser Systeme. Für die Gewinnung von Erkenntnissen zur Sicherheit in immer komplexeren IT-Umgebungen müssen Organisationen aber häufig Daten aus mehreren Sicherheits- und Verwaltungssystemen zusammentragen.
 
-[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist eine cloudbasierte IT-Verwaltungslösung, die Sie beim Verwalten und Schützen Ihrer lokalen und cloudbasierten Infrastruktur unterstützt. Die Kernfunktionen werden durch die folgenden Dienste bereitgestellt, die in Azure ausgeführt werden. Azure umfasst eine Vielzahl von Diensten, mit denen Sie Ihre lokale und cloudbasierte Infrastruktur verwalten und schützen können. Jeder Dienst stellt eine bestimmte Verwaltungsfunktion bereit. Sie können mehrere Dienste kombinieren, um verschiedene Verwaltungsszenarien umzusetzen. 
+[Microsoft Azure Monitor-Protokolle](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist eine cloudbasierte IT-Verwaltungslösung, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert. Die Kernfunktionen werden durch die folgenden Dienste bereitgestellt, die in Azure ausgeführt werden. Azure umfasst eine Vielzahl von Diensten, mit denen Sie Ihre lokale und cloudbasierte Infrastruktur verwalten und schützen können. Jeder Dienst stellt eine bestimmte Verwaltungsfunktion bereit. Sie können mehrere Dienste kombinieren, um verschiedene Verwaltungsszenarien umzusetzen. 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) erfasst Daten aus verwalteten Quellen in zentralen Datenspeichern. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. 
 
-Sie können Daten aus einer Vielzahl von Quellen zusammenführen und Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung kombinieren. Log Analytics trennt zudem die Datensammlung klar von der Aktion, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.
+Sie können Daten aus einer Vielzahl von Quellen zusammenführen und Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung kombinieren. Azure Monitor-Protokolle trennt zudem die Datensammlung klar von der Aktion, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.
 
 ### <a name="automation"></a>Automation
 
@@ -93,7 +93,7 @@ Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsp
 >[!Note]
 >Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Berechtigungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-Security Center verwendet den Microsoft Monitoring Agent. Dies ist der gleiche Agent, den auch der Log Analytics-Dienst nutzt. Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen Log Analytics-[Arbeitsbereich](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access), der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in einem neuen Arbeitsbereich gespeichert.
+Security Center verwendet den Microsoft Monitoring Agent. Dies ist der gleiche Agent, den auch der Azure Monitor-Dienst nutzt. Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen Log Analytics-[Arbeitsbereich](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access), der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in einem neuen Arbeitsbereich gespeichert.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -139,7 +139,7 @@ Network Watcher vereinfacht die Überwachung und Diagnose Ihres Azure-Netzwerks.
 
 Network Watcher verfügt derzeit über die folgenden Funktionen:
 
-- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Bietet eine Ansicht der verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen in einer Ressourcengruppe.
+- [Topology](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Bietet eine Ansicht der verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen in einer Ressourcengruppe.
 - [Variable Paketerfassung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) Erfasst die auf dem virtuellen Computer ein- und ausgehenden Paketdaten. Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweise das Festlegen von Zeit- und Größeneinschränkungen und bieten damit viel Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im CAP-Format gespeichert werden.
 - [IP-Datenflussüberprüfung](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Überprüft basierend auf 5-Tupel-Paketparametern für Datenflussinformationen (IP-Zieladresse, IP-Quelladresse, Zielport, Quellport und Protokoll), ob ein Paket zugelassen oder abgelehnt wird. Wenn eine Sicherheitsgruppe ein Paket ablehnt, werden die Regel und die Gruppe zurückgegeben, die das Paket abgelehnt haben.
 - [Nächster Hop:](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.

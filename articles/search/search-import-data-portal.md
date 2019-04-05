@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee1b2a40dbcbd53a758ac71f30401778ef07e872
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229756"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960755"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Datenimport-Assistent für Azure Search
 
@@ -77,15 +77,17 @@ Der **Datenimport-Assistent** erstellt ein persistentes Datenquellenobjekt, das 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) (wird nicht für Pipelines vom Typ [Kognitive Suche](cognitive-search-concept-intro.md) unterstützt)
 
-Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur aus einer einzelnen Tabelle, Datenbanksicht oder entsprechenden Datenstruktur importieren. Diese Datenstruktur muss vor dem Ausführen des Assistenten erstellt werden.
+Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur aus einer einzelnen Tabelle, Datenbanksicht oder entsprechenden Datenstruktur importieren. 
 
-|  Auswahl | Beschreibung |
+Diese Datenstruktur muss vor dem Ausführen des Assistenten erstellt werden und über Inhalt verfügen. Führen Sie den **Datenimport**-Assistenten nicht für eine leere Datenquelle aus.
+
+|  Auswahl | BESCHREIBUNG |
 | ---------- | ----------- |
 | **Vorhandene Datenquelle** |Wenn Sie in Ihrem Suchdienst bereits Indexer definiert haben, können Sie eine vorhandene Datenquellendefinition für einen weiteren Importvorgang auswählen. In Azure Search werden Datenquellenobjekte nur von Indexern verwendet. Datenquellenobjekte können programmgesteuert oder über den **Datenimport**-Assistenten erstellt werden.|
-| **Beispiele**| Azure Search hostet eine kostenlose öffentliche Azure SQL-Datenbank, anhand der Sie sich mit dem Importieren sowie mit Abfrageanforderungen in Azure Search vertraut machen können. Unter [Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen](search-get-started-portal.md) finden Sie eine exemplarische Vorgehensweise. |
+| **Beispiele**| Azure Search hostet eine kostenlose öffentliche Azure SQL-Datenbank, anhand der Sie sich mit dem Importieren sowie mit Abfrageanforderungen in Azure Search vertraut machen können. Weitere Informationen finden Sie unter [Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen](search-get-started-portal.md) finden Sie eine exemplarische Vorgehensweise. |
 | **Azure SQL-Datenbank** |Dienstname, Anmeldeinformationen für einen Datenbankbenutzer mit Leseberechtigung und ein Datenbankname können entweder auf der Seite oder über eine ADO.NET-Verbindungszeichenfolge angegeben werden. Wenn Sie Eigenschaften anzeigen oder anpassen möchten, verwenden Sie die Verbindungszeichenfolgen-Option. <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
 | **SQL Server auf virtuellen Azure-Computern** |Geben Sie einen vollqualifizierten Dienstnamen, eine Benutzer-ID, ein Kennwort und eine Datenbank als Verbindungszeichenfolge an. Um diese Datenquelle verwenden zu können, müssen Sie zuvor ein Zertifikat im lokalen Speicher installieren haben, das die Verbindung verschlüsselt. Eine Anleitung finden Sie unter [SQL-VM-Verbindung mit Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
-| **Azure Cosmos DB** |Zu den erforderlichen Angaben gehören das Konto, die Datenbank und die Sammlung. Alle Dokumente in der Sammlung werden in den Index aufgenommen. Sie können eine Abfrage zum Vereinfachen oder Filtern des Rowsets oder eine Abfrage zum Erkennen geänderter Dokumente bei nachfolgenden Datenaktualisierungsvorgängen definieren. |
+| **Cosmos DB** |Zu den erforderlichen Angaben gehören das Konto, die Datenbank und die Sammlung. Alle Dokumente in der Sammlung werden in den Index aufgenommen. Sie können eine Abfrage zum Vereinfachen oder Filtern des Rowsets definieren oder die Abfrage leer lassen. Eine Abfrage ist in diesem Assistenten nicht erforderlich.|
 | **Azure Blob Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Container. Optional: Wenn zu Gruppierungszwecken für Blobnamen eine virtuelle Benennungskonvention verwendet wird, können Sie den virtuellen Verzeichnisteil des Namens als Ordner unter dem Container angeben. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md). |
 | **Azure Table Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Tabellenname. Optional können Sie eine Abfrage zum Abrufen einer Teilmenge der Tabellen angeben. Weitere Informationen finden Sie unter [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md). |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099983"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,7 @@ Obwohl Data Factory nur in einigen Regionen verfügbar ist, ist der Datenverschi
 Azure Data Factory speichert keine Daten mit Ausnahme für verknüpfte Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Mit Data Factory können Sie datengesteuerte Workflows erstellen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Computediensten](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem haben Sie die Möglichkeit, mithilfe von SDKs und Azure Monitor Workflows zu überwachen und zu verwalten.
 
 Data Factory ist zertifiziert für:
+
 | **[CSA STAR-Zertifizierung](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
@@ -45,12 +46,14 @@ Data Factory ist zertifiziert für:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Informationen zur Konformität von Azure und zur eigenständigen Sicherung der Azure-Infrastruktur finden Sie im [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Die aktuelle Liste aller Azure-Complianceangebote finden Sie unter http://aka.ms/AzureCompliance.
+Informationen zur Konformität von Azure und zur eigenständigen Sicherung der Azure-Infrastruktur finden Sie im [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Die aktuelle Liste aller Azure-Complianceangebote finden Sie unter https://aka.ms/AzureCompliance.
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 
 - **Cloudszenario**: In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hybridszenario**: In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Cloudszenarien
 
@@ -89,10 +92,10 @@ Azure Data Lake Store bietet ebenfalls eine Verschlüsselung für Daten, die im 
 Azure Blob Storage und Azure Table Storage unterstützen die Speicherdienstverschlüsselung (Storage Service Encryption, SSE), bei der Ihre Daten vor der Weitergabe an den Speicher automatisch verschlüsselt und vor dem Abrufen entschlüsselt werden. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 unterstützt die Client- und Serververschlüsselung von ruhenden Daten. Weitere Informationen finden Sie unter [Schutz von Daten mittels Verschlüsselung](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+Amazon S3 unterstützt die Client- und Serververschlüsselung von ruhenden Daten. Weitere Informationen finden Sie unter [Schutz von Daten mittels Verschlüsselung](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift unterstützt die Clusterverschlüsselung für ruhende Daten. Weitere Informationen finden Sie unter [Amazon Redshift-Datenbankverschlüsselung](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
+Amazon Redshift unterstützt die Clusterverschlüsselung für ruhende Daten. Weitere Informationen finden Sie unter [Amazon Redshift-Datenbankverschlüsselung](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce unterstützt Shield Platform Encryption, die eine Verschlüsselung aller Dateien, Anlagen und benutzerdefinierten Felder ermöglicht. Weitere Informationen finden Sie unter [Grundlegendes zum OAuth-Webserver-Authentifizierungsfluss](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
@@ -109,9 +112,9 @@ Die Anmeldeinformationen für Ihre lokalen Datenspeicher sind immer verschlüsse
 
 - **Lokales Speichern von Anmeldeinformationen.** Wenn Sie Anmeldeinformationen lokal auf der selbstgehosteten Integration Runtime verschlüsseln und speichern möchten, führen Sie die Schritte in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) aus. Diese Option wird von allen Connectors unterstützt. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen. 
 
-   Verwenden Sie das **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential**-Cmdlet, um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential**-Element in der Verbindungszeichenfolge) verwenden, um mit dem **Set-AzureRmDataFactoryV2LinkedService**-Cmdlet einen verknüpften Dienst zu erstellen.  
+   Verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential**, um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential**-Element in der Verbindungszeichenfolge) verwenden, um mit dem Cmdlet **Set-AzDataFactoryV2LinkedService** einen verknüpften Dienst zu erstellen.  
 
-- **Speichern in verwaltetem Azure Data Factory-Speicher**. Wenn Sie das **Set-AzureRmDataFactoryV2LinkedService**-Cmdlet direkt mit den Verbindungszeichenfolgen und Anmeldeinformationen inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und im verwalteten Speicher von Azure Data Factory gespeichert. Diese vertraulichen Informationen werden weiterhin mithilfe eines Zertifikats verschlüsselt, wobei diese Zertifikate von Microsoft verwaltet werden.
+- **Speichern in verwaltetem Azure Data Factory-Speicher**. Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und im verwalteten Speicher von Azure Data Factory gespeichert. Diese vertraulichen Informationen werden weiterhin mithilfe eines Zertifikats verschlüsselt, wobei diese Zertifikate von Microsoft verwaltet werden.
 
 
 
@@ -184,7 +187,7 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers de
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

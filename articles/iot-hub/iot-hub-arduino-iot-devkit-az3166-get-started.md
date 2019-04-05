@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 2f480fd4d5d7d6261776660f1a7eab587320c849
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: e35e669c4abc4815b932e09d369af28e42617e8c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052512"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535681"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -88,10 +88,10 @@ Sobald die Verbindung hergestellt wird, wird DevKit innerhalb weniger Sekunden n
 
 ![WLAN-Name und IP-Adresse](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ip.jpg)
 
-> [!NOTE] 
-> Die im Foto angezeigte IP-Adresse entspricht möglicherweise nicht der tatsächlichen IP-Adresse, die zugewiesen ist und auf dem DevKit-Display angezeigt wird. Dies ist normal, da bei WLAN das DHCP zur dynamischen Zuweisung von IP-Adressen verwendet wird.
+> [!NOTE]
+> Sie benötigen ein 2,4-GHz-Netzwerk, um IoT DevKit einzusetzen. Das WLAN-Modul von IoT DevKit ist nicht mit dem 5-GHz-Netzwerk kompatibel. Weitere Informationen finden Sie in den [häufig gestellten Fragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration).
 
-Nach der WLAN-Konfiguration werden Ihre Anmeldeinformationen für diese Verbindung auf dem Gerät beibehalten, auch wenn es nicht angeschlossen ist. Wenn Sie die WLAN-Konfiguration für DevKit zu Hause vorgenommen und DevKit dann zu Ihrem Arbeitsplatz mitgenommen haben, müssen Sie den AP-Modus neu konfigurieren (beginnend mit Schritt „Wechseln in den AP-Modus“), um die Verbindung von DevKit mit dem WLAN Ihres Arbeitsplatzes herzustellen. 
+Nach der WLAN-Konfiguration werden Ihre Anmeldeinformationen für diese Verbindung auf dem Gerät beibehalten, auch wenn es nicht angeschlossen ist. Wenn Sie die WLAN-Konfiguration für DevKit zu Hause vorgenommen und DevKit dann zu Ihrem Arbeitsplatz mitgenommen haben, müssen Sie den AP-Modus neu konfigurieren (beginnend mit Schritt „Wechseln in den AP-Modus“), um die Verbindung von DevKit mit dem WLAN Ihres Arbeitsplatzes herzustellen.
 
 ## <a name="start-using-the-devkit"></a>Starten unter Verwendung von DevKit
 
@@ -175,9 +175,9 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für DevKi
 
 ### <a name="install-st-link-drivers"></a>Installieren von ST-Link-Treibern
 
-[ST-Link/V2](http://www.st.com/en/development-tools/st-link-v2.html) ist die USB-Schnittstelle, die vom IoT-DevKit für die Kommunikation mit Ihrem Entwicklungscomputer verwendet wird. Führen Sie die Schritte für das jeweilige Betriebssystem aus, um dem Computer Zugriff auf Ihr Gerät zu gewähren.
+[ST-Link/V2](https://www.st.com/en/development-tools/st-link-v2.html) ist die USB-Schnittstelle, die vom IoT-DevKit für die Kommunikation mit Ihrem Entwicklungscomputer verwendet wird. Sie müssen sie unter Windows installieren, damit der kompilierte Gerätecode zum DevKit übertragen werden kann. Führen Sie die Schritte für das jeweilige Betriebssystem aus, um dem Computer Zugriff auf Ihr Gerät zu gewähren.
 
-* **Windows:** Laden Sie den USB-Treiber von der [STMicroelectronics-Website](http://www.st.com/en/development-tools/stsw-link009.html) herunter, und installieren Sie ihn.
+* **Windows:** Laden Sie den USB-Treiber von der [STMicroelectronics-Website](https://www.st.com/en/development-tools/stsw-link009.html) herunter, und installieren Sie ihn.
 * **macOS**: Für macOS ist kein Treiber erforderlich.
 * **Ubuntu**: Führen Sie den folgenden Befehl im Terminal aus. Melden Sie sich ab und wieder an, damit die Gruppenänderung wirksam wird:
     ```bash

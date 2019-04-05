@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083180"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
 
@@ -28,7 +28,7 @@ Die App Wingtip Tickets SaaS Multi-tenant Database verwendet ein mit Shards konf
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-
+> 
 > * Simulieren der Verwendung einer mehrinstanzenfähigen Datenbank mit Shards durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Datenbank bei der Reaktion auf eine Steigerung der Last
 > * Zentrales Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
@@ -52,7 +52,7 @@ Die Verwaltung der Datenbankleistung umfasst das Kompilieren und Analysieren von
 
 Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Warnung für Datenbanken verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen unpraktisch.
 
-Bei Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, kann [Log Analytics](https://azure.microsoft.com/services/log-analytics/) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Log Analytics kann Telemetriedaten über eine Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Benachrichtigungen verwendet werden.
+In Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, können [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Azure Monitor-Protokolle können Telemetriedaten aus einer Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Abrufen von Quellcode und Skripts zur Anwendung Wingtip Tickets SaaS Multi-tenant Database
 
@@ -81,7 +81,7 @@ Das Skript *Demo-PerformanceMonitoringAndManagement.ps1* wird bereitgestellt. Es
 | 2 | Generieren einer Last mit normaler Intensität (ca. 30 DTUs) |
 | 3 | Generieren einer Last mit längeren Spitzen pro Mandant|
 | 4 | Generieren einer Last mit höheren DTU-Spitzen pro Mandant (ca. 70 DTUs)|
-| 5 | Generieren einer hohen Intensität (ca. 90 DTU) bei einem einzelnen Mandanten sowie einer normalen Last bei allen anderen Mandanten |
+| 5 | Generieren einer Last mit hoher Intensität (ca. 90 DTUs) auf einem einzelnen Mandanten sowie einer Last mit normaler Intensität auf allen anderen Mandanten |
 
 Der Lastengenerator wendet eine *synthetische* reine CPU-Last auf jede Mandantendatenbank an. Der Generator startet einen Einzelvorgang für jede Mandantendatenbank, der in regelmäßigen Abständen eine gespeicherte Prozedur aufruft, die die Last generiert. Der Auslastungsgrad (in DTUs), die Dauer und die Intervalle variieren in allen Datenbanken, womit eine unvorhersehbare Mandantenaktivität simuliert wird.
 

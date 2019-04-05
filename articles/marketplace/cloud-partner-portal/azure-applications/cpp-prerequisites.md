@@ -3,7 +3,7 @@ title: Voraussetzungen für ein Azure-Anwendungsangebot | Microsoft-Dokumentatio
 description: Die Voraussetzungen für das Veröffentlichen eines Azure-Anwendungsangebots im Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097789"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007165"
 ---
 # <a name="azure-application-prerequisites"></a>Voraussetzungen für eine Azure-Anwendung
 
-In diesem Artikel sind die technischen und geschäftlichen Voraussetzungen beschrieben, die erfüllt sein müssen, damit ein verwaltetes Anwendungsangebot im Azure Marketplace veröffentlicht werden kann.  Falls noch nicht geschehen, sehen Sie sich das Video [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) an.
+In diesem Artikel sind die technischen und geschäftlichen Voraussetzungen beschrieben, die erfüllt sein müssen, damit ein verwaltetes Anwendungsangebot im Azure Marketplace veröffentlicht werden kann.  Sehen Sie sich die folgenden Informationsquellen an, falls Sie dies nicht bereits getan haben:
+- Je nach Art Ihrer SKU, entweder [Azure-Anwendungen: Leitfaden für die Veröffentlichung von Lösungsvorlagenangeboten](../../marketplace-solution-templates.md) oder [Azure-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten verwalteter Anwendungen](../../marketplace-managed-apps.md)
+- Video: [Building Solution Templates, and Managed Applications for the Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) (Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace)
 
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
@@ -43,7 +45,7 @@ Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im A
 
 Die geschäftlichen Anforderungen umfassen die folgenden verfahrenstechnischen, vertraglichen und rechtlichen Verpflichtungen:
 
-* Sie müssen ein registrierter Cloud Marketplace-Herausgeber sein. Sollten Sie sich nicht registriert haben, führen Sie die Schritte des Artikels „Weg zum Cloud Marketplace-Herausgeber“ aus.
+* Sie müssen ein registrierter Cloud Marketplace-Herausgeber sein. Falls Sie noch nicht registriert sind, führen Sie die Schritte im Artikel [Weg zum Cloud Marketplace-Herausgeber](../../become-publisher.md) aus.
 
 >[!NOTE]
 >Sie sollten dasselbe Microsoft Developer Center-Registrierungskonto für die Anmeldung beim Cloud-Partnerportal verwenden. Sie sollten für Ihre Azure Marketplace-Angebote nur ein Microsoft-Konto verwenden. Dieses Konto sollte nicht speziell für einzelne Dienste oder Angebote vorgesehen sein.
@@ -65,8 +67,8 @@ Um ein neues Azure-Anwendungsangebot zu veröffentlichen, müssen die folgenden 
   * Titel
   * Beschreibung (im HTML-Format)
   * Ein Logobild (im PNG-Format) und in den folgenden festen Bildgrößen: 40 x 40 Pixel, 90 x 90 Pixel, 115 x 115 Pixel und 255 x 115 Pixel.
-* *Nutzungsbedingungen* und *Datenschutzrichtlinie*
-* Dokumentation
+* Dokumente mit *Nutzungsbedingungen* und *Datenschutzrichtlinie*
+* Anwendungsdokumentation
 * Supportkontakte
 
 

@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308722"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779146"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -223,9 +223,9 @@ Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logi
 
 Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden. Mit dem Ausdruck `@result()` wird Kontext zum Ergebnis aller Aktionen in einem Bereich bereitgestellt.
 
-Der Ausdruck `@result()` nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie die  **@actions()**-Objekte, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **@result()**-Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
+Der Ausdruck `@result()` nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie das  **\@actions()**-Objekt, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **\@result()**-Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
 
-Zum Ausführen einer Aktion für jede Aktion eines Bereichs mit dem Ergebnis **Failed** und zum Filtern des Arrays der Ergebnisse bis hinab zu den fehlerhaften Aktionen können Sie **@result()** mit der Aktion **[Filter Array](../connectors/connectors-native-query.md)** und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die **For each**-Schleife verwenden. 
+Zum Ausführen einer Aktion für jede Aktion eines Bereichs mit dem Ergebnis **Failed** und zum Filtern des Arrays der Ergebnisse bis hinab zu den fehlerhaften Aktionen können Sie **\@result()** mit der Aktion **[Filter Array](../connectors/connectors-native-query.md)** und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die **For each**-Schleife verwenden. 
 
 Hier ist ein Beispiel gefolgt von einer ausführlichen Erklärung angegeben, bei dem eine HTTP POST-Anforderung mit dem Antworttext für alle fehlerhaften Aktionen im Bereich „My_Scope“ gesendet wird:
 
@@ -317,7 +317,7 @@ Zu Referenzzwecken ist hier ein Beispiel für ein einzelnes `@result()`-Element 
 }
 ```
 
-Sie können die oben in diesem Artikel beschriebenen Ausdrücke verwenden, um unterschiedliche Muster für die Ausnahmebehandlung zu nutzen. Außerdem können Sie die Entscheidung treffen, eine einzelne Aktion für die Ausnahmebehandlung außerhalb des Bereichs durchzuführen, bei der das gesamte gefilterte Array mit Fehlern akzeptiert wird, und die **For each**-Aktion zu entfernen. Darüber hinaus können Sie noch andere nützliche Eigenschaften aus der **@result()**-Antwort einfügen, wie zuvor beschrieben.
+Sie können die oben in diesem Artikel beschriebenen Ausdrücke verwenden, um unterschiedliche Muster für die Ausnahmebehandlung zu nutzen. Außerdem können Sie die Entscheidung treffen, eine einzelne Aktion für die Ausnahmebehandlung außerhalb des Bereichs durchzuführen, bei der das gesamte gefilterte Array mit Fehlern akzeptiert wird, und die **For each**-Aktion zu entfernen. Darüber hinaus können Sie noch andere nützliche Eigenschaften aus der **\@result()**-Antwort einfügen, wie zuvor beschrieben.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure-Diagnose und Metriken
 

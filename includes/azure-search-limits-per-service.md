@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: b4062aab5a453505ef4586f422a124d4bbf715cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc0451aa89da9b84a5a01a0762425f7533dded3c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755935"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553767"
 ---
 Der Speicher ist durch den Festplattenspeicher oder einen festen Grenzwert für die *maximale Anzahl* von Indizes, Dokumenten oder anderen allgemeinen Ressourcen beschränkt (je nachdem, was zuerst erreicht wird). In der folgenden Tabelle sind die Speicherbegrenzungen dokumentiert. Obergrenzen für Indizes, Dokumente und andere Objekte finden Sie unter [Grenzwerte nach Ressource](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
-| Ressource | Kostenlos | Basic&nbsp;<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>2</sup> |
+| Ressource | Kostenlos | Basic<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> |
 | -------- | --- | --- | --- | --- | --- | --- |
-| Vereinbarung zum Servicelevel (SLA) <sup>3</sup>  |Nein  |Ja |Ja |Ja |Ja |JA |
+| Vereinbarung zum Servicelevel (SLA)<sup>3</sup>  |Nein  |Ja |Ja |Ja |Ja |Ja |
 | Speicherkapazität pro Partition |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Partitionen pro Dienst |N/V |1 |12 |12 |12 |3 |
-| Partitionsgröße |N/V |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Replikate |N/V |3 |12 |12 |12 |12 |
+| Partitionen pro Dienst |– |1 |12 |12 |12 |3 |
+| Partitionsgröße |– |2 GB |25 GB |100 GB |200 GB |200 GB |
+| Replikate |– |3 |12 |12 |12 |12 |
 
-<sup>1</sup> Basic verfügt über eine feste Partition. Bei diesem Tarif werden zusätzliche SUs verwendet, um weitere Replikate für umfangreichere Abfrageworkloads zuzuordnen.
+<sup>1</sup>Basic verfügt über eine feste Partition. Bei diesem Tarif werden zusätzliche Sucheinheiten verwendet, um weitere Replikate für umfangreichere Abfrageworkloads zuzuordnen.
 
-<sup>2</sup> Für S3 HD gilt ein festes Limit von drei Partitionen. (Das Limit ist also geringer als bei S3.) Die Untergrenze für Partitionen wurde festgelegt, da die Indexanzahl für S3 HD wesentlich höher ist. Da sowohl für Computeressourcen (Speicher und Verarbeitung) als auch für Inhalte (Indizes und Dokumente) Dienstlimits gelten, wird das Inhaltslimit zuerst erreicht.
+<sup>2</sup>Für S3 HD gilt ein festes Limit von drei Partitionen. (Das Limit ist also geringer als bei S3.) Die Untergrenze für Partitionen wurde festgelegt, da die Indexanzahl für S3 HD wesentlich höher ist. Da sowohl für Computeressourcen (Speicher und Verarbeitung) als auch für Inhalte (Indizes und Dokumente) Dienstlimits gelten, wird das Inhaltslimit zuerst erreicht.
 
-<sup>3</sup> Vereinbarungen zum Servicelevel (SLAs) werden für abrechenbare Dienste auf dedizierten Ressourcen angeboten. Für kostenlose Dienste und Vorschaufunktionen gelten keine SLA. Für alle abrechenbaren Dienste gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt. 
+<sup>3</sup>Vereinbarungen zum Servicelevel werden für abrechenbare Dienste auf dedizierten Ressourcen angeboten. Für kostenlose Dienste und Vorschaufunktionen gelten keine SLA. Für alle abrechenbaren Dienste gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLAs (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLAs (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für eine SLA nicht berücksichtigt. 

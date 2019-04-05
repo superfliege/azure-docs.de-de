@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c933145c54c47b5af083edd593ecb66b089f9c9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106310"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769147"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Schnellstart: Anmelden und Festlegen einer Benutzer-ID
 
@@ -51,6 +51,9 @@ Zwar können Sie Azure-Notebooks jederzeit anzeigen, ohne sich anzumelden, um No
 1. Nach erfolgreicher Anmeldung navigiert Azure Notebooks zu Ihrer öffentlichen Profilseite, auf der Sie **Edit Profile Information** (Profilinformationen bearbeiten) auswählen können, um Ihre restlichen Informationen einzusetzen (mehr dazu erfahren Sie unter [Ihr Profil und Ihre Benutzer-ID](azure-notebooks-user-profile.md)):
 
     ![Anfängliche Ansicht einer Azure Notebooks-Profilseite](media/accounts/profile-page-new.png)
+
+> [!NOTE]
+> Wenn die Meldung „Benutzer-ID wird bereits verwendet“ angezeigt wird, probieren Sie eine andere ID aus. Benutzer-IDs sind für alle Azure Notebooks-Konten eindeutig, und Azure Notebooks reserviert auch bestimmte Benutzer-IDs, z.B. Markennamen von Microsoft.
 
 ## <a name="sign-out"></a>Abmelden
 

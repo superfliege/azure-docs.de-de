@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16caf8b6fd48b5dca676b1c8ee046ad01264ca03
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211426"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294510"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 
@@ -36,15 +37,15 @@ Nach dem Konfigurieren einer App für Self-Service können Anwendungsbesitzer ih
 1. Öffnen Sie Ihren Zugriffsbereich, indem Sie zu `https://myapps.microsoft.com` navigieren.
 2. Zeigen Sie auf die App, wählen Sie die Auslassungspunkte (**...**) aus, und wählen Sie dann **App verwalten** aus.
  
-   ![Zugriffsbereiche App verwalten](media/add-users-iw/access-panel-manage-app.png)
+   ![Screenshot mit dem Untermenü „App verwalten“ für die Salesforce-App](media/add-users-iw/access-panel-manage-app.png)
  
 3. Wählen Sie am Anfang der Benutzerliste **+** aus.
    
-   ![Zugriffsbereich Benutzer hinzufügen](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Screenshot mit dem Pluszeichen zum Hinzufügen von Mitgliedern zur App](media/add-users-iw/access-panel-manage-app-add-user.png)
    
 4. Geben Sie im Suchfeld **Mitglieder hinzufügen** die E-Mail-Adresse für den Gastbenutzer ein. Geben Sie optional eine Begrüßungsnachricht ein.
    
-   ![Zugriffsbereich Einladung](media/add-users-iw/access-panel-invitation.png)
+   ![Screenshot mit dem Fenster „Mitglieder hinzufügen“ zum Hinzufügen eines Gasts](media/add-users-iw/access-panel-invitation.png)
    
 5. Wählen Sie **Hinzufügen** aus, um eine Einladung an den Gastbenutzer zu senden. Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch als Gast hinzugefügt.
 
@@ -55,19 +56,19 @@ Nach dem Konfigurieren einer App für Self-Service können Anwendungsbesitzer Ga
 2. Öffnen Sie Ihren Zugriffsbereich, indem Sie zu `https://myapps.microsoft.com` navigieren.
 3. Wählen Sie die **Gruppen**-App aus.
    
-   ![Zugriffsbereich Gruppen-App](media/add-users-iw/access-panel-groups.png)
+   ![Screenshot mit der Gruppen-App im Zugriffsbereich](media/add-users-iw/access-panel-groups.png)
    
 4. Wählen Sie unter **Gruppen in meinem Besitz** die Gruppe aus, die Zugriff auf die App besitzt, die Sie freigeben möchten.
    
-   ![Zugriffsbereich Gruppen in meinem Besitz](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Screenshot, der anzeigt, wo eine Gruppe unter „Gruppen in meinem Besitz“ ausgewählt wird](media/add-users-iw/access-panel-groups-i-own.png)
    
 5. Wählen Sie am Anfang der Gruppenmitgliederliste **+** aus.
    
-   ![Zugriffsbereich Gruppen Mitglied hinzufügen](media/add-users-iw/access-panel-groups-add-member.png)
+   ![Screenshot mit dem Pluszeichen zum Hinzufügen von Mitgliedern zur Gruppe](media/add-users-iw/access-panel-groups-add-member.png)
    
 6. Geben Sie im Suchfeld **Mitglieder hinzufügen** die E-Mail-Adresse für den Gastbenutzer ein. Geben Sie optional eine Begrüßungsnachricht ein.
    
-   ![Zugriffsbereich Gruppe Einladung](media/add-users-iw/access-panel-invitation.png)
+   ![Screenshot mit dem Fenster „Mitglieder hinzufügen“ zum Hinzufügen eines Gasts](media/add-users-iw/access-panel-invitation.png)
    
 7. Wählen Sie **Hinzufügen** aus, um die Einladung automatisch an den Gastbenutzer zu senden. Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch als Gast hinzugefügt.
 

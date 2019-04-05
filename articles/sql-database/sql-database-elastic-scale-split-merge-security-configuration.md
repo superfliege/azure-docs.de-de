@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563217"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593317"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 
@@ -121,24 +121,29 @@ Die Standardkonfiguration verweigert den gesamten Zugriff auf den HTTP-Endpunkt.
 In der Standardkonfiguration ist der gesamte Zugriff auf den HTTP-Endpunkt zugelassen. Diese Einstellung kann weiter eingeschränkt werden.
 
 ### <a name="changing-the-configuration"></a>Ändern der Konfiguration
-Die Gruppe der auf den Endpunkt angewendeten Zugriffssteuerungsregeln wird im Abschnitt **<EndpointAcls>** der **Dienstkonfigurationsdatei** konfiguriert.
+Die Gruppe der auf den Endpunkt angewendeten Zugriffssteuerungsregeln wird im Abschnitt **\<EndpointAcls>** der **Dienstkonfigurationsdatei** konfiguriert.
 
-    <EndpointAcls>
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
-    </EndpointAcls>
+```xml
+<EndpointAcls>
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
+</EndpointAcls>
+```
 
-Die Regeln einer Zugriffssteuerungsgruppe werden im Abschnitt <AccessControl name=""> der Dienstkonfigurationsdatei konfiguriert. 
+Die Regeln einer Zugriffssteuerungsgruppe werden im Abschnitt \<AccessControl name=""> der Dienstkonfigurationsdatei konfiguriert. 
 
 Das Format wird in der Dokumentation über Netzwerk-Zugriffsteuerungslisten erläutert.
 Damit nur IP-Adressen im Bereich von 100.100.0.0 bis 100.100.255.255 auf den HTTPS-Endpunkt zugreifen können, würden die Regeln z. B. wie folgt aussehen:
 
-    <AccessControl name="Retricted">
-      <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
-      <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
-    </AccessControl>
-    <EndpointAcls>
+```xml
+<AccessControl name="Retricted">
+    <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
+    <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
+</AccessControl>
+<EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
+</EndpointAcls>
+```
 
 ## <a name="denial-of-service-prevention"></a>Dienstverweigerungsschutz
 Es werden zwei unterschiedliche Mechanismen zum Erkennen und Verhindern von Dienstverweigerungsangriffen unterstützt:
@@ -154,22 +159,29 @@ Sie basieren auf den Funktionen, die unter der dynamischen IP-Sicherheit in IIS 
 ## <a name="restricting-number-of-concurrent-accesses"></a>Einschränken der Anzahl gleichzeitiger Zugriffe
 Dieses Verhalten wird über folgende Einstellungen konfiguriert:
 
-    <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
-    <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
+<Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```
 
 Ändern Sie DynamicIpRestrictionDenyByConcurrentRequests in „true“, um diesen Schutz zu aktivieren.
 
 ## <a name="restricting-rate-of-access"></a>Beschränken der Zugriffsrate
 Dieses Verhalten wird über folgende Einstellungen konfiguriert:
 
-    <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
-    <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
-    <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
+<Setting name="DynamicIpRestrictionMaxRequests" value="100" />
+<Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>Konfigurieren der Antwort auf eine verweigerte Anforderung
 Die folgende Einstellung konfiguriert die Antwort auf eine verweigerte Anforderung:
 
-    <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```xml
+<Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```
+
 Weitere unterstützte Werte entnehmen Sie der Dokumentation für dynamische IP-Sicherheit in IIS.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Vorgänge für das Konfigurieren von Dienstzertifikaten
@@ -232,12 +244,16 @@ Es wird nur die zertifikatbasierte Clientauthentifizierung unterstützt, und der
 
 Ändern Sie diese Einstellungen in der Dienstkonfigurationsdatei in „false“, um die Funktion zu deaktivieren:
 
-    <Setting name="SetupWebAppForClientCertificates" value="false" />
-    <Setting name="SetupWebserverForClientCertificates" value="false" />
+```xml
+<Setting name="SetupWebAppForClientCertificates" value="false" />
+<Setting name="SetupWebserverForClientCertificates" value="false" />
+```
 
 Kopieren Sie dann denselben Fingerabdruck wie für das SSL-Zertifikat in die Einstellung des CA-Zertifikats:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="create-a-self-signed-certification-authority"></a>Erstellen einer selbstsignierten Zertifizierungsstelle
 Führen Sie die folgenden Schritte aus, um ein selbstsigniertes Zertifikat zu erstellen, das als Zertifizierungsstelle fungiert:
@@ -280,11 +296,15 @@ Laden Sie das Zertifikat mit der vorhandenen oder generierten .CER-Datei mit dem
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>Aktualisieren des CA-Zertifikats in der Dienstkonfigurationsdatei
 Aktualisieren Sie den Fingerabdruckwert der folgenden Einstellung in der Dienstkonfigurationsdatei mit dem Fingerabdruck des in den Clouddienst hochgeladenen Zertifikats:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 Aktualisieren Sie den Wert der folgenden Einstellung mit dem gleichen Fingerabdruck:
 
-    <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```xml
+<Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```
 
 ## <a name="issue-client-certificates"></a>Ausstellen von Clientzertifikaten
 Für jede Person, die für den Zugriff auf den Dienst autorisiert ist, sollte ein Clientzertifikat für ihre exklusive Nutzung ausgestellt werden, und sie sollte ein eigenes sicheres Kennwort zum Schutz des privaten Schlüssels einrichten. 
@@ -338,17 +358,23 @@ Jede Person, für die ein Clientzertifikat ausgegeben wurde, muss folgende Schri
 * Wählen Sie im daraufhin geöffneten Dialogfeld "Zertifikat" die Registerkarte "Details".
 * Stellen Sie sicher, dass unter "Anzeigen" die Option "Alle" angezeigt wird.
 * Wählen Sie das Feld mit dem Namen "Fingerabdruck" in der Liste aus.
-* Kopieren Sie den Wert des Fingerabdrucks ** Löschen Sie nicht sichtbare Unicode-Zeichen vor der ersten Ziffer ** Löschen Sie alle Leerzeichen.
+* Kopieren Sie den Wert des Fingerabdrucks.
+  * Löschen Sie nicht sichtbare Unicode-Zeichen vor der ersten Ziffer.
+  * Löschen Sie alle Leerzeichen.
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei
 Aktualisieren Sie den Wert für die folgende Einstellung in der Dienstkonfigurationsdatei mit einer kommagetrennten Liste von Fingerabdrücken der Clientzertifikate, die Zugriff auf den Dienst haben:
 
-    <Setting name="AllowedClientCertificateThumbprints" value="" />
+```xml
+<Setting name="AllowedClientCertificateThumbprints" value="" />
+```
 
 ## <a name="configure-client-certificate-revocation-check"></a>Konfigurieren der Sperrprüfung für Clientzertifikate
 In der Standardeinstellung wird der Sperrstatus des Clientzertifikats bei der Zertifizierungsstelle nicht überprüft. Um die Überprüfungen zu aktivieren (falls die Zertifizierungsstelle, von der die Clientzertifikate ausgestellt wurden, derartige Überprüfungen unterstützt), ändern Sie die folgende Einstellung mit einem der Werte, die in der X509RevocationMode-Enumeration definiert sind:
 
-    <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```xml
+<Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```
 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Erstellen einer PFX-Datei für selbstsignierte Verschlüsselungszertifikate
 Führen Sie für ein Verschlüsselungszertifikat Folgendes aus:
@@ -381,7 +407,9 @@ Laden Sie das Zertifikat mit der vorhandenen oder generierten .PFX-Datei mit dem
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>Aktualisieren des Verschlüsselungszertifikats in der Dienstkonfigurationsdatei
 Aktualisieren Sie den Fingerabdruckwert der folgenden Einstellungen in der Dienstkonfigurationsdatei mit dem Fingerabdruck des in den Clouddienst hochgeladenen Zertifikats:
 
-    <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="common-certificate-operations"></a>Allgemeine Zertifikatvorgänge
 * Konfigurieren des SSL-Zertifikats
@@ -452,7 +480,9 @@ Gehen Sie im [Azure-Portal](https://portal.azure.com/) wie folgt vor:
 ## <a name="other-security-considerations"></a>Weitere Überlegungen zur Sicherheit
 Die in diesem Dokument beschriebenen SSL-Einstellungen verschlüsseln die Kommunikation zwischen dem Dienst und seinen Clients, wenn der HTTPS-Endpunkt verwendet wird. Dies ist wichtig, da die Anmeldeinformationen für den Datenbankzugriff und andere vertrauliche Informationen in der Kommunikation enthalten sind. Beachten Sie jedoch, dass der Dienst den internen Status, einschließlich der Anmeldeinformationen, in den internen Tabellen in der Microsoft Azure SQL-Datenbank, die Sie in Ihrem Microsoft Azure-Abonnement für Metadatenspeicher bereitgestellt haben, beibehält. Diese Datenbank wurde im Rahmen der folgenden Einstellung in der Dienstkonfigurationsdatei (.CSCFG-Datei) definiert: 
 
-    <Setting name="ElasticScaleMetadata" value="Server=…" />
+```xml
+<Setting name="ElasticScaleMetadata" value="Server=…" />
+```
 
 In dieser Datenbank gespeicherte Anmeldeinformationen werden verschlüsselt. Stellen Sie als bewährte Methode außerdem sicher, dass die Web- und Worker-Rollen der Dienstbereitstellungen immer aktualisiert und sicher sind, da beide Zugriff auf die Metadaten-Datenbank und das Zertifikat haben, das für die Verschlüsselung und Entschlüsselung von gespeicherten Anmeldeinformationen verwendet wird. 
 

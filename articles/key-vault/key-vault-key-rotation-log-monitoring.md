@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung – Azure Key Vault | Microsoft-Dokumentation
-description: Dieser Artikel bietet Informationen zum Einrichten der Schlüsselrotation und Überwachen von Schlüsseltresorprotokollen.
+title: Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung | Microsoft Docs
+description: Diese Anleitung bietet Informationen zum Einrichten der Schlüsselrotation und Überwachen von Schlüsseltresorprotokollen.
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 68fd33dc3e9def11f72b7aec14f83f86b8bb74d0
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106119"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749705"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung
 
@@ -26,31 +26,31 @@ ms.locfileid: "56106119"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Nach dem Erstellen eines Schlüsseltresors können Sie Schlüssel und Geheimnisse in diesem Tresor speichern. Ihre Schlüssel und Geheimnisse müssen in Ihren Anwendungen nicht mehr dauerhaft gespeichert werden, sondern können bei Bedarf aus dem Tresor angefordert werden. Dadurch können Sie Schlüssel und geheime Schlüssel ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und geheimen Schlüsseln eröffnet.
+Nach dem Erstellen eines Schlüsseltresors können Sie Schlüssel und Geheimnisse in diesem Tresor speichern. Ihre Schlüssel und Geheimnisse müssen in Ihren Anwendungen nicht mehr dauerhaft gespeichert werden, sondern können bei Bedarf aus dem Tresor angefordert werden. Mit einem Schlüsseltresor können Sie Schlüssel und Geheimnisse ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und Geheimnissen eröffnet.
 
 >[!IMPORTANT]
 > Die Beispiele in diesem Artikel werden lediglich zur Veranschaulichung bereitgestellt. Sie sind nicht für Produktionszwecke vorgesehen. 
 
 In diesem Artikel wird Folgendes beschrieben:
 
-- Ein Beispiel für die Verwendung von Azure Key Vault zum Speichern eines Geheimnisses. In diesem Tutorial handelt es sich bei dem gespeicherten Geheimnis um den Azure Storage-Kontoschlüssel, auf den eine Anwendung zugreift. 
-- Außerdem wird die Implementierung einer geplanten Rotation dieses Speicherkontoschlüssels demonstriert.
-- Es wird erläutert, wie die Überwachungsprotokolle des Schlüsseltresors überwacht und wie bei unerwarteten Anforderungen Warnungen ausgelöst werden.
+- Ein Beispiel für die Verwendung von Azure Key Vault zum Speichern eines Geheimnisses. In diesem Artikel handelt es sich bei dem gespeicherten Geheimnis um den Azure Storage-Kontoschlüssel, auf den eine Anwendung zugreift. 
+- Sie lernen die Implementierung einer geplanten Rotation dieses Speicherkontoschlüssels kennen.
+- Sie lernen die Überwachung der Überwachungsprotokolle des Schlüsseltresors kennen, und wie bei unerwarteten Anforderungen Warnungen ausgelöst werden.
 
 > [!NOTE]
-> In diesem Tutorial werden nicht die Einzelheiten der erstmaligen Einrichtung Ihres Schlüsseltresors behandelt. Die entsprechenden Informationen finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie unter [Verwalten von Schlüsseltresor mit CLI](key-vault-manage-with-cli2.md).
->
->
+> In diesem Artikel werden nicht die Einzelheiten der erstmaligen Einrichtung Ihres Schlüsseltresors behandelt. Die entsprechenden Informationen finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie unter [Verwalten von Key Vault mit der Azure CLI](key-vault-manage-with-cli2.md).
 
 ## <a name="set-up-key-vault"></a>Einrichten von Key Vault
 
-Damit eine Anwendung einen geheimen Schlüssel aus Key Vault abrufen kann, müssen Sie zuerst den geheimen Schlüssel erstellen und ihn in den Tresor hochladen. Starten Sie hierfür eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
+Damit eine Anwendung einen geheimen Schlüssel aus Key Vault abrufen kann, müssen Sie zuerst den geheimen Schlüssel erstellen und ihn in den Tresor hochladen.
+
+Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind. PowerShell verwendet standardmäßig das erste Abonnement.
+Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort für Ihr Azure-Konto ein. PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind. PowerShell verwendet standardmäßig das erste Abonnement.
 
 Wenn Sie über mehrere Abonnements verfügen, müssen Sie unter Umständen das Abonnement angeben, das zum Erstellen des Schlüsseltresors verwendet wurde. Geben Sie Folgendes ein, um die Abonnements für Ihr Konto anzuzeigen:
 
@@ -70,7 +70,7 @@ Da in diesem Artikel das Speichern eines Speicherkontoschlüssels als geheimer S
 Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-Nachdem Sie Ihren geheimen Schlüssel (in diesem Fall Ihren Speicherkontoschlüssel) abgerufen haben, müssen Sie ihn in eine sichere Zeichenfolge konvertieren und anschließend einen geheimen Schlüssel mit diesem Wert in Ihrem Schlüsseltresor erstellen.
+Nachdem Sie Ihr Geheimnis (in diesem Fall Ihren Speicherkontoschlüssel) abgerufen haben, müssen Sie diesen Schlüssel in eine sichere Zeichenfolge konvertieren und anschließend ein Geheimnis mit diesem Wert in Ihrem Schlüsseltresor erstellen.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
@@ -78,7 +78,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
-Rufen Sie als Nächstes den URI für den erstellten geheimen Schlüssel ab. Dieser wird in einem späteren Schritt verwendet, wenn Sie den Schlüsseltresor zum Abrufen des geheimen Schlüssels aufrufen. Führen Sie den folgenden PowerShell-Befehl aus, und notieren Sie den Wert „ID“, bei dem es sich um den URI des geheimen Schlüssels handelt:
+Rufen Sie als Nächstes den URI für den erstellten geheimen Schlüssel ab. Sie benötigen diesen URI in einem späteren Schritt zum Aufrufen des Schlüsseltresors und Abrufen Ihres Geheimnisses. Führen Sie den folgenden PowerShell-Befehl aus, und notieren Sie den Wert „ID“, bei dem es sich um den URI des Geheimnisses handelt:
 
 ```powershell
 Get-AzKeyVaultSecret –VaultName <vaultName>
@@ -86,36 +86,36 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 
 ## <a name="set-up-the-application"></a>Einrichten der Anwendung
 
-Da Sie nun über einen gespeicherten geheimen Schlüssel verfügen, können Sie diesen mithilfe von Code abrufen und verwenden. Hierfür sind mehrere Schritte erforderlich. Der erste und wichtigste Schritt ist die Registrierung Ihrer Anwendung in Azure Active Directory. Danach müssen Sie an Key Vault Informationen zu Ihrer Anwendung übermitteln, damit der Schlüsseltresor Anforderungen von Ihrer Anwendung empfangen kann.
+Da Sie nun über ein gespeichertes Geheimnis verfügen, können Sie dieses mithilfe von Code abrufen und verwenden, nachdem Sie ein paar weitere Schritte ausgeführt haben.
+
+Zunächst müssen Sie Ihre Anwendung bei Azure Active Directory registrieren. Teilen Sie Key Vault dann Informationen zu Ihrer Anwendung mit, damit Anforderungen Ihrer Anwendung zugelassen werden können.
 
 > [!NOTE]
 > Ihre Anwendung muss mit demselben Azure Active Directory-Mandanten wie Ihr Schlüsseltresor erstellt werden.
->
->
 
-1. Navigieren Sie zu Azure Active Directory.
+1. Öffnen Sie **Azure Active Directory**.
 2. Wählen Sie **App-Registrierungen** aus. 
 3. Wählen Sie **Registrierung einer neuen Anwendung** aus, um Ihrer Azure Active Directory-Instanz eine Anwendung hinzuzufügen.
 
     ![„Anwendungen“ in Azure Active Directory öffnen](./media/keyvault-keyrotation/azure-ad-application.png)
 
-4. Behalten Sie im Abschnitt **Erstellen** den Anwendungstyp **Webanwendung und/oder Web-API** bei, und geben Sie der Anwendung einen Namen. Geben Sie für die Anwendung eine **Anmelde-URL** ein. Diese Angabe ist für diese Demo beliebig.
+4. Belassen Sie unter **Erstellen** den Anwendungstyp als **Web-App/API**, und versehen Sie Ihre Anwendung mit einem Namen. Geben Sie für die Anwendung eine **Anmelde-URL** ein. Diese URL ist für diese Demo beliebig.
 
     ![Erstellen der Anwendungsregistrierung](./media/keyvault-keyrotation/create-app.png)
 
-5. Nachdem Azure Active Directory die Anwendung hinzugefügt wurde, gelangen Sie auf die Anwendungsseite. Wählen Sie **Einstellungen** und dann Eigenschaften aus. Kopieren Sie den Wert für **Anwendungs-ID**. Er wird in späteren Schritten benötigt.
+5. Nachdem Azure Active Directory die Anwendung hinzugefügt wurde, wird die Anwendungsseite geöffnet. Wählen Sie **Einstellungen** und dann **Eigenschaften** aus. Kopieren Sie den Wert für **Anwendungs-ID**. Sie benötigen sie in einem späteren Schritt.
 
-Generieren Sie dann einen Schlüssel für die Anwendung, damit diese mit Azure Active Directory interagieren kann. Sie können einen Schlüssel erstellen, indem Sie zum Abschnitt **Schlüssel** unter **Einstellungen** navigieren. Notieren Sie in Ihrer Azure Active Directory-Anwendung den neu generierten Schlüssel für die Verwendung in einem späteren Schritt. Beachten Sie, dass der Schlüssel nicht mehr verfügbar ist, nachdem Sie aus diesem Abschnitt navigieren. 
+Generieren Sie dann einen Schlüssel für die Anwendung, damit diese mit Azure Active Directory interagieren kann. Wählen Sie zum Erstellen eines Schlüssels **Schlüssel** unter **Einstellungen** aus. Notieren Sie den neu generierten Schlüssel für Ihre Azure Active Directory-Anwendung. Sie benötigen sie in einem späteren Schritt. Der Schlüssel wird nicht verfügbar sein, wenn Sie diesen Abschnitt verlassen haben. 
 
 ![Azure Active Directory-App-Schlüssel](./media/keyvault-keyrotation/create-key.png)
 
-Bevor Ihre Anwendung Aufrufe an den Schlüsseltresor durchführen kann, müssen Sie den Schlüsseltresor über Ihre Anwendung und deren Berechtigungen informieren. Der folgende Befehl verwendet den Namen des Schlüsseltresors und die Anwendungs-ID aus Ihrer Azure Active Directory-App und gewährt dem Schlüsseltresor für die Anwendung den Zugriff zum **Abrufen**.
+Bevor Sie Aufrufe von Ihrer Anwendung an den Schlüsseltresor durchführen können, müssen Sie den Schlüsseltresor über Ihre Anwendung und deren Berechtigungen informieren. Der folgende Befehl verwendet den Namen des Tresors und die Anwendungs-ID aus Ihrer Azure Active Directory-App, um der Anwendung den Zugriff zum **Abrufen** auf Ihren Schlüsseltresor zu gewähren.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-An diesem Punkt können Sie beginnen, Anwendungsaufrufe zu erstellen. In Ihrer Anwendung müssen Sie die NuGet-Pakete installieren, die für die Interaktion mit Azure Key Vault und Azure Active Directory benötigt werden. Geben Sie in der Paket-Manager-Konsole von Visual Studio die folgenden Befehle ein. Bei der Erstellung dieses Artikels lautete die aktuelle Version des Azure Active Directory-Pakets 3.10.305231913. Prüfen Sie, ob es eine neuere Version gibt, und führen Sie ggf. eine entsprechende Aktualisierung durch.
+Sie können nun Ihre Anwendungsaufrufe erstellen. In Ihrer Anwendung müssen Sie die NuGet-Pakete installieren, die für die Interaktion mit Azure Key Vault und Azure Active Directory benötigt werden. Geben Sie in der Paket-Manager-Konsole von Visual Studio die folgenden Befehle ein. Bei der Erstellung dieses Artikels lautete die aktuelle Version des Azure Active Directory-Pakets 3.10.305231913. Prüfen Sie, ob es eine neuere Version gibt, und führen Sie ggf. eine entsprechende Aktualisierung durch.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -123,13 +123,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Erstellen Sie in Ihrem Anwendungscode eine Klasse, die die Methode für Ihre Azure Active Directory-Authentifizierung enthalten soll. In diesem Beispiel heißt diese Klasse **Utils**. Fügen Sie die folgende using-Anweisung hinzu:
+Erstellen Sie in Ihrem Anwendungscode eine Klasse, die die Methode für Ihre Azure Active Directory-Authentifizierung enthalten soll. In diesem Beispiel heißt diese Klasse **Utils**. Fügen Sie die folgende `using` -Anweisung hinzu:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Fügen Sie als Nächstes die folgende Methode hinzu, um das JWT-Token aus Azure Active Directory abzurufen. Zur besseren Verwaltbarkeit können Sie die hartcodierten Zeichenfolgenwerte in Ihre Web- oder Anwendungskonfiguration verschieben.
+Fügen Sie als Nächstes die folgende Methode hinzu, um das JWT-Token aus Azure Active Directory abzurufen. Zur besseren Verwaltbarkeit könnten Sie die hartcodierten Zeichenfolgenwerte in Ihre Web- oder Anwendungskonfiguration verschieben.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -148,7 +148,7 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Fügen Sie den erforderlichen Code zum Aufrufen von Key Vault und Abrufen des Werts Ihres geheimen Schlüssels hinzu. Zuerst müssen Sie die folgende „using“-Anweisung hinzufügen:
+Fügen Sie den erforderlichen Code zum Aufrufen von Key Vault und Abrufen des Werts Ihres geheimen Schlüssels hinzu. Zuerst müssen Sie die folgende `using`-Anweisung hinzufügen:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
@@ -166,13 +166,19 @@ Wenn Sie Ihre Anwendung ausführen, müssen Sie sich jetzt bei Azure Active Dire
 
 ## <a name="key-rotation-using-azure-automation"></a>Schlüsselrotation mithilfe von Azure Automation
 
-Es gibt verschiedene Optionen für die Implementierung einer Strategie für die Rotation von Werten, die Sie als geheime Azure Key Vault-Schlüssel speichern. Die Rotation geheimer Schlüssel kann im Rahmen eines manuellen Prozesses, programmgesteuert mithilfe von API-Aufrufen oder mithilfe eines Automatisierungsskripts erfolgen. Für diesen Artikel nutzen Sie Azure PowerShell zusammen mit Azure Automation, um einen Zugriffsschlüssel für das Azure Storage-Konto zu ändern. Anschließend aktualisieren Sie einen geheimen Schlüssel im Schlüsseltresor mit diesem neuen Schlüssel.
+Sie können nun eine Rotationstrategie für die Werte einrichten, die Sie als Key Vault-Geheimnisse speichern. Geheimnisse können auf verschiedene Weise gedreht werden:
 
-Damit Azure Automation geheime Schlüsselwerte in Ihrem Schlüsseltresor festlegen kann, müssen Sie die Client-ID der Verbindung namens „AzureRunAsConnection“ abrufen, die erstellt wurde, als Sie Ihre Azure Automation-Instanz erstellt haben. Sie können diese ID abrufen, indem Sie in Ihrer Azure Automation-Instanz **Assets** auswählen. Dort wählen Sie **Verbindungen** und dann den Dienstprinzipal **AzureRunAsConnection** aus. Notieren Sie den Wert von **Anwendungs-ID**.
+- Im Rahmen eines manuellen Prozesses
+- Programmgesteuert mit API-Aufrufen
+- Über ein Azure Automation-Skript
+
+Für diesen Artikel verwenden Sie PowerShell zusammen mit Azure Automation zum Ändern eines Zugriffsschlüssels für das Azure Storage-Konto. Anschließend aktualisieren Sie ein Geheimnis im Schlüsseltresor mit diesem neuen Schlüssel.
+
+Damit Azure Automation Geheimniswerte in Ihrem Schlüsseltresor festlegen kann, müssen Sie die Client-ID der Verbindung namens **AzureRunAsConnection** abrufen. Diese Verbindung wurde hergestellt, als Sie Ihre Azure Automation-Instanz einrichteten. Um diese ID zu suchen, wählen Sie in Ihrer Azure Automation-Instanz **Assets** aus. Dort wählen Sie **Verbindungen** und dann den Dienstprinzipal **AzureRunAsConnection** aus. Notieren Sie sich den **ApplicationId**-Wert.
 
 ![Azure Automation-Client-ID](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-Wählen Sie in **Assets** die Option **Module** aus. In **Module** wählen Sie dann **Katalog** aus. Anschließend suchen Sie nach aktualisierten Versionen der einzelnen Module, die Sie **importieren**:
+Wählen Sie in **Assets** die Option **Module** aus. Wählen Sie **Katalog** aus, und suchen Sie nach aktualisierten Versionen der einzelnen folgenden Module, die Sie importieren:
 
     Azure
     Azure.Storage
@@ -181,19 +187,16 @@ Wählen Sie in **Assets** die Option **Module** aus. In **Module** wählen Sie d
     AzureRM.Automation
     AzureRM.Storage
 
-
 > [!NOTE]
-> Zum Zeitpunkt der Erstellung dieses Artikels mussten nur die zuvor genannten Module für das folgende Skript aktualisiert werden. Wenn Sie feststellen, dass Ihr Automatisierungsauftrag fehlschlägt, überprüfen Sie, ob Sie alle erforderlichen Module und ihre Abhängigkeiten importiert haben.
->
->
+> Zum Zeitpunkt der Erstellung dieses Artikels mussten nur die zuvor genannten Module für das folgende Skript aktualisiert werden. Wenn bei Ihrem Automatisierungsauftrag ein Fehler auftritt, überprüfen Sie, ob Sie alle erforderlichen Module und ihre Abhängigkeiten importiert haben.
 
-Nachdem Sie die Anwendungs-ID für Ihre Azure Automation-Verbindung abgerufen haben, müssen Sie Ihren Schlüsseltresor informieren, dass diese Anwendung Zugriff zum Aktualisieren geheimer Schlüssel in Ihrem Tresor hat. Dies kann mit dem folgenden PowerShell-Befehl erreicht werden:
+Nachdem Sie die Anwendungs-ID für Ihre Azure Automation-Verbindung abgerufen haben, müssen Sie Ihren Schlüsseltresor darüber informieren, dass diese Anwendung die Berechtigung zum Aktualisieren von Geheimnissen in Ihrem Tresor hat. Verwenden Sie den folgenden PowerShell-Befehl:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Als Nächstes wählen Sie die Ressource **Runbooks** unter Ihrer Azure Automation-Instanz und dann **Runbook hinzufügen** aus. Wählen Sie **Schnellerfassung**. Benennen Sie Ihr Runbook, und wählen Sie als Runbooktyp **PowerShell** aus. Optional können Sie eine Beschreibung hinzufügen. Klicken Sie abschließend auf **Erstellen**.
+Als Nächstes wählen Sie die Ressource **Runbooks** unter Ihrer Azure Automation-Instanz und dann **Runbook hinzufügen** aus. Wählen Sie **Schnellerfassung**. Benennen Sie Ihr Runbook, und wählen Sie als Runbooktyp **PowerShell** aus. Sie können eine Beschreibung hinzufügen. Wählen Sie abschließend **Erstellen**.
 
 ![Runbook erstellen](./media/keyvault-keyrotation/Create_Runbook.png)
 
@@ -203,7 +206,7 @@ Im Editorbereich Ihres neuen Runbooks fügen Sie das folgende PowerShell-Skript 
 $connectionName = "AzureRunAsConnection"
 try
 {
-    # Get the connection "AzureRunAsConnection "
+    # Get the connection "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
@@ -225,7 +228,7 @@ catch {
     }
 }
 
-#Optionally you may set the following as parameters
+# Optionally you can set the following as parameters
 $StorageAccountName = <storageAccountName>
 $RGName = <storageAccountResourceGroupName>
 $VaultName = <keyVaultName>
@@ -240,12 +243,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-Im Editorbereich können Sie **Testbereich** wählen, um Ihr Skript zu testen. Sobald das Skript ohne Fehler ausgeführt wird, können Sie die Option **Veröffentlichen** auswählen. Im Konfigurationsbereich für das Runbook können Sie dann einen Zeitplan dafür auswählen.
+Wählen Sie im Editorbereich **Testbereich** aus, um Ihr Skript zu testen. Sobald das Skript ohne Fehler ausgeführt wird, können Sie die Option **Veröffentlichen** auswählen. Im Konfigurationsbereich für das Runbook können Sie dann einen Zeitplan dafür auswählen.
 
 ## <a name="key-vault-auditing-pipeline"></a>Überwachungspipeline für den Schlüsseltresor
-Bei der Einrichtung eines Schlüsseltresors können Sie die Überwachung aktivieren, um Protokolle zu Zugriffsanforderungen zu sammeln, die an Ihren Schlüsseltresor gerichtet wurden. Diese Protokolle werden in einem festgelegten Azure Storage-Konto gespeichert und können dann abgerufen, überwacht und analysiert werden. Im folgenden Szenario werden Azure-Funktionen, Azure-Logik-Apps und Key Vault-Überwachungsprotokolle zum Erstellen einer Pipeline verwendet, die eine E-Mail sendet, sobald geheime Schlüssel aus dem Tresor von einer App abgerufen werden, die nicht der App-ID der Web-App entspricht.
 
-Zunächst müssen Sie die Protokollierung für Ihren Schlüsseltresor aktivieren. Dies kann über die folgenden PowerShell-Befehle erfolgen (Details finden Sie unter [Key Vault-Protokollierung](key-vault-logging.md)):
+Bei der Einrichtung eines Schlüsseltresors können Sie die Überwachung aktivieren, um Protokolle zu Zugriffsanforderungen zu sammeln, die an Ihren Schlüsseltresor gerichtet wurden. Diese Protokolle werden in einem festgelegten Azure Storage-Konto gespeichert und können dann abgerufen, überwacht und analysiert werden. Im folgenden Szenario werden Azure-Funktionen, Azure-Logik-Apps und Schlüsseltresor-Überwachungsprotokolle zum Erstellen einer Pipeline verwendet, die eine E-Mail sendet, sobald Geheimnisse aus dem Tresor von einer App abgerufen werden, die nicht der App-ID der Web-App entspricht.
+
+Zunächst müssen Sie die Protokollierung für Ihren Schlüsseltresor aktivieren. Verwenden Sie die folgenden PowerShell-Befehle. (Bitte entnehmen Sie die vollständigen Details [diesem Artikel zur Schlüsseltresorprotokollierung](key-vault-logging.md).)
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -253,25 +257,23 @@ $kv = Get-AzKeyVault -VaultName '<vaultName>'
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-Wenn diese Option aktiviert ist, beginnen Überwachungsprotokolle mit dem Sammeln von Daten im vorgesehenen Speicherkonto. Diese Protokolle enthalten Ereignisse dazu, wie, wann und von wem auf Ihre Schlüsseltresore zugegriffen wurde.
+Wenn die Protokollierung aktiviert ist, werden Überwachungsprotokolle im vorgesehenen Speicherkonto gespeichert. Diese Protokolle enthalten Ereignisse dazu, wie, wann und von wem auf Ihre Schlüsseltresore zugegriffen wurde.
 
 > [!NOTE]
-> Sie können auf Ihre Protokollinformationen zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. In der Regel ist dies schon früher möglich.
->
->
+> Sie können auf Ihre Protokollinformationen zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. Sie sind oft schneller verfügbar.
 
-Der nächste Schritt besteht im [Erstellen einer Azure Service Bus-Warteschlange](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). In diese werden die Überwachungsprotokolle für den Schlüsseltresor übertragen. Wenn sich die Überwachungsprotokollmeldungen in der Warteschlange befinden, ruft die Logik-App diese ab und reagiert entsprechend. Führen Sie die folgenden Schritte aus, um einen Service Bus zu erstellen:
+Der nächste Schritt besteht im [Erstellen einer Azure Service Bus-Warteschlange](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). In diese Warteschlange werden die Überwachungsprotokolle für den Schlüsseltresor übertragen. Wenn sich die Überwachungsprotokollmeldungen in der Warteschlange befinden, ruft die Logik-App sie ab und reagiert entsprechend. Führen Sie die folgenden Schritte aus, um einen Service Bus-Instanz zu erstellen:
 
-1. Erstellen Sie einen Service Bus-Namespace (falls ein solcher bereits vorhanden ist, den Sie verwenden möchten, fahren Sie mit Schritt 2 fort).
-2. Wechseln Sie im Azure-Portal zum Service Bus, und wählen Sie den Namespace aus, in dem die Warteschlange erstellt werden soll.
+1. Erstellen Sie einen Service Bus-Namespace (falls bereits ein Service Bus-Namespace vorhanden ist, den Sie verwenden möchten, fahren Sie mit Schritt 2 fort).
+2. Wechseln Sie im Azure-Portal zur Service Bus-Instanz, und wählen Sie den Namespace aus, in dem die Warteschlange erstellt werden soll.
 3. Wählen Sie **Ressource erstellen** > **Unternehmensintegration** > **Service Bus** aus, und geben Sie dann die erforderlichen Details ein.
-4. Wählen Sie die Service Bus-Verbindungsinformationen aus, indem Sie den Namespace auswählen und auf **Verbindungsinformationen** klicken. Sie benötigen diese Informationen für den nächsten Teil.
+4. Suchen Sie die Service Bus-Verbindungsinformationen, indem Sie zuerst den Namespace und dann **Verbindungsinformationen** auswählen. Sie benötigen diese Informationen für den nächsten Abschnitt.
 
-Als Nächstes [erstellen Sie eine Azure-Funktion](../azure-functions/functions-create-first-azure-function.md) zum Abfragen der Schlüsseltresorprotokolle im Speicherkonto und Auswählen neuer Ereignisse. Dies ist eine Funktion, die gemäß einem Zeitplan ausgelöst wird.
+Als Nächstes [erstellen Sie eine Azure-Funktion](../azure-functions/functions-create-first-azure-function.md) zum Abfragen der Schlüsseltresorprotokolle im Speicherkonto und Auswählen neuer Ereignisse. Diese Funktion wird nach einem Zeitplan ausgelöst.
 
-Um eine Azure-Funktion zu erstellen, wählen Sie **Ressource erstellen** aus, suchen im Marketplace nach _Funktions-App_ und klicken dann auf **Erstellen**. Während der Erstellung können Sie einen vorhandenen Hostingplan verwenden oder einen neuen erstellen. Sie können sich auch für dynamisches Hosten entscheiden. Weitere Informationen zu Optionen für das Hosten von Funktionen finden Sie unter [Skalieren von Azure Functions](../azure-functions/functions-scale.md).
+Um eine Azure-Funktionen-App zu erstellen, wählen Sie **Ressource erstellen** aus, suchen im Marketplace nach **Funktions-App** und wählen dann **Erstellen** aus. Während der Erstellung können Sie einen vorhandenen Hostingplan verwenden oder einen neuen erstellen. Sie können sich auch für dynamisches Hosting entscheiden. Weitere Informationen zu den Hostingoptionen für Azure Functions finden Sie unter [Skalieren von Azure Functions](../azure-functions/functions-scale.md).
 
-Nachdem die Azure-Funktion erstellt wurde, navigieren Sie zu der Funktion. Wählen Sie eine Timerfunktion und C\# aus. Klicken Sie dann auf **Diese Funktion erstellen**.
+Nachdem die Azure-Funktions-App erstellt wurde, navigieren Sie dorthin und wählen das **Timer**-Szenario und **C\#** für die Sprache aus. Wählen Sie dann **Diese Funktion erstellen** aus.
 
 ![Blatt „Start“ von Azure Functions](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -348,7 +350,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
 
             dynamic dynJson = JsonConvert.DeserializeObject(text);
 
-            //required to order by time as they may not be in the file
+            //Required to order by time as they might not be in the file
             var results = ((IEnumerable<dynamic>) dynJson.records).OrderBy(p => p.time);
 
             foreach (var jsonItem in results)
@@ -386,15 +388,16 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 }
 ```
 
-
 > [!NOTE]
-> Stellen Sie sicher, dass die Variablen im vorangegangenen Code so ersetzt werden, dass sie auf Ihr Speicherkonto, in das die Schlüsseltresorprotokolle geschrieben werden, auf den zuvor erstellten Service Bus und auf den spezifischen Pfad zu den Speicherprotokollen für den Schlüsseltresor zeigen.
->
->
+> Ändern Sie die Variablen im vorangegangenen Code so, dass sie auf Ihr Speicherkonto zeigen, in das die Schlüsseltresorprotokolle geschrieben werden, auf die zuvor erstellte Service Bus-Instanz und auf den spezifischen Pfad zu den Speicherprotokollen für den Schlüsseltresor.
 
-Die Funktion verwendet die neueste Protokolldatei im Speicherkonto, in das Schlüsseltresorprotokolle geschrieben werden, ruft die neuesten Ereignisse aus dieser Datei ab und überträgt sie in eine Service Bus-Warteschlange. Da eine einzelne Datei mehrere Ereignisse enthalten kann, sollten Sie die Datei „sync.txt“ erstellen, die die Funktion ebenfalls untersucht, um den Zeitstempel des letzten ausgewählten Ereignisses zu bestimmen. Dadurch wird sichergestellt, dass Sie dasselbe Ereignis nicht mehrmals in die Warteschlange übertragen. Diese Datei „sync.txt“ enthält einen Zeitstempel des letzten eingetretenen Ereignisses. Die geladenen Protokolle müssen basierend auf dem Zeitstempel sortiert werden, um sicherzustellen, dass sie in die richtige Reihenfolge gebracht werden.
+Die Funktion verwendet die neueste Protokolldatei im Speicherkonto, in das Schlüsseltresorprotokolle geschrieben werden, ruft die neuesten Ereignisse aus dieser Datei ab und überträgt sie in eine Service Bus-Warteschlange. 
 
-Hierfür verweisen wir auf verschiedene zusätzliche Bibliotheken, die in Azure Functions nicht standardmäßig verfügbar sind. Um sie einzubeziehen, muss Azure Functions sie über NuGet abrufen. Wählen Sie die Option **Dateien anzeigen** aus.
+Da eine einzelne Datei mehrere Ereignisse enthalten kann, sollten Sie die Datei „sync.txt“ erstellen, die die Funktion ebenfalls untersucht, um den Zeitstempel des letzten ausgewählten Ereignisses zu bestimmen. Mit dieser Datei wird sichergestellt, dass Sie dasselbe Ereignis nicht mehrmals in die Warteschlange übertragen. 
+
+Diese Datei „sync.txt“ enthält einen Zeitstempel des letzten eingetretenen Ereignisses. Wenn die Protokolle geladen werden, müssen sie auf der Basis des Zeitstempels sortiert werden, um sicherzustellen, dass sie ordnungsgemäß sortiert sind.
+
+Hierfür verweisen wir auf verschiedene zusätzliche Bibliotheken, die in Azure Functions nicht standardmäßig verfügbar sind. Um diese Bibliotheken einzubeziehen, muss Azure Functions sie über NuGet abrufen. Wählen Sie unter dem Feld **Code** die Option **Dateien anzeigen** aus.
 
 ![Option „Dateien anzeigen“](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
@@ -413,27 +416,27 @@ Fügen Sie eine Datei namens „project.json“ mit folgendem Inhalt hinzu:
     }
 ```
 
-Dadurch wird Azure Functions beim **Speichern** die erforderlichen Binärdateien herunterladen.
+Nachdem Sie **Speichern** ausgewählt haben, lädt Azure Functions die erforderlichen Binärdateien herunter.
 
-Wechseln Sie zur Registerkarte **Integrieren** , und versehen Sie den Parameter „Timer“ mit einem aussagekräftigen Namen, der in der Funktion verwendet werden soll. Im obigen Code wird erwartet, dass der Timer *myTimer*heißt. Geben Sie einen [CRON-Ausdruck](../app-service/webjobs-create.md#CreateScheduledCRON) wie folgt an: 0 \* \* \* \* \* für den Timer, der bewirkt, dass die Funktion einmal pro Minute ausgeführt wird.
+Wechseln Sie zur Registerkarte **Integrieren** , und versehen Sie den Parameter „Timer“ mit einem aussagekräftigen Namen, der in der Funktion verwendet werden soll. Im obigen Code erwartet die Funktion, dass der Timer *myTimer*heißt. Geben Sie einen [CRON-Ausdruck](../app-service/webjobs-create.md#CreateScheduledCRON) für den Timer wie folgt an: `0 * * * * *`. Dieser Ausdruck bewirkt, dass die Funktion einmal pro Minute ausgeführt wird.
 
-Fügen Sie auf der Registerkarte **Integrieren** auch eine Eingabe des Typs **Azure Blob Storage** hinzu. Diese verweist auf die Datei „sync.txt“, die den Zeitstempel des letzten Ereignisses enthält, das von der Funktion untersucht wurde. Diese Information wird in der Funktion mithilfe des Parameternamens verfügbar gemacht. Im obigen Code erwartet die Azure Blob Storage-Eingabe, dass der Parametername *inputBlob* ist. Wählen Sie das Speicherkonto aus, das die Datei „sync.txt“ enthält (dabei kann es sich um dasselbe oder ein anderes Speicherkonto handeln). Geben Sie im entsprechenden Feld den Pfad zu der Datei in diesem Format an: {container-name}/path/to/sync.txt.
+Fügen Sie auf derselben Registerkarte **Integrieren** eine Eingabe des Typs **Azure Blob Storage** hinzu. Diese Eingabe zeigt auf die Datei „sync.txt“, die den Zeitstempel des letzten Ereignisses enthält, das von der Funktion untersucht wurde. Der Zugriff auf diese Eingabe in der Funktion erfolgt mit dem Parameternamen. Im obigen Code erwartet die Azure Blob Storage-Eingabe, dass der Parametername *inputBlob* ist. Wählen Sie das Speicherkonto aus, das die Datei „sync.txt“ enthalten soll (dabei kann es sich um dasselbe oder ein anderes Speicherkonto handeln). Geben Sie im Feld für den Pfad den Pfad zur Datei im Format `{container-name}/path/to/sync.txt` ein.
 
-Fügen Sie eine Ausgabe des Typs *Azure Blob Storage* hinzu. Diese zeigt auf die Datei „sync.txt“, die Sie in der Eingabe definiert haben. Dies wird von der Funktion zum Schreiben des Zeitstempels des letzten untersuchten Ereignisses verwendet. Der obige Code erwartet, dass dieser Parameter *outputBlob*heißt.
+Fügen Sie eine Ausgabe des Typs **Azure Blob Storage** hinzu. Diese Ausgabe zeigt auf die Datei „sync.txt“, die Sie in der Eingabe definiert haben. Diese Ausgabe wird von der Funktion zum Schreiben des Zeitstempels des letzten untersuchten Ereignisses verwendet. Der obige Code erwartet, dass dieser Parameter *outputBlob*heißt.
 
-An diesem Punkt ist die Funktion fertig. Wechseln Sie zurück zur Registerkarte **Entwickeln**, und speichern Sie den Code. Überprüfen Sie das Ausgabefenster auf Kompilierungsfehler, und korrigieren Sie diese entsprechend. Falls die Kompilierung erfolgt, sollte der Code nun die Schlüsseltresorprotokolle minütlich überprüfen und alle neuen Ereignisse in die definierte Service Bus-Warteschlange übertragen. Immer wenn die Funktion ausgelöst wird, sollten Protokollinformationen im Protokollfenster ausgegeben werden.
+Die Funktion ist jetzt bereit. Wechseln Sie zurück zur Registerkarte **Entwickeln**, und speichern Sie den Code. Überprüfen Sie das Ausgabefenster auf Kompilierungsfehler, und korrigieren Sie diese entsprechend. Falls die Kompilierung erfolgt, sollte der Code nun die Schlüsseltresorprotokolle minütlich überprüfen und alle neuen Ereignisse in die definierte Service Bus-Warteschlange übertragen. Immer wenn die Funktion ausgelöst wird, sollten Protokollinformationen im Protokollfenster ausgegeben werden.
 
 ### <a name="azure-logic-app"></a>Azure-Logik-App
 
 Als Nächstes müssen Sie eine Azure-Logik-App erstellen, die die Ereignisse verarbeitet, die die Funktion in die Service Bus-Warteschlange überträgt, den Inhalt analysiert und basierend auf einer erfüllten Bedingung eine E-Mail sendet.
 
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) über **Neu &gt; Logik-App**.
+[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) durch Auswahl von **Ressource erstellen** > **Integration** > **Logik-App**.
 
-Sobald die Logik-App erstellt wurde, navigieren Sie zu ihr und wählen **Bearbeiten**aus. Wählen Sie im Logik-App-Editor **Service Bus-Warteschlange** aus, und geben Sie Ihre Service Bus-Anmeldeinformationen ein, um sie mit der Warteschlange zu verbinden.
+Nachdem die Logik-App erstellt wurde, navigieren Sie zu ihr, und wählen Sie **Bearbeiten** aus. Wählen Sie im Logik-App-Editor **Service Bus-Warteschlange** aus, und geben Sie Ihre Service Bus-Anmeldeinformationen ein, um sie mit der Warteschlange zu verbinden.
 
 ![Service Bus für Azure-Logik-App](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-Wählen Sie anschließend **Bedingung hinzufügen** aus. Wechseln Sie in der Bedingung zum erweiterten Editor. Geben Sie den folgenden Code ein, und ersetzen Sie die APP_ID durch die tatsächliche APP_ID Ihrer Web-App:
+Wählen Sie **Bedingung hinzufügen**aus. Wechseln Sie in der Bedingung zum erweiterten Editor, und geben Sie den folgenden Code ein. Ersetzen Sie *APP_ID* mit der eigentlichen App-ID der Web-App:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
@@ -441,10 +444,10 @@ Wählen Sie anschließend **Bedingung hinzufügen** aus. Wechseln Sie in der Bed
 
 Dieser Ausdruck gibt **false** zurück, wenn die *appid* im eingehenden Ereignis (dem Text der Service Bus-Nachricht) nicht die *appid* der App ist.
 
-Erstellen Sie jetzt unter **Falls nein, nichts tun** eine Aktion.
+Erstellen Sie jetzt unter **FALLS NEIN, NICHTS TUN** eine Aktion.
 
-![Azure-Logik-App, Aktion wählen](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
+![Azure Logic Apps – Aktion auswählen](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-Wählen Sie als Aktion **Office 365 – E-Mail senden**. Füllen Sie die Felder aus, um eine E-Mail zu erstellen, wenn die definierte Bedingung **false** zurückgibt. Wenn Sie Office 365 nicht haben, können Sie eine Alternative wählen, um dieselben Ergebnisse zu erzielen.
+Wählen Sie als Aktion **Office 365 – E-Mail senden** aus. Füllen Sie die Felder aus, um eine E-Mail zu erstellen, wenn die definierte Bedingung **false** zurückgibt. Wenn Sie Office 365 nicht haben, wählen Sie eine Alternative aus, um dieselben Ergebnisse zu erzielen.
 
-An diesem Punkt haben Sie eine lückenlose Pipeline, die einmal pro Minute eine Überprüfung auf neue Schlüsseltresor-Überwachungsprotokolle vornimmt. Die gefundenen neuen Protokolle werden in eine Service Bus-Warteschlange verschoben. Die Logik-App wird ausgelöst, wenn eine neue Nachricht in der Warteschlange eintrifft. Wenn die *appid* innerhalb des Ereignisses nicht der App-ID der aufrufenden Anwendung entspricht, wird eine E-Mail gesendet.
+Sie haben nun eine lückenlose Pipeline, die einmal pro Minute eine Überprüfung auf neue Schlüsseltresor-Überwachungsprotokolle vornimmt. Die gefundenen neuen Protokolle werden in eine Service Bus-Warteschlange verschoben. Die Logik-App wird ausgelöst, wenn eine neue Nachricht in der Warteschlange eintrifft. Wenn die *appid* innerhalb des Ereignisses nicht der App-ID der aufrufenden Anwendung entspricht, wird eine E-Mail gesendet.

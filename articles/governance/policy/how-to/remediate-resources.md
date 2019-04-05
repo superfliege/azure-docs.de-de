@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 086ef9030451632ee4defa39a402e4d62c897f20
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342115"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816559"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -131,6 +131,8 @@ Führen Sie die folgenden Schritte aus, um eine Rolle zu der verwalteten Identit
 
 ## <a name="create-a-remediation-task"></a>Erstellen eines Wartungstask
 
+### <a name="create-a-remediation-task-through-portal"></a>Erstellen eines Wartungstasks über das Portal
+
 Während der Auswertung wird durch die Richtlinienzuweisung mit dem **deployIfNotExists**-Effekt bestimmt, ob nicht konforme Ressourcen vorhanden sind. Falls nicht konforme Ressourcen gefunden werden, finden Sie auf der Seite **Wartung** weitere Einzelheiten. Neben der Liste der Richtlinien mit nicht konformen Ressourcen ist die Option, einen **Wartungstask** auszulösen. Dadurch wird eine Bereitstellung mithilfe der Vorlage **deployIfNotExists** erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
@@ -163,6 +165,32 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
    ![Wartung: Kontextmenü des Task der Ressource](../media/remediate-resources/resource-task-context-menu.png)
 
 Ressourcen, die über einen **Wartungstask** bereitgestellt werden, werden auf der Seite „Richtlinienkonformität“ zur Registerkarte **Bereitgestellte Ressourcen** hinzugefügt.
+
+### <a name="create-a-remediation-task-through-azure-cli"></a>Erstellen eines Wartungstasks über die Azure CLI
+
+Verwenden Sie zum Erstellen eines **Wartungstasks** mit der Azure-Befehlszeilenschnittstelle die `az policy remediation`-Befehle. Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{myAssignmentId}` durch Ihre **deployIfNotExists**-Richtlinienzuweisungs-ID.
+
+```azurecli-interactive
+# Login first with az login if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+Informationen zu anderen Wartungsbefehlen und Beispiele finden Sie im Artikel zu den [az policy remediation](/cli/azure/policy/remediation)-Befehlen.
+
+### <a name="create-a-remediation-task-through-azure-powershell"></a>Erstellen eines Wartungstasks über Azure PowerShell
+
+Verwenden Sie zum Erstellen eines **Wartungstasks** mit Azure PowerShell die `Start-AzPolicyRemediation`-Befehle. Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{myAssignmentId}` durch Ihre **deployIfNotExists**-Richtlinienzuweisungs-ID.
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+Andere Cmdlets zur Wartung und Beispiele finden Sie im [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights)-Modul.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

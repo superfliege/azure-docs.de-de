@@ -7,20 +7,20 @@ ms.service: dns
 ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
-ms.openlocfilehash: 2b14753237e118540da6306fa9f06816f3e58b71
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086325"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hosten von Azure Web-Apps mit Lastenausgleich im Zonen-Apex
 
-Das DNS-Protokoll sorgt dafür, dass im Zonen-Apex nur A- oder AAAA-Datensätze zugewiesen werden können. Ein Beispiel für einen Zonen-Apex ist contoso.com. Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lastenausgleich hinter Traffic Manager verfügen, vor ein Problem. Über den Zonen-Apex-Datensatz kann nicht auf das Traffic Manager-Profil verwiesen werden. Anwendungsbesitzer müssen daher auf eine Problemumgehung zurückgreifen: eine Umleitung in der Anwendungsschicht vom Zonen-Apex zu einer anderen Domäne, beispielsweise von „contoso.com“ zu „www.contoso.com“. Dies stellt einen Single Point of Failure für die Umleitungsfunktion dar.
+Das DNS-Protokoll sorgt dafür, dass im Zonen-Apex nur A- oder AAAA-Datensätze zugewiesen werden können. Ein Beispiel für einen Zonen-Apex ist contoso.com. Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lastenausgleich hinter Traffic Manager verfügen, vor ein Problem. Über den Zonen-Apex-Datensatz kann nicht auf das Traffic Manager-Profil verwiesen werden. Anwendungsbesitzer müssen daher auf eine Problemumgehung zurückgreifen: eine Umleitung in der Anwendungsschicht vom Zonen-Apex zu einer anderen Domäne, beispielsweise von „contoso.com“ zu „www\.contoso.com“. Dies stellt einen Single Point of Failure für die Umleitungsfunktion dar.
 
-Bei Aliasdatensätzen besteht dieses Problem nicht mehr. Nun können Anwendungsbesitzer für Ihren Zonen-Apex-Datensatz einen Verweis auf ein Traffic Manager-Profil erstellen, das über externe Endpunkte verfügt. Anwendungsbesitzer können auf das gleiche Traffic Manager-Profil verweisen, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird.
+Bei Aliaseinträgen besteht dieses Problem nicht mehr. Nun können Anwendungsbesitzer für Ihren Zonen-Apex-Datensatz einen Verweis auf ein Traffic Manager-Profil erstellen, das über externe Endpunkte verfügt. Anwendungsbesitzer können auf das gleiche Traffic Manager-Profil verweisen, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird.
 
-So können beispielsweise „contoso.com“ und „www.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Voraussetzung ist allerdings, dass für das Traffic Manager-Profil nur externe Endpunkte konfiguriert sind.
+So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Voraussetzung ist allerdings, dass für das Traffic Manager-Profil nur externe Endpunkte konfiguriert sind.
 
 In diesem Artikel erfahren Sie, wie Sie einen Alias-Datensatz für Ihren Domänen-Apex erstellen und Ihre Traffic Manager-Profilendpunkte für Ihre Web-Apps konfigurieren.
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen über einen Domänennamen verfügen, den Sie zum Testen in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-Anweisungen zum Hosten der Domäne in Azure DNS finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
+Eine Anleitung zum Hosten Ihrer Domäne in Azure DNS finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Verwenden Sie aber ruhig Ihren eigenen Domänennamen.
 
@@ -55,7 +55,7 @@ Erstellen Sie zwei Web-Apps, jeweils eine in jedem App Service-Plan.
 1. Klicken Sie im Azure-Portal links oben auf **Eine Ressource erstellen**.
 2. Geben Sie **Web-App** in die Suchleiste ein, und drücken Sie auf die Eingabetaste.
 3. Klicken Sie auf **Web-App**.
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 5. Akzeptieren Sie die Standardeinstellungen, und verwenden Sie die folgende Tabelle, um die beiden Web-Apps zu konfigurieren:
 
    |NAME<br>(muss innerhalb von .azurewebsites.net eindeutig sein)|Ressourcengruppe |App Service-Plan/Standort
@@ -76,7 +76,7 @@ Notieren Sie jetzt die IP-Adresse und den Hostnamen für die Apps.
 
 Erstellen Sie in Ihrer Ressourcengruppe ein Traffic Manager-Profil. Verwenden Sie die Standardeinstellungen, und geben Sie einen eindeutigen Namen innerhalb des trafficmanager.net-Namespace ein.
 
-Informationen zum Erstellen eines Traffic Manager-Profils finden Sie unter [Schnellstart: Erstellen eines Traffic Manager-Profils für eine hoch verfügbare Web-App](../traffic-manager/quickstart-create-traffic-manager-profile.md).
+Informationen zum Erstellen eines Traffic Manager-Profils finden Sie unter [Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 ### <a name="create-endpoints"></a>Erstellen von Endpunkten
 
@@ -87,14 +87,14 @@ Jetzt können Sie die Endpunkte für die beiden Web-Apps erstellen.
 3. Klicken Sie auf **Hinzufügen**.
 4. Verwenden Sie die folgende Tabelle zum Konfigurieren der Endpunkte:
 
-   |Typ  |NAME  |Ziel  |Standort  |Benutzerdefinierte Headereinstellungen|
+   |Type  |NAME  |Ziel  |Standort  |Benutzerdefinierte Headereinstellungen|
    |---------|---------|---------|---------|---------|
    |Externer Endpunkt     |End-01|IP-Adresse, die Sie für App-01 notiert haben|USA (Ost)|host:\<die URL, die Sie für App-01 notiert haben\><br>Beispiel: **host:app-01.azurewebsites.net**|
    |Externer Endpunkt     |End-02|IP-Adresse, die Sie für App-02 notiert haben|USA (Mitte)|host:\<die URL, die Sie für App-02 notiert haben\><br>Beispiel: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>Erstellen einer DNS-Zone
 
-Sie können entweder eine vorhandene DNS-Zone für Tests verwenden, oder Sie können eine neue Zone erstellen. Informationen zum Erstellen einer neuen DNS-Zone in Azure finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
+Sie können entweder eine vorhandene DNS-Zone für Tests verwenden, oder Sie können eine neue Zone erstellen. Informationen zum Erstellen und Delegieren einer neuen DNS-Zone in Azure finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
 
 ### <a name="add-the-alias-record-set"></a>Hinzufügen der Aliasdatensatzgruppe
 
@@ -104,9 +104,9 @@ Wenn Ihre DNS-Zone bereit ist, können Sie einen Alias-Datensatz für den Zonen-
 2. Klicken Sie auf **Datensatzgruppe**.
 3. Fügen Sie die Datensatzgruppe mithilfe der folgenden Tabelle hinzu:
 
-   |NAME  |Typ  |Alias-Datensatzgruppe  |Aliastyp  |Azure-Ressource|
+   |NAME  |Type  |Alias-Datensatzgruppe  |Aliastyp  |Azure-Ressource|
    |---------|---------|---------|---------|-----|
-   |@     |Eine Datei|JA|Azure-Ressource|Traffic Manager – Ihr Profil|
+   |@     |Eine Datei|Ja|Azure-Ressource|Traffic Manager – Ihr Profil|
 
 ## <a name="add-custom-hostnames"></a>Hinzufügen von benutzerdefinierten Hostnamen
 
@@ -141,6 +141,6 @@ Sie können Ihre Web-App jetzt testen, um sicherzustellen, dass Sie sie erreiche
 
 Weitere Informationen zu Aliaseinträgen finden Sie in den folgenden Artikeln:
 
-- [Tutorial: Konfigurieren eines Aliasdatensatzes, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
-- [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md) (Tutorial: Konfigurieren eines Aliaseintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager)
+- [Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
+- [Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager](tutorial-alias-tm.md)
 - [Häufig gestellte Fragen zu DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 5f8f282db9468d84c3a1fa16c5cd481f2dd0970e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415917"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199629"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -37,8 +37,8 @@ In diesem Dokument werden zwei Szenarien beschrieben:
 1. Beide virtuellen Netzwerke verwenden das Ressourcen-Manager-Bereitstellungsmodell
 2. Das virtuelle Spoke-Netzwerk verwendet das klassische Bereitstellungsmodell, das virtuelle Hub-Netzwerk mit Gateway das Ressourcen-Manager-Bereitstellungsmodell
 
-> [!IMPORTANT]
-> Gatewaytransit wird derzeit beim Peering globaler virtueller Netzwerke nicht unterstützt.
+> [!IMPORTANT]  
+> Gatewaytransit wird derzeit beim Peering globaler virtueller Netzwerke in der Vorschauversion unterstützt. Die Vorschauversion ist in allen Azure-Regionen, China-Cloud-Regionen und Government-Cloud-Regionen verfügbar, jedoch nicht Cloud-übergreifend. Es sind keine Whitelists erforderlich. Sie können in der Vorschau über CLI, PowerShell, Vorlagen oder API testen. Das Portal wird in der Vorschau nicht unterstützt. 
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -129,13 +129,13 @@ Add-AzVirtualNetworkPeering `
 Die Schritte sind ähnlich wie beim Ressourcen-Manager-Beispiel, nur dass die Vorgänge auf das virtuelle Netzwerk „Hub-RM“ angewendet werden.
 
 1. Erstellen oder aktualisieren Sie das Peering virtueller Netzwerke von „Hub-RM“ zu „Spoke-RM“ im Azure-Portal. Navigieren Sie zur virtuellen Netzwerkressource „Hub-RM“, klicken Sie auf „Peerings“ und dann auf „Hinzufügen“:
-    - Festlegen der Option „Klassisch“ für das Bereitstellungsmodell für virtuelle Netzwerke
-    - Wählen Sie das virtuelle Netzwerk „Spoke-Classic“ im entsprechenden Abonnement aus.
-    - Vergewissern Sie sich, dass „Zugriff auf virtuelles Netzwerk zulassen“ aktiviert ist.
-    - Legen Sie die Option **Gatewaytransit zulassen** fest.
-    - Klicken Sie auf „OK“.
+   - Festlegen der Option „Klassisch“ für das Bereitstellungsmodell für virtuelle Netzwerke
+   - Wählen Sie das virtuelle Netzwerk „Spoke-Classic“ im entsprechenden Abonnement aus.
+   - Vergewissern Sie sich, dass „Zugriff auf virtuelles Netzwerk zulassen“ aktiviert ist.
+   - Legen Sie die Option **Gatewaytransit zulassen** fest.
+   - Klicken Sie auf „OK“.
 
-    ![HubRM-zu-Spoke-Classic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
+     ![HubRM-zu-Spoke-Classic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
 
 2. Wenn das Peering bereits erstellt wurde, navigieren Sie zur Peeringressource, und aktivieren Sie dann die Option **Gatewaytransit zulassen**, wie in Schritt (1) gezeigt.
 

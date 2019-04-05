@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7818d184cd74da43ceac008331b4436979152557
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201261"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Was ist die Self-Service-Registrierung für Azure Active Directory?
 
-Dieser Artikel beschreibt die Self-Service-Registrierung und deren Unterstützung in Azure Active Directory (Azure AD). Wenn Sie einen Domänennamen von einem nicht verwalteten Azure AD-Mandanten übernehmen möchten, lesen Sie [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator](domains-admin-takeover.md).
+Dieser Artikel erklärt, wie Sie die Self-Service-Registrierung verwenden, um ein Unternehmen in Azure Active Directory (Azure AD) einzugeben. Wenn Sie einen Domänennamen von einem nicht verwalteten Azure AD-Organisation übernehmen möchten, lesen Sie [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator](domains-admin-takeover.md).
 
 ## <a name="why-use-self-service-signup"></a>Gründe für das Verwenden der Self-Service-Registrierung
 * Kunden erhalten schneller die gewünschten Dienste.
@@ -71,7 +71,7 @@ Diese beiden Parameter können zusammen verwendet werden, um eine genauere Steue
 
 Im folgenden Flussdiagramm werden die verschiedenen Kombinationen für diese Parameter und die resultierenden Bedingungen für das Verzeichnis und die Self-Service-Registrierung erläutert.
 
-![Steuerelemente für die Self-Service-Registrierung](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![Flussdiagramm der Steuerelemente für die Self-Service-Registrierung](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie unter [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 

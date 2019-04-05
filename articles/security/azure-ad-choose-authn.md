@@ -9,18 +9,18 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: efe4f1542d255232258329f26526bfc997cf6b50
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694685"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189749"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
 
 Dieser Artikel ist der Beginn einer Reihe von Artikeln, die Organisationen bei der Implementierung einer kompletten Azure AD-Hybrididentitätslösung (Azure Active Directory) unterstützen. Diese Lösung wurde [als Hybrid Identity Digital Transformation Framework](https://aka.ms/aadframework) (digitales Transformationsframework für Hybrididentitäten) entworfen. Hiermit werden die Geschäftsergebnisse und Ziele abgedeckt, auf die sich Organisationen konzentrieren sollten, um sicherzustellen, dass sie eine stabile und sichere Hybrididentitätslösung implementiert haben. 
 
-Das erste Geschäftsergebnis des Frameworks beschreibt die Anforderungen an Organisationen, den Authentifizierungsprozess zu sichern, wenn Benutzer auf Cloud-Apps zugreifen. Das erste Unternehmensziel beim Geschäftsergebnis mit sicherer Authentifizierung ist, Benutzern die Möglichkeit zu geben, sich mit ihren lokalen Benutzernamen und Kennwörtern an Cloud-Apps anzumelden. Durch diesen Anmeldeprozess und die Art der Benutzerauthentifizierung stehen in der Cloud alle Türen offen.
+Das erste Geschäftsergebnis des Frameworks beschreibt die Anforderungen an Organisationen, den Authentifizierungsprozess zu sichern, wenn Benutzer auf Cloud-Apps zugreifen. Das erste Unternehmensziel beim Geschäftsergebnis mit sicherer Authentifizierung ist, Benutzern die Möglichkeit zu geben, sich mit ihren lokalen Benutzernamen und Kennwörtern an Cloud-Apps anzumelden. Durch diesen Anmelde- und Authentifizierungsprozess stehen in der Cloud alle Türen offen.
 
 Die Wahl der richtigen Authentifizierungsmethode ist die erste Hürde für Organisationen, die ihre Apps in die Cloud verschieben möchten. Nehmen Sie diese Entscheidung aus den folgenden Gründen nicht auf die leichte Schulter:
 
@@ -135,10 +135,10 @@ Weitere Informationen zu den Bereitstellungsschritten finden Sie unter [Benutzer
 
 * **Erweiterte Szenarien**: Eine Lösung für die Verbundauthentifizierung ist normalerweise erforderlich, wenn für Kunden eine Authentifizierungsanforderung besteht, die von Azure AD nicht nativ unterstützt wird. Sehen Sie sich die ausführlichen Informationen hierzu an, damit Sie [die richtige Anmeldeoption auswählen können](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Beachten Sie die folgenden häufigen Anforderungen:
 
-    * Authentifizierung mit Smartcards oder Zertifikaten
-    * Lokale MFA-Server oder mehrstufige Authentifizierung von Drittanbietern
-    * Authentifizierung mit Drittanbieter-Authentifizierungslösungen. Siehe die [Azure AD-Verbund – Kompatibilitätsliste](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
-    * Anmeldungen, für die ein sAMAccountName erforderlich ist, z.B. „DOMÄNE\Benutzername“, anstatt eines Benutzerprinzipalnamens (UPN), z.B. user@domain.com
+  * Authentifizierung mit Smartcards oder Zertifikaten
+  * Lokale MFA-Server oder mehrstufige Authentifizierung von Drittanbietern
+  * Authentifizierung mit Drittanbieter-Authentifizierungslösungen. Siehe die [Azure AD-Verbund – Kompatibilitätsliste](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
+  * Anmeldungen, für die ein sAMAccountName erforderlich ist, z.B. „DOMÄNE\Benutzername“, anstatt eines Benutzerprinzipalnamens (UPN), z.B. user@domain.com
 
 * **Geschäftskontinuität**: Für Verbundsysteme ist normalerweise ein Serverarray mit Lastenausgleich erforderlich, das als Farm bezeichnet wird. Diese Farm wird in einer Topologie mit einem internen Netzwerk und einem Umkreisnetzwerk konfiguriert, um die Hochverfügbarkeit für Authentifizierungsanforderungen sicherzustellen.
 
@@ -161,7 +161,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 
     ![Azure AD-Hybrididentität mit Kennworthashsynchronisierung](media/azure-ad/azure-ad-authn-image2.png)
 
-* Agent-Anforderungen der Passthrough-Authentifizierung:
+* Agent-Anforderungen der Passthrough-Authentifizierung mit zwei Agents für Redundanz:
 
     ![Azure AD-Hybrididentität mit Passthrough-Authentifizierung](media/azure-ad/azure-ad-authn-image3.png)
 
@@ -180,7 +180,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Gibt es eine Systemüberwachungslösung?|Nicht erforderlich|Agent-Status, bereitgestellt von [Azure Active Directory Admin Center](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
 |Erhalten Benutzer einmaliges Anmelden für Cloudressourcen über Geräte, die in die Domäne eingebunden sind und zum Unternehmensnetzwerk gehören?|Ja, mit [nahtlosem einmaligen Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Ja, mit [nahtlosem einmaligen Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Ja|
 |Welche Anmeldetypen werden unterstützt?|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternative Anmelde-ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|Benutzerprinzipalname + Kennwort<br><br>Integrierte Windows-Authentifizierung mit [nahtlosem einmaligen Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternative Anmelde-ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|Benutzerprinzipalname + Kennwort<br><br>sAMAccountName + Kennwort<br><br>Integrierte Windows-Authentifizierung<br><br>[Zertifikat- und Smartcard-Authentifizierung](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternative Anmelde-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
-|Wird Windows Hello for Business unterstützt?|[Modell der schlüsselbasierten Vertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung mit Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Modell der schlüsselbasierten Vertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung mit Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)<br>*Erfordert eine Windows Server 2016-Domänenfunktionsebene*|[Modell der schlüsselbasierten Vertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
+|Wird Windows Hello for Business unterstützt?|[Modell der schlüsselbasierten Vertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung mit Intune](https://microscott.azurewebsites.net/2017/12/16/setting-up-windows-hello-for-business-with-intune/)|[Modell der schlüsselbasierten Vertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung mit Intune](https://microscott.azurewebsites.net/2017/12/16/setting-up-windows-hello-for-business-with-intune/)<br>*Erfordert eine Windows Server 2016-Domänenfunktionsebene*|[Modell der schlüsselbasierten Vertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Modell der Zertifikatvertrauensstellung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Welche Optionen gibt es für die mehrstufige Authentifizierung?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-Server](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA über Drittanbieter](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|
 |Welche Benutzerkontenstatus werden unterstützt?|Deaktivierte Konten<br>(bis zu 30 Minuten Verzögerung)|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Konto abgelaufen<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Konto abgelaufen<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|
 |Welche Optionen für bedingten Zugriff gibt es?|[Bedingter Zugriff in Azure AD mit Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Bedingter Zugriff in Azure AD mit Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Bedingter Zugriff in Azure AD mit Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS-Anspruchsregeln](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
@@ -204,7 +204,7 @@ Verwenden oder aktivieren Sie die Kennworthashsynchronisierung aus folgenden Gr�
 
    * Organisationen, die die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre Authentifizierungsmethode geändert und die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Office 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
 
-   * Organisationen, die die Kennworthashsynchronisierung zuvor nicht aktiviert hatten, mussten für die Kommunikation und Problembehebung auf nicht vertrauenswürdige externe E-Mail-Systeme zurückgreifen. In diesen Fällen dauerte es Wochen oder länger, bis sie wieder voll einsatzbereit waren.
+   * Organisationen, die die Kennworthashsynchronisierung zuvor nicht aktiviert hatten, mussten für die Kommunikation und Problembehebung auf nicht vertrauenswürdige externe E-Mail-Systeme zurückgreifen. In diesen Fällen dauerte es Wochen, bis die Identitätsinfrastruktur vor Ort wiederhergestellt war, bevor sich die Benutzer wieder bei Cloud-basierten Anwendungen anmelden können.
 
 3. **Identitätsschutz**: Eine der besten Möglichkeiten, Benutzer in der Cloud zu schützen, ist Azure AD Identity Protection mit Azure AD Premium P2. Microsoft überprüft das Internet ständig auf Benutzer- und Kennwortlisten, die unautorisierte Akteure verkaufen möchten und im Darknet anbieten. Azure AD kann diese Informationen verwenden, um zu überprüfen, ob einer der Benutzernamen mit Kennwort in Ihrer Organisation kompromittiert ist. Daher ist es wichtig, die Kennworthashsynchronisierung unabhängig von der verwendeten Authentifizierungsmethode (Verbund- oder Passthrough-Authentifizierung) zu aktivieren. Kompromittierte Anmeldeinformationen werden in Berichtform angezeigt. Verwenden Sie diese Informationen, um Benutzer zu blockieren oder zum Ändern ihrer Kennwörter zu zwingen, wenn diese versuchen, sich mit kompromittierten Kennwörtern anzumelden.
 

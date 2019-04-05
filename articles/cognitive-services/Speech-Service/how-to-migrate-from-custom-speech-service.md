@@ -1,7 +1,7 @@
 ---
 title: Migrieren vom Custom Speech Service zu Speech Services
 titlesuffix: Azure Cognitive Services
-description: Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zum Speech-Dienst, um von den neuesten Updates zu Qualität und Features zu profitieren.
+description: Der Custom Speech Service ist nun Teil der Sprachdienste. Wechseln Sie zu den Sprachdiensten, um von den neuesten Updates zu Qualität und Features zu profitieren.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 501555c68b7b5922bbf5a74d2a7ed5e548b900c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833536"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrieren vom Custom Speech Service zum Speech-Dienst
 
 Verwenden Sie die Informationen in diesem Artikel, um Ihre Anwendungen vom Custom Speech Service zum Speech-Dienst zu migrieren.
 
-Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zum Speech-Dienst, um von den neuesten Updates zu Qualität und Features zu profitieren.
+Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zu den Sprachdiensten, um von den neuesten Updates zu Qualität und Features zu profitieren.
 
 ## <a name="migration-for-new-customers"></a>Migration für Neukunden
 
@@ -39,16 +39,16 @@ Das Preismodell ist einfacher, da für den Speech-Dienst ein stundenbasiertes Pr
 
 3. Befolgen Sie die Schnellstarts und die SDK-Beispiele, um die richtigen APIs zu verwenden. Wenn Sie die REST-APIs verwenden, müssen Sie auch die richtigen Endpunkte und Ressourcenschlüssel verwenden.
 
-4. Aktualisieren Sie die Clientanwendung, um den Speech-Dienst und die APIs zu verwenden.
+4. Aktualisieren Sie die Clientanwendung, um die Sprachdienste und APIs zu verwenden.
 
 ## <a name="migration-for-existing-customers"></a>Migration für Bestandskunden
 
-Migrieren Sie Ihre vorhandenen Ressourcenschlüssel im Speech-Dienst-Portal zum Speech-Dienst. Führen Sie die folgenden Schritte aus:
+Migrieren Sie Ihre vorhandenen Ressourcenschlüssel zu den Sprachdiensten im Sprachdiensteportal. Führen Sie die folgenden Schritte aus:
 
 > [!NOTE]
 > Ressourcenschlüssel können nur innerhalb derselben Region migriert werden.
 
-1. Melden Sie sich im Portal [cris.ai](http://www.cris.ai) an, und wählen Sie das Abonnement im Menü rechts oben aus.
+1. Melden Sie sich im Portal [cris.ai](https://www.cris.ai) an, und wählen Sie das Abonnement im Menü rechts oben aus.
 
 2. Wählen Sie **Migrate selected subscription** (Ausgewähltes Abonnement migrieren) aus.
 
@@ -56,10 +56,10 @@ Migrieren Sie Ihre vorhandenen Ressourcenschlüssel im Speech-Dienst-Portal zum 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Testen Sie den Speech-Dienst kostenlos](get-started.md).
+* [Testen Sie die Sprachdienste kostenlos](get-started.md).
 * Lernen Sie die Konzepte der [Spracherkennung](./speech-to-text.md) kennen.
 
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Worum handelt es sich beim Speech-Dienst?](overview.md)
-* [Spracherkennungsdienst und SDK: Dokumentation](speech-sdk.md#get-the-sdk)
+* [Dokumentation zu Sprachdiensten und zum Spracherkennungsdienst-SDK](speech-sdk.md#get-the-sdk)

@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076274"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -117,16 +117,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problembehandlung über Aktivitätsprotokolle für Gerätestreams
 
-Sie können Azure Log Analytics zum Erfassen des Aktivitätsprotokolls für Gerätestreams in Ihrer IoT Hub-Instanz einrichten. Dies kann zur Problembehandlung sehr hilfreich sein.
+Sie können Azure Monitor-Protokolle zum Erfassen des Aktivitätsprotokolls für Gerätestreams in Ihrer IoT Hub-Instanz einrichten. Dies kann zur Problembehandlung sehr hilfreich sein.
 
-Führen Sie die folgenden Schritte aus, um Azure Log Analytics für Ihre IoT Hub-Gerätestreamaktivitäten zu konfigurieren:
+Führen Sie die folgenden Schritte aus, um Azure Monitor-Protokolle für die Gerätestreamaktivitäten Ihrer IoT Hub-Instanz zu konfigurieren:
 
 1. Navigieren Sie in Ihrer IoT Hub-Instanz zur Registerkarte *Diagnoseeinstellungen*, und klicken Sie auf den Link *Diagnose aktivieren*.
 
-  ![Alternativtext](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "Aktivieren von Diagnoseprotokollen")
+   ![Alternativtext](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "Aktivieren von Diagnoseprotokollen")
 
 
-2. Geben Sie einen Namen für Ihre Diagnoseeinstellungen ein, und wählen Sie die Option *An Log Analytics senden* aus. Sie werden durch die Auswahl einer vorhandenen Log Analytics-Ressource oder durch die Erstellung einer neuen Ressource geführt. Aktivieren Sie außerdem den Eintrag *DeviceStreams* in der Liste.
+2. Geben Sie einen Namen für Ihre Diagnoseeinstellungen ein, und wählen Sie die Option *An Log Analytics senden* aus. Sie werden durch die Auswahl einer vorhandenen Log Analytics-Arbeitsbereichsressource oder durch die Erstellung einer neuen Ressource geführt. Aktivieren Sie außerdem den Eintrag *DeviceStreams* in der Liste.
 
     ![Alternativtext](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "Gerätestreamprotokolle aktivieren")
 
@@ -150,7 +150,7 @@ Zwei Seiten jedes Streams (auf der Geräte- und der Dienstseite) verwenden das I
 - Die NodeJS und C# SDKs unterstützen Gerätestreams auf der Dienstseite.
 
 
-## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätestreams
+## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätstreams
 
 Wir haben zwei [Schnellstartbeispiele](/azure/iot-hub) veröffentlicht, um die Verwendung von Gerätestreams durch Anwendungen zu veranschaulichen.
 * Das Beispiel *Echo* verdeutlicht die programmgesteuerte Verwendung von Gerätestreams (durch direktes Aufrufen der SDK-APIs).

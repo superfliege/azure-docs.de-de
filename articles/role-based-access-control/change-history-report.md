@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338808"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535545"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen
 
@@ -108,9 +108,9 @@ Dieser Befehl führt die Aktivitätsprotokolle für den Ressourcenanbieter der A
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) ist ein weiteres Tool, das Sie verwenden können, um RBAC-Änderungen für alle Azure-Ressourcen zu erfassen und zu analysieren. Log Analytics hat folgende Vorteile:
+[Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) ist ein weiteres Tool, das Sie verwenden können, um RBAC-Änderungen für alle Azure-Ressourcen zu erfassen und zu analysieren. Azure Monitor-Protokolle bietet die folgenden Vorteile:
 
 - Schreiben komplexer Abfragen und Logiken
 - Integration in Warnungen, Power BI und andere Tools
@@ -123,9 +123,9 @@ Folgende Schritte sind für den Einstieg grundlegend:
 
 1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../azure-monitor/platform/collect-activity-logs.md#configuration) für Ihren Arbeitsbereich.
 
-1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/platform/collect-activity-logs.md#using-the-solution) Sie können schnell zur Übersichtsseite für die Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Log Analytics** klicken.
+1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/platform/collect-activity-logs.md#using-the-solution) Sie können schnell zur Übersichtsseite für die Lösung zur Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Log Analytics** klicken.
 
-   ![Option „Log Analytics“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
+   ![Option „Azure Monitor-Protokolle“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
 
 1. Verwenden Sie optional die Seite [Protokollsuche](../log-analytics/log-analytics-log-search.md) oder das [Advanced Analytics-Portal](../azure-monitor/log-query/get-started-portal.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen zu diesen beiden Optionen finden Sie unter [Log Search page or the Advanced Analytics portal (Seite „Protokollsuche“ bzw. das Advanced Analytics-Portal)](../azure-monitor/log-query/portals.md).
 

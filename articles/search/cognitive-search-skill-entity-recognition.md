@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/27/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7a7fe9603716575c241ca78ebdc9b674888ca835
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 2a245a6e3d76a7df41b5ef28f9bac8a2c2122402
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452206"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985417"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
@@ -43,7 +43,8 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 | categories    | Array von zu extrahierenden Kategorien.  Mögliche Kategorietypen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Wenn keine Kategorie angegeben ist, werden alle Typen zurückgegeben.|
 |defaultLanguageCode |  Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `de, en, es, fr, it`|
 |minimumPrecision | Nicht verwendet. Für die zukünftige Verwendung reserviert. |
-|includeTypelessEntities | Wenn dieser Parameter auf „true“ festgelegt ist und der Text eine bekannte Entität enthält, die aber keiner unterstützten Kategorie zugeordnet werden kann, wird sie als Teil des komplexen Ausgabefelds `"entities"` zurückgegeben. Der Standardwert ist `false`. |
+|includeTypelessEntities | Wenn dieser Parameter auf „true“ festgelegt ist und der Text eine bekannte Entität enthält, die aber keiner unterstützten Kategorie zugeordnet werden kann, wird sie als Teil des komplexen Ausgabefelds `"entities"` zurückgegeben. 
+Hierbei handelt es sich um Entitäten, die gut bekannt, aber nicht als Teil der aktuellen unterstützten „Kategorien“ klassifiziert sind. „Windows 10“ ist z.B. eine gut bekannte Entität (ein Produkt), aber „Produkte“ sind nicht in den heute unterstützten Kategorien. Der Standardwert ist `false`. |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben

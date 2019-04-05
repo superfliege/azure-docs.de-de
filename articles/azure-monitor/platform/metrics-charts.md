@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310933"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337073"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
 
@@ -21,7 +21,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 ## <a name="metrics-in-azure"></a>Metriken in Azure
 
-[Metriken in Azure Monitor](data-collection.md#metrics) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken hingegen werden von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) an Azure gesendet. Zusammen mit anderen anwendungsspezifischen Metriken werden benutzerdefinierte Metriken in den Application Insights-Ressourcen gespeichert.
+[Metriken in Azure Monitor](data-collection.md#metrics) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview) oder durch die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) an Azure gesendet.
 
 ## <a name="create-a-new-chart"></a>Erstellen eines neuen Diagramms
 
@@ -76,16 +76,16 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
 5. Sie können die Schritte 1 bis 4 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
-## <a name="segment-a-chart"></a>Segmentieren eines Diagramms
+## <a name="apply-splitting-to-a-chart"></a>Anwenden des Teilens auf ein Diagramm
 
 Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segmente der Metrik gegenüberzustellen und die äußeren Segmente einer Dimension zu identifizieren. 
 
-### <a name="to-segment-a-chart"></a>So segmentieren Sie ein Diagramm
+### <a name="to-apply-splitting"></a>So wenden Sie das Teilen an
 
 1. Klicken Sie oberhalb des Diagramms auf **Teilung anwenden**.
  
    > [!NOTE]
-   > Sie können in einem Diagramm zwar mehrere Filter anwenden, jedoch nur eine Teilung/Segmentierung.
+   > Das Teilen kann nicht bei Diagrammen verwendet werden, die mehrere Metriken aufweisen. Auch können Sie zwar mehrere Filter anwenden, jedoch kann nur eine Teilungsdimension auf ein beliebiges einzelnes Diagramm angewendet werden.
 
 2. Wählen Sie eine Dimension, in der Ihr Diagramm segmentiert werden soll:
 

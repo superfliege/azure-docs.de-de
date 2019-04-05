@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081065"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -41,9 +41,9 @@ Virtuelle Azure-Netzwerke bieten NSG-Datenflussprotokolle mit Informationen zum 
 
 - **Netzwerksicherheitsgruppe (NSG)**: Enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken verbunden sind, zugelassen oder abgelehnt wird. NSGs können Subnetzen, einzelnen VMs (klassisch) oder einzelnen Netzwerkschnittstellen (NICs), die mit VMs (Resource Manager) verbunden sind, zugeordnet werden. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **NSG-Flussprotokolle (Netzwerksicherheitsgruppe)**: Ermöglichen das Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe. Die NSG-Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, Fünf-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr. Weitere Informationen zu NSG-Flussprotokollen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen, z.B. Netzwerkleistungsmonitor und die Datenverkehrsanalyse, werden auf der Grundlage von Log Analytics erstellt. Weitere Informationen finden Sie unter [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics-Arbeitsbereich**: Eine Instanz von Log Analytics, in der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher**: Ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
+- **Log Analytics**: Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen wie z.B. Netzwerkleistungsmonitor und Datenverkehrsanalyse werden auf der Grundlage von Azure Monitor-Protokollen erstellt. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics-Arbeitsbereich**: Eine Instanz von Azure Monitor-Protokollen, in die der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Network Watcher:** Ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Funktionsweise der Datenverkehrsanalyse
 
@@ -75,6 +75,7 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 * Indien, Mitte
 * Indien (Süden)
 * Japan, Osten 
+* US Government, Virginia
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 * Kanada, Mitte
@@ -86,6 +87,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 * Asien, Südosten
 * Indien, Mitte
 * Japan, Osten
+* US Government, Virginia
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -164,7 +166,7 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 2. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet.
 3. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen.
 4. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
-5. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder wählen Sie **Neuen Arbeitsbereich erstellen**, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer unterstützten Region befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder klicken Sie auf **Neuen Arbeitsbereich erstellen**, um einen neuen Arbeitsbereich zu erstellen. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer unterstützten Region befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Der Log Analytics-Arbeitsbereich, der die Lösung für die Datenverkehrsanalyse hostet, und die Netzwerksicherheitsgruppen (NSGs) müssen sich nicht in derselben Region befinden. Sie können die Datenverkehrsanalyse beispielsweise in einem Arbeitsbereich in der Region „Europa, Westen“ mit Netzwerksicherheitsgruppen in den Regionen „USA, Osten“ und „USA, Westen“ verwenden. Es können mehrere NSGs im selben Arbeitsbereich konfiguriert werden.
 6. Wählen Sie **Speichern** aus.
@@ -199,7 +201,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 - Statistiken des blockierten Datenverkehrs
     - Warum wird auf einem Host eine große Menge an gutartigem Datenverkehr blockiert? Dieses Verhalten erfordert weitere Untersuchungen und wahrscheinlich eine Optimierung der Konfiguration.
 - Statistik des bösartigen zugelassenen/blockierten Datenverkehrs
-    - Warum empfängt ein Host bösartigen Datenverkehr, und warum ist der Datenfluss aus bösartigen Quellen zugelassen? Dieses Verhalten erfordert weitere Untersuchungen und wahrscheinlich eine Optimierung der Konfiguration.
+  - Warum empfängt ein Host bösartigen Datenverkehr, und warum ist der Datenfluss aus bösartigen Quellen zugelassen? Dieses Verhalten erfordert weitere Untersuchungen und wahrscheinlich eine Optimierung der Konfiguration.
 
     Wählen Sie unter **Host** die Option **Alle anzeigen**, wie in der folgenden Abbildung gezeigt:
 
@@ -258,8 +260,8 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 **Suchen nach**
 
 - Verteilung des Datenverkehrs pro Rechenzentrum, z.B. Hauptquellen des Datenverkehrs in einem Rechenzentrum, häufigste betrügerische Netzwerke, die mit dem Rechenzentrum kommunizieren und Anwendungsprotokolle mit der meisten Kommunikation.
-    - Wenn Sie in einem Rechenzentrum mehr Last beobachten, können Sie eine effizientere Verteilung des Datenverkehrs planen.
-    - Wenn betrügerische Netzwerke im Rechenzentrum kommunizieren, korrigieren Sie die NSG-Regeln, um diese Netzwerke zu blockieren.
+  - Wenn Sie in einem Rechenzentrum mehr Last beobachten, können Sie eine effizientere Verteilung des Datenverkehrs planen.
+  - Wenn betrügerische Netzwerke im Rechenzentrum kommunizieren, korrigieren Sie die NSG-Regeln, um diese Netzwerke zu blockieren.
 
     Wählen Sie unter **Ihre Umgebung** die Option **Karte anzeigen**, wie in der folgenden Abbildung gezeigt:
 
@@ -280,8 +282,8 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 **Suchen nach**
 
 - Verteilung des Datenverkehrs nach virtuellem Netzwerk, Topologie, Hauptquellen des Datenverkehrs in das virtuelle Netzwerk, häufigste bösartige Netzwerke mit Kommunikation im virtuellen Netzwerk und Anwendungsprotokolle mit der meisten Kommunikation.
-    - Verstehen, welches virtuelle Netzwerk mit welchem virtuellen Netzwerk kommuniziert. Wenn die Kommunikation nicht der Erwartung entspricht, kann sie korrigiert werden.
-    - Wenn bösartige Netzwerke mit einem virtuellen Netzwerk kommunizieren, können Sie die NSG-Regeln anpassen, um diese Netzwerke zu blockieren.
+  - Verstehen, welches virtuelle Netzwerk mit welchem virtuellen Netzwerk kommuniziert. Wenn die Kommunikation nicht der Erwartung entspricht, kann sie korrigiert werden.
+  - Wenn bösartige Netzwerke mit einem virtuellen Netzwerk kommunizieren, können Sie die NSG-Regeln anpassen, um diese Netzwerke zu blockieren.
  
     Wählen Sie unter **Ihre Umgebung** die Option **VNETs anzeigen**, wie in der folgenden Abbildung gezeigt:
 
@@ -321,7 +323,7 @@ Verteilung des Datenverkehrs nach Anwendungsgateway, Lastenausgleichsmodul, Topo
 **Suchen nach**
 
 - Welche offenen Ports kommunizieren über das Internet?
-    - Wenn Sie unerwartete offene Ports finden, können Sie Ihre Konfiguration korrigieren:
+  - Wenn Sie unerwartete offene Ports finden, können Sie Ihre Konfiguration korrigieren:
 
     ![Dashboard mit Ports, die Datenverkehr aus dem Internet empfangen und dorthin senden](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
 
@@ -345,9 +347,9 @@ Tritt in Ihrer Umgebung bösartiger Datenverkehr auf? Wo stammt dieser her? Wohi
 
 - Die folgenden Bilder zeigen Zeittrends für Treffer von NSG-Regeln und Details zum Datenfluss zwischen Quelle und Ziel für eine Netzwerksicherheitsgruppe:
 
-    - Schnelle Erkennung, welche NSG und NSG-Regeln bösartige Datenflüsse durchlaufen und welche die wichtigsten bösartigen IP-Adressen sind, die auf Ihre Cloudumgebung zugreifen.
-    - Identifizieren, welche NSG/NSG-Regeln wichtigen Datenverkehr im Netzwerk zulassen bzw. blockieren.
-    - Auswählen der Hauptfilter für allgemeine Prüfung einer NSG oder von NSG-Regeln
+  - Schnelle Erkennung, welche NSG und NSG-Regeln bösartige Datenflüsse durchlaufen und welche die wichtigsten bösartigen IP-Adressen sind, die auf Ihre Cloudumgebung zugreifen.
+  - Identifizieren, welche NSG/NSG-Regeln wichtigen Datenverkehr im Netzwerk zulassen bzw. blockieren.
+  - Auswählen der Hauptfilter für allgemeine Prüfung einer NSG oder von NSG-Regeln
 
     ![Zeittrends für Treffer von NSG-Regeln und häufigste NSG-Regeln](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
 

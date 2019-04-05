@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c547eba931e23b6ffc7cae176e19959d43bcf5e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602493"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405027"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -44,7 +44,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-from-local-git-with-kudu-builds"></a>Bereitstellen von einem lokalen Git mit Kudu-Builds
+## <a name="deploy-with-kudu-builds"></a>Bereitstellen mit Kudu-Builds
 
 Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver ist die Verwendung von Cloud Shell.
 
@@ -102,7 +102,7 @@ Die Ausgabe enthält u.U. laufzeitspezifische Automatisierungen wie MSBuild für
 
 Navigieren Sie zu Ihrer App, um sicherzustellen, dass der Inhalt bereitgestellt wird.
 
-## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Bereitstellen über lokales Git mit Azure DevOps-Services-Builds
+## <a name="deploy-with-azure-devops-builds"></a>Bereitstellen mit Azure DevOps-Builds
 
 > [!NOTE]
 > Damit App Service die erforderlichen Azure-Pipelines in Ihrer Azure DevOps Services-Organisation erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
@@ -110,20 +110,18 @@ Navigieren Sie zu Ihrer App, um sicherzustellen, dass der Inhalt bereitgestellt 
 
 Zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver navigieren Sie zu Ihrer App im [Azure-Portal](https://portal.azure.com).
 
-Klicken Sie im linken Navigationsbereich Ihrer App-Seite auf **Bereitstellungscenter** > **Lokales Git** > **Weiter**. 
+Klicken Sie im linken Navigationsbereich Ihrer App-Seite auf **Bereitstellungscenter** > **Lokales Git** > **Weiter**.
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Klicken Sie auf **Azure DevOps Services Continuous Delivery** > **Weiter**.
+Klicken Sie auf **Azure Pipelines (Vorschau)** > **Weiter**.
 
-![](media/app-service-deploy-local-git/vsts-build-server.png)
+![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-Konfigurieren Sie auf der Seite **Konfigurieren** eine neue Azure DevOps Services-Organisation, oder geben Sie eine vorhandene Organisation an. Klicken Sie abschließend auf **Weiter**.
+Konfigurieren Sie auf der Seite **Konfigurieren** eine neue Azure DevOps-Organisation, oder geben Sie eine vorhandene Organisation an. Klicken Sie abschließend auf **Weiter**.
 
 > [!NOTE]
-> Wenn Sie eine vorhandene Azure DevOps Services-Organisation verwenden möchten, die nicht aufgeführt ist, müssen Sie [die Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
-
-Wählen Sie auf der Seite **Test** aus, ob Auslastungstests aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
+> Wenn Sie eine vorhandene Azure DevOps-Organisation verwenden möchten, die nicht aufgeführt ist, müssen Sie [die Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 Abhängig vom [Tarif](https://azure.microsoft.com/pricing/details/app-service/plans/) Ihres App Service-Plans wird ggf. auch eine Seite **Für Staging bereitstellen** angezeigt. Wählen Sie aus, ob Bereitstellungsslots aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
 

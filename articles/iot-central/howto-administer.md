@@ -3,17 +3,17 @@ title: Verwalten einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Administrator eine Azure IoT Central-Anwendung verwalten.
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaedff2cb9f8eae30fd17c497b4a2f6de490b07
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822594"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778602"
 ---
 # <a name="administer-your-iot-central-application"></a>Verwalten einer IoT Central-Anwendung
 
@@ -46,9 +46,9 @@ Wie Sie das Anwendungsbilds ändern, erfahren Sie unter [Vorbereiten und Hochlad
 ### <a name="copy-an-application"></a>Kopieren einer Anwendung
 Sie können eine Kopie jeder Anwendung erstellen, mit Ausnahme von Geräteinstanzen, Gerätedatenverlauf und Benutzerdaten. Die Kopie ist eine Anwendung, für die Gebühren in Form von nutzungsbasierter Zahlung anfallen. Auf diese Weise können Sie keine Anwendung mit einer Testversion erstellen.
 
-Klicken Sie auf die Schaltfläche **Kopieren**. Geben Sie im Dialogfenster die Details für die neue Anwendung mit nutzungsbasierter Zahlung ein. Klicken Sie dann auf die Schaltfläche **Kopieren**, um zu bestätigen, dass Sie den Vorgang fortsetzen möchten. Weitere Informationen zu den Feldern in diesem Formular finden Sie im Schnellstart [Erstellen einer Anwendung](quick-deploy-iot-central.md).
+Wählen Sie **Kopieren** aus. Geben Sie im Dialogfenster die Details für die neue Anwendung mit nutzungsbasierter Zahlung ein. Wählen Sie dann **Kopieren** aus, um zu bestätigen, dass Sie den Vorgang fortsetzen möchten. Weitere Informationen zu den Feldern in diesem Formular finden Sie im Schnellstart [Erstellen einer Anwendung](quick-deploy-iot-central.md).
 
-![Seite „Anwendungseinstellungen“](media/howto-administer/appCopy2.png)
+![Seite „Anwendungseinstellungen“](media/howto-administer/appcopy2.png)
 
 Wenn die App erfolgreich kopiert wurde, können Sie zur neuen Anwendung navigieren, die durch Kopieren Ihrer Anwendung mithilfe des angezeigten Links erstellt wurde.
 
@@ -95,7 +95,7 @@ Aktivieren Sie zum Löschen von Benutzern auf der Seite **Benutzer** die entspre
 
 ## <a name="manage-roles"></a>Verwalten von Rollen
 
-Mit Rollen können Sie steuern, wer in Ihrer Organisation verschiedene Aufgaben in IoT Central ausführen kann. Sie können Benutzern Ihrer Anwendung drei unterschiedliche Rollen zuweisen. 
+Mit Rollen können Sie steuern, wer in Ihrer Organisation verschiedene Aufgaben in IoT Central ausführen kann. Sie können Benutzern Ihrer Anwendung drei unterschiedliche Rollen zuweisen.
 
 ### <a name="administrator"></a>Administrator
 
@@ -111,7 +111,6 @@ Benutzer mit der Rolle **Anwendungsersteller** können sämtliche Aktionen in ei
 
 Benutzer mit der Rolle **Anwendungsoperator** können Gerätevorlagen nicht ändern und die Anwendung nicht verwalten. Das bedeutet, Anwendungsoperatoren können Geräte hinzufügen und löschen, Gerätesätze verwalten sowie Analysen und Aufträge ausführen. Anwendungsoperatoren haben keinen Zugriff auf die Seiten **Anwendungsersteller** und **Verwaltung**.
 
-
 ## <a name="view-your-bill"></a>Anzeigen Ihrer Rechnung
 
 Um Ihre Rechnung anzuzeigen, navigieren Sie im Abschnitt **Verwaltung** zur Seite **Abrechnung**. Die Seite mit der Azure-Abrechnung wird auf einer neuen Registerkarte geöffnet. Auf dieser wird für jede Ihrer Azure IoT Central-Anwendung die jeweilige Rechnung angezeigt.
@@ -124,32 +123,32 @@ Sie können Ihre Anwendung mit der Testversion in eine Anwendung mit nutzungsbas
 - Anwendungen mit **nutzungsbasierter Zahlung** werden pro Gerät berechnet, wobei die ersten fünf Geräte kostenlos sind.
 
 Weitere Informationen zu den Preisen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/).
-    
+
 Um diesen Self-Service-Prozess durchzuführen, gehen Sie folgendermaßen vor:
 
-1. Navigieren Sie im Abschnitt **Verwaltung** zur Seite **Abrechnung**. 
+1. Navigieren Sie im Abschnitt **Verwaltung** zur Seite **Abrechnung**.
 
     ![Status der Testversion](media/howto-administer/freetrialbilling.png)
 
-1. Klicken Sie auf **Auf nutzungsbasierte Zahlung umstellen**. 
+1. Wählen Sie **Auf nutzungsbasierte Zahlung umstellen** aus.
 
     ![Umwandeln der Testversion](media/howto-administer/convert.png)
 
 1. Wählen Sie die entsprechende Azure Active Directory-Instanz und dann das Azure-Abonnement aus, das für Ihre Anwendung mit nutzungsbasierter Zahlung verwendet werden soll.
 
-1. Wenn Sie auf **Umwandeln** klicken, wird Ihre Anwendung auf die nutzungsbasierte Zahlung umgestellt. Von diesem Zeitpunkt an fallen Gebühren an.
+1. Wenn Sie **Umwandeln** auswählen, wird Ihre Anwendung auf die nutzungsbasierte Zahlung umgestellt. Von diesem Zeitpunkt an fallen Gebühren an.
 
 ## <a name="export-data"></a>Exportieren von Daten
 
-Sie können **Kontinuierlicher Datenexport** aktivieren, um Daten von Messungen, Geräten und Gerätevorlagen in Ihr Azure Blob Storage-Konto zu exportieren. Erfahren Sie mehr dazu, wie Sie Ihre Daten exportieren.
+Sie können **Kontinuierlicher Datenexport** aktivieren, um Daten von Messungen, Geräten und Gerätevorlagen in Ihr Azure Blob Storage-Konto zu exportieren. Erfahren Sie mehr dazu, wie Sie [Ihre Daten exportieren](howto-export-data.md).
 
 ## <a name="manage-device-connection"></a>Verwalten von Geräteverbindungen
 
-Verbinden Sie Geräte in Ihrer Anwendung im benötigten Umfang mit den hier vorgestellten Schlüsseln und Zertifikaten. Erfahren Sie mehr über das Verbinden von Geräten.
+Verbinden Sie Geräte in Ihrer Anwendung im benötigten Umfang mit den hier vorgestellten Schlüsseln und Zertifikaten. Lernen Sie mehr über das [Verbinden von Geräten](concepts-connectivity.md).
 
 ## <a name="use-access-tokens"></a>Verwenden von Zugriffstoken
 
-Generieren Sie Zugriffstoken, um sie in Entwicklertools zu verwenden. Derzeit ist ein Entwicklertool verfügbar, nämlich der IoT Central-Explorer zum Überwachen von Gerätemeldungen sowie Änderungen an Eigenschaften und Einstellungen. Erfahren Sie mehr über den Microsoft IoT Central-Explorer. 
+Generieren Sie Zugriffstoken, um sie in Entwicklertools zu verwenden. Derzeit ist ein Entwicklertool verfügbar, nämlich der IoT Central-Explorer zum Überwachen von Gerätemeldungen sowie Änderungen an Eigenschaften und Einstellungen. Lernen Sie mehr über den [IoT Central-Explorer](howto-use-iotc-explorer.md).
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Verwenden der Azure SDKs für Vorgänge auf Steuerungsebene
 

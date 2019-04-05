@@ -1,6 +1,6 @@
 ---
-title: Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Mitglieder einer Gruppe oder für Benutzer mit Zugriff auf eine Anwendung in Azure Active Directory durchführen.
+title: Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder Anwendungszugriff betreffende Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen durchführen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2da3b7f8b7ed60344978fb255696980ec620fd2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192267"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729609"
 ---
-# <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen
 
-Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden. Azure AD sendet Prüfern automatisch eine E-Mail, in der sie aufgefordert werden, den Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [So überprüfen Sie den Zugriff](perform-access-review.md) senden. (Beachten Sie, dass Gäste, die als Prüfer zugewiesen wurden, die Einladung aber nicht angenommen haben, keine E-Mail zu Zugriffsüberprüfungen erhalten, da die Einladung zuerst akzeptiert werden muss, bevor Prüfer Überprüfungen vornehmen können.) Folgen Sie den Schritten in diesem Artikel, nachdem der Zeitraum der Zugriffsüberprüfung abgelaufen ist oder ein Administrator die Zugriffsüberprüfung beendet hat, um die Ergebnisse anzuzeigen und anzuwenden.
+Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden. Azure AD sendet Prüfern automatisch eine E-Mail, in der sie aufgefordert werden, den Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen](perform-access-review.md) senden. (Beachten Sie, dass Gäste, die als Prüfer zugewiesen wurden, die Einladung aber nicht angenommen haben, keine E-Mail zu Zugriffsüberprüfungen erhalten, da die Einladung zuerst akzeptiert werden muss, bevor Prüfer Überprüfungen vornehmen können.) Folgen Sie den Schritten in diesem Artikel, nachdem der Zeitraum der Zugriffsüberprüfung abgelaufen ist oder ein Administrator die Zugriffsüberprüfung beendet hat, um die Ergebnisse anzuzeigen und anzuwenden.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Anzeigen einer Zugriffsüberprüfung im Azure-Portal
 
@@ -62,5 +62,5 @@ Wenn Sie eine Überprüfung nicht mehr benötigen, können Sie diese löschen. K
 - [Manage user access with Azure AD access reviews (Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen)](manage-user-access-with-access-reviews.md)
 - [Manage guest access with Azure AD access reviews](manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
 - [Manage programs and controls for Azure AD access reviews](manage-programs-controls.md) (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)
-- [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](create-access-review.md)
+- [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md)
 - [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-how-to-start-security-review.md)

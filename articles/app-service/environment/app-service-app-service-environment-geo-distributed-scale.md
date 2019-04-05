@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188321"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geografisch verteilte Skalierung mit App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -46,7 +46,7 @@ Im weiteren Verlauf dieses Themas werden die Schritte zum Einrichten einer verte
 ## <a name="planning-the-topology"></a>Planen der Topologie
 Vor der Erstellung einer verteilten App ist es hilfreich, über einige Informationen zu verfügen.
 
-* **Benutzerdefinierte Domäne für die App:**  Wie lautet der Name der benutzerdefinierten Domäne, mit dem Kunden auf die App zugreifen?  Für die Beispiel-App lautet der Name der benutzerdefinierten Domäne *www.scalableasedemo.com*
+* **Benutzerdefinierte Domäne für die App:**  Wie lautet der Name der benutzerdefinierten Domäne, mit dem Kunden auf die App zugreifen?  Für die Beispiel-App lautet der Name der benutzerdefinierten Domäne `www.scalableasedemo.com`.
 * **Traffic Manager-Domäne:**  Ein Domänenname muss ausgewählt werden, wenn Sie ein [Azure Traffic Manager-Profil][AzureTrafficManagerProfile] erstellen.  Dieser Name wird mit dem Suffix *trafficmanager.net* kombiniert, um einen Domäneneintrag zu registrieren, der von Traffic Manager verwaltet wird.  Für die Beispiel-App ist der ausgewählte Name *scalable-ase-demo*.  Der vollständige Domänenname, der von Traffic Manager verwaltet wird, lautet also *scalable-ase-demo.trafficmanager.net*.
 * **Strategie für die Skalierung der App:**  Wird die Anwendung über mehrere App Service-Umgebungen in einer Region verteilt?  Über mehrere Regionen?  Eine Kombination beider Ansätze?  Die Entscheidung sollte darauf basieren, woher der Kundendatenverkehr erwartet wird, aber auch darauf, wie gut der Rest der Back-End-Infrastruktur zur Unterstützung einer App skaliert werden kann.  Bei einer zu 100 % statusfreien Anwendung kann eine App beispielsweise hochgradig skaliert werden, indem eine Kombination von mehreren App Service-Umgebungen pro Azure-Region verwendet und dies mit App Service-Umgebungen, die in mehreren Azure-Regionen bereitgestellt sind, multipliziert wird.  Da Kunden aus mehr als 15 öffentlichen Azure-Regionen auswählen können, ist tatsächlich die Erstellung einer weltweiten, enorm skalierbaren Anwendung möglich.  Für die Beispiel-App in diesem Artikel wurden drei App Service-Umgebungen in einer einzelnen Azure-Region (USA (Mitte/Süden)) erstellt.
 * **Benennungskonvention für die App Service-Umgebungen:**  Jede App Service-Umgebung muss über einen eindeutigen Namen verfügen.  Mit mehr als einer oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen.  Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet.  Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
@@ -87,7 +87,7 @@ Beachten Sie, dass ein Aufruf von *Add-AzureTrafficManagerEndpointConfig* für j
 Alle drei Endpunkte verwenden den gleichen Wert (10) für den Parameter *Weight* .  Dadurch werden Kundenanforderungen von Traffic Manager relativ gleichmäßig auf alle drei App-Instanzen verteilt. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Verweisen der benutzerdefinierten Domäne der App auf die Traffic Manager-Domäne
-Der letzte erforderliche Schritt ist, die benutzerdefinierte Domäne der App auf die Traffic Manager-Domäne zu verweisen.  Für die Beispiel-App bedeutet dies, dass *www.scalableasedemo.com* auf *scalable-ase-demo.trafficmanager.net* verwiesen wird.  Dieser Schritt muss bei der Domänenregistrierungsstelle abgeschlossen werden, die die benutzerdefinierte Domäne verwaltet.  
+Der letzte erforderliche Schritt ist, die benutzerdefinierte Domäne der App auf die Traffic Manager-Domäne zu verweisen.  Für die Beispiel-App bedeutet dies, dass `www.scalableasedemo.com` auf `scalable-ase-demo.trafficmanager.net` verweisen muss.  Dieser Schritt muss bei der Domänenregistrierungsstelle abgeschlossen werden, die die benutzerdefinierte Domäne verwaltet.  
 
 Mit den Domänenverwaltungstools Ihrer Registrierungsstelle muss ein CNAME-Eintrag erstellt werden, der die benutzerdefinierte Domäne an die Traffic Manager-Domäne verweist.  Die folgende Abbildung zeigt ein Beispiel für eine CNAME-Konfiguration:
 
@@ -95,16 +95,16 @@ Mit den Domänenverwaltungstools Ihrer Registrierungsstelle muss ein CNAME-Eintr
 
 Denken Sie daran, dass für jede einzelne App-Instanz auch die benutzerdefinierte Domäne registriert werden muss.  Andernfalls schlägt eine Anforderung fehl, wenn eine Anforderung eine App-Instanz erreicht und die Anwendung die benutzerdefinierte Domäne nicht bei der App registriert hat.  
 
-In diesem Beispiel ist die benutzerdefinierte Domäne *www.scalableasedemo.com*, und jeder Anwendungsinstanz wurde die benutzerdefinierte Domäne zugeordnet.
+In diesem Beispiel ist die benutzerdefinierte Domäne `www.scalableasedemo.com`, und jeder Anwendungsinstanz wurde die benutzerdefinierte Domäne zugeordnet.
 
 ![Benutzerdefinierte Domäne][CustomDomain] 
 
 Eine Zusammenfassung der Registrierung einer benutzerdefinierten Domäne bei Azure App Service-Apps finden Sie im folgenden Artikel zum [Registrieren benutzerdefinierter Domänen][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Testen der verteilten Topologie
-Das Endergebnis der Traffic Manager- und der DNS-Konfiguration ist, das Anforderungen für *www.scalableasedemo.com* in der folgenden Reihenfolge verarbeitet werden:
+Das Endergebnis der Traffic Manager- und der DNS-Konfiguration ist, das Anforderungen für `www.scalableasedemo.com` in der folgenden Reihenfolge verarbeitet werden:
 
-1. Ein Browser oder Gerät führt eine DNS-Suche für *www.scalableasedemo.com*
+1. Ein Browser oder Gerät führt eine DNS-Suche für `www.scalableasedemo.com`
 2. Der CNAME-Eintrag bei der Domänenregistrierungsstelle bewirkt, dass die DNS-Suche an Azure Traffic Manager umgeleitet wird.
 3. Eine DNS-Suche wird für *scalable-ase-demo.trafficmanager.net* über einen der Azure Traffic Manager-DNS-Server ausgeführt.
 4. Basierend auf der Lastenausgleichsrichtlinie (dem Parameter *TrafficRoutingMethod* , der zuvor beim Erstellen des Traffic Manager-Profils verwendet wurde) wählt Traffic Manager einen der konfigurierten Endpunkte aus und gibt den FQDN des betreffenden Endpunkts an den Browser oder das Gerät zurück.

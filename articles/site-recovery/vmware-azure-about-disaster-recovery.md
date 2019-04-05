@@ -1,18 +1,18 @@
 ---
 title: Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von virtuellen VMware-Computern mit dem Dienst Azure Site Recovery.
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
-ms.author: raynew
-ms.openlocfilehash: 38f344ef9e24816a17975c60a5863be46da1364b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 3/3/2019
+ms.author: mayg
+ms.openlocfilehash: aa7ea43f3c41c6200e4cf796b0f09dca995791df
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210334"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339673"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
 
@@ -34,7 +34,7 @@ Eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Busines
     - Durch dieses Verfahren kann sichergestellt werden, dass das Failover im Realfall wie erwartet durchgeführt wird.
     - Bei dem Verfahren wird ein Testfailover durchgeführt, ohne Ihre Produktionsumgebung zu beeinträchtigen.
 5. Bei einem Ausfall führen Sie ein vollständiges Failover in Azure durch. Sie können ein Failover für einen einzelnen Computer durchführen, oder Sie können einen Wiederherstellungsplan erstellen, mit dem das Failover für mehrere Computer gleichzeitig durchgeführt wird.
-6. Beim Failover werden virtuelle Azure-Computer aus den VM-Daten in Azure Storage erstellt. Benutzer können weiterhin über den virtuellen Azure-Computer auf Anwendungen und Workloads zugreifen.
+6. Beim Failover werden virtuelle Azure-Computer aus den VM-Daten in Managed Disks oder Speicherkonten erstellt. Benutzer können weiterhin über den virtuellen Azure-Computer auf Anwendungen und Workloads zugreifen.
 7. Wenn der lokale Standort wieder verfügbar ist, erfolgt das Failback aus Azure.
 8. Nachdem ein Failback durchgeführt wurde und Sie wieder über Ihren primären Standort arbeiten, starten Sie erneut die Replikation der lokalen virtuellen Computer in Azure.
 
@@ -56,13 +56,12 @@ Mit Site Recovery können alle Workloads repliziert werden, die auf einem unters
 Sie müssen Folgendes in Azure vorbereiten:
 
 1. Überprüfen Sie, ob Ihr Azure-Konto über Berechtigungen zum Erstellen von virtuellen Computern in Azure verfügt.
-2. Erstellen Sie ein Speicherkonto, um Images von replizierten Computern zu speichern.
-3. Erstellen Sie ein Azure-Netzwerk, dem virtuelle Azure-Computer hinzugefügt werden, wenn sie nach einem Failover erstellt werden.
-4. Richten Sie einen Azure Recovery Services-Tresor für Site Recovery ein. Der Tresor befindet sich im Azure-Portal und dient zum Bereitstellen, Konfigurieren, Orchestrieren, Überwachen und für die Problembehandlung Ihrer Site Recovery-Bereitstellung.
+2. Erstellen Sie ein Azure-Netzwerk, dem virtuelle Azure-Computer hinzugefügt werden, wenn sie nach einem Failover von Speicherkonten oder Managed Disks erstellt werden.
+3. Richten Sie einen Azure Recovery Services-Tresor für Site Recovery ein. Der Tresor befindet sich im Azure-Portal und dient zum Bereitstellen, Konfigurieren, Orchestrieren, Überwachen und für die Problembehandlung Ihrer Site Recovery-Bereitstellung.
 
 *Benötigen Sie weitere Hilfe?*
 
-Erfahren Sie, wie Sie Azure einrichten, indem Sie [Ihr Konto überprüfen](tutorial-prepare-azure.md#verify-account-permissions), ein [Speicherkonto](tutorial-prepare-azure.md#create-a-storage-account) und ein [Netzwerk](tutorial-prepare-azure.md#set-up-an-azure-network) erstellen und [einen Tresor einrichten](tutorial-prepare-azure.md#create-a-recovery-services-vault).
+Erfahren Sie, wie Sie Azure einrichten, indem Sie [Ihr Konto überprüfen](tutorial-prepare-azure.md#verify-account-permissions), ein [Netzwerk](tutorial-prepare-azure.md#set-up-an-azure-network) erstellen und [einen Tresor einrichten](tutorial-prepare-azure.md#create-a-recovery-services-vault).
 
 
 
@@ -94,10 +93,10 @@ Nachdem Sie die lokale und Azure-Infrastruktur eingerichtet haben, können Sie d
     - Der Konfigurationsserver ist ein einzelner lokaler Computer. Für die VMware-Notfallwiederherstellung wird empfohlen, diesen als virtuellen VMware-Computer bereitzustellen, der über eine heruntergeladene OVF-Vorlage bereitgestellt werden kann.
     - Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure.
     - Auf dem Konfigurationsservercomputer werden verschiedene andere Komponenten ausgeführt.
-        - Der Prozessserver empfängt, optimiert und sendet Replikationsdaten an Azure Storage. Der Prozessserver verarbeitet auch die automatische Installation des Mobility Service auf den Computern, die Sie replizieren möchten, und führt auf VMware-Servern die automatische Ermittlung von virtuellen Computern durch.
+        - Der Prozessserver empfängt, optimiert und sendet Replikationsdaten an ein Cachespeicherkonto in Azure. Der Prozessserver verarbeitet auch die automatische Installation des Mobility Service auf den Computern, die Sie replizieren möchten, und führt auf VMware-Servern die automatische Ermittlung von virtuellen Computern durch.
         - Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
     - Die Einrichtung umfasst die Registrierung des Konfigurationsservers im Tresor, das Herunterladen von MySQL Server und VMware PowerCLI sowie die Angabe der für die automatische Ermittlung und die Installation des Mobility Service erstellten Konten.
-4. **Zielumgebung**: Sie richten die Azure-Zielumgebung ein, indem Sie Ihr Azure-Abonnement, den Speicher und die Netzwerkeinstellungen angeben.
+4. **Zielumgebung**: Sie richten die Azure-Zielumgebung ein, indem Sie Ihr Azure-Abonnement und die Netzwerkeinstellungen angeben.
 5. **Replikationsrichtlinie**: Sie geben an, wie die Replikation erfolgen soll. Zu den erforderlichen Einstellungen gehört z.B. die Angabe, wie oft Wiederherstellungspunkte erstellt und gespeichert werden und ob anwendungskonsistente Momentaufnahmen erstellt werden sollen.
 6. **Aktivieren Sie die Replikation**. Sie aktivieren die Replikation für lokale Computer. Wenn Sie ein Konto für die Installation des Mobility Service erstellt haben, wird dieser installiert, wenn Sie die Replikation für einen Computer aktivieren. 
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: e1a928711a596c159ac920f11c123b73b72d3aa2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875122"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -524,7 +524,7 @@ Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das 
 
 Beachten Sie folgende Punkte:
 
-* [Komplexe Datentypen](http://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
+* [Komplexe Datentypen](https://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
 
 ## <a name="compression-support"></a>Unterstützung für die Komprimierung
 
@@ -573,6 +573,14 @@ Der Abschnitt für die **Komprimierung** enthält zwei Eigenschaften:
 
 > [!NOTE]
 > Für Daten im **AvroFormat**, **OrcFormat** oder **ParquetFormat** werden keine Komprimierungseinstellungen unterstützt. Beim Lesen der Daten in diesen Formaten erkennt und verwendet Data Factory den Komprimierungscodec in den Metadaten. Für das Schreiben in eine Datei in diesen Formaten wählt Data Factory den Standardkomprimierungscodec für das jeweilige Format. Beispiel: ZLIB für OrcFormat und SNAPPY für ParquetFormat.
+
+## <a name="unsupported-file-types-and-compression-formats"></a>Nicht unterstützte Dateitypen und Komprimierungsformate
+
+Sie können mit den Erweiterungsfeatures von Azure Data Factory Dateien transformieren, die nicht unterstützt werden. Zwei Optionen sind Azure Functions und benutzerdefinierte Aufgaben mithilfe von Azure Batch.
+
+Sehen Sie sich ein Beispiel an, in dem mithilfe einer Azure-Funktion [der Inhalt einer tar-Datei extrahiert wird](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Weitere Informationen finden Sie unter [Aktivität „Azure Function“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+
+Sie können diese Funktionalität auch mit einer benutzerdefinierten Dotnet-Aktivität erstellen. Weitere Informationen sind [hier](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity) verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

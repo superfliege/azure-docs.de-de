@@ -8,21 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410114"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806987"
 ---
 #   <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
-Der Skill **Shaper** erstellt einen komplexen Typ zur Unterstützung von zusammengesetzten Feldern (auch bekannt als mehrteilige Felder). Ein Feld vom komplexen Typ besteht aus mehreren Teilen, wird aber als ein einziges Element in einem Azure Search-Index behandelt. Beispiele für konsolidierte Felder, die in Suchszenarien nützlich sind, sind die Kombination von Vor- und Nachnamen in einem einzigen Feld, Stadt und Land in einem einzigen Feld oder Name und Geburtsdatum in einem einzigen Feld, um eine eindeutige Identität zu ermitteln.
-
-Im Wesentlichen ermöglicht es Ihnen der Skill **Shaper**, eine Struktur zu erstellen, den Namen der Elemente dieser Struktur zu definieren und jedem Element Werte zuzuweisen.
+Die Qualifikation **Shaper** konsolidiert mehrere Eingaben in einem komplexen Typ, auf den später in der Anreicherungspipeline verwiesen werden kann. Im Wesentlichen ermöglicht es Ihnen der Skill **Shaper**, eine Struktur zu erstellen, den Namen der Elemente dieser Struktur zu definieren und jedem Element Werte zuzuweisen. Beispiele für konsolidierte Felder, die in Suchszenarien nützlich sind, sind die Kombination von Vor- und Nachnamen in einer einzigen Struktur, Stadt und Land in einer einzigen Struktur oder Name und Geburtsdatum in einer einzigen Struktur, um eine eindeutige Identität zu schaffen.
 
 Standardmäßig unterstützt diese Methode Objekte, die nur über eine Ebene verfügen. Für komplexere Objekte können Sie mehrere **Shaper**-Schritte verketten.
 
@@ -58,7 +56,7 @@ Das folgende Beispiel stellt die Elementnamen als Eingabe bereit. Die Ausgabestr
   "outputs": [
     {
       "name": "output",
-      "targetName": analyzedText"
+      "targetName": "analyzedText"
     }
   ]
 }
@@ -125,8 +123,8 @@ Die Definition des Skills „Shaper“ für dieses Szenario könnte wie im folge
     ],
     "outputs": [
         {
-            "output": "titlesAndChapters",
-            "targetName": "analyzedText"
+            "name": "output",
+            "targetName": "titlesAndChapters"
         }
     ]
 }

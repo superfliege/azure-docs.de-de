@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3664e231ad8aabe37fe350ac1eb7be2d27bbcbaa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189902"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
@@ -2938,7 +2938,7 @@ range(<startIndex>, <count>)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Ja | Ganze Zahl  | Der ganzzahlige Wert, der das erste Element im Array ist |
+| <*startIndex*> | Ja | Ganze Zahl  | Ein ganzzahliger Wert, der das erste Element im Array ist |
 | <*count*> | Ja | Ganze Zahl  | Die Anzahl von ganzen Zahlen im Array |
 |||||
 
@@ -3333,7 +3333,7 @@ substring('<text>', <startIndex>, <length>)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | Zeichenfolge | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
-| <*startIndex*> | Ja | Ganze Zahl  | Eine positive Zahl, die den Anfangsindexwert (Anfangsposition ) angibt |
+| <*startIndex*> | Ja | Ganze Zahl  | Eine positive Zahl gleich oder größer als 0, die Sie als Ausgangswert oder Indexwert verwenden können. |
 | <*length*> | Ja | Ganze Zahl  | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
 |||||
 

@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie bei der Verwendung von Azure Resource Gr
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 8808f42cdd6fb547b70695278993faa0f52cdb61
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338392"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889034"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -22,6 +22,9 @@ Azure Resource Graph ist für das Arbeiten mit Informationen zu Ressourcen in Ih
 ## <a name="data-set-result-size"></a>Ergebnisgröße von Datasets
 
 Standardmäßig sind in Resource Graph alle Abfragen so beschränkt, dass nur **100** Datensätze zurückgegeben werden. Durch diese Steuerung werden sowohl Benutzer als auch der Dienst vor unbeabsichtigten Abfragen geschützt, die zu großen Datasets führen. Dieser Fall tritt meistens auf, wenn ein Kunde Abfragen testet, um Ressourcen seinen speziellen Anforderungen entsprechend zu suchen und zu filtern. Dieses Steuerelement unterscheidet sich von der Verwendung der Azure Data Explorer-Sprachoperatoren [top](/azure/kusto/query/topoperator) und [limit](/azure/kusto/query/limitoperator) zum Einschränken der Ergebnisse.
+
+> [!NOTE]
+> Bei Verwendung von **First** sollten die Ergebnisse nach mindestens einer Spalte mit `asc` oder `desc` sortiert werden. Ohne Sortierung sind die zurückgegebenen Ergebnisse zufällig und nicht wiederholbar.
 
 Das Standardlimit kann über alle Methoden für die Interaktion mit Resource Graph überschrieben werden. Die folgenden Beispiele zeigen, wie die Größenbeschränkung von Datasets in _200_ geändert wird:
 
@@ -42,6 +45,9 @@ Für **First** ist derzeit _5000_ als maximal zulässiger Wert festgelegt.
 ## <a name="skipping-records"></a>Überspringen von Datensätzen
 
 Als weitere Option für das Arbeiten mit großen Datasets kann das Steuerelement **Skip** verwendet werden. Über dieses Steuerelement kann bei der Abfrage die definierte Anzahl von Datensätzen vor dem Zurückgeben der Ergebnisse übersprungen werden. **Skip** eignet sich für Abfragen, die Ergebnisse auf sinnvolle Weise sortieren, um so Datensätze abzurufen, die sich in der Mitte des Resultsets befinden. Wenn sich die erforderlichen Ergebnisse am Ende des zurückgegebenen Datasets befinden, ist es effizienter, eine andere Sortierungskonfiguration zu verwenden und stattdessen die Ergebnisse vom Anfang des Datasets abzurufen.
+
+> [!NOTE]
+> Bei Verwendung von **Skip** sollten die Ergebnisse nach mindestens einer Spalte mit `asc` oder `desc` sortiert werden. Ohne Sortierung sind die zurückgegebenen Ergebnisse zufällig und nicht wiederholbar.
 
 Die folgenden Beispiele zeigen, wie die ersten _10_ Datensätze übersprungen werden, die sich bei einer Abfrage ergeben, anstatt das zurückgegebene Resultset mit dem 11. Datensatz zu beginnen:
 

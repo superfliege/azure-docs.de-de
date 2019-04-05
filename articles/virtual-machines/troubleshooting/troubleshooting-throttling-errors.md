@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 401bd3badc555ee001fbc355c7bdb77786c2d053
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fa65b108f3aea79d4417e65d706d42f0bd819f54
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977812"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880711"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Behandeln von API-Drosselungsfehlern 
 
@@ -35,7 +35,7 @@ Wenn ein Azure-API-Client einen Drosselungsfehler erhält, ist der HTTP-Status �
 | Header                            | Wertformat                           | Beispiel                               | BESCHREIBUNG                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Verbleibende Anzahl der API-Aufrufe für die Drosselungsrichtlinie, die den Ressourcenbucket oder die Vorgangsgruppe, einschließlich des Ziels dieser Anforderung, abdeckt                                                                   |
-| x-ms-request-charge               | ```<count>   ```                             | 1                                     | Die Anzahl der Aufrufe, die für diese HTTP-Anforderung auf den Grenzwert der anwendbaren Richtlinie „angerechnet“ wird. Dies ist meistens 1. Batchanforderungen wie zum Skalieren einer VM-Skalierungsgruppe können mehrfach angerechnet werden. |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | Die Anzahl der Aufrufe, die für diese HTTP-Anforderung auf den Grenzwert der anwendbaren Richtlinie „angerechnet“ wird. Dies ist meistens 1. Batchanforderungen wie zum Skalieren einer VM-Skalierungsgruppe können mehrfach angerechnet werden. |
 
 
 Beachten Sie, dass eine API-Anforderung mehreren Drosselungsrichtlinien unterliegen kann. Für jede Richtlinie gibt es dann eine gesonderte `x-ms-ratelimit-remaining-resource`-Kopfzeile. 

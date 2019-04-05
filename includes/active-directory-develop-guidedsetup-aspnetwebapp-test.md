@@ -3,8 +3,8 @@ title: Includedatei
 description: Includedatei
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203635"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -80,9 +80,9 @@ Wenn Sie die Anwendung nach dieser Anleitung erstellen, akzeptiert Ihre Anwendun
 
 Um die Anmeldung bei und den Benutzerzugriff auf Ihre Anwendung einzuschränken, stehen mehrere Optionen zur Verfügung:
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Option 1: Einschränken der Anmeldung bei der Anwendung auf die Benutzer der Active Directory-Instanz von nur einer Organisation (Einzelmandant)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Option 1: Beschränken der Benutzer auf die Active Directory-Instanz nur einer Organisation für die Anmeldung bei der Anwendung (Einzelmandant)
 
-Diese Option ist ein gängiges Szenario für *Branchenanwendungen*. Wenn Ihre Anwendung Anmeldungen nur von Konten akzeptieren soll, die zu einer bestimmten Azure Active Directory-Instanz gehören (einschließlich *Gastkonten* dieser Instanz), gehen Sie wie folgt vor:
+Diese Option ist ein häufiges Szenario für *LOB-Anwendungen*: Wenn Ihre Anwendung Anmeldungen nur von Konten akzeptieren soll, die zu einer bestimmten Azure Active Directory-Instanz gehören (einschließlich *Gastkonten* dieser Instanz), gehen Sie wie folgt vor:
 
 1. Ändern Sie in der Datei **Web.config** den Wert für den Parameter `Tenant` von `Common` auf den Mandantennamen der Organisation, z. B. `contoso.onmicrosoft.com`.
 2. Legen Sie in Ihrer [OWIN-Startup-Klasse](#configure-the-authentication-pipeline) das Argument `ValidateIssuer` auf `true` fest.

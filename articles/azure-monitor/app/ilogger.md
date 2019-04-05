@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: c456f8f7f08fdbd0020bfc49ceeec262fa0ac773
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14c9a453913a9a8080c840df3f23751487b86c34
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006150"
 ---
 # <a name="ilogger"></a>ILogger
 
@@ -219,6 +219,26 @@ services.AddApplicationInsightsTelemetry("ikeyhere");
 In diesem Beispiel entspricht die von `ApplicationInsightsLoggerProvider` verwendete Konfiguration der Konfiguration, die von der regulären Anwendungsüberwachung verwendet wird. Aus diesem Grund wird für beide `ILogger`-Ablaufverfolgungen und andere Telemetriedaten (Anforderungen, Abhängigkeiten usw.) derselbe Satz von `TelemetryInitializers`, `TelemetryProcessors` und `TelemetryChannel` ausgeführt. Sie werden korreliert, und Stichproben werden auf dieselbe Weise entnommen bzw. nicht entnommen.
 
 Es gibt bei diesem Verhalten jedoch eine Ausnahme. Die Standard-`TelemetryConfiguration` ist nicht vollständig eingerichtet, wenn die Protokollierung aus `Program.cs` oder `Startup.cs` selbst erfolgt, daher weisen diese Protokolle nicht die Standardkonfiguration auf. Die Konfiguration wird jedoch für alle übrigen Protokolle (Protokolle aus Controllern, Modellen usw.) verwendet.
+
+## <a name="control-logging-level"></a>Steuern des Protokolliergrads
+
+Abgesehen vom Filtern der Protokolle für Code – wie in den oben genannten Beispielen – ist es auch möglich, durch Ändern von `appsettings.json` den Protokolliergrad für erfasste Application Insights-Daten zu steuern. Die [Dokumentation mit den Grundlagen der ASP.NET-Protokollierung](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering) zeigt, wie sich dies erreichen lässt. Für Application Insights speziell lautet der Name des Anbieteralias `ApplicationInsights` – wie im unten stehenden Beispiel gezeigt, das `ApplicationInsights` so konfiguriert, dass für alle Kategorien nur Protokolle mit dem Schweregrad `Warning` und höher erfasst werden.
+
+```json
+{
+  "Logging": {
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

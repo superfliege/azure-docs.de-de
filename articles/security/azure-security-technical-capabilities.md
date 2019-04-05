@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301824"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500252"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 
@@ -75,7 +75,7 @@ Zu den Sicherheitsvorteilen von Azure Active Directory (Azure AD) zählen folgen
 
 - Bereitstellen des sicheren Remotezugriffs auf lokale Webanwendungen mit dem Azure AD-Anwendungsproxy
 
-Das [Azure Active Directory-Portal](http://aad.portal.azure.com/) ist über das Azure-Portal zugänglich. Über dieses Dashboard erhalten Sie einen Überblick über den Zustand Ihrer Organisation und können den Zugriff auf Verzeichnisse, Benutzer oder Anwendungen schnell und einfach verwalten.
+Das [Azure Active Directory-Portal](https://aad.portal.azure.com/) ist über das Azure-Portal zugänglich. Über dieses Dashboard erhalten Sie einen Überblick über den Zustand Ihrer Organisation und können den Zugriff auf Verzeichnisse, Benutzer oder Anwendungen schnell und einfach verwalten.
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Benutzer müssen sich keine Vielzahl von Benutzernamen und Kennwörtern mehr mer
 
 Sicherheitsüberwachung und Warnungen sowie Berichte auf Machine Learning-Basis, die inkonsistente Zugriffsmuster erkennen und Ihnen helfen können, Ihr Unternehmen zu schützen. Sie können die Zugriffs- und Nutzungsberichte von Azure Active Directory verwenden, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen. Mithilfe dieser Informationen kann ein Verzeichnisadministrator mögliche Sicherheitsrisiken besser bestimmen, um angemessen zu planen, wie diese Risiken eingedämmt werden können.
 
-Im Azure-Portal oder [Azure Active Directory-Portal](http://aad.portal.azure.com/) sind [Berichte](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) wie folgt kategorisiert:
+Im Azure-Portal oder [Azure Active Directory-Portal](https://aad.portal.azure.com/) sind [Berichte](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) wie folgt kategorisiert:
 
 - Anomalieberichte: Enthalten Anmeldeereignisse, die wir als anomal eingestuft haben. Unser Ziel ist, Sie auf solche Aktivitäten aufmerksam zu machen und es Ihnen zu ermöglichen, eine Entscheidung zu treffen, ob ein Ereignis verdächtig ist.
 
@@ -169,7 +169,7 @@ Außerdem sind Abonnements einem Verzeichnis zugeordnet. Durch das Verzeichnis w
 
 Sicherheitsorientierte Unternehmen müssen sich darauf konzentrieren, Mitarbeitern genau die Berechtigungen zuzuweisen, die sie benötigen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn ihre Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. Die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) begegnet diesem Problem dadurch, dass eine präzise Zugriffsverwaltung für Azure ermöglicht wird.
 
-![Zugriff auf geschützte Ressourcen ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![Zugriff auf geschützte Ressourcen](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
 Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken. Gestatten Sie z.B. mit RBAC einem Mitarbeiter die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann.
 
@@ -274,7 +274,7 @@ Erfahren Sie mehr über die Azure-VPN-Option im Artikel [Planung und Entwurf fü
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien, um Ihre Dateien und E-Mails zu schützen. Azure RMS funktioniert über mehrere Geräte (Handys, Tablets und PCs), indem Schutz sowohl innerhalb als auch außerhalb Ihrer Organisation geboten wird. Diese Funktion ist möglich, weil Azure RMS eine Schutzebene hinzufügt, die bei den Daten verbleibt, selbst wenn diese die Grenzen Ihrer Organisation verlassen.
 
-Wenn Sie Azure RMS verwenden, um Ihre Dateien zu schützen, verwenden Sie eine Kryptographie, die dem Branchenstandard entspricht und [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) voll unterstützt. Wenn Sie Azure RMS für den Datenschutz einsetzen, haben Sie die Garantie, dass die Datei geschützt bleibt, auch wenn diese in einen Speicher kopiert wird, der nicht von der IT kontrolliert wird, beispielsweise einem Cloudspeicherdienst. Dasselbe gilt für Dateien, die mittels E-Mail freigegeben werden. Die Datei ist als Anhang der E-Mail geschützt, und es wird eine Anleitung mitgeschickt, die erklärt, wie der geschützt Anhang geöffnet wird.
+Wenn Sie Azure RMS verwenden, um Ihre Dateien zu schützen, verwenden Sie eine Kryptographie, die dem Branchenstandard entspricht und [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) voll unterstützt. Wenn Sie Azure RMS für den Datenschutz einsetzen, haben Sie die Garantie, dass die Datei geschützt bleibt, auch wenn diese in einen Speicher kopiert wird, der nicht von der IT kontrolliert wird, beispielsweise einem Cloudspeicherdienst. Dasselbe gilt für Dateien, die mittels E-Mail freigegeben werden. Die Datei ist als Anhang der E-Mail geschützt, und es wird eine Anleitung mitgeschickt, die erklärt, wie der geschützt Anhang geöffnet wird.
 Bei der Planung der Einführung von Azure RMS empfehlen wir Folgendes:
 
 - Installieren Sie die [RMS-Freigabe-App](https://technet.microsoft.com/library/dn339006.aspx). Diese App integriert sich mit Office-Anwendungen, indem sie ein Office-Add-In installiert, damit die Benutzer die Dateien einfach direkt schützen können.
@@ -398,19 +398,19 @@ Außerdem bietet die Checkliste Folgendes:
 
 Azure Operational Security basiert auf einem Framework, mit dem die über verschiedene einzigartige Microsoft-Funktionen erworbenen Kenntnisse einbezogen werden, z.B. Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center-Programm und umfassende Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist die IT-Verwaltungslösung für die Hybrid Cloud. Log Analytics kann eigenständig oder zur Erweiterung Ihrer vorhandenen System Center-Bereitstellung verwendet werden und bietet Ihnen maximale Flexibilität und Kontrolle für die cloudbasierte Verwaltung Ihrer Infrastruktur.
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) ist die IT-Verwaltungslösung für die Hybrid Cloud. Azure Monitor-Protokolle kann eigenständig oder zur Erweiterung Ihrer vorhandenen System Center-Bereitstellung verwendet werden und bietet Ihnen maximale Flexibilität und Kontrolle für die cloudbasierte Verwaltung Ihrer Infrastruktur.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Mit Log Analytics können Sie beliebige Instanzen in beliebigen Clouds (einschließlich lokaler Cloud, Azure, AWS, Windows Server, Linux, VMware und Openstack) verwalten – und das zu geringeren Kosten als mit einer Lösung eines Mitbewerbers. Log Analytics wurde für cloudorientierte Umgebungen konzipiert und bietet dank eines neuen Ansatzes für die Verwaltung Ihres Unternehmens die schnellste und kostengünstigste Möglichkeit, um sich neuen geschäftlichen Herausforderungen zu stellen und neue Workloads, Anwendungen und Cloudumgebungen zu nutzen.
+Mit Azure Monitor können Sie beliebige Instanzen in beliebigen Clouds (einschließlich lokaler Cloud, Azure, AWS, Windows Server, Linux, VMware und OpenStack) verwalten – und das zu geringeren Kosten als mit einer Lösung eines Mitbewerbers. Azure Monitor wurde für cloudorientierte Umgebungen konzipiert und bietet dank eines neuen Ansatzes für die Verwaltung Ihres Unternehmens die schnellste und kostengünstigste Möglichkeit, um sich neuen geschäftlichen Herausforderungen zu stellen und neue Workloads, Anwendungen und Cloudumgebungen zu nutzen.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
+[Azure Monitor-Protokolle](https://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Azure Monitor-Protokolle](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 Mithilfe dieser Methode können Sie Daten aus einer Vielzahl von Quellen zusammenfassen, um Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung zu kombinieren. Die Datensammlung wird außerdem klar von der Aktion getrennt, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.
 

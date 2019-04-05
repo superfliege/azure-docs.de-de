@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 517afe21fbf9241e2b2423525e9caee12a5603f6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271185"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726871"
 ---
-# <a name="azure-data-factory-data-flow-join-transformation"></a>Azure Data Factory Data Flow: Verknüpfungstransformation
+# <a name="mapping-data-flow-join-transformation"></a>Join-Transformation für Datenflusszuordnung
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -44,7 +44,7 @@ Der vollständige äußere Join gibt alle Spalten und Zeilen auf beiden Seiten z
 
 ### <a name="cross-join"></a>Cross Join
 
-Gibt das Kreuzprodukt der beiden Datenströme mit einem Ausdruck an.
+Gibt das Kreuzprodukt der beiden Datenströme mit einem Ausdruck an. Sie können dies verwenden, um benutzerdefinierte Join-Bedingungen zu erstellen.
 
 ## <a name="specify-join-conditions"></a>Angeben der Join-Bedingungen
 
@@ -67,3 +67,7 @@ Selbstverknüpfungsbedingungen können Sie in ADF-Datenflow erzielen, wenn Sie m
 ![Selbstverknüpfung](media/data-flow/selfjoin.png "Selbstverknüpfung")
 
 Im obigen Diagramm befindet sich die SELECT-Transformation ganz oben. Sie weist nur dem ursprünglichen Datenstrom den Alias „OrigSourceBatting“ zu. In der hervorgehobenen Verknüpfungstransformation darunter können Sie sehen, dass wir diesen SELECT-Aliasdatenstrom der Auswahltransformation als rechte Verknüpfung verwenden, sodass wir sowohl auf der linken als auch auf der rechten Seite der inneren Verknüpfung (des inneren Join) auf den gleichen Schlüssel verweisen können.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Verknüpfen von Daten können Sie [neue Spalten erstellen](data-flow-derived-column.md) und [Ihre Daten in einen Zieldatenspeicher senken](data-flow-sink.md).

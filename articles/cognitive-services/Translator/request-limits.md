@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: f89e7e674efe3a823b7c969840772565650d8d07
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859469"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861569"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
 
@@ -43,7 +43,7 @@ Diese Grenzwerte gelten nur für die generischen Microsoft-Systeme. Für benutze
 
 ## <a name="latency"></a>Latency
 
-Die Latenz der Textübersetzungs-API beträgt maximal 13 Sekunden. Bis zu diesem Zeitpunkt müssen Sie ein Ergebnis oder eine Zeitlimitantwort erhalten haben. In der Regel werden die Antworten innerhalb von 150 Millisekunden bis 300 Millisekunden zurückgegeben. Die Antwortzeiten variieren je nach der Größe der Anforderung und dem Sprachpaar.
+Die maximale Latenz der Textübersetzungs-API beträgt bei Verwendung von Standardmodellen 15 Sekunden. Bei der Übersetzung mit benutzerdefinierten Modellen beträgt die maximale Latenz 25 Sekunden. Bis zu diesem Zeitpunkt müssen Sie ein Ergebnis oder eine Zeitlimitantwort erhalten haben. In der Regel werden die Antworten innerhalb von 150 Millisekunden bis 300 Millisekunden zurückgegeben. Die Antwortzeiten variieren je nach der Größe der Anforderung und dem Sprachpaar. Wenn Sie innerhalb dieses Zeitrahmens keine Übersetzung oder eine [Fehlerantwort](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) erhalten, überprüfen Sie die Netzwerkverbindung, und versuchen Sie es erneut.
 
 ## <a name="sentence-length-limits"></a>Grenzwerte bei der Satzlänge
 

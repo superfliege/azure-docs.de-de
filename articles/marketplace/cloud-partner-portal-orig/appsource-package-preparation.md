@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b24c5d2f174c9a656e81d0c85e12b589d7d7799
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837030"
 ---
 # <a name="appsource-package-preparation"></a>Vorbereiten von AppSource-Paketen
 
@@ -40,7 +40,7 @@ Das Paket für Package Deployer ist ein Teil des AppSource-Pakets.
 Befolgen Sie zum Erstellen eines Pakets für Package Deployer die folgenden Anweisungen: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx). Nach Abschluss des Vorgangs besteht Ihr Paket aus den folgenden Ressourcen:
 
 1. Paketordner: Enthält alle Lösungen, Konfigurationsdaten, Flatfiles und Inhalte für das Paket. _Hinweis: Im folgenden Beispiel wird davon ausgegangen, dass der Paketordner „PkgFolder“ heißt._
-2. DLL-Datei: Die Assembly enthält den benutzerdefinierten Code für Ihre Paket. _Hinweis: Im folgenden Beispiel wird davon ausgegangen, dass diese Datei „MicrosoftSample.dll“ heißt._
+2. DLL-Datei: Die Assembly enthält den benutzerdefinierten Code für Ihr Paket. _Hinweis: Im folgenden Beispiel wird davon ausgegangen, dass diese Datei „MicrosoftSample.dll“ heißt._
 
 Sie müssen nun eine Datei namens **Content_Types.xml** erstellen. In dieser Datei sind alle Ressourcenerweiterungen aufgeführt, die Teil Ihres Pakets sind. Hier sehen Sie Beispielcode für die Datei:
 
@@ -71,11 +71,11 @@ Schritte zum Erstellen der Datei „package.zip“:
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-2. Markieren Sie alle Elemente im Ordner, klicken Sie mit der rechten Maustaste, und wählen Sie „Senden an“ und dann „ZIP-komprimierter Ordner“ aus.
+1. Markieren Sie alle Elemente im Ordner, klicken Sie mit der rechten Maustaste, und wählen Sie „Senden an“ und dann „ZIP-komprimierter Ordner“ aus.
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-3. Ändern Sie den Namen in „package.zip“.
+1. Ändern Sie den Namen in „package.zip“.
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
@@ -97,7 +97,7 @@ Hier sehen Sie Beispielcode für „input.xml“. Definitionen finden Sie in der
         <StartDate>01/01/2016</StartDate>
         <EndDate>01/01/2021</EndDate>
         <SupportedCountries>US,CA</SupportedCountries>
-        <LearnMoreLink>http://www.microsoft.com</LearnMoreLink>
+        <LearnMoreLink>https://www.microsoft.com</LearnMoreLink>
         <Locales>
         <PackageLocale Code="1033" IsDefault="true">
         <Logo>logo32x32.png</Logo>
@@ -117,10 +117,10 @@ Hier sehen Sie Beispielcode für „input.xml“. Definitionen finden Sie in der
 |SolutionAnchorName |Der Name der ZIP-Datei der Lösung in Package Deployer, der als Anzeigename und Beschreibung der Lösungsressourcen verwendet wird|
 | StartDate| Das Datum, an dem das Lösungspaket zur Verfügung gestellt wird. Format: MM/TT/JJJJ|
 |EndDate|Das Datum, ab dem das Lösungspaket nicht mehr verfügbar ist. Format: MM/TT/JJJJ |
-|SupportedCountries |Eine durch Trennzeichen getrennte Liste der Länder, für die das Paket zur Verfügung gestellt werden soll. Eine Liste aller aktuellen Ländercodes erhalten Sie von den Onlinediensten. Zum Zeitpunkt der Erstellung dieses Artikels lautete die Liste wie folgt: AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
+|SupportedCountries |Eine durch Trennzeichen getrennte Liste der Länder, für die das Paket zur Verfügung gestellt werden soll. Eine Liste aller aktuellen Ländercodes erhalten Sie von den Onlinediensten. Zum Zeitpunkt der Erstellung dieses Artikels lautete die Liste: AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
 |LearnMoreLink | URL zur Seite „Weitere Informationen“ für dieses Paket |
 |Locales|Eine Instanz dieses Knotens für jede UX-Sprache, die in der bevorzugten Lösungs-UX unterstützt werden soll. Dieser Knoten enthält untergeordnete Elemente, die das Gebietsschema, das Logo und Bedingungen für jede Sprache beschreiben.|
-|Locales: PackageLocale.Code|LCID der Sprache für diesen Knoten. Beispiel: Englisch (USA) ist 1033.|
+|Locales: PackageLocale.Code|LCID der Sprache für diesen Knoten. Beispiel: Englisch (USA) ist 1033|
 |Locales: PackageLocale.IsDefault|Gibt an, dass dies die Standardsprache ist. Auf diese Sprache wird ausgewichen, wenn die vom Kunden ausgewählte UX-Sprache nicht verfügbar ist.|
 |Locales: Logo|Das Logo, das Sie für dieses Paket verwenden möchten. Die Größe für das Symbol ist 32x32. Zulässige Formate: PNG und JPG|
 |Locales:Terms: PackageTerm.File|Der Dateiname des HTML-Dokuments, das Ihre Lizenzbedingungen enthält|

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b2aa3eb6a117bbbdcf9c4aa44161dc25ddea2f1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081218"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
  
@@ -28,7 +28,7 @@ In diesem Tutorial werden zwei Szenarien erläutert: das Bereitstellen der Aktua
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-
+> 
 > * Erstellen eines Auftrags-Agents
 > * Umsetzen der Ausführung von T-SQL-Aufträgen für alle Mandantendatenbanken
 > * Aktualisieren von Verweisdaten in allen Mandantendatenbanken
@@ -73,7 +73,7 @@ Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Erstellen eines Auftrags, um neue Verweisdaten für alle Mandanten bereitzustellen
 
-In der Wingtip Tickets-App gehört zu jeder Mandantendatenbank ein Satz von unterstützten Veranstaltungsorttypen. Jeder Veranstaltungsort weist einen bestimmten Veranstaltungsorttyp auf, der die Art der möglichen Veranstaltungen definiert und das Hintergrundbild in der App festlegt. Wenn die Anwendung neue Arten von Ereignissen unterstützen soll, müssen diese Verweisdaten aktualisiert und neue Veranstaltungsorttypen hinzugefügt werden.  In dieser Übung stellen Sie eine Aktualisierung für alle Mandantendatenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*.
+In der Wingtip Tickets-App gehört zu jeder Mandantendatenbank ein Satz von unterstützten Veranstaltungsorttypen. Jeder Veranstaltungsort weist einen bestimmten Veranstaltungsorttyp auf, der die Art der möglichen Veranstaltungen definiert und das Hintergrundbild in der App festlegt. Wenn die Anwendung neue Arten von Ereignissen unterstützen soll, müssen diese Verweisdaten aktualisiert und neue Veranstaltungsorttypen hinzugefügt werden.  In dieser Übung stellen Sie ein Update für alle Mandantendatenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*.
 
 Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können. 
 
@@ -86,8 +86,8 @@ Zum Erstellen eines neuen Auftrags verwenden Sie eine Gruppe von gespeicherten S
 
 1. Stellen Sie in SSMS eine Verbindung mit dem Katalogserver her: *catalog-dpt-&lt;Benutzer&gt;.database.windows.net*. 
 1. Öffnen Sie in SSMS die Datei „…\\Learning Modules\\Schema Management\\DeployReferenceData.sql“.
-1. Ändern Sie die Anweisung „SET @wtpUser = &lt;Benutzer&gt;“, und ersetzen Sie den Wert „Benutzer“ durch den Benutzer, der beim Bereitstellen der App Wingtip Tickets SaaS Database Per Tenant verwendet wurde.
-1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie **F5**, um das Skript auszuführen.
+1. Ändern Sie diese Anweisung: „SET @wtpUser = &lt;Benutzer&gt;“. Ersetzen Sie den Wert „Benutzer“ durch den Benutzer, der beim Bereitstellen der App „Wingtip Tickets SaaS Database Per Tenant“ verwendet wurde.
+1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie  **F5**, um das Skript auszuführen.
 
 Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql*:
 * **sp\_add\_target\_group** erstellt den Zielgruppennamen „DemoServerGroup“.
@@ -122,7 +122,7 @@ Beachten Sie die folgenden Elemente im Skript _OnlineReindex.sql_:
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-
+> 
 > * Erstellen eines Auftrags-Agents zum datenbankübergreifenden Ausführen von T-SQL-Aufträgen
 > * Aktualisieren von Verweisdaten in allen Mandantendatenbanken
 > * Erstellen eines Index für eine Tabelle in allen Mandantendatenbanken

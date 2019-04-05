@@ -4,18 +4,18 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 62f5c1a1f6184feddad7f2b57bcfc1c4bb5bc339
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 1ae6c6ee59b66e6c61714c0ece9f306f1a885096
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279635"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553504"
 ---
-Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des IoT Hub Device Provisioning-Diensts gelten:
+Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT Hub Device Provisioning-Diensts gelten.
 
 | Ressource | Begrenzung |
 | --- | --- |
-| Maximale Device Provisioning-Dienste pro Azure-Abonnement | 10 |
+| Maximale Anzahl von Gerätebereitstellungsdiensten pro Azure-Abonnement | 10 |
 | Maximale Anzahl von Registrierungen (Enrollments) | 500.000 |
 | Maximale Anzahl von Registrierungen (Registrations) | 500.000 |
 | Maximale Anzahl von Registrierungsgruppen | 100 |
@@ -27,7 +27,7 @@ Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des IoT Hub De
 > [!NOTE]
 > Sie können sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/) wenden, um die Anzahl der Registrierungen für Ihren Bereitstellungsdienst zu erhöhen.
 
-Der Device Provisioning-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
+Der Device Provisioning Service drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden.
 
 | Drosselung | Wert pro Einheit |
 | --- | --- |

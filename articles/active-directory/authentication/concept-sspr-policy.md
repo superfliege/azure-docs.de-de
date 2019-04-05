@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fed31d07f4bbe9fc47ce0d2c31f45fed288c4c4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901134"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -36,20 +36,22 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
   * Rechnungsadministrator
   * Partnersupport der Ebene 1
   * Partnersupport der Ebene 2
-  * Exchange-Dienstadministrator
-  * Lync-Dienstadministrator
-  * Benutzerkontoadministrator
+  * Exchange-Administrator
+  * Skype for Business-Administrator
+  * Benutzeradministrator
   * Verzeichnis schreiben
   * Globaler Administrator oder Unternehmensadministrator
-  * SharePoint-Dienstadministrator
+  * SharePoint-Administrator
   * Complianceadministrator
   * Anwendungsadministrator
   * Sicherheitsadministrator
   * Administrator für privilegierte Rollen
-  * Microsoft Intune-Dienstadministrator
+  * Intune-Administrator
   * Anwendungsproxy-Dienstadministrator
-  * CRM-Dienstadministrator
+  * Dynamics 365-Administrator
   * Power BI-Dienstadministrator
+  * Authentifizierungsadministrator
+  * Privilegierter Authentifizierungsadministrator
 
 * Wenn 30 Tage in einem Testabonnement abgelaufen sind, oder
 * Es ist eine benutzerdefinierte Domäne vorhanden, z.B. contoso.com, oder
@@ -75,13 +77,13 @@ Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges,
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Kennwortrichtlinien, die nur für Cloudbenutzerkonten gelten
 
-In der folgenden Tabelle sind die verfügbaren Kennwortrichtlinieneinstellungen beschrieben, die auf die in Azure AD erstellten und verwalteten Benutzerkonten angewendet werden können:
+Die folgende Tabelle beschreibt die Kennwortrichtlinieneinstellungen, die auf die in Azure AD erstellten und verwalteten Benutzerkonten angewendet werden können:
 
 | Eigenschaft | Requirements (Anforderungen) |
 | --- | --- |
-| Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur für sichere Kennwörter: Darf keinen Punkt („.“) enthalten. Unmittelbar vor dem „\@ \"-Symbol“.</li></ul> |
-| Kennworteinschränkungen |<ul><li>Mindestens 8 Zeichen und höchstens 16 Zeichen.</li><li>Nur für sichere Kennwörter: Muss drei der folgenden vier Elemente enthalten:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0 bis 9)</li><li>Symbole (siehe die vorherigen Kennworteinschränkungen)</li></ul></li></ul> |
+| Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
+| Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Darf keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
+| Kennworteinschränkungen |<ul><li>Mindestens 8 Zeichen und höchstens 16 Zeichen.</li><li>Muss drei der folgenden vier Elemente enthalten:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0 bis 9)</li><li>Symbole (siehe die vorherigen Kennworteinschränkungen)</li></ul></li></ul> |
 | Zeitraum bis zum Ablauf des Kennworts |<ul><li>Standardwert: **90** Tage</li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
 | Benachrichtigung bei Ablauf des Kennworts |<ul><li>Standardwert: **14** Tage (bevor das Kennwort abläuft)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
 | Ablauf des Kennworts |<ul><li>Standardwert: **false** Tage (gibt an, dass Kennwortablauf aktiviert ist)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolUser` für einzelne Benutzerkonten konfiguriert werden.</li></ul> |
@@ -108,7 +110,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 1. Führen Sie einen der folgenden Befehle aus:
 
-   * Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN, z. B. *aprilr@contoso.onmicrosoft.com*) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN, z.B. *aprilr\@contoso.onmicrosoft.com*) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Um die Einstellung **Kennwort läuft nie ab** für alle Benutzer anzuzeigen, führen Sie das folgende Cmdlet aus: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>Festlegen, dass ein Kennwort abläuft

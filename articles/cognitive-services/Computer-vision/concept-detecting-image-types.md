@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cd7b2a8a70a315b05c0824a863803bbc6ffabb2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872134"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895446"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Erkennen von Bildtypen mit maschinellem Sehen
 
-Das maschinelle Sehen kann den Inhaltstyp von Bildern analysieren, indem es angibt, ob es sich bei einem Bild um eine ClipArt handelt, indem die Wahrscheinlichkeit anhand einer Skala oder einer Linienzeichnung bewertet wird.
+Mit der [Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API kann das maschinelle Sehen den Inhaltstyp von Bildern analysieren und gibt an, ob es sich bei einem Bild um eine ClipArt oder eine Linienzeichnung handelt.
 
 ## <a name="detecting-clip-art"></a>Erkennen von ClipArts
 
@@ -115,4 +115,4 @@ Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen zurückgibt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Konzepte zum [Taggen von Bildern](concept-tagging-images.md) und [Kategorisieren von Bildern](concept-categorizing-images.md).
+In der [Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-Referenzdokumentation erfahren Sie, wie der Bildtyp erkannt wird.

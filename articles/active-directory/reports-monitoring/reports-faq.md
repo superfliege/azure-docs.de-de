@@ -3,7 +3,7 @@ title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-
 description: Häufig gestellte Fragen zu Azure Active Directory-Berichten
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6b8587313a4e98bfefa6489d9698052d312a6d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194545"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437440"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -29,17 +29,17 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ## <a name="getting-started"></a>Erste Schritte 
 
-**F: Ich verwende derzeit die Endpunkt-APIs unter „https://graph.windows.net/&ltMandantenname&gt;/reports/“ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und der integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
+**F: Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und der integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
 **A:** In der [API-Referenz](https://developer.microsoft.com/graph/) finden Sie Informationen dazu, wie Sie [mit den APIs auf Aktivitätsberichte zugreifen](concept-reporting-api.md). Dieser Endpunkt verfügt über zwei Berichte (**Überwachung** und **Anmeldungen**), die alle Daten des alten API-Endpunkts enthalten. Dieser neue Endpunkt verfügt auch über einen Bericht zu Anmeldeaktivitäten für die Azure AD Premium-Lizenz, über den Sie Informationen zur App-Nutzung, Gerätenutzung und Benutzeranmeldung abrufen können.
 
---- 
+---
 
-**F: Ich verwende derzeit die Endpunkt-APIs unter „https://graph.windows.net/&ltMandantenname&gt;/reports/“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Arten von Erkennungen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
+**F: Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Arten von Erkennungen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
 **A:** Sie können die [API für Identity Protection-Risikoereignisse](../identity-protection/graph-get-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoereignisse in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
 
---- 
+---
 
 **F: Wie erhalte ich eine Premium-Lizenz?**
 
@@ -79,7 +79,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 | Anmeldungen               | –           | 30 Tage             | 30 Tage             |
 | Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
 
---- 
+---
 
 **F: Wie lange dauert es, bis nach Abschluss einer Aufgabe Aktivitätsdaten angezeigt werden?**
 
@@ -89,7 +89,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Kann ich Office 365-Aktivitätsprotokollinformationen über das Azure-Portal abrufen?**
 
-**A:** Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, müssen Sie, wenn Sie eine vollständige Ansicht der Office 365-Aktivitätsprotokolle wünschen, das Office 365 Admin Center besuchen, um Office 365-Aktivitätsprotokollinformationen abzurufen.
+**A:** Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, müssen Sie, wenn Sie eine vollständige Ansicht der Office 365-Aktivitätsprotokolle wünschen, das [Microsoft 365 Admin Center](https://admin.microsoft.com) besuchen, um Office 365-Aktivitätsprotokollinformationen abzurufen.
 
 ---
 
@@ -140,24 +140,27 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 **F: Wie fange ich an?**
 
 **A:** Erste Schritte:
-    * Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Anmeldebericht. 
-    * Klicken Sie auf die Anmeldung für die Problembehandlung.
-    * Navigieren Sie zur Registerkarte **Bedingter Zugriff**. Hier werden alle Richtlinien angezeigt, die die Anmeldung und das Ergebnis der einzelnen Richtlinien betreffen. 
+
+* Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Anmeldebericht.
+* Klicken Sie auf die Anmeldung für die Problembehandlung.
+* Navigieren Sie zur Registerkarte **Bedingter Zugriff**. Hier werden alle Richtlinien angezeigt, die die Anmeldung und das Ergebnis der einzelnen Richtlinien betreffen. 
     
 **F: Welche Werte kann der Status des bedingten Zugriffs aufweisen?**
 
 **A:** Der Status des bedingten Zugriffs kann folgende Werte aufweisen:
-    * **Nicht angewendet**: Es ist keine Richtlinie für bedingten Zugriff für den Benutzer und die App vorhanden. 
-    * **Erfolg**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde erfüllt. 
-    * **Fehler**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde nicht erfüllt. 
+
+* **Nicht angewendet**: Es ist keine Richtlinie für bedingten Zugriff für den Benutzer und die App vorhanden. 
+* **Erfolg**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde erfüllt. 
+* **Fehler**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde nicht erfüllt. 
     
 **F: Welche Werte sind als Ergebnis einer Richtlinie für bedingten Zugriff möglich?**
 
 **A:** Eine Richtlinie für bedingten Zugriff kann die folgenden Ergebnisse liefern:
-    * **Erfolg**: Die Richtlinie wurde erfüllt.
-    * **Fehler**: Die Richtlinie wurde nicht erfüllt.
-    * **Nicht angewendet**: Die Richtlinienbedingungen wurden möglicherweise nicht erfüllt.
-    * **Nicht aktiviert**: Die Richtlinie ist deaktiviert. 
+
+* **Erfolg**: Die Richtlinie wurde erfüllt.
+* **Fehler**: Die Richtlinie wurde nicht erfüllt.
+* **Nicht angewendet**: Die Richtlinienbedingungen wurden möglicherweise nicht erfüllt.
+* **Nicht aktiviert**: Die Richtlinie ist deaktiviert. 
     
 **F: Der Richtlinienname im Bericht für alle Anmeldungen entspricht nicht dem Namen der Richtlinie für bedingten Zugriff. Warum?**
 

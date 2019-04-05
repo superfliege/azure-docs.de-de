@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Log Analytics: Azure Logic Apps | Microsoft-Dokumentation'
+title: 'Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Monitor-Protokolle: Azure Logic Apps | Microsoft-Dokumentation'
 description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten in Azure Log Analytics für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,21 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995317"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194910"
 ---
-# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Log Analytics für Azure Logic Apps
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Monitor-Protokolle für Azure Logic Apps
 
-Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
+Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
 > [!NOTE]
 > Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 eingestellt](../azure-monitor/platform/oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,7 +31,7 @@ Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriter
 
 * Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen eines Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und das [Einrichten der Überwachung und Protokollierung für dieses Konto](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), und [richten Sie die Nachrichtennachverfolgung in Log Analytics ein](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), sofern noch nicht geschehen.
+* [Veröffentlichen Sie Diagnosedaten in Azure Monitor-Protokolle](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), und [richten Sie die Nachrichtennachverfolgung in Azure Monitor-Protokolle ein](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), sofern noch nicht geschehen.
 
 ## <a name="create-queries-with-filters"></a>Erstellen von Abfragen mit Filtern
 
@@ -53,7 +55,7 @@ Um Nachrichten basierend auf bestimmten Eigenschaften oder Werten zu suchen, kö
 1. Beginnen Sie im Feld für die Abfragebearbeitung mit der Eingabe des Feldnamens, den Sie suchen möchten. Wenn Sie mit der Eingabe beginnen, werden im Abfrage-Editor mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Wählen Sie nach dem Erstellen Ihrer Abfrage **Ausführen**, oder drücken Sie die EINGABETASTE.
 
    In diesem Beispiel wird nach Übereinstimmungen für **LogicAppB2B** gesucht. 
-   Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Informieren Sie sich über das [Suchen nach Daten in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
 
    ![Beginnen mit der Eingabe einer Abfragezeichenfolge](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 

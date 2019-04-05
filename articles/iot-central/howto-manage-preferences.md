@@ -3,17 +3,17 @@ title: Verwalten Ihrer Anwendungseinstellungen unter IoT Central | Microsoft-Dok
 description: Verwalten Ihrer Anwendungs- und persönlichen Einstellungen unter IoT Central
 author: lmasieri
 ms.author: lmasieri
-ms.date: 12/13/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4a62ae1db151aff150d8132f190d32b32f650c02
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411276"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315961"
 ---
 # <a name="manage-your-application-preferences"></a>Verwalten Ihrer Anwendungseinstellungen
 
@@ -23,19 +23,17 @@ Mit IoT Central können Sie Ihre Anwendungen flexibel anpassen, damit Ihre Anfor
 
 ## <a name="changing-language"></a>Ändern der Sprache
 
-IoT Central wird in 17 Sprachen unterstützt. Sie können Ihre bevorzugte Sprache auswählen, indem Sie die **Sprachenauswahl** in der oberen Navigationsleiste verwenden. Nachdem Sie die Sprache eingestellt haben, wird *Ihre Auswahl* gespeichert und auf Ihre gesamten Anwendungen angewendet. Beachten Sie, dass Anpassungen innerhalb der Anwendung, z.B. Dashboardbilder, nicht lokalisiert werden. 
-
-![Sprachenauswahl für IoT Central](media/howto-manage-profile/language-picker.png)
+IoT Central wird in mehreren Sprachen unterstützt. Sie können Ihre bevorzugte Sprache auswählen, indem Sie die **Sprachenauswahl** im Einstellungensymbol in der oberen Navigationsleiste verwenden. Nachdem Sie die Sprache geändert haben, speichert IoT Central Ihre Auswahl und wendet sie auf Ihre gesamten Anwendungen an. Beachten Sie, dass Anpassungen innerhalb der Anwendung, z.B. Dashboardbilder, nicht lokalisiert werden.
 
 ## <a name="changing-theme"></a>Ändern des Designs
 
-Es wird ein dunkles und ein helles Design unterstützt. Das dunkle Design ist zwar das Standarddesign, aber Sie können dies ändern, indem Sie oben rechts auf Ihren Namen klicken und das Design wechseln.
+Es wird ein dunkles und ein helles Design unterstützt. Das helle Design ist zwar die Standardeinstellung, aber Sie können dies durch Auswahl des Einstellungensymbols auf der oberen Navigationsleiste ändern.
 
-![Designauswahl für IoT Central](media/howto-manage-profile/theme-picker.png)
+![Designauswahl für IoT Central](media/howto-manage-preferences/settings.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun erfahren haben, wie Sie Ihr Profil in Azure IoT Central verwalten, empfehlen wir Ihnen als nächsten Schritt Folgendes:
 
 > [!div class="nextstepaction"]
-> [Konfigurieren der Homepage](howto-configure-homepage.md)
+> [Konfigurieren Ihres Anwendungsdashboards](howto-configure-homepage.md)

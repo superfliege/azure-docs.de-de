@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd6db6b8dbbe051dba129b0d9f3e87f293d6706
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458307"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729102"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Verwalten Ihrer verbundenen Geräte im Portal „Mein Profil“ (Vorschauversion)
 Auf der Seite **Geräte** im Portal **Mein Profil** können Sie die Geräte, mit denen Sie verbunden sind, über Ihr Geschäfts-, Schul- oder Unikonto verwalten und alle Geräte deaktivieren, die sich nicht mehr in Ihrem Besitz befinden.
@@ -29,14 +29,14 @@ Auf der Seite **Geräte** im Portal **Mein Profil** können Sie die Geräte, mit
 
 2. Wählen Sie im Navigationsbereich auf der linken Seite **Geräte** aus, oder klicken Sie auf den Link **Geräte verwalten** im Block **Geräte**.
 
-    ![Seite „Mein Profil“ mit hervorgehobenen Links für Geräte](media/myprofile-portal/myprofile-portal-devices-links.png)
+    ![Seite „Mein Profil“ mit hervorgehobenen Links für Geräte](media/myprofile-portal/myprofile-portal-devices.png)
 
 3. Überprüfen Sie die Informationen für Ihre verbundenen Geräte. Achten Sie dabei darauf, dass Ihnen alle Geräte bekannt sind. 
 
     ![Seite „Geräte“ mit den verbundenen Geräten](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Deaktivieren eines Geräts
-Sie können Ihre verbundenen Geräte jederzeit deaktivieren. Dies ist insbesondere dann wichtig, wenn Ihnen ein Gerät nicht bekannt ist oder ein Gerät verloren geht oder gestohlen wird.
+Sie können Ihre verbundenen Geräte jederzeit deaktivieren. Dies ist insbesondere dann wichtig, wenn Ihnen ein Gerät nicht bekannt ist oder ein Gerät verloren geht oder gestohlen wird. Wenn Sie ein Gerät deaktiviert haben, kann es nicht mehr von Ihrer Organisation authentifiziert werden und nicht auf Ressourcen Ihrer Organisation zugreifen.
 
 >[!Important]
 >Falls Sie ein Gerät versehentlich deaktivieren, ist es nicht möglich, die Deaktivierung rückgängig zu machen. In diesem Fall müssen Sie sich an den Administrator Ihrer Organisation wenden, um das Gerät erneut hinzufügen zu lassen.
@@ -49,4 +49,4 @@ Sie können Ihre verbundenen Geräte jederzeit deaktivieren. Dies ist insbesonde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Nachdem Sie Ihre letzte Anmeldeaktivität angezeigt haben, können Sie wahlweise Ihre [Sicherheitsinformation](user-help-security-info-overview.md), die [letzte Anmeldeaktivität](myprofile-portal-recent-activity-page.md), Ihre verbundenen [Organisationen](myprofile-portal-organizations-page.md) oder Informationen zur [Nutzung der Daten](myprofile-portal-privacy-page.md) innerhalb Ihrer Organisation anzeigen.
+- Nachdem Sie Ihre verbundenen Geräte angezeigt haben, können Sie wahlweise Ihre [Sicherheitsinformationen](user-help-security-info-overview.md) oder Ihre [Organisationen](myprofile-portal-organizations-page.md) anzeigen oder verwalten, oder aber anzeigen, wie Ihre Organisation [Ihre Daten verwendet](myprofile-portal-privacy-page.md).

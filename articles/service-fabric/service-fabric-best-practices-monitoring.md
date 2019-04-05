@@ -4,7 +4,7 @@ description: Bewährte Methoden für die Überwachung von Service Fabric-Cluster
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: jeanpaul.connock
+manager: chackdan
 editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 5e3cfad70dd0cc0c53f6971c9ddce44f0ca25ecd
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d90daaf18e5161053e00671b7667d05ec8e5db76
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104349"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242920"
 ---
 # <a name="monitoring-and-diagnostics"></a>Überwachung und Diagnose
 
@@ -33,13 +33,13 @@ Bei der Anwendungsüberwachung wird nachverfolgt, wie die Funktionen und Kompone
 
 Ein Ziel von Service Fabric besteht darin, für Anwendungen die Resilienz in Bezug auf Hardwarefehler sicherzustellen. Dies ist möglich, weil die Systemdienste der Plattform in der Lage sind, Infrastrukturprobleme zu erkennen und für Workloads schnell ein Failover auf andere Knoten im Cluster durchzuführen. Aber was passiert, wenn für die Systemdienste selbst Probleme auftreten? Oder was geschieht, wenn beim Bereitstellen oder Verschieben einer Workload Regeln für die Platzierung von Diensten verletzt werden? Service Fabric ermöglicht eine Diagnose dieser und anderer Probleme, um sicherzustellen, dass Sie darüber informiert sind, wie die Service Fabric-Plattform mit Ihren Anwendungen, Diensten, Containern und Knoten interagiert.
 
-Für Windows-Cluster wird empfohlen, die Clusterüberwachung mit dem [Diagnose-Agent](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) und mit [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup) einzurichten.
+Für Windows-Cluster wird empfohlen, die Clusterüberwachung mit dem [Diagnose-Agent](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) und mit [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup) einzurichten.
 
-Für Linux-Cluster ist Log Analytics ebenfalls das empfohlene Tool für die Überwachung der Azure-Plattform und -Infrastruktur. Für die Diagnose von Linux-Plattformen ist eine andere Konfiguration erforderlich. Dies ist unter [Service Fabric-Linux-Clusterereignisse in Syslog](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-syslog) beschrieben.
+Für Linux-Cluster ist Azure Monitor-Protokolle ebenfalls das empfohlene Tool für die Überwachung der Azure-Plattform und -Infrastruktur. Für die Diagnose von Linux-Plattformen ist eine andere Konfiguration erforderlich. Dies ist unter [Service Fabric-Linux-Clusterereignisse in Syslog](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-syslog) beschrieben.
 
 ## <a name="infrastructure-monitoring"></a>Infrastrukturüberwachung
 
-[Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent) wird empfohlen, um Ereignisse auf Clusterebene zu überwachen. Nachdem Sie den Log Analytics-Agent wie unter dem obigen Link beschrieben für Ihren Arbeitsbereich konfiguriert haben, können Sie Leistungsmetriken erfassen. Beispiele hierfür sind CPU-Auslastung, .NET-Leistungsindikatoren (z.B. CPU-Auslastung auf Prozessebene), Service Fabric-Leistungsindikatoren (z.B. Anzahl von Ausnahmen für einen zuverlässigen Dienst) und Containermetriken (z.B. CPU-Auslastung).  Sie müssen Containerprotokolle in stdout oder stderr schreiben, damit sie in Log Analytics verfügbar sind.
+[Azure Monitor-Protokolle](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent) wird empfohlen, um Ereignisse auf Clusterebene zu überwachen. Nachdem Sie den Log Analytics-Agent wie unter dem obigen Link beschrieben für Ihren Arbeitsbereich konfiguriert haben, können Sie Leistungsmetriken erfassen. Beispiele hierfür sind CPU-Auslastung, .NET-Leistungsindikatoren (z.B. CPU-Auslastung auf Prozessebene), Service Fabric-Leistungsindikatoren (z.B. Anzahl von Ausnahmen für einen zuverlässigen Dienst) und Containermetriken (z.B. CPU-Auslastung).  Sie müssen Containerprotokolle in stdout oder stderr schreiben, damit sie in Azure Monitor-Protokolle verfügbar sind.
 
 ## <a name="watchdogs"></a>Watchdogs
 
@@ -50,7 +50,7 @@ Ein Watchdog ist im Allgemeinen ein separater Dienst, der die Integrität und La
 * Einstieg in die Instrumentierung Ihrer Anwendungen: [Ereignis- und Protokollgenerierung auf Anwendungsebene](service-fabric-diagnostics-event-generation-app.md).
 * Führen Sie die Schritte unter [Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric](service-fabric-tutorial-monitoring-aspnet.md) aus, um Application Insights für Ihre Anwendung einzurichten.
 * Weitere Informationen zum Überwachen der Plattform und der Ereignisse, die von Service Fabric für Sie bereitgestellt werden: [Ereignis- und Protokollgenerierung auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md).
-* Konfigurieren der Log Analytics-Integration mit Service Fabric: [Einrichten von Log Analytics für einen Cluster](service-fabric-diagnostics-oms-setup.md)
-* Erfahren Sie, wie Sie Log Analytics für Überwachungscontainer einrichten: [Überwachung und Diagnose für Windows-Container in Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md)
+* Konfigurieren der Integration von Azure Monitor-Protokolle in Service Fabric: [Einrichten von Azure Monitor-Protokolle für den Cluster](service-fabric-diagnostics-oms-setup.md)
+* Erfahren Sie, wie Sie Azure Monitor-Protokolle für Überwachungscontainer einrichten: [Überwachung und Diagnose für Windows-Container in Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md)
 * Beispiele für Diagnoseprobleme und die entsprechenden Lösungen mit Service Fabric finden Sie unter [Diagnostizieren häufiger Szenarien mit Service Fabric](service-fabric-diagnostics-common-scenarios.md)
 * Informieren Sie sich über die Empfehlungen zur allgemeinen Überwachung für Azure-Ressourcen: [Bewährte Methoden: Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).

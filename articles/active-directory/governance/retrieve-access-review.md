@@ -1,6 +1,6 @@
 ---
-title: Abrufen der Ergebnisse der Azure AD-Zugriffsüberprüfung | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die Ergebnisse von Azure Active Directory-Zugriffsüberprüfungen abrufen.
+title: Abrufen von Ergebnissen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ergebnisse einer Gruppenmitglieder oder Anwendungszugriff betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen abrufen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dccacb82b34e7e257fcee9632045f12839b5425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2516e61b6b86c3d2cee164cfcb80a1f938922908
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210797"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839643"
 ---
-# <a name="retrieve-access-review-results"></a>Abrufen der Ergebnisse der Zugriffsüberprüfung
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Abrufen von Ergebnissen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen
 
-Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden.  Benutzer mit den Rollen **Globaler Administrator**, **Benutzerkontoadministrator**, **Sicherheitsadministrator** oder **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** können auch die Ergebnisse einer Zugriffsüberprüfung lesen.  Zum Zuweisen von Benutzern zu einer dieser Rollen kann ein Administrator für privilegierte Rollen mithilfe von Azure AD PIM Benutzern die Berechtigung zum Aktivieren der Rolle erteilen. Alternativ kann ein globaler Administrator [einem Benutzer die Rolle dauerhaft zuweisen](../fundamentals/active-directory-users-assign-role-azure-portal.md).
+Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden.  Benutzer mit den Rollen **Globaler Administrator**, **Benutzeradministrator**, **Sicherheitsadministrator** oder **Sicherheitsleseberechtigter** können auch die Ergebnisse einer Zugriffsüberprüfung lesen.  Zum Zuweisen von Benutzern zu einer dieser Rollen kann ein Administrator für privilegierte Rollen mithilfe von Azure AD PIM Benutzern die Berechtigung zum Aktivieren der Rolle erteilen. Alternativ kann ein globaler Administrator [einem Benutzer die Rolle dauerhaft zuweisen](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -55,7 +55,7 @@ Ein gelöschter Benutzer bleibt in Azure AD standardmäßig 30 Tage lang gelösc
 - [Manage user access with Azure AD access reviews (Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen)](manage-user-access-with-access-reviews.md)
 - [Manage guest access with Azure AD access reviews](manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
 - [Manage programs and controls for Azure AD access reviews](manage-programs-controls.md) (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)
-- [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](create-access-review.md)
+- [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
 - [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 

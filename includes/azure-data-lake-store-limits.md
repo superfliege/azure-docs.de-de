@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 74b47ecbb0094d17e39a57133bfd701faedf1feb
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f328de00d206b58037fda800354e9634b1c374d6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47396123"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553552"
 ---
-Azure Data Lake Storage Gen1 ist ein unternehmensweites riesiges Repository für Big Data-Analyseworkloads. Data Lake Storage Gen1 bietet Ihnen die Möglichkeit, Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen an einem einzigen Ort zu erfassen. Es gibt keine Beschränkung für die Datenmenge, die Sie in einem Data Lake Storage Gen1-Konto speichern können.
+Azure Data Lake Storage Gen1 ist ein unternehmensweites Repository mit Hyperskalierung für Big Data-Analyseworkloads. Sie können mit Data Lake Storage Gen1 Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen an einem einzigen Ort erfassen. Es gibt keine Beschränkung für die Datenmenge, die Sie in einem Data Lake Storage Gen1-Konto speichern können.
 
 | **Ressource** | **Standardlimit** | **Kommentare** |
 | --- | --- | --- |
 | Maximale Anzahl von Data Lake Storage Gen1-Konten pro Abonnement pro Region |10 | Wenden Sie sich an den Support, um eine Erhöhung dieses Grenzwerts anzufordern. |
-| Maximale Anzahl von Zugriffs-ACLs pro Datei oder Ordner |32 | Dies ist eine harte Grenze. Verwenden von Gruppen zum Verwalten des Zugriffs mit weniger Einträgen |
-| Maximale Anzahl von Standard-ACLs pro Datei oder Ordner |32 | Dies ist eine harte Grenze. Verwenden von Gruppen zum Verwalten des Zugriffs mit weniger Einträgen |
+| Maximale Anzahl von Zugriffs-ACLs pro Datei oder Ordner |32 | Dies ist eine harte Grenze. Verwenden von Gruppen zum Verwalten des Zugriffs mit weniger Einträgen. |
+| Maximale Anzahl von standardmäßiger ACLs pro Datei oder Ordner |32 | Dies ist eine harte Grenze. Verwenden von Gruppen zum Verwalten des Zugriffs mit weniger Einträgen. |

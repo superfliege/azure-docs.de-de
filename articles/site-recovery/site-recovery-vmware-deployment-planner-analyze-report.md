@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: 7504d23cbaf8a497e6ea86b5a383413474c0d034
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329966"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286345"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
 
@@ -41,6 +41,9 @@ Das Arbeitsblatt „On-premises Summary“ (Lokale Zusammenfassung) enthält ein
 **Observed typical data churn per day (GB)** (Beobachtete typische Datenänderungsrate pro Tag (GB)): Die durchschnittliche, über alle Tage der Profilerstellung hinweg beobachtete Datenänderungsrate. Diese Anzahl wird als eine der Eingaben genutzt, um eine Entscheidung über die Anzahl von Konfigurationsservern und zusätzlichen Prozessservern zu treffen, die in der Bereitstellung verwendet werden sollen.
 
 ## <a name="recommendations"></a>Empfehlungen
+
+>[!Note]
+>Wenn Sie direkt auf verwaltete Datenträger replizieren, ignorieren Sie die Empfehlung für die Anzahl der Speicherkonten.
 
 Das Arbeitsblatt „Recommendations“ (Empfehlungen) des Berichts für „VMware zu Azure“ enthält je nach ausgewähltem gewünschtem RPO die folgenden Details:
 
@@ -155,6 +158,9 @@ Es kann sein, dass Sie in einer bestimmten Situation wissen, dass Sie keine höh
 ![Erreichbarer RPO-Wert für Bandbreite von 500 MBit/s](media/site-recovery-vmware-deployment-planner-analyze-report/achievable-rpo-v2a.png)
 
 ## <a name="vm-storage-placement"></a>VM/Speicher-Anordnung
+
+>[!Note]
+>Wenn Sie direkt auf verwaltete Datenträger replizieren, ist die Anzahl der Speicherkonten unerheblich. Verwenden Sie für die Speicherung nur den empfohlenen Speichertyp (Standard oder Premium). Der gleiche Typ gilt für verwaltete Datenträger.
 
 ![VM/Speicher-Anordnung](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
@@ -273,7 +279,7 @@ Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MB/s | 168 GB pro Datenträge
 Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |  336 GB pro Datenträger
 Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
-Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MB/s | 842 GB pro Datenträger
+Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher | 20 MB/s | 1.684 GB pro Datenträger
 
 **Quell-Datenänderungsrate** | **Maximales Limit**
 ---|---

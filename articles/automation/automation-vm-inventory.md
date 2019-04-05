@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765380"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441388"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
@@ -91,7 +91,9 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 
 ## <a name="manage-machine-groups"></a>Verwalten von Computergruppen
 
-Mit der Option „Inventar“ können Sie in Log Analytics Computergruppen erstellen und anzeigen. Computergruppen sind Sammlungen von Computern, die mit einer Abfrage in Log Analytics definiert werden.
+Mit der Option „Inventar“ können Sie in Azure Monitor-Protokolle Computergruppen erstellen und anzeigen. Computergruppen sind Sammlungen von Computern, die mit einer Abfrage in Azure Monitor-Protokolle definiert werden.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Wählen Sie zum Anzeigen Ihrer Computergruppen auf der Seite „Inventar“ die Option **Computergruppen**.
 
@@ -103,7 +105,7 @@ Wenn Sie in der Liste eine Computergruppe auswählen, wird die Seite „Computer
 
 Klicken Sie auf die Schaltfläche **+ Klonen**, um die Computergruppe zu klonen. Hier müssen Sie für die Gruppe einen neuen Namen und einen Alias angeben. Die Definition kann jetzt geändert werden. Wählen Sie nach dem Ändern der Abfrage die Option **Abfrage validieren**, um eine Vorschau für die Computer anzuzeigen, die ausgewählt werden sollen. Wenn Sie mit der Gruppe zufrieden sind, können Sie auf **Erstellen** klicken, um die Computergruppe zu erstellen.
 
-Wählen Sie **+ Create a machine group** (+ Computergruppe erstellen), um eine neue Computergruppe zu erstellen. Mit dieser Schaltfläche wird die Seite **Create a machine group** (Computergruppe erstellen) geöffnet, auf der Sie die neue Gruppe definieren können. Klicken Sie auf **Erstellen**, um die Gruppe zu erstellen.
+Wählen Sie **+ Computergruppe erstellen** aus, um eine neue Computergruppe zu erstellen. Mit dieser Schaltfläche wird die Seite **Create a machine group** (Computergruppe erstellen) geöffnet, auf der Sie die neue Gruppe definieren können. Klicken Sie auf **Erstellen**, um die Gruppe zu erstellen.
 
 ![Erstellen der neuen Computergruppe](./media/automation-vm-inventory/create-new-group.png)
 
@@ -116,7 +118,7 @@ Gehen Sie wie folgt vor, um Ihren virtuellen Computer aus der Bestandsverwaltung
 3. Wählen Sie in der Liste den virtuellen Computer aus, den Sie trennen möchten. Der virtuelle Computer ist in der Spalte **OMS-Verbindung** neben **Dieser Arbeitsbereich** mit einem grünen Häkchen gekennzeichnet.
 
    >[!NOTE]
-   >OMS wird jetzt als Log Analytics bezeichnet.
+   >OMS wird jetzt als „Azure Monitor-Protokolle“ bezeichnet.
    
 4. Wählen Sie oben auf der nächsten Seite die Option **Disconnect** (Trennen).
 5. Wählen Sie im Bestätigungsfenster die Option **Ja**.

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175665"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -23,13 +23,13 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Net
 - [Dienste](#services)
 - [Virtuelle Azure-Netzwerke](#azure-virtual-networks)
 - [Eingangscontroller](#ingress-controllers)
-- Netzwerkrichtlinien
+- [Netzwerkrichtlinien](#network-policies)
 
 ## <a name="kubernetes-basics"></a>Kubernetes-Grundlagen
 
 Um den Zugriff auf Ihre Anwendungen oder die gegenseitige Kommunikation von Anwendungskomponenten zu erlauben, stellt Kubernetes eine Abstraktionsschicht für virtuelle Netzwerke bereit. Kubernetes-Knoten sind mit einem virtuellen Netzwerk verbunden und können eingehende und ausgehende Konnektivität für Pods bereitstellen. Die Komponente *kube-proxy*, die auf jedem Knoten ausgeführt wird, stellt diese Netzwerkfunktionen bereit.
 
-In Kubernetes werden Pods von *Diensten* logisch gruppiert, um den direkten Zugriff über eine IP-Adresse oder einen DNS-Namen und an einem bestimmten Port zu erlauben. Sie können Datenverkehr auch über einen *Lastenausgleich* verteilen. Ein komplexeres Routing von Anwendungsdatenverkehr kann auch mit *Eingangscontrollern* erzielt werden. Die Sicherheit und das Filtern des Netzwerkdatenverkehrs für Pods kann mit Kubernetes-*Netzwerkrichtlinien* ermöglicht werden.
+In Kubernetes werden Pods von *Diensten* logisch gruppiert, um den direkten Zugriff über eine IP-Adresse oder einen DNS-Namen und an einem bestimmten Port zu erlauben. Sie können Datenverkehr auch über einen *Lastenausgleich* verteilen. Ein komplexeres Routing von Anwendungsdatenverkehr kann auch mit *Eingangscontrollern* erzielt werden. Die Sicherheit und das Filtern des Netzwerkdatenverkehrs für Pods kann mit Kubernetes-*Netzwerkrichtlinien* (in AKS in der Vorschauversion) ermöglicht werden.
 
 Außerdem trägt die Azure-Plattform zur Vereinfachung der virtuellen Netzwerke für AKS-Cluster bei. Wenn Sie einen Kubernetes-Lastenausgleich erstellen, wird die zugrunde liegende Azure Load Balancer-Ressource erstellt und konfiguriert. Wenn Sie Netzwerkports für Pods öffnen, werden die entsprechenden Regeln für Azure-Netzwerksicherheitsgruppen konfiguriert. Für das HTTP-Anwendungsrouting kann Azure auch *externes DNS* konfigurieren, wenn neue Eingangsrouten konfiguriert werden.
 
@@ -66,7 +66,7 @@ In AKS können Sie einen Cluster bereitstellen, der eines der beiden folgenden N
 
 ### <a name="kubenet-basic-networking"></a>Kubenet-Netzwerke – „Basic“ (Grundlegend)
 
-Die Netzwerkoption *kubenet* ist die Standardkonfiguration für die AKS-Clustererstellung. Mit *kubenet* erhalten Knoten eine IP-Adresse aus dem Azure Virtual Network-Subnetz. Pods erhalten eine IP-Adresse von einem logisch unterschiedlichen Adressraum zum Azure Virtual Network-Subnetz der Knoten. Die Netzwerkadressübersetzung (NAT) wird dann so konfiguriert, dass die Pods Ressourcen im virtuellen Azure-Netzwerk erreichen können. Die Quell-IP-Adresse des Datenverkehrs wird mit NAT in die primäre IP-Adresse des Knotens übersetzt.
+Die Netzwerkoption *kubenet* ist die Standardkonfiguration für die AKS-Clustererstellung. Mit *kubenet* erhalten Knoten eine IP-Adresse aus dem Azure Virtual Network-Subnetz. Pods erhalten eine IP-Adresse von einem logisch unterschiedlichen Adressraum zum Subnetz des virtuellen Azure-Netzwerks der Knoten. Die Netzwerkadressübersetzung (NAT, Network Address Translation) wird dann so konfiguriert, dass die Pods Ressourcen im virtuellen Azure-Netzwerk erreichen können. Die Quell-IP-Adresse des Datenverkehrs wird mit NAT in die primäre IP-Adresse des Knotens übersetzt.
 
 Knoten verwenden das Kubernetes-Plug-In [kubenet][kubenet]. Sie können die Azure-Plattform die virtuellen Netzwerke für Sie erstellen und konfigurieren lassen oder Ihren AKS-Cluster in einem bestehenden Subnetz des virtuellen Netzwerks bereitstellen. Auch hier wird NAT nur von den Knoten, die eine routingfähige IP-Adresse erhalten, und den Pods verwendet, um mit anderen Ressourcen außerhalb des AKS-Clusters zu kommunizieren. Dieser Ansatz reduziert die Anzahl der IP-Adressen, die Sie in Ihrem Netzwerkadressraum für die Verwendung von Pods reservieren müssen, erheblich.
 
@@ -74,7 +74,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von kubernet-Netzwerken f�
 
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI-Netzwerke – „Advanced“ (Erweitert)
 
-Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über ein Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
+Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
 
 Knoten verwenden das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking].
 
@@ -104,19 +104,19 @@ Ein weiteres allgemeines Feature des Dateneingangs ist die SSL/TLS-Terminierung.
 
 Eine Netzwerksicherheitsgruppe filtert Datenverkehr für virtuelle Computer wie beispielsweise die AKS-Knoten. Beim Erstellen von Diensten (z. B. LoadBalancer) konfiguriert die Azure-Plattform automatisch alle erforderlichen Netzwerksicherheitsgruppen-Regeln. Sie sollten keine Netzwerksicherheitsgruppen-Regeln manuell konfigurieren, um Datenverkehr für Pods in einem AKS-Cluster zu filtern. Definieren Sie alle erforderlichen Ports und die Weiterleitung im Rahmen Ihrer Kubernetes-Dienstmanifeste, und überlassen Sie das Erstellen oder Aktualisieren der entsprechenden Regeln der Azure-Plattform. Sie können auch Netzwerkrichtlinien verwenden, wie im nächsten Abschnitt erläutert, um automatisch auf Pods Filterregeln für den Datenverkehr anzuwenden.
 
-Es gibt standardmäßige Netzwerksicherheitsgruppen-Regeln für Datenverkehr wie beispielsweise SSH. Diese Standardregeln sind für den Zugriff auf die Clusterverwaltung und Problembehandlung bestimmt. Das Löschen dieser Standardregeln kann Probleme mit der AKS-Verwaltung und eine Nichteinhaltung des Servicelevelziels (SLO) verursachen.
-
 ## <a name="network-policies"></a>Netzwerkrichtlinien
 
 Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Aus Sicherheitsgründen möchten Sie möglicherweise Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden häufig nur für erforderlichen Front-End-Dienste verfügbar gemacht, oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung zu ihnen herstellen.
 
-Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Netzwerksicherheitsgruppen sind eher für die AKS-Knoten und nicht für Pods bestimmt. Die Verwendung von Netzwerkrichtlinien ist eine besser geeignete, cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden.
+Netzwerkrichtlinien (aktuell in AKS in der Vorschauversion) sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Netzwerksicherheitsgruppen sind eher für die AKS-Knoten und nicht für Pods bestimmt. Die Verwendung von Netzwerkrichtlinien ist eine besser geeignete, cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden.
 
 Weitere Informationen finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)][use-network-policies].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um mit AKS-Netzwerken zu beginnen, erstellen und konfigurieren Sie einen AKS-Cluster mit Ihren eigenen IP-Adressbereichen unter Verwendung von [kubenet][aks-configure-kubenet-networking] oder [Azure CNI][aks-configure-advanced-networking].
+
+Entsprechenden bewährte Methoden finden Sie unter [Best Practices für Netzwerkkonnektivität und Sicherheit in AKS][operator-best-practices-network].
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 
@@ -148,3 +148,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
+[operator-best-practices-network]: operator-best-practices-network.md

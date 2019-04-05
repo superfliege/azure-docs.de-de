@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Benutzern zur gruppenbasierten Lizenzierung – Azure Active Directory | Microsoft-Dokumentation
+title: Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
 description: Informationen zum Migrieren einzelner Benutzerlizenzen zur gruppenbasierten Lizenzierung mithilfe von Azure Active Directory
 services: active-directory
 keywords: Azure AD-Lizenzierung
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4067a54326d0a4a8ab9029dd4afceea384cf6aa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199971"
 ---
-# <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Migrieren lizenzierter Benutzer zu einer Gruppe für die Lizenzierung in Azure Active Directory
+# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gewusst wie: Migrieren von Benutzern mit einzelnen Lizenzen zu Gruppen für die Lizenzierung
 
-Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits mit „direkte Zuweisung“ Lizenzen zugewiesen, z.B. mithilfe von PowerShell-Skripts oder anderen Tools. Wenn Sie mit der gruppenbasierten Lizenzierung zum Verwalten von Lizenzen in Ihrer Organisation beginnen möchten, benötigen Sie einen Migrationsplan, um vorhandene Lösungen reibungslos durch die gruppenbasierte Lizenzierung zu ersetzen.
+Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits mit „direkte Zuweisung“ Lizenzen zugewiesen, z.B. mithilfe von PowerShell-Skripts oder anderen Tools. Bevor Sie mit der gruppenbasierten Lizenzierung zur Verwaltung von Lizenzen in Ihrer Organisation beginnen, können Sie mit diesem Migrationsplan bestehende Lösungen nahtlos durch gruppenbasierte Lizenzen ersetzen.
 
 Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation vermeiden müssen, in der die gruppenbasierte Lizenzierung dazu führt, dass Benutzer ihre derzeit zugewiesenen Lizenzen vorübergehend nicht nutzen können. Jeder Vorgang, der zum Entfernen von Lizenzen führt, muss vermieden werden, damit kein Risiko besteht, dass Benutzer keinen Zugriff mehr auf Dienste und ihre Daten haben.
 
@@ -39,17 +39,17 @@ Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation verme
 
 4. Stellen Sie sicher, dass Lizenzen allen Benutzer in diesen Gruppen zugewiesen wurden. Überprüfen Sie hierzu den Verarbeitungsstatus der einzelnen Gruppen oder die Überwachungsprotokolle.
 
-  - Sie können einzelne Benutzer stichprobenartig überprüfen, indem Sie sich ihre Lizenzdetails ansehen. Sie erkennen dann, ob ihnen dieselben Lizenzen entweder direkt oder über Gruppen zugewiesen wurden.
+   - Sie können einzelne Benutzer stichprobenartig überprüfen, indem Sie sich ihre Lizenzdetails ansehen. Sie erkennen dann, ob ihnen dieselben Lizenzen entweder direkt oder über Gruppen zugewiesen wurden.
 
-  - Sie können ein PowerShell-Skript ausführen, um zu [überprüfen, wie Benutzern Lizenzen zugewiesen sind](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - Sie können ein PowerShell-Skript ausführen, um zu [überprüfen, wie Benutzern Lizenzen zugewiesen sind](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-  - Wenn die gleichen Produktlizenz dem Benutzer direkt und über eine Gruppe zugewiesen ist, wird vom Benutzer nur eine Lizenz genutzt. Daher sind keine zusätzlichen Lizenzen erforderlich, um die Migration auszuführen.
+   - Wenn die gleichen Produktlizenz dem Benutzer direkt und über eine Gruppe zugewiesen ist, wird vom Benutzer nur eine Lizenz genutzt. Daher sind keine zusätzlichen Lizenzen erforderlich, um die Migration auszuführen.
 
 5. Vergewissern Sie sich, dass Lizenzzuweisungen nicht misslungen sind, indem Sie jede Gruppe auf Benutzer mit dem Status „Fehler“ überprüfen. Weitere Informationen finden Sie unter [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe](licensing-groups-resolve-problems.md).
 
 6. Erwägen Sie die Aufhebung direkter Zuweisungen. Dies kann gestaffelt, also nach und nach, erfolgen, um zunächst das Ergebnis für eine Teilmenge von Benutzern zu prüfen.
 
-  Sie können die ursprünglichen direkten Zuweisungen für Benutzer beibehalten. Wenn die Benutzer jedoch ihre lizenzierten Gruppen verlassen, behalten sie die ursprüngliche Lizenz, was Sie möglicherweise nicht möchten.
+   Sie können die ursprünglichen direkten Zuweisungen für Benutzer beibehalten. Wenn die Benutzer jedoch ihre lizenzierten Gruppen verlassen, behalten sie die ursprüngliche Lizenz, was Sie möglicherweise nicht möchten.
 
 ## <a name="an-example"></a>Beispiel
 
@@ -61,26 +61,25 @@ Der Migrationsvorgang kann wie folgt aussehen:
 
 2. Vergewissern Sie sich für jede Gruppe, dass die Lizenzzuweisung für alle Benutzer abgeschlossen wurde. Wechseln Sie zum Blatt jeder Gruppe, wählen Sie **Lizenzen** aus, und überprüfen Sie oben im Blatt **Lizenzen** den Verarbeitungsstatus.
 
-  - Suchen Sie nach „Latest license changes have been applied to all users“ (Die letzten Lizenzänderungen wurden von allen Benutzern übernommen), um zu bestätigen, dass die Verarbeitung abgeschlossen ist.
+   - Suchen Sie nach „Latest license changes have been applied to all users“ (Die letzten Lizenzänderungen wurden von allen Benutzern übernommen), um zu bestätigen, dass die Verarbeitung abgeschlossen ist.
 
-  - Suchen Sie oben nach einer Benachrichtigung zu Benutzern, denen Lizenzen möglicherweise nicht erfolgreich zugewiesen wurden. Haben wir für einige Benutzer nicht genügend Lizenzen? Verfügen einige Benutzer über in Konflikt stehende Lizenz-SKUs, die verhindern, dass diese Gruppenlizenzen erben können?
+   - Suchen Sie oben nach einer Benachrichtigung zu Benutzern, denen Lizenzen möglicherweise nicht erfolgreich zugewiesen wurden. Haben wir für einige Benutzer nicht genügend Lizenzen? Verfügen einige Benutzer über in Konflikt stehende Lizenz-SKUs, die verhindern, dass diese Gruppenlizenzen erben können?
 
 3. Überprüfen Sie stichprobenartig einige Benutzer, um zu prüfen, ob ihnen sowohl Lizenzen direkt als auch per Gruppe zugewiesen wurden. Wechseln Sie zum Blatt eines Benutzers, wählen Sie **Lizenzen** aus, und untersuchen Sie den Status der Lizenzen.
 
-  - Dies ist der erwartete Benutzerzustand während der Migration:
+   - Dies ist der erwartete Benutzerzustand während der Migration:
 
-      ![erwarteter Benutzerzustand](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![der erwartete Benutzerzustand während der Migration](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-  Dies bestätigt, dass der Benutzer sowohl über direkt zugewiesene als auch über von der Gruppe übernommene Lizenzen verfügt. Wir sehen, dass sowohl **EMS** als auch **E3** zugewiesen sind.
+   Dies bestätigt, dass der Benutzer sowohl über direkt zugewiesene als auch über von der Gruppe übernommene Lizenzen verfügt. Wir sehen, dass sowohl **EMS** als auch **E3** zugewiesen sind.
 
-  - Wählen Sie die einzelnen Lizenzen aus, um Details zu den aktivierten Diensten einzublenden. Dies dient zum Überprüfen, ob die direkt oder per Gruppe zugewiesenen Lizenzen exakt dieselben Servicepläne für den Benutzer aktivieren.
+   - Wählen Sie die einzelnen Lizenzen aus, um Details zu den aktivierten Diensten einzublenden. Dies dient zum Überprüfen, ob die direkt oder per Gruppe zugewiesenen Lizenzen exakt dieselben Servicepläne für den Benutzer aktivieren.
 
-      ![Überprüfen von Serviceplänen](./media/licensing-groups-migrate-users/check-service-plans.png)
+      ![Überprüfen von Serviceplänen für den Benutzer](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Nachdem Sie sichergestellt haben, dass sowohl die direkt als auch die per Gruppe zugewiesenen Lizenzen äquivalent sind, können Sie beginnen, den Benutzern direkt zugewiesene Lizenzen zu entziehen. Sie können dies testen, indem Sie sie für einzelne Benutzer im Portal entziehen und anschließend Automatisierungsskripts ausführen, um sie in einem Massenvorgang zu entziehen. Hier ist ein Beispiel des gleichen Benutzers, dem die direkt zugewiesenen Lizenzen mithilfe des Portals entzogen werden. Beachten Sie, dass der Lizenzstatus unverändert bleibt, aber keine direkten Zuweisungen mehr zu sehen sind.
 
-  ![direkte Lizenzen entzogen](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
-
+   ![Sicherstellen, dass direkte Lizenzen entfernt wurden](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

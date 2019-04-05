@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666873"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534258"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Wettervorhersage mithilfe von Sensordaten Ihres IoT Hub in Azure Machine Learning
 
@@ -83,7 +83,7 @@ Sie erfahren, wie Sie Azure Machine Learning für eine Wettervorhersage (Regenri
 
    **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
 
-   **Speicherort**: Verwenden Sie denselben Speicherort wie für Ihre Ressourcengruppe.
+   **Standort**: Verwenden Sie denselben Speicherort wie für Ihre Ressourcengruppe.
 
    **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf Ihren IoT Hub über das Dashboard.
 
@@ -99,7 +99,7 @@ Sie erfahren, wie Sie Azure Machine Learning für eine Wettervorhersage (Regenri
 
    **Eingabealias**: Der eindeutige Alias für die Eingabe.
 
-   **Quelle**: Wählen Sie **IoT Hub** aus.
+   **Quelle**: Wählen Sie **IoT-Hub** aus.
 
    **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie erstellt haben.
 
@@ -133,13 +133,13 @@ Sie erfahren, wie Sie Azure Machine Learning für eine Wettervorhersage (Regenri
 
    **Funktionsalias**: Geben Sie `machinelearning` ein.
 
-   **Funktionstyp**: Wählen Sie **Azure ML**.
+   **Funktionstyp**: Wählen Sie **Azure ML** aus.
 
-   **Importoption**: Wählen Sie **Aus einem anderen Abonnement importieren**.
+   **Importoption**: Wählen Sie **Aus einem anderen Abonnement importieren** aus.
 
    **URL**: Geben Sie die WEB SERVICE URL aus der Excel-Arbeitsmappe ein, die Sie notiert haben.
 
-   **Schlüssel**: Geben Sie den ACCESS KEY aus der Excel-Arbeitsmappe ein, den Sie notiert haben.
+   **Key**: Geben Sie den ACCESS KEY aus der Excel-Arbeitsmappe ein, den Sie notiert haben.
 
    ![Hinzufügen einer Funktion zum Stream Analytics-Auftrag in Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
@@ -175,7 +175,7 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten** > **Jetzt** > **Starten*
 
 Führen Sie die Clientanwendung aus, um das Sammeln der Temperatur- und Luftfeuchtigkeitsdaten sowie das Senden an Ihren IoT Hub zu starten. Für jede Nachricht, die Ihr IoT Hub empfängt, ruft der Stream Analytics-Auftrags den Wettervorhersage-Webdienst auf, um das Regenrisiko vorherzusagen. Das Ergebnis wird dann in Ihrem Azure Blob Storage gespeichert. Der Azure Storage-Explorer ist ein Tool, mit dem Sie das Ergebnis anzeigen können.
 
-1. [Laden Sie den Microsoft Azure Storage-Explorer herunter, und installieren Sie ihn](http://storageexplorer.com/).
+1. [Laden Sie den Microsoft Azure Storage-Explorer herunter, und installieren Sie ihn](https://storageexplorer.com/).
 1. Öffnen Sie den Azure Storage-Explorer.
 1. Melden Sie sich beim Azure-Konto an.
 1. Wählen Sie Ihr Abonnement aus.

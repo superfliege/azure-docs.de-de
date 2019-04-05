@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734923"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898795"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Entwickeln einer U-SQL-Datenbank für Azure Data Lake mithilfe eines U-SQL-Datenbankprojekts
 
@@ -57,7 +57,7 @@ Für ein Assemblyobjekt umfasst das Tool einen benutzerfreundlichen Benutzerober
 
 Die Buildausgabe für ein U-SQL-Datenbankprojekt ist ein U-SQL-Datenbankbereitstellungspaket, das mit dem Suffix `.usqldbpack` benannt ist. Das Paket `.usqldbpack` ist eine ZIP-Datei und enthält alle DDL-Anweisungen in einem einzelnen U-SQL-Skript im Ordner **DDL** sowie alle DLLs und zusätzlichen Dateien für Assemblys im Ordner **Temp**.
 
-Erfahren Sie mehr zum [Erstellen eines U-SQL-Datenbankprojekts mit der MSBuild-Befehlszeile und Azure DevOps Services-Buildaufgabe](data-lake-analytics-cicd-overview.md).
+Erfahren Sie mehr über das [Erstellen eines U-SQL-Datenbankprojekts mit der MSBuild-Befehlszeile und einer Azure DevOps Services-Buildaufgabe](data-lake-analytics-cicd-overview.md).
 
 ## <a name="deploy-a-u-sql-database"></a>Bereitstellen einer U-SQL-Datenbank
 
@@ -100,8 +100,8 @@ Sie können eine U-SQL-Datenbank über ein U-SQL-Datenbankprojekt oder ein .usql
 
 Ein U-SQL-Projekt kann auf ein U-SQL-Datenbankprojekt verweisen. Der Verweis wirkt sich auf zwei Workloads aus:
 
-- *Projekterstellung:* Richten Sie die Umgebungen für die referenzierten Datenbanken vor dem Erstellen der U-SQL-Skripts ein. 
-- *Lokale Ausführung im Konto „(Local-project)“:* Die referenzierten Datenbankumgebungen werden vor dem Erstellen der U-SQL-Skripts im Konto „(Local-project)“ bereitgestellt. [Hier](data-lake-analytics-data-lake-tools-local-run.md) erfahren Sie mehr über die lokale Ausführung und den Unterschied zwischen dem Konto „(Local-machine)“ und dem Konto „(Local-project)“.
+- *Projekterstellung*: Richten Sie die referenzierten Datenbankumgebungen ein, bevor Sie die U-SQL-Skripts erstellen. 
+- *Lokale Ausführungen mit einem Konto (local-project)*: Die referenzierten Datenbankumgebungen werden vor dem Ausführen der U-SQL-Skripts in einem Konto (local-project) bereitgestellt. [Hier](data-lake-analytics-data-lake-tools-local-run.md) erfahren Sie mehr über die lokale Ausführung und den Unterschied zwischen dem Konto „(Local-machine)“ und dem Konto „(Local-project)“.
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>So fügen Sie einen U-SQL-Datenbankverweis hinzu
 

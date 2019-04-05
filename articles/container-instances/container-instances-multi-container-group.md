@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances
-description: Hier erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern in Azure Container Instances bereitstellen.
+description: Hier erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern mit einer Azure Resource Manager-Vorlage in Azure Container Instances bereitstellen.
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adb284772291dc901dd5302124982948c1f37eea
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2dfe1bbf01b7e1fae8c07602ac4faa40ae74ecc9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856476"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729502"
 ---
-# <a name="deploy-a-container-group"></a>Bereitstellen einer Containergruppe
+# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Bereitstellen einer Gruppe mit mehreren Containern per Resource Manager-Vorlage
 
 Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer [Containergruppe](container-instances-container-groups.md). Dies ist nützlich, wenn eine Sidecar-Anwendung für die Protokollierung, die Überwachung oder irgendeine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
 
@@ -28,6 +28,8 @@ Wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienst
 
 > [!NOTE]
 > Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+
+Weitere Beispiele für Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für Azure Container Instances](container-instances-samples-rm.md). 
 
 ## <a name="configure-the-template"></a>Konfigurieren der Vorlage
 

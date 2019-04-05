@@ -3,7 +3,7 @@ title: Integrieren von Azure Security Center Standard für erhöhte Sicherheit |
 description: " Hier erfahren Sie, wie Sie Azure Security Center Standard für erhöhte Sicherheit integrieren. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9d95503e4b17124d1d027a90a21869ef65831654
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 19/02/2019
+ms.author: monhaber
+ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114415"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100069"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
 Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sicherheit und besserem Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads zu profitieren.  Sie können die Standard-Edition kostenlos testen. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -33,7 +33,7 @@ Security Center Standard umfasst Folgendes:
 ## <a name="detecting-unprotected-resources"></a>Erkennen ungeschützter Ressourcen     
 Security Center erkennt automatisch alle Azure-Abonnements oder -Arbeitsbereiche, für die Security Center Standard nicht aktiviert ist. Dazu zählen unter anderem Azure-Abonnements mit Security Center Free sowie Arbeitsbereiche, für die die Sicherheitslösung nicht aktiviert ist.
 
-Sie können ein gesamtes Azure-Abonnement auf den Standard-Tarif upgraden, da dies von allen Ressourcen innerhalb des Abonnements geerbt wird. Falls Sie hingegen nur ein Upgrade für eine bestimmte Ressourcengruppe durchführen möchten, können Sie auch eine eindeutige Richtlinie definieren. Sind die Richtlinieneinstellungen der Ressourcengruppe eindeutig, überschreibt Security Center die Preisrichtlinien nicht, wenn Sie das Abonnement auf den Standard-Tarif upgraden. Wenn Sie den Standard-Tarif auf ein Abonnement anwenden, betrifft dies nur die virtuellen Computer innerhalb des Abonnements, die Berichte an von Security Center erstellte Arbeitsbereiche senden. Wenn Sie den Standard-Tarif auf den Arbeitsbereich anwenden, betrifft dies alle Ressourcen, die Berichte an den Arbeitsbereich senden.
+Sie können ein gesamtes Azure-Abonnement auf den Standard-Tarif upgraden, da dies von allen Ressourcen innerhalb des Abonnements geerbt wird. Falls Sie hingegen nur ein Upgrade für eine bestimmte Ressourcengruppe durchführen möchten, können Sie auch eine eindeutige Richtlinie definieren. Sind die Richtlinieneinstellungen der Ressourcengruppe eindeutig, überschreibt Security Center die Preisrichtlinien nicht, wenn Sie das Abonnement auf den Standard-Tarif upgraden. Durch Anwenden des Standard-Tarifs auf ein Abonnement wird dieser Tarif auch auf alle unterstützten Ressourcen im Abonnement angewendet. Wenn Sie den Standard-Tarif auf einen Arbeitsbereich anwenden, gilt dieser Tarif auch für alle Ressourcen, die Berichte an den Arbeitsbereich senden.
 
 > [!NOTE]
 > Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken. Mit der [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md) können Sie einen Bereich auf die Lösung anwenden und eine Teilmenge von Computern im Arbeitsbereich als Ziel angeben.  Bei Verwendung der Zielgruppenadressierung für Lösungen führt Security Center den Arbeitsbereich als Arbeitsbereich ohne Lösung auf.
@@ -53,7 +53,7 @@ So upgraden Sie ein Abonnement oder einen Arbeitsbereich auf „Standard“
 
 
    > [!NOTE]
-   > Die Free-Funktionen von Security Center werden nur auf Ihre virtuellen Azure-Computer angewandt. Die Free-Funktionen werden nicht auf Ihre Azure-fremden Computer angewendet. Wenn Sie „Standard“ auswählen, werden die Standard-Funktionen auf alle virtuellen Azure-Computer und Azure-fremden Computer angewendet, die Berichte an den Arbeitsbereich senden. Wir empfehlen, „Standard“ anzuwenden, um die Sicherheit Ihrer Azure-basierten und Azure-fremden Ressourcen zu verbessern.
+   > Die Free-Funktionen von Security Center werden nur auf Ihre Azure-VMs und -VM Scale Sets angewendet. Die Free-Funktionen werden nicht auf Ihre Azure-fremden Computer angewendet. Wenn Sie „Standard“ auswählen, werden die Standard-Funktionen auf alle virtuellen Azure-Computer, VM Scale Sets und Azure-fremden Computer angewendet, die Berichte an den Arbeitsbereich senden. Wir empfehlen, „Standard“ anzuwenden, um die Sicherheit Ihrer Azure-basierten und Azure-fremden Ressourcen zu verbessern.
    >
    >
 
@@ -65,11 +65,11 @@ Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwac
 1. Kehren Sie zu **Erste Schritte** zurück.   
 2. Wählen Sie die Registerkarte **Erste Schritte** aus.
 
-  ![Nicht-Azure](./media/security-center-onboarding/non-azure.png)
+   ![Nicht-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Klicken Sie auf **Konfigurieren** unter **Neue Nicht-Azure-Computer hinzufügen**. Es wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
 
-  ![Hinzufügen eines Azure-fremden Computers][7]
+   ![Hinzufügen eines Azure-fremden Computers][7]
 
 Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azure computers** (Neue Azure-fremde Computer hinzufügen) aufgeführt. Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen. Klicken Sie zum Erstellen eines neuen Arbeitsbereichs auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
 
@@ -82,8 +82,8 @@ Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azu
    ![Hinzufügen eines neuen Arbeitsbereichs][4]
 
 2. Klicken Sie unter **Sicherheit und Überwachung** auf **OMS-Arbeitsbereich**, um einen neuen Arbeitsbereich zu erstellen.
-> [!NOTE]
-> OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
+   > [!NOTE]
+   > OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
 3. Geben Sie unter **OMS-Arbeitsbereich** die Informationen für Ihren Arbeitsbereich ein.
 4. Klicken Sie unter **OMS-Arbeitsbereich** auf **OK**.  Nachdem Sie auf „OK“ geklickt haben, erhalten Sie einen Downloadlink für einen Windows- oder Linux-Agent sowie Schlüssel für Ihre Arbeitsbereichs-ID, die Sie zum Konfigurieren des Agents benötigen.
 5. Klicken Sie unter **Sicherheit und Überwachung** auf **OK**.
@@ -105,7 +105,7 @@ Sie können einen Computer mithilfe des Workflows unter **Onboarding** hinzufüg
 
    ![Hinzufügen von Computern][7]
 
- Auf dem Blatt **Direkt-Agent** erhalten Sie einen Downloadlink für einen Windows- oder Linux-Agent sowie die Arbeitsbereichs-ID und zugehörige Schlüssel, die Sie zum Konfigurieren des Agents benötigen.   
+   Auf dem Blatt **Direkt-Agent** erhalten Sie einen Downloadlink für einen Windows- oder Linux-Agent sowie die Arbeitsbereichs-ID und zugehörige Schlüssel, die Sie zum Konfigurieren des Agents benötigen.   
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie gelernt, wie Sie Azure-basierte und Azure-fremde Ressourcen integrieren, um von der erhöhten Sicherheit von Security Center zu profitieren.  Informationen zu weiteren Möglichkeiten mit Ihren integrierten Ressourcen finden Sie unter den folgenden Links:

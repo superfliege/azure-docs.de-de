@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
-ms.openlocfilehash: 7fa76a2c5b01e623e490edd0091f7fb372b7085f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 7ce845fb272cea1d621e8ccc18203e3a071e8c29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992022"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-spezifische HTTP-Header für Azure CDN-Regel-Engine
 
@@ -27,7 +27,7 @@ Wenn bei **Azure CDN Premium-Produkten von Verizon** eine HTTP-Anforderung an de
 
 Wenn Sie verhindern möchten, dass einer dieser reservierten Header in der Azure CDN (Content Delivery Network) POP-Anforderung an den Ursprungsserver hinzugefügt wird, müssen Sie eine Regel mit dem [Feature „Spezielle Proxyheader“](cdn-rules-engine-reference-features.md#proxy-special-headers) in der Regel-Engine erstellen. Schließen Sie in dieser Regel den Header aus, den Sie aus der Standardliste der Header im Feld „Header“ entfernen möchten. Wenn Sie das [Feature „Cacheantwortheader debuggen“](cdn-rules-engine-reference-features.md#debug-cache-response-headers) aktiviert haben, achten Sie darauf, dass Sie die erforderlichen `X-EC-Debug`-Header hinzufügen. 
 
-Um beispielsweise den `Via`-Header zu entfernen, sollte das Feld „Header“ der Regel die folgende Liste von Headern enthalten: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
+Um beispielsweise den `Via`-Header zu entfernen, muss das headers-Feld der Regel die folgende Liste von Headern enthalten: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
 
 ![Regel „Spezielle Proxyheader“](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
@@ -41,7 +41,7 @@ X-Forwarded-Proto | Gibt das Protokoll der Anforderung an. | http
 X-Host | Gibt den Hostnamen der Anforderung an. | cdn.mydomain.com
 X-Midgress | Gibt an, ob die Anforderung von einem Proxy über einen zusätzlichen CDN-Server übermittelt wurde. Beispielsweise von einem POP-Server an einen Shield-Ursprungsserver oder von einem POP-Server an einen ADN-Gatewayserver. <br />Dieser Header wird nur dann der Anforderung hinzugefügt, wenn Midgress-Datenverkehr stattfindet. In diesem Fall wird der Header auf 1 festgelegt, um anzugeben, dass die Anforderung über einen Proxy durch einen zusätzlichen CDN-Server übermittelt wurde.| 1
 [Host](#host-request-header) | Identifiziert den Host und den Port für den angeforderten Inhalt. | marketing.mydomain.com:80
-[X-Gateway-List](#x-gateway-list-request-header) | ADN: Identifiziert die Failoverliste von ADN-Gatewayservern, die einem Kundenursprung zugewiesen wurden. <br />Origin shield: Gibt die Gruppe der Shield-Ursprungsserver an, die einem Kundenursprung zugewiesen wurden. | `icn1,hhp1,hnd1`
+[X-Gateway-List](#x-gateway-list-request-header) | ADN: Identifiziert die Failoverliste von ADN-Gatewayservern, die einem Kundenursprung zugewiesen wurden. <br />Origin Shield: Gibt die Gruppe der Origin Shield-Server an, die einem Kundenursprung zugewiesen wurden. | `icn1,hhp1,hnd1`
 X-EC-_&lt;name&gt;_ | Anforderungsheader, die mit *X-EG* beginnen (z.B. X-EC-Tag, [X-EC-Debug](cdn-http-debug-headers.md)), sind für die Verwendung durch das CDN reserviert.| waf-production
 
 ## <a name="via-request-header"></a>Via-Anforderungsheader
@@ -50,16 +50,17 @@ Das Format, durch das der `Via`-Anforderungsheader einen POP-Server identifizier
 `Via: Protocol from Platform (POP/ID)` 
 
 Die in der Syntax verwendeten Begriffe sind folgendermaßen definiert:
-- Protocol: Gibt die Version des Protokolls (z.B. HTTP/1.1) an, die für die Proxyübermittlung der Anforderung verwendet wird. 
+- Protokoll: Gibt die Version des Protokolls (z.B. HTTP/1.1) an, die für die Proxyübermittlung der Anforderung verwendet wird. 
 
-- Platform: Gibt die Plattform an, auf der der Inhalt angefordert wurde. Die folgenden Codes sind für dieses Feld gültig: 
+- Plattform: Gibt die Plattform an, auf der der Inhalt angefordert wurde. Die folgenden Codes sind für dieses Feld gültig: 
+
     Code | Plattform
     -----|---------
     ECAcc | HTTP groß
     ECS   | HTTP klein
     ECD   | Application Delivery Network (ADN)
 
-- POP: Gibt den [POP](cdn-pop-abbreviations.md) an, der die Anforderung verarbeitet hat. 
+- POP: Gibt den [POP](cdn-pop-abbreviations.md)-Standort an, der die Anforderung verarbeitet hat. 
 
 - ID: Nur zur internen Verwendung.
 

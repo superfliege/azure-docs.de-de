@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745961"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652296"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
@@ -61,11 +61,11 @@ In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und H
 | Ressource | Verwendung |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas und korreliert mit Benutzerereignissen in Ihrer App. Dies ist die einzige Lösung, bei der Benutzeraktionen oder Signale berücksichtigt werden, d.h., Ereignisse aus einer vom Benutzer initiierten Suche werden zugeordnet, anstatt dass die durch Anwendungscode übermittelten Anforderungen gefiltert werden. Um diese Lösung zu verwenden, kopieren Sie Instrumentationscode, und fügen Sie ihn in Ihren Quelldateien ein, um Anforderungsinformationen an Application Insights weiterzuleiten. Weitere Informationen finden Sie unter [Datenverkehrsanalyse durchsuchen](search-traffic-analytics.md). |
-| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Arbeitsbereich in Log Analytics protokolliert. Sie können Abfragen für einen Arbeitsbereich ausführen, um detaillierte Informationen aus dem Protokoll zurückzugeben. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
+| [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Log Analytics-Arbeitsbereich protokolliert. Sie können Abfragen für einen Arbeitsbereich ausführen, um detaillierte Informationen aus dem Protokoll zurückzugeben. Weitere Informationen finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Blobcontainer protokolliert und in JSON-Dateien gespeichert. Verwenden Sie einen JSON-Editor, um die Dateiinhalte anzuzeigen.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den in diesem Artikel beschriebenen Schemas. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
 
-Log Analytics und Blob Storage sind als kostenloser gemeinsamer Dienst verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).)
+Azure Monitor-Protokolle und Blob Storage sind beide als kostenloser gemeinsamer Dienst verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).)
 
 Im nächsten Abschnitt werden die Schritte zum Aktivieren und Verwenden von Azure Blob Storage zum Erfassen von und Zugreifen auf Protokolldaten erläutert, die durch Azure Search-Vorgänge erstellt werden.
 
@@ -81,7 +81,7 @@ In diesem Abschnitt erfahren Sie, wie Sie protokollierte Ereignisse und Metrikda
 
    ![Überwachung aktivieren](./media/search-monitor-usage/enable-monitoring.png "Überwachung aktivieren")
 
-3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Log Analytics exportieren.
+3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Azure Monitor-Protokollen exportieren.
 
    Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten erstellt.
 
@@ -98,7 +98,7 @@ Die Protokollierung ist aktiviert, nachdem Sie das Profil gespeichert haben. Con
 
 Die Container werden nach einer Stunde in Blob Storage angezeigt. Es gibt einen Blob pro Stunde pro Container. 
 
-Die Container können Sie mithilfe von [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) oder eines anderen JSON-Editors anzeigen. 
+Die Container können Sie mithilfe von [Visual Studio Code](#download-and-open-in-visual-studio-code) oder eines anderen JSON-Editors anzeigen. 
 
 ### <a name="example-path"></a>Beispielpfad
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: fb405d40458461fbdff8a7720425ff352bfc61de
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889783"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Installieren von Aufträgen für die elastische Datenbank – Übersicht
 
@@ -32,7 +32,7 @@ Wenn Sie **Aufträge für die elastische Datenbank** bereits über das Portal au
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Azure PowerShell. Installieren Sie die neueste Version mithilfe des [Webplattform-Installers](https://go.microsoft.com/fwlink/p/?linkid=320376). Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-* [NuGet-Befehlszeilenhilfsprogramm](https://nuget.org/nuget.exe) verwendet. Weitere Informationen finden Sie unter http://docs.nuget.org/docs/start-here/installing-nuget.
+* [NuGet-Befehlszeilenhilfsprogramm](https://nuget.org/nuget.exe) verwendet. Weitere Informationen finden Sie unter https://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Herunterladen und Importieren des PowerShell-Pakets der Aufträge für die elastische Datenbank
 1. Öffnen Sie das Microsoft Azure PowerShell-Befehlsfenster, und navigieren Sie zu dem Verzeichnis, in das Sie das NuGet-Befehlszeilenhilfsprogramm („nuget.exe“) heruntergeladen haben.
@@ -75,9 +75,7 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
     <td>Gibt den Azure-Ressourcengruppennamen an, der für die Aufnahme der neu erstellten Azure-Komponenten erstellt wird. Dieser Parameter ist standardmäßig auf den Wert „__ElasticDatabaseJob“ festgelegt. Das Ändern dieses Werts wird nicht empfohlen.</td>
     </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ResourceGroupLocation</td>
     <td>Gibt den Azure-Standort an, der für die neu erstellten Azure-Komponenten verwendet werden soll. Dieser Parameter ist standardmäßig auf den Central US-Standort festgelegt.</td>
 </tr>
@@ -85,28 +83,24 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 <tr>
     <td>ServiceWorkerCount</td>
     <td>Gibt die Anzahl der zu installierenden Arbeitsprozesse an. Dieser Parameter weist den Standardwert „1“ auf. Es kann eine höhere Anzahl von Arbeitsprozessen verwendet werden, um den Dienst zu skalieren und Hochverfügbarkeit bereitzustellen. Für Bereitstellungen, die die Hochverfügbarkeit des Diensts benötigen, wird der Wert „2“ empfohlen.</td>
-    </tr>
-
 </tr>
-    <tr>
+
+<tr>
     <td>ServiceVmSize</td>
-    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „A0/A1/A2/A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „../../A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Stellt die Computegröße für eine Standard-Edition bereit. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „S0/S1/S2/S3/S4/S6/S9/S12“ sind zulässig und bewirken die Verwendung der entsprechenden Computegröße für Azure SQL-Datenbank. Weitere Informationen zu Computegrößen für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Stellt die Computegröße für eine Standard-Edition bereit. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „../../../../S9/S12“ sind zulässig und bewirken die Verwendung der entsprechenden Computegröße für Azure SQL-Datenbank. Weitere Informationen zu Computegrößen für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorUserName</td>
     <td>Gibt den Namen des Administratorbenutzers für den neu erstellten Azure SQL-Datenbankserver an. Wenn die Angabe nicht erfolgt, wird ein PowerShell-Anmeldeinformationsfenster geöffnet und fordert zur Eingabe der Anmeldeinformationen auf.</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorPassword</td>
     <td>Gibt das Administratorkennwort für den neu erstellten Azure SQL-Datenbankserver an. Wenn keine Angabe erfolgt, wird ein PowerShell-Anmeldeinformationsfenster geöffnet und fordert zur Eingabe der Anmeldeinformationen auf.</td>
 </tr>
@@ -131,24 +125,19 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
   <th>Beschreibung</th>
 </tr>
 
-  <tr>
+<tr>
     <td>ResourceGroupName</td>
     <td>Bezeichnet den Namen der Azure-Ressourcengruppe, die bei der ursprünglichen Installation der Komponenten der Aufträge für die elastische Datenbank verwendet wurde. Dieser Parameter ist standardmäßig auf den Wert „__ElasticDatabaseJob“ festgelegt. Da eine Änderung dieses Werts nicht empfohlen wird, sollten Sie diesen Parameter nicht anzugeben brauchen.</td>
-    </tr>
 </tr>
 
-</tr>
-
-  <tr>
+<tr>
     <td>ServiceWorkerCount</td>
     <td>Gibt die Anzahl der zu installierenden Arbeitsprozesse an.  Dieser Parameter weist den Standardwert „1“ auf.  Es kann eine höhere Anzahl von Arbeitsprozessen verwendet werden, um den Dienst zu skalieren und Hochverfügbarkeit bereitzustellen.  Für Bereitstellungen, die die Hochverfügbarkeit des Diensts benötigen, wird der Wert „2“ empfohlen.</td>
 </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ServiceVmSize</td>
-    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „A0/A1/A2/A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „../../A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </table>

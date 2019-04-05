@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cc47ca07a843daf5cc35d23b838761166d39bdcc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755018"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351370"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -28,15 +28,7 @@ Wie aus diesem Artikel hervorgeht, können Sie beim Bereitstellen einer Containe
 
 In der Vorschau gelten die folgenden Einschränkungen beim Verwenden von GPU-Ressourcen in Containergruppen. 
 
-**Unterstützte Regionen**:
-
-* USA, Osten (eastus)
-* USA, Westen 2 (westus2)
-* USA, Süden-Mitte (southcentralus)
-* Europa, Westen (westeurope)
-* Europa, Norden (northeurope)
-* Asien, Osten (eastasia)
-* Indien, Mitte (centralindia)
+[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
 Die Unterstützung für weitere Regionen wird im Lauf der Zeit hinzugefügt.
 
@@ -59,21 +51,9 @@ Geben Sie zum Verwenden von GPUs in einer Containerinstanz eine *GPU-Ressource* 
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
-### <a name="cpu-and-memory"></a>CPU und Arbeitsspeicher
+[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete CPU und die Arbeitsspeicherressourcen bis zu den in der folgenden Tabelle gezeigten maximalen Werten fest. Diese Werte sind derzeit höher als die CPU- und Arbeitsspeicherlimits in Containerinstanzen ohne GPU-Ressourcen.  
-
-| GPU-SKU | GPU-Anzahl | CPU |  Arbeitsspeicher (GB) |
-| --- | --- | --- | --- |
-| K80 | 1 | 6 | 56 |
-| K80 | 2 | 12 | 112 |
-| K80 | 4 | 24 | 224 |
-| P100 | 1 | 6 | 112 |
-| P100 | 2 | 12 | 224 |
-| P100 | 4 | 24 | 448 |
-| V100 | 1 | 6 | 112 |
-| V100 | 2 | 12 | 224 |
-| V100 | 4 | 24 | 448 |
+Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete CPU und die Arbeitsspeicherressourcen bis zu den in der vorstehenden Tabelle gezeigten maximalen Werten fest. Diese Werte sind derzeit höher als die in Containergruppen ohne GPU-Ressourcen verfügbaren CPU- und Arbeitsspeicherressourcen.  
 
 ### <a name="things-to-know"></a>Wichtige Hinweise
 
@@ -85,6 +65,10 @@ Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete
 
 * **CUDA-Treiber**: Containerinstanzen mit GPU-Ressourcen werden vorab mit NVIDIA-CUDA-Treibern und Containerlaufzeiten bereitgestellt, damit Sie die für CUDA-Workloads entwickelten Containerimages verwenden können.
 
+  Wir unterstützen CUDA 9.0 in dieser Phase. Beispielsweise können Sie die folgenden Basisimages für Ihre Docker-Datei verwenden:
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+    
 ## <a name="yaml-example"></a>Beispiel mit YAML-Datei
 
 Eine Möglichkeit zum Hinzufügen von GPU-Ressourcen besteht darin, eine Containergruppe unter Verwendung einer [YAML-Datei](container-instances-multi-container-yaml.md) bereitzustellen. Kopieren Sie den folgenden YAML-Code in eine neue Datei namens *gpu-deploy-aci.yaml*. Mit diesem YAML-Code wird eine Containergruppe namens *gpucontainergroup* erstellt, die eine Containerinstanz mit einer K80-GPU angibt. Die Instanz führt eine Beispielanwendung für eine Vektoraddition in CUDA aus. Die Ressourcenanforderungen reichen zum Ausführen der Workload aus.
@@ -195,7 +179,7 @@ az group deployment create --resource-group myResourceGroup --template-file gpud
 Die Bereitstellung kann einige Minuten in Anspruch nehmen. Dann wird der Container gestartet, und der TensorFlow-Auftrag wird ausgeführt. Führen Sie den Befehl [az container logs][az-container-logs] aus, um die Protokollausgabe anzuzeigen:
 
 ```azurecli
-az container logs --resource-group myResourceGroup --name gpucontainergroup --container-name gpucontainer
+az container logs --resource-group myResourceGroup --name gpucontainergrouprm --container-name gpucontainer
 ```
 
 Ausgabe:

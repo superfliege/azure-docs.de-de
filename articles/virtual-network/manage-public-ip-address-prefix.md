@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ece6a6efa2f4424fb1c9d7f5a7e12a4e707faf45
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696821"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649304"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 
@@ -28,11 +28,13 @@ Sie erhalten Informationen über Präfixe öffentlicher IP-Adressen und darüber
 > [!IMPORTANT]
 > Präfixe öffentlicher IP-Adressen befinden sich in einigen Regionen in der öffentlichen Vorschau. [Hier erfahren Sie mehr über die Nutzungsbedingungen der Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Das Präfix ist aktuell in folgenden Regionen verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“. Eine aktualisierte Liste der Regionen finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
 
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Öffnen Sie bei Verwendung des Portals https://aka.ms/publicipprefixportal, und melden Sie sich mit Ihrem Azure-Konto an.
-- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das AzureRm.Network-PowerShell-Modul Version 6.3.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM.Network` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://github.com/Azure/azure-powershell/releases/tag/AzureRm.Network.6.3.1) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 - Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist die Azure CLI-Version 2.0.41 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden, unter [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen wurden.
@@ -52,15 +54,14 @@ Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informat
    |Ressourcengruppe|Ja|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
    |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
    |Region|Ja|Muss in der gleichen [Region](https://azure.microsoft.com/regions) wie die öffentlichen IP-Adressen vorhanden sein, die Sie aus dem Bereich zuweisen. Das Präfix ist zurzeit in folgenden Regionen in der Vorschau verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“.|
-   |Präfixgröße|Ja| Die benötigte Größe des Präfix. /28- oder 16-IP-Adressen sind der Standard. 
+   |Präfixgröße|Ja| Die benötigte Größe des Präfix. /28- oder 16-IP-Adressen sind der Standard.
 
 **Befehle**
-
 
 |Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
-|PowerShell|[New-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
+|PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Erstellen einer statischen öffentlichen IP-Adresse aus einem Präfix
 Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem Präfix erstellen. Führen Sie dazu die folgenden Schritte aus.
@@ -71,8 +72,8 @@ Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem
 4. Geben Sie unter **Öffentliche IP-Adresse erstellen** Werte für folgende Einstellungen ein, oder wählen Sie Werte aus. Da sich ein Präfix für Standard-SKUs, IPv4 und statische Adressen eignet, müssen Sie nur die folgenden Informationen angeben:
 
    |Einstellung|Erforderlich?|Details|
-    |---|---|---|
-    |NAME|Ja|Der Name der öffentlichen IP-Adresse muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
+   |---|---|---|
+   |NAME|Ja|Der Name der öffentlichen IP-Adresse muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
    |Leerlaufzeitüberschreitung (Minuten)|Nein |Gibt an, wie viele Minuten eine TCP- oder HTTP-Verbindung geöffnet bleiben soll, ohne dass Clients Keep-Alive-Meldungen senden müssen. |
    |DNS-Namensbezeichnung|Nein |Muss in der Azure-Region, in der Sie den Namen erstellen, eindeutig sein (über alle Abonnements und Kunden hinweg). Azure registriert den Namen und die IP-Adresse automatisch im DNS, sodass Sie über den Namen eine Verbindung mit der Ressource herstellen können. Azure fügt ein Standardsubnetz wie etwa *location.cloudapp.azure.com* (wobei „location“ der Standort ist, den Sie auswählen) an den von Ihnen bereitgestellten Namen an, um den vollqualifizierten DNS-Namen zu erstellen. Weitere Informationen finden Sie unter [Verwenden von Azure DNS mit einer öffentlichen Azure-IP-Adresse](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -81,26 +82,26 @@ Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem
 1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Präfix öffentlicher IP-Adressen* ein. Wenn **Präfix öffentlicher IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 2. Wählen Sie den Namen des Präfix der öffentlichen IP-Adresse aus, das Sie anzeigen oder aus der Liste löschen oder dessen Einstellungen Sie ändern möchten.
 3. Führen Sie eine der folgenden Aktionen aus, je nachdem, ob Sie das Präfix der öffentlichen IP-Adresse anzeigen, löschen oder ändern möchten.
-    - **Anzeigen**: Der Abschnitt **Übersicht** enthält wichtige Einstellungen für das Präfix der öffentlichen IP-Adresse.
-    - **Löschen**: Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Anzeigen**: Der Abschnitt **Übersicht** enthält wichtige Einstellungen für das Präfix der öffentlichen IP-Adresse.
+   - **Löschen**: Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
 
 **Befehle**
 
 |Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) zum Auflisten der öffentlichen IP-Adressen, [az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) zum Anzeigen der Einstellungen, [az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) zum Aktualisieren, [az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) zum Löschen|
-|PowerShell|[AzureRmPublicIpPrefix](/powershell/module/azurerm.network/get-azurermpublicipprefix) zum Abrufen eines öffentlichen IP-Adressobjekts und Anzeigen der zugehörigen Einstellungen, [Set-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/set-azurermpublicipprefix) zum Aktualisieren der Einstellungen, [Remove-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/remove-azurermpublicipprefix) zum Löschen|
+|PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) zum Abrufen eines öffentlichen IP-Adressobjekts und Anzeigen der zugehörigen Einstellungen, [Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) zum Aktualisieren der Einstellungen, [Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) zum Löschen|
 
 ## <a name="permissions"></a>Berechtigungen
 
 Zum Durchführen von Aufgaben für Präfixe öffentlicher IP-Adressen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in der folgenden Tabelle aufgeführten Aktionen zugewiesen wurden:
 
-| Aktion                                                                   | NAME                                                           |
-| ---------                                                                | -------------                                                  |
+| Aktion                                                            | NAME                                                           |
+| ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | Lesen des Präfix einer öffentlichen IP-Adresse                                |
 | Microsoft.Network/publicIPPrefixes/write                          | Erstellen oder Aktualisieren des Präfix einer öffentlichen IP-Adresse                    |
 | Microsoft.Network/publicIPPrefixes/delete                         | Löschen des Präfix einer öffentlichen IP-Adresse                              |
-|Microsoft.Network/publicIPPrefixes/join/action | Erstellen einer öffentlichen IP-Adresse aus einem Präfix |
+|Microsoft.Network/publicIPPrefixes/join/action                     | Erstellen einer öffentlichen IP-Adresse aus einem Präfix |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

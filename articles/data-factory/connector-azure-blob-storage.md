@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: bc7fdbe964269521a049fba8fcb8c37194d60f7c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 115a02c7f8abee18c226c127fb84b4bb34250cd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664198"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456311"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -24,6 +24,8 @@ ms.locfileid: "55664198"
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Blob Storage zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -37,7 +39,7 @@ Dieser Blob Storage-Connector unterstützt insbesondere Folgendes:
 - Kopieren von Blobs im jeweiligen Zustand oder Analysieren bzw. Generieren von Blobs mit den [unterstützten Dateiformaten und Komprimierungscodecs](supported-file-formats-and-compression-codecs.md).
 
 >[!NOTE]
->Wenn Sie die Option _Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben_ in den Firewalleinstellungen von Azure Storage aktivieren, tritt beim Herstellen der Verbindung mit Blob Storage mithilfe von Azure Integration Runtime der Fehler „Verboten“ auf, da ADF nicht als vertrauenswürdiger Microsoft-Dienst gelten. Verwenden Sie stattdessen die selbstgehostete Integration Runtime zum Herstellen der Verbindung.
+>Wenn Sie die Option _Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben_ in den Firewalleinstellungen von Azure Storage aktivieren, tritt beim Herstellen der Verbindung mit Blob Storage mithilfe von Azure Integration Runtime der Fehler „Verboten“ auf, da ADF nicht als vertrauenswürdiger Microsoft-Dienst gilt. Stellen Sie die Verbindung stattdessen über die selbstgehostete Integration Runtime her.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -130,8 +132,8 @@ Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Spei
 
 > [!TIP]
 > Um eine Dienst-SAS für Ihr Speicherkonto zu generieren, können Sie die folgenden PowerShell-Befehle ausführen. Ersetzen Sie die Platzhalter, und gewähren Sie die erforderliche Berechtigung.
-> `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Für die Verwendung der SAS-Authentifizierung werden die folgenden Eigenschaften unterstützt:
 
@@ -257,13 +259,11 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 
 ### <a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
 
-Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese Dienstidentität direkt für die Blob Storage-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten aus Ihrem bzw. in Ihren Blob Storage.
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese verwaltete Identität direkt für die Blob Storage-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten aus Ihrem bzw. in Ihren Blob Storage.
 
-Informationen zur MSI-Authentifizierung für Azure Storage im Allgemeinen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mithilfe von Azure Active Directory](../storage/common/storage-auth-aad.md).
+Informationen zur Azure Storage-Authentifizierung im Allgemeinen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mithilfe von Azure Active Directory](../storage/common/storage-auth-aad.md). Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden, gehen Sie folgendermaßen vor:
 
-Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden, gehen Sie folgendermaßen vor:
-
-1. [Rufen Sie die Data Factory-Dienstidentität](data-factory-service-identity.md#retrieve-service-identity) ab, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
+1. [Rufen Sie die verwalteten Data Factory-Identitätsinformationen ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
 
 2. Erteilen Sie der verwalteten Entität geeignete Berechtigungen in Azure Blob Storage. Weitere Details zu den Rollen finden Sie unter [Verwalten von Zugriffsrechten für Azure Storage-Daten mit RBAC](../storage/common/storage-auth-aad-rbac.md).
 
@@ -331,6 +331,7 @@ Legen Sie zum Kopieren von Daten aus und nach Blob Storage die type-Eigenschaft 
         },
         "typeProperties": {
             "folderPath": "mycontainer/myfolder",
+            "fileName": "*",
             "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
             "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {

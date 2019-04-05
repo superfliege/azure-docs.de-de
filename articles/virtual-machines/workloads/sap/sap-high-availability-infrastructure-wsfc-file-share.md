@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf0f06528b3571ce8307a2fed2fb9c43f608d15d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 064daa7ed8fb5be34524d9ea27cfa6c22b9c3e66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008359"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen
 
@@ -46,7 +46,7 @@ ms.locfileid: "34656712"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -213,7 +213,7 @@ Diese Artikel beschreibt die vorbereitenden Schritte für die Azure-Infrastruktu
 
 Bevor Sie die Installation starten, lesen Sie den folgenden Artikel:
 
-* [Architekturleitfaden: Clustering von SAP ASCS-/SCS-Instanzen auf Windows-Failoverclustern mithilfe einer Dateifreigabe][sap-high-availability-guide-wsfc-file-share]
+* [Architekturleitfaden: Gruppieren von SAP ASCS/SCS-Instanzen in einem Windows-Failovercluster mithilfe einer Dateifreigabe][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Hostnamen und IP-Adressen
@@ -226,13 +226,13 @@ Bevor Sie die Installation starten, lesen Sie den folgenden Artikel:
 | Netzwerkname des SAP PR1 ASCS-Clusters |pr1-ascs | 10.0.6.7 | – |
 
 
-**Tabelle 1**: ASCS-/SCS-Cluster
+**Tabelle 1**: ASCS/SCS-Cluster
 
 | SAP \<SID > | SAP ASCS/SCS-Instanznummer |
 | --- | --- |
 | PR1 | 00 |
 
-**Tabelle 2:** Details zur SAP ASCS-/SCS-Instanz
+**Tabelle 2**: Details zu SAP ASCS/SCS-Instanzen
 
 
 | Rolle des virtuellen Hosts | Name des virtuellen Hosts | Statische IP-Adresse | Verfügbarkeitsgruppe |
@@ -271,9 +271,9 @@ Um die Azure-Infrastruktur vorzubereiten, führen Sie die folgenden Schritte aus
 * Da Sie Windows Server 2016 verwenden, wird empfohlen, einen [Azure-Cloudzeugen][deploy-cloud-witness] zu konfigurieren.
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Manuelles Bereitstellen des Dateiserverclusters mit horizontaler Hochskalierung 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Manuelles Bereitstellen des Dateiserverclusters mit horizontaler Hochskalierung 
 
-Können Sie den Microsoft-Dateiservercluster mit horizontaler Hochskalierung manuell wie im Blog bereitstellen [Storage Spaces Direct in Azure][ms-blog-s2d-in-azure] beschrieben bereitstellen, indem Sie den folgenden Code ausführen:  
+Können Sie den Microsoft-Dateiservercluster mit horizontaler Hochskalierung manuell wie im Blog bereitstellen [Storage Spaces Direct in Azure][ms-blog-s2d-in-azure] beschrieben bereitstellen, indem Sie den folgenden Code ausführen:  
 
 
 ```PowerShell
@@ -322,9 +322,9 @@ Die Azure Resource Manager-Vorlage zum Bereitstellen von Dateiservern mit horizo
 
 Wir empfehlen die Verwendung von Managed Disks.
 
-![Abbildung 1: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Hochskalierung mit Managed Disks][sap-ha-guide-figure-8010]
+![Abbildung 1: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung und verwaltete Datenträger][sap-ha-guide-figure-8010]
 
-_**Abbildung 1**: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Hochskalierung mit Managed Disks_
+_**Abbildung 1**: Bildschirm der Benutzeroberfläche für die Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung und verwaltete Datenträger_
 
 Führen Sie in der Vorlage die folgenden Schritte aus:
 1. Geben Sie im Feld **VM-Anzahl** eine minimale Anzahl von **2** ein.
@@ -336,9 +336,9 @@ Führen Sie in der Vorlage die folgenden Schritte aus:
 
 Die Azure Resource Manager-Vorlage zum Bereitstellen von Dateiservern mit horizontaler Hochskalierung mit direkten Speicherplätzen (Storage Spaces Direct) und Azure Unmanaged Disks ist über [GitHub][arm-sofs-s2d-non-managed-disks] verfügbar.
 
-![Abbildung 2: Bildschirm der Benutzeroberfläche für die Azure Resource Manager-Vorlage für Dateiserver mit horizontaler Hochskalierung ohne Managed Disks][sap-ha-guide-figure-8011]
+![Abbildung 2: Bildschirm der Benutzeroberfläche für die Azure Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung ohne verwaltete Datenträger][sap-ha-guide-figure-8011]
 
-_**Abbildung 2**: Bildschirm der Benutzeroberfläche für die Azure Resource Manager-Vorlage für Dateiserver mit horizontaler Hochskalierung ohne Managed Disks_
+_**Abbildung 2**: Bildschirm der Benutzeroberfläche für die Azure Resource Manager-Vorlage für Dateiserver mit horizontaler Skalierung ohne verwaltete Datenträger_
 
 Wählen Sie im Feld **Speicherkontotyp** die Option **Storage Premium** aus. Alle anderen Einstellungen sind mit den Einstellungen von verwalteten Datenträgern identisch.
 

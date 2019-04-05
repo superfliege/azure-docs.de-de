@@ -5,16 +5,16 @@ description: Migrieren Sie den Hub-Arbeitsbereich und die Projekte zu Custom Tra
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: b8347a8c34cf5a0585e9bb6c247102207a70015a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225617"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901524"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -26,12 +26,8 @@ Während der Migration werden die folgenden Aktionen ausgeführt:
 * Auf alle migrierten Trainings, die nicht den Status „bereitgestellt“ hatten, wird der migrierte Entwurfsstatus angewandt. In diesem Zustand haben Sie die Möglichkeit, ein Modell mit der migrierten Definition zu trainieren – dafür fallen jedoch die regulären Trainingsgebühren an.
 * Sie können die BLEU-Bewertung aus dem Hubtraining jederzeit auf der Seite „TrainingDetails“ des Modells unter der Überschrift „Bleu score in MT Hub“ (BLEU-Punktzahl in MT-Hub) einsehen.
 
->[!Note]
->Damit ein Training erfolgreich ausgeführt werden kann, benötigt Custom Translator mindestens 10.000 extrahierte Sätze. Wenn weniger extrahierte Sätze als die [vorgeschlagene Mindestanzahl](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences) vorhanden sind, kann Custom Translator kein Training ausführen.
-
-## <a name="enable-account-migration"></a>Aktivieren der Migration von Konten
-
-Um das Migrationstool verwenden zu können, müssen Sie die Hubkontomigration aktivieren. Senden Sie dazu eine E-Mail mit einer Liste aller LiveID-Konten, die Sie aktivieren möchten, an [custommt@microsoft.com](mailto:custommt@microsoft.com). Diese Konten sollten die E-Mail-Adressen sein, mit denen Sie sich anmelden.
+> [!Note]
+> Damit ein Training erfolgreich ausgeführt werden kann, benötigt Custom Translator mindestens 10.000 extrahierte eindeutige Sätze. Custom Translator kann kein Training mit einem geringeren Wert als dem [empfohlenen Minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences) ausführen.
 
 ## <a name="find-custom-translator-workspace-id"></a>Suchen der ID für den Benutzerdefinierter Translator-Arbeitsbereich
 
@@ -125,7 +121,7 @@ Wenn Sie einen detaillierteren Migrationsbericht über Ihre Projekte, Trainings 
 ## <a name="implementation-notes"></a>Hinweise zur Implementierung
 * Das Migrieren eines Projekts von Hub zu Benutzerdefinierter Translator hat keinen Einfluss auf Ihre Hubtrainings oder -projekte. Wir löschen während einer Migration keine Projekte oder Dokumente in Hub, und wir heben keine Bereitstellungen von Modellen auf.
 * Es ist nur eine Migration pro Projekt zulässig. Wenn Sie eine Migration für ein Projekt wiederholen müssen, kontaktieren Sie uns.
-* Zurzeit unterstützt Benutzerdefinierter Translator 36 Sprachen für die Übersetzung aus der englischen Sprache und in diese – und wir arbeiten daran, weitere Sprachen hinzufügen. Hub erfordert keine Baselinemodelle und unterstützt daher mehrere Tausend Sprachen. Sie können zwar ein nicht unterstütztes Sprachpaar migrieren, dabei werden aber nur die Dokumente und Projektdefinitionen migriert. Sie können das neue Modell nicht trainieren. Darüber hinaus werden diese Dokumente und Projekte als inaktiv angezeigt, um anzugeben, dass sie zu diesem Zeitpunkt nicht verwendbar sind. Wenn eine Unterstützung für diese Projekte und/oder Dokumente hinzugefügt wird, werden sie aktiviert und sind damit trainierbar.
+* Custom Translator unterstützt NMT-Sprachpaare aus der und in die englische Sprache. [Sehen Sie sich die vollständige Liste der unterstützten Sprachen an](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub erfordert keine Baselinemodelle und unterstützt daher mehrere Tausend Sprachen. Sie können zwar ein nicht unterstütztes Sprachpaar migrieren, dabei werden aber nur die Dokumente und Projektdefinitionen migriert. Sie können das neue Modell nicht trainieren. Darüber hinaus werden diese Dokumente und Projekte als inaktiv angezeigt, um anzugeben, dass sie zu diesem Zeitpunkt nicht verwendbar sind. Wenn eine Unterstützung für diese Projekte und/oder Dokumente hinzugefügt wird, werden sie aktiviert und sind damit trainierbar.
 * Benutzerdefinierter Translator unterstützt derzeit keine einsprachigen Trainingsdaten. Wie bei nicht unterstützten Sprachpaaren können Sie einsprachige Dokumente zwar migrieren, aber sie werden als inaktiv angezeigt, bis einsprachige Daten unterstützt werden.
 * Benutzerdefinierter Translator benötigt für das Trainieren 10.000 parallele Sätze. Microsoft-Hub konnte auch mit einem kleineren Datensatz trainiert werden. Wird ein Training migriert, das diese Anforderungen nicht erfüllt, findet kein Training statt.
 
@@ -137,10 +133,14 @@ In der folgenden Tabelle werden die Features von Microsoft Translator Hub und Cu
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
 | Version der Text-API  | V2    | V3  |
-| SMT-Anpassung | JA   | Nein  |
-| NMT-Anpassung | Nein     | JA |
-| Neue einheitliche Anpassung der Sprachdienste | Nein     | JA |
-| Keine Ablaufverfolgung | JA | JA |
+| SMT-Anpassung | Ja   | Nein  |
+| NMT-Anpassung | Nein     | Ja |
+| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
+| Keine Ablaufverfolgung | Ja | Ja |
+
+## <a name="new-languages"></a>Neue Sprachen
+
+Wenn Sie zu einer Community oder Organisation gehören, die an einem neuen Sprachsystem für Microsoft Translator arbeitet, wenden Sie sich an [custommt@microsoft.com](mailto:custommt@microsoft.com), um weitere Informationen zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

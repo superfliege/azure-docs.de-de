@@ -3,7 +3,7 @@ title: Einschränkungen von Azure Cloud Shell | Microsoft-Dokumentation
 description: Übersicht über die Einschränkungen von Azure Cloud Shell
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: juluk
-ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.author: damaerte
+ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563880"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245742"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Einschränkungen von Azure Cloud Shell
 
@@ -45,7 +45,7 @@ Cloud Shell unterstützt die aktuellen Versionen von Microsoft Edge, Microsoft I
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Für einen bestimmten Benutzer kann nur eine Shell aktiv sein.
 
-Benutzer können jeweils nur eine Art von Shell zu einem bestimmten Zeitpunkt starten, entweder **Bash** oder **PowerShell**. Möglicherweise führen Sie jedoch mehrere Instanzen von Bash oder PowerShell gleichzeitig aus. Der Wechsel zwischen Bash oder PowerShell führt dazu, dass Cloud Shell neu gestartet wird, wodurch bestehende Sitzungen beendet werden.
+Benutzer können jeweils nur eine Art von Shell zu einem bestimmten Zeitpunkt starten, entweder **Bash** oder **PowerShell**. Möglicherweise führen Sie jedoch mehrere Instanzen von Bash oder PowerShell gleichzeitig aus. Der Wechsel zwischen Bash oder PowerShell über das Menü führt dazu, dass Cloud Shell neu gestartet wird, wodurch bestehende Sitzungen beendet werden. Alternativ können Sie Bash in PowerShell ausführen, indem Sie `bash` eingeben, und Sie können PowerShell in Bash ausführen, indem Sie `pwsh` eingeben.
 
 ### <a name="usage-limits"></a>Usage limits (Nutzungseinschränkungen)
 
@@ -57,9 +57,9 @@ Cloud Shell ist für interaktive Anwendungsfälle konzipiert. Daher werden lange
 
 Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` werden nicht gespeichert.
 
-### <a name="editing-bashrc"></a>Bearbeiten von „.bashrc“
+### <a name="editing-bashrc-or-profile"></a>Bearbeiten von „.bashrc“ oder $PROFILE
 
-Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwartete Fehler in Cloud Shell auftreten können.
+Gehen Sie bei der Bearbeitung von „.bashrc“ oder der $PROFILE-Datei von PowerShell vorsichtig vor, da sonst unerwartete Fehler in Cloud Shell auftreten können.
 
 ## <a name="powershell-limitations"></a>PowerShell-Einschränkungen
 
@@ -77,19 +77,11 @@ Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-L
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
 
-Wenn der Benutzer einen Befehl (wie `Connect-AzureAD`, `Connect-AzureRmAccount` oder `Connect-AzAccount`) ausführt, mit dem ein Windows-Dialogfeld erstellt wird, wird etwa folgende Fehlermeldung angezeigt: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
-
-### <a name="tab-completion-crashes-psreadline"></a>Bei TAB-Vervollständigung stürzt PSReadline ab.
-
-Wenn der EditMode des Benutzers in PSReadline auf Emacs festgelegt ist, der Benutzer versucht, alle Möglichkeiten über die TAB-Vervollständigung anzuzeigen und die Größe des Fensters zu klein zum Darstellen aller Möglichkeiten ist, stürzt PSReadline ab.
+Wenn der Benutzer einen Befehl ausführt, mit dem ein Windows-Dialogfeld erstellt wird, wird etwa folgende Fehlermeldung angezeigt: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Große Lücke nach dem Darstellen der Statusanzeige
 
 Wenn der Benutzer eine Aktion ausführt, mit der eine Statusanzeige dargestellt wird, etwa eine TAB-Vervollständigung für das Laufwerk `Azure:`, ist es möglich, dass der Cursor nicht ordnungsgemäß festgelegt wird und an der vorherigen Stelle der Statusanzeige eine Lücke angezeigt wird.
-
-### <a name="random-characters-appear-inline"></a>In der Eingabe angezeigte zufällige Zeichen
-
-Die Sequenzcodes für die Cursorposition, z.B. `5;13R`, können in der Benutzereingabe angezeigt werden.  Die Zeichen können manuell entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

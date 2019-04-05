@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332097"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853289"
 ---
 # <a name="scp-programming-guide"></a>SCP-Programmierleitfaden
 SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Datenverarbeitung in Echtzeit. Sie basiert auf [Apache Storm](https://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](https://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 
@@ -32,7 +32,7 @@ Eine Anwendungstopologie in Storm definiert einen Berechnungsgraphen. Jeder Knot
 
 SCP unterstützt die Datenverarbeitung nach den Prinzipien "Best Effort", "At-Least-Once" und "Exactly Once". In verteilten Anwendungen für die Streamingverarbeitung können verschiedene Fehler bei der Verarbeitung auftreten, z.B. Netzwerk- und Computerausfälle, Fehler im Benutzercode usw. Mit dem „At-Least-Once“-Modell wird sichergestellt, dass alle Daten mindestens einmal verarbeitet werden, indem im Fehlerfall dieselben Daten erneut abgespielt werden. Das „At-least-once“-Modell ist einfach und zuverlässig und eignet sich für die meisten Anwendungen. Wenn jedoch eine exakte Zählung erforderlich ist, reicht das „At-least-once“-Modell nicht aus, da dieselben Daten möglicherweise mehr als einmal in der Anwendungstopologie abgespielt werden. Für diese Fälle wurde das "Exactly-Once"-Modell entwickelt. Dieses Modell garantiert ein korrektes Ergebnis, selbst wenn die Daten mehrfach abgespielt und verarbeitet wurden.
 
-Mit SCP können .NET-Entwickler Echtzeitanwendungen für die Datenverarbeitung entwickeln und dabei auf das Java Virtual Machine-basierte Storm zurückgreifen. .NET und JVM kommunizieren über lokale TCP-Sockets. Jeder Spout/Bolt ist genauer gesagt ein .Net-/Java-Prozesspaar, wobei die Benutzerlogik in einem .NET-Prozess als Plug-In ausgeführt wird.
+Mit SCP können .NET-Entwickler Echtzeitanwendungen für die Datenverarbeitung entwickeln und dabei auf das Java Virtual Machine-basierte Storm zurückgreifen. .NET und JVM kommunizieren über lokale TCP-Sockets. Jeder Spout/Bolt ist genauer gesagt ein .NET-/Java-Prozesspaar, wobei die Benutzerlogik in einem .NET-Prozess als Plug-In ausgeführt wird.
 
 Die Erstellung einer Datenverarbeitungsanwendung mit SCP umfasst mehrere Schritte:
 
@@ -71,7 +71,7 @@ ISCPSpout ist die Schnittstelle für nichttransaktionale Spouts.
 
 Beim Aufrufen von `NextTuple()` kann der C\#-Benutzercode ein oder mehrere Tupel ausgeben. Wenn nichts zurückzugeben ist, wird die Methode verlassen, ohne etwas zurückzugeben. Beachten Sie, dass `NextTuple()`, `Ack()` und `Fail()` in einer engen Schleife in einem einzigen Thread im C\#-Prozess aufgerufen werden. Wenn keine Tupel ausgegeben werden, sollte NextTuple für kurze Zeit (z. B. 10 Millisekunden) in den Ruhezustand versetzt werden, um Prozessorleistung zu sparen.
 
-`Ack()` und `Fail()` werden nur aufgerufen, wenn der ACK-Mechanismus in der SPEC-Datei aktiviert wurde. `seqId` wird verwendet, um das Tupel zu identifizieren, für das „ACK“ bzw. „Fail“ angegeben wird. Wenn also Ack in einer nichttransaktionalen Topologie verwendet wird, sollte die folgende emit-Funktion im Spout verwendet werden:
+`Ack()` und `Fail()` werden nur aufgerufen, wenn der ACK-Mechanismus in der SPEC-Datei aktiviert wurde. `seqId` wird verwendet, um das Tupel zu identifizieren, für das „Bestätigt“ bzw. „Fehler“ angegeben wird. Wenn also Ack in einer nichttransaktionalen Topologie verwendet wird, sollte die folgende emit-Funktion im Spout verwendet werden:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -562,7 +562,7 @@ Im Hostmodus wird der Benutzercode als DLL kompiliert und von der SCP-Plattform 
 
 ## <a name="scp-programming-examples"></a>SCP-Programmierbeispiele
 ### <a name="helloworld"></a>HelloWorld
-**Hallo Welt** ist ein einfaches Beispiel, damit Sie sich einen Eindruck von SCP.Net verschaffen können. Verwendet werden eine nicht transaktionale Topologie mit einem Spout namens **generator** und zwei Bolts namens **splitter** und **counter**. Der Spout **generator** erzeugt zufällige Sätze und übermittelt diese Sätze an **splitter**. Der Bolt **splitter** teilt die Sätze in Wörter auf und übermittelt diese Sätze an den Bolt **counter**. Der Bolt „counter“ verwendet ein Wörterbuch, um das Auftreten der einzelnen Wörter zu zählen.
+**Hallo Welt** ist ein einfaches Beispiel, damit Sie sich einen Eindruck von SCP.NET verschaffen können. Verwendet werden eine nicht transaktionale Topologie mit einem Spout namens **generator** und zwei Bolts namens **splitter** und **counter**. Der Spout **generator** erzeugt zufällige Sätze und übermittelt diese Sätze an **splitter**. Der Bolt **splitter** teilt die Sätze in Wörter auf und übermittelt diese Sätze an den Bolt **counter**. Der Bolt „counter“ verwendet ein Wörterbuch, um das Auftreten der einzelnen Wörter zu zählen.
 
 Für dieses Beispiel werden die beiden Spec-Dateien **HelloWorld.spec** und **HelloWorld\_EnableAck.spec** verwendet. Im C\#-Code können Sie ermitteln, ob Ack aktiviert ist, indem Sie pluginConf aus der Java-Komponente abrufen.
 
@@ -573,7 +573,7 @@ Für dieses Beispiel werden die beiden Spec-Dateien **HelloWorld.spec** und **He
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-Falls Ack aktiviert ist, verwendet der Spout ein Wörterbuch, um die Tupel zwischenzuspeichern, für die kein Ack aufgerufen wurde. Wenn Fail() aufgerufen wird, wird das fehlgeschlagene Tupel erneut abgespielt:
+Falls Ack aktiviert ist, verwendet der Spout ein Wörterbuch, um die Tupel zwischenzuspeichern, die nicht bestätigt wurden. Wenn Fail() aufgerufen wird, wird das fehlgeschlagene Tupel erneut abgespielt:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {

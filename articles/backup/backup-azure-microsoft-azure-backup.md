@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: b94d6bd9cc129d80f3ece82c13df375abecafd26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075611"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 > [!div class="op_single_selector"]
@@ -231,16 +231,16 @@ In den folgenden Abschnitten wird beschrieben, wie Schutz-Agents für Clientcomp
 
 2. Wählen Sie im Anzeigebereich die Clientcomputer aus, für die Sie den Schutz-Agent aktualisieren möchten.
 
-  > [!NOTE]
-  > Die Spalte **Agent-Updates** gibt an, wann ein Update des Schutz-Agents für jeden geschützten Computer verfügbar ist. Im Bereich **Aktionen** ist die Aktion **Aktualisieren** nur verfügbar, wenn ein geschützter Computer ausgewählt ist und Updates verfügbar sind.
-  >
-  >
+   > [!NOTE]
+   > Die Spalte **Agent-Updates** gibt an, wann ein Update des Schutz-Agents für jeden geschützten Computer verfügbar ist. Im Bereich **Aktionen** ist die Aktion **Aktualisieren** nur verfügbar, wenn ein geschützter Computer ausgewählt ist und Updates verfügbar sind.
+   >
+   >
 
 3. Zum Installieren aktualisierter Schutz-Agents auf den ausgewählten Computern wählen Sie im Bereich **Aktionen** den Befehl **Aktualisieren** aus.
 
 4. Für einen Clientcomputer, der nicht mit dem Netzwerk verbunden ist, enthält die Spalte **Agent-Status** so lange den Status **Update ausstehend**, bis der Computer mit dem Netzwerk verbunden wird.
 
-  Sobald ein Clientcomputer mit dem Netzwerk verbunden ist, enthält die Spalte **Agent-Updates** für den Clientcomputer den Status **Wird aktualisiert**.
+   Sobald ein Clientcomputer mit dem Netzwerk verbunden ist, enthält die Spalte **Agent-Updates** für den Clientcomputer den Status **Wird aktualisiert**.
 
 ## <a name="move-mabs-to-a-new-server"></a>Verschieben von MABS auf einen neuen Server
 
@@ -262,10 +262,11 @@ Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Serv
 9. Stellen Sie die DPMDB über SQL wieder her.
 10. Wechseln Sie in der Administrator-Befehlszeile auf dem neuen Server per „cd“ zum Installationsspeicherort von Microsoft Azure Backup und in den Ordner „bin“.
 
-Pfadbeispiel: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-Zu Azure Backup: DPMSYNC -SYNC ausführen
+    Pfadbeispiel: C:\windows\system32>cd "c:\Programme\Microsoft Azure Backup\DPM\DPM\bin\" 
 
-10) Führen Sie DPMSYNC -SYNC aus. Hinweis: Wenn Sie dem DPM-Speicherpool NEUE Datenträger hinzugefügt haben, anstatt alte zu verschieben, müssen Sie Folgendes ausführen: „DPMSYNC -Reallocatereplica“.
+11. Zum Sichern von Azure führen Sie „DPMSYNC -SYNC“ aus.
+
+    Wenn Sie dem DPM-Speicherpool NEUE Datenträger hinzugefügt haben, anstatt alte zu verschieben, müssen Sie Folgendes ausführen: „DPMSYNC -Reallocatereplica“.
 
 ## <a name="network-connectivity"></a>Netzwerkverbindung
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
@@ -306,33 +307,33 @@ Verwenden Sie die folgenden Verfahren, um ein Upgrade für MABS durchzuführen.
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Durchführen eines Upgrades von MABS v2 auf v3
 
 > [!NOTE]
-
+> 
 > MABS v2 ist für die Installation von MABS v3 keine Voraussetzung. Allerdings können Sie nur ein Upgrade von MABS v2 auf MABS v3 durchführen.
 
 Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
 
 1. Um ein Upgrade von MABS v2 auf MABS v3 durchzuführen, führen Sie bei Bedarf ein Upgrade für Ihr Betriebssystem auf Windows Server 2016 oder Windows Server 2019 durch.
 
-2.  Führen Sie ein Upgrade für Ihren Server durch. Die Schritte sind vergleichbar mit den Schritten zur [Installation](#install-and-upgrade-azure-backup-server). Für die SQL-Einstellungen besteht jedoch die Option, ein Upgrade für Ihre SQL-Instanz auf SQL 2017 oder die eigene Instanz von SQL Server 2017 zu verwenden.
+2. Führen Sie ein Upgrade für Ihren Server durch. Die Schritte sind vergleichbar mit den Schritten zur [Installation](#install-and-upgrade-azure-backup-server). Für die SQL-Einstellungen besteht jedoch die Option, ein Upgrade für Ihre SQL-Instanz auf SQL 2017 oder die eigene Instanz von SQL Server 2017 zu verwenden.
 
-  > [!NOTE]
+   > [!NOTE]
+   > 
+   > Beenden Sie den Vorgang nicht, während das Upgrade für die SQL-Instanz durchgeführt wird, da die SQL-Berichtsinstanz durch eine Beendigung deinstalliert wird und bei dem Versuch, erneut ein Upgrade für MABS durchzuführen, ein Fehler auftritt.
 
-  > Beenden Sie den Vorgang nicht, während das Upgrade für die SQL-Instanz durchgeführt wird, da die SQL-Berichtsinstanz durch eine Beendigung deinstalliert wird und bei dem Versuch, erneut ein Upgrade für MABS durchzuführen, ein Fehler auftritt.
+   Wichtige Hinweise:
 
-  Wichtige Hinweise:
-
-  > [!IMPORTANT]
-
-  >  Bei dem SQL 2017-Upgrade werden die SQL-Verschlüsselungsschlüssel gesichert und die Reporting Services deinstalliert. Nach dem Upgrade von SQL Server werden die Reporting Services (14.0.6827.4788) installiert und die Verschlüsselungsschlüssel werden wiederhergestellt.
-
- > Informationen zur manuellen Konfiguration von SQL 2017 finden Sie in den Installationsanweisungen im Abschnitt *SSRS-Konfiguration mit SQL 2017*.
+   > [!IMPORTANT]
+   > 
+   >  Bei dem SQL 2017-Upgrade werden die SQL-Verschlüsselungsschlüssel gesichert und die Reporting Services deinstalliert. Nach dem Upgrade von SQL Server werden die Reporting Services (14.0.6827.4788) installiert und die Verschlüsselungsschlüssel werden wiederhergestellt.
+   > 
+   > Informationen zur manuellen Konfiguration von SQL 2017 finden Sie in den Installationsanweisungen im Abschnitt *SSRS-Konfiguration mit SQL 2017*.
 
 3. Aktualisieren Sie die Schutz-Agents auf den geschützten Servern.
 4. Sicherungen sollten fortgesetzt werden, ohne dass Ihre Produktionsserver neugestartet werden müssen.
 5. Nun können Sie mit der Konfiguration von Schutzmaßnahmen für Ihre Daten beginnen. Wenn Sie bei bestehendem Schutz ein Upgrade auf Modern Backup Storage durchführen, können Sie auch die Volumes auswählen, in denen die Sicherungen gespeichert werden sollen und auf unzureichend bereitgestellten Speicher prüfen. [Weitere Informationen](backup-mabs-add-storage.md)
 
 > [!NOTE]
-
+> 
 > Falls Sie ein Upgrade von MABS v1 auf v2 durchführen, stellen Sie sicher, dass Ihr Betriebssystem Windows Server 2016 oder Windows Server 2012 R2 ist. Um neue System Center 2016 Data Protection Manager-Features wie Modern Backup Storage nutzen zu können, müssen Sie Backup Server v2 unter Windows Server 2016 installieren. Machen Sie sich vor der Installation von oder einem Upgrade auf Backup Server v2 mit den für MABS geltenden [Installationsvoraussetzungen](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) vertraut.
 
 ## <a name="troubleshooting"></a>Problembehandlung

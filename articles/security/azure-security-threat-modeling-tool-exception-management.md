@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877291"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Gegenmaßnahmen 
+# <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Risikominderung 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicedebug)</li><li>[WCF – serviceMetadata-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicemetadata)</li></ul> |
@@ -71,7 +71,7 @@ Deaktivieren Sie die Debuginformationen im Dienst. Dazu können Sie das `<servic
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC 5, MVC 6 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Ausnahmebehandlung in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/error-handling/exception-handling), [Modellüberprüfung in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Referenzen**              | [Ausnahmebehandlung in der ASP.NET-Web-API](https://www.asp.net/web-api/overview/error-handling/exception-handling), [Modellüberprüfung in der ASP.NET-Web-API](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Schritte** | Standardmäßig werden die meisten nicht abgefangenen Ausnahmen in der ASP.NET-Web-API in eine HTTP-Antwort mit dem Statuscode `500, Internal Server Error` übersetzt.|
 
 ### <a name="example"></a>Beispiel
@@ -201,7 +201,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [Dialogfeld „ASP.NET-Einstellungen für Fehlerseiten bearbeiten“](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Schritte** | <p>Wenn eine ASP.NET-Anwendung fehlschlägt und zu einem Fehler vom Typ „HTTP/1.x 500: Interner Serverfehler“ führt oder wenn eine Funktionskonfiguration (z.B. Anforderungsfilterung) verhindert, dass eine Seite angezeigt wird, wird eine Fehlermeldung generiert. Administratoren können auswählen, ob die Anwendung dem Client eine benutzerfreundliche Meldung oder eine detaillierte Fehlermeldung anzeigt bzw. die detaillierte Fehlermeldung nur für „localhost“ anzeigt. Das <customErrors>-Tag in der Datei „web.config“ verfügt über drei Modi:</p><ul><li>**On:** Gibt an, dass benutzerdefinierte Fehler aktiviert sind. Benutzer sehen einen allgemeinen Fehler, wenn kein defaultRedirect-Attribut angegeben wird. Die benutzerdefinierten Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**Off:** Gibt an, dass benutzerdefinierte Fehler deaktiviert sind. Die detaillierten ASP.NET-Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**RemoteOnly:** Gibt an, dass benutzerdefinierte Fehler nur auf den Remoteclients angezeigt werden und dass ASP.NET-Fehler auf dem lokalen Host angezeigt werden. Dies ist der Standardwert.</li></ul><p>Öffnen Sie die Datei `web.config` für die Anwendung/Website, und stellen Sie sicher, dass das Tag als `<customErrors mode="RemoteOnly" />` oder `<customErrors mode="On" />` definiert ist.</p>|
+| **Schritte** | <p>Wenn eine ASP.NET-Anwendung fehlschlägt und zu einem Fehler vom Typ „HTTP/1.x 500: Interner Serverfehler“ führt oder wenn eine Funktionskonfiguration (z.B. Anforderungsfilterung) verhindert, dass eine Seite angezeigt wird, wird eine Fehlermeldung generiert. Administratoren können auswählen, ob die Anwendung dem Client eine benutzerfreundliche Meldung oder eine detaillierte Fehlermeldung anzeigt bzw. die detaillierte Fehlermeldung nur für „localhost“ anzeigt. Das <customErrors>-Tag in der Datei „web.config“ verfügt über drei Modi:</p><ul><li>**On:** Gibt an, dass benutzerdefinierte Fehler aktiviert sind. Benutzer sehen einen allgemeinen Fehler, wenn kein defaultRedirect-Attribut angegeben wird. Die benutzerdefinierten Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**Off:** Gibt an, dass benutzerdefinierte Fehler deaktiviert sind. Die detaillierten ASP.NET-Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**RemoteOnly:** Gibt an, dass benutzerdefinierte Fehler nur auf den Remoteclients angezeigt werden, und dass ASP.NET-Fehler auf dem lokalen Host angezeigt werden. Dies ist der Standardwert.</li></ul><p>Öffnen Sie die Datei `web.config` für die Anwendung/Website, und stellen Sie sicher, dass das Tag als `<customErrors mode="RemoteOnly" />` oder `<customErrors mode="On" />` definiert ist.</p>|
 
 ## <a id="deployment"></a>Festlegen der Bereitstellungsmethode auf „Retail“ in IIS
 

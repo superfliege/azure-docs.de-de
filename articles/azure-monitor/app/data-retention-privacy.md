@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300260"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003577"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -28,7 +28,7 @@ Zunächst die kurze Antwort:
 * Bei Verwendung der Standardtelemetriemodule in der vorkonfigurierten Form ist es äußerst unwahrscheinlich, dass sensible Daten an den Dienst übermittelt werden. Bei der Telemetrie dreht sich alles um Lade-, Leistungs- und Nutzungsmetriken sowie um Ausnahmeberichte und andere Diagnosedaten. In den Diagnoseberichten sind als Benutzerdaten hauptsächlich URLs sichtbar. Ihre App sollte jedoch in keinem Fall sensible Daten im Nur-Text-Format in eine URL einfügen.
 * Sie können Code schreiben, der zusätzliche benutzerdefinierte Telemetriedaten sendet, die Sie bei der Diagnose und Überwachung der Nutzung unterstützen. (Diese Erweiterbarkeit ist ein großartiges Feature von Application Insights.) Der Code kann theoretisch so geschrieben werden, dass versehentlich auch persönliche und andere sensible Daten einbezogen werden. Falls Ihre Anwendung mit solchen Daten arbeitet, müssen Sie sämtlichen Code, den Sie schreiben, einer gründlichen Prüfung unterziehen.
 * Beim Entwickeln und Testen Ihrer App können Sie problemlos überprüfen, was vom SDK gesendet wird. Die Daten erscheinen in den Debugging-Ausgabefenstern von IDE und Browser. 
-* Die Daten werden auf [Microsoft Azure](https://azure.com)-Servern in den USA oder in Europa gespeichert. (Ihre App kann jedoch überall ausgeführt werden.) Azure verfügt über [ausgefeilte Sicherheitsprozesse und erfüllt eine breite Palette von Kompatibilitätsstandards](https://azure.microsoft.com/support/trust-center/). Auf die Daten haben nur Sie selbst und Ihr Team Zugriff. Microsoft-Mitarbeiter können nur unter ganz bestimmten Bedingungen und mit Ihrem Wissen eingeschränkten Zugriff auf die Daten erlangen. Die Daten sind bei der Übertragung verschlüsselt, auf den Servern allerdings nicht.
+* Die Daten werden auf [Microsoft Azure](https://azure.com)-Servern in den USA oder in Europa gespeichert. (Ihre App kann jedoch überall ausgeführt werden.) Azure verfügt über [ausgefeilte Sicherheitsprozesse und erfüllt eine breite Palette von Kompatibilitätsstandards](https://azure.microsoft.com/support/trust-center/). Auf die Daten haben nur Sie selbst und Ihr Team Zugriff. Microsoft-Mitarbeiter können nur unter ganz bestimmten Bedingungen und mit Ihrem Wissen eingeschränkten Zugriff auf die Daten erlangen. Die Daten sind während der Übertragung und im Ruhezustand verschlüsselt.
 
 Im Rest dieses Artikels werden die obigen Antworten näher erläutert. Der Artikel ist in sich geschlossen, sodass Sie ihn auch Kollegen zeigen können, die nicht direkt Ihrem Team angehören.
 
@@ -118,9 +118,7 @@ Sie könnten zusätzliche Telemetrie mit dem Instrumentationsschlüssel im Code 
 Wenn Sie Code für andere Projekte freigeben, sollten Sie Ihren Instrumentationsschlüssel entfernen.
 
 ## <a name="is-the-data-encrypted"></a>Werden die Daten verschlüsselt?
-Derzeit nicht innerhalb der Server.
-
-Alle Daten werden bei der Übertragung zwischen Datencentern verschlüsselt.
+Alle Daten sind im Ruhezustand und während der Übertragung zwischen Rechenzentren verschlüsselt.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Werden die Daten während der Übertragung von meiner Anwendung zu Application Insights-Servern verschlüsselt?
 Ja, wir verwenden HTTPS zum Senden von Daten an das Portal aus nahezu allen SDKs, darunter Webserver, Geräte und HTTPS-Webseiten. Die einzige Ausnahme sind Daten, die von einfachen HTTP-Webseiten gesendet werden.
@@ -129,12 +127,9 @@ Ja, wir verwenden HTTPS zum Senden von Daten an das Portal aus nahezu allen SDKs
 
 Ja, bestimmte Telemetriekanäle speichern Daten dauerhaft lokal, wenn ein Endpunkt nicht erreicht werden kann. Weiter unten in diesem Artikel erfahren Sie, welche Frameworks und Telemetriekanäle betroffen sind.
 
-
 Telemetriekanäle, die lokalen Speicher nutzen, erstellen temporäre Dateien in den Verzeichnissen TEMP oder APPDATA, die auf das Konto beschränkt sind, in dem Ihre Anwendung ausgeführt wird. Dies kann passieren, wenn ein Endpunkt vorübergehend nicht verfügbar war oder das Drosselungslimit erreicht wurde. Sobald das Problem gelöst wurde, setzt der Telemetriekanal das Senden aller neuen und dauerhaft gespeicherten Daten fort.
 
-
-Diese dauerhaft gespeicherten Daten sind **nicht verschlüsselt**, und es wird dringend empfohlen, Ihre Datensammlungsrichtlinie so zu strukturieren, dass die Sammlung von privaten Daten deaktiviert ist. (Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data).)
-
+Diese dauerhaft gespeicherten Daten werden nicht lokal verschlüsselt. Falls dies ein Problem darstellt, überprüfen Sie die Daten, und schränken Sie die Sammlung von privaten Daten ein. (Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data).)
 
 Wenn ein Kunde dieses Verzeichnis mit bestimmten Sicherheitsanforderungen konfigurieren muss, kann diese Konfiguration pro Framework erfolgen. Stellen Sie sicher, dass der Prozess, der Ihre Anwendung ausführt, über Schreibzugriff auf dieses Verzeichnis verfügt. Stellen Sie aber außerdem sicher, dass dieses Verzeichnis geschützt ist, um zu verhindern, dass Telemetriedaten von Benutzern gelesen werden, die dafür nicht zugelassen sind.
 
@@ -158,12 +153,12 @@ Per Code:
 
 - Entfernen Sie „ServerTelemetryChannel“ aus der Konfigurationsdatei.
 - Fügen Sie diesen Codeausschnitt zu Ihrer Konfiguration hinzu:
-```csharp
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -239,6 +234,7 @@ Sie können jedoch eine solche Funktion in Ihrer Anwendung implementieren. Alle 
 Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Komponenten, die Sie installieren können. (Weitere Informationen finden Sie unter [Application Insights – Übersicht][start].) Jede Komponente sendet unterschiedliche Daten.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klassen von in verschiedenen Szenarien gesendeten Daten
+
 | Aktion | Gesammelte Datenklassen (siehe nächste Tabelle) |
 | --- | --- |
 | [Hinzufügen des Application Insights SDK zu Ihrem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Sitzung<br/>users |
@@ -254,6 +250,7 @@ Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Kompon
 Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in den entsprechenden Dokumenten.
 
 #### <a name="the-classes-of-collected-data"></a>Die Klassen der gesammelten Daten
+
 | Gesammelte Datenklasse | Umfasst (keine vollständige Liste) |
 | --- | --- |
 | **Properties** |**Alle Daten – bestimmt durch Code** |

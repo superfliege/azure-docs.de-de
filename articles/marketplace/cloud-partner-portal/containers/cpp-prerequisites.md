@@ -3,7 +3,7 @@ title: Angebotsvoraussetzungen für Azure-Container | Microsoft-Dokumentation
 description: Voraussetzungen für die Veröffentlichung eines Azure-Containers.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd308c645593a401736a0a1ab1d336d63d900217
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 09c9afcf3126f7f84c20f5514bc038a65b2ea1b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990722"
 ---
 # <a name="container-publishing-prerequisites"></a>Voraussetzungen für die Containerveröffentlichung
 
-Dieser Artikel beschreibt die Voraussetzungen für die Voraussetzungen für das Veröffentlichen eines Containerangebots im Azure Marketplace.
+Dieser Artikel beschreibt die Voraussetzungen für die Voraussetzungen für das Veröffentlichen eines Containerangebots im Azure Marketplace.  Lesen Sie den [Leitfaden für die Veröffentlichen von Containerangeboten](../../marketplace-containers.md), falls Sie dies nicht bereits getan haben.
 
 ## <a name="publishing-prerequisites"></a>Voraussetzungen für die Veröffentlichung
 
@@ -35,12 +35,11 @@ Um ein neues Containerimage zu veröffentlichen, müssen Sie die folgenden Vorau
 - Ihre Containermetadaten müssen einsatzbereit sein. Beispielsweise die folgende nicht erschöpfende Liste:
   - Titel
   - Beschreibung (im HTML-Format)
-  - Ein Logobild (im PNG-Format) und in den folgenden festen Bildgrößen: 40 x 40 px, 90 x 90 px, 115 x 115 px und 255 x 115 px.
-- Nutzungsbedingungen und Datenschutzrichtlinie
-- Dokumentation
+  - Ein Logobild (im PNG-Format) und in den folgenden festen Bildgrößen: 40×40 px, 90×90 px, 115×115 px und 255×115 px.
+- *Nutzungsbedingungen* und *Datenschutzrichtlinie*
+- Dokumentation zur Containerlösung
 - Supportkontakte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Vorbereiten Ihrer technischen Containerressourcen](./cpp-create-technical-assets.md)
-- [Erstellen Ihres Containerangebots](./cpp-create-offer.md) 
+Falls dies nicht bereits erfolgt ist, müssen Sie die [technischen Ressourcen für Ihren Container vorbereiten](./cpp-create-technical-assets.md), bevor Sie Ihr [Containerangebot erstellen](./cpp-create-offer.md).  

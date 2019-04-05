@@ -7,16 +7,16 @@ services: microsoft-genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
-ms.service: microsoft-genomics
+ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 2c10259e4b9fa180d09ceef0359e7ec99e8200b1
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078056"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -73,8 +73,8 @@ Es gibt drei erforderliche Argumente:
                 Bases Processed : 1,348,613,600 (1 GBase)
         ```
 
- > [!NOTE]
- >  Alternativ können Sie den Pfad zur Konfigurationsdatei einschließen, anstatt URL und KEY direkt einzugeben. Wenn Sie diese Argumente in die Befehlszeile sowie in die Konfigurationsdatei einschließen, besitzen die Befehlszeilenargumente Vorrang.  
+  > [!NOTE]
+  >  Alternativ können Sie den Pfad zur Konfigurationsdatei einschließen, anstatt URL und KEY direkt einzugeben. Wenn Sie diese Argumente in die Befehlszeile sowie in die Konfigurationsdatei einschließen, besitzen die Befehlszeilenargumente Vorrang.  
 
 Für die Workflow-ID 1001 und die Datei „config.txt“, die sich im gleichen Pfad wie die ausführbare msgen-Datei befindet, sieht der Befehl folgendermaßen aus:
 
@@ -99,8 +99,8 @@ In diesem Abschnitt werden die häufigsten Fehler kurz vorgestellt, die vom Micr
 
 Der Microsoft Genomics-Dienst (msgen) kann die folgenden zwei Arten von Fehlern auslösen:
 
-1. Interne Dienstfehler: Fehler, die dienstintern sind und nicht durch das Korrigieren von Parametern oder Eingabedateien behoben werden können. Manchmal kann ein erneutes Übermitteln des Workflows diese Fehler beheben.
-2. Eingabefehler: Fehler, die durch die Verwendung der richtigen Argumente oder das Korrigieren von Dateiformaten behoben werden können.
+1. Interne Dienstfehler: Fehler, die dienstintern sind und nicht durch Korrigieren von Parametern oder Eingabedateien behoben werden können. Manchmal kann ein erneutes Übermitteln des Workflows diese Fehler beheben.
+2. Eingabefehler: Fehler, die durch Verwenden der richtigen Argumente oder Korrigieren von Dateiformaten behoben werden können.
 
 ### <a name="1-internal-service-errors"></a>1. Interne Dienstfehler
 
@@ -116,7 +116,7 @@ Diese Fehler können vom Benutzer behoben werden. Basierend auf dem Dateityp und
 
 | Dateityp | Fehlercode | Fehlermeldung                                                                           | Empfohlene Schritte zur Problembehandlung                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Beliebig          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength] (Der Lesevorgang [ReadId] weist [NumberOfBases] Basen auf, der Grenzwert ist aber [MaxReadLength]).           | Der häufigste Grund für diesen Fehler ist eine Dateibeschädigung, die zur Verkettung von zwei Lesevorgängen führt. Überprüfen Sie Ihre Eingabedateien. |                                |
+| Beliebig          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength] (Der Lesevorgang [ReadId] weist [NumberOfBases] Basen auf, der Grenzwert ist aber [MaxReadLength]).           | Der häufigste Grund für diesen Fehler ist eine Dateibeschädigung, die zur Verkettung von zwei Lesevorgängen führt. Überprüfen Sie Ihre Eingabedateien. |
 | BAM          | 200        |   Unable to read file '[yourFileName]' (Die Datei '[ihrDateiname]' kann nicht gelesen werden).                                                                                       | Check the format of the BAM file (Überprüfen Sie das Format der BAM-Datei). Übermitteln Sie den Workflow mit einer ordnungsgemäß formatierten Datei erneut.                                                                           |
 | BAM          | 201        |  Unable to read BAM file [File_name] (Die BAM-Datei [Dateiname] kann nicht gelesen werden).                                                                                      |Check the format of the BAM file (Überprüfen Sie das Format der BAM-Datei).  Übermitteln Sie den Workflow mit einer ordnungsgemäß formatierten Datei.                                                                            |
 | BAM          | 202        | Unable to read BAM file [File_name] (Die BAM-Datei [Dateiname] kann nicht gelesen werden). File too small and missing header (Die Datei ist zu klein, und der Dateiheader fehlt).                                                                                        | Check the format of the BAM file (Überprüfen Sie das Format der BAM-Datei).  Übermitteln Sie den Workflow mit einer ordnungsgemäß formatierten Datei.                                                                            |

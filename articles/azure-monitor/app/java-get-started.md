@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699320"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630752"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -33,18 +33,15 @@ Erforderlich:
 * JRE-Version 1.7 oder 1.8
 * Ein Abonnement für [Microsoft Azure](https://azure.microsoft.com/).
 
-*Wenn Sie eine Web-App haben, die bereits aktiv ist, könnten Sie das alternative Verfahren nutzen, [um das SDK zur Laufzeit auf dem Webserver hinzuzufügen](java-live.md). Diese Alternative vermeidet das Neuerstellen des Codes, jedoch erhalten Sie nicht die Möglichkeit, Code schreiben, um die Benutzeraktivität nachzuverfolgen.*
-
 Wenn Sie das Spring-Framework bevorzugen, lesen Sie den Leitfaden zum [Konfigurieren einer Spring Boot Initializer-App für die Verwendung von Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Abrufen eines Application Insights-Instrumentationsschlüssels
 1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com)an.
 2. Erstellen Sie eine Application Insights-Ressource. Legen Sie den Anwendungstyp auf "Java-Webanwendung" fest.
 
-    ![Geben Sie einen Namen ein, wählen Sie "Java-Web-App", und klicken Sie auf "Erstellen"](./media/java-get-started/02-create.png)
 3. Suchen Sie den Instrumentationsschlüssel der neuen Ressource. Dieser Schlüssel muss in Kürze in das Codeprojekt eingefügt werden.
 
-    ![Klicken Sie in der Übersicht über neue Ressourcen auf "Eigenschaften", und kopieren Sie den Instrumentationsschlüssel](./media/java-get-started/03-key.png)
+    ![Klicken Sie in der Übersicht über neue Ressourcen auf "Eigenschaften", und kopieren Sie den Instrumentationsschlüssel](./media/java-get-started/instrumentation-key-001.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Hinzufügen des Application Insights SDK für Java zu Ihrem Projekt
 *Wählen Sie die geeignete Methode für Ihr Projekt.*
@@ -165,8 +162,13 @@ Das Application Insights SDK sucht in dieser Reihenfolge nach dem Schlüssel:
 
 Sie können dies auch [per Code festlegen](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
-```Java
-    TelemetryConfiguration.getActive().setInstrumentationKey(iKey);
+```java
+    String instrumentationKey = "00000000-0000-0000-0000-000000000000";
+
+    if (instrumentationKey != null)
+    {
+        TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
+    }
 ```
 
 ## <a name="4-add-an-http-filter"></a>4. Hinzufügen eines HTTP-Filters
@@ -303,13 +305,13 @@ Kehren Sie zur Application Insights-Ressource im [Microsoft Azure-Portal](https:
 
 HTTP-Anforderungsdaten werden auf dem Übersichtsblatt angezeigt. (Wenn sie nicht vorhanden sind, warten Sie einige Sekunden, und klicken Sie dann auf "Aktualisieren".)
 
-![Beispieldaten](./media/java-get-started/5-results.png)
+![Screenshot der Übersicht über die Beispieldaten](./media/java-get-started/overview-graphs.png)
 
 [Weitere Informationen zu Metriken.][metrics]
 
 Klicken Sie sich durch ein beliebiges Diagramm, um ausführliche aggregierte Metriken anzuzeigen.
 
-![](./media/java-get-started/6-barchart.png)
+![Bereich für Application Insights-Fehler mit Diagrammen](./media/java-get-started/006-barcharts.png)
 
 > Application Insights geht bei HTTP-Anforderungen für MVC-Anwendungen von folgendem Format aus: `VERB controller/action`. `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` und `GET Home/Product/sdf96vws` werden beispielsweise zu `GET Home/Product` gruppiert. Diese Gruppierung ermöglicht aussagekräftige Aggregationen von Anforderungen (etwa die Anzahl und die durchschnittliche Ausführungszeit von Anforderungen).
 >
@@ -318,16 +320,12 @@ Klicken Sie sich durch ein beliebiges Diagramm, um ausführliche aggregierte Met
 ### <a name="instance-data"></a>Instanzdaten
 Klicken Sie sich durch einen bestimmten Anforderungstyp, um einzelne Instanzen anzuzeigen.
 
-In Application Insights werden zwei Arten von Daten angezeigt: aggregierte Daten, die als Mittelwerte, Anzahl und Summen gespeichert und angezeigt werden, sowie Instanzdaten, bei denen es sich um einzelne Berichte von HTTP-Anforderungen, Ausnahmen, Seitenansichten oder benutzerdefinierten Ereignissen handelt.
-
-Beim Anzeigen der Eigenschaften einer Anforderung können Sie die damit verbundenen Telemetrieereignisse erkennen, wie z.B. Anforderungen und Ausnahmen.
-
-![](./media/java-get-started/7-instance.png)
+![Detailinformationen in einer spezifischen Beispielansicht](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics: Leistungsfähige Abfragesprache
 Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von Daten als auch zum Ermitteln einzelner Instanzen ausführen.  [Analytics](../../azure-monitor/app/analytics.md) ist ein leistungsfähiges Tool zum Nachvollziehen der Leistung und Nutzung sowie für Diagnosezwecke.
 
-![Analytics-Beispiel](./media/java-get-started/025.png)
+![Analytics-Beispiel](./media/java-get-started/0025.png)
 
 ## <a name="7-install-your-app-on-the-server"></a>7. Installieren der App auf dem Server
 Jetzt veröffentlichen Sie Ihre App auf dem Server, erlauben deren Benutzung und sehen sich an, wie die Telemetrie im Portal angezeigt wird.
@@ -345,11 +343,25 @@ Jetzt veröffentlichen Sie Ihre App auf dem Server, erlauben deren Benutzung und
 
     (Diese Komponente aktiviert Leistungsindikatoren.)
 
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service-Konfiguration (Spring Boot)
+
+Spring Boot-Apps unter Windows erfordern eine zusätzliche Konfiguration für die Ausführung in Azure App Services. Bearbeiten Sie die Datei **web.config**, und fügen Sie Folgendes hinzu:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <handlers>
+            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
+        </handlers>
+        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
+        </httpPlatform>
+    </system.webServer>
+</configuration>
+```
 
 ## <a name="exceptions-and-request-failures"></a>Ausnahmen und Anforderungsfehler
-Nicht behandelte Ausnahmen werden automatisch gesammelt:
-
-![Öffnen Sie „Einstellungen“ > „Fehler“.](./media/java-get-started/21-exceptions.png)
+Nicht behandelte Ausnahmen werden automatisch erfasst.
 
 Um Daten zu anderen Ausnahmen zu erfassen, haben Sie zwei Möglichkeiten:
 
@@ -368,9 +380,9 @@ Die SDK-Eingangskonfiguration wird ausführlicher in unserem Artikel zu [Korrela
 Die SDK-Ausgangskonfiguration wird in der Datei [AI-Agent.xml](java-agent.md) definiert.
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
-Unter **Einstellungen** >**Server** finden Sie eine Reihe von Leistungsindikatoren.
+Unter **Untersuchen** > **Metriken** finden Sie eine Reihe von Leistungsindikatoren.
 
-![](./media/java-get-started/11-perf-counters.png)
+![Screenshot des Bereichs für Metriken mit ausgewählter Option für die Verarbeitung privater Bytes](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Anpassen der Erfassung von Leistungsindikatoren
 Um die Erfassung der Standardgruppe von Leistungsindikatoren zu deaktivieren, fügen Sie unter dem Stammknoten der Datei „ApplicationInsights.xml“ den folgenden Code hinzu:
@@ -420,10 +432,6 @@ Jeder [Windows-Leistungsindikator](https://msdn.microsoft.com/library/windows/de
 * counterName – Der Name des Leistungsindikators
 * instanceName – Der Name der Instanz der Leistungsindikatorkategorie oder eine leere Zeichenfolge (""), wenn die Kategorie eine einzelne Instanz enthält. Wenn "categoryName" auf "Process" festgelegt ist und der Leistungsindikator, den Sie erfassen möchten, aus dem aktuellen JVM-Prozess stammt, in dem Ihre Anwendung ausgeführt wird, geben Sie `"__SELF__"`an.
 
-Ihre Leistungsindikatoren werden im [Metrik-Explorer][metrics] als benutzerdefinierte Metriken angezeigt.
-
-![](./media/java-get-started/12-custom-perfs.png)
-
 ### <a name="unix-performance-counters"></a>Unix-Leistungsindikatoren
 * [Installieren Sie collectd mit dem Application Insights-Plug-In](java-collectd.md) , um eine Vielzahl von System- und Netzwerkdaten abzurufen.
 
@@ -467,22 +475,12 @@ Nachdem Sie das SDK installiert haben, können Sie die API verwenden, um eigene 
 * [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme besser zu diagnostizieren.
 
 ## <a name="availability-web-tests"></a>Verfügbarkeitswebtests
-Application Insights kann Ihre Website in regelmäßigen Abständen testen, um zu überprüfen, ob sie betriebsbereit ist und gut reagiert. Klicken Sie zum [Einrichten][availability] auf „Webtests“.
+Application Insights kann Ihre Website in regelmäßigen Abständen testen, um zu überprüfen, ob sie betriebsbereit ist und gut reagiert.
 
-![Klicken Sie auf „Webtests“ und anschließend auf „Webtest hinzufügen“.](./media/java-get-started/31-config-web-test.png)
-
-Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, falls Ihre Website ausfällt.
-
-![Beispiel für Webtest](./media/java-get-started/appinsights-10webtestresult.png)
-
-[Weitere Informationen zu Verfügbarkeitswebtests][availability]
+[Erfahren Sie mehr über das Einrichten von Verfügbarkeitswebtests.][availability]
 
 ## <a name="questions-problems"></a>Fragen? Probleme?
 [Problembehandlung für Java](java-troubleshoot.md)
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überwachen von Abhängigkeitsaufrufen](java-agent.md)

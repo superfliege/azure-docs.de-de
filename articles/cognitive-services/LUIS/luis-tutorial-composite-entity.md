@@ -1,5 +1,5 @@
 ---
-title: Entität vom Typ „Composite“
+title: Tutorial zu zusammengesetzten Entitäten
 titleSuffix: Azure Cognitive Services
 description: Hinzufügen einer zusammengesetzten Entität, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091578"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
@@ -85,18 +85,19 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 1. Wählen Sie in der Liste mit den Absichten die Option **TransferEmployeeToDepartment** aus.
 
-1. Wählen Sie in der ersten Äußerung die Entität „personName“ (`John Jackson`) aus. Wählen Sie anschließend im Popupmenü für die folgende Äußerung die Option **Start wrapping composite entity** (Mit Umschließung der zusammengesetzten Entität beginnen) aus:
+1. Wählen Sie in der Äußerung `place John Jackson in engineering` die personName-Entität `John Jackson` aus. Wählen Sie anschließend im Popupmenü für die folgende Äußerung die Option **In zusammengesetzter Entität umschließen** aus. 
 
-    `place John Jackson in engineering`
+    ![Screenshot: Auswahl des Umschließens in der zusammengesetzten Entität im Dropdowndialogfeld](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. Wählen Sie dann die letzte Entität `engineering` in der Äußerung aus. Die markierten Wörter werden grün unterstrichen, was auf eine zusammengesetzte Entität hinweist. Geben Sie im Popupmenü den zusammengesetzten Namen `TransferEmployeeInfo` ein, und drücken Sie die EINGABETASTE. 
 
-1. Unter **Welche Arten von Entitäten möchten Sie erstellen?** sind alle Pflichtfelder in der Liste enthalten: `personName` und `Department`. Wählen Sie **Fertig**aus. 
+    ![Screenshot: Eingabe des zusammengesetzten Namens im Dropdowndialogfeld](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-    Beachten Sie, dass der zusammengesetzten Entität die vordefinierte Entität „personName“ hinzugefügt wurde. Wenn eine vordefinierte Entität zwischen dem Anfangs- und dem Endtoken einer zusammengesetzten Entität auftreten kann, muss die zusammengesetzte Entität diese vordefinierten Entitäten enthalten. Wenn die vordefinierten Entitäten nicht enthalten sind, wird die zusammengesetzte Entität nicht ordnungsgemäß vorhergesagt, wohl aber die Einzelelemente.
+1. Unter **Welche Arten von Entitäten möchten Sie erstellen?** sind alle Pflichtfelder in der Liste enthalten: `personName` und `Department`. Wählen Sie **Fertig**aus. Beachten Sie, dass der zusammengesetzten Entität die vordefinierte Entität „personName“ hinzugefügt wurde. Wenn eine vordefinierte Entität zwischen dem Anfangs- und dem Endtoken einer zusammengesetzten Entität auftreten kann, muss die zusammengesetzte Entität diese vordefinierten Entitäten enthalten. Wenn die vordefinierten Entitäten nicht enthalten sind, wird die zusammengesetzte Entität nicht ordnungsgemäß vorhergesagt, wohl aber die Einzelelemente.
+
+    ![Screenshot: Eingabe des zusammengesetzten Namens im Dropdowndialogfeld](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Bezeichnen von Beispieläußerungen mit zusammengesetzter Entität
-
 
 1. Wählen Sie in jeder Beispieläußerung die Entität ganz links aus, die sich in der zusammengesetzten Entität befinden sollte. Klicken Sie dann auf **Zusammengesetzte Entität umschließen**.
 
@@ -182,7 +183,7 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
     }
     ```
 
-  Diese Äußerung gibt ein Array von zusammengesetzten Entitäten zurück. Jede Entität ist mit einem Typ und einem Wert versehen. Um die Genauigkeit für jede untergeordnete Entität zu erhöhen, verwenden Sie die Kombination aus Typ und Wert des Arrays von zusammengesetzten Elementen, um nach dem entsprechenden Element im Entitätenarray zu suchen.  
+   Diese Äußerung gibt ein Array von zusammengesetzten Entitäten zurück. Jede Entität ist mit einem Typ und einem Wert versehen. Um die Genauigkeit für jede untergeordnete Entität zu erhöhen, verwenden Sie die Kombination aus Typ und Wert des Arrays von zusammengesetzten Elementen, um nach dem entsprechenden Element im Entitätenarray zu suchen.  
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

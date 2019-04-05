@@ -4,14 +4,14 @@ description: Häufig gestellte Fragen zu Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: dbd9eaf531dcad230c23d1b41110036102faf3df
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652666"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404636"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT für Azure: Häufig gestellte Fragen
 
@@ -63,7 +63,7 @@ Avere vFXT ist ein Cache. Es werden keine Daten spezifisch gespeichert. Es verwe
 
 ### <a name="what-regions-are-supported"></a>Welche Regionen werden unterstützt?
 
-Ab dem 1. November 2018 wird Avere vFXT für Azure in allen Regionen unterstützt, mit Ausnahme von Regionen mit Datenhoheit (China, Deutschland) und Government-Regionen. Stellen Sie sicher, dass die zu verwendende Region die große Anzahl von Computekernen und die für die Erstellung des Avere vFXT-Clusters erforderlichen VM-Instanzen unterstützt.
+Avere vFXT for Azure wird mit Ausnahme von Regionen mit Datenhoheit (China, Deutschland) in allen Regionen unterstützt. Stellen Sie sicher, dass die zu verwendende Region die große Anzahl von Computekernen und die für die Erstellung des Avere vFXT-Clusters erforderlichen VM-Instanzen unterstützt.
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Wie erhalte ich Hilfe bei der Verwendung von Avere vFXT?
 
@@ -88,15 +88,17 @@ Avere vFXT ist eine gruppierte Appliance, die sich aus mehreren virtuellen Azure
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Auf welcher Art von virtuellen Azure-Computern wird Avere vFXT ausgeführt?  
 
-Avere vFXT for Azure-Cluster verwenden virtuelle Computer mit Microsoft Azure E32s_v3 oder D16s_v3. 
+Avere vFXT for Azure-Cluster verwenden virtuelle Computer mit Microsoft Azure E32s_v3. 
 
-### <a name="can-i-mix-and-match-virtual-machine-types-for-my-cluster"></a>Kann ich virtuelle Computertypen für meinen Cluster kombinieren und aufeinander abstimmen?
+<!-- ### Can I mix and match virtual machine types for my cluster?
 
-Nein, Sie müssen sich für einen Computertyp entscheiden.
+No, you must choose one virtual machine type or the other.
     
-### <a name="can-i-move-between-virtual-machine-types"></a>Kann ich zwischen virtuellen Computertypen wechseln?
+### Can I move between virtual machine types?
 
-Ja, es gibt einen Migrationspfad, um von einem virtuellen Computertyp zum anderen zu wechseln. [Öffnen Sie ein Supportticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt), um die Vorgehensweise zu erfahren.
+Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
+
+-->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Kann die Avere vFXT-Umgebung skaliert werden?
 
@@ -175,7 +177,7 @@ Ja, Sie können Ihr Avere vFXT-System in einem anderen virtuellen Netzwerk erste
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Ist für Avere vFXT ein eigenes Subnetz erforderlich?
 
-Ja. Avere vFXT wird strikt als Hochverfügbarkeitscluster ausgeführt und erfordert für den Betrieb mehrere IP-Adressen. Wenn sich der Cluster in einem eigenen Subnetz befindet, vermeiden Sie das Risiko von IP-Adresskonflikten, die zu Problemen bei der Installation und dem normalen Betrieb führen können. Das Subnetz des Clusters kann sich innerhalb des bestehenden virtuellen Netzwerks befinden, solange sich keine IP-Adressen überschneiden.
+Ja. Avere vFXT wird strikt als Hochverfügbarkeitscluster (High Availability, HA) ausgeführt und erfordert mehrere IP-Adressen für den Betrieb. Wenn sich der Cluster in einem eigenen Subnetz befindet, vermeiden Sie das Risiko von IP-Adresskonflikten, die zu Problemen bei der Installation und dem normalen Betrieb führen können. Das Subnetz des Clusters kann sich innerhalb des bestehenden virtuellen Netzwerks befinden, solange sich keine IP-Adressen überschneiden.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Kann Avere vFXT über InfiniBand ausgeführt werden?
 
@@ -214,6 +216,10 @@ Im Allgemeinen werden von Avere vFXT für Azure die folgenden Systeme als Kernsp
 
 * Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 und 8.1) 
 * NetApp ONTAP (Clustered Mode 9.4, 9.3, 9.2, 9.1P1, 8.0 bis 8.3) und (7-Mode 7.*, 8.0 und 8.3) 
+
+  > [!NOTE] 
+  > Azure NetApp Files wird derzeit nicht unterstützt. 
+
 * Azure-Blobcontainer (nur lokal redundanter Speicher) 
 * AWS S3-Buckets 
 * Google Cloud-Buckets

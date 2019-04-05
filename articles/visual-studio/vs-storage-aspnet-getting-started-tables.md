@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228962"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444632"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -114,7 +114,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Tabelle erstellen:
     }
     ```
 
-1. Rufen Sie in der **CreateTable**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **CreateTable**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -169,7 +169,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Tabelle erstellen:
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Tabelle erstellen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Tabelle erstellen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Tabelle erstellen](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -203,7 +203,7 @@ Die Entitätsklasse *muss* einen öffentlichen parameterlosen Konstruktor deklar
     }
     ```
 
-1. Rufen Sie in der **AddEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **AddEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -271,7 +271,7 @@ Die Entitätsklasse *muss* einen öffentlichen parameterlosen Konstruktor deklar
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Entität hinzufügen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Entität hinzufügen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Hinzufügen einer Entität](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -298,7 +298,7 @@ Sie können nicht nur Entitäten [einzeln nacheinander einer Tabelle hinzufügen
     }
     ```
 
-1. Rufen Sie in der **AddEntities**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **AddEntities**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -391,7 +391,7 @@ Sie können nicht nur Entitäten [einzeln nacheinander einer Tabelle hinzufügen
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Entitäten hinzufügen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Entitäten hinzufügen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Hinzufügen von Entitäten](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -418,7 +418,7 @@ Dieser Abschnitt veranschaulicht, wie eine einzelne Entität aus einer Tabelle m
     }
     ```
 
-1. Rufen Sie in der **GetSingle**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **GetSingle**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -493,7 +493,7 @@ Dieser Abschnitt veranschaulicht, wie eine einzelne Entität aus einer Tabelle m
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Einzelne Entität abrufen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Einzelne Entität abrufen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Abrufen einer einzelnen Entität](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -518,7 +518,7 @@ Wie im Abschnitt [Hinzufügen einer Entität zu einer Tabelle](#add-an-entity-to
     }
     ```
 
-1. Rufen Sie in der **GetPartition**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **GetPartition**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -603,7 +603,7 @@ Wie im Abschnitt [Hinzufügen einer Entität zu einer Tabelle](#add-an-entity-to
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Partition abrufen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Partition abrufen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Abrufen einer Partition](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -628,7 +628,7 @@ Dieser Abschnitt zeigt das Löschen einer Entität aus einer Tabelle.
     }
     ```
 
-1. Rufen Sie in der **DeleteEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **DeleteEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -703,7 +703,7 @@ Dieser Abschnitt zeigt das Löschen einer Entität aus einer Tabelle.
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Entität löschen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+1. Führen Sie die Anwendung aus, und wählen Sie **Entität löschen** aus, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Abrufen einer einzelnen Entität](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 

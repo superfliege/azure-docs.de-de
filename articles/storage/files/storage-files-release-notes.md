@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 2/12/2019
+ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2bbac21b9ac3e07cbb41ea8aa4cf93dcbd636d15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181778"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118611"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,7 +25,8 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 | Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
 |----|----------------------|--------------|------------------|
-| V5 Release – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. Februar 2019 | Unterstützt (empfohlene Version) |
+| Updaterollup von März 2019: [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. März 2019 | Unterstützt (empfohlene Version) |
+| V5 Release – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. Februar 2019 | Unterstützt |
 | Updaterollup von Januar 2019: [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 14. Januar 2019 | Unterstützt |
 | Updaterollup von Dezember 2018: [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. Dezember 2018 | Unterstützt |
 | Updaterollup von Dezember 2018 | 4.1.0.0 | 4. Dezember 2018 | Unterstützt |
@@ -38,13 +39,23 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-5100"></a>Agent-Version 5.1.0.0
+Die folgenden Versionshinweise gelten für Version 5.1.0.0 des Azure-Dateisynchronisierungs-Agents, die am 7. März 2019 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für Version 5.0.2.0 angegeben sind.
+
+Liste der in dieser Version behobenem Probleme:  
+- Bei der Dateisynchronisierung tritt möglicherweise Fehler „0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED)“, wenn die Änderungsenumeration auf dem Server nicht funktioniert.
+- Wenn eine Synchronisierungssitzung oder eine Datei den Fehler „0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE)“ empfängt, wiederholt die Synchronisierung den Vorgang nicht.
+- Beim Synchronisieren von Dateien tritt möglicherweise der Fehler „0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE)“ auf.
+- Beim Zurückrufen von Dateien tritt möglicherweise eine hohe Arbeitsspeicherauslastung auf.
+- Verbesserungen bei Cloudtiering-Telemetriedaten 
+
 ## <a name="agent-version-5020"></a>Agent-Version 5.0.2.0
 Die folgenden Versionshinweise gelten für Version 5.0.2.0 des Azure-Dateisynchronisierungs-Agents (veröffentlicht am 12. Februar 2019).
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbesserungen und behobene Probleme
 
 - Unterstützung für Azure Government-Cloud
-    - Wir haben Vorschauunterstützung für die Azure Government-Cloud hinzugefügt. Dazu ist ein zugelassenes Abonnement und ein spezieller Agent-Download von Microsoft erforderlich. Wenn Sie Zugriff auf die Vorschau erhalten möchten, senden Sie uns bitte unter [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com) eine E-Mail.
+  - Wir haben Vorschauunterstützung für die Azure Government-Cloud hinzugefügt. Dazu ist ein zugelassenes Abonnement und ein spezieller Agent-Download von Microsoft erforderlich. Wenn Sie Zugriff auf die Vorschau erhalten möchten, senden Sie uns bitte unter [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com) eine E-Mail.
 - Unterstützung für Datendeduplizierung
     - Die Datendeduplizierung wird jetzt mit aktiviertem Cloudtiering unter Windows Server 2016 und Windows Server 2019 vollständig unterstützt. Durch das Aktivieren der Deduplizierung auf einem Volume mit aktiviertem Cloudtiering können Sie weitere Dateien lokal zwischenspeichern, ohne mehr Speicher bereitstellen zu müssen.
 - Unterstützung für Offlinedatenübertragung (z.B. über Data Box)

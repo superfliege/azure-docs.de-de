@@ -2,23 +2,22 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 3/23/2019
 ms.author: tamram
-ms.openlocfilehash: 6c23e29238d393dc8d27128cfd6d785c0ac9f4c3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964599"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395672"
 ---
-| Ressource | Ziel |
+| Ressource | Ziel        |
 |----------|---------------|
 | Maximale Größe eines einzelnen Blobcontainers | Identisch mit maximaler Speicherkontokapazität |
 | Maximale Anzahl von Blöcken in einem Blockblob oder einem Anfügeblob | 50.000 Blöcke |
 | Maximale Größe eines Blocks in einem Blockblob | 100 MiB |
-| Maximale Größe eines Blockblobs | 50.000 × 100 MiB (ca. 4,75 TiB) |
+| Maximale Größe eines Blockblobs | 50.000 × 100MiB (ca. 4,75TiB) |
 | Maximale Größe eines Blocks in einem Anfügeblob | 4 MiB |
-| Maximale Größe eines Anfügeblobs | 50.000 × 4 MiB (ca. 195 GiB) |
+| Maximale Größe eines Anfügeblobs | 50.000 × 4MiB (ca. 195GiB) |
 | Max. Größe eines Seitenblobs | 8 TiB |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Blobcontainer | 5 |
-| Zieldurchsatz bei Einzel-Blob | Bis zu 60 MiB pro Sekunde oder bis zu 500 Anforderungen pro Sekunde |

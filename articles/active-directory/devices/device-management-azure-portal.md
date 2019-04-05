@@ -3,7 +3,7 @@ title: Verwalten von Geräten über das Azure-Portal | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Geräte über das Azure-Portal verwalten.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e245bb55747b9415c16386cff48e5ac758f529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 516a2d3b0f81bcef1ed636be9d1da9a270cc7069
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177885"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520019"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Verwalten von Geräten mithilfe des Azure-Portals
 
@@ -83,7 +83,7 @@ Auf der Seite mit den Geräteeinstellungen können Sie Folgendes konfigurieren:
 
 - **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**: Diese Einstellung ist standardmäßig auf **KEINE** festgelegt. Wenn Sie bestimmte Benutzer oder Gruppen oder „ALLE“ auswählen, können die Einstellungen und App-Daten der Benutzer auf ihren Windows 10-Geräten synchronisiert werden. Erfahren Sie mehr über die Funktionsweise der Synchronisierung in Windows 10.
 Diese Option ist eine Premium-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
- 
+
 
 
 
@@ -119,7 +119,7 @@ Für einige iOS-Geräte werden in Gerätenamen, die Apostrophe enthalten, mögli
 
 ## <a name="device-management-tasks"></a>Geräteverwaltungsaufgaben
 
-Als globaler Administrator können Sie die registrierten oder verknüpften Geräte verwalten. Intune-Dienstadministratoren können folgende Aktionen ausführen:
+Als globaler Administrator oder Cloudgeräteadministrator können Sie die registrierten oder verknüpften Geräte verwalten. Intune-Dienstadministratoren können folgende Aktionen ausführen:
  
 - Aktualisieren von Geräten: Beispiele sind tägliche Vorgänge wie das Aktivieren/Deaktivieren von Geräten.
 
@@ -151,7 +151,7 @@ Sie haben zwei Optionen, um ein Gerät zu aktivieren bzw. zu deaktivieren:
 
 **Hinweise:**
 
-- Zum Aktivieren oder Deaktivieren eines Geräts müssen Sie ein globaler Administrator in Azure AD sein. 
+- Zum Aktivieren oder Deaktivieren eines Geräts müssen Sie ein globaler Administrator oder ein Cloudgeräteadministrator in Azure AD sein. 
 - Durch die Aktivierung eines Geräts wird seine erfolgreiche Authentifizierung mit Azure AD verhindert. Dadurch wird wiederum verhindert, dass das Gerät auf Ihre Azure AD-Ressourcen zugreift, die durch eine Gerätezertifizierungsstelle oder mithilfe Ihrer WH4B-Anmeldeinformationen geschützt werden. 
 
 

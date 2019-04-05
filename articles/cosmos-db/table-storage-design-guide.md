@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302062"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960212"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure Storage Table – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 
@@ -213,7 +213,7 @@ Im Abschnitt „Übersicht über den Azure-Tabellenspeicherdienst“ weiter oben
 * Die zweitbeste Lösung ist eine ***Bereichsabfrage***, die den **PartitionKey** verwendet und einen Bereich von **RowKey**-Werten filtert, um mehrere Entitäten zurückzugeben. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition, die **RowKey**-Werte identifizieren eine Teilmenge der Entitäten in dieser Partition. Beispiel: $filter=PartitionKey eq 'Sales' und RowKey ge 'S' und RowKey lt 'T'  
 * Die drittbeste Lösung ist ein ***Partitionsscan***, der den **PartitionKey** sowie Filter für eine andere schlüsselfremde Eigenschaft verwendet und möglicherweise mehrere Entitäten zurückgibt. Der **PartitionKey** -Wert identifiziert eine bestimmte Partition und die Eigenschaftswerte wählen eine Teilmenge der Entitäten in dieser Partition aus. Beispiel: $filter=PartitionKey eq 'Sales' und LastName eq 'Smith'  
 * Ein ***Tabellenscan*** umfasst keinen **PartitionKey** und ist ineffizient, da er alle Partitionen, aus denen Ihre Tabelle besteht, auf übereinstimmende Entitäten untersucht. Er führt einen Tabellenscan durch, unabhängig davon, ob der Filter **RowKey**verwendet. Beispiel: $filter=LastName eq 'Jones'  
-* Azure Table Storage-Abfragen, die mehrere Entitäten zurückgeben, geben diese nach **PartitionKey** und **RowKey** sortiert zurück. Um eine Neusortierung der Entitäten im Client zu vermeiden, müssen Sie einen **RowKey** mit der am häufigsten verwendeten Sortierreihenfolge auswählen. Von der Azure-Tabellen-API in Azure Cosmso DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+* Azure Table Storage-Abfragen, die mehrere Entitäten zurückgeben, geben diese nach **PartitionKey** und **RowKey** sortiert zurück. Um eine Neusortierung der Entitäten im Client zu vermeiden, müssen Sie einen **RowKey** mit der am häufigsten verwendeten Sortierreihenfolge auswählen. Von der Azure-Tabellen-API in Azure Cosmos DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Die Verwendung von **or** für die Festlegung eines Filters, der auf **RowKey**-Werten basiert, führt zu einem Partitionsscan und wird nicht als Bereichsabfrage behandelt. Aus diesem Grund sollten Sie Abfragen vermeiden, die z. B. folgende Filter verwenden: $filter=PartitionKey eq 'Sales' und (RowKey eq '121' or RowKey eq '322')  
 
@@ -255,7 +255,7 @@ Viele Entwürfe müssen Anforderungen erfüllen, um die Suche nach Entitäten au
 Die vom Tabellenspeicherdienst zurückgegebenen Abfrageergebnisse sind in aufsteigender Reihenfolge nach **PartitionKey** und **RowKey** sortiert.
 
 > [!NOTE]
-> Von der Azure-Tabellen-API in Azure Cosmso DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Von der Azure-Tabellen-API in Azure Cosmos DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Schlüssel in Azure Table Storage sind Zeichenfolgenwerte. Um sicherzustellen, dass die numerischen Werte ordnungsgemäß sortiert werden, müssen sie in eine feste Länge konvertiert und mit Nullen aufgefüllt werden. Wenn etwa der als **RowKey** verwendete Mitarbeiter-ID-Wert ein ganzzahliger Wert ist, sollten Sie die Mitarbeiter-ID **123** in **00000123** konvertieren. 
 
@@ -723,7 +723,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey** -Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
 
 > [!NOTE]
-> Von der Azure-Tabellen-API in Azure Cosmso DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Dieses Muster eignet sich daher für Azure Table Storage und nicht für Azure Cosmos DB. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Von der Azure-Tabellen-API in Azure Cosmos DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Dieses Muster eignet sich daher für Azure Table Storage und nicht für Azure Cosmos DB. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontext und Problem
 Eine gängige Anforderung ist, die zuletzt erstellten Entitäten abzurufen, z.B. die letzten zehn Kostenabrechnungen, die von einem Mitarbeiter übermittelt wurden. Tabellenabfragen unterstützen einen **$top**-Abfragevorgang, um die ersten *n* Entitäten einer Menge zurückzugeben. Es gibt keinen entsprechenden Abfragevorgang, mit dem die letzten n Entitäten einer Menge zurückgegeben werden können.  

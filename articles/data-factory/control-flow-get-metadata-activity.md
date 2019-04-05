@@ -1,26 +1,27 @@
 ---
 title: Aktivität „Metadaten abrufen“ in Azure Data Factory | Microsoft-Dokumentation
-description: Informationen, wie Sie die SQL Server-Aktivität "Gespeicherte Prozedur" in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank oder einem Azure SQL Data Warehouse verwenden können.
+description: Erfahren Sie, wie Sie die GetMetadata-Aktivität in einer Data Factory-Pipeline verwenden können.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: shlo
-ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 03/11/2019
+ms.author: jingwang
+ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354262"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730704"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
+
 Die Aktivität „Metadaten abrufen“ kann zum Abrufen von **Metadaten** für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität kann in folgenden Szenarien verwendet werden:
 
 - Überprüfen der Metadateninformationen von Daten
@@ -45,14 +46,16 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Einga
 | Connector/Metadaten | itemName<br>(Datei/Ordner) | itemType<br>(Datei/Ordner) | size<br>(Datei) | created<br>(Datei/Ordner) | lastModified<br>(Datei/Ordner) |childItems<br>(Ordner) |contentMD5<br>(Datei) | structure<br/>(Datei) | columnCount<br>(Datei) | exists<br>(Datei/Ordner) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure Data Lake Storage Gen1 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure Data Lake Storage Gen2 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Dateisystem | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Für Amazon S3 gilt `lastModified` für Bucket und Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für Bucket und Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
+- Für Amazon S3 und Google Sloud Storage gilt `lastModified` für Bucket und Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für Bucket und Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
 - Für Azure Blob Storage gilt `lastModified` für Container und Blob, aber nicht für den virtuellen Ordner.
 
 **Relationale Datenbank**:
@@ -130,8 +133,8 @@ Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Typen von Meta
 
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
-fieldList | Listet die erforderlichen Typen der Metadateninformationen auf. Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options). | JA 
-dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. Die unterstützten Connectors werden im Abschnitt [Unterstützte Funktionen](#supported-capabilities) aufgeführt und im Thema zu Connectors finden Sie Einzelheiten zur Datasetsyntax. | JA
+fieldList | Listet die erforderlichen Typen der Metadateninformationen auf. Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options). | Ja 
+dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. Die unterstützten Connectors werden im Abschnitt [Unterstützte Funktionen](#supported-capabilities) aufgeführt und im Thema zu Connectors finden Sie Einzelheiten zur Datasetsyntax. | Ja
 
 ## <a name="sample-output"></a>Beispielausgabe
 

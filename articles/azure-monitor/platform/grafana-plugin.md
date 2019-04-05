@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002272"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -26,7 +26,8 @@ Führen Sie die folgenden Schritte aus, um einen Grafana-Server einzurichten und
 ## <a name="set-up-a-grafana-server"></a>Einrichten eines Grafana-Servers
 
 ### <a name="set-up-grafana-locally"></a>Lokales Einrichten von Grafana
-Um einen lokalen Grafana-Server einzurichten, müssen Sie [Grafana herunterladen und in Ihrer lokalen Umgebung installieren](https://grafana.com/grafana/download). Um die Integration des Plug-Ins in Log Analytics zu verwenden, installieren Sie Grafana 5.3 oder eine höhere Version.
+Um einen lokalen Grafana-Server einzurichten, müssen Sie [Grafana herunterladen und in Ihrer lokalen Umgebung installieren](https://grafana.com/grafana/download). Um die Azure Monitor-Integration des Plug-Ins zu verwenden, installieren Sie Grafana 5.3 oder eine höhere Version.
+
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Einrichten von Grafana in Azure über den Azure Marketplace
 1. Navigieren Sie zum Azure Marketplace, und wählen Sie Grafana von Grafana Labs aus.
 
@@ -70,15 +71,15 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
     Für die Log Analytics-API ist die [Rolle „Log Analytics-Leser“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) erforderlich, welche die Berechtigungen der Rolle "Leser" enthält und ergänzt.
 
 4. Geben Sie die Verbindungsdetails zu den APIs an, die Sie verwenden möchten. Sie können eine Verbindung zu allen oder nur zu einigen herstellen. 
-    * Wenn Sie eine Verbindung sowohl zu Azure Monitor (zum Sammeln von Metrikdaten) als auch zu Azure Log Analytics (für Protokolldaten) herstellen, können Sie die gleichen Anmeldeinformationen verwenden, indem Sie **Gleiche Details wie Azure Monitor-API** auswählen.
+    * Wenn Sie eine Verbindung mit Azure Monitor zum Sammeln sowohl von Metriken als auch von Protokollen herstellen, können Sie die gleichen Anmeldeinformationen verwenden, indem Sie **Gleiche Details wie Azure Monitor-API** auswählen.
     * Bei der Konfiguration des Plug-Ins können Sie angeben, welche Azure-Cloud (öffentlich, Azure US Government, Azure Deutschland oder Azure China) das Plug-In überwachen soll.
     * Bei Verwendung von Application Insights können Sie auch Ihre Application Insights-API und die Anwendungs-ID einbinden, um Application Insights-basierte Metriken zu sammeln. Weitere Informationen finden Sie unter [Getting your API key and Application ID](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID) (Abrufen Ihres API-Schlüssels und der Anwendungs-ID).
 
         > [!NOTE]
         > Einige Datenquellenfelder sind anders benannt als die entsprechenden Azure-Einstellungen:
-        >     * Die Mandanten-ID ist die Azure-Verzeichnis-ID
-        >     * Die Client-ID ist die Azure Active Directory-Anwendungs-ID
-        >     * Der geheime Clientschlüssel ist der Wert des Azure Active Directory-Anwendungsschlüssels
+        > * Die Mandanten-ID ist die Azure-Verzeichnis-ID
+        > * Die Client-ID ist die Azure Active Directory-Anwendungs-ID
+        > * Der geheime Clientschlüssel ist der Wert des Azure Active Directory-Anwendungsschlüssels
 
 5. Bei Verwendung von Application Insights können Sie auch Ihre Application Insights-API und die Anwendungs-ID einbinden, um Application Insights-basierte Metriken zu sammeln. Weitere Informationen finden Sie unter [Getting your API key and Application ID](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID) (Abrufen Ihres API-Schlüssels und der Anwendungs-ID).
 
@@ -95,16 +96,16 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
     ![Neuer Grafana-Graph](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. Wählen Sie die Azure Monitor-Datenquelle aus, die Sie konfiguriert haben.
-    * Wählen Sie **Azure Monitor** im Dropdownmenü „Dienst“ aus, um Azure Monitor-Metrikdaten zu sammeln. Es wird eine Liste der Selektoren angezeigt wird, in der Sie die Ressourcen und die Metrik auswählen können, die in diesem Diagramm überwacht werden sollen. Verwenden Sie den Namespace **Microsoft.Compute/VirtualMachines**, um Metriken von einem virtuellen Computer zu sammeln. Nachdem Sie die virtuellen Computer und die Metriken ausgewählt haben, können Sie damit beginnen, die Daten im Dashboard anzuzeigen.
-    ![Grafana-Diagrammkonfiguration für Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Wählen Sie **Azure Log Analytics** im Dropdownmenü „Dienst“ aus, um Azure Log Analytics-Daten zu sammeln. Wählen Sie den Arbeitsbereich aus, den Sie abfragen möchten, und legen Sie den Text der Abfrage fest. Sie können entweder eine bereits erstellte Log Analytics-Abfrage hierhin kopieren oder eine neue Abfrage erstellen. Während Sie die Abfrage eingeben, wird IntelliSense aktiv und schlägt Optionen zur automatischen Vervollständigung vor. Wählen Sie den Visualisierungstyp **Zeitreihe,** **Tabelle** aus, und starten Sie die Abfrage.
+   * Wählen Sie **Azure Monitor** im Dropdownmenü „Dienst“ aus, um Azure Monitor-Metrikdaten zu sammeln. Es wird eine Liste der Selektoren angezeigt wird, in der Sie die Ressourcen und die Metrik auswählen können, die in diesem Diagramm überwacht werden sollen. Verwenden Sie den Namespace **Microsoft.Compute/VirtualMachines**, um Metriken von einem virtuellen Computer zu sammeln. Nachdem Sie die virtuellen Computer und die Metriken ausgewählt haben, können Sie damit beginnen, die Daten im Dashboard anzuzeigen.
+     ![Grafana-Diagrammkonfiguration für Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Sammeln von Azure Monitor-Protokolldaten: Wählen Sie **Azure Log Analytics** in der Dropdownliste mit Diensten aus. Wählen Sie den Arbeitsbereich aus, den Sie abfragen möchten, und legen Sie den Text der Abfrage fest. Sie können eine bereits erstellte Protokollabfrage hierhin kopieren oder eine neue Abfrage erstellen. Während Sie die Abfrage eingeben, wird IntelliSense aktiv und schlägt Optionen zur automatischen Vervollständigung vor. Wählen Sie den Visualisierungstyp **Zeitreihe,** **Tabelle** aus, und starten Sie die Abfrage.
     
-    > [!NOTE]
-    >
-    > Die Standardabfrage, die im Lieferumfang des Plug-Ins enthalten ist, verwendet zwei Makros: $__timeFilter() und $__interval. 
-    > Anhand dieser Makros kann Grafana dynamisch den Zeitbereich und das Aggregationsintervall berechnen, wenn Sie einen Teil des Diagramms vergrößern. Sie können diese Makros entfernen und einen Standardzeitfilter wie *TimeGenerated > ago(1h)* verwenden, was allerdings bedeutet, dass die Vergrößerungsfunktion im Diagramm nicht unterstützt wird.
+     > [!NOTE]
+     >
+     > Die Standardabfrage, die im Lieferumfang des Plug-Ins enthalten ist, verwendet zwei Makros: $__timeFilter() und $__interval. 
+     > Anhand dieser Makros kann Grafana dynamisch den Zeitbereich und das Aggregationsintervall berechnen, wenn Sie einen Teil des Diagramms vergrößern. Sie können diese Makros entfernen und einen Standardzeitfilter wie *TimeGenerated > ago(1h)* verwenden, was allerdings bedeutet, dass die Vergrößerungsfunktion im Diagramm nicht unterstützt wird.
     
-    ![Grafana-Diagrammkonfiguration für Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
+     ![Grafana-Diagrammkonfiguration für Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Unten ist ein einfaches Dashboard mit zwei Diagrammen angegeben. Im linken Diagramm wird der CPU-Prozentsatz der beiden VMs angezeigt. Im rechten Diagramm werden die Transaktionen in einem Azure Storage-Konto unterteilt nach Transaktions-API-Typ angezeigt.
     ![Grafana-Beispiel mit zwei Diagrammen](media/grafana-plugin/grafana6.png)

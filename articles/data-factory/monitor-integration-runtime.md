@@ -3,21 +3,20 @@ title: Überwachen der Integrationslaufzeit in Azure Data Factory | Microsoft-Do
 description: Erfahren Sie, wie verschiedene Arten der Integrationslaufzeit in Azure Data Factory überwacht werden.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
-ms.author: douglasl
-ms.openlocfilehash: 8c3883ae6dd2928fb6cc4f22510e7992daac7793
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015303"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576330"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory  
 Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
@@ -26,16 +25,18 @@ Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um di
 - Selbstgehostete Integrationslaufzeit
 - Azure SSIS-Integrationslaufzeit
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Führen Sie den folgenden PowerShell-Befehl aus, um den Status einer Instanz der Integrationslaufzeit (IR) abzurufen: 
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
 Das Cmdlet gibt für verschiedene Arten der Integrationslaufzeit unterschiedliche Informationen zurück. In diesem Artikel werden die Eigenschaften und Statusangaben für die einzelnen Arten der Integrationslaufzeit erläutert.  
 
 ## <a name="azure-integration-runtime"></a>Azure-Integrationslaufzeit
-Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollständig flexibel verwaltet. Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom **Get-AzureRmDataFactoryV2IntegrationRuntime**-Befehl zurückgegeben werden:
+Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollständig flexibel verwaltet. Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom **Get-AzDataFactoryV2IntegrationRuntime**-Befehl zurückgegeben werden:
 
 ### <a name="properties"></a>Eigenschaften
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
@@ -58,7 +59,7 @@ Die folgende Tabelle enthält die möglichen Statuswerte einer Azure-Integration
 | Offline | Die Azure-Integrationslaufzeit ist aufgrund eines internen Fehlers offline. |
 
 ## <a name="self-hosted-integration-runtime"></a>Selbstgehostete Integrationslaufzeit
-Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzureRmDataFactoryV2IntegrationRuntime-Cmdlet zurückgegeben werden: 
+Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataFactoryV2IntegrationRuntime-Cmdlet zurückgegeben werden. 
 
 > [!NOTE] 
 > Die zurückgegebenen Eigenschaften und Statuswerte enthalten Informationen zur allgemeinen selbstgehosteten Integrationslaufzeit und zu jedem Knoten in der Integrationslaufzeit.  
@@ -86,7 +87,7 @@ Der Standardwert des Limits für gleichzeitige Aufträge basierend auf der Grö�
 
 Sie skalieren horizontal hoch, indem Sie die Anzahl der Knoten erhöhen. Wenn Sie die Anzahl von Knoten erhöhen, entspricht das Limit für gleichzeitige Aufträge der Summe der Grenzwerte für gleichzeitige Aufträge aller verfügbaren Knoten.  Wenn Sie z.B. auf einem Knoten maximal zwölf gleichzeitige Aufträge ausführen können und drei ähnliche Knoten hinzufügen, können Sie maximal 48 (d.h. 4 x 12) gleichzeitige Aufträge ausführen. Sie sollten das Limit für gleichzeitige Aufträge nur dann erhöhen, wenn Sie mit den Standardwerten auf jedem Knoten eine geringe Ressourcennutzung feststellen.
 
-Sie können den berechneten Standardwert im Azure-Portal überschreiben. Wählen Sie „Autor > Verbindungen > Integration Runtimes > Bearbeiten > Knoten > Wert für gleichzeitige Aufträge pro Knoten ändern“ aus. Sie können auch den PowerShell-Befehl [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) verwenden.
+Sie können den berechneten Standardwert im Azure-Portal überschreiben. Wählen Sie „Autor > Verbindungen > Integration Runtimes > Bearbeiten > Knoten > Wert für gleichzeitige Aufträge pro Knoten ändern“ aus. Sie können auch den PowerShell-Befehl [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) verwenden.
   
 ### <a name="status-per-node"></a>Status (pro Knoten)
 Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer selbstgehosteten Integrationslaufzeit:
@@ -111,10 +112,10 @@ Die folgende Tabelle enthält die möglichen Statuswerte einer selbstgehosteten 
 | Offline | Kein Knoten ist online. |
 | Eingeschränkt | Nicht alle Knoten in dieser selbstgehosteten Integrationslaufzeit weisen einen fehlerfreien Status auf. Dieser Status ist eine Warnung, dass einige Knoten unter Umständen ausgefallen sind. Dieser Status kann aufgrund eines Problems mit der Synchronisierung von Anmeldeinformationen auf einem Verteiler- oder Workerknoten auftreten. |
 
-Rufen Sie die JSON-Nutzlast, die die ausführlichen Eigenschaften der selbstgehosteten Integrationslaufzeit enthält, und deren Momentaufnahmewerte während der Ausführung des Cmdlets mithilfe des **Get-AzureRmDataFactoryV2IntegrationRuntimeMetric**-Cmdlets ab.
+Rufen Sie die JSON-Nutzlast, die die ausführlichen Eigenschaften der selbstgehosteten Integrationslaufzeit enthält, und deren Momentaufnahmewerte während der Ausführung des Cmdlets mithilfe des **Get-AzDataFactoryV2IntegrationRuntimeMetric**-Cmdlets ab.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
 Beispielausgabe (es wird angenommen, dass dieser selbstgehosteten Integrationslaufzeit zwei Knoten zugeordnet sind):
@@ -174,7 +175,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | VNetId | Die Ressourcen-ID des virtuellen Netzwerks zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | Subnetz | Der Subnetzname zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | ID | Die Ressourcen-ID Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Typ | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Type | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
 | ResourceGroupName | Der Name Ihrer Azure-Ressourcengruppe, in dem die Data Factory und Azure-SSIS-Integrationslaufzeit erstellt wurden. |
 | DataFactoryName | Der Name Ihrer Azure Data Factory. |
 | NAME | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |
@@ -213,7 +214,7 @@ Die folgenden Screenshots zeigen die Auswahl der zu überwachenden Azure-SSIS IR
 Verwenden Sie ein ähnliches Skript wie im folgenden Beispiel zum Überprüfen des Status der Azure-SSIS IR.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Weitere Informationen über Azure-SSIS Integration Runtime

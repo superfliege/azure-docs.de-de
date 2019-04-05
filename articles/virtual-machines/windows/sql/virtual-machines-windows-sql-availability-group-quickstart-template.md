@@ -1,6 +1,6 @@
 ---
-title: Erstellen von WSFC und Listener sowie Konfigurieren des internen Lastenausgleichs für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage
-description: Mit Azure-Schnellstartvorlagen können Sie die Erstellung von Verfügbarkeitsgruppen für SQL Server-VMs in Azure mithilfe einer Vorlage vereinfachen, die dazu dient, den Cluster zu erstellen, SQL-VMs in den Cluster einzubinden, den Listener zu erstellen und den internen Lastenausgleich zu konfigurieren.
+title: Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einer Azure VM
+description: Verwenden Sie Azure-Schnellstartvorlagen, um den Windows-Failovercluster zu erstellen, SQL Server-VMs in diesen einzubinden, den Listener zu erstellen und den internen Load Balancer in Azure zu konfigurieren.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2018
+ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4b4527bfaacc592c13552e362de0cba620314cd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122045"
 ---
-# <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>Erstellen von WSFC und Listener sowie Konfigurieren des internen Lastenausgleichs für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage
+# <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einer Azure VM
 In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Computer in Azure mithilfe von Azure-Schnellstartvorlagen teilweise automatisieren. Im Rahmen dieses Prozesses werden zwei Azure-Schnellstartvorlagen verwendet: 
 
    | Vorlage | BESCHREIBUNG |
@@ -38,7 +38,14 @@ Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgefü
 Wenn Sie die Einrichtung einer Always On-Verfügbarkeitsgruppe mithilfe von Schnellstartvorlagen automatisieren möchten, muss bereits Folgendes vorhanden sein: 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine Ressourcengruppe mit einem Domänencontroller. 
-- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet, die [beim SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider) wurde.  
+- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet, die [beim SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider) wurde.  
+- Zwei verfügbare (von keiner Entität verwendete ) IP-Adressen, eine für den internen Load Balancer und eine für den Verfügbarkeitsgruppenlistener im gleichen Subnetz wie die Verfügbarkeitsgruppe. Wenn ein vorhandener Load Balancer verwendet wird, wird nur eine verfügbare IP-Adresse benötigt.  
+
+## <a name="permissions"></a>Berechtigungen
+Die folgenden Berechtigungen sind erforderlich, um die Always On-Verfügbarkeitsgruppe mithilfe von Azure-Schnellstartvorlagen zu konfigurieren: 
+
+- Ein vorhandenes Domänenbenutzerkonto mit der Berechtigung zum Erstellen von Computerobjekten in der Domäne.  Beispielsweise verfügt ein Domänenadministratorkonto in der Regel über ausreichende Berechtigungen (Beispiel: account@domain.com). _Dieses Konto muss auch Teil der lokalen Administratorgruppe auf allen virtuellen Computern sein, um den Cluster zu erstellen._
+- Das Domänenbenutzerkonto, das den SQL Server-Dienst steuert. 
 
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>Schritt 1: Erstellen des WSFC und Einbinden von SQL Server-VMs in den Cluster mithilfe der Schnellstartvorlage 
@@ -69,12 +76,12 @@ Nachdem Sie Ihre SQL Server-VMs bei dem neuen SQL-VM-Ressourcenanbieter registri
 1. Wenn Sie den Geschäftsbedingungen zustimmen, aktivieren Sie das Kontrollkästchen neben **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie **Kaufen** aus, um die Bereitstellung der Schnellstartvorlage abzuschließen. 
 1. Wenn Sie Ihre Bereitstellung überwachen möchten, wählen Sie sie entweder unter **Benachrichtigungen** (Glockensymbol auf dem oberen Navigationsbanner) aus, oder navigieren Sie im Azure-Portal zu Ihrer **Ressourcengruppe**, und wählen Sie im Feld **Einstellungen** die Option **Bereitstellungen** und anschließend die Bereitstellung „Microsoft.Template“ aus. 
 
-  >[!NOTE]
-  > Während der Vorlagenbereitstellung angegebene Anmeldeinformationen werden nur für die Dauer der Bereitstellung gespeichert. Nach Abschluss der Bereitstellung werden diese Kennwörter entfernt, und Sie werden aufgefordert, sie erneut anzugeben, falls Sie dem Cluster weitere SQL Server-VMs hinzufügen. 
+   >[!NOTE]
+   > Während der Vorlagenbereitstellung angegebene Anmeldeinformationen werden nur für die Dauer der Bereitstellung gespeichert. Nach Abschluss der Bereitstellung werden diese Kennwörter entfernt, und Sie werden aufgefordert, sie erneut anzugeben, falls Sie dem Cluster weitere SQL Server-VMs hinzufügen. 
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>Schritt 2: Manuelles Erstellen der Verfügbarkeitsgruppe 
-Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) oder [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
+Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell) oder [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
   >[!IMPORTANT]
   > Erstellen Sie noch **keinen** Listener, da dies in Schritt 4 mithilfe der Vorlage **101-sql-vm-aglistener-setup** automatisiert wird. 
@@ -104,7 +111,7 @@ Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Ba
 6. Klicken Sie auf **Erstellen**. 
 
 
-  >[!NOTE]
+  >[!IMPORTANT]
   > Die öffentliche IP-Ressource für die einzelnen SQL Server-VMs muss über eine Standard-SKU verfügen, um mit Load Balancer Standard kompatibel zu sein. Die SKU der öffentlichen IP-Ressource Ihres virtuellen Computers können Sie wie folgt ermitteln: Navigieren Sie zu Ihrer **Ressourcengruppe**, und wählen Sie die Ressource **Öffentliche IP-Adresse** für die gewünschte SQL Server-VM aus. Der Wert befindet sich im Bereich **Übersicht** unter **SKU**. 
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>Schritt 4: Erstellen des Verfügbarkeitsgruppenlisteners und Konfigurieren des internen Lastenausgleichs mit der Schnellstartvorlage
@@ -143,8 +150,8 @@ Führen Sie die folgenden Schritte aus, um den internen Lastenausgleich zu konfi
 1. Wenn Sie den Geschäftsbedingungen zustimmen, aktivieren Sie das Kontrollkästchen neben **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie **Kaufen** aus, um die Bereitstellung der Schnellstartvorlage abzuschließen. 
 1. Wenn Sie Ihre Bereitstellung überwachen möchten, wählen Sie sie entweder unter **Benachrichtigungen** (Glockensymbol auf dem oberen Navigationsbanner) aus, oder navigieren Sie im Azure-Portal zu Ihrer **Ressourcengruppe**, und wählen Sie im Feld **Einstellungen** die Option **Bereitstellungen** und anschließend die Bereitstellung „Microsoft.Template“ aus. 
 
-  >[!NOTE]
-  >Sollte nach der Hälfte des Bereitstellungsvorgangs ein Fehler auftreten, müssen Sie [den neu erstellten Listener manuell mithilfe von PowerShell entfernen](#remove-availability-group-listener), bevor Sie die Schnellstartvorlage **101-sql-vm-aglistener-setup** erneut bereitstellen. 
+   >[!NOTE]
+   >Sollte nach der Hälfte des Bereitstellungsvorgangs ein Fehler auftreten, müssen Sie [den neu erstellten Listener manuell mithilfe von PowerShell entfernen](#remove-availability-group-listener), bevor Sie die Schnellstartvorlage **101-sql-vm-aglistener-setup** erneut bereitstellen. 
 
 ## <a name="remove-availability-group-listener"></a>Entfernen des Verfügbarkeitsgruppenlisteners
 Wenn Sie den durch die Vorlage konfigurierten Verfügbarkeitsgruppenlistener wieder entfernen möchten, müssen Sie dies über den SQL-VM-Ressourcenanbieter tun. Da der Listener über den SQL-VM-Ressourcenanbieter registriert wurde, reicht das Löschen über SQL Server Management Studio nicht aus. Stattdessen muss er unter Verwendung von PowerShell über den SQL-VM-Ressourcenanbieter gelöscht werden. Dadurch werden die Metadaten des Verfügbarkeitsgruppenlisteners aus dem SQL-VM-Ressourcenanbieter entfernt, und der Listener wird physisch aus der Verfügbarkeitsgruppe gelöscht. 
@@ -176,17 +183,17 @@ Dieser Fehler kann aus zwei Gründen auftreten. Entweder ist das angegebene Dom�
 
  Stellen Sie sicher, dass das Konto vorhanden ist. Wenn dies der Fall ist, kann die zweite Situation auftreten. Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
- 1. Öffnen Sie auf dem Domänencontroller das Fenster **Active Directory-Benutzer und -Computer** über die Option **Extras** im **Server-Manager**. 
- 2. Navigieren Sie zu dem Konto, indem Sie im linken Bereich **Benutzer** auswählen.
- 3. Klicken Sie mit der rechten Maustaste auf das gewünschte Konto, und wählen Sie **Eigenschaften** aus.
- 4. Wählen Sie die Registerkarte **Konto** aus, und überprüfen Sie, ob der **Benutzeranmeldename** leer ist. In diesem Fall ist dies die Fehlerursache. 
+1. Öffnen Sie auf dem Domänencontroller das Fenster **Active Directory-Benutzer und -Computer** über die Option **Extras** im **Server-Manager**. 
+2. Navigieren Sie zu dem Konto, indem Sie im linken Bereich **Benutzer** auswählen.
+3. Klicken Sie mit der rechten Maustaste auf das gewünschte Konto, und wählen Sie **Eigenschaften** aus.
+4. Wählen Sie die Registerkarte **Konto** aus, und überprüfen Sie, ob der **Benutzeranmeldename** leer ist. In diesem Fall ist dies die Fehlerursache. 
 
-     ![Ein leeres Benutzerkonto deutet auf einen fehlenden UPN hin.](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![Ein leeres Benutzerkonto deutet auf einen fehlenden UPN hin.](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
- 5. Geben Sie als **Benutzeranmeldename** den Namen des Benutzers ein, und wählen Sie in der Dropdownliste die passende Domäne aus. 
- 6. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern, und schließen Sie das Dialogfeld, indem Sie **OK** auswählen. 
+5. Geben Sie als **Benutzeranmeldename** den Namen des Benutzers ein, und wählen Sie in der Dropdownliste die passende Domäne aus. 
+6. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern, und schließen Sie das Dialogfeld, indem Sie **OK** auswählen. 
 
- Nachdem diese Änderungen vorgenommen wurden, versuchen Sie erneut, die Azure-Schnellstartvorlage bereitzustellen. 
+   Nachdem diese Änderungen vorgenommen wurden, versuchen Sie erneut, die Azure-Schnellstartvorlage bereitzustellen. 
 
 
 

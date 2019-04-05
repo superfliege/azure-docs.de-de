@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: e6ab51d568c950ca7fd503150557df288d84174f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867731"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593421"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Hinzufügen von Absichten, um die Absicht von Benutzeräußerungen zu bestimmen
 
@@ -50,21 +50,14 @@ Eine Äußerung in einer Absicht kann eine Abweichung bei der Absichtsvorhersage
 
 Wählen Sie im oberen Navigationsbereich die Option **Trainieren**. Die Abweichung der Vorhersage ist nun nicht mehr vorhanden.
 
+> [!Note]
+> Wenn ein Wort oder Ausdruck in der Beispieläußerung rot unterstrichen ist, ist ein [Entitätsvorhersagefehler](luis-how-to-add-example-utterances.md#entity-status-predictions) aufgetreten. Sie müssen ihn korrigieren. 
+
 ## <a name="add-a-custom-entity"></a>Hinzufügen einer benutzerdefinierten Entität
 
 Nachdem eine Äußerung einer Absicht hinzugefügt wurde, können Sie Text der Äußerung auswählen, um eine benutzerdefinierte Entität zu erstellen. Eine benutzerdefinierte Entität ist eine Möglichkeit, um Text zusammen mit der richtigen Absicht für die Extrahierung zu kennzeichnen. 
 
-1. Wählen Sie in der Äußerung das Wort `Seattle` aus. Der Text wird in eckige Klammern gesetzt, und es wird ein Dropdownmenü angezeigt. 
-
-    ![Screenshot: Seite mit Absichtsdetails, Erstellung einer benutzerdefinierten Entität](./media/luis-how-to-add-intents/create-custom-entity.png) 
-
-    In diesem Beispiel wird ein einzelnes Wort ausgewählt, um es als Entität zu kennzeichnen. Sie können einzelne Wörter und Wortgruppen als Entitäten kennzeichnen.
-
-1. Geben Sie im oberen Textfeld des Menüs das Wort `Location` ein, und wählen Sie dann **Neue Entität erstellen**. 
-
-    ![Screenshot: Seite mit Absichtsdetails, Erstellung des Namens für benutzerdefinierte Entität](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
-
-1. Überprüfen Sie im Popupfenster **What type of entity do you want to create?** (Welchen Entitätstyp möchten Sie erstellen?) für die Entitätserstellung, ob der **Entitätsname** auf _Location_ (Standort) und der **Entitätstyp** auf _Simple_ (Einfach) festgelegt ist. Wählen Sie **Fertig**aus.
+Weitere Informationen finden Sie unter [Hinzufügen einer Entität zu Beispieläußerungen](luis-how-to-add-example-utterances.md).
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Fehler durch Abweichung bei der Entitätsvorhersage 
 

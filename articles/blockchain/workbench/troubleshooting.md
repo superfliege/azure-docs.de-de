@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b55c84773d99c325689fbc5182e75c7cb108d00a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890014"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Für das Debuggen durch Entwickler und zur Unterstützung ist ein PowerShell-Skr
 * Blockchain-Netzwerk wie Ethereum
 * Blockchain Workbench-Microservices
 * Application Insights
-* Azure-Überwachung (Log Analytics)
+* Azure-Überwachung (Azure Monitor-Protokolle)
 
 Anhand dieser Informationen können Sie die nächsten Schritte bestimmen und die Grundursache von Problemen ermitteln.
 
@@ -48,13 +48,13 @@ Das Skript akzeptiert die folgenden Parameter:
 
 | Parameter  | BESCHREIBUNG | Erforderlich |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID zum Erstellen oder Suchen aller Ressourcen. | JA |
-| ResourceGroupName | Name der Azure-Ressourcengruppe, in der Blockchain Workbench bereitgestellt wurde. | JA |
+| SubscriptionID | SubscriptionID zum Erstellen oder Suchen aller Ressourcen. | Ja |
+| ResourceGroupName | Name der Azure-Ressourcengruppe, in der Blockchain Workbench bereitgestellt wurde. | Ja |
 | OutputDirectory | Pfad zum Erstellen der ZIP-Ausgabedatei. Wenn nicht angegeben, wird standardmäßig das aktuelle Verzeichnis verwendet. | Nein  |
 | LookbackHours | Die Anzahl der beim Abrufen von Telemetriedaten zu verwendenden Stunden. Der Standardwert ist 24 Stunden. Der Höchstwert ist 90 Stunden. | Nein  |
-| OmsSubscriptionId | Die Abonnement-ID für die Log Analytics-Bereitstellung. Übergeben Sie diesen Parameter nur, wenn Log Analytics für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
-| OmsResourceGroup |Die Ressourcengruppe, in der Log Analytics bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Log Analytics für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
-| OmsWorkspaceName | Name des Log Analytics-Arbeitsbereichs. Übergeben Sie diesen Parameter nur, wenn Log Analytics für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein  |
+| OmsSubscriptionId | Die Abonnement-ID, für die Azure Monitor-Protokolle bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OmsResourceGroup |Die Ressourcengruppe, in der Azure Monitor-Protokolle bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OmsWorkspaceName | Name des Log Analytics-Arbeitsbereichs. Übergeben Sie diesen Parameter nur, wenn Azure Monitor-Protokolle für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein  |
 
 ## <a name="what-is-collected"></a>Was wird gesammelt?
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c2b0c52ca78f2b9c4273280aa9da16a5ef1bbc00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003246"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -43,12 +43,23 @@ Das SQL API Java SDK unterstützt synchrone Vorgänge. Verwenden Sie für die Un
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name210213"></a><a name="2.1.0"/>2.1.3
+* Fehler in PartitionKey für Hash V2 behoben.
+
+### <a name="a-name210212"></a><a name="2.1.0"/>2.1.2
+* Unterstützung für zusammengesetzte Indizes hinzugefügt.
+* Fehler im globalen Endpunkt-Manager beim Erzwingen von Aktualisierungen behoben.
+* Fehler bei upsert-Vorgängen mit Vorbedingungen im direkten Modus behoben.
+
+### <a name="a-name210211"></a><a name="2.1.0"/>2.1.1
+* Fehler im Gatewayadresscache behoben.
+
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Unterstützung von Schreibvorgängen in mehreren Regionen für den Direktmodus hinzugefügt.
 * Unterstützung der Behandlung von E/A-Ausnahmen (IOExceptions) hinzugefügt, die von einem Proxy als Ausnahmen vom Typ „ServiceUnavailable“ ausgelöst werden.
 * Fehler in der Wiederholungsrichtlinie für die Endpunktermittlung behoben.
 * Fehler behoben, um sicherzustellen, dass in „BaseDatabaseAccountConfigurationProvider“ keine NULL-Zeiger-Ausnahmen ausgelöst werden.
-* Fehler behoben, um sicherzustellen, dass der Abfrageenumerator keine NULL-Werte zurückgibt.
+* Fehler behoben, um sicherzustellen, dass QueryIterator keine NULL-Werte zurückgibt.
 * Fehler behoben, um große PartitionKey-Werte zuzulassen.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -212,7 +223,10 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
-| 2.1.1 |21. November 2018 |--- |
+| [2.1.3](#2.1.3) |13. März 2018 |--- |
+| [2.1.2](#2.1.2) |09. März 2018 |--- |
+| [2.1.1](#2.1.1) |13. Dezember 2018 |--- |
+| [2.1.0](#2.1.0) |20. November 2018 |--- |
 | [2.0.0](#2.0.0) |21. September 2018 |--- |
 | [1.16.4](#1.16.4) |10. September 2018 |--- |
 | [1.16.3](#1.16.3) |09. September 2018 |--- |

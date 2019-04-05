@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 08/30/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: fe1227d91c0d039a94e5b9a3046b879f4f17355a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 844e4a0d2715799b808f2c7630c201f6e792bd63
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246882"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124418"
 ---
 | Ressource | Basic | Standard | Premium |
-|---|---|---|---|---|
+|---|---|---|---|
 | Storage<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maximale Größe für Bildebenen | 20 GiB | 20 GiB | 50 GiB |
+| Maximale Größe für Imageebenen | 20 GiB | 20 GiB | 50 GiB |
 | Lesevorgänge pro Minute<sup>2, 3</sup> | 1.000 | 3,000 | 10.000 |
 | Schreibvorgänge pro Minute<sup>2, 4</sup> | 100 | 500 | 2.000 |
 | Downloadbandbreite MBit/s<sup>2</sup> | 30 | 60 | 100 |
@@ -27,13 +27,13 @@ ms.locfileid: "56246882"
 | Georeplikation | – | – | [Unterstützt][geo-replication] |
 | Inhaltsvertrauen (Vorschauversion) | – | – | [Unterstützt][content-trust] |
 
-<sup>1</sup> Die angegebenen Speichergrenzen beziehen sich auf die Größe des *inkludierten* Speichers für jeden Tariftyp. Für Imagespeicher, der diese Grenzen überschreitet, wird Ihnen ein zusätzlicher Tagestarif pro GiB in Rechnung gestellt. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
+<sup>1</sup> Die angegebenen Speichergrenzen beziehen sich auf die Größe des *inbegriffenen* Speichers für jeden Tarif. Für Imagespeicher, der diese Grenzen überschreitet, wird Ihnen ein zusätzlicher Tagestarif pro GiB in Rechnung gestellt. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
 
-<sup>2</sup> *Lesevorgänge*, *Schreibvorgänge* und *Bandbreite* sind die geschätzten Mindestwerte. ACR soll die Leistung der Nutzung entsprechend verbessern.
+<sup>2</sup> *Lesevorgänge*, *Schreibvorgänge* und *Bandbreite* sind geschätzte Mindestwerte. Die Azure Container Registry soll die Leistung der Nutzung nach Bedarf verbessern.
 
-<sup>3</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) wird auf Grundlage der Zahl an Ebenen im Image sowie des Manifestabrufs in mehrere Lesevorgänge übersetzt.
+<sup>3</sup> Ein [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image)-Befehl wird basierend auf der Anzahl von Ebenen im Image in mehrere Lesevorgänge plus Manifestabruf übersetzt.
 
-<sup>4</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) wird auf Grundlage der Zahl an Ebenen, die per Push übertragen werden müssen, in mehrere Schreibvorgänge übersetzt. Ein `docker push` enthält *Lesevorgänge* zum Abrufen eines Manifests für ein vorhandenes Image.
+<sup>4</sup> Ein [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image)-Befehl wird basierend auf der Anzahl von Ebenen, die per Push übertragen werden müssen, in mehrere Schreibvorgänge übersetzt. Ein `docker push` enthält *Lesevorgänge* zum Abrufen eines Manifests für ein vorhandenes Image.
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
-ms.openlocfilehash: b1cf3dc24482da70372f775d0ba63a203df1b285
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572193"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56753769"
 ---
 Einige Bing-Antworten enthalten URLs zu von Bing bereitgestellten Miniaturbildern. Miniaturbilder können vergrößert/verkleinert und zugeschnitten werden. 
 
@@ -17,11 +17,11 @@ Einige Bing-Antworten enthalten URLs zu von Bing bereitgestellten Miniaturbilder
 > Achten Sie darauf, dass Größe und Zuschnitt des Miniaturbilds ein Suchszenario ermöglichen, und respektieren Sie die Rechte Dritter gemäß den Verwendungs- und Anzeigeanforderungen der Bing-Suche-API.
 
 
-Wenn Sie die Größe eines Bilds ändern möchten, fügen Sie die Abfrageparameter „w“ (Breite) und „h“ (Höhe) in die URL der Miniaturansicht ein. Geben Sie Breite und Höhe in Pixel an. Beispiel:   
+Wenn Sie die Größe eines Bilds ändern möchten, fügen Sie die Abfrageparameter „w“ (Breite), „h“ (Höhe) oder beide in die URL der Miniaturansicht ein. Geben Sie Breite und Höhe in Pixel an. Beispiel:   
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   
-Wenn Sie die Größe des Bilds ändern, wird das Seitenverhältnis beibehalten. Hierzu wird am Rand des Bilds ggf. ein weißer Bereich hinzugefügt. Wenn Sie also beispielsweise die Größe eines Bilds mit den Abmessungen 480 x 359 auf 200 x 200 festlegen, ohne das Bild zuzuschneiden, füllt das Bild zwar die gesamte Breite aus, oben und unten wird jedoch ein weißer Bereich mit 25 Pixeln hinzugefügt. Gleiches gilt bei einem Bild mit den Abmessungen 359 x 480; in diesem Fall wird der weiße Bereich allerdings links und rechts hinzugefügt. Wenn Sie das Bild zuschneiden, wird der weiße Bereich nicht hinzugefügt.  
+Wenn Sie nur den Breiten- oder nur den Höhenabfrageparameter angeben, behält Bing das Seitenverhältnis des Bilds bei. Wenn Sie Breite und Höhe angeben und das ursprüngliche Seitenverhältnis des Bilds nicht beibehalten, fügt Bing am Rahmen des Bilds einen weißen Bereich hinzu. Wenn Sie also beispielsweise die Größe eines Bilds mit den Abmessungen 480 x 359 auf 200 x 200 festlegen, ohne das Bild zuzuschneiden, füllt das Bild zwar die gesamte Breite aus, oben und unten wird jedoch ein weißer Bereich mit 25 Pixeln hinzugefügt. Gleiches gilt bei einem Bild mit den Abmessungen 359 x 480; in diesem Fall wird der weiße Bereich allerdings links und rechts hinzugefügt. Wenn Sie das Bild zuschneiden, wird der weiße Bereich nicht hinzugefügt.  
 
  
 Die folgende Abbildung zeigt die Originalgröße eines Miniaturbilds (480 x 300):  

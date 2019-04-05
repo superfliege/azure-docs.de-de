@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: da24c437a1dbe8744579cd26ee1348f50c4815ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884743"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -206,30 +206,34 @@ Azure Notification Hubs bietet verschiedene Problembehandlungsfeatures – insbe
 
 Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [Azure-Portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Notification Hubs-Metriken].
 
+Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen finden Sie in den folgenden Artikeln:
+
+- [Retrieve Azure Monitor metrics with .NET (Abrufen von Azure Monitor-Metriken mit .NET)](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). In diesem Beispiel werden Benutzername und Kennwort verwendet. Um ein Zertifikat zu verwenden, überladen Sie die FromServicePrincipal-Methode, um ein Zertifikat wie [in diesem Beispiel](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs) gezeigt anzugeben. 
+- [Getting metrics and activity logs for a resource](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/) (Abrufen von Metriken und Aktivitätsprotokollen für eine Ressource)
+- [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](../azure-monitor/platform/rest-api-walkthrough.md)
+
+
 > [!NOTE]
 > Wenn Benachrichtigungen erfolgreich waren, bedeutet das einfach, dass Pushbenachrichtigungen an den externen PNS (beispielsweise APNS für Apple oder FCM für Google) übermittelt wurden. Der PNS hat die Aufgabe, die Benachrichtigungen an Zielgeräte zu übermitteln. In der Regel macht der PNS Übermittlungsmetriken nicht für Dritte verfügbar.  
 
-Wir bieten außerdem die Möglichkeit, Telemetriedaten programmgesteuert zu exportieren (im Standard-Tarif). Ausführliche Informationen finden Sie im [Metrikbeispiel für Notification Hubs].
-
 [Azure-Portal]: https://portal.azure.com
-[Notification Hubs – Preise]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
+[Notification Hubs – Preise]: https://azure.microsoft.com/pricing/details/notification-hubs/
+[Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Fallstudie: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [Fallstudie: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [Fallstudie: Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [Fallstudie: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Fallstudie: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [REST-APIs für Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Einführungstutorials für Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Erste Schritte mit Notification Hubs für Chrome-Apps]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
-[Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
+[Einführungstutorials für Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Erste Schritte mit Notification Hubs für Chrome-Apps]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
+[Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Leitfaden zur Back-End-Registrierung]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Leitfaden zur Back-End-Registrierung 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
 [Sicherheitsmodell von Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Tutorial zu sicheren Pushbenachrichtigungen mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Problembehandlung für Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Tutorial zu sicheren Pushbenachrichtigungen mit Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
+[Problembehandlung für Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs-Metriken]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Metrikbeispiel für Notification Hubs]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Vorgehensweise: Massenhaftes Exportieren und Ändern von Registrierungen]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure-Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

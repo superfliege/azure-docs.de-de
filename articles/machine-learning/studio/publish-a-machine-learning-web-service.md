@@ -5,17 +5,17 @@ description: So konvertieren Sie ein Trainingsexperiment in ein Vorhersageexperi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5990f47a7cc1517349d85654bf5f02f6240e9baa
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895727"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Bereitstellen eines Azure Machine Learning Studio-Webdiensts
 
@@ -93,23 +93,23 @@ Die RRS-Testseite zeigt die Eingaben, Ausgaben und alle globalen Parameter, die 
 
 Zum Testen mit dem RRS geben Sie im Listenansichtsmodus für die Eingaben geeignete Werte ein und klicken dann auf **Test Request-Response**. Ihre Vorhersageergebnisse werden in der Ausgabespalte links angezeigt.
 
-![Bereitstellen des Webdiensts](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+![Eingeben der entsprechenden Werte zum Testen Ihres Webdiensts](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
 Klicken Sie zum Testen Ihres BES auf **Batch**. Klicken Sie auf der Testseite „Batch“ unter Ihrer Eingabe auf „Browse“, und wählen Sie eine CSV-Datei mit den entsprechenden Beispielwerten aus. Wenn Sie keine CSV-Datei haben und Ihr Vorhersageexperiment mithilfe von Machine Learning Studio erstellt haben, können Sie das Dataset für Ihr Vorhersageexperiment herunterladen und nutzen.
 
 Um das Dataset herunterzuladen, öffnen Sie Machine Learning Studio. Öffnen Sie das Vorhersageexperiment, und klicken Sie mit der rechten Maustaste auf die Eingabe für das Experiment. Wählen Sie im Kontextmenü **Dataset** und dann **Download** aus.
 
-![Bereitstellen des Webdiensts](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
+![Herunterladen Ihres Datasets aus dem Studio-Canvas](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
 Klicken Sie auf **Test**. Der Status Ihres Batchausführungsauftrags wird rechts unter **Test Batch Jobs**angezeigt.
 
-![Bereitstellen des Webdiensts](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+![Testen Ihres Batchausführungsauftrags mit dem Web Services-Portal](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
 Auf der Seite **CONFIGURATION** können Sie die Beschreibung und den Titel ändern, den Speicherkontoschlüssel aktualisieren und Beispieldaten für Ihren Webdienst aktivieren.
 
-![Konfigurieren des Webdiensts](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
+![Konfigurieren Ihres Webdiensts](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
 
 ### <a name="access-your-new-web-service"></a>Zugreifen auf den neuen Webdienst
 
@@ -161,7 +161,7 @@ Nachdem das Vorhersageexperiment ausreichend vorbereitet wurde, können Sie es a
 
 Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** und anschließend auf **Deploy Web Service**. Der Webdienst wird eingerichtet, und Sie werden zum Webdienst-Dashboard weitergeleitet.
 
-![Bereitstellen des Webdiensts](./media/publish-a-machine-learning-web-service/figure-2.png)
+![Bereitstellen Ihres Webdiensts aus Studio](./media/publish-a-machine-learning-web-service/figure-2.png)
 
 ### <a name="test-your-classic-web-service"></a>Testen des klassischen Webdiensts
 
@@ -181,7 +181,7 @@ Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstp
 
 Sie können die Protokollierung aktivieren, um Fehler zu diagnostizieren, die angezeigt werden, wenn auf den Webdienst zugegriffen wird. Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung für Machine Learning Studio-Webdienste](web-services-logging.md).
 
-![Konfigurieren des Webdiensts](./media/publish-a-machine-learning-web-service/figure-4.png)
+![Aktivieren der Protokollierung im Webdiensteportal](./media/publish-a-machine-learning-web-service/figure-4.png)
 
 Sie können auch die Endpunkte für den Webdienst im Azure Machine Learning-Webdienstportal konfigurieren (wie im zuvor im Abschnitt „Neuer Webdienst“ gezeigten Verfahren). Die Optionen sind unterschiedlich. Sie können die Dienstbeschreibung hinzufügen oder ändern, die Protokollierung aktivieren und Beispieldaten für Tests aktivieren.
 
@@ -209,7 +209,7 @@ Da Sie dieses Experiment zuvor bereitgestellt haben, werden Sie gefragt, ob Sie 
 > [!NOTE]
 > Wenn Sie Konfigurationsänderungen im ursprünglichen Webdienst vorgenommen haben, z. B. einen anderen Anzeigenamen oder eine andere Beschreibung eingegeben haben, dann müssen Sie diese Werte erneut eingeben.
 
-Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute Trainieren des Modells. Weitere Informationen finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen](retrain-models-programmatically.md).
+Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute Trainieren des Modells. Weitere Informationen finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen](/azure/machine-learning/studio/retrain-machine-learning-model).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -219,13 +219,12 @@ Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute 
 
 * Es gibt mehrere Möglichkeiten, die REST-API zu nutzen und auf den Webdienst zuzugreifen. Siehe [Nutzen eines Azure Machine Learning Studio-Webdiensts](consume-web-services.md).
 
-
 <!-- internal links -->
 [Erstellen eines Trainingsexperiments]: #create-a-training-experiment
 [Konvertierten in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
 [Neuer Webdienst]: #deploy-it-as-a-new-web-service
 [Klassischer Webdienst]: #deploy-it-as-a-classic-web-service
-[Neu]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Neu]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal

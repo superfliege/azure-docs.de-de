@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zu Azure IoT Hub-Aufträgen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Planen der Ausführung von Aufträgen auf mehreren Geräten, die mit Ihrer IoT Hub-Instanz verbunden sind. Aufträge können Tags und gewünschte Eigenschaften aktualisieren und auf mehreren Geräten direkte Methoden aufrufen.'
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: dobett
-ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2b05b1854b4f1d7ee4ac65ebe635330ba8c604e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884223"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011363"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
 
@@ -126,15 +126,15 @@ Die folgende Liste enthält die Eigenschaften und entsprechenden Beschreibungen,
 | | **scheduled**: Für einen Zeitpunkt in der Zukunft geplant. |
 | | **running**: Derzeit aktiver Auftrag. |
 | | **canceled**: Der Auftrag wurde abgebrochen. |
-| | **failed**: Fehler beim Auftrag. |
-| | **completed**: Auftrag wurde abgeschlossen. |
+| | **failed**: Fehler beim Ausführen des Auftrags. |
+| | **completed**: Der Auftrag wurde abgeschlossen. |
 | **deviceJobStatistics** |Statistiken zur Ausführung des Auftrags. |
 | | **deviceJobStatistics**-Eigenschaften: |
 | | **deviceJobStatistics.deviceCount**: Anzahl der Geräte im Auftrag. |
-| | **deviceJobStatistics.failedCount**: Anzahl der Geräte, bei denen der Auftrag fehlgeschlagen ist. |
-| | **deviceJobStatistics.succeededCount**: Anzahl der Geräte, bei denen der Auftrag erfolgreich ausgeführt wurde. |
+| | **deviceJobStatistics.failedCount**: Anzahl der Geräte, auf denen der Auftrag fehlgeschlagen ist. |
+| | **deviceJobStatistics.succeededCount**: Anzahl der Geräte, auf denen der Auftrag erfolgreich war. |
 | | **deviceJobStatistics.runningCount**: Anzahl der Geräte, auf denen der Auftrag derzeit ausgeführt wird. |
-| | **deviceJobStatistics.pendingCount**: Anzahl der Geräte, bei denen die Ausführung des Auftrags aussteht. |
+| | **deviceJobStatistics.pendingCount**: Anzahl der Geräte, auf denen die Ausführung des Auftrags aussteht. |
 
 ### <a name="additional-reference-material"></a>Weiteres Referenzmaterial
 

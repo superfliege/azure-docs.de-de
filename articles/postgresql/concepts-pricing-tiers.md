@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695026"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532047"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -43,35 +43,38 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 > [!IMPORTANT]
 > Ab dem 12. Dezember 2018 können Neukunden keine Computeserver der vierten Generation mehr in den Regionen Brasilien (Süden), Kanada (Mitte), Kanada (Osten), Asien (Osten), USA (Osten 2), Indien (Mitte), Indien (Westen), Japan (Westen), USA (Norden-Mitte) und USA (Westen) bereitstellen. Zuvor erstellte Computeserver der vierten Generation werden ab dem 1. Februar 2019 in diesen Regionen zu Servern der fünften Generation migriert.
+>
+> [!IMPORTANT]
+> Ab dem 19. Februar 2019 können neue Kunden nicht mehr Computeserver der vierten Generation in „USA (Mitte)“, „USA, Osten“, „Japan, Osten“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“ und „Europa, Westen“ bereitstellen. Zuvor erstellte Computeserver der vierten Generation werden ab dem 1. April 2019 in dieser Region zu Servern der fünften Generation migriert.
 
 | **Azure-Region** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
 | USA (Mitte) |  | X |
 | USA (Ost) |  | X |
-| USA (Ost) 2 | X | X |
-| USA Nord Mitte | X | X |
+| USA (Ost) 2 |  | X |
+| USA Nord Mitte |  | X |
 | USA Süd Mitte | X | X |
-| USA (Westen) | X | X |
+| USA (Westen) |  | X |
 | USA, Westen 2 |  | X |
-| Brasilien Süd | X | X |
-| Kanada, Mitte | X | X |
-| Kanada, Osten | X | X |
+| Brasilien Süd |  | X |
+| Kanada, Mitte |  | X |
+| Kanada, Osten |  | X |
 | Nordeuropa | X | X |
 | Europa, Westen |  | X |
 | Frankreich, Mitte |  | X |
 | UK, Süden |  | X |
 | UK, Westen |  | X |
-| Asien, Osten | X | X |
+| Asien, Osten |  | X |
 | Asien, Südosten | X | X |
 | Australien (Osten) |  | X |
 | Australien, Mitte |  | X |
 | Australien, Mitte 2 |  | X |
 | Australien, Südosten |  | X |
-| Indien, Mitte | X | X |
+| Indien, Mitte |  | X |
 | Indien (Süden) |  | X |
-| Indien, Westen | X | X |
+| Indien, Westen |  | X |
 | Japan, Osten | X | X |
-| Japan, Westen | X | X |
+| Japan, Westen |  | X |
 | Korea, Mitte |  | X |
 | Korea, Süden |  | X |
 | China, Osten 1 | X |  |

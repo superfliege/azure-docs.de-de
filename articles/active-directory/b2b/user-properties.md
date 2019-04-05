@@ -1,5 +1,5 @@
 ---
-title: Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers | Microsoft-Dokumentation
+title: Eigenschaften eines B2B Collaboration-Benutzers – Azure Active Directory | Microsoft-Dokumentation
 description: Die Eigenschaften von Benutzern der Azure Active Directory B2B-Zusammenarbeit sind konfigurierbar.
 services: active-directory
 ms.service: active-directory
@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ef27b1365078ea2c5a7b92338a6c10f8d05de0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209250"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294653"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -32,7 +33,7 @@ Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusamme
 
 - Zustand 4: Befindet sich im Azure AD der Hostorganisation mit dem Benutzertyp „Gast“, und die Anmeldeinformationen werden von der Hostorganisation verwaltet.
 
-  ![Anzeigen der Initialen des einladenden Benutzers](media/user-properties/redemption-diagram.png)
+  ![Diagramm mit den vier Benutzerzuständen](media/user-properties/redemption-diagram.png)
 
 
 Sehen wir uns nun an, wie ein Azure AD B2B-Kollaborationsbenutzer in Azure AD aussieht.
@@ -41,7 +42,7 @@ Sehen wir uns nun an, wie ein Azure AD B2B-Kollaborationsbenutzer in Azure AD au
 
 Bei Konten mit den Zuständen 1 und 2 werden Gastbenutzer unter Verwendung ihrer eigenen Anmeldeinformationen zur Kollaboration eingeladen. Beim ursprünglichen Senden der Einladung an den Gastbenutzer wird ein Konto in Ihrem Verzeichnis erstellt. Diesem Konto sind keine Anmeldeinformationen zugeordnet, da die Authentifizierung durch den Identitätsanbieter des Gastbenutzers erfolgt. Die Eigenschaft **Quelle** für das Gastbenutzerkonto in Ihrem Verzeichnis ist auf **Eingeladene Benutzer** festgelegt. 
 
-![Vor dem Einlösen des Angebots](media/user-properties/before-redemption.png)
+![Screenshot mit Benutzereigenschaften vor dem Einlösen des Angebots](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Nach dem Einlösen der Einladung
 
@@ -87,7 +88,7 @@ Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>Filtern nach Gastbenutzern im Verzeichnis
 
-![Filtern nach Gastbenutzern](media/user-properties/filter-guest-users.png)
+![Screenshot mit dem Filter für Gastbenutzer](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konvertieren des Benutzertyps
 Mithilfe von PowerShell kann die Eigenschaft „UserType“ von „Mitglied“ in „Gast“ geändert werden und umgekehrt. Die Eigenschaft „UserType“ gibt jedoch die Beziehung eines Benutzers zu der Organisation an. Daher sollten Sie diese Eigenschaft nur ändern, wenn sich die Beziehung des Benutzers zur Organisation ändert. Wenn sich die Beziehung des Benutzers ändert, muss dann der Benutzerprinzipalname (UPN) geändert werden? Soll der Benutzer weiterhin Zugriff auf die gleichen Ressourcen haben? Muss ein Postfach zugewiesen werden? Es empfiehlt sich nicht, die Eigenschaft „UserType“ in PowerShell als alleinige Aktivität zu ändern. Wenn diese Eigenschaft durch die Verwendung von PowerShell unveränderlich wird, empfiehlt es sich nicht, Abhängigkeiten von diesem Wert einzurichten.
@@ -97,7 +98,7 @@ Es gibt eine Vielzahl von Situationen, in denen Sie Ihren Gastbenutzern höhere 
 
 Sie können die standardmäßigen Einschränkungen aufheben, sodass Gastbenutzer im Unternehmensverzeichnis die gleichen Berechtigungen erhalten wie Mitgliedsbenutzer.
 
-![Aufheben von Einschränkungen für Gastbenutzer](media/user-properties/remove-guest-limitations.png)
+![Screenshot mit der Option für externe Benutzer in den Benutzereinstellungen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
 Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Kann ich Gast-Objekte in der globalen Adressliste sichtbar machen?** im Artikel [Verwalten des Zugriffs von Gast in Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 

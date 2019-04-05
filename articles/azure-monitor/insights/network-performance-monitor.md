@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729794"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452129"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -119,19 +119,13 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
 
    **ExpressRoute-Monitor**: Wählen Sie **Jetzt ermitteln** aus, um alle privaten ExpressRoute-Peerings zu ermitteln, die mit den virtuellen Netzwerken in dem mit diesem Log Analytics-Arbeitsbereich verknüpften Azure-Abonnement verbunden sind. 
 
-   >[!NOTE] 
-   > Die Lösung ermittelt derzeit nur private ExpressRoute-Peerings. 
-
-   >[!NOTE] 
-   > Es werden nur private Peerings ermittelt, die mit den virtuellen Netzwerken verbunden sind, die dem mit diesem Log Analytics-Arbeitsbereich verknüpften Abonnement zugeordnet sind. Wenn ExpressRoute mit virtuellen Netzwerken außerhalb des mit diesem Arbeitsbereich verknüpften Abonnements verbunden ist, erstellen Sie in diesen Abonnements einen Log Analytics-Arbeitsbereich. Verwenden Sie den Netzwerkleistungsmonitor zum Überwachen dieser Peerings.
-
    ![Ansicht „ExpressRoute-Monitor“](media/network-performance-monitor/npm-express-route.png)
 
-   Nach Abschluss der Ermittlung werden die ermittelten privaten Peerings in einer Tabelle aufgeführt. 
+   Nach Abschluss der Ermittlung werden die ermittelten Verbindungen und Peerings in einer Tabelle aufgeführt. 
 
    ![Seite „Konfiguration des Netzwerkleistungsmonitors“](media/network-performance-monitor/npm-private-peerings.png)
     
-Die Überwachung für diese Peerings ist zunächst deaktiviert. Wählen Sie jedes Peering aus, das Sie überwachen möchten, und konfigurieren Sie die Überwachung in der Detailansicht auf der rechten Seite. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. Weitere Informationen finden Sie im Artikel „Konfigurieren der ExpressRoute-Überwachung“. 
+Die Überwachung für diese Verbindungen und Peerings ist zunächst deaktiviert. Wählen Sie jede Ressource aus, die Sie überwachen möchten, und konfigurieren Sie die Überwachung in der Detailansicht auf der rechten Seite. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. Weitere Informationen finden Sie im Artikel „Konfigurieren der ExpressRoute-Überwachung“. 
 
 Nach Abschluss der Einrichtung dauert es zwischen 30 Minuten und einer Stunde, bis die Daten aufgefüllt wurden. Während die Lösung Daten aus Ihrem Netzwerk aggregiert, wird auf der Kachel **Übersicht** des Netzwerkleistungsmonitors die Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich.* angezeigt. Nachdem die Daten gesammelt und indiziert wurden, ändert sich die Kachel **Übersicht** und informiert Sie in einer Zusammenfassung über die Integrität Ihres Netzwerks. Daraufhin können Sie die Überwachung der Knoten, auf denen Log Analytics-Agents installiert sind, sowie die Subnetze, die in Ihrer Umgebung ermittelt wurden, bearbeiten.
 
@@ -269,7 +263,7 @@ Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal
 3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
 4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
-Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle fünf Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/) abgerechnet.
+Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/) abgerechnet.
 Benachrichtigungen werden separat abgerechnet (siehe [Benachrichtigungspreise auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/)).
 
 

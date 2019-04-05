@@ -1,6 +1,6 @@
 ---
-title: Aktualisieren einer vorhandenen Zuweisung
-description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Zuweisung in Azure Blueprint erläutert.
+title: Aktualisieren einer vorhandenen Zuweisung über das Portal
+description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Zuweisung in Azure Blueprints über das Portal erläutert.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999853"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -26,21 +26,21 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 
 ## <a name="updating-assignments"></a>Aktualisieren von Zuweisungen
 
-1. Klicken Sie auf **Alle Dienste**, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
-1. Wählen Sie auf der Seite links **Zugewiesene Blaupausen** aus.
+1. Wählen Sie auf der Seite links die Option **Zugewiesene Blaupausen**.
 
 1. Klicken Sie in der Liste der Blaupausen auf die Blaupausenzuweisung. Klicken Sie anschließend auf die Schaltfläche **Zuweisung aktualisieren**, ODER klicken Sie mit der rechten Maustaste auf die Blaupausenzuweisung, und wählen Sie **Zuweisung aktualisieren** aus.
 
    ![Zuweisung aktualisieren](../media/update-existing-assignments/update-assignment.png)
 
-1. Die Seite **Blaupause zuweisen** wird geladen, und alle Werte der ursprünglichen Zuweisung werden automatisch eingetragen. Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Klicken Sie nach dem Vornehmen der Änderungen auf **Zuweisen**.
+1. Die Seite **Blaupause zuweisen** wird geladen, und alle Werte der ursprünglichen Zuweisung sind bereits eingetragen. Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Klicken Sie nach dem Vornehmen der Änderungen auf **Zuweisen**.
 
 1. Überprüfen Sie auf der Detailseite für die aktualisierte Zuweisung den neuen Status. In diesem Beispiel wurde der Zuweisung **Wird gesperrt** hinzugefügt.
 
    ![Aktualisierte Zuweisung – Gesperrt](../media/update-existing-assignments/updated-assignment.png)
 
-1. Einzelheiten zu anderen **Zuweisungsvorgängen** finden Sie in der Dropdownliste. Die Tabelle **Verwaltete Ressourcen** wird mit dem ausgewählten Zuweisungsvorgang aktualisiert.
+1. Einzelheiten zu anderen **Zuweisungsvorgängen** finden Sie in der Dropdownliste. Die Tabelle **Verwaltete Ressourcen** wird durch den ausgewählten Zuweisungsvorgang aktualisiert.
 
    ![Zuweisungsvorgänge](../media/update-existing-assignments/assignment-operations.png)
 
@@ -72,5 +72,5 @@ Es gibt keine Beschränkung in Bezug darauf, wie oft eine Zuweisung aktualisiert
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../concepts/parameters.md) vertraut.
 - Erfahren Sie, wie Sie die [Abfolge von Blaupausen](../concepts/sequencing-order.md) anpassen können.
-- Informieren Sie sich über die Verwendung der [Blaupausen-Ressourcensperre](../concepts/resource-locking.md).
-- Beheben Sie anhand der [allgemeinen Problembehandlung](../troubleshoot/general.md) Probleme während der Zuweisung einer Blaupause.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](../concepts/resource-locking.md) können.
+- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

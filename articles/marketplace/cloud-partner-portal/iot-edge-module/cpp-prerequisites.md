@@ -3,7 +3,7 @@ title: Voraussetzungen für Azure IoT Edge-Module | Microsoft-Dokumentation
 description: Voraussetzungen für die Veröffentlichung eines IoT Edge-Moduls.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,20 +12,19 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7271a97dc7ab9de1840d809ded0ba1c2940ed83f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a4f1023bdf8a49fccbbda1fd0dc537f83a3acee1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432924"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013813"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>Voraussetzungen für die Veröffentlichung von IoT Edge-Modulen
 
-In diesem Artikel werden die Voraussetzungen für die Veröffentlichung eines IoT Edge-Modulangebots beschrieben.
+In diesem Artikel werden die Voraussetzungen für die Veröffentlichung eines IoT Edge-Modulangebots beschrieben.  Lesen Sie den [Leitfaden für die Veröffentlichung von IoT Edge-Modulen](../..//iot-edge-module.md), falls Sie dies nicht bereits getan haben.
 
-Weitere Informationen zu IoT Edge-Modulen sowie zu den Vorteilen der Veröffentlichung eines Moduls im Azure Marketplace finden Sie im [Leitfaden zur Veröffentlichung von IoT Edge-Modulen](https://docs.microsoft.com/azure/marketplace/iot-edge-module).
 
 ## <a name="publishing-prerequisites"></a>Voraussetzungen für die Veröffentlichung
 
@@ -35,16 +34,16 @@ Wenn Sie ein IoT Edge-Modul im Azure Marketplace veröffentlichen möchten, müs
 - Sie benötigen Zugriff auf das [Cloud-Partnerportal](https://cloudpartner.azure.com/). Weitere Informationen hierzu finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 - Sie müssen den [Azure Marketplace-Nutzungsbedingungen](https://azure.microsoft.com/support/legal/marketplace-terms/) zustimmen.
 - Sie müssen die technische Ressource Ihres IoT Edge-Moduls in einer Azure Container Registry-Instanz hosten.  Weitere Informationen finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](./cpp-create-technical-assets.md).
-- Sie müssen über verwendungsbereite Metadaten für Ihr IoT Edge-Modul verfügen. Hierzu zählen unter anderem folgende:
+- Sie müssen über verwendungsbereite Metadaten für Ihr IoT Edge-Modul verfügen. Bereiten Sie z.B. die folgenden Ressourcen vor:
     - Titel
     - Beschreibung (im HTML-Format)
     - Logo (PNG-Format und feste Bildgrößen wie 40 x 40 px, 90 x 90 px, 115 x 115 px, 255 x 115 px)
     - Nutzungsbedingungen und Datenschutzrichtlinie
     - Standardmodulkonfiguration mit Routen, gewünschten Eigenschaften von Modulzwillingen, Erstellungsoptionen und Umgebungsvariablen
-    - Dokumentation
+    - Moduldokumentation
     - Supportkontakte
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](./cpp-create-technical-assets.md)
-- [Erstellen Ihres IoT Edge-Modulangebots](./cpp-create-offer.md)
+Sobald Sie [die technische Ressource für Ihr IoT Edge-Modul vorbereitet haben](./cpp-create-technical-assets.md), können Sie [Ihr IoT Edge-Modulangebot erstellen](./cpp-create-offer.md). 

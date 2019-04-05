@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818930"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247153"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
@@ -29,7 +29,9 @@ Stream Analytics bietet zwei Typen von Protokollen:
 * [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurierbar), die umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags bieten. Diagnoseprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
 
 > [!NOTE]
-> Sie können Dienste wie Azure Storage, Azure Event Hubs und Azure Log Analytics verwenden, um nicht konforme Daten zu analysieren. Gebühren werden basierend auf dem Preismodell für diese Dienste in Rechnung gestellt.
+> Sie können Dienste wie Azure Storage, Azure Event Hubs und Azure Monitor-Protokolle verwenden, um nicht konforme Daten zu analysieren. Gebühren werden basierend auf dem Preismodell für diese Dienste in Rechnung gestellt.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="debugging-using-activity-logs"></a>Debuggen mithilfe von Aktivitätsprotokollen
 
@@ -51,11 +53,11 @@ Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einbli
 
 5. Sie können basierend auf der Fehlermeldung im JSON-Format Korrekturmaßnahmen vornehmen. In diesem Beispiel müssen Prüfungen, ob der Breitengradwert zwischen -90 Grad und 90 Grad liegt, der Abfrage hinzugefügt werden.
 
-6. Wenn die Fehlermeldung in den Aktivitätsprotokollen bei der Identifizierung der Grundursache nicht hilfreich ist, aktivieren Sie Diagnoseprotokolle, und verwenden Sie Log Analytics.
+6. Wenn die Fehlermeldung in den Aktivitätsprotokollen bei der Identifizierung der Grundursache nicht hilfreich ist, aktivieren Sie Diagnoseprotokolle, und verwenden Sie Azure Monitor-Protokolle.
 
-## <a name="send-diagnostics-to-log-analytics"></a>Senden von Diagnosedaten an Log Analytics
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Senden von Diagnosedaten an Azure Monitor-Protokolle
 
-Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Log Analytics senden. Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokolle zu aktivieren, führen Sie folgende Schritte aus:
+Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Azure Monitor-Protokolle senden. Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokolle zu aktivieren, führen Sie folgende Schritte aus:
 
 1.  Melden Sie sich im Azure-Portal an, und navigieren Sie zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus. Wählen Sie dann **Diagnose aktivieren** aus.
 
@@ -67,7 +69,7 @@ Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Log Analytics senden.
 
 3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Diagnoseprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Navigieren Sie zum Log Analytics-Arbeitsbereich, und wählen Sie **Protokolle** unter dem Abschnitt **Allgemein** aus.
 
-   ![Log Analytics-Protokolle unter dem Abschnitt „Allgemein“](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Azure Monitor-Protokolle unter dem Abschnitt „Allgemein“](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
 4. Sie können [Ihre eigene Abfrage schreiben](../azure-monitor/log-query/get-started-portal.md), um nach Begriffen zu suchen, Trends zu identifizieren, Muster zu analysieren und basierend auf Ihren Daten Informationen zu gewinnen. Beispielsweise können Sie eine Abfrage schreiben, um nur die Diagnoseprotokolle mit der Nachricht „Fehler beim Streamingauftrag“ herauszufiltern. Diagnoseprotokolle von Azure Stream Analytics sind in der **AzureDiagnostics**-Tabelle gespeichert.
 
@@ -118,7 +120,7 @@ NAME | BESCHREIBUNG
 ------- | -------
 Quelle | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
 Message | Mit dem Fehler verknüpfte Meldung.
-Typ | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
+Type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
 Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
@@ -135,7 +137,7 @@ NAME | BESCHREIBUNG
 -------- | --------
 Error | (optional) Fehlerinformationen. In der Regel sind dies Ausnahmeinformationen, sofern diese verfügbar sind.
 Message| Protokollmeldung.
-Typ | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
+Type | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
 Korrelations-ID | Ein [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert, der die Auftragsausführung eindeutig identifiziert. Alle Ausführungsprotokolleinträge ab dem Zeitpunkt, an dem der Auftrag gestartet wird, bis zum Beenden des Auftrags weisen denselben Wert für **Korrelations-ID** auf.
 
 ## <a name="next-steps"></a>Nächste Schritte

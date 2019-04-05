@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 86404f4eb2eb2de4243c6bb725f4292e7b560d18
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271257"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569891"
 ---
 # <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure Data Factory Mapping Data Flow: Pivottransformation
 
@@ -42,7 +42,7 @@ Wählen Sie abschließend die für die pivotierten Werte zu verwendende Aggregat
 
 (Optional) Sie können ein Benennungsmuster mit einem Präfix, einem Mittelteil und einem Suffix festlegen, das/der jedem neuen Spaltennamen aus den Zeilenwerten hinzugefügt wird.
 
-Wenn Sie beispielsweise „Umsatz“ nach „Region“ pivotieren, erhalten Sie neue Spaltenwerte aus den einzelnen Umsatzzahlen. Beispiel: „25“, „50“, „1000“ usw. Wenn Sie jedoch den Präfixwert „Umsatz“ festlegen, 
+Wenn Sie beispielsweise „Umsatz“ nach „Region“ pivotieren, erhalten Sie neue Spaltenwerte aus den einzelnen Umsatzzahlen. Beispiel: „25“, „50“, „1000“ usw. Wenn Sie jedoch den Präfixwert „Sales-“ festlegen, wird „Sales-“ am Anfang jedes Spaltenwerts hinzugefügt.
 
 ![Pivotoptionen](media/data-flow/pivot5.png "Pivot 5")
 
@@ -57,3 +57,7 @@ Verwenden Sie die ADF-Datenfluss-Ausdruckssprache, um die Transformationen der p
 ### <a name="how-to-rejoin-original-fields"></a>So verknüpfen Sie die ursprünglichen Felder erneut
 > [!NOTE]
 > Die Pivottransformation projiziert nur die in der Aggregation, Gruppierung und Pivotaktion verwendeten Spalten. Wenn Sie die anderen Spalten aus dem vorherigen Schritt in Ihren Datenfluss einbeziehen möchten, verwenden Sie eine neue Verzweigung aus dem vorherigen Schritt, und verwenden Sie dann das Selbstverknüpfungsmuster, um den Datenfluss mit den ursprünglichen Metadaten zu verbinden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Versuchen Sie, die [Entpivotierungstransformation](data-flow-unpivot.md) durchzuführen, um Spaltenwerte in Zeilenwerte umzuwandeln. 

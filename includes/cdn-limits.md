@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 3c4b9f5b8533e24a5b7cee1d2b4e3a8c65473b6b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b3a610fd1c4da99d1e98a5caea9e1a4151fc1fea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279639"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553533"
 ---
 | Ressource | Standardlimit | Maximales Limit | 
 | --- | --- | --- |
-| CDN-Profile |25 |25 |
-| CDN-Endpunkte pro Profil |10 |25 |
+| Azure Content Delivery Network-Profile |25 |25 |
+| Content Delivery Network-Endpunkte pro Profil |10 |25 |
 | Benutzerdefinierte Domänen pro Endpunkt |10 |25 |
 
-Ein CDN-Abonnement kann mindestens ein CDN-Profil enthalten. Ein CDN-Profil kann wiederum mindestens einen CDN-Endpunkt enthalten. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren. 
+Ein Content Delivery Network-Abonnement enthält mindestens ein Content Delivery Network-Profil. Ein Content Delivery Network-Profil enthält mindestens einen Content Delivery Network-Endpunkt. Sie können mehrere Profile verwenden, um Ihre Content Delivery Network-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren. 
 
-Öffnen Sie ein Supportticket, um eine Aktualisierung der Standardgrenzwerte Ihres Abonnements anzufordern. 
+Öffnen Sie ein Supportticket, um eine Aktualisierung der Standardgrenzwerte Ihres Abonnements anzufordern.
 

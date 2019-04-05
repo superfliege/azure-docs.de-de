@@ -13,15 +13,15 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68655efaf9d6020489b7bc05ed1855ac181cd22f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211936"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285784"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
-Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch das Hinzufügen von benutzerdefinierten Domänennamen können Sie Benutzernamen erstellen, die Ihren Benutzern vertraut sind, beispielsweise *alain@contoso.com*.
+Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise *alain\@contoso.com*).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Bevor Sie einen benutzerdefinierten Domänennamen hinzufügen können, müssen Sie Ihren Domänennamen bei einer Domänenregistrierungsstelle erstellen. Eine Liste von anerkannten Domänenregistrierungsstellen finden Sie unter [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html) (Von der ICANN anerkannte Registrierungsstellen).
@@ -31,7 +31,7 @@ Nachdem Sie Ihren Domänennamen erhalten haben, können Sie Ihr erstes Azure AD-
 
 1. Melden Sie sich mit einem Konto mit der Rolle **Besitzer** für das Abonnement beim [Azure-Portal](https://portal.azure.com/) für Ihr Verzeichnis an, und wählen Sie dann **Azure Active Directory** aus. Weitere Informationen zu Abonnementrollen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
 
-    ![Screenshot des Azure-Portals](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Bildschirm des Azure-Portals mit Azure AD-Option](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > Wenn Sie planen, Ihre lokale Windows Server AD mit Azure AD in einen Verbund aufzunehmen, müssen Sie das Kontrollkästchen **Ich möchte diese Domäne für einmaliges Anmelden bei meinem lokalen Active Directory konfigurieren** aktivieren, wenn Sie zum Synchronisieren Ihrer Verzeichnisse das Tool Azure AD Connect ausführen. Sie müssen den Domänennamen, den Sie für den Verbund mit Ihrem lokalen Verzeichnis im Schritt **Azure AD-Domäne** des Assistenten auswählen, außerdem registrieren. In [dieser Anleitung](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation) wird veranschaulicht, wie der Schritt im Assistenten aussieht. Falls Sie nicht über das Azure AD Connect-Tool verfügen, können Sie es [hier herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
@@ -46,7 +46,7 @@ Nachdem Sie Ihr Verzeichnis erstellt haben, können Sie Ihren benutzerdefinierte
 
 1. Wählen Sie **Benutzerdefinierte Domänennamen** und dann **Benutzerdefinierte Domäne hinzufügen** aus.
 
-    ![Seite „Fabrikam – Benutzerdefinierte Domänennamen“ mit hervorgehobener Option „Benutzerdefinierte Domäne hinzufügen“](media/add-custom-domain/add-custom-domain.png)
+    ![Seite „Benutzerdefinierte Domänennamen“ mit Option „Benutzerdefinierte Domäne hinzufügen“](media/add-custom-domain/add-custom-domain.png)
 
 2. Geben Sie den neuen Domänennamen Ihrer Organisation in das Feld **Benutzerdefinierter Domänenname** ein (z. B. _contoso.com_), und klicken Sie dann auf **Domäne hinzufügen**.
 
@@ -55,7 +55,7 @@ Nachdem Sie Ihr Verzeichnis erstellt haben, können Sie Ihren benutzerdefinierte
     >[!Important]
     >Der Domänenname muss „.com“, „.net“ oder eine andere Erweiterung der obersten Ebene enthalten, damit dies korrekt funktioniert.
 
-    ![Seite „Fabrikam – Benutzerdefinierte Domänennamen“ mit hervorgehobener Schaltfläche „Domäne hinzufügen“](media/add-custom-domain/add-custom-domain-blade.png)
+    ![Seite „Benutzerdefinierte Domänennamen“ mit Seite „Benutzerdefinierte Domäne hinzufügen“](media/add-custom-domain/add-custom-domain-blade.png)
 
 4. Kopieren Sie die DNS-Informationen von der Seite für **Contoso**, beispielsweise MS=ms64983159.
 
@@ -87,9 +87,9 @@ Nachdem Sie Ihren benutzerdefinierten Domänennamen registriert haben, müssen S
 
 ## <a name="common-verification-issues"></a>Häufige Probleme bei der Überprüfung
 - Versuchen Sie Folgendes, wenn Azure AD einen benutzerdefinierten Domänennamen nicht überprüfen kann:
-    - **Warten Sie mindestens eine Stunde, und versuchen Sie es dann noch einmal.** DNS-Einträge müssen weitergegeben (verteilt) werden, bevor Azure AD die Domäne überprüfen kann, und dieser Prozess kann eine Stunde oder auch länger dauern.
+  - **Warten Sie mindestens eine Stunde, und versuchen Sie es dann noch einmal.** DNS-Einträge müssen weitergegeben (verteilt) werden, bevor Azure AD die Domäne überprüfen kann, und dieser Prozess kann eine Stunde oder auch länger dauern.
 
-    - **Stellen Sie sicher, dass der DNS-Eintrag korrekt ist.** Kehren Sie zur Website der Domänenregistrierungsstelle zurück, und stellen Sie sicher, dass der Eintrag vorhanden ist und mit den von Azure AD bereitgestellten DNS-Eintragsinformationen übereinstimmt.
+  - **Stellen Sie sicher, dass der DNS-Eintrag korrekt ist.** Kehren Sie zur Website der Domänenregistrierungsstelle zurück, und stellen Sie sicher, dass der Eintrag vorhanden ist und mit den von Azure AD bereitgestellten DNS-Eintragsinformationen übereinstimmt.
 
     Falls Sie den Eintrag auf der Website der Registrierungsstelle nicht aktualisieren können, müssen Sie ihn für eine Person mit den erforderlichen Berechtigungen freigeben, um den Eintrag hinzufügen und seine Richtigkeit überprüfen zu lassen.
 

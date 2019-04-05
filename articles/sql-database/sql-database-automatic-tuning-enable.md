@@ -12,18 +12,24 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b3a77a28945b597fe4fdd57aadfc3e05196a353
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478252"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726956"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung zum Überwachen von Abfragen und Verbessern der Workloadleistung
 
 Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierlich Ihre Abfragen überwacht und Ihnen mitteilt, wie Sie die Leistung Ihrer Workload verbessern können. Sie können Empfehlungen prüfen und manuell anwenden oder Azure SQL-Datenbank die Maßnahmen automatisch anwenden lassen. Letzteres wird als **automatischer Optimierungsmodus** bezeichnet.
 
 Die automatische Optimierung kann über das [Azure-Portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST-API](sql-database-automatic-tuning-enable.md#rest-api)-Aufrufe und [T-SQL](sql-database-automatic-tuning-enable.md#t-sql)-Befehle auf Server- oder Datenbankebene aktiviert werden.
+
+> [!NOTE]
+> Für die verwaltete Instanz kann die unterstützte Option FORCE_LAST_GOOD_PLAN nur über [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) konfiguriert werden. In diesem Artikel beschriebene portalbasierte Konfiguration und Optionen zur automatischen Indexoptimierung gelten nicht für die verwaltete Instanz.
+
+> [!NOTE]
+> Die Vorlage zum Konfigurieren der Optionen zur automatischen Optimierung über ARM (Azure Resource Manager) wird derzeit nicht unterstützt.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Aktivieren der automatischen Optimierung für den Server
 
@@ -51,7 +57,7 @@ Weitere Informationen darüber, wie die automatische Optimierung mithilfe der RE
 
 Über Azure SQL-Datenbank können Sie die Konfiguration der automatischen Optimierung für einzelne Datenbanken angeben. Auf Datenbankebene kann auf Wunsch die Konfiguration der automatischen Optimierung vom übergeordneten Server geerbt („Azure-Standardwerte“) oder nicht geerbt werden. Die Azure-Standardwerte sind wie folgt festgelegt: FORCE_LAST_GOOD_PLAN aktiviert, CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
 
-> [!NOTE]
+> [!TIP]
 > Es empfiehlt sich im Allgemeinen, die automatische Optimierung auf **Serverebene** zu verwalten, damit für jede Datenbank automatisch die gleichen Konfigurationseinstellungen angewendet werden können. Konfigurieren Sie die automatische Optimierung für eine einzelne Datenbank nur dann, wenn diese Datenbank andere Einstellungen haben muss als die anderen Datenbanken, die ihre Einstellungen vom gleichen Server erben.
 >
 

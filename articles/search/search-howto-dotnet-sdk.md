@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634540"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286311"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Verwenden von Azure Search aus einer .NET-Anwendung
 In diesem Artikel erfahren Sie, wie Sie Ihr [Azure Search-.NET-SDK](https://aka.ms/search-sdk)schnell betriebsbereit machen. Dank .NET-SDK erhalten Sie in Ihrer Anwendung die vielfältigen Suchfunktionen von Azure Search.
@@ -27,8 +27,8 @@ Das wichtigste NuGet-Paket ist `Microsoft.Azure.Search`, ein Metapaket, das alle
 
 Die anderen NuGet-Pakete im SDK sind:
  
-  - `Microsoft.Azure.Search.Data`: Verwenden Sie dieses Paket, wenn Sie eine .NET-Anwendung mit Azure Search entwickeln, und Sie nur Dokumente in Ihren Indizes abfragen oder aktualisieren müssen. Wenn Sie auch Indizes, Synonymzuordnungen oder andere Servicelevelressourcen erstellen oder aktualisieren müssen, verwenden Sie stattdessen das `Microsoft.Azure.Search`-Paket.
-  - `Microsoft.Azure.Search.Service`: Verwenden Sie dieses Paket, wenn Sie die Automatisierung in .NET zum Verwalten von Azure Search-Indizes, Synonymzuordnungen, Indexern, Datenquellen oder anderen Servicelevelressourcen entwickeln. Wenn Sie nur Dokumente in Ihren Indizes abfragen oder aktualisieren müssen, verwenden Sie stattdessen das `Microsoft.Azure.Search.Data`-Paket. Wenn Sie alle Funktionen von Azure Search benötigen, verwenden Sie stattdessen das `Microsoft.Azure.Search`-Paket.
+  - `Microsoft.Azure.Search.Data`: Verwenden Sie dieses Paket, wenn Sie eine .NET-Anwendung mit Azure Search entwickeln und Sie nur Dokumente in Ihren Indizes abfragen oder aktualisieren müssen. Wenn Sie auch Indizes, Synonymzuordnungen oder andere Servicelevelressourcen erstellen oder aktualisieren müssen, verwenden Sie stattdessen das `Microsoft.Azure.Search`-Paket.
+  - `Microsoft.Azure.Search.Service`: Verwenden Sie dieses Paket, wenn Sie in .NET eine Automatisierung zum Verwalten von Azure Search-Indizes, Synonymzuordnungen, Indexern, Datenquellen oder anderen Ressourcen auf Dienstebene entwickeln. Wenn Sie nur Dokumente in Ihren Indizes abfragen oder aktualisieren müssen, verwenden Sie stattdessen das `Microsoft.Azure.Search.Data`-Paket. Wenn Sie alle Funktionen von Azure Search benötigen, verwenden Sie stattdessen das `Microsoft.Azure.Search`-Paket.
   - `Microsoft.Azure.Search.Common`: Gängige Typen, die von Azure Search .NET-Bibliotheken benötigt werden. Es sollte nicht erforderlich sein, dass Sie dieses Paket direkt in Ihrer Anwendung verwenden; es soll lediglich als Abhängigkeit verwendet werden.
 
 Die unterschiedlichen Clientbibliothek definieren Klassen wie `Index`, `Field` und `Document` sowie Operationen wie `Indexes.Create` und `Documents.Search` für die Klassen `SearchServiceClient` und `SearchIndexClient`. Diese Klassen sind in die folgenden Namespaces aufgeteilt:
@@ -330,6 +330,8 @@ Der dritte Teil dieser Methode ist ein Catch-Block, der einen wichtigen Fehlerfa
 
 Der letzte Teil der Methode `UploadDocuments` fügt eine Verzögerung von zwei Sekunden hinzu. Da die Indizierung in Ihrem Azure Search-Dienst asynchron erfolgt, muss die Beispielanwendung einen Augenblick warten, damit sichergestellt ist, dass die Dokumente für Suchen zur Verfügung stehen. Verzögerungen wie diese sind in der Regel nur in Demos, Tests und Beispielanwendungen erforderlich.
 
+<a name="how-dotnet-handles-documents"></a>
+
 #### <a name="how-the-net-sdk-handles-documents"></a>Behandeln von Dokumenten durch das .NET-SDK
 Vielleicht fragen Sie sich, wie das Azure Search-.NET-SDK Instanzen einer benutzerdefinierten Klasse wie `Hotel` in einen Index hochladen kann. Um diese Frage zu beantworten, sehen wir uns die Klasse `Hotel` an:
 
@@ -585,7 +587,7 @@ Dies sind die Ergebnisse mit allen Feldern, da wir die Eigenschaft `Select` nich
 
     ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 
-Mit diesem Schritt ist das Lernprogramm abgeschlossen. Gerne können Sie sich aber noch weiter mit dem Programm vertraut machen. Im Abschnitt **Nächste Schritte** finden Sie eine Zusammenstellung weiterer Ressourcen zur Einarbeitung in Azure Search.
+Mit diesem Schritt ist das Lernprogramm abgeschlossen. Gerne können Sie sich aber noch weiter mit dem Programm vertraut machen. **Im Abschnitt „Nächste Schritte“ finden Sie eine Zusammenstellung weiterer Ressourcen zur Einarbeitung in Azure Search.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nutzen Sie die Referenzen für das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und die [REST-API](https://docs.microsoft.com/rest/api/searchservice/).

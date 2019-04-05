@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171297"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295214"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
@@ -48,15 +48,46 @@ Im Bericht „Überwachungsprotokolle“ sind die folgenden Berichte zusammengef
 
 ### <a name="filtering-on-audit-logs"></a>Filtern nach Überwachungsprotokollen
 
-Sie können die erweiterte Filterung im Überwachungsbericht verwenden, um auf eine bestimmte Kategorie von Überwachungsdaten zuzugreifen, indem Sie diese im Filter **Aktivitätskategorie** angeben. Wenn Sie beispielsweise alle Aktivitäten anzeigen möchten, die sich auf die Self-Service-Kennwortzurücksetzung beziehen, wählen Sie die Kategorie **Self-Service-Kennwortzurücksetzung**. 
+Sie können die erweiterte Filterung im Überwachungsbericht verwenden, um auf eine bestimmte Kategorie von Überwachungsdaten zuzugreifen, indem Sie diese im Filter **Kategorie** angeben. Um alle Aktivitäten im Zusammenhang mit Benutzern anzuzeigen, wählen Sie z.B. die Kategorie **UserManagement**. 
 
-Zu Aktivitätskategorien zählen:
+Zu den Kategorien zählen:
 
+- Alle
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Autorisierung
+- Kontakt
+- Gerät
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Andere
+- Richtlinie
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+Mithilfe des Dropdownfilters **Dienst** können Sie auch nach einem bestimmten Dienst filtern. Wenn Sie beispielsweise alle Überwachungsereignisse anzeigen möchten, die sich auf die Self-Service-Kennwortverwaltung beziehen, wählen Sie den Filter **Self-Service-Kennwortverwaltung** aus.
+
+Zu diesen Diensten gehören:
+
+- Alle
+- Zugriffsüberprüfungen
+- Kontobereitstellung 
+- Anwendungs-SSO
+- Authentifizierungsmethoden
+- B2C
+- Bedingter Zugriff
 - Kernverzeichnis
-- Self-Service-Kennwortverwaltung
+- Berechtigungsverwaltung
+- Schutz der Identität (Identity Protection)
+- Invited Users (Eingeladene Benutzer)
+- PIM
 - Self-Service-Gruppenverwaltung
-- Kontobereitstellung
-
+- Self-Service-Kennwortverwaltung
+- Terms of Use (Nutzungsbedingungen)
 
 ## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten 
 
@@ -122,11 +153,11 @@ Ich habe die Aktivitätsprotokolle (Überwachung oder Anmeldungen) heruntergelad
  
 #### <a name="cause"></a>Ursache
 
-Beim Herunterladen von Aktivitätsprotokollen im Azure-Portal gilt eine Obergrenze von 5.000 Datensätzen, die nach Aktualität sortiert werden. 
+Beim Herunterladen von Aktivitätsprotokollen im Azure-Portal gilt eine Obergrenze von 250.000 Datensätzen, die nach Aktualität sortiert werden. 
 
 #### <a name="resolution"></a>Lösung
 
-Mithilfe von [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) können jederzeit bis zu einer Millionen Datensätze abgerufen werden. Unsere empfohlene Vorgehensweise ist das [Ausführen eines Skripts auf Basis eines Zeitplans](tutorial-signin-logs-download-script.md), der die Berichterstellungs-APIs zum inkrementellen Abrufen von Datensätzen über einen bestimmten Zeitraum (z.B. täglich oder wöchentlich) aufruft. 
+Mithilfe von [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) können jederzeit bis zu einer Millionen Datensätze abgerufen werden.
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Fehlende Überwachungsdaten für die zuletzt durchgeführten Aktionen im Azure-Portal
 

@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zu den Preisen von Azure IoT Hub | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Informationen zur Funktionsweise von Messungen und zur Preisgestaltung für IoT Hub (einschließlich Praxisbeispielen).'
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.date: 03/11/2019
+ms.openlocfilehash: 23b53e852672c129ff148b0b493a44172f9baf9a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141498"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769743"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
@@ -28,8 +28,8 @@ ms.locfileid: "53141498"
 | Identitätsregistrierungsvorgänge <br/> (Erstellen, Abrufen, Auflisten, Aktualisieren, Löschen) | Keine Gebühren. |
 | D2C-Nachrichten | Erfolgreich gesendete Nachrichten werden beim Eingang in IoT Hub in Blöcken von 4 KB berechnet. Eine Nachricht mit 6 KB beispielsweise wird als zwei Nachrichten berechnet. |
 | C2D-Nachrichten | Erfolgreich gesendete Nachrichten werden in Blöcken von 4 KB berechnet, sodass eine Nachricht mit 6 KB beispielsweise wie zwei Nachrichten berechnet wird. |
-| Dateiuploads | Die Dateiübertragung an Azure Storage wird von IoT Hub nicht getaktet. Nachrichten für die Initiierung und den Abschluss der Dateiübertragung werden als Nachrichten mit 4-KB-Taktung berechnet. Für die Übertragung einer Datei mit 10 MB werden zusätzlich zu den Azure Storage-Kosten zwei Nachrichten berechnet. |
-| Direkte Methoden | Erfolgreiche Methodenanforderungen werden in Blöcken von 4 KB berechnet, und Antworten mit nicht leerem Textbereich werden als zusätzliche Nachrichten in Blöcken von 4 KB berechnet. Anforderungen an nicht verbundene Geräte werden als Nachrichten in Blöcken von 4 KB berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort ohne Text vom Gerät führt, wird als zwei Nachrichten berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort mit 1 KB vom Gerät führt, wird als zwei Nachrichten für die Anforderung plus eine Nachricht für die Antwort berechnet. |
+| Dateiuploads | Die Dateiübertragung an Azure Storage wird von IoT Hub nicht getaktet. Nachrichten für die Initiierung und den Abschluss der Dateiübertragung werden als Nachrichten mit 4-KB-Taktung berechnet. Für die Übertragung einer Datei mit 10MB werden z.B. zusätzlich zu den Azure Storage-Kosten zwei Nachrichten berechnet. |
+| Direkte Methoden | Erfolgreiche Methodenanforderungen werden in Blöcken von 4KB berechnet, und Antworten werden als zusätzliche Nachrichten in Blöcken von 4KB berechnet. Anforderungen an nicht verbundene Geräte werden als Nachrichten in Blöcken von 4 KB berechnet. Eine Methode mit einem Text von 4KB, die zu einer Antwort ohne Text vom Gerät führt, wird z.B. als zwei Nachrichten berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort mit 1 KB vom Gerät führt, wird als zwei Nachrichten für die Anforderung plus eine Nachricht für die Antwort berechnet. |
 | Zwillingslesevorgänge vom Gerät und Modul | Zwillingslesevorgänge vom Gerät und Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
 | Geräte- und Modulzwillingsupdates (Tags und Eigenschaften) | Zwillingsupdates vom Gerät oder Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
 | Abfragen von Geräte- und Modulzwillingen | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
@@ -42,7 +42,7 @@ ms.locfileid: "53141498"
 
 ## <a name="example-1"></a>Beispiel 1:
 
-Ein Gerät sendet eine 1-KB-D2C-Nachricht pro Minute an IoT Hub, die dann von Azure Stream Analytics gelesen wird. Das Lösungs-Back-End ruft auf dem Gerät alle zehn Minuten eine Methode (mit einer Nutzlast von 512 Bytes) auf, um eine bestimmte Aktion auszulösen. Das Gerät antwortet auf die Methode mit einem Ergebnis von 200 Byte.
+Ein Gerät sendet eine 1-KB-D2C-Nachricht pro Minute an IoT Hub, die dann von Azure Stream Analytics gelesen wird. Das Lösungs-Back-End ruft auf dem Gerät alle zehn Minuten eine Methode (mit einer Nutzlast von 512Bytes) auf, um eine bestimmte Aktion auszulösen. Das Gerät antwortet auf die Methode mit einem Ergebnis von 200 Byte.
 
 Das Gerät verbraucht Folgendes:
 

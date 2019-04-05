@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 78496dbc7891fe911ab0affd81f8a7d887e5d76e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111411"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
-Azure DNS stellt DNS für eine benutzerdefinierte Domäne für Ihre Azure-Ressourcen bereit, die benutzerdefinierte Domänen unterstützen oder einen vollqualifizierten Domänennamen (FQDN) aufweisen. Dies gilt beispielsweise für den Fall, wenn Sie eine Azure-Web-App haben und möchten, dass Ihre Benutzer über contoso.com oder www.contoso.com als FQDN Zugriff darauf haben sollen. Dieser Artikel führt Sie durch die Konfiguration Ihres Azure-Diensts mit Azure DNS für die Verwendung von benutzerdefinierten Domänen.
+Azure DNS stellt DNS für eine benutzerdefinierte Domäne für Ihre Azure-Ressourcen bereit, die benutzerdefinierte Domänen unterstützen oder einen vollqualifizierten Domänennamen (FQDN) aufweisen. Dies ist beispielsweise der Fall, wenn Sie eine Azure-Web-App haben und möchten, dass Ihre Benutzer über contoso.com oder www\.contoso.com als FQDN Zugriff darauf haben sollen. Dieser Artikel führt Sie durch die Konfiguration Ihres Azure-Diensts mit Azure DNS für die Verwendung von benutzerdefinierten Domänen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +41,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
+|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | adatumfunction.azurewebsites.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für die Funktionen-App bereitgestellte DNS-Name „adatumfunction.azurewebsites.net“.        |
@@ -54,7 +54,7 @@ Geben Sie auf dem Blatt **Hostnamen hinzufügen** den CNAME-Datensatz in das Tex
 
 ## <a name="public-ip-address"></a>Öffentliche IP-Adresse
 
-Um eine benutzerdefinierte Domäne für Dienste zu konfigurieren, die eine öffentliche IP-Adresse als Ressource verwenden (z.B. Application Gateway, Load Balancer, Clouddienst, Resource Manager-VMs und klassische VMs), wird ein CNAME-Datensatz verwendet.
+Um eine benutzerdefinierte Domäne für Dienste zu konfigurieren, die eine öffentliche IP-Adresse als Ressource verwenden (z.B. Application Gateway, Load Balancer, Clouddienst, Resource Manager-VMs und klassische VMs), wird ein A-Eintrag verwendet.
 
 Navigieren Sie zu **Netzwerk** > **Öffentliche IP-Adresse**, wählen Sie als Ressource die öffentliche IP-Adresse aus, und klicken Sie auf **Konfiguration**. Notieren Sie sich die abgebildete IP-Adresse.
 
@@ -66,7 +66,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Typ     | Eine Datei        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
+|Type     | Eine Datei        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |IP-Adresse     | <your ip address>       | Öffentliche IP-Adresse|
@@ -93,7 +93,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
+|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | webserver.azurewebsites.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für die Web-App bereitgestellte DNS-Name „webserver.azurewebsites.net“.        |
@@ -127,7 +127,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
+|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für das Speicherkonto bereitgestellte DNS-Name „asverify.adatumfunctiona9ed.blob.core.windows.net“.        |
@@ -155,7 +155,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
+|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für das Speicherkonto bereitgestellte DNS-Name „cdnverify.adatumcdnendpoint.azureedge.net“.        |

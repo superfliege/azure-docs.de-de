@@ -13,14 +13,17 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e11092057af3a7a16c60e55837f31ac3004e42a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67393e19a72777d105f1f35a16986c52f52133be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079807"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Herunterladen und Installieren der Microsoft Authenticator-App
+>[!Important]
+>Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+
 Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
 
 Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfolgen:
@@ -29,8 +32,15 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 
 - **Anmeldung per Telefon**: Dies ist eine Version der zweistufigen Überprüfung, bei der Sie sich ohne Kennwort mit Ihrem Benutzernamen und mithilfe Ihres mobilen Geräts mit Ihrem Fingerabdruck, der Gesichtserkennung oder einer PIN anmelden können.
 
->[!NOTE]
->Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429).  Unter [Dieses Microsoft-Konto ist nicht vorhanden](https://support.microsoft.com/help/13811) finden Sie weitere Informationen zu den Maßnahmen, die Sie ergreifen können, wenn Sie diese Meldung beim Versuch erhalten, sich bei Ihrem Microsoft-Konto anzumelden.
+- **Codegenerierung**: Dient als Codegenerator für andere Konten, die Authentifikator-Apps unterstützen.
+
+> [!Important]
+> Die Microsoft Authenticator-App funktioniert mit jedem Konto, für das die zweistufige Überprüfung verwendet wird, und unterstützt die Standards für zeitbasierte Einmalkennwörter (Time-Based One-Time Passwords, TOTPs).
+> 
+> Ihre Organisation erfordert möglicherweise die Verwendung einer Authentifikator-App zum Anmelden und für den Zugriff auf Ihre Organisationsdaten und -dokumente. Ihr Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst tatsächlich als Überprüfungsmethode eingerichtet, nachdem Sie den Registrierungsprozess abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md).
+> 
+> [!NOTE]
+> Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429).  Unter [Dieses Microsoft-Konto ist nicht vorhanden](https://support.microsoft.com/help/13811) finden Sie weitere Informationen zu den Maßnahmen, die Sie ergreifen können, wenn Sie diese Meldung beim Versuch erhalten, sich bei Ihrem Microsoft-Konto anzumelden.
 
 ## <a name="download-and-install-the-app"></a>Herunterladen und Installieren der App
 Installieren Sie die aktuelle Version der Microsoft Authenticator-App basierend auf Ihrem Betriebssystem:
@@ -39,7 +49,8 @@ Installieren Sie die aktuelle Version der Microsoft Authenticator-App basierend 
 
 - **Apple iOS**: Wechseln Sie auf Ihrem Apple iOS-Gerät zum App Store, um [die Microsoft Authenticator-App herunterzuladen und zu installieren](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
-    >[Wichtig] Wenn Sie sich derzeit nicht an Ihrem mobilen Gerät befinden, können Sie trotzdem die Microsoft Authenticator-App erhalten, indem Sie sich selbst von der [Microsoft Authenticator-Seite](https://www.microsoft.com/en-us/account/authenticator) einen Downloadlink senden.
+>[!Important]
+>Wenn Sie derzeit nicht an Ihrem mobilen Gerät arbeiten, können Sie die Microsoft Authenticator-App dennoch erhalten, indem Sie sich selbst von der [Microsoft Authenticator-Seite](https://www.microsoft.com/en-us/account/authenticator) einen Downloadlink senden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

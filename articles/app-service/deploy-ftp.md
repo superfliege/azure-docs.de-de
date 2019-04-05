@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8b1a4bbb100fc4db1323f530808a8d01bd8f30ce
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858876"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
@@ -30,7 +30,7 @@ Der FTP/S-Endpunkt für Ihre App ist bereits aktiv. Zum Aktivieren der FTP/S-Ber
 
 ## <a name="open-ftp-dashboard"></a>Öffnen des FTP-Dashboards
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Seite [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
+Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
 
 Um das FTP-Dashboard zu öffnen, klicken Sie auf **Bereitstellungscenter** > **FTP** > **Dashboard**.
 
@@ -43,6 +43,14 @@ Klicken Sie auf dem FTP-Dashboard auf **Kopieren**, um den FTPS-Endpunkt und App
 ![Kopieren von FTP-Informationen](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
 Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer App zu verwenden, da diese für jede App eindeutig sind. Wenn Sie jedoch auf **Benutzeranmeldeinformationen** klicken, können Sie Anmeldeinformationen auf Benutzerebene festlegen, die Sie für die FTP/S-Anmeldung bei allen App Service-Anwendungen in Ihrem Abonnement verwenden können.
+
+> [!NOTE]
+> Für die Authentifizierung an einem FTP/FTPS-Endpunkt mit Anmeldeinformationen auf Benutzerebene ist ein Benutzername im folgenden Format erforderlich: 
+>
+>`<app-name>\<user-name>`
+>
+> Weil Anmeldeinformationen auf Benutzerebene mit dem Benutzer und nicht einer bestimmten Ressource verknüpft sind, muss der Benutzername dieses Format aufweisen, damit die Anmeldeaktion an den richtigen App-Endpunkt weitergeleitet wird.
+>
 
 ## <a name="deploy-files-to-azure"></a>Bereitstellen von Dateien in Azure
 
@@ -58,7 +66,6 @@ Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer
 > - Generierung von „web.config“ (hier sehen Sie ein [Node.js-Beispiel](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Generieren Sie diese erforderlichen Dateien auf Ihrem lokalen Computer manuell, und stellen Sie sie zusammen mit Ihrer App bereit.
->
 >
 
 ## <a name="enforce-ftps"></a>Erzwingen von FTPS

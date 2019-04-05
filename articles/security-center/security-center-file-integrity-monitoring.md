@@ -3,23 +3,23 @@ title: Überwachung der Dateiintegrität in Azure Security Center | Microsoft-Do
 description: " Erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center aktivieren. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
-editor: ''
+editor: monhaber
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
-ms.author: rkarlin
-ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 03/13/2019
+ms.author: monhaber
+ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901581"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -36,15 +36,12 @@ Die Überwachung der Dateiintegrität von Security Center überprüft die Integr
 In Security Center erhalten Sie Empfehlungen dafür, welche Entitäten überwacht werden sollen. Für diese können Sie die Überwachung der Dateiintegrität einfach aktivieren. Sie können ebenfalls eigene Richtlinien oder Entitäten zur Überwachung durch die Überwachung der Dateiintegrität definieren. Dies wird in der exemplarischen Vorgehensweise erläutert.
 
 > [!NOTE]
-> Das Feature „Überwachung der Dateiintegrität“ funktioniert auf physischen und virtuellen Windows- und Linux-Computern und ist im Standard-Tarif von Security Center enthalten. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
-Die Überwachung der Dateiintegrität lädt Daten in den Log Analytics-Arbeitsbereich hoch. Die Gebühren für diese Daten hängen von der hochgeladenen Datenmenge ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
->
->
+> Das Feature „Überwachung der Dateiintegrität“ funktioniert auf physischen und virtuellen Windows- und Linux-Computern und ist im Standard-Tarif von Security Center enthalten. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). Die Überwachung der Dateiintegrität lädt Daten in den Log Analytics-Arbeitsbereich hoch. Die Gebühren für diese Daten hängen von der hochgeladenen Datenmenge ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+
+Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn die Überwachung der Dateiintegrität aktiviert ist, besitzen Sie die Ressource **Änderungsnachverfolgung** vom Typ **Lösung**. Informationen zur Häufigkeit der Datensammlung für die Azure-Änderungsnachverfolgung finden Sie unter [Details zur Datensammlung für die Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
 > [!NOTE]
-> Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn die Überwachung der Dateiintegrität aktiviert ist, besitzen Sie die Ressource **Änderungsnachverfolgung** vom Typ „Lösung“. Wenn Sie die Ressource **Änderungsnachverfolgung** entfernen, deaktivieren Sie das Feature „Überwachung der Dateiintegrität“ in Security Center.
->
->
+> Wenn Sie die Ressource **Änderungsnachverfolgung** entfernen, deaktivieren Sie damit auch das Feature „Überwachung der Dateiintegrität“ in Security Center.
 
 ## <a name="which-files-should-i-monitor"></a>Welche Dateien sollten überwacht werden?
 Sie sollten sich überlegen, welche Dateien für Ihr System und Ihre Anwendungen entscheidend sind, wenn Sie auswählen, welche Dateien überwacht werden sollen. Sie sollten Dateien auswählen, von denen Sie keine ungeplanten Änderungen erwarten. Wenn Sie Dateien auswählen, die häufig von Anwendungen oder dem Betriebssystem geändert werden (z.B. Protokoll- und Textdateien), werden viele Aktionen generiert, die das Identifizieren eines Angriffs erschweren.
@@ -134,15 +131,15 @@ Die Registerkarte **Änderungen** (siehe unten) führt alle Änderungen auf, die
 
 1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und klicken Sie auf **Einstellungen**.
 
-  ![Einstellungen][11]
+   ![Einstellungen][11]
 
-  **Arbeitsbereichskonfiguration** wird geöffnet, und diese drei Registerkarten werden angezeigt: **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien**. Jede Registerkarte führt die Entitäten auf, die Sie in dieser Kategorie bearbeiten können. Für jede aufgeführte Entität identifiziert Security Center, ob die Überwachung der Dateiintegrität aktiviert (true) (wahr) oder deaktiviert (false) (falsch) ist.  Wenn Sie eine Entität bearbeiten, können Sie die Überwachung der Dateiintegrität aktivieren oder deaktivieren.
+   **Arbeitsbereichskonfiguration** wird geöffnet, und diese drei Registerkarten werden angezeigt: **Windows-Registrierung**, **Windows-Dateien** und **Linux-Dateien**. Jede Registerkarte führt die Entitäten auf, die Sie in dieser Kategorie bearbeiten können. Für jede aufgeführte Entität identifiziert Security Center, ob die Überwachung der Dateiintegrität aktiviert (true) (wahr) oder deaktiviert (false) (falsch) ist.  Wenn Sie eine Entität bearbeiten, können Sie die Überwachung der Dateiintegrität aktivieren oder deaktivieren.
 
-  ![Arbeitsbereichskonfiguration][12]
+   ![Arbeitsbereichskonfiguration][12]
 
 2. Wählen Sie einen Identitätsschutz aus. In diesem Beispiel wurde ein Element unter „Windows-Registrierung“ ausgewählt. Das Fenster **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten) wird geöffnet.
 
-  ![Für die Änderungsnachverfolgung bearbeiten][13]
+   ![Für die Änderungsnachverfolgung bearbeiten][13]
 
 Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten) können Sie Folgendes durchführen:
 
@@ -155,11 +152,11 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
 1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und wählen Sie im oberen Bereich **Einstellungen** aus. Die **Arbeitsbereichskonfiguration** wird geöffnet.
 2. Klicken Sie unter **Arbeitsbereichskonfiguration** auf die Registerkarte für den Typ der Entität, die Sie hinzufügen möchten: Windows-Registrierung, Windows-Dateien oder Linux-Dateien. In diesem Beispiel wurde **Linux-Dateien** ausgewählt.
 
-  ![Hinzufügen eines neuen zu überwachenden Elements][14]
+   ![Hinzufügen eines neuen zu überwachenden Elements][14]
 
 3. Wählen Sie **Hinzufügen**. Das Fenster **Add for Change Tracking** (Für die Änderungsnachverfolgung hinzufügen) wird geöffnet.
 
-  ![Eingabe der angeforderten Informationen][15]
+   ![Eingabe der angeforderten Informationen][15]
 
 4. Geben Sie auf der Seite **Hinzufügen** die angeforderten Informationen ein, und klicken Sie auf **Speichern**.
 
@@ -167,19 +164,19 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
 1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück.
 2. Wählen Sie einen Arbeitsbereich aus, für den die Überwachung der Dateiintegrität derzeit aktiviert ist. Die Überwachung der Dateiintegrität ist für einen Arbeitsbereich aktiviert, wenn die Schaltflächen „Aktivieren“ und „Upgradeplan“ nicht vorhanden sind.
 
-  ![Auswählen eines Arbeitsbereichs, bei dem die Überwachung der Dateiintegrität aktiviert ist][16]
+   ![Auswählen eines Arbeitsbereichs, bei dem die Überwachung der Dateiintegrität aktiviert ist][16]
 
 3. Klicken Sie unter „Überwachung der Dateiintegrität“ auf **Einstellungen**.
 
-  ![Klicken auf „Einstellungen“][17]
+   ![Klicken auf „Einstellungen“][17]
 
 4. Klicken Sie unter **Arbeitsbereichskonfiguration** auf eine Gruppe, für die **Aktiviert** auf „true“ (wahr) festgelegt ist.
 
-  ![Arbeitsbereichskonfiguration][18]
+   ![Arbeitsbereichskonfiguration][18]
 
 5. Legen Sie **Aktiviert** im Fenster **Edit for Change Tracking** (Für Änderungsnachverfolgung bearbeiten) auf „False“ (Falsch) fest.
 
-  ![Festlegen von „Aktiviert“ auf „Falsch“][19]
+   ![Festlegen von „Aktiviert“ auf „Falsch“][19]
 
 6. Wählen Sie **Speichern** aus.
 
@@ -198,7 +195,7 @@ Sie können die Überwachung der Dateiintegrität deaktivieren. Die Überwachung
 2. Wählen Sie einen Arbeitsbereich aus.
 3. Klicken Sie unter **Überwachung der Dateiintegrität** auf **Deaktivieren**.
 
-  ![Deaktivieren der Überwachung der Dateiintegrität][20]
+   ![Deaktivieren der Überwachung der Dateiintegrität][20]
 
 4. Klicken Sie auf **Entfernen**, um sie zu deaktivieren.
 

@@ -18,15 +18,18 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 109ababa78292bf8b172144174af3216f3844941
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b77b5185056329113ee1fd17fa3ed3f364380ca2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095873"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
 Dieses Dokument enthält Kontextinformationen und Beschreibungen zu verschiedenen Features im [App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
+
+> [!NOTE]
+> Die Registrierung und Verwaltung von konvergenten und Azure AD-Anwendungen im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) wird ab Mai 2019 nicht mehr unterstützt. Wir empfehlen Ihnen, das neue Feature [App-Registrierungen (Vorschau)](https://aka.ms/appregistrations) im Azure-Portal zu verwenden, um Ihre vorhandenen Anwendungen zu verwalten und neue Anwendungen zu registrieren.
 
 ## <a name="my-applications-or-converged-applications"></a>Eigene Anwendungen oder konvergente Anwendungen
 Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Azure AD v2.0-Endpunkt registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Azure AD v2.0-Endpunkt finden Sie in der [v2.0-Übersicht](active-directory-appmodel-v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.

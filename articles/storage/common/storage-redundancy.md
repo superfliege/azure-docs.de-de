@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330782"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791238"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -51,7 +51,7 @@ Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfü
 > Storage Premium unterstützt nur lokal redundanten Speicher (Locally Redundant Storage, LRS).
 
 ## <a name="changing-replication-strategy"></a>Ändern der Replikationsstrategie
-Wir erlauben Ihnen, die Replikationsstrategie für Ihr Speicherkonto mithilfe von [Azure-Portal](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder einer der vielen [ Azure-Clientbibliotheken](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools) zu ändern. Bei einer Änderung des Replikationstyps Ihres Speicherkontos treten keine Ausfallzeiten auf.
+Sie können die Replikationsstrategie für Ihr Speicherkonto mithilfe von [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder einer der [ Azure-Clientbibliotheken](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools) ändern. Bei einer Änderung des Replikationstyps Ihres Speicherkontos treten keine Ausfallzeiten auf.
 
    > [!NOTE]
    > Derzeit können Sie weder das Portal noch die API verwenden, um Ihr Konto in ZRS zu konvertieren. Ausführliche Informationen zum Konvertieren der Replikation Ihres Kontos in ZRS finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md).
@@ -59,7 +59,9 @@ Wir erlauben Ihnen, die Replikationsstrategie für Ihr Speicherkonto mithilfe vo
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Entstehen mir Kosten für die Änderung der Replikationsstrategie meines Kontos?
 Es hängt von Ihrem Konvertierungspfad ab. Vom billigsten bis zum teuersten Redundanzangebot bieten wir LRS, ZRS, GRS und RA-GRS an. Beispielsweise fallen beim Wechsel *von* LRS zu einem beliebigen anderen Angebot zusätzliche Kosten an, da Sie in eine komplexere Redundanzebene wechseln. Beim Wechsel *zu* GRS oder RA-GRS fallen Kosten für eine ausgehende Bandbreite an, da Ihre Daten (in Ihrer primären Region) in Ihre sekundäre Remoteregion repliziert werden. Dies sind einmalige Kosten bei der anfänglichen Einrichtung. Nachdem die Daten kopiert sind, fallen keine weiteren Kosten für die Konvertierung an. Ihnen werden nur ggf. die Replikation neuer oder die Aktualisierung vorhandener Daten in Rechnung gestellt. Ausführliche Informationen zu Bandbreitengebühren finden Sie auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Wenn Sie von GRS zu LRS wechseln, entstehen keine zusätzlichen Kosten, aber Ihre replizierten Daten werden am sekundären Standort gelöscht.
+Wenn Sie Ihr Speicherkonto von GRS in LRS umwandeln, entstehen keine zusätzlichen Kosten, aber Ihre replizierten Daten werden am sekundären Standort gelöscht.
+
+Wenn Sie Ihr Speicherkonto von RA-GRS in GRS oder LRS umwandeln, wird das Konto nach dem Umstellungsdatum für weitere 30 Tage als RA-GRS abgerechnet.
 
 ## <a name="see-also"></a>Weitere Informationen
 
@@ -68,5 +70,5 @@ Wenn Sie von GRS zu LRS wechseln, entstehen keine zusätzlichen Kosten, aber Ihr
 - [Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage](storage-redundancy-grs.md)
 - [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)
 - [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS-Speicher](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache) ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) (Redundanzoptionen für Microsoft Azure Storage und Lesezugriff auf georedundanten Speicher)
 - [SOSP-Bericht: Azure Storage: A highly available cloud storage service with strong consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)

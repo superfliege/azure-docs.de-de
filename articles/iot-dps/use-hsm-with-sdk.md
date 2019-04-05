@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319251"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990735"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts für C
 
-In diesem Artikel erfahren Sie, wie Sie verschiedene [Nachweismechanismen](concepts-security.md#attestation-mechanism) mit dem Client-SDK des Device Provisioning-Diensts für C verwenden – entweder mit einem physischen Gerät oder mit einem Emulator. Der Bereitstellungsdienst unterstützt die Authentifizierung für zwei Arten von Nachweismechanismen: X **.** 509 und TPM (Trusted Platform Module).
+In diesem Artikel erfahren Sie, wie Sie verschiedene [Nachweismechanismen](concepts-security.md#attestation-mechanism) mit dem Client-SDK des Device Provisioning-Diensts für C verwenden – entweder mit einem physischen Gerät oder mit einem Emulator. Der Bereitstellungsdienst unterstützt die Authentifizierung für zwei Arten von Nachweismechanismen: X.509 und Trusted Platform Module (TPM).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ Bereiten Sie Ihre Entwicklungsumgebung gemäß dem Abschnitt „Vorbereiten der 
 
 Als Gerätehersteller müssen Sie zuerst basierend auf einem Supporttyp einen Nachweismechanismus auswählen. Das [Client-SDK des Device Provisioning-Diensts für C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) unterstützt derzeit die folgenden Nachweismechanismen: 
 
-- [Trusted Platform Module (TPM):](https://en.wikipedia.org/wiki/Trusted_Platform_Module) TPM ist ein etablierter Standard für die meisten Windows-basierten Geräteplattformen sowie für einige Linux-/Ubuntu-basierte Geräte. Gerätehersteller können sich für diesen Nachweismechanismus entscheiden, wenn auf ihren Geräten eines der folgenden Betriebssysteme ausgeführt wird und sie nach einem etablierten Standard suchen. Bei TPM-Chips können Sie nur jedes Gerät einzeln beim Device Provisioning-Dienst registrieren. Für Entwicklungszwecke können Sie den TPM-Simulator auf dem Windows- oder Linux-Entwicklungscomputer verwenden.
+- [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM ist ein etablierter Standard für die meisten Windows-basierten Geräteplattformen sowie für einige Linux/Ubuntu-basierte Geräte. Gerätehersteller können sich für diesen Nachweismechanismus entscheiden, wenn auf ihren Geräten eines der folgenden Betriebssysteme ausgeführt wird und sie nach einem etablierten Standard suchen. Bei TPM-Chips können Sie nur jedes Gerät einzeln beim Device Provisioning-Dienst registrieren. Für Entwicklungszwecke können Sie den TPM-Simulator auf dem Windows- oder Linux-Entwicklungscomputer verwenden.
 
 - [X.509](https://cryptography.io/en/latest/x509/): X.509-Zertifikate können auf relativ neuen Chips gespeichert werden, die als [Hardwaresicherheitsmodule (HSMs)](concepts-security.md#hardware-security-module) bezeichnet werden. Bei Microsoft wird auch an RIoT- oder DICE-Chips gearbeitet, die die X.509-Zertifikate implementieren. Mit X.509-Chips können Sie Massengeräteregistrierungen im Portal durchführen. Darüber hinaus werden bestimmte Windows-fremde Betriebssysteme wie mbed OS unterstützt. Für Entwicklungszwecke unterstützt das Client-SDK des Device Provisioning-Diensts einen X.509-Gerätesimulator. 
 
@@ -98,14 +98,14 @@ Das SDK muss vor dem Erstellen der Geräteregistrierung erstellt werden.
 
 ### <a name="windows"></a>Windows
 - Wenn Sie das SDK unter Windows erstellen möchten, führen Sie die folgenden Schritte aus, um Projektdateien zu generieren:
-    - Öffnen Sie eine Developer-Eingabeaufforderung für VS2015.
-    - Führen Sie im Stammverzeichnis des Repositorys die folgenden CMake-Befehle aus:
-      ```
-      cd azure-iot-sdk-c
-      mkdir cmake
-      cd cmake
-      cmake -G "Visual Studio 14 2015" ..
-      ```
+  - Öffnen Sie eine Developer-Eingabeaufforderung für VS2015.
+  - Führen Sie im Stammverzeichnis des Repositorys die folgenden CMake-Befehle aus:
+    ```
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    cmake -G "Visual Studio 14 2015" ..
+    ```
     Dieser Befehl erstellt x86-Bibliotheken. Wenn Sie Bibliotheken für x64 erstellen möchten, passen Sie das cmake-Generatorargument an: 
     ```
     cmake .. -G "Visual Studio 14 2015 Win64"
@@ -149,8 +149,8 @@ Gehen Sie bei Verwendung von TPM gemäß der Anleitung unter [Erstellen und Bere
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
-   - X **.** 509, individuelle Registrierung: Wählen Sie auf dem Zusammenfassungsblatt des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X**.**509** aus, und laden Sie das untergeordnete Zertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
-   - X **.** 509, Gruppenregistrierung: Wählen Sie auf dem Zusammenfassungsblatt des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Group Enrollments** (Gruppenregistrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X**.**509** aus, geben Sie einen Gruppen- und einen Zertifizierungsnamen ein, und laden Sie das Zertifikat der Stammzertifizierungsstelle bzw. das Zwischenzertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+   - Individuelle Registrierung mit X **.** 509: Wählen Sie auf dem Blatt mit der Zusammenfassung des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X**.**509** aus, und laden Sie das untergeordnete Zertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+   - Gruppenregistrierung mit X **.** 509: Wählen Sie auf dem Blatt mit der Zusammenfassung des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Group Enrollments** (Gruppenregistrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X**.**509** aus, geben Sie einen Gruppen- und einen Zertifizierungsnamen ein, und laden Sie das Zertifikat der Stammzertifizierungsstelle bzw. das Zwischenzertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Aktivieren der Authentifizierung für Geräte mit einem benutzerdefinierten Nachweismechanismus (optional)
 

@@ -2,21 +2,21 @@
 title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank.
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/11/2019
-ms.openlocfilehash: b066c7f6c32b6e9fe1c1f63b5db88b4deaa2edae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 03/05/2019
+ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091493"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
 
@@ -62,9 +62,9 @@ Möglicherweise wird während des Vorgangs „Full data load“ (Vollständiger 
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. Schließen Sie diese Tabellen auf dem Blatt **Migrationseinstellungen konfigurieren**, auf dem Sie die Tabellen für die Migration angeben, aus.
+   1. Schließen Sie diese Tabellen auf dem Blatt **Migrationseinstellungen konfigurieren**, auf dem Sie die Tabellen für die Migration angeben, aus.
 
- 3. Führen Sie die Migrationsaktivität erneut aus.
+   1. Führen Sie die Migrationsaktivität erneut aus.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Migrationsfehler mit verschiedenen Integritätsverletzungen bei aktiven Triggern im Schema während „Full data load“ (Vollständiger Datenladevorgang) oder „Inkrementelle Datensynchronisierung“
 
@@ -89,7 +89,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 **Problemumgehung**
 
-Wenden Sie sich bei einer LOB-Spalte, die größer als 32 KB ist, unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam.
+Wenn Sie über eine LOB-Spalte verfügen, die größer als 32 KB ist, wenden Sie sich unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das technische Team.
 
 ### <a name="issues-with-timestamp-columns"></a>Probleme bei Zeitstempelspalten
 
@@ -99,7 +99,7 @@ In DMS wird der Zeitstempelwert der Quelle nicht migriert, stattdessen wird in d
 
 **Problemumgehung**
 
-Wenn in DMS der genaue in der Quelltabelle gespeicherte Zeitstempelwert migriert werden soll, wenden Sie sich unter [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) an das Entwicklerteam.
+Wenn DMS den genauen in der Quelltabelle gespeicherten Zeitstempelwert migrieren soll, wenden Sie sich unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam.
 
 ### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>Für Fehler bei der Datenmigration werden keine zusätzlichen Details auf dem Blatt mit dem detaillierten Status der Datenbank angegeben.
 

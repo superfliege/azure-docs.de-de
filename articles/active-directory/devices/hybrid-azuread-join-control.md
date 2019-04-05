@@ -17,12 +17,12 @@ ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6b1e1c103c37874365f7e8d0b893985c9a6469c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b113dd3e354e778d2cf16182665afff5440d2e5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171076"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408529"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern der Azure AD-Hybrideinbindung für Ihre Geräte
 
@@ -82,7 +82,7 @@ Festlegen des GPO:
 8.  Klicken Sie mit der rechten Maustaste auf **In die Domäne eingebundene Computer als Geräte registrieren**, und wählen Sie dann die Option **Bearbeiten**.
 
     > [!NOTE] 
-    > In früheren Versionen der Gruppenrichtlinien-Verwaltungskonsole hatte diese Gruppenrichtlinienvorlage einen anderen Namen. Wenn Sie eine frühere Version der Konsole verwenden, navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Workplace Join** > **Clientcomputer automatisch in Arbeitsbereich einbinden**. 
+    > In früheren Versionen der Gruppenrichtlinien-Verwaltungskonsole hatte diese Gruppenrichtlinienvorlage einen anderen Namen. Wenn Sie eine frühere Version der Konsole verwenden, navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Geräteregistrierung** > **Computer, der der Domäne beigetreten ist, als Gerät registrieren**. 
 
 9.  Wählen Sie eine der folgenden Einstellungen und dann **Anwenden** aus:
 
@@ -99,16 +99,16 @@ Sie können das Verhalten der Geräteregistrierung Ihrer aktuellen Geräte durch
 
 Konfigurieren der Clienteinstellung:
 
-1.  Öffnen Sie den **Konfigurations-Manager**, und navigieren Sie zu **Cloud Services**.
+1.  Öffnen Sie den **Configuration Manager**, wählen Sie **Verwaltung** aus, und navigieren Sie zu **Clienteinstellungen**.
 
-2.  Wählen Sie unter **Geräteeinstellungen** eine der folgenden Einstellungen für **Neue, in die Domäne eingebundene Windows 10-Geräte automatisch bei Azure Active Directory registrieren** aus:
+2.  Öffnen Sie die Eigenschaften für **Clientstandardeinstellungen**, und wählen Sie **Clouddienste** aus.
+
+3.  Wählen Sie unter **Geräteeinstellungen** eine der folgenden Einstellungen für **Neue, in die Domäne eingebundene Windows 10-Geräte automatisch bei Azure Active Directory registrieren** aus:
 
     - **Nein**: Zum Verhindern der automatischen Geräteregistrierung.
     - **Ja**: Zum Aktivieren der automatischen Geräteregistrierung.
 
-
-3.  Klicken Sie auf **OK**.
-    
+4.  Klicken Sie auf **OK**.
 
 Sie müssen diese Clienteinstellung mit einem Speicherort Ihrer Wahl verknüpfen. Beispiel: Zum Konfigurieren dieser Clienteinstellung für alle aktuellen Windows-Geräte in Ihrer Organisation verknüpfen Sie die Clienteinstellung mit der Domäne. Für eine gesteuerte Bereitstellung können Sie die Clienteinstellung für aktuell in die Domäne eingebundene Windows-Geräte konfigurieren, die zu einer Organisationseinheit oder Sicherheitsgruppe gehören.
 

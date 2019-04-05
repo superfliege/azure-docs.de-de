@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243878"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011597"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
 
@@ -73,7 +73,7 @@ Der Informationsfluss von der Plattform zum Agenten erfolgt über zwei Kanäle:
 Folgende Systeme können nachweislich mit dem Azure Linux-Agent verwendet werden:
 
 > [!NOTE]
-> Diese Liste kann von der offiziellen Liste unterstützter Systemen für die Microsoft Azure-Plattform abweichen. Weitere Informationen finden Sie unter [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216).
+> Diese Liste kann von der offiziellen Liste unterstützter Systemen für die Microsoft Azure-Plattform abweichen. Weitere Informationen finden Sie unter [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216).
 > 
 > 
 
@@ -108,11 +108,11 @@ Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quel
 
 ## <a name="command-line-options"></a>Befehlszeilenoptionen
 ### <a name="flags"></a>Kennzeichen
-* verbose: Ausführlichkeit des angegebenen Befehls erhöhen
-* force: Interaktive Bestätigung für einige Befehle überspringen
+* verbose: Erhöht die Ausführlichkeit des angegebenen Befehls.
+* force: Überspringt die interaktive Bestätigung für einige Befehle.
 
 ### <a name="commands"></a>Befehle
-* help: Listet die unterstützten Befehle und Kennzeichen auf
+* help: Listet die unterstützten Befehle und Flags auf.
 * deprovision: Versucht, das System zu bereinigen und für eine erneute Bereitstellung vorzubereiten. Bei diesem Vorgang wird Folgendes gelöscht:
   
   * Alle SSH-Hostschlüssel (sofern Provisioning.RegenerateSshHostKeyPair in der Konfigurationsdatei auf "y" festgelegt ist)
@@ -126,8 +126,8 @@ Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quel
 > 
 > 
 
-* deprovision+user: Führt alle vorstehend für „-deprovision“ aufgeführten Aktionen aus und löscht darüber hinaus das zuletzt bereitgestellte Benutzerkonto (aus „/var/lib/waagent“ abgerufen) und zugehörige Daten. Dieser Parameter sollte verwendet werden, um die Bereitstellung eines Image aufzuheben, das zuvor für Bereitstellungen auf Azure verwendet wurde, sodass es erfasst und erneut verwendet werden kann.
-* version: Zeigt die Version von waagent an
+* deprovision+user: Führt alle oben für „-deprovision“ aufgeführten Aktionen aus und löscht darüber hinaus das zuletzt bereitgestellte Benutzerkonto (aus „/var/lib/waagent“ abgerufen) sowie die zugehörigen Daten. Dieser Parameter sollte verwendet werden, um die Bereitstellung eines Image aufzuheben, das zuvor für Bereitstellungen auf Azure verwendet wurde, sodass es erfasst und erneut verwendet werden kann.
+* version: Zeigt die Version von waagent an.
 * serialconsole: Konfiguriert GRUB so, dass ttyS0 (der erste serielle Port) als Startkonsole markiert wird. Hierdurch wird sichergestellt, dass Kernelstartprotokolle an den seriellen Port gesendet und für das Debuggen verfügbar gemacht werden.
 * daemon: Führt waagent als Daemon aus, um die Interaktion mit der Plattform zu verwalten. Dieses Argument wird waagent im waagent-Initialisierungsskript mitgeteilt.
 * start: Führt waagent als Hintergrundprozess aus.
@@ -344,6 +344,6 @@ Ubuntu Cloud Images verwenden [cloud-init](https://launchpad.net/ubuntu/+source/
 
 * Berücksichtigen Sie zum Konfigurieren des Bereitstellungspunkts und des Auslagerungsbereichs für den Ressourcendatenträger von Ubuntu Cloud Images die folgenden Ressourcen:
   
-  * [Ubuntu-Wiki: Konfigurieren von Swap-Partitionen](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: Configure Swap Partitions](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409) (Konfigurieren von Swappartitionen)
   * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](../windows/classic/inject-custom-data.md)
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/19/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338ae760aae90131a7353f990e1014aa714faa0f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845153"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -84,27 +84,29 @@ Wenn Sie Zugriffsüberprüfungen in Ihrer Organisation bereitstellen möchten, f
 
 Führen Sie die folgenden Schritte aus, um Zugriffsüberprüfungen zu aktivieren.
 
-1. Melden Sie sich als globaler Administrator oder Benutzerkontoadministrator beim [Azure-Portal](https://portal.azure.com) an, in dem Sie Zugriffsüberprüfungen verwenden möchten.
+1. Melden Sie sich als globaler Administrator oder Benutzeradministrator beim [Azure-Portal](https://portal.azure.com) an, in dem Sie Zugriffsüberprüfungen verwenden möchten.
 
 1. Klicken Sie auf **Alle Dienste**, und suchen Sie nach dem Dienst für Zugriffsüberprüfungen.
 
-    ![Alle Dienste – Zugriffsüberprüfungen](./media/access-reviews-overview/all-services-access-reviews.png)
-
 1. Klicken Sie auf **Zugriffsüberprüfungen**.
 
-    ![Zugriffsüberprüfungen – Integrieren](./media/access-reviews-overview/onboard-button.png)
+    ![Alle Dienste – Zugriffsüberprüfungen](./media/access-reviews-overview/all-services-access-reviews.png)
 
 1. Klicken Sie in der Navigationsliste auf **Integrieren**, um die Seite **Zugriffsüberprüfungen integrieren** zu öffnen.
 
+    ![Zugriffsüberprüfungen – Integrieren](./media/access-reviews-overview/onboard-button.png)
+
+1. Klicken Sie auf **Erstellen**, um Zugriffsüberprüfungen im aktuellen Verzeichnis zu aktivieren.
+
     ![Zugriffsüberprüfungen integrieren](./media/access-reviews-overview/onboard-access-reviews.png)
 
-1. Klicken Sie auf **Erstellen**, um Zugriffsüberprüfungen im aktuellen Verzeichnis zu aktivieren. Beim nächsten Starten von Zugriffsüberprüfungen sind die entsprechenden Optionen aktiviert.
+    Beim nächsten Starten von Zugriffsüberprüfungen sind die entsprechenden Optionen für Zugriffsüberprüfungen aktiviert.
 
     ![Aktivierte Zugriffsüberprüfungen](./media/access-reviews-overview/access-reviews-enabled.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](create-access-review.md)
+- [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
 - [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
-- [Durchführen einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen](perform-access-review.md)
-- [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung in Azure AD](complete-access-review.md)
+- [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md)
+- [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)

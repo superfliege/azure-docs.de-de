@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076772"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307818"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -29,9 +29,19 @@ Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen
 * [Analytics](../../azure-monitor/app/analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](../../azure-monitor/app/export-power-bi.md )möchten, benötigen Sie dazu keinen fortlaufenden Export.
 * Mit dem [REST-API für Datenzugriff](https://dev.applicationinsights.io/) können Sie programmgesteuert auf Ihre Telemetriedaten zugreifen.
-* Sie können auch auf das Setup für den [fortlaufenden Export über PowerShell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0) zugreifen.
+* Sie können auch auf das Setup für den [fortlaufenden Export über PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport) zugreifen.
 
 Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo sie beliebig lange bleiben können), sind sie für die übliche [Aufbewahrungsdauer](../../azure-monitor/app/data-retention-privacy.md)auch noch in Application Insights verfügbar.
+
+## <a name="continuous-export-advanced-storage-configuration"></a>Fortlaufender Export – erweiterte Speicherkonfiguration
+
+Der fortlaufende Export **unterstützt nicht** die folgenden Azure-Speicherfeatures/-Konfigurationen:
+
+* Verwenden von [VNET-/Azure Storage-Firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in Verbindung mit Azure Blob Storage.
+
+* [Unveränderlicher Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) für Azure Blob Storage.
+
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="setup"></a> Erstellen eines fortlaufenden Exports
 1. Öffnen Sie in der Application Insights-Ressource für Ihre App die Option „Fortlaufender Export“, und klicken Sie auf **Hinzufügen**:
@@ -140,7 +150,7 @@ Im kleinen Rahmen können Sie Code zum Aufteilen Ihrer Daten schreiben, sie in e
 Ein umfangreicheres Codebeispiel finden Sie unter [Verwenden einer Workerrolle][exportasa].
 
 ## <a name="delete"></a>Löschen der alten Daten
-Beachten Sie, dass Sie für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten Daten nach Bedarf verantwortlich sind.
+Sie sind für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten Daten nach Bedarf verantwortlich.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Wenn Sie Ihren Speicherschlüssel erneut generieren...
 Wenn Sie den Schlüssel zu Ihrem Speicher ändern, funktioniert der fortlaufende Export nicht mehr. In Ihrem Azure-Konto wird eine Benachrichtigung angezeigt.

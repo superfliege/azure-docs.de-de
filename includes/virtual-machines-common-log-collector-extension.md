@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ed9d9fd020bb14db7e1d171a32c25239d7ee802
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 081acf572c5b23d52ec0b8b7de1918edc9536c60
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736077"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305122"
 ---
 Für die Diagnose von Problemen mit einem Microsoft Azure-Clouddienst müssen die Protokolldateien des Diensts auf virtuellen Computern gesammelt werden, wenn die Probleme auftreten. Sie können die AzureLogCollector-Erweiterung bedarfsgesteuert verwenden, um eine einmalige Sammlung von Protokollen von einer oder mehreren Clouddienst-VMs (von Web- und Workerrollen aus) durchzuführen und die gesammelten Dateien an ein Azure-Speicherkonto zu übertragen – alles ohne Remoteanmeldung bei den virtuellen Computern.
 
@@ -33,7 +33,7 @@ In beiden Sammlungsmodi können zusätzliche Ordner für die Datensammlung angeg
 
 * **Name**: Der Name der Sammlung, der als Name des Unterordners in der ZIP-Datei mit den gesammelten Dateien verwendet wird.
 * **Standort**: Der Pfad des Ordners auf dem virtuellen Computer, in dem sich die zu sammelnden Datei befinden.
-* **Suchmuster**:  Das Muster der Namen der zu sammelnden Dateien. Standardwert: \*.
+* **SearchPattern**: Das Muster der Namen der zu sammelnden Dateien. Standardwert: \*.
 * **Rekursiv**: Falls sich die zu sammelnden Dateien rekursiv unter dem angegebenen Speicherort befinden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -93,37 +93,37 @@ Befolgen Sie einen der beiden folgenden Schritte, um den AzureLogCollector einer
 1. Führen Sie die Anweisungen zum Verbinden von Azure PowerShell mit Ihrem Abonnement aus.
 2. Geben Sie den Dienstnamen, den Slot, die Rollen und die Rolleninstanzen an, für den bzw. die Sie die AzureLogCollector-Erweiterung hinzufügen und aktivieren möchten.
 
-  ```powershell
-  #Specify your cloud service name
-  $ServiceName = 'extensiontest2'
+   ```powershell
+   #Specify your cloud service name
+   $ServiceName = 'extensiontest2'
 
-  #Specify the slot. 'Production' or 'Staging'
-  $slot = 'Production'
+   #Specify the slot. 'Production' or 'Staging'
+   $slot = 'Production'
 
-  #Specified the roles on which the extension will be installed and enabled
-  $roles = @("WorkerRole1","WebRole1")
+   #Specified the roles on which the extension will be installed and enabled
+   $roles = @("WorkerRole1","WebRole1")
 
-  #Specify the instances on which extension will be installed and enabled.  Use wildcard * for all instances
-  $instances = @("*")
+   #Specify the instances on which extension will be installed and enabled.  Use wildcard * for all instances
+   $instances = @("*")
 
-  #Specify the collection mode, "Full" or "GA"
-  $mode = "GA"
-  ```
+   #Specify the collection mode, "Full" or "GA"
+   $mode = "GA"
+   ```
 
 3. Geben Sie den zusätzlichen Datenordner an, für den Dateien gesammelt werden (dieser Schritt ist optional).
 
-  ```powershell
-  #add one location
-  $a1 = New-Object PSObject
+   ```powershell
+   #add one location
+   $a1 = New-Object PSObject
 
-  $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
-  $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
-  $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
-  $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
+   $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
+   $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
 
-  $AdditionalDataList+= $a1
-  #more locations can be added....
-  ```
+   $AdditionalDataList+= $a1
+   #more locations can be added....
+   ```
 
    > [!NOTE]
    > Sie können das Token `%roleroot%` verwenden, um das Stammlaufwerk der Rolle anzugeben, da kein Festplattenlaufwerk verwendet wird.
@@ -131,16 +131,16 @@ Befolgen Sie einen der beiden folgenden Schritte, um den AzureLogCollector einer
    > 
 4. Geben Sie den Namen und den Schlüssel des Azure-Speicherkontos an, in das die gesammelten Dateien hochgeladen werden.
 
-  ```powershell
-  $StorageAccountName = 'YourStorageAccountName'
-  $StorageAccountKey  = 'YourStorageAccountKey'
-  ```
+   ```powershell
+   $StorageAccountName = 'YourStorageAccountName'
+   $StorageAccountKey  = 'YourStorageAccountKey'
+   ```
 
 5. Rufen Sie „SetAzureServiceLogCollector.ps1“ (am Ende dieses Artikels enthalten) wie folgt auf, um die AzureLogCollector-Erweiterung für einen Clouddienst zu aktivieren. Nachdem die Ausführung abgeschlossen wurde, finden Sie die hochgeladene Datei unter `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
-  ```powershell
-  .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
-  ```
+   ```powershell
+   .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
+   ```
 
 Im Folgenden sehen Sie die Definition der Parameter, die an das Skript übergeben werden. (Eine Kopie ist ebenfalls unten enthalten.)
 
@@ -176,12 +176,12 @@ param (
 
 * **ServiceName**: Der Name Ihres Clouddiensts.
 * **Roles**: Eine Liste der Rollen, z.B. „WebRole1“ oder „WorkerRole1“.
-* **Instances**:  Eine Liste der Namen von Rolleninstanzen, durch Komma getrennt. Verwenden Sie das Platzhalterzeichen („*“) für alle Rolleninstanzen.
-* **Slot**:  Slotname. „Production“ oder „Staging“.
+* **Instances**: Eine Liste der Namen von Rolleninstanzen, durch Komma getrennt. Verwenden Sie das Platzhalterzeichen („*“) für alle Rolleninstanzen.
+* **Slot**: Slotname. „Production“ oder „Staging“.
 * **Modus**: Sammlungsmodus. „Full“ oder „GA“.
 * **StorageAccountName**: Name des Azure-Speicherkontos zum Speichern der gesammelten Daten.
-* **StorageAccountKey**:  Name des Azure-Speicherkontenschlüssels.
-* **AdditionalDataLocationList**:  Eine Liste mit der folgenden Struktur:
+* **StorageAccountKey**: Name des Azure-Speicherkontoschlüssels.
+* **AdditionalDataLocationList**: Eine Liste mit der folgenden Struktur:
 
   ```powershell
   {
@@ -197,36 +197,36 @@ Führen Sie die Anweisungen zum Verbinden von Azure PowerShell mit Ihrem Abonnem
 
 1. Geben Sie den Namen des Diensts, die VM und den Sammlungsmodus an.
 
-  ```powershell
-  #Specify your cloud service name
-  $ServiceName = 'YourCloudServiceName'
+   ```powershell
+   #Specify your cloud service name
+   $ServiceName = 'YourCloudServiceName'
 
-  #Specify the VM name
-  $VMName = "'YourVMName'"
+   #Specify the VM name
+   $VMName = "'YourVMName'"
 
-  #Specify the collection mode, "Full" or "GA"
-  $mode = "GA"
+   #Specify the collection mode, "Full" or "GA"
+   $mode = "GA"
 
-  Specify the additional data folder for which files will be collected (this step is optional).
+   Specify the additional data folder for which files will be collected (this step is optional).
 
-  #add one location
-  $a1 = New-Object PSObject
+   #add one location
+   $a1 = New-Object PSObject
 
-  $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
-  $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
-  $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
-  $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
+   $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
+   $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
 
-  $AdditionalDataList+= $a1
+   $AdditionalDataList+= $a1
         #more locations can be added....
-  ```
+   ```
   
 2. Geben Sie den Namen und den Schlüssel des Azure-Speicherkontos an, in das die gesammelten Dateien hochgeladen werden.
 
-  ```powershell
-  $StorageAccountName = 'YourStorageAccountName'
-  $StorageAccountKey  = 'YourStorageAccountKey'
-  ```
+   ```powershell
+   $StorageAccountName = 'YourStorageAccountName'
+   $StorageAccountKey  = 'YourStorageAccountKey'
+   ```
 
 3. Rufen Sie „SetAzureVMLogCollector.ps1“ (am Ende dieses Artikels enthalten) wie folgt auf, um die AzureLogCollector-Erweiterung für einen Clouddienst zu aktivieren. Nachdem die Ausführung abgeschlossen wurde, finden Sie die hochgeladene Datei unter `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
@@ -260,8 +260,8 @@ param (
 * **VMName**: Der Name der VM.
 * **Modus**: Sammlungsmodus. „Full“ oder „GA“.
 * **StorageAccountName**: Name des Azure-Speicherkontos zum Speichern der gesammelten Daten.
-* **StorageAccountKey**:  Name des Azure-Speicherkontenschlüssels.
-* **AdditionalDataLocationList**:  Eine Liste mit der folgenden Struktur:
+* **StorageAccountKey**: Name des Azure-Speicherkontoschlüssels.
+* **AdditionalDataLocationList**: Eine Liste mit der folgenden Struktur:
 
   ```
   {
@@ -360,7 +360,7 @@ if ($AdditionDataLocationList -ne $null )
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 "publicConfig is:  $publicConfigJSON"
 
-#we just provide a empty privateConfig object
+#we just provide an empty privateConfig object
 $privateconfig = "{
 }"
 
@@ -452,7 +452,7 @@ $publicConfigJSON = $publicConfig | ConvertTo-Json
 Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
 
 #
-#we just provide a empty privateConfig object
+#we just provide an empty privateConfig object
 #
 $privateconfig = "{
 }"

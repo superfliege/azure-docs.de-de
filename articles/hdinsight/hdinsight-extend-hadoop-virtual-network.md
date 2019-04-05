@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: ae3b4787928b3a578df30dd7f8a2791ce487305d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100495"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+
+> [!IMPORTANT]  
+> Ab dem 28. Februar 2019 werden die Netzwerkressourcen (wie z.B. Netzwerkadapter, Lastenausgleichsmodule usw.) für in einem virtuellen Netzwerk NEU erstellte Cluster in der gleichen HDInsight-Clusterressourcengruppe bereitgestellt. Zuvor wurden diese Ressourcen in der Ressourcengruppe des virtuellen Netzwerks bereitgestellt. Für derzeit ausgeführte Cluster und Cluster, die ohne virtuelles Netzwerk erstellt wurden, ändert sich nichts.
 
 Es wird beschrieben, wie Sie HDInsight mit einem [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) verwenden. Die Nutzung eines Azure Virtual Network ermöglicht die folgenden Szenarien:
 
@@ -112,8 +115,8 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
     * [Erstellen von HDInsight-Clustern mit der klassischen Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Erstellen von Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]  
-  > Das Hinzufügen von HDInsight zu einem virtuellen Netzwerk ist ein optionaler Konfigurationsschritt. Achten Sie darauf, beim Konfigurieren des Clusters das virtuelle Netzwerk auszuwählen.
+   > [!IMPORTANT]  
+   > Das Hinzufügen von HDInsight zu einem virtuellen Netzwerk ist ein optionaler Konfigurationsschritt. Achten Sie darauf, beim Konfigurieren des Clusters das virtuelle Netzwerk auszuwählen.
 
 ## <a id="multinet"></a>Verbinden von mehreren Netzwerken
 
@@ -125,8 +128,8 @@ Azure ermöglicht die Namensauflösung für Azure-Dienste, die in einem virtuell
 
 * Alle Ressourcen, die sich in demselben Azure Virtual Network befinden, indem der __interne DNS-Name__ der Ressource verwendet wird. Beim Verwenden der Standardnamensauflösung sind dies Beispiele für interne DNS-Namen, die HDInsight-Workerknoten zugewiesen werden:
 
-    * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
-    * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Beide Knoten können direkt miteinander und mit anderen Knoten in HDInsight kommunizieren, indem interne DNS-Namen verwendet werden.
 
@@ -145,29 +148,29 @@ Die Ausführung der folgenden Aktionen ist erforderlich, um die Namensauflösung
 
 4. Konfigurieren der Weiterleitung zwischen den DNS-Servern. Die Konfiguration richtet sich nach dem Typ des Remotenetzwerks.
 
-    * Wenn das Remotenetzwerk ein lokales Netzwerk ist, können Sie das DNS wie folgt konfigurieren:
+   * Wenn das Remotenetzwerk ein lokales Netzwerk ist, können Sie das DNS wie folgt konfigurieren:
         
-        * __Benutzerdefiniertes DNS__ (im virtuellen Netzwerk):
+     * __Benutzerdefiniertes DNS__ (im virtuellen Netzwerk):
 
-            * Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den rekursiven Azure-Resolver (168.63.129.16) weiter. Azure verarbeitet Anforderungen von Ressourcen im virtuellen Netzwerk.
+         * Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den rekursiven Azure-Resolver (168.63.129.16) weiter. Azure verarbeitet Anforderungen von Ressourcen im virtuellen Netzwerk.
 
-            * Leiten Sie alle anderen Anforderungen an den lokalen DNS-Server weiter. Das lokale DNS verarbeitet alle anderen Anforderungen der Namensauflösung. Dies gilt auch für Internetressourcen, z.B. „Microsoft.com“.
+         * Leiten Sie alle anderen Anforderungen an den lokalen DNS-Server weiter. Das lokale DNS verarbeitet alle anderen Anforderungen der Namensauflösung. Dies gilt auch für Internetressourcen, z.B. „Microsoft.com“.
 
-        * __Lokales DNS:__ Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den benutzerdefinierten DNS-Server weiter. Der benutzerdefinierte DNS-Server leitet die Daten dann an den rekursiven Azure-Resolver weiter.
+     * __Lokales DNS:__ Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den benutzerdefinierten DNS-Server weiter. Der benutzerdefinierte DNS-Server leitet die Daten dann an den rekursiven Azure-Resolver weiter.
 
-        Bei dieser Konfiguration werden Anforderungen von vollqualifizierten Domänennamen, die das DNS-Suffix des virtuellen Netzwerks enthalten, an den benutzerdefinierten DNS-Server weiter. Alle anderen Anforderungen (auch für öffentliche Internetadressen) werden vom lokalen DNS-Server verarbeitet.
+       Bei dieser Konfiguration werden Anforderungen von vollqualifizierten Domänennamen, die das DNS-Suffix des virtuellen Netzwerks enthalten, an den benutzerdefinierten DNS-Server weiter. Alle anderen Anforderungen (auch für öffentliche Internetadressen) werden vom lokalen DNS-Server verarbeitet.
 
-    * Konfigurieren Sie das DNS wie folgt, wenn das Remotenetzwerk ein anderes Azure Virtual Network ist:
+   * Konfigurieren Sie das DNS wie folgt, wenn das Remotenetzwerk ein anderes Azure Virtual Network ist:
 
-        * __Benutzerdefiniertes DNS__ (in jedem virtuellen Netzwerk):
+     * __Benutzerdefiniertes DNS__ (in jedem virtuellen Netzwerk):
 
-            * Anforderungen für das DNS-Suffix der virtuellen Netzwerke werden an die benutzerdefinierten DNS-Server weitergeleitet. Das DNS in jedem virtuellen Netzwerk ist für das Auflösen von Ressourcen im jeweiligen Netzwerk verantwortlich.
+         * Anforderungen für das DNS-Suffix der virtuellen Netzwerke werden an die benutzerdefinierten DNS-Server weitergeleitet. Das DNS in jedem virtuellen Netzwerk ist für das Auflösen von Ressourcen im jeweiligen Netzwerk verantwortlich.
 
-            * Leiten Sie alle anderen Anforderungen an den rekursiven Azure-Resolver weiter. Der rekursive Resolver ist für das Auflösen von lokalen Ressourcen und Internetressourcen verantwortlich.
+         * Leiten Sie alle anderen Anforderungen an den rekursiven Azure-Resolver weiter. Der rekursive Resolver ist für das Auflösen von lokalen Ressourcen und Internetressourcen verantwortlich.
 
-        Der DNS-Server für jedes Netzwerk leitet Anforderungen jeweils basierend auf dem DNS-Suffix an das andere Netzwerk weiter. Andere Anforderungen werden mit dem rekursiven Azure-Resolver aufgelöst.
+       Der DNS-Server für jedes Netzwerk leitet Anforderungen jeweils basierend auf dem DNS-Suffix an das andere Netzwerk weiter. Andere Anforderungen werden mit dem rekursiven Azure-Resolver aufgelöst.
 
-    Ein Beispiel für die einzelnen Konfigurationen finden Sie im Abschnitt [Beispiel: Benutzerdefiniertes DNS](#example-dns).
+     Ein Beispiel für die einzelnen Konfigurationen finden Sie im Abschnitt [Beispiel: Benutzerdefiniertes DNS](#example-dns).
 
 Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -232,7 +235,7 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** oder **benutzerdefinierte Routen
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen oder benutzerdefinierten Routen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
     * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des VNET erreichen können.
-    * __Benutzerdefinierte Routen:__ Wenn Sie benutzerdefinierte Routen verwenden möchten, erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest. Sie sollten auch jeglichen anderen ausgehenden Datenverkehr vom VNET ohne Einschränkung zulassen. Beispielsweise können Sie den gesamten verbliebenen Datenverkehr zu Überwachungszwecken an Ihre Azure-Firewall oder die virtuelle Netzwerkappliance (in Azure gehostet) weiterleiten, der ausgehende Datenverkehr sollte jedoch nicht blockiert werden.
+    * __Benutzerdefinierte Routen:__ Wenn Sie benutzerdefinierte Routen verwenden möchten, erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest. Sie sollten auch jeglichen anderen ausgehenden Datenverkehr vom VNET ohne Einschränkung zulassen. Beispielsweise können Sie sämtlichen weiteren Datenverkehr zu Überwachungszwecken an Ihre Azure Firewall-Instanz oder Ihre (in Azure gehostete) virtuelle Netzwerkappliance weiterleiten, der ausgehende Datenverkehr sollte jedoch nicht blockiert werden.
 
 Weitere Informationen zu Netzwerksicherheitsgruppen oder benutzerdefinierten Routen finden Sie in der folgenden Dokumentation:
 
@@ -242,7 +245,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen oder benutzerdefinierten Rou
 
 #### <a name="forced-tunneling-to-on-premise"></a>Tunnelerzwingung für lokale Netzwerke
 
-Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung für die lokalen Netzwerke. Wenn Sie Azure Firewall oder eine in Azure gehostete virtuelle Netzwerkappliance verwenden, können Sie zur Überwachung mithilfe von benutzerdefinierten Routen Datenverkehr an diese weiterleiten und den gesamten ausgehenden Datenverkehr zulassen.
+Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung für die lokalen Netzwerke. Wenn Sie Azure Firewall oder eine in Azure gehostete virtuelle Netzwerkappliance verwenden, können Sie benutzerdefinierte Routen verwenden, um den Datenverkehr zu Überwachungszwecken an die Firewall bzw. Appliance weiterzuleiten und den gesamten ausgehenden Datenverkehr zuzulassen.
 
 ## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 
@@ -281,6 +284,7 @@ Wenn Sie Netzwerksicherheitsgruppen verwenden, müssen Sie Datenverkehr von den 
     | &nbsp; | China, Norden 2 | 40.73.37.141</br>40.73.38.172 | 443 | Eingehend |
     | Europa | Nordeuropa | 52.164.210.96</br>13.74.153.132 | 443 | Eingehend |
     | &nbsp; | Europa, Westen| 52.166.243.90</br>52.174.36.244 | 443 | Eingehend |
+    | Frankreich | Frankreich, Mitte| 20.188.39.64</br>40.89.157.135 | 443 | Eingehend |
     | Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | 443 | Eingehend |
     | &nbsp; | Deutschland, Nordosten | 51.5.150.132</br>51.5.144.101 | 443 | Eingehend |
     | Indien | Indien, Mitte | 52.172.153.209</br>52.172.152.49 | 443 | Eingehend |
@@ -643,9 +647,9 @@ Für dieses Beispiel werden die folgenden Annahmen getroffen:
     };
     ```
     
-    * Ersetzen Sie die Werte `10.0.0.0/16` und `10.1.0.0/16` durch die IP-Adressbereiche Ihrer virtuellen Netzwerke. Bei diesem Eintrag ist es für Ressourcen in beiden Netzwerken zulässig, Anforderungen an die DNS-Server zu senden.
+   * Ersetzen Sie die Werte `10.0.0.0/16` und `10.1.0.0/16` durch die IP-Adressbereiche Ihrer virtuellen Netzwerke. Bei diesem Eintrag ist es für Ressourcen in beiden Netzwerken zulässig, Anforderungen an die DNS-Server zu senden.
 
-    Alle Anforderungen, die nicht für die DNS-Suffixe der virtuellen Netzwerke bestimmt sind (z.B. „microsoft.com“), werden vom rekursiven Azure-Resolver verarbeitet.
+     Alle Anforderungen, die nicht für die DNS-Suffixe der virtuellen Netzwerke bestimmt sind (z.B. „microsoft.com“), werden vom rekursiven Azure-Resolver verarbeitet.
 
 4. Starten Sie Bind neu, um die Konfiguration zu verwenden. Beispiel: `sudo service bind9 restart` auf beiden DNS-Servern.
 

@@ -12,35 +12,54 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 07/18/2017
+ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37d34d6df23b22466f3016841685ec2797a5c9ea
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46e70850ba9e5984e36643f1b9ecc9db29eec149
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177956"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294534"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
-Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.
+Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
+
+> [!NOTE]
+> Connect Health-Agents werden automatisch aktualisiert, wenn die neue Version veröffentlicht wird. Stellen Sie im Azure-Portal sicher, dass die Einstellungen für die automatische Aktualisierung aktiviert sind. 
+>
+
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
+
+## <a name="march-2019"></a>März 2019
+**Agent-Aktualisierung:** 
+* Azure AD Connect Health-Agent für AD DS (Version 3.1.41.0) 
+* .NET-Versionsauflistung.
+* Verbesserung der Erfassung von Leistungsindikatoren bei Fehlen bestimmter Kategorien.
+* Fehlerbehebung zum Verhindern der Erzeugung mehrerer Monitoring Agent-Instanzen.
+
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.41.0) 
+* Integrieren und Aktualisieren von AD FS-Testskripts über ADFSToolBox.
+* .NET-Versionsauflistung.
+* Verbesserung der Erfassung von Leistungsindikatoren bei Fehlen bestimmter Kategorien.
+* Fehlerbehebung zum Verhindern der Erzeugung mehrerer Monitoring Agent-Instanzen.
+
 
 ## <a name="november-2018"></a>November 2018
 **Neue allgemein verfügbare Features:** 
 * Azure AD Connect Health für die Synchronisierung: Diagnostizieren und Beheben von Synchronisierungsfehlern durch doppelte Attribute über das Portal
 
 **Agent-Aktualisierung:** 
-*  Azure AD Connect Health-Agent für AD DS (Version 3.1.24.0) 
-1. TLS-Protokollversion 1.2 (Transport Layer Security): Compliance und Erzwingung
-2. Verringerung des Warnungsaufkommens für den globalen Katalog
-3. Fehlerbehebungen für die Health-Agent-Registrierung
+* Azure AD Connect Health-Agent für AD DS (Version 3.1.24.0) 
+* TLS-Protokollversion 1.2 (Transport Layer Security): Compliance und Erzwingung
+* Verringerung des Warnungsaufkommens für den globalen Katalog
+* Fehlerbehebungen für die Health-Agent-Registrierung
 
-*   Azure AD Connect Health-Agent für AD FS (Version 3.1.24.0)
-1. TLS-Protokollversion 1.2 (Transport Layer Security): Compliance und Erzwingung
-2. Unterstützung von „Test-ADFSRequestToken“ für lokalisiertes Betriebssystem
-3. EventHandler-Sperrproblem des Diagnose-Agents behoben
-4. Fehlerbehebungen für die Health-Agent-Registrierung
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.24.0)
+* TLS-Protokollversion 1.2 (Transport Layer Security): Compliance und Erzwingung
+* Unterstützung von „Test-ADFSRequestToken“ für lokalisiertes Betriebssystem
+* EventHandler-Sperrproblem des Diagnose-Agents behoben
+* Fehlerbehebungen für die Health-Agent-Registrierung
 
 ## <a name="august-2018"></a>August 2018 
 *  Azure AD Connect Health-Agent für die Synchronisierung (Version 3.1.7.0), veröffentlicht mit Azure AD Connect Version 1.1.880.0    
@@ -51,31 +70,31 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 * Azure AD Connect Health für die Synchronisierung: Diagnostizieren und Beheben von Synchronisierungsfehlern durch doppelte Attribute über das Portal 
 
 **Agent-Aktualisierung:** 
-*  Azure AD Connect Health-Agent für AD DS (Version 3.1.7.0)    
-   1. Hotfix für das [Problem einer hohen CPU-Auslastung des Überwachungs-Agents mit .NET Framework-Releases in KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
+* Azure AD Connect Health-Agent für AD DS (Version 3.1.7.0)    
+  1. Hotfix für das [Problem einer hohen CPU-Auslastung des Überwachungs-Agents mit .NET Framework-Releases in KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
    
-*   Azure AD Connect Health-Agent für AD FS (Version 3.1.7.0)  
-   1. Hotfix für das [Problem einer hohen CPU-Auslastung des Überwachungs-Agents mit .NET Framework-Releases in KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
-   2. Korrekturen von Testergebnissen auf dem sekundären Server von ADFS Server 2016
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.7.0)  
+  1. Hotfix für das [Problem einer hohen CPU-Auslastung des Überwachungs-Agents mit .NET Framework-Releases in KB](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
+  2. Korrekturen von Testergebnissen auf dem sekundären Server von ADFS Server 2016
    
-*   Azure AD Connect Health-Agent für AD FS (Version 3.1.2.0)  
-   1. Hotfix für Agent-Speicherverwaltung und zugehörige Warnungen speziell für Version 3.0.244.0
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.2.0)  
+  1. Hotfix für Agent-Speicherverwaltung und zugehörige Warnungen speziell für Version 3.0.244.0
 
 
 ## <a name="may-2018"></a>Mai 2018
 **Agent-Aktualisierung:**
-*   Azure AD Connect Health-Agent für AD DS (Version 3.0.244.0)
- 1. Verbesserung des Datenschutzes für den Agent  
- 2. Fehlerbehebungen und allgemeine Verbesserungen
+* Azure AD Connect Health-Agent für AD DS (Version 3.0.244.0)
+  1. Verbesserung des Datenschutzes für den Agent  
+  2. Fehlerbehebungen und allgemeine Verbesserungen
 
-*   Azure AD Connect Health-Agent für AD FS (Version 3.0.244.0)
- 1. Verbesserungen für den Agent-Diagnosedienst und das dazugehörige PowerShell-Modul
- 2. Verbesserung des Datenschutzes für den Agent  
- 3. Fehlerbehebungen und allgemeine Verbesserungen
+* Azure AD Connect Health-Agent für AD FS (Version 3.0.244.0)
+  1. Verbesserungen für den Agent-Diagnosedienst und das dazugehörige PowerShell-Modul
+  2. Verbesserung des Datenschutzes für den Agent  
+  3. Fehlerbehebungen und allgemeine Verbesserungen
 
 * Azure AD Connect Health-Agent für die Synchronisierung (Version 3.0.164.0), veröffentlicht mit Azure AD Connect Version 1.1.819.0 
- 1. Verbesserung des Datenschutzes für den Agent  
- 2. Fehlerbehebungen und allgemeine Verbesserungen
+  1. Verbesserung des Datenschutzes für den Agent  
+  2. Fehlerbehebungen und allgemeine Verbesserungen
 
 
 ## <a name="march-2018"></a>März 2018
@@ -84,10 +103,10 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 
 **Agent-Aktualisierung:**
 
-*   Azure AD Connect Health-Agent für AD DS (Version 3.0.176.0)
+* Azure AD Connect Health-Agent für AD DS (Version 3.0.176.0)
   1. Verbesserungen bei der Agent-Verfügbarkeit 
   2. Fehlerbehebungen und allgemeine Verbesserungen
-*   Azure AD Connect Health-Agent für AD FS (Version 3.0.176.0)
+* Azure AD Connect Health-Agent für AD FS (Version 3.0.176.0)
   1. Verbesserungen bei der Agent-Verfügbarkeit 
   2. Fehlerbehebungen und allgemeine Verbesserungen
 * Azure AD Connect Health-Agent für die Synchronisierung (Version 3.0.129.0), veröffentlicht mit Azure AD Connect Version 1.1.750.0  
@@ -97,11 +116,11 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 ## <a name="december-2017"></a>Dezember 2017
 **Agent-Aktualisierung:**
 
-*   Azure AD Connect Health-Agent für AD DS (Version 3.0.145.0)
+* Azure AD Connect Health-Agent für AD DS (Version 3.0.145.0)
   1. Verbesserungen bei der Agent-Verfügbarkeit 
   2. Neue Befehle zur Problembehandlung beim Agent hinzugefügt
   3. Fehlerbehebungen und allgemeine Verbesserungen
-*   Azure AD Connect Health-Agent für AD FS (Version 3.0.145.0)
+* Azure AD Connect Health-Agent für AD FS (Version 3.0.145.0)
   1. Neue Befehle zur Problembehandlung beim Agent hinzugefügt
   2. Verbesserungen bei der Agent-Verfügbarkeit 
   3. Fehlerbehebungen und allgemeine Verbesserungen
@@ -115,10 +134,10 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 ## <a name="july-2017"></a>Juli 2017
 **Agent-Aktualisierung:**
 
-*   Azure AD Connect Health-Agent für AD DS (Version 3.0.68.0)
+* Azure AD Connect Health-Agent für AD DS (Version 3.0.68.0)
   1. Fehlerbehebungen und allgemeine Verbesserungen
   2. Unterstützung für unabhängige Clouds
-*   Azure AD Connect Health-Agent für AD FS (Version 3.0.68.0)
+* Azure AD Connect Health-Agent für AD FS (Version 3.0.68.0)
   1. Fehlerbehebungen und allgemeine Verbesserungen
   2. Unterstützung für unabhängige Clouds
 * Azure AD Connect Health-Agent für Sync (Version 3.0.68.0), veröffentlicht mit Azure AD Connect Version 1.1.614.0
@@ -127,9 +146,9 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 ## <a name="april-2017"></a>April 2017      
 **Agent-Aktualisierung:**
 
-*   Azure AD Connect Health-Agent für AD FS (Version 3.0.12.0)
+* Azure AD Connect Health-Agent für AD FS (Version 3.0.12.0)
   1. Fehlerbehebungen und allgemeine Verbesserungen
-*   Azure AD Connect Health-Agent für AD DS (Version 3.0.12.0)
+* Azure AD Connect Health-Agent für AD DS (Version 3.0.12.0)
   1. Verbesserungen beim Hochladen von Leistungsindikatoren
   2. Fehlerbehebungen und allgemeine Verbesserungen
 
@@ -137,13 +156,13 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
 **Agent-Aktualisierung:**
 
 * Azure AD Connect Health-Agent für AD FS (Version 2.6.408.0)
-1. Verbesserungen beim Erkennen von Client-IP-Adressen bei Authentifizierungsanforderungen
-2. Fehlerbehebungen im Zusammenhang mit Warnungen
+* Verbesserungen beim Erkennen von Client-IP-Adressen bei Authentifizierungsanforderungen
+* Fehlerbehebungen im Zusammenhang mit Warnungen
 * Azure AD Connect Health-Agent für AD DS (Version 2.6.408.0)
-1. Fehlerbehebungen im Zusammenhang mit Warnungen.
+* Fehlerbehebungen im Zusammenhang mit Warnungen.
 * Azure AD Connect Health-Agent für Sync (Version 2.6.353.0), veröffentlicht mit Azure AD Connect Version 1.1.281.0
-1. Bereitstellen der für die Berichte zu Synchronisierungsfehlern benötigten Daten
-2. Fehlerbehebungen im Zusammenhang mit Warnungen
+* Bereitstellen der für die Berichte zu Synchronisierungsfehlern benötigten Daten
+* Fehlerbehebungen im Zusammenhang mit Warnungen
 
 **Neue Vorschaufeatures:**
 

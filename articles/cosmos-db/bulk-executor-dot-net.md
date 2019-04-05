@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 7c47e6df1e8b92d122dcc6bed55506f2fccf9e89
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877506"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258461"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB SQL-API- und Gr
 
 * Sie können [Azure Cosmos DB ohne ein Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtungen. Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) mit dem Endpunkt `https://localhost:8081` verwenden. Den Primärschlüssel finden Sie unter [Authentifizieren von Anforderungen](local-emulator.md#authenticating-requests).
 
-* Erstellen Sie ein Azure Cosmos DB-SQL-API-Konto mithilfe der Schritte, die im Abschnitt [Erstellen eines Datenbankkontos](create-sql-api-dotnet.md#create-a-database-account) des .NET-Schnellstarttutorials beschrieben werden. 
+* Erstellen Sie ein Azure Cosmos DB-SQL-API-Konto mithilfe der Schritte, die im Abschnitt [Erstellen eines Datenbankkontos](create-sql-api-dotnet.md#create-account) des .NET-Schnellstarttutorials beschrieben werden. 
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -194,7 +194,7 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
       </listeners>
     </trace>
   </system.diagnostics>
-```
+  ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu NuGet-Paketen und Versionsanmerkungen zur BulkExecutor-.NET-Bibliothek finden Sie unter [Details zum BulkExecutor-SDK](sql-api-sdk-bulk-executor-dot-net.md). 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310456"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078538"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Skalierungsgruppen von Virtual Machines und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).
@@ -50,6 +50,9 @@ Sie können Ihre Daten auch an die Datenbank für metrische Zeitreihen von Azure
 * Behandeln von Platzhalteroperatoren in Leistungsindikatoren als die Dimension „Instanz“ in Ihrer Metrik.  Wenn Sie z.B. den Indikator „LogicalDisk(\*)/DiskWrites/Sek.“ erfasst haben, können Sie die Dimension „Instanz“ filtern und aufteilen, um für jeden logischen Datenträger auf dem virtuellen Computer (z.B. C:) Schreibvorgänge pro Sekunde darzustellen oder hinsichtlich dieser Vorgänge Warnungen auszugeben.
 
 Weitere Informationen zur Konfiguration dieser Senke finden Sie in der [Dokumentation zum Azure-Diagnoseschema](diagnostics-extension-schema-1dot3.md).
+
+## <a name="costs"></a>Kosten
+Für jede der oben genannten Optionen können Kosten anfallen. Prüfen Sie diese daher genau, um unerwartet hohe Rechnungen zu vermeiden.  Bei Application Insights, Event Hub und Azure Storage fallen separate Kosten für die Datenerfassung und den Zeitraum der Speicherung an. Insbesondere werden in Azure Storage Daten unbegrenzt aufbewahrt – daher empfiehlt es sich, ältere Daten nach einem bestimmten Zeitraum zu bereinigen, um die Kosten niedrig zu halten.    
 
 ## <a name="versioning-and-configuration-schema"></a>Schema für Versionsverwaltung und Konfiguration
 Siehe [Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas](diagnostics-extension-schema.md).

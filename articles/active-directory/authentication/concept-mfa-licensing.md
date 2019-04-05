@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a8cfb39c26813b605d69fb3a2b3057ec2b0d897
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e68175471b24c48f23cc48cff9d0b47c937f588a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217461"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217188"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 
@@ -65,6 +65,9 @@ In der folgenden Tabelle werden die Features aufgeführt, die in den verschieden
 | Vertrauenswürdige IP-Adressen | | |● |
 | Speichern der MFA für vertrauenswürdige Geräte |● |● |● |
 | MFA für lokale Anwendungen | | |● |
+
+> [!IMPORTANT]
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Aktivieren von Azure Multi-Factor Authentication für Azure AD-Administratoren
 

@@ -5,16 +5,16 @@ description: Custom Translator bietet verschiedene Möglichkeiten, Ihre Projekte
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: a4277e8bbd130588e343019a8b02221593efad52
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226603"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772635"
 ---
 # <a name="search-edit-and-delete-projects"></a>Suchen, Bearbeiten und Löschen von Projekten
 
@@ -39,7 +39,7 @@ Das Filtertool ermöglicht es Ihnen, Projekte nach verschiedenen Filterbedingung
 
 ## <a name="edit-a-project"></a>Bearbeiten eines Projekts
 
-Custom Translator bietet die Möglichkeit, den Namen und die Beschreibung eines Projekts zu bearbeiten. Andere Projektmetadaten wie Kategorie, Ausgangs- und Zielsprache können nicht bearbeitet werden. Die folgenden Schritte beschreiben, wie Sie ein Projekt bearbeiten können.
+Der benutzerdefinierte Translator bietet Ihnen die Möglichkeit, den Namen und die Beschreibung eines Projekts zu bearbeiten. Andere Projektmetadaten wie Kategorie, Ausgangs- und Zielsprache können nicht bearbeitet werden. Die folgenden Schritte beschreiben, wie Sie ein Projekt bearbeiten können.
 
 1.  Klicken Sie auf das Bleistiftsymbol, das erscheint, wenn Sie mit der Maus auf ein Projekt zeigen.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e41647140373fcf637cad55af62764bd87826a62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386296"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849345"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen
 
@@ -69,9 +69,9 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
 3. Sobald Sie herausgefunden haben, welche Anwendungen auf diese Weise bereitgestellt werden sollen, müssen die Anwendungen gepackt, gezippt und in einer Dateifreigabe bereitgestellt werden. Die Freigabe muss über einen REST-Endpunkt zugänglich sein, den Azure Resource Manager während der Bereitstellung verwenden kann.
 4. Beschreiben Sie in Ihrer Resource Manager-Vorlage unter Ihrer Clusterdeklaration die Eigenschaften der einzelnen Anwendungen. Zu diesen Eigenschaften gehören die Anzahl von Replikaten und Instanzen sowie Abhängigkeiten zwischen Ressourcen (anderen Anwendungen oder Diensten). Eine umfassende Liste der Eigenschaften finden Sie unter [REST-API – Swagger-Spezifikation](https://aka.ms/sfrpswaggerspec). Beachten Sie, dass dies nicht die Anwendungs- oder Dienstmanifeste ersetzt, sondern vielmehr einige der darin enthaltenen Elemente als Teil der Resource Manager-Vorlage des Clusters beschreibt. Hier ist eine Beispielvorlage, die die Bereitstellung des zustandslosen Diensts *Service1* und des zustandsbehafteten Diensts *Service2* als Teil von *Application1* enthält:
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+   ```json
+   {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "clusterName": {
@@ -251,11 +251,11 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
         }
       }
     ]
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE] 
-  > *apiVersion* muss auf `"2017-07-01-preview"` festgelegt werden. Diese Vorlage kann auch unabhängig vom Cluster bereitgestellt werden, sofern der Cluster bereits bereitgestellt wurde.
+   > [!NOTE] 
+   > *apiVersion* muss auf `"2017-07-01-preview"` festgelegt werden. Diese Vorlage kann auch unabhängig vom Cluster bereitgestellt werden, sofern der Cluster bereits bereitgestellt wurde.
 
 5. Bereitstellen 
 
@@ -264,7 +264,7 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
 Angenommen, Ihr Cluster ist bereits eingerichtet und einige Anwendungen, die Sie als Resource Manager-Ressourcen verwalten möchten, sind bereits im Cluster bereitgestellt. Sie können, statt die Anwendungen zu entfernen und neu bereitzustellen, einen PUT-Aufruf mit denselben APIs verwenden, um die Anwendungen als Resource Manager-Ressourcen zu bestätigen. 
 
 > [!NOTE]
-> Damit ein Clusterupgrade fehlerhafte Apps ignorieren kann, kann der Kunde „maxpercentunhealthyapplications: 100“ im Abschnitt „upgradeDescription/healthPolicy“ festlegen. Ausführliche Beschreibungen für alle Einstellungen finden Sie in der [Dokumentation zur REST-API-Clusterupgraderichtlinie von Service Fabric](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Um zuzulassen, dass ein Clusterupgrade fehlerhafte Apps ignoriert, kann der Kunde „maxPercentUnhealthyApplications: 100“ im Abschnitt „upgradeDescription/healthPolicy” angeben; ausführliche Beschreibungen für alle Einstellungen sind in [ClusterUpgradePolicy](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

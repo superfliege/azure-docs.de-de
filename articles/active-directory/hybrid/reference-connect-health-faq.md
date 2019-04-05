@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b653ee16864f5076cdad9d1dbc33e63b175ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852961"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -192,6 +192,9 @@ CheckForMS17-010
 **F: Warum werden meine AD FS-Überwachungen nicht generiert?**
 
 Vergewissern Sie sich mithilfe des PowerShell-Cmdlets <i>Get-AdfsProperties -AuditLevel</i>, dass Überwachungsprotokolle nicht deaktiviert sind. Weitere Informationen zu AD FS-Überwachungsprotokollen finden Sie [hier](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Hinweis: Wenn erweiterte Überwachungseinstellungen mithilfe von Push an den ADFS-Server übertragen werden, werden alle mit „auditpol.exe“ vorgenommenen Änderungen überschrieben. (Das gilt auch, wenn „Anwendung wurde generiert“ nicht konfiguriert ist.) Konfigurieren Sie die lokale Sicherheitsrichtlinie in diesem Fall so, dass Fehler- und Erfolgsereignisse im Zusammenhang mit „Anwendung wurde generiert“ protokolliert werden.
+
+**F: Wann wird das Agent-Zertifikat vor dem Ablauf automatisch verlängert?**
+Das Agent-Zertifikat wird **6 Monate** vor seinem Ablaufdatum automatisch verlängert. Wenn es nicht verlängert wird, stellen Sie sicher, dass die Netzwerkverbindung des Agent stabil ist. Ein Neustart der Agent-Dienste oder ein Update auf die neueste Version löst das Problem möglicherweise auch.
 
 
 ## <a name="related-links"></a>Verwandte Links

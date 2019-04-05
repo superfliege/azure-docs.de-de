@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 937ac1d892cdea849d7e5a89c8e69c6b069f2efd
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56334043"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964163"
 ---
 Dieser Artikel enthält Informationen zu den vorherigen Generationen von VM-Größen. Diese Größen können weiterhin verwendet werden, es sind jedoch neuere Generationen verfügbar.
 
 
 ## <a name="ds-series"></a>DS-Serie
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Storage Premium  Unterstützt
 
@@ -33,11 +33,12 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 | Standard_DS3 |4 |14 |28 |16 |16.000/128 (172) |12.800/128 |4/2000 |
 | Standard_DS4 |8 |28 |56 |32 |32.000/256 (344) |25.600/256 |8/4000 |
 
+<sup>1</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
 <br>
 
 ## <a name="ds-series---memory-optimized"></a>DS-Serie – arbeitsspeicheroptimiert
 
-ACU: 160 <sup>1</sup>
+ACU: 160-250 <sup>1,2</sup>
 
 Storage Premium  Unterstützt
 
@@ -52,11 +53,11 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 
 <sup>1</sup> Der mit einer VM der DS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Details finden Sie unter [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-
+<sup>2</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
 
 ## <a name="d-series"></a>D-Serie 
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Storage Premium  Nicht unterstützt
 
@@ -69,11 +70,12 @@ Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16 x 500                         | 4/2000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32 x 500                       | 8/4000                     |
 
+<sup>1</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
 <br>
 
 ## <a name="d-series---memory-optimized"></a>D-Serie – arbeitsspeicheroptimiert
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Storage Premium  Nicht unterstützt
 
@@ -86,6 +88,7 @@ Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 | Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32/32 x 500                       | 8/4000                     |
 | Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64/64 x 500                       | 8 / 8000                |
 
+<sup>1</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>A-Serie: Rechenintensive Instanzen
@@ -96,7 +99,7 @@ Storage Premium  Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
-Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *rechenintensive Instanzen* bezeichnet. Die Hardware, auf der diese Größen ausgeführt werden, wurde für rechenintensive Anwendungen mit hoher Netzwerkauslastung konzipiert und optimiert. Hierzu zählen beispielsweise HPC-Clusteranwendungen (High Performance Computing), Modellierung und Simulationen. Die Reihen A8 bis A11 nutzen Intel Xeon E5-2670 mit 2,6 GHZ und die H-Reihe Intel Xeon E5-2667 v3 mit 3,2 GHz.  Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
+Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *rechenintensive Instanzen* bezeichnet. Die Hardware, auf der diese Größen ausgeführt werden, wurde für rechenintensive Anwendungen mit hoher Netzwerkauslastung konzipiert und optimiert. Hierzu zählen beispielsweise HPC-Clusteranwendungen (High Performance Computing), Modellierung und Simulationen. Die Reihen A8 bis A11 nutzen Intel Xeon E5-2670 mit 2,6 GHZ und die H-Reihe Intel Xeon E5-2667 v3 mit 3,2 GHz.  
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (HDD): GiB | Max. Anzahl Datenträger | Max. Datenträgerdurchsatz: IOPS | Maximale Anzahl NICs|
 | --- | --- | --- | --- | --- | --- | --- |
@@ -127,6 +130,7 @@ Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 | Standard_A5 |2 |14 |135 |4 |4 x 500 |2/500 |
 | Standard_A6 |4 |28 |285 |8 |8 x 500 |2/1000 |
 | Standard_A7 |8 |56 |605 |16 |16 x 500 |4/2000 |
+
 <br>
 
 <sup>1</sup> Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.

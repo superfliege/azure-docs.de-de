@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341353"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546251"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
 Für das Testen der Leistung von Clouddiensten stehen zahlreiche Tools und Techniken zur Verfügung.
@@ -31,7 +31,7 @@ Sie können Ihre Anwendung auch lokal im Serveremulator profilieren, bevor Sie s
 Dieser Artikel behandelt die CPU-Sampling-Methode der Profilerstellung, welche lokal im Emulator erfolgen kann. CPU-Sampling ist eine wenig intrusive Profilerstellungsmethode. Zu einem festgelegten Sampling-Intervall erstellt der Profiler eine Momentaufnahme der Aufrufliste. Die Daten werden über einen bestimmte Zeitraum hinweg erfasst und in einem Bericht angezeigt. Diese Profilerstellungsmethode gibt vor allem an, wo in einer rechenintensiven Anwendung die meiste CPU-Arbeit erfolgt.  Dadurch können Sie sich auf den "Hot Path" konzentrieren, wo Ihre Anwendung die meiste Zeit verbringt.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurieren von Visual Studio für die Profilerstellung
-Es gibt wenige Visual Studio-Konfigurationsoptionen, die für die Profilerstellung hilfreich sind. Um Profilberichte sinnvoll zu nutzen, benötigen Sie sowohl Symbole (.pdb-Dateien) für die Anwendung als auch Symbole für Systembibliotheken. Sie möchten möglicherweise überprüfen, dass Sie auf die verfügbaren Symbolserver verweisen. Wählen Sie dazu im Menü **Extras** in Visual Studio **Optionen**, und wählen Sie dann **Debugging** und anschließend **Symbole**. Überprüfen Sie, dass Microsoft Symbol Servers unter **Speicherorte für Symboldateien (.pdb)** aufgelistet ist.  Sie können auch unter http://referencesource.microsoft.com/symbols nachschauen, wo Sie ggf. weitere Symboldateien finden.
+Es gibt wenige Visual Studio-Konfigurationsoptionen, die für die Profilerstellung hilfreich sind. Um Profilberichte sinnvoll zu nutzen, benötigen Sie sowohl Symbole (.pdb-Dateien) für die Anwendung als auch Symbole für Systembibliotheken. Sie möchten möglicherweise überprüfen, dass Sie auf die verfügbaren Symbolserver verweisen. Wählen Sie dazu im Menü **Extras** in Visual Studio **Optionen**, und wählen Sie dann **Debugging** und anschließend **Symbole**. Überprüfen Sie, dass Microsoft Symbol Servers unter **Speicherorte für Symboldateien (.pdb)** aufgelistet ist.  Sie können auch unter https://referencesource.microsoft.com/symbols nachschauen, wo Sie ggf. weitere Symboldateien finden.
 
 ![Symboloptionen][4]
 
@@ -162,14 +162,14 @@ Glückwunsch! Sie haben die ersten Schritte mit dem Profiler geschafft.
 * Verwenden Sie die Serveremulator-Benutzeroberfläche, um den Status der Anwendung anzuzeigen. 
 * Wenn Sie Probleme beim Starten der Anwendungen im Emulator oder beim Anfügen an den Profiler haben, sollten Sie den Serveremulator herunterfahren und neu starten. Wenn das Problem dadurch nicht behoben wird, sollten Sie einen Neustart versuchen. Das Problem kann auftreten, wenn Sie den Serveremulator verwenden, um laufende Bereitstellungen anzuhalten und zu entfernen.
 * Wenn Sie Profilbefehle aus der Befehlszeile verwendet haben, insbesondere in den globalen Einstellungen, sollten Sie sicherstellen, dass "VSPerfClrEnv /globaloff" aufgerufen und "VsPerfMon.exe" beendet wurde.
-* Wenn beim Sampling die Meldung "PRF0025: Es wurden keine Daten gesammelt" angezeigt wird, müssen Sie sicherstellen, dass der Prozess, den Sie als Anhangsanker verwendet haben, über CPU-Aktivität verfügt. Anwendungen, die keine Berechnungen vornehmen, produzieren möglicherweise keine Samplingdaten.  Es ist auch möglich, dass der Vorgang beendet wurde, bevor das Sampling erfolgte. Überprüfen Sie, dass die Ausführungsmethode für eine Rolle, für die Sie ein Profil erstellen, nicht bendet wurde.
+* Wenn beim Sampling die Meldung „PRF0025: Es wurden keine Daten gesammelt“ angezeigt wird, müssen Sie sicherstellen, dass der Prozess, den Sie als Anhangsanker verwendet haben, über CPU-Aktivität verfügt. Anwendungen, die keine Berechnungen vornehmen, produzieren möglicherweise keine Samplingdaten.  Es ist auch möglich, dass der Vorgang beendet wurde, bevor das Sampling erfolgte. Überprüfen Sie, dass die Ausführungsmethode für eine Rolle, für die Sie ein Profil erstellen, nicht bendet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-Profiler nicht unterstützt, aber wenn Sie die Speicherzuteilung testen möchten, können Sie diese Option bei der Profilerstellung auswählen. Sie können zudem die Parallelitätsprofilerstellung auswählen, mit der Sie bestimmen können, ob Threads beim Kampf um Sperren Zeit verschwenden, oder die Profilerstellung für Ebeneninteraktion, mit der Sie Leistungsprobleme bei der Interaktion zwischen den Ebenen einer Anwendung aufspüren können, meistens zwischen der Datenebene und einer Workerrolle.  Sie können die Datenbankabfragen, welche die Anwendung generiert, anzeigen sowie die Profilerstellungsdaten zur Verbesserung der Datenbankverwendung nutzen. Informationen zur Profilerstellung für Ebeneninteraktion finden Sie im Blogbeitrag [Exemplarische Vorgehensweise: Verwenden des Profilers für Ebeneninteraktion in Visual Studio Team System 2010][3].
+Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-Profiler nicht unterstützt, aber wenn Sie die Speicherzuteilung testen möchten, können Sie diese Option bei der Profilerstellung auswählen. Sie können zudem die Parallelitätsprofilerstellung auswählen, mit der Sie bestimmen können, ob Threads beim Kampf um Sperren Zeit verschwenden, oder die Profilerstellung für Ebeneninteraktion, mit der Sie Leistungsprobleme bei der Interaktion zwischen den Ebenen einer Anwendung aufspüren können, meistens zwischen der Datenebene und einer Workerrolle.  Sie können die Datenbankabfragen, welche die Anwendung generiert, anzeigen sowie die Profilerstellungsdaten zur Verbesserung der Datenbankverwendung nutzen. Informationen zur Profilerstellung für Ebeneninteraktionen finden Sie im Blogbeitrag [Walkthrough: Using the Tier Interaction Profiler in Visual Studio Team System 2010][3] (Exemplarische Vorgehensweise: Verwenden der Profilerstellung für Ebeneninteraktionen in Visual Studio Team System 2010).
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
+[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

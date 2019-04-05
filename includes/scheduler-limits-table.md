@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
-ms.openlocfilehash: be52bf289898dfcd3ee669f12329669f6fabd356
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006500"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553536"
 ---
 Die folgende Tabelle informiert über die einzelnen zentralen Kontingente, Einschränkungen, Standardwerte und Drosselungen für Azure Scheduler:
 
 | Ressource | Beschreibung der Einschränkung |
 | -------- | ----------------- |
-| **Auftragsgröße** | Die maximale Auftragsgröße beträgt 16 KB. Wenn ein PUT- oder PATCH-Vorgang zu einer Auftragsgröße führt, die größer als dieser Grenzwert ist, wird ein Statuscode 400 Bad Request (unzulässige Anforderung) zurückgegeben. | 
+| **Auftragsgröße** | Die maximale Auftragsgröße beträgt 16.000. Wenn ein PUT- oder PATCH-Vorgang zu einer Auftragsgröße führt, die größer als dieser Grenzwert ist, wird ein Statuscode 400 Bad Request (unzulässige Anforderung) zurückgegeben. | 
 | **Auftragssammlungen** | Die maximale Anzahl von Auftragssammlungen pro Azure-Abonnement beträgt 200.000. | 
 | **Aufträge pro Sammlung** | Standardmäßig beträgt die maximale Anzahl der Aufträge fünf Aufträge in einer kostenlosen Auftragssammlung und 50 Aufträge in einer Standardauftragssammlung. <p>Sie können die maximale Auftragsanzahl für eine Auftragssammlung ändern. Der für die Auftragssammlung festgelegte Wert gilt für alle Aufträge in der Auftragssammlung. Wenn Sie versuchen, mehr Aufträge als das maximale Auftragskontingent zu erstellen, schlägt die Anforderung mit dem Statuscode 409 Conflict (Konflikt) fehl. | 
 | **Zeit bis zur Startzeit** | Der maximal zulässige Wert für die „Zeit bis zur Startzeit“ beträgt 18 Monate. |
@@ -29,9 +29,9 @@ Die folgende Tabelle informiert über die einzelnen zentralen Kontingente, Einsc
 | **Größe der Anforderungs-URL** | Die maximale Größe für eine Anforderungs-URL beträgt 2.048 Zeichen. |
 | **Headeranzahl** | Die maximale Headeranzahl beträgt 50 Header. | 
 | **Aggregierte Headergröße** | Die aggregierte Headergröße darf maximal 4.096 Zeichen umfassen. |
-| **Timeout** | Das Anforderungstimeout ist statisch (nicht konfigurierbar) und beträgt 60 Sekunden für HTTP-Aktionen. Für Vorgänge mit längerer Ausführungszeit folgen Sie den asynchronen HTTP-Protokollen. Geben Sie z.B. sofort 202 zurück, arbeiten Sie aber weiterhin im Hintergrund. | 
+| **Timeout** | Das Anforderungstimeout ist statisch, d.h. nicht konfigurierbar, und beträgt 60 Sekunden für HTTP-Aktionen. Für Vorgänge mit längerer Ausführungszeit folgen Sie den asynchronen HTTP-Protokollen. Geben Sie z.B. sofort 202 zurück, arbeiten Sie aber weiterhin im Hintergrund. | 
 | **Auftragsverlauf** | Die maximale Größe des im Auftragsverlauf gespeicherten Antworttexts beträgt 2.048 Bytes. |
-| **Speicherung des Auftragsverlaufs** | Der Auftragsverlauf wird bis zu 2 Monate lang oder maximal für die letzten 1.000 Ausführungen beibehalten. | 
+| **Speicherung des Auftragsverlaufs** | Der Auftragsverlauf wird bis zu zwei Monate lang oder maximal für die letzten 1.000 Ausführungen beibehalten. | 
 | **Speicherung abgeschlossener und fehlerhafter Aufträge** | Abgeschlossene und fehlerhafte Aufträge werden 60 Tage lang aufbewahrt. |
 ||| 
 

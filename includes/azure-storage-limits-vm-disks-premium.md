@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 5ac7982d306125804fc5b7873e537f9381f717cb
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279651"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553568"
 ---
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro Konto**
 
@@ -17,23 +17,23 @@ ms.locfileid: "52279651"
 | --- | --- |
 | Datenträgerkapazität insgesamt pro Konto |35 TB |
 | Kapazität für Momentaufnahmen insgesamt pro Konto |10 TB |
-| Max. Bandbreite pro Konto (Ein- und Ausgang<sup>1</sup>) |<= 50 GBit/s |
+| Max. Bandbreite pro Konto (Ein- und Ausgang)<sup>1</sup> |<= 50 GBit/s |
 
-<sup>1</sup>*Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
+<sup>1</sup>*Eingang* bezieht sich auf alle Daten aus Anforderungen, die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten aus Anforderungen, die von einem Speicherkonto empfangen werden.
 
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro Datenträger**
 
-| Datenträgertyp des Premium-Speichers | P10 | P20 | P30 | P40 | P50 |
+| Storage Premium-Datenträgertyp | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- |
-| Datenträgergröße |128 GB |512 GB |1.024 GiB (1 TB) |2.048 GiB (2 TB)|4.095 GiB (4 TB)|
-| Max. IOPS pro Datenträger |500 |2.300 |5.000 |7.500 |7.500 |
-| Max. Durchsatz pro Datenträger |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
+| Datenträgergröße |128 GB |512 GB |1.024GiB (1TB) |2.048GiB (2TB)|4.095GiB (4TB)|
+| Maximale Anzahl IOPS pro Datenträger |500 |2.300 |5.000 |7.500 |7.500 |
+| Maximaler Durchsatz pro Datenträger |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
 | Maximale Anzahl von Datenträgern pro Speicherkonto |280 |70 |35 | 17 | 8 |
 
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro VM**
 
 | Ressource | Standardlimit |
 | --- | --- |
-| Max. IOPS pro virtuellem Computer |80.000 IOPS mit GS5-VM |
-| Max. Durchsatz pro virtuellem Computer |2.000 MB/s mit GS5-VM |
+| Maximale Anzahl IOPS pro VM |80.000 IOPS mit GS5-VM |
+| Maximaler Durchsatz pro VM |2.000MB/s mit GS5-VM |
 

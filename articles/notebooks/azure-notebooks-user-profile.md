@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4186abd215509e0ae9ced50340fb1f3d3b5f9676
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854164"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765916"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks
 
@@ -46,7 +46,7 @@ Ferner wird neben dem temporären Benutzernamen ein Befehl **Configure User ID**
 
 Darüber hinaus können Sie Ihre Benutzer-ID jederzeit auf Ihrer Profilseite ändern.
 
-Eine Benutzer-ID muss aus mindestens vier Buchstaben, Ziffern und Bindestrichen bestehen. Es sind keine anderen Zeichen zulässig, und die Benutzer-ID darf nicht mit einem Bindestrich beginnen oder enden oder mehrere Bindestriche hintereinander enthalten.
+Eine Benutzer-ID muss aus vier bis sechzehn Buchstaben, Ziffern und Bindestrichen bestehen. Es sind keine anderen Zeichen zulässig, und die Benutzer-ID darf nicht mit einem Bindestrich beginnen oder enden oder mehrere Bindestriche hintereinander enthalten. Da Benutzer-IDs für alle Azure Notebooks-Konten eindeutig sind, könnte die Meldung „Benutzer-ID wird bereits verwendet“ angezeigt werden. (Die Nachricht wird auch angezeigt, wenn Sie versuchen, eine Microsoft-Marke als Benutzer-ID zu verwenden.) Wählen Sie in diesen Fällen eine andere Benutzer-ID aus.
 
 > [!Important]
 > Eine Änderung Ihrer ID macht alle URLs, die Sie mit Ihrer vorherigen ID geteilt haben, ungültig. Um die Gültigkeit der Links wiederherzustellen, können Sie Ihre ID wieder auf Ihre vorherige ID umstellen. Allerdings kann in der Zwischenzeit ein anderer Benutzer Anspruch auf eine nicht verwendete ID erheben.

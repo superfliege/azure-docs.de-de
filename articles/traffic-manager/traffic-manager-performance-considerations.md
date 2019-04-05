@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007949"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Leistungsüberlegungen zu Traffic Manager
 
@@ -42,11 +42,11 @@ Die Tools dieser Websites messen DNS-Latenzen und zeigen aufgelöste IP-Adressen
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>Beispieltools zum Messen der DNS-Leistung
 
-* [SolveDNS](http://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
     SolveDNS bietet viele Leistungstools. Mithilfe des DNS-Vergleichstools können Sie die Dauer der Auflösung Ihres DNS-Namen anzeigen lassen, und sehen, wie dieser Wert im Vergleich zu anderen DNS-Serviceanbietern abschneidet.
 
-* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+* [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
     Eines der einfachsten Tools ist WebSitePulse. Geben Sie die URL ein, um DNS-Auflösungszeit, erstes Byte, letztes Byte und andere Leistungsstatistiken anzeigen zu lassen. Sie haben die Wahl zwischen drei verschiedenen Teststandorten. In diesem Beispiel können Sie sehen, dass die erste DNS-Suche bei der ersten Ausführung des Tests 0,204 Sekunden dauert.
 
@@ -58,19 +58,19 @@ Die Tools dieser Websites messen DNS-Latenzen und zeigen aufgelöste IP-Adressen
 
 * [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
-    Diese Seite war früher als „Watchmouse Check Website Tool“ bekannt, und zeigt Ihnen die DNS-Auflösungszeit aus mehreren geografischen Regionen gleichzeitig an. Wenn Sie die URL eingeben, werden die DNS-Auflösungszeit, die Verbindungszeit und die Verbindungsgeschwindigkeit aus mehreren geografischen Standorten angezeigt. Verwenden Sie diesen Test, um anzuzeigen, welcher gehostete Dienst von verschiedenen Standorten auf der ganzen Welt zurückgegeben wird.
+    Diese Website wurde früher als „Watchmouse Check Website Tool“ bezeichnet, und zeigt Ihnen die DNS-Auflösungszeit aus mehreren geografischen Regionen gleichzeitig an. Wenn Sie die URL eingeben, werden die DNS-Auflösungszeit, die Verbindungszeit und die Verbindungsgeschwindigkeit aus mehreren geografischen Standorten angezeigt. Verwenden Sie diesen Test, um anzuzeigen, welcher gehostete Dienst von verschiedenen Standorten auf der ganzen Welt zurückgegeben wird.
 
     ![Impuls1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
-* [Pingdom](http://tools.pingdom.com/)
+* [Pingdom](https://tools.pingdom.com/)
 
     Dieses Tool bietet Leistungsstatistiken für jedes Element einer Website. Die Registerkarte „Page Analysis“ zeigt die für die DNS-Suche aufgewendete Zeit in Prozent an.
 
-* [What's My DNS?](http://www.whatsmydns.net/)
+* [What's My DNS?](https://www.whatsmydns.net/)
 
     Diese Website führt eine DNS-Suche von 20 verschiedenen geografischen Standorten aus durch, und zeigt die Ergebnisse auf einer Karte an.
 
-* [Dig Web Interface](http://www.digwebinterface.com)
+* [Dig Web Interface](https://www.digwebinterface.com)
 
     Diese Website gibt detailliertere DNS-Informationen an, darunter CNAMEs- und A-Datensätze. Achten Sie darauf, dass Sie die Optionen „Colorize output“ und „Stats“ aktivieren, und unter „Nameservers“ die Option „All“ auswählen.
 

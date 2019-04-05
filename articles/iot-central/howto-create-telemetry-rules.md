@@ -3,17 +3,17 @@ title: Erstellen und Verwalten von Telemetrieregeln in Ihre Azure IoT Central-An
 description: Azure IoT Central-Telemetrieregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 11/02/2018
+ms.date: 02/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5f6bc30c318e2f5511b352f1a52f0a5360e4b6f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964814"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081558"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -27,18 +27,13 @@ Geräte können mithilfe von Telemetriemessungen numerische Daten vom Gerät sen
 
 Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens eine Telemetriemessung definiert sein. In diesem Beispiel wird ein gekühlter Verkaufsautomat verwendet, der Temperatur- und Feuchtetelemetriedaten sendet. Die Regel überwacht die vom Gerät gemeldete Temperatur und sendet eine E-Mail, sobald diese 80 Grad übersteigt.
 
-1. Navigieren Sie im Device Explorer zu der Gerätevorlage, für die Sie die Regel hinzufügen.
-
-1. Klicken Sie unter der ausgewählten Vorlage auf ein vorhandenes Gerät. 
-
-    >[!TIP] 
-    >Wenn die Vorlage über keine Geräte verfügt, fügen Sie zunächst ein neues Gerät hinzu.
+1. Navigieren Sie über die Seite **Gerätevorlagen** zu der Gerätevorlage, für die Sie die Regel hinzufügen.
 
 1. Wenn Sie noch keine Regeln erstellt haben, gelangen Sie auf folgenden Bildschirm:
 
     ![Noch keine Regeln](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. Klicken Sie auf der Registerkarte **Regeln** auf **Vorlage bearbeiten** und dann auf **+ Neue Regel**, um die Regeltypen anzuzeigen, die Sie erstellen können.
+1. Wählen Sie auf der Registerkarte **Regeln** die Option **+ Neue Regel** aus, um die Regeltypen anzuzeigen, die Sie erstellen können.
 
 1. Klicken Sie auf **Telemetrie**, um eine Regel zum Überwachen von Gerätetelemetriedaten zu erstellen.
 
@@ -49,28 +44,25 @@ Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ei
 1. Um die Regel sofort für alle Geräte zu aktivieren, die für diese Vorlage erstellt wurden, aktivieren Sie die Option **Regel für alle Geräte für diese Vorlage aktivieren**.
 
    ![Regeldetails](media/howto-create-telemetry-rules/Rule_Detail.png)
-    
+
     Die Regel gilt automatisch für alle Geräte unter der Gerätevorlage.
-    
 
 ### <a name="configure-the-rule-conditions"></a>Konfigurieren der Regelbedingungen
 
 Eine Bedingung definiert die Kriterien, die von der Regel überwacht werden.
 
-1. Klicken Sie auf **+** neben **Bedingungen**, um eine neue Bedingung hinzuzufügen.
+1. Klicken Sie neben **Bedingungen** auf **+**, um eine neue Bedingung hinzuzufügen.
 
 1. Wählen Sie in der Dropdownliste **Messung** die Telemetriedaten aus, die Sie überwachen möchten.
 
-   ![Bedingung](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
-
 1. Wählen Sie anschließend die **Aggregation** und den **Operator** aus, und geben Sie einen **Schwellenwert** an.
-    - Die Aggregation ist optional. Ohne Aggregation wird diese Regel für jeden Telemetriedatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn beispielswiese die Regel so konfiguriert ist, dass sie beim Erreichen eines Temperaturwerts von über 80 auslöst, wird die Regel nahezu sofort ausgelöst, wenn das Gerät eine Temperatur von über 80 meldet.
-    - Wenn Sie eine Aggregatfunktion wie „Durchschnitt“, „Min“, „Max“, „Anzahl“ auswählen, müssen Sie ein **Aggregatzeitfenster** angeben, in dem die Bedingung ausgewertet werden soll. Wenn Sie beispielsweise den Zeitraum auf „5 Minuten“ festlegen und die Regel nach einer Durchschnittstemperatur von über 80 sucht, löst die Regel aus, wenn die Durchschnittstemperatur für mindestens 5 Minuten 80 Grad übersteigt. Die Regelauswertungshäufigkeit ist identisch mit dem **Aggregationszeitfenster**. Dies bedeutet in diesem Beispiel, dass die Regel ein Mal alle 5 Minuten ausgewertet wird.
+   - Die Aggregation ist optional. Ohne Aggregation wird diese Regel für jeden Telemetriedatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn beispielswiese die Regel so konfiguriert ist, dass sie bei einem Temperaturwert über 80 ausgelöst wird, erfolgt die Auslösung nahezu sofort, wenn das Gerät eine Temperatur von mehr als 80 meldet.
+   - Wenn Sie eine Aggregatfunktion wie „Durchschnitt“, „Min“, „Max“, „Anzahl“ auswählen, müssen Sie ein **Aggregatzeitfenster** angeben, in dem die Bedingung ausgewertet werden soll. Wenn Sie beispielsweise den Zeitraum auf „5 Minuten“ festlegen und die Regel nach einer Durchschnittstemperatur von über 80 sucht, löst die Regel aus, wenn die Durchschnittstemperatur für mindestens 5 Minuten 80 Grad übersteigt. Die Regelauswertungshäufigkeit ist identisch mit dem **Aggregationszeitfenster**. Dies bedeutet in diesem Beispiel, dass die Regel ein Mal alle 5 Minuten ausgewertet wird.
 
-    >[!NOTE]
-    >Weitere Telemetriemessungen können unter **Bedingung** hinzugefügt werden. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird. Jede Bedingung wird implizit durch eine „UND“-Klausel verknüpft. Wenn Sie die Aggregatfunktion verwenden, müssen alle Messungen aggregiert werden.
-    
-    
+     ![Bedingung](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+
+     >[!NOTE]
+     >Weitere Telemetriemessungen können unter **Bedingung** hinzugefügt werden. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird. Jede Bedingung wird implizit durch eine „UND“-Klausel verknüpft. Wenn Sie die Aggregatfunktion verwenden, müssen alle Messungen aggregiert werden.
 
 ### <a name="configure-actions"></a>Konfigurieren von Aktionen
 
@@ -88,8 +80,6 @@ In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgefü
    ![Konfigurieren einer Aktion](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Telemetriedaten, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
-
-1. Klicken Sie auf **Fertig**, um den Modus **Vorlage bearbeiten** zu beenden.
 
 Sie können der Regel auch andere Aktionen wie Microsoft Flow und Webhooks hinzufügen. Sie können bis zu fünf Aktionen pro Regel hinzufügen.
 

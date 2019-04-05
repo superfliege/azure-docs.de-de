@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee78516cbed46174e98c483970a21d740eac6829
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209624"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080098"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
@@ -36,7 +36,7 @@ Weitere Informationen zum Azure AD-Problembehandlungstool finden Sie unter [Trou
 ## <a name="the-page-is-not-rendered-correctly"></a>Die Seite wird nicht richtig gerendert
 Möglicherweise treten Probleme mit dem Rendern der Anwendung oder einer fehlerhaften Funktionsweise auf, ohne dass Sie spezifische Fehlermeldungen erhalten. Dies kann der Fall sein, wenn Sie den Artikelpfad veröffentlicht haben, für die Anwendung aber Inhalt erforderlich ist, der außerhalb des Pfads vorliegt.
 
-Wenn Sie beispielsweise den Pfad https://yourapp/app veröffentlichen, die Anwendung aber Bilder in https://yourapp/media aufruft, werden sie nicht gerendert. Stellen Sie sicher, dass Sie die Anwendung mit dem Pfad der höchsten benötigten Ebene veröffentlichen, damit der gesamte relevante Inhalt einbezogen wird. In diesem Beispiel lautet er http://yourapp/.
+Wenn Sie beispielsweise den Pfad `https://yourapp/app` veröffentlichen, die Anwendung aber Bilder in `https://yourapp/media` aufruft, werden sie nicht gerendert. Stellen Sie sicher, dass Sie die Anwendung mit dem Pfad der höchsten benötigten Ebene veröffentlichen, damit der gesamte relevante Inhalt einbezogen wird. In diesem Beispiel lautet er `http://yourapp/`.
 
 Wenn Sie den Pfad so ändern, dass er referenzierten Inhalt enthält, Benutzer aber an einen Link tiefer im Pfad verwiesen werden sollen, helfen Ihnen die Informationen im folgenden Blogbeitrag weiter: [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)(Festlegen des richtigen Links für Anwendungsproxy-Anwendungen im Azure AD-Zugriffsbereich und Office 365-Startprogramm).
 

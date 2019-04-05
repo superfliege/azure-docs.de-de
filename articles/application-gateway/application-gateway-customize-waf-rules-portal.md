@@ -1,33 +1,19 @@
 ---
-title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure-Portal | Microsoft-Dokumentation
+title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure-Portal
 description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit dem Azure-Portal.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 03/28/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 30df26dc3a9697d3435779f91c32b2d99a747b88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990466"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733715"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure-CLI](application-gateway-customize-waf-rules-cli.md)
 
 Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz für Webanwendungen. Diese Schutzmaßnahmen werden durch die Kernregeln (Core Rule Set, CRS) des Open Web Application Security-Projekts (OWASP) bereitgestellt. Einige Regeln können falsche positive Ergebnisse ausgeben und den realen Datenverkehr blockieren. Aus diesem Grund bietet Application Gateway die Möglichkeit, Regelgruppen und Regeln anzupassen. Weitere Informationen zu den jeweiligen Regelgruppen und Regeln finden Sie in der [Liste der CRS-Regelgruppen und -Regeln der Web Application Firewall](application-gateway-crs-rulegroups-rules.md).
 
@@ -59,9 +45,22 @@ Wenn Sie Regeln deaktivieren, können Sie eine gesamte Regelgruppe oder bestimmt
 
    1. Suchen Sie nach den Regeln oder Regelgruppen, die Sie deaktivieren möchten.
    2. Aktivieren Sie die Kontrollkästchen für die Regeln, die Sie deaktivieren möchten. 
-   2. Wählen Sie **Speichern**aus. 
+   2. Wählen Sie **Speichern** aus. 
 
 ![Speichern der Änderungen][3]
+
+## <a name="mandatory-rules"></a>Obligatorische Regeln
+
+Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert (im Erkennungsmodus werden sie als Ausnahmen protokolliert). Diese können nicht konfiguriert oder deaktiviert werden:
+
+* Fehler beim Analysieren des Anforderungstexts führen dazu, dass die Anforderung blockiert wird, sofern die Textüberprüfung nicht deaktiviert ist (XML, JSON, Formulardaten).
+* Die Datenlänge des Anforderungstexts (ohne Dateien) überschreitet das konfigurierte Limit.
+* Der Anforderungstext (einschließlich Dateien) überschreitet den Grenzwert.
+* Ein interner Fehler ist in der WAF-Engine aufgetreten.
+
+CRS 3.x-spezifisch:
+
+* Anomaliebewertung für Eingang überschritt den Schwellenwert
 
 ## <a name="next-steps"></a>Nächste Schritte
 

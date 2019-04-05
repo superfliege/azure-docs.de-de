@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175454"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176581"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -116,7 +116,7 @@ Ein Eingangscontroller, der den Datenverkehr an Dienste und Anwendungen verteilt
 
 ![Eine Web Application Firewall (WAF) wie Azure App Gateway kann den Datenverkehr für Ihren AKS-Cluster schützen und verteilen.](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Eine Web Application Firewall (WAF) bietet eine zusätzliche Sicherheitsebene, indem sie den eingehenden Datenverkehr filtert. Das Open Web Application Security Project (OWASP) bietet eine Reihe von Regeln, um den Datenverkehr auf Angriffe wie websiteübergreifende Skripts oder Cookie-Poisoning zu überwachen. [Azure Application Gateway][app-gateway] ist eine WAF, die in AKS-Cluster integriert werden kann, um diese Sicherheitsfeatures bereitzustellen, bevor der Datenverkehr Ihren AKS-Cluster und Ihre Anwendungen erreicht. Auch andere Lösungen von Drittanbietern bieten diese Funktionen, sodass Sie bestehende Investitionen in ein bestimmtes Produkt oder vorhandenes Know-how weiterhin nutzen können.
+Eine Web Application Firewall (WAF) bietet eine zusätzliche Sicherheitsebene, indem sie den eingehenden Datenverkehr filtert. Das Open Web Application Security Project (OWASP) bietet eine Reihe von Regeln, um den Datenverkehr auf Angriffe wie websiteübergreifende Skripts oder Cookie-Poisoning zu überwachen. [Azure Application Gateway][app-gateway] (aktuell in AKS in der Vorschauversion) ist eine WAF, die in AKS-Cluster integriert werden kann, um diese Sicherheitsfeatures bereitzustellen, bevor der Datenverkehr Ihren AKS-Cluster und Ihre Anwendungen erreicht. Auch andere Lösungen von Drittanbietern bieten diese Funktionen, sodass Sie bestehende Investitionen in ein bestimmtes Produkt oder vorhandenes Know-how weiterhin nutzen können.
 
 Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausgeführt, um die Verteilung des Datenverkehrs weiter zu optimieren. App Gateway kann zentral als Eingangscontroller mit einer Ressourcendefinition verwaltet werden. Um zu beginnen, [erstellen Sie einen Application Gateway-Eingangscontroller][app-gateway-ingress].
 
@@ -124,7 +124,7 @@ Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausg
 
 **Best Practice-Anleitung**: Verwenden Sie Netzwerkrichtlinien, um Datenverkehr zu den Pods zuzulassen oder zu verweigern. Standardmäßig ist der gesamte Datenverkehr zwischen den Pods in einem Cluster zulässig. Aus Sicherheitsgründen sollten Sie Regeln definieren, um die Kommunikation zwischen den Pods einzuschränken.
 
-Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
+Netzwerkrichtlinien (aktuell in AKS in der Vorschauversion) sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
 
 Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können.
 

@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 5b7aa618df63bf813e0ab0d77025cf57cfe55c3a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a8b4e3038bfa6a2e937de91804159e340ed13224
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964575"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553697"
 ---
 | Ressource | Ziel |
 |----------|---------------|
-| Maximale Größe einer einzigen Tabelle | 500 TiB |
+| Maximale Größe einer einzelnen Tabelle | 500 TiB |
 | Maximale Größe einer Tabellenentität | 1 MiB |
-| Max. Anzahl von Eigenschaften in einer Tabellenentität | 255 (einschließlich der drei Systemeigenschaften „PartitionKey“, „RowKey“ und „Timestamp“) |
+| Maximale Anzahl von Eigenschaften in einer Tabellenentität | 255, inklusive drei Systemeigenschaften: PartitionKey, RowKey und Timestamp |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Tabelle | 5 |
-| Maximale Anforderungsrate pro Speicherkonto | 20.000 Transaktionen pro Sekunde (ausgehend von einer Entitätsgröße von 1 KiB) |
-| Zieldurchsatz für eine einzelne Tabellenpartition (Entitäten von 1 KiB) | Bis zu 2000 Entitäten pro Sekunde |
+| Maximale Anforderungsrate pro Speicherkonto | 20.000 Transaktionen pro Sekunde, ausgehend von einer Entitätsgröße von 1KiB |
+| Zieldurchsatz für eine einzelne Tabellenpartition (Entitäten von 1KiB) | Bis zu 2.000 Entitäten pro Sekunde |

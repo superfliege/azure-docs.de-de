@@ -3,7 +3,7 @@ title: Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer
 description: Ausführliche Anweisungen zum Konfigurieren von system- und benutzerseitig zugewiesenen verwalteten Identitäten in einer VM-Skalierungsgruppe mit PowerShell
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df6675c8ed9bc600da5fc054698e6445f31abb1a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203525"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448584"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit PowerShell
 
@@ -54,24 +54,16 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe von Azure PowerShell eine vom
 
 ### <a name="enable-system-assigned-managed-identity-during-the-creation-of-an-azure-virtual-machine-scale-set"></a>Aktivieren der vom System zugewiesenen verwalteten Identität bei der Erstellung einer Azure-VM-Skalierungsgruppe
 
-So erstellen Sie eine VM-Skalierungsgruppe mit aktivierter vom System zugewiesener verwalteter Identität
+So erstellen Sie eine VM-Skalierungsgruppe samt aktivierter vom System zugewiesener verwalteter Identität
 
-1. Informationen zum Erstellen einer VM-Skalierungsgruppe mit der vom System zugewiesenen verwalteten *Identität finden Sie im ersten Beispiel*des Referenzartikels für das Cmdlet [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).  Fügen Sie den Parameter `-IdentityType SystemAssigned` zum `New-AzVmssConfig`-Cmdlet hinzu:
+1. Informationen zum Erstellen einer VM-Skalierungsgruppe mit der vom System zugewiesenen verwalteten Identität finden Sie im *ersten Beispiel* des Referenzartikels für das Cmdlet [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).  Fügen Sie den Parameter `-IdentityType SystemAssigned` zum `New-AzVmssConfig`-Cmdlet hinzu:
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
+> [!NOTE]
+> Sie können optional die verwalteten Identitäten für die VM-Skalierungsgruppe von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Beenden der Verwendung der VM-Erweiterung und Starten der Verwendung des Azure IMDS-Endpunkts für die Authentifizierung](howto-migrate-vm-extension.md).
 
-2. (Optional) Fügen Sie die Erweiterung für verwaltete Identitäten für Azure-Ressourcen für eine VM-Skalierungsgruppe hinzu, indem Sie die Parameter `-Name` und `-Type` im Cmdlet [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) verwenden. Sie können abhängig vom Typ der VM-Skalierungsgruppe „ManagedIdentityExtensionForWindows“ oder „ManagedIdentityExtensionForLinux“ übergeben und mithilfe des `-Name`-Parameters benennen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
-
-    > [!NOTE]
-    > Dieser Schritt ist optional, da Sie für den Tokenabruf auch den Azure IMDS-Identitätsendpunkt (Instance Metadata Service) verwenden können.
-
-   ```powershell
-   $setting = @{ "port" = 50342 }
-   $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
-   ```
 
 ## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität in einer vorhandenen Azure-VM-Skalierungsgruppe
 
@@ -89,13 +81,8 @@ Wenn Sie eine vom System zugewiesene verwaltete Identität in einer vorhandenen 
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Fügen Sie die Erweiterung für verwaltete Identitäten für Azure-Ressourcen für eine VM-Skalierungsgruppe hinzu, indem Sie die Parameter `-Name` und `-Type` im Cmdlet [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) verwenden. Sie können abhängig vom Typ der VM-Skalierungsgruppe „ManagedIdentityExtensionForWindows“ oder „ManagedIdentityExtensionForLinux“ übergeben und mithilfe des `-Name`-Parameters benennen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
-
-   ```powershell
-   $setting = @{ "port" = 50342 }
-   $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
-   ```
+> [!NOTE]
+> Sie können optional die verwalteten Identitäten für die VM-Skalierungsgruppe von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zum Azure IMDS-Endpunkt für die Authentifizierung](howto-migrate-vm-extension.md).
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Deaktivieren der vom System zugewiesenen verwalteten Identität in einer Azure-VM-Skalierungsgruppe
 
@@ -143,7 +130,7 @@ So weisen Sie eine vom Benutzer zugewiesene verwaltete Identität einer vorhande
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität aus einer Azure-VM-Skalierungsgruppe
 
-Wenn Ihre VM-Skalierungsgruppe mehrere vom Benutzer zugewiesene verwaltete Identitäten hat, können Sie mit den folgenden Befehlen alle bis auf die letzte Identität entfernen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VMSS NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die name-Eigenschaft der vom Benutzer zugewiesenen verwalteten Identität, die für die VM-Skalierungsgruppe erhalten bleiben soll. Diese Informationen finden Sie im Identitätsabschnitt der VM-Skalierungsgruppe mithilfe von `az vmss show`:
+Wenn Ihre VM-Skalierungsgruppe mehrere vom Benutzer zugewiesene verwaltete Identitäten hat, können Sie mit den folgenden Befehlen alle bis auf die letzte Identität entfernen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VIRTUAL MACHINE SCALE SET NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die name-Eigenschaft der vom Benutzer zugewiesenen verwalteten Identität, die für die VM-Skalierungsgruppe erhalten bleiben soll. Diese Informationen finden Sie im Identitätsabschnitt der VM-Skalierungsgruppe mithilfe von `az vmss show`:
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"

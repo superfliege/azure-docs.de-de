@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c119869c47547fd5d91f6ee91fcd772ea5941f46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432705"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010954"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Registerkarte „Marketplace“ für ein IoT Edge-Modul
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben.
 | **Titel**                 | Der Titel des Angebots. Er wird im Marketplace gut sichtbar angezeigt.  Die maximale Länge beträgt 50 Zeichen. <!--ADD PICTURE IN ACTION-->|
 | **Zusammenfassung**               | Kurze Zusammenfassung zum Angebot. Die maximale Länge beträgt 100 Zeichen. <!--ADD PICTURE IN ACTION-->|
 | **Long Summary** (Lange Zusammenfassung)          | Längere Zusammenfassung zum Angebot (kann auch mit **Zusammenfassung** identisch sein).  Die maximale Länge beträgt 256 Zeichen. <!--ADD PICTURE IN ACTION-->|
-| **Beschreibung**           | Beschreibung des Angebots.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt.<br/> Die Beschreibung muss unten einen Absatz zu den *Mindesthardwareanforderungen* enthalten. Beispiel: <br/> <p><u>Mindesthardwareanforderungen:</u> Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher</p>
+| **Beschreibung**           | Beschreibung des Angebots.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt.<br/> Die Beschreibung muss unten einen Absatz zu den *Mindesthardwareanforderungen* enthalten. Beispiel: <br/> <p><u>Mindestanforderungen für Hardware</u>: Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher</p>
 | **Marketing Identifier** (Marketingbezeichner)  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion) | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
 | **Nützliche Links**          | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal 10 Kategorien können ausgewählt werden. Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den kompatiblen IoT Edge-Geräten aus dem [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/) hinzu. |
@@ -78,7 +78,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben.
 
 ## <a name="marketing-artifacts"></a>Marketingartefakte
 
-Dieser Abschnitt enthält folgende Unterabschnitte: **Logos**, **Screenshots** und **Videos**. 
+Dieser Abschnitt enthält die folgenden Unterabschnitte: **Logos**, **Screenshot** und **Videos**. 
 
 >[!Note]
 >Nur bei Logos handelt es sich um erforderliche Marketingartefakte, aber es ist ratsam, alle Angaben vorzunehmen, um die Attraktivität für die Kunden zu erhöhen.
@@ -104,7 +104,7 @@ Dieser Abschnitt enthält folgende Unterabschnitte: **Logos**, **Screenshots** u
 
 ### <a name="logo-guidelines"></a>Richtlinien für Logos
 
-<!-- It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 Alle in das Cloud-Partnerportal hochgeladenen Logos müssen folgende Richtlinien erfüllen:

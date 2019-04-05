@@ -1,5 +1,5 @@
 ---
-title: 'Sprachunterstützung: API für den Spracherkennungsdienst'
+title: Sprachunterstützung – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Azure Speech Services unterstützen neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache zu Text und Text zu Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienste.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22916a188c79d5894faf48dd71d6ab17a582cf8b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878033"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225432"
 ---
-# <a name="language-and-region-support-for-speech-service-api"></a>Sprach- und Regionsunterstützung für die API für den Spracherkennungsdienst
+# <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
 Für verschiedene Funktionen von Speech Services werden verschiedene Sprachen unterstützt. In den folgenden Tabellen wird die Sprachunterstützung zusammengefasst.
 
@@ -76,13 +76,18 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und virtuellen H
 Eine vollständige Liste der neuronalen Stimmen mit der regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#neural-voices).
 
 | Gebietsschema | Sprache | Geschlecht | Dienstnamenzuordnung|
-|--------|----------|---------|--------------------|
+|--------|----------|--------|---------------------|
+| de-DE | Deutsch (Deutschland) | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" |
 | en-US | Englisch (USA) | Male | „Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)“ |
 | en-US | Englisch (USA) | Female | „Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)“ |
+| it-IT | Italienisch (Italien) | Female | "Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" |
 | zh-CN | Chinesisch | Female | „Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)“ |
 
 > [!IMPORTANT]
 > Die Sprachsynthesestimme (zh-CN, XiaoxiaoNeural) für Microsoft Server steht nur über den Endpunkt „Asien, Südosten“ zur Verfügung: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
+
+> [!IMPORTANT]
+> „Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)“ und „Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)“ sind nur über den Endpunkt „Europa, Westen“ verfügbar: https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standardstimmen
 
@@ -255,5 +260,5 @@ Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Abrufen Ihres Speech Services-Testabonnements](https://azure.microsoft.com/try/cognitive-services/)
 * [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

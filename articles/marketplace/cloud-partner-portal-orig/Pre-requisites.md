@@ -12,17 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 46a12307a70125973d36cf0a09b44b32d3279a97
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a4596b711cd90610051faee0d09501c075548062
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991901"
 ---
-<a name="prerequisites-for-application-curation"></a>Voraussetzungen für die Anwendungszusammenstellung
-===============================
+# <a name="prerequisites-for-application-curation"></a>Voraussetzungen für die Anwendungszusammenstellung
 
 Microsoft erfordert bestimmte Überprüfungen, um sicherzustellen, dass die folgenden Anforderungen erfüllt sind:
 
@@ -43,4 +42,5 @@ Derzeit müssen die Partner nachweisen, dass diese Anforderungen erfüllt sind, 
 - Modelle (Code und Tests)
 - Marketinginhalte
 
-Weitere Informationen finden Sie unter [Voraussetzungen für die App-Zusammenstellung](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).
+Weitere Informationen zu technischen oder prozessbezogenen Anforderungen finden Sie unter [Überprüfen von Anwendungen für eine Finance and Operations-Umgebung](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).  Lesen Sie den [Leitfaden zum Veröffentlichen von Office 365-, Dynamics 365-, PowerApps- und Power BI-Angeboten](../appsource-offer-publishing-guide.md), falls Sie dies nicht bereits getan haben.
+

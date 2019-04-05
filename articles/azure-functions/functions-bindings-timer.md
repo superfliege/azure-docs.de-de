@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558973"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760766"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -50,13 +50,13 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 
 ### <a name="c-example"></a>C#-Beispiel
 
-Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die jedes Mal ausgeführt wird, wenn die Minuten einen durch fünf teilbaren Wert haben (wird die Funktion beispielsweise um 18:57:00 Uhr gestartet, erfolgt die nächste Ausführung um 19:00:00 Uhr):
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die jedes Mal ausgeführt wird, wenn die Minuten einen durch fünf teilbaren Wert haben (wird die Funktion beispielsweise um 18:57:00 Uhr gestartet, erfolgt die nächste Ausführung um 19:00:00 Uhr). Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>C#-Skriptbeispiel
 
-Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt.
+Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -84,7 +84,7 @@ Der C#-Skriptcode sieht wie folgt aus:
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F#-Beispiel
 
-Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [F#-Skriptfunktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt.
+Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [F#-Skriptfunktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="javascript-example"></a>JavaScript-Beispiel
 
-Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt.
+Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Ein[Timerobjekt](#usage) wird an die Funktion übergeben.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -138,7 +138,7 @@ Der JavaScript-Code sieht wie folgt aus:
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if(myTimer.isPastDue)
+    if (myTimer.IsPastDue)
     {
         context.log('Node is running late!');
     }
@@ -201,7 +201,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="usage"></a>Verwendung
 
-Bei Aufruf einer Trigger-mit-Timer-Funktion wird das [Timerobjekt](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) an die Funktion übergeben. Der folgende JSON-Code ist eine Beispieldarstellung des Timerobjekts. 
+Bei Aufruf einer Trigger-mit-Timer-Funktion wird ein Timerobjekt an die Funktion übergeben. Der folgende JSON-Code ist eine Beispieldarstellung des Timerobjekts.
 
 ```json
 {
@@ -226,7 +226,7 @@ Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/
 
 Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
-|Typ  |Beispiel  |Auslösung  |
+|Type  |Beispiel  |Auslösung  |
 |---------|---------|---------|
 |Ein bestimmter Wert |<nobr>"0 5 * * * *"</nobr>|um hh:05:00, wobei „hh“ für jede Stunde steht (einmal pro Stunde)|
 |Alle Werte (`*`)|<nobr>"0 * 5 * * *"</nobr>|täglich um 5:mm:00, wobei „mm“ für jede Minute in der Stunde steht (sechzigmal pro Tag)|
@@ -277,7 +277,7 @@ Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEB
 
 Wenn Sie `WEBSITE_TIME_ZONE` verwenden, wird die Uhrzeit an Abweichungen in der jeweiligen Zeitzone angepasst, z.B. an die Sommerzeit. 
 
-## <a name="timespan"></a>Zeitraum
+## <a name="timespan"></a>TimeSpan
 
  `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird.
 

@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961008"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793270"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -53,11 +53,11 @@ Um Ihre Git-Konfigurationseinstellungen anzuzeigen und zu konfigurieren, können
 ![Git aktivieren][api-management-enable-git]
 
 > [!IMPORTANT]
-> Geheime Schlüssel, die nicht als Eigenschaften definiert sind, werden im Repository gespeichert und verbleiben in dessen Verlauf, bis Sie den Git-Zugriff deaktivieren und erneut aktivieren. Eigenschaften stellen einen sicheren Ort zum Verwalten von konstanten Zeichenfolgenwerten, einschließlich geheimer Schlüssel, für alle API-Konfigurationen und -Richtlinien dar. Sie müssen sie also nicht direkt in Ihren Richtlinienanweisungen speichern. Weitere Informationen finden Sie unter [Verwenden von Eigenschaften in Azure API Management-Richtlinien](api-management-howto-properties.md).
-> 
-> 
+> Geheimnisse, die nicht als benannte Werte definiert sind, werden im Repository gespeichert und verbleiben in dessen Verlauf, bis Sie den Git-Zugriff deaktivieren und erneut aktivieren. Benannte Werte stellen einen sicheren Ort zum Verwalten von konstanten Zeichenfolgenwerten, einschließlich geheimer Schlüssel, für alle API-Konfigurationen und -Richtlinien dar. Sie müssen sie also nicht direkt in Ihren Richtlinienanweisungen speichern. Weitere Informationen finden Sie unter [Verwenden von benannten Werten in Azure API Management-Richtlinien](api-management-howto-properties.md).
+>
+>
 
-Informationen zum Aktivieren oder Deaktivieren des Git-Zugriffs mithilfe der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
+Informationen zum Aktivieren oder Deaktivieren des Git-Zugriffs mithilfe der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](/rest/api/apimanagement/tenantaccess?EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>So speichern Sie die Dienstkonfiguration im Git-Repository
 
@@ -69,17 +69,17 @@ Nach einigen Augenblicken wird die Konfiguration gespeichert, und der Konfigurat
 
 Sobald die Konfiguration im Repository gespeichert wurde, kann sie geklont werden.
 
-Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Commit der Konfigurationsmomentaufnahme mithilfe der REST-API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
+Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Commit der Konfigurationsmomentaufnahme mithilfe der REST-API](/rest/api/apimanagement/tenantaccess?CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>So klonen Sie das Repository auf Ihrem lokalen Computer
 
-Um ein Repository zu klonen, benötigen Sie die URL des Repositorys, einen Benutzernamen und ein Kennwort. Um den Benutzernamen und weitere Anmeldeinformationen abzurufen, klicken Sie im oberen Bereich der Seite auf **Anmeldeinformationen für Zugriff**.  
- 
+Um ein Repository zu klonen, benötigen Sie die URL des Repositorys, einen Benutzernamen und ein Kennwort. Um den Benutzernamen und weitere Anmeldeinformationen abzurufen, klicken Sie im oberen Bereich der Seite auf **Anmeldeinformationen für Zugriff**.
+
 Um ein Kennwort zu generieren, stellen Sie zuerst sicher, dass der **Ablauf** auf das gewünschte Ablaufdatum und die gewünschte Uhrzeit festgelegt ist, und klicken Sie dann auf **Generieren**.
 
 > [!IMPORTANT]
 > Notieren Sie sich dieses Kennwort. Das Kennwort wird nicht wieder angezeigt, nachdem Sie diese Seite verlassen haben.
-> 
+>
 
 In den folgenden Beispielen wird das Tool Git Bash aus [Git für Windows](https://www.git-scm.com/downloads) verwendet, Sie können aber auch ein beliebiges Git-Tool verwenden, mit dem Sie vertraut sind.
 
@@ -172,12 +172,12 @@ Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verw
 
 > [!NOTE]
 > Die folgenden Entitäten sind im Git-Repository nicht enthalten und können nicht mithilfe von Git konfiguriert werden.
-> 
-> * Benutzer
-> * Abonnements
-> * Eigenschaften
+>
+> * [Benutzer](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
+> * [Abonnements](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
+> * [Eigenschaft](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
 > * Andere Entitäten des Entwicklerportals als Stile
-> 
+>
 
 ### <a name="root-api-management-folder"></a>Stammordner „api-management“
 Der Stammordner `api-management` enthält eine Datei `configuration.json`, die Informationen der obersten Ebene über die Dienstinstanz im folgenden Format aufweist.
@@ -223,7 +223,7 @@ Die letzte Einstellung, `$ref-policy`, entspricht der globalen Datei mit Richtli
 ### <a name="apis-folder"></a>Ordner „apis“
 Der Ordner `apis` enthält einen Ordner für jede API in der Dienstinstanz, der die folgenden Elemente enthält.
 
-* `apis\<api name>\configuration.json` : Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](https://docs.microsoft.com/rest/api/apimanagement/api/get) mit `export=true` im Format `application/json` aufrufen.
+* `apis\<api name>\configuration.json` : Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) mit `export=true` im Format `application/json` aufrufen.
 * `apis\<api name>\api.description.html`: Dies ist die Beschreibung der API, und sie entspricht der Eigenschaft `description` der [Entität „API“](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
 * `apis\<api name>\operations\`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der `description`-Eigenschaft der [Entität „Operation“](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) in der REST-API entspricht.
 
@@ -266,7 +266,7 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
   * [Referenz zu PowerShell-Cmdlets für die Dienstbereitstellung](https://docs.microsoft.com/powershell/module/wds)
   * [Referenz zu PowerShell-Cmdlets für die Dienstverwaltung](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Verwalten der Dienstinstanz mit der REST-API
-  * [REST-API-Referenz zu API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+  * [REST-API-Referenz zu API Management](/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b6a7fe2c12b2f1f5bcc0ba8cccd1a51ee39c4a6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855672"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -36,11 +36,11 @@ Profiler schreibt Meldungen zur Ablaufverfolgung und benutzerdefinierten Ereigni
     ```
     Die folgende Abbildung zeigt zwei Beispiele für Suchvorgänge aus zwei KI-Ressourcen: 
     
-    * Auf der linken Seite erhält die Anwendung keine Anforderungen, während Profiler ausgeführt wird. Die Meldung erläutert, dass der Upload aufgrund von Inaktivität abgebrochen wurde. 
+   * Auf der linken Seite erhält die Anwendung keine Anforderungen, während Profiler ausgeführt wird. Die Meldung erläutert, dass der Upload aufgrund von Inaktivität abgebrochen wurde. 
 
-    * Auf der rechten Seite wurde Profiler gestartet und hat benutzerdefinierte Ereignisse gesendet, wenn während der Profiler-Ausführung Anforderungen erkannt wurden. Wenn das benutzerdefinierte Ereignis „ServiceProfilerSample“ angezeigt wird, bedeutet dies, dass Profiler eine Ablaufverfolgung an eine Anforderung angefügt hat. Die Ablaufverfolgung können Sie auf der Seite zur **Application Insights-Leistung** anzeigen.
+   * Auf der rechten Seite wurde Profiler gestartet und hat benutzerdefinierte Ereignisse gesendet, wenn während der Profiler-Ausführung Anforderungen erkannt wurden. Wenn das benutzerdefinierte Ereignis „ServiceProfilerSample“ angezeigt wird, bedeutet dies, dass Profiler eine Ablaufverfolgung an eine Anforderung angefügt hat. Die Ablaufverfolgung können Sie auf der Seite zur **Application Insights-Leistung** anzeigen.
 
-    Wenn keine Telemetriedaten angezeigt werden, wird Profiler nicht ausgeführt. Informationen zur Problembehandlung finden Sie in den entsprechenden Abschnitten für Ihren spezifischen App-Typ weiter unten in diesem Artikel.  
+     Wenn keine Telemetriedaten angezeigt werden, wird Profiler nicht ausgeführt. Informationen zur Problembehandlung finden Sie in den entsprechenden Abschnitten für Ihren spezifischen App-Typ weiter unten in diesem Artikel.  
 
      ![Suchen nach Profiler-Telemetriedaten][profiler-search-telemetry]
 
@@ -124,6 +124,8 @@ Profiler wird als fortlaufender Webauftrag in der Web-App ausgeführt. Sie könn
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Behandeln von Problemen mit Profiler und der Azure-Diagnose
 
+  >**Der Profiler, der in der neuesten Version von WAD für Cloud Services enthalten ist, weist einen Fehler auf.** Zur Verwendung des Profilers mit einem Clouddienst wird nur das AI SDK bis Version 2.7.2 unterstützt. Wenn Sie eine neuere Version des AI SDK verwenden, müssen Sie zu Version 2.7.2 zurückkehren, um den Profiler zu verwenden. Wenn Sie Visual Studio für das Downgrade der App Insights SDK-Version verwenden, wird zur Laufzeit möglicherweise ein Bindungsumleitungsfehler angezeigt. Der Grund dafür ist, dass „newVersion“ in der Datei „web.config“ für „Microsoft.ApplicationInsights“ nach dem Downgrade des AI SDK auf „2.7.2.0" festgelegt sein sollte, dies aber nicht automatisch aktualisiert wird.
+
 Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von der Azure-Diagnose richtig konfiguriert ist: 
 1. Erstens: Überprüfen Sie, ob die bereitgestellten Inhalte der Azure-Diagnosekonfiguration Ihren Erwartungen entsprechen. 
 
@@ -133,15 +135,19 @@ Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von d
 
 Überprüfen der Einstellungen, die zum Konfigurieren der Azure-Diagnose verwendet wurden:
 
-1. Melden Sie sich beim virtuellen Computer (VM) an, und öffnen Sie die Protokolldatei an diesem Speicherort: 
+1. Melden Sie sich beim virtuellen Computer (VM) an, und öffnen Sie die Protokolldatei an diesem Speicherort. (Das Laufwerk ist möglicherweise „c:“ oder „d:“, und die Plug-In-Version könnte unterschiedlich sein.)
 
     ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
+    ```
+    oder
+    ```
+    c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
 1. Suchen Sie in der Datei nach der Zeichenfolge **WadCfg**, um die Einstellungen zu finden, die zum Konfigurieren der Azure-Diagnose an den virtuellen Computer übergeben wurden. Sie können überprüfen, ob der von der Profiler-Senke verwendete iKey richtig ist.
 
-1. Überprüfen Sie die Befehlszeile, mit der Profiler gestartet wird. Die zum Starten von Profiler verwendeten Argumente befinden sich in der folgenden Datei:
+1. Überprüfen Sie die Befehlszeile, mit der Profiler gestartet wird. Die zum Starten von Profiler verwendeten Argumente befinden sich in der folgenden Datei. (Das Laufwerk könnte „c:“ oder „d:“ sein.)
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json

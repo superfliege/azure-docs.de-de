@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/28/2019
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963844"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010237"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -200,6 +200,20 @@ Standardmäßig zeigt das Diagramm auf dem Blatt **Datenbank-Ressourcennutzung**
 Sie können auch weitere Metriken zur parallelen Anzeige in dieser Datenbanktabelle auswählen, um einen umfassenderen Überblick über die Leistung Ihrer Datenbanken zu erhalten.
 
 Weitere Informationen finden Sie unter [Erstellen von SQL-Datenbankwarnungen im Azure-Portal](sql-database-insights-alerts-portal.md).
+
+## <a name="customer-case-studies"></a>Fallstudien
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um seine Geschäftsdienste schnell um 1.000 neue Azure SQL-Datenbanken pro Monat zu erweitern.
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um in der Cloud schnell Dienste für Tausende von Mandanten bereitzustellen und zu skalieren.
+
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

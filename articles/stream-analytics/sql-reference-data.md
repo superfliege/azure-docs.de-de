@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118019"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084309"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag (Vorschauversion)
 
@@ -134,21 +134,46 @@ Bevor Sie den Auftrag in Azure bereitstellen, können Sie die Abfragelogik lokal
 
 Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL-Datenbank](../sql-database/sql-database-temporal-tables.md) empfohlen.
 
-1. Erstellen Sie die Momentaufnahmenabfrage. 
+1. Erstellen Sie eine temporale Tabelle in Azure SQL-Datenbank.
+   
+   ```SQL 
+      CREATE TABLE DeviceTemporal 
+      (  
+         [DeviceId] int NOT NULL PRIMARY KEY CLUSTERED 
+         , [GroupDeviceId] nvarchar(100) NOT NULL
+         , [Description] nvarchar(100) NOT NULL 
+         , [ValidFrom] datetime2 (0) GENERATED ALWAYS AS ROW START
+         , [ValidTo] datetime2 (0) GENERATED ALWAYS AS ROW END
+         , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+      )  
+      WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
+   ```
+2. Erstellen Sie die Momentaufnahmenabfrage. 
 
-   Weisen Sie mit dem **@snapshotTime**-Parameter die Stream Analytics-Runtime an, das Verweisdataset aus der zur Systemzeit gültigen temporalen SQL-Datenbank-Tabelle abzurufen. Wenn Sie diesen Parameter nicht angeben, riskieren Sie, ein aufgrund von Zeitabweichungen ungenaues Verweisdataset zu erhalten. Ein Beispiel für die vollständige Momentaufnahmenabfrage sehen Sie unten:
-
-   ![Stream Analytics-Momentaufnahmenabfrage](./media/sql-reference-data/snapshot-query.png)
+   Weisen Sie mit dem **\@snapshotTime**-Parameter die Stream Analytics-Runtime an, das Referenzdataset aus der zur Systemzeit gültigen temporalen SQL-Datenbank-Tabelle abzurufen. Wenn Sie diesen Parameter nicht angeben, riskieren Sie, ein aufgrund von Zeitabweichungen ungenaues Verweisdataset zu erhalten. Ein Beispiel für die vollständige Momentaufnahmenabfrage sehen Sie unten:
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, [Description]
+      FROM dbo.DeviceTemporal
+      FOR SYSTEM_TIME AS OF @snapshotTime
+   ```
  
 2. Erstellen Sie die Deltaabfrage. 
    
-   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die innerhalb einer Startzeit eingefügt oder gelöscht wurden, **@deltaStartTime**, und eine Endzeit **@deltaEndTime**. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte  **_operation_**. Diese Spalte definiert, ob die Zeile zwischen **@deltaStartTime** und **@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. 
+   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte  **_operation_**. Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. 
 
    Für Datensätze, die aktualisiert wurden, übernimmt die temporale Tabelle die Buchführung durch Erfassen eines Einfüge- und Löschvorgangs. Die Stream Analytics-Runtime wendet dann die Ergebnisse auf die an die vorhergehende Momentaufnahme gerichtete Deltaabfrage an, um die Verweisdaten auf dem neuesten Stand zu halten. Ein Beispiel der Deltaabfrage wird unten gezeigt:
 
-   ![Stream Analytics-Deltaabfrage](./media/sql-reference-data/delta-query.png)
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      FROM dbo.DeviceTemporal
+      WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
+      UNION
+      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      FROM dbo.DeviceHistory   -- table we created in step 1
+      WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
+   ```
  
-  Beachten Sie, dass die Stream Analytics-Runtime die Momentaufnahmenabfrage neben der Deltaabfrage in regelmäßigen Abständen ausführen kann, um Prüfpunkte zu speichern.
+   Beachten Sie, dass die Stream Analytics-Runtime die Momentaufnahmenabfrage neben der Deltaabfrage in regelmäßigen Abständen ausführen kann, um Prüfpunkte zu speichern.
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -158,7 +183,7 @@ Es gibt keine zusätzlichen [Kosten pro Streamingeinheit](https://azure.microsof
 
 **Wie erfahre ich, ob die Verweisdaten-Momentaufnahme von der SQL-Datenbank-Instanz abgefragt und im Azure Stream Analytics-Auftrag verwendet wird?**
 
-Zwei nach „Logischer Name“ gefilterte Metriken (unter Metrics Azure Portal) können Sie zur Überwachung der Integrität der SQL-Datenbank-Verweisdateneingabe verwenden.
+Es gibt zwei nach dem logischen Namen gefilterte Metriken (unter „Metrics Azure Portal“), die Sie zur Überwachung der Integrität der SQL-Datenbank-Referenzdateneingabe verwenden können.
 
    * InputEvents: Diese Metrik misst die Anzahl der Datensätze, die aus dem SQL-Datenbank-Verweisdataset geladen werden.
    * InputEventBytes: Diese Metrik misst die Größe der in den Arbeitsspeicher des Stream Analytics-Auftrags geladenen Verweisdaten-Momentaufnahme. 

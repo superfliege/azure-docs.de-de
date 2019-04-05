@@ -1,6 +1,6 @@
 ---
-title: Lösung „Kapazität und Leistung“ in Azure Log Analytics | Microsoft-Dokumentation
-description: Die Lösung „Kapazität und Leistung“ in Log Analytics hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen.
+title: Lösung „Kapazität und Leistung“ in Azure Monitor | Microsoft-Dokumentation
+description: Die Lösung „Kapazität und Leistung“ in Monitor hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 41508a1d99ed243d377cc72c0accc005c5ca737d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189199"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008626"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (veraltet)
 
 ![Symbol für Kapazität und Leistung](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
 > Die Lösung „Kapazität und Leistung“ wurde als veraltet markiert.  Kunden, die diese Lösung bereits installiert haben, können sie weiterhin nutzen. „Kapazität und Leistung“ kann jedoch nicht zu neuen Arbeitsbereichen hinzugefügt werden.
 
-Sie können die Lösung „Kapazität und Leistung“ in Log Analytics nutzen, um die Kapazität Ihrer Hyper-V-Server zu verstehen. Die Lösung bietet Einblicke in Ihre Hyper-V-Umgebung, indem Ihnen die Gesamtnutzung (CPU, Arbeitsspeicher und Festplatte) der Hosts und VMs angezeigt wird, die auf diesen Hyper-V-Servern ausgeführt werden. Für CPU, Arbeitsspeicher und Datenträger auf allen Hosts und VMs werden Metriken gesammelt.
+Sie können die Lösung „Kapazität und Leistung“ in Monitor verwenden, um die Kapazität Ihrer Hyper-V-Server zu verstehen. Die Lösung bietet Einblicke in Ihre Hyper-V-Umgebung, indem Ihnen die Gesamtnutzung (CPU, Arbeitsspeicher und Festplatte) der Hosts und VMs angezeigt wird, die auf diesen Hyper-V-Servern ausgeführt werden. Für CPU, Arbeitsspeicher und Datenträger auf allen Hosts und VMs werden Metriken gesammelt.
 
 Die Lösung:
 
@@ -48,9 +48,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
-| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | JA | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
+| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
 | [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein     | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
-| [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | JA |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
+| [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
 | [Azure-Speicherkonto](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nein  | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen

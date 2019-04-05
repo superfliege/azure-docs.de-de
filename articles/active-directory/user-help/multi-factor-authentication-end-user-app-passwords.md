@@ -1,6 +1,6 @@
 ---
-title: Verwalten von App-Kennwörtern in Azure Active Directory | Microsoft-Dokumentation
-description: Auf dieser Seite finden Benutzer Informationen zu App-Kennwörtern und deren Verwendung im Zusammenhang mit der zweistufigen Überprüfung.
+title: Verwalten von App-Kennwörtern – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie mehr zu App-Kennwörtern und deren Verwendung im Zusammenhang mit der zweistufigen Überprüfung.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,13 +12,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdcd078714d8311cf59471492187314183de28b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177397"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
@@ -88,7 +89,7 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2. Wechseln Sie zu https://portal.office.com, wählen Sie rechts oben auf der Seite **Office 365-Portal** das Symbol **Einstellungen**, und erweitern Sie **Zusätzliche Sicherheitsüberprüfung**.
+2. Wechseln Sie zu [https://portal.office.com](https://portal.office.com), wählen Sie rechts oben auf der Seite **Office 365-Portal** das Symbol **Einstellungen**, und erweitern Sie **Zusätzliche Sicherheitsüberprüfung**.
 
     ![Office-Portal mit erweitertem Bereich „Zusätzliche Sicherheitsüberprüfung“](media/security-info/security-info-o365password.png)
 
@@ -104,7 +105,7 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2. Wechseln Sie zu https://portal.office.com, wählen Sie rechts oben auf der Seite **Office 365-Portal** das Symbol **Einstellungen**, und klicken Sie auf **Zusätzliche Sicherheitsüberprüfung**.
+2. Wechseln Sie zu [https://portal.office.com](https://portal.office.com), wählen Sie rechts oben auf der Seite **Office 365-Portal** das Symbol **Einstellungen**, und klicken Sie auf **Zusätzliche Sicherheitsüberprüfung**.
 
 3. Klicken Sie auf den Text **App-Kennwörter erstellen und verwalten**, um die Seite **App-Kennwörter** zu öffnen.
 

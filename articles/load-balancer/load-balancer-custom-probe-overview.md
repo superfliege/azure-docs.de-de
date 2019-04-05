@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: fb8b3ac69797400af962ae40816943d6a32b8ec6
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245547"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450446"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -212,9 +212,9 @@ Aktivieren Sie [TCP-Zeitstempel](https://tools.ietf.org/html/rfc1323) nicht.  Da
 
 ## <a name="monitoring"></a>Überwachung
 
-Öffentliche und interne [Load Balancer Standard](load-balancer-standard-overview.md) stellen pro Endpunkt und Back-End-Instanz den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Drittanbietern genutzt werden. 
+Öffentliche und interne [Load Balancer Standard](load-balancer-standard-overview.md) stellen pro Endpunkt und Back-End-Instanz den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Partnern genutzt werden. 
 
-Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Log Analytics bereit.  Log Analytics steht für interne Load Balancer Basic-Instanzen nicht zur Verfügung.  Mit [Log Analytics](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
+Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Azure Monitor-Protokolle bereit.  Azure Monitor-Protokolle steht für interne Load Balancer Basic-Instanzen nicht zur Verfügung.  Mit [Azure Monitor-Protokolle](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
 
 ## <a name="limitations"></a>Einschränkungen
 

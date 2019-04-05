@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 54c94c50f6292694e947d97a10fd6976c14e19df
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 9e5a2138de7e2c0e892bd0efeb0db1e2aee87422
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014691"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -66,15 +66,15 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 
    ![Befehl „Anwendung bereitstellen“ in VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie Service Fabric Explorer: http://localhost:19080/Explorer. Es sollte angezeigt werden, dass die Anwendung ausgeführt wird. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld. 
+4. Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie Service Fabric Explorer: `http://localhost:19080/Explorer`. Es sollte angezeigt werden, dass die Anwendung ausgeführt wird. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld. 
 
    ![Anwendung Voting in Service Fabric Explorer](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. Nachdem Sie sichergestellt haben, dass die Anwendung ausgeführt wird, starten Sie einen Browser. Öffnen Sie folgende Seite: http://localhost:8080. Hierbei handelt es sich um das Web-Front-End der Anwendung. Sie können Elemente hinzufügen und zum Abstimmen auf sie klicken.
+4. Nachdem Sie sichergestellt haben, dass die Anwendung ausgeführt wird, starten Sie einen Browser. Öffnen Sie folgende Seite: `http://localhost:8080`. Hierbei handelt es sich um das Web-Front-End der Anwendung. Sie können Elemente hinzufügen und zum Abstimmen auf sie klicken.
 
    ![Anwendung Voting im Browser](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung entfernen** aus, um die Anwendung aus dem Cluster zu entfernen. Die Ausgabe des Deinstallationsvorgangs wird an das integrierte Terminal gesendet. Mithilfe von Service Fabric Explorer können Sie überprüfen, ob die Anwendung aus dem lokalen Cluster entfernt wurde.
+5. Um eine Anwendung aus einem Cluster zu entfernen, wählen Sie den Befehl **Service Fabric: Anwendung entfernen** aus der **Befehlspalette** aus. Die Ausgabe des Deinstallationsvorgangs wird an das integrierte Terminal gesendet. Mithilfe von Service Fabric Explorer können Sie überprüfen, ob die Anwendung aus dem lokalen Cluster entfernt wurde.
 
 ## <a name="debug-the-application"></a>Debuggen der Anwendung
 Beim Debuggen von Anwendungen in VS Code muss die Anwendung in einem lokalen Cluster ausgeführt werden. Dem Code können Haltepunkte hinzugefügt werden.
@@ -119,7 +119,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen:
 
    ![Konfiguration „Debug (Attach)“ (Debuggen (anfügen))](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. Wechseln Sie in einem Webbrowsers zu http://localhost:8080. Geben Sie im Textfeld ein neues Element ein, und klicken Sie auf **+ Hinzufügen**. Ihr Haltepunkt sollte erreicht werden. Mithilfe der Debug-Symbolleiste am oberen Rand von VS Code können Sie die Ausführung fortsetzen, Zeilen überspringen, in Methoden springen oder die aktuelle Methode verlassen. 
+3. Wechseln Sie in einem Webbrowsers zu `http://localhost:8080`. Geben Sie im Textfeld ein neues Element ein, und klicken Sie auf **+ Hinzufügen**. Ihr Haltepunkt sollte erreicht werden. Mithilfe der Debug-Symbolleiste am oberen Rand von VS Code können Sie die Ausführung fortsetzen, Zeilen überspringen, in Methoden springen oder die aktuelle Methode verlassen. 
    
    ![Erreichen eines Haltepunkts](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        
@@ -127,7 +127,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen:
    
    ![Trennen vom Debugger](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. Wenn Sie mit dem Debuggen fertig sind, können Sie die Anwendung Voting mit dem Befehl **Service Fabric: Anwendung entfernen** aus Ihrem lokalen Cluster entfernen. 
+5. Wenn Sie das Debuggen abgeschlossen haben, können Sie den Befehl **Service Fabric: Anwendung entfernen** verwenden, um die Voting-Anwendung aus Ihrem lokalen Cluster zu entfernen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327849"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544238"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -38,7 +38,7 @@ Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Stora
 > [!NOTE]
 > Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „Allgemein v2“. Sie können ganz einfach ein Upgrade von einem Allgemein v1-Konto oder einem Blob Storage-Konto auf ein Allgemein v2-Konto durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren.
 >
-> Weitere Informationen zum Upgrade auf ein Allgemein v2-Konto finden Sie unter [Upgrade auf ein Allgemein v2-Speicherkonto](storage-account-upgrade.md). 
+> Weitere Informationen zum Upgrade auf ein Allgemein v2-Konto finden Sie unter [Upgrade auf ein Allgemein v2-Speicherkonto](storage-account-upgrade.md).
 
 Allgemein v2-Speicherkonten bieten mehrere Zugriffsebenen zum Speichern von Daten basierend auf Ihren Nutzungsmustern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
 
@@ -60,11 +60,9 @@ Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen si
 
 * Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.
 
-### <a name="blob-storage-accounts"></a>Blob-Speicherkonten
+### <a name="block-blob-storage-accounts"></a>Blockblob-Speicherkonten
 
-Blob Storage-Konten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Objektdaten als Blockblobs zu speichern. Blob Storage-Konten bieten die gleiche Stabilität, Verfügbarkeit, Skalierbarkeit und Leistungsfeatures wie Speicherkonten vom Typ „Allgemein v2“. Blob Storage-Konten unterstützen die Speicherung von Block- und Anfügeblobs, nicht jedoch von Seitenblobs.
-
-Blob Storage-Konten bieten mehrere Zugriffsebenen zum Speichern von Daten basierend auf Ihren Nutzungsmustern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
+Ein Blockblob-Speicherkonto ist ein spezielles Speicherkonto, das dazu dient, unstrukturierte Objektdaten als Blockblobs oder Anfügeblobs zu speichern. Blockblob-Speicherkonten bieten mehrere Zugriffsebenen, um Daten auf Ihren Nutzungsmustern basierend zu speichern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
 
 ## <a name="naming-storage-accounts"></a>Benennen von Speicherkonten
 
@@ -87,7 +85,7 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 Folgende Zugriffsebenen sind verfügbar:
 
 > [!NOTE]
-> Die [Premium-Zugriffsebene](../blobs/storage-blob-storage-tiers.md#premium-access-tier) ist als LRS-Konto (lokal redundanter Speicher) in den Regionen „Europa, Norden“, „USA, Osten 2“, „USA, Mitte“ und „USA, Westen“ in der eingeschränkten Vorschau verfügbar. Um zu erfahren, wie Sie sich für die Vorschau registrieren, lesen Sie den Artikel [Einführung in Azure Blob Storage Premium](https://aka.ms/premiumblob).
+> Die [Premium-Zugriffsebene (Vorschau)](../blobs/storage-blob-storage-tiers.md#premium-access-tier), die für leistungsabhängige Anwendungen optimiert ist, zeichnet sich durch niedrige und konsistente Latenz mit hohen Durchsatz- und Transaktionsraten aus. Die Premium-Zugriffsebene ist nur mit Blockblob-Speicherkonten (Vorschau) verfügbar. Weitere Informationen finden Sie unter [Azure Premium Blob Storage (Public Preview)](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
 
 * Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist sehr kosteneffektiv, aber die Speicherkosten liegen etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
 * Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist sehr kosteneffektiv, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.

@@ -1,5 +1,5 @@
 ---
-title: 'Herstellen einer Verbindung zwischen einem virtuellen Netzwerk und mehreren Standorten mithilfe von VPN Gateway und PowerShell: Klassisch | Microsoft-Dokumentation'
+title: 'Herstellen einer Verbindung zwischen einem virtuellen Netzwerk und mehreren Standorten mithilfe eines VPN-Gateways und PowerShell: klassisch | Microsoft-Dokumentation'
 description: Verbinden Sie mehrere lokale Standorte mithilfe eines VPN-Gateways mit einem klassischen virtuellen Netzwerk.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 768f06c9d007e716f89ca61ccd9f8a2ccd575efd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994024"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
@@ -75,8 +75,8 @@ Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit d
 2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Eine Anleitung finden Sie im Abschnitt [Angeben der SKU und des VPN-Typs](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Achten Sie darauf, als Routingtyp „Dynamisch“ anzugeben.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Wenn Sie nicht über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, gehen Sie wie folgt vor:
-1. Erstellen Sie mithilfe der Anweisungen unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](vpn-gateway-site-to-site-create.md) das Site-to-Site-VPN-Netzwerk.  
-2. Konfigurieren Sie anhand der folgenden Anweisungen ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
+1. Erstellen Sie Ihr virtuelles Site-to-Site-Netzwerk mithilfe der folgenden Anleitung: [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](vpn-gateway-site-to-site-create.md).  
+2. Konfigurieren Sie mithilfe der folgenden Anleitung ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN-Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
 ## <a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
 Exportieren Sie Ihre Azure-Netzwerkkonfigurationsdatei, indem Sie den folgenden Befehl ausführen. Sie können den Speicherort der zu exportierenden Datei bei Bedarf ändern.
@@ -88,7 +88,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="3-open-the-network-configuration-file"></a>3. Öffnen der Netzwerkkonfigurationsdatei
 Öffnen Sie die Netzwerkkonfigurationsdatei, die Sie im letzten Schritt heruntergeladen haben. Verwenden Sie dazu einen beliebigen XML-Editor. Die Datei sollte in etwa wie folgt aussehen:
 
-        <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+        <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
             <LocalNetworkSites>
               <LocalNetworkSite name="Site1">

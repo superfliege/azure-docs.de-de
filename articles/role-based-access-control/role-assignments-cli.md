@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341713"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838313"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI
 
@@ -89,9 +89,9 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role"></a>Auflisten der Aktionen einer Rolle
+## <a name="list-a-role-definition"></a>Auflisten einer Rollendefinition
 
-Zum Auflisten der Aktionen einer Rollendefinition verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Zum Auflisten einer Rollendefinition verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
@@ -104,6 +104,7 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
+[
   {
     "additionalProperties": {},
     "assignableScopes": [
@@ -134,7 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-Im folgenden Beispiel werden *actions* (Aktionen) und *notActions* (Keine Aktionen) der Rolle *Contributor* (Mitwirkender) aufgelistet:
+### <a name="list-actions-of-a-role"></a>Auflisten der Aktionen einer Rolle
+
+Im folgenden Beispiel werden einfach *actions* (Aktionen) und *notActions* (Keine Aktionen) der Rolle *Mitwirkender* aufgelistet:
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -153,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-Im folgenden Beispiel werden die Aktionen der Rolle *Virtual Machine Contributor* (Mitwirkender von virtuellen Computern) aufgelistet:
+Im folgenden Beispiel werden die Aktionen der Rolle *Mitwirkender für virtuelle Computer* aufgelistet:
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -191,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 Standardmäßig werden nur Zuweisungen im Abonnementkontext angezeigt. Zum Anzeigen von Zuweisungen im Ressourcen- oder Gruppenkontext verwenden Sie `--all`.
 
-Im folgenden Beispiel werden die Rollenzuweisungen aufgelistet, die dem Benutzer *patlong@contoso.com* direkt zugewiesen sind:
+Im folgenden Beispiel werden die Rollenzuweisungen aufgelistet, die dem Benutzer *\@contoso.com* direkt zugewiesen sind:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -249,7 +252,7 @@ Zum Erstellen einer Rollenzuweisung für einen Benutzer im Ressourcengruppenkont
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *patlong@contoso.com* im Ressourcengruppenkontext *pharma-sales-projectforecast* die Rolle *Virtual Machine Contributor* zugewiesen:
+Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales-projectforecast* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -297,7 +300,7 @@ In RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-Im folgenden Beispiel wird die Zuweisung der Rolle *Virtual Machine Contributor* von Benutzer *patlong@contoso.com* für die Ressourcengruppe *pharma-sales-projectforecast* entfernt:
+Im folgenden Beispiel wird die Zuweisung der Rolle *Mitwirkender für virtuelle Computer* von Benutzer *patlong\@contoso.com* für die Ressourcengruppe *pharma-sales-projectforecast* entfernt:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast

@@ -1,6 +1,6 @@
 ---
 title: Streamen von Azure-Überwachungsdaten an Event Hubs
-description: Erfahren Sie, wie Sie all Ihre Azure-Überwachungsdaten an einen Event Hub streamen, um die Daten in einem SIEM- oder Analysetool von Partnern abzurufen.
+description: Erfahren Sie, wie Sie Ihre Azure-Überwachungsdaten an einen Event Hub streamen, um die Daten in einem SIEM- oder Analysetool von Partnern abzurufen.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468232"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870685"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
-Azure Monitor stellt eine zentrale Pipeline für den Zugriff auf sämtliche Überwachungsdaten aus der Azure-Umgebung bereit, sodass Sie mühelos SIEM- und Überwachungstools von Partnern für die Datenverarbeitung einrichten können. In diesem Artikel wird das Einrichten der verschiedenen Schichten an Daten aus der Azure-Umgebung erläutert, die für die Erfassung durch ein externes Tool an einen einzelnen Event Hubs-Namespace oder Event Hub gesendet werden sollen.
+In diesem Artikel wird das Einrichten der verschiedenen Schichten an Daten aus der Azure-Umgebung erläutert, die für die Erfassung durch ein externes Tool an einen einzelnen Event Hubs-Namespace oder Event Hub gesendet werden sollen.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
@@ -33,7 +33,7 @@ In Ihrer Azure-Umgebung gibt es mehrere Schichten von Überwachungsdaten, weshal
 - **Überwachungsdaten zum Azure-Abonnement:** Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. Das [Aktivitätsprotokoll](./../../azure-monitor/platform/activity-logs-overview.md) enthält die meisten Überwachungsdaten zum Abonnement, z. B. zu Dienstintegritätsvorfällen und Azure Resource Manager-Überwachungen. Sie können diese Daten mit einem Protokollprofil sammeln.
 - **Überwachungsdaten zu Azure-Mandanten:** Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory. Azure Active Directory-Überwachungen und -Anmeldungen sind Beispiele für Mandantenüberwachungsdaten. Diese Daten können mithilfe einer Diagnoseeinstellung für Mandanten gesammelt werden.
 
-Daten aus beliebigen Schichten können an einen Event Hub gesendet und in ein Partnertool geladen werden. In den nächsten Abschnitten wird beschrieben, wie Sie Daten aus den einzelnen Schichten zum Streamen an einen Event Hub konfigurieren können. Bei der Erläuterung der Schritte wird davon ausgegangen, dass bereits zu überwachende Ressourcen in dieser Schicht vorhanden sind.
+Daten aus beliebigen Schichten können an einen Event Hub gesendet und in ein Partnertool geladen werden. Einige Datenquellen können dazu konfiguriert werden, Daten direkt an einen Event Hub zu senden, während möglicherweise ein anderer Prozess wie z.B. eine Logik-App benötigt wird, um die erforderlichen Daten abzurufen. In den nächsten Abschnitten wird beschrieben, wie Sie Daten aus den einzelnen Schichten zum Streamen an einen Event Hub konfigurieren können. Bei der Erläuterung der Schritte wird davon ausgegangen, dass bereits zu überwachende Ressourcen in dieser Schicht vorhanden sind.
 
 ## <a name="set-up-an-event-hubs-namespace"></a>Einrichten eines Event Hubs-Namespace
 

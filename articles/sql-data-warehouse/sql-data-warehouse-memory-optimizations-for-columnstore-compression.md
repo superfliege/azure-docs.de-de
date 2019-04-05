@@ -2,24 +2,24 @@
 title: Verbessern der Columnstore-Indexleistung – Azure SQL Data Warehouse | Microsoft Docs
 description: Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.
 services: sql-data-warehouse
-author: ckarst
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189562"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximieren der Zeilengruppenqualität für Columnstore
 
-Die Zeilengruppenqualität hängt von der Anzahl von Zeilen in einer Zeilengruppe ab. Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.  Verwenden Sie diese Methoden, um die Komprimierungsrate und Abfrageleistung für Columnstore-Indizes zu verbessern.
+Die Zeilengruppenqualität hängt von der Anzahl von Zeilen in einer Zeilengruppe ab. Mit einer Erhöhung des verfügbaren Arbeitsspeicher können Sie die Anzahl von Zeilen maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.  Verwenden Sie diese Methoden, um die Komprimierungsrate und Abfrageleistung für Columnstore-Indizes zu verbessern.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Bedeutung der Größe der Zeilengruppe
 Da ein Columnstore-Index eine Tabelle durch die Überprüfung der einzelnen Spaltensegmente von einzelnen Zeilengruppen überprüft, verbessert das Maximieren der Zeilenanzahl in jeder Zeilengruppe die Abfrageleistung. Wenn Zeilengruppen über eine hohe Anzahl von Reihen verfügen, verbessert sich die Datenkomprimierung, d.h., es werden weniger Daten vom Datenträger gelesen.
@@ -35,11 +35,11 @@ Während des Massenladens oder einer Neuerstellung des Columnstore-Indizes ist m
 
 Reicht der Arbeitsspeicher nicht aus, um mindestens 10.000 Reihen in jede Zeilengruppe zu komprimieren, erzeugt SQL Data Warehouse einen Fehler.
 
-Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Überwachen der Zeilengruppenqualität
 
-Über die DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) werden nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar gemacht. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
+Die DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) enthält die Ansichtsdefinition, die SQL bis SQL Data Warehouse entspricht), die nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar macht. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -137,14 +137,6 @@ Die DWU-Größe und die Benutzer-Ressourcenklasse bestimmen zusammen, wie viel A
 
 - Wie Sie die DWUs erhöhen, erfahren Sie unter [Wie skaliere ich Leistung?](quickstart-scale-compute-portal.md)
 - Wie Sie die Ressourcenklasse für eine Abfrage ändern, erfahren Sie unter [Beispiel: Ändern der Ressourcenklasse eines Benutzers](resource-classes-for-workload-management.md#change-a-users-resource-class).
-
-Beispielsweise kann ein Benutzer in der Ressourcenklasse „smallrc“ auf DWU-100 100 MB Arbeitsspeicher für jede Verteilung verwenden. Details finden Sie unter [Parallelität in SQL Data Warehouse](resource-classes-for-workload-management.md).
-
-Angenommen, Sie stellen fest, dass Sie 700 MB Arbeitsspeicher brauchen, um Zeilengruppengrößen von hoher Qualität zu bekommen. Anhand dieser Beispiele wird gezeigt, wie Sie die Ladeabfrage mit genug Arbeitsspeicher ausführen.
-
-- Indem DWU 1000 und „mediumrc“ verwendet wird, beträgt die Arbeitsspeicherzuweisung 800 MB
-- Indem DWU 600 und „largerc“ verwendet wird, beträgt die Arbeitsspeicherzuweisung 800 MB.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden | Microsoft-Dokumentation
-description: Verwenden von Azure AD-Zugriffsüberprüfungen (Azure Active Directory) zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden
+title: Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Azure AD-Zugriffsüberprüfungen (Azure Active Directory) Benutzer verwalten, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82fdfe598e11415130950443fb0d3e27f5d9d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892716"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
 Im Idealfall halten sich alle Benutzer an die Zugriffsrichtlinien, um den Zugriff auf die Ressourcen Ihrer Organisation zu schützen. Es kann aber auch Geschäftsszenarien geben, in denen Ausnahmen erforderlich sind. In diesem Artikel werden einige Beispiele beschrieben, für die ggf. der Ausschluss von Benutzern erforderlich ist. Außerdem erfahren Sie, wie Sie als IT-Administrator diese Aufgabe verwalten, das Übersehen von Richtlinienausnahmen vermeiden und gegenüber Prüfern nachweisen können, dass diese Ausnahmen regelmäßig überprüft werden, indem Azure AD-Zugriffsüberprüfungen (Azure Active Directory) durchgeführt werden.
 
@@ -102,7 +102,7 @@ Im Folgenden werden zwei Beispiele beschrieben, in denen Sie Zugriffsüberprüfu
 Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, mit der der Zugriff auf bestimmte Länder blockiert wird. Sie enthält eine Gruppe, die von der Richtlinie ausgeschlossen ist. Hier ist eine empfohlene Zugriffsüberprüfung angegeben, mit der die Mitglieder der Gruppe überprüft werden.
 
 > [!NOTE]
-> Für die Erstellung von Zugriffsüberprüfungen ist die Rolle „Globaler Administrator“ oder „Benutzerkontoadministrator“ erforderlich.
+> Für die Erstellung von Zugriffsüberprüfungen ist die Rolle „Globaler Administrator“ oder „Benutzeradministrator“ erforderlich.
 
 1. Die Überprüfung wird wöchentlich durchgeführt.
 
@@ -158,5 +158,5 @@ Als IT-Administrator wissen Sie, dass sich die Verwaltung von Ausschlussgruppen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md)
+- [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
 - [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)

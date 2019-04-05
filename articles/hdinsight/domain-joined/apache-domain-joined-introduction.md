@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913143"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225058"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket
 
@@ -36,7 +36,7 @@ Die Umgebungssicherheit in HDInsight wird mithilfe von virtuellen Netzwerken und
 
 Durch die Verwendung eines VPN Gateway-Diensts lässt sich die Umgebungssicherheit weiter verbessern. Das Gateway fungiert als erste Verteidigungslinie für eingehende, an den HDInsight-Cluster gerichtete Anforderungen. Es nimmt die Anforderung an, überprüft diese und gibt sie erst dann an die anderen Knoten im Cluster weiter. Auf diese Weise ermöglicht das Gateway Umgebungssicherheit an andere Namens- und Datenknoten im Cluster.
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 Ein Unternehmensadministrator kann einen HDInsight-Cluster mit Enterprise-Sicherheitspaket in einem [virtuellen Netzwerk](https://azure.microsoft.com/services/virtual-network/) bereitstellen. Alle Knoten des HDInsight-Clusters werden in die vom Unternehmen verwaltete Domäne eingebunden. Hierzu wird [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) verwendet. 
 
 In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie sich mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie Apache Ambari Views, ODBC, JDBC, PowerShell und REST-APIs authentifizieren, um mit dem Cluster zu interagieren. Der Administrator hat uneingeschränkte Kontrolle über die Begrenzung der Anzahl von Benutzern, die über diese Endpunkte mit dem Cluster interagieren.

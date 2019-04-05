@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c8bab609212c837802be6f70e7fc74df6b5eaf2e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 94ae233f8591c43afa1bb73c3e17964922967d36
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123027"
 ---
 # <a name="introduction-to-application-groups"></a>Einführung in Anwendungsgruppen
 Der Clusterressourcen-Manager von Service Fabric verwaltet die Clusterressourcen in der Regel durch gleichmäßiges Verteilen der Last (durch [Metriken](service-fabric-cluster-resource-manager-metrics.md) dargestellt) über den gesamten Cluster. Service Fabric verwaltet die Kapazität der Knoten im Cluster und den Cluster als Ganzes über [Kapazität](service-fabric-cluster-resource-manager-cluster-description.md). Metriken und Kapazität funktionieren hervorragend für eine Vielzahl von Workloads, aber die Muster, die intensiven Gebrauch von anderen Service Fabric-Anwendungsinstanzen machen, bringen manchmal zusätzliche Anforderungen ein. Dazu zählen beispielsweise:
@@ -36,6 +36,7 @@ Der einfachste Anwendungsfall für Anwendungskapazität ist, wenn eine Anwendung
 Die folgende Abbildung zeigt eine Anwendungsinstanz mit und ohne eine definierte maximale Anzahl von Knoten:
 
 <center>
+
 ![Anwendungsinstanzen – Definieren der maximalen Anzahl von Knoten][Image1]
 </center>
 
@@ -107,7 +108,7 @@ Das Reservieren von Speicherplatz im Cluster für die Anwendung erfolgt sofort, 
 - die Anzahl der Dienste innerhalb der Anwendungsinstanz sich jedes Mal ändert 
 - die Dienste vorhanden sind, jedoch die Ressourcen nicht nutzen 
 
-Das Reservieren von Ressourcen für eine Anwendungsinstanz erfordert die Angabe zweier zusätzlicher Parameter: *MinimumNodes* und *NodeReservationCapacity*.
+Das Reservieren von Ressourcen für eine Anwendungsinstanz erfordert die Angabe zweier zusätzlicher Parameter: *MinimumNodes* und *NodeReservationCapacity*
 
 - **MinimumNodes**: Definiert die Mindestanzahl von Knoten, auf denen die Anwendungsinstanz ausgeführt werden soll.  
 - **NodeReservationCapacity**: Diese Einstellung wird für jede Metrik innerhalb der Anwendung definiert. Der Wert ist die Menge dieser Metrik, die für die Anwendung auf jedem Knoten reserviert ist, auf dem die Dienste in der Anwendung ausgeführt werden.
@@ -117,6 +118,7 @@ Das Kombinieren von **MinimumNodes** und **NodeReservationCapacity** garantiert 
 Betrachten wir nun ein Beispiel für die Kapazitätsreservierung:
 
 <center>
+
 ![Anwendungsinstanzen – Definieren der reservierten Kapazität][Image2]
 </center>
 
@@ -178,10 +180,10 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 
 Die ApplicationLoad-Abfrage gibt grundlegende Informationen zu der Anwendungskapazität zurück, die für die Anwendung angegeben wurde. Zu diesen Informationen gehören die Mindest- und Höchstanzahl von Knoten und die Anzahl, die derzeit von der Anwendung belegt wird. Zudem sind darin Informationen zu den einzelnen Anwendungslastmetriken enthalten:
 
-* Metrikname: Name der Metrik.
-* Reservierungskapazität: für diese Anwendung reservierte Clusterkapazität.
-* Anwendungslast: Gesamtlast der untergeordneten Replikate dieser Anwendung.
-* Anwendungskapazität: maximal zulässiger Wert der Anwendungslast.
+* Metrikname: Der Name der Metrik.
+* Reservierungskapazität: Die für diese Anwendung im Cluster reservierte Clusterkapazität.
+* Anwendungslast: Die Gesamtlast der untergeordneten Replikate dieser Anwendung.
+* Anwendungskapazität: Der maximal zulässige Wert der Anwendungslast.
 
 ## <a name="removing-application-capacity"></a>Entfernen der Anwendungskapazität
 Sobald die Anwendungskapazitätsparameter für eine Anwendung festgelegt sind, können sie mit den APIs zur Anwendungsaktualisierung oder PowerShell-Cmdlets entfernt werden. Beispiel: 

@@ -1,7 +1,7 @@
 ---
-title: Transkriptionsrichtlinien zur Spracherkennungsdienst-Schulung
+title: Transkriptionsrichtlinien zum Trainieren von Modellen für Spracherkennungsdienste
 titleSuffix: Azure Cognitive Services
-description: Informationen zur Textvorbereitung zum Anpassen von Akustik- und Sprachmodellen und Voicefonts für den Spracherkennungsdienst.
+description: Erfahren Sie, wie Sie Texte vorbereiten, um Akustik- und Sprachmodelle und Voicefonts für Spracherkennungsdienste anzupassen.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d7508ed9cf1807fa05c57a1d60c804af7d2244f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857174"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897213"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Transkriptionsrichtlinien zur Verwendung des Spracherkennungsdiensts
 
 Zur Anpassung der **Spracherkennung** oder **Sprachsynthese** müssen Sie Text zusammen mit Sprache angeben. Jede Zeile im Text entspricht einer einzelnen Äußerung. Der Text sollte mit der Sprache so genau wie möglich übereinstimmen. Der Text wird als *Transkript* bezeichnet und muss in einem bestimmten Format erstellt werden.
 
-Der Spracherkennungsdienst normalisiert die Eingabe, damit der Text konsistent bleibt. 
+Spracherkennungsdienste normalisieren die Eingabe, sodass der Text konsistent bleibt.
 
 In diesem Artikel werden beide Arten der Normalisierung beschrieben. Je nach Sprache weichen die Richtlinien geringfügig voneinander ab.
 
@@ -39,7 +39,7 @@ Vermeiden Sie die Verwendung von erweiterten (Lateinisch-1) oder Unicode-Interpu
 
 ### <a name="text-normalization-rules-for-english"></a>Regeln für die Textnormalisierung für Englisch
 
-Der Spracherkennungsdienst verwendet die folgenden Normalisierungsregeln:
+Spracherkennungsdienste wenden die folgenden Normalisierungsregeln an:
 
 * Verwenden von Kleinbuchstaben für sämtlichen Text
 * Entfernen aller Interpunktionszeichen, mit Ausnahme von wortinternen Apostrophen
@@ -64,7 +64,7 @@ Wenden Sie die folgende Normalisierung auf Ihre Texttranskripte an:
 * Nicht standardmäßige numerische Zeichenfolgen (z. B. einige Datums- oder Rechnungsformen) müssen ausgeschrieben werden.
 * Wörter mit nicht alphabetischen Zeichen oder gemischten alphanumerischen Zeichen müssen entsprechend ihrer Aussprache transkribiert werden.
 * Lassen Sie Abkürzungen, die als Wörter ausgesprochen werden, unverändert (z. B. „Radar“, „Laser“, „RAM“ oder „NATO“).
-* Schreiben Sie Abkürzungen, die als separate Buchstaben ausgesprochen werden, mit durch Leerzeichen getrennten Buchstaben (Beispiel: „IBM,“ „CPU,“ „FBI,“ „TBD,“ oder „NaN“). 
+* Schreiben Sie Abkürzungen, die als separate Buchstaben ausgesprochen werden, mit durch Leerzeichen getrennten Buchstaben (Beispiel: „IBM,“ „CPU,“ „FBI,“ „TBD,“ oder „NaN“).
 
 Hier einige Beispiele:
 
@@ -83,7 +83,7 @@ Hier einige Beispiele:
 
 ## <a name="chinese-zh-cn"></a>Chinesisch (zh-cn)
 
-Bei in Custom Speech Service hochgeladenen Textdaten muss die UTF-8-Codierung mit Bytereihenfolge-Marke verwendet werden. Die Datei sollte eine Äußerung pro Zeile enthalten.
+Bei Textdaten, die in Custom Speech Services hochgeladen werden, muss die UTF-8-Codierung mit einem Marker für die Bytereihenfolge verwendet werden. Die Datei sollte eine Äußerung pro Zeile enthalten.
 
 Vermeiden Sie die Verwendung von Interpunktionszeichen halber Breite. Diese Zeichen können unbeabsichtigt eingefügt werden, wenn die Daten in einem Textverarbeitungsprogramm vorbereitet oder aus Webseiten erfasst werden. Ersetzen Sie sie durch entsprechende Zeichen normaler Breite. Beispiel: 
 
@@ -94,7 +94,7 @@ Vermeiden Sie die Verwendung von Interpunktionszeichen halber Breite. Diese Zeic
 
 ### <a name="text-normalization-rules-for-chinese"></a>Regeln für die Textnormalisierung für Chinesisch
 
-Der Spracherkennungsdienst verwendet die folgenden Normalisierungsregeln:
+Spracherkennungsdienste wenden die folgenden Normalisierungsregeln an:
 
 * Entfernen aller Interpunktionszeichen
 * Ausweitung von Zahlen auf die gesprochene Form
@@ -134,7 +134,7 @@ Bei in den Dienst zur **Spracherkennung** hochgeladenen Textdaten muss die UTF-8
 
 ### <a name="text-normalization-rules-for-german"></a>Regeln für die Textnormalisierung für Deutsch
 
-Der Spracherkennungsdienst verwendet die folgenden Normalisierungsregeln:
+Spracherkennungsdienste wenden die folgenden Normalisierungsregeln an:
 
 * Verwenden von Kleinbuchstaben für sämtlichen Text
 * Entfernen aller Interpunktionszeichen, einschließlich verschiedener Typen von Anführungszeichen ("test", 'test', „test“ oder «test» können verwendet werden)
@@ -162,13 +162,13 @@ Bevor Sie Ihren Text importieren, wenden Sie die folgende Normalisierung an:
 
 Hier einige Beispiele:
 
-| Ursprünglicher Text | Nach der Normalisierung durch den Benutzer | Nach der Normalisierung durch das System
+| Ursprünglicher Text | Nach der Normalisierung durch den Benutzer | Nach der Normalisierung durch das System |
 |--------  | ----- | -------- |
 | Es ist 12.23 Uhr | Es ist 12:23 Uhr | es ist zwölf uhr dreiundzwanzig |
-| {12,45} | {12,45} | zwölf komma vier fünf ||
+| {12,45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/)
+- [Abrufen Ihres Speech Services-Testabonnements](https://azure.microsoft.com/try/cognitive-services/)
 - [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

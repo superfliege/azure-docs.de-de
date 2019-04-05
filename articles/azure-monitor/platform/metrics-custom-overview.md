@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: cb1d08bb7b4c64d8dbcf39a667cb037ff30c38e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467894"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287263"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
@@ -29,7 +29,7 @@ Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor
 
 Wenn Sie benutzerdefinierte Metriken an Azure Monitor senden, muss jeder gemeldete Datenpunkt (oder Wert) die folgenden Informationen enthalten.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 Zum Übermitteln von benutzerdefinierten Metriken an Azure Monitor muss die Entität über ein gültiges Azure Active Directory-Token (Azure AD) im **Bearer**-Header der Anforderung verfügen. Es gibt einige unterstützte Möglichkeiten, einen gültigen Bearertoken zu erhalten:
 1. [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Gibt einer Azure-Ressource (z.B. einer VM) eine Identität. Verwaltete Dienstidentität (MSI) gewährt Ressourcen die Berechtigungen zum Durchführen bestimmter Vorgänge. Zum Beispiel erlaubt sie einer Ressource das Ausgeben von Metriken über sich. Einer Ressource oder ihrer MSI kann die Berechtigung **Überwachungsmetriken veröffentlichen** für eine andere Ressource gewährt werden. Mit dieser Berechtigung kann die MSI auch Metriken für andere Ressourcen ausgeben.
 2. [Azure AD-Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) In diesem Szenario können einer AAD-Anwendung oder einem Dienst die Berechtigungen zum Ausgeben von Metriken zu einer Azure-Ressource gewährt werden.
@@ -55,7 +55,7 @@ Diese Eigenschaft erfasst, in welcher Azure-Region die Ressource, für die Sie M
 >
 
 ### <a name="timestamp"></a>Zeitstempel
-Jeder Datenpunkt, der an Azure Monitor gesendet wird, muss mit einem Zeitstempel gekennzeichnet sein. Dieser Zeitstempel erfasst den Zeitpunkt (Datum/Uhrzeit), zu dem der Metrikwert gemessen oder erfasst wurde. Azure Monitor akzeptiert metrische Daten mit Zeitstempeln, die bis zu 20 Minuten in der Vergangenheit und bis zu 5 Minuten in der Zukunft liegen.
+Jeder Datenpunkt, der an Azure Monitor gesendet wird, muss mit einem Zeitstempel gekennzeichnet sein. Dieser Zeitstempel erfasst den Zeitpunkt (Datum/Uhrzeit), zu dem der Metrikwert gemessen oder erfasst wurde. Azure Monitor akzeptiert metrische Daten mit Zeitstempeln, die bis zu 20 Minuten in der Vergangenheit und bis zu 5 Minuten in der Zukunft liegen. Der Zeitstempel muss im ISO 8601-Format vorliegen.
 
 ### <a name="namespace"></a>Namespace
 Namespaces sind eine Möglichkeit, ähnliche Metriken zu kategorisieren oder zu gruppieren. Namespaces ermöglichen es Ihnen, Gruppen von Metriken zu isolieren, die unterschiedliche Erkenntnisse oder Leistungsindikatoren erfassen. Sie könnten z.B. über den Namespace **ContosoMemoryMetrics** verfügen, der Metriken zur Arbeitsspeichernutzung verfolgt, um ein Profile Ihrer App zu erstellen. Ein anderer Namespace mit dem Namen **ContosoAppTransaction** könnte alle Metriken über Benutzertransaktionen in Ihrer Anwendung verfolgen.
@@ -65,7 +65,7 @@ Namespaces sind eine Möglichkeit, ähnliche Metriken zu kategorisieren oder zu 
 
 ### <a name="dimension-keys"></a>Dimensionsschlüssel
 Eine Dimension ist ein Schlüssel-Wert-Paar, das hilft, zusätzliche Merkmale der zu erfassenden Metrik zu beschreiben. Die zusätzlichen Merkmale ermöglichen die Erfassung weiterer Informationen zur Metrik und damit umfangreichere Erkenntnisse. Die Metrik **Verwendete Arbeitsspeicherbytes** könnte z.B. einen Dimensionsschlüssel namens **Prozess** verwenden, der erfasst, wie viele Bytes des Arbeitsspeichers pro Prozess auf einer VM belegt werden. Mithilfe dieses Schlüssels können Sie die Metrik filtern, um zu sehen, wie viele speicherspezifische Prozesse verwendet werden, oder um die fünf Prozesse mit der höchsten Speicherauslastung zu identifizieren.
-Jede benutzerdefinierte Metrik kann über bis zu 10 Dimensionen verfügen.
+Dimensionen sind optional, möglicherweise weisen nicht alle Metriken Dimensionen auf. Eine benutzerdefinierte Metrik kann bis zu 10 Dimensionen umfassen.
 
 ### <a name="dimension-values"></a>Dimensionswerte
 Wenn Sie einen metrischen Datenpunkt melden, gibt es für jeden Dimensionsschlüssel der zu meldenden Metrik einen zugehörigen Dimensionswert. Angenommen, Sie möchten den von der ContosoApp auf Ihrer VM belegten Arbeitsspeicher melden:
@@ -75,6 +75,7 @@ Wenn Sie einen metrischen Datenpunkt melden, gibt es für jeden Dimensionsschlü
 * Der Dimensionswert wäre **ContosoApp.exe**.
 
 Wenn Sie einen Metrikwert veröffentlichen, können Sie nur einen einzigen Dimensionswert pro Dimensionsschlüssel angeben. Wenn Sie dieselbe Speicherauslastung für mehrere Prozesse auf der VM erfassen, können Sie mehrere Metrikwerte für diesen Zeitstempel melden. Jeder Metrikwert würde einen anderen Dimensionswert für den Dimensionsschlüssel **Prozess** angeben.
+Dimensionen sind optional, möglicherweise weisen nicht alle Metriken Dimensionen auf. Wenn ein Metrikbeitrag Dimensionsschlüssel definiert, sind die entsprechenden Dimensionswerte erforderlich.
 
 ### <a name="metric-values"></a>Metrikwerte
 Azure Monitor speichert alle Metriken in Granularitätsintervallen von einer Minute. Uns ist bewusst, dass eine Metrik im Lauf einer Minute möglicherweise mehrere Male abgefragt werden muss. Ein Beispiel ist die CPU-Auslastung. Eventuell muss sie auch für viele separate Ereignisse gemessen werden. Ein Beispiel sind Wartezeiten bei Anmeldetransaktionen. Sie können die Werte vorab lokal aggregieren und ausgeben, um die Anzahl der Rohwerte einzuschränken, die Sie in Azure Monitor ausgeben und bezahlen müssen:
@@ -169,13 +170,13 @@ Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Met
 
 |Azure-Region|Präfix des regionalen Endpunkts|
 |---|---|
-|USA (Ost)|https://eastus.monitoring.azure.com/|
-|USA Süd Mitte|https://southcentralus.monitoring.azure.com/|
-|USA, Westen-Mitte|https://westcentralus.monitoring.azure.com/|
-|USA, Westen 2|https://westus2.monitoring.azure.com/|
-|Asien, Südosten|https://southeastasia.monitoring.azure.com/|
-|Nordeuropa|https://northeurope.monitoring.azure.com/|
-|Europa, Westen|https://westeurope.monitoring.azure.com/|
+|USA (Ost)| https:\//eastus.monitoring.azure.com/ |
+|USA Süd Mitte| https:\//southcentralus.monitoring.azure.com/ |
+|USA, Westen-Mitte| https:\//westcentralus.monitoring.azure.com/ |
+|USA, Westen 2| https:\//westus2.monitoring.azure.com/ |
+|Asien, Südosten| https:\//southeastasia.monitoring.azure.com/ |
+|Nordeuropa| https:\//northeurope.monitoring.azure.com/ |
+|Europa, Westen| https:\//westeurope.monitoring.azure.com/ |
 
 ## <a name="quotas-and-limits"></a>Kontingente und Grenzwerte
 Azure Monitor erzwingt die folgenden Nutzungslimits für benutzerdefinierte Metriken:
@@ -185,6 +186,7 @@ Azure Monitor erzwingt die folgenden Nutzungslimits für benutzerdefinierte Metr
 |Aktive Zeitreihen/Abonnements/Region|50.000|
 |Dimensionsschlüssel pro Metrik|10|
 |Zeichenkettenlänge für metrische Namespaces, metrische Namen, Dimensionsschlüssel und Dimensionswerte|256 Zeichen|
+
 Eine aktive Zeitreihe ist definiert als eine beliebige eindeutige Kombination aus Metrik, Dimensionsschlüssel oder Dimensionswert, deren Metrikwerte in den letzten 12 Stunden veröffentlicht wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 7ecd35ba33d2860ba052aa27286c69985c2f7dd9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6462673f6c3992aacbaee168eafc6bdb1b2fa944
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190229"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733469"
 ---
-# <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>Erstellen einer IoT Hub-Instanz mithilfe des Cmdlets New-AzureRmIotHub
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Erstellen einer IoT Hub-Instanz mithilfe des Cmdlets New-AzIotHub
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -25,6 +25,8 @@ Mit Azure PowerShell-Cmdlets können Sie Azure IoT Hubs erstellen und verwalten.
 
 Für diese Anleitung wird ein Azure-Abonnement benötigt. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="connect-to-your-azure-subscription"></a>Verbinden mit Ihrem Azure-Abonnement
@@ -33,25 +35,25 @@ Wenn Sie die Cloud Shell-Befehlszeile verwenden, sind Sie bereits bei Ihrem Abon
 
 ```powershell
 # Log into Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Für das Bereitstellen einer IoT Hub-Instanz benötigen Sie eine Ressourcengruppe. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
 
-Wenn Sie eine neue Ressourcengruppe für Ihre IoT Hub-Instanz erstellen möchten, verwenden Sie den Befehl [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Mit diesem Beispiel wird die Ressourcengruppe **MyIoTRG1** in der Region **USA, Osten** erstellt:
+Wenn Sie eine neue Ressourcengruppe für Ihre IoT Hub-Instanz erstellen möchten, verwenden Sie den Befehl [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup). Mit diesem Beispiel wird die Ressourcengruppe **MyIoTRG1** in der Region **USA, Osten** erstellt:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
+New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## <a name="create-an-iot-hub"></a>Erstellen einer IoT Hub-Instanz
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-Verwenden Sie den Befehl [New-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/New-AzureRmIotHub), um eine IoT Hub-Instanz in der Ressourcengruppe zu erstellen, die Sie im vorherigen Schritt erstellt haben. Mit diesem Beispiel wird ein **S1**-Hub mit dem Namen **MyTestIoTHub** in der Region **USA, Osten** erstellt:
+Verwenden Sie den Befehl [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub), um eine IoT Hub-Instanz in der Ressourcengruppe zu erstellen, die Sie im vorherigen Schritt erstellt haben. Mit diesem Beispiel wird ein **S1**-Hub mit dem Namen **MyTestIoTHub** in der Region **USA, Osten** erstellt:
 
 ```azurepowershell-interactive
-New-AzureRmIotHub `
+New-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub `
     -SkuName S1 -Units 1 `
@@ -62,39 +64,39 @@ Der Name der IoT Hub-Instanz muss global eindeutig sein.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-Mit dem Befehl [Get-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/Get-AzureRmIotHub) können Sie alle IoT Hub-Instanzen in Ihrem Abonnement auflisten:
+Mit dem Befehl [Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) können Sie alle IoT Hub-Instanzen in Ihrem Abonnement auflisten:
 
 ```azurepowershell-interactive
-Get-AzureRmIotHub
+Get-AzIotHub
 ```
 
 Dieses Beispiel zeigt die IoT Hub-Instanz vom Typ „S1 Standard“, die Sie im vorherigen Schritt erstellt haben.
 
-Sie können die IoT Hub-Instanz mit dem Befehl [Remove-AzureRmIotHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/remove-azurermiothub) löschen:
+Sie können die IoT Hub-Instanz mit dem Befehl [Remove-AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) löschen:
 
 ```azurepowershell-interactive
-Remove-AzureRmIotHub `
+Remove-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub
 ```
 
-Alternativ können Sie eine Ressourcengruppe und alle darin enthaltenen Ressourcen mit dem Befehl [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Remove-AzureRmResourceGroup) entfernen:
+Alternativ können Sie eine Ressourcengruppe und alle darin enthaltenen Ressourcen mit dem Befehl [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) entfernen:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyIoTRG1
+Remove-AzResourceGroup -Name MyIoTRG1
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun eine IoT Hub-Instanz mit einem PowerShell-Cmdlet bereitgestellt haben, möchten Sie vielleicht mehr wissen. Lesen Sie die folgenden Artikel:
 
-* [PowerShell-Cmdlets zur Verwendung mit Ihrer IoT Hub-Instanz](https://docs.microsoft.com/powershell/module/azurerm.iothub/)
+* [PowerShell-Cmdlets zur Verwendung mit Ihrer IoT Hub-Instanz](https://docs.microsoft.com/powershell/module/az.iothub/)
 
 * [IoT Hub-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 
 Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 
-* [Einführung in das C SDK](iot-hub-device-sdk-c-intro.md)
+* [Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md)
 
 * [Azure IoT SDKs](iot-hub-devguide-sdks.md)
 

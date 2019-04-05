@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 4511ef81ccfa7008cd21a22b09459fb122d46327
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: efe85e017d883ca82414fe5ff10b5c2932366e48
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101124"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs über virtuelle Netzwerke (VNET)
 
@@ -49,8 +49,11 @@ Die folgenden Abschnitte beschreiben, wie Sie den eine Dienstendpunkt eines virt
 
 > [!NOTE]
 > Um Dienstendpunkte für virtuelle Netzwerke zu aktivieren, benötigen Sie die folgenden Abonnementberechtigungen:
-  * Abonnement mit virtuellem Netzwerk: Netzwerkmitwirkender
-  * Abonnement mit Azure Cosmos DB-Konto: DocumentDB-Kontomitwirkender
+>   * Abonnement mit virtuellem Netzwerk: Netzwerkmitwirkender
+>   * Abonnement mit Azure Cosmos DB-Konto: DocumentDB-Kontomitwirkender
+>   * Wenn sich Ihr virtuelles Netzwerk und Ihr Azure Cosmos DB-Konto in unterschiedlichen Abonnements befinden, stellen Sie sicher, dass für das Abonnement mit dem virtuellen Netzwerk ebenfalls ein `Microsoft.DocumentDB`-Ressourcenanbieter registriert ist. Informationen zum Registrieren eines Ressourcenanbieters finden Sie im Artikel [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md). 
+
+Im Folgenden finden Sie die Schritte zum Registrieren eines Abonnements bei einem Ressourcenanbieter.
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Konfigurieren eines Dienstendpunkts für ein neues virtuelles Azure-Netzwerk und Subnetz
 

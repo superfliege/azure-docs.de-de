@@ -1,27 +1,26 @@
 ---
-title: Konvertieren von JSON-Daten mit Liquid-Transformationen – Azure Logic Apps | Microsoft-Dokumentation
+title: Konvertieren von JSON-Daten mit Liquid-Transformationen – Azure Logic Apps | Microsoft Docs
 description: Erstellen von Transformationen oder Zuordnungen für erweiterte JSON-Transformationen mithilfe von Logic Apps und einer Liquid-Vorlage
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
 ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854376"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292885"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Ausführen erweiterter JSON-Transformationen mit Liquid-Vorlagen in Azure Logic Apps
 
-Sie können grundlegende JSON-Transformationen in Ihren Logik-Apps über native Datenvorgangsaktionen wie **JSON erstellen** oder **JSON analysieren** durchführen. Sie können Vorlagen oder Zuordnungen mit [Liquid](https://shopify.github.io/liquid/) erstellen, einer Open Source-Vorlagensprache für flexible Web-Apps, um erweiterte JSON-Transformationen durchzuführen. Mit Liquid-Vorlagen können Sie definieren, wie JSON-Ausgaben umgewandelt werden. Dazu unterstützt Liquid komplexere JSON-Transformationen wie Iterationen, Ablaufsteuerungen, Variablen usw. unterstützen kann. 
+Sie können grundlegende JSON-Transformationen in Ihren Logik-Apps über native Datenvorgangsaktionen wie **JSON erstellen** oder **JSON analysieren** durchführen. Sie können Vorlagen oder Zuordnungen mit [Liquid](https://shopify.github.io/liquid/) erstellen, einer Open Source-Vorlagensprache für flexible Web-Apps, um erweiterte JSON-Transformationen durchzuführen. Eine Liquid-Vorlagen definiert, wie JSON-Ausgaben umgewandelt werden. Dazu unterstützt Liquid komplexere JSON-Transformationen wie Iterationen, Ablaufsteuerungen, Variablen usw. unterstützen kann. 
 
-Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müssen Sie daher zunächst eine JSON-zu-JSON-Zuordnung mit dieser Liquid-Vorlage definieren und die Zuordnung in Ihrem Integrationskonto speichern. Dieser Artikel zeigt, wie diese Liquid-Vorlage bzw. -Zuordnung erstellt und verwendet wird. 
+Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müssen Sie daher zunächst eine JSON-zu-JSON-Zuordnung mit einer Liquid-Vorlage definieren und die Zuordnung in Ihrem Integrationskonto speichern. Dieser Artikel zeigt, wie diese Liquid-Vorlage bzw. -Zuordnung erstellt und verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,8 +34,10 @@ Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müs
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Erstellen einer Liquid-Vorlage oder -Zuordnung für Ihr Integrationskonto
 
-1. Erstellen Sie für dieses Beispiel die Liquid-Beispielvorlage, die in diesem Schritt beschrieben wird.
-Wenn Sie Filter in Ihrer Liquid-Vorlage verwenden möchten, stellen Sie sicher, dass diese mit Großbuchstaben beginnen. Erfahren Sie mehr über [Liquid-Filter](https://shopify.github.io/liquid/basics/introduction/#filters), die [DotLiquid](https://dotliquidmarkup.org/)- und C#-Benennungskonventionen verwenden.
+1. Erstellen Sie für dieses Beispiel die Liquid-Beispielvorlage, die in diesem Schritt beschrieben wird. In Ihrer Liquid-Vorlage können Sie [Liquid-Filter](https://shopify.github.io/liquid/basics/introduction/#filters) einsetzen, die [DotLiquid](https://dotliquidmarkup.org/)- und C#-Benennungskonventionen verwenden. 
+
+   > [!NOTE]
+   > Stellen Sie sicher, dass die Filternamen die *normale Groß-/Kleinschreibung* in Ihrer Vorlage verwenden. Andernfalls funktionieren die Filter nicht.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -82,7 +83,8 @@ Wenn Sie Filter in Ihrer Liquid-Vorlage verwenden möchten, stellen Sie sicher, 
 
 2. Fügen Sie Ihrer Logik-App im Logik-App-Designer den [Anforderungstrigger](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) hinzu.
 
-3. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus. Geben Sie in das Suchfeld „Liquid“ als Filter ein, und wählen Sie die folgende Aktion aus: **Liquid – Von JSON in JSON transformieren**
+3. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus. 
+   Geben Sie in das Suchfeld „Liquid“ als Filter ein, und wählen Sie die folgende Aktion aus: **Liquid – Von JSON in JSON transformieren**
 
    ![Suchen und Auswählen von Liquid-Aktionen](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -101,7 +103,7 @@ Wenn Sie Filter in Ihrer Liquid-Vorlage verwenden möchten, stellen Sie sicher, 
 
    2. Wählen Sie in der Liste **Wählen Sie ein Integrationskonto aus** Ihr Integrationskonto aus, und wählen Sie dann **Speichern** aus.
 
-     ![Verknüpfen der Logik-App mit dem Integrationskonto](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![Verknüpfen der Logik-App mit dem Integrationskonto](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>Testen Ihrer Logik-App
 

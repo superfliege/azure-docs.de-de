@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268275"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993865"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einem virtuellen Linux-Computer
 
@@ -33,7 +33,7 @@ DPDK kann auf Azure-VMs ausgeführt werden, die mehrere Betriebssystemverteilung
 
 ## <a name="benefit"></a>Vorteil
 
-**Mehr Pakete pro Sekunde:** Das Umgehen des Kernels und das Steuern der Pakete auf Benutzerseite verringern die Zyklen, indem auf Kontextwechsel verzichtet wird. Zudem wird die Rate der pro Sekunde verarbeiteten Pakete auf Linux-VMs in Azure verbessert.
+**Mehr Pakete pro Sekunde (pps)**: Das Umgehen des Kernels und das Steuern der Pakete auf Benutzerseite verringern die Zyklen, da keine Kontextwechsel notwendig sind. Zudem wird die Rate der pro Sekunde verarbeiteten Pakete auf Linux-VMs in Azure verbessert.
 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
@@ -126,12 +126,12 @@ Führen Sie nach einem Neustart die folgenden Befehle einmalig aus:
      /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   *  Erstellen Sie ein Verzeichnis für die Bereitstellung mit `mkdir /mnt/huge`.
-   *  Stellen Sie umfangreiche Seiten mit `mount -t hugetlbfs nodev /mnt/huge` bereit.
-   *  Vergewissern Sie sich mit `grep Huge /proc/meminfo`, dass umfangreiche Seiten reserviert sind.
+   * Erstellen Sie ein Verzeichnis für die Bereitstellung mit `mkdir /mnt/huge`.
+   * Stellen Sie umfangreiche Seiten mit `mount -t hugetlbfs nodev /mnt/huge` bereit.
+   * Vergewissern Sie sich mit `grep Huge /proc/meminfo`, dass umfangreiche Seiten reserviert sind.
 
      > [!NOTE]
-     > Sie können die GRUB-Datei so ändern, dass umfangreiche Seiten beim Starten reserviert werden. Befolgen Sie dazu die [Anweisungen](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) für DPDK. Die Anweisungen befinden sich unten auf der Seite. Wenn Sie eine Linux-VM in Azure verwenden, ändern Sie Dateien stattdessen unter **/etc/config/grub.d**, um umfangreiche Seiten über Neustarts hinweg zu reservieren.
+     > Sie können die GRUB-Datei so ändern, dass umfangreiche Seiten beim Starten reserviert werden. Befolgen Sie dazu die [Anweisungen](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) für DPDK. Die Anweisungen befinden sich unten auf der Seite. Wenn Sie eine Linux-VM in Azure verwenden, ändern Sie Dateien stattdessen unter **/etc/config/grub.d**, um umfangreiche Seiten über Neustarts hinweg zu reservieren.
 
 2. MAC- und IP-Adressen: Verwenden Sie `ifconfig –a`, um die MAC- und IP-Adresse der Netzwerkschnittstellen anzuzeigen. Die *VF*-Netzwerkschnittstelle und die *NETVSC*-Netzwerkschnittstelle haben dieselbe MAC-Adresse, allerdings hat nur die *NETVSC*-Netzwerkschnittstelle eine IP-Adresse. VF-Schnittstellen werden als untergeordnete Schnittstellen von NETVSC-Schnittstellen ausgeführt.
 
@@ -146,13 +146,13 @@ Führen Sie nach einem Neustart die folgenden Befehle einmalig aus:
 
 DPDK-Anwendungen müssen über den ausfallsicheren PMD ausgeführt werden, der in Azure verfügbar gemacht wird. Wenn die Anwendung direkt über den VF-PMD ausgeführt wird, empfängt sie nicht **alle** Pakete, die an die VM gerichtet sind, da einige Pakete über die synthetische Schnittstelle angezeigt werden. 
 
-Wenn Sie eine DPDK-Anwendung über den Failsafe-PMD ausführen, ist garantiert, dass die Anwendung alle Pakete empfängt, die für sie bestimmt sind. Es wird außerdem sichergestellt, dass die Anwendung weiterhin im DPDK-Modus ausgeführt wird, auch wenn VF während der Wartung des Hosts aufgehoben wird. Weitere Informationen zu ausfallsicherem PMD finden Sie unter [Fail-safe poll mode driver library](http://doc.dpdk.org/guides/nics/fail_safe.html) (Ausfallsicherheits-PMD-Bibliothek).
+Wenn Sie eine DPDK-Anwendung über den Failsafe-PMD ausführen, ist garantiert, dass die Anwendung alle Pakete empfängt, die für sie bestimmt sind. Es wird außerdem sichergestellt, dass die Anwendung weiterhin im DPDK-Modus ausgeführt wird, auch wenn VF während der Wartung des Hosts aufgehoben wird. Weitere Informationen zu ausfallsicherem PMD finden Sie unter [Fail-safe poll mode driver library](https://doc.dpdk.org/guides/nics/fail_safe.html) (Ausfallsicherheits-PMD-Bibliothek).
 
 ## <a name="run-testpmd"></a>Ausführen von testpmd
 
 Verwenden Sie `sudo` vor dem Befehl *testpmd*, um testpmd im root-Modus auszuführen.
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Standard: Integritätsprüfung, Initialisierung des Ausfallsicherheitsadapters
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Basic: Integritätsprüfung, Initialisierung des Ausfallsicherheitsadapters
 
 1. Führen Sie die folgenden Befehle aus, um eine testpmd-Anwendung mit einem einzigen Port zu starten:
 
@@ -180,7 +180,7 @@ Verwenden Sie `sudo` vor dem Befehl *testpmd*, um testpmd im root-Modus auszufü
 
 Die vorherigen Befehle starten *testpmd* im interaktiven Modus. Dies wird empfohlen, um einige testpmd-Befehle zu testen.
 
-### <a name="basic-single-sendersingle-receiver"></a>Standard: ein Absender/ein Empfänger
+### <a name="basic-single-sendersingle-receiver"></a>Basic: einzelner Absender/einzelner Empfänger
 
 Mit den folgenden Befehlen werden Pakete in einem regelmäßigen Sekundentakt gedruckt:
 
@@ -214,9 +214,9 @@ Mit den folgenden Befehlen werden Pakete in einem regelmäßigen Sekundentakt ge
      --stats-period <display interval in seconds>
    ```
 
-Wenn Sie die vorherigen Befehle auf einer VM ausführen, ändern Sie *IP_SRC_ADDR* und *IP_DST_ADDR* in `app/test-pmd/txonly.c` entsprechend der tatsächlichen IP-Adresse der VM, bevor Sie kompilieren. Andernfalls werden die Pakete gelöscht, bevor sie den Empfänger erreichen.
+Wenn Sie die vorherigen Befehle auf einer VM ausführen, ändern Sie *IP_SRC_ADDR* und *IP_DST_ADDR* in `app/test-pmd/txonly.c` vor dem Kompilieren entsprechend der tatsächlichen IP-Adresse der VM. Andernfalls werden die Pakete gelöscht, bevor sie den Empfänger erreichen.
 
-### <a name="advanced-single-sendersingle-forwarder"></a>Erweitert: ein Absender/eine Weiterleitung
+### <a name="advanced-single-sendersingle-forwarder"></a>Erweitert: einzelner Absender/einzelne Weiterleitung
 Mit den folgenden Befehlen werden Pakete in einem regelmäßigen Sekundentakt gedruckt:
 
 1. Führen Sie auf Absenderseite den folgenden Befehl aus:

@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 1165df272ef75aa6c64fe8c987b580cbf99781ce
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5c26fd3d6c2593217aef8588e2a58377a86412ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010844"
 ---
 # <a name="virtual-machine-prerequisites"></a>Voraussetzungen für virtuelle Computer
 
-Dieser Artikel enthält Informationen zu den technischen und geschäftlichen Anforderungen, die erfüllt sein müssen, um ein VM-Angebot im Azure Marketplace veröffentlichen zu können.
+Dieser Artikel enthält Informationen zu den technischen und geschäftlichen Anforderungen, die erfüllt sein müssen, um ein VM-Angebot im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) veröffentlichen zu können.  Lesen Sie den [Leitfaden für die Veröffentlichung von VM-Angeboten](../../marketplace-virtual-machines.md), falls Sie dies nicht bereits getan haben.
 
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
@@ -49,11 +49,15 @@ Die geschäftlichen Anforderungen umfassen verfahrenstechnische, vertragliche un
     > Sie sollten das gleiche Microsoft Developer Center-Registrierungskonto für die Anmeldung beim [Cloud-Partnerportal](https://cloudpartner.azure.com) verwenden.
     > Sie sollten für Ihre Azure Marketplace-Angebote nur ein Microsoft-Konto verwenden. Es sollte nicht für einzelne Dienste oder Angebote spezifisch sein.
     
-* Der Standort Ihres Unternehmens (oder der Niederlassung) muss sich in einem vom Azure Marketplace unterstützten Verkäuferland befinden.  Eine aktuelle Länderliste finden Sie in den [Teilnahmerichtlinien für Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
-* Ihr Produkt muss auf eine Weise lizenziert sein, die mit den vom Azure Marketplace unterstützten Abrechnungsmodellen kompatibel ist.  Weitere Informationen finden Sie unter [Abrechnungsoptionen im Azure Marketplace](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace). 
-* Sie sind verantwortlich für das Zur-Verfügung-Stellen von technischem Support für Kunden in einer wirtschaftlich vertretbaren Weise. Der Support kann kostenlos, kostenpflichtig oder communitybasiert sein.
-* Sie sind verantwortlich für die Lizenzierung Ihrer Software und sämtlicher Abhängigkeiten von Drittanbietersoftware.
-* Sie müssen Inhalte bereitstellen, die die notwendigen Kriterien erfüllen, damit Ihr Angebot im Azure Marketplace und im Azure-Portal aufgelistet wird. <!-- TD: Meaning/links? -->
-* Sie müssen den Bedingungen der [Teilnahmerichtlinien für Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) und der Herausgebervereinbarung zustimmen.
-* Sie müssen sich an die [Nutzungsbedingungen für die Microsoft Azure-Website](https://azure.microsoft.com/support/legal/website-terms-of-use/), an die [Datenschutzerklärung von Microsoft](https://privacy.microsoft.com/privacystatement) und an die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) halten.
+- Der Standort Ihres Unternehmens (oder der Niederlassung) muss sich in einem vom Azure Marketplace unterstützten Verkäuferland befinden.  Eine aktuelle Länderliste finden Sie in den [Teilnahmerichtlinien für Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+- Ihr Produkt muss auf eine Weise lizenziert sein, die mit den vom Azure Marketplace unterstützten Abrechnungsmodellen kompatibel ist.  Weitere Informationen finden Sie unter [Abrechnungsoptionen im Azure Marketplace](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace). 
+- Sie sind verantwortlich für das Zur-Verfügung-Stellen von technischem Support für Kunden in einer wirtschaftlich vertretbaren Weise. Der Support kann kostenlos, kostenpflichtig oder communitybasiert sein.
+- Sie sind verantwortlich für die Lizenzierung Ihrer Software und sämtlicher Abhängigkeiten von Drittanbietersoftware.
+- Sie müssen Inhalte bereitstellen, die die notwendigen Kriterien erfüllen, damit Ihr Angebot im Azure Marketplace und im Azure-Portal aufgelistet wird. <!-- TD: Meaning/links? -->
+- Sie müssen den Bedingungen der [Teilnahmerichtlinien für Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) und der Herausgebervereinbarung zustimmen.
+- Sie müssen sich die [Nutzungsbedingungen für die Microsoft Azure-Website](https://azure.microsoft.com/support/legal/website-terms-of-use/), die [Datenschutzerklärung von Microsoft](https://privacy.microsoft.com/privacystatement) und die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) einhalten.
 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Wenn diese Voraussetzungen erfüllt sind, können Sie Ihr [VM-Angebot erstellen](./cpp-create-offer.md).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: terrylan
-ms.openlocfilehash: e845adc3aad21e62009ee9b99dbd65bcff794bd9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117798"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404806"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -85,7 +85,7 @@ Prinzipien und Muster für den Netzwerkbereich sind bereits seit Jahrzehnten ver
 Mit der nachfolgenden bewährten Methode können Sie den identitätsorientierten Sicherheitsbereich verwalten.
 
 **Bewährte Methode**: Schützen Sie Ihre Schlüssel und Anmeldeinformationen, um Ihre PaaS-Bereitstellung zu schützen.   
-**Detail**: Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Sie können eine zentrale Lösung verwenden, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen gespeichert werden. Azure bietet mit [Azure Key Vault](../key-vault/key-vault-whatis.md) ein HSM in der Cloud.
+**Detail**: Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Sie können eine zentrale Lösung verwenden, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. [Azure Key Vault](../key-vault/key-vault-whatis.md) schützt Ihre Schlüssel und Geheimnisse durch Verschlüsseln von Authentifizierungsschlüsseln, Schlüsseln für Speicherkonten, Datenverschlüsselungsschlüsseln, PFX-Dateien und Kennwörtern durch Verwendung von Schlüsseln, die durch HSMs geschützt sind.
 
 **Bewährte Methode**: Speichern Sie Anmeldeinformationen und andere Geheimnisse nicht im Quellcode oder in GitHub.   
 **Detail**: Noch schlimmer als der Verlust von Schlüsseln und Anmeldeinformationen ist es, wenn nicht autorisierte Personen an Ihre Schlüssel und Anmeldeinformationen gelangen. Angreifer können mithilfe von Bottechnologien Coderepositorys wie GitHub nach darin gespeicherten Schlüsseln und Geheimnissen durchsuchen. Speichern Sie daher keine Schlüssel oder Geheimnisse in diesen öffentlichen Coderepositorys.
@@ -153,7 +153,7 @@ Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannt
 
 Verwenden Sie [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights), um die Verfügbarkeit, Leistung und Nutzung Ihrer in der Cloud oder lokal gehosteten Anwendung zu überwachen. Durch Verwendung von Application Insights können Sie Fehler in Ihrer Anwendung schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese Fehler von Benutzern gemeldet werden. Mit den gesammelten Informationen können Sie fundierte Entscheidungen zu Wartung und Verbesserung Ihrer Anwendung vornehmen.
 
-Application Insights verfügt über umfassende Tools für die Interaktion mit den gesammelten Daten. Application Insights speichert die Daten in einem gemeinsamen Repository. Sie können gemeinsame Funktionen wie Warnungen, Dashboards und umfassende Analysen mit der Log Analytics-Abfragesprache nutzen.
+Application Insights verfügt über umfassende Tools für die Interaktion mit den gesammelten Daten. Application Insights speichert die Daten in einem gemeinsamen Repository. Sie können gemeinsame Funktionen wie Warnungen, Dashboards und umfassende Analysen mit der Kusto-Abfragesprache nutzen.
 
 
 

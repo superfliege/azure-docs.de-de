@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080453"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus mit Bereichen in Azure Logic Apps
 
@@ -54,7 +54,7 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
 1. Melden Sie sich beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an, falls Sie dies noch nicht getan haben. Erstellen einer leeren Logik-App
 
-1. Fügen Sie den Auslöser **Zeitplan: Wiederholung** mit diesen Einstellungen hinzu: **Intervall** = „1“ und **Häufigkeit** = „Minute“
+1. Fügen Sie den Auslöser **Zeitplan – Wiederholung** mit folgenden Einstellungen hinzu: **Intervall** = "1" und **Häufigkeit** = "Minute"
 
    ![Einrichten des Auslösers „Zeitplan: Wiederholung“](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -83,15 +83,16 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
       | **Wegpunkt 2** | <*Ende*> | Geben Sie das Ziel Ihrer Route ein. | 
       | **Vermeiden** | Keine | Geben Sie Elemente ein, die auf der Route vermieden werden sollen, etwa Autobahnen, Mautgebühren usw. Mögliche Werte finden Sie im Artikel zum [Berechnen einer Route](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimieren** | timeWithTraffic | Wählen Sie einen Parameter zur Optimierung der Route aus, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. In diesem Beispiel wird der „timeWithTraffic“ verwendet. | 
-      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel werden Meilen verwendet. | 
+      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: "Mile" | 
       | **Travel mode** (Reisemodus) | Driving (Auto) | Geben Sie das Fortbewegungsmittel für die Route ein. In diesem Beispiel wird „Driving“ (Auto) verwendet. | 
       | **Transit Date-Time** (Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
       | **Transit Date-Time Type** (Typ für Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
       ||||  
 
-1. [Fügen Sie eine Bedingung hinzu](../logic-apps/logic-apps-control-flow-conditional-statement.md), die überprüft, ob die aktuelle Reisezeit mit Verkehr eine angegebene Zeit überschreitet. Führen Sie für dieses Beispiel die folgenden Schritte aus:
+1. [Fügen Sie eine Bedingung hinzu](../logic-apps/logic-apps-control-flow-conditional-statement.md), die überprüft, ob die aktuelle Reisezeit mit Verkehr eine angegebene Zeit überschreitet. 
+   Führen Sie für dieses Beispiel die folgenden Schritte aus:
 
-   1. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn Verkehrszeit die angegebene Zeit überschreitet**
+   1. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn die Verkehrszeit die angegebene Zeit überschreitet**
 
    1. Klicken Sie in der linken Spalte in das Feld **Wert auswählen**, damit die dynamische Inhaltsliste angezeigt wird. Wählen Sie in der Liste das Feld **Travel Duration Traffic** (Reisedauer (Verkehr)) aus, das in Sekunden angegeben wird. 
 
@@ -105,7 +106,8 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
       ![Abgeschlossene Bedingung](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. Im Branch **If true** (Bei „true“) fügen Sie eine Aktion zum Senden einer E-Mail für Ihren E-Mail-Anbieter hinzu. Richten Sie diese Aktion ein, indem Sie den Schritten unter dieser Abbildung folgen:
+1. Im Branch **If true** (Bei „true“) fügen Sie eine Aktion zum Senden einer E-Mail für Ihren E-Mail-Anbieter hinzu. 
+   Richten Sie diese Aktion ein, indem Sie den Schritten unter dieser Abbildung folgen:
 
    ![Hinzufügen der Aktion „Senden einer E-Mail“ zur Verzweigung „If true“ (Bei „true“)](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
@@ -124,7 +126,7 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
    1. Wenn die Liste mit den dynamischen Inhalten erscheint, wählen Sie **Ausdruck** aus.
 
    1. Suchen Sie die Funktion **div()**, und wählen Sie sie aus. 
-   Setzen Sie den Cursor zwischen die Klammern der Funktion.
+      Setzen Sie den Cursor zwischen die Klammern der Funktion.
 
    1. Während sich der Cursor innerhalb der Klammern der befindet, wählen Sie **Dynamischer Inhalt** aus, damit die dynamische Inhaltsliste angezeigt wird. 
    
@@ -144,11 +146,11 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
    1. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-  1. Nachdem der Ausdruck aufgelöst wurde, fügen Sie diesen Text mit einem vorangestellten Leerzeichen hinzu: ``` minutes```
+   1. Nachdem der Ausdruck aufgelöst wurde, fügen Sie diesen Text mit einem vorangestellten Leerzeichen hinzu: ``` minutes```
   
-     Nun sieht Ihr **Textfeld** wie in diesem Beispiel aus:
+       Nun sieht Ihr **Textfeld** wie in diesem Beispiel aus:
 
-     ![Fertiggestelltes Feld „Text“](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![Fertiggestelltes Feld „Text“](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
 1. Speichern Sie Ihre Logik-App.
 
@@ -179,7 +181,7 @@ Fügen Sie als nächstes einen Bereich hinzu, damit Sie bestimmte Aktionen grupp
 
    ![Bereich hinzugefügt](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. Fügen Sie unter dem Bereich eine Bedingung hinzu, die den Status des Bereichs prüft. Benennen Sie die Bedingung mit dieser Beschreibung um: **If scope failed** (Bei fehlerhaftem Bereich)
+1. Fügen Sie unter dem Bereich eine Bedingung hinzu, die den Status des Bereichs prüft. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn im Bereich ein Fehler auftritt**
 
    ![Hinzufügen einer Bedingung zum Überprüfen des Bereichsstatus](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   

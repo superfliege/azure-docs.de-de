@@ -4,7 +4,7 @@ description: Bewährte Methoden für die Planung und Skalierung von Service Fabr
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: jeanpaul.connock
+manager: chackdan
 editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9de6cc224c82bb07fee4d62cd5de1d1964001bab
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 425154958e4c60902b56f320f714a011b9095830
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997344"
 ---
 # <a name="capacity-planning-and-scaling"></a>Kapazitätsplanung und Skalierung
 
@@ -40,7 +40,7 @@ Skalierungsvorgänge sollten über die Bereitstellung von Azure Resource Manager
 
 ## <a name="vertical-scaling-considerations"></a>Überlegungen zur vertikalen Skalierung
 
-Die [vertikale Skalierung](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out#upgrade-the-size-and-operating-system-of-the-primary-node-type-vms) eines Knotentyps in Azure Service Fabric erfordert mehrere Schritte und Überlegungen. Beispiel: 
+Die [vertikale Skalierung](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out) eines Knotentyps in Azure Service Fabric erfordert mehrere Schritte und Überlegungen. Beispiel: 
 * Der Cluster muss vor der Skalierung fehlerfrei sein. Andernfalls wird der Cluster nur weiter destabilisiert.
 * Für alle Knotentypen des Service Fabric-Clusters, die zustandsbehaftete Dienste hosten, ist die **Dauerhaftigkeitsstufe „Silber“ oder höher** erforderlich.
 
@@ -159,6 +159,13 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 
 scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
+
+> [!NOTE]
+> Wenn Sie einen Cluster herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz im Service Fabric Explorer in einem fehlerhaften Zustand angezeigt. Eine Erklärung dieses Verhaltens finden Sie unter [Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer).
+> 
+> Ihre Möglichkeiten:
+> * Rufen Sie den Befehl [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) mit dem entsprechenden Knotennamen auf.
+> * Stellen Sie in Ihrem Cluster eine [service-fabric-autoscale-helper-Anwendung](https://github.com/Azure/service-fabric-autoscale-helper/) bereit, die sicherstellt, dass herunterskalierte Knoten aus dem Service Fabric Explorer gelöscht werden.
 
 ## <a name="reliability-levels"></a>Zuverlässigkeitsstufen
 

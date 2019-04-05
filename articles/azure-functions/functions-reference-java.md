@@ -11,22 +11,26 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 429c7c266357b4808ab3ebbb7f346cf22d9f479c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855389"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096723"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
-[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
+Die Azure Functions-Runtime unterstützt [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/).
+
+Dieser Leitfaden enthält Informationen zu den Feinheiten beim Schreiben von Azure Functions mit Java.
+
+Eine Java-Funktion ist eine `public`-Methode, die mit Anmerkungen der Form `@FunctionName` versehen ist. Diese Methode definiert die Eingabe für eine Java-Funktion und muss in jedem Paket eindeutig sein. 
+
+In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Es empfiehlt sich zudem, die Schnellstartanleitung zu Functions zu lesen, um Ihre erste Funktion mit [Visual Studio Code](functions-create-first-function-vs-code.md) oder [Maven](functions-create-first-java-maven.md) zu erstellen.
 
 ## <a name="programming-model"></a>Programmiermodell 
 
 Die Konzepte von [Triggern und Bindungen](functions-triggers-bindings.md) sind für Azure Functions von grundlegender Bedeutung. Trigger starten die Ausführung Ihres Codes. Bindungen bieten Ihnen eine Möglichkeit, Daten an eine Funktion zu übergeben und von einer Funktion zurückgeben zu lassen, ohne benutzerdefinierten Datenzugriffscode schreiben zu müssen.
-
-Eine Funktion muss eine zustandslose Methode zum Verarbeiten der Eingabe und zum Generieren der Ausgabe sein. Die Funktion darf nicht von Instanzfeldern der Klasse abhängig sein. Alle Funktionsmethoden müssen `public` sein, und die Methode mit der Anmerkung @FunctionName muss eindeutig sein, weil der Methodenname den Eintrag für eine Funktion definiert.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -387,6 +391,6 @@ Weitere Informationen zur Java-Entwicklung für Azure Functions finden Sie in de
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
-- Lokale Entwicklung und Debuggen mit [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) und [Eclipse](functions-create-maven-eclipse.md). 
+* Lokale Entwicklung und Debuggen mit [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) und [Eclipse](functions-create-maven-eclipse.md). 
 * [Remote Debug Java Azure Functions with Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) (Remotedebuggen von Java Azure Functions mit Visual Studio Code)
 * [Maven-Plug-In für Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md): Optimieren der Erstellung von Funktionen mithilfe des Ziels `azure-functions:add` und Vorbereiten eines Stagingverzeichnisses für die [Bereitstellung von ZIP-Dateien](deployment-zip-push.md).

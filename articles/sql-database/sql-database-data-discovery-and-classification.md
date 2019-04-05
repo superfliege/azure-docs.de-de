@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892880"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202978"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL-Datenbank: Datenermittlung und -klassifizierung
 
@@ -144,7 +144,14 @@ Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu
 - [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) löscht die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
 - [Abrufen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab.
 - [Aktuelle nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) listet die derzeitigen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
-- [Empfohlene nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) listet die derzeitigen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
+- [Empfohlene nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) listet die empfohlenen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
+
+## <a name="permissions"></a>Berechtigungen
+Die folgenden integrierten Rollen können die Datenklassifizierung einer Azure SQL-Datenbank lesen: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` und `User Access Administrator`.
+
+Die folgenden integrierten Rollen können die Datenklassifizierung einer Azure SQL-Datenbank ändern: `Owner`, `Contributor`, `SQL Security Manager`.
+
+Weitere Informationen zu [RBAC für Azure Resources](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a id="subheading-5"></a>Nächste Schritte
 
