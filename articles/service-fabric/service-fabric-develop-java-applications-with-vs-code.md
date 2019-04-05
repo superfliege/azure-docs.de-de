@@ -3,8 +3,8 @@ title: Entwickeln von Java Azure Service Fabric-Anwendungen mit Visual Studio Co
 description: In diesem Artikel wird das Erstellen, Bereitstellen und Debuggen von Java Service Fabric-Anwendungen mit Visual Studio Code beschrieben.
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 9e5a2138de7e2c0e892bd0efeb0db1e2aee87422
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pepogors
+ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014691"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667751"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -127,7 +127,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen:
    
    ![Trennen vom Debugger](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. Wenn Sie das Debuggen abgeschlossen haben, können Sie den Befehl **Service Fabric: Anwendung entfernen** verwenden, um die Voting-Anwendung aus Ihrem lokalen Cluster zu entfernen. 
+5. Wenn Sie das Debuggen abgeschlossen haben, können Sie die CounterService-Anwendung mit dem Befehl **Service Fabric: Anwendung entfernen** verwenden, um die Voting-Anwendung aus Ihrem lokalen Cluster zu entfernen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895172"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847801"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 
@@ -25,7 +25,7 @@ ms.locfileid: "57895172"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 - Sie müssen über ein Azure-Abonnement verfügen und ein Administrator für dieses Abonnement sein.
 - Azure PowerShell muss installiert sein und ausgeführt werden. 
@@ -87,7 +87,7 @@ In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. Löschen Sie den kompromittierten Schlüssel mithilfe des Cmdlets [Remove-AzKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) aus Key Vault. 
+5. Löschen Sie den kompromittierten Schlüssel mithilfe des Cmdlets [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) aus Key Vault. 
 
    ```powershell
    Remove-AzKeyVaultKey `

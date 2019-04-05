@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 908422927feabd156c5dcdc7a04d44ff8fc42094
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a592dc150d535df775a62c157f76f327b54240fd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442876"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496087"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -54,7 +54,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | Abonnement-ID |#subscriptionid |ID Ihres Azure-Abonnements, das für Application Insights verwendet wird 
 
 > [!NOTE]
-> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2.000 Zeichen. In Warnungen bereitgestellte Links werden *nicht* geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](https://dev.loganalytics.io/reference) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
+> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2.000 Zeichen. In Warnungen bereitgestellte Links werden *nicht* geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](/rest/api/loganalytics/) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
 
 Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält.  Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter.
 

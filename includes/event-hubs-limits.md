@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: cd64bdabc2b7b34687296c855c27882925d80f63
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6b54027adcf2b12c6ca4081a11208a31f620e8
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124386"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919240"
 ---
 In der folgenden Tabelle sind die Kontingente und Grenzwerte aufgelistet, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Begrenzung | Bereich | Notizen | Wert |
 | --- | --- | --- | --- |
-| Anzahl von Event Hubs-Namespaces pro Abonnement |Abonnement |- |1.000 |
+| Anzahl von Event Hubs-Namespaces pro Abonnement |Abonnement |- |100 |
 | Anzahl von Event Hubs pro Namespace |Namespace |Nachfolgende Anforderungen für die Erstellung eines neuen Event Hub werden zurückgewiesen. |10 |
 | Anzahl von Partitionen pro Event Hub |Entität |- |32 |
 | Anzahl von Consumergruppen pro Event Hub |Entität |- |20 |

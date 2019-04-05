@@ -3,7 +3,7 @@ title: Suchen von Benutzeraktivitätsberichten von Azure Active Directory im Azu
 description: Erfahren Sie, wo sich die Azure Active Directory-Benutzeraktivitätsberichte im Azure-Portal befinden.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295214"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439038"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 

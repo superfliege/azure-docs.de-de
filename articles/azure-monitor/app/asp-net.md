@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 358ca13548f0215fabee949c5fa3dee64beb2d6d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996959"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437815"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -124,6 +124,10 @@ Die Azure-Ressource, die die Telemetriedaten Ihrer App erhält, wird durch einen
 Zur Durchführung eines Upgrades auf eine [neue Version des SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases) öffnen Sie den **NuGet-Paket-Manager** und filtern die Ansicht nach installierten Paketen. Wählen Sie **Microsoft.ApplicationInsights.Web** und dann **Upgrade** aus.
 
 Wenn Sie Anpassungen an „ApplicationInsights.config“ vorgenommen haben, sollten Sie diese vor dem Upgrade speichern. Übernehmen Sie Ihre Änderungen anschließend für die neue Version.
+
+## <a name="video"></a>Video
+
+* Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit einer .NET-Anwendung von Grund auf](https://www.youtube.com/watch?v=blnGAVgMAfA)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,7 +4,7 @@ description: Übersicht über die Anwendungsgruppenfunktionalität im Clusterres
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 94ae233f8591c43afa1bb73c3e17964922967d36
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123027"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670633"
 ---
 # <a name="introduction-to-application-groups"></a>Einführung in Anwendungsgruppen
 Der Clusterressourcen-Manager von Service Fabric verwaltet die Clusterressourcen in der Regel durch gleichmäßiges Verteilen der Last (durch [Metriken](service-fabric-cluster-resource-manager-metrics.md) dargestellt) über den gesamten Cluster. Service Fabric verwaltet die Kapazität der Knoten im Cluster und den Cluster als Ganzes über [Kapazität](service-fabric-cluster-resource-manager-cluster-description.md). Metriken und Kapazität funktionieren hervorragend für eine Vielzahl von Workloads, aber die Muster, die intensiven Gebrauch von anderen Service Fabric-Anwendungsinstanzen machen, bringen manchmal zusätzliche Anforderungen ein. Dazu zählen beispielsweise:

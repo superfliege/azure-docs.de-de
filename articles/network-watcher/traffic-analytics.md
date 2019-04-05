@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081065"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805056"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -64,6 +64,7 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 * USA (Mitte)
 * USA (Westen)
 * USA, Westen 2
+* Frankreich, Mitte
 * Europa, Westen
 * Nordeuropa
 * Brasilien Süd
@@ -71,20 +72,26 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 * UK, Süden
 * Australien (Osten)
 * Australien, Südosten
+* Asien, Osten
 * Asien, Südosten
+* Korea, Mitte
 * Indien, Mitte
 * Indien (Süden)
 * Japan, Osten 
+* Japan, Westen
 * US Government, Virginia
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 * Kanada, Mitte
 * USA, Westen-Mitte
+* USA, Westen 2
 * USA (Ost)
+* Frankreich, Mitte
 * Europa, Westen
 * UK, Süden
 * Australien, Südosten
 * Asien, Südosten
+* Korea, Mitte
 * Indien, Mitte
 * Japan, Osten
 * US Government, Virginia

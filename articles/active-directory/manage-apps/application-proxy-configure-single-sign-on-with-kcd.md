@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286583"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652517"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -82,7 +82,7 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 2. Wenn Ihre Anwendung in der Liste der Unternehmensanwendungen angezeigt wird, wählen Sie sie aus, und klicken auf **Einmaliges Anmelden**.
 3. Legen Sie den Modus für einmaliges Anmelden auf **Integrierte Windows-Authentifizierung** fest.  
 4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für unsere veröffentlichte Anwendung http//www.contoso.com. Dieser SPN muss sich in der Liste mit Diensten befinden, an die der Connector delegierte Anmeldeinformationen ausgeben kann. 
-5. Wählen Sie die **delegierte Identität für die Anmeldung** für den zu verwendenden Connector im Auftrag Ihrer Benutzer. Weitere Informationen finden Sie unter [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](#Working-with-different-on-premises-and-cloud-identities).
+5. Wählen Sie die **delegierte Identität für die Anmeldung** für den zu verwendenden Connector im Auftrag Ihrer Benutzer. Weitere Informationen finden Sie unter [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](#working-with-different-on-premises-and-cloud-identities).
 
    ![Erweiterte Anwendungskonfiguration](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 

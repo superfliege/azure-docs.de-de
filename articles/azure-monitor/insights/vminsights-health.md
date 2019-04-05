@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 38236cba6af46df2701bb0128fe9d78e95aa6ec7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076818"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918942"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschauversion)
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Azure Monitor verschiedene Bedingungen überwachen, die Azure Monitor-Plattform war jedoch nicht darauf ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -28,23 +28,6 @@ Die Anzeige des Integritätsgesamtstatus von Azure-VMs und des zugrundeliegenden
 Dieser Artikel soll Ihr Verständnis dafür schärfen, wie Sie erkannte Integritätsprobleme schnell bewerten, untersuchen und beheben.
 
 Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](vminsights-onboard.md) (Aktivieren von Azure Monitor for VMs).
-
-> [!NOTE]
-> Ab 11. Februar 2019 beginnen wir mit der Migration des aktuellen Integritätsmodells in der Integritätsfunktion „Azure Monitor für VMs“, das derzeit in der Integritätsdiagnose angezeigt wird, zu einer neuen Version des Integritätsmodells. Diese Aktualisierung verbessert die Leistung der Integritätsrollupverarbeitung und umfasst ein optimiertes Integritätsmodell, das in der Ansicht der Integritätsdiagnose angezeigt wird. 
-> 
-> Mit dem neuen Integritätsmodell wird der Rollup von untergeordneten Integritätskriterien zu Integritätskriterien auf übergeordneter oder Entitätsebene schneller ausgeführt und so der Integritätszustand auf übergeordneter Ebene mit geringerer Latenz auf den gewünschten oder Zielzustand aktualisiert. Im Unterschied zur bisherigen, auf Registerkarten basierenden Methode zum Auswählen einer Kategorie in der Ansicht können Sie die Integritätskriterien unter den Kategorien **Leistung** und **Verfügbarkeit** filtern.
-> 
-> Weitere Informationen zur Benutzeroberfläche der Integritätsdiagnose finden Sie im Abschnitt zur Integritätsdiagnose[in diesem Artikel](#health-diagnostics). 
-> 
-> Diese Aktualisierung bringt folgende Verbesserungen mit sich: 
-> 
-> - Integritätsrollupverarbeitung mit geringerer Latenz  
-> - Schnellere Warnungen zu Änderungen des Integritätszustands 
-> - Schnellere Aktualisierung des Integritätszustands in der aggregierten Ansicht eines virtuellen Computers für alle virtuellen Computer 
-> 
-> Es gibt keine Regression der Funktionen, die aktuell mit der Integritätsfunktion von Azure Monitor für VMs bereitgestellt werden.
-> 
-> Als Folge dieser Änderung sind zwei Benutzeroberflächen in der Integritätsdiagnose betroffen: Der Zustandsänderungsverlauf wird zurückgesetzt, und die vorherigen Zustandsänderungen für Integritätskriterien stehen in der Spalte „Zustandsänderung“ der Seite „Integritätsdiagnose“ nicht zur Überprüfung zur Verfügung. Wenn Sie die Verlaufsdaten eines unternehmenskritischen virtuellen Computers benötigen, können Sie zu Referenzzwecken einen Screenshot der Integritätskriteriendaten und der entsprechenden Zustandsänderungen erstellen. 
 
 ## <a name="monitoring-configuration-details"></a>Details der Überwachungskonfiguration
 Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integritätskriterien für die Überwachung von Azure Windows- und Linux-VMs. Alle Integritätskriterien sind so vorkonfiguriert, dass sie beim Eintreten der Fehlerbedingung eine Warnung ausgeben. 
@@ -70,7 +53,7 @@ Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integrit
 - Genutzte Bandbreite (%) gesamt
 - Genutzte Bandbreite (%) beim Schreiben
 - Verwendeter Prozentsatz des zugesicherten Speichers
-- Physischer Datenträger – Leerlaufzeit (%)
+- Datenträger – Leerlaufzeit (%)
 - Integrität des DHCP-Clientdiensts
 - Integrität des DNS-Clientdiensts
 - Integrität des RPC-Diensts
@@ -89,10 +72,7 @@ Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integrit
 - Logischer Datenträger – verfügbarer Speicherplatz (%)
 - Logischer Datenträger – freie I-Knoten (%)
 - Netzwerkadapterintegrität
-- Prozessor – DPC-Zeit (%)
-- Prozessor – Prozessorzeit (%)
 - Prozessor – Prozessorzeit gesamt
-- Prozessor – DPC-Zeit gesamt
 - Betriebssystem – verfügbare Megabyte Arbeitsspeicher
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.

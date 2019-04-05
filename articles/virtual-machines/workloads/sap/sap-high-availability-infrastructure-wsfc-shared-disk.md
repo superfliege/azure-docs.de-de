@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43e4cf27d9a57db58c0f90b269e7a52622508ee1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b729327187a52f36d50f8a754f5521527bb07ac6
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998768"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848281"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -235,15 +235,15 @@ Stellen Sie für SAP-Produktionssysteme virtuelle Azure-Computer mit einer [(sta
 2. Fügen Sie im Feld **SUBNETID** die vollständige Zeichenfolge Ihrer vorbereiteten Subnetz-ID für das Azure-Netzwerk ein, in dem Sie Ihre virtuellen Azure-Computer bereitstellen möchten.
 3. Führen Sie diesen PowerShell-Befehl aus, um eine Liste mit allen Azure-Netzwerksubnetzen abzurufen:
 
-   ```PowerShell
-   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
+   ```powershell
+   (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    Im Feld **ID** wird der Wert für die Subnetz-ID angezeigt.
 4. Führen Sie diesen PowerShell-Befehl aus, um eine Liste mit allen Subnetz-ID-Werten abzurufen:
 
-   ```PowerShell
-   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
+   ```powershell
+   (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
    Die Subnetz-ID sieht in etwa wie folgt aus:

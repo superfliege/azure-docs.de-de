@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 501555c68b7b5922bbf5a74d2a7ed5e548b900c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8a2c149faa0ec9d135713a123a33d7c220522496
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833536"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496002"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrieren vom Custom Speech Service zum Speech-Dienst
 
@@ -48,7 +48,7 @@ Migrieren Sie Ihre vorhandenen Ressourcenschlüssel zu den Sprachdiensten im Spr
 > [!NOTE]
 > Ressourcenschlüssel können nur innerhalb derselben Region migriert werden.
 
-1. Melden Sie sich im Portal [cris.ai](https://www.cris.ai) an, und wählen Sie das Abonnement im Menü rechts oben aus.
+1. Melden Sie sich im Portal [cris.ai](https://cris.ai/Home/CustomSpeech) an, und wählen Sie das Abonnement im Menü rechts oben aus.
 
 2. Wählen Sie **Migrate selected subscription** (Ausgewähltes Abonnement migrieren) aus.
 

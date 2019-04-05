@@ -69,7 +69,7 @@ für die Azure AD-Hybrideinbindung ist erforderlich, dass die Geräte innerhalb 
 - https://enterpriseregistration.windows.net
 - https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
-- https://autologon.microsoftazuread-sso.com (Wenn Sie das nahtlose einmalige Anmelden verwenden oder verwenden möchten)
+- [https://autologon.microsoftazuread-sso.com](https://autologon.microsoftazuread-sso.com) (Wenn Sie das nahtlose einmalige Anmelden verwenden oder verwenden möchten)
 
 Wenn für Ihre Organisation Internetzugriff über einen ausgehenden Proxy erforderlich ist, können Sie ab Windows 10 1709 [mithilfe eines Gruppenrichtlinienobjekts (GPO) Proxyeinstellungen auf Ihrem Computer konfigurieren](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Wenn Ihr Computer unter einem älteren Betriebssystem als Windows 10 1709 ausgeführt wird, müssen Sie den Web Proxy Auto-Discovery-Dienst (WPAD) implementieren, um Windows 10-Computer für die Geräteregistrierung bei Azure AD zu aktivieren. 
 

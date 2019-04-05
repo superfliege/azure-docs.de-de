@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ed53f9bf2e22e1d69a4e00de1e8d71291a5be46d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d61874a57801a6c02af885cab6a97ed38da1deb1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108711"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487922"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
@@ -306,13 +306,13 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität einer gespeic
 
 1. Führen Sie **Get-AzDataFactorySlice** aus, um Details zu allen Slices des Ausgabedatasets** zu erhalten. Dies ist die Ausgabetabelle der Pipeline.
 
-    ```PowerShell
+    ```powershell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Beachten Sie, dass der "StartDateTime"-Wert, den Sie hier angeben, der im JSON-Code der Pipeline angegebenen Startzeit entspricht. 
 1. Führen Sie **Get-AzDataFactoryRun** aus, um die Details der Aktivitätsausführungen für einen bestimmten Slice abzurufen.
 
-    ```PowerShell
+    ```powershell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294908"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500473"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -98,7 +98,7 @@ Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für di
 
 ### <a name="access-the-hadoop-log-files"></a>Zugreifen auf die Hadoop-Protokolldateien
 
-Für HDInsight werden die Protokolldateien sowohl im Clusterdateisystem als auch im Azure-Speicher gespeichert. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md)-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure-Speicher mit allen Tools untersuchen, mit denen auf Daten des Azure-Speichers zugegriffen und der Download dafür durchgeführt werden kann. Beispiele hierfür sind [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten in Azure Blob Storage zuzugreifen.
+Für HDInsight werden die Protokolldateien sowohl im Clusterdateisystem als auch im Azure-Speicher gespeichert. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine [SSH](hdinsight-hadoop-linux-use-ssh-unix.md)-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure-Speicher mit allen Tools untersuchen, mit denen auf Daten des Azure-Speichers zugegriffen und der Download dafür durchgeführt werden kann. Beispiele hierfür sind [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten in Azure Blob Storage zuzugreifen.
 
 Hadoop führt die Schritte der Aufträge als *Taskversuche* auf verschiedenen Knoten im Cluster aus. HDInsight kann spekulative Taskversuche initiieren und zuerst alle anderen Taskversuche beenden, die nicht erfolgreich abgeschlossen werden können. Hierbei wird eine erhebliche Zahl von Aktivitäten generiert, die nebenbei in den controller-, stderr- und syslog-Protokolldateien protokolliert werden. Außerdem werden gleichzeitig mehrere Taskversuche ausgeführt, aber eine Protokolldatei kann Ergebnisse nur linear anzeigen.
 

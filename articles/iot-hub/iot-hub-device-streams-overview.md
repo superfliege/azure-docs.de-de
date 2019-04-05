@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076274"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649635"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -101,7 +101,7 @@ Die Ausgabe ist ein JSON-Objekt aller Endpunkte, mit denen das Gerät und der Di
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Aufnehmen der Gerätestreamingendpunkte in die Whitelist
 
-Wie [zuvor](#Overview) bereits erwähnt, erstellt Ihr Gerät während des Initiierungsprozesses für Gerätestreams eine ausgehende Verbindung mit dem IoT Hub-Streamingendpunkt. Die Firewalls auf dem Gerät oder im Netzwerk müssen ausgehende Konnektivität mit dem Streaminggateway über Port 443 zulassen. (Beachten Sie, dass die Kommunikation hierbei über eine WebSocket-Verbindung erfolgt, die per TLS verschlüsselt ist.)
+Wie [zuvor](#overview) bereits erwähnt, erstellt Ihr Gerät während des Initiierungsprozesses für Gerätestreams eine ausgehende Verbindung mit dem IoT Hub-Streamingendpunkt. Die Firewalls auf dem Gerät oder im Netzwerk müssen ausgehende Konnektivität mit dem Streaminggateway über Port 443 zulassen. (Beachten Sie, dass die Kommunikation hierbei über eine WebSocket-Verbindung erfolgt, die per TLS verschlüsselt ist.)
 
 Den Hostnamen des Gerätestreamingendpunkts finden Sie im Azure IoT Hub-Portal auf der Registerkarte „Übersicht“. ![Alternativtext](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "Gerätestreamingendpunkte")
 

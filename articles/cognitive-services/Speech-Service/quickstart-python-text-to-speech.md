@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 534473ccde52af69b6dad1e84ef77da326d29d5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 087440b60e1d5fecc668849bc1350d66988b16b9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872564"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339081"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Schnellstart: Konvertieren von Text in Sprache mit Python
 
@@ -93,7 +93,7 @@ def get_token(self):
 
 An dieser Stelle werden Sie die Anfrage erstellen und die Sprachantwort speichern. Zunächst müssen Sie `base_url` und `path` festlegen. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `base_url` aktualisieren. Weitere Informationen finden Sie unter [Sprachdienstregionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Als Nächstes müssen Sie erforderliche Header für die Anforderung hinzufügen. Stellen Sie sicher, dass Sie `User-Agent` mit dem Namen Ihrer Ressourcengruppe aktualisieren (befindet sich im Azure-Portal), und `X-Microsoft-OutputFormat` auf Ihre bevorzugte Audioausgabe festlegen. Eine vollständige Liste der Ausgabeformate finden Sie unter [Audioausgaben](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs).
+Als Nächstes müssen Sie erforderliche Header für die Anforderung hinzufügen. Stellen Sie sicher, dass Sie `User-Agent` mit dem Namen Ihrer Ressourcengruppe aktualisieren (befindet sich im Azure-Portal), und `X-Microsoft-OutputFormat` auf Ihre bevorzugte Audioausgabe festlegen. Eine vollständige Liste der Ausgabeformate finden Sie unter [Audioausgaben](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 Erstellen Sie dann den Anforderungstext mithilfe der Speech Synthesis Markup Language (SSML). Dieses Beispiel definiert die Struktur und verwendet die zuvor von Ihnen erstellte `tts`-Eingabe.
 
@@ -166,6 +166,6 @@ Entfernen Sie unbedingt alle vertraulichen Informationen wie etwa Abonnementschl
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Referenz zur Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Referenz zur Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
 * [Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme](record-custom-voice-samples.md)

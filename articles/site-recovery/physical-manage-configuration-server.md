@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 325cd0d2f52405ae1cbf463f6335c8738317ea1f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088909"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878705"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -158,7 +158,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
 6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
 7. Führen Sie den folgenden Befehl aus:
 
-   ```PowerShell
+   ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
    net stop obengine
@@ -178,7 +178,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
 6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
 7. Führen Sie den folgenden Befehl aus
 
-    ```PowerShell
+    ```powershell
     $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
     net stop obengine
@@ -265,7 +265,7 @@ Aktualisieren Sie den Server wie folgt:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers (PowerShell)
 
-1. [Installieren](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) Sie das Azure PowerShell-Modul.
+1. [Installieren](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
     
     `Connect-AzureRmAccount`
@@ -274,7 +274,7 @@ Aktualisieren Sie den Server wie folgt:
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  Richten Sie jetzt den Kontext für Ihren Tresor ein.
     
-    ```PowerShell
+    ```powershell
     $Vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $Vault
     ```
@@ -283,7 +283,7 @@ Aktualisieren Sie den Server wie folgt:
     `$Fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. Löschen Sie den Konfigurationsserver.
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force] `
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
 > Die **-Force**-Option im Cmdlet „Remove-AzureRmSiteRecoveryFabric“ kann verwendet werden, um das Entfernen bzw. Löschen des Konfigurationsservers zu erzwingen.

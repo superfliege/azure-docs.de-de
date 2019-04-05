@@ -12,21 +12,21 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726956"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904354"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung zum Überwachen von Abfragen und Verbessern der Workloadleistung
 
 Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierlich Ihre Abfragen überwacht und Ihnen mitteilt, wie Sie die Leistung Ihrer Workload verbessern können. Sie können Empfehlungen prüfen und manuell anwenden oder Azure SQL-Datenbank die Maßnahmen automatisch anwenden lassen. Letzteres wird als **automatischer Optimierungsmodus** bezeichnet.
 
-Die automatische Optimierung kann über das [Azure-Portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST-API](sql-database-automatic-tuning-enable.md#rest-api)-Aufrufe und [T-SQL](sql-database-automatic-tuning-enable.md#t-sql)-Befehle auf Server- oder Datenbankebene aktiviert werden.
+Die automatische Optimierung kann über das [Azure-Portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST-API](sql-database-automatic-tuning-enable.md#rest-api)-Aufrufe und [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)-Befehle auf Server- oder Datenbankebene aktiviert werden.
 
 > [!NOTE]
-> Für die verwaltete Instanz kann die unterstützte Option FORCE_LAST_GOOD_PLAN nur über [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) konfiguriert werden. In diesem Artikel beschriebene portalbasierte Konfiguration und Optionen zur automatischen Indexoptimierung gelten nicht für die verwaltete Instanz.
+> Für die verwaltete Instanz kann die unterstützte Option FORCE_LAST_GOOD_PLAN nur über [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) konfiguriert werden. In diesem Artikel beschriebene portalbasierte Konfiguration und Optionen zur automatischen Indexoptimierung gelten nicht für die verwaltete Instanz.
 
 > [!NOTE]
 > Die Vorlage zum Konfigurieren der Optionen zur automatischen Optimierung über ARM (Azure Resource Manager) wird derzeit nicht unterstützt.

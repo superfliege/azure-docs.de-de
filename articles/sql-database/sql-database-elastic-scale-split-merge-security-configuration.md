@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593317"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651667"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 
@@ -83,17 +83,17 @@ Clientzertifikate sind erforderlich, um Anforderungen an den Dienst zu authentif
 3. [Aktualisieren des CA-Zertifikats in der Dienstkonfigurationsdatei](#update-ca-certificate-in-service-configuration-file)
 4. [Ausstellen von Clientzertifikaten](#issue-client-certificates)
 5. [Erstellen von PFX-Dateien für Clientzertifikate](#create-pfx-files-for-client-certificates)
-6. [Importieren des Clientzertifikats](#Import-Client-Certificate)
+6. [Importieren des Clientzertifikats](#import-client-certificate)
 7. [Kopieren der Clientfingerabdrücke](#copy-client-certificate-thumbprints)
 8. [Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>So verwenden Sie vorhandene Clientzertifikate
 1. [Find CA Public Key](#find-ca-public-key)
-2. [Hochladen eines CA-Zertifikats zum Clouddienst](#Upload-CA-certificate-to-cloud-service)
-3. [Aktualisieren des CA-Zertifikats in der Dienstkonfigurationsdatei](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [Kopieren der Clientfingerabdrücke](#Copy-Client-Certificate-Thumbprints)
+2. [Hochladen eines CA-Zertifikats zum Clouddienst](#upload-ca-certificate-to-cloud-service)
+3. [Aktualisieren des CA-Zertifikats in der Dienstkonfigurationsdatei](#update-ca-certificate-in-service-configuration-file)
+4. [Kopieren der Clientfingerabdrücke](#copy-client-certificate-thumbprints)
 5. [Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Konfigurieren der Sperrprüfung für Clientzertifikate](#Configure-Client-Certificate-Revocation-Check)
+6. [Konfigurieren der Sperrprüfung für Clientzertifikate](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>Zulässige IP-Adressen
 Der Zugriff auf die Dienstendpunkte kann auf bestimmte Bereiche von IP-Adressen beschränkt werden.

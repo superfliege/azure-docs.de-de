@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 31909d007727ca5b440343e3c5a035984399b77a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 89902da9668d32c28e5cc88b7e4468c0dbd0b861
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201737"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335911"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Analysieren und Verarbeiten von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
 
@@ -143,7 +143,7 @@ Die Ausgabe des Skripts in der Hive-Konsole:
 Die json_tuple-UDF verwendet die Syntax [Lateral View](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, wodurch „json\_tuple“ eine virtuelle Tabelle erstellen kann, indem die UDT-Funktion auf jede Zeile der Originaltabelle angewendet wird. Komplexe JSONs werden durch die wiederholte Verwendung von **LATERAL VIEW** zu unhandlich. Darüber hinaus kann **JSON_TUPLE** keine geschachtelten JSONs verarbeiten.
 
 ### <a name="use-a-custom-serde"></a>Verwenden eines benutzerdefinierten Serialisierungs-/Deserialisierungsprogramms (SerDe)
-SerDe ist die beste Wahl für das Analysieren von geschachtelten JSON-Dokumenten. Sie können damit das JSON-Schema definieren und dieses dann zum Analysieren des Dokuments verwenden. Anweisungen hierzu finden Sie unter [How to use a Custom JSON Serde with Microsoft Azure HDInsight (Verwenden eines benutzerdefinierten JSON-SerDe mit Microsoft Azure HDInsight)](https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+SerDe ist die beste Wahl für das Analysieren von geschachtelten JSON-Dokumenten. Sie können damit das JSON-Schema definieren und dieses dann zum Analysieren des Dokuments verwenden. Anweisungen hierzu finden Sie unter [How to use a Custom JSON Serde with Microsoft Azure HDInsight (Verwenden eines benutzerdefinierten JSON-SerDe mit Microsoft Azure HDInsight)](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
 ## <a name="summary"></a>Zusammenfassung
 Es lässt sich zusammenfassend feststellen, dass der JSON-Operatortyp in der Struktur, den Sie auswählen, von Ihrem Szenario abhängt. Wenn in einem einfachen JSON-Dokument nur ein einziges Feld durchsucht werden soll, können Sie die Hive-UDF „get_json_object“ verwenden. Wenn mehrere Suchschlüssel vorliegen, können Sie die UDF „json_tuple“ verwenden. Bei geschachtelten Dokumenten müssen Sie das JSON-SerDe verwenden.
