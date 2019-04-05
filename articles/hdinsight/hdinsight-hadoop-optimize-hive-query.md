@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 1c863bc3b0ded0558e052ee3d98586ad815a0cfd
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/21/2019
+ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202740"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521736"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimieren von Apache Hive-Abfragen in Azure HDInsight
 
-In Azure HDInsight gibt es verschiedene Clustertypen und -technologien, auf denen Apache Hive-Abfragen ausgeführt werden können. Wenn Sie einen HDInsight-Cluster erstellen, wählen Sie den geeigneten Clustertyp zum Optimieren der Leistung für Ihre Workloadanforderungen aus. 
+In Azure HDInsight gibt es verschiedene Clustertypen und -technologien, auf denen Apache Hive-Abfragen ausgeführt werden können. Wenn Sie einen HDInsight-Cluster erstellen, wählen Sie den geeigneten Clustertyp zum Optimieren der Leistung für Ihre Workloadanforderungen aus.
 
 Wählen Sie z. B. den Clustertyp **Interactive Query** zur Optimierung für interaktive Ad-hoc-Abfragen aus. Wählen Sie den Apache **Hadoop**-Clustertyp zur Optimierung für Hive-Abfragen zur Batchverarbeitung aus. Auf den Clustertypen **Spark** und **HBase** können auch Hive-Abfragen ausgeführt werden. Weitere Informationen zum Ausführen von Hive-Abfragen auf verschiedenen Typen von HDInsight-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 

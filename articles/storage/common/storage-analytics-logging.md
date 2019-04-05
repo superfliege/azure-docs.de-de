@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ab235c67e3a0e60999a0348d03a6e938944f7030
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260184"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652058"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -27,7 +27,6 @@ Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen u
 >  Die Storage Analytics-Protokollierung ist derzeit nur für Blob-, Warteschlangen- und Tabellenspeicherdienste verfügbar. Ein Premium-Speicherkonto wird nicht unterstützt.
 
 ## <a name="requests-logged-in-logging"></a>Erfasste Anforderungen bei der Protokollierung
-
 ### <a name="logging-authenticated-requests"></a>Protokollierung authentifizierter Anforderungen
 
  Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
@@ -63,13 +62,13 @@ Bei einer großen Menge an Protokolldaten mit mehreren Dateien pro Stunde könne
 
 Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten von Blobs anzeigen. Zudem können Sie diese Informationen über PowerShell oder programmgesteuert anzeigen. Der folgende PowerShell-Codeausschnitt ist ein Beispiel für die Filterung der Liste mit Protokollblobs nach dem Namen, um einen Zeitpunkt anzugeben, und nach Metadaten, um nur die Protokolle zu identifizieren, die **write**-Vorgänge enthalten.  
 
- ```  
+ ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
- where {  
+ Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
  } |  
- foreach {  
+ ForEach-Object {  
      "{0}  {1}  {2}  {3}" –f $_.Name,   
      $_.ICloudBlob.Metadata.StartTime,   
      $_.ICloudBlob.Metadata.EndTime,   
@@ -143,26 +142,25 @@ Sie können die zu protokollierenden Speicherdienste und den Aufbewahrungszeitra
 
  Mit dem folgenden Befehl wird die Protokollierung für read-, write- und delete-Anforderungen im Warteschlangendienst mit einem Aufbewahrungszeitraum von fünf Tagen in Ihrem Standardspeicherkonto aktiviert:  
 
-```  
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue   
--LoggingOperations read,write,delete -RetentionDays 5  
+```powershell
+Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Mit dem folgenden Befehl wird die Protokollierung für den Tabellenspeicherdienst in Ihrem Standardspeicherkonto deaktiviert:  
 
-```  
-Set-AzureStorageServiceLoggingProperty -ServiceType Table   
--LoggingOperations none  
+```powershell
+Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ### <a name="enable-storage-logging-programmatically"></a>Programmgesteuertes Aktivieren der Speicherprotokollierung  
+
  Neben der Verwendung des Azure-Portals oder der Azure PowerShell-Cmdlets zum Steuern der Speicherprotokollierung können Sie auch eine der Azure Storage-APIs verwenden. Wenn Sie beispielsweise eine .NET-Programmiersprache verwenden, können Sie die Speicherclientbibliothek verwenden.  
 
  Die Klassen **CloudBlobClient**, **CloudQueueClient** und **CloudTableClient** verfügen alle über Methoden wie z. B. **SetServiceProperties** und **SetServicePropertiesAsync**, die ein **ServiceProperties**-Objekt als Parameter verwenden. Mit dem **ServiceProperties**-Objekt können Sie die Speicherprotokollierung konfigurieren. Mit dem folgenden C#-Codeausschnitt wird beispielsweise veranschaulicht, wie die protokollierten Daten und der Aufbewahrungszeitraum für die Protokollierung von Warteschlangen geändert werden:  
 
-```  
+```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
 var serviceProperties = queueClient.GetServiceProperties();  
@@ -192,7 +190,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
  Im folgenden Beispiel wird veranschaulicht, wie Sie die Protokolldaten für den Warteschlangendienst für die Stunden ab 9 Uhr, 10 Uhr und 11 Uhr am 20. Mai 2014 herunterladen können. Der Parameter **/S** bewirkt, dass AzCopy eine lokale Ordnerstruktur basierend auf den Datums- und Uhrzeitangaben in den Protokolldateinamen erstellt. Der Parameter **/V** bewirkt, dass AzCopy eine ausführliche Ausgabe generiert. Der Parameter **/Y** bewirkt, dass AzCopy alle lokalen Dateien überschreibt. Ersetzen Sie **<yourstorageaccount\>** durch den Namen Ihres Speicherkontos und **<yourstoragekey\>** durch Ihren Speicherkontoschlüssel.  
 
-```  
+```
 AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
 ```  
 
@@ -203,6 +201,7 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
  Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in den Dateien anzeigen. Diese Protokolldateien verwenden ein durch Trennzeichen getrenntes Textformat, das viele Protokolllesetools wie Microsoft Message Analyzer analysieren können. (Weitere Informationen finden Sie im Leitfaden [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).) Die verschiedenen Tools umfassen unterschiedliche Funktionen zum Formatieren, Filtern, Sortieren und Durchsuchen der Inhalte der Protokolldateien. Weitere Informationen zum Format und Inhalt von Protokolldateien der Speicherprotokollierung finden Sie unter [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format) und [Protokollierte Vorgänge und Statusmeldungen in Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format)
 * [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Metriken von Storage Analytics (klassisch)](storage-analytics-metrics.md)

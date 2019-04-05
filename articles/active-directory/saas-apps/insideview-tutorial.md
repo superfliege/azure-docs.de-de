@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 845ab85ae10a9d57bf3e263d49532675f60cd84f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165916"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory-Integration mit InsideView
 
@@ -91,7 +91,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei InsideVie
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines InsideView-Testbenutzers](#creating-a-insideview-test-user)**, um eine Entsprechung von Britta Simon in InsideView zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Erstellen eines InsideView-Testbenutzers](#creating-an-insideview-test-user)**, um eine Entsprechung von Britta Simon in InsideView zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -254,4 +254,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „InsideView“ klicken, sollten Sie
 [201]: ./media/insideview-tutorial/tutorial_general_201.png
 [202]: ./media/insideview-tutorial/tutorial_general_202.png
 [203]: ./media/insideview-tutorial/tutorial_general_203.png
-

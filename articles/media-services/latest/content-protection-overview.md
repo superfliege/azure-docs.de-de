@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4d1a9ae622de103b459d256cb48c5823f5866a3b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294075"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311321"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>Inhaltsschutz mit dynamischer Verschlüsselung
 
@@ -204,7 +204,7 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen d
 
 Wenn der Fehler `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` angezeigt wird, überprüfen Sie, ob Sie die richtige Streamingrichtlinie angegeben haben.
 
-Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. Beispiel: …/manifest (format=m3u8-cmaf,encryption=cbcs-aapl). Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption types).
+Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. Beispiel: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

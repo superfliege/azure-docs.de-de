@@ -8,14 +8,15 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113298"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851181"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
+
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
 
 > [!NOTE]
@@ -660,7 +661,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 | MetadataRequests |    Anforderungen von Metadaten   |Count| Count   | Anzahl der Metadatenanforderungen. Azure Cosmos DB unterhält eine Sammlung von Systemmetadaten für jedes Konto, wodurch Sie Sammlungen, Datenbanken usw. und deren Konfigurationen ohne anfallende Kosten auflisten können.    | DatabaseName, CollectionName, Region, StatusCode| Alle|  |Wird verwendet, um die Drosselung aufgrund von Metadatenanforderungen zu überwachen.|
 | MongoRequests |   Mongo-Anforderungen| Count | Count|  Anzahl der ausgegebenen Mongo-Anforderungen   | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Alle |Mongo-Abfrage-Anforderungsrate, Mongo-Aktualisieren-Anforderungsrate, Mongo-Löschen-Anforderungsrate, Mongo-Einfügen-Anforderungsrate, Mongo-Zählen-Anforderungsrate|   Wird verwendet, um Mongo-Anforderungsfehler zu überwachen, Verwendungen pro Befehlstyp. |
 
-
 ### <a name="request-unit-metrics"></a>Metriken für Anforderungseinheiten
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen| Zeitgranularitäten| Zuordnung von Legacymetriken | Verwendung |
@@ -673,7 +673,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen| Zeitgranularitäten| Zuordnung von Legacymetriken | Verwendung |
 |---|---|---|---|---|---| ---| ---| ---|
-| AvailableStorage| Verfügbarer Speicher   |Byte| Gesamt|  Gemeldeter Gesamtspeicher mit 5-Minuten-Granularität pro Region|   DatabaseName, CollectionName, Region|   5M| Verfügbarer Speicher|   Wird verwendet, um die verfügbare Speicherkapazität zu überwachen (gilt nur für feste Speichersammlungen). Die Mindestgranularität sollte 5 Minuten betragen.| 
+| AvailableStorage| Verfügbarer Speicher   |Byte| Gesamt|  Gemeldeter Gesamtspeicher mit 5-Minuten-Granularität pro Region|   DatabaseName, CollectionName, Region|   5M| Verfügbarer Speicher|   Wird verwendet, um die verfügbare Speicherkapazität zu überwachen (gilt nur für feste Speichersammlungen). Die Mindestgranularität sollte 5 Minuten betragen.|
 | DataUsage |Datennutzung |Byte| Gesamt   |Gemeldeter Gesamtdatennutzung mit 5-Minuten-Granularität pro Region|    DatabaseName, CollectionName, Region|   5M  |Datengröße  | Wird verwendet, um den gesamten Datenverbrauch bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
 | IndexUsage|   Indexnutzung|    Byte|  Gesamt   |Gemeldete Gesamtindexnutzung mit 5-Minuten-Granularität pro Region|    DatabaseName, CollectionName, Region|   5M| Indexgröße| Wird verwendet, um den gesamten Datenverbrauch bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen. |
 | DocumentQuota|    Dokumentenkontingent| Byte|  Gesamt|  Gemeldetes Gesamtspeicherkontingent mit 5-Minuten-Granularität pro Region. Gilt für feste Speichersammlungen| DatabaseName, CollectionName, Region|   5M  |Speicherkapazität|  Wird verwendet, um das gesamte Kontingent bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
@@ -805,6 +805,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |ScaleActionsInitiated|Initiierte Skalierungsaktionen|Count|Gesamt|Die Richtung des Skalierungsvorgangs.|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+
 (Öffentliche Vorschau)
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -1224,7 +1225,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Aktualisieren|Aktualisieren|Count|Durchschnitt|Aktualisieren|Computer, Product, Classification, UpdateState, Optional, Approved|
 |Ereignis|Ereignis|Count|Durchschnitt|Ereignis|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
 
-
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -1287,8 +1287,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MessageCount|Nachrichtenanzahl|Count|Gesamt|Die Gesamtmenge der Nachrichten.|Keine Dimensionen|
 |InboundTraffic|Eingehender Datenverkehr|Byte|Gesamt|Der eingehende Datenverkehr des Diensts|Keine Dimensionen|
 |OutboundTraffic|Ausgehender Datenverkehr|Byte|Gesamt|Der ausgehende Datenverkehr des Diensts|Keine Dimensionen|
-|UserErrors|Benutzerfehler|Prozent|Maximum|Der Prozentsatz der Benutzerfehler|Keine Dimensionen|
-|SystemErrors|Systemfehler|Prozent|Maximum|Der Prozentsatz der Systemfehler|Keine Dimensionen|
+|UserErrors|Benutzerfehler|Prozent|Durchschnitt|Der Prozentsatz der Benutzerfehler|Keine Dimensionen|
+|SystemErrors|Systemfehler|Prozent|Durchschnitt|Der Prozentsatz der Systemfehler|Keine Dimensionen|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
@@ -1608,7 +1608,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MemoryPercentage|Arbeitsspeicherprozentsatz|Prozent|Durchschnitt|Arbeitsspeicherprozentsatz|Instanz|
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informationen zu Metriken in Azure Monitor](../../azure-monitor/platform/data-collection.md)
-* [Erstellen von Warnungen zu Metriken](../../azure-monitor/platform/alerts-overview.md)
-* [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
-
+* [Informationen zu Metriken in Azure Monitor](data-platform.md)
+* [Erstellen von Warnungen zu Metriken](alerts-overview.md)
+* [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](diagnostic-logs-overview.md)

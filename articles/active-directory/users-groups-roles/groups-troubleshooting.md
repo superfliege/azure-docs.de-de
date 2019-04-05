@@ -13,27 +13,31 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897672"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791549"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Beheben von Problemen bei Gruppen
 
 ## <a name="troubleshooting-group-creation-issues"></a>Problembehandlung bei der Gruppenerstellung
+
 **Ich habe die Erstellung von Sicherheitsgruppen im Azure-Portal deaktiviert, Gruppen können jedoch weiterhin über PowerShell erstellt werden** Mit der Einstellung **Benutzer können Sicherheitsgruppen in Azure-Portalen erstellen** im Azure-Portal wird gesteuert, ob Benutzer ohne Administratorrechte Sicherheitsgruppen im Zugriffsbereich oder Azure-Portal erstellen können. Die Erstellung von Sicherheitsgruppen über PowerShell wird damit nicht gesteuert.
 
 So deaktivieren Sie die Gruppenerstellung für Benutzer ohne Administratorrechte in PowerShell
 1. Prüfen Sie, ob Benutzer ohne Administratorrechte zum Erstellen von Gruppen berechtigt sind:
    
+
+   ```powershell
+   Get-MsolCompanyInformation | Format-List UsersPermissionToCreateGroupsEnabled
    ```
-   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-   ```
+
   
 2. Wird `UsersPermissionToCreateGroupsEnabled : True` zurückgegeben, sind Benutzer ohne Administratorrechte zum Erstellen von Gruppen berechtigt. So deaktivieren Sie das Feature:
   
+
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```

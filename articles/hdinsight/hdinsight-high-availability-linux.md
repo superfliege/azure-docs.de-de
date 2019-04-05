@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 84251b16d91ca74e11298c7aa54c9a7a8b7fd6d6
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: ca6b072ba81f55802bc01d61ed44b06680cedbb2
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576717"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361998"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -248,6 +248,8 @@ Wählen Sie auf der Ambari-Webbenutzeroberfläche den Dienst, für den Sie Proto
 
 ## <a name="how-to-configure-the-node-size"></a>Konfigurieren der Knotengröße
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Die Größe eines Knotens kann nur beim Erstellen des Clusters ausgewählt werden. Eine Liste der verschiedenen VM-Größen, die für HDInsight verfügbar sind, finden Sie auf der Seite [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die folgenden Informationen bieten eine Anleitung, wie die Größe im [Azure-Portal][preview-portal], mit [Azure PowerShell][azure-powershell] und mit der [klassischen Azure CLI][azure-cli] festgelegt werden kann:
@@ -258,7 +260,7 @@ Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die fo
 
 * **Klassische Azure-Befehlszeilenschnittstelle**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` festgelegt werden.
 
-* **Azure PowerShell:** Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Cmdlets `New-AzureRmHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` festgelegt werden.
+* **Azure PowerShell:** Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Cmdlets `New-AzHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
