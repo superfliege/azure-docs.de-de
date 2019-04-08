@@ -1,5 +1,5 @@
 ---
-title: Nachverfolgen von B2B-Nachrichten mit Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
+title: Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen – Azure Logic Apps | Microsoft-Dokumentation
 description: Nachverfolgen der B2B-Kommunikation für Integrationskonten und Azure Logic Apps mit Azure Log Analytics
 services: logic-apps
 ms.service: logic-apps
@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996540"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193210"
 ---
-# <a name="track-b2b-messages-with-azure-log-analytics"></a>Nachverfolgen von B2B-Nachrichten mit Azure Log Analytics
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen
 
-Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrationskonto eingerichtet haben, können diese Partner untereinander Nachrichten mit Protokollen wie AS2, X12 und EDIFACT austauschen. Um zu überprüfen, ob diese Nachrichten richtig verarbeitet werden, können Sie diese Nachrichten mit [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. Beispielsweise können Sie diese webbasierten Nachverfolgungsfunktionen nutzen, um Nachrichten nachzuverfolgen:
+Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrationskonto eingerichtet haben, können diese Partner untereinander Nachrichten mit Protokollen wie AS2, X12 und EDIFACT austauschen. Um zu überprüfen, ob diese Nachrichten richtig verarbeitet werden, können Sie diese Nachrichten mit [Azure Monitor-Protokollen](../log-analytics/log-analytics-overview.md) nachverfolgen. Beispielsweise können Sie diese webbasierten Nachverfolgungsfunktionen nutzen, um Nachrichten nachzuverfolgen:
 
 * Anzahl und Status von Nachrichten
 * Bestätigungsstatus
@@ -29,19 +29,21 @@ Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrations
 > [!NOTE]
 > Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 eingestellt](../azure-monitor/platform/oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen eines Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und das [Einrichten der Überwachung und Protokollierung für dieses Konto](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), falls noch nicht geschehen.
+* [Veröffentlichen Sie Diagnosedaten in Azure Monitor-Protokolle](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), falls noch nicht geschehen.
 
 * Wenn Sie die obigen Anforderungen erfüllen, benötigen Sie auch einen Log Analytics-Arbeitsbereich, in dem Sie die Nachverfolgung von B2B-Kommunikation über Log Analytics nutzen. Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Installieren der Lösung B2B-Logik-App-Verwaltung
 
-Bevor Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, fügen Sie Log Analytics die Lösung **B2B-Logik-App-Verwaltung** hinzu. Weitere Informationen zum Hinzufügen von Lösungen zu Log Analytics finden Sie [hier](../azure-monitor/learn/quick-create-workspace.md).
+Bevor Azure Monitor-Protokolle B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, fügen Sie Azure Monitor-Protokolle die Lösung **B2B-Logik-App-Verwaltung** hinzu. Weitere Informationen zum Hinzufügen von Lösungen zu Azure Monitor-Protokollen finden Sie [hier](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste**. Geben Sie im Suchfeld „log analytics“ ein, und wählen Sie **Log Analytics** aus.
 
@@ -128,7 +130,7 @@ Nachdem B2B-Nachrichten verarbeitet wurden, können Sie den Status und die Detai
    * Wählen Sie **Favoriten**, um Ergebnisse mit vorab erstellten Abfragen zu durchsuchen.
 
    * Informieren Sie sich über das [Erstellen von Abfragen durch das Hinzufügen von Filtern](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   Oder informieren Sie sich über das [Suchen von Daten mithilfe der Protokollsuche in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Oder informieren Sie sich über das [Suchen von Daten mithilfe der Protokollsuche in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md).
 
    * Gehen Sie wie folgt vor, um die Abfrage im Suchfeld zu ändern: Aktualisieren Sie die Abfrage mit den Spalten und Werten, die Sie als Filter verwenden möchten.
 
@@ -237,7 +239,7 @@ Hier sind die Namensformate für die einzelnen heruntergeladenen EDIFACT-Nachric
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abfragen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Abfragen auf B2B-Nachrichten in Azure Monitor-Protokollen](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Benutzerdefinierte Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

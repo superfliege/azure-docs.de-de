@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243109"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194927"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Übersicht: B2B-Unternehmensintegrationsszenarien in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -70,5 +70,5 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 * [Enterprise-Integrationsconnectors](../connectors/apis-list.md "Informationen zu Enterprise Integration Pack-Connectors")
 * [Integrationskontometadaten](../logic-apps/logic-apps-enterprise-integration-metadata.md "Erfahren Sie mehr über Integrationskontometadaten")
 * [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md "Weitere Informationen zum Überwachen von B2B-Nachrichten")
-* [Nachverfolgen von B2B-Nachrichten in Azure Log Analytics](logic-apps-track-b2b-messages-omsportal.md "Weitere Informationen zum Nachverfolgen von B2B-Nachrichten in Azure Log Analytics")
+* [Nachverfolgen von B2B-Nachrichten in Azure Monitor-Protokollen](logic-apps-track-b2b-messages-omsportal.md "Weitere Informationen zum Nachverfolgen von B2B-Nachrichten in Azure Monitor-Protokollen")
 

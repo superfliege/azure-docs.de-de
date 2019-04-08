@@ -6,17 +6,17 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.openlocfilehash: 4accff7410d17e76a000b7cef957b75c65a16960
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/05/2018
+ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007668"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543286"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
 
-In diesem Artikel besprechen wir, wie Sie Entwurfsentscheidungen treffen können, um praktische Probleme bei der Behandlung von Zeitangaben im Azure Stream Analytics-Dienst zu lösen. Die Entwurfsentscheidungen für die Behandlung von Zeitangaben stehen in engem Zusammenhang mit den Faktoren der Ereignisreihenfolge. Weitere Informationen finden Sie in diesem dazugehörigen Artikel: [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md)
+In diesem Artikel besprechen wir, wie Sie Entwurfsentscheidungen treffen können, um praktische Probleme bei der Behandlung von Zeitangaben im Azure Stream Analytics-Dienst zu lösen. Die Entwurfsentscheidungen für die Behandlung von Zeitangaben stehen in engem Zusammenhang mit den Faktoren der Ereignisreihenfolge.
 
 ## <a name="background-time-concepts"></a>Zeitkonzepte im Hintergrund
 
@@ -163,7 +163,7 @@ Azure Stream Analytics verwendet den Fortschritt des Wasserzeichens als einzigen
 
 Bei der Verwendung von [Aggregate im Fenstermoduss](stream-analytics-window-functions.md) erzeugt der Dienst nur Ausgaben am Ende der Fenster. In einigen Fällen kann es vorkommen, dass Benutzer Teilaggregate sehen möchten, die aus den Fenstern generiert wurden. Teilaggregate werden in Azure Stream Analytics derzeit nicht unterstützt.
 
-In anderen Streaminglösungen können Ausgabeereignisse je nach externen Gegebenheiten an verschiedenen Auslöserpunkten realisiert werden. Bei einigen Lösungen ist es möglich, dass die Ausgabeereignisse für ein bestimmtes Zeitfensterpaar mehrfach generiert werden. Mit der Optimierung der Eingabewerte werden die Gesamtergebnisse genauer. Ereignisse könnten zunächst spekuliert und im Laufe der Zeit überarbeitet werden. Wenn beispielsweise ein bestimmtes Gerät nicht mit dem Netzwerk verbunden ist, kann das System einen Schätzwert verwenden. Zu einem späteren Zeitpunkt verbindet sich das Gerät wieder mit dem Netzwerk. Dann können die tatsächlichen Ereignisdaten in den Eingabestream enthalten sein. Die Ausgabe resultiert aus der Verarbeitung, die zu einer genaueren Ausgabe führt.
+In anderen Streaminglösungen können Ausgabeereignisse je nach externen Gegebenheiten an verschiedenen Auslöserpunkten realisiert werden. Bei einigen Lösungen ist es möglich, dass die Ausgabeereignisse für ein bestimmtes Zeitfenster mehrfach generiert werden. Mit der Optimierung der Eingabewerte werden die Gesamtergebnisse genauer. Ereignisse könnten zunächst spekuliert und im Laufe der Zeit überarbeitet werden. Wenn beispielsweise ein bestimmtes Gerät nicht mit dem Netzwerk verbunden ist, kann das System einen Schätzwert verwenden. Zu einem späteren Zeitpunkt verbindet sich das Gerät wieder mit dem Netzwerk. Dann können die tatsächlichen Ereignisdaten in den Eingabestream enthalten sein. Die Ausgabe resultiert aus der Verarbeitung, die zu einer genaueren Ausgabe führt.
 
 ## <a name="illustrated-example-of-watermarks"></a>Illustriertes Beispiel für Wasserzeichen
 

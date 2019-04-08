@@ -10,12 +10,12 @@ ms.reviewer: klam, estfan, LADocs
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 068e5399073959d2c5aa6c4bbeb0d7bccf7d05e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9cd1946d8fa670764bcc95b82298d07cc70417bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393778"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191322"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Übersicht: Azure Serverless mit Azure Logic Apps und Azure Functions
 
@@ -41,7 +41,7 @@ Starten Sie zum Einstieg in Logic Apps mit dem [Erstellen Ihrer ersten Logik-App
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Wie kann ich serverlose Anwendungen in Azure erstellen und bereitstellen?
 
-Azure bietet umfangreiche Tools für die Entwicklung, Bereitstellung und Verwaltung von serverlosen Apps.  Apps können direkt im Azure-Portal oder mit den [Tools von Visual Studio](logic-apps-serverless-get-started-vs.md) (in englischer Sprache) erstellt werden.  Sobald eine Anwendung entwickelt wurde, kann sie [sofort bereitgestellt werden](logic-apps-create-deploy-template.md).  Azure bietet auch eine Überwachung für serverlose Apps.  Auf diese Überwachung kann direkt über das Azure-Portal, über die API oder über SDKs oder alternativ über integrierte Tools für Log Analytics und Application Insights zugegriffen werden.
+Azure bietet umfangreiche Tools für die Entwicklung, Bereitstellung und Verwaltung von serverlosen Apps.  Apps können direkt im Azure-Portal oder mit den [Tools von Visual Studio](logic-apps-serverless-get-started-vs.md) (in englischer Sprache) erstellt werden.  Sobald eine Anwendung entwickelt wurde, kann sie [sofort bereitgestellt werden](logic-apps-create-deploy-template.md).  Azure bietet auch eine Überwachung für serverlose Apps.  Auf diese Überwachung kann direkt über das Azure-Portal, über die API oder über SDKs oder alternativ über integrierte Tools für Azure Monitor-Protokolle und Application Insights zugegriffen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
