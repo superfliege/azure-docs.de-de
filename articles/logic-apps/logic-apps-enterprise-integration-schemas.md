@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
-ms.openlocfilehash: 03ac2e0f42ff05165aa2313d823710a71c7dffec
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768305"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727313"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -68,7 +68,7 @@ Zum Erstellen und Hinzufügen von Schemas benötigen Sie keine Logik-App. Damit 
 
 1. Nachdem die Seite **Schemas** geöffnet wurde, wählen Sie **Hinzufügen** aus.
 
-   ![Auswählen von „Hinzufügen“](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
+   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
 Je nach Größe Ihrer Schemadatei (.xsd) führen Sie die Schritte zum Upload eines Schemas aus, das entweder [maximal 2 MB](#smaller-schema) groß oder [größer als 2 MB (maximal 8 MB)](#larger-schema) ist.
 
@@ -89,7 +89,7 @@ Je nach Größe Ihrer Schemadatei (.xsd) führen Sie die Schritte zum Upload ein
 
 ### <a name="add-schemas-more-than-2-mb"></a>Hinzufügen von Schemas mit mehr als 2 MB
 
-Wenn Sie größere Schemas hinzufügen möchten, können Sie Ihr Schema in einen Azure-Blobcontainer in Ihrem Azure-Speicherkonto hochladen. Die Schritte zum Hinzufügen von Zuordnungen unterscheiden sich abhängig davon, ob Ihr Blobcontainer über öffentlichen Lesezugriff verfügt. Überprüfen Sie deshalb zuerst anhand der folgenden Schritte, ob Ihr Blobcontainer über öffentlichen Lesezugriff verfügt: [Festlegen der öffentlichen Zugriffsebene für Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Wenn Sie größere Schemas hinzufügen möchten, können Sie Ihr Schema in einen Azure-Blobcontainer in Ihrem Azure-Speicherkonto hochladen. Die Schritte zum Hinzufügen von Schemas unterscheiden sich abhängig davon, ob Ihr Blobcontainer über öffentlichen Lesezugriff verfügt. Überprüfen Sie deshalb zuerst anhand der folgenden Schritte, ob Ihr Blobcontainer über öffentlichen Lesezugriff verfügt: [Festlegen der öffentlichen Zugriffsebene für Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>Überprüfen der Containerzugriffsebene
 

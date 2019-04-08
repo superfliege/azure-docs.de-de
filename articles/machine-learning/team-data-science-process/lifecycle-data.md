@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c4acb3b779821193949c69d440edaafec5e3d803
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474053"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444496"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Phase „Datenerfassung und -auswertung“ des Team Data Science-Prozesses
 
@@ -66,7 +66,7 @@ In dieser Phase entwickeln Sie eine Lösungsarchitektur der Datenpipeline. Sie e
 ## <a name="artifacts"></a>Artefakte
 Hier sind die Ergebnisse dieser Phase angegeben:
 
-   * [Bericht zur Datenqualität](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/DataSummaryReport.md): Dieser Bericht enthält Datenzusammenfassungen, Beziehungen zwischen den einzelnen Attributen und Zielen, die Rangfolge der Variablen usw. Mit dem in TDSP enthaltenen Tool [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) können Sie diesen Bericht für alle DataSets in Tabellenform, z.B. als CSV-Datei oder relationale Tabelle, schnell erstellen. 
+   * [Bericht zur Datenqualität](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Dieser Bericht enthält Datenzusammenfassungen, Beziehungen zwischen den einzelnen Attributen und Zielen, die Rangfolge der Variablen usw. Mit dem in TDSP enthaltenen Tool [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) können Sie diesen Bericht für alle DataSets in Tabellenform, z.B. als CSV-Datei oder relationale Tabelle, schnell erstellen. 
    * **Lösungsarchitektur**: Dies kann ein Diagramm oder eine Beschreibung Ihrer Datenpipeline sein, die zum Ausführen von Bewertungen oder Vorhersagen für neue Daten nach dem Erstellen eines Modells verwendet wird. Die Pipeline zum erneuten Trainieren Ihres Modells basierend auf den neuen Daten ist ebenfalls enthalten. Speichern Sie das Dokument im Verzeichnis [Project](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project), wenn Sie die Vorlage für die TDSP-Verzeichnisstruktur verwenden.
    * **Prüfpunktentscheidung**: Bevor Sie mit der vollständigen Featureentwicklung und Modellerstellung beginnen, können Sie das Projekt erneut auswerten, um zu ermitteln, ob Daten in ausreichender Menge vorhanden sind. Es kann beispielsweise sein, dass Sie bereit zum Fortfahren sind oder mehr Daten erfassen müssen oder das Projekt beenden müssen, weil für die Beantwortung der Frage keine Daten zur Verfügung stehen.
 

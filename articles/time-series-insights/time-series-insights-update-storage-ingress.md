@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301671"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438362"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -116,7 +116,7 @@ Es ist wichtig, eine entsprechende Time Series-ID auszuwählen, weil es sich dab
 
 Wenn Sie eine Time Series Insights-Umgebung mit nutzungsbasierter Bezahlung erstellen, erstellen Sie zwei Ressourcen: eine Time Series Insights-Umgebung und ein Azure-Speicherkonto vom Typ „Allgemein V1“, in dem die Daten gespeichert werden. Wir haben uns entschieden, Azure-Speicher vom Typ „Allgemein V1“ zur Standardressource zu machen aufgrund seiner Interoperabilität, des Preises und der Leistung. 
 
-Time Series Insights veröffentlicht bis zu zwei Kopien jedes Ereignisses in Ihrem Azure-Speicherkonto. Die ursprüngliche Kopie wird immer beibehalten, sodass Sie sie leistungsstark mithilfe anderer Dienste abfragen können. Sie können ganz einfach Spark, Hadoop und andere vertraute Tools mit Time Series-IDs und Parquet-Rohdateien verwenden, da diese Engines grundlegende Dateinamensfilterung unterstützen. Das Gruppieren von Blobs nach Jahr und Monat ist eine nützliche Möglichkeit zum Auflisten von Blobs innerhalb eines bestimmten Zeitraums für einen benutzerdefinierten Auftrag. 
+Time Series Insights veröffentlicht bis zu zwei Kopien jedes Ereignisses in Ihrem Azure-Speicherkonto. Die ursprüngliche Kopie wird immer beibehalten, sodass Sie sie schnell mithilfe anderer Dienste abfragen können. Sie können ganz einfach Spark, Hadoop und andere vertraute Tools mit Time Series-IDs und Parquet-Rohdateien verwenden, da diese Engines grundlegende Dateinamensfilterung unterstützen. Das Gruppieren von Blobs nach Jahr und Monat ist eine nützliche Möglichkeit zum Auflisten von Blobs innerhalb eines bestimmten Zeitraums für einen benutzerdefinierten Auftrag. 
 
 Darüber hinaus partitioniert Time Series Insights die Parquet-Dateien neu, um eine Optimierung für die Time Series Insights-APIs vorzunehmen. Die zuletzt neu partitionierte Datei wird außerdem gespeichert.
 

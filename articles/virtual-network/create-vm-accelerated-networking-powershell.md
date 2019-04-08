@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: 3ba7e8129d577faa87544f8feded51a14559eb51
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c4567919490c8bc9094dea3dddbe22550d9eebb2
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435531"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192904"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Windows-Computer (VM) 
 
 ![Vergleich](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-Ohne beschleunigten Netzwerkbetrieb muss sämtlicher Netzwerkdatenverkehr zur und von der VM den Host und virtuellen Switch passieren. Der virtuelle Switch setzt alle Richtlinien für den Netzwerkdatenverkehr um, z.B. Netzwerksicherheitsgruppen, Zugriffssteuerungslisten, Isolation und andere virtualisierte Netzwerkdienste. Weitere Informationen zu virtuellen Switches finden Sie im Artikel mit einer [Übersicht über Hyper-V-Netzwerkvirtualisierung und virtuellen Switch](https://technet.microsoft.com/library/jj945275.aspx).
+Ohne beschleunigten Netzwerkbetrieb muss sämtlicher Netzwerkdatenverkehr zur und von der VM den Host und virtuellen Switch passieren. Der virtuelle Switch setzt alle Richtlinien für den Netzwerkdatenverkehr um, z.B. Netzwerksicherheitsgruppen, Zugriffssteuerungslisten, Isolation und andere virtualisierte Netzwerkdienste. Weitere Informationen zu virtuellen Switches finden Sie im Artikel [Übersicht über Hyper-V-Netzwerkvirtualisierung und virtuellen Switch](https://technet.microsoft.com/library/jj945275.aspx).
 
 Mit beschleunigtem Netzwerkbetrieb gelangt der Netzwerkdatenverkehr zur Netzwerkkarte (NIC) der VM und wird dann an die VM weitergeleitet. Alle Netzwerkrichtlinien, die vom virtuellen Switch angewendet werden, werden ab sofort ausgelagert und in der Hardware angewendet. Durch das Anwenden von Richtlinien in der Hardware kann die NIC Netzwerkdatenverkehr direkt an den virtuellen Computer weiterleiten und dabei den Host und den virtuellen Switch umgehen, während gleichzeitig sämtliche Richtlinien umgesetzt werden, die sonst auf dem Host angewendet worden wären.
 
@@ -41,14 +41,14 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt: 
+Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt:
 * **Windows Server 2016 Datacenter** 
-* **Windows Server 2012 R2 Datacenter** 
+* **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
 Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
 
-Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms
+Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, E/Esv3, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
 
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -62,33 +62,39 @@ Bei einer unterstützten VM-Größe ohne aktivierten beschleunigten Netzwerkbetr
 Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb bereitgestellt werden.
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Erstellen einer Windows-VM mit Azure „Beschleunigter Netzwerkbetrieb“
+## <a name="portal-creation"></a>Erstellung über das Portal
+In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe von Azure PowerShell dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie im Blatt **Virtuellen Computer erstellen** die Registerkarte **Netzwerkbetrieb** aus.  Auf dieser Registerkarte gibt es eine Option für **Beschleunigter Netzwerkbetrieb**.  Wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und eine [unterstützte VM-Größe](#supported-vm-instances) ausgewählt haben, wird diese Option automatisch auf „Ein“ gesetzt.  Wenn nicht, wird die Option für „Beschleunigter Netzwerkbetrieb“ auf „Aus“ festgelegt, und dem Benutzer wird der Grund angezeigt, warum der beschleunigte Netzwerkbetrieb nicht aktiviert wird.   
+* *Hinweis:* Nur unterstützte Betriebssysteme können über das Portal aktiviert werden.  Wenn Sie ein benutzerdefiniertes Image verwenden und Ihr Image den beschleunigten Netzwerkbetrieb unterstützt, erstellen Sie Ihre VM mit CLI oder Powershell. 
 
-In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe von Azure PowerShell dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Die Option zum Aktivieren des beschleunigten Netzwerkbetriebs wird nur dann im Portal angezeigt, wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und die [Größe des virtuellen Computers](#supported-vm-instances) ausgewählt haben. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Überprüfen, ob der Treiber im Betriebssystem installiert ist](#confirm-the-driver-is-installed-in-the-operating-system) abschließen.
+Nach dem Erstellen des virtuellen Computers können Sie sich vergewissern, dass der beschleunigte Netzwerkbetrieb aktiviert ist, indem Sie den Anweisungen unter „Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs“ folgen.
 
+## <a name="powershell-creation"></a>PowerShell-Erstellung
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps), Version 5.1.1 oder höher. Zur Ermittlung der derzeit installierten Version führen Sie `Get-Module -ListAvailable AzureRM` aus. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, installieren Sie die aktuelle Version des AzureRM-Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureRM). Melden Sie sich in einer PowerShell-Sitzung mithilfe von [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto an.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps), Version 1.0.0 oder höher. Zur Ermittlung der derzeit installierten Version führen Sie `Get-Module -ListAvailable Az` aus. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, installieren Sie die aktuelle Version des Az-Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az). Melden Sie sich in einer PowerShell-Sitzung mithilfe von [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Konto an.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
-Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 
 ```powershell
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "centralus"
+New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
 ```
 
-Erstellen Sie zunächst mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/AzureRM.Network/New-AzureRmVirtualNetworkSubnetConfig) eine Subnetzkonfiguration. Im folgenden Beispiel wird das Subnetz *mySubnet* erstellt:
+Erstellen Sie zunächst mit [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig) eine Subnetzkonfiguration. Im folgenden Beispiel wird das Subnetz *mySubnet* erstellt:
 
 ```powershell
-$subnet = New-AzureRmVirtualNetworkSubnetConfig `
+$subnet = New-AzVirtualNetworkSubnetConfig `
     -Name "mySubnet" `
     -AddressPrefix "192.168.1.0/24"
 ```
 
-Erstellen Sie mit [New-AzureRmVirtualNetwork](/powershell/module/AzureRM.Network/New-AzureRmVirtualNetwork) ein virtuelles Netzwerk mit dem Subnetz *mySubnet*.
+Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.Network/New-azVirtualNetwork) ein virtuelles Netzwerk mit dem Subnetz *mySubnet*.
 
 ```powershell
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
+$vnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
     -Location "centralus" `
     -Name "myVnet" `
     -AddressPrefix "192.168.0.0/16" `
@@ -97,10 +103,10 @@ $vnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Erstellen Sie zunächst mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/AzureRM.Network/New-AzureRmNetworkSecurityRuleConfig) eine Netzwerksicherheitsgruppen-Regel.
+Erstellen Sie zunächst mit [New-AzNetworkSecurityRuleConfig](/powershell/module/az.Network/New-azNetworkSecurityRuleConfig) eine Netzwerksicherheitsgruppen-Regel.
 
 ```powershell
-$rdp = New-AzureRmNetworkSecurityRuleConfig `
+$rdp = New-AzNetworkSecurityRuleConfig `
     -Name 'Allow-RDP-All' `
     -Description 'Allow RDP' `
     -Access Allow `
@@ -113,20 +119,20 @@ $rdp = New-AzureRmNetworkSecurityRuleConfig `
     -DestinationPortRange 3389
 ```
 
-Erstellen Sie mit [New-AzureRmNetworkSecurityGroup](/powershell/module/AzureRM.Network/New-AzureRmNetworkSecurityGroup) eine Netzwerksicherheitsgruppe, und weisen Sie die Sicherheitsregel *Allow-RDP-All* zu. Zusätzlich zur Regel *Allow-RDP-All* enthält die Netzwerksicherheitsgruppe noch mehrere Standardregeln. Eine Standardregel deaktiviert den gesamten über das Internet eingehenden Zugriff. Daher wird die Regel *Allow-RDP-All* der Netzwerksicherheitsgruppe zugewiesen, sodass Sie eine Remoteverbindung mit dem virtuellen Computer herstellen können, nachdem dieser erstellt wurde.
+Erstellen Sie mit [New-AzNetworkSecurityGroup](/powershell/module/az.Network/New-azNetworkSecurityGroup) eine Netzwerksicherheitsgruppe, und weisen Sie die Sicherheitsregel *Allow-RDP-All* zu. Zusätzlich zur Regel *Allow-RDP-All* enthält die Netzwerksicherheitsgruppe noch mehrere Standardregeln. Eine Standardregel deaktiviert den gesamten über das Internet eingehenden Zugriff. Daher wird die Regel *Allow-RDP-All* der Netzwerksicherheitsgruppe zugewiesen, sodass Sie eine Remoteverbindung mit dem virtuellen Computer herstellen können, nachdem dieser erstellt wurde.
 
 ```powershell
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
     -ResourceGroupName myResourceGroup `
     -Location centralus `
     -Name "myNsg" `
     -SecurityRules $rdp
 ```
 
-Ordnen Sie mit [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/AzureRM.Network/Set-AzureRmVirtualNetworkSubnetConfig) die Netzwerksicherheitsgruppe dem Subnetz *mySubnet* zu. Die Regel in der Netzwerksicherheitsgruppe gilt für alle Ressourcen, die im Subnetz bereitgestellt werden.
+Ordnen Sie mit [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/Set-azVirtualNetworkSubnetConfig) die Netzwerksicherheitsgruppe dem Subnetz *mySubnet* zu. Die Regel in der Netzwerksicherheitsgruppe gilt für alle Ressourcen, die im Subnetz bereitgestellt werden.
 
 ```powershell
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
     -Name 'mySubnet' `
     -AddressPrefix "192.168.1.0/24" `
@@ -134,20 +140,20 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 ```
 
 ## <a name="create-a-network-interface-with-accelerated-networking"></a>Erstellen einer Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb
-Erstellen Sie mit [New-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/New-AzureRmPublicIpAddress) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist keine öffentliche IP-Adresse erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
+Erstellen Sie mit [New-AzPublicIpAddress](/powershell/module/az.Network/New-azPublicIpAddress) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist keine öffentliche IP-Adresse erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
 
 ```powershell
-$publicIp = New-AzureRmPublicIpAddress `
+$publicIp = New-AzPublicIpAddress `
     -ResourceGroupName myResourceGroup `
     -Name 'myPublicIp' `
     -location centralus `
     -AllocationMethod Dynamic
 ```
 
-Erstellen Sie mit [New-AzureRmNetworkInterface](/powershell/module/AzureRM.Network/New-AzureRmNetworkInterface) eine Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb, und weisen Sie der Netzwerkschnittstelle die öffentliche IP-Adresse zu. Das folgende Beispiel erstellt die Netzwerkschnittstelle *myNic* im Subnetz *mySubnet* des virtuellen Netzwerks *myVnet* und weist ihr die öffentliche IP-Adresse *myPublicIp*  zu:
+Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.Network/New-azNetworkInterface) eine Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb, und weisen Sie der Netzwerkschnittstelle die öffentliche IP-Adresse zu. Das folgende Beispiel erstellt die Netzwerkschnittstelle *myNic* im Subnetz *mySubnet* des virtuellen Netzwerks *myVnet* und weist ihr die öffentliche IP-Adresse *myPublicIp*  zu:
 
 ```powershell
-$nic = New-AzureRmNetworkInterface `
+$nic = New-AzNetworkInterface `
     -ResourceGroupName "myResourceGroup" `
     -Name "myNic" `
     -Location "centralus" `
@@ -164,40 +170,40 @@ Legen Sie Ihre VM-Anmeldeinformationen mit [Get-Credential](/powershell/module/m
 $cred = Get-Credential
 ```
 
-Definieren Sie zunächst Ihren virtuellen Computer mit [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). Im folgenden Beispiel wird die VM *myVM* mit einer VM-Größe definiert, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
+Definieren Sie zunächst Ihren virtuellen Computer mit [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). Im folgenden Beispiel wird die VM *myVM* mit einer VM-Größe definiert, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
 
 ```powershell
-$vmConfig = New-AzureRmVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
+$vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
 ```
 
 Eine Liste aller VM-Größen und -Eigenschaften finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Erstellen Sie die restliche Konfiguration des virtuellen Computers mit [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) und [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage). Im folgenden Beispiel wird eine Windows Server 2016-VM erstellt:
+Erstellen Sie die restliche Konfiguration des virtuellen Computers mit [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) und [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). Im folgenden Beispiel wird eine Windows Server 2016-VM erstellt:
 
 ```powershell
-$vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig `
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
     -Windows `
     -ComputerName "myVM" `
     -Credential $cred `
     -ProvisionVMAgent `
     -EnableAutoUpdate
-$vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig `
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig `
     -PublisherName "MicrosoftWindowsServer" `
     -Offer "WindowsServer" `
     -Skus "2016-Datacenter" `
     -Version "latest"
 ```
 
-Fügen Sie die beiden Netzwerkschnittstellen, die Sie zuvor erstellt haben, mit [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) an:
+Fügen Sie die beiden Netzwerkschnittstellen, die Sie zuvor erstellt haben, mit [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) an:
 
 ```powershell
-$vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
 
-Erstellen Sie dann Ihren virtuellen Computer mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+Erstellen Sie dann Ihren virtuellen Computer mit [New-AzVM](/powershell/module/az.compute/new-azvm):
 
 ```powershell
-New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus"
+New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus"
 ```
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>Überprüfen, ob der Treiber im Betriebssystem installiert ist
@@ -224,7 +230,7 @@ Wenn Sie eine VM ohne beschleunigten Netzwerkbetrieb erstellt haben, können Sie
 Beenden Sie die VM, und heben Sie ihre Zuordnung auf. Falls es sich um eine Verfügbarkeitsgruppe handelt, führen Sie diese Vorgänge für alle VMs in der Gruppe aus:
 
 ```azurepowershell
-Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
+Stop-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -233,18 +239,18 @@ Wichtiger Hinweis: Wenn Ihre VM einzeln erstellt wurde (ohne Verfügbarkeitsgrup
 Aktivieren Sie dann den beschleunigten Netzwerkbetrieb in der Netzwerkschnittstelle Ihrer VM:
 
 ```azurepowershell
-$nic = Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+$nic = Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic"
 
 $nic.EnableAcceleratedNetworking = $true
 
-$nic | Set-AzureRmNetworkInterface
+$nic | Set-AzNetworkInterface
 ```
 
-Starten Sie Ihre VM bzw. im Fall einer Verfügbarkeitsgruppe alle VMs in der Gruppe neu, und überprüfen Sie, ob der beschleunigte Netzwerkbetrieb aktiviert wurde: 
+Starten Sie Ihre VM bzw. im Fall einer Verfügbarkeitsgruppe alle VMs in der Gruppe neu, und überprüfen Sie, ob der beschleunigte Netzwerkbetrieb aktiviert wurde:
 
 ```azurepowershell
-Start-AzureRmVM -ResourceGroup "myResourceGroup" `
+Start-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -252,29 +258,29 @@ Start-AzureRmVM -ResourceGroup "myResourceGroup" `
 Eine VM-Skalierungsgruppe funktioniert etwas anders, folgt aber dem gleichen Workflow.  Beenden Sie zuerst die VMs:
 
 ```azurepowershell
-Stop-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+Stop-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet"
 ```
 
 Sobald alle VMs beendet sind, aktualisieren Sie die Eigenschaft für den beschleunigten Netzwerkbetrieb in der Netzwerkschnittstelle:
 
 ```azurepowershell
-$vmss = Get-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+$vmss = Get-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet"
 
 $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].EnableAcceleratedNetworking = $true
 
-Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+Update-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet" `
     -VirtualMachineScaleSet $vmss
 ```
 
-Beachten Sie, dass eine VM-Skalierungsgruppe VM-Upgrades hat, die Aktualisierungen entsprechend drei unterschiedlichen Einstellungen anwenden: „Automatisch“, „Parallel“ (Rolling) und „Manuell“.  In diesen Anweisungen wird die Richtlinie auf „Automatisch“ festgelegt, sodass die VM-Skalierungsgruppe die Änderungen sofort nach dem Neustart übernimmt.  So legen Sie die Einstellung auf „Automatisch“ fest, damit die Änderungen sofort übernommen werden: 
+Beachten Sie, dass eine VM-Skalierungsgruppe VM-Upgrades hat, die Aktualisierungen entsprechend drei unterschiedlichen Einstellungen anwenden: „Automatisch“, „Parallel“ (Rolling) und „Manuell“.  In diesen Anweisungen wird die Richtlinie auf „Automatisch“ festgelegt, sodass die VM-Skalierungsgruppe die Änderungen sofort nach dem Neustart übernimmt.  So legen Sie die Einstellung auf „Automatisch“ fest, damit die Änderungen sofort übernommen werden:
 
 ```azurepowershell
 $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
 
-Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+Update-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet" `
     -VirtualMachineScaleSet $vmss
 ```
@@ -282,7 +288,7 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
 Starten Sie schließlich die VM-Skalierungsgruppe neu:
 
 ```azurepowershell
-Start-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+Start-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet"
 ```
 
@@ -292,11 +298,8 @@ Warten Sie, bis die Upgrades nach dem Neustart vollständig abgeschlossen sind. 
 
 VMs mit aktiviertem beschleunigtem Netzwerkbetrieb können nur zu VM-Größen geändert werden, die den beschleunigten Netzwerkbetrieb unterstützen.  
 
-Eine VM mit aktiviertem beschleunigtem Netzwerkbetrieb kann nicht in eine VM-Instanz geändert werden, die den beschleunigten Netzwerkbetrieb nicht unterstützt.  Ändern Sie die VM-Größe stattdessen in eine der folgenden VMs: 
+Eine VM mit aktiviertem beschleunigtem Netzwerkbetrieb kann nicht in eine VM-Instanz geändert werden, die den beschleunigten Netzwerkbetrieb nicht unterstützt.  Ändern Sie die VM-Größe stattdessen in eine der folgenden VMs:
 
 * Beenden Sie die VM, und heben Sie ihre Zuordnung auf. Falls es sich um eine VM-Skalierungsgruppe handelt, führen Sie diese Vorgänge für alle VMs in der Gruppe aus.
 * Der beschleunigte Netzwerkbetrieb muss in der Netzwerkschnittstelle der VM bzw. im Fall einer Verfügbarkeits- oder VM-Skalierungsgruppe in den Netzwerkschnittstellen aller VMs deaktiviert werden.
-* Sobald der beschleunigte Netzwerkbetrieb deaktiviert ist, kann die VM bzw. die Verfügbarkeits- oder VM-Skalierungsgruppe in eine neue Größe ohne Unterstützung des beschleunigten Netzwerkbetriebs geändert und neu gestartet werden.  
-
-
-
+* Sobald der beschleunigte Netzwerkbetrieb deaktiviert ist, kann die VM bzw. die Verfügbarkeits- oder VM-Skalierungsgruppe in eine neue Größe ohne Unterstützung des beschleunigten Netzwerkbetriebs geändert und neu gestartet werden.

@@ -17,14 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9b4dc2e48093398077071eb2423a80c86eb62c67
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ad09d41b004fe2b8a4090dce16a7a70f9c57b1f3
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894937"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651498"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Weiterleiten von Netzwerkdatenverkehr über eine Routingtabelle mithilfe von PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Standardmäßig leitet Azure den Datenverkehr automatisch durch alle Subnetze des virtuellen Netzwerks. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist beispielsweise hilfreich, wenn Sie über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -40,20 +42,20 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-route-table"></a>Erstellen einer Routingtabelle
 
-Bevor Sie eine Routingtabelle erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* für alle in diesem Artikel erstellten Ressourcen erstellt: 
+Bevor Sie eine Routingtabelle erstellen können, müssen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* für alle in diesem Artikel erstellten Ressourcen erstellt:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Erstellen Sie eine Routingtabelle mit [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable). Im folgenden Beispiel wird eine Routingtabelle mit dem Namen *myRouteTablePublic* erstellt.
+Erstellen Sie eine Routingtabelle mit [New-AzRouteTable](/powershell/module/az.network/new-azroutetable). Im folgenden Beispiel wird eine Routingtabelle mit dem Namen *myRouteTablePublic* erstellt.
 
 ```azurepowershell-interactive
-$routeTablePublic = New-AzureRmRouteTable `
+$routeTablePublic = New-AzRouteTable `
   -Name 'myRouteTablePublic' `
   -ResourceGroupName myResourceGroup `
   -location EastUS
@@ -61,66 +63,66 @@ $routeTablePublic = New-AzureRmRouteTable `
 
 ## <a name="create-a-route"></a>Erstellen einer Route
 
-Erstellen Sie eine Route, indem Sie ein Routingtabellenobjekt mit [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable) abrufen, eine Route mit [Add-AzureRmRouteConfig](/powershell/module/azurerm.network/add-azurermrouteconfig) erstellen und dann die Routingkonfiguration mit [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable) in die Routingtabelle schreiben. 
+Erstellen Sie eine Route, indem Sie ein Routingtabellenobjekt mit [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) abrufen, eine Route mit [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) erstellen und dann die Routingkonfiguration mit [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) in die Routingtabelle schreiben.
 
 ```azurepowershell-interactive
-Get-AzureRmRouteTable `
+Get-AzRouteTable `
   -ResourceGroupName "myResourceGroup" `
   -Name "myRouteTablePublic" `
-  | Add-AzureRmRouteConfig `
+  | Add-AzRouteConfig `
   -Name "ToPrivateSubnet" `
   -AddressPrefix 10.0.1.0/24 `
   -NextHopType "VirtualAppliance" `
   -NextHopIpAddress 10.0.2.4 `
- | Set-AzureRmRouteTable
+ | Set-AzRouteTable
 ```
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Zuordnen einer Routingtabelle zu einem Subnetz
 
-Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein virtuelles Netzwerk und ein Subnetz erstellen. Erstellen Sie mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVirtualNetwork* mit dem Adresspräfix *10.0.0.0/16* erstellt.
+Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein virtuelles Netzwerk und ein Subnetz erstellen. Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVirtualNetwork* mit dem Adresspräfix *10.0.0.0/16* erstellt.
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Erstellen Sie durch die Erstellung dreier Subnetzkonfigurationen drei Subnetze mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Im folgenden Beispiel werden drei Subnetzkonfigurationen für die Subnetze *Öffentlich*, *Privat* und *DMZ* erstellt:
+Erstellen Sie durch die Erstellung dreier Subnetzkonfigurationen drei Subnetze mit [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Im folgenden Beispiel werden drei Subnetzkonfigurationen für die Subnetze *Öffentlich*, *Privat* und *DMZ* erstellt:
 
 ```azurepowershell-interactive
-$subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -Name Public `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork
 
-$subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
   -Name Private `
   -AddressPrefix 10.0.1.0/24 `
   -VirtualNetwork $virtualNetwork
 
-$subnetConfigDmz = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
   -Name DMZ `
   -AddressPrefix 10.0.2.0/24 `
   -VirtualNetwork $virtualNetwork
 ```
 
-Schreiben Sie die Subnetzkonfiguration mit [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) in das virtuelle Netzwerk. Dabei werden die Subnetze im virtuellen Netzwerk erstellt:
+Schreiben Sie die Subnetzkonfiguration mit [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) in das virtuelle Netzwerk. Dabei werden die Subnetze im virtuellen Netzwerk erstellt:
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
-Ordnen Sie die Routingtabelle *myRouteTablePublic* mithilfe von [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) dem Subnetz *Öffentlich* zu, und schreiben Sie die Subnetzkonfiguration dann mit [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) in das virtuelle Netzwerk.
+Ordnen Sie die Routingtabelle *myRouteTablePublic* mithilfe von [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) dem Subnetz *Öffentlich* zu, und schreiben Sie die Subnetzkonfiguration dann mit [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) in das virtuelle Netzwerk.
 
 ```azurepowershell-interactive
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
   -RouteTable $routeTablePublic | `
-Set-AzureRmVirtualNetwork
+Set-AzVirtualNetwork
 ```
 
 ## <a name="create-an-nva"></a>Erstellen eines virtuellen Netzwerkgeräts
@@ -131,21 +133,21 @@ Vor dem Erstellen eines virtuellen Computers erstellen Sie eine Netzwerkschnitts
 
 ### <a name="create-a-network-interface"></a>Erstellen einer Netzwerkschnittstelle
 
-Vor dem Erstellen einer Netzwerkschnittstelle müssen Sie mit [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) die ID des virtuellen Netzwerks und dann mit [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig) die ID des Subnetzes abrufen. Erstellen Sie mit aktivierter IP-Weiterleitung eine Netzwerkschnittstelle mit [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) im Subnetz *DMZ*:
+Vor dem Erstellen einer Netzwerkschnittstelle müssen Sie mit [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) die ID des virtuellen Netzwerks und dann mit [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) die ID des Subnetzes abrufen. Erstellen Sie mit aktivierter IP-Weiterleitung eine Netzwerkschnittstelle mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) im Subnetz *DMZ*:
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
-$virtualNetwork=Get-AzureRmVirtualNetwork `
+$virtualNetwork=Get-AzVirtualNetwork `
   -Name myVirtualNetwork `
   -ResourceGroupName myResourceGroup
 
 # Retrieve the subnet configuration into a variable.
-$subnetConfigDmz = Get-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigDmz = Get-AzVirtualNetworkSubnetConfig `
   -Name DMZ `
   -VirtualNetwork $virtualNetwork
 
 # Create the network interface.
-$nic = New-AzureRmNetworkInterface `
+$nic = New-AzNetworkInterface `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name 'myVmNva' `
@@ -155,31 +157,31 @@ $nic = New-AzureRmNetworkInterface `
 
 ### <a name="create-a-vm"></a>Erstellen einer VM
 
-Um einen virtuellen Computer zu erstellen und diesem eine vorhandene Netzwerkschnittstelle anzufügen, müssen Sie mit [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) zuerst die Konfiguration eines virtuellen Computers erstellen. Die Konfiguration beinhaltet die im vorherigen Schritt erstellte Netzwerkschnittstelle. Wählen Sie bei entsprechender Aufforderung den Benutzernamen und das Kennwort aus, mit denen Sie sich beim virtuellen Computer anmelden möchten. 
+Um einen virtuellen Computer zu erstellen und diesem eine vorhandene Netzwerkschnittstelle anzufügen, müssen Sie mit [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) zuerst die Konfiguration eines virtuellen Computers erstellen. Die Konfiguration beinhaltet die im vorherigen Schritt erstellte Netzwerkschnittstelle. Wählen Sie bei entsprechender Aufforderung den Benutzernamen und das Kennwort aus, mit denen Sie sich beim virtuellen Computer anmelden möchten.
 
 ```azurepowershell-interactive
 # Create a credential object.
 $cred = Get-Credential -Message "Enter a username and password for the VM."
 
 # Create a VM configuration.
-$vmConfig = New-AzureRmVMConfig `
+$vmConfig = New-AzVMConfig `
   -VMName 'myVmNva' `
   -VMSize Standard_DS2 | `
-  Set-AzureRmVMOperatingSystem -Windows `
+  Set-AzVMOperatingSystem -Windows `
     -ComputerName 'myVmNva' `
     -Credential $cred | `
-  Set-AzureRmVMSourceImage `
+  Set-AzVMSourceImage `
     -PublisherName MicrosoftWindowsServer `
     -Offer WindowsServer `
     -Skus 2016-Datacenter `
     -Version latest | `
-  Add-AzureRmVMNetworkInterface -Id $nic.Id
+  Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Erstellen Sie den virtuellen Computer mithilfe der VM-Konfiguration mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Im folgenden Beispiel wird ein virtueller Computer namens *myVmNva* erstellt. 
+Erstellen Sie den virtuellen Computer mithilfe der VM-Konfiguration mit [New-AzVM](/powershell/module/az.compute/new-azvm). Im folgenden Beispiel wird ein virtueller Computer namens *myVmNva* erstellt.
 
 ```azurepowershell-interactive
-$vmNva = New-AzureRmVM `
+$vmNva = New-AzVM `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -VM $vmConfig `
@@ -190,12 +192,12 @@ Mit der Option `-AsJob` wird der virtuelle Computer im Hintergrund erstellt, sod
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, damit Sie in einem späteren Schritt diesen Datenverkehr aus dem Subnetz *Public* über das virtuelle Netzwerkgerät an das Subnetz *Private* weiterleiten können. 
+Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, damit Sie in einem späteren Schritt diesen Datenverkehr aus dem Subnetz *Public* über das virtuelle Netzwerkgerät an das Subnetz *Private* weiterleiten können.
 
-Erstellen Sie mit *New-AzureRmVM* eine VM im Subnetz [Public](/powershell/module/azurerm.compute/new-azurermvm). Im folgenden Beispiel wird ein virtueller Computer namens *myVmPublic* im Subnetz *Public* des virtuellen Netzwerks *myVirtualNetwork* erstellt. 
+Erstellen Sie mit *New-AzVM* eine VM im Subnetz [Public](/powershell/module/az.compute/new-azvm). Im folgenden Beispiel wird ein virtueller Computer namens *myVmPublic* im Subnetz *Public* des virtuellen Netzwerks *myVirtualNetwork* erstellt.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork" `
@@ -208,7 +210,7 @@ New-AzureRmVm `
 Erstellen Sie eine VM im Subnetz *Private*.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork" `
@@ -219,12 +221,12 @@ New-AzureRmVm `
 
 Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit dem nächsten Schritt fort, wenn der virtuelle Computer erstellt ist und Azure eine Ausgabe an PowerShell zurückgegeben hat.
 
-## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über eine NVA
+## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
-Geben Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse der *myVmPrivate*-VM zurück. Das folgende Beispiel gibt die öffentliche IP-Adresse der *myVmPrivate*-VM zurück:
+Geben Sie mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse der *myVmPrivate*-VM zurück. Das folgende Beispiel gibt die öffentliche IP-Adresse der *myVmPrivate*-VM zurück:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmPrivate `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -238,9 +240,9 @@ mstsc /v:<publicIpAddress>
 
 Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
-Geben Sie den Benutzernamen und das Kennwort ein, wie beim Erstellen des virtuellen Computers angegeben. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie anschließend auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren. 
+Geben Sie den Benutzernamen und das Kennwort ein, wie beim Erstellen des virtuellen Computers angegeben. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie anschließend auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren.
 
-In einem späteren Schritt wird das Routing mithilfe des Befehls „tracert.exe“ getestet. Tracert verwendet das Internet Control Message-Protokoll (ICMP), das über die Windows-Firewall verweigert wird. Geben Sie auf der VM *myVmPrivate* in PowerShell den folgenden Befehl ein, um ICMP in der Windows-Firewall zuzulassen:
+In einem späteren Schritt wird das Routing mithilfe des Befehls `tracert.exe` getestet. Tracert verwendet das Internet Control Message-Protokoll (ICMP), das über die Windows-Firewall verweigert wird. Geben Sie auf der VM *myVmPrivate* in PowerShell den folgenden Befehl ein, um ICMP in der Windows-Firewall zuzulassen:
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
@@ -255,13 +257,13 @@ Stellen Sie über eine Eingabeaufforderung auf der VM *myVmPrivate* eine Remoted
 ``` 
 mstsc /v:myvmnva
 ```
-    
+
 Geben Sie auf der VM *myVmNva* in PowerShell den folgenden Befehl ein, um im Betriebssystem die IP-Weiterleitung zu aktivieren:
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
 ```
-    
+
 Starten Sie die VM *myVmNva* neu. Dadurch wird auch die Remotedesktopsitzung getrennt.
 
 Erstellen Sie nach dem Neustart der VM *myVmNva* bei bestehender Verbindung mit der VM *myVmPrivate* eine Remotedesktopsitzung mit der VM *myVmPublic*:
@@ -269,7 +271,7 @@ Erstellen Sie nach dem Neustart der VM *myVmNva* bei bestehender Verbindung mit 
 ``` 
 mstsc /v:myVmPublic
 ```
-    
+
 Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um ICMP-Datenverkehr in der Windows-Firewall zuzulassen:
 
 ```powershell
@@ -283,17 +285,17 @@ tracert myVmPrivate
 ```
 
 Die Antwort ähnelt dem folgenden Beispiel:
-    
+
 ```
 Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
 over a maximum of 30 hops:
-        
+
 1    <1 ms     *        1 ms  10.0.2.4
 2     1 ms     1 ms     1 ms  10.0.1.4
-        
+
 Trace complete.
 ```
-      
+
 Wie Sie sehen können, ist der erste Hop 10.0.2.4, die private IP-Adresse des virtuellen Netzwerksgeräts. Der zweite Hop ist 10.0.1.4, die private IP-Adresse der VM *myVmPrivate*. Die Route, die der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Public* zugeordnet wurde, hat bewirkt, dass Azure Datenverkehr über das virtuelle Netzwerkgerät weiterleitet und nicht direkt an das Subnetz *Private*.
 
 Schließen Sie die Remotedesktopsitzung mit der VM *myVmPublic*, sodass Sie nur noch mit der VM *myVmPrivate* verbunden sind.
@@ -309,9 +311,9 @@ Die Antwort ähnelt dem folgenden Beispiel:
 ```
 Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
 over a maximum of 30 hops:
-    
+
 1     1 ms     1 ms     1 ms  10.0.0.4
-   
+
 Trace complete.
 ```
 
@@ -321,10 +323,10 @@ Schließen Sie die Remotedesktopsitzung mit der VM *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen:
+Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, entfernen Sie sie mit dem Befehl [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup).
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

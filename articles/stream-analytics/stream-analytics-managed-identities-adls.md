@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 194f43a0005f17a22b3a60d6decd049444e56c20
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745775"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570112"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten (Vorschau)
 
@@ -23,13 +23,15 @@ Lesen Sie den Blogbeitrag [Eight new features in Azure Stream Analytics](https:/
 
 Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für einen Azure Stream Analytics-Auftrag zu aktivieren, dessen Ausgabe an Azure Data Lake Storage Gen1 erfolgt: das Azure-Portal, die Bereitstellung mithilfe von Azure Resource Manager-Vorlagen und Azure Stream Analytics-Tools für Visual Studio.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="azure-portal"></a>Azure-Portal
 
 1. Erstellen Sie zunächst einen neuen Stream Analytics-Auftrag, oder öffnen Sie einen vorhandenen Auftrag im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität (Vorschau)**.
 
    ![Konfigurieren einer verwalteten Identität für Stream Analytics (Vorschau)](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Wählen Sie im rechts angezeigten Fenster die Option **Vom System zugewiesene verwaltete Identität verwenden (Vorschau)**. Klicken Sie auf **Speichern**, um einen Dienstprinzipal für die Identität des Stream Analytics-Auftrags in Azure Active Directory zu erstellen. Der Lebenszyklus der neu erstellten Identität wird von Azure verwaltet. Wenn der Stream Analytics-Auftrag gelöscht wird, wird die zugeordnete Identität (also der Dienstprinzipal) von Azure automatisch ebenfalls gelöscht.
+2. Wählen Sie im rechts angezeigten Fenster die Option **Vom System zugewiesene verwaltete Identität verwenden (Vorschau)**. Klicken Sie auf **Speichern** für einen Dienstprinzipal für die Identität des Stream Analytics-Auftrags in Azure Active Directory. Der Lebenszyklus der neu erstellten Identität wird von Azure verwaltet. Wenn der Stream Analytics-Auftrag gelöscht wird, wird die zugeordnete Identität (also der Dienstprinzipal) von Azure automatisch ebenfalls gelöscht.
 
    Nach dem Speichern der Konfiguration wird die Objekt-ID (OIS) des Dienstprinzipals als Prinzipal-ID aufgeführt, wie hier gezeigt:
 
@@ -91,62 +93,61 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
 
 1. Sie können eine *Microsoft.StreamAnalytics/streamingjobs*-Ressource mit einer verwalteten Identität erstellen, indem Sie die folgende Eigenschaft in den Ressourcenabschnitt Ihrer Resource Manager-Vorlage einfügen:
 
-   ```json
-   "Identity": {
-   "Type": "SystemAssigned",
-   },
-   ```
+    ```json
+    "Identity": {
+      "Type": "SystemAssigned",
+    },
+    ```
 
    Diese Eigenschaft weist Azure Resource Manager an, die Identität für Ihren Azure Stream Analytics-Auftrag zu erstellen und zu verwalten.
 
    **Beispielauftrag**
 
-   ```json
-   { 
-   "Name": "AsaJobWithIdentity", 
-   "Type": "Microsoft.StreamAnalytics/streamingjobs", 
-   "Location": "West US",
-   "Identity": {
-     "Type": "SystemAssigned", 
-     }, 
-   "properties": {
-      "sku": {
-       "name": "standard"
-       },
-   "outputs": [
-         {
-           "name": "string",
-           "properties":{
-             "datasource": {        
-               "type": "Microsoft.DataLake/Accounts",
-               "properties": {
-                 "accountName": “myDataLakeAccountName",
-                 "filePathPrefix": “cluster1/logs/{date}/{time}",
-                 "dateFormat": "YYYY/MM/DD",
-                 "timeFormat": "HH",
-                 "authenticationMode": "Msi"
-                 }
-                 
-   }
+    ```json
+    {
+      "Name": "AsaJobWithIdentity",
+      "Type": "Microsoft.StreamAnalytics/streamingjobs",
+      "Location": "West US",
+      "Identity": {
+        "Type": "SystemAssigned",
+      },
+      "properties": {
+        "sku": {
+          "name": "standard"
+        },
+        "outputs": [
+          {
+            "name": "string",
+            "properties":{
+              "datasource": {
+                "type": "Microsoft.DataLake/Accounts",
+                "properties": {
+                  "accountName": "myDataLakeAccountName",
+                  "filePathPrefix": "cluster1/logs/{date}/{time}",
+                  "dateFormat": "YYYY/MM/DD",
+                  "timeFormat": "HH",
+                  "authenticationMode": "Msi"
+                }
+              }
    ```
   
    **Antwort des Beispielauftrags**
 
    ```json
-   { 
-   "Name": "mySAJob", 
-   "Type": "Microsoft.StreamAnalytics/streamingjobs", 
-   "Location": "West US",
-   "Identity": {
-   "Type": "SystemAssigned",
-    "principalId": "GUID", 
-    "tenantId": "GUID", 
-   }, 
-   "properties": {
-           "sku": {
-             "name": "standard"
-           },
-   }
+   {
+    "Name": "mySAJob",
+    "Type": "Microsoft.StreamAnalytics/streamingjobs",
+    "Location": "West US",
+    "Identity": {
+      "Type": "SystemAssigned",
+        "principalId": "GUID",
+        "tenantId": "GUID",
+      },
+      "properties": {
+        "sku": {
+          "name": "standard"
+        },
+      }
    ```
 
    Notieren Sie sich die Prinzipal-ID der Auftragsantwort, um Zugriff auf die angeforderte ADLS-Ressource zu gewähren.
@@ -158,7 +159,7 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
 2. Gewähren Sie Zugriff auf den Dienstprinzipal über PowerShell. Um über PowerShell Zugriff auf den Dienstprinzipal zu gewähren, führen Sie folgenden Befehl aus:
 
    ```powershell
-   Set-AzureRmDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
+   Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
    Die **PrincipalId** ist die Objekt-ID des Dienstprinzipals und wird im Portal aufgeführt, sobald der Dienstprinzipal erstellt wurde. Wenn Sie den Auftrag mithilfe einer Resource Manager-Vorlagenbereitstellung erstellt haben, wird die Objekt-ID in der Identity-Eigenschaft der Auftragsantwort aufgeführt.
@@ -166,11 +167,19 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
    **Beispiel**
 
    ```powershell
-   PS > Set-AzureRmDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
+   PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Weitere Informationen zum oben gezeigten PowerShell-Befehl finden Sie in der Dokumentation zu [Set-AzureRmDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters).
+   Weitere Informationen zum oben gezeigten PowerShell-Befehl finden Sie in der Dokumentation zu [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry).
+
+## <a name="limitations"></a>Einschränkungen
+Diese Funktion unterstützt die folgenden Punkte nicht:
+
+1.  **Zugriff auf mehrere Mandanten**: Der für einen bestimmten Stream Analytics-Auftrag erstellte Dienstprinzipal wird in dem Azure Active Directory-Mandanten ausgeführt, in dem der Auftrag erstellt wurde, und kann nicht für eine Ressource verwendet werden, die sich in einem anderen Azure Active Directory-Mandanten befindet. Daher können Sie MSI nur für ADLS Gen 1-Ressourcen verwenden, die sich im gleichen Azure Active Directory-Mandanten wie Ihr Azure Stream Analytics-Auftrag befinden. 
+
+2.  **[Vom Benutzer zugewiesene Identität](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**: wird nicht unterstützt. Das heißt, der Benutzer kann nicht seinen eigenen Dienstprinzipal eingeben, um ihn für seinen Stream Analytics-Auftrag zu verwenden. Der Dienstprinzipal wird von Azure Stream Analytics generiert. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

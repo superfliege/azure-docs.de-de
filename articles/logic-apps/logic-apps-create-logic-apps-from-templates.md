@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229756"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193448"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 
@@ -52,7 +52,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
    | **Abonnement** | *Name-Ihres-Azure-Abonnements* | Wählen Sie das gewünschte Azure-Abonnement aus. | 
    | **Ressourcengruppe** | *Name-Ihrer-Azure-Ressourcengruppe* | Erstellen bzw. wählen Sie eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) für diese Logik-App und zum Organisieren aller Ressourcen, die der App zugeordnet sind. | 
    | **Location** | *Ihre-Azure-Datencenterregion* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus, z.B. „USA, Westen“. | 
-   | **Log Analytics** | **Aus** (Standard) oder **Ein** | Aktivieren Sie die [Diagnoseprotokollierung](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) für Ihre Logik-App über [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Hierfür ist es erforderlich, dass Sie bereits über einen Log Analytics-Arbeitsbereich verfügen. | 
+   | **Log Analytics** | **Aus** (Standard) oder **Ein** | Aktivieren Sie die [Diagnoseprotokollierung](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) für Ihre Logik-App über [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md). Hierfür ist es erforderlich, dass Sie bereits über einen Log Analytics-Arbeitsbereich verfügen. | 
    |||| 
 
 4. Wählen Sie die Option **An Dashboard anheften**, wenn Sie fertig sind. Ihre Logik-App wird dann automatisch in Ihrem Azure-Dashboard angezeigt und nach der Bereitstellung geöffnet. Wählen Sie **Erstellen**.

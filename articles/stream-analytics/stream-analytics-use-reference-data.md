@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329812"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546474"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 Verweisdaten werden auch als Nachschlagetabelle bezeichnet und sind ein begrenztes statisches oder sich nur langsam veränderndes Dataset, das für die Suche oder Korrelation mit Ihrem Datenstrom verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. 
@@ -78,7 +78,7 @@ Azure SQL-Datenbank-Verweisdaten werden durch den Stream Analytics-Auftrag abger
 
 Wenn es sich bei den Verweisdaten um ein sich langsam änderndes Dataset handelt, müssen Sie die im Auftrag verwendete Momentaufnahme in regelmäßigen Abständen aktualisieren. In Stream Analytics können Sie beim Konfigurieren der Azure SQL-Datenbank-Eingabeverbindung eine Aktualisierungsrate festlegen. Die Stream Analytics-Runtime fragt die Azure SQL-Datenbank-Instanz in dem durch die Aktualisierungsrate angegebenen Intervall ab. Als schnellste Aktualisierungsrate wird einmal pro Minute unterstützt. Für jede Aktualisierung wird in Stream Analytics eine neue Momentaufnahme im angegebenen Speicherkonto gespeichert.
 
-Stream Analytics umfasst zwei Möglichkeiten zum Abfragen von Azure SQL-Datenbank. Eine Momentaufnahmeabfrage ist obligatorisch und muss in jedem Auftrag enthalten sein. In Stream Analytics wird die Momentaufnahmeabfrage regelmäßig basierend auf dem Aktualisierungsintervall durchgeführt, und das Ergebnis der Abfrage (die Momentaufnahme) wird als Verweisdataset verwendet. Die Momentaufnahmeabfrage sollte sich für die meisten Szenarien eignen. Wenn jedoch bei großen Datasets und schnellen Aktualisierungsraten Leistungsprobleme auftreten, können Sie die Option für die Deltaabfrage verwenden.
+Stream Analytics umfasst zwei Möglichkeiten zum Abfragen von Azure SQL-Datenbank. Eine Momentaufnahmeabfrage ist obligatorisch und muss in jedem Auftrag enthalten sein. In Stream Analytics wird die Momentaufnahmeabfrage regelmäßig basierend auf dem Aktualisierungsintervall durchgeführt, und das Ergebnis der Abfrage (die Momentaufnahme) wird als Verweisdataset verwendet. Die Momentaufnahmeabfrage sollte sich für die meisten Szenarien eignen. Wenn jedoch bei großen Datasets und schnellen Aktualisierungsraten Leistungsprobleme auftreten, können Sie die Option für die Deltaabfrage verwenden. Abfragen, die mehr als 60 Sekunden benötigen, um ein Verweisdataset zurückzugeben, führen zu einem Timeout.
 
 Mit der Deltaabfrage wird in Stream Analytics zunächst die Momentaufnahmeabfrage durchgeführt, um ein Basis-Verweisdataset abzurufen. Anschließend wird regelmäßig die Deltaabfrage gemäß dem Aktualisierungsintervall durchgeführt, um inkrementelle Änderungen abzurufen. Diese inkrementellen Änderungen werden fortlaufend auf das Verweisdataset angewandt, um es auf dem neuesten Stand zu halten. Durch Verwendung von Deltaabfragen können sich die Speicherkosten und E/A-Netzwerkvorgänge verringern.
 

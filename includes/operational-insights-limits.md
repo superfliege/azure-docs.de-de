@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755758"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553692"
 ---
-Für Log Analytics-Ressourcen gelten pro Abonnement die folgenden Einschränkungen:
+Für Azure Log Analytics-Ressourcen gelten pro Abonnement die folgenden Einschränkungen.
 
 | Ressource | Standardlimit | Kommentare
 | --- | --- | --- |
 | Anzahl von kostenlosen Arbeitsbereichen pro Abonnement | 10 | Dieser Grenzwert kann nicht erhöht werden. |
-| Anzahl von kostenpflichtigen Arbeitsbereichen pro Abonnement | N/V | Sie sind durch die Anzahl von Ressourcen innerhalb einer Ressourcengruppe und die Anzahl von Ressourcengruppen pro Abonnement eingeschränkt. | 
+| Anzahl von kostenpflichtigen Arbeitsbereichen pro Abonnement | – | Sie sind durch die Anzahl der Ressourcen innerhalb einer Ressourcengruppe und die Anzahl der Ressourcengruppen pro Abonnement eingeschränkt. | 
 
 >[!NOTE]
->Ab 2. April 2018 verwenden neue Arbeitsbereiche in einem neuen Abonnement automatisch den Tarif *Pro GB*.  Bei Abonnements, die vor dem 2. April erstellt wurden oder mit einer vorhandenen EA-Registrierung verknüpft sind, können Sie für neue Arbeitsbereiche weiterhin zwischen drei Tarifen wählen. 
+>Ab 2. April 2018 verwenden neue Arbeitsbereiche in einem neuen Abonnement automatisch den Tarif *Pro GB*. Bei Abonnements, die vor dem 2. April erstellt wurden oder mit einer vorhandenen Enterprise Agreement-Registrierung verknüpft sind, können Sie für neue Arbeitsbereiche weiterhin zwischen drei Tarifen wählen. 
 >
 
-Die folgenden Grenzwerte gelten für jeden Log Analytics-Arbeitsbereich:
+Die folgenden Grenzwerte gelten für jeden Log Analytics-Arbeitsbereich.
 
 |  | Kostenlos | Standard | Premium | Eigenständig | OMS | Pro GB |
 | --- | --- | --- | --- | --- | --- |--- |
@@ -40,5 +40,5 @@ Die folgenden Grenzwerte gelten für jeden Log Analytics-Arbeitsbereich:
 | Category (Kategorie) | Einschränkungen | Kommentare
 | --- | --- | --- |
 | Data Collector API (Datensammler-API) | Die maximale Größe für einen einzelnen Beitrag beträgt 30 MB.<br>Die maximale Größe für Feldwerte beträgt 32 KB. | Teilen Sie größere Volumen auf mehrere Beiträge auf.<br>Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
-| Search-API | 5000 zurückgegebene Datensätze (nicht aggregierte Daten)<br>500.000 Datensätze (aggregierte Daten) | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `summarize` enthält.
+| Search-API | 5.000 zurückgegebene Datensätze (nicht aggregierte Daten).<br>500.000 Datensätze (aggregierte Daten). | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `summarize` enthält.
  

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9f818715895c2ff2c5d0e1758aaf17a2393287d2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050644"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534939"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
 
@@ -35,6 +35,8 @@ So können Sie z.B. in der Datenverkehrsansicht nachvollziehen, welche Regionen 
 
 Grundlage der Datenverkehrsansicht ist das Vergleichen der in den letzten sieben Tagen eingegangenen Abfragen durch Traffic Manager mit einem Profil, für das dieses Feature aktiviert ist. Aus den Informationen der eingegangenen Abfragen extrahiert die Datenverkehrsansicht die Quell-IP-Adresse des DNS-Resolvers, die als Darstellung des Standorts der Benutzer verwendet wird. Diese werden anschließend mit einer Granularität auf DNS-Resolverebene gruppiert, um Regionen von Benutzergruppen zu erstellen, indem die geografischen Informationen der von Traffic Manager verwalteten IP-Adressen verwendet werden. Traffic Manager sieht sich dann die Azure-Regionen an, an die die Abfrage geleitet wurde, und erstellt eine Karte des Datenverkehrsflusses der Benutzer aus diesen Regionen.  
 Im nächsten Schritt korreliert Traffic Manager die Benutzergruppenregion mit der Azure-Regionskarte mithilfe der Informationen in den Tabellen mit den Netzwerkwartezeiten. Diese werden für verschiedene Endbenutzernetzwerke verwaltet, um die durchschnittliche Wartezeit für Benutzer aus diesen Regionen zu ermitteln, wenn eine Verbindung mit Azure-Regionen hergestellt wird. Alle diese Berechnungen werden dann kombiniert, und zwar pro lokaler IP-Adressebene des DNS-Resolvers, bevor sie Ihnen angezeigt werden. Sie können die Informationen auf verschiedene Weise nutzen.
+
+Die Häufigkeit der Datenaktualisierung in der Datenverkehrsanzeige hängt von mehreren internen Dienstvariablen ab. Allerdings werden die Daten in der Regel einmal alle 24 Stunden aktualisiert.
 
 >[!NOTE]
 >Die in der Datenverkehrsansicht beschriebene Wartezeit ist eine repräsentative Wartezeit zwischen dem Endbenutzer und den Azure-Regionen, mit denen eine Verbindung hergestellt wurde, und nicht die Wartezeit von DNS-Lookup. Die Datenverkehrsansicht liefert eine bestmögliche Schätzung der Wartezeit zwischen der lokalen DNS-Auflösung und der Azure-Region, an die die Abfrage weitergeleitet wurde. Sollten nicht genügend Daten zur Verfügung stehen, wird für die Wartezeit ein Nullwert zurückgegeben. 

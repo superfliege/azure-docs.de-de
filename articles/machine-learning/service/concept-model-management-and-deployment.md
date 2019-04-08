@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: chris-lauren
 ms.author: clauren
-ms.date: 09/24/2018
+ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7f24e242168fc969d0f0d920dce0e6d9562a295
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241839"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403684"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
 In diesem Artikel lernen Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen. 
 
-Das folgende Diagramm veranschaulicht den vollständigen Bereitstellungsworkflow: [ ![Bereitstellungsworkflow für Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+Das folgende Diagramm veranschaulicht den vollständigen Bereitstellungsworkflow: [ ![Bereitstellungsworkflow für Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Der Bereitstellungsworkflow umfasst die folgenden Schritte:
 1. **Registrieren des Modells** in einer Registrierung, die in Ihrem Azure Machine Learning Services-Arbeitsbereich gehostet wird
@@ -33,7 +33,7 @@ Der Bereitstellungsworkflow umfasst die folgenden Schritte:
 
 Jeder Schritt kann alleine oder als Teil eines einzelnen Bereitstellungsbefehls ausgeführt werden. Darüber hinaus können Sie die Bereitstellung in einen **CI/CD-Workflow** integrieren, wie in dieser Grafik dargestellt.
 
-[ ![ Zyklus: Continuous Integration/Continuous Deployment (CI/CD) für Azure Machine Learning](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[ ![ ‚Zyklus: Continuous Integration/Continuous Deployment (CI/CD) für Azure Machine Learning‘](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>Schritt 1: Registrieren des Modells
 
@@ -73,7 +73,7 @@ Sie können registrierte Images in der Cloud und auf Edgegeräten bereitstellen.
 
 Webdienstbereitstellungen sind auch durchsuchbar. So können Sie beispielsweise nach allen Bereitstellungen eines bestimmten Modells oder Images suchen.
 
-[ ![Rückschlussziele](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[ ![Rückschlussziele](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 Für Ihre Images sind die folgenden Bereitstellungsziele in der Cloud verfügbar:
 
@@ -105,6 +105,6 @@ Aktualisierungen für das Modell werden nicht automatisch registriert. Ebenso wi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr darüber [wie und auf welchen Instanzen Modelle mit dem Azure Machine Learning-Dienst bereitgestellt werden können](how-to-deploy-and-where.md).
+Erfahren Sie mehr darüber [wie und auf welchen Instanzen Modelle mit dem Azure Machine Learning-Dienst bereitgestellt werden können](how-to-deploy-and-where.md). Ein Bereitstellungsbeispiel finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
 Erfahren Sie, wie Sie Clientanwendungen und -dienste erstellen, die [ein Modell verwenden, das als Webdienst bereitgestellt wird](how-to-consume-web-service.md).

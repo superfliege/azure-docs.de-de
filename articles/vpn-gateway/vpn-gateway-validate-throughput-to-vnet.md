@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035617"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821660"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -49,7 +49,7 @@ Das folgende Diagramm zeigt die logische Verbindung von einem lokalen Netzwerk m
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>Berechnen des maximal erwarteten Eingangs/Ausgangs
 
 1.  Bestimmen Sie die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung.
-2.  Bestimmen Sie die Durchsatzlimits für Ihr Azure VPN Gateway. Hilfe finden Sie im Abschnitt „Aggregieren des Durchsatzes nach SKU und VPN-Typ“ unter [Planung und Entwurf für VPN Gateway](vpn-gateway-plan-design.md).
+2.  Bestimmen Sie die Durchsatzlimits für Ihr Azure VPN Gateway. Wenn Sie Hilfe benötigen, lesen Sie den Abschnitt „Gateway-SKUs“ von [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
 3.  Bestimmen Sie die [Durchsatzanleitung des virtuellen Azure-Computers](../virtual-machines/virtual-machines-windows-sizes.md) für die Größe Ihres virtuellen Computers.
 4.  Bestimmen Sie die Bandbreite Ihres Internetdienstanbieters.
 5.  Berechnen Sie Ihren erwarteten Durchsatz – Niedrigste Bandbreite von (virtueller Computer, Gateway, Internetdienstanbieter) * 0,8.
@@ -77,7 +77,7 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
 
 2. Aktivieren Sie auf beiden Knoten eine Firewallausnahme für Port 5001.
 
-    **Windows**: Führen Sie den folgenden Befehl als Administrator aus:
+    **Windows:** Führen Sie den folgenden Befehl als Administrator aus:
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -89,7 +89,7 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
      
-    **Azure Linux:** Azure Linux-Images besitzen tolerante Firewalls. Wenn eine Anwendung einen Port überwacht, wird der Datenverkehr durchgelassen. Für benutzerdefinierte Images, die gesichert sind, müssen die Ports möglicherweise explizit geöffnet werden. Allgemeine Firewalls der Linux-Betriebssystemebene enthalten `iptables`, `ufw` oder `firewalld`.
+    **Azure Linux:**  Azure Linux-Images besitzen tolerante Firewalls. Wenn eine Anwendung einen Port überwacht, wird der Datenverkehr durchgelassen. Für benutzerdefinierte Images, die gesichert sind, müssen die Ports möglicherweise explizit geöffnet werden. Allgemeine Firewalls der Linux-Betriebssystemebene enthalten `iptables`, `ufw` oder `firewalld`.
 
 3. Wechseln Sie auf dem Serverknoten in das Verzeichnis, in dem „iperf3.exe“ extrahiert wird. Führen Sie dann iPerf im Modus „Server“ aus, und legen Sie die Überwachung von Port 5001 mit den folgenden Befehlen fest:
 

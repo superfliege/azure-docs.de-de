@@ -5,16 +5,17 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
+ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231609"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789940"
 ---
 # <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Szenario: Auslösen von Logik-Apps mit Azure Functions und Azure Service Bus
 
@@ -36,7 +37,7 @@ In diesem Beispiel führen Sie eine Funktion für jede Logik-App aus, die ausgel
 
    Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zunächst das Dokument [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Geben Sie im Suchfeld den Begriff „HTTP-Anforderung“. Wählen Sie unter der Triggerliste diesen Trigger aus: **Beim Empfang einer HTTP-Anforderung**
+1. Geben Sie im Suchfeld den Begriff „HTTP-Anforderung“. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**
 
    ![Trigger auswählen](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -98,7 +99,7 @@ Als erstellen Sie eine Funktion, die als Trigger fungiert und an der Warteschlan
 
 1. Öffnen und erweitern Sie im Azure-Portal Ihre Funktionen-App, falls sie noch nicht geöffnet ist. 
 
-1. Erweitern Sie unter den Namen Ihrer Funktionen-App **Funktionen**. Klicken Sie im Bereich **Funktionen** auf **Neue Funktion**. Wählen Sie diese Vorlage aus: **Service Bus-Warteschlangentrigger – C#**
+1. Erweitern Sie unter den Namen Ihrer Funktionen-App **Funktionen**. Klicken Sie im Bereich **Funktionen** auf **Neue Funktion**. Diese Vorlage verwenden: **ServiceBus-Warteschlangentrigger – C#**
    
    ![Azure Functions-Portal auswählen](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 
@@ -114,14 +115,14 @@ Als erstellen Sie eine Funktion, die als Trigger fungiert und an der Warteschlan
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   private static HttpClient httpClient = new HttpClient();
+   
    public static void Run(string myQueueItem, TraceWriter log)
    {
        log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
-       using (var client = new HttpClient())
-       {
-           var response = client.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
-       }
+       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
    }
    ```
 
