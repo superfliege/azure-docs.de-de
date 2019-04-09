@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: be19d37900acb8201922fa61fda61cc884d4c933
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6e161bcf2c38db0fd614eac1a211218785179ec3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226010"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620775"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Tutorial: Integrieren mit verwalteten Azure-Identitäten
 
-Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität können Sie Ihren Code für die Nutzung des Dienstprinzipals einrichten, der für den Azure-Computedienst erstellt wurde, auf dem die Ausführung erfolgt.  Sie verwenden also eine verwaltete Identität anstelle separater Anmeldeinformationen, die in Azure Key Vault oder einer lokalen Verbindungszeichenfolge gespeichert sind. 
+Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität können Sie Ihren Code für die Nutzung des Dienstprinzipals einrichten, der für den Azure-Computedienst erstellt wurde, auf dem die Ausführung erfolgt. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind. 
 
 Azure App Configuration und die zugehörigen .NET Core-, .NET- und Java Spring-Clientbibliotheken verfügen über integrierte MSI-Unterstützung (Managed Service Identity, Verwaltete Dienstidentität). Zwar müssen Sie MSI nicht verwenden, doch entfällt hierbei die Notwendigkeit für das Zugriffstoken mit Geheimnissen. Ihr Code muss nur den Dienstendpunkt für einen App-Konfigurationsspeicher kennen, um darauf zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne sich Sorgen machen zu müssen, dass geheime Schlüssel offengelegt werden.
 
@@ -91,7 +91,8 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(o => o.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"]));
+                config.AddAzureAppConfiguration(options =>
+                    options.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"]));
             })
             .UseStartup<Startup>();
     ```

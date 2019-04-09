@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: b8b5c2cef1db5018ce0d61e1950f49a3bd215ac2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402897"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801678"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)
 
@@ -30,6 +30,8 @@ Sie benötigen Folgendes, um Ihren Windows Virtual Desktop-Mandanten einzurichte
 * Die Mandanten-ID von [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für Windows Virtual Desktop-Benutzer.
 * Ein globales Administratorkonto im Azure Active Directory-Mandanten.
    * Dies gilt auch für CSP-Organisationen (Cloud Solution Provider), die einen Windows Virtual Desktop-Mandanten für ihre Kunden erstellen. Wenn Sie eine CSP-Organisation sind, müssen Sie sich als globaler Administrator der Azure Active Directory-Instanz des Kunden anmelden können.
+   * Das Administratorkonto muss aus dem Azure Active Directory-Mandanten stammen, in dem Sie den Windows Virtual Desktop-Mandanten erstellen möchten. Azure Active Directory B2B-Konten (Gastkonten) werden bei diesem Prozess nicht unterstützt.
+   * Das Administratorkonto muss ein Geschäfts-, Schul- oder Unikonto sein.
 * Azure-Abonnement-ID
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Gewähren von Azure Active Directory-Berechtigungen für den Windows Virtual Desktop-Dienst (Vorschauversion)
@@ -75,7 +77,7 @@ Zunächst müssen Sie das [Windows Virtual Desktop-Modul herunterladen und impor
 Melden Sie sich mit dem TenantCreator-Benutzerkonto an Windows Virtual Desktop an, indem Sie dieses Cmdlet verwenden:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 Erstellen Sie anschließend einen neuen Windows Virtual Desktop-Mandanten, der dem Azure Active Directory-Mandanten zugeordnet ist:

@@ -1,5 +1,5 @@
 ---
-title: Was ist die visuelle Bing-Suche?
+title: Was ist die API für die visuelle Bing-Suche?
 titleSuffix: Azure Cognitive Services
 description: Die visuelle Bing-Suche stellt Details oder Informationen zu einem Bild bereit, wie z. B. ähnliche Bilder oder Einkaufsquellen.
 services: cognitive-services
@@ -8,22 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 04/10/2018
+ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9e323e9ec928d9f8b0592850adcd088a589ebf28
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8bcb0372ebb60ac3a46cf06bf85322b288e153ba
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863090"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630203"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 
-Die API für die visuelle Bing-Suche bietet ähnliche Bilddetails wie auf „bing.com/images“. Durch Hochladen oder Angabe einer URL für ein Bild kann diese API eine Vielzahl entsprechender Details ermitteln. Dazu gehören visuell ähnliche Bilder, Einkaufsquellen, Webseiten, die das Bild enthalten, und vieles mehr. Bei Verwendung der [Bing-Bildersuche-API](../bing-image-search/overview.md) können Sie Erkenntnistoken verwenden, die den Suchergebnissen der API angefügt sind, statt ein Bild hochzuladen.
+Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“.
+
+Bei Verwendung der [Bing-Bildersuche-API](../bing-image-search/overview.md) können Sie für Ihre visuelle Bing-Suche Erkenntnistoken aus den Suchergebnissen dieser API verwenden, anstatt ein Bild hochzuladen.
+
+> [!IMPORTANT]
+> Wenn Sie Bildauswertungen mit der Bing-Bildersuche-API abrufen, können Sie auch zur API für die visuelle Bing-Suche wechseln, die umfassendere Erkenntnisse bietet.
 
 ## <a name="insights"></a>Einblicke
 
-Mit der visuellen Suche erhalten Sie die folgenden Informationen:
+Mit der visuellen Bing-Suche können folgende Erkenntnisse ermittelt werden:
 
 | Erkenntnis                              | BESCHREIBUNG |
 |--------------------------------------|-------------|
@@ -31,37 +36,30 @@ Mit der visuellen Suche erhalten Sie die folgenden Informationen:
 | Visuell ähnliche Produkte            | Produkte, die dem gezeigten Produkt visuell ähnlich sind.            |
 | Einkaufsquellen                     | Orte, an denen Sie das Produkt auf dem Eingabebild kaufen können.            |
 | Verwandte Suchvorgänge                     | Verwandte Suchvorgängen, die von anderen durchgeführt wurden oder die auf dem Bildinhalt basieren.            |
-| Webseiten, die das Bild enthalten     | Webseiten, die das Eingabebild enthalten.            |
+| Webseiten, auf denen das Bild vorkommt     | Webseiten, die das Eingabebild enthalten.            |
 | Rezepte                              | Webseiten, die Rezepte für das Gericht auf dem Eingabebild enthalten.            |
 
-Zusätzlich zu diesen Informationen werden bei der visuellen Suche auch verschiedene Begriffe (Tags) zurückgegeben, die vom Eingabebild abgeleitet werden. Über diese Tags können Sie sich mit den zugeordneten Bildkonzepten vertraut machen. Zeigt das Eingabebild beispielsweise einen bekannten Sportler, könnte eines der Tags etwa den Namen des Sportlers darstellen, ein anderes könnte „Sport“ lauten. Oder bei dem Bild eines Apfelkuchens könnten die Tags z.B. „Apfelkuchen“, „Kuchen“, „Nachtisch“ lauten. Auf diese Weise können sich Benutzer auch mit verwandten Themen befassen.
+Neben Erkenntnissen gibt die visuelle Bing-Suche auch verschiedene, aus dem Eingabebild abgeleitete Begriffe (Tags) zurück. Anhand dieser Tags können Benutzer Konzepte erkunden, die in dem Bild gefunden wurden. Zeigt das Eingabebild beispielsweise einen bekannten Sportler, kann etwa eines der Tags den Namen des Sportlers und ein anderes den Begriff „Sport“ enthalten. Beim Bild eines Apfelkuchens können die Tags beispielsweise „Apfelkuchen“, „Kuchen“ und „Nachtisch“ lauten.
 
-Die Ergebnisse der visuellen Suche beinhalten auch Begrenzungsrahmen für relevante Bildbereiche. Sind auf dem Bild beispielsweise mehrere Prominente abgebildet, können die Ergebnisse etwa Begrenzungsrahmen für jeden erkannten Prominenten enthalten. Oder wenn Bing auf dem Bild ein Produkt oder Kleidungsstück erkennt, beinhaltet das Ergebnis möglicherweise einen Begrenzungsrahmen für das erkannte Produkt oder Kleidungsstück.
-
-> [!IMPORTANT]
-> Wenn Sie Bildauswertungen mit der Bing-Bildersuche-API abrufen, können Sie auch zur API für die visuelle Bing-Suche wechseln, die umfassendere Erkenntnisse bietet.
+Die Ergebnisse der visuellen Bing-Suche beinhalten auch Begrenzungsrahmen für relevante Bildbereiche. Sind auf dem Bild beispielsweise mehrere Prominente abgebildet, können die Ergebnisse etwa Begrenzungsrahmen für jeden erkannten Prominenten enthalten. Wenn Bing auf dem Bild ein Produkt oder Kleidungsstück erkennt, kann das Ergebnis einen Begrenzungsrahmen für den erkannten Artikel enthalten.
 
 ## <a name="workflow"></a>Workflow
 
-Die API für die visuelle Bing-Suche ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann. Der Dienst kann entweder über die REST-API oder über das SDK verwendet werden.
+Die API für die visuelle Bing-Suche ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann. Für den Dienst kann entweder die REST-API oder das SDK verwendet werden.
 
-1. Erstellen Sie ein Cognitive Services-API-Konto mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen.
+1. Erstellen Sie ein [Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/). Sie können Ihren Abonnementschlüssel über das [Azure-Portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) abrufen, nachdem Sie Ihr Konto erstellt haben, oder über die [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis), nachdem Sie eine kostenlose Testversion aktiviert haben.
 2. Senden Sie eine Anforderung mit einer gültigen Suchabfrage an die API.
 3. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich zunächst die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/) für die Bing-Bildersuche-API an.
+Sehen Sie sich zunächst die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/) zur API für die visuelle Bing-Suche an.
 Diese Demo zeigt, wie Sie schnell eine Suchabfrage anpassen und das Web nach Bildern durchsuchen.
-
-Wenn Sie zum Aufrufen der API bereit sind, erstellen Sie ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
 Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
-
 ## <a name="see-also"></a>Weitere Informationen
 
-* Die [Referenz zur visuellen Bing-Suche](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) enthält Definitionen und Informationen zu den Endpunkten, Headern, API-Antworten und Abfrageparametern, die Sie verwenden können, um bildbasierte Suchergebnisse anzufordern.
+* Die Referenz [Images - Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) (Bilder: visuelle Suche) enthält Definitionen und Informationen zu den Endpunkten, Anforderungsheadern, Antworten und Abfrageparametern, die Sie verwenden können, um bildbasierte Suchergebnisse anzufordern.
 
-* In den [Verwendungs- und Anzeigeanforderungen für Bing](./use-and-display-requirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.
+* In den [Anforderungen für die Verwendung und Anzeige der Bing-Suche-API](../bing-web-search/use-display-requirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.

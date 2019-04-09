@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517945"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622194"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -77,21 +77,28 @@ Sie können die Konfiguration so durchführen, dass Warnungen basierend auf Metr
 
 So konfigurieren Sie Warnungen:
 
-1. Klicken Sie auf der Menüleiste am unteren Seitenrand auf **Warnungen (klassisch)**.
+1. Klicken Sie im unteren Seitenbereich auf der Menüleiste auf **Warnungen**.
 
-    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Wählen Sie **Metrikwarnung hinzufügen** aus.
-3. Geben Sie unter **Name** einen Namen für die Warnung ein.
-4. Wählen Sie als zu überwachende Metrik **Nicht autorisierte Gatewayanforderungen** aus.
-5. Wählen Sie **Email owners, contributors, and readers** (E-Mail an Besitzer, Mitwirkende und Leser senden) aus.
-6. Klicken Sie auf **OK**.
-7. Versuchen Sie, die Konferenz-API ohne API-Schlüssel aufzurufen. Als Besitzer dieses API Management-Diensts erhalten Sie eine E-Mail-Benachrichtigung. 
+2. Klicken Sie für diese Warnung auf **Neue Warnungsregel**.
+3. Klicken Sie auf **Bedingung hinzufügen**.
+4. Wählen Sie in der Dropdownliste für den Signaltyp die Option **Metriken** aus.
+5. Wählen Sie **Unauthorized Gateway Request** (Nicht autorisierte Gatewayanforderung) als zu überwachendes Signal aus.
 
-    > [!TIP]
-    > Die Warnungsregel kann bei Auslösung auch einen Webhook oder eine Azure-Logik-App aufrufen.
+    ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-    ![set-up-alert](./media/api-management-azure-monitor/set-up-alert.png)
+6. Geben Sie in der Ansicht **Signallogik konfigurieren** einen Schwellenwert an, nach dem die Warnung ausgelöst werden soll, und klicken Sie anschließend auf **Fertig**.
+
+    ![alerts](./media/api-management-azure-monitor/threshold.png)
+
+7. Wählen Sie eine vorhandene Aktionsgruppe aus, oder erstellen Sie eine neue Aktionsgruppe. Im folgenden Beispiel wird eine E-Mail an die Administratoren gesendet. 
+
+    ![alerts](./media/api-management-azure-monitor/action-details.png)
+
+8. Geben Sie einen Namen und eine Beschreibung für die Warnungsregel an, und wählen Sie den Schweregrad aus. 
+9. Klicken Sie auf **Warnungsregel erstellen**.
+10. Versuchen Sie nun, die Konferenz-API ohne API-Schlüssel aufzurufen. Die Warnung wird ausgelöst, und eine E-Mail wird an die Administratoren gesendet. 
 
 ## <a name="activity-logs"></a>Aktivitätsprotokolle
 
@@ -184,7 +191,7 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 | correlationId | Zeichenfolge | Von API Management zugewiesene eindeutige HTTP-Anforderungs-ID |
 | location | Zeichenfolge | Name der Azure-Region, in der sich das Gateway befindet, das die Anforderung verarbeitet hat |
 | httpStatusCodeCategory | Zeichenfolge | Kategorie des HTTP-Antwortstatuscodes: Erfolgreich (301 oder darunter, 304 oder 307), Nicht autorisiert (401, 403, 429), Erroneous (Fehler) (400, zwischen 500 und 600), Other (Sonstiges) |
-| Ressourcen-ID | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/\<Abonnement>/RESOURCEGROUPS/\<Ressourcengruppe>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<Name> |
+| Ressourcen-ID | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/\<Abonnement>/RESOURCEGROUPS/\<Ressourcengruppe>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<Name> |
 | Eigenschaften | object | Eigenschaften der aktuellen Anforderung |
 | method | Zeichenfolge | HTTP-Methode der eingehenden Anforderung |
 | URL | Zeichenfolge | URL der eingehenden Anforderung |

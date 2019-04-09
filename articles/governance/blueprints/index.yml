@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bc646bd1c1e2ada45971359b9a17d71d66e301d4
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58800436"
 documentType: LandingData
 title: Dokumentation zum Azure Blueprints-Dienst
 metadata:
-  title: Azure Blueprint-Dokumentation – Tutorials, API Reference
-  description: Azure Blueprint ist ein Dienst in Azure, den Sie zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
-  services: blueprints
+  title: 'Azure Blueprint-Dokumentation – Tutorials, API Reference'
+  description: 'Azure Blueprint ist ein Dienst in Azure, den Sie zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.'
   author: DCtheGeek
   manager: carmonm
   ms.service: blueprints
@@ -18,34 +11,34 @@ metadata:
   ms.date: 03/26/2019
   ms.author: dacoulte
 abstract:
-  description: Azure Blueprints unterstützt Sie beim Bereitstellen und Aktualisieren von Cloudumgebungen auf wiederholbare Weise mit zusammensetzbaren Artefakten, z. B. Azure Resource Manager-Vorlagen zum Bereitstellen von Ressourcen, rollenbasierter Zugriffssteuerung und Richtlinien.
+  description: "Azure Blueprints unterstützt Sie beim Bereitstellen und Aktualisieren von Cloudumgebungen auf wiederholbare Weise mit zusammensetzbaren Artefakten, z.\_B. Azure Resource Manager-Vorlagen zum Bereitstellen von Ressourcen, rollenbasierter Zugriffssteuerung und Richtlinien."
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Informationen zum Erstellen, Zuweisen und Verwalten von Blaupausendefinitionen in Azure
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        alt: Azure-Portal
-        src: ./media/portal.svg
-      text: Azure-Portal
-      href: create-blueprint-portal.md
-    - image:
-        alt: REST
-        src: ./media/rest.svg
-      text: REST
-      href: create-blueprint-rest-api.md
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Informationen zum Erstellen, Zuweisen und Verwalten von Blaupausendefinitionen in Azure'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure-Portal
+              src: ./media/portal.svg
+            text: Azure-Portal
+            href: create-blueprint-portal.md
+          - image:
+              alt: REST
+              src: ./media/rest.svg
+            text: REST
+            href: create-blueprint-rest-api.md
+  - title: Verweis
     items:
-    - title: Befehlszeile
-      html: <p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK für .NET</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/blueprints/">API-Referenz</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
+          - title: Languages
+            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK für .NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/blueprints/">API-Referenz</a></p>

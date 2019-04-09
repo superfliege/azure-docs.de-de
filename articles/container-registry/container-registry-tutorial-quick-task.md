@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860472"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893706"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -30,7 +30,7 @@ Dieser erste Teil einer Tutorialreihe umfasst Folgendes:
 > * Erstellen eines Containerimages in Azure
 > * Bereitstellen eines Containers für Azure Container Instances
 
-In den weiteren Tutorials erfahren Sie, wie Sie mithilfe von Tasks Containerimage-Buildvorgänge automatisieren, wenn Code committet oder ein Basisimage aktualisiert wird. ACR Tasks kann mithilfe einer YAML-Datei, in der Schritte zum Erstellen, Pushen und optional zum Testen mehrerer Container definiert werden, auch [Aufgaben mit mehreren Schritten](container-registry-tasks-multi-step.md) ausführen (derzeit als Vorschauversion verfügbar).
+In den weiteren Tutorials erfahren Sie, wie Sie mithilfe von Tasks Containerimage-Buildvorgänge automatisieren, wenn Code committet oder ein Basisimage aktualisiert wird. ACR Tasks kann mithilfe einer YAML-Datei, in der Schritte zum Erstellen, Pushen und optional zum Testen mehrerer Container definiert werden, auch [Aufgaben mit mehreren Schritten](container-registry-tasks-multi-step.md) ausführen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 98eb2574ab427f2d5727d74a077628d3a7f829bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213b227c4ab3f97d9f8787f4e84348e36c43a6e6
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311454"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630503"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Schnellstart: Analysieren eines Remotebilds mit der Maschinelles Sehen-REST-API und Java
 
@@ -57,8 +57,6 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
    1. Ersetzen Sie optional den Wert von `imageToAnalyze` durch die URL eines anderen Bilds, das analysiert werden soll.
-1. Speichern Sie die Änderungen, und erstellen Sie dann das Java-Projekt.
-1. Wenn Sie eine IDE verwenden, führen Sie `Main` aus. Öffnen Sie andernfalls ein Eingabeaufforderungsfenster, und verwenden Sie dann den `java`-Befehl, um die kompilierte Klasse auszuführen. Beispiel: `java Main`.
 
 ```java
 public class Main {
@@ -125,6 +123,25 @@ public class Main {
     }
 }
 ```
+
+## <a name="compile-and-run-the-program"></a>Kompilieren und Ausführen des Programms
+
+1. Speichern Sie die Änderungen, und erstellen Sie dann das Java-Projekt.
+1. Wenn Sie eine IDE verwenden, führen Sie `Main` aus.
+
+Falls Sie das Programm über ein Befehlszeilenfenster ausführen, führen Sie stattdessen folgende Befehle aus. Bei diesen Befehlen wird davon ausgegangen, dass sich Ihre Bibliotheken in einem Ordner namens `libs` befinden, der sich im gleichen Ordner befindet wie `Main.java`. Ersetzen Sie andernfalls `libs` durch den Pfad zu Ihren Bibliotheken.
+
+1. Kompilieren Sie die Datei `Main.java`.
+
+    ```bash
+    javac -cp ".;libs/*" Main.java
+    ```
+
+1. Führen Sie das Programm aus. Hiermit wird die Anforderung an die QnA Maker-API gesendet, um die Wissensdatenbank zu erstellen, und dann werden alle 30 Sekunden die Ergebnisse abgefragt. Jede Antwort wird im Befehlszeilenfenster ausgegeben.
+
+    ```bash
+    java -cp ".;libs/*" Main
+    ```
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 

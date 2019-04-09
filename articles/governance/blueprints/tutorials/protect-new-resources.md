@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie mit den Azure Blueprints-Ressourcensperr
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2018
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: e3a05329ea247dbf5baa23ae9b3d32f909c0d1bb
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57855759"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629232"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 
@@ -38,9 +38,9 @@ Erstellen Sie zunächst die neue Blaupausendefinition.
 
 1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
-1. Wählen Sie links auf der Seite **Erste Schritte** unter **Blaupause erstellen** die Option _Erstellen_ aus.
+1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
-1. Navigieren Sie oben auf der Seite zum Blaupausenbeispiel **Blank sample** (Leeres Beispiel), und wählen Sie **Dieses Beispiel verwenden** aus.
+1. Navigieren Sie oben auf der Seite zum Blaupausenbeispiel **Leere Blaupause**, und wählen Sie **Mit leerer Blaupause beginnen** aus.
 
 1. Geben Sie die _Grundlagen_ des Blaupausenbeispiels ein:
 
@@ -54,7 +54,7 @@ Erstellen Sie zunächst die neue Blaupausendefinition.
    Wählen Sie „Ressourcengruppe“ für _Artefakttyp_. Legen Sie für _Anzeigename für Artefakt_ den Namen **RGtoLock** fest.
    Lassen Sie die Felder _Ressourcengruppenname_ und _Speicherort_ leer, aber stellen Sie sicher, dass die Kontrollkästchen aller Eigenschaften aktiviert sind, um sie zu **dynamischen Parametern** zu machen. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu: Wählen Sie unter dem Eintrag **RGtoLock** die Zeile **+ Artefakt hinzufügen...** aus. Wählen Sie „Azure Resource Manager-Vorlage“ als _Artefakttyp_ aus, legen Sie für _Artefaktanzeigename_ „StorageAccount“ fest, und lassen Sie _Beschreibung_ leer. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein. Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um dieses Artefakt zur Blaupause hinzuzufügen.
+1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu: Wählen Sie die Zeile **+ Artefakt hinzufügen** unter dem Eintrag **RGtoLock** aus. Wählen Sie „Azure Resource Manager-Vorlage“ als _Artefakttyp_ aus, legen Sie für _Artefaktanzeigename_ „StorageAccount“ fest, und lassen Sie _Beschreibung_ leer. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein. Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um dieses Artefakt zur Blaupause hinzuzufügen.
 
    ```json
    {
@@ -81,7 +81,7 @@ Erstellen Sie zunächst die neue Blaupausendefinition.
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "location": "[resourceGroups('RGtoLock').location]",
+           "location": "[resourceGroup().location]",
            "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
@@ -180,7 +180,9 @@ Die Zuweisung hat die Ressourcengruppe _TestingBPLocks_ und das vom Resource Ma
 
 1. Wählen Sie die Registerkarte **Ablehnungszuweisungen** aus.
 
-   Die Blaupausenzuweisung hat eine [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) für die bereitgestellte Ressourcengruppe erstellt, um den Blaupausensperrmodus _Schreibgeschützt_ zu erzwingen. Die Ablehnungszuweisung verhindert, dass ein Benutzer mit entsprechenden Berechtigungen auf der Registerkarte _Rollenzuweisungen_ bestimmte Aktionen durchführt. Die Ablehnungszuweisung gilt für _alle Prinzipale_.
+   Durch die Blaupausenzuweisung wurde eine [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) für die bereitgestellte Ressourcengruppe erstellt, um den Blaupausensperrmodus _Schreibgeschützt_ zu erzwingen. Die Ablehnungszuweisung verhindert, dass ein Benutzer mit entsprechenden Berechtigungen auf der Registerkarte _Rollenzuweisungen_ bestimmte Aktionen durchführt. Die Ablehnungszuweisung gilt für _alle Prinzipale_.
+
+   Weitere Informationen zum Ausschließen eines Prinzipals aus einer Ablehnungszuweisung finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
 
 1. Wählen Sie die Ablehnungszuweisung und dann links die Seite **Abgelehnte Berechtigungen** aus.
 
@@ -188,7 +190,7 @@ Die Zuweisung hat die Ressourcengruppe _TestingBPLocks_ und das vom Resource Ma
 
 1. Wählen Sie auf der Breadcrumb-Leiste im Azure-Portal **TestingBPLocks – Zugriffssteuerung (IAM)** aus. Wählen Sie dann links die Seite **Übersicht** aus, und klicken Sie anschließend auf die Schaltfläche **Ressourcengruppe löschen**. Geben Sie den Namen _TestingBPLocks_ ein, um den Löschvorgang zu bestätigen, und wählen Sie am unteren Rand des Bereichs die Option **Löschen** aus.
 
-   Die Portalbenachrichtigung **Fehler beim Löschen der Ressourcengruppe „TestingBPLocks“** wird angezeigt. Dieser Fehler weist darauf hin, dass Ihr Konto zwar über die Berechtigung zum Löschen der Ressourcengruppe verfügt, der Zugriff aber durch die Blaupausenzuweisung verweigert wird. Wie Sie sich erinnern, haben Sie während der Blaupausenzuweisung den Blaupausensperrmodus _Schreibgeschützt_ ausgewählt. Aufgrund der Blaupausensperre kann die Ressource weder von einem Konto mit entsprechender Berechtigung noch vom _Besitzer_ gelöscht werden. Weitere Informationen finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](../concepts/resource-locking.md).
+   Die Portalbenachrichtigung **Fehler beim Löschen der Ressourcengruppe „TestingBPLocks“** wird angezeigt. Dieser Fehler weist darauf hin, dass Ihr Konto zwar über die Berechtigung zum Löschen der Ressourcengruppe verfügt, der Zugriff aber durch die Blaupausenzuweisung verweigert wird. Wie Sie sich erinnern, haben Sie während der Blaupausenzuweisung den Blaupausensperrmodus _Schreibgeschützt_ ausgewählt. Aufgrund der Blaupausensperre kann die Ressource weder von einem Konto mit der entsprechenden Berechtigung noch vom _Besitzer_ gelöscht werden. Weitere Informationen finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](../concepts/resource-locking.md).
 
 Diese Schritte zeigen, dass die bereitgestellten Ressourcen nun durch Blaupausensperren geschützt sind, die ungewollte Löschungen verhindern (auch durch ein Konto mit der entsprechenden Berechtigung).
 

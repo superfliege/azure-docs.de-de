@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 11/06/2018
-ms.openlocfilehash: 556fc1f04cc6a1d1b594bdd3787ed43d30f607c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.openlocfilehash: 6b77cd9939e244fd031788164cdfe391c3e2b9d5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091170"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916392"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -25,38 +25,22 @@ Mit der Kafka Producer-API können Anwendungen Datenströme an den Kafka-Cluster
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Einrichten der Entwicklungsumgebung
-> * Einrichten Ihrer Bereitstellungsumgebung
+> * Voraussetzungen
 > * Grundlegendes zum Code
 > * Erstellen und Bereitstellen der Anwendung
 > * Ausführen der Anwendung im Cluster
 
 Weitere Informationen zu den APIs finden Sie in der Apache-Dokumentation unter [Producer API](https://kafka.apache.org/documentation/#producerapi) und [Consumer API](https://kafka.apache.org/documentation/#consumerapi).
 
-## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
+## <a name="prerequisites"></a>Voraussetzungen
 
-Die folgenden Komponenten müssen in der Entwicklungsumgebung installiert sein:
+* Apache Kafka in HDInsight 3.6. Informationen zum Erstellen eines Clusters für Kafka in HDInsight finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
 
-* [Java JDK 8](https://aka.ms/azure-jdks) oder ein gleichwertiges Kit, z.B. OpenJDK.
+* [Version 8 des Java Developer Kit (JDK)](https://aka.ms/azure-jdks) oder eine vergleichbare Lösung (etwa OpenJDK).
 
-* [Apache Maven](https://maven.apache.org/)
+* Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
 
-* Ein SSH-Client und der Befehl `scp`. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
-* Ein Text-Editor oder eine Java-IDE.
-
-Bei der Installation von Java und dem JDK auf Ihrer Entwicklungsworkstation können die folgenden Umgebungsvariablen festgelegt werden. Sie sollten dennoch prüfen, ob die Variablen vorhanden sind und korrekte Werte für Ihr System enthalten.
-
-* `JAVA_HOME` – sollte auf das Verzeichnis verweisen, in dem das JDK installiert ist.
-* `PATH` – sollte die folgenden Pfade enthalten:
-
-    * `JAVA_HOME` (oder entsprechender Pfad)
-    * `JAVA_HOME\bin` (oder entsprechender Pfad)
-    * Das Verzeichnis, in dem Maven installiert ist
-
-## <a name="set-up-your-deployment-environment"></a>Einrichten Ihrer Bereitstellungsumgebung
-
-Für dieses Tutorial benötigen Sie Apache Kafka in HDInsight 3.6. Informationen zum Erstellen eines Clusters für Kafka in HDInsight finden Sie im Dokument [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
+* Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
@@ -130,92 +114,102 @@ In diesem Code ist der Consumer so konfiguriert, dass er vom Beginn des Themas a
 
 ### <a name="runjava"></a>Run.java
 
-Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) bietet eine Befehlszeilenschnittstelle, die entweder den Producer- oder Consumer-Code ausführt. Sie müssen die Kafka-Brokerhostinformationen als Parameter angeben. Sie können optional einen Gruppen-ID-Wert einschließen, der vom Consumer-Prozess verwendet wird. Wenn Sie mehrere Consumer-Instanzen mit derselben Gruppen-ID erstellen, wird beim Lesen aus dem Thema ein Lastenausgleich zwischen ihnen durchgeführt.
+Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) bietet eine Befehlszeilenschnittstelle, die entweder den Producer- oder den Consumer-Code ausführt. Sie müssen die Kafka-Brokerhostinformationen als Parameter angeben. Sie können optional einen Gruppen-ID-Wert einschließen, der vom Consumer-Prozess verwendet wird. Wenn Sie mehrere Consumer-Instanzen mit der gleichen Gruppen-ID erstellen, wird beim Lesen aus dem Thema ein Lastenausgleich durchgeführt.
 
 ## <a name="build-and-deploy-the-example"></a>Erstellen und Bereitstellen des Beispiels
 
-Sie können die Schritte 1 und 2 für den Build überspringen und die vorkonfigurierte JAR-Datei („kafka-producer-consumer.jar“) von [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars) herunterladen. Kopieren Sie diese JAR-Datei anschließend in Ihren HDInsight-Cluster.
+1. Laden Sie die Beispiele aus [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) herunter, und extrahieren Sie sie.
 
-1. Laden Sie die Beispiele von [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) herunter.
+2. Legen Sie Ihr aktuelles Verzeichnis auf den Speicherort des Verzeichnisses `hdinsight-kafka-java-get-started\Producer-Consumer` fest, und verwenden Sie folgenden Befehl:
 
-2. Wechseln Sie zum Verzeichnis `Producer-Consumer`, und führen Sie folgenden Befehl aus:
-
-    ```
+    ```cmd
     mvn clean package
     ```
 
     Mit diesem Befehl wird ein Verzeichnis mit dem Namen `target` erstellt, das eine Datei namens `kafka-producer-consumer-1.0-SNAPSHOT.jar` enthält.
 
-3. Verwenden Sie die folgenden Befehle, um die Datei `kafka-producer-consumer-1.0-SNAPSHOT.jar` in Ihren HDInsight-Cluster zu kopieren:
+3. Ersetzen Sie `sshuser` durch den SSH-Benutzer für Ihren Cluster und `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie den folgenden Befehl ein, um die Datei `kafka-producer-consumer-1.0-SNAPSHOT.jar` in Ihren HDInsight-Cluster zu kopieren. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein.
 
-    ```bash
-    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+    ```cmd
+    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
-
-    Ersetzen Sie **SSHUSER** durch den SSH-Benutzer für Ihren Cluster, und ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein.
 
 ## <a id="run"></a>Ausführen des Beispiels
 
-1. Um eine SSH-Verbindung mit dem Cluster zu öffnen, führen Sie folgenden Befehl aus:
+1. Ersetzen Sie `sshuser` durch den SSH-Benutzer für Ihren Cluster und `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie den folgenden Befehl ein, um eine SSH-Verbindung mit dem Cluster zu öffnen. Geben Sie bei entsprechender Aufforderung das Kennwort für das SSH-Benutzerkonto ein.
 
-    ```bash
-    ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Ersetzen Sie **SSHUSER** durch den SSH-Benutzer für Ihren Cluster, und ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das SSH-Benutzerkonto ein. Weitere Informationen zum Verwenden von `scp` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
-2. Um die von diesem Beispiel verwendeten Kafka-Themen zu erstellen, führen Sie die folgenden Schritte aus:
-
-    1. Um den Clusternamen in einer Variablen zu speichern und ein JSON-Analysehilfsprogramm (`jq`) zu installieren, verwenden Sie die folgenden Befehle. Geben Sie bei entsprechender Aufforderung den Namen des Kafka-Clusters ein:
-    
-        ```bash
-        sudo apt -y install jq
-        read -p 'Enter your Kafka cluster name:' CLUSTERNAME
-        ```
-    
-    2. Um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen, verwenden Sie die folgenden Befehle. Geben Sie bei der entsprechenden Aufforderung das Kennwort des Anmeldekontos (Administrator) für den Cluster ein.
-    
-        ```bash
-        export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
-        ```
-
-    3. Um das `test`-Thema zu erstellen, verwenden Sie den folgenden Befehl:
-
-        ```bash
-        java -jar kafka-producer-consumer.jar create test $KAFKABROKERS
-        ```
-
-3. Um den Producer auszuführen und Daten in das Thema zu schreiben, führen Sie folgenden Befehl aus:
+2. Installieren Sie den JSON-Befehlszeilenprozessor [jq](https://stedolan.github.io/jq/). Geben Sie über die geöffnete SSH-Verbindung den folgenden Befehl ein, um `jq` zu installieren:
 
     ```bash
-    java -jar kafka-producer-consumer.jar producer test $KAFKABROKERS
+    sudo apt -y install jq
     ```
 
-4. Wenn der Producer abgeschlossen ist, führen Sie folgenden Befehl aus, um Daten aus dem Thema zu lesen:
+3. Richten Sie Umgebungsvariablen ein. Ersetzen Sie `PASSWORD` und `CLUSTERNAME` durch das Kennwort für die Clusteranmeldung bzw. durch den Clusternamen, und geben Sie anschließend den folgenden Befehl ein:
 
     ```bash
-    java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
+    export password='PASSWORD'
+    export clusterNameA='CLUSTERNAME'
+    ```
+
+4. Extrahieren Sie den Clusternamen mit korrekter Groß-/Kleinschreibung. Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet. Dieser Befehl ruft den Namen mit korrekter Groß-/Kleinschreibung ab, speichert ihn in einer Variablen und zeigt anschließend den Namen mit korrekter Groß-/Kleinschreibung sowie den Namen an, den Sie zuvor angegeben haben. Geben Sie den folgenden Befehl ein:
+
+    ```bash
+    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
+  	| jq -r '.items[].Clusters.cluster_name')
+    echo $clusterName, $clusterNameA
+    ```
+
+5. Verwenden Sie den folgenden Befehl, um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen:
+
+    ```bash
+    export KAFKABROKERS=`curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
+  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    ```
+
+6. Geben Sie den folgenden Befehl ein, um ein Kafka-Thema namens `myTest` zu erstellen:
+
+    ```bash
+    java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
+    ```
+
+7. Um den Producer auszuführen und Daten in das Thema zu schreiben, führen Sie folgenden Befehl aus:
+
+    ```bash
+    java -jar kafka-producer-consumer.jar producer myTest $KAFKABROKERS
+    ```
+
+8. Wenn der Producer abgeschlossen ist, führen Sie folgenden Befehl aus, um Daten aus dem Thema zu lesen:
+
+    ```bash
+    java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
     ```
 
     Die gelesenen Datensätze und die Anzahl von Datensätzen wird angezeigt.
 
-5. Drücken Sie __STRG+C__, um den Consumer zu beenden.
+9. Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
 ### <a name="multiple-consumers"></a>Mehrere Consumer
 
 Kafka-Consumer verwenden beim Lesen von Datensätzen eine Consumergruppe. Das Verwenden derselben Gruppe mit mehreren Consumern führt zu Lesevorgängen mit Lastenausgleich aus einem Thema. Jeder Consumer in der Gruppe erhält einen Teil der Datensätze.
 
-Die Consumer-Anwendung akzeptiert einen Parameter, der als Gruppen-ID verwendet wird. Der folgende Befehl beispielsweise startet einen Consumer mit der Gruppen-ID `mygroup`:
+Die Consumer-Anwendung akzeptiert einen Parameter, der als Gruppen-ID verwendet wird. Der folgende Befehl beispielsweise startet einen Consumer mit der Gruppen-ID `myGroup`:
 
 ```bash
-java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
+java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS myGroup
 ```
+
+Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
 Führen Sie den folgenden Befehl aus, um diesen Vorgang in Aktion zu sehen:
 
 ```bash
-tmux new-session 'java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup' \; split-w
-indow -h 'java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup' \; attach
+tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS myGroup' \
+\; split-window -h 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS myGroup' \
+\; attach
 ```
 
 Dieser Befehl teilt das Terminal mit `tmux` in zwei Spalten auf. In jeder Spalte wird ein Consumer mit dem gleichen Gruppen-ID-Wert gestartet. Beachten Sie nach Abschluss des Lesens durch die Consumer, dass jeder nur einen Teil der Datensätze gelesen hat. Drücken Sie zweimal __STRG+C__, um `tmux` zu beenden.
@@ -232,5 +226,5 @@ Datensätze werden in Kafka in der Reihenfolge gespeichert, in der sie in einer 
 In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
 
 * [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
-* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
+* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
 * [Apache Kafka Streams-API mit HDInsight](apache-kafka-streams-api.md)

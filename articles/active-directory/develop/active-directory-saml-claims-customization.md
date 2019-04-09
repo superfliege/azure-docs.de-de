@@ -13,47 +13,61 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2018
+ms.date: 04/03/2019
 ms.author: celested
-ms.reviewer: luleon, jeedes
+ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce02bd35d9cd4afd881ec276fabb0720b61c09
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444037"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878569"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
-Derzeit unterstützt Azure Active Directory (Azure AD) einmaliges Anmelden für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierter Anwendungen sowie benutzerdefinierter Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als „Ansprüche“ bezeichnet werden.
+Azure Active Directory (Azure AD) unterstützt derzeit einmaliges Anmelden (Single Sign-On, SSO) für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierter Anwendungen sowie benutzerdefinierter Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als *Ansprüche* bezeichnet werden.
 
 Ein *Anspruch* (Claim) bezeichnet Informationen, die ein Identitätsanbieter über einen Benutzer in dem für diesen Benutzer ausgestellten Token angibt. Im [SAML-Token](https://en.wikipedia.org/wiki/SAML_2.0) sind diese Daten in der Regel in der SAML-Attributanweisung enthalten. Die eindeutige ID des Benutzers wird normalerweise im SAML-Betreff dargestellt und auch als Namensbezeichner bezeichnet.
 
-Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen NameIdentifier-Anspruch enthält, dessen Wert dem Benutzernamen (also dem Benutzerprinzipalnamen) in Azure AD entspricht. Über diesen Wert kann der Benutzer eindeutig identifiziert werden. Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
+Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen `NameIdentifier`-Anspruch enthält, dessen Wert dem Benutzernamen (auch als Benutzerprinzipalname bezeichnet) in Azure AD entspricht, durch den der Benutzer eindeutig identifiziert werden kann. Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
 
-Um die im SAML-Token für die Anwendung ausgestellten Ansprüche anzuzeigen oder zu bearbeiten, öffnen Sie die Anwendung im Azure-Portal. Aktivieren Sie anschließend im Abschnitt **Benutzerattribute** der Anwendung das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**.
+Um die im SAML-Token für die Anwendung ausgestellten Ansprüche anzuzeigen oder zu bearbeiten, öffnen Sie die Anwendung im Azure-Portal. Öffnen Sie dann den Abschnitt **Benutzerattribute und Ansprüche**.
 
-![Abschnitt „Benutzerattribute“][1]
+![Abschnitt „Benutzerattribute und Ansprüche“](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 Es gibt zwei Gründe dafür, dass Sie die im SAML-Token ausgegebenen Ansprüche möglicherweise bearbeiten müssen:
+
+* Die Anwendung erfordert, dass es sich beim `NameIdentifier`- oder NameID-Anspruch nicht um den in Azure AD gespeicherten Benutzernamen (oder Benutzerprinzipalnamen) handelt.
 * Die Anwendung wurde so geschrieben, dass sie einen anderen Satz an Anspruchs-URIs oder Anspruchswerten erfordert.
-* Die Anwendung wurde auf eine Weise bereitgestellt, die erfordert, dass es sich beim NameIdentifier-Anspruch nicht um den in Azure AD gespeicherten Benutzernamen (also Benutzerprinzipalnamen) handelt.
 
-Sie können beliebige Standardwerte eines Anspruchs bearbeiten. Wählen Sie die Anspruchszeile in der Tabelle mit den SAML-Tokenattributen. Daraufhin wird der Abschnitt **Attribut bearbeiten** geöffnet, und Sie können den Anspruchsnamen und -wert sowie den dem Anspruch zugeordneten Namespace bearbeiten.
+## <a name="editing-nameid"></a>Bearbeiten der NameID
 
-![Benutzerattribut bearbeiten][2]
+Gehen Sie wie folgt vor, um die NameID (den Wert für den Namensbezeichner) zu bearbeiten:
 
-Sie können Ansprüche (mit Ausnahme des NameIdentifier-Anspruchs) über das Kontextmenü auch entfernen. Klicken Sie zum Öffnen dieses Menüs auf das Symbol **...**. Mithilfe der Schaltfläche **Attribut hinzufügen** können Sie darüber hinaus neue Ansprüche hinzufügen.
+1. Öffnen Sie die Seite **Wert für Namensbezeichner**.
+1. Wählen Sie das gewünschte Attribut oder die auf das Attribut anzuwendende Transformation aus. Optional können Sie auch ein Format für den NameID-Anspruch angeben.
 
-![Benutzerattribut bearbeiten][3]
+   ![NameID-Wert (Wert für Namensbezeichner) bearbeiten](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
-## <a name="editing-the-nameidentifier-claim"></a>Bearbeiten des NameIdentifier-Anspruchs
+### <a name="nameid-format"></a>NameID-Format
 
-Falls die Anwendung mit einem anderen Benutzernamen bereitgestellt wurde, klicken Sie im Abschnitt **Benutzerattribute** auf die Dropdownliste **Benutzer-ID**. Dadurch wird ein Dialogfeld mit mehreren Optionen angezeigt:
+Wenn die SAML-Anforderung das NameIDPolicy-Element in einem bestimmten Format enthält, berücksichtigt Azure AD das Format in der Anforderung.
 
-![Benutzerattribut bearbeiten][4]
+Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Azure AD die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Azure AD das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist.
+
+Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folgenden Optionen auswählen.
+
+| NameID-Format | BESCHREIBUNG |
+|---------------|-------------|
+| **Standard** | Azure AD verwendet das Standardquellformat. |
+| **Beständig** | Azure AD verwendet das NameID-Format „Persistent“. |
+| **EmailAddress** | Azure AD verwendet das NameID-Format „EmailAddress“. |
+| **Unspecified** | Azure AD verwendet das NameID-Format „Unspecified“. |
+| **Kurzlebig** | Azure AD verwendet das NameID-Format „Transient“. |
+
+Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Attribute
 
@@ -61,103 +75,62 @@ Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder Name
 
 | NAME | BESCHREIBUNG |
 |------|-------------|
-| E-Mail | Die E-Mail-Adresse des Benutzers. |
-| userprincipalName | Der Benutzerprinzipalname (UPN) des Benutzers. |
+| E-Mail | E-Mail-Adresse des Benutzers |
+| userprincipalName | Benutzerprinzipalname (User Principal Name, UPN) des Benutzers |
 | onpremisessamaccount | Der SAM-Kontoname der aus der lokalen Azure AD-Instanz synchronisiert wurde. |
-| objectID | Die objectID des Benutzers in Azure AD. |
-| EmployeeID | Die EmployeeID des Benutzers. |
+| objectid | Objekt-ID des Benutzers in Azure AD |
+| employeeid | Mitarbeiter-ID des Benutzers |
 | Verzeichniserweiterungen | Verzeichniserweiterungen, die [über die Azure AD Connect-Synchronisierung aus dem lokalen Active Directory synchronisiert wurden](../hybrid/how-to-connect-sync-feature-directory-extensions.md). |
 | Erweiterungsattribute 1–15 | Die lokalen Erweiterungsattribute, die zur Erweiterung des Azure AD-Schemas verwendet werden. |
 
-### <a name="transformations"></a>Transformationen
+Weitere Informationen finden Sie unter [Tabelle 3: Gültige ID-Werte pro Quelle](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
 
-Sie können auch die speziellen Funktionen für Anspruchstransformationen verwenden.
+### <a name="special-claims---transformations"></a>Besondere Ansprüche – Transformationen
+
+Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 
 | Funktion | BESCHREIBUNG |
 |----------|-------------|
-| **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse, dem SAM-Kontonamen oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
-| **join()** | Verknüpft ein Attribut mit einer überprüften Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
+| **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
+| **Join()** | Verknüpft ein Attribut mit einer überprüften Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
 | **ToLower()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
 | **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
 
-## <a name="adding-claims"></a>Hinzufügen von Ansprüchen
+## <a name="adding-application-specific-claims"></a>Hinzufügen anwendungsspezifischer Ansprüche
 
-Wenn Sie einen Anspruch hinzufügen, können Sie den Attributnamen angeben (der nicht unbedingt wie bei der SAML-Spezifikation einem URI-Muster entsprechen muss). Legen Sie den Wert auf ein beliebiges Benutzerattribut fest, das im Verzeichnis gespeichert ist, oder verwenden Sie einen konstanten Wert als statischen Einstiegspunkt für alle Benutzer in Ihrer Organisation.
+Gehen Sie wie folgt vor, um anwendungsspezifische Ansprüche hinzuzufügen:
 
-![Benutzerattribut hinzufügen][7]
+1. Wählen Sie im Abschnitt **Benutzerattribute und Ansprüche** die Option **Neuen Anspruch hinzufügen** aus, um die Seite **Benutzeransprüche verwalten** zu öffnen.
+1. Geben Sie den **Namen** der Ansprüche ein. Der Wert muss nicht unbedingt einem URI-Muster gemäß der SAML-Spezifikation folgen. Wenn Sie ein URI-Muster benötigen, können Sie es im Feld **Namespace** angeben.
+1. Wählen Sie die **Quelle** aus, aus der der Anspruch den zugehörigen Wert abruft. Sie können ein Benutzerattribut aus der Dropdownliste für „Quellattribut“ auswählen oder eine Transformation auf das Benutzerattribut anwenden, bevor es als Anspruch ausgegeben wird.
 
-Sie können beispielsweise die Abteilung des Benutzers in seiner Organisation als Anspruch übermitteln (z.B. Sales). Geben Sie den Anspruchsnamen ein, wie er von der Anwendung erwartet wird, und wählen Sie als Wert **user.department** aus.
+### <a name="application-specific-claims---transformations"></a>Anwendungsspezifische Ansprüche – Transformationen
 
-> [!NOTE]
-> Wenn für einen bestimmten Benutzer kein Wert für ein ausgewähltes Attribut gespeichert ist, wird dieser Anspruch nicht in dem Token ausgestellt.
+Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 
-> [!TIP]
-> Die Optionen **user.onpremisesecurityidentifier** und **user.onpremisesamaccountname** werden nur beim Synchronisieren von Benutzerdaten aus der lokalen Active Directory-Instanz mithilfe des Tools [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) unterstützt.
+| Funktion | BESCHREIBUNG |
+|----------|-------------|
+| **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
+| **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. |
+| **ToLower()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
+| **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
+| **Contains()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe dem angegebenen Wert entspricht. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die E-Mail-Adresse des Benutzers ist, wenn er die Domäne „@contoso.com“ enthält, andernfalls soll der Benutzerprinzipalname ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.email<br/>*Wert*: „@contoso.com“<br/>Parameter 2 (Ausgabe): user.email<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.userprincipalname |
+| **EndWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert endet. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID des Benutzers ist, wenn „employeeid“ mit „000“ endet, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.employeeid<br/>*Value*: „000“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
+| **StartWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert beginnt. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID (employeeid) des Benutzers ist, wenn das Land (country) mit „US“ beginnt, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.country<br/>*Value*: „US“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
+| **Extract() – Nach dem Abgleich** | Gibt die Teilzeichenfolge bei Übereinstimmung mit dem angegebenen Wert zurück.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon“ und der übereinstimmende Wert „Finance_“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
+| **Extract() – Vor dem Abgleich** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „BSimon_US“ und der übereinstimmende Wert „_US“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
+| **Extract() – Zwischen Abgleichen** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon_US“ ist, der erste übereinstimmende Wert „Finance_“ und der zweite übereinstimmende Wert „_US“ lautet, dann ist die Ausgabe des Anspruchs „BSimon“. |
+| **ExtractAlpha() – Präfix** | Gibt den alphabetischen Teil des Präfixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „BSimon_123“ lautet, wird „BSimon“ zurückgegeben. |
+| **ExtractAlpha() – Suffix** | Gibt den alphabetischen Teil des Suffixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „123_BSimon“ lautet, wird „BSimon“ zurückgegeben. |
+| **ExtractNumeric() – Präfix** | Gibt den numerischen Teil des Präfixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „123_BSimon“ lautet, wird „123“ zurückgegeben. |
+| **ExtractNumeric() – Suffix** | Gibt den numerischen Teil des Suffixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „BSimon_123“ lautet, wird „123“ zurückgegeben. |
+| **IfEmpty()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe null oder leer ist.<br/>Beispiel: Sie möchten ein in einem Erweiterungsattribut (extensionattribute) gespeichertes Attribut ausgeben, wenn die Mitarbeiter-ID (employeeid) für einen bestimmten Benutzer leer ist. Hierzu konfigurieren Sie die folgenden Werte:<br/>Parameter 1 (Eingabe): user.employeeid<br/>Parameter 2 (Ausgabe): user.extensionattribute1<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.employeeid |
+| **IfNotEmpty()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe nicht null oder leer ist.<br/>Beispiel: Sie möchten ein in einem Erweiterungsattribut (extensionattribute) gespeichertes Attribut ausgeben, wenn die Mitarbeiter-ID (employeeid) für einen bestimmten Benutzer nicht leer ist. Hierzu konfigurieren Sie die folgenden Werte:<br/>Parameter 1 (Eingabe): user.employeeid<br/>Parameter 2 (Ausgabe): user.extensionattribute1 |
 
-## <a name="restricted-claims"></a>Eingeschränkte Ansprüche
-
-In SAML gibt es einige eingeschränkte Ansprüche. Wenn Sie diese Ansprüche hinzufügen, werden sie von Azure AD nicht gesendet. Nachfolgend sind die eingeschränkten SAML-Anspruchssätze aufgeführt:
-
-    | Anspruchstyp (URI) |
-    | ------------------- |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/expired |
-    | http://schemas.microsoft.com/identity/claims/accesstoken |
-    | http://schemas.microsoft.com/identity/claims/openid2_id |
-    | http://schemas.microsoft.com/identity/claims/identityprovider |
-    | http://schemas.microsoft.com/identity/claims/objectidentifier |
-    | http://schemas.microsoft.com/identity/claims/puid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier[MR1] |
-    | http://schemas.microsoft.com/identity/claims/tenantid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod |
-    | http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/groups |
-    | http://schemas.microsoft.com/claims/groups.link |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/role |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/wids |
-    | http://schemas.microsoft.com/2014/09/devicecontext/claims/iscompliant |
-    | http://schemas.microsoft.com/2014/02/devicecontext/claims/isknown |
-    | http://schemas.microsoft.com/2012/01/devicecontext/claims/ismanaged |
-    | http://schemas.microsoft.com/2014/03/psso |
-    | http://schemas.microsoft.com/claims/authnmethodsreferences |
-    | http://schemas.xmlsoap.org/ws/2009/09/identity/claims/actor |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/samlissuername |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/confirmationkey |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authorizationdecision |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authentication |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysid |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegroup |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclaim |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegroup |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsfqbnversion |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthority |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclaim |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn |
-    | http://schemas.microsoft.com/ws/2008/06/identity/claims/ispersistent |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier |
-    | http://schemas.microsoft.com/identity/claims/scope |
+Wenn Sie zusätzliche Transformationen benötigen, senden Sie Ihre Vorschläge an das [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599). Verwenden Sie dort die Kategorie *SaaS-Anwendung*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anwendungsverwaltung in Azure AD](../manage-apps/what-is-application-management.md)
-* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure AD-Anwendungskatalog enthalten sind](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Konfigurieren des einmaligen Anmeldens für nicht im Azure AD-Anwendungskatalog enthaltene Anwendungen](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](howto-v1-debug-saml-sso-issues.md)
-
-<!--Image references-->
-[1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png
-[2]: ./media/active-directory-saml-claims-customization/edit-claim-name-value.png
-[3]: ./media/active-directory-saml-claims-customization/delete-claim.png
-[4]: ./media/active-directory-saml-claims-customization/user-identifier.png
-[5]: ./media/active-directory-saml-claims-customization/extractemailprefix-function.png
-[6]: ./media/active-directory-saml-claims-customization/join-function.png
-[7]: ./media/active-directory-saml-claims-customization/add-attribute.png

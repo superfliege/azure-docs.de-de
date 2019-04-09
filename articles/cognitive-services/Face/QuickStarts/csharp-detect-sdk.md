@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: e9f613b6cd02bd1e85b75db7a3b2c2b4adccce3f
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372130"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630700"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit dem Azure Face .NET SDK
 
@@ -32,11 +32,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **FaceDetection**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
-1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten...** aus. Klicken Sie auf die Registerkarte **Durchsuchen**, und wählen Sie **Vorabversion einbeziehen** aus. Suchen Sie anschließend die folgenden Pakete, und installieren Sie sie:
+1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten...** aus. Klicken Sie auf die Registerkarte **Durchsuchen**, und wählen Sie **Vorabversion einbeziehen** aus. Suchen Sie anschließend das folgende Paket, und installieren Sie es:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-    - Microsoft.Rest.ClientRuntime
-    - Microsoft.Rest.ClientRuntime.Azure
-    - Newtonsoft.Json
+1. Vergewissern Sie sich, dass Sie jeweils die neueste Version aller NuGet-Pakete für Ihr Projekt installiert haben. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten...** aus. Klicken Sie auf die Registerkarte **Updates**, und installieren Sie jeweils die neueste Version aller angezeigten Pakete.
 
 ## <a name="add-face-detection-code"></a>Hinzufügen von Code für die Gesichtserkennung
 
@@ -50,21 +48,21 @@ Fügen Sie am Anfang der Datei *Program.cs* die folgenden `using`-Anweisungen hi
 
 ### <a name="add-essential-fields"></a>Hinzufügen wichtiger Felder
 
-Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Mit diesen Daten wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren. Unter Umständen müssen Sie die Zeichenfolge `faceEndpoint` ändern, sodass sie die korrekte Regions-ID enthält. Darüber hinaus müssen Sie den Wert für `localImagePath` und/oder `remoteImageUrl` auf einen Pfad festlegen, der auf die tatsächlichen Bilddateien verweist.
+Fügen Sie die **Program**-Klasse mit folgenden Feldern hinzu. Mit diesen Daten wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren. Unter Umständen müssen Sie die Zeichenfolge `faceEndpoint` ändern, sodass sie die korrekte Regions-ID enthält. Darüber hinaus müssen Sie den Wert für `localImagePath` und/oder `remoteImageUrl` auf einen Pfad festlegen, der auf die tatsächlichen Bilddateien verweist.
 
 Das Feld `faceAttributes` ist einfach ein Array bestimmter Attributtypen. In diesem Feld wird angegeben, welche Informationen zu den erkannten Gesichtern abgerufen werden sollen.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=9-34)]
 
 ### <a name="create-and-use-the-face-client"></a>Erstellen und Verwenden des Clients für die Gesichtserkennung
 
-Fügen Sie als Nächstes der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Dadurch wird ein Gesichtserkennungs-API-Client festgelegt.
+Fügen Sie als Nächstes die **Main**-Methode der **Program**-Klasse mit folgendem Code hinzu. Dadurch wird ein Gesichtserkennungs-API-Client festgelegt.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
 Fügen Sie ebenfalls in der **Main**-Methode den folgenden Code hinzu, um den neu erstellten Gesichtserkennungsclient zum Erkennen von Gesichtern in einem Remotebild und einem lokalen Bild zu verwenden. Als Nächstes werden die Erkennungsmethoden definiert. 
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>Erkennen von Gesichtern
 
@@ -82,9 +80,9 @@ Definieren Sie als Nächstes die **GetFaceAttributes**-Methode. Sie gibt eine Ze
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-Definieren Sie abschließend die **DisplayAttributes**-Methode, um Gesichtsattributdaten in die Konsolenausgabe zu schreiben.
+Definieren Sie abschließend die **DisplayAttributes**-Methode, um Gesichtsattributdaten in die Konsolenausgabe zu schreiben. Anschließend können Sie die Klasse und den Namespace schließen.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-125)]
 
 ## <a name="run-the-app"></a>Ausführen der App
 

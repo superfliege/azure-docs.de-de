@@ -10,26 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 23bbcbf6947100db26f31562c44f8073e16e986f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cfea454b20b010148eba063ec724e55134944ac3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239340"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482928"
 ---
 # <a name="deploy-the-local-agent"></a>Bereitstellen des lokalen Agents
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Hier erfahren Sie, wie Sie den lokalen VaaS-Agent (Validation-as-a-Service) zum Überprüfen Ihrer Hardware verwenden. Der lokale Agent muss vor dem Ausführen von Validierungstests in der zu überprüfenden Azure Stack-Lösung bereitgestellt werden.
+Hier erfahren Sie, wie Sie mithilfe des lokalen VaaS-Agents (Validation-as-a-Service) Validierungstests ausführen. Der lokale Agent muss vor dem Ausführen von Validierungstests bereitgestellt werden.
 
 > [!Note]  
-> Stellen Sie sicher, dass die ausgehende Internetverbindung des Computers, auf dem der lokale Agent ausgeführt wird, nicht unterbrochen wird. Auf diesen Computer dürfen nur Benutzer Zugriff haben, die Sie dazu autorisiert haben, VaaS im Auftrag Ihres Mandanten zu verwenden.
+> Stellen Sie sicher, dass die ausgehende Internetverbindung des Computers, auf dem der lokale Agent ausgeführt wird, nicht unterbrochen wird. Auf diesen Computer dürfen nur Benutzer Zugriff haben, die dazu autorisiert sind, VaaS im Auftrag Ihres Mandanten zu verwenden.
 
 Das Bereitstellen des lokalen Agents umfasst folgende Schritte:
 
@@ -39,7 +39,7 @@ Das Bereitstellen des lokalen Agents umfasst folgende Schritte:
 
 ## <a name="download-and-start-the-local-agent"></a>Herunterladen und Starten des lokalen Agents
 
-Laden Sie den Agent auf einen geeigneten Computer in Ihrem Datencenter herunter, der nicht Teil des Azure Stack-Systems ist, aber Zugriff auf alle Azure Stack-Endpunkte hat.
+Laden Sie den Agent auf einen geeigneten Computer in Ihrem Datencenter herunter, der Zugriff auf alle Azure Stack-Endpunkte hat. Dieser Computer darf nicht Teil des Azure Stack-Systems sein oder in der Azure Stack-Cloud gehostet werden.
 
 ### <a name="machine-prerequisites"></a>Voraussetzungen für Computer
 
@@ -52,14 +52,12 @@ Vergewissern Sie sich, dass Ihr Computer die folgenden Kriterien erfüllt:
 - Mindestens 200 GB Speicherplatz
 - Stabile Verbindung mit dem Internet
 
-Azure Stack ist das getestete System. Der Computer darf nicht Teil von Azure Stack sein oder in der Azure Stack-Cloud gehostet werden.
-
 ### <a name="download-and-install-the-agent"></a>Herunterladen und Installieren des Agents
 
 1. Öffnen Sie auf dem Computer, den Sie zum Ausführen der Tests verwenden möchten, Windows PowerShell in einer Eingabeaufforderung mit erhöhten Rechten.
 2. Führen Sie den folgenden Befehl aus, um den lokalen Agent herunterzuladen:
 
-    ```PowerShell
+    ```powershell
     Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
     Expand-Archive -Path ".\OnPremAgent.zip" -DestinationPath VaaSOnPremAgent -Force
     Set-Location VaaSOnPremAgent\lib\net46
@@ -67,7 +65,7 @@ Azure Stack ist das getestete System. Der Computer darf nicht Teil von Azure Sta
 
 3. Führen Sie den folgenden Befehl aus, um die Abhängigkeiten des lokalen Agents zu installieren:
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -95,7 +93,7 @@ Der Befehl lädt ein PIR-Image (Betriebssystem-VHD) und eine Kopie aus einem Azu
 
 ## <a name="checks-before-starting-the-tests"></a>Prüfungen vor Beginn der Tests
 
-Die Tests führen Remoteaktionen aus. Der Computer, auf dem die Tests ausgeführt werden, muss Zugriff auf die Azure Stack-Endpunkte haben. Andernfalls funktionieren die Tests nicht. Verwenden Sie bei Verwendung des lokalen VaaS-Agents den Computer, auf dem der Agent ausgeführt wird. Sie können überprüfen, ob Ihr Computer Zugriff auf die Azure Stack-Endpunkte hat. Führen Sie hierzu die folgenden Schritte aus:
+Im Rahmen der Tests werden Remotevorgänge ausgeführt. Der Computer, auf dem die Tests ausgeführt werden, muss Zugriff auf die Azure Stack-Endpunkte haben. Andernfalls funktionieren die Tests nicht. Verwenden Sie bei Verwendung des lokalen VaaS-Agents den Computer, auf dem der Agent ausgeführt wird. Sie können überprüfen, ob Ihr Computer Zugriff auf die Azure Stack-Endpunkte hat. Führen Sie hierzu die folgenden Schritte aus:
 
 1. Prüfen Sie, ob der Basis-URI erreicht werden kann. Öffnen Sie eine CMD-Eingabeaufforderung oder Bash-Shell, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei `<EXTERNALFQDN>` durch den externen vollqualifizierten Domänennamen Ihrer Umgebung:
 
@@ -115,14 +113,15 @@ Die Tests führen Remoteaktionen aus. Der Computer, auf dem die Tests ausgeführ
 
 2. Führen Sie den folgenden Befehl aus:
 
-    ```PowerShell
+    ```powershell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
     ```
 
       **Parameter**  
+
     | Parameter | BESCHREIBUNG |
     | --- | --- |
-    | VaaSUserId | Benutzer-ID zur Anmeldung beim VaaS-Portal (etwa UserName@Contoso.com) |
+    | VaaSUserId | Benutzer-ID für die Anmeldung beim VaaS-Portal (Beispiel: <Benutzername>\@Contoso.com) |
     | VaaSTenantId | Azure AD-Mandanten-ID für das bei Validation-as-a-Service registrierte Azure-Konto |
 
     > [!Note]  

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/03/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0fa2e38a680e8590a89131717136a7960c1d3680
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200989"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903589"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
@@ -40,7 +40,7 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
 >
-> 1. Navigieren Sie zu [Azure-Portal – App-Registrierungen (Vorschau)](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Navigieren Sie zu [Azure-Portal – App-Registrierungen](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Registrieren** aus.
 > 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit einem Klick herunterzuladen und automatisch zu konfigurieren.
 >
@@ -51,7 +51,8 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 >
 > 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 > 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** > **Neue Registrierung** aus.
+> 1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
+> 1. Wählen Sie **Neue Registrierung** aus.
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `AspNetCore-Quickstart`).
 >    - Fügen Sie `https://localhost:44321/` unter **Antwort-URL** hinzu, und wählen Sie **Registrieren** aus.
@@ -72,13 +73,13 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Schritt 2: Herunterladen des ASP.NET Core-Projekts
 
-- [Visual Studio 2017-Projektmappe herunterladen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Visual Studio 2017-Projektmappe herunterladen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner im Stammordner, etwa **C:\Azure-Samples**.
 1. Wenn Sie Visual Studio 2017 verwenden, öffnen Sie die Projektmappe in Visual Studio (optional).
-1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und ersetzen Sie `Enter_the_Application_Id_here` durch den Wert für **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
+1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und aktualisieren Sie den Wert von `ClientId` mit dem Wert für **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -87,11 +88,11 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 
 > [!div renderon="docs"]
 > Hinweis:
-> - `Enter_the_Application_Id_here`: Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Den Wert für **Anwendungs-ID (Client)** finden Sie auf der Seite **Übersicht** der App.
-> - `Enter_the_Tenant_Info_Here` ist eine der folgenden Optionen:
+> - `Enter_the_Application_Id_here` – Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Den Wert für **Anwendungs-ID (Client)** finden Sie auf der Seite **Übersicht** der App.
+> - `Enter_the_Tenant_Info_Here` – Eine der folgenden Optionen:
 >   - Unterstützt Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.microsoft.com“).
->   - Unterstützt Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis**, ersetzen Sie diesen Wert durch `organizations`.
->   - Unterstützt Ihre Anwendung **Alle Microsoft-Kontobenutzer** ersetzen Sie diesen Wert durch `common`.
+>   - Wenn Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch `organizations`
+>   - Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, ersetzen Sie diesen Wert durch `common`
 >
 > > [!TIP]
 > > Die Werte für **Anwendungs-ID (Client)**, **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
@@ -156,5 +157,5 @@ Sie können einen Controller oder Controllermethoden mithilfe des `[Authorize]`-
 Weitere Informationen finden Sie im GitHub-Repository für diesen ASP.NET Core-Schnellstart, einschließlich Anleitungen zum Hinzufügen von Authentifizierung zu einer brandneuen ASP.NET Core-Webanwendung:
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core-Web-App-Codebeispiel](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET Core-Web-App-Codebeispiel](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
 

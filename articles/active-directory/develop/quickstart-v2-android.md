@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cf0f7ffe118a3c878e14e4a81793d18a646fa9
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: cd78e6acd801f3b973cc45609b72f86b257f4d43
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202890"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862759"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -34,18 +34,36 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwen
 
 > [!NOTE]
 > **Voraussetzungen**
-> * Android Studio 3 oder höher
-> * Android SDK 21 oder höher ist erforderlich (SDK 27 empfohlen).
+> * Android Studio 3+
+> * Android 21+ erforderlich 
+
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download"></a>Registrieren und herunterladen
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrieren und Konfigurieren Ihrer Anwendung und des Codebeispiels
+> ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
+> Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
+> * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Manuell] [Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
-> Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
-> 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein.
-> 1. Vergewissern Sie sich, dass das Kontrollkästchen **Guided Setup** (Geführtes Setup) deaktiviert ist, und klicken Sie anschließend auf **Erstellen**.
-> 1. Klicken Sie auf **Plattform hinzufügen** > **Native Anwendung** und anschließend auf **Speichern**.
+> So registrieren Sie Ihre App:
+> 1. Navigieren Sie zur [Anwendungsregistrierung (Vorschau) im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs).
+> 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Registrieren** aus.
+> 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit nur einem Klick herunterzuladen und automatisch zu konfigurieren.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels
+>
+> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
+> Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
+>
+> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+> 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** > **Neue Registrierung** aus.
+> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein:
+>      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Android-Quickstart`).
+>      - Klicken Sie auf die Schaltfläche `Register`.
+> 1. Navigieren Sie zu `Authentication` > `Redirect URIs` > `Suggested Redirect URIs for public clients`, und wählen Sie den Umleitungs-URI mit dem Format **msal{App-ID}://auth** aus. Speichern Sie die Änderungen.
+
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Schritt 1: Konfigurieren der Anwendung
@@ -58,65 +76,68 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwen
 
 #### <a name="step-2-download-the-project"></a>Schritt 2: Herunterladen des Projekts
 
-* [Android Studio-Projekt herunterladen](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
+* [Laden Sie das Android Studio-Projekt herunter.](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>Schritt 3: Konfigurieren des Projekts
 
-1. Extrahieren und öffnen Sie das Projekt in Android Studio.
-1. Öffnen Sie **MainActivity** unter **app** > **java** > **<i>{host}.{namespace}</i>**.
-1. Ersetzen Sie die Zeile, die mit `final static String CLIENT_ID` beginnt, durch:
+> [!div renderon="docs"]
+> Wenn Sie weiter oben die erste Option ausgewählt haben, können Sie diese Schritte überspringen. Öffnen Sie das Projekt in Android Studio, und führen Sie die App aus. 
 
-    > [!div renderon="portal" class="sxs-lookup"]
-    > ```java
-    > final static String CLIENT_ID = "ENTER_THE_APPLICATION_ID_HERE";
-    > ```
-
-    > [!div renderon="docs"]
-    > ```java
-    > final static String CLIENT_ID = "<ENTER_THE_APPLICATION_ID_HERE>";
-    > ```
-
-1. Öffnen Sie **app** > **manifests** > **AndroidManifest.xml**.
-1. Fügen Sie dem Knoten **manifest\application** die folgende Aktivität hinzu. Dieser Codeausschnitt registriert eine **BrowserTabActivity**, damit das Betriebssystem Ihre Anwendung nach Abschluss der Authentifizierung fortsetzen kann:
-
-    > [!div renderon="docs"]
-    > ```xml
-    > <!--Intent filter to capture System Browser calling back to our app after Sign In-->
-    > <activity
-    >     android:name="com.microsoft.identity.client.BrowserTabActivity">
-    >     <intent-filter>
-    >         <action android:name="android.intent.action.VIEW" />
-    >         <category android:name="android.intent.category.DEFAULT" />
-    >         <category android:name="android.intent.category.BROWSABLE" />
-    > 
-    >         <!--Add in your scheme/host from registered redirect URI-->
-    >         <!--By default, the scheme should be similar to 'msal[appId]' -->
-    >         <data android:scheme="msal<ENTER_THE_APPLICATION_ID_HERE>"
-    >             android:host="auth" />
-    >     </intent-filter>
-    > </activity>
-    > ```
-
-    > [!div renderon="portal" class="sxs-lookup"]
-    > ```xml
-    > <!--Intent filter to capture System Browser calling back to our app after Sign In-->
-    > <activity
-    >     android:name="com.microsoft.identity.client.BrowserTabActivity">
-    >     <intent-filter>
-    >         <action android:name="android.intent.action.VIEW" />
-    >         <category android:name="android.intent.category.DEFAULT" />
-    >         <category android:name="android.intent.category.BROWSABLE" />
-    > 
-    >         <!--Add in your scheme/host from registered redirect URI-->
-    >         <!--By default, the scheme should be similar to 'msal[appId]' -->
-    >         <data android:scheme="msalENTER_THE_APPLICATION_ID_HERE"
-    >             android:host="auth" />
-    >     </intent-filter>
-    > </activity>
-    > ```
+> [!div renderon="portal" class="sxs-lookup"]
+> 1. Extrahieren und öffnen Sie das Projekt in Android Studio.
+> 1. Öffnen Sie unter **app** > **res** > **raw** die Datei **auth_config.json**.
+> 1. Bearbeiten Sie **auth_config.json**, und ersetzen Sie `client_id` und `tenant_id`:
+>    ```javascript
+>    "client_id" : "Enter_the_Application_Id_Here",
+>    "type": "Enter_the_Audience_Info_Here",
+>    "tenant_id" : "Enter_the_Tenant_Info_Here"
+>    ```
+> 1. Öffnen Sie unter **app** > **manifests** die Datei **AndroidManifest.xml**.
+> 1. Fügen Sie dem Knoten **manifest\application** die folgende Aktivität hinzu. Dieser Code ermöglicht es Microsoft, Rückrufe für Ihre App auszuführen:   
+>    ```xml
+>    <!--Intent filter to catch Microsoft's callback after Sign In-->
+>    <activity
+>        android:name="com.microsoft.identity.client.BrowserTabActivity">
+>        <intent-filter>
+>            <action android:name="android.intent.action.VIEW" />
+>            <category android:name="android.intent.category.DEFAULT" />
+>            <category android:name="android.intent.category.BROWSABLE" />
+> 
+>            <!--Add in your scheme/host from registered redirect URI-->
+>            <!--By default, the scheme should be similar to 'msal[appId]' -->
+>            <data android:scheme="msalEnter_The_Application_Id_Here"
+>                android:host="auth" />
+>        </intent-filter>
+>    </activity>
+>    ```
 
 > [!div renderon="docs"]
-> <span>6.</span> Ersetzen Sie `<ENTER_THE_APPLICATION_ID_HERE>` durch die *Anwendungs-ID* für Ihre Anwendung. Wenn Sie die *Anwendungs-ID* ermitteln müssen, navigieren Sie zur Seite *Übersicht*.
+> 1. Extrahieren und öffnen Sie das Projekt in Android Studio.
+> 1. Öffnen Sie unter **app** > **res** > **raw** die Datei **auth_config.json**.
+> 1. Bearbeiten Sie **auth_config.json**, und ersetzen Sie `client_id` und `redirect_uri`:
+>    ```javascript
+>    "client_id" : "ENTER_YOUR_APPLICATION_ID",
+>    "redirect_uri": "ENTER_YOUR_REDIRECT_URI", 
+>     ```
+> 1. Öffnen Sie unter **app** > **manifests** die Datei **AndroidManifest.xml**.
+> 1. Fügen Sie dem Knoten **manifest\application** die folgende Aktivität hinzu. Dieser Codeausschnitt registriert eine **BrowserTabActivity**, damit das Betriebssystem Ihre Anwendung nach Abschluss der Authentifizierung fortsetzen kann:
+>    ```xml
+>    <!--Intent filter to catch Microsoft's callback after Sign In-->
+>    <activity
+>        android:name="com.microsoft.identity.client.BrowserTabActivity">
+>        <intent-filter>
+>            <action android:name="android.intent.action.VIEW" />
+>            <category android:name="android.intent.category.DEFAULT" />
+>            <category android:name="android.intent.category.BROWSABLE" />
+> 
+>            <!--Add in your scheme/host from registered redirect URI-->
+>            <!--By default, the scheme should be similar to 'msal[appId]' -->
+>            <data android:scheme="msal<ENTER_YOUR_APPLICATION_ID>"
+>                android:host="auth" />
+>        </intent-filter>
+>    </activity>
+>    ```
+> 1. Ersetzen Sie `<ENTER_THE_APPLICATION_ID_HERE>` durch die *Anwendungs-ID* für Ihre Anwendung. Wenn Sie die *Anwendungs-ID* ermitteln müssen, navigieren Sie zur Seite *Übersicht*.
 
 ## <a name="more-information"></a>Weitere Informationen
 
@@ -128,7 +149,7 @@ MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.ident
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
-implementation 'com.microsoft.identity.client:msal:0.1.+'
+implementation 'com.microsoft.identity.client:msal:0.2.+'
 ```
 
 ### <a name="msal-initialization"></a>MSAL-Initialisierung
@@ -142,18 +163,18 @@ import com.microsoft.identity.client.*;
 Initialisieren Sie MSAL anschließend mit dem folgenden Code:
 
 ```java
-sampleApp = new PublicClientApplication(
+    sampleApp = new PublicClientApplication(
         this.getApplicationContext(),
-        CLIENT_ID);
+        R.raw.auth_config);
 ```
 
 > |Hinweis: ||
 > |---------|---------|
-> |`CLIENT_ID` | Die Anwendungs-ID der in *portal.azure.com* registrierten Anwendung. |
+> |`R.raw.auth_config` | Diese Datei enthält die Konfigurationen für Ihre Anwendung. Dazu zählen unter anderem die App-/Client-ID, die Zielgruppe für die Anmeldung sowie verschiedene andere Anpassungsoptionen. |
 
 ### <a name="requesting-tokens"></a>Anfordern von Token
 
-MSAL verfügt über zwei Methoden, die zum Abrufen von Token verwendet werden: `acquireToken` und `acquireTokenSilentAsync`.
+MSAL verwendet zwei Methoden zum Abrufen von Token: `acquireToken` und `acquireTokenSilentAsync`
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
@@ -178,12 +199,18 @@ sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
 Sie möchten nicht, dass Benutzer ihre Anmeldeinformationen jedes Mal überprüfen müssen, wenn sie auf eine Ressource zugreifen müssen. Meistens wünschen Sie sich den Abruf und die Erneuerung von Token ohne jegliche Benutzerinteraktion. Sie können die `AcquireTokenSilentAsync`-Methode verwenden, um Token für den Zugriff auf geschützte Ressourcen nach der anfänglichen `acquireToken`-Methode abzurufen:
 
 ```java
-sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
+List<IAccount> accounts = sampleApp.getAccounts();
+if (sample.size() == 1) {
+    sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
+} else {
+    // No or multiple accounts
+}
 ```
 
 > |Hinweis:||
 > |---------|---------|
 > | `SCOPES` | Enthält die angeforderten Bereiche (d.h. `{ "user.read" }` für Microsoft Graph oder `{ "<Application ID URL>/scope" }` für benutzerdefinierte Web-APIs (z.B. `api://<Application ID>/access_as_user`)). |
+> | `accounts.get(0)` | Enthält das Konto, für das Sie automatisch Token abrufen möchten. |
 > | `getAuthInteractiveCallback` | Der Rückruf wird ausgeführt, wenn die Steuerung nach der Authentifizierung an die Anwendung zurückgegeben wird. |
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -193,7 +220,7 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 Probieren Sie das Android-Tutorial aus, um eine vollständige Schritt-für-Schritt-Anleitung zum Erstellen von Anwendungen und neuen Features zu erhalten, einschließlich einer vollständigen Erläuterung dieses Schnellstarts.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aufrufen der Graph-API (Android)](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer Android-App](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
 
 ### <a name="msal-for-android-library-wiki"></a>Wiki: MSAL für Android-Bibliothek
 

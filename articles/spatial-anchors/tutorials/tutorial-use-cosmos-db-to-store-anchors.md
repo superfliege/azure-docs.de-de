@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Freigeben für Sitzungen und Geräte mit Azure Spatial Anchors und einem Azure Cosmos DB-Back-End | Microsoft-Dokumentation'
+title: 'Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors mit einem Azure Cosmos DB-Back-End | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie Azure Spatial Anchors-Bezeichner zwischen Android/iOS-Geräten in Unity mit einem Back-End-Dienst und Azure Cosmos DB freigeben.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286396"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915253"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Tutorial: Freigeben für Sitzungen und Geräte mit Azure Spatial Anchors und einem Azure Cosmos DB-Back-End
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors mit einem Azure Cosmos DB-Back-End
 
-In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) für folgende Zwecke nutzen:
-
-- Erstellen von Ankern („Anchors“) in einer Sitzung und anschließendes Wiederfinden in einer anderen Sitzung auf demselben oder einem anderen Gerät. Die zweite Sitzung könnte z.B. an einem anderen Tag stattfinden.
-- Erstellen von Ankern, die von mehreren Geräten an demselben Ort und gleichzeitig gefunden werden können.
+In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) verwenden, um im Rahmen einer Sitzung Anker zu erstellen und diese anschließend in einer anderen Sitzung auf dem gleichen oder auf einem anderen Gerät zu finden. Die zweite Sitzung könnte z.B. an einem anderen Tag stattfinden. Die gleichen Anker können auch von mehreren Geräten am gleichen Ort und zur selben Zeit gefunden werden.
 
 ![GIF zur Veranschaulichung der Objektpersistenz](./media/persistence.gif)
 
@@ -73,7 +70,7 @@ Suchen Sie nach der `StorageConnectionString`-Eigenschaft, und legen Sie den Wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Azure Cosmos DB verwendet, um Ankerbezeichner geräteübergreifend freizugeben. Weitere Informationen zur Azure Spatial Anchors-Bibliothek erhalten Sie, indem Sie unseren Leitfaden zum Erstellen und Suchen nach Ankern weiter durcharbeiten.
+In diesem Tutorial haben Sie Azure Cosmos DB verwendet, um Ankerbezeichner geräteübergreifend freizugeben. Weitere Informationen zur Verwendung von Azure Spatial Anchors in einer neuen Android-App finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
-> [Create and locate anchors using Azure Spatial Anchors](../create-locate-anchors-overview.md) (Erstellen und Suchen nach Ankern mit Azure Spatial Anchors)
+> [Starten einer neuen Android-App](./tutorial-new-android-app.md)

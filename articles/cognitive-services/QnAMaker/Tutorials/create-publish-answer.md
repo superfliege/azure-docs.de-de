@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102161"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877277"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen unter Verwendung von C#
 
@@ -158,7 +158,7 @@ Der _primäre Endpunkt_ wird als Header übergeben, um die Anforderung für die 
 
 |Headername|Headerwert|
 |--|--|
-|Autorisierung|`Endpoint ` + **primärer Endpunkt**<br>Beispiel: `Endpoint xxxxxxx`<br>Beachten Sie das Leerzeichen zwischen dem Text `Endpoint` und dem Wert des primären Endpunkts. 
+|Autorisierung|`Endpoint` + **Primärer Endpunkt**<br>Beispiel: `Endpoint xxxxxxx`<br>Beachten Sie das Leerzeichen zwischen dem Text `Endpoint` und dem Wert des primären Endpunkts. 
 
 Der Hauptteil der Anforderung muss den korrekten JSON-Code übergeben:
 

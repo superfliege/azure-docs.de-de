@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Freigeben für Sitzungen und Geräte mit Azure Spatial Anchors | Microsoft-Dokumentation'
+title: 'Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie Azure Spatial Anchors-Bezeichner zwischen Android/iOS-Geräten in Unity mit einem Back-End-Dienst freigeben.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff9868dd7347812eb6ef566288ec364bc89b6955
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901303"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629306"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>Tutorial: Freigeben für Sitzungen und Geräte mit Azure Spatial Anchors
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors
 
-In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) für folgende Zwecke nutzen:
-
-1. Erstellen von Ankern („Anchors“) in einer Sitzung und anschließendes Wiederfinden in einer anderen Sitzung auf demselben oder einem anderen Gerät, beispielsweise an einem anderen Tag
-2. Erstellen von Ankern, die von mehreren Geräten gleichzeitig an demselben Ort gefunden werden können
+In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) verwenden, um im Rahmen einer Sitzung Anker zu erstellen und diese anschließend auf dem gleichen oder auf einem anderen Gerät zu finden. Die gleichen Anker können auch von mehreren Geräten am gleichen Ort und zur selben Zeit gefunden werden.
 
 ![Persistenz](./media/persistence.gif)
 
@@ -51,10 +48,6 @@ Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Öffnen des Beispielprojekts in Unity
-
-[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
-
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
@@ -63,7 +56,7 @@ Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP
 
 In diesem Tutorial haben Sie eine ASP.NET Core-Web-App in Azure bereitgestellt und anschließend eine Unity-App konfiguriert und bereitgestellt. Sie haben Spatial Anchors-Bezeichner mit der App erstellt und mithilfe der ASP.NET Core-Web-App für andere Geräte freigegeben.
 
-Wenn Sie erfahren möchten, wie Sie Ihre ASP.NET Core-Web-App optimieren, sodass sie Azure Cosmos DB zur Speicherung der freigegebenen Spatial Anchors-Bezeichner nutzt, fahren Sie mit dem nächsten Tutorial fort:
+Im nächsten Tutorial erfahren Sie, wie Sie Ihre ASP.NET Core-Web-App so optimieren, dass sie Azure Cosmos DB zur Speicherung der freigegebenen Spatial Anchors-Bezeichner nutzt. Azure Cosmos DB sorgt für die Persistenz Ihrer ASP.NET Core-Web-App. Dadurch kann Ihre App anhand des in Ihrer Web-App gespeicherten Ankerbezeichners einen Anker wiederfinden, den sie vor mehreren Tagen erstellt hat.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Verwenden von Azure Cosmos DB zum Speichern von Textmarken](./tutorial-use-cosmos-db-to-store-anchors.md)

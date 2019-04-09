@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a721cc2252619923496ee5a3a8ae590a5cda3b04
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487548"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578117"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer ASP.NET Core-App mit Azure App Configuration
 
@@ -93,13 +93,15 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
 
     Auf dieses Geheimnis wird mit der Konfigurations-API zugegriffen. Ein Doppelpunkt (:) kann im Konfigurationsnamen mit der Konfigurations-API auf allen unterstützten Plattformen verwendet werden. Siehe [Konfiguration nach Umgebung](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Öffnen Sie die Datei „Program.cs“, und aktualisieren Sie die `CreateWebHostBuilder`-Methode für die Verwendung von App Configuration, indem Sie die `config.AddAzureAppConfiguration()`-Methode aufrufen.
+4. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+5. Aktualisieren Sie die `CreateWebHostBuilder`-Methode für die Verwendung von App Configuration, indem Sie die Methode `config.AddAzureAppConfiguration()` aufrufen.
 
+    ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
@@ -113,7 +115,7 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
             .UseStartup<Startup>();
     ```
 
-5. Öffnen Sie die Datei „Index.cshtml“ im Verzeichnis „Views > Home“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
+6. Öffnen Sie die Datei „Index.cshtml“ im Verzeichnis „Views > Home“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -139,7 +141,7 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
     </html>
     ```
 
-6. Öffnen Sie die Datei „_Layout.cshtml“ im Verzeichnis „Views > Shared“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
+7. Öffnen Sie die Datei „_Layout.cshtml“ im Verzeichnis „Views > Shared“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
 
     ```html
     <!DOCTYPE html>
