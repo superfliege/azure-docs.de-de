@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ad12ac45a90edc5b3d9be0dc78786ef01a0f04
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 352050f4bd53188a420f75607677d88ebc081505
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337832"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051034"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -156,15 +156,15 @@ ms.locfileid: "58337832"
                                                         <h3><a href="manage-apps/index.yml">Anwendungsverwaltung</a></h3>
                                                         <p>
                                                             <a href="manage-apps/what-is-single-sign-on.md">Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?</a><br>
-                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Konfigurieren von einmaligem Anmelden</a><br>
+                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Einmaliges Anmelden konfigurieren</a><br>
                                                             <a href="manage-apps/application-proxy.md">Anwendungsproxy für lokale Apps</a><br>
                                                             <a href="manage-apps/index.yml"><i>Weitere Informationen &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">Authentifizierung</a></h3>
+                                                        <h3><a href="authentication/index.yml">Authentication</a></h3>
                                                         <p>
                                                             <a href="authentication/concept-mfa-howitworks.md">So funktioniert's: Azure MFA</a><br>
-                                                            <a href="authentication/concept-sspr-howitworks.md">Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten</a><br>
+                                                            <a href="authentication/concept-sspr-howitworks.md">Self-Service-Kennwortzurücksetzung in Azure AD</a><br>
                                                             <a href="authentication/concept-password-ban-bad.md">Kennwortschutz für Azure AD</a><br>
                                                             <a href="authentication/index.yml"><i>Weitere Informationen &gt;</i></a>
                                                             </p>
@@ -205,7 +205,7 @@ ms.locfileid: "58337832"
                                                         <br><br>
                                                            <h3><a href="develop/index.yml">Entwickler</a></h3>
                                                         <p>
-                                                            <a href="develop/about-microsoft-identity-platform.md">Informationen zur Microsoft Identity Platform</a><br>
+                                                            <a href="develop/about-microsoft-identity-platform.md">Informationen zu Microsoft Identity Platform</a><br>
                                                             <a href="develop/v2-oauth2-auth-code-flow.md">OAuth 2.0-Codeflowgewährung</a><br>
                                                             <a href="develop/quickstart-register-app.md">Registrieren einer App bei Microsoft Identity Platform</a><br>
                                                             <a href="develop/index.yml"><i>Weitere Informationen &gt;</i></a>
@@ -241,7 +241,7 @@ ms.locfileid: "58337832"
                                                         <p>
                                                             <a href="users-groups-roles/groups-create-rule.md">Erstellen einer dynamischen Gruppe</a><br>
                                                             <a href="users-groups-roles/groups-settings-v2-cmdlets.md">PowerShell für Azure AD-Gruppen</a><br>
-                                                            <a href="users-groups-roles/directory-service-limits-restrictions.md">Dienst- und andere Einschränkungen für Azure Active Directory</a><br>
+                                                            <a href="users-groups-roles/directory-service-limits-restrictions.md">Dienst- und andere Einschränkungen für Azure AD</a><br>
                                                             <a href="users-groups-roles/index.yml"><i>Weitere Informationen &gt;</i></a>
                                                         </p>
                                                         <br><br>
@@ -257,11 +257,11 @@ ms.locfileid: "58337832"
                                                         <p>
                                                             <a href="governance/create-access-review.md">Erstellen einer Zugriffsüberprüfung</a><br>
                                                             <a href="governance/perform-access-review.md">Starten einer Zugriffsüberprüfung</a><br>
-                                                            <a href="governance/active-directory-tou.md">Verwenden der Nutzungsbedingungen</a><br>
+                                                            <a href="conditional-access/terms-of-use.md">Verwenden der Nutzungsbedingungen</a><br>
                                                             <a href="governance/index.yml"><i>Weitere Informationen &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="identity-protection/index.yml">Identitätsschutz</a></h3>
+                                                        <h3><a href="identity-protection/index.yml">Schutz der Identität (Identity Protection)</a></h3>
                                                         <p>
                                                             <a href="identity-protection/overview.md">Worum handelt es sich beim Identitätsschutz?</a><br>
                                                             <a href="identity-protection/quickstart-sign-in-risk-policy.md">Blockieren des Zugriffs bei erkanntem Sitzungsrisiko</a><br>
