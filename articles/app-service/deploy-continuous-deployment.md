@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 1313616818686c7a03269fc1cc837958665732d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725234"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337543"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 Dieser Artikel veranschaulicht das Konfigurieren von Continuous Deployment für [Azure App Service](overview.md). App Service ermöglicht Continuous Deployment aus Bitbucket, GitHub und [Azure DevOps Services](https://www.visualstudio.com/team-services/) durch Pullen der neuesten Updates aus Ihrem vorhandenen Repository in einen dieser Dienste.
@@ -47,6 +47,16 @@ Wählen Sie auf der Seite **Buildanbieter** den Buildanbieter aus, und klicken S
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Option 1: Verwenden des App Service-Kudu-Buildservers
 
 Wählen Sie auf der Seite **Konfigurieren** die Organisation, das Repository und den Branch aus, aus dem Continuous Deployment erfolgen soll. Klicken Sie abschließend auf **Weiter**.
+
+Um eine Bereitstellung aus einem Repository in einer GitHub-Organisation auszuführen, gehen Sie zu GitHub, und navigieren Sie zu **Settings** (Einstellungen)  > **Applications** (Anwendungen)  > **Authorized OAuth Apps** (Autorisierte OAuth-Apps). Klicken Sie dann auf „Azure App Service“.
+
+![Einstellungen > Anwendungen > Autorisierte OAuth-Apps > Azure App Service](media/app-service-continuous-deployment/github-settings-navigation.png)
+
+Erteilen Sie App Service auf der nächsten Seite Zugriff auf die Repositorys Ihrer Organisation, indem Sie auf die Schaltfläche „Grant“ (Erteilen) auf der rechten Seite klicken.
+
+![Klicken auf „Erteilen“, um App Service den Zugriff auf die Repositorys der Organisation zu erteilen](media/app-service-continuous-deployment/grant-access.png)
+
+Ihre Organisation sollte jetzt in der Liste „Organization“ (Organisation) auf der Seite **Configure** (Konfigurieren) im Bereitstellungscenter angezeigt werden.
 
 ### <a name="option-2-use-azure-pipelines-preview"></a>Option 2: Verwenden von Azure Pipelines (Preview)
 

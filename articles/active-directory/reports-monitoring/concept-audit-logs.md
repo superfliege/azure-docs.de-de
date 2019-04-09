@@ -41,7 +41,7 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
  
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 
-* Benutzer mit den Rollen **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**, **Berichtsleser** oder **Globaler Administrator**
+* Benutzer mit den Rollen **Sicherheitsadministrator**, **Sicherheitsleseberechtigter**, **Berichtsleser** oder **Globaler Administrator**
 * Außerdem können alle Benutzer, die keine Administratoren sind, ihre eigenen Überwachungsaktivitäten anzeigen.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle

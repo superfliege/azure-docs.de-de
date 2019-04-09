@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer dynamischen Gruppe und Überprüfen des Status – Azure Active Directory | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie im Azure-Portal Regeln zur Gruppenmitgliedschaft erstellen und den Status überprüfen.
+description: Hier erfahren Sie, wie Sie im Azure-Portal eine Regel für die Gruppenmitgliedschaft erstellen und den Status überprüfen.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,66 +9,72 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5651d5e37613abcef8c8f5448af38637f91ebe30
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193627"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199680"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Erstellen einer dynamischen Gruppe und Überprüfen des Status
 
-In Azure Active Directory (Azure AD) können Sie Gruppen erstellen, indem Sie eine Regel anwenden, um die Mitgliedschaft basierend auf Benutzer- oder Geräteeigenschaften zu ermitteln. Wenn sich die Attribute eines Benutzers oder Geräts ändern, wertet Azure AD alle Regeln für dynamische Gruppen im Azure AD-Mandanten aus und führt Hinzufügungen oder Entfernungen durch. Wenn ein Benutzer oder ein Gerät eine Regel für eine Gruppe erfüllt, wird er bzw. es als Mitglied hinzugefügt. Sobald die Vorgaben der Regel nicht mehr erfüllt werden, wird das Mitglied entfernt.
+In Azure Active Directory (Azure AD) können Sie mithilfe von Regeln die Gruppenmitgliedschaft auf der Grundlage von Benutzer- oder Geräteeigenschaften ermitteln. In diesem Artikel erfahren Sie, wie Sie im Azure-Portal eine Regel für eine dynamische Gruppe einrichten.
+Die dynamische Mitgliedschaft wird für Sicherheitsgruppen und Office 365-Gruppen unterstützt. Wenn eine Regel für die Gruppenmitgliedschaft angewendet wird, werden Benutzer- und Geräteattribute auf Übereinstimmungen mit der Mitgliedschaftsregel geprüft. Wenn sich ein Attribut für einen Benutzer oder ein Gerät ändert, werden alle dynamischen Gruppenregeln in der Organisation verarbeitet, um Mitgliedschaftsänderungen zu berücksichtigen. Benutzer und Geräte werden hinzugefügt oder entfernt, wenn sie die Bedingungen für eine Gruppe erfüllen.
 
-In diesem Artikel wird beschrieben, wie Sie im Azure-Portal eine Regel für die dynamische Mitgliedschaft in Sicherheitsgruppen oder Office 365-Gruppen einrichten. Beispiele für die Regelsyntax und eine vollständige Liste mit den unterstützten Eigenschaften, Operatoren und Werten für eine Mitgliedschaftsregel finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](groups-dynamic-membership.md).
+Beispiele für Syntax, unterstützte Eigenschaften, Operatoren und Werte für eine Mitgliedschaftsregel finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](groups-dynamic-membership.md).
 
 ## <a name="to-create-a-group-membership-rule"></a>So erstellen Sie eine Regel für die Gruppenmitgliedschaft
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das zur Rolle des globalen Administrators, Intune-Dienstadministrators oder Benutzerkontoadministrators in Ihrem Mandanten gehört.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle des globalen Administrators, Intune-Administrators oder Benutzeradministrators in dem Mandanten angehört.
 2. Wählen Sie **Gruppen** aus.
 3. Wählen Sie **Alle Gruppen** und **Neue Gruppe** aus.
 
-   ![Neue Gruppe hinzufügen](./media/groups-create-rule/new-group-creation.png)
+   ![Auswählen des Befehls zum Hinzufügen einer neuen Gruppe](./media/groups-create-rule/new-group-creation.png)
 
-4. Geben Sie auf dem Blatt **Gruppe** einen Namen und eine Beschreibung für die neue Gruppe ein. Wählen Sie als **Mitgliedschaftstyp** entweder **Dynamischer Benutzer** oder **Dynamisches Gerät** aus, je nachdem, ob Sie eine Regel für Benutzer oder Geräte erstellen möchten. Wählen Sie anschließend **Dynamische Abfrage hinzufügen** aus. Mit dem Regel-Generator können Sie eine einfache Regel erstellen oder selbst eine Regel für die Mitgliedschaft schreiben. Dieser Artikel enthält weitere Informationen zu verfügbaren Benutzer- und Geräteattributen sowie Beispiele für Regeln für die Mitgliedschaft.
+4. Geben Sie auf der Seite **Gruppe** einen Namen und eine Beschreibung für die neue Gruppe ein. Wählen Sie einen **Mitgliedschaftstyp** für Benutzer oder Geräte und anschließend die Option **Dynamische Abfrage hinzufügen** aus. Sie können den Regel-Generator verwenden, um eine einfache Regel zu erstellen, oder [selbst eine Mitgliedschaftsregel schreiben](groups-dynamic-membership.md).
 
-   ![Hinzufügen einer Regel für eine dynamische Mitgliedschaft](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Um die vollständige Liste der Eigenschaften der benutzerdefinierten Erweiterung anzuzeigen, die Sie Ihrer Mitgliedschaftsabfrage hinzufügen können, wählen Sie **Benutzerdefinierte Erweiterungseigenschaften abrufen** aus, geben Sie die Anwendungs-ID ein, und wählen Sie dann **Eigenschaften aktualisieren** aus. Die vollständige Liste der Eigenschaften steht nun zur Auswahl zur Verfügung.
+5. So zeigen Sie die benutzerdefinierten Erweiterungseigenschaften für Ihre Mitgliedschaftsabfrage an
+   1. Wählen Sie **Benutzerdefinierte Erweiterungseigenschaften abrufen** aus.
+   2. Geben Sie die Anwendungs-ID ein, und wählen Sie anschließend **Eigenschaften aktualisieren** aus. 
 6. Wählen Sie nach der Erstellung der Regel unten auf dem Blatt **Abfrage hinzufügen**.
 7. Wählen Sie **Erstellen** on the **Erstellen** aus, um die Gruppe zu erstellen.
 
-> [!TIP]
-> Die Gruppenerstellung misslingt, wenn die von Ihnen eingegebene Regel falsch gebildet wurde oder nicht gültig ist. Rechts oben im Portal wird eine Benachrichtigung angezeigt, die erläutert, warum die Regel nicht verarbeitet werden konnte. Lesen Sie sie sorgfältig, um zu erfahren, wie die Regel angepasst werden muss, damit sie gültig ist.
+Sollte die eingegebene Regel ungültig sein, wird rechts oben im Portal angezeigt, warum die Regel nicht verarbeitet werden konnte. Lesen Sie sich die Erklärung aufmerksam durch, um die Regel korrigieren zu können.
 
-## <a name="check-processing-status-for-a-membership-rule"></a>Überprüfen des Verarbeitungsstatus für eine Mitgliedschaftsregel
+## <a name="turn-on-or-off-welcome-email"></a>Aktivieren oder Deaktivieren der Begrüßungs-E-Mail
+
+Wenn eine neue Office 365-Gruppe erstellt wird, erhalten die Benutzer, die der Gruppe hinzugefügt werden, eine Begrüßungsnachricht. Wenn sich später Attribute eines Benutzers oder Geräts ändern, werden alle dynamischen Gruppenregeln in der Organisation verarbeitet, um Mitgliedschaftsänderungen zu berücksichtigen. Hinzugefügte Benutzer erhalten dann ebenfalls eine Begrüßungsnachricht. Sie können dieses Verhalten in [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) deaktivieren. 
+
+## <a name="check-processing-status-for-a-rule"></a>Überprüfen des Verarbeitungsstatus für eine Regel
 
 Auf der Seite **Übersicht** für die Gruppe sehen Sie den Verarbeitungsstatus der Mitgliedschaft und das zuletzt geänderte Datum.
   
-  ![Status der dynamischen Gruppe anzeigen](./media/groups-create-rule/group-status.png)
+  ![Anzeigen des Status der dynamischen Gruppe](./media/groups-create-rule/group-status.png)
 
 Für **Verarbeitungsstatus der Mitgliedschaft** können die folgenden Statusmeldungen angezeigt werden:
 
 * **Auswertung wird durchgeführt:**  Die Gruppenänderung wurde empfangen, und die Aktualisierungen werden ausgewertet.
 * **Verarbeitung:** Die Updates werden verarbeitet.
 * **Aktualisierung abgeschlossen:** Die Verarbeitung wurde abgeschlossen, alle anwendbaren Aktualisierungen wurden vorgenommen.
-* **Verarbeitungsfehler:** Bei der Auswertung der Mitgliedschaftsregel ist ein Fehler aufgetreten, sodass die Verarbeitung nicht abgeschlossen werden konnte.
+* **Verarbeitungsfehler:**  Die Verarbeitung konnte aufgrund eines Fehlers beim Auswerten der Mitgliedschaftsregel nicht abgeschlossen werden.
 * **Aktualisierung angehalten:** Aktualisierungen der Regeln für die dynamische Mitgliedschaft wurden vom Administrator angehalten. „MembershipRuleProcessingState“ ist auf „Paused“ festgelegt.
 
 Für **Letzte Aktualisierung der Mitgliedschaft** können die folgenden Statusmeldungen angezeigt werden:
 
 * &lt;**Datum und Uhrzeit:**&gt; Der Zeitpunkt der letzten Aktualisierung der Mitgliedschaft.
 * **In Bearbeitung**: Aktualisierungen sind derzeit in Bearbeitung.
-* **Unbekannt:** Der Zeitpunkt der letzten Aktualisierung kann nicht abgerufen werden. Das kann daran liegen, dass die Gruppe neu erstellt wurde.
+* **Unbekannt:** Der Zeitpunkt der letzten Aktualisierung kann nicht abgerufen werden. Die Gruppe ist möglicherweise neu.
 
 Wenn bei der Verarbeitung der Mitgliedschaftsregel für eine bestimmte Gruppe ein Fehler auftritt, wird oben auf der Seite **Übersicht** der Gruppe eine Warnung angezeigt. Wenn für alle Gruppen innerhalb des Mandanten für mehr als 24 Stunden keine ausstehenden Aktualisierungen der dynamischen Mitgliedschaft verarbeitet werden können, wird oben in **Alle Gruppen** eine Warnung angezeigt.
 
-![Verarbeiten der Fehlermeldung](./media/groups-create-rule/processing-error.png)
+![Warnungen aufgrund von Verarbeitungsfehlern](./media/groups-create-rule/processing-error.png)
 
 Diese Artikel enthalten zusätzliche Informationen zu Gruppen in Azure Active Directory.
 

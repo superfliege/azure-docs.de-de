@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774437"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487314"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -99,6 +99,12 @@ Die Konfiguration der domänenbasierten Filterung umfasst folgende Schritte:
 3. [Wenden Sie die Änderungen an, und überprüfen Sie sie.](#apply-and-verify-changes)
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Auswählen der zu synchronisierenden Domänen
+Es gibt zwei Möglichkeiten für das Auswählen der zu synchronisierenden Domänen:
+    - Verwenden des Synchronisierungsdiensts
+    - Verwenden des Azure AD Connect-Assistenten.
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Wählen Sie die zu synchronisierenden Domänen über den Synchronisierungsdienst aus.
 Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
@@ -112,6 +118,17 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
    ![Aktualisierung erforderlich](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, werden Sie in einer Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.
 7. Fahren Sie mit dem Anpassen der Ausführungsprofile fort.
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Wählen Sie die zu synchronisierenden Domänen mit dem Azure AD Connect-Assistenten aus.
+Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte aus:
+
+1.  Starten Sie den Azure AD Connect-Assistenten.
+2.  Klicken Sie auf **Konfigurieren**.
+3.  Wählen Sie **Synchronisierungsoptionen anpassen**, und klicken Sie auf **Weiter**.
+4.  Geben Sie Ihre Azure AD-Anmeldeinformationen ein.
+5.  Klicken Sie auf dem Bildschirm **Verbundene Verzeichnisse**  auf **Weiter**.
+6.  Klicken Sie auf der Seite **Filtern von Domänen und Organisationseinheiten** auf **Aktualisieren**.  Neue Domänen werden nun angezeigt und gelöschte Domänen werden ausgeblendet.
+   ![Partitionen](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Aktualisieren von Ausführungsprofilen
 Wenn Sie den Domänenfilter aktualisiert haben, müssen Sie auch die Ausführungsprofile aktualisieren.

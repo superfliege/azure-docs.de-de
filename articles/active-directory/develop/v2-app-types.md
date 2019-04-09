@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162933"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499980"
 ---
 # <a name="application-types-for-v20"></a>Anwendungstypen für v2. 0
 
@@ -124,7 +124,7 @@ Bei diesem Ablauf empfängt die App bei der Anmeldung des Benutzers einen Autori
 
 Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff ausgeführt werden, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen. Sie können die Identität der App mit einem geheimen Clientschlüssel oder einem Zertifikat nachweisen. Weitere Informationen finden Sie unter [Authentifizierung bei Azure AD in Daemon-Apps mit Zertifikaten](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
-Bei diesem Ablauf erhält die App Token durch die direkte Interaktion mit dem `/token`-Endpunkt:
+In diesem Flow interagiert die App direkt mit dem `/token`-Endpunkt, um Zugriff zu erhalten:
 
 ![Authentifizierungsablauf für Daemon-Apps](./media/v2-app-types/convergence_scenarios_daemon.png)
 

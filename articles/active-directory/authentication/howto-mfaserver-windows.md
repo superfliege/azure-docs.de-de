@@ -1,5 +1,5 @@
 ---
-title: Windows-Authentifizierung und Azure MFA-Server | Microsoft-Dokumentation
+title: Windows-Authentifizierung und Azure MFA Server – Azure Active Directory
 description: Bereitstellen von Windows-Authentifizierung und Azure Multi-Factor Authentication-Server
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 857e256b0fb2cd726e38232c96f7ce0750681245
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 36172850c345fc190c3326413f2883dc2b070e98
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197197"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367889"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows-Authentifizierung und Azure Multi-Factor Authentication-Server
 
@@ -29,9 +29,10 @@ Die Windows-Authentifizierung für Anwendungen können Sie mithilfe des Windows-
 > [!NOTE]
 > Dieses Feature wird nicht unterstützt, um Terminaldienste unter Windows Server 2012 R2 zu sichern.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Um eine Anwendung mit der Windows-Authentifizierung zu sichern, verwenden Sie das folgende Verfahren.
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Gehen Sie wie folgt vor, um eine Anwendung mithilfe der Windows-Authentifizierung zu schützen:
+
 1. Klicken Sie im Azure Multi-Factor Authentication-Server auf das Symbol "Windows-Authentifizierung".
-   ![Windows-Authentifizierung](./media/howto-mfaserver-windows/windowsauth.png)
+   ![Windows-Authentifizierung in MFA Server](./media/howto-mfaserver-windows/windowsauth.png)
 2. Aktivieren Sie das Kontrollkästchen **Windows-Authentifizierung aktivieren**. Standardmäßig ist dieses Kontrollkästchen deaktiviert.
 3. Die Registerkarte "Anwendungen" gibt dem Administrator die Möglichkeit, eine oder mehrere Anwendungen für die Windows-Authentifizierung zu konfigurieren.
 4. Wählen Sie einen Server oder eine Anwendung, und geben Sie an, ob der Server/die Anwendung aktiviert ist. Klicken Sie auf **OK**.

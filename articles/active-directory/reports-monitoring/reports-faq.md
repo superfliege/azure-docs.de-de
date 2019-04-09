@@ -61,7 +61,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Muss ich globaler Administrator sein, um die Anmeldeaktivitäten im Azure-Portal anzuzeigen oder Daten über die API abzurufen?**
 
-**A:** Nein, Sie sind auch dann zum Zugriff auf die Berichtsdaten über das Portal oder die API berechtigt, wenn Sie **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Sicherheitsadministrator** für den Mandanten sind. Natürlich haben auch **globale Administratoren** Zugriff auf diese Daten.
+**A:** Nein, Sie sind auch dann zum Zugriff auf die Berichtsdaten über das Portal oder die API berechtigt, wenn Sie **Sicherheitsleseberechtigter** oder **Sicherheitsadministrator** für den Mandanten sind. Natürlich haben auch **globale Administratoren** Zugriff auf diese Daten.
 
 ---
 

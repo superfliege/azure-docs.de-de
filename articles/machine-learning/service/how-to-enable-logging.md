@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 02/20/2019
-ms.openlocfilehash: 8e39734a6f5fa13240d24eb35c431f746e540484
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 0d75b983ad6d3b6256852335dc523b481bbe046f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342121"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885892"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Aktivieren der Protokollierung im Azure Machine Learning Service
 
@@ -27,7 +27,7 @@ Das Python-SDK für Azure Machine Learning gestattet Ihnen die Aktivierung der P
 > * Bereitgestellte Modelle
 > * Python-Einstellungen für `logging`
 
-Verwenden Sie das [Handbuch](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), um das SDK zu installieren, und [unternehmen Sie die ersten Schritte](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python) mit dem SDK, um einen Arbeitsbereich im Azure-Portal zu erstellen.
+[Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md). Weitere Informationen zum SDK finden Sie im [Handbuch](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 ## <a name="training-models-and-compute-target-logging"></a>Protokollierung für das Trainieren von Modellen und Computeziele
 
@@ -115,7 +115,7 @@ Sie können auch benutzerdefinierte Stapelüberwachungen für Ihren Webdienst pr
 service.update(enable_app_insights=True)
 ```
 
-Weitere Informationen finden Sie im [Gewusst-wie](how-to-enable-app-insights.md#enable-and-disable-in-the-portal)-Artikel zur Arbeitsweise mit Application Insights im Azure-Portal.
+Weitere Informationen finden Sie im [Gewusst-wie](how-to-enable-app-insights.md)-Artikel zur Arbeitsweise mit Application Insights im Azure-Portal.
 
 ## <a name="python-native-logging-settings"></a>Native Protokollierungseinstellungen für Python
 

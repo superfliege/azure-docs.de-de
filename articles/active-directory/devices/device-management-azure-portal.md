@@ -204,7 +204,7 @@ Zum Anzeigen oder Kopieren der BitLocker-Schlüssel müssen Sie entweder der Bes
 - Globale Administratoren
 - Helpdesk-Administratoren
 - Sicherheitsadministratoren
-- Benutzer mit Leseberechtigung für Sicherheitsfunktionen
+- Sicherheitsleseberechtigte
 - Intune-Dienstadministratoren
 
 > [!NOTE]

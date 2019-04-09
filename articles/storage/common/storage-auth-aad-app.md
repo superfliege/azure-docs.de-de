@@ -1,35 +1,35 @@
 ---
-title: Authentifizieren mit Azure Active Directory für den Zugriff auf Blob- und Warteschlangendaten aus Ihren Anwendungen (Vorschauversion) | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Azure Active Directory zum Authentifizieren aus einer Anwendung verwenden und anschließend Anforderungen für Blobs und Warteschlangen autorisieren (Vorschauversion).
+title: Authentifizieren mit Azure Active Directory für den Zugriff auf Blob- und Warteschlangendaten aus Ihren Anwendungen | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Azure Active Directory zum Authentifizieren aus einer Anwendung verwenden und anschließend Anforderungen für Blobs und Warteschlangen autorisieren.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6d283840116a5e1f996602fd792456d3b8e8d9a0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8fdc4445e28a420b6b4f7935443d7d991d9e8a4d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456090"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446060"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen (Vorschauversion)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen
 
 Ein wesentlicher Vorteil bei der Verwendung von Azure Active Directory (Azure AD) mit Azure Storage besteht darin, dass Ihre Anmeldeinformationen nicht mehr im Code gespeichert werden müssen. Stattdessen können Sie ein OAuth 2.0-Zugriffstoken von Azure AD anfordern. Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD das Zugriffstoken an die Anwendung zurück, und die Anwendung kann dann das Zugriffstoken zum Autorisieren von Anforderungen an Azure Storage verwenden.
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Anwendung für die Authentifizierung mit Azure AD konfigurieren. Im Codebeispiel wird .NET verwendet. Der Ansatz ist bei anderen Sprachen aber ähnlich.
 
-Damit Sie einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren können, konfigurieren Sie die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal. Azure Storage definiert RBAC-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md) (Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)).
+Damit Sie einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren können, konfigurieren Sie die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal. Azure Storage definiert RBAC-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Azure Blob- und Warteschlangendaten mit RBAC im Azure-Portal](storage-auth-aad-rbac.md).
 
 Eine Übersicht über den Datenfluss für OAuth 2.0-Codeberechtigungen finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](../../active-directory/develop/v1-protocols-oauth-code.md).
 
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+Um Blob- und Warteschlangenvorgänge mit einem OAuth-Token zu autorisieren, müssen Sie HTTPS verwenden.
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Zuweisen einer RBAC-Rolle zu einem Azure AD-Sicherheitsprinzipal
 
-Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert RBAC-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten von Azure mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
+Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert RBAC-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten mit RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrieren der Anwendung bei einem Azure AD-Mandanten
 
@@ -73,7 +73,7 @@ Das Codebeispiel veranschaulicht, wie Sie ein Zugriffstoken aus Azure AD abrufen
 > [!NOTE]
 > Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine RBAC-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen. 
 >
-> Wenn Sie den Beispielcode also etwa für ein Speicherkonto, für das Sie als Besitzer fungieren, unter Ihrer eigenen Benutzeridentität ausführen möchten, müssen Sie sich selbst die RBAC-Rolle „Blob Data Contributor“ (Mitwirkender an Blobdaten) zuweisen. Andernfalls tritt beim Aufruf zum Erstellen des Blobs ein Fehler mit HTTP-Statuscode 403 (Verboten) auf. Weitere Informationen finden Sie unter [Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md) (Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)).
+> Wenn Sie den Beispielcode also etwa für ein Speicherkonto, für das Sie als Besitzer fungieren, unter Ihrer eigenen Benutzeridentität ausführen möchten, müssen Sie sich selbst die RBAC-Rolle „Blob Data Contributor“ (Mitwirkender an Blobdaten) zuweisen. Andernfalls tritt beim Aufruf zum Erstellen des Blobs ein Fehler mit HTTP-Statuscode 403 (Verboten) auf. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Azure Blob- und Warteschlangendaten mit RBAC im Azure-Portal](storage-auth-aad-rbac.md).
 
 ### <a name="well-known-values-for-authentication-with-azure-ad"></a>Bekannte Werte für die Authentifizierung mit Azure AD
 
@@ -105,7 +105,7 @@ Um die Mandanten-ID abzurufen, gehen Sie folgendermaßen vor:
 
 ### <a name="add-references-and-using-statements"></a>Hinzufügen von Verweisen und using-Anweisungen  
 
-Installieren Sie in Visual Studio die Vorschauversion der Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole** aus. Geben Sie den folgenden Befehl in die Konsole ein, um die aktuelle Version der Clientbibliothek für .NET zu installieren:
+Installieren Sie von Visual Studio aus die Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole** aus. Geben Sie den folgenden Befehl in die Konsole ein, um die aktuelle Version der Clientbibliothek für .NET zu installieren:
 
 ```
 Install-Package WindowsAzure.Storage
@@ -157,7 +157,7 @@ static string GetUserOAuthToken()
 
 ### <a name="create-the-block-blob"></a>Erstellen des Blockblobs
 
-Verwenden Sie abschließend das Zugriffstoken zum Erstellen neuer Speicheranmeldeinformationen und diese Anmeldeinformationen wiederum zum Erstellen des Blobs:
+Verwenden Sie abschließend das Zugriffstoken zum Erstellen neuer Speicheranmeldeinformationen und diese Anmeldeinformationen wiederum zum Erstellen des Blobs. Beachten Sie, dass Sie HTTPS verwenden müssen, um Blob- und Warteschlangenvorgänge mit einem OAuth-Token zu autorisieren:
 
 ```dotnet
 // Get the access token.
@@ -187,14 +187,10 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-Weitere Informationen zur Autorisierung von Azure Storage-Vorgängen über REST finden Sie unter [Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory) (Authentifizieren mit Azure Active Directory (Vorschau)).
+Weitere Informationen zur Autorisierung von Azure Storage-Vorgängen über REST finden Sie unter [Authentifizieren mit Azure Active Directory ](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
-- Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit verwalteten Azure-Identitäten für Azure-Ressourcen (Vorschau)](storage-auth-aad-msi.md).
-- Informationen zum Anmelden bei der Azure-Befehlszeilenschnittstelle (CLI) und bei PowerShell mit einer Azure AD-Identität finden Sie unter [Use an Azure AD identity to access Azure Storage with CLI or PowerShell (Preview)](storage-auth-aad-script.md) (Verwenden einer Azure AD-Identität für den Zugriff auf Azure Storage über die Befehlszeilenschnittstelle oder PowerShell (Vorschau)).
-- Weitere Informationen zur Azure AD-Integration für Azure-Blobs und -Warteschlangen finden Sie im Blogbeitrag des Azure Storage-Teams [Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/) (Ankündigung der Vorschau der Azure AD-Authentifizierung für Azure Storage).
-
-
-
+- Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Speicherdaten mit RBAC](storage-auth-aad-rbac.md).
+- Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit verwalteten Azure-Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md).
+- Informationen zum Anmelden bei der Azure-Befehlszeilenschnittstelle (CLI) und bei PowerShell mit einer Azure AD-Identität finden Sie unter [Verwenden einer Azure AD-Identität für den Zugriff auf Azure Storage mit der Befehlszeilenschnittstelle oder PowerShell](storage-auth-aad-script.md).

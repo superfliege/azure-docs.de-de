@@ -4,22 +4,20 @@ description: Beschreibt die Ressourcenanbieter, die den Ressourcen-Manager, die 
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: aa61b88bb0a944a048bc4b2db9c542efe3e30ddf
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564118"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445460"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-Ressourcenanbieter und -typen
 
@@ -50,7 +48,7 @@ So zeigen Sie alle Ressourcenanbieter und den Registrierungsstatus für Ihr Abon
 
 6. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Viele Ressourcenanbieter werden standardmäßig automatisch registriert. Einige Ressourcenanbieter müssen Sie jedoch unter Umständen manuell registrieren. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des `/register/action`-Vorgangs für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Wählen Sie **Registrieren** aus, um einen Ressourcenanbieter zu registrieren. Im vorherigen Screenshot ist der Link **Registrieren** für **Microsoft.Blueprint** hervorgehoben.
 
-    Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
+    Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen von diesem Ressourcenanbieter vorhanden sind.
 
 So zeigen Sie Informationen für einen bestimmten Ressourcenanbieter an
 
@@ -113,7 +111,7 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
-Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
+Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen von diesem Ressourcenanbieter vorhanden sind.
 
 Verwenden Sie Folgendes, um Informationen für einen bestimmten Ressourcenanbieter anzuzeigen:
 
@@ -211,7 +209,7 @@ az provider register --namespace Microsoft.Batch
 
 Daraufhin wird eine Meldung mit dem Hinweis zurückgegeben, dass die Registrierung noch nicht abgeschlossen ist.
 
-Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
+Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen von diesem Ressourcenanbieter vorhanden sind.
 
 Verwenden Sie Folgendes, um Informationen für einen bestimmten Ressourcenanbieter anzuzeigen:
 

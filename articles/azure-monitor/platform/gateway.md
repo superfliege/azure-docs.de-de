@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314669"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437338"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
 >[!NOTE]
 >Durch den Übergang von Microsoft Operations Management Suite (OMS) in Microsoft Azure Monitor ändert sich die Terminologie. Dieser Artikel bezieht sich auf das OMS-Gateway als das Azure Log Analytics-Gateway. 
 >
 
-Dieser Artikel beschreibt, wie Sie die Kommunikation mit Azure Automation and Log Analytics über das Log Analytics-Gateway konfigurieren, wenn Computer, die direkt verbunden sind oder von Operations Manager überwacht werden, über keinen Internetzugang verfügen. 
+Dieser Artikel beschreibt, wie Sie die Kommunikation mit Azure Automation and Azure Monitor über das Log Analytics-Gateway konfigurieren, wenn Computer, die direkt verbunden sind oder von Operations Manager überwacht werden, über keinen Internetzugang verfügen. 
 
-Das Log Analytics-Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl „HTTP CONNECT“ unterstützt. Dieses Gateway kann Daten sammeln und im Namen der Computer, die nicht mit dem Internet verbunden sind, an Azure Automation und Log Analytics senden.  
+Das Log Analytics-Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl „HTTP CONNECT“ unterstützt. Dieses Gateway kann Daten sammeln und im Namen der Computer, die nicht mit dem Internet verbunden sind, an Azure Automation und einen Log Analytics-Arbeitsbereich in Azure Monitor senden.  
 
 Das Log Analytics-Gateway unterstützt Folgendes:
 
 * Kommunikation mit bis zu den gleichen vier Log Analytics-Arbeitsbereichs-Agents, die sich hinter dem Gateway befinden und die mit Azure Automation Hybrid Runbook Workers konfiguriert sind.  
-* Direkt mit einem Log Analytics-Arbeitsbereich verbundene Windows-Computer mit Microsoft Monitoring Agent.
-* Direkt mit einem Log Analytics-Arbeitsbereich verbundene Linux-Computer mit dem Log Analytics-Agent für Linux.  
+* Direkt mit einem Log Analytics-Arbeitsbereich in Azure Monitor verbundene Windows-Computer mit Microsoft Monitoring Agent.
+* Direkt mit einem Log Analytics-Arbeitsbereich in Azure Monitor verbundene Linux-Computer mit dem Log Analytics-Agent für Linux.  
 * System Center Operations Manager 2012 SP1 mit UR7, Operations Manager 2012 R2 mit UR3 oder eine Verwaltungsgruppe in Operations Manager 2016 oder höher, die in Log Analytics integriert ist.  
 
-Einige IT-Sicherheitsrichtlinien lassen keine Internetverbindung für Netzwerkcomputer zu. Diese nicht verbundenen Computer können beispielsweise POS-Geräte (Point of Sale) oder Server sein, die IT-Dienste unterstützen. Um diese Geräte mit Azure Automation oder Log Analytics zu verbinden, damit Sie sie verwalten und überwachen können, konfigurieren Sie sie so, dass sie direkt mit dem Log Analytics-Gateway kommunizieren. Das Log Analytics-Gateway kann Konfigurationsinformationen empfangen und Daten in ihrem Auftrag weiterleiten. Wenn die Computer mit dem Log Analytics-Agent konfiguriert werden, um eine direkte Verbindung mit einem Log Analytics-Arbeitsbereich herzustellen, kommunizieren die Computer stattdessen mit dem Log Analytics-Gateway.  
+Einige IT-Sicherheitsrichtlinien lassen keine Internetverbindung für Netzwerkcomputer zu. Diese nicht verbundenen Computer können beispielsweise POS-Geräte (Point of Sale) oder Server sein, die IT-Dienste unterstützen. Um diese Geräte mit Azure Automation oder einen Log Analytics-Arbeitsbereich zu verbinden, damit Sie sie verwalten und überwachen können, konfigurieren Sie sie so, dass sie direkt mit dem Log Analytics-Gateway kommunizieren. Das Log Analytics-Gateway kann Konfigurationsinformationen empfangen und Daten in ihrem Auftrag weiterleiten. Wenn die Computer mit dem Log Analytics-Agent konfiguriert werden, um eine direkte Verbindung mit einem Log Analytics-Arbeitsbereich herzustellen, kommunizieren die Computer stattdessen mit dem Log Analytics-Gateway.  
 
 Das Log Analytics-Gateway überträgt Daten von den Agents direkt an den Dienst. Dabei werden keinerlei Daten im Übergang analysiert.
 
 Wenn eine Operations Manager-Verwaltungsgruppe in Log Analytics integriert wird, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem Log Analytics-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden.  Operations Manager-Agents senden einige Daten an den Verwaltungsserver. Agents können z.B. Operations Manager-Warnungen, Daten zur Konfigurationsbewertung, Instanz-Speicherplatzdaten und Kapazitätsdaten senden. Andere umfangreiche Daten wie etwa IIS-Protokolle (Internet Information Services, Internetinformationsdienste), Leistungsdaten und Sicherheitsereignisse werden direkt an das Log Analytics-Gateway gesendet. 
 
-Wenn mindestens ein Operations Manager-Gatewayserver zur Überwachung nicht vertrauenswürdiger Systeme in einem Umkreisnetzwerk oder einem isolierten Netzwerk bereitgestellt wird, können diese Server nicht mit einem Log Analytics-Gateway kommunizieren.  Operations Manager-Gatewayserver können nur mit einem Verwaltungsserver kommunizieren.  Wenn eine Operations Manager-Verwaltungsgruppe für die Kommunikation mit dem Log Analytics-Gateway konfiguriert ist, werden die Proxykonfigurationsinformationen automatisch an alle per Agent verwalteten Computer verteilt, die zum Sammeln von Daten für Log Analytics konfiguriert sind. Das gilt auch, wenn die Einstellung leer ist.    
+Wenn mindestens ein Operations Manager-Gatewayserver zur Überwachung nicht vertrauenswürdiger Systeme in einem Umkreisnetzwerk oder einem isolierten Netzwerk bereitgestellt wird, können diese Server nicht mit einem Log Analytics-Gateway kommunizieren.  Operations Manager-Gatewayserver können nur mit einem Verwaltungsserver kommunizieren.  Wenn eine Operations Manager-Verwaltungsgruppe für die Kommunikation mit dem Log Analytics-Gateway konfiguriert ist, werden die Proxykonfigurationsinformationen automatisch an alle per Agent verwalteten Computer verteilt, die zum Sammeln von Protokolldaten für Azure Monitor konfiguriert sind. Das gilt auch, wenn die Einstellung leer ist.    
 
-Zur Gewährleistung der Hochverfügbarkeit für direkt verbundene Gruppen oder Operations Management-Gruppen, die über das Gateway mit Log Analytics kommunizieren, leiten Sie Datenverkehr mithilfe des Netzwerklastenausgleichs (NLB) um und verteilen ihn auf mehrere Gatewayserver. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr auf diese Weise an einen anderen verfügbaren Knoten umgeleitet.  
+Zur Gewährleistung der Hochverfügbarkeit für direkt verbundene Gruppen oder Operations Management-Gruppen, die über das Gateway mit einem Log Analytics-Arbeitsbereich kommunizieren, leiten Sie Datenverkehr mithilfe des Netzwerklastenausgleichs (NLB) um und verteilen ihn auf mehrere Gatewayserver. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr auf diese Weise an einen anderen verfügbaren Knoten umgeleitet.  
 
 Der Computer, auf dem das Log Analytics-Gateway ausgeführt wird, benötigt den Windows-Agent von Log Analytics, um die Dienstendpunkte zu identifizieren, mit denen das Gateway kommunizieren muss. Der Agent muss das Gateway auch anweisen, an dieselben Arbeitsbereiche zu berichten, mit denen die Agents oder die Operations Manager-Verwaltungsgruppe hinter dem Gateway konfiguriert sind. Diese Konfiguration ermöglicht dem Gateway und dem Agent die Kommunikation mit ihrem zugewiesenen Arbeitsbereich.
 

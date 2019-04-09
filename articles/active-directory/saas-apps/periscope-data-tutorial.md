@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d8fd6a0422ee26610f58f872cba4487d4e01e6b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cac685cc3f5a19e9da134df87076299e3f38fe11
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403628"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880972"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Tutorial: Azure Active Directory-Integration mit Periscope Data
 
@@ -50,7 +50,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Periscope Data in Azure AD müssen Sie Periscope Data aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Periscope Data aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie zum Hinzufügen von Periscope Data aus dem Katalog die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -109,9 +109,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Periscop
     | |
     |--|
     | `https://app.periscopedata.com/` |
-    | ` https://app.periscopedata.com/app/<SITENAME>` |
+    | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://app.periscopedata.com/<SITENAME>/sso`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Periscope Data](mailto:support@periscopedata.com), um diesen Wert zu erhalten. Den Bezeichnerwert erhalten Sie, indem Sie die Schritte im Abschnitt **Konfigurieren des einmaligen Anmeldens für Periscope Data** weiter unten ausführen. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -166,7 +166,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.endung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -231,9 +231,9 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Periscope Data“ klicken, sollten
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

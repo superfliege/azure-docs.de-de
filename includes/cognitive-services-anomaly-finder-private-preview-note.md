@@ -7,15 +7,15 @@ manager: cgrounlun
 ms.service: cognitive-services
 ms.technology: anomaly-finder
 ms.topic: include
-ms.date: 11/15/2018
+ms.date: 03/21/2019
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: e93b889ee3ead06c28f9fec5659a61aad2752bac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 1dab9b0e23b5fe574f9b4506fdcad510d378bfef
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716185"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494853"
 ---
 > [!NOTE]
-> Suche nach Anomalien befindet sich in der privaten Vorschau. [Wenden Sie sich an uns](mailto:kenshoteam@microsoft.com), wenn Sie sich für die private Vorschau der Suche nach Anomalien interessieren. Nachdem Sie Zugriff erhalten haben, finden Sie in der zugriffsbeschränkten [Dokumentation zur privaten Vorschau der Suche nach Anomalien](https://aka.ms/AnomalyFinderPrivatePreview) weitere Informationen.
+> Die Anomalieerkennungs-API (jetzt als öffentliche Vorschauversion) ersetzt das Anomaliesuche-Lab. Bestehende Anomaliesuche-Labs werden am 30. April 2019 entfernt. Es wird empfohlen, vor diesem Zeitpunkt zur Anomalieerkennung zu migrieren. Weitere Informationen finden Sie in der [Dokumentation zur Anomalieerkennungs-API](../articles/cognitive-services/anomaly-detector/index.yml). 

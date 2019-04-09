@@ -1,24 +1,38 @@
 ---
 title: 'Ausführen eines Upgrades für Ihren QnA Maker-Dienst: QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Sie können sich nach der erstmaligen Erstellung für ein Upgrade einzelner Komponenten des QnA Maker-Stapels entscheiden.
+description: Geben Sie Ihre QnA Maker-Dienste frei, oder führen Sie ein Upgrade der Dienste durch, um die Ressourcen effektiver zu verwalten.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/25/2019
 ms.author: tulasim
-ms.openlocfilehash: e37a903112f30917ff5051305bb2144981de1c9d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883269"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437986"
 ---
-# <a name="upgrade-your-qna-maker-service"></a>Upgrade Ihres QnA Maker-Diensts
+# <a name="share-or-upgrade-your-qna-maker-service"></a>Freigabe oder Ausführen eines Upgrades für Ihren QnA Maker-Dienst
+Geben Sie Ihre QnA Maker-Dienste frei, oder führen Sie ein Upgrade der Dienste durch, um die Ressourcen effektiver zu verwalten. 
+
 Sie können sich nach der erstmaligen Erstellung für ein Upgrade einzelner Komponenten des QnA Maker-Stapels entscheiden. Die Details der abhängigen Komponenten und die Auswahl der SKUs finden Sie [hier](https://aka.ms/qnamaker-docs-capacity).
+
+## <a name="share-existing-services-with-qna-maker"></a>Freigeben vorhandener Dienste mit QnA Maker
+
+QnA Maker erstellt verschiedene Azure-Ressourcen. Um den Verwaltungsaufwand zu reduzieren und von der Kostenteilung zu profitieren, verwenden Sie die folgende Tabelle, um zu erfahren, was Sie freigeben können und was nicht:
+
+|Dienst|Freigabe|
+|--|--|
+|Cognitive Services|X|
+|App Services-Plan|✔|
+|App Service|X|
+|Application Insights|✔|
+|Suchdienst|✔|
 
 ## <a name="upgrade-qna-maker-management-sku"></a>Upgrade der QnA Maker Management-SKU
 

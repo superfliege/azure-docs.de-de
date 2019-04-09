@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: c7dd2fba852881680b43ceabafec2ac6b2751df4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839592"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359885"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen
 
@@ -28,25 +28,20 @@ Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Si
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="view-a-workspace"></a>Anzeigen eines Arbeitsbereichs
+## <a name="view"></a>Anzeigen eines Arbeitsbereichs
 
 1. Wählen Sie links oben im Portal die Option **Alle Dienste** aus. 
 
-1. Geben Sie **Machine Learning Service-Arbeitsbereich** in das Filterfeld **Alle Dienste** ein.  
+1. Geben Sie **Machine Learning Service** in das Filterfeld **Alle Dienste** ein.  
 
-   ![Suchen nach dem Azure Machine Learning Service-Arbeitsbereich](media/how-to-manage-workspace/allservices-search1.png)
+1. Wählen Sie **Machine Learning Service-Arbeitsbereiche** aus.
 
-1. Wählen Sie in den Filterergebnissen **Machine Learning Service-Arbeitsbereich** aus, um eine Liste Ihrer Arbeitsbereiche anzuzeigen. 
-
-   ![Auflisten von Azure Machine Learning Service-Arbeitsbereichen](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Suchen nach dem Azure Machine Learning Service-Arbeitsbereich](media/how-to-manage-workspace/all-services.png)
 
 1. Durchsuchen Sie die Liste der gefundenen Arbeitsbereiche. Sie können basierend auf Abonnement, Ressourcengruppen und Standorten filtern.  
 
-   ![Anzeigen von Arbeitsbereichen](media/how-to-manage-workspace/allservices_view_workspace.PNG)
-
-1. Wählen Sie den eben erstellten Arbeitsbereich aus, um seine Eigenschaften anzuzeigen.
-
-   ![Arbeitsbereicheigenschaften](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+1. Wählen Sie einen Arbeitsbereich aus, um seine Eigenschaften anzuzeigen.
+   ![Arbeitsbereichseigenschaften](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081252"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521091"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -49,7 +49,7 @@ Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#
 
 ## <a name="services-that-can-be-moved"></a>Dienste, die verschoben werden können
 
-Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können. Ausführliche Informationen finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](move-support-resources.md).
+Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können. Eine Liste der Ressourcentypen, die das Verschieben unterstützen, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -104,6 +104,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
 * Recovery Services-Tresor – registrieren Sie sich für eine [Vorschauversion](#recovery-services-limitations).
+* SAP HANA in Azure
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
 * Service Bus
@@ -143,10 +144,9 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
-* Lab-Dienste: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
+* Lab-Dienst – Classroom-Labs können nicht in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden.rschoben werden. DevTest-Labs können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
 * Verwaltete Anwendungen
 * Microsoft Genomics
-* SAP HANA in Azure
 * Sicherheit
 * Site Recovery
 * StorSimple-Geräte-Manager

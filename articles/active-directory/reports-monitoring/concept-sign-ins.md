@@ -40,7 +40,7 @@ In diesem Thema erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivi
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
-* Benutzer mit den Rollen „Sicherheitsadministrator“, „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ und „Berichtsleser“
+* Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“ und „Berichtsleser“
 * Globale Administratoren
 * Darüber hinaus kann jeder Benutzer (Nicht-Administratoren) auf seine eigenen Anmeldungen zugreifen. 
 

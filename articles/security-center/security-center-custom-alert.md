@@ -14,15 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5af778ff23c9b3f9188ac2e7b38767e4693f64a1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f09e5dc2b4e15d0364b3091af82c9db2eb6833c7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107615"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500150"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln in Azure Security Center erstellen.
+
+## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Einstellung von benutzerdefinierten Warnungsregeln in Azure Security Center
+
+> [!NOTE]
+> Die Benutzeroberfläche „Benutzerdefinierte Warnungen“ wird infolge der Einstellung des Diensts für klassische Azure Monitor-Warnungen am 30. Juni 2019 eingestellt. Im Zeitraum bis zur Einstellung können Benutzer vorhandene benutzerdefinierte Warnungsregeln bearbeiten, aber keine neuen Regeln mehr hinzufügen.
+> Benutzern wird empfohlen, [Azure Sentinel](https://azure.microsoft.com/en-us/services/azure-sentinel/) mit Ein-Klick-Onboarding zu aktivieren, damit ihre vorhandenen Warnungen automatisch migriert und neue erstellt werden, oder alternativ ihre Warnungen mit Azure Monitor-Protokollwarnungen neu zu erstellen.
+>                                      
+> Wenn Sie Ihre vorhandenen Warnungen beibehalten und nach Azure Sentinel migrieren möchten, [starten Sie Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Wählen Sie als ersten Schritt den Arbeitsbereich aus, in dem Ihre benutzerdefinierten Warnungen gespeichert sind. Wählen Sie dann das Menüelement „Analytics“ aus, damit Ihre Warnungen automatisch migriert werden.
+>
+> ** Beachten Sie, dass die Migration von benutzerdefinierten Warnungen nach Azure Sentinel eine einmalige Migration aller Ihrer benutzerdefinierten Warnungen im ausgewählten Arbeitsbereich ist. Nach Abschluss der Migration kann auf die benutzerdefinierten Warnungen für diesen ausgewählten Arbeitsbereich über Azure Security Center nicht mehr zugegriffen werden.
+> Benutzerdefinierte Warnungen mithilfe von Abfragen des Typs [Search](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/search-queries)- oder [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)-Anweisungen werden in Azure Sentinel nicht unterstützt und deshalb nicht migriert. Bitte bearbeiten Sie diese Warnungen, bevor Sie die Migration durchführen.
+>
+> Wenn Sie Ihre Warnungen unter Verwendung von Azure Monitor-Protokollwarnungen neu erstellen möchten, lesen Sie den Artikel: [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log). Er enthält Anleitungen zum Erstellen von Protokollwarnungen. Zum Anzeigen einer allgemeinen Übersicht über Protokollwarnungen in Azure Monitor klicken Sie [hier](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-unified-log).
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Was sind benutzerdefinierte Warnungsregeln in Security Center?
 

@@ -11,12 +11,12 @@ ms.date: 03/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeeb9989b6bf0233354d493f5dbb6916c806cfdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3485639062f33d013152cd30f6785df4d1c79790
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076835"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437780"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Verschieben einer Azure AD Connect-Datenbank von SQL Server Express zu SQL Server 
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um die Azure AD Connect-Datenbank auf ei
 8. Wenn die Datenbank angefügt wurde, wechseln Sie zurück zum Azure AD Connect-Server, und installieren Sie Azure AD Connect.
 9. Sobald die MSI-Installation abgeschlossen ist, wird der Azure AD Connect-Assistent mit dem Setup im Express-Modus gestartet. Schließen Sie den Bildschirm durch Klicken auf das Symbol „Beenden“.
    ![Willkommen](./media/how-to-connect-install-move-db/db1.png)
-10. Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner <drive>\Programme\Microsoft Azure AD Connect. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
+10. Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner „\<Laufwerk>\Programme\Microsoft Azure AD Connect“. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Sie werden mit dem Bildschirm „Willkommen bei Azure AD Connect“ begrüßt. Wenn Sie den Lizenzbedingungen und dem Datenschutzhinweis zugestimmt haben, klicken Sie auf **Fortfahren**.
     ![Willkommen](./media/how-to-connect-install-move-db/db3.png)

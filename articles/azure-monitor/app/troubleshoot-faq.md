@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905057"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521813"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -153,7 +153,7 @@ Dies ist möglich, wenn der Code solche Daten sendet. Es kann auch vorkommen, we
 
 **Alle** Oktette der Clientwebadresse werden immer auf 0 festgelegt, nachdem die Attribute für den geografischen Standort nachgeschlagen wurden.
 
-## <a name="my-ikey-is-visible-in-my-web-page-source"></a>Mein iKey ist in meiner Webseitenquelle sichtbar. 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Mein Instrumentierungsschlüssel ist in meiner Webseitenquelle sichtbar. 
 
 * Dies ist in Überwachungslösungen üblich.
 * Er kann nicht zum Diebstahl Ihrer Daten verwendet werden.
@@ -162,7 +162,7 @@ Dies ist möglich, wenn der Code solche Daten sendet. Es kann auch vorkommen, we
 
 Sie haben folgende Möglichkeiten, um das Problem auszuschließen:
 
-* Verwenden Sie zwei verschiedene iKeys (unterschiedliche Application Insights-Ressourcen) für Client- und Serverdaten. oder
+* Verwenden Sie zwei verschiedene Instrumentierungsschlüssel (unterschiedliche Application Insights-Ressourcen) für Client- und Serverdaten. oder
 * Schreiben Sie einen Proxy, der auf dem Server ausgeführt wird, und lassen Sie den Webclient Daten über diesen Proxy senden.
 
 ## <a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?

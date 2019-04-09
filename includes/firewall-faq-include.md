@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 2/4/2019
+ms.date: 3/26/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 8fd8cd93015fdb5cdcf657ecbcbb9a7cc870525a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: c632989ea85033c6cbdd4188351d34345e919c49
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747746"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500660"
 ---
 ### <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -33,7 +33,7 @@ Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, de
 
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Was ist das typische Bereitstellungsmodell für Azure Firewall?
 
-Sie können Azure Firewall in einem virtuellen Netzwerk bereitstellen, Kunden stellen Azure Firewall jedoch in der Regel in einem zentralen virtuellen Netzwerk bereit und verbinden andere virtuelle Netzwerke in einem Hub-and-Spoke-Modell damit. Sie können die Standardroute von den verbundenen virtuellen Netzwerken anschließend so festlegen, dass sie auf dieses zentrale virtuelle Firewall-Netzwerk verweist.
+Sie können Azure Firewall in einem virtuellen Netzwerk bereitstellen, Kunden stellen Azure Firewall jedoch in der Regel in einem zentralen virtuellen Netzwerk bereit und verbinden andere virtuelle Netzwerke in einem Hub-and-Spoke-Modell damit. Sie können die Standardroute von den verbundenen virtuellen Netzwerken anschließend so festlegen, dass sie auf dieses zentrale virtuelle Firewall-Netzwerk verweist. Globales VNet-Peering wird unterstützt, wird aber aufgrund potenzieller Leistungs- und Latenzprobleme in den Regionen nicht empfohlen. Für optimale Leistungen stellen Sie eine Firewall pro Region bereit.
 
 Der Vorteil dieses Modells ist die Möglichkeit, die Kontrolle über mehrere Spoke-VNETs über verschiedene Abonnements hinweg zentral auszuüben. Es ergeben sich zudem Kosteneinsparungen, da Sie nicht in jedem VNet separat eine Firewall bereitstellen müssen. Die Kosteneinsparungen sollten anhand der zugeordneten Peeringkosten auf der Grundlage der Datenverkehrsmuster der Kunden gemessen werden.
 
@@ -45,10 +45,11 @@ Sie können Azure Firewall über das Azure-Portal, PowerShell, die REST-API oder
 
 Azure Firewall unterstützt-Regeln und Regelsammlungen. Eine Regelsammlung ist eine Liste von Regeln mit gleicher Reihenfolge und Priorität. Regelsammlungen werden in der Reihenfolge ihrer Priorität ausgeführt. Netzwerkregelsammlungen haben höhere Priorität als Anwendungsregelsammlungen, und alle Regeln werden beendet.
 
-Es gibt zwei Arten von Regelsammlungen:
+Es gibt drei Arten von Regelsammlungen:
 
-* *Anwendungsregeln*: Ermöglichen das Konfigurieren vollqualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs), auf die von einem Subnetz aus zugegriffen werden kann.
-* *Netzwerkregeln*: Ermöglichen Ihnen das Konfigurieren von Regeln mit Quelladressen, Protokollen, Zielports und Zieladressen.
+* *Anwendungsregeln*: Konfigurieren vollqualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs), auf die von einem Subnetz aus zugegriffen werden kann.
+* *Netzwerkregeln*: Konfigurieren von Regeln mit Quelladressen, Protokollen, Zielports und Zieladressen.
+* *NAT-Regeln*: Konfigurieren von DNAT-Regeln, um eingehende Verbindungen zuzulassen.
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Unterstützt Azure Firewall das Filtern des eingehenden Datenverkehrs?
 
@@ -94,19 +95,19 @@ Beispiel:
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ```azurepowershell
 #Start a firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
+$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
 $azfw.Allocate($vnet,$publicip)
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 > [!NOTE]
@@ -124,6 +125,14 @@ Ja, Sie können Azure Firewall in einem virtuellen Hubnetzwerk verwenden, um den
 
 Ja. Die Konfiguration der UDRs zur Umleitung des Datenverkehrs zwischen Subnetzen im gleichen VNET erfordert jedoch zusätzliche Anstrengungen. Während die Verwendung des VNET-Adressbereichs als Zielpräfix für den UDR ausreicht, wird auch der gesamte Datenverkehr von einem Computer zu einem anderen Computer im gleichen Subnetz über die Azure Firewall-Instanz geleitet. Um dies zu vermeiden, fügen Sie eine Route für das Subnetz in den UDR mit dem Typ **VNET** für den nächsten Hop ein. Das Verwalten dieser Routen kann umständlich und fehleranfällig sein. Die empfohlene Methode für die interne Netzwerksegmentierung ist die Verwendung von Netzwerksicherheitsgruppen, die keine UDRs erfordern.
 
+### <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wird erzwungenes Tunneling bzw. die erzwungene Verkettung mit einem virtuellen Netzwerkgerät unterstützt?
+
+Ja.
+
+Azure Firewall muss über eine direkte Internetverbindung verfügen. Standardmäßig verfügt AzureFirewallSubnet über die Route „0.0.0.0/0“, bei der der Wert „NextHopType“ auf **Internet** festgelegt ist.
+
+Wenn Sie die Tunnelerzwingung für Verbindungen mit dem lokalen Netzwerk über ExpressRoute oder VPN Gateway aktiviert haben, müssen Sie explizit eine benutzerdefinierte Route für 0.0.0.0/0 konfigurieren, für die der Wert NextHopType auf „Internet“ festgelegt ist, und diese dem AzureFirewallSubnet zuweisen. Dadurch wird eine mögliche BGP-Anzeige für das Standardgateway in Ihrem lokalen Netzwerk außer Kraft gesetzt. Wenn Ihr Unternehmen erzwungenes Tunneling für Azure Firewall erfordert, um den standardmäßigen Gatewaydatenverkehr über Ihr lokales Netzwerk zurückzuleiten, wenden Sie sich an den Support. Wir können Ihr Abonnement in die Whitelist aufnehmen, um sicherzustellen, dass die erforderliche Internetkonnektivität der Firewall erhalten bleibt.
+
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Gibt es Einschränkungen bei Ressourcengruppen?
 
 Ja. Firewall, Subnetz, VNET und die öffentliche IP-Adresse müssen sich in der gleichen Ressourcengruppe befinden.
@@ -131,3 +140,7 @@ Ja. Firewall, Subnetz, VNET und die öffentliche IP-Adresse müssen sich in der 
 ### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Muss ich bei der Konfiguration von DNAT für den eingehenden Netzwerkverkehr auch eine entsprechende Netzwerkregel konfigurieren, um diesen Verkehr zu ermöglichen?
 
 Nein. Mit NAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](../articles/firewall/rule-processing.md).
+
+### <a name="how-to-wildcards-work-in-an-application-rule-target-fqdn"></a>Wie funktionieren Platzhalter in einem FQDN eines Anwendungsregelziels?
+
+Wenn Sie ***.contoso.com** konfigurieren, ist *anyvalue*.contoso.com, aber nicht „contoso.com“ (Domäne an der Spitze der Zone) zulässig. Wenn Sie die Domäne an der Spitze der Zone zulassen möchten, müssen Sie sie explizit als Ziel-FQDN konfigurieren.

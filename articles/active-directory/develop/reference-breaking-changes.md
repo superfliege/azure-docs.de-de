@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196024"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401294"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -42,6 +42,37 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
 Zurzeit sind keine geplant. 
+
+## <a name="march-2019"></a>März 2019
+
+### <a name="looping-clients-will-be-interrupted"></a>In der Schleife befindliche Clients werden unterbrochen
+
+**Gültigkeitsdatum:** 25. März 2019
+
+**Betroffene Endpunkte:** v1.0 und v2.0
+
+**Betroffenes Protokoll:** Alle Flows
+
+Clientanwendungen können manchmal ein unerwünschtes Verhalten aufweisen und über einen kurzen Zeitraum Hunderte derselben Anmeldeanforderung ausgeben.  Diese Anforderungen können erfolgreich oder nicht erfolgreich sein, aber sie alle tragen zu einer schlechten Benutzererfahrung und erhöhten Workloads für den IDP bei, was zu einer höheren Latenz für alle Benutzer und einer geringeren Verfügbarkeit des IDP führt.  Die Ausführung dieser Anwendungen erfolgt außerhalb der Grenzen der normalen Nutzung. Sie sollten aktualisiert werden, um das ordnungsgemäße Verhalten aufzuweisen.  
+
+Clients, die doppelte Anforderungen ausgeben, erhalten einen `invalid_grant`-Fehler: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
+
+Das Verhalten der meisten Clients muss nicht geändert werden, um diesen Fehler zu vermeiden.  Von diesem Fehler sind nur falsch konfigurierte Clients betroffen, also Clients ohne Zwischenspeicherung von Token oder Clients, die sich bereits in Prompt-Schleifen befinden.  Clients werden pro Instanz lokal (über Cookie) anhand der folgenden Faktoren nachverfolgt:
+
+* Benutzerhinweis, falls vorhanden
+
+* Angeforderte Bereiche oder Ressourcen
+
+* Client-ID
+
+* Umleitungs-URI
+
+* Antworttyp und -modus
+
+Apps, die innerhalb kurzer Zeit (5 Minuten) mehrere Anforderungen (15 und mehr) senden, erhalten einen `invalid_grant`-Fehler, der erklärt, dass sie sich in einer Schleife befinden.  Die angeforderten Token haben eine ausreichend lange Lebensdauer (mindestens 10 Minuten, standardmäßig 60 Minuten), sodass in diesem Zeitraum keine wiederholten Anforderungen erforderlich sind.  
+
+Alle Apps sollten `invalid_grant` verarbeiten, indem sie eine interaktive Eingabeaufforderung anzeigen, statt automatisch ein Token anzufordern.  Um diesen Fehler zu vermeiden, sollte für die Clients sichergestellt werden, dass sie die empfangenen Token ordnungsgemäß zwischenspeichern.
+
 
 ## <a name="october-2018"></a>Oktober 2018
 

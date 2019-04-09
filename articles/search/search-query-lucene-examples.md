@@ -7,23 +7,24 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8ec6a6a24629f72199d5f5afa86200acf53aba01
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f7fce7eab697f6517b351d00595cb02110d3641
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136545"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499572"
 ---
-# <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Beispiele für die Lucene-Abfragesyntax zum Erstellen von erweiterten Abfragen in Azure Search
-Beim Erstellen von Abfragen für Azure Search können Sie den standardmäßigen [einfachen Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) durch den umfangreicheren [Lucene-Abfrageparser in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) ersetzen, um spezialisierte und erweiterte Abfragedefinitionen zu formulieren. 
+# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Abfragebeispiele, die „vollständige“ Lucene-Suchsyntax verwenden (erweiterte Abfragen in Azure Search)
 
-Der Lucene-Abfrageparser unterstützt komplexe Abfragekonstrukte, z.B. feldbezogene Abfragen, Fuzzy- und Präfixplatzhaltersuche, NEAR-Suche, Term Boosting (Begriffsverstärkung) und die Suche mit regulären Ausdrücken. Die zusätzliche Leistung kommt mit zusätzlichen Verarbeitungsanforderungen, stellen Sie sich deshalb auf eine etwas längere Ausführungsdauer ein. In diesem Artikel können Sie Beispiele mit Abfragevorgängen durchlaufen, die bei Verwendung der vollständigen Syntax verfügbar sind.
+Beim Erstellen von Abfragen für Azure Search können Sie den standardmäßigen [einfachen Abfrageparser](query-simple-syntax.md) durch den umfangreicheren [Lucene-Abfrageparser in Azure Search](query-lucene-syntax.md) ersetzen, um spezialisierte und erweiterte Abfragedefinitionen zu formulieren. 
+
+Der Lucene-Parser unterstützt komplexe Abfragekonstrukte, z.B. feldbezogene Abfragen, Fuzzy- und Präfixplatzhaltersuche, NEAR-Suche, Term Boosting (Begriffsverstärkung) und die Suche mit regulären Ausdrücken. Die zusätzliche Leistung kommt mit zusätzlichen Verarbeitungsanforderungen, stellen Sie sich deshalb auf eine etwas längere Ausführungsdauer ein. In diesem Artikel können Sie Beispiele mit Abfragevorgängen durchlaufen, die bei Verwendung der vollständigen Syntax verfügbar sind.
 
 > [!Note]
-> Viele der spezialisierten Abfragekonstruktionen, die über die vollständige Lucene-Abfragesyntax aktiviert werden, verfügen nicht über eine [Textanalyse](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Dies kann zu Überraschungen führen, wenn Sie mit Wortstammerkennung und Lemmatisierung rechnen. Die lexikalische Analyse erfolgt nur für vollständige Begriffe (Begriffsabfrage oder Ausdrucksabfrage). Abfragetypen mit unvollständigen Begriffen (Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke, Fuzzyabfrage) werden direkt unter Umgehung der Analysephase an die Abfragestruktur angehängt. Die einzige Transformation, die für unvollständige Abfrageausdrücke durchgeführt wird, ist die Umwandlung in Kleinbuchstaben. 
+> Viele der spezialisierten Abfragekonstruktionen, die über die vollständige Lucene-Abfragesyntax aktiviert werden, verfügen nicht über eine [Textanalyse](search-lucene-query-architecture.md#stage-2-lexical-analysis). Dies kann zu Überraschungen führen, wenn Sie mit Wortstammerkennung und Lemmatisierung rechnen. Die lexikalische Analyse erfolgt nur für vollständige Begriffe (Begriffsabfrage oder Ausdrucksabfrage). Abfragetypen mit unvollständigen Begriffen (Präfixabfrage, Platzhalterabfrage, Abfrage regulärer Ausdrücke, Fuzzyabfrage) werden direkt unter Umgehung der Analysephase an die Abfragestruktur angehängt. Die einzige Transformation, die für unvollständige Abfrageausdrücke durchgeführt wird, ist die Umwandlung in Kleinbuchstaben. 
 >
 
 ## <a name="formulate-requests-in-postman"></a>Formulieren von Anforderungen in Postman
@@ -58,13 +59,15 @@ Die URL-Komposition umfasst die folgenden Elemente:
 
 ## <a name="send-your-first-query"></a>Senden Ihrer ersten Abfrage
 
-Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und klicken Sie auf **Senden**. Die Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben. Sie können diese URL kopieren und unten in das erste Beispiel einfügen.
+Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und klicken Sie auf **Senden**. Die Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben. Es werden ganze Dokumente zurückgegeben, sodass Sie alle Felder und alle Werte sehen können.
+
+Fügen Sie diese URL in einen REST-Client als Überprüfungsschritt und zum Anzeigen der Dokumentstruktur ein.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
   ```
 
-Die Abfragezeichenfolge **`search=*`** entspricht einer Suche ohne Angaben, die einer NULL-Suche oder leeren Suche gleicht. Dies hat keinen besonderen Nutzen, aber es ist die einfachste Suche, die Sie durchführen können.
+Die Abfragezeichenfolge **`search=*`** entspricht einer Suche ohne Angaben, die einer NULL-Suche oder leeren Suche gleicht. Es ist die einfachste Suche, die Sie ausführen können.
 
 Optional können Sie der URL **`$count=true`** hinzufügen, um eine Anzahl für die Dokumente zurückzugeben, die die Suchkriterien erfüllen. In einer leeren Suchzeichenfolge entspricht dies allen Dokumenten im Index (ca. 2.800 für „NYC Jobs“).
 
@@ -80,12 +83,26 @@ In allen Beispielen in diesem Artikel wird der Suchparameter **queryType=full** 
 
 ## <a name="example-1-field-scoped-query"></a>Beispiel 1: Feldbezogene Abfrage
 
-Dieses erste Beispiel ist nicht parserspezifisch, wir beginnen jedoch mit diesem Beispiel, um das erste Grundkonzept für Abfragen vorzustellen: die Eingrenzung. In diesem Beispiel beschränken sich die Abfrageausführung und die Antwort auf nur wenige bestimmte Felder. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
+Dieses erste Beispiel ist nicht Lucene-spezifisch, wir beginnen jedoch damit, um das erste Grundkonzept für Abfragen vorzustellen: die Eigenständigkeit. In diesem Beispiel beschränken sich die Abfrageausführung und die Antwort auf nur wenige bestimmte Felder. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
 
 Um das Beispiel kurz zu halten, zielt die Abfrage nur auf das Feld *business_title* ab, und es werden nur Berufsbezeichnungen zurückgegeben. Die Syntax lautet **searchFields**, um die Abfrageausführung nur auf das Feld „business_title“ zu beschränken, und **select**, um anzugeben, welche Felder in der Antwort enthalten sind.
 
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
+&search=*&searchFields=business_title&$select=business_title
+```
+
+Hier ist dieselbe Abfrage mit mehreren Feldern in einer Liste mit Kommas als Trennzeichen.
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>Vollständige URL
+
+```http
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
 Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
@@ -96,10 +113,24 @@ Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer
 
 ## <a name="example-2-intra-field-filtering"></a>Beispiel 2: Filterung in einem Feld
 
-Die vollständige Lucene-Syntax unterstützt Ausdrücke in einem Feld. Diese Abfrage sucht nach Geschäftstiteln, in denen der Begriff „Senior“, jedoch nicht der Begriff „Junior“ enthalten ist:
+Die vollständige Lucene-Syntax unterstützt Ausdrücke in einem Feld. Dieses Beispiel sucht nach Geschäftstiteln, in denen der Begriff „Senior“, jedoch nicht der Begriff „Junior“ enthalten ist.
+
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
+```http
+searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+```
+
+Hier ist dieselbe Abfrage mit mehreren Feldern.
+
+```http
+searchFields=business_title, posting_type&$select=business_title, posting_type&search=business_title:senior+NOT+junior AND posting_type:external
+```
+
+### <a name="full-url"></a>Vollständige URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
 ```
 
   ![Postman-Beispielantwort](media/search-query-lucene-examples/intrafieldfilter.png)
@@ -108,6 +139,7 @@ Indem Sie das Konstrukt **Feldname:Suchbegriff** angeben, können Sie einen feld
 
 * business_title:(senior NOT junior)
 * state:("New York" AND "New Jersey")
+* business_title:(senior NOT junior) AND posting_type:external
 
 Achten Sie darauf, dass Sie mehrere Zeichenfolgen in Anführungszeichen setzen, wenn beide Zeichenfolgen als einzelne Entität ausgewertet werden sollen, da in diesem Fall im Ortsfeld nach zwei verschiedenen Städte gesucht wird. Stellen Sie außerdem sicher, dass der Operator großgeschrieben wird, wie im Fall von NOT und AND.
 
@@ -117,49 +149,73 @@ Das in **Feldname:Suchbegriff** angegebene Feld muss durchsuchbar sein. Einzelhe
 
 Die vollständige Lucene-Syntax unterstützt auch die Fuzzysuche, bei der sich Übereinstimmungen für Begriffe ergeben, die über eine ähnliche Konstruktion verfügen. Hängen Sie für eine Fuzzysuche das Tildesymbol `~` an das Ende eines einzelnen Worts mit einem optionalen Parameter an, einem Wert zwischen 0 und 2, der die Editierdistanz angibt. Beispielsweise würden bei `blue~` oder `blue~1` die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
+```http
+searchFields=business_title&$select=business_title&search=business_title:asosiate~
+```
+
+Ausdrücke werden nicht direkt unterstützt, Sie können jedoch eine Fuzzyübereinstimmung für Komponententeile eines Ausdrucks angeben.
+
+```http
+searchFields=business_title&$select=business_title&search=business_title:asosiate~ AND comm~ 
+```
+
+
+### <a name="full-url"></a>Vollständige URL
+
 Diese Abfrage sucht nach Stellenangeboten mit dem Begriff „Associate“ (absichtlich falsch geschrieben):
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:asosiate~
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
   ![Antwort für die Fuzzysuche](media/search-query-lucene-examples/fuzzysearch.png)
 
-Laut [Lucene-Dokumentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
 > [!Note]
-> Fuzzyabfragen werden nicht [analysiert](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Abfragetypen mit unvollständigen Begriffen (Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke, Fuzzyabfrage) werden direkt unter Umgehung der Analysephase an die Abfragestruktur angehängt. Die einzige Transformation, die für unvollständige Abfrageausdrücke durchgeführt wird, ist die Umwandlung in Kleinbuchstaben.
+> Fuzzyabfragen werden nicht [analysiert](search-lucene-query-architecture.md#stage-2-lexical-analysis). Abfragetypen mit unvollständigen Begriffen (Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke, Fuzzyabfrage) werden direkt unter Umgehung der Analysephase an die Abfragestruktur angehängt. Die einzige Transformation, die für unvollständige Abfrageausdrücke durchgeführt wird, ist die Umwandlung in Kleinbuchstaben.
 >
 
 ## <a name="example-4-proximity-search"></a>Beispiel 4: NEAR-Suche
 NEAR-Suchen werden verwendet, um Begriffe zu suchen, die in einem Dokument nahe beieinander liegen. Fügen Sie ein Tildesymbol „~“ Symbol am Ende eines Ausdrucks ein, gefolgt von der Anzahl der Wörter, die den NEAR-Bereich bilden. Beispielsweise finden Sie mit der Abfrage „"Hotel Flughafen"~5“ die Begriffe „Hotel“ und „Flughafen“, wenn sie innerhalb von 5 Wörtern in einem Dokument vorkommen.
 
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
+```http
+searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+```
+
+### <a name="full-url"></a>Vollständige URL
+
 Diese Abfrage sucht nach Stellen mit dem Begriff „Senior Analyst“, wobei die beiden Wörter durch höchstens ein Wort getrennt sein dürfen:
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~1
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
   ![Näherungsabfrage](media/search-query-lucene-examples/proximity-before.png)
 
 Versuchen Sie es noch einmal, und entfernen Sie die Wörter zwischen „Senior“ und „Analyst“. Beachten Sie, dass für diese Abfrage acht Dokumente zurückgegeben werden, während es für die vorherige Abfrage zehn waren.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
 ## <a name="example-5-term-boosting"></a>Beispiel 5: Term Boosting
 Die Begriffsverstärkung (Term Boosting) bezieht sich auf das Höherbewerten eines Dokuments, wenn es den verstärkten Begriff enthält, im Verhältnis zu Dokumenten, die den Begriff nicht enthalten. Verwenden Sie zum Verstärken eines Begriffs das Caretzeichen „^“ mit einem Verstärkungsfaktor (einer Zahl) am Ende des Begriffs, nach dem Sie suchen. 
 
+### <a name="full-urls"></a>Vollständige URLs
+
 In dieser „Vorher“-Abfrage wird nach Stellen mit dem Begriff *computer analyst* gesucht. Beachten Sie, dass keine Ergebnisse mit den beiden Wörtern *computer* und *analyst* vorhanden sind, aber dass Stellen mit *computer* in den Ergebnissen oben angezeigt werden.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![Term Boosting davor](media/search-query-lucene-examples/termboostingbefore.png)
 
 Wiederholen Sie die Suche mit der „Nachher“-Abfrage, und verstärken Sie die Ergebnisse nun mit dem Begriff *analyst* für den Begriff *computer*, falls nicht beide Wörter vorhanden sind. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst%5e2
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
 Eine für Menschen besser lesbare Version der obigen Abfrage lautet `search=business_title:computer analyst^2`. Bei einer geeigneten Abfrage wird `^2` als `%5E2` codiert, und dies ist nicht so leicht erkennbar.
 
@@ -176,10 +232,18 @@ Je höher beim Festlegen der Faktorebene der Verstärkungsfaktor ist, desto rele
 
 Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.
 
-Mit dieser Abfrage wird nach Stellen gesucht, die entweder den Begriff „Senior“ oder „Junior“ enthalten: `search=business_title:/(Sen|Jun)ior/``.
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
+```http
+searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+```
+
+### <a name="full-url"></a>Vollständige URL
+
+Suchen Sie in dieser Abfrage nach Stellenangeboten mit dem Begriff „Senior“ oder „Junior“: `search=business_title:/(Sen|Jun)ior/`
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:/(Sen|Jun)ior/
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
   ![RegEx-Abfrage](media/search-query-lucene-examples/regex.png)
@@ -191,10 +255,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-7-wildcard-search"></a>Beispiel 7: Platzhaltersuche
 Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehreren (\*) oder einzelnen (?) Zeichen verwenden. Beachten Sie, dass der Lucene-Abfrageparser die Verwendung dieser Symbole bei einem einzelnen Begriff, nicht bei einem Ausdruck, unterstützt.
 
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
+```http
+searchFields=business_title&$select=business_title&search=business_title:prog*
+```
+
+### <a name="full-url"></a>Vollständige URL
+
 Mit dieser Abfrage wird nach Stellen gesucht, die das Präfix „Prog“ enthalten. Dazu gehören beispielsweise Berufsbezeichnungen mit den Begriffen „Programmierer“ und „Programmierung“. Sie können die Symbole * oder ? nicht als erstes Zeichen in einer Suche verwenden.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:prog*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
   ![Platzhalterabfrage](media/search-query-lucene-examples/wildcard.png)
 

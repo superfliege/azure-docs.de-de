@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cc5b40b6a800ff185c6c52652435b558fabe091f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873885"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496937"
 ---
 # <a name="object-detection"></a>Objekterkennung
 
@@ -97,7 +97,7 @@ Es ist wichtig, die Einschränkungen bei der Objekterkennung zu beachten, damit 
 
 ## <a name="use-the-api"></a>Verwenden der API
 
-Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie die Zeichenfolge auf den Inhalt im Abschnitt `"objects"`.
+Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Objects` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"objects"`.
 
 * [Schnellstart: Analysieren eines Bilds (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)

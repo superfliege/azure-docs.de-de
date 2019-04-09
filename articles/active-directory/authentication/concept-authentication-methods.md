@@ -1,5 +1,5 @@
 ---
-title: Azure AD-Authentifizierungsmethoden
+title: Authentifizierungsmethoden – -Azure Active Directory
 description: Übersicht über die verfügbaren Authentifizierungsmethoden in Azure AD für die Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999488"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371858"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -155,13 +155,13 @@ Benutzer verfügen möglicherweise über eine Kombination von bis zu 5 OATH-Hard
 
 OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Beachten Sie, dass geheime Schlüssel auf 128 Zeichen beschränkt sind, was möglicherweise nicht mit allen Token kompatibel ist.
 
-![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers im Azure-Portal](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
 OATH-Hardware-Token werden als Teil der öffentlichen Vorschau unterstützt. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sobald Sie Token erworben haben, müssen Sie sie in einem Format mit kommagetrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimer Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie das folgende Beispiel zeigt.
 
-```
+```csv
 upn,serial number,secret key,timeinterval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```

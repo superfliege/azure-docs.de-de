@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.openlocfilehash: 9f626e2a5c277cdce78c6e90046a1d40dac2d588
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3a9a1cb7a5829c7c824f9aa61d5f4976a533f4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078668"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519730"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -42,6 +42,13 @@ Sie können Logik-Apps zwar auch im <a href="https://portal.azure.com" target="_
   
     Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">Installieren dieser Erweiterung aus Visual Studio</a> informieren. 
     Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
+
+* Cloud-Explorer für Visual Studio 2017 oder Visual Studio 2015
+
+  * Führen Sie für Visual Studio 2017 den Visual Studio-Installer aus, und installieren Sie die **Azure-Workload**. Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2017).
+
+  * Für Visual Studio 2015 können Sie den [Cloud-Explorer aus dem Visual Studio Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+  Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
 * Internetzugriff bei Verwendung des eingebetteten Logic Apps-Designers
 

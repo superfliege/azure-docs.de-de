@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 43ac3e3cfe57ac7d6b8c575611bc4dbae3102dc5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439314"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518727"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "57439314"
 
 ![Metrik-Explorer für Application Insights](media/functions-monitoring/metrics-explorer.png)
 
-Außerdem verfügt Azure Functions über eine [integrierte Überwachung, für die nicht Application Insights verwendet wird](#monitoring-without-application-insights). Wir empfehlen die Nutzung von Application Insights, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können.
+Außerdem verfügt Azure Functions über eine integrierte Überwachung, für die nicht Application Insights verwendet wird. Wir empfehlen die Nutzung von Application Insights, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können.
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights – Preise und Limits
 
@@ -77,7 +77,7 @@ Im nächsten Schritt wird die [integrierte Protokollierung deaktiviert](#disable
 
 ## <a name="disable-built-in-logging"></a>Deaktivieren der integrierten Protokollierung
 
-Wenn Sie Application Insights aktivieren, deaktivieren Sie die [integrierte Protokollierung mit Verwendung von Azure Storage](#logging-to-storage). Die integrierte Protokollierung ist für Tests mit einfachen Workloads hilfreich, aber sie ist nicht für die Nutzung in der Produktion mit hohen Auslastungen bestimmt. Für die Produktionsüberwachung empfehlen wir die Verwendung von Application Insights. Bei Nutzung der integrierten Protokollierung in der Produktion kann der Protokollierungsdatensatz aufgrund einer Drosselung von Azure Storage ggf. unvollständig sein.
+Wenn Sie Application Insights aktivieren, deaktivieren Sie die integrierte Protokollierung mit Verwendung von Azure Storage. Die integrierte Protokollierung ist für Tests mit einfachen Workloads hilfreich, aber sie ist nicht für die Nutzung in der Produktion mit hohen Auslastungen bestimmt. Für die Produktionsüberwachung empfehlen wir die Verwendung von Application Insights. Bei Nutzung der integrierten Protokollierung in der Produktion kann der Protokollierungsdatensatz aufgrund einer Drosselung von Azure Storage ggf. unvollständig sein.
 
 Löschen Sie die App-Einstellung `AzureWebJobsDashboard`, um die integrierte Protokollierung zu deaktivieren. Informationen zum Löschen von App-Einstellungen im Azure-Portal finden Sie im Abschnitt **Anwendungseinstellungen** unter [Verwalten einer Funktionen-App im Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings). Stellen Sie vor dem Löschen der App-Einstellung sicher, dass sie nicht für vorhandene Funktionen in derselben Funktions-App für Azure Storage-Trigger oder -Bindungen verwendet wird.
 
@@ -125,7 +125,7 @@ Im [Metrik-Explorer](../azure-monitor/app/metrics-explorer.md) können Sie Diagr
 
 ![Metrik-Explorer](media/functions-monitoring/metrics-explorer.png)
 
-Auf der Registerkarte [Fehler](../azure-monitor/app/asp-net-exceptions.md) können Sie Diagramme und Warnungen basierend auf Funktionsfehlern und Serverausnahmen erstellen. Der **Vorgangsname** ist der Funktionsname. Fehler in Abhängigkeiten werden nur angezeigt, wenn Sie die [benutzerdefinierte Telemetrie](#custom-telemetry-in-c-functions) für Abhängigkeiten implementieren.
+Auf der Registerkarte [Fehler](../azure-monitor/app/asp-net-exceptions.md) können Sie Diagramme und Warnungen basierend auf Funktionsfehlern und Serverausnahmen erstellen. Der **Vorgangsname** ist der Funktionsname. Fehler in Abhängigkeiten werden nur angezeigt, wenn Sie die benutzerdefinierte Telemetrie für Abhängigkeiten implementieren.
 
 ![Fehler](media/functions-monitoring/failures.png)
 
@@ -423,7 +423,7 @@ In C#-Skriptfunktionen können Sie die `LogMetric`-Erweiterungsmethode in `ILogg
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Dieser Code ist eine Alternative zum Aufrufen von `TrackMetric` mithilfe der [Application Insights-API für .NET](#custom-telemetry-in-c-functions).
+Dieser Code ist eine Alternative zum Aufrufen von `TrackMetric` mithilfe der Application Insights-API für .NET.
 
 ## <a name="write-logs-in-javascript-functions"></a>Schreiben von Protokollen in JavaScript-Funktionen
 
@@ -441,7 +441,7 @@ Bei der Ausführung von [Version 1.x](functions-versions.md#creating-1x-apps) de
 context.log.metric("TestMetric", 1234);
 ```
 
-Dieser Code ist eine Alternative zum Aufrufen von `trackMetric` mithilfe des [Node.js SDK für Application Insights](#custom-telemetry-in-javascript-functions).
+Dieser Code ist eine Alternative zum Aufrufen von `trackMetric` mithilfe des Node.js SDK für Application Insights.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen
 
@@ -632,7 +632,7 @@ Mit dem Parameter `tagOverrides` wird die `operation_Id` auf die Aufrufkennung d
 
 ### <a name="dependencies"></a>Abhängigkeiten
 
-Abhängigkeiten der Funktion von anderen Diensten werden nicht automatisch angezeigt. Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
+Abhängigkeiten der Funktion von anderen Diensten werden nicht automatisch angezeigt. Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
 
 ![Anwendungszuordnung](media/functions-monitoring/app-map.png)
 
@@ -679,10 +679,6 @@ Get-AzWebSiteLog -Name <function app name> -Tail
 ```
 
 Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
-
-### <a name="local-view-of-log-files"></a>Lokale Ansicht von Protokolldateien
-
-[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

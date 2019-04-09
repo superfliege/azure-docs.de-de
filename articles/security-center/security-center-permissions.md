@@ -30,10 +30,10 @@ Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsp
 Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
 * **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**: Ein Benutzer, der dieser Rolle angehört, verfügt über Anzeigerechte für Security Center. Der Benutzer kann Empfehlungen, Warnungen, Sicherheitsrichtlinien und Sicherheitszustände anzeigen, jedoch keine Änderungen vornehmen.
-* **Sicherheitsadministrator**: Ein Benutzer, der dieser Rolle angehört, hat die gleichen Rechte wie der Benutzer mit Leseberechtigung für Sicherheitsfunktionen und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen.
+* **Sicherheitsadministrator**: Ein Benutzer, der dieser Rolle angehört, hat die gleichen Rechte wie der Sicherheitsleseberechtigte und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen.
 
 > [!NOTE]
-> Die beiden Sicherheitsrollen, Benutzer mit Leseberechtigung für Sicherheitsfunktionen und Sicherheitsadministrator, haben nur Zugriff in Security Center. Die Sicherheitsrollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).
+> Die beiden Sicherheitsrollen (Sicherheitsleseberechtigter und Sicherheitsadministrator) haben nur Zugriff in Security Center. Die Sicherheitsrollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).
 >
 >
 
@@ -49,7 +49,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security C
 | Ressourcengruppenmitwirkender | -- | X | -- | X |
 | Leser | -- | -- | -- | X |
 | Sicherheitsadministrator | X | -- | X | X |
-| Sicherheit lesen | -- | -- | -- | X |
+| Sicherheitsleseberechtigter | -- | -- | -- | X |
 
 > [!NOTE]
 > Es empfiehlt sich, den Benutzern eine Rolle zuzuweisen, die jeweils nur so viele Berechtigungen umfasst wie für die Erfüllung ihrer Aufgaben erforderlich sind. Weisen Sie die Rolle „Leser“ etwa Benutzern zu, die nur Informationen zur Sicherheitsintegrität einer Ressource anzeigen, aber keine Aktionen durchführen müssen (also beispielsweise keine Empfehlungen umsetzen oder Richtlinien bearbeiten).

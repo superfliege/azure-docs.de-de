@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: ef75ec40df50931f5a49c06184c61d2f78608dcf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014998"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540719"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -144,7 +144,7 @@ Zum Steuern der ausgehenden Konnektivität für virtuelle Computer über IP-Adre
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Storage.<Regionsname>.
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Speicher.\<Name-der-Region>.
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Active Directory (Azure AD).<br/><br/> Wenn zukünftig Azure AD-Adressen hinzugefügt werden, müssen Sie neue Regeln für Netzwerksicherheitsgruppen (NSG) erstellen.  | AzureActiveDirectory
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery-Endpunkte](https://aka.ms/site-recovery-public-ips), die denen am Zielstandort entsprechen. 
 
@@ -152,7 +152,7 @@ HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Storage.<Regionsname>.
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Speicher.\<Name-der-Region>.
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure AD.<br/><br/> Wenn zukünftig Azure AD-Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.  | AzureActiveDirectory
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery-Endpunkte](https://aka.ms/site-recovery-public-ips), die denen am Quellstandort entsprechen. 
 

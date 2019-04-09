@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 03/27/2019
 ms.author: tamram
-ms.openlocfilehash: e8c5bf8e3c4cd63b7eec278c480527e95455140d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164489"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541382"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
@@ -18,7 +18,7 @@ ms.locfileid: "50164489"
 
 Nachdem Sie nun über eine Tabelle verfügen, können wir uns als Nächstes mit der Verwaltung von Entitäten (oder Zeilen) in der Tabelle beschäftigen. 
 
-Eine Entität kann bis zu 255 Eigenschaften besitzen, einschließlich der drei Systemeigenschaften **PartitionKey**, **RowKey** und **Timestamp**. Sie sind für das Einfügen und Aktualisieren der Werte von **PartitionKey** und **RowKey** zuständig. Der Server verwaltet die Werte von **Timestamp**, die nicht geändert werden können. Zusammen identifizieren **PartitionKey** und **RowKey** jede Entität in einer Tabelle eindeutig.
+Entitäten können bis zu 255 Eigenschaften aufweisen, einschließlich drei Systemeigenschaften: **PartitionKey**, **RowKey** und **Timestamp**. Sie sind für das Einfügen und Aktualisieren der Werte von **PartitionKey** und **RowKey** zuständig. Der Server verwaltet die Werte von **Timestamp**, die nicht geändert werden können. Zusammen identifizieren **PartitionKey** und **RowKey** jede Entität in einer Tabelle eindeutig.
 
 * **PartitionKey**: Bestimmt die Partition, in der die Entität gespeichert ist.
 * **RowKey**: Identifiziert die Entität innerhalb der Partition eindeutig.
@@ -27,44 +27,45 @@ Sie können bis zu 252 benutzerdefinierte Eigenschaften für eine Entität defin
 
 ### <a name="add-table-entities"></a>Hinzufügen von Tabellenentitäten
 
-Verwenden Sie **Add-StorageTableRow**, um einer Tabelle Entitäten hinzuzufügen. In den folgenden Beispielen werden Partitionsschlüssel mit den Werten „partition1“ und „partition2“ sowie Zeilenschlüssel mit Abkürzungen für US-amerikanische Bundesstaaten verwendet. Die Eigenschaften in den einzelnen Entitäten sind „username“ und „userid“. 
+Verwenden Sie **Add-AzTableRow**, um einer Tabelle Entitäten hinzuzufügen. In den folgenden Beispielen werden Partitionsschlüssel mit den Werten `partition1` und `partition2` sowie Zeilenschlüssel mit Abkürzungen für US-amerikanische Bundesstaaten verwendet. Die Eigenschaften in den einzelnen Entitäten sind `username` und `userid`. 
 
 ```powershell
 $partitionKey1 = "partition1"
 $partitionKey2 = "partition2"
 
 # add four rows 
-Add-StorageTableRow `
-    -table $storageTable `
+Add-AzTableRow `
+    -table $cloudTable `
     -partitionKey $partitionKey1 `
     -rowKey ("CA") -property @{"username"="Chris";"userid"=1}
 
-Add-StorageTableRow `
-    -table $storageTable `
+Add-AzTableRow `
+    -table $cloudTable `
     -partitionKey $partitionKey2 `
     -rowKey ("NM") -property @{"username"="Jessie";"userid"=2}
 
-Add-StorageTableRow `
-    -table $storageTable `
+Add-AzTableRow `
+    -table $cloudTable `
     -partitionKey $partitionKey1 `
     -rowKey ("WA") -property @{"username"="Christine";"userid"=3}
 
-Add-StorageTableRow `
-    -table $storageTable `
+Add-AzTableRow `
+    -table $cloudTable `
     -partitionKey $partitionKey2 `
     -rowKey ("TX") -property @{"username"="Steven";"userid"=4}
 ```
 
 ### <a name="query-the-table-entities"></a>Abfragen der Tabellenentitäten
 
-Die Entitäten in einer Tabelle können auf unterschiedliche Weise abgefragt werden.
+Mit dem Befehl **Get-AzTableRow** können Sie die Entitäten in einer Tabelle abfragen.
+
+> [!NOTE]
+> Die Cmdlets **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName** und  **Get-AzureStorageTableRowByCustomFilter** sind veraltet und werden in einem zukünftigen Versionsupdate entfernt.
 
 #### <a name="retrieve-all-entities"></a>Abrufen aller Entitäten
 
-Wenn Sie alle Entitäten abrufen möchten, verwenden Sie **Get-AzureStorageTableRowAll**.
-
 ```powershell
-Get-AzureStorageTableRowAll -table $storageTable | ft
+Get-AzTableRow -table $cloudTable | ft
 ```
 
 Die Ergebnisse dieses Befehls sehen in etwa wie in der folgenden Tabelle aus:
@@ -78,11 +79,10 @@ Die Ergebnisse dieses Befehls sehen in etwa wie in der folgenden Tabelle aus:
 
 #### <a name="retrieve-entities-for-a-specific-partition"></a>Abrufen von Entitäten für eine bestimmte Partition
 
-Wenn Sie alle Entitäten einer bestimmten Partition abrufen möchten, verwenden Sie **Get-AzureStorageTableRowByPartitionKey**.
-
 ```powershell
-Get-AzureStorageTableRowByPartitionKey -table $storageTable -partitionKey $partitionKey1 | ft
+Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 ```
+
 Die Ergebnisse sehen in etwa wie in der folgenden Tabelle aus:
 
 | userid | username | partition | rowkey |
@@ -92,10 +92,8 @@ Die Ergebnisse sehen in etwa wie in der folgenden Tabelle aus:
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Abrufen von Entitäten für einen bestimmten Wert in einer bestimmten Spalte
 
-Wenn Sie Entitäten abrufen möchten, bei denen der Wert in einer bestimmten Spalte einem bestimmten Wert entspricht, verwenden Sie **Get-AzureStorageTableRowByColumnName**.
-
 ```powershell
-Get-AzureStorageTableRowByColumnName -table $storageTable `
+Get-AzTableRow -table $cloudTable `
     -columnName "username" `
     -value "Chris" `
     -operator Equal
@@ -112,11 +110,9 @@ Diese Abfrage ruft einen einzelnen Datensatz ab.
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>Abrufen von Entitäten unter Verwendung eines benutzerdefinierten Filters 
 
-Wenn Sie Entitäten unter Verwendung eines benutzerdefinierten Filters abrufen möchten, verwenden Sie **Get-AzureStorageTableRowByCustomFilter**.
-
 ```powershell
-Get-AzureStorageTableRowByCustomFilter `
-    -table $storageTable `
+Get-AzTableRow `
+    -table $cloudTable `
     -customFilter "(userid eq 1)"
 ```
 
@@ -131,27 +127,27 @@ Diese Abfrage ruft einen einzelnen Datensatz ab.
 
 ### <a name="updating-entities"></a>Aktualisieren von Entitäten 
 
-Die Aktualisierung von Entitäten umfasst drei Schritte: Rufen Sie die zu ändernde Entität ab. Nehmen Sie die Änderung vor. Committen Sie die Änderung mithilfe von **Update-AzureStorageTableRow**.
+Die Aktualisierung von Entitäten umfasst drei Schritte: Rufen Sie die zu ändernde Entität ab. Nehmen Sie die Änderung vor. Committen Sie die Änderung mithilfe von **Update-AzTableRow**.
 
-Aktualisieren Sie die Entität mit „username = 'Jessie'“, indem Sie sie in „username = 'Jessie2'“ ändern. Dieses Beispiel zeigt außerdem eine weitere Möglichkeit zum Erstellen eines benutzerdefinierten Filters mithilfe von .NET-Typen. 
+Aktualisieren Sie die Entität mit „username = 'Jessie'“, indem Sie sie in „username = 'Jessie2'“ ändern. Dieses Beispiel zeigt außerdem eine weitere Möglichkeit zum Erstellen eines benutzerdefinierten Filters mithilfe von .NET-Typen.
 
 ```powershell
 # Create a filter and get the entity to be updated.
 [string]$filter = `
-    [Microsoft.WindowsAzure.Storage.Table.TableQuery]::GenerateFilterCondition("username",`
-    [Microsoft.WindowsAzure.Storage.Table.QueryComparisons]::Equal,"Jessie")
-$user = Get-AzureStorageTableRowByCustomFilter `
-    -table $storageTable `
+    [Microsoft.Azure.Cosmos.Table.TableQuery]::GenerateFilterCondition("username",`
+    [Microsoft.Azure.Cosmos.Table.QueryComparisons]::Equal,"Jessie")
+$user = Get-AzTableRow `
+    -table $cloudTable `
     -customFilter $filter
 
 # Change the entity.
-$user.username = "Jessie2" 
+$user.username = "Jessie2"
 
 # To commit the change, pipe the updated record into the update cmdlet.
-$user | Update-AzureStorageTableRow -table $storageTable 
+$user | Update-AzTableRow -table $cloudTable
 
 # To see the new record, query the table.
-Get-AzureStorageTableRowByCustomFilter -table $storageTable `
+Get-AzTableRow -table $cloudTable `
     -customFilter "(username eq 'Jessie2')"
 ```
 
@@ -170,33 +166,33 @@ Sie können eine einzelne Entität oder alle Entitäten in der Tabelle löschen.
 
 #### <a name="deleting-one-entity"></a>Löschen einer einzelnen Entität
 
-Wenn Sie eine einzelne Entität löschen möchten, rufen Sie einen Verweis auf diese Entität ab, und übergeben Sie sie an **Remove-AzureStorageTableRow**.
+Wenn Sie eine einzelne Entität löschen möchten, rufen Sie einen Verweis auf diese Entität ab, und übergeben Sie sie an **Remove-AzTableRow**.
 
 ```powershell
 # Set filter.
 [string]$filter = `
-  [Microsoft.WindowsAzure.Storage.Table.TableQuery]::GenerateFilterCondition("username",`
-  [Microsoft.WindowsAzure.Storage.Table.QueryComparisons]::Equal,"Jessie2")
+  [Microsoft.Azure.Cosmos.Table.TableQuery]::GenerateFilterCondition("username",`
+  [Microsoft.Azure.Cosmos.Table.QueryComparisons]::Equal,"Jessie2")
 
 # Retrieve entity to be deleted, then pipe it into the remove cmdlet.
-$userToDelete = Get-AzureStorageTableRowByCustomFilter `
-    -table $storageTable `
+$userToDelete = Get-AzTableRow `
+    -table $cloudTable `
     -customFilter $filter
-$userToDelete | Remove-AzureStorageTableRow -table $storageTable 
+$userToDelete | Remove-AzTableRow -table $cloudTable
 
 # Retrieve entities from table and see that Jessie2 has been deleted.
-Get-AzureStorageTableRowAll -table $storageTable | ft
+Get-AzTableRow -table $cloudTable | ft
 ```
 
-#### <a name="delete-all-entities-in-the-table"></a>Löschen aller Entitäten in der Tabelle 
+#### <a name="delete-all-entities-in-the-table"></a>Löschen aller Entitäten in der Tabelle
 
 Wenn Sie alle Entitäten in der Tabelle löschen möchten, rufen Sie sie ab, und übergeben Sie die Ergebnisse an das Remove-Cmdlet. 
 
 ```powershell
 # Get all rows and pipe the result into the remove cmdlet.
-Get-AzureStorageTableRowAll `
-    -table $storageTable | Remove-AzureStorageTableRow -table $storageTable 
+Get-AzTableRow `
+    -table $cloudTable | Remove-AzTableRow -table $cloudTable 
 
 # List entities in the table (there won't be any).
-Get-AzureStorageTableRowAll -table $storageTable | ft
+Get-AzTableRow -table $cloudTable | ft
 ```

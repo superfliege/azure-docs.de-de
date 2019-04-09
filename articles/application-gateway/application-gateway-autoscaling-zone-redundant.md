@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544036"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444819"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)
 
@@ -29,6 +29,29 @@ Application Gateway und Web Application Firewall (WAF) sind nun in der öffentli
 > Die Application Gateway-SKU mit automatischer Skalierung und Zonenredundanz ist derzeit als öffentliche Vorschau verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Funktionsvergleich zwischen v1 SKU und v2 SKU
+
+In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestellt.
+
+|                                                   | v1 SKU   | v2 SKU   |
+| ------------------------------------------------- | -------- | -------- |
+| Automatische Skalierung                                       |          | &#x2713; |
+| Zonenredundanz                                   |          | &#x2713; |
+| &nbsp;Statische VIP&nbsp;&nbsp;                      |          | &#x2713; |
+| URL-basiertes Routing                                 | &#x2713; | &#x2713; |
+| Hosten mehrerer Websites                             | &#x2713; | &#x2713; |
+| Umleitung des Datenverkehrs                               | &#x2713; | &#x2713; |
+| Web Application Firewall (WAF)                    | &#x2713; | &#x2713; |
+| SSL-Beendigung (Secure Sockets Layer)            | &#x2713; | &#x2713; |
+| End-to-End-SSL-Verschlüsselung                         | &#x2713; | &#x2713; |
+| Sitzungsaffinität                                  | &#x2713; | &#x2713; |
+| Benutzerdefinierte Fehlerseiten                                | &#x2713; | &#x2713; |
+| Erneutes Generieren von HTTP(S)-Headern                           |          | &#x2713; |
+| WebSocket-Unterstützung                                 | &#x2713; | &#x2713; |
+| HTTP/2-Unterstützung                                    | &#x2713; | &#x2713; |
+| Verbindungsausgleich                               | &#x2713; | &#x2713; |
+| AKS-Eingangscontroller (Azure Kubernetes Service) |          | &#x2713; |
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -48,7 +71,7 @@ Während der Vorschauphase fallen keine Kosten für das Anwendungsgateway an. An
 |NSG für Eingangsportbereich| - 65200 bis 65535 für Standard_v2-SKU<br>- 65503 bis 65534 für Standard-SKU.<br>Weitere Informationen finden Sie in den [häufig gestellten Fragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Leistungsprotokolle in Azure-Diagnose|Nicht unterstützt.<br>Es sollten Azure-Metriken verwendet werden.|
 |Abrechnung|Derzeit findet keine Abrechnung statt.|
-|FIPS-Modus, WebSocket|Diese werden derzeit nicht unterstützt.|
+|FIPS-Modus|Diese werden derzeit nicht unterstützt.|
 |Reiner ILB-Modus|Dies wird derzeit nicht unterstützt. Öffentlicher und ILB-Modus kombiniert werden unterstützt.|
 |NetWatcher-Integration|In der öffentlichen Vorschau nicht unterstützt.|
 

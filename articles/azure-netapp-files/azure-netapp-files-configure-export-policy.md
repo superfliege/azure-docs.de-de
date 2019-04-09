@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Exportrichtlinie für ein Azure NetApp Files-Volume | Microsoft-Dokumentation
-description: Beschreibt, wie Sie die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren.
+title: Konfigurieren der Exportrichtlinie für ein NFS-Volume mit Azure NetApp Files | Microsoft-Dokumentation
+description: Beschreibt, wie Sie die Exportrichtlinie zum Steuern des Zugriffs auf ein NFS-Volume mit Azure NetApp Files konfigurieren.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 03/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766647"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401483"
 ---
-# <a name="configure-export-policy-for-a-volume"></a>Konfigurieren der Exportrichtlinie für ein Volume
+# <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurieren der Exportrichtlinie für ein NFS-Volume
 
-Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. 
+Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Exportrichtlinie wird nur für NFS-Volumes unterstützt. 
 
 ## <a name="steps"></a>Schritte 
 
@@ -47,7 +47,7 @@ Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure
 
     * **Protokolle**   
         Geben Sie das gewünschte Protokoll für die Exportrichtlinie an.   
-        Momentan wird für Azure NetApp Files nur NFSv3 unterstützt.
+        Derzeit unterstützt die Azure NetApp Files-Exportrichtlinie nur NFSv3.
 
     ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

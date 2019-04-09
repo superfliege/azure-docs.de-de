@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 72d3455f37d0ccef0dd5b7d8882f70670de07572
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873018"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497319"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway (Vorschau)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway
 
 In diesem Artikel wird beschrieben, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für Azure Data Box Gateway verwalten. Diese Vorgänge werden über die lokale Webbenutzeroberfläche oder das Azure-Portal ausgeführt.
 
@@ -26,16 +26,13 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Verwalten des Konnektivitätsmodus
 > * Verwalten der Energieeinstellungen
 
-> [!IMPORTANT]
-> Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
-
 ## <a name="manage-device-access"></a>Verwalten des Gerätezugriffs
 
-Der Zugriff auf Ihr Data Box-Gateway-Gerät wird mithilfe eines Geräteadministratorkennworts gesteuert. Sie können das Administratorkennwort über die lokale Webbenutzeroberfläche ändern. Das Geräteadministratorkennwort kann auch über das Azure-Portal zurückgesetzt werden.
+Der Zugriff auf Ihr Data Box-Gateway-Gerät wird mithilfe eines Gerätekennworts gesteuert. Sie können das Kennwort über die lokale Webbenutzeroberfläche ändern. Das Gerätekennwort kann auch über das Azure-Portal zurückgesetzt werden.
 
-### <a name="change-device-administrator-password"></a>Ändern des Geräteadministratorkennworts
+### <a name="change-device-password"></a>Ändern des Gerätekennworts
 
-Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, um das Geräteadministratorkennwort zu ändern:
+Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, um das Gerätekennwort zu ändern:
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Password change** (Kennwortänderung).
 2. Geben Sie das aktuelle Kennwort und dann das neue Kennwort ein. Das angegebene Kennwort muss zwischen 8 und 16 Zeichen umfassen. Das Kennwort muss drei der folgenden Zeichen enthalten: Großbuchstaben, Kleinbuchstaben, Ziffern und Sonderzeichen. Bestätigen Sie das neue Kennwort.
@@ -44,7 +41,7 @@ Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, u
 
 3. Klicken Sie auf **Kennwort ändern**.
  
-### <a name="reset-device-administrator-password"></a>Zurücksetzen des Geräteadministratorkennworts
+### <a name="reset-device-password"></a>Gerätekennwort zurücksetzen
 
 Beim Workflow zum Zurücksetzen muss der Benutzer das alte Kennwort nicht kennen. Dies ist nützlich, wenn das Kennwort verloren gegangen ist. Dieser Workflow wird im Azure-Portal ausgeführt.
 

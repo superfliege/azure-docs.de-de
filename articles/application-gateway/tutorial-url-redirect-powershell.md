@@ -3,19 +3,15 @@ title: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis – Az
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Anwendungsgateway mit Umleitung des Datenverkehrs auf URL-Pfadbasis erstellen.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 11/13/2018
+ms.date: 4/3/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 91cc28ec3df6a1d9ef4fc773687a0ec2870b623d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: febe02ac7fe4dfcb4140a8e5796c4c9fa86f6de3
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001387"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918381"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe von Azure PowerShell
 
@@ -41,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -502,7 +498,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Testen der Basis-URL im Anwendungsgateway](./media/tutorial-url-redirect-powershell/application-gateway-iistest.png)
 
-Ändern Sie die URL zu http://&lt;IP-Adresse&gt;:8080/video/test.htm, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
+Ändern Sie die URL zu http://&lt;IP-Adresse&gt;:8080/images/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
 
 ![Testen der Images-URL im Anwendungsgateway](./media/tutorial-url-redirect-powershell/application-gateway-iistest-images.png)
 
@@ -522,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](application-gateway-introduction.md)
+> [Erfahren Sie mehr darüber, welche Möglichkeiten das Anwendungsgateway bietet.](application-gateway-introduction.md)

@@ -10,17 +10,19 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 29b86d430fb5d65e7f089c616651da5f488b675c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee97f7e5cda8b954fb697f73746e416d88d38c2d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455982"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401689"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Zuweisen von Variablen in Azure SQL Data Warehouse
+
 Tipps zum Zuweisen von T-SQL-Variablen in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 
 ## <a name="setting-variables-with-declare"></a>Festlegen von Variablen mit DECLARE
+
 Variablen werden in SQL Data Warehouse mit der `DECLARE`-Anweisung oder der `SET`-Anweisung festgelegt. Das Initialisieren von Variablen mit DECLARE ist eine der flexibelsten Möglichkeiten zum Festlegen eines Variablenwerts in SQL Data Warehouse.
 
 ```sql
@@ -45,6 +47,7 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>Festlegen von Werten mit SET
+
 SET ist eine allgemeine Methode zum Festlegen einer einzelnen Variablen.
 
 Die folgenden Anweisungen sind alle gültige Möglichkeiten zum Festlegen einer Variablen mit SET:
@@ -59,8 +62,9 @@ SET     @v +=1;
 Sie können mit SET nur jeweils eine einzige Variable festlegen. Allerdings sind zusammengesetzte Operatoren zulässig.
 
 ## <a name="limitations"></a>Einschränkungen
-Sie können nicht SELECT oder UPDATE für die Zuweisung von Variablen verwenden.
+
+Sie können UPDATE nicht für die Zuweisung von Variablen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).

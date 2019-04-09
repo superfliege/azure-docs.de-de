@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 0455dafaa39f9f6bc19399fab31663d6b2e06e95
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: dd56db628dd8a25ab2664f8f1c16b8ac45996549
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726345"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443572"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
@@ -39,7 +39,7 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 - Ein aktives Azure-Abonnement.
 - Ein Azure IoT Hub in Ihrem Abonnement.
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure IoT-Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+- [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools), oder [öffnen Sie diesen Link in Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 

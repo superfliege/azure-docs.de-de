@@ -33,7 +33,7 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
 
 1. Stellen Sie für den Zugriff auf Anmeldedaten sicher, dass Sie über einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1/P2) verfügen. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Beachten Sie Folgendes: Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben. 
 
-2. Erstellen Sie ein Benutzerkonto in der Rolle **Globaler Administrator**, **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Benutzer mit Leseberechtigung für Berichte** für den Mandanten, oder wechseln Sie zu einem Benutzerkonto. 
+2. Erstellen Sie ein Benutzerkonto in der Rolle **Globaler Administrator**, **Sicherheitsadministrator**, **Sicherheitsleseberechtigter** oder **Benutzer mit Leseberechtigung für Berichte** für den Mandanten, oder wechseln Sie zu einem entsprechenden Benutzerkonto. 
 
 3. Schließen Sie die [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) ab. 
 

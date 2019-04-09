@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77d2312c5a20aa6b90586d47ee120593e807295e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93990a11860e8b8181bee0ba67351b095d940878
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893576"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Tutorial: Azure Active Directory-Integration mit UltiPro
 
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von UltiPro in Azure AD müssen Sie UltiPro aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um UltiPro aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie zum Hinzufügen von UltiPro aus dem Katalog die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -111,7 +111,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UltiPro d
     |--|
     | `https://<companyname>.ultipro.com/`|
     | `https://<companyname>.ultiproworkplace.com?cpi=AZUREADISSSUERURL`|
-    | ` https://<companyname>.ultipro.ca`|
+    | `https://<companyname>.ultipro.ca`|
     
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
 
@@ -168,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.endung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

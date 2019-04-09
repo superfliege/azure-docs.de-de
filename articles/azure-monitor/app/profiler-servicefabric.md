@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 73e453385a6916b6999691afbacd1f102ce7270d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865735"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401103"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Erstellen von Profilen für Azure Service Fabric-Liveanwendungen mit Application Insights
 
@@ -55,11 +55,11 @@ Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
   Wenn Ihre Einstellungen richtig sind, wird Application Insights Profiler installiert und aktiviert, sobald die Azure-Diagnoseerweiterung installiert wird. 
 
 1. Fügen Sie Application Insights Ihrer Service Fabric-Anwendung hinzu.  
-  Damit Profiler Profile für Ihre Anforderungen erfasst, muss Ihre Anwendung Anforderungsdaten an Application Insights senden. Weitere Informationen finden Sie auf der Seite zum [Application Insights SDK für Service Fabric-Projekte](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
+  Damit Profiler Profile für Ihre Anforderungen erfasst, muss Ihre Anwendung Vorgänge mit Application Insights nachverfolgen. Für zustandslose APIs können Sie sich auf die Anweisungen für [Nachverfolgen von Anforderungen für die Profilerstellung](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json) beziehen. Weitere Informationen zum Nachverfolgen benutzerdefinierter Vorgänge in anderen Arten von Anwendungen finden Sie unter [Nachverfolgen benutzerdefinierter Vorgänge mit dem Application Insights .NET SDK](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
 
 1. Stellen Sie Ihre Anwendung erneut bereit.
 
-> [TIPP] Für virtuelle Computer gibt es folgende Alternative zu den zuvor genannten JSON-basierten Schritten: Navigieren Sie im Azure-Portal zu **Virtuelle Computer** > **Diagnoseeinstellungen** > **Senken**. **Aktivieren Sie das Senden von Diagnosedaten an Application Insights**, und wählen Sie dann entweder ein Application Insights-Konto oder einen bestimmten iKey aus.
+> [TIPP] Für virtuelle Computer gibt es folgende Alternative zu den zuvor genannten JSON-basierten Schritten: Navigieren Sie im Azure-Portal zu **Virtuelle Computer** > **Diagnoseeinstellungen** > **Senken**>. **Aktivieren Sie das Senden von Diagnosedaten an Application Insights**, und wählen Sie dann entweder ein Application Insights-Konto oder einen bestimmten iKey aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

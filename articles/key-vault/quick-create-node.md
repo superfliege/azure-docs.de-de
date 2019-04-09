@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 1e234b599325da0626c83a57d86ff977b88b5577
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c7bf6a22da89f0bf1e3897ec8fc30238b86b7b75
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991273"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882749"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
 
@@ -39,7 +39,7 @@ Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Node.js](https://nodejs.org/en/)
-* [Git-Client](https://www.git-scm.com/)
+* [Git](https://www.git-scm.com/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 oder höher. Für diese Schnellstartanleitung ist es erforderlich, dass Sie die Azure CLI lokal ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -183,7 +183,7 @@ Notieren Sie sich die Ausgabe des vorherigen Befehls. Sie sollte das folgende Fo
 Führen Sie anschließend den folgenden Befehl aus, indem Sie den Namen Ihres Schlüsseltresors und den Wert von **principalId** verwenden:
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
+az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get set
 ```
 
 ## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Bereitstellen der Node-App in Azure und Abrufen des Geheimniswerts

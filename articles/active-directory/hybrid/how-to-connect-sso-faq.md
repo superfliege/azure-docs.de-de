@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15b42572648f875ac4bda2eae5813f0cf6b17ef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187184"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804376"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
 
@@ -45,16 +45,16 @@ Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese
 
 | Anwendungsname | Zu verwendende Anwendungs-URL |
 | -- | -- |
-| Zugriffsbereich | https://myapps.microsoft.com/contoso.com |
-| Outlook im Web | https://outlook.office365.com/contoso.com |
-| Office 365-Portale | https://portal.office.com?domain_hint=contoso.com, https://www.office.com?domain_hint=contoso.com |
+| Zugriffsbereich | https:\//myapps.microsoft.com/contoso.com |
+| Outlook im Web | https:\//outlook.office365.com/contoso.com |
+| Office 365-Portale | https:\//portal.office.com?domain_hint=contoso.com, https:\//www.office.com?domain_hint=contoso.com |
 
-Benutzer werden außerdem automatisch angemeldet, wenn eine Anwendung Anmeldeanforderungen an Azure AD-Mandantenendpunkte – d.h. https://login.microsoftonline.com/contoso.com/<..> oder https://login.microsoftonline.com/<tenant_ID>/<..> – anstatt den gemeinsamen Endpunkt von Azure AD – d.h. https://login.microsoftonline.com/common/<...> – sendet. Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Arten von Anmeldeanforderungen vornehmen.
+Darüber hinaus erhalten Benutzer eine automatische Anmeldeerfahrung, wenn eine Anwendung Anmeldeanforderungen an die als Mandanten eingerichteten Endpunkte von Azure AD sendet - also https:\//login.microsoftonline.com/contoso.com/<..> oder https:\//login.microsoftonline.com/<tenant_ID>/<..> - anstelle des gemeinsamen Endpunkts von Azure AD - also https:\//login.microsoftonline.com/common/<...>. Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Arten von Anmeldeanforderungen vornehmen.
 
 | Anwendungsname | Zu verwendende Anwendungs-URL |
 | -- | -- |
-| SharePoint Online | https://contoso.sharepoint.com |
-| Azure-Portal | https://portal.azure.com/contoso.com |
+| SharePoint Online | https:\//contoso.sharepoint.com |
+| Azure-Portal | https:\//portal.azure.com/contoso.com |
 
 Ersetzen Sie „contoso.com“ in den Tabellen oben durch Ihren Domänennamen, um die richtigen Anwendungs-URLs für Ihren Mandanten zu erhalten.
 
@@ -89,14 +89,14 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
 2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
 4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
-5. Rufen Sie `Get-AzureADSSOStatus` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
+5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>Schritt 2: Aktualisieren Sie den Kerberos-Entschlüsselungsschlüssel in jeder AD-Gesamtstruktur, in der er eingerichtet ist.
 
 1. Rufen Sie `$creds = Get-Credential` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene AD-Gesamtstruktur ein.
 
-    >[!NOTE]
-    >Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
+   > [!NOTE]
+   > Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
 
 2. Rufen Sie `Update-AzureADSSOForest -OnPremCredentials $creds` auf. Dieser Befehl aktualisiert den Kerberos-Entschlüsselungsschlüssel für das `AZUREADSSOACC`-Computerkonto in dieser bestimmten AD-Gesamtstruktur und in Azure AD.
 3. Wiederholen Sie die oben stehenden Schritte für jede AD-Gesamtstruktur, für die Sie das Feature eingerichtet haben.
@@ -140,7 +140,7 @@ Führen Sie die Aufgaben 1 bis 4 unten aus, wenn Sie das nahtlose einmalige Anme
 2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
 4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
-5. Rufen Sie `Get-AzureADSSOStatus` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
+5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
 ### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Schritt 3: Löschen Sie das Computerkonto `AZUREADSSOACCT` manuell aus jeder AD-Gesamtstruktur, die Sie in der Liste finden.
 

@@ -51,7 +51,7 @@ Für den Zugriff auf Anmeldeberichte ist eine Azure Active Directory Premium 1-L
 
 ### <a name="error-user-is-not-in-the-allowed-roles"></a>Fehler Der Benutzer gehört nicht den zulässigen Rollen an 
 
-Wenn Sie diese Fehlermeldung sehen, während Sie versuchen, über die API auf Überwachungsprotokolle oder Anmeldungen zuzugreifen, stellen Sie sicher, dass Ihr Konto Teil der Rolle **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Berichtsleser** in Ihrem Azure Active Directory-Mandanten ist. 
+Wenn Sie diese Fehlermeldung sehen, während Sie versuchen, über die API auf Überwachungsprotokolle oder Anmeldungen zuzugreifen, stellen Sie sicher, dass Ihr Konto Teil der Rolle **Sicherheitsleseberechtigter** oder **Berichtsleser** in Ihrem Azure Active Directory-Mandanten ist. 
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fehler Der Anwendung fehlt die AAD-Berechtigung „Verzeichnisdaten lesen“ 
 

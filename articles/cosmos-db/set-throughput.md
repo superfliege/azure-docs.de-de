@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre Azu
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 03/19/2019
 ms.author: andrl
-ms.openlocfilehash: 439b48c271260e9744bb9c9ca0e2b21e61cf4687
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8335a235de708227136400f3af8fa7b4d0a52e29
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005062"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520903"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
@@ -75,6 +75,20 @@ Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf
 * Sie können explizit „P“ RUs des bereitgestellten Durchsatzes für den Container mit dem Namen „B“ konfigurieren.
 * Der Durchsatz von „K“ RUs wird durch die vier Container „A“, „C“, „D“ und „E“ gemeinsam genutzt. Die genaue Durchsatzmenge, die für „A“, „C“, „D“ oder „E“ zur Verfügung steht, variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
 * Für den Container „B“ wird jederzeit ein Durchsatz von „P“ RUs sichergestellt. Er wird durch SLAs abgedeckt.
+
+## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualisieren des Durchsatzes für eine Datenbank oder einen Container
+
+Nachdem Sie einen Azure Cosmos-Container oder eine Datenbank erstellt haben, können Sie den bereitgestellten Durchsatz aktualisieren. Es gibt keine Beschränkung für den bereitgestellten Maximaldurchsatz, den Sie in der Datenbank oder dem Container konfigurieren können. Der bereitgestellte Mindestdurchsatz hängt von den folgenden Faktoren ab: 
+
+* Maximale Datengröße, die jemals im Container gespeichert wird
+* Maximaler Durchsatz, der jemals im Container bereitgestellt wird
+* Maximale Anzahl von Azure Cosmos-Containern, die jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt werden 
+
+Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmgesteuert mithilfe der SDKs abrufen oder den Wert im Azure-Portal anzeigen. Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. Bei Verwendung des Java SDK ermöglicht Ihnen die [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. 
+
+Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet)-Methode das Abrufen des Mindestdurchsatzes eines Containers oder einer Datenbank. 
+
+Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Der Vorgang zum zentralen Herunterskalieren kann nach einer Leerlaufzeit von 4 Stunden ausgeführt werden. Die Leerlaufzeit ist als der Zeitraum definiert, in dem keine Vorgänge zur Angebotsersetzung (einschließlich Hoch- und Herunterskalieren) in einem Container oder einer Datenbank erfolgten. 
 
 ## <a name="comparison-of-models"></a>Vergleich der Modelle
 

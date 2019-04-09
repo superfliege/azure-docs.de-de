@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6068f054a2ce695a889351b1f959319c64eb73fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235597"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351013"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme
 Die Informationen auf dieser Seite beziehen sich auf das Azure-Gastbetriebssystem ([Gast-BS](cloud-services-guestos-update-matrix.md)) für Worker- und Webrollen für Clouddienste (PaaS). Sie gelten nicht für virtuelle Computer (IaaS).
@@ -55,7 +55,9 @@ Gastbetriebssystemversionen werden jeden Monat veröffentlicht. Aufgrund der Hä
 
 60 Tage nach Beginn der Lebensdauer wird eine Version *deaktiviert*. „Deaktiviert“ bedeutet, dass die Version aus dem Portal entfernt wurde. Die Version kann nicht mehr über die CSCFG-Konfigurationsdatei festgelegt werden. Vorhandene Bereitstellungen werden weiterhin ausgeführt. Neue Bereitstellungen sowie Code- und Konfigurationsupdates für vorhandene Bereitstellungen sind jedoch nicht zulässig.
 
-Einige Zeit später wird die Gastbetriebssystemversion *ablaufen*, und für alle Installationen, die noch unter dieser Version ausgeführt werden, wird ein Upgrade erzwungen. Gleichzeitig wird für diese Installationen festgelegt, dass das Gastbetriebssystem in Zukunft automatisch aktualisiert wird. Der Ablauf erfolgt in Batches, sodass die Zeitspanne zwischen Deaktivierung und tatsächlichem Ablauf variieren kann.
+Einige Zeit nach der „Deaktivierung“ wird die Gastbetriebssystemversion „ablaufen“, und alle Installationen, die noch diese abgelaufene Version ausführen, werden Sicherheitsrisiken ausgesetzt. Generell erfolgt der Ablauf in Batches, sodass die Zeitspanne zwischen Deaktivierung und tatsächlichem Ablauf variieren kann.
+
+Kunden, die ihre Dienste für die manuelle Aktualisierung des Gastbetriebssystems konfigurieren, sollten sicherstellen, dass ihre Dienste unter einem unterstützten Gastbetriebssystem ausgeführt werden. Wenn ein Dienst für die automatische Aktualisierung des Gastbetriebssystems konfiguriert ist, stellt die zugrunde liegende Plattform die Compliance sicher und führt ein Upgrade auf das neueste Gastbetriebssystem aus.
 
 Diese Zeiträume können nach Ermessen von Microsoft verlängert werden, um den Kunden den Übergang zu erleichtern. Updates werden auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md)veröffentlicht.
 

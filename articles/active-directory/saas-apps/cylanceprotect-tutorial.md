@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fddbcbea23226bef68f36369341afcf1b100b77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1f493120431481423892706fa2a9352b322c500
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847330"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Tutorial: Azure Active Directory-Integration mit CylancePROTECT
 
@@ -109,7 +109,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei CylanceP
     
     | Region | URL-Wert |
     |----------|---------|
-    | Asien-Pazifik, Nordosten (APNE1)| ` https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asien-Pazifik, Nordosten (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Asien-Pazifik, Südosten (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
     | Europa, Mitte (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Nordamerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -161,7 +161,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.endung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

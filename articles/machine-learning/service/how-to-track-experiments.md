@@ -1,7 +1,7 @@
 ---
-title: Nachverfolgen von Experimenten und Trainingsmetriken
+title: Protokollieren von Metriken während Trainingsausführungen
 titleSuffix: Azure Machine Learning service
-description: Mit dem Azure Machine Learning-Dienst können Sie Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. Erfahren Sie, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen.
+description: Sie können Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. Erfahren Sie, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008820"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652313"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Nachverfolgen von Experimenten und Trainingsmetriken in Azure Machine Learning
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokollieren von Metriken während Trainingsausführungen in Azure Machine Learning
 
 Mit dem Azure Machine Learning-Dienst können Sie Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. In diesem Artikel erfahren Sie, wie Sie Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können.
 
@@ -32,7 +32,7 @@ Die folgenden Metriken können während des Trainings eines Experiments zu einem
 |Listen|Funktion:<br>`run.log_list(name, value, description='')`<br><br>Beispiel:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | Protokollieren Sie eine Liste mit Werten für die Ausführung unter dem jeweiligen Namen.|
 |Zeile|Funktion:<br>`run.log_row(name, description=None, **kwargs)`<br>Beispiel:<br>run.log_row("Y over X", x=1, y=0.4) | Mit *log_row* wird eine Metrik mit mehreren Spalten erstellt, wie in kwargs beschrieben. Jeder benannte Parameter erzeugt eine Spalte mit dem angegebenen Wert.  *log_row* kann einmal aufgerufen werden, um ein beliebiges Tupel zu protokollieren, oder mehrmals in einer Schleife, um eine vollständige Tabelle zu erzeugen.|
 |Table|Funktion:<br>`run.log_table(name, value, description='')`<br><br>Beispiel:<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | Protokollieren Sie ein Wörterbuchobjekt für die Ausführung unter dem jeweiligen Namen. |
-|Bilder|Funktion:<br>`run.log_image(name, path=None, plot=None)`<br><br>Beispiel:<br>run.log_image("ROC", plt) | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
+|Bilder|Funktion:<br>`run.log_image(name, path=None, plot=None)`<br><br>Beispiel:<br>`run.log_image("ROC", plt)` | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
 |Ausführung kennzeichnen|Funktion:<br>`run.tag(key, value=None)`<br><br>Beispiel:<br>run.tag("selected", "yes") | Kennzeichnen Sie die Ausführung mit einem Zeichenfolgenschlüssel und einem optionalen Zeichenfolgenwert.|
 |Datei oder Verzeichnis hochladen|Funktion:<br>`run.upload_file(name, path_or_stream)`<br> <br> Beispiel:<br>run.upload_file("best_model.pkl", "./model.pkl") | Laden Sie eine Datei in die Ausführungsaufzeichnung hoch. Ausführungen erfassen die Datei im angegebenen Ausgabeverzeichnis. Die ist für die meisten Ausführungstypen standardmäßig „./outputs“.  Verwenden Sie upload_file nur, wenn zusätzliche Dateien hochgeladen werden müssen, oder kein Ausgabeverzeichnis angegeben ist. Wir empfehlen, `outputs` zum Namen hinzuzufügen, damit das Hochladen in das Ausgabeverzeichnis erfolgt. Sie können alle Dateien, die dieser Ausführungsaufzeichnung zugeordnet sind, mit `run.get_file_names()` auflisten.|
 
@@ -48,7 +48,7 @@ Wenn Sie Ihr Experiment nachverfolgen oder überwachen möchten, müssen Sie Cod
 ## <a name="set-up-the-workspace"></a>Arbeitsbereich einrichten
 Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müssen Sie den Arbeitsbereich einrichten.
 
-1. Laden Sie den Arbeitsbereich. Weitere Informationen zum Einrichten der Arbeitsbereichskonfiguration finden Sie im [Schnellstart](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started).
+1. Laden Sie den Arbeitsbereich. Weitere Informationen zum Festlegen der Arbeitsbereichskonfiguration finden Sie, wenn Sie die Schritte in [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md#sdk) befolgen.
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -218,7 +218,9 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
    ```
 
 ## <a name="cancel-a-run"></a>Abbrechen einer Ausführung
+
 Nachdem eine Ausführung übermittelt wurde, können Sie sie abbrechen, auch wenn Sie die Objektreferenz verloren haben, sofern Sie den Experimentnamen und die Ausführungs-ID kennen. 
+
 
 ```python
 from azureml.core import Experiment
@@ -239,7 +241,7 @@ print(type(r), r.get_status())
 if r.get_status() not in ['Complete', 'Failed']:
     r.cancel()
 ```
-Bitte beachten Sie, dass derzeit nur die Typen „ScriptRun“ und „PipelineRun“ den Abbruchvorgang unterstützen.
+Aktuell unterstützen nur die Typen „ScriptRun“ und „PipelineRun“ den Abbruchvorgang.
 
 Darüber hinaus können Sie eine Ausführung über die Befehlszeilenschnittstelle mithilfe des folgenden Befehls abbrechen:
 ```shell
@@ -349,7 +351,7 @@ Weitere Informationen:
 Für jedes Klassifizierungsmodell, das Sie mit den automatisierten Machine Learning-Funktionen von Azure Machine Learning erstellen, können Sie die folgenden Diagramme anzeigen: 
 + [Konfusionsmatrix](#confusion-matrix)
 + [Genauigkeit-Trefferquote-Diagramm](#precision-recall-chart)
-+ [ROC-Kurve (Receiver Operating Characteristics)](#ROC)
++ [ROC-Kurve (Receiver Operating Characteristics)](#roc)
 + [Prognosegütekurve](#lift-curve)
 + [Gewinnkurve](#gains-curve)
 + [Kalibrierungsdiagramm](#calibration-plot)

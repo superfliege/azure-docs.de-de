@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388271"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369661"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -29,21 +29,21 @@ Wenn Sie ein *gitRepo*-Volume einbinden, können Sie zum Konfigurieren des Volum
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | -------- | -------- | ----------- |
-| `repository` | JA | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
+| `repository` | Ja | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
 | `directory` | Nein  | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
 | `revision` | Nein  | Der Commithash der zu klonenden Version. Wird er nicht angegeben, wird die `HEAD`-Revision geklont. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>Einbinden eines gitRepo-Volumes: Azure CLI
+## <a name="mount-gitrepo-volume-azure-cli"></a>Einbinden eines gitRepo-Volumes: Azure-Befehlszeilenschnittstelle
 
 Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit der [Azure CLI](/cli/azure) bereitstellen, geben Sie für den Befehl [az container create][az-container-create] die Parameter `--gitrepo-url` und `--gitrepo-mount-path` an. Sie können optional das Verzeichnis innerhalb des zu klonenden Volumes (`--gitrepo-dir`) und den Commithash der zu klonenden Revision (`--gitrepo-revision`) angeben.
 
-Dieser Beispielbefehl klont die Beispielanwendung [aci-helloworld][aci-helloworld] in `/mnt/aci-helloworld` in der Containerinstanz:
+Dieser Beispielbefehl klont die Microsoft-Beispielanwendung [aci-helloworld][aci-helloworld] in `/mnt/aci-helloworld` in der Containerinstanz:
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name hellogitrepo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --dns-name-label aci-demo \
     --ports 80 \
     --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
@@ -62,13 +62,14 @@ total 16
 drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
-## <a name="mount-gitrepo-volume-resource-manager"></a>Einbinden des gitRepo-Volumes: Ressourcen-Manager
+## <a name="mount-gitrepo-volume-resource-manager"></a>Einbinden eines gitRepo-Volumes: Ressourcen-Manager
 
 Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit einer [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups) bereitstellen, füllen Sie zuerst das Array `volumes` im Containergruppenabschnitt `properties` der Vorlage aus. Füllen Sie dann für jeden Container in der Containergruppe, in der Sie das *gitRepo*-Volume einbinden möchten, das Array `volumeMounts` im Abschnitt `properties` der Containerdefinition auf.
 
 Mit der folgenden Resource Manager-Vorlage wird beispielsweise eine Containergruppe mit einem einzelnen Container erstellt. Der Container klont zwei GitHub-Repositorys, die durch die *gitRepo*-Volumeblöcke angegeben werden. Das zweite Volume enthält zusätzliche Eigenschaften, die ein Verzeichnis zum Klonen angeben, sowie den Commithash einer spezifischen Revision, die geklont werden soll.
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
+[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Die Verzeichnisstruktur der zwei geklonten Repositorys, die in der vorhergehenden Vorlage definiert werden, sieht wie folgt aus:
 

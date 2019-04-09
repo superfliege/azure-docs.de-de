@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878447"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369784"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -35,7 +35,6 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 | UserNotProperlyConfigured = 14 | Sie können Ihr Kennwort zurzeit nicht zurücksetzen, weil notwendige Informationen für Ihr Konto fehlen. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, Ihr Kennwort für Sie zurückzusetzen. Sobald Sie wieder auf Ihr Konto zugreifen können, müssen Sie die benötigten Informationen registrieren. Wie das geht, erfahren Sie im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register). | SSPR_0014: Zusätzliche Sicherheitsinformationen sind erforderlich, um Ihr Kennwort zurückzusetzen. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, Ihr Kennwort zurückzusetzen. Sobald Sie auf Ihr Konto zugreifen können, können Sie zusätzliche Sicherheitsinformationen unter „https://aka.ms/ssprsetup“ registrieren. Ihr Administrator kann Ihrem Konto zusätzliche Sicherheitsinformationen hinzufügen, indem er die Schritte unter [Festlegen und Lesen von Authentifizierungsdaten mithilfe von PowerShell](howto-sspr-authenticationdata.md) befolgt. |
 | OnPremisesAdminActionRequired = 29 | Wir können Ihr Kennwort aufgrund eines Problems mit der Konfiguration der Kennwortzurücksetzung in Ihrer Organisation zurzeit nicht zurücksetzen. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. Weitere Informationen zu dem potenziellen Problem finden Sie im folgenden Artikel: [Problembehandlung: Kennwortrückschreiben](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback). | SSPR_0029: Wir können Ihr Kennwort aufgrund eines Fehlers in Ihrer lokalen Konfiguration nicht zurücksetzen. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. |
 | OnPremisesConnectivityError = 30 | Wir können Ihr Kennwort aufgrund von Konnektivitätsproblemen mit Ihrer Organisation zurzeit nicht zurücksetzen. Im Moment können Sie nichts unternehmen, aber möglicherweise ist das Problem gelöst, wenn Sie es später noch mal versuchen. Wenn das Problem weiterhin auftritt, wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. Weitere Informationen zu Konnektivitätsproblemen finden Sie unter [Behandeln von Konnektivitätsproblemen beim Kennwortrückschreiben](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity). | SSPR_0030: Wir können Ihr Kennwort aufgrund einer schlechten Verbindung mit Ihrer lokalen Umgebung nicht zurücksetzen. Bitten Sie Ihren Administrator, das Problem zu untersuchen.|
-
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Behandeln von Problemen mit Konfiguration der Kennwortzurücksetzung im Azure-Portal
 
@@ -168,8 +167,8 @@ Die häufigste Fehlerursache besteht darin, dass die Firewall und/oder Proxyport
 
 Für Azure AD Connect, Version 1.1.443.0 und höher, benötigen Sie ausgehenden HTTPS-Zugriff auf Folgendes:
 
-   - passwordreset.microsoftonline.com
-   - servicebus.windows.net
+* passwordreset.microsoftonline.com
+* servicebus.windows.net
 
 Mehr Granularität bietet die aktualisierte Liste der [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653), die jeden Mittwoch aktualisiert wird und jeweils am darauffolgenden Montag in Kraft tritt.
 
@@ -184,7 +183,7 @@ Führen Sie zum Beheben von Konnektivitätsproblemen oder anderen vorübergehend
 1. Suchen Sie nach dem Eintrag **Microsoft Azure AD Sync**.
 1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
 
-   ![Neustarten des Azure AD Sync-Diensts][Service restart]
+   ![Neustarten des Azure AD Sync-Diensts mit der grafischen Benutzeroberfläche][Service restart]
 
 Durch Ausführen dieser Schritte wird erneut eine Verbindung mit dem Clouddienst hergestellt, und mögliche Unterbrechungen werden behoben. Wenn das Problem durch einen Neustart des ADSync-Diensts nicht behoben wurde, deaktivieren Sie das Kennwortrückschreibenfeature, und aktivieren Sie es anschließend wieder.
 
@@ -215,7 +214,6 @@ Es empfiehlt sich, vor diesem Schritt zunächst die beiden zuvor beschriebenen S
 
 > [!WARNING]
 > Falls Sie die integrierten Synchronisierungsregeln angepasst haben, *sichern Sie diese, bevor Sie mit dem Upgrade fortfahren, und stellen Sie die Anpassungen nach dem Upgrade manuell wieder bereit*.
->
 
 1. Laden Sie die neueste Version von Azure AD Connect aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771) herunter.
 1. Da Sie Azure AD Connect bereits installiert haben, müssen Sie ein direktes Upgrade Ihrer Azure AD Connect-Installation auf die aktuelle Version durchführen.
@@ -231,33 +229,27 @@ Azure AD Connect benötigt für das Kennwortrückschreiben die Active Directory-
 
 1. Melden Sie sich beim Azure AD Connect-Server an, und starten Sie den **Synchronization Service Manager**, indem Sie auf **Start** > **Synchronisierungsdienst** klicken.
 1. Wählen Sie auf der Registerkarte **Connectors** den lokalen Connector **Active Directory Domain Services** aus, und klicken Sie anschließend auf **Eigenschaften**.  
-   ![Effektive Berechtigung: Schritt 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+   ![Synchronization Service Manager zeigt das Bearbeiten von Eigenschaften](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. Klicken Sie im Popupfenster auf die Registerkarte **Mit Active Directory-Gesamtstruktur verbinden**, und notieren Sie sich die Eigenschaft **Benutzername**. Bei dieser Eigenschaft handelt es sich um das AD DS-Konto, das von Azure AD Connect für die Verzeichnissynchronisierung verwendet wird. Damit Azure AD Connect das Kennwortrückschreiben durchführen kann, muss das AD DS-Konto über die Berechtigung „Kennwort zurücksetzen“ verfügen.  
-   
-   ![Effektive Berechtigung: Schritt 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
+
+   ![Suchen des Active Directory-Benutzerkontos für den Synchronisierungsdienst](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
 1. Melden Sie sich bei einem lokalen Domänencontroller an, und starten Sie die Anwendung **Active Directory-Benutzer und -Computer**.
 1. Klicken Sie auf **Ansicht**, und vergewissern Sie sich, dass die Option **Erweiterte Features** aktiviert ist.  
-   
-   ![Effektive Berechtigung: Schritt 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
+
+   ![Active Directory-Benutzer und -Computer zeigen erweiterte Features.](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
 1. Suchen Sie nach dem Active Directory-Benutzerkonto, das Sie überprüfen möchten. Klicken Sie mit der rechten Maustaste auf das Konto, und klicken Sie anschließend auf **Eigenschaften**.  
-   
-   ![Effektive Berechtigung: Schritt 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
-
 1. Navigieren Sie im Popupfenster zur Registerkarte **Sicherheit**, und klicken Sie auf **Erweitert**.  
-   
-   ![Effektive Berechtigung: Schritt 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
-   
 1. Navigieren Sie im Popupfenster mit den erweiterten **Sicherheitseinstellungen für den Administratorzur** Registerkarte **Effektiver Zugriff**.
 1. Klicken Sie auf **Benutzer auswählen**, wählen Sie das von Azure AD Connect verwendete AD DS-Konto aus (siehe Schritt 3), und klicken Sie anschließend auf **Effektiven Zugriff anzeigen**.
 
-   ![Effektive Berechtigung: Schritt 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
+   ![Registerkarte „Effektiver Zugriff“ zeigt das Synchronisierungskonto](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
 1. Scrollen Sie nach unten, und suchen Sie nach **Kennwort zurücksetzen**. Ist der Eintrag mit einem Häkchen versehen, ist das AD DS-Konto zum Zurücksetzen des Kennworts für das ausgewählte Active Directory-Benutzerkonto berechtigt.  
-   
-   ![Effektive Berechtigung: Schritt 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
+
+   ![Überprüfen, ob das Synchronisierungskonto die Berechtigung zum Zurücksetzen des Kennworts hat](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD-Foren
 
@@ -272,17 +264,17 @@ Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Detai
 * **Allgemeine Beschreibung des Fehlers**: Welcher Fehler liegt vor? Welches Verhalten haben Sie festgestellt? Wie können wir den Fehler reproduzieren? Geben Sie bitte so viele Details wie möglich an.
 * **Seite**: Auf welcher Seite befanden Sie sich, als der Fehler aufgetreten ist? Geben Sie möglichst die URL an, und erstellen Sie einen Screenshot der Seite.
 * **Unterstützungscode**: Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist?
-  * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode**, und senden Sie die generierte GUID an den Supportmitarbeiter.
+   * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode**, und senden Sie die generierte GUID an den Supportmitarbeiter.
 
-    ![Sie finden den Supportcode am unteren Rand des Bildschirms.][Support code]
+   ![Sie finden den Supportcode am unteren Rand des Bildschirms.][Support code]
 
   * Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, suchen Sie nach der SID und der CID, und senden Sie beide Ergebnisse an den Supportmitarbeiter.
 * **Datum, Uhrzeit und Zeitzone**: Geben Sie das genaue Datum und die exakte Uhrzeit des Fehlers an (*einschließlich der Zeitzone*).
 * **Benutzer-ID**: Bei welchem Benutzer ist der Fehler aufgetreten? Ein Beispiel hierfür ist *Benutzer\@contoso.com*.
-    * Handelt es sich um einen Verbundbenutzer?
-    * Ist dies ein Benutzer mit Pass-Through-Authentifizierung?
-    * Handelt es sich um einen Benutzer mit Kennworthashsynchronisierung?
-    * Handelt es sich um einen reinen Cloudbenutzer?
+   * Handelt es sich um einen Verbundbenutzer?
+   * Ist dies ein Benutzer mit Pass-Through-Authentifizierung?
+   * Handelt es sich um einen Benutzer mit Kennworthashsynchronisierung?
+   * Handelt es sich um einen reinen Cloudbenutzer?
 * **Lizenzierung**: Verfügt der Benutzer über eine Azure AD Premium- oder Azure AD Basic-Lizenz?
 * **Anwendungsereignisprotokoll**: Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b9b39cfc6ac760c41b58c050cb1ebf39d3f93a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180928"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436795"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ThousandEyes für die automatische Benutzerbereitstellung
 
@@ -33,11 +33,14 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie in ThousandEyes und 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
-*   Einen ThousandEyes-Mandanten, für den mindestens der [Standard-Tarif](https://www.thousandeyes.com/pricing) aktiviert ist 
-*   Ein Benutzerkonto in ThousandEyes mit Teamadministratorberechtigungen 
+*   Ein aktives [ThousandEyes-Konto](https://www.thousandeyes.com/pricing)
+*   Ein ThousandEyes-Benutzerkonto, dem eine Rolle mit den folgenden drei Berechtigungen zugewiesen ist:
+    * Alle Benutzer anzeigen
+    * Benutzer bearbeiten
+    * API-Zugriffsberechtigungen
 
 > [!NOTE]
-> Die Integration der Azure AD-Bereitstellung basiert auf der [ThousandEyes-SCIM-API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK), die für ThousandEyes-Teams mit dem Standard-Tarif oder einem höheren Tarif zur Verfügung steht.
+> Die Azure AD-Bereitstellungsintegration basiert auf der [ThousandEyes-SCIM-API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM). 
 
 ## <a name="assigning-users-to-thousandeyes"></a>Zuweisen von Benutzern zu ThousandEyes
 
@@ -53,13 +56,25 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 *   Beim Zuweisen eines Benutzers zu ThousandEyes müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Die Rolle **Standardzugriff** funktioniert nicht für die Bereitstellung. Diese Benutzer werden übersprungen.
 
+## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>Konfigurieren automatisch bereitgestellter Benutzerrollen in ThousandEyes
+
+Für jede Kontengruppe, in der Sie Benutzer automatisch bereitstellen, können Sie einen Satz von Rollen konfigurieren, die beim Erstellen des neuen Benutzerkontos angewendet werden. Automatisch bereitgestellten Benutzern ist standardmäßig die Rolle _Normaler Benutzer_ für alle Kontengruppen zugewiesen, sofern nicht anders konfiguriert.
+
+1. Wenn Sie einen neuen Satz von Rollen für automatisch bereitgestellte Benutzer angeben möchten, melden Sie sich bei ThousandEyes an, und navigieren Sie zum Abschnitt „SCIM-Einstellungen“ **> Benutzersymbol in der oberen rechten Ecke > Kontoeinstellungen > Organisation > Sicherheit und Authentifizierung**. 
+
+   ![Zu den SCIM-API-Einstellungen navigieren](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
+
+2. Fügen Sie einen Eintrag für jede Kontengruppe hinzu, weisen Sie einen Satz von Rollen zu, und *speichern* Sie dann Ihre Änderungen.
+
+   ![Festlegen von Standardrollen und Kontengruppen für mit der SCIM-API erstellte Benutzer](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
+
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>Konfigurieren der Benutzerbereitstellung in ThousandEyes 
 
 In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der ThousandEyes-API zur Bereitstellung von Benutzerkonten sowie das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in ThousandEyes basierend auf der Benutzer- und Gruppenzuweisung in Azure AD beschrieben.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für ThousandEyes aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden (Single Sign-On, SSO) für ThousandEyes aktivieren. Befolgen Sie hierzu die [in der Azure-Wissensdatenbank bereitgestellten Anweisungen](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial) zum Konfigurieren von SSO. Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurieren der automatischen Bereitstellung von Benutzerkonten für ThousandEyes in Azure AD
@@ -75,7 +90,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Th
 
     ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte **OAuth Bearer Token** ein. (Sie finden das Token in Ihrem ThousandEyes-Konto im Abschnitt **Profile** (Profil) oder können es dort generieren).
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** das von Ihrem ThousandEyes-Konto generierte **OAuth-Bearertoken** ein (Sie finden das Token in Ihrem ThousandEyes-Konto im Abschnitt **Profil** oder können es dort generieren).
 
     ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

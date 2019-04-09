@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098092"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337104"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -103,9 +103,11 @@ Diese Unterstützung ist derzeit nicht für TXT-Einträge verfügbar, die im Azu
 ## <a name="alias-records"></a>Aliaseinträge
 
 ### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>In welchen Szenarien sind Aliaseinträge nützlich?
+
 Informationen hierzu finden Sie unter [Azure DNS-Aliaseinträge – Übersicht](dns-alias.md) im Abschnitt mit den Szenarien.
 
 ### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Welche Eintragstypen werden für Aliaseintragssätze unterstützt?
+
 Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Zone unterstützt:
  
 - Eine Datei 
@@ -115,27 +117,33 @@ Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Z
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Welche Ressourcen werden als Ziele für Aliaseintragssätze unterstützt?
 
 - **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen.
-- **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz:** Sie können über einen DNS-Eintragssatz vom Typ CNAME auf den CNAME eines Traffic Manager-Profils verweisen. Ein Beispiel hierfür ist „contoso.trafficmanager.net“. Sie können jetzt auch auf ein Traffic Manager-Profil verweisen, das über externe Endpunkte eines A- oder AAAA-Eintragssatzes in Ihrer DNS-Zone verfügt.
+- **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz:** Sie können über einen DNS-Eintragssatz vom Typ CNAME auf den CNAME eines Traffic Manager-Profils verweisen. Ein Beispiel hierfür ist „contoso.trafficmanager.net“. Außerdem können Sie nun auch auf ein Traffic Manager-Profil verweisen, das über externe Endpunkte eines A- oder AAAA-Eintragssatzes in Ihrer DNS-Zone verfügt.
+- **Verweisen auf einen Endpunkt eines Azure Content Delivery Network (CDN)** Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen.
 - **Verweisen auf einen anderen DNS-Ressourceneintragssatz innerhalb derselben Zone:** Aliaseinträge können auf andere Eintragssätze desselben Typs verweisen. So kann beispielsweise ein DNS-CNAME-Eintragssatz ein Alias für einen anderen CNAME-Eintragsatz desselben Typs sein. Dies ist nützlich, wenn Sie möchten, dass einige Eintragssätze Aliase und andere keine Aliase sind.
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Kann ich Aliaseinträge im Azure-Portal erstellen und aktualisieren?
+
 Ja. Sie können Aliaseinträge im Azure-Portal mit den Azure-REST-APIs, PowerShell, der CLI und den SDKs erstellen oder verwalten.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Wird mit Aliaseinträgen sichergestellt, dass mein DNS-Eintragssatz gelöscht wird, wenn die zugrunde liegende öffentliche IP-Adresse gelöscht wird?
+
 Ja. Dieses Feature ist eine der Kernfunktionen von Aliaseinträgen. Es unterstützt Sie dabei, potenzielle Ausfälle für die Benutzer Ihrer Anwendung zu vermeiden.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Kann mit Aliaseinträgen sichergestellt werden, dass mein DNS-Eintragssatz mit den richtigen IP-Adressen aktualisiert wird, wenn sich die zugrunde liegende öffentliche IP-Adresse ändert?
+
 Ja. Dieses Feature ist eine der Kernfunktionen von Aliaseinträgen. Sie können mit dessen Hilfe potenzielle Ausfälle oder Sicherheitsrisiken für Ihre Anwendung vermeiden.
 
 ### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Gelten Einschränkungen für die Verwendung von Aliaseintragssätzen für A- oder AAAA-Einträge zum Verweisen auf Traffic Manager?
+
 Ja. Um in Form eines Alias für einen A- oder AAAA-Eintragssatz auf ein Traffic Manager-Profil zu verweisen, müssen für das Traffic Manager-Profil ausschließlich externe Endpunkte verwendet werden. Geben Sie beim Erstellen der externen Endpunkte in Traffic Manager die tatsächlichen IP-Adressen der Endpunkte an.
 
 ### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Fallen zusätzliche Gebühren für die Verwendung von Aliaseinträgen an?
+
 Aliaseinträge stellen eine Qualifikation für einen gültigen DNS-Ressourceneintragssatz dar. Für Aliaseinträge fällt keine weitere Abrechnung an.
 
 ## <a name="use-azure-dns"></a>Verwenden von Azure DNS
 
-### <a name="can-i-cohost-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Kann ich eine Domäne mit Azure DNS und einem anderen DNS-Anbieter gemeinsam hosten?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Kann ich eine Domäne mit Azure DNS und einem anderen DNS-Anbieter gemeinsam hosten?
 
 Ja. Azure DNS unterstützt das gemeinsame Hosten von Domänen mit anderen DNS-Diensten.
 
@@ -271,10 +279,9 @@ Private Zonen, die bereits über APIs, PowerShell, die CLI und SDKs erstellt wer
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Weitere Informationen zu Azure DNS](dns-overview.md)
-<br>
-- [Weitere Informationen zur Verwendung von Azure DNS für private Domänen](private-dns-overview.md)
-<br>
-- [Weitere Informationen zu DNS-Zonen und -Einträgen](dns-zones-records.md)
-<br>
-- [Erste Schritte mit Azure DNS](dns-getstarted-portal.md)
 
+- [Weitere Informationen zur Verwendung von Azure DNS für private Domänen](private-dns-overview.md)
+
+- [Weitere Informationen zu DNS-Zonen und -Einträgen](dns-zones-records.md)
+
+- [Erste Schritte mit Azure DNS](dns-getstarted-portal.md)

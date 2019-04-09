@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 36de8378a7dd22cfa6ba37da921213a18670cc67
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1e00e1f06f2409c94174a752a799cd4c1b7b23ef
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113344"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539971"
 ---
-# <a name="azure-dedicated-hsm-deployment-architecture"></a>Bereitstellungsarchitektur für Azure-Dienst für dedizierte HSMs
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM-Bereitstellungsarchitektur
 
 Azure Dedicated HSM bietet Speicherung von kryptografischen Schlüsseln in Azure. Azure Dedicated HSM erfüllt strenge Sicherheitsanforderungen. Kunden profitieren von der Verwendung von Azure Dedicated HSM, wenn sie:
 
@@ -33,10 +33,16 @@ Die HSMs sind auf die Datencenter von Microsoft verteilt und können problemlos 
 * USA (Ost) 2
 * USA (Westen)
 * USA Süd Mitte
-* Südostasien
+* Asien, Südosten
 * Asien, Osten
 * Nordeuropa
 * Europa, Westen
+* UK, Süden
+* UK, Westen
+* Kanada, Mitte
+* Kanada, Osten
+* Australien (Osten)
+* Australien, Südosten
 
 Jede dieser Regionen verfügt über HSM-Racks, die entweder in zwei unabhängigen Datencentern oder in mindestens zwei unabhängigen Verfügbarkeitszonen bereitgestellt werden. „Asien, Südosten“ verfügt über drei Verfügbarkeitszonen und „USA, Osten 2“ über zwei. Es gibt insgesamt acht Regionen in Europa, Asien und den USA, die den Dedicated HSM-Dienst zur Verfügung stellen. Weitere Informationen zu Azure-Regionen finden Sie in den offiziellen [Informationen zu Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
 Einige Entwurfsfaktoren für jede Dedicated HSM-basierte Lösung sind Standort/Latenz, Hochverfügbarkeit und Unterstützung für andere verteilte Anwendungen.

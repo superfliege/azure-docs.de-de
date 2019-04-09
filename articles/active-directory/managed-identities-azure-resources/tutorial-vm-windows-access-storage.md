@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dacf58760d353eea3c552a9113589259148f3558
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1bb1370b2d828aaddae61c32a663bd032b18e7b1
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447911"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801892"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage
 
@@ -76,7 +76,7 @@ Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Co
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
 2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)**.
 3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
-4. Wählen Sie unter **Rolle** in der Dropdownliste **Storage-Blobdatenleser (Vorschau)** aus.
+4. Wählen Sie unter **Rolle** in der Dropdownliste **Storage-Blobdatenleser** aus.
 5. Wählen Sie in der nächsten Dropdownliste unter **Zugriff zuweisen zu** die Option **Virtueller Computer** aus.
 6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt ist, und legen Sie dann für **Ressourcengruppe** die Option **Alle Ressourcengruppen** fest.
 7. Wählen Sie unter **Auswählen** Ihren virtuellen Computer aus, und klicken Sie dann auf **Speichern**.

@@ -1,27 +1,36 @@
 ---
 title: Includedatei
 description: Includedatei
-services: monitoring-and-diagnostics
+services: azure-monitor
 author: rboucher
-manager: carmonm
 tags: azure-service-management
-ms.service: monitoring-and-diagnostics
-ms.devlang: dotnet
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 3901ad2ce883f8257a74ddd2a931947624977184
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4360196a33381d1a9c8316430339b9a80cb0dba3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45637386"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58016482"
 ---
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Einstellungen für die automatische Skalierung |100 pro Region und Abonnement | wie Standard |
-| Metrikwarnungen (klassisch) |100 aktive Warnungsregeln pro Abonnement | Support kontaktieren |
-| Metrikwarnungen |100 aktive Warnungsregeln pro Abonnement | Support kontaktieren |
-| Aktionsgruppen |2.000 Aktionsgruppen pro Abonnement | Support kontaktieren |
+| Einstellungen für automatische Skalierung |100 pro Region und Abonnement. | Wie Standard. |
+| Metrikwarnungen (klassisch) |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
+| Metrikwarnungen |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
+| Aktionsgruppen |2.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |
 
+**Aktionsgruppenspezifische Einschränkungen**
+
+| Ressource | Standardlimit | Maximales Limit |
+| --- | --- | --- |
+| Azure-App-Push | 10 Azure-App-Aktionen pro Aktionsgruppe. | Wenden Sie sich an den Support. |
+| E-Mail | 1.000 E-Mail-Aktionen in einer Aktionsgruppe. Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
+| ITSM | 10 ITSM-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. | 
+| Logik-App | 10 Logik-App-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. |
+| Runbook | 10 Runbook-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. |
+| sms | 10 SMS-Aktionen in einer Aktionsgruppe. Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
+| Sprache | 10 Sprachaktionen in einer Aktionsgruppe. Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
+| Webhook | 10 Webhookaktionen in einer Aktionsgruppe. Andere Grenzwerte finden Sie unter [Aktionsspezifische Informationen](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Wenden Sie sich an den Support. |

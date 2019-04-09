@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: fdba8969ad326565834625fe1ca7ece5e089a904
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984204"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338461"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -31,7 +31,7 @@ Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu �
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 
-Über eine verwaltete Identität für Azure-Ressourcen wird für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt. Sie können [bestimmte Azure-Ressourcen](../active-directory/managed-identities-azure-resources/services-support-msi.md) wie z.B. virtuelle Computer mit einer verwalteten Identität konfigurieren. Anschließend verwenden Sie die Identität für den Zugriff auf weitere Ressourcen, ohne dass Anmeldeinformationen in Code oder Skripts übergeben werden.
+Über eine verwaltete Identität für Azure-Ressourcen wird für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt. Sie können [bestimmte Azure-Ressourcen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) wie z.B. virtuelle Computer mit einer verwalteten Identität konfigurieren. Anschließend verwenden Sie die Identität für den Zugriff auf weitere Ressourcen, ohne dass Anmeldeinformationen in Code oder Skripts übergeben werden.
 
 Es gibt zwei Arten von verwalteten Identitäten:
 
@@ -41,7 +41,7 @@ Es gibt zwei Arten von verwalteten Identitäten:
 
 Nachdem Sie eine Azure-Ressource mit einer verwalteten Identität eingerichtet haben, können Sie der verwalteten Identität genau wie bei jedem anderen Sicherheitsprinzipal Zugriff auf eine andere Ressource erteilen. Weisen Sie beispielsweise einer verwalteten Identität eine Rolle mit Pullberechtigungen, Push- und Pullberechtigungen oder anderen Berechtigungen für eine private Registrierung in Azure zu. (Eine vollständige Liste der Rollen finden Sie unter [Azure Container Registry – Rollen und Berechtigungen](container-registry-roles.md).) Sie können einer Identität Zugriff auf eine oder mehrere Ressourcen gewähren.
 
-Anschließend können die Identität für die Authentifizierung bei [jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). Hierfür müssen keine Anmeldeinformationen in Ihrem Code enthalten sein. Um mithilfe der Identität von einer VM aus auf eine Azure Container Registry-Instanz zuzugreifen, authentifizieren Sie sich mit Azure Resource Manager. Wählen Sie je nach Szenario die Art der Authentifizierung mithilfe der verwalteten Identität aus:
+Anschließend können die Identität für die Authentifizierung bei [jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). Hierfür müssen keine Anmeldeinformationen in Ihrem Code enthalten sein. Um mithilfe der Identität von einer VM aus auf eine Azure Container Registry-Instanz zuzugreifen, authentifizieren Sie sich mit Azure Resource Manager. Wählen Sie je nach Szenario die Art der Authentifizierung mithilfe der verwalteten Identität aus:
 
 * [Abrufen eines Azure AD-Zugriffstokens](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), programmgesteuert über HTTP- oder REST-Aufrufe
 
@@ -164,13 +164,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Stellen Sie eine SSH-Verbindung mit der Docker-VM her, die mit der Identität konfiguriert ist. Führen Sie über die Azure CLI-Installation auf der VM die folgenden Azure CLI-Befehle aus.
 
-Melden Sie sich zuerst über [az login][az-login] bei der Azure CLI an, und verwenden Sie hierbei die Identität, die Sie für die VM konfiguriert haben. Ersetzen Sie <userID> durch die ID der Identität, die Sie in einem der vorherigen Schritte abgerufen haben. 
+Authentifizieren Sie sich zuerst über [az login][az-login] bei der Azure CLI, und verwenden Sie hierbei die Identität, die Sie für die VM konfiguriert haben. Ersetzen Sie <userID> durch die ID der Identität, die Sie in einem der vorherigen Schritte abgerufen haben. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Melden Sie sich anschließend mit dem Befehl [az acr login][az-acr-login] bei der Registrierung an. Bei Verwendung dieses Befehls verwendet die CLI das bei Ausführung von `az login` erstellte Active Directory-Token für die nahtlose Authentifizierung Ihrer Sitzung mit der Containerregistrierung. (Je nach Einrichtung Ihrer VM müssen Sie diesen Befehl und docker-Befehle mit `sudo` ausführen.)
+Authentifizieren Sie sich anschließend mit dem Befehl [az acr login][az-acr-login] bei der Registrierung. Bei Verwendung dieses Befehls verwendet die CLI das bei Ausführung von `az login` erstellte Active Directory-Token für die nahtlose Authentifizierung Ihrer Sitzung mit der Containerregistrierung. (Je nach Einrichtung Ihrer VM müssen Sie diesen Befehl und docker-Befehle mit `sudo` ausführen.)
 
 ```azurecli
 az acr login --name myContainerRegistry
@@ -216,13 +216,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Stellen Sie eine SSH-Verbindung mit der Docker-VM her, die mit der Identität konfiguriert ist. Führen Sie über die Azure CLI-Installation auf der VM die folgenden Azure CLI-Befehle aus.
 
-Melden Sie sich zuerst über [az login][az-login] bei der Azure CLI an, und verwenden Sie hierbei die systemseitig zugewiesene Identität für die VM.
+Authentifizieren Sie sich zuerst über [az login][az-login] bei der Azure CLI, und verwenden Sie hierbei die systemseitig zugewiesene Identität für die VM.
 
 ```azurecli
 az login --identity
 ```
 
-Melden Sie sich anschließend mit dem Befehl [az acr login][az-acr-login] bei der Registrierung an. Bei Verwendung dieses Befehls verwendet die CLI das bei Ausführung von `az login` erstellte Active Directory-Token für die nahtlose Authentifizierung Ihrer Sitzung mit der Containerregistrierung. (Je nach Einrichtung Ihrer VM müssen Sie diesen Befehl und docker-Befehle mit `sudo` ausführen.)
+Authentifizieren Sie sich anschließend mit dem Befehl [az acr login][az-acr-login] bei der Registrierung. Bei Verwendung dieses Befehls verwendet die CLI das bei Ausführung von `az login` erstellte Active Directory-Token für die nahtlose Authentifizierung Ihrer Sitzung mit der Containerregistrierung. (Je nach Einrichtung Ihrer VM müssen Sie diesen Befehl und docker-Befehle mit `sudo` ausführen.)
 
 ```azurecli
 az acr login --name myContainerRegistry

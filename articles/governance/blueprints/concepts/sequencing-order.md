@@ -1,24 +1,24 @@
 ---
 title: Verstehen der Bereitstellungsreihenfolge
-description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und die einzelnen Phasen.
+description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die einzelnen Phasen.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/12/2018
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990563"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434805"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
-Azure Blueprint bestimmt mit einer **Reihenfolge**, die Abfolge der Ressourcenerstellung beim Verarbeiten der Zuweisung einer Blaupause. In diesem Artikel werden die folgenden Konzepte erläutert:
+Azure Blueprints bestimmt mit einer **Reihenfolge**, die Abfolge der Ressourcenerstellung beim Verarbeiten der Zuweisung einer Blaupausendefinition. In diesem Artikel werden die folgenden Konzepte erläutert:
 
 - Verwendete Standardreihenfolge
 - Vorgehensweise zum Anpassen der Reihenfolge
@@ -30,7 +30,7 @@ In den JSON-Beispielen gibt es Variablen, die Sie durch Ihre eigenen Werte erset
 
 ## <a name="default-sequencing-order"></a>Standardreihenfolge
 
-Wenn die Blaupause keine Anweisung zum Bereitstellen von Artefakten enthält oder gleich NULL ist, wird die folgende Reihenfolge verwendet:
+Wenn die Blaupausendefinition keine Anweisung zum Bereitstellen von Artefakten enthält oder gleich NULL ist, wird die folgende Reihenfolge verwendet:
 
 - **Rollenzuweisungsartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
 - **Richtlinienzuweisungsartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
@@ -45,16 +45,14 @@ In jedem Artefakt vom Typ **Ressourcengruppe** wird für Artefakte, die innerhal
 
 ## <a name="customizing-the-sequencing-order"></a>Anpassen der Reihenfolge
 
-Beim Erstellen großer Blaupausen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupause mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Blueprints das Definieren der Reihenfolge.
+Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupausendefinition mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Blueprints das Definieren der Reihenfolge.
 
-Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Nur die Blaupause (für Ressourcengruppen) und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
+Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Die Blaupausendefinition für Ressourcengruppen und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 
-> [!NOTE]
-> **Ressourcengruppenartefakte** unterstützen die Eigenschaft `dependsOn`, können jedoch nicht als Ziel von `dependsOn` eines beliebigen Artefakttyps verwendet werden.
+### <a name="example---ordered-resource-group"></a>Beispiel: Sortierte Ressourcengruppe
 
-### <a name="example---blueprint-with-ordered-resource-group"></a>Beispiel: Blaupause mit sortierter Ressourcengruppe
-
-Diese exemplarische Blaupause verfügt über eine Ressourcengruppe mit benutzerdefinierter Reihenfolge (mittels Deklarierung eines Werts für `dependsOn`) sowie über eine Standardressourcengruppe. In diesem Fall wird das Artefakt namens **assignPolicyTags** vor der Ressourcengruppe **ordered-rg** verarbeitet. **standard-rg** wird gemäß der Standardreihenfolge verarbeitet.
+Diese exemplarische Blaupausendefinition verfügt über eine Ressourcengruppe mit benutzerdefinierter Reihenfolge (mittels Deklarierung eines Werts für `dependsOn`) sowie über eine Standardressourcengruppe. In diesem Fall wird das Artefakt namens **assignPolicyTags** vor der Ressourcengruppe **ordered-rg** verarbeitet.
+**standard-rg** wird gemäß der Standardreihenfolge verarbeitet.
 
 ```json
 {
@@ -101,6 +99,42 @@ Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Az
     "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
     "type": "Microsoft.Blueprint/artifacts",
     "name": "assignPolicyTags"
+}
+```
+
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Beispiel: Von einer Ressourcengruppe abhängiges Vorlagenartefakt auf Abonnementebene
+
+In diesem Beispiel wird eine Resource Manager-Vorlage, die auf Abonnementebene bereitgestellt wird, von einer Ressourcengruppe abhängig gemacht. Bei der Standardreihenfolge werden die Artefakte auf Abonnementebene vor allen Ressourcengruppen und untergeordneten Artefakten in diesen Ressourcengruppen erstellt. Die Ressourcengruppe wird in der Blaupausendefinition wie folgt definiert:
+
+```json
+"resourceGroups": {
+    "wait-for-me": {
+        "metadata": {
+            "description": "Resource Group that is deployed prior to the subscription level template artifact"
+        }
+    }
+}
+```
+
+Das Vorlagenartefakt auf Abonnementebene, das von der Ressourcengruppe **wait-for-me** abhängig ist, wird wie folgt definiert:
+
+```json
+{
+    "properties": {
+        "template": {
+            ...
+        },
+        "parameters": {
+            ...
+        },
+        "dependsOn": ["wait-for-me"],
+        "displayName": "SubLevelTemplate",
+        "description": ""
+    },
+    "kind": "template",
+    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "subtemplateWaitForRG"
 }
 ```
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558463"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487871"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 
@@ -81,13 +81,13 @@ Der Parameter „multiChartStack=<true/false>“ aktiviert das Stapeln. Der Para
 - multiChartStack=false&multiChartSameScale=true 
   - Das Stapeln muss aktiviert sein, um ausdrucksübergreifend die gleiche Y-Achsenskala verwenden zu können.  Die Funktion ist standardmäßig auf „false“ festgelegt. Durch Übergeben von „true“ wird sie aktiviert.  
   
-Mit „timeBucketUnit=<Unit>&timeBucketSize=<integer>“ können Sie den Intervallschieberegler anpassen, um eine präzisere oder eine glattere, stärker aggregierte Darstellung des Diagramms zu erhalten.  
-- timeBucketUnit=<Unit>&timeBucketSize=<integer>
+Mit `timeBucketUnit=<Unit>&timeBucketSize=<integer>` können Sie den Intervallschieberegler anpassen, um eine präzisere oder eine glattere, stärker aggregierte Darstellung des Diagramms zu erhalten.  
+- `timeBucketUnit=<Unit>&timeBucketSize=<integer>`
   - Einheiten: Tage, Stunden, Minuten, Sekunden und Millisekunden.  Die Einheit muss immer groß geschrieben werden.
   - Übergeben Sie zum Definieren der Anzahl von Einheiten die gewünschte ganze Zahl für „TimeBucketSize“.  Hinweis: Die Glättung kann für bis zu sieben Tage erfolgen.  
   
-Mit dem Parameter „TimezoneOffset=<integer>“ können Sie die gewünschte Zeitzone für das Diagrammdarstellung als UTC-Versatz festlegen.  
-  - timezoneOffset=-<integer>
+Mit dem Parameter `timezoneOffset=<integer>` können Sie die gewünschte Zeitzone für das Diagrammdarstellung als UTC-Versatz festlegen.  
+  - `timezoneOffset=-<integer>`
     - Bei der ganzen Zahl handelt es sich immer um Millisekunden.  
     - Diese Funktion unterscheidet sich geringfügig von der aktivierten Funktion im TSI-Explorer, die es ermöglicht, die Ortszeit (gemäß Browser) oder UTC auszuwählen.  
  

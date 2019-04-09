@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101090"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447220"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory
 
@@ -39,9 +39,10 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Klicken Sie im linken Menü auf **Neu** > **Daten + Analysen** > **Data Factory**:
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus:
    
-   ![Erstellen einer neuen Data Factory](./media/load-azure-data-lake-storage-gen2/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Geben Sie auf der Seite **Neue Data Factory** die in der folgenden Abbildung gezeigten Werte für die Felder an: 
       
    ![Seite „Neue Data Factory“](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)

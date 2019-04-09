@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: c8f7e3cd6a2b4b6105547d7a4429803a00f6999f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d6250b778cdaec47ccbe2f45d35adea0b676a20a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285512"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882009"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -31,7 +31,7 @@ Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps
 Wählen Sie anschließend die Organisation aus, in der die Erweiterung installiert werden soll. 
 
 > [!NOTE]
-> Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
 ![Auswählen einer Azure DevOps-Organisation für die Installation einer Erweiterung](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
@@ -130,7 +130,7 @@ namespace todo.Tests
 }
 ```
 
-Navigieren Sie zu den Ausführungsoptionen im Visual Studio-Testtask. Geben Sie unter **Einstellungsdatei** an, dass die Tests mit der Datei **.runsettings** konfiguriert sind. Fügen Sie unter **Testlaufparameter überschreiben** die Zeichenfolge ` -endpoint $(CosmosDbEmulator.Endpoint)` ein. Dadurch wird der Testtask so konfiguriert, dass er auf den Endpunkt des Emulator-Buildtasks und nicht auf den in der Datei **.runsettings** definierten Endpunkt verweist.  
+Navigieren Sie zu den Ausführungsoptionen im Visual Studio-Testtask. Geben Sie unter **Einstellungsdatei** an, dass die Tests mit der Datei **.runsettings** konfiguriert sind. Fügen Sie unter **Testlaufparameter überschreiben** die Zeichenfolge `-endpoint $(CosmosDbEmulator.Endpoint)` ein. Dadurch wird der Testtask so konfiguriert, dass er auf den Endpunkt des Emulator-Buildtasks und nicht auf den in der Datei **.runsettings** definierten Endpunkt verweist.  
 
 ![Überschreiben der Endpunktvariablen mit dem Endpunkt des Emulator-Buildtasks](./media/tutorial-setup-ci-cd/addExtension_5.png)
 

@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b49ec91af0c2b55185d7f750420825bb174c4b6d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845337"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
 
 Diese Sammlung von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science-Aufgaben wie Datenerfassung, Featureentwicklung, Modellierung und Modellauswertung durchgeführt werden können. Die verwendeten Daten sind eine Stichprobe des Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013. Die erstellten Modelle umfassen logistische und lineare Regression, Random Forests und Gradient-Boosted-Strukturen. In den Themen wird auch gezeigt, wie diese Modelle in Azure Blob Storage (WASB) gespeichert werden und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Fortgeschrittenere Themen behandeln das Trainieren von Modellen mithilfe von Kreuzvalidierung und Hyper-Parameter-Sweeping. Dieses Übersichtsthema enthält außerdem Themen, in denen beschrieben wird, wie Sie den Spark-Cluster einrichten, den Sie zum Ausführen der Schritte in den bereitgestellten exemplarischen Vorgehensweisen benötigen.
 
 ## <a name="spark-and-mllib"></a>Spark und MLlib
-[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Bibliothek für maschinelles Lernen von Spark, die algorithmische Modellierungsfunktionen in diese verteilte Umgebung bereitstellt.
+[Spark](https://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen. [MLlib](https://spark.apache.org/mllib/) ist die skalierbare Bibliothek für maschinelles Lernen von Spark, die algorithmische Modellierungsfunktionen in diese verteilte Umgebung bereitstellt.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. Darüber hinaus unterstützt der Spark-Cluster **Jupyter-PySpark-Notebooks**. Außerdem kann er interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von in Azure-Blobs (WASB) gespeicherten Daten ausführen. PySpark ist die Python-API für Spark. Die Codeausschnitte, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks in den Spark-Clustern ausgeführt. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps.
@@ -49,19 +49,17 @@ Diese Notebooks werden im PySpark3-Kernel des Jupyter-Notebookservers ausgeführ
 
 > [!NOTE]
 > Das Fluglinien-Dataset wurde den Spark 2.0-Notebooks hinzugefügt, um die Verwendung von Klassifizierungsalgorithmen besser zu veranschaulichen. Unter den folgenden Links finden Sie Informationen zum Dataset zur Pünktlichkeit von Flugreisestarts und zum Wetterdataset:
-
->- Daten zur Pünktlichkeit von Fluggesellschaften: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- Flughafen-Wetterdaten: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
->
->
+> 
+> - Daten zur Pünktlichkeit von Fluggesellschaften: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> 
+> - Flughafen-Wetterdaten: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der Liste oben zeigt viele Aspekte der Datenuntersuchung, Visualisierung und des ML-Modelltrainings in einem Notebook, das weniger Zeit für die Ausführung durch einen heruntergerechneten NYC-Datensatz benötigt, in dem die Taxi- und Fahrpreisdateien bereits zusammengeführt wurden: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Dieses Notebook benötigt weitaus weniger Zeit bis zum Abschluss (2-3 Minuten) ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben.
+> Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der Liste oben zeigt viele Aspekte der Datenuntersuchung, Visualisierung und des ML-Modelltrainings in einem Notebook, das weniger Zeit für die Ausführung durch einen heruntergerechneten NYC-Datensatz benötigt, in dem die Taxi- und Fahrpreisdateien bereits zusammengeführt wurden: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Dieses Notebook benötigt weitaus weniger Zeit bis zum Abschluss (2-3 Minuten) ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben.
 
 <!-- -->
 
@@ -94,7 +92,7 @@ Die folgenden Vorgehensweisen beziehen sich auf Spark 1.6. Verwenden Sie für di
 Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (ca. 48 GB unkomprimiert) mit mehr als 173 Mio. einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die CSV-Dateien des Typs „trip_data“ enthalten Fahrtendetails, z. B. die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
-   
+
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
@@ -102,7 +100,7 @@ Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (ca. 48 
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 2. Die CSV-Dateien "trip_fare" enthalten Details zu den Kosten für jede Fahrt, beispielsweise Zahlungsart, Fahrpreis, Zuschläge und Steuern, Trinkgelder und Mautgebühren sowie den entrichteten Gesamtbetrag. Es folgen einige Beispieleinträge:
-   
+
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7

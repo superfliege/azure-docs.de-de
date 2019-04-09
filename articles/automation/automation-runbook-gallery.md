@@ -6,71 +6,54 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 68eb3f3e5c568bb518251aca2a4e76932ce2eee5
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 20aafc117ad8b6bd625894180fdfe79bd86192bd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416206"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518999"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook und Modulkataloge für Azure Automation
 
 Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden.
 
-Sie können Runbooks aus dem [Runbook-Katalog](#runbooks-in-runbook-gallery) und Module aus dem [PowerShell-Katalog](#modules-in-powerShell-gallery) abrufen.  Sie können auch etwas zur Community beitragen, indem Sie von Ihnen entwickelte Szenarios zur Verfügung stellen. Weitere Informationen finden Sie unter [Hinzufügen eines Runbooks zum Runbook-Katalog](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery).
+Sie können PowerShell-Runbooks und -[Module](#modules-in-powershell-gallery) aus dem PowerShell-Katalog sowie [Python-Runbooks](#python-runbooks) aus dem Script Center-Katalog abrufen. Sie können auch etwas zur Community beitragen, indem Sie von Ihnen entwickelte Szenarios zur Verfügung stellen. Weitere Informationen finden Sie unter „Hinzufügen eines Runbooks zum Runbook-Katalog“.
 
-## <a name="runbooks-in-runbook-gallery"></a>Runbooks im Runbook-Katalog
+## <a name="runbooks-in-powershell-gallery"></a>Runbooks im PowerShell-Katalog
 
-Der [Runbook-Katalog](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Sie können ein Runbook aus dem Katalog herunterladen, der im [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload) gehostet wird, oder Sie können Runbooks direkt aus dem Katalog über das Azure-Portal importieren.
+Der [PowerShell-Katalog](https://www.powershellgallery.com/packages) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Um eins zu verwenden, können Sie ein Runbook aus dem Katalog herunterladen, oder Sie können Runbooks direkt aus dem Katalog oder aus Ihrem Automatisierungskonto im Azure-Portal importieren.
 
-Das direkte Importieren aus dem Runbook-Katalog ist nur über das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von Windows PowerShell ausgeführt werden.
+Das direkte Importieren aus dem PowerShell-Katalog ist nur über das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von PowerShell ausgeführt werden.
 
 > [!NOTE]
-> Überprüfen Sie unbedingt den Inhalt der aus dem Runbook-Katalog heruntergeladenen Runbooks, und seien Sie äußerst vorsichtig, wenn Sie sie in einer Produktionsumgebung installieren und ausführen.
+> Überprüfen Sie unbedingt den Inhalt der aus dem PowerShell-Katalog heruntergeladenen Runbooks, und seien Sie äußerst vorsichtig, wenn Sie sie in einer Produktionsumgebung installieren und ausführen.
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>So importieren Sie mit dem Azure-Portal ein Runbook aus dem Runbook-Katalog
+### <a name="to-import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>So importieren Sie mit dem Azure-Portal ein PowerShell-Runbook aus dem Runbook-Katalog
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
 2. Klicken Sie unter **Prozessautomatisierung** auf **Runbook-Katalog**.
-3. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus. Auf den linken Seite können Sie weitere Suchparameter für Herausgeber und Typ eingeben.
+3. Wählen Sie **Quelle: PowerShell-Katalog** aus.
+4. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus. Auf den linken Seite können Sie weitere Suchparameter für Herausgeber und Typ eingeben.
 
    ![Katalog durchsuchen](media/automation-runbook-gallery/browse-gallery.png)
 
-4. Klicken Sie auf **Quellprojekt anzeigen** , um den Artikel im [TechNet Script Center](https://gallery.technet.microsoft.com/)anzuzeigen.
-5. Klicken Sie zum Importieren eines Artikels auf den Artikel, um seine Details anzuzeigen, und klicken Sie anschließend auf die Schaltfläche **Importieren** .
+5. Klicken Sie auf **Quellprojekt anzeigen** , um den Artikel im [TechNet Script Center](https://gallery.technet.microsoft.com/)anzuzeigen.
+6. Klicken Sie zum Importieren eines Artikels auf den Artikel, um seine Details anzuzeigen, und klicken Sie anschließend auf die Schaltfläche **Importieren** .
 
    ![Schaltfläche „Importieren“](media/automation-runbook-gallery/gallery-item-detail.png)
 
-6. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
-7. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
+7. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
+8. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Hinzufügen eines Runbooks zum Runbook-Katalog
+### <a name="adding-a-powershell-runbook-to-the-gallery"></a>Hinzufügen eines PowerShell-Runbooks zum Katalog
 
-Microsoft empfiehlt, Runbooks aus dem Runbook-Katalog hinzuzufügen, die für andere Kunden nützlich sein könnten.  Sie können ein Runbook durch [Hochladen ins Script Center](https://gallery.technet.microsoft.com/site/upload) hinzufügen. Berücksichtigen Sie dabei Folgendes:
+Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für andere Kunden nützlich sein könnten. Der PowerShell-Katalog akzeptiert PowerShell-Module und PowerShell-Skripts. Sie können ein Runbook hinzufügen, indem Sie [es in den PowerShell-Katalog hochladen](/powershell/gallery/how-to/publishing-packages/publishing-a-package).
 
-* Damit das Runbook im Assistenten angezeigt wird, geben Sie als **Kategorie** die Option *Windows Azure* und als **Unterkategorie** die Option *Automation* ein.  
-* Der Upload muss eine einzelne `.ps1`- oder `.graphrunbook`-Datei sein.  Sind für das Runbook Module, untergeordnete Runbooks oder Objekte erforderlich, führen Sie diese Elemente in der Beschreibung der Übermittlung und im Kommentarbereich des Runbooks auf.  Falls für Ihr Szenario mehrere Runbooks erforderlich sind, laden Sie sie einzeln hoch, und führen Sie die Namen der zugehörigen Runbooks in den jeweiligen Beschreibungen auf. Achten Sie darauf, die gleichen Tags zu verwenden, damit die Runbooks in derselben Kategorie angezeigt werden. Dass zur Verwendung des Szenarios weitere Runbooks erforderlich sind, erfährt der Benutzer in der Beschreibung.
-* Fügen Sie das Tag „GraphicalPS“ hinzu, wenn Sie ein **grafisches Runbook** (keinen grafisches Workflow) veröffentlichen.
-* Fügen Sie der Beschreibung einen PowerShell- oder PowerShell-Workflow- Codeausschnitt mithilfe des Symbols **Codeabschnitt einfügen** hinzu.
-* Die Zusammenfassung für den Upload wird in den Ergebnissen des Runbook-Katalogs angezeigt. Geben Sie daher ausführliche Informationen ein, die dem Benutzer die Funktionen des Runbooks verdeutlichen.
-* Weisen Sie dem Upload bis zu drei der folgenden Tags zu:  Das Runbook wird im Assistenten unter den Kategorien aufgeführt, die mit seinen Tags übereinstimmen.  Nicht in dieser Liste enthaltene Tags werden vom Assistenten ignoriert. Wenn Sie keine übereinstimmenden Tags angeben, wird das Runbook unter der Kategorie „Andere“ aufgeführt.
-  
-  * Backup
-  * Capacity Management
-  * Änderungssteuerung
-  * Compliance
-  * Entwicklungs-/Testumgebungen
-  * Notfallwiederherstellung.
-  * Überwachung
-  * Patching
-  * Bereitstellung
-  * Wiederherstellung
-  * Lebenszyklusverwaltung für virtuelle Computer
-
-* Der Katalog wird von Automation stündlich aktualisiert. Ihre Beiträge werden daher unter Umständen nicht sofort angezeigt.
+> [!NOTE]
+> Grafische Runbooks werden im PowerShell-Katalog nicht unterstützt.
 
 ## <a name="modules-in-powershell-gallery"></a>Module im PowerShell-Katalog
 
@@ -100,7 +83,7 @@ PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können
 6. Um das Modul direkt in Azure Automation zu installieren, klicken Sie auf die Schaltfläche **Importieren** .
 7. Wenn Sie auf die Schaltfläche **Importieren** klicken, wird der Name des Moduls angezeigt, das Sie importieren möchten. Wenn alle Abhängigkeiten installiert sind, ist die Schaltfläche **OK** aktiv. Falls Abhängigkeiten fehlen, müssen diese Abhängigkeiten importiert werden, bevor dieses Modul importiert werden kann.
 8. Klicken Sie auf der Seite **Importieren** auf **OK**, um das Modul zu importieren. Wenn Azure Automation ein Modul in Ihr Konto importiert, werden Metadaten zum Modul und den Cmdlets extrahiert. Dieser Vorgang kann einige Minuten dauern, da jede Aktivität extrahiert werden muss.
-9.  Sie erhalten jeweils eine Benachrichtigung, wenn das Modul bereitgestellt wird und wenn der Vorgang abgeschlossen ist.
+9. Sie erhalten jeweils eine Benachrichtigung, wenn das Modul bereitgestellt wird und wenn der Vorgang abgeschlossen ist.
 10. Nachdem das Modul importiert wurde, können Sie die verfügbaren Aktivitäten anzeigen. Sie können ihre Ressourcen in Ihren Runbooks und der Desired State Configuration verwenden.
 
 > [!NOTE]
@@ -108,7 +91,10 @@ PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können
 
 ## <a name="python-runbooks"></a>Python-Runbooks
 
-Python-Runbooks finden Sie im [Script Center-Katalog](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Sie haben die Möglichkeit, Python-Runbooks dem Script Center-Katalog hinzuzufügen. Wenn Sie das tun, achten Sie darauf, dass Sie beim Hochladen Ihres Beitrags das Tag **Python** hinzufügen.
+Python-Runbooks finden Sie im [Script Center-Katalog](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Sie haben die Möglichkeit, Python-Runbooks dem Script Center-Katalog hinzuzufügen, indem Sie auf **Upload a contribution** (Beitrag hochladen) klicken. Wenn Sie das tun, achten Sie darauf, dass Sie beim Hochladen Ihres Beitrags das Tag **Python** hinzufügen.
+
+> [!NOTE]
+> Um Inhalte in das [Script Center](https://gallery.technet.microsoft.com/scriptcenter) hochladen zu können, sind mindestens 100 Punkte erforderlich. 
 
 ## <a name="requesting-a-runbook-or-module"></a>Anfordern eines Runbooks oder eines Moduls
 

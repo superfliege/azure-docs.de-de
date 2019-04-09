@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0d898c8d2273c431967603c36c8ff9d0dd8b4b7b
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113225"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417852"
 ---
-# <a name="azure-data-box-gateway-system-requirements-preview"></a>Systemanforderungen für Microsoft Azure Data Box Gateway (Vorschauversion)
+# <a name="azure-data-box-gateway-system-requirements"></a>Systemanforderungen für Azure Data Box Gateway
 
 In diesem Artikel werden wichtige Systemanforderungen für Ihre Microsoft Azure Data Box Gateway-Lösung und die Clients beschrieben, die mit Azure Data Box Gateway verbunden sind. Sie sollten die Informationen sorgfältig lesen, bevor Sie Data Box Gateway bereitstellen. Auch später sollten Sie während der Bereitstellung und beim nachfolgenden Betrieb bei Bedarf als Referenz darauf zurückgreifen.
 
@@ -24,8 +24,6 @@ Für das virtuelle Data Box Gateway-Gerät gelten die folgenden Systemanforderun
 - **Softwareanforderungen für Hosts**: Beschreibt die unterstützten Plattformen, Browser für die lokale Webbenutzeroberfläche, SMB-Clients und alle zusätzlichen Anforderungen an Hosts, die sich mit dem Gerät verbinden.
 - **Netzwerkanforderungen für das Gerät**: Liefert Informationen zu den Netzwerkanforderungen für den Betrieb des Geräts.
 
-> [!IMPORTANT]
-> Data Box Gateway ist in der Vorschauphase. Lesen Sie [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen. 
 
 ## <a name="specifications-for-the-virtual-device"></a>Spezifikationen für das virtuelle Gerät
 
@@ -33,7 +31,7 @@ Das dem Data Box Gateway zugrunde liegende Hostsystem ist in der Lage, die folge
 
 | Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
-| Virtuelle Prozessoren (Kerne)   | Mindestens 4 |            
+| Virtuelle Prozessoren (Kerne)   | Mindestens 4 |
 | Arbeitsspeicher  | Mindestens 8 GB|
 | Verfügbarkeit|Einzelner Knoten|
 | Datenträger| Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|

@@ -1,19 +1,19 @@
 ---
-title: Installieren des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Mobilitätsdienst-Agent installieren, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
+title: Vorbereiten von Quellcomputern für die Pushinstallation des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihren Server für die Pushinstallation des Mobilitäts-Agents vorbereiten, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 30b177578464653499cdcde8cacf65defa5548ef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846911"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418668"
 ---
-# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Installieren des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Vorbereiten des Quellcomputers für die Pushinstallation des Mobilitäts-Agents
 
 Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithilfe von [Azure Site Recovery](site-recovery-overview.md) einrichten, installieren Sie den [Site Recovery-Mobilitätsdienst](vmware-physical-mobility-service-overview.md) auf jedem lokalen virtuellen VMware-Computer und physischen Server.  Der Mobilitätsdienst erfasst Datenschreibvorgänge auf dem Computer und leitet sie an den Site Recovery-Prozessserver weiter.
 
@@ -59,6 +59,10 @@ Führen Sie auf jedem Linux-Computer, den Sie schützen möchten, folgende Schri
 11. Wählen Sie auf der Registerkarte **Konten verwalten** die Option **Konto hinzufügen**.
 12. Fügen Sie das von Ihnen erstellte Konto hinzu.
 13. Geben Sie die Anmeldeinformationen ein, die Sie verwenden, wenn Sie die Replikation für einen Computer aktivieren.
+
+## <a name="anti-virus-on-replicated-machines"></a>Virenschutz auf replizierten Computern
+
+Wenn auf Computern, die Sie replizieren möchten, aktive Virenschutzsoftware ausgeführt wird, achten Sie darauf, den Installationsordner von Mobility Service von Virenschutzvorgängen auszuschließen (*C:\ProgramData\ASR\agent*). Dadurch wird sichergestellt, dass die Replikation wie erwartet funktioniert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

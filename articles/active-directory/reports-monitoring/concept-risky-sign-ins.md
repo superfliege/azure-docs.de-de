@@ -44,7 +44,7 @@ Die Berichte über riskante Anmeldungen stehen für Benutzer mit den folgenden R
 
 - Sicherheitsadministrator
 - Globaler Administrator
-- Sicherheit lesen
+- Sicherheitsleseberechtigter
 
 Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory finden Sie unter [Anzeigen und Zuweisen von Administratorrollen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 

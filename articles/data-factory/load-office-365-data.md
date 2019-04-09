@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 72b2c630c514190d2c63e3dd7faa29b0b3abab19
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944560"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445770"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Laden von Daten aus Office 365 mithilfe von Azure Data Factory
 
@@ -24,9 +24,10 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe von Data Factory _Daten aus Off
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Klicken Sie im linken Menü auf **Neu** > **Daten + Analysen** > **Data Factory**: 
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus: 
    
-   ![Erstellen einer neuen Data Factory](./media/load-office-365-data/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Geben Sie auf der Seite **Neue Data Factory** die in der folgenden Abbildung gezeigten Werte für die Felder an:
       
    ![Seite „Neue Data Factory“](./media/load-office-365-data/new-azure-data-factory.png)
@@ -34,7 +35,7 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe von Data Factory _Daten aus Off
     * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen \"LoadFromOffice365Demo\" ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_**LoadFromOffice365Demo** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
     * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-    * **Version:** Wählen Sie **V2** aus.
+    * **Version**: Wählen Sie **V2** aus.
     * **Standort**: Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. Diese Datenspeicher umfassen Azure Data Lake Store, Azure Storage, Azure SQL-Datenbank usw.
 
 3. Klicken Sie auf **Erstellen**.

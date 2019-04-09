@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012735"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446704"
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -93,23 +93,15 @@ Azure Storage umfasst auch die Funktionen für verwaltete und nicht verwaltete D
 
 Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md). 
 
-## <a name="accessing-your-blobs-files-and-queues"></a>Zugreifen auf Blobs, Dateien und Warteschlangen
+## <a name="securing-access-to-storage-accounts"></a>Schützen des Zugriffs auf Speicherkonten
 
-Jedes Speicherkonto verfügt über zwei Authentifizierungsschlüssel, die beide für alle Vorgänge verwendet werden können. Da es zwei Schlüssel gibt, können Sie gelegentlich ein Rollover für die Schlüssel durchführen, um die Sicherheit zu erhöhen. Es ist sehr wichtig, diese Schlüssel sicher aufzubewahren, da sie zusammen mit dem Kontonamen den unbegrenzten Zugriff auf alle Daten im Speicherkonto ermöglichen.
+Jede Anforderung an Azure Storage muss autorisiert sein. Azure Storage unterstützt die folgenden Autorisierungsmethoden:
 
-In diesem Abschnitt werden zwei Optionen zum Schützen der Speicherkonten und der dazugehörigen Daten erläutert. Ausführliche Informationen zum Schützen der Speicherkonten und Daten finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Schützen des Zugriffs auf Speicherkonten mithilfe von Azure AD
-
-Eine Möglichkeit zum Schützen der Speicherdaten besteht darin, den Zugriff auf die Speicherkontoschlüssel zu steuern. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Resource Manager können Sie Benutzern, Gruppen oder Anwendungen Rollen zuweisen. Diese Rollen sind an einen bestimmten Satz von Aktionen gebunden, die zulässig bzw. unzulässig sind. Wenn Sie den Zugriff auf ein Speicherkonto mithilfe von RBAC gewähren, betrifft dies nur die Verwaltungsvorgänge für dieses Speicherkonto (beispielsweise die Änderung der Zugriffsebene). Mit RBAC können Sie keinen Zugriff auf Datenobjekte wie einen bestimmten Container oder eine Dateifreigabe gewähren. Sie können jedoch RBAC verwenden, um Zugriff auf die Speicherkontoschlüssel zu erteilen, mit deren Hilfe anschließend die Datenobjekte gelesen werden können.
-
-### <a name="securing-access-using-shared-access-signatures"></a>Schützen des Zugriffs mit Shared Access Signatures
-
-Sie können Datenobjekte mithilfe von Shared Access Signatures und gespeicherten Zugriffsrichtlinien schützen. Eine Shared Access Signature (SAS) ist eine Zeichenfolge mit einem Sicherheitstoken, die an den URI für ein Objekt angefügt werden kann. Mit diesem URI können Sie den Zugriff auf bestimmte Speicherobjekte delegieren und Einschränkungen festlegen, beispielsweise Berechtigungen und den Datums- und Uhrzeitbereich für den Zugriff. Dieses Feature bietet umfangreiche Funktionen. Ausführliche Informationen finden Sie unter [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Verwenden von Shared Access Signatures (SAS)).
-
-### <a name="public-access-to-blobs"></a>Öffentlicher Zugriff auf Blobs
-
-Mit dem Blob-Dienst können Sie öffentlichen Zugriff auf einen Container und seine Blobs oder auf ein bestimmtes Blob erteilen. Wenn Sie einen Container oder ein Blob als öffentliche Ressource konfigurieren, kann jeder Benutzer anonym und ohne Authentifizierung drauf zugreifen. Diese Vorgehensweise käme beispielsweise bei einer Website mit Bildern, Videos oder Dokumenten aus Blob Storage zum Einsatz. Weitere Informationen finden Sie unter [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Verwalten des anonymen Lesezugriffs auf Container und Blobs).
+- **Integration von Azure Active Directory (Azure AD) für Blob- und Warteschlangendaten.** Azure Storage unterstützt Authentifizierung und Autorisierung mit Azure AD-Anmeldeinformationen für Blob- und Warteschlangendienste über rollenbasierte Zugriffssteuerung (RBAC). Für mehr Sicherheit und Benutzerfreundlichkeit wird die Autorisierung von Anforderungen mit Azure AD empfohlen. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
+- **Azure AD-Autorisierung über SMB für Azure Files (Vorschau).** Azure Files unterstützt identitätsbasierte Autorisierung über SMB (Server Message Block) über Azure Active Directory Domain Services. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen. Weitere Informationen finden Sie unter [Übersicht zur Azure Active Directory-Autorisierung über SMB für Azure Files (Vorschau)](../files/storage-files-active-directory-overview.md).
+- **Autorisierung mit gemeinsam verwendetem Schlüssel.** Die Azure Storage-Blob-, Warteschlangen- und Tabellendienste sowie Azure Files unterstützten die Autorisierung mit gemeinsam verwendetem Schlüssel. Ein Client, der die Autorisierung mit gemeinsam verwendetem Schlüssel nutzt, übergibt mit jeder Anforderung einen Header, der mit dem Speicherkonto-Zugriffsschlüssel signiert wird. Weitere Informationen finden Sie unter [Authentifizieren mit gemeinsam verwendetem Schlüssel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
+- **Autorisierung mit Shared Access Signatures (SAS).** Eine Shared Access Signature (SAS) ist eine Zeichenfolge mit einem Sicherheitstoken, das an den URI für eine Speicherressource angefügt werden kann. Im Sicherheitstoken sind Einschränkungen wie Berechtigungen und das Zugriffsintervall gekapselt. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Anonymer Zugriff auf Container und Blobs.** Ein Container und seine Blobs können öffentlich verfügbar sein. Wenn Sie einen Container oder ein Blob als öffentliche Ressource festlegen, kann jeder Benutzer anonym und ohne Authentifizierung darauf zugreifen. Weitere Informationen finden Sie unter [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Verwalten des anonymen Lesezugriffs auf Container und Blobs).
 
 ## <a name="encryption"></a>Verschlüsselung
 

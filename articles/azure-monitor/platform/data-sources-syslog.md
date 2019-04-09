@@ -11,17 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: fa94bffc05879be9d6bbaaa7cd884c36ffe7e0b8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451280"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372300"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-Datenquellen in Azure Monitor
-Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können.  Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent.  Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.  
+Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können. Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent. Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.  
 
 > [!NOTE]
 > Azure Monitor unterstützt die Sammlung der von „rsyslog“ oder „syslog-ng“ gesendeten Nachrichten, wobei „rsyslog“ der Standarddaemon ist. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der [Rsyslog-Daemon](http://rsyslog.com) sollte installiert und so konfiguriert werden, dass er Sysklog ersetzt, um Syslog-Daten von dieser Version dieser Verteilungen zu sammeln.
@@ -30,20 +30,38 @@ Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwe
 
 ![Syslog-Sammlung](media/data-sources-syslog/overview.png)
 
+Die folgenden Einrichtungen werden mit dem Syslog-Sammler unterstützt:
+
+* kern
+* user
+* mail
+* daemon
+* auth
+* syslog
+* lpr
+* news
+* uucp
+* cron
+* authpriv
+* ftp
+* local0-local7
+
+Für jede andere Einrichtung [konfigurieren Sie eine Datenquelle für benutzerdefinierte Protokolle](data-sources-custom-logs.md) in Azure Monitor.
+ 
 ## <a name="configuring-syslog"></a>Konfigurieren von Syslog
-Der Log Analytics-Agent für Linux sammelt nur Ereignisse mit den Einrichtungen und Schweregraden, die in ihrer Konfiguration angegeben werden.  Sie können Syslog über das Azure-Portal oder durch die Verwaltung von Konfigurationsdateien für die Linux-Agents konfigurieren.
+Der Log Analytics-Agent für Linux sammelt nur Ereignisse mit den Einrichtungen und Schweregraden, die in ihrer Konfiguration angegeben werden. Sie können Syslog über das Azure-Portal oder durch die Verwaltung von Konfigurationsdateien für die Linux-Agents konfigurieren.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurieren von Syslog im Azure-Portal
-Konfigurieren Sie Syslog über das [Menü „Daten“ in den erweiterten Einstellungen](agent-data-sources.md#configuring-data-sources).  Diese Konfiguration wird in der Konfigurationsdatei für jeden Linux-Agent bereitgestellt.
+Konfigurieren Sie Syslog über das [Menü „Daten“ in den erweiterten Einstellungen](agent-data-sources.md#configuring-data-sources). Diese Konfiguration wird in der Konfigurationsdatei für jeden Linux-Agent bereitgestellt.
 
-Sie können eine neue Einrichtung hinzufügen, indem Sie ihren Namen eingeben und auf **+**.  Für jede Einrichtung werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Markieren Sie die Schweregrade für die jeweilige Einrichtung, aus der Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien angeben, um Nachrichten zu filtern.
+Sie können eine neue Einrichtung hinzufügen, indem Sie ihren Namen eingeben und auf **+**. Für jede Einrichtung werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Markieren Sie die Schweregrade für die jeweilige Einrichtung, aus der Sie Daten sammeln möchten. Sie können keine zusätzlichen Kriterien angeben, um Nachrichten zu filtern.
 
 ![Konfigurieren von Syslog](media/data-sources-syslog/configure.png)
 
-Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Wenn Sie Syslog manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*.
+Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben. Wenn Sie Syslog manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurieren von Syslog auf dem Linux-Agent
-Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../../azure-monitor/learn/quick-collect-linux-computer.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert.  Sie können diese Datei ändern, um die Konfiguration zu ändern.  Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
+Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../../azure-monitor/learn/quick-collect-linux-computer.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert. Sie können diese Datei ändern, um die Konfiguration zu ändern. Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
 
 > [!NOTE]
 > Wenn Sie die syslog-Konfiguration bearbeiten, müssen Sie den syslog-Daemon neu starten, damit die Änderungen wirksam werden.
@@ -51,7 +69,7 @@ Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../../azur
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Die Konfigurationsdatei für rsyslog befindet sich unter **/etc/rsyslog.d/95-omsagent.conf**.  Ihr Standardinhalt wird unten aufgeführt.  So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen auf Warnungsebene oder höher gesendet hat.
+Die Konfigurationsdatei für rsyslog befindet sich unter **/etc/rsyslog.d/95-omsagent.conf**. Ihr Standardinhalt wird unten aufgeführt. So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen auf Warnungsebene oder höher gesendet hat.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -71,13 +89,13 @@ Die Konfigurationsdatei für rsyslog befindet sich unter **/etc/rsyslog.d/95-oms
     local6.warning     @127.0.0.1:25224
     local7.warning     @127.0.0.1:25224
 
-Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfigurationsdatei entfernen.  Sie können die Schweregrade, die für eine bestimmte Einrichtung gesammelt werden, durch Ändern des Eintrags dieser Einrichtung beschränken.  Um z.B. die Einrichtung „user“ auf Nachrichten mit mindestens Fehlerschweregrad zu begrenzen, ändern Sie diese Zeile der Konfigurationsdatei wie folgt:
+Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfigurationsdatei entfernen. Sie können die Schweregrade, die für eine bestimmte Einrichtung gesammelt werden, durch Ändern des Eintrags dieser Einrichtung beschränken. Um z.B. die Einrichtung „user“ auf Nachrichten mit mindestens Fehlerschweregrad zu begrenzen, ändern Sie diese Zeile der Konfigurationsdatei wie folgt:
 
     user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-Die Konfigurationsdatei für „syslog-ng“ befindet sich am Speicherort **/etc/syslog-ng/syslog-ng.conf**.  Ihr Standardinhalt wird unten aufgeführt.  So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen und alle Schweregrade gesendet hat.   
+Die Konfigurationsdatei für „syslog-ng“ befindet sich am Speicherort **/etc/syslog-ng/syslog-ng.conf**.  Ihr Standardinhalt wird unten aufgeführt. So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen und alle Schweregrade gesendet hat.   
 
     #
     # Warnings (except iptables) in one file:
@@ -128,7 +146,7 @@ Die Konfigurationsdatei für „syslog-ng“ befindet sich am Speicherort **/etc
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
-Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfigurationsdatei entfernen.  Sie können die Schweregrade, die für eine bestimmte Einrichtung gesammelt werden, beschränken, indem Sie sie aus deren Liste entfernen.  Um z.B. die Einrichtung „user“ auf Warnungen und kritische Nachrichten zu begrenzen, ändern Sie diesen Abschnitt der Konfigurationsdatei wie folgt:
+Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfigurationsdatei entfernen. Sie können die Schweregrade, die für eine bestimmte Einrichtung gesammelt werden, beschränken, indem Sie sie aus deren Liste entfernen.  Um z.B. die Einrichtung „user“ auf Warnungen und kritische Nachrichten zu begrenzen, ändern Sie diesen Abschnitt der Konfigurationsdatei wie folgt:
 
     #OMS_facility = user
     filter f_user_oms { level(alert,crit) and facility(user); };
@@ -168,7 +186,7 @@ Sie können die Portnummer ändern, indem Sie zwei Konfigurationsdateien erstell
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Ändern Sie die syslog-ng-Konfiguration durch Kopieren der unten gezeigten Beispielkonfiguration und Hinzufügen der benutzerdefinierten geänderten Einstellungen am Ende der Konfigurationsdatei „syslog-ng.conf“ im Verzeichnis `/etc/syslog-ng/`.  Verwenden Sie **nicht** die Standardbezeichnung **%WORKSPACE_ID%_oms** oder **%WORKSPACE_ID_OMS**, definieren Sie eine benutzerdefinierte Bezeichnung, um die Änderungen kenntlich zu machen.  
+* Ändern Sie die syslog-ng-Konfiguration durch Kopieren der unten gezeigten Beispielkonfiguration und Hinzufügen der benutzerdefinierten geänderten Einstellungen am Ende der Konfigurationsdatei „syslog-ng.conf“ im Verzeichnis `/etc/syslog-ng/`. Verwenden Sie **nicht** die Standardbezeichnung **%WORKSPACE_ID%_oms** oder **%WORKSPACE_ID_OMS**, definieren Sie eine benutzerdefinierte Bezeichnung, um die Änderungen kenntlich zu machen.  
 
     > [!NOTE]
     > Wenn Sie die Standardwerte in der Konfigurationsdatei ändern, werden sie überschrieben, wenn der Agent eine Standardkonfiguration anwendet.

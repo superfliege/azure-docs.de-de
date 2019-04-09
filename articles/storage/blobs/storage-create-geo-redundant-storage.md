@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: c8796c300b5163f23ad1156650f6e74b61ccdfa6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: c4e81d9be09855cde986bfd21f8f688fa7d1341e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486664"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793713"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
@@ -49,14 +49,15 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * [Installieren Sie Python.](https://www.python.org/downloads/)
 * Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
 
 * Installieren Sie [Maven](https://maven.apache.org/download.cgi), und konfigurieren Sie es so, dass es über die Befehlszeile verwendet werden kann.
 * Installieren und konfigurieren Sie ein [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-* Installieren Sie [Node.js](https://nodejs.org).
+* Installieren Sie [Maven](http://maven.apache.org/download.cgi), und konfigurieren Sie es so, dass es über die Befehlszeile verwendet werden kann.
+* Installieren und konfigurieren Sie ein [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 ---
 
@@ -73,18 +74,18 @@ Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 2. Klicken Sie auf der Seite **Neu** auf **Storage**.
 3. Wählen Sie unter **Ausgewählte** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
-4. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**:
+4. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**.
 
-   | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung       | Empfohlener Wert | Beschreibung |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Abonnement** | Ihr Abonnement |Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-   | **Ressourcengruppe** | myResourceGroup |Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
-   | **Speicherkontoname** | mystorageaccount | ein eindeutiger Wert für Ihr Speicherkonto |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort aus. |
-   | **Leistung** | Standard | Der Wert „Standard“ ist für das Beispielszenario ausreichend. |
+   | **Name** | mystorageaccount | ein eindeutiger Wert für Ihr Speicherkonto |
+   | **Bereitstellungsmodell** | Ressourcen-Manager  | Azure Resource Manager enthält die neuesten Funktionen.|
    | **Kontoart** | StorageV2 | Weitere Informationen zu den unterschiedlichen Kontoarten finden Sie unter [Speicherkontentypen](../common/storage-introduction.md#types-of-storage-accounts). |
+   | **Leistung** | Standard | Der Wert „Standard“ ist für das Beispielszenario ausreichend. |
    | **Replikation**| Georedundanter Speicher mit Lesezugriff (RA-GRS) | Diese Angabe ist erforderlich, damit das Beispiel funktioniert. |
-   | **Zugriffsebene** | Heiß | Der Wert „Heiß“ ist für das Beispielszenario ausreichend. |
+   |**Abonnement** | Ihr Abonnement |Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
+   |**ResourceGroup** | myResourceGroup |Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
+   |**Location** | USA (Ost) | Wählen Sie einen Standort aus. |
 
 ![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -95,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), und extrahieren (entzippen) Sie die Datei „storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine Konsolenanwendung.
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git 
+git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
@@ -106,6 +107,14 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+[Laden Sie ein Beispielprojekt herunter](https://github.com/Azure-Samples/storage-java-ha-ra-grs), und extrahieren Sie die Datei „storage-java-ragrs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Java-Anwendung.
+
+```bash
+git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
+```
+
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 [Laden Sie ein Beispielprojekt herunter](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs), und extrahieren Sie die Datei „storage-java-ragrs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Java-Anwendung.
@@ -114,57 +123,65 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-[Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs), und entzippen Sie die Datei. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Node.js-Anwendung.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
-```
-
 ---
-
-## <a name="configure-the-sample"></a>Das Beispiel konfigurieren
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Sie können diese Verbindungszeichenfolge in einer Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariable zu erstellen.
+Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Es wird empfohlen, diese Verbindungszeichenfolge auf dem lokalen Computer, auf dem die Anwendung ausgeführt wird, in einer Umgebungsvariablen zu speichern. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariable zu erstellen.
 
-Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie in Ihrem Speicherkonto unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Kopieren Sie die **Verbindungszeichenfolge** aus dem primären oder sekundären Schlüssel. Führen Sie basierend auf Ihrem Betriebssystem einen der folgenden Befehle aus, und ersetzen Sie dabei \<yourconnectionstring\> durch Ihre tatsächliche Verbindungszeichenfolge. Mit diesem Befehl wird eine Umgebungsvariable auf dem lokalen Computer gespeichert. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden.
+Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie in Ihrem Speicherkonto unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Kopieren Sie die **Verbindungszeichenfolge** aus dem primären oder sekundären Schlüssel. Ersetzen Sie \<yourconnectionstring\> durch Ihre tatsächliche Verbindungszeichenfolge, indem Sie basierend auf Ihrem Betriebssystem einen der folgenden Befehle ausführen. Mit diesem Befehl wird eine Umgebungsvariable auf dem lokalen Computer gespeichert. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden. Ersetzen Sie **\<storageConnectionString\>** im folgenden Beispiel:
 
 ### <a name="linux"></a>Linux
 
 ```
-export storageconnectionstring=<yourconnectionstring>
+export storageconnectionstring=\<yourconnectionstring\>
 ```
+
 ### <a name="windows"></a>Windows
 
-```powershell
-setx storageconnectionstring "<yourconnectionstring>"
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Sie müssen in der Anwendung Ihre Anmeldeinformationen für das Speicherkonto angeben. Sie können diese Informationen in einer Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariablen zu erstellen.
+Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Es wird empfohlen, diese Verbindungszeichenfolge auf dem lokalen Computer, auf dem die Anwendung ausgeführt wird, in einer Umgebungsvariablen zu speichern. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariable zu erstellen.
 
-Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie in Ihrem Speicherkonto unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Fügen Sie die Werte **Speicherkontoname** und **Schlüssel** in die folgenden Befehle ein, und ersetzen Sie dabei die Platzhalter \<youraccountname\> und \<youraccountkey\>. Mit diesem Befehl werden die Umgebungsvariablen auf dem lokalen Computer gespeichert. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden.
+Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie in Ihrem Speicherkonto unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Kopieren Sie die **Verbindungszeichenfolge** aus dem primären oder sekundären Schlüssel. Ersetzen Sie \<yourconnectionstring\> durch Ihre tatsächliche Verbindungszeichenfolge, indem Sie basierend auf Ihrem Betriebssystem einen der folgenden Befehle ausführen. Mit diesem Befehl wird eine Umgebungsvariable auf dem lokalen Computer gespeichert. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden. Ersetzen Sie **\<storageConnectionString\>** im folgenden Beispiel:
 
 ### <a name="linux"></a>Linux
 
 ```
-export accountname=<youraccountname>
-export accountkey=<youraccountkey>
+export storageconnectionstring=\<yourconnectionstring\>
 ```
+
 ### <a name="windows"></a>Windows
 
-```powershell
-setx accountname "<youraccountname>"
-setx accountkey "<youraccountkey>"
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
+```
+
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Es wird empfohlen, diese Verbindungszeichenfolge auf dem lokalen Computer, auf dem die Anwendung ausgeführt wird, in einer Umgebungsvariablen zu speichern. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariable zu erstellen.
+
+Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie in Ihrem Speicherkonto unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Kopieren Sie die **Verbindungszeichenfolge** aus dem primären oder sekundären Schlüssel. Ersetzen Sie \<yourconnectionstring\> durch Ihre tatsächliche Verbindungszeichenfolge, indem Sie basierend auf Ihrem Betriebssystem einen der folgenden Befehle ausführen. Mit diesem Befehl wird eine Umgebungsvariable auf dem lokalen Computer gespeichert. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden. Ersetzen Sie **\<storageConnectionString\>** im folgenden Beispiel:
+
+### <a name="linux"></a>Linux
+
+```
+export storageconnectionstring=\<yourconnectionstring\>
+```
+
+### <a name="windows"></a>Windows
+
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Für dieses Beispiel müssen der Name und Schlüssel Ihres Speicherkontos sicher gespeichert werden. Speichern Sie sie in lokalen Umgebungsvariablen des Computers, auf dem das Beispiel ausgeführt wird. Folgen Sie je nach Betriebssystem den Schritten für das Linux- oder Windows-Beispiel, um die Umgebungsvariablen zu erstellen. 
+Für dieses Beispiel müssen der Name und Schlüssel Ihres Speicherkontos sicher gespeichert werden. Speichern Sie sie in lokalen Umgebungsvariablen des Computers, auf dem das Beispiel ausgeführt wird. Folgen Sie je nach Betriebssystem den Schritten für das Linux- oder Windows-Beispiel, um die Umgebungsvariablen zu erstellen. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden.
 
 ### <a name="linux-example"></a>Linux-Beispiel
 
@@ -179,21 +196,6 @@ export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
-
-Sie finden diese Informationen im Azure-Portal, indem Sie zu Ihrem Speicherkonto navigieren und im Abschnitt **Einstellungen** die Option **Zugriffsschlüssel** auswählen. 
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-Um dieses Beispiel ausführen zu können, müssen Sie Ihre Anmeldeinformationen für das Speicherkonto der `.env.example`-Datei hinzufügen und sie in `.env` umbenennen.
-
-```
-AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
-AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
-```
-
-Sie finden diese Informationen im Azure-Portal, indem Sie zu Ihrem Speicherkonto navigieren und im Abschnitt **Einstellungen** die Option **Zugriffsschlüssel** auswählen. 
-
-Sie müssen auch die erforderlichen Abhängigkeiten installieren. Öffnen Sie hierzu eine Eingabeaufforderung, navigieren Sie zum Beispielordner, und geben Sie dann `npm install` ein.
 
 ---
 
@@ -215,17 +217,23 @@ Navigieren Sie zum Ausführen der Anwendung in einem Terminal oder über eine Ei
 
 ![Konsolenanwendung wird ausgeführt](media/storage-create-geo-redundant-storage/figure3.png)
 
-Im Beispielcode wird die `run_circuit_breaker`-Methode in der Datei `circuitbreaker.py` verwendet, um mit der [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html)-Methode ein Bild aus dem Speicherkonto herunterzuladen. 
+Im Beispielcode wird die `run_circuit_breaker`-Methode in der Datei `circuitbreaker.py` verwendet, um mit der [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html)-Methode ein Bild aus dem Speicherkonto herunterzuladen.
 
 Die retry-Funktion des Storage-Objekts wird auf eine lineare Wiederholungsrichtlinie festgelegt. Mit der retry-Funktion wird ermittelt, ob für eine Anforderung ein Wiederholungsversuch durchgeführt werden soll. Außerdem wird angegeben, wie viele Sekunden lang gewartet werden soll, bevor der Versuch gestartet wird. Legen Sie den Wert **retry\_to\_secondary** auf „true“ fest, wenn für die Anforderung ein Wiederholungsversuch für den sekundären Endpunkt durchgeführt werden soll, falls die erste Anforderung an den primären Endpunkt fehlschlägt. In der Beispielanwendung wird in der `retry_callback`-Funktion des Storage-Objekts eine benutzerdefinierte Wiederholungsrichtlinie definiert.
 
-Vor dem Herunterladen werden die Funktionen [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) und [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) für das Service-Objekt definiert. Mit diesen Funktionen werden die Ereignishandler definiert, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download durchzuführen.  
+Vor dem Herunterladen werden die Funktionen [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) und [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) für das Service-Objekt definiert. Mit diesen Funktionen werden die Ereignishandler definiert, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download durchzuführen.
+
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+Sie können die Anwendung ausführen, indem Sie ein Terminal oder eine Eingabeaufforderung für den heruntergeladenen Anwendungsordner öffnen. Geben Sie dort `mvn compile exec:java` ein, um die Anwendung auszuführen. Daraufhin lädt die Anwendung das Bild **HelloWorld.png** aus dem Verzeichnis in Ihr Speicherkonto hoch und überprüft, ob es am sekundären RA-GRS-Endpunkt repliziert wurde. Nach dieser Überprüfung beginnt die Anwendung mit dem wiederholten Herunterladen des Bilds und meldet dabei jeweils den Endpunkt, von dem das Bild heruntergeladen wird.
+
+Die retry-Funktion des Storage-Objekts ist auf eine lineare Wiederholungsrichtlinie festgelegt. Die retry-Funktion bestimmt, ob für eine Anforderung ein Wiederholungsversuch durchgeführt und wie viele Sekunden zwischen den einzelnen Versuchen gewartet werden soll. Die Eigenschaft **LocationMode** von **BlobRequestOptions** ist auf **PRIMARY\_THEN\_SECONDARY** festgelegt. Dadurch kann die Anwendung automatisch auf den sekundären Standort ausweichen, wenn sie den primären Standort beim Herunterladen von **HelloWorld.png** nicht erreicht.
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 Führen Sie das Beispiel mithilfe von Maven über die Befehlszeile aus.
 
-1. Öffnen Sie eine Shell, und navigieren Sie im geklonten Verzeichnis zu **storage-blobs-java-v10-tutorial-master**.
+1. Öffnen Sie eine Shell, und navigieren Sie im geklonten Verzeichnis zu **storage-blobs-java-v10-quickstart**.
 2. Geben Sie `mvn compile exec:java` ein.
 
 In diesem Beispiel wird eine Testdatei im Standardverzeichnis erstellt. Für Windows-Benutzer ist dies das Verzeichnis **AppData\Local\Temp**. Im Beispiel werden dann die folgenden Optionen für Befehle angezeigt, die Sie eingeben können:
@@ -265,33 +273,6 @@ Cleaning up the sample and exiting!
 
 Da Sie die Kontrolle über das Beispiel haben, geben Sie Befehle ein, damit der Code ausgeführt wird. Bei Eingaben muss die Groß-/Kleinschreibung beachtet werden.
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-Um das Beispiel auszuführen, öffnen Sie eine Eingabeaufforderung, navigieren Sie zum Beispielordner, und geben Sie dann `node index.js` ein.
-
-Im Beispiel wird ein Container in Ihrem Blobspeicherkonto erstellt, **HelloWorld.png** in den Container geladen und dann wiederholt überprüft, ob der Container und das Image in der sekundären Region repliziert wurden. Nach der Replikation werden sie aufgefordert, **D** oder **Q** (gefolgt von der EINGABETASTE) zum Herunterladen oder Beenden einzugeben. Ihre Ausgabe sollte etwa folgendem Beispiel entsprechen:
-
-```
-Created container successfully: newcontainer1550799840726
-Uploaded blob: HelloWorld.png
-Checking to see if container and blob have replicated to secondary region.
-[0] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-[1] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-...
-[31] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-[32] Container found, but blob has not replicated to secondary region yet.
-...
-[67] Container found, but blob has not replicated to secondary region yet.
-[68] Blob has replicated to secondary region.
-Ready for blob download. Enter (D) to download or (Q) to quit, followed by ENTER.
-> D
-Attempting to download blob...
-Blob downloaded from primary endpoint.
-> Q
-Exiting...
-Deleted container newcontainer1550799840726
-```
-
 ---
 
 ## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
@@ -301,7 +282,7 @@ Deleted container newcontainer1550799840726
 ### <a name="retry-event-handler"></a>Ereignishandler für erneuten Downloadversuch
 
 Der Ereignishandler `OperationContextRetrying` wird aufgerufen und für einen Neuversuch festgelegt, wenn es beim Herunterladen des Bilds zu einem Fehler kommt. Wenn die maximale Anzahl von Wiederholungen erreicht ist, die in der Anwendung definiert ist, wird die [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode)-Eigenschaft der Anforderung in `SecondaryOnly` geändert. Durch diese Einstellung versucht die Anwendung, das Bild vom sekundären Endpunkt herunterzuladen. Diese Konfiguration reduziert die Anforderungszeit für das Bild, da die Anzahl der wiederholten Anforderungen an den primären Endpunkt begrenzt ist.
- 
+
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
 {
@@ -335,7 +316,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 {
     if (blobClient.DefaultRequestOptions.LocationMode == LocationMode.SecondaryOnly)
     {
-        // You're reading the secondary. Let it read the secondary [secondaryThreshold] times, 
+        // You're reading the secondary. Let it read the secondary [secondaryThreshold] times,
         //    then switch back to the primary and see if it's available now.
         secondaryReadCount++;
         if (secondaryReadCount >= secondaryThreshold)
@@ -347,11 +328,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python) 
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Ereignishandler für erneuten Downloadversuch
 
-Der Ereignishandler `retry_callback` wird aufgerufen und für einen Neuversuch festgelegt, wenn es beim Herunterladen des Bilds zu einem Fehler kommt. Wenn die maximale Anzahl von Wiederholungen erreicht ist, die in der Anwendung definiert ist, wird die [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python)-Eigenschaft der Anforderung in `SECONDARY` geändert. Durch diese Einstellung versucht die Anwendung, das Bild vom sekundären Endpunkt herunterzuladen. Diese Konfiguration reduziert die Anforderungszeit für das Bild, da die Anzahl der wiederholten Anforderungen an den primären Endpunkt begrenzt ist.  
+Der Ereignishandler `retry_callback` wird aufgerufen und für einen Neuversuch festgelegt, wenn es beim Herunterladen des Bilds zu einem Fehler kommt. Wenn die maximale Anzahl von Wiederholungen erreicht ist, die in der Anwendung definiert ist, wird die [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python)-Eigenschaft der Anforderung in `SECONDARY` geändert. Durch diese Einstellung versucht die Anwendung, das Bild vom sekundären Endpunkt herunterzuladen. Diese Konfiguration reduziert die Anforderungszeit für das Bild, da die Anzahl der wiederholten Anforderungen an den primären Endpunkt begrenzt ist.
 
 ```python
 def retry_callback(retry_context):
@@ -389,9 +370,22 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+Bei Verwendung von Java müssen keine Rückrufhandler definiert werden, wenn die Eigenschaft **LocationMode** von **BlobRequestOptions** auf **PRIMARY\_THEN\_SECONDARY** festgelegt ist. Dadurch kann die Anwendung automatisch auf den sekundären Standort ausweichen, wenn sie den primären Standort beim Herunterladen von **HelloWorld.png** nicht erreicht.
+
+```java
+    BlobRequestOptions myReqOptions = new BlobRequestOptions();
+    myReqOptions.setRetryPolicyFactory(new RetryLinearRetry(deltaBackOff, maxAttempts));
+    myReqOptions.setLocationMode(LocationMode.PRIMARY_THEN_SECONDARY);
+    blobClient.setDefaultRequestOptions(myReqOptions);
+
+    blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
+```
+
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Beim Java V10 SDK ist das Definieren von Rückrufhandlern nicht erforderlich. Zudem unterscheidet sich das SDK jetzt in einigen Punkten grundlegend vom V7 SDK. Anstelle von „LocationMode“ wird jetzt eine sekundäre **Pipeline** verwendet. Eine sekundäre Pipeline kann über die **RequestRetryOptions** definiert werden. Ist sie definiert, kann die Anwendung automatisch zur sekundären Pipeline wechseln, wenn sie Ihre Daten nicht über die primäre Pipeline erreichen kann.
+Beim Java V10 SDK ist das Definieren von Rückrufhandlern nach wie vor nicht erforderlich. Zudem unterscheidet sich das SDK jetzt in einigen Punkten grundlegend vom V7 SDK. Anstelle von „LocationMode“ wird jetzt eine sekundäre **Pipeline** verwendet. Eine sekundäre Pipeline kann über die **RequestRetryOptions** definiert werden. Ist sie definiert, kann die Anwendung automatisch zur sekundären Pipeline wechseln, wenn sie Ihre Daten nicht über die primäre Pipeline erreichen kann.
 
 ```java
 // We create pipeline options here so that they can be easily used between different pipelines
@@ -399,29 +393,6 @@ PipelineOptions myOptions = new PipelineOptions();
 myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
 // We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
 final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
-```
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-Mit dem Node.js V10 SDK sind Rückrufhandler nicht erforderlich. Stattdessen erstellt das Beispiel eine Pipeline, die mit Optionen für Wiederholungsversuche und einem sekundären Endpunkt konfiguriert wird. Dies ermöglicht der Anwendung, automatisch zur sekundären Pipeline zu wechseln, wenn sie Ihre Daten nicht über die primäre Pipeline erreichen kann. 
-
-```javascript
-const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-const storageAccessKey = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
-const sharedKeyCredential = new SharedKeyCredential(accountName, storageAccessKey);
-
-const primaryAccountURL = `https://${accountName}.blob.core.windows.net`;
-const secondaryAccountURL = `https://${accountName}-secondary.blob.core.windows.net`;
-
-const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
-  retryOptions: {
-    maxTries: 3, 
-    tryTimeoutInMs: 10000,
-    retryDelayInMs: 500, 
-    maxRetryDelayInMs: 1000,
-    secondaryHost: secondaryAccountURL
-  }
-});
 ```
 
 ---

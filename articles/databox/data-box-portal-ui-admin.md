@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158107"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903645"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Verwalten von Data Box Disk über das Azure-Portal
 
@@ -25,7 +25,7 @@ Die Data Box Disk-Instanz kann über das Azure-Portal verwaltet werden. Der Schw
 
 Das Abbrechen eines erteilten Auftrags kann aus verschiedenen Gründen erforderlich sein. Der Auftrag kann nur bis zum Beginn der Datenträgervorbereitung abgebrochen werden. Wenn die Datenträger vorbereitet wurden und der Auftrag verarbeitet wurde, kann er nicht mehr abgebrochen werden. 
 
-Führen Sie die folgenden Schritte aus, um einen Auftrag abzubrechen.
+Führen Sie die folgenden Schritte aus, um einen Auftrag zu stornieren.
 
 1.  Navigieren Sie zu **Übersicht > Abbrechen**. 
 
@@ -55,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um einen Auftrag zu klonen.
 
 Der Klon wird in wenigen Minuten erstellt und im Portal angezeigt.
 
-[![Klonen eines Auftrags (3)](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![CKlonen eines Auftrags 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>Löschen eines Auftrags
 

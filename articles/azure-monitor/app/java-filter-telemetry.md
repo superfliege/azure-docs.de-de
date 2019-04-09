@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee50a0e9c7fca8f01f12b3508c86d901b5315120
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116808"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418821"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtern von Telemetriedaten in einer Java-Web-App
 
@@ -253,6 +253,20 @@ In „ApplicationInsights.xml“:
     </ApplicationInsights>
 
 ```
+
+### <a name="3-invoke-your-filter-java-spring"></a>3. Aufrufen des Filters (Java Spring)
+
+Für Anwendungen, die auf dem Spring Framework basieren, müssen benutzerdefinierte Telemetrieprozessoren in Ihrer Hauptanwendungsklasse als Bean registriert sein. Sie verwenden dann beim Start der Anwendung automatisch das Autowiring.
+
+```Java
+@Bean
+public TelemetryProcessor successFilter() {
+      return new SuccessFilter();
+}
+```
+
+Sie müssen Ihre eigenen Filterparameter in `application.properties` erstellen und das ausgelagerte Konfigurationsframework von Spring Boot nutzen, um diese Parameter an Ihren benutzerdefinierten Filter zu übergeben. 
+
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

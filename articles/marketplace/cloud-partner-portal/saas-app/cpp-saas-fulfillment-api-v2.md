@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7e1fa82e71738ac113bfe748a7117d0c3a10b14b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319025"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352084"
 ---
-# <a name="saas-fulfillment-api-version-2"></a>SaaS Fulfillment API Version 2
+# <a name="saas-fulfillment-api"></a>SaaS-Fulfillment-API
 
 In diesem Artikel wird ausführlich die API behandelt, mit der unabhängige Softwarehersteller (ISVs) ihre SaaS-Anwendungen in Azure Marketplace integrieren können. Mit dieser API können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Diese API ist eine Voraussetzung für die Auflistung transaktionsfähiger SaaS-Angebote im Azure Marketplace.
 
@@ -348,7 +348,7 @@ Interner Serverfehler
 |  ---------------   |  ---------------  |
 |  Content-Typ      | `application/json`  |
 |  x-ms-requestid    | Eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  x-ms-correlationid  | Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
+|  x-ms-correlationid  | Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser korreliert alle Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  authorization     |  JWT-Bearertoken (JSON Web Token) |
 
 *Anforderung:*
@@ -404,8 +404,8 @@ Aktualisieren oder ändern Sie einen Abonnementplan mit den bereitgestellten Wer
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Typ      | `application/json` |
-|  x-ms-requestid    |   Eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  x-ms-correlationid  |  Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.    |
+|  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
+|  x-ms-correlationid  |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.    |
 | authorization      |  JWT-Bearertoken (JSON Web Token)  |
 
 *Anforderungsnutzlast:*
@@ -472,7 +472,7 @@ Kündigen und löschen Sie das angegebene Abonnement.
 |  ---------------   |  ---------------  |
 |   Content-Typ     |  `application/json` |
 |  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
-|  x-ms-correlationid  |  Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
+|  x-ms-correlationid  |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
 |  authorization     |  JWT-Bearertoken (JSON Web Token)   |
 
 *Antwortcodes:*
@@ -526,8 +526,8 @@ Aktualisieren eines Abonnements mit den bereitgestellten Werten.
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Typ     | `application/json`   |
-|   x-ms-requestid   |   Eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-|  x-ms-correlationid |  Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
+|   x-ms-requestid   |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
+|  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 |  authorization     |  JWT-Bearertoken (JSON Web Token)  |
 
 *Anforderungsnutzlast:*
@@ -586,8 +586,8 @@ Listet die ausstehenden Vorgänge für den aktuellen Benutzer auf.
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Typ     |  `application/json` |
-|  x-ms-requestid    |  Eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  x-ms-correlationid |  Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
+|  x-ms-requestid    |  Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
+|  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  authorization     |  JWT-Bearertoken (JSON Web Token)  |
 
 *Antwortcodes:*
@@ -649,8 +649,8 @@ Ermöglicht dem Benutzer das Nachverfolgen des Status eines ausgelösten asynchr
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Typ      |  ` application/json`   |
-|  x-ms-requestid    |   Eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  x-ms-correlationid |  Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
+|  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
+|  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  authorization     | JWT-Bearertoken (JSON Web Token)  |
 
 *Antwortcodes:* Code: 200<br> Ruft die Liste aller ausstehenden SaaS-Vorgänge ab.<br>

@@ -1,7 +1,7 @@
 ---
 title: Veröffentlichungsregionen und Endpunkte
 titleSuffix: Azure Cognitive Services
-description: Die Region, in der Sie Ihre LUIS-App veröffentlichen, entspricht der gewählten Region oder dem Standort, die bzw. den Sie im Azure-Portal angeben, wenn Sie einen Azure-LUIS-Endpunktschlüssel erstellen. Wenn Sie eine App veröffentlichen, generiert LUIS automatisch eine Endpunkt-URL für die Region, die dem Schlüssel zugeordnet ist.
+description: Drei Erstellungsregionen und ihre Portale unterstützen die zahlreichen Veröffentlichungsregionen. Die Region, in der Sie Ihre LUIS-App veröffentlichen, entspricht der gewählten Region oder dem Standort, die bzw. den Sie im Azure-Portal angeben, wenn Sie einen Azure-LUIS-Endpunktschlüssel erstellen. Wenn Sie eine App veröffentlichen, generiert LUIS automatisch eine Endpunkt-URL für die Region, die dem Schlüssel zugeordnet ist.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01444cec798763bc4e44bcabe0d7ebb640e537a8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765169"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436335"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Erstellungs- und Veröffentlichungsregionen und die dazugehörigen Schlüssel
 
-Die Region, in der Sie Ihre LUIS-App veröffentlichen, entspricht der gewählten Region oder dem Standort, die bzw. den Sie im Azure-Portal angeben, wenn Sie einen Azure-LUIS-Endpunktschlüssel erstellen. Wenn Sie [eine App veröffentlichen](./luis-how-to-publish-app.md), generiert LUIS automatisch eine Endpunkt-URL für die Region, die dem Schlüssel zugeordnet ist. Zum Veröffentlichen einer LUIS-App in mehreren Regionen benötigen Sie mindestens einen Schlüssel pro Region. 
+Drei Erstellungsregionen und ihre Portale unterstützen die zahlreichen Veröffentlichungsregionen. Die Region, in der Sie Ihre LUIS-App veröffentlichen, entspricht der gewählten Region oder dem Standort, die bzw. den Sie im Azure-Portal angeben, wenn Sie einen Azure-LUIS-Endpunktschlüssel erstellen. Wenn Sie [eine App veröffentlichen](./luis-how-to-publish-app.md), generiert LUIS automatisch eine Endpunkt-URL für die Region, die dem Schlüssel zugeordnet ist. Zum Veröffentlichen einer LUIS-App in mehreren Regionen benötigen Sie mindestens einen Schlüssel pro Region. 
 
-## <a name="luis-website"></a>LUIS-Website
+<a name="luis-website"></a>
+
+## <a name="luis-authoring-regions"></a>LUIS-Erstellungsregionen
 Es gibt basierend auf der Region drei LUIS-Websites. Sie müssen die Erstellung und Veröffentlichung in derselben Region durchführen. 
 
-|LUIS|Region|
-|--|--|
-|[www.luis.ai][www.luis.ai]|Daten<br>nicht Europa<br>nicht Australien|
-|[au.luis.ai][au.luis.ai]|Australien|
-|[eu.luis.ai][eu.luis.ai]|Europa|
+|LUIS|Globale Region|Erstellungsregion in Azure|
+|--|--|--|
+|[www.luis.ai][www.luis.ai]|Daten<br>nicht Europa<br>nicht Australien| `westus`|
+|[au.luis.ai][au.luis.ai]|Australien| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai]|Europa|`westeurope`|
+
+Sie können die Erstellungsregion für die Interaktion mit dem bereitgestellten LUIS-Dienst in einer anderen Azure-Veröffentlichungsregion verwenden.  
+
+Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 ## <a name="regions-and-azure-resources"></a>Regionen und Azure-Ressourcen
 Die App wird in allen Regionen veröffentlicht, die den im LUIS-Portal hinzugefügten LUIS-Ressourcen zugeordnet sind. Wenn Sie beispielsweise für eine auf [www.luis.ai][www.luis.ai] erstellte App eine LUIS-Ressource in **westus** erstellen und sie der App als Ressource hinzufügen, wird die App in dieser Region veröffentlicht. 

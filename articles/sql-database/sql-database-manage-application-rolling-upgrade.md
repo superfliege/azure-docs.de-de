@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: ad971ae3157dd17ecd4af662626c986584a27fe2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 47fd6c1e2bb342bc1a31fb16a45a5ebc749dca69
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329165"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621446"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 
@@ -103,7 +103,21 @@ Sie müssen eine Stagingumgebung mit einer vollständig synchronisierten Kopie d
 Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Stagingumgebung bereit für das Upgrade. Das folgende Diagramm veranschaulicht diese Upgradeschritte:
 
 1. Legen Sie für die primäre Datenbank in der Produktionsumgebung den schreibgeschützten Modus fest (10). Dieser Modus stellt sicher, dass die Produktionsdatenbank (V1) während des Upgrades unverändert bleibt, sodass Datenabweichungen zwischen V1- und V2-Datenbankinstanzen vermieden werden.
-2. Trennen Sie die sekundäre Datenbank in derselben Region mithilfe des Modus für die geplante Beendigung (11). Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet.
+
+```sql
+-- Set the production database to read-only mode
+ALTER DATABASE <Prod_DB>
+SET (ALLOW_CONNECTIONS = NO)
+```
+
+2. Trennen die sekundäre Datenbank (11), um die Georeplikation zu beenden. Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet. Im folgenden Beispiel wird Transact-SQL verwendet, [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) ist jedoch auch verfügbar. 
+
+```sql
+-- Disconnect the secondary, terminating geo-replication
+ALTER DATABASE <Prod_DB>
+REMOVE SECONDARY ON SERVER <Partner-Server>
+```
+
 3. Führen Sie das Upgradeskript für `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net` und die primäre Stagingdatenbank aus (12). Die Änderungen in der Datenbank werden automatisch in die sekundäre Stagingdatenbank repliziert.
 
 ![Die SQL-Datenbank-Georeplikationskonfiguration für die cloudbasierte Notfallwiederherstellung.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)

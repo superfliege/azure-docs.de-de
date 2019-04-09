@@ -7,21 +7,21 @@ documentationcenter: na
 author: jimdial
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200581"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
-Das Peering virtueller Netzwerke ermöglicht das nahtlose Verbinden zweier [virtueller Azure-Netzwerke](virtual-networks-overview.md). Nach dem Peering werden die virtuellen Netzwerke für Verbindungszwecke als einzelnes Element angezeigt. Der Datenverkehr zwischen virtuellen Computern in den virtuellen Netzwerken, die mittels Peering verknüpft sind, wird ähnlich wie der Datenverkehr zwischen virtuellen Computern im gleichen Netzwerk nur über *private* IP-Adressen über die Microsoft-Backbone-Infrastruktur geleitet. Azure unterstützt:
+Das Peering virtueller Netzwerke ermöglicht das nahtlose Verbinden von [virtuellen Azure-Netzwerken](virtual-networks-overview.md). Nach dem Peering werden die virtuellen Netzwerke für Verbindungszwecke als einzelnes Element angezeigt. Der Datenverkehr zwischen virtuellen Computern in den virtuellen Netzwerken, die mittels Peering verknüpft sind, wird ähnlich wie der Datenverkehr zwischen virtuellen Computern im gleichen Netzwerk nur über *private* IP-Adressen über die Microsoft-Backbone-Infrastruktur geleitet. Azure unterstützt:
 * VNET-Peering: Verbinden von VNETS in derselben Azure-Region
 * Globales VNET-Peering: Verbinden von VNETS in verschiedenen Azure-Regionen
 
@@ -59,11 +59,12 @@ Jedes virtuelle Netzwerk kann unabhängig davon, ob eine mittels Peering hergest
 
 Wenn beide Optionen für Verbindungen zwischen virtuellen Netzwerken konfiguriert sind, fließt der Datenverkehr zwischen den virtuellen Netzwerken über die Peeringkonfiguration (also über den Azure-Backbone).
 
-Wenn virtuelle Netzwerke mittels Peering in derselben Region verknüpft sind, können Sie auch das Gateway im mittels Peering verknüpften virtuellen Netzwerk als Transitpunkt für ein lokales Netzwerk konfigurieren. In diesem Fall kann das virtuelle Netzwerk, das ein Remotegateway verwendet, kein eigenes Gateway besitzen. Ein virtuelles Netzwerk kann immer nur ein einzelnes Gateway aufweisen. Bei diesem Gateway kann es sich um ein lokales Gateway oder ein Remotegateway (im mittels Peering verknüpften virtuellen Netzwerk) handeln, wie im folgenden Bild zu sehen ist:
+Wenn virtuelle Netzwerke mittels Peering verknüpft sind, können Sie auch das Gateway im mittels Peering verknüpften virtuellen Netzwerk als Transitpunkt für ein lokales Netzwerk konfigurieren. In diesem Fall kann das virtuelle Netzwerk, das ein Remotegateway verwendet, kein eigenes Gateway besitzen. Ein virtuelles Netzwerk kann immer nur ein einzelnes Gateway aufweisen. Bei diesem Gateway kann es sich um ein lokales Gateway oder ein Remotegateway (im mittels Peering verknüpften virtuellen Netzwerk) handeln, wie im folgenden Bild zu sehen ist:
 
 ![VNET-Peering – Transit](./media/virtual-networks-peering-overview/figure04.png)
 
-Gatewaytransit wird in der Peeringbeziehung zwischen virtuellen Netzwerken, die in unterschiedlichen Regionen erstellt wurden, nicht unterstützt. Damit der Gatewaytransit funktioniert, müssen beide virtuellen Netzwerke der Peeringbeziehung in derselben Region vorhanden sein. Der Gatewaytransit zwischen virtuellen Netzwerken, die mittels verschiedener Bereitstellungsmodelle (Resource Manager und klassisch) erstellt wurden, wird nur unterstützt, wenn sich das Gateway (VPN oder ExpressRoute) im virtuellen Netzwerk befindet (Resource Manager). Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Gatewaytransit wird für sowohl für VNet-Peering als auch für globales VNet-Peering (Vorschau) unterstützt. In der Vorschauversion können Sie Remotegateways verwenden oder Gatewaytransit in virtuellen Netzwerken mit globalem Peering zulassen. Die Vorschauversion ist in allen Azure-Regionen, China-Cloud-Regionen und Government-Cloud-Regionen verfügbar. Es sind keine Whitelists erforderlich. Sie können in der Vorschau über CLI, PowerShell, Vorlagen oder API testen. Das Portal wird in der Vorschau nicht unterstützt.
+Der Gatewaytransit zwischen virtuellen Netzwerken, die mittels verschiedener Bereitstellungsmodelle (Ressourcen-Manager und klassisch) erstellt wurden, wird nur unterstützt, wenn sich das Gateway im virtuellen Netzwerk befindet (Ressourcen-Manager). Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Wenn die virtuellen Netzwerke, die gemeinsam eine einzelne ExpressRoute-Verbindung nutzen, mittels Peering verknüpft sind, fließt der Datenverkehr zwischen ihnen über die Peeringbeziehung (also über das Azure-Backbonenetzwerk). Sie können in den einzelnen virtuellen Netzwerken weiterhin lokale Gateways verwenden, um eine Verbindung mit der lokalen Umgebung herzustellen. Alternativ können Sie ein gemeinsam genutztes Gateway verwenden und den Transit für lokale Konnektivität konfigurieren.
 
@@ -78,8 +79,8 @@ Sie können auch die [Anleitung zum Beheben von Problemen beim Peering in virtue
 ## <a name="requirements-and-constraints"></a>Anforderungen und Einschränkungen
 
 Die folgenden Einschränkungen gelten nur, wenn virtuelle Netzwerke über globales Peering verbunden werden:
-- Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines internen Azure-Lastenausgleichs in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Der Lastenausgleich und die Ressourcen, die mit diesem kommunizieren, müssen sich in derselben Region befinden.
-- Sie können keine Remotegateways verwenden oder einen Gatewaytransit zulassen. Dies ist nur möglich, wenn sich per Peering verbundene virtuelle Netzwerke in derselben Region befinden.
+- Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines Load Balancers Standard in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Unterstützung für Load Balancer Standard besteht nur innerhalb der gleichen Region. Unterstützung für Load Balancer Standard besteht für globales VNet-Peering.
+- In der Vorschauversion können Sie Remotegateways verwenden oder Gatewaytransit in virtuellen Netzwerken mit globalem Peering zulassen. Die Vorschauversion ist in allen Azure-Regionen, China-Cloud-Regionen und Government-Cloud-Regionen verfügbar. Es sind keine Whitelists erforderlich. Sie können in der Vorschau über CLI, PowerShell, Vorlagen oder API testen. Das Portal wird in der Vorschau nicht unterstützt.
 
 Informationen zu Anforderungen und Einschränkungen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints). Informationen zu den Grenzwerten für die Anzahl von Peerings, die für ein virtuelles Netzwerk erstellt werden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a0f22e7940a2be442bdf836c0e76e29bad2e9b36
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769922"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487463"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Verwenden von Kafka MirrorMaker mit Event Hubs für Apache Kafka
 
@@ -119,6 +119,12 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 Sie können überprüfen, ob die Ereignisse den Kafka-fähigen Event Hub erreichen, indem Sie im [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) die Eingangsstatistiken anzeigen oder einen Consumer für den Event Hub ausführen.
 
 Bei Ausführung von MirrorMaker werden alle Ereignisse, die an den Kafka-Quellcluster gesendet werden, sowohl vom Kafka-Cluster als auch vom gespiegelten Kafka-fähigen Event Hub-Dienst empfangen. Indem MirrorMaker und ein Event Hubs-Kafka-Endpunkt verwendet werden, können Sie eine vorhandene Kafka-Pipeline zum verwalteten Azure Event Hubs-Dienst migrieren, ohne den vorhandenen Cluster zu ändern oder einen ausgehenden Datenfluss zu unterbrechen.
+
+## <a name="samples"></a>Beispiele
+Im Folgenden sind auf GitHub verfügbare Beispiele aufgeführt:
+
+- [Beispielcode für dieses Tutorial auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Azure Event Hubs Kafka MirrorMaker unter Azure Container Instances](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

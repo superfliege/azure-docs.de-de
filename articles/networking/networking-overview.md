@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537544"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445637"
 ---
 # <a name="azure-networking"></a>Azure-Netzwerke
 
@@ -34,7 +34,7 @@ Azure bietet eine Vielzahl von Netzwerkfunktionen, die einzeln oder zusammen ver
 - [Verwaltbarkeit:](#manageability) Überwachen und verwalten Sie Ihre Azure-Netzwerkressourcen.
 - [Bereitstellungs- und Konfigurationstools](#tools): Verwenden Sie ein webbasiertes Portal oder plattformübergreifende Befehlszeilentools zum Bereitstellen und Konfigurieren von Netzwerkressourcen.
 
-## <a name="Connectivity"></a>Konnektivität zwischen Azure-Ressourcen
+## <a name="connectivity"></a>Konnektivität zwischen Azure-Ressourcen
 
 Azure-Ressourcen wie Virtual Machines, Cloud Services, VM-Skalierungsgruppen und Azure App Service-Umgebungen können privat über ein Azure Virtual Network (VNET) miteinander kommunizieren. Bei einem VNET handelt es sich um eine logische Isolation der Azure-Cloud für Ihr [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Sie können in jedem Azure-Abonnement und in jeder Azure-[Region](https://azure.microsoft.com/regions) mehrere VNETs implementieren. Jedes VNet ist von anderen VNets isoliert. Für jedes VNet ist Folgendes möglich:
 
@@ -136,7 +136,7 @@ Azure erstellt Standardroutentabellen, über die Ressourcen, die mit einem belie
 
 Azure bietet die folgenden Tools zum Überwachen und Verwalten von Netzwerken:
 - **Aktivitätsprotokolle**: Alle Azure-Ressourcen verfügen über Aktivitätsprotokolle, die Aufschluss über durchgeführte Vorgänge, den Status von Vorgängen sowie den Initiator des Vorgangs geben. Weitere Informationen zu Aktivitätsprotokollen finden Sie im Artikel mit der [Übersicht über Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Diagnoseprotokolle:** Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Azure-Speicherkonten protokolliert und dann an einen Azure Event Hub oder an Azure Log Analytics gesendet. Diagnoseprotokolle geben Einblick in die Integrität einer Ressource. Diagnoseprotokolle werden für Load Balancer (mit Internetzugriff), Netzwerksicherheitsgruppen, Routen und Application Gateway bereitgestellt. Weitere Informationen zu Diagnoseprotokollen finden Sie im Artikel mit der [Übersicht über Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+- **Diagnoseprotokolle:** Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Azure-Speicherkonten protokolliert und dann an einen Azure Event Hub oder an Azure Monitor-Protokolle gesendet. Diagnoseprotokolle geben Einblick in die Integrität einer Ressource. Diagnoseprotokolle werden für Load Balancer (mit Internetzugriff), Netzwerksicherheitsgruppen, Routen und Application Gateway bereitgestellt. Weitere Informationen zu Diagnoseprotokollen finden Sie im Artikel mit der [Übersicht über Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Metriken**: Metriken sind Leistungsmessungen und -indikatoren, die über einen Zeitraum für Ressourcen gesammelt werden. Metriken können verwendet werden, um basierend auf Schwellenwerten Warnungen auszulösen. Zurzeit sind Metriken für Application Gateway verfügbar. Weitere Informationen zu Metriken finden Sie im Artikel mit der [Übersicht über Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Problembehandlung:** Informationen zur Problembehandlung sind direkt über das Azure-Portal zugänglich. Diese Informationen unterstützen Sie bei der Diagnose gängiger Probleme mit ExpressRoute, VPN Gateway, Application Gateway, Netzwerksicherheitsprotokolle, Routen, DNS, Load Balancer und Traffic Manager.
 - **Rollenbasierte Zugriffssteuerung (RBAC)**: Steuern Sie mit der rollenbasierten Zugriffssteuerung (RBAC), wer Netzwerkressourcen erstellen und verwalten kann. Weitere Informationen zu RBAC finden Sie im Artikel [Erste Schritte mit RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json). 
@@ -149,8 +149,8 @@ Azure bietet die folgenden Tools zum Überwachen und Verwalten von Netzwerken:
 
 Sie können Azure-Netzwerkressourcen mit einem der folgenden Tools bereitstellen und konfigurieren:
 
-- **Azure-Portal:** Hierbei handelt es sich um eine grafische Benutzeroberfläche, die in einem Browser ausgeführt wird. Öffnen Sie das [Azure-Portal](http://portal.azure.com).
-- **Azure PowerShell:** Befehlszeilentools zum Verwalten von Azure über Windows-Computer. Weitere Informationen zu Azure PowerShell finden Sie im Artikel mit der [Übersicht über Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json).
+- **Azure-Portal:** Hierbei handelt es sich um eine grafische Benutzeroberfläche, die in einem Browser ausgeführt wird. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+- **Azure PowerShell:** Befehlszeilentools zum Verwalten von Azure über Windows-Computer. Weitere Informationen zu Azure PowerShell finden Sie im Artikel mit der [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Azure-Befehlszeilenschnittstelle (CLI)**: Befehlszeilentools zum Verwalten von Azure über Linux-, macOS- oder Windows-Computer. Weitere Informationen zur Azure CLI finden Sie im Artikel mit der [Übersicht über die Azure CLI](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Azure Resource Manager-Vorlagen**: Hierbei handelt es sich um Dateien (im JSON-Format), mit der Infrastruktur und Konfiguration der Azure-Lösung definiert werden. Mit einer Vorlage können Sie die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Weitere Informationen zum Erstellen von Vorlagen finden Sie im Artikel [Bewährte Methoden für das Erstellen von Vorlagen](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json). Vorlagen können über das Azure-Portal, die CLI oder PowerShell bereitgestellt werden. Um sofort mit Vorlagen loszulegen, stellen Sie eine der zahlreichen vorkonfigurierten Vorlagen in der Bibliothek mit [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=network) bereit. 
 

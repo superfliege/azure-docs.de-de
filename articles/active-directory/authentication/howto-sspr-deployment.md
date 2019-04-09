@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338032b19d22432c34891de68c6a5ba71de60555
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170685"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370677"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -49,7 +49,7 @@ Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisung
 * **SSPR-Tischkarten:** Tischkarten, die Sie in der Kantine, in Konferenzräumen oder auf Schreibtischen aufstellen können, um Ihre Benutzer zu animieren, die Registrierung abzuschließen.
 * **SSPR-Aufkleber:** Aufklebervorlagen, die Sie anpassen, drucken und auf Laptops, Monitore, Tastaturen oder Mobiltelefone kleben können, um den Zugriff auf SSPR zu beschreiben.
 
-![SSPR-E-Mail-Beispiele][Email]
+![SSPR-E-Mail-Beispiele für die Bereitstellung für Benutzer][Email]
 
 ## <a name="create-your-own-password-portal"></a>Erstellen eines eigenen Kennwortportals
 

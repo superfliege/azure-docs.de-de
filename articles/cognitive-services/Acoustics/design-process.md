@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136155"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316067"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Entwurfskonzepte in Projekt Akustik
 
@@ -29,7 +29,7 @@ Wie passen sich diese Parameter bei einem interaktiven Titel an veränderte Bedi
 
 3D-Titel verwenden Beleuchtungs- und kinematische physikalische Systeme, die physikalisch motiviert, aber vom Designer angepasst sind, um eine Mischung aus Immersions- und Gameplayzielen zu erreichen. Ein visueller Designer legt keine individuellen Pixelwerte fest, sondern passt 3D-Modelle, Materialien und Lichttransportsysteme an, die alle physikalisch basiert sind, um visuelle Ästhetik und CPU-Kosten abzugleichen. Was wäre der entsprechende Prozess für Audio? Projekt Akustik ist der erste Schritt bei der Untersuchung dieser Frage. Zuerst werden wir darauf eingehen, was es bedeutet, akustische Energie durch einen Raum zu transportieren.
 
-![Hallzonen](media/reverb-zones-altspace.png)
+![Screenshot der mit Hallzonen überlagerten AltSpace-Szene](media/reverb-zones-altspace.png)
 
 ## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsantworten: Akustisches Verbinden von zwei Punkten im Raum
 
@@ -45,7 +45,7 @@ Eine Impulsantwort enthält jeden interessanten (und alle uninteressanten) akust
 
 Aber wenn die Simulation direkt mit den DSP-Audioparametern verbunden ist, wo ist dann die Designeranpassung? Was haben wir gewonnen? Nun, wir gewinnen eine beträchtliche Menge an Speicher zurück, indem wir Impulsantworten verwerfen und einige DSP-Parameter beibehalten. Und damit der Designer einen gewissen Einfluss auf das Endergebnis hat, müssen wir nur einen Weg finden, den Designer zwischen der Simulation und dem Audio-DSP einzubinden.
 
-![Impulsantwortparameter](media/acoustic-parameters.png)
+![Diagramm mit stilisierter Impulsantwort mit überlagerten Parametern](media/acoustic-parameters.png)
 
 ## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Soundentwurf durch Transformieren von DSP-Audioparametern aus der Simulation
 

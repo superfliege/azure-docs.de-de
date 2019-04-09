@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: d9bce32e87984193938099b96a358cc4495fd0c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 522b9743af28dedb2aec5682a1ae95b9d52ad2d9
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119730"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446458"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 
@@ -27,9 +27,9 @@ Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegra
 Azure Data Factory bietet die folgenden Vorteile beim Laden von Daten in Data Lake Storage Gen1:
 
 * **Mühelose Einrichtung**: Intuitiver Assistent mit 5 Schritten. Keine Skripterstellung erforderlich.
-* **Unterstützung für umfangreiche Datenspeicher**:  Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher. Eine ausführliche Liste finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher. Eine ausführliche Liste finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 * **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen. Globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
-* **Hohe Leistung**:  Bis zu 1 GB/s Datenladegeschwindigkeit in Data Lake Storage Gen1. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
+* **Hohe Leistung**: Bis zu 1GB/s Datenladegeschwindigkeit in Data Lake Storage Gen1. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
 
 In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data Factory zum _Laden von Daten aus Amazon S3 in Data Lake Storage Gen1_ verwenden. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen.
 
@@ -46,7 +46,8 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 1. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen** > **Analytics** > **Data Factory**:
    
-   ![Erstellen einer neuen Data Factory](./media/load-data-into-azure-data-lake-store/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Geben Sie auf der Seite **Neue Data Factory** die in der folgenden Abbildung gezeigten Werte für die Felder an: 
       
    ![Seite „Neue Data Factory“](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)

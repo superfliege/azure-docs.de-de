@@ -84,7 +84,7 @@ Sie können für einen Lastenausgleich bei Managementaktivitäten zu Ihrer Imple
 | :--                          | ---                                |  ---   |
 | Globaler Administrator         | Vollzugriff auf Identity Protection, Integrieren von Identity Protection| |
 | Sicherheitsadministrator       | Vollzugriff auf Identity Protection | Integrieren von Identity Protection, Zurücksetzen von Kennwörtern für einen Benutzer |
-| Benutzer mit Leseberechtigung für Sicherheitsfunktionen              | Schreibgeschützter Zugriff auf Identity Protection | Integrieren von Identity Protection, Bereinigen von Benutzern, Konfigurieren von Richtlinien, Zurücksetzen von Kennwörtern |
+| Sicherheitsleseberechtigter              | Schreibgeschützter Zugriff auf Identity Protection | Integrieren von Identity Protection, Bereinigen von Benutzern, Konfigurieren von Richtlinien, Zurücksetzen von Kennwörtern |
 
 
 

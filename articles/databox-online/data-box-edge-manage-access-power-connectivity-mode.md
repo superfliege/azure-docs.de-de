@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e0aa3468bda9f904d62e9e20545ac5f990cef521
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57905313"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417801"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Edge (Vorschau)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Edge
 
 In diesem Artikel wird beschrieben, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für Azure Data Box Edge verwalten. Diese Vorgänge werden über die lokale Webbenutzeroberfläche oder das Azure-Portal ausgeführt.
 
@@ -26,16 +26,14 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Verwalten des Konnektivitätsmodus
 > * Verwalten der Energieeinstellungen
 
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 ## <a name="manage-device-access"></a>Verwalten des Gerätezugriffs
 
-Der Zugriff auf Ihr Data Box Edge-Gerät wird mithilfe eines Geräteadministratorkennworts gesteuert. Sie können das Administratorkennwort über die lokale Webbenutzeroberfläche ändern. Das Geräteadministratorkennwort kann auch über das Azure-Portal zurückgesetzt werden.
+Der Zugriff auf Ihr Data Box Edge-Gerät wird mithilfe eines Gerätekennworts gesteuert. Sie können das Kennwort über die lokale Webbenutzeroberfläche ändern. Das Gerätekennwort kann auch über das Azure-Portal zurückgesetzt werden.
 
-### <a name="change-device-administrator-password"></a>Ändern des Geräteadministratorkennworts
+### <a name="change-device-password"></a>Ändern des Gerätekennworts
 
-Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, um das Geräteadministratorkennwort zu ändern:
+Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, um das Gerätekennwort zu ändern.
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Password change** (Kennwortänderung).
 2. Geben Sie das aktuelle Kennwort und dann das neue Kennwort ein. Das angegebene Kennwort muss zwischen 8 und 16 Zeichen umfassen. Das Kennwort muss drei der folgenden Zeichen enthalten: Großbuchstaben, Kleinbuchstaben, Ziffern und Sonderzeichen. Bestätigen Sie das neue Kennwort.
@@ -44,7 +42,7 @@ Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, u
 
 3. Wählen Sie **Kennwort ändern** aus.
  
-### <a name="reset-device-administrator-password"></a>Zurücksetzen des Geräteadministratorkennworts
+### <a name="reset-device-password"></a>Zurücksetzen des Gerätekennworts
 
 Beim Workflow zum Zurücksetzen muss der Benutzer das alte Kennwort nicht kennen. Dies ist nützlich, wenn das Kennwort verloren gegangen ist. Dieser Workflow wird im Azure-Portal ausgeführt.
 
@@ -63,7 +61,7 @@ Ihr Gerät kann nicht nur im Standardmodus „Vollständig verbunden“, sondern
 
 - **Vollständig verbunden**: Dies ist der Standardmodus, in dem das Gerät betrieben wird. In diesem Modus ist sowohl der Hochladen von Daten in die Cloud als auch das Herunterladen von Daten aus der Cloud möglich. Sie können das Gerät im Azure-Portal oder auf der lokalen Webbenutzeroberfläche verwalten.
 
-- **Teilweise getrennt**: In diesem Modus kann das Gerät keine Daten in die Freigaben hochladen, kann jedoch über das Azure-Portal verwaltet werden.
+- **Teilweise getrennt**: In diesem Modus kann das Gerät keine freigegebenen Daten hochladen oder herunterladen, jedoch über das Azure-Portal verwaltet werden.
 
     Dieser Modus kommt in der Regel in einem getakteten Satellitennetzwerk zum Einsatz und dient zum Minimieren der Netzwerkbandbreitennutzung. Bei Geräteüberwachungsvorgängen kommt es aber unter Umständen dennoch zu einer geringfügigen Netzwerknutzung.
 

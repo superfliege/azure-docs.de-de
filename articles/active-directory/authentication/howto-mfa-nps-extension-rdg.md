@@ -1,5 +1,5 @@
 ---
-title: Remotedesktopgateway-Integration in Azure MFA mit NPS-Erweiterung | Microsoft-Dokumentation
+title: Remotedesktopgateway-Integration in Azure MFA mit NPS-Erweiterung – Azure Active Directory
 description: Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur unter Verwendung der Netzwerkrichtlinienserver-Erweiterung für Microsoft Azure in Azure MFA.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e540eeecf49f8fb00df4a03de95c5063da360229
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 44cd18be888b18e8b045114b420ddd48ec909e3e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124047"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371042"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -31,7 +31,7 @@ Dieser Artikel enthält schrittweise Anleitungen zum Integrieren der NPS-Infrast
 
 Die Netzwerkrichtlinien- und Zugriffsdienste (Network Policy and Access Services, NPS) bieten Organisationen folgende Möglichkeiten:
 
-* Definieren zentraler Orte für die Verwaltung und Steuerung von Netzwerkanforderungen, um Folgendes anzugeben: wer eine Verbindung herstellen kann, zu welchen Tageszeiten Verbindungen zugelassen sind, die Dauer der Verbindungen und die Sicherheitsstufe, die Clients verwenden müssen, um eine Verbindung herstellen zu können usw. Anstatt diese Richtlinien auf jedem VPN oder Remotedesktopgateway-Server (RD) anzugeben, können diese Richtlinien einmal an einem zentralen Ort angegeben werden. Das RADIUS-Protokoll ermöglicht die zentralisierte Authentifizierung, Autorisierung und Ressourcenerfassung (Authentication, Authorization, Accounting – AAA). 
+* Definieren zentraler Orte für die Verwaltung und Steuerung von Netzwerkanforderungen, um Folgendes anzugeben: wer eine Verbindung herstellen kann, zu welchen Tageszeiten Verbindungen zugelassen sind, die Dauer der Verbindungen und die Sicherheitsstufe, die Clients verwenden müssen, um eine Verbindung herstellen zu können usw. Anstatt diese Richtlinien auf jedem VPN oder Remotedesktopgateway-Server (RD) anzugeben, können diese Richtlinien einmal an einem zentralen Ort angegeben werden. Das RADIUS-Protokoll ermöglicht die zentralisierte Authentifizierung, Autorisierung und Ressourcenerfassung (Authentication, Authorization, Accounting – AAA).
 * Richten Sie Netzwerkzugriffsschutz-Clientintegritätsrichtlinien (Network Access Protection, NAP) ein, die bestimmen, ob Geräten uneingeschränkter oder eingeschränkter Zugriff auf Netzwerkressourcen gewährt wird, und erzwingen Sie deren Durchsetzung.
 * Bieten Sie eine Möglichkeit zum Erzwingen der Authentifizierung und Autorisierung für den Zugriff auf 802.1x-fähige Drahtloszugriffspunkte und Ethernet-Switches.
 
@@ -45,7 +45,7 @@ Die Verfügbarkeit der NPS-Erweiterung für Azure bietet Organisationen jetzt di
 
 ## <a name="authentication-flow"></a>Authentifizierungsablauf
 
-Damit Benutzern der Zugriff auf Netzwerkressourcen über ein Remotedesktopgateway erteilt wird, müssen sie die in einer Remotedesktop-Verbindungsautorisierungsrichtlinie (RD-CAP) und einer Remotedesktop-Ressourcenautorisierungsrichtlinie (RD Resource Authorization Policy, RD-RAP) angegebenen Bedingungen erfüllen. RD-CAPs geben an, wer zum Herstellen einer Verbindung mit RD-Gateways autorisiert ist. RD-RAPs geben die Netzwerkressourcen an, wie z.B. Remotedesktops oder Remote-Apps, mit denen der Benutzer über das RD-Gateway eine Verbindung mit zulässig ist. 
+Damit Benutzern der Zugriff auf Netzwerkressourcen über ein Remotedesktopgateway erteilt wird, müssen sie die in einer Remotedesktop-Verbindungsautorisierungsrichtlinie (RD-CAP) und einer Remotedesktop-Ressourcenautorisierungsrichtlinie (RD Resource Authorization Policy, RD-RAP) angegebenen Bedingungen erfüllen. RD-CAPs geben an, wer zum Herstellen einer Verbindung mit RD-Gateways autorisiert ist. RD-RAPs geben die Netzwerkressourcen an, wie z.B. Remotedesktops oder Remote-Apps, mit denen der Benutzer über das RD-Gateway eine Verbindung mit zulässig ist.
 
 Ein RD-Gateway kann konfiguriert werden, um einen zentralen Richtlinienspeicher für RD-CAPs zu verwenden. RD-RAPs können keine zentrale Richtlinie verwenden, da sie auf dem RD-Gateway verarbeitet werden. Ein Beispiel eines RD-Gateways, das zur Verwendung eines zentralen Richtlinienspeichers für RD-CAPs konfiguriert ist, ist ein RADIUS-Client einer anderen NPS-Serverinstanz, die als zentraler Richtlinienspeicher dient.
 
@@ -72,10 +72,10 @@ In diesem Abschnitt werden die erforderlichen Voraussetzungen zur Integration vo
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Remotedesktopdienste-Infrastruktur (Remote Desktop Services, RDS)
 
-Eine funktionsfähige Remotedesktopdienste-Infrastruktur (RDS) muss vorhanden sein. Ist dies nicht der Fall, können Sie diese Infrastruktur schnell in Azure mithilfe der folgenden Schnellstartvorlage erstellen: [Erstellen der Bereitstellung einer Remotedesktopsitzungs-Sammlung](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
+Eine funktionsfähige Remotedesktopdienste-Infrastruktur (RDS) muss vorhanden sein. Wenn dies nicht der Fall ist, können Sie diese Infrastruktur mithilfe der folgenden Schnellstartvorlage schnell in Azure erstellen: [Erstellen der Bereitstellung einer Remotedesktopsitzungs-Sammlung](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
-Wenn Sie eine lokale RDS-Infrastruktur schnell manuell zu Testzwecken erstellen möchten, führen Sie die Schritte zu deren Bereitstellung aus. 
-**Weitere Informationen:** [Seamlessly deploy RDS with ARM and Azure Marketplace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) (Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace) und [Deploy your Remote Desktop environment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure) (Bereitstellen Ihrer Remotedesktopumgebung). 
+Wenn Sie eine lokale RDS-Infrastruktur schnell manuell zu Testzwecken erstellen möchten, führen Sie die Schritte zu deren Bereitstellung aus.
+**Weitere Informationen:** [Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) und [Bereitstellen Ihrer Remotedesktopumgebung](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 ### <a name="azure-mfa-license"></a>Azure MFA-Lizenz
 
@@ -99,7 +99,7 @@ Um die NPS-Erweiterung zu verwenden, müssen lokale Benutzer mit Azure AD synchr
 
 Um die NPS-Erweiterung zu installieren, müssen Sie die GUID von Azure AD kennen. Nachfolgend sind die Anweisungen für die Suche nach der GUID von Azure AD aufgeführt.
 
-## <a name="configure-multi-factor-authentication"></a>Konfigurieren der Multi-Factor Authentication 
+## <a name="configure-multi-factor-authentication"></a>Konfigurieren der Multi-Factor Authentication
 
 Dieser Abschnitt enthält Anweisungen für die Integration von Azure MFA in Remotedesktopgateway. Als Administrator müssen Sie den Azure MFA-Dienst konfigurieren, bevor Benutzer selbst ihre Multi-Factor-Geräte oder Anwendungen registrieren können.
 
@@ -124,26 +124,21 @@ Im Rahmen der Konfiguration der NPS-Erweiterung müssen Sie Administratoranmelde
 1. Wählen Sie **Eigenschaften** aus.
 1. Klicken Sie auf dem Blatt „Eigenschaften“ neben der Verzeichnis-ID wie unten dargestellt auf das **Kopieren**-Symbol um die ID in die Zwischenablage kopieren.
 
-   ![Eigenschaften](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Abrufen der Verzeichnis-ID aus dem Azure-Portal](./media/howto-mfa-nps-extension-rdg/image1.png)
 
 ### <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 
 Installieren Sie die NPS-Erweiterung auf einem Server, auf dem die Netzwerkrichtlinien- und Zugriffsdienste-Rolle (NPS) installiert ist. Diese fungiert als RADIUS-Server für den Entwurf.
 
->[!Important]
+> [!Important]
 > Installieren Sie auf keinen Fall die NPS-Erweiterung auf Ihrem Remotedesktopgateway-Server.
 >
 
-1. Laden Sie die [NPS-Erweiterung](https://aka.ms/npsmfa) herunter. 
+1. Laden Sie die [NPS-Erweiterung](https://aka.ms/npsmfa) herunter.
 1. Kopieren Sie die ausführbare Setupdatei (NpsExtnForAzureMfaInstaller.exe) auf den NPS-Server.
 1. Doppelklicken Sie auf dem NPS-Server auf **NpsExtnForAzureMfaInstaller.exe**. Klicken Sie nach Aufforderung auf **Ausführen**.
 1. Überprüfen Sie im Dialogfeld der NPS-Erweiterung für das Azure MFA-Setup die Softwarelizenzbedingungen, aktivieren Sie **Ich stimme den Lizenzbedingungen zu**, und klicken Sie auf **Installieren**.
-
-   ![Azure MFA-Setup](./media/howto-mfa-nps-extension-rdg/image2.png)
-
 1. Klicken Sie im Dialogfeld der NPS-Erweiterung für das Azure MFA-Setup auf **Schließen**.
-
-   ![NPS-Erweiterung für Azure MFA](./media/howto-mfa-nps-extension-rdg/image3.png)
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Konfigurieren von Zertifikaten für die Verwendung mit der NPS-Erweiterung mithilfe eines PowerShell-Skripts
 
@@ -165,19 +160,19 @@ Um das Skript zu verwenden, geben Sie die Erweiterung mit Ihren Azure AD-Adminis
 1. Geben Sie an der PowerShell-Eingabeaufforderung `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` ein, und drücken Sie die **EINGABETASTE**.
 1. Geben Sie `.\AzureMfaNpsExtnConfigSetup.ps1` ein, und drücken Sie die **EINGABETASTE**. Das Skript überprüft, ob das Azure Active Directory PowerShell-Modul installiert ist. Wenn es nicht installiert ist, installiert das Skript das Modul für Sie.
 
-   ![Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Ausführen von „AzureMfaNpsExtnConfigSetup.ps1“ in Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. Nachdem das Skript die Installation des PowerShell-Moduls überprüft hat, wird das Dialogfeld des Azure Active Directory PowerShell-Moduls angezeigt. Geben Sie im Dialogfeld Ihre Azure AD-Administratoranmeldeinformationen und das Kennwort ein, und klicken Sie auf **Anmelden**.
 
-   ![Öffnen des PowerShell-Kontos](./media/howto-mfa-nps-extension-rdg/image5.png)
+   ![Authentifizieren bei Azure AD in PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. Wenn Sie aufgefordert werden, fügen Sie die Mandanten-ID ein, die Sie vorher in die Zwischenablage kopiert haben, und drücken Sie die **EINGABETASTE**.
+1. Fügen Sie bei entsprechender Aufforderung die Verzeichnis-ID ein, die Sie zuvor in die Zwischenablage kopiert haben, und drücken Sie die **EINGABETASTE**.
 
-   ![Eingeben der Mandanten-ID](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Eingeben der Verzeichnis-ID in PowerShell](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. Das Skript erstellt ein selbstsigniertes Zertifikat und führt andere Änderungen an der Konfiguration durch. Die Ausgabe sollte dem folgenden Bild ähneln.
 
-   ![Selbstsigniertes Zertifikat](./media/howto-mfa-nps-extension-rdg/image7.png)
+   ![PowerShell-Ausgabe mit selbstsigniertem Zertifikat](./media/howto-mfa-nps-extension-rdg/image7.png)
 
 ## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Konfigurieren von NPS-Komponenten auf dem Remotedesktopgateway
 
@@ -191,18 +186,12 @@ Verbindungsautorisierungsrichtlinien für Remotedesktop (RD-CAPs) geben die Anfo
 
 1. Öffnen Sie auf dem RD-Gatewayserver den **Server-Manager**.
 1. Klicken Sie auf der Menüleiste auf **Tools**, zeigen Sie auf **Remotedesktopdienste**, und klicken Sie dann auf **Remotedesktopgateway-Manager**.
-
-   ![Remotedesktopdienste](./media/howto-mfa-nps-extension-rdg/image8.png)
-
 1. Klicken Sie im RD-Gateway-Manager mit der rechten Maustaste auf **\[Servername\] (Lokal)**, und klicken Sie auf **Eigenschaften**.
-
-   ![Servername](./media/howto-mfa-nps-extension-rdg/image9.png)
-
 1. Wählen Sie im Dialogfeld „Eigenschaften“ die Registerkarte **RD-CAP-Speicher** aus.
 1. Wählen Sie auf der Registerkarte „RD-CAP-Speicher“ die Option **Zentraler NPS-Server**. 
 1. Geben Sie in das Feld **Name oder IP-Adresse für den Server mit NPS eingeben:** die IP-Adresse bzw. den Servernamen des Servers ein, auf dem Sie die NPS-Erweiterung installiert haben.
 
-   ![Name oder IP-Adresse eingeben](./media/howto-mfa-nps-extension-rdg/image10.png)
+   ![Den Namen oder die IP-Adresse Ihres NPS-Servers eingeben](./media/howto-mfa-nps-extension-rdg/image10.png)
   
 1. Klicken Sie auf **Hinzufügen**.
 1. Geben Sie im Dialogfeld **Gemeinsamer geheimer Schlüssel** einen gemeinsamen geheimen Schlüssel ein, und klicken Sie dann auf **OK**. Denken Sie daran, diesen gemeinsamen geheimen Schlüssel zu notieren und die Notiz an einem sicheren Ort aufzubewahren.
@@ -211,7 +200,7 @@ Verbindungsautorisierungsrichtlinien für Remotedesktop (RD-CAPs) geben die Anfo
    >Mit dem gemeinsamen geheimen Schlüssel wird eine Vertrauensstellung zwischen den RADIUS-Servern und -Clients hergestellt. Erstellen Sie ein langes und komplexes Geheimnis.
    >
 
-   ![Gemeinsamer geheimer Schlüssel](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![Erstellen eines gemeinsamen geheimen Schlüssels zum Herstellen einer Vertrauensstellung](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. Klicken Sie auf **OK**, um das Dialogfeld zu schließen.
 
@@ -219,10 +208,10 @@ Verbindungsautorisierungsrichtlinien für Remotedesktop (RD-CAPs) geben die Anfo
 
 Um sicherzustellen, dass genügend Zeit zum Überprüfen der Anmeldeinformationen des Benutzers, Ausführen der zweistufigen Überprüfung, Empfangen von Antworten und Antworten auf RADIUS-Nachrichten zur Verfügung steht, müssen Sie den RADIUS-Timeoutwert anpassen.
 
-1. Öffnen Sie auf dem RD-Gatewayserver den Server-Manager. Klicken Sie im Menü auf **Extras** und dann auf **Netzwerkrichtlinienserver**. 
+1. Öffnen Sie auf dem RD-Gatewayserver den Server-Manager. Klicken Sie im Menü auf **Extras** und dann auf **Netzwerkrichtlinienserver**.
 1. Erweitern Sie in der Konsole **NPS (Lokal)** **RADIUS-Clients und Server**, und wählen Sie **Remote-RADIUS-Server**.
 
-   ![Remote-RADIUS-Server](./media/howto-mfa-nps-extension-rdg/image12.png)
+   ![Fenster der Netzwerkrichtlinienserver-Verwaltungskonsole mit dem Bereich für RADIUS-Remoteservergruppen](./media/howto-mfa-nps-extension-rdg/image12.png)
 
 1. Doppelklicken Sie im Detailbereich auf **TS-GATEWAYSERVERGRUPPE**.
 
@@ -230,15 +219,15 @@ Um sicherzustellen, dass genügend Zeit zum Überprüfen der Anmeldeinformatione
    >Diese RADIUS-Server-Gruppe wurde erstellt, als Sie den zentralen Server für die NPS-Richtlinien konfigurierten. Das RD-Gateway leitet RADIUS-Nachrichten an diesen Server weiter, bzw. an eine Gruppe von Servern, wenn mehrere Server vorhanden sind.
    >
 
-1. Wählen Sie im Dialogfeld **TS-GATEWAYSERVERGRUPPEN-Eigenschaften** die IP-Adresse oder den Namen des NPS-Servers, den Sie zum Speichern von RD-CAPs konfiguriert haben, und klicken Sie dann auf **Bearbeiten**. 
+1. Wählen Sie im Dialogfeld **TS-GATEWAYSERVERGRUPPEN-Eigenschaften** die IP-Adresse oder den Namen des NPS-Servers, den Sie zum Speichern von RD-CAPs konfiguriert haben, und klicken Sie dann auf **Bearbeiten**.
 
-   ![TS-Gatewayservergruppe](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![Auswählen der IP-Adresse oder des Namens des zuvor konfigurierten NPS-Servers](./media/howto-mfa-nps-extension-rdg/image13.png)
 
 1. Wählen Sie im Dialogfeld **RADIUS-Server bearbeiten** die Registerkarte **Lastenausgleich**.
 1. Ändern Sie in der Registerkarte **Lastenausgleich** im Feld **Sekunden ohne Antwort, bevor eine Anforderung als verworfen gilt** den Standardwert von 3 in einen Wert zwischen 30 und 60 Sekunden.
 1. Ändern Sie im Feld **Sekunden zwischen Anforderungen, nach denen der Server als nicht verfügbar identifiziert wird** den Standardwert von 30 Sekunden in einen Wert, der mindestens so groß ist wie der Wert, den Sie im vorherigen Schritt angegeben haben.
 
-   ![RADIUS-Server bearbeiten](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![Bearbeiten der Timeouteinstellungen im Dialogfeld „RADIUS-Server bearbeiten“ auf der Registerkarte „Lastenausgleich“](./media/howto-mfa-nps-extension-rdg/image14.png)
 
 1. Klicken Sie zweimal auf **OK**, um die Dialogfelder zu schließen.
 
@@ -251,7 +240,7 @@ Wenn Sie das RD-Gateway zur Verwendung eines zentralen Richtlinienspeichers für
 1. Klicken Sie im Dialogfeld **TS-GATEWAYAUTORISIERUNGSRICHTLINIE-Eigenschaften** auf die Registerkarte **Einstellungen**.
 1. Klicken Sie auf der Registerkarte **Einstellungen** unter „Weiterleitungsverbindungsanforderung“ auf **Authentifizierung**. Der RADIUS-Client ist zum Weiterleiten von Anforderungen für die Authentifizierung konfiguriert.
 
-   ![Authentifizierungseinstellungen](./media/howto-mfa-nps-extension-rdg/image15.png)
+   ![Konfigurieren der Authentifizierungseinstellungen zum Angeben der Servergruppe](./media/howto-mfa-nps-extension-rdg/image15.png)
 
 1. Klicken Sie auf **Abbrechen**.
 
@@ -268,7 +257,7 @@ Die ordnungsgemäße Funktionsweise des NPS-Servers in diesem Szenario setzt sei
 1. Klicken Sie in der Netzwerkrichtlinienserver-Konsole mit der rechten Maustaste auf **NPS (Lokal)**, und klicken Sie dann auf **Server in Active Directory registrieren**.
 1. Klicken Sie zweimal auf **OK**.
 
-   ![Registrieren des Servers in AD](./media/howto-mfa-nps-extension-rdg/image16.png)
+   ![Registrieren des NPS-Servers in Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
 
 1. Lassen Sie die Konsole für den nächsten Vorgang geöffnet.
 
@@ -278,12 +267,12 @@ Das Remotedesktopgateway muss als RADIUS-Client des NPS-Servers konfiguriert wer
 
 1. Klicken Sie auf dem NPS-Server, wo die NPS-Erweiterung installiert ist, in der **NPS (Lokal)**-Konsole mit der rechten Maustaste auf **RADIUS-Clients**, und klicken Sie auf **Neu**.
 
-   ![Neue RADIUS-Clients](./media/howto-mfa-nps-extension-rdg/image17.png)
+   ![Erstellen eines neuen RADIUS-Clients in der NPS-Konsole](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. Geben Sie im Dialogfeld **Neuer RADIUS-Client** einen Anzeigenamen wie z.B. _Gateway_ und die IP-Adresse oder den DNS-Namen des Remotedesktopgateway-Servers an. 
+1. Geben Sie im Dialogfeld **Neuer RADIUS-Client** einen Anzeigenamen wie z.B. _Gateway_ und die IP-Adresse oder den DNS-Namen des Remotedesktopgateway-Servers an.
 1. Geben Sie in den Feldern **Gemeinsamer geheimer Schlüssel** und **Gemeinsamen geheimen Schlüssel bestätigen:** den gleichen geheimen Schlüssel ein, den Sie zuvor verwendet haben.
 
-   ![Name und Adresse](./media/howto-mfa-nps-extension-rdg/image18.png)
+   ![Eingeben eines Anzeigenamens und der IP- oder DNS-Adresse](./media/howto-mfa-nps-extension-rdg/image18.png)
 
 1. Klicken Sie auf **OK**, um das Dialogfeld „Neuer RADIUS-Client“ zu schließen.
 
@@ -294,28 +283,25 @@ Denken Sie daran, dass der NPS-Server mit der Azure MFA-Erweiterung der angegebe
 1. Öffnen Sie auf dem NPS-Server die Konsole „NPS (Lokal)“, erweitern Sie **Richtlinien**, und klicken Sie auf **Netzwerkrichtlinien**.
 1. Klicken Sie mit der rechten Maustaste auf **Verbindungen mit anderen Zugriffsservern**, und klicken Sie auf **Duplizieren der Richtlinie**.
 
-   ![Duplizieren der Richtlinie](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![Richtlinie „Verbindungen mit anderen Zugriffsservern“ duplizieren](./media/howto-mfa-nps-extension-rdg/image19.png)
 
 1. Klicken Sie mit der rechten Maustaste auf **Kopie von Verbindungen mit anderen Zugriffsservern**, und klicken Sie auf **Eigenschaften**.
-
-   ![Netzwerkeigenschaften](./media/howto-mfa-nps-extension-rdg/image20.png)
-
 1. Geben Sie im Dialogfeld **Kopie der Verbindungen mit anderen Zugriffsservern** unter **Richtlinienname** einen geeigneten Namen ein, z.B. _RDG_CAP_. Aktivieren Sie **Richtlinie aktiviert**, und wählen Sie **Zugriff gewähren** aus. Wählen Sie optional unter **Typ des Netzwerkzugriffs** die Option  **Remotedesktopgateway** aus, oder behalten Sie **Nicht angegeben** bei.
 
-   ![Kopie von Verbindungen](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![Richtliniennamen eingeben, „Richtlinie aktiviert“ aktivieren und „Zugriff gewähren“ auswählen](./media/howto-mfa-nps-extension-rdg/image21.png)
 
 1. Klicken Sie auf die Registerkarte **Einschränkungen**, und aktivieren Sie **Clientverbindungen ohne Aushandlung einer Authentifizierungsmethode zulassen**.
 
-   ![Zulassen von Clientverbindungen](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![Ändern der Authentifizierungsmethoden zum Zulassen von Clientverbindungen](./media/howto-mfa-nps-extension-rdg/image22.png)
 
 1. Klicken Sie optional auf die Registerkarte **Bedingungen**, und fügen Sie Bedingungen hinzu, die für die Autorisierung der Verbindung erfüllt werden müssen, z.B. die Mitgliedschaft in einer bestimmten Windows-Gruppe.
 
-   ![Bedingungen](./media/howto-mfa-nps-extension-rdg/image23.png)
+   ![Optional Verbindungsbedingungen angeben](./media/howto-mfa-nps-extension-rdg/image23.png)
 
 1. Klicken Sie auf **OK**. Wenn Sie gefragt werden, ob Sie das entsprechende Hilfethema anzeigen möchten, klicken Sie auf **Nein**.
 1. Stellen Sie sicher, dass Ihre neue Richtlinie am oberen Rand der Liste angezeigt wird, dass die Richtlinie aktiviert ist und Zugriff gewährt.
 
-   ![Netzwerkrichtlinien](./media/howto-mfa-nps-extension-rdg/image24.png)
+   ![Richtlinie an den Anfang der Liste verschieben](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Überprüfen der Konfiguration
 
@@ -323,19 +309,19 @@ Um die Konfiguration zu überprüfen, müssen Sie sich mit einem geeigneten RDP-
 
 Wie im folgenden Bild gezeigt, können Sie die Seite **Web Access für Remotedesktop** verwenden.
 
-![Web Access für Remotedesktop](./media/howto-mfa-nps-extension-rdg/image25.png)
+![Überprüfung in Web Access für Remotedesktop](./media/howto-mfa-nps-extension-rdg/image25.png)
 
 Nach erfolgreicher Eingabe Ihrer Anmeldeinformationen für die primäre Authentifizierung zeigt das Dialogfeld „Remotedesktopverbindung“ wie unten dargestellt den Status „Remoteverbindung wird initiiert“ an. 
 
 Nach Ihrer erfolgreichen Authentifizierung mit der sekundären Authentifizierungsmethode, die Sie zuvor in Azure MFA konfiguriert haben, werden Sie mit der Ressource verbunden. Wenn die sekundäre Authentifizierung jedoch nicht erfolgreich ist, wird Ihnen der Zugriff auf die Ressource verweigert. 
 
-![Initiieren der Remoteverbindung](./media/howto-mfa-nps-extension-rdg/image26.png)
+![Remotedesktopverbindung: Remoteverbindung wird initiiert](./media/howto-mfa-nps-extension-rdg/image26.png)
 
 Im folgenden Beispiel wird die Authenticator-App auf einem Windows Phone verwendet, um die sekundäre Authentifizierung bereitzustellen.
 
-![Konten](./media/howto-mfa-nps-extension-rdg/image27.png)
+![Beispiel: Option „Überprüfen“ in Windows Phone-Authenticator-App](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-Nachdem Sie erfolgreich mit der sekundären Authentifizierungsmethode authentifiziert wurden, werden Sie wie gewohnt beim Remotedesktopgateway angemeldet. Da Sie jedoch aufgefordert wurden, eine sekundäre Authentifizierungsmethode mit einer mobilen App auf einem vertrauenswürdigen Gerät zu verwenden, ist der Anmeldeprozess sicherer als sonst.
+Nachdem Sie erfolgreich mit der sekundären Authentifizierungsmethode authentifiziert wurden, werden Sie wie gewohnt beim Remotedesktopgateway angemeldet. Weil Sie eine sekundäre Authentifizierungsmethode mit einer mobilen App auf einem vertrauenswürdigen Gerät verwenden müssen, ist der Anmeldeprozess jedoch sicherer als sonst.
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Anzeigen der Protokolle der Ereignisanzeige für erfolgreiche Anmeldeereignisse
 
@@ -343,58 +329,58 @@ Um die erfolgreichen Anmeldeereignisse in den Protokollen der Windows-Ereignisan
 
 Verwenden Sie zur Abfrage erfolgreicher Anmeldungsereignisse in den Gatewaybetriebsprotokollen (_Ereignisanzeige\Anwendungs- und Dienstprotokolle\Microsoft\Windows\TerminalServices-Gateway\Operational_) die folgenden PowerShell-Befehle:
 
-* _Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational_ | where {$_.ID -eq '300'} | FL 
+* `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * Dieser Befehl zeigt Windows-Ereignisse an, die belegen, dass der Benutzer die Anforderungen der Ressourcenautorisierungsrichtlinie (RD-RAP) erfüllt hat und ihm Zugriff erteilt wurde.
 
-![Anzeigen der Ereignisanzeige](./media/howto-mfa-nps-extension-rdg/image28.png)
+![Anzeigen von Ereignissen mithilfe von PowerShell](./media/howto-mfa-nps-extension-rdg/image28.png)
 
-* _Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational_ | where {$_.ID -eq '200'} | FL
+* `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
 * Dieser Befehl zeigt Ereignisse an, die belegen, dass der Benutzer die Anforderungen der Verbindungsautorisierungsrichtlinie erfüllt hat.
 
-![Verbindungsautorisierung](./media/howto-mfa-nps-extension-rdg/image29.png)
+![Anzeigen der Verbindungsautorisierungsrichtlinie mithilfe von PowerShell](./media/howto-mfa-nps-extension-rdg/image29.png)
 
 Sie können bei der Anzeige dieses Protokolls auch nach den Ereignis-IDs 300 und 200 filtern. Verwenden Sie zum Abfragen erfolgreicher Anmeldeereignisse in den Protokollen der Sicherheitsereignisanzeige den folgenden Befehl:
 
-* _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL 
-* Dieser Befehl kann entweder auf dem zentralen NPS oder dem RD-Gatewayserver ausgeführt werden. 
+* `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+* Dieser Befehl kann entweder auf dem zentralen NPS oder dem RD-Gatewayserver ausgeführt werden.
 
-![Erfolgreiche Anmeldeereignisse](./media/howto-mfa-nps-extension-rdg/image30.png)
+![Beispiel für erfolgreiche Anmeldeereignisse](./media/howto-mfa-nps-extension-rdg/image30.png)
 
 Sie können auch das Sicherheitsprotokoll oder die benutzerdefinierte Ansicht der Netzwerkrichtlinien- und Zugriffsdienste anzeigen, wie unten dargestellt:
 
-![Netzwerkrichtlinien- und Zugriffsdienste](./media/howto-mfa-nps-extension-rdg/image31.png)
+![Ereignisanzeige: Netzwerkrichtlinien- und Zugriffsdienste](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-Auf dem Server, auf dem Sie die NPS-Erweiterung für Azure MFA installiert haben, finden Sie spezifische Ereignisanzeige-Anwendungsprotokolle für die Erweiterung unter _Anwendungs- und Dienstprotokolle\Microsoft\AzureMfa_. 
+Auf dem Server, auf dem Sie die NPS-Erweiterung für Azure MFA installiert haben, finden Sie spezifische Ereignisanzeige-Anwendungsprotokolle für die Erweiterung unter _Anwendungs- und Dienstprotokolle\Microsoft\AzureMfa_.
 
-![Ereignisanzeige-Anwendungsprotokolle](./media/howto-mfa-nps-extension-rdg/image32.png)
+![Ereignisanzeige: AuthZ-Anwendungsprotokolle](./media/howto-mfa-nps-extension-rdg/image32.png)
 
 ## <a name="troubleshoot-guide"></a>Leitfaden zur Problembehandlung
 
 Wenn die Konfiguration nicht wie erwartet funktioniert, sollten Sie die Problembehandlung idealerweise mit der Überprüfung beginnen, ob der Benutzer für die Verwendung von Azure MFA konfiguriert ist. Lassen Sie den Benutzer eine Verbindung mit dem [Azure-Portal](https://portal.azure.com) herstellen. Wenn der Benutzer zur sekundären Überprüfung aufgefordert wird und sich erfolgreich authentifizieren kann, können Sie eine fehlerhafte Azure MFA-Konfiguration ausschließen.
 
-Wenn Azure MFA für den Benutzer funktioniert, prüfen Sie die relevanten Ereignisprotokolle. Dazu gehören Sicherheitsereignis-, Gatewaybetriebs- und Azure MFA-Protokolle, die im vorherigen Abschnitt erläutert wurden. 
+Wenn Azure MFA für den Benutzer funktioniert, prüfen Sie die relevanten Ereignisprotokolle. Dazu gehören Sicherheitsereignis-, Gatewaybetriebs- und Azure MFA-Protokolle, die im vorherigen Abschnitt erläutert wurden.
 
 Es folgt eine Beispielausgabe des Sicherheitsprotokolls mit einem fehlerhaften Anmeldeereignis (Ereignis-ID 6273):
 
-![Fehlerhaftes Anmeldeereignis](./media/howto-mfa-nps-extension-rdg/image33.png)
+![Beispiel für ein fehlerhaftes Anmeldeereignis](./media/howto-mfa-nps-extension-rdg/image33.png)
 
 Es folgt ein verwandtes Ereignis aus den Azure MFA-Protokollen:
 
-![Azure MFA-Protokoll](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Beispiel für ein Azure MFA-Protokoll in der Ereignisanzeige](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-Zum Ausführen erweiterter Problembehandlungsoptionen nutzen Sie die NPS-Datenbankformat-Protokolldateien dort, wo der NPS-Dienst installiert ist. Diese Protokolldateien werden im Ordner _%SystemRoot%\System32\Logs_ als durch Trennzeichen getrennte Textdateien erstellt. 
+Zum Ausführen erweiterter Problembehandlungsoptionen nutzen Sie die NPS-Datenbankformat-Protokolldateien dort, wo der NPS-Dienst installiert ist. Diese Protokolldateien werden im Ordner _%SystemRoot%\System32\Logs_ als durch Trennzeichen getrennte Textdateien erstellt.
 
-Eine Beschreibung dieser Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx) (Interpretieren von NPS-Datenbankformat-Protokolldateien). Die Einträge in diesen Protokolldateien können schwierig zu interpretieren sein, ohne sie in eine Tabelle oder eine Datenbank zu importieren. Sie finden online mehrere IAS-Parser, die Ihnen die Interpretation der Protokolldateien erleichtern. 
+Eine Beschreibung dieser Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx) (Interpretieren von NPS-Datenbankformat-Protokolldateien). Die Einträge in diesen Protokolldateien können schwierig zu interpretieren sein, ohne sie in eine Tabelle oder eine Datenbank zu importieren. Sie finden online mehrere IAS-Parser, die Ihnen die Interpretation der Protokolldateien erleichtern.
 
-Das folgende Bild zeigt die Ausgabe einer solchen herunterladbaren [Sharewareanwendung](https://www.deepsoftware.com/iasviewer). 
+Das folgende Bild zeigt die Ausgabe einer solchen herunterladbaren [Sharewareanwendung](https://www.deepsoftware.com/iasviewer).
 
-![Shareware-App](./media/howto-mfa-nps-extension-rdg/image35.png)
+![Beispiel für eine IAS-Analyse einer Shareware-App](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Schließlich können Sie für zusätzliche Problembehandlungsoptionen ein Protokollanalyseprogramm wie [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) verwenden. 
+Schließlich können Sie für zusätzliche Problembehandlungsoptionen ein Protokollanalyseprogramm wie [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) verwenden.
 
 Die Abbildung unten aus der Microsoft-Nachrichtenanalyse (Microsoft Message Analyzer) zeigt den Netzwerkdatenverkehr, der mit dem RADIUS-Protokoll gefiltert ist, das den Benutzernamen **CONTOSO\AliceC** enthält.
 
-![Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
+![Gefilterter Datenverkehr in Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

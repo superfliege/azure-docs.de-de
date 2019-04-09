@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551822"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337696"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -27,8 +27,27 @@ Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Allgemein**
+
+## <a name="blog-post"></a>Blogbeitrag
+Unser DevTest Labs-Teamblog wurde am 20. März 2019 eingestellt. 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>Wo kann ich zukünftige Funktionsupdates nachverfolgen?
+In Zukunft werden wir Funktionsupdates und/oder informative Blogbeiträge im Azure-Blog und auf Azure-Updates bereitstellen. Diese Blogbeiträge werden auch, wo immer erforderlich, mit unserer Dokumentation verknüpft.
+
+Abonnieren Sie [DevTest Labs-Azure-Blog](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) und [DevTest Labs-Azure-Updates](https://azure.microsoft.com/updates/?product=devtest-lab), um über neue Funktionen in DevTest Labs informiert zu bleiben.
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>Was geschieht mit den vorhandenen Blogbeiträgen?
+Wir arbeiten momentan daran, vorhandene Blogbeiträge (mit Ausnahme von Updates zu Ausfällen) zu unserer [DevTest Labs-Dokumentation](devtest-lab-overview.md) zu migrieren. Wenn der MSDN-Blog eingestellt wird, wird er auf die Dokumentationsübersicht für DevTest Labs umgeleitet. Sobald die Umleitung eingerichtet ist, können Sie unter „Filtern nach“ nach dem gewünschten Artikel suchen. Beachten Sie, dass wir noch nicht alle Beiträge migriert haben, aber bis zum Ende dieses Monat damit fertig sein sollten. 
+
+
+### <a name="where-do-i-see-outage-updates"></a>Wo finde ich Updates zu Ausfällen?
+In Zukunft werden wir Updates zu Ausfällen unter unserem Twitter-Handle bereitstellen. Folgen Sie uns auf Twitter, um die neuesten Updates zu Ausfällen und bekannten Fehlern zu erhalten.
+
+### <a name="twitter"></a>Twitter 
+Unser Twitter-Handle lautet: azlabservices
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
-Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.
+Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns darüber, damit wir Ihnen helfen können, eine Antwort zu finden.
 
 * Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. Tauschen Sie sich mit dem Azure Cache-Team und anderen Communitymitgliedern über diesen Artikel aus.
 * Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Azure DevTest Labs MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Tauschen Sie sich mit dem Azure DevTest Labs-Team und anderen Communitymitgliedern aus.
@@ -106,8 +125,8 @@ Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten könne
 
 
 **Virtuelle Computer**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>Warum kann ich auf dem Blatt „Virtuelle Computer“ nicht die VMs sehen, die in DevTest Labs angezeigt werden?
-Beim Erstellen einer VM in DevTest Labs wird Ihnen eine Berechtigung für den Zugriff auf diese VM gewährt. Sie können die VM sowohl auf dem Blatt „Labs“ als auch auf dem Blatt **Virtuelle Computer** sehen. Benutzer, denen die DevTest Labs-Labbenutzerrolle zugewiesen ist, können alle im Lab erstellten VMs auf dem Blatt **Alle virtuellen Computer** des Labs sehen. Allerdings erhalten Benutzer mit der DevTest Labs-Labbenutzerrolle nicht automatisch Lesezugriff auf die VM-Ressourcen, die andere Benutzer erstellt haben. Deshalb werden diese VMs nicht auf dem Blatt **Virtuelle Computer** angezeigt.
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Warum kann ich auf der Seite „Virtuelle Computer“ nicht die VMs sehen, die in DevTest Labs angezeigt werden?
+Beim Erstellen einer VM in DevTest Labs wird Ihnen eine Berechtigung für den Zugriff auf diese VM gewährt. Sie können die VM sowohl auf der Seite „Labs“ als auch auf der Seite **Virtuelle Computer** sehen. Benutzer, denen die DevTest Labs-Labbenutzerrolle zugewiesen ist, können alle im Lab erstellten VMs auf der Seite **Alle virtuellen Computer** des Labs sehen. Allerdings erhalten Benutzer mit der DevTest Labs-Labbenutzerrolle nicht automatisch Lesezugriff auf die VM-Ressourcen, die andere Benutzer erstellt haben. Deshalb werden diese VMs nicht auf der Seite **Virtuelle Computer** angezeigt.
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Was ist der Unterschied zwischen einem benutzerdefinierten Image und einer Formel?
 Ein benutzerdefiniertes Image ist eine virtuelle Festplatte (VHD). Eine Formel ist ein Image, das Sie mit zusätzlichen Einstellungen konfigurieren und anschließend speichern und reproduzieren können. Ein benutzerdefiniertes Image kann vorteilhafter sein, wenn Sie schnell mehrere Umgebungen mit demselben grundlegenden, unveränderlichen Image erstellen möchten. Eine Formel eignet sich möglicherweise besser, wenn Sie die Konfiguration Ihrer VM mit den neuesten Komponenten als Teil eines virtuellen Netzwerks oder Subnetzes oder als VM mit einer bestimmten Größe reproduzieren möchten. Eine ausführlichere Erklärung finden Sie im Artikel [Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
@@ -232,7 +251,7 @@ Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Res
 VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Resource Manager-Vorlagen zur Bereitstellung von VMs über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung?
-VM-Bereitstellungsfehler werden in Aktivitätsprotokollen erfasst. Sie finden die Aktivitätsprotokolle von virtuellen Labcomputern unter **Überwachungsprotokolle** oder **Diagnose des virtuellen Computers** auf dem VM-Blatt des Labs im Ressourcenmenü (das Blatt wird angezeigt, nachdem Sie die VM in der Liste **Meine virtuellen Computer** ausgewählt haben).
+VM-Bereitstellungsfehler werden in Aktivitätsprotokollen erfasst. Sie finden die Aktivitätsprotokolle von virtuellen Labcomputern unter **Überwachungsprotokolle** oder **Diagnose des virtuellen Computers** auf der VM-Seite des Labs im Ressourcenmenü (die Seite wird angezeigt, nachdem Sie die VM in der Liste **Meine virtuellen Computer** ausgewählt haben).
 
 Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien**. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 

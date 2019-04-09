@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f60b9002f939cbf4c3a0ecfb78b358598713ea1c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259617"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881628"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline (Vorschau)
 
@@ -129,9 +129,6 @@ Da es sich hier um Ihre erste Anforderung handelt, überprüfen Sie im Azure-Por
   ![Kachel „Datenquellen“ im Portal](./media/cognitive-search-tutorial-blob/data-source-tile.png "Kachel „Datenquellen“ im Portal")
 
 Wenn der Fehler 403 oder 404 angezeigt wird, überprüfen Sie die Konstruktion der Anforderung: `api-version=2017-11-11-Preview` sollte im Endpunkt vorhanden sein, `api-key` sollte im Header hinter `Content-Type` vorhanden sein, und sein Wert muss für einen Suchdienst gültig sein. Sie können den Header für die verbleibenden Schritte in diesem Tutorial wiederverwenden.
-
-> [!TIP]
-> Jetzt, bevor Sie eine Menge Arbeit investieren, ist der richtige Zeitpunkt, zu überprüfen, ob der Suchdienst an einem der unterstützten Standorte ausgeführt wird, die die Previewfunktion bereitstellen: USA, Süden-Mitte oder Europa, Westen.
 
 ## <a name="create-a-skillset"></a>Erstellen eines Skillsets
 

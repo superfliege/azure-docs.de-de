@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816644"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650477"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -31,10 +31,10 @@ In der ersten Hälfte dieses Leitfadens werden typische geschäftliche Probleme 
 
 | Empfohlener Abschnitt | Zielgruppe |
 |:---------------|:---------------|
-| [Business Case für Predictive Maintenance](#Business-case-for-predictive-maintenance) |Business Decision Makers (BDMs), die Ausfallzeiten und Betriebskosten senken und die Nutzungsdauer der Ausrüstung verbessern möchten |
-| [Data Science für Predictive Maintenance](#Data-Science-for-predictive-maintenance) |Technical Decision Makers (TDMs), die die PdM-Technologie evaluieren, um die einzigartigen Datenverarbeitungs- und AI-Anforderungen in Bezug auf Predictive Maintenance zu verstehen |
-| [Lösungsvorlagen für Predictive Maintenance](#Solution-templates-for-predictive-maintenance)|Softwarearchitekten oder AI-Entwickler, die in kurzer Zeit eine Demo oder ein Proof-of-Concept-Dokument erstellen möchten |
-| [Schulungsressourcen für Predictive Maintenance](#Training-resources-for-predictive-maintenance) | Alle obigen Personen, die sich über die Grundlagen der Data Science-Technologie, Tools und Verfahren informieren möchten
+| [Business Case für Predictive Maintenance](#business-case-for-predictive-maintenance) |Business Decision Makers (BDMs), die Ausfallzeiten und Betriebskosten senken und die Nutzungsdauer der Ausrüstung verbessern möchten |
+| [Data Science für Predictive Maintenance](#data-science-for-predictive-maintenance) |Technical Decision Makers (TDMs), die die PdM-Technologie evaluieren, um die einzigartigen Datenverarbeitungs- und AI-Anforderungen in Bezug auf Predictive Maintenance zu verstehen |
+| [Lösungsvorlagen für Predictive Maintenance](#solution-templates-for-predictive-maintenance)|Softwarearchitekten oder AI-Entwickler, die in kurzer Zeit eine Demo oder ein Proof-of-Concept-Dokument erstellen möchten |
+| [Schulungsressourcen für Predictive Maintenance](#training-resources-for-predictive-maintenance) | Alle obigen Personen, die sich über die Grundlagen der Data Science-Technologie, Tools und Verfahren informieren möchten
 
 ### <a name="prerequisite-knowledge"></a>Vorkenntnisse
 In Bezug auf die BDM-Inhalte wird nicht vorausgesetzt, dass der Leser bereits über Data Science-Vorkenntnisse verfügt. In Bezug auf die TDM-Inhalte sind Grundkenntnisse in den Bereichen Statistik und Data Science hilfreich. Kenntnisse in den Bereichen Azure-Daten- und AI-Dienste, Python, R, XML und JSON sind empfehlenswert. AI-Verfahren werden in Form von Python- und R-Paketen implementiert. Lösungsvorlagen werden mithilfe von Azure-Diensten, Entwicklungstools und SDKs implementiert.
@@ -78,7 +78,7 @@ Es ist wichtig, darauf hinzuweisen, dass per Predictive Maintenance nicht alle A
 
 - Das Problem muss vorhersagbar sein. Das heißt, es muss ein Ziel oder Ergebnis vorhanden sein, das vorhergesagt werden kann. Außerdem sollte für das Problem ein eindeutiger Aktionspfad gelten, mit dem Fehler verhindert werden können, wenn sie erkannt werden.
 - Das Problem sollte einen Datensatz zum Betriebsverlauf der Ausrüstung aufweisen, der _sowohl positive als auch negative Ergebnisse_ enthält. Die Aktionen, die zur Behandlung negativer Ergebnisse durchgeführt werden, sollten im Rahmen dieser Datensätze ebenfalls angegeben sein. Wichtig sind auch Fehlerberichte, Wartungsprotokolle zum Leistungsabfall, Reparaturprotokolle und Austauschprotokolle. Darüber hinaus sind Angaben zu Reparaturen, die mit dem Ziel der Verbesserung durchgeführt wurden, und Datensätze zu Austauschvorgängen nützlich.
-- Der aufgezeichnete Verlauf sollte mit _relevanten_ Daten widergespiegelt werden, deren Qualität _ausreichend hoch_ ist, um als Unterstützung für den Anwendungsfall zu dienen. Weitere Informationen zur Relevanz und Eignung der Daten finden Sie unter [Datenanforderungen für Predictive Maintenance](#Data-requirements-for-predictive-maintenance).
+- Der aufgezeichnete Verlauf sollte mit _relevanten_ Daten widergespiegelt werden, deren Qualität _ausreichend hoch_ ist, um als Unterstützung für den Anwendungsfall zu dienen. Weitere Informationen zur Relevanz und Eignung der Daten finden Sie unter [Datenanforderungen für Predictive Maintenance](#data-requirements-for-predictive-maintenance).
 - Schließlich sollte das Unternehmen auch über Domänenexperten verfügen, denen das jeweilige Problem vollständig klar ist. Diese Personen sollten mit den internen Prozessen und Methoden vertraut sein, damit der Analyst die Daten verstehen und interpretieren kann. Außerdem sollten sie die erforderlichen Änderungen an vorhandenen Geschäftsprozessen vornehmen können, um bei Bedarf die richtigen Daten für die Probleme sammeln zu können.
 
 ## <a name="sample-pdm-use-cases"></a>Beispielanwendungsfälle für PdM
@@ -103,10 +103,10 @@ Im nächsten Abschnitt sind die Details dazu enthalten, wie Sie die oben beschri
 
 ## <a name="data-science-for-predictive-maintenance"></a>Data Science für Predictive Maintenance
 
-Dieser Abschnitt enthält allgemeine Richtlinien zu Data Science-Prinzipien und PdM-Methoden. Die Informationen sollen TDMs, Lösungsarchitekten und Entwicklern ein besseres Verständnis der Voraussetzungen und des Prozesses zum Entwickeln von End-to-End-AI-Anwendungen für PdM ermöglichen. Sie können beim Lesen dieses Abschnitts auch die Demos und Proof-of-Concept-Vorlagen unter [Lösungsvorlagen für Predictive Maintenance](#Solution-templates-for-predictive-maintenance) nutzen. Anschließend können Sie diese Prinzipien und bewährten Methoden verwenden, um Ihre PdM-Lösung in Azure zu implementieren.
+Dieser Abschnitt enthält allgemeine Richtlinien zu Data Science-Prinzipien und PdM-Methoden. Die Informationen sollen TDMs, Lösungsarchitekten und Entwicklern ein besseres Verständnis der Voraussetzungen und des Prozesses zum Entwickeln von End-to-End-AI-Anwendungen für PdM ermöglichen. Sie können beim Lesen dieses Abschnitts auch die Demos und Proof-of-Concept-Vorlagen unter [Lösungsvorlagen für Predictive Maintenance](#solution-templates-for-predictive-maintenance) nutzen. Anschließend können Sie diese Prinzipien und bewährten Methoden verwenden, um Ihre PdM-Lösung in Azure zu implementieren.
 
 > [!NOTE]
-> Ziel dieses Leitfadens ist es NICHT, den Leser in Bezug auf Data Science zu schulen. Im Abschnitt [Schulungsressourcen für Predictive Maintenance](#Training-resources-for-predictive-maintenance) finden Sie mehrere hilfreiche Quellen mit weiterem Lesematerial. Mit den in diesem Leitfaden angegebenen [Lösungsvorlagen](#Solution-templates-for-predictive-maintenance) werden einige dieser AI-Verfahren für bestimmte PdM-Probleme veranschaulicht.
+> Ziel dieses Leitfadens ist es NICHT, den Leser in Bezug auf Data Science zu schulen. Im Abschnitt [Schulungsressourcen für Predictive Maintenance](#training-resources-for-predictive-maintenance) finden Sie mehrere hilfreiche Quellen mit weiterem Lesematerial. Mit den in diesem Leitfaden angegebenen [Lösungsvorlagen](#solution-templates-for-predictive-maintenance) werden einige dieser AI-Verfahren für bestimmte PdM-Probleme veranschaulicht.
 
 ## <a name="data-requirements-for-predictive-maintenance"></a>Datenanforderungen für Predictive Maintenance
 
@@ -114,10 +114,10 @@ Der Lernerfolg hängt stets von (a) der Qualität des Lerninhalts und (b) von de
 
 ### <a name="relevant-data"></a>Relevante Daten
 
-Erstens müssen die Daten _für das Problem relevant_ sein. Nehmen Sie den oben beschriebenen Anwendungsfall mit dem _Radfehler_ als Beispiel. Die Trainingsdaten sollten Features in Bezug auf den Radbetrieb enthalten. Falls das Problem darin besteht, den Ausfall des _Traktionssystems_ vorherzusagen, müssen die Trainingsdaten alle unterschiedlichen Komponenten des Traktionssystems abdecken. Im ersten Fall geht es um eine bestimmte Komponente, während es im zweiten Fall um den Ausfall eines größeren Subsystems geht. Die allgemeine Empfehlung lautet, Vorhersagesysteme für bestimmte Komponenten zu entwerfen, anstatt größere Subsysteme, da Letztere über stärker verteilte Daten verfügen. Der Domänenexperte (siehe [Qualifizierungsprobleme für Predictive Maintenance](#Qualifying-problems-for-predictive-maintenance)) sollte dabei behilflich sein, die relevantesten Teilmengen der Daten für die Analyse auszuwählen. Die relevanten Datenquellen sind unter [Datenaufbereitung für Predictive Maintenance](#Data-preparation-for-predictive-maintenance) ausführlicher beschrieben.
+Erstens müssen die Daten _für das Problem relevant_ sein. Nehmen Sie den oben beschriebenen Anwendungsfall mit dem _Radfehler_ als Beispiel. Die Trainingsdaten sollten Features in Bezug auf den Radbetrieb enthalten. Falls das Problem darin besteht, den Ausfall des _Traktionssystems_ vorherzusagen, müssen die Trainingsdaten alle unterschiedlichen Komponenten des Traktionssystems abdecken. Im ersten Fall geht es um eine bestimmte Komponente, während es im zweiten Fall um den Ausfall eines größeren Subsystems geht. Die allgemeine Empfehlung lautet, Vorhersagesysteme für bestimmte Komponenten zu entwerfen, anstatt größere Subsysteme, da Letztere über stärker verteilte Daten verfügen. Der Domänenexperte (siehe [Qualifizierungsprobleme für Predictive Maintenance](#qualifying-problems-for-predictive-maintenance)) sollte dabei behilflich sein, die relevantesten Teilmengen der Daten für die Analyse auszuwählen. Die relevanten Datenquellen sind unter [Datenaufbereitung für Predictive Maintenance](#data-preparation-for-predictive-maintenance) ausführlicher beschrieben.
 
 ### <a name="sufficient-data"></a>Ausreichende Daten
-Zwei Fragen werden im Hinblick auf historische Fehlerdaten gestellt: (1) „Wie viele Fehlerereignisse sind zum Trainieren eines Modells erforderlich?“ (2) „Wie viele Datensätze werden als ausreichend angesehen?“ Es gibt hierfür keine definitiven Antworten, sondern nur Faustregeln. Für (1) gilt: Je höher die Anzahl von Fehlerereignissen, desto besser ist das Modell. Für (2) gilt: Die genaue Anzahl von Fehlerereignissen richtet sich nach den Daten und dem Kontext des zu lösenden Problems. Es gilt aber auch: Wenn eine Maschine zu häufig ausfällt, wird sie vom Unternehmen ausgetauscht, und die Fehlerinstanzen werden reduziert. Hierbei ist wiederum die Hilfe durch den Domänenexperten wichtig. Es gibt aber auch Methoden zum Umgang mit _seltenen Ereignissen_. Diese werden im Abschnitt [Behandeln von unausgeglichenen Daten](#Handling-imbalanced-data) beschrieben.
+Zwei Fragen werden im Hinblick auf historische Fehlerdaten gestellt: (1) „Wie viele Fehlerereignisse sind zum Trainieren eines Modells erforderlich?“ (2) „Wie viele Datensätze werden als ausreichend angesehen?“ Es gibt hierfür keine definitiven Antworten, sondern nur Faustregeln. Für (1) gilt: Je höher die Anzahl von Fehlerereignissen, desto besser ist das Modell. Für (2) gilt: Die genaue Anzahl von Fehlerereignissen richtet sich nach den Daten und dem Kontext des zu lösenden Problems. Es gilt aber auch: Wenn eine Maschine zu häufig ausfällt, wird sie vom Unternehmen ausgetauscht, und die Fehlerinstanzen werden reduziert. Hierbei ist wiederum die Hilfe durch den Domänenexperten wichtig. Es gibt aber auch Methoden zum Umgang mit _seltenen Ereignissen_. Diese werden im Abschnitt [Behandeln von unausgeglichenen Daten](#handling-imbalanced-data) beschrieben.
 
 ### <a name="quality-data"></a>Qualitätsdaten
 Die Qualität der Daten ist entscheidend. Jeder Vorhersageattributwert muss in Bezug auf den Wert der Zielvariablen _genau_ sein. Die Datenqualität wird im Bereich der Statistik und Datenverwaltung eingehend untersucht und liegt daher außerhalb des Rahmens dieses Leitfadens.
@@ -151,7 +151,7 @@ Sensorbasierte (oder andere) Streamingdaten der Betriebsausrüstung stellen eine
 #### <a name="static-feature-data"></a>Daten zu statischen Merkmalen
 Statische Merkmale sind Metadaten zur Ausrüstung. Beispiele hierfür sind Typ, Modell, Herstellungsdatum, Datum des Betriebsstarts, Standort des Systems und andere technische Spezifikationen der Ausrüstung.
 
-Beispiele für relevante Daten zu den [PdM-Beispielanwendungsfällen](#Sample-PdM-use-cases) sind in der Tabelle unten angegeben:
+Beispiele für relevante Daten zu den [PdM-Beispielanwendungsfällen](#sample-pdm-use-cases) sind in der Tabelle unten angegeben:
 
 | Anwendungsfall | Beispiele für relevante Daten |
 |:---------|---------------------------|
@@ -186,7 +186,7 @@ Für statische Daten:
 
 Weitere Schritte zur Vorabaufbereitung der Daten sind der _Umgang mit fehlenden Werten_ und die _Normalisierung_ von Attributwerten. Eine ausführliche Beschreibung würde den Rahmen dieses Leitfadens sprengen. Im nächsten Abschnitt finden Sie einige hilfreiche Verweise.
 
-Wenn die obigen vorab aufbereiteten Datenquellen vorhanden sind, besteht die letzte Transformation vor der Featureentwicklung aus dem Einbinden der obigen Tabellen basierend auf der Ressourcen-ID und dem Zeitstempel. Die sich ergebende Tabelle enthält in der Fehlerspalte NULL-Werte, wenn sich die Maschine im Normalbetrieb befindet. Diese NULL-Werte können mit einem Indikator für den Normalbetrieb zugeordnet werden. Verwenden Sie diese Fehlerspalte, um _Bezeichnungen für das Vorhersagemodell_ zu erstellen. Weitere Informationen finden Sie im Abschnitt zu den [Modellierungsverfahren für Predictive Maintenance](#Modeling-techniques-for-predictive-maintenance).
+Wenn die obigen vorab aufbereiteten Datenquellen vorhanden sind, besteht die letzte Transformation vor der Featureentwicklung aus dem Einbinden der obigen Tabellen basierend auf der Ressourcen-ID und dem Zeitstempel. Die sich ergebende Tabelle enthält in der Fehlerspalte NULL-Werte, wenn sich die Maschine im Normalbetrieb befindet. Diese NULL-Werte können mit einem Indikator für den Normalbetrieb zugeordnet werden. Verwenden Sie diese Fehlerspalte, um _Bezeichnungen für das Vorhersagemodell_ zu erstellen. Weitere Informationen finden Sie im Abschnitt zu den [Modellierungsverfahren für Predictive Maintenance](#modeling-techniques-for-predictive-maintenance).
 
 ## <a name="feature-engineering"></a>Featureentwicklung
 Die Featureentwicklung ist der erste Schritt vor der Modellierung der Daten. Ihre Rolle im Data Science-Prozess ist [hier beschrieben](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features). Ein _Feature_ ist ein Vorhersageattribut für das Modell, z.B. Temperatur, Druck, Vibration usw. In Bezug auf PdM umfasst die Featureentwicklung die Abstrahierung der Integrität einer Maschine anhand von Verlaufsdaten, die über einen längeren Zeitraum gesammelt wurden. In dieser Hinsicht unterscheidet sie sich von vergleichbaren Verfahren, z.B. der Remoteüberwachung, Anomalieerkennung und Fehlererkennung. 
@@ -205,7 +205,7 @@ Für jeden Datensatz einer Ressource wird die Gleitfenstergröße „W“ als An
 
 ![Abbildung 1: Gleitendes Aggregat – Features](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) Abbildung 1: Gleitendes Aggregat – Features
 
-Beispiele für gleitende Aggregate eines Zeitfensters sind Werte vom Typ „Anzahl“, „Mittelwert“, CUMESUM-Measures (Cumulative Sum) und Minimal-/Maximalwerte. Außerdem werden häufig Varianz, Standardabweichung und Anzahl von Ausreißern für N Standardabweichungen verwendet. Beispiele für Aggregate, die auf [Anwendungsfälle](#Sample-PdM-use-cases) in diesem Leitfaden angewendet werden können, sind unten aufgeführt. 
+Beispiele für gleitende Aggregate eines Zeitfensters sind Werte vom Typ „Anzahl“, „Mittelwert“, CUMESUM-Measures (Cumulative Sum) und Minimal-/Maximalwerte. Außerdem werden häufig Varianz, Standardabweichung und Anzahl von Ausreißern für N Standardabweichungen verwendet. Beispiele für Aggregate, die auf [Anwendungsfälle](#sample-pdm-use-cases) in diesem Leitfaden angewendet werden können, sind unten aufgeführt. 
 - _Flugverspätung_: Anzahl von Fehlercodes für den letzten Tag bzw. die letzte Woche.
 - _Ausfall eines Teils des Flugzeugtriebwerks_: Gleitender Durchschnitt, Standardabweichung und Summe für den letzten Tag, die letzte Woche usw. Diese Metrik sollte in Zusammenarbeit mit dem Domänenexperten bestimmt werden.
 - _Fehler bei Geldautomaten_: Gleitender Durchschnitt, Median, Bereich, Standardabweichungen, Anzahl von Ausreißern über drei Standardabweichungen hinaus, CUMESUM-Ober- und -Unterwert.
@@ -325,7 +325,7 @@ Wenn Zeitreihen unbeweglich und leicht vorhersagbar sind, werden sowohl beim zuf
 ### <a name="time-dependent-split"></a>Zeitabhängige Aufteilung
 In diesem Abschnitt werden die bewährten Methoden zum Implementieren der zeitabhängigen Aufteilung beschrieben. Eine zeitabhängige bidirektionale Aufteilung auf Trainings- und Testsätze ist unten beschrieben.
 
-Angenommen, es ist ein Datenstrom von Ereignissen mit Zeitstempel, z.B. Messungen verschiedener Sensoren, vorhanden. Definieren Sie Features und Bezeichnungen von Trainings- und Testbeispielen für Zeitrahmen, die mehrere Ereignisse enthalten. Erstellen Sie beispielsweise für die binäre Klassifizierung Features basierend auf vergangenen Ereignissen, und erstellen Sie Bezeichnungen basierend auf zukünftigen Ereignissen in „X“ Zeiteinheiten in der Zukunft (siehe Abschnitte zur [Featureentwicklung](#Feature-engineering) und zu den Modellierungsverfahren). Der Bezeichnungszeitrahmen eines Beispielwerts liegt also nach dem Zeitrahmen seiner Features.
+Angenommen, es ist ein Datenstrom von Ereignissen mit Zeitstempel, z.B. Messungen verschiedener Sensoren, vorhanden. Definieren Sie Features und Bezeichnungen von Trainings- und Testbeispielen für Zeitrahmen, die mehrere Ereignisse enthalten. Erstellen Sie beispielsweise für die binäre Klassifizierung Features basierend auf vergangenen Ereignissen, und erstellen Sie Bezeichnungen basierend auf zukünftigen Ereignissen in „X“ Zeiteinheiten in der Zukunft (siehe Abschnitte zur [Featureentwicklung](#feature-engineering) und zu den Modellierungsverfahren). Der Bezeichnungszeitrahmen eines Beispielwerts liegt also nach dem Zeitrahmen seiner Features.
 
 Wählen Sie für die zeitabhängige Aufteilung einen _Trainingstrennzeitpunkt T<sub>c</sub>_ für das Modelltraining, wobei die Hyperparameter Verlaufsdaten bis zum Zeitpunkt T<sub>c</sub> nutzen. Um zu verhindern, dass zukünftige Bezeichnungen nach dem Zeitpunkt T<sub>c</sub> in die Trainingsdaten einfließen, wählen Sie als spätesten Zeitpunkt der Bezeichnung von Trainingsbeispielen einen Zeitpunkt, der X Einheiten vor T<sub>c</sub> liegt. Im Beispiel in Abbildung 7 steht jedes Quadrat für einen Datensatz des Datasets, für das die Features und Bezeichnungen wie oben beschrieben berechnet werden. In der Abbildung sind die Datensätze dargestellt, die in die Trainings- und Testsätze für X=2 und W=3 einfließen sollen:
 
@@ -352,7 +352,7 @@ Bei der Unausgeglichenheit von Klassen in Daten wird die Leistung der meisten St
 - F1 Scores (F1-Maße)
 - Cost Adjusted ROC (Receiver Operating Characteristics) (ROC-Kurven mit Kostenanpassung)
 
-Weitere Informationen zu diesen Metriken finden Sie unter [Modellevaluierung](#Model-evaluation).
+Weitere Informationen zu diesen Metriken finden Sie unter [Modellevaluierung](#model-evaluation).
 
 Es gibt aber einige Methoden, die als Hilfe beim Beheben von Problemen mit der Unausgeglichenheit von Klassen dienen. Die beiden wichtigsten Methoden sind _Stichprobenverfahren_ und _kostenbewusstes Lernen_.
 
@@ -401,13 +401,13 @@ Der obige Prozess verfügt in akademischer Literatur und Branchenliteratur über
 
 Wie bereits erwähnt, unterscheidet sich die Modelloperationalisierung für PdM von vergleichbaren Ansätzen. Bei Szenarien mit Anomalie- und Fehlererkennung wird normalerweise die _Onlinebewertung_ (auch als _Echtzeitbewertung_ bezeichnet) durchgeführt. Hierbei wird jeder eingehende Datensatz vom Modell _bewertet_ und eine Vorhersage zurückgegeben. Für die Anomalieerkennung ist die Vorhersage ein Hinweis darauf, dass eine Anomalie aufgetreten ist (Beispiel: einklassige SVM). Für die Fehlererkennung ist dies der Typ oder die Klasse des Fehlers.
 
-Für PdM wird dagegen die _Batchbewertung_ verwendet. Damit sie mit der Modellsignatur konform sind, müssen die Features in den neuen Daten genauso wie die Trainingsdaten erstellt werden. Für die großen Datasets, die für neue Daten typisch sind, werden Features in Zeitfenstern aggregiert und in Batches bewertet. Die Batchbewertung wird normalerweise in verteilten Systemen wie [Spark](http://spark.apache.org/) oder [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) durchgeführt. Es gibt eine Reihe von Alternativen, die beide nicht optimal sind:
+Für PdM wird dagegen die _Batchbewertung_ verwendet. Damit sie mit der Modellsignatur konform sind, müssen die Features in den neuen Daten genauso wie die Trainingsdaten erstellt werden. Für die großen Datasets, die für neue Daten typisch sind, werden Features in Zeitfenstern aggregiert und in Batches bewertet. Die Batchbewertung wird normalerweise in verteilten Systemen wie [Spark](https://spark.apache.org/) oder [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) durchgeführt. Es gibt eine Reihe von Alternativen, die beide nicht optimal sind:
 - Bei Streamingdatenmodulen wird die Aggregation über Fenster im Arbeitsspeicher unterstützt. Es kann also argumentiert werden, dass die Onlinebewertung unterstützt wird. Diese Systeme sind aber für Daten mit hoher Dichte in engen Zeitfenstern oder weniger Elemente in größeren Zeitfenstern geeignet. Unter Umständen können sie für Daten mit hoher Dichte in größeren Zeitfenstern nicht gut skaliert werden, wie dies bei PdM-Szenarien zu beobachten ist.
 - Falls die Batchbewertung nicht verfügbar ist, besteht die Lösung darin, die Onlinebewertung so anzupassen, dass neue Daten jeweils in kleineren Batches verarbeitet werden.
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>Lösungsvorlagen für Predictive Maintenance
 
-Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsvorlagen, Tutorials und Experimenten, die in Azure implementiert sind. Diese PdM-Anwendungen können in einigen Fällen innerhalb weniger Minuten in einem Azure-Abonnement bereitgestellt werden. Sie können als Proof-of-Concept-Demos, Sandboxes zum Experimentieren mit Alternativen oder Beschleuniger für tatsächliche Produktionsimplementierungen verwendet werden. Diese Vorlagen befinden sich im [Azure AI-Katalog](http://gallery.azure.ai) oder auf [Azure GitHub](https://github.com/Azure). Die unterschiedlichen Beispiele werden im Laufe der Zeit in diese Lösungsvorlage eingebunden.
+Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsvorlagen, Tutorials und Experimenten, die in Azure implementiert sind. Diese PdM-Anwendungen können in einigen Fällen innerhalb weniger Minuten in einem Azure-Abonnement bereitgestellt werden. Sie können als Proof-of-Concept-Demos, Sandboxes zum Experimentieren mit Alternativen oder Beschleuniger für tatsächliche Produktionsimplementierungen verwendet werden. Diese Vorlagen befinden sich im [Azure AI-Katalog](https://gallery.azure.ai) oder auf [Azure GitHub](https://github.com/Azure). Die unterschiedlichen Beispiele werden im Laufe der Zeit in diese Lösungsvorlage eingebunden.
 
 | # | Titel | BESCHREIBUNG |
 |--:|:------|-------------|
@@ -431,9 +431,9 @@ Microsoft Azure bietet Lernpfade für die grundlegenden Konzepte, die hinter PdM
 | [AI Developer in Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Öffentlich |
 | [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | Öffentlich |
 | [Azure AI-Lernmaterial auf GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Öffentlich |
-| [LinkedIn Learning](http://www.linkedin.com/learning) | Öffentlich |
-| [Microsoft AI – YouTube-Webinars](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
-| [Microsoft AI-Show](http://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Öffentlich |
+| [Microsoft AI – YouTube-Webinare](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
+| [Microsoft AI-Show](https://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partner |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partner |
 

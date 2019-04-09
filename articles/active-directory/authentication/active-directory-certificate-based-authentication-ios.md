@@ -1,5 +1,5 @@
 ---
-title: Zertifikatbasierte Authentifizierung mit Azure Active Directory unter iOS
+title: Zertifikatbasierte Authentifizierung unter iOS – Azure Active Directory
 description: In diesem Thema lernen Sie unterstützte Szenarien sowie die Voraussetzungen für die Konfiguration der zertifikatbasierten Authentifizierung in Lösungen mit iOS-Geräten kennen.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717eef0857d6db53462ef1b5eb4786962550d44b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188068"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369427"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter iOS
 
@@ -35,16 +35,16 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 
 | Apps | Support |
 | --- | --- |
-| Azure Information Protection-App |![Prüfen][1] |
-| Intune-Unternehmensportal |![Prüfen][1] |
-| Microsoft Teams |![Prüfen][1] |
-| OneNote |![Prüfen][1] |
-| OneDrive |![Prüfen][1] |
-| Outlook |![Prüfen][1] |
-| Power BI |![Prüfen][1] |
-| Skype for Business |![Prüfen][1] |
-| Word/Excel/PowerPoint |![Prüfen][1] |
-| Yammer |![Prüfen][1] |
+| Azure Information Protection-App |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Intune-Unternehmensportal |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Microsoft Teams |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| OneNote |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| OneDrive |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Outlook |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Power BI |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Skype for Business |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Word/Excel/PowerPoint |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Yammer |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

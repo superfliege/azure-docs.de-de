@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9b8ae86a5c13573fbe80c8f06d5ce97c72d8e341
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8516035705ad9dfb2ff37592f9381c4f905bb67f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257669"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802829"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
 > [!div class="op_single_selector"]
@@ -29,23 +29,18 @@ ms.locfileid: "58257669"
 >  
 
 > [!NOTE]
-> Informationen zum Abrufen der aktuellen Version des Java SDK sowie zu den ersten Schritten beim Entwickeln mit Java finden Sie unter [Erste Schritte mit dem Java-Client-SDK für Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
-> Wenn Sie das aktuelle PHP SDK für Media Services herunterladen möchten, können Sie im [Packagist-Repository](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) nach Version 0.5.7 des Microsoft/WindowsAzure-Pakets suchen.  
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-## <a name="overview"></a>Übersicht
-> [!NOTE]
-> Informationen zur Verschlüsselung von Inhalten mit dem Advanced Encryption Standard (AES) für die Übermittlung an Safari unter macOS finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
-> Eine Übersicht über den Schutz von Medieninhalten mit der AES-Verschlüsselung finden Sie in [diesem Video](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
-> 
-> 
-
- Mithilfe von Media Services können Sie HTTP Live Streaming (HLS) und Smooth Streaming, die mit dem AES verschlüsselt sind, mithilfe von 128-Bit-Verschlüsselungsschlüsseln bereitstellen. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. Wenn ein Medienobjekt von Media Services verschlüsselt werden soll, ordnen Sie dem Medienobjekt einen Verschlüsselungsschlüssel zu und konfigurieren außerdem Autorisierungsrichtlinien für den Schlüssel. Wenn ein Datenstrom von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch mit AES zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
+Mithilfe von Media Services können Sie HTTP Live Streaming (HLS) und Smooth Streaming, die mit dem AES verschlüsselt sind, mithilfe von 128-Bit-Verschlüsselungsschlüsseln bereitstellen. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. Wenn ein Medienobjekt von Media Services verschlüsselt werden soll, ordnen Sie dem Medienobjekt einen Verschlüsselungsschlüssel zu und konfigurieren außerdem Autorisierungsrichtlinien für den Schlüssel. Wenn ein Datenstrom von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch mit AES zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
 Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Token. Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format [Simple Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) und [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT). Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
 Damit dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Medienobjekt verfügen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Außerdem müssen Sie die Übermittlungsrichtlinie für das Medienobjekt konfigurieren (weiter unten in diesem Artikel beschrieben). Basierend auf dem angegebenen Format in der Streaming-URL stellt der On-Demand-Streaming-Server dann sicher, dass der Datenstrom im ausgewählten Protokoll übermittelt wird. Aus diesem Grund werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderungen eines Clients jeweils mit der richtigen Antwort.
 
 Dieser Artikel richtet sich an Entwickler, die an Anwendungen arbeiten, die geschützte Medieninhalte übermitteln. In dem Artikel wird gezeigt, wie Sie den Schlüsselübermittlungsdienst mit Autorisierungsrichtlinien konfigurieren, damit nur autorisierte Clients die Verschlüsselungsschlüssel empfangen können. Außerdem wird gezeigt, wie dynamische Verschlüsselung verwendet wird.
+
+Informationen zur Verschlüsselung von Inhalten mit dem Advanced Encryption Standard (AES) für die Übermittlung an Safari unter macOS finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+Eine Übersicht über den Schutz von Medieninhalten mit der AES-Verschlüsselung finden Sie in [diesem Video](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>Workflow für dynamische AES-128-Verschlüsselung und Schlüsselübermittlungsdienst
@@ -164,7 +159,7 @@ Der Client muss den URL-Wert aus der Manifestdatei extrahieren. Der URL-Wert ent
 
 Im Fall von HLS wird das Stammmanifest in Segmentdateien aufgeteilt. 
 
-Das Stammmanifest ist beispielsweise: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Es enthält eine Liste der Segmentdateinamen.
+Beispiel für das Stammmanifest: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Es enthält eine Liste der Segmentdateinamen.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -173,7 +168,7 @@ Das Stammmanifest ist beispielsweise: http://test001.origin.mediaservices.window
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Wenn Sie eine der Segmentdateien in einem Text-Editor öffnen (z.B. http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format = m3u8-aapl), enthält diese #EXT-X-KEY. Diese Angabe zeigt an, dass die Datei verschlüsselt ist.
+Wenn Sie eine der Segmentdateien in einem Text-Editor öffnen (z. B. „http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)“), enthält sie „#EXT-X-KEY“, was darauf hinweist, dass die Datei verschlüsselt ist.
 
     #EXTM3U
     #EXT-X-VERSION:4

@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre persönlichen und Enterprise Agreement-Abrechnungskonten im Azure-Portal anzeigen.
+title: Anzeigen Ihrer Abrechnungskonten im Azure-Portal | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Ihre Abrechnungskonten im Azure-Portal anzeigen.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -14,33 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: a9f299f8987b5a2023d668d41c98b473f1a626d4
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 31e4eb1d6493c8de99ac48e09dfb2b8b6481b70a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902261"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854278"
 ---
-# <a name="view-all-your-billing-accounts-in-azure-portal"></a>Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal  
+# <a name="view-your-billing-accounts-in-azure-portal"></a>Anzeigen Ihrer Abrechnungskonten im Azure-Portal  
 
-Abrechnungskonten definieren Ihre Azure-Abrechnungen. Sie können über mehrere Abrechnungskonten verfügen. Beispielsweise könnten Sie ein Azure-Abonnement für persönliche Projekte verwenden. Sie können auch über das Enterprise Agreement Ihrer Organisation auf Azure zugreifen. Navigieren Sie im Azure-Portal zu [Kostenverwaltung + Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview), um all Ihre Abrechnungskonten anzuzeigen.
+Für jede von Ihnen unterzeichnete Microsoft-Vereinbarung über die Verwendung von Azure wird ein Abrechnungskonto erstellt. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungsmethoden und zum Nachverfolgen der Kosten für Azure-Dienste. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. Es kann beispielsweise sein, dass Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Unter Umständen können Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung zugreifen. In diesen Szenarien verfügen Sie dann jeweils über ein separates Abrechnungskonto.
 
-Zurzeit können Sie nur Ihre persönlichen und Enterprise Agreement-Abrechnungskonten einsehen. Standardmäßig wird auf der Seite [Kostenverwaltung + Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) Ihr persönliches Abrechnungskonto angezeigt. Sie können allerdings zu **Abrechnungskonten** navigieren und das Konto ändern.
+Für das Azure-Portal werden derzeit die folgenden Arten von Abrechnungskonten unterstützt:
 
-Sämtliche Gebühren für persönliche Abrechnungskonten können Sie im [Azure-Portal](https://portal.azure.com) verwalten und anzeigen. Allerdings können Sie bei Enterprise Agreement-Konten nur Käufe, Salden und Gebühren seit Monatsbeginn von Azure-Reservierungen einsehen. Diese in der Vorschauversion befindlichen Enterprise Agreement-Features sind nur dann verfügbar, wenn Ihnen die Rolle eines Unternehmensadministrators zugewiesen ist.
+- **Microsoft Online Services-Programm**: Ein Abrechnungskonto für ein Microsoft Online Services-Programm wird erstellt, wenn Sie sich über die Azure-Website für Azure registrieren. Beispiele hierfür sind die Registrierung für ein [Azure-Konto vom Typ „Free“](https://azure.microsoft.com/offers/ms-azr-0044p/), ein [Azure-Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder als [Visual Studio-Abonnent](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-## <a name="change-billing-account-view"></a>Ansicht „Abrechnungskonto ändern“ 
+- **Enterprise Agreement**: Ein Abrechnungskonto für ein Enterprise Agreement wird erstellt, wenn Ihre Organisation ein Enterprise Agreement für die Nutzung von Azure unterzeichnet. Administratoren des Abrechnungskontos für ein Enterprise Agreement verwenden Abteilungen und Konten als Abrechnungsbereiche, um die Abrechnung für ihre Organisation zu verwalten und zu organisieren.
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+- **Microsoft-Kundenvereinbarung**: Ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung wird erstellt, wenn Ihre Organisation eine Microsoft-Kundenvereinbarung für die Nutzung von Azure unterzeichnet. Administratoren des Abrechnungskontos für eine Microsoft-Kundenvereinbarung nutzen Abrechnungsprofile und Rechnungsabschnitte, um die Abrechnung für ihre Organisation zu verwalten und zu organisieren. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung](billing-mca-overview.md).
 
-2.  Wählen Sie auf der linken Seite des Portals **Kostenverwaltung + Abrechnung** aus. 
+## <a name="change-billing-account-view-in-the-azure-portal"></a>Ändern der Abrechnungskontoansicht im Azure-Portal
 
-3.  Sofern Sie über ein persönliches Abrechnungskonto verfügen, wird dieses standardmäßig in dieser Ansicht angezeigt. Wenn Sie kein persönliches Abrechnungskonto besitzen oder zu einem Enterprise Agreement-Konto wechseln möchten, wählen Sie **Abrechnungskonten** aus.
+Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Benutzer zum Anzeigen und Verwalten der Abrechnung verwenden. Abrechnungskonten für das Microsoft Online Services-Programm verfügen nur über den Bereich „Abrechnungskonto“, während es Abrechnungskonten für Enterprise Agreement die Bereiche „Abrechnungskonto“, „Abteilung“ und „Konto“ sind. Falls Sie Zugriff auf mehrere Abrechnungsbereiche haben, wird standardmäßig einer der Bereiche auf der Azure-Seite „Kostenverwaltung + Abrechnung“ angezeigt. Sie können den Bereich ändern, indem Sie die hier angegebene Anleitung befolgen:
 
-4.  Wählen Sie ein Konto aus, um die entsprechenden Details anzuzeigen. Bei Enterprise Agreements werden lediglich die Abrechnungskonten angezeigt, bei denen Sie der Unternehmensadministrator sind. Unterstützung für andere Enterprise Agreement-Rollen wird in Zukunft geboten.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-    ![Screenshot der Liste der Abrechnungskonten](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+
+   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
+
+3. Wählen Sie auf der linken Seite die Option **Alle Abrechnungsbereiche**.
+
+   ![Screenshot: Alle Abrechnungsbereiche](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+
+4. Wählen Sie einen Bereich aus, um Details dazu anzuzeigen.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

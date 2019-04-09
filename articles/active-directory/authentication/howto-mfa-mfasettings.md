@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Azure Multi-Factor Authentication
+title: Konfigurieren von Azure Multi-Factor Authentication – Azure Active Directory
 description: In diesem Artikel wird beschrieben, wie Sie die Einstellungen der Azure Multi-Factor Authentication im Azure-Portal konfigurieren
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f622be53297a9d091a62a1239f022bbd4fb71347
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856259"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311763"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 

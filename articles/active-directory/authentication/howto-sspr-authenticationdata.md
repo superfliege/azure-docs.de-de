@@ -1,5 +1,5 @@
 ---
-title: Datenanforderungen von Azure AD SSPR | Microsoft-Dokumentation
+title: Datenanforderungen für Azure AD-SSPR – Azure Active Directory
 description: Datenanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung und deren Bereitstellung
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf665147c8fea0e2ce44161ef0b5df085649a0b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179041"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371365"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
 
 Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) bereitgestellt werden kann, müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen überlassen es ihren Benutzern, dass diese ihre Authentifizierungsdaten selbst eingeben. Aber viele Organisationen bevorzugen ein Synchronisieren mit Daten, die bereits in Active Directory vorhanden ist. Die synchronisierten Daten werden für Azure AD und SSPR verfügbar gemacht, ohne dass ein Eingreifen eines Benutzers erforderlich ist, wenn Sie:
-   * Die Daten ordnungsgemäß in Ihrem lokalen Verzeichnis formatieren.
-   * [Azure AD Connect durch Verwenden der Express-Einstellungen](../hybrid/how-to-connect-install-express.md) konfigurieren.
+
+* Die Daten ordnungsgemäß in Ihrem lokalen Verzeichnis formatieren.
+* [Azure AD Connect durch Verwenden der Express-Einstellungen](../hybrid/how-to-connect-install-express.md) konfigurieren.
 
 Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
 
@@ -46,7 +47,7 @@ Nachdem ein Benutzer die Mobiltelefonnummer verifiziert hat, wird diese Nummer i
 
 Ein globaler Administrator kann die Kontaktinformationen eines Benutzers für die Authentifizierung manuell festlegen, wie im folgenden Screenshot gezeigt.
 
-![Kontakt][Contact]
+![Kontaktinformationen für die Authentifizierung eines Benutzers in Azure AD][Contact]
 
 Wenn das Feld „Telefon“ ausgefüllt und „Mobiltelefon“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
 
@@ -84,7 +85,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Festlegen der Authentifizierungsdaten mit PowerShell Version 1
 
-```
+```PowerShell
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
@@ -96,7 +97,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("emai
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>Lesen der Authentifizierungsdaten mit PowerShell Version 1
 
-```
+```PowerShell
 Connect-MsolService
 
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
@@ -110,7 +111,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 Wenn Sie PowerShell Version 1 verwenden und die Optionen **Telefon für Authentifizierung** und **E-Mail für Authentifizierung** lesen möchten, führen Sie die folgenden Befehle aus:
 
-```
+```PowerShell
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
@@ -122,7 +123,7 @@ Zunächst müssen Sie [das Azure AD Version 2 PowerShell-Modul herunterladen und
 
 Um schnell aus neueren Versionen von PowerShell zu installieren, die „Install-Module“ unterstützen, führen Sie die folgenden Befehle aus. (In der ersten Zeile wird überprüft, ob das Modul bereits installiert ist.)
 
-```
+```PowerShell
 Get-Module AzureADPreview
 Install-Module AzureADPreview
 Connect-AzureAD
@@ -130,7 +131,7 @@ Connect-AzureAD
 
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Festlegen der Authentifizierungsdaten mit PowerShell Version 2
 
-```
+```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
@@ -142,7 +143,7 @@ Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mo
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>Lesen der Authentifizierungsdaten mit PowerShell Version 2
 
-```
+```PowerShell
 Connect-AzureAD
 
 Get-AzureADUser -ObjectID user@domain.com | select otherMails

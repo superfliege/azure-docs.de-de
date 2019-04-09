@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835015"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
 Dieses Dokument veranschaulicht, wie Features für Daten in einem Azure HDInsight Hadoop-Cluster mithilfe von Hive-Abfragen erstellt werden. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.
 
 Die Vorgänge zum Erstellen von Features können speicherintensiv sein. In solchen Fällen fällt die Leistung von Hive-Abfragen noch stärker ins Gewicht. Sie kann durch die Optimierung bestimmter Parameter verbessert werden. Die Optimierung dieser Parameter wird im letzten Abschnitt erläutert.
 
-Beispiele für die vorgestellten Abfragen gelten speziell für Szenarien mit den [NYC Taxi Trip-Daten](http://chriswhong.com/open-data/foil_nyc_taxi/) und stehen auch im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) zur Verfügung. Für diese Abfragen ist bereits ein Datenschema angegeben, sodass sie bereit für die Übermittlung zur Ausführung sind. Im letzten Abschnitt werden außerdem Parameter beschrieben, mit denen Benutzer die Leistung der Hive-Abfragen optimieren können.
+Beispiele für die vorgestellten Abfragen gelten speziell für Szenarien mit den [NYC Taxi Trip-Daten](https://chriswhong.com/open-data/foil_nyc_taxi/) und stehen auch im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) zur Verfügung. Für diese Abfragen ist bereits ein Datenschema angegeben, sodass sie bereit für die Übermittlung zur Ausführung sind. Im letzten Abschnitt werden außerdem Parameter beschrieben, mit denen Benutzer die Leistung der Hive-Abfragen optimieren können.
 
 Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
@@ -130,7 +130,7 @@ Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zie
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Die mathematischen Gleichungen zur Berechnung der Entfernung zwischen zwei GPS-Koordinaten finden Sie auf der Website <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> von Peter Lapisu. In seinem JavaScript-Code ist die `toRad()`-Funktion nur *lat_or_lon*pi/180\* und rechnet Grad in Radianten um. Hierbei ist *lat_or_lon* der Längen- oder Breitengrad. Da Hive keine `atan2`-Funktion bereitstellt, jedoch die `atan`-Funktion, wird die `atan2`-Funktion in der oben angegebenen Hive-Abfrage anhand der in <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> angegebenen Definition durch die `atan`-Funktion implementiert.
+Die mathematischen Gleichungen zur Berechnung der Entfernung zwischen zwei GPS-Koordinaten finden Sie auf der Website <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> von Peter Lapisu. In seinem JavaScript-Code ist die `toRad()`-Funktion nur *lat_or_lon*pi/180 und rechnet Grad in Radianten um. Hierbei ist *lat_or_lon* der Längen- oder Breitengrad. Da Hive keine `atan2`-Funktion bereitstellt, jedoch die `atan`-Funktion, wird die `atan2`-Funktion in der oben angegebenen Hive-Abfrage anhand der in <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> angegebenen Definition durch die `atan`-Funktion implementiert.
 
 ![Arbeitsbereich erstellen](./media/create-features-hive/atan2new.png)
 
@@ -161,11 +161,11 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
    
     Die typischen Standardwerte sind:
     
-    - bei *mapred.min.split.size* 0 (null),
-    - bei *mapred.max.split.size* **Long.MAX** und bei 
-    - *dfs.block.size* 64 MB.
+   - bei *mapred.min.split.size* 0 (null),
+   - bei *mapred.max.split.size* **Long.MAX** und bei 
+   - *dfs.block.size* 64 MB.
 
-    Bei entsprechender Datengröße können Sie durch Festlegen dieser Parameter die Anzahl der verwendeten Mapper optimieren.
+     Bei entsprechender Datengröße können Sie durch Festlegen dieser Parameter die Anzahl der verwendeten Mapper optimieren.
 
 4. Hier finden Sie einige andere **weiterführende Optionen** zur Optimierung der Hive-Leistung. Diese ermöglichen das Festlegen des zugeordneten Speichers für "map"- und "reduce"-Aufgaben, die beim Optimieren der Leistung nützlich sein können. Beachten Sie, dass *mapreduce.reduce.memory.mb* nicht größer sein darf als die Größe des physischen Speichers der einzelnen Workerknoten im Hadoop-Cluster.
    

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e7243c1f0c0bc26b2e77a060b5def6e204835235
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553747"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919234"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
@@ -39,7 +39,7 @@ ms.locfileid: "57553747"
 
 Seit 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle dazugehörigen Aufgabendatensätze automatisch gelöscht. Die automatische Löschung erfolgt auch dann, wenn die Gesamtanzahl von Datensätzen unter dem Kontingentlimit liegt. Wenn Sie die Auftrags- und Aufgabeninformationen archivieren möchten, verwenden Sie den unter [Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md) beschriebenen Code.
 
-<sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden pro Anforderung maximal 1.000 Aufträge zurückgegeben. Wenn Sie alle übermittelten Aufträge nachverfolgen möchten, verwenden Sie die unter [OData-Systemabfrageoptionen](https://msdn.microsoft.com/library/gg309461.aspx) beschriebenen Abfragen „$top“ oder „$skip“.
+<sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden pro Anforderung maximal 1.000 Aufträge zurückgegeben. Wenn Sie alle übermittelten Aufträge nachverfolgen möchten, verwenden Sie die unter [OData-Systemabfrageoptionen](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)) beschriebenen Abfragen „$top“ oder „$skip“.
 
 <sup>4</sup> Locators sind nicht für die Verwaltung der benutzerspezifischen Zugriffssteuerung konzipiert. Wenn Sie einzelnen Benutzern unterschiedliche Zugriffsrechte zuweisen möchten, verwenden Sie eine DRM-Lösung (Digital Rights Management). Weitere Informationen finden Sie in der [Übersicht über den Inhaltsschutz](../articles/media-services/previous/media-services-content-protection-overview.md).
 

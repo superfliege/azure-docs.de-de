@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540567"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445429"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow
 
@@ -76,10 +76,10 @@ Wenn Sie Anwendungsberechtigungen in Ihrer App verwenden möchten, führen Sie d
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
 
-1. Registrieren und erstellen Sie eine App über das [App-Registrierungsportal](quickstart-v2-register-an-app.md) oder die neue [Oberfläche „App-Registrierungen“ (Vorschauversion)](quickstart-register-app.md).
-1. Wechseln Sie in dem Portal, das Sie zum Registrieren oder Erstellen Ihrer App verwendet haben, zu Ihrer App. Sie müssen beim Erstellen Ihrer App mindestens ein Anwendungsgeheimnis verwenden.
-1. Suchen Sie den Abschnitt **API-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
-1. **Speichern** Sie die App-Registrierung.
+1. Registrieren und erstellen Sie eine App über die neue [Oberfläche „App-Registrierungen“ (Vorschauversion)](quickstart-register-app.md).
+2. Wechseln Sie auf der Benutzeroberfläche von „App-Registrierungen“ (Vorschauversion) zu Ihrer Anwendung. Navigieren Sie zum Abschnitt **Zertifikate und Geheimnisse**, und fügen Sie einen **neuen geheimen Clientschlüssel** hinzu, weil Sie mindestens einen geheimen Clientschlüssel verwenden müssen, um ein Token anzufordern.
+3. Suchen Sie den Abschnitt **API-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
+4. **Speichern** Sie die App-Registrierung.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
 
@@ -172,7 +172,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
 | `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. </br>Dieser Wert weist den v2.0-Endpunkt an, von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen auszustellen, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Erforderlich | Das Anwendungsgeheimnis, das Sie im App-Registrierungsportal für Ihre App generiert haben. Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. |
+| `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im App-Registrierungsportal für Ihre App generiert haben. Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. |
 | `grant_type` | Erforderlich | Muss auf `client_credentials` festgelegt sein. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat

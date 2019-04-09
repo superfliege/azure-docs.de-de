@@ -1,29 +1,29 @@
 ---
 title: Verbessern der Wissensdatenbank – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Durch aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden. Sie überprüfen diese Vorschläge, indem Sie sie entweder zu vorhandenen Fragen hinzufügen oder ablehnen. Ihre Wissensdatenbank wird nicht automatisch geändert. Sie müssen die Vorschläge akzeptieren, damit eine Änderung wirksam wird. Mit diesen Vorschlägen werden Fragen hinzugefügt, vorhandene Fragen werden aber weder geändert noch entfernt.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537897"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522195"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern der Wissensdatenbank
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
 Durch aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden. Sie überprüfen diese Vorschläge, indem Sie sie entweder zu vorhandenen Fragen hinzufügen oder ablehnen. 
 
 Ihre Wissensdatenbank wird nicht automatisch geändert. Sie müssen die Vorschläge akzeptieren, damit eine Änderung wirksam wird. Mit diesen Vorschlägen werden Fragen hinzugefügt, vorhandene Fragen werden aber weder geändert noch entfernt.
 
-## <a name="active-learning"></a>Aktives Lernen
+## <a name="what-is-active-learning"></a>Was ist aktives Lernen?
 
 QnA Maker erlernt neue Fragevarianten über implizites und explizites Feedback.
  
@@ -42,7 +42,7 @@ Wenn mindestens 5 ähnliche Abfragen gruppiert werden, sendet QnA Maker alle 30 
 
 Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, müssen Sie diese überprüfen und akzeptieren oder ablehnen. 
 
-## <a name="upgrade-version-to-use-active-learning"></a>Versionsupgrade für aktives Lernen
+## <a name="upgrade-your-version-to-use-active-learning"></a>Ausführen eines Upgrades Ihrer Version, um aktives Lernen zu nutzen
 
 Das Feature für aktives Lernen wird in der Runtimeversion 4.4.0 und höher unterstützt. Wenn Ihre Wissensdatenbank mit einer Vorgängerversion erstellt wurde, [führen Sie ein Upgrade Ihrer Runtime durch](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates), um dieses Feature zu nutzen. 
 
@@ -64,12 +64,12 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
 1. Um das Feature für aktives Lernen zu aktivieren, klicken Sie auf Ihren **Namen**. Wechseln Sie dann rechts oben im QnA Maker-Portal zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).  
 
-    ![Aktivieren des Features für aktives Lernen auf der Seite mit den Diensteinstellungen](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![Aktivieren Sie auf der Seite „Diensteinstellungen“ Alternativen für die vom Feature für aktives Lernen vorgeschlagenen Fragen. Wählen Sie im Menü rechts oben Ihren Benutzernamen und dann „Diensteinstellungen“ aus.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
 1. Suchen Sie nach dem QnA Maker-Dienst, und aktivieren Sie die Option **Active Learning**. 
 
-    [![Aktivieren des Features für aktives Lernen auf der Seite mit den Diensteinstellungen](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![Aktivieren Sie auf der Seite „Diensteinstellungen“ das Feature für aktives Lernen. Wenn Sie das Feature nicht aktivieren können, müssen Sie möglicherweise ein Upgrade des Diensts ausführen.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     Nachdem Sie **Active Learning** aktiviert haben, schlägt die Wissensdatenbank basierend auf den von Benutzern übermittelten Fragen in regelmäßigen Abständen neue Fragen vor. Sie können **Active Learning** deaktivieren, indem Sie die Einstellung wieder umschalten.
 
@@ -77,15 +77,15 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
 1. Um die vorgeschlagenen Fragen anzuzeigen, wählen Sie auf der Seite **Bearbeiten** der Wissensdatenbank die Option **Vorschläge anzeigen** aus. 
 
-    [![Umschalten der Option „Vorschläge anzeigen“ auf der Seite mit den Diensteinstellungen](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![Wählen Sie im Bereich „Bearbeiten“ des Portals „Vorschläge anzeigen“ aus, um die Alternativen für neue Fragen des Features für aktives Lernen anzuzeigen.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. Filtern Sie die Wissensdatenbank nach Frage-Antwort-Paaren, um nur Vorschläge anzuzeigen, indem Sie **Nach Vorschlägen filtern** auswählen.
 
-    [![Filtern nach Vorschlägen auf der Seite mit den Diensteinstellungen, um nur diese Frage-Antwort-Paare anzuzeigen](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![Verwenden Sie den Umschalter „Nach Vorschlägen filtern“, um nur die vom Feature für aktives Lernen vorgeschlagenen Alternativen für Fragen anzuzeigen.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
 1.  Jeder Fragenabschnitt mit Vorschlägen zeigt die neuen Fragen mit einem Häkchen (`✔`) an, um die Frage zu akzeptieren, oder mit einem Kreuz (`x`), um die Vorschläge abzulehnen. Aktivieren Sie das Häkchen, um die Frage hinzuzufügen. 
 
-    [![Umschalten des Features für aktives Lernen auf der Seite mit den Diensteinstellungen](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Sie können die vorgeschlagenen die vom Feature für aktives Lernen vorgeschlagenen Alternativen für Fragen auswählen oder ablehnen, indem Sie auf das grüne Häkchen oder das rote Löschsymbol klicken.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Sie können _alle Vorschläge_ hinzufügen oder löschen, indem Sie **Alle hinzufügen** oder **Alle ablehnen** auswählen.
 
@@ -154,7 +154,13 @@ Wenn die Clientanwendung (in diesem Fall der Chatbot) die Antwort empfängt, wer
 
 Die Clientanwendung zeigt alle Fragen an und gibt dem Benutzer die Möglichkeit, die am besten geeignete Frage auszuwählen. 
 
-Der Benutzer wählt eine der vorhandenen Fragen aus. Das Benutzerfeedback wird an die [Trainings](https://www.aka.ms/activelearningsamplebot)-API von QnA Maker gesendet, um den Zyklus für das aktive Lernen fortzusetzen. 
+Sobald der Benutzer eine der vorhandenen Fragen ausgewählt hat, sendet die Clientanwendung die Auswahl des Benutzers als Feedback mithilfe der Trainings-API von QnA Maker. Dieses Feedback vervollständigt die Feedbackschleifen des Features für aktives Lernen. 
+
+Verwenden Sie das [C#-Beispiel für Azure Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot), um aktives Lernen in einem End-to-End-Szenario zu verfolgen.
+
+## <a name="train-api"></a>Trainings-API
+
+Feedback zum Feature für aktives Lernen wird über eine POST-Anforderung der Trainings-API an QnA Maker gesendet. Die API-Signatur ist wie folgt:
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -163,13 +169,46 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-Weitere Informationen zur Verwendung des Features für aktives Lernen mit einem [Azure Bot-Beispiel für C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+|HTTP-Anforderungseigenschaft|NAME|Type|Zweck|
+|--|--|--|--|
+|URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
+|Unterdomäne des Hosts|Name der QnAMaker-Ressource|Zeichenfolge|Der Hostname für Ihren QnA Maker in Ihrem Azure-Abonnement. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. |
+|Header|Content-Typ|Zeichenfolge|Medientyp des an die API gesendeten Texts Der Standardwert ist: `application/json`|
+|Header|Autorisierung|Zeichenfolge|Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Posttext|JSON-Objekt|JSON|Das Feedback zum Training|
 
-## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktives Lernen wird in der TSV-Datei der exportierten App gespeichert.
+Der JSON-Text verfügt über mehrere Einstellungen:
+
+|JSON-Texteigenschaft|Type|Zweck|
+|--|--|--|--|
+|`feedbackRecords`|Array|Liste des Feedbacks|
+|`userId`|Zeichenfolge|Die Benutzer-ID der Person, die die vorgeschlagenen Fragen akzeptiert. Das Format der Benutzer-ID bleibt Ihnen überlassen. Beispielsweise kann eine E-Mail-Adresse eine in Ihrer Architektur gültige Benutzer-ID sein. Optional.|
+|`userQuestion`|Zeichenfolge|Der genaue Text der Frage. Erforderlich.|
+|`qnaID`|number|Die ID der Frage in der [GenerateAnswer-Antwort](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+
+Ein JSON-Beispieltext sieht folgendermaßen aus:
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "<question-text>",
+            "qnaId": 1
+        }
+    ]
+}
+```
+
+Eine erfolgreiche Antwort gibt den Status 204 und einen JSON-Antworttext zurück. 
+
+<a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
+
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktives Lernen wird in der exportierten Wissensdatenbank gespeichert.
 
 Wenn aktives Lernen für Ihre App aktiviert ist Sie die App exportieren, enthält die Spalte `SuggestedQuestions` in der TSV-Datei die Daten für aktives Lernen. 
 
-Die Spalte `SuggestedQuestions` ist ein JSON-Objekt mit Informationen zu implizitem (`autosuggested`) und explizitem (`usersuggested`) [Feedback](#active-learning). Ein Beispiel für dieses JSON-Objekt für eine einzelne, vom Benutzer übermittelte Bitte um `help` ist:
+Die Spalte `SuggestedQuestions` ist ein JSON-Objekt mit Informationen zu implizitem (`autosuggested`) und explizitem (`usersuggested`) Feedback. Ein Beispiel für dieses JSON-Objekt für eine einzelne, vom Benutzer übermittelte Bitte um `help` ist:
 
 ```JSON
 [
@@ -193,4 +232,4 @@ Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Infor
 ## <a name="next-steps"></a>Nächste Schritte
  
 > [!div class="nextstepaction"]
-> [Verwenden der QnA Maker-API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Verwenden von Metadaten mit der GenerateAnswer-API](metadata-generateanswer-usage.md)

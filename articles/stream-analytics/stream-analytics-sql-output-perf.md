@@ -2,19 +2,19 @@
 title: Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 description: Erfahren Sie mehr über die Ausgabe von Daten aus Azure Stream Analytics in SQL Azure, und erzielen Sie höhere Durchsatzraten für Schreibvorgänge.
 services: stream-analytics
-author: chetang
-ms.author: chetang
-manager: katicad
+author: chetanmsft
+ms.author: chetanmsft
+manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 3/18/2019
+ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303274"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338427"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mi
 
 - **Batchgröße**: In der SQL-Ausgabekonfiguration können Sie die maximale Batchgröße in einer Azure Stream Analytics-SQL-Ausgabe basierend auf der Natur Ihrer Zieltabelle/Arbeitsauslastung angeben. Die Batchgröße ist die maximale Anzahl von Datensätzen, die bei jeder Masseneinfügungstransaktion gesendet werden. In gruppierten Columnstore-Indizes ermöglichen Batchgrößen von etwa [100.000](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) eine weitere Parallelisierung, minimale Protokollierung sowie Sperroptimierungen. In datenträgerbasierten Tabellen ist möglicherweise ein Wert von höchstens 10.000 (Standard) für Ihre Lösung optimal, weil durch höhere Batchgrößen eine Sperrenausweitung bei Masseneinfügungen ausgelöst werden kann.
 
-- **Optimierung von Eingabemeldungen**: Wenn Sie eine Optimierung mit Partitionierungsvererbung und Batchgrößen durchgeführt haben, können Sie den Schreibdurchsatz durch Erhöhen der Anzahl von Eingabeereignissen pro Meldung pro Partition noch weiter steigern. Die Optimierung von Eingabemeldungen ermöglicht innerhalb von Azure Stream Analytics Batchgrößen bis hin zur angegebenen Batchgröße, was zu einem verbesserten Durchsatz führt. Dies lässt sich mithilfe von [Komprimierung](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) oder größeren Meldungen erreichen, die in der EventHub Premium-SKU verfügbar sind.
+- **Optimierung von Eingabemeldungen**: Wenn Sie eine Optimierung mit Partitionierungsvererbung und Batchgrößen durchgeführt haben, können Sie den Schreibdurchsatz durch Erhöhen der Anzahl von Eingabeereignissen pro Meldung pro Partition noch weiter steigern. Die Optimierung von Eingabemeldungen ermöglicht innerhalb von Azure Stream Analytics Batchgrößen bis hin zur angegebenen Batchgröße, was zu einem verbesserten Durchsatz führt. Dies lässt sich mithilfe von [Komprimierung](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) oder durch Heraufsetzen der Größe von Eingabemeldungen in EventHub oder Blob erreichen.
 
 ## <a name="sql-azure"></a>SQL Azure
 
@@ -44,6 +44,15 @@ Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mi
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory und In-Memory-Tabellen
 
 - **In-Memory-Tabelle als temporäre Tabelle**: [In-Memory-Tabellen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) ermöglichen Datenladevorgänge in sehr hoher Geschwindigkeit. Die Daten müssen jedoch in den Arbeitsspeicher passen. Benchmarks zeigen, dass das Massenladen aus einer In-Memory-Tabelle in eine datenträgerbasierte Tabelle ungefähr 10-mal schneller verläuft als eine direkte Masseneinfügung über einen einzigen Writer in die datenträgerbasierte Tabelle mit einer Identitätsspalte und einem gruppierten Index. Um diese Masseneinfügungsleistung zu nutzen, richten Sie einen [Kopierauftrag mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) ein, bei dem Daten aus der In-Memory-Tabelle in die datenträgerbasierte Tabelle kopiert werden.
+
+## <a name="avoiding-performance-pitfalls"></a>Vermeiden von Leistungsproblemen
+Die Masseneinfügung von Daten ist erheblich schneller als das Laden von Daten mit einzelnen Einfügevorgängen, da der wiederholte Mehraufwand für das Übertragen der Daten, das Analysieren der Einfügeanweisung, das Ausführen der Anweisung und das Ausgeben eines Transaktionsdatensatzes entfällt. Stattdessen wird ein effizienterer Pfad in die Speicher-Engine verwendet, um die Daten als Datenstrom zu übertragen. Die Kosten für die Einrichtung dieses Pfades sind jedoch sehr viel höher als bei einer einzelnen Einfügeanweisung in einer datenträgerbasierten Tabelle. Gleichstand wird normalerweise bei ungefähr 100 Zeilen erreicht, jenseits dessen ist das Massenladen nahezu immer effizienter. 
+
+Wenn die Rate der eingehenden Ereignisse gering ist, können leicht Batchgrößen von weniger als 100 Zeilen entstehen, sodass das Massenladen ineffizient ist und zu viel Speicherplatz verbraucht. Um diese Einschränkung zu umgehen, können Sie eine der folgenden Aktionen ausführen:
+* Erstellen eines INSTEAD OF-[Triggers](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql), um für jede Zeile einfache Einfügung zu verwenden.
+* Verwenden einer temporären In-Memory-Tabelle, wie im vorhergehenden Abschnitt beschrieben.
+
+Ein solches Szenario entsteht auch beim Schreiben in einen nicht gruppierten Columnstore-Index (NCCI), bei dem kleinere Masseneinfügungen zu viele Segmente erstellen können, die eine Beschädigung des Index bewirken können. In diesem Fall wird empfohlen, stattdessen einen gruppierten Columnstore-Index zu verwenden.
 
 ## <a name="summary"></a>Zusammenfassung
 

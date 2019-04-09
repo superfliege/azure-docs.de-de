@@ -1,5 +1,5 @@
 ---
-title: Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics | Microsoft-Dokumentation
+title: Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich | Microsoft-Dokumentation
 description: Mithilfe der Azure-Lösung für Aktivitätsprotokolle können Sie das Azure-Aktivitätsprotokoll in all Ihren Azure-Abonnements analysieren und suchen.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540241"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540430"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
 
 ![Symbol „Azure-Aktivitätsprotokolle“](./media/collect-activity-logs/activity-log-analytics.png)
 
@@ -28,7 +28,7 @@ Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Akti
 
 Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen *Was*, *Wer* und *Wann* für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Bereitstellungsmodell verwenden.
 
-Wenn Sie Ihre Azure-Aktivitätsprotokolle mit Log Analytics verbinden, haben Sie folgende Möglichkeiten:
+Wenn Sie Ihre Azure-Aktivitätsprotokolle mit einem Log Analytics-Arbeitsbereich verbinden, haben Sie folgende Möglichkeiten:
 
 - Analysieren der Aktivitätsprotokolle mit vordefinierten Ansichten
 - Analysieren und Suchen von Aktivitätsprotokollen in mehreren Azure-Abonnements
@@ -40,15 +40,15 @@ Wenn Sie Ihre Azure-Aktivitätsprotokolle mit Log Analytics verbinden, haben Sie
 - Identifizieren von Ausfällen oder Dienstintegritätsproblemen, die sich auf Ihre Ressourcen auswirken
 - Verwenden der Protokollsuche zum Korrelieren von Benutzeraktivitäten, Vorgängen zur automatischen Skalierung, Autorisierungsänderungen und Dienstintegrität mit anderen Protokollen oder Metriken aus Ihrer Umgebung
 
-<sup>1</sup>Standardmäßig werden Azure-Aktivitätsprotokolle in Log Analytics 90 Tage gespeichert, auch wenn Sie den Free-Tarif verwenden. Dies gilt auch, wenn die Aufbewahrungsdauer für Ihren Arbeitsbereich auf weniger als 90 Tage festgelegt ist. Wenn für Ihren Arbeitsbereich eine Aufbewahrungsdauer von mehr als 90 Tagen gilt, werden die Aktivitätsprotokolle über den für den Arbeitsbereich geltenden Zeitraum aufbewahrt.
+<sup>1</sup>Standardmäßig speichert Azure Monitor Ihre Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich für 90 Tage, auch wenn Sie den Free-Tarif verwenden. Dies gilt auch, wenn die Aufbewahrungsdauer für Ihren Arbeitsbereich auf weniger als 90 Tage festgelegt ist. Wenn für Ihren Arbeitsbereich eine Aufbewahrungsdauer von mehr als 90 Tagen gilt, werden die Aktivitätsprotokolle über den für den Arbeitsbereich geltenden Zeitraum aufbewahrt.
 
-Mit Log Analytics werden Aktivitätsprotokolle kostenfrei erfasst und kostenfrei 90 Tage gespeichert. Wenn Sie Protokolle länger als 90 Tage speichern, fallen für die länger als 90 Tage gespeicherten Daten Gebühren für die Datenaufbewahrung an.
+Der Log Analytics-Arbeitsbereich erfasst Aktivitätsprotokolle kostenfrei und speichert sie kostenfrei für 90 Tage. Wenn Sie Protokolle länger als 90 Tage speichern, fallen für die länger als 90 Tage gespeicherten Daten Gebühren für die Datenaufbewahrung an.
 
 Wenn Sie den Free-Tarif verwenden, zählen Aktivitätsprotokolle nicht zum täglichen Datenverbrauch.
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
-Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten für Aktivitätsprotokolle nicht von Agents erfasst. Alle von der Lösung verwendeten Daten stammen direkt von Azure.
+Im Gegensatz zu den meisten anderen Azure Monitor-Lösungen werden die Daten für Aktivitätsprotokolle nicht von Agents erfasst. Alle von der Lösung verwendeten Daten stammen direkt von Azure.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |

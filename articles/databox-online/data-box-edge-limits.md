@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 30e0c37d3d0c03e77b6dab9c06c0a50bff27e8bc
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966653"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403542"
 ---
-# <a name="azure-data-box-edge-limits-preview"></a>Für Azure Data Box Edge geltende Einschränkungen (Vorschau)
+# <a name="azure-data-box-edge-limits"></a>Für Azure Data Box Edge geltende Einschränkungen
 
 Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betreiben Ihrer Microsoft Azure Data Box Edge-Lösung.
-
-> [!IMPORTANT]
-> Data Box Edge befindet sich in Vorschauphase. Lesen Sie die [Vertragsbedingungen für die Nutzung der Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
-
 
 ## <a name="data-box-edge-service-limits"></a>Einschränkungen für den Data Box Edge-Dienst
 

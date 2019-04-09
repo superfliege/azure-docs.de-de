@@ -4,12 +4,12 @@ ms.service: log-analytics
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 44febf95c660601df78047fc473f61e0d3169890
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270322"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505748"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>Behandeln von Problemen mit Azure Diagnostics
 
@@ -32,6 +32,6 @@ Wiederholen Sie nach der Registrierung des Ressourcenanbieters *Microsoft.insigh
 
 Wenn Sie in PowerShell die folgende Fehlermeldung erhalten, müssen Sie Ihre Version von PowerShell aktualisieren:
 
-`Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
+`Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Aktualisieren Sie PowerShell auf die Version von November 2016 (v2.3.0) oder höher, indem Sie die Anleitung im Artikel [Erste Schritte mit Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) befolgen.
+Aktualisieren Sie Ihre Version von Azure PowerShell, indem Sie die Anweisungen im Artikel [Installieren von Azure PowerShell](/powershell/azure/install-az-ps) befolgen.

@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfef0e27dd3e38e5a965f47a47619671a3127b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117658"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484094"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurieren des einmaligen Anmeldens für Nicht-Kataloganwendungen in Azure Active Directory
 
@@ -79,7 +79,7 @@ Geben Sie zum Einrichten von Azure AD die SAML-Basiskonfiguration ein. Sie könn
 
     Zur Konfiguration mehrerer replyURLs-Elemente können Sie das folgende PowerShell-Skript verwenden.
 
-    ```PowerShell
+    ```powershell
     $sp = Get-AzureADServicePrincipal -SearchString "<Exact App  name>"
     $app = Get-AzureADApplication -SearchString "<Exact app name>"
     Set-AzureADApplication -ObjectId $app.ObjectId -ReplyUrls "<ReplyURLs>"
@@ -124,7 +124,7 @@ Weitere Informationen finden Sie unter [Verwalten von Zertifikaten für die einm
 
 ### <a name="set-up-target-application"></a>Einrichten der Zielanwendung
 
-Um die Anwendung für einmaliges Anmelden zu konfigurieren, suchen Sie zunächst die Dokumentation der Anwendung. Scrollen Sie hierzu bis zum Ende der Konfigurationsseite für die SAML-basierte Anmeldung, und klicken Sie dann auf **Konfigurieren<application name>**. 
+Um die Anwendung für einmaliges Anmelden zu konfigurieren, suchen Sie zunächst die Dokumentation der Anwendung. Scrollen Sie hierzu bis zum Ende der Konfigurationsseite für die SAML-basierte Anmeldung, und klicken Sie dann auf **Konfigurieren \<Anwendungsname>**. 
 
 Die erforderlichen Werte variieren je nach Anwendung. Einzelheiten finden Sie in der SAML-Dokumentation der Anwendung. Die Dienst-URLs für Anmeldung und Abmeldung werden beide auf den gleichen Endpunkt aufgelöst, wobei es sich um den Endpunkt zur Verarbeitung von SAML-Anforderungen für Ihre Azure AD-Instanz handelt. Die SAML-Entitäts-ID ist der Wert, der in dem für die Anwendung ausgestellten SAML-Token als Zertifikataussteller angezeigt wird.
 

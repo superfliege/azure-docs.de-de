@@ -11,35 +11,62 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: juliako
-ms.openlocfilehash: d1d07402bca5f01cf63d0b039c085e46bb0f0d62
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d9c59bdb2e8a7b115761554f70ebedeecaf5d04e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447921"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901725"
 ---
 # <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 
-Microsoft Azure Media Services kann verwendet werden, um zahlreiche Medien-Quelldateiformate, Medienstreamingformate und Inhaltsschutzformate in verschiedenen Clienttechnologien wie iOS und XBOX bereitzustellen. Von den Clients werden verschiedene Protokolle verarbeitet. So ist für iOS ein HLS-Format (HTTP Live Streaming) erforderlich, für Xbox dagegen Smooth Streaming. Wenn Sie über einen Satz MP4-Dateien (ISO Base Media 14496-12) mit adaptiver Bitrate (Multi-Bitrate) oder einen Satz von Smooth Streaming-Dateien mit adaptiver Bitrate verfügen, die Sie Clients bereitstellen möchten, von denen HLS, MPEG DASH oder Smooth Streaming verarbeitet wird, sollten Sie die Vorteile der dynamischen Paketerstellung von Media Services nutzen.
+Microsoft Azure Media Services kann verwendet werden, um zahlreiche Medien-Quelldateiformate, Medienstreamingformate und Inhaltsschutzformate in verschiedenen Clienttechnologien wie iOS und XBOX bereitzustellen. Von den Clients werden verschiedene Protokolle verarbeitet. So ist für iOS ein HLS-Format (HTTP Live Streaming) erforderlich, für Xbox dagegen Smooth Streaming. Wenn Sie über MP4-Dateien (ISO Base Media 14496-12) mit adaptiver Bitrate (Multi-Bitrate) oder über Smooth Streaming-Dateien mit adaptiver Bitrate verfügen, die Sie für Clients bereitstellen möchten, von denen HLS, MPEG DASH oder Smooth Streaming unterstützt wird, können Sie die Vorteile der dynamischen Paketerstellung nutzen. Die Paketerstellung ist unabhängig von der Videoauflösung; SD, HD und UHD-4K werden unterstützt.
 
-Bei der dynamischen Paketerstellung müssen Sie lediglich ein Medienobjekt erstellen, das einen Satz von MP4-Dateien mit adaptiver Bitrate enthält. Dann wird durch den bedarfsgesteuerten Streamingserver auf Basis des in der Manifest- oder Fragmentanforderung angegebenen Formats sichergestellt, dass Sie den Datenstrom im ausgewählten Protokoll erhalten. So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht.
+[Streamingendpunkte](streaming-endpoint-concept.md) ist der dynamische Paketerstellungsdienst in Media Services, mit dem Medieninhalte für Clientplayer bereitgestellt werden. Die Feature für die dynamische Paketerstellung ist standardmäßig auf allen **Streamingendpunkten** (Standard oder Premium) vorhanden. In Media Services v3 fallen für dieses Feature keine zusätzlichen Kosten an. 
 
-Im folgenden Diagramm wird der herkömmliche Workflow zur Codierung und statischen Paketerstellung dargestellt.
+Für die Nutzung der **dynamischen Paketerstellung** benötigen Sie ein **Medienobjekt** mit MP4-Dateien mit adaptiver Bitrate sowie Streamingkonfigurationsdateien, die für die dynamische Paketerstellung von Media Services erforderlich sind. Zum Abrufen der Dateien können Sie beispielsweise Ihre Zwischendatei (Quelldatei) mit Media Services codieren. Um Videos in dem codierten Medienobjekt für die Clientwiedergabe verfügbar zu machen, müssen Sie einen **Streaminglocator** sowie Streaming-URLs erstellen. Daraufhin erhalten Sie den Stream abhängig vom im Streamingclientmanifest angegebenen Format (HLS, DASH oder Smooth) in dem Protokoll, das Sie gewählt haben.
 
-![Statische Codierung](./media/dynamic-packaging-overview/media-services-static-packaging.png)
+So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht. 
 
-Im folgenden Diagramm wird der Workflow zur dynamischen Paketerstellung dargestellt.
+Die dynamische Paketerstellung in Media Services wird sowohl für Livestreaming als auch für On-Demand-Streaming verwendet. Das folgende Diagramm zeigt das On-Demand-Streaming mit dem Workflow der dynamischen Paketerstellung.
 
-![Dynamische Codierung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dynamische Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-## <a name="dynamic-packaging-workflow"></a>Workflow zur dynamischen Paketerstellung
+## <a name="common-video-on-demand-workflow"></a>Allgemeiner VoD-Workflow
+
+In diesem Abschnitt wird ein allgemeiner Media Services-Streamingworkflow mit dynamischer Paketerstellung beschrieben.
 
 1. Laden Sie eine Eingabedatei (auch Mezzaninedatei genannt) hoch. Beispielformate: H.264, MP4 oder WMV (eine Liste unterstützter Formate finden Sie unter [Von Media Encoder Standard unterstützte Formate](media-encoder-standard-formats.md)).
 2. Codieren Sie Ihre Mezzaninedatei zu H.264-MP4-Sätzen mit adaptiver Bitrate.
-3. Veröffentlichen Sie das Medienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält.
-4. Erstellen Sie die Streaming-URLs zum Zugreifen und Streamen Ihrer Inhalte.
+3. Veröffentlichen Sie das Medienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält. Zur Veröffentlichung wird ein **Streaminglocator** erstellt.
+4. Erstellen Sie URLs für unterschiedliche Formate (HLS, Dash und Smooth Streaming). Der **Streamingendpunkt** sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für alle diese Formate korrekt verarbeitet werden.
+
+## <a name="encode-to-adaptive-bitrate-mp4s"></a>Codieren als MP4-Dateien mit adaptiver Bitrate
+
+Informationen zur [Codierung mit Media Services](encoding-concept.md) finden Sie in den folgenden Beispielen:
+
+* [Codieren aus einer HTTPS-URL mithilfe von integrierten Voreinstellungen](job-input-from-http-how-to.md)
+* [Codieren einer lokalen Datei mithilfe von integrierten Voreinstellungen](job-input-from-local-file-how-to.md)
+* [Entwickeln einer benutzerdefinierten Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen](customize-encoder-presets-how-to.md)
+
+Eine Liste mit Media Encoder Standard-Formaten und -Codecs finden Sie [hier](media-encoder-standard-formats.md).
+
+## <a name="delivery-protocols"></a>Übermittlungsprotokolle
+
+|Protokoll|Beispiel|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
+|MPEG DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
+
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Videocodecs
+
+Die dynamische Paketerstellung unterstützt MP4-Dateien mit Video, das mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert wurde.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 
@@ -48,6 +75,96 @@ Die dynamische Paketerstellung unterstützt MP4-Dateien mit Audio, das mit [AAC]
 > [!NOTE]
 > Dateien mit [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital)-Audio (AC3) werden von der dynamischen Paketerstellung nicht unterstützt, da es sich dabei um einen Legacy-Codec handelt.
 
+## <a name="manifests"></a>Manifeste 
+ 
+Media Services unterstützt die Protokolle HLS, MPEG DASH und Smooth Streaming. Als Teil der **dynamischen Paketerstellung** werden die Streamingclientmanifeste (HLS Master Playlist, DASH Media Presentation Description (MPD) und Smooth Streaming) basierend auf dem Formatselektor in der URL dynamisch generiert. Informationen zu den Übermittlungsprotokollen finden Sie in [diesem Abschnitt](#delivery-protocols). 
+
+Eine Manifestdatei enthält Streamingmetadaten wie etwa Typ (Audio, Video oder Text), Titelname, Start- und Endzeit, Bitrate (Qualität), Sprachen, Präsentationsfenster (variables Fenster oder feste Dauer) und Videocodec (FourCC). Sie weist den Player zudem zum Abrufen des nächsten Fragments an, indem Informationen zu den nächsten für die Wiedergabe verfügbaren Videofragmenten und den zugehörigen Speicherorten angezeigt werden. Fragmente (oder Segmente) sind die eigentlichen „Blöcke“ von Videoinhalten.
+
+### <a name="hls-master-playlist"></a>HLS Master Playlist
+
+Hier ein Beispiel für eine HLS-Manifestdatei: 
+
+```
+#EXTM3U
+#EXT-X-VERSION:4
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",NAME="aac_eng_2_128041_2_1",LANGUAGE="eng",DEFAULT=YES,AUTOSELECT=YES,URI="QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)"
+#EXT-X-STREAM-INF:BANDWIDTH=536608,RESOLUTION=320x180,CODECS="avc1.64000d,mp4a.40.2",AUDIO="audio"
+QualityLevels(381048)/Manifest(video,format=m3u8-aapl)
+#EXT-X-I-FRAME-STREAM-INF:BANDWIDTH=536608,RESOLUTION=320x180,CODECS="avc1.64000d",URI="QualityLevels(381048)/Manifest(video,format=m3u8-aapl,type=keyframes)"
+#EXT-X-STREAM-INF:BANDWIDTH=884544,RESOLUTION=480x270,CODECS="avc1.640015,mp4a.40.2",AUDIO="audio"
+QualityLevels(721495)/Manifest(video,format=m3u8-aapl)
+#EXT-X-I-FRAME-STREAM-INF:BANDWIDTH=884544,RESOLUTION=480x270,CODECS="avc1.640015",URI="QualityLevels(721495)/Manifest(video,format=m3u8-aapl,type=keyframes)"
+#EXT-X-STREAM-INF:BANDWIDTH=1327398,RESOLUTION=640x360,CODECS="avc1.64001e,mp4a.40.2",AUDIO="audio"
+QualityLevels(1154816)/Manifest(video,format=m3u8-aapl)
+#EXT-X-I-FRAME-STREAM-INF:BANDWIDTH=1327398,RESOLUTION=640x360,CODECS="avc1.64001e",URI="QualityLevels(1154816)/Manifest(video,format=m3u8-aapl,type=keyframes)"
+#EXT-X-STREAM-INF:BANDWIDTH=2413312,RESOLUTION=960x540,CODECS="avc1.64001f,mp4a.40.2",AUDIO="audio"
+QualityLevels(2217354)/Manifest(video,format=m3u8-aapl)
+#EXT-X-I-FRAME-STREAM-INF:BANDWIDTH=2413312,RESOLUTION=960x540,CODECS="avc1.64001f",URI="QualityLevels(2217354)/Manifest(video,format=m3u8-aapl,type=keyframes)"
+#EXT-X-STREAM-INF:BANDWIDTH=3805760,RESOLUTION=1280x720,CODECS="avc1.640020,mp4a.40.2",AUDIO="audio"
+QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
+#EXT-X-I-FRAME-STREAM-INF:BANDWIDTH=3805760,RESOLUTION=1280x720,CODECS="avc1.640020",URI="QualityLevels(3579827)/Manifest(video,format=m3u8-aapl,type=keyframes)"
+#EXT-X-STREAM-INF:BANDWIDTH=139017,CODECS="mp4a.40.2",AUDIO="audio"
+QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
+```
+
+### <a name="dash-media-presentation-description-mpd"></a>DASH Media Presentation Description (MPD)
+
+Beispiel für ein DASH-Manifest:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" mediaPresentationDuration="PT1M10.315S" minBufferTime="PT7S">
+   <Period>
+      <AdaptationSet id="1" group="5" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="audio" mimeType="audio/mp4" codecs="mp4a.40.2" lang="en">
+         <SegmentTemplate timescale="10000000" media="QualityLevels($Bandwidth$)/Fragments(aac_eng_2_128041_2_1=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(aac_eng_2_128041_2_1=i,format=mpd-time-csf)">
+            <SegmentTimeline>
+               <S d="60160000" r="10" />
+               <S d="41386666" />
+            </SegmentTimeline>
+         </SegmentTemplate>
+         <Representation id="5_A_aac_eng_2_128041_2_1_1" bandwidth="128041" audioSamplingRate="48000" />
+      </AdaptationSet>
+      <AdaptationSet id="2" group="1" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="video" mimeType="video/mp4" codecs="avc1.640020" maxWidth="1280" maxHeight="720" startWithSAP="1">
+         <SegmentTemplate timescale="10000000" media="QualityLevels($Bandwidth$)/Fragments(video=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(video=i,format=mpd-time-csf)">
+            <SegmentTimeline>
+               <S d="60060000" r="10" />
+               <S d="42375666" />
+            </SegmentTimeline>
+         </SegmentTemplate>
+         <Representation id="1_V_video_1" bandwidth="3579827" width="1280" height="720" />
+         <Representation id="1_V_video_2" bandwidth="2217354" codecs="avc1.64001F" width="960" height="540" />
+         <Representation id="1_V_video_3" bandwidth="1154816" codecs="avc1.64001E" width="640" height="360" />
+         <Representation id="1_V_video_4" bandwidth="721495" codecs="avc1.640015" width="480" height="270" />
+         <Representation id="1_V_video_5" bandwidth="381048" codecs="avc1.64000D" width="320" height="180" />
+      </AdaptationSet>
+   </Period>
+</MPD>
+```
+### <a name="smooth-streaming"></a>Smooth Streaming
+
+Beispiel für ein Smooth Streaming-Manifest:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="703146666" TimeScale="10000000">
+   <StreamIndex Chunks="12" Type="audio" Url="QualityLevels({bitrate})/Fragments(aac_eng_2_128041_2_1={start time})" QualityLevels="1" Language="eng" Name="aac_eng_2_128041_2_1">
+      <QualityLevel AudioTag="255" Index="0" BitsPerSample="16" Bitrate="128041" FourCC="AACL" CodecPrivateData="1190" Channels="2" PacketSize="4" SamplingRate="48000" />
+      <c t="0" d="60160000" r="11" />
+      <c d="41386666" />
+   </StreamIndex>
+   <StreamIndex Chunks="12" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="5">
+      <QualityLevel Index="0" Bitrate="3579827" FourCC="H264" MaxWidth="1280" MaxHeight="720" CodecPrivateData="0000000167640020ACD9405005BB011000003E90000EA600F18319600000000168EBECB22C" />
+      <QualityLevel Index="1" Bitrate="2217354" FourCC="H264" MaxWidth="960" MaxHeight="540" CodecPrivateData="000000016764001FACD940F0117EF01100000303E90000EA600F1831960000000168EBECB22C" />
+      <QualityLevel Index="2" Bitrate="1154816" FourCC="H264" MaxWidth="640" MaxHeight="360" CodecPrivateData="000000016764001EACD940A02FF9701100000303E90000EA600F162D960000000168EBECB22C" />
+      <QualityLevel Index="3" Bitrate="721495" FourCC="H264" MaxWidth="480" MaxHeight="270" CodecPrivateData="0000000167640015ACD941E08FEB011000003E90000EA600F162D9600000000168EBECB22C" />
+      <QualityLevel Index="4" Bitrate="381048" FourCC="H264" MaxWidth="320" MaxHeight="180" CodecPrivateData="000000016764000DACD941419F9F011000003E90000EA600F14299600000000168EBECB22C" />
+      <c t="0" d="60060000" r="11" />
+      <c d="42375666" />
+   </StreamIndex>
+</SmoothStreamingMedia>
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md)
+

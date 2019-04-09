@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9008c98a086ed2d45b7339fa3f76b33240789db8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102450"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487786"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -283,12 +283,12 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Integration Runtime\3.0\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
 4. So aktivieren Sie das Feature wieder
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
    [Für hochverfügbare und skalierbare Gateways mit mehreren Knoten](data-factory-data-management-gateway-high-availability-scalability.md)
@@ -297,12 +297,12 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
     Für ein Gateway mit Hochverfügbarkeit ist ein zusätzlicher AuthKey-Parameter erforderlich.
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
 4. So aktivieren Sie das Feature wieder
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
@@ -485,12 +485,12 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
 1. Starten Sie **Azure PowerShell** im Administratormodus.
 2. Melden Sie sich bei Ihrem Azure-Konto an, indem Sie den folgenden Befehl ausführen und Ihre Azure-Anmeldeinformationen eingeben.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. Verwenden Sie das **New-AzDataFactoryGateway**-Cmdlet, um wie folgt ein logisches Gateway zu erstellen:
 
-    ```PowerShell
+    ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **Beispiel für eine Befehlszeile und Ausgabe**:
@@ -511,9 +511,9 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Wechseln Sie in Azure PowerShell zum Ordner: **C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript\\**. Führen Sie **RegisterGateway.ps1** mit der lokalen Variable **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
+1. Wechseln Sie in Azure PowerShell zum Ordner: **C:\\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript\\**. Führen Sie **RegisterGateway.ps1** mit der lokalen Variable **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
 
-    ```PowerShell
+    ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
     ```
     ```
@@ -521,25 +521,25 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     ```
     Sie können das Gateway auf einem Remotecomputer registrieren, indem Sie den Parameter „IsRegisterOnRemoteMachine“ verwenden. Beispiel:
 
-    ```PowerShell
+    ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
 2. Mit dem **Get-AzDataFactoryGateway**-Cmdlet können Sie die Liste mit Gateways in Ihrer Data Factory abrufen. Wenn der **Status** **online**angezeigt wird, bedeutet dies, dass Ihr Gateway einsatzbereit ist.
 
-    ```PowerShell        
+    ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
    Sie können ein Gateway mit dem **Remove-AzDataFactoryGateway**-Cmdlet entfernen und die Beschreibung für das Gateway mithilfe der **Set-AzDataFactoryGateway**-Cmdlets aktualisieren. Syntax und andere Details zu diesen Cmdlets finden Sie in der Data Factory-Cmdlet-Referenz.  
 
 ### <a name="list-gateways-using-powershell"></a>Auflisten von Gateways mit PowerShell
 
-```PowerShell
+```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>Entfernen von Gateways mit PowerShell
 
-```PowerShell
+```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 

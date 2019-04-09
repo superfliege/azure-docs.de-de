@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456345"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894148"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Continuous Integration in Azure DevOps Services mit Bereitstellungsprojekten für Azure-Ressourcengruppen
 Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phasen aus: Erstellen, Testen, in Azure kopieren (auch als „Staging“ bezeichnet) und Bereitstellen der Vorlage. Es gibt zwei Möglichkeiten zum Bereitstellen von Vorlagen für Azure DevOps Services. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.
@@ -37,7 +37,7 @@ Unabhängig vom Szenario gilt Folgendes: Falls Sie über Artefakte verfügen, di
 * Anwendungsbinärdateien
 
 ### <a name="nested-templates-and-configuration-scripts"></a>Geschachtelte Vorlagen und Konfigurationsskripts
-Wenn Sie von Visual Studio bereitgestellte (oder mit Visual Studio-Codeausschnitten erstellte) Vorlagen verwenden, werden die Artefakte vom PowerShell-Skript nicht nur bereitgestellt. Es wird außerdem der URI für die Ressourcen für unterschiedliche Bereitstellungen parametrisiert. Anschließend kopiert das Skript die Artefakte in einen sicheren Container in Azure, erstellt ein SAS-Token für diesen Container und übergibt diese Informationen dann an die Vorlagenbereitstellung. Weitere Informationen zu geschachtelten Vorlagen finden Sie unter [Erstellen einer Vorlagenbereitstellung](https://msdn.microsoft.com/library/azure/dn790564.aspx).  Bei Verwendung von Aufgaben in Azure DevOps Services müssen Sie die entsprechenden Aufgaben für die Vorlagenbereitstellung auswählen und gegebenenfalls Parameterwerte aus dem Stagingschritt an die Vorlagenbereitstellung übergeben.
+Wenn Sie von Visual Studio bereitgestellte (oder mit Visual Studio-Codeausschnitten erstellte) Vorlagen verwenden, werden die Artefakte vom PowerShell-Skript nicht nur bereitgestellt. Es wird außerdem der URI für die Ressourcen für unterschiedliche Bereitstellungen parametrisiert. Anschließend kopiert das Skript die Artefakte in einen sicheren Container in Azure, erstellt ein SAS-Token für diesen Container und übergibt diese Informationen dann an die Vorlagenbereitstellung. Weitere Informationen zu geschachtelten Vorlagen finden Sie unter [Erstellen einer Vorlagenbereitstellung](/previous-versions/azure/reference/dn790564(v=azure.100)).  Bei Verwendung von Aufgaben in Azure DevOps Services müssen Sie die entsprechenden Aufgaben für die Vorlagenbereitstellung auswählen und gegebenenfalls Parameterwerte aus dem Stagingschritt an die Vorlagenbereitstellung übergeben.
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Einrichten von Continuous Deployment in Azure Pipelines
 Zum Aufrufen des PowerShell-Skripts in Azure Pipelines müssen Sie Ihre Buildpipeline aktualisieren. Die Schritte sind hier in Kurzform aufgeführt: 

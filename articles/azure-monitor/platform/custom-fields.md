@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 11372894e1dbcac6a49205ff56d8b30ffb6ee976
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d3eb0fba2b7178b8b1702d4ca89ff85a441c20d6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261263"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541076"
 ---
-# <a name="create-custom-fields-in-log-analytics"></a>Erstellen benutzerdefinierter Felder in Log Analytics
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Textdaten in Log Analytics beim Sammeln analysieren können. Es gibt Vorteile beim Analysieren von Textdaten in einer Abfrage, nachdem sie gesammelt wurden, wie in [Analysieren von Textdaten in Log Analytics](../log-query/parse-text.md) beschrieben.
+> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es gibt Vorteile beim Analysieren von Textdaten in einer Abfrage, nachdem sie gesammelt wurden, wie in [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben.
 
-Mit dem Feature **Benutzerdefinierte Felder** von Log Analytics können Sie vorhandene Datensätze in Log Analytics durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
+Mit dem Feature **Benutzerdefinierte Felder** von Azure Monitor können Sie vorhandene Datensätze in Ihrem Log Analytics-Arbeitsbereich durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
 ![Übersicht über benutzerdefinierte Felder](media/custom-fields/overview.png)
 

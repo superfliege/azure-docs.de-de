@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8411cf2aebf5ab3e25239d1cb1a9b81cfda4c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163896"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369529"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
 Nach einer Bereitstellung möchten viele Organisationen wissen, wie oder ob Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) tatsächlich verwendet wird. Über die Berichtsfunktion, die von Azure Active Directory (Azure AD) bereitgestellt wird, können Sie Fragen beantworten, indem Sie vordefinierte Berichte verwenden. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen.
 
-![Berichterstellung][Reporting]
+![Berichterstellung zu SSPR mithilfe der Überwachungsprotokolle in Azure AD][Reporting]
 
 Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure-Portal](https://portal.azure.com/) vorhanden sind:
 
@@ -173,7 +173,6 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
      >[!NOTE]
      >Fehler bedeutet nicht, dass ein Benutzer sein eigenes Kennwort nicht zurücksetzen kann, sondern bedeutet, dass der Benutzer den Registrierungsvorgang nicht abgeschlossen hat. Wenn das Konto des Benutzers unbestätigte Daten enthält, die korrekt sind, beispielsweise eine noch nicht bestätigte Telefonnummer, können diese weiterhin zum Zurücksetzen des Kennworts verwendet werden, auch wenn die Telefonnummer noch nicht bestätigt wurde.
-     >
 
 ## <a name="next-steps"></a>Nächste Schritte
 

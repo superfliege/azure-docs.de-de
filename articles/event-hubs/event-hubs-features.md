@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768595"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336999"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -43,7 +43,7 @@ Jede Entität, die Daten an einen Event Hub sendet, ist ein Ereigniserzeuger bzw
 
 ### <a name="publishing-an-event"></a>Veröffentlichen eines Ereignisses
 
-Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Event Hubs stellt [Clientbibliotheken und Klassen](event-hubs-dotnet-framework-api-overview.md) zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](http://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
+Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Event Hubs stellt [Clientbibliotheken und Klassen](event-hubs-dotnet-framework-api-overview.md) zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
 
 Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen SSL-Mehraufwand für jede Anfrage. AMQP verfügt über eine höhere Leistung für häufige Herausgeber.
 
@@ -79,7 +79,7 @@ Event Hubs bewahrt Daten über einen konfigurierten Aufbewahrungszeitraum auf, d
 
 Die Anzahl der Partitionen wird bei der Erstellung angegeben und muss zwischen zwei und 32 liegen. Die Partitionenanzahl kann nicht geändert werden. Behalten Sie daher beim Festlegen der Partitionenanzahl die langfristige Skalierung im Hinterkopf. Partitionen sind ein Mechanismus zum Organisieren von Daten, der sich auf die erforderliche Downstreamparallelität in verarbeitenden Anwendungen bezieht. Die Anzahl der Partitionen in einem Event Hub steht in direktem Zusammenhang mit der erwarteten Anzahl von gleichzeitigen Lesern. Sie können die Anzahl der Partitionen auf mehr als 32 erhöhen, wenn Sie das Event Hubs-Team kontaktieren.
 
-Auch wenn Partitionen identifizierbar sind und Daten direkt an sie gesendet werden können, wird dies nicht empfohlen. Stattdessen können Sie Konstrukte höherer Ebene verwenden, die in den Abschnitten [Ereignisherausgeber](#event-publishers) und [Kapazität](#capacity) erläutert werden. 
+Auch wenn Partitionen identifizierbar sind und Daten direkt an sie gesendet werden können, wird dies nicht empfohlen. Stattdessen können Sie Konstrukte höherer Ebene verwenden, die in den Abschnitten [Ereignisherausgeber](#event-publishers) und „Kapazität“ erläutert werden. 
 
 Partitionen werden mit einer Sequenz von Ereignisdaten gefüllt, die den Hauptteil des Ereignisses, einen benutzerdefinierten Eigenschaftenbehälter und Metadaten (z.B. Offset in der Partition und Nummer in der Streamsequenz) enthalten.
 
@@ -152,13 +152,15 @@ Ereignisdaten:
 
 Die Verwaltung des Offsets liegt in Ihrer Verantwortung.
 
-## <a name="capacity"></a>Capacity
+## <a name="scaling-with-event-hubs"></a>Skalierung mit Event Hubs
 
-Event Hubs verfügt über eine hochgradig skalierbare parallele Architektur. Zudem müssen beim Ändern der Größe und Skalierung mehrere Schlüsselfaktoren berücksichtigt werden.
+Es gibt zwei Faktoren, die die Skalierung mit Event Hubs beeinflussen.
+*   Durchsatzeinheiten
+*   Partitionen
 
 ### <a name="throughput-units"></a>Durchsatzeinheiten
 
-Die Durchsatzkapazität von Event Hubs wird durch *Durchsatzeinheiten* gesteuert. Durchsatzeinheiten werden vorab als Kapazitätseinheiten erworben. Eine einzelne Durchsatzeinheit beinhaltet folgende Kapazität:
+Die Durchsatzkapazität von Event Hubs wird durch *Durchsatzeinheiten* gesteuert. Durchsatzeinheiten werden vorab als Kapazitätseinheiten erworben. Ein einzelner Durchsatz ermöglicht Folgendes:
 
 * Eingehende Daten: Bis zu 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt.
 * Ausgehende Daten: Bis zu 2 MB pro Sekunde oder 4.096 Ereignisse pro Sekunde.
@@ -167,9 +169,13 @@ Bei Überschreitung der Kapazität der erworbenen Durchsatzeinheiten wird der Ei
 
 Durchsatzeinheiten werden im Voraus erworben und auf Stundenbasis abgerechnet. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Bis zu 20 Durchsatzeinheiten können für einen Event Hubs-Namespace erworben und in allen Event Hubs dieses Namespace gemeinsam verwendet werden.
 
-Sie haben die Möglichkeit, weitere Durchsatzeinheiten in Blöcken von 20 über den Azure-Support zu erwerben (bis zu 100 Durchsatzeinheiten insgesamt). Darüber hinaus können Sie Blöcke von je 100 Durchsatzeinheiten erwerben.
+### <a name="partitions"></a>Partitionen
 
-Es wird empfohlen, Durchsatzeinheiten und Partitionen sorgfältig aufeinander abzustimmen, um eine optimale Skalierung zu erreichen. Eine einzelne Partition weist über eine minimale Skalierung von einer Durchsatzeinheit auf. Die Anzahl von Durchsatzeinheiten sollte kleiner oder gleich der Anzahl von Partitionen in einem Event Hub sein.
+Mit Partitionen können Sie die Skalierung für Ihre Downstreamverarbeitung durchführen. Aufgrund des partitionierten Consumermodells, das Event Hubs mit Partitionen bietet, können Sie die horizontale Skalierung bei gleichzeitiger Verarbeitung Ihrer Ereignisse vornehmen. Ein Event Hub kann über bis zu 32 Partitionen verfügen.
+
+Es wird empfohlen, Durchsatzeinheiten und Partitionen 1:1 aufeinander abzustimmen, um eine optimale Skalierung zu erreichen. Eine einzelne Partition weist einen garantierten Ein- und Ausgang von bis zu einer Durchsatzeinheit auf. Sie können zwar einen höheren Durchsatz auf einer Partition erzielen, aber die Leistung ist nicht garantiert. Aus diesem Grund wird dringend empfohlen, dass die Anzahl der Partitionen in einem Event Hub größer oder gleich der Anzahl der Durchsatzeinheiten ist.
+
+Angesichts des Gesamtdurchsatzes, den Sie planen zu benötigen, kennen Sie die Anzahl der benötigten Durchsatzeinheiten und die minimale Anzahl der Partitionen, aber wie viele Partitionen sollten Sie verwenden? Wählen Sie die Anzahl der Partitionen basierend auf der zu erreichenden Downstreamparallelität und Ihren zukünftigen Durchsatzanforderungen. Für die Anzahl der Partitionen, die Sie innerhalb eines Event Hubs verwenden, fällt keine Gebühr an.
 
 Ausführliche Informationen zu Event Hubs-Preisen finden Sie unter [Event Hubs-Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 

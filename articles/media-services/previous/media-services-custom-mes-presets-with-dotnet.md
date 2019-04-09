@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: c64a3455e1189b83558707a96dc80b88dc242b48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181655"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516483"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen  
 
@@ -28,6 +28,9 @@ ms.locfileid: "58181655"
 In diesem Artikel wird erläutert, wie Sie die erweiterten Codierungsaufgaben mithilfe von Media Encoder-Standard (MES) mit einer benutzerdefinierten Voreinstellung ausführen. In diesem Artikel wird .NET verwendet, um eine Codierungsaufgabe und einen Auftrag zu erstellen, der diese Aufgabe ausführt.  
 
 In diesem Artikel erfahren Sie, wie Sie eine Voreinstellung anpassen, indem Sie die Anzahl der Ebenen in der Voreinstellung [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) reduzieren. Der Artikel [Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen](media-services-advanced-encoding-with-mes.md) zeigt benutzerdefinierte Voreinstellungen, die verwendet werden können, um erweiterte Codierungsaufgaben auszuführen.
+
+> [!NOTE]
+> Die in diesem Artikel beschriebenen benutzerdefinierten Voreinstellungen können nicht in [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/)-Transformationen oder in den Befehlen der Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie unter [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 ## <a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
 
@@ -261,12 +264,13 @@ namespace CustomizeMESPresests
 }
 ```
 
+## <a name="see-also"></a>Weitere Informationen
+
+- [Codieren einer benutzerdefinierten Transformation mithilfe der Befehlszeilenschnittstelle](../latest/custom-preset-cli-howto.md)
+- [Codierung mit Media Services (v3)](../latest/encoding-concept.md)
+
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>Siehe auch
-[Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-

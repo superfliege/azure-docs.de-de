@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2019
+ms.date: 03/26/2019
 ms.author: monhaber
-ms.openlocfilehash: cbda94b8ceeaf7a225117e1ca73445135a32a243
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088994"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517979"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Was sind adaptive Anwendungssteuerungen in Security Center?
-Adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung für das Anwendungswhitelisting über Azure Security Center. Hiermit lässt sich steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können, sodass Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen können. Security Center nutzt Machine Learning, um die auf Ihren virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden der jeweiligen Whitelistregeln, die auf diesen Daten basieren. Dadurch können Sie Richtlinien für das Anwendungswhitelisting deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
+Adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung für das Anwendungswhitelisting über Azure Security Center. Hiermit lässt sich steuern, welche Anwendungen auf Ihren virtuellen Azure- und Nicht-Azure-Computern (Windows und Linux) ausgeführt werden können, sodass Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen können. Security Center nutzt Machine Learning, um die auf Ihren virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden der jeweiligen Whitelistregeln, die auf diesen Daten basieren. Dadurch können Sie Richtlinien für das Anwendungswhitelisting deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
 
 - Blockierung der Ausführung schädlicher Anwendungen oder Ausgabe einer Warnung beim Versuch, eine schädliche Anwendung auszuführen (auch bei Anwendungen, die möglicherweise von Antischadsoftwarelösungen nicht erfasst werden)
 - Einhaltung der Sicherheitsrichtlinie Ihrer Organisation, die die ausschließliche Verwendung von lizenzierter Software vorschreibt
@@ -34,8 +34,11 @@ Adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-L�
 - Verhinderung der Verwendung bestimmter Softwaretools, die in Ihrer Organisation nicht zulässig sind
 - Steuerung des Zugriffs auf sensible Daten im Rahmen der App-Nutzung durch die IT-Abteilung
 
+> [!NOTE]
+> Bei virtuellen Nicht-Azure und Linux-Computern wird die adaptive Anwendungssteuerung nur im Überwachungsmodus unterstützt.
+
 ## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
-Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung auf konfigurierten Gruppen virtueller Computer zulässig ist. Dieses Feature steht nur für Windows-Computer (alle Versionen, klassisch oder Azure Resource Manager) zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
+Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung auf konfigurierten Gruppen virtueller Computer zulässig ist. Dieses Feature steht sowohl für virtuelle Azure- als auch Nicht-Azure-Windows- (alle Versionen,klassisch oder Azure Resource Manager) und Linux-Computer und -Server zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
 
 1. Öffnen Sie das Dashboard **Security Center**.
 2. Wählen Sie im linken Bereich unter **Erweiterter Cloudschutz** die Option **Adaptive Anwendungssteuerung**.
@@ -64,10 +67,10 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
    Die Liste enthält Folgendes:
 
-   - **NAME**: Der Name des Abonnements und der Gruppe.
-   - **VMs**: Die Anzahl virtueller Computer in der Gruppe.
-   - **STATUS**: Der Status der Empfehlungen.
-   - **SCHWEREGRAD**: Der Schweregrad der Empfehlungen.
+   - **Gruppenname**: Der Name des Abonnements und der Gruppe.
+   - **VMs und Computer**: Die Anzahl virtueller Computer in der Gruppe.
+   - **Status**: Der Status der Empfehlungen.
+   - **Schweregrad**: Der Schweregrad der Empfehlungen.
 
 2. Klicken Sie auf eine Gruppe, um die Option **Regeln zur Anwendungssteuerung erstellen** zu öffnen.
 
@@ -102,8 +105,8 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
    Die Liste enthält Folgendes:
 
-   - **Name**: Der Name des Abonnements und der Gruppe.
-   - **VMs**: Die Anzahl virtueller Computer in der Gruppe.
+   - **Gruppenname**: Der Name des Abonnements und der Gruppe.
+   - **VMs und Computer**: Die Anzahl virtueller Computer in der Gruppe.
    - **Modus**: Im Überwachungsmodus werden Versuche, eine nicht in der Whitelist enthaltene Anwendung auszuführen, protokolliert. Im Erzwingungsmodus wird die Ausführung von Anwendungen verhindert, die sich nicht in der Whitelist befinden.
    - **Warnungen**: Alle derzeitigen Verstöße.
 
@@ -146,14 +149,14 @@ Security Center empfiehlt Richtlinien für das Anwendungswhitelisting nur für v
 ![Empfehlung](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
 
 Die Liste enthält Folgendes:
-- **NAME**: Der Name des Abonnements und der Gruppe.
-- **VMs**: Die Anzahl virtueller Computer in der Gruppe.
+- **Gruppenname**: Der Name des Abonnements und der Gruppe.
+- **VMs und Computer**: Die Anzahl virtueller Computer in der Gruppe.
 
 Azure Security Center ermöglicht Ihnen das Definieren einer Richtlinie für das Anwendungswhitelisting auch für nicht empfohlene Gruppen virtueller Computer. Befolgen Sie dieselben Prinzipien wie zuvor beschrieben, um eine Richtlinie für das Anwendungswhitelisting auch für diese Gruppen zu konfigurieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
+In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen Azure- und Nicht-Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.

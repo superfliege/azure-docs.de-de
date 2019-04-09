@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b1eb6e1458fab6de3472d68352ba7764b71007c8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292580"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317645"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurieren von Azure Media Services-Telemetrie mit REST
 
@@ -34,7 +34,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 - Abrufen der Benachrichtigungsendpunkte
 - Erstellen eines Benachrichtigungsendpunkts für die Überwachung. 
 
-    Um einen Benachrichtigungsendpunkt zu erstellen, legen Sie EndPointType auf AzureTable (2) fest und endPointAddress auf die Speichertabelle (z.B. https://telemetryvalidationstore.table.core.windows.net/).
+    Um einen Benachrichtigungsendpunkt zu erstellen, legen Sie EndPointType auf AzureTable (2) fest und EndPointAddress auf die Speichertabelle (z. B. https:\//telemetryvalidationstore.table.core.windows.net).
   
 - Abrufen der Überwachungskonfigurationen
 
@@ -121,12 +121,12 @@ In diesem Thema werden folgende Schritte beschrieben:
     
     {  
         "Name":"monitoring",
-        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointAddress":"https:\//telemetryvalidationstore.table.core.windows.net/",
         "EndPointType":2
     }
 
 > [!NOTE]
-> Vergessen Sie nicht, den Wert „https://telemetryvalidationstore.table.core.windows.net“ in Ihr Speicherkonto zu ändern.
+> Vergessen Sie nicht den Wert „https:\//telemetryvalidationstore.table.core.windows.net“ in Ihr Speicherkonto zu ändern.
 
 ### <a name="response"></a>response
 

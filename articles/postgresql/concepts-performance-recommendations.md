@@ -1,24 +1,21 @@
 ---
 title: Leistungsempfehlungen in Azure Database for PostgreSQL
-description: Dieser Artikel beschreibt die Empfehlungen zur Leistung, die in Azure Database for PostgreSQL erzielt werden kann.
+description: In diesem Artikel wird das Feature Leistungsempfehlung in Azure Database for PostgreSQL beschrieben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/26/2018
+ms.openlocfilehash: d8edbc2847c06e95e658a1324f2e85f1758e60be
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548091"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487939"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Leistungsempfehlungen in Azure Database for PostgreSQL
 
 **Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
-
-> [!IMPORTANT]
-> Die Leistungsempfehlungen befinden sich in der Public Preview.
 
 Das Leistungsempfehlungen-Feature gibt die obersten Indizes an, die Sie in Ihrer Azure Database for PostgreSQL-Serverinstanz zur Verbesserung der Leistung erstellen können. Um Indexempfehlungen zu erzeugen, berücksichtigt das Feature verschiedene Datenbankmerkmale einschließlich des Schemas und der Workload laut Abfragespeicher. Nach der Implementierung von Leistungsempfehlungen sollten Kunden die Leistung testen, um die Auswirkungen dieser Änderungen auszuwerten. 
 

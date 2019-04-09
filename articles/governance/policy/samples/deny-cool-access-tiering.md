@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 23a7168e0dff3eb162fbfc58c6299018b316b22a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 74a4c0af1b0b2998b20e1fd0a5da85812fea4729
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530091"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804348"
 ---
 # <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Beispiel: Verweigern des kalten Zugriffstierings für Speicherkonten
 
@@ -29,7 +29,7 @@ Sie können diese Vorlage über das [Azure-Portal](#deploy-with-the-portal), mit
 
 ## <a name="deploy-with-the-portal"></a>Bereitstellen über das Portal
 
-[![In Azure bereitstellen](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
+[![Bereitstellen des Policy-Beispiels in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 615005e265f199cd6950123aa2af8b26f4fa4637
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457245"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541161"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 

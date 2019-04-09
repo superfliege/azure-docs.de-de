@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765797"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895697"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Hochladen eines Zertifikats für die Azure-Dienstverwaltung
 Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem von Azure bereitgestellten klassischen Bereitstellungsmodell. Diese Zertifikate werden in vielen Programmen und Tools (z.B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. 
@@ -56,4 +56,4 @@ Sobald Sie ein Verwaltungszertifikat erstellt haben (CER-Datei nur mit dem öffe
     ![Einstellungen](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da Sie jetzt einem Abonnement ein Verwaltungszertifikat zugeordnet haben, können Sie (nachdem Sie das entsprechende Zertifikat lokal installiert haben) programmgesteuert eine Verbindung mit der [REST-API für das klassische Bereitstellungsmodell](https://msdn.microsoft.com/library/azure/mt420159.aspx) herstellen und die verschiedenen Azure-Ressourcen automatisieren, die auch diesem Abonnement zugeordnet sind.
+Da Sie jetzt einem Abonnement ein Verwaltungszertifikat zugeordnet haben, können Sie (nachdem Sie das entsprechende Zertifikat lokal installiert haben) programmgesteuert eine Verbindung mit der [REST-API für das klassische Bereitstellungsmodell](/azure/#pivot=sdkstools) herstellen und die verschiedenen Azure-Ressourcen automatisieren, die auch diesem Abonnement zugeordnet sind.

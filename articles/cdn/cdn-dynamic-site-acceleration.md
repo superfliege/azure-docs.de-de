@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 4fa681e800197ea241ba1c6cf2180ba04b6e565b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6bd1d24cdece91265a7355678ea2bc0b0f9e3910
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092581"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439157"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -27,7 +27,7 @@ Die explosionsartige Verbreitung von sozialen Medien, E-Commerce und hyperperson
 
 Zu den Standardfunktionen eines CDN (Content Delivery Network) zählt die Möglichkeit, Dateien näher beim Endbenutzer zwischenzuspeichern, um die Übermittlung statischer Dateien zu beschleunigen. Bei dynamischen Webanwendungen ist die Zwischenspeicherung dieser Inhalte an Edgestandorten jedoch nicht möglich, da der Server die Inhalte als Reaktion auf das Benutzerverhalten generiert. Die Beschleunigung der Übermittlung derartiger Inhalte ist komplexer als konventionelle Edgezwischenspeicherung und erfordert eine Komplettlösung, die jedes Element entlang des gesamten Datenpfads vom Beginn bis zur Übermittlung exakt optimiert. Durch die Optimierung der Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) des Azure CDN wird die Leistung von Webseiten mit dynamischen Inhalten merklich verbessert.
 
-Das **Azure CDN von Akamai** und das **Azure CDN von Verizon** ermöglichen beide während der Erstellung des Endpunkts über das Menü **Optimiert für** eine DSA-Optimierung.
+Das **Azure CDN von Akamai** und das **Azure CDN von Verizon** ermöglichen beide während der Erstellung des Endpunkts über das Menü **Optimiert für** eine DSA-Optimierung. Beschleunigung dynamischer Websites von Microsoft wird über [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) angeboten.
 
 > [!Important]
 > Bei **Azure CDN von Akamai**-Profilen dürfen Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts ändern.
@@ -109,9 +109,9 @@ Der *langsame Start von TCP* ist ein Algorithmus des Transmission Control-Protok
 
 1. Die Integritäts- und Bandbreitenüberwachung wird eingesetzt, um die Bandbreite von Verbindungen zwischen PoP-Edgeservern zu messen.
     
-2. Metriken werden von PoP-Edgeservern gemeinsam genutzt, sodass jeder Server über die Netzwerkbedingungen und die Serverintegrität der anderen PoP-Komponenten in der Nähe informiert ist.  
+2. Metriken werden von PoP-Edgeservern gemeinsam genutzt, sodass jeder Server über die Netzwerkbedingungen und die Serverintegrität der anderen PoP-Komponenten in der Nähe informiert ist.  
     
-3. Die CDN-Edgeserver treffen Annahmen über einige Übertragungsparameter, z.B. über die optimale Fenstergröße, den Zeitpunkt, an dem die Kommunikation mit anderen CDN-Edgeservern in dessen Nähe stattfinden soll. Dieser Schritt bedeutet, dass die anfängliche Überlastungsfenstergröße erhöht werden kann, wenn die Integrität der Verbindung zwischen den CDN-Edgeservern höheren Paketdatenübertragungen standhalten kann.  
+3. Die CDN-Edgeserver treffen Annahmen über einige Übertragungsparameter, z.B. über die optimale Fenstergröße, den Zeitpunkt, an dem die Kommunikation mit anderen CDN-Edgeservern in dessen Nähe stattfinden soll. Dieser Schritt bedeutet, dass die anfängliche Überlastungsfenstergröße erhöht werden kann, wenn die Integrität der Verbindung zwischen den CDN-Edgeservern höheren Paketdatenübertragungen standhalten kann.  
 
 #### <a name="leveraging-persistent-connections"></a>Nutzen von permanenten Verbindungen
 
@@ -157,7 +157,7 @@ Sie können das Zwischenspeichern für das Profil **Azure CDN Standard von Veriz
 
 So greifen Sie auf Cacheregeln zu
 
-1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
+1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
     
     ![Schaltfläche für CDN-Cacheregeln](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,7 +169,7 @@ Bei Profilen vom Typ **Azure CDN Premium von Verizon** können Sie das Zwischens
 
 So greifen Sie auf die Regel-Engine zu
     
-1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.  
+1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.  
     
     ![Verwaltungsschaltfläche für CDN-Profile](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
@@ -183,7 +183,7 @@ So greifen Sie auf die Regel-Engine zu
 
 Alternativ können Sie zwei CDN-Endpunkte verwenden: Ein mit der DSA optimierter Endpunkt zur Bereitstellung von dynamischen Ressourcen und ein anderer mit einem statischen Optimierungstyp, z.B. allgemeine Webbereitstellung, für die Bereitstellung von zwischenspeicherbaren Ressourcen. Ändern Sie Ihre Webseiten-URLs so, dass eine direkte Verknüpfung mit der Ressource für den CDN-Endpunkt hergestellt wird, den Sie verwenden möchten. 
 
-Beispiel: `mydynamic.azureedge.net/index.html` ist eine dynamische Seite, die vom Endpunkt mit Beschleunigung dynamischer Websites geladen wird.  Die HTML-Seite verweist auf mehrere statische Ressourcen, z.B. JavaScript-Bibliotheken oder Images, die vom statischen CDN-Endpunkt geladen werden, z.B. `mystatic.azureedge.net/banner.jpg` und `mystatic.azureedge.net/scripts.js`. 
+Beispiel: `mydynamic.azureedge.net/index.html` ist eine dynamische Seite, die vom Endpunkt mit Beschleunigung dynamischer Websites geladen wird.  Die HTML-Seite verweist auf mehrere statische Ressourcen, z.B. JavaScript-Bibliotheken oder Images, die vom statischen CDN-Endpunkt geladen werden, z.B. `mystatic.azureedge.net/banner.jpg` und `mystatic.azureedge.net/scripts.js`. 
 
 
 

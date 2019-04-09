@@ -35,7 +35,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 ---
 
 ## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Muss ich ein globaler Administrator sein, um Identity Protection im Azure-Portal verwenden zu können?
-**A:**  Nein. Sie können entweder ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen, ein Sicherheitsadministrator oder ein globaler Administrator sein, um Identity Protection verwenden zu können.
+**A:**  Nein. Sie können entweder ein Sicherheitsleseberechtigter, ein Sicherheitsadministrator oder ein globaler Administrator sein, um Identity Protection verwenden zu können.
 
 ---
 

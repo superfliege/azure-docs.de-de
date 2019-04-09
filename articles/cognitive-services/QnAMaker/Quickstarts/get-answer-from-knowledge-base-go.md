@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: be134267bbb1ca372006bc1ff05d7a5ddc3732de
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a74d67df55d46376017adbd48f5161d337ebaa0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311088"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879317"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Go
 
@@ -64,7 +64,7 @@ Der folgende Code sendet eine HTTPS-Anforderung an die QnA Maker-API, um die Fra
 
 [!code-go[Add a POST request to send question to knowledge base](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=35-48 "Add a POST request to send question to knowledge base")]
 
-Der Wert des `Authorization`-Headers enthält die Zeichenfolge `EndpointKey `. 
+Der Wert des `Authorization`-Headers enthält die Zeichenfolge `EndpointKey`. 
 
 Informieren Sie sich ausführlicher über [Anforderung](../how-to/metadata-generateanswer-usage.md#generateanswer-request) und [Antwort](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 

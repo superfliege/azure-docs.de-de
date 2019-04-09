@@ -10,26 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103909"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus SAP Business Warehouse (BW) über Open Hub zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub-Integration 
-
-Der [SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) ist eine effiziente Möglichkeit zum Extrahieren von Daten aus SAP BW. Die folgende Abbildung zeigt einen der typischen Abläufe von Kunden in ihrem SAP-System, in diesem Fall Datenflüsse aus SAP ECC -> PSA -> DSO -> Cube.
-
-SAP BW Open Hub Destination (OHD) definiert das Ziel, an das die SAP-Daten weitergeleitet werden. Alle von SAP Data Transfer Process (DTP) unterstützten Objekte können als Open Hub-Datenquellen verwendet werden, z.B. DSO, InfoCube, MultiProvider, DataSource usw. Ein Open Hub Destination-Typ – wo die weitergeleiteten Daten gespeichert werden – können Datenbanktabellen (lokal oder remote) und Flatfiles sein. Dieser SAP BW Open Hub-Connector unterstützt das Kopieren von Daten aus lokalen OHD-Tabelle in BW. Wenn Sie andere Typen verwenden, können Sie sich über andere Connectors direkt mit der Datenbank oder dem Dateisystem verbinden.
-
-![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -37,10 +29,41 @@ Sie können Daten aus SAP Business Warehouse über Open Hub in jeden unterstütz
 
 Dieser SAP Business Warehouse Open Hub-Connector unterstützt insbesondere Folgendes:
 
-- SAP Business Warehouse **Version 7.30 oder höher (in einem aktuellen, nach 2015 veröffentlichten SAP-Supportpaket)**.
+- SAP Business Warehouse **Version 7.01 oder höher (in einem aktuellen, nach 2015 veröffentlichten SAP-Supportpaket)**.
 - Kopieren von Daten über lokale Open Hub Destination-Tabelle, wie z.B. DSO, InfoCube, MultiProvider, DataSource usw.
 - Kopieren von Daten mithilfe der Standardauthentifizierung
 - Herstellen einer Verbindung zum Anwendungsserver.
+
+## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub-Integration 
+
+Der [SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) ist eine effiziente Möglichkeit zum Extrahieren von Daten aus SAP BW. Die folgende Abbildung zeigt einen der typischen Abläufe von Kunden in ihrem SAP-System, in diesem Fall Datenflüsse aus SAP ECC -> PSA -> DSO -> Cube.
+
+SAP BW Open Hub Destination (OHD) definiert das Ziel, an das die SAP-Daten weitergeleitet werden. Alle von SAP Data Transfer Process (DTP) unterstützten Objekte können als Open Hub-Datenquellen verwendet werden, z.B. DSO, InfoCube, DataSource usw. Ein Open Hub Destination-Typ – wo die weitergeleiteten Daten gespeichert werden – können Datenbanktabellen (lokal oder remote) und Flatfiles sein. Dieser SAP BW Open Hub-Connector unterstützt das Kopieren von Daten aus lokalen OHD-Tabelle in BW. Wenn Sie andere Typen verwenden, können Sie sich über andere Connectors direkt mit der Datenbank oder dem Dateisystem verbinden.
+
+![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+
+## <a name="delta-extraction-flow"></a>Ablauf der Deltaextraktion
+
+ADF SAP BW Open Hub Connector verfügt über die beiden optionalen Eigenschaften `excludeLastRequest` und `baseRequestId`, die zum Behandeln der Deltalast von Open Hub verwendet werden können. 
+
+- **excludeLastRequestId**: Damit entscheiden Sie, ob die Datensätze der letzten Anforderung ausgeschlossen werden. Der Standardwert lautet „true“. 
+- **baseRequestId**: Die ID der Anforderung für das Deltaladen. Sobald sie festgelegt ist, werden nur noch Daten abgerufen, bei denen requestId größer als der Wert dieser Eigenschaft ist. 
+
+Insgesamt umfasst die Extraktion von SAP InfoProviders in Azure Data Factory (ADF) zwei Schritte: 
+
+1. **SAP BW Data Transfer Process (DTP)**: In diesem Schritt werden die Daten aus einer SAP BW InfoProvider-Instanz in eine SAP BW Open Hub-Tabelle kopiert. 
+
+1. **ADF Data Copy**: In diesem Schritt wird die Open Hub-Tabelle vom ADF Connector gelesen. 
+
+![Ablauf der Deltaextraktion](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
+
+Im ersten Schritt wird ein Datenübertragungsprozess (DTP) durchgeführt. Bei jeder Ausführung wird eine neue SAP-Anforderungs-ID erstellt. Die Anforderungs-ID wird in der Open Hub-Tabelle gespeichert und dann vom ADF Connector verwendet, um das Delta zu identifizieren. Die beiden Schritte werden asynchron ausgeführt: Der DTP wird von SAP ausgelöst, und der ADF-Datenkopiervorgang wird über ADF ausgelöst. 
+
+Standardmäßig wird das aktuelle Delta von ADF nicht aus der Open Hub-Tabelle gelesen (Option „exclude last request“ ist „true“). Die Daten in ADF sind daher nicht zu 100 % aktuell, was die Daten in der Open Hub-Tabelle betrifft (das letzte Delta fehlt). Mit diesem Verfahren wird dafür sichergestellt, dass aufgrund der asynchronen Extraktion keine Zeilen verloren gehen. Dies funktioniert auch dann gut, wenn ADF die Open Hub-Tabelle liest, während für DTP noch Schreibvorgänge in dieselbe Tabelle durchgeführt werden. 
+
+Normalerweise speichern Sie die Anforderungs-ID für die maximalen Kopiervorgänge der letzten Ausführung durch ADF in einem Stagingdatenspeicher (z. B. Azure-Blob im obigen Diagramm). Diese Anforderung wird dann von ADF während der nächsten Ausführung nicht noch ein zweites Mal gelesen. Beachten Sie hierbei, dass die Daten nicht automatisch aus der Open Hub-Tabelle gelöscht werden.
+
+Für die korrekte Deltaverarbeitung ist es nicht zulässig, Anforderungs-IDs unterschiedlicher DTPs in derselben Open Hub-Tabelle zu verwenden. Aus diesem Grund dürfen Sie für jedes Open Hub-Ziel (Open Hub Destination, OHD) nicht mehr als einen DTP erstellen. Falls Sie für eine InfoProvider-Instanz sowohl eine vollständige als auch eine Deltaextraktion benötigen, sollten Sie für die InfoProvider-Instanz zwei OHDs erstellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,6 +84,10 @@ Zur Verwendung dieses SAP Business Warehouse Open Hub-Connectors müssen Sie fol
 
 ## <a name="getting-started"></a>Erste Schritte
 
+> [!TIP]
+>
+> Eine exemplarische Vorgehensweise zur Verwendung von SAP BW Open Hub Connector finden Sie unter [Laden von Daten aus SAP Business Warehouse (BW) mithilfe von Azure Data Factory](load-sap-bw-data.md).
+
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den SAP Business Warehouse Open Hub-Connector verwendet werden.
@@ -71,14 +98,14 @@ Folgende Eigenschaften werden für den mit SAP Business Warehouse Open Hub verkn
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapOpenHub** | JA |
-| server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | JA |
-| systemNumber | Die Systemnummer des SAP BW-Systems.<br/>Zulässiger Wert: Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | JA |
-| clientId | Client-ID des Clients im SAP BW-System.<br/>Zulässiger Wert: Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapOpenHub** | Ja |
+| server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Ja |
+| systemNumber | Die Systemnummer des SAP BW-Systems.<br/>Zulässiger Wert: Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
+| clientId | Client-ID des Clients im SAP BW-System.<br/>Zulässiger Wert: Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
 | Language | Sprache, die das SAP-System verwendet. | Nein (Standardwert ist **EN**).|
-| userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat. | JA |
-| password | Kennwort für den Benutzer Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |JA |
+| userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat. | Ja |
+| password | Kennwort für den Benutzer Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**
 
@@ -113,8 +140,8 @@ Legen Sie zum Kopieren von Daten aus und nach SAP BW Open Hub die type-Eigenscha
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **SapOpenHubTable** festgelegt werden.  | JA |
-| openHubDestinationName | Der Name des Open Hub-Ziels, aus dem Daten kopiert werden. | JA |
+| type | Die type-Eigenschaft muss auf **SapOpenHubTable** festgelegt werden.  | Ja |
+| openHubDestinationName | Der Name des Open Hub-Ziels, aus dem Daten kopiert werden. | Ja |
 | excludeLastRequest | Damit entscheiden Sie, ob die Datensätze der letzten Anforderung ausgeschlossen werden. | Nein (Standardwert ist **true**). |
 | baseRequestId | Die ID der Anforderung für das Deltaladen. Sobald sie festgelegt ist, werden nur noch Daten mit requestId **größer als** der Wert dieser Eigenschaft abgerufen.  | Nein  |
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 138bc0350e4eecac4639125dc3ae508ddbbd7d72
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234865"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893740"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
@@ -79,7 +79,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
     using System.Data.Entity.SqlServer;
     ```
 
-1. Ersetzen Sie die Definition der `Team`-Klasse durch den folgenden Codeausschnitt. Dieser enthält eine aktualisierte Definition für die `Team`-Klasse sowie einige weitere Entity Framework-Hilfsklassen. In diesem Tutorial wird der Code First-Ansatz mit Entity Framework verwendet. Dieser Ansatz ermöglicht Entity Framework das Erstellen der Datenbank aus Ihrem Code. Weitere Informationen zum in diesem Tutorial verwendeten Code First-Ansatz für Entity Framework finden Sie unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542).
+1. Ersetzen Sie die Definition der `Team`-Klasse durch den folgenden Codeausschnitt. Dieser enthält eine aktualisierte Definition für die `Team`-Klasse sowie einige weitere Entity Framework-Hilfsklassen. In diesem Tutorial wird der Code First-Ansatz mit Entity Framework verwendet. Dieser Ansatz ermöglicht Entity Framework das Erstellen der Datenbank aus Ihrem Code. Weitere Informationen zum in diesem Tutorial verwendeten Code First-Ansatz für Entity Framework finden Sie unter [Code First für eine neue Datenbank](/ef/ef6/modeling/code-first/workflows/new-database).
 
     ```csharp
     public class Team
@@ -674,7 +674,7 @@ In diesem Abschnitt stellen Sie eine neue SQL Azure-Datenbank für die App berei
    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
    | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). |
    | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
-   | **Location** | *USA, Osten* | Wählen Sie die gleiche Region, in der Sie den Cache und App Service erstellt haben. |
+   | **Standort** | *USA (Ost)* | Wählen Sie die gleiche Region, in der Sie den Cache und App Service erstellt haben. |
 
 1. Klicken Sie auf **An Dashboard anheften** und dann auf **Erstellen**, um die neue Datenbank und den Server zu erstellen.
 
@@ -744,4 +744,4 @@ Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [How to Scale Azure Cache for Redis](./cache-how-to-scale.md) (Skalieren von Azure Cache for Redis)
+> [Skalieren von Azure Cache for Redis](./cache-how-to-scale.md)

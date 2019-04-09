@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine CSV-Datei mit den Üb
 Erforderlich:
 
 * Ein Azure Active Directory-Mandant. 
-* Ein Benutzer, der über die Rolle **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Globaler Administrator** für den Mandanten verfügt. Darüber hinaus kann jeder Benutzer im Mandanten auf die eigenen Überwachungsprotokolle zugreifen.
+* Ein Benutzer, der über die Rolle **Sicherheitsadministrator**, **Sicherheitsleseberechtigter** oder **Globaler Administrator** für den Mandanten verfügt. Darüber hinaus kann jeder Benutzer im Mandanten auf die eigenen Überwachungsprotokolle zugreifen.
 
 ## <a name="quickstart-download-an-audit-report"></a>Schnellstart: Herunterladen eines Überwachungsberichts
 

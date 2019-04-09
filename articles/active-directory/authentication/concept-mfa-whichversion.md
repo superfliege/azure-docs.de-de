@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-Server oder Dienst, lokal oder in der Cloud?
+title: Azure MFA-Server oder Dienst, lokal oder in der Cloud? – Azure Active Directory
 description: Welche Version von MFA soll ich als Azure AD-Administrator bereitstellen?
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfc26355933db549b735c4baf9744744f46734c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a099fa8d223643e5b339d35c0ff5cf7a5589049c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870468"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372249"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Welche Version von Azure MFA ist für meine Organisation die richtige?
 
@@ -82,4 +82,4 @@ Nachdem Sie nun den Unterschied zwischen Azure Multi-Factor Authentication in de
 
 <center>
 
-[![MFA in der Cloud](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![MFA-Server](./media/concept-mfa-whichversion/server2.png)](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+[![Auswahl für Azure MFA in der Cloud](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Auswahl für lokalen Azure MFA-Server](./media/concept-mfa-whichversion/server2.png)](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>

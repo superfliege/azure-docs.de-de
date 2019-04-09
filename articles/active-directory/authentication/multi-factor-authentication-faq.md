@@ -1,5 +1,5 @@
 ---
-title: Azure Multi-Factor Authentication – Häufig gestellte Fragen | Microsoft Docs
+title: Häufig gestellte Fragen im Zusammenhang mit Azure Multi-Factor Authentication – Azure Active Directory
 description: Häufig gestellte Fragen und Antworten im Zusammenhang mit Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7b935833a6b212bb008be86b26c613d8817133
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 707e0aecdaf2a579d086e012519182078c1a6303
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182607"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313225"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 

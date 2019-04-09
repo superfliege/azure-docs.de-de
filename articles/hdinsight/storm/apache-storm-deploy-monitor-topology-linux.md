@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 32ad4434db8c2816fe7792b1b851e020021d543a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635401"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447107"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight 
 
@@ -23,7 +23,6 @@ Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von [Apa
 > [!IMPORTANT]  
 > Die Schritte in diesem Dokument erfordern einen Linux-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
 >
-> Informationen zur Bereitstellung und Überwachung von Topologien in Windows-basiertem HDInsight finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in Windows-basiertem HDInsight](apache-storm-deploy-monitor-topology.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -202,7 +201,7 @@ Wenn Sie im Abschnitt **Spouts** oder **Bolts** einen Spout auswählen, werden d
 * **Eingabestatistik** (nur Bolt): Informationen zu den Eingabedatenströmen, die vom Bolt verbraucht werden.
 * **Ausgabestatistik**: Informationen zu den Datenströmen, die vom Spout oder Bolt ausgegeben werden.
 * **Ausführer**: Informationen zu den Instanzen von Spout oder Bolt. Wählen Sie den Eintrag **Port** für einen bestimmten Ausführer aus, um ein Protokoll mit Diagnoseinformationen anzuzeigen, das für diese Instanz generiert wurde.
-* **Fehler**: Fehlerinformationen für diesen Spout oder Bolt.
+* **Fehler:** Fehlerinformationen für diesen Spout oder Bolt.
 
 ## <a name="monitor-and-manage-rest-api"></a>Überwachen und Verwalten: REST-API
 
@@ -215,15 +214,15 @@ Weitere Informationen finden Sie unter [REST-API der Apache Storm-Benutzeroberfl
 
 ### <a name="base-uri"></a>Basis-URI
 
-Der Basis-URI für die REST-API auf Linux-basierten HDInsight-Clustern ist auf dem Hauptknoten unter **https://HEADNODEFQDN:8744/api/v1/** verfügbar. Der Domänenname des Hauptknotens wird während der Clustererstellung generiert und ist nicht statisch.
+Der Basis-URI für die REST-API auf Linux-basierten HDInsight-Clustern ist auf dem Hauptknoten unter **https:\//HEADNODEFQDN:8744/api/v1/** verfügbar. Der Domänenname des Hauptknotens wird während der Clustererstellung generiert und ist nicht statisch.
 
 Sie können den vollqualifizierten Domänennamen (FQDN) für den Clusterhauptknoten auf unterschiedliche Arten ermitteln:
 
 * **Über eine SSH-Sitzung**: Verwenden Sie den Befehl `headnode -f` für eine SSH-Sitzung mit dem Cluster.
 * **Über Ambari Web**: Wählen Sie oben auf der Seite **Dienste** und dann **Storm**. Wählen Sie auf der Registerkarte **Zusammenfassung** die Option **Storm UI-Server**. Der vollqualifizierte Domänenname des Hosts, auf dem die Storm UI und die REST-API ausgeführt werden, wird oben auf der Seite angezeigt.
-* **Über die Ambari-REST-API**: Verwenden Sie den Befehl `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`, um Informationen zu dem Knoten abzurufen, auf dem die Storm UI und die REST-API ausgeführt werden. Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort des Anmeldekontos (Administrator) ein. In der Antwort enthält der Eintrag „host_name“ den vollqualifizierten Domänennamen des Knotens.
+* **Über die Ambari-REST-API**: Verwenden Sie den Befehl `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`, um Informationen zu dem Knoten abzurufen, auf dem die Storm UI und die REST-API ausgeführt werden. Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort des Anmeldekontos (Administrator) ein. In der Antwort enthält der Eintrag „host_name“ den vollqualifizierten Domänennamen des Knotens.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Anforderungen an die REST-API müssen die **Standardauthentifizierung**und somit den Benutzernamen und das Kennwort des HDInsight-Clusteradministrators verwenden.
 

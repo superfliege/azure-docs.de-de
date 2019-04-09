@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4269f4ac24a842bf203456026234182934f1732f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6e2803590740d84bc99327ce78886f41f3c600df
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878464"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630444"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -168,7 +168,7 @@ namespace User.Namespace.Example01
 {
     using System;
     using Microsoft.ApplicationInsights;
-    using TraceSeverityLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
+    using Microsoft.ApplicationInsights.DataContracts;
 
     /// <summary>
     /// Most simple cases are one-liners.
@@ -220,7 +220,7 @@ namespace User.Namespace.Example01
             if (!animalsSold.TrackValue(count, species))
 
             {
-                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeverityLevel.Error);
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", SeverityLevel.Error);
             }
 
             // You can inspect a metric object to reason about its current state. For example:
@@ -1078,6 +1078,17 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 ```
 
+*Node.js*
+
+Für Node.js können Sie den Entwicklermodus aktivieren, indem Sie die interne Protokollierung über `setInternalLogging` aktivieren und `maxBatchSize` auf 0 festlegen, wodurch Ihre Telemetriedaten gesendet werden, sobald sie gesammelt wurden.
+
+```js
+applicationInsights.setup("ikey")
+  .setInternalLogging(true, true)
+  .start()
+applicationInsights.defaultClient.config.maxBatchSize = 0;
+```
+
 ## <a name="ikey"></a> Festlegen des Instrumentationsschlüssels für ausgewählte benutzerdefinierte Telemetriedaten
 
 *C#*
@@ -1127,6 +1138,15 @@ var appInsights = window.appInsights || function(config){ ...
     @Microsoft.ApplicationInsights.Extensibility.
         TelemetryConfiguration.Active.InstrumentationKey;
 }) // ...
+```
+
+```java
+    String instrumentationKey = "00000000-0000-0000-0000-000000000000";
+
+    if (instrumentationKey != null)
+    {
+        TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
+    }
 ```
 
 ## <a name="telemetrycontext"></a>TelemetryContext

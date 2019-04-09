@@ -1,5 +1,5 @@
 ---
-title: Schützen von Cloudressourcen mit Azure MFA und AD FS | Microsoft-Dokumentation
+title: Schützen von Cloudressourcen mit Azure MFA und AD FS – Azure Active Directory
 description: Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS in der Cloud beschrieben.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89559c1c42255bf1050cbb96f38e6d7394c21103
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191402"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371527"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
 
@@ -30,15 +30,15 @@ Zum Schützen Ihrer Cloudressource richten Sie eine Anspruchsregel ein, damit Ac
 2. Wählen Sie auf der linken Seite die Option **Vertrauensstellungen der vertrauenden Seite**.
 3. Klicken Sie mit der rechten Maustaste auf **Microsoft Office 365 Identity Platform**, und wählen Sie **Anspruchsregeln bearbeiten**.
 
-   ![Cloud](./media/howto-mfa-adfs/trustedip1.png)
+   ![AD FS-Konsole – Vertrauensstellungen der vertrauenden Seite](./media/howto-mfa-adfs/trustedip1.png)
 
 4. Klicken Sie unter „Ausstellungstransformationsregeln“ auf **Regel hinzufügen**.
 
-   ![Cloud](./media/howto-mfa-adfs/trustedip2.png)
+   ![Bearbeiten von Ausstellungstransformationsregeln](./media/howto-mfa-adfs/trustedip2.png)
 
 5. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln im Dropdownmenü die Option **Passthrough oder eingehenden Anspruch filtern**, und klicken Sie auf **Weiter**.
 
-   ![Cloud](./media/howto-mfa-adfs/trustedip3.png)
+   ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Benennen Sie die Regel. 
 7. Wählen Sie **Authentifizierungsmethodenreferenzen** als eingehenden Anspruchstyp aus.
@@ -58,15 +58,15 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Erstellen Sie zwei A
 
 1. Öffnen Sie die AD FS-Verwaltung.
 2. Wählen Sie auf der linken Seite die Option **Vertrauensstellungen der vertrauenden Seite**.
-3. Klicken Sie mit der rechten Maustaste auf **Microsoft Office 365 Identity Platform**, und wählen Sie **Anspruchsregeln bearbeiten**.
-   ![Cloud](./media/howto-mfa-adfs/trustedip1.png)
+3. Klicken Sie mit der rechten Maustaste auf **Microsoft Office 365 Identity Platform**, und wählen Sie **Anspruchsregeln bearbeiten** aus.
+   ![AD FS-Konsole – Anspruchsregeln bearbeiten](./media/howto-mfa-adfs/trustedip1.png)
 4. Klicken Sie unter „Ausstellungstransformationsregeln“ auf **Regel hinzufügen**.
-   ![Cloud](./media/howto-mfa-adfs/trustedip2.png)
+   ![Hinzufügen einer Anspruchsregel](./media/howto-mfa-adfs/trustedip2.png)
 5. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln im Dropdownmenü die Option **Passthrough oder eingehenden Anspruch filtern**, und klicken Sie auf **Weiter**.
-   ![Cloud](./media/howto-mfa-adfs/trustedip3.png)
+   ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/trustedip3.png)
 6. Geben Sie der Regel im Feld neben „Anspruchsregelname“ einen Namen. Beispiel:  InsideCorpNet.
 7. Wählen Sie in der Dropdownliste neben „Eingehender Anspruchstyp“ die Option **Innerhalb des Unternehmensnetzwerks**.
-   ![Cloud](./media/howto-mfa-adfs/trustedip4.png)
+   ![Hinzufügen eines Anspruchs vom Typ „Innerhalb des Unternehmensnetzwerks“](./media/howto-mfa-adfs/trustedip4.png)
 8. Klicken Sie auf **Fertig stellen**.
 9. Klicken Sie unter „Ausstellungstransformationsregeln“ auf **Regel hinzufügen**.
 10. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln in der Dropdownliste die Option **Ansprüche mit benutzerdefinierter Regel senden**, und klicken Sie auf **Weiter**.
@@ -75,7 +75,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Erstellen Sie zwei A
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Cloud](./media/howto-mfa-adfs/trustedip5.png)
+    ![Erstellen eines benutzerdefinierten Anspruchs zur Aufrechterhaltung der Benutzeranmeldung](./media/howto-mfa-adfs/trustedip5.png)
 13. Klicken Sie auf **Fertig stellen**.
 14. Klicken Sie auf **Anwenden**.
 15. Klicken Sie auf **OK**.

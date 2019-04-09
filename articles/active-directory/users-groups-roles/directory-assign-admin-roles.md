@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac7c8e6868996810a78394ade0a9b2eb63f51662
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b62b710a7217792276392e8815013848ef607733
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839252"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522365"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -134,7 +134,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Partnersupport der Ebene 2:](#partner-tier2-support)** Nicht verwenden. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
 
-* **[Kennwort-/Helpdesk-Administrator:](#helpdesk-administrator)** Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für ungültig erklären, Dienstanforderungen verwalten und die Dienstintegrität überwachen. Wenn ein Aktualisierungstoken für ungültig erklärt wird, muss sich der Benutzer erneut anmelden. Helpdeskadministratoren können Kennwörter zurücksetzen und Aktualisierungstoken anderer Benutzer annullieren, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden:
+* **[Helpdeskadministrator (Kennwort)](#helpdesk-administrator)** Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für ungültig erklären, Dienstanforderungen verwalten und die Dienstintegrität überwachen. Wenn ein Aktualisierungstoken für ungültig erklärt wird, muss sich der Benutzer erneut anmelden. Helpdeskadministratoren können Kennwörter zurücksetzen und Aktualisierungstoken anderer Benutzer annullieren, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden:
   * Rolle „Verzeichnis lesen“
   * Gasteinladender
   * Helpdeskadministrator
@@ -149,7 +149,7 @@ Die folgenden Administratorrollen sind verfügbar:
   * Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
   > [!NOTE]
-  > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Helpdeskadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com/) lautet diese „Kennwortadministrator“.
+  > Im [Azure-Portal](https://portal.azure.com/) hieß diese Rolle früher „Kennwortadministrator“. Wir ändern den Namen in „Helpdeskadministrator“, damit er dem Namen in Azure AD PowerShell, Azure AD Graph-API und Microsoft Graph-API entspricht. Für kurze Zeit verwenden wir im Azure-Portal den Namen „Helpdeskadministrator (Kennwort)“, bevor wir ihn in „Helpdeskadministrator“ ändern.
   >
   
 * **[Power BI-Administrator:](#power-bi-service-administrator)** Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsoft Power BI, wenn der Dienst verfügbar ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Grundlegendes zur Power BI-Administratorrolle](https://docs.microsoft.com/power-bi/service-admin-role).
@@ -231,11 +231,11 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Teams-Kommunikationssupportspezialist:](#teams-communications-support-specialist)** Benutzer in dieser Rolle können Kommunikationsprobleme innerhalb von Microsoft Teams und Skype for Business mithilfe der Problembehandlungstools für Benutzeranrufe im Admin Center für Microsoft Teams und Skype for Business behandeln. Benutzer in dieser Rolle können Benutzerdetails im Anruf nur für den bestimmten Benutzer anzeigen, nach dem sie gesucht haben. Diese Rolle kann keine Supporttickets anzeigen, erstellen oder verwalten.
 
-* **[Benutzeradministrator](#user-account-administrator)**: Benutzer mit dieser Rolle können Benutzer erstellen und verwalten. Dabei unterliegen sie einigen Einschränkungen (siehe unten). Außerdem können Benutzer mit dieser Rolle Gruppen erstellen und verwalten. Zudem haben sie die Möglichkeit, Benutzeransichten und Supporttickets zu verwalten sowie die Dienstintegrität zu überwachen.
+* **Benutzeradministrator**: Benutzer mit dieser Rolle können Benutzer erstellen und mit einigen Einschränkungen (siehe unten) auch verwalten. Außerdem können sie Richtlinien für den Kennwortablauf aktualisieren. Außerdem können Benutzer mit dieser Rolle Gruppen erstellen und verwalten. Zudem haben sie die Möglichkeit, Benutzeransichten und Supporttickets zu verwalten sowie die Dienstintegrität zu überwachen.
 
   | | |
   | --- | --- |
-  |Allgemeine Berechtigungen|<p>Erstellen von Benutzern und Gruppen</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Verwalten von Office-Supporttickets|
+  |Allgemeine Berechtigungen|<p>Erstellen von Benutzern und Gruppen</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Verwalten von Office-Supporttickets<p>Aktualisieren von Richtlinien für den Kennwortablauf|
   |<p>Für alle Benutzer einschließlich aller Administratoren</p>|<p>Verwalten von Lizenzen</p><p>Verwalten aller Benutzereigenschaften mit Ausnahme des Benutzerprinzipalnamens</p>
   |Nur für Benutzer, die keine Administratoren sind und keine der folgenden eingeschränkten Administratorrollen haben:<ul><li>Rolle „Verzeichnis lesen“<li>Gasteinladender<li>Helpdeskadministrator<li>Nachrichtencenter-Leser<li>Meldet Reader<li>Benutzeradministrator|<p>Löschen und Wiederherstellen</p><p>Deaktivieren und Aktivieren</p><p>Annullieren von Aktualisierungstoken</p><p>Verwalten aller Benutzereigenschaften einschließlich des Benutzerprinzipalnamens</p><p>Kennwort zurücksetzen</p><p>Aktualisieren von Geräteschlüsseln (FIDO)</p>
   

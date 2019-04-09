@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Blob Storage für IIS und Table Storage für Ereignisse in Azure Log Analytics | Microsoft Docs
-description: Log Analytics kann die Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen.
+title: Verwenden von Blob Storage für IIS und Table Storage für Ereignisse in Azure Monitor | Microsoft-Dokumentation
+description: Azure Monitor kann die Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306628"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652551"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Log Analytics
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Azure Monitor
 
-Log Analytics kann die Protokolle für die folgenden Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen:
+Azure Monitor kann die Protokolle für die folgenden Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen:
 
 * Service Fabric-Cluster (Vorschau)
 * Virtual Machines
 * Web-/Workerrollen
 
-Bevor Log Analytics Daten für diese Ressourcen sammeln kann, muss Azure-Diagnose aktiviert sein.
+Bevor Azure Monitor Daten für diese Ressourcen in einem Log Analytics-Arbeitsbereich sammeln kann, muss Azure-Diagnose aktiviert sein.
 
-Nachdem die Diagnose aktiviert wurde, können Sie das Azure-Portal oder PowerShell verwenden, um Log Analytics für das Sammeln der Protokolle zu konfigurieren.
+Nachdem die Diagnose aktiviert wurde, können Sie das Azure-Portal oder PowerShell verwenden, um den Arbeitsbereich für das Sammeln der Protokolle zu konfigurieren.
 
-Die Azure-Diagnose ist eine Azure-Erweiterung, mit der Sie Diagnosedaten von einer Worker- oder Webrolle oder einem virtuellen Computer erfassen können, die bzw. der in Azure ausgeführt wird. Die Daten werden in einem Azure-Speicherkonto gespeichert und können dann von Log Analytics gesammelt werden.
+Die Azure-Diagnose ist eine Azure-Erweiterung, mit der Sie Diagnosedaten von einer Worker- oder Webrolle oder einem virtuellen Computer erfassen können, die bzw. der in Azure ausgeführt wird. Die Daten werden in einem Azure-Speicherkonto gespeichert und können dann von Azure Monitor gesammelt werden.
 
-Damit Log Analytics die Protokolle von Azure-Diagnose sammeln kann, müssen diese sich an den folgenden Speicherorten befinden:
+Damit Azure Monitor die Protokolle von Azure-Diagnose sammeln kann, müssen diese sich an den folgenden Speicherorten befinden:
 
 | Protokolltyp | Ressourcentyp | Standort |
 | --- | --- | --- |
@@ -54,9 +54,11 @@ Damit Log Analytics die Protokolle von Azure-Diagnose sammeln kann, müssen dies
 Bei virtuellen Computern haben Sie die Möglichkeit, den [Log Analytics-Agent](../../azure-monitor/learn/quick-collect-azurevm.md) auf Ihrem virtuellen Computer zu installieren, um weitere Einblicke zu aktivieren. Sie können nicht nur IIS-Protokolle und Ereignisprotokolle analysieren, sondern auch zusätzliche Analysen durchführen, einschließlich der Nachverfolgung von Konfigurationsänderungen, SQL-Bewertung und der Bewertung von Updates.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Aktivieren der Azure-Diagnose auf einem virtuellen Computer zur Erfassung von Ereignis- und IIS-Protokollen
+
 Gehen Sie folgendermaßen vor, um die Azure-Diagnose mithilfe des Microsoft Azure-Portals auf einem virtuellen Computer für die Erfassung von Ereignis- und IIS-Protokollen zu aktivieren.
 
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Aktivieren der Azure-Diagnose auf einem virtuellen Computer mithilfe des Azure-Portals
+
 1. Installieren Sie den VM-Agent, wenn Sie einen virtuellen Computer erstellen. Ist der virtuelle Computer bereits vorhanden, stellen Sie sicher, dass der VM-Agent bereits installiert ist.
 
    * Navigieren Sie im Azure-Portal zu dem virtuellen Computer, wählen Sie **Optionale Konfiguration** und dann **Diagnose** aus, und legen Sie den **Status** auf **Ein** fest.
@@ -72,6 +74,7 @@ Gehen Sie folgendermaßen vor, um die Azure-Diagnose mithilfe des Microsoft Azur
    6. Klicken Sie auf **OK**.
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Aktivieren der Azure-Diagnose in einer Webrolle für die Sammlung von IIS-Protokollen und -Ereignissen
+
 Allgemeine Schritte zur Aktivierung der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in einem Clouddienst](../../cloud-services/cloud-services-dotnet-diagnostics.md). Diese Informationen werden in den unten stehenden Anweisungen verwendet und für den Einsatz mit Log Analytics angepasst.
 
 Bei aktivierter Azure-Diagnose:
@@ -80,11 +83,12 @@ Bei aktivierter Azure-Diagnose:
 * Windows-Ereignisprotokolle werden standardmäßig nicht übertragen.
 
 ### <a name="to-enable-diagnostics"></a>So aktivieren Sie die Diagnose
+
 Zum Aktivieren der Windows-Ereignisprotokolle oder zum Ändern von scheduledTransferPeriod konfigurieren Sie Azure-Diagnose mithilfe der XML-Konfigurationsdatei („diagnostics.wadcfg“), wie in [Schritt 4: Erstellen der Diagnosekonfigurationsdatei und Installieren der Erweiterung](../../cloud-services/cloud-services-dotnet-diagnostics.md) beschrieben.
 
 Die folgende Beispielkonfigurationsdatei sammelt IIS-Protokolle und alle Ereignisse aus dem Anwendungs- und dem Systemprotokoll:
 
-```
+```xml
     <?xml version="1.0" encoding="utf-8" ?>
     <DiagnosticMonitorConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"
           configurationChangePollInterval="PT1M"
@@ -108,7 +112,7 @@ Die folgende Beispielkonfigurationsdatei sammelt IIS-Protokolle und alle Ereigni
 
 Stellen Sie sicher, dass ConfigurationSettings ein Speicherkonto angibt, wie im folgenden Beispiel gezeigt:
 
-```
+```xml
     <ConfigurationSettings>
        <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"/>
     </ConfigurationSettings>
@@ -116,10 +120,11 @@ Stellen Sie sicher, dass ConfigurationSettings ein Speicherkonto angibt, wie im 
 
 Sie finden die Werte für **AccountName** und **AccountKey** im Azure-Portal im Speicherkontodashboard unter „Zugriffsschlüssel verwalten“. Als Protokoll für die Verbindungszeichenfolge muss **https**verwendet werden.
 
-Sobald die aktualisierte Diagnosekonfiguration auf den Clouddienst angewendet wurde und die Diagnosedaten in Azure Storage geschrieben werden, können Sie mit der Konfiguration von Log Analytics beginnen.
+Sobald die aktualisierte Diagnosekonfiguration auf den Clouddienst angewendet wurde und die Diagnosedaten in Azure Storage geschrieben werden, können Sie mit der Konfiguration des Log Analytics-Arbeitsbereichs beginnen.
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Verwenden des Azure-Portals zum Sammeln von Protokollen aus Azure Storage
-Sie können Log Analytics im Azure-Portal konfigurieren, um Protokolle für die folgenden Azure-Dienste zu sammeln:
+
+Sie können einen Log Analytics-Arbeitsbereich in Azure Monitor über das Azure-Portal konfigurieren, um Protokolle für die folgenden Azure-Dienste zu sammeln:
 
 * Service Fabric-Cluster
 * Virtual Machines
@@ -136,9 +141,9 @@ Navigieren Sie im Azure-Portal zum Log Analytics-Arbeitsbereich, und führen Sie
 5. Der Wert für die Quelle wird automatisch basierend auf dem Datentyp aufgefüllt und kann nicht geändert werden.
 6. Klicken Sie auf „OK“, um die Konfiguration zu speichern.
 
-Wiederholen Sie die Schritte 2 bis 6 für weitere Speicherkonten und Datentypen, die Log Analytics sammeln sollen.
+Wiederholen Sie die Schritte 2 bis 6 für weitere Speicherkonten und Datentypen, die Sie im Arbeitsbereich sammeln möchten.
 
-Nach etwa 30 Minuten können Sie Daten aus dem Speicherkonto in Log Analytics sehen. Es werden nur Daten angezeigt, die nach dem Anwenden der Konfiguration in den Speicher geschrieben wurden. Log Analytics liest keine bereits vorher im Speicherkonto vorhandenen Daten.
+Nach etwa 30 Minuten können Sie Daten aus dem Speicherkonto im Log Analytics-Arbeitsbereich sehen. Es werden nur Daten angezeigt, die nach dem Anwenden der Konfiguration in den Speicher geschrieben wurden. Der Arbeitsbereich liest keine bereits vorher im Speicherkonto vorhandenen Daten.
 
 > [!NOTE]
 > Das Portal überprüft nicht, ob die Quelle im Speicherkonto vorhanden ist oder ob neue Daten geschrieben werden.
@@ -149,7 +154,7 @@ Nach etwa 30 Minuten können Sie Daten aus dem Speicherkonto in Log Analytics se
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Führen Sie die Schritte unter [Konfigurieren von Log Analytics zum Indizieren der Azure-Diagnose](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage) aus, um PowerShell zum Lesen von Azure-Diagnosedaten zu verwenden, die in einen Tabellenspeicher geschrieben wurden.
+Führen Sie die Schritte unter [Konfigurieren von Azure Monitor zum Indizieren der Azure-Diagnose](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) aus, um PowerShell zum Lesen von Azure-Diagnosedaten zu verwenden, die in einen Tabellenspeicher geschrieben wurden.
 
 Mit Azure PowerShell können Sie die Ereignisse genauer angeben, die in Azure Storage geschrieben werden.
 Weitere Informationen finden Sie unter [Aktivieren der Diagnose auf virtuellen Azure-Computern](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
@@ -161,7 +166,7 @@ Das Skript verwendet Cmdlets für klassische virtuelle Computer.
 
 Überprüfen Sie das folgende Beispielskript, kopieren Sie es, ändern Sie es nach Bedarf, speichern Sie das Beispiel als PowerShell-Skriptdatei, und führen Sie das Skript aus.
 
-```
+```powershell
     #Connect to Azure
     Add-AzureAccount
 
@@ -194,6 +199,7 @@ Das Skript verwendet Cmdlets für klassische virtuelle Computer.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Sammeln von Protokollen und Metriken für Azure-Dienste](collect-azure-metrics-logs.md) für unterstützte Azure-Dienste.
 * [Aktivieren Sie Lösungen](../../azure-monitor/insights/solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](../../azure-monitor/log-query/log-query-overview.md) , um die Daten zu analysieren.

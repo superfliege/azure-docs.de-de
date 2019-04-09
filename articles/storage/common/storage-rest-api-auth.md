@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012780"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369087"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -266,7 +266,7 @@ Nachdem Sie nun mit dem Erstellen der Anforderung, dem Aufrufen des Diensts und 
 ## <a name="creating-the-authorization-header"></a>Erstellen des Autorisierungsheaders
 
 > [!TIP]
-> Azure Storage unterstützt jetzt die Integration von Azure Active Directory (Azure AD) für die Blob- und Warteschlangendienste (Vorschau). Azure AD bietet eine erheblich einfachere Benutzeroberfläche für das Autorisieren einer Anforderung an Azure Storage. Weitere Informationen zur Verwendung von Azure AD zum Autorisieren von REST-Vorgängen finden Sie unter [Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory) (Authentifizieren mit Azure Active Directory (Vorschau)). Eine Übersicht über die Azure AD-Integration in Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mithilfe von Azure Active Directory (Vorschau)](storage-auth-aad.md).
+> Azure Storage unterstützt jetzt die Integration von Azure Active Directory (Azure AD) für Blobs und Warteschlangen. Azure AD bietet eine erheblich einfachere Benutzeroberfläche für das Autorisieren einer Anforderung an Azure Storage. Weitere Informationen zur Verwendung von Azure AD zum Autorisieren von REST-Vorgängen finden Sie unter [Authentifizieren mit Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Eine Übersicht über die Azure AD-Integration in Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
 
 Es gibt einen Artikel, in dem konzeptuell (ohne Code) beschrieben wird, wie Sie die [Authentifizierung für Azure Storage-Dienste](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services) durchführen.
 Wir fassen hier die wesentlichen Punkte des Artikels zusammen und zeigen den Code.

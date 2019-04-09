@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1ab9fcd50ad7081f8047d62e545287fa75db75e4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5057c0c781cb9ec60ecde7dd3f4bf96089b902df
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457585"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312681"
 ---
 # <a name="hosted-test-drive"></a>Gehostete Testversion
 
@@ -48,12 +48,12 @@ Geben Sie die folgenden Felder im Abschnitt \'Technische Konfiguration\' an:
 - **Typ der Testversion**: Wählen Sie die Option \'Von Microsoft gehostet (Beispiel: Dynamics 365 for Customer Engagement) aus. Dies weist darauf hin, dass Microsoft den Dienst hosten und warten wird, der die Bereitstellung und das Aufheben der Bereitstellung von Benutzern der Testversion durchführt.
 - **Maximale Anzahl gleichzeitiger Testversionen**: Legen Sie in diesem Feld die Anzahl der Benutzer fest, die gleichzeitig zu einem bestimmten Zeitpunkt eine aktive Testversion verwenden können. Jeder Benutzer verwendet eine Dynamics-Lizenz, während seine Testversion aktiv ist, sodass Sie sicherstellen müssen, dass Sie mindestens so viele Dynamics-Lizenzen für die Benutzer der Testversionen zur Verfügung stellen. Empfohlener Wert liegt zwischen 3 und 5.
 - **Dauer der Testversion (Stunden)**: Legen Sie in diesem Feld die Anzahl der Stunden fest, für die die Testversion des Benutzers aktiv sein soll. Nach dieser Anzahl von Stunden wird die Bereitstellung des Benutzers für Ihren Mandanten aufgehoben. Empfohlener Wert von 2 bis 24 Stunden, abhängig von der Komplexität Ihrer App. Der Benutzer kann jederzeit eine weitere Testversion anfordern, wenn seine Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
-- **Instanz-URL**: Geben Sie eine URL an, zu der der Benutzer der Testversion beim Start der Testversion zunächst navigiert wird. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App und Beispieldaten installiert sind. Beispielwert: https://testdrive.crm.dynamics.com
+- **Instanz-URL**: Geben Sie eine URL an, zu der der Benutzer der Testversion beim Start der Testversion zunächst navigiert wird. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App und Beispieldaten installiert sind. Beispielwert: https:\//testdrive.crm.dynamics.com
 - **Azure AD-Mandanten-ID**: Geben Sie die ID des Azure-Mandanten für Ihre Dynamics 365-Instanz an. Um diesen Wert abzurufen, melden Sie sich am Azure-Portal an und navigieren Sie zu \'Azure Active Directory\' -\> Wählen Sie „Eigenschaften“ auf dem Menüblatt -\> aus. Kopieren Sie die Verzeichnis-ID. Beispielwert: 72f988bf-86f1-41af-91ab-2d7cd0111234
 - **Azure AD-App-ID**: ID der Azure AD-App, die Sie in Schritt 7 erstellt haben. \ Beispielwert: 53852862-a2ae-4e43-9461-faa49650a096
 - **Azure AD-App-Schlüssel**: Geheimer Schlüssel für die Azure AD-App, die Sie in Schritt 7 erstellt haben.\ Beispielwert: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
 - **Name des Azure AD-Mandanten**: Geben Sie den Namen des Azure-Mandanten für Ihre Dynamics 365-Instanz an. Verwenden Sie das Format der \<Mandantenname.\>onmicrosoft.com. Beispielwert: testdrive.onmicrosoft.com
-- **Web-API-URL der Instanz**: Geben Sie die Web-API-URL für Ihre Dynamics 365-Instanz an. Sie können diesen Wert abrufen, indem Sie sich bei Ihrer Microsoft Dynamics 365-Instanz anmelden und zu „Einstellung -\> Anpassung -\> Entwicklerressourcen -\> Web-API der Instanz“ navigieren (diese URL kopieren). Beispielwert: https://testdrive.crm.dynamics.com/api/data/v9.0 
+- **Web-API-URL der Instanz**: Geben Sie die Web-API-URL für Ihre Dynamics 365-Instanz an. Sie können diesen Wert abrufen, indem Sie sich bei Ihrer Microsoft Dynamics 365-Instanz anmelden und zu „Einstellung -\> Anpassung -\> Entwicklerressourcen -\> Web-API der Instanz“ navigieren (diese URL kopieren). Beispielwert: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
 - **Rollenname**: Geben Sie den Namen der benutzerdefinierten Dynamics 365-Sicherheitsrolle an, die Sie für die Testversion erstellt haben. Dies ist die Rolle, die den Benutzern während der Testversion zugewiesen wird. Beispielwert: testdriverole
 
 ## <a name="next-steps"></a>Nächste Schritte

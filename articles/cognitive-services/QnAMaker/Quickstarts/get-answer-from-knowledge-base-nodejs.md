@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: f055ecdcc157a9ecf1a564913b0a4f889364b427
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a1caec1cd0c05fbc306b1a19c88fbe469be7fa6d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309824"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881748"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Node.js
 
@@ -56,7 +56,7 @@ Der folgende Code sendet eine HTTPS-Anforderung an die QnA Maker-API, um die Fra
 
 [!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
 
-Der Wert des `Authorization`-Headers enthält die Zeichenfolge `EndpointKey `. 
+Der Wert des `Authorization`-Headers enthält die Zeichenfolge `EndpointKey`. 
 
 ## <a name="install-the-dependencies"></a>Installieren der Abhängigkeiten
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: c66a7d7af2a73e26878b92f34e0f42ce0b3ae7f2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fb17afa4bfe8c00c91cc8fb33ab3326452065a9e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437496"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885416"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in .NET
 
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für Windows, Mac und Linux:
-  * [Git-Client](https://git-scm.com/downloads)
+  * [Git](https://git-scm.com/downloads)
   * Für dieses Tutorial ist es erforderlich, dass Sie die Azure CLI lokal ausführen. Hierfür muss Azure CLI Version 2.0.4 oder höher installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="about-managed-service-identity"></a>Informationen zur verwalteten Dienstidentität
@@ -70,7 +70,7 @@ Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
-Wählen Sie anschließend einen Namen für die Ressourcengruppe aus, und fügen Sie den Platzhalter ein. Im folgenden Beispiel wird eine Ressourcengruppe am Standort „USA, Westen“ erstellt:
+Wählen Sie anschließend einen Namen für die Ressourcengruppe aus, und fügen Sie einen Wert für den Platzhalter ein. Im folgenden Beispiel wird eine Ressourcengruppe am Standort „USA, Westen“ erstellt:
 
 ```azurecli
 # To list locations: az account list-locations --output table
@@ -109,7 +109,7 @@ Mithilfe einer der folgenden Methoden können Sie einen virtuellen Computer erst
 
 * [Die Azure-CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
 * [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
-* [Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+* [Das Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
 ## <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
 In diesem Schritt erstellen Sie mithilfe des folgenden Befehls in der Azure CLI eine systemseitig zugewiesene Identität für den virtuellen Computer:
@@ -148,7 +148,7 @@ Wechseln Sie zur [.NET-Downloadseite](https://www.microsoft.com/net/download), u
 
 Sie können „Hallo Welt“ auf der Konsole ausgeben, indem Sie die folgenden Befehle ausführen:
 
-```
+```batch
 dotnet new console -o helloworldapp
 cd helloworldapp
 dotnet run
@@ -158,7 +158,7 @@ dotnet run
 
 Öffnen Sie die Datei *Program.cs*, und fügen Sie die folgenden Pakete hinzu:
 
-```
+```csharp
 using System;
 using System.IO;
 using System.Net;
@@ -172,7 +172,7 @@ Bearbeiten Sie in den folgenden beiden Schritten die Klassendatei so, dass sie d
 1. Rufen Sie ein Token vom lokalen MSI-Endpunkt auf dem virtuellen Computer ab. Dadurch wird auch ein Token von Azure AD abgerufen.
 1. Übergeben Sie das Token an Ihren Schlüsseltresor, und rufen Sie anschließend Ihr Geheimnis ab. 
 
-```
+```csharp
  class Program
     {
         static void Main(string[] args)

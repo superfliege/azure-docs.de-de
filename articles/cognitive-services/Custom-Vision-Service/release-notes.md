@@ -7,16 +7,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ce48a240c67c6077027210ffb0ca85db93610782
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894410"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472955"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
+
+## <a name="march-26-2019"></a>26. März 2019
+- Custom Vision Service hat die allgemeine Verfügbarkeit auf Azure erreicht! 
+- Die erweiterte Trainingsfunktion mit einem neuen Back-End für Machine Learning wurde hinzugefügt, um für eine verbesserte Leistung zu sorgen, insbesondere bei anspruchsvollen Datasets und differenzierter Klassifizierung. Mit dem erweiterten Training können Sie ein Budget für die Computezeit für das Training angeben, und Custom Vision führt eine experimentelle Ermittlung durch, um die optimalen Einstellungen für Training und Erweiterung zu identifizieren. Für schnelle Iterationen können Sie das bestehende schnelle Training weiterhin verwenden. 
+- Einführung von APIs der Version 3.0. Ankündigung der bevorstehenden Einstellung von APIs vor Version 3.0 am 1. Oktober 2019. In den Schnellstarts für [.NET](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/csharp-tutorial), [Python](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/python-tutorial), [Node](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/java-tutorial) oder [Go](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/go-tutorial) finden Sie Beispiele für die ersten Schritte. 
+- In den APIs der Version 3.0 wurden „Standarditerationen“ durch Veröffentlichen/Aufheben der Veröffentlichung ersetzt. 
+- Es wurden neue Exportziele für Modelle hinzugefügt. Für den Dockerfile-Export wurde ein Upgrade durchgeführt, um ARM für Raspberry Pi 3 zu unterstützen. Die Exportunterstützung wurde zum [Developer Kit für KI für maschinelles Sehen](https://visionaidevkit.com/) hinzugefügt. 
+- Die Anzahl der Tags pro Projekt wurde für den S0-Tarif auf 500 erhöht. Die Anzahl der Bilder pro Projekt wurde für den S0-Tarif auf 100.000 erhöht.
+- Die Domäne für nicht jugendfreie Inhalte wurde entfernt. Stattdessen wird die allgemeine Domäne empfohlen.
+- Für die allgemeine Verfügbarkeit wurde die [Preisübersicht](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/) angekündigt.  
+
+
+## <a name="february-25-2019"></a>25. Februar 2019
+- Das Ende der Projekte für eingeschränkte Testversionen (Projekte, die keiner Azure-Ressource zugeordnet sind) wurde angekündigt, da sich Custom Vision dem Ende des Übergangs zur öffentlichen Vorschauversion von Azure nähert. Ab dem 25. März 2019 unterstützt die Website „CustomVision.ai“ nur noch die Anzeige von Projekten, die einer Azure-Ressource zugeordnet sind, z. B. die kostenfreie Custom Vision-Ressource. Bis zum 1. Oktober 2019 können Sie noch über die Custom Vision-APIs auf Ihre bestehenden Projekte für eingeschränkte Testversionen zugreifen. Dies gibt Ihnen Zeit, die API-Schlüssel für alle Apps zu aktualisieren, die Sie mit Custom Vision erstellt haben. Nach dem 1. Oktober 2019 werden alle Projekte für eingeschränkte Testversionen, die Sie nicht nach Azure verschoben haben, gelöscht.
 
 ## <a name="january-22-2019"></a>22. Januar 2019
 - Unterstützung für neue Azure-Regionen hinzugefügt: „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „Europa, Westen“, „Europa, Norden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Vereinigtes Königreich, Süden“, „Japan, Osten“ und „USA, Norden-Mitte“. Die Unterstützung für „USA, Süden-Mitte“ wird fortgesetzt. 

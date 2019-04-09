@@ -3,7 +3,7 @@ title: 'Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung |
 description: 'Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung.'
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
@@ -12,20 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
-ms.author: markvi
+ms.date: 03/22/2019
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaaad0d7351c398c9b2cc013f40d62461a2dd3f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: acf17971bde840743d17dd0b66078630c2d4e7c1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845529"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518795"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
-**F: Ich habe das Gerät vor Kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder warum ist der Gerätebesitzer für in Azure Active Directory (AD) eingebundene Hybridgeräte als „N/V“ markiert?**
+###<a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>F: Ich habe das Gerät vor Kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder warum ist der Gerätebesitzer für in Azure Active Directory (Azure AD) eingebundene Hybridgeräte als „N/V“ markiert?
 
 **A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den **BENUTZER-Geräten** angezeigt.
 Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
@@ -38,7 +38,7 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 ---
 
-**F: Wie ermittle ich den Geräteregistrierungsstatus des Clients?**
+### <a name="q-how-do-i-know-what-the-device-registration-state-of-the-client-is"></a>F: Wie ermittle ich den Geräteregistrierungsstatus des Clients?
 
 **A:** Navigieren Sie im Azure-Portal zu **Alle Geräte**. Suchen Sie für das Gerät anhand der Geräte-ID. Überprüfen Sie den Wert in der Spalte „Jointyp“. Möglicherweise wurde das Gerät zurückgesetzt oder ein Reimaging durchgeführt. Daher ist es wichtig, den Geräteregistrierungsstatus auf dem Gerät zu überprüfen:
 
@@ -47,13 +47,13 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 ---
 
-**F: Der Gerätedatensatz wird in meinen Benutzerinformationen im Azure-Portal angezeigt. Und ich sehe den Status als auf dem Gerät registriert. Sind diese Einstellungen für den bedingten Zugriff richtig?**
+### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>F: Der Gerätedatensatz wird in meinen Benutzerinformationen im Azure-Portal angezeigt. Und ich sehe den Status als auf dem Gerät registriert. Sind diese Einstellungen für den bedingten Zugriff richtig?
 
 **A:** Der Verknüpfungsstatus des Geräts, der in **deviceID** angegeben ist, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für den bedingten Zugriff erfüllen. Weitere Informationen finden Sie unter [Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](../conditional-access/require-managed-devices.md).
 
 ---
 
-**F: Ich habe mein Gerät im Azure-Portal oder mithilfe von Windows PowerShell gelöscht. Laut lokalem Status auf dem Gerät ist es aber immer noch registriert.**
+### <a name="q-i-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered"></a>F: Ich habe mein Gerät im Azure-Portal oder mithilfe von Windows PowerShell gelöscht. Laut lokalem Status auf dem Gerät ist es aber immer noch registriert.
 
 **A:** Dieser Vorgang ist von vornherein vorgesehen. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. 
 
@@ -75,7 +75,7 @@ Gehen Sie für kompatible Windows-BS-Versionen, die in die lokale Active Directo
 
 ---
 
-**F: Warum sehe ich doppelte Geräteeinträge im Azure-Portal?**
+### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>F: Warum sehe ich doppelte Geräteeinträge im Azure-Portal?
 
 **A:**
 
@@ -89,7 +89,7 @@ Gehen Sie für kompatible Windows-BS-Versionen, die in die lokale Active Directo
 
 ---
 
-**F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?**
+### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?
 
 **A:** Nein, derzeit unterstützt die Geräteregistrierung unter Windows 10 für alle Gerätezustände („Azure AD-Hybrideinbindung“, „Azure AD-Bindung“ und „Bei Azure AD registriert“) keine TPMs im FIPS-Modus. Für eine erfolgreiche Anmeldung oder Registrierung bei Azure AD muss der FIPS-Modus für die TPMs auf diesen Geräten deaktiviert werden.
 
@@ -106,7 +106,7 @@ Gehen Sie für kompatible Windows-BS-Versionen, die in die lokale Active Directo
 
 ## <a name="azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Join
 
-**F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?**
+### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?
 
 **A:** 
 - Für in Azure AD eingebundene Hybridgeräte muss die automatische Registrierung deaktiviert sein. Der geplante Task registriert das Gerät also nicht erneut. Öffnen Sie als nächstes die Eingabeaufforderung als Administrator, und geben Sie `dsregcmd.exe /debug /leave` ein. Oder führen Sie diesen Befehl als Skript für mehrere Geräte aus, um die Einbindung für diese Geräte gleichzeitig aufzuheben.
@@ -115,7 +115,7 @@ Gehen Sie für kompatible Windows-BS-Versionen, die in die lokale Active Directo
 
 ---
 
-**F: Können sich meine Benutzer bei in Azure AD eingebundenen Geräten anmelden, die in Azure AD gelöscht oder deaktiviert wurden?**
+### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>F: Können sich meine Benutzer bei in Azure AD eingebundenen Geräten anmelden, die in Azure AD gelöscht oder deaktiviert wurden?
 
 **A:** Ja. Windows verfügt über eine Zwischenspeicherfunktion für Benutzernamen und Kennwörter, die es Benutzern, die sich zuvor angemeldet haben, ermöglicht, auch ohne Netzwerkverbindung schnell auf den Desktop zuzugreifen. 
 
@@ -125,7 +125,7 @@ Benutzer, die sich zuvor nicht angemeldet haben, können nicht auf das Gerät zu
 
 ---
 
-**F: Können sich deaktivierte oder gelöschte Benutzer bei in Azure AD eingebundenen Geräten anmelden?**
+### <a name="q-can-disabled-or-deleted-users-sign-in-to-azure-ad-joined-devices"></a>F: Können sich deaktivierte oder gelöschte Benutzer bei in Azure AD eingebundenen Geräten anmelden?
 
 **A:** Ja, aber nur für einen begrenzten Zeitraum. Ein in Azure AD gelöschter oder deaktivierter Benutzer wird vom Windows-Gerät nicht sofort erkannt. Benutzer, die sich zuvor angemeldet haben, greifen also mit dem im Cache gespeicherten Benutzernamen und Kennwort auf den Desktop zu. 
 
@@ -135,31 +135,31 @@ Gelöschte oder deaktivierte Benutzer, die sich zuvor nicht angemeldet haben, k�
 
 ---
 
-**F: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Geräten?**
+### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>F: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Geräten?
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Geräten unterstützt. Also tritt bei der Authentifizierung mit Azure AD nach den UPN-Änderungen ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Zu diesem Zeitpunkt müssen sich die Benutzer über die Kachel „Anderer Benutzer“ mit ihrem neuen UPN bei Windows anmelden, um dieses Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
 
 ---
 
-**F: Meine Benutzer können über in Azure AD eingebundene Geräte keine Drucker suchen. Wie kann ich das Drucken über diese Geräte aktivieren?**
+### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>F: Meine Benutzer können über in Azure AD eingebundene Geräte keine Drucker suchen. Wie kann ich das Drucken über diese Geräte aktivieren?
 
 **A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Bereitstellen von Windows Server Hybrid Cloud Print mit Vorauthentifizierung](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
 
 ---
 
-**F: Wie kann ich eine Verbindung mit einem in Azure AD eingebundenen Remotegerät herstellen?**
+### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>F: Wie kann ich eine Verbindung mit einem in Azure AD eingebundenen Remotegerät herstellen?
 
 **A:** Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remotecomputer](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
-**F: Warum wird meinen Benutzern angezeigt: *Von hier aus haben Sie darauf keinen Zugriff*?**
+### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>F: Warum wird meinen Benutzern angezeigt: *Von hier aus haben Sie darauf keinen Zugriff*?
 
 **A:** Haben Sie bestimmte Regeln für bedingten Zugriff konfiguriert, um einen bestimmten Gerätestatus zu erfordern? Wenn das Gerät die Kriterien nicht erfüllt, wird der Benutzer blockiert und diese Meldung angezeigt. Überprüfen Sie die Regeln für bedingten Zugriff. Stellen Sie sicher, dass das Gerät die Kriterien erfüllt, um die Meldung zu vermeiden.
 
 ---
 
-**F: Warum erhalten einige Benutzer in keine Azure Multi-Factor Authentication-Eingabeaufforderungen auf in Azure AD eingebundenen Geräten?**
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>F: Warum erhalten einige Benutzer in keine Azure Multi-Factor Authentication-Eingabeaufforderungen auf in Azure AD eingebundenen Geräten?
 
 **A:** Ein Benutzer kann ein Gerät mit Multi-Factor Authentication in Azure AD einbinden oder registrieren. Dann wird das Gerät zu einem vertrauenswürdigen zweiten Faktor für diesen Benutzer. Wann immer sich derselbe Benutzer bei dem Gerät anmeldet und auf eine Anwendung zugreift, betrachtet Azure AD das Gerät als einen zweiten Faktor. Es ermöglicht dem Benutzer den nahtlosen Zugriff auf Anwendungen ohne zusätzliche Multi-Factor Authentication-Eingabeaufforderungen. 
 
@@ -171,7 +171,7 @@ Dieses Verhalten:
 
 ---
 
-**F: Warum wird die Meldung *Benutzername oder Kennwort ist falsch* für ein Gerät angezeigt, das ich vor Kurzem in Azure AD eingebunden habe?**
+### <a name="q-why-do-i-get-a-username-or-password-is-incorrect-message-for-a-device-i-just-joined-to-azure-ad"></a>F: Warum wird die Meldung *Benutzername oder Kennwort ist falsch* für ein Gerät angezeigt, das ich vor Kurzem in Azure AD eingebunden habe?
 
 **A:** Häufige Ursachen für dieses Szenario sind:
 
@@ -185,25 +185,25 @@ Dieses Verhalten:
 
 ---
 
-**F: Warum sehe ich das Dialogfeld *Leider ist ein Fehler aufgetreten*, wenn ich versuche, meinen PC in Azure AD einzubinden?**
+### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>F: Warum wird das Dialogfeld *Entschuldigung... Es ist ein Fehler aufgetreten!* angezeigt, wenn ich versuche, in Azure AD meinen PC einzubinden?
 
 **A:** Dieser Fehler tritt bei der Einrichtung der Azure Active Directory-Registrierung bei Intune auf. Stellen Sie sicher, dass dem Benutzer, der ein Einbinden in Azure AD versucht, die richtige Intune-Lizenz zugewiesen wurde. Weitere Informationen finden Sie unter [Einrichten der Registrierung für Windows-Geräte](https://docs.microsoft.com/intune/windows-enroll).  
 
 ---
 
-**F: Warum konnte ich meinen PC nicht in Azure AD einbinden, obwohl ich keine Fehlerinformationen erhalten habe?**
+### <a name="q-why-did-my-attempt-to-azure-ad-join-a-pc-fail-although-i-didnt-get-any-error-information"></a>F: Warum konnte ich meinen PC nicht in Azure AD einbinden, obwohl ich keine Fehlerinformationen erhalten habe?
 
 **A:** Wahrscheinlich haben Sie sich mit dem lokalen integrierten Administratorkonto beim Gerät angemeldet. Erstellen Sie ein anderes lokales Konto, bevor Sie Azure Active Directory Join verwenden, um die Einrichtung abzuschließen. 
 
 ---
 
-**F: Welche MS-Organisation-P2P-Access-Zertifikate sind auf unseren Windows 10-Geräten vorhanden?**
+### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>F: Welche MS-Organisation-P2P-Access-Zertifikate sind auf unseren Windows 10-Geräten vorhanden?
 
 **A:** Die MS-Organisation-P2P-Access-Zertifikate werden von Azure AD sowohl für in Azure AD eingebundene Geräte als auch für in Azure AD eingebundene Hybridgeräte ausgestellt. Diese Zertifikate werden verwendet, um die Vertrauensstellung zwischen Geräten desselben Mandanten für Remotedesktopszenarien zu ermöglichen. Ein Zertifikat wird für das Gerät und ein weiteres für den Benutzer ausgestellt. Das Gerätezertifikat befindet sich in `Local Computer\Personal\Certificates` und gilt für einen Tag. Dieses Zertifikat wird erneuert (durch Ausstellung eines neuen Zertifikats), wenn das Gerät noch in Azure AD aktiv ist. Das Benutzerzertifikat befindet sich in `Current User\Personal\Certificates` und dieses Zertifikat ist ebenfalls für einen Tag gültig, wird aber auf Anfrage ausgestellt, wenn ein Benutzer eine Remotedesktopsitzung mit einem anderen in Azure AD eingebundenen Gerät versucht. Es wird bei Ablauf nicht erneuert. Beide Zertifikate werden über das MS-Organisation-P2P-Access-Zertifikat in `Local Computer\AAD Token Issuer\Certificates` ausgegeben. Dieses Zertifikat wird von Azure AD bei der Registrierung des Geräts ausgegeben. 
 
 ---
 
-**F: Warum sehe ich mehrere abgelaufene Zertifikate, die von MS-Organisation-P2P-Access auf unseren Windows 10-Geräten ausgestellt wurden? Wie kann ich diese löschen?**
+### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>F: Warum sehe ich mehrere abgelaufene Zertifikate, die von MS-Organisation-P2P-Access auf unseren Windows 10-Geräten ausgestellt wurden? Wie kann ich diese löschen?
 
 **A:** Es wurde ein Problem unter Windows 10 Version 1709 und niedriger festgestellt, bei dem abgelaufene MS-Organisation-P2P-Access-Zertifikate aufgrund von kryptographischen Problemen weiterhin im Computerspeicher vorhanden waren. Ihre Benutzer könnten Probleme mit der Netzwerkkonnektivität haben, wenn Sie VPN-Clients (z.B. Cisco AnyConnect) verwenden, die die große Anzahl abgelaufener Zertifikate nicht verarbeiten können. Dieses Problem wurde in der Version Windows 10 1803 behoben, um solche abgelaufenen MS-Organisation-P2P-Access-Zertifikate automatisch zu löschen. Sie können dieses Problem beheben, indem Sie Ihre Geräte auf Windows 10 1803 aktualisieren. Wenn Sie nicht aktualisieren können, können Sie diese Zertifikate ohne negative Auswirkungen löschen.  
 
@@ -212,7 +212,7 @@ Dieses Verhalten:
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Hybrid Join
 
-**F: Wo finde ich Problembehandlungsinformationen für die Diagnose von Azure AD Hybrid Join-Fehlern?**
+### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>F: Wo finde ich Problembehandlungsinformationen für die Diagnose von Azure AD Hybrid Join-Fehlern?
 
 **A:** Informationen zur Problembehandlung finden Sie in diesen Artikeln:
 
@@ -220,7 +220,7 @@ Dieses Verhalten:
 
 - [Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md)
  
-**F: Warum wird in der Liste mit den Azure AD-Geräten für mein in Azure AD eingebundenes Windows 10-Hybridgerät ein doppelter Azure AD-Registrierungseintrag angezeigt?**
+### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>F: Warum wird in der Liste mit den Azure AD-Geräten für mein in Azure AD eingebundenes Windows 10-Hybridgerät ein doppelter Azure AD-Registrierungseintrag angezeigt?
 
 **A:** Wenn Benutzer ihr Konto den Apps auf einem in die Domäne eingebundenen Gerät hinzufügen, wird ggf. eine Frage der Art **Soll das Konto Windows hinzugefügt werden?** angezeigt. Wenn Sie in der Eingabeaufforderung **Ja** eingeben, wird das Gerät in Azure AD registriert. Der Vertrauenstyp wird als in Azure AD registriert gekennzeichnet. Nachdem Sie Azure AD Hybrid Join in Ihrer Organisation aktiviert haben, wird das Gerät auch in die Azure AD-Hybridumgebung eingebunden. Dann werden zwei Gerätestatus für dasselbe Gerät angezeigt. 
 
@@ -229,19 +229,19 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 ---
 
-**F: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Windows 10-Hybridgeräten?**
+### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>F: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Windows 10-Hybridgeräten?
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Hybridgeräten unterstützt. Benutzer können sich zwar am Gerät anmelden und auf ihre lokalen Anwendungen zugreifen, bei der Authentifizierung mit Azure AD tritt nach einer UPN-Änderung aber ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Derzeit müssen Sie das Gerät von Azure AD trennen (führen Sie „dsregcmd /leave“ mit erhöhten Rechten aus) und sich wieder anmelden (geschieht automatisch), um das Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
 
 ---
 
-**F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?**
+### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?
 
 **A:** In der Regel nicht, außer wenn das Kennwort des Benutzers geändert wird. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist selbst nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, auch wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
 
 ---
 
-**F: Was passiert, wenn ein Benutzer sein Kennwort ändert und versucht, sich bei seinem in Azure AD eingebundenen Windows 10-Hybridgerät außerhalb des Unternehmensnetzwerks anzumelden?**
+### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>F: Was passiert, wenn ein Benutzer sein Kennwort ändert und versucht, sich bei seinem in Azure AD eingebundenen Windows 10-Hybridgerät außerhalb des Unternehmensnetzwerks anzumelden?
 
 **A:** Wenn ein Kennwort außerhalb des Unternehmensnetzwerks geändert wird (z.B. durch die Verwendung von Azure AD SSPR), schlägt die Benutzeranmeldung mit dem neuen Kennwort fehl. Für in Azure AD eingebundene Hybridgeräte ist das lokale Active Directory die primäre Autorität. Wenn ein Gerät sich nicht in Sichtweite des Domänencontrollers befindet, kann es das neue Kennwort nicht validieren. Daher muss der Benutzer eine Verbindung mit dem Domänencontroller herstellen (entweder über VPN oder im Unternehmensnetzwerk), bevor er sich mit seinem neuen Kennwort bei dem Gerät anmelden kann. Andernfalls kann er sich aufgrund der Fähigkeit der zwischengespeicherten Anmeldung in Windows nur mit seinem alten Kennwort anmelden. Das alte Kennwort wird jedoch von Azure AD bei Tokenanforderungen ungültig gemacht. Auf diese Weise wird die SSO-Anmeldung verhindert und alle gerätebasierten Richtlinien für bedingten Zugriff schlagen fehl. Dieses Problem tritt nicht auf, wenn Sie Windows Hello for Business verwenden. 
 
@@ -250,11 +250,11 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 ## <a name="azure-ad-register-faq"></a>Häufig gestellte Fragen zur Azure AD-Registrierung
 
-**F: Kann ich Android- oder iOS-BYOD-Geräte registrieren?**
+### <a name="q-can-i-register-android-or-ios-byod-devices"></a>F: Kann ich Android- oder iOS-BYOD-Geräte registrieren?
 
 **A:** Ja, aber nur mit dem Azure-Dienst zur Geräteregistrierung und wenn Sie Hybrid-Kunde sind. Es wird nicht mit dem lokalen Geräteregistrierungsdienst in Active Directory Federation Services (AD FS) unterstützt.
 
-**F: Wie kann ich ein macOS-Gerät registrieren?**
+### <a name="q-how-can-i-register-a-macos-device"></a>F: Wie kann ich ein macOS-Gerät registrieren?
 
 **A:** Führen Sie die folgenden Schritte aus:
 

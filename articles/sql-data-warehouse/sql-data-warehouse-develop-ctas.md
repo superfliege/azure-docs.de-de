@@ -2,27 +2,27 @@
 title: CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Tipps für die Codierung mit der Anweisung CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/26/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b66b6018ed5f6f427896db00b5348983b76a0e5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f791f460efec1b84533379e74add003619dbac6f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472149"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521566"
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Verwenden von CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse
 Tipps für die Codierung mit der T-SQL-Anweisung CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 
 ## <a name="what-is-create-table-as-select-ctas"></a>Was ist CREATE TABLE AS SELECT (CTAS)?
 
-Die Anweisung [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) bzw. CTAS ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen parallelen Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. CTASD ist die einfachste und schnellste Möglichkeit, eine Kopie einer Tabelle zu erstellen. 
+Die Anweisung [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) bzw. CTAS ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen parallelen Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. CTAS ist die einfachste und schnellste Methode zum Erstellen und Einfügen von Daten in eine Tabelle mit einem einzigen Befehl. 
 
 ## <a name="selectinto-vs-ctas"></a>SELECT..INTO im Vergleich zu CTAS
 Sie können CTAS als hochleistungsfähige Version der [SELECT..INTO](/sql/t-sql/queries/select-into-clause-transact-sql)-Anweisung betrachten.
@@ -35,11 +35,10 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Im obigen Beispiel würde `[dbo].[FactInternetSales_new]` als verteilte ROUND_ROBIN-Tabelle mit einem CLUSTERED COLUMNSTORE INDEX erstellt, da dies die Tabellenstandardwerte in Azure SQL Data Warehouse sind.
+SELECT..INTO lässt jedoch nicht zu, dass Sie im Rahmen des Vorgangs die Verteilungsmethode oder den Indextyp ändern. `[dbo].[FactInternetSales_new]` wird mithilfe des Standardverteilungstyps als „Round_Robin“ und die Standardtabellenstruktur als „Gruppierter Columnstore-Index“ erstellt.
 
-SELECT..INTO lässt jedoch nicht zu, dass Sie im Rahmen des Vorgangs die Verteilungsmethode oder den Indextyp ändern. An dieser Stelle tritt CTAS auf den Plan.
-
-Das vorherige Beispiel lässt sich ziemlich einfach in CTAS konvertieren:
+Mit CTAS können Sie sowohl die Verteilung der Tabellendaten als auch den Tabellenstrukturtyp angeben.
+So konvertieren Sie das vorherige Beispiel in CTAS
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,7 +53,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-Mit CTAS können Sie sowohl die Verteilung der Tabellendaten als auch den Tabellentyp ändern. 
+ 
 
 > [!NOTE]
 > Wenn Sie in Ihrem `CTAS`-Vorgang nur den Index ändern möchten und es sich bei der Quelltabelle um eine verteilte Hashtabelle handelt, funktioniert der `CTAS`-Vorgang am besten, wenn Sie dieselbe Verteilungsspalte und denselben Datentyp beibehalten. So wird effizienterweise ein domänenübergreifendes Verschieben von Daten während des Vorgangs vermieden.
@@ -125,13 +124,8 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [!NOTE]
-> Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken.  Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden.  Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][Statistiken] in der Entwicklungsgruppe der Themen.
-> 
-> 
-
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>Umgehen von nicht unterstützten Funktionen mit CTAS
-Mit CTAS können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Dies kann häufig zu einer Win-Win-Situation führen, da Ihr Code nicht nur kompatibel ist, sondern unter SQL Data Warehouse häufig auch schneller ausgeführt wird. Der Grund hierfür ist das vollständig parallelisierte Design. Szenarien, die mit CTAS umgangen werden können, sind z. B.:
+Mit CTAS können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Diese Methode kann häufig zu einer Win-Win-Situation führen, da Ihr Code nicht nur kompatibel ist, sondern unter SQL Data Warehouse häufig auch schneller ausgeführt wird. Diese Leistung ist auf das vollständig parallelisierte Design zurückzuführen. Szenarien, die mit CTAS umgangen werden können, sind z. B.:
 
 * ANSI JOINS bei UPDATEs
 * ANSI JOINs bei DELETEs
@@ -222,7 +216,7 @@ DROP TABLE CTAS_acs
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI-Verknüpfungsersatz für delete-Anweisungen
-Manchmal ist `CTAS` der beste Ansatz zum Löschen von Daten. Anstatt die Daten zu löschen, wählen Sie einfach die Daten aus, die Sie behalten möchten. Diese gilt insbesondere für `DELETE`-Anweisungen, die die ANSI-Joinsyntax verwenden. Der Grund dafür ist, dass SQL Data Warehouse keine ANSI-Joins in der `FROM`-Klausel einer `DELETE`-Anweisung unterstützt.
+Manchmal ist `CTAS` der beste Ansatz zum Löschen von Daten. Anstatt die Daten zu löschen, wählen Sie die Daten aus, die Sie behalten möchten. Dies gilt insbesondere für `DELETE`-Anweisungen mit ANSI-Join-Syntax, da SQL Data Warehouse keine ANSI-Joins in der `FROM`-Klausel einer `DELETE`-Anweisung unterstützt.
 
 Beispiel für eine konvertierte DELETE-Anweisung:
 
@@ -246,9 +240,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>Ersetzen von MERGE-Anweisungen
-MERGE-Anweisungen können mit CTAS zumindest teilweise ersetzt werden. Sie können INSERT und UPDATE zu einer einzelnen Anweisung zusammenfassen. Alle gelöschten Datensätze müssen in einer zweiten Anweisung abgeschlossen werden.
+MERGE-Anweisungen können mit CTAS zumindest teilweise ersetzt werden. Sie können INSERT und UPDATE zu einer einzelnen Anweisung zusammenfassen. Alle gelöschten Datensätze sollten aus der `SELECT`-Anweisung ausgeschlossen werden, damit sie in den Ergebnissen nicht enthalten sind.
 
-Im Anschluss finden Sie ein Beispiel für UPSERT:
+Nachfolgend ein Beispiel für UPSERT:
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -333,7 +327,7 @@ Der für „result“ gespeicherte Wert ist anders. Da der in der Spalte „resu
 
 Dies ist besonders für Datenmigrationen wichtig. Auch wenn die zweite Abfrage natürlich genauer ist, liegt ein Problem vor. Die Daten würden sich gegenüber dem Quellsystem unterscheiden, und dies stellt die Integrität der Migration infrage. Dies ist einer der seltenen Fälle, in denen die „falsche“ Antwort eigentlich die richtige Antwort ist!
 
-Der Grund für diese Ungleichheit zwischen den beiden Ergebnissen ist die implizite Typumwandlung. Im ersten Beispiel wird für die Tabelle die Spaltendefinition festgelegt. Beim Einfügen der Zeile tritt eine implizite Typumwandlung auf. Im zweiten Beispiel ist keine implizite Typumwandlung vorhanden, da der Ausdruck den Datentyp der Spalte definiert. Beachten Sie auch, dass die Spalte im zweiten Beispiel so konfiguriert wurde, dass NULL-Werte zulässig sind. Im ersten Beispiel ist dies nicht der Fall. Als die Tabelle im ersten Beispiel erstellt wurde, wurde die NULL-Zulässigkeit der Spalte explizit definiert. Im zweiten Beispiel wurde dies dem Ausdruck überlassen, was standardmäßig zu einer NULL-Definition führen würde.  
+Der Grund für diese Ungleichheit zwischen den beiden Ergebnissen ist die implizite Typumwandlung. Im ersten Beispiel definiert die Tabelle die Spaltendefinition. Beim Einfügen der Zeile tritt eine implizite Typumwandlung auf. Im zweiten Beispiel ist keine implizite Typumwandlung vorhanden, da der Ausdruck den Datentyp der Spalte definiert. Beachten Sie auch, dass die Spalte im zweiten Beispiel so konfiguriert wurde, dass NULL-Werte zulässig sind. Im ersten Beispiel ist dies nicht der Fall. Als die Tabelle im ersten Beispiel erstellt wurde, wurde die NULL-Zulässigkeit der Spalte explizit definiert. Im zweiten Beispiel wurde dies dem Ausdruck überlassen, was standardmäßig zu einer NULL-Definition führen würde.  
 
 Zum Lösen dieser Probleme müssen Sie die Typumwandlung und NULL-Zulässigkeit im SELECT-Teil der CTAS-Anweisung explizit festlegen. Sie können diese Eigenschaften nicht im Create Table-Teil festlegen.
 
@@ -410,7 +404,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 ;
 ```
 
-Die Abfrage würde problemlos ausgeführt werden. Das Problem entsteht, wenn Sie versuchen, den Partitionswechsel durchzuführen. Die Tabellendefinitionen stimmen nicht überein. CTAS muss geändert werden, damit die Tabellendefinitionen übereinstimmen.
+Die Abfrage würde problemlos ausgeführt werden. Das Problem entsteht, wenn Sie versuchen, den Partitionswechsel durchzuführen. Die Tabellendefinitionen stimmen nicht überein. Damit die Tabellendefinitionen übereinstimmen, muss die CTAS-Anweisung geändert und um eine `ISNULL`-Funktion ergänzt werden, damit das NULL-Zulässigkeitsattribut der Spalte beibehalten wird.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

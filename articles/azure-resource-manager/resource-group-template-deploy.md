@@ -10,38 +10,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: daeff897cf284df6e820afbcdd35ee54bf88db08
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405401"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518557"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell
 
 Erfahren Sie, wie Ihre Ressourcen mit Azure PowerShell und Resource Manager-Vorlagen in Azure bereitgestellt werden. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über den Azure Resource Manager](resource-group-overview.md).
 
-Zum Bereitstellen einer Vorlage sind in der Regel zwei Schritte erforderlich:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Erstellen Sie eine Ressourcengruppe. Die Ressourcengruppe fungiert als Container für die bereitgestellten Ressourcen. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
-2. Stellen Sie eine Vorlage bereit. Die Vorlage definiert die zu erstellenden Ressourcen.  Die Bereitstellung erstellt die Ressourcen in der angegebenen Ressourcengruppe.
+## <a name="deployment-scope"></a>Bereitstellungsumfang
 
-Diese Bereitstellungsmethode mit zwei Schritten wird in diesem Artikel verwendet.  Die andere Option ist die gleichzeitige Bereitstellung einer Ressourcengruppe und der Ressourcen.  Weitere Informationen finden Sie unter [Erstellen einer Ressourcengruppe und Bereitstellen von Ressourcen](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Sie können Ihre Bereitstellung entweder auf ein Azure-Abonnement oder eine Ressourcengruppe innerhalb eines Abonnements ausrichten. In den meisten Fällen wählen Sie die Bereitstellung in einer Ressourcengruppe aus. Verwenden Sie Abonnementbereitstellungen, um Richtlinien und Rollenzuweisungen im gesamten Abonnement anzuwenden. Sie verwenden Abonnementbereitstellungen auch, um eine Ressourcengruppe zu erstellen und Ressourcen für sie bereitzustellen. Abhängig vom Umfang der Bereitstellung verwenden Sie unterschiedliche Befehle.
+
+Verwenden Sie [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment), um eine **Ressourcengruppe** bereitzustellen:
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
+
+Verwenden Sie [New-AzDeployment](/powershell/module/az.resources/new-azdeployment), um ein **Abonnement** bereitzustellen:
+
+```azurepowershell
+New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+Die Beispiele in diesem Artikel verwenden Ressourcengruppenbereitstellungen. Weitere Informationen zu Abonnementbereitstellungen finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](deploy-to-subscription.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sofern Sie nicht [Azure Cloud Shell](#deploy-templates-from-azure-cloud-shell) zum Bereitstellen von Vorlagen verwenden, müssen Sie Azure PowerShell installieren und eine Verbindung mit Azure herstellen:
+Sie benötigen eine Vorlage für die Bereitstellung. Wenn Sie noch keine besitzen, laden Sie eine [Beispielvorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) aus dem Repository der Azure-Schnellstartvorlagen herunter, und speichern Sie diese. In diesem Artikel wird der lokale Dateiname **c:\MyTemplates\azuredeploy.json** verwendet.
+
+Sofern Sie nicht Azure Cloud Shell zum Bereitstellen von Vorlagen verwenden, müssen Sie Azure PowerShell installieren und eine Verbindung mit Azure herstellen:
+
 - **Installieren Sie Azure PowerShell-Cmdlets auf Ihrem lokalen Computer.** Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps).
 - **Stellen Sie mithilfe von [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her**. Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie möglicherweise auch [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) ausführen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/powershell/azure/manage-subscriptions-azureps).
-- *Laden Sie eine [Schnellstartvorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) herunter, und speichern Sie sie. In diesem Artikel wird der lokale Dateiname **c:\MyTemplates\azuredeploy.json** verwendet.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
 
-## <a name="deploy-templates-stored-locally"></a>Bereitstellen lokal gespeicherter Vorlagen
-
-Im folgenden Beispiel wird eine Ressourcengruppe erstellt und eine Vorlage von Ihrem lokalen Computer aus bereitgestellt:
+Im folgenden Beispiel wird eine Ressourcengruppe erstellt und eine Vorlage von Ihrem lokalen Computer aus bereitgestellt. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -52,11 +65,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
-Beachten Sie, dass *c:\MyTemplates\azuredeploy.json* eine Schnellstartvorlage ist.  Siehe [Voraussetzungen](#prerequisites).
-
 Die Bereitstellung kann einige Minuten dauern.
 
-## <a name="deploy-templates-stored-externally"></a>Bereitstellen extern gespeicherter Vorlagen
+## <a name="deploy-remote-template"></a>Bereitstellen einer Remotevorlage
 
 Anstatt Resource Manager-Vorlagen auf dem lokalen Computer zu speichern, könnten Sie sie vorzugsweise an einem externen Speicherort speichern. Sie können Vorlagen in einem Quellcodeverwaltungs-Repository (z.B. GitHub) speichern. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie sie auch in einem Azure-Speicherkonto speichern.
 
@@ -73,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch keinen öffentlichen Zugriff auf Ihre Vorlage wünschen, können Sie sie schützen, indem Sie sie in einem privaten Speichercontainer speichern. Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token (Shared Access Signature) erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-powershell-sas-token.md). Ein entsprechendes Tutorial finden Sie unter [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./resource-manager-tutorial-use-key-vault.md).
 
-## <a name="deploy-templates-from-azure-cloud-shell"></a>Bereitstellen von Vorlagen in Azure Cloud Shell
+## <a name="deploy-from-azure-cloud-shell"></a>Bereitstellen über Azure Cloud Shell
 
 Sie können Ihre Vorlage mithilfe von [Azure Cloud Shell](https://shell.azure.com) bereitstellen. Geben Sie zum Bereitstellen einer externen Vorlage den URI der Vorlage an. Um eine lokale Vorlage bereitzustellen, müssen Sie die Vorlage zuerst in das Speicherkonto für Ihre Cloud Shell-Instanz laden. Wählen Sie zum Hochladen von Dateien in die Shell das Menüsymbol **Dateien hochladen/herunterladen** im Shell-Fenster aus.
 
@@ -89,10 +100,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 Um den Code in die Shell einzufügen, klicken Sie mit der rechten Maustaste in der Shell und wählen dann **Einfügen** aus.
-
-## <a name="deploy-to-multiple-resource-groups-or-subscriptions"></a>Bereitstellen in mehreren Ressourcengruppen oder Abonnements
-
-In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Sie können nur fünf Ressourcengruppen in einer Bereitstellung bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="redeploy-when-deployment-fails"></a>Erneute Bereitstellung bei Bereitstellungsfehlern
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c98136e2f45965834fa1c538a5929eee14b24466
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081439"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521583"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -113,4 +113,5 @@ Nachdem Sie nun erfahren haben, wie Regeln in Ihrer Azure IoT Central-Anwendung 
 
 - [Hinzufügen einer Microsoft Flow-Aktion in Regeln](howto-add-microsoft-flow.md)
 - [Hinzufügen einer Webhookaktion in Regeln](howto-create-webhooks.md)
+- [Gruppieren mehrerer Aktionen für die Ausführung über eine oder mehrere Regeln](howto-use-action-groups.md)
 - [Verwalten von Geräten](howto-manage-devices.md)

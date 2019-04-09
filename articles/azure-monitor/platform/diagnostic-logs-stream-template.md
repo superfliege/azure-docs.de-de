@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: e6185a7b62e3c599a7c3588824e3a9c4ac60cb53
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467627"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371467"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
-In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
+In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an einen Log Analytics-Arbeitsbereich senden.
 
 > [!WARNING]
 > Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ Im Anschluss finden Sie ein Beispiel für die JSON-Vorlagendatei, die für compu
 ## <a name="non-compute-resource-template"></a>Vorlage für computefremde Ressourcen
 Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
 
-1. Fügen Sie dem Parameterblob Parameter für den Speicherkontonamen, die Event Hub-Autorisierungsregel-ID und/oder die Log Analytics-Arbeitsbereichs-ID hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
+1. Fügen Sie dem Parameterblob Parameter für den Speicherkontonamen, die Event Hub-Autorisierungsregel-ID und/oder die Log Analytics-Arbeitsbereichs-ID hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Azure Monitor zu ermöglichen).
    
     ```json
     "settingName": {

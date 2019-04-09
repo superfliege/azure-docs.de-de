@@ -1,19 +1,19 @@
 ---
 title: Übersicht über Azure-Diagnoseprotokolle
 description: Hier erfahren Sie, worum es sich bei Azure-Diagnoseprotokollen handelt, und wie Sie mithilfe von Diagnoseprotokollen Ereignisse innerhalb einer Azure-Ressource nachvollziehen.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 03/26/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 890f2224a4053ec8cad65b44b85eab0e31be3b64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310181"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519390"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -49,11 +49,6 @@ Sie können ein Speicherkonto oder Event Hubs-Namespace verwenden, das sich nich
 > [!NOTE]
 >  Sie können derzeit keine Netzwerkflussprotokolle in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
 
-> [!WARNING]
-> Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 
 Ressourcendiagnoseprotokolle werden mithilfe von Diagnoseeinstellungen für Ressourcen konfiguriert. Mandantendiagnoseprotokolle werden mithilfe einer Diagnoseeinstellung für Mandanten konfiguriert. Mit **Diagnoseeinstellungen** für eine Dienststeuerung können Sie Folgendes festlegen:
@@ -61,7 +56,7 @@ Ressourcendiagnoseprotokolle werden mithilfe von Diagnoseeinstellungen für Ress
 * Wohin Diagnoseprotokolle und Metriken gesendet werden (Speicherkonto, Event Hubs und/oder Azure Monitor).
 * Welche Protokollkategorien gesendet werden, und ob auch Metrikdaten gesendet werden.
 * Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
-    - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
+    - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 365) festgelegt werden.
     - Wenn Aufbewahrungsrichtlinien festgelegt wurden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Optionen „Event Hubs“ oder „Log Analytics“ ausgewählt sind), werden die Aufbewahrungsrichtlinien ignoriert.
     - Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Der Löschvorgang beginnt um Mitternacht (UTC), jedoch kann es bis zu 24 Stunden dauern, bis die Protokolle aus Ihrem Speicherkonto gelöscht werden.
 

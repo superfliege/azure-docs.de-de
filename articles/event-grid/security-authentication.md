@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: ea41f09269e3ad46db1f254965fd7d7df25232be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23654dd41714314ab5c9f217d4f805d7b9d62413
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095601"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472805"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -41,7 +41,7 @@ Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigg
 
    Ab Version 2018-05-01-preview unterstützt Event Grid einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement mit einem SDK oder Tool erstellen, für die diese neue API-Version (2018-05-01-preview oder höher) verwendet wird, sendet Event Grid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft. Um den Handshake abzuschließen, suchen Sie diese URL in den Ereignisdaten und senden Sie ihr manuell eine GET-Anforderung. Sie können entweder einen REST-Client oder Ihren Webbrowser verwenden.
 
-   Die angegebene URL ist 10 Minuten lang gültig. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen das Ereignisabonnement erneut erstellen, bevor Sie mit der manuellen Überprüfung beginnen.
+   Die angegebene URL ist fünf Minuten lang gültig. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen das Ereignisabonnement erneut erstellen, bevor Sie mit der manuellen Überprüfung beginnen.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 
@@ -88,7 +88,7 @@ Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung find
 
 ### <a name="checklist"></a>Checkliste
 
-Wenn während der Erstellung des Ereignisabonnements eine Fehlermeldung der Art „Fehler beim Versuch, den angegebenen Endpunkt https://your-endpoint-here zu überprüfen. Ausführlichere Informationen finden Sie unter https://aka.ms/esvalidation.“ angezeigt wird, ist dies ein Hinweis darauf, dass für den Überprüfungshandshake ein Fehler aufgetreten ist. Überprüfen Sie Folgendes, um diesen Fehler zu beheben:
+Wenn während der Erstellung des Ereignisabonnements eine Fehlermeldung der Art „Fehler beim Versuch, den angegebenen Endpunkt https:\//your-endpoint-here zu überprüfen. Ausführlichere Informationen finden Sie unter https:\//aka.ms/esvalidation.“ angezeigt wird, ist dies ein Hinweis darauf, dass für den Überprüfungshandshake ein Fehler aufgetreten ist. Überprüfen Sie Folgendes, um diesen Fehler zu beheben:
 
 * Verfügen Sie über die Kontrolle über den Anwendungscode auf dem Zielendpunkt? Haben Sie beispielsweise beim Schreiben einer Azure Function, die auf einem HTTP-Trigger basiert, Zugriff auf den Anwendungscode, um Änderungen daran vorzunehmen?
 * Wenn Sie Zugriff auf den Anwendungscode haben, sollten Sie den ValidationCode-basierten Handshakemechanismus wie im obigen Beispiel implementieren.

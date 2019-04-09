@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100359"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439295"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -170,9 +170,16 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="using-third-party-clients"></a>Verwenden von Drittanbieterclients
+### <a name="workaround-for-third-party-clients"></a>Problemumgehung für Clients von Drittanbietern
 
-Wenn Sie das C SDK nicht verwenden und dennoch die verteilte Ablaufverfolgung für IoT Hub in der Vorschau anzeigen möchten, erstellen Sie eine Nachricht, die eine `tracestate`-Anwendungseigenschaft mit der Erstellungszeit der Nachricht im Unix-Zeitstempelformat enthält. Beispiel: `tracestate=timestamp=1539243209`. Um den Prozentsatz der Nachrichten, die diese Eigenschaft enthalten, zu steuern, implementieren Sie Logik zum Lauschen auf in der Cloud initiierte Ereignisse, z.B. Gerätezwillingsaktualisierungen.
+Es ist **nicht einfach**, eine Vorschau des Features zur verteilten Ablaufverfolgung anzuzeigen, ohne das C SDK zu verwenden. Daher wird dieser Ansatz nicht empfohlen.
+
+Zunächst müssen Sie alle IoT-Hub-Protokollgrundtypen in Ihren Nachrichten implementieren, indem Sie der Anleitung für Entwickler [Erstellen und Lesen von IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) folgen. Bearbeiten Sie dann die Protokolleigenschaften in den MQTT/AMQP-Nachrichten, um `tracestate` als **Systemeigenschaft** hinzuzufügen. Sie haben folgende Möglichkeiten:
+
+* Fügen Sie für MQTT `%24.tracestate=timestamp%3d1539243209` zum Nachrichtenthema hinzu, wobei `1539243209` durch den Erstellungszeitpunkt der Nachricht im Unix-Zeitstempelformat ersetzt werden sollte. Ein Beispiel hierfür ist die Implementierung [im C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761).
+* Für AMQP fügen Sie `key("tracestate")` und `value("timestamp=1539243209")` als Nachrichtenanmerkung hinzu. Eine Referenzimplementierung finden Sie [hier](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
+
+Um den Prozentsatz der Nachrichten, die diese Eigenschaft enthalten, zu steuern, implementieren Sie Logik zum Lauschen auf in der Cloud initiierte Ereignisse, z.B. Gerätezwillingsaktualisierungen.
 
 ## <a name="update-sampling-options"></a>Aktualisieren von Samplingoptionen 
 

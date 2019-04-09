@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200683"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361692"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
@@ -26,6 +26,8 @@ HDInsight verfügt über eine Konfigurationsmethode namens **Skriptaktionen**, b
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Windows-Deaktivierung](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Skriptaktionen können auch als HDInsight-Anwendung im Azure Marketplace veröffentlicht werden. Weitere Informationen zu HDInsight-Anwendungen finden Sie unter [Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace](hdinsight-apps-publish-applications.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -131,7 +133,7 @@ Ein Fehler in einem Skript, das in einem bereits ausgeführten Cluster ausgefüh
 >
 > Skriptaktionen werden mit Stammberechtigungen ausgeführt. Stellen Sie also sicher, dass Sie die Auswirkungen eines Skripts verstehen, bevor Sie es auf den Cluster anwenden.
 
-Wenn Sie ein Skript auf einem Cluster anwenden, ändert sich der Clusterzustand von **Wird ausgeführt** in **Akzeptiert**. Danach ändert sich der Zustand in **HDInsight-Konfiguration**, bevor er schließlich wieder **Wird ausgeführt** lautet (bei einem erfolgreichen Skript). Der Skriptstatus wird im Skriptaktionsverlauf protokolliert. Diese Angabe gibt Aufschluss darüber, ob das Skript erfolgreich ausgeführt wurde. Das PowerShell-Cmdlet `Get-AzureRmHDInsightScriptActionHistory` zeigt beispielsweise den Status eines Skripts an. Die zurückgegebenen Informationen sehen in etwa wie folgt aus:
+Wenn Sie ein Skript auf einem Cluster anwenden, ändert sich der Clusterzustand von **Wird ausgeführt** in **Akzeptiert**. Danach ändert sich der Zustand in **HDInsight-Konfiguration**, bevor er schließlich wieder **Wird ausgeführt** lautet (bei einem erfolgreichen Skript). Der Skriptstatus wird im Skriptaktionsverlauf protokolliert. Diese Angabe gibt Aufschluss darüber, ob das Skript erfolgreich ausgeführt wurde. Das PowerShell-Cmdlet `Get-AzHDInsightScriptActionHistory` zeigt beispielsweise den Status eines Skripts an. Die zurückgegebenen Informationen sehen in etwa wie folgt aus:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -223,7 +225,7 @@ Weitere Informationen zum Bereitstellen einer Vorlage finden Sie hier:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Verwenden einer Skriptaktion während der Clustererstellung mit Azure PowerShell
 
-In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction), um Skripts zum Anpassen eines Clusters aufzurufen. Installieren und konfigurieren Sie zunächst Azure PowerShell. Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie in der [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction), um Skripts zum Anpassen eines Clusters aufzurufen. Installieren und konfigurieren Sie zunächst Azure PowerShell. Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie in der [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Das folgende Skript zeigt, wie Sie eine Skriptaktion anwenden, wenn Sie einen Cluster mithilfe von PowerShell erstellen:
 
@@ -368,13 +370,13 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 
 | Cmdlet | Funktion |
 | --- | --- |
-| `Get-AzureRmHDInsightPersistedScriptAction` |Abrufen von Informationen zu permanenten Skriptaktionen |
-| `Get-AzureRmHDInsightScriptActionHistory` |Abrufen eines Verlaufs der auf den Cluster angewendeten Skriptaktionen oder von Details zu einem bestimmten Skript |
-| `Set-AzureRmHDInsightPersistedScriptAction` |Höherstufen einer Ad-hoc-Skriptaktion zu einer permanenten Skriptaktion |
-| `Remove-AzureRmHDInsightPersistedScriptAction` |Tieferstufen einer permanenten Skriptaktion zu einer Ad-hoc-Aktion |
+| `Get-AzHDInsightPersistedScriptAction` |Abrufen von Informationen zu permanenten Skriptaktionen |
+| `Get-AzHDInsightScriptActionHistory` |Abrufen eines Verlaufs der auf den Cluster angewendeten Skriptaktionen oder von Details zu einem bestimmten Skript |
+| `Set-AzHDInsightPersistedScriptAction` |Höherstufen einer Ad-hoc-Skriptaktion zu einer permanenten Skriptaktion |
+| `Remove-AzHDInsightPersistedScriptAction` |Tieferstufen einer permanenten Skriptaktion zu einer Ad-hoc-Aktion |
 
 > [!IMPORTANT]  
-> `Remove-AzureRmHDInsightPersistedScriptAction` macht die durch ein Skript ausgeführten Aktionen nicht rückgängig. Dieses Cmdlet entfernt nur das Flag für die dauerhafte Speicherung.
+> `Remove-AzHDInsightPersistedScriptAction` macht die durch ein Skript ausgeführten Aktionen nicht rückgängig. Dieses Cmdlet entfernt nur das Flag für die dauerhafte Speicherung.
 
 Das folgende Beispielskript veranschaulicht, wie die Cmdlets zum Höherstufen und anschließend zum Tieferstufen eines Skripts verwendet werden.
 

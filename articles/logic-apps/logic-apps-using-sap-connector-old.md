@@ -2,7 +2,6 @@
 title: 'Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, die Sie auf SAP-Ressourcen zugreifen und diese verwalten, indem Sie Workflows mit Azure Logic Apps automatisieren.
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,18 +10,17 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230895"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170835"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
 > [!NOTE]
-> Dieser SAP-Connector wird bald eingestellt. Wir haben einen neuen und erweiterten SAP-Connector veröffentlicht, und es wird empfohlen, den [neuen SAP-Connector](./logic-apps-using-sap-connector.md) auszuwählen oder zu diesem zu wechseln.
->  
+> Dieser SAP-Connector ist als veraltet markiert. Bitte verwenden Sie den [neueren und weiterentwickelten SAP-Connector](./logic-apps-using-sap-connector.md), oder führen Sie eine Migration zu ihm aus. 
 
 In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre SAP-Ressourcen zugreifen, indem Sie den SAP-Anwendungsserver und den SAP-Nachrichtenserver verwenden. Auf diese Weise können Sie Tasks, Prozesse und Workflows automatisieren, die SAP-Daten und Ressourcen verwalten, indem Sie die Logik-Apps erstellen.
 
@@ -38,7 +36,7 @@ Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/
 
 Um diesem Artikel weiter folgen zu können, benötigen Sie Folgendes:
 
-* Die Logik-App, von der aus Sie auf Ihr SAP-System zugreifen möchten, und einen Trigger, der Ihren Logik-App-Workflow startet. Die SAP-Connectors stellen derzeit nur Aktionen bereit. Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Die Logik-App, von der aus Sie auf Ihr SAP-System zugreifen möchten, und einen Trigger, der Ihren Logik-App-Workflow startet. Die SAP-Connectors stellen derzeit nur Aktionen bereit. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Ihr <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP-Anwendungsserver</a> oder der <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP-Nachrichtenserver</a>
 
@@ -67,7 +65,7 @@ In diesem Beispiel erstellen Sie eine Logik-App mit einem Endpunkt in Azure, dam
 
 1. Erstellen Sie im Azure-Portal eine leere Logik-App, die den Logik-App-Designer öffnet. 
 
-2. Geben Sie im Suchfeld den Begriff „http request“ als Filter ein. Wählen Sie aus der Triggerliste diesen Trigger aus: **Request - When a HTTP request is received** (Anforderung – Beim Empfang einer HTTP-Anforderung).
+2. Geben Sie im Suchfeld den Begriff „http request“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Anforderung - Beim Empfang einer HTTP-Anforderung**
 
    ![Hinzufügen eines HTTP-Anforderungstriggers](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
@@ -93,7 +91,7 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
    * **SAP Application Server – Send to SAP** (SAP-Anwendungsserver – An SAP senden)
    * **SAP Message Server – Send to SAP** (SAP-Nachrichtenserver – An SAP senden)
 
-   In diesem Beispiel wird diese Aktion verwendet: **SAP Application Server – Send to SAP**.
+   In diesem Beispiel wird diese Aktion verwendet: **SAP Application Server – Send to SAP** (SAP-Anwendungsserver – An SAP senden)
 
    ![„SAP-Anwendungsserver“ oder „SAP-Nachrichtenserver“ auswählen](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -154,7 +152,7 @@ Fügen Sie nun dem Workflow Ihrer Logik-App eine Antwortaktion hinzu, und fügen
 
 1. Klicken Sie im Logik-App-Designer unter der SAP-Aktion auf die Optionen **+ Neuer Schritt** > **Aktion hinzufügen**.
 
-2. Geben Sie im Suchfeld den Begriff „Antwort“ als Filter ein. Wählen Sie diese Aktion aus der Aktionsliste aus: **Anforderungsantwort**.
+2. Geben Sie im Suchfeld den Begriff „Antwort“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Anforderungsantwort**
 
 3. Klicken Sie in das Feld **Hauptteil**, damit die dynamische Inhaltsliste angezeigt wird. Wählen Sie aus dieser Liste unter **Send to SAP** (An SAP senden) das Feld **Hauptteil** aus. 
 

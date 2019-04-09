@@ -1,5 +1,5 @@
 ---
-title: Azure Multi-Factor Authentication – Erfassen von Benutzerdaten
+title: Azure Multi-Factor Authentication – Erfassen von Benutzerdaten – Azure Active Directory
 description: Welche Informationen verwendet Azure Multi-Factor Authentication, um Benutzer zu authentifizieren?
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a42a25afc03b07393234014d7237c5419095b2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201498"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436660"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication – Erfassen von Benutzerdaten
 
@@ -138,7 +138,7 @@ Administratoren können mithilfe der folgenden Anleitung alle Benutzerdaten vom 
 - Melden Sie sich in Ihrem MFA-Server an, navigieren Sie zur Registerkarte **Benutzer**, wählen Sie den gewünschten Benutzer aus, und klicken Sie auf die Schaltfläche **Bearbeiten**. Erstellen Sie Screenshots (Alt+Druck) von jeder Registerkarte, um Benutzern ihre aktuellen MFA-Einstellungen bereitzustellen.
 - Führen Sie über die Befehlszeile des MFA-Servers den folgenden Befehl aus. Ändern Sie den Pfad gemäß Ihrer Installation `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`, um eine Datei im JSON-Format zu erstellen.
 - Administratoren können auch den GetUserGdpr-Vorgang des Webdienst-SDK verwenden, um alle erfassten MFA-Clouddienstinformationen für einen bestimmten Benutzer zu exportieren oder in eine größere Berichtslösung zu integrieren.
-- Suchen Sie nach `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` und allen Sicherungen für „<username>“ (Anführungszeichen in die Suche einschließen), um alle Instanzen des Benutzerdatensatzes zu finden, die hinzugefügt oder geändert wurden.
+- Suchen Sie nach `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` und allen Sicherungen für „\<Benutzername>“ (Anführungszeichen in die Suche einschließen), um alle Instanzen des Benutzerdatensatzes zu finden, die hinzugefügt oder geändert wurden.
    - Diese Datensätze können begrenzt (jedoch nicht entfernt) werden, indem Sie **„Benutzeränderungen protokollieren“** deaktivieren in der MFA-Server-UX, im Abschnitt „Protokollierung“, auf der Registerkarte „Protokolldateien“.
    - Wenn Syslog konfiguriert und **„Benutzeränderungen protokollieren“** in der MFA-Server-UX, im Abschnitt „Protokollierung“, auf der Registerkarte „Syslog“ aktiviert ist, können Protokolleinträge stattdessen aus Syslog erfasst werden.
 - Andere Vorkommen des Benutzernamens im MultiFactorAuthSvc.log und in anderen MFA-Serverprotokolldateien, die sich auf Authentifizierungsversuche beziehen, gelten als operative Daten und Duplikate, die mithilfe des MultiFactorAuthGdpr.exe-Exports oder des Webdienst-SDK GetUserGdpr bereitgestellt wurden.
