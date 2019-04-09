@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882378"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370056"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden
 
@@ -24,7 +24,7 @@ ms.locfileid: "54882378"
 
 ## <a name="what-is-changing"></a>Was ändert sich?
 
-Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten und Aktivitätsprotokolldaten an ein Azure-Speicherkonto, einen Event Hubs-Namespace oder Log Analytics senden können. Am **1. November 2018 um Mitternacht (UTC)** ändert sich das Format der Protokolldaten, die an den Blobspeicher gesendet werden, um ein Problem mit der Systemleistung zu beheben. Falls Sie über Tools verfügen, mit denen Daten aus dem Blobspeicher gelesen werden, müssen Sie diese Tools aktualisieren, damit das neue Datenformat gelesen werden kann.
+Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten und Aktivitätsprotokolldaten an ein Azure-Speicherkonto, einen Event Hubs-Namespace oder Log Analytics-Arbeitsbereich in Azure Monitor senden können. Am **1. November 2018 um Mitternacht (UTC)** ändert sich das Format der Protokolldaten, die an den Blobspeicher gesendet werden, um ein Problem mit der Systemleistung zu beheben. Falls Sie über Tools verfügen, mit denen Daten aus dem Blobspeicher gelesen werden, müssen Sie diese Tools aktualisieren, damit das neue Datenformat gelesen werden kann.
 
 * Am Donnerstag, den 1. November 2018, um Mitternacht (UTC) wird das Blobformat in [JSON Lines](http://jsonlines.org/) geändert. Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden.
 * Das Blobformat wird für alle Diagnoseeinstellungen aller Abonnements auf einmal geändert. Die erste Datei „PT1H.json“, die für den 1. November ausgegeben wird, hat dieses neue Format. Die Blob- und Containernamen bleiben unverändert.

@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a39fa0949276b7e86c7fdd0d0861492a9a0b723e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852439"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438631"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapping Data Flow: Sink-Transformation
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Sink-Optionen](media/data-flow/windows1.png "Senke 1")
+![Sink-Optionen](media/data-flow/sink1.png "Senke 1")
 
 Nach Abschluss Ihrer Datenflusstransformation können Sie die transformierten Daten in ein Zieldataset senken. In der Sink-Transformation können Sie die Datasetdefinition auswählen, die Sie für die Zielausgabedaten verwenden möchten. Sie können so viele Sink-Transformationen haben, wie Ihr Datenfluss erfordert.
 
@@ -57,7 +57,7 @@ Wenn Sie Ihre Spaltenzuordnungen zurücksetzen möchten, wählen Sie die Schaltf
 ## <a name="file-name-options"></a>Dateinamenoptionen
 
    * Standardwert: Lassen Sie zu, dass Spark Dateien basierend auf den PART-Standardeinstellungen benennt.
-   * Muster: Geben Sie einen Namen für Ihre Ausgabedateien ein.
+   * Muster: Geben Sie ein Muster für Ihre Ausgabedateien ein. Zum Beispiel erstellt „loans[n]“ loans1.csv, loans2.csv...
    * Pro Partition: Geben Sie einen Dateinamen pro Partition ein.
    * Wie Daten in Spalte: Legen Sie die Ausgabedatei auf den Wert einer Spalte fest.
 
@@ -66,11 +66,16 @@ Wenn Sie Ihre Spaltenzuordnungen zurücksetzen möchten, wählen Sie die Schaltf
 
 ## <a name="database-options"></a>Datenbankoptionen
 
-* Einfüge-, Aktualisierungs-, Lösch- und Upsert-Vorgänge von Daten zulassen. Die Standardeinstellung ist das Zulassen von Einfügevorgängen. Wenn Sie für Zeilen Aktualisierungs-, Upsert- oder Einfügevorgänge verwenden möchten, müssen Sie zunächst eine Transformation zur Änderung von Zeilen hinzufügen, um Zeilen für diese spezifischen Aktionen zu kennzeichnen.
+* Einfüge-, Aktualisierungs-, Lösch- und Upsert-Vorgänge von Daten zulassen. Die Standardeinstellung ist das Zulassen von Einfügevorgängen. Wenn Sie für Zeilen Aktualisierungs-, Upsert- oder Löschvorgänge verwenden möchten, müssen Sie zunächst eine Transformation zur Änderung von Zeilen hinzufügen, um Zeilen für diese spezifischen Aktionen zu kennzeichnen. Wenn „Einfügen zulassen“ deaktiviert wird, fügt ADF keine neue Zeilen aus Ihrer Quelle ein.
 * Tabelle abschneiden (entfernt vor dem Abschließen des Datenflusses alle Zeilen aus der Zieltabelle)
 * Tabelle neu erstellen (wendet vor dem Abschließen des Datenflusses Lösch-/Erstellvorgänge auf die Zieltabelle an)
 * Batchgröße für große Datenmengen. Geben Sie eine Zahl ein, um Schreibvorgänge in Blöcke zu unterteilen.
 * Staging aktivieren: Dadurch wird ADF angewiesen, Polybase zu verwenden, wenn Sie Azure Data Warehouse als Ihren Senkendatensatz laden.
+
+> [!NOTE]
+> Im Datenfluss können Sie ADF auffordern, eine neue Tabellendefinition in Ihrer Zieldatenbank zu erstellen, indem Sie in der Senkentransformation ein Dataset mit einem neuen Tabellennamen festlegen. Klicken Sie im SQL-Dataset unter dem Tabellennamen auf „Bearbeiten“, und geben Sie einen neuen Tabellennamen ein. Aktivieren Sie dann in der Senkentransformation „Schemaabweichung zulassen“. Legen Sie für die Einstellung „Schema importieren“ die Option „Keine“ fest.
+
+![Schema für Quelltransformation](media/data-flow/dataset2.png "SQL-Schema")
 
 ![SQL-Senkenoptionen](media/data-flow/alter-row2.png "Senkenoptionen")
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094676"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401726"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge
 
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie ein IoT Edge-Modul zur Bereitstellung mit Ihrem Data Box Edge-Gerät erstellen. Azure Data Box Edge ist eine Speicherlösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können.
 
@@ -27,19 +27,13 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen einer Containerregistrierung zum Speichern und Verwalten Ihrer Module (Docker-Images)
 > * Erstellen eines IoT Edge-Moduls zur Bereitstellung auf Ihrem Data Box Edge-Gerät
 
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
 
 ## <a name="about-the-iot-edge-module"></a>Informationen zum IoT Edge-Modul
 
 Auf dem Data Box Edge-Gerät können IoT Edge-Module bereitgestellt und ausgeführt werden. Edge-Module sind im Wesentlichen Docker-Container, die eine bestimmte Aufgabe ausführen, z.B. Erfassen einer Nachricht von einem Gerät, Transformieren einer Nachricht oder Senden einer Nachricht an einen IoT Hub. In diesem Artikel erstellen Sie ein Modul, mit dem Dateien von einer lokalen Freigabe in eine Cloudfreigabe auf Ihrem Data Box Edge-Gerät kopiert werden.
 
 1. Die Dateien werden in die lokale Freigabe auf dem Data Box Edge-Gerät geschrieben.
-2. Der Dateiereignisgenerator erstellt ein Dateiereignis für jede in die lokale Freigabe geschriebene Datei. Die Dateiereignisse werden dann an den IoT Edge-Hub gesendet (in der IoT Edge-Runtime).
-
-   > [!IMPORTANT]
-   > Die Dateiereignisse werden nur für die neu erstellten Dateien generiert. Bei einer Änderung von vorhandenen Dateien werden keine Dateiereignisse generiert.
-
+2. Der Dateiereignisgenerator erstellt ein Dateiereignis für jede in die lokale Freigabe geschriebene Datei. Die Dateiereignisse werden auch generiert, wenn eine Datei geändert wird. Die Dateiereignisse werden dann an den IoT Edge-Hub gesendet (in der IoT Edge-Runtime).
 3. Das benutzerdefinierte IoT Edge-Modul verarbeitet das Dateiereignis und erstellt ein Dateiereignisobjekt, das auch einen relativen Pfad für die Datei enthält. Das Modul generiert anhand des relativen Dateipfads einen absoluten Pfad und kopiert die Datei von der lokalen Freigabe in die Cloudfreigabe. Das Modul löscht dann die Datei aus der lokalen Freigabe.
 
 ![Funktionsweise des Azure IoT Edge-Moduls in Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
@@ -52,8 +46,9 @@ Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
 - Ein Data Box Edge-Gerät wird ausgeführt.
 
-    - Das Gerät verfügt auch über eine zugeordnete IoT Hub-Ressource. Entsprechende weitere Informationen zu Data Box Edge finden Sie unter [Erstellen einer IoT Hub-Ressource](data-box-edge-deploy-configure-compute.md#create-an-iot-hub-resource).
-    - Auf dem Gerät ist die Rolle „Edgecomputing“ konfiguriert. Entsprechende Informationen zu Data Box Edge finden Sie unter [Einrichten einer Computerolle](data-box-edge-deploy-configure-compute.md#set-up-compute-role).
+    - Das Gerät verfügt auch über eine zugeordnete IoT Hub-Ressource.
+    - Auf dem Gerät ist die Rolle „Edgecomputing“ konfiguriert.
+    Weitere Informationen zu Data Box Edge finden Sie unter [Konfigurieren von Compute](data-box-edge-deploy-configure-compute.md#configure-compute).
 
 - Folgende Entwicklungsressourcen sind installiert:
 
@@ -128,7 +123,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualisieren des Moduls mit benutzerdefiniertem Code
 
-1. Öffnen Sie **Module > CSharpModule > Program.cs** im VS Code-Explorer.
+1. Öffnen Sie im VS Code-Explorer **Module > FileCopyModule > Program.cs**.
 2. Fügen Sie oben im Namespace **FileCopyModule** die folgenden using-Anweisungen für Typen hinzu, die im weiteren Verlauf verwendet werden. **Microsoft.Azure.Devices.Client.Transport.Mqtt** ist ein Protokoll zum Senden von Nachrichten an den IoT Edge-Hub.
 
     ```
@@ -141,12 +136,9 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
     class Program
         {
             static int counter;
-            private const string InputFolderPath = "/home/LocalShare";
-            private const string OutputFolderPath = "/home/CloudShare";
+            private const string InputFolderPath = "/home/input";
+            private const string OutputFolderPath = "/home/output";
     ```
-
-    > [!IMPORTANT]
-    > Notieren Sie sich `InputFolderPath` und `OutputFolderPath`. Sie müssen diese Pfade beim Bereitstellen des Moduls angeben.
 
 4. Fügen Sie der Program-Klasse die **MessageBody**-Klasse hinzu. Diese Klassen definieren das erwartete Schema für den Textkörper eingehender Nachrichten.
 
@@ -189,7 +181,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
 6. Fügen Sie den Code für **FileCopy** ein.
 
     ```
-            /// <summary>
+        /// <summary>
         /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
@@ -241,8 +233,6 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
             Console.WriteLine($"Processed event.");
             return MessageResponse.Completed;
         }
-
-    }
     ```
 
 7. Speichern Sie diese Datei.
@@ -251,7 +241,8 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
 
 Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und Code in FileCopyModule hinzugefügt, um Dateien von der lokalen Freigabe in die Cloudfreigabe zu kopieren. Nun müssen Sie die Projektmappe als Containerimage erstellen und per Push an die Containerregistrierung übertragen.
 
-1. Melden Sie sich bei Docker an. Geben Sie dazu im integrierten Terminal von Visual Studio Code den folgenden Befehl ein.
+1. Wechseln Sie in VSCode zu „Terminal“ > „Neues Terminal“, um ein neues integriertes Terminal von Visual Studio Code zu öffnen.
+2. Melden Sie sich bei Docker an. Geben Sie dazu den folgenden Befehl im integrierten Terminal ein:
 
     `docker login <ACR login server> -u <ACR username>`
 
@@ -282,4 +273,4 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und Code i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Bereitstellen und Ausführen dieses Moduls in Data Box Edge finden Sie in den Schritten unter [Hinzufügen eines benutzerdefinierten Moduls](data-box-edge-deploy-configure-compute.md#add-a-custom-module).
+Informationen zum Bereitstellen und Ausführen dieses Moduls in Data Box Edge finden Sie in den Schritten unter [Hinzufügen eines Moduls](data-box-edge-deploy-configure-compute.md#add-a-module).

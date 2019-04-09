@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 2/20/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295639"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337645"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -20,9 +20,9 @@ Azure DNS-Aliaseinträge sind Qualifizierungen für einen DNS-Ressourceneintrags
 
 Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Zone unterstützt: 
 
-- Eine Datei 
-- AAAA 
-- CNAME 
+- Eine Datei
+- AAAA
+- CNAME
 
 > [!NOTE]
 > Wenn Sie beabsichtigen, für den Verweis auf ein [Azure Traffic Manager-Profil](../traffic-manager/quickstart-create-traffic-manager-profile.md) einen Aliaseintrag für die A- oder AAAA-Eintragstypen zu verwenden, stellen Sie sicher, dass das Traffic Manager-Profil nur [externe Endpunkte](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) aufweist. Sie müssen die IPv4- oder IPv6-Adresse für externe Endpunkte in Traffic Manager angeben. Verwenden Sie idealerweise statische IP-Adressen.
@@ -32,7 +32,7 @@ Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Z
 - **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen. Der DNS-Ressourceneintragssatz wird automatisch aktualisiert, wenn die öffentliche IP-Adresse geändert oder gelöscht wird. Verbleibende DNS-Einträge, die auf falsche IP-Adressen verweisen, werden vermieden.
 
 - **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz:** Sie können einen A/AAAA- oder einen CNAME-Eintragssatz erstellen und ihn über Aliaseinträge an ein Traffic Manager-Profil verweisen. Dies ist besonders nützlich, wenn Sie Datenverkehr an einem Zonen-Apex weiterleiten müssen, weil herkömmliche CNAME-Einträge für einen Zonen-Apex nicht unterstützt werden. Beispiel: Ihr Traffic Manager-Profil heißt „myprofile.trafficmanager.net“, und die DNS-Zone Ihres Unternehmens heißt „contoso.com“. Sie können einen Aliaseintragssatz vom Typ A/AAAA für „contoso.com“ (den Zonen-Apex) erstellen und an „myprofile.trafficmanager.net“ verweisen.
-
+- **Verweisen auf einen Endpunkt eines Azure Content Delivery Network (CDN)** Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen.
 - **Verweisen auf einen anderen DNS-Ressourceneintragssatz innerhalb derselben Zone:** Aliaseinträge können auf andere Eintragssätze desselben Typs verweisen. So kann beispielsweise ein DNS-CNAME-Eintragssatz ein Alias für einen anderen CNAME-Eintragssatz sein. Dies ist nützlich, wenn Sie möchten, dass einige Eintragssätze Aliase und andere keine Aliase sind.
 
 ## <a name="scenarios"></a>Szenarien
@@ -61,6 +61,7 @@ Dieses Problem kann mithilfe von Aliaseinträgen gelöst werden. Im Gegensatz zu
 So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Weitere Informationen zur Verwendung von Aliaseinträgen mit Azure Traffic Manager-Profilen finden Sie im Abschnitt „Nächste Schritte“.
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Verweisen an der Zonenspitze auf Azure CDN-Endpunkte
+
 Genau wie ein Traffic Manager-Profil können Sie auch Aliasdatensätze verwenden, um an der Zonenspitze Ihrer DNS-Zone auf Azure CDN-Endpunkte zu verweisen. Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen. Anschließend können Sie auf die Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
 
 Wenn Ihre statische Website „www.contoso.com“ heißt, können Ihre Benutzer mit „contoso.com“ auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.

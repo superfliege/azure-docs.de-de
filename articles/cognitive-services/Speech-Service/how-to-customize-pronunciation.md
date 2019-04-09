@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0a3dfce10fc8ea76bc8f99e2459295bc637017dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878407"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339396"
 ---
 # <a name="enable-custom-pronunciation"></a>Aktivieren der benutzerdefinierten Aussprache
 
-Durch die benutzerdefinierte Aussprache können Sie die phonetische Form und Darstellung eines Worts oder einer Benennung definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist zu Beginn lediglich eine Aussprachedatei – eine einfache TXT-Datei.
+Durch die benutzerdefinierte Aussprache können Sie die phonetische Form und Darstellung eines Worts oder einer Benennung (Akronym) definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist zu Beginn lediglich eine Aussprachedatei – eine einfache TXT-Datei.
 
 Dies funktioniert folgendermaßen: In einer einzelnen TXT-Datei können Sie mehrere Einträge für die benutzerdefinierte Aussprache eingeben. Die Struktur sieht wie folgt aus:
 
@@ -32,11 +32,12 @@ Die folgende Tabelle enthält einige Beispiele:
 
 | Darstellungsform | Gesprochene Form |
 |----------|-------|
-| C3PO | see three pea o |
+| 3CPO | see three pea o |
 | L8R | late are |
-| CNTK | see n tea k|
+| CNTK | c n t k|
 
 ## <a name="requirements-for-the-spoken-form"></a>Anforderungen für die gesprochene Form
+
 Die gesprochene Form muss in Kleinbuchstaben geschrieben werden, was beim Import erzwungen werden kann. Darüber hinaus müssen Sie Überprüfungen im Datenimportprogramm bereitstellen. Es sind keine Tabstopps in der gesprochenen Form oder der Darstellungsform zulässig. Es kann jedoch weitere verbotene Zeichen in der Darstellungsform geben (z.B. ~ und ^).
 
 Jede .txt-Datei kann mehrere Einträge aufweisen, wie in der folgenden Abbildung gezeigt:
@@ -46,18 +47,20 @@ Jede .txt-Datei kann mehrere Einträge aufweisen, wie in der folgenden Abbildung
 Die gesprochene Form ist die Lautfolge der Darstellungsform. Sie besteht aus Buchstaben, Wörtern oder Silben. Zurzeit sind keine weiteren Leitfäden oder Standards verfügbar, die bei der Formulierung der gesprochenen Form Orientierung bieten könnten.
 
 ## <a name="supported-pronunciation-characters"></a>Unterstützte Zeichen für die Aussprache
+
 Die benutzerdefinierte Aussprache wird derzeit nur für US-amerikanisches Englisch (en-US) und Deutsch (de-DE) unterstützt. Der Zeichensatz, der zum Ausdruck der gesprochenen Form einer Benennung (in der benutzerdefinierten Aussprachedatei) verwendet werden kann, wird in der folgenden Tabelle aufgeführt:
 
 | Sprache | Zeichen |
 |---------- |----------|
-| Englisch (en-US) | a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
-| Deutsch (de-de) | ä, ö, ü, ?, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
+| Englisch (en-US) | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Deutsch (de-de) | ä, ö, ü, ?, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Die Darstellungsform einer Benennung (in einer Aussprachedatei) sollte genauso geschrieben werden wie ein Dataset für die Sprachadaption.
 
 ## <a name="requirements-for-the-display-form"></a>Anforderungen für die Darstellungsform
-Eine Darstellungsform kann ausschließlich ein benutzerdefiniertes Wort, eine Benennung, ein Akronym oder ein Kompositum sein, bei dem existierende Wörter zusammengesetzt werden. Sie können auch alternative Aussprachen für häufig verwendete Wörter eingeben.
+
+Eine Darstellungsform kann ausschließlich ein benutzerdefiniertes Wort, ein Akronym oder ein Kompositum sein, bei dem existierende Wörter zusammengesetzt werden.
 
 >[!NOTE]
 >Es wird davon abgeraten, dieses Feature zur Umformulierung häufig verwendeter Wörter oder zur Änderung der gesprochenen Form zu verwenden. Falls besondere Wörter (z.B. Abkürzungen, Fachwörter und Fremdwörter) nicht korrekt decodiert werden, wird empfohlen, den Decoder auszuführen. Werden diese korrekt decodiert, fügen Sie sie der Datei für die benutzerdefinierte Aussprache hinzu. Im Sprachmodell sollten Sie stets und ausschließlich die Darstellungsform eines Worts verwenden.

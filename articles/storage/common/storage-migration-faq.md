@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110408"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310845"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -282,7 +282,7 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
     - **SAS-Token:** Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
 
-**Wie verwende ich eine benutzerdefinierte HTTPS-Domäne mit meinem Speicherkonto? Wie erreiche ich beispielsweise, dass „<https://mystorageaccountname.blob.core.windows.net/images/image.gif>“ als „<https://www.contoso.com/images/image.gif>“ angezeigt wird?**
+**Wie verwende ich eine benutzerdefinierte HTTPS-Domäne mit meinem Speicherkonto? Wie kann ich beispielsweise „https:\//mystorageaccountname.blob.core.windows.net/images/image.gif“ als „https:\//www.contoso.com/images/image.gif“ anzeigen?**
 
 SSL wird für Speicherkonten mit benutzerdefinierten Domänen derzeit nicht unterstützt.
 Sie können jedoch benutzerdefinierte Domänen ohne HTTPS verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](../blobs/storage-custom-domain-name.md).

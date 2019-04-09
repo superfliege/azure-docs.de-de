@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812037"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317509"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
@@ -98,7 +98,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
    
     Auf der Seite **Webproxy** :
    
-   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://host-IP Adresse* oder *FQDN:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
+   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http:\//Host-IP-Adresse* oder *FQDN:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
    2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
    3. Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
    4. Klicken Sie auf **Anwenden**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.

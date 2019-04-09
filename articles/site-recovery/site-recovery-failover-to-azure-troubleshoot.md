@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 1/29/2019
+ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207495"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889691"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
 
@@ -24,7 +24,7 @@ Bei einem Failover eines virtuellen Computers nach Azure tritt eventuell einer d
 
 Site Recovery konnte einen virtuellen Computer, für den ein Failover ausgeführt wurde, nicht in Azure erstellen. Dies kann aus einem der folgenden Gründe auftreten:
 
-* Das verfügbare Kontingent reicht nicht zum Erstellen des virtuellen Computers: Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](http://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen.
+* Das verfügbare Kontingent reicht nicht zum Erstellen des virtuellen Computers: Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](https://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen.
 
 * Sie versuchen, ein Failover für virtuelle Computer unterschiedlicher Größensätze in derselben Verfügbarkeitsgruppe durchzuführen. Verwenden Sie unbedingt dieselben Größen Familien für alle virtuellen Computer in derselben Verfügbarkeitsgruppe. Sie können die Größe ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren. Wiederholen Sie das Failover anschließend.
 
@@ -32,7 +32,7 @@ Site Recovery konnte einen virtuellen Computer, für den ein Failover ausgeführ
 
 ## <a name="failover-failed-with-error-id-28092"></a>Fehler beim Failover mit der Fehler-ID 28092
 
-Site Recovery konnte für den virtuellen Computer, für den ein Failover ausgeführt wurde, keine Netzwerkschnittstelle erstellen. Stellen Sie sicher, dass Sie in Ihrem Abonnement über ein ausreichendes Kontingent zum Erstellen von Netzwerkschnittstellen verfügen. Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](http://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen. Wenn Sie über ein ausreichendes Kontingent verfügen, ist dies möglicherweise nur ein vorübergehendes Problem. Wiederholen Sie den Vorgang. Wenn das Problem auch nach Wiederholungen weiter besteht, hinterlassen Sie am Ende dieses Dokuments einen Kommentar.  
+Site Recovery konnte für den virtuellen Computer, für den ein Failover ausgeführt wurde, keine Netzwerkschnittstelle erstellen. Stellen Sie sicher, dass Sie in Ihrem Abonnement über ein ausreichendes Kontingent zum Erstellen von Netzwerkschnittstellen verfügen. Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](https://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen. Wenn Sie über ein ausreichendes Kontingent verfügen, ist dies möglicherweise nur ein vorübergehendes Problem. Wiederholen Sie den Vorgang. Wenn das Problem auch nach Wiederholungen weiter besteht, hinterlassen Sie am Ende dieses Dokuments einen Kommentar.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Fehler beim Failover mit der Fehler-ID 70038
 
@@ -48,7 +48,7 @@ Um einen Computer in Azure aufzurufen, erfordert die Azure-Umgebung, dass sich e
 
 Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu ändern, führen Sie die folgenden Schritte aus:
 
-1. Laden Sie das „no-hydration“- Skript [herunter](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1), und führen Sie es folgendermaßen aus: Dieses Skript überprüft, ob für die VM eine Hydration erforderlich ist.
+1. Laden Sie das „no-hydration“- Skript [herunter](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1), und führen Sie es folgendermaßen aus: Dieses Skript überprüft, ob für die VM eine Hydration erforderlich ist.
 
     `.\Script-no-hydration.ps1`
 
@@ -110,7 +110,50 @@ Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in
 
 Wenn beim Starten eines virtuellen Windows-Computers nach dem Failover auf dem wiederhergestellten virtuellen Computer eine Nachricht über ein unerwartetes Herunterfahren ausgegeben wird, bedeutet dies, dass ein Status des Herunterfahrens des virtuellen Computers nicht in dem für das Failover verwendeten Wiederherstellungspunkt erfasst wurde. Dies geschieht, wenn Sie eine Wiederherstellung zu einem Zeitpunkt durchführen, zu dem der virtuelle Computer nicht vollständig heruntergefahren war.
 
-Normalerweise ist das kein Anlass zur Sorge und kann in der Regel für ungeplante Failover ignoriert werden. Stellen Sie im Fall eines geplanten Failovers sicher, dass der virtuelle Computer vor dem Failover ordnungsgemäß heruntergefahren wird, und gewähren Sie ausreichend Zeit, damit ausstehende lokale Daten zur Replikation an Azure gesendet werden können. Verwenden Sie dann die Option **Neueste** auf dem Bildschirm [Failover](site-recovery-failover.md#run-a-failover), damit alle ausstehenden Daten in Azure in einem Wiederherstellungspunkt verarbeitet werden, der dann für VM-Failover verwendet wird.
+Normalerweise ist das kein Anlass zur Sorge und kann in der Regel für ungeplante Failover ignoriert werden. Stellen Sie im Fall eines geplanten Failovers sicher, dass der virtuelle Computer vor dem Failover ordnungsgemäß heruntergefahren wird, und lassen Sie genügend Zeit, damit ausstehende lokale Daten zur Replikation an Azure gesendet werden können. Verwenden Sie dann die Option **Neueste** auf dem Bildschirm [Failover](site-recovery-failover.md#run-a-failover), damit alle ausstehenden Daten in Azure in einem Wiederherstellungspunkt verarbeitet werden, der dann für VM-Failover verwendet wird.
+
+## <a name="unable-to-select-the-datastore"></a>Datenspeicher kann nicht ausgewählt werden
+
+Dieses Problem wird angezeigt, falls der Datenspeicher im Azure-Portal nicht angezeigt werden kann, wenn Sie versuchen, den virtuellen Computer, für den ein Failover ausgeführt wurde, erneut zu schützen. Der Grund: Das Masterziel wird unter vCenter-Instanzen, die Azure Site Recovery hinzugefügt wurden, nicht als virtueller Computer erkannt.
+
+Weitere Informationen zum erneuten Schützen eines virtuellen Computers finden Sie unter [Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure](vmware-azure-reprotect.md).
+
+So lösen Sie das Problem:
+
+Erstellen Sie das Masterziel manuell in der vCenter-Instanz, die Ihren Quellcomputer verwaltet. Der Datenspeicher ist nach der nächsten vCenter-Ermittlung und Fabric-Aktualisierung verfügbar.
+
+> [!Note]
+> 
+> Ermittlung und Fabric-Aktualisierung können bis zu 30 Minuten dauern. 
+
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>SSL-Fehler 35 bei der Linux-Masterzielregistrierung beim Konfigurationsserver 
+
+Die Azure Site Recovery-Masterzielregistrierung beim Konfigurationsserver ist nicht erfolgreich, da auf dem Masterziel der authentifizierte Proxy aktiviert ist. 
+ 
+Dieser Fehler wird durch folgende Zeichenfolgen im Installationsprotokoll angegeben: 
+
+RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
+ 
+So lösen Sie das Problem:
+ 
+1. Öffnen Sie auf dem virtuellen Konfigurationsservercomputer eine Eingabeaufforderung, und überprüfen Sie die Proxyeinstellungen mithilfe folgender Befehle:
+
+    cat /etc/environment  echo $http_proxy  echo $https_proxy 
+
+2. Sollte in der Ausgabe der vorherigen Befehle angegeben sein, dass die Einstellung „http_proxy“ oder „https_proxy“ definiert ist, verwenden Sie eine der folgenden Methoden, um die Blockierung der Masterzielkommunikation mit dem Konfigurationsserver zu beseitigen:
+   
+   - Laden Sie das [PsExec-Tool](https://aka.ms/PsExec) herunter.
+   - Verwenden Sie das Tool, um auf den Systembenutzerkontext zuzugreifen und zu ermitteln, ob die Proxyadresse konfiguriert ist. 
+   - Ist der Proxy konfiguriert, öffnen Sie Internet Explorer mithilfe des PsExec-Tools in einem Systembenutzerkontext.
+  
+     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+
+   - So stellen Sie sicher, dass der Masterzielserver mit dem Konfigurationsserver kommunizieren kann:
+  
+     - Ändern Sie die Proxyeinstellungen in Internet Explorer, um die IP-Adresse des Masterzielservers über den Proxy zu umgehen.   
+     oder
+     - Deaktivieren Sie den Proxy auf dem Masterzielserver. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Beheben von Fehlern bei der [RDP-Verbindung mit einem virtuellen Windows-Computer](../virtual-machines/windows/troubleshoot-rdp-connection.md)

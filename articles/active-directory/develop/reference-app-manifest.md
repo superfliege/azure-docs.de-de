@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb21ddc36141dfee1be6f0e42811e6ccbeb44143
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2750de16c71e7d678810316f281e28ca8c40553d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217495"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403152"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -77,6 +77,14 @@ Konfigurieren Sie das Anwendungsmanifest wie folgt:
 | `signInUrl` | Zeichenfolge | Gibt die URL zur Startseite der App an. | `https://MyRegisteredApp` |
 | `signInAudience` | Zeichenfolge | Gibt an, welche Microsoft-Konten für die aktuelle Anwendung unterstützt werden. Folgende Werte werden unterstützt:<ul><li>**AzureADMyOrg:** Benutzer mit einem Geschäfts-, Schul- oder Unikonto von Microsoft im Azure AD-Mandanten meiner Organisation (einzelner Mandant)</li><li>**AzureADMultipleOrgs:** Benutzer mit einem Geschäfts-, Schul- oder Unikonto von Microsoft im Azure AD-Mandanten einer beliebigen Organisation (mehrinstanzenfähig)</li> <li>**AzureADandPersonalMicrosoftAccount:** Benutzer mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto im Azure AD-Mandanten einer beliebigen Organisation</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | Zeichenfolgenarray | Benutzerdefinierte Zeichenfolgen, die zum Kategorisieren und Identifizieren der Anwendung verwendet werden können | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
+
+
+## <a name="manifest-limits"></a>Grenzwerte für das Manifest
+Ein Anwendungsmanifest verfügt über mehrere Attribute, die als Sammlungen bezeichnet werden, beispielsweise „approles“, „keycredentials“, „knownClientApplications“, „identifierUris“, „rediretUris“, „requiredResourceAccess“, „oauth2Permissions“ usw. Im gesamten Anwendungsmanifest für jede Anwendung wurde die Gesamtanzahl von Einträgen in allen kombinierten Sammlungen auf 1200 begrenzt. Wenn Sie im Anwendungsmanifest bereits 100 Umleitungs-URIs angegeben haben, können Sie in allen anderen kombinierten Sammlungen, aus denen das Manifest besteht, nur noch 1100 weitere Einträge verwenden.
+
+> [!NOTE]
+> Falls Sie versuchen, dem Anwendungsmanifest mehr als 1200 Einträge hinzuzufügen, erhalten Sie möglicherweise die Fehlermeldung **Fehler beim Aktualisieren der Anwendung xxxxxx. Fehlerdetails: Die Größe des Manifests hat den Grenzwert überschritten. Verringern Sie die Anzahl der Werte, und wiederholen Sie die Anforderung.**
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

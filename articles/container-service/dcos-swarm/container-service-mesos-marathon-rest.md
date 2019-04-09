@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109289"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309802"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(VERALTET) DC/OS-Containerverwaltung über die Marathon-REST-API
 
@@ -30,7 +30,7 @@ Bevor Sie diese Beispiele durcharbeiten, benötigen Sie einen DC/OS-Cluster, der
 * [Verbinden mit einem Azure Container Service-Cluster](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>Zugriff auf die DC/OS-APIs
-Nachdem die Verbindung mit dem Azure Container Service-Cluster hergestellt wurde, können Sie auf DC/OS und die verwandten REST-APIs über „http://localhost:local-port“ zugreifen. Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass das Tunneling über Port 80 erfolgt. Der Marathon-Endpunkt kann beispielsweise unter URIs erreicht werden, die mit `http://localhost/marathon/v2/` beginnen. 
+Nachdem die Verbindung mit dem Azure Container Service-Cluster hergestellt wurde, können Sie auf DC/OS und die verwandten REST-APIs über „http:\//localhost:local-port“ zugreifen. Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass das Tunneling über Port 80 erfolgt. Der Marathon-Endpunkt kann z. B. unter URIs erreicht werden, die mit „http:\//localhost/marathon/v2/“ beginnen. 
 
 Weitere Informationen zu den verschiedenen APIs finden Sie in der Mesosphere-Dokumentation für die [Marathon-API](https://mesosphere.github.io/marathon/docs/rest-api.html) und die [Chronos-API](https://mesos.github.io/chronos/docs/api.html) sowie in der Apache-Dokumentation für die [Mesos Scheduler-API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
@@ -123,7 +123,7 @@ Sie können die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal
 Führen Sie über die getunnelte Verbindung folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
 
 > [!NOTE]
-> Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
+> Der URI lautet „http:\//localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http:\//localhost/marathon/v2/apps/nginx“.
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -180,7 +180,7 @@ Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen horiz
 Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren:
 
 > [!NOTE]
-> Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
+> Der URI lautet „http:\//localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http:\//localhost/marathon/v2/apps/nginx“.
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

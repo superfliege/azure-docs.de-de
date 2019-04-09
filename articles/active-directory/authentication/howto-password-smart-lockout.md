@@ -1,5 +1,5 @@
 ---
-title: Verhindern von Brute-Force-Angriffen mithilfe von Azure AD Smart Lockout
+title: Verhindern von Brute-Force-Angriffen mithilfe von Azure AD Smart Lockout – Azure Active Directory
 description: Azure AD Smart Lockout trägt dazu bei, Ihre Organisation vor Brute-Force-Angriffen zu schützen, bei denen versucht wird, Kennwörter zu erraten.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67f2af94f32d5439585ad4d727fd2b1bd80fc41b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431700"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370189"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -40,8 +40,8 @@ Smart Lockout ist in Hybridbereitstellungen integrierbar und kann mittels Kennwo
 
 Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) muss Folgendes sichergestellt werden:
 
-   * Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine Active Directory-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine Active Directory-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt. 
-   * Die Azure AD-Sperrdauer (in **Sekunden**) ist **länger** als die Active Directory-Zurücksetzungsdauer des Kontosperrungszählers (in **Minuten**).
+* Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine Active Directory-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine Active Directory-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt. 
+* Die Azure AD-Sperrdauer (in **Sekunden**) ist **länger** als die Active Directory-Zurücksetzungsdauer des Kontosperrungszählers (in **Minuten**).
 
 > [!IMPORTANT]
 > Derzeit können die Cloudkonten der Benutzer nicht von einem Administrator entsperrt werden, wenn sie von Smart Lockout gesperrt wurden. Der Administrator muss warten, bis die Sperrdauer abgelaufen ist.
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um Ihre lokale Active Directory-Kontosperrungsrichtlini
 3. Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Windows-Einstellungen** > **Sicherheitseinstellungen** > **Kontorichtlinien** > **Kontosperrungsrichtlinien**.
 4. Überprüfen Sie Ihre Werte für **Kontensperrungsschwelle** und **Zurücksetzungsdauer des Kontosperrungszählers**.
 
-![Ändern der lokalen Active Directory-Kontosperrungsrichtlinie mithilfe eines Gruppenrichtlinienobjekts](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Ändern der lokalen Active Directory-Kontosperrungsrichtlinie](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Verwalten der Werte für Azure AD Smart Lockout
 
@@ -78,9 +78,7 @@ Wenn der Schwellenwert von Smart Lockout ausgelöst wird, wird das Konto gesperr
 
 **Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später noch mal. Wenden Sie sich an Ihren Administrator, wenn das Problem weiterhin besteht.**
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie, wie Sie mithilfe von Azure AD ungültige Kennwörter aus Ihrer Organisation verbannen.](howto-password-ban-bad.md)
-
-[Konfigurieren Sie die Self-Service-Kennwortzurücksetzung, damit Benutzer ihre Konten selbst entsperren können.](quickstart-sspr.md)
+* [Erfahren Sie, wie Sie mithilfe von Azure AD ungültige Kennwörter aus Ihrer Organisation verbannen.](howto-password-ban-bad.md)
+* [Konfigurieren Sie die Self-Service-Kennwortzurücksetzung, damit Benutzer ihre Konten selbst entsperren können.](quickstart-sspr.md)

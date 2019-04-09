@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f615a07352faccc8096752e5ba60360144834907
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110901"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338240"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verwenden von Versionen, um Staging- und Produktions-Apps nicht durch Bearbeitungsschritte oder Tests zu beeinträchtigen
 
@@ -56,6 +56,10 @@ Wählen Sie in der Liste eine Version und dann auf der Symbolleiste **Aktivieren
     ![Abschnitt „Verwalten“, Seite „Versionen“, Importieren einer neuen Version](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     Nachdem Sie eine Version importiert haben, wird die neue Version die aktive Version.
+
+### <a name="import-errors"></a>Importfehler
+
+* Tokenizer-Fehler: Wenn Sie beim Importieren einen **Tokenizer-Fehler** erhalten, versuchen Sie, eine Version zu importieren, die einen anderen [Tokenizer](luis-language-support.md#custom-tokenizer-versions) verwendet als die aktuell verwendete App. Zur Behebung dieses Problems haben Sie zwei Möglichkeiten. Weitere Informationen finden Sie unter [Migration zwischen Tokenizer-Versionen](luis-language-support.md#migrating-between-tokenizer-versions).
 
 <a name = "export-version"></a>
 

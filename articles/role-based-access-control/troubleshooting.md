@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342472"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407588"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
@@ -28,23 +28,31 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugr
 
 ## <a name="problems-with-rbac-role-assignments"></a>Probleme mit RBAC-Rollenzuweisungen
 
-- Falls Sie keine Rollenzuweisung hinzufügen können, da die Option **Rollenzuweisung hinzufügen** deaktiviert ist oder ein Berechtigungsfehler auftritt, vergewissern Sie sich, dass Sie eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/*` für den Bereich verwenden, dem Sie die Rolle zuweisen möchten. Sollten Sie nicht über diese Berechtigung verfügen, wenden Sie sich an den zuständigen Abonnementadministrator.
-- Falls beim Erstellen einer Ressource ein Berechtigungsfehler auftritt, vergewissern Sie sich, dass Sie eine Rolle verwenden, die über die Berechtigung zum Erstellen von Ressourcen im ausgewählten Bereich verfügt. Beispielsweise müssen Sie unter Umständen Mitwirkender sein. Sollten Sie nicht über die Berechtigung verfügen, wenden Sie sich an den zuständigen Abonnementadministrator.
-- Falls beim Erstellen oder Aktualisieren eines Supporttickets ein Berechtigungsfehler auftritt, vergewissern Sie sich, dass Sie eine Rolle verwenden, die über die Berechtigung `Microsoft.Support/*` verfügt (beispielsweise [Mitwirkender bei Supportanfragen](built-in-roles.md#support-request-contributor)).
-- Tritt beim Zuweisen einer Rolle ein Fehler mit dem Hinweis auf, dass die Anzahl von Rollenzuweisungen überschritten wurde, weisen Sie Rollen stattdessen Gruppen zu, um die Anzahl von Rollenzuweisungen zu verringern. Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen.
+- Wenn Sie keine Rollenzuweisung im Azure-Portal für die **Zugriffssteuerung (IAM)** hinzufügen können, weil die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** deaktiviert ist, oder weil der Berechtigungsfehler „The client with object id does not have authorization to perform action“ (Der Client mit der Objekt-ID ist zum Ausführen der Aktion nicht autorisiert) ausgegeben wird, überprüfen Sie, ob Sie aktuell mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, wie z.B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), in dem Bereich zugewiesen ist, dem Sie versuchen die Rolle zuzuweisen.
+- Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, weisen Sie Rollen stattdessen Gruppen zu, um die Anzahl von Rollenzuweisungen zu verringern. Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen.
 
 ## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
 
-- Falls Sie eine vorhandene benutzerdefinierte Rollen nicht aktualisieren können, vergewissern Sie sich, dass Sie über die Berechtigung `Microsoft.Authorization/roleDefinition/write` verfügen.
-- Sollten Sie eine vorhandene benutzerdefinierte Rolle nicht aktualisieren können, überprüfen Sie, ob im Mandanten zuweisbare Bereiche gelöscht wurden. Die Eigenschaft `AssignableScopes` für eine benutzerdefinierte Rolle steuert, [wer zum Erstellen, Löschen, Aktualisieren oder Anzeigen der benutzerdefinierten Rolle berechtigt ist](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
-- Sollte beim Erstellen einer neuen Rolle ein Fehler mit dem Hinweis auftreten, dass das Limit für Rollendefinitionen überschritten wurde, löschen Sie alle benutzerdefinierten Rollen, die nicht verwendet werden. Sie können auch versuchen, vorhandene benutzerdefinierte Rollen zu konsolidieren oder wiederzuverwenden. Azure unterstützt bis zu **2.000** benutzerdefinierte Rollen in einem Mandanten.
-- Falls Sie eine benutzerdefinierte Rolle nicht löschen können, überprüfen Sie, ob die benutzerdefinierte Rolle noch von mindestens einer Rollenzuweisung verwendet wird.
+- Wenn Sie wissen möchten, wie Sie eine benutzerdefinierte Rolle erstellen können, sehen Sie sich die entsprechenden Tutorials für die Verwendung von [Azure PowerShell](tutorial-custom-role-powershell.md) bzw. [Azure CLI](tutorial-custom-role-cli.md) an.
+- Wenn Sie eine vorhandene benutzerdefinierte Rolle nicht aktualisieren können, stellen Sie sicher, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleDefinition/write`, wie z.B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), zugewiesen ist.
+- Wenn Sie eine benutzerdefinierte Rolle nicht löschen können und die Fehlermeldung „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)“ (Es sind Rollenzuweisungen vorhanden, die auf die Rolle verweisen (Code: RoleDefinitionHasAssignments)) angezeigt wird, wird die benutzerdefinierte Rolle noch von Rollenzuweisungen verwendet. Entfernen Sie die entsprechenden Rollenzuweisungen, und wiederholen Sie anschließend den Löschvorgang für die benutzerdefinierte Rolle.
+- Wird beim Erstellen einer neuen benutzerdefinierten Rolle die Fehlermeldung „Role definition limit exceeded. No more role definitions can be created (code: RoleDefinitionLimitExceeded)“ (Limit für Rollendefinition überschritten. Es können keine weiteren Rollendefinitionen erstellt werden (Code: RoleDefinitionLimitExceeded)) angezeigt, löschen Sie alle nicht verwendeten benutzerdefinierten Rollen. Azure unterstützt bis zu **2.000** benutzerdefinierte Rollen in einem Mandanten.
+- Wenn beim Aktualisieren einer benutzerdefinierten Rolle ein Fehler auftritt, ähnlich „The client has permission to perform action 'Microsoft.Authorization/roleDefinitions/write' on scope '/subscriptions/{subscriptionid}', however the linked subscription was not found“ (Der Client ist berechtigt die Aktion 'Microsoft.Authorization/roleDefinitions/write' im Bereich '/subscriptions/{subscriptionid}' auszuführen, das verknüpfte Abonnement wurde jedoch nicht gefunden), überprüfen Sie, ob mindestens ein [zuweisbarer Bereich](role-definitions.md#assignablescopes) im Mandanten gelöscht wurde. Wurde der Bereich gelöscht, erstellen Sie ein Supportticket, da hierfür derzeit keine Self-Service-Lösung zur Verfügung steht.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Wiederherstellen von RBAC beim übergreifenden Verschieben von Abonnements auf Mandanten
 
-- Schritte zum Übertragen eines Abonnements auf einen anderen Mandanten finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
-- Wenn Sie ein Abonnement auf einen anderen Mandanten übertragen, werden alle Rollenzuweisungen dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert. Sie müssen Ihre Rollenzuweisungen auf dem Zielmandanten neu erstellen.
-- Globale Administratoren ohne Zugriff auf ein Abonnement können mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um wieder Zugriff auf das Abonnement zu erlangen.
+- Schritte zum Übertragen eines Abonnements auf einen anderen Azure AD-Mandanten finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
+- Wenn Sie ein Abonnement auf einen anderen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen dauerhaft aus dem Azure AD-Quellmandanten gelöscht und nicht zum Azure AD-Zielmandanten migriert. Sie müssen Ihre Rollenzuweisungen auf dem Zielmandanten neu erstellen.
+- Globale Azure AD-Administratoren ohne Zugriff auf ein Abonnement können, nachdem dieses zwischen Mandanten verschoben wurde, mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um Zugriff auf das Abonnement zu erhalten.
+
+## <a name="issues-with-service-admins-or-co-admins"></a>Probleme mit Dienstadministratoren oder Co-Administratoren
+
+- Wenn Sie Probleme mit Dienstadministrator oder Co-Admins haben, finden Sie weitere Informationen unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md) und [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](rbac-and-directory-admin-roles.md).
+
+## <a name="access-denied-or-permission-errors"></a>Zugriff verweigert oder Berechtigungsfehler
+
+- Wenn beim Erstellen einer Ressource der Berechtigungsfehler „The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)“ (Der Client mit der Objekt-ID hat keine Berechtigung zum Ausführen der Aktion über Bereich (Code: AuthorizationFailed)) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die im ausgewählten Bereich über Schreibberechtigungen für die Ressource verfügt. Zum Verwalten virtueller Computer in einer Ressourcengruppe sollte Ihnen zum Beispiel die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) für die Ressourcengruppe (oder den übergeordneten Bereich) zugewiesen sein. Eine Liste mit den Berechtigungen für die integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
+- Wenn beim Erstellen oder Aktualisieren eines Supporttickets der Berechtigungsfehler „You don't have permission to create a support request“ (Sie sind zum Erstellen einer Supportanfrage nicht berechtigt) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die über die Berechtigung `Microsoft.Support/supportTickets/write` verfügt, wie z.B. [Mitwirkender für Supportanfragen](built-in-roles.md#support-request-contributor).
 
 ## <a name="rbac-changes-are-not-being-detected"></a>Keine Erkennung von RBAC-Änderungen
 

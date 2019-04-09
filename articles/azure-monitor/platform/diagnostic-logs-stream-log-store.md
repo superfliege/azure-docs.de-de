@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309314"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351548"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Streamen von Azure-Diagnoseprotokollen an Log Analytics
 
@@ -100,6 +100,39 @@ Das Argument `--resource-group` ist nur erforderlich, wenn `--workspace` keine O
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Wie frage ich die Daten in Log Analytics ab?
 
 Auf dem Blatt „Protokollsuche“ im Portal oder auf der Advanced Analytics-Oberfläche als Teil von Log Analytics können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Lösungen für Azure-Ressourcen](../../azure-monitor/insights/solutions.md), die Sie installieren können, um sofort Informationen zu den an Log Analytics gesendeten Protokolldaten zu erhalten.
+
+### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose
+Da viele SEND-Datentypen von Ressourcen an dieselbe Tabelle (_Azure-Diagnose_) gesendet werden, stellt das Schema dieser Tabelle die Obermenge der Schemata aller erfassten einzelnen Datentypen dar. Wenn Sie beispielsweise Diagnoseeinstellungen für die Sammlung der folgenden Datentypen erstellt haben, werden sie alle an denselben Arbeitsbereich gesendet:
+- Überwachungsprotokolle der Ressource 1 (mit einem Schema, das aus den Spalten A, B und C besteht)  
+- Fehlerprotokolle der Ressource 2 (mit einem Schema, das aus den Spalten D, E und F besteht)  
+- Datenflussprotokolle der Ressourcen 3 (mit einem Schema, das aus den Spalten G, H und I besteht)  
+ 
+Die Azure-Diagnosetabelle sieht mit einigen Beispieldaten wie folgt aus:  
+ 
+| ResourceProvider | Category (Kategorie) | Eine Datei | b | C | D | E | F | G | H | I |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+| ... |
+ 
+Eine einzelne Azure-Protokolltabelle ist explizit auf maximal 500 Spalten begrenzt. Sobald dieser Wert erreicht ist, werden alle Zeilen, die Daten in einer Spalte außerhalb der ersten 500 Spalten enthalten, zum Zeitpunkt der Erfassung gelöscht. Die Azure-Diagnosetabelle ist besonders anfällig für diese Begrenzung. Üblicherweise wird sie relevant, wenn eine Vielzahl von Datenquellen oder mehrere sehr ausführliche Datenquellen an denselben Arbeitsbereich gesendet werden. 
+ 
+#### <a name="azure-data-factory"></a>Azure Data Factory  
+Azure Data Factory ist aufgrund eines sehr detaillierten Protokollsatzes eine Ressource, von der bekannt ist, dass sie besonders von dieser Begrenzung betroffen ist. Dies gilt insbesondere für Folgendes:  
+- *Für eine Aktivität in Ihrer Pipeline definierte Benutzerparameter*: Für jeden eindeutig benannten Benutzerparameter wird für jede Aktivität eine neue Spalte erstellt. 
+- *Aktivitätseingaben und -ausgaben*: Diese variieren von Aktivität zu Aktivität und generieren aufgrund ihrer ausführlichen Natur eine große Anzahl von Spalten. 
+ 
+Wie bei den weiter unten aufgeführten allgemeineren Vorschlägen zur Problemumgehung wird empfohlen, ADF-Protokolle in einem eigenen Arbeitsbereich zu isolieren, um die Wahrscheinlichkeit zu minimieren, dass diese Protokolle Auswirkungen auf andere Protokolltypen haben, die in Ihren Arbeitsbereichen erfasst werden. Mit der Bereitstellung entsprechender Protokolle für Azure Data Factory wird Mitte April 2019 gerechnet.
+ 
+#### <a name="workarounds"></a>Problemumgehungen
+Kurzfristig, d. h. bis zur Neudefinition der Obergrenze von 500 Spalten, wird empfohlen, ausführliche Datentypen an separate Arbeitsbereiche zu senden, um die Wahrscheinlichkeit zu verringern, dass die Obergrenze erreicht wird.
+ 
+Längerfristig wird Azure-Diagnose von einem einheitlichen Schema mit geringer Dichte zu individuellen Tabellen pro Datentyp wechseln. In Verbindung mit der Unterstützung dynamischer Typen wird dies die Verwendbarkeit der in Azure-Protokollen mithilfe des Azure-Diagnosemechanismus erfassten Daten erheblich verbessern. Sie können dies bereits für ausgewählte Azure-Ressourcentypen wie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)- oder [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor)-Protokolle sehen. Suchen Sie im Blog zu [Azure-Updates](https://azure.microsoft.com/updates/) nach Nachrichten über neue Ressourcentypen in Azure, die diese kuratierten Protokolle unterstützen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 015728a43e091e36dcf02b5cc17f0135a64428ca
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436261"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361947"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von PowerShell
 
@@ -23,6 +23,8 @@ ms.locfileid: "53436261"
 Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Ausführen eines MapReduce-Auftrags in einem Hadoop-Cluster in HDInsight.
 
 ## <a id="prereq"></a>Voraussetzungen
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Einen Azure HDInsight-Cluster (Hadoop in HDInsight)**
 
@@ -37,15 +39,15 @@ Azure PowerShell stellt *Cmdlets* bereit, mit denen Sie MapReduce-Aufträge in H
 
 Die folgenden Cmdlets werden zum Ausführen der MapReduce-Aufträge in einem HDInsight-Remotecluster verwendet.
 
-* **Connect-AzureRmAccount**: Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.
+* **Connect-AzAccount**: Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.
 
-* **New-AzureRmHDInsightMapReduceJobDefinition**: Erstellt aus den angegebenen MapReduce-Informationen eine neue *Auftragsdefinition*.
+* **New-AzHDInsightMapReduceJobDefinition**: Erstellt aus den angegebenen MapReduce-Informationen eine neue *Auftragsdefinition*.
 
-* **Start-AzureRmHDInsightJob**: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
+* **Start-AzHDInsightJob**: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
 
-* **Wait-AzureRmHDInsightJob**: Verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
+* **Wait-AzHDInsightJob**: Verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
 
-* **Get-AzureRmHDInsightJobOutput**: Wird verwendet, um die Ausgabe des Auftrags abzurufen.
+* **Get-AzHDInsightJobOutput**: Wird verwendet, um die Ausgabe des Auftrags abzurufen.
 
 Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines Auftrags in einem HDInsight-Cluster verwendet werden.
 
@@ -92,7 +94,7 @@ Wenn keine Informationen zurückgegeben werden, wenn der Auftrag abgeschlossen i
 ```powershell
 # Print the output of the WordCount job.
 Write-Host "Display the standard output ..." -ForegroundColor Green
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
         -HttpCredential $creds `

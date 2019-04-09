@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: efb82c57a5620ef3eace8b39f6f27f2286202f84
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726922"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521838"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapping Data Flow-Datasets
 
@@ -43,9 +43,33 @@ Beim Erstellen eines neuen Datasets befindet sich oben rechts ein Kontrollkästc
 
 Wenn Sie das Schema von Data Flow-Datasets importieren, wird die Schaltfläche „Schema importieren“ angezeigt. Wenn Sie auf diese Schaltfläche klicken, werden zwei Optionen angezeigt: „Aus der Quelle importieren“ oder „Aus einer lokalen Datei importieren“. In den meisten Fällen importieren Sie das Schema direkt aus der Quelle. Wenn Sie jedoch eine vorhandene Schemadatei (Parquet-Datei oder CSV mit Headern) haben, können Sie auf diese lokale Datei verweisen und Data Factory definiert das Schema basierend auf dieser Schemadatei.
 
-## <a name="delimited-text-dataset"></a>Dataset mit Text mit Trennzeichen
+## <a name="create-new-table"></a>Erstellen einer neuen Tabelle
 
-Im Dataset mit Text mit Trennzeichen legen Sie das Trennzeichen so fest, dass entweder einzelne („\t“ für TSV, „,“ für CSV, „|“...) oder mehrere Zeichen für das Trennzeichen verwendet werden. Legen Sie die Umschaltfläche für die Kopfzeile fest, und wechseln Sie dann zur Quelltransformation, um Datentypen automatisch erkennen zu lassen.
+Im Datenfluss können Sie ADF auffordern, eine neue Tabellendefinition in Ihrer Zieldatenbank zu erstellen, indem Sie in der Senkentransformation ein Dataset mit einem neuen Tabellennamen festlegen. Klicken Sie im SQL-Dataset unter dem Tabellennamen auf „Bearbeiten“, und geben Sie einen neuen Tabellennamen ein. Aktivieren Sie dann in der Senkentransformation „Allow Schema Drift“ (Schemaabweichung zulassen). Legen die Einstellung „Schema importieren“ auf „Ohne“ fest.
+
+![Schema für Quelltransformation](media/data-flow/dataset2.png "SQL-Schema")
+
+## <a name="choose-your-type-of-data-first"></a>Wählen Sie zuerst den Typ der Daten aus.
+
+### <a name="delimited-text"></a>Text mit Trennzeichen
+
+Im Dataset mit Text mit Trennzeichen legen Sie das Trennzeichen so fest, dass entweder einzelne („\t“ für TSV, „,“ für CSV, „|“...) oder mehrere Zeichen für das Trennzeichen verwendet werden. Legen Sie die Umschaltfläche für die Kopfzeile fest, und wechseln Sie dann zur Quelltransformation, um Datentypen automatisch erkennen zu lassen. Wenn Sie ein Dataset mit Text mit Trennzeichen verwenden, um Daten in einer Senke abzulegen, wählen Sie lediglich einen Zielordner aus. In den Einstellungen der Senke können Sie den Namen der Ausgabedateien definieren.
+
+### <a name="parquet"></a>Parquet
+
+Verwenden Sie in ADF-Datenflüssen Parquet als bevorzugten Typ von Stagingdataset. Parquet speichert zusammen mit den Daten ein umfangreiches Metadatenschema.
+
+### <a name="database-types"></a>Datenbanktypen
+
+Sie können Azure SQL-Datenbank oder Azure SQL DW auswählen.
+
+Verwenden Sie für die anderen Typen von ADF-Datasets die Kopieraktivität für das Staging Ihrer Daten. Mithilfe einer ADF-Vorlage im Vorlagenkatalog können Sie dieses Muster erstellen.
+
+![Staging für Kopiervorgang](media/data-flow/templatedf.png "Staging für Kopiervorgang")
+
+## <a name="choose-your-connection-type"></a>Wählen des Verbindungstyps
+
+Wenn Sie Datasets des Typs „Parquet“ oder „Text mit Trennzeichen“ verwenden, können Sie den Speicherort für Ihre Daten auswählen: ADLS oder Blob.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

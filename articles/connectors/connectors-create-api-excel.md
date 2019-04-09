@@ -1,25 +1,25 @@
 ---
-title: Herstellen einer Verbindung mit Excel Online – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Excel Online – Azure Logic Apps
 description: Verwalten von Daten mit Excel Online-REST-APIs und Azure Logic Apps
-ms.service: logic-apps
 services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230950"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314518"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Verwalten von Excel Online-Daten mit Azure Logic Apps
 
-Mit Azure Logic Apps und dem Excel Online-Connector können Sie automatisierte Aufgaben und Workflows basierend auf Ihren Daten in Excel Online for Business oder OneDrive erstellen. Dieser Connector bietet Aktionen, die Sie beim Verwalten Ihrer Daten und Tabellen unterstützen. Beispiele: 
+Mit Azure Logic Apps und dem Excel Online-Connector können Sie automatisierte Aufgaben und Workflows basierend auf Ihren Daten in Excel Online for Business oder OneDrive erstellen. Dieser Connector bietet Aktionen, die Sie beim Verwalten Ihrer Daten und Tabellen unterstützen. Beispiele:
 
 * Sie können neue Arbeitsblätter und Tabellen erstellen.
 * Sie können Arbeitsblätter, Tabellen und Zeilen abrufen und verwalten.
@@ -34,9 +34,9 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
-* Ein [Office 365-Konto](https://www.office.com/) für Ihr Geschäftskonto oder Ihr persönliches Microsoft-Konto. 
+* Ein [Office 365-Konto](https://www.office.com/) für Ihr Geschäftskonto oder Ihr persönliches Microsoft-Konto.
 
   Ihre Excel-Daten können sich in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner befinden, beispielsweise in OneDrive. 
   Sie können diese CSV-Datei auch mit dem [Flatfileconnector](../logic-apps/logic-apps-enterprise-integration-flatfile.md)verwenden.
@@ -53,7 +53,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 1. Geben Sie im Suchfeld den Begriff „excel“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-1. Wenn Sie aufgefordert werden, sich bei Ihrem Office 365-Konto anzumelden, wählen Sie **Anmelden** aus. 
+1. Wenn Sie aufgefordert werden, sich bei Ihrem Office 365-Konto anzumelden, wählen Sie **Anmelden** aus.
 
    Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Excel Online sowie zum Zugriff auf Ihre Daten.
 
@@ -61,10 +61,10 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details, wie z.B. Aktionen und Grenzwerte, wie sie durch die Swagger-Dateien des Connectors beschrieben werden, finden Sie auf den folgenden Referenzseiten des Connectors:
+Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf diesen Referenzseite des Connectors:
 
-* [Excel Online for Business](/connectors/excelonlinebusiness/) 
-* [Excel Online for OneDrive](/connectors/excelonline/) 
+* [Excel Online for Business](/connectors/excelonlinebusiness/)
+* [Excel Online for OneDrive](/connectors/excelonline/)
 
 ## <a name="get-support"></a>Support
 

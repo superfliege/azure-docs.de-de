@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871535"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486051"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -121,14 +121,14 @@ Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. P
 
 Um sich für die Vorschau zu registrieren, führen Sie die folgenden Befehle in PowerShell aus. Stellen Sie sicher, dass Sie den Platzhalter in Klammern durch Ihre eigene Abonnement-ID ersetzen:
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount -SubscriptionId <subscription-id>
 Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 Die Genehmigung für die Vorschau dauert möglicherweise 1-2 Tage. Um zu überprüfen, ob Ihre Registrierung genehmigt wurde, führen Sie den folgenden Befehl aus:
 
-```PowerShell
+```powershell
 Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
@@ -164,6 +164,7 @@ Die folgenden Funktionen oder Dienste werden für das Kontofailover in der Vorsc
 - Für Speicherkonto mit einem hierarchischen Namespace Lake Storage Gen2 kann kein Failover durchgeführt werden.
 - Für ein Speicherkonto mit archivierten Blobs kann kein Failover durchgeführt werden. Bewahren Sie archivierte Blobs in einem separaten Speicherkonto auf, für das Sie kein Failover ausführen möchten.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
+- Nach dem Failover arbeiten die folgenden Funktionen nicht mehr, falls sie ursprünglich aktiviert waren: [Ereignisabonnements](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Richtlinien für den Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Protokollierung durch die Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopieren von Daten als Alternative zum Failover
 

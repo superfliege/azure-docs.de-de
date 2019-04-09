@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870889"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435600"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
 
@@ -38,6 +38,8 @@ Profile für **Azure CDN Standard von Microsoft** unterstützen die folgenden Op
 
 * [Allgemeine Webbereitstellung](#general-web-delivery). Diese Optimierung wird auch für Medienstreaming und den Download großer Datei verwendet.
 
+> [!NOTE]
+> Beschleunigung dynamischer Websites von Microsoft wird über [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) angeboten.
 
 Profile für **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** unterstützen die folgenden Optimierungen:
 
@@ -120,6 +122,9 @@ Weitere Informationen zur Optimierung für große Dateien finden Sie unter [Opti
 ### <a name="dynamic-site-acceleration"></a>Beschleunigung dynamischer Websites
 
  Die Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) steht bei Profilen für **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** zur Verfügung. Die Verwendung dieser Optimierung ist mit zusätzlichen Kosten verbunden. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
+
+> [!NOTE]
+> Die Beschleunigung dynamischer Websites wird über [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) angeboten. Dabei handelt es sich um einen globalen [Anycast](https://en.wikipedia.org/wiki/Anycast)-Dienst, der das private globale Netzwerk von Microsoft zum Übermitteln Ihrer Workloads nutzt.
 
 DSA umfasst verschiedene Maßnahmen zur Verbesserung der Wartezeit und der Leistung dynamischer Inhalte. Hierzu zählen unter anderem Routen- und Netzwerkoptimierungen sowie TCP-Optimierungen. 
 

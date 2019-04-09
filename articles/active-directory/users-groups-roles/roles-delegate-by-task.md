@@ -87,7 +87,7 @@ Anwenden von Fehlerbehebungen zum Synchronisieren von Fehlern | Mitwirkender (si
 Konfigurieren von Benachrichtigungen | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner (Besitzer)
 Konfigurieren von Einstellungen | Besitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
 Konfigurieren von Synchronisierungsbenachrichtigungen | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner (Besitzer)
-Lesen von AD FS-Sicherheitsberichten | Sicherheit lesen | Mitwirkender, Besitzer
+Lesen von AD FS-Sicherheitsberichten | Sicherheitsleseberechtigter | Mitwirkender, Besitzer
 Lesen aller Konfigurationen | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
 Lesen von Synchronisierungsfehlern | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
 Lesen von Synchronisierungsdiensten | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
@@ -118,7 +118,7 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 Deaktivieren eines Geräts | Cloudgeräteadministrator | 
 Aktivieren eines Geräts | Cloudgeräteadministrator | 
 Lesen einer Standardkonfiguration | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Lesen von BitLocker-Schlüsseln | Sicherheit lesen | Kennwort-, Sicherheitsadministrator
+Lesen von BitLocker-Schlüsseln | Sicherheitsleseberechtigter | Kennwort-, Sicherheitsadministrator
 
 ## <a name="enterprise-applications"></a>Unternehmensanwendungen
 
@@ -131,7 +131,7 @@ Erteilen der Zustimmung für Anwendungen, die auf eigene Daten zugreifen | Stand
 Erstellen einer Unternehmensanwendung | Cloudanwendungsadministrator | Anwendungsadministrator
 Verwalten eines Anwendungsproxys | Anwendungsadministrator | 
 Verwalten von Benutzereinstellungen | Globaler Administrator | 
-Überprüfung des Lesezugriffs einer Gruppe oder einer App | Sicherheit lesen | Sicherheits-, Benutzeradministrator
+Überprüfung des Lesezugriffs einer Gruppe oder einer App | Sicherheitsleseberechtigter | Sicherheits-, Benutzeradministrator
 Lesen aller Konfigurationen | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Aktualisieren von Enterprise-Anwendungszuweisungen | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 Aktualisieren von Enterprise-Anwendungsbesitzern | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
@@ -168,9 +168,9 @@ Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Benutzerrisi
 Konfigurieren von wöchentlichen Digests | Sicherheitsadministrator| 
 Alle Risikoereignisse schließen | Sicherheitsadministrator | 
 Beheben oder Ausschließen von Sicherheitsrisiken | Sicherheitsadministrator | 
-Lesen aller Konfigurationen | Sicherheit lesen | 
-Lesen aller Risikoereignisse | Sicherheit lesen | 
-Lesen von Sicherheitsrisiken | Sicherheit lesen | 
+Lesen aller Konfigurationen | Sicherheitsleseberechtigter | 
+Lesen aller Risikoereignisse | Sicherheitsleseberechtigter | 
+Lesen von Sicherheitsrisiken | Sicherheitsleseberechtigter | 
 
 ## <a name="licenses"></a>Lizenzen
 
@@ -186,13 +186,13 @@ Testen oder Erwerben von Abonnements | Rechnungsadministrator |
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Lesen von Überwachungsprotokollen | Berichtsleser | Benutzer mit Leseberechtigung für Sicherheitsfunktionen, Sicherheitsadministrator
+Lesen von Überwachungsprotokollen | Berichtsleser | Sicherheitsleseberechtigter, Sicherheitsadministrator
 
 ## <a name="monitoring---sign-ins"></a>Überwachung – Anmeldungen
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Lesen von Anmeldeprotokollen | Berichtsleser | Benutzer mit Leseberechtigung für Sicherheitsfunktionen, Sicherheitsadministrator
+Lesen von Anmeldeprotokollen | Berichtsleser | Sicherheitsleseberechtigter, Sicherheitsadministrator
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -249,15 +249,15 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Zuweisen von Benutzern zu Rollen | Administrator für privilegierte Rollen | 
 Konfigurieren von Rolleneinstellungen | Administrator für privilegierte Rollen | 
-Anzeigen der Überwachungsaktivität | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | 
-Anzeigen von Rollenmitgliedschaften | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | 
+Anzeigen der Überwachungsaktivität | Sicherheitsleseberechtigter | 
+Anzeigen von Rollenmitgliedschaften | Sicherheitsleseberechtigter | 
 
 ## <a name="roles-and-administrators"></a>Rollen und Administratoren
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Verwalten von Rollenzuweisungen | Administrator für privilegierte Rollen | 
-Überprüfung des Lesezugriffs einer Azure AD-Rolle  | Sicherheit lesen | Sicherheitsadministrator, Administrator für privilegierte Rollen
+Überprüfung des Lesezugriffs einer Azure AD-Rolle  | Sicherheitsleseberechtigter | Sicherheitsadministrator, Administrator für privilegierte Rollen
 Lesen aller Konfigurationen | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 
 ## <a name="security---authentication-methods"></a>Sicherheit – Authentifizierungsmethoden
@@ -284,31 +284,31 @@ Deaktivieren einer klassischen Richtlinie | Administrator für bedingten Zugriff
 Verwalten von benutzerdefinierten Steuerelementen | Administrator für bedingten Zugriff | Sicherheitsadministrator
 Verwalten von benannten Standorten | Administrator für bedingten Zugriff | Sicherheitsadministrator
 Verwalten von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Lesen aller Konfigurationen | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | Sicherheitsadministrator
-Lesen von benannten Standorten | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | Administrator für bedingten Zugriff, Sicherheitsadministrator
+Lesen aller Konfigurationen | Sicherheitsleseberechtigter | Sicherheitsadministrator
+Lesen von benannten Standorten | Sicherheitsleseberechtigter | Administrator für bedingten Zugriff, Sicherheitsadministrator
 
 ## <a name="security---identity-security-score"></a>Sicherheit – Identity Security Score
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen | 
 ---- | --------------------- | ----------------
-Lesen aller Konfigurationen | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | Sicherheitsadministrator
-Lesen des Security Score | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | Sicherheitsadministrator
+Lesen aller Konfigurationen | Sicherheitsleseberechtigter | Sicherheitsadministrator
+Lesen des Security Score | Sicherheitsleseberechtigter | Sicherheitsadministrator
 Aktualisieren des Ereignisstatus | Sicherheitsadministrator | 
 
 ## <a name="security---risky-sign-ins"></a>Sicherheit – Riskante Anmeldungen
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Lesen aller Konfigurationen | Sicherheit lesen | 
-Lesen riskanter Anmeldevorgänge | Sicherheit lesen | 
+Lesen aller Konfigurationen | Sicherheitsleseberechtigter | 
+Lesen riskanter Anmeldevorgänge | Sicherheitsleseberechtigter | 
 
 ## <a name="security---users-flagged-for-risk"></a>Sicherheit – Benutzer mit Risikokennzeichnung
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Verwerfen aller Ereignisse | Sicherheitsadministrator | 
-Lesen aller Konfigurationen | Sicherheit lesen | 
-Lesen von Benutzern mit Risikokennzeichnung | Sicherheit lesen | 
+Lesen aller Konfigurationen | Sicherheitsleseberechtigter | 
+Lesen von Benutzern mit Risikokennzeichnung | Sicherheitsleseberechtigter | 
 
 ## <a name="users"></a>Benutzer
 

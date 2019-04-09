@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.author: tamram
-ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444054"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370388"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Verwalten von Speicherkontoeinstellungen im Azure-Portal
 
@@ -20,9 +20,9 @@ Eine Reihe verschiedener Einstellungen für Ihr Speicherkonto ist im [Azure-Port
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Azure Storage unterstützt Authentifizierung mit Azure Active Directory für Blob Storage und Queue Storage (Preview) mittels rollenbasierter Zugriffssteuerung (RBAC). Weitere Informationen zur Authentifizierung mit Azure AD finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory (Preview)](storage-auth-aad.md).
+Azure Storage unterstützt Authentifizierung mit Azure Active Directory für Blob Storage und Queue Storage mittels rollenbasierter Zugriffssteuerung (RBAC). Weitere Informationen zur Authentifizierung mit Azure AD finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
-Die Einstellungen für die **Zugriffssteuerung** im Azure-Portal bieten eine einfache Möglichkeit zum Zuweisen von RBAC-Rollen zu Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten. Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Verwalten der Zugriffsrechte für Blob- und Warteschlangendaten mit RBAC (Preview)](storage-auth-aad-rbac.md).
+Die Einstellungen für die **Zugriffssteuerung** im Azure-Portal bieten eine einfache Möglichkeit zum Zuweisen von RBAC-Rollen zu Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten. Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Verwalten der Zugriffsrechte für Blob- und Warteschlangendaten mit RBAC](storage-auth-aad-rbac.md).
 
 > [!NOTE]
 > Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. 

@@ -1,39 +1,38 @@
 ---
-title: Herstellen einer Verbindung mit der Bing-Suche – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit der Bing-Suche – Azure Logic Apps
 description: Suchen von Nachrichten mit den REST-APIs für die Bing-Suche und Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 9997f27f360f84ff3cd185d7c12c45519513d82b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233088"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313548"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Suchen von Nachrichten mit der Bing-Suche und Azure Logic Apps 
+# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Suchen von Nachrichten mit der Bing-Suche und Azure Logic Apps
 
 In diesem Artikel wird gezeigt, wie Sie mit dem Bing-Suche-Connector innerhalb einer Logik-App Nachrichten, Videos und andere Elemente über die Bing-Suche finden können. Auf diese Weise können Sie Logik-Apps erstellen, die Aufgaben und Workflows zur Verarbeitung von Suchergebnissen automatisieren und diese Elemente für andere Aktionen zur Verfügung stellen. 
 
 Sie können z.B. Nachrichtenelemente basierend auf Suchkriterien finden und diese Elemente in Twitter in Ihrem Twitter-Feed als Tweets bereitstellen.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">Referenz zum Bing-Suche-Connector</a>.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [Cognitive Services-Konto](../cognitive-services/cognitive-services-apis-create-account.md)
 
-* Ein [Bing-Suche-API-Schlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), der den Zugriff von Ihrer Logik-App auf die Bing-Suche-APIs ermöglicht 
+* Ein [Bing-Suche-API-Schlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), der den Zugriff von Ihrer Logik-App auf die Bing-Suche-APIs ermöglicht
 
-* Die Logik-App, in der Sie auf Ihren Event Hub zugreifen möchten. Um Ihre Logik-App mit einem Bing-Suche-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Die Logik-App, in der Sie auf Ihren Event Hub zugreifen möchten. Um Ihre Logik-App mit einem Bing-Suche-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-trigger"></a>
 
@@ -43,24 +42,25 @@ In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-
 
 1. Erstellen Sie im Azure-Portal oder in Visual Studio eine leere Logik-App, die den Logik-App-Designer öffnet. In diesem Beispiel wird das Azure-Portal verwendet.
 
-2. Geben Sie im Suchfeld den Begriff „Bing-Suche“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
+2. Geben Sie im Suchfeld den Begriff „Bing-Suche“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
-   Dieses Beispiel verwendet diesen Trigger: **Bing-Suche – für neuen Nachrichtenartikel**
+   In diesem Beispiel wird folgender Trigger verwendet: **Bing-Suche – Bei neuem Nachrichtenartikel**
 
    ![Finden des Bing-Suche-Triggers](./media/connectors-create-api-bing-search/add-trigger.png)
 
-3. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Bing-Suche-Verbindung erstellen](#create-connection). Falls die Verbindung bereits besteht, können Sie die erforderlichen Informationen für den Trigger angeben.
+3. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Bing-Suche-Verbindung erstellen](#create-connection).
+Falls die Verbindung bereits besteht, können Sie die erforderlichen Informationen für den Trigger angeben.
 
    Geben Sie für dieses Beispiel Kriterien für die Rückgabe übereinstimmender Nachrichtenartikel aus der Bing-Suche an.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
-   |----------|----------|-------|-------------| 
-   | Suchabfrage | JA | <*Suchbegriffe*> | Geben Sie Suchbegriffe ein, die Sie verwenden möchten. |
-   | Markt | JA | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. | 
-   | Sichere Suche | JA | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. | 
-   | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. | 
-   | Offset | Nein  | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden | 
-   ||||| 
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | Suchabfrage | Ja | <*Suchbegriffe*> | Geben Sie Suchbegriffe ein, die Sie verwenden möchten. |
+   | Markt | Ja | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
+   | Sichere Suche | Ja | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
+   | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Offset | Nein  | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
+   |||||
 
    Beispiel: 
 
@@ -68,7 +68,7 @@ In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-
 
 4. Wählen Sie das Intervall und die Häufigkeit aus, um anzugeben, wie oft der Trigger nach Ergebnissen suchen soll.
 
-5. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. 
+5. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
 6. Fahren Sie nun damit fort, der Logik-App weitere Aktionen für die Aufgaben hinzuzufügen, die anhand der Triggerergebnisse durchgeführt werden sollen.
 
@@ -76,13 +76,15 @@ In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-
 
 ## <a name="add-a-bing-search-action"></a>Hinzufügen einer Bing-Suche-Aktion
 
-In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) um einen Schritt in Ihrem Workflow, der einem Trigger oder einer anderen Aktion folgt. In diesem Beispiel startet die Logik-App mit einem Bing-Suche-Trigger, der Nachrichtenartikel zurückgibt, die den angegebenen Kriterien entsprechen. 
+In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) um einen Schritt in Ihrem Workflow, der einem Trigger oder einer anderen Aktion folgt. In diesem Beispiel startet die Logik-App mit einem Bing-Suche-Trigger, der Nachrichtenartikel zurückgibt, die den angegebenen Kriterien entsprechen.
 
 1. Öffnen Sie im Azure-Portal oder in Visual Studio Ihre Logik-App im Logik-App-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
 
 2. Wählen Sie unter dem Trigger oder der Aktion **Neuer Schritt** > **Aktion hinzufügen** aus.
 
-   Dieses Beispiel verwendet diesen Trigger: **Bing-Suche – für neuen Nachrichtenartikel**
+   In diesem Beispiel wird folgender Trigger verwendet:
+
+   **Bing-Suche – Bei neuem Nachrichtenartikel**
 
    ![Hinzufügen einer Aktion](./media/connectors-create-api-bing-search/add-action.png)
 
@@ -92,25 +94,27 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 3. Geben Sie im Suchfeld den Begriff „Bing-Suche“ als Filter ein.
 Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-   Dieses Beispiel verwendet diese Aktion: **Bing-Suche – Nachrichten nach Abfrage auflisten**
+   In diesem Beispiel wird diese Aktion verwendet:
+
+   **Bing-Suche – Nachrichten nach Abfrage auflisten**
 
    ![Finden einer Bing-Suche-Aktion](./media/connectors-create-api-bing-search/bing-search-select-action.png)
 
-4. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Bing-Suche-Verbindung erstellen](#create-connection). Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben. 
+4. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Bing-Suche-Verbindung erstellen](#create-connection). Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben.
 
    In diesem Beispiel geben Sie die Kriterien für die Rückgabe einer Teilmenge der Triggerergebnisse an.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
-   |----------|----------|-------|-------------| 
-   | Suchabfrage | JA | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
-   | Markt | JA | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. | 
-   | Sichere Suche | JA | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. | 
-   | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. | 
-   | Offset | Nein  | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden | 
-   ||||| 
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | Suchabfrage | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
+   | Markt | Ja | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
+   | Sichere Suche | Ja | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
+   | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Offset | Nein  | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
+   |||||
 
-   Nehmen Sie beispielsweise an, dass Sie Ergebnisse benötigen, deren Kategoriename die Zeichenfolge „Tech“ enthält. 
-   
+   Nehmen Sie beispielsweise an, dass Sie Ergebnisse benötigen, deren Kategoriename die Zeichenfolge „Tech“ enthält.
+
    1. Klicken Sie in das Feld **Suchabfrage**, damit die dynamische Inhaltsliste angezeigt wird. 
    Wählen Sie aus dieser Liste die Option **Ausdruck**, um den Ausdrucks-Generator anzuzeigen. 
 
@@ -126,7 +130,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
    Fügen Sie nach dem ersten Parameter ein Komma hinzu, und fügen Sie nach dem Komma dieses Wort hinzu: `'tech'` 
 
       ![Auswählen eines Felds](./media/connectors-create-api-bing-search/expression-select-field.png)
-   
+
    4. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
       Der Ausdruck wird jetzt im Feld **Suchabfrage** im folgenden Format angezeigt:
@@ -143,15 +147,15 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 ## <a name="connect-to-bing-search"></a>Herstellen einer Verbindung mit der Bing-Suche
 
-[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)] 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
 1. Wenn Sie zur Eingabe von Verbindungsinformationen aufgefordert werden, geben Sie diese Details an:
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
-   |----------|----------|-------|-------------| 
-   | Verbindungsname | JA | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
-   | API-Version | JA | <*API-Version*> | Standardmäßig wird die Version der Bing-Suche-API auf die aktuelle Version festgelegt. Sie können nach Bedarf eine frühere Version auswählen. | 
-   | API-Schlüssel | JA | <*API-Schlüssel*> | Der Schlüssel der Bing-Suche-API, den Sie zuvor erhalten haben. Wenn Sie keinen Schlüssel besitzen, können Sie Ihren [API-Schlüssel jetzt abrufen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | Verbindungsname | Ja | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
+   | API-Version | Ja | <*API-Version*> | Standardmäßig wird die Version der Bing-Suche-API auf die aktuelle Version festgelegt. Sie können nach Bedarf eine frühere Version auswählen. |
+   | API-Schlüssel | Ja | <*API-Schlüssel*> | Der Schlüssel der Bing-Suche-API, den Sie zuvor erhalten haben. Wenn Sie keinen Schlüssel besitzen, können Sie Ihren [API-Schlüssel jetzt abrufen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Beispiel: 
@@ -162,7 +166,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/bingsearch/). 
+Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/bingsearch/).
 
 ## <a name="get-support"></a>Support
 

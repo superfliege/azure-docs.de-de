@@ -1,5 +1,5 @@
 ---
-title: Dynamisch gesperrte Kennwörter in Azure AD
+title: Dynamisch gesperrte Kennwörter – Azure Active Directory
 description: Sperren Sie mit dynamisch gesperrten Kennwörtern in Azure AD unsichere Kennwörter aus Ihrer Umgebung aus.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 795abcadb1cee7599665f7bc3b8e0d3e08a3da05
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287025"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369070"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Beseitigen falscher Kennwörter in Ihrer Organisation
 
@@ -32,7 +32,7 @@ Manche Organisationen möchten möglicherweise in puncto Sicherheit noch einen S
 
 Die benutzerdefinierte Liste gesperrter Kennwörter sowie die Möglichkeit, eine lokale Active Directory-Integration zu aktivieren, wird mit dem Azure-Portal verwaltet.
 
-![Ändern der benutzerdefinierten Liste gesperrter Kennwörter unter Authentifizierungsmethoden im Azure-Portal](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![Ändern der benutzerdefinierten Liste gesperrter Kennwörter unter „Authentifizierungsmethoden“](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="on-premises-hybrid-scenarios"></a>Lokale Hybridszenarien
 

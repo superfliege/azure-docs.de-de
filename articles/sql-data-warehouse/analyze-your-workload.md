@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b5ca738ef71e25dfe5e71a1983d701bb8868fe5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 434cbb18a109308844dbc7ff219d40948678e86e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896805"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310726"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analysieren Ihrer Workload in Azure SQL Data Warehouse
 
@@ -67,7 +67,7 @@ SQL Data Warehouse verfügt über die folgenden Wartetypen:
 * **LocalQueriesConcurrencyResourceType:** Bezieht sich auf Abfragen, die sich außerhalb des Parallelitätsslot-Frameworks befinden. DMV-Abfragen und Systemfunktionen wie `SELECT @@VERSION` sind Beispiele für lokale Abfragen.
 * **UserConcurrencyResourceType:** Bezieht sich auf Abfragen, die sich innerhalb des Parallelitätsslot-Frameworks befinden. Abfragen für Endbenutzertabellen sind ein Beispiel für die Verwendung dieses Ressourcentyps.
 * **DmsConcurrencyResourceType:** Bezieht sich auf Wartezeiten, die sich aufgrund von Datenverschiebungen ergeben.
-* **BackupConcurrencyResourceType:** Diese Wartezeit gibt an, dass eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert wurden, werden die restlichen Sicherungen in die Warteschlange eingereiht.
+* **BackupConcurrencyResourceType:** Diese Wartezeit gibt an, dass eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert wurden, werden die restlichen Sicherungen in die Warteschlange eingereiht. Im Allgemeinen sollten zwischen aufeinanderfolgenden Momentaufnahmen mindestens 10 Minuten verstreichen. 
 
 Mit der DMV `sys.dm_pdw_waits` kann angezeigt werden, auf welche Ressourcen eine Abfrage wartet.
 

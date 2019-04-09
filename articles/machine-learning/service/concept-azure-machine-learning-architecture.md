@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1640b1cdb9410f33f6556667f36aafcfe575a082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080321"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361097"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
@@ -70,7 +70,7 @@ Das folgende Diagramm enthält eine Taxonomie des Arbeitsbereichs:
 
 Ein Experiment ist eine Gruppierung vieler Ausführungen aus einem bestimmten Skript. Es gehört immer zu einem Arbeitsbereich. Beim Übermitteln einer Ausführung geben Sie einen Experimentnamen an. Die Informationen für die Ausführung werden unter diesem Experiment gespeichert. Wenn Sie eine Ausführung übermitteln und einen nicht vorhandenen Experimentnamen angeben, wird automatisch ein neues Experiment mit diesem neu angegebenen Namen erstellt.
 
-Ein Beispiel zum Verwenden eines Experiments finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-get-started.md).
+Ein Beispiel zum Verwenden eines Experiments finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-run-cloud-notebook.md).
 
 ## <a name="model"></a>Modell
 
@@ -80,7 +80,7 @@ Ein Modell wird erzeugt, indem in Azure Machine Learning eine Ausführung erfolg
 
 Azure Machine Learning Service ist frameworkunabhängig. Beim Erstellen eines Modells können Sie ein beliebiges gängiges Machine Learning-Framework verwenden, z.B. Scikit-learn, XGBoost, PyTorch, TensorFlow, Chainer und das Microsoft Cognitive Toolkit (ehemals CNTK).
 
-Ein Beispiel zum Trainieren eines Modells finden Sie im Dokument [Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](quickstart-get-started.md).
+Ein Beispiel zum Trainieren eines Modells finden Sie im Dokument [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
 ### <a name="model-registry"></a>Modellregistrierung
 
@@ -143,7 +143,7 @@ Informationen zum Auswählen eines Computeziels für die Bereitstellung finden S
 
 Zum Trainieren eines Modells geben Sie das Verzeichnis an, in dem das Trainingsskript und die zugehörigen Dateien enthalten sind. Außerdem geben Sie einen Experimentnamen an, der zum Speichern der während des Trainings gesammelten Informationen verwendet wird. Beim Training wird das gesamte Verzeichnis in die Trainingsumgebung (Computeziel) kopiert und das von der Laufzeitkonfiguration angegebene Skript gestartet. Darüber hinaus wird auch eine Momentaufnahme des Verzeichnisses unter dem Experiment im Arbeitsbereich gespeichert.
 
-Ein Beispiel finden Sie unter [Erstellen eines Arbeitsbereichs mit Python](quickstart-get-started.md).
+Ein Beispiel finden Sie unter [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
 ## <a name="run"></a>Ausführen
 
@@ -156,7 +156,7 @@ Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
 
 Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Modells übermitteln. Eine Ausführung kann über null oder mehr untergeordnete Elemente verfügen. Die Ausführung der obersten Ebene weist also unter Umständen zwei untergeordnete Ausführungen auf, die beide jeweils selbst eine untergeordnete Ausführung aufweisen können.
 
-Ein Beispiel zum Anzeigen von Ausführungen, die beim Trainieren eines Modells erstellt werden, finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-get-started.md).
+Ein Beispiel zum Anzeigen von Ausführungen, die beim Trainieren eines Modells erstellt werden, finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-run-cloud-notebook.md).
 
 ## <a name="snapshot"></a>Momentaufnahme
 
@@ -206,7 +206,7 @@ Ein Beispiel für die Bereitstellung eines Modells als Webdienst finden Sie unte
 
 ### <a name="iot-module"></a>IoT-Modul
 
-Ein bereitgestelltes IoT-Modul ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edgegeräten bereit.
+Ein bereitgestelltes IoT-Modul ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edge-Geräten bereit.
 
 Wenn Sie die Überwachung aktiviert haben, erfasst Azure Telemetriedaten aus dem Modell im Azure IoT Edge-Modul. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihrer Speicherkontoinstanz gespeichert.
 
@@ -227,6 +227,6 @@ Verwenden Sie beim Entwickeln Ihrer Lösung das Azure Machine Learning Python SD
 Erste Schritte mit Azure Machine Learning Service finden Sie unter:
 
 * [Was ist Azure Machine Learning Service?](overview-what-is-azure-ml.md)
-* [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-get-started.md)
+* [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md)
 * [Tutorial: Trainieren eines Modells](tutorial-train-models-with-aml.md)
-* [Erstellen von VMs anhand einer Resource Manager-Vorlage](how-to-create-workspace-template.md)
+* [Erstellen eines Arbeitsbereichs anhand einer Resource Manager-Vorlage](how-to-create-workspace-template.md)

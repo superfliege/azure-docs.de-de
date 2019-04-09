@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58138047"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317305"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Projekt Akustik
 
@@ -25,7 +25,7 @@ Bei den Plug-Ins der Projekt Akustik-Suite handelt es sich um ein Akustiksystem,
 
 ## <a name="where-can-i-download-the-plugin"></a>Wo kann ich das Plug-In herunterladen?
 
-Sie können Projekt Akustik von der [Projekt Akustik-Download Center-Seite](https://www.microsoft.com/en-us/download/details.aspx?id=57346) herunterladen.
+Sie können das Plug-In [Projekt Akustik mit Unity](https://www.microsoft.com/download/details.aspx?id=57346) oder das Plug-In [Projekt Akustik mit Unreal](https://www.microsoft.com/download/details.aspx?id=58090) herunterladen.
 
 ## <a name="does-project-acoustics-support-x-platform"></a>Unterstützt Projekt Akustik die <x>-Plattform?
 

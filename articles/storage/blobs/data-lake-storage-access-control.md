@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 906b1dde3d145268df4fb1ff5c243c7daa8396ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992443"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370107"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -279,7 +279,18 @@ Der zuständige Benutzer kann die Berechtigungen der Datei ändern und sich so s
 
 ### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Warum werden im Portal mitunter GUIDs in ACLs angezeigt?
 
-Eine GUID wird angezeigt, wenn der Eintrag einen Benutzer darstellt, der in Azure AD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in Azure AD gelöscht wurde. Darüber hinaus haben Dienstprinzipale und Sicherheitsgruppen keinen Benutzerprinzipalnamen (UPN), um sie zu identifizieren, und werden daher durch ihr OID-Attribut (eine GUID) abgebildet. 
+Eine GUID wird angezeigt, wenn der Eintrag einen Benutzer darstellt, der in Azure AD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in Azure AD gelöscht wurde. Darüber hinaus haben Dienstprinzipale und Sicherheitsgruppen keinen Benutzerprinzipalnamen (UPN), um sie zu identifizieren, und werden daher durch ihr OID-Attribut (eine GUID) abgebildet.
+
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Wie lege ich ACLs für einen Dienstprinzipal richtig fest?
+
+Beim Definieren von ACLs für Dienstprinzipale ist es wichtig, die Objekt-ID (OID) des *Dienstprinzipals* für die von Ihnen erstellte App-Registrierung zu verwenden. Sie müssen beachten, dass registrierte Apps über einen separaten Dienstprinzipal im jeweiligen Azure AD-Mandanten verfügen. Registrierte Apps haben eine OID, die im Azure-Portal angezeigt wird, doch hat der *Dienstprinzipal* eine andere (davon abweichende) OID.
+
+Mit dem Befehl `az ad sp show` können Sie die OID für den Dienstprinzipal abrufen, der einer App-Registrierung entspricht. Geben Sie die Anwendungs-ID als Parameter an. Es folgt ein Beispiel für das Abrufen der OID für den Dienstprinzipal, der einer App-Registrierung mit der App-ID 18218b12-1895-43e9-ad80-6e8fc1ea88ce entspricht. Führen Sie in der Azure CLI den folgenden Befehl aus:
+
+`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>`
+
+Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie zur Seite **Zugang verwalten** im Storage-Explorer, um die OID hinzuzufügen und entsprechende Berechtigungen für die OID zuzuweisen. Klicken Sie auf **Speichern**.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von ACLs?
 

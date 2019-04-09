@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: e08b38fcea152489455eb4b4f66e56bc609a09db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251723"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878430"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
@@ -233,7 +233,7 @@ New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Lo
 # Set your current working storage account
 Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
-# Create a Azure File Service Share
+# Create an Azure File Service Share
 $s = New-AzureStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
 New-AzureStorageDirectory -Share $s -Path <directory name>
@@ -279,7 +279,7 @@ Azure Blob ist ein zuverlässiger, wirtschaftlicher Cloudspeicher für große un
 ![Screenshot des Erstellungsvorgangs des Speicherkontos im Azure-Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Stellen Sie sicher, dass sich das vorinstallierte Befehlszeilentool AzCopy in ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` befindet. Das Verzeichnis, in dem „azcopy.exe“ enthalten ist, befindet sich bereits in Ihrer PATH-Umgebungsvariablen, damit Sie beim Ausführen des Tools nicht den ganzen Befehlspfad eingeben müssen. Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../../storage/common/storage-use-azcopy.md).
-* Starten Sie das Tool Azure Storage-Explorer. Das Tool kann von der Seite [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) heruntergeladen werden. 
+* Starten Sie das Tool Azure Storage-Explorer. Das Tool kann von der Seite [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) heruntergeladen werden. 
 
 ![Screenshot des Azure Storage-Explorers mit Zugriff auf ein Speicherkonto](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -296,7 +296,7 @@ Ersetzen Sie **C:\myfolder** mit dem Pfad, in dem Ihre Datei gespeichert wird, *
 Führen Sie den AzCopy-Befehl in PowerShell oder im Eingabeaufforderungsfenster aus. Hier sehen Sie ein Beispiel für die Nutzung des AzCopy-Befehls:
 
 ```powershell
-# Copy *.sql from local machine to a Azure Blob
+# Copy *.sql from local machine to an Azure Blob
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
 # Copy back all files from Azure Blob container to Local machine

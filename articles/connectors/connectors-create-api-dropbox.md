@@ -1,65 +1,79 @@
 ---
-title: Herstellen einer Verbindung mit Dropbox – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Dropbox – Azure Logic Apps
 description: Hochladen und Verwalten von Dateien mit Dropbox-REST-APIs und Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 07/15/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: 256a0b34d5050e17abe5bb98ca0c13ab0b61787e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094437"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314415"
 ---
-# <a name="get-started-with-the-dropbox-connector"></a>Erste Schritte mit dem Dropbox-Connector
-Stellen Sie eine Verbindung mit Dropbox her, um Dateien zu verwalten. Sie können verschiedene Aktionen ausführen und beispielsweise Dateien hochladen, aktualisieren, abrufen und in Dropbox löschen.
+# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Hochladen und Verwalten von Dateien in Dropbox mithilfe von Azure Logic Apps
 
-Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. [Erstellen Sie daher erst einmal eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md), wie hier beschrieben.
+Mit dem Dropbox-Connector und Azure Logic Apps können Sie automatisierte Workflows erstellen, die Dateien in Ihr Dropbox-Konto hochladen und sie verwalten. 
 
-## <a name="connect-to-dropbox"></a>Herstellen einer Verbindung mit Dropbox
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine Verbindung mit Dropbox herstellen möchten, müssen Sie zunächst eine entsprechende *Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen an, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Im Falle des Dropbox-Beispiels benötigen Sie also die Anmeldeinformationen für Ihr Dropbox-Konto, um die Verbindung mit Dropbox zu erstellen. 
+In diesem Artikel wird gezeigt, wie Sie aus Ihrer Logik-App eine Verbindung mit Dropbox herstellen und dann den Dropbox-Trigger **Wenn eine Datei erstellt wird** hinzufügen sowie die Dropbox-Aktion **Dateiinhalt anhand des Pfads abrufen**.
 
-### <a name="create-a-connection-to-dropbox"></a>Erstellen einer Verbindung mit Dropbox
-> [!INCLUDE [Steps to create a connection to Dropbox](../../includes/connectors-create-api-dropbox.md)]
-> 
-> 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="use-a-dropbox-trigger"></a>Verwenden eines Dropbox-Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
-In diesem Beispiel verwenden wir den Trigger **When a file is created** (Wenn eine Datei erstellt wird). Wenn dieser Trigger aktiviert wird, rufen wir die Dropbox-Aktion **Get file content using path** (Dateiinhalt anhand des Pfads abrufen) auf. 
+* Ein [Dropbox-Konto](https://www.dropbox.com/), für das Sie sich kostenlos registrieren können. Ihre Kontoanmeldeinformationen sind zum Herstellen einer Verbindung zwischen Ihrer Logik-App und Ihrem Dropbox-Konto erforderlich.
 
-1. Geben Sie im Suchfeld des Logic Apps-Designers die Zeichenfolge *dropbox* ein, und wählen Sie anschließend den Trigger **Dropbox – When a file is created** (Dropbox – wenn eine Datei erstellt wird) aus.      
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)  
-2. Wählen Sie den Ordner aus, in dem Sie die Dateierstellung nachverfolgen möchten. Wählen Sie „...“ (rot markiert) aus, und navigieren Sie zum gewünschten Ordner für die Triggereingabe.  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
+* Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Für dieses Beispiel benötigen Sie eine leere Logik-App.
 
-## <a name="use-a-dropbox-action"></a>Verwenden einer Dropbox-Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="add-trigger"></a>Hinzufügen des Triggers
 
-Führen Sie nach dem Hinzufügen des Triggers die folgenden Schritte aus, um eine Aktion hinzuzufügen, die den Inhalt der neuen Datei abruft.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn eine neue Datei erstellt wird.  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
-2. Wählen Sie **Aktion hinzufügen**aus. Daraufhin öffnet sich das Suchfeld, mit dem Sie nach der gewünschten Aktion suchen können.  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
-3. Geben Sie *dropbox* ein, um nach Dropbox-spezifischen Aktionen zu suchen.  
-4. Wählen Sie **Dropbox - Get file content using path** (Dropbox – Dateiinhalt anhand des Pfads abrufen) als Aktion aus, die ausgeführt werden soll, wenn im ausgewählten Dropbox-Ordner eine neue Datei erstellt wird. Die Aktionskontrollblock wird geöffnet. Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr Dropbox-Konto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben.  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
-5. Wählen Sie „...“ (rechts neben dem Steuerelement **Dateipfad**) aus, und navigieren Sie zum gewünschten Dateipfad. Alternativ können Sie das Token **Dateipfad** verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen.  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
-6. Speichern Sie Ihre Arbeit, und erstellen Sie in Dropbox eine neue Datei, um den Workflow zu aktivieren.  
+1. Wählen Sie unter dem Suchfeld **Alle** aus. Geben Sie im Suchfeld den Begriff „dropbox“ als Filter ein.
+Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wenn eine Datei erstellt wird**
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+   ![Auswählen des Dropbox-Triggers](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/dropbox/) an.
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Dropbox-Kontos an, und autorisieren Sie den Zugriff auf Ihre Dropbox-Daten durch Azure Logic Apps.
 
-## <a name="more-connectors"></a>Weitere Connectors
-Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
+1. Geben Sie die erforderlichen Informationen für Ihren Trigger an. 
+
+   Wählen Sie in diesem Beispiel den Ordner aus, in dem Sie die Dateierstellung nachverfolgen möchten. Um Ihre Ordner zu durchsuchen,wählen Sie neben dem Feld **Ordner** das Ordnersymbol aus.
+
+## <a name="add-action"></a>Hinzufügen einer Aktion
+
+Fügen Sie jetzt eine Aktion hinzu, die den Inhalt aus jeder neuen Datei abruft.
+
+1. Klicken Sie unter dem Trigger auf **Nächster Schritt**. 
+
+1. Wählen Sie unter dem Suchfeld **Alle** aus. Geben Sie im Suchfeld den Begriff „dropbox“ als Filter ein.
+Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Dateiinhalt anhand des Pfads abrufen**
+
+1. Wenn Sie Azure Logic Apps noch nicht für den Zugriff auf Dropbox autorisiert haben, autorisieren Sie den Zugriff jetzt.
+
+1. Um zum Dateipfad zu wechseln, den Sie verwenden möchten, wählen Sie neben dem Feld **Dateipfad** die Auslassungspunkte (**...**) aus. 
+
+   Sie können auch in das Feld **Dateipfad** klicken und aus der dynamischen Inhaltsliste **Dateipfad**auswählen, dessen Wert als Ausgabe des Triggers verfügbar ist, den Sie im vorherigen Abschnitt hinzugefügt haben.
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App.
+
+1. Um Ihre Logik-App auszulösen, erstellen Sie eine neue Datei in Dropbox.
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/dropbox/).
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

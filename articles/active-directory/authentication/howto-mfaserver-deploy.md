@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Multi-Factor Authentication-Server | Microsoft-Dokumentation
+title: Erste Schritte mit Azure Multi-Factor Authentication-Server – Azure Active Directory
 description: Erste Schritte mit lokalen Azure MFA-Servern
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cf1d5bb87eea8054d2797634756d1b6c38464d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075968"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370243"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
 <center>
 
-![Lokale MFA](./media/howto-mfaserver-deploy/server2.png)</center>
+![Erste Schritte mit einem lokalen MFA-Server](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Nachdem wir nun geklärt haben, dass wir den lokalen Multi-Factor Authentication-Server verwenden möchten, können wir mit der Einrichtung beginnen. Auf dieser Seite werden eine Neuinstallation des Servers und die Einrichtung mit einer lokalen Active Directory-Instanz behandelt. Falls Sie den MFA-Server bereits installiert haben und ein Upgrade vornehmen möchten, lesen Sie unter [Upgrade to the latest Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade.md) (Upgraden auf den neuesten Azure Multi-Factor Authentication-Server) weiter. Falls Sie nur den Webdienst installieren möchten, lesen Sie unter [Aktivieren der Mobile App-Authentifizierung mit dem Azure Multi-Factor Authentication-Server](howto-mfaserver-deploy-mobileapp.md) weiter.
 
@@ -97,11 +97,14 @@ Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication
 3. Wählen Sie **Servereinstellungen** aus.
 4. Wählen Sie **Herunterladen** aus, und befolgen Sie die Anweisungen auf der Downloadseite, um das Installationsprogramm zu speichern. 
 
-   ![Herunterladen des MFA-Servers](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![Herunterladen von MFA-Server aus dem Azure-Portal](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Lassen Sie diese Seite geöffnet. Sie wird nach dem Ausführen des Installationsprogramms erneut benötigt.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Installieren und Konfigurieren des MFA-Servers
+
+> [!WARNING]
+> Ab März 2019 sind Downloads von MFA-Server nur für kostenpflichtige Mandanten verfügbar. Kostenlose bzw. Testversionen von Mandanten können den Server nicht mehr herunterladen und auch keine Anmeldeinformationen für die Aktivierung generieren und verwenden.
 
 Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und konfigurieren. Achten Sie darauf, dass der Computer, auf dem Sie den Server installieren möchten, die im Abschnitt „Planung“ aufgeführten Anforderungen erfüllt.
 
@@ -110,7 +113,7 @@ Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und k
 3. Klicken Sie nach Abschluss der Installation auf **Fertig stellen**. Der Konfigurations-Assistent wird gestartet.
 4. Aktivieren Sie auf der Willkommensseite des Konfigurations-Assistenten das Kontrollkästchen **Verwendung des Authentifizierungskonfigurations-Assistenten überspringen**, und klicken Sie auf **Weiter**. Der Assistent wird geschlossen, und der Server startet.
 
-   ![Cloud](./media/howto-mfaserver-deploy/skip2.png)
+   ![Verwendung des Authentifizierungskonfigurations-Assistenten überspringen](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Wechseln Sie zurück zu der Seite, von der Sie den Server heruntergeladen haben, und klicken Sie auf die Schaltfläche **Anmeldeinformationen für Aktivierung generieren**. Kopieren Sie diese Informationen auf dem Azure MFA-Server in die angezeigten Felder, und klicken Sie auf **Aktivieren**.
 
@@ -130,7 +133,7 @@ Klicken Sie auf das E-Mail-Symbol auf der linken Seite, um die Einstellungen zum
 
 Auf der Registerkarte „E-Mail-Inhalt“ werden alle E-Mail-Vorlagen angezeigt, die Sie auswählen können. Je nachdem, wie Sie Ihre Benutzer für die zweistufige Überprüfung konfiguriert haben, können Sie also die am besten geeignete Vorlage auswählen.
 
-![MFA-Server – E-Mail-Vorlagen](./media/howto-mfaserver-deploy/email2.png)
+![MFA-Server: E-Mail-Vorlagen in der Konsole](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Importieren von Benutzern aus Active Directory
 
@@ -143,7 +146,7 @@ Nach Abschluss der Serverinstallation können Sie Benutzer hinzufügen. Sie kön
 3. Sie können jetzt entweder nach einzelnen Benutzern suchen oder im AD-Verzeichnis nach Organisationseinheiten suchen, die die gewünschten Benutzer enthalten. In diesem Beispiel wird die Benutzer-Organisationseinheit angegeben.
 4. Markieren Sie alle Benutzer auf der rechten Seite, und klicken Sie auf **Importieren**. Es wird ein Popupfenster angezeigt, wenn der Vorgang erfolgreich ausgeführt wurde. Schließen Sie das Fenster "Importieren".
 
-   ![MFA-Server – Benutzerimport](./media/howto-mfaserver-deploy/import2.png)
+   ![MFA-Server: Benutzerimport aus Active Directory](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Automatische Synchronisierung mit Active Directory
 
@@ -169,6 +172,9 @@ Bei lokaler Verwendung des Multi-Factor Authentication (MFA)-Servers werden die 
 * Client-IP – falls verfügbar
 
 Zusätzlich zu den obigen Feldern werden auch das Überprüfungsergebnis (Erfolg/Ablehnung) und der Grund für etwaige Ablehnungen mit den Authentifizierungsdaten gespeichert. Sie stehen in den Authentifizierungs- bzw. Verwendungsberichten zur Verfügung.
+
+> [!IMPORTANT]
+> Ab März 2019 sind die Telefonanrufoptionen für MFA Server-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Sichern und Wiederherstellen des Azure MFA-Servers
 

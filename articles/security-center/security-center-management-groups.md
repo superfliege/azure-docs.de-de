@@ -87,7 +87,7 @@ Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff au
 
 
 ### <a name="assign-rbac-roles-to-users"></a>Zuweisen von RBAC-Rollen für Benutzer
-Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministratoren jedem Benutzer, dem mandantenweite Sichtbarkeit gewährt werden soll, eine geeignete RBAC-Rolle auf der Stammebene der Verwaltungsgruppe zuweisen (auch sich selbst). Die empfohlenen Rollen, die zugewiesen werden sollten, sind **Sicherheitsadministrator** oder **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**. Im Allgemeinen ist die Rolle „Sicherheitsadministrator“ erforderlich, um Richtlinien auf der Stammebene anzuwenden, während „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ ausreicht, um Sichtbarkeit für die Mandantenebene bereitzustellen. Weitere Informationen zu den Berechtigungen, die durch diese Rollen gewährt werden, finden Sie in der [Beschreibung der integrierten Rolle „Sicherheitsadministrator“](../role-based-access-control/built-in-roles.md#security-admin) bzw. in der [Beschreibung der integrierten Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“](../role-based-access-control/built-in-roles.md#security-reader).
+Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministratoren jedem Benutzer, dem mandantenweite Sichtbarkeit gewährt werden soll, eine geeignete RBAC-Rolle auf der Stammebene der Verwaltungsgruppe zuweisen (auch sich selbst). Die empfohlenen Rollen, die zugewiesen werden sollten, sind **Sicherheitsadministrator** oder **Sicherheitsleseberechtigter**. Im Allgemeinen ist die Rolle „Sicherheitsadministrator“ erforderlich, um Richtlinien auf der Stammebene anzuwenden, während „Sicherheitsleseberechtigter“ ausreicht, um Sichtbarkeit für die Mandantenebene bereitzustellen. Weitere Informationen zu den Berechtigungen, die durch diese Rollen gewährt werden, finden Sie in der [Beschreibung der integrierten Rolle „Sicherheitsadministrator“](../role-based-access-control/built-in-roles.md#security-admin) bzw. in der [Beschreibung der integrierten Rolle „Sicherheitsleseberechtigter“](../role-based-access-control/built-in-roles.md#security-reader).
 
 
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern RBAC-Rollen über das Azure-Portal zu: 
@@ -104,7 +104,7 @@ Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministrato
 
 1. Wählen Sie die zuzuweisende Rolle und den Benutzer aus, und klicken Sie dann auf **Speichern**.  
    
-   ![Screenshot zum Hinzufügen der Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“](./media/security-center-management-groups/asc-security-reader.png)
+   ![Screenshot zum Hinzufügen der Rolle „Sicherheitsleseberechtigter“](./media/security-center-management-groups/asc-security-reader.png)
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>Weisen Sie Benutzern RBAC-Rollen mit PowerShell zu: 

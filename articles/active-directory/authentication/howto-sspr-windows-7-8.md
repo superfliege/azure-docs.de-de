@@ -1,5 +1,5 @@
 ---
-title: Self-Service-Kennwortzurücksetzung in Azure AD unter Windows 7 und 8.1
+title: Self-Service-Kennwortzurücksetzung in Azure AD unter Windows 7 und Windows 8.1 – Azure Active Directory
 description: Aktivieren der Self-Service-Kennwortzurücksetzung mithilfe von „Kennwort vergessen“ auf dem Windows 7- oder 8.1-Anmeldebildschirm
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 933ac9b8f7d381db0111ee50385f11e8a22d92f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217818"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370447"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Gewusst wie: Aktivieren der Kennwortzurücksetzung unter Windows 7, 8 und 8.1
 
@@ -46,7 +46,7 @@ Im Gegensatz zu Windows 10-Computern müssen Windows 7-, 8- und 8.1-Computer nic
 1. Wählen Sie nach dem Neustart auf dem Anmeldebildschirm einen Benutzer aus, und klicken Sie auf „Kennwort vergessen?“, um den Workflow zur Kennwortzurücksetzung zu initiieren.
 1. Schließen Sie den Workflow mit den folgenden Schritten auf dem Bildschirm ab, um Ihr Kennwort zurückzusetzen.
 
-![Beispiel: Windows 7 mit angeklickter Option „Kennwort vergessen?“ Ablauf der Self-Service-Kennwortzurücksetzung](media/howto-sspr-windows-7-8/windows-7-sspr.png)
+![Beispiel: Windows 7 mit angeklickter Option „Kennwort vergessen?“ SSPR-Flow](media/howto-sspr-windows-7-8/windows-7-sspr.png)
 
 ### <a name="silent-installation"></a>Automatische Installation
 
@@ -67,13 +67,11 @@ Ereignisse werden sowohl auf dem Computer als auch in Azure AD protokolliert.
 
 Azure AD-Ereignisse enthalten Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
 
-![Beispiel: Kennwortzurücksetzung auf Windows 7-Anmeldebildschirm im Azure AD-Überwachungsprotokoll](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
+![Beispiel: Kennwortzurücksetzung unter Windows 7 im Azure AD-Überwachungsprotokoll](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
 
 Wenn zusätzliche Protokollierung erforderlich ist, kann ein Registrierungsschlüssel auf dem Computer geändert werden, um die ausführliche Protokollierung zu aktivieren. Aktivieren Sie die ausführliche Protokollierung nur zur Problembehandlung.
 
-```
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
-```
+`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 * Zum Aktivieren der ausführlichen Protokollierung erstellen Sie den REG_DWORD-Wert „EnableLogging“ und legen ihn auf 1 fest.
 * Zum Deaktivieren der ausführlichen Protokollierung ändern Sie den REG_DWORD-Wert „EnableLogging“ in 0 fest.
@@ -82,4 +80,4 @@ Wenn sich Ihre Computer mit Windows 7, 8 oder 8.1 hinter einem Proxyserver oder 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Ermöglichen Sie Windows 10-Benutzern das Zurücksetzen ihres Kennworts auf dem Anmeldebildschirm.](tutorial-sspr-windows.md)
+* [Ermöglichen Sie Windows 10-Benutzern das Zurücksetzen ihres Kennworts auf dem Anmeldebildschirm.](tutorial-sspr-windows.md)

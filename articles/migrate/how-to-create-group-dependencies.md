@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: a3c0e94e213b861714bfc5f38e20e4d9a1de3a19
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8387b7e03c867026741801cd0de910bc9da85e92
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107915"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407078"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -63,7 +63,7 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**.
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
-Sie können den Agent über die Befehlszeile oder mit einer automatisierten Methode wie Azure Automation DSC, System Center Configuration Manager oder mit einer Azure Resource Manager-Vorlage installieren, wenn Sie Microsoft Azure Stack in Ihrem Rechenzentrum bereitgestellt haben. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
+Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie z.B. System Center Configuration Manager installieren. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>Installieren des Agent auf einem Linux-Computer
 

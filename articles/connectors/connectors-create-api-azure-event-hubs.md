@@ -1,35 +1,34 @@
 ---
-title: Herstellen einer Verbindung mit Azure Event Hubs – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Azure Event Hubs – Azure Logic Apps
 description: Verwalten und Überwachen von Ereignissen mit Azure Event Hubs und Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a59f21478f85f238d91c01faed44d8e49cb15f0a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230317"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310794"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Überwachen, Erhalten und Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps 
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Überwachen, Erhalten und Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps
 
-In diesem Artikel wird gezeigt, wie Sie Ereignisse überwachen und verwalten können, die mit dem Azure Event Hubs-Connector aus einer Logik-App heraus an [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) gesendet werden. Auf diese Weise können Sie Logik-Apps erstellen, die Aufgaben und Workflows zum Überprüfen, Senden und Empfangen von Ereignissen aus Ihrem Event Hub automatisieren. 
+In diesem Artikel wird gezeigt, wie Sie Ereignisse überwachen und verwalten können, die mit dem Azure Event Hubs-Connector aus einer Logik-App heraus an [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) gesendet werden. Auf diese Weise können Sie Logik-Apps erstellen, die Aufgaben und Workflows zum Überprüfen, Senden und Empfangen von Ereignissen aus Ihrem Event Hub automatisieren.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/eventhubs/" target="blank">Referenz zum Azure Event Hubs-Connector</a>.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Einen [Azure Event Hubs-Namespace und Event Hub](../event-hubs/event-hubs-create.md)
 
-* Die Logik-App, in der Sie auf Ihren Event Hub zugreifen möchten. Um Ihre Logik-App mit einem Azure Event Hubs-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Die Logik-App, in der Sie auf Ihren Event Hub zugreifen möchten. Um Ihre Logik-App mit einem Azure Event Hubs-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="permissions-connection-string"></a>
 
@@ -37,15 +36,15 @@ Connectorspezifische technische Informationen finden Sie in der <a href="https:/
 
 Damit Ihre Logik-App auf Ihren Event Hub zugreifen kann, überprüfen Sie Ihre Berechtigungen, und rufen Sie die Verbindungszeichenfolge für Ihren Event Hubs-Namespace ab.
 
-1. Melden Sie sich beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an. 
+1. Melden Sie sich beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
 
 2. Navigieren Sie zu Ihrem Event Hubs-*Namespace*, jedoch nicht zum eigentlichen Event Hub. Wählen Sie auf der Seite „Namespace“ unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien**. Stellen Sie im Bereich **Ansprüche** sicher, dass Sie die **Verwaltungsberechtigungen** für diesen Namespace besitzen.
 
    ![Verwalten von Berechtigungen für Ihren Event Hub-Namespace](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-3. Wenn Sie die Verbindungsinformationen später manuell eingeben möchten, rufen Sie die Verbindungszeichenfolge für Ihren Event Hubs-Namespace ab. 
+3. Wenn Sie die Verbindungsinformationen später manuell eingeben möchten, rufen Sie die Verbindungszeichenfolge für Ihren Event Hubs-Namespace ab.
 
-   1. Wählen Sie unter **Richtlinie** die Option **RootManageSharedAccessKey**. 
+   1. Wählen Sie unter **Richtlinie** die Option **RootManageSharedAccessKey**.
 
    2. Suchen Sie die Verbindungszeichenfolge des Primärschlüssels. Wählen Sie die Schaltfläche „Kopieren“, und speichern Sie die Verbindungszeichenfolge zur späteren Verwendung.
 
@@ -62,14 +61,15 @@ Damit Ihre Logik-App auf Ihren Event Hub zugreifen kann, überprüfen Sie Ihre B
 
 In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz und startet die Ausführung des Workflows Ihrer App.
 
-Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn neue Ereignisse an Ihren Event Hub gesendet werden. 
+Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn neue Ereignisse an Ihren Event Hub gesendet werden.
 
 1. Erstellen Sie im Azure-Portal oder in Visual Studio eine leere Logik-App, die den Logic Apps-Designer öffnet. In diesem Beispiel wird das Azure-Portal verwendet.
 
-2. Geben Sie im Suchfeld „Event Hubs“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
+2. Geben Sie im Suchfeld „Event Hubs“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
-   Dieses Beispiel verwendet diesen Trigger:  
-   **Event Hubs – Wenn Ereignisse im Event Hub verfügbar sind**.
+   In diesem Beispiel wird folgender Trigger verwendet:
+
+   **Event Hubs – Wenn Ereignisse im Event Hub verfügbar sind**
 
    ![Trigger auswählen](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
@@ -80,9 +80,9 @@ Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn ne
       ![Festlegen von Event Hubs oder Consumergruppen](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
 
    2. Wählen Sie das Intervall und die Häufigkeit aus, um anzugeben, wie oft der Trigger den Event Hub überprüfen soll.
- 
+
    3. Wenn Sie optional einige erweiterte Triggeroptionen auswählen möchten, wählen Sie **Erweiterte Optionen anzeigen** aus.
-   
+
       ![Erweiterte Triggeroptionen](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
 
       | Eigenschaft | Details | 
@@ -108,7 +108,7 @@ Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn ne
 
 ## <a name="add-an-event-hubs-action"></a>Hinzufügen einer Event Hubs-Aktion
 
-In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) um einen Schritt in Ihrem Workflow, der einem Trigger oder einer anderen Aktion folgt. In diesem Beispiel startet die Logik-App mit einem Event Hubs-Trigger, der Ihren Event Hub auf neue Ereignisse überprüft. 
+In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) um einen Schritt in Ihrem Workflow, der einem Trigger oder einer anderen Aktion folgt. In diesem Beispiel startet die Logik-App mit einem Event Hubs-Trigger, der Ihren Event Hub auf neue Ereignisse überprüft.
 
 1. Öffnen Sie im Azure-Portal oder in Visual Studio Ihre Logik-App im Logic Apps-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
 
@@ -118,22 +118,22 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
    Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
 3. Geben Sie im Suchfeld „Event Hubs“ als Filter ein.
-Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus. 
+Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-   Wählen Sie für dieses Beispiel diese Aktion aus: **Event Hubs – Ereignis senden**.
+   Wählen Sie für dieses Beispiel diese Aktion aus: **Event Hubs – Ereignis senden**
 
    ![„Event Hubs – Ereignis senden“ auswählen](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
 
 4. Wenn Sie zur Angabe von Verbindungsdetails aufgefordert werden, [erstellen Sie jetzt Ihre Event Hubs-Verbindung](#create-connection). Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben.
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
-   | Event Hub-Name | JA | Wählen Sie den Event Hub aus, an den das Ereignis gesendet werden soll. | 
-   | Ereignisinhalt | Nein  | Der Inhalt für das Ereignis, das Sie senden möchten | 
-   | Eigenschaften | Nein  | Die App-Eigenschaften und Werte, die gesendet werden sollen | 
-   |||| 
+   | Event Hub-Name | Ja | Wählen Sie den Event Hub aus, an den das Ereignis gesendet werden soll. |
+   | Ereignisinhalt | Nein  | Der Inhalt für das Ereignis, das Sie senden möchten |
+   | Eigenschaften | Nein  | Die App-Eigenschaften und Werte, die gesendet werden sollen |
+   ||||
 
-   Beispiel:  
+   Beispiel: 
 
    ![Event Hub-Namen auswählen und Ereignisinhalt bereitstellen](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
@@ -147,10 +147,10 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 1. Wenn Sie zur Eingabe von Verbindungsinformationen aufgefordert werden, geben Sie diese Details an:
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | Verbindungsname | JA | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
-   | Event Hubs-Namespace | JA | <*event-hubs-namespace*> | Wählen Sie den Event Hubs-Namespace, den Sie verwenden möchten. | 
+   | Verbindungsname | Ja | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
+   | Event Hubs-Namespace | Ja | <*event-hubs-namespace*> | Wählen Sie den Event Hubs-Namespace, den Sie verwenden möchten. |
    |||||  
 
    Beispiel: 
@@ -168,7 +168,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/eventhubs/). 
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/eventhubs/).
 
 ## <a name="get-support"></a>Support
 

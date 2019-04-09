@@ -1,5 +1,5 @@
 ---
-title: Webdienst der mobilen App für den Azure MFA-Server | Microsoft-Dokumentation
+title: Webdienst für mobile Apps für den Azure MFA-Server – Azure Active Directory
 description: Konfigurieren Sie die MFA-Server zum Senden von Pushbenachrichtigungen an Benutzer mit der Microsoft Authenticator-App.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e0b6a6c2789bfcd5fa462c9ea2cda80f9b5144d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac59b68f1ddda695fba8f1a4ceacb90bfa4102a2
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162899"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313701"
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Aktivieren der Mobile App-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
 

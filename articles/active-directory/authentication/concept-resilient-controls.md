@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
+title: Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung – Azure Active Directory
 description: Dieses Dokument enthält Anleitungen zu Strategien, die eine Organisation übernehmen sollte, um das Risiko der Sperrung während unvorhergesehener Störungen zu reduzieren.
 services: active-directory
 author: martincoetzer
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082142"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316336"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 

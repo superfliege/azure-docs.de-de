@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: jdial
-ms.openlocfilehash: 827a3c2f831c8e8fb459e494dcad58e3661e78bd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 22bdd50f129a48ade97db323f904f7e652a00d39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889980"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -41,29 +41,29 @@ Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz
 1. Browsen Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** und dann **Network Watcher** im Abschnitt **Netzwerk** aus.
 2. Wählen Sie unter **Netzwerkdiagnosetools** die Option **Paketerfassung** aus. Alle vorhandenen Paketerfassungen werden unabhängig von ihrem Status aufgelistet.
 3. Wählen Sie **Hinzufügen** aus, um eine Paketerfassung zu erstellen. Sie können Werte für die folgenden Eigenschaften auswählen:
-   - **Abonnement:** das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
-   - **Ressourcengruppe:** die Ressourcengruppe des virtuellen Computers.
-   - **Virtueller Zielcomputer:** der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
-   - **Paketerfassungsname:** ein Name für die Paketerfassung.
-   - **Speicherkonto oder Datei:** Wählen Sie **Speicherkonto**, **Datei** oder beide Werte aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
-   - **Lokaler Dateipfad:** der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
-   - **Speicherkonten:** Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
+   - **Abonnement**: Das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
+   - **Ressourcengruppe**: Die Ressourcengruppe des virtuellen Computers.
+   - **Virtueller Zielcomputer**: Der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
+   - **Paketerfassungsname**: Ein Name für die Paketerfassung.
+   - **Speicherkonto oder Datei**: Wählen Sie **Speicherkonto**, **Datei** oder beides aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
+   - **Lokaler Dateipfad**: Der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
+   - **Speicherkonten**: Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
    
      > [!NOTE]
      > Für Storage Premium-Konten wird das Speichern von Paketerfassungen derzeit nicht unterstützt.
 
-   - **Maximale Anzahl von Bytes pro Paket:** die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
-   - **Maximale Anzahl von Bytes pro Sitzung:** die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
-   - **Zeitlimit (Sekunden):** das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
+   - **Maximale Anzahl von Bytes pro Paket**: Die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
+   - **Maximale Anzahl von Bytes pro Sitzung**: Die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
+   - **Zeitlimit (Sekunden)**: Das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
    - Filterung (optional). Wählen Sie **+ Filter hinzufügen** aus.
-     - **Protokoll:** das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
-     - **Lokale IP-Adresse:** filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
-     - **Lokaler Port:** filtert die Paketerfassung für Pakete, deren lokaler Port mit diesem Wert übereinstimmt.
-     - **Remote-IP-Adresse:** filtert die Paketerfassung für Pakete, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
-     - **Remoteport:** filtert die Paketerfassung für Pakete, deren Remoteport mit diesem Wert übereinstimmt.
+     - **Protokoll:** Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
+     - **Lokale IP-Adresse**: Filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
+     - **Lokaler Port**: Filtert die Paketerfassung nach Paketen, deren lokaler Port mit diesem Wert übereinstimmt.
+     - **Remote-IP-Adresse**: Filtert die Paketerfassung nach Paketen, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
+     - **Remoteport**: Filtert die Paketerfassung nach Paketen, deren Remoteport mit diesem Wert übereinstimmt.
     
-    > [!NOTE]
-    > Bei den Werten für Port und IP-Adresse kann es sich um einen Einzelwert, einen Bereich von Werten oder einen Bereich handeln, z.B. 80–1024 für den Port. Sie können beliebig viele Filter definieren.
+     > [!NOTE]
+     > Bei den Werten für Port und IP-Adresse kann es sich um einen Einzelwert, einen Bereich von Werten oder einen Bereich handeln, z.B. 80–1024 für den Port. Sie können beliebig viele Filter definieren.
 
 4. Klicken Sie auf **OK**.
 
@@ -88,7 +88,7 @@ Wählen Sie in der Paketerfassungsansicht rechts neben der Paketerfassung die Op
 
 ## <a name="download-a-packet-capture"></a>Herunterladen einer Paketerfassung
 
-Nachdem die Paketerfassungssitzung abgeschlossen wurde, wird die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen. Der Speicherort der Paketerfassung wird beim Erstellen der Paketerfassung definiert. Ein nützliches Tool für den Zugriff auf die in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure Storage-Explorer, der [hier](http://storageexplorer.com/) heruntergeladen werden kann.
+Nachdem die Paketerfassungssitzung abgeschlossen wurde, wird die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen. Der Speicherort der Paketerfassung wird beim Erstellen der Paketerfassung definiert. Ein nützliches Tool für den Zugriff auf die in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure Storage-Explorer, der [hier](https://storageexplorer.com/) heruntergeladen werden kann.
 
 Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Speicherkonto am folgenden Speicherort gespeichert:
 

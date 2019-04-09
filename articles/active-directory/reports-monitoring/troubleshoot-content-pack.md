@@ -56,7 +56,7 @@ In diesem Artikel finden Sie Informationen zu den möglichen Ursachen und zur Be
 
 | Ursache | So behebt man den Fehler |
 | ---   | ---        |
-| Der Benutzer, der eine Verbindung herstellt, ist kein globaler Administrator, kein Benutzer mit Leseberechtigung für Sicherheitsfunktionen bzw. kein Sicherheitsadministrator. | Verwenden Sie für den Zugriff auf die Inhaltspakete ein Konto, dem entweder die Rolle eines globalen Administrators, eines Benutzers mit Leseberechtigung für Sicherheitsfunktionen oder eines Sicherheitsadministrators zugewiesen ist. |
+| Der Benutzer, der eine Verbindung herstellt, ist kein globaler Administrator, kein Sicherheitsleseberechtigter bzw. kein Sicherheitsadministrator. | Verwenden Sie für den Zugriff auf die Inhaltspakete ein Konto, dem entweder die Rolle eines globalen Administrators, eines Sicherheitsleseberechtigten oder eines Sicherheitsadministrators zugewiesen ist. |
 | Ihr Mandant ist kein Premium-Mandant oder weist keinen Benutzer mit einer Premium-Lizenzdatei auf. | [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
 

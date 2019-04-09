@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 26b560434e6305689781b8c39c7cf814af9bf8aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: de2ef4908260a62acf28a270dda6ad738a1760b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112295"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402328"
 ---
-# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway (Vorschauversion) 
+# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway
 
 ## <a name="introduction"></a>Einführung
 
@@ -26,15 +26,8 @@ Der Einrichtungs- und Aktivierungsvorgang kann ca. 10 Minuten dauern.
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Herstellen einer Verbindung mit dem virtuellen Gerät
+> * Herstellen einer Verbindung mit einem virtuellen Gerät
 > * Einrichten und Aktivieren des virtuellen Geräts
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-
-> [!IMPORTANT]
-> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,97 +39,108 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche 
 
-1. Öffnen Sie ein Browserfenster, und stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her. Geben Sie Folgendes ein: 
+1. Öffnen Sie ein Browserfenster, und greifen Sie auf die lokale Webbenutzeroberfläche des Geräts zu unter:
    
    [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
    
-   Verwenden Sie die Verbindungs-URL aus dem vorherigen Tutorial. Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website aufgetreten ist. Klicken Sie auf **Mit dieser Webseite fortfahren**. (Diese Schritte können je nach Browser unterschiedlich sein.)
-   
-    ![Verbindungsfehler](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+   Verwenden Sie die Verbindungs-URL aus dem vorherigen Tutorial. Es wird eine Fehlermeldung oder eine Warnung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website vorliegt.
 
-2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts an. Das Standardkennwort lautet *Password1*. 
+2. Klicken Sie auf **Mit dieser Webseite fortfahren**. Diese Schritte können sich je nach verwendetem Browser unterscheiden.
+   
+    ![Meldung zum Sicherheitszertifikatfehler auf der Website](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+
+3. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts an. Das Standardkennwort lautet *Password1*. 
    
     ![Anmelden bei der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-3. Sie werden aufgefordert, das Geräteadministratorkennwort zu ändern. Geben Sie ein neues Kennwort mit 8 bis 16 Zeichen ein. Das Kennwort muss drei der folgenden Elemente enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
+4. Ändern Sie das Gerätekennwort in der Aufforderung. Das neue Kennwort muss zwischen acht und 16 Zeichen lang sein. Das Kennwort muss drei der folgenden Elemente enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
 
-    ![Ändern des Geräteadministratorkennworts](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
+    ![Ändern des Gerätekennworts](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
 Sie befinden sich jetzt im **Dashboard** Ihres Geräts.
 
 ## <a name="set-up-and-activate-the-virtual-device"></a>Einrichten und Aktivieren des virtuellen Geräts
  
-1. Im Dashboard können Sie zu den verschiedenen Einstellungen wechseln, die zum Konfigurieren und Registrieren des virtuellen Geräts beim Data Box Gateway-Dienst erforderlich sind. Die **Netzwerkeinstellungen**, **Webproxyeinstellungen** und **Uhrzeiteinstellungen** sind optional. Die einzigen erforderlichen Einstellungen sind **Gerätename** und **Cloudeinstellungen**.
+Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren und Registrieren des virtuellen Geräts beim Data Box Gateway-Dienst erforderlich sind. Der **Gerätename**, die **Netzwerkeinstellungen**, die **Webproxyeinstellungen** und die **Uhrzeiteinstellungen** sind optional. Die einzigen erforderlichen Einstellungen sind **Cloudeinstellungen**.
    
-    ![Seite „Dashboard“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+![Seite „Dashboard“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-2. Geben Sie auf der Seite **Gerätename** einen Anzeigenamen für Ihr Gerät an. Der Anzeigename kann 1 bis 15 Zeichen lang sein und Buchstaben, Zahlen und Bindestriche enthalten.
+1. Klicken Sie im linken Bereich auf **Gerätename**, und geben Sie anschließend einen Anzeigenamen für Ihr Gerät ein. Der Anzeigename muss aus 1 bis 15 Zeichen bestehen und Buchstaben, Zahlen und Bindestriche enthalten.
 
     ![Seite „Gerätename“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
-3. (Optional) Konfigurieren Sie Ihre **Netzwerkeinstellungen**. Es werden eine oder mehrere Netzwerkschnittstellen angezeigt, je nachdem, wie viele Sie in dem zugrunde liegenden virtuellen Computer konfiguriert haben. Die Seite **Netzwerkeinstellungen** für ein virtuelles Gerät mit aktivierter Netzwerkschnittstelle ist nachstehend abgebildet.
+2. (Optional) Klicken Sie im linken Bereich auf **Netzwerkeinstellungen**, und konfigurieren Sie die Einstellungen anschließend. Auf Ihrem virtuellen Gerät wird mindestens eine Netzwerkschnittstelle angezeigt, je nachdem, wie viele Sie in dem zugrunde liegenden virtuellen Computer konfiguriert haben. Die Seite **Netzwerkeinstellungen** für ein virtuelles Gerät mit aktivierter Netzwerkschnittstelle ist nachstehend abgebildet.
     
     ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
-    Wenn Sie Netzwerkeinstellungen konfigurieren, berücksichtigen Sie Folgendes:
+    Beachten Sie Folgendes, wenn Sie Netzwerkeinstellungen konfigurieren:
 
-   - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. Daher werden IP-Adresse, Subnetz, Gateway und DNS automatisch zugewiesen.
-   - Wenn DHCP nicht aktiviert ist, weisen Sie bei Bedarf statische IP-Adressen zu.
-   - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
+    - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
+    - Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
+    - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
 
      >[!NOTE] 
      > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät beim Dienst registriert hat, und ändern Sie dann. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
 
-4. Optional: Konfigurieren Sie Ihren Webproxyserver. Die Webproxykonfiguration ist optional. Achten Sie jedoch bei Verwendung eines Webproxys darauf, dass dieser nur hier konfiguriert werden kann.
+3. (Optional) Konfigurieren Sie Ihren Webproxyserver. Die Webproxykonfiguration ist optional. Bei Verwendung eines Webproxys kann dieser jedoch nur auf dieser Seite konfiguriert werden.
    
    ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
-   Auf der Seite **Webproxy** :
+   Gehen Sie auf der Seite **Webproxy** folgendermaßen vor:
    
-   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://&lt;Host-IP-Adresse oder FQDN&gt;:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
-   2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
-   3. Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
-   4. Klicken Sie auf **Anwenden**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
+   1. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS-URLs werden nicht unterstützt.
+   2. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**.
+   3. Falls Sie eine Authentifizierung verwenden, geben Sie einen **Benutzernamen** und ein **Kennwort** ein.
+   4. Klicken Sie auf **Anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
 
-5. Optional: Konfigurieren Sie die Zeiteinstellungen für Ihr Gerät, z. B. die Zeitzone und die primären und sekundären NTP-Server. NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
+4. (Optional) Klicken Sie im linken Bereich auf **Zeiteinstellungen**, und konfigurieren Sie die Zeitzone und die primären und sekundären NTP-Server für das Gerät. 
+
+    NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
     
     ![Seite „Zeiteinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
-    Auf der Seite **Uhrzeiteinstellungen** :
+    Gehen Sie auf der Seite **Zeiteinstellungen** folgendermaßen vor:
     
-    1. Legen Sie über die Dropdownliste die **Zeitzone** basierend auf dem geografischen Standort fest, an dem das Gerät bereitgestellt wird. Die Standardzeitzone für Ihr Gerät ist „PST“. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
-    2. Geben Sie einen **primären NTP-Server** für das Gerät an, oder übernehmen Sie den Standardwert „time.windows.com“. Stellen Sie sicher, dass Ihr Netzwerk NTP-Datenverkehr vom Rechenzentrum ins Internet zulässt.
-    3. Geben Sie optional einen **sekundären NTP-Server** für Ihr Gerät an.
-    4. Klicken Sie auf **Übernehmen**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
+    1. Wählen Sie aus der Dropdownliste die **Zeitzone** aus, die dem geografischen Standort entspricht, an dem das Gerät bereitgestellt wird.
+        Die Standardzeitzone für Ihr Gerät ist „PST“. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
 
-6. Aktivieren Sie Ihr Gerät im Azure-Portal auf der Seite **Cloudeinstellungen** für den Data Box Gateway-Dienst.
+    2. Geben Sie einen **primären NTP-Server** für das Gerät an, oder übernehmen Sie den Standardwert `time.windows.com`.   
+        Stellen Sie sicher, dass Ihr Netzwerk NTP-Datenverkehr vom Rechenzentrum ins Internet zulässt.
+
+    3. Geben Sie optional im Feld **Sekundärer NTP-Server** einen sekundären Server für Ihr Gerät ein.
+
+    4. Klicken Sie auf **Übernehmen**, um die konfigurierten Uhrzeiteinstellungen zu überprüfen und anzuwenden.
+
+6. Klicken Sie im linken Bereich auf **Cloudeinstellungen**, und aktivieren Sie Ihr Gerät im Azure-Portal für den Data Box Gateway-Dienst.
     
-    1. Geben Sie den **Aktivierungsschlüssel** ein, den Sie in [Aktivierungsschlüssel abrufen](data-box-gateway-deploy-prep.md#get-the-activation-key) für Data Box Gateway abgerufen haben.
+    1. Geben Sie im Feld **Aktivierungsschlüssel** den **Aktivierungsschlüssel** ein, den Sie unter [Aktivierungsschlüssel abrufen](data-box-gateway-deploy-prep.md#get-the-activation-key) für Data Box Gateway abgerufen haben.
 
-    2. Klicken Sie auf **Aktivieren**. 
+    2. Wählen Sie **Aktivieren**aus.
        
          ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Zunächst wird das Gerät aktiviert. Dann wird das Gerät nach kritischen Updates durchsucht, und die Updates, falls verfügbar, werden automatisch angewendet. Es wird eine entsprechende Benachrichtigung angezeigt. 
+    3. Das Gerät wird aktiviert und wichtige Updates, falls verfügbar, werden automatisch angewendet. Es wird eine entsprechende Benachrichtigung angezeigt. Den Fortschritt des Updates können Sie über das Azure-Portal überwachen.
 
-        Das Dialogfeld enthält außerdem einen Wiederherstellungsschlüssel, den Sie kopieren und an einem sicheren Ort speichern sollten. Dieser Schlüssel wird verwendet, um Ihre Daten wiederherzustellen, falls das Gerät nicht starten kann.
+        ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        
+        **Das Dialogfeld enthält außerdem einen Wiederherstellungsschlüssel, den Sie kopieren und an einem sicheren Ort speichern sollten. Dieser Schlüssel wird verwendet, um Ihre Daten wiederherzustellen, falls das Gerät nicht starten kann.**
 
-        ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)    
 
-    4. Möglicherweise müssen Sie einige Minuten warten, nachdem das Update erfolgreich abgeschlossen wurde. Die Seite wird mit der Angabe aktualisiert, dass das Gerät erfolgreich aktiviert wurde.
+    4. Möglicherweise müssen Sie einige Minuten warten, bis das Update erfolgreich abgeschlossen ist. Nachdem das Update abgeschlossen ist, melden Sie sich am Gerät an. Die Seite **Cloudeinstellungen** wird mit der Angabe aktualisiert, dass das Gerät erfolgreich aktiviert wurde.
 
         ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche aktualisiert](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
+Die Einrichtung des Geräts ist abgeschlossen. Sie können nun Freigaben auf Ihrem Gerät hinzufügen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie sich mit den folgenden Themen zu Data Box Gateway befasst:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Herstellen einer Verbindung mit dem virtuellen Gerät
+> * Herstellen einer Verbindung mit einem virtuellen Gerät
 > * Einrichten und Aktivieren des virtuellen Geräts
 
-
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Daten mit Data Box Gateway übertragen.
+Weitere Informationen zum Übertragen von Daten mit Data Box Gateway finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [Übertragen von Daten mit Data Box Gateway](./data-box-gateway-deploy-add-shares.md)

@@ -1,5 +1,5 @@
 ---
-title: Zertifikatbasierte Authentifizierung mit Azure Active Directory unter Android
+title: Zertifikatbasierte Authentifizierung unter Android – Azure Active Directory
 description: In diesem Thema lernen Sie unterstützte Szenarien sowie die Voraussetzungen für die Konfiguration der zertifikatbasierten Authentifizierung in Lösungen mit Android-Geräten kennen.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2492fe3074b72df5f9ecbaab0496fee1f54ca0e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211562"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368288"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter Android
 
@@ -35,16 +35,16 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 
 | Apps | Support |
 | --- | --- |
-| Azure Information Protection-App |![Prüfen][1] |
-| Intune-Unternehmensportal |![Prüfen][1] |
-| Microsoft Teams |![Prüfen][1] |
-| OneNote |![Prüfen][1] |
-| OneDrive |![Prüfen][1] |
-| Outlook |![Prüfen][1] |
-| Power BI |![Prüfen][1] |
-| Skype for Business |![Prüfen][1] |
-| Word/Excel/PowerPoint |![Prüfen][1] |
-| Yammer |![Prüfen][1] |
+| Azure Information Protection-App |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Intune-Unternehmensportal |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Microsoft Teams |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| OneNote |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| OneDrive |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Outlook |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Power BI |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Skype for Business |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Word/Excel/PowerPoint |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
+| Yammer |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
 
 ### <a name="implementation-requirements"></a>Implementierungsanforderungen
 

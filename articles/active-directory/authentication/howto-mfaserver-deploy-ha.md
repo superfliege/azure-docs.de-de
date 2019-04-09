@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Azure MFA Server für Hochverfügbarkeit | Microsoft-Dokumentation
+title: Konfigurieren von Azure MFA Server für Hochverfügbarkeit – Azure Active Directory
 description: Stellen Sie in Konfigurationen für Hochverfügbarkeit mehrere Instanzen von Azure Multi-Factor Authentication-Server bereit.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26216131b461a395d3c87895a055d3ae30abf87c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198812"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370073"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurieren von Azure Multi-Factor Authentication-Server für Hochverfügbarkeit
 
@@ -26,7 +26,7 @@ Um hohe Verfügbarkeit bei Ihrer für Azure MFA Server-Bereitstellung zu erreich
 
 Die Dienstarchitektur von Azure MFA Server umfasst mehrere Komponenten, die im folgenden Diagramm dargestellt sind:
 
- ![MFA Server-Architektur](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![Komponenten der Architektur von MFA Server](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
 Ein MFA-Server ist ein Windows-Server, auf dem die Azure Multi-Factor Authentication-Software installiert ist. Die MFA Server-Instanz muss vom MFA-Dienst in Azure aktiviert werden. Sie können lokal auch mehrere MFA Server-Instanzen installieren.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838713"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314449"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Anzeigen und Verwalten von StorSimple-Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -202,7 +202,7 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 | StorSimple-Dienst konnte nicht gestartet werden. |Datenpfadfehler |Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
 | Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *<device1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
 | IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *<device1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Es konnte keine Verbindung mit dem Authentifizierungsdienst hergestellt werden. |Datenpfadfehler |Die URL für die Authentifizierung ist nicht erreichbar. Stellen Sie sicher, dass Ihre Firewall das für das StorSimple-Gerät angegebene URL-Muster umfasst. Weitere Informationen zu URL-Mustern im Azure-Portal finden Sie unter https://aka.ms/ss-8000-network-reqs. Wenn Sie Azure Government Cloud verwenden, finden Sie Informationen zu URL-Mustern unter https://aka.ms/ss8000-gov-network-reqs.|
+| Es konnte keine Verbindung mit dem Authentifizierungsdienst hergestellt werden. |Datenpfadfehler |Die URL für die Authentifizierung ist nicht erreichbar. Stellen Sie sicher, dass Ihre Firewall das für das StorSimple-Gerät angegebene URL-Muster umfasst. Weitere Informationen zu URL-Mustern im Azure-Portal finden Sie unter „https:\//aka.ms/ss-8000-network-reqs“. Wenn Sie Azure Government Cloud verwenden, finden Sie hier Informationen zu URL-Mustern: „https:\//aka.ms/ss8000-gov-network-reqs“.|
 
 ### <a name="performance-alerts"></a>Leistungswarnungen
 

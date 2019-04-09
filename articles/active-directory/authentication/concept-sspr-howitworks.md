@@ -1,5 +1,5 @@
 ---
-title: Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung – Azure Active Directory
+title: Ausführliche Betrachtung der Self-Service-Kennwortzurücksetzung – Azure Active Directory
 description: Funktionsweise der Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214751"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369997"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -76,7 +76,7 @@ Benutzer können ihr Kennwort nur zurücksetzen, wenn für sie Daten in den Auth
 > [!WARNING]
 > Konten, denen Azure-Administratorrollen zugewiesen wurden, müssen Methoden nutzen, die im Abschnitt [Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern](concept-sspr-policy.md#administrator-reset-policy-differences) definiert sind.
 
-![Authentifizierung][Authentication]
+![Auswahl von Authentifizierungsmethoden im Azure-Portal][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>Anzahl erforderlicher Authentifizierungsmethoden
 
@@ -160,7 +160,7 @@ Beispiel: Es gibt vier Administratoren in einer Umgebung. Administrator A setzt 
 
 Wenn Sie Azure AD Connect installieren, konfigurieren und aktivieren, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung. Wenn diese Optionen abgeblendet sind, wurde das Rückschreiben nicht ordnungsgemäß konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren des Kennwortrückschreibens](howto-sspr-writeback.md).
 
-![Rückschreiben][Writeback]
+![Überprüfen von Aktivierung und Funktionsfähigkeit des Kennwortrückschreibens][Writeback]
 
 Auf dieser Seite erhalten Sie einen schnellen Überblick über den Status des lokalen Clients für das Rückschreiben. Basierend auf der aktuellen Konfiguration wird eine der folgenden Meldungen angezeigt:
 
@@ -180,7 +180,7 @@ Dieses Steuerelement bestimmt, ob das Rückschreiben von Kennwörtern für diese
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Benutzern das Entsperren von Konten ohne Zurücksetzen des Kennworts erlauben
 
-Dieses Steuerelement legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden bei einer Kennwortzurücksetzung Konten von Azure AD entsperrt. Mit dieser Einstellung können Sie diese beiden Vorgänge trennen. 
+Dieses Steuerelement legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden bei einer Kennwortzurücksetzung Konten von Azure AD entsperrt. Mit dieser Einstellung können Sie diese beiden Vorgänge trennen.
 
 * Bei der Einstellung **Ja** erhalten Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos oder die Option zum Entsperren des Kontos, ohne dass das Kennwort zurückgesetzt werden muss.
 * Bei der Einstellung **Nein** können Benutzer das Entsperren des Kontos nur in Kombination mit dem Zurücksetzen des Kennworts vornehmen.
@@ -193,9 +193,9 @@ Die Azure AD-Self-Service-Kennwortzurücksetzung ist äquivalent zu einer vom Ad
 
 Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfigurationen (Business-to-Business) uneingeschränkt unterstützt. Das Zurücksetzen von B2B-Benutzerkennwörtern wird in den folgenden drei Fällen unterstützt:
 
-   * **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen Azure AD-Mandanten verfügt, *respektieren wir die in diesem Mandanten aktivierten Kennwortzurücksetzungsrichtlinien*. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Für Office 365-Kunden fallen keine zusätzlichen Gebühren an, und Azure AD SSPR kann anhand der Schritte unter [Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) aktiviert werden.
-   * **Benutzer, die sich per Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Feature für Self-Service-Registrierung](../users-groups-roles/directory-self-service-signup.md) verwendet, um auf einen Mandanten zuzugreifen, steht eine Zurücksetzung des Kennworts unter Verwendung der E-Mail-Adresse, mit der die Registrierung erfolgt ist, zur Verfügung.
-   * **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](../active-directory-b2b-what-is-azure-ad-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
+* **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen Azure AD-Mandanten verfügt, *respektieren wir die in diesem Mandanten aktivierten Kennwortzurücksetzungsrichtlinien*. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Für Office 365-Kunden fallen keine zusätzlichen Gebühren an, und Azure AD SSPR kann anhand der Schritte unter [Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) aktiviert werden.
+* **Benutzer, die sich per Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Feature für Self-Service-Registrierung](../users-groups-roles/directory-self-service-signup.md) verwendet, um auf einen Mandanten zuzugreifen, steht eine Zurücksetzung des Kennworts unter Verwendung der E-Mail-Adresse, mit der die Registrierung erfolgt ist, zur Verfügung.
+* **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](../active-directory-b2b-what-is-azure-ad-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
 
 Um dieses Szenario zu testen, wechseln Sie mit einem der Partnerbenutzer zu https://passwordreset.microsoftonline.com. Sofern eine alternative E-Mail-Adresse oder eine E-Mail-Adresse für die Authentifizierung definiert ist, funktioniert die Kennwortzurücksetzung wie erwartet.
 

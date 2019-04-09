@@ -16,12 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: 7920fee1bacf569ac41c36142fc68080b4de5780
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904370"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps
 
@@ -71,7 +71,7 @@ Um einen HTTP-Endpunkt zu erstellen, fügen Sie einen Trigger hinzu, der eingehe
 
     > [!TIP]
     > 
-    > Sie können ein Schema für eine Beispiel-JSON-Nutzlast mit einem Tool wie [jsonschema.net](http://jsonschema.net/) generieren oder im Trigger **Request** durch Auswahl von **Beispielnutzlast zum Generieren eines Schemas verwenden**. 
+    > Sie können ein Schema für eine Beispiel-JSON-Nutzlast mit einem Tool wie [jsonschema.net](https://jsonschema.net/) generieren oder im Trigger **Request** durch Auswahl von **Beispielnutzlast zum Generieren eines Schemas verwenden**. 
     > Geben Sie die Beispielnutzlast ein, und wählen Sie **Fertig**.
 
     Diese Beispielnutzlast:

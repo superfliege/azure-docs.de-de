@@ -38,7 +38,7 @@ Wenn Probleme auftreten sollten, lesen Sie [Gewusst wie: Beziehen von Support f�
 
 Sie benötigen Folgendes, um – mit oder ohne Benutzereingriff – auf die Berichterstellungs-API zuzugreifen:
 
-1. Zuweisen von Rollen (Benutzer mit Leseberechtigung für Sicherheitsfunktionen, Sicherheitsadministrator, globaler Administrator)
+1. Zuweisen von Rollen (Sicherheitsleseberechtigter, Sicherheitsadministrator, globaler Administrator)
 2. Registrieren einer Anwendung
 3. Erteilen von Berechtigungen
 4. Erfassen von Konfigurationseinstellungen

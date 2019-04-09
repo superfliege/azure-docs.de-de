@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 432120c324aa81107946fc30548e6e49acce6575
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002322"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311661"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS – Verkaufen über Azure: APIs
 
@@ -65,8 +65,8 @@ Führen Sie die folgenden Schritte aus, um mit dem Azure-Portal eine neue Anwend
      - Wählen Sie für [Clientanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), die lokal auf dem Gerät installiert sind, die Option **Nativ** aus. Diese Einstellung wird für öffentliche [native OAuth-Clients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) verwendet.
      - Wählen Sie die Option **Web-App/API** für [Clientanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) und [Ressourcen-/API-Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client) verwendet.
      Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.
-   - **Anmelde-URL**: Geben Sie für Web-Apps/API-Anwendungen die Basis-URL Ihrer App an. **http://localhost:31544** kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können sich mit dieser URL dann bei einer Webclientanwendung anmelden.
-   - **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. **http://MyFirstAADApp**.
+   - **Anmelde-URL**: Geben Sie für Web-Apps/API-Anwendungen die Basis-URL Ihrer App an. **http:\//localhost:31544** könnte beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können sich mit dieser URL dann bei einer Webclientanwendung anmelden.
+   - **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. **http:\//MeineErsteAADApp**.
 
      ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-2.png) Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt „Erste Schritte“ des [Azure AD-Entwicklerhandbuchs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) verfügbar sind.
 

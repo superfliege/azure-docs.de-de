@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: b9304e151bbce691b752f12aeec8a5376e517a8d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120770"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369716"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -63,6 +63,14 @@ Vorgefertigte Cortana-Apps wurden 2017 eingestellt. Sie werden nicht mehr unters
 
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Wie übertrage ich eine LUIS-App an einen anderen Besitzer?
 Wenn Sie eine LUIS-App an ein anderes Azure-Abonnement übertragen möchten, müssen Sie die App exportieren und mit einem neuen Konto importieren. Aktualisieren Sie die LUIS-App-ID in der Clientanwendung, die die ID aufruft. Die neue App gibt möglicherweise LUIS-Bewertungen zurück, die sich geringfügig von den Werten der ursprünglichen App unterscheiden.
+
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Eine vordefinierte Entität wird in einer Beispieläußerung anstelle meiner benutzerdefinierten Entität markiert. Wie kann ich dies korrigieren? 
+
+Weitere Informationen finden Sie unter [Problembehandlung vordefinierte Entitäten](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ich habe versucht, eine App- oder Versionsdatei zu importieren, aber eine Fehlermeldung erhalten. Was ist passiert? 
+
+Erfahren Sie mehr über [Fehler beim Versionsimport](luis-how-to-manage-versions.md#import-errors) und [Fehler beim App-Import](luis-how-to-start-new-app.md#import-errors).
 
 <a name="luis-collaborating"></a>
 

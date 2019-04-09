@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835315"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -83,6 +83,7 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 - Indien, Mitte
 - Indien (Süden)
 - Japan, Osten
+- US Government, Virginia
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Kanada, Mitte
@@ -94,6 +95,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Asien, Südosten 
 - Indien, Mitte
 - Japan, Osten
+- US Government, Virginia
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein Arbeitsbereich?
 
@@ -105,7 +107,7 @@ Ja.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Kann ich einen bestehenden Arbeitsbereich verwenden?
 
-Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md).
+Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Kann mein Azure Storage-Konto zu einem Abonnement und mein Log Analytics-Arbeitsbereich zu einem anderen Abonnement gehören?
 
@@ -118,6 +120,12 @@ Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Log Analytics-Arbei
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Was ist, wenn ich eine NSG aufgrund der Fehlermeldung „Nicht gefunden“ nicht für Traffic Analytics konfigurieren kann?
 
 Wählen Sie eine unterstützte Region aus. Wenn Sie eine nicht unterstützte Region auswählen, erhalten Sie die Fehlermeldung „Nicht gefunden“. Die unterstützten Regionen sind weiter oben in diesem Artikel aufgeführt.
+
+## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>Warum erhalten ich den Fehler „Fehler beim Aktualisieren von Flowprotokolleinstellungen für ... InternalServerError...“ beim Aktivieren von NSGs in US Gov Virginia?
+
+Dies hat die Ursache in einem Programmfehler, bei dem der Ressourcenanbieter ‚Microsoft.Network‘ für ein Abonnement in US Gov Virginia nicht erneut registriert wird. Das Team arbeitet an einer Lösung für dieses Problem. Als Problemumgehung müssen Sie den [Ressourcenanbieter ‚Microsoft.Network‘ manuell erneut registrieren](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors). 
+
+Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Was ist, wenn ich den Status „Fehler beim Laden“ unter der Seite mit den NSG-Datenflussprotokollen erhalte?
 

@@ -1,56 +1,76 @@
 ---
-title: Einrichten der Notfallwiederherstellung für Azure-VMs nach Migration in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer nach Migration in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt das Vorbereiten von VMs für die Einrichtung der Notfallwiederherstellung zwischen Azure-Regionen nach der Migration in Azure mithilfe von Azure Site Recovery.
 services: site-recovery
-author: ponatara
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ponatara
-ms.openlocfilehash: 274a69c6a2c23caf391a636ce53a9bb3897c0aa2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 03/18/2019
+ms.author: raynew
+ms.openlocfilehash: 76119c912ac6ad1447bfcff1f4c98e60f34b072f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836065"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317128"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure 
 
 
-Verwenden Sie diesen Artikel, nachdem Sie mit dem [Site Recovery](site-recovery-overview.md)-Dienst [lokale Computer in Azure-VMs migriert haben](tutorial-migrate-on-premises-to-azure.md). Dieser Artikel hilft Ihnen bei der Vorbereitung der Azure-VMs für die Einrichtung der Notfallwiederherstellung in einer sekundären Azure-Region mithilfe von Site Recovery.
+Lesen Sie diesen Artikel, wenn Sie mithilfe des [Site Recovery](site-recovery-overview.md)-Diensts [lokale Computer zu virtuellen Azure-Computern migriert](tutorial-migrate-on-premises-to-azure.md) haben und jetzt die virtuellen Computer für die Notfallwiederherstellung in einer sekundären Azure-Region einrichten möchten. In diesem Artikel erfahren Sie, wie Sie sicherstellen, dass der Azure-VM-Agent auf den migrierten virtuellen Computern installiert ist, und wie Sie den Site Recovery Mobility-Dienst entfernen, der nach der Migration nicht mehr erforderlich ist.
 
 
 
-## <a name="before-you-start"></a>Vorbereitung
+## <a name="verify-migration"></a>Überprüfen der Migration
 
 Bevor Sie die Notfallwiederherstellung einrichten, stellen Sie sicher, dass die Migration wie erwartet abgeschlossen wurde. Um eine Migration erfolgreich abzuschließen, sollten Sie nach dem Failover die Option **Komplette Migration** für jeden Computer auswählen, den Sie migrieren möchten. 
 
+## <a name="verify-the-azure-vm-agent"></a>Überprüfen des Azure-VM-Agents
+
+Auf jedem virtuellen Azure-Computer muss der [Azure-VM-Agent](../virtual-machines/extensions/agent-windows.md) installiert sein. Zum Replizieren von virtuellen Azure-Computern installiert Azure Site Recovery eine Erweiterung auf dem Agent.
+
+- Wird auf dem Computer Version 9.7.0.0 oder höher des Site Recovery Mobility-Diensts ausgeführt, wird der Azure-VM-Agent vom Mobility-Dienst automatisch auf den virtuellen Windows-Computern installiert. Bei früheren Versionen des Mobility-Diensts müssen Sie den Agent manuell installieren.
+- Bei virtuellen Linux-Computern müssen Sie den Azure-VM-Agent manuell installieren. Dies ist jedoch nur dann erforderlich, wenn der auf dem migrierten Computer installierte Mobility-Dienst die Version 9.6 oder niedriger hat.
 
 
-## <a name="install-the-azure-vm-agent"></a>Installieren des Azure-VM-Agents
+### <a name="install-the-agent-on-windows-vms"></a>Installieren des Agents auf virtuellen Windows-Computern
 
-Der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) muss auf der VM installiert sein, damit Site Recovery sie replizieren kann.
+Wenn Sie eine Version des Site Recovery Mobility-Diensts vor 9.7.0.0 ausführen oder Sie aus anderen Gründen den Agent manuell installieren müssen, führen Sie die folgenden Schritte aus:  
 
+1. Stellen Sie sicher, dass Sie auf dem virtuellen Computer über Administratorberechtigungen verfügen.
+2. Laden Sie das [Installationsprogramm für den Azure-VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter.
+3. Führen Sie die Datei mit dem Installationsprogramm aus.
 
-1. Um den VM-Agent in VMs unter Windows zu installieren, laden Sie das [Agent-Installationsprogramm](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und führen Sie es aus. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen für die VM.
-2. Um den VM-Agent in VMs mit Linux zu installieren, installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird nicht empfohlen, den Linux-VM-Agent direkt von GitHub zu installieren. 
-
-
-## <a name="validate-the-installation-on-windows-vms"></a>Überprüfen der Installation auf Windows-VMs
+#### <a name="validate-the-installation"></a>Überprüfen der Installation
+So überprüfen Sie, ob der Agent installiert ist
 
 1. In der Azure-VM sollte im Ordner „C:\WindowsAzure\Packages“ die Datei „WaAppAgent.exe“ vorhanden sein.
 2. Klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie in **Eigenschaften** die Registerkarte **Details** aus.
 3. Im Feld **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein.
 
+[Erfahren Sie mehr](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) über die Agent-Installation unter Windows.
+
+### <a name="install-the-agent-on-linux-vms"></a>Installieren des Agents auf virtuellen Linux-Computern
+
+Installieren Sie den [Azure-Linux-VM](../virtual-machines/extensions/agent-linux.md)-Agent manuell wie folgt:
+
+1. Stellen Sie sicher, dass Sie auf dem virtuellen Computer über Administratorberechtigungen verfügen.
+2. Es wird dringend empfohlen, den Linux-VM-Agent mit einem RPM- oder DEB-Paket aus dem Paketrepository der Distribution zu installieren. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) in ihre jeweiligen Images und Repositorys integriert.
+    - Es wird dringend empfohlen, den Agent nur über ein Repository der Distribution zu aktualisieren.
+    - Wir raten davon ab, den Linux-VM-Agent direkt von GitHub zu installieren und dann zu aktualisieren.
+    -  Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. 
+
+#### <a name="validate-the-installation"></a>Überprüfen der Installation 
+
+1. Führen Sie den Befehl **ps -e** aus, um sicherzustellen, dass der Azure-Agent auf dem virtuellen Linux-Computer ausgeführt wird.
+2. Wenn der Prozess nicht ausgeführt wird, starten Sie ihn mit den folgenden Befehlen neu:
+    - Für Ubuntu: **service walinuxagent start**
+    - Für andere Distributionen: **service waagent start**
 
 
-## <a name="migration-from-vmware-vms-or-physical-servers"></a>Migration von VMware-VMs oder physischen Servern
+## <a name="uninstall-the-mobility-service"></a>Deinstallieren des Mobility-Diensts
 
-Wenn Sie lokale VMware-VMs (oder physische Server) in Azure migrieren, beachten Sie Folgendes:
-
-- Sie müssen den Azure-VM-Agent nur dann installieren, wenn der auf dem migrierten Computer installierte Mobility-Dienst die Version 9.6 oder früher hat.
-- Bei Windows-VMs mit Version 9.7.0.0.0 des Mobility-Dienstes installiert das Dienstinstallationsprogramm den neuesten verfügbaren Azure-VM-Agent. Bei der Migration erfüllen diese VMs bereits die Installationsvoraussetzungen des Agents für beliebige VM-Erweiterungen, einschließlich Site Recovery-Erweiterung.
-- Sie müssen den Mobility-Dienst manuell von der Azure-VM deinstallieren, indem Sie eine der folgenden Methoden verwenden. Bevor Sie die Replikation konfigurieren, starten Sie die VM neu.
+1. Deinstallieren Sie den Mobility-Dienst manuell auf dem virtuellen Azure-Computer mit einer der folgenden Methoden. 
     - Unter Windows deinstallieren Sie in „Systemsteuerung“ > **Software**  den Eintrag **Microsoft Azure Site Recovery Mobility Service/Masterzielserver**. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten Folgendes aus:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
@@ -59,8 +79,9 @@ Wenn Sie lokale VMware-VMs (oder physische Server) in Azure migrieren, beachten 
         ```
         uninstall.sh -Y
         ```
-
+2. Bevor Sie die Replikation konfigurieren, starten Sie die VM neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+[Behandeln von Problemen](site-recovery-extension-troubleshoot.md) mit der Site Recovery-Erweiterung auf dem Azure-VM-Agent.
 [Schnelles Replizieren](azure-to-azure-quickstart.md) einer Azure-VM in eine sekundäre Region

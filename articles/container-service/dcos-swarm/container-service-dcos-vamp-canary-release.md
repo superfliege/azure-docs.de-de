@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 647923ce87e66314d7a95beb88cc842230f28774
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077070"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311216"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
 
@@ -44,7 +44,7 @@ In dieser exemplarischen Vorgehensweise richten wir VAMP in Azure Container Serv
 
 ## <a name="set-up-vamp"></a>Einrichten von VAMP
 
-Nachdem der DC/OS-Cluster in Betrieb genommen wurde, können Sie VAMP über die DC/OS-Benutzeroberfläche (http://localhost:80) installieren. 
+Nachdem das DC/OS-Cluster in Betrieb genommen wurde, können Sie VAMP über die DC/OS-Benutzeroberfläche (http:\//localhost:80) installieren. 
 
 ![DC/OS-Benutzeroberfläche](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0ce02a92c0a2e803866b6f070dba113c566f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9ce388c53a28d6b04bf7685da397eade4b1fd94
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112210"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371773"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
 
@@ -55,7 +55,7 @@ Das folgende Diagramm zeigt, wie der gesamte implizite Anmeldevorgang aussieht, 
 Zur anfänglichen Anmeldung des Benutzers bei Ihrer App können Sie eine [OpenID Connect](v2-protocols-oidc.md)-Autorisierungsanforderung senden und ein `id_token` vom v2.0-Endpunkt abrufen.
 
 > [!IMPORTANT]
-> Zur erfolgreichen Anforderung eines ID-Tokens muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die Option **Impliziten Fluss zulassen** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: **The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘.** (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
+> Um ein ID-Token erfolgreich anfordern zu können, muss für die App-Registrierung im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) der Flow zur impliziten Genehmigung aktiviert sein. Zu diesem Zweck wählen Sie **Zugriffstoken** und **ID-Token** unter dem Abschnitt **Implizite Genehmigung** aus. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: **The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘.** (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
 
 ```
 // Line breaks for legibility only
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | erforderlich |Die Anwendungs-ID, die das Registrierungsportal ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) Ihrer Anwendung zugewiesen hat. |
+| `client_id` | required |Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `response_type` | required |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Kann auch den Antworttyp `token` enthalten. Mithilfe von `token` kann Ihre App ein Zugriffstoken direkt vom Autorisierungsendpunkt abrufen, ohne dass eine zweite Anforderung an den Autorisierungsendpunkt erforderlich ist. Wenn Sie den Antworttyp `token` verwenden, muss der `scope`-Parameter einen Bereich enthalten, der angibt, für welche Ressource das Token ausgestellt wird. |
 | `redirect_uri` | empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
 | `scope` | required |Eine durch Leerzeichen getrennte Liste von [Bereichen](v2-permissions-and-consent.md). Für OpenID Connect muss der Bereich `openid`enthalten sein, der auf der Zustimmungsbenutzeroberfläche die Anmeldeberechtigung ergibt. Schließen Sie gegebenenfalls auch die Bereiche `email` oder `profile` mit ein, um Zugriff auf zusätzliche Benutzerdaten zu erhalten. Sie können in diese Anforderung auch andere Bereiche aufnehmen, um die Zustimmung für verschiedene Ressourcen anzufordern. |

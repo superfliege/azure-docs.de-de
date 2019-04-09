@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ff14afc9e438c2b493219e9fa207b2e8793b3c87
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189205"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403073"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js  
 
@@ -55,7 +55,7 @@ Im ersten Schritt wird eine HTML-Standardseite mit dem **video**-Element erstell
 ```
 
 ## <a name="adding-the-dashjs-player"></a>Hinzufügen des Players "DASH.js"
-Zum Hinzufügen der Referenzimplementierung von „dash.js“ zu Ihrer Anwendung müssen Sie die Datei „dash.all.js“ vom dash.js-Projekt, Version 1.0, abrufen. Diese Datei sollte im JavaScript-Ordner der Anwendung gespeichert werden. Der gesamte dash.js-Code ist in dieser Datei bequem zusammengefasst. Wenn Sie sich das dash.js-Repository ansehen, finden Sie dort die einzelnen Dateien, den Testcode und vieles mehr. Wenn Sie allerdings nur „dash.js“ verwenden möchten, benötigen Sie nur die Datei „dash.all.js“.
+Zum Hinzufügen der Referenzimplementierung von „dash.js“ zu Ihrer Anwendung müssen Sie die Datei „dash.all.js“ von der neuesten Version des dash.js-Projekts abrufen. Diese Datei sollte im JavaScript-Ordner der Anwendung gespeichert werden. Der gesamte dash.js-Code ist in dieser Datei bequem zusammengefasst. Wenn Sie sich das dash.js-Repository ansehen, finden Sie dort die einzelnen Dateien, den Testcode und vieles mehr. Wenn Sie allerdings nur „dash.js“ verwenden möchten, benötigen Sie nur die Datei „dash.all.js“.
 
 Zum Hinzufügen des Players "dash.js" zu Ihren Anwendungen fügen Sie dem Anfangsabschnitt von "basicPlayer.html" ein Skript-Tag hinzu:
 

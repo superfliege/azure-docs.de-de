@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure MFA-Funktionen mithilfe vorhandener NPS-Server
+title: Bereitstellen von Azure MFA-Funktionen mithilfe vorhandener NPS-Server – Azure Active Directory
 description: Hinzufügen von cloudbasierten Funktionen für eine zweistufige Überprüfung zu Ihrer vorhandenen Authentifizierungsinfrastruktur
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108b188b0bbb63a4c9faea936360cf2fa3edc806
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211613"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311729"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: e1918d527afbe5aad647d84ab82889099f5f22b9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ccdb3e16ea60cf85ae28e533e3b2d9f473cc90c8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105800"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316387"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – IntelliJ
 
@@ -148,7 +148,7 @@ npm install
 npm start
 ```
 
-Nach Abschluss des Starts wird im Browser die Seite **http://localhost:3000/dashboard** angezeigt. Die Fehler auf dieser Seite sind zu erwarten. Um die Anwendung ohne Fehler anzuzeigen, führen Sie den folgenden Schritt aus.
+Nach Abschluss des Starts wird im Browser die Seite **http:\//localhost:3000/dashboard** angezeigt. Die Fehler auf dieser Seite sind zu erwarten. Um die Anwendung ohne Fehler anzuzeigen, führen Sie den folgenden Schritt aus.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurieren und Ausführen von NGINX
 
@@ -161,7 +161,7 @@ Weitere Informationen zum Ausführen von **NGINX** finden Sie unter [nginx for W
 
 ### <a name="connect-to-the-dashboard"></a>Verbinden mit dem Dashboard
 
-Navigieren Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung in Ihrem Browser zu [http://localhost:9000](http://localhost:9000).
+Navigieren Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung in Ihrem Browser zu „http:\//localhost:9000“.
 
 ## <a name="clean-up"></a>Bereinigen
 

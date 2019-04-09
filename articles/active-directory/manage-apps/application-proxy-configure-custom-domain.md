@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106796"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359826"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
 
@@ -60,7 +60,8 @@ Wenn diese drei Anforderungen erfüllt sind, können Sie die folgenden Schritte 
 
 6. Laden Sie das PFX-Zertifikat hoch, und geben Sie das Kennwort für das Zertifikat ein. 
 7. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. 
-8. Fügen Sie einen [DNS-Eintrag](../../dns/dns-operations-recordsets-portal.md) hinzu, mit dem die neue externe URL an die Domäne „msappproxy.net“ geleitet wird. 
+8. Fügen Sie einen [DNS-Eintrag](../../dns/dns-operations-recordsets-portal.md) hinzu, mit dem die neue externe URL an die Domäne „msappproxy.net“ geleitet wird.
+9. Überprüfen Sie, ob der DNS-Eintrag ordnungsgemäß konfiguriert ist. Führen Sie dazu den Befehl [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) aus, um zu ermitteln, ob die externe URL erreichbar ist und die Domäne „msapproxy.net“ als Alias angezeigt wird.
 
 >[!TIP] 
 >Sie müssen nur ein Zertifikat pro benutzerdefinierter Domäne hochladen. Nachdem Sie ein Zertifikat hochgeladen haben, können Sie die benutzerdefinierte Domäne beim Veröffentlichen einer neuen App auswählen. Mit Ausnahme des DNS-Eintrags sind keine weiteren Konfigurationsschritte erforderlich. 

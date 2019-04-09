@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 212e45a7b593a9607aa19a10efdf2aaf61c78d17
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f42a97cdd74d360bc047ef561cbe626d526f9e4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124492"
 ---
 Das Domain Name System (DNS) erleichtert das Auffinden von Ressourcen im Internet. Wenn Sie zum Beispiel eine Adresse in Ihrem Browser eingeben, oder Sie auf einen Link innerhalb einer Website klicken, so übersetzt DNS die Domäne in eine IP-Adresse. Die IP-Adresse ist mit Straße und Hausnummer vergleichbar, aber sie ist nicht sehr einprägsam. Ein DNS-Name wie **contoso.com** lässt sich beispielsweise viel leichter merken als eine IP-Adresse wie 192.168.1.88 oder 2001:0:4137:1f67:24a2:3888:9cce:fea3.
 
@@ -27,12 +27,10 @@ Azure-Websites wird beim Erstellen automatisch ein DNS-Name zugewiesen. Dieser N
 Es gibt auch mehrere Eintragstypen, jeder mit eigenen Funktionen und Beschränkungen, bei als Traffic Manager-Endpunkte konfigurierten Websites interessieren wir uns jedoch nur für den Eintrag *CNAME* .
 
 ### <a name="cname-or-alias-record"></a>CNAME- oder Alias-Eintrag
-Ein CNAME-Eintrag weist einen *spezifischen* DNS-Namen, z.B. **mail.contoso.com** oder **www.contoso.com**, einem anderen (kanonischen) Domänennamen zu. Bei Azure-Websites, die Traffic Manager verwenden, ist der kanonische Domänenname der Domänenname **&lt;MeineApp>.trafficmanager.net** Ihres Traffic Manager-Profils. Nach dem Erstellen legt CNAME einen Alias für den Domänennamen **&lt;MeineApp>.trafficmanager.net** an. Der CNAME-Eintrag wird automatisch in die IP-Adresse Ihres Domänennamens **&lt;MeineApp>.trafficmanager.net** aufgelöst. Daher müssen Sie nichts weiter tun, wenn sich die IP-Adresse der Website ändert.
+Ein CNAME-Eintrag weist einen *spezifischen* DNS-Namen, z.B. **mail.contoso.com** oder **www\.contoso.com**, einem anderen (kanonischen) Domänennamen zu. Bei Azure-Websites, die Traffic Manager verwenden, ist der kanonische Domänenname der Domänenname **&lt;MeineApp>.trafficmanager.net** Ihres Traffic Manager-Profils. Nach dem Erstellen legt CNAME einen Alias für den Domänennamen **&lt;MeineApp>.trafficmanager.net** an. Der CNAME-Eintrag wird automatisch in die IP-Adresse Ihres Domänennamens **&lt;MeineApp>.trafficmanager.net** aufgelöst. Daher müssen Sie nichts weiter tun, wenn sich die IP-Adresse der Website ändert.
 
 Beim Traffic Manager eingehender Datenverkehr wird nach der Lastenausgleichsmethode, für die er konfiguriert ist, an Ihre Website geroutet. Für die Besucher Ihrer Website ist dieser Vorgang vollständig transparent. Sie sehen nur den benutzerdefinierten Domänennamen in ihrem Browser.
 
 > [!NOTE]
-> Bei einigen Domänenregistrierungen können Sie Unterdomänen nur mit einem CNAME-Eintrag wie **www.contoso.com** und nicht mit einem Stammnamen wie **contoso.com** zuweisen. Weitere Informationen zu CNAME-Datensätzen finden Sie in der durch Ihre Registrierung zur Verfügung gestellten Dokumentation, <a href="https://en.wikipedia.org/wiki/CNAME_record">dem Wikipedia-Eintrag "CNAME Resource Record"</a> oder dem Dokument <a href="https://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> (IEFT-Domänennamen – Implementierung und Spezifizierung, in englischer Sprache).
-> 
-> 
+> Bei einigen Domänenregistrierungen können Sie Unterdomänen nur mit einem CNAME-Eintrag wie **www\.contoso.com** zuweisen und nicht mit einem Stammnamen wie **contoso.com**. Weitere Informationen zu CNAME-Datensätzen finden Sie in der durch Ihre Registrierung zur Verfügung gestellten Dokumentation, <a href="https://en.wikipedia.org/wiki/CNAME_record">dem Wikipedia-Eintrag "CNAME Resource Record"</a> oder dem Dokument <a href="https://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> (IEFT-Domänennamen – Implementierung und Spezifizierung, in englischer Sprache).
 

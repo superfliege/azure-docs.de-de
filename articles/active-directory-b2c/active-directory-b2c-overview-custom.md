@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187163"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417932"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -29,10 +29,10 @@ Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihr
 |-|-------------------|-----------------|
 | Zielbenutzer | Alle Anwendungsentwickler mit oder ohne Identitätskenntnissen | Identitätsexperten, Systemintegratoren, Berater und interne Identitätsteams. Sie sind mit OpenID Connect-Flows sowie Identitätsanbietern und anspruchsbasierten Authentifizierungen vertraut. |
 | Konfigurationsmethode | Azure-Portal mit benutzerfreundlicher Benutzeroberfläche (User Interface, UI) | Direktes Bearbeiten von XML-Dateien und anschließendes Hochladen in das Azure-Portal |
-| Anpassung der Benutzeroberfläche | Vollständige Anpassung der Benutzeroberfläche einschließlich HTML und CSS<br><br>Unterstützung mehrerer Sprachen mit benutzerdefinierten Zeichenfolgen | identisch |
+| Anpassung der Benutzeroberfläche | Vollständige Anpassung der Benutzeroberfläche einschließlich HTML, CSS und JavaScript.<br><br>Unterstützung mehrerer Sprachen mit benutzerdefinierten Zeichenfolgen | identisch |
 | Anpassung von Attributen | Standard- und benutzerdefinierte Attribute | identisch |
 | Token- und Sitzungsverwaltung | Benutzerdefinierte Token und mehrere Sitzungsoptionen | identisch |
-| Identitätsanbieter | Vordefinierter lokaler oder Social Media-Anbieter | Standardbasierte OIDC-, OAUTH- und SAML-Protokolle |
+| Identitätsanbieter | Vordefinierte lokale Anbieter oder Anbieter für soziale Netzwerke und die meisten OIDC-Identitätsanbieter, z. B. der Verbund mit Azure Active Directory-Mandanten. | Standardbasierte OIDC-, OAUTH- und SAML-Protokolle  Die Authentifizierung ist auch mithilfe der Integration von REST-APIs möglich. |
 | Identitätsaufgaben | Registrierung oder Anmeldung mit lokalen Konten oder vielen Konten für soziale Netzwerke<br><br>Self-Service-Kennwortzurücksetzung<br><br>Profilbearbeitung<br><br>Multi-Factor Authentication<br><br>Anpassung von Token und Sitzungen<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei Benutzerflows mit benutzerdefinierten Identitätsanbietern aus, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie ein Benutzerkonto bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von Azure AD B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
 
 ## <a name="policy-files"></a>Richtliniendateien

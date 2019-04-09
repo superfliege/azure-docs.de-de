@@ -6,22 +6,22 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428618"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286011"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
 
 Dieser Artikel enthält Informationen zur Problembehandlung zum Schutz von SQL Server-VMs in Azure (Vorschau).
 
-## <a name="public-preview-limitations"></a>Einschränkungen der Public Preview
+## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen
 
-Informationen zum Anzeigen der Einschränkungen der öffentlichen Vorschau finden im Artikel [Sichern einer SQL Server-Datenbank in Azure](backup-azure-sql-database.md#preview-limitations).
+Informationen zum Anzeigen der Funktionsaspekte finden Sie im Artikel [Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>SQL Server-Berechtigungen
 
@@ -37,7 +37,7 @@ Verwenden Sie die Informationen in den folgenden Tabellen, um Probleme und Fehle
 
 | Severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|---|
-| Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen keine bestimmten Typen von Sicherungen, die in der zugehörigen Richtlinie enthalten sind. | <li>**Master-Datenbank**: Auf der Master-Datenbank kann nur eine vollständige Datenbanksicherung durchgeführt werden; es sind weder **differentielle** Sicherungen noch Sicherungen von **Transaktionsprotokollen** möglich. </li> <li>Datenbanken im **einfachen Wiederherstellungsmodell** erlauben nicht die Sicherung von **Transaktionsprotokollen**.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Alternativ können Sie die aktuelle Richtlinie so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer Ad-Hoc Sicherung fehl.
+| Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen keine bestimmten Typen von Sicherungen, die in der zugehörigen Richtlinie enthalten sind. | <li>**Master-Datenbank**: In der Masterdatenbank kann nur eine vollständige Datenbanksicherung durchgeführt werden. Es sind weder **differenzielle** Sicherungen noch Sicherungen von **Transaktionsprotokollen** möglich. </li> <li>Datenbanken im **einfachen Wiederherstellungsmodell** erlauben nicht die Sicherung von **Transaktionsprotokollen**.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Alternativ können Sie die aktuelle Richtlinie so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer Ad-hoc-Sicherung fehl.
 
 
 ## <a name="backup-failures"></a>Sicherungsfehler
@@ -61,7 +61,7 @@ In den folgenden Tabellen sind nach Fehlercode geordnet.
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Protokollkette ist unterbrochen. | Die Datenbank oder der virtuelle Computer wird mit einer anderen Sicherungslösung gesichert, die die Protokollkette abschneidet.|<ul><li>Überprüfen Sie, ob eine andere Sicherungslösung oder ein anderes Skript verwendet wird. Wenn dies der Fall ist, beenden Sie die anderen Sicherungslösung. </li><li>Wenn die Sicherung eine Ad-hoc-Protokollsicherung war, lösen Sie eine vollständige Sicherung aus, um eine neue Protokollkette zu starten. Für geplante Protokollsicherungen ist keine Aktion erforderlich, da Azure Backup-Dienst zur Behebung des Problems automatisch eine vollständige Sicherung auslöst.</li>|
+| Protokollkette ist unterbrochen. | Die Datenbank oder der virtuelle Computer wird mit einer anderen Sicherungslösung gesichert, die die Protokollkette abschneidet.|<ul><li>Überprüfen Sie, ob eine andere Sicherungslösung oder ein anderes Skript verwendet wird. Wenn dies der Fall ist, beenden Sie die anderen Sicherungslösung. </li><li>Wenn die Sicherung eine Ad-hoc-Protokollsicherung war, sollten Sie eine vollständige Sicherung auslösen, um eine neue Protokollkette zu starten. Für geplante Protokollsicherungen ist keine Aktion erforderlich, da Azure Backup-Dienst zur Behebung des Problems automatisch eine vollständige Sicherung auslöst.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -80,7 +80,7 @@ In den folgenden Tabellen sind nach Fehlercode geordnet.
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Sicherung nicht möglich, da das Transaktionsprotokoll für die Datenquelle voll ist. | Das Transaktionsprotokoll der Datenbank ist voll. | Um dieses Problem zu beheben, lesen Sie die[SQL-Dokumentation](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Diese SQL-Datenbank unterstützt nicht den angeforderten Sicherungstyp. | Sekundäre Always On-Verfügbarkeitsgruppen-Replikate unterstützen keine vollständigen und differenziellen Sicherungen. | <ul><li>Wenn Sie eine Ad-hoc-Sicherung ausgelöst haben, lösen Sie die Sicherungen auf dem primären Knoten aus.</li><li>Wenn die Sicherung gemäß einer Richtlinie geplant wurde, stellen Sie sicher, dass der primäre Knoten registriert ist. Um den Knoten zu registrieren,[führen Sie die Schritte zum Ermitteln einer SQL Server-Datenbank](backup-azure-sql-database.md#discover-sql-server-databases) aus.</li></ul> |
+| Diese SQL-Datenbank unterstützt nicht den angeforderten Sicherungstyp. | Sekundäre Always On-Verfügbarkeitsgruppen-Replikate unterstützen keine vollständigen und differenziellen Sicherungen. | <ul><li>Wenn Sie eine Ad-hoc-Sicherung ausgelöst haben, sollten Sie die Sicherungen auf dem primären Knoten auslösen.</li><li>Wenn die Sicherung gemäß einer Richtlinie geplant wurde, stellen Sie sicher, dass der primäre Knoten registriert ist. Um den Knoten zu registrieren,[führen Sie die Schritte zum Ermitteln einer SQL Server-Datenbank](backup-sql-server-database-azure-vms.md#discover-sql-server-databases) aus.</li></ul> |
 
 ## <a name="restore-failures"></a>Wiederherstellen von Fehlern
 
@@ -136,6 +136,35 @@ Die folgenden Fehlercodes gelten für Fehler, die beim Konfigurieren der Sicheru
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Der beabsichtigte automatische Schutz wurde entweder entfernt oder ist nicht mehr gültig. | Wenn Sie den automatischen Schutz für eine SQL-Instanz aktivieren, werden Aufträge des Typs **Sicherung konfigurieren** für alle Datenbanken in dieser Instanz ausgeführt. Wenn Sie den automatischen Schutz während der Ausführung der Aufträge deaktivieren, werden die Aufträge des Typs **In Bearbeitung** mit diesem Fehlercode abgebrochen. | Aktivieren Sie den automatischen Schutz erneut, um alle restlichen Datenbanken zu schützen. |
+
+## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
+
+Überprüfen Sie vor dem Auslösen der erneuten Registrierung, ob ein oder mehrere [Symptome](#symptoms) vorhanden sind.
+
+### <a name="symptoms"></a>Symptome
+
+* Für alle Vorgänge, z. B. Sicherung, Wiederherstellung und Sicherungskonfiguration, tritt auf der VM ein Fehler mit einem der folgenden Fehlercodes auf: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**
+* Als **Sicherungsstatus** für das Sicherungselement wird **Nicht erreichbar** angezeigt. Sie müssen aber alle anderen Ursachen ausschließen, die ggf. zu demselben Status führen können:
+
+  * Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM  
+  * VM wurde heruntergefahren, sodass keine Sicherungen durchgeführt werden können
+  * Netzwerkfehler  
+
+    ![Erneutes Registrieren der VM](./media/backup-azure-sql-database/re-register-vm.png)
+
+* Bei einer Always On-Verfügbarkeitsgruppe: Für die Sicherungen ist ein Fehler aufgetreten, nachdem Sie die Sicherungseinstellung geändert haben oder als ein Failover durchgeführt wurde
+
+### <a name="causes"></a>Ursachen
+Zu diesen Symptomen kann es aufgrund von einer oder mehreren der folgenden Ursachen kommen:
+
+  * Erweiterung wurde gelöscht oder im Portal deinstalliert 
+  * Erweiterung wurde in der **Systemsteuerung** der VM unter **Programm deinstallieren oder ändern** deinstalliert
+  * Wiederherstellung der VM wurde über einen oder mehrere direkte Datenträger durchgeführt
+  * VM wurde für längere Zeit heruntergefahren, da die Erweiterungskonfiguration dafür abgelaufen ist
+  * VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt
+  * Einer der Knoten der Verfügbarkeitsgruppe hat nicht die vollständige Sicherungskonfiguration erhalten. Dies kann entweder bei der Registrierung der Verfügbarkeitsgruppe im Tresor oder beim Hinzufügen eines neuen Knotens passieren.  <br>
+    Für die obigen Szenarien wird empfohlen, auf der VM den Vorgang für die erneute Registrierung auszulösen. Diese Option ist nur über PowerShell verfügbar. Sie wird in Kürze auch im Azure-Portal verfügbar sein.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

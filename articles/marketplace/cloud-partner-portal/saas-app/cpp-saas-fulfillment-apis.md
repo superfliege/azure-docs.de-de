@@ -14,19 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9c3fbe7cd7ebd41f59be360f40d66b8d38dbce5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319275"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349517"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS-Fulfillment-APIs
 
 Mit der SaaS-Fulfillment-API können unabhängige Softwarehersteller (ISVs) ihre SaaS-Anwendungen in den Azure Marketplace integrieren. Mit dieser API können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Diese API ist eine Voraussetzung für die Auflistung transaktionsfähiger SaaS-Angebote im Azure Marketplace.
-
-Die aktuelle Version dieser API ist Version 2, die für alle neuen SaaS-Angebote verwendet werden sollte.  Version 1 der API ist veraltet und wird zur Unterstützung vorhandener Angebote noch gepflegt.
-
 
 ## <a name="business-model-support"></a>Geschäftsmodellunterstützung
 
@@ -40,4 +37,4 @@ Diese API unterstützt die folgenden Geschäftsmodellfunktionen für folgende Au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie für die Entwicklung die aktuelle Version dieser Schnittstelle: [SaaS Fulfillment API Version 2](./cpp-saas-fulfillment-api-v2.md).
+Verwenden Sie diese Schnittstelle für die Entwicklung: [SaaS Fulfillment API Version 2](./cpp-saas-fulfillment-api-v2.md).

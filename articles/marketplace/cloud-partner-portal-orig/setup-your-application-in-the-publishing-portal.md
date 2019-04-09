@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847126"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310016"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Einrichten Ihrer Anwendung im Veröffentlichungsportal
 
@@ -53,7 +53,7 @@ Das Formular für die Angebotseinstellungen ist ein grundlegendes Formular, in d
 
 Dies ist ein eindeutiger Bezeichner für das Angebot innerhalb eines Herausgeberprofils. Diese ID wird in den Produkt-URLs angezeigt. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Bindestrich enden und darf höchstens 50 Zeichen umfassen. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
 
-Wenn z. B. der Herausgeber **„Contoso“** ein Angebot mit der Angebots-ID **„sample-WebApp“** veröffentlicht, wird diese in AppSource als „https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview“ angezeigt.
+Wenn z.B. der Verleger **„contoso“** ein Angebot mit der Angebots-ID **„sample-WebApp“** erstellt, wird dieses in AppSource wie folgt angezeigt: „https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview“.
 
 ### <a name="publisher-id"></a>Herausgeber-ID
 

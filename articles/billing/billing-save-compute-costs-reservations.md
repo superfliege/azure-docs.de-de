@@ -2,23 +2,18 @@
 title: Was sind Azure-Reservierungen? | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Azure-Reservierungen und -Preise, um Kosten für virtuelle Computer, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen und andere Ressourcen zu sparen.
 services: billing
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/06/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: a4ad3574849d3c80f671abc93e463b06454289e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3081ab352152d6d736f20da94ed0b513121e231b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904166"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401798"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -44,17 +39,11 @@ Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungsk
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Wer ist zum Erwerb einer Reservierung berechtigt?
 
-Azure-Kunden mit den folgenden Abonnementtypen können eine Reservierung erwerben:
+Um einen Plan zu kaufen, müssen Sie eine Rolle des Abonnementverantwortlichen bei einem Enterprise-Abonnement (MS-AZR-0017P oder MS-AZR-0148P) oder einem Abonnement mit nutzungsbasierter Zahlung (MS-AZR-003P oder MS-AZR-0023P) haben. Cloudlösungsanbieter können Azure-Reservierungen über das Azure-Portal oder  [Partner Center](/partner-center/azure-reservations)  erwerben.
 
-- Enterprise Agreement-Abonnement als Angebotstyp (MS-AZR-0017P oder MS-AZR-0148P).
-- Abonnement mit nutzungsbasierter Zahlung als Angebotstyp (MS-AZR-003P oder MS-AZR-0023P).
-- CSP-Partner (Cloud Solution Provider, Cloudlösungsanbieter) können Azure-Reservierungen über das Azure-Portal oder [Partner Center](https://docs.microsoft.com/partner-center/azure-reservations) erwerben.
+EA-Kunden können Käufe für EA-Administratoren beschränken, indem sie die Option **Reservierte Instanzen hinzufügen** in EA-Portal deaktivieren. EA-Administratoren müssen der Besitzer für mindestens ein EA-Abonnement sein, um eine Reservierung zu erwerben. Die Option ist nützlich für Unternehmen, die ein zentralisiertes Team benötigen, um Reservierungen für verschiedene Kostenstellen einzukaufen. Nach dem Kauf können zentralisierte Teams die Reservierungen um Kostenstellenbesitzer erweitern. Die Besitzer können dann die Reservierung auf ihre Abonnements ausdehnen. Das zentrale Team muss keinen Zugriff des Abonnenten haben, wenn die Reservierung gekauft wird.
 
 Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen einer der Abonnementtypen „Enterprise“, „Nutzungsbasierte Bezahlung“ oder „CSP“ zugeordnet ist.
-
- Gehen Sie wie folgt vor, um einen Plan zu erwerben:
-
-- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Zahlung zugeordnet sein.
 
 ## <a name="how-is-a-reservation-billed"></a>Wie wird eine Reservierung abgerechnet?
 

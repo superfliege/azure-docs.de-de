@@ -1,6 +1,6 @@
 ---
-title: DMZ-Beispiel – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs | Microsoft Docs
-description: Erstellen einer DMZ mit einer Firewall und Netzwerksicherheitsgruppen (NSGs)
+title: Umkreisnetzwerk-Beispiel – Erstellen eines Umkreisnetzwerks zum Schutz von Anwendungen mit einer Firewall und NSGs | Microsoft-Dokumentation
+description: Erstellen eines Umkreisnetzwerks mit einer Firewall und Netzwerksicherheitsgruppen (NSGs)
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,263 +14,274 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 31d945f64cccd0c811d4dc45163583224102fb8a
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e0271c9212b093bd803518ebeaa4b7d9682cc773
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965238"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997468"
 ---
-# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Beispiel 2 – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs
-[Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
+# <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>Beispiel 2: Erstellen eines Umkreisnetzwerks zum Schutz von Anwendungen mit einer Firewall und NSGs
+[Zurück zur Seite für Microsoft-Clouddienste und Netzwerksicherheit][HOME]
 
-In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
+Dieses Beispiel zeigt die Erstellung eines Umkreisnetzwerks (auch als *DMZ*, *entmilitarisierte Zone* und *überwachtes Subnetz* bezeichnet) mit einer Firewall, vier Windows Server-Computern und Netzwerksicherheitsgruppen (NSGs). Es enthält Details zu jedem der relevanten Befehle, um ein besseres Verständnis der einzelnen Schritte zu vermitteln. Der Abschnitt „Datenverkehrsszenarien“ enthält eine Schritt-für-Schritt-Beschreiung der Bewegung von Datenverkehr durch die Verteidigungslinien im Umkreisnetzwerk. Der Abschnitt „Referenzen“ schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können.
 
-![Eingehende DMZ mit virtuellem Netzwerkgerät und NSG][1]
+![Eingehende Umkreisnetzwerk-Verbindungen mit virtuellem Netzwerkgerät und NSG][1]
 
-## <a name="environment-description"></a>Beschreibung der Umgebung
-Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
+## <a name="environment"></a>Environment 
+Dieses Beispiel basiert auf einem Szenario mit einem Azure-Abonnement, das diese Elemente enthält:
 
-* Zwei Clouddienste: „FrontEnd001“ und „BackEnd001“
-* Ein virtuelles Netzwerk „CorpNetwork“ mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
-* Eine einzelne Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
-* Ein virtuelles Netzwerkgerät, in diesem Fall eine Barracuda NextGen-Firewall, das mit dem Front-End-Subnetz verbunden ist
-* Eine Windows Server-Instanz, die einen Anwendungswebserver darstellt ("IIS01")
-* Zwei Windows Server-Instanzen, die Back-End-Anwendungsserver darstellen ("AppVM01", "AppVM02")
-* Eine Windows Server-Instanz, die einen DNS-Server darstellt ("DNS01")
+* Zwei Clouddienste: „FrontEnd001“ und „BackEnd001“.
+* Ein virtuelles Netzwerk mit dem Namen „CorpNetwork“, das zwei Subnetze aufweist: „FrontEnd“ und „BackEnd“.
+* Eine einzelne NSG, die auf beide Subnetze angewendet wird.
+* Ein virtuelles Netzwerkgerät: Eine Barracuda NextGen-Firewall, die mit dem FrontEnd-Subnetz verbunden ist.
+* Einen Windows-Server, der einen Anwendungswebserver darstellt: „IIS01“.
+* Zwei Windows Server-Computer, die Anwendungs-Back-End-Server darstellen: „AppVM01“ und „AppVM02“.
+* Einen Windows Server-Computer, der einen DNS-Server darstellt: „DNS01“.
 
 > [!NOTE]
-> In diesem Beispiel wird zwar eine Barracuda NextGen-Firewall verwendet, aber es könnten auch andere virtuelle Netzwerkgeräte eingesetzt werden.
+> In diesem Beispiel wird zwar eine Barracuda NextGen-Firewall verwendet, es könnten aber viele virtuelle Netzwerkgeräte verwendet werden.
 > 
 > 
 
-Der Referenzabschnitt enthält ein PowerShell-Skript, mit dem sich der größte Teil der oben beschriebenen Umgebung erstellen lässt. Die Erstellung der virtuellen Computer und Netzwerke wird zwar durch das Beispielskript ausgeführt, aber dies wird in diesem Dokument nicht im Einzelnen beschrieben.
+Mithilfe des PowerShell-Skripts im Abschnitt „Referenzen“ dieses Artikels lässt sich der größte Teil der hier beschriebenen Umgebung erstellen. Die VMs und virtuellen Netzwerke werden durch das Skript erstellt, diese Prozesse sind in diesem Dokument jedoch nicht im Detail beschrieben.
 
 So erstellen Sie die Umgebung:
 
-1. Speichern Sie die im Referenzabschnitt enthaltene und mit dem Namen, dem Speicherort und den IP-Adressen für das jeweilige Szenario aktualisierte XML-Netzwerkkonfigurationsdatei.
-2. Aktualisieren Sie die Benutzervariablen im Skript gemäß der Umgebung, in der das Skript ausgeführt werden soll (Abonnements, Dienstnamen usw.).
+1. Speichern Sie die im Referenzabschnitt enthaltene und mit den Namen, den Speicherorten und den IP-Adressen für Ihr Szenario aktualisierte XML-Netzwerkkonfigurationsdatei.
+2. Aktualisieren Sie die definierten Benutzervariablen im PowerShell-Skript gemäß der Umgebung, in der das Skript ausgeführt werden soll (Abonnements, Dienstnamen usw.).
 3. Führen Sie das Skript in PowerShell aus.
 
-**Hinweis**: Die im PowerShell-Skript angegebene Region muss der Region in der XML-Netzwerkkonfigurationsdatei entsprechen.
+> [!NOTE]
+> Die im PowerShell-Skript angegebene Region muss mit der Region übereinstimmen, die in der Netzwerkkonfigurations-XML-Datei angegeben ist.
+>
+>
 
-Nachdem das Skript erfolgreich ausgeführt wurde, können folgende Schritte ausgeführt werden:
+Nach der erfolgreichen Ausführung des Skripts können Sie diese Schritte ausführen:
 
-1. Richten Sie die Firewallregeln ein. Dieses Thema wird im unteren Abschnitt beschrieben: „Firewallregeln“.
-2. Optional stehen im Referenzabschnitt zwei Skripts zum Einrichten des Webservers und des Anwendungsservers mit einer einfachen Webanwendung zur Verfügung, um Tests mit dieser DMZ-Konfiguration zu ermöglichen.
+1. Einrichten der Firewallregeln. Informationen dazu finden Sie im Abschnitt „Firewallregeln“ dieses Artikels.
+2. Wenn Sie es wünschen, können Sie den Webserver und den App-Server mit einer einfachen Webanwendung einrichten, um Tests mit dieser Konfiguration des Umkreisnetzwerks zu ermöglichen. Sie können die zwei Anwendungsskripts verwenden, die im Abschnitt „Referenzen“ bereitstehen.
 
-Im nächsten Abschnitt werden die meisten Skriptanweisungen für Netzwerksicherheitsgruppen beschrieben.
+Im nächsten Abschnitt werden die meisten der Anweisungen im Skript erläutert, die sich auf NSGs beziehen.
 
-## <a name="network-security-groups-nsg"></a>Netzwerksicherheitsgruppen
-Für dieses Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit sechs Regeln geladen. 
+## <a name="nsgs"></a>NSGs
+In diesem Beispiel wird eine Netzwerksicherheitsgruppe (NSG) erstellt und dann mit sechs Regeln geladen.
 
 > [!TIP]
-> Im Allgemeinen sollten Sie zuerst die spezifischeren Regeln zum Zulassen von Aktionen und danach die allgemeineren Regeln zum Ablehnen von Aktionen erstellen. Die zugewiesene Priorität bestimmt, welche Regeln zuerst ausgewertet werden. Sobald eine Regel auf den Datenverkehr zutrifft, werden keine weiteren Regeln ausgewertet. NSG-Regeln können sowohl in eingehender als auch in ausgehender Richtung zutreffen (aus Perspektive des Subnetzes).
+> Im Allgemeinen sollten Sie zuerst die spezifischeren Regeln zum Zulassen von Aktionen und danach die allgemeineren Regeln zum Ablehnen von Aktionen erstellen. Die zugewiesene Priorität steuert, welche Regeln zuerst ausgewertet werden. Sobald Datenverkehr erkannt wird, auf den eine Regel zutrifft, werden keine weiteren Regeln ausgewertet. NSG-Regeln können sowohl in eingehender als auch in ausgehender Richtung (aus Sicht des Subnetzes) angewendet werden.
 > 
 > 
 
-Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
+Deklarativ werden diese Regeln für eingehenden Datenverkehr erstellt:
 
 1. Interner DNS-Datenverkehr (Port 53) wird zugelassen.
-2. RDP-Datenverkehr (Port 3389) aus dem Internet zu jedem virtuellen Computer wird zugelassen.
-3. HTTP-Datenverkehr (Port 80) über das Internet an den NVA (Firewall) wird zugelassen.
-4. Jeglicher Datenverkehr (alle Ports) von IIS01 zu AppVM1 wird zugelassen.
-5. Jeglicher Datenverkehr (alle Ports) aus dem Internet in das gesamte VNet (beide Subnetze) wird abgelehnt.
-6. Jeglicher Datenverkehr (alle Ports) vom Front-End-Subnetz zum Back-End-Subnetz wird abgelehnt.
+2. RDP-Datenverkehr (Port 3389) aus dem Internet zu jedem virtuellen Computer wird zugelassen.
+3. HTTP-Datenverkehr (Port 80) über das Internet an das virtuelle Netzwerkgerät (Firewall) wird zugelassen.
+4. Der gesamte Datenverkehr (alle Ports) von IIS01 an AppVM01 wird zugelassen.
+5. Der gesamte Datenverkehr (alle Ports) aus dem Internet in das gesamte virtuelle Netzwerk (beide Subnetze) wird abgelehnt.
+6. Der gesamte Datenverkehr (alle Ports) vom FrontEnd-Subnetz zum BackEnd-Subnetz wird abgelehnt.
 
-Wenn diese Regeln an jedes Subnetz gebunden sind und eine HTTP-Anforderung aus dem Internet an den Webserver eingeht, gilt sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Da Regel 3 aber eine höhere Priorität hat, wird nur diese Regel angewendet, und Regel 5 wird nicht berücksichtigt. Aus diesem Grund würde die HTTP-Anforderung für die Firewall als zulässig eingestuft werden. Falls derselbe Datenverkehr versuchen würde, den DNS01-Server zu erreichen, würde Regel 5 (Verweigern) zuerst gelten. Für den Datenverkehr wird die Übergabe an den Server also nicht zugelassen. Mit Regel 6 (Verweigern) wird die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz blockiert (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Dies dient dem Schutz des Back-End-Netzwerks, falls ein Angreifer die Webanwendung am Front-End attackiert. Der Angreifer hat dann nur beschränkten Zugriff auf das „geschützte“ Back-End-Netzwerk (nur auf Ressourcen, die auf dem Server AppVM01 verfügbar gemacht werden).
+Wenn diese Regeln an jedes Subnetz gebunden sind und eine HTTP-Anforderung aus dem Internet an den Webserver eingeht, scheint sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern) zu gelten. Da Regel 3 aber eine höhere Priorität hat, wird nur diese Regel angewendet. Regel 5 kommt nicht zur Anwendung. Die HTTP-Anforderung wird also zur Firewall durchgelassen.
 
-Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Zum Sperren von Datenverkehr in beiden Richtungen ist das benutzerdefinierte Routing erforderlich. Dies wird in einem anderen Beispiel behandelt, das im [Hauptdokument zu Sicherheitsgrenzen][HOME] enthalten ist.
+Falls derselbe Datenverkehr versuchen würde, den DNS01-Server zu erreichen, würde Regel 5 (Verweigern) zuerst gelten. Für den Datenverkehr wird die Übergabe an den Server also nicht zugelassen. Regel 6 (Verweigern) verhindert die Kommunikation des FrontEnd-Subnetzes mit dem BackEnd-Subnetz (mit Ausnahme von zulässigem Datenverkehr gemäß den Regeln 1 und 4). Dadurch wird das BackEnd-Netzwerk geschützt für den Fall, dass ein Angreifer die Webanwendung auf dem FrontEnd gefährdet. In diesem Fall hätte der Angreifer eingeschränkten Zugriff auf das „geschützte“ BackEnd-Netzwerk. (Der Angreifer könnte nur auf die auf dem AppVM01-Server verfügbar gemachten Ressourcen zugreifen.)
 
-Die oben beschriebenen NSG-Regeln weisen eine starke Ähnlichkeit mit den NSG-Regeln unter [Beispiel 1 – Erstellen einer einfachen DMZ mit NSGs][Example1] auf. Lesen Sie sich die NSG-Beschreibung in diesem Dokument durch, um ausführliche Informationen zu den einzelnen NSG-Regeln und ihren Attributen zu erhalten.
+Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine Ausgangsregeln geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich. Mehr über diese Technik erfahren Sie in einem anderen Beispiel im [Hauptdokument zu Sicherheitgrenzen][HOME].
+
+Die hier beschriebenen NSG-Regeln weisen eine Ähnlichkeit mit den NSG-Regeln unter [Beispiel 1 – Erstellen einer einfachen DMZ mit NSGs][Example1] auf. Arbeiten Sie die NSG-Beschreibung in diesem Artikel durch, und betrachten Sie die einzelnen NSG-Regeln und ihre Attribute im Detail.
 
 ## <a name="firewall-rules"></a>Firewallregeln
-Zur Verwaltung der Firewall und Erstellung der erforderlichen Konfigurationen muss ein Verwaltungsclient auf einem PC installiert werden. Informationen zur Verwaltung des Geräts finden Sie in der Dokumentation zu Ihrer Firewall (bzw. einem anderen virtuellen Netzwerkgerät). Im Rest dieses Abschnitts wird die Konfiguration der Firewall über den Verwaltungsclient des Anbieters beschrieben (d. h. nicht über das Azure-Portal oder PowerShell).
+Sie müssen einen Verwaltungsclient auf einem Computer installieren, um die Firewall zu verwalten und die erforderlichen Konfigurationen zu erstellen. Informationen zur Verwaltung des Geräts finden Sie in der Dokumentation zu Ihrer Firewall (bzw. einem anderen virtuellen Netzwerkgerät). Im Rest dieses Abschnitts wird die Konfiguration der eigentlichen Firewall über den Verwaltungsclient des Anbieters beschrieben (d.h. nicht über das Azure-Portal oder PowerShell).
 
-Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie hier: [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie unter [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin).
 
-In der Firewall müssen Weiterleitungsregeln erstellt werden. Da in diesem Beispiel nur eingehender Internetdatenverkehr an die Firewall und dann an den Webserver geleitet wird, ist nur eine NAT-Weiterleitungsregel erforderlich. Für die Barracuda NextGen-Firewall in diesem Beispiel würde es sich bei der Regel um eine Destination NAT-Regel („Dst NAT“) zum Übergeben des Datenverkehrs handeln.
+Sie müssen die Weiterleitungsregeln der Firewall erstellen. Da im Szenario in diesem Beispiel nur eingehender Internetdatenverkehr an die Firewall und dann an den Webserver geleitet wird, ist nur eine NAT-Weiterleitungsregel erforderlich. Für die Barracuda-Firewall in diesem Beispiel würde es sich bei der Regel um eine Destination NAT-Regel („Dst NAT“) zum Übergeben des Datenverkehrs handeln.
 
-Um die folgende Regel zu erstellen (oder vorhandene Standardregeln zu überprüfen), öffnen Sie das Dashboard des Barracuda NG Admin-Clients, wechseln zur Registerkarte „Configuration“ und klicken im Abschnitt „Operational Configuration“ auf „Ruleset“. In einem Raster namens „Main Rules“ werden die vorhandenen aktivierten und deaktivierten Regeln der Firewall angezeigt. In der oberen rechten Ecke dieses Rasters befindet sich ein kleines grünes Pluszeichen. Klicken Sie auf dieses Zeichen, um eine neue Regel zu erstellen. (Hinweis: Möglicherweise ist die Firewall „gesperrt“, sodass keine Änderungen vorgenommen werden können. Wenn eine Schaltfläche mit der Bezeichnung „Lock“ angezeigt wird und Sie keine Regeln erstellen oder bearbeiten können, klicken Sie auf diese Schaltfläche, um den Regelsatz zu entsperren und die Bearbeitung zu ermöglichen.) Wenn Sie eine vorhandene Regel bearbeiten möchten, wählen Sie diese Regel aus, klicken Sie mit der rechten Maustaste, und wählen Sie „Edit Rule“.
+Führen Sie diese Schritte aus, um die folgende Regel zu erstellen (oder vorhandene Standardregeln zu überprüfen):
+1. Wählen Sie im Barracuda NG Admin-Clientdashboard auf der Registerkarte „Konfiguration“ im Abschnitt **Operational Configuration** (Betriebskonfiguration) **Ruleset** (Regelsatz) aus. 
 
-Erstellen Sie eine neue Regel, und geben Sie einen Namen ein, z. B. „WebTraffic“. 
+   In einem Raster namens **Main Rules** (Hauptregeln) werden die vorhandenen aktiven und deaktivierten Regeln der Firewall angezeigt.
 
-Das Symbol für die Destination NAT-Regel sieht wie folgt aus:  ![Symbol der Ziel-NAT-Regel][2]
+2. Um eine neue Regel zu erstellen, wählen Sie die kleine grüne **+**-Schaltfläche in der oberen rechten Ecke des Rasters aus. (Möglicherweise ist die Firewall gesperrt. Wenn Sie eine Schaltfläche mit der Bezeichnung **Lock** (Sperre) sehen und nicht imstande sind, Regeln zu erstellen oder zu bearbeiten, wählen Sie die Schaltfläche aus, um den Regelsatz zu entsperren und die Bearbeitung zuzulassen.)
+  
+3. Um eine vorhandene Regel zu bearbeiten, klicken mit der rechten Maustaste darauf, und wählen Sie **Edit Rule** (Regel bearbeiten) aus.
 
-Die Regel selbst würde wie folgt aussehen:
+Erstellen Sie eine neue Regel mit einem Namen wie **WebDatenverkehr.** 
+
+Das Symbol für die Destination NAT-Regel sieht wie folgt aus:  ![Destination NAT-Symbol][2]
+
+Die Regel selbst sieht ungefähr so aus:
 
 ![Firewallregel][3]
 
-Hierbei werden alle eingehenden Adressen, die auf die Firewall treffen und für HTTP (Port 80 oder 443 für HTTPS) bestimmt sind, an die Schnittstelle „DHCP1 Local IP“ der Firewall gesendet und an den Webserver mit der IP-Adresse 10.0.1.5 umgeleitet. Da der Datenverkehr über Port 80 eingeht und über Port 80 an den Webserver geleitet wird, war keine Portänderung erforderlich. Die Zielliste hätte aber 10.0.1.5:8080 lauten können, wenn unser Webserver an Port 8080 lauschen würde, sodass der eingehende Port 80 der Firewall in den eingehenden Port 8080 auf dem Webserver übersetzt werden würde.
+Alle eingehenden Adressen, die auf die Firewall treffen und für HTTP (Port 80 bzw. 443 für HTTPS) bestimmt sind, werden an die Schnittstelle „DHCP1 Local IP“ der Firewall gesendet und an den Webserver mit der IP-Adresse 10.0.1.5 umgeleitet. Da der Datenverkehr über Port 80 eingeht und über Port 80 an den Webserver geleitet wird, ist keine Portänderung erforderlich. Die Zielliste hätte aber 10.0.1.5:8080 lauten können, wenn der Webserver an Port 8080 lauschen würde, wodurch der eingehende Port 80 der Firewall in den eingehenden Port 8080 auf dem Webserver übersetzt werden würde.
 
-Eine Verbindungsmethode sollte auch angegeben werden. Für die Zielregel aus dem Internet ist „Dynamic SNAT" am besten geeignet. 
+Sie sollten auch eine Verbindungsmethode angeben. Für die Zielregel aus dem Internet ist „Dynamic SNAT" die am besten geeignete Methode.
 
-Obwohl nur eine Regel erstellt wurde, ist es wichtig, dass die Priorität dafür richtig festgelegt wird. Wenn sich diese neue Regel im Raster aller Regeln der Firewall an unterster Stelle befindet (unterhalb der Regel „BLOCKALL“), wird sie niemals berücksichtigt. Achten Sie darauf, dass die neu erstellte Regel für den Webdatenverkehr oberhalb der Regel BLOCKALL angeordnet ist.
+Obwohl Sie nur eine Regel erstellt haben, ist es wichtig, deren Priorität richtig festzulegen. Wenn sich diese neue Regel im Raster aller Regeln der Firewall an unterster Stelle befindet (unterhalb der Regel „BLOCKALL“), wird sie niemals berücksichtigt. Achten Sie darauf, dass die neue Regel für den Webdatenverkehr oberhalb der Regel BLOCKALL angeordnet ist.
 
-Nach der Erstellung der Regel muss sie per Pushvorgang an die Firewall übertragen und dann aktiviert werden. Wenn dies nicht erfolgt, wird die Regeländerung nicht wirksam. Der Push- und Aktivierungsprozess wird im nächsten Abschnitt beschrieben.
+Nach dem Erstellen müssen Sie die Regel per Push auf die Firewall übertragen und sie dann aktivieren. Wenn Sie diese Schritte nicht ausführen, tritt die Regeländerung nicht in Kraft. Im nächsten Abschnitt werden der Push- und der Aktivierungsprozess beschrieben.
 
 ## <a name="rule-activation"></a>Regelaktivierung
-Nachdem der Regelsatz aufgrund der Hinzufügung dieser Regel geändert wurde, muss er in die Firewall hochgeladen und aktiviert werden.
+Jetzt, da die Regel dem Regelsatz hinzugefügt wurde, müssen Sie den Regelsatz auf die Firewall hochladen und sie aktivieren.
 
 ![Aktivierung der Firewallregeln][4]
 
-In der oberen rechten Ecke des Verwaltungsclients befinden sich verschiedene Schaltflächen. Klicken Sie auf die Schaltfläche „Send Changes“, um die geänderten Regeln an die Firewall zu senden, und klicken Sie dann auf die Schaltfläche „Activate“.
+In der oberen rechten Ecke des Verwaltungsclients sehen Sie eine Gruppe von Schaltflächen. Wählen Sie **Send Changes** (Änderungen senden) aus, um den geänderten Regelsatz an die Firewall zu senden, und wählen Sie dann **Activate** (Aktivieren) aus.
 
-Mit der Aktivierung des Firewallregelsatzes ist die Erstellung dieser Beispielumgebung abgeschlossen. Optional können die Skripts für die Vorgänge nach der Erstellung im Abschnitt „References“ ausgeführt werden, um dieser Umgebung eine Anwendung hinzuzufügen, damit die unten angegebenen Datenverkehrsszenarien getestet werden können.
+Jetzt, nach der Aktivierung des Firewall-Regelsatzes, ist die Umgebung vollständig. Wenn Sie möchten, können Sie die Anwendungsbeispielskripts im Abschnitt „Referenzen“ ausführen, um der Umgebung eine Anwendung hinzuzufügen. Wenn Sie eine Anwendung hinzufügen, können Sie die im nächsten Abschnitt beschriebenen Szenarien zum Datenverkehr testen.
 
 > [!IMPORTANT]
-> Es ist wichtig, sich zu vergegenwärtigen, dass der Zugang zum Webserver nicht direkt erfolgt. Wenn ein Browser eine HTTP-Seite von FrontEnd001.CloudApp.Net anfordert, übergibt der HTTP-Endpunkt (Port 80) diesen Datenverkehr an die Firewall, nicht an den Webserver. Anschließend leitet die Firewall die Anforderung gemäß der oben erstellten Regel per NAT an den Webserver weiter.
+> Es sollte Ihnen bewusst sein, dass Sie nicht direkt auf den Webserver zugreifen. Wenn ein Browser eine HTTP-Seite von FrontEnd001.CloudApp.Net anfordert, übergibt der HTTP-Endpunkt (Port 80) den Datenverkehr an die Firewall, nicht an den Webserver. Die Firewall verwendet dann aufgrund der Regel, die Sie zuvor erstellt haben, NAT, um die Anforderung an den Webserver zuzuordnen.
 > 
 > 
 
 ## <a name="traffic-scenarios"></a>Datenverkehrsszenarien
-#### <a name="allowed-web-to-web-server-through-firewall"></a>(Zugelassen) Web an Webserver über die Firewall
-1. Internetbenutzer fordert HTTP-Seite von FrontEnd001.CloudApp.Net (Internet-Clouddienst) an.
-2. Clouddienst übergibt Datenverkehr über offenen Endpunkt an Port 80 an lokale Firewallschnittstelle unter 10.0.1.4:80.
-3. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an Firewall) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
-4. Datenverkehr trifft an interner IP-Adresse der Firewall ein (10.0.1.4).
-5. Firewall-Weiterleitungsregel erkennt, dass es sich um Datenverkehr für Port 80 handelt und leitet diesen an den Webserver IIS01 um.
-6. IIS01 lauscht auf Webdatenverkehr, empfängt diese Anforderung und beginnt mit der Verarbeitung der Anforderung.
-7. IIS01 fragt Informationen von SQL Server unter AppVM01 ab.
-8. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
-9. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu, weiter zur nächsten Regel.
-   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
-10. AppVM01 empfängt die SQL-Abfrage und antwortet.
-11. Da es keine ausgehenden Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
-12. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-    1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
-    2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
-13. Der IIS-Server empfängt die SQL-Antwort, erstellt die HTTP-Antwort und sendet sie an den Anforderer.
-14. Da es sich um eine NAT-Sitzung von der Firewall handelt, wird als Antwortziel (zuerst) die Firewall verwendet.
-15. Die Firewall empfängt die Antwort vom Webserver und leitet sie zurück an den Internetbenutzer.
-16. Da im Front-End-Subnetz keine ausgehenden Regeln vorhanden sind, wird die Antwort zugelassen, und der Internetbenutzer empfängt die angeforderte Webseite.
+#### <a name="allowed-web-to-web-server-through-the-firewall"></a>(Zugelassen) Web an Webserver über die Firewall
+1. Ein Internetbenutzer fordert eine HTTP-Seite von FrontEnd001.CloudApp.Net (einem Internet-Clouddienst) an.
+2. Der Clouddienst übergibt Datenverkehr über einen offenen Endpunkt an Port 80 an die lokale Firewallschnittstelle unter 10.0.1.4:80.
+3. Das FrontEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+   1. NSG-Regel 1 (DNS) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   2. NSG-Regel 2 (RDP) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   3. NSG-Regel 3 (Internet an Firewall) trifft zu. Datenverkehr zulassen. Verarbeitung von Regeln beenden.
+4. Datenverkehr trifft an der internen IP-Adresse der Firewall ein (10.0.1.4).
+5. Eine Firewall-Weiterleitungsregel bestimmt, dass es sich um Datenverkehr für Port 80 handelt und leitet diesen an den Webserver IIS01 um.
+6. IIS01 lauscht auf Webdatenverkehr, empfängt die Anforderung und beginnt mit der Verarbeitung der Anforderung.
+7. IIS01 fordert Informationen bei der SQL Server-Instanz auf AppVM01 an.
+8. Es gibt keine Ausgangsregeln im FrontEnd-Subnetz, daher wird der Datenverkehr zugelassen.
+9. Das BackEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+   1. NSG-Regel 1 (DNS) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   2. NSG-Regel 2 (RDP) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu. Datenverkehr zulassen. Verarbeitung von Regeln beenden.
+10. Die SQL Server-Instanz auf AppVM01 empfängt die Anforderung und antwortet.
+11. Da es keine Ausgangsregeln im BackEnd-Subnetz gibt, wird die Antwort zugelassen.
+12. Das FrontEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+    1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Bac-End- zum FrontEnd-Subnetz, daher trifft keine der NSG-Regeln zu.
+    2. Da die Systemstandardregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
+13. IIS01 empfängt die Antwort von AppVM01, erstellt die HTTP-Antwort und sendet sie an den Anforderer.
+14. Da es sich um eine NAT-Sitzung von der Firewall handelt, wird als Antwortziel (zunächst) die Firewall verwendet.
+15. Die Firewall empfängt die Antwort vom Webserver und leitet sie wieder an den Internetbenutzer zurück.
+16. Da im FrontEnd-Subnetz keine Ausgangsregeln vorhanden sind, wird die Antwort zugelassen, und der Internetbenutzer empfängt die Webseite.
 
-#### <a name="allowed-rdp-to-backend"></a>(Zugelassen) RDP an Back-End
-1. Server Admin im Internet fordert RDP-Sitzung für AppVM01 an BackEnd001.CloudApp.Net:xxxxx an, wobei „xxxxx“ für die zufällig zugewiesene Portnummer für RDP zu AppVM01 steht (den zugewiesenen Port finden Sie im Azure-Portal oder per PowerShell).
+#### <a name="allowed-rdp-to-backend"></a>(Zulässig) RDP an BackEnd
+1. Server Admin im Internet fordert eine RDP-Sitzung für AppVM01 an BackEnd001.CloudApp.Net:*xxxxx* an, wobei *xxxxx* für die zufällig zugewiesene Portnummer für RDP zu AppVM01 steht. (Sie finden den zugewiesenen Port im Azure-Portal oder mithilfe von PowerShell.)
 2. Da die Firewall nur unter der Adresse FrontEnd001.CloudApp.Net lauscht, ist sie an diesem Datenverkehrsfluss nicht beteiligt.
-3. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
-4. Da keine ausgehenden Regeln vorhanden sind, werden Standardregeln angewendet, und der zurückkommende Datenverkehr wird zugelassen.
+3. Das BackEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+   1. NSG-Regel 1 (DNS) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   2. NSG-Regel 2 (RDP) trifft zu. Datenverkehr zulassen. Verarbeitung von Regeln beenden.
+4. Da keine Ausgangsregeln vorhanden sind, werden die Standardregeln angewendet, und der zurückkommende Datenverkehr wird zugelassen.
 5. Die RDP-Sitzung wird aktiviert.
-6. AppVM01 fordert zur Eingabe von Benutzername und Kennwort auf.
+6. AppVM01 fordert einen Benutzernamen und ein Kennwort an.
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Zugelassen) Webserver-DNS-Lookup auf DNS-Server
-1. Der Webserver IIS01 benötigt einen Datenfeed von „www.data.gov“, muss jedoch die Adresse auflösen.
-2. Die Netzwerkkonfiguration für das VNet listet DNS01 (10.0.2.4 im Back-End-Subnetz) als primären DNS-Server auf, IIS01 sendet die DNS-Anforderung an DNS01.
-3. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
-4. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
-5. DNS-Server empfängt Anforderung.
-6. Die Adresse ist nicht im DNS-Server zwischengespeichert, daher fragt der DNS-Server die Adresse bei einem DNS-Stammserver im Internet ab.
-7. Keine ausgehenden Regeln im Back-End-Subnetz, Datenverkehr wird zugelassen.
-8. Der DNS-Server im Internet antwortet. Da diese Sitzung intern initiiert wurde, wird die Antwort zugelassen.
-9. Der DNS-Server speichert die Antwort zwischen und gibt die Antwort auf die ursprüngliche Anforderung zurück an IIS01.
-10. Keine ausgehenden Regeln im Back-End-Subnetz, Datenverkehr wird zugelassen.
-11. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-    1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
-    2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
+1. Der Webserver IIS01 benötigt einen Datenfeed von www.data.gov, muss jedoch die Adresse auflösen.
+2. Die Netzwerkkonfiguration für das virtuelle Netzwerk zeigt DNS01 (10.0.2.4 im BackEnd-Subnetz) als den primären DNS-Server. IIS01 sendet die DNS-Anforderung an DNS01.
+3. Da es keine Ausgangsregeln im FrontEnd-Subnetz gibt, wird der Datenverkehr zugelassen.
+4. Das BackEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+   1. NSG-Regel 1 (DNS) trifft zu. Datenverkehr zulassen. Verarbeitung von Regeln beenden.
+5. Der DNS-Server empfängt die Anforderung.
+6. Der DNS-Server hat die Adresse nicht im Cache und fragt sie bei einem DNS-Stammserver im Internet ab.
+7. Da es keine Ausgangsregeln im BackEnd-Subnetz gibt, wird der Datenverkehr zugelassen.
+8. Der Internet-DNS-Server antwortet. Da die Sitzung intern eingeleitet wurde, wird die Antwort zugelassen.
+9. Der DNS-Server speichert die Antwort zwischen und antwortet auf die Anforderung von IIS01.
+10. Da es keine Ausgangsregeln im BackEnd-Subnetz gibt, wird der Datenverkehr zugelassen.
+11. Das FrontEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+    1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom BackEnd- zum FrontEnd-Subnetz, daher trifft keine der NSG-Regeln zu.
+    2. Die Systemstandardregel erlaubt Datenverkehr zwischen Subnetzen, daher wird der Datenverkehr zugelassen.
 12. IIS01 empfängt die Antwort von DNS01.
 
-#### <a name="allowed-web-server-access-file-on-appvm01"></a>(Zugelassen) Webserver-Zugriffsdatei unter AppVM01
-1. IIS01 fragt nach einer Datei unter AppVM01.
-2. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
-3. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu, weiter zur nächsten Regel.
-   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
-4. AppVM01 empfängt die Anforderung und antwortet mit der Datei (autorisierter Zugriff vorausgesetzt).
-5. Da es keine ausgehenden Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
-6. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
-   2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
-7. Der IIS-Server empfängt die Datei.
+#### <a name="allowed-web-server-file-access-on-appvm01"></a>(Zugelassen) Webserver-Dateizugriff auf AppVM01
+1. IIS01 fordert eine Datei auf AppVM01 an.
+2. Da es keine Ausgangsregeln im FrontEnd-Subnetz gibt, wird der Datenverkehr zugelassen.
+3. Das BackEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+   1. NSG-Regel 1 (DNS) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   2. NSG-Regel 2 (RDP) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu. Datenverkehr zulassen. Verarbeitung von Regeln beenden.
+4. AppVM01 empfängt die Anforderung und antwortet mit der Datei (unter der Annahme, dass der Zugriff autorisiert wird).
+5. Da es keine Ausgangsregeln im BackEnd-Subnetz gibt, wird die Antwort zugelassen.
+6. Das FrontEnd-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
+   1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom BackEnd- zum FrontEnd-Subnetz, daher trifft keine der NSG-Regeln zu.
+   2. Die Systemstandardregel erlaubt Datenverkehr zwischen Subnetzen, daher wird der Datenverkehr zugelassen.
+7. IIS01 empfängt die Datei.
 
 #### <a name="denied-web-direct-to-web-server"></a>(Verweigert) Web direkt an Webserver
-Da sich der Webserver IIS01 und die Firewall in demselben Clouddienst befinden, haben beide die gleiche öffentliche IP-Adresse. Der gesamte HTTP-Datenverkehr würde also an die Firewall geleitet werden. Die Anforderung würde zwar erfolgreich bereitgestellt werden, aber sie kann nicht direkt an den Webserver gehen, sondern wird wie vorgesehen erst durch die Firewall geleitet. Informationen zum Datenverkehrsfluss finden Sie im ersten Szenario dieses Abschnitts.
+Da sich der Webserver IIS01 und die Firewall in demselben Clouddienst befinden, haben beide die gleiche öffentliche IP-Adresse. Daher wird der gesamte HTTP-Datenverkehr an die Firewall geleitet. Eine Anforderung würde zwar erfolgreich bedient, sie kann aber nicht direkt an den Webserver gerichtet werden. Sie muss, wie vorgesehen, zuerst die Firewall passieren. Informationen zum Datenverkehrsfluss finden Sie im ersten Szenario dieses Abschnitts.
 
-#### <a name="denied-web-to-backend-server"></a>(Verweigert) Web an Back-End-Server
-1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf eine Datei auf AppVM01 zuzugreifen.
+#### <a name="denied-web-to-backend-server"></a>(Verweigert) Web an BackEnd-Server
+1. Ein Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf eine Datei auf AppVM01 zuzugreifen.
 2. Da keine Endpunkte für Dateifreigaben geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
-3. Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel 5 (Internet an VNet) diesen Datenverkehr blockieren.
+3. Wenn die Endpunkte aus irgendeinem Grund offen sind, blockiert die NSG-Regel 5 (Internet an VNet) diesen Datenverkehr.
 
-#### <a name="denied-web-dns-lookup-on-dns-server"></a>(Verweigert) Web-DNS-Lookup auf DNS-Server
-1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen.
-2. Da keine Endpunkte für DNS geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
-3. Wenn die Endpunkte aus irgendeinem Grund geöffnet wären, würde NSG-Regel 5 (Internet an VNet) diesen Datenverkehr blockieren. (Hinweis: Regel 1 (DNS) würde aus zwei Gründen nicht gelten: Erstens befindet sich die Quelladresse im Internet, und diese Regel gilt nur für das lokale VNet als Quelle, und zweitens handelt es sich um eine Zulassungsregel, sodass damit niemals Datenverkehr verweigert wird.)
+#### <a name="denied-web-dns-lookup-on-the-dns-server"></a>(Verweigert) Web-DNS-Lookup auf dem DNS-Server
+1. Ein Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen.
+2. Da keine Endpunkte für DNS geöffnet sind, wird die Anforderung nicht durch den Clouddienst geleitet und erreicht daher den Server nicht.
+3. Wenn die Endpunkte aus irgendeinem Grund offen sind, blockiert die NSG-Regel 5 (Internet an VNet) diesen Datenverkehr. (Regel 1 [DNS] trifft aus zwei Gründen nicht zu. Erstens befindet sich die Quelladresse im Internet, und diese Regel trifft nur zu, wenn die Quelle im lokalen virtuellen Netzwerk liegt. Zweitens ist diese Regel eine Zulassungsregel, also kann sie niemals Datenverkehr verweigern.)
 
-#### <a name="denied-web-to-sql-access-through-firewall"></a>(Verweigert) Webzugriff auf SQL über die Firewall
-1. Internetbenutzer fordert SQL-Daten von FrontEnd001.CloudApp.Net (Internet-Clouddienst) an.
-2. Da keine Endpunkte für SQL geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher die Firewall nicht erreichen.
-3. Wenn Endpunkte aus irgendeinem Grund geöffnet wären, würde das Front-End-Subnetz mit der Verarbeitung der eingehenden Regel beginnen:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an Firewall) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
-4. Datenverkehr trifft an interner IP-Adresse der Firewall ein (10.0.1.4).
-5. Firewall verfügt nicht über Weiterleitungsregeln für SQL und verwirft den Datenverkehr.
+#### <a name="denied-web-to-sql-access-through-the-firewall"></a>(Verweigert) Webzugriff auf SQL über die Firewall
+1. Ein Internetbenutzer fordert SQL-Daten von FrontEnd001.CloudApp.Net (einem Internet-Clouddienst) an.
+2. Da keine Endpunkte für SQL geöffnet sind, wird die Anforderung nicht durch den Clouddienst geleitet und erreicht daher die Firewall nicht.
+3. Wenn Endpunkte aus irgendeinem Grund geöffnet sind, beginnt das Fron-End-Subnetz mit der Verarbeitung der Eingangsregel:
+   1. NSG-Regel 1 (DNS) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   2. NSG-Regel 2 (RDP) trifft nicht zu. Mit der nächsten Regel fortfahren.
+   3. NSG-Regel 3 (Internet an Firewall) trifft zu. Datenverkehr zulassen. Verarbeitung von Regeln beenden.
+4. Datenverkehr trifft an der internen IP-Adresse der Firewall ein (10.0.1.4).
+5. Die Firewall verfügt nicht über Weiterleitungsregeln für SQL und verwirft den Datenverkehr.
 
 ## <a name="conclusion"></a>Zusammenfassung
-Dies ist eine relativ einfache Möglichkeit zum Schützen Ihrer Anwendung mit einer Firewall und zum Isolieren des Back-End-Subnetzes vor eingehendem Datenverkehr.
+Dieses Beispiel zeigt eine relativ einfache Möglichkeit zum Schützen Ihrer Anwendung mit einer Firewall und zum Isolieren des Back-End-Subnetzes vor eingehendem Datenverkehr.
 
-Weitere Beispiele und eine Übersicht über die Sicherheitsgrenzen des Netzwerks finden Sie [hier][HOME].
+Sie können weitere Beispiele und eine Übersicht über Netzwerk-Sicherheitsgrenzen [hier][HOME] finden.
 
 ## <a name="references"></a>Referenzen
-### <a name="main-script-and-network-config"></a>Hauptskript und Netzwerkkonfiguration
-Speichern Sie das vollständige Skript in einer PowerShell-Skriptdatei. Speichern Sie die Netzwerkkonfiguration in einer Datei namens „NetworkConf2.xml“.
-Bearbeiten Sie die benutzerdefinierten Variablen nach Bedarf. Führen Sie das Skript aus, und befolgen Sie dann oben stehende Anweisungen zur Einrichtung der Firewallregel.
+### <a name="full-script-and-network-config"></a>Vollständiges Skript und Netzwerkkonfiguration
+Speichern Sie das vollständige Skript in einer PowerShell-Skriptdatei. Speichern Sie das Skript der Netzwerkkonfiguration in einer Datei namens „NetworkConf2.xml“.
+Ändern Sie die benutzerdefinierten Variablen nach Bedarf. Führen Sie das Skript aus, und befolgen Sie dann die Anweisungen im Abschnitt „Firewallregeln“ dieses Artikels.
 
 #### <a name="full-script"></a>Vollständiges Skript
-Dieses Skript führt basierend auf den benutzerdefinierten Variablen Folgendes aus:
+Dieses Skript führt auf der Grundlage der benutzerdefinierten Variablen die folgenden Schritte aus:
 
-1. Herstellen einer Verbindung mit einem Azure-Abonnement
-2. Erstellen eines neuen Speicherkontos
-3. Erstellen eines neuen VNets und zweier Subnetze, wie in der Netzwerkkonfigurationsdatei definiert
-4. Erstellen von Windows Server-VMs (Build 4)
-5. Konfigurieren von Netzwerksicherheitsgruppen einschließlich:
-   * Erstellen einer Netzwerksicherheitsgruppe
-   * Auffüllen der Gruppe mit Regeln
-   * Binden der Netzwerksicherheitsgruppe an die geeigneten Subnetze
+1. Herstellen einer Verbindung mit einem Azure-Abonnement.
+2. Erstellen Sie ein Speicherkonto.
+3. Erstellen eines virtuellen Netzwerks und zweier Subnetze, wie in der Netzwerkkonfigurationsdatei definiert.
+4. Erstellen von vier Windows Server-VMs.
+5. Konfigurieren der NSG. Bei der Konfiguration werden diese Schritte ausgeführt:
+   * Erstellt eine NSG.
+   * Füllt die NSG mit Regeln auf.
+   * Bindet die Netzwerksicherheitsgruppe an die geeigneten Subnetze.
 
-Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC oder Server ausgeführt werden.
+Sie sollten dieses PowerShell-Skript lokal auf einem mit dem Internet verbundenen PC oder Server ausführen.
 
 > [!IMPORTANT]
-> Während der Ausführung des Skripts werden in PowerShell möglicherweise Warnungen oder Informationsmeldungen angezeigt. Nur in Rot angezeigte Fehlermeldungen müssen genauer beachtet und ggf. gelöst werden.
+> Bei der Ausführung des Skripts werden möglicherweise Warnungen und Informationsmeldungen in PowerShell angezeigt. Sie brauchen sich nur um Fehlermeldungen zu kümmern, die rot angezeigt werden.
 > 
 > 
 
 ```powershell
     <# 
      .SYNOPSIS
-      Example of DMZ and Network Security Groups in an isolated network (Azure only, no hybrid connections)
+      Example of a perimeter network and Network Security Groups in an isolated network. (Azure only. No hybrid connections.)
 
      .DESCRIPTION
-      This script will build out a sample DMZ setup containing:
-       - A default storage account for VM disks
-       - Two new cloud services
-       - Two Subnets (FrontEnd and BackEnd subnets)
-       - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
-       - One server on the FrontEnd Subnet (plus the NVA on the FrontEnd subnet)
-       - Three Servers on the BackEnd Subnet
-       - Network Security Groups to allow/deny traffic patterns as declared
+      This script will build out a sample perimeter network setup containing:
+       - A default storage account for VM disks.
+       - Two new cloud services.
+       - Two subnets (the FrontEnd and BackEnd subnets).
+       - A network virtual appliance (NVA): a Barracuda NextGen Firewall.
+       - One server on the FrontEnd subnet (plus the NVA on the FrontEnd subnet).
+       - Three servers on the BackEnd subnet.
+       - Network Security Groups to allow/deny traffic patterns as declared.
 
-      Before running script, ensure the network configuration file is created in
-      the directory referenced by $NetworkConfigFile variable (or update the
+      Before running the script, ensure the network configuration file is created in
+      the directory referenced by the $NetworkConfigFile variable (or update the
       variable to reflect the path and file name of the config file being used).
 
      .Notes
-      Security requirements are different for each use case and can be addressed in a
-      myriad of ways. Please be sure that any sensitive data or applications are behind
+      Security requirements are different for each use case and can be addressed in many ways. Be sure that any sensitive data or applications are behind
       the appropriate layer(s) of protection. This script serves as an example of some
-      of the techniques that can be used, but should not be used for all scenarios. You
-      are responsible to assess your security needs and the appropriate protections
-      needed, and then effectively implement those protections.
+      of the techniques that you can use, but it should not be used for all scenarios. You
+      are responsible for assessing your security needs and the appropriate protections
+      and then effectively implementing those protections.
 
       FrontEnd Service (FrontEnd subnet 10.0.1.0/24)
        myFirewall - 10.0.1.4
@@ -293,9 +304,9 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
         $SubnetName = @()
         $VMIP = @()
 
-    # User Defined Global Variables
-      # These should be changes to reflect your subscription and services
-      # Invalid options will fail in the validation section
+    # User-Defined Global Variables
+      # These should be changed to reflect your subscription and services.
+      # Invalid options will fail in the validation section.
 
       # Subscription Access Details
         $subID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -324,15 +335,15 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
       # NSG Details
         $NSGName = "MyVNetSG"
 
-    # User Defined VM Specific Config
-        # Note: To ensure proper NSG Rule creation later in this script:
-        #       - The Web Server must be VM 1
-        #       - The AppVM1 Server must be VM 2
-        #       - The DNS server must be VM 4
+    # User-Defined VM-Specific Config
+        # To ensure proper NSG rule creation later in this script:
+        #       - The web server must be VM 1.
+        #       - The AppVM1 server must be VM 2.
+        #       - The DNS server must be VM 4.
         #
         #       Otherwise the NSG rules in the last section of this
         #       script will need to be changed to match the modified
-        #       VM array numbers ($i) so the NSG Rule IP addresses
+        #       VM array numbers ($i) so the NSG rule IP addresses
         #       are aligned to the associated VM IP addresses.
 
         # VM 0 - The Network Virtual Appliance (NVA)
@@ -381,8 +392,8 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Variables or   #
-    # Configuration past this point #
+    # No user-defined variables or   #
+    # configuration past this point #
     # ----------------------------- #
 
       # Get your Azure accounts
@@ -390,14 +401,14 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
         Set-AzureSubscription –SubscriptionId $subID -ErrorAction Stop
         Select-AzureSubscription -SubscriptionId $subID -Current -ErrorAction Stop
 
-      # Create Storage Account
+      # Create storage account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
             Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
 
-      # Update Subscription Pointer to New Storage Account
+      # Update subscription pointer to new storage account
         Write-Host "Updating Subscription Pointer to New Storage Account" -ForegroundColor Cyan 
         Set-AzureSubscription –SubscriptionId $subID -CurrentStorageAccountName $StorageAccountName -ErrorAction Stop
 
@@ -432,11 +443,11 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
-    # Create VNET
+    # Create virtual network
         Write-Host "Creating VNET" -ForegroundColor Cyan 
         Set-AzureVNetConfig -ConfigurationPath $NetworkConfigFile -ErrorAction Stop
 
-    # Create Services
+    # Create services
         Write-Host "Creating Services" -ForegroundColor Cyan
         New-AzureService -Location $DeploymentLocation -ServiceName $FrontEndService -ErrorAction Stop
         New-AzureService -Location $DeploymentLocation -ServiceName $BackEndService -ErrorAction Stop
@@ -452,16 +463,16 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
                     Set-AzureSubnet  –SubnetNames $SubnetName[$i] | `
                     Set-AzureStaticVNetIP -IPAddress $VMIP[$i] | `
                     New-AzureVM –ServiceName $ServiceName[$i] -VNetName $VNetName -Location $DeploymentLocation
-                # Set up all the EndPoints we'll need once we're up and running
-                # Note: Web traffic goes through the firewall, so we'll need to set up a HTTP endpoint.
-                #       Also, the firewall will be redirecting web traffic to a new IP and Port in a
+                # Set up all the endpoints we'll need once we're up and running.
+                # Note: Web traffic goes through the firewall, so we'll need to set up an HTTP endpoint.
+                #       Also, the firewall will be redirecting web traffic to a new IP and port in a
                 #       forwarding rule, so the HTTP endpoint here will have the same public and local
                 #       port and the firewall will do the NATing and redirection as declared in the
                 #       firewall rule.
                 Add-AzureEndpoint -Name "MgmtPort1" -Protocol tcp -PublicPort 801  -LocalPort 801  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "MgmtPort2" -Protocol tcp -PublicPort 807  -LocalPort 807  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "HTTP"      -Protocol tcp -PublicPort 80   -LocalPort 80   -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
-                # Note: A SSH endpoint is automatically created on port 22 when the appliance is created.
+                # Note: An SSH endpoint is automatically created on port 22 when the appliance is created.
                 }
             Else
                 {
@@ -484,7 +495,7 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
         Write-Host "Building the NSG" -ForegroundColor Cyan
         New-AzureNetworkSecurityGroup -Name $NSGName -Location $DeploymentLocation -Label "Security group for $VNetName subnets in $DeploymentLocation"
 
-      # Add NSG Rules
+      # Add NSG rules
         Write-Host "Writing rules into the NSG" -ForegroundColor Cyan
         Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" -Type Inbound -Priority 100 -Action Allow `
             -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
@@ -516,15 +527,15 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
             -DestinationAddressPrefix $BEPrefix -DestinationPortRange '*' `
             -Protocol *
 
-        # Assign the NSG to the Subnets
+        # Assign the NSG to the subnets
             Write-Host "Binding the NSG to both subnets" -ForegroundColor Cyan
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $FESubnet -VirtualNetworkName $VNetName
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
-    # Optional Post-script Manual Configuration
-      # Configure Firewall
-      # Install Test Web App (Run Post-Build Script on the IIS Server)
-      # Install Backend resource (Run Post-Build Script on the AppVM01)
+    # Optional Post-Script Manual Configuration
+      # Configure firewall
+      # Install test web app (run post-build script on the IIS server)
+      # Install back-end resources (run post-build script on AppVM01)
       Write-Host
       Write-Host "Build Complete!" -ForegroundColor Green
       Write-Host
@@ -536,10 +547,10 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
 ```
 
 #### <a name="network-config-file"></a>Netzwerkkonfigurationsdatei
-Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie den Link zu dieser Datei in die $NetworkConfigFile-Variable im obigen Skript ein.
+Speichern Sie diese XML-Datei mit den aktualisierten Speicherorten, und fügen Sie dann einen Link zu dieser Datei in die $NetworkConfigFile-Variable im vorausgehenden Skript ein.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>
@@ -571,7 +582,7 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
 ```
 
 #### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
-Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp]
+Wenn Sie eine Beispielanwendung für dieses und weitere Beispiele zu Umkreisnetzwerken installieren möchten, sehen Sie sich das [Beispielanwendungsskript][SampleApp] an.
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Eingehende DMZ mit NSG"

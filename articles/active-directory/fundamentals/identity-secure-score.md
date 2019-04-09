@@ -117,7 +117,7 @@ Der Identity Secure Score kann von Benutzern mit den folgenden Rollen verwendet 
 
 - Globaler Administrator
 - Sicherheitsadministrator 
-- Benutzer mit Leseberechtigung für Sicherheitsfunktionen 
+- Sicherheitsleseberechtigte 
 
 ### <a name="what-does-not-scored-mean"></a>Was bedeutet der Hinweis „[Not Scored]“ (Nicht bewertet)?
 

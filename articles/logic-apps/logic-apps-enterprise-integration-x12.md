@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: c4ee56f4ddcccb1fc4ddd84aa1c1b16dea9754d9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123956"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842136"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -36,9 +36,10 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
 ## <a name="create-an-x12-agreement"></a>Erstellen einer X12-Vereinbarung
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. 
 
-2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.  
+2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
+   Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.  
 
    ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
@@ -49,7 +50,8 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Wählen Sie **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu. 
+4. Wählen Sie **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
+   Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu. 
 
    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
@@ -57,7 +59,10 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
-6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie als Vertragstyp die Option **X12** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus. Weitere Details zu den Eigenschaften finden Sie in der Tabelle in diesem Schritt.
+6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. 
+   Wählen Sie als Vertragstyp die Option **X12** aus. 
+   Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus. 
+   Weitere Details zu den Eigenschaften finden Sie in der Tabelle in diesem Schritt.
 
     ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
@@ -72,8 +77,8 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
     | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
     | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |  
 
-  > [!NOTE]
-  > Die Auflösung der X12-Vereinbarung hängt von der Übereinstimmung des Absenderqualifizierers und Bezeichners sowie des Empfängerqualifizierers und Bezeichners ab, die beim Partner und in der eingehenden Nachricht definiert sind. Falls sich diese Werte für Ihren Partner ändern, aktualisieren Sie die Vereinbarung entsprechend.
+   > [!NOTE]
+   > Die Auflösung der X12-Vereinbarung hängt von der Übereinstimmung des Absenderqualifizierers und Bezeichners sowie des Empfängerqualifizierers und Bezeichners ab, die beim Partner und in der eingehenden Nachricht definiert sind. Falls sich diese Werte für Ihren Partner ändern, aktualisieren Sie die Vereinbarung entsprechend.
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurieren der Behandlung empfangener Nachrichten durch die Vereinbarung
 
@@ -178,7 +183,7 @@ Sie können konfigurieren, wie Ihre Vereinbarung ausgehende Nachrichten identifi
 1.  Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
 Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
 
-    **Sendeeinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Umschläge“, „Zeichensätze und Trennzeichen“, „Kontrollnummern“ und „Überprüfung“.
+    **Sendeeinstellungen** sind in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Umschläge“, „Zeichensätze und Trennzeichen“, „Kontrollnummern“ und „Überprüfung“.
 
 2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
 

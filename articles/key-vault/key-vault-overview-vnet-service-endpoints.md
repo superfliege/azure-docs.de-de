@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9848ed6baab240556e9eda59fbc3815c0767e899
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bb5770f4e09c0ed764d17998936c0fe97bdaebfb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108576"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370634"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Dienstendpunkte virtueller Netzwerke für Azure Key Vault
 
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von Azure Key Vault-Firewa
 > Bedenken Sie dabei folgende Konfigurationseinschränkungen:
 > * Maximal 127 virtuelle Netzwerkregeln und 127 IPv4-Regeln sind zulässig. 
 > * Kleine Adressbereiche, die die Präfixgrößen „/ 31“ oder „/ 32“ verwenden, werden nicht unterstützt. Konfigurieren Sie stattdessen diese Bereiche mit einzelnen IP-Adressregeln.
-> * IP-Netzwerkregeln sind nur für öffentliche IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit **10.**, **172.16.** und **192.168.** beginnen. 
+> * IP-Netzwerkregeln sind nur für öffentliche IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit **10.**, **172.16-31** und **192.168.** beginnen. 
 > * Derzeit werden nur IPv4-Adressen unterstützt.
 
 ## <a name="trusted-services"></a>Vertrauenswürdige Dienste

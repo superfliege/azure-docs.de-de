@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5f2052576d0c6a1e663e3b84534fa0784a26e175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006516"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372317"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -69,7 +69,7 @@ Storage Premium-Konten haben zusätzlich zu den unter [Ziele für Skalierbarkeit
 |:--- |:--- |
 | Datenträgerkapazität: 35 TB<br />Kapazität für Momentaufnahmen: 10 TB |Bis zu 50 GB pro Sekunde für eingehenden und ausgehenden Datenverkehr |
 
-Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md#premium-storage-account-scale-limits).
+Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
@@ -158,7 +158,7 @@ Erstellen Sie ein Speicherkonto für die Verwaltung Ihrer virtuellen Festplatten
 Für Datenträger können Sie auswählen, dass einige in einem Standardspeicherkonto verbleiben (z.B. Datenträger, auf die weniger zugegriffen wird). Wir empfehlen jedoch ausdrücklich, alle Daten für Produktionsworkloads in Storage Premium zu verschieben.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>Schritt 3: Kopieren der VHD mit AzCopy oder mit PowerShell
-Sie müssen Ihren Containerpfad und Speicherkontoschlüssel kennen, um eine dieser beiden Optionen nutzen zu können. Den Containerpfad und Speicherkontoschlüssel finden Sie hier: **Azure-Portal** > **Speicher**. Die Container-URL würde z.B. wie folgt lauten: https://myaccount.blob.core.windows.net/mycontainer/.
+Sie müssen Ihren Containerpfad und Speicherkontoschlüssel kennen, um eine dieser beiden Optionen nutzen zu können. Den Containerpfad und Speicherkontoschlüssel finden Sie hier: **Azure-Portal** > **Speicher**. Die Container-URL lautet beispielsweise „https:\//myaccount.blob.core.windows.net/meincontainer/“.
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Kopieren einer VHD mit AzCopy (asynchrone Kopie)
 Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. Je nach Größe der virtuellen Festplatten kann dies einige Zeit in Anspruch nehmen. Denken Sie daran, die Eingangs-/Ausgangsgrenzen des Speicherkontos bei Verwendung dieser Option zu überprüfen. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md) .

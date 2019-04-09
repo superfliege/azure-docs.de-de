@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008904"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339005"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor (Public Preview)
 
@@ -83,7 +83,7 @@ Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel f
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Wie viele Daten sind zum Auslösen einer Warnung erforderlich?
 
-Dynamische Schwellenwerte erfordern mindestens das Datenvolumen von drei Tagen, um genaue Schwellenwerte zu gewährleisten, bevor Warnungsmeldungen ausgelöst werden.
+Wenn Sie über eine neue Ressource verfügen oder metrische Daten fehlen, lösen dynamische Schwellwerte keine Warnungen aus, bevor die Daten für drei Tage verfügbar sind, um genaue Schwellenwerte sicherzustellen.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Bewährte Methoden für dynamische Schwellenwerte
 

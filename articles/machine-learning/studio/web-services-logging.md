@@ -3,7 +3,7 @@ title: 'Webdienstprotokollierung: Azure Machine Learning Studio | Microsoft-Doku
 description: Erfahren Sie, wie Sie die Protokollierung für Machine Learning Studio-Webdienste aktivieren können. Die Protokollierung stellt zusätzliche Informationen zur Problembehandlung von APIs bereit.
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -11,16 +11,16 @@ ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
 ms.subservice: studio
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270089"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857554"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Aktivieren der Protokollierung für Azure Machine Learning Studio-Webdienste
 Dieses Dokument enthält Informationen zur Protokollierungsfunktion von Machine Learning Studio-Webdiensten. Durch die Protokollierung erhalten Sie zusätzliche Informationen, die über die Fehlernummer und eine Meldung hinausgehen und die Ihnen helfen können, Probleme beim Aufrufen der Machine Learning Studio-APIs zu beheben.  
@@ -57,7 +57,7 @@ Aktivieren Sie die Protokollierung im [Azure Machine Learning Studio Web Service
 
    3. Wenn der Container **ml-diagnostics** nicht vorhanden ist, klicken Sie auf **+Container**, vergeben Sie für den neuen Container den Namen „ml-diagnostics“, und wählen Sie für **Zugriffstyp** die Option „Blob“ aus. Klicken Sie auf **OK**.
 
-      ![Auswählen des Protokolliergrads](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![Erstellen eines neuen Containers zum Speichern der Diagnoseprotokolle](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >

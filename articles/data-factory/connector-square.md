@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 68ac03a8aba4042a842b5e740d67ab4198236275
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013161"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317720"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopieren von Daten aus Square mithilfe von Azure Data Factory (Vorschau)
 
@@ -44,11 +44,11 @@ Folgende Eigenschaften werden für den mit Square verknüpften Dienst unterstüt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Square** | JA |
-| host | Die URL der Square-Instanz. (mystore.mysquare.com)  | JA |
-| clientId | Die Client-ID, die Ihrer Square-Anwendung zugeordnet ist.  | JA |
-| clientSecret | Der geheime Clientschlüssel, der Ihrer Square-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
-| redirectUri | Die Umleitungs-URL, die im Dashboard der Square-Anwendung zugewiesen ist. (Beispiel: http://localhost:2500)  | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Square** | Ja |
+| host | Die URL der Square-Instanz. (mystore.mysquare.com)  | Ja |
+| clientId | Die Client-ID, die Ihrer Square-Anwendung zugeordnet ist.  | Ja |
+| clientSecret | Der geheime Clientschlüssel, der Ihrer Square-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| redirectUri | Die Umleitungs-URL, die im Dashboard der Square-Anwendung zugewiesen ist. (i.e. http:\//localhost:2500)  | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |
@@ -81,7 +81,7 @@ Legen Sie zum Kopieren von Daten aus Square die „type“-Eigenschaft des Datas
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SquareObject** | JA |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SquareObject** | Ja |
 | tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -110,7 +110,7 @@ Legen Sie zum Kopieren von Daten aus Square den Quellentyp in der Kopieraktivit�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SquareSource** | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SquareSource** | Ja |
 | query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Business"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549427"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350639"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
 
@@ -90,7 +90,7 @@ Informationen zu den Umständen, unter denen eine Anwendungsbereitstellung zu ei
 
 Sie haben zwei Möglichkeiten für Continuous Deployment mit Azure DevOps:
 
-*   Verwenden Sie ein Git-Projekt. Stellen Sie eine Verbindung über App Service her, indem Sie die Bereitstellungsoptionen für dieses Repository verwenden.
+*   Verwenden Sie ein Git-Projekt. Stellen Sie eine Verbindung über App Service mithilfe des Bereitstellungscenters her.
 *   Verwenden Sie ein TFVC-Projekt (Team Foundation Version Control). Führen Sie die Bereitstellung mithilfe des Build-Agents für App Service durch.
 
 Die kontinuierliche Codebereitstellung für beide Optionen hängt von vorhandenen Entwicklerworkflows und Eincheckverfahren ab. Weitere Informationen und Beispiele finden Sie in diesen Artikeln: 

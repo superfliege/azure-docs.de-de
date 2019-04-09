@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569024"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369168"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapping Data Flow – Quelltransformation
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Die Quelltransformation konfiguriert eine Datenquelle, die Sie verwenden möchten, um Daten in Ihre Data Flow-Instanz zu übertragen. Sie können mehr als eine Quelltenransformation in einer einzigen Data Flow-Instanz haben. Beginnen Sie immer mit dem Entwerfen Ihrer Data Flows mit einer Quellentransformation.
+Die Quelltransformation konfiguriert eine Datenquelle, die Sie verwenden möchten, um Daten in Ihre Data Flow-Instanz zu übertragen. Sie können mehr als eine Quellentransformation in einer einzigen Data Flow-Instanz haben. Beginnen Sie immer mit dem Entwerfen Ihrer Data Flows mit einer Quellentransformation.
 
 > [!NOTE]
 > Jeder Data Flow erfordert mindestens eine Quelltransformation. Fügen Sie so viele zusätzliche Quellen hinzu, wie Sie benötigen, um Ihre Datentransformationen abzuschließen. Sie können diese Quellen zusammen mit einer Join- oder Union-Transformation verwenden. Beim Debuggen des Datenflusses in Debugsitzungen werden Daten mithilfe der Sampling-Einstellung oder der Debugquellenlimits aus der Quelle gelesen. Es werden jedenfalls erst Daten in eine Senke geschrieben, wenn Sie Ihren Datenfluss aus einer Pipeline-Datenflussaktivität heraus ausführen. 
@@ -83,7 +83,7 @@ Sie können optional wählen, ob Sie die Verbindungen basierend auf einer Abfrag
 
 Wenn Sie Azure SQL DB oder Azure SQL DW als Quelle verwenden, haben Sie zusätzliche Optionen.
 
-* Abfrage: Geben Sie eine SQL-Abfrage für die Quelle ein. Durch das Festlegen einer Abfrage wird jede Tabelle, die Sie im Dataset ausgewählt haben, überschrieben. Beachten Sie, dass die Order By-Klauseln hier nicht unterstützt werden.
+* Abfrage: Geben Sie eine SQL-Abfrage für die Quelle ein. Durch das Festlegen einer Abfrage wird jede Tabelle, die Sie im Dataset ausgewählt haben, überschrieben. Beachten Sie, dass die Order By-Klauseln hier nicht unterstützt werden. Sie können hier jedoch eine vollständige SELECT FROM-Anweisung festlegen.
 
 * Batchgröße: Geben Sie eine Batchgröße ein, um große Datenmengen Leseblöcke zu segmentieren.
 

@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80cff113264868517f5348cfbbd7eaad7fbc751
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838390"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438300"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
 Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und **ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
@@ -40,7 +40,7 @@ Beim Versuch, ein neues Objekt mit einem UPN- oder ProxyAddress-Wert bereitzuste
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Verhalten mit Resilienz bei doppelten Attributen
 Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Diese temporären Werte weisen folgendes Format auf:  
-„***<OriginalPrefix>+<4stelligeZahl>\@<InitialTenantDomain>.onmicrosoft.com***“.  
+„***\<OriginalPräfix>+\<4-stelligeZahl>\@\<AnfangsdomäneMandant>.onmicrosoft.com***“.  
 Ist das Attribut nicht erforderlich (etwa im Falle von **ProxyAddress**), wird das Konfliktattribut einfach von Azure Active Directory unter Quarantäne gestellt, und die Objekterstellung oder -aktualisierung wird fortgesetzt.
 
 Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden aber nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.
@@ -113,7 +113,7 @@ Verwenden Sie für eine allgemeine Zeichenfolgensuche das Flag **-SearchString**
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>Eingeschränkte Menge oder alle
-1. Mit **MaxResults <Int>** kann die Abfrage auf eine bestimmte Anzahl von Werten beschränkt werden.
+1. Mit **MaxResults \<Int>** kann die Abfrage auf eine bestimmte Anzahl von Werten beschränkt werden.
 2. **All** sicherstellen, dass alle Ergebnisse abgerufen werden.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`

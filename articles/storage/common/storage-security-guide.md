@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013071"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369742"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -22,7 +22,7 @@ Azure Storage bietet umfassende Sicherheitsfunktionen, die Entwicklern das Erste
 - Alle Daten werden automatisch mit [Storage Service Encryption (SSE)](storage-service-encryption.md) verschlüsselt, wenn sie in Azure Storage geschrieben werden. Weitere Informationen finden Sie unter [Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/) (Ankündigung: Standardverschlüsselung für Azure Blobs, Files, Table und Queue Storage).
 - Azure Active Directory (Azure AD) und die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) werden für Azure Storage sowohl für Ressourcenverwaltungsvorgänge als auch für Datenvorgänge wie folgt unterstützt:   
     - Sie können RBAC-Rollen, die auf das Speicherkonto beschränkt sind, Dienstprinzipalen zuweisen und Azure AD verwenden, um Ressourcenverwaltungsvorgänge, z.B. die Schlüsselverwaltung, zu autorisieren.
-    - Die Azure AD-Integration wird in der Vorschau für Datenvorgänge für die Blob- und Warteschlangendienste unterstützt. Sie können RBAC-Rollen, die auf ein Abonnement, eine Ressourcengruppe, ein Speicherkonto oder einen einzelnen Container oder eine Warteschlange bezogen sind, einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zuweisen. Weitere Informationen finden Sie unter [Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md) (Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)).   
+    - Die Azure AD-Integration wird für Datenvorgänge in Blobs und Warteschlangen unterstützt. Sie können RBAC-Rollen, die auf ein Abonnement, eine Ressourcengruppe, ein Speicherkonto oder einen einzelnen Container oder eine Warteschlange bezogen sind, einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zuweisen. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).   
 - Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](../storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden.  
 - Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Azure-Computern verwendet werden, können mit [Azure Disk Encryption](../../security/azure-security-disk-encryption.md) verschlüsselt werden. 
 - Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit [Shared Access Signatures](../storage-dotnet-shared-access-signature-part-1.md)erteilt werden.
@@ -155,8 +155,8 @@ Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azu
 
 Sie haben drei Optionen zur Autorisierung des Zugriffs auf Datenobjekte in Azure Storage:
 
-- Verwenden Sie Azure AD, um den Zugriff auf Container und Warteschlangen zu autorisieren (Vorschau). Azure AD bietet gegenüber anderen Ansätzen zur Autorisierung Vorteile, z.B. Wegfall der Speicherung von Geheimnissen in Ihrem Code. Weitere Informationen finden Sie unter [Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md) (Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)). 
-- Verwenden Sie Ihre Speicherkontoschlüssel, um den Zugriff per gemeinsam verwendetem Schlüssel zu autorisieren. Für die Autorisierung per gemeinsam verwendetem Schlüssel ist das Speichern Ihrer Speicherkontoschlüssel in Ihrer Anwendung erforderlich, und Microsoft empfiehlt stattdessen nach Möglichkeit die Nutzung von Azure AD. Nutzen Sie für Produktionsanwendungen oder zum Autorisieren des Zugriffs auf Azure-Tabellen und -Dateien weiterhin den gemeinsam verwendeten Schlüssel, während sich die Azure AD-Integration in der Vorschauphase befindet.
+- Verwenden Sie Azure AD, um den Zugriff auf Container und Warteschlangen zu autorisieren. Azure AD bietet gegenüber anderen Ansätzen zur Autorisierung Vorteile, z.B. Wegfall der Speicherung von Geheimnissen in Ihrem Code. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md). 
+- Verwenden Sie Ihre Speicherkontoschlüssel, um den Zugriff per gemeinsam verwendetem Schlüssel zu autorisieren. Für die Autorisierung per gemeinsam verwendetem Schlüssel ist das Speichern Ihrer Speicherkontoschlüssel in Ihrer Anwendung erforderlich, und Microsoft empfiehlt stattdessen nach Möglichkeit die Nutzung von Azure AD.
 - Verwenden Sie Shared Access Signatures, um bestimmten Datenobjekten für einen bestimmten Zeitraum kontrollierte Berechtigungen zu gewähren.
 
 Für Blob Storage können Sie öffentlichen Zugriff auf Ihre Blobs zulassen, indem Sie die Zugriffsebene für den Container, der die Blobs enthält, entsprechend festlegen. Wenn Sie den Zugriff für einen Container auf Blob oder Container festlegen, entspricht dies öffentlichem Lesezugriff auf die Blobs im Container. Dies bedeutet, dass jeder Benutzer, dessen URL auf ein Blob in diesem Container zeigt, es in einem Browser öffnen kann, ohne eine SAS zu verwenden oder über die Schlüssel des Speicherkontos zu verfügen.

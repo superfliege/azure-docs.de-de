@@ -8,12 +8,12 @@ ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 97dafe01db4779332a530dc8981b3d6ada8c9df9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: bca006ab33379f52281f77fb5a04a24022bac373
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406514"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314552"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
@@ -78,7 +78,7 @@ Die UX kann dann entscheiden, wie die Kombination dargestellt wird. Für die Anz
 Wie bereits im Abschnitt mit den wichtigen Begriffen angedeutet, enthält das Objektmodell von **Azure Data Catalog** Elemente, bei denen es sich um Assets oder Anmerkungen handeln kann. Elemente besitzen optionale oder erforderliche Eigenschaften. Einige Eigenschaften gelten für alle Elemente. Einige Eigenschaften gelten für alle Assets. Einige Eigenschaften gelten nur für bestimmte Assettypen.
 
 ### <a name="system-properties"></a>Systemeigenschaften
-<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>type</td><td>Zeichenfolge</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>Zeichenfolge</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
+<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>type</td><td>Zeichenfolge</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>Zeichenfolge</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
 
 ### <a name="common-properties"></a>Allgemeine Eigenschaften
 Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstypen.
@@ -105,7 +105,7 @@ Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (Anmerkunge
 ### <a name="root-asset-types"></a>Stammassettypen
 Stammassettypen stellen die verschiedenen Typen von Datenassets dar, die im Katalog registriert werden können. Für jeden Stammtyp gibt es eine Sicht, die die in der Sicht enthaltenen Assets und Anmerkungen beschreibt. Der Sichtname sollte bei der Veröffentlichung eines Assets mithilfe der REST-API im entsprechenden {view_name}-URL-Segment verwendet werden.
 
-<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiele wären etwa SQL-Tabellen, SQL-Sichten, tabellarische Analysis Services-Tabellen, mehrdimensionale Analysis Services-Dimensionen und Oracle-Tabellen.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolescher Wert</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
+<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiel:  SQL-Tabelle, SQL-Sicht, tabellarische Analysis Services-Tabelle, mehrdimensionale Analysis Services-Dimension, Oracle-Tabelle usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolescher Wert</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
 <tr><td>Bericht („reports“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL Server Reporting Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z. B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
 
 ### <a name="annotation-types"></a>Anmerkungstypen
@@ -167,13 +167,13 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 Allgemeine Typen können als Typen für Eigenschaften verwendet werden, sind aber keine Elemente.
 
 <table>
-<tr><td><b>Allgemeiner Typ</b></td><td><b>Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
+<tr><td><b>Allgemeiner Typ</b></td><td><b>Properties</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>Zeichenfolge</td><td>Beschreibt die Art der Datenquelle.  Beispiele: SQL Server, Oracle-Datenbank usw.  </td></tr>
-<tr><td></td><td>objectType</td><td>Zeichenfolge</td><td>Beschreibt die Art des Objekts in der Datenquelle. Beispiele: Tabelle oder Sicht für SQL Server</td></tr>
+<tr><td></td><td>sourceType</td><td>Zeichenfolge</td><td>Beschreibt die Art der Datenquelle.  Beispiel:  SQL Server, Oracle-Datenbank usw.  </td></tr>
+<tr><td></td><td>objectType</td><td>Zeichenfolge</td><td>Beschreibt die Art des Objekts in der Datenquelle. Beispiel:  Tabelle oder Sicht für SQL Server.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protocol</td><td>Zeichenfolge</td><td>Erforderlich. Beschreibt ein Protokoll für die Kommunikation mit der Datenquelle. Beispiele: „tds“ für SQL Server, „oracle“ für Oracle usw. Die Liste mit den derzeit unterstützten Protokollen finden Sie unter [Spezifikation des Datenquellenverweises – DSL-Struktur](data-catalog-dsr.md).</td></tr>
+<tr><td></td><td>protocol</td><td>Zeichenfolge</td><td>Erforderlich. Beschreibt ein Protokoll für die Kommunikation mit der Datenquelle. Beispiele: „tds“ für SQL Server, „oracle“ für Oracle usw. Die Liste mit den derzeit unterstützten Protokollen finden Sie unter <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Spezifikation des Datenquellenverweises – DSL-Struktur</a>.</td></tr>
 <tr><td></td><td>address</td><td>Wörterbuch<string, object></td><td>Erforderlich. Bei „address“ handelt es sich um eine protokollspezifische Gruppe von Daten zur Identifizierung der Datenquelle, auf die verwiesen wird. Die für ein bestimmtes Protokoll gültigen Adressdaten, d.h. ohne Kenntnis des Protokolls bedeutungslos.</td></tr>
 <tr><td></td><td>authentication</td><td>Zeichenfolge</td><td>Optional. Das Authentifizierungsschema, das zur Kommunikation mit der Datenquelle verwendet wird. Beispiele: windows, oauth, usw.</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Wörterbuch<string, object></td><td>Optional. Weitere Informationen zum Herstellen einer Verbindung mit einer Datenquelle.</td></tr>
@@ -243,7 +243,7 @@ Azure Data Catalog verwendet zwei Autorisierungsmechanismen:
 * Berechtigungsbasierte Autorisierung
 
 ### <a name="roles"></a>Rollen
-Drei Rollen stehen zur Verfügung: **Administrator**, **Besitzer** und **Mitwirkender**.  Jede Rolle hat ihren eigenen Umfang und ihre eigenen Rechte. Diese werden in der folgenden Tabelle zusammengefasst:
+Drei Rollen stehen zur Verfügung: **Administrator**, **Besitzer** oder **Mitwirkender**.  Jede Rolle hat ihren eigenen Umfang und ihre eigenen Rechte. Diese werden in der folgenden Tabelle zusammengefasst:
 
 <table><tr><td><b>Rolle</b></td><td><b>Umfang</b></td><td><b>Rechte</b></td></tr><tr><td>Administrator</td><td>Katalog (alle Assets/Anmerkungen im Katalog)</td><td>Read Delete ViewRoles
 
@@ -273,14 +273,14 @@ Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Be
 > 
 > **Besitzer** gilt nur für ein Stammelement.
 > 
-> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines **Elements unverändert**. Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist &lt;Everyone&gt;: Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder &lt;Everyone&gt; sein.
+> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines **Elements unverändert**. Der einzige unterstützte Wert zum expliziten Festlegen von **Mitwirkender** ist &lt;Jeder&gt;: **Mitwirkender** kann nur ein Benutzer, der ein Element erstellt hat, oder &lt;Jeder&gt; sein.
 > 
 > 
 
 ### <a name="examples"></a>Beispiele
 **Festlegen des Mitwirkenden auf &lt;Everyone&gt; beim Veröffentlichen eines Elements.**
 Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00000000-0000-0000-0000-000000000201“.
-  **POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
+  **POST** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
 > [!NOTE]
 > Einige HTTP-Clientimplementierungen können Anforderungen als Reaktion auf eine 302-Antwort vom Server neu ausstellen, in der Regel werden die Autorisierungsheader jedoch aus der Anforderung entfernt. Der Autorisierungsheader ist für Anforderungen an Azure Data Catalog erforderlich. Vergewissern Sie sich daher, dass der Autorisierungsheader noch vorhanden ist, wenn eine Anforderung an einen von Azure Data Catalog festgelegten Umleitungsort neu ausgestellt wird. Dies wird im folgenden Beispielcode mithilfe des Objekts „.NET HttpWebRequest“ veranschaulicht.
@@ -302,7 +302,7 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
         ]
     }
 
-  **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+  **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement**: **PUT** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
     {
         "roles": [

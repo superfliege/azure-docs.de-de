@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457265"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338597"
 ---
 <a name="logic-app-test-drive"></a>Testversion für Logik-Apps
 ====================
@@ -137,6 +137,10 @@ Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet w
 **Azure AD App Key** (Azure AD-App-Schlüssel): *[Pflichtfeld]* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
 
 ![Azure Active Directory-Schlüssel](./media/azure-resource-manager-test-drive/subdetails8.png)
+
+> [!CAUTION]
+> Sie können nicht die Vorschauversion der Azure-App-Registrierung verwenden, da sie derzeit keinen base64-codierten Schlüssel generiert.
+
 
 <a name="next-steps"></a>Nächste Schritte
 ----------

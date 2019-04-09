@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15707e9854e79b3aa05ff9024fc5b3c7a38fa8f2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106884"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402115"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
@@ -112,7 +112,7 @@ Jede Kategorie hat einen eigenen Satz von Attributen. Sie können die folgenden 
 
     - Liste der zulässigen Benutzergruppen. Beispiele: *Administratoren*, *Sicherungsoperatoren*
 
--   **state**: Diese Zeichenfolge kann die Option *Disabled* (Deaktiviert) oder *Enabled* (Aktiviert) enthalten. Bei dieser Private Preview-Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
+-   **state**: Diese Zeichenfolge kann die Option *Disabled* (Deaktiviert) oder *Enabled* (Aktiviert) enthalten. Bei dieser Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
 
 Dies sind die einzigen Felder, die konfiguriert werden können. Wenn Sie gegen das Dateiformat oder die Dateigröße verstoßen, können Sie die Änderung nicht speichern. Sie werden in einer Fehlermeldung darüber informiert, dass Sie eine gültige JSON-Konfigurationsdatei hochladen müssen.
 

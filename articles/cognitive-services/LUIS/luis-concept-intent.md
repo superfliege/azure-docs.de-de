@@ -1,7 +1,7 @@
 ---
-title: Benutzerabsichten
+title: Absichten
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Eine Absicht stellt eine Aufgabe oder Aktion dar, die der Benutzer ausführen möchte. Sie ist ein Zweck oder Ziel, das in einer Äußerung des Benutzers ausgedrückt wurde.
+description: Eine einzelne Absicht stellt eine Aufgabe oder Aktion dar, die der Benutzer ausführen möchte. Sie ist ein Zweck oder Ziel, das in einer Äußerung des Benutzers ausgedrückt wurde. Definieren Sie einen Satz von Absichten, die Aktionen entsprechen, die Benutzer in Ihrer Anwendung ausführen möchten.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae1dd16e3296c11d6bce6ea623f590deaee8f65d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871352"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371110"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Konzepte zu Absichten in Ihrer LUIS-App
 
@@ -31,7 +31,7 @@ Absichten einer Reise-App   |   Beispiele für Äußerungen   |
  CheckWeather | „Wie ist das Wetter in Boston?“ <br/> „Zeige mir die Vorhersage für das Wochenende“ |
  Keine         | „Zeige mit ein Keksrezept“<br>„Haben die Lakers gewonnen?“ |
 
-Alle Anwendungen enthalten die vordefinierte Absicht [None](#none-intent-is-fallback-for-app), die als Fallbackabsicht fungiert. 
+Alle Anwendungen enthalten die vordefinierte Absicht „[None](#none-intent-is-fallback-for-app)“, die als Fallbackabsicht fungiert. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Vordefinierte Domänen stellen Absichten bereit
 Zusätzlich zu den von Ihnen definierten Absichten können Sie die von einer vordefinierten Domäne vordefinierten Absichten verwenden. Weitere Informationen zum Anpassen von Absichten aus einer vordefinierten Domäne für die Verwendung in Ihrer App finden Sie unter [Verwenden von vordefinierten Domänen in LUIS-Apps](luis-how-to-use-prebuilt-domains.md).
@@ -57,7 +57,11 @@ Ebenso entsprechen [Äußerungen](luis-concept-utterance.md) einer einzigen Absi
 
 [Vordefinierte Domänen](luis-how-to-use-prebuilt-domains.md) enthalten Absichten mit Äußerungen.  
 
-## <a name="none-intent-is-fallback-for-app"></a>Absicht „None“ als Fallback für die App
+## <a name="none-intent"></a>Absicht „None“
+
+Die Absicht **None** ist für jede App wichtig und sollte keine Null-Äußerungen aufweisen.
+
+### <a name="none-intent-is-fallback-for-app"></a>Absicht „None“ als Fallback für die App
 Die Absicht **None** ist eine Sammel- bzw. Ausweichabsicht. Sie dient dazu, LUIS Äußerungen beizubringen, die in der App-Domäne (dem Themenbereich) nicht wichtig sind. Die Absicht **None** sollte zwischen 10 und 20 Prozent der gesamten Äußerungen in der Anwendung ausmachen. Lassen Sie „None“ (Keine) nicht leer. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Absicht „None“ unterstützt Konversationsführung
@@ -76,6 +80,12 @@ Die Absicht **None** ist eine erforderliche Absicht, die weder gelöscht noch um
 
 ## <a name="negative-intentions"></a>Negative Absichten 
 Wenn Sie negative und positive Absichten ermitteln möchten, z.B. „ich **möchte** ein Auto“ und „ich möchte **kein** Auto“, können Sie zwei Absichten erstellen (eine positive und eine negative) und jeder entsprechende Äußerungen hinzufügen. Sie können aber auch eine einzige Absicht erstellen und die beiden positiven und negativen Begriffe als Entität kennzeichnen.  
+
+## <a name="intents-and-patterns"></a>Absichten und Muster
+
+Wenn Sie über Beispieläußerungen verfügen, die ganz oder teilweise als regulärer Ausdruck definiert werden können, sollten Sie die [Entität des regulären Ausdrucks](luis-concept-entity-types.md#regular-expression-entity) zusammen mit einem [Muster](luis-concept-patterns.md) verwenden. 
+
+Die Verwendung einer Entität eines regulären Ausdrucks garantiert die Datenextraktion, sodass das Muster übereinstimmt. Der Musterabgleich stellt sicher, dass eine genaue Absicht zurückgegeben wird. 
 
 ## <a name="intent-balance"></a>Balance zwischen Absichten
 Die Äußerungen der Absichten einer App-Domäne sollten gleichmäßig auf die Absichten verteilt sein. Sie sollten nicht einer Absicht 10 Äußerungen und einer anderen 500 Äußerungen zuordnen. Dies ist nicht ausgeglichen. In dieser Situation überprüfen Sie die Absicht mit den 500 Äußerungen, um zu ermitteln, ob ein Großteil der Absichten in einem [Muster](luis-concept-patterns.md) neu organisiert werden können. 
@@ -96,6 +106,8 @@ Erfahren Sie mehr über das Kombinieren von LUIS- und QnA Maker-Apps mit dem [Di
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Anfordern von Hilfe für Apps mit einer erheblichen Anzahl von Absichten
 Wenn die Verringerung der Anzahl von Absichten oder das Aufteilen eines Teils Ihrer Absichten auf mehrere Apps für Sie nicht funktioniert, wenden Sie sich an den Support. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

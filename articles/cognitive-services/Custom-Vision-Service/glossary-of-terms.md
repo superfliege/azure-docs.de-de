@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/08/2017
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: e659367ae13026dbe48ed681d0a68058d686e3ec
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884340"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352101"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Glossar für Custom Vision Service
 
-Hier finden Sie einige Begriffe aus Custom Vision Service und deren jeweilige Bedeutung.
+Hier finden Sie einige Begriffe, die häufig in Custom Vision Service verwendet werden:
 
 ## <a name="classifier"></a>Klassifizierung
 
@@ -37,33 +37,21 @@ Bei der Projekterstellung wählen Sie eine Domäne für das Projekt aus. Die Dom
 
 Durch **kompakte Domänen** generierte Modelle können mithilfe der Iterationsfunktion exportiert werden. Sie sind für die Einschränkungen der Echtzeitklassifizierung auf Mobilgeräten optimiert. Mit einer kompakten Domäne erstellte Klassifizierungen sind möglicherweise etwas ungenauer als eine Standarddomäne mit der gleichen Menge an Trainingsdaten. Aufgrund ihrer geringen Größe können sie jedoch nahezu in Echtzeit lokal ausgeführt werden. 
 
-## <a name="training-image"></a>Trainingsbild
+## <a name="evaluation"></a>Auswertung
 
-Zur Erstellung einer Klassifizierung mit hoher Genauigkeit benötigt Custom Vision Service mehrere Trainingsbilder. Ein Trainingsbild ist ein Foto des Bilds, das von Custom Vision Service klassifiziert werden soll. Wenn Sie also beispielsweise Orangen klassifizieren möchten, müssen Sie mehrere Bilder von Orangen in Custom Vision Service hochladen, damit der Dienst eine Klassifizierung für die Erkennung von Orangen erstellen kann. Wir empfehlen mindestens 30 Bilder pro Tag.
+Nachdem Sie Ihre Klassifizierung trainiert haben, können Sie unter Verwendung des automatisch generierten HTTPS-Endpunkts ein beliebiges Bild zur Auswertung übermitteln. Ihre Klassifizierung gibt eine nach Zuverlässigkeit sortierte Gruppe vorhergesagter Tags zurück.
 
 ## <a name="iteration"></a>Iteration
 
 Bei jedem Training oder erneuten Training Ihrer Klassifizierung wird eine neue Iteration Ihres Modells erstellt. Wir bewahren mehrere der Iterationen auf, damit Sie Ihren Fortschritt im Zeitverlauf vergleichen können. Nicht mehr benötigte Iterationen können gelöscht werden. Das Löschen einer Iteration kann allerdings nicht mehr rückgängig gemacht werden. Außerdem werden dabei auch alle spezifischen Bilder und Änderungen dieser Iteration gelöscht. 
 
-## <a name="workspace"></a>Arbeitsbereich
+## <a name="precision"></a>Precision
 
-Ihr Arbeitsbereich enthält alle Ihre Trainingsbilder und spiegelt alle Änderungen aus Ihrer aktuellen Iteration wider (beispielsweise entfernte oder hinzugefügte Bilder). Wenn Sie Ihre Klassifizierung trainieren, erstellen Sie eine neue Iteration Ihrer Klassifizierung unter Verwendung der Bilder aus Ihrem Arbeitsbereich.
-
-## <a name="tags"></a>Tags
-
-Verwenden Sie Tags, um die Objekte in Ihren Trainingsbilder zu benennen. Wenn Sie eine Klassifizierung zur Identifizierung von Hunden und Ponys erstellen, versehen Sie Hundebilder mit dem Tag „Hund“, Ponybilder mit dem Tag „Pony“ und Bilder, auf denen sowohl ein Hund als auch ein Pony zu sehen ist, mit den Tags „Hund“ und „Pony“.
-
-## <a name="evaluation"></a>Auswertung
-
-Nachdem Sie Ihre Klassifizierung trainiert haben, können Sie unter Verwendung des automatisch generierten HTTPS-Endpunkts ein beliebiges Bild zur Auswertung übermitteln. Ihre Klassifizierung gibt eine nach Zuverlässigkeit sortierte Gruppe vorhergesagter Tags zurück.
+Wenn Sie ein Bild klassifizieren, wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung das Bild richtig klassifiziert? Wie viel Prozent aller Bilder, mit denen die Klassifizierung (Hunde und Ponys) trainiert wurde, hat das Modell korrekt erkannt? Bei 99 korrekten Tags und 100 Bildern ergibt sich eine Genauigkeit von 99 Prozent.
 
 ## <a name="predictions"></a>Vorhersagen
 
 Wenn Ihre Klassifizierung neue zu klassifizierende Bilder akzeptiert, speichert sie die Bilder für Sie. Mit diesen Bildern können Sie die Genauigkeit Ihrer Klassifizierung verbessern, indem Sie falsch vorhergesagte Bilder mit den korrekten Tags versehen. Außerdem können Sie Ihre Klassifizierung mithilfe dieser neuen Bilder neu trainieren.
-
-## <a name="precision"></a>Precision
-
-Wenn Sie ein Bild klassifizieren, wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung das Bild richtig klassifiziert? Wie viel Prozent aller Bilder, mit denen die Klassifizierung (Hunde und Ponys) trainiert wurde, hat das Modell korrekt erkannt? Bei 99 korrekten Tags und 100 Bildern ergibt sich eine Genauigkeit von 99 Prozent.
 
 ## <a name="recall"></a>Recall (Trefferquote)
 
@@ -73,7 +61,7 @@ Wie viele der Bilder, die korrekt klassifiziert werden sollten, wurden von Ihrer
 
 Es gibt zwei Arten von Einstellungen: Einstellungen auf Projektebene und Einstellungen auf Benutzerebene.
 
-- Einstellungen auf Projektebene: 
+- Einstellungen auf Projektebene:
   
   Einstellungen auf Projektebene gelten für ein Projekt oder eine Klassifizierung. Hierzu gehören folgende Berechtigungen:
 
@@ -90,3 +78,15 @@ Es gibt zwei Arten von Einstellungen: Einstellungen auf Projektebene und Einstel
    - Syntax:
       - Anzahl erstellter Projekte
       - Anzahl ausgeführter Aufrufe der Auswertungs-/Vorhersage-API
+
+## <a name="tags"></a>Tags
+
+Verwenden Sie Tags, um die Objekte in Ihren Trainingsbilder zu benennen. Wenn Sie eine Klassifizierung zur Identifizierung von Hunden und Ponys erstellen, versehen Sie Hundebilder mit dem Tag „Hund“, Ponybilder mit dem Tag „Pony“ und Bilder, auf denen sowohl ein Hund als auch ein Pony zu sehen ist, mit den Tags „Hund“ und „Pony“.
+
+## <a name="training-image"></a>Trainingsbild
+
+Zur Erstellung einer Klassifizierung mit hoher Genauigkeit benötigt Custom Vision Service mehrere Trainingsbilder. Ein Trainingsbild ist ein Foto des Bilds, das von Custom Vision Service klassifiziert werden soll. Wenn Sie also beispielsweise Orangen klassifizieren möchten, müssen Sie mehrere Bilder von Orangen in Custom Vision Service hochladen, damit der Dienst eine Klassifizierung für die Erkennung von Orangen erstellen kann. Wir empfehlen mindestens 30 Bilder pro Tag.
+
+## <a name="workspace"></a>Arbeitsbereich
+
+Ihr Arbeitsbereich enthält alle Ihre Trainingsbilder und spiegelt alle Änderungen aus Ihrer aktuellen Iteration wider (beispielsweise entfernte oder hinzugefügte Bilder). Wenn Sie Ihre Klassifizierung trainieren, erstellen Sie eine neue Iteration Ihrer Klassifizierung unter Verwendung der Bilder aus Ihrem Arbeitsbereich.

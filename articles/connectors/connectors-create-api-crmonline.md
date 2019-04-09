@@ -1,21 +1,21 @@
 ---
-title: Herstellen einer Verbindung mit Dynamics 365 – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Dynamics 365 – Azure Logic Apps
 description: Erstellen und Verwalten von Datensätzen mit REST-APIs für Dynamics 365 (online) und mit Azure Logic Apps
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: Mattp123
 ms.author: matp
-ms.service: logic-apps
-services: logic-apps
 ms.reviewer: estfan, LADocs
-ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295299"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310573"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Verwalten von Dynamics 365-Datensätzen in Azure Logic Apps
 
@@ -26,13 +26,13 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
 * Ein [Dynamics 365-Konto](https://dynamics.microsoft.com)
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Die Logik-App, in der Sie auf Ihr Dynamics 365-Konto zugreifen möchten. Um Ihre Logik-App mit einem Dynamics 365-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Die Logik-App, in der Sie auf Ihr Dynamics 365-Konto zugreifen möchten. Um Ihre Logik-App mit einem Dynamics 365-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-dynamics-365-trigger"></a>Dynamics 365-Trigger hinzufügen
 
@@ -50,8 +50,8 @@ Fügen Sie zunächst einen Dynamics 365-Trigger, der ausgelöst wird, wenn ein n
 
 1. Geben Sie diese Triggerdetails an:
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
-   |----------|----------|-------------| 
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
    | **Name der Organisation** | Ja | Der Name der zu überwachenden Dynamics 365-Instanz Ihrer Organisation, z.B. „Contoso“ |
    | **Name der Entität** | Ja | Der Name der zu überwachenden Entität, z.B „Leads“ | 
    | **Frequency** | Ja | Die Zeiteinheit, die bei der Suche nach Aktualisierungen im Zusammenhang mit dem Trigger mit Intervallen verwendet werden soll |
@@ -72,21 +72,21 @@ Füge nun die Dynamics 365-Aktion hinzu, die einen Aufgabendatensatz für den ne
 
 1. Geben Sie die folgenden Aktionsdetails an:
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
-   |----------|----------|-------------| 
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
    | **Name der Organisation** | Ja | Die Dynamics 365-Instanz, in der Sie den Datensatz erstellen möchten, die nicht die gleiche Instanz in Ihrem Trigger sein muss, sondern in diesem Beispiel „Contoso“ ist. |
-   | **Name der Entität** | Ja | Die Entität, in der Sie den Datensatz erstellen möchten, z.B. „Aufgaben“ | 
+   | **Name der Entität** | Ja | Die Entität, in der Sie den Datensatz erstellen möchten, z.B. „Aufgaben“ |
    | | |
 
    ![Aktionsdetails](./media/connectors-create-api-crmonline/action-details.png)
 
 1. Wenn das Feld **Betreff** in Ihrer Aktion angezeigt wird, klicken Sie in das Feld **Betreff**, damit die Liste der dynamischen Inhalte angezeigt wird. Wählen Sie in dieser Liste die Feldwerte, die in den Aufgabendatensatz bezüglich des neuen Leaddatensatzes integriert werden sollen:
 
-   | Feld | BESCHREIBUNG | 
-   |-------|-------------| 
+   | Feld | BESCHREIBUNG |
+   |-------|-------------|
    | **Letzter Name** | Der letzte Name aus dem Lead als der primäre Ansprechpartner im Datensatz |
-   | **Thema** | Der beschreibende Name für den Lead im Datensatz | 
-   | | | 
+   | **Thema** | Der beschreibende Name für den Lead im Datensatz |
+   | | |
 
    ![Aufgabedatensatz-Details](./media/connectors-create-api-crmonline/create-record-details.png)
 
@@ -109,7 +109,7 @@ So können Sie beispielsweise eine Filterabfrage verwenden, um nur die aktive Ko
 
    ![Filter und Reihenfolge angeben](./media/connectors-create-api-crmonline/advanced-options.png)
 
-Weitere Informationen finden Sie in diesen Dynamics 365 Customer Engagement Web-API-System-Abfrageoptionen: 
+Weitere Informationen finden Sie in diesen Dynamics 365 Customer Engagement Web-API-System-Abfrageoptionen:
 
 * [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
 * [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
@@ -128,19 +128,19 @@ Diese Tabelle beschreibt einige der Feldtypen und die erforderlichen Datentypen 
 | Felder, die sowohl eine Datensatz-ID als auch einen Suchtyp erfordern | Primary key (Primärschlüssel) | Einige Felder, die auf einen anderen Entitätsdatensatz verweisen, erfordern sowohl die Datensatz-ID als auch den Suchtyp. | 
 ||||
 
-Hier sehen Sie Beispielfelder in Dynamics 365-Trigger und Aktionen, die um diese Feldtypen erweitert wurden, und die sowohl eine Datensatz-ID und den Suchtyp erfordern. Diese Anforderung bedeutet, dass die Werte, die Sie aus der Liste der dynamischen Inhalte auswählen, nicht funktionieren. 
+Hier sehen Sie Beispielfelder in Dynamics 365-Trigger und Aktionen, die um diese Feldtypen erweitert wurden, und die sowohl eine Datensatz-ID und den Suchtyp erfordern. Diese Anforderung bedeutet, dass die Werte, die Sie aus der Liste der dynamischen Inhalte auswählen, nicht funktionieren.
 
-| Feld | BESCHREIBUNG | 
+| Feld | BESCHREIBUNG |
 |-------|-------------|
-| **Besitzer** | Muss entweder eine gültige Benutzer-ID oder Teamdatensatz-ID sein | 
-| **Besitzertyp** | Muss entweder **systemusers** oder **teams** sein. | 
-| **Bezüglich** | Muss eine gültige Datensatz-ID sein, beispielsweise eine Konto- oder Kontaktdatensatz-ID | 
-| **Typ für „Bezüglich“** | Muss ein Suchtyp sein, wie z.B **accounts** oder **contacts** | 
-| **Kunde** | Muss eine gültige Datensatz-ID sein, beispielsweise eine Konto- oder Kontaktdatensatz-ID | 
-| **Kundentyp** | Muss ein Suchtyp sein, wie z.B **accounts** oder **contacts** | 
+| **Besitzer** | Muss entweder eine gültige Benutzer-ID oder Teamdatensatz-ID sein |
+| **Besitzertyp** | Muss entweder **systemusers** oder **teams** sein. |
+| **Bezüglich** | Muss eine gültige Datensatz-ID sein, beispielsweise eine Konto- oder Kontaktdatensatz-ID |
+| **Typ für „Bezüglich“** | Muss ein Suchtyp sein, wie z.B **accounts** oder **contacts** |
+| **Kunde** | Muss eine gültige Datensatz-ID sein, beispielsweise eine Konto- oder Kontaktdatensatz-ID |
+| **Kundentyp** | Muss ein Suchtyp sein, wie z.B **accounts** oder **contacts** |
 |||
 
-In diesem Beispiel wird mit der Aktion **Neuen Datensatz erstellen** ein neuer Aufgabendatensatz erstellt: 
+In diesem Beispiel wird mit der Aktion **Neuen Datensatz erstellen** ein neuer Aufgabendatensatz erstellt:
 
 ![Erstellen eines Aufgabendatensatzes mit Datensatz-IDs und Suchtypen](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
@@ -148,13 +148,13 @@ Diese Aktion ordnet den Aufgabendatensatz einer bestimmten Benutzer-ID oder Team
 
 ![Besitzerdatensatz-ID und Suchtyp](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-Diese Aktion fügt auch einen Kontendatensatz hinzu, der der im Feld **Bezüglich** hinzugefügten Datensatz-ID und dem Suchtyp im Feld **Typ für „Bezüglich“** zugeordnet ist: 
+Diese Aktion fügt auch einen Kontendatensatz hinzu, der der im Feld **Bezüglich** hinzugefügten Datensatz-ID und dem Suchtyp im Feld **Typ für „Bezüglich“** zugeordnet ist:
 
 ![Datensatz-ID für Feld „Bezüglich“ und Suchtyp](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
 ## <a name="find-record-id"></a>Suchen der Datensatz-ID
 
-Um eine Datensatz-ID zu suchen, gehen Sie folgendermaßen vor: 
+Um eine Datensatz-ID zu suchen, gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie in Dynamics 365 einen Datensatz (beispielsweise einen Kontodatensatz).
 
@@ -175,7 +175,7 @@ Um fehlerhafte Schritte in Ihrer Logik-App zu finden und zu überprüfen, könne
 
    ![Ausführungsstatus der Logik-App](./media/connectors-create-api-crmonline/run-history.png)
 
-1. Erweitern Sie einen fehlerhaften Schritt, um weitere Details anzuzeigen. 
+1. Erweitern Sie einen fehlerhaften Schritt, um weitere Details anzuzeigen.
 
    ![Erweitern eines fehlerhaften Schritts](./media/connectors-create-api-crmonline/expand-failed-step.png)
 
@@ -187,7 +187,7 @@ Weitere Informationen zum Behandeln von Problemen mit Logik-Apps finden Sie unte
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/dynamicscrmonline/). 
+Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/dynamicscrmonline/).
 
 ## <a name="get-support"></a>Support
 

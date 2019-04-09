@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781587"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338053"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Leitfaden für Dokumentformate und Namenskonventionen
 
@@ -31,7 +31,7 @@ Diese Tabelle zeigt alle unterstützten Dateiformate, die Sie zum Erstellen Ihre
 | Microsoft Word    | .docx        | Das Format von Microsoft Word.                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .pdf         | Dies ist das Portable Document Format von Adobe Acrobat.                                                                                                                                                                                                                                                |
 | HTML              | .html, .htm  | HTML-Dokument                                                                                                                                                                                                                                                                  |
-| Textdatei         | .txt         | Mit UTF-16 oder UTF-8 codierte Textdateien.                                                                                                                                                                                                                                             |
+| Textdatei         | .txt         | Mit UTF-16 oder UTF-8 codierte Textdateien. Der Dateiname darf keine japanischen Zeichen enthalten.                                                                                                                                                                                        |
 | Ausgerichtete Textdatei | .align       | Sie können die spezielle Erweiterung `.ALIGN` verwenden, wenn Sie wissen, dass alle Sätze im Dokumentenpaar einander genau zugeordnet sind. Wenn Sie eine `.ALIGN`-Datei angeben, ordnet Custom Translator die Sätze nicht für Sie aus. |
 | Excel-Datei        | .xlsx        | Excel-Datei (2013 oder höher). Die erste Zeile in der Tabellenkalkulation muss der Sprachcode sein.                                                                                                                                                                                                                                                      |
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898872"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen.
@@ -56,7 +56,7 @@ Die Azure Data Lake Store-Ausgabe aus Stream Analytics ist zurzeit nicht in den 
 | Format | Gilt nur für die JSON-Serialisierung. „Separate Zeile“ gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. „Array“ gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird.|
 
 ### <a name="renew-data-lake-store-authorization"></a>Erneuern der Data Lake Store-Autorisierung
-Sie müssen Ihr Data Lake Store-Konto erneut authentifizieren, wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde. Wenn Sie sich nicht erneut authentifizieren, ergibt Ihr Auftrag keine Ausgabeergebnisse und zeigt einen Fehler mit dem Hinweis an, dass in den Vorgangsprotokollen eine erneute Autorisierung erfolgen muss. Derzeit besteht die Einschränkung, dass das Authentifizierungstoken alle 90 Tage manuell für sämtliche Aufträge mit der Data Lake-Speicherausgabe aktualisiert werden muss.
+Sie müssen Ihr Data Lake Store-Konto erneut authentifizieren, wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde. Wenn Sie sich nicht erneut authentifizieren, ergibt Ihr Auftrag keine Ausgabeergebnisse und zeigt einen Fehler mit dem Hinweis an, dass in den Vorgangsprotokollen eine erneute Autorisierung erfolgen muss. Derzeit besteht die Einschränkung, dass das Authentifizierungstoken alle 90 Tage manuell für sämtliche Aufträge mit der Data Lake-Speicherausgabe aktualisiert werden muss. Allerdings können Sie diese Einschränkung durch [Authentifizierung mithilfe verwalteter Identitäten (Vorschau)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls) überwinden.
 
 Um die Autorisierung zu erneuern, klicken Sie in Ihrem Auftrag auf **Beenden**, navigieren zu Ihrem Data Lake Store und klicken dann auf den Link **Autorisierung erneuern**. Für einen kurzen Zeitraum wird die Seite **Umleitung an die Autorisierung...** angezeigt. Die Seite wird automatisch geschlossen, und im Erfolgsfall wird **Autorisierung wurde erfolgreich erneuert** angezeigt. Sie müssen dann unten auf der Seite auf **Speichern** klicken und können fortfahren, indem Sie Ihren Auftrag von der **letzten Beendigungszeit** aus neu starten, um einen Datenverlust zu vermeiden.
 
@@ -169,7 +169,7 @@ Azure Stream Analytics aktualisiert das Datenmodell dynamisch zur Laufzeit, wenn
 Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-Datentypen](https://msdn.microsoft.com/library/azure/dn835065.aspx) in [EDM-Typen (Entity Data Model)](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/) von Power BI für den Fall, dass noch kein POWER BI-Dataset und noch keine Tabelle vorhanden sind.
 
 Quelle: Stream Analytics | Ziel: Power BI
------|-----|------------
+-----|-----
 bigint | Int64
 nvarchar(max) | Zeichenfolge
 Datetime | DateTime
@@ -186,7 +186,7 @@ Vorher/Aktuell | Int64 | Zeichenfolge | DateTime | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Zeichenfolge | Zeichenfolge | Double
 Double | Double | Zeichenfolge | Zeichenfolge | Double
-Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge |  | Zeichenfolge |
+Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge 
 DateTime | Zeichenfolge | Zeichenfolge |  DateTime | Zeichenfolge
 
 
@@ -261,6 +261,7 @@ Die Azure Cosmos DB-Ausgabe aus Stream Analytics ist zurzeit nicht in den Region
 > Andere Azure Cosmos DB-APIs werden noch nicht unterstützt. Wenn Sie Azure Stream Analytics auf die mit anderen APIs erstellten Azure Cosmos DB-Konten verweisen, werden die Daten unter Umständen nicht richtig gespeichert.
 
 In der folgenden Tabelle werden die Eigenschaften zum Erstellen einer Azure Cosmos DB-Ausgabe beschrieben.
+
 | Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer Stream Analytics-Abfrage. |
@@ -331,7 +332,7 @@ In der folgenden Tabelle sind einige Aspekte von Ausgabebatches beschrieben:
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-
+> 
 > [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793035"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482799"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Testergebnisse für die Hyper-V-Replikation an einen sekundären Standort
 
@@ -175,10 +175,10 @@ Der Tabelle fasst die Leistungsmetriken und -indikatoren zusammen, die für die 
 | CPU |\Processor(_Total)\%Prozessorzeit |
 | Verfügbarer Arbeitsspeicher |\Arbeitsspeicher\Verfügbare MB |
 | IOPS |\Physikalischer Datenträger(_Total)\Übertragungen/s |
-| VM-Lesevorgänge (IOPS)/s |\Virtuelles Hyper-V-Speichergerät(<VHD>)\Lesevorgänge/s |
-| VM-Schreibvorgänge (IOPS)/s |\Virtuelles Hyper-V-Speichergerät(<VHD>)\Schreibvorgänge/s |
-| VM-Lesedurchsatz |\Virtuelles Hyper-V-Speichergerät(<VHD>)\Gelesene Bytes/s |
-| VM-Schreibdurchsatz |\Virtuelles Hyper-V-Speichergerät(<VHD>)\Geschriebene Bytes/s |
+| VM-Lesevorgänge (IOPS)/s |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Lesevorgänge/s |
+| VM-Schreibvorgänge (IOPS)/s |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Schreibvorgänge/s |
+| VM-Lesedurchsatz |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Lesevorgänge in Byte/s |
+| VM-Schreibdurchsatz |\Virtuelles Hyper-V-Speichergerät(\<VHD>)\Schreibvorgänge in Byte/s |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -100,7 +100,7 @@ Für die Personae im obigen Diagramm wären die folgenden RBAC-Einstellungen erf
 
 **Judy (Security Operations)**
 
-* Abonnementleser oder Benutzer mit Leseberechtigung für Sicherheitsfunktionen zum Anzeigen von Warnungen
+* Abonnementleser oder Sicherheitsleseberechtigter zum Anzeigen von Warnungen
 * Abonnementbesitzer/-mitarbeiter oder Sicherheitsadministrator zum Verwerfen von Warnungen
 
 **Sam (Security Analyst)**

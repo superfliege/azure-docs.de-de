@@ -5,18 +5,18 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550769"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517316"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
-[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) bietet sichere, private Netzwerke, einschließlich Filterung, Routing und Peering für Ihre Azure-Ressourcen und lokalen Ressourcen. Durch die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk können Ihre Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren.
+Das virtuelle Azure-Netzwerk ([Azure Virtual Network](../virtual-network/virtual-networks-overview.md)) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Durch die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk können Ihre Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren.
 
 Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, ermöglichen folgende Szenarien:
 
@@ -34,7 +34,6 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 Es gelten bestimmte Einschränkungen, wenn Sie Containergruppen für ein virtuelles Netzwerk bereitstellen.
 
 * Um Containergruppen in einem Subnetz bereitstellen zu können, darf das Subnetz keine anderen Ressourcentypen enthalten. Entfernen Sie alle vorhandenen Ressourcen aus einem vorhandenen Subnetz, bevor Sie Containergruppen für dieses bereitstellen, oder erstellen Sie ein neues Subnetz.
-* Containergruppen, die für ein virtuelles Netzwerk bereitgestellt werden, unterstützen derzeit keine öffentlichen IP-Adressen oder DNS-Namensbezeichnungen.
 * Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wird.
 * Aufgrund der zusätzlichen betreffenden Netzwerkressourcen erfolgt das Bereitstellen einer Containergruppe für ein virtuelles Netzwerk in der Regel etwas langsamer als die Bereitstellung einer Standardcontainerinstanz.
 
@@ -46,10 +45,14 @@ Für dieses Feature, das sich in der Vorschauphase befindet, gelten die folgende
 
 Ressourceneinschränkungen für Container können von Einschränkungen für nicht vernetzte Containerinstanzen in diesen Regionen abweichen. Derzeit werden nur Linux-Container für dieses Feature unterstützt. Windows-Unterstützung ist geplant.
 
-### <a name="unsupported-network-resources-and-features"></a>Nicht unterstützte Netzwerkressourcen und Features
+### <a name="unsupported-networking-scenarios"></a>Nicht unterstützte Netzwerkszenarien 
 
-* Azure Load Balancer
-* Peering in virtuellen Netzwerken
+* **Azure Load Balancer**: Das Positionieren eines Azure Load Balancer vor Containerinstanzen in einer vernetzten Containergruppe wird nicht unterstützt.
+* **Peering virtueller Netzwerke**: Sie können kein Peering für ein virtuelles Netzwerk mit einem an Azure Container Instances delegierten Subnetz zu einem anderen virtuellen Netzwerk durchführen.
+* **Routingtabellen**: Benutzerdefinierte Routen können nicht in einem Subnetz eingerichtet werden, das an Azure Container Instances delegiert wurde.
+* **Netzwerksicherheitsgruppen**: Ausgehende Sicherheitsregeln in Netzwerksicherheitsgruppen, die auf ein an Azure Container Instances delegiertes Subnetz angewendet werden, werden derzeit nicht erzwungen. 
+* **Öffentliche IP-Adresse oder DNS-Bezeichnung**: Containergruppen, die in einem virtuellen Netzwerk bereitgestellt werden, unterstützen derzeit keine direkte Bereitstellung von Containern im Internet mit einer öffentlichen IP-Adresse oder einem vollqualifizierten Domänennamen.
+* **Interne Namensauflösung**: Die Namensauflösung für Azure-Ressourcen im virtuellen Netzwerk über das interne Azure DNS wird nicht unterstützt.
 
 Für das **Löschen von Netzwerkressourcen** sind [zusätzliche Schritte](#delete-network-resources) erforderlich, nachdem Sie Containergruppen für das virtuelle Netzwerk bereitgestellt haben.
 
@@ -114,13 +117,13 @@ In den folgenden Abschnitten wird beschrieben, wie mit der Azure CLI Containergr
 
 Stellen Sie zunächst eine Containergruppe bereit, und geben Sie die Parameter für ein neues virtuelles Netzwerk und Subnetz an. Wenn Sie diese Parameter angeben, erstellt Azure das virtuelle Netzwerk und Subnetz, delegiert das Subnetz an Azure Container Instances und erstellt außerdem ein Netzwerkprofil. Nachdem diese Ressourcen erstellt wurden, wird Ihre Containergruppe im Subnetz bereitgestellt.
 
-Führen Sie den Befehl [az container create][az-container-create] aus, der Einstellungen für ein neues virtuelles Netzwerk und Subnetz angibt. Sie müssen den Namen einer Ressourcengruppe angeben, der in einer Region erstellt wurde, für die Containergruppen in einem virtuellen Netzwerk [unterstützt](#preview-limitations) werden. Dieser Befehl stellt den Container [microsoft/aci-helloworld][aci-helloworld] bereit, der einen kleinen Node.js-Webserver ausführt. Dieser verarbeitet Anforderungen von einer statischen Webseite. Im nächsten Abschnitt stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit und testen die Kommunikation zwischen den beiden Containerinstanzen.
+Führen Sie den Befehl [az container create][az-container-create] aus, der Einstellungen für ein neues virtuelles Netzwerk und Subnetz angibt. Sie müssen den Namen einer Ressourcengruppe angeben, der in einer Region erstellt wurde, für die Containergruppen in einem virtuellen Netzwerk [unterstützt](#preview-limitations) werden. Dieser Befehl stellt den öffentlichen Microsoft-Container [aci-helloworld][aci-helloworld] bereit, der einen kleinen Node.js-Webserver ausführt. Dieser verarbeitet Anforderungen von einer statischen Webseite. Im nächsten Abschnitt stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit und testen die Kommunikation zwischen den beiden Containerinstanzen.
 
 ```azurecli
 az container create \
     --name appcontainer \
     --resource-group myResourceGroup \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --vnet aci-vnet \
     --vnet-address-prefix 10.0.0.0/16 \
     --subnet aci-subnet \
@@ -210,7 +213,7 @@ properties:
   containers:
   - name: appcontaineryaml
     properties:
-      image: microsoft/aci-helloworld
+      image: mcr.microsoft.com/azuredocs/aci-helloworld
       ports:
       - port: 80
         protocol: TCP
@@ -241,9 +244,9 @@ Sobald die Bereitstellung abgeschlossen ist, führen Sie den Befehl [az containe
 
 ```console
 $ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
-Name              ResourceGroup    Status    Image                     IP:ports     Network    CPU/Memory       OsType    Location
-----------------  ---------------  --------  ------------------------  -----------  ---------  ---------------  --------  ----------
-appcontaineryaml  myResourceGroup  Running   microsoft/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
+Name              ResourceGroup    Status    Image                                       IP:ports     Network    CPU/Memory       OsType    Location
+----------------  ---------------  --------  ------------------------------------------  -----------  ---------  ---------------  --------  ----------
+appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -310,7 +313,7 @@ In diesem Artikel wurden verschiedene Ressourcen und Features des virtuellen Net
 [aci-vnet-01]: ./media/container-instances-vnet/aci-vnet-01.png
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
+[aci-helloworld]: https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->

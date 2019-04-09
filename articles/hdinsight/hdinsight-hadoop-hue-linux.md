@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202689"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314993"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern
 
@@ -95,7 +95,7 @@ SSH-Tunneling ist die einzige Möglichkeit für den Zugriff auf Hue auf dem Clus
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Dies ist der Hostname des primären Hauptknotens, an dem sich die Hue-Website befindet.
-4. Öffnen Sie im Browser das Hue-Portal unter http://HOSTNAME:8888. Ersetzen Sie „HOSTNAME“ durch den Namen, den Sie im vorherigen Schritt abgerufen haben.
+4. Öffnen Sie das Hue-Portal (http:\//HOSTNAME:8888) im Browser. Ersetzen Sie „HOSTNAME“ durch den Namen, den Sie im vorherigen Schritt abgerufen haben.
 
    > [!NOTE]  
    > Wenn Sie sich zum ersten Mal anmelden, werden Sie aufgefordert, ein Konto für die Anmeldung beim Hue-Portal zu erstellen. Die hier angegebenen Anmeldeinformationen gelten nur für das Portal und beziehen sich nicht auf die Administrator- oder SSH-Benutzeranmeldeinformationen, die Sie beim Bereitstellen des Clusters angegeben haben.

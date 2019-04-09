@@ -1,18 +1,18 @@
 ---
 title: Microsoft Azure Data Box Gateway – Anwendungsfälle | Microsoft-Dokumentation
-description: In diesem Artikel werden Anwendungsfälle für Azure Data Box Gateway beschrieben, eine Speicherlösung mit einem virtuellen Gerät, die zum Übertragen von Daten in Azure dient.
+description: In diesem Artikel werden Anwendungsfälle für Azure Data Box Gateway beschrieben, einer Speicherlösung mit einem virtuellen Gerät, die zum Übertragen von Daten in Azure dient.
 services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 03/2/2019
 ms.author: alkohli
-ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438591"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403798"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Anwendungsfälle für Azure Data Box Gateway
 
@@ -26,8 +26,6 @@ Verwenden Sie Data Box Gateway für die folgenden Szenarien:
 
 Jedes dieser Szenarien wird in den nachstehenden Abschnitten ausführlich beschrieben.
 
-> [!IMPORTANT]
-> Data Box Gateway ist in der Vorschauphase. Lesen Sie [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
 
 ## <a name="continuous-data-ingestion"></a>Kontinuierliche Datenerfassung
 

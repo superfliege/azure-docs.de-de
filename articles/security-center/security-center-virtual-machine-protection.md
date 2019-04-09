@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/25/2019
+ms.date: 3/20/2019
 ms.author: monhaber
-ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa664952f3eb7d6f9e611fb87a9e484e97f388a2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106558"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403832"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
-Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
+Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen, Nicht-Azure-Server und virtuellen Computer. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
 
 In diesem Artikel werden Empfehlungen für Computer und Anwendungen behandelt.
 
@@ -53,7 +53,7 @@ Wählen Sie zum Fortsetzen des Vorgangs **Compute und Apps** unter **Ressourcens
 Auf den einzelnen Registerkarten können sich jeweils mehrere Abschnitte befinden, und in jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu den empfohlenen Problembehandlungsschritten für ein bestimmtes Problem anzuzeigen.
 
 ### Nicht überwachte virtuelle und physische Computer <a name="unmonitored-vms-and-computers"></a>
-Ein virtueller oder physischer Computer gilt als nicht von Security Center überwacht, wenn auf dem Computer die Microsoft Monitoring Agent-Erweiterung nicht ausgeführt wird. Auf einem Computer kann bereits ein lokaler Agent installiert sein, z.B. der OMS-Direkt-Agent oder der SCOM-Agent. Computer mit diesen Agents werden als nicht überwacht angesehen, da diese Agents in Security Center nicht vollständig unterstützt werden. Die Microsoft Monitoring Agent-Erweiterung ist erforderlich, um von allen Security Center-Vorteilen vollständig profitieren zu können.
+Ein virtueller oder physischer Computer gilt als nicht von Security Center überwacht, wenn auf dem Computer die Microsoft Monitoring Agent-Erweiterung nicht ausgeführt wird. Auf einem Computer kann bereits ein lokaler Agent installiert sein, z.B. der OMS-Direkt-Agent oder der System Center Operations Manager-Agent. Computer mit diesen Agents werden als nicht überwacht angesehen, da diese Agents in Security Center nicht vollständig unterstützt werden. Die Microsoft Monitoring Agent-Erweiterung ist erforderlich, um von allen Security Center-Vorteilen vollständig profitieren zu können.
 
 Sie können die Erweiterung auf dem nicht überwachten virtuellen oder physischen Computer zusätzlich zum bereits installierten lokalen Agent installieren. Konfigurieren Sie beide Agents auf die gleiche Weise, und verbinden Sie sie mit demselben Arbeitsbereich. Security Center kann dann mit der Microsoft Monitoring Agent-Erweiterung interagieren und Daten sammeln. Eine Anleitung zur Installation der Microsoft Monitoring Agent-Erweiterung finden Sie unter [Aktivieren der VM-Erweiterung](../azure-monitor/learn/quick-collect-azurevm.md).
 
@@ -103,7 +103,7 @@ Die Liste enthält vier Arten von Symbolen:
 ![Klassischer virtueller Azure-Computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klassischer virtueller Azure-Computer
 
 
-![Virtuelle Computer, die anhand des Arbeitsbereichs identifiziert werden](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuelle Computer, die nur anhand des Arbeitsbereichs identifiziert werden, der dem angezeigten Abonnement angehört. Dazu zählen virtuelle Computer aus anderen Abonnements, die dem Arbeitsbereich in diesem Abonnement unterstellt sind, sowie virtuelle Computer, die mit dem direkten SCOM-Agent installiert wurden und über keine Ressourcen-ID verfügen.
+![Virtuelle Computer, die anhand des Arbeitsbereichs identifiziert werden](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Virtuelle Computer, die nur anhand des Arbeitsbereichs identifiziert werden, der dem angezeigten Abonnement angehört. Dazu zählen virtuelle Computer aus anderen Abonnements, die dem Arbeitsbereich in diesem Abonnement unterstellt sind, sowie virtuelle Computer, die mit dem direkten Operations Manager-Agent installiert wurden und über keine Ressourcen-ID verfügen.
 
 Anhand des Symbols unter der jeweiligen Empfehlung sehen Sie sofort, bei welchem virtuellen oder physischen Computer eine Aktion erforderlich ist und um welche Art von Empfehlung es sich handelt. Sie können auch die Filter verwenden, um die Liste nach **Ressourcentyp** und **Schweregrad** zu durchsuchen.
 

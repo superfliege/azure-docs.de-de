@@ -1,5 +1,5 @@
 ---
-title: Azure AD-Anmeldung ohne Kennwort mit der Microsoft Authenticator-App (Preview)
+title: Kennwortlose Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) – Azure Active Directory
 description: Anmelden bei Azure AD mithilfe der Microsoft Authenticator-App ohne Verwendung Ihres Kennworts (Public Preview)
 services: active-directory
 ms.service: active-directory
@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247e772873cf467b371b4aea45f8ceb43bce16e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180521"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370381"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Telefonanmeldung ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
 
 Mit der Microsoft Authenticator-App können sich Benutzer bei jedem beliebigen Azure AD-Konto anmelden, ohne ein Kennwort zu verwenden. Ähnlich wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischen Daten oder einer PIN beruhen.
 
-![Beispiel für eine Anmeldung im Browser, bei der der Benutzer aufgefordert wird, den Anmeldeversuch in der Microsoft Authenticator-App zu genehmigen](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![Beispiel für eine browserbasierte Anmeldung, die der Benutzer bestätigen muss](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
 Für einen Benutzer, der die Anmeldung per Smartphone in der Microsoft Authenticator-App aktiviert hat, wird nach der Eingabe eines Benutzernamens keine Kennwortaufforderung angezeigt, sondern eine Meldung, in der er aufgefordert wird, in der App auf eine Nummer zu tippen. In der App muss der Benutzer auf die richtige Nummer tippen, „Genehmigen“ auswählen und dann seine PIN eingeben oder seinen biometrischen Schlüssel verwenden, um die Authentifizierung abzuschließen.
 
@@ -40,17 +40,20 @@ Bei der Public Preview-Version muss ein Administrator zunächst mithilfe von Pow
 ### <a name="steps-to-enable"></a>Schritte zum Aktivieren
 
 1. Stellen Sie sicher, dass bei Ihnen die neueste Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls installiert ist. Dazu empfiehlt es sich unter Umständen, das Modul zu deinstallieren und anschließend erneut zu installieren. Führen Sie hierzu die folgenden Befehle aus:
+
     ```powershell
     Uninstall-Module -Name AzureADPreview
     Install-Module -Name AzureADPreview
     ```
 
 2. Führen Sie die Authentifizierung für den Azure AD-Mandanten durch, um das Azure AD V2 PowerShell-Modul zu verwenden. Beim verwendeten Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.
+
     ```powershell
     Connect-AzureAD
     ```
 
 3. Erstellen Sie die Richtlinie für die Authenticator-Anmeldung:
+
     ```powershell
     New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
     ```

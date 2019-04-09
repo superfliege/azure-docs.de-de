@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 2cb70c67bc4719eb43c4fcb70edf574c57362f26
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f539cb905c0ed401816c7f223918a1416f95d6c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013270"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312273"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
@@ -47,7 +47,7 @@ Zum Beheben eines Testfehlers wird ein Tool benötigt, mit dem der von der Test-
 
 Sie können aber auch die Registerkarte „Netzwerk“ der F12-Tools zum Debuggen in Internet Explorer verwenden, um die HTTP-Antworten anzuzeigen.
 
-In diesem Beispiel soll die Antwort der folgenden Test-URL angezeigt werden: „http://watestsdp2008r2.cloudapp.net:80/Probe“. Das folgende PowerShell-Beispiel dient als Veranschaulichung des Problems.
+In diesem Beispiel soll die Antwort der folgenden Test-URL angezeigt werden: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Das folgende PowerShell-Beispiel dient als Veranschaulichung des Problems.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

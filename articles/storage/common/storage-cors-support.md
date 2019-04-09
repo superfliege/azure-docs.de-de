@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002953"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313650"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
 Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](https://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](https://www.w3.org/TR/cors/).
@@ -67,7 +67,7 @@ Im Folgenden sehen Sie ein Beispiel für eine einzelne CORS-Regel, die in einem 
 
 Jedes in der CORS-Regel enthaltene Element wird unten beschrieben:
 
-* **AllowedOrigins:** Die Ursprungsdomänen, die über CORS eine Anforderung an den Speicherdienst senden dürfen. Die Ursprungsdomäne ist die Domäne, von der die Anforderung stammt. Beachten Sie, dass die Groß-/Kleinschreibung der Ursprungsdomäne genau mit der der Ursprungsdomäne übereinstimmen muss, die der Benutzer-Agent an den Dienst sendet. Sie können auch das Platzhalterzeichen "*" verwenden, um allen Ursprungsdomänen die Ausführung von CORS-Anforderungen zu erlauben. Im Beispiel oben können die Domänen [http://www.contoso.com](http://www.contoso.com) und [http://www.fabrikam.com](http://www.fabrikam.com) über CORS Anforderungen an den Dienst senden.
+* **AllowedOrigins:** Die Ursprungsdomänen, die über CORS eine Anforderung an den Speicherdienst senden dürfen. Die Ursprungsdomäne ist die Domäne, von der die Anforderung stammt. Beachten Sie, dass die Groß-/Kleinschreibung der Ursprungsdomäne genau mit der der Ursprungsdomäne übereinstimmen muss, die der Benutzer-Agent an den Dienst sendet. Sie können auch das Platzhalterzeichen "*" verwenden, um allen Ursprungsdomänen die Ausführung von CORS-Anforderungen zu erlauben. Im Beispiel oben können die Domänen „http:\//www.contoso.com“ und „http:\//www.fabrikam.com“ über CORS Anforderungen an den Dienst senden.
 * **AllowedMethods:** Die Methoden (HTTP-Anforderungsverben), die die Ursprungsdomäne für eine CORS-Anforderung verwenden kann. Im vorangehenden Beispiel sind PUT- und GET-Anforderungen zulässig.
 * **AllowedHeaders:** Die Anforderungsheader, die die Ursprungsdomäne für die CORS-Anforderung angeben kann. Im vorangehenden Beispiel sind alle Metadatenheader zulässig, die mit x-ms-meta-data, x-ms-meta-target und x-ms-meta-abc beginnen. Das Platzhalterzeichen "*" zeigt an, dass beliebige Header, die mit dem angegebenen Präfix beginnen, zulässig sind.
 * **ExposedHeaders:** Die Antwortheader, die in der Antwort an die CORS-Anforderung gesendet und vom Browser gegenüber dem Anforderungsaussteller verfügbar gemacht werden können. Im vorangehenden Beispiel wird der Browser angewiesen, beliebige Header, die mit x-ms-meta beginnen, verfügbar zu machen.
@@ -130,9 +130,9 @@ Betrachten Sie als Nächstes die folgenden CORS-Anforderungen:
 | Anforderung |  |  | response |  |
 | --- | --- | --- | --- | --- |
 | **Methode** |**Ursprung** |**Anforderungsheader** |**Regelübereinstimmung** |**Ergebnis** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |Erste Regel |Erfolgreich |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |Zweite Regel |Erfolgreich |
-| **GET** |http://www.contoso.com |x-ms-client-request-id |Zweite Regel |Fehler |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Erste Regel |Erfolgreich |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Zweite Regel |Erfolgreich |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |Zweite Regel |Fehler |
 
 Die erste Anforderung stimmt mit der ersten Regel überein – die Ursprungsdomäne fällt unter die zulässigen Ursprungsdomänen, die Methode unter die zulässigen Methoden und der Header unter die zulässigen Header – sie wird somit erfolgreich ausgeführt.
 

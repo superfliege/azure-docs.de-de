@@ -2,7 +2,7 @@
 title: Häufig gestellte Fragen – Azure Dedicated HSM | Microsoft-Dokumentation
 description: Häufig gestellte Fragen zu verschiedenen Themen in Azure Dedicated HSM
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -10,15 +10,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: concepts
-ms.date: 12/11/2018
+ms.topic: conceptual
+ms.date: 3/19/2019
 ms.author: barclayn
-ms.openlocfilehash: 5ea98f96fe10337e905270cf5da4847d825d6eb4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107802"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259991"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -164,25 +164,25 @@ Ja. Sie können Protokolle von der HSM-Appliance an einen Syslog-Server senden.
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>F: Ist es möglich, Hochverfügbarkeit in der gleichen Region oder über mehrere Regionen hinweg zu konfigurieren?
 
-Ja. Die Konfiguration und Einrichtung der Hochverfügbarkeit erfolgt in der von Gemalto bereitgestellten HSM-Clientsoftware. HSMs aus dem gleichen VNET oder aus anderen VNETs in der gleichen Region oder über Regionen hinweg bzw. lokale HSMs, die mit einem VNET über Site-to-Site- oder Point-to-Point-VPN verbunden sind, können derselben Hochverfügbarkeitskonfiguration hinzugefügt werden.
+Ja. Die Konfiguration und Einrichtung der Hochverfügbarkeit erfolgt in der von Gemalto bereitgestellten HSM-Clientsoftware. HSMs aus demselben VNET oder aus anderen VNETs in derselben Region oder über Regionen hinweg bzw. lokale HSMs, die mit einem VNET per Site-to-Site- oder Point-to-Point-VPN verbunden sind, können derselben Hochverfügbarkeitskonfiguration hinzugefügt werden. Es sollte beachtet werden, dass hiermit nur wichtiges Material synchronisiert wird, und keine spezifischen Konfigurationselemente, z. B. Rollen.
 
-### <a name="can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Kann ich HSMs aus meinem lokalen Netzwerk einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>F: Kann ich HSMs aus meinem lokalen Netzwerk einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
 
 Ja. Sie müssen die Anforderungen für Hochverfügbarkeit für SafeNet Luna Network HSM 7 erfüllen.
 
-### <a name="can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Kann ich Luna 5/6-HSMs aus lokalen Netzwerken einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>F: Kann ich Luna 5/6-HSMs aus lokalen Netzwerken einer Hochverfügbarkeitsgruppe mit Azure Dedicated HSM hinzufügen?
 
 Nein.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>F: Wie viele HSMs kann ich der gleichen Hochverfügbarkeitskonfiguration aus einer einzelnen Anwendung hinzufügen?
 
-16.
+Für 16 Mitglieder einer Hochverfügbarkeitsgruppe wurde ein vollständiger Test mit hervorragenden Ergebnissen durchgeführt.
 
 ## <a name="support"></a>Support
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>F: Welche SLA gilt für den Dedicated HSM-Dienst?
 
-Zu diesem Zeitpunkt wird keine SLA für den Dedicated HSM-Dienst zur Verfügung gestellt. Microsoft stellt sicher, dass der Zugriff auf das Gerät auf Netzwerkebene gewährleistet ist, sodass Azure-Standardnetzwerk-SLAs gelten.
+Für den Dedicated HSM-Dienst ist keine spezifische Garantie für die Betriebszeit vorhanden. Microsoft stellt sicher, dass der Zugriff auf das Gerät auf Netzwerkebene gewährleistet ist, sodass Azure-Standardnetzwerk-SLAs gelten.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>F: Wie werden die in Azure Dedicated HSM verwendeten HSMs geschützt?
 
@@ -198,15 +198,19 @@ Es wird dringend empfohlen, ein lokales HSM-Sicherungsmedium zu verwenden, um ei
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>F: Wie erhalte ich Support für Dedicated HSM?
 
-Auf die gleiche Weise wie für alle anderen Azure-Dienste. Das Azure-Supportteam wird Ihr Problem je nach Bedarf zum Gemalto-Support eskalieren.
+Der Support wird sowohl von Microsoft als auch von Gemalto bereitgestellt.  Falls bei Ihnen ein Problem mit der Hardware oder dem Netzwerkzugriff besteht, können Sie eine Supportanfrage für Microsoft erstellen. Erstellen Sie bei einem Problem mit der HSM-Konfiguration, -Software und -Anwendungsentwicklung eine Supportanfrage für Gemalto. Erstellen Sie bei einem nicht eindeutigen Problem eine Supportanfrage für Microsoft. Falls erforderlich, kann Gemalto dann eingebunden werden. 
 
-### <a name="q-how-do-i-get-access-to-dedicated-hsm-client-software-documentation-firmware-images"></a>F: Wie erhalte ich Zugriff auf Dedicated HSM-Clientsoftware, -Dokumentation und -Firmwareimages?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>F: Wie erhalte ich die Clientsoftware, Dokumentation und Zugriff auf die Integrationsanleitung für das SafeNet Luna 7 HSM?
 
-Der Kunde muss direkt mit Gemalto zusammenarbeiten, um Zugriff auf HSM-Clientsoftware, Dokumentation, Betriebssystem- und Firmwareimages zu erhalten.
+Nach der Registrierung für den Dienst wird eine Gemalto-Kunden-ID bereitgestellt, die die Registrierung im Gemalto-Portal für Kundensupport ermöglicht. Hiermit ist der Zugriff auf die gesamte Software und Dokumentation möglich, und Supportanfragen können direkt an Gemalto gerichtet werden.
 
 ### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>F: Wenn ein Sicherheitsrisiko gefunden wurde und ein Patch von Gemalto veröffentlicht wird, wer ist dann für das Upgraden/Patchen von Betriebssystemen/Firmware verantwortlich?
 
 Microsoft hat nicht die Möglichkeit, eine Verbindung mit HSMs herzustellen, die Kunden zugeordnet sind. Kunden müssen ihre HSMs aktualisieren und patchen.
+
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>F: Was passiert, wenn ich mein HSM neu starten muss?
+
+ Das HSM verfügt über eine Befehlszeilenoption für einen Neustart, und es sollte beachtet werden, dass die Option „Harter Neustart“ verwendet werden muss. Falls dies aus irgendeinem Grund fehlschlägt, können Sie eine Supportanfrage für Microsoft erstellen, um das Gerät physisch neu zu starten. 
 
 ## <a name="cryptography-and-standards"></a>Kryptografie und Standards
 
@@ -246,7 +250,7 @@ Ja. Der Dedicated HSM-Dienst stellt SafeNet Network HSM 7-Appliances bereit, die
 
 Der Dedicated HSM-Dienst stellt SafeNet Luna Network HSM 7-Appliances bereit. Diese Appliances verwenden FIPS 140-2 Level 3 validierte HSMs. Die standardmäßig bereitgestellte Konfiguration, das Betriebssystem und die Firmware sind ebenfalls FIPS-geprüft. Sie müssen keine Maßnahmen zur Einhaltung von FIPS 140-2 Level 3 ergreifen.
 
-### <a name="how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Wie stellt ein Kunde sicher, dass beim Aufheben der Bereitstellung eines HSM alle Schlüsselmaterialien vernichtet werden?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>F: Wie stellt ein Kunde sicher, dass beim Aufheben der Bereitstellung eines HSM alle Schlüsselmaterialien vernichtet werden?
 
 Bevor ein Kunde die Aufhebung der Bereitstellung anfordert, muss er das HSM mit den von Gemalto bereitgestellten HSM-Clienttools auf Null zurückgesetzt haben.
 
@@ -262,15 +266,13 @@ Dedicated HSM stellt SafeNet Network HSM 7-Appliances (Modell A790) bereit. Dies
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>F: Wie viele Partitionen können in Dedicated HSM erstellt werden?
 
-Basierend auf dem spezifischen Modell des verwendeten HSM stehen 10 Partitionen zur Verfügung.
+Das verwendete SafeNet Luna HSM 7-Modell A790 umfasst im Rahmen der Kosten für den Dienst eine Lizenz für zehn Partitionen. Für das Gerät gilt ein Limit von 100 Partitionen. Wenn Partitionen bis zu diesem Limit hinzugefügt werden, fallen zusätzliche Lizenzkosten an, und auf dem Gerät muss eine neue Lizenzdatei installiert werden.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>F: Wie viele Schlüssel können in Dedicated HSM unterstützt werden?
 
-Die maximale Anzahl von Schlüsseln. Diese Angaben gelten auch für Schlüsselpaare, wenn asymmetrische Schlüssel verwendet werden.
+Die maximale Anzahl von Schlüsseln ist eine Funktion des verfügbaren Speichers. Das verwendete SafeNet Luna 7-Modell A790 verfügt über 32 MB Arbeitsspeicher. Die folgenden Angaben gelten auch für Schlüsselpaare, wenn asymmetrische Schlüssel verwendet werden.
 
 * RSA-2048: 19.000
 * ECC-P256: 91.000
-* AES-256: 218.000
 
 Die Kapazität ist abhängig von den spezifischen Schlüsselattributen, die in der Schlüsselgenerierungsvorlage festgelegt sind, und der Anzahl der Partitionen unterschiedlich.
-

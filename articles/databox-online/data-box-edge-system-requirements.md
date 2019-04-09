@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113769"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401752"
 ---
-# <a name="azure-data-box-edge-system-requirements-preview"></a>Systemanforderungen für Azure Data Box Edge (Vorschauversion)
+# <a name="azure-data-box-edge-system-requirements"></a>Systemanforderungen für Azure Data Box Edge
 
 In diesem Artikel werden wichtige Systemanforderungen für Ihre Microsoft Azure Data Box Edge-Lösung und die Clients beschrieben, die mit Azure Data Box Edge verbunden sind. Es wird empfohlen, dass Sie die Informationen sorgfältig überprüfen, bevor Sie Data Box Edge bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
 
@@ -23,9 +23,6 @@ Die Systemanforderungen von Data Box Edge:
 
 - **Softwareanforderungen für Hosts:** beschreibt die unterstützten Plattformen, Browser für die lokale Konfigurationsbenutzeroberfläche, SMB-Clients und alle weiteren Anforderungen an Clients, die auf das Gerät zugreifen.
 - **Netzwerkanforderungen für das Gerät:** enthält Informationen zu den Netzwerkanforderungen für den Betrieb des physischen Geräts.
-
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Unterstütztes Betriebssystem für Clients, die mit dem Gerät verbunden sind
 
@@ -63,10 +60,7 @@ Die folgende Tabelle enthält die Portkonfiguration für Server, die die Azure I
 
 | Port-Nr. | ein oder aus | Portbereich | Erforderlich | Anleitungen |
 |----------|-----------|------------|----------|----------|
-| TCP 5671 (AMQP)| aus       | WAN        | Ja      | Standardkommunikationsprotokoll für IoT Edge. Muss offen sein, wenn Azure IoT Edge nicht für andere unterstützte Protokolle konfiguriert oder AMQP das gewünschte Kommunikationsprotokoll ist. <br>5672 für AMQP wird von IoT Edge nicht unterstützt. <br>Blockieren Sie diesen Port, wenn Azure IoT Edge ein anderes von IoT Hub unterstütztes Protokoll verwendet. |
-| TCP 443 (HTTPS)| aus       | WAN        | Ja      | Ausgehend offen für die IoT Edge-Bereitstellung. Wenn Sie über ein transparentes Gateway mit Blattknotengeräten verfügen, die ggf. Methodenanforderungen senden. In diesem Fall muss der Port 443 nicht für externe Netzwerke geöffnet werden, um eine Verbindung mit IoT Hub herzustellen oder IoT Hub-Dienste über Azure IoT Edge bereitzustellen. Die eingehende Regel kann somit darauf beschränkt werden, nur eingehende Verbindungen aus dem internen Netzwerk zu öffnen. |
-| TCP 5671 (AMQP) | Geben Sie in        |            | Nein        | Eingehende Verbindungen sollten blockiert werden.|
-| TCP 443 (HTTPS) | Geben Sie in        |            | In einigen Fällen, siehe Kommentare | Die eingehende Verbindung sollte nur für bestimmte Szenarien geöffnet werden. Falls keine HTTP-fremden Protokolle wie AMQP oder MQTT konfiguriert werden können, können die Nachrichten über WebSockets an Port 443 gesendet werden. |
+| TCP 443 (HTTPS)| aus       | WAN        | Ja      | Ausgehend offen für die IoT Edge-Bereitstellung. Diese Konfiguration ist bei Verwendung manueller Skripts oder des Azure IoT Device Provisioning-Diensts (Device Provisioning Service, DPS) erforderlich.|
 
 Ausführliche Informationen finden Sie unter [Firewall- und Portkonfigurationsregeln für die IoT Edge-Bereitstellung](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

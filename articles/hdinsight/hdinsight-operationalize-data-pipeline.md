@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436159"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311678"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 
@@ -150,7 +150,7 @@ Richten Sie einen SSH-Tunnel zu dem HDInsight-Cluster ein, um über die Oozie-We
 
 2. Vergewissern Sie sich, dass der Tunnel betriebsbereit ist, indem Sie auf dem Hauptknoten unter folgender URL zu Ambari navigieren:
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. Für den Zugriff auf die **Oozie-Webkonsole** in Ambari wählen Sie **Oozie**, **Quick Links** und dann **Oozie Web Console** (Oozie-Webkonsole) aus.
 
@@ -176,7 +176,7 @@ Sie können die Datei über SCP in Ihre `bash`-Shell-Sitzung kopieren.
 
 Die Beispieldaten sind nun verfügbar. Die Pipeline benötigt jedoch zwei Hive-Tabellen für die Verarbeitung, eine für die eingehenden Daten (`rawFlights`) und eine für die zusammengefassten Daten (`flights`). Erstellen Sie diese Tabellen wie folgt in Ambari.
 
-1. Melden Sie sich bei Ambari an, indem Sie zu [http://headnodehost:8080](http://headnodehost:8080) navigieren.
+1. Melden Sie sich bei Ambari an, indem Sie zu „http:\//headnodehost:8080“ navigieren.
 2. Wählen Sie **Hive** in der Liste der Dienste aus.
 
     ![Auswählen von Hive in Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
@@ -551,7 +551,7 @@ Wie Sie sehen können, übergibt der Koordinator mehrheitlich lediglich Konfigur
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Ein Koordinator ist zuständig für die Planung von Aktionen innerhalb des Zeitraums von `start` bis `end` entsprechend dem durch das Attribut `frequency` angegebene Intervall. Jede geplante Aktion führt wiederum den Workflow wie konfiguriert aus. In der oben aufgeführten Koordinatordefinition ist der Koordinator für die Ausführung von Aktionen vom 1. Januar 2017 bis zum 5. Januar 2017 konfiguriert. Die Häufigkeit ist durch den Häufigkeitsausdruck `${coord:days(1)}` der [Oozie-Ausdruckssprache](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) auf 1 Tag festgelegt. Dies führt dazu, dass der Koordinator eine Aktion (und somit den Workflow) einmal pro Tag plant. Bei Zeiträumen, die wie in diesem Beispiel in der Vergangenheit liegen, wird die Aktion so geplant, dass sie ohne Verzögerung ausgeführt wird. Der Beginn des Datums, ab dem eine Aktion zur Ausführung geplant ist, wird als *nominelle Zeit* bezeichnet. Zur Verarbeitung der Daten für den 1. Januar 2017 plant der Koordinator die Aktion beispielsweise mit der nominellen Zeit 2017-01-01T00:00:00 GMT.
+    Ein Koordinator ist zuständig für die Planung von Aktionen innerhalb des Zeitraums von `start` bis `end` entsprechend dem durch das Attribut `frequency` angegebene Intervall. Jede geplante Aktion führt wiederum den Workflow wie konfiguriert aus. In der oben aufgeführten Koordinatordefinition ist der Koordinator für die Ausführung von Aktionen vom 1. Januar 2017 bis zum 5. Januar 2017 konfiguriert. Die Häufigkeit ist durch den Häufigkeitsausdruck `${coord:days(1)}` der [Oozie-Ausdruckssprache](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) auf 1 Tag festgelegt. Dies führt dazu, dass der Koordinator eine Aktion (und somit den Workflow) einmal pro Tag plant. Bei Zeiträumen, die wie in diesem Beispiel in der Vergangenheit liegen, wird die Aktion so geplant, dass sie ohne Verzögerung ausgeführt wird. Der Beginn des Datums, ab dem eine Aktion zur Ausführung geplant ist, wird als *nominelle Zeit* bezeichnet. Zur Verarbeitung der Daten für den 1. Januar 2017 plant der Koordinator die Aktion beispielsweise mit der nominellen Zeit 2017-01-01T00:00:00 GMT.
 
 * Punkt 2: Innerhalb des Zeitraums des Workflows gibt das Element `dataset` an, wo in HDFS nach den Daten für einen bestimmten Datumsbereich gesucht wird, und konfiguriert, wie Oozie ermittelt, ob die Daten zur Verarbeitung verfügbar sind.
 
@@ -651,6 +651,6 @@ Zum Ausführen der Pipeline mit einem Koordinator gehen Sie in ähnlicher Weise 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Apache Oozie-Dokumentation](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie-Dokumentation](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

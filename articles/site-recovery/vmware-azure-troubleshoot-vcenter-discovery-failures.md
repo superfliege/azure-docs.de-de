@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
-ms.openlocfilehash: a0707ad356e51a9e4d4f73c54085fe9736bb0752
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884468"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540804"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>Behandeln von vCenter-Ermittlungsfehlern
 
@@ -46,8 +46,8 @@ Im Allgemeinen wird der Proxy zur Kommunikation mit öffentlichen Netzwerken ver
 
 Die folgenden Situationen treten auf, wenn dieses Problem vorliegt:
 
-- Der vCenter-Server <vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: (503) Server nicht verfügbar
-- Der vCenter-Server <vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.
+- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: (503) Server nicht verfügbar
+- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.
 - Es konnte keine Verbindung mit dem vCenter/ESXi-Server hergestellt werden.
 
 So lösen Sie das Problem:

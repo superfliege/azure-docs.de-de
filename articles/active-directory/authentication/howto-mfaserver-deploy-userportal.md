@@ -1,5 +1,5 @@
 ---
-title: Benutzerportal für Azure MFA-Server | Microsoft-Dokumentation
+title: Benutzerportal für Azure MFA Server – Azure Active Directory
 description: Erste Schritte mit Azure MFA und dem Benutzerportal
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddf84ea9fa2367c6bdf7b258611eca526dd2abd9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175199"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370362"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Benutzerportal für den Azure Multi-Factor Authentication-Server
 
@@ -28,7 +28,7 @@ Es können Benutzerportaladministratoren eingerichtet werden, und ihnen kann die
 
 Abhängig von Ihrer Umgebung können Sie das Benutzerportal auf dem gleichen Server wie den Azure Multi-Factor Authentication-Server oder auf einem anderen, mit dem Internet verbundenen Server bereitstellen.
 
-![MFA-Benutzerportal](./media/howto-mfaserver-deploy-userportal/portal.png)
+![MFA Server-Benutzerportal: Anmeldeseite](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > Das Benutzerportal ist nur mit Multi-Factor Authentication-Server verfügbar. Wenn Sie Multi-Factor Authentication in der Cloud verwenden, können Sie Ihre Benutzer auf [Einrichten meines Kontos für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-first-time.md) oder auf [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md) verweisen.
@@ -118,6 +118,7 @@ Nachdem das Benutzerportal installiert wurde, müssen Sie den Azure Multi-Factor
 3. Definieren Sie auf der Registerkarte **Administratoren** die gewünschten Administratoren. Mithilfe der Kontrollkästchen und Dropdownlisten der Felder „Hinzufügen“/„Bearbeiten“ lassen sich präzise Administratorberechtigungen erstellen.
 
 Optionale Konfiguration:
+
 - **Sicherheitsfragen:** Definieren Sie genehmigte Sicherheitsfragen für Ihre Umgebung und die Sprache, in der sie angezeigt werden.
 - **Vergangene Sitzungen:** Konfigurieren Sie die Benutzerportalintegration in eine formularbasierte Website mit MFA.
 - **Vertrauenswürdige IPs:** Lassen Sie zu, dass Benutzer die MFA überspringen, wenn sie sich über eine IP-Adresse authentifizieren, die in einer Liste mit vertrauenswürdigen IP-Adressen oder -Bereichen enthalten ist.
@@ -141,9 +142,12 @@ Der Azure Multi-Factor Authentication-Server stellt mehrere Optionen für das Be
 | OATH-Token als Alternative verwenden | Ermöglicht die Verwendung eines OATH-Tokens, falls die zweistufige Überprüfung nicht erfolgreich ist. Sie können auch den Sitzungstimeout in Minuten angeben. |
 | Aktivieren der Protokollierung | Ermöglicht die Protokollierung im Benutzerportal. Die Protokolldateien befinden sich unter: C:\Programme\Multi-Factor Authentication Server\Logs. |
 
+> [!IMPORTANT]
+> Ab März 2019 sind die Telefonanrufoptionen für MFA Server-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+
 Diese Einstellungen werden dem Benutzer im Portal angezeigt, nachdem sie aktiviert wurden und der Benutzer sich beim Benutzerportal angemeldet hat.
 
-![Benutzerportal – Einstellungen](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Verwalten Ihres MFA Server-Kontos im Benutzerportal](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Self-Service-Benutzerregistrierung
 
@@ -159,7 +163,7 @@ Wenn der Benutzer bei der Authentifizierung eine PIN verwenden muss, fordert ihn
 
 Wenn der Benutzer die Überprüfung per SMS auswählt oder für die Verwendung dieser Methode vorkonfiguriert wurde, fordert die Seite den Benutzer zur Angabe seiner Mobiltelefonnummer auf. Wenn der Benutzer bei der Authentifizierung eine PIN verwenden muss, fordert ihn die Seite auch zur Eingabe einer PIN auf.  Nach der Eingabe der Telefonnummer und PIN (falls zutreffend) klickt der Benutzer auf die Schaltfläche **Jetzt per SMS authentifizieren**. Azure Multi-Factor Authentication führt eine SMS-Überprüfung über das Mobiltelefon des Benutzers durch. Der Benutzer empfängt die SMS mit einer Einmalkennung (One-Time Passcode, OTP) und sendet dann eine Antwort auf die Nachricht mit der Einmalkennung und seiner PIN (falls zutreffend).
 
-![Benutzerportal-SMS](./media/howto-mfaserver-deploy-userportal/text.png)
+![Benutzerportal: Überprüfung per SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Wenn der Benutzer die Überprüfungsmethode per mobiler App wählt, wird er aufgefordert, die Microsoft Authenticator-App auf seinem Gerät zu installieren und einen Aktivierungscode zu generieren. Nach der Installation der App klickt der Benutzer auf die Schaltfläche „Aktivierungscode generieren“.
 
