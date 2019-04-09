@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867734"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472768"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
@@ -46,6 +46,9 @@ https://contoso.z4.web.core.windows.net/image.png
 ```
 
 Der ausgewählte Standarddateiname wird im Stamm und in sämtlichen Unterverzeichnissen verwendet, wenn kein Dateiname angegeben wird. Wenn der Server 404 zurückgibt und Sie keinen Pfad zum Fehlerdokument angeben, wird eine 404-Standardseite an den Benutzer zurückgegeben.
+
+> [!NOTE]
+> Die standardmäßige öffentliche Zugriffsebene für Dateien ist „Privat“. Da die Dateien über anonyme Zugriffsanforderungen bereitgestellt werden, wird diese Einstellung ignoriert. Es gibt öffentlichen Zugriff auf alle Dateien und RBAC-Berechtigungen werden ignoriert.
 
 ## <a name="cdn-and-ssl-support"></a>CDN- und SSL-Unterstützung
 
@@ -109,7 +112,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 Beispielsweise die folgenden Methoden können für die Bereitstellung von Inhalten in einem Speichercontainer verwendet werden:
 
 - [AzCopy](../common/storage-use-azcopy.md)
-- [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 - [Visual Studio Code-Erweiterung](https://code.visualstudio.com/tutorials/static-website/getting-started)
 

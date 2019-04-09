@@ -1,6 +1,6 @@
 ---
-title: Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics | Microsoft-Dokumentation
-description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an den Azure Log Analytics-Arbeitsbereich eines anderen Mandanten.
+title: Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich | Microsoft-Dokumentation
+description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor eines anderen Mandanten.
 services: log-analytics, logic-apps, event-hubs
 documentationcenter: ''
 author: mgoedtel
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 76a789bd4f9167344fcc240e3f3fdbf3a00aa5a3
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984578"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540753"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics in verschiedenen Azure Active Directory-Mandanten
+# <a name="collect-azure-activity-logs-into-a-log-analytics-workspace-across-subscriptions-in-different-azure-active-directory-tenants"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich in verschiedenen Azure Active Directory-Mandanten
 
-In diesem Artikel wird schrittweise die Methode beschrieben, mit der Sie mithilfe des Datensammlers von Azure Log Analytics (Connector für Logik-Apps) Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Führen Sie die in diesem Artikel beschriebenen Schritte aus, wenn Sie Protokolle an einen Arbeitsbereich senden möchten, der sich in einem anderen Azure Active Directory-Mandanten befindet. Als Managed Service Provider (MSP) beispielsweise möchten Sie vielleicht Aktivitätsprotokolle aus dem Abonnement eines Kunden erfassen und in einem Log Analytics-Arbeitsbereich Ihres eigenen Abonnements speichern.
+In diesem Artikel wird schrittweise die Methode beschrieben, mit der Sie mithilfe des Datensammlers von Azure Log Analytics (Connector für Logik-Apps) Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich in Azure Monitor erfassen. Führen Sie die in diesem Artikel beschriebenen Schritte aus, wenn Sie Protokolle an einen Arbeitsbereich senden möchten, der sich in einem anderen Azure Active Directory-Mandanten befindet. Als Managed Service Provider (MSP) beispielsweise möchten Sie vielleicht Aktivitätsprotokolle aus dem Abonnement eines Kunden erfassen und in einem Log Analytics-Arbeitsbereich Ihres eigenen Abonnements speichern.
 
 Wenn der Log Analytics-Arbeitsbereich zum gleichen oder einem anderen Azure-Abonnement gehört, sich aber im selben Azure Active Directory befindet, erfassen Sie Azure-Aktivitätsprotokolle mit den unter [Lösung für Azure-Aktivitätsprotokolle](collect-activity-logs.md) beschriebenen Schritten.
 
@@ -29,23 +29,23 @@ Wenn der Log Analytics-Arbeitsbereich zum gleichen oder einem anderen Azure-Abon
 
 Entsprechend der in diesem Szenario verwendeten Strategie soll das Azure-Aktivitätsprotokoll Ereignisse an einen [Event Hub](../../event-hubs/event-hubs-about.md) senden, während eine [Logik-App](../../logic-apps/logic-apps-overview.md) diese an Ihren Log Analytics-Arbeitsbereich sendet. 
 
-![Datenfluss vom Aktivitätsprotokoll zu Log Analytics](media/collect-activity-logs-subscriptions/data-flow-overview.png)
+![Datenfluss vom Aktivitätsprotokoll zum Log Analytics-Arbeitsbereich](media/collect-activity-logs-subscriptions/data-flow-overview.png)
 
 Vorteile dieses Ansatzes:
-- Niedrige Latenz, da das Azure-Aktivitätsprotokoll in den Event Hub gestreamt wird.  Daraufhin wird die Logik-App ausgelöst und sendet die Daten an Log Analytics. 
+- Niedrige Latenz, da das Azure-Aktivitätsprotokoll in den Event Hub gestreamt wird.  Daraufhin wird die Logik-App ausgelöst und sendet die Daten an den Arbeitsbereich. 
 - Es ist nur minimaler Code erforderlich, und es muss keine Serverinfrastruktur bereitgestellt werden.
 
 In diesem Artikel werden Sie durch folgende Aufgaben geführt:
 1. Erstellen Sie einen Event Hub. 
 2. Exportieren von Aktivitätsprotokollen in einen Event Hub mithilfe eines Exportprofils für das Azure-Aktivitätsprotokoll
-3. Erstellen einer Logik-App, die Ereignisse aus dem Event Hub liest und an Log Analytics sendet
+3. Erstellen einer Logik-App, die Ereignisse aus dem Event Hub liest und an den Log Analytics-Arbeitsbereich sendet
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Nachfolgend sind die Anforderungen an die Azure-Ressourcen aufgeführt, die in diesem Szenario verwendet werden.
 
 - Der Event Hub-Namespace muss nicht zu dem Abonnement gehören, das die Protokolle ausgibt. Der Benutzer, der die Einstellung konfiguriert, benötigt die entsprechenden Zugriffsberechtigungen für beide Abonnements. Wenn Sie in einem Azure Active Directory über mehrere Abonnements verfügen, können Sie die Aktivitätsprotokolle für alle Abonnements an einen einzelnen Event Hub senden.
 - Die Logik-App kann zu einem anderen Abonnement als der Event Hub gehören und muss sich auch nicht im selben Azure Active Directory befinden. Die Logik-App liest mit dem gemeinsam verwendeten Zugriffsschlüssel des Event Hubs die Ereignisse aus dem Event Hub.
-- Der Log Analytics-Arbeitsbereich kann zu einem anderen Abonnement und Azure Active Directory als die Logik-App gehören. Aus Gründen der Einfachheit wird jedoch die Zugehörigkeit zum selben Abonnement empfohlen. Die Logik-App sendet die Ereignisse an Log Analytics und verwendet dabei die ID und den Schlüssel des Log Analytics-Arbeitsbereichs.
+- Der Log Analytics-Arbeitsbereich kann zu einem anderen Abonnement und Azure Active Directory als die Logik-App gehören. Aus Gründen der Einfachheit wird jedoch die Zugehörigkeit zum selben Abonnement empfohlen. Die Logik-App sendet die Ereignisse an den Arbeitsbereich und verwendet dabei die ID und den Schlüssel des Log Analytics-Arbeitsbereichs.
 
 
 
@@ -96,13 +96,13 @@ Sie können einen Event Hub-Namespace verwenden, der nicht zu dem Abonnement geh
 
 ## <a name="step-3---create-logic-app"></a>Schritt 3: Erstellen einer Logik-App
 
-Wenn die Aktivitätsprotokolle in den Event Hub geschrieben werden, erstellen Sie eine Logik-App, um die Protokolle im Event Hub zu erfassen und in Log Analytics zu schreiben.
+Wenn die Aktivitätsprotokolle in den Event Hub geschrieben werden, erstellen Sie eine Logik-App, um die Protokolle im Event Hub zu erfassen und in den Log Analytics-Arbeitsbereich zu schreiben.
 
 Die Logik-App umfasst Folgendes:
 - Ein Trigger [Event Hub-Connector](https://docs.microsoft.com/connectors/eventhubs/) für den Lesevorgang im Event Hub
 - Eine [JSON Analyseaktion](../../logic-apps/logic-apps-content-type.md) zum Extrahieren der JSON-Ereignisse
 - Eine [Compose-Aktion](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) zum Konvertieren der JSON in ein Objekt
-- Ein [Log Analytics-Connector zum Senden der Daten](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) zum Bereitstellen der Daten in Log Analytics
+- Ein [Log Analytics-Connector zum Senden der Daten](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) zum Bereitstellen der Daten in den Log Analytics-Arbeitsbereich
 
    ![Hinzufügen des Event Hub-Triggers in Logik-Apps](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -132,7 +132,7 @@ Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die un
    | Abonnement   | Wählen Sie das Azure-Abonnement aus, das die Logik-App enthalten soll. |
    | Ressourcengruppe | Wählen Sie für die Logik-App eine vorhandene Azure-Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. |
    | Standort       | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus. |
-   | Log Analytics  | Aktivieren Sie diese Einstellung, wenn bei jeder Ausführung der Logik-App der Status in Log Analytics protokolliert werden soll.  |
+   | Log Analytics  | Aktivieren Sie diese Einstellung, wenn bei jeder Ausführung der Logik-App der Status in einem Log Analytics-Arbeitsbereich protokolliert werden soll.  |
 
     
 3. Klicken Sie auf **Erstellen**. Wenn die Benachrichtigung **Bereitstellung erfolgreich** angezeigt wird, klicken Sie auf **Zu Ressource wechseln**, um Ihre Logik-App zu öffnen.
@@ -163,7 +163,7 @@ Der Logik-App-Designer zeigt nun die verfügbaren Connectors und die dazugehöri
 
 ### <a name="add-parse-json-action"></a>Hinzufügen der JSON-Analyseaktion
 
-Die Ausgabe aus dem Event Hub enthält eine JSON-Nutzlast mit einem Array aus Datensätzen. Die Aktion [JSON analysieren](../../logic-apps/logic-apps-content-type.md) wird zum Extrahieren des Arrays aus Datensätzen verwendet, das an Log Analytics gesendet werden soll.
+Die Ausgabe aus dem Event Hub enthält eine JSON-Nutzlast mit einem Array aus Datensätzen. Die Aktion [JSON analysieren](../../logic-apps/logic-apps-content-type.md) wird zum Extrahieren des Arrays aus Datensätzen verwendet, das an den Log Analytics-Arbeitsbereich gesendet werden soll.
 
 1. Klicken Sie auf **Nächster Schritt** > **Aktion hinzufügen**.
 2. Geben Sie im Suchfeld *JSON analysieren* als Filter ein. Wählen Sie die Aktion **Datenvorgänge – JSON analysieren** aus.
@@ -286,7 +286,7 @@ Die [Compose](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-a
 
 
 ### <a name="add-log-analytics-send-data-action"></a>Hinzufügen der Aktion zum Senden der Daten an Log Analytics
-Die Aktion [Datensammler von Azure Log Analytics](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) übernimmt das Objekt von der Compose-Aktion und sendet es an Log Analytics.
+Die Aktion [Datensammler von Azure Log Analytics](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) übernimmt das Objekt von der Compose-Aktion und sendet es an den Log Analytics-Arbeitsbereich.
 
 1. Klicken Sie auf **Nächster Schritt** > **Aktion hinzufügen**.
 2. Geben Sie *Log Analytics* als Filter ein, und wählen Sie dann die Aktion **Datensammler von Azure Log Analytics – Daten senden** aus.
@@ -304,7 +304,7 @@ Die Aktion [Datensammler von Azure Log Analytics](https://docs.microsoft.com/con
    |Einstellung        | Wert           | BESCHREIBUNG  |
    |---------------|---------------------------|--------------|
    |JSON-Anforderungstext  | **Ausgabe** von der **Compose**-Aktion | Ruft die Datensätze aus dem Text der Compose-Aktion ab. |
-   | Name des benutzerdefinierten Protokolls | AzureActivity | Name der benutzerdefinierten Protokolltabelle, die in Log Analytics zur Aufnahme der importierten Daten erstellt werden soll. |
+   | Name des benutzerdefinierten Protokolls | AzureActivity | Name der benutzerdefinierten Protokolltabelle, die im Log Analytics-Arbeitsbereich zur Aufnahme der importierten Daten erstellt werden soll. |
    | time-generated-field | time | Wählen Sie das JSON-Feld für die Zeit nicht aus – geben Sie einfach das Wort **time** ein. Wenn Sie das JSON-Feld auswählen, fügt der Designer die Aktion **Daten senden** in eine *For Each*-Schleife ein, was nicht gewünscht wird. |
 
 
@@ -329,7 +329,7 @@ Zuletzt überprüfen Sie den Log Analytics-Arbeitsbereich, um sicherzustellen, d
 3.  Klicken Sie auf die Kachel **Protokollsuche** und im Bereich „Protokollsuche“ auf den Abfragefeldtyp `AzureActivity_CL`, und drücken Sie dann auf EINGABE, oder klicken Sie auf die Suchschaltfläche rechts neben dem Abfragefeld. Wenn Sie das benutzerdefinierte Protokoll nicht *AzureActivity* genannt haben, geben Sie den von Ihnen ausgewählten Namen ein, und fügen Sie `_CL` an.
 
 >[!NOTE]
-> Bei einem neuen benutzerdefinierten Protokoll, das zum ersten Mal an Log Analytics gesendet wird, kann es bis zu einer Stunde dauern, bis das Protokoll durchsucht werden kann.
+> Bei einem neuen benutzerdefinierten Protokoll, das zum ersten Mal an den Log Analytics-Arbeitsbereich gesendet wird, kann es bis zu einer Stunde dauern, bis das Protokoll durchsucht werden kann.
 
 >[!NOTE]
 > Die Aktivitätsprotokolle werden in eine benutzerdefinierte Tabelle geschrieben und nicht in der [Lösung für Aktivitätsprotokolle](./collect-activity-logs.md) angezeigt.
@@ -339,7 +339,7 @@ Zuletzt überprüfen Sie den Log Analytics-Arbeitsbereich, um sicherzustellen, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie eine Logik-App zum Lesen von Azure-Aktivitätsprotokollen aus einem Event Hub und zum Senden dieser Protokolle zur Analyse an Log Analytics erstellt. Weitere Informationen zum Visualisieren von Daten in Log Analytics, einschließlich dem Erstellen von Dashboards, finden Sie im Lernprogramm zum Visualisieren von Daten.
+In diesem Artikel haben Sie eine Logik-App zum Lesen von Azure-Aktivitätsprotokollen aus einem Event Hub und zum Senden dieser Protokolle zur Analyse an den Log Analytics-Arbeitsbereich erstellt. Weitere Informationen zum Visualisieren von Daten in einem Arbeitsbereich, einschließlich dem Erstellen von Dashboards, finden Sie im Tutorial zum Visualisieren von Daten.
 
 > [!div class="nextstepaction"]
 > [Lernprogramm – Visualisieren der Daten von einer Protokollsuche](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

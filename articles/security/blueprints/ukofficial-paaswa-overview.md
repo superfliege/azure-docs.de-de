@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891102"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482984"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -119,7 +119,7 @@ Mit dieser Vorlage werden die folgenden App Service-Features bereitgestellt:
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 
-SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über verwaltete SQL-Einzeldatenbanken, verwaltete SQL-Datenbanken in einem [Pool für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) sowie [verwaltete SQL-Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (Public Preview). Sie bietet eine [dynamisch skalierbare Leistung])https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) und stellt Optionen wie [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) für sehr aufwändige Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
+SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über verwaltete SQL-Einzeldatenbanken, verwaltete SQL-Datenbanken in einem [Pool für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) sowie [verwaltete SQL-Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (Public Preview). Sie bietet eine [dynamisch skalierbare Leistung](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) und stellt Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
 
 Azure SQL-Datenbank in dieser Vorlage
 

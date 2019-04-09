@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262488"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481562"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
 
-Nach der erstmaligen Bereitstellung des Windows- oder Linux-Agents für Log Analytics müssen Sie den Agent neu konfigurieren oder ihn vom Computer entfernen, wenn er in seinem Lebenszyklus die Deaktivierungsphase erreicht hat. Sie können diese Routinewartungsaufgaben einfach manuell oder durch Automatisierung bewältigen, wodurch sowohl Betriebsfehler als auch Kosten reduziert werden.
+Nach der erstmaligen Bereitstellung des Windows- oder Linux-Agents für Log Analytics in Azure Monitor müssen Sie den Agent neu konfigurieren oder ihn vom Computer entfernen, wenn er in seinem Lebenszyklus die Deaktivierungsphase erreicht hat. Sie können diese Routinewartungsaufgaben einfach manuell oder durch Automatisierung bewältigen, wodurch sowohl Betriebsfehler als auch Kosten reduziert werden.
 
 ## <a name="adding-or-removing-a-workspace"></a>Hinzufügen oder Entfernen von Arbeitsbereichen
 
@@ -39,7 +39,7 @@ Nach der erstmaligen Bereitstellung des Windows- oder Linux-Agents für Log Anal
 
 #### <a name="remove-a-workspace-using-powershell"></a>Entfernen eines Arbeitsbereichs mithilfe von PowerShell
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.RemoveCloudWorkspace($workspaceId)
@@ -48,7 +48,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>Hinzufügen eines Arbeitsbereichs in Azure Commercial mithilfe von PowerShell
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -58,7 +58,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>Hinzufügen eines Arbeitsbereichs in Azure für US-Regierungsbehörden mithilfe von PowerShell
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -115,9 +115,9 @@ Verwenden Sie eine der folgenden Methoden, um den Agent so zu konfigurieren, das
 
 #### <a name="update-settings-using-powershell"></a>Aktualisieren von Einstellungen mithilfe von PowerShell
 
-Kopieren Sie den folgenden PowerShell-Beispielcode, aktualisieren Sie ihn mit umgebungsspezifischen Informationen, und speichern Sie ihn mit einer PS1-Erweiterung. Führen Sie das Skript auf jedem Computer aus, der sich direkt mit dem Log Analytics-Dienst verbindet.
+Kopieren Sie den folgenden PowerShell-Beispielcode, aktualisieren Sie ihn mit umgebungsspezifischen Informationen, und speichern Sie ihn mit einer PS1-Erweiterung. Führen Sie das Skript auf jedem Computer aus, der sich direkt mit dem Log Analytics-Arbeitsbereich in Azure Monitor verbindet.
 
-```PowerShell
+```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
 
 # First we get the Health Service configuration object. We need to determine if we
