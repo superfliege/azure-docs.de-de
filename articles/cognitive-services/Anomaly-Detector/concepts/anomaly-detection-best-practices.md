@@ -1,0 +1,74 @@
+---
+title: Best Practices bei der Verwendung der Anomalieerkennungs-API
+description: Informationen zu Best Practices bei der Anomalieerkennung mit der Anomalieerkennungs-API.
+services: cognitive-services
+author: aahill
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: anomaly-detector
+ms.topic: article
+ms.date: 03/26/2019
+ms.author: aahi
+ms.openlocfilehash: 467ac4e475a1c23e25b62c76cfbc959e7ed49465
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484032"
+---
+# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
+
+Die Anomalieerkennungs-API ist ein zustandsloser Dienst zur Erkennung von Anomalien. Folgende Aspekte können sich auf die Genauigkeit und Leistung ihrer Ergebnisse auswirken:
+
+* Wie Ihre Zeitreihendaten vorbereitet werden
+* Welche Parameter der Anomalieerkennungs-API verwendet wurden
+* Wie viele Datenpunkte Ihre API-Anforderung erfasst 
+
+Lernen Sie in diesem Artikel Best Practices für die Verwendung der API kennen, um optimale Ergebnisse für Ihre Daten zu erzielen. 
+
+## <a name="data-preparation"></a>Vorbereitung der Daten
+
+Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. 
+
+Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen gültigen Zeitstempel der koordinierten Weltzeit (UTC) und einen numerischen Wert aufweisen. 
+
+```json
+{
+    "granularity": "daily",
+    "series": [
+      {
+        "timestamp": "2018-03-01T00:00:00Z",
+        "value": 32858923
+      },
+      {
+        "timestamp": "2018-03-02T00:00:00Z",
+        "value": 29615278
+      },
+    ]
+}
+```
+
+### <a name="missing-data-points"></a>Fehlende Datenpunkte
+
+Fehlende Datenpunkte kommen häufig bei gleichmäßig verteilten Zeitreihendatensätzen vor, insbesondere bei solchen mit einer feinen Granularität (d. h. einem kurzen Samplingintervall, bei dem alle paar Minuten Daten erfasst werden). Wenn weniger als 10 % der erwarteten Anzahl von Punkten in Ihren Daten fehlen, dürfte dies keine negativen Auswirkungen auf Ihre Erkennungsergebnisse haben. Sie können Lücken in Ihren Daten anhand ihrer Eigenschaften schließen, indem Sie beispielsweise Datenpunkte aus einer früheren Periode als Ersatz einfügen, oder eine lineare Interpolation bzw. einen gleitenden Durchschnitt verwenden.
+
+### <a name="aggregate-distributed-data"></a>Aggregieren verteilter Daten
+
+Die Anomalieerkennungs-API funktioniert am besten mit einer gleichmäßig verteilten Zeitreihe. Wenn Ihre Daten zufällig verteilt sind, sollten Sie diese nach Zeiteinheiten zusammenfassen, beispielsweise nach Minuten, stündlich oder täglich.
+
+## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Erkennen von Anomalien in Daten mit saisonalen Mustern
+
+Wenn Sie wissen, dass Ihre Zeitreihendaten ein saisonales Muster haben (eines, das in regelmäßigen Abständen auftritt), können Sie die Genauigkeit und die Antwortzeit der API verbessern. 
+
+Das Angeben einer `period` beim Erstellen Ihrer JSON-Anforderung kann die Wartezeit bei der Anomalieerkennung um bis zu 50 % verkürzen. `period` ist eine ganze Zahl, die ungefähr angibt, nach wie vielen Datenpunkten der Zeitreihe sich ein Muster wiederholt. Beispielsweise hätte eine Zeitreihe mit einem Datenpunkt pro Tag die `period` `7`, und eine Zeitreihe mit einem Datenpunkt pro Stunde (mit demselben wöchentlichen Muster) eine `period` von `7*24`. Wenn Sie das Muster Ihrer Daten nicht kennen, müssen Sie diesen Parameter nicht angeben.
+
+Verwenden Sie für optimale Ergebnisse Datenpunkte für das Vierfache der `period` plus einen zusätzlichen Datenpunkt. Stündliche Daten mit einem wöchentlichen Muster wie oben beschrieben sollten im Anforderungstext beispielsweise 673 Datenpunkte bereitstellen (`7 * 24 * 4 + 1`).
+
+### <a name="sampling-data-for-real-time-monitoring"></a>Samplingdaten für die Überwachung in Echtzeit
+
+Wenn Ihre Streamingdaten in einem kurzen Intervall (wie Sekunden oder Minuten) erfasst werden, kann durch das Senden der empfohlenen Anzahl von Datenpunkten die maximal zulässige Anzahl der Anomalieerkennungs-API (8640 Datenpunkte) überschritten werden. Wenn Ihre Daten ein stabiles saisonales Muster aufweisen, sollten Sie in Betracht ziehen, in einem größeren Zeitintervall (z. B. Stunden) eine Stichprobe Ihrer Zeitreihendaten zu senden. Indem Sie auf diese Weise Stichproben Ihrer Daten erfassen, kann auch die API-Reaktionszeit deutlich verbessert werden. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [What is the Anomaly Detector API? (Was ist die Anomalieerkennungs-API?)](../overview.md)
+* [Schnellstart: Detect anomalies in your time series data using the Anomaly Detector REST API (Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomaly Detector REST-API)](../quickstarts/detect-data-anomalies-csharp.md)

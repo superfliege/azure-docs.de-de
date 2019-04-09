@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 1f8c2590ea01e9a819ebdacd6b3774555dded800
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a835fbd427408afae9ea6ae1b1bc2a84c18b0c34
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250839"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540452"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Installationsanleitung zum Marketplace-Angebot für Striim und Azure SQL Data Warehouse
 
@@ -29,7 +29,7 @@ Konfigurieren Sie den virtuellen Striim-Computer mit den angegebenen Eigenschaft
 
 ![Konfigurieren von Striim][configure]
 
-Klicken Sie nach der Bereitstellung auf „<VM Name>-masternode“ im Azure-Portal, klicken Sie auf „Verbinden“, und kopieren Sie die Anmeldung mit einem lokalen VM-Konto. 
+Klicken Sie nach der Bereitstellung im Azure-Portal auf „\<VM-Name>-masternode“, klicken Sie auf „Verbinden“, und kopieren Sie die Anmeldung mit einem lokalen VM-Konto. 
 
 ![Verbinden von Striim mit SQL Data Warehouse][connect]
 
@@ -55,7 +55,7 @@ Führen Sie die folgenden Befehle aus, um die JDBC-JAR-Datei in das Verzeichnis 
 
 ![Starten des Striim-Clusters][start-striim]
 
-Öffnen Sie nun Ihren bevorzugten Browser, und navigieren Sie zu „<DNS Name>:9080“.
+Öffnen Sie nun Ihren bevorzugten Browser, und navigieren Sie zu „\<DNS-Name>:9080“.
 
 ![Navigieren zum Anmeldebildschirm][navigate]
 

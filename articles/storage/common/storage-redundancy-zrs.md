@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 11891153f1ffce438597dc4f2799a9f25d76c2f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992601"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447264"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -50,7 +50,7 @@ Die Migration von oder zu LRS, GRS und RA-GRS ist ein einfacher Prozess. Verwend
 
 Für die Migration von Daten von oder zu ZRS ist eine andere Strategie erforderlich. Die ZRS-Migration umfasst die physische Verlagerung von Daten von einem einzelnen Speicherstempel auf mehrere Stempel in einer Region.
 
-Es gibt zwei primäre Optionen für die Migration zu oder von ZRS: 
+Ihnen stehen in erster Linie zwei Optionen für die Migration zu ZRS zur Verfügung: 
 
 - Kopieren oder verschieben Sie Daten manuell aus einem vorhandenen Konto in ein neues ZRS-Konto.
 - Fordern Sie eine Livemigration an.
@@ -73,6 +73,7 @@ Beachten Sie die folgenden Einschränkungen bei Livemigrationen:
 - Ihr Konto muss Daten enthalten.
 - Sie können Daten nur innerhalb der gleichen Region migrieren. Wenn Sie Ihre Daten in ein ZRS-Konto zu einer anderen Region als das Quellkonto migrieren möchten, müssen Sie eine manuelle Migration ausführen.
 - Nur Standard-Speicherkontotypen unterstützen die Livemigration. Premium-Speicherkonten müssen manuelle migriert werden.
+- Die Livemigration von ZRS zu LRS, GRS oder RA-GRS wird nicht unterstützt. Sie müssen diese Daten manuell in ein neues oder vorhandenes Speicherkonto verschieben.
 
 Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. Wählen Sie im Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
 1. Wählen Sie **Neue Supportanfrage** aus.
@@ -88,19 +89,59 @@ Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.porta
 6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
 7. Klicken Sie auf **Erstellen**.
 
-Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen und Sie nach Bedarf und Wunsch unterstützen. 
+Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen und Sie nach Bedarf und Wunsch unterstützen.
+
+## <a name="live-migration-to-zrs-faq"></a>Häufig gestellte Fragen zur Livemigration zu ZRS
+
+**Sollte ich mich während der Migration auf Downtimes einstellen?**
+
+Durch die Migration wird keine Downtime verursacht. Während einer Livemigration können Sie Ihr Speicherkonto weiter verwenden, während Ihre Daten zwischen dem Quell- und dem Zielspeicher migriert werden. Während des Migrationsprozesses verfügen Sie über das gleiche Maß an Dauerhaftigkeit und Verfügbarkeit gemäß SLA, wie es normalerweise der Fall ist.
+
+**Kann es durch die Migration zu Datenverlust kommen?**
+
+Durch die Migration kommt es nicht zu Datenverlust. Während des Migrationsprozesses verfügen Sie über das gleiche Maß an Dauerhaftigkeit und Verfügbarkeit gemäß SLA, wie es normalerweise der Fall ist.
+
+**Müssen Anwendungen nach Abschluss der Migration aktualisiert werden?**
+
+Nach Abschluss der Migration ändert sich der Replikationstyp der Konten in „Zonenredundanter Speicher (ZRS)“. Dienstendpunkte, Zugriffsschlüssel, SAS und andere Konfigurationsoption für Konten bleiben unverändert und funktionsfähig.
+
+**Kann ich eine Livemigration von einem Allgemein v1-Konto zu ZRS anfordern?**
+
+ZRS unterstützt nur Allgemein v2-Konten. Bevor Sie also eine Anforderung für eine Livemigration zu ZRS übermitteln, sollten Sie Ihre Konten auf „Allgemein v2“ upgraden. Weitere Informationen finden Sie unter [Übersicht über Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-account-overview) und [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+
+**Kann ich eine Livemigration meines georedundanten Speicherkontos mit Lesezugriff (RA-GRS) zu ZRS anfordern?**
+
+Bevor Sie eine Livemigration zu ZRS anfordern, sollten Sie sicherstellen, dass Ihre Anwendungen oder Workloads keinen Zugriff auf die schreibgeschützten sekundären Endpunkte mehr benötigen. Ändern Sie außerdem den Replikationstyp Ihres Speicherkontos in „Georedundanter Speicher (GRS)“. Weitere Informationen finden Sie unter [Ändern der Replikationsstrategie](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy).
+
+**Kann ich eine Livemigration von einem Speicherkonto zu ZRS in einer anderen Region anfordern?**
+
+Wenn Sie Ihre Daten in ein ZRS-Konto in einer anderen Region als der Region des Quellkontos migrieren möchten, müssen Sie eine manuelle Migration durchführen.
 
 ## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS (klassisch): Eine ältere Option für die Redundanz von Blockblobs
 > [!NOTE]
 > Microsoft wird ZRS Classic-Konten am 31. März 2021 als veraltet markieren und migrieren. Bevor die Option als veraltet gekennzeichnet wird, erhalten ZRS Classic-Kunden weitere Informationen. 
 >
-> Sobald der zonenredundante Speicher in einer Region [allgemein verfügbar](#support-coverage-and-regional-availability) wird, können Kunden im Portal in dieser Region kein ZRS Classic-Konto mehr erstellen. Die Verwendung von Microsoft PowerShell und der Azure CLI zum Erstellen von ZRS Classic-Konten ist eine Option, bis ZRS Classic als veraltet gekennzeichnet wird.
+> Sobald der zonenredundante Speicher in einer Region [allgemein verfügbar](#support-coverage-and-regional-availability) wird, können Kunden im Portal in dieser Region kein klassisches ZRS-Konto mehr erstellen. Die Verwendung von Microsoft PowerShell und der Azure CLI zum Erstellen von ZRS Classic-Konten ist eine Option, bis ZRS Classic als veraltet gekennzeichnet wird.
 
 ZRS Classic repliziert Daten asynchron zwischen Rechenzentren in einer oder zwei Regionen. Replizierte Daten sind möglicherweise erst wieder verfügbar, wenn Microsoft das Failover auf die sekundäre Region initiiert. Ein ZRS Classic-Konto kann nicht zu oder aus LRS, GRS oder RA-GRS konvertiert werden. ZRS Classic-Konten unterstützen zudem weder Metriken noch Protokollierungen.
 
 ZRS Classic ist nur für **Blockblobs** in Speicherkonten vom Typ „Allgemein v1 (GPv1)“ verfügbar. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](storage-account-overview.md).
 
 Um ZRS-Kontodaten manuell zu oder von einem LRS-, ZRS (klassisch)-, GRS- oder RA-GRS-Konto zu migrieren, verwenden Sie eins der folgenden Tools: AzCopy, Azure Storage-Explorer, Azure PowerShell oder Azure-Befehlszeilenschnittstelle. Sie können auch Ihre eigene Migrationslösung mit einer der Azure Storage-Clientbibliotheken erstellen.
+
+Sie können Ihre klassischen ZRS-Konten in den Regionen, in denen ZRS verfügbar ist, zudem im Portal, über Azure PowerShell oder die Azure CLI zu ZRS upgraden.
+
+Navigieren Sie zum Abschnitt „Konfiguration“ des Kontos, und klicken Sie auf „Aktualisieren“, um ein Upgrade zu ZRS im Portal vorzunehmen:![Upgrade von ZRS (klassisch) zu ZRS im Portal](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+
+Führen Sie folgenden Befehl aus, um mithilfe von PowerShell ein Upgrade auf ZRS durchzuführen:
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
+```
+
+Führen Sie folgenden Befehl aus, um mithilfe der CLI ein Upgrade auf ZRS durchzuführen:
+```cli
+az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
+```
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Storage-Replikation](storage-redundancy.md)

@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: f804cfd693a37099edc22e7f4861d6d7e1af0fc7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651112"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518676"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Installieren externer Python-Pakete für Jupyter Notebooks in Apache Spark-Clustern unter HDInsight mithilfe von Skriptaktionen
 > [!div class="op_single_selector"]
 > * [Verwenden von Cell Magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Verwenden von Skriptaktionen](apache-spark-python-package-installation.md)
 
-Hier erfahren Sie, wie Sie mithilfe von Skriptaktionen einen [Apache Spark](https://spark.apache.org/)-Cluster unter HDInsight (Linux) konfigurieren, um externe, von der Community bereitgestellte **Python**-Pakete zu verwenden, die nicht standardmäßig im Cluster enthalten sind.
+Hier erfahren Sie, wie Sie mithilfe von Skriptaktionen einen [Apache Spark](https://spark.apache.org/)-Cluster unter HDInsight konfigurieren, um externe, von der Community bereitgestellte **Python**-Pakete zu verwenden, die nicht standardmäßig im Cluster enthalten sind.
 
 > [!NOTE]  
 > Sie können ein Jupyter Notebook auch mit `%%configure`-Magic zur Verwendung externer Pakete konfigurieren. Anweisungen finden Sie unter [Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
@@ -48,7 +48,7 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 * **Integrierte Komponenten** – Diese Komponenten sind in HDInsight-Clustern vorinstalliert und stellen Kernfunktionen des Clusters bereit. So gehören beispielsweise Apache Hadoop YARN Resource Manager, die Apache Hive-Abfragesprache (HiveQL) und die Mahout Library zu dieser Kategorie. Eine vollständige Liste der Clusterkomponenten finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Apache Hadoop-Clusterversionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Benutzerdefinierte Komponenten** – Als Benutzer des Clusters können Sie in Ihrem Workload eine beliebige in der Community verfügbare oder von Ihnen erstellte Komponente installieren oder verwenden.
 
-> [!WARNING]   
+> [!IMPORTANT]   
 > Mit dem HDInsight-Cluster bereitgestellte Komponenten werden vollständig unterstützt. Der Microsoft-Support unterstützt Sie beim Isolieren und Beheben von Problemen im Zusammenhang mit diesen Komponenten.
 >
 > Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Der Microsoft-Support kann das Problem möglicherweise beheben, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [https://apache.org](https://apache.org). Beispiel: [Hadoop](https://hadoop.apache.org/).
@@ -56,33 +56,52 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Verwenden von externen Paketen mit Jupyter Notebooks
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
+1. Navigieren Sie vom [Azur-Portal](https://portal.azure.com/) zu Ihrem Cluster.  
 
-2. Klicken Sie auf dem Blatt des Spark-Clusters im linken Bereich auf **Skriptaktionen**. Verwenden Sie den Skripttyp „Benutzerdefiniert“, und geben Sie einen Anzeigenamen für die Skriptaktion ein. Führen Sie das Skript auf den **Haupt- und Workerknoten** aus, und lassen Sie das Parameterfeld leer. Auf das Bash-Skript kann wie folgt verwiesen werden: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh Informationen zum [Verwenden benutzerdefinierter Skriptaktionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) finden Sie in der Dokumentation.
+2. Wenn Ihr Cluster im linken Bereich unter **Einstellungen** ausgewählt ist, wählen Sie **Skriptaktionen** aus.
 
-   > [!NOTE]  
-   > Im Cluster gibt es zwei Python-Installationen. Spark verwendet die Anaconda-Python-Installation, die sich bei `/usr/bin/anaconda/bin` befindet, und verwendet standardmäßig die Python 2.7-Umgebung. Um Python 3.x zu verwenden und Pakete im PySpark3-Kernel zu installieren, verwenden Sie den Pfad zur ausführbaren Datei `conda` für diese Umgebung, und verwenden Sie den Parameter `-n` zur Angabe der Umgebung. Der Befehl `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` installiert z. B. das Paket `ggplot` in der Python 3.5-Umgebung über den Kanal `conda-forge`.
+3. Klicken Sie auf **+Neue übermitteln**.
 
-3. Öffnen eines PySpark-Jupyter Notebooks
+4. Geben Sie die folgenden Werte für das Fenster **Skriptaktion übermitteln** ein:  
+
+
+    |Parameter | Wert |
+    |---|---|
+    |Skripttyp | Wählen Sie in der Dropdownliste **– Benutzerdefiniert** aus.|
+    |NAME |Geben Sie `tensorflow` in das Textfeld ein.|
+    |Bash-Skript-URI |Geben Sie `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` in das Textfeld ein. |
+    |Knotentyp(en) | Aktivieren Sie die Kontrollkästchen **Hauptknoten** und **Worker**. |
+
+    `tensorflowinstall.sh` enthält die folgenden Befehle:
+
+    ```bash
+    #!/usr/bin/env bash
+    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    ```
+
+5. Klicken Sie auf **Erstellen**.  Informationen zum Verwenden benutzerdefinierter Skriptaktionen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+
+6. Warten Sie, bis das Skript abgeschlossen ist.  Im Bereich **Skriptaktionen** wird **Neue Skriptaktionen können übermittelt werden, nachdem der aktuelle Clustervorgang abgeschlossen wurde** angezeigt, während das Skript ausgeführt wird.  Eine Statusanzeige wird im Ambari UI-Fenster **Hintergrundvorgänge** angezeigt.
+
+7. Öffnen Sie ein PySpark Jupyter-Notebook.  Informationen zu den entsprechenden Schritten finden Sie unter [Erstellen eines Jupyter-Notebooks unter Spark HDInsight](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight).
 
     ![Erstellen eines neuen Jupyter Notebooks](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Erstellen eines neuen Jupyter Notebooks")
 
-4. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Klicken Sie oben auf den Namen des Notebooks, und geben Sie einen Anzeigenamen ein.
+8. In diesem Schritt importieren Sie TensorFlow (`import tensorflow`) und führen ein Hello World-Beispiel aus. Geben Sie den folgenden Code ein:
 
-    ![Angeben eines neuen Namens für das Notebook](./media/apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Angeben eines neuen Namens für das Notebook")
-
-5. In diesem Schritt importieren Sie TensorFlow (`import tensorflow`) und führen ein Hello World-Beispiel aus. 
-
-    Zu kopierender Code:
-
-        import tensorflow as tf
-        hello = tf.constant('Hello, TensorFlow!')
-        sess = tf.Session()
-        print(sess.run(hello))
+    ```
+    import tensorflow as tf
+    hello = tf.constant('Hello, TensorFlow!')
+    sess = tf.Session()
+    print(sess.run(hello))
+    ```
 
     Das Ergebnis sieht wie folgt aus:
     
     ![Ausführung des TensorFlow-Codes](./media/apache-spark-python-package-installation/execution.png "Ausführung des TensorFlow-Codes")
+
+> [!NOTE]  
+> Im Cluster gibt es zwei Python-Installationen. Spark verwendet die Anaconda-Python-Installation, die sich bei `/usr/bin/anaconda/bin` befindet, und verwendet standardmäßig die Python 2.7-Umgebung. Um Python 3.x zu verwenden und Pakete im PySpark3-Kernel zu installieren, verwenden Sie den Pfad zur ausführbaren Datei `conda` für diese Umgebung, und verwenden Sie den Parameter `-n` zur Angabe der Umgebung. Der Befehl `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` installiert z. B. das Paket `ggplot` in der Python 3.5-Umgebung über den Kanal `conda-forge`.
 
 ## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 2d011dffa4db68a0cdf6ac3415ff1316906a4e87
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8ded7a86c1b4fb53ca81fc4e7b0c0d794c515ddf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884000"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886340"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit C#
 
@@ -57,7 +57,7 @@ Der folgende Code sendet eine HTTPS-Anforderung an die QnA Maker-API, um die Fra
 
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=32-57 "Add a POST request to send question to knowledge base")]
 
-Der Wert des `Authorization`-Headers enthält die Zeichenfolge `EndpointKey `. 
+Der Wert des `Authorization`-Headers enthält die Zeichenfolge `EndpointKey`. 
 
 Informieren Sie sich ausführlicher über [Anforderung](../how-to/metadata-generateanswer-usage.md#generateanswer-request) und [Antwort](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
 

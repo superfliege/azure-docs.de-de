@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 978b865f6dd7e3427a0139e7e71ed4b2d937fbe5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091306"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517299"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -24,22 +24,14 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Linux-basierter Apache Hadoop-Cluster in HDInsight, Version 3.4 oder höher.
-
-  > [!IMPORTANT]  
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+* Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit einer Resource Manager-Vorlage](./apache-hadoop-linux-tutorial-get-started.md).
 * Aus einem Webbrowser
 
 ## <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird in einem neuen Blatt des Portals geöffnet.
 
-2. Wählen Sie Ihren HDInsight-Cluster, und wählen Sie dann im Abschnitt **Quicklinks** die Option **Ambari-Ansichten**.
-
-    ![Abschnitt „Quicklinks“ des Portals](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
-
-    Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben.
+2. Wählen Sie aus **Clusterdashboards** die Option **Ambari-Ansichten** aus. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben.
 
 3. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
@@ -81,35 +73,33 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
    * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte t4 den Wert [ERROR] enthält.
 
-     > [!IMPORTANT]  
-     > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
+   > [!IMPORTANT]  
+   > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
 
-5. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
+5. Wählen Sie zum Starten der Abfrage **Execute** (Ausführen) unter dem Arbeitsblatt aus. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
 
 6. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
 
         loglevel       count
         [ERROR]        3
 
-    Sie können auf der Registerkarte **Logs** die vom Auftrag erstellten Protokollinformationen anzeigen.
+    Sie können auf der Registerkarte **LOG** die vom Auftrag erstellten Protokollinformationen anzeigen.
 
    > [!TIP]  
-   > Im Dropdowndialogfeld **Save results** in der oberen linken Ecke des Abschnitts **Query Process Results** können Sie Ergebnisse herunterladen oder speichern.
+   > Laden Sie Ergebnisse aus dem Dropdown-Dialogfeld **Actions** (Aktionen) unter der Registerkarte **Results** (Ergebnisse) herunter oder speichern Sie sie.
 
 ### <a name="visual-explain"></a>Visuelle Erläuterung
 
 Klicken Sie auf die Registerkarte **Visual Explain** (Visuelle Erläuterung) unter dem Arbeitsblatt, um eine Visualisierung des Abfrageplans anzuzeigen.
 
-Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Ablaufs komplexer Abfragen erleichtern. Sie können eine Textentsprechung dieser Ansicht mit der Schaltfläche **Explain** im Abfrage-Editor anzeigen.
+Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Ablaufs komplexer Abfragen erleichtern.
 
 ### <a name="tez-ui"></a>Tez-Benutzeroberfläche
 
-Klicken Sie auf die Registerkarte **Tez** unter dem Arbeitsblatt, um die Tez-Benutzeroberfläche für die Abfrage anzuzeigen.
+Klicken Sie auf die Registerkarte **Tez UI** unter dem Arbeitsblatt, um die Tez-Benutzeroberfläche für die Abfrage anzuzeigen.
 
 > [!IMPORTANT]  
 > Tez wird nicht für die Auflösung aller Abfragen verwendet. Viele Abfragen können ohne Tez aufgelöst werden. 
-
-Wenn die Abfrage mit Tez aufgelöst wurde, wird der Directed Acyclic Graph (DAG) angezeigt. Wenn Sie den DAG für Abfragen anzeigen möchten, die Sie in der Vergangenheit ausgeführt haben, oder den Tez-Prozess debuggen möchten, verwenden Sie stattdessen die [Tez-Ansicht](../hdinsight-debug-ambari-tez-view.md) .
 
 ## <a name="view-job-history"></a>Anzeige des Auftragsverlaufs
 

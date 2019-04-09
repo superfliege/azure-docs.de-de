@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2b4fcb42c913149f8caf05a72fb089586ee21e2a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106119"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498170"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von Event Processor Host
 
@@ -83,7 +83,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 Anschließend wird eine [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz instanziiert. Je nach Überladung werden beim Erstellen der [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz im Konstruktor die folgenden Parameter verwendet:
 
-- **hostName:** der Name der einzelnen Consumerinstanzen. Jede Instanz von **EventProcessorHost** muss innerhalb einer Consumergruppe einen eindeutigen Wert für diese Variable enthalten. Es empfiehlt sich daher, diesen Wert nicht hartzucodieren.
+- **hostName:** der Name der einzelnen Consumerinstanzen. Jede Instanz von **EventProcessorHost** muss innerhalb einer Consumergruppe einen eindeutigen Wert für diese Variable enthalten. Sie sollten diesen Wert daher nicht hartcodieren.
 - **eventHubPath:** Der Name des Event Hubs.
 - **consumerGroupName:** Event Hubs verwendet **$Default** als Namen für die Standardconsumergruppe. Es empfiehlt sich jedoch, eine Consumergruppe für den spezifischen Verarbeitungsaspekt zu erstellen.
 - **eventHubConnectionString:** Die Verbindungszeichenfolge für den Event Hub, die über das Azure-Portal abgerufen werden kann. Diese Verbindungszeichenfolge muss über Berechtigungen zum **Lauschen** für den Event Hub verfügen.
@@ -125,7 +125,7 @@ In diesem Beispiel übernimmt jeder Host den Besitz einer Partition für eine be
 
 Bei jedem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) wird eine Sammlung von Ereignissen bereitgestellt. Die Verarbeitung dieser Ereignisse liegt in Ihrer Verantwortung. Wenn Sie sicherstellen möchten, dass der Prozessorhost jede Nachricht mindestens einmal verarbeitet, müssen Sie Ihren eigenen Wiederholungscode schreiben. Lassen Sie bei nicht verarbeitbaren Nachrichten jedoch Vorsicht walten.
 
-Es wird empfohlen, relativ schnell vorzugehen, möglichst wenige Verarbeitungsvorgänge durchzuführen. Verwenden Sie stattdessen Consumergruppen. Wenn Ereignisse in den Speicher geschrieben und einige Routingvorgänge durchgeführt werden sollen, empfiehlt es sich in der Regel, zwei Consumergruppen zu verwenden und zwei [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungen separat auszuführen.
+Es wird empfohlen, relativ schnell vorzugehen, möglichst wenige Verarbeitungsvorgänge durchzuführen. Verwenden Sie stattdessen Consumergruppen. Wenn Ereignisse in den Speicher geschrieben und Routingvorgänge durchgeführt werden sollen, empfiehlt es sich, zwei Consumergruppen zu verwenden und zwei [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungen separat auszuführen.
 
 Zu einem Zeitpunkt während der Verarbeitung möchten Sie möglicherweise nachverfolgen, welche Daten Sie gelesen und abgeschlossen haben. Die Nachverfolgung ist wichtig: Wenn Sie das Lesen wieder aufnehmen, müssen Sie dann nicht zum Anfang des Datenstroms zurückkehren. In [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wird diese Nachverfolgung durch Verwenden von *Prüfpunkten* vereinfacht. Ein Prüfpunkt ist eine Position (oder ein Offset) für eine bestimmte Partition in einer bestimmten Consumergruppe, bis zu der Sie die Nachrichten bereits verarbeitet haben. Das Markieren eines Prüfpunkts in **EventProcessorHost** erfolgt durch Aufrufen der [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync)-Methode für das [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext)-Objekt. Dieser Vorgang erfolgt innerhalb der [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)-Methode, kann jedoch auch in [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) durchgeführt werden.
 
@@ -141,7 +141,7 @@ Wenn der Prüfpunkt ausgeführt wird, wird eine JSON-Datei mit partitionsspezifi
 
 ## <a name="shut-down-gracefully"></a>Ordnungsgemäßes Herunterfahren
 
-Schließlich ermöglicht [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) ein sauberes Herunterfahren aller Partitionsleser und sollte beim Herunterfahren einer Instanz von [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) immer aufgerufen werden. Andernfalls kann dies zu Verzögerungen beim Starten anderer Instanzen von **EventProcessorHost** aufgrund von Leaseablauf und Epochenkonflikten führen. Die Epochenverwaltung wird in diesem [Blogbeitrag](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/) ausführlich erläutert.
+Schließlich ermöglicht [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) ein sauberes Herunterfahren aller Partitionsleser und sollte beim Herunterfahren einer Instanz von [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) immer aufgerufen werden. Andernfalls kann dies zu Verzögerungen beim Starten anderer Instanzen von **EventProcessorHost** aufgrund von Leaseablauf und Epochenkonflikten führen. Die Verwaltung von Epochen wird im Abschnitt [Epochen](#epoch) dieses Artikels näher erläutert. 
 
 ## <a name="lease-management"></a>Leaseverwaltung
 Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Die Hostinstanz ruft Leases für einige Partitionen des Event Hubs (möglicherweise auch für andere Hostinstanzen) in einer Weise ab, die zu einer gleichmäßigen Verteilung der Partitionen über alle Hostinstanzen führt. Für jede geleaste Partition erstellt die Hostinstanz eine Instanz der angegebenen Ereignisprozessorklasse, empfängt dann Ereignisse von dieser Partition und übergibt sie an die Ereignisprozessorinstanz. Wenn mehr Instanzen hinzugefügt und mehr Leases in Anspruch genommen werden, gleicht EventProcessorHost schließlich die Last zwischen allen Consumern aus.
@@ -159,6 +159,32 @@ Zusätzlich verwendet eine Überladung von [RegisterEventProcessorAsync](/dotnet
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Wenn dieser Parameter auf **TRUE** festgelegt ist, wird [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aufgerufen, wenn für den zugrunde liegenden Aufruf zum Empfangen von Ereignissen für eine Partition ein Timeout auftritt. Diese Methode eignet sich für zeitbasierte Aktionen während inaktiver Zeiträume der Partition.
 - [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Ermöglicht das Festlegen eines Funktionszeigers oder Lambdaausdrucks, der aufgerufen wird, um den anfänglichen Offset anzugeben, wenn ein Leser mit dem Lesen einer Partition beginnt. Ohne Angabe dieses Offsets beginnt der Leser bei dem ältesten Ereignis, es sei denn, eine JSON-Datei mit einem Offset wurde bereits in dem Speicherkonto gespeichert, das für den Konstruktor [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) angegeben ist. Diese Methode ist nützlich, wenn Sie das Verhalten für den Start des Lesers ändern möchten. Wenn diese Methode aufgerufen wird, enthält der Objektparameter die Partitions-ID, für die der Leser gestartet wird.
 - [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Ermöglicht, dass Sie Benachrichtigungen zu allen zugrunde liegenden Ausnahmen empfangen, die in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) auftreten. Wenn Vorgänge nicht wie erwartet ausgeführt werden, ist dieses Ereignis ein guter Ausgangspunkt für die Überprüfung.
+
+## <a name="epoch"></a>Epochen
+
+So funktioniert der Empfang von Epochen:
+
+### <a name="with-epoch"></a>Mit Epochen
+Bei „epoch“ handelt es sich um einen eindeutigen Bezeichner (epoch-Wert), den der Dienst verwendet, um den Besitz von Partitionen oder Leases zu erzwingen. Mithilfe der [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)-Methode können Sie einen epochenbasierten Empfänger erstellen. Der Empfänger wird für eine bestimmte Event Hub-Partition aus der angegebenen Consumergruppe erstellt.
+
+Mithilfe des Epochenfeatures können Benutzer sicherstellen, dass immer nur ein Empfänger in einer Consumergruppe vorhanden ist. Hierfür gelten folgende Regeln:
+
+- Wenn kein Empfänger in einer Consumergruppe vorhanden ist, kann der Benutzer mit einem beliebigen epoch-Wert einen Empfänger erstellen.
+- Wenn ein Empfänger mit einem epoch-Wert von e1 vorhanden ist, ein neuer Empfänger mit einem epoch-Wert von e2 erstellt wird und „e1 <= e2“ gilt, wird der Empfänger mit dem Wert e1 automatisch getrennt und der Empfänger mit dem Wert e2 erfolgreich erstellt.
+- Wenn ein Empfänger mit einem epoch-Wert von e1 vorhanden ist, ein neuer Empfänger mit einem epoch-Wert von e2 erstellt wird und „e1 > e2“ gilt, schlägt die Erstellung des Empfängers mit dem Wert e2 mit folgender Fehlermeldung fehl: A receiver with epoch e1 already exists. (Ein Empfänger mit dem epoch-Wert e1 ist bereits vorhanden.)
+
+### <a name="no-epoch"></a>Ohne Epochen
+Mithilfe der [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)-Methode können Sie einen nicht auf Epochen basierenden Empfänger erstellen. 
+
+In einigen Szenarios bei der Streamverarbeitung müssen Benutzer mehrere Empfänger in einer Consumergruppe erstellen. Für solche Szenarios besteht die Möglichkeit, einen Empfänger ohne epoch-Wert zu erstellen. In diesem Fall sind bis zu fünf gleichzeitige Empfänger in der Consumergruppe möglich.
+
+### <a name="mixed-mode"></a>Gemischter Modus
+Es wird nicht empfohlen, einen Empfänger mit epoch-Wert zu erstellen und dann in derselben Consumergruppe in den nicht auf Epochen basierenden Modus zu wechseln (oder umgekehrt). Wenn dieser Fall jedoch eintritt, wendet der Dienst folgende Regeln an:
+
+- Wenn bereits ein Empfänger mit einem epoch-Wert von e1 erstellt wurde, der aktiv Ereignisse empfängt, und ein neuer Empfänger ohne epoch-Wert erstellt wird, schlägt die Erstellung des neuen Empfängers fehl. Empfänger mit epoch-Wert haben im System immer Vorrang.
+- Wenn bereits ein Empfänger mit einem epoch-Wert von e1 erstellt wurde, der getrennt wurde, und ein neuer Empfänger ohne epoch-Wert in einer neuen MessagingFactory-Instanz erstellt wird, ist die Erstellung des neuen Empfängers erfolgreich. Hier besteht allerdings der Nachteil, dass das System die Trennung des Empfängers erst nach etwa 10 Minuten erkennt.
+- Wenn mindestens ein Empfänger ohne epoch-Wert erstellt wird und ein neuer Empfänger mit einem epoch-Wert von e1 erstellt wird, werden alle älteren Empfänger getrennt.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

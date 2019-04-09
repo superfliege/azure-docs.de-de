@@ -1,20 +1,20 @@
 ---
 title: Erstellen eines Cognitive Services-Kontos im Azure-Portal
 titlesuffix: Azure Cognitive Services
-description: Anleitung zum Erstellen eines Microsoft Cognitive Services-APIs-Kontos im Azure-Portal.
+description: Anleitung zum Erstellen eines Azure Cognitive Services-APIs-Kontos im Azure-Portal.
 services: cognitive-services
 author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6950cba5ac958233e7ea77c8dc783ca86cc5a386
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534802"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519883"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal
 
@@ -29,31 +29,10 @@ In diesem Schnellstart erfahren Sie, wie Sie sich für Azure Cognitive Services 
 Bevor Sie beginnen, sollten Sie wissen, dass es zwei Arten von Azure Cognitive Services-Abonnements gibt. Das erste ist ein Abonnement für einen einzelnen Dienst, z.B. maschinelles Sehen oder Speech Services. Ein Abonnement für einen einzelnen Dienst ist auf diese Ressource beschränkt. Das zweite ist ein Abonnement für mehrere Dienste von Azure Cognitive Services. Mit diesem Abonnement können Sie ein einziges Abonnement für den Großteil der Dienste von Azure Cognitive Services verwenden. Diese Option umfasst auch eine gemeinsame Abrechnung. Weitere Informationen finden Sie unter [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
 
 >[!WARNING]
-> Zum derzeitigen Zeitpunkt unterstützen diese Dienste Schlüssel für mehrere Dienste **nicht**: QnA Maker, Speech Services und Custom Vision.
+> Zum derzeitigen Zeitpunkt unterstützen diese Dienste Schlüssel für mehrere Dienste **nicht**: QnA Maker, Speech-Dienste, Custom Vision und Anomalieerkennung.
 
 In den nächsten Abschnitten werden Sie durch das Erstellen eines Abonnements für einen oder mehrere Dienste geführt.
 
-### <a name="single-service-subscription"></a>Abonnement für einen Dienst
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **+Ressource erstellen**.
-
-    ![Auswahl Cognitive Services-APIs](media/cognitive-services-apis-create-account/azurePortalScreen.png)
-
-2. Wählen Sie unter Azure Marketplace die Option **KI und Machine Learning** aus. Wenn der für Sie interessante Dienst nicht angezeigt wird, klicken Sie auf **Alle anzeigen**, um den gesamten Katalog der Cognitive Services-APIs anzuzeigen.
-
-    ![Auswahl Cognitive Services-APIs](media/cognitive-services-apis-create-account/azureMarketplace.png)
-
-3. Geben Sie auf der Seite **Erstellen** die folgenden Informationen ein:
-
-    |    |    |
-    |--|--|
-    | **Name** | Ein beschreibender Name für Ihre Cognitive Services-Ressource. Es wird empfohlen einen aussagekräftigen Namen zu wählen, z. B. *MyNameFaceAPIAccount*. |
-    | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
-    | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. |
-    | **Preisstufe** | Die Kosten für Ihr Cognitive Services-Konto hängen von den ausgewählten Optionen und Ihrer Nutzung ab. Weitere Informationen finden Sie unter API-[Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group), die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
-
-    ![Bildschirm „Ressourcenerstellung“](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 ### <a name="multi-service-subscription"></a>Abonnement für mehrere Dienste
 
@@ -80,6 +59,28 @@ In den nächsten Abschnitten werden Sie durch das Erstellen eines Abonnements f�
     | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group), die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
 
     ![Bildschirm „Ressourcenerstellung“](media/cognitive-services-apis-create-account/resource_create_screen_multi.png)
+
+### <a name="single-service-subscription"></a>Abonnement für einen Dienst
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **+Ressource erstellen**.
+
+    ![Auswahl Cognitive Services-APIs](media/cognitive-services-apis-create-account/azurePortalScreen.png)
+
+2. Wählen Sie unter Azure Marketplace die Option **KI und Machine Learning** aus. Wenn der für Sie interessante Dienst nicht angezeigt wird, klicken Sie auf **Alle anzeigen**, um den gesamten Katalog der Cognitive Services-APIs anzuzeigen.
+
+    ![Auswahl Cognitive Services-APIs](media/cognitive-services-apis-create-account/azureMarketplace.png)
+
+3. Geben Sie auf der Seite **Erstellen** die folgenden Informationen ein:
+
+    |    |    |
+    |--|--|
+    | **Name** | Ein beschreibender Name für Ihre Cognitive Services-Ressource. Es wird empfohlen einen aussagekräftigen Namen zu wählen, z. B. *MyNameFaceAPIAccount*. |
+    | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
+    | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. |
+    | **Preisstufe** | Die Kosten für Ihr Cognitive Services-Konto hängen von den ausgewählten Optionen und Ihrer Nutzung ab. Weitere Informationen finden Sie unter API-[Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group), die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
+
+    ![Bildschirm „Ressourcenerstellung“](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 ## <a name="access-your-resource"></a>Zugreifen auf Ihre Ressource
 

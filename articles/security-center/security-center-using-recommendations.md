@@ -3,7 +3,7 @@ title: Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherhe
 description: " Erfahren Sie, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Azure Security Center Sicherheitsangriffe abgewehrt werden können. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/2/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5ff59a9ed7dc44bb7a4176f7a174be1e7d0ec9b6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 3/26/2019
+ms.author: monhaber
+ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104905"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517690"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
-Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können.
+Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
 
-Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Sicherheitskontrollen unterstützen.
+Security Center führt kontinuierliche Überprüfungen automatisch aus, um den Sicherheitsstatus Ihrer Azure-Ressourcen zu analysieren. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Sicherheitskontrollen unterstützen. Security Center aktualisiert seine Empfehlungen innerhalb von 24 Stunden, mit folgenden Ausnahmen:
+
+- Empfehlungen zu Betriebssystem-Sicherheitskonfigurationen werden innerhalb von 48 Stunden aktualisiert.
+- Empfehlungen bei Endpoint Protection-Problemen werden innerhalb von 8 Stunden aktualisiert.
 
 ## <a name="scenario"></a>Szenario
 Dieses Szenario veranschaulicht die Nutzung von Security Center zum Eindämmen der Wahrscheinlichkeit eines Sicherheitsvorfalls, indem Security Center-Empfehlungen befolgt und Maßnahmen ergriffen werden. In diesem Szenario werden das fiktive Unternehmen Contoso und die im [Planungs- und Betriebshandbuch](security-center-planning-and-operations-guide.md#security-roles-and-access-controls) vorgestellten Rollen verwendet. In diesem Szenario konzentrieren wir uns auf die Rollen der folgenden Personen:

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122925"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438256"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 
@@ -150,7 +150,7 @@ Die folgende Tabelle beschreibt den Zweck der HTML5-Seiten.
 
 Sie können für Ihre User Journey einen Link hinzufügen, der zu Ihren HTML5/CSS-Vorlagen führt, indem Sie eine benutzerdefinierte Richtlinie direkt bearbeiten.
 
-Die benutzerdefinierten HTML5/CSS-Vorlagen für Ihre User Journey müssen in einer Liste mit Inhaltsdefinitionen angegeben werden, die in diesen User Journeys verwendet werden können. Zu diesem Zweck muss ein optionales *<ContentDefinitions>*-XML-Element im Abschnitt *<BuildingBlocks>* der XML-Datei mit Ihrer benutzerdefinierten Richtlinie deklariert werden.
+Die benutzerdefinierten HTML5/CSS-Vorlagen für Ihre User Journey müssen in einer Liste mit Inhaltsdefinitionen angegeben werden, die in diesen User Journeys verwendet werden können. Zu diesem Zweck muss in der XML-Datei für Ihre benutzerdefinierte Richtlinie im Abschnitt *\<BuildingBlocks>* ein optionales *\<ContentDefinitions>*-XML-Element deklariert werden.
 
 Die folgende Tabelle beschreibt die IDs der Inhaltsdefinitionen, die von der Azure AD B2C Identity Experience Engine erkannt werden, und den Typ der entsprechenden Seiten.
 

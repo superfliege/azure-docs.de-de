@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f6a9d688169f0f8fdd6f0be7b664dbe9ebd71941
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295231"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497991"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight
 
@@ -35,7 +35,7 @@ HDInsight enthält außerdem Jython, eine in Java geschriebene Python-Implementi
 * Optional.  Wenn Sie PowerShell verwenden möchten, müssen Sie das [AZ-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) installieren.
 
 > [!NOTE]  
-> Das in diesem Artikel verwendete Speicherkonto war vom Typ „Azure Storage mit aktivierter [sicherer Übertragung](/../storage/common/storage-require-secure-transfer.md)“, und deshalb wird im gesamten Artikel `wasbs` verwendet.
+> Das in diesem Artikel verwendete Speicherkonto war vom Typ „Azure Storage mit aktivierter [sicherer Übertragung](../../storage/common/storage-require-secure-transfer.md)“, und deshalb wird im gesamten Artikel `wasbs` verwendet.
 
 ## <a name="storage-configuration"></a>Speicherkonfiguration
 Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto vom Typ `Storage (general purpose v1)` oder `StorageV2 (general purpose v2)` ist.  Der Prozess in diesem Artikel wird mindestens zu einer Ausgabe in `/tezstaging` führen.  In einer Hadoop-Standardkonfiguration ist `/tezstaging` in der Konfigurationsvariablen `fs.azure.page.blob.dir` in der Datei `core-site.xml` des `HDFS`-Diensts enthalten.  Diese Konfiguration bewirkt, dass es sich bei der Ausgabe im Verzeichnis um Seitenblobs handelt. Diese werden für Speicherkonten vom Typ `BlobStorage` aber nicht unterstützt.  Entfernen Sie `/tezstaging` aus der Konfigurationsvariablen `fs.azure.page.blob.dir`, damit Sie `BlobStorage` im Rahmen dieses Artikels verwenden können.  Zugriff auf die Konfiguration besteht über die [Ambari-Benutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).  Andernfalls erhalten Sie diese Fehlermeldung: `Page blob is not supported for this account type.`

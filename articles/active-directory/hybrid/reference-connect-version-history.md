@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/18/2018
+ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836979"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540957"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -40,6 +40,56 @@ Download | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?Lin
 
 >[!NOTE]
 >Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) erhalten Sie weitere Informationen zu diesem Thema.
+
+## <a name="13100"></a>1.3.10.0 
+
+### <a name="release-status"></a>Releasestatus 
+
+25.3.2019: Noch nicht veröffentlicht 
+ 
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen 
+
+
+
+- Die Unterstützung der Domänenaktualisierung wurde hinzugefügt. 
+- Das Feature „Öffentliche Exchange-E-Mail-Ordner“ wird allgemein verfügbar. 
+- Der Assistent für die Fehlerbehandlung bei Dienstfehlern wurde verbessert. 
+- Ein Warnungslink für die alte Benutzeroberfläche wurde auf der Seite „Connector-Eigenschaften“ hinzugefügt. 
+- Das Feature für ein einheitliches Gruppenrückschreiben ist jetzt allgemein verfügbar. 
+- Die SSPR Fehlermeldung beim Fehlen eines LDAP-Steuerelements für den Domänencontroller wurde verbessert. 
+- Eine Diagnose für DCOM-Registrierungsfehler während der Installation wurde hinzugefügt.  
+- Die Verfolgung von RPC-Fehlern bei der Kennworthashsynchronisierung wurde verbessert. 
+- EA-Anmeldeinformationen sind jetzt von einer untergeordneten Domäne zulässig. 
+- Der Datenbankname (Standardname „ADSync“) kann jetzt während der Installation eingegeben werden.
+- Es wurde ein Upgrade auf ADAL 3.19.8 durchgeführt, um eine WS-Trust-Lösung für Ping-Signale auszuwählen und Unterstützung für neue Azure-Instanzen hinzuzufügen. 
+- Die Gruppensynchronisierungsregeln wurden geändert, um „SamAccountName“, „DomainNetbios“ und „DomainFQDN“ an die Cloud zu übergeben – erforderlich für Ansprüche 
+- Die Standardbehandlung von Synchronisierungsregeln wurde geändert. [Hier](how-to-connect-fix-default-rules.md) erfahren Sie mehr.
+- Ein neuer Agent wurde hinzugefügt, der als Windows-Dienst ausgeführt wird. Dieser Agent namens „Admin-Agent“ ermöglicht eine umfassendere Remotediagnose des Azure AD Connect-Servers, um Microsoft-Techniker bei der Problembehandlung zu unterstützen, wenn Sie eine Supportanfrage öffnen. [Hier](whatis-aadc-admin-agent.md) erfahren Sie mehr über den Admin-Agent. 
+- Die Software-Lizenzbedingungen wurden aktualisiert. 
+- Die automatische Upgrade-Unterstützung für Bereitstellungen, die AD FS als Anmeldetyp verwenden, wurde hinzugefügt.  Dadurch entfällt auch die Notwendigkeit, im Rahmen des Upgradeprozesses die Azure AD-Vertrauensstellung der Active Directory Federation Services (AD FS) zu aktualisieren. 
+- Eine Verwaltungsaufgabe für Azure AD-Vertrauensstellung wurde hinzugefügt, die zwei Optionen bereitstellt: Vertrauensstellung analysieren/aktualisieren und Vertrauensstellung zurücksetzen. 
+- Das Azure AD-Vertrauensstellungsverhalten von AD FS wurde so geändert, dass jetzt stets der Switch „-SupportMultipleDomain“ verwendet wird (enthält Vertrauensstellungs- und Azure AD-Domänenupdates). 
+- Die Installation des neuen AD FS-Farmverhaltens wurde so geändert, dass jetzt ein PFX-Zertifikat erforderlich ist. Dadurch entfällt die Option für die Verwendung eines vorinstallierten Zertifikats.
+- Die Installation des neuen AD FS-Farmworkflows wurde so aktualisiert, dass nur die Bereitstellung von einem (1) AD FS- und einem (1) WAP-Server zulässig ist.  Alle weiteren Server folgen nach der Erstinstallation. 
+
+### <a name="fixed-issues"></a>Behobene Probleme 
+
+
+- Die Probleme bei der SQL-Logik für die erneute Verbindungsherstellung für den ADSync-Dienst wurden behoben. 
+- Der Fehler bei Neuinstallationen mit einer leeren SQL AOA-DB wurde behoben. 
+- Das PS-Berechtigungsskript zum Verfeinern von GWB-Berechtigungen wurde korrigiert. 
+- VSS-Fehler mit LocalDB wurden behoben.  
+- Die irreführende Fehlermeldung, die angezeigt wurde, wenn sich der Objekttyp nicht im Bereich befand, wurde korrigiert. 
+- Das Problem, bei dem die Installation von Azure AD PowerShell auf einem Server unter Umständen einen Assemblykonflikt mit Azure AD Connect verursachte, wurde behoben. 
+- Der PHS-Fehler auf dem Stagingserver beim Aktualisieren der Connector-Anmeldeinformationen in der alten Benutzeroberfläche wurde behoben. 
+- Einige Speicherverluste wurden behoben. 
+- Korrektur sonstiger Autoupgrade-Fehler 
+- Verschiedene Fehler bei der Export- und unbestätigten Importverarbeitung wurden behoben. 
+- Das Problem bei der Behandlung des umgekehrten Schrägstrichs in den Filtern für Domänen und Organisationseinheiten wurde behoben. 
+- Das Problem des ADSync-Diensts, der mehr als zwei Minuten zum Beenden benötigte und dadurch ein Problem beim Upgrade verursachte, wurde behoben. 
+
+
+
 
 ## <a name="12700"></a>1.2.70.0
 

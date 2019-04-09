@@ -198,7 +198,7 @@ Identity Protection unterstützt 3 Rollen in Azure AD für die Verwaltungsaktivi
 | --- | --- | --- |
 | Globaler Administrator | Vollzugriff auf Identity Protection, Integrieren von Identity Protection | |
 | Sicherheitsadministrator | Vollzugriff auf Identity Protection | Integrieren von Identity Protection, Zurücksetzen von Kennwörtern für einen Benutzer |
-| Benutzer mit Leseberechtigung für Sicherheitsfunktionen | Schreibgeschützter Zugriff auf Identity Protection | Integrieren von Identity Protection, Bereinigen von Benutzern, Konfigurieren von Richtlinien, Zurücksetzen von Kennwörtern| 
+| Sicherheitsleseberechtigter | Schreibgeschützter Zugriff auf Identity Protection | Integrieren von Identity Protection, Bereinigen von Benutzern, Konfigurieren von Richtlinien, Zurücksetzen von Kennwörtern| 
 
 Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 

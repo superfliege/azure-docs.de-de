@@ -1,13 +1,18 @@
 ---
-title: "Beispiele: Blaupause „ISO\_27001: Gemeinsame Dienste“ – Übersicht"
-description: "Übersicht und Architektur des Beispiels zur Blaupause „ISO\_27001: Gemeinsame Dienste“"
-services: blueprints
+title: 'Beispiele: Blaupause „ISO 27001: Gemeinsame Dienste“ – Übersicht'
+description: 'Übersicht und Architektur des Beispiels zur Blaupause „ISO 27001: Gemeinsame Dienste“'
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
+ms.openlocfilehash: ca473474c62d0cb57c3ee76095740568398c67d7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272749"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 

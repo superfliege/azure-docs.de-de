@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877869"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516960"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -37,6 +37,7 @@ Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional c
 - Die Bytearray-Option umfasst ein Timeout nach 30 Minuten.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
 - Bei der Indizierung von Media Services-Medienobjekten gibt es die gleiche Begrenzung wie bei der Indizierung aus einer URL.
+- Video Indexer weist eine maximale Dauer von 4 Stunden für eine einzelne Datei auf
 
 > [!Tip]
 > Es wird empfohlen, .NET Framework-Version 4.6.2 oder höher zu verwenden, da für frühere .NET Frameworks nicht standardmäßig TLS 1.2 genutzt wird.
